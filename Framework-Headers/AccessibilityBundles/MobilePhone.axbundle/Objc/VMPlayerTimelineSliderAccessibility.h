@@ -14,7 +14,11 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityCommitPositionChange;
+- (void)_axUpdateSliderValue;
+- (void)accessibilityDecrement;
+- (void)accessibilityIncrement;
 - (id)accessibilityLabel;
+- (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 

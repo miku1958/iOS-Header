@@ -16,6 +16,8 @@
     unsigned long long _totalMoveGoalsAttempted;
     double _bestMoveValue;
     double _bestMoveGoalValue;
+    double _bestMoveTimeValue;
+    double _bestMoveTimeGoalValue;
     unsigned long long _currentExerciseStreak;
     unsigned long long _bestExerciseStreak;
     unsigned long long _totalExerciseGoalsMade;
@@ -39,6 +41,8 @@
 @property (nonatomic) double bestExerciseValue; // @synthesize bestExerciseValue=_bestExerciseValue;
 @property (nonatomic) double bestMoveGoalValue; // @synthesize bestMoveGoalValue=_bestMoveGoalValue;
 @property (nonatomic) unsigned long long bestMoveStreak; // @synthesize bestMoveStreak=_bestMoveStreak;
+@property (nonatomic) double bestMoveTimeGoalValue; // @synthesize bestMoveTimeGoalValue=_bestMoveTimeGoalValue;
+@property (nonatomic) double bestMoveTimeValue; // @synthesize bestMoveTimeValue=_bestMoveTimeValue;
 @property (nonatomic) double bestMoveValue; // @synthesize bestMoveValue=_bestMoveValue;
 @property (nonatomic) unsigned long long bestStandGoalValue; // @synthesize bestStandGoalValue=_bestStandGoalValue;
 @property (nonatomic) unsigned long long bestStandStreak; // @synthesize bestStandStreak=_bestStandStreak;

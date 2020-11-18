@@ -7,6 +7,7 @@
 #import <Foundation/NSProgress.h>
 
 @interface NSProgress (NSProgress_TSUAdditions)
++ (id)tsu_progressWithChildren:(id)arg1;
 + (id)tsu_progressWithTSUProgress:(id)arg1 totalUnitCount:(long long)arg2;
 - (long long)tsu_pendingUnitCountForIncompleteProgress:(long long)arg1;
 - (void)tsu_stopObservingTSUProgress;

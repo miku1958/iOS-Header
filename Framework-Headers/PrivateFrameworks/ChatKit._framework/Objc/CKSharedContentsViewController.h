@@ -10,6 +10,7 @@
 #import <ChatKit/CKSharedAssetsControllerProtocol-Protocol.h>
 #import <ChatKit/CKSharedContentsCollectionViewCellDelegate-Protocol.h>
 #import <ChatKit/CNAvatarViewDelegate-Protocol.h>
+#import <ChatKit/QLPreviewControllerDelegate-Protocol.h>
 #import <ChatKit/UICollectionViewDataSource-Protocol.h>
 #import <ChatKit/UICollectionViewDelegate-Protocol.h>
 #import <ChatKit/UICollectionViewDragSource-Protocol.h>
@@ -19,7 +20,7 @@
 @class CKQLDetailsPreviewController, NSArray, NSString, UIBarButtonItem, UICollectionView, UICollectionViewFlowLayout, UIView;
 @protocol CKSharedAssetsControllerDelegate;
 
-@interface CKSharedContentsViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, CNAvatarViewDelegate, UICollectionViewDragSource, UIViewControllerPreviewingDelegate, CKQLPreviewControllerDelegate, UIGestureRecognizerDelegate, CKSharedContentsCollectionViewCellDelegate, CKSharedAssetsControllerProtocol>
+@interface CKSharedContentsViewController : UIViewController <UICollectionViewDelegate, UICollectionViewDataSource, CNAvatarViewDelegate, UICollectionViewDragSource, UIViewControllerPreviewingDelegate, CKQLPreviewControllerDelegate, UIGestureRecognizerDelegate, CKSharedContentsCollectionViewCellDelegate, CKSharedAssetsControllerProtocol, QLPreviewControllerDelegate>
 {
     BOOL _selectingAttachments;
     UICollectionView *_collectionView;

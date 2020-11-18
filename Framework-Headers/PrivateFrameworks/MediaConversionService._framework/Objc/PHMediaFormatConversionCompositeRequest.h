@@ -20,6 +20,9 @@
 - (void)postProcessSuccessfulCompositeRequest;
 - (void)preflightWithConversionManager:(id)arg1;
 - (void)propagateRequestOptionsToSubrequests;
+- (BOOL)requiresAccessibilityDescriptionMetadataChange;
+- (BOOL)requiresCaptionMetadataChange;
+- (BOOL)requiresCreationDateMetadataChange;
 - (BOOL)requiresFormatConversion;
 - (BOOL)requiresLocationMetadataChange;
 - (void)setupProgress;

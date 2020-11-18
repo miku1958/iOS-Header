@@ -8,7 +8,7 @@
 
 #import <SpringBoard/FBProcessManagerKeyboardFocusDelegate-Protocol.h>
 
-@class BKSHIDEventDeferringToken, NSHashTable, NSMutableArray, NSString, SBMainWorkspace;
+@class BKSHIDEventDeferringToken, BSCompoundAssertion, NSHashTable, NSMutableArray, NSString, SBMainWorkspace;
 @protocol BSInvalidatable;
 
 @interface SBWorkspaceKeyboardFocusController : NSObject <FBProcessManagerKeyboardFocusDelegate>
@@ -18,6 +18,7 @@
     NSHashTable *_observers;
     NSMutableArray *_redirections;
     NSMutableArray *_holdAssertions;
+    BSCompoundAssertion *_preventProcessFocusAssertion;
     id<BSInvalidatable> _keyboardFocusRule;
     id<BSInvalidatable> _compatibilityKeyboardFocusRule;
     BKSHIDEventDeferringToken *_keyboardFocusToken;
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) id<BSInvalidatable> keyboardFocusRule; // @synthesize keyboardFocusRule=_keyboardFocusRule;
 @property (strong, nonatomic) BKSHIDEventDeferringToken *keyboardFocusToken; // @synthesize keyboardFocusToken=_keyboardFocusToken;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
+@property (strong, nonatomic) BSCompoundAssertion *preventProcessFocusAssertion; // @synthesize preventProcessFocusAssertion=_preventProcessFocusAssertion;
 @property (strong, nonatomic) NSMutableArray *redirections; // @synthesize redirections=_redirections;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SBMainWorkspace *workspace; // @synthesize workspace=_workspace;
@@ -44,6 +46,7 @@
 - (id)init;
 - (id)initWithWorkspace:(id)arg1;
 - (id)lockFocusToSpringBoardForReason:(id)arg1;
+- (id)preventFocusForProcessIdentifier:(int)arg1 reason:(id)arg2;
 - (void)processManager:(id)arg1 didSelectKeyboardFocusProcess:(id)arg2 deferringToken:(id)arg3;
 - (id)redirectFocusForReason:(id)arg1 fromProcessIdentifier:(int)arg2 fromDeferringToken:(id)arg3 toProcessidentifier:(int)arg4 toDeferringToken:(id)arg5;
 - (void)removeObserver:(id)arg1;

@@ -26,6 +26,7 @@
 + (id)processNameForPID:(int)arg1;
 + (BOOL)sandboxAllowsXPC:(const char *)arg1;
 + (id)signatureSetToString:(long long)arg1;
++ (id)teamIdentifierFromAuditToken:(CDStruct_6ad76789)arg1;
 + (void)unmapFile:(int)arg1 data:(id)arg2;
 
 @end

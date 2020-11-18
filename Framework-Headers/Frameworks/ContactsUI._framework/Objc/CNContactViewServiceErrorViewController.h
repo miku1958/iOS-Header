@@ -27,7 +27,9 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)didChangeToEditMode:(BOOL)arg1;
+- (void)didChangeToShowTitle:(BOOL)arg1;
 - (void)editCancel;
+- (void)performConfirmedCancel;
 - (void)setupWithOptions:(id)arg1 readyBlock:(CDUnknownBlockType)arg2;
 - (void)toggleEditing;
 

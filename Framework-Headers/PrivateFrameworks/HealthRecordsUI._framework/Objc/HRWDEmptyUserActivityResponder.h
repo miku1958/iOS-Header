@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthRecordsUI/WDUserActivityResponder-Protocol.h>
+#import <HealthRecordsUI/HRWDUserActivityResponder-Protocol.h>
 
 @class NSString;
 
 __attribute__((visibility("hidden")))
-@interface HRWDEmptyUserActivityResponder : NSObject <WDUserActivityResponder>
+@interface HRWDEmptyUserActivityResponder : NSObject <HRWDUserActivityResponder>
 {
 }
 

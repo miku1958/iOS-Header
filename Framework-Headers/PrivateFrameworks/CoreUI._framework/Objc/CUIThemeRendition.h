@@ -19,7 +19,6 @@
     int _blendMode;
     struct cuithemerenditionrenditionflags _renditionFlags;
     long long _templateRenderingMode;
-    long long _artworkStatus;
     unsigned long long _colorSpaceID;
     NSString *_name;
     NSData *_srcData;
@@ -30,7 +29,6 @@
     NSDictionary *_properties;
 }
 
-@property (nonatomic) long long artworkStatus; // @synthesize artworkStatus=_artworkStatus;
 @property (nonatomic) int blendMode; // @synthesize blendMode=_blendMode;
 @property (nonatomic) int exifOrientation; // @synthesize exifOrientation=_exifOrientation;
 @property (strong, nonatomic) NSString *internalName;
@@ -44,13 +42,14 @@
 + (id)displayNameForRenditionType:(long long)arg1;
 + (Class)renditionClassForRenditionType:(long long)arg1 andPixelFormat:(unsigned int)arg2;
 - (struct CGRect)_destinationFrame;
-- (id)_initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)_initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (void)_initalizeMetadataFromCSIData:(const struct _csiheader *)arg1;
 - (void)_initializeCompositingOptionsFromCSIData:(const struct _csiheader *)arg1;
 - (void)_initializePropertiesFromCSIData:(const struct _csiheader *)arg1;
 - (void)_initializeRenditionKey:(const struct _renditionkeytoken *)arg1;
 - (void)_initializeTypeIdentifiersWithLayout:(unsigned short)arg1;
+- (void)_setFlippable:(BOOL)arg1;
 - (void)_setStructuredThemeStore:(id)arg1;
 - (id)_sourceRendition;
 - (struct CGRect)alphaCroppedRect;
@@ -72,9 +71,7 @@
 - (unsigned int)gradientStyle;
 - (id)imageForSliceIndex:(long long)arg1;
 - (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
 - (BOOL)isFlippable;
-- (BOOL)isHeaderFlaggedFPO;
 - (BOOL)isInternalLink;
 - (BOOL)isOpaque;
 - (BOOL)isScaled;
@@ -111,6 +108,7 @@
 - (id)systemColorName;
 - (long long)templateRenderingMode;
 - (id)textureImages;
+- (long long)textureIntepretation;
 - (CDStruct_14d5dc5e)transformation;
 - (struct CGImage *)uncroppedImage;
 - (struct CGImage *)unslicedImage;
@@ -122,6 +120,7 @@
 - (double)vectorGlyphBaseline;
 - (double)vectorGlyphCapLine;
 - (double)vectorGlyphReferencePointSize;
+- (float)vectorGlyphTemplateVersion;
 
 @end
 

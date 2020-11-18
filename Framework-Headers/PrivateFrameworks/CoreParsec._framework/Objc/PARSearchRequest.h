@@ -14,6 +14,7 @@
 {
     NSString *_queryString;
     NSDictionary *_topics;
+    long long _type;
     NSString *_l2version;
     NSString *_l3version;
     NSArray *_localContextualSuggestions;
@@ -32,6 +33,7 @@
 @property (copy, nonatomic) NSString *previouslyEngagedQuery; // @synthesize previouslyEngagedQuery=_previouslyEngagedQuery;
 @property (copy, nonatomic) NSString *queryString; // @synthesize queryString=_queryString;
 @property (copy, nonatomic) NSDictionary *topics; // @synthesize topics=_topics;
+@property (nonatomic) long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

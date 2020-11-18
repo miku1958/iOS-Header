@@ -28,6 +28,7 @@
 + (id)brc_fakeRecordWithErrorMarkerFor20716676;
 + (id)brc_zoneHealthZoneID;
 + (id)desiredKeysWithMask:(unsigned short)arg1;
++ (id)newFromSqliteStatement:(struct sqlite3_stmt *)arg1 atIndex:(int)arg2;
 + (id)newFromSqliteValue:(struct sqlite3_value *)arg1;
 + (id)rootAppLibraryRecordForAppLibraryID:(id)arg1 zoneID:(id)arg2;
 + (id)rootDirectoryRecordForZoneID:(id)arg1;

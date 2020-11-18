@@ -24,7 +24,7 @@
 - (id)childEnumerator;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
-- (int)elementKind;
+- (unsigned int)elementKind;
 - (unsigned long long)findCharIndex;
 - (unsigned long long)hash;
 - (id)initWithContext:(id)arg1;

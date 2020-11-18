@@ -30,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_textureIds:1;
         unsigned int read_lensProjection:1;
         unsigned int read_position:1;
-        unsigned int wrote_textureIds:1;
-        unsigned int wrote_lensProjection:1;
-        unsigned int wrote_position:1;
-        unsigned int wrote_cameraNumber:1;
-        unsigned int wrote_imageHeight:1;
-        unsigned int wrote_imageWidth:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -54,10 +49,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsTextureId:(unsigned int)arg1;
-- (void)_readLensProjection;
-- (void)_readPosition;
-- (void)_readTextureIds;
 - (void)addTextureId:(unsigned int)arg1;
 - (void)clearTextureIds;
 - (void)copyTo:(id)arg1;
@@ -68,7 +59,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -9,6 +9,7 @@
 @interface NSFileManager (SafariNSFileManagerExtras)
 - (id)_safari_containerDirectory;
 - (id)_safari_libraryDirectoryForHomeDirectory:(id)arg1;
+- (BOOL)_safari_removeFileAtURL:(id)arg1 onlyIfFileExists:(BOOL)arg2 error:(id *)arg3;
 - (id)safari_autoFillQuirksDownloadDirectoryURL;
 - (id)safari_createTemporaryDirectoryWithTemplate:(id)arg1;
 - (id)safari_ensureDirectoryExists:(id)arg1;
@@ -17,7 +18,9 @@
 - (id)safari_nonContaineredSettingsDirectoryURL;
 - (id)safari_pathWithUniqueFilenameForPath:(id)arg1;
 - (id)safari_productionSafariSettingsDirectory;
+- (BOOL)safari_removeDirectoryIfEmpty:(id)arg1;
 - (BOOL)safari_removeFileAtURL:(id)arg1 error:(id *)arg2;
+- (BOOL)safari_removeFileOnlyAtURL:(id)arg1 error:(id *)arg2;
 - (id)safari_safariLibraryDirectory;
 - (id)safari_settingsDirectoryForHomeDirectory:(id)arg1;
 - (id)safari_settingsDirectoryForLibraryDirectory:(id)arg1;

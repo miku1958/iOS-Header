@@ -12,7 +12,7 @@
 #import <UIKitCore/_UINavigationControllerRefreshControlHostDelegate-Protocol.h>
 #import <UIKitCore/_UINavigationItemChangeObserver-Protocol.h>
 
-@class NSString, UILabel, UIView, _UIBarBackground, _UINavigationBarContentView, _UINavigationBarLargeTitleView, _UINavigationBarModernPromptView, _UINavigationBarTransitionContext, _UINavigationControllerRefreshControlHost, _UIPointerInteractionAssistant;
+@class NSString, UIBarButtonItem, UILabel, UIView, _UIBarBackground, _UINavigationBarContentView, _UINavigationBarLargeTitleView, _UINavigationBarModernPromptView, _UINavigationBarTransitionContext, _UINavigationControllerRefreshControlHost, _UIPointerInteractionAssistant;
 
 __attribute__((visibility("hidden")))
 @interface _UINavigationBarVisualProviderModernIOS : _UINavigationBarVisualProvider <_UINavigationBarContentViewDelegate, _UINavigationItemChangeObserver, _UIBarAppearanceChangeObserver, _UINavigationControllerRefreshControlHostDelegate, _UIBasicAnimationFactory>
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
     BOOL _useModernAppearanceAPI;
     BOOL _forceScrollEdgeAppearance;
     long long _appearanceAPIVersion;
+    UIBarButtonItem *_staticNavBarButtonItem;
     _UINavigationControllerRefreshControlHost *_refreshControlHost;
 }
 
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)_accessibility_HUDItemForPoint:(struct CGPoint)arg1;
 - (id)_accessibility_controlToActivateForHUDGestureLiftAtPoint:(struct CGPoint)arg1;
 - (BOOL)_accessibility_shouldBeginHUDGestureAtPoint:(struct CGPoint)arg1;
+- (id)_backButtonMenu;
 - (id)_backgroundLayoutOfClass:(Class)arg1 fromLayout:(id)arg2;
 - (id)_basicAnimationForView:(id)arg1 withKeyPath:(id)arg2;
 - (void)_beginOrEndObservingDidEncounterFirstTitleWithExcessiveHeightChangedIfNecessary;
@@ -62,14 +64,18 @@ __attribute__((visibility("hidden")))
 - (void)_endTransitionCompleted:(BOOL)arg1;
 - (void)_enforceLayoutOrdering;
 - (void)_ensureLayoutsConfiguredForEntry:(id)arg1;
+- (void)_installContentClippingView:(id)arg1;
 - (void)_invalidateIntrinsicContentSizeAndNotifySizeChanged;
 - (BOOL)_isInInteractiveScroll;
 - (BOOL)_isInnerNavigationBarOfNestedNavigationController;
 - (void)_layoutInBounds:(struct CGRect)arg1 wantsExtendedContentView:(BOOL)arg2 wantsLargeTitle:(BOOL)arg3;
 - (void)_performAnimationWithTransitionCompletion:(CDUnknownBlockType)arg1 transition:(int)arg2;
+- (void)_popToItem:(id)arg1;
 - (void)_postDidEncounterFirstTitleWithExcessiveHeightChanged;
 - (void)_prepareLayouts;
 - (void)_presentOrDismissSearch:(int)arg1 withTransitionCoordinator:(id)arg2;
+- (void)_removeContentClippingView;
+- (void)_setupAccessibilityLimitsForView:(id)arg1;
 - (void)_setupTopNavigationItemAnimated:(BOOL)arg1;
 - (void)_setupTransitionContextForTransition:(int)arg1;
 - (id)_shim_compatibilityBackgroundView;
@@ -104,15 +110,24 @@ __attribute__((visibility("hidden")))
 - (long long)appearanceAPIVersion;
 - (id)appearanceObserver;
 - (double)backgroundAlpha;
+- (void)barDidAddSubview:(id)arg1;
+- (void)barDidMoveToWindow;
+- (void)beginAnimatingNavItemContentLayoutGuideForStaticButtonVisibilityChange;
 - (void)changeAppearance;
 - (void)changeLayout;
 - (long long)currentContentSize;
 - (void)dismissHostedSearchWithTransitionCoordinator:(id)arg1;
 - (id)emptyLayout;
+- (void)endAnimatingNavItemContentLayoutGuideForStaticButtonVisibilityChange;
 - (BOOL)forceScrollEdgeAppearance;
+- (double)heightForRestoringFromCancelledTransition;
 - (struct CGSize)intrinsicContentSize;
+- (BOOL)isAnimatingNavItemContentLayoutGuideForStaticButtonVisibilityChange;
+- (BOOL)isContentViewHidden;
+- (struct NSDirectionalEdgeInsets)largeSearchBaseMarginsRequiringNavMinimums:(BOOL)arg1;
 - (CDStruct_39925896)layoutHeightsFittingWidth:(double)arg1;
 - (void)layoutSubviews;
+- (double)navItemContentLayoutGuideAnimationDistance;
 - (void)navigationBarContentViewDidChangeDesiredHeight:(id)arg1;
 - (void)navigationBarContentViewDidTriggerBackAction:(id)arg1 fromBackButtonItem:(id)arg2;
 - (void)navigationBarInvalidatedResolvedLayoutMargins;
@@ -143,17 +158,24 @@ __attribute__((visibility("hidden")))
 - (void)recordBarSize:(struct CGSize)arg1;
 - (id)refreshControlHost;
 - (struct NSDirectionalEdgeInsets)resolvedLargeTitleMargins;
+- (struct NSDirectionalEdgeInsets)resolvedSearchBarMargins;
 - (id)restingHeights;
 - (void)safeAreaInsetsDidChange;
 - (void)setAppearanceAPIVersion:(long long)arg1;
 - (void)setBackgroundAlpha:(double)arg1;
 - (void)setForceScrollEdgeAppearance:(BOOL)arg1;
+- (void)setNeedsStaticNavBarButtonUpdate;
 - (void)setRefreshControlHost:(id)arg1;
+- (void)setShouldFadeStaticNavBarButton:(BOOL)arg1;
+- (void)setStaticNavBarButtonItem:(id)arg1;
+- (void)setStaticNavBarButtonLingers:(BOOL)arg1;
 - (void)setTitleAlpha:(double)arg1;
 - (void)setUseInlineBackgroundHeightWhenLarge:(BOOL)arg1;
-- (struct CGSize)sizeForRestoringFromCancelledTransition;
+- (BOOL)shouldFadeStaticNavBarButton;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)stackDidChangeFrom:(id)arg1;
+- (id)staticNavBarButtonItem;
+- (BOOL)staticNavBarButtonLingers;
 - (long long)statusBarStyle;
 - (BOOL)supportsRefreshControlHosting;
 - (void)teardown;
@@ -164,6 +186,7 @@ __attribute__((visibility("hidden")))
 - (id)traitCollectionForChild:(id)arg1 baseTraitCollection:(id)arg2;
 - (void)updateArchivedSubviews:(id)arg1;
 - (void)updateBackgroundGroupName;
+- (BOOL)updateNavItemContentLayoutGuideAnimationConstraintConstant:(double)arg1;
 - (BOOL)useInlineBackgroundHeightWhenLarge;
 - (BOOL)useManualScrollEdgeAppearanceForItem:(id)arg1;
 - (BOOL)wantsExtendedContentView;

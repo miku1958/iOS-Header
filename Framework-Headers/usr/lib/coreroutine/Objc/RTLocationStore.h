@@ -6,10 +6,12 @@
 
 #import <coreroutine/RTStore.h>
 
-@class NSMutableArray, NSObject, RTTimer, RTTimerManager;
+#import <coreroutine/RTEnumerableStore-Protocol.h>
+
+@class NSMutableArray, NSObject, NSString, RTTimer, RTTimerManager;
 @protocol OS_os_transaction;
 
-@interface RTLocationStore : RTStore
+@interface RTLocationStore : RTStore <RTEnumerableStore>
 {
     RTTimerManager *_timerManager;
     NSObject<OS_os_transaction> *_flushTransaction;
@@ -17,8 +19,12 @@
     RTTimer *_flushTimer;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) RTTimer *flushTimer; // @synthesize flushTimer=_flushTimer;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSMutableArray *locations; // @synthesize locations=_locations;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_fetchMetricsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -33,6 +39,8 @@
 - (void)_startFlushTimer;
 - (void)_storeLocations:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchMetricsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)fetchRequestFromOptions:(id)arg1 offset:(unsigned long long)arg2 error:(id *)arg3;
+- (id)fetchRequestFromStoredLocationOptions:(id)arg1;
 - (void)fetchStoredLocationsCountFromDate:(id)arg1 toDate:(id)arg2 uncertainty:(double)arg3 limit:(unsigned long long)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)fetchStoredLocationsWithContext:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchStoredLocationsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;

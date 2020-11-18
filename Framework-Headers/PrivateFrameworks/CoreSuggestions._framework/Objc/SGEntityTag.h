@@ -34,9 +34,11 @@
 + (id)containsEntityExtraction:(long long)arg1;
 + (id)defaultDuration;
 + (id)domain:(id)arg1;
++ (id)ekEventAvailabilityState:(id)arg1;
 + (id)eventHash:(id)arg1;
 + (id)eventMetadata:(id)arg1;
 + (id)extraKey:(id)arg1;
++ (id)extractedBoat;
 + (id)extractedBus;
 + (id)extractedCarRental;
 + (id)extractedEvent;
@@ -120,6 +122,7 @@
 - (BOOL)isConfidenceScore;
 - (BOOL)isContactDetail;
 - (BOOL)isDomain;
+- (BOOL)isEKEventAvailabilityState;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToEntityTag:(id)arg1;
 - (BOOL)isEventHash;

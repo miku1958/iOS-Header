@@ -14,8 +14,8 @@
 __attribute__((visibility("hidden")))
 @interface WKNetworkSessionDelegate : NSObject <NSURLSessionDataDelegate, NSURLSessionWebSocketDelegate>
 {
-    struct WeakPtr<WebKit::NetworkSessionCocoa> _session;
-    struct WeakPtr<WebKit::SessionWrapper> _sessionWrapper;
+    struct WeakPtr<WebKit::NetworkSessionCocoa, WTF::EmptyCounter> _session;
+    struct WeakPtr<WebKit::SessionWrapper, WTF::EmptyCounter> _sessionWrapper;
     BOOL _withCredentials;
 }
 
@@ -44,7 +44,8 @@ __attribute__((visibility("hidden")))
 - (void)URLSession:(id)arg1 webSocketTask:(id)arg2 didOpenWithProtocol:(id)arg3;
 - (struct NetworkDataTaskCocoa *)existingTask:(id)arg1;
 - (struct WebSocketTask *)existingWebSocketTask:(id)arg1;
-- (id)initWithNetworkSession:(struct NetworkSessionCocoa *)arg1 wrapper:(struct SessionWrapper *)arg2 withCredentials:(BOOL)arg3;
+- (id)initWithNetworkSession:(NakedRef_b86aa07f)arg1 wrapper:(struct SessionWrapper *)arg2 withCredentials:(BOOL)arg3;
+- (struct NetworkSessionCocoa *)sessionFromTask:(id)arg1;
 - (void)sessionInvalidated;
 
 @end

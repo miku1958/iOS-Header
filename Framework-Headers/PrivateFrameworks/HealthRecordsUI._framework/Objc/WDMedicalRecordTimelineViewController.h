@@ -10,16 +10,17 @@
 #import <HealthRecordsUI/HKConceptStoreObserver-Protocol.h>
 #import <HealthRecordsUI/HKHealthRecordsStoreAccountStateChangeListener-Protocol.h>
 #import <HealthRecordsUI/HKHealthRecordsStoreIngestionStateListener-Protocol.h>
+#import <HealthRecordsUI/HRConceptTitleTableHeaderViewDelegate-Protocol.h>
 #import <HealthRecordsUI/HRTimelineHeaderViewDelegate-Protocol.h>
 #import <HealthRecordsUI/UISearchControllerDelegate-Protocol.h>
 #import <HealthRecordsUI/UISearchResultsUpdating-Protocol.h>
 #import <HealthRecordsUI/_TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_-Protocol.h>
 
-@class HKClinicalAccount, HKCloudSyncObserver, HKConcept, HKViewTableViewCell, HRContentStatusCell, HRContentStatusView, HROverlayRoomViewController, HRProfile, NSArray, NSHashTable, NSPredicate, NSSet, NSString, NSTimer, NSUUID, UIButton, UISearchController, WDMedicalRecordCategory, WDMedicalRecordDisplayItemProvider, WDMedicalRecordStandaloneCell;
+@class HKClinicalAccount, HKCloudSyncObserver, HKConcept, HKConceptIdentifier, HKViewTableViewCell, HRContentStatusCell, HRContentStatusView, HROverlayRoomViewController, HRProfile, NSArray, NSHashTable, NSPredicate, NSSet, NSString, NSTimer, NSUUID, UIButton, UISearchController, WDMedicalRecordCategory, WDMedicalRecordDisplayItemProvider, WDMedicalRecordStandaloneCell;
 @protocol HRRecordViewControllerFactory;
 
 __attribute__((visibility("hidden")))
-@interface WDMedicalRecordTimelineViewController : HKTableViewController <UISearchControllerDelegate, UISearchResultsUpdating, _TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_, HKHealthRecordsStoreIngestionStateListener, HKHealthRecordsStoreAccountStateChangeListener, HKConceptStoreObserver, HKCloudSyncObserverDelegate, HRTimelineHeaderViewDelegate>
+@interface WDMedicalRecordTimelineViewController : HKTableViewController <UISearchControllerDelegate, UISearchResultsUpdating, _TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_, HKHealthRecordsStoreIngestionStateListener, HKHealthRecordsStoreAccountStateChangeListener, HKConceptStoreObserver, HKCloudSyncObserverDelegate, HRTimelineHeaderViewDelegate, HRConceptTitleTableHeaderViewDelegate>
 {
     BOOL _loadingNextPage;
     BOOL _showSearchBar;
@@ -38,12 +39,14 @@ __attribute__((visibility("hidden")))
     WDMedicalRecordCategory *_category;
     NSSet *_categories;
     NSSet *_accounts;
+    HKConceptIdentifier *_conceptIdentifier;
     HKConcept *_concept;
     NSUUID *_highlightedRecordId;
     NSArray *_preloadedRecords;
     id _medicalRecordSearchController;
     UISearchController *_navigationSearchController;
     NSTimer *_searchThrottleTimer;
+    NSTimer *_scrollToUUIDTrigger;
     HROverlayRoomViewController *_chartViewController;
     HKViewTableViewCell *_chartCell;
     WDMedicalRecordStandaloneCell *_removedRecordsCell;
@@ -68,6 +71,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL cloudSyncActive; // @synthesize cloudSyncActive=_cloudSyncActive;
 @property (strong, nonatomic) HKCloudSyncObserver *cloudSyncObserver; // @synthesize cloudSyncObserver=_cloudSyncObserver;
 @property (strong, nonatomic) HKConcept *concept; // @synthesize concept=_concept;
+@property (copy, nonatomic) HKConceptIdentifier *conceptIdentifier; // @synthesize conceptIdentifier=_conceptIdentifier;
 @property (strong, nonatomic) HRContentStatusCell *contentStatusCell; // @synthesize contentStatusCell=_contentStatusCell;
 @property (strong, nonatomic) HRContentStatusView *contentStatusView; // @synthesize contentStatusView=_contentStatusView;
 @property (readonly, copy) NSString *debugDescription;
@@ -88,6 +92,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) HRProfile *profile; // @synthesize profile=_profile;
 @property (nonatomic) BOOL queryReturned; // @synthesize queryReturned=_queryReturned;
 @property (strong, nonatomic) WDMedicalRecordStandaloneCell *removedRecordsCell; // @synthesize removedRecordsCell=_removedRecordsCell;
+@property (strong, nonatomic) NSTimer *scrollToUUIDTrigger; // @synthesize scrollToUUIDTrigger=_scrollToUUIDTrigger;
 @property (strong, nonatomic) NSPredicate *searchPredicate; // @synthesize searchPredicate=_searchPredicate;
 @property (strong, nonatomic) NSTimer *searchThrottleTimer; // @synthesize searchThrottleTimer=_searchThrottleTimer;
 @property (nonatomic) BOOL showSearchBar; // @synthesize showSearchBar=_showSearchBar;
@@ -102,18 +107,16 @@ __attribute__((visibility("hidden")))
 - (void)_configureBarButtonItems;
 - (void)_determineConceptChartabilityAndInsertChartIfNeeded;
 - (BOOL)_displayItemShouldBeTappable:(id)arg1;
+- (void)_fetchConceptAndDeferDataLoading;
 - (void)_filterButtonTapped:(id)arg1;
 - (id)_filterFromCurrentPredicates;
 - (BOOL)_hasDisplayableStatus;
-- (id)_headerViewForTitle:(id)arg1;
+- (id)_headerViewForTitle:(id)arg1 buttonTitle:(id)arg2;
 - (id)_indexPathForReconnectCell;
 - (BOOL)_indexPathIsReconnectCell:(id)arg1;
 - (void)_installSearchController;
 - (BOOL)_isRemovedRecordsTimeline;
 - (void)_performActionForCellsSharingRecordsInTableView:(id)arg1 atIndexPath:(id)arg2 action:(CDUnknownBlockType)arg3;
-- (void)_postAWDMetricForCategoryType:(int)arg1;
-- (void)_postAWDMetricForDetailCategory;
-- (void)_postAWDMetricForTimelineCategory;
 - (void)_reloadData;
 - (void)_reloadDataWithDelay:(double)arg1;
 - (void)_reloadDataWithNotification:(id)arg1;
@@ -121,7 +124,7 @@ __attribute__((visibility("hidden")))
 - (void)_removeSystemStatusObservers;
 - (id)_sampleTypesToDisplay;
 - (void)_scrollToHighlightedRecordIfNeeded;
-- (void)_scrollToRecordWithUUID:(id)arg1 animated:(BOOL)arg2;
+- (void)_scrollToRecordWithUUID:(id)arg1;
 - (void)_searchControllerHasQueryChange:(id)arg1;
 - (long long)_sectionTypeForSectionIndex:(long long)arg1;
 - (void)_setupDisplayItemProvider;
@@ -138,7 +141,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateFilterButtonImage;
 - (void)_updateSystemStatusView;
 - (void)_updateSystemStatusViewAfterDelay:(BOOL)arg1;
-- (void)_updateTableHeaderView;
+- (void)_updateTableHeaderViewClearBeforeUpdate:(BOOL)arg1;
 - (void)_updateTableViewGroups;
 - (void)cloudSyncObserver:(id)arg1 syncDidStartWithProgress:(id)arg2;
 - (void)cloudSyncObserver:(id)arg1 syncFailedWithError:(id)arg2;
@@ -155,6 +158,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 accountId:(id)arg3 showInitialSearchBar:(BOOL)arg4 enableReconnect:(BOOL)arg5;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 category:(id)arg3 showInitialSearchBar:(BOOL)arg4;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 concept:(id)arg3 category:(id)arg4 highlightedRecordId:(id)arg5;
+- (id)initWithProfile:(id)arg1 factory:(id)arg2 conceptIdentifier:(id)arg3 category:(id)arg4 highlightedRecordId:(id)arg5;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 preloadedRecords:(id)arg3;
 - (id)initWithProfile:(id)arg1 factory:(id)arg2 showInitialSearchBar:(BOOL)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -170,9 +174,15 @@ __attribute__((visibility("hidden")))
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
+- (void)titleTableHeaderViewDidTapActionButton:(id)arg1;
+- (void)trackImpression;
+- (void)trackInteractionOfType:(long long)arg1;
 - (void)updateSearchResultsForSearchController:(id)arg1;
+- (long long)userInteractionContext;
+- (long long)userInteractionType;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
 

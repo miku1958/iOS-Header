@@ -20,6 +20,7 @@
 @property (nonatomic) BOOL disableCache;
 @property (nonatomic) BOOL disableDeviceNeuralTTS;
 @property (nonatomic) BOOL disableDeviceRacing;
+@property (readonly, nonatomic) BOOL disableMobileAssetURLReset;
 @property (nonatomic) BOOL disableOsprey;
 @property (nonatomic) BOOL disableOspreyStreaming;
 @property (nonatomic) BOOL disableServerTTS;
@@ -27,6 +28,7 @@
 @property (nonatomic) BOOL enableLocalVoices;
 @property (nonatomic) BOOL forceOsprey;
 @property (nonatomic) BOOL forceServerTTS;
+@property (nonatomic) BOOL ignorePowerAndThermalState;
 @property (readonly, nonatomic) BOOL internalBuild; // @synthesize internalBuild=_internalBuild;
 @property (strong, nonatomic) NSUserDefaults *internalDefaults; // @synthesize internalDefaults=_internalDefaults;
 @property (nonatomic) BOOL isInternalBuild; // @synthesize isInternalBuild=_isInternalBuild;
@@ -36,6 +38,7 @@
 @property (nonatomic) BOOL simulateNetworkStall;
 @property (nonatomic) float streamBufferDuration;
 @property (nonatomic) BOOL useBetaVoice;
+@property (readonly, nonatomic) BOOL useSSMLInput;
 @property (nonatomic) BOOL whisper;
 
 + (id)standardInstance;

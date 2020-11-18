@@ -7,23 +7,25 @@
 #import <UIKit/UIViewController.h>
 
 #import <UserNotificationsUIKit/NCNotificationCustomContent-Protocol.h>
-#import <UserNotificationsUIKit/_UNNotificationExtensionHostDelegate-Protocol.h>
+#import <UserNotificationsUIKit/_UNNotificationContentExtensionHostContextDelegate-Protocol.h>
 
-@class NCMediaPlayPauseButton, NCNotificationRequest, NSMutableArray, NSString, UIView, _UNNotificationExtensionHostViewController;
+@class NCMediaPlayPauseButton, NCNotificationExtensionHostViewController, NCNotificationRequest, NSExtension, NSMutableArray, NSString, UIView, _UNNotificationContentExtensionHostContext;
 @protocol NCNotificationCustomContentDelegate;
 
-@interface NCNotificationExtensionContainerViewController : UIViewController <_UNNotificationExtensionHostDelegate, NCNotificationCustomContent>
+@interface NCNotificationExtensionContainerViewController : UIViewController <_UNNotificationContentExtensionHostContextDelegate, NCNotificationCustomContent>
 {
+    unsigned long long _customContentLocation;
     BOOL _allowManualDismiss;
     BOOL _defaultContentHidden;
     BOOL _overridesDefaultTitle;
     BOOL _userInteractionEnabled;
     BOOL _shouldPlayMediaAfterExpanded;
     id<NCNotificationCustomContentDelegate> _delegate;
-    NSString *_extensionIdentifier;
+    NSExtension *_extension;
     double _contentSizeRatio;
     NCNotificationRequest *_notificationRequest;
-    _UNNotificationExtensionHostViewController *_extensionViewController;
+    NCNotificationExtensionHostViewController *_extensionViewController;
+    _UNNotificationContentExtensionHostContext *_extensionHostContext;
     UIView *_blockingView;
     NCMediaPlayPauseButton *_mediaPlayPauseButton;
     NSMutableArray *_queuedRequests;
@@ -38,8 +40,9 @@
 @property (nonatomic) BOOL defaultContentHidden; // @synthesize defaultContentHidden=_defaultContentHidden;
 @property (weak, nonatomic) id<NCNotificationCustomContentDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSString *extensionIdentifier; // @synthesize extensionIdentifier=_extensionIdentifier;
-@property (strong, nonatomic) _UNNotificationExtensionHostViewController *extensionViewController; // @synthesize extensionViewController=_extensionViewController;
+@property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
+@property (strong, nonatomic) _UNNotificationContentExtensionHostContext *extensionHostContext; // @synthesize extensionHostContext=_extensionHostContext;
+@property (strong, nonatomic) NCNotificationExtensionHostViewController *extensionViewController; // @synthesize extensionViewController=_extensionViewController;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NCMediaPlayPauseButton *mediaPlayPauseButton; // @synthesize mediaPlayPauseButton=_mediaPlayPauseButton;
 @property (strong, nonatomic) NCNotificationRequest *notificationRequest; // @synthesize notificationRequest=_notificationRequest;
@@ -57,14 +60,13 @@
 - (BOOL)_canShowWhileLocked;
 - (double)_contentHeightForWidth:(double)arg1;
 - (void)_flushQueuedRequests;
-- (void)_loadExtensionViewControllerWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_loadExtensionViewController;
 - (void)_mediaPlayPauseButtonTapped:(id)arg1;
 - (void)_playMediaAfterExpanded;
 - (id)_requestActionForActionIdentifier:(id)arg1;
 - (id)_responseForAction:(id)arg1 notification:(id)arg2 response:(id)arg3;
 - (void)_setupExtensionViewController:(id)arg1;
 - (void)_setupMediaButton;
-- (void)_setupRemoteServiceInterface:(id)arg1;
 - (void)_teardownExtension;
 - (BOOL)becomeFirstResponder;
 - (BOOL)canBecomeFirstResponder;
@@ -73,21 +75,20 @@
 - (unsigned long long)customContentLocation;
 - (void)dealloc;
 - (BOOL)didReceiveNotificationRequest:(id)arg1;
-- (id)initWithExtension:(id)arg1 forNotificationRequest:(id)arg2;
-- (void)notificationHost:(id)arg1 extensionDidCompleteResponse:(id)arg2 withOption:(unsigned long long)arg3;
-- (void)notificationHostExtension:(id)arg1 setTitle:(id)arg2;
-- (void)notificationHostExtension:(id)arg1 setUserNotificationActions:(id)arg2;
-- (void)notificationHostExtensionDidUpdateControls:(id)arg1;
-- (void)notificationHostExtensionMediaPlayingDidPause:(id)arg1;
-- (void)notificationHostExtensionMediaPlayingDidStart:(id)arg1;
-- (void)notificationHostExtensionRequestsDefaultAction:(id)arg1;
-- (void)notificationHostExtensionRequestsDismiss:(id)arg1;
+- (id)initWithExtension:(id)arg1 forNotificationRequest:(id)arg2 customContentLocation:(unsigned long long)arg3;
+- (void)notificationExtension:(id)arg1 didUpdateNotificationActions:(id)arg2;
+- (void)notificationExtension:(id)arg1 didUpdateTitle:(id)arg2;
+- (void)notificationExtension:(id)arg1 extensionDidCompleteResponse:(id)arg2 withOption:(unsigned long long)arg3;
+- (void)notificationExtensionDidUpdatePlayPauseMediaButton:(id)arg1;
+- (void)notificationExtensionMediaPlayingDidPause:(id)arg1;
+- (void)notificationExtensionMediaPlayingDidStart:(id)arg1;
+- (void)notificationExtensionRequestsDefaultAction:(id)arg1;
+- (void)notificationExtensionRequestsDismiss:(id)arg1;
 - (BOOL)performAction:(id)arg1 forNotification:(id)arg2;
 - (BOOL)performAction:(id)arg1 forNotification:(id)arg2 withUserInfo:(id)arg3;
 - (void)playMedia;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)preserveInputViews;
-- (id)remoteService;
 - (BOOL)resignFirstResponder;
 - (BOOL)restoreInputViews;
 - (void)setTitle:(id)arg1;

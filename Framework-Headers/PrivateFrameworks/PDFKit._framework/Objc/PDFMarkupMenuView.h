@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (void)presentFromRect:(struct CGRect)arg1 view:(id)arg2 visibleRect:(struct CGRect)arg3;
 - (void)setDelegate:(id)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (void)setMarkupNoteStyle:(unsigned long long)arg1;
 - (void)setMarkupStyle:(unsigned long long)arg1;
 - (void)showColorControlsMenu:(id)arg1;

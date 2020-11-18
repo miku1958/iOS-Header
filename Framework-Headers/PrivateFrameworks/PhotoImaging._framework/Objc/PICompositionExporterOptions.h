@@ -23,6 +23,7 @@
 @property (strong) id<NUScalePolicy> scalePolicy; // @synthesize scalePolicy=_scalePolicy;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)init;
 
 @end

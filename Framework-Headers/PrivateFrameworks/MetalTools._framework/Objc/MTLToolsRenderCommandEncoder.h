@@ -24,7 +24,6 @@
 @property (readonly) unsigned long long tileHeight;
 @property (readonly) unsigned long long tileWidth;
 
-- (void)acceptVisitor:(id)arg1;
 - (void)addSplitHandler:(CDUnknownBlockType)arg1;
 - (void)dispatchThreadsPerTile:(CDStruct_14f26992)arg1;
 - (void)drawIndexedPatches:(unsigned long long)arg1 patchIndexBuffer:(id)arg2 patchIndexBufferOffset:(unsigned long long)arg3 controlPointIndexBuffer:(id)arg4 controlPointIndexBufferOffset:(unsigned long long)arg5 indirectBuffer:(id)arg6 indirectBufferOffset:(unsigned long long)arg7;
@@ -45,6 +44,7 @@
 - (BOOL)isMemorylessRender;
 - (void)memoryBarrierWithResources:(const id *)arg1 count:(unsigned long long)arg2 afterStages:(unsigned long long)arg3 beforeStages:(unsigned long long)arg4;
 - (void)memoryBarrierWithScope:(unsigned long long)arg1 afterStages:(unsigned long long)arg2 beforeStages:(unsigned long long)arg3;
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(BOOL)arg3;
 - (void)setAlphaTestReferenceValue:(float)arg1;
 - (void)setBlendColorRed:(float)arg1 green:(float)arg2 blue:(float)arg3 alpha:(float)arg4;
 - (void)setClipPlane:(float)arg1 p2:(float)arg2 p3:(float)arg3 p4:(float)arg4 atIndex:(unsigned long long)arg5;
@@ -82,8 +82,8 @@
 - (void)setPrimitiveRestartEnabled:(BOOL)arg1 index:(unsigned long long)arg2;
 - (void)setProvokingVertexMode:(unsigned long long)arg1;
 - (void)setRenderPipelineState:(id)arg1;
-- (void)setScissorRect:(CDStruct_5f3a0cd7)arg1;
-- (void)setScissorRects:(const CDStruct_5f3a0cd7 *)arg1 count:(unsigned long long)arg2;
+- (void)setScissorRect:(CDStruct_33dcf794)arg1;
+- (void)setScissorRects:(const CDStruct_33dcf794 *)arg1 count:(unsigned long long)arg2;
 - (void)setStencilCleared;
 - (void)setStencilFrontReferenceValue:(unsigned int)arg1 backReferenceValue:(unsigned int)arg2;
 - (void)setStencilReferenceValue:(unsigned int)arg1;
@@ -107,7 +107,7 @@
 - (void)setTransformFeedbackState:(unsigned long long)arg1;
 - (void)setTriangleFillMode:(unsigned long long)arg1;
 - (void)setTriangleFrontFillMode:(unsigned long long)arg1 backFillMode:(unsigned long long)arg2;
-- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_c0454aff *)arg2;
+- (void)setVertexAmplificationCount:(unsigned long long)arg1 viewMappings:(const CDStruct_1987c1e3 *)arg2;
 - (void)setVertexAmplificationMode:(unsigned long long)arg1 value:(unsigned long long)arg2;
 - (void)setVertexBuffer:(id)arg1 offset:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setVertexBufferOffset:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;

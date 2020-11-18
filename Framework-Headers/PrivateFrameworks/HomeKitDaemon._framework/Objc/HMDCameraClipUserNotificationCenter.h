@@ -8,36 +8,34 @@
 
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDBulletinBoard, HMDDeviceFileManager, HMDHeroFrameDataSource, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class NSObject, NSString;
+@protocol HMDCameraBulletinBoard, HMDFileManager, OS_dispatch_queue;
 
 @interface HMDCameraClipUserNotificationCenter : HMFObject <HMFLogging>
 {
-    HMDBulletinBoard *_bulletinBoard;
-    HMDDeviceFileManager *_fileManager;
-    HMDHeroFrameDataSource *_dataSource;
+    id<HMDCameraBulletinBoard> _bulletinBoard;
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSString *_heroFrameDirPath;
+    id<HMDFileManager> _fileManager;
 }
 
-@property (readonly) HMDBulletinBoard *bulletinBoard; // @synthesize bulletinBoard=_bulletinBoard;
-@property (readonly) HMDHeroFrameDataSource *dataSource; // @synthesize dataSource=_dataSource;
+@property (readonly) id<HMDCameraBulletinBoard> bulletinBoard; // @synthesize bulletinBoard=_bulletinBoard;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly) HMDDeviceFileManager *fileManager; // @synthesize fileManager=_fileManager;
+@property (readonly) id<HMDFileManager> fileManager; // @synthesize fileManager=_fileManager;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSString *heroFrameDirPath; // @synthesize heroFrameDirPath=_heroFrameDirPath;
 @property (readonly) Class superclass;
 @property (readonly) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (id)_copyHeroFrameAtURL:(id)arg1;
-- (BOOL)_createDirectoryAtPathIfNonExistent:(id)arg1;
-- (unsigned long long)_effectiveReasonForSignificantEvent:(id)arg1;
-- (void)_removeFile:(id)arg1;
-- (id)initWithBulletinBoard:(id)arg1 fileManager:(id)arg2 dataSource:(id)arg3 workQueue:(id)arg4;
-- (void)postSignificantEventNotification:(id)arg1 forCameraProfile:(id)arg2;
+- (id)_firstAvailableHeroFrameURLForSignificantEvents:(id)arg1 cameraProfile:(id)arg2;
+- (void)_postNotificationForClipSignificantEvent:(id)arg1 cameraProfile:(id)arg2 canFetchHeroFrame:(BOOL)arg3;
+- (void)_postNotificationForSignificantEvents:(id)arg1 cameraProfile:(id)arg2 heroFrameURL:(id)arg3;
+- (id)_writeHeroFrameData:(id)arg1;
+- (id)initWithBulletinBoard:(id)arg1 workQueue:(id)arg2;
+- (id)initWithBulletinBoard:(id)arg1 workQueue:(id)arg2 fileManager:(id)arg3;
+- (void)postNotificationForClipSignificantEvent:(id)arg1 cameraProfile:(id)arg2;
+- (void)postNotificationForSignificantEvent:(id)arg1 heroFrameData:(id)arg2 cameraProfile:(id)arg3;
 - (void)removeEventNotificationForClipWithUUID:(id)arg1;
 
 @end

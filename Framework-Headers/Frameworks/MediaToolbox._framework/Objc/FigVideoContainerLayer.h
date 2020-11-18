@@ -6,24 +6,28 @@
 
 #import <MediaToolbox/FigBaseCALayer.h>
 
-@class CALayer;
+@class CALayer, NSString;
 
 @interface FigVideoContainerLayer : FigBaseCALayer
 {
     CALayer *_videoLayer;
+    NSString *_STSLabel;
     BOOL _shouldResizeVideoLayer;
     BOOL _isForScrubbingOnly;
+    CALayer *_STSLayer;
 }
 
+@property (strong, nonatomic) NSString *STSLabel; // @synthesize STSLabel=_STSLabel;
 @property (nonatomic, getter=isForScrubbingOnly) BOOL forScrubbingOnly; // @synthesize forScrubbingOnly=_isForScrubbingOnly;
 @property (nonatomic) BOOL shouldResizeVideoLayer; // @synthesize shouldResizeVideoLayer=_shouldResizeVideoLayer;
-@property (strong, nonatomic) CALayer *videoLayer; // @synthesize videoLayer=_videoLayer;
+@property (strong, nonatomic) CALayer *videoLayer;
 
 + (id)defaultActionForKey:(id)arg1;
 - (id)actionForKey:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)layoutSublayers;
+- (void)setToneMapToStandardDynamicRange:(BOOL)arg1;
 
 @end
 

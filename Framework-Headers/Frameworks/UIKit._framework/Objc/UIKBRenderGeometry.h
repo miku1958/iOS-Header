@@ -22,6 +22,9 @@ __attribute__((visibility("hidden")))
     long long _flickDirection;
     NSValue *_splitLeftRect;
     NSValue *_splitRightRect;
+    long long _popupDirection;
+    double _layeredBackgroundRoundRectRadius;
+    double _layeredForegroundRoundRectRadius;
     struct CGPoint _popupSource;
     struct CGSize _concaveCornerOffset;
     struct CGRect _frame;
@@ -29,6 +32,8 @@ __attribute__((visibility("hidden")))
     struct CGRect _displayFrame;
     struct CGRect _symbolFrame;
     struct UIEdgeInsets _layoutMargins;
+    struct CGRect _layeredBackgroundPaddedFrame;
+    struct CGRect _layeredForegroundPaddedFrame;
 }
 
 @property (nonatomic) unsigned long long concaveCorner; // @synthesize concaveCorner=_concaveCorner;
@@ -38,10 +43,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) struct UIEdgeInsets displayInsets;
 @property (nonatomic) long long flickDirection; // @synthesize flickDirection=_flickDirection;
 @property (nonatomic) struct CGRect frame; // @synthesize frame=_frame;
+@property (nonatomic) struct CGRect layeredBackgroundPaddedFrame; // @synthesize layeredBackgroundPaddedFrame=_layeredBackgroundPaddedFrame;
+@property (nonatomic) double layeredBackgroundRoundRectRadius; // @synthesize layeredBackgroundRoundRectRadius=_layeredBackgroundRoundRectRadius;
+@property (nonatomic) struct CGRect layeredForegroundPaddedFrame; // @synthesize layeredForegroundPaddedFrame=_layeredForegroundPaddedFrame;
+@property (nonatomic) double layeredForegroundRoundRectRadius; // @synthesize layeredForegroundRoundRectRadius=_layeredForegroundRoundRectRadius;
 @property (nonatomic) struct UIEdgeInsets layoutMargins; // @synthesize layoutMargins=_layoutMargins;
 @property (nonatomic) struct CGRect paddedFrame; // @synthesize paddedFrame=_paddedFrame;
 @property (readonly, nonatomic) struct UIEdgeInsets paddedInsets;
 @property (nonatomic) int popupBias; // @synthesize popupBias=_popupBias;
+@property (nonatomic) long long popupDirection; // @synthesize popupDirection=_popupDirection;
 @property (nonatomic) struct CGPoint popupSource; // @synthesize popupSource=_popupSource;
 @property (nonatomic) unsigned long long roundRectCorners; // @synthesize roundRectCorners=_roundRectCorners;
 @property (nonatomic) double roundRectRadius; // @synthesize roundRectRadius=_roundRectRadius;

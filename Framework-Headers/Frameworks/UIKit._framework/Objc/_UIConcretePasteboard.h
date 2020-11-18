@@ -16,7 +16,10 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 
++ (void)_asynchronouslyEnumerateItemSet:(id)arg1 itemsCompletionHandler:(CDUnknownBlockType)arg2 usingItemBlock:(CDUnknownBlockType)arg3;
 + (void)_clearPinnedItemProvidersForPasteboardNamed:(id)arg1;
++ (void)_detectPatternsForPatterns:(id)arg1 atIndex:(unsigned long long)arg2 itemCollection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
++ (void)_detectValuesForPatterns:(id)arg1 atIndex:(unsigned long long)arg2 itemCollection:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)_pasteboardNamed:(id)arg1 createIfNotFound:(BOOL)arg2;
 + (id)_pasteboardWithName:(id)arg1 create:(BOOL)arg2;
 + (id)_pasteboardWithUniqueName;
@@ -30,6 +33,8 @@ __attribute__((visibility("hidden")))
 - (id)URLs;
 - (long long)_changeCountIgnoringPinningActivity;
 - (void)_clearPinnedItemProviders;
+- (id)_detectedPasteboardTypeStringsForTypes:(id)arg1;
+- (id)_detectedPasteboardTypesForTypes:(id)arg1;
 - (id)_initWithName:(id)arg1;
 - (id)_itemsCoercibleToClass:(Class)arg1;
 - (BOOL)_pasteboardCacheQueue_isPersistent;
@@ -53,6 +58,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)containsPasteboardTypes:(id)arg1 inItemSet:(id)arg2;
 - (id)dataForPasteboardType:(id)arg1;
 - (id)dataForPasteboardType:(id)arg1 inItemSet:(id)arg2;
+- (void)detectPatternsForPatterns:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)detectPatternsForPatterns:(id)arg1 inItemSet:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)detectValuesForPatterns:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)detectValuesForPatterns:(id)arg1 inItemSet:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)hasColors;
 - (BOOL)hasImages;
 - (BOOL)hasStrings;
@@ -62,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isPersistent;
 - (id)itemProviders;
 - (id)itemProvidersForInstantiatingObjectsOfClass:(Class)arg1;
+- (id)itemProvidersWithRetryBehavior:(BOOL)arg1;
 - (id)itemSetWithPasteboardTypes:(id)arg1;
 - (id)items;
 - (long long)numberOfItems;

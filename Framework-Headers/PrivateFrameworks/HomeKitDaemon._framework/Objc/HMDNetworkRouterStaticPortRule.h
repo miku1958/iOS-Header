@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDNetworkRouterLANRule-Protocol.h>
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterIPAddress, HMDNetworkRouterLANIdentifierList, HMDNetworkRouterProtocol, HMDNetworkRouterRuleDirection, HMDTLVUnsignedNumberValue, NSString;
+@class HAPTLVUnsignedNumberValue, HMDNetworkRouterIPAddress, HMDNetworkRouterLANIdentifierList, HMDNetworkRouterProtocol, HMDNetworkRouterRuleDirection, NSString;
 
-@interface HMDNetworkRouterStaticPortRule : NSObject <HMDNetworkRouterLANRule, NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterStaticPortRule : NSObject <HMDNetworkRouterLANRule, NSCopying, HAPTLVProtocol>
 {
     HMDNetworkRouterRuleDirection *_direction;
     HMDNetworkRouterLANIdentifierList *_lanIdentifierList;
     HMDNetworkRouterProtocol *_protocol;
     HMDNetworkRouterIPAddress *_destinationIPAddress;
-    HMDTLVUnsignedNumberValue *_destinationPortStart;
-    HMDTLVUnsignedNumberValue *_destinationPortEnd;
+    HAPTLVUnsignedNumberValue *_destinationPortStart;
+    HAPTLVUnsignedNumberValue *_destinationPortEnd;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -27,8 +27,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) HMDNetworkRouterIPAddress *destinationIPAddress; // @synthesize destinationIPAddress=_destinationIPAddress;
-@property (strong, nonatomic) HMDTLVUnsignedNumberValue *destinationPortEnd; // @synthesize destinationPortEnd=_destinationPortEnd;
-@property (strong, nonatomic) HMDTLVUnsignedNumberValue *destinationPortStart; // @synthesize destinationPortStart=_destinationPortStart;
+@property (strong, nonatomic) HAPTLVUnsignedNumberValue *destinationPortEnd; // @synthesize destinationPortEnd=_destinationPortEnd;
+@property (strong, nonatomic) HAPTLVUnsignedNumberValue *destinationPortStart; // @synthesize destinationPortStart=_destinationPortStart;
 @property (strong, nonatomic) HMDNetworkRouterRuleDirection *direction; // @synthesize direction=_direction;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;

@@ -15,11 +15,11 @@
 {
     SBStatusBarStateAggregator *_stateAggregator;
     NSHashTable *_stateObservers;
-    CDStruct_0942cde0 _aggregatorData;
+    CDStruct_3fd7985f _aggregatorData;
     int _aggregatorActions;
-    CDStruct_0942cde0 _lastPost;
+    CDStruct_3fd7985f _lastPost;
     unsigned long long _coalescentBlockDepth;
-    BOOL _itemNeedsPost[42];
+    BOOL _itemNeedsPost[43];
     BOOL _anyItemNeedsPost;
     BOOL _nonItemDataNeedsPost;
     BOOL _posting;
@@ -33,21 +33,21 @@
 
 - (void).cxx_destruct;
 - (void)_composePostActionsFromAggregatorActions:(int *)arg1;
-- (void)_composePostDataFromAggregatorData:(CDStruct_0942cde0 *)arg1;
+- (void)_composePostDataFromAggregatorData:(CDStruct_3fd7985f *)arg1;
 - (void)_didChangeDoubleHeightStatusStringForStyle:(long long)arg1;
 - (void)_didFinishPost;
-- (BOOL)_shouldPostForUpdatesToNonItemData:(const CDStruct_0942cde0 *)arg1;
-- (BOOL)_shouldPostForVisitedItem:(int)arg1 withUpdates:(BOOL)arg2 toAggregatorData:(const CDStruct_0942cde0 *)arg3 lastPost:(const CDStruct_0942cde0 *)arg4;
+- (BOOL)_shouldPostForUpdatesToNonItemData:(const CDStruct_3fd7985f *)arg1;
+- (BOOL)_shouldPostForVisitedItem:(int)arg1 withUpdates:(BOOL)arg2 toAggregatorData:(const CDStruct_3fd7985f *)arg3 lastPost:(const CDStruct_3fd7985f *)arg4;
 - (void)addStatusBarStateObserver:(id)arg1;
 - (void)beginCoalescentBlock;
 - (void)dealloc;
 - (void)endCoalescentBlock;
-- (void)getStatusBarData:(CDStruct_0942cde0 *)arg1;
+- (void)getStatusBarData:(CDStruct_3fd7985f *)arg1;
 - (id)init;
 - (void)removeStatusBarStateObserver:(id)arg1;
-- (void)statusBarStateAggregator:(id)arg1 didUpdateNonItemData:(const CDStruct_0942cde0 *)arg2;
-- (void)statusBarStateAggregator:(id)arg1 didVisitItem:(int)arg2 withUpdates:(BOOL)arg3 toData:(const CDStruct_0942cde0 *)arg4;
-- (void)statusBarStateAggregatorDidFinishPost:(id)arg1 withData:(const CDStruct_0942cde0 *)arg2 actions:(int)arg3;
+- (void)statusBarStateAggregator:(id)arg1 didUpdateNonItemData:(const CDStruct_3fd7985f *)arg2;
+- (void)statusBarStateAggregator:(id)arg1 didVisitItem:(int)arg2 withUpdates:(BOOL)arg3 toData:(const CDStruct_3fd7985f *)arg4;
+- (void)statusBarStateAggregatorDidFinishPost:(id)arg1 withData:(const CDStruct_3fd7985f *)arg2 actions:(int)arg3;
 - (void)statusBarStateAggregatorDidStartPost:(id)arg1;
 - (void)updateStatusBarItem:(int)arg1;
 

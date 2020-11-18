@@ -7,6 +7,7 @@
 #import <VideosUI/_TtC8VideosUI8VideosUI.h>
 
 @interface _TtC8VideosUI8VideosUI (VideosUI)
++ (void)notifyAppearingViewControllerOfTabSwitch:(id)arg1;
 + (id)viewControllerWith:(id)arg1 appContext:(id)arg2 viewElement:(id)arg3 documentOptions:(id)arg4;
 @end
 

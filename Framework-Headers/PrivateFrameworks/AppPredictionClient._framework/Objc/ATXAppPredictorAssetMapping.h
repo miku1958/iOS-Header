@@ -13,8 +13,8 @@
     NSDictionary *_consumerSubTypeAssetMappings;
 }
 
++ (id)assetMappingWithCachedAssets;
 + (id)getFullCachePathWithBaseCachePath:(id)arg1 cacheFileBaseName:(id)arg2 subScoreName:(id)arg3;
-+ (id)initWithCachedAssets;
 + (id)sharedInstanceWithMobileAssets;
 - (void).cxx_destruct;
 - (id)getAssetFileAndSubscoreForConsumerSubType:(unsigned char)arg1;

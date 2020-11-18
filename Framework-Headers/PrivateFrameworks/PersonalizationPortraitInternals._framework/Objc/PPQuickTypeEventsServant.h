@@ -18,7 +18,6 @@
 - (void).cxx_destruct;
 - (BOOL)_areAllPeopleOfInterest:(id)arg1 inAttendeeList:(id)arg2;
 - (id)_busyEventsFromEvents:(id)arg1 people:(id)arg2 explanationSet:(id)arg3;
-- (struct _NSRange)_dateRangeForQuery:(id)arg1;
 - (BOOL)_eventIsHappening:(id)arg1;
 - (id)_filterEvents:(id)arg1 time:(unsigned char)arg2 people:(id)arg3 busy:(BOOL)arg4 fields:(unsigned int)arg5 explanationSet:(id)arg6;
 - (id)_freeEventsAndGapsFromEvents:(id)arg1 explanationSet:(id)arg2;

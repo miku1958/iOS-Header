@@ -23,12 +23,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (double)preferredCandidateBarHeightForTraitCollection:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
 - (BOOL)hidesExpandableButton;
 - (BOOL)isVisibleForInputDelegate:(id)arg1 inputViews:(id)arg2;
 - (void)loadView;
 - (long long)overrideUserInterfaceStyle;
+- (double)preferredHeightForTraitCollection:(id)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 

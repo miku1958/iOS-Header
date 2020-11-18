@@ -15,12 +15,7 @@
 
 @property (readonly, nonatomic) ARSkeleton2D *skeleton; // @synthesize skeleton=_skeleton;
 
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
-- (id)initWithSkeleton2D:(id)arg1;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -85,6 +85,7 @@ __attribute__((visibility("hidden")))
 - (id)newResponseBlob;
 - (BOOL)processInviteBlob:(id)arg1;
 - (BOOL)processParameterSets:(id)arg1 videoResults:(id)arg2;
+- (BOOL)processPixelFormats:(id)arg1 videoResults:(id)arg2;
 - (BOOL)processResponseBlob:(id)arg1;
 - (unsigned int)remoteMaxBandwidthForOperatingMode:(int)arg1 connectionType:(int)arg2;
 - (void)saveRemoteBandwidthSettingsWithMediaBlob:(id)arg1;

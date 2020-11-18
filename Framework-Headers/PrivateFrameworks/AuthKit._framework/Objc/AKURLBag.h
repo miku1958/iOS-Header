@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, NSString, NSURL;
+@class NSArray, NSSet, NSString, NSURL;
 @protocol AKURLBagDictionaryProvider;
 
 @interface AKURLBag : NSObject
@@ -30,7 +30,10 @@
 @property (readonly, nonatomic) NSURL *checkInURL;
 @property (readonly, nonatomic) NSURL *circleURL;
 @property (readonly, nonatomic) NSURL *configurationInfoURL;
+@property (readonly, nonatomic) NSString *continuationHeaderPrefix;
 @property (readonly, nonatomic) NSURL *createAppleIDURL;
+@property (readonly, nonatomic) NSURL *createChildAccountURL;
+@property (readonly, nonatomic) NSURL *deleteAuthorizedAppURL;
 @property (readonly, nonatomic) NSURL *deviceListURL;
 @property (readonly, nonatomic) NSURL *endProvisioningURL;
 @property (readonly, nonatomic) NSURL *escapeHatchURL;
@@ -48,6 +51,7 @@
 @property (readonly, nonatomic, getter=isPhoneNumberSupportedConfig) BOOL phoneNumberSupportedConfig;
 @property (readonly, nonatomic) NSURL *renewRecoveryTokenURL;
 @property (readonly, nonatomic) NSURL *repairURL;
+@property (readonly, nonatomic) NSArray *securityUpgradeServiceNames;
 @property (readonly, nonatomic) NSURL *startProvisioningURL;
 @property (readonly, nonatomic) NSURL *storeModernRecoveryURL;
 @property (readonly, nonatomic) NSURL *syncAnisetteURL;

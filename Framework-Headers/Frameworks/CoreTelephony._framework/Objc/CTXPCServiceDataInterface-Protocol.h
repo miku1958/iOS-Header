@@ -7,6 +7,7 @@
 @class CTServiceDescriptor, CTXPCServiceSubscriptionContext, NSString;
 
 @protocol CTXPCServiceDataInterface
+- (void)enterLoopBackMode:(void (^)(NSError *))arg1;
 - (void)getActiveConnections:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)getConnectionAvailability:(CTXPCServiceSubscriptionContext *)arg1 connectionType:(int)arg2 completion:(void (^)(CTDataConnectionAvailabilityStatus *, NSError *))arg3;
 - (void)getConnectionState:(CTXPCServiceSubscriptionContext *)arg1 connectionType:(int)arg2 completion:(void (^)(CTDataConnectionStatus *, NSError *))arg3;
@@ -19,8 +20,10 @@
 - (void)getPreferredDataServiceDescriptor:(void (^)(CTServiceDescriptor *, NSError *))arg1;
 - (void)getPreferredDataSubscriptionContext:(void (^)(CTXPCServiceSubscriptionContext *, NSError *))arg1;
 - (void)getSupportDynamicDataSimSwitch:(void (^)(BOOL, NSError *))arg1;
+- (void)getTetheringStatus:(void (^)(CTTetheringStatus *, NSError *))arg1;
 - (void)isTetheringEditingSupported:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)resetAPNSettings:(void (^)(NSError *))arg1;
+- (void)sendDeadPeerDetection:(void (^)(NSError *))arg1;
 - (void)setInternationalDataAccess:(CTServiceDescriptor *)arg1 status:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
 - (void)setPacketContextActiveByServiceType:(CTXPCServiceSubscriptionContext *)arg1 connectionType:(int)arg2 active:(BOOL)arg3 completion:(void (^)(NSError *))arg4;
 - (void)setSupportDynamicDataSimSwitch:(BOOL)arg1 completion:(void (^)(NSError *))arg2;

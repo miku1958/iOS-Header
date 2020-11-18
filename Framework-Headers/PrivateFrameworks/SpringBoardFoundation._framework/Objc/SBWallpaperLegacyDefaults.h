@@ -22,6 +22,7 @@
 @property (nonatomic) BOOL homeScreenPortrait; // @dynamic homeScreenPortrait;
 @property (nonatomic) BOOL homeScreenSupportsCropping; // @dynamic homeScreenSupportsCropping;
 @property (strong, nonatomic) NSString *homeScreenWallpaperIdentifier; // @dynamic homeScreenWallpaperIdentifier;
+@property (strong, nonatomic) NSDictionary *homeScreenWallpaperKitData; // @dynamic homeScreenWallpaperKitData;
 @property (strong, nonatomic) NSString *homeScreenWallpaperName; // @dynamic homeScreenWallpaperName;
 @property (strong, nonatomic) NSDictionary *homeScreenWallpaperOptions; // @dynamic homeScreenWallpaperOptions;
 @property (nonatomic) BOOL homeScreenWallpaperWasUserSet; // @dynamic homeScreenWallpaperWasUserSet;
@@ -38,6 +39,7 @@
 @property (nonatomic) double lockScreenStillTimeInVideo; // @dynamic lockScreenStillTimeInVideo;
 @property (nonatomic) BOOL lockScreenSupportsCropping; // @dynamic lockScreenSupportsCropping;
 @property (strong, nonatomic) NSString *lockScreenWallpaperIdentifier; // @dynamic lockScreenWallpaperIdentifier;
+@property (strong, nonatomic) NSDictionary *lockScreenWallpaperKitData; // @dynamic lockScreenWallpaperKitData;
 @property (strong, nonatomic) NSString *lockScreenWallpaperName; // @dynamic lockScreenWallpaperName;
 @property (strong, nonatomic) NSDictionary *lockScreenWallpaperOptions; // @dynamic lockScreenWallpaperOptions;
 @property (nonatomic) BOOL lockScreenWallpaperWasUserSet; // @dynamic lockScreenWallpaperWasUserSet;

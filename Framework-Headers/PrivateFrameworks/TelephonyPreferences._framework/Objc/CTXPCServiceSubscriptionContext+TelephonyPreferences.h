@@ -22,5 +22,6 @@
 @property (readonly, nonatomic) NSUUID *uuid;
 
 + (id)telephonyClient;
+- (BOOL)tps_isEquivalentToSubscriptionContext:(id)arg1;
 @end
 

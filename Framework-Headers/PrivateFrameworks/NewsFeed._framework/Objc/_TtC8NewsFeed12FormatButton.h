@@ -13,6 +13,7 @@
     MISSING_TYPE *onTap;
     MISSING_TYPE *formatLayoutView;
     MISSING_TYPE *stateMaskFormatLayoutViews;
+    MISSING_TYPE *actions;
 }
 
 @property (nonatomic) BOOL enabled;
@@ -26,6 +27,7 @@
 - (BOOL)isHighlighted;
 - (BOOL)isSelected;
 - (void)layoutSubviews;
+- (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 
 @end
 

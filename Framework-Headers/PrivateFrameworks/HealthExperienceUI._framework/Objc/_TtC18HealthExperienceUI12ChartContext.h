@@ -14,7 +14,7 @@
 {
     MISSING_TYPE *date;
     MISSING_TYPE *dateInterval;
-    MISSING_TYPE *secondaryIdentifier;
+    MISSING_TYPE *preferredOverlayRawValue;
 }
 
 + (BOOL)supportsSecureCoding;

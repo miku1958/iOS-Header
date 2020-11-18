@@ -35,7 +35,6 @@
 - (id)existingExclusionPathForComponentWithIdentifier:(id)arg1;
 - (id)initWithComponent:(id)arg1 componentLayout:(id)arg2 componentStyle:(id)arg3 DOMObjectProvider:(id)arg4 layoutOptions:(id)arg5 textComponentLayoutHosting:(id)arg6 textSourceFactory:(id)arg7;
 - (id)inlineTextStylesForTextSource:(id)arg1;
-- (id)linkStyleForTextSource:(id)arg1;
 - (void)removeAllExclusionPaths;
 - (id)snapLines;
 - (id)textResizerForTextSource:(id)arg1;

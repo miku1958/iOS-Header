@@ -21,7 +21,7 @@
 @property (nonatomic) BOOL shouldShowMovieHeader;
 @property (copy, nonatomic) NSString *titleFontName;
 @property (strong, nonatomic) PXPhotosDetailsViewModel *viewModel;
-@property (nonatomic) unsigned long long viewSourceOrigin;
+@property (nonatomic) long long viewSourceOrigin;
 
 @end
 

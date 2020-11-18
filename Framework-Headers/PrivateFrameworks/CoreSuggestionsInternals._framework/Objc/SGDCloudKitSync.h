@@ -46,6 +46,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)_callbackQueue;
 + (id)_sharedInstanceConfigurationQueue;
 + (id)apsEnvironmentStringForContainer:(id)arg1;
 + (void)setSharedInstanceConfigurationBlock:(CDUnknownBlockType)arg1;
@@ -61,7 +62,7 @@
 - (id)addDeleteAndRecreateZoneOperation;
 - (id)addDeleteZoneAttemptOperationWithRetries:(unsigned long long)arg1;
 - (id)addDeleteZoneOperation;
-- (void)addEntity:(id)arg1 withParentEntity:(id)arg2;
+- (void)addEnrichment:(id)arg1 withParentEntity:(id)arg2;
 - (id)addFetchNewEntitiesAttemptOperationWithRetries:(unsigned long long)arg1;
 - (id)addFetchNewEntitiesOperation;
 - (id)addManateeSanityCheckOperation;

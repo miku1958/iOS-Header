@@ -6,24 +6,25 @@
 
 #import <UIKit/UIView.h>
 
-@class IKViewElement, NSArray, VUIAppleTVChannelLogoView, VUIButton, VUIChannelBannerLayout, VUIFocusableTextView, VUILabel, VUISeparatorView;
+@class NSArray, VUIButton, VUIChannelBannerLayout, VUIFocusableTextView, VUILabel, VUIProductUberBackgroundView, VUISeparatorView;
 
 __attribute__((visibility("hidden")))
 @interface VUIChannelBannerView : UIView
 {
-    IKViewElement *_viewElement;
     VUIChannelBannerLayout *_layout;
-    VUIAppleTVChannelLogoView *_appleTVChannelLogoView;
+    UIView *_appleTVChannelLogoView;
     VUIButton *_subscribeButton;
     VUILabel *_disclaimerTextLabel;
     VUIFocusableTextView *_descriptionTextView;
     NSArray *_textLabels;
+    VUIProductUberBackgroundView *_bgImageView;
     UIView *_bgColorView;
     VUISeparatorView *_separatorView;
 }
 
-@property (strong, nonatomic) VUIAppleTVChannelLogoView *appleTVChannelLogoView; // @synthesize appleTVChannelLogoView=_appleTVChannelLogoView;
+@property (strong, nonatomic) UIView *appleTVChannelLogoView; // @synthesize appleTVChannelLogoView=_appleTVChannelLogoView;
 @property (strong, nonatomic) UIView *bgColorView; // @synthesize bgColorView=_bgColorView;
+@property (strong, nonatomic) VUIProductUberBackgroundView *bgImageView; // @synthesize bgImageView=_bgImageView;
 @property (strong, nonatomic) VUIFocusableTextView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;
 @property (strong, nonatomic) VUILabel *disclaimerTextLabel; // @synthesize disclaimerTextLabel=_disclaimerTextLabel;
 @property (strong, nonatomic) VUIChannelBannerLayout *layout; // @synthesize layout=_layout;
@@ -31,7 +32,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUIButton *subscribeButton; // @synthesize subscribeButton=_subscribeButton;
 @property (strong, nonatomic) NSArray *textLabels; // @synthesize textLabels=_textLabels;
 @property (readonly, nonatomic) double topThreshold;
-@property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
 - (void).cxx_destruct;
 - (void)_layoutLabels:(id)arg1 withOrigin:(struct CGPoint)arg2 maxWidth:(double)arg3;

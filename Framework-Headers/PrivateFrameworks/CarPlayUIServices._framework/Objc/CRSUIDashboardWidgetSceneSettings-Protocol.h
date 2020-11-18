@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CarPlayUIServices/NSObject-Protocol.h>
+#import <CarPlayUIServices/CRSUIMapStyleProviding-Protocol.h>
 
 @class NSObject;
 @protocol OS_xpc_object;
 
-@protocol CRSUIDashboardWidgetSceneSettings <NSObject>
+@protocol CRSUIDashboardWidgetSceneSettings <CRSUIMapStyleProviding>
 
 @property (readonly, copy, nonatomic) NSObject<OS_xpc_object> *endpoint;
 @property (readonly, nonatomic) unsigned long long widgetStyle;

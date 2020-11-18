@@ -6,14 +6,15 @@
 
 #import <UIKit/UIView.h>
 
-#import <FitnessUI/FIUIDeepBreathingPetalRingGLViewDelegate-Protocol.h>
+#import <FitnessUI/FIUIDeepBreathingPetalRingViewDelegate-Protocol.h>
 
-@class FIUIDeepBreathingPetalRingGLView, NSMutableArray, NSMutableDictionary, NSString, UILabel;
+@class NSMutableArray, NSMutableDictionary, NSString, UILabel;
+@protocol FIUIBreathingPetalRingViewDrawable;
 
-@interface FIUIDeepBreathingFlowerView : UIView <FIUIDeepBreathingPetalRingGLViewDelegate>
+@interface FIUIDeepBreathingFlowerView : UIView <FIUIDeepBreathingPetalRingViewDelegate>
 {
     NSMutableDictionary *_petalRingsByNumberOfPetals;
-    FIUIDeepBreathingPetalRingGLView *_currentPetalRing;
+    id<FIUIBreathingPetalRingViewDrawable> _currentPetalRing;
     long long _numberOfVisiblePetals;
     BOOL _showBlurTrails;
     UILabel *_congratulationsLabel;
@@ -27,6 +28,7 @@
     NSMutableArray *_trailAlphaKeyFrames;
     NSMutableArray *_trailAlphaKeyValues;
     double _centerVerticalOffsetBeforeTransitionToConfiguration;
+    BOOL _useMetal;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -57,7 +59,7 @@
 - (void)_updatePetalsInRange:(struct _NSRange)arg1 radius:(double)arg2 radialDistance:(double)arg3 angleOffset:(double)arg4 clockwise:(BOOL)arg5 alpha:(float)arg6;
 - (void)_updateShaderForNumberOfPetals:(long long)arg1 showBlurTrails:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 congratulationsText:(id)arg2;
-- (void)petalRingGLViewDisplayLinkDidFire:(id)arg1;
+- (void)petalRingViewDisplayLinkDidFire:(id)arg1;
 - (void)setNumberOfConfigurationPetals:(double)arg1;
 - (void)setWelcomeWindFraction:(double)arg1;
 - (void)startGuidingAtDate:(id)arg1 breathsPerMinute:(double)arg2;

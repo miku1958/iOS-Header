@@ -42,5 +42,6 @@
 - (NSString *)venueLevel;
 - (NSString *)venueShortAddress;
 - (NSString *)weatherDisplayName;
+- (NSString *)weatherLocationName;
 @end
 

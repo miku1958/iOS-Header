@@ -7,29 +7,32 @@
 #import <objc/NSObject.h>
 
 @class NSMutableSet;
-@protocol OS_dispatch_queue;
 
 @interface CKDSystemAvailabilityMonitor : NSObject
 {
-    unsigned long long _availabilityState;
     NSMutableSet *_watcherWrappers;
-    NSObject<OS_dispatch_queue> *_availabilityQueue;
+    unsigned long long _availabilityState;
+    unsigned long long _simulatedAvailablityState;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *availabilityQueue; // @synthesize availabilityQueue=_availabilityQueue;
 @property unsigned long long availabilityState; // @synthesize availabilityState=_availabilityState;
-@property (readonly) BOOL systemIsAvailable;
+@property unsigned long long simulatedAvailablityState; // @synthesize simulatedAvailablityState=_simulatedAvailablityState;
 @property (strong, nonatomic) NSMutableSet *watcherWrappers; // @synthesize watcherWrappers=_watcherWrappers;
 
++ (void)initialize;
 + (id)sharedMonitor;
 - (void).cxx_destruct;
+- (void)_clearVanishedWatchers;
 - (id)_init;
-- (void)_notifyWatchersOfStateChange;
-- (BOOL)_systemMayNowBeReady;
+- (void)_logAvailabilityDescription;
+- (void)_systemMayNowBeReady;
+- (unsigned long long)currentAvailabilityState;
 - (void)dealloc;
-- (id)init;
-- (void)registerWatcher:(id)arg1;
-- (void)unregisterWatcher:(id)arg1;
+- (BOOL)registerWatcher:(id)arg1;
+- (void)removeNotifications;
+- (void)resetToUnavailableForUnitTests;
+- (void)simulateBuddyCompletedForUnitTests;
+- (void)simulateFirstUnlockForUnitTests;
 
 @end
 

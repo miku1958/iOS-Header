@@ -62,6 +62,7 @@
 
 - (void).cxx_destruct;
 - (void)_cloudSharingControllerDidActivateShowSharedFolder;
+- (void)_cloudSharingControllerDidChooseTransport:(id)arg1;
 - (void)_cloudSharingControllerDidModifyPrimarySwitch:(BOOL)arg1;
 - (void)_cloudSharingControllerDidModifySecondarySwitch:(BOOL)arg1;
 - (id)_customPresentationControllerForPresentedController:(id)arg1 presentingController:(id)arg2 sourceController:(id)arg3;

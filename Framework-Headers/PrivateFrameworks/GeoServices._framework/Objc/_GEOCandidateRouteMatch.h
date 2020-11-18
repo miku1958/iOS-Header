@@ -22,11 +22,13 @@ __attribute__((visibility("hidden")))
     double _maxCourseDelta;
     double _courseMatchScore;
     double _courseWeight;
+    double _distanceAlongRouteFromPreviousMatch;
 }
 
 @property (nonatomic) double courseDelta; // @synthesize courseDelta=_courseDelta;
 @property (nonatomic) double courseMatchScore; // @synthesize courseMatchScore=_courseMatchScore;
 @property (nonatomic) double courseWeight; // @synthesize courseWeight=_courseWeight;
+@property (nonatomic) double distanceAlongRouteFromPreviousMatch; // @synthesize distanceAlongRouteFromPreviousMatch=_distanceAlongRouteFromPreviousMatch;
 @property (nonatomic) double distanceFromRoute; // @synthesize distanceFromRoute=_distanceFromRoute;
 @property (nonatomic) double distanceMatchScore; // @synthesize distanceMatchScore=_distanceMatchScore;
 @property (nonatomic) double distanceWeight; // @synthesize distanceWeight=_distanceWeight;

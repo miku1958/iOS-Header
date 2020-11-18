@@ -25,14 +25,6 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, strong) NSXPCConnection *_connection; // @synthesize _connection;
-@property (readonly, copy) CDUnknownBlockType _errorBlock; // @synthesize _errorBlock;
-@property (readonly) BOOL _exported;
-@property (readonly) unsigned long long _generationCount; // @synthesize _generationCount;
-@property (readonly) BOOL _noImportance;
-@property (readonly) unsigned long long _proxyNumber; // @synthesize _proxyNumber;
-@property (strong) NSXPCInterface *_remoteInterface; // @synthesize _remoteInterface;
-@property (readonly) BOOL _sync;
-@property double _timeout; // @synthesize _timeout;
 @property (copy) NSDictionary *_userInfo; // @synthesize _userInfo;
 
 + (BOOL)supportsSecureCoding;

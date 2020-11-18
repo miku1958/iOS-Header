@@ -28,7 +28,7 @@
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <HomeUI/UINavigationControllerDelegate-Protocol.h>
 
-@class HFItem, HFNamingComponents, HMHome, HUAccessorySettingsItemModuleController, HUAssociatedSceneAndTriggerModuleController, HUCameraSettingsModuleController, HUChildServiceItemModuleController, HUControlPanelController, HUNameItemModuleController, HUQuickControlSummaryNavigationBarTitleView, HUServiceDetailsItemManager, HUServiceDetailsTextViewDelegate, HUSoftwareUpdateItemModuleController, HUTelevisionSettingsItemModuleController, NAFuture, NSHashTable, NSString, UIButton, UILongPressGestureRecognizer;
+@class HFItem, HFNamingComponents, HMHome, HUAccessorySettingsItemModuleController, HUAssociatedSceneAndTriggerModuleController, HUAvailableRelatedTriggerItemModuleController, HUChildServiceItemModuleController, HUControlPanelController, HUNameItemModuleController, HUQuickControlSummaryNavigationBarTitleView, HUServiceDetailsItemManager, HUServiceDetailsTextViewDelegate, HUSoftwareUpdateItemModuleController, HUTelevisionSettingsItemModuleController, NAFuture, NSHashTable, NSString, UIButton, UILongPressGestureRecognizer;
 @protocol HFServiceLikeItem, HUPresentationDelegate;
 
 @interface HUServiceDetailsViewController : HUItemTableViewController <HUControlPanelControllerDelegate, HUPresentationDelegate, HUServiceDetailsItemManagerDelegate, HUSwitchCellDelegate, HUServiceGroupEditorViewControllerDelegate, HUContainedServiceGridViewControllerDelegate, HUEditRoomViewControllerPresentationDelegate, HUTriggerEditorDelegate, HFAccessoryObserver, UIGestureRecognizerDelegate, HUAccessorySettingsItemModuleControllerDelegate, HUSoftwareUpdateItemModuleControllerDelegate, HUMediaSystemEditorViewControllerDelegate, HUContainedMediaAccessoriesGridViewControllerDelegate, HUChildServiceModuleControllerDelegate, HFHomeObserver, HUPickerCellDelegate, HUHomeAssistantDeviceSplitAccountActionDelegate, UINavigationControllerDelegate, HUDetailsPresentationDelegateHost, HUServiceLikeItemDetailsViewControllerProtocol>
@@ -43,12 +43,12 @@
     HUNameItemModuleController *_nameItemModuleController;
     HUAccessorySettingsItemModuleController *_accessorySettingsItemModuleController;
     HUSoftwareUpdateItemModuleController *_softwareUpdateItemModuleController;
+    HUAvailableRelatedTriggerItemModuleController *_associatedTriggerModuleController;
     HUChildServiceItemModuleController *_valveEditorItemModuleController;
     HUChildServiceItemModuleController *_accessoryServicesEditorItemModuleController;
     HUAssociatedSceneAndTriggerModuleController *_sceneAndTriggerModuleController;
     HUTelevisionSettingsItemModuleController *_televisionSettingsItemModuleController;
     HUChildServiceItemModuleController *_inputSourceItemModuleController;
-    HUCameraSettingsModuleController *_cameraSettingsModuleController;
     HUServiceDetailsItemManager *_detailsItemManager;
     HUControlPanelController *_controlPanelController;
     NSHashTable *_expandedControlPanelItems;
@@ -64,7 +64,7 @@
 @property (strong, nonatomic) HUChildServiceItemModuleController *accessoryServicesEditorItemModuleController; // @synthesize accessoryServicesEditorItemModuleController=_accessoryServicesEditorItemModuleController;
 @property (strong, nonatomic) HUAccessorySettingsItemModuleController *accessorySettingsItemModuleController; // @synthesize accessorySettingsItemModuleController=_accessorySettingsItemModuleController;
 @property (strong, nonatomic) NAFuture *accountFuture; // @synthesize accountFuture=_accountFuture;
-@property (strong, nonatomic) HUCameraSettingsModuleController *cameraSettingsModuleController; // @synthesize cameraSettingsModuleController=_cameraSettingsModuleController;
+@property (strong, nonatomic) HUAvailableRelatedTriggerItemModuleController *associatedTriggerModuleController; // @synthesize associatedTriggerModuleController=_associatedTriggerModuleController;
 @property (strong, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
 @property (readonly, nonatomic) HUControlPanelController *controlPanelController; // @synthesize controlPanelController=_controlPanelController;
 @property (readonly, copy) NSString *debugDescription;
@@ -97,16 +97,18 @@
 - (void).cxx_destruct;
 - (BOOL)_allowRowHighlightForItem:(id)arg1;
 - (BOOL)_allowRowSelectionForItem:(id)arg1;
+- (BOOL)_canShowWhileLocked;
 - (id)_characteristicsAffectedByControlItem:(id)arg1;
 - (void)_closeButtonPressed:(id)arg1;
 - (id)_commitBuilder;
+- (id)_createMenuWithValues:(id)arg1 cell:(id)arg2 currentItem:(id)arg3;
 - (void)_didRemoveHomeKitObject:(id)arg1;
 - (void)_didSelectRoomItem:(id)arg1;
 - (void)_executeSilentSoftwareUpdateCheck;
 - (BOOL)_isCameraItem;
 - (void)_longPressRecognized:(id)arg1;
 - (id)_magicallyUpdateNavigationStackForNewRootItem:(id)arg1 topViewController:(id)arg2;
-- (void)_notifyOfHomePodPairingIfNecessary;
+- (void)_notifyOfHomePodPairingIfNecessary:(id)arg1;
 - (void)_presentContainedItems;
 - (void)_presentGroupPicker;
 - (void)_presentRemoveConfirmation:(id)arg1;
@@ -129,6 +131,7 @@
 - (void)_updateCheckedStateForAssociatedServiceTypeCell:(id)arg1 item:(id)arg2;
 - (void)_updateControlStatusText;
 - (void)_updateIconDescriptorAnimated:(BOOL)arg1;
+- (void)_updateName:(id)arg1;
 - (void)accessory:(id)arg1 service:(id)arg2 didUpdateValueForCharacteristic:(id)arg3;
 - (void)accessoryDidUpdateServices:(id)arg1;
 - (void)addRoomButtonPressed:(id)arg1;
@@ -158,6 +161,7 @@
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
 - (id)initWithServiceLikeItem:(id)arg1;
 - (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
+- (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (id)itemManager:(id)arg1 sectionFooterForControlPanelItem:(id)arg2 forServiceItem:(id)arg3;
 - (id)itemManager:(id)arg1 sectionTitleForControlPanelItem:(id)arg2 forServiceItem:(id)arg3;
@@ -181,9 +185,9 @@
 - (void)switchCell:(id)arg1 didTurnOn:(BOOL)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
-- (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (void)textDidChange:(id)arg1 forTextField:(id)arg2 item:(id)arg3;
 - (void)textFieldDidEndEditing:(id)arg1 item:(id)arg2;
+- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
 - (void)triggerEditor:(id)arg1 didFinishWithTriggerBuilder:(id)arg2;
 - (BOOL)triggerEditor:(id)arg1 shouldCommitTriggerBuilder:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;
@@ -191,7 +195,6 @@
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

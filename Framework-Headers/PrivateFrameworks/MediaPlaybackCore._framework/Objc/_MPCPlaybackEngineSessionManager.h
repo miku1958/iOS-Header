@@ -32,7 +32,7 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (readonly, nonatomic) NSMutableArray *sessionArchives; // @synthesize sessionArchives=_sessionArchives;
 @property (readonly, nonatomic) NSMutableDictionary *sessionIdentifierArchiveMap; // @synthesize sessionIdentifierArchiveMap=_sessionIdentifierArchiveMap;
-@property (readonly, nonatomic) NSString *stateRestorationSessionIdentifier;
+@property (strong, nonatomic) NSString *stateRestorationSessionIdentifier;
 @property (readonly) Class superclass;
 
 + (id)archivesAtURL:(id)arg1;
@@ -48,7 +48,6 @@
 - (id)nowPlayingInfoCenter:(id)arg1 contentItemIDForOffset:(long long)arg2;
 - (void)publishIfNeeded;
 - (void)saveSessionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)setStateRestorationSessionIdentifier:(id)arg1;
 
 @end
 

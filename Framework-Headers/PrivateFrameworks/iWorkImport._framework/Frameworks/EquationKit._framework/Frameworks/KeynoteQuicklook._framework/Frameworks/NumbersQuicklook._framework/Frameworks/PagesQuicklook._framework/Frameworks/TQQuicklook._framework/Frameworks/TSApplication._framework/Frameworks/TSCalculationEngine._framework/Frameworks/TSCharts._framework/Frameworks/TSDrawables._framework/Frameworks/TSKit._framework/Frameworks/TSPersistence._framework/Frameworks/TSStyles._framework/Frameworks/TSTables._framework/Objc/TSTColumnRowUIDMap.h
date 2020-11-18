@@ -8,6 +8,8 @@
 
 #import <TSTables/TSCEColumnRowUIDMapping-Protocol.h>
 
+@class TSTColumnRowUIDMapper;
+
 @interface TSTColumnRowUIDMap : TSPObject <TSCEColumnRowUIDMapping>
 {
     vector_4dc5f307 _columnUidForIndex;
@@ -15,6 +17,7 @@
     struct unordered_map<TSU::UUIDData<TSP::UUIDData>, unsigned short, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, unsigned short>>> _columnIndexForUid;
     struct unordered_map<TSU::UUIDData<TSP::UUIDData>, unsigned int, std::__1::hash<TSUUUID>, std::__1::equal_to<TSU::UUIDData<TSP::UUIDData>>, std::__1::allocator<std::__1::pair<const TSU::UUIDData<TSP::UUIDData>, unsigned int>>> _rowIndexForUid;
     unsigned long long _versionCounter;
+    TSTColumnRowUIDMapper *_copyOnWriteUIDMapper;
 }
 
 @property (readonly, nonatomic) unsigned short numberOfColumns;
@@ -41,7 +44,10 @@
 - (vector_4dc5f307)columnUIDs;
 - (vector_4dc5f307)columnUIDsForColumnIndexes:(id)arg1;
 - (vector_4dc5f307)columnUIDsForColumnRange:(struct _NSRange)arg1;
+- (void)convertCellUIDLookupList:(id)arg1 toCellRangeVector:(vector_e87daf7b *)arg2 prunedSummaryCellUIDs:(vector_0c3ec296 *)arg3;
+- (id)copyOnWriteUIDMapper;
 - (id)copyWithContext:(id)arg1;
+- (void)incrementVersionCounter;
 - (id)initWithContext:(id)arg1;
 - (id)initWithContext:(id)arg1 columnUIDs:(const vector_4dc5f307 *)arg2 rowUIDs:(const vector_4dc5f307 *)arg3;
 - (id)initWithContext:(id)arg1 tableUUID:(id)arg2 numberOfRows:(unsigned int)arg3 numberOfColumns:(unsigned int)arg4;
@@ -77,7 +83,7 @@
 - (void)saveToArchiver:(id)arg1;
 - (void)swapRowAtIndex:(unsigned int)arg1 withRowAtIndex:(unsigned int)arg2;
 - (struct TSCERangeCoordinate)tableRangeCoordinate;
-- (BOOL)writeCellIDsInCellUIDList:(id)arg1 toVector:(vector_38b190b0 *)arg2 prunedCellUIDs:(vector_7670e6f2 *)arg3;
+- (BOOL)writeCellIDsInCellUIDList:(id)arg1 toVector:(vector_38b190b0 *)arg2 prunedCellUIDs:(vector_0c3ec296 *)arg3;
 
 @end
 

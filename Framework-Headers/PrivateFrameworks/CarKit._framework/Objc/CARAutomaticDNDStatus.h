@@ -21,7 +21,8 @@
 @property (copy, nonatomic) CDUnknownBlockType exitConfirmationChangeObserver; // @synthesize exitConfirmationChangeObserver=_exitConfirmationChangeObserver;
 @property (copy, nonatomic) CDUnknownBlockType statusChangeObserver; // @synthesize statusChangeObserver=_statusChangeObserver;
 
-+ (id)automaticDNDQueue;
++ (id)_DNDServiceInterface;
++ (BOOL)isAutomaticDNDAvailable;
 - (void).cxx_destruct;
 - (void)_completeDNDBuddyWithOption:(unsigned long long)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)_detachObservers;
@@ -33,7 +34,6 @@
 - (void)_xpcFetchWithServiceBlock:(CDUnknownBlockType)arg1 errorHandler:(CDUnknownBlockType)arg2;
 - (void)allowedAutoReplyAudience:(CDUnknownBlockType)arg1;
 - (void)autoReplyMessageWithReply:(CDUnknownBlockType)arg1;
-- (id)automaticDNDInternalAutoReplyWhitelist;
 - (unsigned long long)automaticDNDTriggeringMethod;
 - (void)dealloc;
 - (void)disableDNDUntilEndOfDriveWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -48,6 +48,7 @@
 - (BOOL)hasOptedOutOfAutomaticDND;
 - (BOOL)hasStartedFirstRidePreference;
 - (id)init;
+- (BOOL)isAutomaticDNDInternalDNDBuddyPreference;
 - (BOOL)isAutomaticDNDInternalExitConfirmationOverrideEnabledPreference;
 - (BOOL)isAutomaticDNDInternalForceOverrideEnabledPreference;
 - (BOOL)isAutomaticDNDInternalShowGeofencingAlertsEnabledPreference;
@@ -60,7 +61,7 @@
 - (void)setAllowedAutoReplyAudience:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setAutoReplyMessage:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)setAutomaticDNDActive:(BOOL)arg1 withReply:(CDUnknownBlockType)arg2;
-- (void)setAutomaticDNDInternalAutoReplyWhitelist:(id)arg1;
+- (void)setAutomaticDNDInternalDNDBuddyEnabledPreference:(BOOL)arg1;
 - (void)setAutomaticDNDInternalExitConfirmationOverrideEnabledPreference:(BOOL)arg1;
 - (void)setAutomaticDNDInternalForceOverrideEnabledPreference:(BOOL)arg1;
 - (void)setAutomaticDNDInternalShowGeofencingAlertsEnabledPreference:(BOOL)arg1;

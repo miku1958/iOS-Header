@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL disableCrossQueueHazardTracking;
 @property BOOL executionEnabled;
 @property (readonly) unsigned long long hash;
-@property BOOL isOpenGLQueue;
+@property (readonly) BOOL isOpenGLQueue;
 @property (copy) NSString *label;
 @property (readonly) unsigned long long maxCommandBufferCount;
 @property (getter=isProfilingEnabled) BOOL profilingEnabled;
@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 
 - (id)availableCounters;
 - (id)commandBuffer;
+- (id)commandBufferWithDescriptor:(id)arg1;
 - (id)commandBufferWithUnretainedReferences;
 - (id)counterInfo;
 - (void)dealloc;

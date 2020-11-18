@@ -29,11 +29,16 @@
 - (id)messagesControllerBackgroundColor;
 - (id)notificationSubtitleColor;
 - (id)progressBarTrackTintColor;
+- (id)replyLineColor;
+- (id)reply_gray_balloonColors;
+- (id)reply_gray_balloonTextColor;
 - (id)transcriptBackgroundColor;
 - (id)transcriptBigEmojiColor;
+- (id)transcriptBreadcrumpTextColor;
 - (id)transcriptDeemphasizedTextColor;
 - (id)transcriptNavBarTextColor;
 - (id)transcriptNicknameTextColor;
+- (id)transcriptReplyCountColor;
 - (id)transcriptTextColor;
 
 @end

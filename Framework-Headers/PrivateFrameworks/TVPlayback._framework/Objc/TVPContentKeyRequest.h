@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVContentKeyRequest, NSArray, NSData, NSDate, NSDictionary, NSError, NSNumber, NSString, NSURL, TVPContentKeySession;
+@class AVContentKeyRequest, NSArray, NSData, NSDate, NSDictionary, NSError, NSMutableDictionary, NSNumber, NSString, NSURL, TVPContentKeySession;
 
 @interface TVPContentKeyRequest : NSObject
 {
@@ -31,9 +31,11 @@
     NSDate *_renewalDate;
     NSNumber *_renewalInterval;
     NSDate *_expirationDate;
+    NSDate *_availabilityEndDate;
     NSString *_contentID;
     NSNumber *_playbackDuration;
     NSDictionary *_additionalRequestParamsFromResponse;
+    NSMutableDictionary *_userInfo;
     NSError *_error;
     AVContentKeyRequest *_avContentKeyRequest;
     TVPContentKeySession *_contentKeySession;
@@ -43,6 +45,7 @@
 @property (strong, nonatomic) NSDictionary *additionalRequestParamsFromResponse; // @synthesize additionalRequestParamsFromResponse=_additionalRequestParamsFromResponse;
 @property (nonatomic) BOOL allowManualRenewal; // @synthesize allowManualRenewal=_allowManualRenewal;
 @property (readonly, nonatomic) AVContentKeyRequest *avContentKeyRequest; // @synthesize avContentKeyRequest=_avContentKeyRequest;
+@property (strong, nonatomic) NSDate *availabilityEndDate; // @synthesize availabilityEndDate=_availabilityEndDate;
 @property (strong, nonatomic) NSString *contentID; // @synthesize contentID=_contentID;
 @property (weak, nonatomic) TVPContentKeySession *contentKeySession; // @synthesize contentKeySession=_contentKeySession;
 @property (strong, nonatomic) id context; // @synthesize context=_context;
@@ -66,6 +69,7 @@
 @property (strong, nonatomic) NSData *secureInvalidationNonceData; // @synthesize secureInvalidationNonceData=_secureInvalidationNonceData;
 @property (strong, nonatomic) NSDate *serverRequestStartDate; // @synthesize serverRequestStartDate=_serverRequestStartDate;
 @property (nonatomic) long long type; // @synthesize type=_type;
+@property (readonly, nonatomic) NSMutableDictionary *userInfo; // @synthesize userInfo=_userInfo;
 @property (nonatomic) BOOL wantsOfflineKeysIfPossible; // @synthesize wantsOfflineKeysIfPossible=_wantsOfflineKeysIfPossible;
 
 + (void)initialize;

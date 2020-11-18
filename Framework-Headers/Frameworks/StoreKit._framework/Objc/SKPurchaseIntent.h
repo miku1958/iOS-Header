@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, SKXPCConnection;
+@class NSString;
 
 @interface SKPurchaseIntent : NSObject
 {
@@ -14,14 +14,9 @@
     NSString *_productIdentifer;
     NSString *_appName;
     NSString *_productName;
-    SKXPCConnection *_connection;
-    CDUnknownBlockType __completion;
 }
 
-@property (copy, nonatomic) CDUnknownBlockType _completion; // @synthesize _completion=__completion;
-
 - (void).cxx_destruct;
-- (void)_send;
 - (id)initWithBundleId:(id)arg1 productIdentifier:(id)arg2;
 - (id)initWithBundleId:(id)arg1 productIdentifier:(id)arg2 appName:(id)arg3 productName:(id)arg4;
 - (void)send:(CDUnknownBlockType)arg1;

@@ -16,7 +16,7 @@
 #import <PreferencesUI/UISearchControllerDelegate-Protocol.h>
 #import <PreferencesUI/UISearchResultsUpdating-Protocol.h>
 
-@class AAUIProfilePictureStore, ACAccountStore, AIDAServiceOwnersManager, CNMonogrammer, CoreTelephonyClient, EAAccessory, HFHomeSettingsVisibilityArbitrator, NSArray, NSDictionary, NSObject, NSSet, NSString, PSKeyboardNavigationSearchController, PSSpecifier, PSUIClassKitVisibilityArbitrator, PSUIClassroomVisibilityArbitrator, SUIKSearchResultsCollectionViewController, UIImage, VSAccountStore;
+@class AAUIProfilePictureStore, ACAccountStore, AIDAServiceOwnersManager, CNMonogrammer, CoreTelephonyClient, EAAccessory, HFHomeSettingsVisibilityArbitrator, NSArray, NSDictionary, NSObject, NSSet, NSString, PSKeyboardNavigationSearchController, PSSpecifier, PSUIClassKitVisibilityArbitrator, PSUIClassroomVisibilityArbitrator, SUIKSearchResultsCollectionViewController, UIImage, VSAccountStore, _TtC17WallpaperSettings30WSWallpaperSettingsCoordinator;
 @protocol OS_dispatch_queue;
 
 @interface PSUIPrefsListController : PSListController <AAUISignInControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, UISearchControllerDelegate, CoreTelephonyClientSubscriberDelegate, SUIKSearchResultsCollectionViewControllerDelegate, RadiosPreferencesDelegate, DevicePINControllerDelegate, PSTopLevelController>
@@ -43,6 +43,7 @@
     PSSpecifier *_notificationsSpecifier;
     PSSpecifier *_wallpaperSpecifier;
     PSSpecifier *_passcodeSpecifier;
+    PSSpecifier *_homeScreenSpecifier;
     UIImage *_appleAccountSpecifierCachedIcon;
     PSSpecifier *_appleAccountSpecifier;
     PSSpecifier *_videoSubscriberGroupSpecifier;
@@ -80,6 +81,8 @@
     SUIKSearchResultsCollectionViewController *_searchResultsController;
     NSString *_wifiString;
     struct __CTServerConnection *__ctConnection;
+    _TtC17WallpaperSettings30WSWallpaperSettingsCoordinator *_wallpaperCoordinator;
+    NSString *_spotlightSearchTerm;
 }
 
 @property (nonatomic) BOOL _cellularDataSetting; // @synthesize _cellularDataSetting=__cellularDataSetting;
@@ -94,7 +97,9 @@
 @property (strong, nonatomic) SUIKSearchResultsCollectionViewController *searchResultsController; // @synthesize searchResultsController=_searchResultsController;
 @property (nonatomic) BOOL skipSelectingDefaultCategoryOnLaunch; // @synthesize skipSelectingDefaultCategoryOnLaunch;
 @property (strong, nonatomic) PSKeyboardNavigationSearchController *spotlightSearchController; // @synthesize spotlightSearchController=_spotlightSearchController;
+@property (strong, nonatomic) NSString *spotlightSearchTerm; // @synthesize spotlightSearchTerm=_spotlightSearchTerm;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) _TtC17WallpaperSettings30WSWallpaperSettingsCoordinator *wallpaperCoordinator; // @synthesize wallpaperCoordinator=_wallpaperCoordinator;
 @property (copy, nonatomic) NSString *wifiString; // @synthesize wifiString=_wifiString;
 
 + (BOOL)airplaneMode;
@@ -104,11 +109,13 @@
 - (void)NETRBStateChangedNotification:(id)arg1;
 - (void)NETRBStateChangedNotification:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_accountStore;
+- (BOOL)_allowsBorderForCell:(id)arg1;
 - (void)_beginObservingAccountStoreDidChangeNotification;
 - (void)_beginObservingProfilePictureStoreDidChangeNotification;
 - (id)_cachedIconForAppleAccountSpecifier;
 - (BOOL)_canSelectSpecifierAtIndexPath:(id)arg1;
 - (void)_configureImageViewForRow:(id)arg1;
+- (void)_delayedSpotlightSearch;
 - (void)_downArrowKeyPressed;
 - (BOOL)_exposureNotificationAvailable;
 - (void)_handleOnsiteProfileInstallation;
@@ -120,7 +127,7 @@
 - (void)_presentAppleAccountSignInController:(id)arg1;
 - (id)_primarySpecifierOrdering;
 - (id)_profilePictureStore;
-- (void)_reallyLoadThirdPartySpecifiersForApps:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_reallyLoadThirdPartySpecifiersForApps:(id)arg1 shouldAddAppClipSpecifier:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (BOOL)_removeCachedAppleAccountIcon;
 - (void)_saveIconToCacheForAppleAccountSpecifier:(id)arg1;
 - (id)_serviceOwnersManager;
@@ -130,6 +137,7 @@
 - (void)_setupAppleAccountSpecifier:(id)arg1 title:(id)arg2;
 - (void)_setupAppleAccountSpecifierForLogin:(id)arg1;
 - (void)_setupCachedAppleAccountSpecifier:(id)arg1;
+- (BOOL)_shouldPresentModernThirdPartyAppListForBundleIdentifier:(id)arg1;
 - (void)_showControllerFromSpecifier:(id)arg1;
 - (void)_showDetailTargetDidChange:(id)arg1;
 - (BOOL)_showSOS;
@@ -159,6 +167,7 @@
 - (void)configureTopLevelSpecifier:(id)arg1;
 - (void)confirmationSpecifierCancelled:(id)arg1;
 - (void)confirmationSpecifierConfirmed:(id)arg1;
+- (void)continueSearchInSettingsWithTerm:(id)arg1;
 - (void)dealloc;
 - (BOOL)deviceSupportsApplePay;
 - (void)didAcceptEnteredPIN:(id)arg1;
@@ -182,6 +191,7 @@
 - (void)insertMovedThirdPartySpecifiersAnimated:(BOOL)arg1;
 - (void)insertOrderedSpecifier:(id)arg1 animated:(BOOL)arg2;
 - (long long)insertionIndexForSpecifier:(id)arg1 inSpecifiers:(id)arg2;
+- (BOOL)isAppClipsAllowed;
 - (BOOL)isCellularDataEnabled;
 - (id)keyCommands;
 - (void)lazyLoadSpecialBundleForSpecifier:(id)arg1;
@@ -223,6 +233,7 @@
 - (BOOL)shouldShowTouchID;
 - (void)showDeviceSupervisionInfo;
 - (void)showPINSheet:(id)arg1;
+- (void)showSecurityResearchDeviceInfo;
 - (void)signInController:(id)arg1 didCompleteWithSuccess:(BOOL)arg2 error:(id)arg3;
 - (void)signInControllerDidCancel:(id)arg1;
 - (void)simStatusDidChange:(id)arg1 status:(id)arg2;
@@ -232,6 +243,7 @@
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
+- (long long)tableViewStyle;
 - (void)testSpecifierCountAfterBlock:(CDUnknownBlockType)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateAccountSpecifiers;
@@ -244,6 +256,7 @@
 - (void)updateFollowupSpecifiersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateHomeKitSpecifierWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updatePersonalHotspot;
+- (void)updateResearchDeviceTextWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateRestrictedSettings;
 - (void)updateSOSWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateSearchResultsForSearchController:(id)arg1;
@@ -254,10 +267,13 @@
 - (void)updateWifi;
 - (id)videoSubscriberAccountValue:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)wifiGetCurrentWiFiNetwork;
 - (id)wifiNetwork:(id)arg1;
 - (void)willBecomeActive;
+- (void)willDismissSearchController:(id)arg1;
 - (void)willEnterForeground;
+- (void)willPresentSearchController:(id)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

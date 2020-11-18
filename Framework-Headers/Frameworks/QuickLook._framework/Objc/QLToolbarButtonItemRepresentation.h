@@ -6,7 +6,7 @@
 
 #import <UIKit/UIBarButtonItem.h>
 
-@class NSString, QLPreviewController, QLToolbarButton;
+@class NSString, QLPreviewController, QLToolbarButton, UILongPressGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface QLToolbarButtonItemRepresentation : UIBarButtonItem
@@ -16,16 +16,19 @@ __attribute__((visibility("hidden")))
     unsigned long long _placement;
     QLPreviewController *_presentingViewController;
     QLToolbarButton *_originalButton;
+    UILongPressGestureRecognizer *_longPressGestureRecognizer;
 }
 
 @property BOOL disappearsOnTap; // @synthesize disappearsOnTap=_disappearsOnTap;
 @property (strong) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) UILongPressGestureRecognizer *longPressGestureRecognizer; // @synthesize longPressGestureRecognizer=_longPressGestureRecognizer;
 @property (weak) QLToolbarButton *originalButton; // @synthesize originalButton=_originalButton;
 @property unsigned long long placement; // @synthesize placement=_placement;
 @property (weak) QLPreviewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 
 - (void).cxx_destruct;
 - (BOOL)isEqual:(id)arg1;
+- (void)setLongPressTarget:(id)arg1 action:(SEL)arg2;
 
 @end
 

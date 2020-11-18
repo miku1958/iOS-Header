@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary;
+@class KTApplicationPublicKeyStore, NSArray, NSDictionary, NSMutableDictionary;
 
 @interface KTPublicKeyStore : NSObject
 {
     BOOL _forceRefresh;
+    KTApplicationPublicKeyStore *_tltKeyStore;
     NSMutableDictionary *__applicationKeyStores;
     NSArray *_applications;
 }
@@ -20,6 +21,7 @@
 @property (strong) NSArray *applications; // @synthesize applications=_applications;
 @property BOOL forceRefresh; // @synthesize forceRefresh=_forceRefresh;
 @property (readonly) BOOL ready;
+@property (strong) KTApplicationPublicKeyStore *tltKeyStore; // @synthesize tltKeyStore=_tltKeyStore;
 
 - (void).cxx_destruct;
 - (void)clearApplicationState:(id)arg1 error:(id *)arg2;
@@ -36,6 +38,7 @@
 - (id)initWithDataStore:(id)arg1;
 - (id)readPublicKeyStoreFromDisk:(id *)arg1;
 - (BOOL)saveDiskApplicationKeyStore:(id)arg1 error:(id *)arg2;
+- (void)updateTLTKeyStoreWithApplicationKeyStore:(id)arg1;
 - (BOOL)writePublicKeyStoreToDisk:(id)arg1 error:(id *)arg2;
 
 @end

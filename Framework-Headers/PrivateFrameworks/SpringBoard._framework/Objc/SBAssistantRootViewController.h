@@ -4,25 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <SpringBoardFoundation/SBFTouchPassThroughViewController.h>
 
 #import <SpringBoard/SBFluidGestureDismissable-Protocol.h>
 
-@class NSString, SBFHomeGrabberSettings, SBFluidDismissalState, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, SiriPresentationSpringBoardMainScreenViewController, UIScreen, UIView;
+@class NSString, SBFHomeGrabberSettings, SBFTouchPassThroughView, SBFluidDismissalState, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, SiriPresentationSpringBoardMainScreenViewController, UIScreen, UIView;
 
-@interface SBAssistantRootViewController : UIViewController <SBFluidGestureDismissable>
+@interface SBAssistantRootViewController : SBFTouchPassThroughViewController <SBFluidGestureDismissable>
 {
     SiriPresentationSpringBoardMainScreenViewController *_assistantViewController;
-    UIView *_contentView;
-    UIView *_clippingView;
+    SBFTouchPassThroughView *_contentView;
+    SBFTouchPassThroughView *_clippingView;
     SBFluidDismissalState *_fluidDismissalState;
     UIScreen *_screen;
+    SBHomeGrabberView *_homeAffordanceView;
     SBKeyboardHomeAffordanceAssertion *_keyboardHomeAffordanceAssertion;
     SBFHomeGrabberSettings *_grabberSettings;
     BOOL _keyboardPresented;
     BOOL _keyboardStashed;
     BOOL _ownsHomeGesture;
-    SBHomeGrabberView *_homeAffordanceView;
+    BOOL _showsHomeAffordance;
 }
 
 @property (strong, nonatomic) SiriPresentationSpringBoardMainScreenViewController *assistantController; // @synthesize assistantController=_assistantViewController;
@@ -32,21 +33,23 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) SBFluidDismissalState *fluidDismissalState;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) SBHomeGrabberView *homeAffordanceView; // @synthesize homeAffordanceView=_homeAffordanceView;
 @property (nonatomic) BOOL ownsHomeGesture; // @synthesize ownsHomeGesture=_ownsHomeGesture;
-@property (strong, nonatomic) UIScreen *screen; // @synthesize screen=_screen;
+@property (nonatomic) BOOL showsHomeAffordance; // @synthesize showsHomeAffordance=_showsHomeAffordance;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
+- (struct UIEdgeInsets)_edgeInsetsForChildViewController:(id)arg1 insetsAreAbsolute:(BOOL *)arg2;
 - (void)_keyboardWillHideNotification:(id)arg1;
 - (void)_keyboardWillShowNotification:(id)arg1;
 - (void)_updateHomeAffordance;
 - (void)_updateKeyboardForHomeGesture;
 - (id)childViewControllerForHomeIndicatorAutoHidden;
 - (id)childViewControllerForScreenEdgesDeferringSystemGestures;
+- (void)hasContentAtPoint:(struct CGPoint)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithScreen:(id)arg1;
 - (void)loadView;
+- (void)setHomeGrabberPointerClickDelegate:(id)arg1;
 - (void)setNeedsUpdateOfHomeIndicatorAutoHidden;
 - (void)setNeedsUpdateOfScreenEdgesDeferringSystemGestures;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;

@@ -8,7 +8,7 @@
 
 #import <CoreDAV/CoreDAVSubmittable-Protocol.h>
 
-@class CoreDAVErrorItem, CoreDAVRequestLogger, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableDictionary, NSRunLoop, NSString, NSURL, NSURLConnection, NSURLRequest;
+@class CoreDAVErrorItem, CoreDAVItem, CoreDAVRequestLogger, NSData, NSDate, NSDictionary, NSError, NSHTTPURLResponse, NSMutableArray, NSMutableDictionary, NSRunLoop, NSString, NSURL, NSURLConnection, NSURLRequest;
 @protocol CoreDAVAccountInfoProvider, CoreDAVResponseBodyParser, CoreDAVTaskDelegate, CoreDAVTaskManager;
 
 @interface CoreDAVTask : NSObject <CoreDAVSubmittable>
@@ -58,7 +58,11 @@
     CoreDAVErrorItem *_forbiddenErrorItem;
     NSString *_uniqueID;
     BOOL _ignoresGuardianRestrictions;
+    BOOL _simulated;
     BOOL _totalBytesWasProcessedAsAbnormallyLarge;
+    NSMutableDictionary *_simulatedResponseHeaders;
+    long long _simulatedStatusCode;
+    CoreDAVItem *_simulatedRootElement;
 }
 
 @property (weak, nonatomic) id<CoreDAVAccountInfoProvider> accountInfoProvider; // @synthesize accountInfoProvider=_accountInfoProvider;
@@ -79,6 +83,11 @@
 @property (readonly, nonatomic) NSDictionary *responseHeaders;
 @property (copy, nonatomic) CDUnknownBlockType responseProgressBlock; // @synthesize responseProgressBlock=_responseProgressBlock;
 @property (nonatomic) long long responseStatusCode; // @synthesize responseStatusCode=_responseStatusCode;
+@property (readonly, nonatomic) CoreDAVItem *rootElement;
+@property (nonatomic) BOOL simulated; // @synthesize simulated=_simulated;
+@property (strong, nonatomic) NSMutableDictionary *simulatedResponseHeaders; // @synthesize simulatedResponseHeaders=_simulatedResponseHeaders;
+@property (strong, nonatomic) CoreDAVItem *simulatedRootElement; // @synthesize simulatedRootElement=_simulatedRootElement;
+@property (nonatomic) long long simulatedStatusCode; // @synthesize simulatedStatusCode=_simulatedStatusCode;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<CoreDAVTaskManager> taskManager; // @synthesize taskManager=_taskManager;
 @property (nonatomic) double timeoutInterval; // @synthesize timeoutInterval=_timeoutInterval;

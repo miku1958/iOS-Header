@@ -12,6 +12,7 @@
 
 @property (copy, nonatomic) NSString *contentType;
 @property (nonatomic) double cornerRadius;
+@property (nonatomic) int cornerRoundingStyle;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (copy, nonatomic) NSString *identifier;
 @property (copy) NSData *imageData;

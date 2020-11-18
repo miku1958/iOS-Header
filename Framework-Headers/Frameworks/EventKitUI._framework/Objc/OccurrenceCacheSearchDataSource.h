@@ -6,21 +6,28 @@
 
 #import <EventKitUI/OccurrenceCacheDataSource.h>
 
-@class EKOccurrenceCacheSearch, NSMutableArray;
+@class EKOccurrenceCacheSearch, EKSpotlightSearch, NSArray, NSMutableDictionary, NSString;
 
 @interface OccurrenceCacheSearchDataSource : OccurrenceCacheDataSource
 {
-    EKOccurrenceCacheSearch *_search;
-    NSMutableArray *_processingCachedDays;
+    EKSpotlightSearch *_narrowSearch;
+    EKSpotlightSearch *_distantFutureSearch;
+    EKSpotlightSearch *_distantPastSearch;
+    EKOccurrenceCacheSearch *_legacySearch;
+    NSString *_searchTerm;
+    NSMutableDictionary *_processingCachedDays;
     struct _opaque_pthread_mutex_t {
         long long __sig;
         char __opaque[56];
     } _resultsLock;
+    NSArray *_sortedDays;
+    int _searchSeed;
 }
 
 - (void).cxx_destruct;
 - (id)_cachedDays;
 - (void)_setCachedDaysAndNotify:(id)arg1;
+- (void)_updateCachedDays;
 - (long long)countOfOccurrencesAtDayIndex:(long long)arg1;
 - (void)dealloc;
 - (id)initWithEventStore:(id)arg1 calendars:(id)arg2;

@@ -45,6 +45,7 @@
 @property (strong, nonatomic) TLKLabel *trailingTitleLabel; // @synthesize trailingTitleLabel=_trailingTitleLabel;
 
 + (void)applyText:(id)arg1 toLabel:(id)arg2;
++ (double)naturalWidthOfLabel:(id)arg1 inFittingSize:(struct CGSize)arg2;
 - (void).cxx_destruct;
 - (id)bottomRowViews;
 - (struct CGRect)containerView:(id)arg1 layoutFrameForArrangedSubview:(id)arg2 withProposedFrame:(struct CGRect)arg3;
@@ -53,6 +54,7 @@
 - (id)gridOfAllViews;
 - (BOOL)hasSubtitles;
 - (id)leadingSubtitleLabelString;
+- (id)leadingTextView;
 - (id)leadingTitleLabelFont;
 - (id)leadingTitleLabelString;
 - (void)observedPropertiesChanged;
@@ -63,7 +65,7 @@
 - (id)trailingSubtitleLabelString;
 - (id)trailingTitleLabelFont;
 - (id)trailingTitleLabelString;
-- (BOOL)usesDefaultInsets;
+- (BOOL)usesDefaultLayoutMargins;
 - (double)widthOfColumnAtIndex:(unsigned long long)arg1;
 
 @end

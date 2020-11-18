@@ -6,12 +6,13 @@
 
 #import <UIKit/UINavigationController.h>
 
+#import <EventKitUI/EKUIManagedViewController-Protocol.h>
 #import <EventKitUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
 @class EKEvent, EKEventEditor, EKEventStore, NSString, UIColor;
 @protocol EKEventEditViewDelegate;
 
-@interface EKEventEditViewController : UINavigationController <UIAdaptivePresentationControllerDelegate>
+@interface EKEventEditViewController : UINavigationController <UIAdaptivePresentationControllerDelegate, EKUIManagedViewController>
 {
     EKEventStore *_store;
     EKEvent *_event;
@@ -53,6 +54,7 @@
 - (id)_eventEditorForTestingOnly;
 - (id)_leftBarButtonItem;
 - (void)_storeChanged:(id)arg1;
+- (BOOL)canManagePresentationStyle;
 - (void)cancelEditing;
 - (void)cancelEditingWithDelegateNotification:(BOOL)arg1 forceCancel:(BOOL)arg2;
 - (void)completeAndSave;
@@ -78,6 +80,7 @@
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
+- (BOOL)wantsManagement;
 - (BOOL)willPresentDialogOnSave;
 
 @end

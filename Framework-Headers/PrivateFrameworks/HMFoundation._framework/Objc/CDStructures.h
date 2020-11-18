@@ -15,6 +15,10 @@ struct _HMFRate {
     double period;
 };
 
+struct hmf_unfair_data_lock_s {
+    struct os_unfair_lock_s lock;
+};
+
 struct in6_addr {
     union {
         unsigned char _field1[16];

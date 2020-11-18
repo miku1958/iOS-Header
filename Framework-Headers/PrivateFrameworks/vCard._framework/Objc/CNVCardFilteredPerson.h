@@ -32,7 +32,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) NSDictionary *imageCropRects;
 @property (readonly) NSData *imageData;
+@property (readonly) NSData *imageHash;
 @property (readonly) NSArray *imageReferences;
+@property (readonly) NSString *imageType;
 @property (readonly) NSArray *instantMessagingAddresses;
 @property (readonly) BOOL isCompany;
 @property (readonly) BOOL isMe;

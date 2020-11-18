@@ -54,7 +54,6 @@ __attribute__((visibility("hidden")))
 - (void)_handleImagePickerSelectionDone:(id)arg1;
 - (void)_handleImagePickerSingleSelectionDone;
 - (void)_scrollToBottomIfNeeded;
-- (BOOL)allowsPeeking;
 - (BOOL)canBeginStackCollapseTransition;
 - (BOOL)canDragIn;
 - (BOOL)canDragOut;

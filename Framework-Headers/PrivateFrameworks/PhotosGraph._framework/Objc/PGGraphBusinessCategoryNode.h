@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphPropertylessNode.h>
 
 #import <PhotosGraph/PGGraphLocalizable-Protocol.h>
 
 @class NSString;
 
-@interface PGGraphBusinessCategoryNode : PGGraphNode <PGGraphLocalizable>
+@interface PGGraphBusinessCategoryNode : PGGraphPropertylessNode <PGGraphLocalizable>
 {
+    NSString *_label;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,6 +21,11 @@
 @property (readonly, nonatomic) NSString *localizedName;
 @property (readonly) Class superclass;
 
+- (void).cxx_destruct;
+- (unsigned short)domain;
+- (id)initWithLabel:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)label;
 
 @end
 

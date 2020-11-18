@@ -6,34 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
+@class NSCache;
 
-@class NSCache, NSString;
-
-@interface RBBundlePropertiesBackgroundRefreshProvider : NSObject <BSDescriptionProviding>
+@interface RBBundlePropertiesBackgroundRefreshProvider : NSObject
 {
     NSCache *_backgroundRefreshStateByIdentity;
     struct os_unfair_lock_s _lock;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
-
 - (void).cxx_destruct;
-- (void)_handleBackgroundRefreshStatusDidChange;
-- (id)_lock_fetchBackgroundRefreshEnabledForIdentity:(id)arg1;
-- (void)_registerForBackgroundRefreshStatusChangedNotification;
-- (void)_unregisterFromBackgroundRefreshStatusChangedNotification;
 - (void)dealloc;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)description;
 - (id)init;
 - (BOOL)isBackgroundRefreshEnabledForIdentity:(id)arg1;
 - (void)removeIdentity:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

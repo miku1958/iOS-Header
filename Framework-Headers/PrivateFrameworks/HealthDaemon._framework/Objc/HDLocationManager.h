@@ -33,17 +33,20 @@
 - (id)_mainQueue_newLocationManagerWithEffectiveBundle:(id)arg1;
 - (void)_mainQueue_releaseLocationUpdatingAssertion;
 - (void)_mainQueue_takeLocationUpdatingAssertion;
+- (void)_mainQueue_updateLocationManager;
 - (void)_unitTest_didInvalidateAssertion:(id)arg1;
+- (void)_unitTest_didTakeAssertion:(id)arg1;
 - (id)_unitTest_locationManager;
 - (void)_unitTest_setLocationManagerConfiguration:(CDUnknownBlockType)arg1;
 - (void)addObserver:(id)arg1;
 - (void)assertionManager:(id)arg1 assertionInvalidated:(id)arg2;
 - (void)dealloc;
 - (id)init;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (void)removeObserver:(id)arg1;
+- (void)requestWhenInUseAuthorization;
 - (id)takeLocationUpdatingAssertionForOwnerIdentifier:(id)arg1;
 
 @end

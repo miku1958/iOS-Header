@@ -21,9 +21,10 @@
 @property (readonly, nonatomic) ARSkeleton3D *neutralBodySkeleton3D; // @synthesize neutralBodySkeleton3D=_neutralBodySkeleton3D;
 @property (readonly, nonatomic) NSArray *parentIndices; // @synthesize parentIndices=_parentIndices;
 
-+ (id)default2DSkeletonDefinition;
-+ (id)default3DSkeletonDefinition;
++ (id)defaultBody2DSkeletonDefinition;
++ (id)defaultBody3DSkeletonDefinition;
 - (void).cxx_destruct;
+- (unsigned long long)indexForJointName:(id)arg1;
 
 @end
 

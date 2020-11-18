@@ -19,25 +19,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_ams_cookiesForURL:(id)arg1;
 - (id)_activeItunesAccount;
 - (id)_connectionType;
-- (id)_cookies;
-- (id)_diskUsage;
-- (id)_userType;
-- (id)capacityData;
-- (id)capacityDataAvailable;
-- (id)capacityDisk;
-- (id)capacitySystem;
-- (id)capacitySystemAvailable;
 - (id)connectionType;
 - (id)cookies;
 - (id)dsId;
-- (id)hardwareModel;
-- (id)osBuildNumber;
 - (id)storeFrontHeader;
 - (id)userAgent;
-- (id)userType;
 
 @end
 

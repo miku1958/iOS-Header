@@ -8,11 +8,10 @@
 
 #import <HealthRecordsUI/HRWDDisplayable-Protocol.h>
 
-@class HKInspectableValueCollection, NSArray, NSDate, NSString;
+@class NSArray, NSDate, NSString;
 
 @interface HKMedicalRecord (Displayable) <HRWDDisplayable>
 
-@property (readonly, nonatomic) HKInspectableValueCollection *chartValue;
 @property (readonly, nonatomic) NSArray *conceptNameItems;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

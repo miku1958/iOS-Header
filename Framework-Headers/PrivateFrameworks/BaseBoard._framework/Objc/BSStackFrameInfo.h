@@ -10,11 +10,11 @@
 
 @interface BSStackFrameInfo : NSObject
 {
+    NSString *_realFunctionName;
     unsigned long long _address;
     NSString *_functionName;
-    NSString *_className;
     NSString *_executablePath;
-    NSString *_realFunctionName;
+    NSString *_className;
 }
 
 @property (readonly, nonatomic) unsigned long long address; // @synthesize address=_address;
@@ -25,7 +25,6 @@
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithReturnAddress:(unsigned long long)arg1;
 
 @end
 

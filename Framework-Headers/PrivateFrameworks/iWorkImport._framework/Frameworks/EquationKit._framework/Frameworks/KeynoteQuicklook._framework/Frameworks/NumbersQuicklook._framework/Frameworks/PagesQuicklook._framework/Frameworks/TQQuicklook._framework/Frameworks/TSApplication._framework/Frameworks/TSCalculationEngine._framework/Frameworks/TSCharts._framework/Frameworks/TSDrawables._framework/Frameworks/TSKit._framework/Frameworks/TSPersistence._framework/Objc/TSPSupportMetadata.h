@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (void)commonInit;
+- (unsigned char)componentRequiredPackageIdentifier;
 - (id)initWithContext:(id)arg1;
 - (BOOL)isDataAcknowledgedByServer:(id)arg1;
 - (void)isDataAcknowledgedByServer:(id)arg1 completion:(CDUnknownBlockType)arg2;

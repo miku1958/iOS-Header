@@ -4,18 +4,39 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaRemote/_MRLanguageOptionGroupProtobuf.h>
+#import <objc/NSObject.h>
 
+#import <MediaRemote/NSCopying-Protocol.h>
 #import <MediaRemote/NSSecureCoding-Protocol.h>
 
-__attribute__((visibility("hidden")))
-@interface MRLanguageOptionGroup : _MRLanguageOptionGroupProtobuf <NSSecureCoding>
+@class MRLanguageOption, NSArray, NSData, NSDictionary, _MRLanguageOptionGroupProtobuf;
+
+@interface MRLanguageOptionGroup : NSObject <NSCopying, NSSecureCoding>
 {
+    BOOL _allowsEmptySelection;
+    BOOL _hasAllowsEmptySelection;
+    NSArray *_languageOptions;
+    MRLanguageOption *_defaultLanguageOption;
 }
 
+@property (nonatomic) BOOL allowsEmptySelection; // @synthesize allowsEmptySelection=_allowsEmptySelection;
+@property (readonly, copy, nonatomic) NSData *data;
+@property (strong, nonatomic) MRLanguageOption *defaultLanguageOption; // @synthesize defaultLanguageOption=_defaultLanguageOption;
+@property (readonly, copy, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (nonatomic) BOOL hasAllowsEmptySelection; // @synthesize hasAllowsEmptySelection=_hasAllowsEmptySelection;
+@property (copy, nonatomic) NSArray *languageOptions; // @synthesize languageOptions=_languageOptions;
+@property (readonly, nonatomic) _MRLanguageOptionGroupProtobuf *protobuf;
+
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithData:(id)arg1;
+- (id)initWithLanguageOptions:(id)arg1 defaultLanguageOption:(id)arg2 allowsEmptySelection:(BOOL)arg3;
+- (id)initWithProtobuf:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -7,16 +7,17 @@
 #import <SiriKitFlow/JSExport-Protocol.h>
 #import <SiriKitFlow/NSObject-Protocol.h>
 
-@class NSArray;
+@class INCallRecord, INCallRecordFilter, NSArray;
 
 @protocol INStartCallIntentExport <NSObject, JSExport>
 
 @property (nonatomic) long long audioRoute;
 @property (nonatomic) long long callCapability;
+@property (nonatomic, copy) INCallRecordFilter *callRecordFilter;
+@property (nonatomic, copy) INCallRecord *callRecordToCallBack;
 @property (nonatomic, copy) NSArray *contacts;
 @property (nonatomic) long long destinationType;
 @property (nonatomic) long long preferredCallProvider;
-@property (nonatomic) long long recordTypeForRedialing;
 @property (nonatomic) long long ttyType;
 
 - (id)init;

@@ -9,10 +9,10 @@
 @class MISSING_TYPE, NSArray, NSSet, NSString;
 @protocol FCTagProviding;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI223ForYouMagazineFeedGroup : NSObject
 {
     MISSING_TYPE *group;
+    MISSING_TYPE *config;
     MISSING_TYPE *identifier;
     MISSING_TYPE *headlines;
     MISSING_TYPE *assetHandles;

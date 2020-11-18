@@ -76,9 +76,10 @@
 + (id)sqliteDatabaseWithFilename:(id)arg1 flags:(int)arg2 error:(id *)arg3 errorHandler:(id)arg4;
 + (void)truncateDatabaseAtPath:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)_isLikelySQLStatementContainedInString:(const char *)arg1;
 - (void)_logQueryPlanForQuery:(id)arg1;
 - (void)_prepAndRunQuery:(id)arg1 columns:(id)arg2 dictionary:(id)arg3 onError:(CDUnknownBlockType)arg4;
-- (BOOL)_transactionWithExclusivity:(BOOL)arg1 transaction:(CDUnknownBlockType)arg2;
+- (struct _PASDBTransactionCompletion_)_transactionWithExclusivity:(BOOL)arg1 transaction:(CDUnknownBlockType)arg2;
 - (void)_txnBegin;
 - (void)_txnBeginExclusive;
 - (void)_txnEnd;
@@ -112,6 +113,7 @@
 - (BOOL)prepAndRunQuery:(id)arg1 onPrep:(CDUnknownBlockType)arg2 onRow:(CDUnknownBlockType)arg3 onError:(CDUnknownBlockType)arg4;
 - (BOOL)prepQuery:(id)arg1 onPrep:(CDUnknownBlockType)arg2 onError:(CDUnknownBlockType)arg3;
 - (void)readTransaction:(CDUnknownBlockType)arg1;
+- (struct _PASDBTransactionCompletion_)readTransactionWithFailableBlock:(CDUnknownBlockType)arg1;
 - (BOOL)runQuery:(id)arg1 onRow:(CDUnknownBlockType)arg2;
 - (BOOL)runQuery:(id)arg1 onRow:(CDUnknownBlockType)arg2 onError:(CDUnknownBlockType)arg3;
 - (id)selectColumns:(id)arg1 fromTable:(id)arg2 whereClause:(id)arg3 onPrep:(CDUnknownBlockType)arg4 onError:(CDUnknownBlockType)arg5;
@@ -122,6 +124,7 @@
 - (unsigned int)userVersion;
 - (void)withDbLockExecuteBlock:(CDUnknownBlockType)arg1;
 - (void)writeTransaction:(CDUnknownBlockType)arg1;
+- (struct _PASDBTransactionCompletion_)writeTransactionWithFailableBlock:(CDUnknownBlockType)arg1;
 
 @end
 

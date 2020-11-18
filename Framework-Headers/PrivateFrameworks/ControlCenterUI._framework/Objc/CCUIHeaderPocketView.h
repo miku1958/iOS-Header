@@ -6,21 +6,27 @@
 
 #import <UIKit/UIView.h>
 
-@class CCUIStatusBar, MTMaterialView, SBUIChevronView;
+@class CCUISensorStatusView, CCUIStatusBar, SBUIChevronView;
 @protocol CCUIStatusBarDelegate;
 
 @interface CCUIHeaderPocketView : UIView
 {
-    MTMaterialView *_headerBackgroundView;
+    UIView *_headerBackgroundView;
     UIView *_headerLineView;
     SBUIChevronView *_headerChevronView;
+    CCUISensorStatusView *_sensorStatusView;
     CCUIStatusBar *_statusBar;
     id<CCUIStatusBarDelegate> _statusBarDelegate;
     unsigned long long _mode;
     double _backgroundAlpha;
+    UIView *_customBackgroundView;
     double _chevronAlpha;
     double _statusBarAlpha;
+    double _sensorStatusViewAlpha;
     double _contentAlphaMultiplier;
+    double _verticalContentTranslation;
+    long long _interfaceOrientation;
+    UIView *_statusLabelView;
     struct UIEdgeInsets _edgeInsets;
     struct CGAffineTransform _contentTransform;
 }
@@ -32,17 +38,29 @@
 @property (nonatomic) double contentAlphaMultiplier; // @synthesize contentAlphaMultiplier=_contentAlphaMultiplier;
 @property (readonly, nonatomic) struct CGRect contentBounds; // @dynamic contentBounds;
 @property (nonatomic) struct CGAffineTransform contentTransform; // @synthesize contentTransform=_contentTransform;
+@property (nonatomic) UIView *customBackgroundView; // @synthesize customBackgroundView=_customBackgroundView;
 @property (nonatomic) struct UIEdgeInsets edgeInsets; // @synthesize edgeInsets=_edgeInsets;
+@property (nonatomic) long long interfaceOrientation; // @synthesize interfaceOrientation=_interfaceOrientation;
 @property (nonatomic) unsigned long long mode; // @synthesize mode=_mode;
+@property (readonly, nonatomic) CCUISensorStatusView *sensorStatusView; // @synthesize sensorStatusView=_sensorStatusView;
+@property (nonatomic) double sensorStatusViewAlpha; // @synthesize sensorStatusViewAlpha=_sensorStatusViewAlpha;
 @property (readonly, nonatomic) CCUIStatusBar *statusBar; // @synthesize statusBar=_statusBar;
 @property (nonatomic) double statusBarAlpha; // @synthesize statusBarAlpha=_statusBarAlpha;
 @property (weak, nonatomic) id<CCUIStatusBarDelegate> statusBarDelegate; // @synthesize statusBarDelegate=_statusBarDelegate;
+@property (strong, nonatomic) UIView *statusLabelView; // @synthesize statusLabelView=_statusLabelView;
+@property (nonatomic) double verticalContentTranslation; // @synthesize verticalContentTranslation=_verticalContentTranslation;
 
 - (void).cxx_destruct;
+- (id)_newDefaultBackgroundView;
+- (void)_setHeaderBackgroundView:(id)arg1;
 - (void)_updateAlpha;
 - (void)_updateContentTransform;
+- (void)addSensorStatusForStatusType:(unsigned long long)arg1 sensorActivityData:(id)arg2;
+- (double)additionalHeightForOrientation:(long long)arg1;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)removeSensorStatusForSensorType:(unsigned long long)arg1;
 
 @end
 

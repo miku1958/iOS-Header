@@ -38,9 +38,7 @@
 - (id)_thumbnailData;
 - (unsigned long long)count;
 - (id)description;
-- (id)initWithContentsOfFile:(id)arg1 format:(unsigned short)arg2;
 - (id)initWithContentsOfFile:(id)arg1 format:(unsigned short)arg2 readOnly:(BOOL)arg3;
-- (id)initWithData:(id)arg1 format:(unsigned short)arg2;
 - (id)initWithData:(id)arg1 format:(unsigned short)arg2 readOnly:(BOOL)arg3;
 - (id)initWithImages:(id)arg1 format:(unsigned short)arg2 orientation:(int *)arg3 options:(id)arg4 delegate:(id)arg5;
 - (BOOL)saveToFile:(id)arg1;

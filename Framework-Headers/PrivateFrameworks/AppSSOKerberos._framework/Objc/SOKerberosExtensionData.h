@@ -11,12 +11,15 @@
 @interface SOKerberosExtensionData : NSObject
 {
     BOOL _useSiteAutoDiscovery;
+    BOOL _includeManagedAppsInBundleIdACL;
     BOOL _isDefaultRealm;
     BOOL _allowPasswordChange;
     BOOL _allowAutomaticLogin;
     BOOL _requireUserPresence;
     BOOL _pwReqComplexity;
     BOOL _syncLocalPassword;
+    BOOL _monitorCredentialsCache;
+    BOOL _delayUserSetup;
     NSString *_cacheName;
     NSString *_principalName;
     NSString *_siteCode;
@@ -30,6 +33,8 @@
     NSNumber *_pwReqMinAge;
     NSNumber *_pwReqHistory;
     NSString *_pwReqText;
+    NSString *_helpText;
+    NSString *_customUsernameLabel;
     NSNumber *_replicationTime;
 }
 
@@ -38,8 +43,13 @@
 @property (strong, nonatomic) NSString *cacheName; // @synthesize cacheName=_cacheName;
 @property (strong, nonatomic) NSString *certificateUUID; // @synthesize certificateUUID=_certificateUUID;
 @property (strong, nonatomic) NSArray *credentialBundleIdACL; // @synthesize credentialBundleIdACL=_credentialBundleIdACL;
+@property (strong, nonatomic) NSString *customUsernameLabel; // @synthesize customUsernameLabel=_customUsernameLabel;
+@property BOOL delayUserSetup; // @synthesize delayUserSetup=_delayUserSetup;
 @property (strong, nonatomic) NSDictionary *domainRealmMapping; // @synthesize domainRealmMapping=_domainRealmMapping;
+@property (strong, nonatomic) NSString *helpText; // @synthesize helpText=_helpText;
+@property (nonatomic) BOOL includeManagedAppsInBundleIdACL; // @synthesize includeManagedAppsInBundleIdACL=_includeManagedAppsInBundleIdACL;
 @property (nonatomic) BOOL isDefaultRealm; // @synthesize isDefaultRealm=_isDefaultRealm;
+@property BOOL monitorCredentialsCache; // @synthesize monitorCredentialsCache=_monitorCredentialsCache;
 @property (strong, nonatomic) NSString *principalName; // @synthesize principalName=_principalName;
 @property (strong, nonatomic) NSString *pwChangeURL; // @synthesize pwChangeURL=_pwChangeURL;
 @property (strong, nonatomic) NSNumber *pwExpireOverride; // @synthesize pwExpireOverride=_pwExpireOverride;

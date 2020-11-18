@@ -13,6 +13,9 @@
 @interface CRVehicle : NSObject <NSSecureCoding>
 {
     BOOL _supportsEnhancedIntegration;
+    BOOL _supportsUSBCarPlay;
+    BOOL _supportsWirelessCarPlay;
+    BOOL _supportsStartSessionRequest;
     NSUUID *_identifier;
     NSString *_vehicleName;
     NSSet *_accessoryProtocols;
@@ -26,11 +29,15 @@
     NSString *_PPID;
     NSString *_internalNotes;
     long long _albumArtUserPreference;
+    NSString *_wallpaperIdentifier;
+    NSString *_previousWallpaperIdentifier;
+    long long _appearanceModePreference;
 }
 
 @property (strong, nonatomic) NSString *PPID; // @synthesize PPID=_PPID;
 @property (strong, nonatomic) NSSet *accessoryProtocols; // @synthesize accessoryProtocols=_accessoryProtocols;
 @property (nonatomic) long long albumArtUserPreference; // @synthesize albumArtUserPreference=_albumArtUserPreference;
+@property (nonatomic) long long appearanceModePreference; // @synthesize appearanceModePreference=_appearanceModePreference;
 @property (strong, nonatomic) NSString *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
 @property (strong, nonatomic) NSString *carplayWiFiUUID; // @synthesize carplayWiFiUUID=_carplayWiFiUUID;
 @property (strong, nonatomic) NSData *certificateSerialNumber; // @synthesize certificateSerialNumber=_certificateSerialNumber;
@@ -41,9 +48,14 @@
 @property (readonly, nonatomic) BOOL isPaired;
 @property (strong, nonatomic) NSDate *lastConnectedDate; // @synthesize lastConnectedDate=_lastConnectedDate;
 @property (nonatomic) unsigned long long pairingStatus; // @synthesize pairingStatus=_pairingStatus;
+@property (strong, nonatomic) NSString *previousWallpaperIdentifier; // @synthesize previousWallpaperIdentifier=_previousWallpaperIdentifier;
 @property (nonatomic) BOOL supportsEnhancedIntegration; // @synthesize supportsEnhancedIntegration=_supportsEnhancedIntegration;
+@property (nonatomic) BOOL supportsStartSessionRequest; // @synthesize supportsStartSessionRequest=_supportsStartSessionRequest;
+@property (nonatomic) BOOL supportsUSBCarPlay; // @synthesize supportsUSBCarPlay=_supportsUSBCarPlay;
+@property (nonatomic) BOOL supportsWirelessCarPlay; // @synthesize supportsWirelessCarPlay=_supportsWirelessCarPlay;
 @property (strong, nonatomic) NSString *vehicleModelName; // @synthesize vehicleModelName=_vehicleModelName;
 @property (strong, nonatomic) NSString *vehicleName; // @synthesize vehicleName=_vehicleName;
+@property (strong, nonatomic) NSString *wallpaperIdentifier; // @synthesize wallpaperIdentifier=_wallpaperIdentifier;
 
 + (BOOL)supportsSecureCoding;
 + (id)vehicleForVehicleAccessory:(id)arg1;

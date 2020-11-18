@@ -20,6 +20,8 @@
     NSNumber *_changeID;
     NSString *_externalID;
     NSNumber *_imagesChanged;
+    NSString *_externalURI;
+    NSString *_externalModificationTag;
 }
 
 @property (strong, nonatomic) CNChangeHistoryAnchor *changeAnchor; // @synthesize changeAnchor=_changeAnchor;
@@ -28,6 +30,8 @@
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property (readonly, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (strong, nonatomic) NSString *externalID; // @synthesize externalID=_externalID;
+@property (strong, nonatomic) NSString *externalModificationTag; // @synthesize externalModificationTag=_externalModificationTag;
+@property (strong, nonatomic) NSString *externalURI; // @synthesize externalURI=_externalURI;
 @property (strong, nonatomic) NSNumber *imagesChanged; // @synthesize imagesChanged=_imagesChanged;
 @property (copy, nonatomic) NSArray *linkedContactIdentifiers; // @synthesize linkedContactIdentifiers=_linkedContactIdentifiers;
 

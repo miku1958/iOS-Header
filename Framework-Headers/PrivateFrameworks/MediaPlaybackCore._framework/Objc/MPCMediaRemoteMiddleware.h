@@ -87,6 +87,7 @@
 - (long long)playerShuffleType:(long long)arg1 chain:(id)arg2;
 - (long long)playerState:(long long)arg1 chain:(id)arg2;
 - (long long)playerUpNextItemCount:(long long)arg1 chain:(id)arg2;
+- (BOOL)sectionIsAutoPlaySection:(BOOL)arg1 atIndex:(long long)arg2 chain:(id)arg3;
 - (id)sessionMetadataObject:(id)arg1 atIndexPath:(id)arg2 chain:(id)arg3;
 - (long long)sessionNumberOfPlayerPaths:(long long)arg1 chain:(id)arg2;
 - (long long)sessionNumberOfSessions:(long long)arg1 forPlayerPathAtIndex:(long long)arg2 chain:(id)arg3;

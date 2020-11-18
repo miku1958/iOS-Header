@@ -18,6 +18,7 @@
     BOOL _needsConsume;
     id<SZExtractorDelegate> _extractorDelegate;
     SZExtractor *_extractor;
+    long long _sandboxExtensionHandle;
 }
 
 @property (nonatomic) unsigned long long archiveBytesConsumed; // @dynamic archiveBytesConsumed;
@@ -29,14 +30,17 @@
 @property (weak, nonatomic) id<SZExtractorDelegate> extractorDelegate; // @synthesize extractorDelegate=_extractorDelegate;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL needsConsume; // @synthesize needsConsume=_needsConsume;
+@property (readonly, nonatomic) long long sandboxExtensionHandle; // @synthesize sandboxExtensionHandle=_sandboxExtensionHandle;
 @property (strong, nonatomic) IXPromisedStreamingZipTransferSeed *seed; // @dynamic seed;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL useProgressFromSZExtractor;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_prepareForExtractionToPath:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)addArchiveBytesConsumed:(unsigned long long)arg1;
 - (BOOL)consumeExtractedDataIfNeeded;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)extractionCompleteAtArchivePath:(id)arg1;
 - (void)extractionEnteredPassThroughMode;

@@ -16,6 +16,7 @@
 @property (nonatomic) BOOL allowAnyNetwork;
 @property (nonatomic) BOOL cellularFaceTimeEnabled;
 @property (nonatomic) BOOL isDeviceInDualPhoneIdentityMode;
+@property (nonatomic) BOOL isDeviceInManualPhoneSelectionMode;
 @property (copy, nonatomic) NSArray *selectedPhoneNumberRegistrationSubscriptionLabels;
 @property (readonly, copy, nonatomic) NSNumber *selectedPhoneNumberRegistrationSubscriptionNumber;
 

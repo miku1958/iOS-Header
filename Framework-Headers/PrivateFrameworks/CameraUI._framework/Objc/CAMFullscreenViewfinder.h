@@ -14,7 +14,7 @@
 #import <CameraUI/CAMViewfinderTransitionable-Protocol.h>
 #import <CameraUI/CEKBadgeViewDelegate-Protocol.h>
 
-@class AVSpatialOverCaptureVideoPreviewLayer, CAMAdditiveAnimator, CAMBadgeTray, CAMCTMDescriptionOverlayView, CAMControlDrawer, CAMControlStatusBar, CAMCreativeCameraButton, CAMDynamicShutterControl, CAMElapsedTimeView, CAMFilterNameBadge, CAMFlipButton, CAMFullscreenModeSelector, CAMFullscreenViewfinderLayout, CAMImageWell, CAMLowLightInstructionLabel, CAMModeDial, CAMModeIndicatorView, CAMPanoramaView, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPreviewView, CAMQRCodeInstructionLabel, CAMTimerIndicatorView, CAMViewfinderReticleView, CAMZoomControl, CAMZoomSlider, CEKLightingControl, CEKLightingNameBadge, NSString, UILongPressGestureRecognizer;
+@class AVSpatialOverCaptureVideoPreviewLayer, CAMAdditiveAnimator, CAMBadgeTray, CAMCTMDescriptionOverlayView, CAMControlDrawer, CAMControlStatusBar, CAMCreativeCameraButton, CAMDynamicShutterControl, CAMElapsedTimeView, CAMFilterNameBadge, CAMFlipButton, CAMFullscreenModeSelector, CAMFullscreenViewfinderLayout, CAMImageWell, CAMInterfaceModulationView, CAMLowLightInstructionLabel, CAMModeDial, CAMModeIndicatorView, CAMPanoramaView, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPreviewAlignmentGuide, CAMPreviewView, CAMQRCodeInstructionLabel, CAMTimerIndicatorView, CAMViewfinderReticleView, CAMZoomControl, CAMZoomSlider, CEKLightingControl, CEKLightingNameBadge, NSString, UILongPressGestureRecognizer;
 @protocol CAMFullscreenViewfinderDelegate;
 
 @interface CAMFullscreenViewfinder : UIView <CAMAdditiveAnimatorDelegate, CAMControlDrawerPresentationDelegate, CEKBadgeViewDelegate, CAMInstructionLabelDelegate, CAMViewfinderTransitionable, CAMAccessibilityHUDItemProvider, CAMBarsAccessibilityHUDManagerGestureProvider>
@@ -28,6 +28,7 @@
     BOOL _timerIndicatorVisible;
     BOOL _qrCodeLabelVisible;
     BOOL _lowLightInstructionLabelVisible;
+    BOOL _previewAlignmentGuideVisible;
     BOOL _legibilityBackgroundsVisible;
     BOOL _portraitControlsAllowed;
     BOOL __usingCreativeCameraControls;
@@ -38,6 +39,7 @@
     CAMPreviewView *_previewView;
     long long _previewViewOrientation;
     long long _orientation;
+    CAMPreviewAlignmentGuide *_previewAlignmentGuide;
     CAMControlDrawer *_controlDrawer;
     CAMDynamicShutterControl *_shutterControl;
     CAMControlStatusBar *_controlStatusBar;
@@ -71,9 +73,11 @@
     CAMFullscreenViewfinderLayout *__layout;
     AVSpatialOverCaptureVideoPreviewLayer *__overCapturePreviewLayer;
     CAMAdditiveAnimator *__viewportAnimator;
+    CAMInterfaceModulationView *__contentView;
 }
 
 @property (strong, nonatomic, setter=_setBottomLegibilityBackground:) UIView *_bottomLegibilityBackground; // @synthesize _bottomLegibilityBackground=__bottomLegibilityBackground;
+@property (readonly, nonatomic) CAMInterfaceModulationView *_contentView; // @synthesize _contentView=__contentView;
 @property (nonatomic, getter=_isControlDrawerPresentedModally, setter=_setControlDrawerPresentedModally:) BOOL _controlDrawerPresentedModally; // @synthesize _controlDrawerPresentedModally=__controlDrawerPresentedModally;
 @property (readonly, nonatomic) CAMFullscreenViewfinderLayout *_layout; // @synthesize _layout=__layout;
 @property (strong, nonatomic, setter=_setLowLightInstructionLabel:) CAMLowLightInstructionLabel *_lowLightInstructionLabel; // @synthesize _lowLightInstructionLabel=__lowLightInstructionLabel;
@@ -81,7 +85,7 @@
 @property (strong, nonatomic, setter=_setOverCapturePreviewLayer:) AVSpatialOverCaptureVideoPreviewLayer *_overCapturePreviewLayer; // @synthesize _overCapturePreviewLayer=__overCapturePreviewLayer;
 @property (readonly, nonatomic) UIView *_previewContainerView; // @synthesize _previewContainerView=__previewContainerView;
 @property (readonly, nonatomic) CAMViewfinderReticleView *_reticleView; // @synthesize _reticleView=__reticleView;
-@property (nonatomic, getter=_isUsingCreativeCameraControls, setter=_setUsingCreativeCameraControls:) BOOL _usingCreativeCameraControls; // @synthesize _usingCreativeCameraControls=__usingCreativeCameraControls;
+@property (readonly, nonatomic, getter=_isUsingCreativeCameraControls) BOOL _usingCreativeCameraControls; // @synthesize _usingCreativeCameraControls=__usingCreativeCameraControls;
 @property (readonly, nonatomic) CAMAdditiveAnimator *_viewportAnimator; // @synthesize _viewportAnimator=__viewportAnimator;
 @property (readonly, nonatomic) CAMBadgeTray *badgeTray; // @synthesize badgeTray=_badgeTray;
 @property (strong, nonatomic) NSString *contentSize; // @synthesize contentSize=_contentSize;
@@ -102,6 +106,7 @@
 @property (nonatomic, getter=isFlipButtonVisible) BOOL flipButtonVisible; // @synthesize flipButtonVisible=_flipButtonVisible;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CAMImageWell *imageWell; // @synthesize imageWell=_imageWell;
+@property (nonatomic) unsigned long long interfaceModulation;
 @property (nonatomic, getter=isLegibilityBackgroundsVisible) BOOL legibilityBackgroundsVisible; // @synthesize legibilityBackgroundsVisible=_legibilityBackgroundsVisible;
 @property (readonly, nonatomic) CEKLightingControl *lightingControl; // @synthesize lightingControl=_lightingControl;
 @property (readonly, nonatomic) CEKLightingNameBadge *lightingNameBadge; // @synthesize lightingNameBadge=_lightingNameBadge;
@@ -117,6 +122,8 @@
 @property (nonatomic, getter=isPortraitControlsAllowed) BOOL portraitControlsAllowed; // @synthesize portraitControlsAllowed=_portraitControlsAllowed;
 @property (readonly, nonatomic) CAMPortraitModeInstructionLabel *portraitInstructionLabel; // @synthesize portraitInstructionLabel=_portraitInstructionLabel;
 @property (strong, nonatomic) CAMPortraitModeDescriptionOverlayView *portraitModeOverlayView; // @synthesize portraitModeOverlayView=_portraitModeOverlayView;
+@property (strong, nonatomic, setter=_setPreviewAlignmentGuide:) CAMPreviewAlignmentGuide *previewAlignmentGuide; // @synthesize previewAlignmentGuide=_previewAlignmentGuide;
+@property (nonatomic, getter=isPreviewAlignmentGuideVisible) BOOL previewAlignmentGuideVisible; // @synthesize previewAlignmentGuideVisible=_previewAlignmentGuideVisible;
 @property (strong, nonatomic) CAMPreviewView *previewView; // @synthesize previewView=_previewView;
 @property (nonatomic) long long previewViewOrientation; // @synthesize previewViewOrientation=_previewViewOrientation;
 @property (readonly, nonatomic) CAMQRCodeInstructionLabel *qrCodeInstructionLabel; // @synthesize qrCodeInstructionLabel=_qrCodeInstructionLabel;
@@ -154,6 +161,7 @@
 - (CDStruct_d54ccef3)_geometryForInstructionLabel:(id)arg1;
 - (CDStruct_d54ccef3)_geometryForLandscapeLightingBadge;
 - (void)_handleDirectionIndicatorTapped;
+- (void)_insertBackgroundSubview:(id)arg1;
 - (void)_iterateViewsForHUDManager:(id)arg1 withItemFoundBlock:(CDUnknownBlockType)arg2;
 - (void)_layoutPanoramaView;
 - (void)_layoutZoomControls;
@@ -171,6 +179,8 @@
 - (void)_transitionView:(id)arg1 fromOrientation:(long long)arg2 toOrientation:(long long)arg3;
 - (void)_updateControlsForContentSize;
 - (void)_updateModeDialClippingForViewportFrame:(struct CGRect)arg1;
+- (void)_updatePortraitControlsHighlightAnimated:(BOOL)arg1;
+- (void)_updatePreviewAlignmentGuideForViewportFrame:(struct CGRect)arg1;
 - (void)_updatePreviewLayerForPreviewFrame:(struct CGRect)arg1 viewportFrame:(struct CGRect)arg2;
 - (void)_updateReticleForViewportFrame:(struct CGRect)arg1;
 - (void)_updateSubviewsVisibilityAnimated:(BOOL)arg1;
@@ -194,10 +204,12 @@
 - (void)setControlDrawerExpanded:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setElapsedTimeViewVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setFlipButtonVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setInterfaceModulation:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)setLegibilityBackgroundsVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setLowLightInstructionLabelVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
 - (void)setPortraitControlsAllowed:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setPreviewAlignmentGuideVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setQRCodeLabelVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setQrCodeLabelVisible:(BOOL)arg1;
 - (void)setReticleMaskingStyle:(long long)arg1 withDuration:(double)arg2;

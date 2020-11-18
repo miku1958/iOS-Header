@@ -188,6 +188,7 @@
 - (BOOL)supportsTickmarks;
 - (BOOL)supportsTrendLines;
 - (BOOL)supportsValueAxisLabelsPosition;
+- (BOOL)supportsValueLabelSpacing;
 - (BOOL)supportsValueLabels;
 - (struct UIEdgeInsets)swatchImageEdgeInsetsForSize:(struct CGSize)arg1;
 - (id)titlePositionerWithInfo:(id)arg1 scene:(id)arg2;

@@ -8,16 +8,16 @@
 
 #import <SpringBoard/SBDateTimeOverrideObserver-Protocol.h>
 
-@class NSString, SBDateTimeController;
+@class NSString, SBFDateTimeController;
 @protocol SBCalendarIconImageProviderDelegate;
 
 @interface SBCalendarIconImageProvider : NSObject <SBDateTimeOverrideObserver>
 {
     id<SBCalendarIconImageProviderDelegate> _delegate;
-    SBDateTimeController *_dateTimeController;
+    SBFDateTimeController *_dateTimeController;
 }
 
-@property (readonly, nonatomic) SBDateTimeController *dateTimeController; // @synthesize dateTimeController=_dateTimeController;
+@property (readonly, nonatomic) SBFDateTimeController *dateTimeController; // @synthesize dateTimeController=_dateTimeController;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBCalendarIconImageProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

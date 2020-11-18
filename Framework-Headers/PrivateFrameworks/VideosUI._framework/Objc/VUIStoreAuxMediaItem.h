@@ -20,6 +20,8 @@
     BOOL _disableScrubbing;
     BOOL _isiTunesPurchasedOrRentedContent;
     BOOL _ignoreExistingOfflineKeyData;
+    BOOL _isFamilySharingContent;
+    BOOL _isLiveContent;
     BOOL _isHLS;
     BOOL _isForStartingDownload;
     NSURL *_fpsCertificateURL;
@@ -51,8 +53,10 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL ignoreExistingOfflineKeyData; // @synthesize ignoreExistingOfflineKeyData=_ignoreExistingOfflineKeyData;
 @property (nonatomic) BOOL isAudioOnly; // @synthesize isAudioOnly=_isAudioOnly;
+@property (nonatomic) BOOL isFamilySharingContent; // @synthesize isFamilySharingContent=_isFamilySharingContent;
 @property (nonatomic) BOOL isForStartingDownload; // @synthesize isForStartingDownload=_isForStartingDownload;
 @property (nonatomic) BOOL isHLS; // @synthesize isHLS=_isHLS;
+@property (nonatomic) BOOL isLiveContent; // @synthesize isLiveContent=_isLiveContent;
 @property (nonatomic) BOOL isiTunesPurchasedOrRentedContent; // @synthesize isiTunesPurchasedOrRentedContent=_isiTunesPurchasedOrRentedContent;
 @property (strong, nonatomic) NSObject *parentReportingToken; // @synthesize parentReportingToken=_parentReportingToken;
 @property (nonatomic) long long playbackType; // @synthesize playbackType=_playbackType;
@@ -85,6 +89,8 @@
 - (void)prepareForLoadingWithCompletion:(CDUnknownBlockType)arg1;
 - (id)replacementErrorForPlaybackError:(id)arg1;
 - (id)reportingDelegate;
+- (void)resetReportingEventCollection;
+- (void)setMediaItemMetadata:(id)arg1 forProperty:(id)arg2;
 - (void)storeFPSKeyLoader:(id)arg1 didLoadOfflineKeyData:(id)arg2 forKeyRequest:(id)arg3;
 - (void)storeFPSKeyLoader:(id)arg1 willFailWithError:(id)arg2 forKeyRequest:(id)arg3;
 - (void)updateBookmarkWithSuggestedTime:(double)arg1 forElapsedTime:(double)arg2 duration:(double)arg3 playbackOfMediaItemIsEnding:(BOOL)arg4;

@@ -33,7 +33,7 @@
 @property (strong, nonatomic) NSMutableSet *tokenRegistrations; // @synthesize tokenRegistrations=_tokenRegistrations;
 
 - (void).cxx_destruct;
-- (long long)XPCActivityIntervalFromSystemSetting;
+- (long long)XPCActivityInterval;
 - (id)_fetchActivityCriteriaInOnPowerMode;
 - (id)_fetchActivityCriteriaWithInterval:(long long)arg1;
 - (void)_retryActivityFired;
@@ -46,14 +46,14 @@
 - (id)description;
 - (const char *)fetchActivityIdentifier;
 - (id)init;
-- (BOOL)isSetToSystemFetchInterval;
+- (BOOL)isSetToExpectedFetchInterval;
 - (void)performTokenRegistrationRequestsWithToken:(id)arg1 onBehalfOf:(id)arg2;
 - (void)refreshCollections:(id)arg1 withReason:(int)arg2;
 - (const char *)retryActivityIdentifier;
 - (void)retryCollections:(id)arg1 after:(double)arg2 reason:(int)arg3;
 - (void)startDailyRefreshActivity;
+- (void)startFetchActivityForFetch;
 - (void)startFetchActivityForPush;
-- (void)startFetchActivityForSystemPCStyle;
 - (void)startFetchActivityWithInterval:(long long)arg1;
 - (void)stopCollectionsRefresh;
 - (void)tokenRegistrationRequest:(id)arg1 finishedWithError:(id)arg2;

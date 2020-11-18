@@ -52,6 +52,7 @@
 - (double)_weight;
 - (BOOL)hasAttributes:(unsigned long long)arg1;
 - (id)initWithHistoryItem:(id)arg1 sqliteRow:(id)arg2 baseColumnIndex:(unsigned long long)arg3;
+- (id)initWithHistoryItem:(id)arg1 streamedVisit:(const struct _HistoryStreamedVisit *)arg2;
 - (id)initWithHistoryItem:(id)arg1 visitTime:(double)arg2;
 - (id)initWithHistoryItem:(id)arg1 visitTime:(double)arg2 loadWasSuccesful:(BOOL)arg3 wasHTTPNonGet:(BOOL)arg4 origin:(long long)arg5 attributes:(unsigned long long)arg6;
 - (void)recomputeScore;

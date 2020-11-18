@@ -29,7 +29,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long paymentSetupMode; // @synthesize paymentSetupMode=_paymentSetupMode;
 @property (readonly, strong, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
-@property (nonatomic) id<PKPaymentSetupDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
+@property (weak, nonatomic) id<PKPaymentSetupDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property (nonatomic) BOOL showsWelcomeViewController; // @synthesize showsWelcomeViewController=_showsWelcomeViewController;
 @property (readonly) Class superclass;
 

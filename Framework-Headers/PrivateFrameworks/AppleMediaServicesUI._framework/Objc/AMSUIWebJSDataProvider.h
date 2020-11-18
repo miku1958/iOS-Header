@@ -27,11 +27,20 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) AMSUIWebView *webView; // @synthesize webView=_webView;
 
 - (void).cxx_destruct;
-- (id)_syncProperties:(id)arg1;
+- (BOOL)_canInteractWithJS;
+- (void)_observeNotifications;
+- (void)_postSubscriptionChangedWithType:(long long)arg1;
+- (void)_purchaseDidSucceed:(id)arg1;
+- (void)_subscriptionStatusChangeAppStore:(id)arg1;
+- (void)_subscriptionStatusChangeMusic:(id)arg1;
+- (void)_subscriptionStatusChangeNews:(id)arg1;
+- (void)_subscriptionStatusChangeTV:(id)arg1;
+- (void)_subscriptionStatusChangeiCloud:(id)arg1;
 - (id)_syncPropertiesScriptWithProperties:(id)arg1;
 - (id)createWebView;
 - (id)initWithContext:(id)arg1;
 - (id)loadPageModelWithInfo:(id)arg1;
+- (id)postEvent:(id)arg1 options:(id)arg2;
 - (void)propertiesDidChange:(id)arg1;
 - (id)runJSRequest:(id)arg1;
 - (id)syncProperties;

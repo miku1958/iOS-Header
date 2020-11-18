@@ -17,12 +17,10 @@
     struct {
         unsigned int amountType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _amountType;
     _INPBCurrencyAmountValue *_value;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int amountType; // @synthesize amountType=_amountType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

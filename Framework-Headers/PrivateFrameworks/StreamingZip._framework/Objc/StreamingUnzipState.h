@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
     BOOL _storeCurrentFileInMemory;
     BOOL _currentLFRequiresDataDescriptor;
     BOOL _denyInvalidSymlinks;
+    BOOL _performCachedWrites;
 }
 
 @property (readonly, nonatomic) unsigned long long bytesHashedInChunk; // @synthesize bytesHashedInChunk=_bytesHashedInChunk;
@@ -56,6 +57,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long hashedChunkSize; // @synthesize hashedChunkSize=_hashedChunkSize;
 @property (strong, nonatomic) NSMutableData *inMemoryFileData; // @synthesize inMemoryFileData=_inMemoryFileData;
 @property (strong, nonatomic) NSString *lastChunkPartialHash; // @synthesize lastChunkPartialHash=_lastChunkPartialHash;
+@property (nonatomic) BOOL performCachedWrites; // @synthesize performCachedWrites=_performCachedWrites;
 @property (nonatomic) unsigned long long recordsProcessed; // @synthesize recordsProcessed=_recordsProcessed;
 @property (nonatomic) BOOL storeCurrentFileInMemory; // @synthesize storeCurrentFileInMemory=_storeCurrentFileInMemory;
 @property (strong, nonatomic) NSDictionary *streamInfoDict; // @synthesize streamInfoDict=_streamInfoDict;

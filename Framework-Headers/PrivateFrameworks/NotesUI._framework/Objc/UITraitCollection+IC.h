@@ -11,10 +11,14 @@
 @interface UITraitCollection (IC)
 
 @property (readonly, nonatomic) ICAppearanceInfo *ic_appearanceInfo;
+@property (readonly, nonatomic) BOOL ic_hasCompactHeight;
+@property (readonly, nonatomic) BOOL ic_hasCompactSize;
+@property (readonly, nonatomic) BOOL ic_hasCompactWidth;
 @property (readonly, nonatomic) BOOL ic_isDark;
 
 + (BOOL)ic_alwaysShowLightContent;
 + (void)setIc_alwaysShowLightContent:(BOOL)arg1;
+- (BOOL)ic_hasEqualSizeToTraitCollection:(id)arg1;
 - (void)ic_performAsCurrent:(CDUnknownBlockType)arg1;
 - (id)ic_traitCollectionByAppendingNonNilTraitCollection:(id)arg1;
 @end

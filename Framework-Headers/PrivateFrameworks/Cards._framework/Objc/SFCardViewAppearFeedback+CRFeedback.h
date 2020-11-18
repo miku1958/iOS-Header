@@ -8,11 +8,11 @@
 
 #import <Cards/CRCardViewAppearanceFeedback-Protocol.h>
 
-@class NSString, SFFeedback;
+@class NSString;
 
 @interface SFCardViewAppearFeedback (CRFeedback) <CRCardViewAppearanceFeedback>
 
-@property (readonly, nonatomic) SFFeedback *backingFeedback;
+@property (readonly, nonatomic) SFCardViewAppearFeedback *backingFeedback;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

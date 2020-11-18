@@ -6,7 +6,7 @@
 
 #import <Email/EMObjectID.h>
 
-@class ECAngleBracketIDHash, EMMailboxScope, EMMessageCollectionItemID, NSData;
+@class EMMailboxScope, EMMessageCollectionItemID;
 
 @interface EMMessageObjectID : EMObjectID
 {
@@ -15,12 +15,9 @@
 }
 
 @property (readonly, nonatomic) EMMessageCollectionItemID *collectionItemID; // @synthesize collectionItemID=_collectionItemID;
-@property (readonly, nonatomic) long long databaseID;
+@property (readonly, nonatomic) long long globalMessageID;
 @property (readonly, nonatomic) EMMailboxScope *mailboxScope; // @synthesize mailboxScope=_mailboxScope;
-@property (readonly, nonatomic) ECAngleBracketIDHash *messageIDHeaderHash;
-@property (readonly, nonatomic) NSData *serializedRepresentation;
 
-+ (id)log;
 + (id)new;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -32,9 +29,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCollectionItemID:(id)arg1 mailboxScope:(id)arg2;
 - (id)initWithCollectionItemID:(id)arg1 predicate:(id)arg2 mailboxTypeResolver:(id)arg3;
-- (id)initWithMessageDatabaseID:(long long)arg1;
-- (id)initWithMessageIDHeaderHash:(id)arg1 mailboxScope:(id)arg2;
-- (id)initWithSerializedRepresentation:(id)arg1;
+- (id)initWithGlobalMessageID:(long long)arg1 mailboxScope:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

@@ -4,14 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Vision/VNDetector.h>
+#import <Vision/VNEspressoModelFileBasedDetector.h>
 
 __attribute__((visibility("hidden")))
-@interface VNTorsoprintGenerator : VNDetector
+@interface VNTorsoprintGenerator : VNEspressoModelFileBasedDetector
 {
-    void *_mEspressoContext;
-    void *_mEspressoPlan;
-    CDStruct_2bc666a5 _mEspressoNetwork;
 }
 
 + (float)_magnifiedBBoxScaleFactor;
@@ -19,9 +16,10 @@ __attribute__((visibility("hidden")))
 + (struct CGSize)_torsoprintDescriptorSize;
 + (struct CGSize)_torsoprintInputImageSizeForFaceOrientation:(int)arg1;
 + (id)configurationOptionKeysForDetectorKey;
++ (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
++ (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 - (BOOL)_calculateTorsoBBoxFromFaceBBox:(struct CGRect)arg1 insideImageWithSize:(struct CGSize)arg2 faceOrientationRelativeToUpright:(int)arg3 torsoBBox:(struct CGRect *)arg4 error:(id *)arg5;
-- (BOOL)completeInitializationAndReturnError:(id *)arg1;
-- (void)dealloc;
+- (BOOL)_runTorsoprintModelOnImageBuffer:(struct __CVBuffer *)arg1 error:(id *)arg2;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 - (BOOL)supportsProcessingDevice:(id)arg1;
 

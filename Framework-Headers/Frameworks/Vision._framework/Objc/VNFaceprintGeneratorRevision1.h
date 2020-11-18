@@ -6,20 +6,15 @@
 
 #import <Vision/VNFaceprintGenerator.h>
 
-@class MISSING_TYPE;
-
 __attribute__((visibility("hidden")))
 @interface VNFaceprintGeneratorRevision1 : VNFaceprintGenerator
 {
 }
 
 + (int)clusteringConfidence;
-+ (struct __CVBuffer *)cropFaceBoundingBoxFrom:(id)arg1 cropBounds:(struct CGRect)arg2 error:(id *)arg3;
 + (struct CGRect)faceBoundingBox:(id)arg1;
 + (CDUnknownFunctionPointerType)faceDescriptorCreator;
-+ (MISSING_TYPE *)frontalizer;
 + (CDUnknownFunctionPointerType)getFaceJunkClassifier;
-+ (int)imageType;
 + (float)magnifiedBBoxScaleFactor;
 + (id)modelPath;
 + (unsigned long long)numberOfChannels;

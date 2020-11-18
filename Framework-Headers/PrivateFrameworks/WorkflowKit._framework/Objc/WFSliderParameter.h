@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (id)defaultSerializedRepresentation;
 - (id)initWithDefinition:(id)arg1;
+- (id)localizedLabelWithState:(id)arg1;
 - (BOOL)shouldAlignLabels;
 - (Class)singleStateClass;
 

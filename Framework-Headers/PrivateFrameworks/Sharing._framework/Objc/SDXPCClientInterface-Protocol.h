@@ -27,6 +27,7 @@
 - (void)setAudioRoutingScore:(int)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setupDevice:(SFDevice *)arg1 homeIdentifier:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)showDevicePickerWithInfo:(NSDictionary *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)startProxCardTransactionWithOptions:(unsigned long long)arg1 completion:(void (^)(BOOL))arg2;
 - (void)subCredentialPresentCardWithParams:(SFClientSubCredentialParams *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)testContinuityKeyboardBegin:(BOOL)arg1;
 - (void)triggerHomeKitDeviceDetectedWithURL:(NSURL *)arg1 completion:(void (^)(NSError *))arg2;

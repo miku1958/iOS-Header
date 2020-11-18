@@ -25,7 +25,7 @@
 + (id)countDescription;
 + (id)imageTypes;
 + (id)itemWithImage:(id)arg1 named:(id)arg2 preferredFileType:(id)arg3;
-+ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 contentSource:(id)arg4;
++ (id)itemWithSerializedItem:(id)arg1 forType:(id)arg2 named:(id)arg3 attributionSet:(id)arg4;
 + (id)outputTypes;
 + (id)ownedPasteboardTypes;
 + (id)ownedTypes;

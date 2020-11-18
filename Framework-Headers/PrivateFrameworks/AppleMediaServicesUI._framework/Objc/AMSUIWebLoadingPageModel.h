@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AppleMediaServicesUI/AMSUIWebModel.h>
+#import <objc/NSObject.h>
 
 #import <AppleMediaServicesUI/AMSUIWebPageProvider-Protocol.h>
 
 @class AMSUIWebClientContext, AMSUIWebNavigationBarModel, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebLoadingPageModel : AMSUIWebModel <AMSUIWebPageProvider>
+@interface AMSUIWebLoadingPageModel : NSObject <AMSUIWebPageProvider>
 {
     BOOL _disableDelay;
     AMSUIWebNavigationBarModel *_navigationBar;

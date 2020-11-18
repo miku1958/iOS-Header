@@ -6,33 +6,42 @@
 
 #import <UIFoundation/NSTypesetter.h>
 
+@class NSDictionary;
 @protocol NSCoreTypesetterDelegate;
 
 @interface NSCoreTypesetter : NSTypesetter
 {
     BOOL _wantsExtraLineFragment;
-    CDUnknownBlockType laidOutLineFragment;
+    BOOL _usesDefaultHyphenation;
+    BOOL _allowsFontSubstitutionAffectingVerticalMetrics;
+    CDUnknownBlockType _laidOutLineFragment;
     id<NSCoreTypesetterDelegate> delegate;
+    CDUnknownBlockType _validateLineBreakIndex;
+    NSDictionary *__extraLineFragmentAttributes;
     struct _NSRange characterRange;
     struct CGSize textContainerSize;
 }
 
+@property (copy) NSDictionary *_extraLineFragmentAttributes; // @synthesize _extraLineFragmentAttributes=__extraLineFragmentAttributes;
+@property BOOL allowsFontSubstitutionAffectingVerticalMetrics; // @synthesize allowsFontSubstitutionAffectingVerticalMetrics=_allowsFontSubstitutionAffectingVerticalMetrics;
 @property struct _NSRange characterRange; // @synthesize characterRange;
 @property (weak) id<NSCoreTypesetterDelegate> delegate; // @synthesize delegate;
-@property (copy) CDUnknownBlockType laidOutLineFragment; // @synthesize laidOutLineFragment;
+@property (copy) CDUnknownBlockType laidOutLineFragment; // @synthesize laidOutLineFragment=_laidOutLineFragment;
 @property struct CGSize textContainerSize; // @synthesize textContainerSize;
+@property BOOL usesDefaultHyphenation; // @synthesize usesDefaultHyphenation=_usesDefaultHyphenation;
+@property (copy) CDUnknownBlockType validateLineBreakIndex; // @synthesize validateLineBreakIndex=_validateLineBreakIndex;
 @property BOOL wantsExtraLineFragment; // @synthesize wantsExtraLineFragment=_wantsExtraLineFragment;
 
-+ (void)_lineMetricsForAttributes:(id)arg1 typesetterBehavior:(long long)arg2 usesFontLeading:(BOOL)arg3 applySpacings:(BOOL)arg4 usesSystemFontLeading:(BOOL)arg5 usesNegativeFontLeading:(BOOL)arg6 lineHeight:(double *)arg7 baselineOffset:(double *)arg8 spacing:(double *)arg9 applicationFrameworkContext:(long long)arg10 wantsTextLineFragments:(BOOL)arg11;
-+ (void)_lineMetricsFromAttributedString:(id)arg1 range:(struct _NSRange)arg2 typesetterBehavior:(long long)arg3 usesFontLeading:(BOOL)arg4 applySpacings:(BOOL)arg5 usesSystemFontLeading:(BOOL)arg6 usesNegativeFontLeading:(BOOL)arg7 lineHeight:(double *)arg8 baselineOffset:(double *)arg9 spacing:(double *)arg10 applicationFrameworkContext:(long long)arg11 wantsTextLineFragments:(BOOL)arg12;
++ (void)_lineMetricsForAttributes:(id)arg1 typesetterBehavior:(long long)arg2 usesFontLeading:(BOOL)arg3 applySpacings:(BOOL)arg4 usesSystemFontLeading:(BOOL)arg5 usesNegativeFontLeading:(BOOL)arg6 lineHeight:(double *)arg7 baselineOffset:(double *)arg8 spacing:(double *)arg9 applicationFrameworkContext:(long long)arg10;
 + (void)_maximumAscentAndDescentForRuns:(struct __CFArray *)arg1 ascender:(double *)arg2 descender:(double *)arg3;
-+ (BOOL)_supportsStringDrawingPath:(unsigned char)arg1;
 - (void).cxx_destruct;
-- (int)_NSFastDrawString:(id)arg1 length:(unsigned long long)arg2 attributes:(id)arg3 paragraphStyle:(id)arg4 typesetterBehavior:(long long)arg5 lineBreakMode:(long long)arg6 rect:(struct CGRect)arg7 padding:(double)arg8 graphicsContext:(id)arg9 baselineRendering:(BOOL)arg10 usesFontLeading:(BOOL)arg11 usesScreenFont:(BOOL)arg12 scrollable:(BOOL)arg13 syncAlignment:(BOOL)arg14 mirrored:(BOOL)arg15 boundingRectPointer:(struct CGRect *)arg16 baselineOffsetPointer:(double *)arg17 wantsTextLineFragments:(BOOL)arg18 drawingContext:(id)arg19;
-- (struct CGRect)_stringDrawingCoreTextEngineWithOriginalString:(id)arg1 rect:(struct CGRect)arg2 padding:(double)arg3 graphicsContext:(id)arg4 forceClipping:(BOOL)arg5 attributes:(id)arg6 stringDrawingOptions:(long long)arg7 drawingContext:(id)arg8 wantsTextLineFragments:(BOOL)arg9 validatedAttributedString:(id)arg10 firstNonRenderedCharacterIndex:(long long *)arg11 foundSoftHyphenAtEOL:(BOOL *)arg12 enginePathUsed:(unsigned char *)arg13;
+- (int)_NSFastDrawString:(id)arg1 length:(unsigned long long)arg2 attributes:(id)arg3 paragraphStyle:(id)arg4 typesetterBehavior:(long long)arg5 lineBreakMode:(long long)arg6 rect:(struct CGRect)arg7 padding:(double)arg8 graphicsContext:(id)arg9 baselineRendering:(BOOL)arg10 usesFontLeading:(BOOL)arg11 usesScreenFont:(BOOL)arg12 scrollable:(BOOL)arg13 syncAlignment:(BOOL)arg14 mirrored:(BOOL)arg15 boundingRectPointer:(struct CGRect *)arg16 baselineOffsetPointer:(double *)arg17 drawingContext:(id)arg18;
+- (CDStruct_39925896)_getLineMetricsForRange:(struct _NSRange)arg1 attributes:(id)arg2 applySpacing:(BOOL)arg3 usesSystemFontLeading:(BOOL)arg4 usesNegativeFontLeading:(BOOL)arg5;
+- (struct CGRect)_stringDrawingCoreTextEngineWithOriginalString:(id)arg1 rect:(struct CGRect)arg2 padding:(double)arg3 graphicsContext:(id)arg4 forceClipping:(BOOL)arg5 attributes:(id)arg6 stringDrawingOptions:(long long)arg7 drawingContext:(id)arg8 stringDrawingInterface:(CDStruct_65ebe2bc *)arg9;
 - (void)dealloc;
 - (id)init;
 - (void)layout;
+- (id)softHyphen;
 
 @end
 

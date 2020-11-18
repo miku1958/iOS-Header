@@ -96,6 +96,16 @@ struct SBDragPreviewShadowParameters {
     struct CGSize shadowOffset;
 };
 
+struct SBHIconGridSize {
+    unsigned short _field1;
+    unsigned short _field2;
+};
+
+struct SBIconCoordinate {
+    long long _field1;
+    long long _field2;
+};
+
 struct SBIconImageInfo {
     struct CGSize _field1;
     double _field2;
@@ -113,6 +123,13 @@ struct SBReachabilityActivationContext {
     struct CGPoint velocity;
     struct CGRect viewBounds;
     BOOL everTranslatedUpwards;
+};
+
+struct SBTodayIconListLayoutAttributes {
+    struct CGRect _field1;
+    double _field2;
+    double _field3;
+    double _field4;
 };
 
 struct SBWindowLevelRange_struct {
@@ -180,7 +197,7 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
-    BOOL itemIsEnabled[42];
+    BOOL itemIsEnabled[43];
     char timeString[64];
     char shortTimeString[64];
     char dateString[256];
@@ -234,11 +251,11 @@ typedef struct {
     unsigned int secondaryCellularConfigured:1;
     char primaryServiceBadgeString[100];
     char secondaryServiceBadgeString[100];
-} CDStruct_0942cde0;
+} CDStruct_3fd7985f;
 
 typedef struct {
-    unsigned int _field1[8];
-} CDStruct_6ad76789;
+    unsigned int val[8];
+} CDStruct_4c969caf;
 
 typedef struct {
     double value;
@@ -262,7 +279,7 @@ typedef struct {
 } CDStruct_e838e30c;
 
 typedef struct {
-    BOOL _field1[42];
+    BOOL _field1[43];
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
@@ -297,26 +314,12 @@ typedef struct {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
-    CDStruct_0942cde0 _field3;
-} CDStruct_fdd39a06;
+    CDStruct_3fd7985f _field3;
+} CDStruct_35107363;
 
 typedef struct {
     long long _field1;
     struct CGPoint _field2;
     struct CGPoint _field3;
 } CDStruct_3b09cf25;
-
-typedef struct {
-    struct {
-        unsigned int _field1;
-        unsigned int _field2;
-        unsigned int _field3;
-        unsigned int _field4;
-        unsigned int _field5;
-        int _field6;
-    } _field1;
-    struct {
-        unsigned int _field1;
-    } _field2;
-} CDStruct_a54b61c1;
 

@@ -6,11 +6,6 @@
 
 #import <PhotosUICore/PXDisplayCollection-Protocol.h>
 
-@class NSString;
-
 @protocol PXDisplayCollectionList <PXDisplayCollection>
-
-@property (readonly, nonatomic) NSString *localizedTitle;
-
 @end
 

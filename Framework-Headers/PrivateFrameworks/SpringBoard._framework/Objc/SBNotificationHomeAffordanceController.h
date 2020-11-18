@@ -8,7 +8,7 @@
 
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
 
-@class BSAnimationSettings, NSMapTable, SBHomeGesturePanGestureRecognizer, SBScreenEdgePanGestureRecognizer;
+@class BSAnimationSettings, NSMapTable, NSString, SBHomeGesturePanGestureRecognizer, SBScreenEdgePanGestureRecognizer;
 @protocol UIViewSpringAnimationBehaviorDescribing;
 
 @interface SBNotificationHomeAffordanceController : NSObject <SBHomeGestureParticipantDelegate>
@@ -17,9 +17,13 @@
     SBHomeGesturePanGestureRecognizer *_screenEdgePanGesture;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BSAnimationSettings *hideHomeAffordanceAnimationSettings;
 @property (readonly, nonatomic) SBScreenEdgePanGestureRecognizer *screenEdgePanGesture;
 @property (readonly, nonatomic) id<UIViewSpringAnimationBehaviorDescribing> settleHomeAffordanceAnimationBehaviorDescription;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) BSAnimationSettings *unhideHomeAffordanceAnimationSettings;
 
 + (id)sharedInstance;

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (void)_didFetchAppInfo:(id)arg1;
 - (BOOL)canBeShownFromSuspendedState;
 - (id)initWithUsageItem:(id)arg1 coordinator:(id)arg2;
+- (void)tableView:(id)arg1 willDisplayFooterView:(id)arg2 forSection:(long long)arg3;
 - (void)viewDidLoad;
 
 @end

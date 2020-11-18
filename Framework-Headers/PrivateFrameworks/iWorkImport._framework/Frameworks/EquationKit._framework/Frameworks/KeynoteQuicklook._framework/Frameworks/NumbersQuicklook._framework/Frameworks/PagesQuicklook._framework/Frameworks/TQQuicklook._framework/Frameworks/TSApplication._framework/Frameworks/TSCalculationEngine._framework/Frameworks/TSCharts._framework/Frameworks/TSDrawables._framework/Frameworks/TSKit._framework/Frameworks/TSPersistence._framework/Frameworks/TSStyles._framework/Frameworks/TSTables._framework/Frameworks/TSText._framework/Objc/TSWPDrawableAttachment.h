@@ -33,7 +33,7 @@
 - (void)dealloc;
 - (id)detachDrawable;
 - (void)didFinalizeUnarchivingFromWPStorage:(id)arg1;
-- (int)elementKind;
+- (unsigned int)elementKind;
 - (unsigned long long)hash;
 - (void)infoChanged;
 - (id)initWithContext:(id)arg1 drawable:(id)arg2;

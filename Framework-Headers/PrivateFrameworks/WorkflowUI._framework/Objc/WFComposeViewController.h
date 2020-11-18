@@ -6,46 +6,56 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <WorkflowUI/UINavigationBarDelegate-Protocol.h>
+#import <WorkflowUI/WFActionDrawerCoordinatorDelegate-Protocol.h>
 #import <WorkflowUI/WFComposeFlowControllerDelegate-Protocol.h>
+#import <WorkflowUI/WFContentClassesViewControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFDragCoordinator-Protocol.h>
 #import <WorkflowUI/WFDrawerControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFEditWorkflowViewControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFVariableUIDelegate-Protocol.h>
+#import <WorkflowUI/WFWorkflowSettingsViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSHashTable, NSLayoutConstraint, NSMutableArray, NSString, UINavigationController, UITraitCollection, UIView, WFActionDrawerCoordinator, WFActionDrawerViewController, WFComposeFlowController, WFComposeUserActivityManager, WFDrawerController, WFEditWorkflowViewController, WFRunWorkflowToolbar, WFWorkflow, WFWorkflowSettingsLayoutMetrics;
-@protocol WFComposeViewControllerDelegate, WFModuleDelegate;
+@class NSArray, NSHashTable, NSLayoutConstraint, NSMutableArray, NSString, UIButton, UILabel, UINavigationController, UITraitCollection, UIView, WFActionDrawerCoordinator, WFComposeFlowController, WFComposeUserActivityManager, WFDatabase, WFDrawerController, WFEditWorkflowViewController, WFEditorViewController, WFRunWorkflowToolbar, WFWorkflow, WFWorkflowSettingsLayoutMetrics;
+@protocol WFComposeViewControllerDelegate, WFComposeViewControllerPresenter, WFModuleDelegate;
 
-@interface WFComposeViewController : UIViewController <WFDragCoordinator, WFVariableUIDelegate, WFDrawerControllerDelegate, WFComposeFlowControllerDelegate, WFEditWorkflowViewControllerDelegate>
+@interface WFComposeViewController : UIViewController <WFVariableUIDelegate, WFDrawerControllerDelegate, WFComposeFlowControllerDelegate, WFWorkflowSettingsViewControllerDelegate, WFContentClassesViewControllerDelegate, WFActionDrawerCoordinatorDelegate, UINavigationBarDelegate, WFEditWorkflowViewControllerDelegate, WFDragCoordinator>
 {
     BOOL _actionsHidden;
-    BOOL _shouldProvideNavigationBar;
     BOOL _shouldShowShareButton;
     BOOL _observingSharingEnabledUserDefault;
+    unsigned long long _visibleToolbarPlacement;
+    WFWorkflow *_workflow;
     WFEditWorkflowViewController *_workflowViewController;
     double _bottomContentInset;
+    id<WFComposeViewControllerPresenter> _presenter;
     id<WFComposeViewControllerDelegate> _delegate;
+    WFDatabase *_database;
+    UIButton *_settingsButton;
     UIView *_separatorView;
     NSHashTable *_movedDragControllers;
     UITraitCollection *_upcomingTraitCollection;
     WFComposeUserActivityManager *_userActivityManager;
     NSMutableArray *_editingStates;
-    UINavigationController *_workflowNavigationController;
     WFRunWorkflowToolbar *_toolbar;
-    NSLayoutConstraint *_toolbarBottomAnchor;
+    NSLayoutConstraint *_bottomToolbarBottomAnchor;
     WFWorkflowSettingsLayoutMetrics *_layoutMetrics;
     WFActionDrawerCoordinator *_drawerCoordinator;
+    UILabel *_titleViewLabel;
+    UIButton *_titleViewSettingsButton;
+    UIButton *_titleAccessorySettingsButton;
     UINavigationController *_drawerNavigationController;
-    WFDrawerController *_drawerController;
     unsigned long long _preHideVisibility;
-    Class _actionsViewControllerClass;
     WFComposeFlowController *_flowController;
+    WFEditorViewController *_editorViewController;
+    WFDrawerController *_drawerController;
 }
 
 @property (readonly, nonatomic) BOOL actionsHidden; // @synthesize actionsHidden=_actionsHidden;
-@property (readonly, nonatomic) WFActionDrawerViewController *actionsViewController;
-@property (strong, nonatomic) Class actionsViewControllerClass; // @synthesize actionsViewControllerClass=_actionsViewControllerClass;
 @property (readonly, nonatomic) double bottomContentInset; // @synthesize bottomContentInset=_bottomContentInset;
+@property (strong, nonatomic) NSLayoutConstraint *bottomToolbarBottomAnchor; // @synthesize bottomToolbarBottomAnchor=_bottomToolbarBottomAnchor;
 @property (readonly, nonatomic) UIView *containerView;
+@property (readonly, nonatomic) WFDatabase *database; // @synthesize database=_database;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFComposeViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -54,35 +64,44 @@
 @property (strong, nonatomic) UINavigationController *drawerNavigationController; // @synthesize drawerNavigationController=_drawerNavigationController;
 @property (readonly, nonatomic) unsigned long long editingState;
 @property (readonly, nonatomic) NSMutableArray *editingStates; // @synthesize editingStates=_editingStates;
+@property (strong, nonatomic) WFEditorViewController *editorViewController; // @synthesize editorViewController=_editorViewController;
 @property (strong, nonatomic) WFComposeFlowController *flowController; // @synthesize flowController=_flowController;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) WFWorkflowSettingsLayoutMetrics *layoutMetrics; // @synthesize layoutMetrics=_layoutMetrics;
 @property (readonly, nonatomic) id<WFModuleDelegate> moduleDelegate;
 @property (readonly, nonatomic) NSHashTable *movedDragControllers; // @synthesize movedDragControllers=_movedDragControllers;
+@property (readonly, nonatomic) unsigned long long navigationUpdateBehavior;
 @property (nonatomic) BOOL observingSharingEnabledUserDefault; // @synthesize observingSharingEnabledUserDefault=_observingSharingEnabledUserDefault;
 @property (readonly, nonatomic) NSArray *participatingViewControllers;
 @property (nonatomic) unsigned long long preHideVisibility; // @synthesize preHideVisibility=_preHideVisibility;
+@property (weak, nonatomic) id<WFComposeViewControllerPresenter> presenter; // @synthesize presenter=_presenter;
 @property (readonly, nonatomic) NSArray *scrollViewsAffectingDrag;
 @property (readonly, weak, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
-@property (nonatomic) BOOL shouldProvideNavigationBar; // @synthesize shouldProvideNavigationBar=_shouldProvideNavigationBar;
+@property (readonly, weak, nonatomic) UIButton *settingsButton; // @synthesize settingsButton=_settingsButton;
 @property (nonatomic) BOOL shouldShowShareButton; // @synthesize shouldShowShareButton=_shouldShowShareButton;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UIButton *titleAccessorySettingsButton; // @synthesize titleAccessorySettingsButton=_titleAccessorySettingsButton;
+@property (strong, nonatomic) UILabel *titleViewLabel; // @synthesize titleViewLabel=_titleViewLabel;
+@property (strong, nonatomic) UIButton *titleViewSettingsButton; // @synthesize titleViewSettingsButton=_titleViewSettingsButton;
 @property (strong, nonatomic) WFRunWorkflowToolbar *toolbar; // @synthesize toolbar=_toolbar;
-@property (strong, nonatomic) NSLayoutConstraint *toolbarBottomAnchor; // @synthesize toolbarBottomAnchor=_toolbarBottomAnchor;
 @property (strong, nonatomic) UITraitCollection *upcomingTraitCollection; // @synthesize upcomingTraitCollection=_upcomingTraitCollection;
 @property (strong, nonatomic) WFComposeUserActivityManager *userActivityManager; // @synthesize userActivityManager=_userActivityManager;
-@property (readonly, nonatomic) WFWorkflow *workflow;
-@property (strong, nonatomic) UINavigationController *workflowNavigationController; // @synthesize workflowNavigationController=_workflowNavigationController;
+@property (nonatomic) unsigned long long visibleToolbarPlacement; // @synthesize visibleToolbarPlacement=_visibleToolbarPlacement;
+@property (readonly, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 @property (readonly, nonatomic) WFEditWorkflowViewController *workflowViewController; // @synthesize workflowViewController=_workflowViewController;
 
 - (void).cxx_destruct;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)accessibilityPerformMagicTap;
+- (void)actionDrawerCoordinator:(id)arg1 didAppendAction:(id)arg2;
+- (id)actionDrawerCoordinator:(id)arg1 replacementActionForDescriptionOfAction:(id)arg2;
 - (void)adjustLargeTitleSize;
 - (void)beginEditing;
 - (BOOL)canBecomeFirstResponder;
 - (id)cancelBarButtonItem;
 - (void)composeFlowControllerDidFinishEditing:(id)arg1;
+- (void)contentClassesViewController:(id)arg1 didChangeSelectedClasses:(id)arg2;
+- (void)dealloc;
 - (void)didTapCancel:(id)arg1;
 - (void)didTapDone;
 - (void)didTapNext;
@@ -92,25 +111,36 @@
 - (void)dragController:(id)arg1 movedInsideViewControllers:(id)arg2;
 - (void)dragController:(id)arg1 willBeAcceptedByDelegate:(id)arg2;
 - (void)drawerController:(id)arg1 willTransitionToVisibility:(unsigned long long)arg2;
+- (id)drawerViewController;
 - (id)emptyStateString;
 - (void)finishEditing;
 - (void)finishEditingAndDismissForTutorial:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)home;
 - (id)initWithWorkflow:(id)arg1 database:(id)arg2;
-- (id)initWithWorkflow:(id)arg1 database:(id)arg2 shouldProvideNavigationBar:(BOOL)arg3 shouldShowShareButton:(BOOL)arg4 actionsViewControllerClass:(Class)arg5 workflowViewControllerClass:(Class)arg6;
+- (id)initWithWorkflow:(id)arg1 database:(id)arg2 shouldShowShareButton:(BOOL)arg3 workflowViewControllerClass:(Class)arg4;
 - (BOOL)isDrawerAvailableForWorkflowViewController:(id)arg1;
 - (id)keyCommands;
+- (void)layoutTitleView;
 - (void)loadView;
+- (id)myShortcutsBarButtonItem;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)popEditingState:(unsigned long long)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (long long)positionForBar:(id)arg1;
+- (void)presentSettingsViewController;
 - (void)pushEditingState:(unsigned long long)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)redoLastWorkflowEdit;
 - (void)revealAction:(id)arg1 fromSourceView:(id)arg2 preScrollHandler:(CDUnknownBlockType)arg3 goBackHandler:(CDUnknownBlockType)arg4 scrolledAwayHandler:(CDUnknownBlockType)arg5;
 - (void)runWorkflowFromKeyPress;
 - (id)runWorkflowToolbarForWorkflowViewController:(id)arg1;
+- (void)scrollToAction:(id)arg1;
 - (void)searchActions;
 - (void)setActionsHidden:(BOOL)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setEditingState:(unsigned long long)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setUpToolbar;
+- (id)settingsButtonWithConfiguration:(id)arg1;
+- (void)settingsViewControllerWantsWorkflowReload:(id)arg1;
 - (void)setupDrawerIfNeeded;
+- (void)shareWorkflowWithSender:(id)arg1;
 - (BOOL)shouldUseOverlaidDrawer;
 - (void)showActionOutputPickerFromSourceResponder:(id)arg1 allowExtensionInput:(BOOL)arg2 variableProvider:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
@@ -123,6 +153,8 @@
 - (void)updateNavigationBarStateAnimated:(BOOL)arg1;
 - (void)updateScrollsToTop;
 - (void)updateShareButtonVisibility;
+- (void)updateTitleItemIfNeeded;
+- (void)updateTitleView:(id)arg1;
 - (void)updateToolbarVisibility;
 - (void)updateUserActivityState:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
@@ -131,13 +163,18 @@
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
-- (id)workflowSubViewController;
+- (id)workflowEditorViewController;
+- (id)workflowViewController:(id)arg1 displayableErrorForError:(id)arg2;
 - (void)workflowViewControllerDidAddAction:(id)arg1;
 - (void)workflowViewControllerDidRemoveAction:(id)arg1;
 - (void)workflowViewControllerDidRun:(id)arg1 withOutput:(id)arg2 error:(id)arg3 cancelled:(BOOL)arg4 continueHandler:(CDUnknownBlockType)arg5;
 - (void)workflowViewControllerInvalidatedSuggestions:(id)arg1;
 - (void)workflowViewControllerRequestsActionDrawer:(id)arg1;
+- (void)workflowViewControllerRequestsContentClassesEditor:(id)arg1 sender:(id)arg2;
 - (void)workflowViewControllerRequestsDismissal:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)workflowViewControllerRequestsDocumentation:(id)arg1 action:(id)arg2 sender:(id)arg3;
+- (void)workflowViewControllerRequestsSettings:(id)arg1;
+- (void)workflowViewControllerRequestsShareWorkflow:(id)arg1 sender:(id)arg2;
 - (void)workflowViewControllerRequestsTutorial:(id)arg1;
 - (void)workflowViewControllerWillRun:(id)arg1 continueHandler:(CDUnknownBlockType)arg2;
 

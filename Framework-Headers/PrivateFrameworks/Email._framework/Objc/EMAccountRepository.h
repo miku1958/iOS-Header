@@ -9,7 +9,7 @@
 #import <Email/EFLoggable-Protocol.h>
 #import <Email/EMAccountRepositoryObserver-Protocol.h>
 
-@class EMRemoteConnection, NSMutableDictionary, NSString;
+@class EMRemoteConnection, NSArray, NSMutableDictionary, NSString;
 @protocol EFCancelable, EFScheduler;
 
 @interface EMAccountRepository : EMRepository <EFLoggable, EMAccountRepositoryObserver>
@@ -22,9 +22,12 @@
     id<EFCancelable> _cancelable;
 }
 
+@property (readonly, nonatomic) NSArray *allAccounts;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, nonatomic) NSArray *deliveryAccounts;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSArray *receivingAccounts;
 @property (readonly) Class superclass;
 
 + (id)log;
@@ -38,14 +41,12 @@
 - (void)accountsAdded:(id)arg1;
 - (void)accountsChanged:(id)arg1;
 - (void)accountsRemoved:(id)arg1;
-- (id)allAccounts;
 - (void)dealloc;
-- (id)deliveryAccounts;
 - (void)didBeginObserving;
 - (void)didEndObserving;
 - (id)initInternal;
 - (id)initWithRemoteConnection:(id)arg1;
-- (id)receivingAccounts;
+- (void)requestAccounts;
 
 @end
 

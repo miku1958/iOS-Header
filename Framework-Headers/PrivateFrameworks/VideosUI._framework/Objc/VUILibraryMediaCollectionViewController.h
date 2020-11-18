@@ -61,11 +61,12 @@ __attribute__((visibility("hidden")))
 - (id)_episodeShelfViewControllerWithSeason:(id)arg1 episodes:(id)arg2;
 - (id)_episodesBySeasonIdentifier;
 - (id)_productLockupViewWithSeason:(id)arg1;
-- (id)_seasonViewModelsWithSeasons:(id)arg1;
+- (id)_seasonViewModelByIdentifier:(id)arg1;
+- (id)_seasonViewModelIdentifiers;
 - (void)_updateAfterContentWasManuallyDeleted:(BOOL)arg1;
 - (void)_updateDeletedContentErrorMessage;
 - (void)_updateEpisodeShelvesWithLatestEpisodes;
-- (void)_updateMediaCollectionViewModelWithSeasonViewModels:(id)arg1;
+- (void)_updateMediaCollectionViewModelForSeasons;
 - (void)_updateProductLockupView:(id)arg1 withSeason:(id)arg2;
 - (void)_updateProductLockupViewWithSeasonIdentifier:(id)arg1;
 - (BOOL)_usingEpisodesGroupFetch;

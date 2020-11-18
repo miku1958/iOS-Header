@@ -37,6 +37,7 @@
 - (void)_configureForTransitionFraction:(double)arg1 fromEditMode:(long long)arg2 toEditMode:(long long)arg3;
 - (void)_endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_handleLocaleDidChange;
+- (struct CGRect)_keylineFrameForComplicationSlot:(id)arg1 selected:(BOOL)arg2;
 - (void)_loadContentToReplaceUnadornedSnapshot;
 - (void)_loadLiveBackground;
 - (void)_loadScene;
@@ -53,7 +54,6 @@
 - (void)_startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_unloadSnapshotContentViews;
 - (BOOL)_wantsOpportunisticLiveFaceLoading;
-- (void)setEditView:(id)arg1;
 
 @end
 

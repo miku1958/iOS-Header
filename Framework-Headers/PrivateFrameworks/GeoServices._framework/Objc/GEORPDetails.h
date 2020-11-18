@@ -33,14 +33,7 @@
         unsigned int read_localizedDescription:1;
         unsigned int read_localizedTitle:1;
         unsigned int read_places:1;
-        unsigned int wrote_displayRegion:1;
-        unsigned int wrote_label:1;
-        unsigned int wrote_localizedDescription:1;
-        unsigned int wrote_localizedTitle:1;
-        unsigned int wrote_places:1;
-        unsigned int wrote_directionsType:1;
-        unsigned int wrote_displayStyle:1;
-        unsigned int wrote_mapType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -66,12 +59,6 @@
 - (int)StringAsDirectionsType:(id)arg1;
 - (int)StringAsDisplayStyle:(id)arg1;
 - (int)StringAsMapType:(id)arg1;
-- (void)_addNoFlagsPlace:(id)arg1;
-- (void)_readDisplayRegion;
-- (void)_readLabel;
-- (void)_readLocalizedDescription;
-- (void)_readLocalizedTitle;
-- (void)_readPlaces;
 - (void)addPlace:(id)arg1;
 - (void)clearPlaces;
 - (void)copyTo:(id)arg1;
@@ -83,7 +70,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)mapTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)placeAtIndex:(unsigned long long)arg1;

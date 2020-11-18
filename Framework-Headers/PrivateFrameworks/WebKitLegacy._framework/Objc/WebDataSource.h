@@ -38,7 +38,7 @@
 - (void)_addSubframeArchives:(id)arg1;
 - (id)_documentFragmentWithArchive:(id)arg1;
 - (id)_documentFragmentWithImageResource:(id)arg1;
-- (struct DocumentLoader *)_documentLoader;
+- (NakedPtr_2c503e7f)_documentLoader;
 - (void)_finishedLoading;
 - (id)_imageElementWithImageResource:(id)arg1;
 - (id)_initWithDocumentLoader:(Ref_2c3922bd *)arg1;

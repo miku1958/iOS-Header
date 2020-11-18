@@ -23,35 +23,17 @@
     NSMutableArray *_registryQueryCompletionBlockEntries;
 }
 
-@property (nonatomic) unsigned long long backoffDuration; // @synthesize backoffDuration=_backoffDuration;
-@property (strong, nonatomic) id<NRNSXPCConnectionProtocol> connection; // @synthesize connection=_connection;
+@property (readonly, strong, nonatomic) id<NRNSXPCConnectionProtocol> connection;
 @property (readonly, nonatomic) unsigned long long devicesUpdateCounter;
-@property (nonatomic) int devicesUpdateCounterNotifyToken_check; // @synthesize devicesUpdateCounterNotifyToken_check=_devicesUpdateCounterNotifyToken_check;
-@property (nonatomic) int devicesUpdateCounterNotifyToken_dispatch; // @synthesize devicesUpdateCounterNotifyToken_dispatch=_devicesUpdateCounterNotifyToken_dispatch;
-@property (nonatomic) unsigned long long lastDevicesUpdateCounterNotifyTokenValue; // @synthesize lastDevicesUpdateCounterNotifyTokenValue=_lastDevicesUpdateCounterNotifyTokenValue;
-@property (nonatomic) BOOL optimizeGetState; // @synthesize optimizeGetState=_optimizeGetState;
-@property (nonatomic) BOOL outstandingRegistryQuery; // @synthesize outstandingRegistryQuery=_outstandingRegistryQuery;
 @property (readonly, strong, nonatomic) id<NRNSXPCConnectionProtocol> rawConnection;
-@property (strong, nonatomic) NSMutableArray *registryQueryCompletionBlockEntries; // @synthesize registryQueryCompletionBlockEntries=_registryQueryCompletionBlockEntries;
-@property (nonatomic) unsigned long long tokenValue; // @synthesize tokenValue=_tokenValue;
 
 + (Class)proxyClass;
-+ (unsigned long long)updateCounterFromToken:(unsigned long long)arg1;
 + (Class)xpcConnectionClass;
 - (void).cxx_destruct;
-- (void)_addQueryCompletionBlockEntry:(id)arg1;
 - (void)_connectToDaemon;
-- (void)_fireAllQueryCompletionBlocks;
-- (void)_fireQueryCompletionBlocksToUpdateCounter:(unsigned long long)arg1;
-- (unsigned long long)_getDevicesUpdateCounterNotifyTokenValue;
 - (void)_grabRegistryWithReadBlock:(CDUnknownBlockType)arg1;
 - (void)_grabRegistryWithWriteBlockAsync:(CDUnknownBlockType)arg1;
-- (void)_notifyDiffIndexObserversWithDiff:(id)arg1 deviceCollection:(id)arg2 secureProperties:(id)arg3 index:(unsigned long long)arg4;
-- (void)_queryDaemonWithStartingTokenValue:(unsigned long long)arg1 currentTokenValue:(unsigned long long)arg2 withBlock:(CDUnknownBlockType)arg3;
-- (void)_queryDataAsyncForce:(BOOL)arg1 ifNeededWithBlock:(CDUnknownBlockType)arg2;
 - (void)_queryDataAsyncIfNeededWithBlock:(CDUnknownBlockType)arg1;
-- (BOOL)_shouldWaitForData;
-- (void)_wipeRegistryWith:(unsigned long long)arg1 block:(CDUnknownBlockType)arg2;
 - (id)addDiffIndexObserverWithWriteBlock:(CDUnknownBlockType)arg1;
 - (BOOL)daemonIdle;
 - (void)grabRegistryWithReadBlock:(CDUnknownBlockType)arg1;

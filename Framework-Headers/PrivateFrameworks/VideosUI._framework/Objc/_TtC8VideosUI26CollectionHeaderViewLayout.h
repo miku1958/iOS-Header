@@ -16,7 +16,5 @@
     MISSING_TYPE *$__lazy_storage_$_textualButtonViewLayout;
 }
 
-- (id)copyWithZone:(void *)arg1;
-
 @end
 

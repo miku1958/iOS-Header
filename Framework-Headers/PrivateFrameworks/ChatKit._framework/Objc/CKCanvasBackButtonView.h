@@ -41,6 +41,7 @@
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)sizeToFit;
 - (void)tintColorDidChange;
+- (BOOL)wantsChromelessAppearance;
 
 @end
 

@@ -17,13 +17,6 @@
     SEL _disableSelector;
 }
 
-@property (readonly, nonatomic) SEL disableSelector; // @synthesize disableSelector=_disableSelector;
-@property (readonly, nonatomic) SEL enableSelector; // @synthesize enableSelector=_enableSelector;
-@property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
-@property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, weak, nonatomic) NSObject *object; // @synthesize object=_object;
-
-+ (id)toggleWithObject:(id)arg1 name:(id)arg2 enableSelector:(SEL)arg3 disableSelector:(SEL)arg4;
 - (void).cxx_destruct;
 - (void)_setEnabled:(BOOL)arg1;
 - (void)dealloc;

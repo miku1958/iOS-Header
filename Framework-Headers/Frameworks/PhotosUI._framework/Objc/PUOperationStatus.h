@@ -29,6 +29,7 @@
 - (id)initWithState:(long long)arg1 progress:(double)arg2 error:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (id)operationStatusByMixingOperationStatus:(id)arg1 withMixFactor:(double)arg2;
+- (id)redactedDescription;
 
 @end
 

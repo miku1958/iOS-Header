@@ -6,14 +6,14 @@
 
 #import <Navigation/NSObject-Protocol.h>
 
-@class NSBundle, NSString;
+@class MNLocationProviderCLParameters, NSBundle, NSString;
 @protocol MNLocationProviderDelegate;
 
 @protocol MNLocationProvider <NSObject>
 
-@property (nonatomic) long long activityType;
 @property (copy, nonatomic) CDUnknownBlockType authorizationRequestBlock;
 @property (readonly, nonatomic) int authorizationStatus;
+@property (readonly, nonatomic) BOOL coarseModeEnabled;
 @property (weak, nonatomic) id<MNLocationProviderDelegate> delegate;
 @property (nonatomic) double desiredAccuracy;
 @property (nonatomic) double distanceFilter;
@@ -44,5 +44,6 @@
 @optional
 - (id)initWithEffectiveBundle:(NSBundle *)arg1;
 - (id)initWithEffectiveBundleIdentifier:(NSString *)arg1;
+- (void)setCLParameters:(MNLocationProviderCLParameters *)arg1;
 @end
 

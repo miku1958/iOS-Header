@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) NSDictionary *ams_parameters;
 
 + (id)ams_cachesDirectory;
++ (id)ams_engagementDirectory;
 + (id)ams_realHomeDirectory;
 + (id)ams_unescapedStringForString:(id)arg1;
 - (id)ams_URLByAppendingQueryParameters:(id)arg1;

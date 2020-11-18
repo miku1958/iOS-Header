@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
     BOOL _ckql;
     BOOL _fetchChanges;
     BOOL _hierarchicalSharing;
-    BOOL _sharing;
     BOOL _zoneSharing;
     struct {
         unsigned int sharingType:1;
@@ -24,7 +23,6 @@ __attribute__((visibility("hidden")))
         unsigned int ckql:1;
         unsigned int fetchChanges:1;
         unsigned int hierarchicalSharing:1;
-        unsigned int sharing:1;
         unsigned int zoneSharing:1;
     } _has;
 }
@@ -36,11 +34,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasCkql;
 @property (nonatomic) BOOL hasFetchChanges;
 @property (nonatomic) BOOL hasHierarchicalSharing;
-@property (nonatomic) BOOL hasSharing;
 @property (nonatomic) BOOL hasSharingType;
 @property (nonatomic) BOOL hasZoneSharing;
 @property (nonatomic) BOOL hierarchicalSharing; // @synthesize hierarchicalSharing=_hierarchicalSharing;
-@property (nonatomic) BOOL sharing; // @synthesize sharing=_sharing;
 @property (nonatomic) int sharingType; // @synthesize sharingType=_sharingType;
 @property (nonatomic) BOOL zoneSharing; // @synthesize zoneSharing=_zoneSharing;
 

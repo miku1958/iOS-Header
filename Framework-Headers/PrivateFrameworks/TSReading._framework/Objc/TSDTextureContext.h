@@ -13,20 +13,20 @@
 @interface TSDTextureContext : NSObject <NSCopying>
 {
     id<TSDAnimationSession> _session;
-    unsigned int _isMagicMove:1;
-    unsigned int _shouldAddFinal:1;
-    unsigned int _shouldAddReversedFinal:1;
-    unsigned int _shouldAddMagicMoveObjectOnly:1;
-    unsigned int _shouldNotAddContainedReps:1;
-    unsigned int _shouldNotAddShapeAttributes:1;
-    unsigned int _shouldNotAddText:1;
-    unsigned int _shouldNotCacheTexture:1;
-    unsigned int _shouldSeparateReflection:1;
-    unsigned int _shouldSeparateShadow:1;
-    unsigned int _shouldSeparateStroke:1;
-    unsigned int _shouldSeparateText:1;
-    unsigned int _shouldDistortToFit:1;
-    unsigned int _shouldForceTextureGeneration:1;
+    BOOL _isMagicMove;
+    BOOL _shouldAddFinal;
+    BOOL _shouldAddReversedFinal;
+    BOOL _shouldAddMagicMoveObjectOnly;
+    BOOL _shouldNotAddContainedReps;
+    BOOL _shouldNotAddShapeAttributes;
+    BOOL _shouldNotAddText;
+    BOOL _shouldNotCacheTexture;
+    BOOL _shouldSeparateReflection;
+    BOOL _shouldSeparateShadow;
+    BOOL _shouldSeparateStroke;
+    BOOL _shouldSeparateText;
+    BOOL _shouldDistortToFit;
+    BOOL _shouldForceTextureGeneration;
     BOOL _shouldAddNoShapeAttributes;
 }
 

@@ -59,6 +59,8 @@
 - (id)_computeSwimmingStrokesFromDistance:(id)arg1 demoPerson:(id)arg2;
 - (double)_computeUVIndexForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (id)_computeWalkingRunningDistanceWithStepCount:(id)arg1 demoPerson:(id)arg2;
+- (void)_generateCooldownWorkoutDataWithObjectCollection:(id)arg1 demoPerson:(id)arg2;
+- (void)_generateDanceWorkoutDataWithObjectCollection:(id)arg1 demoPerson:(id)arg2;
 - (void)_generateEllipticalWorkoutDataWithObjectCollection:(id)arg1 demoPerson:(id)arg2;
 - (void)_generateHIITWorkoutDataWithObjectCollection:(id)arg1 demoPerson:(id)arg2;
 - (void)_generateHikingWorkoutDataWithObjectCollection:(id)arg1 demoPerson:(id)arg2;

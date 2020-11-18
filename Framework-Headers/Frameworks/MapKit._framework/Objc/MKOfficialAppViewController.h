@@ -11,38 +11,38 @@
 #import <MapKit/_MKInfoCardChildViewControllerAnalyticsDelegate-Protocol.h>
 
 @class MKMapItem, MKOfficialAppView, MKPlaceSectionHeaderView, NSString;
-@protocol MKOfficialAppViewControllerDelegate;
+@protocol _MKInfoCardAnalyticsDelegate;
 
 __attribute__((visibility("hidden")))
 @interface MKOfficialAppViewController : MKPlaceSectionViewController <MKOfficialAppViewDelegate, _MKInfoCardChildViewControllerAnalyticsDelegate, MKModuleViewControllerProtocol>
 {
     BOOL _isShowing;
     MKMapItem *_mapItem;
-    id<MKOfficialAppViewControllerDelegate> _officialAppDelegate;
     MKOfficialAppView *_officialAppView;
     MKPlaceSectionHeaderView *_officialAppHeaderView;
+    id<_MKInfoCardAnalyticsDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<_MKInfoCardAnalyticsDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isShowing; // @synthesize isShowing=_isShowing;
 @property (strong, nonatomic) MKMapItem *mapItem; // @synthesize mapItem=_mapItem;
-@property (weak, nonatomic) id<MKOfficialAppViewControllerDelegate> officialAppDelegate; // @synthesize officialAppDelegate=_officialAppDelegate;
 @property (strong, nonatomic) MKPlaceSectionHeaderView *officialAppHeaderView; // @synthesize officialAppHeaderView=_officialAppHeaderView;
 @property (strong, nonatomic) MKOfficialAppView *officialAppView; // @synthesize officialAppView=_officialAppView;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
-- (void)_loadAppArtwork:(id)arg1 adamID:(id)arg2;
+- (void)_loadAppArtwork:(id)arg1;
 - (void)_loadOfficialApp;
 - (void)_updateAppImage:(id)arg1 error:(id)arg2;
-- (void)_updateView:(id)arg1;
 - (id)infoCardChildPossibleActions;
 - (id)infoCardChildUnactionableUIElements;
 - (id)initWithMKMapItem:(id)arg1;
 - (void)officialAppViewDidSelectPunchOutButton:(id)arg1;
+- (void)setAppStoreApp:(id)arg1;
 - (void)updateOfficialViewButtonText;
 - (void)viewDidLoad;
 

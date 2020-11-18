@@ -50,8 +50,8 @@
 - (void)_handleRemoveServiceRequest:(id)arg1;
 - (void)_handleRenameRequest:(id)arg1;
 - (void)_handleUpdateAppDataModel:(id)arg1 message:(id)arg2;
-- (id)_handleUpdateNameTransaction:(id)arg1 error:(id *)arg2;
-- (id)_handleUpdateServicesTransaction:(id)arg1 error:(id *)arg2;
+- (id)_handleUpdateNameTransaction:(id)arg1 requestMessage:(id)arg2;
+- (id)_handleUpdateServicesTransaction:(id)arg1 requestMessage:(id)arg2;
 - (void)_registerForMessages;
 - (void)_transactionServiceGroupUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (id)assistantObject;

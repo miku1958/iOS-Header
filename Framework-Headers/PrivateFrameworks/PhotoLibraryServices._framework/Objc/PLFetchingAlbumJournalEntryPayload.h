@@ -18,7 +18,7 @@
 + (unsigned int)payloadVersion;
 - (void)_fixHasLocationSmartAlbum;
 - (id)insertAlbumFromDataInManagedObjectContext:(id)arg1;
-- (void)migrateMergedPayload;
+- (void)migrateMergedPayloadWithUpdatePayloads:(id)arg1;
 
 @end
 

@@ -10,7 +10,7 @@
 
 @interface DMFControlSessionIdentifier (CRKAdditions)
 
-@property (readonly, nonatomic) CRKRemoteEndpoint *crk_endpoint;
+@property (readonly, copy, nonatomic) CRKRemoteEndpoint *crk_endpoint;
 
 @end
 

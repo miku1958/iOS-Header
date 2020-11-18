@@ -6,7 +6,9 @@
 
 #import <objc/NSObject.h>
 
-@interface TSTTableTileRowInfo : NSObject
+#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
+
+@interface TSTTableTileRowInfo : NSObject <TSTCompatibilityVersionProviding>
 {
     struct TSTTableTileRowBuffer _currentData;
     struct TSTTableTileRowBuffer _preBNCData;
@@ -23,6 +25,7 @@
 @property (readonly, nonatomic) unsigned long long cellCount; // @synthesize cellCount=_cellCount;
 @property (readonly, nonatomic) unsigned short maxColumnIndex;
 @property (nonatomic) unsigned int tileRowIndex; // @synthesize tileRowIndex=_tileRowIndex;
+@property (readonly, nonatomic) BOOL usesWideOffsets;
 
 + (id)rowInfoFromArchive:(const struct TileRowInfo *)arg1;
 + (id)rowInfoWithTileRowIndex:(unsigned int)arg1 wideOffsets:(BOOL)arg2;
@@ -34,6 +37,7 @@
 - (unsigned short)cellIndexAtOrAfterIndex:(unsigned short)arg1;
 - (unsigned short)cellIndexAtOrBeforeIndex:(unsigned short)arg1;
 - (struct TSTCellStorage *)cellStorageRefAtIndex:(unsigned short)arg1;
+- (void)convertToWideOffsets;
 - (void)dealloc;
 - (id)description;
 - (void)encodeToArchive:(struct TileRowInfo *)arg1 archiver:(id)arg2;

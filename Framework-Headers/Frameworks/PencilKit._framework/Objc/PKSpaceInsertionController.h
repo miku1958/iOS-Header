@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableOrderedSet, PKDrawing, PKSelectionController, PKSpaceInsertionView, PKStroke, PKStrokeSelection, UIImageView, UIPanGestureRecognizer, UIView;
+@class NSMutableOrderedSet, NSOrderedSet, PKDrawing, PKSelectionController, PKSpaceInsertionView, PKStroke, PKStrokeSelection, UIImageView, UIPanGestureRecognizer, UIView;
 
 @interface PKSpaceInsertionController : NSObject
 {
@@ -24,6 +24,13 @@
     UIImageView *_topImageView;
     UIImageView *_bottomImageView;
     BOOL _topHandleRemovesWhitespace;
+    PKStrokeSelection *_strokeSelectionBeforeInsertingSpace;
+    long long _selectionTypeBeforeInsertingSpace;
+    PKStrokeSelection *_cachedStrokeSelection;
+    NSOrderedSet *_cachedStrokesBelow;
+    NSOrderedSet *_cachedStrokesAbove;
+    BOOL _shouldUseCachedStrokes;
+    BOOL _insertSpaceAffordancePanDidEnd;
     BOOL _isCurrentlyAddingSpace;
     BOOL _didMoveStrokes;
     PKStroke *_lassoStroke;
@@ -39,23 +46,34 @@
 
 - (void).cxx_destruct;
 - (void)_addSpacingViewsWithFrame:(struct CGRect)arg1;
-- (void)_blitStrokesToViewForSpaceInsertionType:(unsigned long long)arg1;
+- (void)_blitStrokesToViewForSpaceInsertionType:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_didEndCreatingSpace;
+- (void)_didGrabInsertSpaceAffordance:(id)arg1;
+- (void)_dismissHandlesAndReselectExistingSelectionInDrawing:(id)arg1;
+- (void)_dismissSpacingResizeHandles;
 - (void)_dragLollipop:(id)arg1;
 - (double)_initalBufferBetweenLollipops;
 - (void)_layoutViewsIfNecessary;
 - (void)_makeSpaceWithOffset:(double)arg1 spaceInsertionType:(unsigned long long)arg2;
-- (void)_sortStrokesAboveOrBelow;
+- (void)_panGestureDidBegin:(id)arg1;
+- (void)_panGestureDidCancelOrFail:(id)arg1;
+- (void)_panGestureDidChange:(id)arg1;
+- (void)_panGestureDidEnd:(id)arg1;
+- (void)_sortStrokesAboveOrBelowWithStrokesAbove:(id)arg1 strokesBelow:(id)arg2;
 - (void)_temporarilyShiftStrokesWithOffset:(double)arg1 spaceInsertionType:(unsigned long long)arg2;
 - (id)_visibleStrokesOnPage:(id)arg1;
 - (void)commitSpacingResize;
-- (void)didBeginCreatingSpaceWithLassoStroke:(id)arg1 drawing:(id)arg2;
+- (void)didBeginCreatingSpaceWithLassoStroke:(id)arg1 drawing:(id)arg2 addDefaultSpace:(BOOL)arg3 strokesAbove:(id)arg4 strokesBelow:(id)arg5;
 - (void)didScroll:(struct CGPoint)arg1;
-- (void)dismissSpacingResizeHandles;
+- (void)fetchStrokesAmbiguouslyBelowAndAboveInsertSpaceHandleWithStrokes:(id)arg1 inDrawing:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)initTopAndBottomSelectionIfNecessary;
 - (id)initWithSelectionController:(id)arg1;
+- (void)insertDefaultSpace:(double)arg1;
+- (void)invalidateCachedStrokes;
 - (double)offsetInStrokeSpaceFromViewOffset:(double)arg1 inDrawing:(id)arg2;
 - (void)projectPath:(struct CGPath *)arg1 toEndOfFrame:(struct CGRect)arg2;
+- (void)shiftStrokesWithOffset:(double)arg1;
 
 @end
 

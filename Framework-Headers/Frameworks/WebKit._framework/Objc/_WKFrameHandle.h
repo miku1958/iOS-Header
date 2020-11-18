@@ -18,9 +18,9 @@
 }
 
 @property (readonly) struct Object *_apiObject;
-@property (readonly, nonatomic) unsigned long long _frameID;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long frameID;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

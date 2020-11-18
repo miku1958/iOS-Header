@@ -14,11 +14,13 @@ __attribute__((visibility("hidden")))
 @interface _MediaControlsHardwareVolumeManagerAssertion : NSObject <MediaControlsInvalidatable>
 {
     MediaControlsHardwareVolumeManager *_volumeManager;
+    NSString *_reason;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) MediaControlsHardwareVolumeManager *volumeManager; // @synthesize volumeManager=_volumeManager;
 

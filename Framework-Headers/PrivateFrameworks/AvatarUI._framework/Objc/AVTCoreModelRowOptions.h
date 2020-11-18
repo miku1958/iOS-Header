@@ -17,6 +17,7 @@
     AVTAvatarPose *_poseOverride;
     AVTCoreModelRowDisplayCondition *_displayCondition;
     unsigned long long _displayMode;
+    unsigned long long _sortingOption;
 }
 
 @property (readonly, nonatomic) AVTCoreModelRowDisplayCondition *displayCondition; // @synthesize displayCondition=_displayCondition;
@@ -26,10 +27,12 @@
 @property (readonly, copy, nonatomic) AVTAvatarPose *poseOverride; // @synthesize poseOverride=_poseOverride;
 @property (readonly, copy, nonatomic) NSArray *presetOverrides; // @synthesize presetOverrides=_presetOverrides;
 @property (readonly, nonatomic) BOOL separator; // @synthesize separator=_separator;
+@property (readonly, nonatomic) unsigned long long sortingOption; // @synthesize sortingOption=_sortingOption;
 
 + (unsigned long long)displayModeFromString:(id)arg1;
++ (unsigned long long)sortingOptionFromString:(id)arg1;
 - (void).cxx_destruct;
-- (id)initWithFramingMode:(id)arg1 separatorFlag:(BOOL)arg2 presetOverrides:(id)arg3 poseOverride:(id)arg4 framingModeOverrides:(id)arg5 displayMode:(unsigned long long)arg6 displayCondition:(id)arg7;
+- (id)initWithFramingMode:(id)arg1 separatorFlag:(BOOL)arg2 presetOverrides:(id)arg3 poseOverride:(id)arg4 framingModeOverrides:(id)arg5 displayMode:(unsigned long long)arg6 displayCondition:(id)arg7 sortingOption:(unsigned long long)arg8;
 
 @end
 

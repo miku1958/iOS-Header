@@ -8,7 +8,6 @@
 
 @class MISSING_TYPE, NSString;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI230ForYouMagazineFeedGroupsCursor : NSObject
 {
     MISSING_TYPE *groups;

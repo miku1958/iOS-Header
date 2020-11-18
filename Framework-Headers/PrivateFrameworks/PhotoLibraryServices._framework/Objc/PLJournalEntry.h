@@ -37,6 +37,7 @@
 - (id)initForUpdateWithPayload:(id)arg1;
 - (id)initWithPayloadID:(id)arg1 payload:(id)arg2 entryType:(int)arg3;
 - (BOOL)readFromFileHandle:(id)arg1 decodePayload:(BOOL)arg2 payloadClass:(Class)arg3 entryOffset:(unsigned long long *)arg4 error:(id *)arg5;
+- (void)writeBytes:(const void *)arg1 length:(unsigned long long)arg2 toFileHandle:(id)arg3;
 - (BOOL)writeToFileHandle:(id)arg1 error:(id *)arg2;
 
 @end

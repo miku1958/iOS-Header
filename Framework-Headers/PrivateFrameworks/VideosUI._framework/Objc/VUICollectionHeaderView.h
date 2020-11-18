@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_selectButtonAction:(id)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

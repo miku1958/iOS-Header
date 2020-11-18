@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (void)action:(id)arg1 didDismissAlertController:(id)arg2;
 - (id)actionURL;
+- (id)icon;
 - (id)initWithAction:(id)arg1 ddAction:(id)arg2;
 - (BOOL)isCopyActionItem;
 - (id)label;

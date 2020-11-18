@@ -19,9 +19,12 @@
 
 - (BOOL)canShowValue;
 - (id)imageNameForCurrentState;
+- (void)setLowLightDisabled:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)shouldFillOutlineForCurrentState;
 - (BOOL)shouldShowOutlineForCurrentState;
+- (BOOL)shouldShowSlashForCurrentState;
 - (BOOL)shouldUseActiveTintForCurrentState;
+- (BOOL)shouldUseSlash;
 - (id)valueText;
 
 @end

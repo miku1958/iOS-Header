@@ -9,6 +9,7 @@
 @class MPRandomDistribution, NSMutableArray;
 @protocol _MPSSILDelegate;
 
+__attribute__((visibility("hidden")))
 @interface _MPSSILImplementation : MPSectionedIdentifierList
 {
     MPRandomDistribution *_randomDistribution;
@@ -40,7 +41,6 @@
 - (void)dataSourceRemoveItem:(id)arg1 fromSection:(id)arg2;
 - (void)dequeueCandidatesWithQuota:(long long)arg1;
 - (void)encodeWithCoder:(id)arg1 withExclusiveAccessToken:(id)arg2;
-- (id)enumeratorWithOptions:(unsigned long long)arg1 startingAtItem:(id)arg2 inSection:(id)arg3 withExclusiveAccessToken:(id)arg4;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSectionedIdentifierList:(id)arg1 randomSource:(id)arg2 startingItemEntry:(id)arg3 withExclusiveAccessToken:(id)arg4;
 - (long long)itemCount;

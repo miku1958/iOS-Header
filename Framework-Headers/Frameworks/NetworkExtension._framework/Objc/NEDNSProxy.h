@@ -11,18 +11,16 @@
 #import <NetworkExtension/NSCopying-Protocol.h>
 #import <NetworkExtension/NSSecureCoding-Protocol.h>
 
-@class NEDNSProxyProviderProtocol, NSArray;
+@class NEDNSProxyProviderProtocol;
 
 @interface NEDNSProxy : NSObject <NEConfigurationValidating, NEPrettyDescription, NSSecureCoding, NSCopying>
 {
     BOOL _enabled;
     NEDNSProxyProviderProtocol *_protocol;
-    NSArray *_settings;
 }
 
 @property (getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (copy) NEDNSProxyProviderProtocol *protocol; // @synthesize protocol=_protocol;
-@property (copy) NSArray *settings; // @synthesize settings=_settings;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -11,6 +11,7 @@
 
 @protocol FBSceneHost <NSObject>
 
+@property (readonly, copy, nonatomic) NSString *group;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, copy, nonatomic) FBSSceneSpecification *specification;
 

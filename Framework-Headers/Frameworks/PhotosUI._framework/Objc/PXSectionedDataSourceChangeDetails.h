@@ -15,6 +15,7 @@
     NSDictionary *_itemChangeDetailsBySection;
     NSDictionary *_itemsWithSubitemChangesBySection;
     NSDictionary *_subitemChangeDetailsByItemBySection;
+    NSNumber *_hasAnyChangesCache;
     NSNumber *_hasAnyInsertionsRemovalsOrMovesCache;
     unsigned long long _fromDataSourceIdentifier;
     unsigned long long _toDataSourceIdentifier;
@@ -25,6 +26,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long fromDataSourceIdentifier; // @synthesize fromDataSourceIdentifier=_fromDataSourceIdentifier;
+@property (readonly, nonatomic) BOOL hasAnyChanges;
 @property (readonly, nonatomic) BOOL hasAnyInsertionsRemovalsOrMoves;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PXArrayChangeDetails *sectionChanges; // @synthesize sectionChanges=_sectionChanges;
@@ -32,6 +34,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long toDataSourceIdentifier; // @synthesize toDataSourceIdentifier=_toDataSourceIdentifier;
 
++ (BOOL)changeDetailsAreOnlyInsertionsOrOnlyRemovalsAtEnd:(id)arg1 fromDataSource:(id)arg2 toDataSource:(id)arg3;
 + (id)changeDetailsWithNoChangesFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2;
 + (id)changeDetailsWithoutIncrementalChangesFromDataSourceIdentifier:(unsigned long long)arg1 toDataSourceIdentifier:(unsigned long long)arg2;
 + (BOOL)changesHaveAnyInsertionsRemovalsOrMoves:(id)arg1;

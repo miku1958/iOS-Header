@@ -17,6 +17,7 @@
     NSMutableArray *_cellTowerLocations;
     NSMutableArray *_lteCellTowerLocations;
     CLPMeta *_meta;
+    NSMutableArray *_nrCellTowerLocations;
     NSMutableArray *_scdmaCellTowerLocations;
     NSMutableArray *_wifiAPLocations;
 }
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) NSMutableArray *cellTowerLocations; // @synthesize cellTowerLocations=_cellTowerLocations;
 @property (strong, nonatomic) NSMutableArray *lteCellTowerLocations; // @synthesize lteCellTowerLocations=_lteCellTowerLocations;
 @property (strong, nonatomic) CLPMeta *meta; // @synthesize meta=_meta;
+@property (strong, nonatomic) NSMutableArray *nrCellTowerLocations; // @synthesize nrCellTowerLocations=_nrCellTowerLocations;
 @property (strong, nonatomic) NSMutableArray *scdmaCellTowerLocations; // @synthesize scdmaCellTowerLocations=_scdmaCellTowerLocations;
 @property (strong, nonatomic) NSMutableArray *wifiAPLocations; // @synthesize wifiAPLocations=_wifiAPLocations;
 
@@ -33,6 +35,7 @@
 + (Class)cellOutOfServiceInfoType;
 + (Class)cellTowerLocationType;
 + (Class)lteCellTowerLocationType;
++ (Class)nrCellTowerLocationType;
 + (Class)scdmaCellTowerLocationType;
 + (Class)wifiAPLocationType;
 - (void).cxx_destruct;
@@ -40,6 +43,7 @@
 - (void)addCellOutOfServiceInfo:(id)arg1;
 - (void)addCellTowerLocation:(id)arg1;
 - (void)addLteCellTowerLocation:(id)arg1;
+- (void)addNrCellTowerLocation:(id)arg1;
 - (void)addScdmaCellTowerLocation:(id)arg1;
 - (void)addWifiAPLocation:(id)arg1;
 - (id)cdmaCellTowerLocationAtIndex:(unsigned long long)arg1;
@@ -52,6 +56,7 @@
 - (void)clearCellOutOfServiceInfos;
 - (void)clearCellTowerLocations;
 - (void)clearLteCellTowerLocations;
+- (void)clearNrCellTowerLocations;
 - (void)clearScdmaCellTowerLocations;
 - (void)clearWifiAPLocations;
 - (void)copyTo:(id)arg1;
@@ -63,6 +68,8 @@
 - (id)lteCellTowerLocationAtIndex:(unsigned long long)arg1;
 - (unsigned long long)lteCellTowerLocationsCount;
 - (void)mergeFrom:(id)arg1;
+- (id)nrCellTowerLocationAtIndex:(unsigned long long)arg1;
+- (unsigned long long)nrCellTowerLocationsCount;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;

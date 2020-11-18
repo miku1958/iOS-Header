@@ -8,8 +8,10 @@
 
 @interface EKCalendarResourceChangeNotification (CUIKDescription)
 - (long long)_changedPropertyCount;
-- (id)_resourceChangeStringWithOptions:(unsigned long long)arg1;
+- (id)_dateStringWithOptions:(unsigned long long)arg1;
+- (id)_resourceChangeStringWithOptions:(unsigned long long)arg1 dict:(id)arg2;
 - (id)allDescriptionStringsWithOptions:(unsigned long long)arg1;
+- (id)descriptionStrings:(unsigned long long)arg1;
 - (BOOL)supportsDisplay;
 @end
 

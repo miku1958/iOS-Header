@@ -8,13 +8,14 @@
 
 #import <NotesShared/ICCloudObject-Protocol.h>
 
-@class ICAccount, NSData, NSDate, NSNumber, NSSet, NSString;
+@class ICAccount, NSArray, NSData, NSDate, NSNumber, NSSet, NSString;
 
 @interface ICFolder : ICNoteContainer <ICCloudObject>
 {
 }
 
 @property (strong, nonatomic) ICAccount *account; // @dynamic account;
+@property (readonly, nonatomic) NSArray *ancestorFolderObjectIDs;
 @property (strong, nonatomic) NSSet *children; // @dynamic children;
 @property (strong, nonatomic) NSDate *customNoteSortTypeModificationDate; // @dynamic customNoteSortTypeModificationDate;
 @property (strong, nonatomic) NSNumber *customNoteSortTypeValue; // @dynamic customNoteSortTypeValue;
@@ -41,6 +42,7 @@
 + (id)englishTitleForDefaultFolder;
 + (id)englishTitleForTrashFolder;
 + (id)existingCloudObjectForRecordID:(id)arg1 accountID:(id)arg2 context:(id)arg3;
++ (unsigned long long)folderDepthLimit;
 + (id)folderWithIdentifier:(id)arg1 context:(id)arg2;
 + (id)foldersMatchingPredicate:(id)arg1 context:(id)arg2;
 + (id)keyPathsForValuesAffectingCanBeSharedViaICloud;
@@ -58,14 +60,18 @@
 + (id)localizedNewFolderName;
 + (id)localizedTitleForDefaultFolder;
 + (id)localizedTitleForTrashFolder;
++ (unsigned long long)maximumDepthOfFolders:(id)arg1;
++ (unsigned long long)maximumDistanceToLeafFolderOfFolders:(id)arg1;
 + (id)newCloudObjectForRecord:(id)arg1 accountID:(id)arg2 context:(id)arg3;
 + (id)newFolderInAccount:(id)arg1;
 + (id)newFolderInParentFolder:(id)arg1;
 + (id)newFolderWithIdentifier:(id)arg1 account:(id)arg2;
 + (id)newFolderWithIdentifier:(id)arg1 parentFolder:(id)arg2;
 + (id)newPlaceholderObjectForRecordName:(id)arg1 accountID:(id)arg2 context:(id)arg3;
-+ (id)predicateForVisibleFolders;
-+ (id)predicateForVisibleFoldersIncludingHiddenNoteContainers:(BOOL)arg1;
++ (id)predicateForFoldersInFolder:(id)arg1;
++ (id)predicateForNotesInFolder:(id)arg1;
++ (id)predicateForVisibleFoldersInContext:(id)arg1;
++ (id)predicateForVisibleFoldersIncludingHiddenNoteContainers:(BOOL)arg1 inContext:(id)arg2;
 + (id)predicateForVisibleObjects;
 + (id)purgableFoldersFetchRequest;
 + (void)purgeFolder:(id)arg1;
@@ -78,6 +84,7 @@
 - (id)accountName;
 - (void)awakeFromFetch;
 - (id)cacheKey;
+- (BOOL)canAddSubfolder;
 - (BOOL)canBeRootShareObject;
 - (BOOL)canBeSharedViaICloud;
 - (BOOL)canMoveAddOrDeleteContents;
@@ -86,13 +93,13 @@
 - (id)containerIdentifier;
 - (BOOL)containsSharedDescendantFolders;
 - (BOOL)containsSharedDescendantFolders:(BOOL *)arg1;
+- (BOOL)containsSharedNotesOrSharedDescendantFolders;
 - (BOOL)containsSharedNotesOrSharedDescendantFolders:(BOOL *)arg1;
-- (BOOL)containsVisibleLockedNotesIncludingChildFolders;
+- (BOOL)containsVisibleLockedNotesIncludingChildFolders:(BOOL)arg1;
 - (unsigned long long)countOfVisibleNotesInFolder;
 - (id)customNoteSortType;
 - (void)deleteFromLocalDatabase;
 - (unsigned long long)depth;
-- (id)detailForTableViewCell;
 - (void)fixBrokenReferences;
 - (id)foldersInFolder;
 - (BOOL)hasAllMandatoryFields;
@@ -116,6 +123,8 @@
 - (BOOL)isTrashFolder;
 - (id)localizedTitle;
 - (void)markForDeletion;
+- (unsigned long long)maximumDepthIncludingChildFolders;
+- (unsigned long long)maximumDistanceToLeafFolder;
 - (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2;
 - (void)mergeDataFromUserSpecificRecord:(id)arg1 accountID:(id)arg2;
 - (void)mergeParentFromRecord:(id)arg1;

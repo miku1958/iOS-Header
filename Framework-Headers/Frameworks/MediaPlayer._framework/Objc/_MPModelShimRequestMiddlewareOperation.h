@@ -10,6 +10,7 @@
 
 @class MPModelRequest, NSArray, NSError, NSString, _MPModelShimRequestMiddleware;
 
+__attribute__((visibility("hidden")))
 @interface _MPModelShimRequestMiddlewareOperation : MPAsyncOperation <MPMiddlewareOperation>
 {
     NSArray *_invalidationObservers;

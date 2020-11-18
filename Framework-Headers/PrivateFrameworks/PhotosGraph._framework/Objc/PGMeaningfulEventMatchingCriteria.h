@@ -11,11 +11,11 @@
 @interface PGMeaningfulEventMatchingCriteria : PGMeaningfulEventCriteria
 {
     BOOL _interestingForMeaningInference;
-    PGGraphMomentNode *_moment;
+    PGGraphMomentNode *_momentNode;
 }
 
 @property (nonatomic) BOOL interestingForMeaningInference; // @synthesize interestingForMeaningInference=_interestingForMeaningInference;
-@property (readonly, nonatomic) PGGraphMomentNode *moment; // @synthesize moment=_moment;
+@property (readonly, nonatomic) PGGraphMomentNode *momentNode; // @synthesize momentNode=_momentNode;
 
 - (void).cxx_destruct;
 - (void)_calculateMatchingScoreForLocationsWithMatchingTrait:(id)arg1 requiredTrait:(id)arg2 result:(CDUnknownBlockType)arg3;

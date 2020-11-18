@@ -8,13 +8,13 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class NSString, PKAccount, PKInstallmentPlan, PKPaymentPass;
+@class NSString, PKAccount, PKInstallmentPlan, PKTransactionSource;
 
 @interface PKDashboardInstallmentPlanStatusItem : NSObject <PKDashboardItem>
 {
     PKInstallmentPlan *_installmentPlan;
     PKAccount *_account;
-    PKPaymentPass *_paymentPass;
+    PKTransactionSource *_transactionSource;
 }
 
 @property (strong, nonatomic) PKAccount *account; // @synthesize account=_account;
@@ -22,9 +22,10 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) PKInstallmentPlan *installmentPlan; // @synthesize installmentPlan=_installmentPlan;
-@property (strong, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
 
++ (id)identifier;
 - (void).cxx_destruct;
 
 @end

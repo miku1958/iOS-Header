@@ -22,6 +22,7 @@
 - (void).cxx_destruct;
 - (BOOL)_routeTypeEqualTo:(id)arg1;
 - (long long)bluetoothEndpointType;
+- (id)customDescription;
 - (long long)deviceType;
 - (id)identifiersOfOtherConnectedDevices;
 - (id)initWithDictionary:(id)arg1;

@@ -11,6 +11,7 @@
 }
 
 - (unsigned long long)defaultCount;
+- (id)hiddenTinkerReplyKeys;
 
 @end
 

@@ -34,6 +34,7 @@
 - (id)operationsForPlayerRequest:(id)arg1;
 - (id)operationsForRequest:(id)arg1;
 - (id)playerVideoView:(id)arg1 chain:(id)arg2;
+- (id)videoOutput:(id)arg1 chain:(id)arg2;
 
 @end
 

@@ -16,6 +16,7 @@
     NSHashTable *_willLayoutSubviewsObservers;
     NSHashTable *_didLayoutSubviewsObservers;
     NSHashTable *_didScrollObservers;
+    BOOL _respectsContentZOrder;
     BOOL _isDecelerating;
     BOOL _isDragging;
     BOOL _isTracking;
@@ -28,6 +29,7 @@
     NSObject<UICoordinateSpace> *_contentCoordinateSpace;
     NSHashTable *__observers;
     long long _activeScrollAnimations;
+    struct CGSize presentedContentSize;
     struct CGSize _scrollViewContentSize;
     struct UIEdgeInsets _contentInset;
 }
@@ -50,7 +52,9 @@
 @property (readonly, nonatomic) BOOL isManuallyChanging; // @synthesize isManuallyChanging=_isManuallyChanging;
 @property (readonly, nonatomic) BOOL isScrubbing; // @synthesize isScrubbing=_isScrubbing;
 @property (readonly, nonatomic) BOOL isTracking; // @synthesize isTracking=_isTracking;
+@property (nonatomic) struct CGSize presentedContentSize; // @synthesize presentedContentSize;
 @property (readonly, nonatomic) struct CGSize referenceSize;
+@property (nonatomic) BOOL respectsContentZOrder; // @synthesize respectsContentZOrder=_respectsContentZOrder;
 @property (copy, nonatomic) PXTilingScrollInfo *scrollInfo; // @synthesize scrollInfo=_scrollInfo;
 @property (readonly, nonatomic) NSObject<PXAnonymousScrollView> *scrollView; // @synthesize scrollView=_scrollView;
 @property (readonly, nonatomic) struct CGRect scrollViewActiveRect;
@@ -77,7 +81,8 @@
 - (void)registerObserver:(id)arg1;
 - (void)scrollRectToVisible:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (void)scrollRectToVisible:(struct CGRect)arg1 avoidingContentInsetEdges:(unsigned long long)arg2 animated:(BOOL)arg3;
-- (void)scrollToEdge:(unsigned int)arg1;
+- (void)scrollToEdge:(unsigned int)arg1 animated:(BOOL)arg2;
+- (void)scrollToEdge:(unsigned int)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)scrollViewContentBoundsDidChange;
 - (void)scrollViewDidEndScrolling;
 - (void)scrollViewDidEndScrollingAnimation;
@@ -91,6 +96,7 @@
 - (void)setActiveScrollAnimations:(long long)arg1;
 - (void)setNeedsUpdate;
 - (void)setScrollViewNeedsLayout;
+- (void)stopScrollingAndZoomingAnimations;
 - (void)unregisterObserver:(id)arg1;
 - (void)updateIfNeeded;
 - (void)willEndScrollingWithVelocity:(struct CGPoint)arg1 targetContentOffset:(inout struct CGPoint *)arg2;

@@ -12,7 +12,7 @@
 
 - (void)getInitialDraggedPoint:(struct CGPoint *)arg1 otherPoint:(struct CGPoint *)arg2 center:(struct CGPoint *)arg3 forEvent:(id)arg4 orRecognizer:(id)arg5;
 - (BOOL)lockAspectRatioByDefault;
-- (void)updateModelWithCurrentPoint:(struct CGPoint)arg1;
+- (void)updateModelWithCurrentPoint:(struct CGPoint)arg1 options:(unsigned long long)arg2;
 
 @end
 

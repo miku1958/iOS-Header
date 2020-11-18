@@ -9,7 +9,7 @@
 #import <CameraUI/CAMDistinctPersistenceCopying-Protocol.h>
 #import <CameraUI/NSCopying-Protocol.h>
 
-@class CLHeading, CLLocation, NSString, NSURL;
+@class CAMAnalyticsCaptureEvent, CLHeading, CLLocation, NSString, NSURL;
 
 @interface CAMCaptureRequest : NSObject <NSCopying, CAMDistinctPersistenceCopying>
 {
@@ -32,13 +32,17 @@
     long long _captureDevice;
     long long _captureMode;
     long long _captureOrientation;
+    BOOL _captureMirrored;
     long long _pressType;
+    CAMAnalyticsCaptureEvent *_analyticsEvent;
     long long _type;
 }
 
+@property (readonly, nonatomic) CAMAnalyticsCaptureEvent *analyticsEvent; // @synthesize analyticsEvent=_analyticsEvent;
 @property (readonly, nonatomic) unsigned int assertionIdentifier; // @synthesize assertionIdentifier=_assertionIdentifier;
 @property (readonly, nonatomic) long long captureDevice; // @synthesize captureDevice=_captureDevice;
 @property (readonly, nonatomic) long long captureDevicePosition;
+@property (readonly, nonatomic, getter=isCaptureMirrored) BOOL captureMirrored; // @synthesize captureMirrored=_captureMirrored;
 @property (readonly, nonatomic) long long captureMode; // @synthesize captureMode=_captureMode;
 @property (readonly, nonatomic) long long captureOrientation; // @synthesize captureOrientation=_captureOrientation;
 @property (readonly, nonatomic) BOOL capturedFromPhotoBooth; // @synthesize capturedFromPhotoBooth=_capturedFromPhotoBooth;

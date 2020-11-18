@@ -6,31 +6,40 @@
 
 #import <GameCenterUI/GKDashboardSectionHeaderView.h>
 
-@class NSLayoutConstraint, NSString, UIButton;
+@class NSAttributedString, NSLayoutConstraint, NSString, UIButton, UIMenu, UIStackView, UIView;
 
 @interface GKDashboardButtonSectionHeaderView : GKDashboardSectionHeaderView
 {
+    BOOL _buttonHidden;
+    NSAttributedString *_attributedButtonTitle;
     id _buttonTarget;
     SEL _buttonAction;
+    UIView *_backgroundPlatterView;
     UIButton *_button;
-    NSLayoutConstraint *_titleToButtonConstraint;
+    UIStackView *_stackView;
     NSLayoutConstraint *_rightMarginConstraint;
 }
 
+@property (copy, nonatomic) NSAttributedString *attributedButtonTitle; // @synthesize attributedButtonTitle=_attributedButtonTitle;
+@property (nonatomic) UIView *backgroundPlatterView; // @synthesize backgroundPlatterView=_backgroundPlatterView;
 @property (nonatomic) UIButton *button; // @synthesize button=_button;
 @property (nonatomic) SEL buttonAction; // @synthesize buttonAction=_buttonAction;
+@property (nonatomic, getter=isButtonHidden) BOOL buttonHidden; // @synthesize buttonHidden=_buttonHidden;
+@property (nonatomic) UIMenu *buttonMenu;
 @property (nonatomic) id buttonTarget; // @synthesize buttonTarget=_buttonTarget;
 @property (copy, nonatomic) NSString *buttonTitle; // @dynamic buttonTitle;
 @property (nonatomic) NSLayoutConstraint *rightMarginConstraint; // @synthesize rightMarginConstraint=_rightMarginConstraint;
-@property (nonatomic) NSLayoutConstraint *titleToButtonConstraint; // @synthesize titleToButtonConstraint=_titleToButtonConstraint;
+@property (nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 
 + (struct CGSize)platformSizeForTitle:(id)arg1;
 + (struct CGSize)platformSizeForTitle:(id)arg1 buttonTitle:(id)arg2;
 + (double)widthForTitle:(id)arg1;
 + (double)widthForTitle:(id)arg1 buttonTitle:(id)arg2;
+- (void).cxx_destruct;
 - (void)awakeFromNib;
 - (void)buttonPressed:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)prepareForReuse;
 
 @end
 

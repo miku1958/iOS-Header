@@ -47,14 +47,10 @@
 - (id)initWithCache:(id)arg1 renderingScheduler:(id)arg2 environment:(id)arg3;
 - (id)initWithCache:(id)arg1 renderingScheduler:(id)arg2 renderingQueueProvider:(CDUnknownBlockType)arg3 callbackQueue:(id)arg4 renderer:(id)arg5 defaultScope:(id)arg6 environment:(id)arg7;
 - (id)initWithRenderingScheduler:(id)arg1 environment:(id)arg2;
-- (CDUnknownBlockType)providerForColorIntoLayer;
-- (CDUnknownBlockType)providerForGradientFromColor;
 - (CDUnknownBlockType)providerForImageForItem:(id)arg1 scope:(id)arg2 queue:(id)arg3 renderingHandler:(CDUnknownBlockType)arg4;
 - (CDUnknownBlockType)providerForThumbnailForModelColor:(id)arg1;
 - (CDUnknownBlockType)providerForThumbnailForModelPreset:(id)arg1 presetOverrides:(id)arg2 poseOverride:(id)arg3 avatarConfiguration:(id)arg4 framingMode:(id)arg5;
 - (void)releaseRenderingResourceForEstimatedDuration:(double)arg1;
-- (void)renderColorForColorPreset:(id)arg1 skinColor:(id)arg2 intoLayer:(id)arg3;
-- (void)renderColorGradientForModelColor:(id)arg1 skinColor:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)renderThumbnailForModelColor:(id)arg1;
 
 @end

@@ -23,6 +23,8 @@
 - (void)_loadContactNameRecordsWithDelegate:(id)arg1;
 - (CDUnknownBlockType)_recordGenerator;
 - (void)_sendChangesToDelegates;
+- (id)contactHandlesForSource:(id)arg1 error:(id *)arg2;
+- (id)contactHandlesForTopics:(id)arg1 error:(id *)arg2;
 - (void)feedbackDisambiguationResultWithChoicesIdentifiers:(id)arg1 chosenContactIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)init;

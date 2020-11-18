@@ -6,13 +6,14 @@
 
 #import <SpringBoardUI/SBSceneHandle.h>
 
-@class NSString, SBApplication;
+@class NSHashTable, NSString, SBApplication;
 
 @interface SBApplicationSceneHandle : SBSceneHandle
 {
     SBApplication *_application;
     NSString *_persistenceIdentifier;
     BOOL _isSecure;
+    NSHashTable *_sceneUpdateContributers;
     unsigned long long _userLaunchSignpostID;
     double _userLaunchEventTime;
     long long _layoutRole;
@@ -24,17 +25,16 @@
 @property (readonly, nonatomic, getter=isSecure) BOOL secure; // @synthesize secure=_isSecure;
 
 + (id)lookupOrCreatePersistenceIDFromApplication:(id)arg1 sceneID:(id)arg2;
-+ (id)sceneSpecificationForDisplayIdentity:(id)arg1;
 - (void).cxx_destruct;
 - (void)_applicationsDidChange:(id)arg1;
+- (void)_commonInitWithApplication:(id)arg1 sceneIdentifier:(id)arg2 displayIdentity:(id)arg3;
 - (id)_createApplicationSceneClientSettingsFromContext:(id)arg1 entity:(id)arg2 initialSceneSettings:(id)arg3;
 - (id)_createApplicationSceneSettingsFromContext:(id)arg1 entity:(id)arg2;
 - (id)_createApplicationSceneTransitionContextFromContext:(id)arg1 entity:(id)arg2;
 - (id)_createParametersFromTransitionContext:(id)arg1 entity:(id)arg2;
 - (id)_createProcessExecutionContextFromContext:(id)arg1 entity:(id)arg2;
-- (id)_initWithApplication:(id)arg1 definition:(id)arg2 scene:(id)arg3 displayIdentity:(id)arg4;
 - (id)_initWithApplication:(id)arg1 scene:(id)arg2 displayIdentity:(id)arg3;
-- (id)_initWithApplication:(id)arg1 sceneIdentity:(id)arg2 displayIdentity:(id)arg3;
+- (id)_initWithApplication:(id)arg1 sceneDefinition:(id)arg2 displayIdentity:(id)arg3;
 - (id)_initWithDefinition:(id)arg1;
 - (id)_initWithScene:(id)arg1;
 - (void)_modifyApplicationSceneClientSettings:(id)arg1 fromRequestContext:(id)arg2 entity:(id)arg3 initialSceneSettings:(id)arg4;
@@ -42,10 +42,13 @@
 - (void)_modifyApplicationTransitionContext:(id)arg1 fromRequestContext:(id)arg2 entity:(id)arg3;
 - (void)_modifyProcessExecutionContext:(id)arg1 fromRequestContext:(id)arg2 entity:(id)arg3;
 - (id)_persistenceIdentifier;
+- (void)addSceneUpdateContributer:(id)arg1;
 - (void)dealloc;
+- (id)displayItemRepresentation;
 - (id)newScenePlaceholderContentContextWithActivationSettings:(id)arg1;
 - (id)newSceneViewController;
 - (id)newSceneViewWithReferenceSize:(struct CGSize)arg1 orientation:(long long)arg2 hostRequester:(id)arg3;
+- (void)removeSceneUpdateContributer:(id)arg1;
 
 @end
 

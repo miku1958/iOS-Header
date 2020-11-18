@@ -11,6 +11,7 @@
 
 @interface _TtC12NewsArticles26EndOfArticleViewController : UIViewController
 {
+    MISSING_TYPE *adPresentationDelegateProvider;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
@@ -19,6 +20,7 @@
     MISSING_TYPE *overriddenTraitCollection;
     MISSING_TYPE *gutterViewController;
     MISSING_TYPE *bottomSpacerView;
+    MISSING_TYPE *urlHandler;
 }
 
 @property (nonatomic, weak) id<NAArticleFooterDelegate> footerDelegate; // @synthesize footerDelegate;

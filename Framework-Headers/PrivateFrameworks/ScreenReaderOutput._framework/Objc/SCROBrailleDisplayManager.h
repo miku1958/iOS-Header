@@ -31,6 +31,8 @@
     BOOL _shouldBatchUpdates;
     BOOL _automaticBrailleTranslation;
     BOOL _wordWrapEnabled;
+    BOOL _autoAdvanceEnabled;
+    double _autoAdvanceDuration;
     unsigned int _persistentKeyModifiers;
     long long _uiStringCachedLineOffset;
     NSAttributedString *_uiEditingCachedString;
@@ -46,9 +48,12 @@
     BOOL _isValid;
     int _inputAccessMode;
     NSAttributedString *_blankUIString;
+    double _lastUserInteractionTime;
     CDUnknownBlockType _eventHandled;
 }
 
+@property (nonatomic) double autoAdvanceDuration;
+@property (nonatomic) BOOL autoAdvanceEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SCROSBrailleDisplayManagerDelegate> delegate;
 @property (readonly, copy) NSString *description;
@@ -56,6 +61,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int inputContractionMode;
 @property (nonatomic) BOOL inputEightDotBraille;
+@property (nonatomic) double lastUserInteractionTime; // @synthesize lastUserInteractionTime=_lastUserInteractionTime;
 @property (readonly, nonatomic) SCROBrailleDisplayManagedQueue *managedDisplayQueue; // @synthesize managedDisplayQueue=_managedDisplayQueue;
 @property (nonatomic) unsigned int persistentKeyModifiers;
 @property (readonly) Class superclass;
@@ -90,8 +96,11 @@
 - (void)_eventQueue_prepareToMemorizeNextKey:(BOOL)arg1 immediately:(BOOL)arg2 forDisplayWithToken:(int)arg3;
 - (void)_eventQueue_refreshEightDotEnabledOnDisplays;
 - (void)_eventQueue_resetAlertTimer;
+- (void)_eventQueue_resetEditingManager;
 - (void)_eventQueue_setAggregatedStatus:(id)arg1;
 - (void)_eventQueue_setAlwaysUsesNemethCodeForTechnicalText:(BOOL)arg1;
+- (void)_eventQueue_setAutoAdvanceDuration:(double)arg1;
+- (void)_eventQueue_setAutoAdvanceEnabled:(BOOL)arg1;
 - (void)_eventQueue_setAutomaticBrailleTranslationEnabled:(BOOL)arg1;
 - (void)_eventQueue_setBatchUpdates:(BOOL)arg1;
 - (void)_eventQueue_setBrailleKeyDebounceTimeout:(double)arg1;
@@ -169,6 +178,7 @@
 - (void)playCommandNotSupportedSoundForBrailleDisplay:(id)arg1;
 - (struct _NSRange)rangeOfBrailleCellRepresentingCharacterAtIndex:(unsigned long long)arg1;
 - (void)removeBluetoothDriverWithAddress:(id)arg1;
+- (void)resetEditingManager;
 - (void)setAggregatedStatus:(id)arg1;
 - (void)setAlwaysUsesNemethCodeForTechnicalText:(BOOL)arg1;
 - (void)setAnnouncementsDisplayMode;

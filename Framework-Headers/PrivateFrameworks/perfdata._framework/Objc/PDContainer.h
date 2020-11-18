@@ -33,7 +33,7 @@
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) NSString *notes; // @synthesize notes=_notes;
 @property (strong, nonatomic) NSMutableDictionary *perfdata; // @synthesize perfdata=_perfdata;
-@property (readonly, strong, nonatomic) NSString *primaryMetricFilter; // @synthesize primaryMetricFilter=_primaryMetricFilter;
+@property (strong, nonatomic) NSString *primaryMetricFilter; // @synthesize primaryMetricFilter=_primaryMetricFilter;
 @property (strong, nonatomic) NSString *testDescription; // @synthesize testDescription=_testDescription;
 @property (strong, nonatomic) NSDictionary *variables; // @synthesize variables=_variables;
 @property (nonatomic) unsigned long long version; // @synthesize version=_version;

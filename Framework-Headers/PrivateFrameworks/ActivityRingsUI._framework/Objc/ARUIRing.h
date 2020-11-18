@@ -4,96 +4,57 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ActivityRingsUI/ARUIAnimatableObject.h>
+#import <objc/NSObject.h>
 
 #import <ActivityRingsUI/NSCopying-Protocol.h>
 
-@class ARUIIcon, MISSING_TYPE, NSArray, NSMutableArray, UIColor;
+@class MISSING_TYPE, UIColor;
 
-__attribute__((visibility("hidden")))
-@interface ARUIRing : ARUIAnimatableObject <NSCopying>
+@interface ARUIRing : NSObject <NSCopying>
 {
-    BOOL _vertexAttributesDirty;
-    BOOL _calculatedUniformsDirty;
-    NSMutableArray *_celebrations;
-    NSMutableArray *_celebrationsToRemove;
-    BOOL _premultiplyAlpha;
-    BOOL _sizeDirty;
-    float _screenScale;
-    float _ringBoundsDiameter;
-    float _scale;
+    float _diameter;
     float _thickness;
-    float _interspacing;
-    float _size;
+    float _percentage;
+    float _opacity;
+    float _emptyOpacity;
+    float _trackOpacity;
+    float _scale;
     float _zRotation;
-    ARUIIcon *_icon;
-    MISSING_TYPE *_drawableSize;
     UIColor *_topColor;
     UIColor *_bottomColor;
-    UIColor *_contrastColor;
-    MISSING_TYPE *_center;
+    MISSING_TYPE *_translation;
     MISSING_TYPE *_topColorVector;
-    MISSING_TYPE *_topColorPremultiplied;
+    MISSING_TYPE *_topColorPremultipliedVector;
     MISSING_TYPE *_bottomColorVector;
-    MISSING_TYPE *_bottomColorPremultiplied;
-    MISSING_TYPE *_contrastColorVector;
-    CDStruct_14d5dc5e _skewAdjustmentMatrix;
-    CDStruct_ee1f7a4d _vertexAttributes;
-    struct {
-        MISSING_TYPE *color1__color2__center__startPosition__endPosition__ringValues__blendingValues__trigResults;
-    } _uniforms;
+    MISSING_TYPE *_bottomColorPremultipliedVector;
 }
 
 @property (strong, nonatomic) UIColor *bottomColor; // @synthesize bottomColor=_bottomColor;
-@property (readonly, nonatomic) MISSING_TYPE *bottomColorPremultiplied; // @synthesize bottomColorPremultiplied=_bottomColorPremultiplied;
+@property (readonly, nonatomic) MISSING_TYPE *bottomColorPremultipliedVector; // @synthesize bottomColorPremultipliedVector=_bottomColorPremultipliedVector;
 @property (readonly, nonatomic) MISSING_TYPE *bottomColorVector; // @synthesize bottomColorVector=_bottomColorVector;
-@property (readonly, nonatomic) NSArray *celebrations;
-@property (nonatomic) MISSING_TYPE *center; // @synthesize center=_center;
-@property (strong, nonatomic) UIColor *contrastColor; // @synthesize contrastColor=_contrastColor;
-@property (readonly, nonatomic) MISSING_TYPE *contrastColorVector; // @synthesize contrastColorVector=_contrastColorVector;
-@property (nonatomic) MISSING_TYPE *drawableSize; // @synthesize drawableSize=_drawableSize;
-@property (nonatomic) float emptyOpacity;
-@property (strong, nonatomic) ARUIIcon *icon; // @synthesize icon=_icon;
-@property (nonatomic) float interspacing; // @synthesize interspacing=_interspacing;
-@property (nonatomic) float opacity;
-@property (nonatomic) float percentage;
-@property (nonatomic) BOOL premultiplyAlpha; // @synthesize premultiplyAlpha=_premultiplyAlpha;
-@property (nonatomic) float ringBoundsDiameter; // @synthesize ringBoundsDiameter=_ringBoundsDiameter;
+@property (nonatomic) float diameter; // @synthesize diameter=_diameter;
+@property (nonatomic) float emptyOpacity; // @synthesize emptyOpacity=_emptyOpacity;
+@property (nonatomic) float opacity; // @synthesize opacity=_opacity;
+@property (nonatomic) float percentage; // @synthesize percentage=_percentage;
 @property (nonatomic) float scale; // @synthesize scale=_scale;
-@property (readonly, nonatomic) float screenScale; // @synthesize screenScale=_screenScale;
-@property (nonatomic) float size; // @synthesize size=_size;
-@property (nonatomic, getter=isSizeDirty) BOOL sizeDirty; // @synthesize sizeDirty=_sizeDirty;
-@property (nonatomic) CDStruct_14d5dc5e skewAdjustmentMatrix; // @synthesize skewAdjustmentMatrix=_skewAdjustmentMatrix;
 @property (nonatomic) float thickness; // @synthesize thickness=_thickness;
 @property (strong, nonatomic) UIColor *topColor; // @synthesize topColor=_topColor;
-@property (readonly, nonatomic) MISSING_TYPE *topColorPremultiplied; // @synthesize topColorPremultiplied=_topColorPremultiplied;
+@property (readonly, nonatomic) MISSING_TYPE *topColorPremultipliedVector; // @synthesize topColorPremultipliedVector=_topColorPremultipliedVector;
 @property (readonly, nonatomic) MISSING_TYPE *topColorVector; // @synthesize topColorVector=_topColorVector;
-@property (nonatomic) float trackOpacity;
-@property (readonly, nonatomic) struct uniforms; // @synthesize uniforms=_uniforms;
-@property (readonly, nonatomic) CDStruct_ee1f7a4d vertexAttributes; // @synthesize vertexAttributes=_vertexAttributes;
+@property (nonatomic) float trackOpacity; // @synthesize trackOpacity=_trackOpacity;
+@property (nonatomic) MISSING_TYPE *translation; // @synthesize translation=_translation;
 @property (nonatomic) float zRotation; // @synthesize zRotation=_zRotation;
 
++ (id)randomRing;
 - (void).cxx_destruct;
-- (id)_newAnimatablePropertyForType:(unsigned long long)arg1;
-- (void)_updateBottomColorUniform;
-- (void)_updateCalculatedUniforms;
 - (void)_updatePremultipliedBottomColor;
 - (void)_updatePremultipliedTopColor;
-- (void)_updateTopColorUniform;
-- (void)_updateVertexAttributes;
-- (void)addAnimation:(id)arg1 forRingPropertyType:(unsigned long long)arg2;
-- (void)addCelebration:(id)arg1;
-- (BOOL)areAnimationsInProgress;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
+- (unsigned long long)hash;
 - (id)init;
-- (void)removeAllAnimationsForRingPropertyType:(unsigned long long)arg1;
-- (void)removeCelebration:(id)arg1;
-- (void *)uniformsBytes;
-- (void)update:(double)arg1;
-- (void)updateCalculatedAttributes;
-- (void)updateCelebrationWithColors:(id)arg1;
-- (void)updateCelebrationsWithColors;
-- (void *)vertexAttributesBytes;
+- (id)initWithRing:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -37,7 +37,6 @@
 @property (readonly) NSString *string; // @synthesize string=_string;
 @property (readonly) double totalElapsedTime; // @synthesize totalElapsedTime=_totalElapsedTime;
 
-+ (id)perfMetricForFetchRequest:(id)arg1 type:(id)arg2;
 - (void).cxx_destruct;
 - (id)initWithName:(id)arg1 string:(id)arg2 family:(id)arg3;
 

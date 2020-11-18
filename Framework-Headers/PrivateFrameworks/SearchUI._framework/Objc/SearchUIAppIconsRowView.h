@@ -40,7 +40,7 @@
 - (void).cxx_destruct;
 - (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id)arg2;
 - (void)didEngageResult:(id)arg1;
-- (void)dismissIfNecessaryForIconDrag;
+- (void)didEngageResult:(id)arg1 withTriggerEvent:(unsigned long long)arg2 destination:(unsigned long long)arg3;
 - (id)gridArrangement:(id)arg1 itemAtIndex:(long long)arg2 columns:(struct _NSRange *)arg3 rows:(struct _NSRange *)arg4 horizontalAlignment:(long long *)arg5 verticalAlignment:(long long *)arg6;
 - (id)init;
 - (struct CGRect)layoutFrameForArrangedSubview:(id)arg1 withProposedContentFrame:(struct CGRect)arg2;

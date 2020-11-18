@@ -8,6 +8,7 @@
 
 @class UITextView;
 
+__attribute__((visibility("hidden")))
 @interface CKSettingsGenericAboutViewController : UIViewController
 {
     UITextView *_aboutView;

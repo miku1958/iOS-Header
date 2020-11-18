@@ -13,5 +13,6 @@
 @property (nonatomic) BOOL shouldOptimizeForOlderMachinesOnInsert;
 @property (nonatomic) BOOL shouldOptimizeForiOSOnInsert;
 
+- (long long)p_defaultPresetWhenConvertingToPlayableonAllDevicesPreferenceForPresetDefaultValue:(long long)arg1;
 @end
 

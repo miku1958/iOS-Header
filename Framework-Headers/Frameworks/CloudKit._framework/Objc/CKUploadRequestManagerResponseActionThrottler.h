@@ -8,7 +8,6 @@
 
 @class NSMutableDictionary, NSSet;
 
-__attribute__((visibility("hidden")))
 @interface CKUploadRequestManagerResponseActionThrottler : NSObject
 {
     double _throttlePeriod;

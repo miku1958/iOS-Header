@@ -15,6 +15,7 @@
 }
 
 @property (readonly, nonatomic) NSString *authorDisplayName;
+@property (readonly, nonatomic) NSString *cloudGlobalID;
 @property (readonly, nonatomic) NSString *descriptionText;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) unsigned long long persistentID;

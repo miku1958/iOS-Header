@@ -13,11 +13,11 @@
 
 @interface HMDCameraSettingProactiveReader : HMFObject <HMFLogging>
 {
+    NSString *_logIdentifier;
     NSObject<OS_dispatch_queue> *_workQueue;
     id<HMDCameraSettingProactiveReaderDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSSet *_streamControlMessageHandlers;
-    NSString *_logID;
     HMDAccessory *_accessory;
     HMFMessage *_pendingMessage;
     NSString *_sessionID;
@@ -29,7 +29,7 @@
 @property (readonly) NSObject<OS_dispatch_queue> *delegateQueue; // @synthesize delegateQueue=_delegateQueue;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) NSString *logID; // @synthesize logID=_logID;
+@property (readonly) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
 @property (strong) HMFMessage *pendingMessage; // @synthesize pendingMessage=_pendingMessage;
 @property (readonly) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly) NSSet *streamControlMessageHandlers; // @synthesize streamControlMessageHandlers=_streamControlMessageHandlers;
@@ -38,12 +38,14 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (id)_availableStreamControlMessageHandlersForReadResponses:(id)arg1;
 - (void)_callDidCompleteReadDelegateCallback;
 - (void)_handleStreamStatusMultireadResponse:(id)arg1;
+- (id)_inUseStreamControlMessageHandlersForReadResponses:(id)arg1;
+- (id)_streamingStatusForResponse:(id)arg1;
 - (void)handleMessage:(id)arg1;
 - (BOOL)hasPendingNegotiateMessageForSessionWithIdentifier:(id)arg1;
 - (id)initWithWorkQueue:(id)arg1 accessory:(id)arg2 delegate:(id)arg3 delegateQueue:(id)arg4 message:(id)arg5 streamMessageHandlers:(id)arg6 logID:(id)arg7;
-- (id)logIdentifier;
 - (void)readSetting;
 
 @end

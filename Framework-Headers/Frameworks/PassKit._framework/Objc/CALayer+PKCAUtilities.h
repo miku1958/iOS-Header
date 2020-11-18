@@ -7,7 +7,7 @@
 #import <QuartzCore/CALayer.h>
 
 @interface CALayer (PKCAUtilities)
-- (id)_pkui_nextAdditiveAnimationKeyWithKeyPath:(id)arg1;
+- (id)_pkui_createNextAdditiveAnimationKeyWithKeyPath:(id)arg1;
 - (id)pkui_addAdditiveAnimation:(id)arg1;
 - (id)pkui_addAdditiveAnimation:(id)arg1 withKeyPath:(id)arg2;
 - (id)pkui_additiveAnimationKeyPrefixForKeyPath:(id)arg1;

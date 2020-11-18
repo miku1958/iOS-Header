@@ -6,30 +6,45 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServicesUI/AMSPurchaseDelegate-Protocol.h>
 #import <AppleMediaServicesUI/AMSUIWebActionRunnable-Protocol.h>
 
-@class AMSUIWebClientContext, NSNumber, NSString;
+@class ACAccount, AMSUIWebClientContext, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebBuyAction : NSObject <AMSUIWebActionRunnable>
+@interface AMSUIWebBuyAction : NSObject <AMSPurchaseDelegate, AMSUIWebActionRunnable>
 {
-    NSNumber *_DSID;
+    BOOL _legacyBuy;
+    BOOL _makeCurrentAccount;
+    BOOL _requiresAccount;
+    ACAccount *_account;
     NSString *_buyParams;
     long long _type;
     AMSUIWebClientContext *_context;
+    NSDictionary *_metricsOverlay;
 }
 
-@property (strong, nonatomic) NSNumber *DSID; // @synthesize DSID=_DSID;
+@property (strong, nonatomic) ACAccount *account; // @synthesize account=_account;
 @property (strong, nonatomic) NSString *buyParams; // @synthesize buyParams=_buyParams;
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL legacyBuy; // @synthesize legacyBuy=_legacyBuy;
+@property (nonatomic) BOOL makeCurrentAccount; // @synthesize makeCurrentAccount=_makeCurrentAccount;
+@property (strong, nonatomic) NSDictionary *metricsOverlay; // @synthesize metricsOverlay=_metricsOverlay;
+@property (nonatomic) BOOL requiresAccount; // @synthesize requiresAccount=_requiresAccount;
 @property (readonly) Class superclass;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
+- (void)_makeCurrentAccountIfNeeded:(id)arg1;
+- (id)_runBuy;
+- (id)_runLegacyBuy;
 - (id)initWithJSObject:(id)arg1 context:(id)arg2;
+- (void)purchase:(id)arg1 handleAuthenticateRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)purchase:(id)arg1 handleDialogRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)purchase:(id)arg1 handleEngagementRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)runAction;
 
 @end

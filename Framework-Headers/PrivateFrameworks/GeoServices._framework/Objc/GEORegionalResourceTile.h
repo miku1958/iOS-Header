@@ -30,14 +30,7 @@
         unsigned int read_childrens:1;
         unsigned int read_iconChecksums:1;
         unsigned int read_icons:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_attributions:1;
-        unsigned int wrote_childrens:1;
-        unsigned int wrote_iconChecksums:1;
-        unsigned int wrote_icons:1;
-        unsigned int wrote_x:1;
-        unsigned int wrote_y:1;
-        unsigned int wrote_z:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -56,14 +49,6 @@
 + (Class)iconType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsAttribution:(id)arg1;
-- (void)_addNoFlagsChildren:(id)arg1;
-- (void)_addNoFlagsIcon:(id)arg1;
-- (void)_addNoFlagsIconChecksum:(id)arg1;
-- (void)_readAttributions;
-- (void)_readChildrens;
-- (void)_readIconChecksums;
-- (void)_readIcons;
 - (void)addAttribution:(id)arg1;
 - (void)addChildren:(id)arg1;
 - (void)addIcon:(id)arg1;
@@ -89,7 +74,10 @@
 - (unsigned long long)iconsCount;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

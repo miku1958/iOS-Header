@@ -8,8 +8,7 @@
 
 #import <AppleMediaServices/AMSFinancePerformable-Protocol.h>
 
-@class ACAccount, AMSDialogRequest, AMSProcessInfo, NSDictionary, NSString;
-@protocol AMSBagProtocol;
+@class AMSDialogRequest, AMSURLTaskInfo, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AMSFinanceDialogResponse : NSObject <AMSFinancePerformable>
@@ -17,35 +16,38 @@ __attribute__((visibility("hidden")))
     BOOL _containsCommerceUIURL;
     NSDictionary *_dialogDictionary;
     AMSDialogRequest *_dialogRequest;
-    ACAccount *_account;
-    id<AMSBagProtocol> _bag;
-    AMSProcessInfo *_clientInfo;
-    NSString *_proxyBundleId;
+    long long _kind;
+    AMSURLTaskInfo *_taskInfo;
 }
 
-@property (copy, nonatomic) ACAccount *account; // @synthesize account=_account;
-@property (strong, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
-@property (strong, nonatomic) AMSProcessInfo *clientInfo; // @synthesize clientInfo=_clientInfo;
 @property (readonly, nonatomic) BOOL containsCommerceUIURL; // @synthesize containsCommerceUIURL=_containsCommerceUIURL;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSDictionary *dialogDictionary; // @synthesize dialogDictionary=_dialogDictionary;
 @property (readonly, nonatomic) AMSDialogRequest *dialogRequest; // @synthesize dialogRequest=_dialogRequest;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSString *proxyBundleId; // @synthesize proxyBundleId=_proxyBundleId;
+@property (nonatomic) long long kind; // @synthesize kind=_kind;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) AMSURLTaskInfo *taskInfo; // @synthesize taskInfo=_taskInfo;
 
-+ (id)_URLForCommerceUIFromURL:(id)arg1 account:(id)arg2;
-+ (long long)_actionTypeFromButtonDictionary:(id)arg1;
-+ (id)_createActionFromButtonDictionary:(id)arg1 kind:(long long)arg2 title:(id)arg3 account:(id)arg4 bag:(id)arg5;
-+ (id)_createRequestButtonsFromDialogDictionary:(id)arg1 kind:(long long)arg2 account:(id)arg3 bag:(id)arg4;
-+ (id)_createRequestFromDialogDictionary:(id)arg1 kind:(long long)arg2 account:(id)arg3 bag:(id)arg4;
-+ (BOOL)_isCommerceUIURL:(id)arg1 actionType:(long long)arg2 URLType:(long long)arg3 bag:(id)arg4;
-+ (long long)dialogKindFromPayload:(id)arg1;
++ (BOOL)_credentialSource:(unsigned long long)arg1 satisfiesAuthenticationType:(unsigned long long)arg2;
++ (id)_presentDialog:(id)arg1 taskInfo:(id)arg2;
++ (id)_presentEngagementForResult:(id)arg1 taskInfo:(id)arg2;
++ (id)_presentIDSDialog:(id)arg1 taskInfo:(id)arg2;
++ (BOOL)_shouldSendOverIDS:(id)arg1 taskInfo:(id)arg2;
++ (void)_stashTIDContinueHeadersForResult:(id)arg1 info:(id)arg2;
++ (id)_updatedDialogResultFromResult:(id)arg1 engagementResult:(id)arg2 error:(id)arg3;
++ (long long)dialogKindForTaskInfo:(id)arg1 withResponseDictionary:(id)arg2;
++ (id)handleDialogResult:(id)arg1 taskInfo:(id)arg2;
++ (id)performFinanceDialog:(id)arg1 taskInfo:(id)arg2;
 - (void).cxx_destruct;
-- (id)_sendDialogOverIDSIfNeeded:(id)arg1 taskInfo:(id)arg2 didSend:(BOOL *)arg3;
-- (id)initWithDialogDictionary:(id)arg1 kind:(long long)arg2 account:(id)arg3 clientInfo:(id)arg4 bag:(id)arg5;
-- (id)initWithDialogRequest:(id)arg1 account:(id)arg2 clientInfo:(id)arg3 bag:(id)arg4;
+- (id)_URLForCommerceUIFromURL:(id)arg1 tidContinue:(BOOL)arg2;
+- (long long)_actionTypeFromButtonDictionary:(id)arg1;
+- (id)_createActionFromButtonDictionary:(id)arg1 title:(id)arg2;
+- (id)_createDialogRequest;
+- (id)_createRequestButtonsFromDialogDictionary:(id)arg1;
+- (BOOL)_isCommerceUIURL:(id)arg1 actionType:(long long)arg2 URLType:(long long)arg3;
+- (id)initWithDialogDictionary:(id)arg1 kind:(long long)arg2 taskInfo:(id)arg3;
 - (id)performWithTaskInfo:(id)arg1;
 
 @end

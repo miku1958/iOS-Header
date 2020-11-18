@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDDevice, HMDMessageDispatcher, HMDUser, HMDUserPresenceFeedRetryTimer, HMDUserPresenceRegion, HMDUserPresenceUpdateReason, HMUserPresenceAuthorization, HMUserPresenceCompute, NSDate, NSObject, NSString, NSUUID;
+@class HMDDevice, HMDUser, HMDUserPresenceFeedRetryTimer, HMDUserPresenceRegion, HMDUserPresenceUpdateReason, HMFMessageDispatcher, HMUserPresenceAuthorization, HMUserPresenceCompute, NSDate, NSObject, NSString, NSUUID;
 @protocol HMDUserPresenceFeedSessionDelegate, OS_dispatch_queue;
 
 @interface HMDUserPresenceFeedSession : HMFObject <HMFLogging, HMFTimerDelegate>
@@ -17,7 +17,7 @@
     id<HMDUserPresenceFeedSessionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_workQueue;
     NSUUID *_targetUUID;
-    HMDMessageDispatcher *_remoteMessageDispatcher;
+    HMFMessageDispatcher *_messageDispatcher;
     HMDDevice *_residentDevice;
     HMDUser *_user;
     HMUserPresenceAuthorization *_presenceAuthStatus;
@@ -33,11 +33,11 @@
 @property (readonly, weak, nonatomic) id<HMDUserPresenceFeedSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) HMUserPresenceAuthorization *presenceAuthStatus; // @synthesize presenceAuthStatus=_presenceAuthStatus;
 @property (readonly, nonatomic) HMUserPresenceCompute *presenceComputeStatus; // @synthesize presenceComputeStatus=_presenceComputeStatus;
 @property (readonly, nonatomic) HMDUserPresenceRegion *presenceRegionStatus; // @synthesize presenceRegionStatus=_presenceRegionStatus;
 @property (strong, nonatomic) HMDUserPresenceUpdateReason *reason; // @synthesize reason=_reason;
-@property (readonly, nonatomic) HMDMessageDispatcher *remoteMessageDispatcher; // @synthesize remoteMessageDispatcher=_remoteMessageDispatcher;
 @property (readonly, nonatomic) HMDDevice *residentDevice; // @synthesize residentDevice=_residentDevice;
 @property (readonly, nonatomic) NSUUID *sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly, nonatomic) NSDate *statusChangeDate; // @synthesize statusChangeDate=_statusChangeDate;
@@ -54,7 +54,7 @@
 - (void)_send;
 - (id)attributeDescriptions;
 - (void)dealloc;
-- (id)initWithDelegate:(id)arg1 workQueue:(id)arg2 targetUUID:(id)arg3 remoteMessageDispatcher:(id)arg4 residentDevice:(id)arg5 user:(id)arg6 presenceAuthStatus:(id)arg7 presenceComputeStatus:(id)arg8 presenceRegionStatus:(id)arg9 reason:(id)arg10;
+- (id)initWithDelegate:(id)arg1 workQueue:(id)arg2 targetUUID:(id)arg3 messageDispatcher:(id)arg4 residentDevice:(id)arg5 user:(id)arg6 presenceAuthStatus:(id)arg7 presenceComputeStatus:(id)arg8 presenceRegionStatus:(id)arg9 reason:(id)arg10;
 - (id)logIdentifier;
 - (void)send;
 - (void)timerDidFire:(id)arg1;

@@ -78,7 +78,7 @@
 - (unsigned long long)_configurationSourceForSourceName:(id)arg1;
 - (id)_deviceInfo;
 - (void)_fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 forceRefresh:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_fetchRemoteAppWidgetConfigurationIfNeededUseBackgroundRefreshRate:(BOOL)arg1 completionQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_fetchRemoteAppWidgetConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_fetchRemoteMagazinesConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_loadConfigurationFromStore:(id)arg1;
 - (id)_mergeCachedDataWithWidgetConfigurationData:(id)arg1;
@@ -95,11 +95,10 @@
 - (void)feldsparIDProviderDidChangeFeldsparID:(id)arg1;
 - (void)fetchAppConfigurationIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchAppConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)fetchAppWidgetConfigurationUseBackgroundRefreshRate:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchAppWidgetConfigurationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchConfigurationIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchMagazinesConfigurationIfNeededWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)fetchTrendingSearchesIfNeededWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initForTesting;
 - (id)initWithContextConfiguration:(id)arg1 contentHostDirectoryFileURL:(id)arg2 feldsparIDProvider:(id)arg3;

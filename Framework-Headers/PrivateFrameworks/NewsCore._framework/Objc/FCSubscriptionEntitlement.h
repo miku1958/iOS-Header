@@ -14,6 +14,7 @@
     BOOL _isTrialPeriod;
     BOOL _isPurchaser;
     BOOL _isAmplifyUser;
+    NSString *_servicesBundleAdamID;
     NSNumber *_appAdamID;
     NSString *_chargeCurrencyCode;
     NSNumber *_inAppAdamID;
@@ -26,10 +27,11 @@
 @property (readonly, nonatomic) BOOL isPurchaser; // @synthesize isPurchaser=_isPurchaser;
 @property (readonly, nonatomic) BOOL isTrialPeriod; // @synthesize isTrialPeriod=_isTrialPeriod;
 @property (readonly, nonatomic, getter=isNewsAppPurchase) BOOL newsAppPurchase; // @synthesize newsAppPurchase=_newsAppPurchase;
+@property (readonly, nonatomic) NSString *servicesBundleAdamID; // @synthesize servicesBundleAdamID=_servicesBundleAdamID;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithAppAdamID:(id)arg1 inAppAdamID:(id)arg2 chargeCurrencyCode:(id)arg3 newsAppPurchase:(BOOL)arg4 isTrailPeriod:(BOOL)arg5 isPurchaser:(BOOL)arg6 isAmplifyUser:(BOOL)arg7;
+- (id)initWithAppAdamID:(id)arg1 inAppAdamID:(id)arg2 chargeCurrencyCode:(id)arg3 newsAppPurchase:(BOOL)arg4 isTrialPeriod:(BOOL)arg5 isPurchaser:(BOOL)arg6 servicesBundleAdamID:(id)arg7 isAmplifyUser:(BOOL)arg8;
 
 @end
 

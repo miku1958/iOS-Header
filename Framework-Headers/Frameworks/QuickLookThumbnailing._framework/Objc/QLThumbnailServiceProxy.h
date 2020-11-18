@@ -18,12 +18,13 @@
 
 + (id)interface;
 + (id)sharedInstance;
++ (id)sharedInstanceWithError:(id *)arg1;
 - (void).cxx_destruct;
 - (void)askThumbnailAdditionIndex:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)indexProxy;
-- (id)init;
+- (id)initWithError:(id *)arg1;
 - (void)touchOrAddThumbnailAddition:(id)arg1 forURL:(id)arg2;
 - (void)updateLastHitDateOfAddition:(id)arg1 onPhysicalURL:(id)arg2;
 

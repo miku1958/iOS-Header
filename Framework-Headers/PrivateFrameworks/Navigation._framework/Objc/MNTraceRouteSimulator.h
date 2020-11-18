@@ -4,28 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GeoServices/GEOTraceRouteSimulator.h>
+#import <objc/NSObject.h>
 
 #import <Navigation/MNLocationProvider-Protocol.h>
 #import <Navigation/MNTimeProvider-Protocol.h>
 
-@class MNTraceEventRecorder, NSArray, NSBundle, NSMutableArray, NSString;
+@class GEOComposedRoute, GEODirectionsRequest, GEODirectionsResponse, GEORouteAttributes, MNTraceEventRecorder, NSArray, NSBundle, NSDate, NSDictionary, NSMutableArray, NSString;
 @protocol MNLocationProviderDelegate;
 
-@interface MNTraceRouteSimulator : GEOTraceRouteSimulator <MNLocationProvider, MNTimeProvider>
+@interface MNTraceRouteSimulator : NSObject <MNLocationProvider, MNTimeProvider>
 {
     double _time;
     NSMutableArray *_priorityQueue;
     MNTraceEventRecorder *_recorder;
+    double _deltaT;
+    double _horizontalAccuracy;
+    double _verticalAccuracy;
+    NSDate *_startTime;
+    GEOComposedRoute *_route;
+    GEODirectionsRequest *_request;
+    GEODirectionsResponse *_response;
+    GEORouteAttributes *_routeAttributes;
+    CDStruct_2c43369c _walkingStart;
+    CDStruct_2c43369c _walkingEnd;
+    CDStruct_2c43369c _origin;
+    CDStruct_2c43369c _destination;
+    NSMutableArray *_mutableLocations;
+    NSArray *_locations;
+    NSDictionary *_pointTimestamps;
+    double _duration;
     id<MNLocationProviderDelegate> _delegate;
     CDUnknownBlockType _authorizationRequestBlock;
     NSArray *_traceEvents;
     double _simulationSpeedOverride;
 }
 
-@property (nonatomic) long long activityType;
 @property (copy, nonatomic) CDUnknownBlockType authorizationRequestBlock; // @synthesize authorizationRequestBlock=_authorizationRequestBlock;
 @property (readonly, nonatomic) int authorizationStatus;
+@property (readonly, nonatomic) BOOL coarseModeEnabled;
 @property (readonly, nonatomic) double currentTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MNLocationProviderDelegate> delegate; // @synthesize delegate=_delegate;
@@ -37,9 +53,11 @@
 @property (readonly, nonatomic) double expectedGpsUpdateInterval;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int headingOrientation;
+@property (nonatomic) double horizontalAccuracy; // @synthesize horizontalAccuracy=_horizontalAccuracy;
 @property (readonly, nonatomic) BOOL isSimulation;
 @property (readonly, nonatomic) BOOL isTracePlayer;
 @property (nonatomic, getter=isLocationServicesPreferencesDialogEnabled) BOOL locationServicesPreferencesDialogEnabled;
+@property (readonly, nonatomic) NSArray *locations; // @synthesize locations=_locations;
 @property (nonatomic) BOOL matchInfoEnabled;
 @property (nonatomic) double simulationSpeedOverride; // @synthesize simulationSpeedOverride=_simulationSpeedOverride;
 @property (readonly) Class superclass;
@@ -49,22 +67,29 @@
 @property (readonly, nonatomic) BOOL usesCLMapCorrection;
 
 - (void).cxx_destruct;
+- (void)_addLocation:(CDStruct_c3b9c2ee)arg1 withCourse:(double)arg2 altitude:(double)arg3 speed:(double)arg4 transport:(int)arg5;
+- (double)_estimateDuration;
 - (void)_generateEvents;
+- (void)_generateGuidanceWithRequest:(id)arg1 response:(id)arg2 routeAttributes:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
+- (void)_generateLocationsWithSpeedOverride:(double)arg1;
 - (void)_setup;
+- (void)_simulateWalkingFrom:(CDStruct_c3b9c2ee)arg1 to:(CDStruct_c3b9c2ee)arg2;
 - (void)_tearDown;
 - (id)currentDate;
 - (void)generateGuidance;
-- (void)generateGuidanceWithRequest:(id)arg1 response:(id)arg2 routeAttributes:(id)arg3 routeIndex:(unsigned int)arg4 withCompletion:(CDUnknownBlockType)arg5;
+- (void)generateLocations;
+- (id)initWithRoute:(id)arg1 request:(id)arg2 response:(id)arg3 routeAttributes:(id)arg4;
+- (id)initWithRoute:(id)arg1 request:(id)arg2 response:(id)arg3 routeAttributes:(id)arg4 locations:(id)arg5;
 - (void)insertVoiceEventAtTime:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)navigationSession:(id)arg1 didAnnounce:(id)arg2 stage:(unsigned long long)arg3;
 - (void)navigationSession:(id)arg1 didAnnounceArrival:(id)arg2;
 - (void)navigationSession:(id)arg1 didEnableGuidancePrompts:(BOOL)arg2;
-- (void)navigationSession:(id)arg1 didReroute:(id)arg2 withLocation:(id)arg3 withAlternateRoutes:(id)arg4;
+- (void)navigationSession:(id)arg1 didReroute:(id)arg2 withLocation:(id)arg3 withAlternateRoutes:(id)arg4 rerouteReason:(unsigned long long)arg5;
 - (void)navigationSession:(id)arg1 didSwitchToNewTransportType:(int)arg2 newRoute:(id)arg3;
 - (void)navigationSession:(id)arg1 didUpdateMatchedLocation:(id)arg2;
 - (void)navigationSession:(id)arg1 displayPrimaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6 maneuverStepIndex:(unsigned long long)arg7 isSynthetic:(BOOL)arg8;
 - (void)navigationSession:(id)arg1 displaySecondaryStep:(id)arg2 instructions:(id)arg3 shieldType:(int)arg4 shieldText:(id)arg5 drivingSide:(int)arg6;
-- (void)navigationSessionDidStart:(id)arg1;
+- (void)navigationSessionDidStart:(id)arg1 isReconnecting:(BOOL)arg2;
 - (void)navigationSessionHideSecondaryStep:(id)arg1;
 - (void)navigationSessionWillReroute:(id)arg1;
 - (void)recordLocationsAlongRouteWithRecorder:(id)arg1;

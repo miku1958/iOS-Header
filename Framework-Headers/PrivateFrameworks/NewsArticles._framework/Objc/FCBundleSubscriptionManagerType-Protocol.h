@@ -22,5 +22,6 @@
 - (void)refreshBundleSubscriptionWithCachePolicy:(unsigned long long)arg1 completion:(void (^)(FCBundleSubscription *))arg2;
 - (void)removeObserver:(id<FCBundleSubscriptionChangeObserver>)arg1;
 - (void)renewalNoticeShownWithPurchaseID:(NSString *)arg1;
+- (void)silentExpireBundleSubscription;
 @end
 

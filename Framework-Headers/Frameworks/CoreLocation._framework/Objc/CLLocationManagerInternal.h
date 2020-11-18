@@ -27,6 +27,7 @@
     NSMutableSet *fRangedConstraints;
     CDUnknownBlockType fPlaceInferenceHandler;
     unsigned long long fFidelityPolicy;
+    CLTimer *fPlaceInferenceTimer;
     CLSilo *fSilo;
 }
 

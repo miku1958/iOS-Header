@@ -6,9 +6,11 @@
 
 #import <Foundation/NSProgress.h>
 
+__attribute__((visibility("hidden")))
 @interface _HDMirroredProgress : NSProgress
 {
     NSProgress *_originalProgress;
+    struct os_unfair_lock_s _lock;
 }
 
 + (id)_KVOKeyPaths;

@@ -8,13 +8,13 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI216NewsActivityInfo : NSObject
 {
     MISSING_TYPE *type;
     MISSING_TYPE *identifier;
     MISSING_TYPE *title;
     MISSING_TYPE *url;
+    MISSING_TYPE *activityTraits;
 }
 
 - (void).cxx_destruct;

@@ -16,10 +16,12 @@
     MISSING_TYPE *naImage;
     MISSING_TYPE *desiredItemIdentifiers;
     MISSING_TYPE *undesiredItemIdentifiers;
+    MISSING_TYPE *visibleItemIdentifiers;
     MISSING_TYPE *key;
     MISSING_TYPE *sections;
     MISSING_TYPE *feedItemImages;
     MISSING_TYPE *layoutImages;
+    MISSING_TYPE *featureAvailability;
 }
 
 @end

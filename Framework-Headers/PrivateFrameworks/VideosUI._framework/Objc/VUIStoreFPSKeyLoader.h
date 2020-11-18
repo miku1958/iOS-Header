@@ -28,13 +28,17 @@
     NSDate *_rentalPlaybackStartDate;
     TVPContentKeySession *_contentKeySession;
     NSMutableDictionary *_keyIdentifierPenaltyBox;
+    double _downloadExpirationPeriodOverrideInSeconds;
+    double _availabilityPeriodOverrideInSeconds;
 }
 
+@property (nonatomic) double availabilityPeriodOverrideInSeconds; // @synthesize availabilityPeriodOverrideInSeconds=_availabilityPeriodOverrideInSeconds;
 @property (strong, nonatomic) NSData *certificateData; // @synthesize certificateData=_certificateData;
 @property (copy, nonatomic) NSURL *certificateURL; // @synthesize certificateURL=_certificateURL;
 @property (strong, nonatomic) TVPContentKeySession *contentKeySession; // @synthesize contentKeySession=_contentKeySession;
 @property (weak, nonatomic) NSObject<VUIStoreFPSKeyLoaderDelegate> *delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL didSkipRentalCheckout; // @synthesize didSkipRentalCheckout=_didSkipRentalCheckout;
+@property (nonatomic) double downloadExpirationPeriodOverrideInSeconds; // @synthesize downloadExpirationPeriodOverrideInSeconds=_downloadExpirationPeriodOverrideInSeconds;
 @property (strong, nonatomic) TVPPlaybackReportingEventCollection *eventCollection; // @synthesize eventCollection=_eventCollection;
 @property (strong, nonatomic) NSDate *keyExpirationDate; // @synthesize keyExpirationDate=_keyExpirationDate;
 @property (strong, nonatomic) NSMutableDictionary *keyIdentifierPenaltyBox; // @synthesize keyIdentifierPenaltyBox=_keyIdentifierPenaltyBox;
@@ -53,7 +57,7 @@
 + (void)initialize;
 + (void)preFetchFPSCertificate;
 - (void).cxx_destruct;
-- (id)_bodyJSONDataForRequests:(id)arg1 isStopRequest:(BOOL)arg2;
+- (id)_bodyJSONDataForRequests:(id)arg1 isStopRequest:(BOOL)arg2 locationAuthorizationStatus:(long long)arg3;
 - (id)_errorForStoreResponseStatus:(long long)arg1 deviceLimit:(id)arg2;
 - (void)_failKeyRequests:(id)arg1 withError:(id)arg2;
 - (void)_generateKeyRequestDataForKeyRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -62,13 +66,15 @@
 - (void)_handleResponseDict:(id)arg1 forKeyRequest:(id)arg2;
 - (void)_handleResponseDicts:(id)arg1 forKeyRequests:(id)arg2;
 - (void)_handleResponseForKeyRequests:(id)arg1 responseData:(id)arg2 URLResponse:(id)arg3 error:(id)arg4;
+- (void)_initiateKeyRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_invalidateValidKeyRequestsInBatches:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_jsonDictionaryForRequest:(id)arg1 isStopRequest:(BOOL)arg2;
+- (id)_jsonDictionaryForRequest:(id)arg1 isStopRequest:(BOOL)arg2 locationAuthorizationStatus:(long long)arg3;
 - (void)_loadCertificateDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_loadNonceDataForRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_sendKeyRequestsToServer:(id)arg1 isStopRequest:(BOOL)arg2 isSecureInvalidationRequest:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_startKeyRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_startKeyRequestsInBatches:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)dealloc;
 - (id)initWithCertificateURL:(id)arg1 keyServerURL:(id)arg2;
 - (void)invalidateKeysWithRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)loadFairPlayStreamingKeyRequests:(id)arg1 completion:(CDUnknownBlockType)arg2;

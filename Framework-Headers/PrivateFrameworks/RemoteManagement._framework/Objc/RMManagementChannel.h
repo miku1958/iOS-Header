@@ -12,17 +12,21 @@
 
 @interface RMManagementChannel : NSObject <NSSecureCoding>
 {
+    BOOL _isEnrolled;
     long long _type;
     NSString *_identifier;
     NSString *_accountIdentifier;
     NSString *_accountDescription;
+    NSString *_organizationDescription;
     NSString *_enrollmentToken;
 }
 
 @property (readonly, copy, nonatomic) NSString *accountDescription; // @synthesize accountDescription=_accountDescription;
 @property (readonly, copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
-@property (copy, nonatomic) NSString *enrollmentToken; // @synthesize enrollmentToken=_enrollmentToken;
+@property (readonly, copy, nonatomic) NSString *enrollmentToken; // @synthesize enrollmentToken=_enrollmentToken;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) BOOL isEnrolled; // @synthesize isEnrolled=_isEnrolled;
+@property (readonly, copy, nonatomic) NSString *organizationDescription; // @synthesize organizationDescription=_organizationDescription;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
@@ -32,6 +36,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithType:(long long)arg1 identifier:(id)arg2 enrollmentToken:(id)arg3 accountIdentifier:(id)arg4 accountDescription:(id)arg5;
+- (id)initWithType:(long long)arg1 identifier:(id)arg2 enrollmentToken:(id)arg3 accountIdentifier:(id)arg4 accountDescription:(id)arg5 organizationDescription:(id)arg6 isEnrolled:(BOOL)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToChannel:(id)arg1;
 

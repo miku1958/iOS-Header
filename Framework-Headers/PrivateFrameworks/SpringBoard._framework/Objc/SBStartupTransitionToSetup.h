@@ -6,11 +6,11 @@
 
 #import <SpringBoard/SBBaseStartupTransition.h>
 
-@class SBApplicationController, SBBulletinWindowController, SBFUserAuthenticationController, SBInitialRestartState, SBLockScreenManager, SBSetupManager;
+@class SBApplicationController, SBBannerManager, SBFUserAuthenticationController, SBInitialRestartState, SBLockScreenManager, SBSetupManager;
 
 @interface SBStartupTransitionToSetup : SBBaseStartupTransition
 {
-    SBBulletinWindowController *_bulletinWindowController;
+    SBBannerManager *_bannerManager;
     SBFUserAuthenticationController *_authController;
     SBApplicationController *_appController;
     SBSetupManager *_setupManager;

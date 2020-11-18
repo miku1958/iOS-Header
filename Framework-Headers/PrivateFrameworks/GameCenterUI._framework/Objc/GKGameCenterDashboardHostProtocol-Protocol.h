@@ -17,6 +17,7 @@
 - (void)playerQuitMatch:(GKTurnBasedMatchInternal *)arg1;
 - (void)remoteControllerDidChangeViewState:(NSNumber *)arg1;
 - (void)remoteControllerDidSelectLeaderboardIdentifier:(NSString *)arg1;
+- (void)remoteControllerDidSelectLeaderboardPlayerScope:(NSNumber *)arg1;
 - (void)remoteControllerDidSelectLeaderboardTimeScope:(NSNumber *)arg1;
 - (void)requestDashboardLogoImageWithHandler:(void (^)(NSError *))arg1;
 - (void)requestImagesForLeaderboardSetsWithHandler:(void (^)(NSError *))arg1;

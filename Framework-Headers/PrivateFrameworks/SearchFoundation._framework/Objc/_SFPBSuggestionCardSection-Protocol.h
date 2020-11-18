@@ -6,12 +6,13 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _SFPBColor, _SFPBPunchout, _SFPBRichText;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBColor, _SFPBImage, _SFPBPunchout, _SFPBRichText;
 
 @protocol _SFPBSuggestionCardSection <NSObject>
 
 @property (strong, nonatomic) _SFPBColor *backgroundColor;
 @property (nonatomic) BOOL canBeHidden;
+@property (strong, nonatomic) _SFPBRichText *detailText;
 @property (nonatomic) BOOL hasBottomPadding;
 @property (nonatomic) BOOL hasTopPadding;
 @property (nonatomic) BOOL isContact;
@@ -23,6 +24,7 @@
 @property (nonatomic) int separatorStyle;
 @property (strong, nonatomic) _SFPBRichText *suggestionText;
 @property (nonatomic) int suggestionType;
+@property (strong, nonatomic) _SFPBImage *thumbnail;
 @property (copy, nonatomic) NSString *type;
 
 - (void)addPunchoutOptions:(_SFPBPunchout *)arg1;

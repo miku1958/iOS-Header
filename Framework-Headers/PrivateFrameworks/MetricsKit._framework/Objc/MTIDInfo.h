@@ -6,22 +6,42 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString;
+#import <MetricsKit/MTID-Protocol.h>
 
-@interface MTIDInfo : NSObject
+@class MTIDScheme, MTIDSecret, NSDate, NSDictionary, NSString;
+
+@interface MTIDInfo : NSObject <MTID>
 {
-    NSString *_ID;
+    BOOL _isSynchronized;
+    MTIDScheme *_scheme;
+    MTIDSecret *_secret;
+    NSString *_idString;
+    NSDate *_effectiveDate;
     NSDate *_expirationDate;
-    NSString *_idNamespace;
+    NSDate *_computedDate;
 }
 
-@property (strong, nonatomic) NSString *ID; // @synthesize ID=_ID;
-@property (strong, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
-@property (strong, nonatomic) NSString *idNamespace; // @synthesize idNamespace=_idNamespace;
+@property (strong, nonatomic) NSDate *computedDate; // @synthesize computedDate=_computedDate;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSDate *effectiveDate; // @synthesize effectiveDate=_effectiveDate;
+@property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
+@property (readonly) unsigned long long hash;
+@property (readonly, copy, nonatomic) NSString *idNamespace;
+@property (copy, nonatomic) NSString *idString; // @synthesize idString=_idString;
+@property (readonly, nonatomic) long long idType;
+@property (nonatomic) BOOL isSynchronized; // @synthesize isSynchronized=_isSynchronized;
+@property (readonly, nonatomic) double lifespan;
+@property (readonly, copy, nonatomic) NSDictionary *metricsFields;
+@property (strong, nonatomic) MTIDScheme *scheme; // @synthesize scheme=_scheme;
+@property (strong, nonatomic) MTIDSecret *secret; // @synthesize secret=_secret;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)description;
-- (id)initWithNamespace:(id)arg1 expiration:(id)arg2 ID:(id)arg3;
+- (id)debugInfo;
+- (id)initWithScheme:(id)arg1 secret:(id)arg2 idString:(id)arg3 effectiveDate:(id)arg4 expirationDate:(id)arg5;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isValueExpired;
 
 @end
 

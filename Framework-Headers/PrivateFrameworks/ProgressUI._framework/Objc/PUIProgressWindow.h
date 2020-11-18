@@ -8,7 +8,7 @@
 
 #import <ProgressUI/CALayerDelegate-Protocol.h>
 
-@class CAContext, CALayer, NSString;
+@class CAContext, CALayer, CATextLayer, NSString;
 
 @interface PUIProgressWindow : NSObject <CALayerDelegate>
 {
@@ -16,6 +16,8 @@
     CAContext *_context;
     int _deviceClass;
     int _screenClass;
+    int _productType;
+    BOOL _isSecurityResearchDevice;
     struct CGSize _displaySize;
     struct CGSize _framebufferSize;
     struct CGSize _layerPositioningSize;
@@ -29,10 +31,12 @@
     double _progressXDelta;
     double _progressYDelta;
     double _progressWidth;
+    double _progressHeight;
     BOOL _forceInverted;
     BOOL _white;
     BOOL _showsProgressBar;
     CALayer *_progressLayer;
+    CATextLayer *_statusTextLayer;
     CALayer *_layer;
 }
 
@@ -69,6 +73,7 @@
 - (id)initWithProgressBarVisibility:(BOOL)arg1 level:(float)arg2;
 - (id)initWithProgressBarVisibility:(BOOL)arg1 level:(float)arg2 forceInverted:(BOOL)arg3;
 - (void)setProgressValue:(float)arg1;
+- (void)setStatusText:(id)arg1;
 - (void)setVisible:(BOOL)arg1;
 
 @end

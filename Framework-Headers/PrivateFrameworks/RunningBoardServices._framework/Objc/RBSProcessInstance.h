@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/NSSecureCoding-Protocol.h>
 #import <RunningBoardServices/RBSProcessIdentifier-Protocol.h>
 #import <RunningBoardServices/RBSProcessMatching-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString, RBSProcessIdentifier, RBSProcessIdentity;
 
-@interface RBSProcessInstance : NSObject <RBSProcessMatching, RBSProcessIdentifier, NSCopying, BSXPCSecureCoding>
+@interface RBSProcessInstance : NSObject <RBSProcessMatching, RBSProcessIdentifier, NSCopying, RBSXPCSecureCoding, NSSecureCoding>
 {
     RBSProcessIdentity *_identity;
     RBSProcessIdentifier *_identifier;
@@ -27,14 +28,16 @@
 @property (readonly) Class superclass;
 
 + (id)instanceWithIdentifier:(id)arg1 identity:(id)arg2;
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithIdentifier:(id)arg1 identity:(id)arg2;
 - (id)copyWithEuid:(unsigned int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)init;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)matchesProcess:(id)arg1;
 - (id)processPredicate;

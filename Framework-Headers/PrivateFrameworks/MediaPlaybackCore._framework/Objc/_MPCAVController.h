@@ -6,51 +6,78 @@
 
 #import <MediaPlayer/MPAVController.h>
 
-@class MPAVItem, MPCPlaybackEngine, NSMutableSet;
+#import <MediaPlaybackCore/MPCPlaybackEngineImplementation-Protocol.h>
 
-@interface _MPCAVController : MPAVController
+@class AVPictureInPictureController, MPAVItem, MPCPlaybackEngine, MPQueuePlayer, MPVideoView, NSMutableSet, NSString;
+@protocol MPAVQueueController;
+
+@interface _MPCAVController : MPAVController <MPCPlaybackEngineImplementation>
 {
-    BOOL _playedSuccessfully;
-    BOOL _allowsNewPlaybackErrorItem;
+    BOOL _hasPlayedSuccessfully;
     MPCPlaybackEngine *_playbackEngine;
     long long _actionAtQueueEnd;
-    MPAVItem *_firstPlaybackErrorItem;
+    NSString *_firstPlaybackItemIdentifier;
     NSMutableSet *_failedItemsIdentifiers;
 }
 
 @property (nonatomic) long long actionAtQueueEnd; // @synthesize actionAtQueueEnd=_actionAtQueueEnd;
-@property (nonatomic) BOOL allowsNewPlaybackErrorItem; // @synthesize allowsNewPlaybackErrorItem=_allowsNewPlaybackErrorItem;
+@property (nonatomic) BOOL autoPlayWhenLikelyToKeepUp;
+@property (nonatomic) BOOL automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds;
+@property (readonly, nonatomic) MPAVItem *currentItem;
+@property (nonatomic) double currentTime;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableSet *failedItemsIdentifiers; // @synthesize failedItemsIdentifiers=_failedItemsIdentifiers;
-@property (weak, nonatomic) MPAVItem *firstPlaybackErrorItem; // @synthesize firstPlaybackErrorItem=_firstPlaybackErrorItem;
+@property (copy, nonatomic) NSString *firstPlaybackItemIdentifier; // @synthesize firstPlaybackItemIdentifier=_firstPlaybackItemIdentifier;
+@property (nonatomic) BOOL hasPlayedSuccessfully; // @synthesize hasPlayedSuccessfully=_hasPlayedSuccessfully;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) AVPictureInPictureController *pictureInPictureController;
 @property (readonly, weak, nonatomic) MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
-@property (nonatomic, getter=hasPlayedSuccessfully) BOOL playedSuccessfully; // @synthesize playedSuccessfully=_playedSuccessfully;
+@property (strong, nonatomic) id<MPAVQueueController> queueController;
+@property (readonly, nonatomic) MPQueuePlayer *queuePlayer;
+@property (readonly, nonatomic) long long state;
+@property (readonly, nonatomic) long long stateBeforeInterruption;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) MPVideoView *videoView;
+@property (nonatomic) BOOL wantsPictureInPicture;
 
 + (BOOL)prefersApplicationAudioSession;
 - (void).cxx_destruct;
 - (void)_configureAudioSession;
 - (void)_connectAVPlayer;
+- (void)_connectAVPlayerDeferringItemLoading:(BOOL)arg1;
 - (void)_contentsChanged;
+- (void)_enforcingPolicy:(BOOL)arg1;
 - (id)_expectedAssetTypesForPlaybackMode:(long long)arg1;
+- (void)_firstVideoFrameDisplayed:(id)arg1;
 - (void)_itemDidChange:(id)arg1;
 - (void)_itemDidSignificantlyChangeElapsedTime:(double)arg1 rate:(float)arg2;
+- (void)_itemFailedToPlayToEnd:(id)arg1;
 - (void)_itemPlaybackDidEndNotification:(id)arg1;
 - (void)_itemWillChange:(id)arg1;
 - (void)_networkPolicyItemCellularRestrictedNotification:(id)arg1;
 - (void)_playbackUserDefaultsEQPresetDidChangeNotification:(id)arg1;
 - (void)_queueDidEndWithReason:(id)arg1 lastItem:(id)arg2;
+- (void)_setQueueController:(id)arg1 deferItemLoading:(BOOL)arg2;
 - (void)_setState:(long long)arg1;
 - (void)_streamBufferFull:(id)arg1;
 - (void)_streamLikelyToKeepUp:(id)arg1;
+- (void)_streamRanDry:(id)arg1;
+- (void)_streamUnlikelyToKeepUp:(id)arg1;
 - (void)_updateStateForPlaybackPrevention;
+- (BOOL)becomeActiveWithError:(id *)arg1;
 - (void)endPlayback;
 - (void)handlePlaybackErrorWithUserInfo:(id)arg1;
 - (id)initWithPlaybackEngine:(id)arg1;
-- (id)initWithPlaybackEngine:(id)arg1 options:(unsigned long long)arg2;
+- (void)loadSessionWithQueueController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)playWithOptions:(unsigned long long)arg1;
 - (void)playbackHasStartedForItem:(id)arg1;
+- (void)queueController:(id)arg1 didChangeActionAtQueueEnd:(long long)arg2;
 - (void)queueController:(id)arg1 didChangeRepeatType:(long long)arg2;
 - (void)queueController:(id)arg1 didChangeShuffleType:(long long)arg2;
 - (void)queueController:(id)arg1 didIncrementVersionForSegment:(id)arg2;
-- (void)reloadWithPlaybackContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)reloadWithPlaybackContext:(id)arg1 identifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)togglePlaybackWithOptions:(unsigned long long)arg1;
 - (void)updateAudioSession;
 
 @end

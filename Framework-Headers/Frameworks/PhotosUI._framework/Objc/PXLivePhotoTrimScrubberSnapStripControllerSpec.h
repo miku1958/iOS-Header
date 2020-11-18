@@ -11,6 +11,7 @@
 @interface PXLivePhotoTrimScrubberSnapStripControllerSpec : NSObject
 {
     BOOL _alwaysShowKeyTime;
+    BOOL _showDefaultKeyTime;
     UIColor *_disabledColor;
     UIColor *_currentPositionMarkerColor;
     UIColor *_originalPositionMarkerColor;
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) UIColor *currentPositionMarkerColor; // @synthesize currentPositionMarkerColor=_currentPositionMarkerColor;
 @property (strong, nonatomic) UIColor *disabledColor; // @synthesize disabledColor=_disabledColor;
 @property (strong, nonatomic) UIColor *originalPositionMarkerColor; // @synthesize originalPositionMarkerColor=_originalPositionMarkerColor;
+@property (nonatomic) BOOL showDefaultKeyTime; // @synthesize showDefaultKeyTime=_showDefaultKeyTime;
 @property (strong, nonatomic) UIColor *suggestedMarkerColor; // @synthesize suggestedMarkerColor=_suggestedMarkerColor;
 
 - (void).cxx_destruct;

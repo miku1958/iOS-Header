@@ -11,6 +11,7 @@
 
 @interface IMDCKMessageSyncController : IMDCKAbstractSyncController
 {
+    BOOL _encounteredIncompatibleMessage;
     CKServerChangeToken *_archivedRecordSyncToken;
     NSObject<OS_dispatch_queue> *_ckQueue;
     IMDRecordZoneManager *_recordZoneManager;
@@ -26,6 +27,7 @@
 @property (strong, nonatomic) CKServerChangeToken *archivedRecordSyncToken; // @synthesize archivedRecordSyncToken=_archivedRecordSyncToken;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *ckQueue; // @synthesize ckQueue=_ckQueue;
 @property (nonatomic) unsigned long long deviceConditionsToCheck; // @synthesize deviceConditionsToCheck=_deviceConditionsToCheck;
+@property (nonatomic) BOOL encounteredIncompatibleMessage; // @synthesize encounteredIncompatibleMessage=_encounteredIncompatibleMessage;
 @property (strong, nonatomic) CKServerChangeToken *latestSyncToken;
 @property (strong, nonatomic) IMDRecordZoneManager *recordZoneManager; // @synthesize recordZoneManager=_recordZoneManager;
 @property (strong, nonatomic) id<IMDCKSyncTokenStore> syncTokenStore; // @synthesize syncTokenStore=_syncTokenStore;
@@ -50,6 +52,7 @@
 - (BOOL)_isValidCKRecordToSync:(id)arg1;
 - (BOOL)_kickOffWriteIfNeededForSyncType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_kickOffWriteOnCKQueueWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_markAllIncompatibleMessagesForDeletion;
 - (void)_markAllUnsuccessFullSyncMessagesAsNeedingSync;
 - (unsigned long long)_messageDeleteBatchSize;
 - (id)_messageRecordSalt;
@@ -87,6 +90,7 @@
 - (void)dealloc;
 - (void)deleteMessageSyncToken;
 - (void)deleteMessagesZone;
+- (void)incompatibleMessageDeleteDetected:(id)arg1;
 - (id)init;
 - (id)initWithSyncTokenStore:(id)arg1;
 - (long long)syncControllerRecordType;

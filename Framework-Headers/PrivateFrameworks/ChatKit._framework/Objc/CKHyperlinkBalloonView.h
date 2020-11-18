@@ -21,6 +21,7 @@
 
 - (BOOL)_gestureRecognizer:(id)arg1 canBePreventedByGestureRecognizer:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3;
 
 @end
 

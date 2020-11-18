@@ -10,7 +10,6 @@
 
 @class CKDMMCSItem, CKDMMCSItemGroupContext, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCSClientProxyItemReader : NSObject <CKDMMCSItemReaderWriterProtocol>
 {
     CKDMMCSItemGroupContext *_MMCSRequest;

@@ -19,6 +19,7 @@
     BOOL _readerTextAvailable;
     int _viewAppearEvent;
     unsigned long long _timestamp;
+    NSString *_preexistingInput;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -32,6 +33,7 @@
 @property (nonatomic) BOOL isOnLockScreen; // @synthesize isOnLockScreen=_isOnLockScreen;
 @property (nonatomic) BOOL isOverApp; // @synthesize isOverApp=_isOverApp;
 @property (readonly, nonatomic) NSData *jsonData;
+@property (copy, nonatomic) NSString *preexistingInput; // @synthesize preexistingInput=_preexistingInput;
 @property (nonatomic) BOOL readerTextAvailable; // @synthesize readerTextAvailable=_readerTextAvailable;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -39,6 +41,7 @@
 @property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) int viewAppearEvent; // @synthesize viewAppearEvent=_viewAppearEvent;
 
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithFacade:(id)arg1;

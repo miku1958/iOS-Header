@@ -6,15 +6,19 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+
 @interface PPMeCardCache : NSObject
 {
+    NSString *_path;
 }
 
-+ (id)sharedInstance;
+- (void).cxx_destruct;
 - (id)_cachedDateComponentsFromDateComponents:(id)arg1;
 - (id)_dateComponentsFromCachedDateComponents:(id)arg1;
 - (BOOL)deleteMeCardCache;
 - (id)init;
+- (id)initWithPath:(id)arg1;
 - (id)loadMeCardCache;
 - (BOOL)writeMeCardCache:(id)arg1;
 

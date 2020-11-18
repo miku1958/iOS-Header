@@ -21,6 +21,7 @@
     NSObject<OS_dispatch_queue> *_nodeQueue;
 }
 
+@property (readonly, nonatomic) BOOL areDiagnosticsEnabled;
 @property (nonatomic, getter=isConnected) BOOL connected; // @synthesize connected=_connected;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AXMVisionEngineNodeConnectionDelegate> delegate; // @synthesize delegate=_delegate;

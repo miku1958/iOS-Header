@@ -14,11 +14,13 @@
     MTEnvironment *_environment;
     MTEventRecorder *_eventRecorder;
     id<MTEventFilter> _eventFilter;
+    id<MTEventFilter> _treatmentFilter;
 }
 
 @property (strong, nonatomic) MTEnvironment *environment; // @synthesize environment=_environment;
 @property (strong, nonatomic) id<MTEventFilter> eventFilter; // @synthesize eventFilter=_eventFilter;
 @property (strong, nonatomic) MTEventRecorder *eventRecorder; // @synthesize eventRecorder=_eventRecorder;
+@property (strong, nonatomic) id<MTEventFilter> treatmentFilter; // @synthesize treatmentFilter=_treatmentFilter;
 
 - (void).cxx_destruct;
 - (id)initWithMetricsKit:(id)arg1;

@@ -14,6 +14,7 @@
 
 @interface HMDDataStream : NSObject <HMFLogging, HMFTimerDelegate>
 {
+    BOOL _active;
     BOOL _firstMessageReceived;
     id<HMDDataStreamDelegate> _delegate;
     NSString *_logIdentifier;
@@ -27,6 +28,7 @@
     NSMutableSet *_pendingRequests;
 }
 
+@property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (strong, nonatomic) HMDDataStreamControlProtocol *controlProtocol; // @synthesize controlProtocol=_controlProtocol;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HMDDataStreamDelegate> delegate; // @synthesize delegate=_delegate;
@@ -45,6 +47,7 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (void)_evaluateActiveStatusChange;
 - (void)_sendMessageWithHeader:(id)arg1 payload:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addProtocol:(id)arg1 name:(id)arg2;
 - (void)close;
@@ -55,6 +58,8 @@
 - (void)handlePendingRequests;
 - (id)initWithTransport:(id)arg1 sessionEncryption:(id)arg2 workQueue:(id)arg3 logIdentifier:(id)arg4;
 - (id)protocolDelegateHandle;
+- (void)protocolDidUpdateActiveStatus:(id)arg1;
+- (id)protocolWithName:(id)arg1;
 - (void)sendEventForProtocol:(id)arg1 topic:(id)arg2 payload:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)sendRequestForProtocol:(id)arg1 topic:(id)arg2 identifier:(unsigned long long)arg3 payload:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)sendRequestForProtocol:(id)arg1 topic:(id)arg2 payload:(id)arg3 completion:(CDUnknownBlockType)arg4;

@@ -21,8 +21,10 @@
 @property (strong, nonatomic) SORealmSettingManager *settingsManager; // @synthesize settingsManager=_settingsManager;
 @property BOOL siteDiscoveryInProgress; // @synthesize siteDiscoveryInProgress=_siteDiscoveryInProgress;
 
++ (void)saveValuesForPlugins:(id)arg1;
 - (void).cxx_destruct;
 - (unsigned long long)attemptKerberosWithContext:(id)arg1 returningToken:(id *)arg2 orError:(id *)arg3;
+- (BOOL)changePasswordWithContext:(id)arg1 withError:(id *)arg2;
 - (unsigned long long)createNewCredentialUsingContext:(id)arg1 returningCredential:(struct gss_cred_id_t_desc_struct **)arg2 orError:(id *)arg3;
 - (void)determineSiteCodeUsingDispatchGroup:(id)arg1 andBundleIdentifier:(id)arg2 networkFingerprint:(id)arg3;
 - (unsigned long long)findExistingCredentialUsingContext:(id)arg1 returningCredential:(struct gss_cred_id_t_desc_struct **)arg2 orError:(id *)arg3;
@@ -30,6 +32,7 @@
 - (unsigned long long)mapErrorToKnownError:(id)arg1;
 - (id)retrieveCachedSiteCodeFromCacheForBundleIdentifier:(id)arg1 networkFingerprint:(id)arg2;
 - (void)setSiteCodeUsingContext:(id)arg1;
+- (void)triggerVPNIfNeededUsingRealm:(id)arg1 bundleIdentifier:(id)arg2 auditToken:(id)arg3;
 
 @end
 

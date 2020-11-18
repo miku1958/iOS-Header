@@ -8,19 +8,20 @@
 
 @interface TSKAnimatedGIFFrame : NSObject
 {
-    struct CGImageSource *mSource;
-    struct CGImage *mPreloadedImage;
-    unsigned long long mIndex;
-    double mTime;
+    struct CGImageSource *_imageSource;
+    struct CGImage *_preloadedImage;
+    struct os_unfair_lock_s _imageLock;
+    unsigned long long _index;
+    double _time;
 }
 
 @property (readonly, nonatomic) struct CGImage *image;
-@property (readonly, nonatomic) unsigned long long index; // @synthesize index=mIndex;
-@property (readonly, nonatomic) double time; // @synthesize time=mTime;
+@property (readonly, nonatomic) unsigned long long index; // @synthesize index=_index;
+@property (readonly, nonatomic) double time; // @synthesize time=_time;
 
 - (void)dealloc;
 - (id)description;
-- (id)initWithSource:(struct CGImageSource *)arg1 index:(unsigned long long)arg2 time:(double)arg3 preloadImage:(BOOL)arg4;
+- (id)initWithImageSource:(struct CGImageSource *)arg1 index:(unsigned long long)arg2 time:(double)arg3 preloadImage:(BOOL)arg4;
 
 @end
 

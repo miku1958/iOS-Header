@@ -21,7 +21,7 @@
 @property (readonly, nonatomic) PKContact *contact; // @synthesize contact=_contact;
 @property (readonly, nonatomic) PKPassPersonalizationCellContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKPassPersonalizationCellDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPassPersonalizationCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

@@ -36,15 +36,15 @@
     SFImage *_image;
 }
 
-@property (strong, nonatomic) SFColor *backgroundColor;
-@property (nonatomic) BOOL canBeHidden;
+@property (strong, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (copy, nonatomic) NSString *cardSectionId;
 @property (copy, nonatomic) NSArray *commands;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
-@property (nonatomic) BOOL hasBottomPadding;
-@property (nonatomic) BOOL hasTopPadding;
+@property (nonatomic) BOOL hasBottomPadding; // @synthesize hasBottomPadding=_hasBottomPadding;
+@property (nonatomic) BOOL hasTopPadding; // @synthesize hasTopPadding=_hasTopPadding;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideDivider;
 @property (strong, nonatomic) SFImage *image; // @synthesize image=_image;
@@ -52,15 +52,15 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SFCard *nextCard;
 @property (copy, nonatomic) NSArray *parameterKeyPaths;
-@property (copy, nonatomic) NSArray *punchoutOptions;
-@property (copy, nonatomic) NSString *punchoutPickerDismissText;
-@property (copy, nonatomic) NSString *punchoutPickerTitle;
+@property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
+@property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
+@property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;
 @property (copy, nonatomic) NSString *resultIdentifier;
-@property (nonatomic) int separatorStyle;
+@property (nonatomic) int separatorStyle; // @synthesize separatorStyle=_separatorStyle;
 @property (strong, nonatomic) SFRichText *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SFRichText *title; // @synthesize title=_title;
-@property (copy, nonatomic) NSString *type;
+@property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (strong, nonatomic) SFUserReportRequest *userReportRequest;
 
 + (BOOL)supportsSecureCoding;

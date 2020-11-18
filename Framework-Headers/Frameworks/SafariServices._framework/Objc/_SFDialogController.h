@@ -9,7 +9,7 @@
 #import <SafariServices/_SFDialogViewDelegate-Protocol.h>
 
 @class NSString, UIViewController, WBSTabDialogManager, _SFDialog, _SFDialogView;
-@protocol _SFDialogControllerDelegate, _SFDialogViewControllerPresenting, _SFDialogViewPresenting;
+@protocol _SFAuthenticatorDialog, _SFDialogControllerDelegate, _SFDialogViewControllerPresenting, _SFDialogViewPresenting;
 
 @interface _SFDialogController : NSObject <_SFDialogViewDelegate>
 {
@@ -28,6 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<_SFDialogViewPresenting> dialogPresenter; // @synthesize dialogPresenter=_dialogPresenter;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) _SFDialog<_SFAuthenticatorDialog> *presentedAuthenticatorDialog;
 @property (readonly, nonatomic) _SFDialog *presentedDialog; // @synthesize presentedDialog=_presentedDialog;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<_SFDialogViewControllerPresenting> viewControllerPresenter; // @synthesize viewControllerPresenter=_viewControllerPresenter;

@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <coreroutine/NSXPCConnectionDelegate-Protocol.h>
 #import <coreroutine/RTDaemonClientRegistrarScenarioTriggerProtocol-Protocol.h>
 #import <coreroutine/RTDaemonClientRegistrarVehicleEventProtocol-Protocol.h>
 #import <coreroutine/RTDaemonProtocol-Protocol.h>
 
-@class NSMutableDictionary, NSSet, NSString, NSXPCConnection, RTAccountManager, RTAssetManager, RTAuthorizationManager, RTDaemonClientRegistrarScenarioTrigger, RTDaemonClientRegistrarVehicleEvent, RTDeviceLocationPredictor, RTDiagnostics, RTEventAgentManager, RTEventModelProvider, RTFingerprintManager, RTLearnedLocationManager, RTLocationManager, RTLocationStore, RTMapServiceManager, RTMetricManager, RTPlaceInferenceManager, RTPurgeManager, RTScenarioTriggerManager, RTVehicleLocationProvider, RTVisitManager, RTWiFiManager;
+@class NSMutableDictionary, NSString, NSXPCConnection, RTAccountManager, RTAssetManager, RTAuthorizationManager, RTContactsManager, RTDaemonClientRegistrarScenarioTrigger, RTDaemonClientRegistrarVehicleEvent, RTDeviceLocationPredictor, RTDiagnostics, RTEntitlementProvider, RTEventAgentManager, RTEventModelProvider, RTFingerprintManager, RTHintManager, RTLearnedLocationManager, RTLocationManager, RTLocationStore, RTMapServiceManager, RTMetricManager, RTPlaceInferenceManager, RTPurgeManager, RTScenarioTriggerManager, RTVehicleLocationProvider, RTVisitManager, RTWiFiManager;
 @protocol OS_dispatch_queue, RTClientListenerProtocol;
 
-@interface RTDaemonClient : NSObject <RTDaemonClientRegistrarVehicleEventProtocol, RTDaemonClientRegistrarScenarioTriggerProtocol, RTDaemonProtocol>
+@interface RTDaemonClient : NSObject <RTDaemonClientRegistrarVehicleEventProtocol, RTDaemonClientRegistrarScenarioTriggerProtocol, RTDaemonProtocol, NSXPCConnectionDelegate>
 {
     BOOL _enabled;
     BOOL _supported;
@@ -25,17 +26,20 @@
     NSString *_restorationIdentifier;
     id<RTClientListenerProtocol> _clientManagerDelegate;
     NSMutableDictionary *_restorationData;
-    NSObject<OS_dispatch_queue> *_queue;
+    RTEntitlementProvider *_entitlementProvider;
+    NSMutableDictionary *_vendedClassesStoreManagerDict;
     RTDaemonClientRegistrarVehicleEvent *_vehicleEventRegistrar;
     RTDaemonClientRegistrarScenarioTrigger *_scenarioTriggerRegistrar;
     RTAccountManager *_accountManager;
     RTAssetManager *_assetManager;
     RTAuthorizationManager *_authorizationManager;
+    RTContactsManager *_contactsManager;
     RTDeviceLocationPredictor *_deviceLocationPredictor;
     RTDiagnostics *_diagnostics;
     RTEventAgentManager *_eventAgentManager;
     RTEventModelProvider *_eventModelProvider;
     RTFingerprintManager *_fingerprintManager;
+    RTHintManager *_hintManager;
     RTLearnedLocationManager *_learnedLocationManager;
     RTLocationManager *_locationManager;
     RTLocationStore *_locationStore;
@@ -47,9 +51,9 @@
     RTVehicleLocationProvider *_vehicleLocationProvider;
     RTVisitManager *_visitManager;
     RTWiFiManager *_wifiManager;
-    NSSet *_clientsAuthorizedForRestrictedSPIs;
-    NSSet *_systemExecutablesAuthorizedForRestrictedSPIs;
+    NSObject<OS_dispatch_queue> *_queue;
     NSString *_executablePath;
+    NSString *_executableName;
     NSString *_signingIdentifier;
     NSString *_bundleIdentifier;
 }
@@ -59,17 +63,20 @@
 @property (strong, nonatomic) RTAuthorizationManager *authorizationManager; // @synthesize authorizationManager=_authorizationManager;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (weak, nonatomic) id<RTClientListenerProtocol> clientManagerDelegate; // @synthesize clientManagerDelegate=_clientManagerDelegate;
-@property (strong, nonatomic) NSSet *clientsAuthorizedForRestrictedSPIs; // @synthesize clientsAuthorizedForRestrictedSPIs=_clientsAuthorizedForRestrictedSPIs;
+@property (strong, nonatomic) RTContactsManager *contactsManager; // @synthesize contactsManager=_contactsManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) RTDeviceLocationPredictor *deviceLocationPredictor; // @synthesize deviceLocationPredictor=_deviceLocationPredictor;
 @property (strong, nonatomic) RTDiagnostics *diagnostics; // @synthesize diagnostics=_diagnostics;
 @property BOOL enabled; // @synthesize enabled=_enabled;
+@property (strong, nonatomic) RTEntitlementProvider *entitlementProvider; // @synthesize entitlementProvider=_entitlementProvider;
 @property (strong, nonatomic) RTEventAgentManager *eventAgentManager; // @synthesize eventAgentManager=_eventAgentManager;
 @property (strong, nonatomic) RTEventModelProvider *eventModelProvider; // @synthesize eventModelProvider=_eventModelProvider;
+@property (copy, nonatomic) NSString *executableName; // @synthesize executableName=_executableName;
 @property (copy, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
 @property (strong, nonatomic) RTFingerprintManager *fingerprintManager; // @synthesize fingerprintManager=_fingerprintManager;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) RTHintManager *hintManager; // @synthesize hintManager=_hintManager;
 @property (strong, nonatomic) RTLearnedLocationManager *learnedLocationManager; // @synthesize learnedLocationManager=_learnedLocationManager;
 @property (nonatomic) BOOL leechLowConfidenceVisits; // @synthesize leechLowConfidenceVisits=_leechLowConfidenceVisits;
 @property (nonatomic) BOOL leechVisits; // @synthesize leechVisits=_leechVisits;
@@ -89,27 +96,28 @@
 @property (copy, nonatomic) NSString *signingIdentifier; // @synthesize signingIdentifier=_signingIdentifier;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supported; // @synthesize supported=_supported;
-@property (strong, nonatomic) NSSet *systemExecutablesAuthorizedForRestrictedSPIs; // @synthesize systemExecutablesAuthorizedForRestrictedSPIs=_systemExecutablesAuthorizedForRestrictedSPIs;
 @property (strong, nonatomic) RTDaemonClientRegistrarVehicleEvent *vehicleEventRegistrar; // @synthesize vehicleEventRegistrar=_vehicleEventRegistrar;
 @property (strong, nonatomic) RTVehicleLocationProvider *vehicleLocationProvider; // @synthesize vehicleLocationProvider=_vehicleLocationProvider;
+@property (strong, nonatomic) NSMutableDictionary *vendedClassesStoreManagerDict; // @synthesize vendedClassesStoreManagerDict=_vendedClassesStoreManagerDict;
 @property (strong, nonatomic) RTVisitManager *visitManager; // @synthesize visitManager=_visitManager;
 @property (strong, nonatomic) RTWiFiManager *wifiManager; // @synthesize wifiManager=_wifiManager;
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 - (void).cxx_destruct;
 - (void)_onVisitManagerNotification:(id)arg1;
-- (id)_preflightClientConnection:(id)arg1 withEntitlements:(id)arg2;
 - (void)_startMonitoringVehicleEvents;
-- (BOOL)_verifyClientUsingRestrictedSPIs:(id *)arg1;
 - (void)addLocationOfInterestOfType:(long long)arg1 mapItemStorage:(id)arg2 customLabel:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)clearAllVehicleEventsWithReply:(CDUnknownBlockType)arg1;
 - (void)clearRoutineWithReply:(CDUnknownBlockType)arg1;
+- (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
 - (void)engageInVehicleEventWithIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)extendLifetimeOfVisitsWithIdentifiers:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)fetchAllLocationsOfInterestForSettingsWithReply:(CDUnknownBlockType)arg1;
 - (void)fetchAutomaticVehicleEventDetectionSupportedWithReply:(CDUnknownBlockType)arg1;
 - (void)fetchCloudSyncAuthorizationStateWithReply:(CDUnknownBlockType)arg1;
 - (void)fetchCurrentPredictedLocationsOfInterestLookingBack:(double)arg1 lookingAhead:(double)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)fetchEnumerableObjectsWithOptions:(id)arg1 offset:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)fetchFormattedPostalAddressesFromMeCard:(CDUnknownBlockType)arg1;
 - (void)fetchLastVehicleEventsWithReply:(CDUnknownBlockType)arg1;
 - (void)fetchLocationOfInterestAtLocation:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)fetchLocationOfInterestWithIdentifier:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -130,10 +138,9 @@
 - (void)fetchStoredLocationsWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)fetchStoredVisitsWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)fetchTransitionsBetweenStartDate:(id)arg1 endDate:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (BOOL)hasEntitlement:(id)arg1;
 - (BOOL)hasReasonToOutliveClientConnection;
 - (id)init;
-- (id)initWithQueue:(id)arg1 restorationData:(id)arg2 accountManager:(id)arg3 assetManager:(id)arg4 authorizationManager:(id)arg5 deviceLocationPredictor:(id)arg6 diagnostics:(id)arg7 eventAgentManager:(id)arg8 eventModelProvider:(id)arg9 fingerprintManager:(id)arg10 learnedLocationManager:(id)arg11 locationManager:(id)arg12 locationStore:(id)arg13 mapServiceManager:(id)arg14 metricManager:(id)arg15 placeInferenceManager:(id)arg16 purgeManager:(id)arg17 scenarioTriggerManager:(id)arg18 vehicleLocationProvider:(id)arg19 visitManager:(id)arg20 wifiManager:(id)arg21;
+- (id)initWithQueue:(id)arg1 restorationData:(id)arg2 accountManager:(id)arg3 assetManager:(id)arg4 authorizationManager:(id)arg5 contactsManager:(id)arg6 deviceLocationPredictor:(id)arg7 diagnostics:(id)arg8 eventAgentManager:(id)arg9 eventModelProvider:(id)arg10 fingerprintManager:(id)arg11 hintManager:(id)arg12 learnedLocationManager:(id)arg13 locationManager:(id)arg14 locationStore:(id)arg15 mapServiceManager:(id)arg16 metricManager:(id)arg17 placeInferenceManager:(id)arg18 purgeManager:(id)arg19 scenarioTriggerManager:(id)arg20 vehicleLocationProvider:(id)arg21 visitManager:(id)arg22 wifiManager:(id)arg23;
 - (void)launchClient;
 - (void)onRoutineEnabled:(id)arg1;
 - (void)onVisitManagerNotification:(id)arg1;

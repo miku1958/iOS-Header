@@ -23,6 +23,7 @@
 - (id)columnToWidthMapFromCollectionArray:(id)arg1;
 - (void)dealloc;
 - (void)finalizeLayoutPassWithRowsNeedingFittingInfo:(id)arg1;
+- (void)getFitHeight:(double *)arg1 andModelHeight:(double *)arg2 forRow:(unsigned int)arg3;
 - (double)getFitHeightForRow:(unsigned int)arg1;
 - (double)getModelHeightForRow:(unsigned int)arg1;
 - (double)getModelWidthForColumn:(unsigned short)arg1;

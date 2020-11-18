@@ -25,15 +25,16 @@
 + (id)sharedStore;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)__handleUninstalledApplication:(id)arg1;
 - (BOOL)_addVendorID:(id)arg1 forApplication:(id)arg2 companionAppBundleId:(id)arg3 spiClient:(BOOL)arg4;
 - (void)_extractVendorIDForApplication:(id)arg1;
 - (id)_machUUIDsForApplication:(id)arg1;
 - (void)_save;
 - (void)_setAndSaveVendorID:(id)arg1 applicationBundleId:(id)arg2 companionAppBundleId:(id)arg3 spiClient:(BOOL)arg4;
 - (id)_vendorIDForApplication:(id)arg1;
+- (void)addVendorID:(id)arg1 applicationBundleId:(id)arg2;
 - (void)addVendorID:(id)arg1 applicationBundleId:(id)arg2 companionAppBundleId:(id)arg3;
 - (void)addVendorID:(id)arg1 applicationBundleId:(id)arg2 spiClient:(BOOL)arg3;
-- (void)addVendorIDData:(id)arg1 applicationBundleId:(id)arg2;
 - (void)checkCorrectness;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

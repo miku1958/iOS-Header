@@ -13,7 +13,10 @@
 
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
-- (id)initWithTrafficSignal:(id)arg1;
++ (id)stringForTrafficSignalType:(long long)arg1;
+- (id)initWithTrafficSignal:(id)arg1 onRoute:(id)arg2;
+- (id)initWithTrafficSignalType:(long long)arg1 uniqueIdentifier:(id)arg2 routeOffset:(struct PolylineCoordinate)arg3 onRoute:(id)arg4;
+- (void)populateDebugNode:(struct DebugTreeNode *)arg1;
 
 @end
 

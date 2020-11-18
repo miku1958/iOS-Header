@@ -15,6 +15,7 @@
 @interface HDWorkoutBuilderSampleQueryServer : HDQueryServer <HDTaskServerObserver, HDWorkoutBuilderServerSampleObserer, HDDatabaseProtectedDataObserver>
 {
     BOOL _hasFinishedHistoricalFetch;
+    BOOL _hasDeliveredInitialResults;
     NSUUID *_workoutBuilderIdentifier;
     HDWorkoutBuilderServer *_workoutBuilderServer;
 }

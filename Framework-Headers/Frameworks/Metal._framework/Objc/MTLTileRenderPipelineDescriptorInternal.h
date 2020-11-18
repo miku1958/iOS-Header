@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 }
 
 - (const struct MTLTileRenderPipelineDescriptorPrivate *)_descriptorPrivate;
+- (id)binaryArchives;
 - (id)colorAttachments;
 - (unsigned long long)colorSampleCount;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -24,20 +25,29 @@ __attribute__((visibility("hidden")))
 - (BOOL)isEqual:(id)arg1;
 - (id)label;
 - (unsigned long long)maxTotalThreadsPerThreadgroup;
+- (id)newSerializedTileDataWithFlags:(unsigned long long)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
+- (id)pluginData;
 - (unsigned long long)rasterSampleCount;
 - (void)reset;
 - (unsigned long long)sampleCount;
+- (void)setBinaryArchives:(id)arg1;
 - (void)setColorSampleCount:(unsigned long long)arg1;
 - (void)setLabel:(id)arg1;
 - (void)setMaxTotalThreadsPerThreadgroup:(unsigned long long)arg1;
+- (void)setPluginData:(id)arg1;
 - (void)setRasterSampleCount:(unsigned long long)arg1;
 - (void)setSampleCount:(unsigned long long)arg1;
+- (void)setTextureWriteFPRoundingMode:(long long)arg1;
+- (void)setTextureWriteRoundingMode:(long long)arg1;
 - (void)setThreadgroupSizeMatchesTileSize:(BOOL)arg1;
 - (void)setTileFunction:(id)arg1;
+- (long long)textureWriteFPRoundingMode;
+- (long long)textureWriteRoundingMode;
 - (BOOL)threadgroupSizeMatchesTileSize;
 - (id)tileBuffers;
 - (id)tileFunction;
 - (void)validateWithDevice:(id)arg1;
+- (BOOL)validateWithDevice:(id)arg1 error:(id *)arg2;
 
 @end
 

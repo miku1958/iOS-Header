@@ -10,13 +10,13 @@
 #import <HomeUI/UITableViewDelegate-Protocol.h>
 
 @class ACAccount, HMHome, NSString;
-@protocol HUSplitAccountDelegate;
+@protocol HUMediaAccountDelegate;
 
 @interface HUSplitAccountHeaderTableView : UITableView <UITableViewDelegate, UITableViewDataSource>
 {
     ACAccount *_mediaAccount;
     HMHome *_home;
-    id<HUSplitAccountDelegate> _splitAccountDelegate;
+    id<HUMediaAccountDelegate> _splitAccountDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,7 +24,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) ACAccount *mediaAccount; // @synthesize mediaAccount=_mediaAccount;
-@property (weak, nonatomic) id<HUSplitAccountDelegate> splitAccountDelegate; // @synthesize splitAccountDelegate=_splitAccountDelegate;
+@property (weak, nonatomic) id<HUMediaAccountDelegate> splitAccountDelegate; // @synthesize splitAccountDelegate=_splitAccountDelegate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

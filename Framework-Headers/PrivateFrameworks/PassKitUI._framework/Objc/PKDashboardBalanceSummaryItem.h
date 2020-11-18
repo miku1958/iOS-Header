@@ -8,12 +8,12 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class NSArray, NSString, PKAccount, PKCreditAccountStatement, PKCreditAccountSummary, PKPaymentPass, PKPaymentTransactionGroup, PKPaymentWebService;
+@class NSArray, NSString, PKAccount, PKCreditAccountStatement, PKCreditAccountSummary, PKPaymentTransactionGroup, PKPaymentWebService, PKTransactionSource;
 
 @interface PKDashboardBalanceSummaryItem : NSObject <PKDashboardItem>
 {
     PKAccount *_account;
-    PKPaymentPass *_paymentPass;
+    PKTransactionSource *_transactionSource;
     PKPaymentWebService *_webService;
     unsigned long long _type;
     PKPaymentTransactionGroup *_transactionGroup;
@@ -26,15 +26,16 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
 @property (strong, nonatomic) PKCreditAccountStatement *statement; // @synthesize statement=_statement;
 @property (strong, nonatomic) NSArray *statements; // @synthesize statements=_statements;
 @property (strong, nonatomic) PKCreditAccountSummary *summary; // @synthesize summary=_summary;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PKPaymentTransactionGroup *transactionGroup; // @synthesize transactionGroup=_transactionGroup;
+@property (strong, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
 @property (nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (strong, nonatomic) PKPaymentWebService *webService; // @synthesize webService=_webService;
 
++ (id)identifier;
 - (void).cxx_destruct;
 
 @end

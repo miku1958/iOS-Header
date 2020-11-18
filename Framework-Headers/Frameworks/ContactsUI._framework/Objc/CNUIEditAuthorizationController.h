@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)didNotAuthorize;
 - (void)lockoutRestrictionsPINControllerDidFinish:(id)arg1;
 - (void)presentAuthorizationUI;
+- (void)userDidEnterPasswordCorrectly:(BOOL)arg1;
 
 @end
 

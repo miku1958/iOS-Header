@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
+- (id)attributeDescriptions;
 - (id)initWithBlockRow:(unsigned long long)arg1 type:(unsigned long long)arg2 options:(id)arg3;
 
 @end

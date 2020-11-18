@@ -20,12 +20,8 @@
 + (id)localizedStringForStatusCode:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)_allHTTPHeaderFieldsAsArrays;
-- (id)_clientCertificateChain;
-- (id)_clientCertificateState;
-- (id)_initWithCFURLResponse:(id)arg1;
+- (id)_initWithCFURLResponse:(struct _CFURLResponse *)arg1;
 - (id)_peerCertificateChain;
-- (struct __SecTrust *)_peerTrust;
-- (void)_setPeerTrust:(struct __SecTrust *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

@@ -21,8 +21,7 @@
     struct {
         unsigned int read_bookedTableSessionId:1;
         unsigned int read_bookedTables:1;
-        unsigned int wrote_bookedTableSessionId:1;
-        unsigned int wrote_bookedTables:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -33,9 +32,6 @@
 + (Class)bookedTableType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsBookedTable:(id)arg1;
-- (void)_readBookedTableSessionId;
-- (void)_readBookedTables;
 - (void)addBookedTable:(id)arg1;
 - (id)bookedTableAtIndex:(unsigned long long)arg1;
 - (unsigned long long)bookedTablesCount;
@@ -47,7 +43,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

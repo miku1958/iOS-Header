@@ -8,32 +8,47 @@
 
 #import <SafariServices/_SFAuthenticatorDialog-Protocol.h>
 
-@class NSArray, NSString, _SFDialogView;
+@class NSArray, NSString, _SFDialogView, _WKWebAuthenticationAssertionResponse, _WKWebAuthenticationPanel;
 
 __attribute__((visibility("hidden")))
 @interface SFAuthenticatorDialog : _SFDialog <_SFAuthenticatorDialog>
 {
     _SFDialogView *_dialogView;
-    NSString *_relyingPartyID;
+    long long _state;
+    _WKWebAuthenticationPanel *_panel;
+    CDUnknownBlockType _pinRequestHandler;
+    long long _responseSource;
+    CDUnknownBlockType _selectAssertionResponseHandler;
+    _WKWebAuthenticationAssertionResponse *_assertionResponse;
+    long long _biometryType;
+    CDUnknownBlockType _localAuthenticatorPolicyHandler;
+    BOOL _isForUpdateOnly;
     NSString *_title;
     NSString *_message;
-    CDUnknownBlockType _completionHandler;
     NSArray *_actions;
 }
 
-@property (strong, nonatomic) NSArray *actions; // @synthesize actions=_actions;
-@property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
-@property (strong, nonatomic) NSString *message; // @synthesize message=_message;
-@property (strong, nonatomic) NSString *relyingPartyID; // @synthesize relyingPartyID=_relyingPartyID;
-@property (strong, nonatomic) NSString *title; // @synthesize title=_title;
+@property (copy, nonatomic) NSArray *actions; // @synthesize actions=_actions;
+@property (nonatomic) BOOL isForUpdateOnly; // @synthesize isForUpdateOnly=_isForUpdateOnly;
+@property (copy, nonatomic) NSString *message; // @synthesize message=_message;
+@property (readonly, nonatomic) _WKWebAuthenticationPanel *panel; // @synthesize panel=_panel;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
+- (void)_didSelectRow:(id)arg1;
 - (void)_shake;
+- (void)dealloc;
+- (void)decidePolicyForLocalAuthenticatorWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)didCompleteWithResponse:(id)arg1;
-- (id)initWithPanel:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)initWithPanel:(id)arg1;
 - (id)newDialogViewRepresentation;
 - (long long)presentationStyle;
-- (void)transitionToState:(int)arg1 forPanel:(id)arg2;
+- (void)requestPINWithRemainingRetries:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)selectAssertionResponse:(id)arg1 source:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)transitionToState:(long long)arg1;
+- (void)triggerUseSecurityKey;
+- (void)updateWebAuthenticationPanel:(long long)arg1;
+- (id)useSecurityKeyAction;
 
 @end
 

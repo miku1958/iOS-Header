@@ -8,7 +8,7 @@
 
 @interface EKSourceConstraints : NSObject
 {
-    CDStruct_6a9d2bb3 _flags;
+    CDStruct_9e0d2422 _flags;
 }
 
 @property (nonatomic) BOOL alarmTriggerIntervalConstrainedToRecurrenceInterval;
@@ -36,6 +36,7 @@
 @property (nonatomic) BOOL prohibitsMultipleMonthsInYearlyRecurrence;
 @property (nonatomic) BOOL prohibitsPrivateEventsWithAttendees;
 @property (nonatomic) BOOL prohibitsSlicingEventsWithAttendees;
+@property (nonatomic) BOOL prohibitsUsingEventOrganizerEmailWhenComposingMail;
 @property (nonatomic) BOOL prohibitsYearlyRecurrenceInterval;
 @property (nonatomic) BOOL proposedStatusRequiredForResponse;
 @property (nonatomic) BOOL recurrenceSeriesMustIncludeMoreThanFirstOccurrence;
@@ -62,10 +63,12 @@
 @property (nonatomic) BOOL supportsDelegateEnumeration;
 @property (nonatomic) BOOL supportsDelegation;
 @property (nonatomic) BOOL supportsEventForwarding;
+@property (nonatomic) BOOL supportsFloatingTimeZone;
 @property (nonatomic) BOOL supportsIgnoringEventsInAvailabilityRequests;
 @property (nonatomic) BOOL supportsInboxAvailability;
 @property (nonatomic) BOOL supportsIncomingInvitations;
 @property (nonatomic) BOOL supportsInvitationModifications;
+@property (nonatomic) BOOL supportsInvitationModificationsWithoutNotification;
 @property (nonatomic) BOOL supportsJunkReporting;
 @property (nonatomic) BOOL supportsLocationDirectorySearches;
 @property (nonatomic) BOOL supportsOutgoingInvitations;
@@ -81,12 +84,9 @@
 @property (nonatomic) BOOL supportsSubscribedCalendars;
 @property (nonatomic) BOOL supportsURLField;
 
++ (id)allAllowSourceConstraints;
 - (id)init;
-- (id)initWithCDBSourceConstraintFlags:(CDStruct_6a9d2bb3)arg1;
-- (BOOL)prohibitsUsingEventOrganizerEmailWhenComposingMail;
-- (void)setProhibitsUsingEventOrganizerEmailWhenComposingMail:(BOOL)arg1;
-- (void)setSupportsFloatingTimeZone:(BOOL)arg1;
-- (BOOL)supportsFloatingTimeZone;
+- (id)initWithCDBSourceConstraintFlags:(CDStruct_9e0d2422)arg1;
 
 @end
 

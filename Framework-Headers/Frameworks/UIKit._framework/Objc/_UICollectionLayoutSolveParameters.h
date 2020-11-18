@@ -6,36 +6,40 @@
 
 #import <objc/NSObject.h>
 
-#import <UIKitCore/_UICollectionLayoutSolveResult-Protocol.h>
+#import <UIKitCore/NSCopying-Protocol.h>
 
-@class NSIndexSet, NSMutableDictionary, NSMutableIndexSet, NSSet, NSString;
+@class NSIndexSet, NSMutableDictionary, NSMutableIndexSet, NSSet;
 
 __attribute__((visibility("hidden")))
-@interface _UICollectionLayoutSolveParameters : NSObject <_UICollectionLayoutSolveResult>
+@interface _UICollectionLayoutSolveParameters : NSObject <NSCopying>
 {
     NSMutableIndexSet *_invalidatedIndexes;
     NSMutableDictionary *_invalidatedAuxillaryDict;
     BOOL _isFullResolve;
+    struct CGPoint _scrollOffset;
+    struct CGRect _visibleBounds;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasInvalidatedItems;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSSet *invalidatedAuxillaryKinds;
 @property (readonly, nonatomic) NSIndexSet *invalidatedIndexes;
 @property (readonly, nonatomic) BOOL isFullResolve;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) struct CGPoint scrollOffset; // @synthesize scrollOffset=_scrollOffset;
+@property (readonly, nonatomic) struct CGRect visibleBounds; // @synthesize visibleBounds=_visibleBounds;
 
 + (id)parametersForFullResolve;
 - (void).cxx_destruct;
 - (void)addAuxillaryIndex:(long long)arg1 elementKind:(id)arg2;
 - (void)addItemIndex:(long long)arg1;
+- (id)copyWithScrollOffset:(struct CGPoint)arg1 visibleBounds:(struct CGRect)arg2;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)indexesForInvalidatedAuxillariesOfKind:(id)arg1;
 - (id)init;
 - (id)initWithInvalidatedIndexes:(id)arg1;
-- (id)initWithInvalidatedIndexes:(id)arg1 isFullResolve:(BOOL)arg2;
+- (id)initWithInvalidatedIndexes:(id)arg1 invalidatedAuxillaryDict:(id)arg2 isFullResolve:(BOOL)arg3 scrollOffset:(struct CGPoint)arg4 visibleBounds:(struct CGRect)arg5;
+- (id)initWithInvalidatedIndexes:(id)arg1 scrollOffset:(struct CGPoint)arg2 visibleBounds:(struct CGRect)arg3;
 - (id)invalidatedAuxillaryOffsets;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

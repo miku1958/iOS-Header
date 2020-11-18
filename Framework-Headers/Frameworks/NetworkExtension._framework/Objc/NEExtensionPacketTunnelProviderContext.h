@@ -26,6 +26,8 @@
 - (id)extensionPoint;
 - (void)fetchVirtualInterfaceTypeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestSocket:(BOOL)arg1 interface:(id)arg2 local:(id)arg3 remote:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (Class)requiredProviderSuperClass;
+- (void)setAppUUIDMap:(id)arg1;
 - (void)setTunnelConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setVirtualInterfaceSocket:(id)arg1;
 - (void)startWithOptions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

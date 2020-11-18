@@ -115,7 +115,10 @@
 + (id)_ClassCreateSecureBackupConcurrentConnection;
 + (void)asyncRequestEscrowRecordUpdate;
 + (unsigned int)daemonPasscodeRequestOpinion:(id *)arg1;
++ (void)getAcceptedTermsForAltDSID:(id)arg1 reply:(CDUnknownBlockType)arg2;
++ (id)getAcceptedTermsWithError:(id *)arg1;
 + (unsigned int)needPasscodeForHSA2EscrowRecordUpdate:(id *)arg1;
++ (void)saveTermsAcceptance:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_CreateSecureBackupConnection;
@@ -134,6 +137,7 @@
 - (BOOL)changeSMSTargetWithError:(id *)arg1;
 - (id)changeSMSTargetWithInfo:(id)arg1;
 - (void)changeSMSTargetWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
+- (void)createICDPRecordWithContents:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)disableWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (BOOL)disableWithError:(id *)arg1;
 - (id)disableWithInfo:(id)arg1;
@@ -158,12 +162,15 @@
 - (void)populateWithInfo:(id)arg1;
 - (void)prepareHSA2EscrowRecordContents:(BOOL)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)recoverRecordContents:(CDUnknownBlockType)arg1;
+- (id)recoverSilentWithCDPContext:(id)arg1 allRecords:(id)arg2 error:(id *)arg3;
+- (id)recoverWithCDPContext:(id)arg1 escrowRecord:(id)arg2 error:(id *)arg3;
 - (id)recoverWithError:(id *)arg1;
 - (void)recoverWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (void)recoverWithInfo:(id)arg1 completionBlockWithResults:(CDUnknownBlockType)arg2;
 - (id)recoverWithInfo:(id)arg1 results:(id *)arg2;
 - (void)recoverWithResults:(CDUnknownBlockType)arg1;
 - (BOOL)requiresDoubleEnrollment;
+- (void)restoreKeychainAsyncWithPassword:(id)arg1 keybagDigest:(id)arg2 haveBottledPeer:(BOOL)arg3 viewsNotToBeRestored:(id)arg4 error:(id *)arg5;
 - (void)setBackOffDateWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)setBackOffDateWithInfo:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)srpInitNonce;

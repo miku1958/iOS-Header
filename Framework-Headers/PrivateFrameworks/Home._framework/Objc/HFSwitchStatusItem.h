@@ -12,8 +12,10 @@
 
 - (id)multipleAbnormalServicesFormatString;
 - (id)multipleAbnormalServicesWithRoomFormatString;
+- (id)multipleNormalServicesFormatString;
 - (id)oneAbnormalServiceFormatString;
 - (id)oneAbnormalServiceWithRoomFormatString;
+- (id)oneNormalServiceFormatString;
 - (id)serviceTypes;
 
 @end

@@ -11,6 +11,7 @@
 + (BOOL)isValidForPersistenceWithObjectDictionary:(NSDictionary *)arg1;
 + (unsigned int)minimumSnapshotPayloadVersion;
 + (NSDictionary *)modelProperties;
++ (NSArray *)relationshipKeyPathsForPrefetching;
 + (BOOL)shouldPersistForChangedKeys:(NSSet *)arg1 entityName:(NSString *)arg2;
 + (NSArray *)snapshotSortDescriptors;
 + (void)validatePayloadPropertiesForManagedObjectModel:(NSManagedObjectModel *)arg1;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *currentError;
     MISSING_TYPE *commandCenter;
+    MISSING_TYPE *sceneProvider;
 }
 
 @end

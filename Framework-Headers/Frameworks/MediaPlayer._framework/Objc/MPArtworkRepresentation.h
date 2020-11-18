@@ -6,20 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class UIImage;
+@class AVAsset, UIImage;
 
 @interface MPArtworkRepresentation : NSObject
 {
+    long long _kind;
     UIImage *_image;
+    AVAsset *_video;
     id _representationToken;
     struct CGSize _representationSize;
 }
 
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (nonatomic) long long kind; // @synthesize kind=_kind;
 @property (nonatomic) struct CGSize representationSize; // @synthesize representationSize=_representationSize;
 @property (strong, nonatomic) id representationToken; // @synthesize representationToken=_representationToken;
+@property (strong, nonatomic) AVAsset *video; // @synthesize video=_video;
 
 + (id)representationWithSize:(struct CGSize)arg1 image:(id)arg2;
++ (id)representationWithSize:(struct CGSize)arg1 video:(id)arg2;
 - (void).cxx_destruct;
 - (id)debugQuickLookObject;
 

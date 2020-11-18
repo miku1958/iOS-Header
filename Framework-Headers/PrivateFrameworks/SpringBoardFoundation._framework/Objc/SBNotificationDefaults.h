@@ -12,7 +12,8 @@
 {
 }
 
-@property (readonly, nonatomic) BOOL alwaysPerformDefaultAction; // @dynamic alwaysPerformDefaultAction;
+@property (readonly, nonatomic) BOOL alwaysAllowDefaultAction; // @dynamic alwaysAllowDefaultAction;
+@property (readonly, nonatomic) BOOL alwaysAllowLongLookGesture; // @dynamic alwaysAllowLongLookGesture;
 @property (readonly, nonatomic) BOOL alwaysSpeakNotifications; // @dynamic alwaysSpeakNotifications;
 @property (strong, nonatomic) NSArray *displayIDsWithBadgingEnabled; // @dynamic displayIDsWithBadgingEnabled;
 @property (readonly, nonatomic) BOOL dontSuppressForPrivacyWhenUnlocked; // @dynamic dontSuppressForPrivacyWhenUnlocked;

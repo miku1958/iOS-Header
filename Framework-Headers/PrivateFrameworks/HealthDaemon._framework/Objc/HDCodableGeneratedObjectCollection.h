@@ -16,6 +16,7 @@
     NSMutableArray *_allergyRecords;
     NSMutableArray *_clinicalRecords;
     NSMutableArray *_conditionRecords;
+    NSMutableArray *_coverageRecords;
     NSMutableArray *_diagnosticTestReports;
     NSMutableArray *_diagnosticTestResults;
     NSMutableArray *_medicationDispenseRecords;
@@ -30,6 +31,7 @@
 @property (strong, nonatomic) NSMutableArray *allergyRecords; // @synthesize allergyRecords=_allergyRecords;
 @property (strong, nonatomic) NSMutableArray *clinicalRecords; // @synthesize clinicalRecords=_clinicalRecords;
 @property (strong, nonatomic) NSMutableArray *conditionRecords; // @synthesize conditionRecords=_conditionRecords;
+@property (strong, nonatomic) NSMutableArray *coverageRecords; // @synthesize coverageRecords=_coverageRecords;
 @property (strong, nonatomic) NSMutableArray *diagnosticTestReports; // @synthesize diagnosticTestReports=_diagnosticTestReports;
 @property (strong, nonatomic) NSMutableArray *diagnosticTestResults; // @synthesize diagnosticTestResults=_diagnosticTestResults;
 @property (strong, nonatomic) NSMutableArray *medicationDispenseRecords; // @synthesize medicationDispenseRecords=_medicationDispenseRecords;
@@ -43,6 +45,7 @@
 + (Class)allergyRecordType;
 + (Class)clinicalRecordType;
 + (Class)conditionRecordType;
++ (Class)coverageRecordType;
 + (Class)diagnosticTestReportType;
 + (Class)diagnosticTestResultType;
 + (Class)medicationDispenseRecordType;
@@ -58,6 +61,7 @@
 - (void)addAllergyRecord:(id)arg1;
 - (void)addClinicalRecord:(id)arg1;
 - (void)addConditionRecord:(id)arg1;
+- (void)addCoverageRecord:(id)arg1;
 - (void)addDiagnosticTestReport:(id)arg1;
 - (void)addDiagnosticTestResult:(id)arg1;
 - (void)addMedicationDispenseRecord:(id)arg1;
@@ -72,6 +76,7 @@
 - (void)clearAllergyRecords;
 - (void)clearClinicalRecords;
 - (void)clearConditionRecords;
+- (void)clearCoverageRecords;
 - (void)clearDiagnosticTestReports;
 - (void)clearDiagnosticTestResults;
 - (void)clearMedicationDispenseRecords;
@@ -87,6 +92,8 @@
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)count;
+- (id)coverageRecordAtIndex:(unsigned long long)arg1;
+- (unsigned long long)coverageRecordsCount;
 - (id)decodedObjects;
 - (id)description;
 - (id)diagnosticTestReportAtIndex:(unsigned long long)arg1;

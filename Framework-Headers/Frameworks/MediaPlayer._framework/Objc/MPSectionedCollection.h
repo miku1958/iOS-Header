@@ -35,6 +35,7 @@
 - (id)_stateDumpObject;
 - (id)allItems;
 - (id)allSections;
+- (id)changeDetailsToSectionedCollection:(id)arg1 applyingUIKitWorkarounds:(BOOL)arg2 isEqualBlock:(CDUnknownBlockType)arg3 isUpdatedBlock:(CDUnknownBlockType)arg4;
 - (id)changeDetailsToSectionedCollection:(id)arg1 isEqualBlock:(CDUnknownBlockType)arg2 isUpdatedBlock:(CDUnknownBlockType)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

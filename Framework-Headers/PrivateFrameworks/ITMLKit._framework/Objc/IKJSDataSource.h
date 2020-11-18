@@ -31,6 +31,7 @@
 
 + (id)_titlesByIndexFromValue:(id)arg1;
 + (id)jsExportedProperties;
++ (id)makeDataSource:(id)arg1:(id)arg2:(long long)arg3;
 - (void).cxx_destruct;
 - (id)_dataSourceViews;
 - (void)_didAdjustSegmentIndexesFromIndex:(long long)arg1;
@@ -45,7 +46,6 @@
 - (id)boxedItem:(long long)arg1;
 - (id)delete:(long long)arg1:(long long)arg2;
 - (id)extraInfoForChangeInPathWithAccessorSequence:(id)arg1 extraInfo:(id)arg2;
-- (id)initConstructor:(id)arg1:(id)arg2:(long long)arg3;
 - (id)initWithItems:(id)arg1;
 - (id)initWithItems:(id)arg1 indexTitles:(id)arg2;
 - (id)initWithItems:(id)arg1 indexTitles:(id)arg2 segmentSize:(long long)arg3;

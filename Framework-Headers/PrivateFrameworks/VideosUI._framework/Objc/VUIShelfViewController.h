@@ -41,7 +41,6 @@ __attribute__((visibility("hidden")))
 - (id)indexPathForPreferredFocusedViewInCollectionView:(id)arg1;
 - (id)initWithGridStyle:(long long)arg1;
 - (void)loadView;
-- (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateContentOffsetWithTransitionCoordinator:(id)arg1;
 - (void)viewWillLayoutSubviews;

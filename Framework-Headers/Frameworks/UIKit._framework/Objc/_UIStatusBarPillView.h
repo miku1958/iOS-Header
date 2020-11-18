@@ -9,15 +9,17 @@
 #import <UIKitCore/_UIStatusBarDisplayable-Protocol.h>
 #import <UIKitCore/_UIStatusBarPersistentAnimation-Protocol.h>
 
-@class CALayer, NSString, UIAccessibilityHUDItem, UIColor, UIView;
+@class CALayer, NSString, UIAccessibilityHUDItem, UIColor, UIView, UIVisualEffect, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface _UIStatusBarPillView : _UIStatusBarRoundedCornerView <_UIStatusBarDisplayable, _UIStatusBarPersistentAnimation>
 {
     BOOL _pulsing;
+    UIVisualEffect *_visualEffect;
     UIColor *_pillColor;
     UIView *_subviewForBaselineAlignment;
     CALayer *_pulseLayer;
+    UIVisualEffectView *_visualEffectView;
     struct UIEdgeInsets _alignmentRectInsets;
 }
 
@@ -33,6 +35,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL pulsing; // @synthesize pulsing=_pulsing;
 @property (weak, nonatomic) UIView *subviewForBaselineAlignment; // @synthesize subviewForBaselineAlignment=_subviewForBaselineAlignment;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UIVisualEffect *visualEffect; // @synthesize visualEffect=_visualEffect;
+@property (strong, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
 @property (readonly, nonatomic) BOOL wantsCrossfade;
 
 - (void).cxx_destruct;

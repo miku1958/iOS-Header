@@ -11,7 +11,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDActionSet, NSDictionary, NSString, NSUUID;
+@class HMDActionSet, NSArray, NSDictionary, NSString, NSUUID;
 
 @interface HMDAction : HMFObject <NSSecureCoding, HMDBackingStoreModelBackedObjectProtocol, HMDBackingStoreObjectProtocol, HMFLogging>
 {
@@ -20,6 +20,7 @@
 }
 
 @property (weak, nonatomic) HMDActionSet *actionSet; // @synthesize actionSet=_actionSet;
+@property (readonly, copy) NSArray *associatedAccessories;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
@@ -38,12 +39,15 @@
 + (id)logCategory;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)attributeDescriptions;
 - (id)backingStoreObjectsWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
+- (void)configureWithHome:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (void)executeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)executeWithSource:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 actionSet:(id)arg2;
+- (BOOL)isAssociatedWithAccessory:(id)arg1;
 - (id)logIdentifier;
 - (id)modelBackedObjects;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;

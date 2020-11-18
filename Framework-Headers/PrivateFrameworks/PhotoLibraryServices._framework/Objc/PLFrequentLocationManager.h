@@ -6,21 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSSet, PLRoutineService;
+@class NSSet;
+@protocol PLMomentGenerationDataManagement;
 
 @interface PLFrequentLocationManager : NSObject
 {
+    BOOL _invalidateCurrentFrequentLocations;
+    id<PLMomentGenerationDataManagement> _momentGenerationDataManager;
     NSSet *_currentFrequentLocations;
-    PLRoutineService *_routineManager;
 }
 
 @property (strong, nonatomic) NSSet *currentFrequentLocations; // @synthesize currentFrequentLocations=_currentFrequentLocations;
-@property (strong, nonatomic) PLRoutineService *routineManager; // @synthesize routineManager=_routineManager;
+@property (weak, nonatomic) id<PLMomentGenerationDataManagement> momentGenerationDataManager; // @synthesize momentGenerationDataManager=_momentGenerationDataManager;
 
 - (void).cxx_destruct;
 - (id)_createFrequentLocationsWithAllMoments:(id)arg1;
 - (BOOL)frequentLocationsDidChangeFromUpdateWithAllMoments:(id)arg1;
-- (id)init;
+- (id)initWithMomentGenerationDataManager:(id)arg1;
+- (void)invalidateCurrentFrequentLocations;
 
 @end
 

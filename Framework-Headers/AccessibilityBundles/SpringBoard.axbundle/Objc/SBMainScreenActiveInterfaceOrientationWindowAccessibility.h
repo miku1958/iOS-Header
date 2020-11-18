@@ -13,14 +13,10 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityElementCommunityIdentifier;
-- (BOOL)_accessibilityIsIsolatedWindow;
 - (BOOL)_accessibilityWindowVisible;
 - (id)_axFloatingDockController;
 - (BOOL)_axIsFloatingDockWindow;
 - (BOOL)accessibilityElementsHidden;
-- (struct CGRect)accessibilityFrame;
-- (id)accessibilityLabel;
 - (BOOL)accessibilityPerformEscape;
 
 @end

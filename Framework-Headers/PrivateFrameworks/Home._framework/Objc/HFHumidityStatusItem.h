@@ -21,8 +21,10 @@
 + (id)maximumTargetValueCharacteristicType;
 + (id)minimumTargetValueCharacteristicType;
 + (id)sensorServiceTypes;
++ (BOOL)shouldShowAverageForRange:(id)arg1;
 + (id)targetModeCharacteristicTypes;
 + (id)targetValueCharacteristicType;
+- (id)title;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKObserverSet, NSMutableSet, WDUserDefaults;
+@class HKHealthStore, HKObserverSet, NSMutableSet, WDUserDefaults;
 
 @interface WDFavoriteDisplayTypesController : NSObject
 {
@@ -17,9 +17,11 @@
     long long _state;
     WDUserDefaults *_userDefaults;
     BOOL _shouldRecoverFromErrors;
+    HKHealthStore *_healthStore;
 }
 
 @property (readonly, nonatomic) BOOL hasLoadedInitialState;
+@property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (nonatomic) BOOL shouldRecoverFromErrors; // @synthesize shouldRecoverFromErrors=_shouldRecoverFromErrors;
 
 + (long long)cycleTrackingSummaryFavoritedIdentifier;
@@ -42,7 +44,7 @@
 - (BOOL)displayTypeIsFavorited:(id)arg1;
 - (id)favoritedDisplayTypes;
 - (void)fetchFavorites;
-- (id)initWithWDUserDefaults:(id)arg1 shouldPersistChanges:(BOOL)arg2;
+- (id)initWithWDUserDefaults:(id)arg1 healthStore:(id)arg2 shouldPersistChanges:(BOOL)arg3;
 - (void)removeAllFavorites;
 - (void)removeObserver:(id)arg1;
 - (void)setCycleTrackingSummaryFavorited:(BOOL)arg1;

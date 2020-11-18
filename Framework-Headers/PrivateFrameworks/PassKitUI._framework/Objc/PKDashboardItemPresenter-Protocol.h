@@ -6,23 +6,24 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSDictionary, NSIndexPath, PKDashboardCollectionViewCell, UICollectionView, UICollectionViewCell, UITraitCollection;
+@class NSDictionary, NSIndexPath, PKDashboardCollectionViewCell, UICollectionView, UICollectionViewCell, UINavigationController, UITraitCollection;
 @protocol PKDashboardItem;
 
 @protocol PKDashboardItemPresenter <NSObject>
 - (PKDashboardCollectionViewCell *)cellForItem:(id<PKDashboardItem>)arg1 inCollectionView:(UICollectionView *)arg2 atIndexPath:(NSIndexPath *)arg3;
 - (NSDictionary *)collectionViewCellClasses;
-- (void)didSelectItem:(id<PKDashboardItem>)arg1 inCollectionView:(UICollectionView *)arg2 atIndexPath:(NSIndexPath *)arg3;
+- (void)didSelectItem:(id<PKDashboardItem>)arg1 inCollectionView:(UICollectionView *)arg2 atIndexPath:(NSIndexPath *)arg3 navigationController:(UINavigationController *)arg4 canPresent:(BOOL (^)(void))arg5;
 - (Class)itemClass;
 - (struct CGSize)sizeForItem:(id<PKDashboardItem>)arg1 inCollectionView:(UICollectionView *)arg2 atIndexPath:(NSIndexPath *)arg3;
 - (void)updateCell:(UICollectionViewCell *)arg1 forItem:(id<PKDashboardItem>)arg2 inCollectionView:(UICollectionView *)arg3 atIndexPath:(NSIndexPath *)arg4;
 
 @optional
 - (BOOL)canSelectItem:(id<PKDashboardItem>)arg1 inCollectionView:(UICollectionView *)arg2 atIndexPath:(NSIndexPath *)arg3;
-- (void)cellDidDisappear:(UICollectionViewCell *)arg1 foritem:(id<PKDashboardItem>)arg2 inCollectionView:(UICollectionView *)arg3 atIndexPath:(NSIndexPath *)arg4;
+- (void)cellDidDisappear:(UICollectionViewCell *)arg1 forItem:(id<PKDashboardItem>)arg2 inCollectionView:(UICollectionView *)arg3 atIndexPath:(NSIndexPath *)arg4;
 - (BOOL)cellIsIndependentForItem:(id<PKDashboardItem>)arg1 inCollectionView:(UICollectionView *)arg2 atIndexPath:(NSIndexPath *)arg3;
 - (BOOL)cellIsStackableForItem:(id<PKDashboardItem>)arg1 inCollectionView:(UICollectionView *)arg2 atIndexPath:(NSIndexPath *)arg3;
 - (void)cellWillAppear:(UICollectionViewCell *)arg1 forItem:(id<PKDashboardItem>)arg2 inCollectionView:(UICollectionView *)arg3 atIndexPath:(NSIndexPath *)arg4;
+- (BOOL)hideSeparatorForItem:(id<PKDashboardItem>)arg1 inCollectionView:(UICollectionView *)arg2;
 - (void)prefetchForItem:(id<PKDashboardItem>)arg1 inCollectionView:(UICollectionView *)arg2;
 - (void)traitCollectionDidChangeFromTrait:(UITraitCollection *)arg1 toTrait:(UITraitCollection *)arg2 inCollectionView:(UICollectionView *)arg3;
 @end

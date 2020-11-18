@@ -14,12 +14,14 @@
     unsigned long long _ratingValue;
     NSString *_contentRatingSystem;
     NSString *_name;
+    unsigned long long _systemType;
 }
 
 @property (readonly, copy, nonatomic) NSString *contentRatingSystem; // @synthesize contentRatingSystem=_contentRatingSystem;
 @property (readonly, copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) unsigned long long ratingValue; // @synthesize ratingValue=_ratingValue;
+@property (readonly, nonatomic) unsigned long long systemType; // @synthesize systemType=_systemType;
 
 - (void).cxx_destruct;
 - (id)init;

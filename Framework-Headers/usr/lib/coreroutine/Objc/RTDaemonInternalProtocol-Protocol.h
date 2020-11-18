@@ -6,7 +6,7 @@
 
 #import <coreroutine/NSObject-Protocol.h>
 
-@class CLLocation, NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, NSUUID, RTFetchFingerprintsOptions, RTFingerprint, RTLocation, RTLocationOfInterest, RTLocationOfInterestVisit, RTPlaceInferenceOptions, RTScenarioTrigger, RTSignalGeneratorOptions, RTVisit;
+@class NSArray, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL, NSUUID, RTFetchFingerprintsOptions, RTFingerprint, RTLocation, RTLocationOfInterest, RTLocationOfInterestVisit, RTPlaceInferenceOptions, RTScenarioTrigger, RTSignalGeneratorOptions, RTVisit;
 
 @protocol RTDaemonInternalProtocol <NSObject>
 - (void)clearAllLocationsOfInterestWithReply:(void (^)(NSError *))arg1;
@@ -33,6 +33,7 @@
 - (void)injectFingerprintWithSettledState:(BOOL)arg1 start:(NSDate *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)injectLocationOfInterest:(RTLocationOfInterest *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)injectLocations:(NSArray *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)injectRealtimeVisit:(RTVisit *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)injectSignalForSignalGeneratorOptions:(RTSignalGeneratorOptions *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)injectVisit:(RTLocationOfInterestVisit *)arg1 locationOfInterest:(RTLocationOfInterest *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)injectWiFiAccessPointWithMac:(NSString *)arg1 rssi:(long long)arg2 channel:(long long)arg3 age:(double)arg4 date:(NSDate *)arg5 reply:(void (^)(NSError *))arg6;
@@ -45,7 +46,8 @@
 - (void)reconstructTransitionsWithReply:(void (^)(NSError *))arg1;
 - (void)simulateScenarioTrigger:(RTScenarioTrigger *)arg1 reply:(void (^)(RTScenarioTrigger *, NSError *))arg2;
 - (void)simulateVisit:(RTVisit *)arg1 reply:(void (^)(NSError *))arg2;
-- (void)submitHintAtLocation:(CLLocation *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)storeHints:(NSArray *)arg1 reply:(void (^)(NSError *))arg2;
+- (void)submitHintAtLocation:(RTLocation *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)submitMetrics:(NSDictionary *)arg1 metricName:(NSString *)arg2 reply:(void (^)(NSError *))arg3;
 - (void)tearDownPersistenceStack:(void (^)(NSError *))arg1;
 - (void)updateAssetServerURL:(NSURL *)arg1 assetType:(NSString *)arg2 reply:(void (^)(NSError *))arg3;

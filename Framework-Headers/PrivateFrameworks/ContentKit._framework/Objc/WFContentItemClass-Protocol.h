@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray, NSDictionary, NSOrderedSet, NSString, WFCoercionOptions, WFContentSource, WFFileRepresentation, WFFileType, WFObjectRepresentation, WFObjectType, WFRepresentation, WFType;
+@class NSArray, NSDictionary, NSOrderedSet, NSString, WFCoercionOptions, WFContentAttributionSet, WFFileRepresentation, WFFileType, WFObjectRepresentation, WFObjectType, WFRepresentation, WFType;
 
 @protocol WFContentItemClass
 + (NSArray *)contentCategories;
 + (NSString *)countDescription;
-+ (WFContentSource *)defaultSourceForRepresentation:(WFRepresentation *)arg1;
++ (WFContentAttributionSet *)defaultSourceForRepresentation:(WFRepresentation *)arg1;
 + (NSString *)filterDescription;
 + (NSString *)localizedFilterDescription;
 + (NSString *)localizedPluralFilterDescription;
@@ -23,7 +23,7 @@
 
 @optional
 + (NSArray *)filterRepresentationsForAllowedContent:(NSArray *)arg1;
-+ (id)itemWithSerializedItem:(NSDictionary *)arg1 forType:(WFFileType *)arg2 named:(NSString *)arg3 contentSource:(WFContentSource *)arg4;
++ (id)itemWithSerializedItem:(NSDictionary *)arg1 forType:(WFFileType *)arg2 named:(NSString *)arg3 attributionSet:(WFContentAttributionSet *)arg4;
 + (NSOrderedSet *)ownedPasteboardTypes;
 + (NSArray *)propertyBuilders;
 + (BOOL)supportedTypeMustBeDeterminedByInstance:(WFType *)arg1;
@@ -42,7 +42,6 @@
 - (void)getPreferredFileExtension:(void (^)(NSString *))arg1;
 - (void)getPreferredFileSize:(void (^)(long long))arg1;
 - (BOOL)includesFileRepresentationInSerializedItem;
-- (WFRepresentation *)internalRepresentationForCopying;
 - (WFFileType *)preferredFileType;
 - (WFObjectType *)preferredObjectType;
 @end

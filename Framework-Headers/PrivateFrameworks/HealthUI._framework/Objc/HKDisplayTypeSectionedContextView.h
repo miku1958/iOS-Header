@@ -7,20 +7,23 @@
 #import <UIKit/UIView.h>
 
 #import <HealthUI/UICollectionViewDataSource-Protocol.h>
-#import <HealthUI/UICollectionViewDelegateFlowLayout-Protocol.h>
+#import <HealthUI/UICollectionViewDelegate-Protocol.h>
 
-@class NSArray, NSIndexPath, NSString, UICollectionView, UICollectionViewFlowLayout;
+@class HKDisplayTypeContextItem, HKDisplayTypeContextVerticalCollectionViewCell, NSArray, NSIndexPath, NSString, UICollectionView, UICollectionViewLayout;
 @protocol HKDisplayTypeSectionedContextViewDelegate;
 
-@interface HKDisplayTypeSectionedContextView : UIView <UICollectionViewDataSource, UICollectionViewDelegateFlowLayout>
+@interface HKDisplayTypeSectionedContextView : UIView <UICollectionViewDataSource, UICollectionViewDelegate>
 {
     long long _style;
     BOOL _bottomInsetsEnabled;
     UICollectionView *_collectionView;
-    UICollectionViewFlowLayout *_collectionViewLayout;
+    UICollectionViewLayout *_collectionViewLayout;
     NSIndexPath *_lastSelectedIndex;
     NSArray *_displayTypeContextSections;
     id<HKDisplayTypeSectionedContextViewDelegate> _delegate;
+    HKDisplayTypeContextVerticalCollectionViewCell *_sizingCell;
+    HKDisplayTypeContextItem *_sizingItem;
+    double _sizingCellEstimatedHeight;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,21 +31,28 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSArray *displayTypeContextSections; // @synthesize displayTypeContextSections=_displayTypeContextSections;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HKDisplayTypeContextVerticalCollectionViewCell *sizingCell; // @synthesize sizingCell=_sizingCell;
+@property (nonatomic) double sizingCellEstimatedHeight; // @synthesize sizingCellEstimatedHeight=_sizingCellEstimatedHeight;
+@property (strong, nonatomic) HKDisplayTypeContextItem *sizingItem; // @synthesize sizingItem=_sizingItem;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (id)_buildCollectionViewLayout;
+- (double)_cellSizingWidth;
 - (double)_contentHeight;
 - (double)_contentWidth;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (double)_estimatedDynamicCellHeight;
 - (void)_handleSelection:(id)arg1 indexPath:(id)arg2 informDelegate:(BOOL)arg3;
+- (id)_makeDummySizingItem;
+- (id)_makeSizingItemWithItem:(id)arg1;
 - (double)_maximumHeaderLabelLength;
 - (double)_preferredCollectionViewHeightForCount:(long long)arg1;
 - (long long)_rowsForScreenSize;
+- (void)_updateSizingCellWithContextItemSections:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
-- (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForHeaderInSection:(long long)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (BOOL)collectionView:(id)arg1 shouldHighlightItemAtIndexPath:(id)arg2;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;

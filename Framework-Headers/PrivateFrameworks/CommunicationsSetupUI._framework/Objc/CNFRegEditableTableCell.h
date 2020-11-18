@@ -8,6 +8,7 @@
 
 @class CNFRegShadowView, UIImage;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegEditableTableCell : PSEditableTableCell
 {
     SEL _emptyStateSelector;

@@ -20,7 +20,7 @@
 }
 
 @property (readonly, nonatomic) SXDOM *DOM; // @synthesize DOM=_DOM;
-@property (readonly, nonatomic) SXLayoutBlueprint *blueprint; // @synthesize blueprint=_blueprint;
+@property (readonly, copy, nonatomic) SXLayoutBlueprint *blueprint; // @synthesize blueprint=_blueprint;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) SXLayoutInstructions *instructions; // @synthesize instructions=_instructions;
 @property (readonly, nonatomic) SXLayoutOptions *options; // @synthesize options=_options;

@@ -20,6 +20,7 @@
     NSMutableDictionary *_topicToAccountDictionaries;
     NSMutableDictionary *_topicToEnabledAccounts;
     NSMutableDictionary *_accountToDevices;
+    NSMutableDictionary *_serviceToLinkedDevices;
     NSMutableDictionary *_accountToActiveDeviceUniqueID;
     NSMutableDictionary *_serviceToActiveDeviceUniqueID;
     NSString *_deviceIdentifier;
@@ -47,10 +48,12 @@
 - (void)_callHandlersWithBlockOnIvarQueue:(CDUnknownBlockType)arg1 cleanup:(CDUnknownBlockType)arg2;
 - (void)_internalDidSwitchActivePairedDevice:(id)arg1 forService:(id)arg2;
 - (void)_internalSwitchActivePairedDevice:(id)arg1 forAccount:(id)arg2;
+- (void)_internalSwitchActivePairedDevice:(id)arg1 forService:(id)arg2;
 - (void)_noteDisconnected;
 - (void)_performSyncBlock:(CDUnknownBlockType)arg1;
 - (void)_removeAccountOnIvarQueue:(id)arg1;
 - (id)_uniqueIDForDevice:(id)arg1;
+- (id)_updateService:(id)arg1 withTinkerDevice:(id)arg2 shouldAdd:(BOOL)arg3 shouldSwitch:(BOOL)arg4;
 - (void)account:(id)arg1 accountInfoChanged:(id)arg2;
 - (void)account:(id)arg1 aliasesChanged:(id)arg2;
 - (void)account:(id)arg1 dependentDevicesUpdated:(id)arg2;
@@ -67,7 +70,7 @@
 - (void)accountEnabled:(id)arg1 onService:(id)arg2;
 - (void)accountRemoved:(id)arg1;
 - (void)addHandler:(id)arg1;
-- (void)connectionComplete:(BOOL)arg1;
+- (void)connectionComplete:(BOOL)arg1 withResponse:(id)arg2;
 - (void)continuityDidConnectToPeer:(id)arg1 withError:(id)arg2;
 - (void)continuityDidDisconnectFromPeer:(id)arg1 withError:(id)arg2;
 - (void)continuityDidDiscoverPeerWithData:(id)arg1 fromPeer:(id)arg2;
@@ -91,12 +94,17 @@
 - (void)forwardInvocation:(id)arg1;
 - (id)init;
 - (id)initWithQueueController:(id)arg1 ivarQueue:(id)arg2;
+- (id)linkedDevicesForService:(id)arg1;
 - (id)methodSignatureForSelector:(SEL)arg1;
 - (void)refreshRegistrationForAccount:(id)arg1;
 - (void)registrationFailedForAccount:(id)arg1 needsDeletion:(id)arg2;
 - (void)removeHandler:(id)arg1;
+- (void)service:(id)arg1 tinkerDeviceAdded:(id)arg2;
+- (void)service:(id)arg1 tinkerDeviceRemoved:(id)arg2;
+- (void)service:(id)arg1 tinkerDeviceUpdated:(id)arg2;
 - (void)setupCompleteWithInfo:(id)arg1;
 - (void)switchActivePairedDevice:(id)arg1 forAccount:(id)arg2;
+- (void)switchActivePairedDevice:(id)arg1 forService:(id)arg2;
 - (void)updateAccount:(id)arg1 withAccountInfo:(id)arg2;
 - (void)xpcObject:(id)arg1 objectContext:(id)arg2;
 

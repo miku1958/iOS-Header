@@ -9,7 +9,7 @@
 #import <WorkflowUI/UINavigationControllerDelegate-Protocol.h>
 #import <WorkflowUI/WFAutomationSummaryViewControllerDelegate-Protocol.h>
 
-@class NSString, UINavigationController, WFAutomationSummaryViewController, WFConfiguredTriggerRecord, WFDatabase, WFTrigger, WFTriggerManager, WFWorkflow, WFWorkflowReference;
+@class NSString, UINavigationController, WFAutomationSummaryViewController, WFConfiguredTriggerRecord, WFDatabase, WFEditAutomationWorkflowStorage, WFTrigger, WFTriggerManager, WFWorkflow, WFWorkflowReference;
 @protocol WFEditAutomationCoordinatorDelegate;
 
 @interface WFEditAutomationCoordinator : NSObject <UINavigationControllerDelegate, WFAutomationSummaryViewControllerDelegate>
@@ -22,7 +22,8 @@
     NSString *_triggerIdentifier;
     WFTrigger *_trigger;
     WFWorkflowReference *_workflowReference;
-    WFWorkflow *_workflow;
+    WFEditAutomationWorkflowStorage *_editingStorage;
+    WFWorkflow *_editingWorkflow;
     WFAutomationSummaryViewController *_automationSummaryViewController;
 }
 
@@ -31,6 +32,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFEditAutomationCoordinatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) WFEditAutomationWorkflowStorage *editingStorage; // @synthesize editingStorage=_editingStorage;
+@property (strong, nonatomic) WFWorkflow *editingWorkflow; // @synthesize editingWorkflow=_editingWorkflow;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property (readonly) Class superclass;
@@ -38,7 +41,6 @@
 @property (readonly, copy, nonatomic) NSString *triggerIdentifier; // @synthesize triggerIdentifier=_triggerIdentifier;
 @property (strong, nonatomic) WFTriggerManager *triggerManager; // @synthesize triggerManager=_triggerManager;
 @property (readonly, nonatomic) WFConfiguredTriggerRecord *triggerRecord; // @synthesize triggerRecord=_triggerRecord;
-@property (strong, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
 @property (readonly, nonatomic) WFWorkflowReference *workflowReference; // @synthesize workflowReference=_workflowReference;
 
 - (void).cxx_destruct;

@@ -17,11 +17,14 @@
 @property (strong, nonatomic) NSMutableDictionary *dynamicProperties; // @synthesize dynamicProperties=_dynamicProperties;
 @property (strong, nonatomic) NSMutableDictionary *systemProperties; // @synthesize systemProperties=_systemProperties;
 
++ (id)dynamicPhotoLibraryProperties;
++ (id)staticPhotoLibraryProperties;
 - (void).cxx_destruct;
 - (void)addDynamicProperty:(id)arg1 withProvider:(id)arg2;
 - (void)addProperty:(id)arg1 withValue:(id)arg2;
 - (id)init;
 - (id)propertyForKey:(id)arg1 forEventName:(id)arg2 payloadForSystemPropertyExtraction:(id)arg3;
+- (void)removePhotoLibraryProperties;
 
 @end
 

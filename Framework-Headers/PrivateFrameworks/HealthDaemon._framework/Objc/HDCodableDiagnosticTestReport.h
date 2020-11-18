@@ -13,7 +13,7 @@
 
 @interface HDCodableDiagnosticTestReport : PBCodable <HDDecoding, NSCopying>
 {
-    HDCodableMedicalCodingList *_diagnosticTestCodings;
+    HDCodableMedicalCodingList *_diagnosticTestCodingCollection;
     NSData *_effectiveEndDate;
     NSData *_effectiveStartDate;
     NSData *_issueDate;
@@ -25,10 +25,10 @@
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) HDCodableMedicalCodingList *diagnosticTestCodings; // @synthesize diagnosticTestCodings=_diagnosticTestCodings;
+@property (strong, nonatomic) HDCodableMedicalCodingList *diagnosticTestCodingCollection; // @synthesize diagnosticTestCodingCollection=_diagnosticTestCodingCollection;
 @property (strong, nonatomic) NSData *effectiveEndDate; // @synthesize effectiveEndDate=_effectiveEndDate;
 @property (strong, nonatomic) NSData *effectiveStartDate; // @synthesize effectiveStartDate=_effectiveStartDate;
-@property (readonly, nonatomic) BOOL hasDiagnosticTestCodings;
+@property (readonly, nonatomic) BOOL hasDiagnosticTestCodingCollection;
 @property (readonly, nonatomic) BOOL hasEffectiveEndDate;
 @property (readonly, nonatomic) BOOL hasEffectiveStartDate;
 @property (readonly, nonatomic) BOOL hasIssueDate;

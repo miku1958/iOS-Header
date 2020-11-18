@@ -12,6 +12,7 @@
 
 @interface AWDNWL2Report : PBCodable <NSCopying>
 {
+    int _cellularBand;
     int _cellularBandInfo;
     int _cellularBandwidth;
     int _cellularBars;
@@ -31,6 +32,7 @@
     BOOL _cellularKnownGood;
     BOOL _wifiKnownGood;
     struct {
+        unsigned int cellularBand:1;
         unsigned int cellularBandInfo:1;
         unsigned int cellularBandwidth:1;
         unsigned int cellularBars:1;
@@ -51,6 +53,7 @@
     } _has;
 }
 
+@property (nonatomic) int cellularBand; // @synthesize cellularBand=_cellularBand;
 @property (nonatomic) int cellularBandInfo; // @synthesize cellularBandInfo=_cellularBandInfo;
 @property (nonatomic) int cellularBandwidth; // @synthesize cellularBandwidth=_cellularBandwidth;
 @property (nonatomic) int cellularBars; // @synthesize cellularBars=_cellularBars;
@@ -65,6 +68,7 @@
 @property (nonatomic) int cellularRadioTechnology; // @synthesize cellularRadioTechnology=_cellularRadioTechnology;
 @property (nonatomic) int cellularTac; // @synthesize cellularTac=_cellularTac;
 @property (nonatomic) int cellularUarfcn; // @synthesize cellularUarfcn=_cellularUarfcn;
+@property (nonatomic) BOOL hasCellularBand;
 @property (nonatomic) BOOL hasCellularBandInfo;
 @property (nonatomic) BOOL hasCellularBandwidth;
 @property (nonatomic) BOOL hasCellularBars;
@@ -88,10 +92,12 @@
 @property (nonatomic) int wifiRadioTechnology; // @synthesize wifiRadioTechnology=_wifiRadioTechnology;
 @property (nonatomic) int wifiRssi; // @synthesize wifiRssi=_wifiRssi;
 
+- (int)StringAsCellularBand:(id)arg1;
 - (int)StringAsCellularPowerCostDownload:(id)arg1;
 - (int)StringAsCellularPowerCostUpload:(id)arg1;
 - (int)StringAsCellularRadioTechnology:(id)arg1;
 - (int)StringAsWifiRadioTechnology:(id)arg1;
+- (id)cellularBandAsString:(int)arg1;
 - (id)cellularPowerCostDownloadAsString:(int)arg1;
 - (id)cellularPowerCostUploadAsString:(int)arg1;
 - (id)cellularRadioTechnologyAsString:(int)arg1;

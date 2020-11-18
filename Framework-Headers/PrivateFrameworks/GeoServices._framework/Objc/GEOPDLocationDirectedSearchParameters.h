@@ -34,14 +34,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_searchLocation:1;
         unsigned int read_searchString:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_nearestTransitParameters:1;
-        unsigned int wrote_searchLocation:1;
-        unsigned int wrote_searchString:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_maxResults:1;
-        unsigned int wrote_searchType:1;
-        unsigned int wrote_sortOrder:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -65,10 +58,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)StringAsSearchType:(id)arg1;
 - (int)StringAsSortOrder:(id)arg1;
-- (void)_readNearestTransitParameters;
-- (void)_readSearchLocation;
-- (void)_readSearchString;
-- (void)_readViewportInfo;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -77,8 +66,11 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithSearchURLQuery:(id)arg1 coordinate:(CDStruct_c3b9c2ee)arg2 maxResults:(unsigned int)arg3 traits:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

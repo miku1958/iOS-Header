@@ -7,14 +7,14 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary;
-@protocol MTLCommandQueue, MTLDeviceSPI, MTLSharedEvent;
+@protocol MTLCommandQueue, MTLDeviceSPI, MTLSharedEvent, OS_dispatch_group, OS_dispatch_queue;
 
 @interface GTResourceDownloader : NSObject
 {
     id<MTLDeviceSPI> _device;
     NSMutableDictionary *_pipelineCache;
-    struct dispatch_group_s *_dispatchGroup;
-    struct dispatch_queue_s *_dispatchQueue;
+    NSObject<OS_dispatch_group> *_dispatchGroup;
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
     struct _opaque_pthread_mutex_t _framebufferPipelineMutex;
     unsigned long long _downloadValue;
     id<MTLSharedEvent> _downloadEvent;
@@ -26,7 +26,7 @@
 }
 
 - (void).cxx_destruct;
-- (void)_downloadRequest:(struct apr_array_header_t *)arg1 atPoint:(id)arg2 dispatchGroup:(struct dispatch_group_s *)arg3;
+- (void)_downloadRequest:(struct apr_array_header_t *)arg1 atPoint:(id)arg2 dispatchGroup:(id)arg3;
 - (void)dealloc;
 - (id)downloadQueue;
 - (void)downloadRequest:(struct apr_array_header_t *)arg1;

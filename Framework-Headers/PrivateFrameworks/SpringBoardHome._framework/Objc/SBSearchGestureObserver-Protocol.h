@@ -13,6 +13,7 @@
 
 @optional
 - (void)searchGesture:(SBSearchGesture *)arg1 completedShowing:(BOOL)arg2;
+- (void)searchGesture:(SBSearchGesture *)arg1 endedGesture:(BOOL)arg2;
 - (void)searchGesture:(SBSearchGesture *)arg1 resetAnimated:(BOOL)arg2;
 - (void)searchGesture:(SBSearchGesture *)arg1 startedShowing:(BOOL)arg2;
 @end

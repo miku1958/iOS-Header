@@ -12,11 +12,11 @@
 
 + (const CDStruct_4c492439 *)columnDefinitionsWithCount:(unsigned long long *)arg1;
 + (id)databaseTable;
-+ (id)deleteStatementForWorkoutEventsWithDatabase:(id)arg1;
++ (id)deleteStatementForWorkoutEventsWithTransaction:(id)arg1;
 + (BOOL)enumerateEventsForOwner:(long long)arg1 withStatement:(id)arg2 error:(id *)arg3 eventHandler:(CDUnknownBlockType)arg4;
 + (id)foreignKeys;
 + (id)insertPersistableWorkoutEvent:(id)arg1 ownerID:(id)arg2 database:(id)arg3 error:(id *)arg4;
-+ (BOOL)insertWorkoutEventsFromWorkout:(id)arg1 ownerID:(id)arg2 database:(id)arg3 error:(id *)arg4;
++ (BOOL)insertWorkoutEventsFromWorkout:(id)arg1 ownerID:(id)arg2 transaction:(id)arg3 error:(id *)arg4;
 + (Class)ownerEntityClass;
 + (id)ownerEntityReferenceColumn;
 + (long long)protectionClass;

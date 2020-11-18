@@ -11,12 +11,12 @@
 #import <WorkflowUI/WFActionDrawerStateConfigurable-Protocol.h>
 #import <WorkflowUI/WFActionDrawerStateRepresentable-Protocol.h>
 
-@class NSString, UIButton, UIScrollView, UIVisualEffectView, WFAction, WFActionDescriptionTitleView, WFActionDocumentationView, WFActionDrawerState;
-@protocol WFActionDescriptionViewControllerDelegate;
+@class NSString, UIButton, UIScrollView, UIVisualEffectView, WFAction, WFActionDescriptionTitleView, WFActionDocumentationView, WFActionDrawerCoordinator, WFActionDrawerState;
 
 @interface WFActionDescriptionViewController : UIViewController <UIScrollViewDelegate, WFActionDocumentationViewDelegate, WFActionDrawerStateRepresentable, WFActionDrawerStateConfigurable>
 {
-    id<WFActionDescriptionViewControllerDelegate> _delegate;
+    WFAction *_action;
+    WFActionDrawerCoordinator *_coordinator;
     WFActionDescriptionTitleView *_titleView;
     UIButton *_dismissButton;
     UIScrollView *_scrollView;
@@ -24,10 +24,10 @@
     UIVisualEffectView *_blurView;
 }
 
-@property (weak, nonatomic) WFAction *action;
+@property (weak, nonatomic) WFAction *action; // @synthesize action=_action;
 @property (weak, nonatomic) UIVisualEffectView *blurView; // @synthesize blurView=_blurView;
+@property (readonly, weak, nonatomic) WFActionDrawerCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<WFActionDescriptionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UIButton *dismissButton; // @synthesize dismissButton=_dismissButton;
 @property (readonly, nonatomic) WFActionDocumentationView *documentationView; // @synthesize documentationView=_documentationView;
@@ -39,7 +39,7 @@
 
 - (void).cxx_destruct;
 - (void)actionDocumentationViewDidSelectAddToWorkflowWithAction:(id)arg1;
-- (id)init;
+- (id)initWithAction:(id)arg1 coordinator:(id)arg2;
 - (BOOL)moveToState:(id)arg1 animated:(BOOL)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;

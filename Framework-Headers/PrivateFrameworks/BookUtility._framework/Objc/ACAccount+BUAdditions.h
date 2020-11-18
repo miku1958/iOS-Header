@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) NSString *bu_storefront;
 
 + (id)bu_activeStoreAccount;
++ (id)bu_currentStorefront;
 + (id)bu_localStoreAccount;
 + (id)bu_storeAccountWithDSID:(id)arg1;
 - (void)bu_removeWithCompletion:(CDUnknownBlockType)arg1;

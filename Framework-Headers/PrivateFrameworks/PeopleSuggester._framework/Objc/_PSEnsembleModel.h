@@ -6,14 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class CNContactStore, NSArray, NSDictionary, NSSet, NSString, NSUserDefaults, _CDInteractionCache, _CDInteractionStore, _PSHeuristics, _PSInteractionAndContactMonitor, _PSKNNModel, _PSRuleMiningModel;
+@class CNContactStore, NSArray, NSDictionary, NSSet, NSString, NSUserDefaults, PPContactStore, PPTopicStore, _CDInteractionCache, _CDInteractionStore, _PSContactResolver, _PSHeuristics, _PSInteractionAndContactMonitor, _PSKNNModel, _PSRuleMiningModel;
 @protocol _DKKnowledgeQuerying><_DKKnowledgeSaving;
 
 @interface _PSEnsembleModel : NSObject
 {
     struct os_unfair_lock_s _lock;
+    BOOL _allowNonSupportedBundleIDs;
     _CDInteractionStore *_interactionStore;
     id<_DKKnowledgeQuerying><_DKKnowledgeSaving> _knowledgeStore;
+    PPTopicStore *_topicStore;
+    PPContactStore *_portraitContactStore;
     _CDInteractionCache *_messageInteractionCache;
     _CDInteractionCache *_shareInteractionCache;
     NSUserDefaults *_peopleSuggesterDefaults;
@@ -25,14 +28,19 @@
     _PSKNNModel *_knnMapsModel;
     _PSKNNModel *_knnZkwModel;
     _PSKNNModel *_knnNameOrContactRankerModel;
+    _PSKNNModel *_knnSiriNLContactRankerModel;
     _PSHeuristics *_heuristics;
     _PSInteractionAndContactMonitor *_contactMonitor;
     NSSet *_cachedSupportedBundleIDs;
+    _PSContactResolver *_contactResolver;
     NSDictionary *_psConfig;
+    NSDictionary *_psConfigForAdaptableModel;
 }
 
+@property (nonatomic) BOOL allowNonSupportedBundleIDs; // @synthesize allowNonSupportedBundleIDs=_allowNonSupportedBundleIDs;
 @property (strong, nonatomic) NSSet *cachedSupportedBundleIDs; // @synthesize cachedSupportedBundleIDs=_cachedSupportedBundleIDs;
 @property (strong, nonatomic) _PSInteractionAndContactMonitor *contactMonitor; // @synthesize contactMonitor=_contactMonitor;
+@property (strong, nonatomic) _PSContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 @property (strong, nonatomic) CNContactStore *contactStore; // @synthesize contactStore=_contactStore;
 @property (strong, nonatomic) NSArray *defaultContactKeysToFetch; // @synthesize defaultContactKeysToFetch=_defaultContactKeysToFetch;
 @property (strong, nonatomic) _PSHeuristics *heuristics; // @synthesize heuristics=_heuristics;
@@ -40,30 +48,42 @@
 @property (strong, nonatomic) _PSKNNModel *knnMapsModel; // @synthesize knnMapsModel=_knnMapsModel;
 @property (strong, nonatomic) _PSKNNModel *knnModel; // @synthesize knnModel=_knnModel;
 @property (strong, nonatomic) _PSKNNModel *knnNameOrContactRankerModel; // @synthesize knnNameOrContactRankerModel=_knnNameOrContactRankerModel;
+@property (strong, nonatomic) _PSKNNModel *knnSiriNLContactRankerModel; // @synthesize knnSiriNLContactRankerModel=_knnSiriNLContactRankerModel;
 @property (strong, nonatomic) _PSKNNModel *knnZkwModel; // @synthesize knnZkwModel=_knnZkwModel;
 @property (strong, nonatomic) id<_DKKnowledgeQuerying><_DKKnowledgeSaving> knowledgeStore; // @synthesize knowledgeStore=_knowledgeStore;
 @property (strong, nonatomic) _CDInteractionCache *messageInteractionCache; // @synthesize messageInteractionCache=_messageInteractionCache;
 @property (strong, nonatomic) NSUserDefaults *peopleSuggesterDefaults; // @synthesize peopleSuggesterDefaults=_peopleSuggesterDefaults;
+@property (strong, nonatomic) PPContactStore *portraitContactStore; // @synthesize portraitContactStore=_portraitContactStore;
 @property (strong) NSDictionary *psConfig; // @synthesize psConfig=_psConfig;
+@property (strong) NSDictionary *psConfigForAdaptableModel; // @synthesize psConfigForAdaptableModel=_psConfigForAdaptableModel;
 @property (strong, nonatomic) _PSRuleMiningModel *ruleMiningModel; // @synthesize ruleMiningModel=_ruleMiningModel;
 @property (strong, nonatomic) _CDInteractionCache *shareInteractionCache; // @synthesize shareInteractionCache=_shareInteractionCache;
+@property (strong, nonatomic) PPTopicStore *topicStore; // @synthesize topicStore=_topicStore;
 @property (strong, nonatomic) NSString *trialID; // @synthesize trialID=_trialID;
 
 - (void).cxx_destruct;
+- (void)addAdaptedModelUsageInfoToSuggestions:(id)arg1;
+- (void)addSupportedBundleIDs:(id)arg1;
 - (id)appExtensionSuggestionsFromContext:(id)arg1;
+- (id)familyPredictionsWithMaxSuggestions:(unsigned long long)arg1;
 - (id)fetchShareSheetSupportedBundleIDs;
 - (id)init;
+- (void)loadDefaultAdaptableModelConfig;
 - (void)loadDefaultPSConfig;
 - (BOOL)loadPSConfig:(id)arg1;
 - (id)mapsSuggestionArrayWithArray:(id)arg1 appendingUniqueElementsFromArray:(id)arg2 contactResolver:(id)arg3 meContactId:(id)arg4;
+- (id)mergedSuggestionsWithFamilySuggestions:(id)arg1 shareSheetSuggestions:(id)arg2 maxSuggestions:(unsigned long long)arg3 supportedBundleIds:(id)arg4;
 - (void)populateCaches;
 - (void)populateCachesWithSupportedBundleIDs:(id)arg1;
 - (id)predictWithMapsPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)predictWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)predictWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2 contactKeysToFetch:(id)arg3;
 - (id)rankedAutocompleteSuggestionsFromContext:(id)arg1 candidates:(id)arg2;
-- (id)rankedContactSuggestionsWithPredictionContext:(id)arg1 contactsOnly:(BOOL)arg2 maxSuggestions:(unsigned long long)arg3;
+- (id)rankedGlobalSuggestionsForSiriNLWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2 interactionId:(id)arg3;
+- (id)rankedGlobalSuggestionsWithPredictionContext:(id)arg1 contactsOnly:(BOOL)arg2 maxSuggestions:(unsigned long long)arg3;
+- (id)rankedHandlesFromCandidateHandles:(id)arg1;
 - (id)rankedNameSuggestionsWithPredictionContext:(id)arg1 name:(id)arg2;
+- (id)rankedSiriMLCRHandles:(id)arg1 context:(id)arg2;
 - (id)suggestZKWMessagesSuggestionsWithPredictionContext:(id)arg1 maxSuggestions:(unsigned long long)arg2;
 - (id)suggestionsFromSuggestionProxies:(id)arg1 supportedBundleIDs:(id)arg2 contactKeysToFetch:(id)arg3 meContactIdentifier:(id)arg4 maxSuggestions:(unsigned long long)arg5;
 - (void)updateTrialID:(id)arg1;

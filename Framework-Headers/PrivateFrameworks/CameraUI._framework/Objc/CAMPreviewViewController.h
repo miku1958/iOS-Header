@@ -21,7 +21,8 @@
     BOOL __userLockedFocusAndExposure;
     BOOL __shouldSuppressExistingFaceIndicators;
     BOOL _showingStandardControls;
-    float __cachedExposureTargetBias;
+    float _baselineExposureBias;
+    float _cachedExposureTargetBias;
     float __exposureBiasPanStartValue;
     id<CAMPreviewViewControllerDelegate> _delegate;
     long long _layoutStyle;
@@ -56,7 +57,6 @@
 
 @property (readonly, nonatomic) UITapGestureRecognizer *_aspectRatioToggleDoubleTapGestureRecognizer; // @synthesize _aspectRatioToggleDoubleTapGestureRecognizer=__aspectRatioToggleDoubleTapGestureRecognizer;
 @property (readonly, nonatomic) CAMBurstIndicatorView *_burstIndicator; // @synthesize _burstIndicator=__burstIndicator;
-@property (nonatomic, setter=_setCachedExposureTargetBias:) float _cachedExposureTargetBias; // @synthesize _cachedExposureTargetBias=__cachedExposureTargetBias;
 @property (readonly, nonatomic) CUCaptureController *_captureController; // @synthesize _captureController=__captureController;
 @property (nonatomic, getter=_isChangingGraphConfiguration, setter=_setChangingGraphConfiguration:) BOOL _changingGraphConfiguration; // @synthesize _changingGraphConfiguration=__changingGraphConfiguration;
 @property (readonly, nonatomic) CAMFocusIndicatorView *_continuousIndicator; // @synthesize _continuousIndicator=__continuousIndicator;
@@ -84,6 +84,8 @@
 @property (readonly, weak, nonatomic) CAMTimelapseController *_timelapseController; // @synthesize _timelapseController=__timelapseController;
 @property (nonatomic, setter=_setUserLockedFocusAndExposure:) BOOL _userLockedFocusAndExposure; // @synthesize _userLockedFocusAndExposure=__userLockedFocusAndExposure;
 @property (readonly, nonatomic) UIPanGestureRecognizer *activeExposureBiasPanGestureRecognizer;
+@property (nonatomic) float baselineExposureBias; // @synthesize baselineExposureBias=_baselineExposureBias;
+@property (nonatomic, setter=setCachedExposureTargetBias:) float cachedExposureTargetBias; // @synthesize cachedExposureTargetBias=_cachedExposureTargetBias;
 @property (strong, nonatomic) NSArray *cachedMRCResults; // @synthesize cachedMRCResults=_cachedMRCResults;
 @property (strong, nonatomic) CAMMachineReadableCodeResult *cachedSignificantMRCResult; // @synthesize cachedSignificantMRCResult=_cachedSignificantMRCResult;
 @property (readonly, copy) NSString *debugDescription;
@@ -99,11 +101,11 @@
 @property (nonatomic, getter=isShowingStandardControls) BOOL showingStandardControls; // @synthesize showingStandardControls=_showingStandardControls;
 @property (nonatomic) long long stagePreviewStatus; // @synthesize stagePreviewStatus=_stagePreviewStatus;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) float totalExposureBias;
 
 - (void).cxx_destruct;
 - (void)_activateFocusIndicator:(id)arg1;
 - (void)_addIndicatorView:(id)arg1 forType:(id)arg2 identifier:(id)arg3;
-- (BOOL)_allowExposureBiasForMode:(long long)arg1;
 - (BOOL)_allowUserToChangeFocusAndExposure;
 - (void)_animateView:(id)arg1 withCenter:(struct CGPoint)arg2 bounds:(struct CGRect)arg3;
 - (void)_applicationDidEnterBackground;
@@ -154,6 +156,7 @@
 - (void)_initializeExposureBiasParametersForFocusIndicatorView:(id)arg1;
 - (void)_initializeExposureBiasSliderParameters;
 - (long long)_interfaceOrientation;
+- (BOOL)_isExposureTargetBiasAtBaseline:(float)arg1;
 - (BOOL)_isFullyAutomaticFocus:(id)arg1 andExposure:(id)arg2;
 - (BOOL)_isFullyAutomaticFocusAndExposure;
 - (BOOL)_isPanningExposureBias;
@@ -189,6 +192,7 @@
 - (void)_showLockedAtPointOfInterest:(struct CGPoint)arg1;
 - (void)_showUIForResetFocusAndExposure;
 - (long long)_styleForPointIndicator;
+- (void)_updateCaptureControllerExposureTargetBias;
 - (void)_updateExposureBiasPanGestureRecognizerForOrientation;
 - (void)_updateExposureBiasSideAnimated:(BOOL)arg1;
 - (void)_updateExposureBiasViews;
@@ -209,12 +213,13 @@
 - (void)_validateUserLockedFocusAndExposure;
 - (double)_virtualSliderPositionForExposureBias:(double)arg1;
 - (void)_willChangeGraphConfiguration;
+- (float)baselineExposureValueForCaptureController:(id)arg1;
 - (void)captureController:(id)arg1 didOutputExposureResult:(id)arg2;
 - (void)captureController:(id)arg1 didOutputFaceResults:(id)arg2 bodyResults:(id)arg3;
 - (void)captureController:(id)arg1 didOutputFocusResult:(id)arg2;
 - (BOOL)captureController:(id)arg1 shouldResetFocusAndExposureForReason:(long long)arg2;
 - (double)captureControllerDelayBeforeResettingFocusAndExposureAfterCapture:(id)arg1;
-- (BOOL)captureControllerUserHasAdjustedExposureTargetBias:(id)arg1;
+- (BOOL)captureControllerUserHasAdjustedExposureTargetBiasFromBaseline:(id)arg1;
 - (void)captureControllerWillResetFocusAndExposure:(id)arg1;
 - (void)dealloc;
 - (void)didChangeToGraphConfiguration:(id)arg1 animated:(BOOL)arg2;

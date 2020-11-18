@@ -35,7 +35,7 @@
 - (void)dealloc;
 - (id)description;
 - (id)initWithFeature:(struct GEOTransitNodeFeature *)arg1;
-- (void)updateWithGeometryFeature:(CDStruct_040038b6 *)arg1;
+- (void)updateWithGeometryFeature:(CDStruct_bf4ccc58 *)arg1;
 
 @end
 

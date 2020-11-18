@@ -6,7 +6,7 @@
 
 #import <AVConference/VCConnectionManager.h>
 
-@class VCSessionBitrateArbiter;
+@class VCConnectionSelector, VCSessionBitrateArbiter;
 
 __attribute__((visibility("hidden")))
 @interface VCConnectionManagerIDS : VCConnectionManager
@@ -19,41 +19,60 @@ __attribute__((visibility("hidden")))
     unsigned int _receivedByteCount[256];
     VCSessionBitrateArbiter *_bitrateArbiter;
     BOOL _isMultiwaySession;
+    VCConnectionSelector *_connectionSelector;
 }
 
 - (int)addConnection:(id)arg1;
 - (BOOL)addConnectionToConnectionArray:(id)arg1;
+- (void)addDuplicationConnectionUpdateTelemetryWithActiveConnectionRegistry:(id)arg1 suggestedLinkTypeCombo:(id)arg2 payload:(id)arg3;
+- (void)addLinkProbingTelemetry:(id)arg1;
+- (id)connectionForDuplication;
 - (id)copyConnectionWithSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isPrimary:(BOOL *)arg2;
 - (void)dealloc;
-- (unsigned int)downlinkBitrateCapForConnectionType:(int)arg1;
+- (void)didUpdateLinkPreferenceOrder:(id)arg1;
+- (unsigned int)downlinkBitrateCapForConnection:(id)arg1;
+- (void)flushLinkProbingStatusWithOptions:(id)arg1;
 - (unsigned int)getByteCountWithIndex:(unsigned char)arg1 isOutgoing:(BOOL)arg2;
+- (CDStruct_2a4d9400 *)getConnectionSelectionPolicy;
 - (unsigned int)getPacketCountWithIndex:(unsigned char)arg1 isOutgoing:(BOOL)arg2;
 - (id)getPrimaryConnectionToBeCompared;
 - (id)getSecondaryConnectionToBeCompared;
 - (void)handlePrimaryConnectionRemoved;
 - (void)handleSecondaryConnectionRemoved;
 - (id)initWithMultiwayEnabled:(BOOL)arg1;
-- (BOOL)isPrimaryConnectionSameAsConnection:(id)arg1;
+- (id)lastPrimaryConnectionInUse;
 - (void)optOutAllStreamsForNonPrimaryConnections;
+- (id)primaryConnection;
+- (void)queryProbingResultsWithOptions:(id)arg1;
 - (int)removeConnection:(id)arg1;
+- (void)removeFromConnectionArray:(id)arg1;
 - (void)reportConnection:(id)arg1 isInitialConnection:(BOOL)arg2;
 - (void)resetPacketCountAndByteCountWithConnection:(id)arg1;
 - (void)resetParticipantGenerationCounter;
-- (BOOL)selectPrimaryAndSecondaryWithConnection:(id)arg1;
+- (id)secondaryConnection;
+- (void)setConnectionForDuplication:(id)arg1;
+- (void)setLastPrimaryConnectionInUse:(id)arg1;
 - (void)setPreferredLocalInterfaceForDuplication:(int)arg1;
 - (void)setPreferredRemoteInterfaceForDuplication:(int)arg1;
+- (void)setPrimaryConnection:(id)arg1;
+- (void)setSecondaryConnection:(id)arg1;
 - (BOOL)shouldAcceptDataFromSourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1;
+- (BOOL)shouldDropCurrentPrimaryConnectionWithConnectionStats:(CDStruct_50492349 *)arg1;
+- (BOOL)shouldKeepAllConnections;
 - (BOOL)shouldReplaceConnection:(id)arg1 withConnection:(id)arg2;
 - (void)sourceDestinationInfo:(struct tagVCSourceDestinationInfo *)arg1 isSourceOnCellular:(BOOL *)arg2 isSourceIPv6:(BOOL *)arg3;
+- (void)startActiveProbingWithOptions:(id)arg1;
+- (void)stopActiveProbingWithOptions:(id)arg1;
 - (void)synchronizeParticipantGenerationCounter:(unsigned char)arg1;
 - (void)updateCellularMTU:(int)arg1;
 - (void)updateCellularTech:(int)arg1 forLocalInterface:(BOOL)arg2;
 - (void)updateConnectionForDuplication;
+- (void)updateConnectionSelectionPolicy;
+- (void)updateDuplicationStateWithConnectionOperation:(int)arg1 isLocalOnWiFi:(BOOL)arg2 isRemoteOnWiFi:(BOOL)arg3;
 - (void)updatePacketCountAndByteCountWithIndex:(unsigned char)arg1 packetSize:(int)arg2 numOfStreamId:(int)arg3 isPriorityIncluded:(BOOL)arg4 isOutgoing:(BOOL)arg5;
-- (void)updatePrimaryWithConnection:(id)arg1;
-- (void)updateSecondaryWithConnection:(id)arg1;
 - (void)updateSessionStats:(unsigned short)arg1;
-- (unsigned int)uplinkBitrateCapForConnectionType:(int)arg1;
+- (unsigned int)uplinkBitrateCapForConnection:(id)arg1;
+- (void)useConnectionAsPrimary:(id)arg1;
 
 @end
 

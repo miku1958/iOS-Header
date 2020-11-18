@@ -10,7 +10,6 @@
 
 @class NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKEventOperationInfo : NSObject <NSSecureCoding>
 {
     NSString *_operationID;

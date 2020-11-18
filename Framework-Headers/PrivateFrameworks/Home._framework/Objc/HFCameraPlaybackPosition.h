@@ -8,14 +8,16 @@
 
 #import <Home/NAIdentifiable-Protocol.h>
 
-@class NSDate, NSString;
+@class HMCameraClip, NSDate, NSString;
 
 @interface HFCameraPlaybackPosition : NSObject <NAIdentifiable>
 {
     unsigned long long _contentType;
     NSDate *_clipPlaybackDate;
+    HMCameraClip *_clip;
 }
 
+@property (strong, nonatomic) HMCameraClip *clip; // @synthesize clip=_clip;
 @property (readonly, copy, nonatomic) NSDate *clipPlaybackDate; // @synthesize clipPlaybackDate=_clipPlaybackDate;
 @property (readonly, nonatomic) unsigned long long contentType; // @synthesize contentType=_contentType;
 @property (readonly, copy) NSString *debugDescription;
@@ -24,9 +26,12 @@
 @property (readonly) Class superclass;
 
 + (id)clipPositionWithDate:(id)arg1;
++ (id)clipPositionWithDate:(id)arg1 inClip:(id)arg2;
 + (id)livePosition;
 + (id)na_identity;
 - (void).cxx_destruct;
+- (BOOL)clipIncludesPlaybackDate;
+- (id)initWithClipPlaybackDate:(id)arg1 inClip:(id)arg2;
 - (id)initWithContentType:(unsigned long long)arg1 clipPlaybackDate:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 

@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) BOOL isIdentified;
 @property (readonly, nonatomic) BOOL isNamed;
 @property (readonly, nonatomic) BOOL isVariation;
+@property (readonly, nonatomic) unsigned long long minimumReadVersion;
 @property (copy, nonatomic) NSString *name;
 @property (readonly, nonatomic) TSSPropertyMap *overridePropertyMap;
 @property (readonly, nonatomic) TSSStyle *parent; // @synthesize parent=mParent;
@@ -104,6 +105,7 @@
 - (BOOL)isParentOf:(id)arg1;
 - (BOOL)isRelatedTo:(id)arg1;
 - (void)loadFromArchive:(const struct StyleArchive *)arg1 unarchiver:(id)arg2;
+- (void)mapNonDefaultPropertyOverridesForParentStyle:(id)arg1 propertyMap:(id)arg2;
 - (id)newOverridePropertyMapWithPropertyMap:(id)arg1;
 - (id)objectForProperty:(int)arg1;
 - (id)overriddenProperties;

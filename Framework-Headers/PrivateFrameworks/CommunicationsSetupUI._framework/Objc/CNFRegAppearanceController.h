@@ -8,6 +8,7 @@
 
 @class UIColor, UIFont, UIImage, UIView;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegAppearanceController : NSObject
 {
 }

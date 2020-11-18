@@ -12,8 +12,6 @@
 {
     MISSING_TYPE *maskedCorners;
     MISSING_TYPE *maskedCornerRadius;
-    MISSING_TYPE *durationFormatter;
-    MISSING_TYPE *countdownFormatter;
     MISSING_TYPE *audioTrackFontBook;
     MISSING_TYPE *colorPaletteProvider;
 }

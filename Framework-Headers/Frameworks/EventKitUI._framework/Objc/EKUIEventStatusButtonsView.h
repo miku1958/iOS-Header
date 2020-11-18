@@ -21,6 +21,7 @@
     NSLayoutConstraint *_trailingMarginConstraint;
     double _baselineFromBoundsTop;
     BOOL _forcesSingleButtonToCenter;
+    BOOL _inboxStyle;
     NSArray *_currentConstraints;
     BOOL _disableButtonHighlights;
     BOOL _shouldUseVerticalLayout;
@@ -39,10 +40,12 @@
 @property (nonatomic) BOOL disableButtonHighlights; // @synthesize disableButtonHighlights=_disableButtonHighlights;
 @property (readonly, nonatomic) UIFont *font;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) UIButton *leadingButton;
 @property (nonatomic) long long selectedAction; // @synthesize selectedAction=_selectedAction;
 @property (nonatomic) BOOL shouldUseVerticalLayout; // @synthesize shouldUseVerticalLayout=_shouldUseVerticalLayout;
 @property (readonly) Class superclass;
 @property (nonatomic) long long textSizeMode; // @synthesize textSizeMode=_textSizeMode;
+@property (readonly, nonatomic) UIButton *trailingButton;
 
 + (id)buttonTitleForAction:(long long)arg1 orb:(BOOL)arg2;
 + (id)imageForAction:(long long)arg1 selected:(BOOL)arg2;
@@ -54,12 +57,14 @@
 - (id)_fontWithSize:(double)arg1 selected:(BOOL)arg2;
 - (id)_horizontalConstraintStringForMiddleButtonsStartingAt:(unsigned long long)arg1 endingAt:(unsigned long long)arg2 resultingViews:(id)arg3;
 - (double)_minimumFontSize;
+- (id)_newButtonDivider;
 - (id)_newToolbarButton;
 - (void)_setupButtons;
 - (void)_setupConstraints;
 - (BOOL)_shouldCenterButton;
+- (void)_updateButtonFonts:(id)arg1;
 - (void)_updateButtonFontsWithSize:(double)arg1;
-- (double)_updateFontSizesFromDelegate;
+- (double)_updateFontFromDelegate;
 - (void)_updateSelectionToButton:(id)arg1;
 - (double)baselineFromBoundsTop;
 - (id)buttonForAction:(long long)arg1;
@@ -68,7 +73,7 @@
 - (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)findCursorInteractionWithButton:(id)arg1 actions:(CDUnknownBlockType)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 actions:(id)arg2 delegate:(id)arg3;
-- (id)initWithFrame:(struct CGRect)arg1 actions:(id)arg2 delegate:(id)arg3 centerSingleButton:(BOOL)arg4;
+- (id)initWithFrame:(struct CGRect)arg1 actions:(id)arg2 delegate:(id)arg3 options:(unsigned long long)arg4;
 - (void)layoutSubviews;
 - (void)updateConstraints;
 - (void)updateFonts;

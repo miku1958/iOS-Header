@@ -19,7 +19,9 @@
     NSString *_contentItemID;
     NSString *_contextID;
     NSString *_destinationAppDisplayID;
+    NSString *_homeKitUserIdentifier;
     NSString *_insertAfterContentItemID;
+    NSString *_insertBeforeContentItemID;
     NSData *_languageOption;
     NSString *_mediaType;
     NSString *_nowPlayingContentItemID;
@@ -29,6 +31,7 @@
     int _playbackQueueOffset;
     float _playbackRate;
     NSData *_playbackSession;
+    int _queueEndAction;
     NSString *_radioStationHash;
     float _rating;
     NSString *_remoteControlInterface;
@@ -46,9 +49,13 @@
     BOOL _endSeek;
     BOOL _externalPlayerCommand;
     BOOL _negative;
+    BOOL _preservesQueueEndAction;
+    BOOL _preservesRepeatMode;
+    BOOL _preservesShuffleMode;
     BOOL _requestDefermentToPlaybackQueuePosition;
     BOOL _shouldBeginRadioPlayback;
     BOOL _shouldOverrideManuallyCuratedQueue;
+    BOOL _verifySupportedCommands;
     struct {
         unsigned int playbackPosition:1;
         unsigned int radioStationID:1;
@@ -57,6 +64,7 @@
         unsigned int playbackQueueInsertionPosition:1;
         unsigned int playbackQueueOffset:1;
         unsigned int playbackRate:1;
+        unsigned int queueEndAction:1;
         unsigned int rating:1;
         unsigned int repeatMode:1;
         unsigned int replaceIntent:1;
@@ -67,9 +75,13 @@
         unsigned int endSeek:1;
         unsigned int externalPlayerCommand:1;
         unsigned int negative:1;
+        unsigned int preservesQueueEndAction:1;
+        unsigned int preservesRepeatMode:1;
+        unsigned int preservesShuffleMode:1;
         unsigned int requestDefermentToPlaybackQueuePosition:1;
         unsigned int shouldBeginRadioPlayback:1;
         unsigned int shouldOverrideManuallyCuratedQueue:1;
+        unsigned int verifySupportedCommands:1;
     } _has;
 }
 
@@ -87,7 +99,9 @@
 @property (readonly, nonatomic) BOOL hasDestinationAppDisplayID;
 @property (nonatomic) BOOL hasEndSeek;
 @property (nonatomic) BOOL hasExternalPlayerCommand;
+@property (readonly, nonatomic) BOOL hasHomeKitUserIdentifier;
 @property (readonly, nonatomic) BOOL hasInsertAfterContentItemID;
+@property (readonly, nonatomic) BOOL hasInsertBeforeContentItemID;
 @property (readonly, nonatomic) BOOL hasLanguageOption;
 @property (readonly, nonatomic) BOOL hasMediaType;
 @property (nonatomic) BOOL hasNegative;
@@ -99,6 +113,10 @@
 @property (nonatomic) BOOL hasPlaybackQueueOffset;
 @property (nonatomic) BOOL hasPlaybackRate;
 @property (readonly, nonatomic) BOOL hasPlaybackSession;
+@property (nonatomic) BOOL hasPreservesQueueEndAction;
+@property (nonatomic) BOOL hasPreservesRepeatMode;
+@property (nonatomic) BOOL hasPreservesShuffleMode;
+@property (nonatomic) BOOL hasQueueEndAction;
 @property (readonly, nonatomic) BOOL hasRadioStationHash;
 @property (nonatomic) BOOL hasRadioStationID;
 @property (nonatomic) BOOL hasRating;
@@ -117,7 +135,10 @@
 @property (readonly, nonatomic) BOOL hasSystemAppPlaybackQueueData;
 @property (nonatomic) BOOL hasTrackID;
 @property (readonly, nonatomic) BOOL hasUserIdentityData;
+@property (nonatomic) BOOL hasVerifySupportedCommands;
+@property (strong, nonatomic) NSString *homeKitUserIdentifier; // @synthesize homeKitUserIdentifier=_homeKitUserIdentifier;
 @property (strong, nonatomic) NSString *insertAfterContentItemID; // @synthesize insertAfterContentItemID=_insertAfterContentItemID;
+@property (strong, nonatomic) NSString *insertBeforeContentItemID; // @synthesize insertBeforeContentItemID=_insertBeforeContentItemID;
 @property (strong, nonatomic) NSData *languageOption; // @synthesize languageOption=_languageOption;
 @property (strong, nonatomic) NSString *mediaType; // @synthesize mediaType=_mediaType;
 @property (nonatomic) BOOL negative; // @synthesize negative=_negative;
@@ -129,6 +150,10 @@
 @property (nonatomic) int playbackQueueOffset; // @synthesize playbackQueueOffset=_playbackQueueOffset;
 @property (nonatomic) float playbackRate; // @synthesize playbackRate=_playbackRate;
 @property (strong, nonatomic) NSData *playbackSession; // @synthesize playbackSession=_playbackSession;
+@property (nonatomic) BOOL preservesQueueEndAction; // @synthesize preservesQueueEndAction=_preservesQueueEndAction;
+@property (nonatomic) BOOL preservesRepeatMode; // @synthesize preservesRepeatMode=_preservesRepeatMode;
+@property (nonatomic) BOOL preservesShuffleMode; // @synthesize preservesShuffleMode=_preservesShuffleMode;
+@property (nonatomic) int queueEndAction; // @synthesize queueEndAction=_queueEndAction;
 @property (strong, nonatomic) NSString *radioStationHash; // @synthesize radioStationHash=_radioStationHash;
 @property (nonatomic) long long radioStationID; // @synthesize radioStationID=_radioStationID;
 @property (nonatomic) float rating; // @synthesize rating=_rating;
@@ -147,8 +172,10 @@
 @property (strong, nonatomic) NSData *systemAppPlaybackQueueData; // @synthesize systemAppPlaybackQueueData=_systemAppPlaybackQueueData;
 @property (nonatomic) unsigned long long trackID; // @synthesize trackID=_trackID;
 @property (strong, nonatomic) NSData *userIdentityData; // @synthesize userIdentityData=_userIdentityData;
+@property (nonatomic) BOOL verifySupportedCommands; // @synthesize verifySupportedCommands=_verifySupportedCommands;
 
 - (void).cxx_destruct;
+- (int)StringAsQueueEndAction:(id)arg1;
 - (int)StringAsRepeatMode:(id)arg1;
 - (int)StringAsReplaceIntent:(id)arg1;
 - (int)StringAsSendOptions:(id)arg1;
@@ -160,6 +187,7 @@
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
+- (id)queueEndActionAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)repeatModeAsString:(int)arg1;
 - (id)replaceIntentAsString:(int)arg1;

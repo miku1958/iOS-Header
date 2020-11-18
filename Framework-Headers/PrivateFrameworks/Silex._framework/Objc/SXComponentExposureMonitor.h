@@ -36,6 +36,8 @@
 - (id)initWithViewport:(id)arg1 appStateMonitor:(id)arg2 componentController:(id)arg3 host:(id)arg4;
 - (void)onExposureOf:(id)arg1 then:(CDUnknownBlockType)arg2;
 - (void)onExposureOf:(id)arg1 then:(CDUnknownBlockType)arg2 when:(CDUnknownBlockType)arg3;
+- (void)onExposureOf:(id)arg1 traits:(unsigned long long)arg2 then:(CDUnknownBlockType)arg3;
+- (void)onExposureOf:(id)arg1 traits:(unsigned long long)arg2 then:(CDUnknownBlockType)arg3 when:(CDUnknownBlockType)arg4;
 - (void)performMonitoring;
 - (void)stopTrackingExposureOfComponentView:(id)arg1;
 - (void)trackExposureForTracking:(id)arg1;

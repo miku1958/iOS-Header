@@ -6,7 +6,7 @@
 
 #import <ReminderKit/NSObject-Protocol.h>
 
-@class NSString, REMObjectID;
+@class NSArray, NSString, REMObjectID;
 
 @protocol _REMDAChangeTrackableModel <NSObject>
 
@@ -18,6 +18,7 @@
 + (id<REMDAChangedIdentifierResult> (^)(REMChangeTombstone *))rem_DA_deletedKeyFromTombstoneBlock;
 + (id<_REMDAChangeTrackableModel> (^)(REMObjectID *, BOOL, REMStore *, id *))rem_DA_fetchByObjectIDBlock;
 + (NSDictionary * (^)(NSArray *, REMStore *, id *))rem_DA_fetchByObjectIDsBlock;
++ (NSArray *)rem_DA_lazyDeleteProperties;
 + (BOOL)rem_DA_supportsFetching;
 + (BOOL)rem_DA_supportsLazyDelete;
 

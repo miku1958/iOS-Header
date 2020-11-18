@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
     BOOL _disablePlayback;
     BOOL _disablePlaybackControls;
     BOOL _disableAutoPlay;
+    BOOL _allowsLoadingMediaWithAutoPlayDisabled;
     double _fullScreenTransitionCornerRadius;
 }
 
+@property (nonatomic) BOOL allowsLoadingMediaWithAutoPlayDisabled; // @synthesize allowsLoadingMediaWithAutoPlayDisabled=_allowsLoadingMediaWithAutoPlayDisabled;
 @property (nonatomic) BOOL disableAutoPlay; // @synthesize disableAutoPlay=_disableAutoPlay;
 @property (nonatomic) BOOL disablePlayback; // @synthesize disablePlayback=_disablePlayback;
 @property (nonatomic) BOOL disablePlaybackControls; // @synthesize disablePlaybackControls=_disablePlaybackControls;

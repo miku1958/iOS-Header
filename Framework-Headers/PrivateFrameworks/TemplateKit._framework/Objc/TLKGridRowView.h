@@ -36,6 +36,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isLayoutSizeDependentOnPerpendicularAxis;
 - (void)layoutSubviews;
+- (id)leadingTextView;
 - (void)observedPropertiesChanged;
 - (void)resetStateOfAllViews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

@@ -12,8 +12,8 @@
     unsigned long long _serverIteration;
 }
 
-@property (readonly) unsigned long long serverIteration; // @synthesize serverIteration=_serverIteration;
-@property (readonly) double timestamp; // @synthesize timestamp=_timestamp;
+@property (readonly, nonatomic) unsigned long long serverIteration; // @synthesize serverIteration=_serverIteration;
+@property (readonly, nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
 - (id)initWithTimestamp:(double)arg1 serverIteration:(unsigned long long)arg2;
 

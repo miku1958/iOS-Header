@@ -16,12 +16,17 @@
 
 @property (weak) HMCameraUserSettings *cameraUserSettings; // @synthesize cameraUserSettings=_cameraUserSettings;
 @property (readonly) unsigned long long notificationEventTriggers;
+@property (readonly) unsigned long long personFamiliarityOptions;
+@property (readonly) unsigned long long significantEventTypes;
 
-+ (id)notificationEventTriggersInPredicate:(id)arg1;
++ (id)personFamiliarityOptionsInPredicate:(id)arg1;
 + (id)predicateForCameraSignificantEvent:(unsigned long long)arg1;
++ (id)predicateForSignificantEventTypes:(unsigned long long)arg1 personFamiliarityOptions:(unsigned long long)arg2;
++ (id)significantEventTypesInPredicate:(id)arg1;
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 cameraUserSettings:(id)arg2;
 - (void)commitWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)description;
 - (id)initWithBulletinBoardNotification:(id)arg1;
 - (id)targetUUID;
 

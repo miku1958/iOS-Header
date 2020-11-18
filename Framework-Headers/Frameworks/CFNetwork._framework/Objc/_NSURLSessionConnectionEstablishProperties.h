@@ -16,7 +16,6 @@
     __CFN_ConnectionMetrics *__metrics;
 }
 
-@property (readonly, nonatomic) __CFN_ConnectionMetrics *_metrics; // @synthesize _metrics=__metrics;
 @property (readonly, nonatomic, getter=isCellular) BOOL cellular;
 @property (readonly, nonatomic, getter=isConstrained) BOOL constrained;
 @property (readonly, strong, nonatomic) NSObject<OS_nw_establishment_report> *establishmentReport;
@@ -34,7 +33,6 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMetrics:(id)arg1;
 
 @end
 

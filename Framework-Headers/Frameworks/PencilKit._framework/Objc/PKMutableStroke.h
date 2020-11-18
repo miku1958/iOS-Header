@@ -10,12 +10,10 @@
 
 @interface PKMutableStroke : PKStroke
 {
-    UIColor *__color;
 }
 
-@property (copy, nonatomic) UIColor *_color; // @synthesize _color=__color;
+@property (copy, nonatomic) UIColor *_color;
 
-- (void).cxx_destruct;
 - (void)_applyTransform:(struct CGAffineTransform)arg1;
 - (void)_setColor:(id)arg1;
 - (void)_setLocation:(struct CGPoint)arg1 atIndex:(unsigned long long)arg2;

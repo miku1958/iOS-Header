@@ -18,27 +18,12 @@ __attribute__((visibility("hidden")))
     char _name[128];
     unsigned char _imageBlockReleaseCount;
     unsigned long long _sourceRowbytes;
+    unsigned long long _allocationSize;
     unsigned int _allocateMemory:1;
     unsigned int _mmappedData:1;
 }
 
-+ (id)sharedCache;
-- (void)_allocateImageBytes;
-- (void)_freeImageBytes;
-- (void)_makeReadOnly;
-- (const char *)bytes;
 - (void)dealloc;
-- (BOOL)expandCSIBitmapData:(struct _csibitmap *)arg1 fromSlice:(struct _slice)arg2 makeReadOnly:(BOOL)arg3;
-- (unsigned long long)imageBytes;
-- (id)initWithBytes:(void *)arg1 pixelWidth:(unsigned int)arg2 pixelHeight:(unsigned int)arg3 sourceRowbytes:(unsigned long long)arg4 pixelFormat:(int)arg5;
-- (id)initWithPixelWidth:(unsigned int)arg1 pixelHeight:(unsigned int)arg2 sourceRowbytes:(unsigned long long)arg3 pixelFormat:(int)arg4;
-- (unsigned int)nrows;
-- (int)pixelFormat;
-- (unsigned long long)rowbytes;
-- (void)setRowBytes:(unsigned long long)arg1;
-- (void)tallyImageBlockRelease;
-- (void)updateFromCSIHeader:(const struct _csiheader *)arg1;
-- (BOOL)wasUsedTransiently;
 
 @end
 

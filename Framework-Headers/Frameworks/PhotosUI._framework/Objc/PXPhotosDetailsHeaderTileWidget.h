@@ -23,7 +23,7 @@
 #import <PhotosUICore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSMutableSet, NSString, OKPresentationViewController, PHAssetCollection, PHFetchResult, PXBasicUIViewTileAnimator, PXImageRequester, PXMovieProvider, PXOneUpPresentation, PXPhotoKitUIMediaProvider, PXPhotosDataSource, PXPhotosDetailsContext, PXPhotosDetailsHeaderSpec, PXPhotosDetailsHeaderSpecManager, PXPhotosDetailsLoadCoordinationToken, PXReusableObjectPool, PXSectionedSelectionManager, PXSlideshowSession, PXTilingController, PXTitleSubtitleUILabelTile, PXUIPlayButtonTile, PXUISlideshowViewTile, PXUITapGestureRecognizer, PXWidgetSpec;
-@protocol OS_dispatch_queue, PXAnonymousView, PXDisplayAsset, PXWidgetDelegate, PXWidgetUnlockDelegate;
+@protocol OS_dispatch_queue, PXAnonymousView, PXDisplayAsset, PXWidgetDelegate, PXWidgetEditingDelegate, PXWidgetUnlockDelegate;
 
 @interface PXPhotosDetailsHeaderTileWidget : NSObject <PXTileSource, PXTilingControllerTransitionDelegate, PXReusableObjectPoolDelegate, UIGestureRecognizerDelegate, PXChangeObserver, PXPhotosDataSourceChangeObserver, PXPhotosDetailsHeaderTileLayoutDelegate, PXSlideshowSessionDelegate, PXTilingControllerZoomAnimationCoordinatorDelegate, PXUISlideshowViewTileDelegate, PXZoomAnimationObserverCoordinatorDelegate, PXMovieProviderDelegate, PXScrollViewControllerObserver, PXUIWidget, PXDiagnosticsEnvironment>
 {
@@ -102,14 +102,17 @@
 @property (readonly, nonatomic) BOOL cursorInteractionEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) double extraSpaceNeededAtContentBottom;
 @property (nonatomic, getter=isFaceModeEnabled) BOOL faceModeEnabled;
 @property (readonly, nonatomic) BOOL hasContentForCurrentInput;
 @property (nonatomic, setter=_setHasLoadedContentData:) BOOL hasLoadedContentData; // @synthesize hasLoadedContentData=_hasLoadedContentData;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isInEditMode;
 @property (readonly, nonatomic) NSString *localizedCaption;
 @property (readonly, nonatomic) NSString *localizedDisclosureTitle;
 @property (readonly, nonatomic) NSString *localizedSubtitle;
 @property (readonly, nonatomic) NSString *localizedTitle;
+@property (nonatomic) struct CGSize maxVisibleSizeInEditMode;
 @property (strong, nonatomic) PXOneUpPresentation *oneUpPresentation;
 @property (readonly, nonatomic) id<PXDisplayAsset> presentedKeyAsset;
 @property (nonatomic, getter=isSelecting) BOOL selecting;
@@ -119,7 +122,9 @@
 @property (readonly, nonatomic) BOOL supportsFaceMode;
 @property (readonly, nonatomic) BOOL supportsSelection;
 @property (nonatomic, getter=isUserInteractionEnabled) BOOL userInteractionEnabled; // @synthesize userInteractionEnabled=_userInteractionEnabled;
+@property (readonly, nonatomic) BOOL wantsFocus;
 @property (weak, nonatomic) id<PXWidgetDelegate> widgetDelegate; // @synthesize widgetDelegate=_widgetDelegate;
+@property (weak, nonatomic) id<PXWidgetEditingDelegate> widgetEditingDelegate;
 @property (weak, nonatomic) id<PXWidgetUnlockDelegate> widgetUnlockDelegate;
 
 + (BOOL)canShowMiroMovieHeaderForDataSource:(id)arg1;

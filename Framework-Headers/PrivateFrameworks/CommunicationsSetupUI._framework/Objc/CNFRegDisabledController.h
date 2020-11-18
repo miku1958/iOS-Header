@@ -8,6 +8,7 @@
 
 @class PSSpecifier;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegDisabledController : CNFRegFirstRunController
 {
     PSSpecifier *_spinner;

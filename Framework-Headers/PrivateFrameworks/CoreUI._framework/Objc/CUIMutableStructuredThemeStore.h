@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (unsigned short)appearanceIdentifierForName:(id)arg1;
 - (id)appearances;
 - (BOOL)canGetRenditionWithKey:(const struct _renditionkeytoken *)arg1;
-- (BOOL)canGetRenditionWithKey:(const struct _renditionkeytoken *)arg1 isFPO:(BOOL *)arg2;
 - (void)clearRenditionCache;
 - (void)dealloc;
 - (id)defaultAppearanceName;

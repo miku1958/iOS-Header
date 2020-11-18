@@ -24,6 +24,7 @@
 + (id)sharedFormatter;
 - (void).cxx_destruct;
 - (id)_localizedIndexForConditions:(id)arg1;
+- (id)_richCircularTemplateForComplicationFamily:(long long)arg1 conditions:(id)arg2 location:(id)arg3;
 - (BOOL)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 - (id)circularMediumTemplateForConditions:(id)arg1;
 - (id)circularSmallTemplateForConditions:(id)arg1;
@@ -31,6 +32,7 @@
 - (id)graphicBezelTemplateForConditions:(id)arg1 location:(id)arg2;
 - (id)graphicCircularTemplateForConditions:(id)arg1 location:(id)arg2;
 - (id)graphicCornerTemplateForConditions:(id)arg1 location:(id)arg2;
+- (id)graphicExtraLargeTemplateForConditions:(id)arg1 location:(id)arg2;
 - (id)init;
 - (id)modularLargeTemplateForLocation:(id)arg1 isLocalLocation:(BOOL)arg2 conditions:(id)arg3;
 - (id)modularSmallTemplateForLocation:(id)arg1 conditions:(id)arg2;

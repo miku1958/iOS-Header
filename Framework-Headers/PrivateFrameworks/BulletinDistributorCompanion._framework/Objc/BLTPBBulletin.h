@@ -32,6 +32,7 @@
     BLTPBAction *_dismissAction;
     NSString *_dismissalID;
     unsigned int _feed;
+    NSString *_header;
     BLTPBSectionIcon *_icon;
     NSString *_messageTitle;
     NSMutableArray *_peopleIDs;
@@ -122,6 +123,7 @@
 @property (readonly, nonatomic) BOOL hasDismissAction;
 @property (readonly, nonatomic) BOOL hasDismissalID;
 @property (nonatomic) BOOL hasHasCriticalIcon;
+@property (readonly, nonatomic) BOOL hasHeader;
 @property (readonly, nonatomic) BOOL hasIcon;
 @property (nonatomic) BOOL hasIgnoresQuietMode;
 @property (nonatomic) BOOL hasLoading;
@@ -151,6 +153,7 @@
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (nonatomic) BOOL hasTurnsOnDisplay;
 @property (readonly, nonatomic) BOOL hasUniversalSectionID;
+@property (strong, nonatomic) NSString *header; // @synthesize header=_header;
 @property (strong, nonatomic) BLTPBSectionIcon *icon; // @synthesize icon=_icon;
 @property (nonatomic) BOOL ignoresQuietMode; // @synthesize ignoresQuietMode=_ignoresQuietMode;
 @property (nonatomic) BOOL includesSound; // @synthesize includesSound=_includesSound;
@@ -186,9 +189,10 @@
 @property (strong, nonatomic) NSString *universalSectionID; // @synthesize universalSectionID=_universalSectionID;
 
 + (void)_addAttachmentsFromBBBulletin:(id)arg1 toBLTPBBulletin:(id)arg2 observer:(id)arg3 attachOption:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
-+ (void)_attachmentFromBBAttachmentMetadata:(id)arg1 bulletin:(id)arg2 observer:(id)arg3 fileOption:(unsigned long long)arg4 attachNoData:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
++ (void)_attachmentFromBBAttachmentMetadata:(id)arg1 bulletin:(id)arg2 observer:(id)arg3 fileOption:(unsigned long long)arg4 attachOption:(unsigned long long)arg5 completion:(CDUnknownBlockType)arg6;
 + (Class)additionalAttachmentsType;
 + (void)bulletinWithBBBulletin:(id)arg1 sockPuppetAppBundleID:(id)arg2 observer:(id)arg3 feed:(unsigned long long)arg4 teamID:(id)arg5 universalSectionID:(id)arg6 shouldUseExpirationDate:(BOOL)arg7 replyToken:(id)arg8 gizmoLegacyPublisherBulletinID:(id)arg9 gizmoLegacyCategoryID:(id)arg10 gizmoSectionID:(id)arg11 gizmoSectionSubtype:(id)arg12 useUserInfoForContext:(BOOL)arg13 removeSubtitleForOlderWatches:(BOOL)arg14 attachOption:(unsigned long long)arg15 completion:(CDUnknownBlockType)arg16;
++ (id)imageContentTypeForImageAttachment:(id)arg1;
 + (Class)peopleIDsType;
 + (Class)subsectionIDsType;
 + (Class)supplementaryActionsType;

@@ -15,8 +15,9 @@
 {
     _Atomic unsigned long long _requestCounter;
     NSObject<OS_dispatch_queue> *_renderingQueue;
-    NSMutableSet *_inFlightRequests;
-    struct os_unfair_lock_s _inFlightRequestsLock;
+    NSMutableSet *_pendingRequests;
+    struct os_unfair_lock_s _pendingRequestsLock;
+    struct os_unfair_lock_s _renderingQueueInitializeLock;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -25,14 +26,18 @@
 @property (readonly, nonatomic) NSDictionary *requiredPixelBufferAttributesForRenderContext;
 @property (readonly, nonatomic) NSDictionary *sourcePixelBufferAttributes;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL supportsHDRSourceFrames;
 @property (readonly, nonatomic) BOOL supportsWideColorSourceFrames;
 
 - (void).cxx_destruct;
 - (void)cancelAllPendingVideoCompositionRequests;
 - (void)failVideoCompositionRequest:(id)arg1 error:(id)arg2;
+- (void)finishCompositionRequest:(id)arg1 withComposedVideoFrame:(struct __CVBuffer *)arg2;
 - (void)fulfillVideoCompositionRequest:(id)arg1;
 - (id)init;
 - (void)renderContextChanged:(id)arg1;
+- (void)setColorSpaceOfDestinationBuffer:(struct __CVBuffer *)arg1 fromPrimarySourceBufferOfRequest:(id)arg2;
+- (id)standardPixelFormatsAllowCompressed:(BOOL)arg1;
 - (void)startVideoCompositionRequest:(id)arg1;
 - (BOOL)testAndSetVideoCompositionRequestFinished:(id)arg1;
 - (id)videoFramesFromRequest:(id)arg1;

@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) BOOL hasEnrolledIdentities;
 @property (readonly, nonatomic) BOOL hasMesaSupport;
 @property (readonly, nonatomic) BOOL hasPearlSupport;
+@property (readonly, nonatomic) BOOL hasPoseidonSupport;
 @property (readonly, nonatomic, getter=isMatchingAllowed) BOOL matchingAllowed;
 @property (readonly, nonatomic, getter=isMatchingEnabled) BOOL matchingEnabled;
 @property (readonly, nonatomic, getter=isPearlDetectEnabled) BOOL pearlDetectEnabled;

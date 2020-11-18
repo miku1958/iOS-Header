@@ -27,17 +27,17 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_cacheKeyForHandle:(id)arg1;
-- (id)_cacheKeysForPlace:(id)arg1;
+- (id)_cacheKeysForPlace:(id)arg1 request:(id)arg2;
 - (unsigned long long)_calculateFreeableSpace;
 - (BOOL)_deleteAndResetDB:(id)arg1;
-- (void)_evictPlace:(id)arg1;
+- (void)_evictPlaceWithHash:(id)arg1;
 - (void)_iterateAllKeysFilteringCacheKeyWithPredicate:(id)arg1 entryBlock:(CDUnknownBlockType)arg2 finishedBlock:(CDUnknownBlockType)arg3;
 - (void)_iterateAllPlacesFilteringCacheKeyWithPredicate:(id)arg1 entryBlock:(CDUnknownBlockType)arg2 finishedBlock:(CDUnknownBlockType)arg3;
 - (void)_localeChanged:(id)arg1;
 - (id)_lookupPlaceByRequestKey:(id)arg1 allowExpiredPlace:(BOOL)arg2 placeIsExpired:(BOOL *)arg3;
 - (BOOL)_meetsManifestVersionPolicyForPlace:(id)arg1;
 - (unsigned long long)_shrinkBySize:(unsigned long long)arg1;
-- (void)_storePlace:(id)arg1 forRequestKeys:(id)arg2;
+- (void)_storePlace:(id)arg1 withHash:(id)arg2 forRequestKeys:(id)arg3;
 - (BOOL)_validateDBLocaleAndResetIfNecessary;
 - (unsigned long long)calculateFreeableSpaceSync;
 - (void)calculateFreeableSpaceWithHandler:(CDUnknownBlockType)arg1;

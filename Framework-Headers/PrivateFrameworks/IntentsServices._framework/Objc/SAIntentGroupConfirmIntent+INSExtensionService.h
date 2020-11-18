@@ -12,6 +12,8 @@
 - (id)ins_jsonEncodedIntent;
 - (id)ins_protobufEncodedIntent;
 - (void)ins_sendIntent:(id)arg1 toExtensionProxy:(id)arg2 onQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)ins_setJSONEncodedIntent:(id)arg1;
+- (void)ins_setProtobufEncodedIntent:(id)arg1;
 - (BOOL)ins_shouldUseExtendedFlowTimeout;
 @end
 

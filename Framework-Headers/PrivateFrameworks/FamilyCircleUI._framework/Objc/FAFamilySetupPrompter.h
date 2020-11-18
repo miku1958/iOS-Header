@@ -8,7 +8,7 @@
 
 #import <FamilyCircleUI/FASetupDelegate-Protocol.h>
 
-@class ACAccount, ACAccountStore, NSOperationQueue, NSString, SSAccount, UIViewController;
+@class ACAccount, ACAccountStore, NSOperationQueue, NSString, UIViewController;
 @protocol FAFamilySetupPrompterDelegate;
 
 @interface FAFamilySetupPrompter : NSObject <FASetupDelegate>
@@ -16,7 +16,7 @@
     ACAccountStore *_accountStore;
     ACAccount *_appleAccount;
     ACAccount *_grandSlamAccount;
-    SSAccount *_iTunesAccount;
+    ACAccount *_iTunesAccount;
     UIViewController *_presentingViewController;
     NSOperationQueue *_networkingQueue;
     BOOL _isRequestInFlight;

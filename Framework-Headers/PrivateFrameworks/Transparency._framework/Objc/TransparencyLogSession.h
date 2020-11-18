@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSURLSession;
+@class NSURLSession, TransparencyLogSessionDelegate;
 @protocol OS_dispatch_workloop;
 
 @interface TransparencyLogSession : NSObject
 {
     unsigned long long _fetchCount;
-    unsigned long long _downloadCount;
+    TransparencyLogSessionDelegate *_delegate;
     NSURLSession *_backgroundSession;
     NSURLSession *_foregroundSession;
     NSObject<OS_dispatch_workloop> *_callbackWorkloop;
@@ -21,7 +21,7 @@
 
 @property (strong) NSURLSession *backgroundSession; // @synthesize backgroundSession=_backgroundSession;
 @property (strong) NSObject<OS_dispatch_workloop> *callbackWorkloop; // @synthesize callbackWorkloop=_callbackWorkloop;
-@property unsigned long long downloadCount; // @synthesize downloadCount=_downloadCount;
+@property (strong) TransparencyLogSessionDelegate *delegate; // @synthesize delegate=_delegate;
 @property unsigned long long fetchCount; // @synthesize fetchCount=_fetchCount;
 @property (strong) NSURLSession *foregroundSession; // @synthesize foregroundSession=_foregroundSession;
 @property (strong) NSObject<OS_dispatch_workloop> *networkingWorkloop; // @synthesize networkingWorkloop=_networkingWorkloop;
@@ -29,9 +29,10 @@
 + (id)createErrorFromURLResonse:(id)arg1 data:(id)arg2 allowEmptyData:(BOOL)arg3 error:(id)arg4;
 + (void)dispatchToQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (void)cancelDownloadId:(id)arg1;
 - (id)createAuthenticatedBackgroundSession:(id)arg1 delegateQueue:(id)arg2;
 - (id)createAuthenticatedForegroundSession;
-- (void)download:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)download:(id)arg1 retry:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)fetch:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithWorkloop:(id)arg1 sessionDelegate:(id)arg2;
 

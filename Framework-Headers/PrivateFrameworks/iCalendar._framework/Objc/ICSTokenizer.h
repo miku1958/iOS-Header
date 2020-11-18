@@ -6,15 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSData;
+@class ICSPushbackStream, NSMutableData;
 
 @interface ICSTokenizer : NSObject
 {
-    NSData *_data;
-    const char *_datastring;
-    unsigned long long _length;
-    unsigned long long _cursor;
-    char *_token;
+    ICSPushbackStream *_data;
+    NSMutableData *_token;
     int _tokenType;
     int _expectedNextTokenType;
     BOOL _printedICS;
@@ -25,19 +22,18 @@
 @property BOOL printedICS; // @synthesize printedICS=_printedICS;
 
 - (void).cxx_destruct;
+- (BOOL)consumeChar:(BOOL)arg1;
 - (BOOL)consumeEOL;
 - (BOOL)consumeEscaped:(const char *)arg1;
-- (BOOL)consumeFolding;
 - (void)consumeParamName;
 - (void)consumeParamValue;
 - (void)consumePropName;
 - (void)consumePropValue;
 - (void)consumeWhiteSpace;
-- (char *)currentToken;
-- (void)dealloc;
-- (id)debugDescription;
+- (id)currentToken;
+- (id)initWithCompressedData:(id)arg1;
 - (id)initWithData:(id)arg1;
-- (char *)nextToken;
+- (id)nextToken;
 - (int)tokenType;
 
 @end

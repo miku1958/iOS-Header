@@ -26,6 +26,7 @@
     BOOL _sos;
     BOOL _redial;
     BOOL _shouldSuppressInCallUI;
+    int _originatingUIType;
     NSString *_uniqueProxyIdentifier;
     TUSenderIdentityClient *_senderIdentityClient;
     CNGeminiManager *_contactGeminiManager;
@@ -45,7 +46,6 @@
     NSString *_endpointRapportEffectiveIdentifier;
     NSUUID *_localSenderIdentityUUID;
     NSUUID *_localSenderIdentityAccountUUID;
-    long long _originatingUIType;
     NSString *_successNotification;
     NSString *_failureNotification;
     BSProcessHandle *_processHandle;
@@ -79,7 +79,7 @@
 @property (readonly, copy, nonatomic) TUSenderIdentity *localSenderIdentity;
 @property (copy, nonatomic) NSUUID *localSenderIdentityAccountUUID; // @synthesize localSenderIdentityAccountUUID=_localSenderIdentityAccountUUID;
 @property (copy, nonatomic) NSUUID *localSenderIdentityUUID; // @synthesize localSenderIdentityUUID=_localSenderIdentityUUID;
-@property (nonatomic) long long originatingUIType; // @synthesize originatingUIType=_originatingUIType;
+@property (nonatomic) int originatingUIType; // @synthesize originatingUIType=_originatingUIType;
 @property (nonatomic) BOOL performDialAssist; // @synthesize performDialAssist=_performDialAssist;
 @property (nonatomic) BOOL performLocalDialAssist; // @synthesize performLocalDialAssist=_performLocalDialAssist;
 @property (strong, nonatomic) BSProcessHandle *processHandle; // @synthesize processHandle=_processHandle;
@@ -111,12 +111,12 @@
 + (long long)handleTypeForQueryItem:(id)arg1;
 + (long long)intentTTYTypeForTTYType:(long long)arg1;
 + (CDUnknownBlockType)legacyAddressBookIdentifierToContactIdentifierTransformBlock;
-+ (long long)originatingUITypeForString:(id)arg1;
++ (int)originatingUITypeForString:(id)arg1;
 + (id)providerForIntentPreferredCallProvider:(long long)arg1 callCapability:(long long)arg2 providerManager:(id)arg3;
 + (void)setCallProviderManagerGeneratorBlock:(CDUnknownBlockType)arg1;
 + (void)setLegacyAddressBookIdentifierToContactIdentifierTransformBlock:(CDUnknownBlockType)arg1;
 + (id)stringForDialType:(long long)arg1;
-+ (id)stringForOriginatingUIType:(long long)arg1;
++ (id)stringForOriginatingUIType:(int)arg1;
 + (id)stringForTTYType:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 + (long long)ttyTypeForIntentTTYType:(long long)arg1;

@@ -29,6 +29,7 @@
     SBFWallpaperParallaxSettings *_parallaxSettings;
     BOOL _wantsRasterization;
     long long _disallowRasterizationBlockCount;
+    BOOL _needsWallpaperDimmingTreatment;
     BOOL _parallaxEnabled;
     BOOL _continuousColorSamplingEnabled;
     BOOL _wallpaperAnimationEnabled;
@@ -42,7 +43,6 @@
     UIImage *_untreatedWallpaperImage;
     double _parallaxFactor;
     NSString *_wallpaperName;
-    long long _logicalContentOrientation;
     NSString *_cacheGroup;
     id<SBFWallpaperViewInternalObserver> _internalObserver;
 }
@@ -61,8 +61,8 @@
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<SBFWallpaperViewInternalObserver> internalObserver; // @synthesize internalObserver=_internalObserver;
 @property (readonly, nonatomic) _UILegibilitySettings *legibilitySettings;
-@property (nonatomic) long long logicalContentOrientation; // @synthesize logicalContentOrientation=_logicalContentOrientation;
 @property (readonly, nonatomic) BOOL needsImmediateLayoutBeforeRotation;
+@property (readonly, nonatomic) BOOL needsWallpaperDimmingTreatment; // @synthesize needsWallpaperDimmingTreatment=_needsWallpaperDimmingTreatment;
 @property (nonatomic) BOOL parallaxEnabled; // @synthesize parallaxEnabled=_parallaxEnabled;
 @property (nonatomic) double parallaxFactor; // @synthesize parallaxFactor=_parallaxFactor;
 @property (nonatomic, getter=isRotating) BOOL rotating; // @synthesize rotating=_rotating;
@@ -104,6 +104,8 @@
 - (void)_handleVariantChange;
 - (void)_handleVisibilityChange;
 - (id)_imageForBackdropParameters:(CDStruct_d8f0d129)arg1 includeTint:(BOOL)arg2 overrideTraitCollection:(id)arg3;
+- (BOOL)_isParallaxActive;
+- (BOOL)_isParallaxEnabled;
 - (BOOL)_isVisible;
 - (id)_material_generateImageFromImage:(id)arg1 forBackdropParameters:(CDStruct_d8f0d129)arg2 traitCollection:(id)arg3;
 - (BOOL)_needsFallbackImageForBackdropGeneratedImage:(id)arg1;
@@ -116,7 +118,7 @@
 - (void)_updateContentViewScale;
 - (void)_updateGeneratingBlurs;
 - (void)_updateLegibilitySettingsForAverageColor:(id)arg1 force:(BOOL)arg2 notify:(BOOL)arg3;
-- (void)_updateParallaxSettings;
+- (void)_updateParallax;
 - (void)_updateRasterizationState;
 - (void)_updateScaleFactor;
 - (id)averageColorInRect:(struct CGRect)arg1 withSmudgeRadius:(double)arg2;

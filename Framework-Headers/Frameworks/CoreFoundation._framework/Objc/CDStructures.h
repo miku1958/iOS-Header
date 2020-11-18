@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSMutableArray, _CFXNotificationRegistrationBase;
+@class NSMutableArray;
 
 #pragma mark Function Pointers and Blocks
 
@@ -19,6 +19,12 @@ struct Block_byref {
     struct Block_byref *_field2;
     int _field3;
     unsigned int _field4;
+};
+
+struct CFMethodSignatureROMEntry {
+    struct NSMethodFrameDescriptor *_field1;
+    char *_field2;
+    unsigned long long _field3;
 };
 
 struct NSMethodFrameArgInfo {
@@ -150,26 +156,10 @@ typedef struct {
 } CDStruct_58648341;
 
 typedef struct {
-    id *_field1;
-    long long _field2;
-    unsigned long long _field3;
-    BOOL _field4;
-} CDStruct_78c06135;
-
-typedef struct {
     int _field1;
     long long _field2;
     long long _field3;
 } CDStruct_b6748e3c;
-
-typedef struct {
-    long long _field1;
-    CDUnknownFunctionPointerType _field2;
-    CDUnknownFunctionPointerType _field3;
-    CDUnknownFunctionPointerType _field4;
-    CDUnknownFunctionPointerType _field5;
-    CDUnknownFunctionPointerType _field6;
-} CDStruct_90be15af;
 
 typedef struct {
     long long version;
@@ -201,21 +191,6 @@ typedef struct {
     long long _field2;
     struct __CFArray *_field3;
 } CDStruct_6ea78fe2;
-
-typedef struct {
-    CDStruct_78c06135 _field1;
-    CDStruct_78c06135 _field2;
-} CDStruct_3de10e06;
-
-typedef struct {
-    union {
-        struct __CFNull *empty;
-        _CFXNotificationRegistrationBase *child;
-        struct __CFDictionary *children;
-    } elements;
-    void *singleChildKey;
-    struct *callbacks;
-} CDStruct_a86bd46d;
 
 typedef struct {
     id *objs;

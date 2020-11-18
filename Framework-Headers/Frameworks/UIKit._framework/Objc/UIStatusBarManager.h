@@ -25,6 +25,7 @@
 @property (weak, nonatomic, getter=_scene, setter=_setScene:) UIScene *_scene;
 @property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) CDUnknownBlockType debugMenuHandler; // @synthesize debugMenuHandler=_debugMenuHandler;
+@property (readonly, nonatomic) double defaultStatusBarHeight;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInStatusBarFadeAnimation) BOOL inStatusBarFadeAnimation; // @synthesize inStatusBarFadeAnimation=_inStatusBarFadeAnimation;
@@ -57,6 +58,7 @@
 - (id)initWithScene:(id)arg1;
 - (void)setupForSingleLocalStatusBar;
 - (struct CGRect)statusBarFrameForStatusBarHeight:(double)arg1;
+- (struct CGRect)statusBarFrameForStatusBarHeight:(double)arg1 inOrientation:(long long)arg2;
 - (BOOL)statusBarHidden;
 - (void)updateLocalStatusBars;
 - (void)updateStatusBarAppearance;

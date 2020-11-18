@@ -16,12 +16,16 @@
 {
     BOOL _on;
     BOOL _alwaysShowOnOffLabel;
+    NSString *_title;
     UIColor *_onTintColor;
     UIColor *_thumbTintColor;
     UIImage *_onImage;
     UIImage *_offImage;
+    long long _style;
+    long long _preferredStyle;
     UIColor *_tintColor;
     UISwitchVisualElement *_visualElement;
+    long long _switchStyle;
 }
 
 @property (nonatomic, getter=_alwaysShowOnOffLabel, setter=_setAlwaysShowsOnOffLabel:) BOOL alwaysShowOnOffLabel; // @synthesize alwaysShowOnOffLabel=_alwaysShowOnOffLabel;
@@ -33,24 +37,32 @@
 @property (nonatomic, getter=isOn) BOOL on; // @synthesize on=_on;
 @property (strong, nonatomic) UIImage *onImage; // @synthesize onImage=_onImage;
 @property (strong, nonatomic) UIColor *onTintColor; // @synthesize onTintColor=_onTintColor;
+@property (nonatomic) long long preferredStyle; // @synthesize preferredStyle=_preferredStyle;
+@property (readonly, nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
+@property (nonatomic) long long switchStyle; // @synthesize switchStyle=_switchStyle;
 @property (strong, nonatomic) UIColor *thumbTintColor; // @synthesize thumbTintColor=_thumbTintColor;
 @property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) UISwitchVisualElement *visualElement; // @synthesize visualElement=_visualElement;
 
 + (void)setVisualElementProvider:(id)arg1;
 + (id)visualElementForTraitCollection:(id)arg1;
++ (id)visualElementForTraitCollection:(id)arg1 style:(long long)arg2;
 - (void).cxx_destruct;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedHeight;
 - (BOOL)_contentHuggingDefault_isUsuallyFixedWidth;
 - (unsigned long long)_controlEventsForActionTriggered;
+- (void)_intrinsicContentSizeInvalidatedForChildView:(id)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
+- (BOOL)_isFixedSize;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_refreshVisualElement;
-- (void)_refreshVisualElementForTraitCollection:(id)arg1;
 - (void)_refreshVisualElementForTraitCollection:(id)arg1 populatingAPIProperties:(BOOL)arg2;
+- (void)_setStyle:(long long)arg1;
 - (BOOL)_shouldShowOnOffLabels;
 - (void)_showingOnOffLabelChanged;
+- (struct CGPoint)accessibilityActivationPoint;
 - (struct UIEdgeInsets)alignmentRectInsets;
 - (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;

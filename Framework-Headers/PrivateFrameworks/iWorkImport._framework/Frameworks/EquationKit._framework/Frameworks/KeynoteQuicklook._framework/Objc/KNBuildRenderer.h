@@ -67,7 +67,7 @@
 - (id)initWithAnimatedBuild:(id)arg1 info:(id)arg2 buildStage:(id)arg3 animatedSlideView:(id)arg4;
 - (id)initializeTextureSetForEndOfBuild:(BOOL)arg1 endOfSlide:(BOOL)arg2 description:(id)arg3 isRenderingToContext:(BOOL)arg4;
 - (id)loadPluginIfNeeded;
-- (id)p_filterForTextDelivery:(long long)arg1;
+- (id)p_filterForTextDelivery:(long long)arg1 childRepTextDeliveryFilter:(id *)arg2;
 - (id)p_initializeTextureSetForEndOfBuild:(BOOL)arg1 endOfSlide:(BOOL)arg2 description:(id)arg3 isRenderingToContext:(BOOL)arg4;
 - (BOOL)p_isDriftAnimation;
 - (BOOL)p_isMovieInfo;

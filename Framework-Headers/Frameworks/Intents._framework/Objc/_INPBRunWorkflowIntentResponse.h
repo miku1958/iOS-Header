@@ -22,14 +22,12 @@
     BOOL _continueRunning;
     BOOL _requestsIntentExecution;
     BOOL _waitingForResume;
-    BOOL __encodeLegacyGloryData;
     NSArray *_steps;
     _INPBArchivedObject *_underlyingIntent;
     _INPBArchivedObject *_underlyingIntentResponse;
     NSString *_utterance;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) BOOL continueRunning; // @synthesize continueRunning=_continueRunning;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

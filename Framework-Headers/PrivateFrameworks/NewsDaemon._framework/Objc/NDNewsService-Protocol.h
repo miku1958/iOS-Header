@@ -11,6 +11,8 @@
 
 @protocol NDNewsService <NSObject>
 - (void)fetchLatestResultsWithParameters:(id<NTTodayResultOperationInfoProviding>)arg1 completion:(void (^)(NTTodayResults *, NSDictionary *, NSObject<NTTodayResultOperationFetchInfoProviding> *, NSError *, BOOL))arg2;
+- (void)fetchModuleDescriptorsWithCompletion:(void (^)(NSArray *, NSError *, BOOL))arg1;
+- (void)fetchPlaceholderResultsWithOperationInfo:(id<NTTodayResultOperationInfoProviding>)arg1 syncCompletion:(void (^)(NTTodayResults *))arg2;
 - (void)markAnalyticsElement:(id<NTHeadlineAnalyticsElementProviding>)arg1 asReadAtDate:(NSDate *)arg2 withCompletion:(void (^)(NSError *))arg3;
 - (void)markAnalyticsElements:(NSArray *)arg1 asSeenAtDate:(NSDate *)arg2 withCompletion:(void (^)(NSError *))arg3;
 @end

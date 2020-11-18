@@ -19,7 +19,6 @@
 + (id)contentInfoTextWithAttachmentCount:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (void)addSubAttachment:(id)arg1;
-- (id)additionalIndexableTextContentInNote;
 - (void)attachmentDidRefresh:(BOOL)arg1;
 - (BOOL)attachmentHasMergeableData;
 - (void)attachmentWillRefresh:(BOOL)arg1;

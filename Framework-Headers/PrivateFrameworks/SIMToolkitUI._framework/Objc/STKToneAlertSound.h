@@ -10,6 +10,7 @@
 
 @class NSString, TLAlert;
 
+__attribute__((visibility("hidden")))
 @interface STKToneAlertSound : STKBaseSound <STKSound>
 {
     TLAlert *_alert;

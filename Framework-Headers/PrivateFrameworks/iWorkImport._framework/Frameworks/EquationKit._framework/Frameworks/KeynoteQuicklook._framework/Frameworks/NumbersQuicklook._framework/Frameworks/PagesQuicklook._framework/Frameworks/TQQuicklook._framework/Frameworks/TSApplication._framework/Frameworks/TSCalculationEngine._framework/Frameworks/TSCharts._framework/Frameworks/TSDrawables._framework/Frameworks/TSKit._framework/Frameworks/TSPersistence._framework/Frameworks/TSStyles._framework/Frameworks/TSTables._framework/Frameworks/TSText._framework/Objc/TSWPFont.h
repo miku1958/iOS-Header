@@ -6,42 +6,69 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
-@protocol OS_dispatch_semaphore;
+@class NSArray, NSMutableDictionary, NSString, UIFont;
 
 @interface TSWPFont : NSObject
 {
-    NSString *_fontName;
-    NSString *_compatibilityName;
-    NSString *_displayName;
-    NSObject<OS_dispatch_semaphore> *_displayNameSem;
+    BOOL _isFallbackFont;
+    NSString *_desiredPostScriptName;
+    NSString *_postScriptName;
     NSString *_familyName;
-    NSObject<OS_dispatch_semaphore> *_familyNameSem;
-    unsigned long long _hash;
-    int _availability;
+    UIFont *_platformFont;
+    unsigned long long _hashValue;
+    NSMutableDictionary *_alternatePlatformFonts;
+    NSArray *_creationBacktrace;
 }
 
-@property (readonly, nonatomic) int availability;
-@property (readonly, copy, nonatomic) NSString *compatibilityName;
+@property (strong) NSMutableDictionary *alternatePlatformFonts; // @synthesize alternatePlatformFonts=_alternatePlatformFonts;
+@property (readonly, nonatomic) TSWPFont *baseFont;
+@property (readonly, nonatomic) BOOL bold;
+@property (strong, nonatomic) NSArray *creationBacktrace; // @synthesize creationBacktrace=_creationBacktrace;
+@property (readonly, nonatomic) const struct __CTFont *ctFont;
+@property (readonly, nonatomic) NSString *desiredPostScriptName; // @synthesize desiredPostScriptName=_desiredPostScriptName;
 @property (readonly, nonatomic) NSString *displayName;
-@property (readonly, nonatomic) NSString *familyName;
-@property (readonly, copy, nonatomic) NSString *fontName; // @synthesize fontName=_fontName;
+@property (readonly, nonatomic) NSArray *familyFaces;
+@property (strong, nonatomic) NSString *familyName; // @synthesize familyName=_familyName;
+@property (nonatomic) unsigned long long hashValue; // @synthesize hashValue=_hashValue;
+@property (nonatomic) BOOL isFallbackFont; // @synthesize isFallbackFont=_isFallbackFont;
+@property (readonly, nonatomic) BOOL isMasqueradingFont;
+@property (readonly, nonatomic) BOOL isRequestedFont;
+@property (readonly, nonatomic) BOOL italic;
+@property (strong, nonatomic) UIFont *platformFont; // @synthesize platformFont=_platformFont;
+@property (strong, nonatomic) NSString *postScriptName; // @synthesize postScriptName=_postScriptName;
+@property (readonly, nonatomic) double size;
 
-+ (id)fontForStyles:(id)arg1;
-+ (id)fontWithName:(id)arg1;
-+ (id)fontWithName:(id)arg1 compatibilityName:(id)arg2;
++ (id)baseFontForFamilyName:(id)arg1;
++ (id)facesOfFontFamily:(id)arg1;
++ (id)fontWithDesiredPostScriptName:(id)arg1;
++ (id)fontWithDesiredPostScriptName:(id)arg1 atSize:(double)arg2;
++ (id)fontWithDesiredPostScriptName:(id)arg1 fallbackFont:(id)arg2 isFallback:(BOOL)arg3;
++ (id)fontWithOpaqueIdentifier:(id)arg1;
 + (id)helveticaFont;
 + (BOOL)isKeyValueProxyLeafType;
-+ (id)propertyMapForApplyingFont:(id)arg1 toStyle:(id)arg2;
++ (id)loadPlatformFontForPostScriptName:(id)arg1 size:(double)arg2;
++ (id)loadPlatformFontOrFallbackForPostScriptName:(id)arg1 size:(double)arg2 foundFallback:(BOOL *)arg3;
++ (id)localizedFamilyNameForPlatformFont:(id)arg1;
++ (id)missingFont;
++ (id)missingFontPostScriptName;
++ (unsigned long long)optionsForLoadingPlatformFontWithPostScriptName:(id)arg1;
++ (id)postScriptNameForFamilyName:(id)arg1;
 + (id)systemFont;
 - (void).cxx_destruct;
+- (id)copyWithSize:(double)arg1;
+- (id)copyWithSize:(double)arg1 bold:(BOOL)arg2 italic:(BOOL)arg3;
+- (id)copyWithSize:(double)arg1 bold:(BOOL)arg2 italic:(BOOL)arg3 traits:(id)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (const struct __CTFont *)ctFontForSize:(double)arg1;
+- (const struct __CTFont *)ctFontForSize:(double)arg1 bold:(BOOL)arg2 italic:(BOOL)arg3;
+- (struct __CTFont *)ctFontForSize:(double)arg1 bold:(BOOL)arg2 italic:(BOOL)arg3 traits:(id)arg4;
+- (id)description;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithFontName:(id)arg1;
-- (id)initWithFontName:(id)arg1 compatibilityName:(id)arg2;
+- (id)initWithDesiredPostScriptName:(id)arg1;
+- (id)initWithDesiredPostScriptName:(id)arg1 andPlatformFont:(id)arg2 isFallback:(BOOL)arg3;
+- (id)initWithDesiredPostScriptName:(id)arg1 size:(double)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (void)p_getFamilyNameAndAvailability;
 
 @end
 

@@ -6,12 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@interface MCUIUserEnrollmentAccountSpecifierProvider : NSObject
+#import <ManagedConfigurationUI/DevicePINControllerDelegate-Protocol.h>
+
+@class NSString;
+
+@interface MCUIUserEnrollmentAccountSpecifierProvider : NSObject <DevicePINControllerDelegate>
 {
     CDUnknownBlockType _devicePasscodeVerificationCompletionHandler;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) CDUnknownBlockType devicePasscodeVerificationCompletionHandler; // @synthesize devicePasscodeVerificationCompletionHandler=_devicePasscodeVerificationCompletionHandler;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)deleteAccountGroupFooterText;
 + (id)labelTextForAccountSummaryCell;

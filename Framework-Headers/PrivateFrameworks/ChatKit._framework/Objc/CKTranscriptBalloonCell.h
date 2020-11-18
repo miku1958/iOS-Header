@@ -6,27 +6,73 @@
 
 #import <ChatKit/CKTranscriptMessageContentCell.h>
 
-@class CKBalloonView;
+@class CKBalloonView, CKLineView, CKTranscriptCollectionViewLayoutAttributes, NSArray;
 
 @interface CKTranscriptBalloonCell : CKTranscriptMessageContentCell
 {
     BOOL _mayReparentPluginViews;
+    BOOL _insertingReply;
+    BOOL _lineIsExtended;
     CKBalloonView *_balloonView;
+    unsigned long long _lineType;
+    CKTranscriptCollectionViewLayoutAttributes *_layoutAttributes;
+    NSArray *_threadGroupLayoutAttributes;
+    NSArray *_threadLineDescription;
+    CKLineView *_lineView;
+    double _lineHorizontalOffset;
+    double _lineViewReferenceY;
+    double _lineViewExpansionFactor;
 }
 
 @property (strong, nonatomic) CKBalloonView *balloonView; // @synthesize balloonView=_balloonView;
+@property (nonatomic, getter=isInsertingReply) BOOL insertingReply; // @synthesize insertingReply=_insertingReply;
+@property (copy, nonatomic) CKTranscriptCollectionViewLayoutAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
+@property (nonatomic) double lineHorizontalOffset; // @synthesize lineHorizontalOffset=_lineHorizontalOffset;
+@property (readonly, nonatomic) BOOL lineIsExtended; // @synthesize lineIsExtended=_lineIsExtended;
+@property (nonatomic) unsigned long long lineType; // @synthesize lineType=_lineType;
+@property (strong, nonatomic) CKLineView *lineView; // @synthesize lineView=_lineView;
+@property (nonatomic) double lineViewExpansionFactor; // @synthesize lineViewExpansionFactor=_lineViewExpansionFactor;
+@property (nonatomic) double lineViewReferenceY; // @synthesize lineViewReferenceY=_lineViewReferenceY;
 @property (nonatomic) BOOL mayReparentPluginViews; // @synthesize mayReparentPluginViews=_mayReparentPluginViews;
+@property (copy, nonatomic) NSArray *threadGroupLayoutAttributes; // @synthesize threadGroupLayoutAttributes=_threadGroupLayoutAttributes;
+@property (copy, nonatomic) NSArray *threadLineDescription; // @synthesize threadLineDescription=_threadLineDescription;
 
 - (void).cxx_destruct;
+- (void)_animateLineExtension:(CDUnknownBlockType)arg1;
+- (void)_animateLowerBracketToLoop:(CDUnknownBlockType)arg1;
+- (void)_animateReplyContextPreview:(CDUnknownBlockType)arg1;
+- (void)_animateUpperBracket:(CDUnknownBlockType)arg1;
+- (void)_ck_setEditing:(BOOL)arg1 animated:(BOOL)arg2;
+- (id)_createLinePathForFrame:(struct CGRect)arg1 withThreadGroupLayoutAttributes:(id)arg2;
+- (struct CGRect)_createLineViewFrameForThreadGroupLayoutAttributes:(id)arg1;
+- (void)_drawLoopForPath:(id *)arg1 withLayout:(id)arg2;
+- (void)_drawLowerBracketForPath:(id *)arg1 lineViewMaxX:(double)arg2 lineViewMaxY:(double)arg3;
+- (id)_drawLowerBracketLoopForPath:(id)arg1 withLayout:(id)arg2 lineViewMaxY:(double)arg3;
+- (void)_drawStraightLineForPath:(id *)arg1 withLayout:(id)arg2 lineViewMaxY:(double)arg3 isTerminal:(BOOL)arg4;
+- (void)_drawUpperBracketForPath:(id *)arg1 withLayout:(id)arg2 lineViewMaxX:(double)arg3 lineViewMaxY:(double)arg4;
+- (id)_extendPath:(id *)arg1 withFrame:(struct CGRect)arg2;
+- (void)_fadeInBalloonAlpha:(double)arg1 atBeginTime:(double)arg2;
+- (void)_fadeInContactImageAlpha:(double)arg1 atBeginTime:(double)arg2;
+- (id)_lineDescriptionForThreadGroupLayoutAttributes:(id)arg1 setLineType:(BOOL)arg2;
+- (void)_slideContactImageWithTranslate:(double)arg1 duration:(double)arg2 beginTime:(double)arg3;
+- (void)_updateLineForThreadGroupLayoutAttributes:(id)arg1;
 - (void)addFilter:(id)arg1;
+- (id)animationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3 beginTime:(double)arg4 duration:(double)arg5 timingFunction:(id)arg6;
+- (id)animationWithKeyPath:(id)arg1 fromValue:(id)arg2 toValue:(id)arg3 beginTime:(double)arg4 duration:(double)arg5 timingFunctionName:(id)arg6;
+- (void)applyLayoutAttributes:(id)arg1;
 - (void)clearFilters;
 - (void)configureForChatItem:(id)arg1;
 - (void)dealloc;
 - (id)description;
+- (BOOL)hidesCheckmark;
 - (id)init;
+- (long long)insertionAnimationType;
+- (double)insertionDurationForInsertionType:(long long)arg1;
+- (void)layoutSubviewsForContents;
 - (id)messageDisplayView;
+- (void)performInsertion:(CDUnknownBlockType)arg1;
+- (void)prepareForReuse;
 - (void)setAnimationPauseReasons:(long long)arg1;
-- (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)willLayoutDrawerLabelFrame:(struct CGRect *)arg1;
 
 @end

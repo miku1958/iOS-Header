@@ -6,15 +6,11 @@
 
 #import <UIKit/UIViewController.h>
 
-@class MISSING_TYPE;
-
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI23ErrorTemplateController : UIViewController
 {
-    MISSING_TYPE *template;
 }
 
-- (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;

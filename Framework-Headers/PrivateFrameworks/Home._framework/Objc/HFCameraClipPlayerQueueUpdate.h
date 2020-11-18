@@ -36,7 +36,7 @@
 - (void).cxx_destruct;
 - (id)_buildNewClipQueueForPosition:(id)arg1;
 - (void)_computeQueueDiff;
-- (id)initWithClipManager:(id)arg1 targetPosition:(id)arg2 queuedItems:(id)arg3 queueLimit:(unsigned long long)arg4;
+- (id)initWithClipManager:(id)arg1 clips:(id)arg2 targetPosition:(id)arg3 queuedItems:(id)arg4 queueLimit:(unsigned long long)arg5;
 - (void)performUpdatesOnQueue:(id)arg1;
 
 @end

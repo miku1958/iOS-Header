@@ -7,18 +7,24 @@
 #import <objc/NSObject.h>
 
 @class PXIndexPathSet, PXSectionedDataSource;
+@protocol PXFastEnumeration;
 
 @interface PXSelectionSnapshot : NSObject
 {
+    BOOL _isSelectionLimitReached;
     PXSectionedDataSource *_dataSource;
     PXIndexPathSet *_selectedIndexPaths;
     struct PXSimpleIndexPath _cursorIndexPath;
     struct PXSimpleIndexPath _pendingIndexPath;
 }
 
+@property (readonly, nonatomic) id<PXFastEnumeration> allItemsEnumerator;
+@property (readonly, nonatomic) id<PXFastEnumeration> allObjectsEnumerator;
+@property (readonly, nonatomic) id<PXFastEnumeration> allSectionsEnumerator;
 @property (readonly, nonatomic) struct PXSimpleIndexPath cursorIndexPath; // @synthesize cursorIndexPath=_cursorIndexPath;
 @property (readonly, nonatomic) PXSectionedDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, nonatomic) struct PXSimpleIndexPath firstSelectedIndexPath;
+@property (readonly, nonatomic) BOOL isSelectionLimitReached; // @synthesize isSelectionLimitReached=_isSelectionLimitReached;
 @property (readonly, nonatomic) struct PXSimpleIndexPath lastSelectedIndexPath;
 @property (readonly, nonatomic) struct PXSimpleIndexPath pendingIndexPath; // @synthesize pendingIndexPath=_pendingIndexPath;
 @property (readonly, nonatomic) PXIndexPathSet *sectionIndexPathsContainingSelection;
@@ -28,13 +34,14 @@
 - (BOOL)areAllItemsSelected;
 - (BOOL)areAllUnsavedAssetsSelectedWithImportStatusManager:(id)arg1;
 - (id)description;
+- (void)enumerateSelectedObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)fetchSelectedObjects;
 - (struct PXSimpleIndexPath)indexPathOfObjectPassingTest:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithDataSource:(id)arg1 selectedIndexPath:(struct PXSimpleIndexPath)arg2;
 - (id)initWithDataSource:(id)arg1 selectedIndexPaths:(id)arg2;
 - (id)initWithDataSource:(id)arg1 selectedIndexPaths:(id)arg2 cursorIndexPath:(struct PXSimpleIndexPath)arg3;
-- (id)initWithDataSource:(id)arg1 selectedIndexPaths:(id)arg2 cursorIndexPath:(struct PXSimpleIndexPath)arg3 pendingIndexPath:(struct PXSimpleIndexPath)arg4;
+- (id)initWithDataSource:(id)arg1 selectedIndexPaths:(id)arg2 cursorIndexPath:(struct PXSimpleIndexPath)arg3 pendingIndexPath:(struct PXSimpleIndexPath)arg4 selectionLimitReached:(BOOL)arg5;
 - (BOOL)isAnyItemSelected;
 - (BOOL)isAnySectionSelected;
 - (BOOL)isIndexPathSelected:(struct PXSimpleIndexPath)arg1;

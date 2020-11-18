@@ -9,10 +9,10 @@
 @class NSString, NSURL;
 
 @protocol BCSCloudServerRouteProvider <NSObject>
-- (NSString *)apiKey;
-- (NSString *)container;
-- (NSString *)environment;
-- (NSURL *)urlForLookupActionAPI;
-- (NSURL *)urlForQueryActionAPI;
+- (NSString *)apiKeyWithType:(long long)arg1;
+- (NSString *)containerWithType:(long long)arg1;
+- (NSString *)environmentWithType:(long long)arg1;
+- (NSURL *)urlForLookupActionAPIWithType:(long long)arg1;
+- (NSURL *)urlForQueryActionAPIWithType:(long long)arg1;
 @end
 

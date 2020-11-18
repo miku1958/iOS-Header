@@ -7,6 +7,7 @@
 #import <Foundation/NSError.h>
 
 @interface NSError (NRSafeDescription)
+- (id)nr_filteredError;
 - (id)nr_safeDescription;
 @end
 

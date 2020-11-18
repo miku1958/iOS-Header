@@ -6,12 +6,22 @@
 
 #import <UIKit/UILabel.h>
 
+@class NSString;
+
 __attribute__((visibility("hidden")))
 @interface OBTemplateLabel : UILabel
 {
+    NSString *_displayText;
+    NSString *_symbolName;
 }
 
+@property (copy, nonatomic) NSString *displayText; // @synthesize displayText=_displayText;
+@property (copy, nonatomic) NSString *symbolName; // @synthesize symbolName=_symbolName;
+
+- (void).cxx_destruct;
 - (id)init;
+- (void)setText:(id)arg1;
+- (void)setTitleTrailingSymbol:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateTextAlignment;
 

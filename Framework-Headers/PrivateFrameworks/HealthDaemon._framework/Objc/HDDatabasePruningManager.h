@@ -19,16 +19,12 @@
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_dispatch_source> *_timerSource;
-    unsigned long long _prunedObjectLimit;
-    unsigned long long _prunedObjectTransactionLimit;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
-@property unsigned long long prunedObjectLimit; // @synthesize prunedObjectLimit=_prunedObjectLimit;
-@property unsigned long long prunedObjectTransactionLimit; // @synthesize prunedObjectTransactionLimit=_prunedObjectTransactionLimit;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *timerSource; // @synthesize timerSource=_timerSource;
@@ -36,7 +32,7 @@
 - (void).cxx_destruct;
 - (id)_lastAttemptDateWithCompleted:(BOOL *)arg1;
 - (id)_minimumFrozenAnchorMapForPruningDate:(id)arg1 error:(id *)arg2;
-- (BOOL)_pruneDatabaseWithNowDate:(id)arg1 error:(id *)arg2;
+- (BOOL)_pruneDatabaseWithNowDate:(id)arg1 prunedObjectLimit:(unsigned long long)arg2 prunedObjectTransactionLimit:(unsigned long long)arg3 error:(id *)arg4;
 - (void)_setLastAttemptDate:(id)arg1 completed:(BOOL)arg2;
 - (void)daemonReady:(id)arg1;
 - (void)dealloc;
@@ -45,6 +41,7 @@
 - (void)performPeriodicActivity:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)periodicActivity:(id)arg1 configureXPCActivityCriteria:(id)arg2;
 - (BOOL)pruneDatabaseWithAccessibilityAssertion:(id)arg1 nowDate:(id)arg2 error:(id *)arg3;
+- (BOOL)pruneDatabaseWithAccessibilityAssertion:(id)arg1 nowDate:(id)arg2 prunedObjectLimit:(unsigned long long)arg3 prunedObjectTransactionLimit:(unsigned long long)arg4 error:(id *)arg5;
 
 @end
 

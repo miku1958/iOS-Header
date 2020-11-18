@@ -8,13 +8,14 @@
 
 #import <MediaRemote/NSSecureCoding-Protocol.h>
 
-@class MRAVOutputDeviceSourceInfo, NSDictionary, _MRAVOutputDeviceDescriptorProtobuf;
+@class MRAVOutputDeviceSourceInfo, NSArray, NSDictionary, _MRAVOutputDeviceDescriptorProtobuf;
 
 @interface MRAVDistantOutputDevice : MRAVOutputDevice <NSSecureCoding>
 {
     _MRAVOutputDeviceDescriptorProtobuf *_protobuf;
     MRAVOutputDeviceSourceInfo *_sourceInfo;
     NSDictionary *_modelSpecificInfo;
+    NSArray *_clusterComposition;
 }
 
 + (BOOL)supportsSecureCoding;
@@ -28,6 +29,7 @@
 - (BOOL)canFetchMediaDataFromSender;
 - (BOOL)canPlayEncryptedProgressiveDownloadAssets;
 - (BOOL)canRelayCommunicationChannel;
+- (id)clusterComposition;
 - (id)description;
 - (id)descriptor;
 - (unsigned int)deviceSubtype;
@@ -48,6 +50,7 @@
 - (BOOL)isLocalDevice;
 - (BOOL)isProxyGroupPlayer;
 - (BOOL)isRemoteControllable;
+- (BOOL)isUsingJSONProtocol;
 - (BOOL)isVolumeControlAvailable;
 - (id)logicalDeviceID;
 - (id)modelID;

@@ -8,6 +8,12 @@
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
+#pragma mark Named Structures
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -82,7 +88,8 @@ typedef struct {
     unsigned int supportsRecurrenceSplit:1;
     unsigned int requiresOpeningAttachmentAsLink:1;
     unsigned int shouldUseDeleteAndAddInsteadOfMoveBetweenCalendars:1;
-} CDStruct_6a9d2bb3;
+    unsigned int supportsInvitationModificationsWithoutNotification:1;
+} CDStruct_9e0d2422;
 
 typedef struct {
     unsigned int _field1;
@@ -97,15 +104,6 @@ typedef struct {
     char _field5;
     double _field6;
 } CDStruct_79f9e052;
-
-typedef struct {
-    int _field1;
-    int _field2;
-    int _field3;
-    int _field4;
-    int _field5;
-    double _field6;
-} CDStruct_deff9ab7;
 
 typedef struct {
     long long _field1;

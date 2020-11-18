@@ -13,11 +13,6 @@
     BOOL _useTiling;
     id<MPSExternalMatrixMultiplication> _plugin;
     CDUnknownFunctionPointerType _encode;
-    unsigned long long _MPlugin;
-    unsigned long long _NPlugin;
-    unsigned long long _KPlugin;
-    double _alphaPlugin;
-    double _betaPlugin;
     BOOL _transA;
     BOOL _transB;
     unsigned long long _batchStart;
@@ -45,7 +40,7 @@
 @property (nonatomic) BOOL transA; // @synthesize transA=_transA;
 @property (nonatomic) BOOL transB; // @synthesize transB=_transB;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;

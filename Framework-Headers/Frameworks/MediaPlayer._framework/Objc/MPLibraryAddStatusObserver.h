@@ -14,21 +14,21 @@
     MPCloudController *_cloudController;
     MPCloudServiceStatusController *_cloudServiceStatusController;
     struct MPLibraryAddStatusObserverConfiguration _configuration;
-    unsigned long long _currentStatus;
+    long long _currentStatus;
     CDUnknownBlockType _statusBlock;
     MPModelObject *_identifyingModelObject;
     ICUserIdentity *_userIdentity;
 }
 
 @property (readonly, nonatomic) struct MPLibraryAddStatusObserverConfiguration configuration; // @synthesize configuration=_configuration;
-@property (readonly, nonatomic) unsigned long long currentStatus; // @synthesize currentStatus=_currentStatus;
+@property (readonly, nonatomic) long long currentStatus; // @synthesize currentStatus=_currentStatus;
 @property (readonly, nonatomic) MPModelObject *identifyingModelObject; // @synthesize identifyingModelObject=_identifyingModelObject;
 @property (copy, nonatomic) CDUnknownBlockType statusBlock; // @synthesize statusBlock=_statusBlock;
 @property (readonly, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
 
 - (void).cxx_destruct;
 - (void)_allowsExplicitContentDidChangeNotification:(id)arg1;
-- (unsigned long long)_calculateCurrentStatus;
+- (long long)_calculateCurrentStatus;
 - (void)_cloudLibraryEnabledDidChangeNotification:(id)arg1;
 - (void)_subscriptionStatusDidChangeNotification:(id)arg1;
 - (void)_transientStateDidChangeNotification:(id)arg1;

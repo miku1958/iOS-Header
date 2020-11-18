@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <iTunesCloud/ML3AccountInformationProviding-Protocol.h>
 #import <iTunesCloud/NSCopying-Protocol.h>
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
 
 @class NSNumber, NSString;
 
-@interface ICUserIdentity : NSObject <NSCopying, NSSecureCoding>
+@interface ICUserIdentity : NSObject <ML3AccountInformationProviding, NSCopying, NSSecureCoding>
 {
     NSString *_deviceIdentifier;
     BOOL _allowsDelegation;
@@ -22,11 +23,16 @@
 }
 
 @property (readonly, copy, nonatomic) NSNumber *DSID; // @synthesize DSID=_DSID;
+@property (readonly, copy, nonatomic) NSString *accountDSID;
 @property (readonly, nonatomic) BOOL allowsAccountEstablishment; // @synthesize allowsAccountEstablishment=_allowsAccountEstablishment;
 @property (readonly, nonatomic) BOOL allowsDelegation; // @synthesize allowsDelegation=_allowsDelegation;
 @property (readonly, nonatomic) unsigned long long creationTime; // @synthesize creationTime=_creationTime;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *deviceIdentifier;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)activeAccount;
@@ -43,7 +49,6 @@
 - (id)_resolvedDSIDUsingSpecificIdentityStore:(id)arg1;
 - (void)_setResolvedDSID:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hashInStore:(id)arg1;
 - (id)identityAllowingDelegation:(BOOL)arg1;

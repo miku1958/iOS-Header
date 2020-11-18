@@ -12,7 +12,7 @@
 
 @interface RMModelAccountExchangeDeclaration : RMModelConfigurationBase <RMModelRegisteredTypeProtocol>
 {
-    NSString *_payloadDescription;
+    NSString *_payloadVisibleName;
     NSArray *_payloadEnabledProtocolTypes;
     NSString *_payloadUserIdentityAssetReference;
     NSString *_payloadHostName;
@@ -41,7 +41,6 @@
 @property (copy, nonatomic) NSString *payloadAuthenticationCredentialsAssetReference; // @synthesize payloadAuthenticationCredentialsAssetReference=_payloadAuthenticationCredentialsAssetReference;
 @property (copy, nonatomic) NSNumber *payloadCalendarServiceActive; // @synthesize payloadCalendarServiceActive=_payloadCalendarServiceActive;
 @property (copy, nonatomic) NSNumber *payloadContactsServiceActive; // @synthesize payloadContactsServiceActive=_payloadContactsServiceActive;
-@property (copy, nonatomic) NSString *payloadDescription; // @synthesize payloadDescription=_payloadDescription;
 @property (copy, nonatomic) NSArray *payloadEnabledProtocolTypes; // @synthesize payloadEnabledProtocolTypes=_payloadEnabledProtocolTypes;
 @property (copy, nonatomic) NSString *payloadExternalHostName; // @synthesize payloadExternalHostName=_payloadExternalHostName;
 @property (copy, nonatomic) NSString *payloadExternalPath; // @synthesize payloadExternalPath=_payloadExternalPath;
@@ -59,11 +58,12 @@
 @property (copy, nonatomic) NSNumber *payloadPort; // @synthesize payloadPort=_payloadPort;
 @property (copy, nonatomic) NSNumber *payloadRemindersServiceActive; // @synthesize payloadRemindersServiceActive=_payloadRemindersServiceActive;
 @property (copy, nonatomic) NSString *payloadUserIdentityAssetReference; // @synthesize payloadUserIdentityAssetReference=_payloadUserIdentityAssetReference;
+@property (copy, nonatomic) NSString *payloadVisibleName; // @synthesize payloadVisibleName=_payloadVisibleName;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1 enabledProtocolTypes:(id)arg2;
-+ (id)buildWithIdentifier:(id)arg1 description:(id)arg2 enabledProtocolTypes:(id)arg3 userIdentityAssetReference:(id)arg4 hostName:(id)arg5 port:(id)arg6 path:(id)arg7 externalHostName:(id)arg8 externalPort:(id)arg9 externalPath:(id)arg10 oAuth:(id)arg11 authenticationCredentialsAssetReference:(id)arg12 mailServiceActive:(id)arg13 lockMailService:(id)arg14 contactsServiceActive:(id)arg15 lockContactsService:(id)arg16 calendarServiceActive:(id)arg17 lockCalendarService:(id)arg18 remindersServiceActive:(id)arg19 lockRemindersService:(id)arg20 notesServiceActive:(id)arg21 lockNotesService:(id)arg22;
++ (id)buildWithIdentifier:(id)arg1 visibleName:(id)arg2 enabledProtocolTypes:(id)arg3 userIdentityAssetReference:(id)arg4 hostName:(id)arg5 port:(id)arg6 path:(id)arg7 externalHostName:(id)arg8 externalPort:(id)arg9 externalPath:(id)arg10 oAuth:(id)arg11 authenticationCredentialsAssetReference:(id)arg12 mailServiceActive:(id)arg13 lockMailService:(id)arg14 contactsServiceActive:(id)arg15 lockContactsService:(id)arg16 calendarServiceActive:(id)arg17 lockCalendarService:(id)arg18 remindersServiceActive:(id)arg19 lockRemindersService:(id)arg20 notesServiceActive:(id)arg21 lockNotesService:(id)arg22;
 + (id)registeredClassName;
 + (id)registeredIdentifier;
 - (void).cxx_destruct;

@@ -19,8 +19,8 @@
 @property (copy, nonatomic) NSNumber *minimum; // @synthesize minimum=mMinimum;
 @property (copy, nonatomic) NSString *picaSeparator; // @synthesize picaSeparator=mPicaSeparator;
 
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (BOOL)getObjectValue:(id *)arg1 forString:(id)arg2 errorDescription:(id *)arg3;
 - (unsigned long long)hash;
 - (id)initWithPicaSeparator:(id)arg1;

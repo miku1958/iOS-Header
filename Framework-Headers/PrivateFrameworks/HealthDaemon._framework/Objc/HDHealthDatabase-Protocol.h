@@ -22,6 +22,7 @@
 - (HDAssertion *)cloneAccessibilityAssertion:(HDAssertion *)arg1 ownerIdentifier:(NSString *)arg2 error:(id *)arg3;
 - (void)performAsynchronously:(void (^)(void))arg1;
 - (void)performAsynchronouslySerial:(void (^)(void))arg1;
+- (BOOL)performHighPriorityTransactionsWithError:(id *)arg1 block:(BOOL (^)(id *))arg2;
 - (BOOL)performTransactionWithContext:(HDDatabaseTransactionContext *)arg1 error:(id *)arg2 block:(BOOL (^)(HDDatabaseTransaction *, id *))arg3 inaccessibilityHandler:(BOOL (^)(NSError *, id *))arg4;
 - (void)performWhenDataProtectedByFirstUnlockIsAvailable:(void (^)(void))arg1;
 - (void)performWhenDataProtectedByFirstUnlockIsAvailableOnQueue:(NSObject<OS_dispatch_queue> *)arg1 block:(void (^)(void))arg2;

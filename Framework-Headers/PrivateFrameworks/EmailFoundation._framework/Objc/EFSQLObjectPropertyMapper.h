@@ -9,7 +9,7 @@
 #import <EmailFoundation/EFObjectPropertyMapper-Protocol.h>
 
 @class EFSQLColumnSchema, EFSQLTableSchema, NSArray, NSDictionary, NSString;
-@protocol EFSQLExpressable;
+@protocol EFSQLValueExpressable;
 
 @interface EFSQLObjectPropertyMapper : NSObject <EFObjectPropertyMapper>
 {
@@ -17,15 +17,15 @@
     NSDictionary *_children;
     EFSQLTableSchema *_table;
     EFSQLColumnSchema *_sourceColumn;
-    id<EFSQLExpressable> _condition;
+    id<EFSQLValueExpressable> _condition;
     NSArray *_additionalColumns;
-    id<EFSQLExpressable> _bitExpression;
+    id<EFSQLValueExpressable> _bitExpression;
 }
 
 @property (readonly, nonatomic) NSArray *additionalColumns; // @synthesize additionalColumns=_additionalColumns;
-@property (readonly, nonatomic) id<EFSQLExpressable> bitExpression; // @synthesize bitExpression=_bitExpression;
+@property (readonly, nonatomic) id<EFSQLValueExpressable> bitExpression; // @synthesize bitExpression=_bitExpression;
 @property (copy, nonatomic) NSDictionary *children; // @synthesize children=_children;
-@property (readonly, nonatomic) id<EFSQLExpressable> condition; // @synthesize condition=_condition;
+@property (readonly, nonatomic) id<EFSQLValueExpressable> condition; // @synthesize condition=_condition;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

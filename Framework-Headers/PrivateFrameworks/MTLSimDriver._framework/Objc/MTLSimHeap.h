@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 {
     MTLSimDevice *_device;
     unsigned int _heapRef;
+    unsigned long long _purgeableState;
 }
 
 @property (readonly) unsigned long long cpuCacheMode;
@@ -29,7 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned int heapRef;
 @property (copy) NSString *label;
 @property (readonly) unsigned long long resourceOptions;
-@property (readonly) unsigned int resourceRef;
+@property (readonly) unsigned int serializerResourceRef;
 @property (readonly) unsigned long long size;
 @property (readonly) unsigned long long storageMode;
 @property (readonly) Class superclass;

@@ -45,6 +45,7 @@
 + (id)nowPlayingNotifications;
 - (void).cxx_destruct;
 - (BOOL)_postNotification:(id)arg1 userInfo:(id)arg2 object:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
+- (BOOL)_processAlwaysNeedsNowPlayingNotifications;
 - (void)dispatchNotification:(id)arg1 userInfo:(id)arg2 object:(id)arg3;
 - (id)init;
 - (BOOL)postNotification:(id)arg1 userInfo:(id)arg2 object:(id)arg3;

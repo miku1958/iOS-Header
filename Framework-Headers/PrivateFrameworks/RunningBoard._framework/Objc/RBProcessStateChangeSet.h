@@ -18,7 +18,6 @@
 @property (readonly, nonatomic) BOOL hasChanges;
 
 - (void).cxx_destruct;
-- (void)_diffOriginalStatesByIdentity:(id)arg1 withUpdatedStatesByIdentity:(id)arg2;
 - (void)applyChanges:(id)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)initWithChanges:(id)arg1;

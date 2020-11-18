@@ -16,6 +16,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)isInternalInstall;
 + (id)languageForText:(id)arg1;
 + (id)messageContentForEvent:(id)arg1;
++ (id)messageContentForEvent:(id)arg1 andLanguage:(id)arg2;
 + (void)removeTemporaryFile:(id)arg1;
 + (unsigned long long)sourceForEvent:(id)arg1;
 

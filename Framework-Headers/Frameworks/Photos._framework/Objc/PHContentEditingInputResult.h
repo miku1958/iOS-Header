@@ -43,10 +43,12 @@
 - (void)addImageResult:(id)arg1;
 - (void)addVideoResult:(id)arg1;
 - (id)adjustmentData;
+- (id)cancelledInfoKey;
 - (void)clearAdjustmentData;
 - (BOOL)containsValidData;
 - (id)description;
 - (id)error;
+- (id)errorInfoKey;
 - (id)exifOrientation;
 - (id)flipImageURLs;
 - (id)flipVideoURLs;
@@ -55,13 +57,10 @@
 - (struct CGImage *)imageRef;
 - (id)imageSandboxExtensionToken;
 - (id)imageURL;
-- (id)imageUTI;
-- (BOOL)isCancelled;
-- (BOOL)isInCloud;
+- (id)inCloudInfoKey;
 - (void)mergeInfoDictionaryFromResult:(id)arg1;
-- (void)setCancelled:(BOOL)arg1;
 - (void)setError:(id)arg1;
-- (void)setIsInCloud:(BOOL)arg1;
+- (id)uniformTypeIdentifier;
 - (id)videoAdjustmentData;
 - (id)videoSandboxExtensionToken;
 - (id)videoURL;

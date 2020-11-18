@@ -28,6 +28,7 @@
 - (void)fetchTrashIdentifiersWithCompletionHandler:(void (^)(NSArray *, NSError *))arg1;
 - (void)handleEventsForBackgroundURLSession:(NSString *)arg1 completionHandler:(void (^)(void))arg2;
 - (void)materializedItemsDidChange;
+- (NSProgress *)performActionWithIdentifier:(NSString *)arg1 onItemsWithIdentifiers:(NSArray *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)preflightReparentItemWithIdentifier:(NSString *)arg1 toParentItemWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSArray *))arg3;
 - (void)preflightTrashItemWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSArray *))arg2;
 - (void)reparentItemWithIdentifier:(NSString *)arg1 toParentItemWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(id<NSFileProviderItem>, NSError *))arg3;

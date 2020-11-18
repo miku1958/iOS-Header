@@ -10,6 +10,7 @@
 #import <CoreSpotlight/NSSecureCoding-Protocol.h>
 
 @class NSArray, NSString;
+@protocol OS_xpc_object;
 
 @interface CSSearchContext : NSObject <NSSecureCoding, NSCopying>
 {
@@ -29,6 +30,7 @@
 @property (readonly) NSArray *preferredLanguages; // @synthesize preferredLanguages=_preferredLanguages;
 @property (readonly) unsigned long long queryID; // @synthesize queryID=_queryID;
 @property (readonly) NSString *userQuery; // @synthesize userQuery=_userQuery;
+@property (readonly, nonatomic) NSObject<OS_xpc_object> *xpc_dictionary;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -39,6 +41,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithQueryID:(unsigned long long)arg1 userQuery:(id)arg2 maxItemsCount:(unsigned long long)arg3 keyboardLanguage:(id)arg4 preferredLanguages:(id)arg5;
 - (id)initWithQueryID:(unsigned long long)arg1 userQuery:(id)arg2 maxItemsCount:(unsigned long long)arg3 keyboardLanguage:(id)arg4 preferredLanguages:(id)arg5 markedText:(id)arg6 markedTextStart:(unsigned long long)arg7;
+- (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

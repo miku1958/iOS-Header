@@ -38,7 +38,7 @@
 - (void)resetDataStoreForSyncSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)syncSession:(id)arg1 applyChanges:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)syncSession:(id)arg1 didEndWithError:(id)arg2;
-- (long long)syncSession:(id)arg1 enqueueChanges:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (unsigned int)syncSession:(id)arg1 enqueueChanges:(CDUnknownBlockType)arg2 error:(id *)arg3;
 - (BOOL)syncSession:(id)arg1 resetDataStoreWithError:(id *)arg2;
 
 @end

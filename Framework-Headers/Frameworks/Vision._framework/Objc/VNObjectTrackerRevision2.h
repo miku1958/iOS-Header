@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 + (id)rpnTrackerInitProcessingQueueName;
 + (id)rpnTrackerTrackModelName;
 + (id)rpnTrackerTrackProcessingQueueName;
++ (id)serializeRPNInitializationQueue;
 + (id)serializeRPNTrackingQueue;
 - (id)initWithOptions:(id)arg1 error:(id *)arg2;
 

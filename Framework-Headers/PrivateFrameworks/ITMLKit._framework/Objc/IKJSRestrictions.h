@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) BOOL allowsErotica;
 @property (readonly, nonatomic) BOOL allowsExplicit;
 @property (readonly, nonatomic) BOOL allowsITunes;
+@property (readonly, nonatomic) BOOL allowsMusicVideos;
 @property (readonly, nonatomic) BOOL allowsShowingUndownloadedMovies;
 @property (readonly, nonatomic) BOOL allowsShowingUndownloadedTVShows;
 @property (readonly, nonatomic) BOOL appAnalyticsAllowed;

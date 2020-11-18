@@ -9,7 +9,7 @@
 #import <ContactsUI/CNPhotoPickerViewControllerDelegate-Protocol.h>
 #import <ContactsUI/CNSharingProfilePhotoPickerViewControllerDelegate-Protocol.h>
 
-@class CNContact, CNMutableContact, CNPhotoPickerViewController, CNSharingProfileAvatarItemProviderConfiguration, CNSharingProfileLogger, CNSharingProfilePhotoPickerViewController, NSString, OBBoldTrayButton;
+@class CNContact, CNMutableContact, CNPhotoPickerViewController, CNSharingProfileAvatarItemProviderConfiguration, CNSharingProfileLogger, CNSharingProfilePhotoPickerViewController, NSString, OBBoldTrayButton, OBLinkTrayButton;
 @protocol AVTAvatarRecord, CNSharingProfileOnboardingPhotoSelectionViewControllerDelegate;
 
 @interface CNSharingProfileOnboardingPhotoSelectionViewController : OBWelcomeController <CNSharingProfilePhotoPickerViewControllerDelegate, CNPhotoPickerViewControllerDelegate>
@@ -19,6 +19,8 @@
     id<AVTAvatarRecord> _avatarRecord;
     CNSharingProfileAvatarItemProviderConfiguration *_avatarItemProviderConfiguration;
     CNSharingProfileLogger *_logger;
+    OBLinkTrayButton *_setupLaterButton;
+    OBBoldTrayButton *_backButton;
     OBBoldTrayButton *_confirmButton;
     CNSharingProfilePhotoPickerViewController *_sharingPhotoPickerViewController;
     CNPhotoPickerViewController *_photoPickerViewController;
@@ -27,6 +29,7 @@
 
 @property (strong, nonatomic) CNSharingProfileAvatarItemProviderConfiguration *avatarItemProviderConfiguration; // @synthesize avatarItemProviderConfiguration=_avatarItemProviderConfiguration;
 @property (strong, nonatomic) id<AVTAvatarRecord> avatarRecord; // @synthesize avatarRecord=_avatarRecord;
+@property (strong, nonatomic) OBBoldTrayButton *backButton; // @synthesize backButton=_backButton;
 @property (strong, nonatomic) OBBoldTrayButton *confirmButton; // @synthesize confirmButton=_confirmButton;
 @property (strong, nonatomic) CNContact *contact; // @synthesize contact=_contact;
 @property (readonly, copy) NSString *debugDescription;
@@ -36,14 +39,16 @@
 @property (strong, nonatomic) CNSharingProfileLogger *logger; // @synthesize logger=_logger;
 @property (strong, nonatomic) CNPhotoPickerViewController *photoPickerViewController; // @synthesize photoPickerViewController=_photoPickerViewController;
 @property (strong, nonatomic) CNMutableContact *photoProviderContact; // @synthesize photoProviderContact=_photoProviderContact;
+@property (strong, nonatomic) OBLinkTrayButton *setupLaterButton; // @synthesize setupLaterButton=_setupLaterButton;
 @property (strong, nonatomic) CNSharingProfilePhotoPickerViewController *sharingPhotoPickerViewController; // @synthesize sharingPhotoPickerViewController=_sharingPhotoPickerViewController;
 @property (readonly) Class superclass;
 
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
 - (id)contentView;
+- (void)didTapBackButton:(id)arg1;
 - (void)didTapDoneButton:(id)arg1;
-- (unsigned long long)imageTypeFromAvatarType:(long long)arg1;
+- (void)didTapSetupLaterButton:(id)arg1;
 - (id)initWithContact:(id)arg1 avatarRecord:(id)arg2 avatarItemProviderConfiguration:(id)arg3;
 - (void)loadView;
 - (void)photoPicker:(id)arg1 didUpdatePhotoForContact:(id)arg2 withContactImage:(id)arg3;

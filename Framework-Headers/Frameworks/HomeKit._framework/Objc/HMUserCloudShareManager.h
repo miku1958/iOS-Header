@@ -35,6 +35,7 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)__registerForMessages;
+- (void)_handleDidReceiveRepairRequest:(id)arg1;
 - (void)_handleDidReceiveShare:(id)arg1;
 - (void)_registerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)configure;

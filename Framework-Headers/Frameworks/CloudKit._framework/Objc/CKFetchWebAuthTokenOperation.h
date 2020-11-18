@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSString;
+#import <CloudKit/CKFetchWebAuthTokenOperationCallbacks-Protocol.h>
 
-@interface CKFetchWebAuthTokenOperation : CKDatabaseOperation
+@class CKFetchWebAuthTokenOperationInfo, NSString;
+@protocol CKFetchWebAuthTokenOperationCallbacks;
+
+@interface CKFetchWebAuthTokenOperation : CKDatabaseOperation <CKFetchWebAuthTokenOperationCallbacks>
 {
     CDUnknownBlockType _fetchWebAuthTokenCompletionBlock;
     NSString *_APIToken;
@@ -16,20 +19,23 @@
 }
 
 @property (copy, nonatomic) NSString *APIToken; // @synthesize APIToken=_APIToken;
+@property (readonly, nonatomic) id<CKFetchWebAuthTokenOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) CDUnknownBlockType fetchWebAuthTokenCompletionBlock; // @synthesize fetchWebAuthTokenCompletionBlock=_fetchWebAuthTokenCompletionBlock;
+@property (readonly, nonatomic) CKFetchWebAuthTokenOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (copy, nonatomic) NSString *webAuthToken; // @synthesize webAuthToken=_webAuthToken;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
++ (SEL)daemonCallbackCompletionSelector;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleCompletionCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleOperationDidCompleteWithWebAuthToken:(id)arg1 metrics:(id)arg2 error:(id)arg3;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithAPIToken:(id)arg1;
-- (Class)operationInfoClass;
 - (void)performCKOperation;
 
 @end

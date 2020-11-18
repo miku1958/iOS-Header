@@ -14,7 +14,11 @@
 + (BOOL)carrierDefaultBoolForKey:(id)arg1 defaultValue:(BOOL)arg2;
 + (BOOL)deviceHasMultipleSubscriptions;
 + (id)deviceSpecificNameForKey:(id)arg1;
++ (id)imMessageForIMMessageItem:(id)arg1;
 + (BOOL)isIpad;
++ (unsigned long long)messageJunkStatus;
++ (id)threadIdentifierForMessagePart:(id)arg1;
++ (id)threadOriginatorForMessagePart:(id)arg1;
 + (BOOL)userDefaultBoolForKey:(id)arg1;
 
 @end

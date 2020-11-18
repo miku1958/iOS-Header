@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MPCPlaybackEngine, NSArray, NSMutableDictionary;
+@class MPCPlaybackAccount, MPCPlaybackEngine, NSArray, NSMutableDictionary;
 
 @interface _MPCPlaybackAccountManager : NSObject
 {
@@ -18,6 +18,7 @@
 }
 
 @property (readonly, copy, nonatomic) NSArray *accounts;
+@property (readonly, nonatomic) MPCPlaybackAccount *activeAccount;
 @property (readonly, nonatomic) BOOL hasLoadedInitialAccounts; // @synthesize hasLoadedInitialAccounts=_hasLoadedInitialAccounts;
 @property (readonly, weak, nonatomic) MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 

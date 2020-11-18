@@ -9,7 +9,6 @@
 @class HMMediaSession, NSString;
 @protocol _HMMediaProfileDelegate;
 
-__attribute__((visibility("hidden")))
 @interface _HMMediaProfile : _HMAccessoryProfile
 {
     HMMediaSession *_mediaSession;

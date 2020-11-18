@@ -10,6 +10,10 @@
 {
 }
 
+- (BOOL)canAddCaption;
+- (BOOL)canAddTitle;
+- (BOOL)canRemoveCaption;
+- (BOOL)canRemoveTitle;
 - (BOOL)displaysInstructionalText;
 - (id)initWithKNPlaceholderInfo:(id)arg1;
 - (id)instructionalText;

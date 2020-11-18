@@ -17,23 +17,41 @@
     const unsigned int *_matrixIndices;
     const float *_matrixElts;
     const char *_payloads;
+    unsigned char _featureSmoothingType;
+    unsigned char _featureScalingType;
+    unsigned char _featureNormalizationType;
+    unsigned char _outputScalingType;
+    unsigned char _activationType;
+    float _featureSmoothingFactor;
+    float _featureScalingFactor;
+    float _outputScalingFactor;
+    float _attenuationFactor;
+    float _threshold;
 }
 
 @property (readonly, nonatomic) unsigned long long outputTopicCount;
+@property (readonly, nonatomic) float threshold; // @synthesize threshold=_threshold;
 
 - (void).cxx_destruct;
 - (id)QIDWeightsWithMappedTopicIdentifier:(id)arg1;
+- (void)_applyScaling:(float *)arg1 vectorLength:(int)arg2 scalingType:(unsigned char)arg3 scalingFactor:(float)arg4;
 - (void)_enumerateSparseColumnAtIndex:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_enumerateSparseRowAtIndex:(unsigned int)arg1 block:(CDUnknownBlockType)arg2;
+- (void)_readHyperparameters:(id)arg1;
 - (void)addBias:(float *)arg1;
 - (void)addWeightedTopicScoreToBuffer:(float *)arg1 countNonZeroComponentsInBuffer:(unsigned short *)arg2 qid:(unsigned int)arg3 score:(float)arg4;
 - (void)addWeightedTopicScoreToBuffer:(float *)arg1 qid:(unsigned int)arg2 score:(float)arg3;
-- (void)halfSigmoid:(float *)arg1;
+- (void)applyFeatureNormalization:(float *)arg1 vectorLength:(int)arg2;
+- (void)applyFeatureScaling:(float *)arg1 vectorLength:(int)arg2;
+- (void)applyFeatureSmoothing:(float *)arg1 vectorLength:(int)arg2;
+- (void)applyOutputActivation:(float *)arg1;
+- (void)applyOutputAttenuation:(float *)arg1 nonzeroCounts:(unsigned short *)arg2;
+- (void)applyOutputScaling:(float *)arg1 vectorLength:(int)arg2;
+- (BOOL)containsMappedTopic:(id)arg1;
 - (id)init;
-- (id)initWithPath:(id)arg1;
+- (id)initWithPath:(id)arg1 mappingId:(id)arg2;
+- (id)initWithPath:(id)arg1 mappingId:(id)arg2 hyperparameters:(id)arg3;
 - (id)payloadForTopic:(unsigned int)arg1;
-- (void)scaleBuffer:(float *)arg1 withFactor:(float)arg2;
-- (void)sigmoid:(float *)arg1;
 
 @end
 

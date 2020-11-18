@@ -35,19 +35,25 @@
 @property (readonly, copy, nonatomic) NSString *thoroughfare;
 @property (readonly, copy, nonatomic) NSTimeZone *timeZone;
 
++ (unsigned long long)_cLMapItemSourceFromRLMapItemSource:(unsigned long long)arg1;
 + (id)placemarkWithGEOMapItem:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (id)_geoMapItem;
+- (id)_geoMapItemHandle;
 - (id)_initWithGeoMapItem:(id)arg1;
+- (id)_initWithRTMapItem:(id)arg1 location:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (void)fetchFormattedAddress:(CDUnknownBlockType)arg1 queue:(id)arg2;
 - (id)formattedAddressLines;
 - (id)fullThoroughfare;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithLocation:(id)arg1 addressDictionary:(id)arg2 region:(id)arg3 areasOfInterest:(id)arg4;
+- (id)initWithLocation:(id)arg1 addressDictionary:(id)arg2 region:(id)arg3 areasOfInterest:(id)arg4 mapItemSource:(unsigned long long)arg5 geoMapItemHandle:(id)arg6 meCardAddress:(id)arg7;
 - (id)initWithPlacemark:(id)arg1;
+- (id)mecardAddress;
 
 @end
 

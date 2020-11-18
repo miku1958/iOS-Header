@@ -6,23 +6,22 @@
 
 #import <PhotosUICore/PXAssetsDataSource.h>
 
-@class NSArray, NSString, PXForYouSuggestionAssetCollection;
+@class NSArray;
+@protocol PXDisplayAssetCollection;
 
 @interface PXForYouSuggestionsAssetsDataSource : PXAssetsDataSource
 {
-    PXForYouSuggestionAssetCollection *_collection;
+    id<PXDisplayAssetCollection> _collection;
     NSArray *_assets;
-    NSString *_collectionTitle;
 }
 
 @property (copy, nonatomic) NSArray *assets; // @synthesize assets=_assets;
-@property (copy, nonatomic) NSString *collectionTitle; // @synthesize collectionTitle=_collectionTitle;
 
 + (id)new;
 - (void).cxx_destruct;
 - (struct PXSimpleIndexPath)indexPathForAssetReference:(id)arg1;
 - (id)init;
-- (id)initWithDisplayAssets:(id)arg1 collectionTitle:(id)arg2;
+- (id)initWithDisplayAssets:(id)arg1 collection:(id)arg2;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
 - (long long)numberOfSubitemsInItem:(long long)arg1 section:(long long)arg2;

@@ -19,6 +19,8 @@ __attribute__((visibility("hidden")))
     NSDictionary *_perUserEntropy;
 }
 
+@property (readonly) NSObject<OS_dispatch_queue> *queue;
+
 + (id)sharedCache;
 - (void).cxx_destruct;
 - (id)allIdentifiersNotDispatched;

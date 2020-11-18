@@ -20,6 +20,7 @@
 @property (readonly) HDSQLiteQueryDescriptor *queryDescriptor;
 
 - (void).cxx_destruct;
+- (void)_expandLastSQLStatementIfNecessary:(struct sqlite3_stmt *)arg1;
 - (void)bindToSelectStatement:(struct sqlite3_stmt *)arg1 bindingIndex:(inout int *)arg2;
 - (id)copySelectSQLWithProperties:(id)arg1;
 - (BOOL)deleteAllEntitiesWithError:(id *)arg1;

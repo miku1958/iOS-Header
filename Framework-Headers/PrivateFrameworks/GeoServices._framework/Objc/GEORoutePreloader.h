@@ -8,7 +8,7 @@
 
 #import <GeoServices/GEOTileLoaderObserver-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOComposedRoute, NSArray, NSDate, NSString, geo_isolater;
+@class GEOApplicationAuditToken, GEOComposedRoute, NSArray, NSString, geo_isolater;
 @protocol OS_dispatch_queue;
 
 @interface GEORoutePreloader : NSObject <GEOTileLoaderObserver>
@@ -28,7 +28,8 @@
     unsigned long long _tilesUsed;
     unsigned long long _nonPreloadedTilesLoadedFromNetwork;
     unsigned long long _nonPreloadedTilesFailed;
-    NSDate *_statisticsStartDate;
+    BOOL _hasStartedStatistics;
+    double _statisticsStartMonotonicTimestamp;
 }
 
 @property (readonly, nonatomic) GEOApplicationAuditToken *auditToken; // @synthesize auditToken=_auditToken;

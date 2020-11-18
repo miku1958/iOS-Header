@@ -17,13 +17,11 @@
     struct {
         unsigned int soundType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _soundType;
     _INPBIntentMetadata *_intentMetadata;
     NSString *_messageIdentifier;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;

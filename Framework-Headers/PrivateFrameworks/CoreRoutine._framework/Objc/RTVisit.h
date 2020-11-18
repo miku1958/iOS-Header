@@ -9,7 +9,7 @@
 #import <CoreRoutine/NSCopying-Protocol.h>
 #import <CoreRoutine/NSSecureCoding-Protocol.h>
 
-@class NSDate, RTLocation;
+@class NSDate, RTLocation, RTPlaceInference;
 
 @interface RTVisit : NSObject <NSSecureCoding, NSCopying>
 {
@@ -19,6 +19,7 @@
     NSDate *_entry;
     NSDate *_exit;
     double _confidence;
+    RTPlaceInference *_placeInference;
     long long _dataPointCount;
 }
 
@@ -28,6 +29,7 @@
 @property (readonly, copy, nonatomic) NSDate *entry; // @synthesize entry=_entry;
 @property (readonly, copy, nonatomic) NSDate *exit; // @synthesize exit=_exit;
 @property (readonly, copy, nonatomic) RTLocation *location; // @synthesize location=_location;
+@property (strong, nonatomic) RTPlaceInference *placeInference; // @synthesize placeInference=_placeInference;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)stringFromVisitIncidentType:(long long)arg1;
@@ -40,7 +42,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDate:(id)arg1 type:(long long)arg2 location:(id)arg3 entry:(id)arg4 exit:(id)arg5 dataPointCount:(long long)arg6 confidence:(double)arg7;
+- (id)initWithDate:(id)arg1 type:(long long)arg2 location:(id)arg3 entry:(id)arg4 exit:(id)arg5 dataPointCount:(long long)arg6 confidence:(double)arg7 placeInference:(id)arg8;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToVisit:(id)arg1;
 

@@ -22,6 +22,7 @@
 + (id)morpherOverrideFromDictionary:(id)arg1;
 - (void).cxx_destruct;
 - (void)applyToAvatar:(id)arg1;
+- (id)description;
 - (id)initWithGeometry:(id)arg1 morpher:(id)arg2 value:(float)arg3;
 - (id)overridenMorpherForAvatar:(id)arg1;
 

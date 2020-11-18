@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class HMDNetworkRouterLANFirewall, HMDNetworkRouterLANFirewallRuleList, NSString;
 
-@interface HMDNetworkRouterLANFirewallConfiguration : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterLANFirewallConfiguration : NSObject <NSCopying, HAPTLVProtocol>
 {
     HMDNetworkRouterLANFirewall *_type;
     HMDNetworkRouterLANFirewallRuleList *_ruleList;
@@ -25,6 +25,7 @@
 @property (strong, nonatomic) HMDNetworkRouterLANFirewall *type; // @synthesize type=_type;
 
 + (id)configurationFromFirewallRuleConfiguration:(id)arg1;
++ (id)configurationWithFullAccess;
 + (id)parsedFromData:(id)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

@@ -8,7 +8,7 @@
 
 #import <AppleAccountUI/AAUIServerHook-Protocol.h>
 
-@class AAUIServerHookResponse, NSString;
+@class AAUIServerHookResponse, NSString, RUIObjectModel;
 @protocol AAUIServerHookDelegate;
 
 @interface AAUIAuthKitAuthenticatonHook : NSObject <AAUIServerHook>
@@ -16,22 +16,26 @@
     NSString *_appleId;
     NSString *_altDSID;
     id<AAUIServerHookDelegate> _delegate;
+    AAUIServerHookResponse *_serverHookResponse;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) AAUIServerHookResponse *serverHookResponse;
+@property (strong, nonatomic) RUIObjectModel *objectModel;
+@property (strong, nonatomic) AAUIServerHookResponse *serverHookResponse; // @synthesize serverHookResponse=_serverHookResponse;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_reauthenticateWithServerAttributes:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)authContextFromAttributes:(id)arg1;
 - (id)initWithUsername:(id)arg1 altDSID:(id)arg2;
 - (void)processElement:(id)arg1 attributes:(id)arg2 objectModel:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)processObjectModel:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)shouldMatchElement:(id)arg1;
 - (BOOL)shouldMatchModel:(id)arg1;
+- (void)updateResponseWithAuthResults:(id)arg1;
 
 @end
 

@@ -26,10 +26,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_boundingBoxs:1;
         unsigned int read_geohashes:1;
         unsigned int read_name:1;
-        unsigned int wrote_area:1;
-        unsigned int wrote_boundingBoxs:1;
-        unsigned int wrote_geohashes:1;
-        unsigned int wrote_name:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -44,12 +41,6 @@ __attribute__((visibility("hidden")))
 + (Class)geohashesType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsBoundingBox:(id)arg1;
-- (void)_addNoFlagsGeohashes:(id)arg1;
-- (void)_readArea;
-- (void)_readBoundingBoxs;
-- (void)_readGeohashes;
-- (void)_readName;
 - (void)addBoundingBox:(id)arg1;
 - (void)addGeohashes:(id)arg1;
 - (id)boundingBoxAtIndex:(unsigned long long)arg1;
@@ -65,7 +56,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

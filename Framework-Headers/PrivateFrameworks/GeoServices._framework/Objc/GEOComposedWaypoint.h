@@ -23,9 +23,7 @@
         unsigned int read_latLng:1;
         unsigned int read_mapItemStorage:1;
         unsigned int read_waypoint:1;
-        unsigned int wrote_latLng:1;
-        unsigned int wrote_mapItemStorage:1;
-        unsigned int wrote_waypoint:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -58,11 +56,11 @@
 - (id)_addressCandidatesForComparison;
 - (id)_locationCandidatesForComparison;
 - (id)_muidCandidatesForComparison;
-- (void)_readLatLng;
-- (void)_readMapItemStorage;
-- (void)_readWaypoint;
 - (id)_regionCandidatesForContainment;
+- (id)artwork;
 - (id)bestLatLng;
+- (id)chargingInfo;
+- (CDStruct_39925896)coordinate;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -71,7 +69,10 @@
 - (id)geoMapItem;
 - (unsigned long long)hash;
 - (id)init;
+- (id)initWithCompanionWaypoint:(id)arg1;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithLocation:(id)arg1 isCurrentLocation:(BOOL)arg2;
 - (id)initWithMapItem:(id)arg1;
 - (BOOL)isCurrentLocation;
@@ -79,10 +80,14 @@
 - (BOOL)isLocationWaypointType;
 - (BOOL)isSameAs:(id)arg1;
 - (BOOL)isSameAs:(id)arg1 comparisonCriteria:(unsigned long long)arg2;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
+- (unsigned long long)muid;
+- (id)name;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setIsCurrentLocation:(BOOL)arg1;
+- (id)styleAttributes;
 - (id)timezone;
 - (void)writeTo:(id)arg1;
 

@@ -41,6 +41,7 @@
 @property (strong) NSObject<OS_dispatch_queue> *sync; // @synthesize sync=_sync;
 
 - (void).cxx_destruct;
+- (void)_performWithPreviousResults:(id)arg1 forceNotify:(BOOL)arg2 uninstalledProxies:(id)arg3;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithAttributes:(id)arg1 flags:(unsigned long long)arg2 report:(CDUnknownBlockType)arg3;

@@ -10,6 +10,8 @@
 {
 }
 
+@property (readonly, nonatomic) BOOL showChineseNamedPointSizes;
+
 - (BOOL)isValidURLForImportedHyperlink:(id)arg1 targetDocumentRoot:(id)arg2 forCrossDocumentPaste:(BOOL)arg3;
 - (id)stringForEquationChoiceBody;
 - (id)stringForEquationChoiceTitle;

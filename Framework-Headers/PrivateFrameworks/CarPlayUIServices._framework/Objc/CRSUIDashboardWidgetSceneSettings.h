@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIApplicationSceneSettings.h>
+#import <UIKit/UICarPlayApplicationSceneSettings.h>
 
 #import <CarPlayUIServices/CRSUIDashboardWidgetSceneSettings-Protocol.h>
 
 @class NSObject, NSString;
 @protocol OS_xpc_object;
 
-@interface CRSUIDashboardWidgetSceneSettings : UIApplicationSceneSettings <CRSUIDashboardWidgetSceneSettings>
+@interface CRSUIDashboardWidgetSceneSettings : UICarPlayApplicationSceneSettings <CRSUIDashboardWidgetSceneSettings>
 {
 }
 
@@ -19,6 +19,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSObject<OS_xpc_object> *endpoint;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) long long mapStyle;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long widgetStyle;
 

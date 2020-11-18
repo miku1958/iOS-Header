@@ -6,28 +6,38 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzerProviding-Protocol.h>
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
+#import <SoundAnalysis/SNAnalyzerCreating-Protocol.h>
 #import <SoundAnalysis/SNRequest-Protocol.h>
 
 @class NSString, SNDetectSignalThresholdRequestImpl;
-@protocol SNAnalyzing;
 
-@interface SNDetectSignalThresholdRequest : NSObject <SNAnalyzerProviding, SNRequest>
+@interface SNDetectSignalThresholdRequest : NSObject <SNAnalyzerCreating, NSCopying, NSSecureCoding, SNRequest>
 {
     SNDetectSignalThresholdRequestImpl *_detector;
+    unsigned int _blockSize;
+    double _sampleRate;
+    double _magnitudeThreshold;
 }
 
-@property (readonly, weak, nonatomic) id<SNAnalyzing> analyzer;
-@property (nonatomic) unsigned int blockSize;
+@property (nonatomic) unsigned int blockSize; // @synthesize blockSize=_blockSize;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) double magnitudeThreshold;
-@property (nonatomic) double sampleRate;
+@property (nonatomic) double magnitudeThreshold; // @synthesize magnitudeThreshold=_magnitudeThreshold;
+@property (nonatomic) double sampleRate; // @synthesize sampleRate=_sampleRate;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createAnalyzerWithError:(id *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToDetectSignalThresholdRequest:(id)arg1;
 
 @end
 

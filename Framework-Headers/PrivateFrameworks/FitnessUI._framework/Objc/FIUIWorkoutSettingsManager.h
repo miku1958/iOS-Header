@@ -11,6 +11,7 @@
 @interface FIUIWorkoutSettingsManager : NSObject
 {
     FIUIWorkoutActivityType *_workoutActivityType;
+    long long _activityMoveMode;
     NSMutableDictionary *_settingsByActivityType;
     NSMutableDictionary *_settingOverridesByMetric;
     NSMutableArray *_enabledMetrics;
@@ -23,16 +24,19 @@
 @property (strong, nonatomic) NPSManager *syncManager; // @synthesize syncManager=_syncManager;
 
 + (void)obliterateUserConfiguredWorkoutMetrics;
++ (long long)readWorkoutMetricsActivityMoveMode;
 - (void).cxx_destruct;
 - (void)_clearOldMetricsIfNeeded;
 - (BOOL)_enabledMetricsAreDefaultAfterPaceMigration:(id)arg1 workoutActivityType:(id)arg2;
 - (BOOL)_hasUserMadeMetricChangesToWorkoutType:(id)arg1 enabledMetrics:(id)arg2 settingOverridesByMetric:(id)arg3 metricFormatVersion:(id)arg4;
 - (void)_migratePaceViewSettingIfNeeded;
 - (void)_readFromDomain;
+- (BOOL)_useUserConfiguredWorkoutMetricsForMetricsActivityMoveMode:(long long)arg1 activityMoveMode:(long long)arg2;
 - (void)_writeToDomainWithShouldUpdateVersion:(BOOL)arg1;
+- (void)assignMetricType:(unsigned long long)arg1 toSlotIndex:(long long)arg2;
 - (long long)disabledIndexForMetricType:(unsigned long long)arg1;
 - (id)init;
-- (id)initWithWorkoutActivityType:(id)arg1;
+- (id)initWithWorkoutActivityType:(id)arg1 activityMoveMode:(long long)arg2;
 - (BOOL)isMetricEnabled:(unsigned long long)arg1;
 - (void)moveMetricType:(unsigned long long)arg1 toEnabledIndex:(long long)arg2;
 - (id)orderedDisabledMetrics;

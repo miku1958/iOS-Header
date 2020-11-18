@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <PhotosUICore/PXMutableAssetsDataSourceManager-Protocol.h>
+
 @class NSIndexSet, NSPredicate;
 @protocol PXDisplayAsset, PXDisplayAssetCollection;
 
-@protocol PXCuratedLibraryMutableAssetsDataSourceManager
+@protocol PXCuratedLibraryMutableAssetsDataSourceManager <PXMutableAssetsDataSourceManager>
 
-@property (copy, nonatomic) NSPredicate *allPhotosFilterPredicate;
+@property (strong, nonatomic) NSPredicate *allPhotosFilterPredicate;
 @property (nonatomic) long long zoomLevel;
 
 - (BOOL)forceAccurateAllSectionsIfNeeded;

@@ -17,13 +17,11 @@
     struct {
         unsigned int attribute:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _attribute;
     NSArray *_identifiers;
     _INPBIntentMetadata *_intentMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int attribute; // @synthesize attribute=_attribute;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

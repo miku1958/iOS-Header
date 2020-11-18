@@ -26,7 +26,6 @@
 + (id)_enumerateValidIntervalsWithStartDate:(id)arg1 endDate:(id)arg2 sampleType:(id)arg3 block:(CDUnknownBlockType)arg4;
 + (id)_newSampleFromDatesWithType:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 device:(id)arg4 metadata:(id)arg5 config:(CDUnknownBlockType)arg6;
 + (id)_newSampleWithType:(id)arg1 startDate:(double)arg2 endDate:(double)arg3 device:(id)arg4 metadata:(id)arg5 config:(CDUnknownBlockType)arg6;
-+ (id)_sampleWithUUID:(id)arg1 metadata:(id)arg2 sourceBundleIdentifier:(id)arg3 creationDate:(double)arg4 sampleType:(id)arg5 startDate:(double)arg6 endDate:(double)arg7;
 + (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -38,9 +37,10 @@
 - (void)_setSampleType:(id)arg1;
 - (void)_setStartDate:(id)arg1;
 - (void)_setType:(id)arg1;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (CDStruct_912cb5d2)hk_dayIndexRangeWithCalendar:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEquivalent:(id)arg1;
 - (id)valueForKey:(id)arg1;

@@ -8,11 +8,11 @@
 
 #import <Navigation/NSSecureCoding-Protocol.h>
 
-@class GEODirectionsRequest, GEODirectionsResponse, MNLocationDetails, NSArray, NSError;
+@class GEODirectionsRequest, GEODirectionsResponse, MNLocation, NSArray, NSError;
 
 @interface MNTraceRecordingData : NSObject <NSSecureCoding>
 {
-    MNLocationDetails *_initialUserLocationDetails;
+    MNLocation *_initialUserLocation;
     NSArray *_waypoints;
     GEODirectionsRequest *_initialDirectionsRequest;
     GEODirectionsResponse *_initialDirectionsResponse;
@@ -26,7 +26,7 @@
 @property (nonatomic) double initialDirectionsRequestTimestamp; // @synthesize initialDirectionsRequestTimestamp=_initialDirectionsRequestTimestamp;
 @property (strong, nonatomic) GEODirectionsResponse *initialDirectionsResponse; // @synthesize initialDirectionsResponse=_initialDirectionsResponse;
 @property (nonatomic) double initialDirectionsResponseTimestamp; // @synthesize initialDirectionsResponseTimestamp=_initialDirectionsResponseTimestamp;
-@property (strong, nonatomic) MNLocationDetails *initialUserLocationDetails; // @synthesize initialUserLocationDetails=_initialUserLocationDetails;
+@property (strong, nonatomic) MNLocation *initialUserLocation; // @synthesize initialUserLocation=_initialUserLocation;
 @property (strong, nonatomic) NSArray *waypoints; // @synthesize waypoints=_waypoints;
 
 + (BOOL)supportsSecureCoding;

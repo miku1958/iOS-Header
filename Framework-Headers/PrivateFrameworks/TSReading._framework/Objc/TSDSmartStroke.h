@@ -11,20 +11,24 @@
 @interface TSDSmartStroke : TSDStroke
 {
     NSString *mStrokeName;
+    double mDeprecatedPatternOffsetDistance;
 }
 
-@property (copy, nonatomic) NSString *strokeName; // @synthesize strokeName=mStrokeName;
+@property (readonly, nonatomic) double deprecatedPatternOffsetDistance; // @synthesize deprecatedPatternOffsetDistance=mDeprecatedPatternOffsetDistance;
+@property (readonly, copy, nonatomic) NSString *strokeName;
 
 + (Class)classForName:(id)arg1;
 + (id)strokeWithName:(id)arg1 color:(id)arg2 width:(double)arg3;
-- (BOOL)canApplyDirectlyToRepCALayer;
+- (BOOL)canApplyDirectlyToRepRenderable;
+- (BOOL)canDrawWithOtherStroke:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (unsigned long long)hash;
-- (id)initWithColor:(id)arg1 width:(double)arg2 cap:(int)arg3 join:(int)arg4 pattern:(id)arg5 miterLimit:(double)arg6;
 - (id)initWithName:(id)arg1 color:(id)arg2 width:(double)arg3 cap:(int)arg4 join:(int)arg5 pattern:(id)arg6;
 - (id)initWithName:(id)arg1 color:(id)arg2 width:(double)arg3 cap:(int)arg4 join:(int)arg5 pattern:(id)arg6 miterLimit:(double)arg7;
 - (BOOL)isEqual:(id)arg1;
+- (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
+- (long long)mixingTypeWithObject:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (BOOL)shouldAntialiasDefeat;
 

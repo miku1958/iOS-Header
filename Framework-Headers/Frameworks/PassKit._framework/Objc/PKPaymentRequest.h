@@ -17,6 +17,7 @@
     BOOL _accountPaymentUsePeerPaymentBalance;
     BOOL _deviceSupportsPeerPaymentAccountPayment;
     BOOL _suppressTotal;
+    BOOL _paymentSummaryPinned;
     BOOL _shippingEditable;
     BOOL _requiresAddressPrecision;
     BOOL _supportsInstantFundsIn;
@@ -113,6 +114,7 @@
 @property (copy, nonatomic) NSDate *paymentDate; // @synthesize paymentDate=_paymentDate;
 @property (nonatomic) long long paymentFrequency; // @synthesize paymentFrequency=_paymentFrequency;
 @property (copy, nonatomic) NSArray *paymentSummaryItems; // @synthesize paymentSummaryItems=_paymentSummaryItems;
+@property (nonatomic, getter=isPaymentSummaryPinned) BOOL paymentSummaryPinned; // @synthesize paymentSummaryPinned=_paymentSummaryPinned;
 @property (copy, nonatomic) NSTimeZone *paymentTimeZone; // @synthesize paymentTimeZone=_paymentTimeZone;
 @property (nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 @property (nonatomic) unsigned long long requestor; // @synthesize requestor=_requestor;
@@ -127,6 +129,7 @@
 @property (copy, nonatomic) NSString *shippingEditableMessage; // @synthesize shippingEditableMessage=_shippingEditableMessage;
 @property (copy, nonatomic) NSArray *shippingMethods; // @synthesize shippingMethods=_shippingMethods;
 @property (nonatomic) unsigned long long shippingType; // @synthesize shippingType=_shippingType;
+@property (readonly) BOOL shouldUseMerchantSession;
 @property (strong, nonatomic) NSString *sourceApplicationBundleIdentifier; // @synthesize sourceApplicationBundleIdentifier=_sourceApplicationBundleIdentifier;
 @property (strong, nonatomic) NSString *sourceApplicationSecondaryIdentifier; // @synthesize sourceApplicationSecondaryIdentifier=_sourceApplicationSecondaryIdentifier;
 @property (copy, nonatomic) NSSet *supportedCountries; // @synthesize supportedCountries=_supportedCountries;

@@ -24,17 +24,16 @@
 @property (readonly) Class superclass;
 @property (readonly) NSArray *supportedImageSizeSet;
 
-+ (id)_imageAnalyzerMultiDetectorForRevision:(unsigned long long)arg1 detectionLevel:(unsigned long long)arg2 processingDevice:(id)arg3 requestBackingStore:(unsigned long long)arg4 appliedDetectorOptions:(id *)arg5 error:(id *)arg6;
++ (id)_imageAnalyzerMultiDetectorLoadedInSession:(id)arg1 forRevision:(unsigned long long)arg2 detectionLevel:(unsigned long long)arg3 processingDevice:(id)arg4 requestBackingStore:(unsigned long long)arg5 appliedDetectorOptions:(id *)arg6 error:(id *)arg7;
 + (id)_knownVNImageAnalyzerMultiDetectorSceneClassificationObservationsForRevision:(unsigned long long)arg1 requestBackingStore:(unsigned long long)arg2 error:(id *)arg3;
 + (id)_knownVNSceneClassifierLabelsForRevision:(unsigned long long)arg1 requestBackingStore:(unsigned long long)arg2 error:(id *)arg3;
-+ (id)_sceneClassifierForRevision:(unsigned long long)arg1 requestBackingStore:(unsigned long long)arg2 appliedDetectorOptions:(id *)arg3 error:(id *)arg4;
++ (id)_sceneClassifierLoadedInSession:(id)arg1 forRevision:(unsigned long long)arg2 requestBackingStore:(unsigned long long)arg3 appliedDetectorOptions:(id *)arg4 error:(id *)arg5;
 + (Class)configurationClass;
 + (const CDStruct_d47b9615 *)dependentRequestCompatability;
 + (id)knownSceneClassifications;
 + (id)knownSceneClassificationsForRevision:(unsigned long long)arg1 error:(id *)arg2;
 + (const CDStruct_7d93034e *)revisionAvailability;
-- (id)_applicableDetectorAndOptions:(id *)arg1 error:(id *)arg2;
-- (id)_classificationOperationPointsAndReturnError:(id *)arg1;
+- (id)_applicableDetectorAndOptions:(id *)arg1 loadedInSession:(id)arg2 error:(id *)arg3;
 - (id)_errorForUnimplementedSelector:(SEL)arg1 forRevision:(unsigned long long)arg2;
 - (void)_setCustomHierarchy:(id)arg1;
 - (void)applyConfigurationOfRequest:(id)arg1;
@@ -46,7 +45,7 @@
 - (CDUnknownBlockType)resultsSortingComparator;
 - (void)setRevision:(unsigned long long)arg1;
 - (void)setSceneObservation:(id)arg1;
-- (BOOL)warmUpRequestPerformer:(id)arg1 error:(id *)arg2;
+- (BOOL)warmUpSession:(id)arg1 error:(id *)arg2;
 - (BOOL)willAcceptCachedResultsFromRequestWithConfiguration:(id)arg1;
 
 @end

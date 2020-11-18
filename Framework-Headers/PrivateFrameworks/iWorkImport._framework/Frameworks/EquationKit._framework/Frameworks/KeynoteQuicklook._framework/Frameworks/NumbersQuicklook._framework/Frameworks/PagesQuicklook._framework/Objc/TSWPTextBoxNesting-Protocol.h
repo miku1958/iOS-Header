@@ -5,6 +5,8 @@
 //
 
 @protocol TSWPTextBoxNesting
-- (long long)nestedTextboxDepth;
+
+@property (readonly, nonatomic) long long nestedTextboxDepth;
+
 @end
 

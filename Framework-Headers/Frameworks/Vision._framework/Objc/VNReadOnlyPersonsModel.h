@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)faceCountForPersonWithUniqueIdentifier:(id)arg1;
 - (id)faceCountsForAllPersons;
 - (id)faceCountsForPersonsWithUniqueIdentifiers:(id)arg1;
+- (id)faceObservationsForPersonWithUniqueIdentifier:(id)arg1 error:(id *)arg2;
 - (id)initWithConfiguration:(id)arg1 faceModel:(id)arg2;
 - (unsigned long long)numberOfPersonsInPersonsModel:(id)arg1;
 - (unsigned long long)personCount;

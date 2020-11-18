@@ -14,8 +14,8 @@
 }
 
 + (id)instance;
+- (void).cxx_destruct;
 - (void)addSink:(id)arg1 withBehavior:(id)arg2;
-- (void)dealloc;
 - (id)init;
 - (void)logMeasurement:(struct IMPerfMeasurement_t *)arg1;
 

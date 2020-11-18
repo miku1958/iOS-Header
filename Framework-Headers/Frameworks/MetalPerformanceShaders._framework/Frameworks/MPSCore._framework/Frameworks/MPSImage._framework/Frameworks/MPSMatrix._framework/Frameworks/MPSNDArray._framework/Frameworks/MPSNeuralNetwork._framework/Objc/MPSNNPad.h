@@ -21,7 +21,7 @@
 @property (nonatomic) struct MPSImageCoordinate paddingSizeAfter; // @synthesize paddingSizeAfter=_paddingSizeAfter;
 @property (nonatomic) struct MPSImageCoordinate paddingSizeBefore; // @synthesize paddingSizeBefore=_paddingSizeBefore;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;

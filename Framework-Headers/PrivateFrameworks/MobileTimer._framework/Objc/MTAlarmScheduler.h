@@ -43,6 +43,7 @@
 
 + (id)_intervalToCheckForAlarmsToFireBeforeDate:(id)arg1;
 - (void).cxx_destruct;
+- (id)_additionalAlarmsToScheduleForAlarms:(id)arg1;
 - (void)_fireScheduledAlarm:(id)arg1 firedDate:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)_lastAlarmTriggerDate;
 - (id)_nextScheduledAlertIncludingBedtimeNotification:(BOOL)arg1;

@@ -15,6 +15,7 @@
 - (BOOL)isContentObscuredByDigitalHealthForCustomizationController:(_SFActivityItemCustomizationController *)arg1;
 - (BOOL)isDisplayingQuickLookDocumentForCustomizationController:(_SFActivityItemCustomizationController *)arg1;
 - (BOOL)isReaderAvailableForCustomizationController:(_SFActivityItemCustomizationController *)arg1;
+- (BOOL)isShowingReaderForCustomizationController:(_SFActivityItemCustomizationController *)arg1;
 - (WKWebView *)webViewForCustomizationController:(_SFActivityItemCustomizationController *)arg1;
 @end
 

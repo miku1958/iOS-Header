@@ -26,9 +26,11 @@
 + (id)addressDictionaryFromMapItem:(id)arg1;
 + (id)addressLabelTypeToLabel:(unsigned long long)arg1;
 + (id)addressLabelTypeToString:(unsigned long long)arg1;
++ (id)formattedPostalAddressesForContact:(id)arg1;
 + (unsigned long long)labelStringToAddressLabelType:(id)arg1;
 - (void).cxx_destruct;
-- (void)_donatePostalAddress:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)__donateAddressFromMapItem:(id)arg1 addressLabelType:(unsigned long long)arg2 donationStore:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)_donateAddressFromMapItem:(id)arg1 addressLabelType:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)_fetchMeCardWithHandler:(CDUnknownBlockType)arg1;
 - (id)_getMeCardWithError:(id *)arg1;
 - (void)_onContactStoreNotification:(id)arg1;
@@ -38,12 +40,14 @@
 - (id)addAddressToMeCardWithAddressLabelType:(unsigned long long)arg1 addressFromMapItem:(id)arg2 error:(id *)arg3;
 - (id)addressIdentifierOfContact:(id)arg1 withAddressFromMapItem:(id)arg2 error:(id *)arg3;
 - (id)addressIdentifierOfMeCardWithAddressFromMapItem:(id)arg1 error:(id *)arg2;
-- (void)donatePostalAddress:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)donateAddressFromMapItem:(id)arg1 addressLabelType:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)fetchFormattedPostalAddressesFromMeCard:(CDUnknownBlockType)arg1;
 - (void)fetchMeCardWithHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithDataProtectionManager:(id)arg1 mapServiceManager:(id)arg2 distanceCalculator:(id)arg3;
 - (void)internalAddObserver:(id)arg1 name:(id)arg2;
 - (void)internalRemoveObserver:(id)arg1 name:(id)arg2;
+- (BOOL)labelTypeValidForDonation:(unsigned long long)arg1;
 - (void)onContactStoreNotification:(id)arg1;
 - (void)onDataProtectionNotification:(id)arg1;
 - (BOOL)removeAddressOfContact:(id)arg1 withAddressIdentifier:(id)arg2 error:(id *)arg3;

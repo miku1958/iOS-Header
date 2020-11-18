@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 
 + (id)additionalGlobalOutOfLineStyleDeclarations;
 + (id)ruleDictionaryForStyle:(id)arg1;
++ (id)ruleDictionaryForStyleWithDarkInterface:(id)arg1;
 + (id)styleSet;
 - (void).cxx_destruct;
 - (void)buildComponentWithPosterFrame:(id)arg1 posterFrameStyle:(id)arg2;

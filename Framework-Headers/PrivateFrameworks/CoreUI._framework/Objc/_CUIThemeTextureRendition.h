@@ -23,10 +23,11 @@ __attribute__((visibility("hidden")))
 - (void)_setStructuredThemeStore:(id)arg1;
 - (id)_texturedImageWithKey:(id)arg1;
 - (void)dealloc;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
 - (id)mipLevels;
 - (id)provideImageInfoAtLevel:(unsigned long long)arg1 element:(unsigned long long)arg2 face:(unsigned long long)arg3 withBufferAllocator:(id)arg4;
 - (id)provideTextureInfo;
+- (long long)textureIntepretation;
 
 @end
 

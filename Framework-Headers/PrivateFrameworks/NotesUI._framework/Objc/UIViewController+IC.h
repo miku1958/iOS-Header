@@ -10,18 +10,21 @@
 
 @interface UIViewController (IC)
 
+@property (readonly, nonatomic) BOOL ic_isBeingRevealedFromPoppingViewController;
 @property (readonly, nonatomic) BOOL ic_isRTL;
 @property (readonly, nonatomic) UINavigationController *ic_rootNavigationController;
 @property (readonly, nonatomic) ICViewControllerManager *ic_viewControllerManager;
 @property (readonly, nonatomic) UIWindowScene *ic_windowScene;
 
 + (void)ic_enableUIViewAnimations:(BOOL)arg1 forBlock:(CDUnknownBlockType)arg2;
+- (void)ic_dismissViewControllerOfClass:(Class)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)ic_embedInNavigationControllerForModalPresentation;
 - (BOOL)ic_isViewVisible;
 - (double)ic_safeAreaDistanceFromBottom;
 - (double)ic_safeAreaDistanceFromTop;
 - (id)ic_safeAreaLayoutGuide;
 - (void)ic_showSingleButtonAlertWithTitle:(id)arg1 message:(id)arg2;
+- (void)ic_showSingleButtonAlertWithTitle:(id)arg1 message:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)ic_showViewController:(id)arg1 animated:(BOOL)arg2 sender:(id)arg3;
 - (id)ic_topViewController;
 @end

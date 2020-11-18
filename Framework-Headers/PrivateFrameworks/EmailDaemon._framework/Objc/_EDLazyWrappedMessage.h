@@ -10,7 +10,6 @@
 
 @interface _EDLazyWrappedMessage : _EDWrappedMessage
 {
-    long long _databaseID;
     EDMessagePersistence *_messagePersistence;
 }
 

@@ -6,29 +6,34 @@
 
 #import <PrototypeTools/PTSettings.h>
 
-@class SBHFolderSettings, SBHIconAnimationRootSettings, SBHIconSettings, SBHRootFolderSettings;
+@class SBHAppLibrarySettings, SBHFolderSettings, SBHHomePullToSearchSettings, SBHIconAnimationRootSettings, SBHIconEditingSettings, SBHIconSettings, SBHRootFolderSettings, SBHWidgetSettings;
 
 @interface SBHHomeScreenSettings : PTSettings
 {
     BOOL _usesMinimumViableHomeScreen;
     BOOL _showPopOvers;
-    BOOL _showWidgets;
-    double _defaultDragInteractionLiftDelay;
     SBHIconAnimationRootSettings *_iconAnimationSettings;
     SBHIconSettings *_iconSettings;
     SBHFolderSettings *_folderSettings;
     SBHRootFolderSettings *_rootFolderSettings;
+    SBHIconEditingSettings *_iconEditingSettings;
+    SBHWidgetSettings *_widgetSettings;
+    SBHAppLibrarySettings *_appLibrarySettings;
+    SBHHomePullToSearchSettings *_pullToSearchSettings;
 }
 
-@property (nonatomic) double defaultDragInteractionLiftDelay; // @synthesize defaultDragInteractionLiftDelay=_defaultDragInteractionLiftDelay;
+@property (strong, nonatomic) SBHAppLibrarySettings *appLibrarySettings; // @synthesize appLibrarySettings=_appLibrarySettings;
 @property (strong, nonatomic) SBHFolderSettings *folderSettings; // @synthesize folderSettings=_folderSettings;
 @property (strong, nonatomic) SBHIconAnimationRootSettings *iconAnimationSettings; // @synthesize iconAnimationSettings=_iconAnimationSettings;
+@property (strong, nonatomic) SBHIconEditingSettings *iconEditingSettings; // @synthesize iconEditingSettings=_iconEditingSettings;
 @property (strong, nonatomic) SBHIconSettings *iconSettings; // @synthesize iconSettings=_iconSettings;
+@property (strong, nonatomic) SBHHomePullToSearchSettings *pullToSearchSettings; // @synthesize pullToSearchSettings=_pullToSearchSettings;
 @property (strong, nonatomic) SBHRootFolderSettings *rootFolderSettings; // @synthesize rootFolderSettings=_rootFolderSettings;
 @property (nonatomic) BOOL showPopOvers; // @synthesize showPopOvers=_showPopOvers;
-@property (nonatomic) BOOL showWidgets; // @synthesize showWidgets=_showWidgets;
 @property (nonatomic) BOOL usesMinimumViableHomeScreen; // @synthesize usesMinimumViableHomeScreen=_usesMinimumViableHomeScreen;
+@property (strong, nonatomic) SBHWidgetSettings *widgetSettings; // @synthesize widgetSettings=_widgetSettings;
 
++ (id)homeScreenDefaults;
 + (id)settingsControllerModule;
 - (void).cxx_destruct;
 - (void)setDefaultValues;

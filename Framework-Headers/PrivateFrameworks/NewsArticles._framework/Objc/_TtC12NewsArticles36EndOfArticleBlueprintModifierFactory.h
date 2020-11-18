@@ -11,9 +11,11 @@
 @interface _TtC12NewsArticles36EndOfArticleBlueprintModifierFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *options;
-    MISSING_TYPE *feedContext;
     MISSING_TYPE *featureAvailability;
     MISSING_TYPE *sectionFactory;
+    MISSING_TYPE *feedContextFactory;
+    MISSING_TYPE *policyValidator;
+    MISSING_TYPE *layoutCollectionProvider;
 }
 
 @end

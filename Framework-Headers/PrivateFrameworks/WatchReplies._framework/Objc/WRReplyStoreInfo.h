@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface WRReplyStoreInfo : NSObject
 {
@@ -15,12 +15,14 @@
     NSString *_defaultsDomain;
     NSString *_defaultsKey;
     NSString *_defaultsChangedNotificationName;
+    NSArray *_hiddenTinkerReplyKeys;
 }
 
 @property (readonly, nonatomic) unsigned long long defaultCount; // @synthesize defaultCount=_defaultCount;
 @property (readonly, nonatomic) NSString *defaultsChangedNotificationName; // @synthesize defaultsChangedNotificationName=_defaultsChangedNotificationName;
 @property (readonly, nonatomic) NSString *defaultsDomain; // @synthesize defaultsDomain=_defaultsDomain;
 @property (readonly, nonatomic) NSString *defaultsKey; // @synthesize defaultsKey=_defaultsKey;
+@property (readonly, nonatomic) NSArray *hiddenTinkerReplyKeys; // @synthesize hiddenTinkerReplyKeys=_hiddenTinkerReplyKeys;
 @property (readonly, nonatomic) BOOL supportsSmartReplies; // @synthesize supportsSmartReplies=_supportsSmartReplies;
 
 + (id)infoForCategory:(unsigned long long)arg1;

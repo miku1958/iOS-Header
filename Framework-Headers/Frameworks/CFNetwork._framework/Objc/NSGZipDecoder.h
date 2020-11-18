@@ -26,9 +26,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)MIMEType;
-+ (BOOL)canDecodeDownloadHeaderData:(id)arg1;
-+ (BOOL)decodeDownloadHeader:(id)arg1 headerLength:(int *)arg2 modificationTime:(unsigned long long *)arg3 filename:(id *)arg4;
 - (void)dealloc;
 - (id)decodeData:(id)arg1;
 - (BOOL)decodeDownloadData:(id)arg1 dataForkData:(id *)arg2 resourceForkData:(id *)arg3;

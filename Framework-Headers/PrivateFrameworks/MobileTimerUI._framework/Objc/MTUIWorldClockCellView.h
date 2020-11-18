@@ -33,6 +33,7 @@
 @property (readonly, nonatomic) BOOL started; // @synthesize started=_started;
 
 + (id)dayAndTimeZoneOffsetStringFromDate:(id)arg1 withTimeZoneOffset:(long long)arg2 timeZoneAbbreviation:(id)arg3 spaceBeforeTimeDesignator:(BOOL)arg4;
++ (id)dayAndTimeZoneOffsetStringFromDate:(id)arg1 withTimeZoneOffset:(long long)arg2 timeZoneAbbreviation:(id)arg3 spaceBeforeTimeDesignator:(BOOL)arg4 hoursOnly:(BOOL)arg5;
 + (double)defaultHeight;
 - (void).cxx_destruct;
 - (void)_configureFonts;

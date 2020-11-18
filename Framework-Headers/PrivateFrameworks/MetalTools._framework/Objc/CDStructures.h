@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class MTLRenderPassDepthAttachmentDescriptorInternal, MTLRenderPassStencilAttachmentDescriptorInternal, NSMutableArray;
+@class MTLFunctionConstantValues, MTLGPUDebugBuffer, MTLGPUDebugDevice, NSData;
 
 #pragma mark Blocks
 
@@ -30,14 +30,60 @@ struct BinaryBuffer {
     struct StreamBuffer stream;
 };
 
-struct HeapHistoryEvent {
-    struct HeapHistoryEvent *_field1;
-    void *_field2;
-    BOOL _field3;
+struct CheckerboardRenderTargetPipelineCache {
+    struct os_unfair_lock_s _cacheLock;
+    id _library;
+    id _vertexFunction;
+    id _depthStencilState[2];
+    MTLFunctionConstantValues *_fConstants;
+    struct unordered_map<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>, MTLDebugCheckerboardFillHashKey::Hash, std::__1::equal_to<MTLDebugCheckerboardFillHashKey>, std::__1::allocator<std::__1::pair<const MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>>> _cache;
 };
 
-struct ILayerLockingPolicy {
-    CDUnknownFunctionPointerType *_field1;
+struct GPUBufferSubAlloc {
+    id buffer;
+    unsigned long long offset;
+};
+
+struct GPUDebugArgumentEncoderLayout {
+    id _field1;
+    struct unordered_map<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>>> _field2;
+};
+
+struct GPUDebugBufferDescriptorHeap {
+    struct mutex s;
+    struct vector<unsigned int, std::__1::allocator<unsigned int>> _freeIndexList;
+    struct vector<MTLGPUDebugBuffer *, std::__1::allocator<MTLGPUDebugBuffer *>> _bufferList;
+    unsigned long long _freeIndex;
+    id _argumentEncoder;
+    id _descriptorHeap;
+};
+
+struct GPUDebugConstantBufferCache {
+    unsigned long long _totalUsedMemory;
+    struct mutex _accessMutex;
+    struct unordered_map<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value, GPUDebugConstantBufferCache::Key::Hash, std::__1::equal_to<GPUDebugConstantBufferCache::Key>, std::__1::allocator<std::__1::pair<const GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>>> _cache;
+    MTLGPUDebugDevice *_device;
+};
+
+struct GPUDebugDeviceOptions {
+    unsigned int retainReflection:1;
+};
+
+struct GPUDebugEventUUIDPacket {
+    unsigned long long pipelineStateID;
+    unsigned int encoderID;
+    unsigned int eventID;
+};
+
+struct GPUDebugThreadgroupTableEntry {
+    unsigned int offset;
+    unsigned int length;
+};
+
+struct GlobalResidentBufferList {
+    unsigned int _iteration;
+    struct mutex _accessMutex;
+    struct list<id<MTLBuffer>, std::__1::allocator<id<MTLBuffer>>> _bufferList;
 };
 
 struct IndirectArgumentBufferCapabilities {
@@ -45,6 +91,16 @@ struct IndirectArgumentBufferCapabilities {
     unsigned int :1;
     unsigned int :1;
     unsigned int :29;
+};
+
+struct Key {
+    CDStruct_41a22ec7 hash;
+    NSData *data;
+};
+
+struct KeyBufferPair {
+    struct Key key;
+    id buffer;
 };
 
 struct MTLCompressedPixelFormatInfo {
@@ -56,10 +112,30 @@ struct MTLCompressedPixelFormatInfo {
 
 struct MTLGPUDebugBufferArgumentData {
     BOOL needsFlush;
+    BOOL argumentBufferBacking;
+    BOOL useLengths;
     id buffers[31];
     unsigned long long offsets[31];
     unsigned int lengths[31];
     unsigned long long gpu_address[31][2];
+};
+
+struct MTLGPUDebugStageBufferHandles {
+    unsigned long long handles[31];
+    MTLGPUDebugBuffer *buffers[31];
+    unsigned long long offsets[31];
+    BOOL needsFlush;
+};
+
+struct MTLGPUDebugThreadgroupLengths {
+    unsigned int threadgroupSizes[31];
+    struct GPUDebugThreadgroupTableEntry entries[32];
+    BOOL needsFlush;
+};
+
+struct MTLGPUDebugTileThreadgroup {
+    struct GPUDebugThreadgroupTableEntry entries[32];
+    BOOL needsFlush;
 };
 
 struct MTLNormalPixelFormatInfo {
@@ -113,7 +189,7 @@ struct MTLSamplerDescriptorHashMap {
 };
 
 struct MTLTargetDeviceArch {
-    unsigned int _field1;
+    unsigned long long _field1;
     unsigned int _field2;
     char *_field3;
 };
@@ -132,20 +208,53 @@ struct MetalBufferHeap {
     int _currentFreeIndex;
     unsigned long long _totalMemoryAllocated;
     unsigned long long _totalMemoryInUse;
-    id device;
-    unsigned long long bufferLength;
+    unsigned long long _bufferLength;
+    MTLGPUDebugDevice *_device;
+};
+
+struct Options {
+    unsigned int version;
+    int mode;
+    int programTypes;
+    int accessTypes;
+    int failMode;
+    struct {
+        unsigned int enableReporting:1;
+        unsigned int packPointerAddresses:1;
+        unsigned int unpackPointerAddress:1;
+        unsigned int forceInline:1;
+        unsigned int enableBacktracking:1;
+        unsigned int optimizeConstantDeref:1;
+        unsigned int skipVertexFetchLoads:1;
+        unsigned int enableGEPOptimization:1;
+        unsigned int emitBoundsChecking:1;
+        unsigned int runStandardOptimizations:1;
+        unsigned int backtrackFailuresAssumeSafe:1;
+        unsigned int pageDataIs32bitLength:1;
+        unsigned int forceUnrollLoops:1;
+        unsigned int mergeAccessChecks:1;
+        unsigned int convertToAB:1;
+        unsigned int arraysOfBuffersAB:1;
+        unsigned int noInlineTrivialFunctions:1;
+        unsigned int unrollMemCpyWA:1;
+        unsigned int checkGlobalConstants:1;
+        unsigned int enableTextureChecks:1;
+        unsigned int demoteGlobalConstantsToArg:1;
+        unsigned int argumentPointerIndirection:1;
+        unsigned int enableThreadgroupMemoryChecks:1;
+        unsigned int mergeThreadgroupGlobals:1;
+        unsigned int mergeThreadgroupArguments:1;
+        unsigned int tagThreadgroupPointers:1;
+        unsigned int noInlineCheckFunctions:1;
+        unsigned int enableJumpThreading:1;
+        unsigned int enableICBSupport:1;
+    } ;
 };
 
 struct ReportBufferEntry {
     unsigned long long _field1;
     id _field2;
     unsigned long long _field3;
-};
-
-struct ResourceTrackingDeferredAttachments {
-    NSMutableArray *colorAttachments;
-    MTLRenderPassDepthAttachmentDescriptorInternal *depthAttachment;
-    MTLRenderPassStencilAttachmentDescriptorInternal *stencilAttachment;
 };
 
 struct StreamBuffer {
@@ -158,6 +267,16 @@ struct StructType {
     struct vector<MemberRef, std::__1::allocator<MemberRef>> _field1;
 };
 
+struct _MTLMessageContext {
+    long long _field1;
+    char *_field2;
+    unsigned int _field3;
+    id _field4;
+    long long _field5;
+    id _field6;
+    char *_field7;
+};
+
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
@@ -167,16 +286,41 @@ struct __hash_node_base<std::__1::__hash_node<AttachmentDescriptorSimple, void *
     struct __hash_node_base<std::__1::__hash_node<AttachmentDescriptorSimple, void *>*> *__next_;
 };
 
+struct __hash_node_base<std::__1::__hash_node<MTLDebugCommandBuffer *, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<MTLDebugCommandBuffer *, void *>*> *__next_;
+};
+
+struct __hash_node_base<std::__1::__hash_node<MTLToolsObject *, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<MTLToolsObject *, void *>*> *__next_;
+};
+
+struct __hash_node_base<std::__1::__hash_node<id<MTLDebugResourcePurgeable>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<id<MTLDebugResourcePurgeable>, void *>*> *__next_;
+};
+
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, void *>*> *__next_;
+};
+
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, void *>*> *__next_;
+};
+
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*> *__next_;
+};
+
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::array<unsigned long long, 3>, unsigned int>, void *>*> {
     struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::array<unsigned long long, 3>, unsigned int>, void *>*> *__next_;
 };
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, unsigned long long>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, unsigned long long>, void *>*> *__next_;
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, void *>*> *__next_;
 };
 
-struct __hash_node_base<std::__1::__hash_node<void *, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<void *, void *>*> *__next_;
+struct __list_node_base<id<MTLBuffer>, void *> {
+    struct __list_node_base<id<MTLBuffer>, void *> *__prev_;
+    struct __list_node_base<id<MTLBuffer>, void *> *__next_;
 };
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
@@ -185,6 +329,18 @@ struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
 
 struct array<AttachmentDescriptorSimple, 8> {
     struct AttachmentDescriptorSimple __elems_[8];
+};
+
+struct atomic<int> {
+    struct __cxx_atomic_impl<int, std::__1::__cxx_atomic_base_impl<int>> {
+        _Atomic int __a_value;
+    } __a_;
+};
+
+struct atomic<unsigned long long> {
+    struct __cxx_atomic_impl<unsigned long long, std::__1::__cxx_atomic_base_impl<unsigned long long>> {
+        _Atomic unsigned long long __a_value;
+    } __a_;
 };
 
 struct deque<id, std::__1::allocator<id>> {
@@ -202,6 +358,13 @@ struct deque<id, std::__1::allocator<id>> {
     } __size_;
 };
 
+struct list<id<MTLBuffer>, std::__1::allocator<id<MTLBuffer>>> {
+    struct __list_node_base<id<MTLBuffer>, void *> __end_;
+    struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__list_node<id<MTLBuffer>, void *>>> {
+        unsigned long long __value_;
+    } __size_alloc_;
+};
+
 struct mutex {
     struct _opaque_pthread_mutex_t {
         long long __sig;
@@ -209,11 +372,15 @@ struct mutex {
     } __m_;
 };
 
+struct once_flag {
+    unsigned long long __state_;
+};
+
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
-struct pair<MTLDebugSharedEvent *, unsigned long long>;
+struct pair<NSData *, unsigned long>;
 
 struct pair<id<MTLBuffer>, unsigned long> {
     id _field1;
@@ -232,17 +399,77 @@ struct set<unsigned int, std::__1::less<unsigned int>, std::__1::allocator<unsig
     } _field1;
 };
 
-struct unique_ptr<ILayerLockingPolicy, std::__1::default_delete<ILayerLockingPolicy>> {
-    struct __compressed_pair<ILayerLockingPolicy *, std::__1::default_delete<ILayerLockingPolicy>> {
-        struct ILayerLockingPolicy *__value_;
-    } __ptr_;
-};
-
 struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<AttachmentDescriptorSimple, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<AttachmentDescriptorSimple, void *>*>*>>> {
     struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<AttachmentDescriptorSimple, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<AttachmentDescriptorSimple, void *>*>*>>> {
         struct __hash_node_base<std::__1::__hash_node<AttachmentDescriptorSimple, void *>*> **__value_;
         struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<AttachmentDescriptorSimple, void *>*>*>> {
             struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<AttachmentDescriptorSimple, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<MTLDebugCommandBuffer *, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<MTLDebugCommandBuffer *, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<MTLDebugCommandBuffer *, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<MTLDebugCommandBuffer *, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<MTLDebugCommandBuffer *, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<MTLDebugCommandBuffer *, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<MTLDebugCommandBuffer *, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<MTLToolsObject *, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<MTLToolsObject *, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<MTLToolsObject *, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<MTLToolsObject *, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<MTLToolsObject *, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<MTLToolsObject *, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<MTLToolsObject *, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<id<MTLDebugResourcePurgeable>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<id<MTLDebugResourcePurgeable>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<id<MTLDebugResourcePurgeable>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<id<MTLDebugResourcePurgeable>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<id<MTLDebugResourcePurgeable>, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<id<MTLDebugResourcePurgeable>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<id<MTLDebugResourcePurgeable>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
@@ -260,26 +487,60 @@ struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__h
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, unsigned long long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, unsigned long long>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, unsigned long long>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, unsigned long long>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, unsigned long long>, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, unsigned long long>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, unsigned long long>, void *>*>*>> {
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, void *>*>*>> {
                 unsigned long long __value_;
             } __data_;
         } __value_;
     } __ptr_;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<void *, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<void *, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<void *, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<void *, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<void *, void *>*> **__value_;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<void *, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<void *, void *>*>*>> {
-                unsigned long long __value_;
-            } __data_;
-        } __value_;
-    } __ptr_;
+struct unordered_map<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value, GPUDebugConstantBufferCache::Key::Hash, std::__1::equal_to<GPUDebugConstantBufferCache::Key>, std::__1::allocator<std::__1::pair<const GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>>> {
+    struct __hash_table<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, std::__1::__unordered_map_hasher<GPUDebugConstantBufferCache::Key, std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, GPUDebugConstantBufferCache::Key::Hash, true>, std::__1::__unordered_map_equal<GPUDebugConstantBufferCache::Key, std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, std::__1::equal_to<GPUDebugConstantBufferCache::Key>, true>, std::__1::allocator<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, void *>*> __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<GPUDebugConstantBufferCache::Key, std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, GPUDebugConstantBufferCache::Key::Hash, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<GPUDebugConstantBufferCache::Key, std::__1::__hash_value_type<GPUDebugConstantBufferCache::Key, GPUDebugConstantBufferCache::Value>, std::__1::equal_to<GPUDebugConstantBufferCache::Key>, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct unordered_map<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>, MTLDebugCheckerboardFillHashKey::Hash, std::__1::equal_to<MTLDebugCheckerboardFillHashKey>, std::__1::allocator<std::__1::pair<const MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>>> {
+    struct __hash_table<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, std::__1::__unordered_map_hasher<MTLDebugCheckerboardFillHashKey, std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, MTLDebugCheckerboardFillHashKey::Hash, true>, std::__1::__unordered_map_equal<MTLDebugCheckerboardFillHashKey, std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, std::__1::equal_to<MTLDebugCheckerboardFillHashKey>, true>, std::__1::allocator<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, void *>*> __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<MTLDebugCheckerboardFillHashKey, std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, MTLDebugCheckerboardFillHashKey::Hash, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<MTLDebugCheckerboardFillHashKey, std::__1::__hash_value_type<MTLDebugCheckerboardFillHashKey, id<MTLRenderPipelineState>>, std::__1::equal_to<MTLDebugCheckerboardFillHashKey>, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct unordered_map<SubView, unsigned long, SubView::hash_t, SubView::equal_t, std::__1::allocator<std::__1::pair<const SubView, unsigned long>>> {
+    struct __hash_table<std::__1::__hash_value_type<SubView, unsigned long>, std::__1::__unordered_map_hasher<SubView, std::__1::__hash_value_type<SubView, unsigned long>, SubView::hash_t, true>, std::__1::__unordered_map_equal<SubView, std::__1::__hash_value_type<SubView, unsigned long>, SubView::equal_t, true>, std::__1::allocator<std::__1::__hash_value_type<SubView, unsigned long>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*> __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<SubView, std::__1::__hash_value_type<SubView, unsigned long>, SubView::hash_t, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<SubView, std::__1::__hash_value_type<SubView, unsigned long>, SubView::equal_t, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
 };
 
 struct unordered_map<std::__1::array<unsigned long long, 3>, unsigned int, MTLSamplerDescriptorHashMap::hash_t, MTLSamplerDescriptorHashMap::equal_t, std::__1::allocator<std::__1::pair<const std::__1::array<unsigned long long, 3>, unsigned int>>> {
@@ -297,16 +558,16 @@ struct unordered_map<std::__1::array<unsigned long long, 3>, unsigned int, MTLSa
     } __table_;
 };
 
-struct unordered_map<unsigned long long, unsigned long long, std::__1::hash<unsigned long long>, std::__1::equal_to<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, unsigned long long>>> {
-    struct __hash_table<std::__1::__hash_value_type<unsigned long long, unsigned long long>, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, unsigned long long>, std::__1::hash<unsigned long long>, true>, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, unsigned long long>, std::__1::equal_to<unsigned long long>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned long long, unsigned long long>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, unsigned long long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, unsigned long long>, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, unsigned long long>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, unsigned long long>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long long, unsigned long long>, void *>*> __value_;
+struct unordered_map<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>, std::__1::hash<unsigned int>, std::__1::equal_to<unsigned int>, std::__1::allocator<std::__1::pair<const unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>>> {
+    struct __hash_table<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, std::__1::__unordered_map_hasher<unsigned int, std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, std::__1::hash<unsigned int>, true>, std::__1::__unordered_map_equal<unsigned int, std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, std::__1::equal_to<unsigned int>, true>, std::__1::allocator<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, void *>*> __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned long long, std::__1::__hash_value_type<unsigned long long, unsigned long long>, std::__1::hash<unsigned long long>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<unsigned int, std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, std::__1::hash<unsigned int>, true>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned long long, std::__1::__hash_value_type<unsigned long long, unsigned long long>, std::__1::equal_to<unsigned long long>, true>> {
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<unsigned int, std::__1::__hash_value_type<unsigned int, std::__1::unique_ptr<GPUDebugArgumentEncoderLayout, std::__1::default_delete<GPUDebugArgumentEncoderLayout>>>, std::__1::equal_to<unsigned int>, true>> {
             float __value_;
         } __p3_;
     } __table_;
@@ -327,19 +588,57 @@ struct unordered_multiset<AttachmentDescriptorSimple, AttachmentDescriptorSimple
     } __table_;
 };
 
-struct unordered_set<void *, std::__1::hash<void *>, std::__1::equal_to<void *>, std::__1::allocator<void *>> {
-    struct __hash_table<void *, std::__1::hash<void *>, std::__1::equal_to<void *>, std::__1::allocator<void *>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<void *, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<void *, void *>*>*>>> __bucket_list_;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<void *, void *>*>, std::__1::allocator<std::__1::__hash_node<void *, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<void *, void *>*> __value_;
+struct unordered_set<MTLDebugCommandBuffer *, std::__1::hash<MTLDebugCommandBuffer *>, std::__1::equal_to<MTLDebugCommandBuffer *>, std::__1::allocator<MTLDebugCommandBuffer *>> {
+    struct __hash_table<MTLDebugCommandBuffer *, std::__1::hash<MTLDebugCommandBuffer *>, std::__1::equal_to<MTLDebugCommandBuffer *>, std::__1::allocator<MTLDebugCommandBuffer *>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<MTLDebugCommandBuffer *, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<MTLDebugCommandBuffer *, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<MTLDebugCommandBuffer *, void *>*>, std::__1::allocator<std::__1::__hash_node<MTLDebugCommandBuffer *, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<MTLDebugCommandBuffer *, void *>*> __value_;
         } __p1_;
-        struct __compressed_pair<unsigned long, std::__1::hash<void *>> {
+        struct __compressed_pair<unsigned long, std::__1::hash<MTLDebugCommandBuffer *>> {
             unsigned long long __value_;
         } __p2_;
-        struct __compressed_pair<float, std::__1::equal_to<void *>> {
+        struct __compressed_pair<float, std::__1::equal_to<MTLDebugCommandBuffer *>> {
             float __value_;
         } __p3_;
     } __table_;
+};
+
+struct unordered_set<MTLToolsObject *, std::__1::hash<MTLToolsObject *>, std::__1::equal_to<MTLToolsObject *>, std::__1::allocator<MTLToolsObject *>> {
+    struct __hash_table<MTLToolsObject *, std::__1::hash<MTLToolsObject *>, std::__1::equal_to<MTLToolsObject *>, std::__1::allocator<MTLToolsObject *>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<MTLToolsObject *, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<MTLToolsObject *, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<MTLToolsObject *, void *>*>, std::__1::allocator<std::__1::__hash_node<MTLToolsObject *, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<MTLToolsObject *, void *>*> __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__1::hash<MTLToolsObject *>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__1::equal_to<MTLToolsObject *>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct unordered_set<id<MTLDebugResourcePurgeable>, std::__1::hash<id<MTLDebugResourcePurgeable>>, std::__1::equal_to<id<MTLDebugResourcePurgeable>>, std::__1::allocator<id<MTLDebugResourcePurgeable>>> {
+    struct __hash_table<id<MTLDebugResourcePurgeable>, std::__1::hash<id<MTLDebugResourcePurgeable>>, std::__1::equal_to<id<MTLDebugResourcePurgeable>>, std::__1::allocator<id<MTLDebugResourcePurgeable>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<id<MTLDebugResourcePurgeable>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<id<MTLDebugResourcePurgeable>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<id<MTLDebugResourcePurgeable>, void *>*>, std::__1::allocator<std::__1::__hash_node<id<MTLDebugResourcePurgeable>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<id<MTLDebugResourcePurgeable>, void *>*> __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__1::hash<id<MTLDebugResourcePurgeable>>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__1::equal_to<id<MTLDebugResourcePurgeable>>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct vector<MTLGPUDebugBuffer *, std::__1::allocator<MTLGPUDebugBuffer *>> {
+    id *__begin_;
+    id *__end_;
+    struct __compressed_pair<MTLGPUDebugBuffer **, std::__1::allocator<MTLGPUDebugBuffer *>> {
+        id *__value_;
+    } __end_cap_;
 };
 
 struct vector<MTLScissorRect, std::__1::allocator<MTLScissorRect>> {
@@ -398,11 +697,11 @@ struct vector<id<MTLBuffer>, std::__1::allocator<id<MTLBuffer>>> {
     } __end_cap_;
 };
 
-struct vector<std::__1::pair<MTLDebugSharedEvent *, unsigned long long>, std::__1::allocator<std::__1::pair<MTLDebugSharedEvent *, unsigned long long>>> {
-    struct pair<MTLDebugSharedEvent *, unsigned long long> *__begin_;
-    struct pair<MTLDebugSharedEvent *, unsigned long long> *__end_;
-    struct __compressed_pair<std::__1::pair<MTLDebugSharedEvent *, unsigned long long>*, std::__1::allocator<std::__1::pair<MTLDebugSharedEvent *, unsigned long long>>> {
-        struct pair<MTLDebugSharedEvent *, unsigned long long> *__value_;
+struct vector<std::__1::pair<NSData *, unsigned long>, std::__1::allocator<std::__1::pair<NSData *, unsigned long>>> {
+    struct pair<NSData *, unsigned long> *__begin_;
+    struct pair<NSData *, unsigned long> *__end_;
+    struct __compressed_pair<std::__1::pair<NSData *, unsigned long>*, std::__1::allocator<std::__1::pair<NSData *, unsigned long>>> {
+        struct pair<NSData *, unsigned long> *__value_;
     } __end_cap_;
 };
 
@@ -411,6 +710,14 @@ struct vector<unsigned int, std::__1::allocator<unsigned int>> {
     unsigned int *__end_;
     struct __compressed_pair<unsigned int *, std::__1::allocator<unsigned int>> {
         unsigned int *__value_;
+    } __end_cap_;
+};
+
+struct vector<void (^)(id<MTLCommandBuffer>), std::__1::allocator<void (^)(id<MTLCommandBuffer>)>> {
+    CDUnknownBlockType *__begin_;
+    CDUnknownBlockType *__end_;
+    struct __compressed_pair<void (^*)(id<MTLCommandBuffer>), std::__1::allocator<void (^)(id<MTLCommandBuffer>)>> {
+        CDUnknownBlockType *__value_;
     } __end_cap_;
 };
 
@@ -439,67 +746,69 @@ typedef struct {
 } CDStruct_a06f635e;
 
 typedef struct {
-    unsigned int maxColorAttachments;
-    unsigned int maxVertexAttributes;
-    unsigned int maxVertexBuffers;
-    unsigned int maxVertexTextures;
-    unsigned int maxVertexSamplers;
-    unsigned int maxVertexInlineDataSize;
-    unsigned int maxInterpolants;
-    unsigned int maxFragmentBuffers;
-    unsigned int maxFragmentTextures;
-    unsigned int maxFragmentSamplers;
-    unsigned int maxFragmentInlineDataSize;
-    unsigned int maxComputeBuffers;
-    unsigned int maxComputeTextures;
-    unsigned int maxComputeSamplers;
-    unsigned int maxComputeInlineDataSize;
-    unsigned int maxComputeLocalMemorySizes;
-    unsigned int maxTotalComputeThreadsPerThreadgroup;
-    unsigned int maxComputeThreadgroupMemory;
-    float maxLineWidth;
-    float maxPointSize;
-    unsigned int maxVisibilityQueryOffset;
-    unsigned int padmaxBufferLength;
-    unsigned int minConstantBufferAlignmentBytes;
-    unsigned int minBufferNoCopyAlignmentBytes;
-    unsigned int maxTextureWidth1D;
-    unsigned int maxTextureWidth2D;
-    unsigned int maxTextureHeight2D;
-    unsigned int maxTextureWidth3D;
-    unsigned int maxTextureHeight3D;
-    unsigned int maxTextureDepth3D;
-    unsigned int maxTextureDimensionCube;
-    unsigned int maxTextureLayers;
-    unsigned int linearTextureAlignmentBytes;
-    unsigned int iosurfaceTextureAlignmentBytes;
-    unsigned int iosurfaceReadOnlyTextureAlignmentBytes;
-    unsigned int deviceLinearTextureAlignmentBytes;
-    unsigned int deviceLinearReadOnlyTextureAlignmentBytes;
-    unsigned int maxFunctionConstantIndices;
-    unsigned int maxComputeThreadgroupMemoryAlignmentBytes;
-    unsigned int maxInterpolatedComponents;
-    unsigned int maxTessellationFactor;
-    unsigned int maxIndirectBuffers;
-    unsigned int maxIndirectTextures;
-    unsigned int maxIndirectSamplers;
-    unsigned int maxIndirectSamplersPerDevice;
-    unsigned int maxViewportCount;
-    unsigned int maxCustomSamplePositions;
-    unsigned int maxVertexAmplificationFactor;
-    unsigned int maxVertexAmplificationCount;
-    unsigned int maxTextureBufferWidth;
-    unsigned int maxComputeAttributes;
-    unsigned int maxFramebufferStorageBits;
-    unsigned int linearTextureArrayAlignmentBytes;
-    unsigned int linearTextureArrayAlignmentSlice;
-    unsigned int maxTileBuffers;
-    unsigned int maxTileTextures;
-    unsigned int maxTileSamplers;
-    unsigned int maxTileInlineDataSize;
-    unsigned int minTilePixels;
-    unsigned long long maxBufferLength;
-} CDStruct_886a8514;
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    unsigned int _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    unsigned int _field9;
+    unsigned int _field10;
+    unsigned int _field11;
+    unsigned int _field12;
+    unsigned int _field13;
+    unsigned int _field14;
+    unsigned int _field15;
+    unsigned int _field16;
+    unsigned int _field17;
+    unsigned int _field18;
+    unsigned int _field19;
+    unsigned int _field20;
+    unsigned int _field21;
+    unsigned int _field22;
+    unsigned int _field23;
+    unsigned int _field24;
+    unsigned int _field25;
+    unsigned int _field26;
+    float _field27;
+    float _field28;
+    unsigned int _field29;
+    unsigned int _field30;
+    unsigned int _field31;
+    unsigned int _field32;
+    unsigned int _field33;
+    unsigned int _field34;
+    unsigned int _field35;
+    unsigned int _field36;
+    unsigned int _field37;
+    unsigned int _field38;
+    unsigned int _field39;
+    unsigned int _field40;
+    unsigned int _field41;
+    unsigned int _field42;
+    unsigned int _field43;
+    unsigned int _field44;
+    unsigned int _field45;
+    unsigned int _field46;
+    unsigned int _field47;
+    unsigned int _field48;
+    unsigned int _field49;
+    unsigned int _field50;
+    unsigned int _field51;
+    unsigned int _field52;
+    unsigned int _field53;
+    unsigned int _field54;
+    unsigned int _field55;
+    unsigned int _field56;
+    unsigned int _field57;
+    unsigned int _field58;
+    unsigned int _field59;
+    unsigned int _field60;
+    unsigned int _field61;
+    unsigned long long _field62;
+} CDStruct_4a42450c;
 
 typedef struct {
     unsigned int _field1;
@@ -508,24 +817,24 @@ typedef struct {
 } CDStruct_32a7f38a;
 
 typedef struct {
-    unsigned int _field1;
-    unsigned int _field2;
-} CDStruct_c0454aff;
+    unsigned int viewportArrayIndexOffset;
+    unsigned int renderTargetArrayIndexOffset;
+} CDStruct_1987c1e3;
 
 typedef struct {
-    unsigned long long x;
-    unsigned long long y;
-    unsigned long long width;
-    unsigned long long height;
-} CDStruct_5f3a0cd7;
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+} CDStruct_33dcf794;
 
 typedef struct {
     unsigned long long _field1[2];
 } CDStruct_492b6082;
 
 typedef struct {
-    unsigned char _field1[32];
-} CDStruct_5af0f983;
+    unsigned char key[32];
+} CDStruct_41a22ec7;
 
 typedef struct {
     unsigned int :8;
@@ -589,6 +898,21 @@ typedef struct pair<id<MTLBuffer>, unsigned long> {
     unsigned long long _field2;
 } pair_eb21f6dd;
 
+typedef struct unordered_map<SubView, unsigned long, SubView::hash_t, SubView::equal_t, std::__1::allocator<std::__1::pair<const SubView, unsigned long>>> {
+    struct __hash_table<std::__1::__hash_value_type<SubView, unsigned long>, std::__1::__unordered_map_hasher<SubView, std::__1::__hash_value_type<SubView, unsigned long>, SubView::hash_t, true>, std::__1::__unordered_map_equal<SubView, std::__1::__hash_value_type<SubView, unsigned long>, SubView::equal_t, true>, std::__1::allocator<std::__1::__hash_value_type<SubView, unsigned long>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<SubView, unsigned long>, void *>*> __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<SubView, std::__1::__hash_value_type<SubView, unsigned long>, SubView::hash_t, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<SubView, std::__1::__hash_value_type<SubView, unsigned long>, SubView::equal_t, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+} unordered_map_1c15cb27;
+
 typedef struct vector<MTLScissorRect, std::__1::allocator<MTLScissorRect>> {
     CDStruct_183601bc *__begin_;
     CDStruct_183601bc *__end_;
@@ -604,4 +928,11 @@ typedef struct vector<MTLViewport, std::__1::allocator<MTLViewport>> {
         CDStruct_183601bc *__value_;
     } __end_cap_;
 } vector_9706d78e;
+
+#pragma mark Typedef'd Unions
+
+typedef union {
+    CDStruct_4af8c268 _field1;
+    CDStruct_4af8c268 _field2;
+} CDUnion_c6e49ed4;
 

@@ -8,6 +8,7 @@
 
 @class NSString, UIImage, UIImageView;
 
+__attribute__((visibility("hidden")))
 @interface MPVideoBackgroundView : UIView
 {
     long long _interfaceOrientation;

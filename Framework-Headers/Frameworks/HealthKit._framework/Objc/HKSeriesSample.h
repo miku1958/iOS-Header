@@ -18,8 +18,8 @@
 + (BOOL)supportsSecureCoding;
 - (void)_setCount:(unsigned long long)arg1;
 - (BOOL)_shouldNotifyOnInsert;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)_validateSample;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (id)_valueDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

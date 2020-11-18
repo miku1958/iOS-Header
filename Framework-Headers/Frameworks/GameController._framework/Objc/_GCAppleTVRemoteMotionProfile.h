@@ -8,6 +8,7 @@
 
 @class CMMotionManager, GCController;
 
+__attribute__((visibility("hidden")))
 @interface _GCAppleTVRemoteMotionProfile : GCMotion
 {
     CDStruct_31142d93 _gravity;
@@ -51,7 +52,10 @@
 - (struct GCQuaternion)attitude;
 - (id)controller;
 - (CDStruct_39925896)gravity;
+- (BOOL)hasAttitude;
 - (BOOL)hasAttitudeAndRotationRate;
+- (BOOL)hasGravityAndUserAcceleration;
+- (BOOL)hasRotationRate;
 - (id)initWithController:(id)arg1;
 - (CDUnknownBlockType)internalValueChangedHandler;
 - (BOOL)isEmulatedMicroGamepad;

@@ -37,6 +37,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithIdentifier:(id)arg1 value:(id)arg2;
 - (id)initWithValue:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)shortDescription;

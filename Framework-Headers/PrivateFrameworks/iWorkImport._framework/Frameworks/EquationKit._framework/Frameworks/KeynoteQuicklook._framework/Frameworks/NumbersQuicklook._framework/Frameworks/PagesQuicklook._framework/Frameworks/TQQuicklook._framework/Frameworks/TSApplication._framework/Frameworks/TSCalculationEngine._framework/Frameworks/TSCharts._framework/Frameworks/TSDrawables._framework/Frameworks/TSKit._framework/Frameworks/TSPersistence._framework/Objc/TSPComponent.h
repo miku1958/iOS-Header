@@ -8,7 +8,7 @@
 
 #import <TSPersistence/NSDiscardableContent-Protocol.h>
 
-@class NSArray, NSDate, NSMapTable, NSMutableSet, NSString, TSPComponentExternalReferenceMap, TSPComponentObjectUUIDMap, TSPObject, TSPObjectReferenceMap;
+@class NSArray, NSDate, NSIndexSet, NSMapTable, NSMutableSet, NSString, TSPComponentExternalReferenceMap, TSPComponentObjectUUIDMap, TSPObject, TSPObjectReferenceMap;
 @protocol OS_dispatch_queue, TSPComponentDelegate;
 
 @interface TSPComponent : NSObject <NSDiscardableContent>
@@ -29,6 +29,7 @@
     TSPObject *_weakRootObject;
     NSMapTable *_writtenObjects;
     TSPComponentExternalReferenceMap *_externalReferenceMap;
+    NSIndexSet *_ambiguousReferences;
     NSMutableSet *_dataReferences;
     _Atomic struct _flags;
     TSPComponentObjectUUIDMap *_componentObjectUUIDMap;
@@ -37,6 +38,7 @@
     TSPObjectReferenceMap *_objectReferenceMap;
 }
 
+@property (readonly, nonatomic) NSIndexSet *ambiguousReferences;
 @property (readonly, nonatomic) BOOL canBeDropped;
 @property (readonly, nonatomic) TSPComponentObjectUUIDMap *componentObjectUUIDMap; // @synthesize componentObjectUUIDMap=_componentObjectUUIDMap;
 @property (readonly, nonatomic) unsigned long long componentReadVersion;
@@ -59,6 +61,7 @@
 @property (readonly) unsigned char packageIdentifier;
 @property (readonly) BOOL persisted;
 @property (readonly, nonatomic) NSString *preferredLocator; // @synthesize preferredLocator=_preferredLocator;
+@property (readonly, nonatomic) unsigned char requiredPackageIdentifier;
 @property (strong) TSPObject *rootObject;
 @property (readonly, nonatomic) unsigned long long saveToken;
 
@@ -98,7 +101,7 @@
 - (void)setModified:(BOOL)arg1 forObject:(id)arg2;
 - (void)setModified:(BOOL)arg1 forObject:(id)arg2 isDocumentUpgrade:(BOOL)arg3;
 - (void)setModifiedImpl:(BOOL)arg1 forObject:(id)arg2;
-- (void)setPackageIdentifier:(unsigned char)arg1 preferredLocator:(id)arg2 locator:(id)arg3 isStoredOutsideObjectArchive:(BOOL)arg4 compressionAlgorithm:(long long)arg5 rootObjectOrNil:(id)arg6 archivedObjects:(id)arg7 externalReferenceMap:(id)arg8 dataReferences:(id)arg9 documentReadVersion:(unsigned long long)arg10 documentWriteVersion:(unsigned long long)arg11 componentReadVersion:(unsigned long long)arg12 componentRequiredVersion:(unsigned long long)arg13 canBeDropped:(BOOL)arg14 isWasteful:(BOOL)arg15 featureInfos:(id)arg16 componentObjectUUIDMap:(id)arg17 objectReferenceMap:(id)arg18 saveToken:(unsigned long long)arg19 encodedLength:(unsigned long long)arg20 lastModificationDate:(id)arg21 wasCopied:(BOOL)arg22 wasModifiedDuringWrite:(BOOL)arg23;
+- (void)setPackageIdentifier:(unsigned char)arg1 preferredLocator:(id)arg2 locator:(id)arg3 isStoredOutsideObjectArchive:(BOOL)arg4 compressionAlgorithm:(long long)arg5 rootObjectOrNil:(id)arg6 archivedObjects:(id)arg7 externalReferenceMap:(id)arg8 ambiguousReferences:(id)arg9 dataReferences:(id)arg10 documentReadVersion:(unsigned long long)arg11 documentWriteVersion:(unsigned long long)arg12 componentReadVersion:(unsigned long long)arg13 componentRequiredVersion:(unsigned long long)arg14 canBeDropped:(BOOL)arg15 isWasteful:(BOOL)arg16 requiredPackageIdentifier:(unsigned char)arg17 featureInfos:(id)arg18 componentObjectUUIDMap:(id)arg19 objectReferenceMap:(id)arg20 saveToken:(unsigned long long)arg21 encodedLength:(unsigned long long)arg22 lastModificationDate:(id)arg23 wasCopied:(BOOL)arg24 wasModifiedDuringWrite:(BOOL)arg25;
 - (BOOL)shouldForceCaching;
 - (BOOL)shouldKeepStrongObjectImpl;
 - (void)willDiscardComponent;

@@ -80,20 +80,3 @@ typedef struct {
     long long _field4;
 } CDStruct_198678f7;
 
-#pragma mark Named Unions
-
-union _GLKMatrix3 {
-    struct {
-        float _field1;
-        float _field2;
-        float _field3;
-        float _field4;
-        float _field5;
-        float _field6;
-        float _field7;
-        float _field8;
-        float _field9;
-    } _field1;
-    float _field2[9];
-};
-

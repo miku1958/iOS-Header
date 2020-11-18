@@ -45,8 +45,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (BOOL)allowsAnonymousAccount;
 - (id)generateRequestOperations;
-- (id)initWithPreviousServerChangeTokenData:(id)arg1;
-- (int)operationType;
+- (id)initWithOperation:(id)arg1 previousServerChangeTokenData:(id)arg2;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
 

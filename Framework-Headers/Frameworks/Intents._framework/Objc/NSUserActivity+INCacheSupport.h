@@ -21,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) INInteraction *interaction;
+@property (nonatomic) unsigned long long shortcutAvailability;
 @property (copy, nonatomic) NSString *suggestedInvocationPhrase;
 @property (readonly) Class superclass;
 @property (readonly) Class superclass;
@@ -35,6 +36,7 @@
 - (BOOL)_hasInteraction;
 - (id)_initWithIntent:(id)arg1;
 - (id)_intentsIdentifier;
+- (void)_intentsPrepareForEncoding;
 - (id)_intents_copy;
 - (id)_intents_encodeWithJSONEncoder:(id)arg1 codableDescription:(id)arg2;
 - (BOOL)_isEligibleForPrediction;

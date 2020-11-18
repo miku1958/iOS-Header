@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 + (id)tableViewSectionClasses;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

@@ -6,12 +6,13 @@
 
 #import <Home/HFItemBuilder.h>
 
+#import <Home/HFMediaAccountArbitratingBuilderProtocol-Protocol.h>
 #import <Home/HFServiceLikeBuilder-Protocol.h>
 
-@class HFAppleMusicAccountArbitrator, HFNamingComponents, HFRoomBuilder, HMAccessory, HMMediaSystem, HMMediaSystemBuilder, NSArray, NSString;
+@class HFAppleMusicAccountArbitrator, HFNamingComponents, HFRoomBuilder, HMAccessory, HMMediaSystem, HMMediaSystemBuilder, NSArray, NSSet, NSString;
 @protocol HFIconDescriptor;
 
-@interface HFMediaSystemBuilder : HFItemBuilder <HFServiceLikeBuilder>
+@interface HFMediaSystemBuilder : HFItemBuilder <HFServiceLikeBuilder, HFMediaAccountArbitratingBuilderProtocol>
 {
     BOOL _isFavorite;
     BOOL _hasSetRoom;
@@ -24,6 +25,7 @@
     HFRoomBuilder *_roomBuilder;
 }
 
+@property (readonly, nonatomic) NSSet *accessories;
 @property (strong, nonatomic) HFAppleMusicAccountArbitrator *accountArbitrator; // @synthesize accountArbitrator=_accountArbitrator;
 @property (readonly, nonatomic) NSArray *availableIconDescriptors;
 @property (readonly, copy) NSString *debugDescription;
@@ -53,7 +55,6 @@
 - (id)_updateAssistantAccessControl;
 - (id)_updateFavorite;
 - (id)_updateRoom;
-- (id)accessories;
 - (id)accessoryForRole:(id)arg1;
 - (void)addAccessory:(id)arg1;
 - (void)addAccessory:(id)arg1 role:(id)arg2;

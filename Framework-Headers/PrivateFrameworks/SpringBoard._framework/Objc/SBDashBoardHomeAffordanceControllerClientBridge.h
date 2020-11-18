@@ -8,12 +8,18 @@
 
 #import <SpringBoard/SBNotificationHomeAffordanceControllerClient-Protocol.h>
 
+@class NSString;
 @protocol CSHomeGestureParticipating;
 
 @interface SBDashBoardHomeAffordanceControllerClientBridge : NSObject <SBNotificationHomeAffordanceControllerClient>
 {
     id<CSHomeGestureParticipating> _coverSheetHomeGestureParticipant;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;

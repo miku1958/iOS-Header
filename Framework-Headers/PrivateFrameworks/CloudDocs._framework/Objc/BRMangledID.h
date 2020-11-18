@@ -18,7 +18,6 @@
 
 @property (readonly, nonatomic) NSString *aliasTargetContainerString;
 @property (readonly, nonatomic) NSString *appLibraryOrZoneName;
-@property (readonly, nonatomic) BOOL isBRTestMangledID;
 @property (readonly, nonatomic) BOOL isCloudDocsMangledID;
 @property (readonly, nonatomic) BOOL isDesktopMangledID;
 @property (readonly, nonatomic) BOOL isDocumentsMangledID;

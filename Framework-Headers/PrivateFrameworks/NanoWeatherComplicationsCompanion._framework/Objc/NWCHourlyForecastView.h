@@ -26,7 +26,7 @@
 
 - (void).cxx_destruct;
 - (void)_applyConstraintsWithConstants:(CDStruct_d2b197d1)arg1;
-- (void)applyConditions:(id)arg1 date:(id)arg2 timeZone:(id)arg3;
+- (void)applyEntryModel:(id)arg1 date:(id)arg2 timeZone:(id)arg3;
 - (void)applyStyle;
 - (id)initWithFrame:(struct CGRect)arg1;
 

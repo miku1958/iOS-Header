@@ -59,6 +59,7 @@
 - (void)featureNotEnabled:(SEL)arg1;
 - (void)featureWillDisable;
 - (void)featureWillEnable;
+- (void)foundUnhashableValue:(id)arg1;
 - (id)init;
 - (void)maintenanceServiceDidStart;
 - (void)maintenanceServiceWillStart;

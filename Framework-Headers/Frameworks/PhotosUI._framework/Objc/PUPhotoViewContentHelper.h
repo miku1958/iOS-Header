@@ -8,7 +8,7 @@
 
 #import <PhotosUI/PHLivePhotoViewDelegate-Protocol.h>
 
-@class AVAsset, ISAnimatedImageView, ISWrappedAVAudioSession, ISWrappedAVPlayer, NSString, PHAnimatedImage, PHLivePhoto, PHLivePhotoView, PUAvalancheStackView, PUBackgroundColorView, PUPhotoDecoration, PUTextBannerView, PXCollectionTileLayoutTemplate, PXFeatureSpec, PXRoundedCornerOverlayView, PXTitleSubtitleUILabel, PXUIAssetBadgeView, PXVideoPlayerView, UIColor, UIImage, UIImageView, UIView;
+@class AVAsset, ISAnimatedImageView, ISWrappedAVAudioSession, ISWrappedAVPlayer, NSString, PHAnimatedImage, PHLivePhoto, PHLivePhotoView, PUAvalancheStackView, PUBackgroundColorView, PUPhotoDecoration, PXCollectionTileLayoutTemplate, PXFeatureSpec, PXRoundedCornerOverlayView, PXTextBannerView, PXTitleSubtitleUILabel, PXUIAssetBadgeView, PXVideoPlayerView, UIColor, UIImage, UIImageView, UIView;
 @protocol PUPhotoViewContentHelperDelegate;
 
 @interface PUPhotoViewContentHelper : NSObject <PHLivePhotoViewDelegate>
@@ -61,7 +61,7 @@
     PHAnimatedImage *_animatedImage;
     struct CGColor *_avalancheStackBackgroundColor;
     long long _badgeStyle;
-    PUTextBannerView *_textBannerView;
+    PXTextBannerView *_textBannerView;
     PXFeatureSpec *_featureSpec;
     PXCollectionTileLayoutTemplate *_collectionTileLayoutTemplate;
     NSString *_titleFontName;
@@ -135,7 +135,7 @@
 @property (nonatomic) BOOL showsLivePhoto; // @synthesize showsLivePhoto=_showsLivePhoto;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) PUTextBannerView *textBannerView; // @synthesize textBannerView=_textBannerView;
+@property (readonly, nonatomic) PXTextBannerView *textBannerView; // @synthesize textBannerView=_textBannerView;
 @property (nonatomic, getter=isTextBannerVisible) BOOL textBannerVisible; // @synthesize textBannerVisible=_isTextBannerVisible;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSString *titleFontName; // @synthesize titleFontName=_titleFontName;

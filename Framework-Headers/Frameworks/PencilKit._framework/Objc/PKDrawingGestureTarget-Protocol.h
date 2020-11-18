@@ -16,6 +16,10 @@
 - (void)drawingMoved:(UITouch *)arg1 withEvent:(UIEvent *)arg2;
 
 @optional
+- (void)_replayDrawingBegan:(CDStruct_6422aa5d)arg1;
+- (void)_replayDrawingCancelled;
+- (void)_replayDrawingEnded;
+- (void)_replayDrawingMoved:(CDStruct_6422aa5d)arg1;
 - (BOOL)drawingShouldBegin:(NSSet *)arg1 withEvent:(UIEvent *)arg2;
 @end
 

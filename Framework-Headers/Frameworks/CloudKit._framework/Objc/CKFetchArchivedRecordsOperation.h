@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary;
+#import <CloudKit/CKFetchArchivedRecordsOperationCallbacks-Protocol.h>
 
-@interface CKFetchArchivedRecordsOperation : CKDatabaseOperation
+@class CKFetchArchivedRecordsOperationInfo, NSArray, NSDictionary, NSMutableDictionary;
+@protocol CKFetchArchivedRecordsOperationCallbacks;
+
+@interface CKFetchArchivedRecordsOperation : CKDatabaseOperation <CKFetchArchivedRecordsOperationCallbacks>
 {
     BOOL _fetchAllChanges;
     BOOL _shouldFetchAssetContents;
@@ -24,9 +27,11 @@
 }
 
 @property (strong, nonatomic) NSDictionary *assetTransferOptionsByRecordTypeAndKey; // @synthesize assetTransferOptionsByRecordTypeAndKey=_assetTransferOptionsByRecordTypeAndKey;
+@property (readonly, nonatomic) id<CKFetchArchivedRecordsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) NSDictionary *configurationsByRecordZoneID; // @synthesize configurationsByRecordZoneID=_configurationsByRecordZoneID;
 @property (nonatomic) BOOL fetchAllChanges; // @synthesize fetchAllChanges=_fetchAllChanges;
 @property (copy, nonatomic) CDUnknownBlockType fetchArchivedRecordsCompletionBlock; // @synthesize fetchArchivedRecordsCompletionBlock=_fetchArchivedRecordsCompletionBlock;
+@property (readonly, nonatomic) CKFetchArchivedRecordsOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (strong, nonatomic) NSMutableDictionary *perItemErrors; // @synthesize perItemErrors=_perItemErrors;
 @property (copy, nonatomic) CDUnknownBlockType recordFetchedBlock; // @synthesize recordFetchedBlock=_recordFetchedBlock;
 @property (copy, nonatomic) CDUnknownBlockType recordZoneChangeTokensUpdatedBlock; // @synthesize recordZoneChangeTokensUpdatedBlock=_recordZoneChangeTokensUpdatedBlock;
@@ -35,18 +40,21 @@
 @property (nonatomic) BOOL shouldFetchAssetContents; // @synthesize shouldFetchAssetContents=_shouldFetchAssetContents;
 @property (strong, nonatomic) NSMutableDictionary *statusByZoneID; // @synthesize statusByZoneID=_statusByZoneID;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleChangeSetCompletionForRecordZoneID:(id)arg1 serverChangeToken:(id)arg2 archivedRecordStatus:(long long)arg3 error:(id)arg4 reply:(CDUnknownBlockType)arg5;
+- (void)handleFetchForRecordID:(id)arg1 record:(id)arg2 error:(id)arg3;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithRecordZoneIDs:(id)arg1 configurationsByRecordZoneID:(id)arg2;
 - (void)performCKOperation;
 - (id)recordZoneArchivesStatusByZoneID;
+- (id)relevantZoneIDs;
 
 @end
 

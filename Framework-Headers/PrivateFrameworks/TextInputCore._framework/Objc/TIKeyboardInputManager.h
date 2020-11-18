@@ -8,11 +8,12 @@
 
 #import <TextInputCore/TILanguageSelectionControllerDelegate-Protocol.h>
 #import <TextInputCore/TIRevisionHistoryDelegate-Protocol.h>
+#import <TextInputCore/TITypingSessionDelegate-Protocol.h>
 
-@class NSArray, NSCharacterSet, NSMutableDictionary, NSMutableSet, NSMutableString, NSString, TIAutocorrectionList, TIAutoshiftRegularExpressionLoader, TICharacterSetDescription, TIEmojiCandidateGenerator, TIInputContextHistory, TIKeyboardCandidate, TIKeyboardFeatureSpecialization, TIKeyboardInputManagerConfig, TIKeyboardInputManagerState, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardState, TILRUDictionary, TILanguageSelectionController, TIRevisionHistory, TISKMetricCollector, TISmartPunctuationOptions, TISmartSelector, TITextCheckerExemptions, TITypingSessionMonitor, TIUserModel;
+@class NSArray, NSCharacterSet, NSDictionary, NSMutableDictionary, NSMutableSet, NSMutableString, NSString, TIAutocorrectionList, TIAutoshiftRegularExpressionLoader, TICharacterSetDescription, TICoreAnalyticsEventDispatcher, TICounterChangeCache, TIEmojiCandidateGenerator, TIInputContextHistory, TIKBUserModel, TIKeyboardCandidate, TIKeyboardFeatureSpecialization, TIKeyboardInputManagerConfig, TIKeyboardInputManagerState, TIKeyboardLayout, TIKeyboardLayoutState, TIKeyboardState, TILRUDictionary, TILanguageSelectionController, TIRevisionHistory, TISKMetricCollector, TISmartPunctuationOptions, TISmartSelector, TITextCheckerExemptions, TITypingSessionMonitor;
 @protocol TICandidateHandler;
 
-@interface TIKeyboardInputManager : TIKeyboardInputManagerBase <TIRevisionHistoryDelegate, TILanguageSelectionControllerDelegate>
+@interface TIKeyboardInputManager : TIKeyboardInputManagerBase <TIRevisionHistoryDelegate, TITypingSessionDelegate, TILanguageSelectionControllerDelegate>
 {
     struct TIInputManager *m_impl;
     NSMutableString *m_composedText;
@@ -49,14 +50,15 @@
     TILRUDictionary *_autocorrectionListsForWordsInDocument;
     TIAutoshiftRegularExpressionLoader *_autoshiftRegexLoader;
     TITextCheckerExemptions *_textCheckerExemptions;
-    long long _userInterfaceIdiom;
     unsigned long long _linguisticResourceStatus;
     long long _deleteKeyCount;
     TIKeyboardCandidate *_hitTestCorrectedInputMatchingCandidate;
     TIKeyboardCandidate *_lastAcceptedText;
     NSMutableSet *_rejectedConversionsForCurrentContinuousPath;
     TITypingSessionMonitor *_typingSessionMonitor;
-    TIUserModel *_userModel;
+    TIKBUserModel *_userModel;
+    TICoreAnalyticsEventDispatcher *_coreAnalyticsEventDispatcher;
+    TICounterChangeCache *_counterChangeCache;
     TISmartSelector *_smartSelector;
     TISKMetricCollector *_skMetricCollector;
     CDUnknownBlockType _proactiveSuggestionsGenerationBlock;
@@ -64,6 +66,7 @@
     id<TICandidateHandler> _candidateHandlerForOpenRequest;
     unsigned long long _lastNumCandidatesRequest;
     CDUnknownBlockType _candidateGenerationCompletionHandler;
+    long long _userInterfaceIdiom;
     struct _NSRange _candidateRange;
 }
 
@@ -77,6 +80,8 @@
 @property (strong, nonatomic) id<TICandidateHandler> candidateHandlerForOpenRequest; // @synthesize candidateHandlerForOpenRequest=_candidateHandlerForOpenRequest;
 @property (nonatomic) struct _NSRange candidateRange; // @synthesize candidateRange=_candidateRange;
 @property (readonly, nonatomic) TIKeyboardInputManagerConfig *config; // @synthesize config=_config;
+@property (strong, nonatomic) TICoreAnalyticsEventDispatcher *coreAnalyticsEventDispatcher; // @synthesize coreAnalyticsEventDispatcher=_coreAnalyticsEventDispatcher;
+@property (strong, nonatomic) TICounterChangeCache *counterChangeCache; // @synthesize counterChangeCache=_counterChangeCache;
 @property (readonly, nonatomic) TIKeyboardInputManagerState *currentState;
 @property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) long long deleteKeyCount; // @synthesize deleteKeyCount=_deleteKeyCount;
@@ -105,10 +110,11 @@
 @property (readonly, nonatomic) TISmartPunctuationOptions *smartOptions;
 @property (strong, nonatomic) TISmartSelector *smartSelector; // @synthesize smartSelector=_smartSelector;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSDictionary *testingParameters;
 @property (readonly, nonatomic) TITextCheckerExemptions *textCheckerExemptions; // @synthesize textCheckerExemptions=_textCheckerExemptions;
 @property (strong, nonatomic) TITypingSessionMonitor *typingSessionMonitor; // @synthesize typingSessionMonitor=_typingSessionMonitor;
 @property (nonatomic) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
-@property (strong, nonatomic) TIUserModel *userModel; // @synthesize userModel=_userModel;
+@property (strong, nonatomic) TIKBUserModel *userModel; // @synthesize userModel=_userModel;
 @property (nonatomic, getter=isWordLearningEnabled) BOOL wordLearningEnabled; // @synthesize wordLearningEnabled=_wordLearningEnabled;
 
 + (void)clearRecentsFileForIdentifier:(id)arg1;
@@ -136,7 +142,7 @@
 - (void)addItemToConversationHistoryWithText:(id)arg1 timestamp:(id)arg2 senderID:(id)arg3;
 - (void)addSynthesizedTouchToInput:(id)arg1;
 - (long long)addTouch:(id)arg1 shouldHitTest:(BOOL)arg2;
-- (struct TITokenID)addWord:(id)arg1 context:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 surfaceFormPtr:(id *)arg4;
+- (struct TITokenID)addWord:(id)arg1 context:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 surfaceFormPtr:(id *)arg4 contextStringTokens:(id)arg5;
 - (void)adjustPhraseBoundaryInForwardDirection:(BOOL)arg1;
 - (void)adjustPhraseBoundaryInForwardDirection:(BOOL)arg1 granularity:(int)arg2;
 - (BOOL)alwaysShowExtensionCandidatesForSortingMethod:(id)arg1;
@@ -182,7 +188,7 @@
 - (id)currentInputModeIdentifier;
 - (id)currentWordStem;
 - (void)dealloc;
-- (void)decrementLanguageModelCount:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4;
+- (void)decrementLanguageModelCount:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 contextStringTokens:(id)arg5;
 - (id)defaultCandidate;
 - (BOOL)delayedCandidateList;
 - (id)deleteFromInput:(unsigned long long *)arg1;
@@ -214,8 +220,8 @@
 - (unsigned int)externalIndexToInternal:(unsigned int)arg1;
 - (id)externalStringForDictionaryString:(id)arg1;
 - (id)externalStringToInternal:(id)arg1;
-- (struct TITokenID)findTokenIDForWord:(id)arg1 context:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 tokenLookupMode:(unsigned int)arg4;
-- (struct TITokenID)findTokenIDForWord:(id)arg1 context:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 tokenLookupMode:(unsigned int)arg4 surfaceFormPtr:(id *)arg5 hasCaseInsensitiveStaticVariant:(BOOL *)arg6;
+- (struct TITokenID)findTokenIDForWord:(id)arg1 context:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 tokenLookupMode:(unsigned int)arg4 contextStringTokens:(id)arg5;
+- (struct TITokenID)findTokenIDForWord:(id)arg1 context:(const struct TITokenID *)arg2 contextLength:(unsigned long long)arg3 tokenLookupMode:(unsigned int)arg4 surfaceFormPtr:(id *)arg5 hasCaseInsensitiveStaticVariant:(BOOL *)arg6 contextStringTokens:(id)arg7;
 - (id)generateAndRenderProactiveSuggestionsWithTriggers:(id)arg1 withAdditionalPredictions:(id)arg2 withInput:(id)arg3;
 - (void)generateAndRenderProactiveSuggestionsWithTriggers:(id)arg1 withAdditionalPredictions:(id)arg2 withInput:(id)arg3 async:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)generateAutocorrectionsWithKeyboardState:(id)arg1 candidateRange:(struct _NSRange)arg2 candidateHandler:(id)arg3;
@@ -235,7 +241,7 @@
 - (id)humanReadableTrace;
 - (BOOL)ignoresDeadKeys;
 - (BOOL)inHardwareKeyboardMode;
-- (void)incrementLanguageModelCount:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 saveToDifferentialPrivacy:(int)arg5;
+- (void)incrementLanguageModelCount:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 contextStringTokens:(id)arg5 saveToDifferentialPrivacy:(int)arg6;
 - (void)incrementUsageTrackingKey:(id)arg1;
 - (void)incrementUsageTrackingKeyForAppWithIsSentence:(BOOL)arg1;
 - (void)incrementUsageTrackingKeyForAutocorrectionStatistic:(id)arg1 autocorrectionTypes:(unsigned int)arg2;
@@ -282,10 +288,12 @@
 - (void)loadFavoniusTypingModel;
 - (shared_ptr_e9f752ce)loadedLightweightLanguageModel;
 - (void)logDiscoverabilityEvent:(int)arg1 userInfo:(id)arg2;
+- (void)logTestingParametersToTypology;
 - (void)logToTypologyRecorderWithString:(id)arg1;
 - (id)markedText;
 - (unsigned long long)maxPriorWordTokensAfterTrimming;
 - (unsigned long long)maximumShortcutLengthAllowed;
+- (void)mergeLanguageModelParameters:(id)arg1 toTestingParameters:(id)arg2 withLexiconID:(id)arg3 andSuffix:(id)arg4;
 - (void)mobileAssetsChanged:(id)arg1;
 - (BOOL)newInputAcceptsUserSelectedCandidate;
 - (id)newInputManagerState;
@@ -316,7 +324,7 @@
 - (void)recordRejectedAutocorrectionForAcceptedText:(id)arg1 fromPredictiveInputBar:(BOOL)arg2;
 - (void)recordSuggestedAutocorrectionList:(id)arg1;
 - (void)refreshInputManagerState;
-- (void)registerNegativeEvidence:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 intendedTokenID:(struct TITokenID *)arg5 hint:(int)arg6;
+- (void)registerNegativeEvidence:(id)arg1 tokenID:(struct TITokenID)arg2 context:(const struct TITokenID *)arg3 contextLength:(unsigned long long)arg4 intendedTokenID:(struct TITokenID *)arg5 hint:(int)arg6 contextStringTokens:(id)arg7;
 - (void)releaseDynamicLanguageModel;
 - (void)releaseMRLBuffers;
 - (id)remainingInput;
@@ -365,7 +373,6 @@
 - (BOOL)shouldCommitInputString;
 - (BOOL)shouldDelayUpdateComposedText;
 - (BOOL)shouldDropInputStem;
-- (BOOL)shouldExpectSentenceBoundaryAfterContext:(const struct TITokenID *)arg1 contextLength:(unsigned long long)arg2;
 - (BOOL)shouldExtendPriorWord;
 - (BOOL)shouldFixupIncompleteRomaji;
 - (BOOL)shouldGeneratePredictionsForCurrentContext;
@@ -373,6 +380,7 @@
 - (BOOL)shouldInsertSpaceBeforeInput:(id)arg1;
 - (BOOL)shouldInsertSpaceBeforePredictions;
 - (BOOL)shouldLearnWord:(id)arg1;
+- (BOOL)shouldOmitEmojiCandidates;
 - (BOOL)shouldSkipCandidateSelection;
 - (BOOL)shouldSkipShortcutConversionForDocumentState:(id)arg1;
 - (BOOL)shouldSuppressLanguageSelectionEvidence;
@@ -410,6 +418,7 @@
 - (void)syncToKeyboardState:(id)arg1 from:(id)arg2 afterContextChange:(BOOL)arg3;
 - (void)syncToLayoutState:(id)arg1;
 - (void)synchronizeConversationHistoryWithInputContextHistory:(id)arg1;
+- (void)tearDown;
 - (id)terminatorsDeletingAutospace;
 - (id)terminatorsPrecedingAutospace;
 - (id)terminatorsPreventingAutocorrection;

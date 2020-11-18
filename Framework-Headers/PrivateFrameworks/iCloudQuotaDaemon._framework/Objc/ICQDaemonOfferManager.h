@@ -36,6 +36,7 @@
 - (void)_fetchDaemonOfferStubsForAccount:(id)arg1 isForBuddy:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchDictionaryForAccount:(id)arg1 quotaKey:(id)arg2 stub:(id)arg3 notificationID:(id)arg4 contextDictionary:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (BOOL)_isBackupEnabledForAccount:(id)arg1;
+- (void)_mockFetchDictionaryForAccount:(id)arg1 quotaKey:(id)arg2 stub:(id)arg3 notificationID:(id)arg4 contextDictionary:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)_placeholderOfferForAccount:(id)arg1 isForBuddy:(BOOL)arg2 error:(id)arg3;
 - (void)_postDaemonOfferChangedDueToPushDarwinNotification;
 - (void)_postFollowupForDaemonOffer:(id)arg1 completion:(CDUnknownBlockType)arg2;

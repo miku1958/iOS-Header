@@ -19,16 +19,17 @@
 @property (strong, nonatomic) SGMContactDetailSent *contactDetailSent; // @synthesize contactDetailSent=_contactDetailSent;
 @property (strong, nonatomic) PETEventTracker2 *pet2Tracker; // @synthesize pet2Tracker=_pet2Tracker;
 
-+ (void)_recordExtractionEventFromSource:(struct SGMDocumentType_)arg1 foundInSignature:(BOOL)arg2 detailType:(struct SGMContactDetailType_)arg3 outcome:(struct SGMContactDetailExtractionOutcome_)arg4 foundInCNContact:(struct SGMContactDetailOwner_)arg5 modelVersion:(id)arg6 isUnlikelyPhone:(BOOL)arg7 sigSource:(struct SGMContactDetailExtractionSignatureSource_)arg8;
-+ (void)_recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 detailType:(struct SGMContactDetailType_)arg2 fromEntity:(id)arg3 foundInSignature:(BOOL)arg4 detailType:(unsigned long long)arg5 detailValue:(id)arg6 modelVersion:(id)arg7 isUnlikelyPhone:(BOOL)arg8;
++ (void)_recordExtractionEventFromSource:(struct SGMDocumentType_)arg1 foundInSignature:(BOOL)arg2 isDDSignature:(BOOL)arg3 detailType:(struct SGMContactDetailType_)arg4 outcome:(struct SGMContactDetailExtractionOutcome_)arg5 foundInCNContact:(struct SGMContactDetailOwner_)arg6 modelVersion:(id)arg7 isUnlikelyPhone:(BOOL)arg8 sigSource:(struct SGMContactDetailExtractionSignatureSource_)arg9;
++ (void)_recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 detailType:(struct SGMContactDetailType_)arg2 fromMessage:(id)arg3 foundInSignature:(BOOL)arg4 isDDSignature:(BOOL)arg5 detailType:(unsigned long long)arg6 detailValue:(id)arg7 modelVersion:(id)arg8 isUnlikelyPhone:(BOOL)arg9;
 + (id)instance;
 + (id)nameForDataDetectorMatch:(id)arg1 withValue:(id)arg2;
 + (void)recordBirthdayExtractionAccuracy:(unsigned char)arg1 withOffset:(id)arg2 withModelVersion:(id)arg3 isFromCongratulation:(unsigned char)arg4 didRegexTrigger:(unsigned char)arg5;
-+ (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 fromEntity:(id)arg2;
-+ (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 fromEntity:(id)arg2 foundInSignature:(BOOL)arg3 detection:(id)arg4;
-+ (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 fromEntity:(id)arg2 foundInSignature:(BOOL)arg3 match:(id)arg4 foundInCNContact:(struct SGMContactDetailOwner_)arg5 modelVersion:(id)arg6 isUnlikelyPhone:(BOOL)arg7;
-+ (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 fromEntity:(id)arg2 foundInSignature:(BOOL)arg3 match:(id)arg4 modelVersion:(id)arg5 isUnlikelyPhone:(BOOL)arg6;
-+ (void)recordSentContactDetailWithEntity:(id)arg1 match:(id)arg2 found:(struct SGMContactDetailFoundIn_)arg3;
++ (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 forDetectionsInMessage:(id)arg2 signatureRange:(struct _NSRange)arg3 isDDSignature:(BOOL)arg4;
++ (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 fromMessage:(id)arg2 foundInSignature:(BOOL)arg3 isDDSignature:(BOOL)arg4 detection:(id)arg5;
++ (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 fromMessage:(id)arg2 foundInSignature:(BOOL)arg3 isDDSignature:(BOOL)arg4 match:(id)arg5 foundInCNContact:(struct SGMContactDetailOwner_)arg6 modelVersion:(id)arg7 isUnlikelyPhone:(BOOL)arg8;
++ (void)recordExtractionOutcome:(struct SGMContactDetailExtractionOutcome_)arg1 fromMessage:(id)arg2 foundInSignature:(BOOL)arg3 isDDSignature:(BOOL)arg4 match:(id)arg5 modelVersion:(id)arg6 isUnlikelyPhone:(BOOL)arg7;
++ (void)recordSelfIdModelScore:(BOOL)arg1 model:(int)arg2 supervision:(int)arg3;
++ (void)recordSentContactDetailWithMessage:(id)arg1 match:(id)arg2 found:(struct SGMContactDetailFoundIn_)arg3;
 + (id)tokenizeMessageContent:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithTracker:(id)arg1;

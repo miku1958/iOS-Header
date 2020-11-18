@@ -11,6 +11,7 @@
 }
 
 - (id)birthdayIconColor;
+- (BOOL)canBecomeFocused;
 - (id)cancelledDeclinedColorBarColor;
 - (id)colorBarColor;
 - (id)coloredBackgroundViewColor;

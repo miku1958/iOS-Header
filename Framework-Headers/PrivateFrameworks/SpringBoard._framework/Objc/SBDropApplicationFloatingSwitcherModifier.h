@@ -15,14 +15,14 @@
 }
 
 - (void).cxx_destruct;
+- (id)appLayoutsToResignActive;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
-- (long long)keyboardSuppressionMode;
-- (long long)liveContentRasterizationStyle;
+- (id)keyboardSuppressionMode;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (BOOL)shouldPerformCrossfadeForReduceMotion;
 - (id)transitionWillBegin;
-- (BOOL)wantsResignActiveAssertion;
+- (id)visibleAppLayouts;
 
 @end
 

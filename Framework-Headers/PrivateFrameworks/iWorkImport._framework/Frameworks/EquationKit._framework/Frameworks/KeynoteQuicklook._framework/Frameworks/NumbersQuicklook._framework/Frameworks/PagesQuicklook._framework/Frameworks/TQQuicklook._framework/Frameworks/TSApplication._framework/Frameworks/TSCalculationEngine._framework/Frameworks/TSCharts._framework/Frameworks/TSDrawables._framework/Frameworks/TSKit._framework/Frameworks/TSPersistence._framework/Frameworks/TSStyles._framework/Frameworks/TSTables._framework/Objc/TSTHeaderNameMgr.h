@@ -47,6 +47,8 @@
 - (void)addChangedTile:(id)arg1;
 - (struct TSCECellRefSet)allHeaderCellRefsLimitedToTable:(const UUIDData_5fbc143e *)arg1;
 - (id)anyRefForRangeForHeaderCell:(const struct TSCECellRef *)arg1 usePreserveFlags:(BOOL)arg2;
+- (struct TSCERangeRef)baseHeaderColumnsForCell:(const struct TSCECellRef *)arg1;
+- (struct TSCERangeRef)baseHeaderRowsForCell:(const struct TSCECellRef *)arg1;
 - (void)beginTrackingNamesInTable:(const UUIDData_5fbc143e *)arg1;
 - (void)clearTextAtCellCoord:(const UUIDCoord_697ad09a *)arg1 tableUID:(const UUIDData_5fbc143e *)arg2;
 - (void)dealloc;

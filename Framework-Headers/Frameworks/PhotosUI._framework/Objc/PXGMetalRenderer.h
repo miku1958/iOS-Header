@@ -10,7 +10,7 @@
 #import <PhotosUICore/PXGMetalTextureConverterDelegate-Protocol.h>
 #import <PhotosUICore/PXGRenderer-Protocol.h>
 
-@class MTKView, NSMutableArray, NSString, PXGMetalRenderTextureStore, PXGMetalTextureConverter;
+@class MTKView, NSMutableArray, NSString, PXGMetalRenderTextureStore, PXGMetalTextureConverter, PXGSpriteDataStore;
 @protocol MTLBuffer, MTLCommandQueue, MTLDepthStencilState, MTLDevice, MTLLibrary, MTLSamplerState, MTLTexture, OS_dispatch_queue, OS_dispatch_semaphore, PXGRendererDelegate, PXGTextureConverter;
 
 @interface PXGMetalRenderer : NSObject <MTKViewDelegate, PXGMetalTextureConverterDelegate, PXGRenderer>
@@ -35,16 +35,18 @@
     NSObject<OS_dispatch_queue> *_compilationQueue;
     NSObject<OS_dispatch_semaphore> *_inFlightSemaphore;
     NSMutableArray *_reusableRenderStates;
+    PXGSpriteDataStore *_spriteRenderDataStore;
     long long _frameId;
     double _lastTime;
     PXGMetalRenderTextureStore *_opaqueTextures;
     PXGMetalRenderTextureStore *_translucentTextures;
     PXGMetalTextureConverter *_textureConverter;
+    BOOL _didPerformFirstRender;
     BOOL _isInvertColorsEnabled;
     CDUnknownBlockType _test_renderSnapshotHandler;
     id<PXGRendererDelegate> _delegate;
     struct CGRect _visibleRect;
-    CDStruct_93894d6c _interactionState;
+    CDStruct_a02a4563 _interactionState;
 }
 
 @property (readonly, nonatomic) CDStruct_183601bc camera;
@@ -53,7 +55,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long destinationColorSpaceName;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) CDStruct_93894d6c interactionState; // @synthesize interactionState=_interactionState;
+@property (nonatomic) CDStruct_a02a4563 interactionState; // @synthesize interactionState=_interactionState;
 @property (nonatomic) BOOL isInvertColorsEnabled; // @synthesize isInvertColorsEnabled=_isInvertColorsEnabled;
 @property (readonly, nonatomic) MTKView *metalView; // @synthesize metalView=_metalView;
 @property (readonly, nonatomic) int presentationType;
@@ -78,6 +80,7 @@
 - (void)_parseSpriteTextures:(id)arg1 willPerformOffscreenPass:(BOOL)arg2 renderState:(id)arg3;
 - (CDStruct_39b4dbd3)_pipelineForRenderTexture:(const CDStruct_dcc83465 *)arg1 waitForCompilation:(BOOL)arg2;
 - (void)_pipelinesLock_resizePipelinesStorageIfNeeded;
+- (void)_populateEffectSprites:(id)arg1 spriteRenderDataStore:(id)arg2 presentationDataStore:(id)arg3 metadataStore:(id)arg4;
 - (void)_render:(id)arg1 withCompletionCompletion:(CDUnknownBlockType)arg2;
 - (double)_screenScale;
 - (void)_setupBuffers;
@@ -87,6 +90,7 @@
 - (id)init;
 - (void)metalTextureConverter:(id)arg1 didCreateTexture:(id)arg2;
 - (void)mtkView:(id)arg1 drawableSizeWillChange:(struct CGSize)arg2;
+- (void)releaseResources;
 - (void)renderSpritesWithTextures:(id)arg1 dataStore:(id)arg2 presentationDataStore:(id)arg3 presentationMetadataStore:(id)arg4 layout:(id)arg5;
 - (void)setNeedsRender;
 - (void)updateWithChangeDetails:(id)arg1;

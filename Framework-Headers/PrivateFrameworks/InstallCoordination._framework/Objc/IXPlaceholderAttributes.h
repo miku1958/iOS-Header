@@ -16,6 +16,7 @@
     BOOL _launchProhibited;
     BOOL _watchOnlyApp;
     BOOL _runsIndependentlyOfCompanionApp;
+    BOOL _arcadeApp;
     NSString *_bundleVersion;
     NSDictionary *_extensionDictionary;
     NSString *_minimumOSVersion;
@@ -26,6 +27,7 @@
     NSString *_companionBundleIdentifierForWatchApp;
 }
 
+@property (nonatomic) BOOL arcadeApp; // @synthesize arcadeApp=_arcadeApp;
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (copy, nonatomic) NSString *companionBundleIdentifierForWatchApp; // @synthesize companionBundleIdentifierForWatchApp=_companionBundleIdentifierForWatchApp;
 @property (copy, nonatomic) NSDictionary *extensionDictionary; // @synthesize extensionDictionary=_extensionDictionary;

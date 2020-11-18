@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotoLibraryServices/PLResourceDataStoreKey.h>
 
 #import <PhotoLibraryServices/PLTaggedPointerDataStoreKey-Protocol.h>
 
 @class NSString;
 
-@interface PLPrimaryResourceDataStoreKey : NSObject <PLTaggedPointerDataStoreKey>
+@interface PLPrimaryResourceDataStoreKey : PLResourceDataStoreKey <PLTaggedPointerDataStoreKey>
 {
 }
 

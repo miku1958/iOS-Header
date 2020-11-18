@@ -8,6 +8,7 @@
 
 @class NSString, UIImageView, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface MPVideoDestinationBackgroundView : UIView
 {
     NSString *_destinationName;

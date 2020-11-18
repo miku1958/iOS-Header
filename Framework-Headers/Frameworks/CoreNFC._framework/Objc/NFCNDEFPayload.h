@@ -29,9 +29,9 @@
 + (id)wellKnownTypeTextPayloadWithString:(id)arg1 locale:(id)arg2;
 + (id)wellKnownTypeURIPayloadWithString:(id)arg1;
 + (id)wellKnownTypeURIPayloadWithURL:(id)arg1;
+- (void).cxx_destruct;
 - (id)asData;
 - (unsigned long long)chunkSize;
-- (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

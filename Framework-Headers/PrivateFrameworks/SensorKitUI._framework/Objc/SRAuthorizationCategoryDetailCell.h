@@ -49,6 +49,7 @@
 @property (strong, nonatomic) UIStackView *stacks; // @synthesize stacks=_stacks;
 @property (strong, nonatomic) UIFont *titleFont; // @synthesize titleFont=_titleFont;
 
++ (id)categoryDetailCellForAuthGroup:(id)arg1 bundle:(id)arg2 titleFont:(id)arg3 bodyFont:(id)arg4 textColor:(id)arg5 OBKStyle:(BOOL)arg6;
 - (void)addBulletStackViewForCollected:(BOOL)arg1 count:(long long)arg2;
 - (void)dealloc;
 - (id)dynamicHeightLabel;

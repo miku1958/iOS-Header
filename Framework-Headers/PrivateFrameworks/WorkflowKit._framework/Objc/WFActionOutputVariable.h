@@ -21,6 +21,7 @@
 
 - (void).cxx_destruct;
 - (id)UUID;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)icon;
 - (id)initWithAction:(id)arg1 variableProvider:(id)arg2 aggrandizements:(id)arg3;
 - (id)initWithDictionary:(id)arg1 variableProvider:(id)arg2;

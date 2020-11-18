@@ -130,6 +130,7 @@
 + (id)restrictedProperties;
 + (id)sectionForSortingByFamilyNameDescription;
 + (id)sectionForSortingByGivenNameDescription;
++ (BOOL)shouldContactUseFamilyGivenNameOrder:(id)arg1;
 + (id)singleValueContactProperties;
 + (CDUnknownBlockType)socialProfileFromDictionaryTransform;
 + (CDUnknownBlockType)socialProfileToDictionaryTransform;

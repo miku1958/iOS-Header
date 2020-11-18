@@ -16,16 +16,18 @@ __attribute__((visibility("hidden")))
 {
     NSMutableData *_data;
     unsigned long long _type;
+    id<MDLMeshBufferZone> _zone;
+    id<MDLMeshBufferAllocator> _allocator;
 }
 
-@property (readonly, strong, nonatomic) id<MDLMeshBufferAllocator> allocator;
+@property (readonly, strong, nonatomic) id<MDLMeshBufferAllocator> allocator; // @synthesize allocator=_allocator;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long length;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
-@property (readonly, strong, nonatomic) id<MDLMeshBufferZone> zone;
+@property (readonly, strong, nonatomic) id<MDLMeshBufferZone> zone; // @synthesize zone=_zone;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)accessResourcesToBeAuthorizedImplicitlyForUpdatedParameterState:(id)arg1 forParameter:(id)arg2;
+- (id)appIdentifier;
 - (id)dateForParameterValueWithKey:(id)arg1 error:(id *)arg2;
 - (void)forceUpdateSelectedUnit;
 - (void)handleWithCategoryType:(id)arg1;

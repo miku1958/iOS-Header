@@ -15,10 +15,11 @@
 
 @property (readonly, copy, nonatomic) MTLSamplerDescriptor *descriptor; // @synthesize descriptor=_descriptor;
 
++ (id)newSamplerStateWithBaseObject:(id)arg1 device:(id)arg2 descriptor:(id)arg3;
+- (id)_initWithBaseSamplerState:(id)arg1 device:(id)arg2 descriptor:(id)arg3;
 - (void)dealloc;
 - (id)description;
 - (id)formattedDescription:(unsigned long long)arg1;
-- (id)initWithBaseSamplerState:(id)arg1 device:(id)arg2 descriptor:(id)arg3;
 
 @end
 

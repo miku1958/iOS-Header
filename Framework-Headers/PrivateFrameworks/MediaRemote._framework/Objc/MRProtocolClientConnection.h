@@ -11,7 +11,7 @@
 #import <MediaRemote/MSVMessageParserDelegate-Protocol.h>
 #import <MediaRemote/NSStreamDelegate-Protocol.h>
 
-@class MRProtocolMessageQueue, MRSupportedProtocolMessages, MSVMessageParser, NSInputStream, NSOutputStream, NSRunLoop, NSString, _MRDeviceInfoMessageProtobuf;
+@class MRDeviceInfo, MRProtocolMessageQueue, MRSupportedProtocolMessages, MSVMessageParser, NSInputStream, NSOutputStream, NSRunLoop, NSString;
 @protocol MRProtocolClientConnectionDelegate;
 
 @interface MRProtocolClientConnection : NSObject <NSStreamDelegate, MSVMessageParserDelegate, MRProtocolMessageQueueDelegate, MRProtocolMessageQueueDataSource>
@@ -19,41 +19,31 @@
     MSVMessageParser *_parser;
     NSRunLoop *_runLoop;
     MRProtocolMessageQueue *_messageQueue;
-    BOOL _disconnected;
     unsigned long long _firstClientNanoseconds;
     unsigned long long _firstDeviceTicks;
+    BOOL _disconnected;
     NSInputStream *_inputStream;
     NSOutputStream *_outputStream;
-    _MRDeviceInfoMessageProtobuf *_deviceInfo;
+    MRDeviceInfo *_deviceInfo;
     MRSupportedProtocolMessages *_supportedMessages;
+    NSString *_label;
     id<MRProtocolClientConnectionDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MRProtocolClientConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
+@property (strong, nonatomic) MRDeviceInfo *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
+@property (readonly, nonatomic) BOOL disconnected; // @synthesize disconnected=_disconnected;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSInputStream *inputStream; // @synthesize inputStream=_inputStream;
+@property (strong, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly, nonatomic) NSOutputStream *outputStream; // @synthesize outputStream=_outputStream;
 @property (readonly, nonatomic) BOOL streamsAreValid;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) MRSupportedProtocolMessages *supportedMessages; // @synthesize supportedMessages=_supportedMessages;
 
 - (void).cxx_destruct;
-- (void)_adjustTimestamp:(id)arg1;
-- (BOOL)_clientSupportsMessage:(id)arg1;
-- (void)_closeStream:(id)arg1;
-- (void)_disconnectClient;
-- (void)_flush;
-- (void)_notifyDelegateClientDidDisconnect;
-- (void)_notifyDelegateClientDidRecieveMessage:(id)arg1;
-- (void)_openStream:(id)arg1;
-- (void)_parseMessageData:(id)arg1;
-- (void)_preProcessMessage:(id)arg1 data:(id)arg2;
-- (void)_sendMessage:(id)arg1 queue:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)_setQOSPropertiesOnStream:(id)arg1;
-- (void)_stream:(id)arg1 handleEvent:(unsigned long long)arg2;
 - (void)closeAllStreams;
 - (void)dealloc;
 - (id)decryptData:(id)arg1 error:(id *)arg2;
@@ -65,6 +55,7 @@
 - (unsigned long long)messageQueue:(id)arg1 processData:(id)arg2 atReadPosition:(long long)arg3;
 - (void)parser:(id)arg1 didParseMessage:(id)arg2;
 - (void)sendMessage:(id)arg1;
+- (void)sendMessage:(id)arg1 expectedMessage:(unsigned long long)arg2 timeout:(double)arg3 queue:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)sendMessage:(id)arg1 queue:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)sendMessage:(id)arg1 timeout:(double)arg2 queue:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;

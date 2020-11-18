@@ -33,6 +33,7 @@
 - (void)_updateBalancesAndPlans;
 - (id)balanceForIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)filteredActionsForDisplayableEntities;
 - (id)initWithPass:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (void)setDynamicBalances:(id)arg1;

@@ -15,13 +15,11 @@
 @interface _INPBFlightReservation : PBCodable <_INPBFlightReservation, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     _INPBFlight *_flight;
     _INPBReservation *_reservation;
     _INPBSeat *_reservedSeat;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBFlight *flight; // @synthesize flight=_flight;

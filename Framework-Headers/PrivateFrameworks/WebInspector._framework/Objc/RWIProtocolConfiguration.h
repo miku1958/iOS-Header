@@ -7,7 +7,7 @@
 #import <objc/NSObject.h>
 
 @class RWIProtocolCSSDomainEventDispatcher, RWIProtocolConsoleDomainEventDispatcher, RWIProtocolDOMDomainEventDispatcher, RWIProtocolDOMStorageDomainEventDispatcher, RWIProtocolNetworkDomainEventDispatcher, RWIProtocolPageDomainEventDispatcher;
-@protocol RWIProtocolCSSDomainHandler, RWIProtocolDOMDebuggerDomainHandler, RWIProtocolDOMDomainHandler, RWIProtocolDOMStorageDomainHandler, RWIProtocolNetworkDomainHandler, RWIProtocolPageDomainHandler;
+@protocol RWIProtocolCSSDomainHandler, RWIProtocolDOMDomainHandler, RWIProtocolDOMStorageDomainHandler, RWIProtocolNetworkDomainHandler, RWIProtocolPageDomainHandler;
 
 @interface RWIProtocolConfiguration : NSObject
 {
@@ -17,7 +17,6 @@
     RWIProtocolConsoleDomainEventDispatcher *_consoleEventDispatcher;
     id<RWIProtocolDOMDomainHandler> _domHandler;
     RWIProtocolDOMDomainEventDispatcher *_domEventDispatcher;
-    id<RWIProtocolDOMDebuggerDomainHandler> _domDebuggerHandler;
     id<RWIProtocolDOMStorageDomainHandler> _domStorageHandler;
     RWIProtocolDOMStorageDomainEventDispatcher *_domStorageEventDispatcher;
     id<RWIProtocolNetworkDomainHandler> _networkHandler;
@@ -29,7 +28,6 @@
 @property (readonly, nonatomic) RWIProtocolConsoleDomainEventDispatcher *consoleEventDispatcher;
 @property (readonly, nonatomic) RWIProtocolCSSDomainEventDispatcher *cssEventDispatcher;
 @property (strong, nonatomic, setter=setCSSHandler:) id<RWIProtocolCSSDomainHandler> cssHandler;
-@property (strong, nonatomic, setter=setDOMDebuggerHandler:) id<RWIProtocolDOMDebuggerDomainHandler> domDebuggerHandler;
 @property (readonly, nonatomic) RWIProtocolDOMDomainEventDispatcher *domEventDispatcher;
 @property (strong, nonatomic, setter=setDOMHandler:) id<RWIProtocolDOMDomainHandler> domHandler;
 @property (readonly, nonatomic) RWIProtocolDOMStorageDomainEventDispatcher *domStorageEventDispatcher;

@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class NSUserDefaults;
+@class NSDate, NSUserDefaults;
 
 @interface SiriUIPreferences : NSObject
 {
     NSUserDefaults *_userDefaults;
     long long _numberOfTimesSiriCardShown;
     BOOL _voiceRequestMadeWhileInCarDND;
+    NSDate *_previousSiriRequestErrorTimestamp;
+    long long _siriRequestErrorCount;
 }
 
 + (id)sharedPreferences;
@@ -22,11 +24,15 @@
 - (long long)integerForKey:(id)arg1;
 - (long long)numberOfTimesCarDNDSiriCardShown;
 - (id)objectForKey:(id)arg1;
+- (id)previousSiriRequestErrorTimestamp;
 - (void)setBool:(BOOL)arg1 forKey:(id)arg2;
 - (void)setInteger:(long long)arg1 forKey:(id)arg2;
 - (void)setNumberOfTimesCarDNDSiriCardShown:(long long)arg1;
 - (void)setObject:(id)arg1 forKey:(id)arg2;
+- (void)setPreviousSiriRequestErrorTimestamp:(id)arg1;
+- (void)setSiriRequestErrorCount:(long long)arg1;
 - (void)setVoiceRequestMadeWhileInCarDND:(BOOL)arg1;
+- (long long)siriRequestErrorCount;
 - (BOOL)voiceRequestMadeWhileInCarDND;
 
 @end

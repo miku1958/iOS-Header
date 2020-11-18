@@ -37,20 +37,21 @@
 - (void)_setLastResponse:(id)arg1;
 - (BOOL)_supportsExtension:(id)arg1;
 - (BOOL)_supportsSaveSentExtension;
+- (const char *)_trailerForMailFromWithEmailAddressFormatStyle:(long long)arg1;
 - (void)abort;
 - (BOOL)authenticateUsingAccount:(id)arg1;
 - (BOOL)authenticateUsingAccount:(id)arg1 authenticator:(id)arg2;
 - (id)authenticationMechanisms;
 - (BOOL)connectUsingAccount:(id)arg1;
 - (id)dataForDataCmd;
-- (id)dataForMailFrom:(id)arg1;
+- (id)dataForMailFrom:(id)arg1 emailFormatStyle:(long long)arg2;
 - (id)dataForRcptTo:(id)arg1;
 - (id)domainName;
 - (id)init;
 - (id)lastResponse;
 - (id)lastResponseLine;
-- (int)mailFrom:(id)arg1;
-- (long long)mailFrom:(id)arg1 recipients:(id)arg2 withData:(id)arg3 host:(id)arg4 errorTitle:(id *)arg5 errorMessage:(id *)arg6 serverResponse:(id *)arg7 displayError:(BOOL *)arg8 errorCode:(int *)arg9 errorUserInfo:(id *)arg10;
+- (int)mailFrom:(id)arg1 emailFormatStyle:(long long)arg2;
+- (long long)mailFrom:(id)arg1 recipients:(id)arg2 withData:(id)arg3 host:(id)arg4 emailFormatStyle:(long long)arg5 errorTitle:(id *)arg6 errorMessage:(id *)arg7 serverResponse:(id *)arg8 displayError:(BOOL *)arg9 errorCode:(int *)arg10 errorUserInfo:(id *)arg11;
 - (unsigned long long)maximumMessageBytes;
 - (int)noop;
 - (int)quit;
@@ -61,12 +62,11 @@
 - (void)setDomainName:(id)arg1;
 - (void)setUseSaveSent:(BOOL)arg1 toFolder:(id)arg2;
 - (int)state;
-- (BOOL)supports8BitMime;
-- (BOOL)supportsBinaryMime;
 - (BOOL)supportsChunking;
 - (BOOL)supportsEnhancedStatusCodes;
 - (BOOL)supportsOutboxCopy;
 - (BOOL)supportsPipelining;
+- (BOOL)supportsSMTPUTF8;
 - (long long)timeLastCommandWasSent;
 
 @end

@@ -6,23 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class GEOFeatureStyleAttributes, NSString;
 
 @interface VKRouteEtaDescription : NSObject
 {
-    NSString *_etaText;
+    struct _retain_ptr<NSString *, geo::_retain_objc, geo::_release_objc, geo::_hash_objc, geo::_equal_objc> {
+        CDUnknownFunctionPointerType *_vptr$_retain_ptr;
+        NSString *_obj;
+        struct _retain_objc _retain;
+        struct _release_objc _release;
+    } _etaText;
     unsigned char _glyphType;
-    unsigned char _tollCurrencyType;
+    GEOFeatureStyleAttributes *_styleAttributes;
 }
 
-@property (readonly, nonatomic) NSString *etaText; // @synthesize etaText=_etaText;
+@property (readonly, nonatomic) NSString *etaText;
 @property (readonly, nonatomic) unsigned char glyphType; // @synthesize glyphType=_glyphType;
-@property (readonly, nonatomic) unsigned char tollCurrencyType; // @synthesize tollCurrencyType=_tollCurrencyType;
+@property (readonly, nonatomic) GEOFeatureStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (unsigned long long)hash;
 - (id)initWithEtaText:(id)arg1;
-- (id)initWithEtaText:(id)arg1 glyphType:(unsigned char)arg2 tollCurrencyType:(unsigned char)arg3;
+- (id)initWithEtaText:(id)arg1 etaAdvisoryStyleAttributes:(id)arg2;
+- (id)initWithEtaText:(id)arg1 glyphType:(unsigned char)arg2;
+- (id)initWithEtaText:(id)arg1 styleAttributes:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

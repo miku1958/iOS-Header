@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (id)_initWithModule:(id)arg1 presentingRow:(id)arg2;
 - (void)_reloadWithModule:(id)arg1;
 - (void)_updateTitle;

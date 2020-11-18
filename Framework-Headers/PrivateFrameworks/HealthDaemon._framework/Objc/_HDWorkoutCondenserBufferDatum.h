@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+__attribute__((visibility("hidden")))
 @interface _HDWorkoutCondenserBufferDatum : NSObject
 {
     unsigned char _UUIDBytes[16];

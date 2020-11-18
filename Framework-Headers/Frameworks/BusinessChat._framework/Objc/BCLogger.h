@@ -10,5 +10,7 @@
 {
 }
 
+- (void)mt_log_icloud_messages_apps_businessframework:(id)arg1;
+
 @end
 

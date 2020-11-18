@@ -14,6 +14,7 @@
 - (BOOL)_supportsAutoFill;
 - (id)_textFormElement;
 - (BOOL)isEditing;
+- (BOOL)isSingleLineDocument;
 - (BOOL)isTextControl;
 - (BOOL)nodeCanBecomeFirstResponder;
 - (void)setSelectionWithPoint:(struct CGPoint)arg1;

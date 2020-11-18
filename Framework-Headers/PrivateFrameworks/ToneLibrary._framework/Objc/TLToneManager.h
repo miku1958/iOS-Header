@@ -33,6 +33,8 @@
 @property (readonly, nonatomic) NSString *_rootDirectory;
 @property (readonly, nonatomic) NSString *_systemRingtoneDirectory;
 
++ (id)_abbreviatedDescriptionOfMediaPlaybackArchive:(id)arg1;
++ (id)_abbreviatedDescriptionOfToneIdentifierWithUnderlyingMediaPlaybackArchiveForLogging:(id)arg1;
 + (id)_currentOverridePolicyPreferenceKeyForAlertType:(long long)arg1;
 + (id)_defaultToneIdentifierForAlertType:(long long)arg1 topic:(id)arg2;
 + (BOOL)_ensureTCCAccessPreflightAndCheckForFileExistenceAtPath:(id)arg1;
@@ -66,6 +68,7 @@
 - (void)_handleProtectionContentUnlockedEvent;
 - (void)_handleTonePreferencesChangedNotificationForPreferencesKinds:(unsigned long long)arg1;
 - (void)_handleWatchPrefersSalientNotificationDidChange;
+- (BOOL)_hasUnderlyingPlaybackArchiveForToneIdentifier:(id)arg1;
 - (id)_importPurchasedToneWithMetadata:(id)arg1 fileName:(id)arg2;
 - (BOOL)_importSyncedToneWithMetadata:(id)arg1 fileName:(id)arg2;
 - (id)_installedTones;
@@ -105,16 +108,19 @@
 - (id)_systemWatchSoundDirectory;
 - (id)_toneForSyncIdentifier:(id)arg1;
 - (id)_toneIdentifierForFileAtPath:(id)arg1 isValid:(BOOL *)arg2;
+- (id)_toneIdentifierWithUnderlyingPlaybackArchive:(id)arg1;
 - (id)_tonePreferencesFromService;
 - (id)_toneWithIdentifier:(id)arg1;
 - (BOOL)_toneWithIdentifierIsAlarmWakeUp:(id)arg1;
 - (BOOL)_toneWithIdentifierIsDefaultRingtone:(id)arg1;
 - (BOOL)_toneWithIdentifierIsITunesRingtone:(id)arg1;
+- (BOOL)_toneWithIdentifierIsMediaPlaybackArchive:(id)arg1;
 - (BOOL)_toneWithIdentifierIsNonDefaultSystemRingtone:(id)arg1;
 - (BOOL)_toneWithIdentifierIsSystemAlertTone:(id)arg1;
 - (BOOL)_toneWithIdentifierIsValid:(id)arg1;
 - (id)_tonesFromManifestPath:(id)arg1 mediaDirectoryPath:(id)arg2;
 - (BOOL)_transferPurchasedToITunes:(id)arg1;
+- (id)_underlyingPlaybackArchiveForToneIdentifier:(id)arg1;
 - (BOOL)_wasAffectedByAccidentalToneDeletion;
 - (BOOL)_watchPrefersSalientNotifications;
 - (id)currentToneIdentifierForAlertType:(long long)arg1;
@@ -137,6 +143,7 @@
 - (void)setCurrentToneIdentifier:(id)arg1 forAlertType:(long long)arg2;
 - (void)setCurrentToneIdentifier:(id)arg1 forAlertType:(long long)arg2 accountIdentifier:(id)arg3;
 - (void)setCurrentToneIdentifier:(id)arg1 forAlertType:(long long)arg2 topic:(id)arg3;
+- (id)subtitleForToneIdentifier:(id)arg1;
 - (BOOL)toneWithIdentifierIsValid:(id)arg1;
 
 @end

@@ -8,7 +8,7 @@
 
 #import <TSText/CAAnimationDelegate-Protocol.h>
 
-@class CALayer, CAShapeLayer, NSArray, NSString, TSDLayout, TSWPSearchReference, TSWPSelection, TSWPStorage;
+@class CALayer, CAShapeLayer, NSArray, NSString, TSDLayout, TSUColor, TSWPSearchReference, TSWPSelection, TSWPStorage;
 @protocol TSWPLayoutTarget;
 
 @interface TSWPRep : TSDContainerRep <CAAnimationDelegate>
@@ -43,10 +43,12 @@
     BOOL _tornDown;
     BOOL _searchHitsAreInvalid;
     BOOL _findIsShowing;
+    BOOL _suppressSelectionControls;
     BOOL _dragAndDropCaretLayerIsForCaret;
     TSWPSearchReference *_primaryFindResultSearchReference;
     NSArray *_searchReferences;
     CAShapeLayer *_floatingCaretLayer;
+    TSUColor *_overrideCaretColor;
     struct CGAffineTransform _transformToConvertNaturalToScaledRoot;
 }
 
@@ -61,11 +63,13 @@
 @property (readonly, nonatomic) BOOL isBeingEdited;
 @property (copy, nonatomic) TSWPSelection *lastSelection; // @synthesize lastSelection=_lastSelection;
 @property (readonly, weak, nonatomic) TSDLayout<TSWPLayoutTarget> *layout;
+@property (strong, nonatomic) TSUColor *overrideCaretColor; // @synthesize overrideCaretColor=_overrideCaretColor;
 @property (strong, nonatomic) TSWPSearchReference *primaryFindResultSearchReference; // @synthesize primaryFindResultSearchReference=_primaryFindResultSearchReference;
 @property (strong, nonatomic) NSArray *searchReferences; // @synthesize searchReferences=_searchReferences;
 @property (readonly, nonatomic) TSWPSelection *selection;
 @property (readonly, nonatomic) TSWPStorage *storage;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL suppressSelectionControls; // @synthesize suppressSelectionControls=_suppressSelectionControls;
 @property (nonatomic, getter=isSelectionHighlightSuppressed) BOOL suppressSelectionHighlight; // @synthesize suppressSelectionHighlight=_suppressSelectionHighlight;
 @property (readonly, nonatomic) BOOL textIsVertical;
 @property (readonly, nonatomic) struct CGAffineTransform transformToConvertNaturalToScaledRoot; // @synthesize transformToConvertNaturalToScaledRoot=_transformToConvertNaturalToScaledRoot;
@@ -81,6 +85,7 @@
 - (id)closestColumnForPoint:(struct CGPoint)arg1;
 - (id)columnForCharIndex:(unsigned long long)arg1;
 - (struct CGRect)columnRectForRange:(struct _NSRange)arg1;
+- (BOOL)containsStartOfSelection:(id)arg1;
 - (void)dealloc;
 - (BOOL)directlyManagesLayerContent;
 - (void)drawInContext:(struct CGContext *)arg1;
@@ -104,6 +109,7 @@
 - (const struct CGPath *)newPathForSelection:(id)arg1;
 - (BOOL)p_allowCaretForSelection:(id)arg1;
 - (struct CGRect)p_caretRectForSelection:(id)arg1;
+- (struct CGRect)p_closestCaretRectForCharacterAtPoint:(struct CGPoint)arg1;
 - (struct CGRect)p_closestCaretRectForPoint:(struct CGPoint)arg1 inSelection:(BOOL)arg2 allowPastBreak:(BOOL)arg3;
 - (struct CGRect)p_convertNaturalRectToRotated:(struct CGRect)arg1 repAngle:(double)arg2;
 - (void)p_drawInContext:(struct CGContext *)arg1 limitSelection:(id)arg2 suppressInvisibles:(BOOL)arg3;
@@ -112,6 +118,7 @@
 - (BOOL)p_hasRenderableTextCommentsLookingForHighlights:(BOOL)arg1;
 - (BOOL)p_hasRenderableTextHighlights;
 - (id)p_hyperlinkAtPoint:(struct CGPoint)arg1;
+- (CDStruct_f9ea3fe9)p_lineMetricsAtPoint:(struct CGPoint)arg1 allowNotFound:(BOOL)arg2;
 - (struct CGRect)p_paragraphModeRectangleForColumn:(id)arg1 selection:(id)arg2;
 - (struct CGPoint)p_pinPoint:(struct CGPoint)arg1 toRect:(struct CGRect)arg2;
 - (void)p_registerNotifications;

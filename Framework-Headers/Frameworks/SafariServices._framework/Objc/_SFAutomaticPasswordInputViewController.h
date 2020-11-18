@@ -37,6 +37,7 @@
 - (void)_postButtonPressedNotificationForButton:(long long)arg1;
 - (void)_updateKeyboardHeight;
 - (void)_updateKeyboardMetricsAndInterfaceOrientationIfNeeded;
+- (void)dismissKeyboardPreservingFirstResponderIfNecessary;
 - (id)initWithPassword:(id)arg1 keyboardType:(long long)arg2;
 - (void)inputViewControllerDidSelectUseCustomPassword:(id)arg1;
 - (void)inputViewControllerDidSelectUseStrongPassword:(id)arg1;

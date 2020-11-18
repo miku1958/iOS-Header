@@ -4,18 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Silex/SXComponentClassification.h>
+#import <Silex/SXDefaultBannerAdComponentClassification.h>
 
-@interface SXBannerAdComponentClassification : SXComponentClassification
+@interface SXBannerAdComponentClassification : SXDefaultBannerAdComponentClassification
 {
 }
 
 + (int)role;
 + (id)roleString;
 + (id)typeString;
-- (Class)componentModelClass;
-- (BOOL)isCollapsible;
-- (id)layoutRules;
 
 @end
 

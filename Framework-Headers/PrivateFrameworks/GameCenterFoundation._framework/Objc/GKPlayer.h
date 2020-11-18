@@ -18,7 +18,9 @@
     NSArray *_friends;
 }
 
+@property (readonly, nonatomic) NSNumber *acceptedGameInviteFromThisFriend; // @dynamic acceptedGameInviteFromThisFriend;
 @property (copy, nonatomic) NSString *alias; // @dynamic alias;
+@property (readonly, nonatomic) NSNumber *automatchedTogether; // @dynamic automatchedTogether;
 @property (readonly, nonatomic) long long avatarType; // @dynamic avatarType;
 @property (readonly, nonatomic) NSString *cacheKey;
 @property (readonly, nonatomic) NSString *displayName;
@@ -31,11 +33,14 @@
 @property (readonly, strong, nonatomic) NSString *gamePlayerID; // @dynamic gamePlayerID;
 @property (readonly, nonatomic) NSString *guestIdentifier; // @dynamic guestIdentifier;
 @property (readonly, nonatomic) BOOL hasPhoto;
+@property (readonly, nonatomic) NSNumber *initiatedGameInviteToThisFriend; // @dynamic initiatedGameInviteToThisFriend;
 @property (strong) GKPlayerInternal *internal; // @synthesize internal=_internal;
 @property (readonly, nonatomic) BOOL isAnonymousPlayer; // @dynamic isAnonymousPlayer;
 @property (readonly, nonatomic) BOOL isAutomatchPlayer; // @dynamic isAutomatchPlayer;
 @property (readonly, nonatomic) BOOL isFamiliarFriend;
 @property (nonatomic) BOOL isFriend; // @dynamic isFriend;
+@property (readonly, nonatomic) BOOL isGuestPlayer; // @dynamic isGuestPlayer;
+@property (readonly, nonatomic) BOOL isInvitable;
 @property (readonly, nonatomic) BOOL isLocalPlayer; // @dynamic isLocalPlayer;
 @property (readonly, nonatomic) BOOL isUnknownPlayer; // @dynamic isUnknownPlayer;
 @property (readonly, nonatomic) NSString *lastName; // @dynamic lastName;
@@ -87,6 +92,7 @@
 - (BOOL)isFriendablePlayer;
 - (void)loadCommonFriends:(BOOL)arg1 asPlayersWithCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)loadFriendsAsPlayersWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)loadFriendsWithFilter:(id)arg1 withComplationHandler:(CDUnknownBlockType)arg2;
 - (void)loadGamesPlayed:(CDUnknownBlockType)arg1;
 - (void)loadGamesPlayedDetailsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)loadGamesPlayedIncludingInstalledGames:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -97,10 +103,13 @@
 - (void)postChangeNotification;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (BOOL)scopedIDsArePersistent;
+- (void)setAcceptedGameInviteFromThisFriend:(id)arg1;
+- (void)setAutomatchedTogether:(id)arg1;
 - (void)setFriendBiDirectional:(id)arg1;
 - (void)setFriendLevel:(id)arg1;
 - (void)setFriendPlayedNearby:(id)arg1;
 - (void)setFriendPlayedWith:(id)arg1;
+- (void)setInitiatedGameInviteToThisFriend:(id)arg1;
 - (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
 - (id)sortName;
 - (id)valueForUndefinedKey:(id)arg1;

@@ -29,10 +29,10 @@
 @property BOOL hasIPv6; // @synthesize hasIPv6=_hasIPv6;
 @property BOOL isProbeInProgress; // @synthesize isProbeInProgress=_isProbeInProgress;
 @property long long lastFallbackReason; // @synthesize lastFallbackReason=_lastFallbackReason;
-@property (strong) NSDate *lastUsed; // @synthesize lastUsed=_lastUsed;
-@property (readonly) NSString *lastUsedDesc;
-@property (strong) NSDate *lastVisited; // @synthesize lastVisited=_lastVisited;
-@property (readonly) NSString *lastVisitedDesc;
+@property (strong, nonatomic) NSDate *lastUsed; // @synthesize lastUsed=_lastUsed;
+@property (readonly, nonatomic) NSString *lastUsedDesc;
+@property (strong, nonatomic) NSDate *lastVisited; // @synthesize lastVisited=_lastVisited;
+@property (readonly, nonatomic) NSString *lastVisitedDesc;
 @property (strong) NSDate *probeRateLimit; // @synthesize probeRateLimit=_probeRateLimit;
 
 + (long long)failureReasonToFallbackReason:(unsigned int)arg1;

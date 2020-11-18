@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class NSArray, NSMutableDictionary;
+#import <CloudKit/CKAcceptSharesOperationCallbacks-Protocol.h>
 
-@interface CKAcceptSharesOperation : CKOperation
+@class CKAcceptSharesOperationInfo, NSArray, NSMutableDictionary;
+@protocol CKAcceptSharesOperationCallbacks;
+
+@interface CKAcceptSharesOperation : CKOperation <CKAcceptSharesOperationCallbacks>
 {
     CDUnknownBlockType _perShareCompletionBlock;
     CDUnknownBlockType _acceptSharesCompletionBlock;
@@ -18,18 +21,21 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType acceptSharesCompletionBlock; // @synthesize acceptSharesCompletionBlock=_acceptSharesCompletionBlock;
+@property (readonly, nonatomic) id<CKAcceptSharesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSMutableDictionary *errorsByShareURL; // @synthesize errorsByShareURL=_errorsByShareURL;
+@property (readonly, nonatomic) CKAcceptSharesOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (copy, nonatomic) CDUnknownBlockType perShareCompletionBlock; // @synthesize perShareCompletionBlock=_perShareCompletionBlock;
 @property (copy, nonatomic) NSArray *shareMetadatas; // @synthesize shareMetadatas=_shareMetadatas;
 @property (strong, nonatomic) NSMutableDictionary *shareMetadatasByShareURL; // @synthesize shareMetadatasByShareURL=_shareMetadatasByShareURL;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleShareAcceptanceForURL:(id)arg1 share:(id)arg2 error:(id)arg3;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithShareMetadatas:(id)arg1;

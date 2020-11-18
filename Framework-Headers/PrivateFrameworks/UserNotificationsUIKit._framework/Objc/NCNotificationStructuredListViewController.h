@@ -40,6 +40,7 @@
 @property (nonatomic, getter=isDeviceAuthenticated) BOOL deviceAuthenticated; // @synthesize deviceAuthenticated=_deviceAuthenticated;
 @property (readonly, nonatomic) struct CGSize effectiveContentSize;
 @property (readonly, nonatomic) BOOL hasVisibleContent;
+@property (readonly, nonatomic) BOOL hasVisibleContentToReveal;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) NCNotificationListSectionHeaderView *headerViewInForceTouchState; // @synthesize headerViewInForceTouchState=_headerViewInForceTouchState;
 @property (weak, nonatomic) UIPanGestureRecognizer *homeAffordancePanGesture;
@@ -59,7 +60,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
-- (void)_contentSizeCategoryDidChange:(id)arg1;
+- (void)_contentSizeCategoryDidChange;
 - (void)_didChangeDeepestUnambiguousResponder;
 - (BOOL)_forwarNotificationRequestToLongLookIfNecessary:(id)arg1;
 - (id)_logDescription;
@@ -127,6 +128,7 @@
 - (BOOL)notificationMasterListShouldAllowNotificationHistoryReveal:(id)arg1;
 - (id)notificationRequestWithNotificationIdentifier:(id)arg1 sectionIdentifier:(id)arg2;
 - (id)notificationUsageTrackingStateForNotificationListComponent:(id)arg1;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)notifyContentObservers;
 - (void)removeContentObserver:(id)arg1;
 - (void)removeNotificationRequest:(id)arg1;
@@ -134,6 +136,7 @@
 - (id)settleHomeAffordanceAnimationBehaviorDescriptionForNotificationListComponent:(id)arg1;
 - (void)toggleFilteringForSectionIdentifier:(id)arg1 shouldFilter:(BOOL)arg2;
 - (void)toggleMissedSectionActive:(BOOL)arg1 reason:(unsigned long long)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (id)unhideHomeAffordanceAnimationSettingsForNotificationListComponent:(id)arg1;
 - (void)updateNotificationSectionSettings:(id)arg1 previousSectionSettings:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;

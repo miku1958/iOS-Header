@@ -6,28 +6,36 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoard/CSAppHostConfiguring-Protocol.h>
 #import <SpringBoard/CSAuthenticationManaging-Protocol.h>
 #import <SpringBoard/CSCarPlayStatusProviding-Protocol.h>
 #import <SpringBoard/CSCoverSheetContextProviding-Protocol.h>
+#import <SpringBoard/CSDeviceOrientationProviding-Protocol.h>
 #import <SpringBoard/CSMediaControlling-Protocol.h>
+#import <SpringBoard/CSOverlayProviding-Protocol.h>
+#import <SpringBoard/CSProximitySensorProviding-Protocol.h>
 #import <SpringBoard/CSReachabilityControlling-Protocol.h>
 #import <SpringBoard/CSResetRestoreStatusProviding-Protocol.h>
-#import <SpringBoard/CSSystemCursorInteractionManaging-Protocol.h>
+#import <SpringBoard/CSSystemPointerInteractionManaging-Protocol.h>
 #import <SpringBoard/CSTelephonyStatusProviding-Protocol.h>
-#import <SpringBoard/CSTodayOverlayProviding-Protocol.h>
 #import <SpringBoard/CSTouchEnvironmentStatusProviding-Protocol.h>
 #import <SpringBoard/CSUnlockRequesting-Protocol.h>
 #import <SpringBoard/CSUserSessionControlling-Protocol.h>
 #import <SpringBoard/CSWallpaperLogging-Protocol.h>
+#import <SpringBoard/SBFOverlayObserving-Protocol.h>
+#import <SpringBoard/SBProximitySensorManagerObserver-Protocol.h>
 
-@class NSArray, NSString, SBDashBoardNotificationPresenter, SBSyncController, SBWallpaperAggdLogger;
-@protocol CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSPowerStatusProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemCursorInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTodayOverlayProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
+@class NSArray, NSMutableSet, NSString, SBDashBoardNotificationPresenter, SBProximitySensorManager, SBSyncController, SBWallpaperAggdLogger;
+@protocol CSAppHostConfiguring, CSApplicationInforming, CSAuthenticationManaging, CSCarPlayStatusProviding, CSDeviceOrientationProviding, CSHomeAffordanceControlling, CSLegibilityProviding, CSMediaControlling, CSModalHomeAffordanceControlling, CSNotificationPresenting, CSOverlayProviding, CSPowerStatusProviding, CSProximitySensorProviding, CSReachabilityControlling, CSResetRestoreStatusProviding, CSScreenStateProviding, CSStatusBarControlling, CSSystemPointerInteractionManaging, CSTelephonyStatusProviding, CSThermalStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSWallpaperViewProviding, SBFActionProviding, SBFAuthenticationAssertionProviding, SBFAuthenticationStatusProvider, SBFDateProviding, SBFLockOutStatusProvider, SBFPasscodeFieldChangeObserver, SBFScreenWakeAnimationControlling, SBUIBiometricResource;
 
-@interface SBDefaultCoverSheetContext : NSObject <CSAuthenticationManaging, CSCarPlayStatusProviding, CSMediaControlling, CSReachabilityControlling, CSResetRestoreStatusProviding, CSTelephonyStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSTodayOverlayProviding, CSSystemCursorInteractionManaging, CSCoverSheetContextProviding>
+@interface SBDefaultCoverSheetContext : NSObject <CSAuthenticationManaging, CSCarPlayStatusProviding, CSMediaControlling, CSReachabilityControlling, CSResetRestoreStatusProviding, CSTelephonyStatusProviding, CSTouchEnvironmentStatusProviding, CSUnlockRequesting, CSUserSessionControlling, CSWallpaperLogging, CSOverlayProviding, CSAppHostConfiguring, CSSystemPointerInteractionManaging, CSProximitySensorProviding, CSDeviceOrientationProviding, SBProximitySensorManagerObserver, SBFOverlayObserving, CSCoverSheetContextProviding>
 {
     SBSyncController *_syncController;
     SBWallpaperAggdLogger *_wallpaperAggdLogger;
     SBDashBoardNotificationPresenter *_notificationPresenter;
+    SBProximitySensorManager *_proximitySensorManager;
+    NSMutableSet *_proximitySensorProviderObservers;
+    BOOL _objectInProximity;
     id<SBFAuthenticationAssertionProviding> _authenticationAssertionProvider;
     id<SBFAuthenticationStatusProvider> _authenticationStatusProvider;
     id<SBFPasscodeFieldChangeObserver> _passcodeFieldChangeObserver;
@@ -46,8 +54,10 @@
     id<CSWallpaperViewProviding> _wallpaperViewProvider;
     id<SBFActionProviding> _contentActionProvider;
     id<CSApplicationInforming> _applicationInformer;
+    long long _rawDeviceOrientationIgnoringOrientationLocks;
 }
 
+@property (readonly, nonatomic) id<CSAppHostConfiguring> appHostConfiguring;
 @property (readonly, nonatomic) id<CSApplicationInforming> applicationInformer; // @synthesize applicationInformer=_applicationInformer;
 @property (readonly, nonatomic) id<SBFAuthenticationAssertionProviding> authenticationAssertionProvider; // @synthesize authenticationAssertionProvider=_authenticationAssertionProvider;
 @property (readonly, nonatomic) id<CSAuthenticationManaging> authenticationManager;
@@ -59,19 +69,24 @@
 @property (readonly, nonatomic) id<SBFDateProviding> dateProvider; // @synthesize dateProvider=_dateProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<CSDeviceOrientationProviding> deviceOrientationProvider;
 @property (readonly, copy, nonatomic) NSArray *dismissableOverlays;
 @property (readonly, nonatomic) BOOL expectsPocketTouches;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<CSHomeAffordanceControlling> homeAffordanceController; // @synthesize homeAffordanceController=_homeAffordanceController;
+@property (readonly, nonatomic) id<CSOverlayProviding> homeScreenOverlayProvider;
 @property (readonly, nonatomic) id<CSLegibilityProviding> legibilityProvider; // @synthesize legibilityProvider=_legibilityProvider;
 @property (readonly, nonatomic) id<SBFLockOutStatusProvider> lockOutStatusProvider; // @synthesize lockOutStatusProvider=_lockOutStatusProvider;
 @property (readonly, nonatomic, getter=isLogoutSupported) BOOL logoutSupported;
 @property (readonly, nonatomic) id<CSMediaControlling> mediaController;
 @property (readonly, nonatomic) id<CSModalHomeAffordanceControlling> modalHomeAffordanceController; // @synthesize modalHomeAffordanceController=_modalHomeAffordanceController;
 @property (readonly, nonatomic) id<CSNotificationPresenting> notificationPresenter;
+@property (readonly, nonatomic, getter=isObjectInProximity) BOOL objectInProximity; // @synthesize objectInProximity=_objectInProximity;
 @property (readonly, nonatomic) id<SBFPasscodeFieldChangeObserver> passcodeFieldChangeObserver; // @synthesize passcodeFieldChangeObserver=_passcodeFieldChangeObserver;
 @property (readonly, copy, nonatomic) NSString *powerStatusChangeNotificationName; // @synthesize powerStatusChangeNotificationName=_powerStatusChangeNotificationName;
 @property (readonly, nonatomic) id<CSPowerStatusProviding> powerStatusProvider; // @synthesize powerStatusProvider=_powerStatusProvider;
+@property (readonly, nonatomic) id<CSProximitySensorProviding> proximitySensorProvider;
+@property (readonly, nonatomic) long long rawDeviceOrientationIgnoringOrientationLocks; // @synthesize rawDeviceOrientationIgnoringOrientationLocks=_rawDeviceOrientationIgnoringOrientationLocks;
 @property (readonly, nonatomic) id<CSReachabilityControlling> reachabilityController;
 @property (readonly, nonatomic) id<CSResetRestoreStatusProviding> resetRestoreStatusProvider;
 @property (readonly, nonatomic) long long resetState;
@@ -82,28 +97,36 @@
 @property (readonly, nonatomic) id<SBFScreenWakeAnimationControlling> screenWakeAnimationController; // @synthesize screenWakeAnimationController=_screenWakeAnimationController;
 @property (readonly, nonatomic) id<CSStatusBarControlling> statusBarController; // @synthesize statusBarController=_statusBarController;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) id<CSSystemCursorInteractionManaging> systemCursorInterationManager;
+@property (readonly, nonatomic) id<CSSystemPointerInteractionManaging> systemPointerInteractionManager;
 @property (readonly, nonatomic) id<CSTelephonyStatusProviding> telephonyStatusProvider;
 @property (readonly, nonatomic) id<CSThermalStatusProviding> thermalStatusProvider; // @synthesize thermalStatusProvider=_thermalStatusProvider;
-@property (readonly, nonatomic) id<CSTodayOverlayProviding> todayOverlayProvider;
 @property (readonly, nonatomic) id<CSTouchEnvironmentStatusProviding> touchEnvironmentStatusProvider;
 @property (readonly, nonatomic) id<CSUnlockRequesting> unlockRequester;
 @property (readonly, nonatomic) id<CSUserSessionControlling> userSessionController;
 @property (readonly, nonatomic) id<CSWallpaperLogging> wallpaperLogger;
 @property (readonly, nonatomic) id<CSWallpaperViewProviding> wallpaperViewProvider; // @synthesize wallpaperViewProvider=_wallpaperViewProvider;
-@property (readonly, nonatomic) BOOL wantsTodayOverlay;
+@property (readonly, nonatomic) BOOL wantsHomeScreenOverlay;
 
 - (void).cxx_destruct;
+- (id)_todayViewControllerIfAvailable;
+- (void)addProximitySensorProviderObserver:(id)arg1;
+- (id)applicationHosterForBundleIdentifier:(id)arg1;
 - (void)attemptUnlockWithPasscode:(id)arg1 finishUIUnlock:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)createUnlockRequest;
 - (id)createUnlockRequestForActionContext:(id)arg1;
 - (void)deactivateReachability;
+- (BOOL)dismissModalContentIfVisibleAnimated:(BOOL)arg1;
 - (void)incrementIrisPlayCount;
 - (id)init;
 - (BOOL)isEmergencyCallSupported;
 - (void)logout;
-- (id)newTodayOverlayController;
+- (id)newOverlayController;
+- (void)overlayController:(id)arg1 didChangePresentationProgress:(double)arg2 fromLeading:(BOOL)arg3;
+- (void)overlayController:(id)arg1 visibilityDidChange:(BOOL)arg2;
+- (void)overlayControllerDidBeginChangingPresentationProgress:(id)arg1;
+- (void)proximitySensorManager:(id)arg1 crudeProximityDidChange:(BOOL)arg2;
 - (void)registerView:(id)arg1 delegate:(id)arg2;
+- (void)removeProximitySensorProviderObserver:(id)arg1;
 - (void)setBiometricAutoUnlockingDisabled:(BOOL)arg1 forReason:(id)arg2;
 - (void)setPasscodeVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)stopMediaPlaybackForSource:(long long)arg1;

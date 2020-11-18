@@ -43,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)keyCommandWasPerformed:(id)arg1;
 - (void)keyCommandsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)notifyFirstTimeAppearanceWithActions:(unsigned long long)arg1;
+- (void)overrideParentApplicationDisplayIdentifierWithIdentifier:(id)arg1;
 - (void)prepareForActionSheetPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)preparePreviewCollectionForInvalidationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)saveCurrentPreviewEditsSynchronously:(BOOL)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

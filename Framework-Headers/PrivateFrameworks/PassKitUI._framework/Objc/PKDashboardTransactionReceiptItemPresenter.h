@@ -8,15 +8,11 @@
 
 #import <PassKitUI/PKDashboardItemPresenter-Protocol.h>
 
-@class NSString, PKDashboardStackedImageCollectionViewCell, PKPaymentDefaultDataProvider, PKPaymentTransactionDetailsFactory, PKPeerPaymentContactResolver, PKPeerPaymentController, PKPeerPaymentWebService;
+@class NSString, PKDashboardStackedImageCollectionViewCell, PKPaymentTransactionDetailsFactory;
 
 @interface PKDashboardTransactionReceiptItemPresenter : NSObject <PKDashboardItemPresenter>
 {
     PKDashboardStackedImageCollectionViewCell *_sampleCell;
-    PKPeerPaymentWebService *_peerPaymentWebService;
-    PKPeerPaymentController *_peerPaymentController;
-    PKPeerPaymentContactResolver *_contactResolver;
-    PKPaymentDefaultDataProvider *_dataProvider;
     PKPaymentTransactionDetailsFactory *_transactionDetailsFactory;
 }
 
@@ -31,7 +27,7 @@
 - (BOOL)canSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionViewCellClasses;
-- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
+- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3 navigationController:(id)arg4 canPresent:(CDUnknownBlockType)arg5;
 - (id)init;
 - (Class)itemClass;
 - (struct CGSize)sizeForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;

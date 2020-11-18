@@ -13,8 +13,10 @@
 {
     UIStatusBar_Modern *_compactTrailingStatusBar;
     UIStatusBar_Modern *_expandedStatusBar;
+    BOOL _needsUpdatedMetrics;
     double _trailingMarginDelta;
     double _verticalBatteryAlignmentDelta;
+    BOOL _alignCompactAndExpandedStatusBars;
     id<CCUIStatusBarDelegate> _delegate;
     unsigned long long _leadingState;
     unsigned long long _trailingState;
@@ -26,13 +28,13 @@
     struct CGAffineTransform _compactScaleTransform;
 }
 
+@property (nonatomic) BOOL alignCompactAndExpandedStatusBars; // @synthesize alignCompactAndExpandedStatusBars=_alignCompactAndExpandedStatusBars;
 @property (nonatomic) struct UIEdgeInsets compactEdgeInsets; // @synthesize compactEdgeInsets=_compactEdgeInsets;
 @property (nonatomic) struct CGAffineTransform compactScaleTransform; // @synthesize compactScaleTransform=_compactScaleTransform;
 @property (nonatomic) double compactTrailingAlpha; // @dynamic compactTrailingAlpha;
 @property (readonly, copy, nonatomic) UIStatusBarStyleRequest *compactTrailingStyleRequest; // @dynamic compactTrailingStyleRequest;
 @property (weak, nonatomic) id<CCUIStatusBarDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) struct UIEdgeInsets expandedEdgeInsets; // @synthesize expandedEdgeInsets=_expandedEdgeInsets;
-@property (readonly, nonatomic) double expandedStatusBarBaseline;
 @property (nonatomic) double expandedStatusBarTranslation; // @synthesize expandedStatusBarTranslation=_expandedStatusBarTranslation;
 @property (nonatomic) double expandedTrailingAlpha; // @dynamic expandedTrailingAlpha;
 @property (nonatomic) double leadingAlpha; // @dynamic leadingAlpha;

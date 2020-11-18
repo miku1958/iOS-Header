@@ -12,12 +12,13 @@
 @protocol PXGRenderer <NSObject>
 
 @property (weak, nonatomic) id<PXGRendererDelegate> delegate;
-@property (nonatomic) CDStruct_93894d6c interactionState;
+@property (nonatomic) CDStruct_a02a4563 interactionState;
 @property (readonly, nonatomic) int presentationType;
 @property (copy, nonatomic) CDUnknownBlockType test_renderSnapshotHandler;
 @property (readonly, nonatomic) id<PXGTextureConverter> textureConverter;
 @property (nonatomic) struct CGRect visibleRect;
 
+- (void)releaseResources;
 - (void)renderSpritesWithTextures:(NSArray *)arg1 dataStore:(PXGSpriteDataStore *)arg2 presentationDataStore:(PXGSpriteDataStore *)arg3 presentationMetadataStore:(PXGSpriteMetadataStore *)arg4 layout:(PXGLayout *)arg5;
 - (void)setNeedsRender;
 - (void)updateWithChangeDetails:(PXGChangeDetails *)arg1;

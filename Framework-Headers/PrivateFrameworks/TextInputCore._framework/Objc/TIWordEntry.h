@@ -6,16 +6,18 @@
 
 #import <TextInputCore/TIUserAction.h>
 
-@class NSArray, NSMutableArray, NSString, TICursorEvent, TIKeyboardCandidate, TIKeyboardInput;
+@class NSArray, NSMutableArray, NSString, TIKeyboardCandidate, TIKeyboardInput;
 
 @interface TIWordEntry : TIUserAction
 {
+    BOOL _extendsPriorWord;
     BOOL _includesCursorEdits;
     BOOL _includesOrientationChange;
     BOOL _isRetrocorrection;
     BOOL _isMultilingual;
     BOOL _isOOV;
     BOOL _isContinuousPathCompletion;
+    BOOL _candidateContainsEmoji;
     BOOL _isPunctuationEntryFollowingAWord;
     int _wordEntryType;
     int _wordAlignmentConf;
@@ -34,7 +36,7 @@
     NSString *_inputStem;
     NSString *_inputContext;
     TIWordEntry *_editedEntry;
-    TICursorEvent *_editAction;
+    TIUserAction *_editAction;
     NSMutableArray *_allEdits;
     unsigned long long _sessionIndex;
     unsigned long long _alignmentConflicts;
@@ -49,11 +51,13 @@
 @property (strong, nonatomic) NSMutableArray *allKeyboardInputsM; // @synthesize allKeyboardInputsM=_allKeyboardInputsM;
 @property (readonly, nonatomic) NSArray *allTouches;
 @property (strong, nonatomic) NSMutableArray *allTouchesM; // @synthesize allTouchesM=_allTouchesM;
+@property (nonatomic) BOOL candidateContainsEmoji; // @synthesize candidateContainsEmoji=_candidateContainsEmoji;
 @property long long candidateIndex; // @synthesize candidateIndex=_candidateIndex;
 @property (readonly, nonatomic) NSArray *candidatesOffered;
 @property (strong, nonatomic) NSMutableArray *candidatesOfferedM; // @synthesize candidatesOfferedM=_candidatesOfferedM;
-@property (strong, nonatomic) TICursorEvent *editAction; // @synthesize editAction=_editAction;
+@property (strong, nonatomic) TIUserAction *editAction; // @synthesize editAction=_editAction;
 @property (strong, nonatomic) TIWordEntry *editedEntry; // @synthesize editedEntry=_editedEntry;
+@property (nonatomic) BOOL extendsPriorWord; // @synthesize extendsPriorWord=_extendsPriorWord;
 @property (nonatomic) BOOL includesCursorEdits; // @synthesize includesCursorEdits=_includesCursorEdits;
 @property (nonatomic) BOOL includesOrientationChange; // @synthesize includesOrientationChange=_includesOrientationChange;
 @property (copy, nonatomic) NSString *inputContext; // @synthesize inputContext=_inputContext;

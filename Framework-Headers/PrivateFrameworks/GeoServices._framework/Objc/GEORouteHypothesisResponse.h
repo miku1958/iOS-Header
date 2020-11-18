@@ -23,9 +23,7 @@
         unsigned int has_updatedTimeStamp:1;
         unsigned int read_directionsResponse:1;
         unsigned int read_etaResponse:1;
-        unsigned int wrote_directionsResponse:1;
-        unsigned int wrote_etaResponse:1;
-        unsigned int wrote_updatedTimeStamp:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -38,8 +36,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readDirectionsResponse;
-- (void)_readEtaResponse;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -47,7 +43,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

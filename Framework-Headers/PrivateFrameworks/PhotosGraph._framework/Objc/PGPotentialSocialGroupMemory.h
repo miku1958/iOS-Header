@@ -13,11 +13,11 @@
     NSMutableSet *_mutableMomentNodes;
     PGGraphSocialGroupNode *_socialGroupNode;
     long long _year;
-    NSArray *_facedAssets;
+    NSArray *_facedAssetLocalIdentifiers;
     NSSet *_peopleUUIDs;
 }
 
-@property (strong) NSArray *facedAssets; // @synthesize facedAssets=_facedAssets;
+@property (strong) NSArray *facedAssetLocalIdentifiers; // @synthesize facedAssetLocalIdentifiers=_facedAssetLocalIdentifiers;
 @property (strong) NSSet *peopleUUIDs; // @synthesize peopleUUIDs=_peopleUUIDs;
 @property (readonly) PGGraphSocialGroupNode *socialGroupNode; // @synthesize socialGroupNode=_socialGroupNode;
 @property (readonly) long long year; // @synthesize year=_year;

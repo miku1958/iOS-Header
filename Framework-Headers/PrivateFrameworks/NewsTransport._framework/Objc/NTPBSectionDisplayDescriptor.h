@@ -14,27 +14,33 @@
 {
     NSString *_actionTitle;
     NSString *_actionURLString;
+    NSString *_backgroundColorDark;
+    NSString *_backgroundColorLight;
     NSString *_backgroundGradientColor;
     NSString *_name;
-    NSString *_nameColor;
-    BOOL _useNameColorInWidget;
-    struct {
-        unsigned int useNameColorInWidget:1;
-    } _has;
+    NSString *_nameActionURLString;
+    NSString *_nameColorDark;
+    NSString *_nameColorLight;
 }
 
 @property (strong, nonatomic) NSString *actionTitle; // @synthesize actionTitle=_actionTitle;
 @property (strong, nonatomic) NSString *actionURLString; // @synthesize actionURLString=_actionURLString;
+@property (strong, nonatomic) NSString *backgroundColorDark; // @synthesize backgroundColorDark=_backgroundColorDark;
+@property (strong, nonatomic) NSString *backgroundColorLight; // @synthesize backgroundColorLight=_backgroundColorLight;
 @property (strong, nonatomic) NSString *backgroundGradientColor; // @synthesize backgroundGradientColor=_backgroundGradientColor;
 @property (readonly, nonatomic) BOOL hasActionTitle;
 @property (readonly, nonatomic) BOOL hasActionURLString;
+@property (readonly, nonatomic) BOOL hasBackgroundColorDark;
+@property (readonly, nonatomic) BOOL hasBackgroundColorLight;
 @property (readonly, nonatomic) BOOL hasBackgroundGradientColor;
 @property (readonly, nonatomic) BOOL hasName;
-@property (readonly, nonatomic) BOOL hasNameColor;
-@property (nonatomic) BOOL hasUseNameColorInWidget;
+@property (readonly, nonatomic) BOOL hasNameActionURLString;
+@property (readonly, nonatomic) BOOL hasNameColorDark;
+@property (readonly, nonatomic) BOOL hasNameColorLight;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
-@property (strong, nonatomic) NSString *nameColor; // @synthesize nameColor=_nameColor;
-@property (nonatomic) BOOL useNameColorInWidget; // @synthesize useNameColorInWidget=_useNameColorInWidget;
+@property (strong, nonatomic) NSString *nameActionURLString; // @synthesize nameActionURLString=_nameActionURLString;
+@property (strong, nonatomic) NSString *nameColorDark; // @synthesize nameColorDark=_nameColorDark;
+@property (strong, nonatomic) NSString *nameColorLight; // @synthesize nameColorLight=_nameColorLight;
 
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;

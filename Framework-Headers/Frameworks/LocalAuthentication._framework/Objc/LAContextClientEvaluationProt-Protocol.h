@@ -12,6 +12,8 @@
 - (void)evaluatePolicy:(long long)arg1 options:(NSDictionary *)arg2 uiDelegate:(id<LAUIDelegate>)arg3 reply:(void (^)(NSDictionary *, NSError *))arg4;
 - (void)invalidateWithReply:(void (^)(BOOL, NSError *))arg1;
 - (void)isCredentialSet:(long long)arg1 reply:(void (^)(BOOL, NSError *))arg2;
+- (void)optionsForInternalOperation:(long long)arg1 reply:(void (^)(id, NSError *))arg2;
 - (void)setCredential:(NSData *)arg1 type:(long long)arg2 reply:(void (^)(BOOL, NSError *))arg3;
+- (void)setOptions:(id)arg1 forInternalOperation:(long long)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 @end
 

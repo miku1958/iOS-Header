@@ -14,6 +14,7 @@
 @interface CKLLog : NSObject <OSLogPersistenceDelegate, OSActivityStreamDelegate>
 {
     BOOL _wantsSimulatorLogs;
+    BOOL _onlyTestLogs;
     BOOL _colorOutput;
     double _startTimeOffset;
     NSDate *_absoluteStartDate;
@@ -32,6 +33,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL onlyTestLogs; // @synthesize onlyTestLogs=_onlyTestLogs;
 @property (strong, nonatomic) NSString *processName; // @synthesize processName=_processName;
 @property (nonatomic) unsigned long long source; // @synthesize source=_source;
 @property (nonatomic) double startTimeOffset; // @synthesize startTimeOffset=_startTimeOffset;

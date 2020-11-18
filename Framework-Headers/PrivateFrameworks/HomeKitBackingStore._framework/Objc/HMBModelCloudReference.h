@@ -32,6 +32,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)associateWithContainer:(id)arg1;
+- (id)attributeDescriptions;
 - (void)encodeWithCoder:(id)arg1;
 - (id)hmbEncodeForStorageLocation:(unsigned long long)arg1 error:(id *)arg2;
 - (id)initWithCoder:(id)arg1;

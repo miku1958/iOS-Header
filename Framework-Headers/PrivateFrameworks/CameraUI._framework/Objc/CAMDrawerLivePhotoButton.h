@@ -18,7 +18,10 @@
 - (id)imageNameForCurrentState;
 - (BOOL)isMenuItemSelected:(id)arg1;
 - (id)loadMenuItems;
+- (void)setLivePhotoMode:(long long)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldShowSlashForCurrentState;
 - (BOOL)shouldUseActiveTintForCurrentState;
+- (BOOL)shouldUseSlash;
 
 @end
 

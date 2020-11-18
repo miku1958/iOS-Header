@@ -19,9 +19,16 @@
 
 - (void).cxx_destruct;
 - (void)_performSyncAction:(CDUnknownBlockType)arg1;
+- (void)disableTemporaryPhoneAlias:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)disableTemporaryPhoneAlias:(id)arg1 withError:(id *)arg2;
+- (void)enableTemporaryPhoneAlias:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)enableTemporaryPhoneAlias:(id)arg1 withError:(id *)arg2;
 - (id)init;
 - (id)initWithSyncDaemonControllerBuilder:(CDUnknownBlockType)arg1;
+- (void)removeTemporaryPhoneAlias:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)removeTemporaryPhoneAlias:(id)arg1 withError:(id *)arg2;
 - (void)requestSelectedSubscriptionsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)requestUnselectedTemporaryPhoneAliasesWithError:(CDUnknownBlockType)arg1;
 - (void)selectSubscription:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)selectSubscription:(id)arg1 withError:(id *)arg2;
 - (id)selectedSubscriptionsWithError:(id *)arg1;
@@ -29,6 +36,7 @@
 - (id)setSelectedSubscriptions:(id)arg1 withError:(id *)arg2;
 - (void)unselectSubscription:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)unselectSubscription:(id)arg1 withError:(id *)arg2;
+- (id)unselectedTemporaryPhoneAliasesWithError:(id *)arg1;
 
 @end
 

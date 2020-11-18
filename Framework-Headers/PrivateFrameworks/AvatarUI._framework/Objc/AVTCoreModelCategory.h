@@ -6,20 +6,18 @@
 
 #import <objc/NSObject.h>
 
-@class AVTCoreModelCategoryPairing, NSArray, NSDictionary;
+@class AVTCoreModelPairing, NSArray, NSDictionary;
 
 @interface AVTCoreModelCategory : NSObject
 {
-    NSArray *_colorPalettes;
     NSArray *_presets;
     NSDictionary *_tags;
     NSArray *_rows;
     long long _presetCategory;
-    AVTCoreModelCategoryPairing *_pairing;
+    AVTCoreModelPairing *_pairing;
 }
 
-@property (readonly, nonatomic) NSArray *colorPalettes; // @synthesize colorPalettes=_colorPalettes;
-@property (readonly, copy, nonatomic) AVTCoreModelCategoryPairing *pairing; // @synthesize pairing=_pairing;
+@property (readonly, copy, nonatomic) AVTCoreModelPairing *pairing; // @synthesize pairing=_pairing;
 @property (readonly, nonatomic) long long presetCategory; // @synthesize presetCategory=_presetCategory;
 @property (readonly, copy, nonatomic) NSArray *presets; // @synthesize presets=_presets;
 @property (readonly, copy, nonatomic) NSArray *rows; // @synthesize rows=_rows;
@@ -27,7 +25,7 @@
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithPresetCategory:(long long)arg1 colorPalettes:(id)arg2 presets:(id)arg3 tags:(id)arg4 rows:(id)arg5 pairing:(id)arg6;
+- (id)initWithPresetCategory:(long long)arg1 presets:(id)arg2 tags:(id)arg3 rows:(id)arg4 pairing:(id)arg5;
 
 @end
 

@@ -9,6 +9,7 @@
 @class CBUUID, NSMutableSet;
 @protocol OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface _HDHealthServiceDiscoveryInfo : NSObject
 {
     NSMutableSet *_peripheralsUUIDs;

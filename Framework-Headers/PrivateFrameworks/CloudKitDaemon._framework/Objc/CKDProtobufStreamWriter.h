@@ -11,7 +11,6 @@
 @class NSData, NSFileHandle, NSInputStream, NSMutableArray, NSOutputStream, NSString;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKDProtobufStreamWriter : NSObject <NSStreamDelegate>
 {
     NSMutableArray *_allObjects;

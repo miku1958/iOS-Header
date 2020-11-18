@@ -8,17 +8,18 @@
 
 #import <HomeKit/HMFMessageTransportDelegate-Protocol.h>
 
-@class NSString, NSXPCConnection;
+@class NSDictionary, NSMutableArray, NSString, NSXPCConnection;
 
 __attribute__((visibility("hidden")))
 @interface HMXPCClient : HMFMessageTransport <HMFMessageTransportDelegate>
 {
+    NSMutableArray *_reconnectionHandlers;
     BOOL _connectionValid;
     BOOL _requiresCheckin;
     BOOL _notifyRegistered;
     int _notifyRegisterToken;
     NSXPCConnection *_connection;
-    CDUnknownBlockType _reconnectionHandler;
+    NSDictionary *_userInfo;
 }
 
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
@@ -28,13 +29,16 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int notifyRegisterToken; // @synthesize notifyRegisterToken=_notifyRegisterToken;
 @property (nonatomic) BOOL notifyRegistered; // @synthesize notifyRegistered=_notifyRegistered;
-@property (copy, nonatomic) CDUnknownBlockType reconnectionHandler; // @synthesize reconnectionHandler=_reconnectionHandler;
 @property (nonatomic) BOOL requiresCheckin; // @synthesize requiresCheckin=_requiresCheckin;
 @property (readonly) Class superclass;
+@property (readonly, copy) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
++ (id)exportedInterface;
++ (id)remoteObjectInterface;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
+- (id)initWithUserInfo:(id)arg1;
 - (void)messageTransport:(id)arg1 didReceiveMessage:(id)arg2;
 - (void)registerReconnectionHandler:(CDUnknownBlockType)arg1;
 - (void)sendMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

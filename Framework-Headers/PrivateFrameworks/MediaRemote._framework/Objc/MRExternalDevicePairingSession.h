@@ -21,8 +21,6 @@
 @property (readonly, nonatomic, getter=isUsingSystemPairing) BOOL usingSystemPairing;
 
 - (void).cxx_destruct;
-- (void)_openSecuritySessionInState:(unsigned long long)arg1 useSystemPairing:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (BOOL)_useSystemPairing;
 - (void)close;
 - (id)decryptData:(id)arg1 withError:(id *)arg2;
 - (BOOL)deleteIdentityWithError:(id *)arg1;

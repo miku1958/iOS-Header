@@ -8,19 +8,22 @@
 
 #import <TSTables/NSCopying-Protocol.h>
 
-@class TSCECalculationEngine, TSCECellTractRef;
+@class TSCECalculationEngine, TSCECellTractRef, TSTColumnRowUIDMapper;
 
 @interface TSTUIDRectRef : NSObject <NSCopying>
 {
     TSCECalculationEngine *_calcEngine;
     UUIDRect_d701734b _uidRange;
     TSCECellTractRef *_lastKnownViewTractRef;
+    unsigned long long _viewMapVersionCounter;
     BOOL _needsUidRectUpgrade;
+    TSTColumnRowUIDMapper *_viewUidMapper;
     unsigned char _basePreserveFlags;
     UUIDData_5fbc143e _tableUID;
     RefTypeHolder_8c6da553 _chromeRangeRef;
 }
 
+@property (readonly, nonatomic) unsigned long long area;
 @property (readonly) struct TSUModelCellCoord baseBottomRightCoord;
 @property (nonatomic) unsigned char basePreserveFlags; // @synthesize basePreserveFlags=_basePreserveFlags;
 @property (readonly) struct TSUModelCellCoord baseTopLeftCoord;
@@ -31,10 +34,13 @@
 @property (readonly, nonatomic) BOOL isValid;
 @property (readonly, nonatomic) BOOL isViewRectangle;
 @property (nonatomic) BOOL needsUidRectUpgrade; // @synthesize needsUidRectUpgrade=_needsUidRectUpgrade;
+@property (readonly, nonatomic) unsigned long long numberOfColumns;
+@property (readonly, nonatomic) unsigned long long numberOfRows;
+@property (readonly, nonatomic) UUIDData_5fbc143e singleReferencedColumnUid;
 @property (readonly, nonatomic) BOOL spansAllColumns;
 @property (readonly, nonatomic) BOOL spansAllRows;
 @property (readonly, nonatomic) UUIDData_5fbc143e tableUID; // @synthesize tableUID=_tableUID;
-@property (readonly, nonatomic) UUIDRect_d701734b uidRange; // @synthesize uidRange=_uidRange;
+@property (readonly, nonatomic) UUIDRect_d701734b uidRange;
 @property (readonly) struct TSUViewCellCoord viewBottomRightCoord;
 @property (nonatomic) unsigned char viewPreserveFlags;
 @property (readonly) struct TSUViewCellCoord viewTopLeftCoord;
@@ -50,7 +56,9 @@
 - (void)convertViewTractRefToUID;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
+- (id)grabViewUidMapper;
 - (unsigned long long)hash;
+- (id)includeUidTractList;
 - (id)initWithCalcEngine:(id)arg1 baseRangeRef:(const RefTypeHolder_1140c985 *)arg2 preserveFlags:(unsigned char)arg3;
 - (id)initWithCalcEngine:(id)arg1 chromeRangeRef:(const RefTypeHolder_8c6da553 *)arg2 preserveFlags:(unsigned char)arg3;
 - (id)initWithCalcEngine:(id)arg1 tableUID:(const UUIDData_5fbc143e *)arg2 uidRange:(const UUIDRect_d701734b *)arg3 preserveFlags:(unsigned char)arg4;
@@ -63,11 +71,11 @@
 - (void)setViewRangeRef:(const RefTypeHolder_45a2a752 *)arg1 preserveFlags:(unsigned char)arg2;
 - (id)tableInfo;
 - (id)tableModel;
-- (id)uidTractList;
 - (id)viewCellRegionWithRangeContext:(unsigned char)arg1;
 - (RefTypeHolder_45a2a752)viewRangeRef;
 - (vector_e93a2b69)viewRangeRefs;
 - (id)viewTractRef;
+- (id)viewTractRefIfFullyValid;
 
 @end
 

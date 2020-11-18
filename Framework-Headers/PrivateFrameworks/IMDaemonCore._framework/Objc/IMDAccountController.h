@@ -45,13 +45,15 @@
 - (id)_superFormatFromAIML:(id)arg1;
 - (void)account:(id)arg1 isActiveChanged:(BOOL)arg2;
 - (id)accountForAccountID:(id)arg1;
+- (id)accountForHandle:(id)arg1;
 - (id)accountForIDSAccountUniqueID:(id)arg1;
 - (id)accountsForLoginID:(id)arg1 onService:(id)arg2;
 - (id)accountsForService:(id)arg1;
 - (void)activateAccount:(id)arg1;
 - (void)activateAccounts:(id)arg1;
-- (BOOL)activeAccountsAreEligibleForSpamFilter;
+- (BOOL)activeAccountsAreEligibleForHawking;
 - (id)activeAccountsForService:(id)arg1;
+- (id)activeAliases;
 - (void)addAccount:(id)arg1;
 - (id)anySessionForServiceName:(id)arg1;
 - (id)connectedAccountsForService:(id)arg1;
@@ -66,6 +68,7 @@
 - (id)init;
 - (BOOL)isAccountActive:(id)arg1;
 - (void)load;
+- (BOOL)receiverIsCandidateForHawking:(id)arg1;
 - (void)removeAccount:(id)arg1;
 - (void)save;
 - (id)sessionForAccount:(id)arg1;

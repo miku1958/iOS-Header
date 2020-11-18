@@ -10,6 +10,7 @@
 {
 }
 
++ (id)blockObserverOfClass:(Class)arg1 withResultBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3 failureBlock:(CDUnknownBlockType)arg4;
 + (id)observerWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)observerWithResultBlock:(CDUnknownBlockType)arg1;
 + (id)observerWithResultBlock:(CDUnknownBlockType)arg1 completionBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;

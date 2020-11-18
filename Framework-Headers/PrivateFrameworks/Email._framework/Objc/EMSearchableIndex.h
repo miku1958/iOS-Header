@@ -21,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)attachmentPersistentIDFromItemIdentifier:(id)arg1;
 + (id)log;
 + (id)remoteInterface;
 - (void).cxx_destruct;

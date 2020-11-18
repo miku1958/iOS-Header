@@ -9,7 +9,7 @@
 #import <NewsCore/FCArticleAccessCheckable-Protocol.h>
 #import <NewsCore/FCHeadlineStocksFields-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCInterestToken, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSDate, NSString, NSURL, NTPBArticleRecord;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCInterestToken, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSDate, NSString, NSURL, NTPBArticleRecord;
 @protocol FCChannelProviding;
 
 @interface FCArticleHeadline : FCHeadline <FCHeadlineStocksFields, FCArticleAccessCheckable>
@@ -65,6 +65,8 @@
     NSArray *_topicIDs;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_globalCohorts;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList *_publisherCohorts;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_globalConversionStats;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats *_publisherConversionStats;
     NSURL *_videoURL;
     double _videoDuration;
     NSArray *_iAdCategories;
@@ -137,6 +139,7 @@
 - (id)coverArt;
 - (id)experimentalTitleMetadata;
 - (id)globalCohorts;
+- (id)globalConversionStats;
 - (unsigned long long)halfLife;
 - (BOOL)hasAudioTrack;
 - (BOOL)hasThumbnail;
@@ -171,6 +174,7 @@
 - (id)publishDate;
 - (long long)publisherArticleVersion;
 - (id)publisherCohorts;
+- (id)publisherConversionStats;
 - (id)publisherID;
 - (id)publisherSpecifiedArticleIDs;
 - (id)referencedArticleID;

@@ -10,6 +10,7 @@
 #import <Widgets/_NCWidgetController_Host_IPC-Protocol.h>
 
 @class NSMutableDictionary, NSString, NSXPCListener, WGWidgetDiscoveryController;
+@protocol OS_dispatch_queue;
 
 @interface WGWidgetPersistentStateController : NSObject <_NCWidgetController_Host_IPC, NSXPCListenerDelegate>
 {
@@ -17,6 +18,7 @@
     WGWidgetDiscoveryController *_discoveryController;
     NSMutableDictionary *_widgetIdentifiersToCachedState;
     BOOL _canCacheState;
+    NSObject<OS_dispatch_queue> *_diskWriteQueue;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,11 +26,10 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_persistentStateForWidgetWithIdentifier:(id)arg1 containingBundleIdentifier:(id)arg2;
-+ (BOOL)hasContentForWidgetWithIdentifier:(id)arg1 containingBundleIdentifier:(id)arg2;
 - (void).cxx_destruct;
 - (void)__requestRefreshAfterDate:(id)arg1 forWidgetWithBundleIdentifier:(id)arg2;
 - (void)__setHasContent:(BOOL)arg1 forWidgetWithBundleIdentifier:(id)arg2;
+- (id)_persistentStateForWidgetWithIdentifier:(id)arg1 containingBundleIdentifier:(id)arg2;
 - (BOOL)_setHasContent:(BOOL)arg1 forWidgetWithIdentifier:(id)arg2;
 - (void)_setValue:(id)arg1 forKey:(id)arg2 forWidgetWithIdentifier:(id)arg3 containingBundleID:(id)arg4;
 - (void)_synchronizePersistentStateForWidgetWithIdentifier:(id)arg1;

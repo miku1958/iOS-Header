@@ -23,6 +23,7 @@
     long long _userInterfaceLevel;
     long long _contentSizeCategory;
     double _displayScale;
+    long long _windowOrientation;
     NSArray *_collectionTileImageOverlaySpecs;
     NSArray *_collectionTileImageOverlaySpecsHighlighted;
     NSCache *__viewSpecCache;
@@ -64,6 +65,7 @@
 @property (readonly, nonatomic) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
 @property (readonly, nonatomic) long long userInterfaceLevel; // @synthesize userInterfaceLevel=_userInterfaceLevel;
 @property (readonly, nonatomic) long long userInterfaceStyle; // @synthesize userInterfaceStyle=_userInterfaceStyle;
+@property (readonly, nonatomic) long long windowOrientation; // @synthesize windowOrientation=_windowOrientation;
 
 - (void).cxx_destruct;
 - (long long)_capitalizationStyleFromTextAttributes:(id)arg1 defaultCapitalizationStyle:(long long)arg2;

@@ -16,20 +16,20 @@
 }
 
 @property (readonly, nonatomic) PLManagedAsset *asset;
-@property (readonly, strong, nonatomic) NSDate *captureDate;
-@property (readonly, strong, nonatomic) NSNumber *compressedSize;
+@property (readonly, nonatomic) NSDate *captureDate;
+@property (readonly, nonatomic) NSNumber *compressedSize;
 @property (readonly, nonatomic) unsigned long long compressedSizeValue;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, strong, nonatomic) NSURL *fileURL;
-@property (readonly, strong, nonatomic) NSString *filename;
+@property (readonly, nonatomic) NSURL *fileURL;
+@property (readonly, nonatomic) NSString *filename;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSNumber *index;
 @property (readonly, nonatomic) short indexValue;
-@property (readonly, strong, nonatomic) NSDate *modificationDate;
+@property (readonly, nonatomic) NSDate *modificationDate;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (readonly, nonatomic) NSString *originalFilename;
-@property (readonly, nonatomic) long long ptpTrashedState;
+@property (nonatomic) long long ptpTrashedState;
 @property (weak, nonatomic) PLInternalResource *resource; // @synthesize resource=_resource;
 @property (readonly, nonatomic) unsigned int resourceType;
 @property (readonly) Class superclass;
@@ -38,7 +38,6 @@
 - (void).cxx_destruct;
 - (id)extension;
 - (id)initWithResource:(id)arg1;
-- (void)setPtpTrashedState:(long long)arg1;
 
 @end
 

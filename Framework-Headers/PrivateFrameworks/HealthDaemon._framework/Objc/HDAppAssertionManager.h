@@ -6,35 +6,54 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile, NSMutableArray, NSMutableDictionary, NSMutableSet;
+#import <HealthDaemon/HDAppExtensionAssertionDelegate-Protocol.h>
+
+@class HDProfile, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDAppAssertionManager : NSObject
+@interface HDAppAssertionManager : NSObject <HDAppExtensionAssertionDelegate>
 {
+    NSMutableDictionary *_appExtensionAssertions;
+    NSMutableDictionary *_appExtensionRetryTimers;
+    NSMutableSet *_activeExtensionAssertions;
+    NSMutableArray *_pendingExtensionAssertions;
+    NSMutableSet *_activeAssertions;
+    NSMutableArray *_pendingAssertions;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_appAssertions;
-    NSMutableSet *_activeAssertions;
-    NSMutableArray *_pendingAssertions;
 }
 
 @property (strong, nonatomic) NSMutableSet *activeAssertions; // @synthesize activeAssertions=_activeAssertions;
+@property (strong, nonatomic) NSMutableSet *activeExtensionAssertions; // @synthesize activeExtensionAssertions=_activeExtensionAssertions;
 @property (strong, nonatomic) NSMutableDictionary *appAssertions; // @synthesize appAssertions=_appAssertions;
+@property (strong, nonatomic) NSMutableDictionary *appExtensionAssertions; // @synthesize appExtensionAssertions=_appExtensionAssertions;
+@property (strong, nonatomic) NSMutableDictionary *appExtensionRetryTimers; // @synthesize appExtensionRetryTimers=_appExtensionRetryTimers;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableArray *pendingAssertions; // @synthesize pendingAssertions=_pendingAssertions;
+@property (strong, nonatomic) NSMutableArray *pendingExtensionAssertions; // @synthesize pendingExtensionAssertions=_pendingExtensionAssertions;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_queue_assertAppExtensionAssertion:(id)arg1 currentTime:(double)arg2;
 - (void)_queue_assertionDidFinish:(id)arg1;
+- (void)_queue_considerAssertingAppExtensions;
 - (void)_queue_considerLaunchingApp;
 - (void)_queue_extendAssertionWithBundleID:(id)arg1 dataCode:(long long)arg2 anchor:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_queue_invalidateAssertionWithBundleID:(id)arg1 dataCode:(long long)arg2 anchor:(id)arg3;
 - (id)_queue_pendingAssertionsReadyForLaunch;
 - (void)_queue_retryAppLaunchForAssertion:(id)arg1;
+- (void)_queue_retryAssertingAppExtensionAssertion:(id)arg1 currentTime:(double)arg2;
+- (void)appExtensionAssertionDidInvalidate:(id)arg1;
 - (void)extendAssertionWithBundleID:(id)arg1 dataCode:(long long)arg2 anchor:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)init;
 - (id)initWithProfile:(id)arg1;
 - (void)invalidateAssertionWithBundleID:(id)arg1 dataCode:(long long)arg2 anchor:(id)arg3;
+- (id)newTimerWithDuration:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 
 @end
 

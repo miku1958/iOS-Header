@@ -10,7 +10,10 @@
 {
 }
 
++ (id)userInterfaceProtocol;
++ (id)userInterfaceXPCInterface;
 - (id)localizedSubcategoryForCategory:(id)arg1;
+- (void)runWithRemoteUserInterface:(id)arg1 input:(id)arg2;
 - (id)subcategoryForCategory:(id)arg1;
 
 @end

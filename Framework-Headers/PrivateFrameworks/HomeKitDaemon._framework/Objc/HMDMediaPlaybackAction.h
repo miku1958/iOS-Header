@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMDBackingStoreObjectProtocol-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDHome, MPPlaybackArchive, NSArray, NSMutableSet, NSNumber, NSSet, NSString;
+@class HMDHome, HMDMediaPlaybackActionAsCharacteristicWriteRequests, MPPlaybackArchive, NSNumber, NSSet, NSString;
 
 @interface HMDMediaPlaybackAction : HMDAction <NSSecureCoding, HMDBackingStoreObjectProtocol>
 {
@@ -19,10 +19,10 @@
     MPPlaybackArchive *_playbackArchive;
     long long _state;
     HMDHome *_home;
-    NSMutableSet *_profileUUIDs;
+    NSSet *_profileUUIDs;
 }
 
-@property (readonly, nonatomic) NSArray *characteristicWriteRequests;
+@property (readonly, copy) HMDMediaPlaybackActionAsCharacteristicWriteRequests *convertedCharacteristicWriteRequests;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL encodePlaybackArchiveForExecution; // @synthesize encodePlaybackArchiveForExecution=_encodePlaybackArchiveForExecution;
@@ -30,7 +30,7 @@
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
 @property (copy, nonatomic) NSSet *mediaProfiles; // @synthesize mediaProfiles=_mediaProfiles;
 @property (strong, nonatomic) MPPlaybackArchive *playbackArchive; // @synthesize playbackArchive=_playbackArchive;
-@property (strong, nonatomic) NSMutableSet *profileUUIDs; // @synthesize profileUUIDs=_profileUUIDs;
+@property (strong, nonatomic) NSSet *profileUUIDs; // @synthesize profileUUIDs=_profileUUIDs;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSNumber *volume; // @synthesize volume=_volume;
@@ -41,13 +41,15 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_processPlaybackActionModelUpdated:(id)arg1 message:(id)arg2;
-- (BOOL)configureWithHome:(id)arg1;
+- (id)associatedAccessories;
+- (void)configureWithHome:(id)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
-- (void)executeWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)executeWithSource:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModelObject:(id)arg1 parent:(id)arg2 error:(id *)arg3;
 - (id)initWithUUID:(id)arg1 mediaProfiles:(id)arg2 playbackState:(long long)arg3 volume:(id)arg4 playbackArchive:(id)arg5 actionSet:(id)arg6;
+- (BOOL)isAssociatedWithAccessory:(id)arg1;
 - (Class)modelClass;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1 version:(long long)arg2;
 - (id)modelObjectWithUpdatedMediaProfiles:(id)arg1;

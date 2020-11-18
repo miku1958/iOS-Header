@@ -18,21 +18,17 @@
     long long _launchTimeHysteresis;
 }
 
-@property (readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) long long dataCode; // @synthesize dataCode=_dataCode;
-@property (readonly, nonatomic) long long lastAckTime; // @synthesize lastAckTime=_lastAckTime;
-@property (readonly, nonatomic) unsigned long long lastAnchor; // @synthesize lastAnchor=_lastAnchor;
-@property (readonly, nonatomic) long long launchTimeHysteresis; // @synthesize launchTimeHysteresis=_launchTimeHysteresis;
+@property (nonatomic) long long lastAckTime; // @synthesize lastAckTime=_lastAckTime;
+@property (nonatomic) unsigned long long lastAnchor; // @synthesize lastAnchor=_lastAnchor;
+@property (nonatomic) long long launchTimeHysteresis; // @synthesize launchTimeHysteresis=_launchTimeHysteresis;
 @property (readonly, copy, nonatomic) HKObjectType *objectType;
-@property (readonly, nonatomic) unsigned long long updateFrequency; // @synthesize updateFrequency=_updateFrequency;
+@property (nonatomic) unsigned long long updateFrequency; // @synthesize updateFrequency=_updateFrequency;
 
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithBundleIdentifier:(id)arg1 dataCode:(long long)arg2;
-- (void)setLastAckTime:(long long)arg1;
-- (void)setLastAnchor:(unsigned long long)arg1;
-- (void)setLaunchTimeHysteresis:(long long)arg1;
-- (void)setUpdateFrequency:(unsigned long long)arg1;
 
 @end
 

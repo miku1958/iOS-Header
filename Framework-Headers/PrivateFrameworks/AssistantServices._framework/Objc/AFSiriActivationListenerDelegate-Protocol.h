@@ -6,7 +6,7 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFRequestInfo, AFSiriActivationContext, AFSiriActivationListener, INIntent, NSString;
+@class AFRequestInfo, AFSiriActivationContext, AFSiriActivationListener, INIntent, INIntentForwardingAction, NSString;
 
 @protocol AFSiriActivationListenerDelegate <NSObject>
 
@@ -14,6 +14,7 @@
 - (void)siriActivationListener:(AFSiriActivationListener *)arg1 activateWithRequestInfo:(AFRequestInfo *)arg2 context:(AFSiriActivationContext *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)siriActivationListener:(AFSiriActivationListener *)arg1 deactivateForReason:(long long)arg2 options:(unsigned long long)arg3 context:(AFSiriActivationContext *)arg4 completion:(void (^)(NSError *))arg5;
 - (void)siriActivationListener:(AFSiriActivationListener *)arg1 handleIntent:(INIntent *)arg2 inBackgroundAppWithBundleId:(NSString *)arg3 reply:(void (^)(INIntentResponse *, NSError *))arg4;
+- (void)siriActivationListener:(AFSiriActivationListener *)arg1 handleIntentForwardingAction:(INIntentForwardingAction *)arg2 inBackgroundApplicationWithBundleIdentifier:(NSString *)arg3 completionHandler:(void (^)(INIntentForwardingActionResponse *))arg4;
 - (void)siriActivationListener:(AFSiriActivationListener *)arg1 prewarmWithRequestInfo:(AFRequestInfo *)arg2 context:(AFSiriActivationContext *)arg3 completion:(void (^)(NSError *))arg4;
 @end
 

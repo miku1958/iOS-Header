@@ -18,16 +18,24 @@
 @property (readonly, nonatomic) EMMailboxScope *mailboxScope; // @synthesize mailboxScope=_mailboxScope;
 @property (readonly, nonatomic) long long smartMailboxType; // @synthesize smartMailboxType=_smartMailboxType;
 
++ (id)blueMailboxWithMailboxScope:(id)arg1;
 + (id)flaggedMailboxWithMailboxScope:(id)arg1;
++ (id)grayMailboxWithMailboxScope:(id)arg1;
++ (id)greenMailboxWithMailboxScope:(id)arg1;
 + (id)hasAttachmentsMailboxWithMailboxScope:(id)arg1;
 + (id)includesMeMailboxWithMailboxScope:(id)arg1;
 + (id)muteThreadsMailboxWithMailboxScope:(id)arg1;
 + (id)notifyThreadsMailboxWithMailboxScope:(id)arg1;
++ (id)orangeMailboxWithMailboxScope:(id)arg1;
++ (id)purpleMailboxWithMailboxScope:(id)arg1;
++ (id)redMailboxWithMailboxScope:(id)arg1;
 + (id)todayMailboxWithMailboxScope:(id)arg1;
 + (id)unifiedMailboxOfType:(long long)arg1 name:(id)arg2;
 + (id)unifiedMailboxOfType:(long long)arg1 name:(id)arg2 additionalPredicate:(id)arg3;
 + (id)unreadMailboxWithMailboxScope:(id)arg1;
 + (id)vipMailboxWithMailboxScope:(id)arg1;
++ (id)vipMailboxWithName:(id)arg1 additionalPredicate:(id)arg2;
++ (id)yellowMailboxWithMailboxScope:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_shouldArchiveByDefault;
 - (unsigned long long)hash;

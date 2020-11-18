@@ -6,7 +6,7 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSString;
 
 @interface _TtC18HealthExperienceUI23DataTypeDetailChartCell : UICollectionViewCell
 {
@@ -17,8 +17,9 @@
     MISSING_TYPE *separatorViewHeightConstraint;
 }
 
+@property (nonatomic, readonly) NSString *description;
+
 - (void).cxx_destruct;
-- (void)awakeFromNib;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 

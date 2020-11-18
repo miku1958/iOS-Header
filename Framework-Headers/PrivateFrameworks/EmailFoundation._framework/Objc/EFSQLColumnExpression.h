@@ -7,11 +7,11 @@
 #import <objc/NSObject.h>
 
 #import <EmailFoundation/EFCacheable-Protocol.h>
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class EFSQLDisqualifiedColumnExpression, NSString;
 
-@interface EFSQLColumnExpression : NSObject <EFCacheable, EFSQLExpressable>
+@interface EFSQLColumnExpression : NSObject <EFCacheable, EFSQLValueExpressable>
 {
     NSString *_name;
     NSString *_tableName;
@@ -41,6 +41,8 @@
 - (id)contains:(id)arg1 caseSensitive:(BOOL)arg2;
 - (id)doesNotContain:(id)arg1 caseSensitive:(BOOL)arg2;
 - (id)doesNotMatchMask:(id)arg1;
+- (id)ef_SQLIsolatedExpression;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 - (id)endsWith:(id)arg1 caseSensitive:(BOOL)arg2;
 - (id)equalTo:(id)arg1;
 - (id)expressionForPredicateOperatorType:(unsigned long long)arg1 constValue:(id)arg2;
@@ -48,7 +50,6 @@
 - (id)greaterThan:(id)arg1;
 - (id)greaterThanEqualTo:(id)arg1;
 - (id)in:(id)arg1;
-- (id)inSelect:(id)arg1;
 - (id)initWithName:(id)arg1;
 - (id)initWithName:(id)arg1 table:(id)arg2;
 - (id)is:(id)arg1;
@@ -66,7 +67,6 @@
 - (id)notEqualTo:(id)arg1;
 - (id)notGlob:(id)arg1;
 - (id)notIn:(id)arg1;
-- (id)notInSelect:(id)arg1;
 - (id)notLike:(id)arg1;
 - (id)notLike:(id)arg1 patternType:(unsigned long long)arg2;
 - (id)plus:(id)arg1;

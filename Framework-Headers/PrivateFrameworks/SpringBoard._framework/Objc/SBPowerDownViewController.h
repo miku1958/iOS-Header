@@ -32,6 +32,8 @@
 - (void)_incrementCountForKey:(id)arg1;
 - (int)_preferredStatusBarVisibility;
 - (void)_resetScreenBrightness;
+- (BOOL)allowsStackingOverlayContentAbove;
+- (BOOL)handleLockButtonPress;
 - (long long)idleTimerMode;
 - (id)newTransientOverlayDismissalTransitionCoordinator;
 - (id)newTransientOverlayPresentationTransitionCoordinator;

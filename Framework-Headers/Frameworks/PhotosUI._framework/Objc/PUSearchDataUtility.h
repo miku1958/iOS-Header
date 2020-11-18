@@ -11,6 +11,7 @@
 }
 
 + (id)oneYearAgoSearchToken;
++ (id)searchTokenForHashtag:(id)arg1;
 + (id)searchTokenFromZeroKeyword:(id)arg1;
 + (id)searchTokensFromRecentSearch:(id)arg1;
 

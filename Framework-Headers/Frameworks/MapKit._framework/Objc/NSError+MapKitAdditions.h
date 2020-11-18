@@ -21,6 +21,7 @@
 - (id)_mapkit_error;
 - (id)_mapkit_errorWithDirectionsError:(id)arg1;
 - (BOOL)_mapkit_isDirectionsError;
+- (BOOL)_mapkit_isLocationAuthorizationError;
 - (id)_mapkit_transitIncident;
 - (long long)_mapkit_underlyingGEOError;
 @end

@@ -18,8 +18,6 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)newWithCount:(long long)arg1;
-- (BOOL)_isDeallocating;
-- (BOOL)_tryRetain;
 - (long long)attachmentCountAtIndex:(long long)arg1;
 - (id)copyWithRange:(CDStruct_912cb5d2)arg1;
 - (void)dealloc;
@@ -30,7 +28,6 @@ __attribute__((visibility("hidden")))
 - (void)moveGlyphsFromRange:(CDStruct_912cb5d2)arg1 toIndex:(long long)arg2;
 - (struct CGPoint)originAtIndex:(long long)arg1;
 - (void)popGlyphAtIndex:(long long)arg1;
-- (id)prepareWithCapacity:(long long)arg1 preallocated:(BOOL)arg2;
 - (void)puntStringIndicesInRange:(CDStruct_912cb5d2)arg1 by:(long long)arg2;
 - (void)pushGlyphAtIndex:(long long)arg1;
 - (oneway void)release;
@@ -38,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)retainCount;
 - (void)setAdvance:(struct CGSize)arg1 atIndex:(long long)arg2;
 - (void)setAttachmentCount:(long long)arg1 atIndex:(long long)arg2;
-- (void)setCapacity:(long long)arg1;
 - (void)setGlyph:(unsigned short)arg1 atIndex:(long long)arg2;
 - (void)setOrigin:(struct CGPoint)arg1 atIndex:(long long)arg2;
 - (void)setProps:(unsigned int)arg1 atIndex:(long long)arg2;

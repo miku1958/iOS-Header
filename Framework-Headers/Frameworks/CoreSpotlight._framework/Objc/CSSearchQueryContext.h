@@ -14,8 +14,9 @@
 @interface CSSearchQueryContext : NSObject <NSSecureCoding, NSCopying>
 {
     NSArray *_fetchAttributes;
-    unsigned char _flags;
+    unsigned short _flags;
     int _rankingType;
+    unsigned int _completionOptions;
     unsigned int _qos;
     NSString *_clientBundleID;
     NSArray *_protectionClasses;
@@ -47,6 +48,7 @@
 @property (strong, nonatomic) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
 @property (strong, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
 @property (strong, nonatomic) NSArray *completionAttributes; // @synthesize completionAttributes=_completionAttributes;
+@property (nonatomic) unsigned int completionOptions; // @synthesize completionOptions=_completionOptions;
 @property (nonatomic) long long completionResultCount; // @synthesize completionResultCount=_completionResultCount;
 @property (strong, nonatomic) NSString *completionString; // @synthesize completionString=_completionString;
 @property (nonatomic) BOOL counting;
@@ -57,11 +59,12 @@
 @property (strong, nonatomic) NSArray *fetchAttributes;
 @property (copy, nonatomic) NSArray *filterQueries; // @synthesize filterQueries=_filterQueries;
 @property (strong, nonatomic) NSString *filterQuery; // @synthesize filterQuery=_filterQuery;
-@property (nonatomic) unsigned char flags; // @synthesize flags=_flags;
+@property (nonatomic) unsigned short flags; // @synthesize flags=_flags;
 @property (nonatomic) BOOL fsOnly;
 @property (nonatomic) MISSING_TYPE *fuzzyMask; // @synthesize fuzzyMask=_fuzzyMask;
 @property (nonatomic) MISSING_TYPE *fuzzyMatch; // @synthesize fuzzyMatch=_fuzzyMatch;
 @property (nonatomic) BOOL grouped;
+@property (nonatomic) BOOL includeUserActivities;
 @property (nonatomic) BOOL internal;
 @property (strong, nonatomic) NSString *keyboardLanguage; // @synthesize keyboardLanguage=_keyboardLanguage;
 @property (nonatomic) BOOL live;
@@ -71,6 +74,7 @@
 @property (strong, nonatomic) NSArray *mountPoints; // @synthesize mountPoints=_mountPoints;
 @property (copy, nonatomic) NSDictionary *options;
 @property (nonatomic) BOOL parseUserQuery;
+@property (nonatomic) BOOL playback;
 @property (strong, nonatomic) NSArray *preferredLanguages; // @synthesize preferredLanguages=_preferredLanguages;
 @property (strong, nonatomic) NSArray *protectionClasses; // @synthesize protectionClasses=_protectionClasses;
 @property (nonatomic) unsigned int qos; // @synthesize qos=_qos;

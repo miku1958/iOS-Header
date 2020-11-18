@@ -12,6 +12,7 @@
 {
     BOOL _canHaveLeaveNowAlarm;
     BOOL _hasLeaveNowAlarm;
+    unsigned long long _locationStatus;
     BOOL _needsUpdate;
     EKCalendarItem *_calendarItem;
     NSMutableArray *_uiAlarms;
@@ -20,17 +21,23 @@
 @property (strong, nonatomic) EKCalendarItem *calendarItem; // @synthesize calendarItem=_calendarItem;
 @property (readonly, nonatomic) BOOL canHaveLeaveNowAlarm;
 @property (readonly, nonatomic) BOOL hasLeaveNowAlarm;
+@property (readonly, nonatomic) unsigned long long locationStatus;
 @property (nonatomic) BOOL needsUpdate; // @synthesize needsUpdate=_needsUpdate;
 @property (strong, nonatomic) NSMutableArray *uiAlarms; // @synthesize uiAlarms=_uiAlarms;
 
 + (id)labelTextForIndex:(unsigned long long)arg1;
++ (void)subscribeToDarwinNotifications;
++ (void)unsubscribeFromDarwinNotifications;
 - (void).cxx_destruct;
 - (BOOL)_hasUIAlarmChangedFromUIAlarm:(id)arg1 toUIAlarm:(id)arg2;
 - (void)_updateAlarms;
 - (void)_updateLeaveNowFlags;
 - (id)createAlarmEditItemViewControllerWithFrame:(struct CGRect)arg1 forAlarmAtIndex:(unsigned long long)arg2;
+- (void)dealloc;
 - (id)init;
 - (id)initWithCalendarItem:(id)arg1;
+- (BOOL)isAlarmEffectivelyDisabled:(id)arg1;
+- (void)reloadTTLLocationAuthorization:(id)arg1;
 - (void)setNeedsUpdate;
 - (void)updateIfNeeded;
 - (void)updatedUIAlarmFromUIAlarm:(id)arg1 toUIAlarm:(id)arg2 atIndex:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;

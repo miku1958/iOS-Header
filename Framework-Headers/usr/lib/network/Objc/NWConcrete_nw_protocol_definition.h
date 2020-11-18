@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
     CDUnknownFunctionPointerType check_equality_options;
     CDUnknownFunctionPointerType allocate_metadata;
     CDUnknownFunctionPointerType deallocate_metadata;
+    CDUnknownFunctionPointerType initialize_metadata;
+    CDUnknownFunctionPointerType finalize_metadata;
     CDUnknownFunctionPointerType create_reply;
     CDUnknownFunctionPointerType copy_original;
     CDUnknownFunctionPointerType set_original;
@@ -48,14 +50,21 @@ __attribute__((visibility("hidden")))
     CDUnknownFunctionPointerType link_state;
     CDUnknownFunctionPointerType copy_metadata;
     CDUnknownFunctionPointerType copy_establishment_report;
+    CDUnknownFunctionPointerType copy_data_transfer_snapshot;
+    CDUnknownFunctionPointerType path_changed_handler;
+    CDUnknownFunctionPointerType message_size_handler;
     CDUnknownFunctionPointerType framer_create;
     CDUnknownBlockType framer_start;
     unsigned int custom_flow_map_key_size;
+    unsigned int metadata_size;
     unsigned int framer:1;
     unsigned int supports_replies:1;
     unsigned int message_is_stream:1;
     unsigned int receive_single_message:1;
-    unsigned int __pad_bits:4;
+    unsigned int multipath:1;
+    unsigned int supports_discontiguous_data:1;
+    unsigned int has_global_definition:1;
+    unsigned int __pad_bits:1;
 }
 
 @property (readonly, copy) NSString *debugDescription;

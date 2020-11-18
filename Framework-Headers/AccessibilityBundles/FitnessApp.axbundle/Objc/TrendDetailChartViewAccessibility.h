@@ -13,8 +13,19 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityDataSeriesMaximumValueForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesMinimumValueForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesName;
+- (BOOL)_accessibilityDataSeriesSupportsSonification;
+- (BOOL)_accessibilityDataSeriesSupportsSummarization;
+- (id)_accessibilityDataSeriesTitleForAxis:(long long)arg1;
+- (long long)_accessibilityDataSeriesType;
+- (id)_accessibilityDataSeriesUnitLabelForAxis:(long long)arg1;
+- (id)_accessibilityDataSeriesValueDescriptionForPosition:(double)arg1 axis:(long long)arg2;
+- (id)_accessibilityDataSeriesValuesForAxis:(long long)arg1;
 - (id)_accessibilityGraphData;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (long long)accessibilityContainerType;
 - (id)accessibilityElements;
 - (void)layoutSubviews;
 

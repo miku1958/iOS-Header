@@ -21,11 +21,17 @@
 - (id)_fitnessUIAssetsURLWithKey:(id)arg1 value:(id)arg2;
 - (id)_monthStringFromTemplateName:(id)arg1;
 - (id)achievementAtIndexPath:(id)arg1;
+- (void)addInitialLoadObserver:(id)arg1;
+- (void)addMainSectionObserver:(id)arg1;
+- (void)addRecentAndRelevantSectionObserver:(id)arg1;
 - (id)headerStringForSection:(long long)arg1 isRecentAndRelevant:(BOOL)arg2;
 - (id)init;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
 - (id)recentAndRelevantAchievementAtIndexPath:(id)arg1;
+- (void)removeInitialLoadObserver:(id)arg1;
+- (void)removeMainSectionObserver:(id)arg1;
+- (void)removeRecentAndRelevantSectionObserver:(id)arg1;
 - (void)startFetching;
 - (void)stopFetching;
 

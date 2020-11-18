@@ -46,6 +46,7 @@
 - (void)setActiveUserDataSelection:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setDefaultVoice:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)setLabel:(CTXPCServiceSubscriptionContext *)arg1 label:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)shouldAllowSimLockFor:(CTXPCServiceSubscriptionContext *)arg1 completion:(void (^)(NSNumber *))arg2;
 - (void)unlockPIN:(CTXPCServiceSubscriptionContext *)arg1 pin:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)unlockPUK:(CTXPCServiceSubscriptionContext *)arg1 puk:(NSString *)arg2 newPin:(NSString *)arg3 completion:(void (^)(NSError *))arg4;
 @end

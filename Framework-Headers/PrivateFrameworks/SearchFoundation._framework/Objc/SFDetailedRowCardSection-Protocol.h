@@ -28,6 +28,7 @@
 @property (strong, nonatomic) SFFormattedText *secondaryTitle;
 @property (strong, nonatomic) SFImage *secondaryTitleImage;
 @property (nonatomic) int separatorStyle;
+@property (nonatomic) BOOL shouldUseCompactDisplay;
 @property (strong, nonatomic) SFImage *thumbnail;
 @property (strong, nonatomic) SFRichText *title;
 @property (strong, nonatomic) SFFormattedText *trailingBottomText;

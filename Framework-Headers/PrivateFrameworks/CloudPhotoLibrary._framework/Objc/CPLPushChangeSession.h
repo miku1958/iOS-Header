@@ -12,6 +12,7 @@
 
 @interface CPLPushChangeSession : CPLChangeSession <CPLAbstractObject>
 {
+    double _startWaitingForBatch;
 }
 
 @property (readonly, copy) NSString *debugDescription;

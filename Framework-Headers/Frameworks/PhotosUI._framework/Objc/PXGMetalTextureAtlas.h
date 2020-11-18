@@ -9,7 +9,7 @@
 #import <PhotosUICore/PXGMetalSpriteTexture-Protocol.h>
 
 @class NSIndexSet, NSMutableDictionary, NSMutableIndexSet, NSObject, NSString, PXGColorProgram;
-@protocol MTLDevice, MTLTexture, OS_dispatch_queue;
+@protocol MTLDevice, MTLTexture, OS_dispatch_queue, PXGMetalTextureAtlasDelegate;
 
 @interface PXGMetalTextureAtlas : PXGImageTexture <PXGMetalSpriteTexture>
 {
@@ -42,6 +42,7 @@
     long long _renderPipelineIndex;
     NSIndexSet *_skipRenderSpriteIndexes;
     unsigned long long _pixelFormat;
+    id<PXGMetalTextureAtlasDelegate> _delegate;
     struct CGSize _thumbnailSize;
 }
 
@@ -50,6 +51,7 @@
 @property (readonly, nonatomic) PXGColorProgram *colorProgram; // @synthesize colorProgram=_colorProgram;
 @property (readonly, nonatomic) unsigned int count;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<PXGMetalTextureAtlasDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) long long estimatedByteSize;
 @property (readonly) unsigned long long hash;
@@ -57,6 +59,7 @@
 @property (readonly, nonatomic) BOOL isAtlas;
 @property (readonly, nonatomic) BOOL isCaptureTexture;
 @property (readonly, nonatomic) BOOL isOpaque;
+@property (readonly) BOOL isUnused;
 @property (readonly, nonatomic) unsigned long long pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property (readonly, nonatomic) struct CGSize pixelSize;
 @property (readonly, nonatomic) int presentationType;

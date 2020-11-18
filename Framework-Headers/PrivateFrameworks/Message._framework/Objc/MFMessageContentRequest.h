@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <Message/EFLoggable-Protocol.h>
-
-@class EDMailDropMetadataGenerator, EDMessagePersistence, EMContentRequestOptions, EMMessageObjectID, MFMailMessage, MFMessageTransformer, NSString;
+@class EDListUnsubscribeHandler, EDMailDropMetadataGenerator, EDMessagePersistence, EMContentRequestOptions, EMMessageObjectID, MFMailMessage, MFMessageTransformer, NSString;
 @protocol EFScheduler, EMContentItemRequestDelegate;
 
-@interface MFMessageContentRequest : NSObject <EFLoggable>
+@interface MFMessageContentRequest : NSObject
 {
     id<EFScheduler> _scheduler;
     EMMessageObjectID *_objectID;
@@ -21,33 +19,31 @@
     NSString *_clientIdentifier;
     EMContentRequestOptions *_options;
     EDMailDropMetadataGenerator *_mailDropAttachmentGenerator;
+    EDListUnsubscribeHandler *_listUnsubscribeHandler;
     id<EMContentItemRequestDelegate> _delegate;
 }
 
 @property (readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
-@property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) id<EMContentItemRequestDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) MFMailMessage *legacyMessage; // @synthesize legacyMessage=_legacyMessage;
+@property (readonly, nonatomic) EDListUnsubscribeHandler *listUnsubscribeHandler; // @synthesize listUnsubscribeHandler=_listUnsubscribeHandler;
 @property (readonly, nonatomic) EDMailDropMetadataGenerator *mailDropAttachmentGenerator; // @synthesize mailDropAttachmentGenerator=_mailDropAttachmentGenerator;
 @property (readonly, nonatomic) EDMessagePersistence *messagePersistence; // @synthesize messagePersistence=_messagePersistence;
 @property (readonly, nonatomic) MFMessageTransformer *messageTransformer; // @synthesize messageTransformer=_messageTransformer;
 @property (readonly, nonatomic) EMMessageObjectID *objectID; // @synthesize objectID=_objectID;
 @property (readonly, nonatomic) EMContentRequestOptions *options; // @synthesize options=_options;
 @property (readonly, nonatomic) id<EFScheduler> scheduler; // @synthesize scheduler=_scheduler;
-@property (readonly) Class superclass;
 
-+ (id)log;
 + (id)metadataWithDictionary:(id)arg1;
-+ (id)onScheduler:(id)arg1 requestContentForObjectID:(id)arg2 messagePersistence:(id)arg3 legacyMessage:(id)arg4 messageTransformer:(id)arg5 mailDropAttachmentGenerator:(id)arg6 clientIdentifier:(id)arg7 options:(id)arg8 delegate:(id)arg9 completionHandler:(CDUnknownBlockType)arg10;
-+ (id)onScheduler:(id)arg1 requestID:(unsigned long long)arg2 requestContentForObjectID:(id)arg3 messagePersistence:(id)arg4 legacyMessage:(id)arg5 messageTransformer:(id)arg6 mailDropAttachmentGenerator:(id)arg7 clientIdentifier:(id)arg8 options:(id)arg9 delegate:(id)arg10 completionHandler:(CDUnknownBlockType)arg11;
++ (id)onScheduler:(id)arg1 requestContentForObjectID:(id)arg2 messagePersistence:(id)arg3 legacyMessage:(id)arg4 messageTransformer:(id)arg5 mailDropAttachmentGenerator:(id)arg6 listUnsubscribeHandler:(id)arg7 clientIdentifier:(id)arg8 options:(id)arg9 delegate:(id)arg10 completionHandler:(CDUnknownBlockType)arg11;
++ (id)onScheduler:(id)arg1 requestID:(unsigned long long)arg2 requestContentForObjectID:(id)arg3 messagePersistence:(id)arg4 legacyMessage:(id)arg5 messageTransformer:(id)arg6 mailDropAttachmentGenerator:(id)arg7 listUnsubscribeHandler:(id)arg8 clientIdentifier:(id)arg9 options:(id)arg10 delegate:(id)arg11 completionHandler:(CDUnknownBlockType)arg12;
 - (void).cxx_destruct;
 - (id)_attachmentContentItemsForMailDropNodes:(id)arg1 withContext:(id)arg2;
 - (id)_attachmentForMailDropMetaData:(id)arg1 context:(id)arg2;
 - (id)_contentItemForAttachment:(id)arg1 manager:(id)arg2 managed:(BOOL)arg3;
 - (id)_contentRepresentationForEvent:(id)arg1 contentURL:(id)arg2 relatedItems:(id)arg3 existingRepresentation:(id)arg4 invocable:(id)arg5;
 - (id)_contentRepresentationForLoadingEvent:(id)arg1 existingRepresentation:(id)arg2;
+- (id)_dataHolderWithCancelationToken:(id)arg1;
 - (id)_generateRepresentationForLoadingContext:(id)arg1 existingRepresentation:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_includeHeadersIfNeededForRepresentation:(id)arg1 message:(id)arg2 options:(id)arg3;
 - (void)_includeSuggestionItemsIfNeededForRepresentation:(id)arg1 message:(id)arg2;

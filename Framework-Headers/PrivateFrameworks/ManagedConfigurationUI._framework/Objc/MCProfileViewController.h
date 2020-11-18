@@ -4,46 +4,40 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UITableViewController.h>
+#import <ManagedConfigurationUI/MCUITableViewController.h>
 
-#import <ManagedConfigurationUI/PSStateRestoration-Protocol.h>
-
-@class MCUIProfile, NSString;
+@class MCUIProfile;
 @protocol MCProfileViewControllerDelegate;
 
-@interface MCProfileViewController : UITableViewController <PSStateRestoration>
+@interface MCProfileViewController : MCUITableViewController
 {
-    BOOL _installingFromPurgatory;
     BOOL _installComplete;
     BOOL _profileOffersReenroll;
     BOOL _profileRemovable;
-    id<MCProfileViewControllerDelegate> _profileViewControllerDelegate;
-    long long _profileViewMode;
     MCUIProfile *_UIProfile;
+    long long _profileViewMode;
+    unsigned long long _installProfileSource;
+    id<MCProfileViewControllerDelegate> _profileViewControllerDelegate;
 }
 
-@property (strong, nonatomic) MCUIProfile *UIProfile; // @synthesize UIProfile=_UIProfile;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) MCUIProfile *UIProfile; // @synthesize UIProfile=_UIProfile;
 @property (nonatomic) BOOL installComplete; // @synthesize installComplete=_installComplete;
-@property (nonatomic) BOOL installingFromPurgatory; // @synthesize installingFromPurgatory=_installingFromPurgatory;
+@property (nonatomic) unsigned long long installProfileSource; // @synthesize installProfileSource=_installProfileSource;
 @property (nonatomic) BOOL profileOffersReenroll; // @synthesize profileOffersReenroll=_profileOffersReenroll;
 @property (nonatomic) BOOL profileRemovable; // @synthesize profileRemovable=_profileRemovable;
 @property (weak, nonatomic) id<MCProfileViewControllerDelegate> profileViewControllerDelegate; // @synthesize profileViewControllerDelegate=_profileViewControllerDelegate;
 @property (nonatomic) long long profileViewMode; // @synthesize profileViewMode=_profileViewMode;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_delegateCanRemove;
+- (BOOL)_delegateCanUpdate;
 - (void)_profileChanged:(id)arg1;
 - (void)_removeProfile;
 - (void)_setup;
 - (BOOL)_shouldShowRemoveButton;
 - (BOOL)_shouldShowUpdateButton;
+- (BOOL)_showManagedPayloads;
 - (void)_updateProfile;
-- (BOOL)canBeShownFromSuspendedState;
-- (void)contentSizeCategoryDidChangeNotification:(id)arg1;
-- (void)dealloc;
 - (id)initWithStyle:(long long)arg1;
 - (id)initWithStyle:(long long)arg1 profile:(id)arg2 profileViewMode:(long long)arg3;
 - (long long)numberOfSectionsInTableView:(id)arg1;
@@ -53,7 +47,6 @@
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (id)tableView:(id)arg1 titleForFooterInSection:(long long)arg2;
-- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

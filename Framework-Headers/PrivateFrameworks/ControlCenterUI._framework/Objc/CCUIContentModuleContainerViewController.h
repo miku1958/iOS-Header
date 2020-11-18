@@ -9,13 +9,13 @@
 #import <ControlCenterUI/CCUIContentModuleContainer-Protocol.h>
 #import <ControlCenterUI/CCUISafeAppearancePropagationProvider-Protocol.h>
 #import <ControlCenterUI/UIGestureRecognizerDelegate-Protocol.h>
+#import <ControlCenterUI/UIPointerInteractionDelegate-Protocol.h>
 #import <ControlCenterUI/_UIClickPresentationInteractionDelegate-Protocol.h>
-#import <ControlCenterUI/_UICursorInteractionDelegate-Protocol.h>
 
 @class CCUIContentModuleBackgroundView, CCUIContentModuleContainerPresentationController, CCUIContentModuleContentContainerView, NSArray, NSString, UITapGestureRecognizer, UIView, _UIClickPresentationInteraction;
 @protocol CCUIContentModule, CCUIContentModuleBackgroundViewController, CCUIContentModuleContainerViewControllerDelegate, CCUIContentModuleContentViewController;
 
-@interface CCUIContentModuleContainerViewController : UIViewController <_UIClickPresentationInteractionDelegate, UIGestureRecognizerDelegate, CCUIContentModuleContainer, CCUISafeAppearancePropagationProvider, _UICursorInteractionDelegate>
+@interface CCUIContentModuleContainerViewController : UIViewController <_UIClickPresentationInteractionDelegate, UIGestureRecognizerDelegate, CCUIContentModuleContainer, CCUISafeAppearancePropagationProvider, UIPointerInteractionDelegate>
 {
     BOOL _expanded;
     BOOL _contentModuleProvidesOwnPlatter;
@@ -91,13 +91,12 @@
 - (struct CGRect)_presentationFrameForExpandedState;
 - (void)_setDidExpandModulePreference;
 - (unsigned long long)activationStyleForClickPresentationInteraction:(id)arg1;
+- (BOOL)ccui_shouldPropagateAppearanceCalls;
 - (id)clickPresentationInteraction:(id)arg1 presentationForPresentingViewController:(id)arg2;
 - (id)clickPresentationInteraction:(id)arg1 previewForHighlightingAtLocation:(struct CGPoint)arg2;
 - (void)clickPresentationInteractionEnded:(id)arg1 wasCancelled:(BOOL)arg2;
 - (BOOL)clickPresentationInteractionShouldBegin:(id)arg1;
 - (BOOL)clickPresentationInteractionShouldPresent:(id)arg1;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (BOOL)definesContentModuleContainer;
 - (void)dismissExpandedModuleAnimated:(BOOL)arg1;
 - (void)dismissModulePresentedContentAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
@@ -111,6 +110,8 @@
 - (id)initWithModuleIdentifier:(id)arg1 contentModule:(id)arg2 presentationContext:(id)arg3;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (void)transitionToExpandedMode:(BOOL)arg1;

@@ -8,13 +8,13 @@
 
 #import <PhotoLibraryServices/PLAssetsdLibraryServiceProtocol-Protocol.h>
 
-@class NSString, PLAssetsdConnectionAuthorization, PLAssetsdService, PLPhotoLibraryBundleController, PLProgressFollower;
+@class NSMutableArray, NSString, PLAssetsdConnectionAuthorization, PLAssetsdService, PLPhotoLibraryBundleController;
 
 @interface PLAssetsdLibraryService : PLAbstractLibraryServicesManagerService <PLAssetsdLibraryServiceProtocol>
 {
     PLAssetsdConnectionAuthorization *_connectionAuthorization;
-    PLProgressFollower *_preRunningProgressFollower;
-    PLProgressFollower *_postRunningProgressFollower;
+    NSMutableArray *_preRunningProgressFollowers;
+    NSMutableArray *_postRunningProgressFollowers;
     PLPhotoLibraryBundleController *_libraryBundleController;
     PLAssetsdService *_assetsdService;
 }
@@ -24,19 +24,22 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (long long)requiredLibraryServicesState;
++ (long long)requiredLibraryServicesStateForURL:(id)arg1;
 - (void).cxx_destruct;
+- (id)_postRunningProgress;
+- (id)_preRunningProgress;
+- (id)_returnValueForProgress:(id)arg1 addTo:(id)arg2;
 - (void)_sendClientReply:(CDUnknownBlockType)arg1 sandboxExtensionsByPath:(id)arg2 error:(id)arg3;
 - (void)automaticallyDeleteEmptyAlbumWithObjectURI:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)createPhotoLibraryDatabaseWithReply:(CDUnknownBlockType)arg1;
+- (void)createPhotoLibraryDatabaseWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getCurrentModelVersionWithReply:(CDUnknownBlockType)arg1;
 - (void)getPhotoLibraryStoreXPCListenerEndpointWithReply:(CDUnknownBlockType)arg1;
-- (void)importFileSystemAssetsWithReason:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)importFileSystemAssetsWithReason:(id)arg1 force:(BOOL)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)initWithLibraryServicesManager:(id)arg1 bundleController:(id)arg2 connectionAuthorization:(id)arg3 assetsdService:(id)arg4;
 - (void)launchAssetsd;
 - (id)libraryBundle;
 - (id)newLibraryOpener;
-- (void)openPhotoLibraryDatabaseWithReply:(CDUnknownBlockType)arg1;
+- (void)openPhotoLibraryDatabaseWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)pendingEventsForRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)postOpenProgressWithReply:(CDUnknownBlockType)arg1;
 - (void)publishRemoteChangeEvent:(id)arg1 delayedSaveActionsDetail:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -44,7 +47,7 @@
 - (void)repairSingletonObjectsWithReply:(CDUnknownBlockType)arg1;
 - (id)sandboxExtensionsByPath;
 - (void)updateThumbnailsForPhotos:(id)arg1 assignNewIndex:(BOOL)arg2 forceRefresh:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
-- (id)upgradePhotoLibraryDatabaseWithOptions:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
+- (id)upgradePhotoLibraryDatabaseWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end
 

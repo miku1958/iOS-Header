@@ -52,6 +52,10 @@
 - (void)_handleSFDeviceIdentifierUpdated:(id)arg1;
 - (void)_handleSymptomsUpdated:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (void)_registerForMessages;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -59,7 +63,6 @@
 - (void)initiateFixWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)logIdentifier;
 - (id)newFixSessionForSymptom:(id)arg1;
-- (void)registerForMessages;
 
 @end
 

@@ -6,23 +6,26 @@
 
 #import <ReminderKit/REMAttachment.h>
 
-@class NSData, NSURL;
+@class NSURL;
 
 @interface REMFileAttachment : REMAttachment
 {
+    BOOL _isTemporaryFileURL;
     unsigned long long _fileSize;
     NSURL *_fileURL;
-    NSData *_data;
 }
 
-@property (strong, nonatomic) NSData *data; // @synthesize data=_data;
 @property (nonatomic) unsigned long long fileSize; // @synthesize fileSize=_fileSize;
 @property (strong, nonatomic) NSURL *fileURL; // @synthesize fileURL=_fileURL;
+@property (nonatomic) BOOL isTemporaryFileURL; // @synthesize isTemporaryFileURL=_isTemporaryFileURL;
 
 + (id)cdEntityName;
++ (id)createTemporaryFileURLWithUTI:(id)arg1;
++ (id)createTemporaryFileWithData:(id)arg1 UTI:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)_deepCopy;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithObjectID:(id)arg1 accountID:(id)arg2 reminderID:(id)arg3 UTI:(id)arg4 fileSize:(unsigned long long)arg5 fileURL:(id)arg6 data:(id)arg7;

@@ -21,18 +21,8 @@
     NSString *_domain;
 }
 
-@property (readonly, nonatomic) NSString *domain; // @synthesize domain=_domain;
-@property (readonly, nonatomic) NSString *eventName; // @synthesize eventName=_eventName;
-@property (readonly, nonatomic) NSString *eventType; // @synthesize eventType=_eventType;
-@property (readonly, nonatomic) NSArray *typeValues; // @synthesize typeValues=_typeValues;
-
 - (void).cxx_destruct;
-- (unsigned long long)countWithTypeValue:(id)arg1 success:(BOOL)arg2;
 - (void)dealloc;
-- (void)incrementCountByNumber:(unsigned long long)arg1 typeValue:(id)arg2 success:(BOOL)arg3;
-- (long long)indexOfTypeValue:(id)arg1 success:(BOOL)arg2;
-- (id)initWithCollectionName:(id)arg1 eventName:(id)arg2 eventType:(id)arg3 eventTypePossibleValues:(id)arg4 hasResult:(BOOL)arg5;
-- (id)initWithCollectionName:(id)arg1 eventName:(id)arg2 eventType:(id)arg3 eventTypePossibleValues:(id)arg4 hasResult:(BOOL)arg5 scalar:(BOOL)arg6;
 
 @end
 

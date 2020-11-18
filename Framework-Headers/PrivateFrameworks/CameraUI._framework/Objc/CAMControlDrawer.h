@@ -11,7 +11,7 @@
 #import <CameraUI/CAMControlDrawerMenuButtonDelegate-Protocol.h>
 #import <CameraUI/UIScrollViewDelegate-Protocol.h>
 
-@class CAMControlDrawerButton, CAMDrawerApertureButton, CAMDrawerAspectRatioButton, CAMDrawerFilterButton, CAMDrawerFlashButton, CAMDrawerHDRButton, CAMDrawerIntensityButton, CAMDrawerLivePhotoButton, CAMDrawerLowLightButton, CAMDrawerTimerButton, CAMLowLightSlider, CEKApertureSlider, CEKSlider, CEKWheelScrubberView, NSArray, NSMutableDictionary, NSString, UIScrollView;
+@class CAMControlDrawerButton, CAMDrawerApertureButton, CAMDrawerAspectRatioButton, CAMDrawerExposureButton, CAMDrawerFilterButton, CAMDrawerFlashButton, CAMDrawerHDRButton, CAMDrawerIntensityButton, CAMDrawerLivePhotoButton, CAMDrawerLowLightButton, CAMDrawerTimerButton, CAMExposureSlider, CAMLowLightSlider, CEKApertureSlider, CEKSlider, CEKWheelScrubberView, NSArray, NSMutableDictionary, NSString, UIScrollView;
 @protocol CAMControlDrawerDelegate, CAMControlDrawerExpandableButton, CAMControlDrawerPresentationDelegate;
 
 @interface CAMControlDrawer : UIView <CAMControlDrawerMenuButtonDelegate, UIScrollViewDelegate, CAMAccessibilityHUDItemProvider, CAMBarsAccessibilityHUDManagerGestureProvider>
@@ -26,6 +26,7 @@
     CEKApertureSlider *_apertureSlider;
     CEKSlider *_intensitySlider;
     CAMLowLightSlider *_lowLightSlider;
+    CAMExposureSlider *_exposureSlider;
     NSMutableDictionary *__controlMap;
     CAMControlDrawerButton<CAMControlDrawerExpandableButton> *__expandedControl;
     UIScrollView *__scrollView;
@@ -42,6 +43,9 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CAMControlDrawerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) CAMDrawerExposureButton *exposureButton;
+@property (readonly, nonatomic) CAMExposureSlider *exposureSlider; // @synthesize exposureSlider=_exposureSlider;
+@property (nonatomic, getter=isExposureSliderVisible) BOOL exposureSliderVisible;
 @property (readonly, nonatomic) CAMDrawerFilterButton *filterButton;
 @property (readonly, nonatomic) CEKWheelScrubberView *filterScrubberView; // @synthesize filterScrubberView=_filterScrubberView;
 @property (readonly, nonatomic, getter=isFilterScrubberVisible) BOOL filterScrubberVisible;
@@ -73,6 +77,7 @@
 - (void)_iterateViewsForHUDManager:(id)arg1 withItemFoundBlock:(CDUnknownBlockType)arg2;
 - (void)_layoutApertureSlider;
 - (void)_layoutCustomControlsAnimated:(BOOL)arg1;
+- (void)_layoutExposureSlider;
 - (void)_layoutFilterScrubberView;
 - (void)_layoutFullWidthCustomView:(id)arg1 forAssociatedControl:(id)arg2 expanded:(BOOL)arg3;
 - (void)_layoutFullWidthCustomView:(id)arg1 withAlignmentRect:(struct CGRect)arg2 forAssociatedControl:(id)arg3 expanded:(BOOL)arg4;
@@ -82,6 +87,7 @@
 - (void)_loadApertureSliderIfNeeded;
 - (void)_loadControlIfNeededForType:(long long)arg1;
 - (void)_loadCustomUIIfNeededForControlType:(long long)arg1;
+- (void)_loadExposureSliderIfNeeded;
 - (void)_loadFilterScrubberIfNeeded;
 - (void)_loadIntensitySliderIfNeeded;
 - (void)_loadLowLightSliderIfNeeded;
@@ -94,6 +100,7 @@
 - (void)_updateExpansionInsetsForExpandableButton:(id)arg1;
 - (double)_viewportLength;
 - (unsigned long long)_viewportMaximumControlCount;
+- (id)buttonForType:(long long)arg1;
 - (void)collapseExpandableButtonsAnimated:(BOOL)arg1;
 - (void)expandControlForType:(long long)arg1 animated:(BOOL)arg2;
 - (void)expandableButton:(id)arg1 willChangeExpanded:(BOOL)arg2;
@@ -107,6 +114,7 @@
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)selectedByAccessibilityHUDManager:(id)arg1;
 - (void)setApertureSliderVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setExposureSliderVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setFilterScrubberVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setIntensitySliderVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setLowLightSliderVisible:(BOOL)arg1 animated:(BOOL)arg2;

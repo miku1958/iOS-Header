@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <Home/HFCharacteristicValueSource-Protocol.h>
+#import <Home/HFLightProfileValueSource-Protocol.h>
 #import <Home/HFMediaValueSource-Protocol.h>
 
 @class HFItemBuilder, HMActionSet, NSString;
 @protocol HFActionSetBuilderProtocol, HFActionSetValueSourceDelegate, HFCharacteristicOperationContextProviding;
 
-@interface HFActionSetValueSource : NSObject <HFCharacteristicValueSource, HFMediaValueSource>
+@interface HFActionSetValueSource : NSObject <HFLightProfileValueSource, HFCharacteristicValueSource, HFMediaValueSource>
 {
     HFItemBuilder<HFActionSetBuilderProtocol> *_actionSetBuilder;
     HMActionSet *_actionSet;
@@ -23,32 +24,42 @@
 @property (strong, nonatomic) HFItemBuilder<HFActionSetBuilderProtocol> *actionSetBuilder; // @synthesize actionSetBuilder=_actionSetBuilder;
 @property (readonly, nonatomic) id<HFCharacteristicOperationContextProviding> contextProvider;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HFActionSetValueSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (id)na_identity;
 - (void).cxx_destruct;
 - (id)_actionForCharacteristic:(id)arg1;
 - (id)_existingActionBuilderForCharacteristic:(id)arg1;
-- (id)_existingActionBuilderForProfile:(id)arg1;
+- (id)_existingActionBuilderForLightProfile:(id)arg1;
+- (id)_existingActionBuilderForMediaProfile:(id)arg1;
 - (BOOL)_isCurrentStateCharacteristic:(id)arg1;
 - (id)_targetValueForCharacteristic:(id)arg1;
 - (id)_valueForCurrentStateCharacteristic:(id)arg1;
 - (void)beginTransactionWithReason:(id)arg1 readPolicy:(id)arg2 logger:(id)arg3;
 - (id)cachedPlaybackStateWriteErrorForRouteID:(id)arg1;
 - (id)cachedValueForCharacteristic:(id)arg1;
+- (void)clearCachedPlaybackStateWriteErrorWithReason:(id)arg1 notifyDelegates:(BOOL)arg2;
 - (void)commitTransactionWithReason:(id)arg1;
+- (void)fetchNaturalLightColorTemperatureForBrightness:(long long)arg1 lightProfile:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)hasPendingWritesForRouteID:(id)arg1;
 - (id)initWithActionSet:(id)arg1;
 - (id)initWithActionSetBuilder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isNaturalLightingEnabledForProfile:(id)arg1;
+- (BOOL)isNaturalLightingSupportedForProfile:(id)arg1;
 - (long long)lastPlaybackStateForProfileForRouteID:(id)arg1;
 - (id)mediaProfileContainerForRouteID:(id)arg1;
 - (void)mediaValueUpdated:(id)arg1 playbackState:(long long)arg2 playbackArchive:(id)arg3;
 - (id)readValuesForCharacteristicTypes:(id)arg1 inServices:(id)arg2;
 - (id)readValuesForCharacteristics:(id)arg1;
+- (id)writeNaturalLightEnabledState:(BOOL)arg1 forProfile:(id)arg2;
 - (id)writePlaybackState:(long long)arg1 playbackArchive:(id)arg2 forRouteID:(id)arg3;
 - (id)writeValuesForCharacteristics:(id)arg1;
 

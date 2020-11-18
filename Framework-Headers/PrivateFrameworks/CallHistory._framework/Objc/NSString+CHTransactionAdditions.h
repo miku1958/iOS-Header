@@ -7,6 +7,7 @@
 #import <Foundation/NSString.h>
 
 @interface NSString (CHTransactionAdditions)
++ (id)ch_stringWithCHRecentCallJunkConfidence:(long long)arg1;
 + (id)ch_stringWithCHRecentCallVerificationStatus:(long long)arg1;
 + (id)ch_stringWithCHTransactionType:(unsigned long long)arg1;
 @end

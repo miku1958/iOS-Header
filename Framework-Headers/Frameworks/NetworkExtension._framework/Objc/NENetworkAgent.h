@@ -43,6 +43,7 @@
 @property (readonly) int sessionType;
 @property (nonatomic, getter=isSpecificUseOnly) BOOL specificUseOnly;
 @property (nonatomic) BOOL supportsBrowseRequests;
+@property (nonatomic) BOOL supportsListenRequests;
 @property (nonatomic) BOOL supportsResolveRequests;
 @property (nonatomic) BOOL updateClientsImmediately;
 @property (nonatomic, getter=isUserActivated) BOOL userActivated; // @synthesize userActivated;

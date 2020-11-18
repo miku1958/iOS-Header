@@ -10,13 +10,13 @@
 
 @interface PHContentEditingInputRequestContext : PHMediaRequestContext
 {
+    PHContentEditingInputResult *_contentEditingInputResult;
     BOOL _useRAWAsUnadjustedBase;
     PHAdjustmentDataRequest *_adjustmentRequest;
     PHVideoRequest *_videoRequest;
     unsigned long long _imageBaseRequestIndex;
     PHImageRequest *_displayImageRequest;
     struct os_unfair_lock_s _lock;
-    PHContentEditingInputResult *_contentEditingInputResult;
     unsigned long long _inflightMediaRequestCount;
     NSProgress *_adjustmentProgress;
     NSProgress *_videoProgress;
@@ -36,6 +36,7 @@
 - (long long)_assetResourceTypeForImageWithBaseVersion:(long long)arg1;
 - (id)_assetResources;
 - (id)_baseMediaRequestsForBaseVersion:(long long)arg1 error:(id *)arg2;
+- (BOOL)_canSkipMediaMetadataCheckWithBaseVersion:(long long)arg1;
 - (id)_errorFromAssetMediaResult:(id)arg1;
 - (void)_finishIfAllCompleteWithRequest:(id)arg1;
 - (BOOL)_hasAnyPenultimateResource;
@@ -44,12 +45,10 @@
 - (id)_lazyAdjustmentProgress;
 - (id)_lazyImageProgress;
 - (id)_lazyVideoProgress;
-- (void)_prepareAndAddFlippingRenderURLRequestsToChildRequestsIfNeeded:(id)arg1 forBaseVersion:(long long)arg2;
 - (void)_prepareAndAddMediaRequestsToChildRequests:(id)arg1;
 - (void)_renderTemporaryVideoForObjectBuilder:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_renderVideoFromVideoURL:(id)arg1 asset:(id)arg2 adjustmentData:(id)arg3 canHandleAdjustmentData:(BOOL)arg4 resultHandler:(CDUnknownBlockType)arg5;
 - (id)_resourceRequestForAssetResource:(id)arg1 wantsURLOnly:(BOOL)arg2 progress:(id)arg3;
-- (void)_setVideoResourceURLsForFlippingRendersIfNeeded;
 - (BOOL)_shouldRequestImage;
 - (BOOL)_shouldRequestVideo;
 - (id)_videoBehaviorSpecForBaseVersion:(long long)arg1;
@@ -57,6 +56,7 @@
 - (id)initWithRequestID:(int)arg1 managerID:(unsigned long long)arg2 asset:(id)arg3 options:(id)arg4 useRAWAsUnadjustedBase:(BOOL)arg5 resultHandler:(CDUnknownBlockType)arg6;
 - (id)initialRequests;
 - (BOOL)isNetworkAccessAllowed;
+- (void)processAndReturnResultsWithRequest:(id)arg1;
 - (void)processMediaResult:(id)arg1 forRequest:(id)arg2;
 - (id)produceChildRequestsForRequest:(id)arg1 reportingIsLocallyAvailable:(BOOL)arg2 isDegraded:(BOOL)arg3 result:(id)arg4;
 - (CDUnknownBlockType)progressHandler;

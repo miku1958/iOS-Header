@@ -26,6 +26,7 @@
 - (id)requestOptions;
 - (id)serviceConnection;
 - (id)serviceRemoteObjectWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)synchronousRemoteObjectWithErrorHandler:(CDUnknownBlockType)arg1;
 
 @end
 

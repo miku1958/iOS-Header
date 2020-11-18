@@ -32,7 +32,6 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithHandle:(id)arg1;
 - (id)initWithType:(long long)arg1 value:(id)arg2;

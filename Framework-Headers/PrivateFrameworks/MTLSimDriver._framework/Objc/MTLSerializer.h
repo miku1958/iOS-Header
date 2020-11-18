@@ -6,26 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@protocol MTLDevice, OS_dispatch_queue;
+@protocol MTLDevice, MTLSerializerObjectRefAllocator, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MTLSerializer : NSObject
 {
     id<MTLDevice> _device;
     NSObject<OS_dispatch_queue> *_serialQueue;
-    struct atomic<unsigned int> _resourceIndex;
-    struct atomic<unsigned int> _depthStencilIndex;
-    struct atomic<unsigned int> _samplerIndex;
-    struct atomic<unsigned int> _libraryIndex;
-    struct atomic<unsigned int> _functionIndex;
-    struct atomic<unsigned int> _computePipelineIndex;
-    struct atomic<unsigned int> _renderPipelineIndex;
-    struct atomic<unsigned int> _fences;
-    struct atomic<unsigned int> _argumentBufferLayoutIndex;
-    struct atomic<unsigned int> _argumentEncoderIndex;
-    struct atomic<unsigned int> _heapIndex;
-    struct atomic<unsigned int> _eventIndex;
-    struct atomic<unsigned int> _commandQueueIndex;
+    id<MTLSerializerObjectRefAllocator> _objectIndex;
     struct MTLSerializerIndexGenerator *_commandBufferIndex;
     struct MTLSerializerIndexGenerator *_eventNotifications;
     BOOL _deserializerGeneratesResourceRefs;
@@ -55,7 +43,6 @@ __attribute__((visibility("hidden")))
 - (void)deleteFenceRef:(unsigned int)arg1 allocator:(id)arg2;
 - (void)deleteFunctionRef:(unsigned int)arg1 allocator:(id)arg2;
 - (void)deleteHeapRef:(unsigned int)arg1 allocator:(id)arg2;
-- (void)deleteLibraryRef:(unsigned int)arg1 allocator:(id)arg2;
 - (void)deleteRenderPipelineStateRef:(unsigned int)arg1 allocator:(id)arg2;
 - (void)deleteSamplerStateRef:(unsigned int)arg1 allocator:(id)arg2;
 - (void)deleteTextureRef:(unsigned int)arg1 allocator:(id)arg2;
@@ -68,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (void)heapTextureSizeAndAlignWithDescriptor:(id)arg1 allocator:(id)arg2;
 - (id)initWithDevice:(id)arg1;
 - (id)initWithDevice:(id)arg1 deserializerGeneratesResourceRefs:(BOOL)arg2;
+- (id)initWithDevice:(id)arg1 objectRefAllocator:(id)arg2 deserializerGeneratesResourceRefs:(BOOL)arg3;
 - (void)makeAliasableResource:(id)arg1 allocator:(id)arg2;
 - (void)maxAvailableSizeWithAlignment:(unsigned long long)arg1 heap:(id)arg2 allocator:(id)arg3;
 - (void)minimumLinearTextureAlignmentForPixelFormat:(unsigned long long)arg1 allocator:(id)arg2;
@@ -90,11 +78,9 @@ __attribute__((visibility("hidden")))
 - (unsigned int)newFenceWithAllocator:(id)arg1;
 - (unsigned int)newFunctionRef;
 - (unsigned int)newFunctionWithIR:(id)arg1;
-- (unsigned int)newFunctionWithLibrary:(id)arg1 functionName:(id)arg2 allocator:(id)arg3;
 - (unsigned int)newHeapRef;
 - (unsigned int)newHeapWithDescriptor:(id)arg1 allocator:(id)arg2;
 - (unsigned int)newIOSurfaceTextureWithDescriptor:(id)arg1 plane:(unsigned long long)arg2 allocator:(id)arg3;
-- (unsigned int)newLibraryRef;
 - (unsigned int)newNotificationRef;
 - (unsigned int)newRenderPipelineStateRef;
 - (unsigned int)newRenderPipelineStateWithSerializedDescriptor:(id)arg1 allocator:(id)arg2;
@@ -102,6 +88,7 @@ __attribute__((visibility("hidden")))
 - (id)newSamplerStateWithDescriptor:(id)arg1;
 - (unsigned int)newSamplerStateWithDescriptor:(id)arg1 allocator:(id)arg2;
 - (unsigned int)newSharedEventWithAllocator:(id)arg1;
+- (unsigned int)newSharedEventWithHandle:(id)arg1 allocator:(id)arg2;
 - (unsigned int)newTextureRef;
 - (unsigned int)newTextureViewWithPixelFormat:(unsigned long long)arg1 baseTexture:(id)arg2 allocator:(id)arg3;
 - (unsigned int)newTextureViewWithPixelFormat:(unsigned long long)arg1 textureType:(unsigned long long)arg2 levels:(struct _NSRange)arg3 slices:(struct _NSRange)arg4 baseTexture:(id)arg5 allocator:(id)arg6;
@@ -124,13 +111,13 @@ __attribute__((visibility("hidden")))
 - (void)releaseFenceRef:(unsigned int)arg1;
 - (void)releaseFunctionRef:(unsigned int)arg1;
 - (void)releaseHeapRef:(unsigned int)arg1;
-- (void)releaseLibraryRef:(unsigned int)arg1;
 - (void)releaseNotificationRef:(unsigned int)arg1;
 - (void)releaseRenderPipelineStateRef:(unsigned int)arg1;
 - (void)releaseSamplerStateRef:(unsigned int)arg1;
 - (void)releaseTextureRef:(unsigned int)arg1;
 - (void)replaceRegion:(CDStruct_caaed6bc)arg1 mipmapLevel:(unsigned long long)arg2 slice:(unsigned long long)arg3 withBytes:(const void *)arg4 bytesPerRow:(unsigned long long)arg5 bytesPerImage:(unsigned long long)arg6 texture:(id)arg7 allocator:(id)arg8;
-- (void)setSignaledValue:(unsigned long long)arg1 eventRef:(unsigned int)arg2 allocator:(id)arg3;
+- (void)sharedEventSetSignaledValue:(unsigned long long)arg1 eventRef:(unsigned int)arg2 allocator:(id)arg3;
+- (void)sharedEventSignaledValueForEventRef:(unsigned int)arg1 allocator:(id)arg2;
 - (void)sizeInfoForHeap:(id)arg1 allocator:(id)arg2;
 - (void)uniqueIdentifierForComputePipelineState:(id)arg1 allocator:(id)arg2;
 - (void)uniqueIdentifierForRenderPipelineState:(id)arg1 allocator:(id)arg2;

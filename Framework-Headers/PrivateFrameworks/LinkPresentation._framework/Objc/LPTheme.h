@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class LPCaptionBarStyle, LPImageViewStyle, LPPointUnit, LPTapToLoadViewStyle, LPTextViewStyle, LPVideoViewStyle, UIColor;
+@class LPCaptionBarStyle, LPImageViewStyle, LPPointUnit, LPTapToLoadViewStyle, LPTextViewStyle, LPVideoViewStyle, UIColor, UIFont;
 
 __attribute__((visibility("hidden")))
 @interface LPTheme : NSObject
@@ -26,6 +26,8 @@ __attribute__((visibility("hidden")))
     LPCaptionBarStyle *_mediaTopCaptionBar;
     LPCaptionBarStyle *_mediaBottomCaptionBar;
     LPTapToLoadViewStyle *_tapToLoad;
+    UIFont *_domainNameIndicatorFont;
+    UIFont *_domainNameIndicatorIconFont;
     LPPointUnit *_maximumWidth;
     LPPointUnit *_maximumIntrinsicHeight;
     double _widthFractionForTallMedia;
@@ -33,6 +35,8 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (readonly, nonatomic) LPCaptionBarStyle *captionBar; // @synthesize captionBar=_captionBar;
+@property (readonly, nonatomic) UIFont *domainNameIndicatorFont; // @synthesize domainNameIndicatorFont=_domainNameIndicatorFont;
+@property (readonly, nonatomic) UIFont *domainNameIndicatorIconFont; // @synthesize domainNameIndicatorIconFont=_domainNameIndicatorIconFont;
 @property (strong, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
 @property (strong, nonatomic) LPPointUnit *maximumIntrinsicHeight; // @synthesize maximumIntrinsicHeight=_maximumIntrinsicHeight;
 @property (strong, nonatomic) LPPointUnit *maximumWidth; // @synthesize maximumWidth=_maximumWidth;

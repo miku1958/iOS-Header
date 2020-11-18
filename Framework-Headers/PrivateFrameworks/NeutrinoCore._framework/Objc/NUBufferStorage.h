@@ -19,6 +19,7 @@
     long long _rowBytes;
     void *_bytes;
     BOOL _purgeable;
+    _Atomic int _useCount;
 }
 
 @property (readonly, nonatomic) const void *bytes; // @synthesize bytes=_bytes;
@@ -40,9 +41,13 @@
 - (id)_purgeStateDescription;
 - (void)adjustPurgeLevel:(long long)arg1;
 - (void)dealloc;
+- (BOOL)decrementUseCount;
+- (void)incrementUseCount;
 - (id)initWithSize:(CDStruct_912cb5d2)arg1 format:(id)arg2;
+- (BOOL)isInUse;
 - (BOOL)isPurgeable;
 - (BOOL)isPurged;
+- (BOOL)isShared;
 - (BOOL)makeNonPurgeable;
 - (void)makePurgeable;
 - (id)newRenderDestination;
@@ -50,6 +55,7 @@
 - (long long)readBufferInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (long long)useAsCIImageWithOptions:(id)arg1 renderer:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (long long)useAsCIRenderDestinationWithRenderer:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (int)useCount;
 - (long long)writeBufferInRegion:(id)arg1 block:(CDUnknownBlockType)arg2;
 
 @end

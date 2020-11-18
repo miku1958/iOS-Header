@@ -26,7 +26,6 @@
         unsigned int timeUnit:1;
         unsigned int volumeUnit:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _bloodGlucoseUnit;
     int _bloodPressureUnit;
     int _energyUnit;
@@ -39,7 +38,6 @@
     int _volumeUnit;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) int bloodGlucoseUnit; // @synthesize bloodGlucoseUnit=_bloodGlucoseUnit;
 @property (nonatomic) int bloodPressureUnit; // @synthesize bloodPressureUnit=_bloodPressureUnit;
 @property (readonly, copy) NSString *debugDescription;

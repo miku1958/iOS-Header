@@ -37,8 +37,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)textField:(id)arg1 shouldChangeCharactersInRange:(struct _NSRange)arg2 replacementString:(id)arg3;
 - (void)textFieldDidBeginEditing:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
+- (BOOL)textFieldShouldBeginEditing:(id)arg1;
 - (BOOL)textFieldShouldClear:(id)arg1;
-- (BOOL)textFieldShouldStartEditing:(id)arg1;
 
 @end
 

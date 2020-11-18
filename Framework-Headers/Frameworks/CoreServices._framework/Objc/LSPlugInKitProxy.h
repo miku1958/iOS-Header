@@ -6,13 +6,17 @@
 
 #import <CoreServices/LSBundleProxy.h>
 
+#import <CoreServices/LSDetachable-Protocol.h>
 #import <CoreServices/NSSecureCoding-Protocol.h>
 
-@class LSExtensionPoint, NSDate, NSDictionary, NSNumber, NSString, NSUUID;
+@class LSApplicationExtensionRecord, LSExtensionPoint, NSDate, NSDictionary, NSNumber, NSString, NSUUID;
 
-@interface LSPlugInKitProxy : LSBundleProxy <NSSecureCoding>
+@interface LSPlugInKitProxy : LSBundleProxy <LSDetachable, NSSecureCoding>
 {
     unsigned int _platform;
+    unsigned int _pluginFlags;
+    LSApplicationExtensionRecord *_appexRecord;
+    NSString *_extensionPointID;
     BOOL _onSystemPartition;
     NSString *_signerOrganization;
     NSString *_pluginIdentifier;
@@ -39,6 +43,7 @@
 
 + (id)containingBundleIdentifiersForPlugInBundleIdentifiers:(id)arg1 error:(id *)arg2;
 + (id)plugInKitProxyForPlugin:(unsigned int)arg1 withContext:(struct LSContext *)arg2;
++ (id)plugInKitProxyForPlugin:(unsigned int)arg1 withContext:(struct LSContext *)arg2 applicationExtensionRecord:(id)arg3 resolveAndDetach:(BOOL)arg4;
 + (id)plugInKitProxyForUUID:(id)arg1 bundleIdentifier:(id)arg2 pluginIdentifier:(id)arg3 effectiveIdentifier:(id)arg4 version:(id)arg5 bundleURL:(id)arg6;
 + (id)pluginKitProxyForIdentifier:(id)arg1;
 + (id)pluginKitProxyForURL:(id)arg1;
@@ -46,15 +51,21 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)UPPValidated;
-- (id)_initWithPlugin:(unsigned int)arg1 andContext:(struct LSContext *)arg2;
+- (id)_initWithPlugin:(unsigned int)arg1 andContext:(struct LSContext *)arg2 applicationExtensionRecord:(id)arg3 resolveAndDetach:(BOOL)arg4;
 - (id)_initWithUUID:(id)arg1 bundleIdentifier:(id)arg2 pluginIdentifier:(id)arg3 effectiveIdentifier:(id)arg4 version:(id)arg5 bundleURL:(id)arg6;
 - (id)_localizedNameWithPreferredLocalizations:(id)arg1 useShortNameOnly:(BOOL)arg2;
 - (id)_managedPersonas;
 - (BOOL)_usesSystemPersona;
 - (id)_valueForEqualityTesting;
 - (id)boundIconsDictionary;
+- (id)bundleType;
+- (unsigned long long)compatibilityState;
+- (id)dataContainerURL;
 - (id)description;
+- (void)detach;
 - (void)encodeWithCoder:(id)arg1;
+- (BOOL)freeProfileValidated;
+- (id)groupContainerURLs;
 - (id)iconDataForVariant:(int)arg1 withOptions:(int)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)objectForInfoDictionaryKey:(id)arg1 ofClass:(Class)arg2 inScope:(unsigned long long)arg3;

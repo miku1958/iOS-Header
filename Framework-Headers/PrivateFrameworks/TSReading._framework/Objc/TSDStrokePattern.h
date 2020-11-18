@@ -11,18 +11,18 @@
 
 @interface TSDStrokePattern : NSObject <NSCopying, TSDMixing>
 {
-    double mPattern[6];
-    unsigned long long mCount;
-    double mPhase;
-    int mType;
+    double _pattern[6];
+    long long _type;
+    unsigned long long _count;
+    double _phase;
 }
 
-@property (readonly, nonatomic) unsigned long long count; // @synthesize count=mCount;
+@property (readonly, nonatomic) unsigned long long count; // @synthesize count=_count;
 @property (readonly, nonatomic) BOOL isDash;
 @property (readonly, nonatomic) BOOL isRoundDash;
 @property (readonly, nonatomic) double *pattern;
-@property (readonly, nonatomic) int patternType; // @synthesize patternType=mType;
-@property (readonly, nonatomic) double phase; // @synthesize phase=mPhase;
+@property (readonly, nonatomic) long long patternType; // @synthesize patternType=_type;
+@property (readonly, nonatomic) double phase; // @synthesize phase=_phase;
 
 + (id)dashPatternWithSpacing:(double)arg1;
 + (id)emptyPattern;
@@ -33,18 +33,21 @@
 + (id)shortDashPattern;
 + (id)solidPattern;
 + (id)strokePatternWithPattern:(const double *)arg1 count:(unsigned long long)arg2 phase:(double)arg3;
-- (void)applyToCAShapeLayer:(id)arg1;
 - (void)applyToContext:(struct CGContext *)arg1 lineWidth:(double)arg2;
+- (void)applyToShapeRenderable:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (void)i_applyToContext:(struct CGContext *)arg1 lineWidth:(double)arg2 capStyle:(unsigned long long *)arg3;
 - (id)initWithPattern:(const double *)arg1 count:(unsigned long long)arg2 phase:(double)arg3;
+- (id)initWithPatternType:(long long)arg1 pattern:(const double *)arg2 count:(unsigned long long)arg3 phase:(double)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (id)mixedObjectWithFraction:(double)arg1 ofObject:(id)arg2;
 - (long long)mixingTypeWithObject:(id)arg1;
-- (void)p_applyToCAShapeLayer:(id)arg1 lineWidth:(double)arg2;
-- (id)p_initWithType:(int)arg1 pattern:(const double *)arg2 count:(unsigned long long)arg3 phase:(double)arg4;
+- (void)p_applyToShapeRenderable:(id)arg1 lineWidth:(double)arg2;
+- (id)p_patternString;
+- (double)p_renderableLengthForUnclippedPatternWithLineWidth:(double)arg1 withinAvailableLength:(double)arg2;
+- (id)p_typeString;
 
 @end
 

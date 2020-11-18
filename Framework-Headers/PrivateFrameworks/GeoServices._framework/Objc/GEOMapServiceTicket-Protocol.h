@@ -18,11 +18,14 @@
 @property (readonly, nonatomic) GEOCategorySearchResultSection *categorySearchResultSection;
 @property (readonly, nonatomic, getter=isChainResultSet) BOOL chainResultSet;
 @property (readonly, nonatomic) GEOResolvedItem *clientResolvedResult;
+@property (readonly, nonatomic) NSArray *collectionResults;
 @property (readonly, nonatomic) GEORelatedSearchSuggestion *defaultRelatedSuggestion;
 @property (readonly, nonatomic) GEODirectionIntent *directionIntent;
 @property (readonly, nonatomic) NSArray *displayHeaderSubstitutes;
 @property (readonly, nonatomic) unsigned int dymSuggestionVisibleTime;
 @property (readonly, nonatomic) GEOPDMerchantLookupResult *merchantLookupResult;
+@property (readonly, nonatomic) NSArray *publisherResults;
+@property (readonly, nonatomic) NSArray *relatedEntitySections;
 @property (readonly, nonatomic) NSArray *relatedSearchSuggestions;
 @property (readonly, nonatomic) NSDictionary *responseUserInfo;
 @property (readonly, nonatomic) GEOMapRegion *resultBoundingRegion;

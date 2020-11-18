@@ -8,7 +8,7 @@
 
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessoryCategory, HMHome, NSString, NSUUID;
+@class HMAccessoryCategory, HMHome, HMSetupAccessoryDescription, NSString, NSUUID;
 
 @interface HMAddAccessoryRequest : NSObject <NSSecureCoding>
 {
@@ -18,9 +18,11 @@
     NSString *_accessoryName;
     HMAccessoryCategory *_accessoryCategory;
     NSUUID *_requestIdentifier;
+    HMSetupAccessoryDescription *_accessoryDescription;
 }
 
 @property (readonly, nonatomic) HMAccessoryCategory *accessoryCategory; // @synthesize accessoryCategory=_accessoryCategory;
+@property (strong, nonatomic) HMSetupAccessoryDescription *accessoryDescription; // @synthesize accessoryDescription=_accessoryDescription;
 @property (readonly, nonatomic) NSString *accessoryName; // @synthesize accessoryName=_accessoryName;
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) NSUUID *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;

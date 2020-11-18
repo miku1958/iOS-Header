@@ -6,16 +6,18 @@
 
 #import <HealthUI/HKCurrentValueViewDataSource.h>
 
+#import <HealthRecordsUI/HKCurrentValueViewDataSourceDelegate-Protocol.h>
+
 @class MISSING_TYPE;
 
-@interface _TtC15HealthRecordsUI37SingleValueCurrentValueViewDataSource : HKCurrentValueViewDataSource
+@interface _TtC15HealthRecordsUI37SingleValueCurrentValueViewDataSource : HKCurrentValueViewDataSource <HKCurrentValueViewDataSourceDelegate>
 {
     MISSING_TYPE *lastCachedNumberOfChartPoints;
 }
 
-- (id)attributedTitleStringForCurrentValueView:(id)arg1;
 - (id)init;
 - (id)initWithDateCache:(id)arg1 displayCategoryController:(id)arg2 healthStore:(id)arg3 selectedRangeFormatter:(id)arg4;
+- (id)titleForSelectedRangeData:(id)arg1;
 - (void)updateDataSourceWithGraphView:(id)arg1 displayType:(id)arg2 timeScope:(long long)arg3;
 
 @end

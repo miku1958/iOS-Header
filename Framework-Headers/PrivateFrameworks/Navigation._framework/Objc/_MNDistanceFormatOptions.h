@@ -9,22 +9,22 @@
 __attribute__((visibility("hidden")))
 @interface _MNDistanceFormatOptions : NSObject
 {
-    BOOL metric;
-    BOOL yards;
-    BOOL abbreviateUnits;
-    BOOL spoken;
-    unsigned long long maximumFractionDigits;
-    long long rounding;
+    BOOL _metric;
+    BOOL _yards;
+    BOOL _abbreviateUnits;
+    BOOL _spoken;
     unsigned long long _minimumFractionDigits;
+    unsigned long long _maximumFractionDigits;
+    long long _rounding;
 }
 
-@property (nonatomic) BOOL abbreviateUnits; // @synthesize abbreviateUnits;
-@property (nonatomic) unsigned long long maximumFractionDigits; // @synthesize maximumFractionDigits;
-@property (nonatomic) BOOL metric; // @synthesize metric;
+@property (nonatomic) BOOL abbreviateUnits; // @synthesize abbreviateUnits=_abbreviateUnits;
+@property (nonatomic) unsigned long long maximumFractionDigits; // @synthesize maximumFractionDigits=_maximumFractionDigits;
+@property (nonatomic) BOOL metric; // @synthesize metric=_metric;
 @property (nonatomic) unsigned long long minimumFractionDigits; // @synthesize minimumFractionDigits=_minimumFractionDigits;
-@property (nonatomic) long long rounding; // @synthesize rounding;
-@property (nonatomic) BOOL spoken; // @synthesize spoken;
-@property (nonatomic) BOOL yards; // @synthesize yards;
+@property (nonatomic) long long rounding; // @synthesize rounding=_rounding;
+@property (nonatomic) BOOL spoken; // @synthesize spoken=_spoken;
+@property (nonatomic) BOOL yards; // @synthesize yards=_yards;
 
 
 @end

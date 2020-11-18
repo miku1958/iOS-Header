@@ -25,13 +25,14 @@
 
 + (id)UTITypes;
 + (Class)__ck_attachmentItemClass;
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (id)fallbackFilenamePrefix;
 + (BOOL)isPreviewable;
 + (id)placeholderPreviewCache;
 + (id)placeholderPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;
 + (id)titleBarMaskImageForWidth:(double)arg1;
 + (id)vcardDataFromCLLocation:(id)arg1;
+- (id)attachmentSummary:(unsigned long long)arg1;
+- (Class)balloonViewClassForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)bbPreviewFillToSize:(struct CGSize)arg1;
 - (struct CGSize)bbSize;
 - (id)generatePlaceholderThumbnailFillToSize:(struct CGSize)arg1 contentAlignmentInsets:(struct UIEdgeInsets)arg2;
@@ -41,10 +42,12 @@
 - (BOOL)isDroppedPin;
 - (id)mapItem;
 - (int)mediaType;
+- (id)metricsCollectorMediaType;
 - (Class)previewBalloonViewClass;
 - (id)previewCacheKeyWithOrientation:(BOOL)arg1;
-- (id)previewCachesFileURLWithOrientation:(BOOL)arg1 extension:(id)arg2;
+- (id)previewCachesFileURLWithOrientation:(BOOL)arg1 extension:(id)arg2 generateIntermediaries:(BOOL)arg3;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
+- (id)previewItemTitle;
 - (id)transcriptTraitCollection;
 - (id)vCardURLProperties;
 

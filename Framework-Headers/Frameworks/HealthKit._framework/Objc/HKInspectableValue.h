@@ -6,16 +6,19 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/HKCodedObject-Protocol.h>
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
 @class HKCodedQuantity, HKCodedValueCollection, HKConcept, HKMedicalDate, HKMedicalDateInterval, HKRatioValue, HKUCUMUnitDisplayConverter, NSArray, NSDateComponents, NSString;
 @protocol NSObject><NSSecureCoding;
 
-@interface HKInspectableValue : NSObject <NSSecureCoding, NSCopying>
+@interface HKInspectableValue : NSObject <NSSecureCoding, NSCopying, HKCodedObject>
 {
     long long _valueType;
     id<NSObject><NSSecureCoding> _value;
+    HKConcept *_concept;
+    HKConcept *_dataAbsentReason;
 }
 
 @property (readonly, copy, nonatomic) HKCodedQuantity *codedQuantityValue;
@@ -25,15 +28,20 @@
 @property (readonly, copy, nonatomic) HKConcept *dataAbsentReason;
 @property (readonly, copy, nonatomic) NSArray *dataAbsentReasonCodings;
 @property (readonly, copy, nonatomic) NSDateComponents *dateComponentsValue;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSArray *medicalCodings;
 @property (readonly, copy, nonatomic) HKMedicalDateInterval *medicalDateIntervalValue;
 @property (readonly, copy, nonatomic) HKMedicalDate *medicalDateValue;
 @property (readonly, copy, nonatomic) HKRatioValue *ratioValue;
 @property (readonly, copy, nonatomic) NSString *stringValue;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *unitString;
 @property (readonly, nonatomic) id<NSObject><NSSecureCoding> value;
 @property (readonly, nonatomic) long long valueType; // @synthesize valueType=_valueType;
 
++ (id)indexableKeyPathsWithPrefix:(id)arg1;
 + (id)inspectableValueWithCodedQuantity:(id)arg1;
 + (id)inspectableValueWithCodedValueCollection:(id)arg1;
 + (id)inspectableValueWithDataAbsentReasonCodings:(id)arg1;
@@ -50,11 +58,13 @@
 - (void)_assertValueClass:(Class)arg1;
 - (void)_assertValueType;
 - (id)_initWithValueType:(long long)arg1 value:(id)arg2;
+- (void)_setConcept:(id)arg1;
+- (void)_setDataAbsentReason:(id)arg1;
 - (id)_unitStringForCodedValueCollection:(id)arg1;
+- (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
+- (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

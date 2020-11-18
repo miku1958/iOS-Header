@@ -59,7 +59,7 @@
 - (float)_verticalPageScrollDistance;
 - (Class)_viewClassForMIMEType:(id)arg1;
 - (id)_webView;
-- (struct Frame *)_web_frame;
+- (NakedPtr_4ac97545)_web_frame;
 - (id)_webcore_effectiveFirstResponder;
 - (BOOL)acceptsFirstResponder;
 - (BOOL)becomeFirstResponder;

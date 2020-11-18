@@ -43,6 +43,7 @@
     unsigned long long _numberOfNextKeywordSuggestionToProcess;
     NSArray *_nextKeywordSuggestions;
     NSArray *_dedupedGroupResults;
+    unsigned long long _mergeFilterTokenAssetIDsIntervalID;
 }
 
 @property (nonatomic) BOOL calculateTokenCounts; // @synthesize calculateTokenCounts=_calculateTokenCounts;
@@ -54,6 +55,7 @@
 @property (nonatomic) BOOL implicitTokenizationLastTokenUsesPrefixMatch; // @synthesize implicitTokenizationLastTokenUsesPrefixMatch=_implicitTokenizationLastTokenUsesPrefixMatch;
 @property (nonatomic) BOOL implicitTokenizationUsePrefixMatch; // @synthesize implicitTokenizationUsePrefixMatch=_implicitTokenizationUsePrefixMatch;
 @property (nonatomic) BOOL lastImplicitTokenAllowsWordEmbeddings; // @synthesize lastImplicitTokenAllowsWordEmbeddings=_lastImplicitTokenAllowsWordEmbeddings;
+@property (nonatomic) unsigned long long mergeFilterTokenAssetIDsIntervalID; // @synthesize mergeFilterTokenAssetIDsIntervalID=_mergeFilterTokenAssetIDsIntervalID;
 @property (strong, nonatomic) NSArray *nextKeywordSuggestions; // @synthesize nextKeywordSuggestions=_nextKeywordSuggestions;
 @property (nonatomic) unsigned long long numberOfNextKeywordSuggestionToProcess; // @synthesize numberOfNextKeywordSuggestionToProcess=_numberOfNextKeywordSuggestionToProcess;
 @property (nonatomic) BOOL preventUnnecessaryImplicitTokenization; // @synthesize preventUnnecessaryImplicitTokenization=_preventUnnecessaryImplicitTokenization;
@@ -67,6 +69,11 @@
 @property (nonatomic) BOOL usesPrefixBasedWordEmbedding; // @synthesize usesPrefixBasedWordEmbedding=_usesPrefixBasedWordEmbedding;
 @property (nonatomic) unsigned long long wordEmbeddingMode; // @synthesize wordEmbeddingMode=_wordEmbeddingMode;
 
++ (void)_aggregateAssetIdsOnFilterGroupsInGroupArrays:(id)arg1 searchTokens:(id)arg2 groupIdToOriginalAssetIdsMap:(id *)arg3;
++ (id)_indexesOfFilterTokensInSearchTokens:(id)arg1;
++ (id)_indexesToRemoveForDuplicatedFilterGroupsinGroupArrays:(id)arg1 searchTokens:(id)arg2;
++ (void)_restoreAssetIdsForGroupsInGroupArrays:(id)arg1 atRemovalIndexes:(id)arg2 groupIdToOriginalAssetIdsMap:(id)arg3 searchTokens:(id)arg4;
++ (BOOL)_shouldApplyFilterTokensForGroupArrays:(id)arg1 searchTokens:(id)arg2 filterGroupIds:(id)arg3;
 + (void)bootstrap;
 + (id)dateAttributesFromToken:(id)arg1;
 + (id)dateFilterByCombiningDateFilter:(id)arg1 withDateFilter:(id)arg2;

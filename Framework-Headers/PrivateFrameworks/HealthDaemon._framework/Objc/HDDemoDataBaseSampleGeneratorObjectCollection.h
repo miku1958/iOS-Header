@@ -13,7 +13,7 @@
     NSMutableSet *_objectsFromPhone;
     NSMutableSet *_objectsFromWatch;
     NSMutableDictionary *_objectsFromPhoneApps;
-    NSMutableDictionary *_workoutUUIDToAssocatedObjectUUIDs;
+    NSMutableDictionary *_objectUUIDToAssocatedObjectUUIDs;
 }
 
 - (void).cxx_destruct;
@@ -22,12 +22,12 @@
 - (void)addObjects:(id)arg1 fromPhoneAppWithBundleIdentifier:(id)arg2;
 - (void)addObjectsFromPhone:(id)arg1;
 - (void)addObjectsFromWatch:(id)arg1;
-- (void)enumerateWorkoutAssociations:(CDUnknownBlockType)arg1;
+- (void)enumerateObjectAssociations:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)objectsFromPhone;
 - (id)objectsFromPhoneApps;
 - (id)objectsFromWatch;
-- (void)setAssociatedObjectUUIDs:(id)arg1 forWorkoutUUID:(id)arg2;
+- (void)setAssociatedObjectUUIDs:(id)arg1 forObjectUUID:(id)arg2;
 
 @end
 

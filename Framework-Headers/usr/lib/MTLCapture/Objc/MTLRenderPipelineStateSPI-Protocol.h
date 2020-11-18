@@ -11,7 +11,10 @@
 @protocol MTLRenderPipelineStateSPI <MTLRenderPipelineState>
 
 @property (readonly, strong, nonatomic) MTLDebugInstrumentationData *fragmentDebugInstrumentationData;
-@property (nonatomic) unsigned long long resourceIndex;
+@property (readonly, nonatomic) unsigned long long gpuAddress;
+@property (readonly, nonatomic) unsigned long long resourceIndex;
+@property (readonly) long long textureWriteRoundingMode;
+@property (readonly, strong, nonatomic) MTLDebugInstrumentationData *tileDebugInstrumentationData;
 @property (readonly) unsigned long long uniqueIdentifier;
 @property (readonly, strong, nonatomic) MTLDebugInstrumentationData *vertexDebugInstrumentationData;
 

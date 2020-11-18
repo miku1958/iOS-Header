@@ -18,10 +18,10 @@
     int _calConnectionCount;
     int _noteConnectionCount;
     void *_abDB;
-    CNContactStore *_contactStore;
     NSString *_familyDelegateAltDSID;
     NSString *_familyDelegateACAccountID;
     NSMutableArray *_saveRequests;
+    CNContactStore *_contactStore;
     struct CalDatabase *_calDB;
     NSString *_clientIdentifier;
     NoteContext *_noteDB;

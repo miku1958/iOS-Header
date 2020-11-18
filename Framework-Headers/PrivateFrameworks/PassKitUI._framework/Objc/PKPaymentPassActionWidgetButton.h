@@ -26,6 +26,7 @@
 - (id)initWithWidgetViewStyle:(unsigned long long)arg1;
 - (void)layoutSubviews;
 - (void)setHighlighted:(BOOL)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

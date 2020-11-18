@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
+- (int)operationType;
 - (BOOL)shouldCheckAppVersion;
 
 @end

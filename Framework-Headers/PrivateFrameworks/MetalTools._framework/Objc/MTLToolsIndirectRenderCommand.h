@@ -19,7 +19,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)acceptVisitor:(id)arg1;
 - (id)drawArguments;
 - (id)drawIndexedArguments;
 - (void)drawIndexedPatches:(unsigned long long)arg1 patchStart:(unsigned long long)arg2 patchCount:(unsigned long long)arg3 patchIndexBuffer:(id)arg4 patchIndexBufferOffset:(unsigned long long)arg5 controlPointIndexBuffer:(id)arg6 controlPointIndexBufferOffset:(unsigned long long)arg7 instanceCount:(unsigned long long)arg8 baseInstance:(unsigned long long)arg9 tessellationFactorBuffer:(id)arg10 tessellationFactorBufferOffset:(unsigned long long)arg11 tessellationFactorBufferInstanceStride:(unsigned long long)arg12;
@@ -30,6 +29,7 @@
 - (void)drawPrimitives:(unsigned long long)arg1 vertexStart:(unsigned long long)arg2 vertexCount:(unsigned long long)arg3 instanceCount:(unsigned long long)arg4 baseInstance:(unsigned long long)arg5;
 - (unsigned long long)getCommandType;
 - (void *)getFragmentBufferAtIndex:(unsigned long long)arg1;
+- (unsigned long long)getOptimizedStatus;
 - (unsigned long long)getPipelineStateUniqueIdentifier;
 - (id)getTessellationFactorArguments;
 - (void *)getVertexBufferAtIndex:(unsigned long long)arg1;

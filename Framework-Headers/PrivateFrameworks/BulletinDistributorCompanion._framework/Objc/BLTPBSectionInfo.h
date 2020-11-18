@@ -12,6 +12,8 @@
 
 @interface BLTPBSectionInfo : PBCodable <NSCopying>
 {
+    double _authorizationExpirationDate;
+    double _lastUserGrantedAuthorizationDate;
     unsigned int _alertType;
     int _authorizationStatus;
     NSString *_displayName;
@@ -46,6 +48,8 @@
     BOOL _showsOnExternalDevices;
     BOOL _suppressFromSettings;
     struct {
+        unsigned int authorizationExpirationDate:1;
+        unsigned int lastUserGrantedAuthorizationDate:1;
         unsigned int alertType:1;
         unsigned int authorizationStatus:1;
         unsigned int groupingSetting:1;
@@ -76,6 +80,7 @@
 
 @property (nonatomic) unsigned int alertType; // @synthesize alertType=_alertType;
 @property (nonatomic) BOOL allowsNotifications; // @synthesize allowsNotifications=_allowsNotifications;
+@property (nonatomic) double authorizationExpirationDate; // @synthesize authorizationExpirationDate=_authorizationExpirationDate;
 @property (nonatomic) int authorizationStatus; // @synthesize authorizationStatus=_authorizationStatus;
 @property (nonatomic) BOOL criticalAlertSetting; // @synthesize criticalAlertSetting=_criticalAlertSetting;
 @property (strong, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
@@ -85,6 +90,7 @@
 @property (nonatomic) int groupingSetting; // @synthesize groupingSetting=_groupingSetting;
 @property (nonatomic) BOOL hasAlertType;
 @property (nonatomic) BOOL hasAllowsNotifications;
+@property (nonatomic) BOOL hasAuthorizationExpirationDate;
 @property (nonatomic) BOOL hasAuthorizationStatus;
 @property (nonatomic) BOOL hasCriticalAlertSetting;
 @property (readonly, nonatomic) BOOL hasDisplayName;
@@ -94,6 +100,7 @@
 @property (nonatomic) BOOL hasGroupingSetting;
 @property (readonly, nonatomic) BOOL hasIcon;
 @property (nonatomic) BOOL hasIconsStripped;
+@property (nonatomic) BOOL hasLastUserGrantedAuthorizationDate;
 @property (nonatomic) BOOL hasLockScreenSetting;
 @property (nonatomic) BOOL hasNotificationCenterLimit;
 @property (nonatomic) BOOL hasNotificationCenterSetting;
@@ -117,6 +124,7 @@
 @property (readonly, nonatomic) BOOL hasWatchSectionID;
 @property (strong, nonatomic) BLTPBSectionIcon *icon; // @synthesize icon=_icon;
 @property (nonatomic) BOOL iconsStripped; // @synthesize iconsStripped=_iconsStripped;
+@property (nonatomic) double lastUserGrantedAuthorizationDate; // @synthesize lastUserGrantedAuthorizationDate=_lastUserGrantedAuthorizationDate;
 @property (nonatomic) int lockScreenSetting; // @synthesize lockScreenSetting=_lockScreenSetting;
 @property (nonatomic) unsigned int notificationCenterLimit; // @synthesize notificationCenterLimit=_notificationCenterLimit;
 @property (nonatomic) int notificationCenterSetting; // @synthesize notificationCenterSetting=_notificationCenterSetting;

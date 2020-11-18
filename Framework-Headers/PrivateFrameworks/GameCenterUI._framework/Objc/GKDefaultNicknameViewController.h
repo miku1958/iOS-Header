@@ -10,59 +10,56 @@
 #import <GameCenterUI/GKAvatarContainerViewDelegate-Protocol.h>
 #import <GameCenterUI/GKNicknameControllerDelegate-Protocol.h>
 
-@class GKAvatarContainerView, GKNicknameController, GKReachability, NSLayoutConstraint, NSMutableDictionary, NSString, OBBoldTrayButton, UIActivityIndicatorView, UIButton, UILabel, UIStackView, UITextField, UIView, UIVisualEffectView;
-@protocol GKOnboardingFlowDelegate;
+@class GKAvatarContainerView, GKNicknameController, GKReachability, NSLayoutConstraint, NSString, OBBoldTrayButton, UIActivityIndicatorView, UIImageView, UILabel, UIStackView, UITextField, UIView, UIVisualEffectView;
 
 @interface GKDefaultNicknameViewController : UIViewController <GKAvatarContainerViewDelegate, CNPhotoPickerViewControllerDelegate, GKNicknameControllerDelegate>
 {
-    id<GKOnboardingFlowDelegate> _delegate;
-    UIView *_bubblePlaceholder;
-    NSMutableDictionary *_analyticsPayload;
     GKAvatarContainerView *_editAvatarView;
     UIView *_avatarContainer;
     UIVisualEffectView *_visualEffectView;
-    UIStackView *_contentStackView;
+    UIStackView *_mainStackView;
     UITextField *_nickname;
-    UIStackView *_stackView;
     UIView *_buttonContainer;
+    UIImageView *_bubbleImageView;
     OBBoldTrayButton *_continueButton;
+    NSLayoutConstraint *_mainStackViewTrailingConstraint;
+    NSLayoutConstraint *_mainStackViewLeadingConstraint;
+    NSLayoutConstraint *_continueButtonEqualMainStackViewWidthConstraint;
+    NSLayoutConstraint *_continueButtonWidthConstraint;
+    NSLayoutConstraint *_continueButtonBottomConstraint;
+    NSLayoutConstraint *_topMargin;
+    UIStackView *_middleStackView;
     UILabel *_message;
-    UIButton *_cancelButton;
-    UIView *_cancelContainer;
     UIActivityIndicatorView *_activityIndicator;
     UILabel *_mainTitle;
-    NSLayoutConstraint *_topMargin;
-    NSLayoutConstraint *_contentCenterY;
-    NSLayoutConstraint *_bottomMargin;
     NSLayoutConstraint *_avatarContainerLandscapeHeight;
     GKReachability *_reachability;
     GKNicknameController *_nicknameController;
 }
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
-@property (strong, nonatomic) NSMutableDictionary *analyticsPayload; // @synthesize analyticsPayload=_analyticsPayload;
 @property (strong, nonatomic) UIView *avatarContainer; // @synthesize avatarContainer=_avatarContainer;
 @property (strong, nonatomic) NSLayoutConstraint *avatarContainerLandscapeHeight; // @synthesize avatarContainerLandscapeHeight=_avatarContainerLandscapeHeight;
-@property (strong, nonatomic) NSLayoutConstraint *bottomMargin; // @synthesize bottomMargin=_bottomMargin;
-@property (strong, nonatomic) UIView *bubblePlaceholder; // @synthesize bubblePlaceholder=_bubblePlaceholder;
+@property (strong, nonatomic) UIImageView *bubbleImageView; // @synthesize bubbleImageView=_bubbleImageView;
 @property (strong, nonatomic) UIView *buttonContainer; // @synthesize buttonContainer=_buttonContainer;
-@property (strong, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
-@property (strong, nonatomic) UIView *cancelContainer; // @synthesize cancelContainer=_cancelContainer;
-@property (strong, nonatomic) NSLayoutConstraint *contentCenterY; // @synthesize contentCenterY=_contentCenterY;
-@property (strong, nonatomic) UIStackView *contentStackView; // @synthesize contentStackView=_contentStackView;
 @property (strong, nonatomic) OBBoldTrayButton *continueButton; // @synthesize continueButton=_continueButton;
+@property (strong, nonatomic) NSLayoutConstraint *continueButtonBottomConstraint; // @synthesize continueButtonBottomConstraint=_continueButtonBottomConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *continueButtonEqualMainStackViewWidthConstraint; // @synthesize continueButtonEqualMainStackViewWidthConstraint=_continueButtonEqualMainStackViewWidthConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *continueButtonWidthConstraint; // @synthesize continueButtonWidthConstraint=_continueButtonWidthConstraint;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<GKOnboardingFlowDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) GKAvatarContainerView *editAvatarView; // @synthesize editAvatarView=_editAvatarView;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isAvatarEditingSupported;
+@property (strong, nonatomic) UIStackView *mainStackView; // @synthesize mainStackView=_mainStackView;
+@property (strong, nonatomic) NSLayoutConstraint *mainStackViewLeadingConstraint; // @synthesize mainStackViewLeadingConstraint=_mainStackViewLeadingConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *mainStackViewTrailingConstraint; // @synthesize mainStackViewTrailingConstraint=_mainStackViewTrailingConstraint;
 @property (strong, nonatomic) UILabel *mainTitle; // @synthesize mainTitle=_mainTitle;
 @property (strong, nonatomic) UILabel *message; // @synthesize message=_message;
+@property (strong, nonatomic) UIStackView *middleStackView; // @synthesize middleStackView=_middleStackView;
 @property (strong, nonatomic) UITextField *nickname; // @synthesize nickname=_nickname;
 @property (strong, nonatomic) GKNicknameController *nicknameController; // @synthesize nicknameController=_nicknameController;
 @property (strong, nonatomic) GKReachability *reachability; // @synthesize reachability=_reachability;
-@property (strong, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSLayoutConstraint *topMargin; // @synthesize topMargin=_topMargin;
 @property (strong, nonatomic) UIVisualEffectView *visualEffectView; // @synthesize visualEffectView=_visualEffectView;
@@ -76,11 +73,14 @@
 - (void)dismiss:(id)arg1;
 - (void)enableOrDisableNicknameEditing;
 - (void)fadeNonEssentialViews:(BOOL)arg1;
+- (long long)getTopMargin;
 - (void)keyboardWillHide:(id)arg1;
 - (void)keyboardWillShow:(id)arg1;
 - (void)nicknameDidBecomeFirstResponder;
 - (void)nicknameDidResignFirstResponder;
+- (BOOL)nicknameShouldBeginEditing;
 - (void)nicknameTextDidChangeWithMessage:(id)arg1;
+- (void)nicknameUpdateAvatarImage:(id)arg1;
 - (void)nicknameUpdateRequestCompletedWithStatus:(id)arg1 error:(id)arg2;
 - (void)photoPicker:(id)arg1 didUpdatePhotoForContact:(id)arg2 withContactImage:(id)arg3;
 - (void)photoPickerDidCancel:(id)arg1;
@@ -88,8 +88,14 @@
 - (void)presentDeleteAvatarImageAlert;
 - (void)reachabilityDidChange:(id)arg1;
 - (void)refreshAvatarImage;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)settingsPressed:(id)arg1;
+- (void)setupNavigationBar;
 - (void)traitCollectionDidChange:(id)arg1;
+- (void)updateLeftBarButtonWithTitle:(id)arg1;
+- (void)updateUIBasedOnTraitCollection;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewSafeAreaInsetsDidChange;

@@ -28,6 +28,7 @@
 + (id)taskManager;
 + (id)telemetry;
 + (id)topicManager;
++ (id)topicManagerOversized;
 + (id)ttlCollection;
 + (id)xpc;
 

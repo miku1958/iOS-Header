@@ -35,7 +35,6 @@
 - (void)layoutSubviewsForAlignmentContents;
 - (void)layoutSubviewsForDrawer;
 - (struct CGRect)messageDisplayViewFrame:(struct CGRect)arg1 inContainerFrame:(struct CGRect)arg2;
-- (struct UIEdgeInsets)safeAreaInsets;
 - (void)willLayoutDrawerLabelFrame:(struct CGRect *)arg1;
 
 @end

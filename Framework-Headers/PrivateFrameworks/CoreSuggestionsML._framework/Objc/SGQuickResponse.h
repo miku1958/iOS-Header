@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface SGQuickResponse : NSObject
 {
@@ -18,19 +18,24 @@
     unsigned long long _semanticClassId;
     unsigned long long _modelId;
     unsigned long long _categoryId;
+    NSDictionary *_proactiveTrigger;
 }
 
 @property (readonly, nonatomic) unsigned long long categoryId; // @synthesize categoryId=_categoryId;
 @property (readonly, nonatomic) BOOL isCustomResponse; // @synthesize isCustomResponse=_isCustomResponse;
 @property (readonly, copy, nonatomic) NSString *lang; // @synthesize lang=_lang;
 @property (readonly, nonatomic) unsigned long long modelId; // @synthesize modelId=_modelId;
+@property (readonly, nonatomic) NSDictionary *proactiveTrigger; // @synthesize proactiveTrigger=_proactiveTrigger;
 @property (readonly, nonatomic) unsigned long long replyTextId; // @synthesize replyTextId=_replyTextId;
 @property (readonly, nonatomic) unsigned long long semanticClassId; // @synthesize semanticClassId=_semanticClassId;
 @property (readonly, nonatomic) unsigned long long styleGroupId; // @synthesize styleGroupId=_styleGroupId;
 @property (readonly, copy, nonatomic) NSString *text; // @synthesize text=_text;
 
 - (void).cxx_destruct;
+- (id)description;
+- (id)initWithProactiveTrigger:(id)arg1;
 - (id)initWithText:(id)arg1 lang:(id)arg2 replyTextId:(unsigned long long)arg3 styleGroupId:(unsigned long long)arg4 semanticClassId:(unsigned long long)arg5 modelId:(unsigned long long)arg6 categoryId:(unsigned long long)arg7 isCustomResponse:(BOOL)arg8;
+- (id)initWithText:(id)arg1 lang:(id)arg2 replyTextId:(unsigned long long)arg3 styleGroupId:(unsigned long long)arg4 semanticClassId:(unsigned long long)arg5 modelId:(unsigned long long)arg6 categoryId:(unsigned long long)arg7 isCustomResponse:(BOOL)arg8 proactiveTrigger:(id)arg9;
 
 @end
 

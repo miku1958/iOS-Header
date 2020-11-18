@@ -36,11 +36,6 @@ struct _opaque_pthread_mutex_t {
     char __opaque[56];
 };
 
-struct mach_timebase_info {
-    unsigned int numer;
-    unsigned int denom;
-};
-
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };

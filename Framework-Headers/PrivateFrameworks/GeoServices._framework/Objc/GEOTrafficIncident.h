@@ -10,13 +10,14 @@
 
 @class GEOLatLng, NSMutableArray, NSString, PBDataReader;
 
-__attribute__((visibility("hidden")))
 @interface GEOTrafficIncident : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
     CDStruct_9f2792e4 _alertCCodes;
+    CDStruct_95bda58d _transportTypes;
     CDStruct_95bda58d _types;
     NSString *_area;
+    unsigned long long _congestionZoneId;
     NSString *_crossStreetName;
     unsigned long long _durationSeconds;
     NSMutableArray *_incidentDescriptions;
@@ -26,7 +27,9 @@ __attribute__((visibility("hidden")))
     NSString *_name;
     NSMutableArray *_paths;
     NSString *_primaryStreetName;
+    NSString *_schedule;
     unsigned long long _startTime;
+    NSMutableArray *_tiles;
     unsigned long long _updateTime;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
@@ -38,13 +41,17 @@ __attribute__((visibility("hidden")))
     int _laneClosureType;
     unsigned int _maxZoom;
     unsigned int _minZoom;
+    int _severity;
     float _speedKph;
+    int _urgency;
+    unsigned int _userReportsCount;
     int _vendor;
     BOOL _curated;
     BOOL _hidden;
     BOOL _ignored;
     BOOL _navigationAlert;
     struct {
+        unsigned int has_congestionZoneId:1;
         unsigned int has_durationSeconds:1;
         unsigned int has_startTime:1;
         unsigned int has_updateTime:1;
@@ -55,13 +62,17 @@ __attribute__((visibility("hidden")))
         unsigned int has_laneClosureType:1;
         unsigned int has_maxZoom:1;
         unsigned int has_minZoom:1;
+        unsigned int has_severity:1;
         unsigned int has_speedKph:1;
+        unsigned int has_urgency:1;
+        unsigned int has_userReportsCount:1;
         unsigned int has_vendor:1;
         unsigned int has_curated:1;
         unsigned int has_hidden:1;
         unsigned int has_ignored:1;
         unsigned int has_navigationAlert:1;
         unsigned int read_alertCCodes:1;
+        unsigned int read_transportTypes:1;
         unsigned int read_types:1;
         unsigned int read_area:1;
         unsigned int read_crossStreetName:1;
@@ -72,33 +83,9 @@ __attribute__((visibility("hidden")))
         unsigned int read_name:1;
         unsigned int read_paths:1;
         unsigned int read_primaryStreetName:1;
-        unsigned int wrote_alertCCodes:1;
-        unsigned int wrote_types:1;
-        unsigned int wrote_area:1;
-        unsigned int wrote_crossStreetName:1;
-        unsigned int wrote_durationSeconds:1;
-        unsigned int wrote_incidentDescriptions:1;
-        unsigned int wrote_incidentId:1;
-        unsigned int wrote_laneMessages:1;
-        unsigned int wrote_location:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_paths:1;
-        unsigned int wrote_primaryStreetName:1;
-        unsigned int wrote_startTime:1;
-        unsigned int wrote_updateTime:1;
-        unsigned int wrote_advisoryType:1;
-        unsigned int wrote_color:1;
-        unsigned int wrote_delaySeconds:1;
-        unsigned int wrote_laneClosureCount:1;
-        unsigned int wrote_laneClosureType:1;
-        unsigned int wrote_maxZoom:1;
-        unsigned int wrote_minZoom:1;
-        unsigned int wrote_speedKph:1;
-        unsigned int wrote_vendor:1;
-        unsigned int wrote_curated:1;
-        unsigned int wrote_hidden:1;
-        unsigned int wrote_ignored:1;
-        unsigned int wrote_navigationAlert:1;
+        unsigned int read_schedule:1;
+        unsigned int read_tiles:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -107,6 +94,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long alertCCodesCount;
 @property (strong, nonatomic) NSString *area;
 @property (nonatomic) int color;
+@property (nonatomic) unsigned long long congestionZoneId;
 @property (strong, nonatomic) NSString *crossStreetName;
 @property (nonatomic) BOOL curated;
 @property (nonatomic) unsigned int delaySeconds;
@@ -114,6 +102,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasAdvisoryType;
 @property (readonly, nonatomic) BOOL hasArea;
 @property (nonatomic) BOOL hasColor;
+@property (nonatomic) BOOL hasCongestionZoneId;
 @property (readonly, nonatomic) BOOL hasCrossStreetName;
 @property (nonatomic) BOOL hasCurated;
 @property (nonatomic) BOOL hasDelaySeconds;
@@ -129,9 +118,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasName;
 @property (nonatomic) BOOL hasNavigationAlert;
 @property (readonly, nonatomic) BOOL hasPrimaryStreetName;
+@property (readonly, nonatomic) BOOL hasSchedule;
+@property (nonatomic) BOOL hasSeverity;
 @property (nonatomic) BOOL hasSpeedKph;
 @property (nonatomic) BOOL hasStartTime;
 @property (nonatomic) BOOL hasUpdateTime;
+@property (nonatomic) BOOL hasUrgency;
+@property (nonatomic) BOOL hasUserReportsCount;
 @property (nonatomic) BOOL hasVendor;
 @property (nonatomic) BOOL hidden;
 @property (nonatomic) BOOL ignored;
@@ -147,43 +140,40 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL navigationAlert;
 @property (strong, nonatomic) NSMutableArray *paths;
 @property (strong, nonatomic) NSString *primaryStreetName;
+@property (strong, nonatomic) NSString *schedule;
+@property (nonatomic) int severity;
 @property (nonatomic) float speedKph;
 @property (nonatomic) unsigned long long startTime;
+@property (strong, nonatomic) NSMutableArray *tiles;
+@property (readonly, nonatomic) int *transportTypes;
+@property (readonly, nonatomic) unsigned long long transportTypesCount;
 @property (readonly, nonatomic) int *types;
 @property (readonly, nonatomic) unsigned long long typesCount;
 @property (nonatomic) unsigned long long updateTime;
+@property (nonatomic) int urgency;
+@property (nonatomic) unsigned int userReportsCount;
 @property (nonatomic) int vendor;
 
 + (Class)incidentDescriptionType;
 + (BOOL)isValid:(id)arg1;
 + (Class)laneMessagesType;
 + (Class)pathType;
++ (Class)tilesType;
 - (void).cxx_destruct;
 - (int)StringAsAdvisoryType:(id)arg1;
 - (int)StringAsColor:(id)arg1;
 - (int)StringAsLaneClosureType:(id)arg1;
+- (int)StringAsSeverity:(id)arg1;
+- (int)StringAsTransportTypes:(id)arg1;
 - (int)StringAsTypes:(id)arg1;
+- (int)StringAsUrgency:(id)arg1;
 - (int)StringAsVendor:(id)arg1;
-- (void)_addNoFlagsAlertCCode:(unsigned int)arg1;
-- (void)_addNoFlagsIncidentDescription:(id)arg1;
-- (void)_addNoFlagsLaneMessages:(id)arg1;
-- (void)_addNoFlagsPath:(id)arg1;
-- (void)_addNoFlagsType:(int)arg1;
-- (void)_readAlertCCodes;
-- (void)_readArea;
-- (void)_readCrossStreetName;
-- (void)_readIncidentDescriptions;
-- (void)_readIncidentId;
-- (void)_readLaneMessages;
-- (void)_readLocation;
-- (void)_readName;
-- (void)_readPaths;
-- (void)_readPrimaryStreetName;
-- (void)_readTypes;
 - (void)addAlertCCode:(unsigned int)arg1;
 - (void)addIncidentDescription:(id)arg1;
 - (void)addLaneMessages:(id)arg1;
 - (void)addPath:(id)arg1;
+- (void)addTiles:(id)arg1;
+- (void)addTransportType:(int)arg1;
 - (void)addType:(int)arg1;
 - (id)advisoryTypeAsString:(int)arg1;
 - (unsigned int)alertCCodeAtIndex:(unsigned long long)arg1;
@@ -191,6 +181,8 @@ __attribute__((visibility("hidden")))
 - (void)clearIncidentDescriptions;
 - (void)clearLaneMessages;
 - (void)clearPaths;
+- (void)clearTiles;
+- (void)clearTransportTypes;
 - (void)clearTypes;
 - (id)colorAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
@@ -203,7 +195,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)incidentDescriptionsCount;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)laneClosureTypeAsString:(int)arg1;
 - (id)laneMessagesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)laneMessagesCount;
@@ -213,9 +208,16 @@ __attribute__((visibility("hidden")))
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setAlertCCodes:(unsigned int *)arg1 count:(unsigned long long)arg2;
+- (void)setTransportTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (id)severityAsString:(int)arg1;
+- (id)tilesAtIndex:(unsigned long long)arg1;
+- (unsigned long long)tilesCount;
+- (int)transportTypeAtIndex:(unsigned long long)arg1;
+- (id)transportTypesAsString:(int)arg1;
 - (int)typeAtIndex:(unsigned long long)arg1;
 - (id)typesAsString:(int)arg1;
+- (id)urgencyAsString:(int)arg1;
 - (id)vendorAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

@@ -8,7 +8,6 @@
 
 @class NSMutableDictionary;
 
-__attribute__((visibility("hidden")))
 @interface CKDFlowControlManager : NSObject
 {
     unsigned long long _defaultBudget;
@@ -36,7 +35,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithDefaultBudget:(unsigned long long)arg1 maximumThrottleTime:(double)arg2 andDefaultRegeneration:(double)arg3;
 - (double)secondsUntilFlowControlNotLimited:(id)arg1;
 - (void)updateFlowControl:(id)arg1 withCost:(unsigned long long)arg2 reportableError:(id)arg3;
-- (void)updateFlowControl:(id)arg1 withRetryAfter:(unsigned long long)arg2 reportableError:(id)arg3;
+- (void)updateFlowControl:(id)arg1 withRetryAfter:(double)arg2 reportableError:(id)arg3;
 - (void)updateFlowControlForOperation:(id)arg1 reportableError:(id)arg2;
 
 @end

@@ -20,6 +20,7 @@
 
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (BOOL)canShowAsIndividualTiles;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;
 - (id)initWithSourceServiceItem:(id)arg1 home:(id)arg2;
@@ -36,7 +37,10 @@
 - (BOOL)isNetworkRouter;
 - (BOOL)isNetworkRouterSatellite;
 - (BOOL)isNotificationSupportedCamera;
+- (BOOL)isSensorService;
 - (BOOL)isService;
+- (BOOL)isVisibleAsBridge;
+- (id)sourceAccessory;
 
 @end
 

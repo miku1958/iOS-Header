@@ -23,6 +23,7 @@
 @property (strong, nonatomic) NSObject<OS_nw_endpoint> *internalEndpoint; // @synthesize internalEndpoint=_internalEndpoint;
 @property (readonly, nonatomic) NSString *parentEndpointDomain;
 @property (readonly, copy, nonatomic) NSString *privateDescription;
+@property (nonatomic) long long remoteInterfaceType;
 @property (strong, nonatomic) NSData *txtRecord;
 
 + (Class)copyClassForEndpointType:(int)arg1;

@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     GEOTilePool *_cache;
     GEOTilePool *_expiringCache;
     struct unique_ptr<geo::DispatchTimer, std::__1::default_delete<geo::DispatchTimer>> _timer;
-    struct list<_CacheRequester<void (^)(unsigned long long)>, std::__1::allocator<_CacheRequester<void (^)(unsigned long long)>>> _shrinkCacheRequesters;
     struct list<_CacheRequester<void (^)(unsigned long long)>, std::__1::allocator<_CacheRequester<void (^)(unsigned long long)>>> _freeableSizeRequesters;
     _Atomic int _memoryHits;
     _Atomic int _diskHits;

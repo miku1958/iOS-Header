@@ -55,6 +55,7 @@
 - (id)imageOfStroke:(struct CGRect *)arg1;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (BOOL)isDataCurrentlyDownloading;
+- (id)layoutsForChildReps;
 - (void)p_drawInContext:(struct CGContext *)arg1 withContent:(BOOL)arg2 strokeDrawOptions:(unsigned long long)arg3 withOpacity:(double)arg4 withMask:(BOOL)arg5 withIAMask:(BOOL)arg6 forLayer:(BOOL)arg7 forShadow:(BOOL)arg8 forHitTest:(BOOL)arg9;
 - (BOOL)p_drawsInOneStep;
 - (BOOL)p_shouldUseSourceImageForDescription:(id)arg1 clipBounds:(struct CGRect)arg2 transform:(struct CGAffineTransform)arg3 image:(struct CGImage *)arg4;

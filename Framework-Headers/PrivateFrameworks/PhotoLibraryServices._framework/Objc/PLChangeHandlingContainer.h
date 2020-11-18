@@ -26,6 +26,7 @@
 - (void)connectManagedObjectContext:(id)arg1;
 - (void)dealloc;
 - (void)disconnectManagedObjectContext:(id)arg1;
+- (void)distributeChangesSinceLastCheckpoint;
 - (void)handleUnknownMergeEvent;
 - (id)initWithLibraryURL:(id)arg1 changePublisher:(id)arg2 libraryServicesManager:(id)arg3 persistentStoreCoordinator:(id)arg4;
 - (void)pauseLaunchEventNotifications;

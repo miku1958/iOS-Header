@@ -9,36 +9,45 @@
 #import <MediaControls/MediaControlsVolumeControllerObserver-Protocol.h>
 #import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
 
-@class MediaControlsBluetoothListeningModeButton, MediaControlsRouteView, MediaControlsVolumeController, NSString, NSTimer;
+@class MediaControlsBluetoothListeningModeButton, MediaControlsExpandableButton, MediaControlsRouteView, MediaControlsVolumeController, NSString, NSTimer;
 
 @interface MediaControlsVolumeBackgroundViewController : CCUISliderModuleBackgroundViewController <UIGestureRecognizerDelegate, MediaControlsVolumeControllerObserver>
 {
+    MediaControlsVolumeController *_volumeController;
     MediaControlsRouteView *_primaryRouteView;
     MediaControlsRouteView *_secondaryRouteView;
     MediaControlsBluetoothListeningModeButton *_primaryBluetoothListeningModeButton;
     MediaControlsBluetoothListeningModeButton *_secondaryBluetoothListeningModeButton;
+    MediaControlsExpandableButton *_spatialExpandableButton;
     NSTimer *_primaryUpdateTimer;
     NSTimer *_secondaryUpdateTimer;
-    MediaControlsVolumeController *_volumeController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) MediaControlsBluetoothListeningModeButton *primaryBluetoothListeningModeButton; // @synthesize primaryBluetoothListeningModeButton=_primaryBluetoothListeningModeButton;
+@property (strong, nonatomic) MediaControlsRouteView *primaryRouteView; // @synthesize primaryRouteView=_primaryRouteView;
+@property (strong, nonatomic) NSTimer *primaryUpdateTimer; // @synthesize primaryUpdateTimer=_primaryUpdateTimer;
+@property (strong, nonatomic) MediaControlsBluetoothListeningModeButton *secondaryBluetoothListeningModeButton; // @synthesize secondaryBluetoothListeningModeButton=_secondaryBluetoothListeningModeButton;
+@property (strong, nonatomic) MediaControlsRouteView *secondaryRouteView; // @synthesize secondaryRouteView=_secondaryRouteView;
+@property (strong, nonatomic) NSTimer *secondaryUpdateTimer; // @synthesize secondaryUpdateTimer=_secondaryUpdateTimer;
+@property (strong, nonatomic) MediaControlsExpandableButton *spatialExpandableButton; // @synthesize spatialExpandableButton=_spatialExpandableButton;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) MediaControlsVolumeController *volumeController; // @synthesize volumeController=_volumeController;
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
-- (void)_configureOptionsButton:(id)arg1 forRouteType:(unsigned long long)arg2;
+- (void)_configureOptionsButton:(id)arg1 forRouteType:(long long)arg2;
 - (void)_configurePrimaryOptionsButtonIfNeeded;
-- (void)_configureRouteView:(id)arg1 forRouteType:(unsigned long long)arg2;
+- (void)_configureRouteView:(id)arg1 forRouteType:(long long)arg2;
 - (void)_configureRouteViews;
 - (void)_configureSecondaryOptionsButtonIfNeeded;
+- (void)_configureSpacialButtonIfNeeded;
 - (double)_horizontalPadding;
 - (void)_performLayoutWithAnimation:(CDUnknownBlockType)arg1;
 - (void)_springAnimate:(CDUnknownBlockType)arg1;
-- (void)_updateButton:(id)arg1 routeType:(unsigned long long)arg2;
+- (void)_updateButton:(id)arg1 routeType:(long long)arg2;
 - (void)_updateButtonAxis;
 - (void)_updateVisibility;
 - (double)_verticalPadding;
@@ -46,10 +55,12 @@
 - (void)didTapPrimaryBluetoothListeningModeButton:(id)arg1;
 - (void)didTapSecondaryBluetoothListeningModeButton:(id)arg1;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
-- (void)mediaControlsVolumeController:(id)arg1 didChangeVolumeAvailable:(BOOL)arg2 effectiveVolume:(float)arg3 forRoute:(unsigned long long)arg4;
+- (void)mediaControlsVolumeController:(id)arg1 didChangeHeadTrackedSpatialAudioEnabled:(BOOL)arg2;
+- (void)mediaControlsVolumeController:(id)arg1 didChangeVolumeAvailable:(BOOL)arg2 effectiveVolume:(float)arg3 forRoute:(long long)arg4;
 - (void)mediaControlsVolumeController:(id)arg1 didUpdateSplitRoute:(BOOL)arg2;
 - (void)primaryBluetoothListeningModeButtonDidChangeValue:(id)arg1;
 - (void)secondaryBluetoothListeningModeButtonDidChangeValue:(id)arg1;
+- (void)spatialExpandableButtonDidChangeValue:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

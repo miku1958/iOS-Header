@@ -10,13 +10,14 @@
 #import <Pasteboard/NSXPCListenerDelegate-Protocol.h>
 #import <Pasteboard/PBItemDataTransferDelegate-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListener, NSXPCListenerEndpoint;
+@class NSArray, NSData, NSDate, NSDictionary, NSString, NSUUID, NSXPCConnection, NSXPCListener, NSXPCListenerEndpoint;
 @protocol PBItemCollectionDataTransferDelegate;
 
 @interface PBItemCollection : NSObject <NSXPCListenerDelegate, PBItemDataTransferDelegate, NSSecureCoding>
 {
     BOOL _itemQueue_isDataProvider;
     BOOL _itemQueue_deviceLockedPasteboard;
+    BOOL _itemQueue_isOrWasRemote;
     NSDate *_creationDate;
     NSXPCListener *_itemQueue_dataConsumersListener;
     NSXPCListenerEndpoint *_itemQueue_remoteDataProviderEndpoint;
@@ -25,9 +26,14 @@
     NSDictionary *_itemQueue_metadata;
     NSDictionary *_itemQueue_privateMetadata;
     NSUUID *_itemQueue_UUID;
+    NSUUID *_itemQueue_saveBootSession;
+    unsigned long long _itemQueue_saveTimestamp;
+    NSData *_itemQueue_originatorPersistentID;
     NSString *_itemQueue_originatorBundleID;
     NSString *_itemQueue_originatorTeamID;
+    NSString *_itemQueue_originatorLocalizedName;
     long long _itemQueue_originatorDataOwner;
+    NSString *_itemQueue_remoteDeviceName;
     long long _itemQueue_remotePasteboardState;
     id<PBItemCollectionDataTransferDelegate> _itemQueue_dataTransferDelegate;
 }
@@ -44,33 +50,45 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isDataProvider; // @dynamic isDataProvider;
 @property (readonly, nonatomic) BOOL isGeneralPasteboard;
+@property (nonatomic) BOOL isOrWasRemote;
 @property (nonatomic) BOOL isRemote;
 @property (strong, nonatomic) NSUUID *itemQueue_UUID; // @synthesize itemQueue_UUID=_itemQueue_UUID;
 @property (strong, nonatomic) NSXPCListener *itemQueue_dataConsumersListener; // @synthesize itemQueue_dataConsumersListener=_itemQueue_dataConsumersListener;
 @property (weak, nonatomic) id<PBItemCollectionDataTransferDelegate> itemQueue_dataTransferDelegate; // @synthesize itemQueue_dataTransferDelegate=_itemQueue_dataTransferDelegate;
 @property (nonatomic, getter=itemQueue_isDeviceLockedPasteboard) BOOL itemQueue_deviceLockedPasteboard; // @synthesize itemQueue_deviceLockedPasteboard=_itemQueue_deviceLockedPasteboard;
 @property (nonatomic) BOOL itemQueue_isDataProvider; // @synthesize itemQueue_isDataProvider=_itemQueue_isDataProvider;
+@property (nonatomic) BOOL itemQueue_isOrWasRemote; // @synthesize itemQueue_isOrWasRemote=_itemQueue_isOrWasRemote;
 @property (copy, nonatomic) NSArray *itemQueue_items; // @synthesize itemQueue_items=_itemQueue_items;
 @property (copy, nonatomic) NSDictionary *itemQueue_metadata; // @synthesize itemQueue_metadata=_itemQueue_metadata;
 @property (copy, nonatomic) NSString *itemQueue_originatorBundleID; // @synthesize itemQueue_originatorBundleID=_itemQueue_originatorBundleID;
 @property (nonatomic) long long itemQueue_originatorDataOwner; // @synthesize itemQueue_originatorDataOwner=_itemQueue_originatorDataOwner;
+@property (copy, nonatomic) NSString *itemQueue_originatorLocalizedName; // @synthesize itemQueue_originatorLocalizedName=_itemQueue_originatorLocalizedName;
+@property (copy, nonatomic) NSData *itemQueue_originatorPersistentID; // @synthesize itemQueue_originatorPersistentID=_itemQueue_originatorPersistentID;
 @property (copy, nonatomic) NSString *itemQueue_originatorTeamID; // @synthesize itemQueue_originatorTeamID=_itemQueue_originatorTeamID;
 @property (strong, nonatomic) NSDictionary *itemQueue_privateMetadata; // @synthesize itemQueue_privateMetadata=_itemQueue_privateMetadata;
 @property (strong, nonatomic) NSXPCConnection *itemQueue_remoteDataProviderConnection; // @synthesize itemQueue_remoteDataProviderConnection=_itemQueue_remoteDataProviderConnection;
 @property (strong, nonatomic) NSXPCListenerEndpoint *itemQueue_remoteDataProviderEndpoint; // @synthesize itemQueue_remoteDataProviderEndpoint=_itemQueue_remoteDataProviderEndpoint;
+@property (copy, nonatomic) NSString *itemQueue_remoteDeviceName; // @synthesize itemQueue_remoteDeviceName=_itemQueue_remoteDeviceName;
 @property (nonatomic) long long itemQueue_remotePasteboardState; // @synthesize itemQueue_remotePasteboardState=_itemQueue_remotePasteboardState;
+@property (copy, nonatomic) NSUUID *itemQueue_saveBootSession; // @synthesize itemQueue_saveBootSession=_itemQueue_saveBootSession;
+@property (nonatomic) unsigned long long itemQueue_saveTimestamp; // @synthesize itemQueue_saveTimestamp=_itemQueue_saveTimestamp;
 @property (readonly, copy, nonatomic) NSArray *items; // @dynamic items;
 @property (nonatomic, getter=isLocalOnly) BOOL localOnly;
 @property (copy, nonatomic) NSDictionary *metadata; // @dynamic metadata;
 @property (copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSString *originatorBundleID; // @dynamic originatorBundleID;
 @property (nonatomic) long long originatorDataOwner; // @dynamic originatorDataOwner;
+@property (readonly, copy, nonatomic) NSString *originatorLocalizedName; // @dynamic originatorLocalizedName;
+@property (readonly, copy, nonatomic) NSData *originatorPersistentID;
 @property (readonly, copy, nonatomic) NSString *originatorTeamID; // @dynamic originatorTeamID;
 @property (readonly, copy, nonatomic) NSString *persistenceName; // @dynamic persistenceName;
 @property (nonatomic, getter=isPersistent) BOOL persistent;
 @property (strong, nonatomic) NSDictionary *privateMetadata; // @dynamic privateMetadata;
 @property (readonly, nonatomic, getter=isRemoteDataLoaded) BOOL remoteDataLoaded;
+@property (copy, nonatomic) NSString *remoteDeviceName;
 @property (readonly, nonatomic, getter=isRemoteMetadataLoaded) BOOL remoteMetadataLoaded;
+@property (copy, nonatomic) NSUUID *saveBootSession; // @dynamic saveBootSession;
+@property (nonatomic) unsigned long long saveTimestamp; // @dynamic saveTimestamp;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isSystemPasteboard) BOOL systemPasteboard;
 
@@ -99,11 +117,13 @@
 - (void)setDataProviderEndpoint:(id)arg1;
 - (void)setItems:(id)arg1;
 - (void)setOriginatorBundleID:(id)arg1;
+- (void)setOriginatorLocalizedName:(id)arg1;
+- (void)setOriginatorPersistentID:(id)arg1;
 - (void)setOriginatorTeamID:(id)arg1;
 - (void)setRemoteDataLoaded;
 - (void)setRemoteMetadataLoaded;
 - (void)setUUID:(id)arg1;
-- (void)setUsesServerConnectionToLoadData;
+- (void)setUsesServerConnectionToLoadDataWithAuthenticationBlock:(CDUnknownBlockType)arg1;
 - (void)shutdown;
 - (void)waitForItemRequestsDeliveryCompletion:(CDUnknownBlockType)arg1;
 

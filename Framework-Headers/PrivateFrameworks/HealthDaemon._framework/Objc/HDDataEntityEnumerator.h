@@ -6,7 +6,7 @@
 
 #import <HealthDaemon/HDSQLiteQueryDescriptor.h>
 
-@class HDDatabaseTransactionContext, HDProfile, NSArray, NSMutableDictionary, NSNumber, NSSet, NSString, _HKFilter;
+@class HDDatabaseTransactionContext, HDProfile, HDSQLitePredicate, NSArray, NSMutableDictionary, NSNumber, NSSet, NSString, _HKFilter;
 
 @interface HDDataEntityEnumerator : HDSQLiteQueryDescriptor
 {
@@ -16,20 +16,22 @@
     BOOL _ignoreEntityClassAdditionalPredicateForEnumeration;
     BOOL _improveJoinOrderingForStartDateIndexSelection;
     NSSet *_objectTypes;
-    _HKFilter *_filter;
     NSSet *_restrictedSourceEntities;
     CDUnknownBlockType _authorizationFilter;
     NSNumber *_anchor;
     NSNumber *_deletedObjectsAnchor;
+    HDSQLitePredicate *_deletedObjectsPredicate;
     NSArray *_sortDescriptors;
     HDDatabaseTransactionContext *_databaseTransactionContext;
     NSString *_lastSQL;
+    _HKFilter *_filter;
 }
 
 @property (strong, nonatomic) NSNumber *anchor; // @synthesize anchor=_anchor;
 @property (copy, nonatomic) CDUnknownBlockType authorizationFilter; // @synthesize authorizationFilter=_authorizationFilter;
 @property (copy, nonatomic) HDDatabaseTransactionContext *databaseTransactionContext; // @synthesize databaseTransactionContext=_databaseTransactionContext;
 @property (strong, nonatomic) NSNumber *deletedObjectsAnchor; // @synthesize deletedObjectsAnchor=_deletedObjectsAnchor;
+@property (copy, nonatomic) HDSQLitePredicate *deletedObjectsPredicate; // @synthesize deletedObjectsPredicate=_deletedObjectsPredicate;
 @property (strong, nonatomic) _HKFilter *filter; // @synthesize filter=_filter;
 @property (nonatomic) BOOL ignoreEntityClassAdditionalPredicateForEnumeration; // @synthesize ignoreEntityClassAdditionalPredicateForEnumeration=_ignoreEntityClassAdditionalPredicateForEnumeration;
 @property (nonatomic) BOOL improveJoinOrderingForStartDateIndexSelection; // @synthesize improveJoinOrderingForStartDateIndexSelection=_improveJoinOrderingForStartDateIndexSelection;
@@ -39,7 +41,7 @@
 @property (copy, nonatomic) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 
 - (void).cxx_destruct;
-- (BOOL)_enumerateObjectsOnDatabase:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
+- (BOOL)_enumerateObjectsWithDatabaseTransaction:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)_initWithEntityClass:(Class)arg1 profile:(id)arg2;
 - (id)_initWithObjectType:(id)arg1 entityClass:(Class)arg2 profile:(id)arg3;
 - (id)_initWithObjectTypes:(id)arg1 entityClass:(Class)arg2 profile:(id)arg3;

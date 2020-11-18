@@ -15,7 +15,7 @@
 #import <PagesQuicklook/TSWPStorageParentStatisticsFilter-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSObject, NSString, TPDrawablesZOrder, TSDFill, TSDInfoGeometry;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@protocol TSDInfo, TSDOwningAttachment;
 
 @interface TPPageTemplate : TSPObject <TSKDocumentObject, TSDDrawableContainerInfo, TPMasterDrawableProvider, TSSPropertySource, TSKModelRootIndexProvider, TSKModel, TSWPStorageParentStatisticsFilter>
 {
@@ -42,6 +42,7 @@
 @property (nonatomic) BOOL headersFootersMatchPreviousPage; // @synthesize headersFootersMatchPreviousPage=_headersFootersMatchPreviousPage;
 @property (nonatomic) BOOL hideHeadersFooters; // @synthesize hideHeadersFooters=_hideHeadersFooters;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (readonly, nonatomic) BOOL isTopmostContainerInfo;
 @property (strong, nonatomic) NSMutableArray *masterDrawables; // @synthesize masterDrawables=_masterDrawables;
@@ -50,7 +51,7 @@
 @property (readonly, nonatomic) unsigned long long numberOfDerivedPagesInDocument;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo;
 @property (strong, nonatomic) NSMutableDictionary *placeholderDrawables; // @synthesize placeholderDrawables=_placeholderDrawables;
 @property (readonly) Class superclass;
 
@@ -60,6 +61,7 @@
 - (double)CGFloatValueForProperty:(int)arg1;
 - (void)addMasterDrawable:(id)arg1 atIndex:(unsigned long long)arg2 insertContext:(id)arg3 suppressDOLC:(BOOL)arg4;
 - (void)addMasterDrawables:(id)arg1 atIndex:(unsigned long long)arg2 insertContext:(id)arg3 suppressDOLC:(BOOL)arg4;
+- (void)addPlaceholderDrawable:(id)arg1 afterDrawable:(id)arg2;
 - (void)applyTag:(id)arg1 toPlaceholder:(id)arg2;
 - (id)boxedObjectForProperty:(int)arg1;
 - (id)childEnumerator;

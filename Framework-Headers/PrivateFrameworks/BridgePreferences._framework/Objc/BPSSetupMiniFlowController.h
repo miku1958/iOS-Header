@@ -13,6 +13,7 @@
 
 @interface BPSSetupMiniFlowController : NSObject <BPSBuddyController>
 {
+    BOOL _isDisplayingInSkippedMiniFlow;
     id<BPSBuddyControllerDelegate> _delegate;
 }
 
@@ -20,6 +21,7 @@
 @property (weak, nonatomic) id<BPSBuddyControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isDisplayingInSkippedMiniFlow; // @synthesize isDisplayingInSkippedMiniFlow=_isDisplayingInSkippedMiniFlow;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

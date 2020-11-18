@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSArray, NSMutableDictionary;
+#import <CloudKit/CKArchiveRecordsOperationCallbacks-Protocol.h>
 
-@interface CKArchiveRecordsOperation : CKDatabaseOperation
+@class CKArchiveRecordsOperationInfo, NSArray, NSMutableDictionary;
+@protocol CKArchiveRecordsOperationCallbacks;
+
+@interface CKArchiveRecordsOperation : CKDatabaseOperation <CKArchiveRecordsOperationCallbacks>
 {
     CDUnknownBlockType _recordArchivedBlock;
     CDUnknownBlockType _archiveRecordsCompletionBlock;
@@ -17,17 +20,20 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType archiveRecordsCompletionBlock; // @synthesize archiveRecordsCompletionBlock=_archiveRecordsCompletionBlock;
+@property (readonly, nonatomic) id<CKArchiveRecordsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property (readonly, nonatomic) CKArchiveRecordsOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (strong, nonatomic) NSMutableDictionary *perItemErrors; // @synthesize perItemErrors=_perItemErrors;
 @property (copy, nonatomic) CDUnknownBlockType recordArchivedBlock; // @synthesize recordArchivedBlock=_recordArchivedBlock;
 @property (copy, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleRecordArchivalForRecordID:(id)arg1 error:(id)arg2;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)init;
 - (id)initWithRecordIDs:(id)arg1;

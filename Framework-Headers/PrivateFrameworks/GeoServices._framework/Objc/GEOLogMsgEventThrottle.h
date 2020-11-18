@@ -39,17 +39,7 @@
         unsigned int read_manifestEnv:1;
         unsigned int read_requestAppIdentifier:1;
         unsigned int read_throttleReqType:1;
-        unsigned int wrote_manifestEnv:1;
-        unsigned int wrote_requestAppIdentifier:1;
-        unsigned int wrote_throttleDuration:1;
-        unsigned int wrote_throttleReqType:1;
-        unsigned int wrote_networkService:1;
-        unsigned int wrote_throttleCount:1;
-        unsigned int wrote_throttleMode:1;
-        unsigned int wrote_throttleTriggerCount:1;
-        unsigned int wrote_throttleTriggerDuration:1;
-        unsigned int wrote_throttleType:1;
-        unsigned int wrote_tilesetId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -81,9 +71,6 @@
 - (int)StringAsNetworkService:(id)arg1;
 - (int)StringAsThrottleMode:(id)arg1;
 - (int)StringAsThrottleType:(id)arg1;
-- (void)_readManifestEnv;
-- (void)_readRequestAppIdentifier;
-- (void)_readThrottleReqType;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -91,7 +78,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)networkServiceAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;

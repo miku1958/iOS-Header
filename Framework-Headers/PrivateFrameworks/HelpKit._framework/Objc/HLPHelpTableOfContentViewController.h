@@ -10,7 +10,7 @@
 #import <HelpKit/UISearchControllerDelegate-Protocol.h>
 #import <HelpKit/UISearchResultsUpdating-Protocol.h>
 
-@class HLPHelpBookController, HLPHelpLocale, HLPHelpSearchIndexController, HLPHelpSearchResultTableViewController, HLPHelpUsageController, NSArray, NSLayoutConstraint, NSMutableArray, NSString, UIButton, UILabel, UISearchController, UIView;
+@class HLPHelpBookController, HLPHelpLocale, HLPHelpSearchIndexController, HLPHelpSearchResultTableViewController, NSArray, NSLayoutConstraint, NSMutableArray, NSString, UIButton, UILabel, UISearchController, UIView;
 @protocol HLPHelpTableOfContentViewControllerDelegate;
 
 @interface HLPHelpTableOfContentViewController : UITableViewController <UISearchBarDelegate, UISearchResultsUpdating, UISearchControllerDelegate>
@@ -22,11 +22,11 @@
     NSLayoutConstraint *_copyrightFooterLabelHeightConstraint;
     NSLayoutConstraint *_copyrightFooterLabelTopConstraint;
     BOOL _fullBookView;
+    BOOL _searchLogged;
     id<HLPHelpTableOfContentViewControllerDelegate> _delegate;
     NSArray *_searchTerms;
     HLPHelpLocale *_locale;
     HLPHelpBookController *_helpBookController;
-    HLPHelpUsageController *_usageController;
     NSMutableArray *_openSections;
     NSMutableArray *_displayHelpItems;
     UISearchController *_searchController;
@@ -46,11 +46,11 @@
 @property (strong, nonatomic) HLPHelpLocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSMutableArray *openSections; // @synthesize openSections=_openSections;
 @property (strong, nonatomic) UISearchController *searchController; // @synthesize searchController=_searchController;
+@property (nonatomic) BOOL searchLogged; // @synthesize searchLogged=_searchLogged;
 @property (strong, nonatomic) HLPHelpSearchResultTableViewController *searchResultTableViewController; // @synthesize searchResultTableViewController=_searchResultTableViewController;
 @property (strong, nonatomic) NSArray *searchTerms; // @synthesize searchTerms=_searchTerms;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIView *tableFooterView; // @synthesize tableFooterView=_tableFooterView;
-@property (strong, nonatomic) HLPHelpUsageController *usageController; // @synthesize usageController=_usageController;
 
 - (void).cxx_destruct;
 - (void)appendChildrenForSectionItem:(id)arg1;

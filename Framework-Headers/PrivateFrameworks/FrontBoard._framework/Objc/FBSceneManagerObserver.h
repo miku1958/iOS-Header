@@ -41,6 +41,7 @@
     BOOL _hostingPolicyForDisplay;
     BOOL _hostingPolicyForScene;
     BOOL _createDefaultTransitionContext;
+    BOOL _clientDidConnect;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -63,11 +64,10 @@
 - (BOOL)isDelegate;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isInternalObserver;
+- (void)sceneManager:(id)arg1 clientDidConnectWithHandshake:(id)arg2;
 - (id)sceneManager:(id)arg1 createDefaultTransitionContextForScene:(id)arg2;
 - (void)sceneManager:(id)arg1 didCreateScene:(id)arg2;
 - (void)sceneManager:(id)arg1 didDestroyScene:(id)arg2;
-- (long long)sceneManager:(id)arg1 hostingPolicyForDisplay:(id)arg2;
-- (long long)sceneManager:(id)arg1 hostingPolicyForScene:(id)arg2;
 - (void)sceneManager:(id)arg1 interceptUpdateForScene:(id)arg2 withNewSettings:(id)arg3;
 - (void)sceneManager:(id)arg1 interceptUpdateForSceneDeactivationManager:(id)arg2 withNewSettings:(id)arg3;
 - (void)sceneManager:(id)arg1 scene:(id)arg2 didReceiveActions:(id)arg3;

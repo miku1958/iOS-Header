@@ -7,15 +7,16 @@
 #import <Foundation/NSDateComponents.h>
 
 @interface NSDateComponents (CalClassAdditions)
-+ (id)componentForDays:(long long)arg1;
-+ (id)componentForHours:(long long)arg1;
-+ (id)componentForMinutes:(long long)arg1;
-+ (id)componentForMonths:(long long)arg1;
-+ (id)componentForWeeks:(long long)arg1;
-+ (id)componentForYears:(long long)arg1;
-- (BOOL)isSameDayAsComponents:(id)arg1;
-- (BOOL)isSameMonthAsComponents:(id)arg1;
-- (BOOL)isSameYearAsComponents:(id)arg1;
-- (id)representedDate;
++ (id)CalComponentForDays:(long long)arg1;
++ (id)CalComponentForHours:(long long)arg1;
++ (id)CalComponentForMinutes:(long long)arg1;
++ (id)CalComponentForMonths:(long long)arg1;
++ (id)CalComponentForWeeks:(long long)arg1;
++ (id)CalComponentForYears:(long long)arg1;
++ (id)CalComponentsWithYear:(long long)arg1 month:(long long)arg2 day:(long long)arg3 hour:(long long)arg4 minute:(long long)arg5 second:(long long)arg6;
+- (BOOL)CalIsSameDayAsComponents:(id)arg1;
+- (BOOL)CalIsSameMonthAsComponents:(id)arg1;
+- (BOOL)CalIsSameYearAsComponents:(id)arg1;
+- (id)CalRepresentedDate;
 @end
 

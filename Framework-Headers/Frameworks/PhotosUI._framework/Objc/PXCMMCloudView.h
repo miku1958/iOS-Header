@@ -15,6 +15,7 @@
     struct {
         BOOL learnMoreTapped;
         BOOL dismissTapped;
+        BOOL sizeThatFitsDidChange;
     } _delegateRespondsTo;
     id<PXCMMCloudViewViewDelegate> _delegate;
     UIButton *_dismissButton;

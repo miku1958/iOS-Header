@@ -91,9 +91,10 @@
 - (id)messageListItemForItemID:(id)arg1 ifAvailable:(BOOL)arg2;
 - (id)messageListItemsForItemIDs:(id)arg1;
 - (id)messageListItemsForItemIDs:(id)arg1 ifAvailable:(BOOL)arg2;
-- (void)notifyChangeObserverAboutAddedItemIDs:(id)arg1 after:(id)arg2 extraInfo:(id)arg3;
-- (void)notifyChangeObserverAboutAddedItemIDs:(id)arg1 before:(id)arg2 extraInfo:(id)arg3;
-- (void)notifyChangeObserverAboutChangesByItemIDs:(id)arg1;
+- (void)notifyChangeObserver:(id)arg1 stockedItemIDs:(id)arg2;
+- (void)notifyChangeObserversAboutAddedItemIDs:(id)arg1 after:(id)arg2 extraInfo:(id)arg3;
+- (void)notifyChangeObserversAboutAddedItemIDs:(id)arg1 before:(id)arg2 extraInfo:(id)arg3;
+- (void)notifyChangeObserversAboutChangesByItemIDs:(id)arg1;
 - (BOOL)objectIDBelongsToCollection:(id)arg1;
 - (id)objectIDForItemID:(id)arg1;
 - (void)queryMatchedChangesByObjectIDs:(id)arg1;

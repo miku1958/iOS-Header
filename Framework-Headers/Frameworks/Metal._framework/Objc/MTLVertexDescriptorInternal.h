@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 - (id)layouts;
 - (id)newSerializedDescriptor;
 - (void)reset;
-- (BOOL)validateWithVertexFunction:(id)arg1 error:(id *)arg2;
+- (BOOL)validateWithVertexFunction:(id)arg1 error:(id *)arg2 renderPipelineDescriptor:(id)arg3;
 
 @end
 

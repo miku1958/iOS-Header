@@ -20,15 +20,22 @@
     BOOL _wantsDockWindowLevelAssertion;
     SBCoplanarSwitcherModifier *_coplanarModifier;
     BOOL _shouldAcceleratedHomeButtonPressBegin;
+    BOOL _shouldUpdateIconViewVisibility;
+    BOOL _shouldMatchMoveToIconView;
 }
+
+@property (nonatomic) BOOL shouldMatchMoveToIconView; // @synthesize shouldMatchMoveToIconView=_shouldMatchMoveToIconView;
+@property (nonatomic) BOOL shouldUpdateIconViewVisibility; // @synthesize shouldUpdateIconViewVisibility=_shouldUpdateIconViewVisibility;
 
 - (void).cxx_destruct;
 - (BOOL)_isEffectivelyHome;
 - (BOOL)_isIndexZoomAppLayout:(unsigned long long)arg1;
-- (double)_normalizedHomeScreenIconZoomPercentBetweenTopAndBottom;
-- (double)_normalizedHomeScreenTargetZoomPercentBetweenCenterAndEdge;
+- (id)_layoutSettings;
+- (double)_normalizedHomeScreenIconZoomPercentBetweenTopAndBottom:(struct CGPoint)arg1;
+- (double)_normalizedHomeScreenTargetZoomPercentBetweenCenterAndEdge:(struct CGPoint)arg1;
 - (id)_settingsByInterpolatingBetween:(id)arg1 and:(id)arg2 progress:(double)arg3;
-- (long long)backdropBlurType;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheSnapshots;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (void)didMoveToParentModifier:(id)arg1;
 - (double)dockProgress;
@@ -37,22 +44,23 @@
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
 - (id)handleTimerEvent:(id)arg1;
 - (double)homeScreenAlpha;
+- (long long)homeScreenBackdropBlurType;
 - (id)initWithTransitionID:(id)arg1 appLayout:(id)arg2 direction:(unsigned long long)arg3;
 - (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (id)layoutSettingsForTargetCenter:(struct CGPoint)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
 - (BOOL)shouldAcceleratedHomeButtonPressBegin;
 - (BOOL)shouldFireTransitionCompletionInDefaultRunLoopMode;
 - (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
-- (id)topMostAppLayouts;
+- (BOOL)shouldScaleOverlayToFillBoundsAtIndex:(unsigned long long)arg1;
+- (id)topMostLayoutElements;
 - (id)transitionDidEnd;
 - (id)transitionWillBegin;
+- (id)visibleAppLayouts;
 - (long long)wallpaperStyle;
 - (BOOL)wantsDockBehaviorAssertion;
 - (BOOL)wantsDockWindowLevelAssertion;

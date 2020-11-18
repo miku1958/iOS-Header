@@ -6,11 +6,11 @@
 
 #import <MapKit/MKRouteActivityProvider.h>
 
-#import <MapKit/MKActivityItemLinkPresentationSource-Protocol.h>
+#import <MapKit/UIActivityItemLinkPresentationSource-Protocol.h>
 
 @class GEOComposedRoute, LPLinkMetadata, NSString;
 
-@interface MKRouteLinkPresentationActivityProvider : MKRouteActivityProvider <MKActivityItemLinkPresentationSource>
+@interface MKRouteLinkPresentationActivityProvider : MKRouteActivityProvider <UIActivityItemLinkPresentationSource>
 {
     GEOComposedRoute *_composedRoute;
     LPLinkMetadata *_cachedMetadata;

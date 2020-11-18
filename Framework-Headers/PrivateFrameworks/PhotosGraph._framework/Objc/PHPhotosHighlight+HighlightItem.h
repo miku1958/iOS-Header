@@ -44,6 +44,7 @@
 @property (readonly, nonatomic) NSString *uuid;
 @property (readonly, nonatomic) unsigned short visibilityState;
 
++ (id)fetchParentDayGroupHighlightsForDayHighlights:(id)arg1;
 - (id)changeRequest;
 - (double)faceAnalysisProgressForPhotoLibrary:(id)arg1;
 - (double)nonDefaultCurationScorePercentageForPhotoLibrary:(id)arg1;

@@ -19,9 +19,13 @@
     long long _segmentsMinimumArticleCount;
     NSArray *_iAdSegmentIDs;
     NSDictionary *_adStatusConditionsByType;
+    double _feedNumberofViewportsBetweenAds;
+    double _articleNumberofViewportsBetweenAds;
 }
 
 @property (readonly, nonatomic) NSDictionary *adStatusConditionsByType; // @synthesize adStatusConditionsByType=_adStatusConditionsByType;
+@property (readonly, nonatomic) double articleNumberofViewportsBetweenAds; // @synthesize articleNumberofViewportsBetweenAds=_articleNumberofViewportsBetweenAds;
+@property (readonly, nonatomic) double feedNumberofViewportsBetweenAds; // @synthesize feedNumberofViewportsBetweenAds=_feedNumberofViewportsBetweenAds;
 @property (readonly, nonatomic) NSArray *iAdSegmentIDs; // @synthesize iAdSegmentIDs=_iAdSegmentIDs;
 @property (readonly, nonatomic, getter=areSegmentsEnabled) BOOL segmentsEnabled; // @synthesize segmentsEnabled=_segmentsEnabled;
 @property (readonly, nonatomic) long long segmentsHistoryWindowInterval; // @synthesize segmentsHistoryWindowInterval=_segmentsHistoryWindowInterval;

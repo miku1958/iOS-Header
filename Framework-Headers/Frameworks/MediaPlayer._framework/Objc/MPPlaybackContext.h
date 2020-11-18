@@ -18,6 +18,7 @@
     long long _actionAfterQueueLoad;
     long long _shuffleType;
     long long _repeatType;
+    long long _queueEndAction;
     NSString *_playActivityFeatureName;
     NSData *_playActivityRecommendationData;
     MPMusicPlayerQueueDescriptor *_queueDescriptor;
@@ -32,6 +33,7 @@
 @property (copy, nonatomic) NSString *playActivityFeatureName; // @synthesize playActivityFeatureName=_playActivityFeatureName;
 @property (copy, nonatomic) NSData *playActivityRecommendationData; // @synthesize playActivityRecommendationData=_playActivityRecommendationData;
 @property (copy, nonatomic) MPMusicPlayerQueueDescriptor *queueDescriptor; // @synthesize queueDescriptor=_queueDescriptor;
+@property (nonatomic) long long queueEndAction; // @synthesize queueEndAction=_queueEndAction;
 @property (nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property (copy, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (readonly, nonatomic) BOOL shouldBecomeActive;
@@ -43,6 +45,7 @@
 @property (nonatomic) BOOL supportsAccountRectification; // @synthesize supportsAccountRectification=_supportsAccountRectification;
 
 + (Class)queueFeederClass;
++ (BOOL)supportsAutoPlay;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)clearStartItem;

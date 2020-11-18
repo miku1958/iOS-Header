@@ -24,12 +24,14 @@
 @property (readonly, nonatomic) NSArray *services;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
+@property (readonly, copy, nonatomic) NSUUID *uuid;
 
 - (void).cxx_destruct;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)handleRuntimeStateUpdate:(id)arg1;
 - (id)initWithAccessoryProfile:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (void)refreshStateWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

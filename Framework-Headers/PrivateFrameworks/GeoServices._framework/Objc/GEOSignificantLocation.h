@@ -8,11 +8,12 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLocation, NSString, PBDataReader;
+@class GEOLocation, GEOStructuredAddress, NSString, PBDataReader;
 
 @interface GEOSignificantLocation : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
+    GEOStructuredAddress *_address;
     double _confidence;
     NSString *_identifier;
     GEOLocation *_location;
@@ -25,17 +26,16 @@
         unsigned int has_confidence:1;
         unsigned int has_locationIndex:1;
         unsigned int has_numberOfVisitsBucket:1;
+        unsigned int read_address:1;
         unsigned int read_identifier:1;
         unsigned int read_location:1;
-        unsigned int wrote_confidence:1;
-        unsigned int wrote_identifier:1;
-        unsigned int wrote_location:1;
-        unsigned int wrote_locationIndex:1;
-        unsigned int wrote_numberOfVisitsBucket:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
+@property (strong, nonatomic) GEOStructuredAddress *address;
 @property (nonatomic) double confidence;
+@property (readonly, nonatomic) BOOL hasAddress;
 @property (nonatomic) BOOL hasConfidence;
 @property (readonly, nonatomic) BOOL hasIdentifier;
 @property (readonly, nonatomic) BOOL hasLocation;
@@ -48,8 +48,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readIdentifier;
-- (void)_readLocation;
 - (void)clearSensitiveFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -58,7 +56,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

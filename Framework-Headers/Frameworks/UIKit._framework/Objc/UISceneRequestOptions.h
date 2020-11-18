@@ -17,6 +17,7 @@
     BOOL _preserveLayout;
     NSString *_sourceIdentifier;
     NSSet *_actions;
+    long long _sceneRequestIntent;
 }
 
 @property (copy, nonatomic) NSSet *actions; // @synthesize actions=_actions;
@@ -26,6 +27,7 @@
 @property (nonatomic) BOOL preserveLayout; // @synthesize preserveLayout=_preserveLayout;
 @property (nonatomic) BOOL requestBackground; // @synthesize requestBackground=_requestBackground;
 @property (nonatomic) BOOL requestFullscreen; // @synthesize requestFullscreen=_requestFullscreen;
+@property (nonatomic) long long sceneRequestIntent; // @synthesize sceneRequestIntent=_sceneRequestIntent;
 @property (copy, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property (readonly) Class superclass;
 

@@ -13,6 +13,7 @@
 - (void)SPIUsageLackingEntitlementRejectedForPID:(int)arg1;
 - (void)XPCConnectionWasInterrupted;
 - (void)XPCConnectionWasInvalidated;
+- (void)accessAuthorizationStatusWasDenied;
 - (void)addingContacts:(NSArray *)arg1 toContainerWithIdentifier:(NSString *)arg2;
 - (void)applyContactUpdateOfKind:(const char *)arg1 value:(id)arg2 property:(NSString *)arg3;
 - (void)changedMeContact:(CNContact *)arg1;
@@ -44,6 +45,7 @@
 - (void)postingNotificationWithName:(NSString *)arg1;
 - (void)registeringForChangeHistory:(void (^)(void (^)(void)))arg1;
 - (void)removeContactImageData;
+- (void)requestAuthorizationWasDenied;
 - (void)requestingAccessForContacts:(void (^)(void (^)(void)))arg1;
 - (void)resettingSortDataIfNeeded:(void (^)(void (^)(void)))arg1;
 - (void)saveRequestFailed:(NSError *)arg1;
@@ -55,8 +57,6 @@
 - (void)setContactImageData:(NSData *)arg1 format:(const char *)arg2 cropRect:(struct CGRect)arg3;
 - (void)setContactImageDataZeroCropRect:(NSData *)arg1 format:(const char *)arg2;
 - (void)settingDefaultAccount:(void (^)(void (^)(void)))arg1;
-- (void)tccAccessPreflightWasDenied;
-- (void)tccAccessRequestWasDenied;
 - (void)unregisteringForChangeHistory:(void (^)(void (^)(void)))arg1;
 - (void)updatingContact:(CNContact *)arg1;
 @end

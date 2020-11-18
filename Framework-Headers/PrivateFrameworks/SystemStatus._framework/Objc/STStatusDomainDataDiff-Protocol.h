@@ -8,5 +8,8 @@
 #import <SystemStatus/NSSecureCoding-Protocol.h>
 
 @protocol STStatusDomainDataDiff <NSObject, NSSecureCoding>
+
+@property (readonly, nonatomic, getter=isEmpty) BOOL empty;
+
 @end
 

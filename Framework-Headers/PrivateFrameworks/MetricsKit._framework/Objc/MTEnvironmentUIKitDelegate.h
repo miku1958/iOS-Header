@@ -4,13 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MetricsKit/MTObject.h>
+#import <objc/NSObject.h>
 
 #import <MetricsKit/MTEnvironmentDelegate-Protocol.h>
 
 @class NSString;
 
-@interface MTEnvironmentUIKitDelegate : MTObject <MTEnvironmentDelegate>
+@interface MTEnvironmentUIKitDelegate : NSObject <MTEnvironmentDelegate>
 {
 }
 
@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)_diskUsage;
 - (id)app;
 - (id)appVersion;
 - (id)capacityData;
@@ -32,13 +33,13 @@
 - (id)hardwareFamily;
 - (id)hardwareModel;
 - (id)hostApp;
+- (BOOL)isAnonymous;
 - (id)os;
 - (id)osBuildNumber;
 - (id)osLanguages;
 - (id)osVersion;
 - (id)pageUrl;
 - (id)pixelRatio;
-- (id)primaryWindow;
 - (id)resourceRevNum;
 - (id)screenHeight;
 - (id)screenWidth;

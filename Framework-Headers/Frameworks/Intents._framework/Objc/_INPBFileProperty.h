@@ -18,13 +18,11 @@
         unsigned int name:1;
         unsigned int qualifier:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _name;
     int _qualifier;
     _INPBFilePropertyValue *_value;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL hasName;

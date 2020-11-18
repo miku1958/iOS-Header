@@ -26,7 +26,7 @@
 + (id)reuseIdentifier;
 + (id)sectionIdentifier;
 + (id)sectionTitle;
-+ (BOOL)supportsQuicklook;
++ (BOOL)supportsQuicklookForResult:(id)arg1;
 - (id)_activityItemProviderForResult:(id)arg1;
 - (id)_pasteboardItemsForResult:(id)arg1;
 - (BOOL)applyLayoutMarginsToLayoutGroup;

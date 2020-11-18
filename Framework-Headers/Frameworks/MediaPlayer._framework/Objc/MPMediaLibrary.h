@@ -184,7 +184,6 @@
 - (void)_setupNotifications;
 - (void)_tearDownNotifications;
 - (void)activeUserChangeDidFinish;
-- (void)addAdvertisementItemWithDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addGlobalPlaylistWithID:(id)arg1 andAddToCloudLibrary:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addItemWithProductID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addLibraryFilterPredicate:(id)arg1;

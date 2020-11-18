@@ -11,6 +11,7 @@
 @protocol _SFPBSearchSuggestion <NSObject>
 
 @property (copy, nonatomic) NSString *bundleIdentifier;
+@property (copy, nonatomic) NSString *detailText;
 @property (copy, nonatomic) NSArray *duplicateSuggestions;
 @property (copy, nonatomic) NSString *fbr;
 @property (copy, nonatomic) NSString *identifier;
@@ -19,6 +20,7 @@
 @property (copy, nonatomic) NSString *query;
 @property (copy, nonatomic) NSString *scopedSearchApplicationBundleIdentifier;
 @property (strong, nonatomic) _SFPBGraphicalFloat *score;
+@property (copy, nonatomic) NSDictionary *serverFeatures;
 @property (copy, nonatomic) NSString *suggestion;
 @property (copy, nonatomic) NSString *topicIdentifier;
 @property (nonatomic) int type;
@@ -28,7 +30,9 @@
 - (void)clearDuplicateSuggestions;
 - (_SFPBSearchSuggestion *)duplicateSuggestionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)duplicateSuggestionsCount;
+- (BOOL)getServerFeatures:(double *)arg1 forKey:(NSString *)arg2;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (void)setServerFeatures:(double)arg1 forKey:(NSString *)arg2;
 @end
 

@@ -11,6 +11,7 @@
 
 @protocol NCNotificationAlertDestination <NCNotificationDestination>
 
+@property (readonly, nonatomic, getter=isAlertDestination) BOOL alertDestination;
 @property (weak, nonatomic) id<NCNotificationAlertDestinationDelegate> delegate;
 
 

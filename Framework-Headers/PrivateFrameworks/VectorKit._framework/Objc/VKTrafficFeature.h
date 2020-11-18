@@ -8,57 +8,70 @@
 
 #import <VectorKit/NSCopying-Protocol.h>
 
-@class GEOLatLng, NSString;
+@class GEOFeatureStyleAttributes, NSString;
 
 @interface VKTrafficFeature : NSObject <NSCopying>
 {
+    float _minZoom;
+    float _maxZoom;
+    Matrix_6e1d3589 _worldPoint;
+    int _groupIdentifier;
+    unsigned int _groupItemVerticalDisplayOrder;
+    unsigned int _groupItemHorizontalDisplayOrder;
+    double _routeOffsetInMeters;
+    CDStruct_2c43369c _position;
     struct PolylineCoordinate _approachingRouteOffset;
+    struct PolylineCoordinate _routeOffset;
     double _approachingDistanceInMeters;
     long long _state;
     NSString *_uniqueIdentifier;
-    unsigned int _priority;
-    int _groupIdentifier;
-    Matrix_6e1d3589 _worldPoint;
-    GEOLatLng *_position;
-    CDStruct_2c43369c _location;
-    float _minZoom;
-    float _maxZoom;
-    struct PolylineCoordinate _routeOffset;
+    unsigned char _collisionPriority;
     long long _trafficFeatureType;
     BOOL _shouldUpdateStyle;
+    optional_f92fc060 _routeLegWhen;
 }
 
-@property (readonly, nonatomic) double approachingDistanceInMeters; // @synthesize approachingDistanceInMeters=_approachingDistanceInMeters;
-@property (nonatomic) struct PolylineCoordinate approachingRouteOffset; // @synthesize approachingRouteOffset=_approachingRouteOffset;
+@property (readonly, nonatomic) struct PolylineCoordinate approachingRouteOffset; // @synthesize approachingRouteOffset=_approachingRouteOffset;
+@property (readonly, nonatomic) vector_44b9b83b attributes;
+@property (readonly, nonatomic) unsigned char collisionPriority; // @synthesize collisionPriority=_collisionPriority;
 @property (readonly, nonatomic) int groupIdentifier; // @synthesize groupIdentifier=_groupIdentifier;
-@property (readonly, nonatomic) BOOL isGrouped;
-@property (nonatomic) long long labelState; // @synthesize labelState=_state;
-@property (nonatomic) CDStruct_c3b9c2ee location; // @synthesize location=_location;
-@property (nonatomic) float maxZoom; // @synthesize maxZoom=_maxZoom;
+@property (readonly, nonatomic) unsigned int groupItemHorizontalDisplayOrder; // @synthesize groupItemHorizontalDisplayOrder=_groupItemHorizontalDisplayOrder;
+@property (readonly, nonatomic) unsigned int groupItemVerticalDisplayOrder; // @synthesize groupItemVerticalDisplayOrder=_groupItemVerticalDisplayOrder;
+@property (readonly, nonatomic) float maxZoom; // @synthesize maxZoom=_maxZoom;
 @property (readonly, nonatomic) Mercator2_57ec32b6 mercatorPoint;
-@property (nonatomic) float minZoom; // @synthesize minZoom=_minZoom;
-@property (copy, nonatomic) GEOLatLng *position; // @synthesize position=_position;
-@property (readonly, nonatomic) unsigned int priority; // @synthesize priority=_priority;
-@property (nonatomic) struct PolylineCoordinate routeOffset; // @synthesize routeOffset=_routeOffset;
+@property (readonly, nonatomic) float minZoom; // @synthesize minZoom=_minZoom;
+@property (nonatomic) long long navigationState; // @synthesize navigationState=_state;
+@property (readonly, nonatomic) CDStruct_c3b9c2ee position; // @synthesize position=_position;
+@property (nonatomic) optional_f92fc060 routeLegWhen; // @synthesize routeLegWhen=_routeLegWhen;
+@property (readonly, nonatomic) struct PolylineCoordinate routeOffset; // @synthesize routeOffset=_routeOffset;
+@property (readonly, nonatomic) double routeOffsetInMeters; // @synthesize routeOffsetInMeters=_routeOffsetInMeters;
 @property (nonatomic) BOOL shouldUpdateStyle; // @synthesize shouldUpdateStyle=_shouldUpdateStyle;
+@property (readonly, nonatomic) GEOFeatureStyleAttributes *styleAttributes;
 @property (readonly, nonatomic) long long trafficFeatureType; // @synthesize trafficFeatureType=_trafficFeatureType;
 @property (readonly, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
-@property (nonatomic) Matrix_6e1d3589 worldPoint; // @synthesize worldPoint=_worldPoint;
 
 + (id)newTrafficFeatureForEnrouteNotice:(id)arg1 onRoute:(id)arg2;
++ (id)stringForFeatureType:(long long)arg1;
++ (id)stringForNavState:(long long)arg1;
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithEnrouteNotice:(id)arg1;
-- (id)initWithType:(long long)arg1;
+- (id)initWithEnrouteNotice:(id)arg1 onRoute:(id)arg2;
+- (id)initWithFeatureType:(long long)arg1 uniqueIdentifier:(id)arg2 position:(CDStruct_c3b9c2ee)arg3 onRoute:(id)arg4;
+- (id)initWithFeatureType:(long long)arg1 uniqueIdentifier:(id)arg2 position:(CDStruct_c3b9c2ee)arg3 routeOffset:(struct PolylineCoordinate)arg4 routeOffsetInMeters:(double)arg5;
+- (id)initWithFeatureType:(long long)arg1 uniqueIdentifier:(id)arg2 routeOffset:(struct PolylineCoordinate)arg3 onRoute:(id)arg4;
 - (BOOL)isAheadButNotApproaching;
 - (BOOL)isApproaching;
 - (BOOL)isBehind;
 - (BOOL)isCamera;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isGrouped;
 - (BOOL)isIncident;
+- (BOOL)isRouteAnnotation;
 - (BOOL)isSignal;
-- (void)updateLabelStateForRouteUserOffset:(const struct PolylineCoordinate *)arg1;
+- (void)populateDebugNode:(struct DebugTreeNode *)arg1;
+- (void)updateNavigationStateForRouteUserOffset:(const struct PolylineCoordinate *)arg1;
 
 @end
 

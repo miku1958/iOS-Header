@@ -14,9 +14,10 @@
     TSDLayoutGeometry *_baseEquationLayoutGeometry;
 }
 
+@property (readonly, nonatomic) TSDInfoGeometry *currentInfoGeometry;
+
 - (void).cxx_destruct;
 - (id)computeLayoutGeometry;
-- (id)currentInfoGeometry;
 - (id)layoutGeometryFromInfo;
 
 @end

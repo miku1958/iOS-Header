@@ -6,23 +6,50 @@
 
 #import <NewsArticles/_TtC12NewsArticles21ArticleViewController.h>
 
-@class NSArray;
+#import <NewsArticles/NUArticleHardPaywallPresentationReporting-Protocol.h>
+#import <NewsArticles/NUArticleViewControllerLoadingListener-Protocol.h>
+#import <NewsArticles/NULoadingDelegate-Protocol.h>
+#import <NewsArticles/NUURLHandlerDelegate-Protocol.h>
+#import <NewsArticles/UIScrollViewDelegate-Protocol.h>
 
-@interface _TtC12NewsArticles21ArticleViewController (NewsArticles)
+@interface _TtC12NewsArticles21ArticleViewController (NewsArticles) <NULoadingDelegate, NUArticleViewControllerLoadingListener, NUArticleHardPaywallPresentationReporting, UIScrollViewDelegate, NUURLHandlerDelegate>
 
 @property (nonatomic, readonly) BOOL canBecomeFirstResponder;
-@property (nonatomic, readonly) NSArray *keyCommands;
 
+- (void)URLHandler:(id)arg1 wantsToPresentViewController:(id)arg2 animated:(BOOL)arg3;
+- (BOOL)accessibilityShouldScroll:(id)arg1;
+- (BOOL)accessibilityShouldScroll:(id)arg1 defaultValue:(BOOL)arg2;
 - (BOOL)becomeFirstResponder;
+- (void)bundleSubscriptionDidSubscribe:(id)arg1;
+- (BOOL)canDecreaseTextSize;
+- (BOOL)canIncreaseTextSize;
+- (BOOL)canResetZoom;
+- (BOOL)canZoomIn;
+- (BOOL)canZoomOut;
+- (void)decreaseTextSize;
+- (void)didLoadArticle:(id)arg1 withContext:(id)arg2;
+- (void)footerNeedsLayout:(id)arg1;
+- (void)footerResignsAsFirstResponder:(id)arg1;
 - (void)handleKeyCommandWithKeyCommand:(id)arg1;
+- (void)increaseTextSize;
+- (BOOL)isPreviewing;
+- (BOOL)isShowingHardPaywall;
+- (void)loadingDidFinishWithError:(id)arg1;
+- (void)resetZoom;
 - (BOOL)resignFirstResponder;
+- (void)scrollViewDidScroll:(id)arg1;
+- (BOOL)shouldOccludeAccessibilityElement:(id)arg1;
+- (void)tabBarSplitViewDidChangeFocusToFocus:(long long)arg1 action:(long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
+- (void)zoomIn;
+- (void)zoomOut;
 @end
 

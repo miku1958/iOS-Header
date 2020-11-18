@@ -10,10 +10,9 @@
 
 @interface NWL2Report : NSObject
 {
-    unsigned char _cellularPowerCostDownload;
-    unsigned char _cellularPowerCostUpload;
     BOOL _cellularKnownGood;
     unsigned char _cellularRadioTechnology;
+    unsigned char _cellularBand;
     BOOL _wifiKnownGood;
     unsigned char _wifiRadioTechnology;
     int _cellularLQM;
@@ -25,11 +24,13 @@
     int _cellularBandwidth;
     int _cellularTAC;
     int _cellularBars;
+    unsigned int _cellularMode;
     int _wifiLQM;
     int _wifiRSSI;
     NSString *_cellularCellType;
 }
 
+@property (nonatomic) unsigned char cellularBand; // @synthesize cellularBand=_cellularBand;
 @property (nonatomic) int cellularBandInfo; // @synthesize cellularBandInfo=_cellularBandInfo;
 @property (nonatomic) int cellularBandwidth; // @synthesize cellularBandwidth=_cellularBandwidth;
 @property (nonatomic) int cellularBars; // @synthesize cellularBars=_cellularBars;
@@ -38,9 +39,8 @@
 @property (nonatomic) int cellularLQM; // @synthesize cellularLQM=_cellularLQM;
 @property (nonatomic) int cellularMCC; // @synthesize cellularMCC=_cellularMCC;
 @property (nonatomic) int cellularMNC; // @synthesize cellularMNC=_cellularMNC;
+@property (nonatomic) unsigned int cellularMode; // @synthesize cellularMode=_cellularMode;
 @property (nonatomic) int cellularPID; // @synthesize cellularPID=_cellularPID;
-@property (nonatomic) unsigned char cellularPowerCostDownload; // @synthesize cellularPowerCostDownload=_cellularPowerCostDownload;
-@property (nonatomic) unsigned char cellularPowerCostUpload; // @synthesize cellularPowerCostUpload=_cellularPowerCostUpload;
 @property (nonatomic) unsigned char cellularRadioTechnology; // @synthesize cellularRadioTechnology=_cellularRadioTechnology;
 @property (nonatomic) int cellularTAC; // @synthesize cellularTAC=_cellularTAC;
 @property (nonatomic) int cellularUARFCN; // @synthesize cellularUARFCN=_cellularUARFCN;
@@ -50,6 +50,7 @@
 @property (nonatomic) unsigned char wifiRadioTechnology; // @synthesize wifiRadioTechnology=_wifiRadioTechnology;
 
 - (void).cxx_destruct;
+- (id)createAWDReport;
 - (id)description;
 
 @end

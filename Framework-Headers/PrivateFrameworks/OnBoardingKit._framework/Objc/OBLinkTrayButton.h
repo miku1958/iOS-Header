@@ -11,7 +11,7 @@
 }
 
 + (id)linkButton;
-- (void)tintColorDidChange;
+- (BOOL)_supportsMacIdiom;
 
 @end
 

@@ -14,8 +14,10 @@
     NSString *_path;
     NSString *_resourcePath;
     NSString *_configVersion;
+    unsigned long long _assetProvider;
 }
 
+@property (readonly, nonatomic) unsigned long long SSVDistanceChannelBitset;
 @property (readonly, nonatomic) unsigned int SSVEnergyBufferSize;
 @property (readonly, nonatomic) unsigned long long SSVLKFSChannelBitset;
 @property (readonly, nonatomic) unsigned int SSVLKFSLowerPercentile;
@@ -29,6 +31,7 @@
 @property (readonly, nonatomic) unsigned long long SSVNoiseLevelChannelBitset;
 @property (readonly, nonatomic) unsigned int SSVNoiseLowerPercentile;
 @property (readonly, nonatomic) float SSVNoiseMicSensitivityOffset;
+@property (readonly, nonatomic) float SSVNoiseMicSensitivityOffsetDeviceSimple;
 @property (readonly, nonatomic) float SSVNoiseTTSMappingInputRangeHigh;
 @property (readonly, nonatomic) float SSVNoiseTTSMappingInputRangeLow;
 @property (readonly, nonatomic) float SSVNoiseTTSMappingOutputRangeHigh;
@@ -43,20 +46,48 @@
 @property (readonly, nonatomic) float SSVUserOffsetInputRangeLow;
 @property (readonly, nonatomic) float SSVUserOffsetOutputRangeHigh;
 @property (readonly, nonatomic) float SSVUserOffsetOutputRangeLow;
+@property (readonly, nonatomic) unsigned long long assetProvider; // @synthesize assetProvider=_assetProvider;
 @property (readonly, nonatomic) NSString *configVersion; // @synthesize configVersion=_configVersion;
+@property (readonly, nonatomic) BOOL containsSpeakerRecognitionCategory;
 @property (readonly, nonatomic) NSDictionary *dictionary;
 @property (readonly, nonatomic) NSString *hashFromResourcePath;
+@property (readonly, nonatomic) NSString *keywordDetectorNDAPIConfigFilePath;
+@property (readonly, nonatomic) NSString *keywordDetectorQuasarConfigFilePath;
 @property (readonly, nonatomic) NSString *languageDetectorConfigFile;
 @property (readonly, nonatomic) NSArray *languageDetectorSupportedLocale;
+@property (readonly, nonatomic) unsigned long long maxAllowedEnrollmentUtterances;
+@property (readonly, nonatomic) long long multiUserConfidentScoreThreshold;
+@property (readonly, nonatomic) long long multiUserDeltaScoreThreshold;
+@property (readonly, nonatomic) long long multiUserHighScoreThreshold;
+@property (readonly, nonatomic) long long multiUserLowScoreThreshold;
 @property (readonly, nonatomic) NSString *path; // @synthesize path=_path;
+@property (readonly, nonatomic) float pruningExplicitUttThresholdPSR;
+@property (readonly, nonatomic) float pruningExplicitUttThresholdSAT;
+@property (readonly, nonatomic) unsigned long long pruningNumRetentionUtterance;
+@property (readonly, nonatomic) float pruningThresholdPSR;
+@property (readonly, nonatomic) float pruningThresholdSAT;
+@property (readonly, nonatomic) float psrCombinationWeight;
 @property (readonly, nonatomic) NSString *resourcePath; // @synthesize resourcePath=_resourcePath;
+@property (readonly, nonatomic) float satImplicitProfileDeltaThreshold;
+@property (readonly, nonatomic) float satImplicitProfileThreshold;
+@property (readonly, nonatomic) BOOL satImplicitTrainingEnabled;
+@property (readonly, nonatomic) float satScoreThreshold;
+@property (readonly, nonatomic) float satVTImplicitThreshold;
 @property (readonly, nonatomic) NSString *spgConfigFile;
 @property (readonly, nonatomic) NSString *startOfSpeechDetectorConfigFile;
+@property (readonly, nonatomic) NSString *voiceProfilePruningCookie;
 
++ (unsigned int)SSVDefaultDistanceChannelCount;
++ (unsigned int)SSVDefaultLKFSChannelCount;
++ (unsigned int)SSVDefaultNoiseChannelCount;
 + (id)assetForAssetType:(unsigned long long)arg1 resourcePath:(id)arg2 configVersion:(id)arg3;
++ (id)assetForAssetType:(unsigned long long)arg1 resourcePath:(id)arg2 configVersion:(id)arg3 assetProvider:(unsigned long long)arg4;
++ (id)defaultFallBackAssetForAdBlocker;
 + (id)defaultFallBackAssetForHearst;
 + (id)defaultFallBackAssetForSmartSiriVolume;
 + (id)fallBackAssetResourcePath;
++ (id)getConfigFileNameForAssetType:(unsigned long long)arg1;
++ (unsigned long long)getSSVDeviceType;
 + (id)hybridEndpointerAssetFilename;
 - (void).cxx_destruct;
 - (id)RTModelWithFallbackLanguage:(id)arg1;
@@ -73,9 +104,12 @@
 - (id)getStringForKey:(id)arg1 category:(id)arg2 default:(id)arg3;
 - (id)hearstRTModelLocaleMap;
 - (id)hearstRTModelWithMajorVersion:(unsigned long long)arg1 minorVersion:(unsigned long long)arg2 locale:(id)arg3;
-- (id)initWithResourcePath:(id)arg1 configFile:(id)arg2 configVersion:(id)arg3;
+- (id)initWithResourcePath:(id)arg1 configFile:(id)arg2 configVersion:(id)arg3 assetProvderType:(unsigned long long)arg4;
 - (BOOL)isEqualAsset:(id)arg1;
+- (id)jarvisRTModelLocaleMap;
 - (id)latestHearstRTModelForLocale:(id)arg1;
+- (id)localeMapWithName:(id)arg1;
+- (id)stringForCurrentAssetProviderType;
 
 @end
 

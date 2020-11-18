@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class CNFAccessAuthorization;
+@class CNAuthorizationContext;
 
 @interface CNAccessAuthorization : NSObject
 {
-    CNFAccessAuthorization *_authorizer;
+    CNAuthorizationContext *_authorizer;
 }
 
-@property (strong, nonatomic) CNFAccessAuthorization *authorizer; // @synthesize authorizer=_authorizer;
+@property (readonly, nonatomic) CNAuthorizationContext *authorizer; // @synthesize authorizer=_authorizer;
 
 + (id)allAuthorizationKeys;
 + (id)new;

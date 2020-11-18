@@ -12,8 +12,6 @@
 
 @property (readonly) NSString *queryString;
 
-- (void)clearResultsFromSection:(SFResultSection *)arg1;
-- (BOOL)sectionIsClearable:(SFResultSection *)arg1;
 - (void)toggleExpansionForSection:(SFResultSection *)arg1;
 @end
 

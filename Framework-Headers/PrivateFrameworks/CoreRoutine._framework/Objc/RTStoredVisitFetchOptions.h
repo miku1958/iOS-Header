@@ -13,6 +13,7 @@
 @interface RTStoredVisitFetchOptions : NSObject <NSSecureCoding>
 {
     BOOL _ascending;
+    BOOL _labelVisit;
     NSNumber *_confidence;
     NSDateInterval *_dateInterval;
     NSNumber *_limit;
@@ -21,6 +22,7 @@
 @property (readonly, nonatomic) BOOL ascending; // @synthesize ascending=_ascending;
 @property (readonly, nonatomic) NSNumber *confidence; // @synthesize confidence=_confidence;
 @property (copy, nonatomic) NSDateInterval *dateInterval; // @synthesize dateInterval=_dateInterval;
+@property (readonly, nonatomic) BOOL labelVisit; // @synthesize labelVisit=_labelVisit;
 @property (readonly, nonatomic) NSNumber *limit; // @synthesize limit=_limit;
 
 + (BOOL)supportsSecureCoding;
@@ -28,6 +30,8 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithAscending:(BOOL)arg1 confidence:(id)arg2 dateInterval:(id)arg3 labelVisit:(BOOL)arg4 limit:(id)arg5;
 - (id)initWithAscending:(BOOL)arg1 confidence:(id)arg2 dateInterval:(id)arg3 limit:(id)arg4;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

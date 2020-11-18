@@ -13,6 +13,7 @@
 {
     MISSING_TYPE *configuration;
     MISSING_TYPE *policyBundleFactory;
+    MISSING_TYPE *configurationValidator;
     MISSING_TYPE *policySession;
     MISSING_TYPE *state;
     MISSING_TYPE *delegate;

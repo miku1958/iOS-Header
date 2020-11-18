@@ -6,8 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ICAttachment, ICSelectorDelayer, PKDrawing;
-@protocol OS_dispatch_queue;
+@class ICAttachment, ICSelectorDelayer, NSManagedObjectContext, PKDrawing;
 
 @interface ICInlineDrawingChangeCoalescer : NSObject
 {
@@ -15,18 +14,18 @@
     ICSelectorDelayer *_processChangesSelectorDelayer;
     PKDrawing *_latestDrawing;
     unsigned long long _numberOfChanges;
-    NSObject<OS_dispatch_queue> *_mergeQueue;
+    NSManagedObjectContext *_workerContext;
 }
 
 @property (strong, nonatomic) ICAttachment *attachment; // @synthesize attachment=_attachment;
 @property (strong, nonatomic) PKDrawing *latestDrawing; // @synthesize latestDrawing=_latestDrawing;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *mergeQueue; // @synthesize mergeQueue=_mergeQueue;
 @property (nonatomic) unsigned long long numberOfChanges; // @synthesize numberOfChanges=_numberOfChanges;
 @property (strong, nonatomic) ICSelectorDelayer *processChangesSelectorDelayer; // @synthesize processChangesSelectorDelayer=_processChangesSelectorDelayer;
+@property (strong, nonatomic) NSManagedObjectContext *workerContext; // @synthesize workerContext=_workerContext;
 
 + (void)generateMissingOrOutdatedHandwritingSummariesInContext:(id)arg1;
 + (id)handwritingSummaryAttachmentsInContext:(id)arg1;
-+ (id)missingOrOutdatedHandwritingSummaryAttachmentsInContext:(id)arg1;
++ (id)missingOrOutdatedHandwritingSummaryAttachmentIDsInContext:(id)arg1;
 + (void)purgeHandwritingSummariesInContext:(id)arg1;
 - (void).cxx_destruct;
 - (void)dealloc;

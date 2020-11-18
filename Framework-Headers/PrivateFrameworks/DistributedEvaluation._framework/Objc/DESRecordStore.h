@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (void)deleteAllSavedRecordsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)deleteSavedRecordWithIdentfier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchNativeRecordDataForRecordUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchSavedRecordInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithBundleIdentifier:(id)arg1;
 - (void)saveCoreDuetEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -7,7 +7,7 @@
 #import <IMAssistantCore/NSObject-Protocol.h>
 
 @class IMChat, NSArray, NSCache;
-@protocol IMAssistantAccountDataSource, IMAssistantChatDataSource, IMAssistantContactsDataSource, IMAssistantCoreTelephonySubscriptionsDataSource, IMLocationManager;
+@protocol IMAssistantAccountDataSource, IMAssistantChatDataSource, IMAssistantContactsDataSource, IMAssistantCoreTelephonySubscriptionsDataSource, IMAssistantFileManager, IMFileTransferCenter, IMLocationManager;
 
 @protocol IMAssistantMessageHandlerDataSource <NSObject>
 
@@ -16,12 +16,14 @@
 @property (readonly, nonatomic) NSCache *contactIdentifierToUnifiedContactIdentifierCache;
 @property (readonly, nonatomic) id<IMAssistantContactsDataSource> contactsDataSource;
 @property (readonly, nonatomic) id<IMAssistantCoreTelephonySubscriptionsDataSource> coreTelephonySubscriptionsDataSource;
+@property (readonly, nonatomic) id<IMAssistantFileManager> fileManagerDataSource;
+@property (readonly, nonatomic) id<IMFileTransferCenter> fileTransferCenterDataSource;
 @property (readonly, nonatomic) NSCache *handleToContactIdentifierCache;
 @property (readonly, nonatomic) BOOL isInternationalSpamFilteringEnabled;
 @property (readonly, nonatomic) id<IMLocationManager> locationManagerDataSource;
 @property (readonly, nonatomic) NSCache *spiHandleToPersonCache;
 
-- (BOOL)screentimeAllowedToShowChat:(IMChat *)arg1;
-- (BOOL)screentimeAllowedToShowConversationWithHandleIDs:(NSArray *)arg1;
+- (BOOL)screentimeAllowedToShowChat:(IMChat *)arg1 error:(id *)arg2;
+- (BOOL)screentimeAllowedToShowConversationWithHandleIDs:(NSArray *)arg1 error:(id *)arg2;
 @end
 

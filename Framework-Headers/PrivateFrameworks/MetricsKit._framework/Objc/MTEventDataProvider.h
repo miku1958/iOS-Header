@@ -6,19 +6,26 @@
 
 #import <MetricsKit/MTObject.h>
 
-@class NSDictionary;
+@class NSArray, NSDictionary;
 @protocol MTEventDataProviderDelegate;
 
 @interface MTEventDataProvider : MTObject
 {
     id<MTEventDataProviderDelegate> _delegate;
     NSDictionary *_knownFieldMethods;
+    NSArray *_additionalData;
 }
 
+@property (strong) NSArray *additionalData; // @synthesize additionalData=_additionalData;
 @property (weak, nonatomic) id<MTEventDataProviderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSDictionary *knownFieldMethods; // @synthesize knownFieldMethods=_knownFieldMethods;
 
 - (void).cxx_destruct;
+- (void)addFields:(id)arg1;
+- (void)addFieldsWithBlock:(CDUnknownBlockType)arg1;
+- (void)addFieldsWithDictionary:(id)arg1;
+- (void)addFieldsWithPromise:(id)arg1;
+- (id)flattenAdditionalData;
 - (SEL)knownFieldAccessorForFieldName:(id)arg1;
 - (id)knownFieldMethodsForKnownFields:(id)arg1;
 - (id)knownFields;

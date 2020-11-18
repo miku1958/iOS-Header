@@ -15,6 +15,7 @@
     NSMutableDictionary *_itemMoves;
     NSMutableSet *_updatedItemMoveFromIndexPaths;
     BOOL _isFlatCollection;
+    BOOL _isFinalized;
     NSIndexSet *_insertedSections;
     NSIndexSet *_deletedSections;
     NSIndexSet *_updatedSections;
@@ -36,13 +37,16 @@
 
 + (id)changeDetailsWithPreviousCount:(long long)arg1 finalCount:(long long)arg2 isEqualBlock:(CDUnknownBlockType)arg3 isUpdatedBlock:(CDUnknownBlockType)arg4;
 - (void).cxx_destruct;
-- (void)_finalize;
 - (void)appendItemMoveFromIndexPath:(id)arg1 toIndexPath:(id)arg2 updated:(BOOL)arg3;
 - (void)appendSectionMoveFromIndex:(long long)arg1 toIndex:(long long)arg2 updated:(BOOL)arg3;
+- (void)applyUIKitWorkarounds;
 - (id)debugDescription;
 - (id)description;
+- (void)enumerateItemMovesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateItemMovesWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateMovesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateMovesWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateSectionMovesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSectionMovesWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (void)removeItemMoveFromIndexPath:(id)arg1;

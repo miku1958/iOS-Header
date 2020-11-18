@@ -14,7 +14,7 @@
 - (void)addCompletion:(id)arg1 forInput:(id)arg2;
 - (void)clearAllCompletions;
 - (void)clearCompletionsFromDate:(id)arg1 toDate:(id)arg2;
-- (void)updateParameters:(double)arg1 safariLast1day:(double)arg2 safariLast1week:(double)arg3 safariLast1month:(double)arg4 safariAll:(double)arg5 safariMostRecent:(double)arg6 minThresholdToSend:(double)arg7;
+- (void)updateParametersForSmartSearchV1:(id)arg1 smartSearchV2:(id)arg2;
 
 @end
 

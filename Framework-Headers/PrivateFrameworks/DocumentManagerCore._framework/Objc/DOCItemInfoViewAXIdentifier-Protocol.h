@@ -10,8 +10,8 @@
 
 @protocol DOCItemInfoViewAXIdentifier <NSObject>
 + (NSString *)actionsContainer;
++ (NSString *)infoContainer;
 + (NSString *)levelOfDetailButton;
-+ (NSString *)mainContainer;
 + (NSString *)metadataRowWithLabel:(NSString *)arg1;
 @end
 

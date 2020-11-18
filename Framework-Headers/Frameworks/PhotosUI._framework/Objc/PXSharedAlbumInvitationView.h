@@ -22,6 +22,7 @@
     UIImageView *_avatarView;
     UILabel *_infoLabel;
     UILabel *_albumTitleLabel;
+    UILabel *_subscriberInfoLabel;
     PXCapsuleButton *_acceptButton;
     PXCapsuleButton *_declineButton;
     UILabel *_reportJunkLabel;
@@ -45,6 +46,7 @@
 @property (strong, nonatomic) UILabel *reportJunkLabel; // @synthesize reportJunkLabel=_reportJunkLabel;
 @property (strong, nonatomic) PXRoundedCornerOverlayView *roundedCornerOverlayView; // @synthesize roundedCornerOverlayView=_roundedCornerOverlayView;
 @property (strong, nonatomic) id<PLCloudSharedAlbumProtocol> sharedAlbum; // @synthesize sharedAlbum=_sharedAlbum;
+@property (strong, nonatomic) UILabel *subscriberInfoLabel; // @synthesize subscriberInfoLabel=_subscriberInfoLabel;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useInPopover; // @synthesize useInPopover=_useInPopover;
 
@@ -57,7 +59,6 @@
 - (void)_declineButtonTapped:(id)arg1;
 - (void)_enableUserInteractions:(BOOL)arg1;
 - (void)_handlePersonImage:(id)arg1 imageTag:(unsigned long long)arg2;
-- (void)_openiCloudSettings;
 - (id)_parentViewBackgroundColor;
 - (struct CGSize)_performLayoutInRect:(struct CGRect)arg1 updateSubviewFrames:(BOOL)arg2;
 - (void)_presentToastWithTitle:(id)arg1;
@@ -71,6 +72,7 @@
 - (void)_updateInfoLabel;
 - (void)_updateReportJunkLabel;
 - (void)_updateRoundedCornerOverlayView;
+- (void)_updateSubscriberInfoLabel;
 - (void)_updateUI;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;

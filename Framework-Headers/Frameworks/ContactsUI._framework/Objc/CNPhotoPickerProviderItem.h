@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface CNPhotoPickerProviderItem : NSObject <NSCopying>
 {
+    BOOL _allowsEditing;
     NSData *_thumbnailImageData;
     NSString *_recentsIdentifier;
     NSString *_localizedVariantDisplayName;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSDate *_sortDate;
     id<CNPhotoPickerProviderItemDelegate> _delegate;
     UIImage *_fullSizeImage;
+    UIImage *_croppedFullSizeImage;
     UIImage *_thumbnailImage;
     UIImage *_loadingPlaceholderImage;
     NSData *_imageData;
@@ -31,11 +33,12 @@ __attribute__((visibility("hidden")))
     struct CGRect _cropRect;
 }
 
-@property (readonly, nonatomic) BOOL allowsEditing;
+@property (nonatomic) BOOL allowsEditing; // @synthesize allowsEditing=_allowsEditing;
 @property (readonly, nonatomic) BOOL allowsMoveAndScale;
 @property (readonly, nonatomic) BOOL allowsVariants;
 @property (readonly, nonatomic) id<CNScheduler> callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (readonly, nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
+@property (strong, nonatomic) UIImage *croppedFullSizeImage; // @synthesize croppedFullSizeImage=_croppedFullSizeImage;
 @property (weak, nonatomic) id<CNPhotoPickerProviderItemDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSData *filteredImageData; // @synthesize filteredImageData=_filteredImageData;
 @property (strong, nonatomic) UIImage *fullSizeImage; // @synthesize fullSizeImage=_fullSizeImage;
@@ -62,6 +65,7 @@ __attribute__((visibility("hidden")))
 - (id)contactImageForMetadataStore;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createVariantsItemsWithVariantsManager:(id)arg1;
+- (void)fullSizeViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)generateAllImageDatasIfNeeded;
 - (id)generatePhotoFilterVariants;
 - (id)generateThumbnailImageDataIfNeeded;
@@ -75,6 +79,7 @@ __attribute__((visibility("hidden")))
 - (void)thumbnailViewWithPlaceholderProvider:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateContact:(id)arg1;
 - (void)updateTintColorIfNeeded:(id)arg1;
+- (void)updateVisualIdentity:(id)arg1;
 
 @end
 

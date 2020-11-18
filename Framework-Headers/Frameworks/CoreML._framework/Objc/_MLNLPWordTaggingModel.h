@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 @property (strong) MLModelDescription *modelDescription; // @synthesize modelDescription=_modelDescription;
 
 - (void).cxx_destruct;
+- (void)dealloc;
 - (id)initWithModelDescription:(id)arg1 parameterDictionary:(id)arg2 error:(id *)arg3;
 - (id)predictionFromFeatures:(id)arg1 options:(id)arg2 error:(id *)arg3;
 

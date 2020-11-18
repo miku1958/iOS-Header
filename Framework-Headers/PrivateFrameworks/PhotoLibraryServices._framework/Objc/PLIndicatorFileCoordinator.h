@@ -42,6 +42,7 @@
 - (BOOL)isRebuildingPersons;
 - (BOOL)isStreamsLibraryUpdatingExpired;
 - (BOOL)isUserPause;
+- (void)logCloudServiceEnableEvent:(BOOL)arg1 serviceName:(id)arg2 reason:(id)arg3;
 - (BOOL)needsRecoveryAfterCrashOptionallyRemoveAllIndicatorFiles:(BOOL)arg1;
 - (void)setDownloadCountsForImages:(unsigned long long)arg1 videos:(unsigned long long)arg2;
 - (void)setDupeAnalysisNeeded:(BOOL)arg1;

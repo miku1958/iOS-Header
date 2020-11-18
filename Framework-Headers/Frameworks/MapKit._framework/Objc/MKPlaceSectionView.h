@@ -34,6 +34,7 @@
 - (void)_touchesCancelledForRow:(id)arg1 at:(unsigned long long)arg2;
 - (void)_updateHairlineInsets;
 - (void)_updateViewsAnimated:(BOOL)arg1;
+- (void)_updateViewsAnimated:(BOOL)arg1 isNeedLayout:(BOOL)arg2;
 - (unsigned long long)indexOfRowAt:(struct CGPoint)arg1;
 - (void)infoCardThemeChanged;
 - (id)initWithFrame:(struct CGRect)arg1;
@@ -43,6 +44,7 @@
 - (void)setFooterView:(id)arg1 animated:(BOOL)arg2;
 - (void)setHeaderView:(id)arg1 animated:(BOOL)arg2;
 - (void)setRowViews:(id)arg1 animated:(BOOL)arg2;
+- (void)setRowViews:(id)arg1 animated:(BOOL)arg2 isNeedLayout:(BOOL)arg3;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

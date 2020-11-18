@@ -23,7 +23,7 @@
 - (void)cancelTask;
 - (id)description;
 - (id)initWithScopeIdentifiers:(id)arg1;
-- (void)launch;
+- (void)launchTask;
 
 @end
 

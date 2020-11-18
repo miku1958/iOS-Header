@@ -13,16 +13,18 @@
     HDProfile *_profile;
     double _defaultCreationDate;
     BOOL _skipInsertionFilter;
+    BOOL _resolveAssociations;
     HDDataOriginProvenance *_provenance;
     double _creationDate;
 }
 
 @property (readonly, nonatomic) double creationDate; // @synthesize creationDate=_creationDate;
 @property (readonly, nonatomic) HDDataOriginProvenance *provenance; // @synthesize provenance=_provenance;
+@property (readonly, nonatomic) BOOL resolveAssociations; // @synthesize resolveAssociations=_resolveAssociations;
 @property (readonly, nonatomic) BOOL skipInsertionFilter; // @synthesize skipInsertionFilter=_skipInsertionFilter;
 
 - (void).cxx_destruct;
-- (id)initWithProvenance:(id)arg1 creationDate:(double)arg2 skipInsertionFilter:(BOOL)arg3 profile:(id)arg4;
+- (id)initWithProvenance:(id)arg1 creationDate:(double)arg2 skipInsertionFilter:(BOOL)arg3 resolveAssociations:(BOOL)arg4 profile:(id)arg5;
 - (void)prepareObjectForInsertion:(id)arg1;
 
 @end

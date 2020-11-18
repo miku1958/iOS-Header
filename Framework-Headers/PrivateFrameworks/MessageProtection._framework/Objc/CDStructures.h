@@ -15,6 +15,33 @@ struct _NSRange {
     unsigned long long _field2;
 };
 
+struct _SecMPFullIdentity {
+    struct __CFRuntimeBase _field1;
+    struct __SecKey *_field2;
+    struct __SecKey *_field3;
+    struct __SecKey *_field4;
+    struct __SecKey *_field5;
+    id _field6;
+};
+
+struct _SecMPPublicIdentity {
+    struct __CFRuntimeBase _field1;
+    struct __SecKey *_field2;
+    struct __SecKey *_field3;
+    id _field4;
+};
+
+struct __CFRuntimeBase {
+    unsigned long long _field1;
+    _Atomic unsigned long long _field2;
+};
+
+struct __SecKey {
+    struct __CFRuntimeBase _field1;
+    struct __SecKeyDescriptor *_field2;
+    void *_field3;
+};
+
 struct ccec_cp;
 
 struct ccec_full_ctx {

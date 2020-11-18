@@ -9,7 +9,6 @@
 @class CNContactStore;
 
 @protocol CKEntityContactStoreProvider <NSObject>
-- (void *)addressBook;
 - (CNContactStore *)contactStore;
 @end
 

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *patterns;
     MISSING_TYPE *audioPlaybackOptionsPresenter;
+    MISSING_TYPE *sceneProvider;
 }
 
 @end

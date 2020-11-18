@@ -8,7 +8,7 @@
 
 #import <NewsCore/FCJSONEncodableObjectProviding-Protocol.h>
 
-@class FCKeyValueStoreClassRegistry, NSDictionary, NSMutableDictionary, NSString;
+@class FCKeyValueStoreClassRegistry, FCKeyValueStoreSavePolicy, NSDictionary, NSMutableDictionary, NSString;
 @protocol FCKeyValueStoreMigrating, NFLocking;
 
 @interface FCKeyValueStore : NSObject <FCJSONEncodableObjectProviding>
@@ -24,6 +24,7 @@
     unsigned long long _optionsMask;
     FCKeyValueStoreClassRegistry *_classRegistry;
     id<FCKeyValueStoreMigrating> _migrator;
+    FCKeyValueStoreSavePolicy *_savePolicy;
     CDUnknownBlockType _objectHandler;
     CDUnknownBlockType _arrayObjectHandler;
     CDUnknownBlockType _dictionaryKeyHandler;
@@ -41,6 +42,7 @@
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) CDUnknownBlockType objectHandler; // @synthesize objectHandler=_objectHandler;
 @property (nonatomic) unsigned long long optionsMask; // @synthesize optionsMask=_optionsMask;
+@property (strong, nonatomic) FCKeyValueStoreSavePolicy *savePolicy; // @synthesize savePolicy=_savePolicy;
 @property (nonatomic) BOOL shouldExportJSONSidecar; // @synthesize shouldExportJSONSidecar=_shouldExportJSONSidecar;
 @property (readonly, nonatomic) NSString *storeDirectory; // @synthesize storeDirectory=_storeDirectory;
 @property (nonatomic) unsigned long long storeSize; // @synthesize storeSize=_storeSize;
@@ -55,7 +57,6 @@
 - (id)_initializeStoreDirectoryWithName:(id)arg1;
 - (BOOL)_isCloudBackupEnabled;
 - (id)_loadFromDisk;
-- (void)_logCacheStatus;
 - (void)_maybeSaveJSONRepresentationWithDictionary:(id)arg1;
 - (void)_maybeWriteObjectsByKey:(CDUnknownBlockType)arg1;
 - (BOOL)_persistOnlyInMemoryEnabled;
@@ -76,6 +77,7 @@
 - (id)init;
 - (id)initWithName:(id)arg1 directory:(id)arg2 version:(unsigned long long)arg3 options:(unsigned long long)arg4 classRegistry:(id)arg5;
 - (id)initWithName:(id)arg1 directory:(id)arg2 version:(unsigned long long)arg3 options:(unsigned long long)arg4 classRegistry:(id)arg5 migrator:(id)arg6;
+- (id)initWithName:(id)arg1 directory:(id)arg2 version:(unsigned long long)arg3 options:(unsigned long long)arg4 classRegistry:(id)arg5 migrator:(id)arg6 savePolicy:(id)arg7;
 - (id)jsonEncodableObject;
 - (id)keysOfEntriesPassingTest:(CDUnknownBlockType)arg1;
 - (id)objectForKey:(id)arg1;

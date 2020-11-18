@@ -18,11 +18,10 @@
 - (id)resolveClass:(Class)arg1 name:(NSString *)arg2 contextBlock:(void (^)(id<NFContext>))arg3;
 - (id)resolveForKey:(NFKey *)arg1;
 - (id)resolveForKey:(NFKey *)arg1 context:(NFContext *)arg2;
+- (id)resolveForKey:(NFKey *)arg1 context:(NFContext *)arg2 error:(id *)arg3;
 - (id)resolveProtocol:(Protocol *)arg1;
 - (id)resolveProtocol:(Protocol *)arg1 contextBlock:(void (^)(id<NFContext>))arg2;
 - (id)resolveProtocol:(Protocol *)arg1 name:(NSString *)arg2;
 - (id)resolveProtocol:(Protocol *)arg1 name:(NSString *)arg2 contextBlock:(void (^)(id<NFContext>))arg3;
-- (id)unsafeResolveForKey:(NSString *)arg1 name:(NSString *)arg2;
-- (id)unsafeResolveForKey:(NSString *)arg1 name:(NSString *)arg2 context:(NFContext *)arg3;
 @end
 

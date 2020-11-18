@@ -51,11 +51,10 @@
 - (id)_copyWeeklyOccurrencesWithInitialDate:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 count:(unsigned long long)arg4;
 - (id)_copyYearlyOccurrencesWithInitialDate:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 count:(unsigned long long)arg4;
 - (BOOL)_isSimpleYearlyRecurrence;
-- (BOOL)_validateCalDate:(CDStruct_b0fa4487)arg1 pinned:(BOOL)arg2;
+- (BOOL)_validateCalDate:(CDStruct_79f9e052)arg1 pinned:(BOOL)arg2;
 - (id)computeRecurrenceEndDate:(unsigned long long)arg1;
-- (id)copyOccurrenceDatesBetweenStartDate:(CDStruct_b0fa4487)arg1 endDate:(CDStruct_b0fa4487)arg2 timeZone:(id)arg3 limit:(long long)arg4;
+- (id)copyOccurrenceDatesBetweenStartDate:(id)arg1 endDate:(id)arg2 timeZone:(id)arg3 limit:(long long)arg4;
 - (id)copyOccurrenceDatesWithInitialDate:(id)arg1 allDay:(BOOL)arg2 rangeStart:(id)arg3 rangeEnd:(id)arg4 timeZone:(id)arg5 limit:(long long)arg6;
-- (id)copyOccurrenceDatesWithInitialDate:(id)arg1 rangeStart:(id)arg2 rangeEnd:(id)arg3 timeZone:(id)arg4;
 - (double)duration;
 - (id)init;
 

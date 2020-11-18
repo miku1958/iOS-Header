@@ -9,23 +9,24 @@
 #import <ActionKit/AFDictationDelegate-Protocol.h>
 
 @class AFDictationConnection, NSString;
-@protocol WFDictateTextActionRunningDelegate;
+@protocol WFDictateTextActionUserInterface;
 
 @interface WFDictateTextAction : WFAction <AFDictationDelegate>
 {
-    id<WFDictateTextActionRunningDelegate> _delegate;
+    id<WFDictateTextActionUserInterface> _actionUserInterface;
     AFDictationConnection *_dictationConnection;
     NSString *_latestTranscription;
 }
 
+@property (strong, nonatomic) id<WFDictateTextActionUserInterface> actionUserInterface; // @synthesize actionUserInterface=_actionUserInterface;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<WFDictateTextActionRunningDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) AFDictationConnection *dictationConnection; // @synthesize dictationConnection=_dictationConnection;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *latestTranscription; // @synthesize latestTranscription=_latestTranscription;
 @property (readonly) Class superclass;
 
++ (id)userInterfaceProtocol;
 - (void).cxx_destruct;
 - (void)cancel;
 - (void)dictationConnection:(id)arg1 didRecognizePackage:(id)arg2;
@@ -35,6 +36,7 @@
 - (void)finishRunningWithError:(id)arg1;
 - (id)recognitionError;
 - (void)runAsynchronouslyWithInput:(id)arg1;
+- (void)runWithRemoteUserInterface:(id)arg1 locale:(id)arg2 stopListeningValue:(id)arg3;
 - (void)runWithSiriUserInterface:(id)arg1 input:(id)arg2;
 - (void)stopListening;
 

@@ -6,19 +6,24 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class GEOAutomobileOptions, GEOComposedWaypoint, GEOLocation, NSArray, NSData, NSString;
-@protocol GEOMapItem, GEOVenueIdentifier;
+@class GEOAutomobileOptions, GEOComposedWaypoint, GEOLocation, NSData, NSString;
+@protocol GEOMapItem, GEOVenueIdentifier, MapsSuggestionsResourceDepot;
 
 @protocol MapsSuggestionsNetworkRequester <MapsSuggestionsObject>
-- (BOOL)ETAsFromHereWaypoint:(GEOComposedWaypoint *)arg1 destinationWaypoints:(NSArray *)arg2 transportType:(int)arg3 automobileOptions:(GEOAutomobileOptions *)arg4 completion:(void (^)(NSArray *, NSError *))arg5;
++ (id)new;
+- (BOOL)ETAFromWaypoint:(GEOComposedWaypoint *)arg1 toWaypoint:(GEOComposedWaypoint *)arg2 transportType:(int)arg3 automobileOptions:(GEOAutomobileOptions *)arg4 completion:(void (^)(MapsSuggestionsTrafficAndETAResult *, NSError *))arg5;
+- (BOOL)canonicalLocalSearchPostalAddress:(id)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (BOOL)composedWaypointForAddressString:(NSString *)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;
 - (BOOL)composedWaypointForLocation:(GEOLocation *)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;
 - (BOOL)composedWaypointForMapItem:(id<GEOMapItem>)arg1 completion:(void (^)(GEOComposedWaypoint *, NSError *))arg2;
 - (BOOL)forwardGeocodeAddressString:(NSString *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (BOOL)forwardGeocodePostalAddress:(id)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (id)init;
+- (id)initFromResourceDepot:(id<MapsSuggestionsResourceDepot>)arg1;
 - (BOOL)resolveMapItemHandleData:(NSData *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (BOOL)reverseGeocodeCoordinate:(CDStruct_c3b9c2ee)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
-- (BOOL)searchPOIWithName:(NSString *)arg1 ofPOICategory:(NSString *)arg2 withinVenue:(id<GEOVenueIdentifier>)arg3 maxResults:(unsigned int)arg4 completion:(void (^)(NSArray *, NSError *))arg5;
+- (BOOL)searchPOIWithName:(NSString *)arg1 ofPOICategory:(NSString *)arg2 withinVenue:(id<GEOVenueIdentifier>)arg3 maxResults:(unsigned long long)arg4 completion:(void (^)(NSArray *, NSError *))arg5;
 - (BOOL)searchString:(NSString *)arg1 maxResults:(unsigned int)arg2 completion:(void (^)(NSArray *, NSError *))arg3;
+- (BOOL)searchWithAirportCode:(NSString *)arg1 terminal:(NSString *)arg2 gate:(NSString *)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
 @end
 

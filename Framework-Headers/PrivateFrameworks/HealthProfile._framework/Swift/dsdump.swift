@@ -1,7 +1,59 @@
+ protocol HealthProfile.SharingParticipantDataSourceCache // 3 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+ }
+ protocol HealthProfile.SharingParticipantDataSourceParticipantManagerFactory // 1 requirements
+ {
+	// method
+ }
+ protocol HealthProfile.ProfileAvailabilityProvider // 1 requirements
+ {
+	// class method
+ }
+ protocol HealthProfile.ProfileDeepLinkHandling // 1 requirements
+ {
+	// method
+ }
+ protocol HealthProfile.ProfileButtonCellItem // 4 requirements
+ {
+	// class base protocol
+	// getter
+	// getter
+	// getter
+ }
+ protocol HealthProfile.ProfileCollectionViewListItem // 3 requirements
+ {
+	// class base protocol
+	// getter
+	// getter
+ }
  protocol HealthProfile.OrganDonationRegisteredViewControllerDelegate // 1 requirements
  {
 	// method
  }
+ protocol HealthProfile.ActivityIndicatorDetailItem // 12 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// getter
+	// setter
+	// modify coroutine
+	// getter
+	// setter
+	// modify coroutine
+	// getter
+	// setter
+	// modify coroutine
+ }
+ protocol HealthProfile.StopReceivingProfileFlowDelegate // 1 requirements
+ {
+	// method
+ }
+
+ enum __C.HKSharingParticipantStatus { }
 
  struct __C.Key {
 
@@ -13,209 +65,215 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : }A
+	let rawValue : —h
  }
 
- class HealthProfile.ProfileContactCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
+ enum __C.Code { }
+
+ struct __C_Synthesized.HKError {
 
 	// Properties
-	var nameLabel : weak UILabel? // +0x8 (0x8)
-	var avatarView : MeContactAvatarView // +0x10 (0x8)
+	let _nsError : NSError
+ }
+
+ class HealthProfile.ProfileCompoundDataSource {
+ class HealthProfile.ProfileContactCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	var avatarView : MeContactAvatarView
+	var nameLabel : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : uE // +0x18 (0x28)
+	var item : }b
 
 	// ObjC -> Swift bridged methods
-	0x1a40  @objc ProfileContactCell.nameLabel <stripped>
-	0x1a80  @objc ProfileContactCell.setNameLabel: <stripped>
-	0x1b30  @objc ProfileContactCell.avatarView <stripped>
-	0x1be0  @objc ProfileContactCell.setAvatarView: <stripped>
-	0x2430  @objc ProfileContactCell.awakeFromNib <stripped>
-	0x2610  @objc ProfileContactCell.updateName <stripped>
-	0x26f0  @objc ProfileContactCell.initWithStyle:reuseIdentifier: <stripped>
-	0x2750  @objc ProfileContactCell.initWithCoder: <stripped>
-	0x2670  @objc ProfileContactCell..cxx_destruct <stripped>
+WARNING: couldn't find address 0x48fc00015830 (0xfc00015830) in binary!
+	0x79d8  @objc ProfileContactCell.(null) <stripped>
+WARNING: couldn't find address 0x51e400015730 (0x1e400015730) in binary!
+	0x51d8  @objc ProfileContactCell.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x7b4fffde6d0  @objc ProfileContactCell.(null) <stripped>
+	0xfffdf648  @objc ProfileContactCell.UHâÂËG <stripped>
 
 	// Swift methods
-	0x1a60  func <stripped> // getter 
-	0x1aa0  func <stripped> // setter 
-	0x1ac0  func <stripped> // modifyCoroutine 
-	0x1b90  func <stripped> // getter 
-	0x1c40  func <stripped> // setter 
-	0x1cb0  func <stripped> // modifyCoroutine 
-	0x1d90  func <stripped> // getter 
-	0x1e30  func <stripped> // setter 
-	0x1f00  func <stripped> // modifyCoroutine 
-	0x2030  func <stripped> // getter 
-	0x2460  func <stripped> // method 
+	0x4640  func <stripped> // method 
+	0x4b50  func <stripped> // method 
  }
 
- class HealthProfile.MedicalIDProfileDataSource : NSObject /usr/lib/libobjc.A.dylib {
+ class HealthProfile.MemorySharingParticipantDataSourceCache : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SharingParticipantDataSourceCache {
 
 	// Properties
-	var reuseIdentifier : String // +0x8 (0x10)
-	var medicalIDViewController : HKMedicalIDViewController? // +0x18 (0x8)
-	var parentViewController : weak UIViewController? // +0x20 (0x8)
-	var tableViewCell : weak UITableViewCell? // +0x28 (0x8)
-	var title : String // +0x30 (0x10)
+	var participants : [String]? // +0x10 (0x8)
+
+	// Swift methods
+ }
+
+ class HealthProfile.SharingParticipantDataSource {
+ class HealthProfile.MedicalIDDataSourceItem : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	let uniqueIdentifier : String // +0x8 (0x10)
+	var text : String? // +0x18 (0x10)
+	var detailText : String? // +0x28 (0x10)
+	var showDisclosureIndicator : Bool // +0x38 (0x1)
+	var reuseIdentifier : String // +0x40 (0x10)
+	var medicalIDViewController : HKMedicalIDViewController? // +0x50 (0x8)
+	let healthStore : HKHealthStore // +0x58 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let medicalIDCache : [` // +0x60 (0x8)
+	var presentingViewController : UIViewController? // +0x68 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var currentMedicalIDDataResultCancellable : Õc // +0x70 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var currentMedicalIDDataResultPresented : e` // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x3600  @objc MedicalIDProfileDataSource.init <stripped>
-	0x33f0  @objc MedicalIDProfileDataSource..cxx_destruct <stripped>
+	0x51b0  _globalinit_33_35CC3FF21804F92ED723BE44B13D33F8_func0
+WARNING: couldn't find address 0x51ac000156f0 (0x1ac000156f0) in binary!
+	0x38000000c  @objc MedicalIDDataSourceItem.(null) <stripped>
+WARNING: couldn't find address 0x679800015650 (0x79800015650) in binary!
+	0x678c  @objc MedicalIDDataSourceItem.(null) <stripped>
 
 	// Swift methods
-	0x2a80  func <stripped> // getter 
-	0x2aa0  func <stripped> // setter 
-	0x2ac0  func <stripped> // modifyCoroutine 
-	0x2b10  func <stripped> // getter 
-	0x2b30  func <stripped> // setter 
-	0x2b50  func <stripped> // modifyCoroutine 
-	0x2bc0  func <stripped> // getter 
-	0x2c10  func <stripped> // setter 
-	0x2c80  func <stripped> // modifyCoroutine 
-	0x2d60  func <stripped> // getter 
-	0x2dd0  func <stripped> // setter 
-	0x2e40  func <stripped> // modifyCoroutine 
-	0x2e80  func <stripped> // method 
-	0x2f10  func <stripped> // method 
-	0x31a0  func <stripped> // method 
+	0x7740  func <stripped> // method 
+	0x8110  func <stripped> // method 
+	0x8bb0  func <stripped> // method 
  }
 
- class HealthProfile.ProfileViewController : type metadata for CompoundDataSourceViewController /System/Library/PrivateFrameworks/HealthExperienceUI.framework/HealthExperienceUI {
+ enum HealthProfile.MedicalIDFetchError {
 
 	// Properties
-	var $__lazy_storage_$_profilePrivacyExportDataSource : ProfilePrivacyExportDataSource // +0x28 (0x8)
+	case medicalIDFetchTimeout  
+ }
+
+ class HealthProfile.CloudSyncCollectionViewCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	var cloudSyncDetailView : ActivityIndicatorDetailView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_healthRecordsPluginAccountsList : !E // +0x30 (0x10)
-	let profileTableViewAdaptor : ProfileTableViewAdaptor // +0x40 (0x8)
-	var $__lazy_storage_$_activityIndicatorDetailFooterView : ActivityIndicatorDetailFooterView // +0x48 (0x8)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cloudSyncStateObserver : ˇD // +0x50 (0x8)
-	var restorationRowToLoad : RestorationRow // +0x58 (0x11)
+	var item : }b
 
 	// ObjC -> Swift bridged methods
-	0x4900  @objc ProfileViewController.viewDidLoad <stripped>
-	0x4eb0  @objc ProfileViewController.viewDidAppear: <stripped>
-	0x4f50  @objc ProfileViewController.dismissProfile: <stripped>
-	0x5170  @objc ProfileViewController.viewWillDisappear: <stripped>
-	0x5410  @objc ProfileViewController.initWithStyle: <stripped>
-	0x54e0  @objc ProfileViewController.initWithNibName:bundle: <stripped>
-	0x55d0  @objc ProfileViewController.initWithCoder: <stripped>
-	0x5280  @objc ProfileViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x486400015798 (0x6400015798) in binary!
+	0x7940  @objc CloudSyncCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x514c00015880 (0x14c00015880) in binary!
+	0x5140  @objc CloudSyncCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x5cfffe4af8  @objc CloudSyncCollectionViewCell.(null) <stripped>
+	0xfffe57d0  @objc CloudSyncCollectionViewCell.Hã]–HâŸLãm∏Ë* <stripped>
 
 	// Swift methods
-	0x3bc0  func ProfileViewController.selectedDataSources(for:) // method 
-	0x3d90  func <stripped> // getter 
-	0x3e00  func <stripped> // setter 
-	0x3e20  func <stripped> // modifyCoroutine 
-	0x3ee0  func <stripped> // getter 
-	0x41d0  func <stripped> // setter 
-	0x4200  func <stripped> // modifyCoroutine 
-	0x4300  func ProfileViewController.adaptor(for:) // method 
-	0x4350  func <stripped> // getter 
-	0x43d0  func <stripped> // setter 
-	0x43f0  func <stripped> // modifyCoroutine 
-	0x44c0  func <stripped> // getter 
-	0x4500  func <stripped> // setter 
-	0x4550  func <stripped> // modifyCoroutine 
-	0x4ef0  func <stripped> // method 
-	0x4fe0  func <stripped> // method 
+	0xa450  func <stripped> // method 
+	0xa790  func <stripped> // method 
  }
 
- enum HealthProfile.RestorationRow {
+ enum HealthProfile.ProfileDeepLinkRow {
 
 	// Properties
-	case researchStudies : (studyBundleIdentifer: String?)
+	case researchStudies : (studyBundleIdentifier: String?)
 	case appAuthSheet : (applicationBundleIdentifier: String?)
+	case healthProfile  
 	case medicalID  
  }
 
- class HealthProfile.ProfileButtonCell : ProfileBasicCell {
-	// ObjC -> Swift bridged methods
-	0x5f80  @objc ProfileButtonCell.awakeFromNib <stripped>
-	0x6020  @objc ProfileButtonCell.touchesBegan:withEvent: <stripped>
-	0x6040  @objc ProfileButtonCell.touchesEnded:withEvent: <stripped>
-	0x61c0  @objc ProfileButtonCell.initWithStyle:reuseIdentifier: <stripped>
-	0x6250  @objc ProfileButtonCell.initWithCoder: <stripped>
+ class HealthProfile.ProfileViewController {
+ class HealthProfile.SafetyCheckProfileDataSourceItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let uniqueIdentifier : String // +0x10 (0x10)
+	var text : String? // +0x20 (0x10)
+	var detailText : String? // +0x30 (0x10)
+	var showDisclosureIndicator : Bool // +0x40 (0x1)
+	var reuseIdentifier : String // +0x48 (0x10)
+
+	// Swift methods
  }
 
- class HealthProfile.ProfileDataSource : type metadata for MutableArrayDataSource /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
+ class HealthProfile.ProfileButtonCell {
+ class HealthProfile.ProfileCollectionViewListCell : _UICollectionViewListCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_profileNameSection : ìC // +0x50 (0x28)
+	var item : }b
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_medicalDetailSection : ìC // +0x78 (0x28)
-	var $__lazy_storage_$_meContactItem : ProfileContactItem // +0xa0 (0x20)
-	var medicalIDItem : MedicalIDProfileDataSource // +0xc0 (0x8)
+	var $__lazy_storage_$_textLabel : ±^
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_detailTextLabel : ±^
+	var detailTextLabelHiddenConstraints : [NSLayoutConstraint]
+	var detailTextLabelVisibleConstraints : [NSLayoutConstraint]
 
 	// ObjC -> Swift bridged methods
-	0x92b0  @objc ProfileDataSource.didChangeName: <stripped>
+WARNING: couldn't find address 0x482c00015760 (0x2c00015760) in binary!
+	0x7908  @objc ProfileCollectionViewListCell.(null) <stripped>
+WARNING: couldn't find address 0x511400015658 (0x11400015658) in binary!
+	0x38000000c  @objc ProfileCollectionViewListCell.(null) <stripped>
+WARNING: couldn't find address 0x6700000159f8 (0x700000159f8) in binary!
+	0x50e8  @objc ProfileCollectionViewListCell.(null) <stripped>
 
 	// Swift methods
-	0x7e60  func <stripped> // getter 
-	0x8020  func <stripped> // setter 
-	0x8060  func <stripped> // modifyCoroutine 
-	0x8260  func <stripped> // getter 
-	0x8460  func <stripped> // setter 
-	0x84b0  func <stripped> // modifyCoroutine 
-	0x8730  func <stripped> // getter 
-	0x8870  func <stripped> // setter 
-	0x88c0  func <stripped> // modifyCoroutine 
-	0x8a50  func <stripped> // getter 
-	0x8a90  func <stripped> // setter 
-	0x8ad0  func <stripped> // modifyCoroutine 
-	0x8b20  class func ProfileDataSource.__allocating_init() // init 
-	0x8cb0  func ProfileDataSource.addMeContactSection() // method 
-	0x8e50  func ProfileDataSource.addMedicalDetailsSection(shouldShowOrganDonation:) // method 
-	0x92a0  func <stripped> // method 
-	0x9340  func <stripped> // method 
+	0xdfc0  func <stripped> // getter 
+	0xe000  func <stripped> // setter 
+	0xe060  func <stripped> // modifyCoroutine 
+	0xe110  func <stripped> // getter 
+	0xe1a0  func <stripped> // getter 
+	0xe610  func <stripped> // method 
+	0xed50  func <stripped> // method 
+	0xee90  func <stripped> // method 
+	0xef90  func <stripped> // method 
  }
 
- struct HealthProfile.ProfileContactItem {
+ class HealthProfile.SharingParticipantDataSourceItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var reuseIdentifier : String // +0x0
-	var name : String? // +0x10
- }
-
- struct HealthProfile.CharacteristicsItem {
-
-	// Properties
-	var reuseIdentifier : String // +0x0
-	var title : String // +0x10
- }
-
- class HealthProfile.ProfileTableViewAdaptor : type metadata for SectionedTableViewAdaptor /System/Library/PrivateFrameworks/HealthExperienceUI.framework/HealthExperienceUI {
-	// ObjC -> Swift bridged methods
-	0xba60  @objc ProfileTableViewAdaptor.tableView:cellForRowAtIndexPath: <stripped>
-	0xbb50  @objc ProfileTableViewAdaptor.respondsToSelector: <stripped>
-	0xbc30  @objc ProfileTableViewAdaptor.init <stripped>
- }
-
- class HealthProfile.OrganDonationRegisteredViewController : type metadata for CompoundDataSourceViewController /System/Library/PrivateFrameworks/HealthExperienceUI.framework/HealthExperienceUI {
-
-	// Properties
-	var organDonationRegisteredViewControllerDelegate : OrganDonationRegisteredViewControllerDelegate
-
-	// ObjC -> Swift bridged methods
-	0xd610  @objc OrganDonationRegisteredViewController.viewDidLoad <stripped>
-	0xd820  @objc OrganDonationRegisteredViewController.learnMore: <stripped>
-	0xd890  @objc OrganDonationRegisteredViewController.tableView:heightForHeaderInSection: <stripped>
-	0xd950  @objc OrganDonationRegisteredViewController.initWithStyle: <stripped>
-	0xd9d0  @objc OrganDonationRegisteredViewController.initWithNibName:bundle: <stripped>
-	0xdad0  @objc OrganDonationRegisteredViewController.initWithCoder: <stripped>
-	0xd930  @objc OrganDonationRegisteredViewController..cxx_destruct <stripped>
+	let uniqueIdentifier : String
+	var text : String?
+	var detailText : String?
+	var reuseIdentifier : String
 
 	// Swift methods
-	0xd310  func <stripped> // getter 
-	0xd350  func <stripped> // setter 
-	0xd3d0  func <stripped> // modifyCoroutine 
-	0xd640  func <stripped> // method 
-	0xd800  func <stripped> // method 
+	0x11950  func <stripped> // getter 
+	0x11930  func <stripped> // setter 
+	0xff40  func <stripped> // modifyCoroutine 
+	0x11960  func <stripped> // getter 
+	0x11940  func <stripped> // setter 
+	0xff70  func <stripped> // modifyCoroutine 
+	0x10040  func <stripped> // getter 
+	0x10080  func <stripped> // setter 
+	0x100c0  func <stripped> // modifyCoroutine 
  }
 
- class HealthProfile.OrganDonationRegisteredDataSource : type metadata for MutableArrayDataSource /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience { }
+ class HealthProfile.RevokeSharingDataSourceItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
+	// Properties
+	var enableInteraction : Bool
+	var buttonLabelColor : UIColor
+	var text : String?
+	var detailText : String?
+	let uniqueIdentifier : String
+	var reuseIdentifier : String
+	var revokeSharing : (_:)?
+
+	// Swift methods
+	0x10280  func <stripped> // getter 
+	0x102c0  func <stripped> // setter 
+	0x10300  func <stripped> // modifyCoroutine 
+	0x103e0  func <stripped> // getter 
+	0x10420  func <stripped> // setter 
+	0x10460  func <stripped> // modifyCoroutine 
+	0x104c0  func <stripped> // getter 
+	0x105a0  func <stripped> // getter 
+	0x105e0  func <stripped> // setter 
+	0x10620  func <stripped> // modifyCoroutine 
+	0x10790  func <stripped> // getter 
+	0x107f0  func <stripped> // setter 
+	0x10860  func <stripped> // modifyCoroutine 
+	0x10c40  func <stripped> // method 
+	0x10c50  func <stripped> // method 
+ }
+
+ class HealthProfile.FeaturesDataSource {
+ class HealthProfile.MedicalDetailsDataSource {
+ class HealthProfile.OrganDonationRegisteredViewController {
+ class HealthProfile.OrganDonationRegisteredDataSource {
  struct HealthProfile.HeaderItem {
 
 	// Properties
@@ -236,17 +294,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var presentingViewController : UIViewController?
 
 	// ObjC -> Swift bridged methods
-	0xe6d0  @objc EditItem.listenForMedicalIDUpdatesWithNotification: <stripped>
-	0xe8b0  @objc EditItem.init <stripped>
-	0xe7c0  @objc EditItem..cxx_destruct <stripped>
+WARNING: couldn't find address 0x6700000159f8 (0x700000159f8) in binary!
+	0x50e8  @objc EditItem.(null) <stripped>
+WARNING: couldn't find address 0x50e400015628 (0xe400015628) in binary!
+	0x38000000c  @objc EditItem.(null) <stripped>
+WARNING: couldn't find address 0x50cc00015608 (0xcc00015608) in binary!
+	0x50b8  @objc EditItem.(null) <stripped>
 
 	// Swift methods
-	0xdfd0  func OrganDonationRegisteredDataSource.EditItem.reuseIdentifier.getter // getter 
-	0xe020  func OrganDonationRegisteredDataSource.EditItem.reuseIdentifier.setter // setter 
-	0xe070  func OrganDonationRegisteredDataSource.EditItem.reuseIdentifier.modify // modifyCoroutine 
-	0xe0e0  func OrganDonationRegisteredDataSource.EditItem.tableView(_:viewController:didSelectRowAt:) // method 
-	0xe170  func <stripped> // method 
-	0xe490  func <stripped> // method 
+	0x136f0  func <stripped> // getter 
+	0x13740  func <stripped> // setter 
+	0x13790  func <stripped> // modifyCoroutine 
+	0x137e0  func <stripped> // method 
+	0x13870  func <stripped> // method 
+	0x13c60  func <stripped> // method 
  }
 
  class HealthProfile.MeContactCache : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -254,13 +315,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var contact : CNContact?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lock : ˘A
+	var lock : ıZ
 	var currentOperation : FetchMeContactOperation
 
 	// Swift methods
-	0xf2b0  func MeContactCache.contact.getter // getter 
-	0xf330  func <stripped> // method 
-	0xf130  class func <stripped> // init 
+	0x14a70  func <stripped> // getter 
  }
 
  class HealthProfile.FetchMeContactOperation : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
@@ -269,259 +328,449 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var contact : CNContact?
 
 	// ObjC -> Swift bridged methods
-	0xfa10  @objc FetchMeContactOperation.main <stripped>
-	0xfa90  @objc FetchMeContactOperation.init <stripped>
-	0xfa70  @objc FetchMeContactOperation..cxx_destruct <stripped>
+WARNING: couldn't find address 0x50cc00015608 (0xcc00015608) in binary!
+	0x50b8  @objc FetchMeContactOperation.(null) <stripped>
+WARNING: couldn't find address 0x50b4000155f8 (0xb4000155f8) in binary!
+	0x68000000c  @objc FetchMeContactOperation.(null) <stripped>
+WARNING: couldn't find address 0x787600015a38 (0x7600015a38) in binary!
+	0x7878  @objc FetchMeContactOperation.(null) <stripped>
 
 	// Swift methods
-	0xf400  func <stripped> // getter 
-	0xf440  func <stripped> // setter 
-	0xf490  func <stripped> // modifyCoroutine 
  }
 
- class HealthProfile.ProfilePrivacyExportDataSource : type metadata for MutableArrayDataSource /System/Library/PrivateFrameworks/HealthExperience.framework/HealthExperience {
+ class HealthProfile.OrganDonationButtonCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_profileNameSection : ìC // +0x50 (0x28)
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_medicalDetailSection : ìC // +0x78 (0x28)
-	let researchStudiesItem : ResearchStudySourcesItem // +0xa0 (0x20)
-	let appSourcesItem : AppSourcesItem // +0xc0 (0x20)
-
-	// Swift methods
-	0x101c0  func <stripped> // getter 
-	0x10320  func <stripped> // setter 
-	0x10360  func <stripped> // modifyCoroutine 
-	0x10560  func <stripped> // getter 
-	0x10780  func <stripped> // setter 
-	0x107d0  func <stripped> // modifyCoroutine 
-	0x10bc0  class func ProfilePrivacyExportDataSource.__allocating_init() // init 
- }
-
- struct HealthProfile.AppSourcesItem {
-
-	// Properties
-	var reuseIdentifier : String // +0x0
-	var title : String // +0x10
- }
-
- struct HealthProfile.DeviceSourcesItem {
-
-	// Properties
-	var reuseIdentifier : String // +0x0
-	var title : String // +0x10
- }
-
- struct HealthProfile.ResearchStudySourcesItem {
-
-	// Properties
-	var reuseIdentifier : String // +0x0
-	var title : String // +0x10
- }
-
- struct HealthProfile.ExportItem {
-
-	// Properties
-	var reuseIdentifier : String // +0x0
-	var title : String // +0x10
- }
-
- class HealthProfile.OrganDonationProfileDataSource : NSObject /usr/lib/libobjc.A.dylib {
-
-	// Properties
-	var reuseIdentifier : String // +0x8 (0x10)
-	var title : String // +0x18 (0x10)
+	var item : }b
 
 	// ObjC -> Swift bridged methods
-	0x134f0  @objc OrganDonationProfileDataSource.init <stripped>
-	0x13360  @objc OrganDonationProfileDataSource..cxx_destruct <stripped>
+WARNING: couldn't find address 0x787600015a38 (0x7600015a38) in binary!
+	0x7878  @objc OrganDonationButtonCell.(null) <stripped>
+WARNING: couldn't find address 0x5084000157b8 (0x84000157b8) in binary!
+	0x64e6  @objc OrganDonationButtonCell.(null) <stripped>
+WARNING: couldn't find address 0x64da000159d0 (0x4da000159d0) in binary!
+	0x5060  @objc OrganDonationButtonCell.(null) <stripped>
+WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
+	0x56cffff4098  @objc OrganDonationButtonCell.(null) <stripped>
+	0x544ffff40c0  @objc OrganDonationButtonCell.LâÊLâ˙LãµXˇˇˇLâÒLãm»ËÂ" <stripped>
+	0x51cffff40e8  @objc OrganDonationButtonCell.ﬁLâÍHã]êIâ›MâHâŸË0# <stripped>
 
 	// Swift methods
-	0x13010  func OrganDonationProfileDataSource.reuseIdentifier.getter // getter 
-	0x13030  func OrganDonationProfileDataSource.reuseIdentifier.setter // setter 
-	0x13050  func OrganDonationProfileDataSource.reuseIdentifier.modify // modifyCoroutine 
-	0x13140  func OrganDonationProfileDataSource.title.getter // getter 
-	0x131b0  func OrganDonationProfileDataSource.title.setter // setter 
-	0x13220  func OrganDonationProfileDataSource.title.modify // modifyCoroutine 
-	0x13260  class func <stripped> // method 
-	0x13290  func OrganDonationProfileDataSource.selectItem(for:) // method 
  }
 
- class HealthProfile.ActivityIndicatorDetailFooterView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+ class HealthProfile.DeviceSourcesDataSourceItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
+	let uniqueIdentifier : String
+	var text : String?
+	var detailText : String?
+	var showDisclosureIndicator : Bool
+	var healthStore : HKHealthStore
+	var reuseIdentifier : String
+
+	// Swift methods
+	0x16180  func <stripped> // getter 
+	0x161c0  func <stripped> // setter 
+	0x16200  func <stripped> // modifyCoroutine 
+	0x162e0  func <stripped> // getter 
+	0x16320  func <stripped> // setter 
+	0x16360  func <stripped> // modifyCoroutine 
+	0x16420  func <stripped> // getter 
+	0x16450  func <stripped> // setter 
+	0x16480  func <stripped> // modifyCoroutine 
+	0x16550  func <stripped> // getter 
+	0x16590  func <stripped> // setter 
+	0x165d0  func <stripped> // modifyCoroutine 
+	0x16880  func <stripped> // method 
+ }
+
+ class HealthProfile.ExportDataSource {
+ struct HealthProfile.StopReceivingProfileNotificationUserInfo {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var profileUUID : Y
+ }
+
+ enum HealthProfile.UserInfoDecodingError {
+
+	// Properties
+	case noUserInfoFound  
+	case noProfileUUIDFound  
+	case invalidProfileUUIDValueType  
+	case invalidProfileUUIDString  
+ }
+
+ enum HealthProfile.UserInfoKeys {
+
+	// Properties
+	case profileUUID  
+ }
+
+ class HealthProfile.PrimaryProfileAvatarDataSource {
+ class HealthProfile.PrivacyDataSource {
+ class HealthProfile.OrganDonationDataSourceItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let uniqueIdentifier : String
+	var text : String?
+	var detailText : String?
+	var showDisclosureIndicator : Bool
+	var reuseIdentifier : String
+
+	// Swift methods
+	0x19e70  func <stripped> // getter 
+	0x19eb0  func <stripped> // setter 
+	0x19ef0  func <stripped> // modifyCoroutine 
+	0x19fd0  func <stripped> // getter 
+	0x1a010  func <stripped> // setter 
+	0x1a050  func <stripped> // modifyCoroutine 
+	0x1a110  func <stripped> // getter 
+	0x1a140  func <stripped> // setter 
+	0x1a170  func <stripped> // modifyCoroutine 
+	0x1a240  func <stripped> // getter 
+	0x1a280  func <stripped> // setter 
+	0x1a2c0  func <stripped> // modifyCoroutine 
+	0x1a2f0  func <stripped> // method 
+ }
+
+ class HealthProfile.CloudSyncDataSourceItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let uniqueIdentifier : String // +0x10 (0x10)
+	var titleLabel : String // +0x20 (0x10)
+	var detailLabel : String // +0x30 (0x10)
+	var action : CloudSyncAction // +0x0 (0x0)
+	var animateCloudSync : Bool? // +0x45545f5f (0x1)
+	var reuseIdentifier : String // +0x0 (0x10)
+
+	// Swift methods
+ }
+
+ class HealthProfile.ExportDataSourceItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let uniqueIdentifier : String
+	var text : String?
+	var detailText : String?
+	var reuseIdentifier : String
+	var healthStore : HKHealthStore
+
+	// Swift methods
+	0x1afb0  func <stripped> // getter 
+	0x1aff0  func <stripped> // setter 
+	0x1b030  func <stripped> // modifyCoroutine 
+	0x1b110  func <stripped> // getter 
+	0x1b150  func <stripped> // setter 
+	0x1b190  func <stripped> // modifyCoroutine 
+	0x1b1d0  func <stripped> // getter 
+	0x1b2b0  func <stripped> // getter 
+	0x1b2f0  func <stripped> // setter 
+	0x1b330  func <stripped> // modifyCoroutine 
+	0x1b5c0  func <stripped> // method 
+ }
+
+ class HealthProfile.CloudSyncDataSource {
+ class HealthProfile.ActivityIndicatorDetailView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+	var titleStackView : weak UIStackView?
 	var titleLabel : weak UILabel?
 	var detailTextView : weak UITextView?
 	var activityIndicatorView : weak UIActivityIndicatorView?
-	var action : Action
+	var action : CloudSyncAction
 
 	// ObjC -> Swift bridged methods
-	0x13800  @objc ActivityIndicatorDetailFooterView.titleLabel <stripped>
-	0x13820  @objc ActivityIndicatorDetailFooterView.setTitleLabel: <stripped>
-	0x13840  @objc ActivityIndicatorDetailFooterView.detailTextView <stripped>
-	0x13860  @objc ActivityIndicatorDetailFooterView.setDetailTextView: <stripped>
-	0x13880  @objc ActivityIndicatorDetailFooterView.activityIndicatorView <stripped>
-	0x138a0  @objc ActivityIndicatorDetailFooterView.setActivityIndicatorView: <stripped>
-	0x13a60  @objc ActivityIndicatorDetailFooterView.awakeFromNib <stripped>
-	0x14b00  @objc ActivityIndicatorDetailFooterView.initWithFrame: <stripped>
-	0x14b30  @objc ActivityIndicatorDetailFooterView.initWithCoder: <stripped>
-	0x148a0  @objc ActivityIndicatorDetailFooterView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x504400015580 (0x4400015580) in binary!
+	0x6644  @objc ActivityIndicatorDetailView.(null) <stripped>
+WARNING: couldn't find address 0x502c00015558 (0x2c00015558) in binary!
+	0x662c  @objc ActivityIndicatorDetailView.(null) <stripped>
+WARNING: couldn't find address 0x501400015530 (0x1400015530) in binary!
+	0x6614  @objc ActivityIndicatorDetailView.(null) <stripped>
+WARNING: couldn't find address 0x4ffc00015508 (0x7fc00015508) in binary!
+	0x65fc  @objc ActivityIndicatorDetailView.(null) <stripped>
+WARNING: couldn't find address 0x4fec00015720 (0x7ec00015720) in binary!
+	0x46e0  @objc ActivityIndicatorDetailView.(null) <stripped>
+WARNING: couldn't find address 0x77bc00015710 (0x7bc00015710) in binary!
+	0x4fc8  @objc ActivityIndicatorDetailView.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xffff5000  @objc ActivityIndicatorDetailView.(null) <stripped>
+WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
+	0x58cffff6a78  @objc ActivityIndicatorDetailView.(null) <stripped>
+	0x4bcffff6bc0  @objc ActivityIndicatorDetailView.AUATSHÉÏH∆E∞ <stripped>
+	0x74c000156a0  @objc ActivityIndicatorDetailView. <stripped>
+WARNING: couldn't find address 0x15554ffff9380 (0x554ffff9380) in binary!
+	0x64c00015580  @objc ActivityIndicatorDetailView.(null) <stripped>
+WARNING: couldn't find address 0x159ccffff9988 (0x1ccffff9988) in binary!
+	0x73400015478  @objc ActivityIndicatorDetailView.(null) <stripped>
 
 	// Swift methods
-	0x13a90  func <stripped> // method 
-	0x13c20  func <stripped> // method 
-	0x13dc0  func <stripped> // method 
+	0x1dde0  func <stripped> // method 
+	0x1df30  func <stripped> // method 
+	0x1e1c0  func <stripped> // method 
  }
 
- struct HealthProfile.Action {
+ struct HealthProfile.CloudSyncAction {
 
 	// Properties
 	var title : String
-	var target : Target
+	var target : CloudSyncTarget
  }
 
- enum HealthProfile.Target {
+ enum HealthProfile.CloudSyncTarget {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case url : q@
-	case block : Action
+	case url : QW
+	case block : CloudSyncAction
  }
 
  class HealthProfile.LastBackedUpDateFormatter : NSFormatter /System/Library/Frameworks/Foundation.framework/Foundation {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let calendar : Â? // +0x6d617246 (0x0)
+	let calendar : [W // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-	0x16c80  @objc LastBackedUpDateFormatter.stringForObjectValue: <stripped>
-	0x16dc0  @objc LastBackedUpDateFormatter.init <stripped>
-	0x16e60  @objc LastBackedUpDateFormatter.initWithCoder: <stripped>
-	0x16d70  @objc LastBackedUpDateFormatter..cxx_destruct <stripped>
+WARNING: couldn't find address 0x778400015490 (0x78400015490) in binary!
+	0x4f88  @objc LastBackedUpDateFormatter.(null) <stripped>
+WARNING: couldn't find address 0x776c000156c0 (0x76c000156c0) in binary!
+	0x4f78  @objc LastBackedUpDateFormatter.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x554ffff9380  @objc LastBackedUpDateFormatter.(null) <stripped>
+	0x1ccffff9988  @objc LastBackedUpDateFormatter.UHâÂLâÔ]ÈS˚ <stripped>
 
 	// Swift methods
-	0x16220  func <stripped> // method 
-	0x162a0  func <stripped> // method 
-	0x16680  func <stripped> // method 
-	0x16990  func <stripped> // method 
+	0x1fc10  func <stripped> // method 
+	0x1fff0  func <stripped> // method 
+	0x20310  func <stripped> // method 
  }
 
- class HealthProfile.ProfileBasicCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
+ class HealthProfile.AppSourcesDataSourceItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : uE // +0x8 (0x28)
-
-	// ObjC -> Swift bridged methods
-	0x17730  @objc ProfileBasicCell.initWithStyle:reuseIdentifier: <stripped>
-	0x17810  @objc ProfileBasicCell.initWithCoder: <stripped>
-	0x17bb0  @objc ProfileBasicCell.awakeFromNib <stripped>
-	0x180c0  @objc ProfileBasicCell..cxx_destruct <stripped>
+	let uniqueIdentifier : String
+	var text : String?
+	var detailText : String?
+	var showDisclosureIndicator : Bool
+	var healthStore : HKHealthStore
+	var reuseIdentifier : String
 
 	// Swift methods
-	0x17e70  func <stripped> // getter 
-	0x17eb0  func <stripped> // setter 
-	0x17f30  func <stripped> // modifyCoroutine 
+	0x211f0  func <stripped> // getter 
+	0x21230  func <stripped> // setter 
+	0x21270  func <stripped> // modifyCoroutine 
+	0x21350  func <stripped> // getter 
+	0x21390  func <stripped> // setter 
+	0x213d0  func <stripped> // modifyCoroutine 
+	0x21490  func <stripped> // getter 
+	0x214c0  func <stripped> // setter 
+	0x214f0  func <stripped> // modifyCoroutine 
+	0x215c0  func <stripped> // getter 
+	0x21600  func <stripped> // setter 
+	0x21640  func <stripped> // modifyCoroutine 
+	0x21900  func <stripped> // method 
+	0x21910  func <stripped> // method 
  }
 
  class HealthProfile.MeContactAvatarView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var defaultAvatarImageSymbolConfiguration : _UIImageSymbolConfiguration
+	var defaultAvatarImageSymbolConfiguration : UIImageSymbolConfiguration
 	var contactsAvatarViewController : CNAvatarViewController?
 	var defaultAvatarImageView : UIImageView?
+	let avatarSize : Size
 
 	// ObjC -> Swift bridged methods
-	0x18660  @objc MeContactAvatarView.meContactCacheDidUpdateWithNotification: <stripped>
-	0x18e00  @objc MeContactAvatarView.initWithCoder: <stripped>
-	0x19000  @objc MeContactAvatarView.initWithFrame: <stripped>
-	0x19140  @objc MeContactAvatarView.didUpdateContentForAvatarViewController: <stripped>
-	0x19240  @objc MeContactAvatarView..cxx_destruct <stripped>
+WARNING: couldn't find address 0x652000015998 (0x52000015998) in binary!
+	0x76f8  @objc MeContactAvatarView.(null) <stripped>
+WARNING: couldn't find address 0x6508000153f0 (0x508000153f0) in binary!
+	0x45f8  @objc MeContactAvatarView.(null) <stripped>
+WARNING: couldn't find address 0x4eec00015430 (0x6ec00015430) in binary!
+	0xa8000000c  @objc MeContactAvatarView.(null) <stripped>
+WARNING: couldn't find address 0x4ecc000153b8 (0x6cc000153b8) in binary!
+	0x64cc  @objc MeContactAvatarView.(null) <stripped>
+WARNING: couldn't find address 0x4eb400015390 (0x6b400015390) in binary!
+	0x64b4  @objc MeContactAvatarView.(null) <stripped>
 
 	// Swift methods
-	0x18200  func <stripped> // getter 
-	0x18240  func <stripped> // setter 
-	0x18290  func <stripped> // modifyCoroutine 
-	0x182f0  func <stripped> // method 
-	0x186b0  func <stripped> // method 
-	0x18b40  func <stripped> // method 
-	0x19020  func MeContactAvatarView.fetchAvatarImageFromContacts() // method 
-	0x190b0  func MeContactAvatarView.didUpdateContent(for:) // method 
+	0x22110  func <stripped> // method 
+	0x22520  func <stripped> // method 
+	0x228c0  func <stripped> // method 
+	0x21ef0  class func MeContactAvatarView.__allocating_init(for:) // init 
+	0x22d10  func <stripped> // method 
+	0x22d40  func <stripped> // method 
+ }
+
+ enum HealthProfile.Size {
+
+	// Properties
+	case header  
+	case navigationBar  
  }
 
  class HealthProfile.ProfileBarButton : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var $__lazy_storage_$_meContactView : MeContactAvatarView
-	var gestureRecognizer : UITapGestureRecognizer?
+	var $__lazy_storage_$_meContactView : MeContactAvatarView // +0x8 (0x8)
+	var gestureRecognizer : UITapGestureRecognizer? // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x19550  @objc ProfileBarButton.initWithCoder: <stripped>
-	0x19690  @objc ProfileBarButton.init <stripped>
-	0x19be0  @objc ProfileBarButton.initWithFrame: <stripped>
-	0x19d70  @objc ProfileBarButton.openProfileViewControllerWithSender: <stripped>
-	0x19e40  @objc ProfileBarButton..cxx_destruct <stripped>
+WARNING: couldn't find address 0x774c000156a0 (0x74c000156a0) in binary!
+	0x4f50  @objc ProfileBarButton.(null) <stripped>
+WARNING: couldn't find address 0x464c00015580 (0x64c00015580) in binary!
+	0x6544  @objc ProfileBarButton.(null) <stripped>
+WARNING: couldn't find address 0x4f3400015478 (0x73400015478) in binary!
+	0x58000000c  @objc ProfileBarButton.(null) <stripped>
+WARNING: couldn't find address 0x652000015998 (0x52000015998) in binary!
+	0x76f8  @objc ProfileBarButton.(null) <stripped>
+WARNING: couldn't find address 0x6508000153f0 (0x508000153f0) in binary!
+	0x45f8  @objc ProfileBarButton.(null) <stripped>
 
 	// Swift methods
-	0x19290  func <stripped> // getter 
-	0x19340  func <stripped> // setter 
-	0x19360  func <stripped> // modifyCoroutine 
-	0x19470  func <stripped> // getter 
-	0x194b0  func <stripped> // setter 
-	0x19500  func <stripped> // modifyCoroutine 
-	0x19c30  func <stripped> // method 
+	0x22f00  func <stripped> // getter 
+	0x235d0  func <stripped> // method 
  }
 
- class HealthProfile.OrganDonationCell : ProfileBasicCell {
+ class HealthProfile.OrganDonationCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var organDonationLogoImage : weak UIImageView? // +0x30 (0x8)
-	var title : weak UILabel? // +0x38 (0x8)
-	var subtitle : weak UILabel? // +0x40 (0x8)
+	var organDonationLogoImage : weak UIImageView?
+	var title : weak UILabel?
+	var subtitle : weak UILabel?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var item : }b
 
 	// ObjC -> Swift bridged methods
-	0x1a3a0  @objc OrganDonationCell.organDonationLogoImage <stripped>
-	0x1a3e0  @objc OrganDonationCell.setOrganDonationLogoImage: <stripped>
-	0x1a500  @objc OrganDonationCell.title <stripped>
-	0x1a540  @objc OrganDonationCell.setTitle: <stripped>
-	0x1a5f0  @objc OrganDonationCell.subtitle <stripped>
-	0x1a6a0  @objc OrganDonationCell.setSubtitle: <stripped>
-	0x1aa60  @objc OrganDonationCell.awakeFromNib <stripped>
-	0x1ab40  @objc OrganDonationCell.initWithStyle:reuseIdentifier: <stripped>
-	0x1aba0  @objc OrganDonationCell.initWithCoder: <stripped>
-	0x1ab00  @objc OrganDonationCell..cxx_destruct <stripped>
+WARNING: couldn't find address 0x4ecc000153b8 (0x6cc000153b8) in binary!
+	0x64cc  @objc OrganDonationCell.(null) <stripped>
+WARNING: couldn't find address 0x4eb400015390 (0x6b400015390) in binary!
+	0x64b4  @objc OrganDonationCell.(null) <stripped>
+WARNING: couldn't find address 0x4e9c00015370 (0x69c00015370) in binary!
+	0x649c  @objc OrganDonationCell.(null) <stripped>
+WARNING: couldn't find address 0x766600015828 (0x66600015828) in binary!
+	0x7668  @objc OrganDonationCell.(null) <stripped>
+WARNING: couldn't find address 0x4e74000155a8 (0x674000155a8) in binary!
+	0x4e68  @objc OrganDonationCell.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x1dcffffd320  @objc OrganDonationCell.(null) <stripped>
+	0x56cffffd578  @objc OrganDonationCell.√fÑ <stripped>
+	0xffffd6e0  @objc OrganDonationCell.ˇˇfD <stripped>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	0x5483a4d4152  @objc OrganDonationCell.(null) <stripped>
+WARNING: couldn't find address 0x6c69666f72506874 (0x66f72506874) in binary!
+	0x165483a5443  @objc OrganDonationCell.(null) <stripped>
 
 	// Swift methods
-	0x1a3c0  func <stripped> // getter 
-	0x1a400  func <stripped> // setter 
-	0x1a420  func <stripped> // modifyCoroutine 
-	0x1a520  func <stripped> // getter 
-	0x1a560  func <stripped> // setter 
-	0x1a580  func <stripped> // modifyCoroutine 
-	0x1a650  func <stripped> // getter 
-	0x1a700  func <stripped> // setter 
-	0x1a770  func <stripped> // modifyCoroutine 
  }
+
+ class HealthProfile.StopReceivingProfileDataSource {
+ class HealthProfile.StopReceivingProfileFlow : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var delegate : StopReceivingProfileFlowDelegate
+	let participantManager : HKCloudSyncShareParticipantManager
+	let profileIdentifier : HKProfileIdentifier
+	let firstName : String?
+
+	// Swift methods
+	0x24d60  func <stripped> // method 
+	0x25250  func <stripped> // method 
+ }
+
+ class HealthProfile.ResearchStudySourcesDataSourceItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let uniqueIdentifier : String
+	var text : String?
+	var detailText : String?
+	var showDisclosureIndicator : Bool
+	var healthStore : HKHealthStore
+	var reuseIdentifier : String
+
+	// Swift methods
+	0x258b0  func <stripped> // getter 
+	0x258f0  func <stripped> // setter 
+	0x25930  func <stripped> // modifyCoroutine 
+	0x25a10  func <stripped> // getter 
+	0x25a50  func <stripped> // setter 
+	0x25a90  func <stripped> // modifyCoroutine 
+	0x25b50  func <stripped> // getter 
+	0x25b80  func <stripped> // setter 
+	0x25bb0  func <stripped> // modifyCoroutine 
+	0x25c80  func <stripped> // getter 
+	0x25cc0  func <stripped> // setter 
+	0x25d00  func <stripped> // modifyCoroutine 
+	0x25fb0  func <stripped> // method 
+	0x25fc0  func <stripped> // method 
+ }
+
+ struct HealthProfile.ProfileDeepLinkingHandler { }
 
  class HealthProfile.OrganDonationStatusViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
-	var currentChildViewController : UIViewController? // +0x8 (0x8)
+	var currentChildViewController : UIViewController?
 
 	// ObjC -> Swift bridged methods
-	0x1b2d0  @objc OrganDonationStatusViewController.viewDidLoad <stripped>
-	0x1b300  @objc OrganDonationStatusViewController.viewWillAppear: <stripped>
-	0x1b670  @objc OrganDonationStatusViewController.initWithNibName:bundle: <stripped>
-	0x1b750  @objc OrganDonationStatusViewController.initWithCoder: <stripped>
-	0x1b5e0  @objc OrganDonationStatusViewController..cxx_destruct <stripped>
+WARNING: couldn't find address 0x4e54000155a0 (0x654000155a0) in binary!
+	0x5616  @objc OrganDonationStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x7d86000156e8 (0x586000156e8) in binary!
+	0x7618  @objc OrganDonationStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x4e2400015368 (0x62400015368) in binary!
+	0x0  @objc OrganDonationStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
+	0x66f72506874  @objc OrganDonationStatusViewController.(null) <stripped>
+WARNING: couldn't find address 0x454a4f5250202065 (0x75250202065) in binary!
+	0x1666f725068  @objc OrganDonationStatusViewController.(null) <stripped>
 
 	// Swift methods
-	0x1ada0  func <stripped> // getter 
-	0x1af00  func <stripped> // getter 
-	0x1b0a0  func <stripped> // getter 
-	0x1b0e0  func <stripped> // setter 
-	0x1b130  func <stripped> // modifyCoroutine 
-	0x1b340  func <stripped> // method 
+	0x26c20  func <stripped> // getter 
+	0x26d80  func <stripped> // getter 
+	0x270a0  func <stripped> // method 
+ }
+
+ class HealthProfile.CharacteristicsDataSourceItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let uniqueIdentifier : String
+	var text : String?
+	var detailText : String?
+	var showDisclosureIndicator : Bool
+	var reuseIdentifier : String
+	var healthStore : HKHealthStore
+
+	// Swift methods
+ }
+
+ class HealthProfile.ProfileAvatarDataSourceItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var reuseIdentifier : String
+	var name : String?
+	var healthStore : HKHealthStore
+
+	// Swift methods
+	0x27990  func <stripped> // getter 
+ }
+
+ class HealthProfile.StopReceivingProfileItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let uniqueIdentifier : String // +0x10 (0x10)
+	let reuseIdentifier : String // +0x20 (0x10)
+	let text : String? // +0x30 (0x10)
+	let detailText : String? // +0x40 (0x10)
+	let buttonLabelColor : UIColor // +0x50 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let deselectionBehavior : #Y // +0x80000408 (0x0)
+	let healthStore : HKHealthStore // +0x0 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let profileInformation : πc // +0x0 (0x28)
+	let participantManager : HKCloudSyncShareParticipantManager // +0x0 (0x8)
+	var currentStopReceivingProfileFlow : StopReceivingProfileFlow // +0x0 (0x8)
+	var isFlowCurrentlyPresented : Bool // +0x0 (0x1)
+
+	// Swift methods
  }

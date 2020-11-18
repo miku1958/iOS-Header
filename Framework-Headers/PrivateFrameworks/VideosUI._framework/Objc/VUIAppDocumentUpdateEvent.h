@@ -10,7 +10,6 @@
 
 @class NSDictionary, VUIAppDocumentUpdateEventDescriptor;
 
-__attribute__((visibility("hidden")))
 @interface VUIAppDocumentUpdateEvent : NSObject <NSCopying>
 {
     VUIAppDocumentUpdateEventDescriptor *_descriptor;

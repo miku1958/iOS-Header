@@ -11,6 +11,7 @@
 }
 
 - (id)commandBuffer;
+- (id)commandBufferWithDescriptor:(id)arg1;
 - (id)commandBufferWithUnretainedReferences;
 - (void)insertDebugCaptureBoundary;
 

@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
 #import <SoundAnalysis/SNConfidenceProviding-Protocol.h>
 #import <SoundAnalysis/SNConfidenceProvidingWritable-Protocol.h>
 #import <SoundAnalysis/SNTimeRangeProviding-Protocol.h>
@@ -13,23 +15,27 @@
 
 @class NSString;
 
-@interface SNAudioOffsetResult : NSObject <SNTimeRangeProvidingWritable, SNConfidenceProvidingWritable, SNTimeRangeProviding, SNConfidenceProviding>
+@interface SNAudioOffsetResult : NSObject <NSCopying, NSSecureCoding, SNTimeRangeProvidingWritable, SNConfidenceProvidingWritable, SNTimeRangeProviding, SNConfidenceProviding>
 {
-    double confidence;
+    double _confidence;
     double _offset;
-    CDStruct_e83c9415 timeRange;
+    CDStruct_e83c9415 _timeRange;
 }
 
-@property (readonly, nonatomic) double confidence;
+@property (nonatomic) double confidence; // @synthesize confidence=_confidence;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double offset; // @synthesize offset=_offset;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) CDStruct_e83c9415 timeRange;
+@property (nonatomic) CDStruct_e83c9415 timeRange; // @synthesize timeRange=_timeRange;
 
-- (void)setConfidence:(double)arg1;
-- (void)setTimeRange:(CDStruct_e83c9415)arg1;
++ (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToAudioOffsetResult:(id)arg1;
 
 @end
 

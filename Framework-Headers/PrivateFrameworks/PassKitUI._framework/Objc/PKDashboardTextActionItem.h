@@ -27,6 +27,7 @@
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
++ (id)identifier;
 - (void).cxx_destruct;
 
 @end

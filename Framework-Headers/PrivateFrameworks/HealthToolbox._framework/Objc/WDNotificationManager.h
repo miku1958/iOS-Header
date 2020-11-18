@@ -8,13 +8,13 @@
 
 #import <HealthToolbox/UNUserNotificationCenterDelegate-Protocol.h>
 
-@class HKHealthStore, NSMutableDictionary, NSString, UNUserNotificationCenter;
+@class HKHealthStore, HKNotificationStore, NSMutableDictionary, NSString;
 
 @interface WDNotificationManager : NSObject <UNUserNotificationCenterDelegate>
 {
-    UNUserNotificationCenter *_notificationCenter;
     struct os_unfair_lock_s _lock;
     NSMutableDictionary *_domainsToPolicies;
+    HKNotificationStore *_notificationStore;
     HKHealthStore *_healthStore;
 }
 

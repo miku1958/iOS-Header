@@ -21,6 +21,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)initFromResourceDepot:(id)arg1;
 - (id)initWithRoutine:(id)arg1;
 - (BOOL)suggestShortcutsOfType:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 

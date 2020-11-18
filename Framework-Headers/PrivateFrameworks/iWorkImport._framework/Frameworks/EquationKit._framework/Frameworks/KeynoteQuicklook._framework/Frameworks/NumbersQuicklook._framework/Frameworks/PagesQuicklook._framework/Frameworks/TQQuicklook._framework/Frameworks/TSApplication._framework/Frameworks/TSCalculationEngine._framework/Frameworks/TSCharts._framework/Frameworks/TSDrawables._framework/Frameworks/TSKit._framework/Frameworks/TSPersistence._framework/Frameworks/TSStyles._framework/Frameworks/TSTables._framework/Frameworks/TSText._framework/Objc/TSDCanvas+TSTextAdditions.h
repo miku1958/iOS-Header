@@ -7,9 +7,6 @@
 #import <TSDrawables/TSDCanvas.h>
 
 @interface TSDCanvas (TSTextAdditions)
-
-@property (readonly, nonatomic) BOOL tswp_isLayoutComplete;
-
 - (id)textRendererForLayer:(id)arg1 context:(struct CGContext *)arg2;
 @end
 

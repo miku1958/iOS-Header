@@ -10,10 +10,8 @@
 
 @interface CPLPullFromTransportTask : CPLEngineMultiscopeSyncTask
 {
-    CPLScopeFilter *_scopeFilter;
+    CPLScopeFilter *_additionalScopeFilter;
 }
-
-@property (strong, nonatomic) CPLScopeFilter *scopeFilter; // @synthesize scopeFilter=_scopeFilter;
 
 - (void).cxx_destruct;
 - (id)enumerateScopesForTaskInTransaction:(id)arg1;

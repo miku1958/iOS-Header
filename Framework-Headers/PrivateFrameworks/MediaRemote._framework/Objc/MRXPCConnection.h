@@ -22,9 +22,9 @@
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) CDUnknownBlockType messageHandler; // @synthesize messageHandler=_messageHandler;
 @property (readonly, nonatomic) int pid;
+@property (readonly, nonatomic) unsigned int uid;
 
 - (void).cxx_destruct;
-- (void)_registerCallbacks;
 - (void)addCustomXPCHandler:(CDUnknownBlockType)arg1 forKey:(unsigned long long)arg2;
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1 queue:(id)arg2;

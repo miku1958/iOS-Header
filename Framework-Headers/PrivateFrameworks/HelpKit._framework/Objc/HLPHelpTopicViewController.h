@@ -11,7 +11,7 @@
 #import <HelpKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <HelpKit/WKNavigationDelegate-Protocol.h>
 
-@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocale, HLPHelpTopicHistoryItem, HLPHelpUsageController, NSArray, NSCache, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSString, NSURL, TPSURLSessionItem, UIBarButtonItem, WKWebView;
+@class HLPHelpBookController, HLPHelpLoadingView, HLPHelpLocale, HLPHelpTopicHistoryItem, NSArray, NSCache, NSLayoutConstraint, NSMutableArray, NSMutableDictionary, NSString, NSURL, TPSURLSessionItem, UIBarButtonItem, WKWebView;
 @protocol HLPHelpTopicViewControllerDelegate;
 
 @interface HLPHelpTopicViewController : UIViewController <UIGestureRecognizerDelegate, WKNavigationDelegate, HLPHelpTopicViewControllerDelegate, HLPHelpLoadingViewDelegate>
@@ -21,7 +21,6 @@
     BOOL _webViewLoaded;
     BOOL _RTL;
     HLPHelpBookController *_helpBookController;
-    NSString *_assetHostOverride;
     NSMutableArray *_topicHistory;
     UIBarButtonItem *_tocBarButtonItem;
     UIBarButtonItem *_backBarButtonItem;
@@ -31,13 +30,13 @@
     BOOL _displayHelpTopicsOnly;
     BOOL _hideDoneButton;
     BOOL _showTopicNameAsTitle;
+    BOOL _darkModeEnabled;
     id<HLPHelpTopicViewControllerDelegate> _delegate;
     NSURL *_helpBookURL;
     WKWebView *_webView;
     HLPHelpLocale *_locale;
     HLPHelpTopicHistoryItem *_currentTopicHistoryItem;
     HLPHelpLoadingView *_loadingView;
-    HLPHelpUsageController *_usageController;
     TPSURLSessionItem *_URLSessionItem;
     NSCache *_topicCache;
     NSArray *_searchTerms;
@@ -46,6 +45,7 @@
 
 @property (strong, nonatomic) TPSURLSessionItem *URLSessionItem; // @synthesize URLSessionItem=_URLSessionItem;
 @property (strong, nonatomic) HLPHelpTopicHistoryItem *currentTopicHistoryItem; // @synthesize currentTopicHistoryItem=_currentTopicHistoryItem;
+@property (nonatomic) BOOL darkModeEnabled; // @synthesize darkModeEnabled=_darkModeEnabled;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HLPHelpTopicViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -61,11 +61,11 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL supportsDarkMode; // @synthesize supportsDarkMode=_supportsDarkMode;
 @property (strong, nonatomic) NSCache *topicCache; // @synthesize topicCache=_topicCache;
-@property (strong, nonatomic) HLPHelpUsageController *usageController; // @synthesize usageController=_usageController;
 @property (strong, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 @property (strong, nonatomic) NSMutableDictionary *webViewRequestsMap; // @synthesize webViewRequestsMap=_webViewRequestsMap;
 
 - (void).cxx_destruct;
+- (void)_loadWithInfo:(id)arg1;
 - (void)backButtonTapped;
 - (void)contentSizeCategoryDidChange:(id)arg1;
 - (void)dealloc;
@@ -73,21 +73,24 @@
 - (void)forwardButtonTapped;
 - (void)helpTopicViewController:(id)arg1 failToLoadWithError:(id)arg2;
 - (void)helpTopicViewController:(id)arg1 topicLoaded:(id)arg2;
+- (void)helpTopicViewController:(id)arg1 traitCollectionChanged:(id)arg2;
 - (void)helpTopicViewControllerCurrentTopicIsPassionPoint:(id)arg1;
 - (void)helpTopicViewControllerDoneButtonTapped:(id)arg1;
 - (void)helpTopicViewControllerShowHelpBookInfo:(id)arg1;
 - (id)init;
 - (void)loadHTMLString:(id)arg1 anchor:(id)arg2;
 - (void)loadHelpTopicItem:(id)arg1 searchTerms:(id)arg2 anchor:(id)arg3;
-- (void)loadHelpTopicItem:(id)arg1 searchTerms:(id)arg2 anchor:(id)arg3 topicAccessType:(long long)arg4;
+- (void)loadWithInfo:(id)arg1;
 - (void)reloadCurrentTopic;
 - (void)saveCurrentTopicItem;
 - (void)showHelpBookInfo:(id)arg1;
 - (void)showTableOfContent;
 - (void)showWebViewDelay;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateBackgroundColor;
 - (void)updateDoneButton;
 - (void)updateHTMLStringPath:(id)arg1 tag:(id)arg2 attribute:(id)arg3;
+- (void)updateHTMLStringPath:(id)arg1 tag:(id)arg2 attribute:(id)arg3 useScheme:(BOOL)arg4;
 - (void)updateNavigationButtons;
 - (void)updateScrollPositionForCurrentTopicItem;
 - (void)viewDidAppear:(BOOL)arg1;

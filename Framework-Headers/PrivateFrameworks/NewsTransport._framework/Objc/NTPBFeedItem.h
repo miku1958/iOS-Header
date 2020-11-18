@@ -8,7 +8,7 @@
 
 #import <NewsTransport/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores, NSMutableArray, NSString;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats, COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores, NSMutableArray, NSString;
 
 @interface NTPBFeedItem : PBCodable <NSCopying>
 {
@@ -22,6 +22,7 @@
     long long _publisherArticleVersion;
     NSString *_articleID;
     NSString *_clusterID;
+    COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats *_conversionStats;
     NSString *_feedID;
     NSString *_parentIssueID;
     COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleScores *_scores;
@@ -61,6 +62,7 @@
 @property (nonatomic) long long bodyTextLength; // @synthesize bodyTextLength=_bodyTextLength;
 @property (strong, nonatomic) NSString *clusterID; // @synthesize clusterID=_clusterID;
 @property (nonatomic) unsigned long long contentType; // @synthesize contentType=_contentType;
+@property (strong, nonatomic) COMAPPLEFELDSPARPROTOCOLLIVERPOOLArticleConversionStats *conversionStats; // @synthesize conversionStats=_conversionStats;
 @property (nonatomic) unsigned long long feedHalfLifeMilliseconds; // @synthesize feedHalfLifeMilliseconds=_feedHalfLifeMilliseconds;
 @property (strong, nonatomic) NSString *feedID; // @synthesize feedID=_feedID;
 @property (nonatomic) double globalUserFeedback; // @synthesize globalUserFeedback=_globalUserFeedback;
@@ -69,6 +71,7 @@
 @property (nonatomic) BOOL hasBodyTextLength;
 @property (readonly, nonatomic) BOOL hasClusterID;
 @property (nonatomic) BOOL hasContentType;
+@property (readonly, nonatomic) BOOL hasConversionStats;
 @property (nonatomic) BOOL hasFeedHalfLifeMilliseconds;
 @property (readonly, nonatomic) BOOL hasFeedID;
 @property (nonatomic) BOOL hasGlobalUserFeedback;

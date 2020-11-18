@@ -6,7 +6,7 @@
 
 #import <VideosUI/VUIListCollectionViewCell.h>
 
-@class NSObject, NSString, UIStackView, VUIDownloadButton, VUILabel, VUILibraryEpisodeFrameView, VUISeparatorView;
+@class NSObject, NSString, UIStackView, VUIDownloadButton, VUILabel, VUILibraryEpisodeFrameView, VUIMediaItem, VUISeparatorView;
 @protocol VUIMediaEntityAssetController;
 
 __attribute__((visibility("hidden")))
@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
     VUIDownloadButton *_downloadButton;
     VUILabel *_dotSeparatorLabel;
     NSObject<VUIMediaEntityAssetController> *_assetController;
+    VUIMediaItem *_mediaItem;
 }
 
 @property (strong, nonatomic) NSObject<VUIMediaEntityAssetController> *assetController; // @synthesize assetController=_assetController;
@@ -33,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUILabel *durationLabel; // @synthesize durationLabel=_durationLabel;
 @property (strong, nonatomic) UIStackView *episodeInfoStackView; // @synthesize episodeInfoStackView=_episodeInfoStackView;
 @property (strong, nonatomic) VUILibraryEpisodeFrameView *imageFrameView; // @synthesize imageFrameView=_imageFrameView;
+@property (strong, nonatomic) VUIMediaItem *mediaItem; // @synthesize mediaItem=_mediaItem;
 @property (copy, nonatomic) NSString *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property (strong, nonatomic) VUILabel *releaseDateLabel; // @synthesize releaseDateLabel=_releaseDateLabel;
 @property (strong, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;

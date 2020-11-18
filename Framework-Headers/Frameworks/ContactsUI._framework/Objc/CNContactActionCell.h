@@ -20,13 +20,13 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
 @property (strong, nonatomic) CNTransportButton *transportIcon; // @synthesize transportIcon=_transportIcon;
 
++ (BOOL)shouldIndentWhileEditing;
 - (void).cxx_destruct;
 - (id)labelView;
 - (double)minCellHeight;
 - (id)rightMostView;
 - (void)setCardGroupItem:(id)arg1;
 - (void)setLabelTextAttributes:(id)arg1;
-- (BOOL)shouldIndentWhileEditing;
 - (BOOL)shouldPerformDefaultAction;
 - (void)tintColorDidChange;
 - (id)variableConstraints;

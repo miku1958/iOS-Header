@@ -16,6 +16,9 @@ __attribute__((visibility("hidden")))
     double _lastVideoQualityDegradedSwitchTime;
     double _firstDegradedMeasure;
     double _videoDegradedThreshold;
+    double _videoImprovedThreshold;
+    double _videoMinFrameRate;
+    BOOL _shouldUseExitHysteresis;
 }
 
 @property (readonly, nonatomic) BOOL isVideoQualityDegraded; // @synthesize isVideoQualityDegraded=_isVideoQualityDegraded;

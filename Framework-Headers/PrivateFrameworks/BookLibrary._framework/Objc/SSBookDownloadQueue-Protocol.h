@@ -23,6 +23,7 @@
 - (void)cancelAllActiveDownloadsWithCompletion:(void (^)(NSError *))arg1;
 - (void)cancelDownloadWithID:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)pauseDownloadWithID:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
+- (void)processAutomaticDownloadsWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (void)removeObserver:(id)arg1;
 - (void)resumeDownloadWithID:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 @end

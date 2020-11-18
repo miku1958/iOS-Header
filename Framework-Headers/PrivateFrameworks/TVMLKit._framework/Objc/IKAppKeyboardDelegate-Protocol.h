@@ -10,5 +10,8 @@
 
 @protocol IKAppKeyboardDelegate <NSObject>
 - (void)textDidChangeForKeyboard:(IKAppKeyboard *)arg1;
+
+@optional
+- (void)hintsDidChangeForKeyboard:(IKAppKeyboard *)arg1;
 @end
 

@@ -12,27 +12,27 @@
 @interface GKFriendRequestComposeViewController : UINavigationController
 {
     unsigned int _rid;
-    id<GKFriendRequestComposeViewControllerDelegate> _composeViewDelegateWeak;
+    id<GKFriendRequestComposeViewControllerDelegate> _composeViewDelegate;
     NSString *_message;
     unsigned long long _recipientCount;
     UIAlertController *_alertController;
 }
 
 @property (strong, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
-@property (nonatomic) id<GKFriendRequestComposeViewControllerDelegate> composeViewDelegate; // @synthesize composeViewDelegate=_composeViewDelegateWeak;
+@property (weak, nonatomic) id<GKFriendRequestComposeViewControllerDelegate> composeViewDelegate; // @synthesize composeViewDelegate=_composeViewDelegate;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (nonatomic) unsigned long long recipientCount; // @synthesize recipientCount=_recipientCount;
 @property (nonatomic) unsigned int rid; // @synthesize rid=_rid;
 
 + (BOOL)_preventsAppearanceProxyCustomization;
 + (unsigned long long)maxNumberOfRecipients;
+- (void).cxx_destruct;
 - (void)_addRecipientInternals:(id)arg1;
 - (void)_setupChildViewController;
 - (void)addRecipientPlayers:(id)arg1;
 - (void)addRecipientsWithEmailAddresses:(id)arg1;
 - (void)addRecipientsWithPlayerIDs:(id)arg1;
 - (BOOL)automaticallyForwardAppearanceAndRotationMethodsToChildViewControllers;
-- (void)dealloc;
 - (id)init;
 - (void)prepareForNewRecipients:(id)arg1;
 - (void)sendFinishedMessageToDelegateCancelled:(BOOL)arg1;

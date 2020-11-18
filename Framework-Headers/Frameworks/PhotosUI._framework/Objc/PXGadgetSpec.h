@@ -14,10 +14,12 @@
     BOOL _shouldUseAccessibilityLayout;
     long long _scrollAxis;
     double _interItemSpacing;
+    long long _userInterfaceIdiom;
     long long _layoutSizeClass;
     long long _layoutOrientation;
     double _displayScale;
     double _layoutReferenceWidth;
+    double _layoutReferenceHeight;
     UIColor *_backgroundColor;
     struct UIEdgeInsets _contentInsets;
     struct UIEdgeInsets _layoutInsets;
@@ -31,11 +33,13 @@
 @property (readonly, nonatomic) double interItemSpacing; // @synthesize interItemSpacing=_interItemSpacing;
 @property (readonly, nonatomic) struct UIEdgeInsets layoutInsets; // @synthesize layoutInsets=_layoutInsets;
 @property (readonly, nonatomic) long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
+@property (readonly, nonatomic) double layoutReferenceHeight; // @synthesize layoutReferenceHeight=_layoutReferenceHeight;
 @property (readonly, nonatomic) double layoutReferenceWidth; // @synthesize layoutReferenceWidth=_layoutReferenceWidth;
 @property (readonly, nonatomic) long long layoutSizeClass; // @synthesize layoutSizeClass=_layoutSizeClass;
 @property (readonly, nonatomic) long long scrollAxis; // @synthesize scrollAxis=_scrollAxis;
 @property (readonly, nonatomic) BOOL shouldInsetAllContent; // @synthesize shouldInsetAllContent=_shouldInsetAllContent;
 @property (readonly, nonatomic) BOOL shouldUseAccessibilityLayout; // @synthesize shouldUseAccessibilityLayout=_shouldUseAccessibilityLayout;
+@property (readonly, nonatomic) long long userInterfaceIdiom; // @synthesize userInterfaceIdiom=_userInterfaceIdiom;
 
 + (id)horizontalContentInsetsInterpolator;
 + (double)sectionHeaderHeightForStyle:(unsigned long long)arg1 dividerHidden:(BOOL)arg2;

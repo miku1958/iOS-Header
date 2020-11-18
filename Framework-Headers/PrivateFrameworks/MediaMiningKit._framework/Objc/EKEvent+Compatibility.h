@@ -7,7 +7,6 @@
 #import <EventKit/EKEvent.h>
 
 @interface EKEvent (Compatibility)
-- (BOOL)isBirthday;
 - (BOOL)organizedByMe;
 @end
 

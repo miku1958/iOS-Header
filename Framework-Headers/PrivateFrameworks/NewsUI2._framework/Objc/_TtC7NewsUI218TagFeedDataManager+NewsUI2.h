@@ -6,9 +6,13 @@
 
 #import <NewsUI2/_TtC7NewsUI218TagFeedDataManager.h>
 
+#import <NewsUI2/FCReadingHistoryObserving-Protocol.h>
+#import <NewsUI2/FCReadingListObserving-Protocol.h>
 #import <NewsUI2/TSPluginDelegate-Protocol.h>
 
-@interface _TtC7NewsUI218TagFeedDataManager (NewsUI2) <TSPluginDelegate>
+@interface _TtC7NewsUI218TagFeedDataManager (NewsUI2) <TSPluginDelegate, FCReadingHistoryObserving, FCReadingListObserving>
 - (void)plugin:(id)arg1 didResizePluginModel:(id)arg2;
+- (void)readingHistory:(id)arg1 didChangeFeaturesForArticles:(id)arg2;
+- (void)readingList:(id)arg1 didAddArticles:(id)arg2 removeArticles:(id)arg3 eventInitiationLevel:(long long)arg4;
 @end
 

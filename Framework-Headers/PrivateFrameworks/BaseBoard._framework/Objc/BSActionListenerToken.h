@@ -14,11 +14,7 @@
     NSObject<OS_xpc_object> *_endpoint;
 }
 
-@property (strong, nonatomic) NSObject<OS_xpc_object> *endpoint; // @synthesize endpoint=_endpoint;
-@property (nonatomic) unsigned int port; // @synthesize port=_port;
-
 - (void)dealloc;
-- (id)initWithPort:(unsigned int)arg1 endpoint:(id)arg2;
 
 @end
 

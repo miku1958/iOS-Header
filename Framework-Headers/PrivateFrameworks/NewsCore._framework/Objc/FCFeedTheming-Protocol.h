@@ -7,7 +7,7 @@
 #import <NewsCore/NFCopying-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCAssetHandle, FCColor, FCHeadlineTemplate, FCTagBanner, FCTextInfo, NSArray, NSString;
+@class FCAssetHandle, FCColor, FCContentColorMap, FCHeadlineTemplate, FCTagBanner, FCTextInfo, NSArray, NSString;
 
 @protocol FCFeedTheming <NSObject, NFCopying>
 
@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) FCTagBanner *bannerImageForWhiteBackground;
 @property (readonly, nonatomic) double bannerImageScale;
 @property (readonly, nonatomic) FCTagBanner *compactBannerImage;
+@property (readonly, nonatomic) FCContentColorMap *contentColorMap;
 @property (readonly, nonatomic) FCColor *darkStyleBackgroundColor;
 @property (readonly, nonatomic) FCColor *darkStyleForegroundColor;
 @property (readonly, nonatomic) FCTagBanner *defaultBannerImage;

@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreSuggestionsInternals/SGModel.h>
+#import <CoreSuggestionsInternals/SGBinaryClassificationModel.h>
 
-@interface SGSignificantEmailAddressModel : SGModel
+@interface SGSignificantEmailAddressModel : SGBinaryClassificationModel
 {
 }
 

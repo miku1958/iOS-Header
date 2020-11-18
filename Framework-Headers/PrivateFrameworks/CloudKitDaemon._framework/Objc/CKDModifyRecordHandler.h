@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
     BOOL _isDelete;
     BOOL _saveCompletionBlockCalled;
     BOOL _needsRefetch;
-    BOOL _didAttemptDugongKeyRoll;
+    BOOL _didAttemptZoneWideShareKeyRoll;
     BOOL _didRollRecordPCSMasterKey;
     int _saveAttempts;
     CKDModifyRecordsOperation *_operation;
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) NSDictionary *assetUUIDToExpectedProperties; // @synthesize assetUUIDToExpectedProperties=_assetUUIDToExpectedProperties;
 @property (nonatomic) long long batchRank; // @synthesize batchRank=_batchRank;
-@property (nonatomic) BOOL didAttemptDugongKeyRoll; // @synthesize didAttemptDugongKeyRoll=_didAttemptDugongKeyRoll;
+@property (nonatomic) BOOL didAttemptZoneWideShareKeyRoll; // @synthesize didAttemptZoneWideShareKeyRoll=_didAttemptZoneWideShareKeyRoll;
 @property (nonatomic) BOOL didRollRecordPCSMasterKey; // @synthesize didRollRecordPCSMasterKey=_didRollRecordPCSMasterKey;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
@@ -80,9 +80,11 @@ __attribute__((visibility("hidden")))
 - (id)_initCommonWithOperation:(id)arg1;
 - (id)_initForDeleteWithRecordID:(id)arg1 operation:(id)arg2;
 - (id)_initWithRecord:(id)arg1 operation:(id)arg2;
+- (void)_keyRollIfNeededForRecordPCSData:(id)arg1 withError:(id)arg2;
 - (void)_loadPCSData;
 - (BOOL)_prepareAsset:(id)arg1 recordKey:(id)arg2 record:(id)arg3 error:(id *)arg4;
 - (void)_pretendToWrapEncryptedDataForRecordValueStore:(id)arg1;
+- (void)_reallyAddShareToPCSData:(id)arg1 withError:(id)arg2;
 - (void)_reallyFetchPCSDataWithOptions:(unsigned long long)arg1;
 - (void)_unwrapRecordPCSForParent;
 - (void)_unwrapRecordPCSForZone;

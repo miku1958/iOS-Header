@@ -36,15 +36,14 @@
 - (void)_queue_deleteAttachmentDataForNotificationRecord:(id)arg1 bundleIdentifier:(id)arg2;
 - (void)_queue_deleteAttachmentDataForNotificationRecords:(id)arg1 bundleIdentifier:(id)arg2;
 - (void)_queue_ensureIntegrityWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)_queue_getAttachmentDataForAttachment:(id)arg1 bundleIdentifier:(id)arg2 error:(id *)arg3;
 - (void)_queue_notificationSourcesDidUninstall:(id)arg1;
-- (id)_queue_resolveAttachmentsForRequest:(id)arg1 bundleIdentifier:(id)arg2 bundleProxy:(id)arg3 error:(id *)arg4;
+- (id)_queue_resolveAttachmentsForRequest:(id)arg1 bundleIdentifier:(id)arg2 bundleProxy:(id)arg3 continueOnFailure:(BOOL)arg4 error:(id *)arg5;
 - (id)_queue_resolvedFileURLForNotificationAttachment:(id)arg1 request:(id)arg2 bundleIdentifier:(id)arg3 bundleProxy:(id)arg4 error:(id *)arg5;
 - (id)_queue_resolvedURLForNotificationAttachment:(id)arg1 request:(id)arg2 bundleIdentifier:(id)arg3 bundleProxy:(id)arg4 error:(id *)arg5;
 - (id)_queue_validatedRepositoryURLForNotificationAttachment:(id)arg1 request:(id)arg2 bundleIdentifier:(id)arg3 bundleProxy:(id)arg4 error:(id *)arg5;
 - (void)_repositoryDidPerformUpdates:(id)arg1 forBundleIdentifier:(id)arg2;
 - (id)_temporaryAttachmentFileURL;
-- (id)attachmentDataForAttachment:(id)arg1 bundleIdentifier:(id)arg2 error:(id *)arg3;
+- (void)contentProtectionStateChangedForFirstUnlock:(BOOL)arg1;
 - (void)ensureIntegrityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)initWithAttachmentsRepository:(id)arg1 notificationRepository:(id)arg2 notificationSchedulingService:(id)arg3 pendingNotificationRepository:(id)arg4;
 - (void)notificationRepository:(id)arg1 didPerformUpdates:(id)arg2 forBundleIdentifier:(id)arg3;

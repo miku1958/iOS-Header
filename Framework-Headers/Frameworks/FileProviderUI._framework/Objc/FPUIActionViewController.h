@@ -22,6 +22,7 @@
     NSString *_actionTitle;
     NSError *_error;
     NSURL *_authenticationURL;
+    CDUnknownBlockType _didLoadRemoteViewControllerCompletionHandler;
     unsigned long long _browserUserInterfaceStyle;
     NSString *_providerIdentifier;
     NSString *_actionIdentifier;
@@ -37,6 +38,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<FPUIActionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType didLoadRemoteViewControllerCompletionHandler; // @synthesize didLoadRemoteViewControllerCompletionHandler=_didLoadRemoteViewControllerCompletionHandler;
 @property (nonatomic) BOOL displayInline; // @synthesize displayInline=_displayInline;
 @property (strong, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;

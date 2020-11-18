@@ -29,7 +29,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithLibraryLayout:(id)arg1;
+- (id)initWithLibraryLayout:(id)arg1 dateType:(unsigned long long)arg2;
 
 @end
 

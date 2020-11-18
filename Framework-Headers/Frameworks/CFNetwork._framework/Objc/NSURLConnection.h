@@ -35,7 +35,6 @@
 + (struct __CFRunLoop *)resourceLoaderRunLoop;
 + (void)sendAsynchronousRequest:(id)arg1 queue:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)sendSynchronousRequest:(id)arg1 returningResponse:(id *)arg2 error:(id *)arg3;
-+ (void)withResourceLoaderRunLoopAsync:(CDUnknownBlockType)arg1;
 - (id)_cfInternal;
 - (id)_dlInternal;
 - (id)_initWithRequest:(id)arg1 delegate:(id)arg2 usesCache:(BOOL)arg3 maxContentLength:(long long)arg4 startImmediately:(BOOL)arg5 connectionProperties:(id)arg6;

@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOJunctionViewGuidanceFeedback, GEOSignGuidanceFeedback, GEOSpokenGuidanceFeedback, NSData, PBDataReader;
+@class GEOJunctionViewGuidanceFeedback, GEOSignGuidanceFeedback, GEOSpokenGuidanceFeedback, GEOTrafficCameraInformation, NSData, PBDataReader;
 
 @interface GEOGuidanceEventFeedback : PBCodable <NSCopying>
 {
@@ -17,6 +17,7 @@
     NSData *_routeID;
     GEOSignGuidanceFeedback *_signGuidanceFeedback;
     GEOSpokenGuidanceFeedback *_spokenGuidanceFeedback;
+    GEOTrafficCameraInformation *_trafficCameraGuidanceFeedback;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -41,18 +42,8 @@
         unsigned int read_routeID:1;
         unsigned int read_signGuidanceFeedback:1;
         unsigned int read_spokenGuidanceFeedback:1;
-        unsigned int wrote_junctionViewGuidanceFeedback:1;
-        unsigned int wrote_routeID:1;
-        unsigned int wrote_signGuidanceFeedback:1;
-        unsigned int wrote_spokenGuidanceFeedback:1;
-        unsigned int wrote_distanceToManeuver:1;
-        unsigned int wrote_duration:1;
-        unsigned int wrote_enrouteNoticeIndex:1;
-        unsigned int wrote_eventIndex:1;
-        unsigned int wrote_stepID:1;
-        unsigned int wrote_timeToManeuver:1;
-        unsigned int wrote_trafficSpeed:1;
-        unsigned int wrote_vehicleSpeed:1;
+        unsigned int read_trafficCameraGuidanceFeedback:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -70,6 +61,7 @@
 @property (readonly, nonatomic) BOOL hasSpokenGuidanceFeedback;
 @property (nonatomic) BOOL hasStepID;
 @property (nonatomic) BOOL hasTimeToManeuver;
+@property (readonly, nonatomic) BOOL hasTrafficCameraGuidanceFeedback;
 @property (nonatomic) BOOL hasTrafficSpeed;
 @property (nonatomic) BOOL hasVehicleSpeed;
 @property (strong, nonatomic) GEOJunctionViewGuidanceFeedback *junctionViewGuidanceFeedback;
@@ -78,16 +70,13 @@
 @property (strong, nonatomic) GEOSpokenGuidanceFeedback *spokenGuidanceFeedback;
 @property (nonatomic) unsigned int stepID;
 @property (nonatomic) float timeToManeuver;
+@property (strong, nonatomic) GEOTrafficCameraInformation *trafficCameraGuidanceFeedback;
 @property (nonatomic) int trafficSpeed;
 @property (nonatomic) float vehicleSpeed;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsTrafficSpeed:(id)arg1;
-- (void)_readJunctionViewGuidanceFeedback;
-- (void)_readRouteID;
-- (void)_readSignGuidanceFeedback;
-- (void)_readSpokenGuidanceFeedback;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -95,7 +84,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

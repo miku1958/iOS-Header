@@ -6,11 +6,11 @@
 
 #import <CFNetwork/__NSCFTCPIOStreamTask.h>
 
-#import <CFNetwork/SessionConnectionDelegate-Protocol.h>
+#import <CFNetwork/__NSCFURLSessionConnectionDelegate-Protocol.h>
 
 @class NSString;
 
-@interface __NSCFURLLocalTCPIOStreamTaskFromDataTask : __NSCFTCPIOStreamTask <SessionConnectionDelegate>
+@interface __NSCFURLLocalTCPIOStreamTaskFromDataTask : __NSCFTCPIOStreamTask <__NSCFURLSessionConnectionDelegate>
 {
 }
 
@@ -24,7 +24,6 @@
 - (void)connection:(id)arg1 challenged:(id)arg2 authCallback:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didFinishCollectingMetrics:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didFinishLoadingWithError:(id)arg2;
-- (void)connection:(id)arg1 didReceiveConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg2;
 - (void)connection:(id)arg1 didReceiveData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didReceiveResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didReceiveSocketInputStream:(id)arg2 outputStream:(id)arg3;

@@ -10,7 +10,7 @@
 #import <FamilyCircleUI/RemoteUIControllerDelegate-Protocol.h>
 #import <FamilyCircleUI/UINavigationControllerDelegate-Protocol.h>
 
-@class AAFamilyDetailsResponse, AAFamilyMember, AAGrandSlamSigner, AAUIProfilePictureStore, AAUIRemoteUIController, AAUIServerUIHookHandler, ACAccount, ACAccountStore, CNMonogrammer, FAChildAccountCreationController, FACircleRemoteUIDelegate, FAFamilyCreditCard, FAFamilyNotificationObserver, FARequestConfigurator, FASharedSubscriptionSpecifierProvider, NSArray, NSMutableDictionary, NSMutableURLRequest, NSObject, NSOperationQueue, NSString, NSURL, PSSpecifier, SSAccount, UINavigationController, UITableViewCell;
+@class AAGrandSlamSigner, AAUIRemoteUIController, AAUIServerUIHookHandler, ACAccount, ACAccountStore, FACircleRemoteUIDelegate, FAFamilyCircle, FAFamilyCreditCard, FAFamilyMember, FAFamilyNotificationObserver, FAProfilePictureStore, FARequestConfigurator, FASharedSubscriptionSpecifierProvider, NSArray, NSMutableDictionary, NSMutableURLRequest, NSOperationQueue, NSString, NSURL, PSSpecifier, UIActivityIndicatorView, UILabel, UINavigationController, UITableViewCell;
 @protocol FAFamilySettingsViewControllerDelegate;
 
 @interface FAFamilySettingsViewController : ACUIViewController <UINavigationControllerDelegate, RemoteUIControllerDelegate, FASharedSubscriptionSpecifierProviderDelegeate>
@@ -19,25 +19,21 @@
     AAGrandSlamSigner *_appleIDGrandSlamSigner;
     ACAccount *_appleAccount;
     ACAccount *_grandSlamAccount;
-    SSAccount *_itunesAccount;
+    ACAccount *_itunesAccount;
     ACAccountStore *_accountStore;
-    AAFamilyDetailsResponse *_familyDetailsResponse;
+    FAFamilyCircle *_familyCircle;
     NSOperationQueue *_networkingQueue;
-    PSSpecifier *_familyMembersGroup;
     PSSpecifier *_addFamilyMemberCell;
-    AAUIProfilePictureStore *_profilePictureStore;
-    CNMonogrammer *_monogrammer;
+    FAProfilePictureStore *_familyPictureStore;
     AAUIRemoteUIController *_iCloudRemoteUIController;
     AAUIRemoteUIController *_appleIDRemoteUIController;
     AAUIRemoteUIController *_familyV2RemoteUIController;
     FACircleRemoteUIDelegate *_familyRemoteUIDelegate;
     UITableViewCell *_activeCell;
     NSURL *_activeURL;
-    AAFamilyMember *_memberBeingViewed;
-    NSMutableDictionary *_memberDetailsPageSurrogatesByOM;
-    FAChildAccountCreationController *_childAccountCreationController;
+    FAFamilyMember *_memberBeingViewed;
+    NSMutableDictionary *_objectModelDecorators;
     UINavigationController *_childAccountCreationNavController;
-    NSObject *_profilePictureStoreDidChangeObserver;
     FAFamilyNotificationObserver *_notificationObserver;
     BOOL _fetchingPaymentInfo;
     FAFamilyCreditCard *_paymentMethod;
@@ -48,6 +44,10 @@
     AAUIServerUIHookHandler *_serverUIHookHandler;
     FACircleRemoteUIDelegate *_faCircleRemoteUIDelegate;
     FASharedSubscriptionSpecifierProvider *_sharedSubscriptionSpecifierProvider;
+    UIActivityIndicatorView *_activityIndicatorView;
+    UILabel *_navigationBarTitleLabel;
+    double _familyHeaderTitleOffset;
+    BOOL _isNavigationTitleViewDisplayed;
     id<FAFamilySettingsViewControllerDelegate> _delegate;
 }
 
@@ -58,6 +58,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_addChildAccount;
 - (void)_addFamilyMemberButtonWasTapped:(id)arg1;
 - (void)_addMemberWithEventType:(id)arg1;
 - (id)_appleIDGrandSlamSigner;
@@ -74,18 +75,24 @@
 - (void)_handleFamilySubscriptionChanged;
 - (void)_handleMemberDeletion:(id)arg1;
 - (void)_handleMemberUpdate:(id)arg1;
+- (void)_handleObjectModelChangeForController:(id)arg1 objectModel:(id)arg2 isModal:(BOOL)arg3;
+- (void)_handleServiceSpecifierURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_hasActiveCell;
 - (id)_imageFromBundle:(id)arg1;
 - (id)_itunesAccount;
+- (void)_layoutTableHeaderView;
 - (void)_learnMoreLinkButtonWasTapped:(id)arg1;
 - (void)_loadRemoteUIWithRequest:(id)arg1 specifier:(id)arg2 type:(long long)arg3;
 - (void)_loadRemoteUIWithRequest:(id)arg1 url:(id)arg2 specifier:(id)arg3 type:(long long)arg4;
 - (void)_paymentMethodCellWasTapped:(id)arg1;
 - (void)_pendingFamilyMemberCellWasTapped:(id)arg1;
 - (void)_performEventWithContext:(id)arg1 specifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_profilePictureStoreDidReload;
 - (void)_reloadPaymentInfoSpecifiersAnimated:(BOOL)arg1;
 - (id)_requestConfigurator;
 - (void)_setFresnoRemoteUIDelgate:(id)arg1;
+- (void)_setupFamilyHeaderView;
+- (void)_setupNavigationBarTitleView;
 - (id)_sharedSubscriptionSpecifierProvider;
 - (id)_sharedSubscriptionSpecifiers;
 - (void)_showConnectivityAlert;
@@ -94,18 +101,26 @@
 - (void)_updateMemberDetailsPageWithLinkedAppleID:(id)arg1;
 - (void)dealloc;
 - (void)didSelectSpecifier:(id)arg1;
-- (id)initWithAppleAccount:(id)arg1 grandSlamSigner:(id)arg2 familyDetailsResponse:(id)arg3;
+- (void)handleURL:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)hideActivityIndicatorInNavigationBar;
+- (id)initWithAppleAccount:(id)arg1 grandSlamSigner:(id)arg2 familyCircle:(id)arg3 familyPictureStore:(id)arg4;
 - (void)reloadSpecifiersForProvider:(id)arg1 oldSpecifiers:(id)arg2 animated:(BOOL)arg3;
 - (id)remoteUIController:(id)arg1 createPageWithName:(id)arg2 attributes:(id)arg3;
+- (void)remoteUIController:(id)arg1 didDismissModalNavigationWithObjectModels:(id)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
+- (void)remoteUIController:(id)arg1 didRefreshObjectModel:(id)arg2;
 - (void)remoteUIController:(id)arg1 didRemoveObjectModel:(id)arg2;
 - (void)remoteUIController:(id)arg1 willLoadRequest:(id)arg2;
+- (void)remoteUIController:(id)arg1 willPresentModalNavigationController:(id)arg2;
 - (void)remoteUIController:(id)arg1 willPresentObjectModel:(id)arg2 modally:(BOOL)arg3;
 - (void)remoteUIControllerDidDismiss:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)showActivityIndicatorInNavigationBar;
 - (id)specifiers;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewWillLayoutSubviews;
 
 @end
 

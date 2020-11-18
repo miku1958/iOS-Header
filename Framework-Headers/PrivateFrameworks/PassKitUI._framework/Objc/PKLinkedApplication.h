@@ -8,13 +8,15 @@
 
 #import <PassKitUI/SKStoreProductViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSDictionary, NSHashTable, NSNumber, NSString, NSURL, SKStoreProductViewController, SSSoftwareLibraryItem, UIImage;
+@class AMSLookupItem, NSArray, NSHashTable, NSNumber, NSString, NSURL, SKStoreProductViewController, SSSoftwareLibraryItem, UIImage;
+@protocol PKCancelable;
 
 @interface PKLinkedApplication : NSObject <SKStoreProductViewControllerDelegate>
 {
     SSSoftwareLibraryItem *_foundLibraryItem;
-    NSDictionary *_foundStoreItem;
-    unsigned long long _loadingToken;
+    AMSLookupItem *_foundStoreItem;
+    struct os_unfair_lock_s _pendingLock;
+    id<PKCancelable> _pendingUpdate;
     BOOL _loaded;
     BOOL _loading;
     NSHashTable *_observers;
@@ -38,19 +40,15 @@
 @property (readonly, nonatomic) NSString *publisher;
 @property (readonly, nonatomic) long long state;
 @property (copy, nonatomic) NSArray *storeIDs; // @synthesize storeIDs=_storeIDs;
+@property (readonly, nonatomic) NSNumber *storeIdentifier;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useSmallIcon; // @synthesize useSmallIcon=_useSmallIcon;
 
 + (id)_openOptionsWithURL:(id)arg1;
 - (void).cxx_destruct;
-- (int)_iconOptionsForItem:(id)arg1;
-- (id)_iconURLFromArtwork:(id)arg1 withDesiredSize:(struct CGSize)arg2;
-- (id)_iconURLFromArtwork:(id)arg1 withDesiredSize:(struct CGSize)arg2 requireStrictMatch:(BOOL)arg3;
-- (int)_iconVariantForScale:(double)arg1;
-- (id)_imageForSize:(struct CGSize)arg1 fromArtwork:(id)arg2 requireStrictMatch:(BOOL)arg3;
-- (BOOL)_itemArtNeedsShine:(id)arg1;
+- (id)_iconImageDescriptorForScale:(double)arg1;
 - (void)_notifyObserversOfStateChange;
-- (void)_performStoreLookupWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_reloadApplicationState;
 - (void)_unloadApplicationState;
 - (void)_updateApplicationStateWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_useLibraryItem;
@@ -61,8 +59,8 @@
 - (id)initWithStoreIDs:(id)arg1 defaultLaunchURL:(id)arg2;
 - (void)installedApplicationsDidChangeNotification:(id)arg1;
 - (void)openApplication:(id)arg1;
+- (void)openApplication:(id)arg1 launchAppStoreIfNotInstalled:(BOOL)arg2;
 - (void)productViewControllerDidFinish:(id)arg1;
-- (void)reloadApplicationState;
 - (void)reloadApplicationStateIfNecessary;
 - (void)removeObserver:(id)arg1;
 

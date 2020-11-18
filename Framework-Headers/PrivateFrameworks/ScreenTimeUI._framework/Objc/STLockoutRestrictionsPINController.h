@@ -4,17 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Preferences/PSRestrictionsPINController.h>
+#import <ScreenTimeUI/STRemotePasscodeController.h>
 
-@interface STLockoutRestrictionsPINController : PSRestrictionsPINController
+@interface STLockoutRestrictionsPINController : STRemotePasscodeController
 {
 }
-
-+ (id)_xpcConnection;
-+ (void)activateRemotePINUI;
-+ (BOOL)isRestrictionsPasscodeSet;
-- (id)stringsBundle;
-- (id)stringsTable;
 
 @end
 

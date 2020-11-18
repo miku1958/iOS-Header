@@ -15,7 +15,8 @@
 {
     int _pid;
     VMUTaskMemoryScanner *_scanner;
-    unsigned int _kernPageSize;
+    unsigned int _vmPageSize;
+    unsigned int _kernelPageSize;
     unsigned long long _machAbsolute;
     NSArray *_regions;
     unsigned int _regionCount;
@@ -39,6 +40,7 @@
     BOOL _showsPhysFootprint;
     unsigned int _objectContentLevel;
     unsigned int _objectContentLevelForNodeLabels;
+    NSDictionary *_srcAddressToExtraAutoreleaseCountDict;
 }
 
 @property (readonly, nonatomic) NSString *binaryImagesDescription;
@@ -48,6 +50,7 @@
 @property (readonly, nonatomic) NSString *executablePath; // @synthesize executablePath=_executablePath;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL is64bit;
+@property (readonly, nonatomic) unsigned int kernelPageSize; // @synthesize kernelPageSize=_kernelPageSize;
 @property (readonly, nonatomic) unsigned int nodeCount;
 @property (readonly, nonatomic) unsigned int nodeNamespaceSize;
 @property (nonatomic) unsigned int objectContentLevel; // @synthesize objectContentLevel=_objectContentLevel;
@@ -63,9 +66,10 @@
 @property (nonatomic) BOOL showRawClassNames; // @synthesize showRawClassNames=_showRawClassNames;
 @property (nonatomic) BOOL showsPhysFootprint; // @synthesize showsPhysFootprint=_showsPhysFootprint;
 @property (nonatomic) unsigned long long snapshotMachTime; // @synthesize snapshotMachTime=_machAbsolute;
+@property (strong, nonatomic) NSDictionary *srcAddressToExtraAutoreleaseCountDict; // @synthesize srcAddressToExtraAutoreleaseCountDict=_srcAddressToExtraAutoreleaseCountDict;
 @property (strong, nonatomic) id<VMUStackLogReader> stackLogReader; // @synthesize stackLogReader=_stackLogReader;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) unsigned int vmPageSize; // @synthesize vmPageSize=_kernPageSize;
+@property (readonly, nonatomic) unsigned int vmPageSize; // @synthesize vmPageSize=_vmPageSize;
 @property (readonly, nonatomic) unsigned int zoneCount;
 
 - (void).cxx_destruct;
@@ -83,7 +87,7 @@
 - (unsigned int)enumerateReferencesFromDataRegion:(id)arg1 atGlobalSymbol:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (unsigned int)enumerateRegionsWithBlock:(CDUnknownBlockType)arg1;
 - (BOOL)hasLabelsForNodes;
-- (id)initWithArchived:(id)arg1 version:(long long)arg2 options:(unsigned long long)arg3 diskLogs:(id)arg4;
+- (id)initWithArchived:(id)arg1 version:(long long)arg2 options:(unsigned long long)arg3 diskLogs:(id)arg4 error:(id *)arg5;
 - (id)initWithPid:(int)arg1 nodes:(struct _VMUBlockNode *)arg2 nodeCount:(unsigned int)arg3 zoneNames:(id)arg4 classInfoMap:(id)arg5 regions:(id)arg6 pthreadOffsets:(id)arg7 userMarked:(void *)arg8;
 - (id)labelForNode:(unsigned int)arg1;
 - (void)markReachableNodesFromRoots:(void *)arg1 inMap:(void *)arg2;

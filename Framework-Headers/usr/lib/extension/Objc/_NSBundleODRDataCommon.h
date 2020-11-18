@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
     long long _sandboxToken;
 }
 
-- (id)URLForAssetPack:(id)arg1;
 - (BOOL)assetPacksBecameAvailable:(id)arg1 error:(id *)arg2;
 - (BOOL)assetPacksBecameUnavailable:(id)arg1 error:(id *)arg2;
 - (void)dealloc;

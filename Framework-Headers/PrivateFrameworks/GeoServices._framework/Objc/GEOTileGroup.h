@@ -48,19 +48,7 @@
         unsigned int read_textureIndexs:1;
         unsigned int read_tileSets:1;
         unsigned int read_xmlIndexs:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_attributionIndexs:1;
-        unsigned int wrote_fontIndexs:1;
-        unsigned int wrote_hybridUnavailableRegions:1;
-        unsigned int wrote_iconIndexs:1;
-        unsigned int wrote_regionalResourceIndexs:1;
-        unsigned int wrote_resourceIndexs:1;
-        unsigned int wrote_styleSheetIndexs:1;
-        unsigned int wrote_textureIndexs:1;
-        unsigned int wrote_tileSets:1;
-        unsigned int wrote_xmlIndexs:1;
-        unsigned int wrote_identifier:1;
-        unsigned int wrote_muninVersionIndex:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -91,26 +79,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsAttributionIndex:(unsigned int)arg1;
-- (void)_addNoFlagsFontIndex:(unsigned int)arg1;
-- (void)_addNoFlagsHybridUnavailableRegion:(struct GEOTileSetRegion)arg1;
-- (void)_addNoFlagsIconIndex:(unsigned int)arg1;
-- (void)_addNoFlagsRegionalResourceIndex:(struct GEORegionalResourceIndex)arg1;
-- (void)_addNoFlagsResourceIndex:(unsigned int)arg1;
-- (void)_addNoFlagsStyleSheetIndex:(unsigned int)arg1;
-- (void)_addNoFlagsTextureIndex:(unsigned int)arg1;
-- (void)_addNoFlagsTileSet:(struct GEOVersionedTileSet)arg1;
-- (void)_addNoFlagsXmlIndex:(unsigned int)arg1;
-- (void)_readAttributionIndexs;
-- (void)_readFontIndexs;
-- (void)_readHybridUnavailableRegions;
-- (void)_readIconIndexs;
-- (void)_readRegionalResourceIndexs;
-- (void)_readResourceIndexs;
-- (void)_readStyleSheetIndexs;
-- (void)_readTextureIndexs;
-- (void)_readTileSets;
-- (void)_readXmlIndexs;
 - (void)addAttributionIndex:(unsigned int)arg1;
 - (void)addFontIndex:(unsigned int)arg1;
 - (void)addHybridUnavailableRegion:(struct GEOTileSetRegion)arg1;
@@ -144,7 +112,10 @@
 - (unsigned int)iconIndexAtIndex:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

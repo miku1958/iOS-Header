@@ -64,6 +64,7 @@
 + (BOOL)shouldTryFallbacksAfterError:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_certificateIsTrustedForAccount:(id)arg1;
+- (void)_clearBuffer;
 - (BOOL)_evaluateTrust:(struct __SecTrust *)arg1 errorPtr:(id *)arg2;
 - (void)_setCertificateIsTrusted:(BOOL)arg1 forAccount:(id)arg2;
 - (void)_setupSocketWithSettings:(id)arg1;
@@ -76,6 +77,7 @@
 - (id)copyDiagnosticInformation;
 - (void)dealloc;
 - (void)disconnect;
+- (BOOL)enableSSL;
 - (void)enableThroughputMonitoring:(BOOL)arg1;
 - (void)endCompression;
 - (id)init;
@@ -84,8 +86,10 @@
 - (BOOL)readLineIntoData:(id)arg1;
 - (void)setConnectionSettings:(id)arg1;
 - (void)setDesiredReadBufferLength:(unsigned long long)arg1;
+- (void)startActivity;
 - (BOOL)startCompression;
 - (BOOL)startTLSForAccount:(id)arg1;
+- (void)stopActivity;
 - (BOOL)writeBytes:(const char *)arg1 length:(unsigned long long)arg2 dontLogBytesInRange:(struct _NSRange)arg3;
 - (BOOL)writeData:(id)arg1;
 - (BOOL)writeData:(id)arg1 dontLogBytesInRange:(struct _NSRange)arg2;

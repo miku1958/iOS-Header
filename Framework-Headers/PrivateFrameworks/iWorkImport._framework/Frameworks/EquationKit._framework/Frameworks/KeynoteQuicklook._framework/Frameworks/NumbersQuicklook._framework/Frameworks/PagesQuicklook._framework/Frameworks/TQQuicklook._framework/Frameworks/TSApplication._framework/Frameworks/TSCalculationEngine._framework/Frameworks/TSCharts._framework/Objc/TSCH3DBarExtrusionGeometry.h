@@ -29,7 +29,7 @@
 + (id)namedBevelInterpolationShaderFunction;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (int)capCount;
+- (unsigned int)capCount;
 - (unsigned int)capOffset;
 - (void)dealloc;
 - (void)debug_printDataPoints;

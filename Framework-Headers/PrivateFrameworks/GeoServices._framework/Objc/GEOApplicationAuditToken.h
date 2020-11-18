@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <GeoServices/GEOXPCSerializable-Protocol.h>
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
 @class NSData, NSString, geo_isolater;
 
-@interface GEOApplicationAuditToken : NSObject <NSSecureCoding>
+@interface GEOApplicationAuditToken : NSObject <NSSecureCoding, GEOXPCSerializable>
 {
     NSData *_tokenData;
     NSString *_proxiedBundleId;
@@ -21,9 +22,13 @@
     NSString *_secondaryIdentifier;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *proxiedBundleId; // @synthesize proxiedBundleId=_proxiedBundleId;
 @property (readonly, nonatomic, getter=isProxiedExternalBundleId) BOOL proxiedExternalBundleId; // @synthesize proxiedExternalBundleId=_proxiedExternalBundleId;
 @property (readonly, copy, nonatomic, getter=_secondaryIdentifier) NSString *secondaryIdentifier; // @synthesize secondaryIdentifier=_secondaryIdentifier;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -31,16 +36,17 @@
 - (id)backingTokenData;
 - (id)bundleId;
 - (id)bundleIdForNetworkAttribution;
-- (id)description;
+- (void)encodeToXPCDictionary:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithAuditTokenData:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithNSXPCConnection:(id)arg1;
 - (id)initWithProxiedApplicationBundleId:(id)arg1;
 - (id)initWithProxiedExternalApplicationBundleId:(id)arg1;
 - (id)initWithSecondaryIdentifier:(id)arg1;
 - (id)initWithXPCConnection:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)publicLogDescription;
 

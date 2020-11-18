@@ -17,13 +17,16 @@
     NSArray *_shownActionsCache;
     BOOL _containsRouteInternal;
     unsigned char _consumerSubType;
+    BOOL _matchingIntentWasCompleteMatch;
     NSUUID *_uuid;
     NSArray *_scoredActions;
+    NSUUID *_blendingModelUICacheUpdateUUID;
+    NSArray *_proactiveSuggestions;
     NSDate *_predictionDate;
     ATXAction *_engagedAction;
-    ATXAction *_matchingIntentDonatedAction;
     unsigned long long _feedbackStage;
     NSDate *_uiFeedbackDate;
+    ATXAction *_matchingIntentDonatedAction;
     NSDate *_donatedIntentDate;
     unsigned long long _searchedActionType;
     NSString *_engagedAppString;
@@ -32,6 +35,7 @@
 }
 
 @property (readonly, nonatomic) NSArray *actions;
+@property (readonly, nonatomic) NSUUID *blendingModelUICacheUpdateUUID; // @synthesize blendingModelUICacheUpdateUUID=_blendingModelUICacheUpdateUUID;
 @property (readonly, nonatomic) NSData *cacheFileData; // @synthesize cacheFileData=_cacheFileData;
 @property (readonly, nonatomic) unsigned char consumerSubType; // @synthesize consumerSubType=_consumerSubType;
 @property (readonly, nonatomic) NSDate *donatedIntentDate; // @synthesize donatedIntentDate=_donatedIntentDate;
@@ -41,7 +45,9 @@
 @property (readonly, nonatomic) NSArray *explicitlyDismissedActions;
 @property (readonly, nonatomic) unsigned long long feedbackStage; // @synthesize feedbackStage=_feedbackStage;
 @property (readonly, nonatomic) ATXAction *matchingIntentDonatedAction; // @synthesize matchingIntentDonatedAction=_matchingIntentDonatedAction;
+@property (readonly, nonatomic) BOOL matchingIntentWasCompleteMatch; // @synthesize matchingIntentWasCompleteMatch=_matchingIntentWasCompleteMatch;
 @property (readonly, nonatomic) NSDate *predictionDate; // @synthesize predictionDate=_predictionDate;
+@property (readonly, nonatomic) NSArray *proactiveSuggestions; // @synthesize proactiveSuggestions=_proactiveSuggestions;
 @property (readonly, nonatomic) NSArray *scoredActions; // @synthesize scoredActions=_scoredActions;
 @property (readonly, nonatomic) unsigned long long searchedActionType; // @synthesize searchedActionType=_searchedActionType;
 @property (readonly, nonatomic) NSArray *shownActions;
@@ -55,7 +61,9 @@
 - (unsigned long long)hash;
 - (BOOL)indexWasShown:(unsigned long long)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithProactiveSuggestions:(id)arg1 blendingModelUICacheUpdateUUID:(id)arg2 consumerSubType:(unsigned char)arg3 error:(id)arg4;
 - (id)initWithScoredActions:(id)arg1 cacheFileData:(id)arg2 consumerSubType:(unsigned char)arg3 error:(id)arg4;
+- (id)initWithScoredActions:(id)arg1 cacheFileData:(id)arg2 proactiveSuggestions:(id)arg3 blendingModelUICacheUpdateUUID:(id)arg4 consumerSubType:(unsigned char)arg5 predictionDate:(id)arg6 error:(id)arg7;
 - (BOOL)isActionSpotlightCaptureRateAppEngagementType;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToActionResponse:(id)arg1;
@@ -64,8 +72,8 @@
 - (id)jsonDescription;
 - (id)routeDestinationTypeString;
 - (void)setContainsExternalRoute:(BOOL)arg1;
-- (void)updateConsumerSubType:(unsigned char)arg1 engagedAction:(id)arg2 shownActions:(id)arg3 feedbackStage:(unsigned long long)arg4 explicitlyDismissedActions:(id)arg5 searchedActionType:(unsigned long long)arg6 engagedAppString:(id)arg7;
-- (void)updateWithMatchingIntentDonatedAction:(id)arg1 intentDonationDate:(id)arg2;
+- (void)updateConsumerSubType:(unsigned char)arg1 engagedAction:(id)arg2 shownActions:(id)arg3 feedbackStage:(unsigned long long)arg4 explicitlyDismissedActions:(id)arg5 searchedActionType:(unsigned long long)arg6 engagedAppString:(id)arg7 uiFeedbackDate:(id)arg8;
+- (void)updateWithMatchingIntentDonatedAction:(id)arg1 intentDonationDate:(id)arg2 matchingIntentWasCompleteMatch:(BOOL)arg3;
 
 @end
 

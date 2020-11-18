@@ -35,7 +35,7 @@
 @property (nonatomic, getter=isLoading) BOOL loading; // @synthesize loading=_loading;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIView<CRKCardSectionView> *view; // @dynamic view;
-@property (strong, nonatomic) CRKCardSectionViewConfiguration *viewConfiguration; // @synthesize viewConfiguration=_viewConfiguration;
+@property (weak, nonatomic) CRKCardSectionViewConfiguration *viewConfiguration; // @synthesize viewConfiguration=_viewConfiguration;
 
 + (void)_registerWithCardKit;
 + (id)cardSectionClasses;

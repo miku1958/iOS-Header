@@ -59,6 +59,7 @@
 @property (readonly) VNFaceLandmarkRegion2D *rightPupil; // @synthesize rightPupil=_rightPupil;
 
 + (id)_createNSArrayFrom:(id)arg1 withPointIndices:(const int *)arg2 andPointCount:(unsigned long long)arg3;
++ (unsigned long long)landmarkPointSizeInBytes;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_createFaceLandmarks2DRegionFromPointIndexes:(const int *)arg1 andPointCount:(unsigned long long)arg2;

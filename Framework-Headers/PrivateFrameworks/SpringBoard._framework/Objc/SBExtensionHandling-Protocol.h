@@ -9,6 +9,6 @@
 @class NSDictionary, NSString;
 
 @protocol SBExtensionHandling <NSObject>
-- (void)launchExtensionWithBundleID:(NSString *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(BOOL))arg3;
+- (void)launchExtensionWithBundleID:(NSString *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 @end
 

@@ -15,6 +15,7 @@
 {
     BOOL _isUserCentric;
     BOOL _isEphemeral;
+    BOOL _sensitiveContents;
     NSString *_key;
     NSString *_deviceID;
 }
@@ -23,6 +24,7 @@
 @property (nonatomic) BOOL isEphemeral; // @synthesize isEphemeral=_isEphemeral;
 @property (nonatomic) BOOL isUserCentric; // @synthesize isUserCentric=_isUserCentric;
 @property (copy, nonatomic) NSString *key; // @synthesize key=_key;
+@property (nonatomic) BOOL sensitiveContents; // @synthesize sensitiveContents=_sensitiveContents;
 
 + (id)ephemeralKeyPathWithKey:(id)arg1;
 + (id)keyPathWithKey:(id)arg1;

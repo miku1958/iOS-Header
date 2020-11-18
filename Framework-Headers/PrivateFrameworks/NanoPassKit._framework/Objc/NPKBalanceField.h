@@ -27,7 +27,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *detailLabel; // @synthesize detailLabel;
-@property (readonly, nonatomic) NSString *formattedValue;
+@property (readonly, nonatomic) NSString *formattedValue; // @synthesize formattedValue=_formattedValue;
 @property (readonly, nonatomic) BOOL hasPendingUpdate;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

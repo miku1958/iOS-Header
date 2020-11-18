@@ -43,11 +43,13 @@
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 eventTrigger:(id)arg2;
 - (void)_handleEventUpdatedNotification:(id)arg1;
-- (void)_invalidate;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_registerNotificationHandlers;
 - (id)_serializeForAdd;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)_updateTriggerType;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

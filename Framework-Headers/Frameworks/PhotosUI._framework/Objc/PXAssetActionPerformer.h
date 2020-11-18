@@ -6,13 +6,15 @@
 
 #import <PhotosUICore/PXActionPerformer.h>
 
-@class PXSelectionSnapshot;
+@class PXSectionedSelectionManager, PXSelectionSnapshot;
 
 @interface PXAssetActionPerformer : PXActionPerformer
 {
     PXSelectionSnapshot *_selectionSnapshot;
+    PXSectionedSelectionManager *_selectionManager;
 }
 
+@property (strong, nonatomic) PXSectionedSelectionManager *selectionManager; // @synthesize selectionManager=_selectionManager;
 @property (strong, nonatomic) PXSelectionSnapshot *selectionSnapshot; // @synthesize selectionSnapshot=_selectionSnapshot;
 
 - (void).cxx_destruct;

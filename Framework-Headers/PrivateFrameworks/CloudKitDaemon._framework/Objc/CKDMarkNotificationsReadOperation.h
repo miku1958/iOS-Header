@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDOperation.h>
 
 @class NSArray, NSMutableDictionary, NSMutableSet;
+@protocol CKMarkNotificationsReadOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDMarkNotificationsReadOperation : CKDOperation
@@ -17,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_successfulNotificationIDs;
 }
 
+@property (strong, nonatomic) id<CKMarkNotificationsReadOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSMutableDictionary *errorByNotificationID; // @synthesize errorByNotificationID=_errorByNotificationID;
 @property (strong, nonatomic) NSArray *notificationIDs; // @synthesize notificationIDs=_notificationIDs;
 @property (copy, nonatomic) CDUnknownBlockType notificationMarkedRead; // @synthesize notificationMarkedRead=_notificationMarkedRead;
@@ -29,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)activityCreate;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
+- (int)operationType;
 
 @end
 

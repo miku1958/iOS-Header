@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PencilKit/NSObject-Protocol.h>
+#import <PencilKit/PKPaletteTool-Protocol.h>
 
 @class PKInk, UIColor;
 
-@protocol PKPaletteInkingTool <NSObject>
+@protocol PKPaletteInkingTool <PKPaletteTool>
 
 @property (readonly, nonatomic) PKInk *ink;
 

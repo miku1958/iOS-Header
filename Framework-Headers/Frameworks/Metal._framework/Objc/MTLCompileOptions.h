@@ -8,7 +8,7 @@
 
 #import <Metal/NSCopying-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSArray, NSDictionary, NSString;
 
 @interface MTLCompileOptions : NSObject <NSCopying>
 {
@@ -19,8 +19,12 @@
 @property (nonatomic) BOOL debuggingEnabled; // @dynamic debuggingEnabled;
 @property (nonatomic) BOOL fastMathEnabled; // @dynamic fastMathEnabled;
 @property (nonatomic) BOOL glBufferBindPoints; // @dynamic glBufferBindPoints;
+@property (copy, nonatomic) NSString *installName; // @dynamic installName;
 @property (nonatomic) unsigned long long languageVersion; // @dynamic languageVersion;
+@property (copy, nonatomic) NSArray *libraries; // @dynamic libraries;
+@property (nonatomic) long long libraryType; // @dynamic libraryType;
 @property (copy, nonatomic) NSDictionary *preprocessorMacros; // @dynamic preprocessorMacros;
+@property (nonatomic) BOOL preserveInvariance; // @dynamic preserveInvariance;
 @property (nonatomic) unsigned char sourceLanguage; // @dynamic sourceLanguage;
 @property (nonatomic) BOOL tracingEnabled; // @dynamic tracingEnabled;
 

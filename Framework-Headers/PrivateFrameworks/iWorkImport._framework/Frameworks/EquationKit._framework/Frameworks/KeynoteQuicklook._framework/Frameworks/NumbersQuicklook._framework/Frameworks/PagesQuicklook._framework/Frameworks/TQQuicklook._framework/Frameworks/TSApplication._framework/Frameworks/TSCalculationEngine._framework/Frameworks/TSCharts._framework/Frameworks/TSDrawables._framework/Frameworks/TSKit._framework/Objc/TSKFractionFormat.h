@@ -19,7 +19,7 @@
 
 - (id)asFractionFormat;
 - (unsigned long long)hash;
-- (id)initWithFormatType:(int)arg1;
+- (id)initWithFormatType:(unsigned int)arg1;
 - (id)initWithFractionAccuracy:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)stringFromDouble:(double)arg1 locale:(id)arg2;

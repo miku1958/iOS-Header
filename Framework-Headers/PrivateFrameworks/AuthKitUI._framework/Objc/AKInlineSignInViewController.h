@@ -15,6 +15,7 @@
 {
     BOOL _usesDarkMode;
     BOOL _usesVibrancy;
+    BOOL _createAppleIDAllowed;
     long long _blurEffectStyle;
     NSString *_secondaryButtonTitle;
     NSString *_tertiaryButtonTitle;
@@ -69,6 +70,7 @@
 - (void)iForgotButtonWasTapped:(id)arg1;
 - (id)init;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)refreshCreateAppleIDButton;
 - (void)setContext:(id)arg1;
 - (void)setSecondaryButtonTarget:(id)arg1 action:(SEL)arg2;
 - (void)setTertiaryButtonTarget:(id)arg1 action:(SEL)arg2;

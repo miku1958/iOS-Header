@@ -12,20 +12,20 @@
 
 @interface WAHourlyForecast : NSObject <NSCopying>
 {
-    float _percentPrecipitation;
     unsigned long long _eventType;
     NSString *_time;
     long long _hourIndex;
     WFTemperature *_temperature;
     NSString *_forecastDetail;
     long long _conditionCode;
+    double _percentPrecipitation;
 }
 
 @property (nonatomic) long long conditionCode; // @synthesize conditionCode=_conditionCode;
 @property (nonatomic) unsigned long long eventType; // @synthesize eventType=_eventType;
 @property (copy, nonatomic) NSString *forecastDetail; // @synthesize forecastDetail=_forecastDetail;
 @property (nonatomic) long long hourIndex; // @synthesize hourIndex=_hourIndex;
-@property (nonatomic) float percentPrecipitation; // @synthesize percentPrecipitation=_percentPrecipitation;
+@property (nonatomic) double percentPrecipitation; // @synthesize percentPrecipitation=_percentPrecipitation;
 @property (strong, nonatomic) WFTemperature *temperature; // @synthesize temperature=_temperature;
 @property (copy, nonatomic) NSString *time; // @synthesize time=_time;
 

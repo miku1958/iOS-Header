@@ -55,12 +55,15 @@
 @property (readonly) Class superclass;
 
 + (id)cdEntityName;
++ (BOOL)isChangeTrackableModel;
 + (id)newObjectID;
++ (id)nullifiedAssignmentOriginatorID;
 + (id)objectIDWithUUID:(id)arg1;
 + (CDUnknownBlockType)rem_DA_deletedKeyFromLazyDeletedModelObjectBlock;
 + (CDUnknownBlockType)rem_DA_deletedKeyFromTombstoneBlock;
 + (CDUnknownBlockType)rem_DA_fetchByObjectIDBlock;
 + (CDUnknownBlockType)rem_DA_fetchByObjectIDsBlock;
++ (id)rem_DA_lazyDeleteProperties;
 + (BOOL)rem_DA_supportsFetching;
 + (BOOL)rem_DA_supportsLazyDelete;
 + (BOOL)supportsSecureCoding;
@@ -68,12 +71,14 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)formattedName;
+- (id)formattedNameWithStyle:(long long)arg1;
 - (id)initShareeWithObjectID:(id)arg1 accountID:(id)arg2 listID:(id)arg3 displayName:(id)arg4 firstName:(id)arg5 lastName:(id)arg6 address:(id)arg7 status:(long long)arg8 accessLevel:(long long)arg9;
 - (id)initShareeWithObjectID:(id)arg1 accountID:(id)arg2 listID:(id)arg3 displayName:(id)arg4 firstName:(id)arg5 middleName:(id)arg6 lastName:(id)arg7 namePrefix:(id)arg8 nameSuffix:(id)arg9 nickname:(id)arg10 address:(id)arg11 status:(long long)arg12 accessLevel:(long long)arg13;
 - (id)initShareeWithObjectID:(id)arg1 accountID:(id)arg2 listID:(id)arg3 personNameComponents:(id)arg4 address:(id)arg5 status:(long long)arg6 accessLevel:(long long)arg7;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToSharee:(id)arg1;
+- (id)shortName;
 
 @end
 

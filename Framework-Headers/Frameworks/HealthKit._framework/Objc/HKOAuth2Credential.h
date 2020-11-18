@@ -13,14 +13,18 @@
 
 @interface HKOAuth2Credential : NSObject <NSCopying, NSSecureCoding>
 {
+    NSString *_accessToken;
+    struct os_unfair_lock_s _accessTokenLock;
     NSUUID *_identifier;
     NSDate *_expiration;
     NSArray *_scope;
+    NSString *_requestedScopeString;
 }
 
 @property (readonly, copy, nonatomic) NSDate *expiration; // @synthesize expiration=_expiration;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (readonly, copy, nonatomic) NSString *requestedScopeString; // @synthesize requestedScopeString=_requestedScopeString;
 @property (readonly, copy, nonatomic) NSArray *scope; // @synthesize scope=_scope;
 @property (readonly, copy, nonatomic) NSString *scopeString;
 
@@ -30,7 +34,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_accessTokenIdentifier;
-- (id)_commonInitWithIdentifier:(id)arg1 expiration:(id)arg2 scope:(id)arg3;
+- (id)_commonInitWithIdentifier:(id)arg1 requestedScopeString:(id)arg2 expiration:(id)arg3 scope:(id)arg4;
 - (id)_refreshTokenIdentifier;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (BOOL)deleteTokensWithError:(id *)arg1;
@@ -41,8 +45,8 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 expiration:(id)arg2 scope:(id)arg3;
-- (id)initWithIdentifier:(id)arg1 expiration:(id)arg2 scopeString:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 requestedScopeString:(id)arg2 expiration:(id)arg3 scope:(id)arg4;
+- (id)initWithIdentifier:(id)arg1 requestedScopeString:(id)arg2 expiration:(id)arg3 scopeString:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToCredential:(id)arg1 epsilonExpiration:(double)arg2;
 - (BOOL)storeAccessToken:(id)arg1 error:(id *)arg2;

@@ -8,6 +8,7 @@
 
 @class CAShapeLayer, UILabel;
 
+__attribute__((visibility("hidden")))
 @interface MPAVRoutingTableHeaderView : UIView
 {
     struct UIEdgeInsets _edgeInsets;

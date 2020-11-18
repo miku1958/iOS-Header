@@ -8,5 +8,8 @@
 
 @protocol MTLSerializerRenderPipelineState <MTLSerializerState>
 - (unsigned int)pipelineRef;
+
+@optional
+- (void)getWritableInfo:(unsigned int)arg1 vtxBuffers:(unsigned int *)arg2 vtxTexturesArrayLength:(unsigned int)arg3 vtxTextures:(unsigned int *)arg4 frgBuffersLength:(unsigned int)arg5 frgBuffers:(unsigned int *)arg6 frgTexturesArrayLength:(unsigned int)arg7 frgTextures:(unsigned int *)arg8;
 @end
 

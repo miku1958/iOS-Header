@@ -10,7 +10,7 @@
 #import <MTLSimDriver/MTLSerializerCommandStream-Protocol.h>
 
 @class MTLResourceList, NSDictionary, NSError, NSMutableDictionary, NSString;
-@protocol MTLCommandQueue, MTLDevice;
+@protocol MTLCommandQueue, MTLDevice, MTLLogContainer;
 
 __attribute__((visibility("hidden")))
 @interface MTLSimCommandBuffer : _MTLCommandBuffer <MTLCommandBufferSPI, MTLSerializerCommandStream>
@@ -39,12 +39,14 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device; // @synthesize device;
 @property (readonly) NSError *error;
+@property (readonly) unsigned long long errorOptions;
 @property (readonly) unsigned long long globalTraceObjectID;
 @property (readonly) unsigned long long hash;
 @property (readonly) double kernelEndTime;
 @property (readonly) double kernelStartTime;
 @property (copy) NSString *label;
-@property (nonatomic, getter=getListIndex) unsigned long long listIndex;
+@property (readonly, nonatomic, getter=getListIndex) unsigned long long listIndex;
+@property (readonly) id<MTLLogContainer> logs;
 @property (getter=isProfilingEnabled) BOOL profilingEnabled;
 @property (readonly) NSDictionary *profilingResults;
 @property (readonly) BOOL retainedReferences;
@@ -59,8 +61,10 @@ __attribute__((visibility("hidden")))
 - (BOOL)addStateReference:(id)arg1;
 - (void)beginContinuation;
 - (id)blitCommandEncoder;
+- (id)blitCommandEncoderWithDescriptor:(id)arg1;
 - (BOOL)commitAndWaitUntilSubmitted;
 - (id)computeCommandEncoder;
+- (id)computeCommandEncoderWithDescriptor:(id)arg1;
 - (id)computeCommandEncoderWithDispatchType:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)encodeSignalEvent:(id)arg1 value:(unsigned long long)arg2;
@@ -76,6 +80,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)protectionOptions;
 - (id)renderCommandEncoderWithDescriptor:(id)arg1;
 - (id)resourceStateCommandEncoder;
+- (id)resourceStateCommandEncoderWithDescriptor:(id)arg1;
 - (void)setProtectionOptions:(unsigned long long)arg1;
 - (void)split;
 

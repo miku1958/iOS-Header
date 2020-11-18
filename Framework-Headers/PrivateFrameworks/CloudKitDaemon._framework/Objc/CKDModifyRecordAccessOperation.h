@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class NSArray, NSMutableDictionary, NSMutableSet;
+@protocol CKModifyRecordAccessOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDModifyRecordAccessOperation : CKDDatabaseOperation
@@ -22,11 +23,13 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) CDUnknownBlockType accessWasGrantedBlock; // @synthesize accessWasGrantedBlock=_accessWasGrantedBlock;
 @property (copy, nonatomic) CDUnknownBlockType accessWasRevokedBlock; // @synthesize accessWasRevokedBlock=_accessWasRevokedBlock;
+@property (strong, nonatomic) id<CKModifyRecordAccessOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSMutableSet *fetchedRecordIDs; // @synthesize fetchedRecordIDs=_fetchedRecordIDs;
 @property (nonatomic) int numSaveAttempts; // @synthesize numSaveAttempts=_numSaveAttempts;
 @property (strong, nonatomic) NSArray *recordIDsToGrant; // @synthesize recordIDsToGrant=_recordIDsToGrant;
 @property (strong, nonatomic) NSArray *recordIDsToRevoke; // @synthesize recordIDsToRevoke=_recordIDsToRevoke;
 @property (strong, nonatomic) NSMutableDictionary *recordsToSaveByID; // @synthesize recordsToSaveByID=_recordsToSaveByID;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 
 + (long long)isPredominatelyDownload;
 - (void).cxx_destruct;

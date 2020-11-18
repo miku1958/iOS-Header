@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+- (long long)_sceneDraggingBehaviorOnPan;
 - (BOOL)allowsFooterViewsToFloat;
 - (BOOL)allowsHeaderViewsToFloat;
 

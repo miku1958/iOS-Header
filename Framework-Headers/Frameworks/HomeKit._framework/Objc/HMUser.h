@@ -12,14 +12,17 @@
 #import <HomeKit/HMSettingsContainer-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAssistantAccessControl, HMFPairingIdentity, HMFUnfairLock, HMHome, HMHomeAccessControl, HMMediaContentProfileAccessControl, HMMutableArray, HMSettings, HMSettingsController, NSString, NSUUID, _HMContext;
+@class HMAssistantAccessControl, HMFPairingIdentity, HMFUnfairLock, HMHome, HMHomeAccessControl, HMMediaContentProfileAccessControl, HMMutableArray, HMPhotosPersonManager, HMPhotosPersonManagerSettings, HMSettings, HMSettingsController, IDSURI, NSString, NSUUID, _HMContext;
 @protocol HMUserDelegatePrivate, OS_dispatch_queue;
 
 @interface HMUser : NSObject <HMFLogging, HMFMessageReceiver, HMSettingsContainer, NSSecureCoding, HMObjectMerge>
 {
     HMFUnfairLock *_lock;
     HMMutableArray *_pendingAccessoryInvitations;
+    NSString *_senderCorrelationIdentifier;
     BOOL _currentUser;
+    BOOL _needsiTunesMultiUserRepair;
+    BOOL _settingsInitialized;
     NSUUID *_uniqueIdentifier;
     NSString *_name;
     HMHomeAccessControl *_homeAccessControl;
@@ -30,11 +33,13 @@
     HMFPairingIdentity *_pairingIdentity;
     HMSettings *_settings;
     HMSettings *_privateSettings;
-    _HMContext *_context;
+    HMPhotosPersonManager *_photosPersonManager;
+    HMPhotosPersonManagerSettings *_photosPersonManagerSettings;
     id<HMUserDelegatePrivate> _delegate;
     HMSettingsController *_settingsController;
     HMSettingsController *_privateSettingsController;
     NSUUID *_uuid;
+    _HMContext *_context;
 }
 
 @property (copy) HMAssistantAccessControl *assistantAccessControl; // @synthesize assistantAccessControl=_assistantAccessControl;
@@ -50,14 +55,22 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property BOOL needsiTunesMultiUserRepair; // @synthesize needsiTunesMultiUserRepair=_needsiTunesMultiUserRepair;
 @property (copy) HMFPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
+@property (readonly, copy) HMPhotosPersonManagerSettings *personManagerSettings;
+@property (readonly) HMPhotosPersonManager *photosPersonManager;
+@property (strong) HMPhotosPersonManager *photosPersonManager; // @synthesize photosPersonManager=_photosPersonManager;
+@property (readonly, copy) HMPhotosPersonManagerSettings *photosPersonManagerSettings;
+@property (copy) HMPhotosPersonManagerSettings *photosPersonManagerSettings; // @synthesize photosPersonManagerSettings=_photosPersonManagerSettings;
 @property (readonly) HMSettings *privateSettings; // @synthesize privateSettings=_privateSettings;
 @property (readonly) HMSettingsController *privateSettingsController; // @synthesize privateSettingsController=_privateSettingsController;
 @property (readonly) HMSettings *settings; // @synthesize settings=_settings;
 @property (readonly) HMSettingsController *settingsController; // @synthesize settingsController=_settingsController;
+@property (readonly) BOOL settingsInitialized; // @synthesize settingsInitialized=_settingsInitialized;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 @property (copy, nonatomic) NSString *userID; // @synthesize userID=_userID;
+@property (readonly, copy, nonatomic) IDSURI *userIDSURI;
 @property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
 + (id)logCategory;
@@ -71,10 +84,13 @@
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_registerNotificationHandlers;
 - (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)_updatePresenceAuthorizationStatus:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)assistantAccessControlForHome:(id)arg1;
+- (void)configurePhotosPersonManagerWithSettings:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (void)fetchPersonManagerSettingsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchShareLookupInfo:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
@@ -86,11 +102,16 @@
 - (id)messageDestination;
 - (void)pairingIdentityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)pendingAccessoryInvitations;
+- (void)sendClientShareRepairRequest:(id)arg1 containerID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendClientShareURL:(id)arg1 shareToken:(id)arg2 containerID:(id)arg3 fromUser:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)senderCorrelationIdentifier;
+- (void)setNeedsiTunesMultiUserRepair:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setPendingAccessoryInvitationsWithOutgoingInvitation:(id)arg1;
 - (void)updateAssistantAccessControl:(id)arg1 forHome:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateHomeAccessControl:(BOOL)arg1 remoteAccess:(BOOL)arg2 camerasAccess:(id)arg3;
 - (void)updateMediaContentProfileAccessControl:(id)arg1 forHome:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)updatePersonManagerSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)updatePhotosPersonManagerSettings:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updatePresenceAuthorizationStatus:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)userSettingsForHome:(id)arg1;
 

@@ -25,6 +25,13 @@ struct Electrocardiogram {
     } _has;
 };
 
+struct HKIntervalTree<double>;
+
+struct HKObjectValidationConfiguration {
+    unsigned long long _field1;
+    unsigned int _field2;
+};
+
 struct PtrVector<binarysample::ElectrocardiogramLead> {
     struct vector<std::__1::unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>, std::__1::allocator<std::__1::unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>>> _v;
 };
@@ -106,6 +113,10 @@ struct _xsltStylesheet {
     struct _xmlHashTable *_field55;
 };
 
+struct atomic_flag {
+    _Atomic BOOL _Value;
+};
+
 struct map<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead, std::__1::less<binarysample::ElectrocardiogramLead_Name>, std::__1::allocator<std::__1::pair<const binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>>> {
     struct __tree<std::__1::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>, std::__1::__map_value_compare<binarysample::ElectrocardiogramLead_Name, std::__1::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>, std::__1::less<binarysample::ElectrocardiogramLead_Name>, true>, std::__1::allocator<std::__1::__value_type<binarysample::ElectrocardiogramLead_Name, binarysample::ElectrocardiogramLead>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
@@ -120,6 +131,12 @@ struct map<binarysample::ElectrocardiogramLead_Name, binarysample::Electrocardio
 
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
+};
+
+struct unique_ptr<HKIntervalTree<double>, std::__1::default_delete<HKIntervalTree<double>>> {
+    struct __compressed_pair<HKIntervalTree<double>*, std::__1::default_delete<HKIntervalTree<double>>> {
+        struct HKIntervalTree<double> *__value_;
+    } __ptr_;
 };
 
 struct unique_ptr<binarysample::ElectrocardiogramLead, std::__1::default_delete<binarysample::ElectrocardiogramLead>>;
@@ -152,6 +169,10 @@ typedef struct {
 } CDStruct_70511ce9;
 
 typedef struct {
+    unsigned int val[8];
+} CDStruct_4c969caf;
+
+typedef struct {
     char *_field1;
     BOOL _field2;
     char *_field3;
@@ -182,4 +203,9 @@ typedef struct {
     long long minorVersion;
     long long patchVersion;
 } CDStruct_f6aba300;
+
+typedef struct {
+    long long _field1;
+    long long _field2;
+} CDStruct_912cb5d2;
 

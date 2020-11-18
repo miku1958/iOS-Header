@@ -11,7 +11,6 @@
 @class NSDateComponents, NSMutableDictionary, NSNumber, NSString;
 @protocol WDBuddyFlowUserInfoDelegate;
 
-__attribute__((visibility("hidden")))
 @interface WDBuddyFlowUserInfo : NSObject <HKSimpleDataEntryItemDelegate>
 {
     NSMutableDictionary *_dataEntryItems;

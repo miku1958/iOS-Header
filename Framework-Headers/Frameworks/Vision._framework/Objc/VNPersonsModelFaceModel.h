@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (BOOL)supportsSecureCoding;
 - (id).cxx_construct;
 - (void).cxx_destruct;
+- (BOOL)_getSerialNumber:(int *)arg1 forPersonUniqueIdentifier:(id)arg2 error:(id *)arg3;
 - (id)_personPredictionsForFace:(id)arg1 withDescriptor:(const struct ImageDescriptorBufferFloat32 *)arg2 limit:(unsigned long long)arg3 faceIDCanceller:(struct CVMLCanceller *)arg4 error:(id *)arg5;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)faceCountForPersonWithUniqueIdentifier:(id)arg1;
@@ -35,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)personCount;
 - (id)personPredictionsForFace:(id)arg1 withDescriptor:(const struct ImageDescriptorBufferFloat32 *)arg2 limit:(unsigned long long)arg3 canceller:(id)arg4 error:(id *)arg5;
 - (id)personUniqueIdentifiers;
+- (id)trainingFaceprintsForPersonWithUniqueIdentifier:(id)arg1 error:(id *)arg2;
 
 @end
 

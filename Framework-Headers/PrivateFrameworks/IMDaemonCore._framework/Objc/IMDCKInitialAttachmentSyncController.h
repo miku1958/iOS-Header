@@ -23,6 +23,7 @@
 - (void)dealloc;
 - (id)latestSyncToken;
 - (void)setLatestSyncToken:(id)arg1;
+- (void)setLatestSyncToken:(id)arg1 forSyncType:(id)arg2;
 
 @end
 

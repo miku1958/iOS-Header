@@ -22,32 +22,23 @@ __attribute__((visibility("hidden")))
     unsigned int _bucketId;
     unsigned int _buildId;
     unsigned int _dataFormatVersion;
+    unsigned int _dataOutputVersion;
     float _heightAboveGroundM;
     unsigned int _index;
     unsigned int _metricsVersion;
     int _type;
-    int _urlFormat;
     struct {
         unsigned int has_bucketId:1;
         unsigned int has_buildId:1;
         unsigned int has_dataFormatVersion:1;
+        unsigned int has_dataOutputVersion:1;
         unsigned int has_heightAboveGroundM:1;
         unsigned int has_index:1;
         unsigned int has_metricsVersion:1;
         unsigned int has_type:1;
-        unsigned int has_urlFormat:1;
         unsigned int read_capabilitys:1;
         unsigned int read_lodWithTextures:1;
-        unsigned int wrote_capabilitys:1;
-        unsigned int wrote_lodWithTextures:1;
-        unsigned int wrote_bucketId:1;
-        unsigned int wrote_buildId:1;
-        unsigned int wrote_dataFormatVersion:1;
-        unsigned int wrote_heightAboveGroundM:1;
-        unsigned int wrote_index:1;
-        unsigned int wrote_metricsVersion:1;
-        unsigned int wrote_type:1;
-        unsigned int wrote_urlFormat:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -56,31 +47,26 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) int *capabilitys;
 @property (readonly, nonatomic) unsigned long long capabilitysCount;
 @property (nonatomic) unsigned int dataFormatVersion;
+@property (nonatomic) unsigned int dataOutputVersion;
 @property (nonatomic) BOOL hasBucketId;
 @property (nonatomic) BOOL hasBuildId;
 @property (nonatomic) BOOL hasDataFormatVersion;
+@property (nonatomic) BOOL hasDataOutputVersion;
 @property (nonatomic) BOOL hasHeightAboveGroundM;
 @property (nonatomic) BOOL hasIndex;
 @property (nonatomic) BOOL hasMetricsVersion;
 @property (nonatomic) BOOL hasType;
-@property (nonatomic) BOOL hasUrlFormat;
 @property (nonatomic) float heightAboveGroundM;
 @property (nonatomic) unsigned int index;
 @property (readonly, nonatomic) unsigned int *lodWithTextures;
 @property (readonly, nonatomic) unsigned long long lodWithTexturesCount;
 @property (nonatomic) unsigned int metricsVersion;
 @property (nonatomic) int type;
-@property (nonatomic) int urlFormat;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsCapabilitys:(id)arg1;
 - (int)StringAsType:(id)arg1;
-- (int)StringAsUrlFormat:(id)arg1;
-- (void)_addNoFlagsCapability:(int)arg1;
-- (void)_addNoFlagsLodWithTextures:(unsigned int)arg1;
-- (void)_readCapabilitys;
-- (void)_readLodWithTextures;
 - (void)addCapability:(int)arg1;
 - (void)addLodWithTextures:(unsigned int)arg1;
 - (int)capabilityAtIndex:(unsigned long long)arg1;
@@ -95,7 +81,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (unsigned int)lodWithTexturesAtIndex:(unsigned long long)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
@@ -103,7 +92,6 @@ __attribute__((visibility("hidden")))
 - (void)setCapabilitys:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setLodWithTextures:(unsigned int *)arg1 count:(unsigned long long)arg2;
 - (id)typeAsString:(int)arg1;
-- (id)urlFormatAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

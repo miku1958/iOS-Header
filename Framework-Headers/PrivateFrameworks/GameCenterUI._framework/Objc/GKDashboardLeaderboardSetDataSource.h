@@ -21,11 +21,11 @@
 @property (strong, nonatomic) NSDictionary *leaderboardSetAssetNames; // @synthesize leaderboardSetAssetNames=_leaderboardSetAssetNames;
 @property (strong, nonatomic) NSArray *leaderboardSets; // @synthesize leaderboardSets=_leaderboardSets;
 
+- (void).cxx_destruct;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
-- (void)dealloc;
 - (id)initWithGameRecord:(id)arg1;
 - (long long)itemCount;
 - (id)itemForIndexPath:(id)arg1;

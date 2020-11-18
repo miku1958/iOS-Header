@@ -19,8 +19,6 @@
 @property (readonly, nonatomic) TSCECalculationEngine *calcEngine; // @synthesize calcEngine=_calcEngine;
 @property (readonly, nonatomic) TSCEFormulaRewriteSpec *rewriteSpec; // @synthesize rewriteSpec=_rewriteSpec;
 
-+ (struct TSCEFormula)convertFormulaFromBaseToChromeForCategorizedTableMove:(const struct TSCEFormula *)arg1 calcEngine:(id)arg2 containingCell:(const struct TSCEFormulaContainingCell *)arg3 rewriteSpec:(id)arg4;
-+ (struct TSCEFormula)convertFormulaFromChromeToBaseForCategorizedTableMove:(const struct TSCEFormula *)arg1 calcEngine:(id)arg2 containingCell:(const struct TSCEFormulaContainingCell *)arg3 rewriteSpec:(id)arg4;
 + (BOOL)isMoveRewriteType:(int)arg1;
 - (void).cxx_destruct;
 - (id)convertFromBaseToChromeForCategorizedTableMove:(id)arg1 containingCell:(const struct TSCEFormulaContainingCell *)arg2;

@@ -4,41 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <ShazamKit/SHSession.h>
 
-#import <ShazamKit/SHMatcherDelegate-Protocol.h>
-#import <ShazamKit/SHSessionDriverDelegate-Protocol.h>
+@class SHStore;
+@protocol SHSessionDelegate;
 
-@class NSString, SHConfiguration;
-@protocol SHMatcher, SHRecognitionSessionDelegate, SHSessionDriver;
-
-@interface SHRecognitionSession : NSObject <SHMatcherDelegate, SHSessionDriverDelegate>
+@interface SHRecognitionSession : SHSession
 {
-    id<SHRecognitionSessionDelegate> _delegate;
-    SHConfiguration *_configuration;
-    id<SHMatcher> _matcher;
-    id<SHSessionDriver> _sessionDriver;
+    id<SHSessionDelegate> _delegate;
 }
 
-@property (readonly, nonatomic) SHConfiguration *configuration; // @synthesize configuration=_configuration;
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<SHRecognitionSessionDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong, nonatomic) id<SHMatcher> matcher; // @synthesize matcher=_matcher;
-@property (strong, nonatomic) id<SHSessionDriver> sessionDriver; // @synthesize sessionDriver=_sessionDriver;
-@property (readonly) Class superclass;
+@property (readonly, nonatomic) SHStore *configuration;
+@property (weak, nonatomic) id<SHSessionDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
 - (void)flow:(id)arg1 atTime:(id)arg2;
 - (id)initWithConfiguration:(id)arg1;
-- (id)initWithConfiguration:(id)arg1 matcher:(id)arg2;
-- (BOOL)isSessionDriverSignature:(id)arg1;
 - (void)match:(id)arg1;
-- (void)matcher:(id)arg1 didFailForSignature:(id)arg2 apiResponse:(id)arg3 withError:(id)arg4;
-- (void)matcher:(id)arg1 didFindMatch:(id)arg2 forSignature:(id)arg3 apiResponse:(id)arg4;
-- (void)matcher:(id)arg1 didNotFindMatchForSignature:(id)arg2 apiResponse:(id)arg3;
-- (id)matcherForConfiguration:(id)arg1;
+- (void)matcher:(id)arg1 didFailForSignature:(id)arg2 matcherResponse:(id)arg3 withError:(id)arg4;
+- (void)matcher:(id)arg1 didNotFindMatchForSignature:(id)arg2 matcherResponse:(id)arg3;
 
 @end
 

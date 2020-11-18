@@ -6,9 +6,8 @@
 
 #import <Foundation/NSOperation.h>
 
-@class CKDatabase, CKOperationGroup, NSError, NSOperationQueue;
+@class CKDatabase, CKOperationGroup, NSError, NSOperationQueue, NSSet;
 
-__attribute__((visibility("hidden")))
 @interface CKSyncEngineModifyRecordBatchesOperation : NSOperation
 {
     BOOL _isExecuting;
@@ -22,6 +21,7 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _modifyRecordBatchesCompletionBlock;
     CDUnknownBlockType _willEnqueueOperationBlock;
     NSError *_error;
+    NSSet *_zoneIDs;
     NSOperationQueue *_operationQueue;
 }
 
@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType perRecordSaveCompletionBlock; // @synthesize perRecordSaveCompletionBlock=_perRecordSaveCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType populateNextBatchBlock; // @synthesize populateNextBatchBlock=_populateNextBatchBlock;
 @property (copy, nonatomic) CDUnknownBlockType willEnqueueOperationBlock; // @synthesize willEnqueueOperationBlock=_willEnqueueOperationBlock;
+@property (strong, nonatomic) NSSet *zoneIDs; // @synthesize zoneIDs=_zoneIDs;
 
 - (void).cxx_destruct;
 - (void)addNextModifyOperationOrFinishIfNoRemainingWork;

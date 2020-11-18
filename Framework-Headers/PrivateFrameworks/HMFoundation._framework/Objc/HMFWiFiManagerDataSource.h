@@ -15,6 +15,8 @@
 {
 }
 
+@property (readonly, getter=isAssertionActive) BOOL assertionActive;
+@property (readonly) unsigned long long assertionOptions;
 @property (readonly, copy, nonatomic) NSString *currentNetworkSSID;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HMFWiFiManagerDataSourceDelegate> delegate;
@@ -24,6 +26,8 @@
 @property (nonatomic, getter=isWoWAsserted, setter=setWoWAsserted:) BOOL wowAsserted;
 
 + (id)MACAddressString;
+- (void)activateWithOptions:(unsigned long long)arg1;
+- (void)deactivate;
 - (id)initWithWorkQueue:(id)arg1;
 - (void)performBlockAfterWoWReassertionDelay:(CDUnknownBlockType)arg1;
 

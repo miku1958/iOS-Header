@@ -8,28 +8,30 @@
 
 #import <AvatarUI/AVTAvatarAttributeEditorSection-Protocol.h>
 
-@class NSArray, NSString;
-@protocol AVTAvatarAttributeEditorHeaderPicker;
+@class AVTAvatarAttributeEditorSectionOptions, NSArray, NSString;
+@protocol AVTAvatarAttributeEditorSectionSupplementalPicker;
 
 @interface AVTAvatarAttributeEditorSection : NSObject <AVTAvatarAttributeEditorSection>
 {
     NSArray *_sectionItems;
     NSString *_localizedName;
     NSString *_identifier;
-    id<AVTAvatarAttributeEditorHeaderPicker> _headerAccessory;
+    id<AVTAvatarAttributeEditorSectionSupplementalPicker> _supplementalPicker;
+    AVTAvatarAttributeEditorSectionOptions *_options;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) id<AVTAvatarAttributeEditorHeaderPicker> headerAccessory; // @synthesize headerAccessory=_headerAccessory;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property (readonly, nonatomic) AVTAvatarAttributeEditorSectionOptions *options; // @synthesize options=_options;
 @property (readonly, copy, nonatomic) NSArray *sectionItems; // @synthesize sectionItems=_sectionItems;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) id<AVTAvatarAttributeEditorSectionSupplementalPicker> supplementalPicker; // @synthesize supplementalPicker=_supplementalPicker;
 
 - (void).cxx_destruct;
-- (id)initWithSectionItems:(id)arg1 localizedName:(id)arg2 identifier:(id)arg3;
+- (id)initWithSectionItems:(id)arg1 localizedName:(id)arg2 identifier:(id)arg3 options:(id)arg4;
 - (BOOL)shouldDisplaySeparatorBeforeSection:(id)arg1;
 - (BOOL)shouldDisplayTitle;
 

@@ -8,6 +8,7 @@
 
 @protocol BBObserverClientInterface
 - (void)getObserverDebugInfo:(void (^)(NSString *))arg1;
+- (void)noteBulletinsLoadedForSectionID:(NSString *)arg1;
 - (void)noteServerReceivedResponseForBulletin:(BBBulletin *)arg1;
 - (void)removeSection:(NSString *)arg1;
 - (void)updateBulletin:(BBBulletinUpdateTransaction *)arg1 withHandler:(void (^)(BOOL, NSError *))arg2;

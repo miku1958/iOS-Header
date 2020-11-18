@@ -64,11 +64,13 @@
 @property (readonly, nonatomic) BOOL hasSubscriptionOffer;
 @property (readonly, nonatomic) BOOL hasTimeSyncedLyrics;
 @property (readonly, copy, nonatomic) NSString *iTunesBrandType;
+@property (readonly, copy, nonatomic) NSDictionary *importableStorePlatformDictionary;
 @property (readonly, nonatomic) BOOL isChart;
 @property (readonly, nonatomic) BOOL isPreorder;
 @property (readonly, copy, nonatomic) NSString *itemKind;
 @property (readonly, copy, nonatomic) NSDate *lastModifiedDate;
 @property (readonly, nonatomic) MPStoreArtworkRequestToken *latestAlbumArtworkRequestToken;
+@property (readonly, nonatomic, getter=isLive) BOOL live;
 @property (readonly, nonatomic) long long movementCount;
 @property (readonly, copy, nonatomic) NSString *movementName;
 @property (readonly, nonatomic) long long movementNumber;

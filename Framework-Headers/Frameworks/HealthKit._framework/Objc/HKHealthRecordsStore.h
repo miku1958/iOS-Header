@@ -9,13 +9,14 @@
 #import <HealthKit/HKHealthRecordsStoreInterface-Protocol.h>
 #import <HealthKit/_HKXPCExportable-Protocol.h>
 
-@class HKHealthStore, HKObserverSet, HKPluginProxyProvider, NSString;
+@class HKHealthStore, HKObserverSet, HKTaskServerProxyProvider, NSString;
 
 @interface HKHealthRecordsStore : NSObject <HKHealthRecordsStoreInterface, _HKXPCExportable>
 {
     struct os_unfair_lock_s _ivarLock;
-    HKPluginProxyProvider *_proxyProvider;
+    HKTaskServerProxyProvider *_proxyProvider;
     long long _lastKnownIngestionState;
+    HKHealthStore *_healthStore;
     HKObserverSet *_ingestionStateChangeObservers;
     HKObserverSet *_accountStateChangeObservers;
     HKObserverSet *_chrSupportedStateChangeObservers;
@@ -28,11 +29,12 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) HKHealthStore *healthStore;
+@property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (strong, nonatomic) HKObserverSet *ingestionStateChangeObservers; // @synthesize ingestionStateChangeObservers=_ingestionStateChangeObservers;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType unitTesting_didCallReestablishProxyConnectionIfObserversArePresent; // @synthesize unitTesting_didCallReestablishProxyConnectionIfObserversArePresent=_unitTesting_didCallReestablishProxyConnectionIfObserversArePresent;
 
++ (id)taskIdentifier;
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_actionCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)_actionCompletionWithObjectOnClientQueue:(CDUnknownBlockType)arg1;
@@ -57,7 +59,7 @@
 - (void)clientRemote_healthRecordsSupportedDidChangeTo:(BOOL)arg1;
 - (void)clientRemote_updateIngestionState:(long long)arg1;
 - (void)connectionInvalidated;
-- (void)createStaticAccountWithTitle:(id)arg1 subtitle:(id)arg2 description:(id)arg3 countryCode:(id)arg4 onlyIfNeededForSimulatedGatewayID:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)createStaticAccountWithTitle:(id)arg1 subtitle:(id)arg2 description:(id)arg3 countryCode:(id)arg4 fhirVersion:(id)arg5 onlyIfNeededForSimulatedGatewayID:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)deleteAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deregisterAppSourceFromClinicalUnlimitedAuthorizationModeConfirmation:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)endLoginSessionWithState:(id)arg1 code:(id)arg2 completion:(CDUnknownBlockType)arg3;
@@ -97,6 +99,7 @@
 - (void)triggerClinicalContentAnalyticsForReason:(long long)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)triggerClinicalOptInDataCollectionForReason:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)triggerHealthCloudUploadWithCompletion:(CDUnknownBlockType)arg1;
+- (void)updateAccountCredentialStateForAccountWithIdentifier:(id)arg1 state:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

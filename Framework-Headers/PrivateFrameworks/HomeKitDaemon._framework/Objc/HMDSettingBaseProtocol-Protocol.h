@@ -11,9 +11,9 @@
 
 @protocol HMDSettingBaseProtocol <NSObject, NSSecureCoding>
 
-@property (readonly) NSUUID *identifier;
-@property (readonly) NSString *name;
-@property (readonly) NSUUID *parentIdentifier;
+@property (readonly, copy) NSUUID *identifier;
+@property (readonly, copy) NSString *name;
+@property (readonly, copy) NSUUID *parentIdentifier;
 
 @end
 

@@ -11,15 +11,15 @@
 #import <FrontBoardServices/NSCopying-Protocol.h>
 #import <FrontBoardServices/NSMutableCopying-Protocol.h>
 
-@class BSSettings, NSOrderedSet, NSSet, NSString;
+@class BSSettings, FBSSceneIdentityToken, NSOrderedSet, NSSet, NSString;
 
 @interface FBSSceneClientSettings : NSObject <BSDebugDescriptionProviding, BSXPCSecureCoding, NSCopying, NSMutableCopying>
 {
     NSOrderedSet *_layers;
     double _preferredLevel;
     long long _preferredInterfaceOrientation;
-    NSSet *_occlusions;
     NSString *_preferredSceneHostIdentifier;
+    FBSSceneIdentityToken *_preferredSceneHostIdentity;
     BSSettings *_otherSettings;
 }
 
@@ -27,10 +27,11 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSOrderedSet *layers; // @synthesize layers=_layers;
-@property (readonly, copy, nonatomic) NSSet *occlusions; // @synthesize occlusions=_occlusions;
+@property (readonly, copy, nonatomic) NSSet *occlusions;
 @property (readonly, nonatomic) long long preferredInterfaceOrientation; // @synthesize preferredInterfaceOrientation=_preferredInterfaceOrientation;
 @property (readonly, nonatomic) double preferredLevel; // @synthesize preferredLevel=_preferredLevel;
 @property (readonly, copy, nonatomic) NSString *preferredSceneHostIdentifier; // @synthesize preferredSceneHostIdentifier=_preferredSceneHostIdentifier;
+@property (readonly, copy, nonatomic) FBSSceneIdentityToken *preferredSceneHostIdentity; // @synthesize preferredSceneHostIdentity=_preferredSceneHostIdentity;
 @property (readonly) Class superclass;
 
 + (BOOL)_isMutable;
@@ -38,6 +39,7 @@
 + (BOOL)supportsBSXPCSecureCoding;
 - (void).cxx_destruct;
 - (id)_descriptionBuilderWithMultilinePrefix:(id)arg1 debug:(BOOL)arg2;
+- (BOOL)appendDescriptionToBuilder:(id)arg1 forFlag:(long long)arg2 object:(id)arg3 ofSetting:(unsigned long long)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)debugDescriptionWithMultilinePrefix:(id)arg1;
@@ -51,6 +53,9 @@
 - (id)keyDescriptionForSetting:(unsigned long long)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)otherSettings;
+- (BOOL)settings:(id)arg1 appendDescriptionToBuilder:(id)arg2 forFlag:(long long)arg3 object:(id)arg4 ofSetting:(unsigned long long)arg5;
+- (id)settings:(id)arg1 keyDescriptionForSetting:(unsigned long long)arg2;
+- (id)settings:(id)arg1 valueDescriptionForFlag:(long long)arg2 object:(id)arg3 ofSetting:(unsigned long long)arg4;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (id)valueDescriptionForFlag:(long long)arg1 object:(id)arg2 ofSetting:(unsigned long long)arg3;

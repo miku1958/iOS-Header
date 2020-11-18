@@ -9,20 +9,23 @@
 #import <SpringBoard/SBBarSwipeAffordanceDelegate-Protocol.h>
 #import <SpringBoard/SBBarSwipeAffordanceObserver-Protocol.h>
 #import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
+#import <SpringBoard/SBHomeGrabberPointerClickDelegate-Protocol.h>
 #import <SpringBoard/SBModalViewControllerStackDelegate-Protocol.h>
 #import <SpringBoard/SBReachabilityObserver-Protocol.h>
 #import <SpringBoard/UIAlertControllerCoordinatedActionPerforming-Protocol.h>
 #import <SpringBoard/_SBAlertControllerDelegate-Protocol.h>
 
-@class NSString, SBAlertItem, SBBarSwipeAffordanceView, SBFWindow, SBHomeGestureArbiter, SBHomeGestureParticipant, SBModalViewControllerStack, SBSystemGestureManager;
+@class NSString, SBAlertItem, SBAlertLayoutPresentationVerifier, SBBarSwipeAffordanceView, SBFWindow, SBHomeGestureArbiter, SBHomeGestureParticipant, SBModalViewControllerStack, SBReachabilityManager, SBSystemGestureManager;
 @protocol SBFLockOutStatusProvider;
 
-@interface SBSharedModalAlertItemPresenter : NSObject <_SBAlertControllerDelegate, SBModalViewControllerStackDelegate, UIAlertControllerCoordinatedActionPerforming, SBBarSwipeAffordanceObserver, SBBarSwipeAffordanceDelegate, SBHomeGestureParticipantDelegate, SBReachabilityObserver>
+@interface SBSharedModalAlertItemPresenter : NSObject <_SBAlertControllerDelegate, SBModalViewControllerStackDelegate, UIAlertControllerCoordinatedActionPerforming, SBBarSwipeAffordanceObserver, SBBarSwipeAffordanceDelegate, SBHomeGestureParticipantDelegate, SBHomeGrabberPointerClickDelegate, SBReachabilityObserver>
 {
     id<SBFLockOutStatusProvider> _lockOutProvider;
     SBSystemGestureManager *_systemGestureManager;
     SBHomeGestureParticipant *_homeGestureParticipant;
     SBHomeGestureArbiter *_homeGestureArbiter;
+    SBReachabilityManager *_reachabilityManager;
+    SBAlertLayoutPresentationVerifier *_alertLayoutPresentationVerifier;
     SBBarSwipeAffordanceView *_barSwipeView;
     SBModalViewControllerStack *_modalViewControllerStack;
     SBFWindow *_window;
@@ -46,7 +49,9 @@
 - (void)handleReachabilityYOffsetDidChange;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (void)homeGesturePerformedForBarSwipeAffordanceView:(id)arg1;
-- (id)initWithLockOutProvider:(id)arg1 systemGestureManager:(id)arg2 homeGestureArbiter:(id)arg3;
+- (void)homeGrabberViewDidReceiveClick:(id)arg1;
+- (id)initWithLockOutProvider:(id)arg1 systemGestureManager:(id)arg2 homeGestureArbiter:(id)arg3 reachabilityManager:(id)arg4 alertLayoutPresentationVerifier:(id)arg5;
+- (id)initWithLockOutProvider:(id)arg1 systemGestureManager:(id)arg2 homeGestureArbiter:(id)arg3 reachabilityManager:(id)arg4 alertLayoutPresentationVerifier:(id)arg5 enableGestures:(BOOL)arg6;
 - (void)modalViewControllerStack:(id)arg1 didDismissViewController:(id)arg2;
 - (void)modalViewControllerStack:(id)arg1 didPresentViewController:(id)arg2;
 - (void)modalViewControllerStack:(id)arg1 willDismissViewController:(id)arg2 animated:(BOOL)arg3;

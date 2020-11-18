@@ -23,6 +23,7 @@
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void)openFlowDivertControlSocketWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (int)requiredEntitlement;
 - (void)setDelegateInterface:(unsigned int)arg1;
 - (void)setInitialFlowDivertControlSocket:(id)arg1;
 

@@ -6,20 +6,22 @@
 
 #import <objc/NSObject.h>
 
-@class TSDFill, TSDShadow, TSDStroke, TSUSparseArray, TSWPDropCapAdornment;
+@class NSMutableSet, TSDFill, TSDShadow, TSDStroke, TSUSparseArray;
 
 @interface TSWPCharacterAdornmentState : NSObject
 {
+    BOOL _hasValidFillState;
     BOOL _fillsCurrentTextContainer;
+    BOOL _hasValidStrokeState;
     TSDFill *_currentAdornmentFill;
     TSUSparseArray *_currentFillPaths;
     TSUSparseArray *_currentRubyFillPaths;
     TSDShadow *_currentFillShadow;
+    NSMutableSet *_currentDropCapAdornments;
     TSDStroke *_currentAdornmentStroke;
     TSUSparseArray *_currentStrokePaths;
     TSUSparseArray *_currentRubyStrokePaths;
     TSDShadow *_currentStrokeShadow;
-    TSWPDropCapAdornment *_currentDropCapAdornment;
     struct _NSRange _currentFillRange;
     struct _NSRange _currentStrokeRange;
     struct CGRect _currentFillRect;
@@ -28,7 +30,7 @@
 
 @property (strong, nonatomic) TSDFill *currentAdornmentFill; // @synthesize currentAdornmentFill=_currentAdornmentFill;
 @property (strong, nonatomic) TSDStroke *currentAdornmentStroke; // @synthesize currentAdornmentStroke=_currentAdornmentStroke;
-@property (strong, nonatomic) TSWPDropCapAdornment *currentDropCapAdornment; // @synthesize currentDropCapAdornment=_currentDropCapAdornment;
+@property (strong, nonatomic) NSMutableSet *currentDropCapAdornments; // @synthesize currentDropCapAdornments=_currentDropCapAdornments;
 @property (strong, nonatomic) TSUSparseArray *currentFillPaths; // @synthesize currentFillPaths=_currentFillPaths;
 @property (nonatomic) struct _NSRange currentFillRange; // @synthesize currentFillRange=_currentFillRange;
 @property (nonatomic) struct CGRect currentFillRect; // @synthesize currentFillRect=_currentFillRect;
@@ -40,10 +42,14 @@
 @property (nonatomic) struct CGRect currentStrokeRect; // @synthesize currentStrokeRect=_currentStrokeRect;
 @property (strong, nonatomic) TSDShadow *currentStrokeShadow; // @synthesize currentStrokeShadow=_currentStrokeShadow;
 @property (nonatomic) BOOL fillsCurrentTextContainer; // @synthesize fillsCurrentTextContainer=_fillsCurrentTextContainer;
+@property (nonatomic) BOOL hasValidFillState; // @synthesize hasValidFillState=_hasValidFillState;
+@property (nonatomic) BOOL hasValidStrokeState; // @synthesize hasValidStrokeState=_hasValidStrokeState;
 
 + (id)p_deepCopyPathArray:(id)arg1;
 - (void).cxx_destruct;
 - (id)init;
+- (void)resetFillState;
+- (void)resetStrokeState;
 - (void)setStateWithFill:(id)arg1 range:(struct _NSRange)arg2 rect:(struct CGRect)arg3 paths:(id)arg4 rubyPaths:(id)arg5 shadow:(id)arg6 fillsCurrentTextContainer:(BOOL)arg7;
 - (void)setStateWithStroke:(id)arg1 range:(struct _NSRange)arg2 rect:(struct CGRect)arg3 paths:(id)arg4 rubyPaths:(id)arg5 shadow:(id)arg6;
 

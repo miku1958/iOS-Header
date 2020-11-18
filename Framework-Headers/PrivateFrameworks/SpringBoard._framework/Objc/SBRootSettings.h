@@ -6,18 +6,16 @@
 
 #import <UIKit/_UISettings.h>
 
-@class SBAttentionAwarenessSettings, SBProximitySettings, SBStatusBarStyleOverridesSettings;
+@class SBAttentionAwarenessSettings, SBProximitySettings;
 
 @interface SBRootSettings : _UISettings
 {
-    SBStatusBarStyleOverridesSettings *_statusBarStyleOverridesSettings;
     SBAttentionAwarenessSettings *_attentionAwarenessSettings;
     SBProximitySettings *_proximitySettings;
 }
 
 @property (strong) SBAttentionAwarenessSettings *attentionAwarenessSettings; // @synthesize attentionAwarenessSettings=_attentionAwarenessSettings;
 @property (strong) SBProximitySettings *proximitySettings; // @synthesize proximitySettings=_proximitySettings;
-@property (strong) SBStatusBarStyleOverridesSettings *statusBarStyleOverridesSettings; // @synthesize statusBarStyleOverridesSettings=_statusBarStyleOverridesSettings;
 
 - (void).cxx_destruct;
 

@@ -26,21 +26,22 @@
 @property (readonly, nonatomic) PXGSpriteReference *geometryReference; // @dynamic geometryReference;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType pixelBufferDidChangeHandler; // @synthesize pixelBufferDidChangeHandler=_pixelBufferDidChangeHandler;
+@property (readonly, nonatomic) struct CGAffineTransform preferredTransform;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) struct CGAffineTransform videoRotationTransform;
+@property (readonly, nonatomic) NSString *videoStatusDescription;
 
-+ (id)_videoSessionQueue;
++ (id)videoSessionQueue;
 - (void).cxx_destruct;
 - (void)_configureVideoSession:(id)arg1;
-- (void)_createVideoSessionIfNeeded;
-- (void)_ensureVideoSession;
-- (void)_relinquishVideoSession;
+- (void)_videoQueue_ensureVideoSession;
+- (void)_videoQueue_relinquishVideoSession;
 - (void)dealloc;
 - (long long)desiredPlayState;
 - (id)initWithDisplayAsset:(id)arg1 mediaProvider:(id)arg2 spriteReference:(id)arg3;
 - (BOOL)isPlaying;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)prepareForInvisible;
+- (void)prepareForOneUpVisible;
 - (void)prepareForVisible;
 - (void)setDesiredPlayState:(long long)arg1;
 

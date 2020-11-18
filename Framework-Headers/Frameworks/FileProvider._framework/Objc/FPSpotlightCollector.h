@@ -34,6 +34,7 @@
 @property (readonly, nonatomic) FPSpotlightQueryDescriptor *queryDescriptor; // @synthesize queryDescriptor=_queryDescriptor;
 @property (readonly, nonatomic, getter=isSuspended) BOOL suspended;
 
++ (id)_recursiveDescription;
 + (id)processingQueue;
 - (void).cxx_destruct;
 - (void)_addObserver:(id)arg1;
@@ -45,6 +46,7 @@
 - (unsigned long long)_itemsOriginForItems:(id)arg1;
 - (id)_mountPointForExistingSearchQuery:(id)arg1;
 - (id)_mountPointsForDescriptor;
+- (id)_queryAddresses;
 - (void)_regather;
 - (void)_removeItemsForQuery:(id)arg1 mountPoint:(id)arg2;
 - (void)_removeObserver:(id)arg1;

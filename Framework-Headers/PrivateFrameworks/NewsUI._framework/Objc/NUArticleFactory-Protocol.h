@@ -6,9 +6,11 @@
 
 #import <NewsUI/NSObject-Protocol.h>
 
-@class NSArray;
+@class FCArticle, NSArray;
+@protocol FCHeadlineProviding;
 
 @protocol NUArticleFactory <NSObject>
+- (FCArticle *)createArticleForHeadline:(id<FCHeadlineProviding>)arg1;
 - (NSArray *)createArticlesForArticleIDs:(NSArray *)arg1;
 @end
 

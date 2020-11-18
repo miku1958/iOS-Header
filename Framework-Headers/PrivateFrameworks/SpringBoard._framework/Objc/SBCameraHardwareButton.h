@@ -43,35 +43,10 @@
     SBCameraHardwareButtonDefaults *_defaults;
 }
 
-@property (strong, nonatomic) NSMutableIndexSet *allCameraShutterButtonPIDs; // @synthesize allCameraShutterButtonPIDs=_allCameraShutterButtonPIDs;
-@property (strong, nonatomic) SBApplicationController *applicationController; // @synthesize applicationController=_applicationController;
-@property (strong, nonatomic) SBBacklightController *backlightController; // @synthesize backlightController=_backlightController;
-@property (strong, nonatomic) SBHIDButtonStateArbiter *buttonArbiter; // @synthesize buttonArbiter=_buttonArbiter;
-@property (strong, nonatomic) SBCoverSheetPresentationManager *coverSheetPresentationManager; // @synthesize coverSheetPresentationManager=_coverSheetPresentationManager;
 @property (readonly, copy) NSString *debugDescription;
-@property (strong, nonatomic) SBCameraHardwareButtonDefaults *defaults; // @synthesize defaults=_defaults;
-@property (strong, nonatomic) id<BSInvalidatable> deferringRuleAssertion; // @synthesize deferringRuleAssertion=_deferringRuleAssertion;
-@property (strong, nonatomic) BSMutableIntegerMap *deferringTokensPerPID; // @synthesize deferringTokensPerPID=_deferringTokensPerPID;
-@property (strong, nonatomic) BKSHIDEventDeliveryManager *deliveryManager; // @synthesize deliveryManager=_deliveryManager;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableDeferringToApplications; // @synthesize disableDeferringToApplications=_disableDeferringToApplications;
-@property (strong, nonatomic) id<BSInvalidatable> dispatchingRuleAssertion; // @synthesize dispatchingRuleAssertion=_dispatchingRuleAssertion;
-@property (strong, nonatomic) NSMutableIndexSet *foregroundCameraShutterButtonPIDs; // @synthesize foregroundCameraShutterButtonPIDs=_foregroundCameraShutterButtonPIDs;
-@property (strong, nonatomic) NSMutableIndexSet *foregroundPendingRemovalCameraShutterButtonPIDs; // @synthesize foregroundPendingRemovalCameraShutterButtonPIDs=_foregroundPendingRemovalCameraShutterButtonPIDs;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) int lastCameraApplicationPID; // @synthesize lastCameraApplicationPID=_lastCameraApplicationPID;
-@property (strong, nonatomic) SBLockScreenManager *lockScreenManager; // @synthesize lockScreenManager=_lockScreenManager;
-@property (nonatomic) double longPressCancellationTimeout; // @synthesize longPressCancellationTimeout=_longPressCancellationTimeout;
-@property (strong, nonatomic) BSTimer *longPressCancellationTimer; // @synthesize longPressCancellationTimer=_longPressCancellationTimer;
-@property (strong, nonatomic) _SBCameraLaunchCondition *longPressCondition; // @synthesize longPressCondition=_longPressCondition;
-@property (strong, nonatomic) SBSceneManager *mainDisplaySceneManager; // @synthesize mainDisplaySceneManager=_mainDisplaySceneManager;
-@property (strong, nonatomic) _SBCameraLaunchCondition *outOfPocketCondition; // @synthesize outOfPocketCondition=_outOfPocketCondition;
-@property (strong, nonatomic) CMPocketStateManager *pocketStateManager; // @synthesize pocketStateManager=_pocketStateManager;
-@property (strong, nonatomic) RBSProcessMonitor *processMonitor; // @synthesize processMonitor=_processMonitor;
-@property (strong, nonatomic) SBProximitySensorManager *proximitySensorManager; // @synthesize proximitySensorManager=_proximitySensorManager;
-@property (strong, nonatomic) SBCameraHardwareButtonSettings *settings; // @synthesize settings=_settings;
-@property (strong, nonatomic) _SBCameraLaunchCondition *shouldLaunchCameraCondition; // @synthesize shouldLaunchCameraCondition=_shouldLaunchCameraCondition;
-@property (nonatomic) BOOL shouldUsePocketStateDetection; // @synthesize shouldUsePocketStateDetection=_shouldUsePocketStateDetection;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -81,9 +56,10 @@
 - (void)_deferCameraPressesToSpringBoard;
 - (BOOL)_isCoverSheetCameraVisible;
 - (void)_launchCameraIfReady;
-- (void)_launchToCoverSheetCamera;
-- (void)_launchToUnlockedCamera;
+- (void)_launchToCoverSheetCameraAfterWakingScreen:(BOOL)arg1;
+- (void)_launchToUnlockedCameraAfterWakingScreen:(BOOL)arg1;
 - (void)_longPressDidCancel;
+- (void)_notifyCoreAnalyticsCameraDidLaunchToLockScreen:(BOOL)arg1 screenWasOff:(BOOL)arg2;
 - (void)_process:(id)arg1 stateDidUpdate:(id)arg2;
 - (void)_reconfigureProcessMonitor;
 - (void)_reconfigureProcessMonitorForPredicates:(id)arg1;

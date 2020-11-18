@@ -12,14 +12,16 @@
     BOOL _floatingSwitcherVisible;
     BOOL _floatingAppVisibleOverSplitView;
     BOOL _floatingAppVisibleOverExclusiveForegroundApp;
+    BOOL _shouldDimAndBlockTouches;
 }
 
 - (BOOL)_shouldDimAndBlockTouchesToAppsUnderFloating;
-- (double)dimmingAlpha;
-- (BOOL)dimmingViewBlocksTouches;
 - (id)handleMainTransitionEvent:(id)arg1;
 - (id)handleTapOutsideToDismissEvent:(id)arg1;
 - (id)initWithOptions:(unsigned long long)arg1;
+- (double)switcherDimmingAlpha;
+- (BOOL)switcherDimmingViewBlocksTouches;
+- (BOOL)wantsSwitcherDimmingView;
 
 @end
 

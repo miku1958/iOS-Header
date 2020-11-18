@@ -4,14 +4,27 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphEdge.h>
+#import <PhotosGraph/PGGraphOptimizedEdge.h>
 
-@interface PGGraphPresentEdge : PGGraphEdge
+@interface PGGraphPresentEdge : PGGraphOptimizedEdge
 {
+    unsigned int _numberOfAssets:32;
+    float _weight;
 }
 
-@property (readonly, nonatomic) unsigned long long numberOfAssets;
+@property (readonly, nonatomic) unsigned long long numberOfAssets; // @synthesize numberOfAssets=_numberOfAssets;
 
++ (id)filter;
+- (unsigned short)domain;
+- (id)edgeDescription;
+- (BOOL)hasProperties:(id)arg1;
+- (id)initFromPersonNode:(id)arg1 toMomentNode:(id)arg2 weight:(float)arg3;
+- (id)initWithLabel:(id)arg1 sourceNode:(id)arg2 targetNode:(id)arg3 domain:(unsigned short)arg4 weight:(float)arg5;
+- (id)label;
+- (id)propertyDictionary;
+- (void)setLocalProperties:(id)arg1;
+- (void)setWeight:(float)arg1;
+- (float)weight;
 
 @end
 

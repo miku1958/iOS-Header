@@ -6,51 +6,33 @@
 
 #import <MapKit/MKCustomSeparatorTableViewCell.h>
 
-@class MKTransitIncidentItemCellBackgroundView, NSArray, NSLayoutConstraint, UIImageView, _MKUILabel;
+#import <MapKit/MKTransitItemIncidentView-Protocol.h>
 
-@interface MKTransitItemIncidentCell : MKCustomSeparatorTableViewCell
+@class MKTransitItemIncidentView, NSString;
+
+@interface MKTransitItemIncidentCell : MKCustomSeparatorTableViewCell <MKTransitItemIncidentView>
 {
-    UIImageView *_incidentIconImageView;
-    BOOL _needsConstraintsRebuild;
-    NSArray *_constraints;
-    _MKUILabel *_titleLabel;
-    _MKUILabel *_lastUpdatedLabel;
-    MKTransitIncidentItemCellBackgroundView *_backgroundView;
-    BOOL _incidentIsBlocking;
-    BOOL _useCondensedWidthLayout;
-    NSLayoutConstraint *_titleLabelToTopConstraint;
-    NSLayoutConstraint *_bottomToLabelConstraint;
-    NSLayoutConstraint *_lastUpdatedToTitleBaselineConstraint;
-    NSLayoutConstraint *_titleToLastUpdatedLabelConstraint;
-    NSLayoutConstraint *_bottomToBackgroundConstraint;
-    BOOL _padBottom;
+    MKTransitItemIncidentView *_incidentView;
 }
 
-@property (nonatomic) BOOL padBottom; // @synthesize padBottom=_padBottom;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL padBottom;
 @property (nonatomic) long long position;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_blockingImage;
-- (void)_configureWithMessage:(id)arg1 referenceDate:(id)arg2 lastUpdated:(id)arg3 incidentIsBlocking:(BOOL)arg4 shouldShowImage:(BOOL)arg5 inSiri:(BOOL)arg6;
-- (void)_contentSizeCategoryDidChange;
-- (double)_leadingMargin;
-- (id)_nonBlockingImage;
-- (double)_trailingMargin;
-- (void)_updateBottomConstraints;
-- (void)_updateConstraintValues;
-- (void)configureViews;
+- (void)_configureViews;
+- (void)_updateIncidentViewBottomOffset;
 - (void)configureWithIncident:(id)arg1 referenceDate:(id)arg2 shouldShowImage:(BOOL)arg3 inSiri:(BOOL)arg4;
 - (void)configureWithIncidentMessage:(id)arg1 referenceDate:(id)arg2 shouldShowImage:(BOOL)arg3 inSiri:(BOOL)arg4;
-- (void)dealloc;
-- (void)didMoveToWindow;
-- (void)infoCardThemeChanged;
+- (void)configureWithMessage:(id)arg1 incident:(id)arg2 referenceDate:(id)arg3 shouldShowImage:(BOOL)arg4 inSiri:(BOOL)arg5;
 - (id)initWithReuseIdentifier:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
-- (void)rebuildConstraints;
 - (void)setLeadingSeparatorInset:(double)arg1;
 - (void)setSeparatorHidden:(BOOL)arg1;
 - (void)setTrailingSeparatorInset:(double)arg1;
-- (void)updateConstraints;
 
 @end
 

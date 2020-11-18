@@ -32,7 +32,10 @@
 @property (copy) NSString *storedEventVocabularyRejectionKeyword; // @synthesize storedEventVocabularyRejectionKeyword=_storedEventVocabularyRejectionKeyword;
 @property unsigned long long storedPolarity; // @synthesize storedPolarity=_storedPolarity;
 
++ (struct _NSRange)_rangeExcludingLeadingAndTrailingCharacters:(id)arg1 inRange:(struct _NSRange)arg2 ofString:(id)arg3;
++ (id)_substringWithRange:(struct _NSRange)arg1 ofString:(id)arg2 removingCharactersFromSet:(id)arg3;
 + (id)bestLanguageIDFromText:(id)arg1;
++ (id)bestLanguageIDFromText:(id)arg1 linesElided:(unsigned long long)arg2;
 + (id)buildRegexForType:(id)arg1 languageID:(id)arg2;
 + (id)eventVocabularyIgnoreDateKeywordInString:(id)arg1 languageID:(id)arg2;
 + (id)eventVocabularyIgnoreDateRegexForLanguageID:(id)arg1;
@@ -44,7 +47,7 @@
 + (id)eventVocabularySubjectTitleRegexForLanguageID:(id)arg1;
 + (id)humanReadableFeaturePolarity:(unsigned long long)arg1;
 + (unsigned long long)numberOfMatchesForEventVocabularySubjectTitleInString:(id)arg1 languageID:(id)arg2;
-+ (id)regexSetForType:(id)arg1 languageID:(id)arg2;
++ (id)regexArrayForType:(id)arg1 languageID:(id)arg2;
 - (void).cxx_destruct;
 - (void)addFragment:(id)arg1;
 - (void)checkEventVocabularyKeywordsIfNeeded;

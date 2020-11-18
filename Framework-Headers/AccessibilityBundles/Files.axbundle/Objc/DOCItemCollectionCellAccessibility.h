@@ -16,10 +16,13 @@
 - (id)_accessibilityItemCollectionViewController;
 - (BOOL)_accessibilityPerformDocumentAction:(id)arg1;
 - (id)_axAttrTitle;
+- (id)_axRenameTextView;
 - (id)accessibilityCustomActions;
+- (id)accessibilityElements;
 - (id)accessibilityIdentifier;
 - (BOOL)accessibilityScrollToVisible;
 - (unsigned long long)accessibilityTraits;
+- (BOOL)isAccessibilityElement;
 
 @end
 

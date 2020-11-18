@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLPhotoBakedThumbnailsDelegate-Protocol.h>
 
-@class PAImageConversionServiceClient, PAVideoConversionServiceClient, PLIndicatorFileCoordinator, PLLibraryServicesManager, PLSimpleDCIMDirectory;
+@class PLIndicatorFileCoordinator, PLLibraryServicesManager, PLSimpleDCIMDirectory;
 @protocol OS_dispatch_queue, OS_os_transaction;
 
 @interface PLImageWriter : NSObject <PLPhotoBakedThumbnailsDelegate>
@@ -16,9 +16,6 @@
     int _unfinishedJobsRequiringIndicatorCount;
     BOOL _databaseIsCorrupt;
     NSObject<OS_dispatch_queue> *_jobQueue;
-    NSObject<OS_dispatch_queue> *_postIngestWorkQueue;
-    PAImageConversionServiceClient *_imageConversionServiceClient;
-    PAVideoConversionServiceClient *_videoConversionServiceClient;
     struct os_unfair_recursive_lock_s _jobCountLock;
     struct os_unfair_lock_s _transactionLock;
     unsigned long long _transactionCounter;
@@ -28,27 +25,27 @@
     PLLibraryServicesManager *_libraryServicesManager;
 }
 
-+ (id)_assetAdjustmentsFromCameraAdjustmentData:(id)arg1 exportProperties:(id)arg2 assetType:(short)arg3;
-+ (id)_assetAdjustmentsFromCameraAdjustments:(id)arg1 exportProperties:(id)arg2 assetType:(short)arg3;
-+ (id)_assetAdjustmentsFromCameraAdjustmentsFileAtPath:(id)arg1 exportProperties:(id)arg2;
-+ (id)_assetAdjustmentsFromCompositionController:(id)arg1 exportProperties:(id)arg2;
-+ (id)_assetAdjustmentsWithEffectFilterName:(id)arg1 exportProperties:(id)arg2;
++ (id)_assetAdjustmentsFromCameraAdjustmentData:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3 assetType:(short)arg4;
++ (id)_assetAdjustmentsFromCameraAdjustments:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3 assetType:(short)arg4;
++ (id)_assetAdjustmentsFromCameraAdjustmentsFileAtPath:(id)arg1 exportProperties:(id)arg2 cameraMetadata:(id)arg3;
 + (id)_assetUUIDFromIncomingFilename:(id)arg1;
 + (BOOL)_hasPrimaryAssetAndAdjustmentsFilesWithType:(short)arg1 inIncomingFilenames:(id)arg2 forAssetUUID:(id)arg3;
 + (id)_pathsByAssetUUIDFromIncomingCrashRecoveryPaths:(id)arg1;
 + (BOOL)_requiresAssetUUIDForJobType:(id)arg1;
 + (BOOL)_requiresIndicatorFileForJobType:(id)arg1;
++ (id)assetAdjustmentsFromCameraAdjustmentData:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3;
 + (id)assetAdjustmentsFromCameraAdjustmentData:(id)arg1 exportProperties:(id)arg2;
-+ (id)assetAdjustmentsFromCameraAdjustments:(id)arg1 exportProperties:(id)arg2;
-+ (id)assetAdjustmentsFromCameraFilters:(id)arg1 portraitMetadata:(id)arg2 exportProperties:(id)arg3;
++ (id)assetAdjustmentsFromCameraAdjustments:(id)arg1 cameraMetadata:(id)arg2 exportProperties:(id)arg3;
++ (id)assetAdjustmentsFromCameraFilters:(id)arg1 portraitMetadata:(id)arg2 exportProperties:(id)arg3 cameraMetadata:(id)arg4;
++ (id)assetAdjustmentsFromCompositionController:(id)arg1 exportProperties:(id)arg2;
 + (void)decorateThumbnail:(id)arg1 inContext:(struct CGContext *)arg2;
 + (void)decorateThumbnailInRect:(struct CGRect)arg1 size:(struct CGSize)arg2 duration:(id)arg3 inContext:(struct CGContext *)arg4 format:(id)arg5;
 + (id)deferredPhotoPreviewDestinationURLForPrimaryAssetURL:(id)arg1;
 + (id)finalizedAssetURLForDeferredPhotoPreviewURL:(id)arg1 extension:(id)arg2;
 + (BOOL)isDeferredPhotoPreviewURL:(id)arg1;
 + (BOOL)isSpatialOverCaptureURL:(id)arg1;
-+ (BOOL)setAdjustmentsForNewPhoto:(id)arg1 withEffectFilterName:(id)arg2 cameraAdjustmentData:(id)arg3 adjustmentDataPath:(id)arg4 filteredImagePath:(id)arg5 finalAssetSize:(struct CGSize)arg6 isSubstandardRender:(BOOL)arg7;
-+ (void)setAdjustmentsForNewVideo:(id)arg1 withAdjustmentsDictionary:(id)arg2 cameraAdjustments:(id)arg3 renderedContentPath:(id)arg4 renderedPosterFramePreviewPath:(id)arg5 finalAssetSize:(struct CGSize)arg6;
++ (BOOL)setAdjustmentsForNewPhoto:(id)arg1 mainFileMetadata:(id)arg2 cameraAdjustmentData:(id)arg3 adjustmentDataPath:(id)arg4 filteredImagePath:(id)arg5 cameraMetadata:(id)arg6 finalAssetSize:(struct CGSize)arg7 isSubstandardRender:(BOOL)arg8;
++ (void)setAdjustmentsForNewVideo:(id)arg1 mainFileMetadata:(id)arg2 withAdjustmentsDictionary:(id)arg3 cameraAdjustments:(id)arg4 renderedContentPath:(id)arg5 renderedPosterFramePreviewPath:(id)arg6 finalAssetSize:(struct CGSize)arg7;
 + (id)spatialOverCaptureDestinationURLForPrimaryAssetURL:(id)arg1;
 - (void).cxx_destruct;
 - (void)_decorateThumbnail:(id)arg1;
@@ -76,8 +73,8 @@
 - (void)_processDeletePhotoStreamAssetsWithUUIDs:(id)arg1 withReason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_processDeletePhotoStreamDataJob:(id)arg1 withReason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_processImageJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_processImportImageJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processJob:(id)arg1;
+- (id)_processLimitedLibraryAdditionIfNeededWithAssetUUID:(id)arg1 clientBundleIdentifier:(id)arg2 library:(id)arg3;
 - (void)_processReenqueueAssetUUIDsToPhotoStreamJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processSavePhotoStreamImageToCameraRollJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_processSyncClientSaveJobsJob:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -93,7 +90,6 @@
 - (id)cameraAssetPathForNewAssetWithExtension:(id)arg1 assetUUID:(id)arg2;
 - (BOOL)canEnqueueJob:(id)arg1;
 - (void)cleanupFilesInLibrary:(id)arg1 afteriTunesSyncBeforeDate:(id)arg2;
-- (void)dealloc;
 - (void)decorateThumbnail:(id)arg1 inContext:(struct CGContext *)arg2;
 - (void)enqueueAutoDeleteEmptyAlbumJobWithAlbumID:(id)arg1;
 - (BOOL)enqueueJob:(id)arg1;

@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUWheelControlViewDelegate-Protocol.h>
 
-@class HUWheelControlView, NSArray, NSString, UILabel, UIView;
+@class HUWheelControlPopUpButton, HUWheelControlView, NSArray, NSFormatter, NSNumber, NSString, UILabel, UIView;
 
 @interface HUWheelControlPanelCell : HUControlPanelCell <HUWheelControlViewDelegate>
 {
@@ -19,6 +19,12 @@
     UIView *_separatorView;
     NSArray *_staticConstraints;
     NSArray *_dynamicConstraints;
+    HUWheelControlPopUpButton *_wheelButton;
+    NSNumber *_minValue;
+    NSNumber *_maxValue;
+    NSNumber *_stepValue;
+    NSFormatter *_valueFormatter;
+    NSArray *_wheelValues;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,21 +34,33 @@
 @property (readonly, nonatomic, getter=isDisabled) BOOL disabled;
 @property (strong, nonatomic) NSArray *dynamicConstraints; // @synthesize dynamicConstraints=_dynamicConstraints;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSNumber *maxValue; // @synthesize maxValue=_maxValue;
+@property (strong, nonatomic) NSNumber *minValue; // @synthesize minValue=_minValue;
 @property (readonly, nonatomic) UIView *separatorView; // @synthesize separatorView=_separatorView;
 @property (strong, nonatomic) NSArray *staticConstraints; // @synthesize staticConstraints=_staticConstraints;
+@property (strong, nonatomic) NSNumber *stepValue; // @synthesize stepValue=_stepValue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (copy, nonatomic) NSString *titleText;
+@property (strong, nonatomic) NSFormatter *valueFormatter; // @synthesize valueFormatter=_valueFormatter;
+@property (strong, nonatomic) HUWheelControlPopUpButton *wheelButton; // @synthesize wheelButton=_wheelButton;
+@property (strong, nonatomic) NSArray *wheelValues; // @synthesize wheelValues=_wheelValues;
 @property (strong, nonatomic) HUWheelControlView *wheelView; // @synthesize wheelView=_wheelView;
 @property (nonatomic) BOOL wheelViewVisible; // @synthesize wheelViewVisible=_wheelViewVisible;
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
+- (id)_defaultMaxValue;
+- (id)_defaultMinValue;
+- (id)_defaultStepValue;
+- (id)_defaultValueFormatter;
+- (void)_generateWheelValuesWithMinValue:(double)arg1 maxValue:(double)arg2 stepValue:(double)arg3;
 - (id)allControlViews;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
 - (void)prepareForReuse;
 - (void)updateConstraints;
+- (void)updateUIWithAnimation:(BOOL)arg1;
 - (void)wheelControlView:(id)arg1 didUpdateValue:(id)arg2;
 
 @end

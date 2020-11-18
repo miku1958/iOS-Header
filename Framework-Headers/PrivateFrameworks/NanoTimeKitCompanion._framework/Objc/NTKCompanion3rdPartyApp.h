@@ -44,6 +44,7 @@
 - (unsigned long long)hash;
 - (void)install;
 - (BOOL)isEqual:(id)arg1;
+- (id)localizedNameForRemoteApp:(id)arg1;
 
 @end
 

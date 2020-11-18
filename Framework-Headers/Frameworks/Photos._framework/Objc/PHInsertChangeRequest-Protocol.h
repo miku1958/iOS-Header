@@ -4,19 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Photos/PHChangeRequest-Protocol.h>
+#import <Photos/PHUpdateChangeRequest-Protocol.h>
 
 @class NSManagedObject, PLPhotoLibrary;
 
-@protocol PHInsertChangeRequest <PHChangeRequest>
+@protocol PHInsertChangeRequest <PHUpdateChangeRequest>
 
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (readonly) BOOL isNewRequest;
+@property (nonatomic) BOOL shouldPerformConcurrentWork;
 
-+ (BOOL)canGenerateUUIDWithoutEntitlements;
 - (NSManagedObject *)createManagedObjectForInsertIntoPhotoLibrary:(PLPhotoLibrary *)arg1 error:(id *)arg2;
 - (void)finalizeRequestWithBatchSuccess:(BOOL)arg1;
 - (id)initForNewObject;
+- (void)performConcurrentWork;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(PLPhotoLibrary *)arg1;
 - (BOOL)validateInsertIntoPhotoLibrary:(PLPhotoLibrary *)arg1 error:(id *)arg2;
 @end

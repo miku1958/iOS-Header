@@ -28,7 +28,10 @@
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (unsigned long long)lineID;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

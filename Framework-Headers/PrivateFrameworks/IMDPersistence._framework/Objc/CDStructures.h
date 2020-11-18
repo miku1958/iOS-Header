@@ -60,6 +60,7 @@ struct _IMDMessageRecordStruct {
     struct _IMDHandleRecordStruct *_field4;
     struct _IMDHandleRecordStruct *_field5;
     struct __CFArray *_field6;
+    struct __CFDictionary *_field7;
 };
 
 struct __CFArray;

@@ -8,17 +8,19 @@
 
 #import <Email/EFLoggable-Protocol.h>
 
-@class EMAccountRepository, EMActivityRegistry, EMBlockedSenderManager, EMClientState, EMDonationController, EMFetchController, EMInteractionLogger, EMMailboxRepository, EMMessageRepository, EMOutgoingMessageRepository, EMSearchableIndex, NSHashTable, NSString;
+@class EMAccountRepository, EMActivityRegistry, EMBlockedSenderManager, EMClientState, EMDonationController, EMFetchController, EMInteractionLogger, EMMailboxRepository, EMMessageRepository, EMOutgoingMessageRepository, EMSearchableIndex, NSHashTable, NSString, NSXPCConnection;
 @protocol EFCancelable, EMVIPManager, NSXPCProxyCreating, OS_dispatch_queue;
 
 @interface EMDaemonInterface : NSObject <EFLoggable>
 {
     NSObject<OS_dispatch_queue> *_queue;
+    NSXPCConnection *_connection;
     NSHashTable *_connections;
     long long _connectionState;
     id<EFCancelable> _daemonLaunchToken;
     BOOL _allowsBackgroundResume;
     struct os_unfair_lock_s _lock;
+    _Atomic BOOL _invalidated;
     EMMessageRepository *_messageRepository;
     EMOutgoingMessageRepository *_outgoingMessageRepository;
     EMMailboxRepository *_mailboxRepository;
@@ -31,7 +33,6 @@
     id<EMVIPManager> _vipManager;
     EMBlockedSenderManager *_blockedSenderManager;
     EMSearchableIndex *_searchableIndex;
-    id<NSXPCProxyCreating> _proxyCreator;
 }
 
 @property (readonly) EMAccountRepository *accountRepository; // @synthesize accountRepository=_accountRepository;
@@ -48,25 +49,27 @@
 @property (readonly) EMMailboxRepository *mailboxRepository; // @synthesize mailboxRepository=_mailboxRepository;
 @property (readonly) EMMessageRepository *messageRepository; // @synthesize messageRepository=_messageRepository;
 @property (readonly) EMOutgoingMessageRepository *outgoingMessageRepository; // @synthesize outgoingMessageRepository=_outgoingMessageRepository;
-@property (readonly) id<NSXPCProxyCreating> proxyCreator; // @synthesize proxyCreator=_proxyCreator;
+@property (readonly) id<NSXPCProxyCreating> proxyCreator;
 @property (readonly) EMSearchableIndex *searchableIndex; // @synthesize searchableIndex=_searchableIndex;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSXPCConnection *test_connection;
 @property (readonly) id<EMVIPManager> vipManager; // @synthesize vipManager=_vipManager;
 
 + (id)_mailUninstalledFile;
-+ (id)_remoteConnection;
 + (BOOL)cachedMailAppIsInstalled;
 + (id)log;
 + (id)remoteObjectInterface;
 + (void)setCachedMailAppIsInstalled:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)_connectionForProtocol:(id)arg1 error:(id *)arg2;
+- (id)_initByAdoptingConnection:(id)arg1;
+- (void)_invalidate;
 - (id)connectionForProtocol:(id)arg1;
 - (void)dealloc;
 - (void)handleDaemonAvailability;
 - (id)init;
 - (id)initForTesting;
-- (id)initWithProxyCreator:(id)arg1;
+- (id)initWithListenerEndpoint:(id)arg1;
 - (void)launchDaemon;
 - (void)resetProtocolConnections;
 - (void)test_tearDown;

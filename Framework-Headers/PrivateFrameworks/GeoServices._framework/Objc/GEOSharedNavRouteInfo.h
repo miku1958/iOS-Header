@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBDataReader, PBUnknownFields;
+@class NSMutableArray, PBDataReader, PBUnknownFields;
 
 @interface GEOSharedNavRouteInfo : PBCodable <NSCopying>
 {
@@ -17,6 +17,7 @@
     CDStruct_82f37d05 _coordinates;
     CDStruct_9f2792e4 _trafficColorOffsets;
     CDStruct_9f2792e4 _trafficColors;
+    NSMutableArray *_chargingStations;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -25,13 +26,12 @@
         unsigned int read_coordinates:1;
         unsigned int read_trafficColorOffsets:1;
         unsigned int read_trafficColors:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_coordinates:1;
-        unsigned int wrote_trafficColorOffsets:1;
-        unsigned int wrote_trafficColors:1;
+        unsigned int read_chargingStations:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
+@property (strong, nonatomic) NSMutableArray *chargingStations;
 @property (readonly, nonatomic) double *coordinates;
 @property (readonly, nonatomic) unsigned long long coordinatesCount;
 @property (readonly, nonatomic) unsigned int *trafficColorOffsets;
@@ -40,17 +40,16 @@
 @property (readonly, nonatomic) unsigned long long trafficColorsCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
++ (Class)chargingStationsType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsCoordinates:(double)arg1;
-- (void)_addNoFlagsTrafficColor:(unsigned int)arg1;
-- (void)_addNoFlagsTrafficColorOffset:(unsigned int)arg1;
-- (void)_readCoordinates;
-- (void)_readTrafficColorOffsets;
-- (void)_readTrafficColors;
+- (void)addChargingStations:(id)arg1;
 - (void)addCoordinates:(double)arg1;
 - (void)addTrafficColor:(unsigned int)arg1;
 - (void)addTrafficColorOffset:(unsigned int)arg1;
+- (id)chargingStationsAtIndex:(unsigned long long)arg1;
+- (unsigned long long)chargingStationsCount;
+- (void)clearChargingStations;
 - (void)clearCoordinates;
 - (void)clearTrafficColorOffsets;
 - (void)clearTrafficColors;
@@ -64,7 +63,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

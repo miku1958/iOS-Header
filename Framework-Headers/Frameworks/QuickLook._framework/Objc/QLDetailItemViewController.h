@@ -21,11 +21,11 @@
     NSArray *_information;
 }
 
-@property (nonatomic) struct CGRect fileThumbnailFrame;
 @property (strong, nonatomic) NSArray *information; // @synthesize information=_information;
 @property (strong, nonatomic) QLDetailItemViewControllerState *state; // @synthesize state=_state;
 
 - (void).cxx_destruct;
+- (id)_scalableSystemFontOfSize:(double)arg1;
 - (void)_setActionButtonView:(id)arg1 animated:(BOOL)arg2 actionButtonLabel:(id)arg3 informationVisible:(BOOL)arg4;
 - (void)_updateInformation;
 - (BOOL)canEnterFullScreen;

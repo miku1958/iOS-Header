@@ -10,7 +10,7 @@
 
 @protocol PKPaymentAuthorizationServiceViewControllerDelegate <NSObject>
 - (void)authorizationViewControllerDidChangeCoachingState:(PKPaymentAuthorizationServiceViewController *)arg1;
-- (void)authorizationViewControllerDidChangeUserIntentRequirement:(PKPaymentAuthorizationServiceViewController *)arg1;
+- (void)authorizationViewControllerDidChangePhysicalButtonState:(PKPaymentAuthorizationServiceViewController *)arg1;
 
 @optional
 - (void)authorizationViewController:(PKPaymentAuthorizationServiceViewController *)arg1 didEncounterAuthorizationEvent:(unsigned long long)arg2;

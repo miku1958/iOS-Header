@@ -21,8 +21,7 @@
     struct {
         unsigned int read_hours:1;
         unsigned int read_qualities:1;
-        unsigned int wrote_hours:1;
-        unsigned int wrote_qualities:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -33,9 +32,6 @@
 + (BOOL)isValid:(id)arg1;
 + (Class)qualitiesType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsQualities:(id)arg1;
-- (void)_readHours;
-- (void)_readQualities;
 - (void)addQualities:(id)arg1;
 - (void)clearQualities;
 - (void)copyTo:(id)arg1;
@@ -45,7 +41,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)qualitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)qualitiesCount;

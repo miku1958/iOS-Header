@@ -7,14 +7,13 @@
 #import <ClassroomKit/NSObject-Protocol.h>
 
 @class NSString;
-@protocol CRKASMNameComponents, CRKASMOrganization;
+@protocol CRKASMNameComponents;
 
 @protocol CRKASMUser <NSObject>
 
 @property (readonly, copy, nonatomic) NSString *appleID;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) id<CRKASMNameComponents> nameComponents;
-@property (readonly, nonatomic) id<CRKASMOrganization> organization;
 
 @end
 

@@ -16,7 +16,6 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)addToGroupingsRequest:(id)arg1 withFaceObservations:(id)arg2;
-- (id)requestsForGroup:(id)arg1;
 
 @end
 

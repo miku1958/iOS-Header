@@ -27,9 +27,7 @@
 + (id)_createAuthenticationChallengeForCFAuthChallenge:(struct _CFURLAuthChallenge *)arg1 sender:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (struct _CFURLAuthChallenge *)_createCFAuthChallenge;
-- (id)_initWithCFAuthChallenge:(struct _CFURLAuthChallenge *)arg1 sender:(id)arg2;
 - (id)_initWithListOfProtectionSpaces:(id)arg1 CurrentProtectionSpace:(id)arg2 proposedCredential:(id)arg3 previousFailureCount:(long long)arg4 failureResponse:(id)arg5 error:(id)arg6 sender:(id)arg7;
-- (BOOL)_isPasswordBasedChallenge;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

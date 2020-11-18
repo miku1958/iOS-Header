@@ -27,6 +27,7 @@
 @property (readonly, nonatomic) BOOL canModify;
 @property (readonly, nonatomic) BOOL componentCanBeDropped;
 @property (readonly, nonatomic) unsigned long long componentReadVersion;
+@property (readonly, nonatomic) unsigned char componentRequiredPackageIdentifier;
 @property (readonly, nonatomic) BOOL componentRequiresCurrentVersion;
 @property (readonly, nonatomic) TSPObject *componentRootObject;
 @property (readonly, nonatomic) long long compressionAlgorithm;
@@ -41,6 +42,7 @@
 @property (copy, nonatomic) NSUUID *objectUUID;
 @property (readonly, nonatomic) TSUUUIDPath *objectUUIDPath;
 @property (readonly, nonatomic) NSString *packageLocator;
+@property (readonly, nonatomic) BOOL shouldAlwaysArchiveWhenInMemory;
 @property (readonly, nonatomic) BOOL shouldDelayArchiving;
 @property (readonly, nonatomic) BOOL storeOutsideObjectArchive;
 @property (readonly) Class superclass;
@@ -52,6 +54,7 @@
 @property (readonly, nonatomic) BOOL tsp_isLazyReference;
 @property (readonly, nonatomic) BOOL tsp_isPersisted;
 @property (nonatomic) long long tsp_modifyObjectToken;
+@property (readonly, nonatomic) NSString *tsp_publicLoggingDescription;
 @property (readonly, nonatomic) long long tsp_unarchiverIdentifier; // @synthesize tsp_unarchiverIdentifier=_unarchiverIdentifier;
 @property (readonly, nonatomic) TSPUnknownContent *tsp_unknownContent; // @synthesize tsp_unknownContent=_unknownContent;
 
@@ -60,6 +63,7 @@
 + (void)performUpgradeUsingBlock:(CDUnknownBlockType)arg1;
 + (id)tsp_deserializeFromData:(id)arg1 options:(id)arg2 context:(id)arg3 error:(id *)arg4;
 + (id)tsp_deserializeFromURL:(id)arg1 options:(id)arg2 context:(id)arg3 isCrossDocumentPaste:(BOOL)arg4 isCrossAppPaste:(BOOL)arg5 completion:(CDUnknownBlockType)arg6;
++ (unsigned long long)tsp_estimatedByteSizeOfReferenceToObject:(id)arg1;
 + (BOOL)tsp_isPerformingUpgrade;
 + (BOOL)tsp_isTransientObjectIdentifier:(long long)arg1;
 - (void).cxx_destruct;
@@ -103,7 +107,9 @@
 - (void)willBeRemovedFromDocumentWithContext:(id)arg1;
 - (void)willModify;
 - (void)willModifyForUpgrade;
+- (void)willModifyForUpgradeWithOptions:(unsigned long long)arg1;
 - (void)willModifyToComponentRootObject:(id)arg1;
+- (void)willModifyWithOptions:(unsigned long long)arg1;
 
 @end
 

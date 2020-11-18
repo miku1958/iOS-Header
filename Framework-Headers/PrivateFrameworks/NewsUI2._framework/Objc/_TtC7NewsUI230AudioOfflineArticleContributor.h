@@ -10,7 +10,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI230AudioOfflineArticleContributor : NSObject <FCOfflineArticleContributing>
 {
     MISSING_TYPE *articleIDsToDownload;

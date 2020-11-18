@@ -26,8 +26,9 @@
 - (void)navigateToCloudFeedWithCompletion:(void (^)(UIViewController *))arg1;
 - (void)navigateToComment:(PLCloudSharedComment *)arg1 forAsset:(PLManagedAsset *)arg2 animated:(BOOL)arg3;
 - (void)navigateToContentMode:(int)arg1 animated:(BOOL)arg2 completion:(void (^)(BOOL))arg3;
+- (void)navigateToFeaturedPhotoWithSuggestionIdentifier:(NSString *)arg1 animated:(BOOL)arg2;
 - (void)navigateToInvitationCMMWithIdentifier:(NSString *)arg1 animated:(BOOL)arg2;
-- (void)navigateToMemoryWithLocalIdentifier:(NSString *)arg1;
+- (void)navigateToMemoryWithLocalIdentifier:(NSString *)arg1 animated:(BOOL)arg2;
 - (void)navigateToMomentShareWithURL:(NSURL *)arg1 animated:(BOOL)arg2;
 - (void)navigateToOneYearAgoSearch;
 - (void)navigateToPeopleAlbumAnimated:(BOOL)arg1 revealPersonWithLocalIdentifier:(NSString *)arg2 completion:(void (^)(UIViewController *))arg3;
@@ -38,6 +39,7 @@
 - (void)navigateToRevealCloudFeedComment:(PLCloudSharedComment *)arg1 completion:(void (^)(UIViewController *))arg2;
 - (void)navigateToRevealCloudFeedInvitationForAlbum:(PLCloudSharedAlbum *)arg1 completion:(void (^)(UIViewController *))arg2;
 - (void)navigateToRevealTheMostRecentMemoryAnimated:(BOOL)arg1;
+- (void)navigateToSearchWithHashtag:(NSString *)arg1;
 - (void)navigateToSuggestedCMMWithIdentifier:(NSString *)arg1 animated:(BOOL)arg2;
 @end
 

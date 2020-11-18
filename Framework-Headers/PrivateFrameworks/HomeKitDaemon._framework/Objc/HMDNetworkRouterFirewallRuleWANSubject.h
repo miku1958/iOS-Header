@@ -6,18 +6,18 @@
 
 #import <HMFoundation/HMFObject.h>
 
-@class HMDNetworkRouterFirewallRuleWANAddressRange, NSSet;
+@class HMDNetworkRouterFirewallRuleWANAddressRange, NSArray;
 
 @interface HMDNetworkRouterFirewallRuleWANSubject : HMFObject
 {
-    NSSet *_hostnames;
-    NSSet *_addresses;
+    NSArray *_hostnames;
+    NSArray *_addresses;
     HMDNetworkRouterFirewallRuleWANAddressRange *_addressRange;
 }
 
 @property (readonly, nonatomic) HMDNetworkRouterFirewallRuleWANAddressRange *addressRange; // @synthesize addressRange=_addressRange;
-@property (readonly, nonatomic) NSSet *addresses; // @synthesize addresses=_addresses;
-@property (readonly, nonatomic) NSSet *hostnames; // @synthesize hostnames=_hostnames;
+@property (readonly, nonatomic) NSArray *addresses; // @synthesize addresses=_addresses;
+@property (readonly, nonatomic) NSArray *hostnames; // @synthesize hostnames=_hostnames;
 
 - (void).cxx_destruct;
 - (id)attributeDescriptions;

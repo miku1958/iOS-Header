@@ -4,8 +4,8 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PencilKit/NSObject-Protocol.h>
+#import <PencilKit/PKPaletteTool-Protocol.h>
 
-@protocol PKPaletteSelectingTool <NSObject>
+@protocol PKPaletteSelectingTool <PKPaletteTool>
 @end
 

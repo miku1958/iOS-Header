@@ -10,15 +10,17 @@
 
 @interface MPCPlayerResponseSection : NSObject
 {
+    BOOL _autoPlaySection;
     MPCPlayerResponse *_response;
     MPModelGenericObject *_metadataObject;
 }
 
+@property (readonly, nonatomic, getter=isAutoPlaySection) BOOL autoPlaySection; // @synthesize autoPlaySection=_autoPlaySection;
 @property (readonly, nonatomic) MPModelGenericObject *metadataObject; // @synthesize metadataObject=_metadataObject;
 @property (readonly, weak, nonatomic) MPCPlayerResponse *response; // @synthesize response=_response;
 
 - (void).cxx_destruct;
-- (id)initWithModelGenericObject:(id)arg1 response:(id)arg2;
+- (id)initWithModelGenericObject:(id)arg1 sectionIndex:(long long)arg2 response:(id)arg3;
 - (id)remove;
 
 @end

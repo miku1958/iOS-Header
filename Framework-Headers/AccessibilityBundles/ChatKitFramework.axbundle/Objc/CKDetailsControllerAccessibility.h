@@ -13,7 +13,9 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_accessibilityLoadAccessibilityInformation;
 - (BOOL)accessibilityPerformEscape;
+- (void)loadView;
 - (id)locationSendCell;
 - (id)locationStartShareCell;
 

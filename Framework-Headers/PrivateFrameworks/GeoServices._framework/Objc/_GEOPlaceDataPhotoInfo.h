@@ -10,22 +10,22 @@
 
 @class NSString, NSURL;
 
+__attribute__((visibility("hidden")))
 @interface _GEOPlaceDataPhotoInfo : NSObject <GEOMapItemPhotoInfo>
 {
-    struct CGSize _size;
     NSURL *_url;
+    struct CGSize _size;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) struct CGSize size;
+@property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSURL *url;
+@property (readonly, nonatomic) NSURL *url; // @synthesize url=_url;
 
-+ (id)sortedPhotoInfoFromPhotoVersions:(id)arg1;
 - (void).cxx_destruct;
-- (id)initWithPhotoContent:(id)arg1;
+- (id)initWithURL:(id)arg1 width:(double)arg2 height:(double)arg3;
 
 @end
 

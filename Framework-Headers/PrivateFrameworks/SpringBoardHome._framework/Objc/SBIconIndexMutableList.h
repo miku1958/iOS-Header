@@ -35,15 +35,19 @@
 - (unsigned long long)count;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (void)dealloc;
+- (void)enumerateNodesAtIndexes:(id)arg1 options:(unsigned long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateNodesWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (id)indexDescriptionWithPrefix:(id)arg1;
 - (unsigned long long)indexOfNode:(id)arg1;
+- (unsigned long long)indexOfNodeAtIndexes:(id)arg1 options:(unsigned long long)arg2 passingTest:(CDUnknownBlockType)arg3;
 - (unsigned long long)indexOfNodePassingTest:(CDUnknownBlockType)arg1;
+- (unsigned long long)indexOfNodeWithOptions:(unsigned long long)arg1 passingTest:(CDUnknownBlockType)arg2;
 - (id)indexPathsForContainedNodeIdentifier:(id)arg1 prefixPath:(id)arg2;
 - (id)indexesOfNodesPassingTest:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)insertNode:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)insertNodes:(id)arg1 atIndexes:(id)arg2;
 - (void)moveNode:(id)arg1 toIndex:(unsigned long long)arg2;
 - (void)moveNodes:(id)arg1 toContiguousIndicesStartingAt:(unsigned long long)arg2;
 - (void)node:(id)arg1 didAddContainedNodeIdentifiers:(id)arg2;
@@ -52,13 +56,18 @@
 - (void)nodeDidMoveContainedNodes:(id)arg1;
 - (id)nodes;
 - (id)nodesAlongIndexPath:(id)arg1 consumedIndexes:(unsigned long long)arg2;
+- (id)nodesAtIndexes:(id)arg1;
 - (id)nodesContainingNodeIdentifier:(id)arg1;
+- (id)nodesInRange:(struct _NSRange)arg1;
 - (void)removeAllNodes;
 - (void)removeLastNode;
 - (void)removeNode:(id)arg1;
 - (void)removeNodeAtIndex:(unsigned long long)arg1;
 - (void)removeNodesAtIndexes:(id)arg1;
+- (void)removeNodesInArray:(id)arg1;
+- (void)removeNodesInRange:(struct _NSRange)arg1;
 - (void)replaceNodeAtIndex:(unsigned long long)arg1 withNode:(id)arg2;
+- (void)sortUsingComparator:(CDUnknownBlockType)arg1;
 - (void)sortUsingSelector:(SEL)arg1;
 
 @end

@@ -6,12 +6,13 @@
 
 #import <BulletinDistributorCompanion/NSObject-Protocol.h>
 
-@class BLTSectionInfoList, NSDictionary, NSString;
+@class BLTSectionInfoList, BLTTransaction, NSDictionary, NSString;
 
 @protocol BLTSectionInfoListDelegate <NSObject>
+- (void)sectionInfoList:(BLTSectionInfoList *)arg1 makeAuthorizationPermanentForSectionID:(NSString *)arg2;
 - (BOOL)sectionInfoList:(BLTSectionInfoList *)arg1 override:(NSDictionary *)arg2 shouldApplyToSectionInfoForSectionID:(NSString *)arg3;
-- (void)sectionInfoList:(BLTSectionInfoList *)arg1 receivedRemoveSectionWithSectionID:(NSString *)arg2;
-- (void)sectionInfoList:(BLTSectionInfoList *)arg1 receivedUpdatedSectionInfoForSectionID:(NSString *)arg2;
+- (void)sectionInfoList:(BLTSectionInfoList *)arg1 receivedRemoveSectionWithSectionID:(NSString *)arg2 transaction:(BLTTransaction *)arg3;
+- (void)sectionInfoList:(BLTSectionInfoList *)arg1 receivedUpdatedSectionInfoForSectionID:(NSString *)arg2 transaction:(BLTTransaction *)arg3;
 - (BOOL)sectionInfoListSectionIDHadDisplayedCriticalBulletins:(NSString *)arg1;
 @end
 

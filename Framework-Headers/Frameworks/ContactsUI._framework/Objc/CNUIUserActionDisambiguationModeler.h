@@ -10,7 +10,6 @@
 
 @interface CNUIUserActionDisambiguationModeler : NSObject
 {
-    BOOL _tracksChanges;
     id<CNUIUserActionTargetDiscovering> _targetDiscoveringHelper;
     id<CNUIUserActionRanking> _rankingHelper;
     id<CNUIDefaultUserActionFetcher> _defaultActionFetcher;
@@ -21,21 +20,18 @@
 @property (strong, nonatomic) id<CNUIUserActionDiscoveringEnvironment> discoveringEnvironment; // @synthesize discoveringEnvironment=_discoveringEnvironment;
 @property (strong, nonatomic) id<CNUIUserActionRanking> rankingHelper; // @synthesize rankingHelper=_rankingHelper;
 @property (strong, nonatomic) id<CNUIUserActionTargetDiscovering> targetDiscoveringHelper; // @synthesize targetDiscoveringHelper=_targetDiscoveringHelper;
-@property (nonatomic) BOOL tracksChanges; // @synthesize tracksChanges=_tracksChanges;
 
 + (id)descriptorForRequiredKeys;
 - (void).cxx_destruct;
 - (id)_discoverActionsForContact:(id)arg1 actionType:(id)arg2;
 - (id)defaultActionChangedObservable;
 - (id)defaultActionFromActions:(id)arg1;
-- (id)defaultActionFromActions:(id)arg1 trackingChanges:(BOOL)arg2;
 - (id)discoverActionsForContact:(id)arg1 actionType:(id)arg2;
-- (id)discoverActionsForContact:(id)arg1 actionType:(id)arg2 trackingChanges:(BOOL)arg3;
 - (id)init;
 - (id)initWithDiscoveringEnvironment:(id)arg1;
 - (id)initWithTargetDiscoveringHelper:(id)arg1 rankingHelper:(id)arg2 defaultActionFetcher:(id)arg3 discoveringEnvironment:(id)arg4;
 - (id)modelsWithContact:(id)arg1 actionType:(id)arg2;
-- (id)modelsWithDefaultAction:(id)arg1 actions:(id)arg2 recentActions:(id)arg3 directoryServiceActions:(id)arg4 foundOnDeviceActions:(id)arg5 sorts:(BOOL)arg6 throttles:(BOOL)arg7;
+- (id)modelsWithDefaultAction:(id)arg1 actions:(id)arg2 recentActions:(id)arg3 sorts:(BOOL)arg4 throttles:(BOOL)arg5;
 - (id)recentActionsFromActions:(id)arg1;
 - (id)schedulerProvider;
 - (void)setContactStore:(id)arg1;

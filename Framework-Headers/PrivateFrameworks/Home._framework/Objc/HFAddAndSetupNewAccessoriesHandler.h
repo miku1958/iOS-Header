@@ -10,7 +10,7 @@
 {
 }
 
-+ (id)addAndSetupNewAccessoriesForHome:(id)arg1;
++ (id)addAndSetupNewAccessoriesForHome:(id)arg1 room:(id)arg2;
 
 @end
 

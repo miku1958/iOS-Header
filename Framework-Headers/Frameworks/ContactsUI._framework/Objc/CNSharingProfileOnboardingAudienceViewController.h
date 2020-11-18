@@ -6,16 +6,17 @@
 
 #import <OnBoardingKit/OBTableWelcomeController.h>
 
+#import <ContactsUI/CNSharingProfileOnboardingAudienceController-Protocol.h>
 #import <ContactsUI/UITableViewDataSource-Protocol.h>
 #import <ContactsUI/UITableViewDelegate-Protocol.h>
 #import <ContactsUI/UITextFieldDelegate-Protocol.h>
 
 @class CNMutableContact, CNSharingProfileAudienceDataSource, NSLayoutConstraint, NSString, OBBoldTrayButton, UITextField;
-@protocol CNSharingProfileOnboardingAudienceViewControllerDelegate;
+@protocol CNSharingProfileOnboardingAudienceControllerDelegate;
 
-@interface CNSharingProfileOnboardingAudienceViewController : OBTableWelcomeController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface CNSharingProfileOnboardingAudienceViewController : OBTableWelcomeController <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, CNSharingProfileOnboardingAudienceController>
 {
-    id<CNSharingProfileOnboardingAudienceViewControllerDelegate> _delegate;
+    id<CNSharingProfileOnboardingAudienceControllerDelegate> _delegate;
     NSLayoutConstraint *_tableViewHeightConstraint;
     OBBoldTrayButton *_confirmButton;
     UITextField *_givenNameField;
@@ -29,7 +30,7 @@
 @property (strong, nonatomic) OBBoldTrayButton *confirmButton; // @synthesize confirmButton=_confirmButton;
 @property (strong, nonatomic) CNMutableContact *contact; // @synthesize contact=_contact;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<CNSharingProfileOnboardingAudienceViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<CNSharingProfileOnboardingAudienceControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UITextField *familyNameField; // @synthesize familyNameField=_familyNameField;
 @property (strong, nonatomic) UITextField *givenNameField; // @synthesize givenNameField=_givenNameField;
@@ -64,6 +65,7 @@
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;
+- (void)updateConfirmButtonEnabledState;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 

@@ -18,7 +18,8 @@
 - (void).cxx_destruct;
 - (void)buildNodeForAvatar:(id)arg1 withCamera:(id)arg2 forExport:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)initWithImage:(id)arg1 size:(struct CGSize)arg2 scale:(struct SCNVector3)arg3 position:(struct SCNVector3)arg4 renderLast:(BOOL)arg5 orientToCamera:(BOOL)arg6 rotation:(struct SCNVector3)arg7 palettesDescriptions:(id)arg8 modifiers:(id)arg9 adjustments:(id)arg10;
+- (id)dictionaryWithTargetPath:(id)arg1;
+- (id)initWithImage:(id)arg1 size:(struct CGSize)arg2 scale:(BOOL)arg3 position:(BOOL)arg4 renderLast:(id)arg5 orientToCamera:(id)arg6 rotation:(id)arg7 palettesDescriptions:modifiers:adjustments: /* Error: Ran out of types for this method. */;
 
 @end
 

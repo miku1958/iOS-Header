@@ -4,12 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSString, _WKWebAuthenticationPanel;
+@class NSArray, _WKWebAuthenticationPanel;
 
 @protocol _SFAuthenticatorDialog
 
-@property (readonly, nonatomic) NSString *relyingPartyID;
+@property (nonatomic) BOOL isForUpdateOnly;
+@property (readonly, nonatomic) _WKWebAuthenticationPanel *panel;
 
-- (void)transitionToState:(int)arg1 forPanel:(_WKWebAuthenticationPanel *)arg2;
+- (void)decidePolicyForLocalAuthenticatorWithCompletionHandler:(void (^)(long long))arg1;
+- (void)requestPINWithRemainingRetries:(unsigned long long)arg1 completionHandler:(void (^)(NSString *))arg2;
+- (void)selectAssertionResponse:(NSArray *)arg1 source:(long long)arg2 completionHandler:(void (^)(_WKWebAuthenticationAssertionResponse *))arg3;
+- (void)updateWebAuthenticationPanel:(long long)arg1;
 @end
 

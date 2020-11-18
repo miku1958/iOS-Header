@@ -6,23 +6,25 @@
 
 #import <ClockKitUI/CLKUIQuad.h>
 
-@class CLKDevice, MISSING_TYPE, MTLRenderPassDescriptor, NSArray, NSOrderedSet, NTKAltitudeColorCurve, NTKSiderealCachedMTLTexture, NTKSiderealDataSource;
-@protocol MTLBuffer, MTLDevice, MTLRenderPipelineState, MTLTexture;
+@class CLKDevice, MISSING_TYPE, MTLRenderPassDescriptor, NSOrderedSet, NTKAltitudeColorCurve, NTKPromise, NTKSiderealCachedMTLTexture, NTKSiderealData;
+@protocol MTLBuffer, MTLCommandBuffer, MTLDevice, MTLTexture;
 
 @interface NTKSiderealBackgroundQuad : CLKUIQuad
 {
     CLKDevice *_clkDevice;
     id<MTLDevice> _device;
-    id<MTLRenderPipelineState> _mtlSolidPipelineState;
-    id<MTLRenderPipelineState> _mtlGradientPipelineState;
-    id<MTLRenderPipelineState> _mtlGlowPipelineState;
-    id<MTLRenderPipelineState> _mtlSpritePipelineState;
-    id<MTLRenderPipelineState> _mtlBlurPipelineState;
-    id<MTLRenderPipelineState> _mtlCompositePipelineState;
+    NTKPromise *_mtlSolidPipelineState;
+    NTKPromise *_mtlGradientPipelineState;
+    NTKPromise *_mtlGlowPipelineState;
+    NTKPromise *_mtlSpritePipelineState;
+    NTKPromise *_mtlBlurPipelineState;
+    NTKPromise *_mtlCompositePipelineState;
+    id<MTLCommandBuffer> _gradientLoadingBuffer;
     id<MTLTexture> _gradientTex;
     id<MTLBuffer> _mtlIndexBuffer;
     id<MTLBuffer> _mtlSectorDescriptorBuffers[3];
     unsigned short _currentBufferIndex;
+    id<MTLCommandBuffer> _textureLoadingBuffer;
     NTKSiderealCachedMTLTexture *_dialTex;
     NTKSiderealCachedMTLTexture *_waypointTex;
     NTKSiderealCachedMTLTexture *_gnomonTexture;
@@ -40,13 +42,10 @@
     NTKAltitudeColorCurve *_astronomicalTwilightCurve;
     NTKAltitudeColorCurve *_nightColorCurve;
     NTKAltitudeColorCurve *_bloomColorCurve;
-    NSArray *_dayGradientCurves;
-    NSArray *_dayGradientInterpolations;
-    float _antiAliasWidth;
     MISSING_TYPE *_ticksColor_dim;
     MISSING_TYPE *_ticksColor_bright;
     MISSING_TYPE *_waypointsColor;
-    NTKSiderealDataSource *_dataSource;
+    NTKSiderealData *_currentData;
     double _glowStartAngle;
     double _glowEndAngle;
     float _diameter;
@@ -59,10 +58,13 @@
     id<MTLTexture> _horizontalBlurBuffer;
     float _blurOrbitRadius;
     float _blurRadius;
+    BOOL _useXR;
+    BOOL _isConstantSun;
     BOOL _shouldDrawGlowPath;
     float _litProgress;
     float _backgroundDimming;
     float _blurScale;
+    float _sunsetFilter;
     unsigned long long _renderingMode;
     id<MTLTexture> _dayMask;
     id<MTLTexture> _nightMask;
@@ -75,13 +77,12 @@
 @property (strong, nonatomic) id<MTLTexture> nightMask; // @synthesize nightMask=_nightMask;
 @property (nonatomic) unsigned long long renderingMode; // @synthesize renderingMode=_renderingMode;
 @property (nonatomic) BOOL shouldDrawGlowPath; // @synthesize shouldDrawGlowPath=_shouldDrawGlowPath;
+@property (nonatomic) float sunsetFilter; // @synthesize sunsetFilter=_sunsetFilter;
 
 - (void).cxx_destruct;
 - (id)_currentBuffer;
-- (void)dataSourceChanged;
-- (id)generateGradientData:(CDUnknownBlockType)arg1;
-- (id)initWithDevice:(id)arg1 orbitDiameter:(double)arg2 timeOrbitRadius:(double)arg3 timeRadius:(double)arg4 dialImage:(id)arg5 waypointImage:(id)arg6 gnomonImage:(id)arg7 dayGnomonImage:(id)arg8 dayDiskBloomImage:(id)arg9 dayDiscImage:(id)arg10 nightGnomonImage:(id)arg11 nightDiscImage:(id)arg12 nightRingImage:(id)arg13 dataSource:(id)arg14;
-- (void)loadGradientTexture:(CDUnknownBlockType)arg1;
+- (id)initWithDevice:(id)arg1 orbitDiameter:(double)arg2 timeOrbitRadius:(double)arg3 timeRadius:(double)arg4 dialImage:(id)arg5 waypointImage:(id)arg6 gnomonImage:(id)arg7 dayGnomonImage:(id)arg8 dayDiskBloomImage:(id)arg9 dayDiscImage:(id)arg10 nightGnomonImage:(id)arg11 nightDiscImage:(id)arg12 nightRingImage:(id)arg13 initialData:(id)arg14 useXR:(BOOL)arg15;
+- (void)loadGradientTexture;
 - (int)numSlicesForAngle:(double)arg1;
 - (void)performOffscreenPassesWithCommandBuffer:(id)arg1;
 - (BOOL)prepareForTime:(double)arg1;
@@ -90,7 +91,7 @@
 - (void)setSectors:(id)arg1;
 - (void)setSolarDayProgress:(double)arg1;
 - (void)setupForQuadView:(id)arg1;
-- (void)updateAntiAliasWidth;
+- (void)siderealDataChanged:(id)arg1;
 - (void)updateWaypointImage:(id)arg1;
 
 @end

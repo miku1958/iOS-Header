@@ -4,12 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NETunnelNetworkSettings, NSDictionary, NSError;
+@class NETunnelNetworkSettings, NSError;
 
 @protocol NEVPNPluginManager
 - (void)createVirtualInterfaceOfType:(long long)arg1 maxPendingPackets:(unsigned long long)arg2 completionHandler:(void (^)(NSFileHandle *))arg3;
 - (void)handleIPCDetached;
-- (void)setPersistentData:(NSDictionary *)arg1 ofType:(long long)arg2 completionHandler:(void (^)(void))arg3;
 - (void)setStatus:(long long)arg1 error:(NSError *)arg2;
 - (void)setTunnelNetworkSettings:(NETunnelNetworkSettings *)arg1 completionHandler:(void (^)(NSError *))arg2;
 @end

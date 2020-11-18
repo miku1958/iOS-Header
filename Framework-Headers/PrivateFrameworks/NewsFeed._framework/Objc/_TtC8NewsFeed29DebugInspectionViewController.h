@@ -12,8 +12,8 @@ __attribute__((visibility("hidden")))
 @interface _TtC8NewsFeed29DebugInspectionViewController : UIViewController
 {
     MISSING_TYPE *inspector;
-    MISSING_TYPE *reporter;
     MISSING_TYPE *feedItem;
+    MISSING_TYPE *commandCenter;
     MISSING_TYPE *tableView;
     MISSING_TYPE *sections;
 }

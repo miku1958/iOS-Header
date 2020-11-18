@@ -7,6 +7,6 @@
 #import <TSDrawables/TSDShapeInfo.h>
 
 @interface TSDShapeInfo (TSTextAdditions)
-- (int)elementKind;
+- (unsigned int)elementKind;
 @end
 

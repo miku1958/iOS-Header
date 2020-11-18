@@ -33,7 +33,11 @@
 + (id)_stringByStrippingControlCharactersFromString:(id)arg1;
 + (id)displayLabelForContact:(id)arg1 unlocalizedLabel:(id)arg2;
 + (Class)frozenClass;
++ (id)knownIdentityKeysForComparison;
++ (id)knownSingleValueKeysForComparison;
++ (id)locationWithGEOMapItem:(id)arg1;
 + (id)locationWithMapItem:(id)arg1;
++ (id)locationWithPlacemark:(id)arg1;
 + (id)locationWithTitle:(id)arg1;
 - (void).cxx_destruct;
 - (void)_clearGeoLocationCache;

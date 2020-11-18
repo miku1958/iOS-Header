@@ -16,10 +16,12 @@
 + (id)_imageForFeatureStyleAttributes:(id)arg1 size:(unsigned long long)arg2 forScale:(double)arg3 navMode:(BOOL)arg4 nightMode:(BOOL)arg5;
 + (id)_imageForFeatureStyleAttributes:(id)arg1 size:(unsigned long long)arg2 forScale:(double)arg3 nightMode:(BOOL)arg4;
 + (id)iconManager;
++ (id)imageForIconID:(unsigned int)arg1 contentScale:(double)arg2 sizeGroup:(unsigned long long)arg3 nightMode:(BOOL)arg4;
 + (id)imageForMapItem:(id)arg1 forScale:(double)arg2;
 + (id)imageForMapItem:(id)arg1 forScale:(double)arg2 fallbackToBundleIcon:(BOOL)arg3;
 + (id)imageForMapItem:(id)arg1 size:(unsigned long long)arg2 forScale:(double)arg3 format:(int)arg4;
 + (id)imageForMapItem:(id)arg1 size:(unsigned long long)arg2 forScale:(double)arg3 format:(int)arg4 fallbackToBundleIcon:(BOOL)arg5;
++ (id)imageForRouteAnnotationStyle:(id)arg1 size:(unsigned long long)arg2 forScale:(double)arg3;
 + (id)imageForStyle:(id)arg1 size:(unsigned long long)arg2 forScale:(double)arg3 format:(int)arg4;
 + (id)imageForStyle:(id)arg1 size:(unsigned long long)arg2 forScale:(double)arg3 format:(int)arg4 customIconID:(unsigned long long)arg5;
 + (id)imageForStyle:(id)arg1 size:(unsigned long long)arg2 forScale:(double)arg3 format:(int)arg4 customIconID:(unsigned long long)arg5 fallbackToBundleIcon:(BOOL)arg6;

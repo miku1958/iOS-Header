@@ -24,6 +24,7 @@
 @property (readonly, nonatomic) BOOL isiMessageSupported;
 @property (readonly) Class superclass;
 
++ (BOOL)shouldUseLegacyMessages;
 
 @end
 

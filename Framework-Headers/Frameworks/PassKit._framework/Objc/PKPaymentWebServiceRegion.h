@@ -36,6 +36,8 @@
     NSString *_applyServicePushTopic;
     NSString *_productsPushTopic;
     NSString *_transactionZonePushTopic;
+    NSString *_provisioningTargetsPushTopic;
+    NSString *_lastDeviceUpgradeTaskBuildVersion;
     NSURL *_peerPaymentServiceURL;
 }
 
@@ -52,6 +54,7 @@
 @property (nonatomic) BOOL hasPeerPaymentAccount; // @synthesize hasPeerPaymentAccount=_hasPeerPaymentAccount;
 @property (strong, nonatomic) NSURL *inAppPaymentServicesURL; // @synthesize inAppPaymentServicesURL=_inAppPaymentServicesURL;
 @property (copy, nonatomic) NSString *lastDeviceCheckInBuildVersion; // @synthesize lastDeviceCheckInBuildVersion=_lastDeviceCheckInBuildVersion;
+@property (copy, nonatomic) NSString *lastDeviceUpgradeTaskBuildVersion; // @synthesize lastDeviceUpgradeTaskBuildVersion=_lastDeviceUpgradeTaskBuildVersion;
 @property (strong, nonatomic) NSString *lastUpdatedTag; // @synthesize lastUpdatedTag=_lastUpdatedTag;
 @property (nonatomic) long long outstandingCheckInAction; // @synthesize outstandingCheckInAction=_outstandingCheckInAction;
 @property (strong, nonatomic) NSURL *partnerServiceURL; // @synthesize partnerServiceURL=_partnerServiceURL;
@@ -59,6 +62,7 @@
 @property (strong, nonatomic) NSURL *paymentServicesURL; // @synthesize paymentServicesURL=_paymentServicesURL;
 @property (strong, nonatomic) NSURL *peerPaymentServiceURL; // @synthesize peerPaymentServiceURL=_peerPaymentServiceURL;
 @property (copy, nonatomic) NSString *productsPushTopic; // @synthesize productsPushTopic=_productsPushTopic;
+@property (copy, nonatomic) NSString *provisioningTargetsPushTopic; // @synthesize provisioningTargetsPushTopic=_provisioningTargetsPushTopic;
 @property (strong, nonatomic) NSString *regionCode; // @synthesize regionCode=_regionCode;
 @property (copy, nonatomic) NSString *transactionZonePushTopic; // @synthesize transactionZonePushTopic=_transactionZonePushTopic;
 @property (strong, nonatomic) NSString *trustedServiceManagerPushTopic; // @synthesize trustedServiceManagerPushTopic=_trustedServiceManagerPushTopic;

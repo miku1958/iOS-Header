@@ -128,11 +128,14 @@
 - (void)endRequiringUpgradedPasscodeIfNecessary;
 - (void)enforceUpgradedPasscodePolicyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)exitPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg1 withShouldContinue:(BOOL)arg2 error:(id)arg3;
+- (void)familyMembersResponse:(id)arg1;
+- (void)familyMembersWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)felicaSecureElementIsAvailable;
 - (void)fetchOrInitializeAccountAttestationAnonymizationSaltRequest:(id)arg1;
 - (void)getPairingInfoResponse:(id)arg1;
 - (void)handleAcceptSubcredentialProvisioningRequest:(id)arg1;
 - (void)handleBalanceChange:(id)arg1;
+- (void)handleBalanceReminderWithBalanceAndPassRequest:(id)arg1;
 - (void)handleCompanionMigrationResponse:(id)arg1;
 - (void)handleCompanionMigrationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleCompanionPeerPaymentRegistration;
@@ -143,7 +146,7 @@
 - (void)handlePasscodeUpgradeFlowShouldExitRequest:(id)arg1;
 - (void)handlePaymentTransactions:(id)arg1;
 - (void)handlePeerPaymentTermsAndConditionsAcceptanceRequest:(id)arg1;
-- (void)handlePendingRemovalOfPassWithUniqueID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)handlePendingRemovalOfPaymentPass:(id)arg1 uniqueID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handlePreferredAID:(id)arg1 forPassWithUniqueID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)handleRemovedTransaction:(id)arg1;
 - (void)handleShowPaymentSetupRequest:(id)arg1;
@@ -189,7 +192,7 @@
 - (BOOL)paymentWebService:(id)arg1 hasPassesOfType:(unsigned long long)arg2;
 - (void)paymentWebService:(id)arg1 matchingInvitationOnDevice:(id)arg2 withTimeout:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)paymentWebService:(id)arg1 passesOfType:(unsigned long long)arg2;
-- (void)paymentWebService:(id)arg1 provisioningDataWithCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)paymentWebService:(id)arg1 provisioningDataIncludingDeviceMetadata:(BOOL)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 queueConnectionToTrustedServiceManagerForPushTopic:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 registrationDataWithAuthToken:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)paymentWebService:(id)arg1 registrationDataWithCompletionHandler:(CDUnknownBlockType)arg2;
@@ -222,6 +225,8 @@
 - (void)performDeviceCheckInWithCompletion:(CDUnknownBlockType)arg1;
 - (void)performProductActionRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)performProductActionResponse:(id)arg1;
+- (void)photosForFamilyMembersWithDSIDs:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)photosForFamilyMembersWithDSIDsResponse:(id)arg1;
 - (void)preconditionNotMet:(id)arg1;
 - (void)preferredAIDRequest:(id)arg1;
 - (void)preferredAIDResponse:(id)arg1;
@@ -242,6 +247,7 @@
 - (void)removeExpressPassesWithCardTypeResponse:(id)arg1;
 - (void)removeSharingInvitationResponse:(id)arg1;
 - (void)renewAppleAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestAutomaticProvisioningForCompanionPaymentPass:(id)arg1;
 - (void)requestPasscodeUpgradeForPasscodeUpgradeFlowController:(id)arg1 withVisibleViewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)requestSubcredentialInvitationResponse:(id)arg1;
 - (void)resetApplePayManateeViewResponse:(id)arg1;
@@ -270,6 +276,8 @@
 - (void)setMaximumPaymentCards:(unsigned long long)arg1;
 - (void)setNewAuthRandomIfNecessaryAtBeginningOfProvisioningFlow:(CDUnknownBlockType)arg1;
 - (void)setNewAuthRandomResponse:(id)arg1;
+- (void)setPeerPaymentPreferences:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)setPeerPaymentPreferencesResponse:(id)arg1;
 - (void)signDataResponse:(id)arg1;
 - (void)startBackgroundVerificationObserverForPass:(id)arg1 verificationMethod:(id)arg2;
 - (void)startRequiringUpgradedPasscodeWithPasscodeMeetsPolicy:(BOOL)arg1;

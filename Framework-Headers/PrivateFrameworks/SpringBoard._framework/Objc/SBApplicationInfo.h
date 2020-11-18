@@ -20,7 +20,6 @@
     NSString *_launchInterfaceFileName;
     NSSet *_urlSchemes;
     NSSet *_supportedContentTypes;
-    NSString *_iconMasqueradeIdentifier;
     NSURL *_restorationArchiveContainerURL;
     NSURL *_dataContainerURLOverride;
     NSUserDefaults *_lazy_userDefaults;
@@ -35,7 +34,7 @@
     unsigned long long _allowedNKNotificationsPerDay;
     long long _forcedUserInterfaceStyle;
     int _networkUsageTypes;
-    int _supportedTypes;
+    unsigned long long _supportedTypes;
     int _ignoredStatusBarStyleOverrides;
     BOOL _isLaunchableDuringSetup;
     BOOL _usesSplashBoard;
@@ -48,6 +47,7 @@
     BOOL _isPeaceBLinked;
     BOOL _isYukonLinked;
     BOOL _isYukonELinked;
+    BOOL _isAzulLinked;
     BOOL _prefersSavedSnapshots;
     BOOL _wantsLaunchWithoutPNG;
     BOOL _wantsFullScreen;
@@ -65,24 +65,33 @@
     BOOL _usesRLNDataProvider;
     BOOL _shouldSkipCrossfadeToLive;
     BOOL _supports64Bit;
+    BOOL _supportsMultiwindow;
     BOOL _isNewsstand;
     BOOL _canChangeBackgroundStyle;
     BOOL _allowNonDefaultBackgroundStyle;
     BOOL _supportsDirectToAirplay;
     BOOL _alwaysReceivesOpenURLSource;
-    BOOL _ocelotApplication;
+    BOOL _alwaysDeliversOpenURLActionsUsingWorkspace;
+    BOOL _arcadeApplication;
+    BOOL _appClip;
     BOOL _shouldLaunchWithLiveContentASAP;
     BOOL _cloudDemoted;
     BOOL _wantsExclusiveForeground;
     NSURL *_documentInboxURL;
+    NSArray *_iTunesCategoriesOrderedByRelevancy;
     XBSnapshotContainerIdentity *_manifestContainerIdentity;
+    NSString *_vendorName;
 }
 
 @property (readonly, nonatomic) unsigned long long allowedNKNotificationsPerDay; // @synthesize allowedNKNotificationsPerDay=_allowedNKNotificationsPerDay;
+@property (readonly, nonatomic) BOOL alwaysDeliversOpenURLActionsUsingWorkspace; // @synthesize alwaysDeliversOpenURLActionsUsingWorkspace=_alwaysDeliversOpenURLActionsUsingWorkspace;
 @property (readonly, nonatomic) BOOL alwaysReceivesOpenURLSource; // @synthesize alwaysReceivesOpenURLSource=_alwaysReceivesOpenURLSource;
+@property (readonly, nonatomic, getter=isAppClip) BOOL appClip; // @synthesize appClip=_appClip;
 @property (readonly, nonatomic, getter=isAppleApplication) BOOL appleApplication;
 @property (readonly, copy, nonatomic) NSString *applicationShortcutWidgetBundleIdentifier; // @synthesize applicationShortcutWidgetBundleIdentifier=_applicationShortcutWidgetBundleIdentifier;
 @property (readonly, nonatomic) unsigned long long applicationSizeInBytes; // @synthesize applicationSizeInBytes=_applicationSizeInBytes;
+@property (readonly, nonatomic, getter=isArcadeApplication) BOOL arcadeApplication; // @synthesize arcadeApplication=_arcadeApplication;
+@property (readonly, nonatomic, getter=isAzulLinked) BOOL azulLinked; // @synthesize azulLinked=_isAzulLinked;
 @property (readonly, nonatomic) CRCarPlayAppDeclaration *carPlayDeclaration; // @synthesize carPlayDeclaration=_carPlayDeclaration;
 @property (readonly, nonatomic, getter=isCloudDemoted) BOOL cloudDemoted; // @synthesize cloudDemoted=_cloudDemoted;
 @property (readonly, nonatomic) long long defaultStatusBarStyle; // @synthesize defaultStatusBarStyle=_defaultStatusBarStyle;
@@ -95,8 +104,8 @@
 @property (readonly, nonatomic) unsigned long long dynamicApplicationShortcutItemsVersion; // @synthesize dynamicApplicationShortcutItemsVersion=_dynamicApplicationShortcutItemsVersion;
 @property (readonly, nonatomic, getter=isGameCenterEnabled) BOOL gameCenterEnabled; // @synthesize gameCenterEnabled=_isGameCenterEnabled;
 @property (readonly, nonatomic) BOOL hasHiddenTag; // @synthesize hasHiddenTag=_hasHiddenTag;
+@property (readonly, copy, nonatomic) NSArray *iTunesCategoriesOrderedByRelevancy; // @synthesize iTunesCategoriesOrderedByRelevancy=_iTunesCategoriesOrderedByRelevancy;
 @property (readonly, nonatomic) Class iconClass; // @synthesize iconClass=_iconClass;
-@property (readonly, copy, nonatomic) NSString *iconMasqueradeIdentifier; // @synthesize iconMasqueradeIdentifier=_iconMasqueradeIdentifier;
 @property (readonly, nonatomic) int ignoredStatusBarStyleOverrides; // @synthesize ignoredStatusBarStyleOverrides=_ignoredStatusBarStyleOverrides;
 @property (readonly, nonatomic) NSString *installInstanceID; // @synthesize installInstanceID=_installInstanceID;
 @property (readonly, nonatomic, getter=isInternalApplication) BOOL internalApplication;
@@ -107,7 +116,6 @@
 @property (readonly, nonatomic, getter=isMonarchLinked) BOOL monarchLinked; // @synthesize monarchLinked=_isMonarchLinked;
 @property (readonly, nonatomic) int networkUsageTypes; // @synthesize networkUsageTypes=_networkUsageTypes;
 @property (readonly, nonatomic, getter=isNewsstand) BOOL newsstand; // @synthesize newsstand=_isNewsstand;
-@property (readonly, nonatomic, getter=isOcelotApplication) BOOL ocelotApplication; // @synthesize ocelotApplication=_ocelotApplication;
 @property (readonly, nonatomic, getter=isPeaceBLinked) BOOL peaceBLinked; // @synthesize peaceBLinked=_isPeaceBLinked;
 @property (readonly, nonatomic, getter=isPeaceLinked) BOOL peaceLinked; // @synthesize peaceLinked=_isPeaceLinked;
 @property (readonly, nonatomic) BOOL prefersSavedSnapshots; // @synthesize prefersSavedSnapshots=_prefersSavedSnapshots;
@@ -120,13 +128,14 @@
 @property (readonly, nonatomic) BOOL shouldSkipCrossfadeToLive; // @synthesize shouldSkipCrossfadeToLive=_shouldSkipCrossfadeToLive;
 @property (readonly, nonatomic) NSArray *staticApplicationShortcutItems;
 @property (readonly, nonatomic, getter=isStatusBarLegacy) BOOL statusBarIsLegacy; // @synthesize statusBarIsLegacy=_statusBarIsLegacy;
-@property (readonly, nonatomic) int supportedTypes; // @synthesize supportedTypes=_supportedTypes;
+@property (readonly, nonatomic) unsigned long long supportedTypes; // @synthesize supportedTypes=_supportedTypes;
 @property (readonly, nonatomic) BOOL supports64Bit; // @synthesize supports64Bit=_supports64Bit;
 @property (readonly, nonatomic) BOOL supportsAudioBackgroundMode;
 @property (readonly, nonatomic) BOOL supportsDirectToAirplay; // @synthesize supportsDirectToAirplay=_supportsDirectToAirplay;
-@property (readonly, nonatomic) BOOL supportsDirectToAirplayOrIsWhitelisted;
+@property (readonly, nonatomic) BOOL supportsDirectToAirplayOrIsAllowListed;
 @property (readonly, nonatomic) BOOL supportsFetchBackgroundMode;
 @property (readonly, nonatomic) BOOL supportsLegacyVOIPBackgroundMode;
+@property (readonly, nonatomic) BOOL supportsMultiwindow; // @synthesize supportsMultiwindow=_supportsMultiwindow;
 @property (readonly, nonatomic) BOOL supportsNewsstandContentBackgroundMode;
 @property (readonly, nonatomic) BOOL supportsRemoteNotificationBackgroundMode;
 @property (readonly, nonatomic) BOOL suppressUserNotificationPermissionAlert;
@@ -138,6 +147,7 @@
 @property (readonly, nonatomic) NSUserDefaults *userDefaults;
 @property (readonly, nonatomic) BOOL usesRLNDataProvider; // @synthesize usesRLNDataProvider=_usesRLNDataProvider;
 @property (readonly, nonatomic) BOOL usesSplashBoard; // @synthesize usesSplashBoard=_usesSplashBoard;
+@property (readonly, copy, nonatomic) NSString *vendorName; // @synthesize vendorName=_vendorName;
 @property (readonly, nonatomic) unsigned long long visibilityOverride; // @synthesize visibilityOverride=_visibilityOverride;
 @property (readonly, nonatomic) unsigned long long voipClass; // @synthesize voipClass=_voipClass;
 @property (readonly, nonatomic) BOOL wantsExclusiveForeground; // @synthesize wantsExclusiveForeground=_wantsExclusiveForeground;
@@ -148,13 +158,9 @@
 @property (readonly, nonatomic, getter=isYukonELinked) BOOL yukonELinked; // @synthesize yukonELinked=_isYukonELinked;
 @property (readonly, nonatomic, getter=isYukonLinked) BOOL yukonLinked; // @synthesize yukonLinked=_isYukonLinked;
 
-+ (int)_calculateApplicationSupportedTypesFromProxy:(id)arg1;
-+ (unsigned long long)_visibilityOverrideFromInfo:(id)arg1 entitlements:(id)arg2;
++ (id)_directToAirPlayBundleIDs;
 - (void).cxx_destruct;
-- (unsigned long long)_calculateVoipClassWithEntitlements:(id)arg1;
-- (id)_configureTags:(id)arg1 hasVisibilityOverride:(BOOL)arg2;
 - (void)_loadFromProxy:(id)arg1;
-- (BOOL)_supportsApplicationType:(int)arg1;
 - (long long)backgroundStyle;
 - (long long)backgroundStyleForRequestedBackgroundStyle:(long long)arg1;
 - (BOOL)canChangeBackgroundStyle;

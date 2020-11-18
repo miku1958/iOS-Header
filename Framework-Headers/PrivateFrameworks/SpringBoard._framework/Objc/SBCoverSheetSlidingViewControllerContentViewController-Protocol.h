@@ -10,5 +10,6 @@
 
 @property (readonly, nonatomic) BOOL contentOccludesBackground;
 
+- (void)conformsToSBCoverSheetSlidingViewControllerContentViewController;
 @end
 

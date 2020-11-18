@@ -32,12 +32,14 @@
 @property (readonly, nonatomic) NSProgress *progress;
 @property (readonly, nonatomic, getter=isRunning) BOOL running;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *userInterfaceType;
 @property (readonly, nonatomic) WFWorkflow *workflow;
 
 - (void).cxx_destruct;
 - (void)configureIntent:(id)arg1;
 - (BOOL)executeIntent:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithWorkflow:(id)arg1;
+- (BOOL)isRunningInSiri;
 - (void)launchAppWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)openInteractionInApp:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)openURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -45,7 +47,9 @@
 - (void)presentAlert:(id)arg1;
 - (id)runSource;
 - (void)runWithInput:(id)arg1;
-- (void)showInteractionIfNeeded:(id)arg1 requiringConfirmation:(BOOL)arg2 requiringAuthentication:(BOOL)arg3 executionStage:(long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)showConfirmInteraction:(id)arg1 prompt:(id)arg2 requireAuthentication:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)showConfirmInteraction:(id)arg1 requireAuthentication:(BOOL)arg2 requireConfirmation:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)showHandleInteraction:(id)arg1 prompt:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)speakText:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)stop;
 - (void)workflowController:(id)arg1 didFinishRunningWithError:(id)arg2 cancelled:(BOOL)arg3;

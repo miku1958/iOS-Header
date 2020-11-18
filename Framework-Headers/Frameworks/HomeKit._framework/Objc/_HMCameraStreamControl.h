@@ -6,11 +6,14 @@
 
 #import <HomeKit/_HMCameraControl.h>
 
+#import <HomeKit/HMFLogging-Protocol.h>
+
 @class HMCameraStream, NSString;
 @protocol _HMCameraStreamControlDelegate;
 
-@interface _HMCameraStreamControl : _HMCameraControl
+@interface _HMCameraStreamControl : _HMCameraControl <HMFLogging>
 {
+    BOOL _shouldResetStateOnHomedRestart;
     unsigned long long _streamState;
     HMCameraStream *_cameraStream;
     id<_HMCameraStreamControlDelegate> _delegate;
@@ -18,14 +21,20 @@
 }
 
 @property (readonly, nonatomic) HMCameraStream *cameraStream; // @synthesize cameraStream=_cameraStream;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_HMCameraStreamControlDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) NSString *streamSessionID; // @synthesize streamSessionID=_streamSessionID;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property BOOL shouldResetStateOnHomedRestart; // @synthesize shouldResetStateOnHomedRestart=_shouldResetStateOnHomedRestart;
+@property (copy, nonatomic) NSString *streamSessionID; // @synthesize streamSessionID=_streamSessionID;
 @property (nonatomic) unsigned long long streamState; // @synthesize streamState=_streamState;
+@property (readonly) Class superclass;
 
++ (id)logCategory;
 - (void).cxx_destruct;
 - (void)_callVideoStartedDelegate;
 - (void)_callVideoStoppedDelegate:(id)arg1;
-- (void)_handleNegotiateStreamResponse:(id)arg1 streamPreferences:(id)arg2 error:(id)arg3 sessionID:(id)arg4;
+- (void)_handleNegotiateStreamResponse:(id)arg1 streamPreferences:(id)arg2 sessionID:(id)arg3 error:(id)arg4;
 - (void)_handleVideoStopResponse:(id)arg1 error:(id)arg2 sessionID:(id)arg3;
 - (void)_handleVideoStreamStartResponse:(id)arg1 streamPreferences:(id)arg2 error:(id)arg3 sessionID:(id)arg4;
 - (void)_handleVideoStreamStopped:(id)arg1;
@@ -34,8 +43,10 @@
 - (void)_startStreamWithPreferences:(id)arg1;
 - (void)_stopStream;
 - (void)dealloc;
+- (void)homedInterrupted:(id)arg1;
 - (void)homedRestarted:(id)arg1;
 - (id)initWithCameraProfile:(id)arg1 service:(id)arg2 profileUniqueIdentifier:(id)arg3;
+- (id)logIdentifier;
 - (void)setCameraStream:(id)arg1;
 - (void)startStreamWithPreferences:(id)arg1;
 - (void)stopStream;

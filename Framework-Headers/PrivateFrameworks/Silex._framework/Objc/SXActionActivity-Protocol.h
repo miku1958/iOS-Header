@@ -6,11 +6,12 @@
 
 #import <Silex/NSObject-Protocol.h>
 
-@class NSString;
+@class NSString, UIImage;
 @protocol SXAction;
 
 @protocol SXActionActivity <NSObject>
 
+@property (readonly, nonatomic) UIImage *image;
 @property (readonly, nonatomic) NSString *label;
 @property (readonly, nonatomic) unsigned long long type;
 

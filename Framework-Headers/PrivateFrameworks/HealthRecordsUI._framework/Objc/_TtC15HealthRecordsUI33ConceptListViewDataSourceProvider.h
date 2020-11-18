@@ -13,6 +13,7 @@
     MISSING_TYPE *categoryPredicate;
     MISSING_TYPE *store;
     MISSING_TYPE *categoryViewDataSourceProvider;
+    MISSING_TYPE *sourceProfile;
 }
 
 @end

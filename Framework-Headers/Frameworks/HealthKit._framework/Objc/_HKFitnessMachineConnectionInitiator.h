@@ -7,40 +7,42 @@
 #import <objc/NSObject.h>
 
 #import <HealthKit/HKFitnessMachineConnectionInitiatorClientInterface-Protocol.h>
+#import <HealthKit/_HKXPCExportable-Protocol.h>
 
-@class HKHealthStore, NSString, NSUUID;
+@class HKTaskServerProxyProvider, NSString, NSUUID;
 @protocol _HKFitnessMachineConnectionInitiatorDelegate;
 
-@interface _HKFitnessMachineConnectionInitiator : NSObject <HKFitnessMachineConnectionInitiatorClientInterface>
+@interface _HKFitnessMachineConnectionInitiator : NSObject <HKFitnessMachineConnectionInitiatorClientInterface, _HKXPCExportable>
 {
-    NSUUID *_UUID;
+    HKTaskServerProxyProvider *_proxyProvider;
     id<_HKFitnessMachineConnectionInitiatorDelegate> _delegate;
-    HKHealthStore *_healthStore;
 }
 
-@property (readonly, nonatomic) NSUUID *UUID; // @synthesize UUID=_UUID;
+@property (readonly, nonatomic) NSUUID *UUID;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_HKFitnessMachineConnectionInitiatorDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (weak, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (readonly) Class superclass;
 
++ (id)taskIdentifier;
 - (void).cxx_destruct;
-- (void)_connectionInterruptedWithError:(id)arg1;
-- (id)_initWithHealthStore:(id)arg1;
+- (void)_fetchProxyWithHandler:(CDUnknownBlockType)arg1;
 - (void)_simulateAccept;
-- (void)_simulateDisconnect;
 - (void)_simulateTapWithFitnessMachineType:(unsigned long long)arg1;
 - (void)clientRemote_encounteredError:(id)arg1;
 - (void)clientRemote_updatedConnectionState:(unsigned long long)arg1 fitnessMachineSessionUUID:(id)arg2;
 - (void)clientRemote_updatedFitnessMachine:(id)arg1 fitnessMachineSessionUUID:(id)arg2;
 - (void)clientRemote_updatedFitnessMachineState:(unsigned long long)arg1 fitnessMachineSessionUUID:(id)arg2;
 - (void)clientRemote_workoutAppReady;
+- (void)connectionInterrupted;
+- (void)connectionInvalidated;
+- (id)exportedInterface;
 - (void)forbidConnectionForFitnessMachineSessionUUID:(id)arg1;
-- (void)peformServerOperation:(CDUnknownBlockType)arg1;
+- (id)initWithHealthStore:(id)arg1;
 - (void)permitConnectionForFitnessMachineSessionUUID:(id)arg1 activityType:(unsigned long long)arg2;
 - (void)registerClient;
+- (id)remoteInterface;
 
 @end
 

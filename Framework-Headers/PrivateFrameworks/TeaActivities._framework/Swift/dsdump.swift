@@ -1,33 +1,43 @@
- protocol TeaActivities.Navigator // 5 requirements
+ protocol TeaActivities.Navigator // 6 requirements
  {
 	// class associated conformance access function
 	// class associated type access function
+	// method
 	// method
 	// method
 	// method
  }
- protocol TeaActivities.UserActivityDeserializer // 3 requirements
+ protocol TeaActivities.UserActivityDeserializer // 4 requirements
  {
 	// class associated conformance access function
 	// class associated type access function
 	// method
+	// method
+ }
+ protocol TeaActivities.StateRestorationActivityProvider // 3 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
  }
  protocol TeaActivities.ActivityType // 2 requirements
  {
 	// class base protocol
 	// getter
  }
- protocol TeaActivities.Activity // 4 requirements
+ protocol TeaActivities.Activity // 5 requirements
  {
 	// class associated conformance access function
 	// class associated type access function
+	// getter
 	// getter
 	// getter
  }
- protocol TeaActivities.UserActivitySerializer // 6 requirements
+ protocol TeaActivities.UserActivitySerializer // 7 requirements
  {
 	// class associated conformance access function
 	// class associated type access function
+	// method
 	// method
 	// method
 	// method
@@ -58,12 +68,20 @@
 	case unavailable  
  }
 
+ enum TeaActivities.NavigatorPresentationContext {
+
+	// Properties
+	case newTab : (requestScene: UIScene?)
+	case default  
+	case newWindow  
+ }
+
  struct TeaActivities.AnyNavigator {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let navigateBlock :  empty-list 
-	let newWindowBlock : (_:)
+	let newSceneBlock : NavigatorPresentationContext
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let previewBlock :  empty-list 
  }
@@ -88,6 +106,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class TeaActivities.StackNavigator {
+ enum TeaActivities.PresentationContext {
+
+	// Properties
+	case currentContext  
+	case newWindow  
+	case newTab  
+ }
+
  class TeaActivities.WeakRouter {
  enum TeaActivities.StackNavigatorError {
 

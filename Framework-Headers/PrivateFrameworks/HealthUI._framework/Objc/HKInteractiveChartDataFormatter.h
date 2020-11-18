@@ -16,7 +16,7 @@
     HKDisplayType *_displayType;
 }
 
-@property (strong, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
+@property (weak, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
 @property (strong, nonatomic) UIFont *majorFont; // @synthesize majorFont=_majorFont;
 @property (strong, nonatomic) UIFont *minorFont; // @synthesize minorFont=_minorFont;
 @property (strong, nonatomic) HKUnitPreferenceController *unitController; // @synthesize unitController=_unitController;
@@ -25,7 +25,9 @@
 - (id)_formattedStringForValue:(id)arg1;
 - (id)_formattedStringWithValue:(double)arg1 unit:(id)arg2 showUnit:(BOOL)arg3;
 - (id)_unitNameFromUnit:(id)arg1 number:(id)arg2;
-- (id)formattedSelectedRangeLabelDataWithChartData:(id)arg1;
+- (id)attributedStringForValue:(id)arg1;
+- (id)formattedSelectedRangeLabelDataWithChartData:(id)arg1 context:(long long)arg2;
+- (id)formattedStringWithValue:(double)arg1 unitString:(id)arg2 showUnit:(BOOL)arg3;
 - (id)formattedUnitStringForChartData:(id)arg1;
 - (id)formattedValueStringForChartData:(id)arg1 options:(long long)arg2;
 

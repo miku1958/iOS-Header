@@ -52,6 +52,7 @@
 + (id)mainBundleLocalizedString;
 + (void)notifyIndexDelegates;
 + (id)partialPathAttributes;
++ (void)setConnectionName:(id)arg1;
 + (void)volumeMountedAtURL:(id)arg1 withOptions:(id)arg2;
 - (void).cxx_destruct;
 - (void)_bulkFetchPartialPathsForObjects:(id)arg1 protectionClass:(id)arg2 bundleID:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;

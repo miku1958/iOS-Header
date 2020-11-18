@@ -20,13 +20,16 @@
 @property (nonatomic) struct UIRectCornerRadii fullscreenCornerRadii; // @synthesize fullscreenCornerRadii=_fullscreenCornerRadii;
 
 - (void).cxx_destruct;
+- (id)_newMultitaskingModifier;
 - (double)floatingDockHeight;
 - (id)floorModifierForTransitionEvent:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1 layoutRole:(long long)arg2 overlay:(BOOL)arg3;
 - (id)insertionModifierForInsertionEvent:(id)arg1;
 - (id)multitaskingModifierForEvent:(id)arg1;
-- (id)newMultitaskingModifierFromMultitaskingModifier:(id)arg1;
+- (id)removalModifierForRemovalEvent:(id)arg1;
+- (id)swipeToKillModifierForSwipeToKillEvent:(id)arg1;
 - (id)transitionModifierForInlineTransitionEvent:(id)arg1;
+- (id)userScrollingModifierForScrollEvent:(id)arg1;
 
 @end
 

@@ -61,6 +61,7 @@
 - (void)_writeToDisk:(id)arg1;
 - (long long)authorizationStatus;
 - (void)dealloc;
+- (void)fetchAuthorizationStatus:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;

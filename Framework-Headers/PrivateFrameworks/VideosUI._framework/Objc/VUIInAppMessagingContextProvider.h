@@ -29,10 +29,17 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_connectionType;
+- (BOOL)_hasDownloads;
+- (BOOL)_hasItunesDownloads;
+- (BOOL)_hasItunesPurchases;
+- (BOOL)_hasSubscriptionDownloads;
+- (id)_locationStatus;
 - (id)_runSubscriptionQuery:(id)arg1;
 - (id)_stringValueForKeyPath:(id)arg1 dictionary:(id)arg2;
 - (id)contextPropertyWithName:(id)arg1;
 - (id)init;
+- (void)messageCoordinator:(id)arg1 didRequestAction:(id)arg2;
 - (id)presentationPolicyForPolicyGroup:(long long)arg1;
 - (id)queriedSubscriptionProperties;
 - (id)viewControllerForModalPresentation;

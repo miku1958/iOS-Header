@@ -8,13 +8,28 @@
 
 #import <NanoTimeKitCompanion/NSCopying-Protocol.h>
 #import <NanoTimeKitCompanion/NSSecureCoding-Protocol.h>
+#import <NanoTimeKitCompanion/NTKComplicationItem-Protocol.h>
 
-@interface NTKComplication : CLKCComplication <NSSecureCoding, NSCopying>
+@class NSString;
+
+@interface NTKComplication : CLKCComplication <NTKComplicationItem, NSSecureCoding, NSCopying>
 {
+    NSString *_uniqueIdentifier;
+    NSString *_appIdentifier;
     unsigned long long _complicationType;
 }
 
+@property (readonly, copy, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property (readonly, nonatomic) unsigned long long complicationType; // @synthesize complicationType=_complicationType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *ntk_contactIdentifier;
+@property (readonly, nonatomic) NSString *ntk_identifier;
+@property (readonly, nonatomic) unsigned long long ntk_itemType;
+@property (readonly, nonatomic) NSString *ntk_sectionIdentifier;
+@property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (id)_allComplicationConfigurationsWithType:(unsigned long long)arg1;
 + (Class)_complicationClassForType:(unsigned long long)arg1;
@@ -23,26 +38,30 @@
 + (id)complicationWithJSONObjectRepresentation:(id)arg1;
 + (id)nullComplication;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (id)JSONObjectRepresentation;
 - (void)_addKeysToJSONDictionary:(id)arg1;
+- (id)_generateAppIdentifier;
+- (void)_handleAddedFromFaceSharing;
 - (id)_initWithComplicationType:(unsigned long long)arg1 JSONDictionary:(id)arg2;
 - (void)_setComplicationType:(unsigned long long)arg1;
 - (BOOL)appearsInDailySnapshotForFamily:(long long)arg1;
 - (id)awakeAfterUsingCoder:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)customDailySnapshotKey;
-- (id)description;
+- (id)customDailySnapshotKeyForFamily:(long long)arg1 device:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
+- (void)handleAddedFromFaceSharing;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithComplicationType:(unsigned long long)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqual:(id)arg1 subclassesAllowed:(BOOL)arg2;
 - (id)localizedDetailText;
 - (id)localizedKeylineLabelText;
 - (id)localizedRichDetailText;
 - (id)localizedRichKeylineLabelText;
+- (id)localizedSectionHeaderName;
+- (id)ntk_localizedNameWithOptions:(unsigned long long)arg1 forRichComplicationSlot:(BOOL)arg2;
 - (BOOL)snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
+- (BOOL)supportsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 
 @end
 

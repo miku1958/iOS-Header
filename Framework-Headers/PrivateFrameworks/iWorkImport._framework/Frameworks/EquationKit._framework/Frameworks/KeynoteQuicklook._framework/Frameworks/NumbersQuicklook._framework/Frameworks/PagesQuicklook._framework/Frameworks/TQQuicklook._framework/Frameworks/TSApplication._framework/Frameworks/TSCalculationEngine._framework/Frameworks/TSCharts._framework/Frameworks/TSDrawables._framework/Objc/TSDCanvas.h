@@ -42,6 +42,7 @@
     struct UIEdgeInsets mContentInset;
     BOOL mAllowsFontSubpixelQuantization;
     BOOL mSuppressesShadowsAndReflections;
+    BOOL mEnableInstructionalText;
     BOOL mSuppressesShapeText;
     BOOL mShouldRenderInvisibleContentForNonInteractiveCanvas;
     double i_viewScaleForAudioObjectsInNonInteractiveCanvas;
@@ -59,10 +60,12 @@
 @property (readonly, nonatomic) double contentsScale;
 @property (weak, nonatomic) id<TSDCanvasDelegate> delegate; // @synthesize delegate=mDelegate;
 @property (readonly, nonatomic) TSKDocumentRoot *documentRoot;
+@property (nonatomic) BOOL enableInstructionalText; // @synthesize enableInstructionalText=mEnableInstructionalText;
 @property (nonatomic) double i_viewScaleForAudioObjectsInNonInteractiveCanvas; // @synthesize i_viewScaleForAudioObjectsInNonInteractiveCanvas;
 @property (copy, nonatomic) NSArray *infosToDisplay; // @synthesize infosToDisplay=mInfos;
 @property (nonatomic) BOOL isAnchoredAtRight; // @synthesize isAnchoredAtRight=mIsAnchoredAtRight;
 @property (readonly, nonatomic) BOOL isCanvasInteractive;
+@property (readonly, nonatomic) BOOL isLayoutComplete;
 @property (readonly, nonatomic) BOOL isTemporaryForLayout; // @synthesize isTemporaryForLayout=mIsTemporaryForLayout;
 @property (readonly, nonatomic) TSDLayoutController *layoutController; // @synthesize layoutController=mLayoutController;
 @property (readonly, nonatomic) TSPObjectContext *objectContext;
@@ -132,7 +135,7 @@
 - (id)repForLayout:(id)arg1;
 - (Class)rootLayoutClass;
 - (BOOL)shouldShowComments;
-- (BOOL)shouldShowInstructionalText;
+- (BOOL)shouldShowInstructionalTextForLayout:(id)arg1;
 - (BOOL)shouldShowTextCommentHighlights;
 - (BOOL)shouldShowTextOverflowGlyphs;
 - (BOOL)shouldSuppressBackgrounds;

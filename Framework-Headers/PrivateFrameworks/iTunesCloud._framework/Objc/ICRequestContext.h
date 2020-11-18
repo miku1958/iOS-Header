@@ -29,8 +29,10 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_allowsMutation;
+- (id)_webkitUserAgentVersion;
 - (id)copyWithBlock:(CDUnknownBlockType)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;

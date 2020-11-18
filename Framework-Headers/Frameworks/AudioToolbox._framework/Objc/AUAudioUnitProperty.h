@@ -14,12 +14,14 @@ __attribute__((visibility("hidden")))
 @interface AUAudioUnitProperty : NSObject <NSSecureCoding>
 {
     NSString *_key;
+    unsigned int _v2propID;
     unsigned int _scope;
     unsigned int _element;
 }
 
 + (id)propertyWithKey:(id)arg1;
 + (id)propertyWithKey:(id)arg1 scope:(unsigned int)arg2 element:(unsigned int)arg3;
++ (id)propertyWithKey:(id)arg1 v2propID:(unsigned int)arg2 scope:(unsigned int)arg3 element:(unsigned int)arg4;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)dealloc;
@@ -27,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithKey:(id)arg1;
 - (id)initWithKey:(id)arg1 scope:(unsigned int)arg2 element:(unsigned int)arg3;
+- (id)initWithKey:(id)arg1 v2propID:(unsigned int)arg2 scope:(unsigned int)arg3 element:(unsigned int)arg4;
 
 @end
 

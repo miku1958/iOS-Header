@@ -6,11 +6,11 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
-@class NSString;
+@class _GEOCountryConfigurationInfo;
 @protocol _GEOCountryConfigurationServerProxy;
 
 @protocol _GEOCountryConfigurationServerProxyDelegate <NSObject>
-- (void)serverProxy:(id<_GEOCountryConfigurationServerProxy>)arg1 countryCodeDidChange:(NSString *)arg2;
+- (void)serverProxy:(id<_GEOCountryConfigurationServerProxy>)arg1 countryCodeDidChange:(_GEOCountryConfigurationInfo *)arg2;
 - (void)serverProxyProvidersDidChange:(id<_GEOCountryConfigurationServerProxy>)arg1;
 @end
 

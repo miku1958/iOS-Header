@@ -19,11 +19,8 @@
 @property (readonly, nonatomic, getter=isOpaque) BOOL opaque; // @synthesize opaque=_isOpaque;
 
 - (void).cxx_destruct;
-- (struct CGImage *)_buildImage;
-- (id)_surface;
 - (struct CGImage *)buildCGImage;
 - (void)dealloc;
-- (id)initWithIOSurface:(id)arg1;
 - (id)setOpaque:(BOOL)arg1;
 
 @end

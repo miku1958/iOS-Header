@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *cloudContext;
     MISSING_TYPE *magazineFeedServiceConfigFetcher;
+    MISSING_TYPE *suggestionClusteringService;
+    MISSING_TYPE *personalizationService;
 }
 
 @end

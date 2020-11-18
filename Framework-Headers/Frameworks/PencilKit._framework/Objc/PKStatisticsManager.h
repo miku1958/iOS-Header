@@ -6,20 +6,52 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
+@protocol PKDrawingPaletteStatistics;
+
 @interface PKStatisticsManager : NSObject
 {
+    NSString *_recentShapeCreated;
+    double _latestShapeCreatedTimestamp;
+    id<PKDrawingPaletteStatistics> _drawingPaletteStatistics;
 }
 
+@property (readonly, nonatomic) id<PKDrawingPaletteStatistics> drawingPaletteStatistics; // @synthesize drawingPaletteStatistics=_drawingPaletteStatistics;
+
 + (id)sharedStatisticsManager;
-- (id)_opacityKeyForIdentifier:(id)arg1;
-- (BOOL)_statisticsEnabled;
-- (id)_statisticsKeyWithParameters:(id)arg1;
-- (id)_thicknessKeyForIdentifier:(id)arg1;
-- (double)_valueForIdentifier:(id)arg1;
-- (void)didAddStroke:(id)arg1;
-- (void)didUseObjectEraser;
-- (void)incrementValueForKey:(id)arg1;
-- (void)pushValue:(double)arg1 forDistributionKey:(id)arg2;
+- (void).cxx_destruct;
+- (void)recordAutoMinimizeEnabledDidChange:(BOOL)arg1 type:(unsigned long long)arg2;
+- (void)recordBitmapEraseWithInputType:(long long)arg1;
+- (void)recordCollaboration:(unsigned long long)arg1;
+- (void)recordColorPanelInvoked:(id)arg1;
+- (void)recordColorsChangedBeforeChosen:(long long)arg1;
+- (void)recordCopyAsTextWithLength:(unsigned long long)arg1 time:(double)arg2 didShowHUD:(BOOL)arg3 invokedFromSmartSelection:(BOOL)arg4;
+- (void)recordCreateShapeWithType:(long long)arg1 fromMenu:(BOOL)arg2 multiple:(BOOL)arg3;
+- (void)recordDataDetectorItemAdd:(id)arg1;
+- (void)recordDataDetectorItemDefaultAction:(id)arg1;
+- (void)recordDataDetectorItemMenuAction:(id)arg1;
+- (void)recordDataDetectorItemRemove:(id)arg1;
+- (void)recordDoubleTapAction:(long long)arg1;
+- (void)recordDragAndDropSelection;
+- (void)recordDragSelection;
+- (void)recordDrawStroke:(id)arg1;
+- (void)recordDrawWithFingerToggle:(BOOL)arg1;
+- (void)recordInkPickerNoOp:(id)arg1;
+- (void)recordInsertSpaceAddWhitespace:(BOOL)arg1;
+- (void)recordInsertSpaceWithType:(int)arg1;
+- (void)recordJumpToSettings;
+- (void)recordLatency:(float)arg1 mean:(float)arg2 max:(float)arg3 percentageOverLatencyThreshold:(float)arg4;
+- (void)recordObjectEraseWithInputType:(long long)arg1;
+- (void)recordPalettePositionChange:(long long)arg1 type:(unsigned long long)arg2;
+- (void)recordPerceivedLatency:(float)arg1 mean:(float)arg2 max:(float)arg3;
+- (void)recordPixelObjectEraseModeChange:(long long)arg1;
+- (void)recordRulerInteractionEndedWithType:(unsigned long long)arg1 angle:(double)arg2;
+- (void)recordSelectAllWithStrokeCount:(unsigned long long)arg1;
+- (void)recordShapeEventWithType:(id)arg1 modeString:(id)arg2;
+- (void)recordShapeUndoIfNecessary;
+- (void)recordShowRuler;
+- (void)recordTool:(id)arg1;
+- (void)recordToolAttributePopoverAppearedForTool:(id)arg1 hadInteraction:(BOOL)arg2;
 
 @end
 

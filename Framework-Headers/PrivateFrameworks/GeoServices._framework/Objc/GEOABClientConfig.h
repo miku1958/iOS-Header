@@ -26,10 +26,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_assignedAbBranchId:1;
         unsigned int read_configKeyValues:1;
         unsigned int read_debugExperimentBranchs:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_assignedAbBranchId:1;
-        unsigned int wrote_configKeyValues:1;
-        unsigned int wrote_debugExperimentBranchs:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,11 +40,6 @@ __attribute__((visibility("hidden")))
 + (Class)debugExperimentBranchType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsConfigKeyValue:(id)arg1;
-- (void)_addNoFlagsDebugExperimentBranch:(id)arg1;
-- (void)_readAssignedAbBranchId;
-- (void)_readConfigKeyValues;
-- (void)_readDebugExperimentBranchs;
 - (void)addConfigKeyValue:(id)arg1;
 - (void)addDebugExperimentBranch:(id)arg1;
 - (void)clearConfigKeyValues;
@@ -64,7 +56,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

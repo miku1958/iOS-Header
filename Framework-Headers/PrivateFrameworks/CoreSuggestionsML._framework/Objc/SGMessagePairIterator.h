@@ -13,7 +13,7 @@
     NSArray *_messageEvents;
     unsigned long long _messageEventCount;
     unsigned long long _messageEventIndex;
-    unsigned long long _maxReplyGap;
+    double _maxReplyGap;
     unsigned long long _maxReplyLength;
     BOOL _done;
     NSString *_attachmentCharacterString;

@@ -5,11 +5,13 @@
 //
 
 #import <MetricMeasurement/MXMSMachUtilitiesProtocol_Internal-Protocol.h>
+#import <MetricMeasurement/MXMSProxyPerformanceTrace_Internal-Protocol.h>
 #import <MetricMeasurement/MXMSProxyProbeProtocol_Internal-Protocol.h>
+#import <MetricMeasurement/MXMSProxyQuiesceBeforeIteration_Internal-Protocol.h>
 
 @class NSString;
 
-@protocol MetricMeasurementHelperProtocol_Internal <MXMSProxyProbeProtocol_Internal, MXMSMachUtilitiesProtocol_Internal>
+@protocol MetricMeasurementHelperProtocol_Internal <MXMSProxyProbeProtocol_Internal, MXMSMachUtilitiesProtocol_Internal, MXMSProxyPerformanceTrace_Internal, MXMSProxyQuiesceBeforeIteration_Internal>
 - (void)_wakeWithPhrase:(NSString *)arg1 response:(void (^)(NSString *))arg2;
 @end
 

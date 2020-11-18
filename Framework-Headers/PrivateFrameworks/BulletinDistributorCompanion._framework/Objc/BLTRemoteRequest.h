@@ -11,6 +11,7 @@
 @interface BLTRemoteRequest : NSObject
 {
     BOOL _allowCloudDelivery;
+    BOOL _nonWaking;
     unsigned short _type;
     PBCodable *_protobuf;
     CDUnknownBlockType _didSend;
@@ -25,6 +26,7 @@
 @property (nonatomic) BOOL allowCloudDelivery; // @synthesize allowCloudDelivery=_allowCloudDelivery;
 @property (copy, nonatomic) CDUnknownBlockType didQueue; // @synthesize didQueue=_didQueue;
 @property (copy, nonatomic) CDUnknownBlockType didSend; // @synthesize didSend=_didSend;
+@property (nonatomic) BOOL nonWaking; // @synthesize nonWaking=_nonWaking;
 @property (strong, nonatomic) PBCodable *protobuf; // @synthesize protobuf=_protobuf;
 @property (copy, nonatomic) NSString *requestDescription; // @synthesize requestDescription=_requestDescription;
 @property (copy, nonatomic) CDUnknownBlockType responseCompletion; // @synthesize responseCompletion=_responseCompletion;

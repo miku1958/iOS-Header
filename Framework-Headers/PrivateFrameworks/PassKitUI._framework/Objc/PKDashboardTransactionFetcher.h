@@ -8,13 +8,12 @@
 
 #import <PassKitUI/PKPaymentDataProviderDelegate-Protocol.h>
 
-@class NSArray, NSDate, NSDictionary, NSString, PKInstallmentPlan, PKMerchant, PKPaymentPass;
+@class NSArray, NSDate, NSDecimalNumber, NSDictionary, NSSet, NSString, PKCurrencyAmount, PKInstallmentPlan, PKMerchant, PKPaymentPass, PKTransactionSource;
 @protocol OS_dispatch_queue, PKDashboardTransactionFetcherDelegate, PKPaymentDataProvider;
 
 @interface PKDashboardTransactionFetcher : NSObject <PKPaymentDataProviderDelegate>
 {
-    PKPaymentPass *_pass;
-    NSString *_passUniqueID;
+    PKTransactionSource *_transactionSource;
     id<PKPaymentDataProvider> _paymentDataProvider;
     id<PKDashboardTransactionFetcherDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -23,13 +22,24 @@
     BOOL _pendingUpdate;
     BOOL _hasMoreUpdates;
     PKMerchant *_merchant;
-    NSString *_counterpartHandle;
+    NSSet *_counterpartHandles;
     long long _merchantCategory;
     long long _transactionType;
     PKInstallmentPlan *_installmentPlan;
+    NSArray *_regions;
+    NSArray *_types;
+    NSArray *_sources;
+    NSArray *_statuses;
+    PKCurrencyAmount *_amount;
+    long long _amountComparison;
+    NSSet *_tags;
+    NSDecimalNumber *_rewardsValue;
+    unsigned long long _rewardsValueUnit;
+    long long _subType;
     unsigned long long _limit;
-    NSString *_cashbackPassUniqueID;
     PKPaymentPass *_cashbackPass;
+    NSString *_cashbackPassUniqueID;
+    NSSet *_cashbackPassTransactionSourceIdentifiers;
     BOOL _needsCashbackUniqueID;
     NSDictionary *_cashbackGroups;
     BOOL _needsInstantWithdrawalFees;
@@ -39,6 +49,7 @@
     NSDate *_endDate;
 }
 
+@property (readonly, nonatomic) NSSet *counterpartHandles; // @synthesize counterpartHandles=_counterpartHandles;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKDashboardTransactionFetcherDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -56,21 +67,33 @@
 - (void)_processPaymentPassTransactionsWithTransactions:(id)arg1 sendTransactionsBlock:(CDUnknownBlockType)arg2;
 - (void)_sendUpdatedTransactions;
 - (id)_sortedTransactions:(id)arg1 ascending:(BOOL)arg2;
+- (id)_transactionRequestForCurrentFilters;
 - (id)cashbackGroupForDateComponents:(id)arg1;
 - (id)cashbackGroupForTransactionWithIdentifier:(id)arg1;
 - (id)cashbackPass;
-- (id)initWithCounterpartHandle:(id)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
-- (id)initWithInstallmentPlan:(id)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
-- (id)initWithMerchant:(id)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
-- (id)initWithMerchantCategory:(long long)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
-- (id)initWithPaymentPass:(id)arg1 paymentDataProvider:(id)arg2;
-- (id)initWithTransactionType:(long long)arg1 paymentPass:(id)arg2 paymentDataProvider:(id)arg3;
+- (void)filterAmount:(id)arg1 comparison:(long long)arg2;
+- (void)filterCategory:(long long)arg1;
+- (void)filterMerchant:(id)arg1;
+- (void)filterPeerPaymentSubType:(long long)arg1;
+- (void)filterRegions:(id)arg1;
+- (void)filterRewardsValue:(id)arg1 unit:(unsigned long long)arg2;
+- (void)filterSources:(id)arg1;
+- (void)filterStatuses:(id)arg1;
+- (void)filterTags:(id)arg1;
+- (void)filterTypes:(id)arg1;
+- (id)initWithCounterpartHandles:(id)arg1 transactionSource:(id)arg2 paymentDataProvider:(id)arg3;
+- (id)initWithInstallmentPlan:(id)arg1 transactionSource:(id)arg2 paymentDataProvider:(id)arg3;
+- (id)initWithMerchant:(id)arg1 transactionSource:(id)arg2 paymentDataProvider:(id)arg3;
+- (id)initWithMerchantCategory:(long long)arg1 transactionSource:(id)arg2 paymentDataProvider:(id)arg3;
+- (id)initWithRegions:(id)arg1 transactionSource:(id)arg2 paymentDataProvider:(id)arg3;
+- (id)initWithTransactionSource:(id)arg1 paymentDataProvider:(id)arg2;
+- (id)initWithTransactionType:(long long)arg1 transactionSource:(id)arg2 paymentDataProvider:(id)arg3;
 - (id)instantWithdrawalFeesTransactionGroups;
 - (void)paymentPassWithUniqueIdentifier:(id)arg1 didEnableTransactionService:(BOOL)arg2;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
-- (void)paymentPassWithUniqueIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
 - (void)reloadTransactionsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setLimit:(unsigned long long)arg1 startDate:(id)arg2 endDate:(id)arg3;
+- (void)transactionSourceIdentifier:(id)arg1 didReceiveTransaction:(id)arg2;
+- (void)transactionSourceIdentifier:(id)arg1 didRemoveTransactionWithIdentifier:(id)arg2;
 - (void)transactionsMonthlyAmountsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)transactionsYearlyCountsWithCompletion:(CDUnknownBlockType)arg1;
 

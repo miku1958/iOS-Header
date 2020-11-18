@@ -19,13 +19,13 @@
     HDSimpleGraphNode *_object;
 }
 
-@property (nonatomic) BOOL isReverseRelationship; // @synthesize isReverseRelationship=_isReverseRelationship;
-@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
-@property (nonatomic) long long nameID; // @synthesize nameID=_nameID;
+@property (readonly, nonatomic) BOOL isReverseRelationship; // @synthesize isReverseRelationship=_isReverseRelationship;
+@property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) long long nameID; // @synthesize nameID=_nameID;
 @property (weak, nonatomic) HDSimpleGraphNode *object; // @synthesize object=_object;
-@property (nonatomic) long long objectID; // @synthesize objectID=_objectID;
+@property (readonly, nonatomic) long long objectID; // @synthesize objectID=_objectID;
 @property (weak, nonatomic) HDSimpleGraphNode *subject; // @synthesize subject=_subject;
-@property (nonatomic) long long subjectID; // @synthesize subjectID=_subjectID;
+@property (readonly, nonatomic) long long subjectID; // @synthesize subjectID=_subjectID;
 
 - (void).cxx_destruct;
 - (id)debugDescription;

@@ -11,17 +11,11 @@
 
 @protocol WBSHistoryStore <WBSHistoryLoader>
 
-@property (nonatomic) unsigned long long cachedNumberOfDevicesInSyncCircle;
 @property (weak, nonatomic) id<WBSHistoryStoreDelegate> delegate;
-@property (copy, nonatomic) NSData *fetchThrottlerData;
 @property (nonatomic) double historyAgeLimit;
 @property (readonly, nonatomic) BOOL isUsingInMemoryDatabase;
-@property (copy, nonatomic) NSData *longLivedSaveOperationData;
-@property (nonatomic) BOOL pushNotificationsAreInitialized;
-@property (copy, nonatomic) NSData *pushThrottlerData;
-@property (copy, nonatomic) NSData *syncCircleSizeRetrievalThrottlerData;
-@property (nonatomic) BOOL syncsWithManateeContainer;
 
+- (void)addAutocompleteTrigger:(NSString *)arg1 forItem:(WBSHistoryItem *)arg2;
 - (void)addOrUpdateItemsOnDatabaseQueue:(NSSet *)arg1;
 - (NSSet *)allVisitsForItemsOnDatabaseQueue:(NSSet *)arg1;
 - (void)assignHistoryItem:(WBSHistoryItem *)arg1 toTopicTags:(NSSet *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
@@ -35,6 +29,7 @@
 - (void)fetchTopicsFromStartDate:(NSDate *)arg1 toEndDate:(NSDate *)arg2 completionHandler:(void (^)(NSArray *, NSError *))arg3;
 - (void)fetchTopicsFromStartDate:(NSDate *)arg1 toEndDate:(NSDate *)arg2 limit:(unsigned long long)arg3 minimumItemCount:(unsigned long long)arg4 sortOrder:(long long)arg5 completionHandler:(void (^)(NSArray *, NSError *))arg6;
 - (void)getAllTombstonesWithCompletion:(void (^)(NSSet *))arg1;
+- (void)getAutocompleteTriggersForItem:(WBSHistoryItem *)arg1 completionHandler:(void (^)(NSArray *))arg2;
 - (void)getServerChangeTokenDataWithCompletion:(void (^)(NSData *))arg1;
 - (void)getVisitsAndTombstonesNeedingSyncWithVisitSyncWindow:(double)arg1 completion:(void (^)(NSSet *, NSSet *, long long, void (^)(BOOL)))arg2;
 - (void)getVisitsCreatedAfterDate:(NSDate *)arg1 beforeDate:(NSDate *)arg2 completionHandler:(void (^)(NSSet *))arg3;
@@ -44,11 +39,8 @@
 - (NSDate *)lastSeenDateForCloudClientVersion:(unsigned long long)arg1;
 - (void)performMaintenance:(void (^)(void))arg1;
 - (void)pruneTombstonesWithEndDatePriorToDate:(NSDate *)arg1;
-- (void)removeItemsOnDatabaseQueue:(NSSet *)arg1;
 - (void)removePastHistoryVisitsForItem:(WBSHistoryItem *)arg1 completionHandler:(void (^)(void))arg2;
-- (void)removeVisitsOnDatabaseQueue:(NSSet *)arg1;
 - (void)replayAndAddTombstones:(NSArray *)arg1 completionHandler:(void (^)(NSError *))arg2;
-- (void)resetCloudHistoryDataWithCompletionHandler:(void (^)(void))arg1;
 - (void)setLastSeenDate:(NSDate *)arg1 forCloudClientVersion:(unsigned long long)arg2;
 - (void)setServerChangeTokenData:(NSData *)arg1;
 - (void)setTitle:(NSString *)arg1 ofTag:(WBSHistoryTag *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;

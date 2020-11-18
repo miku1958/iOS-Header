@@ -8,20 +8,33 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class PBUnknownFields;
+@class NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDCaptionedPhotoFilter : PBCodable <NSCopying>
 {
+    PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
     struct GEOPDPhotoSizeFilterValue *_photoSizeFilters;
     unsigned long long _photoSizeFiltersCount;
     unsigned long long _photoSizeFiltersSpace;
+    NSString *_vendorId;
+    unsigned int _readerMarkPos;
+    unsigned int _readerMarkLength;
+    struct os_unfair_lock_s _readerLock;
+    struct {
+        unsigned int read_unknownFields:1;
+        unsigned int read_photoSizeFilters:1;
+        unsigned int read_vendorId:1;
+        unsigned int wrote_anyField:1;
+    } _flags;
 }
 
+@property (readonly, nonatomic) BOOL hasVendorId;
 @property (readonly, nonatomic) struct GEOPDPhotoSizeFilterValue *photoSizeFilters;
 @property (readonly, nonatomic) unsigned long long photoSizeFiltersCount;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (strong, nonatomic) NSString *vendorId;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
@@ -34,7 +47,12 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)init;
+- (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (struct GEOPDPhotoSizeFilterValue)photoSizeFilterAtIndex:(unsigned long long)arg1;
 - (void)readAll:(BOOL)arg1;

@@ -10,21 +10,25 @@
 #import <ChatKit/CKMessageAcknowledgmentPickerBarDelegate-Protocol.h>
 #import <ChatKit/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CKMessageAcknowledgmentPickerBarViewController, CKMessagePartChatItem, NSString, UIGestureRecognizer, UIView;
+@class CKMessageAcknowledgmentPickerBarViewController, CKMessagePartChatItem, NSString, UIButton, UIGestureRecognizer, UIView;
 @protocol CKFullScreenBalloonViewControllerDelegate;
 
 @interface CKFullScreenBalloonViewController : UIViewController <CKMessageAcknowledgmentPickerBarDelegate, UIGestureRecognizerDelegate, CKAdaptivePresentedControllerProtocol>
 {
+    BOOL _wantsWindowedPresentation;
+    BOOL _preserveModalPresentationStyle;
     BOOL _isGroupConversation;
     BOOL _showActionMenu;
     CKMessagePartChatItem *_chatItem;
     UIGestureRecognizer *_tapRecognizer;
     id<CKFullScreenBalloonViewControllerDelegate> _delegate;
     CKMessageAcknowledgmentPickerBarViewController *_pickerBar;
+    UIButton *_replyButton;
     UIView *_tintView;
     struct CGRect _gradientFrame;
 }
 
+@property (readonly, nonatomic) UIView *balloonWrapperView;
 @property (readonly, nonatomic) CKMessagePartChatItem *chatItem; // @synthesize chatItem=_chatItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, weak, nonatomic) id<CKFullScreenBalloonViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -33,16 +37,21 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isGroupConversation; // @synthesize isGroupConversation=_isGroupConversation;
 @property (readonly, nonatomic) CKMessageAcknowledgmentPickerBarViewController *pickerBar; // @synthesize pickerBar=_pickerBar;
+@property (nonatomic) BOOL preserveModalPresentationStyle; // @synthesize preserveModalPresentationStyle=_preserveModalPresentationStyle;
+@property (strong, nonatomic) UIButton *replyButton; // @synthesize replyButton=_replyButton;
+@property (nonatomic) BOOL shouldHidePresentingWindow;
 @property (readonly, nonatomic) BOOL showActionMenu; // @synthesize showActionMenu=_showActionMenu;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIGestureRecognizer *tapRecognizer; // @synthesize tapRecognizer=_tapRecognizer;
 @property (readonly, nonatomic) UIView *tintView; // @synthesize tintView=_tintView;
+@property (nonatomic) BOOL wantsWindowedPresentation; // @synthesize wantsWindowedPresentation=_wantsWindowedPresentation;
 
 - (void).cxx_destruct;
-- (void)_performClosingAnimationsWithSendAnimation:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)_performClosingAnimationsAnimated:(BOOL)arg1 withSendAnimation:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)addTapRecognizerWithTarget:(id)arg1 action:(SEL)arg2;
 - (BOOL)constrainToPresentingVCBounds;
 - (void)dealloc;
+- (void)dismissImmediatelyWithNoAnimations;
 - (void)dismissTapGestureRecognized:(id)arg1;
 - (BOOL)forceWindowedPresentation;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceivePress:(id)arg2;
@@ -52,17 +61,17 @@
 - (void)loadView;
 - (void)messageAcknowledgmentPickerViewController:(id)arg1 didPickAcknowledgment:(long long)arg2;
 - (void)performCancelAnimationWithCompletion:(CDUnknownBlockType)arg1;
-- (void)performClosingAnimationsWithSendAnimation:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)performClosingAnimationsAnimated:(BOOL)arg1 withSendAnimation:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)performInitialAnimations;
 - (void)performSendAndCloseAnimationWithCompletion:(CDUnknownBlockType)arg1;
-- (BOOL)preserveModalPresentationStyle;
 - (void)removeTapRecogonizer;
+- (void)replyButtonPressed:(id)arg1;
+- (void)setupReplyButton;
 - (BOOL)shouldAutorotate;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
-- (BOOL)wantsWindowedPresentation;
 
 @end
 

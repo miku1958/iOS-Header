@@ -10,16 +10,21 @@
 {
 }
 
-+ (id)IOErrorWithString:(id)arg1;
-+ (id)customLayerErrorWithUnderlyingError:(id)arg1 withString:(id)arg2;
++ (id)IOErrorWithFormat:(id)arg1;
++ (id)customLayerErrorWithUnderlyingError:(id)arg1 withFormat:(id)arg2;
++ (id)errorWithCode:(long long)arg1 format:(id)arg2;
 + (id)errorWithCode:(long long)arg1 format:(id)arg2 args:(struct __va_list_tag [1])arg3;
-+ (id)errorWithCode:(long long)arg1 string:(id)arg2;
++ (id)errorWithCode:(long long)arg1 underlyingError:(id)arg2 format:(id)arg3;
 + (id)errorWithCode:(long long)arg1 underlyingError:(id)arg2 format:(id)arg3 args:(struct __va_list_tag [1])arg4;
-+ (id)errorWithCode:(long long)arg1 underlyingError:(id)arg2 string:(id)arg3;
-+ (id)featureTypeErrorWithString:(id)arg1;
-+ (id)genericErrorWithString:(id)arg1;
-+ (id)parameterErrorWithUnderlyingError:(id)arg1 string:(id)arg2;
-+ (id)updateErrorWithString:(id)arg1;
++ (id)errorWithIntegerCode:(long long)arg1 underlyingError:(id)arg2 format:(id)arg3 args:(struct __va_list_tag [1])arg4;
++ (id)featureTypeErrorWithFormat:(id)arg1;
++ (id)genericErrorWithFormat:(id)arg1;
++ (id)modelDecryptionErrorWithUnderlyingError:(id)arg1 format:(id)arg2;
++ (id)modelDecryptionKeyFetchErrorWithUnderlyingError:(id)arg1 format:(id)arg2;
++ (id)modelEncryptionErrorWithUnderlyingError:(id)arg1 format:(id)arg2;
++ (id)parameterErrorWithUnderlyingError:(id)arg1 format:(id)arg2;
++ (id)privateErrorWithCode:(long long)arg1 underlyingError:(id)arg2 format:(id)arg3 args:(struct __va_list_tag [1])arg4;
++ (id)updateErrorWithFormat:(id)arg1;
 
 @end
 

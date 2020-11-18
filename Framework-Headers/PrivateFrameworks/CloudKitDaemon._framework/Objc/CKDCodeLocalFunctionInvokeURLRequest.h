@@ -15,11 +15,11 @@ __attribute__((visibility("hidden")))
     NSString *_serviceName;
     NSString *_functionName;
     NSData *_serializedParameters;
-    NSURL *_explicitBaseURL;
+    NSURL *_resolvedBaseURL;
 }
 
-@property (copy, nonatomic) NSURL *explicitBaseURL; // @synthesize explicitBaseURL=_explicitBaseURL;
 @property (copy, nonatomic) NSString *functionName; // @synthesize functionName=_functionName;
+@property (copy, nonatomic) NSURL *resolvedBaseURL; // @synthesize resolvedBaseURL=_resolvedBaseURL;
 @property (strong, nonatomic) NSData *serializedParameters; // @synthesize serializedParameters=_serializedParameters;
 @property (copy, nonatomic) CDUnknownBlockType serializedResultsCallback; // @synthesize serializedResultsCallback=_serializedResultsCallback;
 @property (copy, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;
@@ -27,8 +27,9 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)additionalHeaderValues;
 - (BOOL)allowsAnonymousAccount;
+- (long long)databaseScope;
 - (Class)expectedResponseClass;
-- (id)initWithServiceName:(id)arg1 functionName:(id)arg2 serializedParameters:(id)arg3 explicitBaseURL:(id)arg4;
+- (id)initWithOperation:(id)arg1 serviceName:(id)arg2 functionName:(id)arg3 serializedParameters:(id)arg4 resolvedBaseURL:(id)arg5;
 - (BOOL)parsingStandaloneMessage;
 - (long long)partitionType;
 - (id)requestBodyStream;

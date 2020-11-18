@@ -48,7 +48,6 @@
     NSNumber *_probeTFO;
     NSNumber *_probeNoTFOCookie;
     NSNumber *_probeTimeout;
-    NSNumber *_probeUseTFOHeuristics;
     NSNumber *_retryPause;
     NSNumber *_signatureLimit;
     NSNumber *_observedRTTSampleSize;
@@ -88,10 +87,10 @@
 }
 
 @property (copy) NSNumber *TFOLeeway; // @synthesize TFOLeeway=_TFOLeeway;
-@property (strong) NSPNetworkAgent *agent; // @synthesize agent=_agent;
+@property (strong, nonatomic) NSPNetworkAgent *agent; // @synthesize agent=_agent;
 @property (strong) NWNetworkAgentRegistration *agentRegistration; // @synthesize agentRegistration=_agentRegistration;
 @property (strong) NSArray *allOnRamps;
-@property (strong) NPLocation *cachedLocation; // @synthesize cachedLocation=_cachedLocation;
+@property (strong, nonatomic) NPLocation *cachedLocation; // @synthesize cachedLocation=_cachedLocation;
 @property (strong) NSUUID *configurationIdentifier; // @synthesize configurationIdentifier=_configurationIdentifier;
 @property (copy) NSNumber *connectionIdleTimeoutMaximum; // @synthesize connectionIdleTimeoutMaximum=_connectionIdleTimeoutMaximum;
 @property (readonly) NPTuscanyEdge *currentEdge;
@@ -110,7 +109,7 @@
 @property (copy) NSNumber *dayPassRevocationFailClosed; // @synthesize dayPassRevocationFailClosed=_dayPassRevocationFailClosed;
 @property (copy) NSArray *dayPassSoftExpiry; // @synthesize dayPassSoftExpiry=_dayPassSoftExpiry;
 @property BOOL daypassRefreshInProgress; // @synthesize daypassRefreshInProgress=_daypassRefreshInProgress;
-@property (strong) NPWaldo *defaults; // @synthesize defaults=_defaults;
+@property (strong, nonatomic) NPWaldo *defaults; // @synthesize defaults=_defaults;
 @property (weak) id<NPWaldoDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly) unsigned long long edgeCount;
 @property (copy) NSNumber *edgeFairnessFactor; // @synthesize edgeFairnessFactor=_edgeFairnessFactor;
@@ -124,18 +123,18 @@
 @property (readonly) NSDate *expirationDate;
 @property unsigned int generation; // @synthesize generation=_generation;
 @property (readonly) BOOL hasEdges;
-@property (strong) NSString *hostname; // @synthesize hostname=_hostname;
+@property (strong, nonatomic) NSString *hostname; // @synthesize hostname=_hostname;
 @property (readonly) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly) BOOL isIPv6Enabled;
-@property (strong) NPKeyBag *keybag; // @synthesize keybag=_keybag;
+@property (strong, nonatomic) NPKeyBag *keybag; // @synthesize keybag=_keybag;
 @property (readonly) CDUnknownBlockType latencyComparator;
 @property (copy) NSNumber *latencyFactorA; // @synthesize latencyFactorA=_latencyFactorA;
 @property (copy) NSNumber *latencyFactorB; // @synthesize latencyFactorB=_latencyFactorB;
 @property (copy) NSNumber *latencyFactorX; // @synthesize latencyFactorX=_latencyFactorX;
 @property (copy) NSNumber *locationCheckInterval; // @synthesize locationCheckInterval=_locationCheckInterval;
-@property (strong) NSDate *locationCheckTimestamp; // @synthesize locationCheckTimestamp=_locationCheckTimestamp;
-@property (strong) NSDate *locationExpiration; // @synthesize locationExpiration=_locationExpiration;
-@property (strong) NPWaldoLocationManager *locationManager; // @synthesize locationManager=_locationManager;
+@property (strong, nonatomic) NSDate *locationCheckTimestamp; // @synthesize locationCheckTimestamp=_locationCheckTimestamp;
+@property (strong, nonatomic) NSDate *locationExpiration; // @synthesize locationExpiration=_locationExpiration;
+@property (strong, nonatomic) NPWaldoLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property (copy) NSNumber *locationTTL; // @synthesize locationTTL=_locationTTL;
 @property (copy) NSNumber *locationToleranceDistance; // @synthesize locationToleranceDistance=_locationToleranceDistance;
 @property (strong) NSMutableDictionary *networkInformation; // @synthesize networkInformation=_networkInformation;
@@ -146,7 +145,6 @@
 @property (readonly) unsigned long long probeSize;
 @property (copy) NSNumber *probeTFO; // @synthesize probeTFO=_probeTFO;
 @property (copy) NSNumber *probeTimeout; // @synthesize probeTimeout=_probeTimeout;
-@property (copy) NSNumber *probeUseTFOHeuristics; // @synthesize probeUseTFOHeuristics=_probeUseTFOHeuristics;
 @property BOOL reResolve;
 @property BOOL reprocessCancelled; // @synthesize reprocessCancelled=_reprocessCancelled;
 @property BOOL reprocessPending; // @synthesize reprocessPending=_reprocessPending;

@@ -11,9 +11,9 @@
 }
 
 + (id)UTITypes;
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (BOOL)shouldScaleUpPreview;
 + (BOOL)shouldShadePreview;
+- (id)attachmentSummary:(unsigned long long)arg1;
 - (id)backgroundColorOverride;
 - (id)icon;
 - (id)pasteboardItem;

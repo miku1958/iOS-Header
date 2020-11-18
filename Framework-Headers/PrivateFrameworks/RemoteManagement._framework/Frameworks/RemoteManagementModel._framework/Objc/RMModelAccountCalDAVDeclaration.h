@@ -12,10 +12,10 @@
 
 @interface RMModelAccountCalDAVDeclaration : RMModelConfigurationBase <RMModelRegisteredTypeProtocol>
 {
-    NSString *_payloadDescription;
+    NSString *_payloadVisibleName;
     NSString *_payloadHostName;
     NSNumber *_payloadPort;
-    NSString *_payloadPrincipalURL;
+    NSString *_payloadPath;
     NSString *_payloadAuthenticationCredentialsAssetReference;
 }
 
@@ -23,15 +23,15 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *payloadAuthenticationCredentialsAssetReference; // @synthesize payloadAuthenticationCredentialsAssetReference=_payloadAuthenticationCredentialsAssetReference;
-@property (copy, nonatomic) NSString *payloadDescription; // @synthesize payloadDescription=_payloadDescription;
 @property (copy, nonatomic) NSString *payloadHostName; // @synthesize payloadHostName=_payloadHostName;
+@property (copy, nonatomic) NSString *payloadPath; // @synthesize payloadPath=_payloadPath;
 @property (copy, nonatomic) NSNumber *payloadPort; // @synthesize payloadPort=_payloadPort;
-@property (copy, nonatomic) NSString *payloadPrincipalURL; // @synthesize payloadPrincipalURL=_payloadPrincipalURL;
+@property (copy, nonatomic) NSString *payloadVisibleName; // @synthesize payloadVisibleName=_payloadVisibleName;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1 hostName:(id)arg2;
-+ (id)buildWithIdentifier:(id)arg1 description:(id)arg2 hostName:(id)arg3 port:(id)arg4 principalURL:(id)arg5 authenticationCredentialsAssetReference:(id)arg6;
++ (id)buildWithIdentifier:(id)arg1 visibleName:(id)arg2 hostName:(id)arg3 port:(id)arg4 path:(id)arg5 authenticationCredentialsAssetReference:(id)arg6;
 + (id)registeredClassName;
 + (id)registeredIdentifier;
 - (void).cxx_destruct;

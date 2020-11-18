@@ -4,27 +4,25 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthDaemon/HDSubserver.h>
+#import <HealthDaemon/HDStandardTaskServer.h>
 
-#import <HealthDaemon/HDHealthServicesServerInterface-Protocol.h>
+#import <HealthDaemon/HKHealthServicesServerInterface-Protocol.h>
 
-@class HDHealthServiceManager, HDIdentifierTable, NSMutableDictionary, NSMutableSet, NSString, NSUUID;
-@protocol HKHealthStoreClientInterface;
+@class HDHealthServiceManager, HDIdentifierTable, NSMutableDictionary, NSMutableSet, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
-@interface HDHealthServicesServer : HDSubserver <HDHealthServicesServerInterface>
+@interface HDHealthServicesServer : HDStandardTaskServer <HKHealthServicesServerInterface>
 {
     HDHealthServiceManager *_healthServiceManager;
+    NSObject<OS_dispatch_queue> *_queue;
     HDIdentifierTable *_healthServiceDiscoveryServerIDs;
     NSMutableDictionary *_healthServiceDiscoveryClientIDs;
     HDIdentifierTable *_healthDeviceSessionServerIDs;
     NSMutableDictionary *_healthServiceSessionClientIDs;
     NSMutableSet *_healthServiceClosedSessionServerIDs;
     NSMutableSet *_healthServiceClosedSessionClientIDs;
-    NSUUID *_subserverUUID;
-    id<HKHealthStoreClientInterface> _clientRemoteObjectProxy;
 }
 
-@property (strong, nonatomic) id<HKHealthStoreClientInterface> clientRemoteObjectProxy; // @synthesize clientRemoteObjectProxy=_clientRemoteObjectProxy;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -33,11 +31,14 @@
 @property (strong, nonatomic) NSMutableSet *healthServiceClosedSessionServerIDs; // @synthesize healthServiceClosedSessionServerIDs=_healthServiceClosedSessionServerIDs;
 @property (strong, nonatomic) NSMutableDictionary *healthServiceDiscoveryClientIDs; // @synthesize healthServiceDiscoveryClientIDs=_healthServiceDiscoveryClientIDs;
 @property (strong, nonatomic) HDIdentifierTable *healthServiceDiscoveryServerIDs; // @synthesize healthServiceDiscoveryServerIDs=_healthServiceDiscoveryServerIDs;
-@property (strong, nonatomic) HDHealthServiceManager *healthServiceManager; // @synthesize healthServiceManager=_healthServiceManager;
+@property (readonly, nonatomic) HDHealthServiceManager *healthServiceManager; // @synthesize healthServiceManager=_healthServiceManager;
 @property (strong, nonatomic) NSMutableDictionary *healthServiceSessionClientIDs; // @synthesize healthServiceSessionClientIDs=_healthServiceSessionClientIDs;
-@property (strong, nonatomic) NSUUID *subserverUUID; // @synthesize subserverUUID=_subserverUUID;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
++ (id)createTaskServerWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4 error:(id *)arg5;
++ (id)requiredEntitlements;
++ (id)taskIdentifier;
 - (void).cxx_destruct;
 - (void)_closeDiscoveryBetweenServer:(unsigned long long)arg1 andClient:(unsigned long long)arg2;
 - (void)_closeSessionBetweenServer:(unsigned long long)arg1 andClient:(unsigned long long)arg2;
@@ -49,11 +50,14 @@
 - (BOOL)_isServerSessionValid:(unsigned long long)arg1;
 - (unsigned long long)_sessionClientIdentifierForServerIdentifier:(unsigned long long)arg1;
 - (unsigned long long)_sessionServerIdentifierForClientIdentifier:(unsigned long long)arg1;
-- (id)initWithParentServer:(id)arg1;
+- (void)connectionInterrupted;
+- (id)exportedInterface;
+- (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
 - (void)invalidate;
+- (id)remoteInterface;
 - (void)remote_addPairingForHealthService:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)remote_addPeripheral:(id)arg1 name:(id)arg2 forServices:(id)arg3 withCompletion:(CDUnknownBlockType)arg4;
-- (void)remote_beginBluetoothStatusUpdates:(CDUnknownBlockType)arg1 client:(id)arg2;
+- (void)remote_beginBluetoothStatusUpdates:(CDUnknownBlockType)arg1;
 - (void)remote_endBluetoothStatusUpdates;
 - (void)remote_endHealthServiceDiscovery:(unsigned long long)arg1;
 - (void)remote_endHealthServiceSession:(unsigned long long)arg1;
@@ -66,8 +70,8 @@
 - (void)remote_removePairingForHealthService:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)remote_removePeripheral:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)remote_setEnabledStatus:(BOOL)arg1 forPeripheral:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)remote_startHealthServiceDiscovery:(long long)arg1 client:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)remote_startHealthServiceSession:(id)arg1 client:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)remote_startHealthServiceDiscovery:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)remote_startHealthServiceSession:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

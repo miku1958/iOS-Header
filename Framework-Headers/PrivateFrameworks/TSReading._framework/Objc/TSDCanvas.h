@@ -16,6 +16,7 @@
     NSArray *mInfos;
     NSArray *mTopLevelReps;
     NSSet *mAllReps;
+    NSArray *mAllRepsOrdered;
     struct __CFDictionary *mRepsByLayout;
     TSDLayoutController *mLayoutController;
     BOOL mIsTemporaryForLayout;
@@ -39,6 +40,7 @@
 }
 
 @property (readonly, nonatomic) TSKAccessController *accessController;
+@property (readonly, nonatomic) NSArray *allRepsOrdered;
 @property (nonatomic) BOOL allowsFontSubpixelQuantization; // @synthesize allowsFontSubpixelQuantization=mAllowsFontSubpixelQuantization;
 @property (nonatomic) struct CGColor *backgroundColor; // @synthesize backgroundColor=mBackgroundColor;
 @property (readonly, nonatomic) TSDInteractiveCanvasController *canvasController;
@@ -58,6 +60,7 @@
 @property (nonatomic) struct CGSize unscaledSize; // @synthesize unscaledSize=mUnscaledSize;
 @property (nonatomic) double viewScale; // @synthesize viewScale=mViewScale;
 
++ (void)p_recursivelyAddOrderedChildrenOfRep:(id)arg1 toArray:(id)arg2;
 - (void)addBitmapsToRenderingQualityInfo:(id)arg1 inContext:(struct CGContext *)arg2;
 - (id)allReps;
 - (struct CGPoint)convertBoundsToUnscaledPoint:(struct CGPoint)arg1;

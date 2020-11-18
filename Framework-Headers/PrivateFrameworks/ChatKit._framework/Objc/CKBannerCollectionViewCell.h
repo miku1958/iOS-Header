@@ -21,7 +21,6 @@
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
-- (void)setBannerImage:(id)arg1;
 
 @end
 

@@ -17,7 +17,6 @@
 }
 
 @property (weak, nonatomic) id<WBSDigitalHealthManagerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, getter=isDeviceManagementEnabled) BOOL deviceManagementEnabled;
 
 + (void)_updateWebpageUsage:(id)arg1 withDigitalHealthManagerUsageState:(unsigned long long)arg2;
 + (void)deleteAllUsageHistory;

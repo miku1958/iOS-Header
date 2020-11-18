@@ -8,7 +8,8 @@
 
 #import <HomeKitDaemon/HMDSharingDeviceDiscovery-Protocol.h>
 
-@class NSString, SFDeviceDiscovery;
+@class NSObject, NSString, SFDeviceDiscovery;
+@protocol OS_dispatch_queue;
 
 @interface HMDSharingDeviceDiscovery : HMFObject <HMDSharingDeviceDiscovery>
 {
@@ -22,6 +23,7 @@
 @property (copy, nonatomic) CDUnknownBlockType deviceFoundHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceLostHandler;
 @property (nonatomic) unsigned long long discoveryFlags;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

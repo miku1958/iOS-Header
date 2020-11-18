@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (id)initWithUnderlyingDataSourceManager:(id)arg1;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
+- (id)photosDataSource;
 
 @end
 

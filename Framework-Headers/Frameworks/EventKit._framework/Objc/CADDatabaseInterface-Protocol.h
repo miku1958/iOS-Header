@@ -9,7 +9,8 @@
 @protocol CADDatabaseInterface
 - (void)CADDatabaseCanModifyCalendarDatabase:(void (^)(int, BOOL))arg1;
 - (void)CADDatabaseCommitWithReply:(void (^)(int, BOOL, NSDictionary *))arg1;
-- (void)CADDatabaseExportICSDataForCalendarItems:(NSArray *)arg1 preventLineFolding:(BOOL)arg2 reply:(void (^)(int, NSData *))arg3;
+- (void)CADDatabaseExportICSDataForCalendar:(CADObjectID *)arg1 options:(long long)arg2 reply:(void (^)(int, NSData *))arg3;
+- (void)CADDatabaseExportICSDataForCalendarItems:(NSArray *)arg1 options:(unsigned long long)arg2 reply:(void (^)(int, NSData *))arg3;
 - (void)CADDatabaseFetchChangedObjectIDsSinceSequenceNumber:(long long)arg1 reply:(void (^)(int, BOOL, long long, NSData *, int, int, int))arg2;
 - (void)CADDatabaseFetchObjectChangesForEntityTypes:(NSArray *)arg1 insideObject:(CADObjectID *)arg2 reply:(void (^)(int, BOOL, long long, NSArray *))arg3;
 - (void)CADDatabaseGetChangedEntityIDsSinceTimestamp:(double)arg1 reply:(void (^)(int, BOOL, NSArray *, double))arg2;
@@ -22,8 +23,7 @@
 - (void)CADDatabaseMarkChangedObjectIDsConsumedUpToSequenceNumber:(long long)arg1 reply:(void (^)(int))arg2;
 - (void)CADDatabaseMarkIndividualChangesConsumed:(NSArray *)arg1 reply:(void (^)(int))arg2;
 - (void)CADDatabaseRebuildOccurrenceCacheWithReply:(void (^)(int))arg1;
-- (void)CADDatabaseRegisterForDetailedChangeTracking:(void (^)(int, long long))arg1;
-- (void)CADDatabaseResetWithReply:(void (^)(int))arg1;
+- (void)CADDatabaseRegisterForDetailedChangeTrackingInSource:(CADObjectID *)arg1 reply:(void (^)(int, long long))arg2;
 - (void)CADDatabaseRollbackWithReply:(void (^)(int))arg1;
 - (void)CADDatabaseSaveWithReply:(void (^)(int))arg1;
 - (void)CADDatabaseSetShowsDeclinedEvents:(BOOL)arg1 reply:(void (^)(int))arg2;

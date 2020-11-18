@@ -22,10 +22,9 @@
 
 @property (readonly, nonatomic) NSDate *endDate;
 @property (strong, nonatomic) _DKHistogram *endHistogram; // @synthesize endHistogram=_endHistogram;
-@property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (readonly, nonatomic) NSDate *startDate;
 @property (strong, nonatomic) _DKHistogram *startHistogram; // @synthesize startHistogram=_startHistogram;
-@property (strong, nonatomic) NSArray *transitionDates; // @synthesize transitionDates=_transitionDates;
-@property (strong, nonatomic) NSArray *values; // @synthesize values=_values;
+@property (readonly, nonatomic) NSArray *transitionDates;
 
 + (id)predictionUnavailable;
 + (BOOL)supportsSecureCoding;
@@ -36,8 +35,6 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithValues:(id)arg1 eachWithDuration:(double)arg2 startingAt:(id)arg3;
-- (id)initWithValues:(id)arg1 forDurations:(id)arg2 startingAt:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isUnavailable;
 - (id)largestDateRangeWithValuesBetween:(double)arg1 and:(double)arg2 ofMinimumDuration:(double)arg3;

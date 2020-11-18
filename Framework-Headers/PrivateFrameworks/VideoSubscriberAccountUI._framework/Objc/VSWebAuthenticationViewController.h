@@ -11,7 +11,7 @@
 #import <VideoSubscriberAccountUI/VSMessageQueueDelegate-Protocol.h>
 #import <VideoSubscriberAccountUI/VSWebAuthenticationViewController-Protocol.h>
 
-@class NSString, UIActivityIndicatorView, UIWebView, VSViewModel, VSWebAuthenticationViewModel;
+@class NSString, UIActivityIndicatorView, UIWebView, VSWebAuthenticationViewModel;
 @protocol VSAuthenticationViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -32,7 +32,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGSize preferredLogoSize;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) VSViewModel *viewModel;
+@property (strong, nonatomic) VSWebAuthenticationViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property (strong, nonatomic) UIWebView *webView; // @synthesize webView=_webView;
 
 - (void).cxx_destruct;
@@ -48,7 +48,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)didAddMessagesToMessageQueue:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (void)setViewModel:(id)arg1;
 - (void)uiWebView:(id)arg1 didFirstLayoutInFrame:(id)arg2;
 - (id)uiWebView:(id)arg1 resource:(id)arg2 willSendRequest:(id)arg3 redirectResponse:(id)arg4 fromDataSource:(id)arg5;
 - (void)viewDidAppear:(BOOL)arg1;

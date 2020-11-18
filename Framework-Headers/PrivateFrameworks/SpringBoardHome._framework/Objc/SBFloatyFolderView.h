@@ -9,10 +9,11 @@
 #import <SpringBoardHome/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoardHome/SBFolderBackgroundViewDelegate-Protocol.h>
 #import <SpringBoardHome/UIGestureRecognizerDelegate-Protocol.h>
+#import <SpringBoardHome/UIScribbleInteractionDelegate-Protocol.h>
 
-@class NSMapTable, NSMutableArray, NSString, SBFloatyFolderBackgroundClipView, SBHFolderSettings, SBIconView, UILongPressGestureRecognizer, UIPinchGestureRecognizer, UITapGestureRecognizer;
+@class NSMapTable, NSMutableArray, NSString, SBFloatyFolderBackgroundClipView, SBHFolderSettings, UILongPressGestureRecognizer, UIPinchGestureRecognizer, UIScribbleInteraction, UITapGestureRecognizer;
 
-@interface SBFloatyFolderView : SBFolderView <UIGestureRecognizerDelegate, PTSettingsKeyObserver, SBFolderBackgroundViewDelegate>
+@interface SBFloatyFolderView : SBFolderView <UIGestureRecognizerDelegate, PTSettingsKeyObserver, SBFolderBackgroundViewDelegate, UIScribbleInteractionDelegate>
 {
     SBFloatyFolderBackgroundClipView *_scrollClipView;
     NSMutableArray *_pageBackgroundViews;
@@ -22,12 +23,12 @@
     UIPinchGestureRecognizer *_pinchGesture;
     UILongPressGestureRecognizer *_longPressGesture;
     SBHFolderSettings *_folderSettings;
-    SBIconView *_cachedHiddenIconView;
     BOOL _displayingMultipleIconLists;
     BOOL _displaysMultipleIconListsInLandscapeOrientation;
     BOOL _convertingIconListStyle;
     BOOL _animatingRotation;
     unsigned long long _backgroundEffect;
+    UIScribbleInteraction *_titleScribbleInteraction;
 }
 
 @property (nonatomic, getter=isAnimatingRotation) BOOL animatingRotation; // @synthesize animatingRotation=_animatingRotation;
@@ -40,17 +41,19 @@
 @property (readonly, nonatomic) BOOL displaysMultipleIconListsInLandscapeOrientation; // @synthesize displaysMultipleIconListsInLandscapeOrientation=_displaysMultipleIconListsInLandscapeOrientation;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UIScribbleInteraction *titleScribbleInteraction; // @synthesize titleScribbleInteraction=_titleScribbleInteraction;
 
 + (Class)_scrollViewClass;
 + (unsigned long long)countOfAdditionalPagesToKeepVisibleInOneDirection;
 + (double)defaultCornerRadius;
 + (id)defaultIconLocation;
 - (void).cxx_destruct;
-- (void)_addIconListView:(id)arg1;
 - (void)_configureGestures;
 - (void)_convertToMultipleIconListsAnimated:(BOOL)arg1;
 - (void)_convertToSingleIconListAnimated:(BOOL)arg1;
 - (void)_currentPageIndexDidChange;
+- (void)_didAddIconListView:(id)arg1;
+- (void)_didRemoveIconListView:(id)arg1;
 - (struct CGRect)_frameForScalingView;
 - (void)_handleLongPressGesture:(id)arg1;
 - (void)_handleOutsideTap:(id)arg1;
@@ -58,18 +61,16 @@
 - (struct CGRect)_iconListFrameForPageRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2;
 - (void)_layoutSubviews;
 - (id)_newPageBackgroundView;
-- (double)_offsetToCenterPageControlInSpaceForPageControl;
 - (void)_orientationDidChange:(long long)arg1;
 - (struct CGRect)_pageBackgroundFrameForPageRect:(struct CGRect)arg1;
-- (void)_removeIconListView:(id)arg1;
 - (double)_rubberBandIntervalForOverscroll;
 - (struct CGPoint)_scrollView:(id)arg1 adjustedOffsetForOffset:(struct CGPoint)arg2 translation:(struct CGPoint)arg3 startPoint:(struct CGPoint)arg4 locationInView:(struct CGPoint)arg5 horizontalVelocity:(inout double *)arg6 verticalVelocity:(inout double *)arg7;
 - (void)_setScrollViewNeedsToClipCorners:(BOOL)arg1;
 - (BOOL)_shouldConvertToMultipleIconListsInLandscapeOrientation;
+- (BOOL)_shouldManageScrolledHiddenClippedIconView;
 - (BOOL)_showsTitle;
 - (BOOL)_tapToCloseGestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (double)_titleFontSize;
-- (double)_titleVerticalOffsetForOrientation:(long long)arg1;
 - (void)_updateIconListContainment:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_updateScalingViewFrame;
 - (void)_updateScalingViewLocation;
@@ -83,7 +84,6 @@
 - (void)enumeratePageBackgroundViewsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)fadeContentForMagnificationFraction:(double)arg1;
 - (void)fadeContentForMinificationFraction:(double)arg1;
-- (void)findHiddenIconView;
 - (id)floatyFolderConfiguration;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -95,6 +95,7 @@
 - (BOOL)locationCountsAsInsideFolder:(struct CGPoint)arg1;
 - (double)minimumVisibleScrollOffset;
 - (void)returnScalingView;
+- (BOOL)scribbleInteraction:(id)arg1 shouldBeginAtLocation:(struct CGPoint)arg2;
 - (void)scrollViewDidScroll:(id)arg1;
 - (double)scrollableWidthForVisibleColumnRange;
 - (void)setBackgroundAlpha:(double)arg1;

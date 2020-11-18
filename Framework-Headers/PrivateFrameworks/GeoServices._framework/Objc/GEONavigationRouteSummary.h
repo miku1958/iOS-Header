@@ -27,11 +27,7 @@
         unsigned int read_destinationName:1;
         unsigned int read_destination:1;
         unsigned int read_origin:1;
-        unsigned int wrote_destinationName:1;
-        unsigned int wrote_destination:1;
-        unsigned int wrote_origin:1;
-        unsigned int wrote_travelTime:1;
-        unsigned int wrote_transportType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -49,9 +45,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsTransportType:(id)arg1;
-- (void)_readDestination;
-- (void)_readDestinationName;
-- (void)_readOrigin;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -59,8 +52,11 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithRoute:(id)arg1 destinationName:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

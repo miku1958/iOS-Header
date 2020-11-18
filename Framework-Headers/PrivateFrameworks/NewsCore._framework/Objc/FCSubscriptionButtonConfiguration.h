@@ -35,6 +35,7 @@
 @property (nonatomic) unsigned long long targetType; // @synthesize targetType=_targetType;
 @property (copy, nonatomic) NSString *trialText; // @synthesize trialText=_trialText;
 
++ (id)defaultAmsSheetTargetSubscriptionButton;
 + (id)defaultArticleSubscriptionButtonWithLandingPageArticleID:(id)arg1;
 + (id)defaultIssueCoverSubscriptionButtonWithLandingPageArticleID:(id)arg1;
 + (id)defaultLandingPageSubscriptionButtonWithLandingPageArticleID:(id)arg1;

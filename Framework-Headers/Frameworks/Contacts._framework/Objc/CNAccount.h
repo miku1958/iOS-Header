@@ -23,6 +23,7 @@
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 
 + (id)identifierProvider;
++ (BOOL)ios_requestAccountSyncWithOptions:(unsigned long long)arg1;
 + (id)localAccount;
 + (id)makeIdentifier;
 + (id)makeIdentifierString;

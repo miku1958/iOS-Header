@@ -6,25 +6,32 @@
 
 #import <GameController/GCControllerElement.h>
 
-@class NSString;
-
 @interface GCControllerButtonInput : GCControllerElement
 {
-    NSString *_descriptionName;
     int _pressCounter;
+    BOOL _touched;
+    BOOL _touchedAndValueDistinct;
     BOOL _nonAnalog;
+    float _deadzone;
     float _value;
     CDUnknownBlockType _valueChangedHandler;
     CDUnknownBlockType _pressedChangedHandler;
+    CDUnknownBlockType _touchedChangedHandler;
 }
 
+@property (nonatomic) float deadzone; // @synthesize deadzone=_deadzone;
 @property BOOL nonAnalog; // @synthesize nonAnalog=_nonAnalog;
 @property (readonly, nonatomic, getter=isPressed) BOOL pressed;
 @property (copy, nonatomic) CDUnknownBlockType pressedChangedHandler; // @synthesize pressedChangedHandler=_pressedChangedHandler;
+@property (readonly, nonatomic, getter=isTouched) BOOL touched; // @synthesize touched=_touched;
+@property (nonatomic, getter=areTouchedAndValueDistinct) BOOL touchedAndValueDistinct; // @synthesize touchedAndValueDistinct=_touchedAndValueDistinct;
+@property (copy, nonatomic) CDUnknownBlockType touchedChangedHandler; // @synthesize touchedChangedHandler=_touchedChangedHandler;
 @property (readonly, nonatomic) float value; // @synthesize value=_value;
 @property (copy, nonatomic) CDUnknownBlockType valueChangedHandler; // @synthesize valueChangedHandler=_valueChangedHandler;
 
 - (void).cxx_destruct;
+- (BOOL)_setTouched:(BOOL)arg1;
+- (BOOL)_setTouched:(BOOL)arg1 queue:(id)arg2;
 - (BOOL)_setValue:(float)arg1;
 - (BOOL)_setValue:(float)arg1 queue:(id)arg2;
 - (id)description;

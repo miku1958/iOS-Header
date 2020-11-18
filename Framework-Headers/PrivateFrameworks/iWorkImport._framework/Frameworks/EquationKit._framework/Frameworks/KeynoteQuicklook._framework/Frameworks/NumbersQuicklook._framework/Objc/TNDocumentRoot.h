@@ -18,7 +18,6 @@
     BOOL _printingAllSheets;
     TNTheme *_theme;
     TSKTreeNode *_sidebarOrder;
-    TNUIState *_uiState;
     TNHyperlinkController *_tn_hyperlinkController;
     NSMutableArray *_mutableSheets;
     TSSStylesheet *_stylesheet;
@@ -42,7 +41,7 @@
 @property (readonly, nonatomic) unsigned long long tableCount;
 @property (readonly, nonatomic) TNTheme *theme; // @synthesize theme=_theme;
 @property (strong, nonatomic) TNHyperlinkController *tn_hyperlinkController; // @synthesize tn_hyperlinkController=_tn_hyperlinkController;
-@property (strong, nonatomic) TNUIState *uiState; // @synthesize uiState=_uiState;
+@property (strong, nonatomic) TNUIState *uiState; // @dynamic uiState;
 @property (readonly, nonatomic) TNDocumentViewController *viewController; // @dynamic viewController;
 
 + (struct CGSize)previewImageMaxSizeForType:(unsigned long long)arg1;
@@ -54,7 +53,6 @@
 - (void)addSheet:(id)arg1 dolcContext:(id)arg2;
 - (unsigned long long)applicationType;
 - (id)childEnumerator;
-- (void)collectDocumentOpenAnalyticsWithLogger:(id)arg1;
 - (BOOL)containsForms;
 - (void)documentDidLoad;
 - (id)freehandDrawingToolkitUIState;
@@ -104,11 +102,15 @@
 - (void)setUIState:(id)arg1 forChart:(id)arg2;
 - (void)sheet:(id)arg1 insertedDrawable:(id)arg2;
 - (void)sheet:(id)arg1 removedDrawable:(id)arg2;
-- (BOOL)shouldAllowDrawableInGroups:(id)arg1 forImport:(BOOL)arg2;
+- (BOOL)shouldAllowDrawableInGroups:(id)arg1;
 - (BOOL)shouldShowFloatingCommentInfo:(id)arg1;
 - (void)tableUID:(const UUIDData_5fbc143e *)arg1 changedToTableUID:(const UUIDData_5fbc143e *)arg2;
+- (id)uniqueNameForNewSheetWithName:(id)arg1;
 - (id)uniqueNameForSheet:(id)arg1 appendNewTag:(BOOL)arg2;
+- (id)uniqueNameForSheetName:(id)arg1 forRenamingSheet:(id)arg2;
+- (id)uniqueNameForSheetName:(id)arg1 forRenamingSheet:(id)arg2 appendNewTag:(BOOL)arg3;
 - (id)untitledSheetName;
+- (void)upgradeStylesheetForSheetStyles:(id)arg1;
 - (BOOL)validName:(id)arg1 forRenamingSheet:(id)arg2;
 - (BOOL)validNameForNewSheet:(id)arg1;
 - (int)verticalAlignmentForTextStorage:(id)arg1;

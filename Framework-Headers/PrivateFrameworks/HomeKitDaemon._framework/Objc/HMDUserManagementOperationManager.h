@@ -9,14 +9,14 @@
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
 @class HMDHomeManager, HMFTimer, NSArray, NSHashTable, NSMutableArray, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDUserManagementOperationManager : HMFObject <HMFTimerDelegate>
 {
+    id<HMFLocking> _lock;
     NSMutableArray *_operations;
     HMDHomeManager *_homeManager;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMFTimer *_saveTimer;
     NSHashTable *_observedAccessories;
 }
@@ -28,7 +28,6 @@
 @property (weak, nonatomic) HMDHomeManager *homeManager; // @synthesize homeManager=_homeManager;
 @property (readonly, nonatomic) NSHashTable *observedAccessories; // @synthesize observedAccessories=_observedAccessories;
 @property (readonly, nonatomic) NSArray *operations;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly, nonatomic) HMFTimer *saveTimer; // @synthesize saveTimer=_saveTimer;
 @property (readonly) Class superclass;
 
@@ -57,6 +56,7 @@
 - (void)operationCancelled:(id)arg1;
 - (void)operationStoppedBackingOff:(id)arg1;
 - (void)removeOperation:(id)arg1;
+- (void)removeOperationWithIdentifier:(id)arg1;
 - (id)shortDescription;
 - (void)timerDidFire:(id)arg1;
 

@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
 @interface SFDownloadsBarButtonItemView : UIButton <SFDeferrableUpdateView, CAStateControllerDelegate>
 {
     UIProgressView *_progressView;
-    double _barButtonItemWidth;
     double _progress;
     CDStruct_4e0a34f2 deferrableUpdateViewState;
     CAStateController *_stateController;
@@ -29,14 +28,14 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_barButtonHitRect;
 - (void)_buttonPressed;
 - (void)_dynamicUserInterfaceTraitDidChange;
+- (void)_installSubviews;
 - (struct CGRect)_selectedIndicatorBounds;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
 - (CDStruct_4e0a34f2 *)deferrableUpdateViewState;
 - (void)didMoveToWindow;
-- (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (void)pulse;
 - (void)setEnabled:(BOOL)arg1;
 - (void)setProgress:(double)arg1;

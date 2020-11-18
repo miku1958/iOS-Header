@@ -6,11 +6,12 @@
 
 #import <HomeAI/NSObject-Protocol.h>
 
-@class HMICameraVideoFrame, HMICameraVideoFrameSelector;
+@class HMICameraVideoFrame, HMICameraVideoFrameSelector, NSArray;
 
 @protocol HMICameraVideoFrameSelectorDelegate <NSObject>
 
 @optional
+- (void)selector:(HMICameraVideoFrameSelector *)arg1 didDetectMotion:(NSArray *)arg2 atSessionPTS:(CDStruct_1b6d18a9)arg3 frameDimensions:(struct CGSize)arg4;
 - (void)selector:(HMICameraVideoFrameSelector *)arg1 maySelectFrame:(HMICameraVideoFrame *)arg2;
 @end
 

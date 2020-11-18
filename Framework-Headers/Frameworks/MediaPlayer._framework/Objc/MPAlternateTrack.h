@@ -8,6 +8,7 @@
 
 @class AVMediaSelectionOption, NSString;
 
+__attribute__((visibility("hidden")))
 @interface MPAlternateTrack : NSObject
 {
     NSString *_displayName;

@@ -6,8 +6,15 @@
 
 #import <NewsFeed/_TtC8NewsFeed38DebugFormatUploadConfirmViewController.h>
 
-@interface _TtC8NewsFeed38DebugFormatUploadConfirmViewController (NewsFeed)
+#import <NewsFeed/UITableViewDataSource-Protocol.h>
+#import <NewsFeed/UITableViewDelegate-Protocol.h>
+
+@interface _TtC8NewsFeed38DebugFormatUploadConfirmViewController (NewsFeed) <UITableViewDataSource, UITableViewDelegate>
 - (void)doDismiss;
 - (void)doUploadWithSender:(id)arg1;
+- (long long)numberOfSectionsInTableView:(id)arg1;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 @end
 

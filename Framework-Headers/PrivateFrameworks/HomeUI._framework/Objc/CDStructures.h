@@ -69,8 +69,8 @@ struct HUGridPosition {
 };
 
 struct HUGridSize {
-    long long _field1;
-    long long _field2;
+    long long rowsDown;
+    long long columnsAcross;
 };
 
 struct UIEdgeInsets {
@@ -91,6 +91,21 @@ struct _NSRange {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    double topToLabelBaselineDistance;
+    double labelBaselineToBottomDistance;
+    double minHorizontalPadding;
+    double minWidth;
+    double heightReduction;
+} CDStruct_e9cf424c;
+
+typedef struct {
+    double r;
+    double g;
+    double b;
+    double temperature;
+} CDStruct_dbd0f16f;
 
 typedef struct {
     double minScrollPercentage;
@@ -114,13 +129,6 @@ typedef struct {
 } CDStruct_02837cd9;
 
 // Ambiguous groups
-typedef struct {
-    double _field1;
-    double _field2;
-    double _field3;
-    double _field4;
-} CDStruct_d2b197d1;
-
 typedef struct {
     double _field1;
     double _field2;

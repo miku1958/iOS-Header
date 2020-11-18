@@ -13,16 +13,19 @@ __attribute__((visibility("hidden")))
 {
     NSDictionary *_transactionOfferDict;
     NSArray *_videosPlayables;
+    BOOL _initiateFamilySetup;
     NSDictionary *_offer;
 }
 
 @property (readonly, nonatomic) NSString *buyParams;
+@property (readonly, nonatomic) BOOL initiateFamilySetup; // @synthesize initiateFamilySetup=_initiateFamilySetup;
 @property (readonly, copy, nonatomic) NSDictionary *offer; // @synthesize offer=_offer;
 @property (readonly, nonatomic) BOOL playWhenDone;
 @property (readonly, nonatomic) NSString *title;
 @property (readonly, nonatomic) NSArray *videosPlayables;
 
 - (void).cxx_destruct;
+- (id)getCanonicalID;
 - (id)initWithDictionary:(id)arg1;
 - (id)notificationBody;
 - (id)notificationTitle;

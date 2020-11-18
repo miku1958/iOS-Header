@@ -35,7 +35,7 @@
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(id)arg1;
 - (void)authorizationDidAuthorizePurchaseCompleteWithStatus:(long long)arg1;
-- (void)authorizationDidRequestMerchantSessionCompleteWithSession:(id)arg1 error:(id)arg2;
+- (void)authorizationDidRequestMerchantSessionCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectPaymentMethodCompleteWithPaymentSummaryItems:(id)arg1;
 - (void)authorizationDidSelectPaymentMethodCompleteWithUpdate:(id)arg1;
 - (void)authorizationDidSelectShippingAddressCompleteWithUpdate:(id)arg1;

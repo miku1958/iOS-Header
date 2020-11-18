@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class WFContentSourceTracker, WFParameter;
+@class NSString, WFContentAttributionTracker, WFParameter;
 @protocol WFVariableDataSource;
 
 @interface WFParameterStateProcessingContext : NSObject
@@ -15,18 +15,22 @@
     id<WFVariableDataSource> _variableSource;
     WFParameter *_parameter;
     long long _environment;
-    WFContentSourceTracker *_contentSourceTracker;
+    WFContentAttributionTracker *_contentAttributionTracker;
+    NSString *_widgetSizeClass;
+    long long _maximumItemCount;
 }
 
-@property (readonly, nonatomic) WFContentSourceTracker *contentSourceTracker; // @synthesize contentSourceTracker=_contentSourceTracker;
+@property (readonly, nonatomic) WFContentAttributionTracker *contentAttributionTracker; // @synthesize contentAttributionTracker=_contentAttributionTracker;
 @property (readonly, nonatomic) long long environment; // @synthesize environment=_environment;
 @property (readonly, nonatomic) BOOL isInputParameter; // @synthesize isInputParameter=_isInputParameter;
+@property (readonly, nonatomic) long long maximumItemCount; // @synthesize maximumItemCount=_maximumItemCount;
 @property (readonly, nonatomic) WFParameter *parameter; // @synthesize parameter=_parameter;
 @property (readonly, nonatomic) id<WFVariableDataSource> variableSource; // @synthesize variableSource=_variableSource;
+@property (readonly, nonatomic) NSString *widgetSizeClass; // @synthesize widgetSizeClass=_widgetSizeClass;
 
 - (void).cxx_destruct;
-- (void)addContentSource:(id)arg1;
-- (id)initWithVariableSource:(id)arg1 parameter:(id)arg2 isInputParameter:(BOOL)arg3 environment:(long long)arg4 contentSourceTracker:(id)arg5;
+- (void)addContentAttributionSet:(id)arg1;
+- (id)initWithVariableSource:(id)arg1 parameter:(id)arg2 isInputParameter:(BOOL)arg3 environment:(long long)arg4 contentAttributionTracker:(id)arg5 widgetSizeClass:(id)arg6;
 
 @end
 

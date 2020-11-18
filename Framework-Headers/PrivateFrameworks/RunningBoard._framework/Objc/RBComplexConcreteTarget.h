@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
 }
 
 - (void).cxx_destruct;
-- (id)_initWithProcess:(id)arg1 identity:(id)arg2 environment:(id)arg3;
 - (id)createRBSTarget;
 - (id)description;
 - (id)environment;

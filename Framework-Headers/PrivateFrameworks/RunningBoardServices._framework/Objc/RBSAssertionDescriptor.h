@@ -6,13 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSDescriptionProviding-Protocol.h>
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSArray, NSString, RBSAssertionIdentifier, RBSTarget;
 
-@interface RBSAssertionDescriptor : NSObject <BSXPCSecureCoding, NSCopying, BSDescriptionProviding>
+@interface RBSAssertionDescriptor : NSObject <RBSXPCSecureCoding, NSCopying>
 {
     RBSAssertionIdentifier *_identifier;
     RBSTarget *_target;
@@ -30,19 +29,14 @@
 @property (copy, nonatomic) RBSTarget *target; // @synthesize target=_target;
 
 + (id)descriptorWithIdentifier:(id)arg1 target:(id)arg2 explanation:(id)arg3 attributes:(id)arg4;
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithIdentifier:(id)arg1 target:(id)arg2 explanation:(id)arg3 attributes:(id)arg4;
 - (id)copyWithIdentifier:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)init;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

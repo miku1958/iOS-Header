@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) WFDispatchSourceTimer *timer; // @synthesize timer=_timer;
 
 - (void).cxx_destruct;
+- (void)finishWithMatchingRoute:(id)arg1 error:(id)arg2;
 - (id)initWithPicker:(id)arg1 routeDescriptor:(id)arg2 timeout:(double)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)routePickerDidUpdateAvailableRoutes:(id)arg1;
 - (void)start;

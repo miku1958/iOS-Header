@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (void)_executeWithUserIdentity:(id)arg1;
+- (BOOL)_shouldUseLegacyAccumulator;
 - (void)_validateUserIdentityForRequestWithCompletion:(CDUnknownBlockType)arg1;
 - (void)cancel;
 - (void)execute;

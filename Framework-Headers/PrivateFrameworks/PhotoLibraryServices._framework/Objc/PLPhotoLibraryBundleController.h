@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSMutableDictionary, PLBackgroundJobService;
+@class NSDate, NSMutableDictionary, PLBackgroundJobService, PLCoreDataFileRecorder;
 
 @interface PLPhotoLibraryBundleController : NSObject
 {
     long long _bundleType;
     Class _libraryServicesDelegateClass;
+    PLCoreDataFileRecorder *_statementRecorder;
     struct os_unfair_lock_s _bundlesByPathLock;
     NSMutableDictionary *_bundlesByPath;
     struct os_unfair_lock_s _bundleCreationPauseLock;
@@ -39,6 +40,7 @@
 - (id)newPhotoLibraryBundleWithLibraryURL:(id)arg1;
 - (id)openBundleAtLibraryURL:(id)arg1;
 - (id)replaceBundleForRebuildAtLibraryURL:(id)arg1;
+- (void)shutdownAllBundlesWithReason:(id)arg1;
 - (void)shutdownBundle:(id)arg1 reason:(id)arg2;
 
 @end

@@ -12,6 +12,7 @@
 @property (readonly, nonatomic) struct UIEdgeInsets px_layoutMargins;
 @property (readonly, nonatomic) struct CGSize px_referenceSize;
 @property (readonly, nonatomic) struct UIEdgeInsets px_safeAreaInsets;
+@property (readonly, nonatomic) struct CGSize px_windowReferenceSize;
 
 @end
 

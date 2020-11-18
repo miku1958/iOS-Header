@@ -6,18 +6,12 @@
 
 #import <MediaPlayer/MPSectionedCollection.h>
 
-@class NSCache;
+@class _MPLazySectionedCollectionStorage;
 @protocol MPLazySectionedCollectionDataSource;
 
 @interface MPLazySectionedCollection : MPSectionedCollection
 {
-    struct vector<long, std::__1::allocator<long>> _cachedNumberOfItemsInSections;
-    long long _cachedNumberOfSections;
-    BOOL _hasValidCachedNumberOfSections;
-    NSCache *_itemsCache;
-    struct map<long, MPIdentifierSet *, std::__1::less<long>, std::__1::allocator<std::__1::pair<const long, MPIdentifierSet *>>> _itemIdentifierSetMap;
-    NSCache *_sectionsCache;
-    struct map<long, MPIdentifierSet *, std::__1::less<long>, std::__1::allocator<std::__1::pair<const long, MPIdentifierSet *>>> _sectionIdentifierSetMap;
+    _MPLazySectionedCollectionStorage *_storage;
     struct os_unfair_lock_s _mapLock;
     id<MPLazySectionedCollectionDataSource> _dataSource;
 }
@@ -25,12 +19,12 @@
 @property (strong, nonatomic) id<MPLazySectionedCollectionDataSource> dataSource; // @synthesize dataSource=_dataSource;
 
 + (BOOL)supportsSecureCoding;
-- (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)_cachedObjectAtIndexPath:(id)arg1;
 - (void)_updateCacheWithObject:(id)arg1 atIndexPath:(id)arg2;
 - (id)allItems;
 - (id)allSections;
+- (void)dealloc;
 - (void)enumerateItemsInSectionAtIndex:(long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateItemsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSectionsUsingBlock:(CDUnknownBlockType)arg1;

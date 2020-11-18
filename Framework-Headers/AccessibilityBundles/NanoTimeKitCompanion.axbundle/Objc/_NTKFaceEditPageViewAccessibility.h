@@ -19,7 +19,6 @@
 - (void)addKeyline:(id)arg1 forKey:(id)arg2 tappable:(BOOL)arg3;
 - (void)layoutSubviews;
 - (void)removeAllKeylines;
-- (void)startBreathing;
 
 @end
 

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class MTLPipelineBufferDescriptorArrayInternal, MTLRenderPassColorAttachmentDescriptorArrayInternal, MTLRenderPipelineColorAttachmentDescriptorArrayInternal, MTLResourceList, MTLStageInputOutputDescriptor, MTLStencilDescriptorInternal, MTLTileRenderPipelineColorAttachmentDescriptorArrayInternal, MTLVertexDescriptorInternal, NSData, NSDictionary, NSObject, NSString;
+@class MTLBlitPassSampleBufferAttachmentDescriptorArrayInternal, MTLComputePassSampleBufferAttachmentDescriptorArrayInternal, MTLFunctionConstantValues, MTLLinkedFunctions, MTLPipelineBufferDescriptorArrayInternal, MTLRenderPassColorAttachmentDescriptorArrayInternal, MTLRenderPassSampleBufferAttachmentDescriptorArrayInternal, MTLRenderPipelineColorAttachmentDescriptorArrayInternal, MTLResourceList, MTLResourceStatePassSampleBufferAttachmentDescriptorArrayInternal, MTLStageInputOutputDescriptor, MTLStencilDescriptorInternal, MTLTileRenderPipelineColorAttachmentDescriptorArrayInternal, MTLVertexDescriptorInternal, NSArray, NSData, NSDictionary, NSObject, NSString;
 
 #pragma mark Blocks
 
@@ -30,6 +30,16 @@ struct DebugSubProgram {
     unsigned int _field3;
 };
 
+struct FileIdentifier {
+    int dev;
+    unsigned long long ino;
+};
+
+struct FlatArray<MTLBoundsCheck::ConstantDataHeader> {
+    unsigned int _field1;
+    unsigned int _field2;
+};
+
 struct FlatArray<MTLBoundsCheck::DebugLocation> {
     unsigned int _field1;
     unsigned int _field2;
@@ -45,11 +55,22 @@ struct FlatArray<MTLSerializedDebugInstrumentationData::FlatArray<char>> {
     unsigned int _field2;
 };
 
+struct FlatArray<unsigned char> {
+    unsigned int _field1;
+    unsigned int _field2;
+};
+
 struct IndirectArgumentBufferCapabilities {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
     unsigned int :29;
+};
+
+struct LoaderGlobalState {
+    id _field1;
+    id _field2;
+    struct unordered_map<FileIdentifier, MTLLoadedFile *, FileIdentifier::Hash, std::__1::equal_to<FileIdentifier>, std::__1::allocator<std::__1::pair<const FileIdentifier, MTLLoadedFile *>>> _field3;
 };
 
 struct MTLArgumentDescriptorPrivate {
@@ -73,6 +94,24 @@ struct MTLAttributeFlags {
     } _field1;
 };
 
+struct MTLBlitPassDescriptorPrivate {
+    MTLBlitPassSampleBufferAttachmentDescriptorArrayInternal *sampleBufferAttachments;
+};
+
+struct MTLBlitPassSampleBufferAttachmentDescriptorPrivate {
+    id sampleBuffer;
+    unsigned long long startOfEncoderSampleIndex;
+    unsigned long long endOfEncoderSampleIndex;
+};
+
+struct MTLCompileLibraryRequestData {
+    BOOL _field1;
+    id _field2;
+    unsigned int _field3;
+    id _field4;
+    id _field5;
+};
+
 struct MTLCompilerCache {
     CDUnknownFunctionPointerType *_field1;
     id _field2;
@@ -84,6 +123,36 @@ struct MTLCompilerConnectionManager {
     CDUnknownFunctionPointerType *_field1;
 };
 
+struct MTLCompilerFunctionRequest {
+    CDUnknownFunctionPointerType *_field1;
+    int _field2;
+    id _field3;
+    id _field4;
+    id _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    id _field9;
+    id _field10;
+    unsigned long long _field11;
+    id _field12;
+    id _field13;
+    id _field14;
+    id _field15;
+    int _field16;
+};
+
+struct MTLComputePassDescriptorPrivate {
+    unsigned long long dispatchType;
+    MTLComputePassSampleBufferAttachmentDescriptorArrayInternal *sampleBufferAttachments;
+};
+
+struct MTLComputePassSampleBufferAttachmentDescriptorPrivate {
+    id sampleBuffer;
+    unsigned long long startOfEncoderSampleIndex;
+    unsigned long long endOfEncoderSampleIndex;
+};
+
 struct MTLComputePipelineDescriptorPrivate {
     NSString *label;
     id computeFunction;
@@ -92,11 +161,23 @@ struct MTLComputePipelineDescriptorPrivate {
     MTLStageInputOutputDescriptor *stageInputDescriptor;
     NSDictionary *driverCompilerOptions;
     MTLPipelineBufferDescriptorArrayInternal *buffers;
+    NSArray *binaryArchives;
+    NSArray *insertLibraries;
     id pipelineLibrary;
     BOOL supportIndirectCommandBuffers;
+    long long textureWriteRoundingMode;
     BOOL forceResourceIndex;
-    unsigned int resourceIndex;
-    void *pad0;
+    unsigned long long resourceIndex;
+    NSDictionary *pluginData;
+    BOOL needsCustomBorderColorSamplers;
+    unsigned int openGLMode:1;
+    unsigned int openCLMode:1;
+    unsigned int reserved:30;
+    NSArray *functionPointers;
+    NSDictionary *functionPointerGroups;
+    MTLLinkedFunctions *linkedFunctions;
+    unsigned long long maxStackCallDepth;
+    BOOL supportAddingBinaryFunctions;
 };
 
 struct MTLConstantStorage {
@@ -136,6 +217,13 @@ struct MTLFunctionData {
     NSObject *functionInputs;
 };
 
+struct MTLFunctionDescriptorPrivate {
+    NSString *name;
+    NSString *specializedName;
+    unsigned long long options;
+    MTLFunctionConstantValues *constantValues;
+};
+
 struct MTLHeapDescriptorPrivate {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -146,16 +234,33 @@ struct MTLHeapDescriptorPrivate {
     unsigned long long _field7;
 };
 
+struct MTLIndirectCommandBufferDescriptorState {
+    unsigned long long commandTypes;
+    BOOL inheritPipelineState;
+    BOOL inheritBuffers;
+    unsigned long long maxVertexBufferBindCount;
+    unsigned long long maxFragmentBufferBindCount;
+    unsigned long long maxKernelBufferBindCount;
+    unsigned long long resourceIndex;
+};
+
+struct MTLIntersectionFunctionTableDescriptorPrivate {
+    unsigned long long functionCount;
+    BOOL forceResourceIndex;
+    unsigned long long resourceIndex;
+};
+
 struct MTLLibraryBuilder {
     id _field1;
     struct map<MTLLibraryIdentifier, MTLLibraryContainer *, std::__1::less<MTLLibraryIdentifier>, std::__1::allocator<std::__1::pair<const MTLLibraryIdentifier, MTLLibraryContainer *>>> _field2;
     id _field3;
     BOOL _field4;
+    id _field5;
 };
 
 struct MTLLibraryContainer {
     struct MTLPipelineCollection *_field1;
-    int _field2;
+    _Atomic int _field2;
     CDStruct_41a22ec7 _field3;
     struct MTLLibraryData *_field4;
     id _field5;
@@ -167,9 +272,34 @@ struct MTLLibraryContainer {
 
 struct MTLLibraryData {
     CDUnknownFunctionPointerType *_field1;
-    int _field2;
-    id _field3;
+    CDStruct_41a22ec7 _field2;
+    _Atomic int _field3;
     id _field4;
+    id _field5;
+};
+
+struct MTLLinkedFunctionsPrivate {
+    NSArray *functions;
+    NSArray *privateFunctions;
+    NSArray *binaryFunctions;
+    NSDictionary *groups;
+};
+
+struct MTLLoaderMachOPayload {
+    id _field1;
+    CDStruct_41a22ec7 _field2;
+    BOOL _field3;
+    unsigned long long _field4;
+    id _field5;
+    id _field6;
+    id _field7;
+    id _field8;
+    id _field9;
+};
+
+struct MTLLoaderSliceIdentifier {
+    int _field1;
+    int _field2;
 };
 
 struct MTLPipelineBufferDescriptorPrivate {
@@ -183,17 +313,16 @@ struct MTLPipelineBufferDescriptorPrivate {
 
 struct MTLPipelineCollection {
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field1;
-    struct unordered_map<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *, std::__1::hash<MTLLibraryContainer *>, std::__1::equal_to<MTLLibraryContainer *>, std::__1::allocator<std::__1::pair<MTLLibraryContainer *const, MTLPipelineLibrarySerializer::LibraryDescriptor *>>> _field2;
-    struct unordered_map<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *, std::__1::hash<_MTLFunction *>, std::__1::equal_to<_MTLFunction *>, std::__1::allocator<std::__1::pair<_MTLFunction *const, MTLPipelineLibrarySerializer::FunctionDescriptor *>>> _field3;
-    struct unordered_map<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<_MTLFunction *>, std::__1::equal_to<_MTLFunction *>, std::__1::allocator<std::__1::pair<_MTLFunction *const, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>> _field4;
-    struct unordered_map<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>, std::__1::hash<_MTLFunction *>, std::__1::equal_to<_MTLFunction *>, std::__1::allocator<std::__1::pair<_MTLFunction *const, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>>> _field5;
-    struct unordered_map<_MTLFunction *, _MTLFunction *, std::__1::hash<_MTLFunction *>, std::__1::equal_to<_MTLFunction *>, std::__1::allocator<std::__1::pair<_MTLFunction *const, _MTLFunction *>>> _field6;
-    struct unordered_map<MTLLibraryContainer *, unsigned long, std::__1::hash<MTLLibraryContainer *>, std::__1::equal_to<MTLLibraryContainer *>, std::__1::allocator<std::__1::pair<MTLLibraryContainer *const, unsigned long>>> _field7;
-    struct unordered_set<std::__1::basic_string<char>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>> _field8;
-    id _field9;
+    unsigned long long _field2;
+    struct map<MTLLibraryIdentifier, MTLPipelineLibrarySerializer::LibraryDescriptor *, std::__1::less<MTLLibraryIdentifier>, std::__1::allocator<std::__1::pair<const MTLLibraryIdentifier, MTLPipelineLibrarySerializer::LibraryDescriptor *>>> _field3;
+    struct unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>>> _field4;
+    struct unordered_map<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>>> _field5;
+    struct map<MTLLibraryIdentifier, unsigned long, std::__1::less<MTLLibraryIdentifier>, std::__1::allocator<std::__1::pair<const MTLLibraryIdentifier, unsigned long>>> _field6;
+    struct unordered_set<std::__1::basic_string<char>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::basic_string<char>>> _field7;
+    id _field8;
+    struct MTLPipelineDescriptorHash _field9;
     struct MTLPipelineDescriptorHash _field10;
     struct MTLPipelineDescriptorHash _field11;
-    struct MTLPipelineDescriptorHash _field12;
 };
 
 struct MTLPipelineDescriptions;
@@ -260,6 +389,16 @@ struct MTLRenderPassDescriptorPrivate {
     CDStruct_6e3f967a customSamplePositions[4];
     unsigned long long numCustomSamplePositions;
     id rasterizationRateMap;
+    MTLRenderPassSampleBufferAttachmentDescriptorArrayInternal *sampleBufferAttachments;
+    BOOL pointCoordYFlipEnabled;
+};
+
+struct MTLRenderPassSampleBufferAttachmentDescriptorPrivate {
+    id sampleBuffer;
+    unsigned long long startOfVertexSampleIndex;
+    unsigned long long endOfVertexSampleIndex;
+    unsigned long long startOfFragmentSampleIndex;
+    unsigned long long endOfFragmentSampleIndex;
 };
 
 struct MTLRenderPipelineAttachmentDescriptorPrivate {
@@ -295,6 +434,7 @@ struct MTLRenderPipelineDescriptorPrivate {
     unsigned long long tessellationOutputWindingOrder;
     unsigned long long postVertexDumpBufferIndex;
     BOOL supportIndirectCommandBuffers;
+    long long textureWriteRoundingMode;
     CDUnion_a2c16d69 ;
     unsigned long long sampleMask;
     union {
@@ -310,7 +450,7 @@ struct MTLRenderPipelineDescriptorPrivate {
             unsigned int alphaToOneEnabled:1;
             unsigned int rasterizationEnabled:1;
             unsigned int inputPrimitiveTopology:2;
-            unsigned int vertexEnabled:1;
+            unsigned int private0:1;
             unsigned int depthStencilWriteDisabled:1;
             unsigned int openGLMode:1;
             unsigned int sampleCoverageInvert:1;
@@ -342,10 +482,23 @@ struct MTLRenderPipelineDescriptorPrivate {
     id pipelineLibrary;
     void *pad0;
     void *pad1;
+    NSDictionary *pluginData;
+    BOOL needsCustomBorderColorSamplers;
     unsigned int maxVertexAmplificationCount;
+    NSArray *binaryArchives;
 };
 
 struct MTLResourceListEntry;
+
+struct MTLResourceStatePassDescriptorPrivate {
+    MTLResourceStatePassSampleBufferAttachmentDescriptorArrayInternal *sampleBufferAttachments;
+};
+
+struct MTLResourceStatePassSampleBufferAttachmentDescriptorPrivate {
+    id sampleBuffer;
+    unsigned long long startOfEncoderSampleIndex;
+    unsigned long long endOfEncoderSampleIndex;
+};
 
 struct MTLSamplerDescriptorPrivate {
     union {
@@ -357,10 +510,12 @@ struct MTLSamplerDescriptorPrivate {
             unsigned int tAddressMode:3;
             unsigned int rAddressMode:3;
             unsigned int normalizedCoords:1;
+            unsigned int borderColor:2;
             unsigned int lodAverage:1;
             unsigned int compareFunction:3;
             unsigned int supportArgumentBuffers:1;
             unsigned int forceResourceIndex:1;
+            unsigned int forceSeamsOnCubemapFiltering:1;
         } ;
         unsigned int miscHash;
     } ;
@@ -378,15 +533,23 @@ struct MTLSamplerDescriptorPrivate {
     } ;
     unsigned long long maxAnisotropy;
     NSString *label;
-    unsigned int resourceIndex;
+    unsigned long long resourceIndex;
+    unsigned int customBorderColorValue[4];
+    unsigned long long pixelFormat;
 };
 
 struct MTLSerializedDebugInstrumentationData {
     unsigned long long _field1;
-    struct Statistics _field2;
-    struct FlatArray<MTLSerializedDebugInstrumentationData::FlatArray<char>> _field3;
-    struct FlatArray<MTLBoundsCheck::DebugLocation> _field4;
-    struct FlatArray<MTLBoundsCheck::DebugSubProgram> _field5;
+    struct FlatArray<MTLSerializedDebugInstrumentationData::FlatArray<char>> _field2;
+    struct FlatArray<MTLBoundsCheck::DebugLocation> _field3;
+    struct FlatArray<MTLBoundsCheck::DebugSubProgram> _field4;
+    struct FlatArray<MTLBoundsCheck::ConstantDataHeader> _field5;
+    struct FlatArray<unsigned char> _field6;
+    struct FlatArray<unsigned char> _field7;
+    unsigned int _field8;
+    unsigned int _field9;
+    unsigned long long _field10;
+    union InstrumentationStatusFlags _field11;
 };
 
 struct MTLSharedEventHandlePrivate {
@@ -410,7 +573,7 @@ struct MTLSyncDispatch {
 };
 
 struct MTLTargetDeviceArch {
-    unsigned int _field1;
+    unsigned long long _field1;
     unsigned int _field2;
     char *_field3;
 };
@@ -439,7 +602,7 @@ struct MTLTextureDescriptorPrivate {
     unsigned long long sparseSurfaceDefaultValue;
     BOOL allowGPUOptimizedContents;
     BOOL forceResourceIndex;
-    unsigned int resourceIndex;
+    unsigned long long resourceIndex;
     unsigned long long protectionOptions;
     unsigned long long resolvedUsage;
     unsigned long long cpuCacheMode;
@@ -467,37 +630,52 @@ struct MTLTileRenderPipelineDescriptorPrivate {
     unsigned long long colorSampleCount;
     MTLPipelineBufferDescriptorArrayInternal *tileBuffers;
     unsigned short maxTotalThreadsPerThreadgroup;
+    long long textureWriteRoundingMode;
+    NSDictionary *pluginData;
+    NSArray *binaryArchives;
+};
+
+struct MTLVisibleFunctionTableDescriptorPrivate {
+    unsigned long long functionCount;
+    BOOL forceResourceIndex;
+    unsigned long long resourceIndex;
+};
+
+struct MultiLevelPipelineCache {
+    BOOL _field1;
+    id _field2;
+    id _field3;
+    struct MTLCompilerCache *_field4;
+    struct MTLCompilerCache *_field5;
+    struct MTLCompilerCache *_field6;
+    BOOL _field7;
+};
+
+struct PipelineCache<PipelineKey> {
+    struct unordered_map<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>, PipelineCache<PipelineKey>::Hasher, std::__1::equal_to<PipelineCache<PipelineKey>::HashKey>, std::__1::allocator<std::__1::pair<const PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>>> map;
+};
+
+struct PipelineKey {
+    unsigned int _field1;
+    unsigned int _field2;
+    unsigned int _field3;
+    unsigned int _field4;
+    BOOL _field5;
+    unsigned int _field6;
+    unsigned int _field7;
+    unsigned int _field8;
+    unsigned int _field9;
+    float _field10;
+    float _field11;
+    float _field12;
+    BOOL _field13;
+    BOOL _field14;
 };
 
 struct PipelineLibraryData {
     struct shared_ptr<MTLPipelineDescriptions> _field1;
     id _field2;
     id _field3;
-};
-
-struct Statistics {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned int _field4;
-    unsigned int _field5;
-    unsigned int _field6;
-    unsigned int _field7;
-    unsigned int _field8;
-    unsigned int _field9;
-    unsigned int _field10[5];
-    unsigned int _field11;
-    unsigned int _field12;
-    unsigned int _field13;
-    unsigned int _field14;
-    unsigned int _field15;
-    unsigned int _field16;
-    unsigned int _field17;
-    unsigned int _field18;
-    unsigned int _field19;
-    unsigned int _field20;
-    unsigned int _field21;
-    unsigned int _field22;
 };
 
 struct VariantEntry {
@@ -509,6 +687,16 @@ struct VariantEntry {
     id _field6;
     unsigned long long _field7;
     id _field8;
+};
+
+struct VariantKey {
+    void *_field1;
+    void *_field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    id _field5;
+    void *_field6;
+    unsigned long long _field7;
 };
 
 struct VariantList<4> {
@@ -529,16 +717,6 @@ struct _MTLResourceListPoolPrivate {
     int count;
 };
 
-struct _MTLUtilityBufferResourceTable {
-    unsigned long long _field1[6];
-    unsigned long long _field2[6];
-    struct map<unsigned long long, id<MTLBufferSPI>, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, id<MTLBufferSPI>>>> _field3;
-    struct map<unsigned long long, id<MTLSamplerStateSPI>, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, id<MTLSamplerStateSPI>>>> _field4;
-    struct map<unsigned long long, id<MTLTextureSPI>, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, id<MTLTextureSPI>>>> _field5;
-    struct map<unsigned long long, NSObject *, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, NSObject *>>> _field6;
-    struct map<unsigned long long, id<MTLIndirectCommandBufferSPI>, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, id<MTLIndirectCommandBufferSPI>>>> _field7;
-};
-
 struct _NSRange {
     unsigned long long _field1;
     unsigned long long _field2;
@@ -546,28 +724,28 @@ struct _NSRange {
 
 struct __CFString;
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>*> *_field1;
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, void *>*> *_field1;
 };
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, void *>*> *_field1;
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLoadedFile *, id>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLoadedFile *, id>, void *>*> *__next_;
 };
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*> *_field1;
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*> *__next_;
 };
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, void *>*> *_field1;
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*> *__next_;
 };
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, void *>*> *_field1;
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*> *_field1;
 };
 
-struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, void *>*> {
-    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, void *>*> *_field1;
+struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, void *>*> {
+    struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, void *>*> *_field1;
 };
 
 struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<unsigned long, _MTLIndirectArgumentBufferLayout *>, void *>*> {
@@ -582,8 +760,10 @@ struct __hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void
     struct __hash_node_base<std::__1::__hash_node<std::__1::basic_string<char>, void *>*> *_field1;
 };
 
+struct __shared_weak_count;
+
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
-    struct __tree_node_base<void *> *_field1;
+    struct __tree_node_base<void *> *__left_;
 };
 
 struct _opaque_pthread_mutex_t {
@@ -627,6 +807,42 @@ struct map<MTLLibraryIdentifier, MTLLibraryContainer *, std::__1::less<MTLLibrar
     } _field1;
 };
 
+struct map<MTLLibraryIdentifier, MTLPipelineLibrarySerializer::LibraryDescriptor *, std::__1::less<MTLLibraryIdentifier>, std::__1::allocator<std::__1::pair<const MTLLibraryIdentifier, MTLPipelineLibrarySerializer::LibraryDescriptor *>>> {
+    struct __tree<std::__1::__value_type<MTLLibraryIdentifier, MTLPipelineLibrarySerializer::LibraryDescriptor *>, std::__1::__map_value_compare<MTLLibraryIdentifier, std::__1::__value_type<MTLLibraryIdentifier, MTLPipelineLibrarySerializer::LibraryDescriptor *>, std::__1::less<MTLLibraryIdentifier>, true>, std::__1::allocator<std::__1::__value_type<MTLLibraryIdentifier, MTLPipelineLibrarySerializer::LibraryDescriptor *>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<MTLLibraryIdentifier, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<MTLLibraryIdentifier, std::__1::__value_type<MTLLibraryIdentifier, MTLPipelineLibrarySerializer::LibraryDescriptor *>, std::__1::less<MTLLibraryIdentifier>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+};
+
+struct map<MTLLibraryIdentifier, unsigned long, std::__1::less<MTLLibraryIdentifier>, std::__1::allocator<std::__1::pair<const MTLLibraryIdentifier, unsigned long>>> {
+    struct __tree<std::__1::__value_type<MTLLibraryIdentifier, unsigned long>, std::__1::__map_value_compare<MTLLibraryIdentifier, std::__1::__value_type<MTLLibraryIdentifier, unsigned long>, std::__1::less<MTLLibraryIdentifier>, true>, std::__1::allocator<std::__1::__value_type<MTLLibraryIdentifier, unsigned long>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<MTLLibraryIdentifier, unsigned long>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
+        } _field2;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<MTLLibraryIdentifier, std::__1::__value_type<MTLLibraryIdentifier, unsigned long>, std::__1::less<MTLLibraryIdentifier>, true>> {
+            unsigned long long _field1;
+        } _field3;
+    } _field1;
+};
+
+struct map<MTLUINT256_t, std::__1::pair<unsigned int, unsigned long long>, CompareHash, std::__1::allocator<std::__1::pair<const MTLUINT256_t, std::__1::pair<unsigned int, unsigned long long>>>> {
+    struct __tree<std::__1::__value_type<MTLUINT256_t, std::__1::pair<unsigned int, unsigned long long>>, std::__1::__map_value_compare<MTLUINT256_t, std::__1::__value_type<MTLUINT256_t, std::__1::pair<unsigned int, unsigned long long>>, CompareHash, true>, std::__1::allocator<std::__1::__value_type<MTLUINT256_t, std::__1::pair<unsigned int, unsigned long long>>>> {
+        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *__begin_node_;
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<MTLUINT256_t, std::__1::pair<unsigned int, unsigned long long>>, void *>>> {
+            struct __tree_end_node<std::__1::__tree_node_base<void *>*> __value_;
+        } __pair1_;
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<MTLUINT256_t, std::__1::__value_type<MTLUINT256_t, std::__1::pair<unsigned int, unsigned long long>>, CompareHash, true>> {
+            unsigned long long __value_;
+        } __pair3_;
+    } __tree_;
+};
+
 struct map<std::__1::basic_string<char>, MTLConstantStorage::ConstantData, std::__1::less<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLConstantStorage::ConstantData>>> {
     struct __tree<std::__1::__value_type<std::__1::basic_string<char>, MTLConstantStorage::ConstantData>, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, MTLConstantStorage::ConstantData>, std::__1::less<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__value_type<std::__1::basic_string<char>, MTLConstantStorage::ConstantData>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
@@ -634,66 +850,6 @@ struct map<std::__1::basic_string<char>, MTLConstantStorage::ConstantData, std::
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
         struct __compressed_pair<unsigned long, std::__1::__map_value_compare<std::__1::basic_string<char>, std::__1::__value_type<std::__1::basic_string<char>, MTLConstantStorage::ConstantData>, std::__1::less<std::__1::basic_string<char>>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<unsigned long long, NSObject *, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, NSObject *>>> {
-    struct __tree<std::__1::__value_type<unsigned long long, NSObject *>, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, NSObject *>, std::__1::less<unsigned long long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long long, NSObject *>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long long, NSObject *>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, NSObject *>, std::__1::less<unsigned long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<unsigned long long, id<MTLBufferSPI>, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, id<MTLBufferSPI>>>> {
-    struct __tree<std::__1::__value_type<unsigned long long, id<MTLBufferSPI>>, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, id<MTLBufferSPI>>, std::__1::less<unsigned long long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long long, id<MTLBufferSPI>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long long, id<MTLBufferSPI>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, id<MTLBufferSPI>>, std::__1::less<unsigned long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<unsigned long long, id<MTLIndirectCommandBufferSPI>, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, id<MTLIndirectCommandBufferSPI>>>> {
-    struct __tree<std::__1::__value_type<unsigned long long, id<MTLIndirectCommandBufferSPI>>, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, id<MTLIndirectCommandBufferSPI>>, std::__1::less<unsigned long long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long long, id<MTLIndirectCommandBufferSPI>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long long, id<MTLIndirectCommandBufferSPI>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, id<MTLIndirectCommandBufferSPI>>, std::__1::less<unsigned long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<unsigned long long, id<MTLSamplerStateSPI>, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, id<MTLSamplerStateSPI>>>> {
-    struct __tree<std::__1::__value_type<unsigned long long, id<MTLSamplerStateSPI>>, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, id<MTLSamplerStateSPI>>, std::__1::less<unsigned long long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long long, id<MTLSamplerStateSPI>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long long, id<MTLSamplerStateSPI>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, id<MTLSamplerStateSPI>>, std::__1::less<unsigned long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<unsigned long long, id<MTLTextureSPI>, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, id<MTLTextureSPI>>>> {
-    struct __tree<std::__1::__value_type<unsigned long long, id<MTLTextureSPI>>, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, id<MTLTextureSPI>>, std::__1::less<unsigned long long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long long, id<MTLTextureSPI>>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long long, id<MTLTextureSPI>>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, id<MTLTextureSPI>>, std::__1::less<unsigned long long>, true>> {
             unsigned long long _field1;
         } _field3;
     } _field1;
@@ -711,13 +867,24 @@ struct map<unsigned short, MTLConstantStorage::ConstantData, std::__1::less<unsi
     } _field1;
 };
 
+struct once_flag {
+    unsigned long long __state_;
+};
+
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
+struct pair<FunctionHashFactory::HashType, MTLBinaryKey *>;
+
 struct resourceListQueue {
     MTLResourceList *tqh_first;
     id *tqh_last;
+};
+
+struct shared_ptr<MTLCompilerCache> {
+    struct MTLCompilerCache *__ptr_;
+    struct __shared_weak_count *__cntrl_;
 };
 
 struct shared_ptr<MTLPipelineDescriptions> {
@@ -725,66 +892,72 @@ struct shared_ptr<MTLPipelineDescriptions> {
     struct __shared_weak_count *_field2;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>*>*>> {
+struct unique_ptr<MTLPipelineCollection, std::__1::default_delete<MTLPipelineCollection>> {
+    struct __compressed_pair<MTLPipelineCollection *, std::__1::default_delete<MTLPipelineCollection>> {
+        struct MTLPipelineCollection *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, void *>*> **_field1;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, void *>*>*>> {
                 unsigned long long _field1;
             } _field1;
         } _field2;
     } _field1;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, void *>*>*>> {
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLoadedFile *, id>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLoadedFile *, id>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLoadedFile *, id>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLoadedFile *, id>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLoadedFile *, id>, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLoadedFile *, id>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLoadedFile *, id>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*> **__value_;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>*>> {
+                unsigned long long __value_;
+            } __data_;
+        } __value_;
+    } __ptr_;
+};
+
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*> **_field1;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>*>> {
                 unsigned long long _field1;
             } _field1;
         } _field2;
     } _field1;
 };
 
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, void *>*>*>> {
-                unsigned long long _field1;
-            } _field1;
-        } _field2;
-    } _field1;
-};
-
-struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, void *>*>*>>> {
-    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, void *>*>*>>> {
-        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, void *>*> **_field1;
-        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, void *>*>*>> {
-            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, void *>*>*>> {
+struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, void *>*>*>>> {
+    struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, void *>*>*>>> {
+        struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, void *>*> **_field1;
+        struct __bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, void *>*>*>> {
+            struct __compressed_pair<unsigned long, std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, void *>*>*>> {
                 unsigned long long _field1;
             } _field1;
         } _field2;
@@ -824,91 +997,91 @@ struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::bas
     } _field1;
 };
 
-struct unordered_map<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *, std::__1::hash<MTLLibraryContainer *>, std::__1::equal_to<MTLLibraryContainer *>, std::__1::allocator<std::__1::pair<MTLLibraryContainer *const, MTLPipelineLibrarySerializer::LibraryDescriptor *>>> {
-    struct __hash_table<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, std::__1::__unordered_map_hasher<MTLLibraryContainer *, std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, std::__1::hash<MTLLibraryContainer *>, true>, std::__1::__unordered_map_equal<MTLLibraryContainer *, std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, std::__1::equal_to<MTLLibraryContainer *>, true>, std::__1::allocator<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, void *>*> _field1;
+struct unordered_map<FileIdentifier, MTLLoadedFile *, FileIdentifier::Hash, std::__1::equal_to<FileIdentifier>, std::__1::allocator<std::__1::pair<const FileIdentifier, MTLLoadedFile *>>> {
+    struct __hash_table<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, std::__1::__unordered_map_hasher<FileIdentifier, std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, FileIdentifier::Hash, true>, std::__1::__unordered_map_equal<FileIdentifier, std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, std::__1::equal_to<FileIdentifier>, true>, std::__1::allocator<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, void *>*>*>>> _field1;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, void *>*> _field1;
         } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<MTLLibraryContainer *, std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, std::__1::hash<MTLLibraryContainer *>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<FileIdentifier, std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, FileIdentifier::Hash, true>> {
             unsigned long long _field1;
         } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<MTLLibraryContainer *, std::__1::__hash_value_type<MTLLibraryContainer *, MTLPipelineLibrarySerializer::LibraryDescriptor *>, std::__1::equal_to<MTLLibraryContainer *>, true>> {
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<FileIdentifier, std::__1::__hash_value_type<FileIdentifier, MTLLoadedFile *>, std::__1::equal_to<FileIdentifier>, true>> {
             float _field1;
         } _field4;
     } _field1;
 };
 
-struct unordered_map<MTLLibraryContainer *, unsigned long, std::__1::hash<MTLLibraryContainer *>, std::__1::equal_to<MTLLibraryContainer *>, std::__1::allocator<std::__1::pair<MTLLibraryContainer *const, unsigned long>>> {
-    struct __hash_table<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, std::__1::__unordered_map_hasher<MTLLibraryContainer *, std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, std::__1::hash<MTLLibraryContainer *>, true>, std::__1::__unordered_map_equal<MTLLibraryContainer *, std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, std::__1::equal_to<MTLLibraryContainer *>, true>, std::__1::allocator<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, void *>*> _field1;
+struct unordered_map<MTLLoadedFile *, id, std::__1::hash<MTLLoadedFile *>, std::__1::equal_to<MTLLoadedFile *>, std::__1::allocator<std::__1::pair<MTLLoadedFile *const, id>>> {
+    struct __hash_table<std::__1::__hash_value_type<MTLLoadedFile *, id>, std::__1::__unordered_map_hasher<MTLLoadedFile *, std::__1::__hash_value_type<MTLLoadedFile *, id>, std::__1::hash<MTLLoadedFile *>, true>, std::__1::__unordered_map_equal<MTLLoadedFile *, std::__1::__hash_value_type<MTLLoadedFile *, id>, std::__1::equal_to<MTLLoadedFile *>, true>, std::__1::allocator<std::__1::__hash_value_type<MTLLoadedFile *, id>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLoadedFile *, id>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLoadedFile *, id>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLoadedFile *, id>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<MTLLoadedFile *, id>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLLoadedFile *, id>, void *>*> __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<MTLLoadedFile *, std::__1::__hash_value_type<MTLLoadedFile *, id>, std::__1::hash<MTLLoadedFile *>, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<MTLLoadedFile *, std::__1::__hash_value_type<MTLLoadedFile *, id>, std::__1::equal_to<MTLLoadedFile *>, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct unordered_map<MTLUINT256_t, MTLProgramObject *, UnorderedContainerHash, UnorderedContainerHash, std::__1::allocator<std::__1::pair<const MTLUINT256_t, MTLProgramObject *>>> {
+    struct __hash_table<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, std::__1::__unordered_map_hasher<MTLUINT256_t, std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, UnorderedContainerHash, true>, std::__1::__unordered_map_equal<MTLUINT256_t, std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, UnorderedContainerHash, true>, std::__1::allocator<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, void *>*> __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<MTLUINT256_t, std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, UnorderedContainerHash, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<MTLUINT256_t, std::__1::__hash_value_type<MTLUINT256_t, MTLProgramObject *>, UnorderedContainerHash, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct unordered_map<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>, PipelineCache<PipelineKey>::Hasher, std::__1::equal_to<PipelineCache<PipelineKey>::HashKey>, std::__1::allocator<std::__1::pair<const PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>>> {
+    struct __hash_table<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, std::__1::__unordered_map_hasher<PipelineCache<PipelineKey>::HashKey, std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, PipelineCache<PipelineKey>::Hasher, true>, std::__1::__unordered_map_equal<PipelineCache<PipelineKey>::HashKey, std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, std::__1::equal_to<PipelineCache<PipelineKey>::HashKey>, true>, std::__1::allocator<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>*>>> __bucket_list_;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, void *>*> __value_;
+        } __p1_;
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<PipelineCache<PipelineKey>::HashKey, std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, PipelineCache<PipelineKey>::Hasher, true>> {
+            unsigned long long __value_;
+        } __p2_;
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<PipelineCache<PipelineKey>::HashKey, std::__1::__hash_value_type<PipelineCache<PipelineKey>::HashKey, id<MTLComputePipelineState>>, std::__1::equal_to<PipelineCache<PipelineKey>::HashKey>, true>> {
+            float __value_;
+        } __p3_;
+    } __table_;
+};
+
+struct unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>>> {
+    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>*>>> _field1;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*> _field1;
         } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<MTLLibraryContainer *, std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, std::__1::hash<MTLLibraryContainer *>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, std::__1::hash<std::__1::basic_string<char>>, true>> {
             unsigned long long _field1;
         } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<MTLLibraryContainer *, std::__1::__hash_value_type<MTLLibraryContainer *, unsigned long>, std::__1::equal_to<MTLLibraryContainer *>, true>> {
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::FunctionDescriptor *>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
             float _field1;
         } _field4;
     } _field1;
 };
 
-struct unordered_map<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *, std::__1::hash<_MTLFunction *>, std::__1::equal_to<_MTLFunction *>, std::__1::allocator<std::__1::pair<_MTLFunction *const, MTLPipelineLibrarySerializer::FunctionDescriptor *>>> {
-    struct __hash_table<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, std::__1::__unordered_map_hasher<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, std::__1::hash<_MTLFunction *>, true>, std::__1::__unordered_map_equal<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, std::__1::equal_to<_MTLFunction *>, true>, std::__1::allocator<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, void *>*> _field1;
+struct unordered_map<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>>> {
+    struct __hash_table<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, std::__1::hash<std::__1::basic_string<char>>, true>, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, std::__1::equal_to<std::__1::basic_string<char>>, true>, std::__1::allocator<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>>> {
+        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, void *>*>*>>> _field1;
+        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, void *>>> {
+            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, void *>*> _field1;
         } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, std::__1::hash<_MTLFunction *>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, std::__1::hash<std::__1::basic_string<char>>, true>> {
             unsigned long long _field1;
         } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::FunctionDescriptor *>, std::__1::equal_to<_MTLFunction *>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct unordered_map<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<_MTLFunction *>, std::__1::equal_to<_MTLFunction *>, std::__1::allocator<std::__1::pair<_MTLFunction *const, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>> {
-    struct __hash_table<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, std::__1::__unordered_map_hasher<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, std::__1::hash<_MTLFunction *>, true>, std::__1::__unordered_map_equal<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, std::__1::equal_to<_MTLFunction *>, true>, std::__1::allocator<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, std::__1::hash<_MTLFunction *>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>, std::__1::equal_to<_MTLFunction *>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct unordered_map<_MTLFunction *, _MTLFunction *, std::__1::hash<_MTLFunction *>, std::__1::equal_to<_MTLFunction *>, std::__1::allocator<std::__1::pair<_MTLFunction *const, _MTLFunction *>>> {
-    struct __hash_table<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, std::__1::__unordered_map_hasher<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, std::__1::hash<_MTLFunction *>, true>, std::__1::__unordered_map_equal<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, std::__1::equal_to<_MTLFunction *>, true>, std::__1::allocator<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, std::__1::hash<_MTLFunction *>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, _MTLFunction *>, std::__1::equal_to<_MTLFunction *>, true>> {
-            float _field1;
-        } _field4;
-    } _field1;
-};
-
-struct unordered_map<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>, std::__1::hash<_MTLFunction *>, std::__1::equal_to<_MTLFunction *>, std::__1::allocator<std::__1::pair<_MTLFunction *const, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>>> {
-    struct __hash_table<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, std::__1::__unordered_map_hasher<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, std::__1::hash<_MTLFunction *>, true>, std::__1::__unordered_map_equal<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, std::__1::equal_to<_MTLFunction *>, true>, std::__1::allocator<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>>> {
-        struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, void *>*>*>>> _field1;
-        struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, void *>*>, std::__1::allocator<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, void *>>> {
-            struct __hash_node_base<std::__1::__hash_node<std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__unordered_map_hasher<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, std::__1::hash<_MTLFunction *>, true>> {
-            unsigned long long _field1;
-        } _field3;
-        struct __compressed_pair<float, std::__1::__unordered_map_equal<_MTLFunction *, std::__1::__hash_value_type<_MTLFunction *, std::__1::unordered_map<std::__1::basic_string<char>, _MTLFunction *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, _MTLFunction *>>>>, std::__1::equal_to<_MTLFunction *>, true>> {
+        struct __compressed_pair<float, std::__1::__unordered_map_equal<std::__1::basic_string<char>, std::__1::__hash_value_type<std::__1::basic_string<char>, std::__1::unordered_map<std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *, std::__1::hash<std::__1::basic_string<char>>, std::__1::equal_to<std::__1::basic_string<char>>, std::__1::allocator<std::__1::pair<const std::__1::basic_string<char>, MTLPipelineLibrarySerializer::MTLSpecializedFunctionDescriptor *>>>>, std::__1::equal_to<std::__1::basic_string<char>>, true>> {
             float _field1;
         } _field4;
     } _field1;
@@ -999,6 +1172,14 @@ struct vector<const __CFString *, std::__1::allocator<const __CFString *>> {
     } __end_cap_;
 };
 
+struct vector<std::__1::pair<FunctionHashFactory::HashType, MTLBinaryKey *>, std::__1::allocator<std::__1::pair<FunctionHashFactory::HashType, MTLBinaryKey *>>> {
+    struct pair<FunctionHashFactory::HashType, MTLBinaryKey *> *_field1;
+    struct pair<FunctionHashFactory::HashType, MTLBinaryKey *> *_field2;
+    struct __compressed_pair<std::__1::pair<FunctionHashFactory::HashType, MTLBinaryKey *>*, std::__1::allocator<std::__1::pair<FunctionHashFactory::HashType, MTLBinaryKey *>>> {
+        struct pair<FunctionHashFactory::HashType, MTLBinaryKey *> *_field1;
+    } _field3;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -1009,6 +1190,18 @@ typedef struct {
 } CDStruct_14783bb7;
 
 typedef struct {
+    BOOL _field1;
+    BOOL _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+    BOOL _field5;
+    unsigned long long _field6;
+    unsigned long long _field7;
+    unsigned long long _field8;
+    unsigned long long _field9;
+} CDStruct_8c76fc6d;
+
+typedef struct {
     unsigned char _field1;
     unsigned char _field2;
     unsigned char _field3;
@@ -1016,6 +1209,14 @@ typedef struct {
 } CDStruct_a06f635e;
 
 typedef struct {
+    unsigned int maxFramebufferStorageBits;
+    unsigned int linearTextureArrayAlignmentBytes;
+    unsigned int linearTextureArrayAlignmentSlice;
+    unsigned int maxTileBuffers;
+    unsigned int maxTileTextures;
+    unsigned int maxTileSamplers;
+    unsigned int maxTileInlineDataSize;
+    unsigned int minTilePixels;
     unsigned int maxColorAttachments;
     unsigned int maxVertexAttributes;
     unsigned int maxVertexBuffers;
@@ -1061,22 +1262,16 @@ typedef struct {
     unsigned int maxIndirectTextures;
     unsigned int maxIndirectSamplers;
     unsigned int maxIndirectSamplersPerDevice;
+    unsigned int maxFenceInstances;
     unsigned int maxViewportCount;
     unsigned int maxCustomSamplePositions;
     unsigned int maxVertexAmplificationFactor;
     unsigned int maxVertexAmplificationCount;
     unsigned int maxTextureBufferWidth;
     unsigned int maxComputeAttributes;
-    unsigned int maxFramebufferStorageBits;
-    unsigned int linearTextureArrayAlignmentBytes;
-    unsigned int linearTextureArrayAlignmentSlice;
-    unsigned int maxTileBuffers;
-    unsigned int maxTileTextures;
-    unsigned int maxTileSamplers;
-    unsigned int maxTileInlineDataSize;
-    unsigned int minTilePixels;
+    unsigned int maxConstantBufferArguments;
     unsigned long long maxBufferLength;
-} CDStruct_886a8514;
+} CDStruct_19ca2cda;
 
 typedef struct {
     unsigned int _field1;
@@ -1088,6 +1283,13 @@ typedef struct {
     unsigned int _field1;
     unsigned int _field2;
 } CDStruct_c0454aff;
+
+typedef struct {
+    unsigned long long _field1;
+    unsigned long long _field2;
+    unsigned long long _field3;
+    unsigned long long _field4;
+} CDStruct_33dcf794;
 
 typedef struct {
     unsigned long long width;
@@ -1138,6 +1340,15 @@ typedef struct {
 } CDStruct_4af8c268;
 
 typedef struct {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+} CDStruct_8727d297;
+
+typedef struct {
     double red;
     double green;
     double blue;
@@ -1160,7 +1371,32 @@ typedef struct {
     CDStruct_da2e99ad _field2;
 } CDStruct_caaed6bc;
 
+// Template types
+typedef struct vector<std::__1::pair<FunctionHashFactory::HashType, MTLBinaryKey *>, std::__1::allocator<std::__1::pair<FunctionHashFactory::HashType, MTLBinaryKey *>>> {
+    struct pair<FunctionHashFactory::HashType, MTLBinaryKey *> *_field1;
+    struct pair<FunctionHashFactory::HashType, MTLBinaryKey *> *_field2;
+    struct __compressed_pair<std::__1::pair<FunctionHashFactory::HashType, MTLBinaryKey *>*, std::__1::allocator<std::__1::pair<FunctionHashFactory::HashType, MTLBinaryKey *>>> {
+        struct pair<FunctionHashFactory::HashType, MTLBinaryKey *> *_field1;
+    } _field3;
+} vector_78402f50;
+
+#pragma mark Named Unions
+
+union InstrumentationStatusFlags {
+    struct {
+        unsigned int :1;
+        unsigned int :1;
+        unsigned int :1;
+    } _field1;
+    unsigned short _field2;
+};
+
 #pragma mark Typedef'd Unions
+
+typedef union {
+    CDStruct_4af8c268 _field1;
+    CDStruct_4af8c268 _field2;
+} CDUnion_c6e49ed4;
 
 // Ambiguous groups
 typedef union {

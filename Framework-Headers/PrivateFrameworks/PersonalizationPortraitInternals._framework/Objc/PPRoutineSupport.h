@@ -10,6 +10,8 @@
 {
 }
 
++ (id)_generateLocationNameLookupTable;
++ (id)_scoredNamedEntitiesForAddress:(id)arg1 placemark:(id)arg2 locationLookupTable:(id)arg3;
 + (id)fetchLocationOfInterestByType:(long long)arg1;
 + (void)importCoreRoutineDataWithCompletion:(CDUnknownBlockType)arg1;
 + (id)locationsOfInterestVisitedBetweenStartDate:(id)arg1 endDate:(id)arg2;

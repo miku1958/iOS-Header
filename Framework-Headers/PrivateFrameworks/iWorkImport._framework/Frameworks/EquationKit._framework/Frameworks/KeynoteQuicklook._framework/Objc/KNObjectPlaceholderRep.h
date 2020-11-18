@@ -10,9 +10,5 @@
 {
 }
 
-- (BOOL)canBeginEditingChildRepOnDoubleTap:(id)arg1;
-- (BOOL)handleDoubleTapAtPoint:(struct CGPoint)arg1;
-- (BOOL)shouldBeginEditingOnSingleClick;
-
 @end
 

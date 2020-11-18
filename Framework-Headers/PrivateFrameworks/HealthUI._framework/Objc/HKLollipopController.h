@@ -11,6 +11,7 @@
 
 @interface HKLollipopController : NSObject
 {
+    BOOL _centerLollipopVertically;
     HKInteractiveChartAnnotationView *_annotationView;
     id<HKLollipopDelegate> _delegate;
     UIView *_parentView;
@@ -21,6 +22,7 @@
 }
 
 @property (readonly, nonatomic) HKInteractiveChartAnnotationView *annotationView; // @synthesize annotationView=_annotationView;
+@property (nonatomic) BOOL centerLollipopVertically; // @synthesize centerLollipopVertically=_centerLollipopVertically;
 @property (readonly, weak, nonatomic) id<HKLollipopDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSMutableArray *extensionViews; // @synthesize extensionViews=_extensionViews;
 @property (strong, nonatomic) UIView *fieldView; // @synthesize fieldView=_fieldView;

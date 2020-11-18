@@ -6,18 +6,23 @@
 
 #import <Foundation/NSDictionary.h>
 
+#import <MediaPlaybackCore/MPCPlaybackEngineEventPayloadJSONValue-Protocol.h>
 #import <MediaPlaybackCore/_MPCSupportedCommands-Protocol.h>
 
 @class NSString;
 
-@interface NSDictionary (MPCMediaRemoteController) <_MPCSupportedCommands>
+@interface NSDictionary (MPCMediaRemoteController) <_MPCSupportedCommands, MPCPlaybackEngineEventPayloadJSONValue>
 
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 - (id)_allCommandInfos;
-- (struct _MRMediaRemoteCommandInfo *)commandInfoForCommand:(unsigned int)arg1;
+- (void *)commandInfoForCommand:(unsigned int)arg1;
 @end
 

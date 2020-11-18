@@ -18,5 +18,8 @@
     MISSING_TYPE *onDidHideBlock;
 }
 
+- (void)keyboardWillHideWithNotification:(id)arg1;
+- (void)keyboardWillShowWithNotification:(id)arg1;
+
 @end
 

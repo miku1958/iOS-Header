@@ -9,7 +9,7 @@
 #import <GeoServices/GEOServerFormatToken-Protocol.h>
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOCountdownData, GEOPBTransitArtwork, GEOPrice, NSArray, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOCountdownData, GEOMeasurementData, GEONumberData, GEOPBTransitArtwork, GEOPrice, NSArray, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 @protocol GEOServerFormatTokenCountdownValue, GEOServerFormatTokenPriceValue, GEOTransitArtworkDataSource;
 
 @interface GEOFormatArgument : PBCodable <GEOServerFormatToken, NSCopying>
@@ -19,6 +19,8 @@
     CDStruct_9f2792e4 _valInt3s;
     GEOPBTransitArtwork *_artwork;
     GEOCountdownData *_countdownData;
+    GEOMeasurementData *_measurementData;
+    GEONumberData *_numberData;
     GEOPrice *_price;
     NSMutableArray *_timestampDatas;
     NSString *_token;
@@ -37,21 +39,13 @@
         unsigned int read_valInt3s:1;
         unsigned int read_artwork:1;
         unsigned int read_countdownData:1;
+        unsigned int read_measurementData:1;
+        unsigned int read_numberData:1;
         unsigned int read_price:1;
         unsigned int read_timestampDatas:1;
         unsigned int read_token:1;
         unsigned int read_valString:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_valInt3s:1;
-        unsigned int wrote_artwork:1;
-        unsigned int wrote_countdownData:1;
-        unsigned int wrote_price:1;
-        unsigned int wrote_timestampDatas:1;
-        unsigned int wrote_token:1;
-        unsigned int wrote_valString:1;
-        unsigned int wrote_format:1;
-        unsigned int wrote_valInt1:1;
-        unsigned int wrote_valInt2:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -65,14 +59,20 @@
 @property (readonly, nonatomic) BOOL hasArtwork;
 @property (readonly, nonatomic) BOOL hasCountdownData;
 @property (nonatomic) BOOL hasFormat;
+@property (readonly, nonatomic) BOOL hasMeasurementData;
+@property (readonly, nonatomic) BOOL hasNumberData;
 @property (readonly, nonatomic) BOOL hasPrice;
 @property (readonly, nonatomic) BOOL hasToken;
 @property (nonatomic) BOOL hasValInt1;
 @property (nonatomic) BOOL hasValInt2;
 @property (readonly, nonatomic) BOOL hasValString;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) GEOMeasurementData *measurementData;
+@property (strong, nonatomic) GEONumberData *numberData;
+@property (readonly, nonatomic) float percentageValue;
 @property (strong, nonatomic) GEOPrice *price;
 @property (readonly, nonatomic) id<GEOServerFormatTokenPriceValue> priceValue;
+@property (readonly, nonatomic) BOOL shouldScaleUnits;
 @property (readonly, nonatomic) NSString *stringValue;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *timeStampValues;
@@ -94,15 +94,6 @@
 + (Class)timestampDataType;
 - (void).cxx_destruct;
 - (int)StringAsFormat:(id)arg1;
-- (void)_addNoFlagsTimestampData:(id)arg1;
-- (void)_addNoFlagsValInt3:(unsigned int)arg1;
-- (void)_readArtwork;
-- (void)_readCountdownData;
-- (void)_readPrice;
-- (void)_readTimestampDatas;
-- (void)_readToken;
-- (void)_readValInt3s;
-- (void)_readValString;
 - (void)addTimestampData:(id)arg1;
 - (void)addValInt3:(unsigned int)arg1;
 - (void)clearTimestampDatas;
@@ -115,7 +106,10 @@
 - (id)formatAsString:(int)arg1;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

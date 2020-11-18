@@ -7,8 +7,5 @@
 #import <CoreSuggestionsInternals/NSObject-Protocol.h>
 
 @protocol SGJournalBaseObserver <NSObject>
-
-@optional
-- (void)storeClosing;
 @end
 

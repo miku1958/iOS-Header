@@ -72,7 +72,6 @@
 - (void)loadView;
 - (void)loadWorkflowIfNeeded;
 - (id)localizedStopSharingString;
-- (void)logEvent:(id)arg1 withObjects:(id)arg2;
 - (BOOL)presentationControllerShouldDismiss:(id)arg1;
 - (void)shortcutViewController:(id)arg1 didFinishWithName:(id)arg2;
 - (void)shortcutViewControllerDidCancel:(id)arg1;

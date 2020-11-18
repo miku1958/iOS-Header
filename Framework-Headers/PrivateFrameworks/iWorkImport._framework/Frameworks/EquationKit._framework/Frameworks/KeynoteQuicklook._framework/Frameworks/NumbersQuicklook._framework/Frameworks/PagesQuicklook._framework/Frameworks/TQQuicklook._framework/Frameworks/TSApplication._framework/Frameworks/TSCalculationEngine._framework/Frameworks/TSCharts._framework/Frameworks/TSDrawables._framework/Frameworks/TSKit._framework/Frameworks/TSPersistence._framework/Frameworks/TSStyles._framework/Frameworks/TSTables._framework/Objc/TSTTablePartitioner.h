@@ -25,15 +25,15 @@
 
 @property (copy, nonatomic) TSDInfoGeometry *infoGeometry; // @synthesize infoGeometry=mInfoGeometry;
 @property (readonly, nonatomic) double inlineTableWidth; // @synthesize inlineTableWidth=mFirstPartitionWidth;
-@property (nonatomic) BOOL isPrintingCanvas;
 @property (readonly, nonatomic) BOOL scaleIsValid;
 @property (nonatomic) struct CGSize scaleToFit; // @synthesize scaleToFit=mScaleToFit;
 @property (readonly, nonatomic) TSTLayout *scaledLayout;
-@property (nonatomic) BOOL shouldSuppressBackgrounds;
 @property (readonly, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=mTableInfo;
+@property (readonly, nonatomic) struct CGRect totalPartitionFrame;
 
+- (struct TSUCellRect)calculateCellRangeForNextPartition:(unsigned short)arg1 nextPartitionRange:(struct TSUCellRect)arg2 additionalHeightForCaption:(double)arg3 availableSizeRemaining:(struct CGSize)arg4 previousHint:(id)arg5;
 - (void)dealloc;
-- (BOOL)didHint:(id)arg1 syncWithNextHint:(id)arg2 horizontally:(BOOL)arg3 delta:(int)arg4;
+- (BOOL)didHint:(id)arg1 syncWithNextHint:(id)arg2 horizontally:(BOOL)arg3;
 - (id)hintCacheKeyForHint:(id)arg1;
 - (id)hintCacheKeyForPartitioningPass:(id)arg1 andHintID:(struct TSUCellCoord)arg2;
 - (id)hintForLayout:(id)arg1;

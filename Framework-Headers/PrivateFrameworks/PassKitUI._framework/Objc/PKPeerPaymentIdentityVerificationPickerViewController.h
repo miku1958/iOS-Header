@@ -29,7 +29,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPaymentSetupViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *headerSubtitle; // @synthesize headerSubtitle=_headerSubtitle;

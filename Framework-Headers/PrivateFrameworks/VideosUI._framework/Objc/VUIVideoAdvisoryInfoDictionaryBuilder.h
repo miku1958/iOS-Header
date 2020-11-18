@@ -11,7 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)raitingInfoDictioanryWithRatingImage:(id)arg1 andMediaItem:(id)arg2;
++ (id)advisoryInfoDictionaryWithRatingImage:(id)arg1 andMediaItem:(id)arg2;
 
 @end
 

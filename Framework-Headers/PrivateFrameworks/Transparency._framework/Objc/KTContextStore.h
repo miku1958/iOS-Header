@@ -26,6 +26,9 @@
 - (void)contextForApplication:(id)arg1 logClient:(id)arg2 fetchState:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)createContextForApplication:(id)arg1 dataStore:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)createContextForTLT:(id)arg1 logClient:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)failHeadDownload:(id)arg1 application:(id)arg2 failure:(id)arg3 retry:(BOOL)arg4 logClient:(id)arg5;
+- (void)failRequestDownload:(id)arg1 application:(id)arg2 failure:(id)arg3 retry:(BOOL)arg4 logClient:(id)arg5;
+- (void)failSMTInclusionDownload:(id)arg1 application:(id)arg2 failure:(id)arg3 retry:(BOOL)arg4 logClient:(id)arg5;
 - (void)forcedConfigure:(BOOL)arg1 logClient:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)initWithDataStore:(id)arg1 keyStore:(id)arg2;
 - (BOOL)logSharedMetrics;
@@ -34,10 +37,14 @@
 - (void)runDutyCycleProcessingStepForActivity:(id)arg1 context:(id)arg2 logClient:(id)arg3;
 - (id)serializeTranscripts;
 - (void)storeContext:(id)arg1 application:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)updateRequest:(id)arg1 serverDatas:(id)arg2 syncedDatas:(id)arg3 queryRequest:(id)arg4 queryResponse:(id)arg5 error:(id *)arg6;
+- (void)updateRequest:(id)arg1 serverDatas:(id)arg2 syncedDatas:(id)arg3 queryRequest:(id)arg4 queryResponse:(id)arg5 logClient:(id)arg6 error:(id *)arg7;
 - (void)validateEnrollment:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)validatePeer:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)validateSelf:(id)arg1 application:(id)arg2 logClient:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)verifyHeadConsistencyDownload:(id)arg1 application:(id)arg2 logClient:(id)arg3;
+- (void)verifyHeadInclusionDownload:(id)arg1 application:(id)arg2 logClient:(id)arg3;
+- (void)verifyRequestDownload:(id)arg1 application:(id)arg2 logClient:(id)arg3;
+- (void)verifySMTInclusionDownload:(id)arg1 application:(id)arg2 logClient:(id)arg3;
 - (void)verifyTLTConsistencyAndGarbageCollectSTHs:(id)arg1;
 
 @end

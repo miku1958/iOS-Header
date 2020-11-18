@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <WorkflowUI/WFBackgroundFadingButton.h>
+#import <WorkflowEditor/WFBackgroundFadingButton.h>
 
 @interface WFMultilineBackgroundFadingButton : WFBackgroundFadingButton
 {

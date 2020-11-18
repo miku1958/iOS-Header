@@ -8,14 +8,15 @@
 
 #import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
-@class MPAVRoute, NSString, UIImage;
+@class MPAVRoute, NSArray, NSString, UIImage;
 
 @interface MPAVRoutingViewItem : NSObject <_MPStateDumpPropertyListTransformable>
 {
     BOOL _enabled;
     NSString *_localizedTitle;
     long long _type;
-    MPAVRoute *_route;
+    NSArray *_routes;
+    MPAVRoute *_leader;
     NSString *_localizedSubtitle;
     UIImage *_image;
     NSString *_actionIdentifier;
@@ -27,13 +28,16 @@
 @property (readonly, nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (readonly, nonatomic) MPAVRoute *leader; // @synthesize leader=_leader;
 @property (readonly, copy, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property (readonly, copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
-@property (readonly, nonatomic) MPAVRoute *route; // @synthesize route=_route;
+@property (readonly, nonatomic) MPAVRoute *mainRoute;
+@property (readonly, nonatomic) NSArray *routes; // @synthesize routes=_routes;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (id)itemWithActionTitle:(id)arg1 subtitle:(id)arg2 enabled:(BOOL)arg3 identifier:(id)arg4 image:(id)arg5;
++ (id)itemWithLeader:(id)arg1 members:(id)arg2;
 + (id)itemWithRoute:(id)arg1;
 - (void).cxx_destruct;
 - (id)_stateDumpObject;

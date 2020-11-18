@@ -6,11 +6,12 @@
 
 #import <Widgets/NSObject-Protocol.h>
 
-@class WGWidgetListFooterView;
+@class MTMaterialView, WGWidgetListFooterView;
 
 @protocol WGWidgetListFooterViewDelegate <NSObject>
 
 @optional
+- (MTMaterialView *)editingMaterialViewForWidgetListFooterView:(WGWidgetListFooterView *)arg1;
 - (void)widgetListFooterViewAvailableNewWidgetsUpdated:(WGWidgetListFooterView *)arg1;
 @end
 

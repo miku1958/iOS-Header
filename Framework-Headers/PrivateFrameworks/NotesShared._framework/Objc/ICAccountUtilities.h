@@ -6,34 +6,45 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, ACAccountStore, NSDictionary;
+#import <NotesShared/ICStateHandlerProvider-Protocol.h>
 
-@interface ICAccountUtilities : NSObject
+@class ACAccount, ACAccountStore, NSDictionary, NSMutableDictionary, NSString;
+
+@interface ICAccountUtilities : NSObject <ICStateHandlerProvider>
 {
     BOOL _primaryICloudACAccountValid;
     ACAccount *_primaryICloudACAccount;
     ACAccountStore *_accountStore;
     NSDictionary *_currentICloudAccountState;
+    NSMutableDictionary *_accountIsManagedByIdentifier;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *accountIsManagedByIdentifier; // @synthesize accountIsManagedByIdentifier=_accountIsManagedByIdentifier;
 @property (strong, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (copy, nonatomic) NSDictionary *currentICloudAccountState; // @synthesize currentICloudAccountState=_currentICloudAccountState;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL didChooseToMigratePrimaryICloudAccount;
+@property (readonly) unsigned long long hash;
 @property (readonly) ACAccount *primaryICloudACAccount; // @synthesize primaryICloudACAccount=_primaryICloudACAccount;
 @property (nonatomic, getter=isPrimaryICloudACAccountValid) BOOL primaryICloudACAccountValid; // @synthesize primaryICloudACAccountValid=_primaryICloudACAccountValid;
 @property (readonly, nonatomic) BOOL primaryICloudAccountEnabled;
+@property (readonly) Class superclass;
 
++ (void)registerStateHandler;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)accountStoreDidChange:(id)arg1;
 - (id)allICloudACAccounts;
 - (id)applicationDocumentsURLForAccountIdentifier:(id)arg1;
+- (void)createDirectoryIfNecessaryUsingURL:(id)arg1;
 - (void)dealloc;
 - (id)iCloudACAccountWithIdentifier:(id)arg1;
 - (id)init;
 - (id)initForObservingAccountStoreChanges:(BOOL)arg1;
 - (void)internalInvalidatePrimaryICloudACAccount;
 - (void)invalidatePrimaryICloudACAccount;
+- (BOOL)isManagedACAccountWithIdentifer:(id)arg1;
 - (void)performBlockInPersonaContextIfNecessary:(CDUnknownBlockType)arg1 forAccountIdentifier:(id)arg2;
 - (id)temporaryDirectoryURLForAccountIdentifier:(id)arg1;
 - (void)updateICloudACAccountFromStore;

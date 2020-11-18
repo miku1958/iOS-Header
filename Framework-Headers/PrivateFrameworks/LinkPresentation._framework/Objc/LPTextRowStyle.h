@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)applyToAllTextViewStyles:(CDUnknownBlockType)arg1;
-- (id)init;
+- (id)initWithPlatform:(long long)arg1;
 - (id)left;
 - (id)right;
 

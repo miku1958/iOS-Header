@@ -6,6 +6,7 @@
 
 #import <objc/NSObject.h>
 
+#import <SpringBoard/BCBatteryDeviceObserving-Protocol.h>
 #import <SpringBoard/CSPowerStatusProviding-Protocol.h>
 #import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoard/SBHomeScreenBackdropViewBaseDelegate-Protocol.h>
@@ -15,9 +16,9 @@
 #import <SpringBoard/UIInteractionProgressObserver-Protocol.h>
 #import <SpringBoard/UIWindowDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBAppSwitcherSettings, SBDismissOnlyAlertItem, SBHUDController, SBHomeScreenBackdropViewBase, SBHomeScreenWindow, SBIconContentView, SBIconController, SBMainScreenActiveInterfaceOrientationWindow, SBVolumeControl, SBWallpaperEffectView, SBWindow, UIForceStageInteractionProgress, UIStatusBar, UIView;
+@class ATXAppDirectoryClient, BCBatteryDeviceController, NSMutableDictionary, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBAppSwitcherSettings, SBDismissOnlyAlertItem, SBHUDController, SBHomeScreenBackdropViewBase, SBHomeScreenWindow, SBIconContentView, SBIconController, SBMainScreenActiveInterfaceOrientationWindow, SBVolumeControl, SBWallpaperEffectView, SBWindow, UIForceStageInteractionProgress, UIStatusBar, UIView;
 
-@interface SBUIController : NSObject <SBWallpaperObserver, PTSettingsKeyObserver, UIInteractionProgressObserver, SBWallpaperOrientationProvider, SBReachabilityObserver, SBHomeScreenBackdropViewBaseDelegate, UIWindowDelegate, CSPowerStatusProviding>
+@interface SBUIController : NSObject <SBWallpaperObserver, PTSettingsKeyObserver, UIInteractionProgressObserver, SBWallpaperOrientationProvider, SBReachabilityObserver, SBHomeScreenBackdropViewBaseDelegate, BCBatteryDeviceObserving, UIWindowDelegate, CSPowerStatusProviding>
 {
     SBHomeScreenWindow *_window;
     SBIconContentView *_iconsView;
@@ -29,6 +30,7 @@
     SBWallpaperEffectView *_reachabilityWallpaperEffectView;
     SBAppStatusBarSettingsAssertion *_statusBarAssertion;
     UIForceStageInteractionProgress *_homeButtonForceProgress;
+    BCBatteryDeviceController *_batteryDeviceController;
     unsigned int _lastVolumeDownToControl:1;
     unsigned int _isBatteryCharging:1;
     unsigned int _isFullyCharged:1;
@@ -37,6 +39,7 @@
     unsigned int _isConnectedToExternalChargingAccessory:1;
     unsigned int _isConnectedToUnsupportedChargingAccessory:1;
     unsigned int _isConnectedToChargeIncapablePowerSource:1;
+    unsigned int _isConnectedToQiPower:1;
     SBHUDController *_HUDController;
     SBVolumeControl *_volumeControl;
     float _batteryCapacity;
@@ -48,12 +51,15 @@
     SBDismissOnlyAlertItem *_unsupportedChargerAlert;
     SBAppSwitcherSettings *_switcherSettings;
     NSMutableSet *_contentRequiringReasons;
+    ATXAppDirectoryClient *_appDirectoryClient;
+    BOOL _disallowsPointerInteraction;
     BOOL _chargingChimeEnabled;
     SBIconController *_iconController;
 }
 
 @property (nonatomic) BOOL chargingChimeEnabled; // @synthesize chargingChimeEnabled=_chargingChimeEnabled;
 @property (readonly, nonatomic, getter=isConnectedToExternalChargingSource) BOOL connectedToExternalChargingSource;
+@property (readonly, nonatomic, getter=isConnectedToQiPower) BOOL connectedToQiPower;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -75,6 +81,7 @@
 - (void)ACPowerChanged;
 - (void)_accessibilityWillBeginAppSwitcherRevealAnimation;
 - (void)_activateApplicationFromAccessibility:(id)arg1;
+- (void)_activateWorkspaceEntity:(id)arg1 fromIcon:(id)arg2 location:(id)arg3 validator:(CDUnknownBlockType)arg4;
 - (void)_backgroundContrastDidChange:(id)arg1;
 - (void)_closeOpenFolderIfNecessary;
 - (id)_currentHomeScreenLegibilitySettings;
@@ -92,7 +99,7 @@
 - (void)_updateLegibility;
 - (void)_willRevealOrHideContentView;
 - (void)activateApplication:(id)arg1 fromIcon:(id)arg2 location:(id)arg3 activationSettings:(id)arg4 actions:(id)arg5;
-- (id)alertItemForPreventingLaunchOfApp:(id)arg1;
+- (id)alertItemForPreventingLaunchOfApp:(id)arg1 outTrustState:(unsigned long long *)arg2;
 - (void)animateFakeStatusBarWithParameters:(id)arg1 transition:(id)arg2;
 - (float)batteryCapacity;
 - (int)batteryCapacityAsPercentage;
@@ -104,6 +111,7 @@
 - (void)cancelVolumeEvent;
 - (void)configureFakeSpringBoardStatusBarWithDefaultStyleRequestForStyle:(long long)arg1;
 - (void)configureFakeSpringBoardStatusBarWithStyleRequest:(id)arg1;
+- (void)connectedDevicesDidChange:(id)arg1;
 - (id)contentView;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
@@ -114,7 +122,6 @@
 - (void)endRequiringBackdropViewForReason:(id)arg1;
 - (void)endRequiringContentForReason:(id)arg1;
 - (void)endRequiringLiveBackdropViewForReason:(id)arg1;
-- (void)externalChargingAccessoriesChanged;
 - (id)fakeStatusBarStyleRequestForStyle:(long long)arg1;
 - (void)getRotationContentSettings:(CDStruct_e950349b *)arg1 forWindow:(id)arg2;
 - (void)handleDidEndReachabilityAnimation;
@@ -130,6 +137,7 @@
 - (void)interactionProgress:(id)arg1 didEnd:(BOOL)arg2;
 - (void)interactionProgressDidUpdate:(id)arg1;
 - (long long)interfaceOrientationForWallpaperController:(id)arg1;
+- (BOOL)isBackdropVisible;
 - (BOOL)isBatteryCharging;
 - (BOOL)isConnectedToChargeIncapablePowerSource;
 - (BOOL)isConnectedToUnsupportedChargingAccessory;
@@ -150,13 +158,13 @@
 - (void)restoreContentWithOptions:(unsigned long long)arg1;
 - (id)scalingView;
 - (void)setAllowIconRotation:(BOOL)arg1 forReason:(id)arg2;
-- (void)setCursorInteractionsEnabled:(BOOL)arg1;
 - (void)setFakeSpringBoardStatusBarVisible:(BOOL)arg1;
 - (void)setHomeScreenAlpha:(double)arg1 behaviorMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setHomeScreenBlurProgress:(double)arg1 behaviorMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setHomeScreenDimmingAlpha:(double)arg1 behaviorMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setHomeScreenScale:(double)arg1 behaviorMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setIsConnectedToUnsupportedChargingAccessory:(BOOL)arg1;
+- (void)setPointerInteractionsEnabled:(BOOL)arg1;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)statusBarOverridesDidChange:(id)arg1;
 - (id)succinctDescription;

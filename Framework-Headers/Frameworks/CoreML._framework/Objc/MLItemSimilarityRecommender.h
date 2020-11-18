@@ -15,8 +15,8 @@
 
 @interface MLItemSimilarityRecommender : MLModel <MLModelSpecificationLoader, MLModeling, MLCompiledModelLoader, MLSpecificationCompiler>
 {
-    struct shared_ptr<Archiver::MMappedFile> m_mmapped_model;
-    struct vector<unsigned char, std::__1::allocator<unsigned char>> m_cached_model;
+    shared_ptr_0841df90 m_mmapped_model;
+    vector_aab22ae2 m_cached_model;
     unsigned long long m_num_items;
     NSString *m_item_data_feature_name;
     NSString *m_num_recommendations_feature_name;
@@ -30,7 +30,7 @@
     struct vector<double, std::__1::allocator<double>> _m_scores;
     vector_7984f87c _m_items;
     vector_7984f87c _m_item_buffer;
-    struct vector<unsigned char, std::__1::allocator<unsigned char>> _m_item_invalid_mask;
+    vector_aab22ae2 _m_item_invalid_mask;
     struct vector<double, std::__1::allocator<double>> _m_item_predictions;
     struct vector<std::__1::pair<unsigned long long, double>, std::__1::allocator<std::__1::pair<unsigned long long, double>>> _m_item_heap;
 }

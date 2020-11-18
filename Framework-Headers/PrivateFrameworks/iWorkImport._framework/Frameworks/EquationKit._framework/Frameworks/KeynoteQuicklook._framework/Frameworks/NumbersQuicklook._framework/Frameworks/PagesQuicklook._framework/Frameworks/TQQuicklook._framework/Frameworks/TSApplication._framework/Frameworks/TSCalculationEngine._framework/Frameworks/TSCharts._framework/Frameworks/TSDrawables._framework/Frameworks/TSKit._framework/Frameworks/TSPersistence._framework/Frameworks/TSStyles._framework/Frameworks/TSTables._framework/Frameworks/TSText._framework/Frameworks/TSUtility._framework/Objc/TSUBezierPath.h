@@ -36,7 +36,9 @@
     } sfr_bpFlags;
 }
 
+@property (readonly, nonatomic) struct CGRect bounds;
 @property (readonly, nonatomic) BOOL containsClosePathElement;
+@property (nonatomic) double flatness;
 
 + (id)bezierPath;
 + (id)bezierPathWithCGPath:(struct CGPath *)arg1;
@@ -60,6 +62,7 @@
 + (unsigned long long)lineCapStyle;
 + (unsigned long long)lineJoinStyle;
 + (double)lineWidth;
++ (double)minimumLengthForSideToHaveFullContinuityWithCornerRadius1:(double)arg1 cornerRadius2:(double)arg2;
 + (double)miterLimit;
 + (void)setDefaultFlatness:(double)arg1;
 + (void)setDefaultLineCapStyle:(unsigned long long)arg1;
@@ -104,7 +107,6 @@
 - (id)bezierPathByRemovingRedundantElements;
 - (id)bezierPathByRemovingSmallSubpathsForInteriorWrapsForInset:(double)arg1;
 - (id)bezierPathByReversingPath;
-- (struct CGRect)bounds;
 - (const char *)cString;
 - (double)calculateLengthOfElement:(long long)arg1;
 - (void)calculateLengths;
@@ -124,7 +126,6 @@
 - (long long)elementAtIndex:(long long)arg1 associatedPoints:(struct CGPoint *)arg2;
 - (long long)elementCount;
 - (void)fill;
-- (double)flatness;
 - (void)flattenIntoPath:(id)arg1;
 - (void)flattenIntoPath:(id)arg1 flatness:(double)arg2;
 - (void)getLineDash:(double *)arg1 count:(long long *)arg2 phase:(double *)arg3;
@@ -155,7 +156,6 @@
 - (void)relativeMoveToPoint:(struct CGPoint)arg1;
 - (void)removeAllPoints;
 - (void)setAssociatedPoints:(struct CGPoint *)arg1 atIndex:(long long)arg2;
-- (void)setFlatness:(double)arg1;
 - (void)setLineCapStyle:(unsigned long long)arg1;
 - (void)setLineDash:(const double *)arg1 count:(long long)arg2 phase:(double)arg3;
 - (void)setLineJoinStyle:(unsigned long long)arg1;

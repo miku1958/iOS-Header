@@ -50,8 +50,8 @@
 - (void)_clearPermanentCredentialsForProtectionSpace:(id)arg1;
 - (void)_clearSupportedPlugins;
 - (void)_clearWebProcessCache;
-- (id)_downloadURLRequest:(id)arg1 originatingWebView:(id)arg2;
 - (id)_downloadURLRequest:(id)arg1 websiteDataStore:(id)arg2 originatingWebView:(id)arg3;
+- (void)_garbageCollectJavaScriptObjectsForTesting;
 - (void)_getActivePagesOriginsInWebProcessForTesting:(int)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_hasPrewarmedWebProcess;
 - (id)_initWithConfiguration:(id)arg1;
@@ -60,6 +60,9 @@
 - (unsigned long long)_maximumSuspendedPageCount;
 - (BOOL)_networkProcessHasEntitlementForTesting:(id)arg1;
 - (int)_networkProcessIdentifier;
+- (unsigned long long)_numberOfConnectedGameControllerFrameworkGamepadsForTesting;
+- (unsigned long long)_numberOfConnectedGamepadsForTesting;
+- (unsigned long long)_numberOfConnectedHIDGamepadsForTesting;
 - (id)_objectForBundleParameter:(id)arg1;
 - (unsigned long long)_pluginProcessCount;
 - (void)_preconnectToServer:(id)arg1;
@@ -67,10 +70,10 @@
 - (unsigned long long)_processCacheCapacity;
 - (unsigned long long)_processCacheSize;
 - (void)_registerURLSchemeAsCanDisplayOnlyIfCanRequest:(id)arg1;
-- (id)_resumeDownloadFromData:(id)arg1 path:(id)arg2 originatingWebView:(id)arg3;
 - (id)_resumeDownloadFromData:(id)arg1 websiteDataStore:(id)arg2 path:(id)arg3 originatingWebView:(id)arg4;
 - (void)_seedResourceLoadStatisticsForTestingWithFirstParty:(id)arg1 thirdParty:(id)arg2 shouldScheduleNotification:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_sendNetworkProcessDidResume;
+- (void)_sendNetworkProcessPrepareToSuspend:(CDUnknownBlockType)arg1;
 - (void)_sendNetworkProcessWillSuspendImminently;
 - (unsigned long long)_serviceWorkerProcessCount;
 - (void)_setAllowsAnySSLCertificateForServiceWorker:(BOOL)arg1;
@@ -81,6 +84,7 @@
 - (void)_setObject:(id)arg1 forBundleParameter:(id)arg2;
 - (void)_setObjectsForBundleParametersWithDictionary:(id)arg1;
 - (void)_setUseSeparateServiceWorkerProcess:(BOOL)arg1;
+- (void)_setUsesOnlyHIDGamepadProviderForTesting:(BOOL)arg1;
 - (void)_syncNetworkProcessCookies;
 - (void)_synthesizeAppIsBackground:(BOOL)arg1;
 - (void)_terminateNetworkProcess;

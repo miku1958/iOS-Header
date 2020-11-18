@@ -12,7 +12,6 @@
 {
     BOOL _isDebug;
     unsigned long long _duration;
-    unsigned long long _precision;
     PGMemoryController *_controller;
 }
 
@@ -20,31 +19,45 @@
 @property (readonly, weak) PGMemoryController *controller; // @synthesize controller=_controller;
 @property unsigned long long duration; // @synthesize duration=_duration;
 @property BOOL isDebug; // @synthesize isDebug=_isDebug;
-@property unsigned long long precision; // @synthesize precision=_precision;
 
-+ (id)assetPropertySetsForMemories;
++ (id)fetchedAssetsFromFetchResult:(id)arg1 prefetchOptions:(unsigned long long)arg2;
 + (long long)titleDateMatchingTypeForMemoryCategory:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)_additionalInfoKeywordsForPotentialMemory:(id)arg1;
+- (BOOL)_computeMissingCurationsInMemory:(id)arg1 fromFeeder:(id)arg2 keyAssetCriteria:(id)arg3 useMemoryGeneratorDefaultTricks:(BOOL)arg4;
 - (id)_createMemoryDebugWithPotentialMemory:(id)arg1;
 - (void)_enumerateBestScoringPotentialMemoriesInPotentialMemories:(id)arg1 attemptUpgradesBeforeSorting:(BOOL)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)_enumeratePotentialMemoriesUsingBlock:(CDUnknownBlockType)arg1;
 - (BOOL)_eventIsAcceptableForUpgrade:(id)arg1;
 - (void)_generateDefaultTitleAndSubtitleForMemory:(id)arg1 withPotentialMemory:(id)arg2;
-- (void)_generateExtendedCuratedSetForMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (id)_generateMemoryForDryTesting;
-- (void)_mergeCurationSetsIfNeededForMemory:(id)arg1;
 - (unsigned long long)_numberOfIndependentMomentNodesInMomentNodes:(id)arg1;
 - (void)_postProcessMemory:(id)arg1 withPotentialMemory:(id)arg2;
 - (id)_potentialMemoriesForDryTesting;
+- (void)addLocalIdentifiersFromAssets:(id)arg1 to:(id)arg2;
+- (id)assetCollectionWithAssetLocalIdentifiers:(id)arg1;
 - (BOOL)canProceedAfterAttemptingMeaningfulEventUpgradeForPotentialMemory:(id)arg1 didUpgradeToWeekend:(BOOL)arg2 upgradedToMeaningfulEvent:(BOOL *)arg3;
 - (BOOL)canProceedAfterAttemptingUpgradesForPotentialMemory:(id)arg1;
 - (BOOL)canProceedAfterAttemptingWeekendUpgradeForPotentialMemory:(id)arg1 upgradedToWeekend:(BOOL *)arg2;
+- (BOOL)computeMissingCurationsInMemory:(id)arg1 fromAssetCollection:(id)arg2 keyAssetCriteria:(id)arg3;
+- (BOOL)computeMissingCurationsInMemory:(id)arg1 fromFeeder:(id)arg2 keyAssetCriteria:(id)arg3;
 - (id)createMemoryWithPotentialMemory:(id)arg1;
+- (id)curationOptionsWithKeyAsset:(id)arg1;
+- (unsigned long long)durationForCuration;
+- (unsigned long long)durationForExtendedCuration;
+- (id)extendedCuratedAssetsFromAssetCollection:(id)arg1 withCuratedAssets:(id)arg2;
+- (id)extendedCuratedAssetsFromFeeder:(id)arg1 withCuratedAssets:(id)arg2;
+- (id)extendedCurationOptionsWithCuratedAssets:(id)arg1;
 - (id)generateAllMemories;
 - (id)generateMemories:(unsigned long long)arg1;
 - (id)generateMemory;
 - (id)initWithController:(id)arg1;
+- (id)keyAssetCurationOptions;
+- (id)localIdentifiersFromAssets:(id)arg1;
+- (BOOL)movieDedupingEnabledForCuration;
+- (BOOL)movieDedupingEnabledForExtendedCuration;
+- (BOOL)semanticalDedupingEnabledForCuration;
+- (BOOL)semanticalDedupingEnabledForExtendedCuration;
 - (void)setDefaultValuesIfNeededOnNewMemory:(id)arg1 withPotentialMemory:(id)arg2;
 
 @end

@@ -4,19 +4,20 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CFNetwork/__NSCFURLSession.h>
+#import <CFNetwork/NSURLSession.h>
 
 #import <CFNetwork/NSURLSessionDataDelegate-Protocol.h>
 #import <CFNetwork/NSURLSessionDataDelegatePrivate-Protocol.h>
 #import <CFNetwork/NSURLSessionDataDelegate_Internal-Protocol.h>
+#import <CFNetwork/NSURLSessionDelegate_Internal-Protocol.h>
 #import <CFNetwork/NSURLSessionSubclass-Protocol.h>
 #import <CFNetwork/NSURLSessionTaskDelegatePrivate-Protocol.h>
 #import <CFNetwork/__NSURLSessionTaskGroupForConfiguration-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSObject, NSString, NSURLSession, NSURLSessionConfiguration;
+@class NSMutableArray, NSMutableDictionary, NSObject, NSString, NSURLSessionConfiguration;
 @protocol OS_dispatch_queue;
 
-@interface __NSURLSessionLocal : __NSCFURLSession <NSURLSessionDataDelegate, NSURLSessionDataDelegatePrivate, NSURLSessionTaskDelegatePrivate, NSURLSessionDataDelegate_Internal, NSURLSessionSubclass, __NSURLSessionTaskGroupForConfiguration>
+@interface __NSURLSessionLocal : NSURLSession <NSURLSessionDataDelegate, NSURLSessionDataDelegatePrivate, NSURLSessionTaskDelegatePrivate, NSURLSessionDelegate_Internal, NSURLSessionDataDelegate_Internal, NSURLSessionSubclass, __NSURLSessionTaskGroupForConfiguration>
 {
     unsigned long long _identSeed;
     struct XTubeManager *_tubeManager;
@@ -30,7 +31,6 @@
     BOOL _xCredsInitComplete;
     struct mutex _xCookieStorageInitLock;
     struct mutex _xCredStorageInitLock;
-    NSArray *_localProtocolClassesForDefaultSession;
     BOOL _isInvalid;
     NSURLSessionConfiguration *_proxyConfig;
     NSURLSession *_proxySession;
@@ -66,65 +66,18 @@
 - (void)_URLSession:(id)arg1 companionAvailabilityChanged:(BOOL)arg2;
 - (void)_URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)_URLSession:(id)arg1 task:(id)arg2 getAuthHeadersForResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (struct XTubeManager *)_actualTubeManager;
-- (id)_cacheOnlyDataTaskForRequest:(id)arg1 withDelegate:(id)arg2;
-- (BOOL)_cfurlRequest:(id)arg1 isCacheEquivalentTo:(id)arg2;
-- (struct _CFHSTSPolicy *)_copyHSTSPolicy;
-- (id)_createCanonicalRequest:(id)arg1 task:(id)arg2;
-- (id)_createCanonicalRequestForTask:(id)arg1;
-- (id)_createTaskFromOriginalCFURLRequest:(id)arg1 updatedCFURLRequest:(id)arg2 connProps:(struct __CFDictionary *)arg3 sockProps:(struct __CFDictionary *)arg4;
-- (const struct XCookieStorage *)_createXCookieStorage;
-- (const struct XCookieStorage *)_createXCookieStorage0;
-- (const struct XCredentialStorage *)_createXCredentialStorage;
-- (const struct XCredentialStorage *)_createXCredentialStorage0;
 - (id)_dataTaskWithTaskForClass:(id)arg1;
-- (id)_delegateForTask:(id)arg1;
 - (id)_downloadTaskWithTaskForClass:(id)arg1;
-- (void)_flushOrResetStorage:(CDUnknownBlockType)arg1 reset:(unsigned char)arg2;
-- (void)_getCookieHeadersForTask:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_invalidateAllConnections;
-- (struct URLProtocol *)_newURLProtocolForTask:(id)arg1 client:(struct URLProtocolClient *)arg2;
-- (struct URLProtocol *)_newURLProtocolForTask:(id)arg1 client:(struct URLProtocolClient *)arg2 protocolClass:(Class)arg3;
-- (void)_onqueue_canonicalizeTaskAndCreateConnection:(id)arg1;
-- (void)_onqueue_checkForCompletion;
 - (void)_onqueue_completeInvalidation:(BOOL)arg1;
-- (void)_onqueue_configureAndCreateConnection:(id)arg1 task:(id)arg2;
-- (void)_onqueue_connectUploadTask:(id)arg1 strippedRequest:(id)arg2 bodyStream:(id)arg3 bodyParts:(id)arg4;
 - (void)_onqueue_flushWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_onqueue_getTasksWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_onqueue_invalidateSession:(BOOL)arg1 withQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_onqueue_invokeInvalidateCallback;
 - (void)_onqueue_resetStorageWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (BOOL)_prependProtocolClassForDefaultSession:(Class)arg1;
-- (Class)_protocolClassForRequest:(id)arg1;
-- (Class)_protocolClassForTask:(id)arg1;
-- (Class)_protocolClassForTask:(id)arg1 skipAppSSO:(BOOL)arg2;
-- (id)_protocolClassesForTask:(id)arg1;
-- (id)_proxyDataTaskForRequest:(id)arg1 withDelegate:(id)arg2 uniqueIdentifier:(id)arg3;
-- (void)_purgeIdleConnections;
-- (void)_removeProtocolClassForDefaultSession:(Class)arg1;
-- (BOOL)_request:(id)arg1 isCacheEquivalentTo:(id)arg2;
 - (id)_uploadTaskWithTaskForClass:(id)arg1;
 - (void)_useTLSSessionCacheFromSession:(id)arg1;
-- (BOOL)_withConnectionCache_enqueueRequest:(const struct HTTPRequestMessage *)arg1 forProtocol:(struct MetaConnectionCacheClient *)arg2 scheduling:(const struct CoreSchedulingSet *)arg3 options:(struct MetaConnectionOptions)arg4;
-- (struct __CFString *)_withConnectionCache_getCurrentSSLMethodForKey:(const struct HTTPConnectionCacheKey *)arg1 scheduling:(const struct CoreSchedulingSet *)arg2;
-- (struct GlueTube *)_withConnectionCache_getPendingTubeForProtocol:(struct MetaConnectionCacheClient *)arg1 withKey:(const struct HTTPConnectionCacheKey *)arg2 scheduling:(const struct CoreSchedulingSet *)arg3;
-- (void)_withConnectionCache_setCurrentSSLMethod:(struct __CFString *)arg1 forKey:(const struct HTTPConnectionCacheKey *)arg2 scheduling:(const struct CoreSchedulingSet *)arg3;
-- (void)_withXURLCache:(CDUnknownBlockType)arg1;
-- (void)addConnectionlessTask:(id)arg1;
-- (id)connToTask:(id)arg1;
-- (const struct XCookieStorage *)copyBaseStorageForRequest:(id)arg1;
-- (id)copyTasks;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)initWithConfiguration:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3;
-- (void)invalidateUnpurgeableConnectionsForConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg1;
+- (id)initWithConfiguration:(id)arg1 delegate:(id)arg2 delegateQueue:(id)arg3 delegateDispatchQueue:(id)arg4;
 - (unsigned long long)nextSeed;
-- (void)removeConnectionlessTask:(id)arg1;
-- (void)replaceTask:(id)arg1 withTask:(id)arg2;
-- (Class)sessionConnectionClass:(id)arg1 task:(id)arg2;
-- (void)task:(id)arg1 terminatedConnection:(id)arg2;
-- (id)taskForClassInfo:(id)arg1;
 - (id)webSocketTaskForRequest:(id)arg1;
 - (id)webSocketTaskForURL:(id)arg1 protocols:(id)arg2;
 

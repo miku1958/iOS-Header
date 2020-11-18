@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MRTransactionPacketizer, _MRNowPlayingPlayerPathProtobuf;
+@class MRPlayerPath, MRTransactionPacketizer;
 @protocol OS_dispatch_queue;
 
 @interface MRTransactionDestination : NSObject
@@ -14,11 +14,11 @@
     MRTransactionPacketizer *_packetizer;
     NSObject<OS_dispatch_queue> *_serialQueue;
     unsigned long long _name;
-    _MRNowPlayingPlayerPathProtobuf *_playerPath;
+    MRPlayerPath *_playerPath;
 }
 
 @property (readonly, nonatomic) unsigned long long name; // @synthesize name=_name;
-@property (readonly, nonatomic) _MRNowPlayingPlayerPathProtobuf *playerPath; // @synthesize playerPath=_playerPath;
+@property (readonly, nonatomic) MRPlayerPath *playerPath; // @synthesize playerPath=_playerPath;
 
 - (void).cxx_destruct;
 - (id)initWithName:(unsigned long long)arg1 playerPath:(id)arg2;

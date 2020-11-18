@@ -6,14 +6,14 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <PassKitUI/UIWebViewDelegate-Protocol.h>
+#import <PassKitUI/WKNavigationDelegate-Protocol.h>
 
-@class NSString, NSURL, PKPaymentProvisioningController, UIWebView;
+@class NSString, NSURL, PKPaymentProvisioningController, WKWebView;
 @protocol PKPaymentSetupViewControllerDelegate;
 
-@interface PKPaymentCardIneligibleViewController : UIViewController <UIWebViewDelegate>
+@interface PKPaymentCardIneligibleViewController : UIViewController <WKNavigationDelegate>
 {
-    UIWebView *_webView;
+    WKWebView *_webView;
     CDUnknownBlockType _preflightCompletion;
     BOOL _preloadLearnMoreWebView;
     long long _reason;
@@ -35,7 +35,7 @@
 @property BOOL preloadLearnMoreWebView; // @synthesize preloadLearnMoreWebView=_preloadLearnMoreWebView;
 @property (strong, nonatomic) PKPaymentProvisioningController *provisioningController; // @synthesize provisioningController=_provisioningController;
 @property (nonatomic) long long reason; // @synthesize reason=_reason;
-@property (nonatomic) id<PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
+@property (weak, nonatomic) id<PKPaymentSetupViewControllerDelegate> setupDelegate; // @synthesize setupDelegate=_setupDelegate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -47,9 +47,9 @@
 - (void)preflightWithCompletion:(CDUnknownBlockType)arg1;
 - (void)viewDidLoad;
 - (id)webView;
-- (void)webView:(id)arg1 didFailLoadWithError:(id)arg2;
-- (BOOL)webView:(id)arg1 shouldStartLoadWithRequest:(id)arg2 navigationType:(long long)arg3;
-- (void)webViewDidFinishLoad:(id)arg1;
+- (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
+- (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
+- (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
 
 @end
 

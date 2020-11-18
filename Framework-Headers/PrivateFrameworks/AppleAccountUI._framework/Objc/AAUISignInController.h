@@ -9,7 +9,7 @@
 #import <AppleAccountUI/AAUISignInViewControllerInternalDelegate-Protocol.h>
 #import <AppleAccountUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
-@class NSDictionary, NSString;
+@class AAUISignInFlowControllerDelegate, CDPUIController, NSDictionary, NSString;
 @protocol AAUISignInControllerDelegate, AIDAServiceOwnerProtocol;
 
 @interface AAUISignInController : UINavigationController <AAUISignInViewControllerInternalDelegate, UIAdaptivePresentationControllerDelegate>
@@ -17,6 +17,8 @@
     NSDictionary *_authenticationResults;
     id<AIDAServiceOwnerProtocol> _serviceOwnersManager;
     long long _aidaOperationUIPermissions;
+    CDPUIController *_cdpUIController;
+    AAUISignInFlowControllerDelegate *_flowControllerDelegate;
     long long _currentStyle;
     BOOL _canEditUsername;
     BOOL __shouldForceOperation;
@@ -38,8 +40,8 @@
 
 - (void).cxx_destruct;
 - (BOOL)_allowsAccountCreationForService:(id)arg1;
+- (void)_attemptSignInForCloudAndInactiveStoreWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_attemptSignInForService:(id)arg1 withAuthenticationResults:(id)arg2 parentViewController:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_attemptSignInForServices:(id)arg1 withAuthenticationResults:(id)arg2 parentViewController:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_commonInit;
 - (id)_continueUsingControllerForAccount:(id)arg1 serviceType:(id)arg2 inViewController:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)_delegate_signInControllerDidCancel;
@@ -51,7 +53,6 @@
 - (void)_mainQueue_presentSpinnerViewControllerInParentViewController:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (id)_messageStringForService:(id)arg1;
 - (void)_performAuthenticationForAccount:(id)arg1 serviceType:(id)arg2 inViewController:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_performSilentRenewalWithResults:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_showsServiceIconsForService:(id)arg1;
 - (id)_signInViewController;
 - (id)_spinnerMessageForService:(id)arg1;
@@ -61,6 +62,7 @@
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)prepareInViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)presentationControllerDidDismiss:(id)arg1;
+- (id)serviceContextWithResults:(id)arg1 parentViewController:(id)arg2;
 - (void)signInViewController:(id)arg1 didCompleteWithAuthenticationResults:(id)arg2;
 - (void)signInViewControllerDidCancel:(id)arg1;
 - (unsigned long long)supportedInterfaceOrientations;

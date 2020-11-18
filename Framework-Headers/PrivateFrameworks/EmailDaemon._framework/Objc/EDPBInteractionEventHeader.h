@@ -19,16 +19,20 @@
     int _timezoneOffset;
     unsigned int _userSegment;
     unsigned int _version;
+    BOOL _categoryRootInstalled;
     struct {
         unsigned int deviceId:1;
         unsigned int userId:1;
         unsigned int timezoneOffset:1;
         unsigned int userSegment:1;
         unsigned int version:1;
+        unsigned int categoryRootInstalled:1;
     } _has;
 }
 
+@property (nonatomic) BOOL categoryRootInstalled; // @synthesize categoryRootInstalled=_categoryRootInstalled;
 @property (nonatomic) long long deviceId; // @synthesize deviceId=_deviceId;
+@property (nonatomic) BOOL hasCategoryRootInstalled;
 @property (nonatomic) BOOL hasDeviceId;
 @property (readonly, nonatomic) BOOL hasLocale;
 @property (nonatomic) BOOL hasTimezoneOffset;

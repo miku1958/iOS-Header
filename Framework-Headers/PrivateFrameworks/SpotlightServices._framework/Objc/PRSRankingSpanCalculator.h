@@ -23,8 +23,9 @@
 @property (nonatomic) BOOL pathExists; // @synthesize pathExists=_pathExists;
 @property (nonatomic) float unordered; // @synthesize unordered=_unordered;
 
-+ (BOOL)doesOrderedSpanExistWithStartingIndex:(unsigned long long)arg1 nextArray:(id)arg2 arrayOfIndexArrays:(id)arg3 level:(unsigned long long)arg4 currentOrderedSpan:(long long *)arg5;
-+ (void)minimumAnyOrderSpanWithStartingIndex:(long long)arg1 nextArray:(id)arg2 arrayOfIndexArrays:(id)arg3 level:(unsigned long long)arg4 currentAnyOrderSpan:(long long)arg5 minimumSpan:(long long *)arg6 minimumDistancePair:(long long *)arg7 currentMinimumIndex:(long long)arg8 currentMaximumIndex:(long long)arg9;
++ (BOOL)doesOrderedSpanExistWithArrayOfIndexArrays:(unsigned long long **)arg1 arrayOfIndexArraysCounts:(unsigned long long *)arg2 arrayOfIndexArraysCount:(unsigned long long)arg3 orderedSpan:(long long *)arg4 firstTermPosition:(unsigned long long *)arg5 queryTermCount:(unsigned long long)arg6;
++ (long long)minimumAnyOrderSpanWithArrayOfIndexArrays:(unsigned long long **)arg1 arrayOfIndexArraysCounts:(unsigned long long *)arg2 arrayOfIndexArraysCount:(unsigned long long)arg3 queryTermCount:(unsigned long long)arg4;
++ (long long)minimumPairDistanceWithArrayOfIndexArrays:(unsigned long long **)arg1 arrayOfIndexArraysCounts:(unsigned long long *)arg2 arrayOfIndexArraysCount:(unsigned long long)arg3 queryTermCount:(unsigned long long)arg4 tokenCount:(unsigned long long)arg5;
 - (id)description;
 - (void)reset;
 - (void)resetSpans;

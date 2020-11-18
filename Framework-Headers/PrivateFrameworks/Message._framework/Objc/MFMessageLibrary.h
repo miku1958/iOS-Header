@@ -44,7 +44,6 @@
 - (id)dateOfOldestNonIndexedNonSearchResultMessageInMailbox:(id)arg1;
 - (id)dateOfOldestNonSearchResultMessageInMailbox:(id)arg1;
 - (void)deleteAccount:(id)arg1;
-- (void)deleteDataForMessage:(id)arg1;
 - (void)deleteMailboxes:(id)arg1 account:(id)arg2;
 - (void)deletePOPUID:(id)arg1 inMailbox:(id)arg2;
 - (unsigned int)deletedCountForMailbox:(id)arg1;
@@ -77,8 +76,6 @@
 - (id)messageWithMessageID:(id)arg1 inMailbox:(id)arg2;
 - (id)messageWithMessageID:(id)arg1 options:(unsigned int)arg2 inMailbox:(id)arg3;
 - (id)messageWithRemoteID:(id)arg1 inRemoteMailbox:(id)arg2;
-- (id)messagesForMailbox:(id)arg1 limit:(unsigned long long)arg2;
-- (id)messagesForMailbox:(id)arg1 olderThanNumberOfDays:(int)arg2;
 - (id)messagesMatchingCriterion:(id)arg1 options:(unsigned int)arg2;
 - (id)messagesMatchingCriterion:(id)arg1 options:(unsigned int)arg2 range:(struct _NSRange)arg3;
 - (id)messagesMatchingCriterion:(id)arg1 options:(unsigned int)arg2 range:(struct _NSRange)arg3 success:(BOOL *)arg4;

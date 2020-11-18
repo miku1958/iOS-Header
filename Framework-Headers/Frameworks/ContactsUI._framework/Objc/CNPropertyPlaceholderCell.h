@@ -16,11 +16,11 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) UILabel *label; // @synthesize label=_label;
 
++ (BOOL)shouldIndentWhileEditing;
 - (void).cxx_destruct;
 - (id)labelView;
 - (double)minCellHeight;
 - (void)setCardGroupItem:(id)arg1;
-- (BOOL)shouldIndentWhileEditing;
 - (BOOL)shouldPerformDefaultAction;
 
 @end

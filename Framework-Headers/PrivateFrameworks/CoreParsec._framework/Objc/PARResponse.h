@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class GEOUserSessionEntity, NSArray, NSDictionary, NSString, PARReply;
+@class GEOUserSessionEntity, NSArray, NSData, NSDictionary, NSString, PARReply;
 
 @interface PARResponse : NSObject
 {
+    BOOL _suggestionsAreBlended;
     PARReply *_reply;
     NSString *_prefix;
     NSString *_query;
@@ -21,10 +22,12 @@
     NSArray *_suggestions;
     NSArray *_corrections;
     GEOUserSessionEntity *_geoUserSessionEntity;
+    NSData *_legacyJSON;
 }
 
 @property (readonly, nonatomic) NSArray *corrections; // @synthesize corrections=_corrections;
 @property (strong, nonatomic) GEOUserSessionEntity *geoUserSessionEntity; // @synthesize geoUserSessionEntity=_geoUserSessionEntity;
+@property (readonly, nonatomic) NSData *legacyJSON; // @synthesize legacyJSON=_legacyJSON;
 @property (readonly, nonatomic) NSString *prefix; // @synthesize prefix=_prefix;
 @property (readonly, nonatomic) NSString *query; // @synthesize query=_query;
 @property (readonly, nonatomic) NSArray *rawResponse; // @synthesize rawResponse=_rawResponse;
@@ -34,10 +37,13 @@
 @property (readonly, nonatomic) NSArray *sections; // @synthesize sections=_sections;
 @property (readonly, nonatomic) NSDictionary *serverFeatures; // @synthesize serverFeatures=_serverFeatures;
 @property (readonly, nonatomic) NSArray *suggestions; // @synthesize suggestions=_suggestions;
+@property (readonly, nonatomic) BOOL suggestionsAreBlended; // @synthesize suggestionsAreBlended=_suggestionsAreBlended;
 
++ (id)responseFromData:(id)arg1 session:(id)arg2 request:(id)arg3;
 + (id)responseFromJSON:(id)arg1 session:(id)arg2;
 + (id)responseFromReply:(id)arg1;
 - (void).cxx_destruct;
+- (BOOL)compareWithResponse:(id)arg1 logger:(CDUnknownBlockType)arg2;
 - (id)initWithReply:(id)arg1;
 - (id)initWithReply:(id)arg1 factory:(id)arg2 responseV2:(id)arg3;
 

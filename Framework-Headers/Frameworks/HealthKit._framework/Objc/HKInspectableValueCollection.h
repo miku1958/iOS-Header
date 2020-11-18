@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthKit/HKCodedObject-Protocol.h>
 #import <HealthKit/NSCopying-Protocol.h>
 #import <HealthKit/NSSecureCoding-Protocol.h>
 
 @class HKInspectableValue, NSArray, NSString;
 
-@interface HKInspectableValueCollection : NSObject <NSSecureCoding, NSCopying>
+@interface HKInspectableValueCollection : NSObject <NSSecureCoding, NSCopying, HKCodedObject>
 {
     long long _collectionType;
     NSArray *_collection;
@@ -20,14 +21,19 @@
 
 @property (readonly, nonatomic) NSArray *collection; // @synthesize collection=_collection;
 @property (readonly, nonatomic) long long collectionType; // @synthesize collectionType=_collectionType;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSArray *elementTags; // @synthesize elementTags=_elementTags;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HKInspectableValue *inspectableValue;
 @property (readonly, nonatomic) NSArray *inspectableValues;
 @property (readonly, nonatomic) HKInspectableValue *max;
 @property (readonly, nonatomic) HKInspectableValue *min;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *unitString;
 
 + (BOOL)hasNoValue:(id)arg1;
++ (id)indexableKeyPathsWithPrefix:(id)arg1;
 + (id)inspectableValueCollectionListWithValues:(id)arg1;
 + (id)inspectableValueCollectionRangeWithMax:(id)arg1;
 + (id)inspectableValueCollectionRangeWithMin:(id)arg1;
@@ -39,10 +45,10 @@
 - (void)_assertCollectionType;
 - (id)_initWithCollectionType:(long long)arg1 collection:(id)arg2;
 - (id)_initWithCollectionType:(long long)arg1 collection:(id)arg2 tags:(id)arg3;
+- (BOOL)applyConcepts:(id)arg1 forKeyPath:(id)arg2 error:(id *)arg3;
+- (id)codingsForKeyPath:(id)arg1 error:(id *)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

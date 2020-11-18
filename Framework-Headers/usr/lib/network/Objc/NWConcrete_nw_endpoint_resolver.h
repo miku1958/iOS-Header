@@ -9,7 +9,7 @@
 #import <network/OS_nw_endpoint_resolver-Protocol.h>
 
 @class NSString, NWConcrete_nw_endpoint_handler;
-@protocol OS_nw_array, OS_nw_dictionary, OS_nw_resolver;
+@protocol OS_nw_array, OS_nw_dictionary, OS_nw_endpoint, OS_nw_resolver;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_endpoint_resolver : NSObject <OS_nw_endpoint_resolver>
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_dictionary> *resolve_flow_registrations;
     NSObject<OS_nw_array> *path_resolved_endpoints;
     NSObject<OS_nw_array> *resolver_resolved_endpoints;
+    NSObject<OS_nw_endpoint> *modified_endpoint;
 }
 
 @property (readonly, copy) NSString *debugDescription;

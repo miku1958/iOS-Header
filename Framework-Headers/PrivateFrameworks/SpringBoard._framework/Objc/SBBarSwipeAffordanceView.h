@@ -12,8 +12,8 @@
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSHashTable, NSString, SBHomeGestureInteraction, SBHomeGrabberView, UINotificationFeedbackGenerator;
-@protocol SBBarSwipeAffordanceDelegate;
+@class NSHashTable, NSString, SBHomeGestureInteraction, SBHomeGrabberView, SBSystemGestureManager, UINotificationFeedbackGenerator;
+@protocol SBBarSwipeAffordanceDelegate, SBHomeGrabberPointerClickDelegate;
 
 @interface SBBarSwipeAffordanceView : UIView <UIGestureRecognizerDelegate, SBHomeGrabberDelegate, SBSystemGestureRecognizerDelegate, SBHomeGestureInteractionDelegate, SBHomeGesturePanGestureRecognizerInterfaceDelegate>
 {
@@ -21,7 +21,9 @@
     UINotificationFeedbackGenerator *_dismissalFeedbackGenerator;
     double _additionalEdgeSpacing;
     SBHomeGestureInteraction *_homeGestureInteraction;
+    SBSystemGestureManager *_gestureManager;
     BOOL _active;
+    BOOL _homeAffordanceHidden;
     id<SBBarSwipeAffordanceDelegate> _delegate;
     SBHomeGrabberView *_grabberView;
     long long _feedbackType;
@@ -35,10 +37,13 @@
 @property (nonatomic) long long feedbackType; // @synthesize feedbackType=_feedbackType;
 @property (readonly, nonatomic) SBHomeGrabberView *grabberView; // @synthesize grabberView=_grabberView;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isHomeAffordanceHidden) BOOL homeAffordanceHidden; // @synthesize homeAffordanceHidden=_homeAffordanceHidden;
+@property (weak, nonatomic) id<SBHomeGrabberPointerClickDelegate> pointerClickDelegate;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_activate;
+- (void)_createFeedbackGenerator;
 - (void)_deactivate;
 - (long long)_effectiveOrientationAccountingForTransforms;
 - (void)_fireAction;
@@ -50,6 +55,7 @@
 - (id)_settleAffordanceAnimationBehaviorDescription;
 - (void)_settleGrabber;
 - (id)_unhideHomeAffordanceAnimationSettings;
+- (void)_updateHomeAffordanceVisibility;
 - (void)addObserver:(id)arg1;
 - (double)additionalEdgeSpacingForHomeGrabberView:(id)arg1;
 - (id)customScreenEdgePanGestureRecognizerForHomeGestureInteraction:(id)arg1;
@@ -60,6 +66,7 @@
 - (void)homeGestureInteractionChanged:(id)arg1;
 - (void)homeGestureInteractionEnded:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)initWithFrame:(struct CGRect)arg1 systemGestureManager:(id)arg2 enableGestures:(BOOL)arg3;
 - (void)layoutSubviews;
 - (void)removeObserver:(id)arg1;
 - (BOOL)shouldAllowAutoHideForHomeGrabberView:(id)arg1;

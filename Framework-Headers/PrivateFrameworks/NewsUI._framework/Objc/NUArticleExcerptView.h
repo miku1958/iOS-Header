@@ -14,13 +14,13 @@
 @interface NUArticleExcerptView : UIView <UIScrollViewDelegate>
 {
     NUArticleExcerptTraits *_traits;
-    UIImageView *_headlineImageView;
     UILabel *_headlineTitleLabel;
     UILabel *_headlineDateLabel;
     WKWebView *_excerptWebView;
     NUArticleExcerptReadMoreButton *_readMoreButton;
     id<UIScrollViewDelegate> _delegate;
     UIScrollView *_contentScrollView;
+    UIImageView *_headlineImageView;
     UIView *_hairlineSeparatorView;
     UIView *_contentView;
     NFMultiDelegate *_multiDelegate;
@@ -50,6 +50,7 @@
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)updateImageAspectRatio;
+- (void)updateWithHeadlineImage:(id)arg1;
 
 @end
 

@@ -12,6 +12,7 @@
 
 @interface USWebUsageReport : NSObject <NSSecureCoding>
 {
+    BOOL _webUsageTrusted;
     NSString *_domainIdentifier;
     double _totalUsageTime;
     NSDictionary *_webUsageByDomain;
@@ -20,14 +21,16 @@
 @property (readonly, copy) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
 @property (readonly) double totalUsageTime; // @synthesize totalUsageTime=_totalUsageTime;
 @property (readonly, copy) NSDictionary *webUsageByDomain; // @synthesize webUsageByDomain=_webUsageByDomain;
+@property (readonly) BOOL webUsageTrusted; // @synthesize webUsageTrusted=_webUsageTrusted;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_usWebUsageReportCommonInitWithDomainIdentifier:(id)arg1 totalUsageTime:(double)arg2 webUsageByDomain:(id)arg3;
+- (void)_usWebUsageReportCommonInitWithDomainIdentifier:(id)arg1 webUsageTrusted:(BOOL)arg2 totalUsageTime:(double)arg3 webUsageByDomain:(id)arg4;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDomainIdentifier:(id)arg1 totalUsageTime:(double)arg2 webUsageByDomain:(id)arg3;
+- (id)initWithDomainIdentifier:(id)arg1 webUsageTrusted:(BOOL)arg2 totalUsageTime:(double)arg3 webUsageByDomain:(id)arg4;
 
 @end
 

@@ -6,10 +6,12 @@
 
 #import <PassKitUI/PKTableViewCell.h>
 
-@class UISwitch;
+@class UIActivityIndicatorView, UISwitch;
 
 @interface PKSettingTableCell : PKTableViewCell
 {
+    UIActivityIndicatorView *_spinner;
+    BOOL _showingSpinner;
     id _target;
     SEL _action;
     UISwitch *_settingSwitch;
@@ -24,7 +26,9 @@
 - (void)dealloc;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (id)initWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3;
+- (void)prepareForReuse;
 - (void)setTarget:(id)arg1 action:(SEL)arg2;
+- (void)showSpinner:(BOOL)arg1;
 
 @end
 

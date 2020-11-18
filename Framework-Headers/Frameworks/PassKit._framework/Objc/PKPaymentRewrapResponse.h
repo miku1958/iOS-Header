@@ -10,5 +10,7 @@
 {
 }
 
+- (id)initWithData:(id)arg1;
+
 @end
 

@@ -10,6 +10,7 @@
 
 @interface WBSSavedPassword : NSObject
 {
+    struct os_unfair_lock_s _lock;
     NSMutableDictionary *_siteToProtectionSpaces;
     NSMutableArray *_sites;
     BOOL _userIsNeverSaveMarker;
@@ -17,11 +18,13 @@
     NSString *_user;
     NSString *_password;
     NSDate *_earliestModifiedDateForSites;
+    NSArray *_persistentIdentifiersForWarningManager;
 }
 
 @property (readonly, nonatomic) NSDate *earliestModifiedDateForSites; // @synthesize earliestModifiedDateForSites=_earliestModifiedDateForSites;
 @property (readonly, nonatomic) NSString *highLevelDomain; // @synthesize highLevelDomain=_highLevelDomain;
 @property (readonly, nonatomic) NSString *password; // @synthesize password=_password;
+@property (strong, nonatomic) NSArray *persistentIdentifiersForWarningManager; // @synthesize persistentIdentifiersForWarningManager=_persistentIdentifiersForWarningManager;
 @property (readonly, nonatomic) NSArray *protectionSpaces;
 @property (readonly, nonatomic) NSArray *sites;
 @property (readonly, nonatomic) NSString *user; // @synthesize user=_user;

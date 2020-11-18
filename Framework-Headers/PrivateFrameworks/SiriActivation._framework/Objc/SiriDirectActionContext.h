@@ -19,8 +19,19 @@
 @property (readonly, nonatomic) UNNotification *notification; // @synthesize notification=_notification;
 @property (readonly, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
 
++ (id)mapSearchDirectActionWithAppBundleId:(id)arg1;
++ (id)messageAmbiguousDirectActionWithAppBundleId:(id)arg1;
++ (id)messageComposeDirectActionWithAppBundleId:(id)arg1;
++ (id)messageComposeNewThreadDirectActionWithAppBundleId:(id)arg1 fullName:(id)arg2 phoneOrEmailAddress:(id)arg3;
++ (id)messageReadDirectActionWithAppBundleId:(id)arg1 conversationGUID:(id)arg2;
++ (id)messageReplyDirectActionWithAppBundleId:(id)arg1 conversationGUID:(id)arg2;
++ (id)musicSearchDirectActionWithAppBundleId:(id)arg1;
++ (id)phoneAmbiguousDirectActionWithAppBundleId:(id)arg1;
++ (id)phoneCallDirectActionWithAppBundleId:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_initWithDirectActionEvent:(long long)arg1 appBundleId:(id)arg2 conversationGUID:(id)arg3 fullName:(id)arg4 phoneOrEmailAddress:(id)arg5;
+- (id)_intentIdentifiersFromBulletin:(id)arg1 notification:(id)arg2;
 - (id)bundleId;
 - (id)description;
 - (long long)directActionEvent;

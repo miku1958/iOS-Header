@@ -43,19 +43,7 @@
         unsigned int read_manufacturer:1;
         unsigned int read_model:1;
         unsigned int read_screenDimension:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_engineTypes:1;
-        unsigned int wrote_inputMethods:1;
-        unsigned int wrote_screenResolution:1;
-        unsigned int wrote_carName:1;
-        unsigned int wrote_manufacturer:1;
-        unsigned int wrote_model:1;
-        unsigned int wrote_screenDimension:1;
-        unsigned int wrote_brightness:1;
-        unsigned int wrote_colorRange:1;
-        unsigned int wrote_deviceConnection:1;
-        unsigned int wrote_navAidedDrivingStatus:1;
-        unsigned int wrote_destinationSharingEnabled:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -92,14 +80,6 @@
 - (int)StringAsEngineTypes:(id)arg1;
 - (int)StringAsInputMethods:(id)arg1;
 - (int)StringAsNavAidedDrivingStatus:(id)arg1;
-- (void)_addNoFlagsEngineType:(int)arg1;
-- (void)_addNoFlagsInputMethod:(int)arg1;
-- (void)_readCarName;
-- (void)_readEngineTypes;
-- (void)_readInputMethods;
-- (void)_readManufacturer;
-- (void)_readModel;
-- (void)_readScreenDimension;
 - (void)addEngineType:(int)arg1;
 - (void)addInputMethod:(int)arg1;
 - (void)clearEngineTypes;
@@ -116,10 +96,13 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithTraits:(id)arg1;
 - (int)inputMethodAtIndex:(unsigned long long)arg1;
 - (id)inputMethodsAsString:(int)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)navAidedDrivingStatusAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;

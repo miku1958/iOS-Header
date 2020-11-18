@@ -15,6 +15,7 @@
     MISSING_TYPE *speak;
     MISSING_TYPE *speakOnLockScreen;
     MISSING_TYPE *allowedOnLockScreen;
+    MISSING_TYPE *printBlue;
 }
 
 @end

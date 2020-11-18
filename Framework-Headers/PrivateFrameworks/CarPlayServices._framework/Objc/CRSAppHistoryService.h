@@ -34,11 +34,13 @@
 - (void)_connectionQueue_addConnection:(id)arg1;
 - (void)_connectionQueue_removeConnection:(id)arg1;
 - (void)fetchSessionEchoContextStatesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchSessionFeatureKeysWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchSessionUIContextStatesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchUIContextStatesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (void)invalidate;
 - (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
+- (void)setSessionFeatureKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

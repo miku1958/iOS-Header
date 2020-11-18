@@ -8,15 +8,16 @@
 
 #import <BulletinBoard/AFSiriUserNotificationRequestCapabilityObserving-Protocol.h>
 #import <BulletinBoard/BBDataProviderManagerDelegate-Protocol.h>
+#import <BulletinBoard/BBSectionAuthorizationManagerDelegate-Protocol.h>
 #import <BulletinBoard/BBServerConduitServerInterface-Protocol.h>
 #import <BulletinBoard/BBSettingsGatewayServerInterface-Protocol.h>
 #import <BulletinBoard/BBSyncServiceDelegate-Protocol.h>
 #import <BulletinBoard/NSXPCListenerDelegate-Protocol.h>
 
-@class BBBiometricResource, BBDataProviderManager, BBDismissalSyncCache, BBMaskedSet, BBSyncService, NSDate, NSDateComponents, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSXPCListener;
+@class BBBiometricResource, BBDataProviderManager, BBDismissalSyncCache, BBMaskedSet, BBSectionAuthorizationManager, BBSyncService, NSDate, NSDateComponents, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSXPCListener;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-@interface BBServer : NSObject <BBDataProviderManagerDelegate, BBServerConduitServerInterface, BBSettingsGatewayServerInterface, NSXPCListenerDelegate, AFSiriUserNotificationRequestCapabilityObserving, BBSyncServiceDelegate>
+@interface BBServer : NSObject <BBDataProviderManagerDelegate, BBServerConduitServerInterface, BBSettingsGatewayServerInterface, NSXPCListenerDelegate, AFSiriUserNotificationRequestCapabilityObserving, BBSectionAuthorizationManagerDelegate, BBSyncServiceDelegate>
 {
     NSMutableDictionary *_bulletinRequestsByID;
     NSMutableDictionary *_sectionInfoByID;
@@ -51,6 +52,7 @@
     NSXPCListener *_settingsListener;
     NSMutableSet *_suspendedConnections;
     BBDismissalSyncCache *_dismissalSyncCache;
+    BBSectionAuthorizationManager *_sectionAuthorizationManager;
     BBBiometricResource *_biometricResource;
     BOOL _siriAllowedWhenLocked;
     BOOL _siriEnabled;
@@ -175,6 +177,7 @@
 - (id)_sectionInfoForSectionID:(id)arg1 effective:(BOOL)arg2;
 - (void)_sendAddBulletin:(id)arg1 toFeeds:(unsigned long long)arg2;
 - (void)_sendBulletinUpdate:(id)arg1;
+- (void)_sendBulletinsLoadedForSectionID:(id)arg1;
 - (void)_sendModifyBulletin:(id)arg1 toFeeds:(unsigned long long)arg2;
 - (void)_sendObserver:(id)arg1 noticesBulletinsForSectionID:(id)arg2;
 - (void)_sendRemoveBulletin:(id)arg1 toFeeds:(unsigned long long)arg2 shouldSync:(BOOL)arg3;
@@ -223,21 +226,19 @@
 - (id)dataProviderForSectionID:(id)arg1;
 - (void)dealloc;
 - (void)deliverResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)didChangeEffectiveAuthorizationStatusForSectionID:(id)arg1;
 - (void)dpManager:(id)arg1 addDataProvider:(id)arg2 withSectionInfo:(id)arg3;
 - (void)dpManager:(id)arg1 addParentSectionFactory:(id)arg2;
 - (void)dpManager:(id)arg1 removeDataProviderSectionID:(id)arg2;
 - (id)dpManager:(id)arg1 sectionInfoForSectionID:(id)arg2;
 - (unsigned long long)effectivePushSettingsForSectionInfo:(id)arg1;
-- (void)getAspectRatioForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getBulletinsForPublisherMatchIDs:(id)arg1 sectionID:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
 - (void)getBulletinsWithHandler:(CDUnknownBlockType)arg1;
-- (void)getDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(BOOL)arg3 withHandler:(CDUnknownBlockType)arg4;
 - (void)getEffectiveGlobalContentPreviewsSettingWithHandler:(CDUnknownBlockType)arg1;
 - (void)getEffectiveGlobalSpokenNotificationSettingWithHandler:(CDUnknownBlockType)arg1;
 - (void)getEffectiveSectionInfoForSectionID:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getEffectiveSectionInfoForSectionIDs:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getEffectiveSectionInfoWithHandler:(CDUnknownBlockType)arg1;
-- (void)getPNGDataForAttachmentUUID:(id)arg1 bulletinID:(id)arg2 isPrimary:(BOOL)arg3 sizeConstraints:(id)arg4 withHandler:(CDUnknownBlockType)arg5;
 - (void)getPublisherMatchIDsOfBulletinsPublishedAfterDate:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)getSectionIDsWithHandler:(CDUnknownBlockType)arg1;
 - (void)getSectionInfoForActiveSectionsWithHandler:(CDUnknownBlockType)arg1;

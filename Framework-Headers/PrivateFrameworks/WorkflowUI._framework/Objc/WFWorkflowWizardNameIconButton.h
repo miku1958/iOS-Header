@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIButton.h>
+#import <WorkflowUI/WFIconButton.h>
 
 @class NSData, UIImageView, WFWorkflowIcon;
 
-@interface WFWorkflowWizardNameIconButton : UIButton
+@interface WFWorkflowWizardNameIconButton : WFIconButton
 {
     WFWorkflowIcon *_icon;
     NSData *_customImageData;
@@ -23,6 +23,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)redrawIcon;
 - (void)setIcon:(id)arg1 customImageData:(id)arg2;
 
 @end

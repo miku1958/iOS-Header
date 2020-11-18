@@ -9,7 +9,7 @@
 @class CLVisit;
 
 @protocol MapsSuggestionsLocationVisitUpdaterDelegate <MapsSuggestionsLocationUpdaterDelegate>
-- (void)visitEntered:(CLVisit *)arg1;
-- (void)visitLeft:(CLVisit *)arg1;
+- (void)didEnterVisit:(CLVisit *)arg1;
+- (void)didLeaveVisit:(CLVisit *)arg1;
 @end
 

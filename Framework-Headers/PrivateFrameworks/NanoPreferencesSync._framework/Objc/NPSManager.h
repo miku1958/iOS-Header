@@ -19,6 +19,7 @@
 @property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 + (void)initialize;
++ (BOOL)supportsWatch;
 - (void).cxx_destruct;
 - (id)connection;
 - (void)dealloc;

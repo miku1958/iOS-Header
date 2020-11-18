@@ -11,6 +11,7 @@
 @protocol PLCropOverlayDelegate <NSObject>
 
 @optional
+- (void)cropOverlayFileResizingSelected:(PLCropOverlay *)arg1;
 - (void)cropOverlayPause:(PLCropOverlay *)arg1;
 - (void)cropOverlayPlay:(PLCropOverlay *)arg1;
 - (void)cropOverlayWasCancelled:(PLCropOverlay *)arg1;

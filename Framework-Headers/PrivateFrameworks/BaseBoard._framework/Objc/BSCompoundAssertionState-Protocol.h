@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSSet;
+@class NSOrderedSet, NSSet;
 
 @protocol BSCompoundAssertionState
 
 @property (readonly, getter=isActive) BOOL active;
 @property (readonly) NSSet *context;
+@property (readonly) NSOrderedSet *orderedContext;
 
 @end
 

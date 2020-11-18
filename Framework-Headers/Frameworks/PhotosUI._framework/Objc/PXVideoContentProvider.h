@@ -6,18 +6,21 @@
 
 #import <PhotosUICore/PXObservable.h>
 
-@class NSString, PXVideoContentProviderLoadingResult;
+@class NSDictionary, NSNumber, NSString, PXVideoContentProviderLoadingResult;
 
 @interface PXVideoContentProvider : PXObservable
 {
     PXVideoContentProviderLoadingResult *_loadingResult;
     double _loadingProgress;
+    NSNumber *_videoAspectRatio;
     NSString *_contentIdentifier;
 }
 
+@property (readonly, nonatomic) NSDictionary *analyticsPayload;
 @property (readonly, copy, nonatomic) NSString *contentIdentifier; // @synthesize contentIdentifier=_contentIdentifier;
 @property (nonatomic) double loadingProgress; // @synthesize loadingProgress=_loadingProgress;
 @property (strong, nonatomic) PXVideoContentProviderLoadingResult *loadingResult; // @synthesize loadingResult=_loadingResult;
+@property (strong, nonatomic) NSNumber *videoAspectRatio; // @synthesize videoAspectRatio=_videoAspectRatio;
 
 - (void).cxx_destruct;
 - (void)beginLoadingWithPriority:(long long)arg1;

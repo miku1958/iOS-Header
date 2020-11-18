@@ -99,7 +99,7 @@
 - (BOOL)hasActiveFilters;
 - (BOOL)hasFilterRulesWithTable:(id)arg1 inBaseColumns:(id)arg2;
 - (BOOL)hasHiddenAtIndex:(unsigned int)arg1;
-- (void)hiddenStateChangedForViewIndex:(struct TSUViewColumnOrRowIndex)arg1;
+- (void)hiddenStateChangedForBaseIndex:(struct TSUModelColumnOrRowIndex)arg1;
 - (BOOL)hideAtBaseIndex:(struct TSUModelColumnOrRowIndex)arg1 forAction:(unsigned char)arg2;
 - (BOOL)hideAtUid:(const UUIDData_5fbc143e *)arg1 forAction:(unsigned char)arg2;
 - (BOOL)hideAtUid:(const UUIDData_5fbc143e *)arg1 forIndex:(struct TSUModelColumnOrRowIndex)arg2 forAction:(unsigned char)arg3;
@@ -140,7 +140,7 @@
 - (unsigned short)ownerKind;
 - (UUIDData_5fbc143e)ownerUID;
 - (struct TSCEValue)p_calculateAverageThresholdWithCalcEngine:(id)arg1 formulaCoord:(const struct TSUCellCoord *)arg2;
-- (struct TSCEValue)p_calculateTopOrBottomThresholdWithCalcEngine:(id)arg1 formulaCoord:(const struct TSUCellCoord *)arg2 isTop:(BOOL)arg3 keyScale:(int)arg4;
+- (struct TSCEValue)p_calculateTopOrBottomThresholdWithCalcEngine:(id)arg1 formulaCoord:(const struct TSUCellCoord *)arg2 isTop:(BOOL)arg3 keyScale:(unsigned char)arg4;
 - (id)p_createThresholdCellValue:(struct TSCEValue)arg1 locale:(id)arg2;
 - (void)p_registerAllFormulaToCalculationEngine;
 - (void)p_removeAllFormulaFromCalculationEngine;

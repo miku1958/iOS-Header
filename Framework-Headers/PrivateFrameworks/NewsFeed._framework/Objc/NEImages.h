@@ -18,6 +18,7 @@
 + (id)blockActivity;
 + (id)followChannelActivity;
 + (id)headphones;
++ (id)ignoreSuggestionActivity;
 + (id)saveActivity;
 + (id)saveSelectedActivity;
 + (id)showLessActivity;

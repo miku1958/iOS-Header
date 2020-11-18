@@ -11,11 +11,11 @@
 #import <HomeKitDaemon/HMDCameraStreamControlManagerProtocol-Protocol.h>
 #import <HomeKitDaemon/HMDStreamingManagerDelegate-Protocol.h>
 
-@class HMDCameraMediaConfigGenerator, HMDCameraStreamMetrics, HMDCameraSupportedConfigurationCache, HMDLocalStreamSession, NSString;
+@class HMDCameraLocalStreamSession, HMDCameraMediaConfigGenerator, HMDCameraStreamMetrics, HMDCameraSupportedConfigurationCache, NSString;
 
 @interface HMDCameraLocalStreamControlManager : HMDCameraStreamControlManager <HMDStreamingManagerDelegate, HMDCameraIDSSessionInitiatorDelegate, HMDCameraIDSDeviceConnectionSenderDelegate, HMDCameraStreamControlManagerProtocol>
 {
-    HMDLocalStreamSession *_streamSession;
+    HMDCameraLocalStreamSession *_streamSession;
     HMDCameraMediaConfigGenerator *_configGenerator;
     HMDCameraSupportedConfigurationCache *_supportedConfigCache;
 }
@@ -25,7 +25,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMDCameraStreamMetrics *streamMetrics;
-@property (strong, nonatomic) HMDLocalStreamSession *streamSession; // @synthesize streamSession=_streamSession;
+@property (strong, nonatomic) HMDCameraLocalStreamSession *streamSession; // @synthesize streamSession=_streamSession;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) HMDCameraSupportedConfigurationCache *supportedConfigCache; // @synthesize supportedConfigCache=_supportedConfigCache;
 
@@ -62,11 +62,11 @@
 - (void)sessionInitiator:(id)arg1 didSetup:(id)arg2;
 - (void)startStream:(id)arg1;
 - (void)stopStream:(id)arg1;
-- (void)streamingManager:(id)arg1 didStartRelay:(id)arg2;
 - (void)streamingManager:(id)arg1 didStartStream:(id)arg2 slotIdentifier:(id)arg3;
 - (void)streamingManagerDidNetworkDeteriorate:(id)arg1;
 - (void)streamingManagerDidNetworkImprove:(id)arg1;
 - (void)streamingManagerDidReceiveFirstFrame:(id)arg1 audioStreamSetting:(unsigned long long)arg2 aspectRatio:(id)arg3 slotIdentifier:(id)arg4;
+- (void)streamingManagerDidStartRelay:(id)arg1;
 - (void)streamingManagerDidStopStream:(id)arg1 error:(id)arg2;
 - (void)streamingManagerDidUpdateConfiguration:(id)arg1;
 - (void)updateAudioSetting:(unsigned long long)arg1;

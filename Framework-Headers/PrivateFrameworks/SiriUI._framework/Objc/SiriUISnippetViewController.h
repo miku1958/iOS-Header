@@ -22,6 +22,7 @@
     BOOL _confirmed;
     BOOL _cancelled;
     BOOL _virgin;
+    BOOL _navigating;
     BOOL _willAnimateConfirmation;
     BOOL _willAnimateCancellation;
     BOOL _awaitingSuccessOrFailureEvent;
@@ -55,6 +56,7 @@
 @property (nonatomic) BOOL isFullPadWidth; // @synthesize isFullPadWidth=_isFullPadWidth;
 @property (nonatomic) BOOL isTransparent; // @synthesize isTransparent=_isTransparent;
 @property (nonatomic, getter=isLoading) BOOL loading; // @synthesize loading=_loading;
+@property (nonatomic, getter=isNavigating) BOOL navigating; // @synthesize navigating=_navigating;
 @property (copy, nonatomic) NSString *navigationTitle; // @synthesize navigationTitle=_navigationTitle;
 @property (strong, nonatomic, getter=_previousConfirmationOptions, setter=_setPreviousConfirmationOptions:) SAUIConfirmationOptions *previousConfirmationOptions; // @synthesize previousConfirmationOptions=_previousConfirmationOptions;
 @property (nonatomic, getter=_isProvisional, setter=_setProvisional:) BOOL provisional; // @synthesize provisional=_provisional;
@@ -78,6 +80,8 @@
 - (BOOL)_hasConfirmationOrCancelledInsets;
 - (id)_headerView;
 - (long long)_insertionAnimation;
+- (void)_instrumentConfirmationOptionInteractionWithPreviousTurn:(id)arg1;
+- (id)_instrumentationManager;
 - (long long)_pinAnimationType;
 - (id)_privateDelegate;
 - (long long)_replacementAnimation;
@@ -111,9 +115,12 @@
 - (BOOL)shouldHidePriorViews;
 - (void)siriDidLayoutSnippetView;
 - (void)siriWillLayoutSnippetView;
+- (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (Class)transparentFooterViewClass;
 - (Class)transparentHeaderViewClass;
 - (BOOL)usePlatterStyle;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (BOOL)wantsToManageBackgroundColor;
 - (void)willCancel;
 - (void)willConfirm;

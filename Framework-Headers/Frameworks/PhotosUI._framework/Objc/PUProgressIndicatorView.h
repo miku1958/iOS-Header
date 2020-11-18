@@ -35,7 +35,10 @@
 @property (nonatomic, setter=_setCurrentState:) long long _currentState; // @synthesize _currentState=__currentState;
 @property (nonatomic, setter=_setTimestampBeganShowing:) double _timestampBeganShowing; // @synthesize _timestampBeganShowing=__timestampBeganShowing;
 @property (nonatomic) double currentProgress; // @synthesize currentProgress=_currentProgress;
+@property (readonly) double defaultProgressIndicatorDelay;
 @property (nonatomic, setter=setDeterminate:) BOOL isDeterminate; // @synthesize isDeterminate=_isDeterminate;
+@property (readonly) BOOL isStyleCompactBackground;
+@property (readonly) BOOL isStyleDark;
 @property (copy, nonatomic) NSString *localizedMessage; // @synthesize localizedMessage=_localizedMessage;
 @property (readonly, nonatomic, getter=isShowingProgress) BOOL showingProgress;
 @property (nonatomic) BOOL showsBackground; // @synthesize showsBackground=_showsBackground;

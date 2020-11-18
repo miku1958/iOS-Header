@@ -6,16 +6,16 @@
 
 #import <iTunesCloud/ICAsyncOperation.h>
 
-@class NSObject, SSVPlayActivityController;
+@class ICPlayActivityController, NSObject;
 @protocol OS_dispatch_queue;
 
 @interface ICFlushPlayActivityEventsOperation : ICAsyncOperation
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
-    SSVPlayActivityController *_playActivityController;
+    ICPlayActivityController *_playActivityController;
 }
 
-@property (readonly, nonatomic) SSVPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
+@property (readonly, nonatomic) ICPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
 
 - (void).cxx_destruct;
 - (void)execute;

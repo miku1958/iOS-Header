@@ -31,6 +31,7 @@
 - (double)_rangeForZoomLevel:(long long)arg1;
 - (id)init;
 - (id)portraitYValueRangeForRange:(id)arg1 zoomLevel:(long long)arg2 allowedDecimalPrecision:(long long)arg3;
+- (id)yAxisBounds;
 - (id)yValueRangeForRange:(id)arg1 zoomLevel:(long long)arg2;
 
 @end

@@ -23,14 +23,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (BOOL)isSupportedEvent:(id)arg1;
 + (id)logCategory;
 + (id)sharedObserver;
-+ (BOOL)shouldSubmitEvent:(id)arg1;
-+ (id)subTypeForEvent:(id)arg1;
 + (id)supportedEventTypes;
 - (void).cxx_destruct;
-- (void)dispatcher:(id)arg1 didReceiveEvent:(id)arg2;
+- (void)didReceiveEventFromDispatcher:(id)arg1 withLogContext:(id)arg2;
 - (id)init;
+- (BOOL)shouldSubmitEvent:(id)arg1 withLogContext:(id)arg2;
 - (void)start;
 - (void)stop;
 

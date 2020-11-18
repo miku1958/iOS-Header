@@ -41,6 +41,7 @@
     BOOL _appleMusicForce;
     NSObject<OS_dispatch_source> *_appleMusicTimeoutTimer;
     int _preflightAppleMusicState;
+    int _appleStoreMode;
     int _preflightMiscState;
     BOOL _locationEnabled;
     BOOL _locationDecided;
@@ -208,6 +209,7 @@
 - (void)_homeKitUpdateiCloudSwitchState:(BOOL)arg1;
 - (void)_invalidate;
 - (void)_logMetrics;
+- (unsigned long long)_peerDeviceSupportedStereoPairVersions;
 - (void)_playLocalSoundID:(int)arg1 remoteSoundID:(int)arg2;
 - (void)_playLocalSoundID:(int)arg1 remoteSoundID:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_preflightAppleMusic;

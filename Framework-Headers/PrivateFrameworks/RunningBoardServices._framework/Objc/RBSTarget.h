@@ -6,32 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
 #import <RunningBoardServices/RBSProcessMatching-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString, RBSProcessIdentifier, RBSProcessIdentity;
 
-@interface RBSTarget : NSObject <BSXPCSecureCoding, RBSProcessMatching, NSCopying>
+@interface RBSTarget : NSObject <RBSXPCSecureCoding, RBSProcessMatching, NSCopying>
 {
     RBSProcessIdentifier *_processIdentifier;
     RBSProcessIdentity *_processIdentity;
     NSString *_environment;
-    NSString *_picoDesc;
+    NSString *_shortDescription;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSString *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) NSString *picoDesc; // @synthesize picoDesc=_picoDesc;
 @property (readonly, nonatomic) RBSProcessIdentifier *processIdentifier; // @synthesize processIdentifier=_processIdentifier;
 @property (readonly, nonatomic) RBSProcessIdentity *processIdentity; // @synthesize processIdentity=_processIdentity;
+@property (readonly, nonatomic) NSString *shortDescription; // @synthesize shortDescription=_shortDescription;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isSystem) BOOL system;
 
 + (id)currentProcess;
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 + (id)systemTarget;
 + (id)targetWithPid:(int)arg1;
 + (id)targetWithPid:(int)arg1 environmentIdentifier:(id)arg2;
@@ -40,13 +40,11 @@
 + (id)targetWithProcessIdentity:(id)arg1;
 + (id)targetWithProcessIdentity:(id)arg1 environmentIdentifier:(id)arg2;
 - (void).cxx_destruct;
-- (id)_initWithProcessIdentifier:(id)arg1 processIdentity:(id)arg2 environmentIdentifier:(id)arg3 euid:(unsigned int)arg4;
 - (id)copyWithEuid:(unsigned int)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (unsigned int)euid;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)init;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)matchesProcess:(id)arg1;
 - (id)processPredicate;

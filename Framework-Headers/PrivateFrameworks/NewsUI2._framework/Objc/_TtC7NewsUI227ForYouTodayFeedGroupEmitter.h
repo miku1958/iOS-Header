@@ -14,6 +14,7 @@
     MISSING_TYPE *knobs;
     MISSING_TYPE *formatService;
     MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *personalizationService;
     MISSING_TYPE *name;
 }
 

@@ -30,6 +30,7 @@
     NSTimer *_trashDeletionTimer;
     NSObject<OS_dispatch_queue> *_backgroundTaskQueue;
     NSDictionary *_persistentStoresByAccountId;
+    unsigned long long _countOfPerformBackgroundTask;
 }
 
 @property (strong, nonatomic) ICAccountUtilities *accountUtilities; // @synthesize accountUtilities=_accountUtilities;
@@ -38,6 +39,7 @@
 @property (readonly, nonatomic) NSString *containerIdentifier;
 @property (nonatomic) unsigned long long contextOptions; // @synthesize contextOptions=_contextOptions;
 @property (strong, nonatomic) ICManagedObjectContextUpdater *contextUpdater; // @synthesize contextUpdater=_contextUpdater;
+@property (nonatomic) unsigned long long countOfPerformBackgroundTask; // @synthesize countOfPerformBackgroundTask=_countOfPerformBackgroundTask;
 @property (strong, nonatomic) ICNotesCrossProcessChangeCoordinator *crossProcessChangeCoordinator; // @synthesize crossProcessChangeCoordinator=_crossProcessChangeCoordinator;
 @property (strong, nonatomic) ICNote *currentNote; // @synthesize currentNote=_currentNote;
 @property (readonly, nonatomic) ICFolderCustomNoteSortType *customNoteSortType;
@@ -49,6 +51,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isAllNotesContainer;
 @property (readonly, nonatomic) BOOL isSharedContext;
+@property (readonly, nonatomic) BOOL isSharedReadOnly;
 @property (readonly, nonatomic) BOOL isSharedViaICloud;
 @property (readonly, nonatomic) BOOL isTrashFolder;
 @property (strong) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
@@ -65,6 +68,7 @@
 @property (readonly, nonatomic) NSArray *visibleSubFolders;
 
 + (void)crashThisApp;
++ (void)enableLocalAccount;
 + (id)filenameFromFileWrapper:(id)arg1;
 + (BOOL)hasContextOptions:(unsigned long long)arg1;
 + (BOOL)hasSharedContext;
@@ -72,11 +76,17 @@
 + (BOOL)isSingleRunningNotesApp;
 + (BOOL)legacyNotesDisabled;
 + (void)markOldTrashedNotesForDeletionInContext:(id)arg1;
++ (id)performBackgroundTaskSerialQueue;
++ (void)resetAppContainer;
++ (void)resetAppState;
 + (id)searchIndexerDataSource;
 + (void)setLegacyNotesDisabled:(BOOL)arg1;
 + (id)sharedContext;
++ (id)snapshotManagedObjectContextForContainer:(id)arg1;
 + (void)startSharedContextWithOptions:(unsigned long long)arg1;
 + (BOOL)updateSharedStateFile:(id)arg1 toState:(BOOL)arg2 error:(id *)arg3;
++ (void)useContainerNamed:(id)arg1;
++ (id)workerManagedObjectContextForContainer:(id)arg1;
 - (void).cxx_destruct;
 - (id)accountName;
 - (void)accountsDidChange:(id)arg1;
@@ -93,10 +103,10 @@
 - (id)defaultPersistentStoreFromPersistentStores:(id)arg1;
 - (void)deleteEverything;
 - (void)destroyPersistentStore;
-- (id)detailForTableViewCell;
 - (id)fetchedResultsControllerForFetchRequest:(id)arg1 sectionNameKeyPath:(id)arg2;
 - (BOOL)hasAnyContextOptions:(unsigned long long)arg1;
 - (BOOL)hasContextOptions:(unsigned long long)arg1;
+- (id)inMemoryPersistentStoreFromPersistentStores:(id)arg1;
 - (id)initWithOptions:(unsigned long long)arg1;
 - (BOOL)isDeleted;
 - (BOOL)isModernCustomFolder;
@@ -105,9 +115,10 @@
 - (void)managedObjectContextUpdater:(id)arg1 objectDidChange:(id)arg2;
 - (BOOL)mergeWithSubFolderMergeableData:(id)arg1;
 - (id)newFetchedResultsControllerForAllAccounts;
-- (id)newWorkerManagedObjectContext;
 - (BOOL)noteIsVisible:(id)arg1;
 - (id)noteVisibilityTestingForSearchingAccount;
+- (void)performBackgroundTask:(CDUnknownBlockType)arg1;
+- (void)performSnapshotBackgroundTask:(CDUnknownBlockType)arg1;
 - (id)persistentContainerQueue;
 - (id)persistentStoreCoordinator;
 - (id)persistentStoreForAccountID:(id)arg1;
@@ -130,14 +141,18 @@
 - (void)saveSubFolderMergeableDataIfNeeded;
 - (void)setupCrossProcessChangeCoordinator;
 - (void)setupTrashDeletionTimer;
+- (id)snapshotManagedObjectContext;
+- (void)startIndexingWithCoreSpotlightDelegateForDescription:(id)arg1 coordinator:(id)arg2;
 - (void)startSearchIndexerChangeObservingIfNecessary;
 - (id)storeFilenameForAccountIdentifier:(id)arg1;
 - (BOOL)supportsVisibilityTestingType:(long long)arg1;
 - (id)titleForNavigationBar;
 - (id)titleForTableViewCell;
+- (void)updateAccounts;
 - (void)updateSubFolderMergeableDataChangeCount;
 - (id)visibleNotes;
 - (unsigned long long)visibleNotesCount;
+- (id)workerManagedObjectContext;
 
 @end
 

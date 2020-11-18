@@ -12,6 +12,7 @@
 - (void)ams_addAcceptLanguageHeader;
 - (void)ams_addAnisetteHeadersForAccount:(id)arg1 type:(long long)arg2 bag:(id)arg3;
 - (void)ams_addAuthKitHeaders;
+- (void)ams_addAuthorizationHeaderForAccount:(id)arg1;
 - (void)ams_addBiometricsHeadersForAccount:(id)arg1 options:(id)arg2;
 - (void)ams_addCacheBusterParameter;
 - (void)ams_addCachePolicyHeader;

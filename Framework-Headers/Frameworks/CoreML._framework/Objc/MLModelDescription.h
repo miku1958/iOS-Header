@@ -8,7 +8,7 @@
 
 #import <CoreML/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSOrderedSet, NSString, NSURL;
+@class MLLayerPath, NSArray, NSDictionary, NSOrderedSet, NSString, NSURL;
 
 @interface MLModelDescription : NSObject <NSSecureCoding>
 {
@@ -18,17 +18,21 @@
     NSString *_predictedFeatureName;
     NSString *_predictedProbabilitiesName;
     NSDictionary *_metadata;
+    NSArray *_classLabels;
     NSOrderedSet *_inputFeatureNames;
     NSOrderedSet *_outputFeatureNames;
     NSURL *_modelURL;
     NSDictionary *_trainingInputDescriptionsByName;
     NSDictionary *_parameterDescriptionsByKey;
+    MLLayerPath *_modelPath;
 }
 
+@property (copy, nonatomic) NSArray *classLabels; // @synthesize classLabels=_classLabels;
 @property (readonly, nonatomic) NSDictionary *inputDescriptionsByName; // @synthesize inputDescriptionsByName=_inputDescriptionsByName;
 @property (strong) NSOrderedSet *inputFeatureNames; // @synthesize inputFeatureNames=_inputFeatureNames;
 @property (nonatomic) BOOL isUpdatable; // @synthesize isUpdatable=_isUpdatable;
 @property (readonly, nonatomic) NSDictionary *metadata; // @synthesize metadata=_metadata;
+@property (strong, nonatomic) MLLayerPath *modelPath; // @synthesize modelPath=_modelPath;
 @property (strong, nonatomic) NSURL *modelURL; // @synthesize modelURL=_modelURL;
 @property (readonly, nonatomic) NSDictionary *outputDescriptionsByName; // @synthesize outputDescriptionsByName=_outputDescriptionsByName;
 @property (strong) NSOrderedSet *outputFeatureNames; // @synthesize outputFeatureNames=_outputFeatureNames;
@@ -49,6 +53,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInputDescriptions:(id)arg1 outputDescriptions:(id)arg2 predictedFeatureName:(id)arg3 predictedProbabilitiesName:(id)arg4 metadata:(id)arg5;
 - (id)initWithInputDescriptions:(id)arg1 outputDescriptions:(id)arg2 predictedFeatureName:(id)arg3 predictedProbabilitiesName:(id)arg4 trainingInputDescriptions:(id)arg5 metadata:(id)arg6;
+- (id)initWithInputDescriptionsAndFeatureNames:(id)arg1 outputDescriptions:(id)arg2 predictedFeatureName:(id)arg3 predictedProbabilitiesName:(id)arg4 trainingInputDescriptions:(id)arg5 inputFeatureNames:(id)arg6 outputFeatureNames:(id)arg7 metadata:(id)arg8;
 - (id)initWithModelDescriptionSpecification:(struct _MLModelDescriptionSpecification *)arg1 error:(id *)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToDescription:(id)arg1;

@@ -13,16 +13,19 @@
 __attribute__((visibility("hidden")))
 @interface CKCNContactPickerViewController : CNContactPickerViewController <CKAdaptivePresentedControllerProtocol>
 {
+    BOOL _wantsWindowedPresentation;
+    BOOL _preserveModalPresentationStyle;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL preserveModalPresentationStyle; // @synthesize preserveModalPresentationStyle=_preserveModalPresentationStyle;
+@property (nonatomic) BOOL shouldHidePresentingWindow;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL wantsWindowedPresentation; // @synthesize wantsWindowedPresentation=_wantsWindowedPresentation;
 
-- (BOOL)preserveModalPresentationStyle;
 - (BOOL)shouldAutorotate;
-- (BOOL)wantsWindowedPresentation;
 
 @end
 

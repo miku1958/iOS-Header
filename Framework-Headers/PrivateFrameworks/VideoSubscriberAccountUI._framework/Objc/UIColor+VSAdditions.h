@@ -7,6 +7,16 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (VSAdditions)
++ (id)vsa_dynamicColorWithLightStyleColor:(id)arg1 darkStyleColor:(id)arg2;
++ (id)vsa_opacityADarkColor;
++ (id)vsa_opacityADynamicColor;
++ (id)vsa_opacityALightColor;
++ (id)vsa_opacityBDarkColor;
++ (id)vsa_opacityBDynamicColor;
++ (id)vsa_opacityBLightColor;
++ (id)vsa_opacityCDarkColor;
++ (id)vsa_opacityCDynamicColor;
++ (id)vsa_opacityCLightColor;
 + (id)vsa_primaryBackgroundColor;
 + (id)vsa_primaryFillColor;
 + (id)vsa_primaryLabelColor;

@@ -21,7 +21,11 @@
 @property (readonly, nonatomic) double timeRemaining; // @synthesize timeRemaining=_timeRemaining;
 @property (nonatomic) unsigned long long timeRemainingColor; // @synthesize timeRemainingColor=_timeRemainingColor;
 
++ (id)_greenColor;
++ (id)_orangeColor;
++ (id)_redColor;
 + (BOOL)supportsSecureCoding;
++ (id)timeRemainingColorForColor:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)_init;
 - (id)description;

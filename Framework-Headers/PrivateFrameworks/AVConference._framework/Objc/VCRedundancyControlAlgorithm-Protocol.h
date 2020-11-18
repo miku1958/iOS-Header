@@ -11,6 +11,9 @@
 @property (readonly, nonatomic) double redundancyInterval;
 @property (readonly, nonatomic) unsigned int redundancyPercentage;
 
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_b21f1e06)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_56e8fa21)arg1;
+
+@optional
+- (CDStruct_cd7ddd1c)getFecLevelPerFrameSizeVector;
 @end
 

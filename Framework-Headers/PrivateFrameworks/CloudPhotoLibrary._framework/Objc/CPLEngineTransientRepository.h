@@ -40,6 +40,7 @@
 - (BOOL)hasMingledRecordsForScopeWithIdentifier:(id)arg1;
 - (BOOL)hasRecordWithScopedIdentifier:(id)arg1;
 - (BOOL)hasUnmingledRecordsForScopeWithIdentifier:(id)arg1;
+- (BOOL)hasUnmingledRecordsWithScopeFilter:(id)arg1;
 - (id)initWithEngineStore:(id)arg1 name:(id)arg2;
 - (BOOL)openWithError:(id *)arg1;
 - (BOOL)popChangeBatch:(id *)arg1 error:(id *)arg2;

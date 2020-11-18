@@ -20,6 +20,7 @@
 @property (readonly) Class superclass;
 
 - (id)_personNodesToAnalyzeInGraph:(id)arg1;
+- (id)personNodesToAnalyzeInGraph:(id)arg1 forAppleInternal:(BOOL)arg2;
 - (void)runWithGraphUpdate:(id)arg1 progressBlock:(CDUnknownBlockType)arg2;
 - (BOOL)shouldRunWithGraphUpdate:(id)arg1;
 

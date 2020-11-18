@@ -6,9 +6,11 @@
 
 #import <Intents/INCodableAttributeMetadata.h>
 
-@class NSNumber;
+#import <Intents/INCodableAttributeDefaultValueProviding-Protocol.h>
 
-@interface INCodableTimeIntervalAttributeMetadata : INCodableAttributeMetadata
+@class NSNumber, NSString;
+
+@interface INCodableTimeIntervalAttributeMetadata : INCodableAttributeMetadata <INCodableAttributeDefaultValueProviding>
 {
     long long _defaultUnit;
     long long _minimumUnit;
@@ -18,15 +20,41 @@
     NSNumber *_maximumValue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) long long defaultUnit; // @synthesize defaultUnit=_defaultUnit;
 @property (strong, nonatomic) NSNumber *defaultValue; // @synthesize defaultValue=_defaultValue;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) long long maximumUnit; // @synthesize maximumUnit=_maximumUnit;
 @property (strong, nonatomic) NSNumber *maximumValue; // @synthesize maximumValue=_maximumValue;
 @property (nonatomic) long long minimumUnit; // @synthesize minimumUnit=_minimumUnit;
 @property (strong, nonatomic) NSNumber *minimumValue; // @synthesize minimumValue=_minimumValue;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionDefaultUnitKey;
+- (id)__INCodableDescriptionDefaultValueKey;
+- (id)__INCodableDescriptionMaximumUnitKey;
+- (id)__INCodableDescriptionMaximumValueKey;
+- (id)__INCodableDescriptionMinimumUnitKey;
+- (id)__INCodableDescriptionMinimumValueKey;
+- (id)__INCodableDescriptionUnitKey;
+- (id)__INIntentResponseCodableDescriptionDefaultUnitKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionMaximumUnitKey;
+- (id)__INIntentResponseCodableDescriptionMaximumValueKey;
+- (id)__INIntentResponseCodableDescriptionMinimumUnitKey;
+- (id)__INIntentResponseCodableDescriptionMinimumValueKey;
+- (id)__INIntentResponseCodableDescriptionUnitKey;
+- (id)__INTypeCodableDescriptionDefaultUnitKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionMaximumUnitKey;
+- (id)__INTypeCodableDescriptionMaximumValueKey;
+- (id)__INTypeCodableDescriptionMinimumUnitKey;
+- (id)__INTypeCodableDescriptionMinimumValueKey;
+- (id)__INTypeCodableDescriptionUnitKey;
+- (id)defaultValueForIntentDefaultValueProvider;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

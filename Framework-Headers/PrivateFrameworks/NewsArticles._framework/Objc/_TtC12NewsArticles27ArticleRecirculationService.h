@@ -17,7 +17,7 @@
     MISSING_TYPE *articleProviderService;
     MISSING_TYPE *historyService;
     MISSING_TYPE *feedTransformationEndOfArticleFactory;
-    MISSING_TYPE *feedPersonalizingEngine;
+    MISSING_TYPE *personalizationService;
 }
 
 @end

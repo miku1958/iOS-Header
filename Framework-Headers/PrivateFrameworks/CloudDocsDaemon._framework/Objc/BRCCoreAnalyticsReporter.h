@@ -11,7 +11,8 @@
 }
 
 + (id)dictionaryForErrorsByZone:(id)arg1 wantPrivateZone:(BOOL)arg2;
-+ (void)sendTelemetryReport:(id)arg1;
++ (void)newAppTelemetryMetricEvent:(id)arg1;
++ (void)sendTelemetryEvent:(id)arg1 withReport:(id)arg2;
 + (id)telemetryDictionaryToUploadForError:(id)arg1 errorMessage:(id)arg2 count:(id)arg3 syncType:(id)arg4 totalItemsCount:(id)arg5 zoneType:(id)arg6 zoneCountsOnly:(BOOL)arg7 isFolderSharingEnabled:(BOOL)arg8 dsid:(id)arg9 rampNumber:(id)arg10 lastFailureDate:(id)arg11 pcsState:(id)arg12;
 + (BOOL)uploadLoadErrorsAsIndividualEvents:(id)arg1 syncType:(id)arg2 totalItemsCount:(unsigned long long)arg3 zoneCountsOnly:(BOOL)arg4 isFolderSharingEnabled:(BOOL)arg5 dsid:(id)arg6 rampNumber:(id)arg7;
 + (void)uploadMetricsReport:(id)arg1;

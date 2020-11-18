@@ -22,6 +22,7 @@
 @property (readonly, copy, nonatomic) BSSettings *changes; // @synthesize changes=_changes;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
@@ -29,12 +30,12 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)applyToMutableData:(id)arg1;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dataByApplyingToData:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSIMOneInfoDiff:(id)arg1 SIMTwoInfoDiff:(id)arg2 changes:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

@@ -6,9 +6,11 @@
 
 #import <MediaPlaybackCore/MPMusicPlayerControllerServer-Protocol.h>
 
-@class MPMusicPlayerControllerApplicationQueueModifications;
+@class MPMusicPlayerControllerApplicationQueueModifications, NSDictionary;
 
 @protocol MPMusicPlayerControllerApplicationServer <MPMusicPlayerControllerServer>
+- (void)beginPlaybackAtHostTime:(NSDictionary *)arg1;
 - (void)performQueueModifications:(MPMusicPlayerControllerApplicationQueueModifications *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)prerollWithCompletion:(void (^)(BOOL))arg1;
 @end
 

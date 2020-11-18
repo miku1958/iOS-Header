@@ -12,5 +12,7 @@
 
 @optional
 - (BOOL)syncEngine:(CKSyncEngine *)arg1 shouldFetchChangesForZoneID:(CKRecordZoneID *)arg2;
+- (void)syncEngineDidBeginFetchingChanges:(CKSyncEngine *)arg1;
+- (void)syncEngineDidEndFetchingChanges:(CKSyncEngine *)arg1;
 @end
 

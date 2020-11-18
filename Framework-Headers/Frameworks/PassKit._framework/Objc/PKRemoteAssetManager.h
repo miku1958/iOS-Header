@@ -6,15 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSMutableDictionary, NSURL;
+@class NSArray, NSMutableArray, NSMutableDictionary, PKDirectoryCoordinator;
 @protocol OS_dispatch_queue;
 
 @interface PKRemoteAssetManager : NSObject
 {
-    NSURL *_directoryURL;
+    PKDirectoryCoordinator *_coordinator;
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableDictionary *_manifestItemsByRelativeURL;
     NSMutableDictionary *_sha1HexFromRelativeManifest;
+    struct os_unfair_lock_s _lock;
     NSMutableArray *_completionHandlers;
     NSArray *_seids;
 }
@@ -31,12 +32,14 @@
 - (BOOL)assetExistsLocally:(id)arg1;
 - (id)deviceSpecificItems;
 - (id)deviceSpecificItemsForScreenScale:(double)arg1 suffix:(id)arg2;
-- (void)downloadRemoteAssetItem:(id)arg1 withCloudStoreCoordinatorDelegate:(id)arg2 shouldWriteData:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)downloadRemoteAssetItem:(id)arg1 withCloudStoreCoordinatorDelegate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)downloadRemoteAssetsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 cloudStoreCoordinatorDelegate:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)downloadRemoteAssetsWithScreenScale:(double)arg1 suffix:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)hasEncryptedDeviceSpecificItemWithRelativePath:(id)arg1;
-- (id)initWithFileURL:(id)arg1 queue:(id)arg2;
+- (id)init;
+- (id)initWithDirectoryCoordinator:(id)arg1;
+- (id)initWithFileURL:(id)arg1;
 - (id)itemWithRelativePath:(id)arg1;
 - (id)pendingRemoteAssetsItems;
 - (id)pendingRemoteAssetsItemsForScreenScale:(double)arg1 suffix:(id)arg2;

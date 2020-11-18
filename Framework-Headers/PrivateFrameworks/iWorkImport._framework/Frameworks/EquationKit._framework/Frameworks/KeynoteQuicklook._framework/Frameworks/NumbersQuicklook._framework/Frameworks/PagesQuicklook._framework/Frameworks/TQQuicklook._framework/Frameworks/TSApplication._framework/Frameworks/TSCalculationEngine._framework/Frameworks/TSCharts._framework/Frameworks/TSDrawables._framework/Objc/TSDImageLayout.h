@@ -42,6 +42,7 @@
 
 - (void).cxx_destruct;
 - (struct CGRect)boundsInfluencingExteriorWrap;
+- (id)childInfosForChildLayouts;
 - (struct CGRect)computeAlignmentFrameInRoot:(BOOL)arg1;
 - (id)computeLayoutGeometry;
 - (void)dealloc;

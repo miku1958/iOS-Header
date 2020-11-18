@@ -20,7 +20,7 @@
 - (BOOL)canAspectRatioLockBeChangedByUser;
 - (BOOL)canFlip;
 - (struct CGRect)computeAlignmentFrameInRoot:(BOOL)arg1;
-- (struct CGRect)frameForCulling;
+- (struct CGRect)frameForCullingWithBaseFrame:(struct CGRect)arg1 additionalTransform:(struct CGAffineTransform)arg2;
 - (id)initWithInfo:(id)arg1;
 - (id)layoutGeometryFromInfo;
 - (BOOL)resizeMayChangeAspectRatio;

@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) GEOTileRequest *tileRequest; // @synthesize tileRequest=_tileRequest;
 
 + (unsigned long long)expiringTilesetsCount;
++ (id)locationSensitiveTilesets;
 + (CDStruct_e4886f83 *)newExpiringTilesets;
 + (unsigned char)tileProviderIdentifier;
 - (void).cxx_destruct;

@@ -9,6 +9,9 @@
 @interface _TtC5TeaUI20NavigationController (TeaUI)
 
 @property (nonatomic) BOOL hidesBottomBarWhenPushed;
+@property (nonatomic, readonly) BOOL isSearchResultsPane;
+@property (nonatomic, readonly) long long preferredStatusBarStyle;
+@property (nonatomic, readonly) long long preferredTrailingStatusBarStyle;
 
 @end
 

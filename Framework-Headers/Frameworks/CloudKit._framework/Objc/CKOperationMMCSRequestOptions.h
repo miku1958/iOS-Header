@@ -12,9 +12,11 @@
 {
     BOOL _resumableContainerLimpMode;
     BOOL _chunkingLibraryCorruptionMode;
+    BOOL _insufficientDiskSpaceMode;
 }
 
 @property (nonatomic) BOOL chunkingLibraryCorruptionMode; // @synthesize chunkingLibraryCorruptionMode=_chunkingLibraryCorruptionMode;
+@property (nonatomic) BOOL insufficientDiskSpaceMode; // @synthesize insufficientDiskSpaceMode=_insufficientDiskSpaceMode;
 @property (nonatomic) BOOL resumableContainerLimpMode; // @synthesize resumableContainerLimpMode=_resumableContainerLimpMode;
 
 + (BOOL)supportsSecureCoding;

@@ -40,7 +40,6 @@ __attribute__((visibility("hidden")))
     AVTelephonyInterface *_telephonyInterface;
     BOOL isValid;
     int deviceRole;
-    void *_audioMediaControlInfoGenerator;
     id syncSourceDelegate;
     VCAudioIO *_audioIO;
     BOOL _isMuted;
@@ -60,6 +59,7 @@ __attribute__((visibility("hidden")))
     VCAudioPowerSpectrumSource *_outputAudioPowerSpectrumSource;
 }
 
+@property (readonly, nonatomic) unsigned int actualAudioSendingBitrate;
 @property (strong) VCAudioIO *audioIO; // @synthesize audioIO=_audioIO;
 @property (strong) VCAudioTransmitter *audioTransmitter; // @synthesize audioTransmitter=_audioTransmitter;
 @property (readonly) unsigned int conferenceID; // @synthesize conferenceID;
@@ -97,7 +97,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)createAudioReceiver;
 - (BOOL)createAudioTransmitter:(long long)arg1 streamIDs:(id)arg2;
 - (void)createReportSSRCListWithStreamConfigs:(id)arg1;
-- (id)createTransport;
+- (id)createTransportWithStreamConfig:(id)arg1;
 - (void)dealloc;
 - (void)didResumeAudioIO:(id)arg1;
 - (void)didSuspendAudioIO:(id)arg1;
@@ -151,9 +151,12 @@ __attribute__((visibility("hidden")))
 - (void)setState:(int)arg1;
 - (void)setStreamDirection:(long long)arg1;
 - (void)setStreamIDs:(id)arg1 repairStreamIDs:(id)arg2;
+- (void)setTargetBitrate:(unsigned int)arg1 rateChangeCounter:(unsigned int)arg2;
+- (void)setVCStatistics:(CDStruct_56e8fa21)arg1;
 - (void)setupAudioPowerSpectrum;
 - (BOOL)setupAudioStreamWithClientPid:(int)arg1;
 - (BOOL)setupPayloads;
+- (void)setupReportingAgent:(id)arg1;
 - (BOOL)setupSourceTransport:(id)arg1;
 - (void)startAudioWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)stateEnter;

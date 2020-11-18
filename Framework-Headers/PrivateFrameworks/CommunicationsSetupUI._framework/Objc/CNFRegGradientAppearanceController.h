@@ -6,6 +6,7 @@
 
 #import <CommunicationsSetupUI/CNFRegAppearanceController.h>
 
+__attribute__((visibility("hidden")))
 @interface CNFRegGradientAppearanceController : CNFRegAppearanceController
 {
 }

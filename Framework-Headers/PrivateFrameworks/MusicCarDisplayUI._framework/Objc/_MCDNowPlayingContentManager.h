@@ -7,24 +7,29 @@
 #import <objc/NSObject.h>
 
 #import <MusicCarDisplayUI/CARSessionObserving-Protocol.h>
+#import <MusicCarDisplayUI/CPUINowPlayingViewControllerDataSource-Protocol.h>
+#import <MusicCarDisplayUI/CPUINowPlayingViewControllerDelegate-Protocol.h>
 #import <MusicCarDisplayUI/MCDNowPlayingContentManagerProtocol-Protocol.h>
-#import <MusicCarDisplayUI/MCDNowPlayingViewControllerDataSource-Protocol.h>
-#import <MusicCarDisplayUI/MCDNowPlayingViewControllerDelegate-Protocol.h>
 #import <MusicCarDisplayUI/MPRequestResponseControllerDelegate-Protocol.h>
 #import <MusicCarDisplayUI/UITableViewDataSource-Protocol.h>
 #import <MusicCarDisplayUI/UITableViewDelegate-Protocol.h>
 
-@class CARSessionStatus, MPArtworkCatalog, MPCPlayerResponse, MPCPlayerResponseItem, MPModelPlaylist, MPModelPlaylistEntry, MPModelRadioStation, MPModelSong, MPRequestResponseController, MSVTimer, NSString, UIAlertController, UIImage, UITableView;
+@class CARSessionStatus, MPArtworkCatalog, MPCPlayerResponse, MPCPlayerResponseItem, MPModelPlaylist, MPModelPlaylistEntry, MPModelRadioStation, MPModelSong, MPRequestResponseController, MSVTimer, NSMutableDictionary, NSString, UIAlertController, UIImage, UITableView;
 @protocol MCDNowPlayingContentManagerDelegate, MCDNowPlayingDataSource;
 
-@interface _MCDNowPlayingContentManager : NSObject <MPRequestResponseControllerDelegate, UITableViewDelegate, UITableViewDataSource, CARSessionObserving, MCDNowPlayingContentManagerProtocol, MCDNowPlayingViewControllerDataSource, MCDNowPlayingViewControllerDelegate>
+@interface _MCDNowPlayingContentManager : NSObject <MPRequestResponseControllerDelegate, UITableViewDelegate, UITableViewDataSource, CARSessionObserving, MCDNowPlayingContentManagerProtocol, CPUINowPlayingViewControllerDataSource, CPUINowPlayingViewControllerDelegate>
 {
     BOOL limitedUI;
+    BOOL _allowsAlbumArt;
     Class tableCellClass;
     MPModelSong *currentPlayingSong;
     MPModelPlaylistEntry *currentPlayingPlaylistEntry;
     MPModelPlaylist *currentPlayingPlaylist;
     MPModelRadioStation *currentPlayingRadioStation;
+    id<MCDNowPlayingContentManagerDelegate> _delegate;
+    MPCPlayerResponse *_lastReceivedResponse;
+    UITableView *_tableView;
+    MPCPlayerResponseItem *_nowPlayingItem;
     MPRequestResponseController *_requestController;
     UIImage *_albumArtwork;
     MPArtworkCatalog *_artworkCatalog;
@@ -32,15 +37,15 @@
     NSString *_bundleID;
     CARSessionStatus *_carSessionStatus;
     UIAlertController *_alertController;
+    long long _playerState;
+    NSMutableDictionary *_artworkCache;
     MSVTimer *_artworkTimer;
-    id<MCDNowPlayingContentManagerDelegate> _delegate;
-    MPCPlayerResponse *_lastReceivedResponse;
-    UITableView *_tableView;
-    MPCPlayerResponseItem *_nowPlayingItem;
 }
 
 @property (strong, nonatomic) UIImage *albumArtwork; // @synthesize albumArtwork=_albumArtwork;
 @property (strong, nonatomic) UIAlertController *alertController; // @synthesize alertController=_alertController;
+@property (nonatomic) BOOL allowsAlbumArt; // @synthesize allowsAlbumArt=_allowsAlbumArt;
+@property (strong, nonatomic) NSMutableDictionary *artworkCache; // @synthesize artworkCache=_artworkCache;
 @property (strong, nonatomic) MPArtworkCatalog *artworkCatalog; // @synthesize artworkCatalog=_artworkCatalog;
 @property (strong, nonatomic) MSVTimer *artworkTimer; // @synthesize artworkTimer=_artworkTimer;
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
@@ -58,6 +63,7 @@
 @property (nonatomic) BOOL limitedUI; // @synthesize limitedUI;
 @property (readonly, copy, nonatomic) NSString *nowPlayingBundleID;
 @property (strong, nonatomic) MPCPlayerResponseItem *nowPlayingItem; // @synthesize nowPlayingItem=_nowPlayingItem;
+@property (nonatomic) long long playerState; // @synthesize playerState=_playerState;
 @property (strong, nonatomic) MPRequestResponseController *requestController; // @synthesize requestController=_requestController;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) Class tableCellClass; // @synthesize tableCellClass;
@@ -68,6 +74,7 @@
 - (void)_performChangeRequest:(id)arg1;
 - (void)_performRequest;
 - (void)_processResponse:(id)arg1 error:(id)arg2;
+- (BOOL)_sessionAllowsAlbumArt:(id)arg1;
 - (id)_setupRequest;
 - (BOOL)_shouldShowPlaybackQueueForItemCount:(long long)arg1;
 - (void)_showPlaceholderArtwork;
@@ -77,22 +84,29 @@
 - (void)beginRequestObservation;
 - (void)controller:(id)arg1 defersResponseReplacement:(CDUnknownBlockType)arg2;
 - (void)dealloc;
-- (CDStruct_fce57115)durationSnapshotForNowPlayingViewController:(id)arg1;
+- (CDStruct_1c9ae071)durationSnapshotForNowPlayingViewController:(id)arg1;
 - (void)endRequestObservation;
 - (id)initWithDelegate:(id)arg1 dataSource:(id)arg2 bundleID:(id)arg3;
 - (void)modelResponseDidInvalidate:(id)arg1;
 - (BOOL)nowPlayingViewControllerCanRepeat:(id)arg1;
+- (BOOL)nowPlayingViewControllerCanShowAlbumArt:(id)arg1;
+- (BOOL)nowPlayingViewControllerCanShowAlbumLink:(id)arg1;
 - (BOOL)nowPlayingViewControllerCanShowChangePlaybackRate:(id)arg1;
+- (BOOL)nowPlayingViewControllerCanShowUpNext:(id)arg1;
 - (BOOL)nowPlayingViewControllerCanShuffle:(id)arg1;
 - (void)nowPlayingViewControllerChangePlaybackRate:(id)arg1;
 - (id)nowPlayingViewControllerGetPlaybackRate:(id)arg1;
 - (BOOL)nowPlayingViewControllerIsPlaying:(id)arg1;
 - (BOOL)nowPlayingViewControllerIsShowingExplicitTrack:(id)arg1;
+- (BOOL)nowPlayingViewControllerShouldUseMusicExplicitGlyph:(id)arg1;
 - (void)nowPlayingViewControllerToggleRepeat:(id)arg1;
 - (void)nowPlayingViewControllerToggleShuffle:(id)arg1;
+- (void)nowPlayingViewControllerUpNextButtonTapped:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (long long)placeholderTypeForNowPlayingViewController:(id)arg1;
 - (void)processArtworkForCurrentlyPlayingSong;
 - (long long)repeatTypeForNowPlayingViewController:(id)arg1;
+- (void)session:(id)arg1 didUpdateConfiguration:(id)arg2;
 - (void)sessionDidConnect:(id)arg1;
 - (long long)shuffleTypeForNowPlayingViewController:(id)arg1;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;

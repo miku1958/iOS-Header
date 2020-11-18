@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_recordKeys:(id)arg1;
 - (id)_sessionKeysWithEnd:(long long)arg1;
 - (void)finishSessionWithEnd:(long long)arg1;
-- (void)finishSessionWithEnd:(long long)arg1 newCompositionController:(id)arg2 oldCompositionController:(id)arg3;
+- (id)finishSessionWithEnd:(long long)arg1 newCompositionController:(id)arg2 oldCompositionController:(id)arg3;
 - (void)notifyDidAdjustCrop;
 - (void)notifyDidApplyAutoCrop;
 - (void)notifyDidApplyPerspectiveAutoCrop;

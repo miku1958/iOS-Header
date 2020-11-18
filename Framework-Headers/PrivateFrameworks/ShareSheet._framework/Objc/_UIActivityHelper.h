@@ -42,11 +42,13 @@
 - (id)_defaultSortOrderForOtherActivity:(id)arg1;
 - (id)_defaultSortOrderForShortcutActivity:(id)arg1;
 - (void)_enumerateAvailableActivitiesForMatchingContext:(id)arg1 intoMatchingResults:(id)arg2 matchingResultsUpdateBlock:(CDUnknownBlockType)arg3 enumerateActivityBlock:(CDUnknownBlockType)arg4;
-- (id)activitiesByOrderingActivities:(id)arg1 applyDefaultOrdering:(BOOL)arg2 applyBeforeTypePinning:(BOOL)arg3 activityTypeOrdering:(id)arg4;
+- (id)activitiesByOrderingActivities:(id)arg1 applyDefaultOrdering:(BOOL)arg2 applyBeforeTypePinning:(BOOL)arg3 activityTypeOrdering:(id)arg4 bypassDuet:(BOOL)arg5;
 - (id)initWithDelegate:(id)arg1 sessionID:(id)arg2 fetchShortcutsBlock:(CDUnknownBlockType)arg3;
 - (id)orderedAvailableActivitiesForMatchingContext:(id)arg1;
 - (void)preheatAvailableActivitiesForMatchingContext:(id)arg1;
 - (void)primeWithDiscoveryContext:(id)arg1;
+- (void)registerPendingContinuousExtensionsDiscovery;
+- (id)reportExtensionsCacheResult;
 
 @end
 

@@ -9,6 +9,7 @@
 @protocol AVTCacheableResource, AVTCacheableResourceScope, AVTCachedResource;
 
 @protocol AVTResourceCache <NSObject>
+- (BOOL)resourceExistsInCacheForItem:(id<AVTCacheableResource>)arg1 scope:(id<AVTCacheableResourceScope>)arg2;
 - (id<AVTCachedResource>)resourceForItem:(id<AVTCacheableResource>)arg1 scope:(id<AVTCacheableResourceScope>)arg2;
 - (id<AVTCachedResource>)resourceForItem:(id<AVTCacheableResource>)arg1 scope:(id<AVTCacheableResourceScope>)arg2 cacheMissHandler:(id<AVTCachedResource> (^)(id<AVTCacheableResource>, id<AVTCacheableResourceScope>))arg3;
 

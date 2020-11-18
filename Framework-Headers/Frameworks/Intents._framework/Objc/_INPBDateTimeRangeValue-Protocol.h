@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class _INPBDateTime, _INPBRecurrenceValue, _INPBValueMetadata;
+@class NSString, _INPBDateTime, _INPBRecurrenceValue, _INPBValueMetadata;
 
 @protocol _INPBDateTimeRangeValue <NSObject>
 
@@ -16,10 +16,12 @@
 @property (nonatomic) BOOL hasAllDay;
 @property (nonatomic) BOOL hasEndCalendar;
 @property (readonly, nonatomic) BOOL hasEndDateTime;
+@property (readonly, nonatomic) BOOL hasName;
 @property (readonly, nonatomic) BOOL hasRecurrence;
 @property (nonatomic) BOOL hasStartCalendar;
 @property (readonly, nonatomic) BOOL hasStartDateTime;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
+@property (copy, nonatomic) NSString *name;
 @property (strong, nonatomic) _INPBRecurrenceValue *recurrence;
 @property (nonatomic) long long startCalendar;
 @property (strong, nonatomic) _INPBDateTime *startDateTime;

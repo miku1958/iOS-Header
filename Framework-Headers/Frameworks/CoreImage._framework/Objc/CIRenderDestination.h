@@ -28,7 +28,7 @@
 - (struct RenderDestination *)_internalRenderDestination;
 - (struct CIRenderDestinationInternal *)_internalRepresentation;
 - (struct RenderTask *)_render:(struct Image *)arg1 withContext:(struct Context *)arg2;
-- (void)_set_YCC_matrix:(int)arg1 fullRange:(BOOL)arg2 deep:(BOOL)arg3;
+- (void)_set_YCC_matrix:(int)arg1 fullRange:(BOOL)arg2 deep:(BOOL)arg3 isFloat:(float)arg4;
 - (void)dealloc;
 - (id)debugDescription;
 - (id)description;
@@ -44,8 +44,11 @@
 - (id)initWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 pixelFormat:(unsigned int)arg3 colorSpace:(struct CGColorSpace *)arg4 pixelBufferProvider:(CDUnknownBlockType)arg5;
 - (id)initWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 pixelFormat:(unsigned int)arg3 colorSpace:(struct CGColorSpace *)arg4 surfaceProvider:(CDUnknownBlockType)arg5;
 - (id)initWithWidth:(unsigned long long)arg1 height:(unsigned long long)arg2 pixelFormat:(unsigned long long)arg3 commandBuffer:(id)arg4 mtlTextureProvider:(CDUnknownBlockType)arg5;
+- (BOOL)isCompressed;
 - (id)label;
+- (void)setCompressed:(BOOL)arg1;
 - (void)setLabel:(id)arg1;
+- (id)surface;
 
 @end
 

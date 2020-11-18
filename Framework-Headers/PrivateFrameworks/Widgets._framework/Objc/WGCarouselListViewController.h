@@ -22,7 +22,6 @@
     NSMutableDictionary *_catchupProperties;
     NSMutableDictionary *_catchupTimers;
     WGWidgetPinningTeachingView *_teachingView;
-    NSMutableDictionary *_resizeContexts;
     NSMutableDictionary *_cachedThresholds;
     struct WGWidgetListSettings _listSettings;
 }
@@ -36,7 +35,6 @@
 @property (nonatomic, getter=isFooterVisible) BOOL footerVisible; // @synthesize footerVisible=_footerVisible;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct WGWidgetListSettings listSettings; // @synthesize listSettings=_listSettings;
-@property (strong, nonatomic) NSMutableDictionary *resizeContexts; // @synthesize resizeContexts=_resizeContexts;
 @property (nonatomic) double revealProgress; // @synthesize revealProgress=_revealProgress;
 @property (nonatomic, getter=isRevealed) BOOL revealed; // @synthesize revealed=_revealed;
 @property (readonly) Class superclass;
@@ -45,9 +43,9 @@
 @property (nonatomic) BOOL visuallyRevealedPriorToEditingIcons; // @synthesize visuallyRevealedPriorToEditingIcons=_visuallyRevealedPriorToEditingIcons;
 
 - (void).cxx_destruct;
+- (id)_animatablePropertiesForStackViewUpdate;
 - (struct CGRect)_cellFrameInScrollBoundsForCell:(id)arg1;
-- (void)_createProperties;
-- (void)_didUpdateStackViewArrangedSubviews;
+- (void)_createPropertiesForStackViewUpdate;
 - (BOOL)_hasEnoughContentToScroll;
 - (id)_identifierForCell:(id)arg1;
 - (unsigned long long)_indexForNextCellAfterContentOffset:(double)arg1;
@@ -56,6 +54,7 @@
 - (BOOL)_isViewControllerVisible;
 - (id)_newCatchupPropertyForCell:(id)arg1;
 - (void)_repopulateStackViewWithWidgetIdentifiers:(id)arg1;
+- (void)_stackViewArrangedSubviewsTransformPresentationValueChanged;
 - (void)_styleCroppedAndScaledCellForBottomEdge:(id)arg1 withCellFrameInScrollViewBounds:(struct CGRect)arg2 intersectionRect:(struct CGRect)arg3 thresholds:(id)arg4;
 - (void)_styleCroppedAndScaledCellForTopEdge:(id)arg1 withCellFrameInScrollViewBounds:(struct CGRect)arg2 thresholds:(id)arg3;
 - (void)_styleCroppedCellForBottomEdge:(id)arg1 intersectionRect:(struct CGRect)arg2 thresholds:(id)arg3;
@@ -68,7 +67,6 @@
 - (void)_styleHeaderView:(id)arg1 withCellFrameInScrollViewBounds:(struct CGRect)arg2 intersectionRect:(struct CGRect)arg3;
 - (void)_styleTeachingView:(id)arg1 withCellFrameInScrollViewBounds:(struct CGRect)arg2 intersectionRect:(struct CGRect)arg3;
 - (id)_thresholdsForCell:(id)arg1;
-- (void)_updateCarouselAndRevealState;
 - (void)_updateCarouselEffect;
 - (void)_updateRevealState;
 - (void)_updateScrollViewContentSize;
@@ -78,7 +76,6 @@
 - (id)extraViews;
 - (BOOL)headerVisible;
 - (id)initWithWidgetDiscoveryController:(id)arg1 listSettings:(struct WGWidgetListSettings)arg2;
-- (void)resizeWidgetWrapperView:(id)arg1 toSize:(struct CGSize)arg2 withTransitionContext:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)scrollViewDidChangeAdjustedContentInset:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
@@ -88,6 +85,7 @@
 - (void)setVisuallyRevealed:(BOOL)arg1 withSlowAnimation:(BOOL)arg2;
 - (BOOL)shouldAnimateFirstTwoViewsAsOne;
 - (BOOL)shouldShowTeachingView;
+- (void)updateCarouselAndRevealState;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

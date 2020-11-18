@@ -8,15 +8,14 @@
 
 #import <PassKitCore/PDXPCServiceExportedInterface-Protocol.h>
 
-@class NSString, NSXPCConnection;
-@protocol OS_dispatch_queue;
+@class NSString, NSXPCConnection, PDXPCApplicationInfo;
 
 @interface PDXPCService : NSObject <PDXPCServiceExportedInterface>
 {
+    struct os_unfair_lock_s _lock;
     NSXPCConnection *_connection;
     NSString *_className;
     BOOL _callbacksSuspended;
-    NSObject<OS_dispatch_queue> *_readWriteQueue;
     int _remoteProcessIdentifier;
     NSString *_remoteProcessApplicationIdentifier;
 }
@@ -25,6 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *remoteProcessApplicationIdentifier; // @synthesize remoteProcessApplicationIdentifier=_remoteProcessApplicationIdentifier;
+@property (readonly, nonatomic) PDXPCApplicationInfo *remoteProcessApplicationInfo;
 @property (readonly, nonatomic) NSString *remoteProcessBundleIdentifier;
 @property (readonly, nonatomic) int remoteProcessIdentifier; // @synthesize remoteProcessIdentifier=_remoteProcessIdentifier;
 @property (readonly) Class superclass;

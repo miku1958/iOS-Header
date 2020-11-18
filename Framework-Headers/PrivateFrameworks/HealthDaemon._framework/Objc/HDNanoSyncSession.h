@@ -23,7 +23,6 @@
 @property (readonly, nonatomic, getter=isPullRequest) BOOL pullRequest;
 @property (readonly, nonatomic, getter=isRequestedByRemote) BOOL requestedByRemote;
 
-+ (BOOL)shouldOverrideCycleTrackingSymptomsForBackwardsCompatibilty;
 - (void).cxx_destruct;
 - (id)_intervalForSecondsSinceDaysAgo:(unsigned long long)arg1;
 - (id)_syncPredicate;
@@ -31,8 +30,10 @@
 - (void)incrementMessageCount;
 - (id)initWithSyncStore:(id)arg1 options:(unsigned long long)arg2 reason:(id)arg3 delegate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)invokeCompletionWithSuccess:(BOOL)arg1 error:(id)arg2;
-- (long long)maxEncodedBytesPerMessageForSyncEntityClass:(Class)arg1;
+- (long long)maxEncodedBytesPerChangeSetForSyncEntityClass:(Class)arg1;
+- (long long)maxEncodedBytesPerCodableChangeForSyncEntityClass:(Class)arg1;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
+- (BOOL)shouldOverrideCycleTrackingSymptomsForBackwardsCompatibilty;
 - (id)syncPredicate;
 
 @end

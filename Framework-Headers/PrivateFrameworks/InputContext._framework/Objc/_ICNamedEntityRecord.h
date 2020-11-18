@@ -30,13 +30,13 @@
 @property (readonly, nonatomic) unsigned long long detectionAlgorithm; // @synthesize detectionAlgorithm=_detectionAlgorithm;
 @property (readonly, nonatomic) NSDate *detectionDate; // @synthesize detectionDate=_detectionDate;
 @property (readonly, nonatomic) NSString *donorBundleIdentifier; // @synthesize donorBundleIdentifier=_donorBundleIdentifier;
-@property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSString *languageIdentifier; // @synthesize languageIdentifier=_languageIdentifier;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSString *phoneticName; // @synthesize phoneticName=_phoneticName;
 @property (nonatomic) double score; // @synthesize score=_score;
 @property (readonly, nonatomic) unsigned char source; // @synthesize source=_source;
-@property (strong, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
+@property (readonly, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
 @property (readonly, nonatomic) unsigned char type; // @synthesize type=_type;
 
 + (id)namedEntityRecordWithName:(id)arg1 phoneticName:(id)arg2 type:(unsigned char)arg3 languageIdentifier:(id)arg4 contentCreationDate:(id)arg5 detectionDate:(id)arg6 score:(double)arg7 source:(unsigned char)arg8 sourceIdentifier:(id)arg9 donorBundleIdentifier:(id)arg10 detectionAlgorithm:(unsigned long long)arg11;

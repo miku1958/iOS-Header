@@ -18,6 +18,7 @@
     NSArray *_valueAddedServiceTransactions;
     PKFieldProperties *_fieldProperties;
     PKFieldProperties *_fieldPropertiesToLookup;
+    BOOL _restoreActiveApplets;
     unsigned long long _transactionStartTime;
     _Atomic BOOL _fieldPresent;
     BOOL _handlingExpress;

@@ -61,11 +61,13 @@
 - (void)_performWithMOCAndWait:(CDUnknownBlockType)arg1;
 - (id)_serviceLookup:(id)arg1 withFeed:(id)arg2 feedItems:(id)arg3;
 - (id)_shortCircuitLookup:(id)arg1 withFeed:(id)arg2;
+- (void)_synchronizedInitMOC;
 - (void)d_sanityCheckFeed:(id)arg1;
 - (id)initWithParentDirectoryURL:(id)arg1 usage:(long long)arg2 endpoint:(long long)arg3;
 - (void)operationThrottlerPerformOperation:(id)arg1;
 - (id)performDatabaseLookups:(id)arg1;
 - (id)performDatabaseLookups:(id)arg1 boundedByCount:(unsigned long long)arg2;
+- (void)prewarm;
 - (void)saveFeedItems:(id)arg1 forFeedID:(id)arg2 insertionToken:(id)arg3 requestDate:(id)arg4 followingCKCursor:(id)arg5 reachedToOrder:(BOOL)arg6 extent:(unsigned long long)arg7 reachedEnd:(BOOL)arg8;
 - (void)teardown;
 

@@ -21,17 +21,12 @@
 @property (readonly, nonatomic) BOOL hasClient;
 @property (readonly, nonatomic) BOOL hasOrigin;
 @property (readonly, nonatomic) BOOL hasPlayer;
-@property (readonly, nonatomic) BOOL isLocal;
-@property (readonly, nonatomic) BOOL isResolved;
 @property (strong, nonatomic) _MROriginProtobuf *origin; // @synthesize origin=_origin;
 @property (strong, nonatomic) _MRNowPlayingPlayerProtobuf *player; // @synthesize player=_player;
 
-+ (void)initialize;
 - (void).cxx_destruct;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)customDescription;
-- (id)customDictionaryRepresentation;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;

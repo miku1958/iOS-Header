@@ -6,12 +6,12 @@
 
 #import <MapsSupport/NSObject-Protocol.h>
 
-@class MSPSharedTripService, NSError, NSString;
+@class MSPSharedTripService, MSPSharedTripSharingIdentity, NSArray, NSError;
 
 @protocol MSPSharedTripServiceSendingObserver <NSObject>
-- (void)invalidateActiveHandlesForSharedTripService:(MSPSharedTripService *)arg1;
-- (void)sharedTripService:(MSPSharedTripService *)arg1 sendMessage:(NSString *)arg2 toGroup:(NSString *)arg3;
-- (void)sharedTripService:(MSPSharedTripService *)arg1 sendMessage:(NSString *)arg2 toParticipant:(NSString *)arg3;
+- (void)sharedTripService:(MSPSharedTripService *)arg1 didUpdateReceivers:(NSArray *)arg2;
+- (void)sharedTripService:(MSPSharedTripService *)arg1 didUpdateSharingIdentity:(MSPSharedTripSharingIdentity *)arg2;
 - (void)sharedTripService:(MSPSharedTripService *)arg1 sharingDidInvalidateWithError:(NSError *)arg2;
+- (void)sharedTripServiceDidUpdateSendingAvailability:(MSPSharedTripService *)arg1;
 @end
 

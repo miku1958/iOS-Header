@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) SBIcon *referencedIcon;
 @property (readonly, copy, nonatomic) NSArray *referencedIcons;
 
++ (id)clusteredIconPlaceholderForIcons:(id)arg1;
 + (id)grabbedIconPlaceholderForIcon:(id)arg1;
 + (id)grabbedIconPlaceholderForIcons:(id)arg1;
 + (BOOL)hasIconImage;
@@ -28,7 +29,7 @@
 - (id)_initWithNodeIdentifier:(id)arg1 icon:(id)arg2;
 - (id)_initWithNodeIdentifier:(id)arg1 icons:(id)arg2;
 - (id)automationID;
-- (id)children;
+- (id)folder;
 - (id)generateIconImageWithInfo:(struct SBIconImageInfo)arg1;
 - (id)genericIconImageWithInfo:(struct SBIconImageInfo)arg1;
 - (id)gridCellImage;

@@ -6,16 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@protocol SLFacebookRemoteSessionProtocol;
-
 @interface SLFacebookSession : NSObject
 {
-    id<SLFacebookRemoteSessionProtocol> _remoteSession;
 }
 
 + (id)_remoteInterface;
 + (id)sharedSession;
-- (void).cxx_destruct;
 - (void)cancelUploadWithIdentifier:(id)arg1;
 - (void)fetchLikeStatusForURL:(id)arg1 flags:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;

@@ -45,20 +45,7 @@
         unsigned int read_groupIdentifier:1;
         unsigned int read_routeInfo:1;
         unsigned int read_senderInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_destinationInfo:1;
-        unsigned int wrote_etaInfo:1;
-        unsigned int wrote_groupIdentifier:1;
-        unsigned int wrote_localUpdatedTimestamp:1;
-        unsigned int wrote_routeInfo:1;
-        unsigned int wrote_senderInfo:1;
-        unsigned int wrote_updatedTimestamp:1;
-        unsigned int wrote_protocolVersion:1;
-        unsigned int wrote_referenceFrame:1;
-        unsigned int wrote_transportType:1;
-        unsigned int wrote_arrived:1;
-        unsigned int wrote_closed:1;
-        unsigned int wrote_muted:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -93,11 +80,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsReferenceFrame:(id)arg1;
-- (void)_readDestinationInfo;
-- (void)_readEtaInfo;
-- (void)_readGroupIdentifier;
-- (void)_readRouteInfo;
-- (void)_readSenderInfo;
 - (void)clearSensitiveFields;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
@@ -107,7 +89,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -22,14 +22,15 @@
 + (id)description;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (const void *)bytes;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithData:(id)arg1;
 - (id)initWithData:(id)arg1 name:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
-- (const void *)rawData;
 
 @end
 

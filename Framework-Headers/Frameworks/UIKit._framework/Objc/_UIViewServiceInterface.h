@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     struct os_unfair_lock_s _terminationStateLock;
     NSError *_terminationError;
     CDUnknownBlockType _terminationHandler;
-    BOOL _isTerminated;
+    _Atomic BOOL _isTerminated;
     _UIAsyncInvocation *_terminateInvocation;
     NSString *_serviceBundleIdentifier;
     _UIRemoteViewService *_service;

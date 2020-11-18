@@ -14,6 +14,7 @@
 + (id)adjustmentConstants;
 + (id)assetIdentifierForURL:(id)arg1 type:(id)arg2 useEmbeddedPreview:(BOOL)arg3;
 + (BOOL)canInterpretDataWithFormatIdentifier:(id)arg1 formatVersion:(id)arg2;
++ (id)compositionByRemovingVideoAndLivePhotoAdjustments:(id)arg1;
 + (id)effectNameForFilterName:(id)arg1;
 + (id)filterNameForEffectName:(id)arg1;
 + (id)geometryRequestWithComposition:(id)arg1;
@@ -25,6 +26,7 @@
 + (id)imageSourceWithURL:(id)arg1 type:(id)arg2 useEmbeddedPreview:(BOOL)arg3;
 + (void)initialize;
 + (BOOL)is3DEffect:(id)arg1;
++ (BOOL)isAVAssetEditable:(id)arg1;
 + (BOOL)isPortraitEffect:(id)arg1;
 + (BOOL)isPortraitStageEffect:(id)arg1;
 + (id)knownFormatsVersionsMap;
@@ -39,13 +41,14 @@
 + (id)pipelineFiltersForCropping;
 + (id)pipelineFiltersForOriginalGeometry;
 + (id)pipelineFiltersForRAWShowingOriginalWithGeometry;
++ (id)pipelineFiltersForShowingOriginal;
 + (id)pipelineFiltersForShowingOriginalWithGeometry;
 + (void)preheatEditDependencies;
 + (id)priorityWithLevel:(long long)arg1;
 + (id)updateCropAdjustmentController:(id)arg1 after:(id)arg2 error:(out id *)arg3;
 + (id)validatedCompositionCopyForComposition:(id)arg1 mediaType:(long long)arg2;
 + (id)videoPropertiesRequestWithComposition:(id)arg1;
-+ (id)videoRenderRequestWithComposition:(id)arg1 fitInSize:(struct CGSize)arg2 wideGamut:(BOOL)arg3;
++ (id)videoRenderRequestWithComposition:(id)arg1 fitInSize:(struct CGSize)arg2;
 + (id)videoSourceWithURL:(id)arg1;
 
 @end

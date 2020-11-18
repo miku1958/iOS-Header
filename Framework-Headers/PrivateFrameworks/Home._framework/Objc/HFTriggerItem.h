@@ -8,13 +8,15 @@
 
 #import <Home/HFHomeKitItemProtocol-Protocol.h>
 
-@class HMHome, HMTrigger, NSString;
+@class HFServiceActionItemProvider, HMHome, HMTrigger, NSString;
 @protocol HFHomeKitObject;
 
 @interface HFTriggerItem : HFItem <HFHomeKitItemProtocol>
 {
+    BOOL _usesRichIconDescriptors;
     HMHome *_home;
     HMTrigger *_trigger;
+    HFServiceActionItemProvider *_serviceActionItemProvider;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,13 +24,17 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (readonly, nonatomic) id<HFHomeKitObject> homeKitObject;
+@property (strong, nonatomic) HFServiceActionItemProvider *serviceActionItemProvider; // @synthesize serviceActionItemProvider=_serviceActionItemProvider;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) HMTrigger *trigger; // @synthesize trigger=_trigger;
+@property (nonatomic) BOOL usesRichIconDescriptors; // @synthesize usesRichIconDescriptors=_usesRichIconDescriptors;
 
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
+- (id)createRichIconDescriptors:(id)arg1 options:(id)arg2;
 - (id)init;
 - (id)initWithHome:(id)arg1 trigger:(id)arg2;
+- (id)translateToRichIconDescriptors:(id)arg1 basedOnActionItems:(id)arg2;
 
 @end
 

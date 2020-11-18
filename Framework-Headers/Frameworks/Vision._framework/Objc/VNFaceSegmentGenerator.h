@@ -13,14 +13,14 @@ __attribute__((visibility("hidden")))
 }
 
 + (float)_faceSegmenterMaximumInputImageAspectRatio;
++ (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
++ (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)_fillFaceSegmentLabelToProbabilityMap:(id)arg1 error:(id *)arg2;
 - (BOOL)_getFaceSegmenterInputImageSize:(struct CGSize *)arg1 forRequestRevision:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)_getNumberOfSupportedFaceSegments:(unsigned long long *)arg1 forRequestRevision:(unsigned long long)arg2 error:(id *)arg3;
-- (BOOL)completeInitializationAndReturnError:(id *)arg1;
-- (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
-- (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
+- (BOOL)completeInitializationForSession:(id)arg1 error:(id *)arg2;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 - (BOOL)supportsProcessingDevice:(id)arg1;
 

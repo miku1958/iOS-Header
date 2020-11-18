@@ -6,12 +6,13 @@
 
 #import <UIKitCore/UIViewController.h>
 
+#import <ShareSheet/LPLinkViewDelegate-Protocol.h>
 #import <ShareSheet/UICollectionViewDelegate-Protocol.h>
 
 @class LPLinkMetadata, LPLinkView, NSArray, NSDictionary, NSDiffableDataSourceSnapshot, NSMutableDictionary, NSNumber, NSString, NSUUID, UIBarButtonItem, UICollectionViewDiffableDataSource, UIVisualEffectView, _UIActivityContentCollectionView, _UIActivityContentTitleView;
 @protocol UIActivityContentDelegate;
 
-@interface UIActivityContentViewController : UIViewController <UICollectionViewDelegate>
+@interface UIActivityContentViewController : UIViewController <UICollectionViewDelegate, LPLinkViewDelegate>
 {
     BOOL _configureForCloudSharing;
     BOOL _configureForPhotosEdit;
@@ -89,20 +90,25 @@
 
 - (void).cxx_destruct;
 - (id)_activityWithActivityUUID:(id)arg1;
+- (void)_cancelButtonTapped;
+- (void)_closeButtonTapped;
+- (id)_contextMenuPreviewForCollectionView:(id)arg1 collectionViewCell:(id)arg2;
 - (void)_editActionsTapped;
+- (void)_nextButtonTapped;
 - (BOOL)_presentedInFormSheet;
+- (void)_updatePhotosCarouselViewContent;
 - (id)activityCollectionViewLayout;
-- (id)cancelBarButton;
-- (void)cancelButtonTapped;
-- (void)closeButtonTapped;
+- (id)collectionView:(id)arg1 contextMenuConfigurationForItemAtIndexPath:(id)arg2 point:(struct CGPoint)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (id)collectionView:(id)arg1 previewForDismissingContextMenuWithConfiguration:(id)arg2;
+- (id)collectionView:(id)arg1 previewForHighlightingContextMenuWithConfiguration:(id)arg2;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
+- (void)collectionView:(id)arg1 willEndContextMenuInteractionWithConfiguration:(id)arg2 animator:(id)arg3;
 - (void)configureCollectionViewIfNeeded;
 - (void)configureHeaderViewIfNeeded;
 - (id)init;
 - (void)layoutContentCollectionView:(BOOL)arg1;
-- (id)nextBarButton;
-- (void)nextButtonTapped;
+- (void)linkViewNeedsResize:(id)arg1;
 - (void)overrideLayoutConfigurationWithSafeAreaInsets:(BOOL)arg1;
 - (void)refreshContent;
 - (void)scrollViewDidScroll:(id)arg1;

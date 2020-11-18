@@ -6,11 +6,11 @@
 
 #import <CFNetwork/__NSCFURLLocalStreamTask.h>
 
-#import <CFNetwork/SessionConnectionDelegate-Protocol.h>
+#import <CFNetwork/__NSCFURLSessionConnectionDelegate-Protocol.h>
 
 @class NSMutableArray, NSString;
 
-@interface __NSCFURLLocalStreamTaskFromDataTask : __NSCFURLLocalStreamTask <SessionConnectionDelegate>
+@interface __NSCFURLLocalStreamTaskFromDataTask : __NSCFURLLocalStreamTask <__NSCFURLSessionConnectionDelegate>
 {
     struct __CFReadStream *_myReadToHisWrite;
     BOOL _myReadToHisWriteEOF;
@@ -28,18 +28,11 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)_onqueue_didFinishLoadingWithError:(id)arg1;
-- (void)_onqueue_ioTickFromDataTask;
-- (void)_onqueue_ioTickFromDataTaskConversion:(const char *)arg1;
-- (void)_onqueue_stFromDataTaskReadCallback:(unsigned long long)arg1;
-- (void)_onqueue_stFromDataTaskWriteCallback:(unsigned long long)arg1;
-- (void)_unimp:(const char *)arg1;
 - (void)connection:(id)arg1 _conditionalRequirementsChanged:(BOOL)arg2;
 - (void)connection:(id)arg1 _willSendRequestForEstablishedConnection:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 challenged:(id)arg2 authCallback:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didFinishCollectingMetrics:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didFinishLoadingWithError:(id)arg2;
-- (void)connection:(id)arg1 didReceiveConnectionCacheKey:(struct HTTPConnectionCacheKey *)arg2;
 - (void)connection:(id)arg1 didReceiveData:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didReceiveResponse:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connection:(id)arg1 didReceiveSocketInputStream:(id)arg2 outputStream:(id)arg3;

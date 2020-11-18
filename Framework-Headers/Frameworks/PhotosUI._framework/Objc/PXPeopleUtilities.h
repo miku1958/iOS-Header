@@ -17,6 +17,7 @@
 + (id)_peopleHomeFetchResultForPersonType:(long long)arg1;
 + (void)_setDaysDictionary:(id)arg1;
 + (id)_titleStringForPeople:(id)arg1 singlePersonFallback:(id)arg2 groupFallback:(id)arg3;
++ (id)alertControllerForBlockingPerson:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)alertControllerForRemovingNumberOfPeople:(long long)arg1 completionBlock:(CDUnknownBlockType)arg2;
 + (id)alertControllerForResettingPeopleWithCompletion:(CDUnknownBlockType)arg1;
 + (id)assetCollectionListFetchResultForPerson:(id)arg1;
@@ -37,7 +38,7 @@
 + (void)peopleFaceTilesForAsset:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)peopleFaceTilesForFaces:(id)arg1 asset:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)peopleWithPersonUris:(id)arg1;
-+ (id)personFaceTileByPersonIdForPersons:(id)arg1 options:(id)arg2;
++ (id)personFaceTileByPersonIdForPersons:(id)arg1;
 + (id)personWithLocalIdentifier:(id)arg1;
 + (id)personWithPersonUri:(id)arg1;
 + (id)sharedContactStore;

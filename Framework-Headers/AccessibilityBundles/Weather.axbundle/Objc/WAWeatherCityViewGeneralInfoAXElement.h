@@ -12,8 +12,11 @@
 
 + (void)_accessibilityPerformValidations:(id)arg1;
 - (BOOL)_axMissingData;
+- (BOOL)_axSummaryIsCollapsed;
 - (id)_basicInfoElements;
+- (BOOL)accessibilityActivate;
 - (struct CGRect)accessibilityFrame;
+- (id)accessibilityHint;
 - (id)accessibilityLabel;
 
 @end

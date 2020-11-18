@@ -15,6 +15,7 @@
 {
     BOOL _publisherNotificationsAllowed;
     BOOL _appleNewsNotificationsAllowed;
+    BOOL _shouldUseNewsUINotificationHandling;
     NSString *_notificationsUserID;
     NSString *_deviceToken;
     FCUserInfo *_userInfo;
@@ -31,6 +32,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *notificationsUserID; // @synthesize notificationsUserID=_notificationsUserID;
 @property (nonatomic) BOOL publisherNotificationsAllowed; // @synthesize publisherNotificationsAllowed=_publisherNotificationsAllowed;
+@property (nonatomic) BOOL shouldUseNewsUINotificationHandling; // @synthesize shouldUseNewsUINotificationHandling=_shouldUseNewsUINotificationHandling;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) FCUserInfo *userInfo; // @synthesize userInfo=_userInfo;
 

@@ -36,8 +36,8 @@
 - (id)_rightDiagnosticSensitivityPoints;
 - (id)_rightSensitivityPoints;
 - (void)_setPayload:(id)arg1;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
 - (id)_validateSensitivityPointsOrderedAscending;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (id)averageLeftEarSensitivity;
 - (id)averageRightEarSensitivity;
 - (unsigned long long)diagnostic;

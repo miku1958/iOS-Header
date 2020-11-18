@@ -10,7 +10,7 @@
 #import <VideosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
 #import <VideosUI/VUIAppDocumentUpdateEventMonitorObserving-Protocol.h>
 
-@class IKAppContext, NSMutableOrderedSet, NSString, VUIAppDocumentUpdateEventStore;
+@class IKAppContext, NSMutableArray, NSMutableOrderedSet, NSString, VUIAppDocumentUpdateEventStore;
 @protocol VUIAppDocumentUpdateContext;
 
 @interface VUIAppDocumentServiceViewController : _TVAppDocumentRequestController <IKUpdateServiceRequestDelegate, VUIAppDocumentUpdateEventMonitorObserving, UIPopoverPresentationControllerDelegate>
@@ -19,6 +19,7 @@
     BOOL _markDocumentDirtyForRefreshUpdate;
     NSString *_viewControllerIdentifier;
     NSString *_viewControllerDocumentIdentifier;
+    NSMutableArray *_impressionableSwiftViewControllers;
     IKAppContext *_appContext;
     NSString *_documentRef;
     id<VUIAppDocumentUpdateContext> _documentUpdateContext;
@@ -36,6 +37,7 @@
 @property (strong, nonatomic) id<VUIAppDocumentUpdateContext> documentUpdateContext; // @synthesize documentUpdateContext=_documentUpdateContext;
 @property (strong, nonatomic) NSMutableOrderedSet *documentUpdateViewElements; // @synthesize documentUpdateViewElements=_documentUpdateViewElements;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NSMutableArray *impressionableSwiftViewControllers; // @synthesize impressionableSwiftViewControllers=_impressionableSwiftViewControllers;
 @property (nonatomic, getter=isDocumentMarkedDirty) BOOL markDocumentDirtyForRefreshUpdate; // @synthesize markDocumentDirtyForRefreshUpdate=_markDocumentDirtyForRefreshUpdate;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *viewControllerDocumentIdentifier; // @synthesize viewControllerDocumentIdentifier=_viewControllerDocumentIdentifier;
@@ -53,6 +55,7 @@
 - (id)_receivedEvents;
 - (void)_registerDocumentUpdateEventDescriptorsWithServiceCompletionStatus:(long long)arg1;
 - (void)_removeEventTypes:(id)arg1 receivedEvents:(id)arg2;
+- (void)_removeStoreEvents:(unsigned long long)arg1;
 - (void)_startDocumentUpdateWithRequest:(id)arg1;
 - (void)_startDocumentUpdatesForDeferredEventsIfPossible;
 - (void)_startDocumentUpdatesWithContext:(id)arg1;
@@ -74,9 +77,12 @@
 - (id)interactionPreviewControllerForViewController:(id)arg1 presentingView:(id)arg2 presentingElement:(id)arg3;
 - (BOOL)isEqualToAppDocumentServiceViewController:(id)arg1;
 - (void)popoverPresentationController:(id)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;
+- (void)recordedImpressions;
 - (void)serviceRequest:(id)arg1 didCompleteWithStatus:(long long)arg2 errorDictionary:(id)arg3;
+- (void)snapshotImpressions;
 - (void)updateDocumentWithContextDictionary:(id)arg1 element:(id)arg2;
 - (void)updateServiceRequest:(id)arg1 documentDidChange:(id)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillAppearAfterTabSwitch;
 - (void)viewWillDisappear:(BOOL)arg1;

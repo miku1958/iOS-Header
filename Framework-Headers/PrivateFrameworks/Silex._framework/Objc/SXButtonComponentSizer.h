@@ -32,7 +32,6 @@
 - (id)initWithComponent:(id)arg1 componentLayout:(id)arg2 componentStyle:(id)arg3 DOMObjectProvider:(id)arg4 layoutOptions:(id)arg5 textProvider:(id)arg6 textComponentLayoutHosting:(id)arg7 textSourceFactory:(id)arg8;
 - (id)inlineTextStylesForTextSource:(id)arg1;
 - (struct UIEdgeInsets)layoutMarginsWithUnitConverter:(id)arg1;
-- (id)linkStyleForTextSource:(id)arg1;
 - (id)textResizerForTextSource:(id)arg1;
 - (id)textRulesForTextSource:(id)arg1;
 - (id)textStyleForIdentifier:(id)arg1;

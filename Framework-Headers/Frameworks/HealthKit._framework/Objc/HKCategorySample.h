@@ -21,15 +21,16 @@
 + (id)categorySampleWithType:(id)arg1 value:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4;
 + (id)categorySampleWithType:(id)arg1 value:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4 device:(id)arg5 metadata:(id)arg6;
 + (id)categorySampleWithType:(id)arg1 value:(long long)arg2 startDate:(id)arg3 endDate:(id)arg4 metadata:(id)arg5;
++ (BOOL)supportsEquivalence;
 + (BOOL)supportsSecureCoding;
-- (id)_bedtimeAlarmWithCalendar:(id)arg1;
 - (void)_setValue:(long long)arg1;
-- (id)_validateConfigurationWithOptions:(unsigned long long)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (id)_valueDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (long long)hk_integerValue;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEquivalent:(id)arg1;
 
 @end
 

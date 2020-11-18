@@ -28,6 +28,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithHome:(unsigned long long)arg1 roaming:(unsigned long long)arg2 wifi:(unsigned long long)arg3;
+- (BOOL)isEmpty;
 - (BOOL)isEqual:(id)arg1;
 
 @end

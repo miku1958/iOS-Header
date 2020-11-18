@@ -11,7 +11,6 @@
 @class CKDMMCSItemGroupSet, CKDOperation, NSMutableArray;
 @protocol OS_dispatch_group;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCSItemGroupSetContext : NSObject <CKDCancelling>
 {
     CKDMMCSItemGroupSet *_itemGroupSet;

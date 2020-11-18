@@ -12,21 +12,22 @@
 {
     BOOL _enabled;
     id<PXNavigationListItem> _listItem;
+    long long _separatorStyleWorkaround57597636;
 }
 
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (strong, nonatomic) id<PXNavigationListItem> listItem; // @synthesize listItem=_listItem;
+@property (nonatomic) long long separatorStyleWorkaround57597636; // @synthesize separatorStyleWorkaround57597636=_separatorStyleWorkaround57597636;
 
 + (id)_symbolConfigurationForFont:(id)arg1;
-+ (id)cellFont;
++ (id)detailTextLabelFont;
++ (id)textLabelFont;
 - (void).cxx_destruct;
 - (id)_currentCellColor;
 - (void)_updateCellStyle;
-- (void)_updateFonts;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
-- (void)prepareForReuse;
-- (void)traitCollectionDidChange:(id)arg1;
+- (void)setSeparatorStyle:(long long)arg1;
 
 @end
 

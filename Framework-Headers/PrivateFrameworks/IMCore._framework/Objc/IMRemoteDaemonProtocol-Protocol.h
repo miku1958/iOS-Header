@@ -6,14 +6,18 @@
 
 #import <IMCore/NSObject-Protocol.h>
 
-@class IMItem, IMMessageItem, IMNickname, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSSet, NSString, NSURL;
+@class IMItem, IMMessageItem, IMNickname, NSArray, NSData, NSDate, NSDictionary, NSIndexSet, NSNumber, NSSet, NSString, NSURL;
 
 @protocol IMRemoteDaemonProtocol <NSObject>
+- (void)_automation_markMessagesAsRead:(BOOL)arg1 messageGUID:(NSString *)arg2 forChatGUID:(NSString *)arg3 fromMe:(BOOL)arg4 queryID:(NSString *)arg5;
+- (void)_automation_receiveDictionary:(NSDictionary *)arg1 fromID:(NSString *)arg2;
+- (void)_automation_sendDictionary:(NSDictionary *)arg1 options:(NSDictionary *)arg2 toHandles:(NSArray *)arg3;
 - (void)acceptSubscriptionRequest:(BOOL)arg1 from:(NSString *)arg2 account:(NSString *)arg3;
 - (void)account:(NSString *)arg1 avAction:(unsigned int)arg2 withArguments:(NSDictionary *)arg3 toAVChat:(NSString *)arg4 isVideo:(BOOL)arg5;
 - (void)activateAccounts:(NSArray *)arg1;
 - (void)addAccount:(NSString *)arg1 defaults:(NSDictionary *)arg2 service:(NSString *)arg3;
 - (void)addAliases:(NSArray *)arg1 account:(NSString *)arg2;
+- (void)askHandleIDToShareTheirScreen:(NSString *)arg1 isContact:(BOOL)arg2;
 - (void)authenticateAccount:(NSString *)arg1;
 - (void)autoLoginAccount:(NSString *)arg1;
 - (void)autoLoginActiveAccountsIfNecessary;
@@ -30,7 +34,7 @@
 - (void)changeMyStatus:(NSDictionary *)arg1 forAccount:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 updateDisplayName:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 updateIsBlackholed:(BOOL)arg2;
-- (void)chat:(NSString *)arg1 updateIsFiltered:(BOOL)arg2;
+- (void)chat:(NSString *)arg1 updateIsFiltered:(long long)arg2;
 - (void)chat:(NSString *)arg1 updateLastAddressHandle:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 updateLastAddressedSIMID:(NSString *)arg2;
 - (void)chat:(NSString *)arg1 updateProperties:(NSDictionary *)arg2;
@@ -61,7 +65,7 @@
 - (void)downloadStickerPackWithGUID:(NSString *)arg1 isIncomingMessage:(BOOL)arg2 ignoreCache:(BOOL)arg3;
 - (void)downloadStickerWithGUID:(NSString *)arg1;
 - (void)eagerUploadCancel:(NSURL *)arg1;
-- (void)eagerUploadTransfer:(NSDictionary *)arg1;
+- (void)eagerUploadTransfer:(NSDictionary *)arg1 recipients:(NSArray *)arg2;
 - (void)enrollDeviceForSMSRelay:(NSString *)arg1 account:(NSString *)arg2;
 - (void)enrollSelfDeviceForSMSRelay:(NSString *)arg1;
 - (void)fetchAccountStatusAndUpdateMiCSwitchEligibility;
@@ -85,6 +89,7 @@
 - (void)initiatePeriodicSync;
 - (void)initiateQuickSwitch;
 - (void)initiateSync;
+- (void)inviteHandleIDToShareMyScreen:(NSString *)arg1 isContact:(BOOL)arg2;
 - (void)invitePersonInfo:(NSDictionary *)arg1 withMessage:(IMMessageItem *)arg2 toChatID:(NSString *)arg3 identifier:(NSString *)arg4 style:(unsigned char)arg5 account:(NSString *)arg6;
 - (void)invitePersonInfoToiMessageChat:(NSDictionary *)arg1 withMessage:(IMMessageItem *)arg2 toChatID:(NSString *)arg3 identifier:(NSString *)arg4 style:(unsigned char)arg5 account:(NSString *)arg6;
 - (void)joinChatID:(NSString *)arg1 handleInfo:(NSArray *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 groupID:(NSString *)arg5 lastAddressedHandle:(NSString *)arg6 lastAddressedSIMID:(NSString *)arg7 joinProperties:(NSDictionary *)arg8 account:(NSString *)arg9;
@@ -97,11 +102,12 @@
 - (void)loadDeletedMessagesWithLimit:(long long)arg1;
 - (void)loadDirtyMessagesWithLimit:(long long)arg1;
 - (void)loadFrequentRepliesForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 limit:(unsigned long long)arg4 chatID:(NSString *)arg5 queryID:(NSString *)arg6;
-- (void)loadHistoryForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 limit:(unsigned long long)arg4 beforeGUID:(NSString *)arg5 afterGUID:(NSString *)arg6 chatID:(NSString *)arg7 queryID:(NSString *)arg8;
+- (void)loadHistoryForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 limit:(unsigned long long)arg4 beforeGUID:(NSString *)arg5 afterGUID:(NSString *)arg6 threadIdentifier:(NSString *)arg7 chatID:(NSString *)arg8 queryID:(NSString *)arg9;
 - (void)loadInternalPhishingBlacklist;
 - (void)loadIsDownloadingPurgedAttachmentsForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 chatID:(NSString *)arg4 queryID:(NSString *)arg5;
+- (void)loadMessageItemWithGUID:(NSString *)arg1 queryID:(NSString *)arg2;
 - (void)loadMessageWithGUID:(NSString *)arg1 queryID:(NSString *)arg2;
-- (void)loadPagedHistoryForGUID:(NSString *)arg1 chatIdentifiers:(NSArray *)arg2 style:(unsigned char)arg3 onServices:(NSArray *)arg4 numberOfMessagesBefore:(unsigned long long)arg5 numberOfMessagesAfter:(unsigned long long)arg6 chatID:(NSString *)arg7 queryID:(NSString *)arg8;
+- (void)loadPagedHistoryForGUID:(NSString *)arg1 chatIdentifiers:(NSArray *)arg2 style:(unsigned char)arg3 onServices:(NSArray *)arg4 numberOfMessagesBefore:(unsigned long long)arg5 numberOfMessagesAfter:(unsigned long long)arg6 threadIdentifier:(NSString *)arg7 chatID:(NSString *)arg8 queryID:(NSString *)arg9;
 - (unsigned long long)loadUncachedAttachmentCountForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 chatID:(NSString *)arg4 queryID:(NSString *)arg5;
 - (void)loadUnreadForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 limit:(unsigned long long)arg4 fallbackGUID:(NSString *)arg5 chatId:(NSString *)arg6 queryID:(NSString *)arg7;
 - (void)logDumpAndSendMessageTo:(NSString *)arg1 forHours:(int)arg2;
@@ -110,6 +116,7 @@
 - (void)logoutAccount:(NSString *)arg1;
 - (void)logoutAllAccounts;
 - (void)markAllChatsAsDirty;
+- (void)markAllNicknamesAsPending;
 - (void)markAsSpamForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3 chatID:(NSString *)arg4 queryID:(NSString *)arg5 autoReport:(BOOL)arg6;
 - (BOOL)markAttachment:(NSString *)arg1 sender:(NSString *)arg2 recipients:(NSArray *)arg3 isIncoming:(BOOL)arg4;
 - (void)markHasHadSuccessfulQueryForIDs:(NSArray *)arg1 style:(unsigned char)arg2 onServices:(NSArray *)arg3;
@@ -161,11 +168,13 @@
 - (void)requestVCWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3 account:(NSString *)arg4;
 - (void)respondToVCInvitationWithPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3 account:(NSString *)arg4;
 - (void)resumeBuddyUpdatesAccount:(NSString *)arg1;
+- (void)retryGroupPhotoUpload:(NSString *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
 - (void)sendAVMessageToPerson:(NSString *)arg1 sessionID:(unsigned int)arg2 type:(unsigned int)arg3 userInfo:(NSDictionary *)arg4 conference:(NSString *)arg5 account:(NSString *)arg6;
 - (void)sendBalloonPayload:(NSData *)arg1 attachments:(NSArray *)arg2 withMessageGUID:(NSString *)arg3 bundleID:(NSString *)arg4;
 - (void)sendCommand:(NSNumber *)arg1 withProperties:(NSDictionary *)arg2 toPerson:(NSString *)arg3 account:(NSString *)arg4;
 - (void)sendCommand:(NSNumber *)arg1 withProperties:(NSDictionary *)arg2 toPerson:(NSString *)arg3 account:(NSString *)arg4 toChatID:(NSString *)arg5 identifier:(NSString *)arg6 style:(unsigned char)arg7;
 - (void)sendCounterProposalToPerson:(NSString *)arg1 properties:(NSDictionary *)arg2 conference:(NSString *)arg3 account:(NSString *)arg4;
+- (void)sendGroupPhotoUpdate:(NSString *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
 - (void)sendMappingPacket:(NSString *)arg1 toHandle:(NSString *)arg2 account:(NSString *)arg3;
 - (void)sendMessage:(IMMessageItem *)arg1 toChatID:(NSString *)arg2 identifier:(NSString *)arg3 style:(unsigned char)arg4 account:(NSString *)arg5;
 - (void)sendNotificationMessageToUniqueID:(NSString *)arg1 withCommand:(long long)arg2;
@@ -212,6 +221,7 @@
 - (void)updateAuthorizationCredentials:(NSString *)arg1 token:(NSString *)arg2 account:(NSString *)arg3;
 - (void)updateBalloonPayload:(NSData *)arg1 attachments:(NSArray *)arg2 forMessageGUID:(NSString *)arg3;
 - (void)updateMessage:(IMMessageItem *)arg1;
+- (void)updateMessage:(IMMessageItem *)arg1 withIndexesOfDeletedItems:(NSIndexSet *)arg2 withIndexToRangeMapOfDeletedItems:(NSDictionary *)arg3;
 - (void)updateUnformattedID:(NSString *)arg1 forBuddyID:(NSString *)arg2 onService:(NSString *)arg3;
 - (void)uploadDailyAnalyticstoCloudKit;
 - (void)userNicknameForRecordID:(NSString *)arg1 decryptionKey:(NSData *)arg2 requestID:(NSString *)arg3;

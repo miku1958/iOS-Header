@@ -6,33 +6,31 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaRemote/NSCopying-Protocol.h>
 #import <MediaRemote/NSMutableCopying-Protocol.h>
 #import <MediaRemote/NSSecureCoding-Protocol.h>
 
-@class MRSupportedProtocolMessages, NSString, _MRDeviceInfoMessageProtobuf;
+@class MRDeviceInfo, MRSupportedProtocolMessages, NSString;
 
-@interface MRAVDistantExternalDeviceMetadata : NSObject <NSMutableCopying, NSSecureCoding>
+@interface MRAVDistantExternalDeviceMetadata : NSObject <NSCopying, NSMutableCopying, NSSecureCoding>
 {
     NSString *_name;
     NSString *_hostName;
     long long _hostPort;
     MRSupportedProtocolMessages *_supportedMessages;
-    _MRDeviceInfoMessageProtobuf *_deviceInfo;
-    BOOL _paired;
+    MRDeviceInfo *_deviceInfo;
     BOOL _usingSystemPairing;
 }
 
-@property (readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
+@property (readonly, nonatomic) MRDeviceInfo *deviceInfo; // @synthesize deviceInfo=_deviceInfo;
 @property (readonly, nonatomic) NSString *hostName; // @synthesize hostName=_hostName;
 @property (readonly, nonatomic) long long hostPort; // @synthesize hostPort=_hostPort;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property (readonly, nonatomic) BOOL paired; // @synthesize paired=_paired;
 @property (readonly, nonatomic) MRSupportedProtocolMessages *supportedMessages; // @synthesize supportedMessages=_supportedMessages;
 @property (readonly, nonatomic) BOOL usingSystemPairing; // @synthesize usingSystemPairing=_usingSystemPairing;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_copyWithZone:(struct _NSZone *)arg1 usingConcreteClass:(Class)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

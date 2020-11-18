@@ -13,6 +13,11 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (void)_axCheckProgress;
+- (void)_axHandleProgressComplete;
+- (void)_axHandleProgressStart:(id)arg1;
+- (id)_axProgressTimer;
+- (void)_axSetProgressTimer:(id)arg1;
 - (void)fluidProgressController:(id)arg1 setProgressToCurrentPosition:(id)arg2;
 - (void)fluidProgressController:(id)arg1 startFluidProgressBar:(id)arg2 animateFillFade:(BOOL)arg3;
 - (void)fluidProgressController:(id)arg1 updateFluidProgressBar:(id)arg2;

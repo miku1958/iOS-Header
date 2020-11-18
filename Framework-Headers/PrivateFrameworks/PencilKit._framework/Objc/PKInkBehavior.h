@@ -53,9 +53,9 @@
 - (void)addNewInkFunction:(id)arg1;
 - (double)alphaForStroke:(id)arg1;
 - (double)alphaForStrokeColor:(struct CGColor *)arg1;
-- (double)brushOpacityForPoint:(CDStruct_f17e9403)arg1 context:(CDStruct_5237edf5 *)arg2;
+- (double)brushOpacityForPoint:(CDStruct_6422aa5d)arg1 context:(CDStruct_713d3c04 *)arg2;
 - (id)description;
-- (double)edgeWidthForPoint:(CDStruct_f17e9403)arg1 context:(CDStruct_5237edf5 *)arg2;
+- (double)edgeWidthForPoint:(CDStruct_6422aa5d)arg1 context:(CDStruct_713d3c04 *)arg2;
 - (double)evaluateWeight:(double)arg1;
 - (id)functionsForProperty:(unsigned long long)arg1;
 - (BOOL)immutableVelocity;
@@ -64,13 +64,13 @@
 - (id)inkFunctionsForProperty:(unsigned long long)arg1;
 - (BOOL)isEraser;
 - (BOOL)isTimeDependent;
-- (struct _PKStrokePoint)outputForPoint:(CDStruct_f17e9403)arg1 context:(CDStruct_5237edf5 *)arg2;
+- (struct _PKStrokePoint)outputForPoint:(CDStruct_6422aa5d)arg1 context:(CDStruct_713d3c04 *)arg2;
 - (struct PKOutputFunction)outputFunctionFromInkFunction:(id)arg1;
 - (struct _PKStrokePoint)outputTimePoint:(struct _PKStrokePoint)arg1 atTime:(double)arg2 stillChanging:(BOOL *)arg3;
 - (vector_2b0a8222 *)outputVectorForProperty:(unsigned long long)arg1;
 - (double)particleSpacingForRadius:(double)arg1;
 - (id)particleTextureName;
-- (double)radiusForPoint:(CDStruct_f17e9403)arg1 context:(CDStruct_5237edf5 *)arg2;
+- (double)radiusForPoint:(CDStruct_6422aa5d)arg1 context:(CDStruct_713d3c04 *)arg2;
 - (void)removeInkFunction:(id)arg1;
 - (double)rulerOffsetForBaseValues:(struct _PKStrokePoint)arg1 inputType:(long long)arg2 inputScale:(double)arg3;
 - (void)setAspectRatioOutput:(vector_2b0a8222)arg1;
@@ -86,7 +86,7 @@
 - (void)setVariableSnappedWidth:(BOOL)arg1;
 - (void)setWeightFunction:(unique_ptr_94812230)arg1;
 - (BOOL)showBrushIndicator;
-- (double)solve:(vector_2b0a8222 *)arg1 forPoint:(CDStruct_f17e9403)arg2 context:(CDStruct_5237edf5 *)arg3 weight:(double)arg4;
+- (double)solve:(vector_2b0a8222 *)arg1 forPoint:(CDStruct_6422aa5d)arg2 context:(CDStruct_713d3c04 *)arg3 weight:(double)arg4;
 - (double)solveForTime:(vector_2b0a8222 *)arg1 forTime:(double)arg2 stillChanging:(BOOL *)arg3;
 - (BOOL)usesAzimuthOrAltitude;
 - (BOOL)variableSnappedWidth;

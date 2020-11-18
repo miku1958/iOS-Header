@@ -18,10 +18,14 @@
     NSMutableDictionary *_assertionHolders;
     NSObject<OS_dispatch_queue> *_queue;
     NSObject<OS_os_transaction> *_powerAssertTransaction;
+    BOOL _enableDebug;
 }
 
+@property (nonatomic) BOOL enableDebug; // @synthesize enableDebug=_enableDebug;
+
 + (id)sharedPowerAssertion;
-- (void)dealloc;
+- (void).cxx_destruct;
+- (id)assertionHolders;
 - (id)dumpState;
 - (void)holdPowerAssertion:(id)arg1;
 - (id)init;

@@ -22,6 +22,7 @@
     NSString *_title;
     NSString *_subtitle;
     NSArray *_reasons;
+    double _score;
 }
 
 @property (readonly, nonatomic) BOOL containsUnverifiedPersons;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) id recipe; // @synthesize recipe=_recipe;
 @property (nonatomic) unsigned long long relevanceDurationInDays; // @synthesize relevanceDurationInDays=_relevanceDurationInDays;
 @property (readonly, nonatomic) NSArray *representativeAssets;
+@property (nonatomic) double score; // @synthesize score=_score;
 @property (readonly, nonatomic) unsigned short state;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly, nonatomic) unsigned short subtype; // @synthesize subtype=_subtype;

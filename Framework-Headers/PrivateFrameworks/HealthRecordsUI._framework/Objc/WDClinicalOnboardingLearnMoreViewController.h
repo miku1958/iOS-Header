@@ -4,15 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HealthUI/HKViewController.h>
+#import <HealthRecordsUI/_TtC15HealthRecordsUI18TextViewController.h>
 
-__attribute__((visibility("hidden")))
-@interface WDClinicalOnboardingLearnMoreViewController : HKViewController
+@interface WDClinicalOnboardingLearnMoreViewController : _TtC15HealthRecordsUI18TextViewController
 {
 }
 
-- (void)done:(id)arg1;
-- (void)loadView;
+- (void)doneTapped:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)viewDidLoad;
 
 @end

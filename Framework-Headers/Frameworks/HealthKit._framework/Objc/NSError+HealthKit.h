@@ -29,8 +29,10 @@
 + (id)hk_error:(long long)arg1 format:(id)arg2;
 + (id)hk_featureUnavailableForProfileError;
 + (id)hk_healthDataUnavailableError;
++ (id)hk_healthStoreUnavailableError;
 + (id)hk_invalidProfileError;
 + (id)hk_protectedDataInaccessibilityError;
++ (id)hk_transactionInterruptedError;
 - (id)_hk_OAuth2_errorByAddingItemsToUserInfo:(id)arg1;
 - (BOOL)hk_OAuth2_isAccessDeniedError;
 - (BOOL)hk_OAuth2_isBearerAuthenticationError;
@@ -43,6 +45,7 @@
 - (BOOL)hk_isDatabaseAccessibilityError;
 - (BOOL)hk_isDatabaseSchemaRolledBackError;
 - (BOOL)hk_isDatabaseTransactionError;
+- (BOOL)hk_isErrorInDomain:(id)arg1 code:(long long)arg2;
 - (BOOL)hk_isHealthKitError;
 - (BOOL)hk_isHealthKitErrorWithCode:(long long)arg1;
 - (BOOL)hk_isInternalFailureError;
@@ -51,6 +54,7 @@
 - (BOOL)hk_isServiceDeviceNotFoundError;
 - (BOOL)hk_isStreamFailureError;
 - (BOOL)hk_isTimeoutError;
+- (BOOL)hk_isTransactionInterruptedError;
 - (BOOL)hk_isUserCanceledError;
 - (BOOL)hk_isXPCConnectionError;
 - (BOOL)hk_isXPCConnectionInterruptedError;

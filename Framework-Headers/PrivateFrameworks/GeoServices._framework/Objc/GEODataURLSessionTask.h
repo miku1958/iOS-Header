@@ -34,9 +34,9 @@
     BOOL _finished;
     unsigned int _qos;
     NSObject<OS_os_activity> *_activity;
-    NSObject<OS_voucher> *_voucher;
     id<NSObject> _parsedResponse;
     NSDate *_originalStartDate;
+    NSObject<OS_voucher> *_voucher;
 }
 
 @property (readonly, nonatomic) long long HTTPStatusCode;

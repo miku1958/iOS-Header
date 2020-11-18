@@ -12,6 +12,7 @@
 
 @interface PHExternalAssetResource : NSObject <PHCPLAssetResource>
 {
+    long long _sandboxExtensionHandle;
     BOOL _duplicateAllowsReadAccess;
     BOOL _isLibraryAssetResource;
     long long _resourceType;
@@ -38,6 +39,10 @@
 + (id)assetResourceForDuplicatingAssetResource:(id)arg1 asData:(BOOL)arg2 error:(id *)arg3;
 + (unsigned long long)probableCPLResourceTypeFromAssetResourceType:(long long)arg1;
 - (void).cxx_destruct;
+- (void)_consumeSandboxExtension:(id)arg1;
+- (id)_issueSandboxExtension;
+- (void)_releaseSandboxExtension;
+- (void)dealloc;
 - (id)init;
 - (id)initWithPropertyListRepresentation:(id)arg1;
 - (id)initWithResourceType:(long long)arg1;

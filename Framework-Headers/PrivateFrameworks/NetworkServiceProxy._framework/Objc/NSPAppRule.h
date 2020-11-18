@@ -34,7 +34,6 @@
     NSNumber *_enableMultipath;
     NSNumber *_enableTFO;
     NSNumber *_requireTFO;
-    NSNumber *_useTFOHeuristics;
     NSNumber *_enableNoTFOCookie;
     NSNumber *_enableUDPRace;
     NSNumber *_enableRatio;
@@ -93,7 +92,6 @@
 @property (strong, nonatomic) NSData *updateHash; // @synthesize updateHash=_updateHash;
 @property (copy, nonatomic) NSNumber *useCustomProtocol; // @synthesize useCustomProtocol=_useCustomProtocol;
 @property (copy, nonatomic) NSNumber *useLocalFlowDivert; // @synthesize useLocalFlowDivert=_useLocalFlowDivert;
-@property (copy, nonatomic) NSNumber *useTFOHeuristics; // @synthesize useTFOHeuristics=_useTFOHeuristics;
 
 + (id)copyUUIDsForSigningIdentifier:(id)arg1 executablePath:(id)arg2;
 + (void)loadAppRules:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;

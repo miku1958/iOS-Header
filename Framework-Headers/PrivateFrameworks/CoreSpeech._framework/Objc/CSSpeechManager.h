@@ -6,31 +6,29 @@
 
 #import <objc/NSObject.h>
 
-#import <CoreSpeech/CSActivationEventNotifierDelegate-Protocol.h>
+#import <CoreSpeech/CSActivationEventNotificationHandlerDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioProviderDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioRecorderDelegate-Protocol.h>
 #import <CoreSpeech/CSAudioServerCrashMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSOpportuneSpeakEventMonitorDelegate-Protocol.h>
 #import <CoreSpeech/CSVoiceTriggerAssetHandlerDelegate-Protocol.h>
-#import <CoreSpeech/CSVoiceTriggerXPCServiceDelegate-Protocol.h>
 
-@class CSAudioRecorder, CSFallbackAudioSessionReleaseProvider, CSOpportuneSpeakListnerTestService, CSSmartSiriVolume, CSSpIdImplicitTraining, NSMutableDictionary, NSString;
-@protocol CSSmartSiriVolumeDelegate, CSSpeechManagerDelegate, OS_dispatch_queue, OS_dispatch_source;
+@class CSAudioRecorder, CSFallbackAudioSessionReleaseProvider, CSOpportuneSpeakListnerTestService, CSPostBuildInstallService, CSSmartSiriVolumeManager, NSMutableDictionary, NSString;
+@protocol CSSpeechManagerDelegate, OS_dispatch_queue, OS_dispatch_source;
 
-@interface CSSpeechManager : NSObject <CSAudioServerCrashMonitorDelegate, CSVoiceTriggerAssetHandlerDelegate, CSActivationEventNotifierDelegate, CSAudioRecorderDelegate, CSVoiceTriggerXPCServiceDelegate, CSAudioProviderDelegate, CSOpportuneSpeakEventMonitorDelegate>
+@interface CSSpeechManager : NSObject <CSAudioServerCrashMonitorDelegate, CSVoiceTriggerAssetHandlerDelegate, CSActivationEventNotificationHandlerDelegate, CSAudioRecorderDelegate, CSAudioProviderDelegate, CSOpportuneSpeakEventMonitorDelegate>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    CSSmartSiriVolume *_smartSiriVolume;
     NSObject<OS_dispatch_queue> *_assetQueryQueue;
     CSAudioRecorder *_audioRecorder;
     NSMutableDictionary *_audioProviders;
     CSFallbackAudioSessionReleaseProvider *_fallbackAudioSessionReleaseProvider;
     id<CSSpeechManagerDelegate> _clientController;
-    id<CSSmartSiriVolumeDelegate> _volumeClientController;
-    CSSpIdImplicitTraining *_voiceTriggerImplicitTraining;
     NSObject<OS_dispatch_source> *_clearLoggingFileTimer;
     long long _clearLoggingFileTimerCount;
     CSOpportuneSpeakListnerTestService *_opportuneSpeakListnerTestService;
+    CSPostBuildInstallService *_postBuildInstallService;
+    CSSmartSiriVolumeManager *_ssvManager;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *assetQueryQueue; // @synthesize assetQueryQueue=_assetQueryQueue;
@@ -44,11 +42,10 @@
 @property (strong, nonatomic) CSFallbackAudioSessionReleaseProvider *fallbackAudioSessionReleaseProvider; // @synthesize fallbackAudioSessionReleaseProvider=_fallbackAudioSessionReleaseProvider;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CSOpportuneSpeakListnerTestService *opportuneSpeakListnerTestService; // @synthesize opportuneSpeakListnerTestService=_opportuneSpeakListnerTestService;
+@property (strong, nonatomic) CSPostBuildInstallService *postBuildInstallService; // @synthesize postBuildInstallService=_postBuildInstallService;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (readonly, nonatomic) CSSmartSiriVolume *smartSiriVolume; // @synthesize smartSiriVolume=_smartSiriVolume;
+@property (strong, nonatomic) CSSmartSiriVolumeManager *ssvManager; // @synthesize ssvManager=_ssvManager;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) CSSpIdImplicitTraining *voiceTriggerImplicitTraining; // @synthesize voiceTriggerImplicitTraining=_voiceTriggerImplicitTraining;
-@property (weak, nonatomic) id<CSSmartSiriVolumeDelegate> volumeClientController; // @synthesize volumeClientController=_volumeClientController;
 
 + (id)sharedManager;
 + (id)sharedManagerForCoreSpeechDaemon;
@@ -59,6 +56,7 @@
 - (void)_getVoiceTriggerAssetIfNeeded:(CDUnknownBlockType)arg1;
 - (void)_reinitializeSmartSiriVolumeWithAsset:(id)arg1;
 - (void)_startClearLoggingFilesTimer;
+- (id)audioFingerprintProvider;
 - (void)audioProviderInvalidated:(id)arg1 streamHandleId:(unsigned long long)arg2;
 - (id)audioProviderWithContext:(id)arg1 error:(id *)arg2;
 - (id)audioProviderWithStreamID:(unsigned long long)arg1;
@@ -72,9 +70,9 @@
 - (void)opportuneSpeakEventMonitor:(id)arg1 didStreamStateChanged:(BOOL)arg2;
 - (void)registerSiriClientProxy:(id)arg1;
 - (void)registerSpeechController:(id)arg1;
-- (void)registerVolumeController:(id)arg1;
 - (void)startManager;
 - (void)voiceTriggerAssetHandler:(id)arg1 didChangeCachedAsset:(id)arg2;
+- (id)voiceTriggerEventNotifier;
 
 @end
 

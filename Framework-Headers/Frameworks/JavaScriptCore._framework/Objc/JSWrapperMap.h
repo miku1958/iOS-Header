@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface JSWrapperMap : NSObject
 {
     NSMutableDictionary *m_classMap;
-    struct unique_ptr<JSC::WeakGCMap<id, JSC::JSObject, WTF::PtrHash<id>, WTF::HashTraits<id>>, std::__1::default_delete<JSC::WeakGCMap<id, JSC::JSObject, WTF::PtrHash<id>, WTF::HashTraits<id>>>> m_cachedJSWrappers;
+    struct unique_ptr<JSC::WeakGCMap<id, JSC::JSObject, WTF::DefaultHash<id>, WTF::HashTraits<id>>, std::__1::default_delete<JSC::WeakGCMap<id, JSC::JSObject, WTF::DefaultHash<id>, WTF::HashTraits<id>>>> m_cachedJSWrappers;
     NSMapTable *m_cachedObjCWrappers;
 }
 

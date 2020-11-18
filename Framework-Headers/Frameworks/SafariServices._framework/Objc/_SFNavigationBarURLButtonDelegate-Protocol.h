@@ -6,15 +6,22 @@
 
 #import <SafariServices/NSObject-Protocol.h>
 
-@class NSString, UIGestureRecognizer, _SFNavigationBarURLButton;
+@class NSString, UIGestureRecognizer, UITextField, _SFNavigationBarURLButton;
 
 @protocol _SFNavigationBarURLButtonDelegate <NSObject>
+- (BOOL)navigationBarURLButton:(_SFNavigationBarURLButton *)arg1 canWriteAtLocation:(struct CGPoint)arg2;
 - (BOOL)navigationBarURLButton:(_SFNavigationBarURLButton *)arg1 shouldAllowLongPressAtPoint:(struct CGPoint)arg2;
 - (BOOL)navigationBarURLButton:(_SFNavigationBarURLButton *)arg1 shouldShowMenuForGestureWithRecognizer:(UIGestureRecognizer *)arg2;
+- (void)navigationBarURLButtonBeginSuppressingPlaceholder:(_SFNavigationBarURLButton *)arg1;
 - (void)navigationBarURLButtonDidReceiveCopyCommand:(_SFNavigationBarURLButton *)arg1;
 - (void)navigationBarURLButtonDidReceivePasteCommand:(_SFNavigationBarURLButton *)arg1;
+- (void)navigationBarURLButtonDidRequestFocusForPencilInput:(_SFNavigationBarURLButton *)arg1 completionHandler:(void (^)(void))arg2;
+- (void)navigationBarURLButtonEndSuppressingPlaceholder:(_SFNavigationBarURLButton *)arg1;
+- (BOOL)navigationBarURLButtonIsUsingNarrowLayout:(_SFNavigationBarURLButton *)arg1;
 - (BOOL)navigationBarURLButtonShouldCopy:(_SFNavigationBarURLButton *)arg1;
 - (BOOL)navigationBarURLButtonShouldPaste:(_SFNavigationBarURLButton *)arg1;
+- (UITextField *)textFieldForNavigationBarURLButton:(_SFNavigationBarURLButton *)arg1;
+- (BOOL)textFieldIsEditableForNavigationBarURLButton:(_SFNavigationBarURLButton *)arg1;
 - (NSString *)textForNavigationBarURLButton:(_SFNavigationBarURLButton *)arg1;
 @end
 

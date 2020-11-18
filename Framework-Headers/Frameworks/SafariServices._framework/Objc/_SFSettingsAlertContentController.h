@@ -6,12 +6,13 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <SafariServices/SFSettingsAlertItemViewDelegate-Protocol.h>
 #import <SafariServices/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableIndexSet, NSString, UIControl, UIScrollView, UISelectionFeedbackGenerator, UIStackView, UIView, _SFSettingsAlertItem;
+@class NSArray, NSLayoutConstraint, NSMutableArray, NSMutableIndexSet, NSString, UIControl, UIScrollView, UISelectionFeedbackGenerator, UIStackView, UIView, _SFSettingsAlertItem;
 
 __attribute__((visibility("hidden")))
-@interface _SFSettingsAlertContentController : UIViewController <UIGestureRecognizerDelegate>
+@interface _SFSettingsAlertContentController : UIViewController <UIGestureRecognizerDelegate, SFSettingsAlertItemViewDelegate>
 {
     NSMutableArray *_items;
     NSMutableIndexSet *_groupStartIndices;
@@ -19,9 +20,11 @@ __attribute__((visibility("hidden")))
     UIStackView *_stackView;
     NSArray *_focusedItemConstraints;
     NSArray *_stackViewTopBottomConstraints;
+    NSLayoutConstraint *_stackViewWidthConstraint;
     UIView *_lastViewForAlignment;
     UIControl *_controlHighlightedForPan;
     UISelectionFeedbackGenerator *_feedbackGenerator;
+    BOOL _updatePreferredContentSizeAfterLayout;
     _SFSettingsAlertItem *_focusedItem;
 }
 
@@ -46,11 +49,14 @@ __attribute__((visibility("hidden")))
 - (void)_updateSeparators;
 - (void)addDivider;
 - (void)addItem:(id)arg1;
+- (void)alertItemViewContentSizeDidChange:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidLayoutSubviews;
 - (void)viewWillAppear:(BOOL)arg1;
 
 @end

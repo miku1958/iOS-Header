@@ -4,15 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <NewsSubscription/_TtC16NewsSubscription23BundlePaywallBaseStyler.h>
 
-@class MISSING_TYPE;
-
-@interface _TtC16NewsSubscription23BundleSoftPaywallStyler : _TtCs12_SwiftObject
+@interface _TtC16NewsSubscription23BundleSoftPaywallStyler : _TtC16NewsSubscription23BundlePaywallBaseStyler
 {
-    MISSING_TYPE *colorPaletteProvider;
-    MISSING_TYPE *titleMaxLines;
-    MISSING_TYPE *descriptionMaxLines;
 }
 
 @end

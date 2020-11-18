@@ -4,12 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSString;
 @protocol HDHealthRecordsAccountEventObserver, HDHealthRecordsSupportedChangeObserver;
 
 @protocol HDHealthRecordsProfileExtension
 - (void)addAccountEventObserver:(id<HDHealthRecordsAccountEventObserver>)arg1;
 - (BOOL)deviceConfigurationSupportsHealthRecords:(BOOL *)arg1 error:(id *)arg2;
 - (BOOL)hasAccounts:(BOOL *)arg1 error:(id *)arg2;
+- (BOOL)isSupportedFHIRResourceType:(NSString *)arg1 FHIRVersionString:(NSString *)arg2;
+- (BOOL)isSupportedFHIRVersionString:(NSString *)arg1;
 - (void)registerHealthRecordsSupportedChangeObserver:(id<HDHealthRecordsSupportedChangeObserver>)arg1;
 - (void)removeAccountEventObserver:(id<HDHealthRecordsAccountEventObserver>)arg1;
 - (void)unregisterHealthRecordsSupportedChangeObserver:(id<HDHealthRecordsSupportedChangeObserver>)arg1;

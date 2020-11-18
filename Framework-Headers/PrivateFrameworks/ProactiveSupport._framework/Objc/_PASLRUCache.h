@@ -6,12 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray, NSMutableDictionary;
+@class _PASLock;
 
 @interface _PASLRUCache : NSObject
 {
-    NSMutableDictionary *_items;
-    NSMutableArray *_keysMRU;
+    _PASLock *_lock;
     unsigned long long _countLimit;
 }
 

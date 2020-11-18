@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSString *opaqueKey; // @synthesize opaqueKey=_opaqueKey;
 @property (readonly) Class superclass;
 
++ (id)predicateForAllSuggestedEvents;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyMatchingItemsWithDatabase:(struct CalDatabase *)arg1;

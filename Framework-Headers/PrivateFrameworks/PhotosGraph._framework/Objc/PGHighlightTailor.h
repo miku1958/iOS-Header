@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSSet, PGManager;
+@class NSArray, NSSet, PGManager, PGMoodGenerationContext;
 @protocol OS_dispatch_group;
 
 @interface PGHighlightTailor : NSObject
 {
     NSObject<OS_dispatch_group> *_enrichmentCommitGroup;
+    PGMoodGenerationContext *_moodGenerationContext;
     PGManager *_manager;
     NSArray *_enrichmentProfiles;
     NSSet *_verifiedPersonLocalIdentifiers;
@@ -28,6 +29,7 @@
 - (id)bestEnrichmentProfileForHighlight:(id)arg1 options:(unsigned long long)arg2;
 - (id)computeChangedVisibilityScoresForItems:(id)arg1;
 - (BOOL)enrichAllHighlightsWithOptions:(unsigned long long)arg1 progressBlock:(CDUnknownBlockType)arg2;
+- (BOOL)enrichDayHighlights:(id)arg1 dayGroupHighlights:(id)arg2 withOptions:(unsigned long long)arg3 progressBlock:(CDUnknownBlockType)arg4;
 - (BOOL)enrichHighlights:(id)arg1 options:(unsigned long long)arg2 progressBlock:(CDUnknownBlockType)arg3;
 - (id)enrichmentValuesForHighlight:(id)arg1 usingEnrichmentProfile:(id)arg2 options:(unsigned long long)arg3 reportChangedValuesOnly:(BOOL)arg4 progressBlock:(CDUnknownBlockType)arg5;
 - (double)highlightVisibilityWeightForItem:(id)arg1;

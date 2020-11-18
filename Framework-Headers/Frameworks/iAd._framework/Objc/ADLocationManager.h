@@ -54,11 +54,10 @@
 - (void)_stopUpdatingLocation;
 - (id)init;
 - (BOOL)isAdLocationServicesEnabled;
-- (BOOL)isLocationBasedAdsEnabled;
 - (BOOL)locationEnabledFor:(int)arg1;
-- (void)locationManager:(id)arg1 didChangeAuthorizationStatus:(int)arg2;
 - (void)locationManager:(id)arg1 didFailWithError:(id)arg2;
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
+- (void)locationManagerDidChangeAuthorization:(id)arg1;
 - (void)setLocation:(id)arg1;
 
 @end

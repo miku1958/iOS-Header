@@ -8,23 +8,34 @@
 
 #import <CoreSpeech/CSAudioServerCrashMonitorDelegate-Protocol.h>
 
-@class AVVoiceTriggerClient, NSString;
+@class AVVoiceTriggerClient, NSObject, NSString;
+@protocol OS_dispatch_queue;
 
 @interface CSBuiltinSpeakerStateMonitor : CSEventMonitor <CSAudioServerCrashMonitorDelegate>
 {
+    BOOL _isSpeakerMuted;
     AVVoiceTriggerClient *_alwaysOnProcessorController;
+    NSObject<OS_dispatch_queue> *_queue;
+    unsigned long long _builtInSpeakerState;
 }
 
 @property (strong, nonatomic) AVVoiceTriggerClient *alwaysOnProcessorController; // @synthesize alwaysOnProcessorController=_alwaysOnProcessorController;
+@property (nonatomic) unsigned long long builtInSpeakerState; // @synthesize builtInSpeakerState=_builtInSpeakerState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isSpeakerMuted; // @synthesize isSpeakerMuted=_isSpeakerMuted;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)CSAudioServerCrashMonitorDidReceiveServerRestart:(id)arg1;
 - (void)_didReceiveBuiltinSpeakerStateChangeNotification:(unsigned long long)arg1;
+- (void)_didReceiveSpeakerMuteStateChangeNotification:(BOOL)arg1;
+- (void)_fetchSpeakerStateActiveInfo;
+- (void)_fetchSpeakerStateMutedInfo;
+- (void)_notifyObserver:(id)arg1 isSpeakerMuted:(BOOL)arg2;
 - (void)_notifyObserver:(id)arg1 withBuiltinSpeakerState:(unsigned long long)arg2;
 - (void)_startMonitoringWithQueue:(id)arg1;
 - (void)_stopMonitoring;

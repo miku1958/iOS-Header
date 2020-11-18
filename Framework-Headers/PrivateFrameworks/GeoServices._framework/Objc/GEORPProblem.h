@@ -27,11 +27,7 @@
         unsigned int read_userPaths:1;
         unsigned int read_problemContext:1;
         unsigned int read_problemCorrections:1;
-        unsigned int wrote_userPaths:1;
-        unsigned int wrote_problemContext:1;
-        unsigned int wrote_problemCorrections:1;
-        unsigned int wrote_problemType:1;
-        unsigned int wrote_protocolVersion:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -50,10 +46,6 @@
 - (void).cxx_destruct;
 - (int)StringAsProblemType:(id)arg1;
 - (int)StringAsUserPaths:(id)arg1;
-- (void)_addNoFlagsUserPath:(int)arg1;
-- (void)_readProblemContext;
-- (void)_readProblemCorrections;
-- (void)_readUserPaths;
 - (void)addUserPath:(int)arg1;
 - (void)clearUserPaths;
 - (void)copyTo:(id)arg1;
@@ -64,8 +56,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
-- (id)initWithMerchantIndustryCode:(long long)arg1 mapsIdentifier:(unsigned long long)arg2 merchantName:(id)arg3 merchantRawName:(id)arg4 merchantIndustryCategory:(id)arg5 merchantURL:(id)arg6 merchantFormattedAddress:(id)arg7 transactionTime:(double)arg8 transactionType:(id)arg9 transactionLocation:(CDStruct_c3b9c2ee)arg10;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)problemTypeAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;

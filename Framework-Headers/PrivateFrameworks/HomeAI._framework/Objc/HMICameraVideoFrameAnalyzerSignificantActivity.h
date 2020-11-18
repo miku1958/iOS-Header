@@ -9,23 +9,31 @@
 #import <HomeAI/HMFLogging-Protocol.h>
 #import <HomeAI/HMICameraVideoFrameAnalyzer-Protocol.h>
 
-@class HMFOSTransaction, HMFUnfairLock, HMISignificantActivityDetector, NSMapTable, NSOperationQueue, NSString;
+@class HMFOSTransaction, HMFUnfairLock, HMIFaceClassifierVIP, HMISignificantActivityDetector, NSCache, NSDictionary, NSMapTable, NSOperationQueue, NSString;
 
 @interface HMICameraVideoFrameAnalyzerSignificantActivity : HMFObject <HMICameraVideoFrameAnalyzer, HMFLogging>
 {
     HMFUnfairLock *_lock;
+    NSDictionary *_mediumConfidenceThresholds;
+    NSDictionary *_highConfidenceThresholds;
     NSOperationQueue *_regionOfInterestOperationQueue;
     NSMapTable *_regionOfInterestOperations;
     HMISignificantActivityDetector *_significantActivityDetector;
+    HMIFaceClassifierVIP *_faceClassifier;
     HMFOSTransaction *_transaction;
+    NSCache *_sessionEntityManagers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly) HMIFaceClassifierVIP *faceClassifier; // @synthesize faceClassifier=_faceClassifier;
 @property (readonly) unsigned long long hash;
+@property (readonly) NSDictionary *highConfidenceThresholds; // @synthesize highConfidenceThresholds=_highConfidenceThresholds;
 @property (readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
+@property (readonly) NSDictionary *mediumConfidenceThresholds; // @synthesize mediumConfidenceThresholds=_mediumConfidenceThresholds;
 @property (readonly) NSOperationQueue *regionOfInterestOperationQueue; // @synthesize regionOfInterestOperationQueue=_regionOfInterestOperationQueue;
 @property (readonly) NSMapTable *regionOfInterestOperations; // @synthesize regionOfInterestOperations=_regionOfInterestOperations;
+@property (readonly) NSCache *sessionEntityManagers; // @synthesize sessionEntityManagers=_sessionEntityManagers;
 @property (readonly) HMISignificantActivityDetector *significantActivityDetector; // @synthesize significantActivityDetector=_significantActivityDetector;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) HMFOSTransaction *transaction; // @synthesize transaction=_transaction;
@@ -33,12 +41,19 @@
 + (id)classHierarchyMap;
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)_addSimulatedDetectionForEventType:(long long)arg1 targetEventTypes:(long long)arg2 events:(long long *)arg3 annotationScores:(id)arg4 detections:(id)arg5;
-- (double)_confidenceScoreOverrideForEventType:(long long)arg1;
-- (id)analyze:(id)arg1 targetEventTypes:(long long)arg2 error:(id *)arg3;
-- (id)initWithConfidenceThresholds:(id)arg1 nmsThreshold:(double)arg2 error:(id *)arg3;
+- (id)_analyzerEventsFromObjectDetections:(id)arg1;
+- (id)_createStationaryEventFromEvent:(id)arg1;
+- (id)_eventsWithFaceClassificationAppliedFromEvents:(id)arg1 videoFrame:(id)arg2 sessionIdentifier:(id)arg3 homeUUID:(id)arg4 error:(id *)arg5;
+- (id)_filterEvents:(id)arg1 targetEventClasses:(id)arg2;
+- (id)_filterEvents:(id)arg1 withMotionDetections:(id)arg2 cropRectNormalized:(struct CGRect)arg3;
+- (long long)_rankForEventClass:(Class)arg1;
+- (id)_simulatedEventForEventClass:(Class)arg1;
+- (id)_targetEventsSetFromTargetEventTypes:(long long)arg1 enableFaceClassification:(BOOL)arg2;
+- (id)analyze:(id)arg1 targetEventTypes:(long long)arg2 enableFaceClassification:(BOOL)arg3 sessionIdentifier:(id)arg4 homeUUID:(id)arg5 error:(id *)arg6;
+- (void)handleMotionDetection:(id)arg1 sessionPTS:(CDStruct_1b6d18a9)arg2 frameDimensions:(struct CGSize)arg3 sessionIdentifier:(id)arg4;
+- (id)initWithMediumConfidenceThresholds:(id)arg1 highConfidenceThresholds:(id)arg2 nmsConfiguration:(id)arg3 assetPath:(id)arg4 error:(id *)arg5;
 - (void)preAnalyze:(id)arg1;
-- (long long)rankForClassLabel:(long long)arg1;
+- (void)saveDESRecordVideoFrame:(id)arg1 withResult:(id)arg2;
 
 @end
 

@@ -111,10 +111,12 @@
 - (void)logErrorProcessingChangeTransactionsToUpdateThumbnails:(id)arg1;
 - (void)logErrorReadingCurrentHistoryToken:(id)arg1;
 - (void)logErrorRemovingStoreFolder:(id)arg1;
+- (void)logErrorSandboxInit:(char *)arg1;
 - (void)logErrorSavingChangeToken:(id)arg1 location:(id)arg2;
 - (void)logErrorSavingRecentSticker:(id)arg1;
 - (void)logErrorSettingUpStore:(id)arg1;
-- (void)logErrorSettingUserDirSuffix;
+- (void)logErrorSettingUserDirSuffixForSandbox:(int)arg1;
+- (void)logErrorSnapshottingAVTView:(id)arg1;
 - (void)logErrorStartingServer:(id)arg1;
 - (void)logErrorTearingDownCoreDataStack:(id)arg1;
 - (void)logErrorUpdatingBackupInclusionStatus:(id)arg1;
@@ -131,6 +133,7 @@
 - (void)logFoundRecordIdentifier:(id)arg1 changeType:(long long)arg2 managedObjectID:(id)arg3;
 - (void)logGeneratingImageError:(id)arg1;
 - (void)logGeneratingImageForRecord:(id)arg1 scope:(id)arg2 type:(long long)arg3;
+- (void)logGenericSandboxError:(id)arg1 error:(int)arg2;
 - (void)logImageStoreBeginSavingImageForPath:(id)arg1;
 - (void)logImageStoreCacheHitForItemDescription:(id)arg1 sizeCost:(unsigned long long)arg2;
 - (void)logImageStoreCacheMiss:(id)arg1;
@@ -197,6 +200,7 @@
 - (void)logStartingPreLoadingTask:(id)arg1;
 - (void)logStartingServer;
 - (void)logStickerGeneratorPoolDidntHaveAvailableGenerator:(long long)arg1 maxCount:(long long)arg2;
+- (void)logStickerViewSnapshotForBounds:(struct CGRect)arg1 offset:(struct CGPoint)arg2;
 - (void)logSyncEnabled;
 - (void)logTearingDownCoreDataStack:(id)arg1;
 - (void)logThrottlingAVTView;
@@ -216,6 +220,7 @@
 - (void)logUsageTrackingRecordCount:(unsigned long long)arg1;
 - (void)logUsageTrackingSmallDifferencesClusterCount:(unsigned long long)arg1;
 - (void)logUserRequestedBackupXPCActivityFinished;
+- (void)logWarningNoHOME;
 - (void)logWillResetZone;
 - (void)migratingPersistedContent:(CDUnknownBlockType)arg1;
 - (void)performingMigrationXPCActivity:(CDUnknownBlockType)arg1;

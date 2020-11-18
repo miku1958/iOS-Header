@@ -14,8 +14,8 @@
 @interface _BCULayerRendererOperation : NSObject <BCUOperation>
 {
     _Atomic long long _operationId;
-    unsigned int _cancelled:1;
-    unsigned int _configuring:1;
+    BOOL _cancelled;
+    BOOL _configuring;
     BOOL _waitForCPUSynchronization;
     float _priority;
     BCULayerRenderer *_renderer;

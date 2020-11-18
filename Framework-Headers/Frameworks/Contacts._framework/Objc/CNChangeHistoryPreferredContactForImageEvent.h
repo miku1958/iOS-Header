@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) CNContact *preferredContact; // @synthesize preferredContact=_preferredContact;
 @property (readonly, nonatomic) CNContact *unifiedContact; // @synthesize unifiedContact=_unifiedContact;
 
++ (unsigned long long)instanceSortOrder;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)acceptEventVisitor:(id)arg1;
+- (long long)comparisonResultWithinSameClass:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;

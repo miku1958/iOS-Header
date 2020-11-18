@@ -7,7 +7,7 @@
 #import <Foundation/NSValue.h>
 
 @interface NSValue (IC)
-+ (id)valueWithRect:(struct CGRect)arg1;
-- (struct CGRect)rectValue;
++ (id)ic_valueWithRect:(struct CGRect)arg1;
+- (struct CGRect)ic_rectValue;
 @end
 

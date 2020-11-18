@@ -7,26 +7,19 @@
 #import <UIKit/UIView.h>
 
 #import <ReplayKit/NSCoding-Protocol.h>
-#import <ReplayKit/RPSystemBroadcastPickerViewControllerDelegate-Protocol.h>
 
-@class NSString, RPBroadcastPickerStandaloneViewController, UIButton;
+@class NSString, UIButton;
 
-@interface RPSystemBroadcastPickerView : UIView <RPSystemBroadcastPickerViewControllerDelegate, NSCoding>
+@interface RPSystemBroadcastPickerView : UIView <NSCoding>
 {
     BOOL _showsMicrophoneButton;
     NSString *_preferredExtension;
-    RPBroadcastPickerStandaloneViewController *_broadcastPickerViewController;
     UIButton *_broadcastPickerButton;
 }
 
 @property (strong, nonatomic) UIButton *broadcastPickerButton; // @synthesize broadcastPickerButton=_broadcastPickerButton;
-@property (strong, nonatomic) RPBroadcastPickerStandaloneViewController *broadcastPickerViewController; // @synthesize broadcastPickerViewController=_broadcastPickerViewController;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *preferredExtension; // @synthesize preferredExtension=_preferredExtension;
 @property (nonatomic) BOOL showsMicrophoneButton; // @synthesize showsMicrophoneButton=_showsMicrophoneButton;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)addBroadcastPickerButton;
@@ -34,7 +27,6 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)screenCaptureChanged;
-- (void)viewControllerDidFinish;
 
 @end
 

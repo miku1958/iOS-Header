@@ -4,28 +4,24 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <NanoPassKit/NPKTransientAssertion.h>
 
-@class NSString, NSXPCConnection;
+@class NSString;
 
-@interface NPKTransientPassAssertion : NSObject
+@interface NPKTransientPassAssertion : NPKTransientAssertion
 {
     BOOL _requestServiceMode;
     BOOL _disableCardSelection;
-    NSXPCConnection *_xpcConnection;
     NSString *_uniqueID;
 }
 
 @property (nonatomic) BOOL disableCardSelection; // @synthesize disableCardSelection=_disableCardSelection;
 @property (nonatomic) BOOL requestServiceMode; // @synthesize requestServiceMode=_requestServiceMode;
 @property (strong, nonatomic) NSString *uniqueID; // @synthesize uniqueID=_uniqueID;
-@property (strong, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 - (void).cxx_destruct;
-- (id)_remoteObjectProxy;
 - (void)_resyncState;
 - (id)initWithPassWithUniqueID:(id)arg1;
-- (void)invalidate;
 
 @end
 

@@ -14,7 +14,7 @@
 }
 
 - (void).cxx_destruct;
-- (id)initWithCIContext:(id)arg1;
+- (id)initWithCIContext:(id)arg1 priority:(long long)arg2;
 - (id)initWithMetalDevice:(id)arg1 options:(id)arg2;
 - (id)name;
 

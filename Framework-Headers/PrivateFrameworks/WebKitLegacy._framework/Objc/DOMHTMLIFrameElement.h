@@ -31,7 +31,6 @@
 - (void)setSrcdoc:(id)arg1;
 - (id)srcdoc;
 - (int)structuralComplexityContribution;
-- (int)structuralComplexityContribution;
 
 @end
 

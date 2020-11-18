@@ -6,43 +6,65 @@
 
 #import <UIKitCore/UIInputViewController.h>
 
+#import <UIKitCore/TUIEmojiSearchInputViewControllerDelegate-Protocol.h>
+#import <UIKitCore/TUISystemInputAssistantViewDelegate-Protocol.h>
+#import <UIKitCore/UIKeyboardAutocorrectionObserver-Protocol.h>
 #import <UIKitCore/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class NSMutableDictionary, NSString, TUISystemInputAssistantLayoutSplit, TUISystemInputAssistantLayoutStandard, TUISystemInputAssistantView, UITextInputAssistantItem, UIView, UIViewController;
-@protocol UIPredictiveViewController;
+@class NSMutableDictionary, NSString, NSTimer, TUIEmojiSearchInputViewController, TUISystemInputAssistantLayoutSplit, TUISystemInputAssistantLayoutStandard, TUISystemInputAssistantView, UITextInputAssistantItem, UIView, UIViewController;
+@protocol UIKeyInput, UIPredictiveViewController;
 
 __attribute__((visibility("hidden")))
-@interface UISystemInputAssistantViewController : UIInputViewController <UIPopoverPresentationControllerDelegate>
+@interface UISystemInputAssistantViewController : UIInputViewController <UIPopoverPresentationControllerDelegate, UIKeyboardAutocorrectionObserver, TUISystemInputAssistantViewDelegate, TUIEmojiSearchInputViewControllerDelegate>
 {
+    id<UIKeyInput> _pendingResponderForChangedNotification;
+    NSTimer *_pendingResponderChangedTimer;
+    BOOL _postedSwitchFromEmojiNotification;
+    BOOL _assistantEnabledPreference;
+    BOOL _assistantOniPhonePreference;
+    BOOL _hasCheckedPreferences;
+    BOOL _currentlyCheckingPreferences;
     UIViewController<UIPredictiveViewController> *_centerViewController;
     UIView *_popoverSourceView;
     UITextInputAssistantItem *_observedInputAssistantItem;
     NSMutableDictionary *_cachedPredictiveViewControllers;
     TUISystemInputAssistantLayoutStandard *_standardAssistantViewLayout;
     TUISystemInputAssistantLayoutSplit *_splitAssistantViewLayout;
+    TUIEmojiSearchInputViewController *_emojiSearchViewController;
+    UIViewController<UIPredictiveViewController> *_predictiveViewController;
+    UIViewController *_expandedItemsController;
 }
 
+@property BOOL assistantEnabledPreference; // @synthesize assistantEnabledPreference=_assistantEnabledPreference;
+@property BOOL assistantOniPhonePreference; // @synthesize assistantOniPhonePreference=_assistantOniPhonePreference;
 @property (strong, nonatomic) NSMutableDictionary *cachedPredictiveViewControllers; // @synthesize cachedPredictiveViewControllers=_cachedPredictiveViewControllers;
 @property (strong, nonatomic) UIViewController<UIPredictiveViewController> *centerViewController; // @synthesize centerViewController=_centerViewController;
+@property BOOL currentlyCheckingPreferences; // @synthesize currentlyCheckingPreferences=_currentlyCheckingPreferences;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) TUIEmojiSearchInputViewController *emojiSearchViewController; // @synthesize emojiSearchViewController=_emojiSearchViewController;
+@property (weak, nonatomic) UIViewController *expandedItemsController; // @synthesize expandedItemsController=_expandedItemsController;
+@property BOOL hasCheckedPreferences; // @synthesize hasCheckedPreferences=_hasCheckedPreferences;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) UITextInputAssistantItem *observedInputAssistantItem; // @synthesize observedInputAssistantItem=_observedInputAssistantItem;
 @property (weak, nonatomic) UIView *popoverSourceView; // @synthesize popoverSourceView=_popoverSourceView;
+@property (strong, nonatomic) UIViewController<UIPredictiveViewController> *predictiveViewController; // @synthesize predictiveViewController=_predictiveViewController;
 @property (strong, nonatomic) TUISystemInputAssistantLayoutSplit *splitAssistantViewLayout; // @synthesize splitAssistantViewLayout=_splitAssistantViewLayout;
 @property (strong, nonatomic) TUISystemInputAssistantLayoutStandard *standardAssistantViewLayout; // @synthesize standardAssistantViewLayout=_standardAssistantViewLayout;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) TUISystemInputAssistantView *systemInputAssistantView;
 
++ (double)_defaultPreferredHeightForTraitCollection:(id)arg1;
 + (BOOL)_requiresProxyInterface;
-+ (double)preferredHeightForTraitCollection:(id)arg1;
 - (void).cxx_destruct;
-- (BOOL)_allowedToShowBarButtonItemsInline;
+- (BOOL)_allowedToShowBarButtonItemsInline:(id)arg1;
 - (void)_applicationDidBecomeActiveNotification:(id)arg1;
 - (BOOL)_assistantItemsVisibleForResponder:(id)arg1;
 - (void)_beginObservingInputAssistantItemForRelevantItemChanges:(id)arg1;
 - (double)_buttonBarWidthForTraitCollection:(id)arg1 interfaceOrientation:(long long)arg2;
+- (BOOL)_canShowCenterBarButtonItem;
 - (BOOL)_canShowWhileLocked;
+- (void)_candidatesChanged;
 - (BOOL)_centerPredictionViewVisibleForInputDelegate:(id)arg1 inputViews:(id)arg2;
 - (double)_centerViewWidthForTraitCollection:(id)arg1 interfaceOrientation:(long long)arg2;
 - (void)_collapseBarItems;
@@ -52,29 +74,46 @@ __attribute__((visibility("hidden")))
 - (void)_didReceiveTextEffectsRotationNotification:(id)arg1;
 - (void)_expandBarItems;
 - (id)_inputDelegateAsResponder:(id)arg1;
+- (void)_inputModeChanged:(id)arg1;
 - (BOOL)_isAssistantPreferenceEnabled;
+- (BOOL)_isEmojiInputMode;
 - (id)_popoverViewControllerForBarButtonItemGroup:(id)arg1;
+- (void)_queueResponderChangedForNewResponder:(id)arg1;
 - (void)_registerForAssistantViewNotifications;
 - (void)_responderCapabilitiesChangedNotification:(id)arg1;
 - (void)_responderChangedNotification:(id)arg1;
+- (BOOL)_shouldCollapseEmojiSearchView;
+- (BOOL)_shouldShowEmojiSearchViewControllerForInputDelegate:(id)arg1;
 - (BOOL)_shouldShowExpandableButtonBarItemsForResponder:(id)arg1;
 - (void)_showCandidates;
 - (void)_updateCenterViewWidthForInterfaceOrientation:(long long)arg1;
 - (void)_updateSystemInputAssistantViewStylingForInputAssistantItem:(id)arg1;
+- (void)_willChangePlacementNotification:(id)arg1;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
+- (void)autocorrectionController:(id)arg1 didUpdateAutocorrectionList:(id)arg2;
+- (void)autocorrectionControllerDidClearAutocorrections:(id)arg1;
 - (void)automaticallySetCenterViewControllerBasedOnInputDelegate:(id)arg1;
 - (id)candidateViewController;
 - (void)dealloc;
+- (void)emojiSearchTextFieldDidBecomeActive:(id)arg1;
+- (void)emojiSearchTextFieldDidBecomeInactive:(id)arg1;
+- (void)emojiSearchTextFieldWillBecomeActive:(id)arg1;
+- (void)emojiSearchTextFieldWillBecomeInactive:(id)arg1;
+- (void)emojiSearchWillInsertEmoji:(id)arg1 forSearchQuery:(id)arg2;
 - (id)init;
+- (BOOL)isEmojiSearchResultsVisible;
 - (BOOL)layoutHasBuiltinAssistantView;
 - (void)loadView;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (id)predictionViewController;
+- (void)preferencesControllerChanged:(id)arg1;
+- (double)preferredHeightForTraitCollection:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (void)setInputAssistantButtonItemsForResponder:(id)arg1;
 - (BOOL)shouldBeShownForInputDelegate:(id)arg1 inputViews:(id)arg2;
 - (void)systemInputAssistantView:(id)arg1 wantsToShowCollapsedItemGroup:(id)arg2 fromView:(id)arg3;
+- (void)updateAssistantPreferences;
 - (void)updateCenterViewVisibilityStateForInputDelegate:(id)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

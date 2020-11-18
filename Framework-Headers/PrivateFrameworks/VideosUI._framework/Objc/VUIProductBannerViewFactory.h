@@ -11,7 +11,6 @@ __attribute__((visibility("hidden")))
 {
 }
 
-+ (id)_availabilityTextAttrString:(id)arg1 prefersUberLayout:(BOOL)arg2 userInterfaceStyle:(long long)arg3;
 + (id)_buttonViewsFromElements:(id)arg1 existingButtons:(id)arg2 prefersUberLayout:(BOOL)arg3;
 + (id)_infoTagsViewWithMetadata:(id)arg1 additionalMetadata:(id)arg2 layout:(id)arg3 existingView:(id)arg4 prefersUberLayout:(BOOL)arg5;
 + (id)_tagsViewWithMetadata:(id)arg1 layout:(id)arg2 existingView:(id)arg3 prefersUberLayout:(BOOL)arg4;

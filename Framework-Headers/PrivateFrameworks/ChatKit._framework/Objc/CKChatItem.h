@@ -11,6 +11,7 @@
 @interface CKChatItem : NSObject
 {
     BOOL _zOrder;
+    BOOL _wantsOverlayLayout;
     BOOL _sizeLoaded;
     IMTranscriptChatItem *_imChatItem;
     UNNotification *_notification;
@@ -30,6 +31,7 @@
 @property (readonly, nonatomic) BOOL canDelete;
 @property (readonly, nonatomic) BOOL canExport;
 @property (readonly, nonatomic) BOOL canForward;
+@property (readonly, nonatomic) BOOL canInlineReply;
 @property (readonly, nonatomic) BOOL canSendAsTextMessage;
 @property (readonly, nonatomic) Class cellClass;
 @property (readonly, copy, nonatomic) NSString *cellIdentifier;
@@ -52,23 +54,37 @@
 @property (readonly, nonatomic) struct UIEdgeInsets transcriptTextAlignmentInsets;
 @property (strong, nonatomic) UITraitCollection *transcriptTraitCollection; // @synthesize transcriptTraitCollection=_transcriptTraitCollection;
 @property (readonly, nonatomic) BOOL wantsDrawerLayout;
+@property (nonatomic) BOOL wantsOverlayLayout; // @synthesize wantsOverlayLayout=_wantsOverlayLayout;
 @property (readonly, nonatomic) BOOL zOrder; // @synthesize zOrder=_zOrder;
 
-+ (id)chatItemWithIMChatItem:(id)arg1 balloonMaxWidth:(double)arg2 otherMaxWidth:(double)arg3 transcriptTraitCollection:(id)arg4;
++ (id)chatItemWithIMChatItem:(id)arg1 balloonMaxWidth:(double)arg2 otherMaxWidth:(double)arg3 transcriptTraitCollection:(id)arg4 overlayLayout:(BOOL)arg5;
 + (id)chatItemWithNotification:(id)arg1 balloonMaxWidth:(double)arg2 otherMaxWidth:(double)arg3;
 - (void).cxx_destruct;
 - (void)_setSizeForTesting:(struct CGSize)arg1;
 - (BOOL)canSave;
+- (Class)collectionViewCellClass;
 - (id)description;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
 - (id)initWithNotification:(id)arg1 maxWidth:(double)arg2;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)itemIsFromMe;
+- (BOOL)itemIsReply;
+- (BOOL)itemIsReplyContextPreview;
+- (BOOL)itemIsReplyCount;
+- (BOOL)itemIsReplyFromMe;
+- (BOOL)itemIsThreadOriginator;
+- (id)layoutGroupForEnvironment:(id)arg1;
+- (id)layoutGroupSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (id)layoutItemSpacingForEnvironment:(id)arg1 supplementaryItems:(id)arg2;
+- (unsigned long long)layoutType;
 - (struct CGSize)loadSizeThatFits:(struct CGSize)arg1 textAlignmentInsets:(out struct UIEdgeInsets *)arg2;
 - (id)loadTranscriptDrawerText;
 - (id)loadTranscriptText;
+- (id)supplementaryItemsWithLayoutEnvironment:(id)arg1;
 - (void)unloadSize;
 - (void)unloadTranscriptText;
 - (id)visibleAssociatedMessageChatItems;
+- (BOOL)wantsAvatarViewForLayoutEnvironment:(id)arg1;
 
 @end
 

@@ -40,6 +40,7 @@
 - (id)fetchAllNoLimit;
 - (id)fetchAllObjectsWithUniqueId:(id)arg1;
 - (unsigned long long)fetchManagedCallCountWithPredicate:(id)arg1 sortDescriptors:(id)arg2;
+- (id)fetchManagedCallIdentifiersWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
 - (id)fetchManagedCallsWithPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 batchSize:(unsigned long long)arg5;
 - (id)fetchObjectWithUniqueId:(id)arg1;
 - (id)fetchObjectsWithPredicate:(id)arg1;

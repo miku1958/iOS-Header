@@ -6,6 +6,8 @@
 
 #import <objc/NSObject.h>
 
+@class NSString, NWAccumulator;
+
 @interface NWDeviceReport : NSObject
 {
     BOOL _batteryExternalPowerIsConnected;
@@ -22,10 +24,14 @@
     unsigned int _batteryAbsoluteCapacity;
     unsigned int _batteryVoltage;
     unsigned int _batteryTimeRemaining;
+    unsigned int _motionState;
     unsigned int _thermalPressure;
+    NSString *_serialNumber;
+    NWAccumulator *_batteryAccumulator;
 }
 
 @property (nonatomic) unsigned int batteryAbsoluteCapacity; // @synthesize batteryAbsoluteCapacity=_batteryAbsoluteCapacity;
+@property (strong, nonatomic) NWAccumulator *batteryAccumulator; // @synthesize batteryAccumulator=_batteryAccumulator;
 @property (nonatomic) BOOL batteryAtCriticalLevel; // @synthesize batteryAtCriticalLevel=_batteryAtCriticalLevel;
 @property (nonatomic) BOOL batteryAtWarnLevel; // @synthesize batteryAtWarnLevel=_batteryAtWarnLevel;
 @property (nonatomic) unsigned int batteryCurrentCapacity; // @synthesize batteryCurrentCapacity=_batteryCurrentCapacity;
@@ -39,8 +45,13 @@
 @property (nonatomic) unsigned int batteryVoltage; // @synthesize batteryVoltage=_batteryVoltage;
 @property (nonatomic) BOOL devicePluggedIn; // @synthesize devicePluggedIn=_devicePluggedIn;
 @property (nonatomic) BOOL deviceScreenOn; // @synthesize deviceScreenOn=_deviceScreenOn;
+@property (nonatomic) unsigned int motionState; // @synthesize motionState=_motionState;
+@property (strong, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (nonatomic) unsigned int thermalPressure; // @synthesize thermalPressure=_thermalPressure;
 
++ (id)createAccumulator:(id)arg1;
+- (void).cxx_destruct;
+- (id)createAWDReport;
 - (id)description;
 
 @end

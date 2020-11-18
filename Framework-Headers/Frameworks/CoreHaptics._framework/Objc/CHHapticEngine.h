@@ -6,23 +6,36 @@
 
 #import <objc/NSObject.h>
 
-@class AVAudioSession;
+@class AVAudioSession, AVHapticPlayer, HapticServerConfig;
+@protocol OS_dispatch_queue, OS_dispatch_source;
 
 @interface CHHapticEngine : NSObject
 {
-    BOOL _running;
-    BOOL _autoShutdownEnabled;
+    NSObject<OS_dispatch_queue> *_dispatchQueue;
+    AVAudioSession *_avAudioSession;
     unsigned int _audioSessionID;
+    BOOL _sessionIsShared;
+    BOOL _sessionIsConstantVolume;
+    struct map<unsigned long, NSURL *, std::__1::less<unsigned long>, std::__1::allocator<std::__1::pair<const unsigned long, NSURL *>>> _publicAudioResources;
+    AVHapticPlayer *_player;
+    NSObject<OS_dispatch_source> *_timer;
     CDUnknownBlockType _stoppedHandler;
     CDUnknownBlockType _resetHandler;
-    AVAudioSession *_avAudioSession;
+    BOOL _autoShutdownEnabled;
+    CDUnknownBlockType _clientFinishedHandler;
+    BOOL _running;
+    unsigned long long _currentPlayerBehavior;
+    BOOL _muteHapticsWhileRecordingAudio;
+    HapticServerConfig *_serverConfig;
 }
 
 @property (nonatomic) BOOL activateAudioSessionOnStart;
 @property (nonatomic) BOOL audioIsMuted;
 @property (readonly) unsigned int audioSessionID; // @synthesize audioSessionID=_audioSessionID;
-@property (nonatomic, getter=isAutoShutdownEnabled) BOOL autoShutdownEnabled; // @synthesize autoShutdownEnabled=_autoShutdownEnabled;
+@property (nonatomic, getter=isAutoShutdownEnabled) BOOL autoShutdownEnabled;
 @property (readonly) AVAudioSession *avAudioSession; // @synthesize avAudioSession=_avAudioSession;
+@property (copy) CDUnknownBlockType clientFinishedHandler; // @synthesize clientFinishedHandler=_clientFinishedHandler;
+@property unsigned long long currentPlayerBehavior; // @synthesize currentPlayerBehavior=_currentPlayerBehavior;
 @property (readonly) double currentTime;
 @property (nonatomic) BOOL followAudioRoute;
 @property (nonatomic) BOOL hapticsIsMuted;
@@ -32,41 +45,94 @@
 @property (nonatomic) BOOL isMutedForHaptics;
 @property (nonatomic) BOOL muteAudioOnRingerOff;
 @property (nonatomic) BOOL muteHapticsWhileRecordingAudio;
+@property (readonly) AVHapticPlayer *player; // @synthesize player=_player;
 @property (nonatomic) BOOL playsHapticsOnly;
 @property (copy) CDUnknownBlockType resetHandler; // @synthesize resetHandler=_resetHandler;
 @property BOOL running; // @synthesize running=_running;
+@property (readonly) HapticServerConfig *serverConfig; // @synthesize serverConfig=_serverConfig;
+@property (readonly) BOOL sessionIsConstantVolume; // @synthesize sessionIsConstantVolume=_sessionIsConstantVolume;
+@property (readonly) BOOL sessionIsShared; // @synthesize sessionIsShared=_sessionIsShared;
 @property (copy) CDUnknownBlockType stoppedHandler; // @synthesize stoppedHandler=_stoppedHandler;
+@property (strong) NSObject<OS_dispatch_source> *timer; // @synthesize timer=_timer;
 
 + (id)capabilitiesForHardware;
++ (void)dispatchOnGlobal:(CDUnknownBlockType)arg1;
++ (unsigned long long)doRegisterAudioResource:(id)arg1 options:(id)arg2 fromPattern:(BOOL)arg3 player:(id)arg4 error:(id *)arg5;
++ (BOOL)doUnregisterAudioResource:(unsigned long long)arg1 fromPattern:(BOOL)arg2 player:(id)arg3 error:(id *)arg4;
++ (void)initialize;
++ (void)lazyInitResourceMap;
++ (BOOL)resourceIsRegistered:(unsigned long long)arg1;
 + (BOOL)supports1stPartyHaptics;
+- (id).cxx_construct;
 - (void).cxx_destruct;
+- (void)addPublicAudioResourceID:(unsigned long long)arg1 withURL:(id)arg2;
+- (void)beginIdleTimer;
+- (void)cancelIdleTimer;
+- (BOOL)checkEngineRunning:(id *)arg1;
+- (BOOL)checkEngineStateOnStart:(id *)arg1;
+- (void)connectAudioSession:(id)arg1;
 - (id)createAdvancedPlayerWithPattern:(id)arg1 error:(id *)arg2;
 - (id)createAdvancedPlayerWithRingtoneData:(id)arg1 error:(id *)arg2;
 - (id)createAdvancedPlayerWithRingtonePattern:(id)arg1 error:(id *)arg2;
+- (id)createHapticPlayerWithOptions:(id)arg1;
+- (id)createOptionsFromAudioSessionID:(unsigned int)arg1 shared:(BOOL)arg2;
 - (id)createPlayerWithEvent:(id)arg1 error:(id *)arg2;
 - (id)createPlayerWithPattern:(id)arg1 error:(id *)arg2;
 - (id)createPrivilegedPlayerWithPlayable:(id)arg1 error:(id *)arg2;
 - (void)dealloc;
-- (BOOL)doInit;
+- (void)disconnectAudioSession:(id)arg1;
+- (void)dispatchOnLocal:(CDUnknownBlockType)arg1;
+- (void)dispatchSyncOnLocal:(CDUnknownBlockType)arg1;
+- (__map_iterator_49c891e4)doFindPublicAudioResourceID:(unsigned long long)arg1;
+- (BOOL)doInit:(unsigned int)arg1 sessionIsShared:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)doInitWithOptions:(id)arg1 error:(id *)arg2;
+- (BOOL)doPlayPatternFromDictionary:(id)arg1 error:(id *)arg2;
+- (BOOL)doReferenceAudioResourceByID:(unsigned long long)arg1;
+- (BOOL)doStartEngineAndWait:(id *)arg1;
+- (void)doStartWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (BOOL)doStopEngineAndWait:(id *)arg1;
+- (void)doStopWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)doUnregisterAllPublicAudioResources;
+- (BOOL)finishInit:(id *)arg1;
+- (id)getAvailableChannel:(id *)arg1;
 - (double)getDurationForResource:(unsigned long long)arg1;
 - (id)getMetricsForPlayer:(id)arg1;
+- (long long)getReporterIDFromAVAudioSession:(id)arg1;
+- (unsigned int)getSessionIDFromAVAudioSession:(id)arg1;
+- (void)handleConnectionError;
+- (void)handleFinish:(id)arg1;
+- (void)handleMediaServerRecovery:(id)arg1;
+- (BOOL)hasPublicAudioResourceID:(unsigned long long)arg1;
+- (unsigned long long)idForPublicAudioResourceURL:(id)arg1;
 - (id)init;
 - (id)initAndReturnError:(id *)arg1;
 - (id)initWithAudioSession:(id)arg1 error:(id *)arg2;
 - (id)initWithAudioSession:(id)arg1 sessionIsShared:(BOOL)arg2 error:(id *)arg3;
 - (id)initWithAudioSessionID:(unsigned int)arg1 error:(id *)arg2;
+- (id)initWithOptions:(id)arg1 error:(id *)arg2;
+- (BOOL)isBehaviorSet:(unsigned long long)arg1;
+- (BOOL)notifyPlayerStarted:(id)arg1 atTime:(double)arg2;
+- (void)notifyPlayerStopped:(id)arg1 atTime:(double)arg2;
 - (void)notifyWhenPlayersFinished:(CDUnknownBlockType)arg1;
 - (BOOL)playPatternFromData:(id)arg1 error:(id *)arg2;
 - (BOOL)playPatternFromURL:(id)arg1 error:(id *)arg2;
 - (void)prewarmWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (unsigned long long)registerAudioResource:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (void)releaseChannel:(id)arg1;
+- (void)removePublicAudioResourceID:(unsigned long long)arg1;
 - (BOOL)resourceIsRegistered:(unsigned long long)arg1;
-- (void)setMetricsTestModeEnabled:(BOOL)arg1;
+- (void)setMetricsTestModeEnabled;
+- (BOOL)setupUnsharedAudioSessionAndReturnError:(id *)arg1;
 - (BOOL)startAndReturnError:(id *)arg1;
+- (void)startIdleTimerWithHandler:(CDUnknownBlockType)arg1;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)stopAndWait;
 - (void)stopPrewarm;
 - (void)stopWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)toggleBehavior:(unsigned long long)arg1 set:(BOOL)arg2;
 - (BOOL)unregisterAudioResource:(unsigned long long)arg1 error:(id *)arg2;
+- (void)updateEngineBehavior;
+- (void)updatePlayerDuration:(id)arg1 atTime:(double)arg2;
 
 @end
 

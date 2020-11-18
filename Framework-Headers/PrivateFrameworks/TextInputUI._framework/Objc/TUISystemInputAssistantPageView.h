@@ -14,6 +14,8 @@
 @interface TUISystemInputAssistantPageView : UIView <UIScrollViewDelegate>
 {
     unsigned long long _currentChevronStyle;
+    BOOL _secondaryViewInitialized;
+    BOOL _layoutIsDirty;
     BOOL _hidesExpandButton;
     BOOL _secondaryViewVisible;
     UIView *_primaryView;
@@ -47,13 +49,16 @@
 - (unsigned long long)_expandChevronImageStyleForRenderConfig:(id)arg1;
 - (void)_setRenderConfig:(id)arg1;
 - (void)_updateExpandButtonChevronImage;
+- (void)didMoveToWindow;
 - (id)imageSymbolConfigurationForAssistantItem;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setFrame:(struct CGRect)arg1;
+- (void)setNeedsLayout;
 - (void)setSecondaryViewVisible:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setSecondaryViewVisible:(BOOL)arg1 force:(BOOL)arg2 withAnimationType:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)setSecondaryViewVisible:(BOOL)arg1 withAnimationType:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateScrollEnabled;
 

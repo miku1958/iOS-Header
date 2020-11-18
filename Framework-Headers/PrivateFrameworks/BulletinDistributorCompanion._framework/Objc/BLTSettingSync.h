@@ -55,6 +55,7 @@
 - (id)initWithSectionConfiguration:(id)arg1 queue:(id)arg2;
 - (id)initWithSectionConfiguration:(id)arg1 queue:(id)arg2 watchKitAppList:(id)arg3;
 - (BOOL)isSectionInfoSentCacheEmpty;
+- (void)makeAuthorizationPermanentForSectionID:(id)arg1;
 - (void)observer:(id)arg1 noteSectionParametersChanged:(id)arg2 forSectionID:(id)arg3;
 - (id)originalSettings;
 - (id)overriddenSettings;
@@ -62,9 +63,10 @@
 - (unsigned long long)performSyncIfNeededForSectionID:(id)arg1 gizmoSectionInfo:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)removeSectionWithSectionID:(id)arg1;
 - (void)sectionConfiguration:(id)arg1 addedSectionIDs:(id)arg2 removedSectionIDs:(id)arg3;
+- (void)sectionInfoList:(id)arg1 makeAuthorizationPermanentForSectionID:(id)arg2;
 - (BOOL)sectionInfoList:(id)arg1 override:(id)arg2 shouldApplyToSectionInfoForSectionID:(id)arg3;
-- (void)sectionInfoList:(id)arg1 receivedRemoveSectionWithSectionID:(id)arg2;
-- (void)sectionInfoList:(id)arg1 receivedUpdatedSectionInfoForSectionID:(id)arg2;
+- (void)sectionInfoList:(id)arg1 receivedRemoveSectionWithSectionID:(id)arg2 transaction:(id)arg3;
+- (void)sectionInfoList:(id)arg1 receivedUpdatedSectionInfoForSectionID:(id)arg2 transaction:(id)arg3;
 - (BOOL)sectionInfoListSectionIDHadDisplayedCriticalBulletins:(id)arg1;
 - (void)sendAllSectionInfoWithSpool:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendOverrideOnly:(id)arg1 sectionID:(id)arg2 spoolToFile:(BOOL)arg3;

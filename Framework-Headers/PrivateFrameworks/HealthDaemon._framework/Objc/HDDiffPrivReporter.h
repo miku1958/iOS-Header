@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile, _DPStringRecorder;
+@class HDProfile;
 @protocol OS_dispatch_queue;
 
 @interface HDDiffPrivReporter : NSObject
 {
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_queue;
-    _DPStringRecorder *_recorder;
 }
 
 + (BOOL)isAvailable;

@@ -26,7 +26,7 @@
 @property (readonly, nonatomic) long long zoomLevel; // @synthesize zoomLevel=_zoomLevel;
 
 - (void).cxx_destruct;
-- (id)dataSourceManagerCreateInitialPhotosDataSource:(id)arg1;
+- (id)createInitialPhotosDataSourceForDataSourceManager:(id)arg1;
 - (id)init;
 - (id)initWithZoomLevel:(long long)arg1;
 - (id)initWithZoomLevel:(long long)arg1 assetsDataSourceManager:(id)arg2;

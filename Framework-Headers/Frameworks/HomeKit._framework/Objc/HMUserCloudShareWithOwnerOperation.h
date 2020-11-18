@@ -8,31 +8,40 @@
 
 #import <HomeKit/HMFLogging-Protocol.h>
 
-@class CKContainer, CKShare, HMUser, NSString;
+@class CKContainer, CKShare, HMUser, NSObject, NSString, NSUUID;
+@protocol OS_os_log;
 
 @interface HMUserCloudShareWithOwnerOperation : NSOperation <HMFLogging>
 {
+    NSObject<OS_os_log> *_logger;
+    BOOL _allowWriteAccess;
     CDUnknownBlockType _completion;
+    NSUUID *_operationID;
     HMUser *_currentUser;
     HMUser *_ownerUser;
     CKShare *_share;
     CKContainer *_container;
+    CDUnknownBlockType _analyticsEventSender;
 }
 
+@property (readonly, nonatomic) BOOL allowWriteAccess; // @synthesize allowWriteAccess=_allowWriteAccess;
+@property (readonly) CDUnknownBlockType analyticsEventSender; // @synthesize analyticsEventSender=_analyticsEventSender;
 @property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
-@property (readonly) CKContainer *container; // @synthesize container=_container;
-@property (readonly) HMUser *currentUser; // @synthesize currentUser=_currentUser;
+@property (readonly, nonatomic) CKContainer *container; // @synthesize container=_container;
+@property (readonly, nonatomic) HMUser *currentUser; // @synthesize currentUser=_currentUser;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly) HMUser *ownerUser; // @synthesize ownerUser=_ownerUser;
-@property (strong) CKShare *share; // @synthesize share=_share;
+@property (readonly, nonatomic) NSUUID *operationID; // @synthesize operationID=_operationID;
+@property (readonly, nonatomic) HMUser *ownerUser; // @synthesize ownerUser=_ownerUser;
+@property (strong, nonatomic) CKShare *share; // @synthesize share=_share;
 @property (readonly) Class superclass;
 
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)fetchParticipantForLookupInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)initWithShare:(id)arg1 container:(id)arg2 ownerUser:(id)arg3 currentUser:(id)arg4;
+- (id)initWithShare:(id)arg1 container:(id)arg2 ownerUser:(id)arg3 allowWriteAccess:(BOOL)arg4 currentUser:(id)arg5;
+- (id)initWithShare:(id)arg1 container:(id)arg2 ownerUser:(id)arg3 allowWriteAccess:(BOOL)arg4 currentUser:(id)arg5 analyticsEventSender:(CDUnknownBlockType)arg6;
 - (id)logIdentifier;
 - (void)main;
 - (void)removeOwnerAsParticipant:(id)arg1 completion:(CDUnknownBlockType)arg2;

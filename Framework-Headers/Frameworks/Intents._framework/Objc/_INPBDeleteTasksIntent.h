@@ -16,13 +16,11 @@
 {
     CDStruct_eff9c538 _has;
     BOOL _all;
-    BOOL __encodeLegacyGloryData;
     _INPBIntentMetadata *_intentMetadata;
     _INPBTaskList *_taskList;
     NSArray *_tasks;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (nonatomic) BOOL all; // @synthesize all=_all;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

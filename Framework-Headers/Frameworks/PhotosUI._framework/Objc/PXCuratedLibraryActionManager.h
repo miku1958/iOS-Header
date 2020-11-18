@@ -6,21 +6,19 @@
 
 #import <PhotosUICore/PXActionManager.h>
 
-@class NSDictionary, PXCuratedLibraryFilterActionPerformer, PXCuratedLibraryViewModel;
+@class NSDictionary, PXCuratedLibraryViewModel;
 
 @interface PXCuratedLibraryActionManager : PXActionManager
 {
-    PXCuratedLibraryFilterActionPerformer *_filterActionPerformer;
+    PXCuratedLibraryViewModel *_viewModel;
     NSDictionary *_actionPerformersByType;
     NSDictionary *_assetCollectionActionPerformersByType;
     NSDictionary *_constructorSpecificActionPerformersByType;
-    PXCuratedLibraryViewModel *_viewModel;
 }
 
 @property (readonly, nonatomic) NSDictionary *actionPerformersByType; // @synthesize actionPerformersByType=_actionPerformersByType;
 @property (readonly, nonatomic) NSDictionary *assetCollectionActionPerformersByType; // @synthesize assetCollectionActionPerformersByType=_assetCollectionActionPerformersByType;
 @property (readonly, nonatomic) NSDictionary *constructorSpecificActionPerformersByType; // @synthesize constructorSpecificActionPerformersByType=_constructorSpecificActionPerformersByType;
-@property (readonly) PXCuratedLibraryFilterActionPerformer *filterActionPerformer; // @synthesize filterActionPerformer=_filterActionPerformer;
 @property (readonly, nonatomic) PXCuratedLibraryViewModel *viewModel; // @synthesize viewModel=_viewModel;
 
 + (id)actionsWithActionPerformers;
@@ -29,14 +27,13 @@
 - (id)actionPerformerForActionType:(id)arg1 withAssetCollectionReference:(id)arg2;
 - (id)actionPerformerForHitTestResult:(id)arg1;
 - (BOOL)canPerformActionType:(id)arg1;
+- (id)curationDebugPerformerAssetCollectionReference:(id)arg1 diagnosticLayout:(id)arg2;
 - (id)ellipsisButtonActionPerformerWithAssetCollectionReference:(id)arg1;
 - (id)init;
 - (id)initWithViewModel:(id)arg1;
 - (id)localizedTitleForActionType:(id)arg1 useCase:(unsigned long long)arg2;
 - (id)showAllActionPerformerWithAssetCollectionReference:(id)arg1;
-- (id)showMapPerformerWithAssetCollectionReference:(id)arg1 fetchResult:(id)arg2;
 - (id)tapToRadarPerformerAssetCollectionReference:(id)arg1 diagnosticLayout:(id)arg2;
-- (id)toggleAspectFitPerformerWithLayout:(id)arg1;
 
 @end
 

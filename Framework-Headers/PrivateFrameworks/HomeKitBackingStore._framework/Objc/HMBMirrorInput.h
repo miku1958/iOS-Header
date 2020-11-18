@@ -35,7 +35,6 @@
 - (id)removeModelWithExternalID:(id)arg1;
 - (id)removeModelWithModelID:(id)arg1;
 - (id)updateModel:(id)arg1 externalID:(id)arg2 externalData:(id)arg3;
-- (id)updateModelData:(id)arg1 modelEncoding:(unsigned long long)arg2 externalID:(id)arg3 externalData:(id)arg4;
 
 @end
 

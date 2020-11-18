@@ -6,7 +6,7 @@
 
 #import <ScreenTimeSettingsUI/STTableCell.h>
 
-@class NSLayoutConstraint, STCandyBarView, UILabel;
+@class NSLayoutConstraint, STCandyBarView, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface STUsageCell : STTableCell
@@ -14,10 +14,12 @@ __attribute__((visibility("hidden")))
     UILabel *_itemNameLabel;
     STCandyBarView *_usageBarView;
     UILabel *_usageLabel;
+    UIImageView *_trustWarningImageView;
     NSLayoutConstraint *_usageBarWidthConstraint;
 }
 
 @property (readonly, nonatomic) UILabel *itemNameLabel; // @synthesize itemNameLabel=_itemNameLabel;
+@property (readonly) UIImageView *trustWarningImageView; // @synthesize trustWarningImageView=_trustWarningImageView;
 @property (readonly, nonatomic) STCandyBarView *usageBarView; // @synthesize usageBarView=_usageBarView;
 @property (readonly, nonatomic) NSLayoutConstraint *usageBarWidthConstraint; // @synthesize usageBarWidthConstraint=_usageBarWidthConstraint;
 @property (readonly, nonatomic) UILabel *usageLabel; // @synthesize usageLabel=_usageLabel;

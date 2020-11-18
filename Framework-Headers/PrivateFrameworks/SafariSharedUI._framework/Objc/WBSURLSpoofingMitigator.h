@@ -10,7 +10,7 @@
 
 @interface WBSURLSpoofingMitigator : NSObject
 {
-    NSDate *_dateOfStartOfLastProvisionalNavigation;
+    NSDate *_dateOfLastSuspiciousProvisionalNavigationInterruption;
     unsigned long long _recentlyInterruptedNavigationCount;
     _WKUserInitiatedAction *_userInitiatedAction;
     NSTimer *_timerForRevertingToCommittedURL;

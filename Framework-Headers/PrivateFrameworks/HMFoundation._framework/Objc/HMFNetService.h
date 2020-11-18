@@ -9,13 +9,13 @@
 #import <HMFoundation/HMFLogging-Protocol.h>
 #import <HMFoundation/NSNetServiceDelegate-Protocol.h>
 
-@class HMFNetAddress, HMFUnfairLock, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSNetService, NSObject, NSString;
+@class HMFNetAddress, NSArray, NSDictionary, NSMutableArray, NSMutableDictionary, NSNetService, NSObject, NSString;
 @protocol HMFNetServiceDelegate, OS_dispatch_queue;
 
 @interface HMFNetService : HMFObject <HMFLogging, NSNetServiceDelegate>
 {
+    struct os_unfair_lock_s _lock;
     NSNetService *_internal;
-    HMFUnfairLock *_lock;
     NSString *_type;
     NSString *_name;
     NSString *_domain;

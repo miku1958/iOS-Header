@@ -14,10 +14,20 @@
     NSData *_siriDeviceID;
     NSString *_eventGeneratedTimestampRefId;
     long long _eventGeneratedRelativeToBootTimeTimestampNs;
+    struct {
+        unsigned int eventGeneratedRelativeToBootTimeTimestampNs:1;
+    } _has;
+    BOOL _hasTurnID;
+    BOOL _hasSiriDeviceID;
+    BOOL _hasEventGeneratedTimestampRefId;
 }
 
 @property (nonatomic) long long eventGeneratedRelativeToBootTimeTimestampNs; // @synthesize eventGeneratedRelativeToBootTimeTimestampNs=_eventGeneratedRelativeToBootTimeTimestampNs;
 @property (copy, nonatomic) NSString *eventGeneratedTimestampRefId; // @synthesize eventGeneratedTimestampRefId=_eventGeneratedTimestampRefId;
+@property (nonatomic) BOOL hasEventGeneratedRelativeToBootTimeTimestampNs;
+@property (nonatomic) BOOL hasEventGeneratedTimestampRefId; // @synthesize hasEventGeneratedTimestampRefId=_hasEventGeneratedTimestampRefId;
+@property (nonatomic) BOOL hasSiriDeviceID; // @synthesize hasSiriDeviceID=_hasSiriDeviceID;
+@property (nonatomic) BOOL hasTurnID; // @synthesize hasTurnID=_hasTurnID;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSData *siriDeviceID; // @synthesize siriDeviceID=_siriDeviceID;
 @property (copy, nonatomic) NSData *turnID; // @synthesize turnID=_turnID;

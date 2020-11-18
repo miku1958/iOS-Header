@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
 @class NSString;
 
-@interface HMDNetworkRouterLANFirewall : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterLANFirewall : NSObject <NSCopying, HAPTLVProtocol>
 {
     long long _type;
 }

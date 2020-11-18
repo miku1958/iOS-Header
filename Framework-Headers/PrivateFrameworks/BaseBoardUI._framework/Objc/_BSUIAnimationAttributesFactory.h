@@ -14,9 +14,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)_animateWithAdditionalDelay:(double)arg1 options:(unsigned long long)arg2 actions:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)_initWithAttributes:(id)arg1;
-- (id)_initWithSettings:(id)arg1;
 - (double)delay;
 - (id)description;
 - (double)duration;

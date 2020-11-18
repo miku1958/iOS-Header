@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSOrderedSet *messages; // @synthesize messages=_messages;
 @property (readonly) Class superclass;
 
++ (id)identifier;
 - (void).cxx_destruct;
 
 @end

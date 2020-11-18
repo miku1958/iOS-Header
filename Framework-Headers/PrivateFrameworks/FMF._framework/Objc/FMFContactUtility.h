@@ -24,6 +24,7 @@
 - (id)findOptimalContactInContacts:(id)arg1;
 - (id)getContactForHandle:(id)arg1;
 - (id)getContactForHandle:(id)arg1 keysToFetch:(id)arg2;
+- (id)shortDisplayNameForContact:(id)arg1 andHandle:(id)arg2;
 
 @end
 

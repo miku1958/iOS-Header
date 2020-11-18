@@ -19,10 +19,12 @@
     NSArray *_healthDataSpecifiers;
     NSArray *_healthRecordsDataSpecifiers;
     NSArray *_wheelchairDataSpecifiers;
+    NSArray *_automatedFeedbackSpecifiers;
     NSArray *_improveSiriSpecifiers;
 }
 
 @property (readonly) NSArray *appActivitySpecifiers;
+@property (strong, nonatomic) NSArray *automatedFeedbackSpecifiers; // @synthesize automatedFeedbackSpecifiers=_automatedFeedbackSpecifiers;
 @property (readonly) PSSpecifier *filesystemMetadataSnapshotSpecifier;
 @property (readonly) NSArray *healthDataSpecifiers; // @synthesize healthDataSpecifiers=_healthDataSpecifiers;
 @property (readonly) NSArray *healthRecordsDataSpecifiers; // @synthesize healthRecordsDataSpecifiers=_healthRecordsDataSpecifiers;
@@ -36,7 +38,6 @@
 - (void)_handleUpdateForSpecifierID:(id)arg1 value:(id)arg2 error:(id)arg3;
 - (id)automatedFeedbackEnabled:(id)arg1;
 - (void)automatedFeedbackLinkTapped;
-- (id)automatedFeedbackSpecifiers;
 - (void)checkDiagnosticsSessionAvailability;
 - (void)dismissAboutSheet:(id)arg1;
 - (id)iCloudSpecifiers;

@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _includeDeletedObjects;
     BOOL _includeAutomaticTimeZones;
+    BOOL _includeContributorInformation;
     HKQueryAnchor *_anchor;
     unsigned long long _limit;
     double _collectionInterval;
@@ -21,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) HKQueryAnchor *anchor; // @synthesize anchor=_anchor;
 @property (nonatomic) double collectionInterval; // @synthesize collectionInterval=_collectionInterval;
 @property (nonatomic) BOOL includeAutomaticTimeZones; // @synthesize includeAutomaticTimeZones=_includeAutomaticTimeZones;
+@property (nonatomic) BOOL includeContributorInformation; // @synthesize includeContributorInformation=_includeContributorInformation;
 @property (nonatomic) BOOL includeDeletedObjects; // @synthesize includeDeletedObjects=_includeDeletedObjects;
 @property (nonatomic) unsigned long long limit; // @synthesize limit=_limit;
 

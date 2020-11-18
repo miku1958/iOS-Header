@@ -10,19 +10,23 @@
 
 @protocol _PARSearchResponse_QuerySuggestion <NSObject>
 
+@property (copy, nonatomic) NSString *detailText;
 @property (copy, nonatomic) NSArray *entities;
 @property (copy, nonatomic) NSData *feedback;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) BOOL previouslyEngaged;
 @property (copy, nonatomic) NSString *query;
 @property (nonatomic) float score;
+@property (copy, nonatomic) NSDictionary *serverFeatures;
 @property (copy, nonatomic) NSString *suggestion;
 
 - (void)addEntities:(_PAREntity *)arg1;
 - (void)clearEntities;
 - (_PAREntity *)entitiesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)entitiesCount;
+- (BOOL)getServerFeatures:(double *)arg1 forKey:(NSString *)arg2;
 - (id)initWithDictionary:(NSDictionary *)arg1;
 - (id)initWithJSON:(NSData *)arg1;
+- (void)setServerFeatures:(double)arg1 forKey:(NSString *)arg2;
 @end
 

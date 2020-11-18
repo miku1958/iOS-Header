@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (void)editButtonPressed;
 - (BOOL)minimalMode;
 - (void)predictionWasActedOn;
+- (void)refreshCopiedEvents;
 - (void)reset;
 - (void)setCellPosition:(int)arg1;
 - (BOOL)shouldShowEditButtonInline;

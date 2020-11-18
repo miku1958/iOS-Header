@@ -16,7 +16,7 @@
 + (id)sectionIdentifier;
 + (id)sectionTitle;
 - (id)_activityItemProviderForResult:(id)arg1;
-- (id)_additionalMenuActionsForResult:(id)arg1;
+- (id)_additionalMenuElementsForResult:(id)arg1;
 - (id)_pasteboardItemsForResult:(id)arg1;
 - (Class)_richLinkDatasourceClass;
 - (BOOL)applyLayoutMarginsToLayoutGroup;

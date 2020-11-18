@@ -60,7 +60,6 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 
 + (id)allSupportedRecordCategories;
-+ (id)allSupportedRecordCategoryTypes;
 + (id)allSupportedSampleTypes;
 + (id)supportedRecordCategoriesByCategoryType;
 + (id)unknownRecordCategory;

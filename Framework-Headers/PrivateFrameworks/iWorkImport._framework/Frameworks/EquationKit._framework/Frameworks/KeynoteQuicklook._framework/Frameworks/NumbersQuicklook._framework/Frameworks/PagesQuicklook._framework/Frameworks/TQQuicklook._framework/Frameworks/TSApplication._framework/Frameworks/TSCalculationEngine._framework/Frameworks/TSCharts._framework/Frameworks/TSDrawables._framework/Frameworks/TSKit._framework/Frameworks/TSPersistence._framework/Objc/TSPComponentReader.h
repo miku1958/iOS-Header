@@ -41,7 +41,7 @@
 - (BOOL)shouldProceedParsingOnFailure;
 - (id)unknownMessageFromMessageInfo:(const struct MessageInfo *)arg1 stream:(struct DispatchDataInputStream *)arg2;
 - (const struct MessageInfo *)unknownObjectMessageInfo;
-- (id)unknownObjectUnarchiverArchiveInfo:(const struct ArchiveInfo *)arg1 stream:(struct DispatchDataInputStream *)arg2;
+- (id)unknownObjectUnarchiverWithArchiveInfo:(const struct ArchiveInfo *)arg1 stream:(struct DispatchDataInputStream *)arg2 ignoreMessageData:(BOOL)arg3;
 
 @end
 

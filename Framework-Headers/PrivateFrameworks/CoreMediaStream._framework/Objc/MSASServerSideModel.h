@@ -116,7 +116,6 @@
 - (id)assetCollectionGUIDsInAlbumWithGUID:(id)arg1;
 - (id)assetCollectionWithGUID:(id)arg1;
 - (id)assetCollectionsInAlbumWithGUID:(id)arg1;
-- (int)assetsInDownloadQueueCount;
 - (void)cancel;
 - (id)captionForAssetCollectionWithGUID:(id)arg1;
 - (int)commandCount;

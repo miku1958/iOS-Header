@@ -10,7 +10,7 @@
 #import <CoreParsec/SFResourceLoader-Protocol.h>
 
 @class GEOSearchFoundationFeedbackListener, NSFileManager, NSSet, NSString, NSXPCConnection, PARBag, PARSearchClient, PARSessionConfiguration;
-@protocol PARSessionDelegate;
+@protocol OS_dispatch_queue, PARSessionDelegate;
 
 @interface PARSession : NSObject <SFFeedbackListener, SFResourceLoader>
 {
@@ -18,13 +18,15 @@
     GEOSearchFoundationFeedbackListener *_mapsListener;
     PARBag *_bag;
     _Atomic BOOL _sampled;
+    NSObject<OS_dispatch_queue> *_serialQueue;
+    NSSet *_allowedAppsForSiriSuggestions;
+    NSSet *_sampleClientTimingEventWhitelist;
     PARSearchClient *_client;
     PARSessionConfiguration *_configuration;
     id<PARSessionDelegate> _delegate;
-    NSSet *_allowedAppsForSiriSuggestions;
 }
 
-@property (strong) NSSet *allowedAppsForSiriSuggestions; // @synthesize allowedAppsForSiriSuggestions=_allowedAppsForSiriSuggestions;
+@property (strong) NSSet *allowedAppsForSiriSuggestions;
 @property (strong) PARBag *bag;
 @property (readonly, nonatomic) PARSearchClient *client; // @synthesize client=_client;
 @property (strong) PARSessionConfiguration *configuration; // @synthesize configuration=_configuration;
@@ -33,6 +35,7 @@
 @property (weak) id<PARSessionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSSet *sampleClientTimingEventWhitelist;
 @property (readonly) Class superclass;
 
 + (id)sessionWithConfiguration:(id)arg1;
@@ -73,7 +76,7 @@
 - (void)loadTask:(id)arg1;
 - (void)reportEvent:(id)arg1;
 - (void)reportFeedback:(id)arg1;
-- (void)reportFeedback:(id)arg1 queryId:(unsigned long long)arg2;
+- (void)reportFeedback:(id)arg1 queryId:(long long)arg2;
 - (void)resultsDidBecomeVisible:(id)arg1;
 - (void)searchViewDidAppear:(id)arg1;
 - (void)searchViewDidDisappear:(id)arg1;

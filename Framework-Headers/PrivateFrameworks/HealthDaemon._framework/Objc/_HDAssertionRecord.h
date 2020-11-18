@@ -8,6 +8,7 @@
 
 @class NSHashTable, NSString;
 
+__attribute__((visibility("hidden")))
 @interface _HDAssertionRecord : NSObject
 {
     NSString *_assertionIdentifier;

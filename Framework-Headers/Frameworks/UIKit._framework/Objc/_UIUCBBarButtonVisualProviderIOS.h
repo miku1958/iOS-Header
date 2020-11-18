@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _UIUCBBarButtonVisualProviderIOS : _UIButtonBarButtonVisualProvider
 {
     UIButton *_contentButton;
+    CDUnknownBlockType _menuProvider;
 }
 
 + (id)_defaultTitleAttributes;
@@ -19,13 +20,19 @@ __attribute__((visibility("hidden")))
 - (void)_configureImageOrTitleFromBarItem:(id)arg1;
 - (id)_defaultTitleAttributes;
 - (id)_newButton;
+- (id)buttonContextMenuInteractionConfiguration;
+- (id)buttonContextMenuStyleFromDefaultStyle:(id)arg1;
+- (id)buttonContextMenuTargetedPreview;
+- (BOOL)canUpdateMenuInPlace;
 - (void)configureButton:(id)arg1 withAppearanceDelegate:(id)arg2 fromBarItem:(id)arg3;
 - (id)contentView;
+- (struct CGPoint)menuAnchorPoint;
 - (id)pointerShapeInContainer:(id)arg1;
 - (void)pointerWillEnter:(id)arg1;
 - (void)pointerWillExit:(id)arg1;
 - (void)updateButton:(id)arg1 forEnabledState:(BOOL)arg2;
 - (void)updateButton:(id)arg1 forHighlightedState:(BOOL)arg2;
+- (void)updateMenu;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <NanoTimeKitCompanion/NTKComplicationDataSource.h>
 
-@class HKHealthStore, HKObserverQuery, HKSampleQuery, HKWorkout, NSArray, NSObject, _HKFirstPartyWorkoutSnapshot;
+@class HKHealthStore, HKObserverQuery, HKSampleQuery, HKWorkout, NSArray, NSObject, _HKCurrentWorkoutSnapshot, _HKWorkoutObserver;
 @protocol OS_dispatch_queue;
 
 @interface NTKWorkoutComplicationDataSource : NTKComplicationDataSource
@@ -15,24 +15,27 @@
     BOOL _deviceIsLocked;
     int _workoutStateNotifyToken;
     NSArray *_animationImages;
+    BOOL _inUVPreview;
     BOOL _loadingLastWorkout;
     BOOL _hasKnownLastWorkoutState;
     HKWorkout *_lastWorkout;
-    _HKFirstPartyWorkoutSnapshot *_activeWorkoutSnapshot;
+    _HKWorkoutObserver *_workoutObserver;
+    _HKCurrentWorkoutSnapshot *_activeWorkoutSnapshot;
     HKHealthStore *_healthStore;
     HKSampleQuery *_lastWorkoutQuery;
     HKObserverQuery *_workoutObservationQuery;
 }
 
-@property (strong, nonatomic) _HKFirstPartyWorkoutSnapshot *activeWorkoutSnapshot; // @synthesize activeWorkoutSnapshot=_activeWorkoutSnapshot;
+@property (strong, nonatomic) _HKCurrentWorkoutSnapshot *activeWorkoutSnapshot; // @synthesize activeWorkoutSnapshot=_activeWorkoutSnapshot;
 @property (nonatomic) BOOL hasKnownLastWorkoutState; // @synthesize hasKnownLastWorkoutState=_hasKnownLastWorkoutState;
 @property (strong, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (strong, nonatomic) HKWorkout *lastWorkout; // @synthesize lastWorkout=_lastWorkout;
 @property (strong, nonatomic) HKSampleQuery *lastWorkoutQuery; // @synthesize lastWorkoutQuery=_lastWorkoutQuery;
 @property (nonatomic, getter=isLoadingLastWorkout) BOOL loadingLastWorkout; // @synthesize loadingLastWorkout=_loadingLastWorkout;
 @property (strong, nonatomic) HKObserverQuery *workoutObservationQuery; // @synthesize workoutObservationQuery=_workoutObservationQuery;
+@property (strong, nonatomic) _HKWorkoutObserver *workoutObserver; // @synthesize workoutObserver=_workoutObserver;
 
-+ (id)_signatureTemplateWithHasActiveWorkout:(BOOL)arg1 hasPausedActiveWorkout:(BOOL)arg2;
++ (id)_signatureTemplateWithFamily:(long long)arg1 hasActiveWorkout:(BOOL)arg2 hasPausedActiveWorkout:(BOOL)arg3;
 + (id)_templateForWorkout:(id)arg1 family:(long long)arg2;
 + (id)_unknownTemplateForFamily:(long long)arg1;
 + (id)_workoutTintColor;
@@ -59,7 +62,6 @@
 - (void)dealloc;
 - (void)getCurrentTimelineEntryWithHandler:(CDUnknownBlockType)arg1;
 - (void)getLaunchURLForTimelineEntryDate:(id)arg1 timeTravelDate:(id)arg2 withHandler:(CDUnknownBlockType)arg3;
-- (void)getSupportedTimeTravelDirectionsWithHandler:(CDUnknownBlockType)arg1;
 - (id)initWithComplication:(id)arg1 family:(long long)arg2 forDevice:(id)arg3;
 - (id)lockedTemplate;
 - (void)resume;

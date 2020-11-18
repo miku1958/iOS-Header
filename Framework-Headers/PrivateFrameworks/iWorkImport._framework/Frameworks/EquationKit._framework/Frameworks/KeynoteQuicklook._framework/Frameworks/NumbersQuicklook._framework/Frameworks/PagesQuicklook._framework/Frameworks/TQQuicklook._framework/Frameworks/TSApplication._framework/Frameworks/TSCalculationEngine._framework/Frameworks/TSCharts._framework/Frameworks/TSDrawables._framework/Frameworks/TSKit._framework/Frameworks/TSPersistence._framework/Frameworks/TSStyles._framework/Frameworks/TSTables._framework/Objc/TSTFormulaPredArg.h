@@ -12,15 +12,15 @@
 
 @interface TSTFormulaPredArg : NSObject <NSCopying>
 {
-    int _type;
     id _objcData;
     RefTypeHolder_a8d05c9a _baseCellRef;
-    struct TSCERelativeCellRef _relativeCellRef;
-    BOOL _hasRelativeCellRef;
     TSTUIDRectRef *_uidRectRef;
     struct TSCECategoryRef _categoryRef;
-    struct TSUModelCellCoord _hostCellCoord;
+    struct TSCERelativeCellRef _relativeCellRef;
+    BOOL _hasRelativeCellRef;
+    int _type;
     struct TSUPreserveFlags _preserveFlags;
+    struct TSUModelCellCoord _hostCellCoord;
     union {
         BOOL _boolValue;
         struct {

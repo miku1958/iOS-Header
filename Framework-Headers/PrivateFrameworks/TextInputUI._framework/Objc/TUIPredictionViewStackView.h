@@ -6,14 +6,18 @@
 
 #import <UIKitCore/UIView.h>
 
+@class TUIPredictionViewStackContentView;
+
 @interface TUIPredictionViewStackView : UIView
 {
-    UIView *_contentView;
+    long long _layoutDirection;
+    TUIPredictionViewStackContentView *_contentView;
     struct UIEdgeInsets _contentMargin;
 }
 
 @property (nonatomic) struct UIEdgeInsets contentMargin; // @synthesize contentMargin=_contentMargin;
-@property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (strong, nonatomic) TUIPredictionViewStackContentView *contentView; // @synthesize contentView=_contentView;
+@property (nonatomic) long long layoutDirection; // @synthesize layoutDirection=_layoutDirection;
 
 - (void).cxx_destruct;
 - (long long)_layoutTypeForSubview:(id)arg1;

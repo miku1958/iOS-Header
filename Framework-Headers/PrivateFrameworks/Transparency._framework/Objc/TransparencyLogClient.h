@@ -18,8 +18,9 @@
 @property (strong) TransparencyLogSession *session; // @synthesize session=_session;
 
 - (void).cxx_destruct;
-- (void)download:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)downloadRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)deleteDownloadId:(id)arg1;
+- (void)download:(id)arg1 retry:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)downloadRequest:(id)arg1 retry:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)fetch:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)fetch:(id)arg1 shouldRetry:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)fetchRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

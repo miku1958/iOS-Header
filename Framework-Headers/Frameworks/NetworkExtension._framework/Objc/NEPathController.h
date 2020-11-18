@@ -16,6 +16,8 @@
 @interface NEPathController : NSObject <NEConfigurationValidating, NEPrettyDescription, NSSecureCoding, NSCopying>
 {
     BOOL _enabled;
+    BOOL _ignoreRouteRules;
+    BOOL _ignoreFallback;
     long long _cellularFallbackFlags;
     NSArray *_pathRules;
     NSArray *_payloadAppRules;
@@ -24,6 +26,8 @@
 @property long long cellularFallbackFlags; // @synthesize cellularFallbackFlags=_cellularFallbackFlags;
 @property (getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly, nonatomic) BOOL hasNonDefaultRules;
+@property BOOL ignoreFallback; // @synthesize ignoreFallback=_ignoreFallback;
+@property BOOL ignoreRouteRules; // @synthesize ignoreRouteRules=_ignoreRouteRules;
 @property (copy) NSArray *pathRules; // @synthesize pathRules=_pathRules;
 @property (copy) NSArray *payloadAppRules; // @synthesize payloadAppRules=_payloadAppRules;
 

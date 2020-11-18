@@ -37,22 +37,27 @@
 @property (readonly, strong, nonatomic) NSString *type; // @synthesize type=_type;
 @property (readonly, nonatomic) long long version; // @synthesize version=_version;
 
-+ (id)applicablePayloadsForHomePod;
++ (id)_minimumWatchVersionRequirementsForPayloads;
++ (id)_sharedHomePodPayloadClasses;
++ (id)_sharedWatchPayloadClasses;
 + (id)availablePayloadsForUserEnrollment;
 + (id)badFieldTypeErrorWithField:(id)arg1;
 + (id)badFieldValueErrorWithField:(id)arg1;
 + (id)badFieldValueErrorWithField:(id)arg1 underlyingError:(id)arg2;
 + (id)cellularRequiredPayloads;
 + (id)conflictingFieldValueErrorWithUnderlyingError:(id)arg1;
++ (id)installableHomePodConfigurationPayloadClasses;
++ (id)installableWatchConfigurationPayloadClasses;
 + (id)localizedDescriptionForPayloadCount:(unsigned long long)arg1;
 + (id)localizedParenthesizedFormDescriptionForPayloadCount:(unsigned long long)arg1;
 + (id)localizedPluralForm;
 + (id)localizedSingularForm;
 + (id)mdmAdoptablePayloads;
-+ (id)minimumWatchVersionRequirementsForPayloads;
 + (id)missingFieldErrorWithField:(id)arg1 underlyingError:(id)arg2;
 + (id)payloadFromDictionary:(id)arg1 isStub:(BOOL)arg2 profile:(id)arg3 outError:(id *)arg4;
 + (id)payloadsFromArray:(id)arg1 isStub:(BOOL)arg2 profile:(id)arg3 outError:(id *)arg4;
++ (id)remoteQueueableHomePodPayloadClasses;
++ (id)remoteQueueableWatchPayloadClasses;
 + (id)supervisedRequiredPayloads;
 + (id)typeStrings;
 + (id)unavailablePayloadsInEphemeralMultiUser;
@@ -63,14 +68,17 @@
 - (id)description;
 - (id)filterForUserEnrollmentOutError:(id *)arg1;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
+- (BOOL)isSupportedByWatchVersions:(id)arg1;
 - (id)malformedPayloadErrorWithError:(id)arg1;
 - (id)payloadDescriptionKeyValueSections;
+- (id)serializedDictionary;
 - (id)stubDictionary;
 - (id)subtitle1Description;
 - (id)subtitle1Label;
 - (id)subtitle2Description;
 - (id)subtitle2Label;
 - (id)title;
+- (id)verboseDescription;
 
 @end
 

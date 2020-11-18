@@ -23,10 +23,13 @@
 @property (strong, nonatomic) MTMetrics *metrics; // @synthesize metrics=_metrics;
 @property (strong, nonatomic) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 
++ (id)_filterSleepAlarmOverrides:(id)arg1 date:(id)arg2;
 + (id)_filteredAlarms:(id)arg1 afterDate:(id)arg2 maxCount:(unsigned long long)arg3 filter:(CDUnknownBlockType)arg4;
++ (id)_sortedAlarms:(id)arg1 date:(id)arg2 includeBedtimeNotification:(BOOL)arg3;
 + (id)assistantSyncNotificationName;
 + (void)warmUp;
 - (void).cxx_destruct;
+- (id)_alarmWithIDStringAsync:(id)arg1;
 - (id)_alarmsIncludingSleepAlarm:(BOOL)arg1 doSynchronous:(BOOL)arg2;
 - (void)_getCachedAlarmsWithFuture:(id)arg1 finishBlock:(CDUnknownBlockType)arg2;
 - (id)_initWithConnectionProvidingBlock:(CDUnknownBlockType)arg1 metrics:(id)arg2;
@@ -40,6 +43,7 @@
 - (unsigned long long)alarmCount;
 - (unsigned long long)alarmCountIncludingSleepAlarm:(BOOL)arg1;
 - (id)alarmWithIDString:(id)arg1;
+- (id)alarmWithIDString:(id)arg1 includeSleep:(BOOL)arg2;
 - (id)alarms;
 - (id)alarmsIncludingSleepAlarm:(BOOL)arg1;
 - (id)alarmsSync;
@@ -68,13 +72,18 @@
 - (id)nextAlarmsInRange:(id)arg1 maxCount:(unsigned long long)arg2 includeSleepAlarm:(BOOL)arg3 includeBedtimeNotification:(BOOL)arg4;
 - (id)nextAlarmsInRangeSync:(id)arg1 maxCount:(unsigned long long)arg2 includeSleepAlarm:(BOOL)arg3;
 - (id)nextAlarmsInRangeSync:(id)arg1 maxCount:(unsigned long long)arg2 includeSleepAlarm:(BOOL)arg3 includeBedtimeNotification:(BOOL)arg4;
+- (id)nextSleepAlarm;
 - (void)reconnect;
 - (id)removeAlarm:(id)arg1;
+- (id)resetSleepAlarmSnoozeState;
 - (id)sleepAlarm;
 - (id)sleepAlarmSync;
+- (id)sleepAlarms;
+- (id)sleepAlarmsSync;
 - (id)snoozeAlarmWithIdentifier:(id)arg1;
 - (id)snoozeAlarmWithIdentifier:(id)arg1 snoozeAction:(unsigned long long)arg2;
 - (id)updateAlarm:(id)arg1;
+- (id)updateSleepAlarms;
 
 @end
 

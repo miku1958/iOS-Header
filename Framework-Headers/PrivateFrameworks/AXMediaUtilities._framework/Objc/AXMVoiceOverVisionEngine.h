@@ -4,34 +4,32 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AXMediaUtilities/AXMVisionEngine.h>
+#import <AXMediaUtilities/AXMAXElementVisionEngine.h>
 
-@class AXMCaptionDetectorNode, AXMFaceDetectorNode, AXMIconClassDetectorNode, AXMImageNode, AXMProminentObjectsDetectorNode, AXMSceneDetectorNode, AXMScreenCaptureNode, AXMTextDetectorNode, AXMTraitDetectorNode;
+@class AXMCaptionDetectorNode, AXMFaceDetectorNode, AXMNSFWDetectorNode, AXMProminentObjectsDetectorNode, AXMSceneDetectorNode, AXMSignificantEventDetectorNode, AXMTraitDetectorNode;
 
-@interface AXMVoiceOverVisionEngine : AXMVisionEngine
+@interface AXMVoiceOverVisionEngine : AXMAXElementVisionEngine
 {
-    AXMScreenCaptureNode *_captureNode;
-    AXMImageNode *_imageNode;
-    AXMTextDetectorNode *_textDetector;
     AXMSceneDetectorNode *_sceneDetector;
     AXMFaceDetectorNode *_faceDetector;
     AXMTraitDetectorNode *_traitDetector;
     AXMProminentObjectsDetectorNode *_prominentObjectsDetector;
     AXMCaptionDetectorNode *_captionDetector;
-    AXMIconClassDetectorNode *_iconClassDetector;
+    AXMNSFWDetectorNode *_nsfwDetector;
+    AXMSignificantEventDetectorNode *_significantEventDetector;
 }
 
 @property (weak, nonatomic) AXMCaptionDetectorNode *captionDetector; // @synthesize captionDetector=_captionDetector;
-@property (weak, nonatomic) AXMScreenCaptureNode *captureNode; // @synthesize captureNode=_captureNode;
 @property (weak, nonatomic) AXMFaceDetectorNode *faceDetector; // @synthesize faceDetector=_faceDetector;
-@property (weak, nonatomic) AXMIconClassDetectorNode *iconClassDetector; // @synthesize iconClassDetector=_iconClassDetector;
-@property (weak, nonatomic) AXMImageNode *imageNode; // @synthesize imageNode=_imageNode;
+@property (nonatomic) unsigned long long genderStrategy;
+@property (weak, nonatomic) AXMNSFWDetectorNode *nsfwDetector; // @synthesize nsfwDetector=_nsfwDetector;
 @property (weak, nonatomic) AXMProminentObjectsDetectorNode *prominentObjectsDetector; // @synthesize prominentObjectsDetector=_prominentObjectsDetector;
 @property (weak, nonatomic) AXMSceneDetectorNode *sceneDetector; // @synthesize sceneDetector=_sceneDetector;
-@property (weak, nonatomic) AXMTextDetectorNode *textDetector; // @synthesize textDetector=_textDetector;
+@property (weak, nonatomic) AXMSignificantEventDetectorNode *significantEventDetector; // @synthesize significantEventDetector=_significantEventDetector;
 @property (weak, nonatomic) AXMTraitDetectorNode *traitDetector; // @synthesize traitDetector=_traitDetector;
 
 - (void).cxx_destruct;
+- (id)configuredOptionsDisableAllDetectors:(CDUnknownBlockType)arg1 elementOptions:(unsigned int)arg2 textRecognitionLevel:(CDUnknownBlockType)arg3 textDetectionLocales:(CDUnknownBlockType)arg4 preferringFullCaptions:(BOOL)arg5;
 - (id)init;
 - (id)initWithIdentifier:(id)arg1;
 

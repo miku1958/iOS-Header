@@ -6,23 +6,23 @@
 
 #import <HomeKitDaemon/NSObject-Protocol.h>
 
-@class CKRecordID, CKRecordZoneID, HMBProcessingOptions, NAFuture, NSDictionary, NSObject, NSSet, NSString;
+@class CKRecordID, CKRecordZoneID, HMBProcessingOptions, NAFuture, NSDictionary, NSNumber, NSObject, NSSet, NSString;
 @protocol OS_xpc_object;
 
 @protocol HMDNetworkRouterFirewallRuleManagerBackingStoreMirror <NSObject>
 
 @property (readonly, nonatomic) NAFuture *shutdownFuture;
 @property (readonly, nonatomic) NAFuture *startupFuture;
-@property (strong, nonatomic) NSSet *watchedRecordIDs;
 
 - (BOOL)addOverrides:(NSDictionary *)arg1 replace:(BOOL)arg2 options:(HMBProcessingOptions *)arg3 error:(id *)arg4;
-- (NSDictionary *)fetchAllNetworkDeclarationDataWithOptions:(HMBProcessingOptions *)arg1 error:(id *)arg2;
+- (NSNumber *)cloudFetchNeededForRecordIDs:(NSSet *)arg1 error:(id *)arg2;
+- (NSDictionary *)fetchAllDataForRecordIDs:(NSSet *)arg1 options:(HMBProcessingOptions *)arg2 error:(id *)arg3;
+- (NSDictionary *)fetchAllDataForZoneName:(NSString *)arg1 options:(HMBProcessingOptions *)arg2 error:(id *)arg3;
+- (NSDictionary *)fetchAllDataWithOptions:(HMBProcessingOptions *)arg1 error:(id *)arg2;
 - (NSDictionary *)fetchAllOverridesWithOptions:(HMBProcessingOptions *)arg1 error:(id *)arg2;
-- (void)fetchCloudChangesWithOptions:(HMBProcessingOptions *)arg1 ignoreLastFetchedAccessories:(BOOL)arg2 xpcActivity:(NSObject<OS_xpc_object> *)arg3 completion:(void (^)(NSSet *, NSError *))arg4;
+- (void)fetchCloudChangesForRecordIDs:(NSSet *)arg1 options:(HMBProcessingOptions *)arg2 ignoreLastSynchronizedRecords:(BOOL)arg3 xpcActivity:(NSObject<OS_xpc_object> *)arg4 completion:(void (^)(BOOL, NSSet *, NSError *))arg5;
 - (void)fetchCloudRecordIDsForZoneID:(CKRecordZoneID *)arg1 options:(HMBProcessingOptions *)arg2 completion:(void (^)(NSSet *, NSError *))arg3;
 - (void)fetchCloudRecordsForZoneID:(CKRecordZoneID *)arg1 recordID:(CKRecordID *)arg2 options:(HMBProcessingOptions *)arg3 completion:(void (^)(NSSet *, NSError *))arg4;
-- (NSDictionary *)fetchNetworkDeclarationDataForRecordIDs:(NSSet *)arg1 options:(HMBProcessingOptions *)arg2 error:(id *)arg3;
-- (NSDictionary *)fetchNetworkDeclarationDataForZoneName:(NSString *)arg1 options:(HMBProcessingOptions *)arg2 error:(id *)arg3;
 - (NSDictionary *)fetchOverridesForRecordIDs:(NSSet *)arg1 options:(HMBProcessingOptions *)arg2 error:(id *)arg3;
 - (NSDictionary *)fetchOverridesForZoneName:(NSString *)arg1 options:(HMBProcessingOptions *)arg2 error:(id *)arg3;
 - (BOOL)removeAllLocalRulesWithOptions:(HMBProcessingOptions *)arg1 error:(id *)arg2;

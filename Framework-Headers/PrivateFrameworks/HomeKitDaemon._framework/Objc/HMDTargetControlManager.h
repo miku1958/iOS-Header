@@ -9,16 +9,16 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMDAccessory, HMDSiriServer, NSMutableArray, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDTargetControlManager : HMFObject <HMFLogging>
 {
+    id<HMFLocking> _lock;
     HMDAccessory *_targetAccessory;
     NSMutableArray *_configuredControllers;
     NSMutableArray *_activeControlServices;
     NSMutableArray *_eventReceivers;
     NSObject<OS_dispatch_queue> *_workQueue;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSString *_logID;
     HMDSiriServer *_siriServer;
 }
@@ -30,7 +30,6 @@
 @property (readonly, nonatomic) NSMutableArray *eventReceivers; // @synthesize eventReceivers=_eventReceivers;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (strong, nonatomic) HMDSiriServer *siriServer; // @synthesize siriServer=_siriServer;
 @property (readonly) Class superclass;
 @property (readonly, weak, nonatomic) HMDAccessory *targetAccessory; // @synthesize targetAccessory=_targetAccessory;
@@ -39,8 +38,8 @@
 + (id)logCategory;
 - (void).cxx_destruct;
 - (void)__accessoryAdded:(id)arg1;
-- (void)__accessoryIsReachable:(id)arg1;
-- (void)__accessoryIsUnreachable:(id)arg1;
+- (void)__accessoryConnected:(id)arg1;
+- (void)__accessoryDisconnected:(id)arg1;
 - (void)__accessoryNameUpdated:(id)arg1;
 - (void)__accessoryRemoved:(id)arg1;
 - (void)__activeSelectionChanged:(id)arg1;
@@ -54,7 +53,7 @@
 - (void)__targetAccessoryUnconfiguredForControl:(id)arg1;
 - (void)_addController:(id)arg1;
 - (void)_handleButtonEvent:(id)arg1 fromControlService:(id)arg2;
-- (void)_handleControllerUnreachable:(id)arg1;
+- (void)_handleControllerDisconnected:(id)arg1;
 - (void)_handleTargetControlServiceDeselection:(id)arg1;
 - (void)_handleTargetControlServiceSelection:(id)arg1;
 - (void)_removeController:(id)arg1;

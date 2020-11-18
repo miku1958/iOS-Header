@@ -13,12 +13,15 @@
 @interface AVAudioDeviceTestSequence : NSObject <NSSecureCoding>
 {
     BOOL _calculateCrossCorrelationPeak;
+    BOOL _parallelCrossCorrelationCalculation;
+    BOOL _processSequenceAsynchronously;
     float _volume;
     long long _outputID;
     NSURL *_stimulusURL;
     AVAudioDeviceTestProcessingChain *_inputProcessingChain;
     AVAudioDeviceTestProcessingChain *_outputProcessingChain;
     long long _outputMode;
+    long long _priority;
     NSString *_mode;
 }
 
@@ -28,6 +31,9 @@
 @property (nonatomic) long long outputID; // @synthesize outputID=_outputID;
 @property (nonatomic) long long outputMode; // @synthesize outputMode=_outputMode;
 @property (strong, nonatomic) AVAudioDeviceTestProcessingChain *outputProcessingChain; // @synthesize outputProcessingChain=_outputProcessingChain;
+@property BOOL parallelCrossCorrelationCalculation; // @synthesize parallelCrossCorrelationCalculation=_parallelCrossCorrelationCalculation;
+@property (nonatomic) long long priority; // @synthesize priority=_priority;
+@property BOOL processSequenceAsynchronously; // @synthesize processSequenceAsynchronously=_processSequenceAsynchronously;
 @property (strong, nonatomic) NSURL *stimulusURL; // @synthesize stimulusURL=_stimulusURL;
 @property (nonatomic) float volume; // @synthesize volume=_volume;
 

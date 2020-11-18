@@ -10,16 +10,17 @@
 @protocol TSDHint;
 
 @protocol TSDHint <NSObject>
+
+@property (readonly, nonatomic) struct CGSize effectiveSize;
+@property (readonly, nonatomic) id<TSDHint> firstChildHint;
+@property (readonly, nonatomic) BOOL isFirstHint;
+@property (readonly, nonatomic) id<TSDHint> lastChildHint;
+@property (readonly, nonatomic) struct CGSize maximumSize;
+
 + (Class)archivedHintClass;
 - (id<TSDHint>)copyForArchiving;
-- (id<TSDHint>)firstChildHint;
-- (id<TSDHint>)lastChildHint;
-- (void)offsetByDelta:(int)arg1;
 - (BOOL)overlapsWithSelectionPath:(TSKSelectionPath *)arg1;
 
 @optional
-- (struct CGSize)effectiveSize;
-- (BOOL)isFirstHint;
-- (struct CGSize)maximumSize;
 @end
 

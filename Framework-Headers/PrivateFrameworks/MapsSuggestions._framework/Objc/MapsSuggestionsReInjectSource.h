@@ -24,18 +24,16 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 
-+ (id)_entriesFromFileAtPath:(id)arg1;
 + (id)_entriesFromMultilineString:(id)arg1;
 + (unsigned long long)disposition;
 + (BOOL)isEnabled;
 - (void).cxx_destruct;
-- (void)_processFileAtPath:(id)arg1;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
-- (id)initWithDelegate:(id)arg1;
+- (id)initFromResourceDepot:(id)arg1 name:(id)arg2;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)start;
 - (void)stop;
-- (double)updateSuggestionEntries;
+- (double)updateSuggestionEntriesWithHandler:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -19,6 +19,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
++ (id)percentageFormatter;
 - (long long)decimalPrecisionForValue:(double)arg1;
 - (long long)maximumDecimalPrecision;
 - (long long)minimumDecimalPrecision;

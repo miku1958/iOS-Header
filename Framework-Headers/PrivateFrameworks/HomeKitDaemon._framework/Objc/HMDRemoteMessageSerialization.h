@@ -12,6 +12,7 @@
 
 + (id)dictionaryForMessage:(id)arg1 error:(id *)arg2;
 + (BOOL)legacyNotificationMessage:(id)arg1;
++ (id)remoteActivityFromDictionary:(id)arg1 withName:(id)arg2;
 + (id)remoteMessageWithDictonary:(id)arg1 error:(id *)arg2;
 
 @end

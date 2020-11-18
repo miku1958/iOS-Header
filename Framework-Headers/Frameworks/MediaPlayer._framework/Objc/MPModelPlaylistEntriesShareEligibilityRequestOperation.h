@@ -8,6 +8,7 @@
 
 @class MPModelPlaylistEntriesShareEligibilityRequest;
 
+__attribute__((visibility("hidden")))
 @interface MPModelPlaylistEntriesShareEligibilityRequestOperation : MPAsyncOperation
 {
     MPModelPlaylistEntriesShareEligibilityRequest *_request;

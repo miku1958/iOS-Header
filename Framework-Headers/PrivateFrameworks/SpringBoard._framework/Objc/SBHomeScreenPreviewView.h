@@ -6,11 +6,13 @@
 
 #import <UIKit/UIView.h>
 
+#import <SpringBoard/SBIconViewDelegate-Protocol.h>
 #import <SpringBoard/SBIconViewProviding-Protocol.h>
 
-@class SBFloatingDockViewController, SBIconController, SBRootFolderController, SBWallpaperController, _SBHomeScreenFolderDelegate;
+@class NSString, SBFloatingDockViewController, SBIconController, SBRootFolderController, SBWallpaperController, _SBHomeScreenFolderDelegate;
+@protocol SBDockOffscreenFractionModifying;
 
-@interface SBHomeScreenPreviewView : UIView <SBIconViewProviding>
+@interface SBHomeScreenPreviewView : UIView <SBIconViewProviding, SBIconViewDelegate>
 {
     UIView *_folderContent;
     UIView *_floatingDock;
@@ -20,13 +22,23 @@
     SBIconController *_iconController;
     SBWallpaperController *_wallpaperController;
     SBFloatingDockViewController *_floatingDockViewController;
+    unsigned long long _snapshotOptions;
+    id<SBDockOffscreenFractionModifying> _dockOffscreenModifier;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<SBDockOffscreenFractionModifying> dockOffscreenModifier; // @synthesize dockOffscreenModifier=_dockOffscreenModifier;
 @property (readonly, nonatomic) SBFloatingDockViewController *floatingDockViewController; // @synthesize floatingDockViewController=_floatingDockViewController;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) SBIconController *iconController; // @synthesize iconController=_iconController;
+@property (readonly, nonatomic) unsigned long long snapshotOptions; // @synthesize snapshotOptions=_snapshotOptions;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) SBWallpaperController *wallpaperController; // @synthesize wallpaperController=_wallpaperController;
 
 - (void).cxx_destruct;
+- (id)backgroundViewForComponentsOfIconView:(id)arg1;
+- (id)behaviorDelegateForIconView:(id)arg1;
 - (void)configureIconView:(id)arg1 forIcon:(id)arg2;
 - (id)dequeueReusableIconViewOfClass:(Class)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 iconController:(id)arg2 wallpaperController:(id)arg3 options:(unsigned long long)arg4 wallpaperImage:(id)arg5;

@@ -36,6 +36,7 @@
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
 + (id)offersSetFromArray:(id)arg1;
 - (void).cxx_destruct;
 - (id)initWithDictionary:(id)arg1;

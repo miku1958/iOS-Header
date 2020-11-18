@@ -6,91 +6,76 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSNumber, NSString;
-@protocol SUPreferencesObserver;
+@class NSDictionary, NSMutableDictionary, NSNumber, NSString;
+@protocol OS_dispatch_workloop, SUPreferencesObserver;
 
 @interface SUPreferences : NSObject
 {
     id<SUPreferencesObserver> _observer;
-    BOOL _disableManagedRequest;
-    BOOL _disableUserWiFiOnlyPeriod;
-    BOOL _disableBuildNumberComparison;
-    BOOL _allowSameBuildUpdates;
-    BOOL _disableAvailabilityAlerts;
-    BOOL _disableAutoDownload;
-    BOOL _simulateAutoDownload;
+    NSObject<OS_dispatch_workloop> *_preferencesWorkloop;
+    NSDictionary *_preferencesDefinitions;
+    NSMutableDictionary *_cachedPreferences;
     BOOL _disableAutoSU;
-    BOOL _scanWeeklyInternally;
-    BOOL _forceFullReplacement;
-    BOOL _disableFullReplacementFallback;
-    NSNumber *_updateDelayInterval;
-    BOOL _shouldDelayUpdates;
-    BOOL _shouldDelayInMinutes;
-    NSNumber *_unmetConstraints;
-    NSNumber *_mandatorySUFlags;
-    NSString *_requestedPMV;
-    NSDate *_autoSUStart;
-    NSDate *_autoSUEnd;
-    NSDate *_autoSUUnlockStart;
-    NSDate *_autoSUUnlockEnd;
-    NSNumber *_autoSUStartDelta;
-    NSNumber *_autoSUEndDelta;
-    NSNumber *_autoSUUnlockStartDelta;
-    NSNumber *_autoSUUnlockEndDelta;
-    BOOL _autoUpdateForceOn;
-    BOOL _autoUpdateForceOff;
-    BOOL _automaticUpdateV2Enabled;
-    NSNumber *_bannerDelay;
-    BOOL _autoDownloadDeletedBuild;
     BOOL _backgroundDLKnownBuilds;
 }
 
-@property (readonly, nonatomic) BOOL allowSameBuildUpdates; // @synthesize allowSameBuildUpdates=_allowSameBuildUpdates;
-@property (readonly, nonatomic) BOOL autoDownloadDeletedBuild; // @synthesize autoDownloadDeletedBuild=_autoDownloadDeletedBuild;
-@property (readonly, nonatomic) NSNumber *autoSUEndDelta; // @synthesize autoSUEndDelta=_autoSUEndDelta;
-@property (readonly, nonatomic) NSNumber *autoSUStartDelta; // @synthesize autoSUStartDelta=_autoSUStartDelta;
-@property (readonly, nonatomic) NSNumber *autoSUUnlockEndDelta; // @synthesize autoSUUnlockEndDelta=_autoSUUnlockEndDelta;
-@property (readonly, nonatomic) NSNumber *autoSUUnlockStartDelta; // @synthesize autoSUUnlockStartDelta=_autoSUUnlockStartDelta;
-@property (readonly, nonatomic) BOOL autoUpdateForceOff; // @synthesize autoUpdateForceOff=_autoUpdateForceOff;
-@property (readonly, nonatomic) BOOL autoUpdateForceOn; // @synthesize autoUpdateForceOn=_autoUpdateForceOn;
+@property (readonly, nonatomic) BOOL allowSameBuildUpdates;
+@property (readonly, nonatomic) BOOL autoDownloadDeletedBuild;
+@property (readonly, nonatomic) NSNumber *autoSUEndDelta;
+@property (readonly, nonatomic) NSNumber *autoSUStartDelta;
+@property (readonly, nonatomic) NSNumber *autoSUUnlockEndDelta;
+@property (readonly, nonatomic) NSNumber *autoSUUnlockStartDelta;
+@property (readonly, nonatomic) BOOL autoUpdateForceOff;
+@property (readonly, nonatomic) BOOL autoUpdateForceOn;
 @property (readonly, nonatomic) BOOL backgroundDLKnownBuilds; // @synthesize backgroundDLKnownBuilds=_backgroundDLKnownBuilds;
-@property (readonly, nonatomic) NSNumber *bannerDelay; // @synthesize bannerDelay=_bannerDelay;
-@property (readonly, nonatomic, getter=isAutoDownloadDisabled) BOOL disableAutoDownload; // @synthesize disableAutoDownload=_disableAutoDownload;
+@property (readonly, nonatomic) NSNumber *bannerDelay;
+@property (strong, nonatomic) NSMutableDictionary *cachedPreferences; // @synthesize cachedPreferences=_cachedPreferences;
+@property (readonly, nonatomic, getter=isAutoDownloadDisabled) BOOL disableAutoDownload;
 @property (readonly, nonatomic, getter=isAutoSUDisabled) BOOL disableAutoSU; // @synthesize disableAutoSU=_disableAutoSU;
-@property (readonly, nonatomic) BOOL disableAvailabilityAlerts; // @synthesize disableAvailabilityAlerts=_disableAvailabilityAlerts;
-@property (readonly, nonatomic) BOOL disableBuildNumberComparison; // @synthesize disableBuildNumberComparison=_disableBuildNumberComparison;
-@property (readonly, nonatomic) BOOL disableFullReplacementFallback; // @synthesize disableFullReplacementFallback=_disableFullReplacementFallback;
-@property (readonly, nonatomic) BOOL disableManagedRequest; // @synthesize disableManagedRequest=_disableManagedRequest;
-@property (readonly, nonatomic) BOOL disableUserWiFiOnlyPeriod; // @synthesize disableUserWiFiOnlyPeriod=_disableUserWiFiOnlyPeriod;
-@property (readonly, nonatomic) BOOL forceFullReplacement; // @synthesize forceFullReplacement=_forceFullReplacement;
+@property (readonly, nonatomic) BOOL disableAvailabilityAlerts;
+@property (readonly, nonatomic) BOOL disableBuildNumberComparison;
+@property (readonly, nonatomic) BOOL disableFullReplacementFallback;
+@property (readonly, nonatomic) BOOL disableManagedRequest;
+@property (readonly, nonatomic) BOOL disableUserWiFiOnlyPeriod;
+@property (readonly, nonatomic) BOOL forceFullReplacement;
 @property (nonatomic, setter=enableAutomaticDownload:) BOOL isAutomaticDownloadEnabled;
-@property (nonatomic, setter=enableAutomaticUpdateV2:) BOOL isAutomaticUpdateV2Enabled; // @synthesize isAutomaticUpdateV2Enabled=_automaticUpdateV2Enabled;
-@property (readonly, nonatomic) NSNumber *mandatorySUFlags; // @synthesize mandatorySUFlags=_mandatorySUFlags;
+@property (nonatomic, setter=enableAutomaticUpdateV2:) BOOL isAutomaticUpdateV2Enabled;
+@property (readonly, nonatomic) NSNumber *mandatorySUFlags;
 @property (nonatomic) id<SUPreferencesObserver> observer; // @synthesize observer=_observer;
-@property (readonly, nonatomic) NSString *requestedPMV; // @synthesize requestedPMV=_requestedPMV;
-@property (readonly, nonatomic) BOOL scanWeeklyInternally; // @synthesize scanWeeklyInternally=_scanWeeklyInternally;
-@property (readonly, nonatomic) BOOL shouldDelayInMinutes; // @synthesize shouldDelayInMinutes=_shouldDelayInMinutes;
-@property (readonly, nonatomic) BOOL shouldDelayUpdates; // @synthesize shouldDelayUpdates=_shouldDelayUpdates;
-@property (readonly, nonatomic) BOOL simulateAutoDownload; // @synthesize simulateAutoDownload=_simulateAutoDownload;
-@property (readonly, nonatomic) NSNumber *unmetConstraints; // @synthesize unmetConstraints=_unmetConstraints;
-@property (readonly, nonatomic) NSNumber *updateDelayInterval; // @synthesize updateDelayInterval=_updateDelayInterval;
+@property (strong, nonatomic) NSDictionary *preferencesDefinitions; // @synthesize preferencesDefinitions=_preferencesDefinitions;
+@property (readonly, nonatomic) NSString *requestedPMV;
+@property (readonly, nonatomic) BOOL scanWeeklyInternally;
+@property (readonly, nonatomic) BOOL shouldDelayInMinutes;
+@property (readonly, nonatomic) BOOL shouldDelayUpdates;
+@property (readonly, nonatomic) NSNumber *unmetConstraints;
+@property (readonly, nonatomic) NSNumber *updateDelayInterval;
+@property (readonly, nonatomic) BOOL useSUCore;
 
 + (id)sharedInstance;
 - (BOOL)_autoDownloadDisableDefaultValue;
 - (BOOL)_autoInstallDefaultValue;
+- (BOOL)_cachedBoolValueForKey:(id)arg1 withDefaultValue:(BOOL)arg2;
+- (id)_cachedNumberValueForKey:(id)arg1;
+- (id)_cachedObjectForKey:(id)arg1 ofClass:(Class)arg2;
+- (id)_cachedStringValueForKey:(id)arg1;
 - (id)_copyNumberPreferenceForKey:(id)arg1;
 - (void *)_copyPreferenceForKey:(struct __CFString *)arg1 ofType:(unsigned long long)arg2;
 - (id)_copyStringPreferenceForKey:(id)arg1;
-- (id)_createDatePreferencesForKey:(id)arg1;
 - (BOOL)_getBooleanPreferenceForKey:(id)arg1 withDefaultValue:(BOOL)arg2;
+- (id)_getValueOfKey:(id)arg1 withType:(long long)arg2;
 - (void)_loadPreferences;
 - (id)_mandatorySUFlagsForPreferences;
 - (void)_setBooleanPreferenceForKey:(id)arg1 value:(BOOL)arg2;
-- (BOOL)_setupAutomaticUpdateV2Enabled;
+- (void)_setCachedBooleanPreferenceForKey:(id)arg1 value:(BOOL)arg2;
+- (void)_setObjectPreferenceForKey:(id)arg1 value:(id)arg2;
+- (void)_setupAutomaticUpdateV2Enabled;
 - (void)dealloc;
+- (BOOL)disableAutoDownload;
 - (id)init;
 - (BOOL)isKeySetInPreferences:(id)arg1;
 - (void)reload;
+- (void)setPreference:(id)arg1 toBool:(BOOL)arg2;
+- (void)setPreference:(id)arg1 toValue:(id)arg2;
 
 @end
 

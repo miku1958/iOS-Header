@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 + (void)prepareForRotationIfNecessaryWithShutterButton:(id)arg1 coodinator:(id)arg2;
 + (id)resizedImage:(id)arg1 newSize:(struct CGSize)arg2 interpolationQuality:(int)arg3;
 + (id)resizedImage:(id)arg1 newSize:(struct CGSize)arg2 transform:(struct CGAffineTransform)arg3 drawTransposed:(BOOL)arg4 interpolationQuality:(int)arg5;
-+ (BOOL)shouldPerformCustomAnimationForTransitionCoordinator:(id)arg1;
++ (BOOL)shouldPerformCustomAnimationForTransitionCoordinator:(id)arg1 window:(id)arg2;
 + (struct CGAffineTransform)transformForOrientation:(id)arg1 newSize:(struct CGSize)arg2;
 
 @end

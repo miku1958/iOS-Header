@@ -33,11 +33,11 @@
 - (void).cxx_destruct;
 - (BOOL)_validateHost:(id)arg1 outError:(id *)arg2;
 - (id)_validateURLString:(id)arg1 outError:(id *)arg2;
-- (id)description;
 - (id)initWithDictionary:(id)arg1 profile:(id)arg2 outError:(id *)arg3;
 - (id)payloadDescriptionKeyValueSections;
 - (id)stubDictionary;
 - (id)title;
+- (id)verboseDescription;
 
 @end
 

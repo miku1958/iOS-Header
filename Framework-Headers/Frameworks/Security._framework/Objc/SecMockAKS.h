@@ -22,8 +22,10 @@ __attribute__((visibility("hidden")))
 + (id)popDecryptRefKeyFailure;
 + (void)reset;
 + (void)setKeybag_state:(unsigned int)arg1;
++ (void)setOperationsUntilUnlock:(int)arg1;
 + (void)trapdoor;
 + (void)unlockAllClasses;
++ (void)updateOperationsUntilUnlock;
 + (BOOL)useGenerationCount;
 
 @end

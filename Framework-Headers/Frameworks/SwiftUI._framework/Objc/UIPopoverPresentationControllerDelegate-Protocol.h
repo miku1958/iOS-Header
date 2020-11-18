@@ -11,7 +11,7 @@
 @protocol UIPopoverPresentationControllerDelegate <UIAdaptivePresentationControllerDelegate>
 
 @optional
-- (void)popoverPresentationController:(UIPopoverPresentationController *)arg1 willRepositionPopoverToRect:(struct CGRect *)arg2 inView:(id *)arg3;
+- (void)popoverPresentationController:(UIPopoverPresentationController *)arg1 willRepositionPopoverToRect:(inout struct CGRect *)arg2 inView:(inout id *)arg3;
 - (void)popoverPresentationControllerDidDismissPopover:(UIPopoverPresentationController *)arg1;
 - (BOOL)popoverPresentationControllerShouldDismissPopover:(UIPopoverPresentationController *)arg1;
 - (void)prepareForPopoverPresentation:(UIPopoverPresentationController *)arg1;

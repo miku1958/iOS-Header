@@ -6,34 +6,25 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <AudioToolboxCore/AUAudioUnitHostProtocol-Protocol.h>
-#import <AudioToolboxCore/_AURemoteParameterSynchronization-Protocol.h>
+@class AUHostDelegate, NSExtension, NSXPCConnection;
 
-@class AUAudioUnit, NSExtension, NSObject, NSUUID, NSXPCConnection;
-@protocol OS_dispatch_queue;
-
-@interface AUHostExtensionContext : NSExtensionContext <AUAudioUnitHostProtocol, _AURemoteParameterSynchronization>
+@interface AUHostExtensionContext : NSExtensionContext
 {
-    NSObject<OS_dispatch_queue> *mParameterQueue;
     NSExtension *_extension;
-    NSUUID *_requestIdentifier;
-    AUAudioUnit *_audioUnit;
+    AUHostDelegate *_delegate;
 }
 
-@property (weak, nonatomic) AUAudioUnit *audioUnit; // @synthesize audioUnit=_audioUnit;
+@property (strong, nonatomic) AUHostDelegate *delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSExtension *extension; // @synthesize extension=_extension;
-@property (strong, nonatomic) NSUUID *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
 @property (readonly, weak, nonatomic) NSXPCConnection *xpcConnection;
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
 - (void).cxx_destruct;
-- (void)MIDICIProfileChanged:(unsigned char)arg1 channel:(unsigned char)arg2 profile:(id)arg3 enabled:(BOOL)arg4;
 - (id)_derivedExtensionAuxiliaryHostProtocol;
 - (void)dealloc;
+- (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;
-- (void)propertiesChanged:(id)arg1;
-- (void)syncParameter:(unsigned long long)arg1 value:(float)arg2 extOriginator:(unsigned long long)arg3 hostTime:(unsigned long long)arg4 eventType:(unsigned int)arg5;
 
 @end
 

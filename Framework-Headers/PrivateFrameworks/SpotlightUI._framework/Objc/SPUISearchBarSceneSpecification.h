@@ -10,6 +10,7 @@
 {
 }
 
+- (Class)clientSettingsClass;
 - (Class)settingsClass;
 - (Class)transitionContextClass;
 

@@ -28,19 +28,20 @@
 
 + (BOOL)_allowVideoAccessForAsset:(id)arg1 options:(id)arg2;
 + (unsigned long long)_nextManagerID;
++ (id)_videoAVObjectBuilderFromVideoURL:(id)arg1 info:(id)arg2 playbackOnly:(BOOL)arg3;
++ (void)buildAVAssetFromVideoURL:(id)arg1 infoDictionary:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)buildAVPlayerItemFromVideoURL:(id)arg1 infoDictionary:(id)arg2 completion:(CDUnknownBlockType)arg3;
++ (void)buildExportSessionFromVideoURL:(id)arg1 infoDictionary:(id)arg2 exportPreset:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)defaultManager;
 - (void).cxx_destruct;
 - (BOOL)_canStreamVideoForAsset:(id)arg1;
 - (void)_handleActivityForMediaContext:(id)arg1;
 - (void)_prepareLivePhotoResultWithImage:(struct CGImage *)arg1 uiOrientation:(long long)arg2 shouldIncludeVideo:(BOOL)arg3 videoURL:(id)arg4 info:(id)arg5 photoTime:(CDStruct_1b6d18a9)arg6 asset:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (int)_requestImagePropertiesFromFileForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
+- (int)_requestLiveRenderAVAssetForAsset:(id)arg1 options:(id)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (void)_runBlockOnAppropriateResultQueueOrSynchronouslyWithRequest:(id)arg1 options:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (BOOL)_shouldUseRAWResourceAsUnadjustedBaseForAsset:(id)arg1 options:(id)arg2;
-- (id)_videoAVObjectBuilderFromVideoURL:(id)arg1 info:(id)arg2 playbackOnly:(BOOL)arg3;
 - (void)additionalWorkForImageRequestCompletedWithResult:(id)arg1 request:(id)arg2 context:(id)arg3;
-- (void)buildAVAssetFromVideoURL:(id)arg1 infoDictionary:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)buildAVPlayerItemFromVideoURL:(id)arg1 infoDictionary:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)buildExportSessionFromVideoURL:(id)arg1 infoDictionary:(id)arg2 exportPreset:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)cancelImageRequest:(int)arg1;
 - (id)init;
 - (void)mediaRequestContext:(id)arg1 isQueryingCacheForRequest:(id)arg2 didWait:(BOOL *)arg3 didFindImage:(BOOL *)arg4 resultHandler:(CDUnknownBlockType)arg5;

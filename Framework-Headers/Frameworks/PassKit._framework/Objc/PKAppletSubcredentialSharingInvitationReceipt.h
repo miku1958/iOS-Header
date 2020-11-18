@@ -18,6 +18,7 @@
     NSUUID *_sharingSessionIdentifier;
     NSString *_recipientIdentifier;
     PKSharedAppletSubcredentialMetadata *_metadata;
+    unsigned long long _status;
 }
 
 @property (nonatomic, getter=isForWatch) BOOL forWatch; // @synthesize forWatch=_forWatch;
@@ -26,6 +27,7 @@
 @property (copy, nonatomic) NSString *recipientIdentifier; // @synthesize recipientIdentifier=_recipientIdentifier;
 @property (nonatomic) BOOL requiresAuthentication; // @synthesize requiresAuthentication=_requiresAuthentication;
 @property (strong, nonatomic) NSUUID *sharingSessionIdentifier; // @synthesize sharingSessionIdentifier=_sharingSessionIdentifier;
+@property (nonatomic) unsigned long long status; // @synthesize status=_status;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -14,6 +14,9 @@
     MISSING_TYPE *navigator;
     MISSING_TYPE *articleContextFactory;
     MISSING_TYPE *audioPlaybackOptionsPresenter;
+    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *sceneProvider;
+    MISSING_TYPE *contextBuilder;
 }
 
 @end

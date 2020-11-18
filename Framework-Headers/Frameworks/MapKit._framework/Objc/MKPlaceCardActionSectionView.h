@@ -6,7 +6,7 @@
 
 #import <MapKit/MKPlaceSectionRowView.h>
 
-@class MKPlaceCardActionItem, MKPlatterView, NSLayoutConstraint, UIButton;
+@class MKPlaceCardActionItem, NSLayoutConstraint, UIButton, UIView;
 @protocol MKPlaceCardActionSectionViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -24,13 +24,13 @@ __attribute__((visibility("hidden")))
     UIButton *_rightButton;
     UIButton *_leftButton;
     id<MKPlaceCardActionSectionViewDelegate> _delegate;
-    MKPlatterView *_platterView;
+    UIView *_accessoryView;
 }
 
+@property (strong, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
 @property (weak, nonatomic) id<MKPlaceCardActionSectionViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) UIButton *leftButton; // @synthesize leftButton=_leftButton;
 @property (strong, nonatomic) MKPlaceCardActionItem *leftItem; // @synthesize leftItem=_leftItem;
-@property (strong, nonatomic) MKPlatterView *platterView; // @synthesize platterView=_platterView;
 @property (strong, nonatomic) UIButton *rightButton; // @synthesize rightButton=_rightButton;
 @property (strong, nonatomic) MKPlaceCardActionItem *rightItem; // @synthesize rightItem=_rightItem;
 @property (nonatomic) BOOL singleItemIsFullWidth; // @synthesize singleItemIsFullWidth=_singleItemIsFullWidth;

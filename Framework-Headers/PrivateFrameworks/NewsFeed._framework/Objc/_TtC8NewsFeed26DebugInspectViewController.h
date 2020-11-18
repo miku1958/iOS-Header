@@ -17,7 +17,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *factory;
     MISSING_TYPE *dataSource;
     MISSING_TYPE *inspector;
-    MISSING_TYPE *reporter;
+    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *featureAvailability;
     MISSING_TYPE *tableView;
 }
 

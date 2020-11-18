@@ -16,7 +16,7 @@
     UIAlertController *_alertController;
     id _target;
     SEL _action;
-    BOOL _useCustomView;
+    BOOL _useInternalSymbolImage;
     BOOL _forceToNavBar;
     BOOL _selected;
     BOOL _enabled;
@@ -24,7 +24,7 @@
     BOOL _disappearsOnTap;
     NSString *_identifier;
     UIImage *_image;
-    NSString *_systemImageName;
+    NSString *_symbolImageName;
     long long _systemItem;
     NSString *_title;
     NSString *_accessibilityIdentifier;
@@ -42,13 +42,14 @@
 @property unsigned long long placement; // @synthesize placement=_placement;
 @property BOOL roundedSelectedIndicator; // @synthesize roundedSelectedIndicator=_roundedSelectedIndicator;
 @property BOOL selected; // @synthesize selected=_selected;
-@property (copy, nonatomic) NSString *systemImageName; // @synthesize systemImageName=_systemImageName;
+@property (copy, nonatomic) NSString *symbolImageName; // @synthesize symbolImageName=_symbolImageName;
 @property long long systemItem; // @synthesize systemItem=_systemItem;
 @property (copy) NSString *title; // @synthesize title=_title;
-@property BOOL useCustomView; // @synthesize useCustomView=_useCustomView;
+@property BOOL useInternalSymbolImage; // @synthesize useInternalSymbolImage=_useInternalSymbolImage;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_barButtonImage;
 - (id)barButtonWithTarget:(id)arg1 action:(SEL)arg2 maxSize:(struct CGSize)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleLongPress:(id)arg1;

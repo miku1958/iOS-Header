@@ -13,52 +13,37 @@
 __attribute__((visibility("hidden")))
 @interface AEConcretePreferences : NSObject <AEPreferences>
 {
+    BOOL createAssessmentFile;
+    BOOL disableSiri;
+    BOOL enterSandbox;
+    BOOL presentShields;
+    BOOL restrictFrontmostApp;
+    BOOL scrubPasteboard;
+    BOOL pauseMedia;
+    BOOL disableTrackpadLookup;
+    BOOL disableContinuity;
+    BOOL restrictNetworkAccess;
+    BOOL stopAirPlayBeforehand;
+    BOOL restrictContentCapture;
 }
 
+@property (nonatomic, getter=shouldCreateAssessmentFile) BOOL createAssessmentFile; // @synthesize createAssessmentFile;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic, getter=shouldDisableContinuity) BOOL disableContinuity; // @synthesize disableContinuity;
+@property (nonatomic, getter=shouldDisableSiri) BOOL disableSiri; // @synthesize disableSiri;
+@property (nonatomic, getter=shouldDisableTrackpadLookup) BOOL disableTrackpadLookup; // @synthesize disableTrackpadLookup;
+@property (nonatomic, getter=shouldEnterSandbox) BOOL enterSandbox; // @synthesize enterSandbox;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=shouldPauseMedia) BOOL pauseMedia; // @synthesize pauseMedia;
+@property (nonatomic, getter=shouldPresentShields) BOOL presentShields; // @synthesize presentShields;
+@property (nonatomic, getter=shouldRestrictContentCapture) BOOL restrictContentCapture; // @synthesize restrictContentCapture;
+@property (nonatomic, getter=shouldRestrictFrontmostApp) BOOL restrictFrontmostApp; // @synthesize restrictFrontmostApp;
+@property (nonatomic, getter=shouldRestrictNetworkAccess) BOOL restrictNetworkAccess; // @synthesize restrictNetworkAccess;
+@property (nonatomic, getter=shouldScrubPasteboard) BOOL scrubPasteboard; // @synthesize scrubPasteboard;
+@property (nonatomic, getter=shouldStopAirplayBeforehand) BOOL stopAirPlayBeforehand; // @synthesize stopAirPlayBeforehand;
 @property (readonly) Class superclass;
 
-- (BOOL)assessmentBoolForKey:(id)arg1;
-- (id)assessmentPreferenceDomain;
-- (id)ignoreCreateAssessmentFileKey;
-- (id)ignoreDisableContinuityKey;
-- (id)ignoreDisableSiriKey;
-- (id)ignoreDisableTrackpadLookupKey;
-- (id)ignorePauseMediaKey;
-- (id)ignorePresentShieldsKey;
-- (id)ignoreRestrictContentCaptureKey;
-- (id)ignoreRestrictFrontmostAppKey;
-- (id)ignoreRestrictNetworkAccessKey;
-- (id)ignoreScrubPasteboardKey;
-- (id)ignoreStopAirPlayBeforehandKey;
-- (id)ignoreWhitelistHotkeysKey;
-- (void)setAssessmentBool:(BOOL)arg1 forKey:(id)arg2;
-- (void)setCreateAssessmentFile:(BOOL)arg1;
-- (void)setDisableContinuity:(BOOL)arg1;
-- (void)setDisableSiri:(BOOL)arg1;
-- (void)setDisableTrackpadLookup:(BOOL)arg1;
-- (void)setPauseMedia:(BOOL)arg1;
-- (void)setPresentShields:(BOOL)arg1;
-- (void)setRestrictContentCapture:(BOOL)arg1;
-- (void)setRestrictFrontmostApp:(BOOL)arg1;
-- (void)setRestrictNetworkAccess:(BOOL)arg1;
-- (void)setScrubPasteboard:(BOOL)arg1;
-- (void)setStopAirPlayBeforehand:(BOOL)arg1;
-- (void)setWhitelistHotkeys:(BOOL)arg1;
-- (BOOL)shouldCreateAssessmentFile;
-- (BOOL)shouldDisableContinuity;
-- (BOOL)shouldDisableSiri;
-- (BOOL)shouldDisableTrackpadLookup;
-- (BOOL)shouldPauseMedia;
-- (BOOL)shouldPresentShields;
-- (BOOL)shouldRestrictContentCapture;
-- (BOOL)shouldRestrictFrontmostApp;
-- (BOOL)shouldRestrictNetworkAccess;
-- (BOOL)shouldScrubPasteboard;
-- (BOOL)shouldStopAirplayBeforehand;
-- (BOOL)shouldWhitelistHotkeys;
 
 @end
 

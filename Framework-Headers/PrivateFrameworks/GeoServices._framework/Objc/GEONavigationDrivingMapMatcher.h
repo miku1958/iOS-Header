@@ -8,9 +8,14 @@
 
 @interface GEONavigationDrivingMapMatcher : GEONavigationMapMatcher
 {
+    BOOL _useMatchedCoordinateForMatching;
 }
 
-- (double)_approximateMaxSpeedForRoad:(CDStruct_c8b5ad3f *)arg1;
+@property (nonatomic) BOOL useMatchedCoordinateForMatching; // @synthesize useMatchedCoordinateForMatching=_useMatchedCoordinateForMatching;
+
+- (double)_approximateMaxSpeedForRoad:(CDStruct_4da79865 *)arg1;
+- (CDStruct_c3b9c2ee)_coordinateFromLocation:(id)arg1;
+- (double)_courseFromLocation:(id)arg1;
 - (BOOL)_locationMeetsSpeedThresholdForRoadMatch:(id)arg1 distanceFromRoute:(double)arg2;
 - (id)_routeMatcherForRoute:(id)arg1;
 - (BOOL)_shouldConsiderRoadMatch:(id)arg1 overRouteMatch:(id)arg2 forLocation:(id)arg3;

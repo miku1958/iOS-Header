@@ -13,6 +13,7 @@
 @property (copy, nonatomic) NSString *bundleIdentifier;
 @property (copy, nonatomic) NSData *fallbackResultSection;
 @property (copy, nonatomic) NSString *identifier;
+@property (nonatomic) BOOL isInitiallyHidden;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int knownBundleIdentifier;
 @property (nonatomic) double rankingScore;

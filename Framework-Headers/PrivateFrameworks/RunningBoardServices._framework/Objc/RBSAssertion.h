@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSDescriptionProviding-Protocol.h>
-
 @class NSArray, NSHashTable, NSString, RBSAssertionDescriptor, RBSAssertionIdentifier, RBSTarget;
 @protocol RBSServiceLocalProtocol;
 
-@interface RBSAssertion : NSObject <BSDescriptionProviding>
+@interface RBSAssertion : NSObject
 {
     NSHashTable *_observers;
     CDUnknownBlockType _invalidationHandler;
@@ -23,22 +21,16 @@
 }
 
 @property (readonly, copy, nonatomic) NSArray *attributes;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) RBSAssertionDescriptor *descriptor;
 @property (readonly, copy, nonatomic) NSString *explanation;
-@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) RBSAssertionIdentifier *identifier;
 @property (readonly, nonatomic) unsigned long long state;
-@property (readonly) Class superclass;
 @property (readonly, nonatomic) RBSTarget *target;
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 - (void).cxx_destruct;
-- (BOOL)_clientInvalidateWithError:(out id *)arg1;
 - (id)_initWithDescriptor:(id)arg1 service:(id)arg2;
 - (id)_initWithServerValidatedDescriptor:(id)arg1;
-- (id)_observers;
 - (void)_serverDidChangeIdentifier:(id)arg1;
 - (void)_serverInvalidateWithError:(id)arg1;
 - (void)_serverWillInvalidate;
@@ -46,8 +38,8 @@
 - (oneway void)acquireWithInvalidationHandler:(CDUnknownBlockType)arg1;
 - (void)addObserver:(id)arg1;
 - (void)dealloc;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)debugDescription;
+- (id)description;
 - (id)init;
 - (id)initWithExplanation:(id)arg1 target:(id)arg2 attributes:(id)arg3;
 - (oneway void)invalidate;
@@ -55,8 +47,6 @@
 - (void)removeObserver:(id)arg1;
 - (void)setExpirationWarningHandler:(CDUnknownBlockType)arg1;
 - (void)setInvalidationHandler:(CDUnknownBlockType)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

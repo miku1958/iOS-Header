@@ -16,10 +16,12 @@
     long long _source;
     NSString *_sourceIdentifier;
     NSString *_variant;
+    NSString *_displayString;
     struct CGRect _cropRect;
 }
 
 @property (readonly, nonatomic) struct CGRect cropRect; // @synthesize cropRect=_cropRect;
+@property (strong, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) NSData *imageData; // @synthesize imageData=_imageData;
 @property (readonly, nonatomic) NSDate *lastUsedDate; // @synthesize lastUsedDate=_lastUsedDate;

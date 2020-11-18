@@ -17,6 +17,7 @@
     BOOL _allowsFallbackToExpiredStatus;
     BOOL _allowsFallbackToStatusNeedingReload;
     BOOL _shouldReturnLastKnownStatusOnly;
+    BOOL _shouldBypassEnforcementOfPrivacyAcknowledgement;
     ICStoreRequestContext *_storeRequestContext;
     long long _reason;
     long long _carrierBundleProvisioningStyle;
@@ -28,6 +29,7 @@
 @property (nonatomic) long long carrierBundleProvisioningStyle; // @synthesize carrierBundleProvisioningStyle=_carrierBundleProvisioningStyle;
 @property (nonatomic) long long reason; // @synthesize reason=_reason;
 @property (readonly, nonatomic) NSUUID *requestIdentifier; // @synthesize requestIdentifier=_requestIdentifier;
+@property (nonatomic) BOOL shouldBypassEnforcementOfPrivacyAcknowledgement; // @synthesize shouldBypassEnforcementOfPrivacyAcknowledgement=_shouldBypassEnforcementOfPrivacyAcknowledgement;
 @property (nonatomic) BOOL shouldIgnoreCache; // @synthesize shouldIgnoreCache=_shouldIgnoreCache;
 @property (nonatomic) BOOL shouldReturnLastKnownStatusOnly; // @synthesize shouldReturnLastKnownStatusOnly=_shouldReturnLastKnownStatusOnly;
 @property (copy, nonatomic) ICStoreRequestContext *storeRequestContext; // @synthesize storeRequestContext=_storeRequestContext;

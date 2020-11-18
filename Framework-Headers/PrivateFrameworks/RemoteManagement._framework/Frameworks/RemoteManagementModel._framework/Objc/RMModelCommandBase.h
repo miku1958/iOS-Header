@@ -12,11 +12,9 @@
 {
     NSString *_commandType;
     NSString *_commandIdentifier;
-    NSString *_commandDescription;
     RMModelAnyPayload *_commandPayload;
 }
 
-@property (copy, nonatomic) NSString *commandDescription; // @synthesize commandDescription=_commandDescription;
 @property (copy, nonatomic) NSString *commandIdentifier; // @synthesize commandIdentifier=_commandIdentifier;
 @property (copy, nonatomic) RMModelAnyPayload *commandPayload; // @synthesize commandPayload=_commandPayload;
 @property (copy, nonatomic) NSString *commandType; // @synthesize commandType=_commandType;

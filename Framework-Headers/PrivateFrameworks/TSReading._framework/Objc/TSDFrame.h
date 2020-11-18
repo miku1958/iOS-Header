@@ -58,7 +58,7 @@
 - (struct CGRect)p_coverageRectWithoutAdornment:(struct CGRect)arg1;
 - (struct CGSize)p_minimumRenderedSize;
 - (void)paintPath:(struct CGPath *)arg1 wantsInteriorStroke:(BOOL)arg2 inContext:(struct CGContext *)arg3 useFastDrawing:(BOOL)arg4;
-- (BOOL)prefersToApplyToCAShapeLayerDuringManipulation;
+- (BOOL)prefersToApplyToShapeRenderableDuringManipulation;
 - (BOOL)shouldRender;
 - (BOOL)shouldRenderForSizeIncludingCoverage:(struct CGSize)arg1;
 - (id)strokeByTransformingByTransform:(struct CGAffineTransform)arg1;

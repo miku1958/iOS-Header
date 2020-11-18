@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 @class _PASLock;
+@protocol OS_dispatch_queue;
 
 @interface PPPeopleSuggester : NSObject
 {
     _PASLock *_lock;
+    NSObject<OS_dispatch_queue> *_serialQueueForSweeping;
 }
 
 + (id)sharedInstance;

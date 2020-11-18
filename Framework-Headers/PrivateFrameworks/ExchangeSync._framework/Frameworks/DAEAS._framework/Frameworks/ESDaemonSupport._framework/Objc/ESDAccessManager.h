@@ -25,7 +25,6 @@
 - (id)_init;
 - (void)_setupServerConnection;
 - (void)addPersistentClientWithAccountID:(id)arg1 clientID:(id)arg2 watchedIDs:(id)arg3;
-- (void)dealloc;
 - (id)init;
 - (BOOL)isAccountID:(id)arg1 folderID:(id)arg2 watchedByClientBesides:(id)arg3;
 - (void)removeClient:(id)arg1;

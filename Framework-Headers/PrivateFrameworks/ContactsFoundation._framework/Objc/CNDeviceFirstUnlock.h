@@ -29,6 +29,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)removeUnlockHandlerWithIdentifier:(id)arg1;
+- (void)waitForAllOperationsToFinish;
 - (void)withHandlersLock_addHandlerWithIdentifier:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)withHandlersLock_cancelExistingOperationWithIdentifier:(id)arg1;
 - (void)withHandlersLock_registerForDeviceFirstUnlock;

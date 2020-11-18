@@ -6,10 +6,12 @@
 
 #import <UIKit/UICollectionViewController.h>
 
-@class IKViewElement, NSArray, NSIndexPath, UIView, UIViewController, _TVNeedsMoreContentEvaluator, _TVStackCollectionView;
+#import <TVMLKit/_TVCollectionViewing-Protocol.h>
+
+@class IKViewElement, NSArray, NSIndexPath, NSString, UIView, UIViewController, _TVNeedsMoreContentEvaluator, _TVStackCollectionView;
 @protocol _TVStackCollectionViewControllerDelegate;
 
-@interface _TVStackCollectionViewController : UICollectionViewController
+@interface _TVStackCollectionViewController : UICollectionViewController <_TVCollectionViewing>
 {
     NSArray *_viewControllers;
     NSArray *_stackSections;
@@ -27,7 +29,11 @@
 }
 
 @property (strong, nonatomic) _TVStackCollectionView *collectionView; // @dynamic collectionView;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<_TVStackCollectionViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
 - (void).cxx_destruct;
@@ -53,6 +59,8 @@
 - (id)indexPathForPreferredFocusedViewInCollectionView:(id)arg1;
 - (void)loadView;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (void)preloadCellsInRect:(struct CGRect)arg1;
+- (void)resetLastFocusedIndexPath;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

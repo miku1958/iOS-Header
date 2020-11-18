@@ -17,7 +17,8 @@
     NSArray *_recordSources;
     NSDictionary *_recordSourcesByRecordType;
     FCHeldRecords *_cachedRecords;
-    NSDictionary *_resultWidgetSectionConfigDictionary;
+    NSDictionary *_resultDefaultConfigurationDictionary;
+    NSDictionary *_resultSingleTagConfigurationDictionary;
     NSArray *_resultArticleIDs;
     NSArray *_resultArticleListIDs;
     NSDictionary *_resultHeldRecordsByType;
@@ -29,8 +30,9 @@
 @property (strong, nonatomic) NSDictionary *recordSourcesByRecordType; // @synthesize recordSourcesByRecordType=_recordSourcesByRecordType;
 @property (strong, nonatomic) NSArray *resultArticleIDs; // @synthesize resultArticleIDs=_resultArticleIDs;
 @property (strong, nonatomic) NSArray *resultArticleListIDs; // @synthesize resultArticleListIDs=_resultArticleListIDs;
+@property (strong, nonatomic) NSDictionary *resultDefaultConfigurationDictionary; // @synthesize resultDefaultConfigurationDictionary=_resultDefaultConfigurationDictionary;
 @property (strong, nonatomic) NSDictionary *resultHeldRecordsByType; // @synthesize resultHeldRecordsByType=_resultHeldRecordsByType;
-@property (strong, nonatomic) NSDictionary *resultWidgetSectionConfigDictionary; // @synthesize resultWidgetSectionConfigDictionary=_resultWidgetSectionConfigDictionary;
+@property (strong, nonatomic) NSDictionary *resultSingleTagConfigurationDictionary; // @synthesize resultSingleTagConfigurationDictionary=_resultSingleTagConfigurationDictionary;
 @property (copy, nonatomic) CDUnknownBlockType widgetConfigDataCompletionHandler; // @synthesize widgetConfigDataCompletionHandler=_widgetConfigDataCompletionHandler;
 @property (copy, nonatomic) NSDictionary *widgetConfiguration; // @synthesize widgetConfiguration=_widgetConfiguration;
 

@@ -18,10 +18,10 @@
     PHRelationshipChangeRequestHelper *_customKeyAssetHelper;
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *assetsHelper; // @synthesize assetsHelper=_assetsHelper;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *customKeyAssetHelper; // @synthesize customKeyAssetHelper=_customKeyAssetHelper;
 @property (nonatomic) BOOL customSortAscending;
 @property (nonatomic) unsigned int customSortKey;
@@ -34,6 +34,7 @@
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (strong, nonatomic) PHAssetCollection *originalAssetCollection; // @synthesize originalAssetCollection=_originalAssetCollection;
 @property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedAssetCollection;
+@property (nonatomic) BOOL shouldPerformConcurrentWork;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title;
 
@@ -67,8 +68,6 @@
 - (void)insertAssets:(id)arg1 atIndexes:(id)arg2;
 - (BOOL)isPinned;
 - (void)moveAssetsAtIndexes:(id)arg1 toIndex:(unsigned long long)arg2;
-- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (void)removeAsset:(id)arg1;
 - (void)removeAssetFromAssetsAtIndex:(unsigned long long)arg1;
 - (void)removeAssets:(id)arg1;

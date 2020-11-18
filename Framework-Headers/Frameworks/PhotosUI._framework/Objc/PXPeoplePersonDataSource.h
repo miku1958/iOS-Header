@@ -13,7 +13,7 @@
 @interface PXPeoplePersonDataSource : PXPeopleDataSource <PHPhotoLibraryChangeObserver>
 {
     PXPeopleFaceTileImageManager *_imageManager;
-    NSMutableDictionary *_keyFacesByPersons;
+    NSMutableDictionary *_keyFaceByPersonLocalIdentifier;
     NSDictionary *_assetsByFaces;
     unsigned long long _personFetchType;
 }

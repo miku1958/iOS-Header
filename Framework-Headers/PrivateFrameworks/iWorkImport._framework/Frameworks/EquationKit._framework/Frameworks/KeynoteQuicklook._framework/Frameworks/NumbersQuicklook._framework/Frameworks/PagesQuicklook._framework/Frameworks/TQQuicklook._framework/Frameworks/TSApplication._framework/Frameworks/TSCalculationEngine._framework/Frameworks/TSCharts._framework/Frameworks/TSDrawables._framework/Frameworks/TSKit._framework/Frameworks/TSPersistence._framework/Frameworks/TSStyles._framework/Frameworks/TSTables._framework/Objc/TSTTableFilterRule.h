@@ -28,7 +28,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeToArchive:(struct FilterRuleArchive *)arg1 archiver:(id)arg2;
-- (struct TSCEFormula *)formula;
+- (id)formula;
 - (unsigned long long)hash;
 - (id)initFromArchive:(const struct FilterRuleArchive *)arg1;
 - (id)initRuleWhereValuesInTable:(id)arg1 inBaseColumn:(struct TSUModelColumnIndex)arg2 matchCell:(id)arg3;

@@ -18,7 +18,7 @@
 - (oneway void)buttonDownFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 timestamp:(SASTimeIntervalTransport *)arg2;
 - (oneway void)buttonLongPressFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 context:(SiriLongPressButtonContext *)arg2;
 - (oneway void)buttonTapFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1;
-- (oneway void)buttonUpFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 timestamp:(SASTimeIntervalTransport *)arg2;
+- (oneway void)buttonUpFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 deviceIdentifier:(NSString *)arg2 timestamp:(SASTimeIntervalTransport *)arg3;
 - (oneway void)cancelPrewarmFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1;
 - (oneway void)deactivationRequestFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1 context:(SiriContext *)arg2 options:(SiriDismissalOptions *)arg3;
 - (oneway void)prewarmFromButtonIdentifier:(SASButtonIdentifierTransport *)arg1;

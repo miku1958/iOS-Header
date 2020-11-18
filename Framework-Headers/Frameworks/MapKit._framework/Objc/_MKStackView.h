@@ -29,6 +29,7 @@
 - (void)addSubview:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setStackedSubviews:(id)arg1 animated:(BOOL)arg2;
+- (void)setStackedSubviews:(id)arg1 animated:(BOOL)arg2 isNeedLayout:(BOOL)arg3;
 
 @end
 

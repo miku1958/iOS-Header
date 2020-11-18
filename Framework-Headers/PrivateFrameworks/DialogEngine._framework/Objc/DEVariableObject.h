@@ -15,6 +15,7 @@
 - (id)getValues;
 - (id)init;
 - (id)initWithName:(id)arg1;
+- (id)initWithSharedPtr:(shared_ptr_695b9c0c *)arg1;
 
 @end
 

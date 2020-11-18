@@ -43,7 +43,9 @@ __attribute__((visibility("hidden")))
 - (id)previewFrameImageIdentifier;
 - (id)rentalExpirationDate;
 - (id)resolution;
+- (id)seasonCanonicalID;
 - (id)seasonIdentifier;
+- (id)showCanonicalID;
 - (id)showIdentifier;
 - (id)studio;
 

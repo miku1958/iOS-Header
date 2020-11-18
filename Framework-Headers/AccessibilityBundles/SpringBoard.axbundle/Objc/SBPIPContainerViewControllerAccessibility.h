@@ -14,17 +14,19 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_actuallyHandlePanRotationPinchGestureEndedState;
 - (id)_announcementStringForQuadrant:(int)arg1;
 - (BOOL)_axExpandPIPWindow;
 - (BOOL)_axShrinkPIPWindow;
+- (BOOL)_axStashPIPWindow;
 - (void)_axTagSBInteractionPassThroughView;
-- (void)_handlePanGesture:(id)arg1;
 - (void)_postAnnoucement:(id)arg1;
 - (int)_quadrantForContentView;
 - (BOOL)accessibilityActivate;
 - (id)accessibilityCustomActions;
+- (void)interactionControllerDidEndAllInteractions:(id)arg1;
 - (void)loadView;
+- (void)setNeedsLayoutForInteractionController:(id)arg1 traits:(unsigned long long)arg2 withReason:(unsigned long long)arg3 behavior:(int)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setStashState:(long long)arg1;
 
 @end
 

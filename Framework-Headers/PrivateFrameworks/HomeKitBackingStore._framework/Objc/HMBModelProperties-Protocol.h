@@ -7,8 +7,6 @@
 @class NSString;
 
 @protocol HMBModelProperties
-+ (BOOL)hmbShouldLogPrivateInformation;
-+ (void)setHmbShouldLogPrivateInformation:(BOOL)arg1;
 - (id)hmbDefaultValueForPropertyNamed:(NSString *)arg1;
 - (BOOL)hmbPropertyIsAvailable:(NSString *)arg1;
 - (BOOL)hmbPropertyIsReadOnly:(NSString *)arg1;

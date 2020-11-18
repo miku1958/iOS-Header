@@ -65,7 +65,7 @@
 - (void)_resolvedIdentifier:(id)arg1 forResponse:(id)arg2;
 - (void)_resolvedIdentifierForRequest:(id)arg1;
 - (void)_sendEndSessionAndError:(id)arg1;
-- (void)_sendSyncBatch:(id)arg1 nextState:(long long)arg2;
+- (void)_sendSyncBatch:(id)arg1 nextState:(unsigned int)arg2;
 - (void)_sendSyncCancelled;
 - (void)_sendSyncCompleteAndRunBlock:(CDUnknownBlockType)arg1;
 - (void)_sendSyncRestart;
@@ -77,7 +77,7 @@
 - (void)_setComplete;
 - (void)_setLocalErrorOccurred;
 - (void)_setMessageTimer;
-- (void)_setStateQuietly:(long long)arg1;
+- (void)_setStateQuietly:(unsigned int)arg1;
 - (void)_setupChangeConcurrency;
 - (void)_startFailedForStateChangeWithError:(id)arg1;
 - (void)_tweakMessageHeader:(id)arg1;
@@ -91,9 +91,9 @@
 - (double)remainingSessionTime;
 - (void)setCanRestart:(BOOL)arg1;
 - (void)setCanRollback:(BOOL)arg1;
-- (void)setState:(long long)arg1;
+- (void)setState:(unsigned int)arg1;
 - (void)start:(CDUnknownBlockType)arg1;
-- (long long)state;
+- (unsigned int)state;
 - (BOOL)wasCancelled;
 
 @end

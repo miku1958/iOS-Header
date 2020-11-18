@@ -96,6 +96,7 @@ struct jetsam_snapshot_entry {
     unsigned long long _field25;
     struct timeval64 _field26;
     unsigned long long _field27;
+    unsigned long long _field28;
 };
 
 struct kcdata_item;

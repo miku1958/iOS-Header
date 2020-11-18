@@ -56,7 +56,7 @@
 - (void).cxx_destruct;
 - (struct CGSize)_aspectFitToSize:(struct CGSize)arg1 scaleToSize:(struct CGSize)arg2 aspectRatio:(double)arg3;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (double)focusSizeIncrease;
+- (double)defaultFocusSizeIncrease;
 - (id)init;
 
 @end

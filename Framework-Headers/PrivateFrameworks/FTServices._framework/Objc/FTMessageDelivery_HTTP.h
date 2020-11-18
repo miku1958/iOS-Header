@@ -39,6 +39,7 @@
 - (void)cancelMessage:(id)arg1;
 - (void)dealloc;
 - (id)init;
+- (id)initWithIDSServerBag:(id)arg1;
 - (id)initWithIDSServerBag:(id)arg1 iMessageServerBag:(id)arg2 remoteConnectionFactory:(id)arg3 mobileNetworkManager:(id)arg4 retryBackoffProvider:(CDUnknownBlockType)arg5;
 - (void)invalidate;
 - (void)networkStateChanged;

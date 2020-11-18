@@ -62,8 +62,7 @@ struct ccsrp_ctx {
         unsigned int :1;
         unsigned int :16;
     } _field4;
-    unsigned char _field5[7];
-    unsigned long long _field6[1];
+    unsigned long long _field5[1];
 };
 
 struct cczp_funcs;

@@ -21,16 +21,27 @@
     OBTrayButton *_continueButton;
     OBLinkTrayButton *_customizeButton;
     HUPersonalRequestsEditorItemManager *_prEditorItemManager;
-    NSArray *_supportedMultiUserLanguages;
+    NSArray *_supportedVoiceRecognitionLanguages;
     NSArray *_homeAssistantDevicesHavingLanguageMismatch;
     HMHome *_home;
+    NSString *_titleString;
+    NSString *_detailsString;
+    NSString *_continueButtonString;
+    SEL _continueSelector;
+    NSString *_customizeButtonString;
+    SEL _customizeSelector;
 }
 
 @property (strong, nonatomic) OBTrayButton *continueButton; // @synthesize continueButton=_continueButton;
+@property (nonatomic) NSString *continueButtonString; // @synthesize continueButtonString=_continueButtonString;
+@property (nonatomic) SEL continueSelector; // @synthesize continueSelector=_continueSelector;
 @property (strong, nonatomic) OBLinkTrayButton *customizeButton; // @synthesize customizeButton=_customizeButton;
+@property (nonatomic) NSString *customizeButtonString; // @synthesize customizeButtonString=_customizeButtonString;
+@property (nonatomic) SEL customizeSelector; // @synthesize customizeSelector=_customizeSelector;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUConfigurationViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) NSString *detailsString; // @synthesize detailsString=_detailsString;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) NSArray *homeAssistantDevicesHavingLanguageMismatch; // @synthesize homeAssistantDevicesHavingLanguageMismatch=_homeAssistantDevicesHavingLanguageMismatch;
@@ -39,7 +50,8 @@
 @property (strong, nonatomic) HUPersonalRequestsEditorItemManager *prEditorItemManager; // @synthesize prEditorItemManager=_prEditorItemManager;
 @property (nonatomic) BOOL shouldSetMultiUserIsEnabled; // @synthesize shouldSetMultiUserIsEnabled=_shouldSetMultiUserIsEnabled;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) NSArray *supportedMultiUserLanguages; // @synthesize supportedMultiUserLanguages=_supportedMultiUserLanguages;
+@property (strong, nonatomic) NSArray *supportedVoiceRecognitionLanguages; // @synthesize supportedVoiceRecognitionLanguages=_supportedVoiceRecognitionLanguages;
+@property (nonatomic) NSString *titleString; // @synthesize titleString=_titleString;
 
 - (void).cxx_destruct;
 - (void)_cancelLanguageSetup;

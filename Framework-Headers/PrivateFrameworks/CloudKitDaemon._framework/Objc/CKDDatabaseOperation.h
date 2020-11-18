@@ -22,7 +22,8 @@ __attribute__((visibility("hidden")))
 - (void)setPCSData:(id)arg1 forFetchedRecordID:(id)arg2;
 - (void)setPCSData:(id)arg1 forFetchedShareID:(id)arg2;
 - (void)setPCSData:(id)arg1 forFetchedZoneID:(id)arg2;
-- (void)spawnAndRunOperationOfClass:(Class)arg1 operationInfo:(id)arg2 spawnQueue:(id)arg3 operationConfigurationBlock:(CDUnknownBlockType)arg4;
+- (void)spawnAndRunOperationOfClass:(Class)arg1 operationInfo:(id)arg2 spawnQueue:(id)arg3 clientContext:(id)arg4 operationConfigurationBlock:(CDUnknownBlockType)arg5;
+- (BOOL)supportsClearAssetEncryption;
 
 @end
 

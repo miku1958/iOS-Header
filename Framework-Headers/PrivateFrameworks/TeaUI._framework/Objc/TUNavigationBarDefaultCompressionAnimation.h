@@ -13,6 +13,7 @@
 @interface TUNavigationBarDefaultCompressionAnimation : NSObject <TUBarCompressionAnimating>
 {
     BOOL shouldCompressAtTop;
+    BOOL shouldCloseGapOnScroll;
     BOOL _hideTitleOnTop;
     BOOL _compressTitleView;
     double topOffset;
@@ -28,6 +29,7 @@
 @property (readonly, nonatomic) UINavigationBar *navigationBar; // @synthesize navigationBar=_navigationBar;
 @property (strong, nonatomic) TUAnimationFloatFunction *opacityFunction; // @synthesize opacityFunction=_opacityFunction;
 @property (strong, nonatomic) TUAnimationFloatFunction *scaleFunction; // @synthesize scaleFunction=_scaleFunction;
+@property (readonly, nonatomic) BOOL shouldCloseGapOnScroll; // @synthesize shouldCloseGapOnScroll;
 @property (readonly, nonatomic) BOOL shouldCompressAtTop; // @synthesize shouldCompressAtTop;
 @property (strong, nonatomic) UIView *titleView; // @synthesize titleView=_titleView;
 @property (nonatomic) double topOffset; // @synthesize topOffset;

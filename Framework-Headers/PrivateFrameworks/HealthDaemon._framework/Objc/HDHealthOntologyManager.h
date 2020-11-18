@@ -43,7 +43,7 @@
 + (void)obliterateWithProfile:(id)arg1 reason:(id)arg2;
 - (void).cxx_destruct;
 - (id)_conceptWithGraphDatabaseCall:(CDUnknownBlockType)arg1 error:(id *)arg2;
-- (id)_conceptsWithGraphDatabaseCall:(CDUnknownBlockType)arg1 error:(id *)arg2;
+- (id)_conceptsWithGraphDatabaseCall:(CDUnknownBlockType)arg1 loadRelationships:(BOOL)arg2 error:(id *)arg3;
 - (id)_conceptsWithRelationship:(id)arg1 toNodeWithID:(id)arg2 reversed:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)_createOntologyDirectoryIfNecessaryWithError:(id *)arg1;
 - (id)_graphDatabaseUserVersionImplementation:(id)arg1 error:(id *)arg2;
@@ -57,33 +57,31 @@
 - (void)_queue_clearCache;
 - (void)_queue_clearCachedConceptWithIdentifier:(id)arg1;
 - (void)_queue_closeDatabase;
-- (id)_queue_conceptsWithGraphDatabaseCall:(CDUnknownBlockType)arg1 error:(id *)arg2;
+- (id)_queue_conceptsWithGraphDatabaseCall:(CDUnknownBlockType)arg1 loadRelationships:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)_queue_copyEmbeddedReferenceOntology;
 - (void)_queue_createAndInitializeIfNeeded;
 - (id)_queue_graphDatabase;
 - (id)_queue_graphDatabaseUserVersionWithError:(id *)arg1;
-- (long long)_queue_graphDatabaseVersion;
+- (long long)_queue_graphDatabaseVersionWithError:(id *)arg1;
 - (BOOL)_queue_importReferenceOntology;
 - (BOOL)_queue_insertRawAttributeIntoDatabase:(id)arg1 valueString:(id)arg2;
 - (BOOL)_queue_insertRawRelationshipIntoDatabase:(id)arg1 valueString:(id)arg2;
 - (BOOL)_queue_insertTwoItemRawOntologyValueIntoDatabase:(id)arg1 table:(id)arg2 valueString:(id)arg3;
 - (id)_referenceOntologyFileURL;
-- (id)_work_conceptFromGraphNode:(id)arg1 preloadRelationships:(BOOL)arg2;
+- (id)_work_conceptFromGraphNode:(id)arg1 preloadRelationships:(BOOL)arg2 error:(id *)arg3;
 - (id)_work_graphDatabase:(id)arg1 findConceptForCoding:(id)arg2 error:(id *)arg3;
 - (id)_work_graphDatabase:(id)arg1 findConceptsForCodings:(id)arg2 error:(id *)arg3;
 - (BOOL)_work_graphDatabase:(id)arg1 insertConcept:(id)arg2 error:(id *)arg3;
 - (id)_work_graphDatabase:(id)arg1 newConceptIdentifierWithName:(id)arg2 error:(id *)arg3;
 - (id)_work_graphDatabase:(id)arg1 resolveMercuryConceptForCodings:(id)arg2 country:(id)arg3 error:(id *)arg4;
-- (BOOL)_work_node:(id)arg1 addAttributeWithCoding:(id)arg2 error:(id *)arg3;
 - (id)allAssociatedConceptsWithError:(id *)arg1;
 - (BOOL)breakAssociationFromSampleUUID:(id)arg1 toConcept:(id)arg2 error:(id *)arg3;
-- (id)conceptForContext:(id)arg1;
-- (id)conceptForIdentifier:(id)arg1 error:(id *)arg2;
+- (id)conceptForCodingCollection:(id)arg1 country:(id)arg2;
+- (id)conceptForIdentifier:(id)arg1 loadRelationships:(BOOL)arg2 error:(id *)arg3;
 - (id)conceptForName:(id)arg1 error:(id *)arg2;
 - (id)conceptsAssociatedWithSample:(id)arg1 error:(id *)arg2;
 - (id)conceptsAssociatedWithSampleUUID:(id)arg1 error:(id *)arg2;
-- (id)conceptsContainingAttribute:(long long)arg1 withValue:(id)arg2 error:(id *)arg3;
-- (id)conceptsForIdentifiers:(id)arg1 expectedOntologyVersion:(id)arg2 error:(id *)arg3;
+- (id)conceptsForIdentifiers:(id)arg1 expectedOntologyVersion:(id)arg2 loadRelationships:(BOOL)arg3 error:(id *)arg4;
 - (id)conceptsWithRelationship:(id)arg1 fromNodeWithID:(id)arg2 error:(id *)arg3;
 - (id)conceptsWithRelationship:(id)arg1 toNodeWithID:(id)arg2 error:(id *)arg3;
 - (long long)countOfConceptsAssociatedWithUserRecords:(id *)arg1;
@@ -100,9 +98,8 @@
 - (void)invalidateAndWait;
 - (BOOL)makeAssociationFromSampleUUID:(id)arg1 toConcept:(id)arg2 error:(id *)arg3;
 - (BOOL)makeAssociationFromSampleUUID:(id)arg1 toConceptIdentifier:(id)arg2 error:(id *)arg3;
-- (id)nameForCodingSystem:(long long)arg1 value:(id)arg2 error:(id *)arg3;
 - (void)obliterateWithReason:(id)arg1;
-- (BOOL)performGraphDatabaseWork:(CDUnknownBlockType)arg1 usingTransaction:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)performGraphDatabaseWork:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (void)registerObserver:(id)arg1;
 - (id)relationshipsForConceptWithIdentifier:(id)arg1 error:(id *)arg2;
 - (BOOL)removeAllAssociationsToSampleUUID:(id)arg1 error:(id *)arg2;
@@ -112,6 +109,7 @@
 - (BOOL)useEmbeddedOntologyAsset;
 - (id)userVersionWithError:(id *)arg1;
 - (id)versionWithError:(id *)arg1;
+- (id)work_relationshipsForConceptWithIdentifier:(id)arg1 error:(id *)arg2;
 
 @end
 

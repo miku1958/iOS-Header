@@ -20,6 +20,7 @@
     MISSING_TYPE *tracker;
     MISSING_TYPE *bundlePaywallViewModelFactory;
     MISSING_TYPE *alacartePaywallViewModelFactory;
+    MISSING_TYPE *offerManager;
 }
 
 @end

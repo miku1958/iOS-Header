@@ -17,6 +17,7 @@
 @property (readonly) id objectValue;
 
 - (void).cxx_destruct;
+- (void)accessLazyObjectAtomically:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithBlock:(CDUnknownBlockType)arg1;
 - (id)initWithObject:(id)arg1;

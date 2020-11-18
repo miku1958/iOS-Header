@@ -20,7 +20,8 @@
 + (id)interestingSceneNames;
 + (id)junkSceneNames;
 + (id)junkSceneNamesLegacy;
-+ (id)sceneNameBySceneLabel;
++ (id)sceneNamesBySceneLabel;
++ (id)sceneNamesWithSceneLabel:(id)arg1;
 + (id)sharedSceneMatcher;
 + (id)whiteboardSceneNames;
 - (void).cxx_destruct;

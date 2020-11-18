@@ -14,8 +14,10 @@
     WFWorkflowRecord *_record;
     NSString *_identifier;
     unsigned long long _location;
+    NSString *_collectionIdentifier;
 }
 
+@property (copy, nonatomic) NSString *collectionIdentifier; // @synthesize collectionIdentifier=_collectionIdentifier;
 @property (nonatomic) BOOL deleted; // @synthesize deleted=_deleted;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) unsigned long long location; // @synthesize location=_location;

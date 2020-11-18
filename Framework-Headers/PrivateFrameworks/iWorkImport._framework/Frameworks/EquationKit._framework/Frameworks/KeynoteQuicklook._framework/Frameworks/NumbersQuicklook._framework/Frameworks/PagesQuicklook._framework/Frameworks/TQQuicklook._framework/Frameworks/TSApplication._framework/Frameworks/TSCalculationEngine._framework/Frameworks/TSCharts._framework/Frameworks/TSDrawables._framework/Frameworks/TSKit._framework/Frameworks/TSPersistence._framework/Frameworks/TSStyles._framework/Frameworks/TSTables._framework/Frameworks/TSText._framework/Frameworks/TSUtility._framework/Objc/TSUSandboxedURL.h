@@ -24,7 +24,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isDocumentUploaded;
 @property (readonly) BOOL isQuotaErrorPreventingUpload;
-@property (readonly) BOOL isShared;
 @property (readonly) BOOL isUbiquitous;
 @property (readonly) TSUSandboxedURL *sandboxedURL;
 @property (readonly) Class superclass;
@@ -38,7 +37,8 @@
 - (id)init;
 - (id)initWithURL:(id)arg1;
 - (BOOL)isDocumentUploaded:(out BOOL *)arg1 error:(id *)arg2;
-- (BOOL)isShared:(out BOOL *)arg1 error:(id *)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isShared:(out BOOL *)arg1 logContext:(id)arg2 error:(id *)arg3;
 - (BOOL)isUbiquitous:(out BOOL *)arg1 error:(id *)arg2;
 - (BOOL)isUbiquitous:(out BOOL *)arg1 promised:(BOOL)arg2 error:(id *)arg3;
 - (BOOL)isUbiquitousPromised:(BOOL)arg1;

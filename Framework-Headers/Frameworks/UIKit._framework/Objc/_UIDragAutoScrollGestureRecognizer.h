@@ -6,18 +6,27 @@
 
 #import <UIKitCore/UIDragGestureRecognizer.h>
 
+#import <UIKitCore/_UIDragEventRespondable-Protocol.h>
+
+@class NSString;
+
 __attribute__((visibility("hidden")))
-@interface _UIDragAutoScrollGestureRecognizer : UIDragGestureRecognizer
+@interface _UIDragAutoScrollGestureRecognizer : UIDragGestureRecognizer <_UIDragEventRespondable>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void)_draggingEndedWithEvent:(id)arg1;
 - (void)_draggingEnteredWithEvent:(id)arg1;
 - (void)_draggingExitedWithEvent:(id)arg1;
 - (void)_draggingUpdatedWithEvent:(id)arg1;
-- (BOOL)_shouldReceiveDragEvent:(id)arg1;
 - (BOOL)canBePreventedByGestureRecognizer:(id)arg1;
 - (BOOL)canPreventGestureRecognizer:(id)arg1;
+- (BOOL)shouldReceiveEvent:(id)arg1;
 
 @end
 

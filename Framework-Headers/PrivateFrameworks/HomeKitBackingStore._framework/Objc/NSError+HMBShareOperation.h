@@ -26,7 +26,9 @@
 + (id)hmbErrorWithSQLite3Context:(struct sqlite3 *)arg1 statement:(const char *)arg2;
 + (id)hmbErrorWithSQLite3Statement:(struct sqlite3_stmt *)arg1;
 + (id)hmbErrorWithSQLite3Status:(int)arg1;
++ (BOOL)hmbIsUnretriableCKInternalErrorCode:(long long)arg1;
 + (id)hmbRetryShareOperationError;
-- (id)hmbConciseCKError;
+- (id)hmbCKInternalError;
+- (BOOL)hmbIsCloudKitInternalError;
 @end
 

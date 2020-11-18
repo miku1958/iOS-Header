@@ -24,6 +24,7 @@
 @property (readonly) BOOL deleted;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isFilePresenter;
 @property (readonly) BOOL isLikelyOnExternalStorage;
 @property (readonly) BOOL isLikelyOnRemovedMedia;
 @property (readonly, nonatomic) BOOL isValid;

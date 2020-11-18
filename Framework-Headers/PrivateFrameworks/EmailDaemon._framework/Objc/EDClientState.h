@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <EmailDaemon/EDForegroundReporting-Protocol.h>
+#import <EmailDaemon/EDClientStateReporting-Protocol.h>
 #import <EmailDaemon/EFLoggable-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface EDClientState : NSObject <EDForegroundReporting, EFLoggable>
+@interface EDClientState : NSObject <EDClientStateReporting, EFLoggable>
 {
     BOOL _isForeground;
+    BOOL _isRunningTests;
     NSArray *_visibleMailboxesObjectIds;
 }
 
@@ -21,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isForeground; // @synthesize isForeground=_isForeground;
+@property (nonatomic) BOOL isRunningTests; // @synthesize isRunningTests=_isRunningTests;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSArray *visibleMailboxesObjectIds; // @synthesize visibleMailboxesObjectIds=_visibleMailboxesObjectIds;
 
@@ -31,6 +33,7 @@
 - (id)giveBoostWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)setClientIsInForeground:(BOOL)arg1;
+- (void)setClientIsRunningTests:(BOOL)arg1;
 - (void)setCurrentlyVisibleMailboxObjectIDs:(id)arg1;
 
 @end

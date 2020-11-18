@@ -12,6 +12,7 @@
 
 @interface HUGridFlowLayout : UICollectionViewFlowLayout <HUControllableCollectionViewLayout>
 {
+    BOOL _shouldFlipForRTL;
     HUGridLayoutOptions *_layoutOptions;
     HUWallpaperView *_wallpaperView;
     HFWallpaperSlice *_blurredWallpaperSlice;
@@ -32,6 +33,7 @@
 @property (strong, nonatomic) HUGridLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property (readonly, nonatomic) NSMutableDictionary *overrideAttributesByIndexPath; // @synthesize overrideAttributesByIndexPath=_overrideAttributesByIndexPath;
 @property (weak, nonatomic) HUGridFlowLayout *parentGridLayout; // @synthesize parentGridLayout=_parentGridLayout;
+@property (readonly, nonatomic) BOOL shouldFlipForRTL; // @synthesize shouldFlipForRTL=_shouldFlipForRTL;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) HUWallpaperView *wallpaperView; // @synthesize wallpaperView=_wallpaperView;
 
@@ -42,7 +44,9 @@
 - (void)applyOverrideAttributes:(id)arg1 toItem:(id)arg2 atIndexPath:(id)arg3;
 - (void)clearAllOverrideAttributesForItems:(id)arg1;
 - (void)clearOverrideAttributesForItem:(id)arg1 atIndexPath:(id)arg2;
+- (BOOL)flipsHorizontallyInOppositeLayoutDirection;
 - (id)init;
+- (id)initForRTL:(BOOL)arg1;
 - (void)invalidateLayout;
 - (id)layoutAttributesForElementsInRect:(struct CGRect)arg1;
 - (id)layoutAttributesForInteractivelyMovingItemAtIndexPath:(id)arg1 withTargetPosition:(struct CGPoint)arg2;

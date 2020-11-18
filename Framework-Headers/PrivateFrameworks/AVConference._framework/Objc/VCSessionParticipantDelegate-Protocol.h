@@ -11,7 +11,7 @@
 @protocol VCSessionParticipantDelegate <NSObject>
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 audioEnabled:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(NSError *)arg4;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 audioPaused:(BOOL)arg2 didSucceed:(BOOL)arg3 error:(NSError *)arg4;
-- (void)vcSessionParticipant:(VCSessionParticipant *)arg1 didChangeProminence:(unsigned char)arg2 description:(NSString *)arg3;
+- (void)vcSessionParticipant:(VCSessionParticipant *)arg1 didChangeMediaPriority:(unsigned char)arg2 description:(NSString *)arg3;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 didDetectError:(NSError *)arg2;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 didRequestVideoRedundancy:(BOOL)arg2;
 - (void)vcSessionParticipant:(VCSessionParticipant *)arg1 didSwitchFromStreamID:(unsigned short)arg2 toStreamID:(unsigned short)arg3;

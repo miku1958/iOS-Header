@@ -10,17 +10,19 @@
 {
 }
 
-+ (double)averageDistanceForEdge:(struct Edge)arg1 withPoints:(const vector_e1abc270 *)arg2;
-+ (id)catmullRomForHull:(const vector_e1abc270 *)arg1 alpha:(double)arg2;
-+ (void)convexHull:(vector_e1abc270 *)arg1 forPoints:(vector_e1abc270)arg2;
++ (double)averageDistanceForEdge:(struct Edge)arg1 withPoints:(const vector_2e7754b6 *)arg2;
++ (id)bezierPathFromPoints:(const vector_2e7754b6 *)arg1;
++ (vector_2e7754b6)centripetalCatmullRomPointsFromConvexHull:(const vector_2e7754b6 *)arg1 alpha:(double)arg2 granularity:(double)arg3;
++ (void)convexHull:(vector_2e7754b6 *)arg1 forPoints:(const vector_2e7754b6 *)arg2;
 + (BOOL)edge:(struct Edge)arg1 intersectsEdge:(struct Edge)arg2;
-+ (struct Edge)longestEdgeInHull:(const vector_e1abc270 *)arg1 atIndex:(int *)arg2 visitedEdges:(const vector_93009049 *)arg3;
-+ (BOOL)newEdgeWithPoint:(struct CGPoint)arg1 betweenEdge:(struct Edge)arg2 intersectsOtherEdgesInHull:(const vector_e1abc270 *)arg3;
-+ (void)openConvexHullToConcave:(vector_e1abc270 *)arg1 points:(const vector_e1abc270 *)arg2;
-+ (struct CGPoint)pointWithMinAngleForEdge:(struct Edge)arg1 fromPoints:(const vector_e1abc270 *)arg2 minAngle:(double *)arg3;
-+ (void)smoothedHullForPoints:(vector_e1abc270)arg1 completion:(CDUnknownBlockType)arg2;
++ (struct Edge)longestEdgeInHull:(const vector_2e7754b6 *)arg1 atIndex:(int *)arg2 visitedEdges:(const vector_93009049 *)arg3;
++ (BOOL)newEdgeWithPoint:(struct CGPoint)arg1 betweenEdge:(struct Edge)arg2 intersectsOtherEdgesInHull:(const vector_2e7754b6 *)arg3;
++ (void)openConvexHullToConcave:(vector_2e7754b6 *)arg1 points:(const vector_2e7754b6 *)arg2 minAngleFactor:(double)arg3 maxLengthThreshold:(double)arg4 edgeRemovalConstant:(double)arg5;
++ (struct CGPoint)pointWithMinAngleForEdge:(struct Edge)arg1 fromPoints:(const vector_2e7754b6 *)arg2 minAngle:(double *)arg3;
++ (vector_2e7754b6)smoothedHullForPoints:(const vector_2e7754b6 *)arg1 alpha:(double)arg2 granularity:(double)arg3 minAngleFactor:(double)arg4 maxLengthThreshold:(double)arg5 edgeRemovalConstant:(double)arg6;
++ (void)smoothedHullForPoints:(const vector_2e7754b6 *)arg1 completion:(CDUnknownBlockType)arg2;
 + (BOOL)vector:(const vector_93009049 *)arg1 containsEdge:(struct Edge)arg2;
-+ (BOOL)vector:(const vector_e1abc270 *)arg1 containsPoint:(struct CGPoint)arg2;
++ (BOOL)vector:(const vector_2e7754b6 *)arg1 containsPoint:(struct CGPoint)arg2;
 
 @end
 

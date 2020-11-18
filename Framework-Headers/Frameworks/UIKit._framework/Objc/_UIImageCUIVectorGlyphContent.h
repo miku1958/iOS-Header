@@ -18,7 +18,6 @@ __attribute__((visibility("hidden")))
     struct CGSize _sizeInPixels;
 }
 
-@property (readonly) CUINamedVectorGlyph *_vectorGlyph;
 @property (nonatomic) double glyphScaleFactor; // @synthesize glyphScaleFactor=_glyphScaleFactor;
 
 - (void).cxx_destruct;

@@ -33,9 +33,9 @@
     BOOL _includeIsFlagged;
     BOOL _includePriority;
     BOOL _relevantWordTagsIncludeOtherWord;
-    BOOL _includeReminderTitleCategoryClosestWord;
-    BOOL _includeReminderTitleCategoryIntentionalWord;
-    BOOL _includeReminderTitleCategorySentenceAverage;
+    BOOL _includeReminderTitleCategoryFilteredStopWords;
+    BOOL _includeReminderTitleCategoryUniversalGrammar;
+    BOOL _includeReminderTitleCategorySentence2Vec;
     double _reminderTitleCategoryDistanceTolerance;
     NSURL *_reminderTitleCategoryEmbeddingURL;
     unsigned long long _dateResolutionInSeconds;
@@ -57,9 +57,9 @@
 @property (nonatomic) BOOL includePriority; // @synthesize includePriority=_includePriority;
 @property (nonatomic) BOOL includeRecurrenceInfo; // @synthesize includeRecurrenceInfo=_includeRecurrenceInfo;
 @property (nonatomic) BOOL includeRemindMeWhenMessagingInfo; // @synthesize includeRemindMeWhenMessagingInfo=_includeRemindMeWhenMessagingInfo;
-@property (nonatomic) BOOL includeReminderTitleCategoryClosestWord; // @synthesize includeReminderTitleCategoryClosestWord=_includeReminderTitleCategoryClosestWord;
-@property (nonatomic) BOOL includeReminderTitleCategoryIntentionalWord; // @synthesize includeReminderTitleCategoryIntentionalWord=_includeReminderTitleCategoryIntentionalWord;
-@property (nonatomic) BOOL includeReminderTitleCategorySentenceAverage; // @synthesize includeReminderTitleCategorySentenceAverage=_includeReminderTitleCategorySentenceAverage;
+@property (nonatomic) BOOL includeReminderTitleCategoryFilteredStopWords; // @synthesize includeReminderTitleCategoryFilteredStopWords=_includeReminderTitleCategoryFilteredStopWords;
+@property (nonatomic) BOOL includeReminderTitleCategorySentence2Vec; // @synthesize includeReminderTitleCategorySentence2Vec=_includeReminderTitleCategorySentence2Vec;
+@property (nonatomic) BOOL includeReminderTitleCategoryUniversalGrammar; // @synthesize includeReminderTitleCategoryUniversalGrammar=_includeReminderTitleCategoryUniversalGrammar;
 @property (nonatomic) BOOL includeReminderTitleFuzzedEmbeddings; // @synthesize includeReminderTitleFuzzedEmbeddings=_includeReminderTitleFuzzedEmbeddings;
 @property (nonatomic) BOOL includeReminderTitleSaltedHash; // @synthesize includeReminderTitleSaltedHash=_includeReminderTitleSaltedHash;
 @property (nonatomic) BOOL includeReminderTitles; // @synthesize includeReminderTitles=_includeReminderTitles;

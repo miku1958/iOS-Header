@@ -17,6 +17,8 @@
 - (void)drawInContext:(struct CGContext *)arg1;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
 - (BOOL)isOpaque;
+- (BOOL)masksToBounds;
+- (BOOL)shouldBeginScribbleAtPoint:(struct CGPoint)arg1;
 
 @end
 

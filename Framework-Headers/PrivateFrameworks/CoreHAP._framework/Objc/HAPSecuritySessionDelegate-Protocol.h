@@ -6,7 +6,7 @@
 
 #import <CoreHAP/NSObject-Protocol.h>
 
-@class HAPPairingIdentity, HAPSecuritySession, NSData, NSError, NSString;
+@class HAPPairingIdentity, HAPSecuritySession, NSArray, NSData, NSError, NSString;
 
 @protocol HAPSecuritySessionDelegate <NSObject>
 - (HAPPairingIdentity *)securitySession:(HAPSecuritySession *)arg1 didReceiveLocalPairingIdentityRequestWithError:(id *)arg2;
@@ -16,6 +16,7 @@
 @optional
 - (void)securitySession:(HAPSecuritySession *)arg1 didCloseWithError:(NSError *)arg2;
 - (void)securitySessionDidOpen:(HAPSecuritySession *)arg1;
+- (NSArray *)securitySessionDidRequestAdditionalDerivedKeyTuples:(HAPSecuritySession *)arg1;
 - (void)securitySessionIsOpening:(HAPSecuritySession *)arg1;
 @end
 

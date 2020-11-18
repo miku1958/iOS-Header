@@ -12,6 +12,7 @@
 
 @interface USApplicationUsageReport : NSObject <NSSecureCoding>
 {
+    BOOL _applicationUsageTrusted;
     NSString *_canonicalBundleIdentifier;
     double _totalUsageTime;
     NSDictionary *_applicationUsageByBundleIdentifier;
@@ -22,6 +23,7 @@
 
 @property (readonly, copy) NSDictionary *applicationUsageByBundleIdentifier; // @synthesize applicationUsageByBundleIdentifier=_applicationUsageByBundleIdentifier;
 @property (readonly) double applicationUsageTime;
+@property (readonly) BOOL applicationUsageTrusted; // @synthesize applicationUsageTrusted=_applicationUsageTrusted;
 @property (readonly, copy) NSString *bundleIdentifier;
 @property (readonly, copy) NSString *canonicalBundleIdentifier; // @synthesize canonicalBundleIdentifier=_canonicalBundleIdentifier;
 @property (copy) NSDictionary *pickupsByBundleIdentifier; // @synthesize pickupsByBundleIdentifier=_pickupsByBundleIdentifier;
@@ -33,10 +35,11 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_usApplicationUsageReportCommonInitWithCanonicalBundleIdentifier:(id)arg1 totalUsageTime:(double)arg2 applicationUsageByBundleIdentifier:(id)arg3 webUsageByDomain:(id)arg4 userNotificationsByBundleIdentifier:(id)arg5 pickupsByBundleIdentifier:(id)arg6;
+- (void)_usApplicationUsageReportCommonInitWithCanonicalBundleIdentifier:(id)arg1 applicationUsageTrusted:(BOOL)arg2 totalUsageTime:(double)arg3 applicationUsageByBundleIdentifier:(id)arg4 webUsageByDomain:(id)arg5 userNotificationsByBundleIdentifier:(id)arg6 pickupsByBundleIdentifier:(id)arg7;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithBundleIdentifier:(id)arg1 totalUsageTime:(double)arg2 applicationUsageTime:(double)arg3 webUsageByDomain:(id)arg4;
+- (id)initWithCanonicalBundleIdentifier:(id)arg1 applicationUsageTrusted:(BOOL)arg2 totalUsageTime:(double)arg3 applicationUsageByBundleIdentifier:(id)arg4 webUsageByDomain:(id)arg5 userNotificationsByBundleIdentifier:(id)arg6 pickupsByBundleIdentifier:(id)arg7;
 - (id)initWithCanonicalBundleIdentifier:(id)arg1 totalUsageTime:(double)arg2 applicationUsageByBundleIdentifier:(id)arg3 webUsageByDomain:(id)arg4 userNotificationsByBundleIdentifier:(id)arg5 pickupsByBundleIdentifier:(id)arg6;
 - (id)initWithCoder:(id)arg1;
 

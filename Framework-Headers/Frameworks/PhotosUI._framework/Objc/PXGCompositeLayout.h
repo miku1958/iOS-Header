@@ -39,6 +39,7 @@
 - (void)_updateSublayoutOfStylableType:(long long)arg1;
 - (void)_updateSublayouts;
 - (void)axGroup:(id)arg1 didChange:(unsigned long long)arg2 userInfo:(id)arg3;
+- (void)dealloc;
 - (void)didAddSublayout:(id)arg1 atIndex:(long long)arg2 flags:(unsigned long long)arg3;
 - (void)didApplySublayoutChangeDetails:(id)arg1 axAdjustedSubgroupChangeDetails:(id)arg2 countAfterChanges:(long long)arg3;
 - (id)init;
@@ -46,6 +47,7 @@
 - (void)insertSublayoutProvider:(id)arg1 inRange:(struct _NSRange)arg2;
 - (void)referenceSizeDidChange;
 - (void)screenScaleDidChange;
+- (void)scrollSpeedRegimeDidChange;
 - (void)setSublayoutIndex:(long long)arg1 forUniquelyStylableType:(long long)arg2 animated:(BOOL)arg3;
 - (void)sublayoutDidChangeContentSize:(id)arg1;
 - (void)sublayoutNeedsUpdate:(id)arg1;

@@ -8,13 +8,11 @@
 
 #import <MetalTools/MTLIndirectCommandBufferSPI-Protocol.h>
 
-@class MTLToolsPointerArray, NSString;
+@class NSString;
 @protocol MTLDevice, MTLHeap;
 
 @interface MTLToolsIndirectCommandBuffer : MTLToolsResource <MTLIndirectCommandBufferSPI>
 {
-    MTLToolsPointerArray *_indirectComputeCommand;
-    MTLToolsPointerArray *_indirectRenderCommand;
 }
 
 @property (readonly) unsigned long long allocatedSize;
@@ -22,26 +20,22 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device;
+@property (readonly, nonatomic) unsigned long long gpuAddress;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hazardTrackingMode;
 @property (readonly) id<MTLHeap> heap;
 @property (readonly) unsigned long long heapOffset;
-@property (readonly, nonatomic) MTLToolsPointerArray *indirectComputeCommand; // @synthesize indirectComputeCommand=_indirectComputeCommand;
-@property (readonly, nonatomic) MTLToolsPointerArray *indirectRenderCommand; // @synthesize indirectRenderCommand=_indirectRenderCommand;
 @property (copy) NSString *label;
-@property (nonatomic) unsigned long long resourceIndex; // @dynamic resourceIndex;
+@property (readonly, nonatomic) unsigned long long resourceIndex; // @dynamic resourceIndex;
 @property (readonly) unsigned long long resourceOptions;
 @property (readonly) unsigned long long size;
 @property (readonly) unsigned long long storageMode;
 @property (readonly) Class superclass;
 @property (readonly) unsigned long long uniqueIdentifier;
 
-- (void)acceptVisitor:(id)arg1;
-- (void)dealloc;
 - (void)getHeader:(void **)arg1 headerSize:(unsigned long long *)arg2;
 - (id)indirectComputeCommandAtIndex:(unsigned long long)arg1;
 - (id)indirectRenderCommandAtIndex:(unsigned long long)arg1;
-- (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
 - (void)resetWithRange:(struct _NSRange)arg1;
 
 @end

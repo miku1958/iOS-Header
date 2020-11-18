@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPFeedbackConversation, GEORPFeedbackNotification, GEORPFeedbackOverview, PBDataReader, PBUnknownFields;
+@class GEORPFeedbackConversation, GEORPFeedbackNotification, GEORPFeedbackOverview, GEORPPoiEnrichment, PBDataReader, PBUnknownFields;
 
 @interface GEORPFeedbackComponentValue : PBCodable <NSCopying>
 {
@@ -17,6 +17,7 @@
     GEORPFeedbackConversation *_conversation;
     GEORPFeedbackNotification *_notification;
     GEORPFeedbackOverview *_overview;
+    GEORPPoiEnrichment *_poiEnrichment;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -25,10 +26,8 @@
         unsigned int read_conversation:1;
         unsigned int read_notification:1;
         unsigned int read_overview:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_conversation:1;
-        unsigned int wrote_notification:1;
-        unsigned int wrote_overview:1;
+        unsigned int read_poiEnrichment:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -36,15 +35,14 @@
 @property (readonly, nonatomic) BOOL hasConversation;
 @property (readonly, nonatomic) BOOL hasNotification;
 @property (readonly, nonatomic) BOOL hasOverview;
+@property (readonly, nonatomic) BOOL hasPoiEnrichment;
 @property (strong, nonatomic) GEORPFeedbackNotification *notification;
 @property (strong, nonatomic) GEORPFeedbackOverview *overview;
+@property (strong, nonatomic) GEORPPoiEnrichment *poiEnrichment;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readConversation;
-- (void)_readNotification;
-- (void)_readOverview;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -53,7 +51,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

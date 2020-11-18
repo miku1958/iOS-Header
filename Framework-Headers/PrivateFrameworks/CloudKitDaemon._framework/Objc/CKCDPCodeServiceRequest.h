@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSString *_functionName;
     CKCDPCodeServiceRequestProtectedCloudComputeMetadata *_protectedCloudComputeMetadata;
     CKCDPCodeServiceRequestRequestContext *_requestContext;
+    NSData *_routingToken;
     int _serializationFormat;
     NSData *_serializedParameters;
     NSString *_serviceName;
@@ -36,11 +37,13 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasFunctionName;
 @property (readonly, nonatomic) BOOL hasProtectedCloudComputeMetadata;
 @property (readonly, nonatomic) BOOL hasRequestContext;
+@property (readonly, nonatomic) BOOL hasRoutingToken;
 @property (nonatomic) BOOL hasSerializationFormat;
 @property (readonly, nonatomic) BOOL hasSerializedParameters;
 @property (readonly, nonatomic) BOOL hasServiceName;
 @property (strong, nonatomic) CKCDPCodeServiceRequestProtectedCloudComputeMetadata *protectedCloudComputeMetadata; // @synthesize protectedCloudComputeMetadata=_protectedCloudComputeMetadata;
 @property (strong, nonatomic) CKCDPCodeServiceRequestRequestContext *requestContext; // @synthesize requestContext=_requestContext;
+@property (strong, nonatomic) NSData *routingToken; // @synthesize routingToken=_routingToken;
 @property (nonatomic) int serializationFormat; // @synthesize serializationFormat=_serializationFormat;
 @property (strong, nonatomic) NSData *serializedParameters; // @synthesize serializedParameters=_serializedParameters;
 @property (strong, nonatomic) NSString *serviceName; // @synthesize serviceName=_serviceName;

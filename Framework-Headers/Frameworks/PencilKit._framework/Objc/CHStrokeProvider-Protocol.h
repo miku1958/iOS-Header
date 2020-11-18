@@ -6,16 +6,22 @@
 
 #import <PencilKit/NSObject-Protocol.h>
 
-@class NSArray;
+@class CHEncodedStrokeIdentifier, NSArray, NSOrderedSet;
 @protocol CHStroke, CHStrokeIdentifier, CHStrokeProviderVersion;
 
 @protocol CHStrokeProvider <NSObject>
 
+@property (readonly) struct CGSize drawingCanvasSize;
+@property (readonly) long long groupingPriority;
 @property (readonly, copy) NSArray *orderedStrokes;
 @property (readonly, strong) id<CHStrokeProviderVersion> strokeProviderVersion;
+@property (readonly, copy) NSOrderedSet *visibleStrokeEncodedIdentifiers;
 
 - (long long)compareOrderOfStrokeWithIdentifier:(id<CHStrokeIdentifier>)arg1 toStrokeWithIdentifier:(id<CHStrokeIdentifier>)arg2;
+- (unsigned long long)compareStyleOfStrokeWithIdentifier:(id<CHStrokeIdentifier>)arg1 toStrokeWithIdentifier:(id<CHStrokeIdentifier>)arg2;
+- (CHEncodedStrokeIdentifier *)encodedStrokeIdentifier:(id<CHStrokeIdentifier>)arg1;
 - (id<CHStroke>)strokeForIdentifier:(id<CHStrokeIdentifier>)arg1;
+- (id<CHStrokeIdentifier>)strokeIdentifierFromData:(CHEncodedStrokeIdentifier *)arg1;
 
 @optional
 - (long long)compareOrderOfStroke:(id<CHStroke>)arg1 toStroke:(id<CHStroke>)arg2;

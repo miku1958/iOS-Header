@@ -8,10 +8,11 @@
 
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSDecimalNumber;
+@class NSDecimalNumber, PKOSVersionRequirementRange;
 
 @interface PKPeerPaymentAccountFeatureDescriptor : PKAccountFeatureDescriptor <NSSecureCoding>
 {
+    PKOSVersionRequirementRange *_osVersionRange;
     NSDecimalNumber *_feePercentage;
     NSDecimalNumber *_minimumFee;
     NSDecimalNumber *_maximumFee;
@@ -20,6 +21,7 @@
 @property (copy, nonatomic) NSDecimalNumber *feePercentage; // @synthesize feePercentage=_feePercentage;
 @property (copy, nonatomic) NSDecimalNumber *maximumFee; // @synthesize maximumFee=_maximumFee;
 @property (copy, nonatomic) NSDecimalNumber *minimumFee; // @synthesize minimumFee=_minimumFee;
+@property (strong, nonatomic) PKOSVersionRequirementRange *osVersionRange; // @synthesize osVersionRange=_osVersionRange;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -33,7 +33,6 @@ __attribute__((visibility("hidden")))
 + (id)dispatchQueue;
 + (BOOL)isEnabled;
 + (id)replacementObjectForXPCConnection:(id)arg1 encoder:(id)arg2 object:(id)arg3;
-+ (id)synchronous:(BOOL)arg1 XPCProxyWithErrorHandler:(CDUnknownBlockType)arg2;
 + (id)synchronousXPCProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)initWithXPCListener:(id)arg1;

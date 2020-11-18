@@ -8,17 +8,19 @@
 
 #import <AuthKitUI/RemoteUIControllerDelegate-Protocol.h>
 
-@class AKAppleIDAuthenticationInAppContext, AKAppleIDServerUIContextController, NSHTTPURLResponse, NSString, RUIObjectModel, UINavigationController, UIViewController;
+@class AAUICDPStingrayRemoteUIController, AKAppleIDAuthenticationInAppContext, AKAppleIDServerUIContextController, NSHTTPURLResponse, NSString, RUIObjectModel, UINavigationController, UIViewController;
 
 @interface AKInAppAuthenticationRemoteUIDelegate : NSObject <RemoteUIControllerDelegate>
 {
     AKAppleIDAuthenticationInAppContext *_context;
     UIViewController *_topViewControllerOnLoadStart;
     NSHTTPURLResponse *_deferredResponse;
+    BOOL _navBarButtonOverridden;
     BOOL _overrideFirstActionSignal;
     AKAppleIDServerUIContextController *_serverUIContextController;
     RUIObjectModel *_currentRemoteOM;
     UINavigationController *_modalRemoteUINavController;
+    AAUICDPStingrayRemoteUIController *_stingrayController;
 }
 
 @property (readonly, nonatomic) RUIObjectModel *currentRemoteOM; // @synthesize currentRemoteOM=_currentRemoteOM;
@@ -28,16 +30,19 @@
 @property (readonly, nonatomic) UINavigationController *modalRemoteUINavController; // @synthesize modalRemoteUINavController=_modalRemoteUINavController;
 @property (nonatomic) BOOL overrideFirstActionSignal; // @synthesize overrideFirstActionSignal=_overrideFirstActionSignal;
 @property (strong, nonatomic) AKAppleIDServerUIContextController *serverUIContextController; // @synthesize serverUIContextController=_serverUIContextController;
+@property (strong, nonatomic) AAUICDPStingrayRemoteUIController *stingrayController; // @synthesize stingrayController=_stingrayController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_handleBackButtonTap:(id)arg1;
 - (BOOL)_isDeferrableFinalResponseHarvested;
+- (void)_showAlert:(id)arg1;
 - (void)clearObjectModel;
 - (id)initWithContext:(id)arg1;
 - (void)remoteUIController:(id)arg1 didDismissModalNavigationWithObjectModels:(id)arg2;
-- (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2;
+- (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2 forRequest:(id)arg3;
 - (void)remoteUIController:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
+- (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2 forRequest:(id)arg3;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (void)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)remoteUIController:(id)arg1 willPresentModalNavigationController:(id)arg2;

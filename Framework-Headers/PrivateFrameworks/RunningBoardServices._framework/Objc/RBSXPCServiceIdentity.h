@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSSecureCoding-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
-@class NSString, RBSProcessInstance, RBSXPCServiceDefinition;
+@class NSString, NSUUID, RBSProcessInstance, RBSXPCServiceDefinition;
 
-__attribute__((visibility("hidden")))
-@interface RBSXPCServiceIdentity : NSObject <BSXPCSecureCoding, NSSecureCoding>
+@interface RBSXPCServiceIdentity : NSObject <RBSXPCSecureCoding, NSSecureCoding>
 {
     RBSXPCServiceDefinition *_definition;
     NSString *_sessionID;
     RBSProcessInstance *_host;
+    NSUUID *_uuid;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -26,15 +26,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) RBSProcessInstance *host; // @synthesize host=_host;
 @property (readonly, copy, nonatomic) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
 
-+ (id)identityWithDefinition:(id)arg1 sessionID:(id)arg2 host:(id)arg3;
-+ (BOOL)supportsBSXPCSecureCoding;
++ (id)identityWithDefinition:(id)arg1 sessionID:(id)arg2 host:(id)arg3 UUID:(id)arg4;
++ (BOOL)supportsRBSXPCSecureCoding;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)encodeWithBSXPCCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

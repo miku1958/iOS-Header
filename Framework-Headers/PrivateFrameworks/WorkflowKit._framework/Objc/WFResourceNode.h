@@ -32,6 +32,7 @@
 - (id)initWithDefinition:(id)arg1;
 - (id)initWithResource:(id)arg1;
 - (id)initWithResource:(id)arg1 subnodes:(id)arg2;
+- (void)refreshAvailability;
 - (void)resourceNodeAvailabilityChanged:(id)arg1;
 - (void)resourceUpdated;
 

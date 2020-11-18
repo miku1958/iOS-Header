@@ -12,5 +12,6 @@
 - (BOOL)uns_isAllowedToReadSettings;
 - (BOOL)uns_isAllowedToRequestUserNotificationsForBundleIdentifier:(id)arg1;
 - (BOOL)uns_isAllowedToWriteSettings;
+- (BOOL)uns_isInternalUserNotificationsTool;
 @end
 

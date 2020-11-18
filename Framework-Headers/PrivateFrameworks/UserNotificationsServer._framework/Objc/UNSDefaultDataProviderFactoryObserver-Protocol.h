@@ -6,10 +6,9 @@
 
 #import <UserNotificationsServer/NSObject-Protocol.h>
 
-@class NSSet;
+@class NSString, UNNotificationSettings;
 
 @protocol UNSDefaultDataProviderFactoryObserver <NSObject>
-- (void)applicationsDidAuthorizeNotificationSettings:(NSSet *)arg1;
-- (void)applicationsDidDenyNotificationSettings:(NSSet *)arg1;
+- (void)didChangeNotificationSettings:(UNNotificationSettings *)arg1 forBundleIdentifier:(NSString *)arg2;
 @end
 

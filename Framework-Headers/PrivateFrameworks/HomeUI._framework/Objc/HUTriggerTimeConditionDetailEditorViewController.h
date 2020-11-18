@@ -6,13 +6,13 @@
 
 #import <HomeUI/HUItemTableViewController.h>
 
-#import <HomeUI/HUDatePickerCellDelegate-Protocol.h>
+#import <HomeUI/HUInlineDatePickerCellDelegate-Protocol.h>
 #import <HomeUI/HUSignificantEventOffsetPickerDelegate-Protocol.h>
 
 @class HFTimeRangeCondition, HUTriggerTimeConditionDetailEditorItemManager, NSString;
 @protocol HUTriggerTimeConditionDetailEditorDelegate;
 
-@interface HUTriggerTimeConditionDetailEditorViewController : HUItemTableViewController <HUSignificantEventOffsetPickerDelegate, HUDatePickerCellDelegate>
+@interface HUTriggerTimeConditionDetailEditorViewController : HUItemTableViewController <HUSignificantEventOffsetPickerDelegate, HUInlineDatePickerCellDelegate>
 {
     id<HUTriggerTimeConditionDetailEditorDelegate> _delegate;
 }

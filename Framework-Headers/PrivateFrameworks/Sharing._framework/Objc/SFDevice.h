@@ -59,7 +59,7 @@
 @property (nonatomic) unsigned char deviceActionType; // @synthesize deviceActionType=_deviceActionType;
 @property (nonatomic) unsigned char deviceClassCode; // @synthesize deviceClassCode=_deviceClassCode;
 @property (nonatomic) unsigned int deviceFlags; // @synthesize deviceFlags=_deviceFlags;
-@property (readonly, nonatomic) unsigned char deviceModelCode; // @synthesize deviceModelCode=_deviceModelCode;
+@property (nonatomic) unsigned char deviceModelCode; // @synthesize deviceModelCode=_deviceModelCode;
 @property (readonly, nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
 @property (nonatomic) long long distance; // @synthesize distance=_distance;
 @property (readonly, nonatomic) BOOL duetSync; // @synthesize duetSync=_duetSync;
@@ -67,6 +67,7 @@
 @property (nonatomic) unsigned int hotspotInfo; // @synthesize hotspotInfo=_hotspotInfo;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *idsIdentifier; // @synthesize idsIdentifier=_idsIdentifier;
+@property (readonly, nonatomic) BOOL idsIdentifierConflictDetected;
 @property (readonly, copy, nonatomic) NSString *mediaRemoteID; // @synthesize mediaRemoteID=_mediaRemoteID;
 @property (readonly, copy, nonatomic) NSString *mediaRouteID; // @synthesize mediaRouteID=_mediaRouteID;
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;

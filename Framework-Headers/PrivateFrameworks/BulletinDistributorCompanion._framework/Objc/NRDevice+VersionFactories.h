@@ -10,6 +10,7 @@
 + (BOOL)activePairedDeviceSupportIsGreaterEqualVersion:(unsigned long long)arg1;
 + (BOOL)activePairedDeviceSupportsAddBulletinReplyToken;
 + (BOOL)activePairedDeviceSupportsAttachmentFiles;
++ (BOOL)activePairedDeviceSupportsAuthorizationExpirationDate;
 + (BOOL)activePairedDeviceSupportsAuthorizationStatusLockScreenAndNCSettings;
 + (BOOL)activePairedDeviceSupportsCriticalAndGroupingSettings;
 + (BOOL)activePairedDeviceSupportsDisplayingSubtitle;

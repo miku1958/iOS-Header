@@ -7,9 +7,9 @@
 #import <UIKit/UIStatusBar_Base.h>
 
 @interface UIStatusBar_Base (Snapshots)
-- (BOOL)sb_getLocalDataOverrides:(CDStruct_fdd39a06 *)arg1;
+- (BOOL)sb_getLocalDataOverrides:(CDStruct_35107363 *)arg1;
 - (void)sb_setEnabledStatusBarPartIdentifiersForStatusBarParts:(long long)arg1;
-- (void)sb_setLocalDataOverrides:(CDStruct_fdd39a06 *)arg1;
+- (void)sb_setLocalDataOverrides:(CDStruct_35107363 *)arg1;
 - (void)sb_setOverrideBreadcrumbTitle:(id)arg1 secondaryTitle:(id)arg2;
 - (void)sb_setSnapshotOverridesWithTimeEnabled:(BOOL)arg1 overriddenDate:(id)arg2;
 @end

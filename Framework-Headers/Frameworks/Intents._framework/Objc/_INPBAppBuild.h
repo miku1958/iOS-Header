@@ -15,12 +15,10 @@
 @interface _INPBAppBuild : PBCodable <_INPBAppBuild, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     _INPBAppId *_appId;
     _INPBBuildId *_buildId;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBAppId *appId; // @synthesize appId=_appId;
 @property (strong, nonatomic) _INPBBuildId *buildId; // @synthesize buildId=_buildId;
 @property (readonly, copy) NSString *debugDescription;

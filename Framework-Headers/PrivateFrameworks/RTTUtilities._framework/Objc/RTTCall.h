@@ -17,6 +17,7 @@
     NSObject<OS_dispatch_queue> *_callQueue;
     NSMutableString *_garbageCollection;
     AXDispatchTimer *_garbageCharacterStripperTimer;
+    BOOL _isViewControllerVisible;
     id<RTTCallDelegate> _delegate;
     RTTConversation *_conversation;
     TUCall *_call;
@@ -31,6 +32,7 @@
 @property (weak, nonatomic) id<RTTCallDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isViewControllerVisible; // @synthesize isViewControllerVisible=_isViewControllerVisible;
 @property (strong, nonatomic) NSDictionary *substitutions; // @synthesize substitutions=_substitutions;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) AVCVirtualTTYDevice *ttyDevice; // @synthesize ttyDevice=_ttyDevice;

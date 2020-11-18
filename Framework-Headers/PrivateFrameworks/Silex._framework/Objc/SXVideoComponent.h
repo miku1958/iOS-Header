@@ -22,6 +22,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL enablePreroll; // @dynamic enablePreroll;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSString *prerollPlacementIdentifier; // @dynamic prerollPlacementIdentifier;
 @property (readonly, nonatomic) NSString *resourceIdentifier; // @dynamic resourceIdentifier;
 @property (readonly, nonatomic) NSString *stillImageIdentifier; // @dynamic stillImageIdentifier;
 @property (readonly) Class superclass;
@@ -29,6 +30,7 @@
 + (id)typeString;
 - (double)aspectRatioWithValue:(id)arg1 withType:(int)arg2;
 - (BOOL)enablePrerollWithValue:(id)arg1 withType:(int)arg2;
+- (id)initWithJSONObject:(id)arg1 andVersion:(id)arg2;
 - (unsigned long long)traits;
 
 @end

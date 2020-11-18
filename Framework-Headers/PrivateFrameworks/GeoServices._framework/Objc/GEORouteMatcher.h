@@ -14,9 +14,11 @@
     BOOL _useStrictInitialOnRouteCriteria;
     GEORouteRoadMatcher *_routeRoadMatcher;
     BOOL _shouldSnapRouteMatchToRoute;
+    BOOL _useMatchedCoordinateForMatching;
 }
 
 @property (nonatomic) BOOL shouldSnapRouteMatchToRoute; // @synthesize shouldSnapRouteMatchToRoute=_shouldSnapRouteMatchToRoute;
+@property (nonatomic) BOOL useMatchedCoordinateForMatching; // @synthesize useMatchedCoordinateForMatching=_useMatchedCoordinateForMatching;
 @property (nonatomic) BOOL useStrictInitialOnRouteCriteria; // @synthesize useStrictInitialOnRouteCriteria=_useStrictInitialOnRouteCriteria;
 
 - (void).cxx_destruct;
@@ -24,6 +26,7 @@
 - (void)_considerCandidateMatch:(id)arg1;
 - (void)_finishRouteMatch:(id)arg1 previousRouteMatch:(id)arg2 forLocation:(id)arg3;
 - (void)_forEachSegmentNearLocation:(id)arg1 previousRouteMatch:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (struct PolylineCoordinate)_guaranteedRouteCoordinateForLocationCoordinate:(CDStruct_c3b9c2ee)arg1;
 - (double)_scoreModifierForStep:(id)arg1 previousStep:(id)arg2;
 - (BOOL)_shouldConsiderCourseForLocation:(id)arg1;
 - (void)_snapRouteMatchToRoad:(id)arg1;
@@ -31,6 +34,7 @@
 - (id)_startStepForPreviousRouteMatch:(id)arg1;
 - (id)_stepForPointIndex:(unsigned int)arg1 previousStep:(id)arg2;
 - (BOOL)_supportsSnapping;
+- (struct PolylineCoordinate)closestRouteCoordinateForLocationCoordinate:(CDStruct_c3b9c2ee)arg1;
 - (void)dealloc;
 - (double)distanceToRouteFrom:(CDStruct_c3b9c2ee)arg1;
 - (double)distanceToRouteFrom:(CDStruct_c3b9c2ee)arg1 startDistance:(double)arg2 endDistance:(double)arg3;

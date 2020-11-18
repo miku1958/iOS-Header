@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
     id _group;
 }
 
-- (id)_init:(id)arg1;
 - (unsigned long long)count;
 - (void)dealloc;
 - (id)objectAtIndex:(unsigned long long)arg1;

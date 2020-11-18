@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <NanoPassKit/NSObject-Protocol.h>
+
 @class NSString;
 
-@protocol NPKTransientPassAssertionServerProtocol
+@protocol NPKTransientPassAssertionServerProtocol <NSObject>
 - (void)setDisableCardSelection:(BOOL)arg1;
+- (void)setDoublePressDelegationRequested:(BOOL)arg1;
 - (void)setServiceModeRequested:(BOOL)arg1;
 - (void)setTransientPassUniqueID:(NSString *)arg1;
 @end

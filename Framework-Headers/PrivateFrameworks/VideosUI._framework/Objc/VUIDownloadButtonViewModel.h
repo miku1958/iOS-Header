@@ -8,14 +8,18 @@
 
 #import <VideosUI/VUIMediaEntityAssetControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, VUIVideosPlayable;
+@class NSArray, NSDate, NSString, VUIMediaEntity, VUIVideosPlayable;
 @protocol VUIMediaEntityAssetController;
 
 __attribute__((visibility("hidden")))
 @interface VUIDownloadButtonViewModel : NSObject <VUIMediaEntityAssetControllerDelegate>
 {
+    BOOL _renewsOfflineKeysAutomatically;
     VUIVideosPlayable *_videosPlayable;
+    VUIMediaEntity *_mediaEntity;
     unsigned long long _downloadState;
+    NSDate *_downloadExpirationDate;
+    NSDate *_availabilityEndDate;
     double _downloadProgress;
     NSObject<VUIMediaEntityAssetController> *_assetController;
     NSString *_downloadStateStringValue;
@@ -23,13 +27,17 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) NSObject<VUIMediaEntityAssetController> *assetController; // @synthesize assetController=_assetController;
+@property (strong, nonatomic) NSDate *availabilityEndDate; // @synthesize availabilityEndDate=_availabilityEndDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSDate *downloadExpirationDate; // @synthesize downloadExpirationDate=_downloadExpirationDate;
 @property (nonatomic) double downloadProgress; // @synthesize downloadProgress=_downloadProgress;
 @property (nonatomic) unsigned long long downloadState; // @synthesize downloadState=_downloadState;
 @property (strong, nonatomic) NSString *downloadStateStringValue; // @synthesize downloadStateStringValue=_downloadStateStringValue;
 @property (strong, nonatomic) NSArray *downloadStateToString; // @synthesize downloadStateToString=_downloadStateToString;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) VUIMediaEntity *mediaEntity; // @synthesize mediaEntity=_mediaEntity;
+@property (nonatomic) BOOL renewsOfflineKeysAutomatically; // @synthesize renewsOfflineKeysAutomatically=_renewsOfflineKeysAutomatically;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) VUIVideosPlayable *videosPlayable; // @synthesize videosPlayable=_videosPlayable;
 
@@ -40,13 +48,14 @@ __attribute__((visibility("hidden")))
 - (void)_updateDownloadStateFromAssetControllerState:(id)arg1;
 - (void)dealloc;
 - (void)deleteDownload;
+- (void)fetchNewKeysForDownloadedVideo;
 - (id)initWithAssetController:(id)arg1;
 - (id)initWithVideosPlayable:(id)arg1;
 - (void)mediaEntityAssetController:(id)arg1 stateDidChange:(id)arg2;
 - (void)pauseDownload;
 - (void)preflightPresentingViewController:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)resumeDownload;
-- (void)startDownloadAllowingCellular:(BOOL)arg1 quality:(long long)arg2;
+- (void)startDownloadAllowingCellular:(BOOL)arg1 shouldMarkAsDeletedOnCancellationOrFailure:(BOOL)arg2 quality:(long long)arg3;
 - (void)stopDownload;
 
 @end

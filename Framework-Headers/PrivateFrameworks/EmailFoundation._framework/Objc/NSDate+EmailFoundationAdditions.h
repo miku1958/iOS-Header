@@ -7,12 +7,11 @@
 #import <Foundation/NSDate.h>
 
 #import <EmailFoundation/EFSQLBindable-Protocol.h>
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
-#import <EmailFoundation/EFSQLNumericValueExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueExpressable-Protocol.h>
 
 @class EFSQLBinding, NSString;
 
-@interface NSDate (EmailFoundationAdditions) <EFSQLBindable, EFSQLExpressable, EFSQLNumericValueExpressable>
+@interface NSDate (EmailFoundationAdditions) <EFSQLBindable, EFSQLValueExpressable>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -33,8 +32,10 @@
 + (id)ef_nextWeekMorning;
 + (id)ef_tomorrowMorning;
 + (id)ef_tonight;
+- (id)ef_SQLIsolatedExpression;
 - (BOOL)ef_isEarlierThanDate:(id)arg1;
 - (BOOL)ef_isLaterThanDate:(id)arg1;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
 - (double)ef_timeIntervalSinceDate:(id)arg1;
 @end
 

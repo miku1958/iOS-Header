@@ -14,8 +14,6 @@
     MISSING_TYPE *cloudContext;
     MISSING_TYPE *appConfigManager;
     MISSING_TYPE *assetManager;
-    MISSING_TYPE *cachePolicy;
-    MISSING_TYPE *_currentConfiguration;
 }
 
 @end

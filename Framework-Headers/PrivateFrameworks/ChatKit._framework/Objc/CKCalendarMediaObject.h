@@ -11,8 +11,8 @@
 }
 
 + (id)UTITypes;
-+ (id)attachmentSummary:(unsigned long long)arg1;
 + (id)fallbackFilenamePrefix;
+- (id)attachmentSummary:(unsigned long long)arg1;
 - (int)mediaType;
 - (BOOL)shouldBeQuickLooked;
 - (id)subtitle;

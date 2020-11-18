@@ -6,15 +6,25 @@
 
 #import <CoreSuggestionsInternals/SGPipelineDissector.h>
 
-@class SGSqlEntityStore;
+#import <CoreSuggestionsInternals/SGMailMessageProcessing-Protocol.h>
+#import <CoreSuggestionsInternals/SGTextMessageProcessing-Protocol.h>
 
-@interface SGMetricsDissector : SGPipelineDissector
+@class NSString, SGSqlEntityStore;
+
+@interface SGMetricsDissector : SGPipelineDissector <SGMailMessageProcessing, SGTextMessageProcessing>
 {
     SGSqlEntityStore *_store;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
 - (void).cxx_destruct;
-- (void)dissectInternal:(id)arg1 inContext:(id)arg2;
+- (BOOL)_shouldSampleMessage;
+- (void)dissectMailMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
+- (void)dissectTextMessage:(id)arg1 entity:(id)arg2 context:(id)arg3;
 - (id)initWithEntityStore:(id)arg1;
 
 @end

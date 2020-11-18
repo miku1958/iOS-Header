@@ -16,8 +16,10 @@
 @property (readonly, nonatomic) NSString *contentStoreFrontID;
 @property (readonly, nonatomic) NSString *endpointConnectionClientID;
 @property (readonly, nonatomic) BOOL isContentStoreFrontSupported;
+@property (readonly, nonatomic) BOOL isSignedInStoreFrontSupported;
 @property (readonly, nonatomic) NSString *primaryLanguageCode;
 @property (readonly, nonatomic, getter=isPrivateDataSyncingEnabled) BOOL privateDataSyncingEnabled;
+@property (readonly, nonatomic) long long supportedContentLanguage;
 @property (readonly, nonatomic) NSString *supportedContentStoreFrontID;
 @property (readonly, nonatomic, getter=isUserSignedInToiCloud) BOOL userSignedInToiCloud;
 @property (readonly, nonatomic) NSString *userStoreFrontID;

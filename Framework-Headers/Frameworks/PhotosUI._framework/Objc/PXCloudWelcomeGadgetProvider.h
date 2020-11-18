@@ -32,6 +32,7 @@
 - (unsigned long long)estimatedNumberOfGadgets;
 - (void)generateGadgets;
 - (id)init;
+- (id)initWithIdentifier:(id)arg1;
 - (id)initWithSourceType:(unsigned long long)arg1;
 - (void)presentationRequestForWelcomeCloudViewController:(id)arg1;
 - (void)resetPriorityDate;

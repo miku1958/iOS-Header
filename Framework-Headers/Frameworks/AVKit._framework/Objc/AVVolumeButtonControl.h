@@ -9,7 +9,7 @@
 #import <AVKit/AVExternalGestureRecognizerPreventing-Protocol.h>
 #import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
 
-@class AVMicaPackage, NSString, NSTimer, UIImageView, UISelectionFeedbackGenerator, UIViewPropertyAnimator;
+@class AVLayoutItemAttributes, AVMicaPackage, NSString, NSTimer, UIImageView, UISelectionFeedbackGenerator, UIView, UIViewPropertyAnimator;
 
 __attribute__((visibility("hidden")))
 @interface AVVolumeButtonControl : UIControl <AVExternalGestureRecognizerPreventing, AVPlaybackControlsViewItem>
@@ -23,10 +23,12 @@ __attribute__((visibility("hidden")))
     BOOL _longPressEnabled;
     BOOL _showsHighlightedAppearance;
     UISelectionFeedbackGenerator *_feedbackGenerator;
+    AVLayoutItemAttributes *_layoutAttributes;
     NSString *_micaPackageStateName;
     UIViewPropertyAnimator *_highlightAnimator;
     AVMicaPackage *_micaPackage;
     UIImageView *_imageView;
+    UIView *_micaPackageContainerView;
     NSTimer *_longPressTimer;
     struct CGSize _extrinsicContentSize;
     struct CGPoint _translationOfPanFromPreviousTouch;
@@ -51,10 +53,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic, getter=isIncluded) BOOL included; // @synthesize included=_included;
 @property (nonatomic) struct CGPoint initialPreciseLocationOfTouch; // @synthesize initialPreciseLocationOfTouch=_initialPreciseLocationOfTouch;
+@property (readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
 @property (nonatomic) struct CGPoint locationOfTouchInWindow; // @synthesize locationOfTouchInWindow=_locationOfTouchInWindow;
 @property (nonatomic, getter=isLongPressEnabled) BOOL longPressEnabled; // @synthesize longPressEnabled=_longPressEnabled;
 @property (weak, nonatomic) NSTimer *longPressTimer; // @synthesize longPressTimer=_longPressTimer;
 @property (strong, nonatomic) AVMicaPackage *micaPackage; // @synthesize micaPackage=_micaPackage;
+@property (strong, nonatomic) UIView *micaPackageContainerView; // @synthesize micaPackageContainerView=_micaPackageContainerView;
 @property (strong, nonatomic) NSString *micaPackageStateName; // @synthesize micaPackageStateName=_micaPackageStateName;
 @property (nonatomic, getter=isRemoved) BOOL removed; // @synthesize removed=_removed;
 @property (nonatomic) BOOL showsHighlightedAppearance; // @synthesize showsHighlightedAppearance=_showsHighlightedAppearance;
@@ -63,7 +67,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) struct CGPoint translationOfPanFromPreviousTouch; // @synthesize translationOfPanFromPreviousTouch=_translationOfPanFromPreviousTouch;
 
 - (void).cxx_destruct;
-- (void)_updateIsHiddenAndAlpha;
+- (void)_updateLayoutItem;
 - (void)_updateMicaPackage:(id)arg1;
 - (BOOL)avkit_shouldPreventExternalGestureRecognizerAtPoint:(struct CGPoint)arg1;
 - (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
@@ -75,9 +79,11 @@ __attribute__((visibility("hidden")))
 - (id)imageNameForMicaPackageState;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)layoutAttributesDidChange;
+- (void)layoutSubviews;
+- (struct CGSize)minimumSize;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setBounds:(struct CGRect)arg1;
-- (void)setHidden:(BOOL)arg1;
 - (void)setNeedsUpdateGlyphRenderingMode;
 - (void)triggerSelectionChangedFeedback;
 

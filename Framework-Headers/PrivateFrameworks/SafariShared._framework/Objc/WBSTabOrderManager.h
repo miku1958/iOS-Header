@@ -36,6 +36,7 @@
 - (id)init;
 - (id)simplifiedIdentifierForDisplayInTabTitle:(id)arg1;
 - (BOOL)tab:(id)arg1 isInSameSetAsTab:(id)arg2;
+- (id)tabInsertionHintForDuplicateOfTab:(id)arg1;
 - (id)tabInsertionHintForNewBlankTab;
 - (id)tabInsertionHintForNewBlankTabInCurrentContext;
 - (id)tabInsertionHintForPosition:(unsigned long long)arg1;

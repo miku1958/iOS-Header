@@ -22,7 +22,7 @@
 @property (strong, nonatomic) NSString *resourceDirectory; // @synthesize resourceDirectory=_resourceDirectory;
 @property (nonatomic) long long state; // @synthesize state=_state;
 
-+ (id)_createResourceDirectoryWithAsset:(id)arg1 forDevice:(id)arg2 previewOnly:(BOOL)arg3;
++ (id)_createResourceDirectoryWithAsset:(id)arg1 assetCollection:(id)arg2 forDevice:(id)arg3 previewOnly:(BOOL)arg4;
 + (id)_cropAndScaleUIImage:(id)arg1 cropRect:(struct CGRect)arg2 outputSize:(struct CGSize)arg3;
 + (void)_imageDataForAsset:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)_linkPhoto:(id)arg1 to:(id)arg2 previewOnly:(BOOL)arg3;

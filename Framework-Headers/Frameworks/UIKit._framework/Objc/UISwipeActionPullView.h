@@ -11,15 +11,15 @@
 
 @interface UISwipeActionPullView : UIView
 {
+    UIView *_clippingView;
     NSMutableArray *_buttons;
     NSArray *_actions;
     UISwipeActionButton *_pressedButton;
     BOOL _swipeActionsDidChange;
-    BOOL _isCollapsed;
+    BOOL _isTentative;
     double _openThreshold;
     double _confirmationThreshold;
     double _minimumOffset;
-    double _currentExtraOffset;
     unsigned long long _style;
     BOOL _buttonsUnderlapSwipedView;
     BOOL _autosizesButtons;
@@ -38,7 +38,7 @@
 @property (readonly, nonatomic) double confirmationThreshold;
 @property (nonatomic) struct UIEdgeInsets contentInsets; // @synthesize contentInsets=_contentInsets;
 @property (readonly, nonatomic) double currentOffset; // @synthesize currentOffset=_currentOffset;
-@property (nonatomic) id<UISwipeActionPullViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<UISwipeActionPullViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) BOOL hasActions;
 @property (readonly, nonatomic) double openThreshold;
 @property (readonly, nonatomic) UIColor *primaryActionColor;
@@ -49,12 +49,18 @@
 - (void).cxx_destruct;
 - (Class)_buttonClass;
 - (double)_directionalMultiplier;
-- (id)_inferredAccessibilityIdentifierTemplate;
+- (double)_interButtonPadding;
+- (void)_layoutClippingLayer;
+- (double)_paddingToSwipedView;
 - (void)_performAction:(id)arg1 offset:(double)arg2 extraOffset:(double)arg3;
 - (void)_pressedButton:(id)arg1;
 - (void)_rebuildButtons;
+- (void)_setLayerBounds:(struct CGRect)arg1;
+- (void)_setWidth:(double)arg1;
+- (void)_setupClippingViewIfNeeded;
 - (unsigned long long)_swipeActionCount;
 - (void)_tappedButton:(id)arg1;
+- (double)_totalInterButtonPadding;
 - (void)_unpressedButton:(id)arg1;
 - (void)configureWithSwipeActions:(id)arg1;
 - (id)description;
@@ -64,6 +70,8 @@
 - (void)layoutSubviews;
 - (void)moveToOffset:(double)arg1 extraOffset:(double)arg2 animator:(id)arg3 usingSpringWithStiffness:(double)arg4 initialVelocity:(double)arg5;
 - (void)resetView;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)setFrame:(struct CGRect)arg1;
 - (id)sourceViewForAction:(id)arg1;
 
 @end

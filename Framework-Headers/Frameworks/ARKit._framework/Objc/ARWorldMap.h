@@ -9,42 +9,26 @@
 #import <ARKit/NSCopying-Protocol.h>
 #import <ARKit/NSSecureCoding-Protocol.h>
 
-@class ARPointCloud, MISSING_TYPE, NSArray, NSData;
+@class ARPointCloud, MISSING_TYPE, NSArray;
 
 @interface ARWorldMap : NSObject <NSCopying, NSSecureCoding>
 {
     NSArray *_anchors;
     ARPointCloud *_rawFeaturePoints;
-    long long _version;
-    NSData *_trackingData;
-    NSData *_surfaceData;
     MISSING_TYPE *_center;
     MISSING_TYPE *_extent;
-    CDStruct_14d5dc5e _referenceOriginTransform;
 }
 
 @property (copy, nonatomic) NSArray *anchors; // @synthesize anchors=_anchors;
 @property (readonly, nonatomic) MISSING_TYPE *center; // @synthesize center=_center;
 @property (readonly, nonatomic) MISSING_TYPE *extent; // @synthesize extent=_extent;
 @property (readonly, nonatomic) ARPointCloud *rawFeaturePoints; // @synthesize rawFeaturePoints=_rawFeaturePoints;
-@property (readonly, nonatomic) CDStruct_14d5dc5e referenceOriginTransform; // @synthesize referenceOriginTransform=_referenceOriginTransform;
-@property (copy, nonatomic) NSData *surfaceData; // @synthesize surfaceData=_surfaceData;
-@property (readonly, copy, nonatomic) NSData *trackingData; // @synthesize trackingData=_trackingData;
-@property (readonly, nonatomic) long long version; // @synthesize version=_version;
 
-+ (CDStruct_183601bc)boundsForTrackingData:(id)arg1;
-+ (id)featurePointsForTrackingData:(id)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2;
-+ (id)keyframesForTrackingData:(id)arg1 withFeaturePoints:(id)arg2 referenceOriginTransform:(CDStruct_14d5dc5e)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)extractReferenceObjectWithTransform:(CDStruct_14d5dc5e)arg1 center:(id *)arg2 extent:error: /* Error: Ran out of types for this method. */;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithTrackingData:(id)arg1 referenceOriginTransform:(CDStruct_14d5dc5e)arg2;
-- (BOOL)isEqual:(id)arg1;
 
 @end
 

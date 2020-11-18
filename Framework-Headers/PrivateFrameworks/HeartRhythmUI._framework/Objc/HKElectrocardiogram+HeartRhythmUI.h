@@ -6,11 +6,7 @@
 
 #import <HealthKit/HKElectrocardiogram.h>
 
-@class NSString;
-
 @interface HKElectrocardiogram (HeartRhythmUI)
-
-@property (readonly, nonatomic) NSString *hrui_regulatedClassificationShortBodyText;
-
+- (id)hrui_classificationShortBodyTextWithActiveAlgorithmVersion:(long long)arg1;
 @end
 

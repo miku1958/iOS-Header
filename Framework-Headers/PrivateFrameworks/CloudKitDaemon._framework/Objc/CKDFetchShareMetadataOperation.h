@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDOperation.h>
 
 @class NSDictionary, NSMutableArray, NSMutableDictionary, NSSet;
+@protocol CKFetchShareMetadataOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchShareMetadataOperation : CKDOperation
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
     NSDictionary *_shareInvitationTokensByShareURL;
 }
 
+@property (strong, nonatomic) id<CKFetchShareMetadataOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (nonatomic) BOOL clientWillDisplaySystemAcceptPrompt; // @synthesize clientWillDisplaySystemAcceptPrompt=_clientWillDisplaySystemAcceptPrompt;
 @property (nonatomic) BOOL errorOnOON; // @synthesize errorOnOON=_errorOnOON;
 @property (nonatomic) BOOL forceDSRefetch; // @synthesize forceDSRefetch=_forceDSRefetch;
@@ -31,6 +33,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableDictionary *shareTokenMetadatasToFetchByURL; // @synthesize shareTokenMetadatasToFetchByURL=_shareTokenMetadatasToFetchByURL;
 @property (strong, nonatomic) NSMutableArray *shareURLsToFetch; // @synthesize shareURLsToFetch=_shareURLsToFetch;
 @property (nonatomic) BOOL shouldFetchRootRecord; // @synthesize shouldFetchRootRecord=_shouldFetchRootRecord;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 
 - (void).cxx_destruct;
 - (void)_continueHandlingFetchedShareMetadata:(id)arg1 shareURL:(id)arg2;
@@ -49,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (BOOL)makeStateTransition;
 - (id)nameForState:(unsigned long long)arg1;
+- (int)operationType;
 
 @end
 

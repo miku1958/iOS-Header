@@ -16,14 +16,14 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) GKHostedChallengeIssueController *delegate; // @synthesize delegate=_delegateWeak;
+@property (weak, nonatomic) GKHostedChallengeIssueController *delegate; // @synthesize delegate=_delegateWeak;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) GKGame *game;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
 + (id)challengeExtension;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)extensionIsCanceling;
 - (id)extensionObjectProxy;
 - (void)messageFromExtension:(id)arg1;

@@ -10,7 +10,7 @@
 #import <UIKitCore/_UIContextMenuActionsListViewDelegate-Protocol.h>
 #import <UIKitCore/_UIPreviewPlatterPanControllerDelegate-Protocol.h>
 
-@class NSArray, NSString, UIPanGestureRecognizer, UITapGestureRecognizer, UITargetedPreview, UIView, UIVisualEffectView, _UIContextMenuActionsListView, _UIContextMenuLayoutArbiter, _UIContextMenuLayoutArbiterOutput, _UIContextMenuStyle, _UIFulfilledContextMenuConfiguration, _UIPreviewPlatterPanController, _UIPreviewPlatterView;
+@class NSArray, NSString, UITapGestureRecognizer, UITargetedPreview, UIView, UIVisualEffectView, _UIContextMenuActionScrubbingHandoffGestureRecognizer, _UIContextMenuActionsListView, _UIContextMenuLayoutArbiter, _UIContextMenuLayoutArbiterOutput, _UIContextMenuStyle, _UIFulfilledContextMenuConfiguration, _UIPreviewPlatterPanController, _UIPreviewPlatterView;
 @protocol _UIPreviewPlatterPresentationControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
     _UIFulfilledContextMenuConfiguration *_displayedConfiguration;
     UITapGestureRecognizer *_platterActionTapGestureRecognizer;
     UITapGestureRecognizer *_dismissalTapGestureRecognizer;
-    UIPanGestureRecognizer *_actionScrubbingHandoffGestureRecognizer;
+    _UIContextMenuActionScrubbingHandoffGestureRecognizer *_actionScrubbingHandoffGestureRecognizer;
     UITargetedPreview *_sourcePreview;
     _UIPreviewPlatterPanController *_platterPanController;
     _UIContextMenuLayoutArbiter *_layoutArbiter;
@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) NSArray *accessoryViews; // @synthesize accessoryViews=_accessoryViews;
-@property (strong, nonatomic) UIPanGestureRecognizer *actionScrubbingHandoffGestureRecognizer; // @synthesize actionScrubbingHandoffGestureRecognizer=_actionScrubbingHandoffGestureRecognizer;
+@property (strong, nonatomic) _UIContextMenuActionScrubbingHandoffGestureRecognizer *actionScrubbingHandoffGestureRecognizer; // @synthesize actionScrubbingHandoffGestureRecognizer=_actionScrubbingHandoffGestureRecognizer;
 @property (readonly, nonatomic) _UIContextMenuActionsListView *actionsView; // @synthesize actionsView=_actionsView;
 @property (readonly, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
 @property (readonly, nonatomic) _UIPreviewPlatterView *contentPlatterView; // @synthesize contentPlatterView=_contentPlatterView;
@@ -60,13 +60,18 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UITargetedPreview *sourcePreview; // @synthesize sourcePreview=_sourcePreview;
 @property (readonly) Class superclass;
 
++ (id)_actionsOnlyViewControllerForSourcePreview:(id)arg1;
 - (void).cxx_destruct;
-- (id)_actionsOnlyViewControllerForSourcePreview:(id)arg1;
+- (void)_applicationWillResignActive:(id)arg1;
 - (struct UIEdgeInsets)_baseContentInsetsWithLeftMargin:(double *)arg1 rightMargin:(double *)arg2;
 - (void)_createActionsViewIfNecessary;
 - (void)_handleActionHandoffGesture:(id)arg1;
 - (void)_handleDismissalTapGesture:(id)arg1;
 - (void)_handlePlatterActionTapGesture:(id)arg1;
+- (void)_keyboardWillHide:(id)arg1;
+- (void)_keyboardWillShow:(id)arg1;
+- (BOOL)_needsToAvoidKeyboard;
+- (id)_parentTraitEnvironment;
 - (void)_preDismissalTasks;
 - (BOOL)_shouldDisableInteractionDuringTransitions;
 - (BOOL)_shouldKeepCurrentFirstResponder;
@@ -82,6 +87,9 @@ __attribute__((visibility("hidden")))
 - (void)_updatePlatterContainerViewTraitCollection;
 - (void)_updatePlatterContentSizeWithPreferredContentSize:(struct CGSize)arg1;
 - (void)_updatePresentedViewFrame;
+- (void)contextMenuListView:(id)arg1 didSelectElement:(id)arg2;
+- (id)contextMenuListView:(id)arg1 willDisplayMenu:(id)arg2;
+- (void)dealloc;
 - (void)dismissalTransitionWillBegin;
 - (struct CGRect)frameOfPresentedViewInContainerView;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
@@ -95,7 +103,6 @@ __attribute__((visibility("hidden")))
 - (long long)presentationStyle;
 - (void)presentationTransitionDidEnd:(BOOL)arg1;
 - (void)presentationTransitionWillBegin;
-- (void)previewActionsView:(id)arg1 didSelectAction:(id)arg2;
 - (void)setDisplayedMenu:(id)arg1 withAnimationStyle:(unsigned long long)arg2;
 - (void)systemLayoutFittingSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)tearOffForDraggingWithDragContainerView:(id)arg1;

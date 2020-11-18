@@ -15,7 +15,6 @@ __attribute__((visibility("hidden")))
     NSURL *_imageURL;
 }
 
-@property (copy, nonatomic, setter=_setSandboxExtensionData:) NSData *_sandboxExtensionData; // @synthesize _sandboxExtensionData;
 @property (readonly, copy, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
 
 + (BOOL)supportsSecureCoding;
@@ -29,6 +28,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isSupportedForDonation;
 - (void)_loadImageDataAndSizeWithHelper:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)_requiresRetrieval;
+- (id)_sandboxExtensionData;
+- (void)_setSandboxExtensionData:(id)arg1;
 - (void)_setUri:(id)arg1;
 - (id)_uri;
 - (void)encodeWithCoder:(id)arg1;

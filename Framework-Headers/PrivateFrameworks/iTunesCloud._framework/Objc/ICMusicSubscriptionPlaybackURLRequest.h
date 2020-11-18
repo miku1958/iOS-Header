@@ -6,13 +6,12 @@
 
 #import <iTunesCloud/ICStoreURLRequest.h>
 
-@class NSData, NSString;
+@class NSString;
 
 @interface ICMusicSubscriptionPlaybackURLRequest : ICStoreURLRequest
 {
     BOOL _delegatedPlayback;
     NSString *_assetSourceStorefrontID;
-    NSData *_certificateData;
     NSString *_cloudUniversalLibraryID;
     long long _requestType;
     unsigned long long _storeCloudID;
@@ -21,7 +20,6 @@
 }
 
 @property (copy, nonatomic) NSString *assetSourceStorefrontID; // @synthesize assetSourceStorefrontID=_assetSourceStorefrontID;
-@property (copy, nonatomic) NSData *certificateData; // @synthesize certificateData=_certificateData;
 @property (copy, nonatomic) NSString *cloudUniversalLibraryID; // @synthesize cloudUniversalLibraryID=_cloudUniversalLibraryID;
 @property (nonatomic, getter=isDelegatedPlayback) BOOL delegatedPlayback; // @synthesize delegatedPlayback=_delegatedPlayback;
 @property (nonatomic) long long requestType; // @synthesize requestType=_requestType;
@@ -29,7 +27,6 @@
 @property (nonatomic) long long storePurchasedAdamID; // @synthesize storePurchasedAdamID=_storePurchasedAdamID;
 @property (nonatomic) long long storeSubscriptionAdamID; // @synthesize storeSubscriptionAdamID=_storeSubscriptionAdamID;
 
-+ (BOOL)requiresCertificateDataForRequestType:(long long)arg1;
 - (void).cxx_destruct;
 - (void)buildStoreURLRequestWithURLRequest:(id)arg1 builderProperties:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 

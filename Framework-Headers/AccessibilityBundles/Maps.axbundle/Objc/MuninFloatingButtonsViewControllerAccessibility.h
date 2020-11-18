@@ -14,7 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (void)_axUpdateAlternateButtonLabel;
+- (void)_axUpdateButtonsLabel;
 - (void)setShowsMinimizedButton:(BOOL)arg1;
 
 @end

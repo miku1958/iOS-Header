@@ -26,7 +26,7 @@
 + (id)responseWithRequest:(id)arg1 error:(id)arg2;
 + (id)responsesWithRequests:(id)arg1 error:(id)arg2;
 - (void).cxx_destruct;
-- (id)description;
+- (id)attributeDescriptions;
 - (id)initWithRequest:(id)arg1 error:(id)arg2;
 - (void)setValue:(id)arg1 updatedTime:(id)arg2 stateNumber:(id)arg3;
 

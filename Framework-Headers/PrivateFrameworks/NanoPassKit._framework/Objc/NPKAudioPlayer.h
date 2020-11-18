@@ -12,8 +12,12 @@
 
 + (void)_playSoundsWithIdentifier:(unsigned int)arg1;
 + (void)playAccessScanCompleteHaptic;
++ (void)playInAppPaymentFailureHaptic;
++ (void)playInAppPaymentSuccessHaptic;
 + (void)playProvisioningFailureHaptic;
 + (void)playProvisioningSuccessHaptic;
++ (void)playSessionStartFailureHaptic;
++ (void)playSessionTimeoutHaptic;
 + (void)playTransactionFailureHaptic;
 + (void)playTransactionSuccessHaptic;
 + (void)playWarsawHaptic;

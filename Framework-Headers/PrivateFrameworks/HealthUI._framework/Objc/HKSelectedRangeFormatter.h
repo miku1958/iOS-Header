@@ -24,6 +24,7 @@
 
 - (void).cxx_destruct;
 - (id)_formatterForDisplayType:(id)arg1 timeScope:(long long)arg2 majorFont:(id)arg3 minorFont:(id)arg4;
+- (id)_handwashingStatFormatterItemOptionsForTimePeriodTimeScope:(long long)arg1;
 - (id)_statFormatterItemOptionsForTimePeriodDisplayType:(id)arg1 timeScope:(long long)arg2 context:(long long)arg3;
 - (void)configureWithChartRangeProvider:(id)arg1;
 - (id)initWithUnitPreferenceController:(id)arg1;

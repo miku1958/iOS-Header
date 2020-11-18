@@ -6,34 +6,42 @@
 
 #import <ShazamKit/SHSignature.h>
 
-@class AVAudioFormat, NSMutableArray, SigX;
+@class AVAudioFormat, SigX;
 
 @interface SHMutableSignature : SHSignature
 {
-    unsigned int _currentChunkFrameCount;
+    unsigned int _currentFrameCount;
+    double _maximumSeconds;
+    long long _clipStyle;
     AVAudioFormat *_format;
     SigX *_sigX;
-    NSMutableArray *_mutableChunks;
-    long long _signatureType;
 }
 
-@property (nonatomic) unsigned int currentChunkFrameCount; // @synthesize currentChunkFrameCount=_currentChunkFrameCount;
+@property (readonly, nonatomic) long long clipStyle; // @synthesize clipStyle=_clipStyle;
+@property (nonatomic) unsigned int currentFrameCount; // @synthesize currentFrameCount=_currentFrameCount;
 @property (strong, nonatomic) AVAudioFormat *format; // @synthesize format=_format;
-@property (strong, nonatomic) NSMutableArray *mutableChunks; // @synthesize mutableChunks=_mutableChunks;
+@property (readonly, nonatomic) double maximumSeconds; // @synthesize maximumSeconds=_maximumSeconds;
 @property (strong, nonatomic) SigX *sigX; // @synthesize sigX=_sigX;
-@property (nonatomic) long long signatureType; // @synthesize signatureType=_signatureType;
 
++ (id)entitlements;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)append:(id)arg1 atTime:(id)arg2 error:(id *)arg3;
-- (id)chunks;
+- (BOOL)appendBuffer:(id)arg1 atTime:(id)arg2 error:(id *)arg3;
+- (id)clipExcessAudio:(id)arg1;
 - (void)configureWithFormat:(id)arg1;
 - (long long)currentPosition;
-- (BOOL)flowValidated:(id)arg1 error:(id *)arg2;
+- (id)dataRepresentation;
+- (id)debugDescription;
+- (void)encodeWithCoder:(id)arg1;
 - (id)generate:(id *)arg1;
-- (id)initWithID:(id)arg1 chunks:(id)arg2 time:(id)arg3 sessionStartTime:(id)arg4;
-- (id)initWithSignatureType:(long long)arg1;
-- (unsigned int)maxChunkFrameCount;
+- (id)init;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithMaximumSeconds:(double)arg1 clipStyle:(long long)arg2;
+- (double)length;
+- (void)performSignatureGenerationEntitlementCheck;
 - (double)secondsFromFrameCount:(unsigned int)arg1 forFormat:(id)arg2;
+- (int)signatureType;
 
 @end
 

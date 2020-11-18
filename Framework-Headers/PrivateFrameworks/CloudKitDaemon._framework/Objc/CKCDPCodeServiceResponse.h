@@ -15,13 +15,16 @@ __attribute__((visibility("hidden")))
 {
     NSMutableArray *_assetAuthorizationResponses;
     CKCDPError *_error;
+    NSData *_routingToken;
     NSData *_serializedResult;
 }
 
 @property (strong, nonatomic) NSMutableArray *assetAuthorizationResponses; // @synthesize assetAuthorizationResponses=_assetAuthorizationResponses;
 @property (strong, nonatomic) CKCDPError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) BOOL hasError;
+@property (readonly, nonatomic) BOOL hasRoutingToken;
 @property (readonly, nonatomic) BOOL hasSerializedResult;
+@property (strong, nonatomic) NSData *routingToken; // @synthesize routingToken=_routingToken;
 @property (strong, nonatomic) NSData *serializedResult; // @synthesize serializedResult=_serializedResult;
 
 + (Class)assetAuthorizationResponsesType;

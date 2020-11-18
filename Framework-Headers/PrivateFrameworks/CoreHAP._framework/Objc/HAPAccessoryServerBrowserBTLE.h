@@ -10,7 +10,7 @@
 #import <CoreHAP/HAPAccessoryServerBrowserWiProxBTLEDelegate-Protocol.h>
 #import <CoreHAP/HMFLogging-Protocol.h>
 
-@class CBCentralManager, CBConnectionsObserver, HAPAccessoryServerBrowserWiProxBTLE, NSMapTable, NSMutableArray, NSMutableOrderedSet, NSMutableSet, NSObject, NSString;
+@class CBCentralManager, CBConnectionsObserver, HAPAccessoryServerBrowserWiProxBTLE, NSMapTable, NSMutableArray, NSMutableOrderedSet, NSObject, NSString;
 @protocol HAPAccessoryServerBrowserBTLEDelegate, OS_dispatch_queue, OS_dispatch_source;
 
 @interface HAPAccessoryServerBrowserBTLE : HAPAccessoryServerBrowser <CBCentralManagerDelegate, HAPAccessoryServerBrowserWiProxBTLEDelegate, HMFLogging>
@@ -23,7 +23,6 @@
     CBConnectionsObserver *_connectionsObserver;
     HAPAccessoryServerBrowserWiProxBTLE *_hapWiProxBLEBrowser;
     NSMapTable *_discoveredPeripheralsWithAccessories;
-    NSMutableSet *_pairedAccessoryIdentifiers;
     NSMapTable *_recentlySeenPairedPeripherals;
     NSMutableArray *_powerOnCentralManagerCompletions;
     CDUnknownBlockType _reachabilityCompletion;
@@ -45,8 +44,7 @@
 @property (strong, nonatomic) HAPAccessoryServerBrowserWiProxBTLE *hapWiProxBLEBrowser; // @synthesize hapWiProxBLEBrowser=_hapWiProxBLEBrowser;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMapTable *identifersWithReachabilityScanTuples; // @synthesize identifersWithReachabilityScanTuples=_identifersWithReachabilityScanTuples;
-@property (strong) NSMutableSet *pairedAccessoryIdentifiers; // @synthesize pairedAccessoryIdentifiers=_pairedAccessoryIdentifiers;
-@property (nonatomic, getter=isPerformingGeneralScan) BOOL performingGeneralScan; // @synthesize performingGeneralScan=_performingGeneralScan;
+@property (readonly, nonatomic, getter=isPerformingGeneralScan) BOOL performingGeneralScan; // @synthesize performingGeneralScan=_performingGeneralScan;
 @property (strong, nonatomic) NSMutableArray *peripheralsPendingConnection; // @synthesize peripheralsPendingConnection=_peripheralsPendingConnection;
 @property (strong, nonatomic) NSMutableOrderedSet *peripheralsWithConnectionRequests; // @synthesize peripheralsWithConnectionRequests=_peripheralsWithConnectionRequests;
 @property (strong, nonatomic) NSMutableArray *powerOnCentralManagerCompletions; // @synthesize powerOnCentralManagerCompletions=_powerOnCentralManagerCompletions;
@@ -83,6 +81,7 @@
 - (void)_performTimedScanForIdentifiers:(id)arg1 workQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)_powerOnCentralManagerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_probeReachabilityForAccessoryServersWithIdentifiers:(id)arg1 onQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (id)_recentlySeenPairedPeripheralTupleWithPeripheral:(id)arg1;
 - (void)_removeFromPendingConnections:(id)arg1;
 - (void)_removeIdentifiersForReachabilityScan;
 - (void)_reportReachabilityForAccessoryWithIdentifier:(id)arg1;
@@ -103,11 +102,11 @@
 - (void)configureBTLEQoSLimits:(unsigned long long)arg1;
 - (void)connectToBTLEAccessoryServer:(id)arg1;
 - (void)connectedHAPPeripheral:(id)arg1;
+- (void)deRegisterAccessoryWithIdentifier:(id)arg1;
 - (void)disconnectFromBTLEAccessoryServer:(id)arg1;
 - (void)disconnectedHAPPeripheral:(id)arg1 error:(id)arg2;
 - (void)discoverAccessoryServerWithIdentifier:(id)arg1;
 - (void)failedToConnectHAPPeripheral:(id)arg1 error:(id)arg2;
-- (void)forgetPairedAccesoryWithIdentifier:(id)arg1;
 - (id)hapCharacteristicsForEncryptedPayload:(id)arg1 identifier:(id)arg2 shouldConnect:(BOOL *)arg3;
 - (id)initWithQueue:(id)arg1;
 - (long long)linkType;
@@ -115,13 +114,14 @@
 - (void)matchAccessoryServerWithSetupID:(id)arg1 serverIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)pauseScans;
 - (void)probeReachabilityForAccessoryServersWithIdentifiers:(id)arg1 onQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
-- (void)registerPairedAccessoryWithIdentifier:(id)arg1;
 - (void)removeCachedAccessoryWithIdentifier:(id)arg1;
 - (void)resetLastSeenForAccessoryServersWithIdentifers:(id)arg1;
+- (void)resetPairedAccessories;
 - (void)retrieveCurrentStateForIdentifer:(id)arg1 onQueue:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)saveCacheToDisk:(id)arg1;
 - (void)setConnectionLatency:(long long)arg1 forPeripheral:(id)arg2;
 - (void)setDelegate:(id)arg1 queue:(id)arg2;
+- (void)setPerformingGeneralScan:(BOOL)arg1;
 - (void)setReachabilityCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)startDiscoveringAccessoryServers;
 - (void)stopDiscoveringAccessoryServers;

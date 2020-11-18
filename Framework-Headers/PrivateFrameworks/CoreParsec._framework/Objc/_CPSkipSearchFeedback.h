@@ -17,6 +17,9 @@
     int _triggerEvent;
     unsigned long long _timestamp;
     NSString *_input;
+    NSString *_experimentId;
+    NSString *_treatmentId;
+    NSString *_experimentNamespaceId;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,6 +27,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
+@property (copy, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
+@property (copy, nonatomic) NSString *experimentNamespaceId; // @synthesize experimentNamespaceId=_experimentNamespaceId;
 @property (readonly, nonatomic) id feedbackJSON;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -33,6 +38,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) unsigned long long timestamp;
+@property (copy, nonatomic) NSString *treatmentId; // @synthesize treatmentId=_treatmentId;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 
 - (void).cxx_destruct;
@@ -40,6 +46,7 @@
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (id)initWithTriggerEvent:(int)arg1 input:(id)arg2;
+- (id)initWithTriggerEvent:(int)arg1 input:(id)arg2 experimentId:(id)arg3 treatmentId:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;

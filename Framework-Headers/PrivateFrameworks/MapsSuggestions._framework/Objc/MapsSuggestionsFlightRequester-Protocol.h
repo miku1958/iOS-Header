@@ -9,6 +9,6 @@
 @class NSDate, NSString;
 
 @protocol MapsSuggestionsFlightRequester <MapsSuggestionsObject>
-- (BOOL)requestFlightsWithNumber:(unsigned long long)arg1 airlineCode:(NSString *)arg2 departureDate:(NSDate *)arg3 handler:(void (^)(NSArray *, NSError *))arg4;
+- (BOOL)requestFlightsWithFullFlightNumber:(NSString *)arg1 departureDate:(NSDate *)arg2 handler:(void (^)(NSArray *, NSError *))arg3;
 @end
 

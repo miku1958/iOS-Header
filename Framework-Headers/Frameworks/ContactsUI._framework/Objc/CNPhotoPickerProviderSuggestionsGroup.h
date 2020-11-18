@@ -6,25 +6,32 @@
 
 #import <ContactsUI/CNPhotoPickerProviderGroup.h>
 
+@class NSArray;
+
 __attribute__((visibility("hidden")))
 @interface CNPhotoPickerProviderSuggestionsGroup : CNPhotoPickerProviderGroup
 {
+    NSArray *_addItems;
 }
 
+- (void).cxx_destruct;
+- (id)addItems;
 - (long long)addProviderItem:(id)arg1;
-- (id)addSymbolImageName;
 - (id)dedupedSuggestionItemsGroupedByProvider;
 - (id)defaultMonogramItem;
 - (long long)indexForDefaultMonogram;
 - (id)initWithProviders:(id)arg1 environment:(id)arg2 allowAddItem:(BOOL)arg3;
 - (id)itemsForProviderIdentifier:(id)arg1;
+- (void)loadAvailablePaddingItems;
 - (unsigned long long)maxRecentsAndMonogramsCount;
 - (id)paddedDisplayItems:(id)arg1;
 - (void)prepareDisplayItems:(id)arg1;
 - (void)providerItemDidUpdate:(id)arg1;
 - (id)providerItems:(id)arg1 withMaxRecentsAndMonogramsCount:(unsigned long long)arg2;
 - (id)providerOfClass:(Class)arg1;
+- (void)reloadMonogramProviderGroupWithVisualIdentity:(id)arg1 size:(struct CGSize)arg2 RTL:(BOOL)arg3;
 - (long long)removeProviderItem:(id)arg1;
+- (void)setAddItems:(id)arg1;
 
 @end
 

@@ -9,7 +9,7 @@
 #import <network/OS_nw_endpoint_transform-Protocol.h>
 
 @class NSString, NWConcrete_nw_endpoint_handler;
-@protocol OS_nw_array, OS_xpc_object;
+@protocol OS_nw_array, OS_nw_endpoint, OS_xpc_object;
 
 __attribute__((visibility("hidden")))
 @interface NWConcrete_nw_endpoint_transform : NSObject <OS_nw_endpoint_transform>
@@ -17,8 +17,10 @@ __attribute__((visibility("hidden")))
     NSObject<OS_nw_array> *child_endpoint_handlers;
     NSObject<OS_nw_array> *failed_child_endpoint_handlers;
     NSObject<OS_xpc_object> *fallback_modes;
+    NSObject<OS_nw_array> *blocked_protocols;
     unsigned int next_child_endpoint_index;
     NWConcrete_nw_endpoint_handler *connected_child;
+    NSObject<OS_nw_endpoint> *primary_endpoint;
     void *child_timer;
 }
 

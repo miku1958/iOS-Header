@@ -18,6 +18,7 @@
 @property (readonly, copy, nonatomic) FCFeedRange *paidFeedRange; // @synthesize paidFeedRange=_paidFeedRange;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithFreeFeedRange:(id)arg1 paidFeedRange:(id)arg2;
 
 @end

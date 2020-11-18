@@ -53,16 +53,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *textInputCallbackQueue; // @synthesize textInputCallbackQueue=_textInputCallbackQueue;
 
 - (void).cxx_destruct;
-- (void)_callCientHiliteModeCallback;
-- (void)_callClientGameControllerInputModeCallback;
-- (void)_callClientGameControllerPropertiesCallback:(id)arg1 controller:(unsigned long long)arg2;
-- (void)_callClientRTICallback:(id)arg1;
-- (void)_callClientRecordingStateCallback;
-- (void)_callClientTextInputCallback:(id)arg1 type:(unsigned int)arg2;
-- (void)_handleHiliteModeMessage:(id)arg1;
-- (void)_handleKeyboardMessage:(id)arg1;
-- (void)_handleRemoteTextInputMessage:(id)arg1;
-- (void)_sendTextInputMessageWithActionType:(unsigned long long)arg1 text:(id)arg2;
 - (void)clearActiveTextEditingSessionData;
 - (void)clientConnection:(id)arg1 didReceiveMessage:(id)arg2;
 - (id)currentClientUpdatesConfigMessage;
@@ -78,16 +68,13 @@ __attribute__((visibility("hidden")))
 - (void)registerTouchDeviceWithDescriptor:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)registerVoiceInputDeviceWithDescriptor:(id)arg1 replyQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendGameControllerEvent:(id)arg1 controllerID:(unsigned long long)arg2;
-- (void)sendHIDEvent:(struct __IOHIDEvent *)arg1;
 - (void)sendTouchEvent:(struct _MRHIDTouchEvent)arg1 toVirtualDeviceWithID:(unsigned long long)arg2;
 - (void)setGameControllerInputModeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setGameControllerPropertiesCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
-- (void)setHiliteMode:(BOOL)arg1;
 - (void)setHiliteModeCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setRTICallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setTextEditingCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)setTextOnActiveTextEditingSessionWithText:(id)arg1;
-- (void)setVoiceRecordingState:(unsigned int)arg1;
 - (void)setVoiceRecordingStateCallback:(CDUnknownBlockType)arg1 withQueue:(id)arg2;
 - (void)unregisterGameController:(unsigned long long)arg1;
 - (void)wake;

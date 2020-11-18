@@ -24,6 +24,7 @@
 + (Class)layerClass;
 - (void).cxx_destruct;
 - (id)_coreMaterialVisualStylingProviderForCategory:(id)arg1;
+- (void)_dynamicUserInterfaceTraitDidChange;
 - (id)_materialLayer;
 - (void)_updateContentVisualStylingIfNecessary;
 - (void)_updateContentVisualStylingWithProvider:(id)arg1;

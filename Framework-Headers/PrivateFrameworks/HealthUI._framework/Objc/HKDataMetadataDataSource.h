@@ -18,6 +18,7 @@
 
 - (void).cxx_destruct;
 - (id)_mediaSourceDisplayNamesForSample:(id)arg1;
+- (void)addAdditionalDetailValuesToSection:(id)arg1 key:(id)arg2 value:(id)arg3;
 - (void)addDetailValuesToSection:(id)arg1;
 - (id)initWithSample:(id)arg1 unitPreferenceController:(id)arg2;
 

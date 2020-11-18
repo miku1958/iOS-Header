@@ -34,11 +34,10 @@
 - (void)_attemptBackupRecoveryWithLocalSecret:(id)arg1 type:(unsigned long long)arg2 useCachedSecret:(BOOL)arg3 circleJoinResult:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_attemptCDPEnable:(CDUnknownBlockType)arg1;
 - (void)_authenticatedRepairCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_authenticatedShouldPerformRepairWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_authenticatedShouldPerformRepairWithOptionForceFetch:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_confirmCDPEligibilityWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_disableAsyncModeRequested;
 - (void)_disableCloudDataProtectionWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_enableKVSForAccount:(id)arg1 store:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_enableSecureBackupWithCircleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_enrollOrDisableCDPAfterEnabledStateVerified:(CDUnknownBlockType)arg1;
 - (void)_handleCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
@@ -53,6 +52,7 @@
 - (void)_postRecoveryEnableSecureBackupWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_predicateForRecordUpgradeCheck;
 - (id)_predicateForRecordUpgradeCheckIgnoringBottled;
+- (id)_predicateForRepair;
 - (void)_preflightAccountStateWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_recoverSecureBackupWithCircleJoinResult:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_refreshAndAuthenticateWithContext:(id)arg1;
@@ -68,7 +68,7 @@
 - (void)repairCloudDataProtectionStateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)secureChannelContextForController:(id)arg1;
 - (BOOL)shouldAllowCDPEnrollment;
-- (void)shouldPerformRepairWithCompletion:(CDUnknownBlockType)arg1;
+- (void)shouldPerformRepairWithOptionForceFetch:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)synchronizeCircleViewsForSecureBackupContext:(id)arg1;
 
 @end

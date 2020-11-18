@@ -11,6 +11,7 @@
 }
 
 + (void)authenticateForSettings:(id)arg1 allowAuthenticationReuse:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (BOOL)authenticationRequiresPasscode;
 + (void)pushSettingsAfterAuthentication:(id)arg1 onBehalfOfViewController:(id)arg2 resourceDictionary:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 
 @end

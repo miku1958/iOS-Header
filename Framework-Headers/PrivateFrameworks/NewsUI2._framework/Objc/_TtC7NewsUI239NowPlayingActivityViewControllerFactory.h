@@ -11,9 +11,9 @@
 @interface _TtC7NewsUI239NowPlayingActivityViewControllerFactory : _TtCs12_SwiftObject
 {
     MISSING_TYPE *sharingActivityItemFactory;
-    MISSING_TYPE *sharingActivityProviderFactory;
-    MISSING_TYPE *reportConcernModule;
     MISSING_TYPE *bundleSubscriptionManager;
+    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *tracker;
 }
 
 @end

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PGCurationContentOrAestheticScoreTrait, PGCurationIndexSetTrait, PGCurationPartOfDayTrait, PGCurationSetTrait, PGGraph;
+@class NSString, PGCurationContentOrAestheticScoreTrait, PGCurationCropScoreTrait, PGCurationIndexSetTrait, PGCurationPartOfDayTrait, PGCurationSetTrait, PGGraph;
 
 @interface PGCurationCriteria : NSObject
 {
@@ -19,12 +19,14 @@
     unsigned long long _faceFilter;
     PGCurationSetTrait *_peopleTrait;
     PGCurationContentOrAestheticScoreTrait *_contentOrAestheticScoreTrait;
+    PGCurationCropScoreTrait *_cropScoreTrait;
     unsigned long long _client;
 }
 
 @property (readonly, nonatomic) unsigned long long client; // @synthesize client=_client;
 @property (strong, nonatomic) PGCurationIndexSetTrait *compulsoryScenesTrait; // @synthesize compulsoryScenesTrait=_compulsoryScenesTrait;
 @property (strong, nonatomic) PGCurationContentOrAestheticScoreTrait *contentOrAestheticScoreTrait; // @synthesize contentOrAestheticScoreTrait=_contentOrAestheticScoreTrait;
+@property (strong, nonatomic) PGCurationCropScoreTrait *cropScoreTrait; // @synthesize cropScoreTrait=_cropScoreTrait;
 @property (nonatomic) unsigned long long faceFilter; // @synthesize faceFilter=_faceFilter;
 @property (nonatomic) BOOL filterUtilityAssets; // @synthesize filterUtilityAssets=_filterUtilityAssets;
 @property (readonly, nonatomic) PGGraph *graph; // @synthesize graph=_graph;

@@ -6,7 +6,7 @@
 
 #import <ContentKit/WFContact.h>
 
-@class CNContact, NSString, WFFileRepresentation;
+@class CNContact, NSString;
 
 @interface WFCNContact : WFContact
 {
@@ -14,7 +14,6 @@
     int _propertyID;
     NSString *_accountIdentifier;
     long long _multivalueIndex;
-    WFFileRepresentation *_vCardRepresentation;
     CNContact *_contact;
 }
 
@@ -67,7 +66,7 @@
 - (id)socialProfiles;
 - (id)streetAddresses;
 - (id)thumbnailImageData;
-- (id)vCardRepresentation;
+- (id)vCardRepresentationWithFullData:(BOOL)arg1;
 - (id)valueForPropertyID:(int)arg1;
 
 @end

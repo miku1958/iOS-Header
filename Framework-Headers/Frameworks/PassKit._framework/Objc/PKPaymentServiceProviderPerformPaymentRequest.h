@@ -14,8 +14,10 @@
     PKPaymentPass *_pass;
     PKServiceProviderOrder *_serviceProviderOrder;
     NSData *_nonce;
+    long long _cryptogramType;
 }
 
+@property (nonatomic) long long cryptogramType; // @synthesize cryptogramType=_cryptogramType;
 @property (copy, nonatomic) NSData *nonce; // @synthesize nonce=_nonce;
 @property (strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 @property (strong, nonatomic) PKServiceProviderOrder *serviceProviderOrder; // @synthesize serviceProviderOrder=_serviceProviderOrder;

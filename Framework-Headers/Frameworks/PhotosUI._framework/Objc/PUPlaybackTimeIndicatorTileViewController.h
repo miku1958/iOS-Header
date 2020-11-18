@@ -25,16 +25,16 @@ __attribute__((visibility("hidden")))
     PUBrowsingViewModel *_viewModel;
     PUPlaybackTimeLabel *__label;
     long long __indicatorFormat;
-    NSDate *__forcedIndicatorVisibilityEndDate;
+    NSDate *_forcedIndicatorVisibilityEndDate;
 }
 
-@property (strong, nonatomic, setter=_setForcedIndicatorVisibilityEndDate:) NSDate *_forcedIndicatorVisibilityEndDate; // @synthesize _forcedIndicatorVisibilityEndDate=__forcedIndicatorVisibilityEndDate;
 @property (nonatomic, setter=_setIndicatorFormat:) long long _indicatorFormat; // @synthesize _indicatorFormat=__indicatorFormat;
 @property (nonatomic, setter=_setIndicatorVisible:) BOOL _isIndicatorVisible; // @synthesize _isIndicatorVisible=__isIndicatorVisible;
 @property (readonly, nonatomic) PUPlaybackTimeLabel *_label; // @synthesize _label=__label;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUPlaybackTimeIndicatorTileViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSDate *forcedIndicatorVisibilityEndDate; // @synthesize forcedIndicatorVisibilityEndDate=_forcedIndicatorVisibilityEndDate;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PUBrowsingVideoPlayer *videoPlayer; // @synthesize videoPlayer=_videoPlayer;
@@ -42,6 +42,8 @@ __attribute__((visibility("hidden")))
 
 + (struct CGSize)playbackTimeIndicatorTileSize;
 - (void).cxx_destruct;
+- (void)_cancelFlashTimeIndicator;
+- (void)_flashTimeIndicator;
 - (void)_handleVideoPlayer:(id)arg1 change:(id)arg2;
 - (void)_handleViewModel:(id)arg1 change:(id)arg2;
 - (void)_setIndicatorFormat:(long long)arg1 animated:(BOOL)arg2;

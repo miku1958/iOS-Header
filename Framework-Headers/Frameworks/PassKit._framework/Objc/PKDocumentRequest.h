@@ -14,9 +14,10 @@
     NSString *_countryCode;
 }
 
-@property (nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
+@property (copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (nonatomic) unsigned long long documentType; // @synthesize documentType=_documentType;
 
+- (void).cxx_destruct;
 
 @end
 

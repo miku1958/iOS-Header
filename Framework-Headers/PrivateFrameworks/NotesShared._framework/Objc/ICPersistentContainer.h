@@ -40,6 +40,7 @@
 - (BOOL)migrateFromOldDataModel;
 - (id)newBackgroundContext;
 - (void)setupPersistentStoreDescriptions;
+- (void)setupViewContext;
 - (void)vacuumStore;
 - (void)vacuumStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
 

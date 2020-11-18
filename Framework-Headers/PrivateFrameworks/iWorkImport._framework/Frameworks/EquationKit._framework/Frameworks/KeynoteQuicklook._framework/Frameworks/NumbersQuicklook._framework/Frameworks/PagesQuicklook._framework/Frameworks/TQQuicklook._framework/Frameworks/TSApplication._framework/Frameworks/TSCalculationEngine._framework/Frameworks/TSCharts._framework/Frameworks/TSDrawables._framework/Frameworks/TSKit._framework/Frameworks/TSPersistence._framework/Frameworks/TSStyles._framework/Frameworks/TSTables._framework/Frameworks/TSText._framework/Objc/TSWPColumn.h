@@ -69,7 +69,6 @@
 + (unsigned long long)charIndexForPoint:(struct CGPoint)arg1 inColumnsArray:(id)arg2 allowPastBreak:(BOOL)arg3 allowNotFound:(BOOL)arg4 ignoreEmptyColumns:(BOOL)arg5 isAtEndOfLine:(BOOL *)arg6 leadingEdge:(BOOL *)arg7;
 + (unsigned long long)charIndexForPoint:(struct CGPoint)arg1 inColumnsArray:(id)arg2 allowPastBreak:(BOOL)arg3 allowNotFound:(BOOL)arg4 pastCenterGoesToNextChar:(BOOL)arg5 constrainToAscentAndDescent:(BOOL)arg6 ignoreEmptyColumns:(BOOL)arg7 isAtEndOfLine:(BOOL *)arg8 leadingEdge:(BOOL *)arg9;
 + (unsigned long long)charIndexForPoint:(struct CGPoint)arg1 inColumnsArray:(id)arg2 allowPastBreak:(BOOL)arg3 allowNotFound:(BOOL)arg4 pastCenterGoesToNextChar:(BOOL)arg5 ignoreEmptyColumns:(BOOL)arg6 isAtEndOfLine:(BOOL *)arg7 leadingEdge:(BOOL *)arg8;
-+ (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1 constrainToAscentAndDescent:(BOOL)arg2 inLayoutTarget:(id)arg3;
 + (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1 inLayoutTarget:(id)arg2;
 + (unsigned long long)charIndexForPointWithPinning:(struct CGPoint)arg1 isTail:(BOOL)arg2 selectionType:(int)arg3 inLayoutTarget:(id)arg4;
 + (unsigned long long)charIndexFromPoint:(struct CGPoint)arg1 allowPastBreak:(BOOL)arg2 allowNotFound:(BOOL)arg3 constrainToAscentAndDescent:(BOOL)arg4 isAtEndOfLine:(BOOL *)arg5 leadingEdge:(BOOL *)arg6 inLayoutTarget:(id)arg7;
@@ -88,6 +87,7 @@
 + (id)contentRectsToAvoidPencilAnnotationOverlapWithColumns:(id)arg1;
 + (id)footnoteMarkAttachmentInColumnArray:(id)arg1 atPoint:(struct CGPoint)arg2;
 + (id)footnoteReferenceAttachmentInColumnArray:(id)arg1 atPoint:(struct CGPoint)arg2;
++ (struct CGRect)frameBoundsOfColumns:(id)arg1;
 + (struct CGRect)labelRectForCharIndex:(unsigned long long)arg1 withColumns:(id)arg2;
 + (struct CGSize)layoutSizeForParagraphEnumerator:(const struct TSWPParagraphEnumerator *)arg1 inColumns:(id)arg2 lineCount:(out unsigned long long *)arg3 nextLineOffset:(out double *)arg4;
 + (struct CGPoint)p_pinPoint:(struct CGPoint)arg1 toRect:(struct CGRect)arg2;

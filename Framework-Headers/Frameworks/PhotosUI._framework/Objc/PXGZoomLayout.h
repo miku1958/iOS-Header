@@ -29,6 +29,7 @@
 - (void).cxx_destruct;
 - (void)_configureSublayouts;
 - (void)_updateSublayoutGeometries;
+- (id)axSpriteIndexes;
 - (void)didChangeSublayoutOrigins;
 - (void)enumerateVisibleAnchoringLayoutsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)init;
@@ -36,6 +37,7 @@
 - (void)referenceSizeDidChange;
 - (void)safeAreaInsetsDidChange;
 - (void)screenScaleDidChange;
+- (void)scrollSpeedRegimeDidChange;
 - (void)setLayers:(id)arg1 primaryLayer:(id)arg2;
 - (struct CGRect)sublayout:(id)arg1 visibleRectForRequestedVisibleRect:(struct CGRect)arg2;
 - (void)sublayoutDidChangeContentSize:(id)arg1;

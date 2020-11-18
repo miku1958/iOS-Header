@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)load;
 - (void)_xref_dispose;
 - (oneway void)release;
 

@@ -30,7 +30,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
-- (void)reloadCollections;
+- (void)reloadCollectionsAnimated:(BOOL)arg1;
 - (void)sectionView:(id)arg1 didDeselectRow:(id)arg2 atIndex:(unsigned long long)arg3;
 - (void)sectionView:(id)arg1 didSelectFooter:(id)arg2;
 - (void)sectionView:(id)arg1 didSelectHeader:(id)arg2;

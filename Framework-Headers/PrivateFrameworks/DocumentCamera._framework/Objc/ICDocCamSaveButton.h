@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)accessibilityHint;
 - (id)accessibilityLabel;
+- (id)accessibilityUserInputLabels;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (id)saveButtonCountStringForDocumentCount:(unsigned long long)arg1;

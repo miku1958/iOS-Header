@@ -8,16 +8,17 @@
 
 #import <CarPlaySupport/CRSUIDashboardFocusableItemProviding-Protocol.h>
 
-@class CPDashboardButton, CPSAbridgableLabel, NSLayoutConstraint, NSString, UIButton, UIImageView;
+@class CPDashboardButton, CPSAbridgableLabel, NSLayoutConstraint, NSString, UIButton, UIColor, UIImageView;
 @protocol CPSButtonDelegate;
 
 @interface CPSDashboardItemView : UIView <CRSUIDashboardFocusableItemProviding>
 {
+    CPDashboardButton *_dashboardButton;
     UIImageView *_imageView;
     id<CPSButtonDelegate> _delegate;
-    CPDashboardButton *_dashboardButton;
-    CPSAbridgableLabel *_titleLabel;
+    UIColor *_focusHighlightColor;
     CPSAbridgableLabel *_subtitleLabel;
+    CPSAbridgableLabel *_titleLabel;
     UIButton *_button;
     UIView *_focusBackgroundView;
     unsigned long long _layoutAxis;
@@ -26,11 +27,12 @@
 }
 
 @property (strong, nonatomic) UIButton *button; // @synthesize button=_button;
-@property (strong, nonatomic) CPDashboardButton *dashboardButton; // @synthesize dashboardButton=_dashboardButton;
+@property (readonly, nonatomic) CPDashboardButton *dashboardButton; // @synthesize dashboardButton=_dashboardButton;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CPSButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIView *focusBackgroundView; // @synthesize focusBackgroundView=_focusBackgroundView;
+@property (strong, nonatomic) UIColor *focusHighlightColor; // @synthesize focusHighlightColor=_focusHighlightColor;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) unsigned long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;
@@ -48,6 +50,7 @@
 - (void)focusableItemFocused:(BOOL)arg1;
 - (void)focusableItemPressed:(BOOL)arg1;
 - (void)focusableItemSelected;
+- (void)hideSubtitle;
 - (id)initWithDashboardButton:(id)arg1 layoutAxis:(unsigned long long)arg2;
 - (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;

@@ -11,6 +11,11 @@
 }
 
 + (id)functionWithEvaluationBlock:(CDUnknownBlockType)arg1;
++ (id)grainInputSeedFromFrameTime;
++ (id)redEyeSpotsWithCorrectionInfo:(id)arg1;
++ (id)scaleMultiplyOfScalar:(double)arg1;
++ (id)scaledVector:(id)arg1;
++ (id)sharpnessWithIntensity:(double)arg1;
 - (id)evaluate:(id)arg1 error:(out id *)arg2;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

@@ -25,7 +25,7 @@
     NSString *_userInput;
     NSArray *_aliases;
     long long _suggestionType;
-    NSArray *_alternatives;
+    NSArray *_scoredAlternatives;
     BOOL _isMe;
     NSString *_sourceAppBundleIdentifier;
     INPersonHandle *_personHandle;
@@ -41,7 +41,7 @@
 @property (copy, nonatomic) NSArray *aliases; // @synthesize aliases=_aliases;
 @property (readonly, copy, nonatomic) NSArray *alternativeSiriMatches;
 @property (readonly, nonatomic) NSArray *alternativeSpeakableMatches;
-@property (copy, nonatomic) NSArray *alternatives; // @synthesize alternatives=_alternatives;
+@property (copy, nonatomic) NSArray *alternatives;
 @property (copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (copy, nonatomic) NSString *customIdentifier; // @synthesize customIdentifier=_customIdentifier;
 @property (readonly, copy) NSString *debugDescription;
@@ -73,6 +73,7 @@
 @property (copy, nonatomic) NSString *phonemeData; // @synthesize phonemeData=_phonemeData;
 @property (readonly, nonatomic) NSString *pronunciationHint;
 @property (copy, nonatomic) NSString *relationship; // @synthesize relationship=_relationship;
+@property (copy, nonatomic) NSArray *scoredAlternatives; // @synthesize scoredAlternatives=_scoredAlternatives;
 @property (readonly, copy, nonatomic) NSArray *siriMatches;
 @property (readonly, nonatomic) NSString *spokenPhrase;
 @property (readonly, nonatomic) long long suggestionType;
@@ -89,6 +90,7 @@
 
 + (id)expectedCNContactKeys;
 + (BOOL)supportsSecureCoding;
++ (id)toNilScoredPersons:(id)arg1;
 - (void).cxx_destruct;
 - (id)_aliases;
 - (long long)_compareSubProducerOne:(id)arg1 subProducerTwo:(id)arg2;
@@ -96,11 +98,12 @@
 - (id)_displayName;
 - (id)_initWithUserInput:(id)arg1 personHandle:(id)arg2 nameComponents:(id)arg3 displayName:(id)arg4 image:(id)arg5 contactIdentifier:(id)arg6 customIdentifier:(id)arg7 relationship:(id)arg8 aliases:(id)arg9 suggestionType:(long long)arg10 isMe:(BOOL)arg11 alternatives:(id)arg12 sourceAppBundleIdentifier:(id)arg13;
 - (id)_initWithUserInput:(id)arg1 personHandle:(id)arg2 nameComponents:(id)arg3 displayName:(id)arg4 image:(id)arg5 contactIdentifier:(id)arg6 customIdentifier:(id)arg7 relationship:(id)arg8 aliases:(id)arg9 suggestionType:(long long)arg10 isMe:(BOOL)arg11 alternatives:(id)arg12 sourceAppBundleIdentifier:(id)arg13 phonemeData:(id)arg14;
+- (id)_initWithUserInput:(id)arg1 personHandle:(id)arg2 nameComponents:(id)arg3 displayName:(id)arg4 image:(id)arg5 contactIdentifier:(id)arg6 customIdentifier:(id)arg7 relationship:(id)arg8 aliases:(id)arg9 suggestionType:(long long)arg10 isMe:(BOOL)arg11 scoredAlternatives:(id)arg12 sourceAppBundleIdentifier:(id)arg13 phonemeData:(id)arg14;
 - (void)_injectProxiesForImages:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_intents_cacheableObjects;
 - (BOOL)_intents_compareValue:(id)arg1 relation:(unsigned long long)arg2;
 - (id)_intents_indexingRepresentation;
-- (id)_intents_readableDescriptionWithLocalizer:(id)arg1 metadata:(id)arg2;
+- (id)_intents_readableTitleWithLocalizer:(id)arg1 metadata:(id)arg2;
 - (void)_intents_updateContainerWithCache:(id)arg1;
 - (id)_sourceAppBundleIdentifier;
 - (id)_userInput;
@@ -115,6 +118,7 @@
 - (id)initWithPersonHandle:(id)arg1 nameComponents:(id)arg2 displayName:(id)arg3 image:(id)arg4 contactIdentifier:(id)arg5 customIdentifier:(id)arg6;
 - (id)initWithPersonHandle:(id)arg1 nameComponents:(id)arg2 displayName:(id)arg3 image:(id)arg4 contactIdentifier:(id)arg5 customIdentifier:(id)arg6 aliases:(id)arg7 suggestionType:(long long)arg8;
 - (id)initWithPersonHandle:(id)arg1 nameComponents:(id)arg2 displayName:(id)arg3 image:(id)arg4 contactIdentifier:(id)arg5 customIdentifier:(id)arg6 isMe:(BOOL)arg7;
+- (id)initWithPersonHandle:(id)arg1 nameComponents:(id)arg2 displayName:(id)arg3 image:(id)arg4 contactIdentifier:(id)arg5 customIdentifier:(id)arg6 relationship:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)spokenPhrases;

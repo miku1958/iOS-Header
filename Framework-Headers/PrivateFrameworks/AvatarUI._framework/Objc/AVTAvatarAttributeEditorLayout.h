@@ -12,12 +12,15 @@
 
 @interface AVTAvatarAttributeEditorLayout : NSObject <AVTAvatarAttributeEditorLayout>
 {
+    BOOL _showSideGroupPicker;
+    BOOL _RTL;
     double _screenScale;
     NSString *_contentSizeCategory;
     struct CGSize _containerSize;
     struct UIEdgeInsets _edgeInsets;
 }
 
+@property (readonly, nonatomic) BOOL RTL; // @synthesize RTL=_RTL;
 @property (readonly, nonatomic) struct CGRect attributesContentViewFrame;
 @property (readonly, nonatomic) struct UIEdgeInsets attributesContentViewInsets;
 @property (readonly, nonatomic) struct UIEdgeInsets attributesContentViewScrollIndicatorInsets;
@@ -30,6 +33,8 @@
 @property (readonly, nonatomic) double headerMaskingViewAlpha;
 @property (readonly, nonatomic) struct CGRect headerMaskingViewFrame;
 @property (readonly, nonatomic) double screenScale; // @synthesize screenScale=_screenScale;
+@property (readonly, nonatomic) BOOL showSideGroupPicker; // @synthesize showSideGroupPicker=_showSideGroupPicker;
+@property (readonly, nonatomic) struct CGRect sideGroupContainerFrame;
 @property (readonly, nonatomic) unsigned long long supportedLayoutOrientation;
 @property (readonly, nonatomic) struct CGRect userInfoFrame;
 @property (readonly, nonatomic) double verticalRuleAlpha;
@@ -37,7 +42,7 @@
 
 - (void).cxx_destruct;
 - (id)backgroundColor;
-- (id)initWithContainerSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 screenScale:(double)arg3;
+- (id)initWithContainerSize:(struct CGSize)arg1 insets:(struct UIEdgeInsets)arg2 screenScale:(double)arg3 RTL:(BOOL)arg4 showSideGroupPicker:(BOOL)arg5;
 - (void)raiseExceptionForPropertyString:(id)arg1;
 
 @end

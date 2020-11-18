@@ -9,11 +9,8 @@
 @interface IMChat (CKAdditions)
 + (unsigned char)associatedMessageContentTypeFromCKMediaType:(int)arg1;
 + (id)configureMessageSummaryInfoForChatItem:(id)arg1;
-- (BOOL)__ck_isMuted;
-- (id)__ck_muteUntilDate;
 - (void)__ck_saveWatermark;
 - (BOOL)__ck_sendReadReceipts;
-- (void)__ck_setMuteUntilDate:(id)arg1;
 - (void)__ck_setSendReadReceipts:(BOOL)arg1;
 - (void)__ck_updateWatermarkToMessageID:(long long)arg1 date:(id)arg2;
 - (id)__ck_watermarkDate;

@@ -19,6 +19,7 @@
     NSMutableArray *_oauthSignerClients;
     NSMutableArray *_authenticationDialogManagerClients;
     NSMutableDictionary *_clientsByConnection;
+    unsigned int _clientCountMaximum;
     NSObject<OS_dispatch_queue> *_deferredConnectionResumeQueue;
     NSObject<OS_dispatch_semaphore> *_deferredConnectionResumeQueueSemaphore;
     NSObject<OS_dispatch_queue> *_performMigrationQueue;
@@ -63,8 +64,9 @@
 - (id)_keyForConnection:(id)arg1;
 - (id)_newDaemonAccountStoreFilterForClient:(id)arg1;
 - (id)_newOAuthSignerForClient:(id)arg1;
+- (BOOL)_shouldNotifyClient:(id)arg1 ofChangesForAccountType:(id)arg2;
 - (void)_signalDeferredConnectionResumeQueueSemaphore;
-- (void)accountStore:(id)arg1 didSaveAccount:(id)arg2;
+- (void)accountStore:(id)arg1 didSaveAccount:(id)arg2 changeType:(int)arg3;
 - (id)clientForConnection:(id)arg1;
 - (id)createClientForConnection:(id)arg1;
 - (id)createDatabaseConnection;

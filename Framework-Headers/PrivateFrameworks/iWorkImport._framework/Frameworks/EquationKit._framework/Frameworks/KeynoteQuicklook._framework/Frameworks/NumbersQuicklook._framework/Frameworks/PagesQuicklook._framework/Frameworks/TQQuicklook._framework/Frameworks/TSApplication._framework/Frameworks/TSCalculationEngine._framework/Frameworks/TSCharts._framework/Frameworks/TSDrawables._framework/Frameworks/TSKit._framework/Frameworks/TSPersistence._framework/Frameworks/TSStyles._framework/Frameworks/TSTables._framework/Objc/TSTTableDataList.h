@@ -7,11 +7,12 @@
 #import <TSPersistence/TSPObject.h>
 
 #import <TSTables/TSPCopying-Protocol.h>
+#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
 
 @class NSMutableArray, NSMutableIndexSet, NSObject, TSTTableDataListSegment;
 @protocol TSDContainerInfo><TSWPStorageParent;
 
-@interface TSTTableDataList : TSPObject <TSPCopying>
+@interface TSTTableDataList : TSPObject <TSPCopying, TSTCompatibilityVersionProviding>
 {
     NSMutableArray *_segments;
     struct unordered_map<NSObject<TSTTableDataPayloadHashing>*, TSTTableDataObject *, TSTTableDataPayloadHash, TSTTableDataPayloadEqual, std::__1::allocator<std::__1::pair<NSObject<TSTTableDataPayloadHashing>*const, TSTTableDataObject *>>> _payloadToObjectMap;

@@ -55,6 +55,8 @@
 + (id)allAccountsInContext:(id)arg1;
 + (id)allActiveAccountsInContext:(id)arg1;
 + (id)allActiveAccountsInContext:(id)arg1 sortDescriptors:(id)arg2 relationshipKeyPathsForPrefetching:(id)arg3;
++ (id)allActiveAccountsInContextSortedByAccountType:(id)arg1;
++ (id)allActiveAccountsInContextWithDefaultBeingFirstIfApplicable:(id)arg1;
 + (id)allActiveCloudKitAccountsInContext:(id)arg1;
 + (id)allCloudKitAccountsInContext:(id)arg1;
 + (id)allCloudObjectsInContext:(id)arg1;
@@ -67,6 +69,7 @@
 + (void)deleteAccountWithBatchDelete:(id)arg1;
 + (id)existingCloudObjectForRecordID:(id)arg1 accountID:(id)arg2 context:(id)arg3;
 + (BOOL)hasActiveCloudKitAccountInContext:(id)arg1;
++ (id)inMemoryAccountInContext:(id)arg1;
 + (void)initialize;
 + (void)initializeLocalAccountNamesInBackground;
 + (BOOL)isCloudKitAccountAvailable;
@@ -80,6 +83,7 @@
 + (id)newAccountWithIdentifier:(id)arg1 type:(int)arg2 context:(id)arg3;
 + (id)newLocalAccountInContext:(id)arg1;
 + (unsigned long long)numberOfCloudKitAccountsInContext:(id)arg1 onlyMigrated:(BOOL)arg2;
++ (id)passwordProtectedNoteIdentifiersInAccountIdentifier:(id)arg1 context:(id)arg2;
 + (void)setAccountUtilities:(id)arg1;
 + (id)standardFolderIdentifierWithPrefix:(id)arg1 accountIdentifier:(id)arg2 accountType:(int)arg3;
 - (void).cxx_destruct;
@@ -118,13 +122,13 @@
 - (BOOL)isInICloudAccount;
 - (BOOL)isLeaf;
 - (id)localizedNameMidSentence;
+- (void)managedObjectContextDidSave:(id)arg1;
 - (id)mediaDirectoryURL;
 - (void)mergeDataFromRecord:(id)arg1 accountID:(id)arg2;
 - (BOOL)needsToBeDeletedFromCloud;
 - (BOOL)needsToBePushedToCloud;
 - (id)newlyCreatedRecord;
 - (id)noteVisibilityTestingForSearchingAccount;
-- (void)noteWillBeDeletedOrUndeleted:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)passwordProtectedNotes;
 - (void)performBlockInPersonaContextIfNecessary:(CDUnknownBlockType)arg1;

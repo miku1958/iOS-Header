@@ -12,20 +12,18 @@
 
 @interface NRTermsEvent : NRPBTermsEvent <NSSecureCoding>
 {
+    BOOL _flaggedForSend;
     BOOL _writable;
     NSString *_termsDigest;
 }
 
+@property (nonatomic) BOOL flaggedForSend; // @synthesize flaggedForSend=_flaggedForSend;
 @property (strong, nonatomic) NSString *termsDigest; // @synthesize termsDigest=_termsDigest;
 @property (nonatomic) BOOL writable; // @synthesize writable=_writable;
 
 + (id)digestFromData:(id)arg1;
 + (id)eventWithProtobuf:(id)arg1;
 + (id)loadTermsWithPath:(id)arg1;
-+ (id)pathToTermsCache;
-+ (id)pathToTermsWithDigest:(id)arg1;
-+ (BOOL)shouldAllowArchivingOfTermsTextToFile;
-+ (id)stringForEventType:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_setEventType:(unsigned long long)arg1;
@@ -34,6 +32,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDeviceID:(id)arg1;
+- (BOOL)isTermsAlreadyArchived;
 - (void)saveTerms;
 - (void)setAcknowledgedDeviceName:(id)arg1;
 - (void)setAcknowledgedDeviceSerialNumber:(id)arg1;

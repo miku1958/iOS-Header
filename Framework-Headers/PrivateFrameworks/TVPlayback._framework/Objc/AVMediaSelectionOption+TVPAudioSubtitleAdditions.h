@@ -6,8 +6,13 @@
 
 #import <AVFoundation/AVMediaSelectionOption.h>
 
+@class NSString;
+
 @interface AVMediaSelectionOption (TVPAudioSubtitleAdditions)
-- (id)tvp_languageCodeFromLocale;
-- (id)tvp_localizedDisplayString;
+
+@property (readonly, nonatomic) BOOL tvp_isSDHSubtitle;
+@property (readonly, nonatomic) NSString *tvp_languageCodeFromLocale;
+@property (readonly, nonatomic) NSString *tvp_localizedDisplayString;
+
 @end
 

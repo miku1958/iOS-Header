@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (copy) CDUnknownBlockType taskStateChangedCallback; // @synthesize taskStateChangedCallback=_taskStateChangedCallback;
 
+- (void)dealloc;
 - (void)process:(id)arg1 taskStateDidChange:(long long)arg2;
 
 @end

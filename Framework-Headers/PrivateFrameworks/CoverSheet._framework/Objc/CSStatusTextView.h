@@ -30,7 +30,7 @@
 @property (copy, nonatomic) NSArray *deviceInformationText; // @synthesize deviceInformationText=_deviceInformationText;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *internalLegalText; // @synthesize internalLegalText=_internalLegalText;
-@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (copy, nonatomic) NSString *provisionalEnrollmentText; // @synthesize provisionalEnrollmentText=_provisionalEnrollmentText;
 @property (nonatomic) double strength; // @synthesize strength=_strength;
 @property (readonly) Class superclass;

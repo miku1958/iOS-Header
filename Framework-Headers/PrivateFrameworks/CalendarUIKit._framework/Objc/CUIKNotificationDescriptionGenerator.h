@@ -17,10 +17,8 @@
 }
 
 + (id)autoCommentForProposedTime:(id)arg1;
-+ (id)autoCommentPrefix;
 + (id)comment:(id)arg1 withInsertedAutoCommentForDate:(id)arg2;
 + (id)sharedGenerator;
-+ (BOOL)stringHasAutoCommentPrefix:(id)arg1;
 + (id)stringWithAutoCommentRemoved:(id)arg1;
 + (id)stringWithOnlyAutoComment:(id)arg1;
 - (void).cxx_destruct;
@@ -29,8 +27,9 @@
 - (id)_sharedDateTimeFormatter;
 - (id)_sharedNumberFormatter;
 - (id)_sharedTimeFormatter;
-- (id)conflictStringForConflictDetails:(id)arg1;
+- (id)conflictStringForConflictDetails:(id)arg1 descriptions:(id)arg2;
 - (id)conflictStringForConflictDetails:(id)arg1 maxTitleLength:(unsigned long long)arg2;
+- (id)conflictStringForConflictDetails:(id)arg1 maxTitleLength:(unsigned long long)arg2 descriptions:(id)arg3;
 - (id)descriptionForNotification:(id)arg1 withOptions:(unsigned long long)arg2;
 - (id)descriptionStringsForNotification:(id)arg1 withOptions:(unsigned long long)arg2;
 - (id)timePeriodForTimeInterval:(id)arg1;

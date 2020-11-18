@@ -75,6 +75,7 @@
 - (void)dealloc;
 - (id)dictionaryForKey:(id)arg1;
 - (id)dictionaryRepresentation;
+- (unsigned long long)domainSize;
 - (double)doubleForKey:(id)arg1;
 - (double)doubleForKey:(id)arg1 keyExistsAndHasValidFormat:(BOOL *)arg2;
 - (void)filePresenterDidBecomeNonCurrent:(id)arg1;
@@ -89,6 +90,7 @@
 - (id)objectForKey:(id)arg1;
 - (void)objectForKey:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeObjectForKey:(id)arg1;
+- (BOOL)requiresDeviceUnlockedSinceBoot;
 - (void)setBool:(BOOL)arg1 forKey:(id)arg2;
 - (void)setDouble:(double)arg1 forKey:(id)arg2;
 - (void)setFloat:(float)arg1 forKey:(id)arg2;

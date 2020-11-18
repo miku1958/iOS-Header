@@ -6,15 +6,11 @@
 
 #import <UIKit/UITableViewCell.h>
 
-#import <WorkflowUI/WFActionDrawerCategoriesCollectionViewManagerDelegate-Protocol.h>
+@class UICollectionView, UICollectionViewFlowLayout, WFActionDrawerCategoriesCollectionViewManager, WFActionDrawerCategoriesMetrics;
 
-@class NSString, UICollectionView, UICollectionViewFlowLayout, WFActionDrawerCategoriesCollectionViewManager, WFActionDrawerCategoriesMetrics;
-@protocol WFActionDrawerCategoriesTableViewCellDelegate;
-
-@interface WFActionDrawerCategoriesTableViewCell : UITableViewCell <WFActionDrawerCategoriesCollectionViewManagerDelegate>
+@interface WFActionDrawerCategoriesTableViewCell : UITableViewCell
 {
     BOOL _shouldStackVertically;
-    id<WFActionDrawerCategoriesTableViewCellDelegate> _delegate;
     UICollectionView *_categoriesCollectionView;
     UICollectionViewFlowLayout *_categoriesFlowLayout;
     WFActionDrawerCategoriesCollectionViewManager *_categoriesCollectionViewManager;
@@ -24,23 +20,12 @@
 @property (weak, nonatomic) UICollectionView *categoriesCollectionView; // @synthesize categoriesCollectionView=_categoriesCollectionView;
 @property (strong, nonatomic) WFActionDrawerCategoriesCollectionViewManager *categoriesCollectionViewManager; // @synthesize categoriesCollectionViewManager=_categoriesCollectionViewManager;
 @property (weak, nonatomic) UICollectionViewFlowLayout *categoriesFlowLayout; // @synthesize categoriesFlowLayout=_categoriesFlowLayout;
-@property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<WFActionDrawerCategoriesTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) WFActionDrawerCategoriesMetrics *metrics; // @synthesize metrics=_metrics;
 @property (nonatomic) BOOL shouldStackVertically; // @synthesize shouldStackVertically=_shouldStackVertically;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)adjustForVerticalStacking;
-- (void)categoriesCollectionViewManager:(id)arg1 didSelectAction:(id)arg2;
-- (void)categoriesCollectionViewManager:(id)arg1 didSelectCategoryForContentType:(id)arg2 title:(id)arg3;
-- (void)categoriesCollectionViewManager:(id)arg1 didSelectDocumentationForAction:(id)arg2 fromView:(id)arg3;
-- (void)categoriesCollectionViewManagerDidSelectCategoryApps:(id)arg1 title:(id)arg2;
-- (void)categoriesCollectionViewManagerDidSelectCategoryFavorites:(id)arg1 title:(id)arg2;
-- (void)categoriesCollectionViewManagerDidSelectCategoryScripting:(id)arg1 title:(id)arg2;
-- (void)configureWithContentTypeCategories:(id)arg1 metrics:(id)arg2;
+- (void)configureWithContentTypeCategories:(id)arg1 coordinator:(id)arg2 metrics:(id)arg3;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

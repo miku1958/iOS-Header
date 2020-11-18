@@ -6,14 +6,17 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSArray, NSIndexSet, PGSuggestionOptions, PGSuggestionSession;
+@class NSArray, NSDate, NSIndexSet, PGSuggestionOptions, PGSuggestionSession, PHAsset;
 @protocol PGSuggestion;
 
 @protocol PGSuggester <NSObject>
+
+@property (nonatomic) BOOL lastSuggestionWasColliding;
+
 + (id)suggesterWithSession:(PGSuggestionSession *)arg1;
 + (NSIndexSet *)suggestionSubtypes;
 + (NSIndexSet *)suggestionTypes;
-- (id)init;
+- (BOOL)canGenerateSuggestionWithAsset:(PHAsset *)arg1 onDate:(NSDate *)arg2;
 - (id)initWithSession:(PGSuggestionSession *)arg1;
 - (NSArray *)reasonsForSuggestion:(id<PGSuggestion>)arg1;
 - (NSArray *)suggestionsWithOptions:(PGSuggestionOptions *)arg1 progress:(void (^)(double, BOOL *))arg2;

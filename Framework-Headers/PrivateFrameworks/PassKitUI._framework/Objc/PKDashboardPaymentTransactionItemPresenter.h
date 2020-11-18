@@ -8,17 +8,15 @@
 
 #import <PassKitUI/PKDashboardItemPresenter-Protocol.h>
 
-@class NSString, PKPaymentDefaultDataProvider, PKPaymentTransactionCellController, PKPaymentTransactionCollectionViewCell, PKPaymentTransactionDetailsFactory, PKPeerPaymentContactResolver, PKPeerPaymentController, PKPeerPaymentWebService, UIFont, UIImage;
+@class NSString, PKPaymentDefaultDataProvider, PKPaymentTransactionCollectionViewCell, PKPaymentTransactionDetailsFactory, PKPaymentTransactionIconGenerator, PKPeerPaymentContactResolver, UIFont, UIImage;
 @protocol CNAvatarViewDelegate;
 
 @interface PKDashboardPaymentTransactionItemPresenter : NSObject <PKDashboardItemPresenter>
 {
     unsigned long long _context;
-    PKPeerPaymentWebService *_peerPaymentWebService;
-    PKPeerPaymentController *_peerPaymentController;
     PKPeerPaymentContactResolver *_contactResolver;
     PKPaymentDefaultDataProvider *_dataProvider;
-    PKPaymentTransactionCellController *_transactionCellController;
+    PKPaymentTransactionIconGenerator *_iconGenerator;
     UIFont *_transactionCellPrimaryLabelFont;
     UIFont *_transactionCellPrimaryLabelPeerPaymentFont;
     UIFont *_transactionCellValueLabelFont;
@@ -34,6 +32,7 @@
     BOOL _useAccessibilityLayout;
 }
 
+@property (strong, nonatomic) PKPeerPaymentContactResolver *contactResolver; // @synthesize contactResolver=_contactResolver;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -43,7 +42,7 @@
 - (void)_configureCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 forIndexPath:(id)arg4;
 - (id)_contactKeysToFetch;
 - (struct CGSize)_imageSize;
-- (BOOL)_shouldShowIconForPass:(id)arg1 context:(unsigned long long)arg2;
+- (BOOL)_shouldShowIconForTransactionSource:(id)arg1 context:(unsigned long long)arg2;
 - (void)_updateAvatarOnTransactionCell:(id)arg1 withTransaction:(id)arg2 contact:(id)arg3;
 - (void)_updatePrimaryLabelOnTransactionCell:(id)arg1 withPeerPaymentCounterpartHandle:(id)arg2 contact:(id)arg3;
 - (id)appleCardImage;
@@ -51,14 +50,15 @@
 - (id)cashbackImage;
 - (id)cellForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (id)collectionViewCellClasses;
-- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
+- (void)didSelectItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3 navigationController:(id)arg4 canPresent:(CDUnknownBlockType)arg5;
+- (BOOL)hideSeparatorForItem:(id)arg1 inCollectionView:(id)arg2;
 - (id)initWithContext:(unsigned long long)arg1 avatarViewDelegate:(id)arg2;
 - (Class)itemClass;
 - (void)prefetchForItem:(id)arg1 inCollectionView:(id)arg2;
 - (struct CGSize)sizeForItem:(id)arg1 inCollectionView:(id)arg2 atIndexPath:(id)arg3;
 - (void)traitCollectionDidChangeFromTrait:(id)arg1 toTrait:(id)arg2 inCollectionView:(id)arg3;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 inCollectionView:(id)arg3 atIndexPath:(id)arg4;
-- (void)viewControllerForTransaction:(id)arg1 paymentPass:(id)arg2 account:(id)arg3 forcePreventHistory:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)viewControllerForTransaction:(id)arg1 transactionSource:(id)arg2 account:(id)arg3 forcePreventHistory:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

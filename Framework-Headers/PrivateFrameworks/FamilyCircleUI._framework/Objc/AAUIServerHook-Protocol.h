@@ -12,6 +12,7 @@
 @protocol AAUIServerHook <NSObject>
 
 @property (weak, nonatomic) id<AAUIServerHookDelegate> delegate;
+@property (strong, nonatomic) RUIObjectModel *objectModel;
 @property (strong, nonatomic) AAUIServerHookResponse *serverHookResponse;
 
 - (void)processElement:(RUIElement *)arg1 attributes:(NSDictionary *)arg2 objectModel:(RUIObjectModel *)arg3 completion:(void (^)(BOOL, NSError *))arg4;

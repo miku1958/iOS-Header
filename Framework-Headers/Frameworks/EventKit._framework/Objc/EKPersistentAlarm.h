@@ -26,7 +26,6 @@
 - (id)externalData;
 - (id)externalID;
 - (BOOL)isDefaultAlarm;
-- (id)location;
 - (id)originalAlarm;
 - (long long)proximity;
 - (id)relativeOffset;
@@ -36,10 +35,9 @@
 - (void)setAlarmType:(long long)arg1;
 - (void)setCalendarItemOwner:(id)arg1;
 - (void)setCalendarOwner:(id)arg1;
-- (void)setDefaultAlarm:(BOOL)arg1;
 - (void)setExternalData:(id)arg1;
 - (void)setExternalID:(id)arg1;
-- (void)setLocation:(id)arg1;
+- (void)setIsDefaultAlarm:(BOOL)arg1;
 - (void)setOriginalAlarm:(id)arg1;
 - (void)setProximity:(long long)arg1;
 - (void)setRelativeOffset:(id)arg1;

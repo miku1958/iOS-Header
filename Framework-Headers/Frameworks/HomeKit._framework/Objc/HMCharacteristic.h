@@ -64,9 +64,12 @@
 - (void)_enableNotification:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_readValueWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)_updateAuthorizationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_updateValue:(id)arg1 updateTime:(id)arg2;
 - (void)_writeValue:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)dealloc;
 - (void)enableNotification:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;

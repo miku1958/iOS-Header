@@ -8,7 +8,7 @@
 
 #import <Transparency/TransparencyVerifiable-Protocol.h>
 
-@class NSData, NSMutableArray, SignedMapHead, TransparencyManagedDataStore, TransparencyMapEntryVerifier;
+@class NSData, NSDictionary, NSMutableArray, SignedMapHead, TransparencyManagedDataStore, TransparencyMapEntryVerifier;
 
 @interface MapEntry : GPBMessage <TransparencyVerifiable>
 {
@@ -19,10 +19,13 @@
 @property (strong, nonatomic) NSMutableArray *hashesOfPeersInPathToRootArray; // @dynamic hashesOfPeersInPathToRootArray;
 @property (readonly, nonatomic) unsigned long long hashesOfPeersInPathToRootArray_Count; // @dynamic hashesOfPeersInPathToRootArray_Count;
 @property (copy, nonatomic) NSData *mapLeaf; // @dynamic mapLeaf;
+@property (readonly) NSDictionary *metadata;
 @property (strong, nonatomic) SignedMapHead *smh; // @dynamic smh;
 @property (strong) TransparencyMapEntryVerifier *verifier;
 
 + (id)descriptor;
+- (void)setMetadata:(id)arg1;
+- (void)setMetadataValue:(id)arg1 key:(id)arg2;
 - (unsigned long long)verifyWithError:(id *)arg1;
 
 @end

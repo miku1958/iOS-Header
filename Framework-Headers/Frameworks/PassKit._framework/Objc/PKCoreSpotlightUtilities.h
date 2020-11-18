@@ -11,8 +11,12 @@
 }
 
 + (struct CGSize)_thumbnailImageSizeForSourceImageSize:(struct CGSize)arg1;
-+ (id)searchableItemAttributeSetForPass:(id)arg1;
-+ (id)searchableItemForPass:(id)arg1;
++ (id)passUniqueIdentifierFromSpotlightIdentifier:(id)arg1;
++ (void)searchableItemForPass:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (void)searchableItemForTransaction:(id)arg1 passUniqueIdentifier:(id)arg2 regions:(id)arg3 tags:(id)arg4 keywords:(id)arg5 imageGenerator:(id)arg6 contactResolver:(id)arg7 completion:(CDUnknownBlockType)arg8;
++ (id)spotlightIdentifierForPassUniqueIdentifier:(id)arg1;
++ (id)spotlightIdentifierForTransactionIdentifier:(id)arg1;
++ (id)transactionIdentifierFromSpotlightIdentifier:(id)arg1;
 
 @end
 

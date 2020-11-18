@@ -10,73 +10,79 @@
 #import <PhotosUICore/PXGNamedImageSource-Protocol.h>
 #import <PhotosUICore/PXGStringSource-Protocol.h>
 
-@class NSArray, NSDictionary, NSObject, NSString, PXAssetCollectionReference, PXCuratedLibraryChapterHeaderLayoutSpec, PXNumberAnimator;
+@class NSArray, NSAttributedString, NSDictionary, NSMutableIndexSet, NSObject, NSString, PXAssetCollectionReference, PXCuratedLibraryChapterHeaderLayoutSpec, PXNumberAnimator;
 @protocol OS_dispatch_queue;
 
 @interface PXCuratedLibraryChapterHeaderLayout : PXGLayout <PXChangeObserver, PXGStringSource, PXGNamedImageSource>
 {
     CDStruct_d97c9657 _updateFlags;
     unsigned short _titleVersion;
-    unsigned short _subtitleVersion;
     struct CGSize _chevronSize;
+    unsigned short _chevronVersion;
     long long _alternateAppearanceFadeDirection;
     double _alternateAppearanceFadeStartThresholdDistance;
     NSArray *_itemIdentifierBySpriteIndex;
+    NSMutableIndexSet *_axSpriteIndexes;
     long long _asyncDateGeneration;
     NSObject<OS_dispatch_queue> *_asyncDateQueue;
     BOOL _presentedAlternateAppearance;
+    NSAttributedString *_attributedTitle;
+    NSAttributedString *_floatingAttributedTitle;
     PXAssetCollectionReference *_assetCollectionReference;
     PXCuratedLibraryChapterHeaderLayoutSpec *_spec;
-    NSString *_title;
-    NSString *_subtitle;
-    NSDictionary *_titleAttributes;
-    NSDictionary *_floatingTitleAttributes;
-    NSDictionary *_subtitleAttributes;
-    NSDictionary *_floatingSubtitleAttributes;
+    NSString *_rawTitle;
+    NSDictionary *_titleEmphasizedAttributes;
+    NSDictionary *_floatingTitleEmphasizedAttributes;
+    NSDictionary *_titleDeemphasizedAttributes;
+    NSDictionary *_floatingTitleDeemphasizedAttributes;
     PXNumberAnimator *_alternateAppearanceMixAnimator;
-    struct CGSize _titleSize;
-    struct CGSize _subtitleSize;
+    struct CGSize _attributedTitleSize;
     struct PXSimpleIndexPath _sectionIndexPath;
     struct UIEdgeInsets _padding;
 }
 
 @property (readonly, nonatomic) PXNumberAnimator *alternateAppearanceMixAnimator; // @synthesize alternateAppearanceMixAnimator=_alternateAppearanceMixAnimator;
 @property (strong, nonatomic) PXAssetCollectionReference *assetCollectionReference; // @synthesize assetCollectionReference=_assetCollectionReference;
+@property (readonly, nonatomic) NSAttributedString *attributedTitle; // @synthesize attributedTitle=_attributedTitle;
+@property (readonly, nonatomic) struct CGSize attributedTitleSize; // @synthesize attributedTitleSize=_attributedTitleSize;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) NSDictionary *floatingSubtitleAttributes; // @synthesize floatingSubtitleAttributes=_floatingSubtitleAttributes;
-@property (copy, nonatomic) NSDictionary *floatingTitleAttributes; // @synthesize floatingTitleAttributes=_floatingTitleAttributes;
+@property (readonly, nonatomic) NSAttributedString *floatingAttributedTitle; // @synthesize floatingAttributedTitle=_floatingAttributedTitle;
+@property (copy, nonatomic) NSDictionary *floatingTitleDeemphasizedAttributes; // @synthesize floatingTitleDeemphasizedAttributes=_floatingTitleDeemphasizedAttributes;
+@property (copy, nonatomic) NSDictionary *floatingTitleEmphasizedAttributes; // @synthesize floatingTitleEmphasizedAttributes=_floatingTitleEmphasizedAttributes;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property (nonatomic) BOOL presentedAlternateAppearance; // @synthesize presentedAlternateAppearance=_presentedAlternateAppearance;
+@property (copy, nonatomic) NSString *rawTitle; // @synthesize rawTitle=_rawTitle;
 @property (nonatomic) struct PXSimpleIndexPath sectionIndexPath; // @synthesize sectionIndexPath=_sectionIndexPath;
 @property (strong, nonatomic) PXCuratedLibraryChapterHeaderLayoutSpec *spec; // @synthesize spec=_spec;
-@property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
-@property (copy, nonatomic) NSDictionary *subtitleAttributes; // @synthesize subtitleAttributes=_subtitleAttributes;
-@property (readonly, nonatomic) struct CGSize subtitleSize; // @synthesize subtitleSize=_subtitleSize;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
-@property (copy, nonatomic) NSDictionary *titleAttributes; // @synthesize titleAttributes=_titleAttributes;
-@property (readonly, nonatomic) struct CGSize titleSize; // @synthesize titleSize=_titleSize;
+@property (copy, nonatomic) NSDictionary *titleDeemphasizedAttributes; // @synthesize titleDeemphasizedAttributes=_titleDeemphasizedAttributes;
+@property (copy, nonatomic) NSDictionary *titleEmphasizedAttributes; // @synthesize titleEmphasizedAttributes=_titleEmphasizedAttributes;
 
 - (void).cxx_destruct;
-- (void)_handleAsyncTitle:(id)arg1 subtitle:(id)arg2 generation:(long long)arg3;
-- (void)_invalidateAttributedSubtitle;
+- (id)_createAttributedTitleWithEmphasizedAttributes:(id)arg1 deemphasizedAttributes:(id)arg2;
+- (void)_handleAsyncRawTitle:(id)arg1 generation:(long long)arg2;
 - (void)_invalidateAttributedTitle;
+- (void)_invalidateChevron;
 - (void)_updateSprites;
-- (void)_updateTitleAndSubtitle;
+- (void)_updateTitle;
+- (id)attributedStringForSpriteAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
+- (unsigned int)axSpriteIndexClosestToSpriteIndex:(unsigned int)arg1 inDirection:(unsigned long long)arg2;
+- (id)axSpriteIndexes;
+- (id)axSpriteIndexesInRect:(struct CGRect)arg1;
 - (id)hitTestResultForSpriteIndex:(unsigned int)arg1;
-- (id)imageNameAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
+- (id)imageConfigurationAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (id)init;
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)referenceOptionsDidChange;
 - (void)referenceSizeDidChange;
 - (void)screenScaleDidChange;
-- (BOOL)shouldSwapTitleAndSubtitle;
 - (id)stringAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (id)stringAttributesAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
 - (void)update;
 - (long long)verticalAlignmentForStringAtIndex:(unsigned int)arg1 inLayout:(id)arg2;
+- (void)viewEnvironmentDidChange;
 - (void)visibleRectDidChange;
 
 @end

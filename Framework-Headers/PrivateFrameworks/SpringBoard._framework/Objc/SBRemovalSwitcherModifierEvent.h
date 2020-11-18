@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) long long reason; // @synthesize reason=_reason;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)initWithAppLayout:(id)arg1 reason:(long long)arg2 phase:(unsigned long long)arg3;
 - (long long)type;

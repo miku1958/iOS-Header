@@ -10,6 +10,7 @@
 
 @class NSString, SUInstallationConstraintObserver;
 
+__attribute__((visibility("hidden")))
 @interface _SUInstallationConstraintBlockObserverToken : NSObject <SUInvalidatable>
 {
     SUInstallationConstraintObserver *_observer;

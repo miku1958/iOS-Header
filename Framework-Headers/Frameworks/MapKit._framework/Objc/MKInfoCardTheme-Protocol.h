@@ -16,7 +16,6 @@
 @property (readonly, nonatomic) UIColor *disabledActionRowTextColor;
 @property (readonly, nonatomic) UIColor *headerPrimaryButtonHighlightedColor;
 @property (readonly, nonatomic) UIColor *headerPrimaryButtonNormalColor;
-@property (readonly, nonatomic) UIColor *highlightedActionRowTextColor;
 @property (readonly, nonatomic) UIColor *highlightedTintColor;
 @property (readonly, nonatomic) BOOL isDarkTheme;
 @property (readonly, nonatomic) NSString *javaScriptName;
@@ -24,6 +23,9 @@
 @property (readonly, nonatomic) UIColor *normalActionRowBackgroundColor;
 @property (readonly, nonatomic) UIColor *normalActionRowBackgroundPressedColor;
 @property (readonly, nonatomic) UIColor *normalBackgroundColor;
+@property (readonly, nonatomic) UIColor *ratingBarBackgroundColor;
+@property (readonly, nonatomic) UIColor *ratingBarEndColor;
+@property (readonly, nonatomic) UIColor *ratingBarStartColor;
 @property (readonly, nonatomic) UIColor *rowColor;
 @property (readonly, nonatomic) UIColor *selectedRowColor;
 @property (readonly, nonatomic) UIColor *separatorLineColor;

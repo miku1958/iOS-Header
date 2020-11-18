@@ -6,17 +6,30 @@
 
 #import <Intents/INCodableAttributeMetadata.h>
 
-@class INCodableEnumValue;
+#import <Intents/INCodableAttributeDefaultValueProviding-Protocol.h>
 
-@interface INCodableEnumAttributeMetadata : INCodableAttributeMetadata
+@class INCodableEnumValue, NSString;
+
+@interface INCodableEnumAttributeMetadata : INCodableAttributeMetadata <INCodableAttributeDefaultValueProviding>
 {
     INCodableEnumValue *_defaultValue;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) INCodableEnumValue *defaultValue; // @synthesize defaultValue=_defaultValue;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionDefaultValueKey;
+- (id)__INCodableDescriptionKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionKey;
+- (id)defaultValueForIntentDefaultValueProvider;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

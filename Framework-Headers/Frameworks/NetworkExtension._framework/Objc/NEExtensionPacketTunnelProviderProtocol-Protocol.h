@@ -6,10 +6,11 @@
 
 #import <NetworkExtension/NEExtensionTunnelProviderProtocol-Protocol.h>
 
-@class NSFileHandle;
+@class NSDictionary, NSFileHandle;
 
 @protocol NEExtensionPacketTunnelProviderProtocol <NEExtensionTunnelProviderProtocol>
 - (void)fetchVirtualInterfaceTypeWithCompletionHandler:(void (^)(long long))arg1;
+- (void)setAppUUIDMap:(NSDictionary *)arg1;
 - (void)setVirtualInterfaceSocket:(NSFileHandle *)arg1;
 @end
 

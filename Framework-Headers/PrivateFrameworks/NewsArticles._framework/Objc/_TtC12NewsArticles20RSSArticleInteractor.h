@@ -10,8 +10,11 @@
 
 @interface _TtC12NewsArticles20RSSArticleInteractor : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *article;
     MISSING_TYPE *delegate;
     MISSING_TYPE *dataManager;
+    MISSING_TYPE *coordinator;
+    MISSING_TYPE *eventManager;
 }
 
 @end

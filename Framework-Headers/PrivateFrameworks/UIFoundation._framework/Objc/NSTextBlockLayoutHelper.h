@@ -31,14 +31,8 @@
     double _bMargin;
 }
 
-@property (readonly) NSTextTableBlock *block;
-
 - (void)dealloc;
 - (id)description;
-- (id)initWithTextBlock:(id)arg1 charIndex:(unsigned long long)arg2 text:(id)arg3 layoutManager:(id)arg4 containerWidth:(double)arg5 collapseBorders:(BOOL)arg6;
-- (id)initWithTextBlock:(id)arg1 charRange:(struct _NSRange)arg2 glyphRange:(struct _NSRange)arg3 layoutRect:(struct CGRect)arg4 boundsRect:(struct CGRect)arg5 containerWidth:(double)arg6 allowMargins:(BOOL)arg7 collapseBorders:(BOOL)arg8 allowPadding:(BOOL)arg9;
-- (id)initWithTextBlock:(id)arg1 charRange:(struct _NSRange)arg2 text:(id)arg3 layoutManager:(id)arg4 containerWidth:(double)arg5 collapseBorders:(BOOL)arg6;
-- (id)initWithTextTable:(id)arg1 charIndex:(unsigned long long)arg2 text:(id)arg3 layoutManager:(id)arg4 containerWidth:(double)arg5 collapseBorders:(BOOL)arg6;
 
 @end
 

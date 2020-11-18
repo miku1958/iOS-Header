@@ -33,8 +33,9 @@
     REMObjectID *_parentReminderID;
     NSData *_titleDocumentData;
     NSData *_notesDocumentData;
-    NSDate *_completionDate;
     REMResolutionTokenMap *_resolutionTokenMap;
+    NSData *_resolutionTokenMapData;
+    NSDate *_completionDate;
     NSSet *_subtaskIDsToUndelete;
     unsigned long long _priority;
     NSDateComponents *_startDateComponents;
@@ -55,12 +56,14 @@
     long long _siriFoundInAppsUserConfirmation;
     NSDate *_lastBannerPresentationDate;
     long long _flagged;
+    NSSet *_assignments;
     REMDisplayDate *_displayDate;
 }
 
 @property (strong, nonatomic) REMObjectID *accountID; // @synthesize accountID=_accountID;
 @property (strong, nonatomic) NSArray *alarms; // @synthesize alarms=_alarms;
 @property (nonatomic) BOOL allDay; // @synthesize allDay=_allDay;
+@property (strong, nonatomic) NSSet *assignments; // @synthesize assignments=_assignments;
 @property (strong, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (nonatomic, getter=isCompleted) BOOL completed; // @synthesize completed=_completed;
 @property (copy, nonatomic) NSDate *completionDate; // @synthesize completionDate=_completionDate;
@@ -90,6 +93,7 @@
 @property (strong, nonatomic) NSArray *recurrenceRules; // @synthesize recurrenceRules=_recurrenceRules;
 @property (readonly, nonatomic) REMObjectID *remObjectID;
 @property (strong, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @synthesize resolutionTokenMap=_resolutionTokenMap;
+@property (strong, nonatomic) NSData *resolutionTokenMapData; // @synthesize resolutionTokenMapData=_resolutionTokenMapData;
 @property (copy, nonatomic) NSData *siriFoundInAppsData; // @synthesize siriFoundInAppsData=_siriFoundInAppsData;
 @property (nonatomic) long long siriFoundInAppsUserConfirmation; // @synthesize siriFoundInAppsUserConfirmation=_siriFoundInAppsUserConfirmation;
 @property (copy, nonatomic) NSDateComponents *startDateComponents; // @synthesize startDateComponents=_startDateComponents;
@@ -106,7 +110,9 @@
 + (BOOL)supportsSecureCoding;
 + (id)titleReplicaIDSourceWithAccountID:(id)arg1 reminderID:(id)arg2;
 - (void).cxx_destruct;
+- (id)cdKeyToStorageKeyMap;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)datesDebugDescriptionInTimeZone:(id)arg1;
 - (id)debugDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;

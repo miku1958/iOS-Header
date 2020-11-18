@@ -14,6 +14,7 @@
 {
     MISSING_TYPE *assetHandles;
     MISSING_TYPE *size;
+    MISSING_TYPE *scaling;
 }
 
 @property (nonatomic, copy) NSDictionary *assetHandles;

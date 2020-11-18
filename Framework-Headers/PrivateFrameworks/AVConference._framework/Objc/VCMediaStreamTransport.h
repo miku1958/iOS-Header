@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
     struct tagHANDLE *_rtpHandle;
     BOOL _isSRTPInitialized;
     AVCBasebandCongestionDetector *_basebandCongestionDetector;
+    int _payloadType;
+    CDStruct_cd00b3f0 _transportStreamInfo;
     id _delegate;
 }
 
@@ -41,7 +43,7 @@ __attribute__((visibility("hidden")))
 + (int)getSRTPMasterKeyLength:(long long)arg1;
 + (BOOL)isSameSRTPKey:(id)arg1 newKey:(id)arg2;
 - (void)configureForMultiway;
-- (BOOL)configureWithStreamConfig:(id)arg1 setupInfo:(struct _VCMediaStreamTransportSetupInfo *)arg2 customRTCPPackets:(BOOL)arg3 error:(id *)arg4;
+- (BOOL)configureWithStreamConfig:(id)arg1 setupInfo:(struct _VCMediaStreamTransportSetupInfo *)arg2 customRTCPPackets:(BOOL)arg3 statisticsCollector:(id)arg4 basebandCongestionDetector:(id)arg5 error:(id *)arg6;
 - (void)dealloc;
 - (BOOL)generateReceptionReport:(struct _RTCP_RECEPTION_REPORT *)arg1 reportCount:(char *)arg2;
 - (int)getCryptoSet:(struct tagSRTPExchangeInfo *)arg1 withMasterKey:(id)arg2;
@@ -52,7 +54,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithDelegate:(id)arg1 handle:(struct tagHANDLE *)arg2 localSSRC:(unsigned int)arg3;
 - (BOOL)isSameSRTPConfig:(id)arg1;
 - (void)onRTCPPacket:(struct tagRTCPPACKET *)arg1 arrivalNTPTime:(union tagNTP)arg2;
-- (void)onStart;
+- (int)onStart;
 - (void)onStop;
 - (void)registerRTCPCallback;
 - (void)registerRTPPayloadMappings;
@@ -69,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)setupRTPWithNWConnection:(struct _VCMediaStreamTransportSetupInfo *)arg1 error:(id *)arg2;
 - (BOOL)setupRTPWithSockets:(struct _VCMediaStreamTransportSetupInfo *)arg1 error:(id *)arg2;
 - (BOOL)setupRTPWithTransportSetupInfo:(struct _VCMediaStreamTransportSetupInfo *)arg1 error:(id *)arg2;
+- (int)setupRTPWithTransportStreams;
 - (int)setupSRTP;
 - (void)unregisterRTCPCallback;
 

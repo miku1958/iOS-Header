@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <MediaRemote/NSCopying-Protocol.h>
 #import <MediaRemote/NSMutableCopying-Protocol.h>
 
 @class NSString;
 
-@interface MRTextEditingAttributes : NSObject <NSMutableCopying>
+@interface MRTextEditingAttributes : NSObject <NSCopying, NSMutableCopying>
 {
     NSString *_title;
     NSString *_prompt;
@@ -22,7 +23,6 @@
 @property (readonly, nonatomic) NSString *title; // @synthesize title=_title;
 
 - (void).cxx_destruct;
-- (id)_copyWithZone:(struct _NSZone *)arg1 usingConcreteClass:(Class)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)initWithTitle:(id)arg1 prompt:(id)arg2;

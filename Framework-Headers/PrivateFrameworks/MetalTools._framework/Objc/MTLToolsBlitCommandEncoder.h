@@ -22,7 +22,6 @@
 @property (copy) NSString *label;
 @property (readonly) Class superclass;
 
-- (void)acceptVisitor:(id)arg1;
 - (void)copyFromBuffer:(id)arg1 sourceOffset:(unsigned long long)arg2 sourceBytesPerRow:(unsigned long long)arg3 sourceBytesPerImage:(unsigned long long)arg4 sourceSize:(CDStruct_14f26992)arg5 toTexture:(id)arg6 destinationSlice:(unsigned long long)arg7 destinationLevel:(unsigned long long)arg8 destinationOrigin:(CDStruct_14f26992)arg9;
 - (void)copyFromBuffer:(id)arg1 sourceOffset:(unsigned long long)arg2 sourceBytesPerRow:(unsigned long long)arg3 sourceBytesPerImage:(unsigned long long)arg4 sourceSize:(CDStruct_14f26992)arg5 toTexture:(id)arg6 destinationSlice:(unsigned long long)arg7 destinationLevel:(unsigned long long)arg8 destinationOrigin:(CDStruct_14f26992)arg9 options:(unsigned long long)arg10;
 - (void)copyFromBuffer:(id)arg1 sourceOffset:(unsigned long long)arg2 toBuffer:(id)arg3 destinationOffset:(unsigned long long)arg4 size:(unsigned long long)arg5;
@@ -36,6 +35,7 @@
 - (void)fillBuffer:(id)arg1 range:(struct _NSRange)arg2 value:(unsigned char)arg3;
 - (void)generateMipmapsForTexture:(id)arg1;
 - (void)getTextureAccessCounters:(id)arg1 region:(CDStruct_1e3be3a8)arg2 mipLevel:(unsigned long long)arg3 slice:(unsigned long long)arg4 resetCounters:(BOOL)arg5 countersBuffer:(id)arg6 countersBufferOffset:(unsigned long long)arg7;
+- (id)initWithBlitCommandEncoder:(id)arg1 parent:(id)arg2 descriptor:(id)arg3;
 - (void)optimizeContentsForCPUAccess:(id)arg1;
 - (void)optimizeContentsForCPUAccess:(id)arg1 slice:(unsigned long long)arg2 level:(unsigned long long)arg3;
 - (void)optimizeContentsForGPUAccess:(id)arg1;
@@ -43,6 +43,8 @@
 - (void)optimizeIndirectCommandBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void)resetCommandsInBuffer:(id)arg1 withRange:(struct _NSRange)arg2;
 - (void)resetTextureAccessCounters:(id)arg1 region:(CDStruct_1e3be3a8)arg2 mipLevel:(unsigned long long)arg3 slice:(unsigned long long)arg4;
+- (void)resolveCounters:(id)arg1 inRange:(struct _NSRange)arg2 destinationBuffer:(id)arg3 destinationOffset:(unsigned long long)arg4;
+- (void)sampleCountersInBuffer:(id)arg1 atSampleIndex:(unsigned long long)arg2 withBarrier:(BOOL)arg3;
 - (void)synchronizeResource:(id)arg1;
 - (void)synchronizeTexture:(id)arg1 slice:(unsigned long long)arg2 level:(unsigned long long)arg3;
 - (void)updateFence:(id)arg1;

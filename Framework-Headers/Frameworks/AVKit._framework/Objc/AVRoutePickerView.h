@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class AVMicaPackage, AVObservationController, MPMediaControls, NSObject, NSString, UIButton, UIColor, UIViewPropertyAnimator;
+@class AVMicaPackage, AVObservationController, AVOutputContext, MPMediaControls, NSObject, NSString, UIButton, UIColor, UIViewPropertyAnimator;
 @protocol AVRoutePickerViewDelegate, OS_dispatch_queue;
 
 @interface AVRoutePickerView : UIView
@@ -18,6 +18,7 @@
     struct CGSize _oldSize;
     UIViewPropertyAnimator *_buttonHighlightAnimator;
     AVObservationController *_observationController;
+    AVOutputContext *_outputContext;
     BOOL _airPlayActive;
     BOOL _prioritizesVideoDevices;
     AVMicaPackage *_routePickerButtonMicaPackage;
@@ -44,6 +45,7 @@
 - (void)_routePickerButtonTouchDragEnter:(id)arg1;
 - (void)_routePickerButtonTouchUp:(id)arg1;
 - (void)_setRoutePickerButtonAlpha:(double)arg1 animated:(BOOL)arg2;
+- (void)_setupOutputContext;
 - (void)_updateAirPlayActive;
 - (id)customButton;
 - (void)dealloc;

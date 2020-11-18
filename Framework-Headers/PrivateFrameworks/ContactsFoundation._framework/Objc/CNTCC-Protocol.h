@@ -5,9 +5,9 @@
 //
 
 @protocol CNTCC
-- (BOOL)accessCheckAuditToken:(CDStruct_4c969caf)arg1 forService:(long long)arg2;
-- (long long)accessPreflightForService:(long long)arg1;
-- (BOOL)isAccessRestrictedForService:(long long)arg1;
-- (void)requestAccessForService:(long long)arg1 completionHandler:(void (^)(BOOL))arg2;
+- (long long)checkAuthorizationStatusOfAuditToken:(CDStruct_4c969caf)arg1;
+- (long long)checkAuthorizationStatusOfCurrentProcess;
+- (BOOL)isAuthorizationRestricted;
+- (void)requestAuthorization:(long long)arg1 completionHandler:(void (^)(long long))arg2;
 @end
 

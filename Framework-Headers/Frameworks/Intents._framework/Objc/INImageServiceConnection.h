@@ -43,6 +43,7 @@
 - (void)purgeImageWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)retrieveImageWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)schemaURLsForBundleIdentifiers:(id)arg1;
+- (id)securityScopedURLsForBundleIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)serviceProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)storeImage:(id)arg1 scaled:(BOOL)arg2 qualityOfService:(unsigned int)arg3 storeType:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (oneway void)storeUserContext:(id)arg1 forBundleIdentifier:(id)arg2;

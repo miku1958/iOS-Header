@@ -8,12 +8,12 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class NSArray, NSString, PKAccount, PKPaymentPass, PKSpendingSummary, PKSpendingSummaryFetcher;
+@class NSArray, NSString, PKAccount, PKSpendingSummary, PKSpendingSummaryFetcher, PKTransactionSource;
 
 @interface PKDashboardCreditAccountItem : NSObject <PKDashboardItem>
 {
     PKAccount *_account;
-    PKPaymentPass *_pass;
+    PKTransactionSource *_transactionSource;
     unsigned long long _type;
     NSArray *_weeks;
     NSArray *_months;
@@ -29,16 +29,17 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSArray *months; // @synthesize months=_months;
 @property (strong, nonatomic) NSArray *mostRecentTransactions; // @synthesize mostRecentTransactions=_mostRecentTransactions;
-@property (readonly, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 @property (strong, nonatomic) PKSpendingSummary *summary; // @synthesize summary=_summary;
 @property (strong, nonatomic) PKSpendingSummaryFetcher *summaryFetcher; // @synthesize summaryFetcher=_summaryFetcher;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (strong, nonatomic) NSArray *upcomingScheduledPayments; // @synthesize upcomingScheduledPayments=_upcomingScheduledPayments;
 @property (strong, nonatomic) NSArray *weeks; // @synthesize weeks=_weeks;
 
++ (id)identifier;
 - (void).cxx_destruct;
-- (id)initWithAccount:(id)arg1 pass:(id)arg2 type:(unsigned long long)arg3;
+- (id)initWithAccount:(id)arg1 transactionSource:(id)arg2 type:(unsigned long long)arg3;
 
 @end
 

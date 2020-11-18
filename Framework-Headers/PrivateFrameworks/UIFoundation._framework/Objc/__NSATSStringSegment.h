@@ -16,14 +16,9 @@
 }
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
-- (const unsigned short *)_fastCharacterContents;
-- (BOOL)_isDeallocating;
-- (void)_setOriginalString:(id)arg1 range:(struct _NSRange)arg2;
-- (BOOL)_tryRetain;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (void)getCharacters:(unsigned short *)arg1 range:(struct _NSRange)arg2;
-- (id)initWithOriginalString:(id)arg1 range:(struct _NSRange)arg2;
 - (unsigned long long)length;
 - (oneway void)release;
 

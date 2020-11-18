@@ -22,7 +22,6 @@
 + (BOOL)validateConfiguration:(id)arg1 client:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (Class)_keyValueEntityClass;
-- (BOOL)_performDatabaseTransactionWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
 - (void)_unitTest_overrideKeyValueDomainCategory:(long long)arg1;
 - (id)exportedInterface;
 - (id)initWithUUID:(id)arg1 configuration:(id)arg2 client:(id)arg3 delegate:(id)arg4;
@@ -36,6 +35,7 @@
 - (void)remote_setDate:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_setNumber:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)remote_setString:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)remote_setValueForAllKeys:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_setValuesWithDictionary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remote_stringForKey:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

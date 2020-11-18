@@ -6,28 +6,29 @@
 
 #import <SpringBoard/SBTransitionSwitcherModifier.h>
 
-@class SBAppLayout;
+@class SBAppLayout, SBSwitcherModifier;
 
 @interface SBForcePressToFullScreenAppLayoutSwitcherModifier : SBTransitionSwitcherModifier
 {
     SBAppLayout *_fromAppLayout;
     SBAppLayout *_toAppLayout;
+    SBSwitcherModifier *_multitaskingModifier;
     long long _startingEnvironmentMode;
 }
 
 - (void).cxx_destruct;
-- (long long)backdropBlurType;
+- (id)appLayoutsToCacheSnapshots;
+- (long long)homeScreenBackdropBlurType;
 - (id)initWithTransitionID:(id)arg1 fromAppLayout:(id)arg2 toAppLayout:(id)arg3 effectiveStartingEnvironmentMode:(long long)arg4;
 - (BOOL)isContainerStatusBarVisible;
 - (BOOL)isContentStatusBarVisibleForIndex:(unsigned long long)arg1;
 - (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (BOOL)shouldRasterizeLiveContentUntilDelay:(inout double *)arg1;
+- (id)visibleAppLayouts;
 - (long long)wallpaperStyle;
 
 @end

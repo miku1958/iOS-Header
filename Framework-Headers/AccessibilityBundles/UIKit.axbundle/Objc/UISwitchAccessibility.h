@@ -19,11 +19,12 @@
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityKeyCommands;
 - (BOOL)_accessibilitySupportsActivateAction;
-- (void)_axToggleSwitch;
 - (void)_fkaSwitchOff;
 - (void)_fkaSwitchOn;
+- (void)_keyboardActivate;
 - (id)_viewToAddFocusLayer;
 - (BOOL)accessibilityActivate;
+- (struct CGPoint)accessibilityActivationPoint;
 - (id)accessibilityLabel;
 - (id)accessibilityPath;
 - (unsigned long long)accessibilityTraits;

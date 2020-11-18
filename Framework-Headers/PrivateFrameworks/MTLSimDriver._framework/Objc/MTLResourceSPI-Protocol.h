@@ -6,16 +6,13 @@
 
 #import <MTLSimDriver/MTLResource-Protocol.h>
 
-@class MTLResourceAllocationInfo;
 @protocol MTLResource;
 
 @protocol MTLResourceSPI <MTLResource>
 
 @property (readonly) unsigned long long allocationID;
-@property (readonly) MTLResourceAllocationInfo *cachedAllocationInfo;
 @property (readonly) unsigned long long protectionOptions;
 @property int responsibleProcess;
-@property (readonly) MTLResourceAllocationInfo *sharedAllocationInfo;
 @property (readonly) unsigned long long unfilteredResourceOptions;
 
 - (BOOL)doesAliasAllResources:(const id *)arg1 count:(unsigned long long)arg2;

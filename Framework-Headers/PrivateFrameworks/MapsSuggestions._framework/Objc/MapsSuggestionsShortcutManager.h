@@ -21,11 +21,11 @@
     MapsSuggestionsContacts *_contacts;
     NSMutableArray *_hiddenShortcuts;
     MapsSuggestionsMeCard *_rawMeCard;
-    NSArray *_shortcutsOverlay;
     MapsSuggestionsObservers *_meCardObservers;
     MapsSuggestionsMeCard *_currCorrectedMeCard;
     NSArray *_rawHomeAddressStrings;
     NSArray *_rawWorkAddressStrings;
+    NSArray *_rawSchoolAddressStrings;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,12 +36,9 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)__loadCorrectedMeCardWithHandler:(CDUnknownBlockType)arg1;
-- (BOOL)_loadCorrectedMeCardWithHandler:(CDUnknownBlockType)arg1;
-- (BOOL)_mergeShortcutsToMeCardAndCallHandler:(CDUnknownBlockType)arg1;
 - (void)addMeCardObserver:(id)arg1;
 - (BOOL)addOrUpdateShortcuts:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (id)initWithDefaults;
+- (id)initFromResourceDepot:(id)arg1;
 - (id)initWithStorage:(id)arg1 suggestor:(id)arg2 contacts:(id)arg3 routine:(id)arg4;
 - (BOOL)loadAllShortcutsWithHandler:(CDUnknownBlockType)arg1;
 - (void)meCardReader:(id)arg1 didUpdateMeCard:(id)arg2;
@@ -55,7 +52,6 @@
 - (void)removeMeCardObserver:(id)arg1;
 - (BOOL)removeShortcuts:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)routine;
-- (void)setChangeHandler:(CDUnknownBlockType)arg1;
 - (id)storage;
 - (id)suggestor;
 - (id)test_setUpPlaceholdersIfNeeded:(id)arg1 overlays:(id)arg2;

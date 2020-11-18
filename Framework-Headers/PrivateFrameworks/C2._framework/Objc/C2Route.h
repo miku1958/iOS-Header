@@ -8,6 +8,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface C2Route : NSObject
 {
     NSString *_destination;

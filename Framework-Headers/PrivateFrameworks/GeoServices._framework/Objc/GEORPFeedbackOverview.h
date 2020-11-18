@@ -31,13 +31,7 @@
         unsigned int read_lastUpdatedAt:1;
         unsigned int read_stateDescription:1;
         unsigned int read_title:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_createdAt:1;
-        unsigned int wrote_lastUpdatedAt:1;
-        unsigned int wrote_stateDescription:1;
-        unsigned int wrote_title:1;
-        unsigned int wrote_feedbackState:1;
-        unsigned int wrote_type:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -59,10 +53,6 @@
 - (void).cxx_destruct;
 - (int)StringAsFeedbackState:(id)arg1;
 - (int)StringAsType:(id)arg1;
-- (void)_readCreatedAt;
-- (void)_readLastUpdatedAt;
-- (void)_readStateDescription;
-- (void)_readTitle;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -72,7 +62,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -30,6 +30,7 @@
 - (void)encodeProcessedVideoFrame:(id)arg1;
 - (id)initWithDelegate:(id)arg1;
 - (void)registerBlocksForNotifications;
+- (BOOL)setupRemoteReceiverQueueWithSenderQueue:(id)arg1;
 
 @end
 

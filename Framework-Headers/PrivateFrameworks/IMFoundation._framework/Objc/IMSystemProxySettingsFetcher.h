@@ -29,11 +29,11 @@
 @property (nonatomic) long long _proxyProtocol; // @synthesize _proxyProtocol;
 @property id delegate; // @synthesize delegate=_delegate;
 
+- (void).cxx_destruct;
 - (void)_callAccountSettingsDelegateMethod;
 - (void)_callProxySettingsDelegateMethod;
 - (void)_getProxyAccountAndPasswordFromKeychain;
 - (void)_takeProxySettingsFromDictionary:(struct __CFDictionary *)arg1;
-- (void)dealloc;
 - (id)initWithHost:(id)arg1 port:(unsigned short)arg2 delegate:(id)arg3;
 - (id)initWithProxyProtocol:(long long)arg1 proxyHost:(id)arg2 proxyPort:(unsigned short)arg3 delegate:(id)arg4;
 - (void)retrieveProxyAccountSettings;

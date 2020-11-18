@@ -42,6 +42,7 @@
 - (void).cxx_destruct;
 - (void)_finalize;
 - (id)_prepareFrom:(id)arg1;
+- (id)attributeDescriptions;
 - (id)begin;
 - (void)close;
 - (id)commit;

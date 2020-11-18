@@ -11,6 +11,7 @@
 }
 
 + (id)_basePruningPredicateForDate:(id)arg1 profile:(id)arg2;
++ (Class)_syncedSampleTypeClass;
 + (Class)healthEntityClass;
 + (BOOL)supportsSyncStore:(id)arg1;
 + (id)syncEntityIdentifier;

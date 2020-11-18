@@ -13,16 +13,18 @@
 @interface HMDPredicateUtilities : HMFObject <HMFLogging>
 {
     unsigned long long _cameraSignificantEvent;
+    unsigned long long _personFamiliarityOptions;
     HMDHome *_home;
-    NSString *_logString;
+    NSString *_logIdentifier;
 }
 
 @property unsigned long long cameraSignificantEvent; // @synthesize cameraSignificantEvent=_cameraSignificantEvent;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, weak, nonatomic) HMDHome *home; // @synthesize home=_home;
-@property (readonly, nonatomic) NSString *logString; // @synthesize logString=_logString;
+@property (weak) HMDHome *home; // @synthesize home=_home;
+@property (readonly, copy) NSString *logIdentifier; // @synthesize logIdentifier=_logIdentifier;
+@property unsigned long long personFamiliarityOptions; // @synthesize personFamiliarityOptions=_personFamiliarityOptions;
 @property (readonly) Class superclass;
 
 + (id)logCategory;
@@ -32,10 +34,9 @@
 - (id)compareValueOfCharacteristic:(id)arg1 againstValue:(id)arg2 operatorType:(id)arg3;
 - (BOOL)containsPresenceEvents:(id)arg1;
 - (id)dateTodayMatchingComponents:(id)arg1;
-- (void)fillMetric:(id)arg1 forPredicate:(id)arg2;
+- (void)fillAnalyticsData:(id)arg1 forPredicate:(id)arg2;
+- (id)generateAnalyticsData:(id)arg1;
 - (id)initWithHome:(id)arg1 logIdentifier:(id)arg2;
-- (id)logIdentifier;
-- (id)metricFor:(id)arg1;
 - (id)rewriteNowAdjustedForHomeTimeZone:(id)arg1;
 - (id)rewritePredicate:(id)arg1 currentCharacteristicInPredicate:(id *)arg2 characteristicsToRead:(id)arg3 homePresence:(id)arg4;
 - (id)rewritePredicate:(id)arg1 forDaemon:(BOOL)arg2 message:(id)arg3;

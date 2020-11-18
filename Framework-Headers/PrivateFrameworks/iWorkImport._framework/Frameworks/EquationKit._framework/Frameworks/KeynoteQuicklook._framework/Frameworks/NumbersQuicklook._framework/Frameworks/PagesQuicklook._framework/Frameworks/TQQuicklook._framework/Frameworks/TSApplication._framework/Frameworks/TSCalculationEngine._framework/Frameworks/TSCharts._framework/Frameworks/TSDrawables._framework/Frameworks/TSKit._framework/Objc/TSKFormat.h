@@ -10,17 +10,18 @@
 
 @interface TSKFormat : NSObject <NSCopying>
 {
-    int _formatType;
+    unsigned int _formatType;
 }
 
-@property (readonly, nonatomic) CDStruct_cf9a5aa8 formatStruct;
-@property (readonly, nonatomic) int formatType; // @synthesize formatType=_formatType;
+@property (readonly, nonatomic) CDStruct_a4ff7456 formatStruct;
+@property (readonly, nonatomic) unsigned int formatType; // @synthesize formatType=_formatType;
 
 + (id)booleanFormat;
 + (id)checkboxFormat;
-+ (id)defaultFormatWithFormatType:(int)arg1 locale:(id)arg2;
++ (id)defaultFormatWithFormatType:(unsigned int)arg1 locale:(id)arg2;
 + (id)formatFromArchive:(const struct FormatStructArchive *)arg1;
-+ (id)formatFromTSUFormatStruct:(CDStruct_cf9a5aa8)arg1;
++ (id)formatFromTSUFormatStruct:(CDStruct_a4ff7456)arg1;
++ (void)initialize;
 + (id)ratingFormat;
 + (id)textFormat;
 + (unsigned int)validatedDecimalPlaces:(unsigned long long)arg1;
@@ -41,7 +42,7 @@
 - (void)encodeToArchive:(struct FormatStructArchive *)arg1 archivingCustomFormats:(BOOL)arg2;
 - (BOOL)hasSimpleFormatType;
 - (unsigned long long)hash;
-- (id)initWithFormatType:(int)arg1;
+- (id)initWithFormatType:(unsigned int)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)stringFromBool:(BOOL)arg1 locale:(id)arg2;
 - (id)stringFromDate:(id)arg1 locale:(id)arg2;

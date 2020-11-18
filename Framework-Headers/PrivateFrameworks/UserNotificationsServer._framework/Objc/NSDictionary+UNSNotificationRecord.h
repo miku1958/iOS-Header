@@ -7,8 +7,6 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (UNSNotificationRecord)
-- (struct CGRect)uns_CGRectForKey:(id)arg1;
-- (CDStruct_1b6d18a9)uns_CMTimeForKey:(id)arg1;
 - (id)uns_nonEmptyCopy;
 - (id)uns_nonNilArrayForKey:(id)arg1;
 - (id)uns_nonNilDictionaryForKey:(id)arg1;

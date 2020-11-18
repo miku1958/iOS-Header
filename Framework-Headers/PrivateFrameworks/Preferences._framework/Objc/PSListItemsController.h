@@ -19,6 +19,7 @@
 
 - (void).cxx_destruct;
 - (void)_addStaticText:(id)arg1;
+- (void)dealloc;
 - (void)didLock;
 - (BOOL)isRestrictionList;
 - (id)itemsFromDataSource;
@@ -33,8 +34,10 @@
 - (void)suspend;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)willEnterForeground;
 
 @end
 

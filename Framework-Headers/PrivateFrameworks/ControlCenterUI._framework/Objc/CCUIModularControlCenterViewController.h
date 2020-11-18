@@ -71,6 +71,7 @@
 - (void)moduleCollectionViewController:(id)arg1 willOpenExpandedModule:(id)arg2;
 - (void)moduleCollectionViewController:(id)arg1 willPresentViewController:(id)arg2;
 - (void)moduleCollectionViewController:(id)arg1 willRemoveModuleContainerViewController:(id)arg2;
+- (void)moduleCollectionViewControllerDidUpdateModules:(id)arg1;
 - (void)moduleInstancesChangedForModuleInstanceManager:(id)arg1;
 - (struct CGSize)preferredContentSize;
 - (void)requestExpandModuleForContentModuleContext:(id)arg1;

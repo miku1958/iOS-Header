@@ -35,6 +35,7 @@
 - (BOOL)rem_hasTel;
 - (id)rem_removingMailto;
 - (id)rem_removingTel;
+- (id)rem_tidyFormattedNameString;
 - (void)setDocument:(id)arg1;
 - (id)tombstone;
 - (void)walkGraph:(CDUnknownBlockType)arg1;

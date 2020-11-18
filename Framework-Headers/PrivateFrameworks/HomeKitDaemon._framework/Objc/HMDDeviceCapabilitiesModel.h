@@ -10,29 +10,43 @@
 
 @interface HMDDeviceCapabilitiesModel : HMDBackingStoreModelObject
 {
+    NSNumber *_supportsDoorbellChime;
+    NSNumber *_supportsStereoPairingV1;
+    NSNumber *_supportsStereoPairingV2;
 }
 
 @property (copy, nonatomic) NSNumber *remoteGatewayCapable; // @dynamic remoteGatewayCapable;
 @property (copy, nonatomic) NSNumber *residentCapable; // @dynamic residentCapable;
 @property (copy, nonatomic) NSNumber *supportsAssistantAccessControl; // @dynamic supportsAssistantAccessControl;
+@property (copy, nonatomic) NSNumber *supportsCameraActivityZones; // @dynamic supportsCameraActivityZones;
 @property (copy, nonatomic) NSNumber *supportsCameraRecording; // @dynamic supportsCameraRecording;
+@property (copy, nonatomic) NSNumber *supportsCameraRecordingReachabilityNotifications; // @dynamic supportsCameraRecordingReachabilityNotifications;
+@property (copy, nonatomic) NSNumber *supportsCameraSignificantEventNotifications; // @dynamic supportsCameraSignificantEventNotifications;
 @property (copy, nonatomic) NSNumber *supportsCloudDataSync; // @dynamic supportsCloudDataSync;
 @property (copy, nonatomic) NSNumber *supportsCompanionInitiatedRestart; // @dynamic supportsCompanionInitiatedRestart;
 @property (copy, nonatomic) NSNumber *supportsDeviceSetup; // @dynamic supportsDeviceSetup;
+@property (copy, nonatomic) NSNumber *supportsDoorbellChime; // @synthesize supportsDoorbellChime=_supportsDoorbellChime;
+@property (copy, nonatomic) NSNumber *supportsFaceClassification; // @dynamic supportsFaceClassification;
 @property (copy, nonatomic) NSNumber *supportsHomeInvitation; // @dynamic supportsHomeInvitation;
+@property (copy, nonatomic) NSNumber *supportsIDSActivityMonitorPresence; // @dynamic supportsIDSActivityMonitorPresence;
 @property (copy, nonatomic) NSNumber *supportsKeyTransferClient; // @dynamic supportsKeyTransferClient;
 @property (copy, nonatomic) NSNumber *supportsKeyTransferServer; // @dynamic supportsKeyTransferServer;
 @property (copy, nonatomic) NSNumber *supportsKeychainSync; // @dynamic supportsKeychainSync;
 @property (copy, nonatomic) NSNumber *supportsMediaActions; // @dynamic supportsMediaActions;
 @property (copy, nonatomic) NSNumber *supportsMultiUser; // @dynamic supportsMultiUser;
+@property (copy, nonatomic) NSNumber *supportsNaturalLighting; // @dynamic supportsNaturalLighting;
 @property (copy, nonatomic) NSNumber *supportsRouterManagement; // @dynamic supportsRouterManagement;
 @property (copy, nonatomic) NSNumber *supportsShortcutActions; // @dynamic supportsShortcutActions;
 @property (copy, nonatomic) NSNumber *supportsStandaloneMode; // @dynamic supportsStandaloneMode;
+@property (copy, nonatomic) NSNumber *supportsStereoPairingV1; // @synthesize supportsStereoPairingV1=_supportsStereoPairingV1;
+@property (copy, nonatomic) NSNumber *supportsStereoPairingV2; // @synthesize supportsStereoPairingV2=_supportsStereoPairingV2;
 @property (copy, nonatomic) NSNumber *supportsTargetControl; // @dynamic supportsTargetControl;
+@property (copy, nonatomic) NSNumber *supportsThirdPartyMusic; // @dynamic supportsThirdPartyMusic;
 @property (copy, nonatomic) NSNumber *supportsWholeHouseAudio; // @dynamic supportsWholeHouseAudio;
 
 + (id)properties;
 + (id)schemaHashRoot;
+- (void).cxx_destruct;
 
 @end
 

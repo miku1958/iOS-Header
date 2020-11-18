@@ -14,23 +14,30 @@
     SBSwitcherModifier *_nonGestureInitiatedZoomModifier;
     long long _startingEnvironmentMode;
     struct CGPoint _liftOffVelocity;
+    unsigned long long _iconGridSizeClass;
+    BOOL _overshootScaleForWidgetZoomDown;
 }
 
 - (void).cxx_destruct;
+- (id)_layoutSettings;
 - (double)_normalizedHomeScreenIconZoomPercentBetweenTopAndBottom;
+- (id)_positionSettings;
+- (id)_scaleSettings;
 - (id)_settingsByInterpolatingBetween:(id)arg1 and:(id)arg2 progress:(double)arg3;
-- (long long)backdropBlurType;
-- (struct _NSRange)fullSizeSnapshotsRange;
-- (id)handleEvent:(id)arg1;
+- (id)animationAttributesForLayoutElement:(id)arg1;
+- (id)appLayoutsToCacheFullsizeSnapshots;
+- (id)appLayoutsToCacheSnapshots;
+- (BOOL)completesWhenChildrenComplete;
+- (id)handleTimerEvent:(id)arg1;
+- (long long)homeScreenBackdropBlurType;
 - (id)initWithTransitionID:(id)arg1 appLayout:(id)arg2 nonGestureInitiatedZoomModifier:(id)arg3 effectiveStartingEnvironmentMode:(long long)arg4 liftOffVelocity:(struct CGPoint)arg5;
 - (BOOL)isHomeScreenContentRequired;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (id)layoutSettings;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
-- (id)positionSettingsForIndex:(unsigned long long)arg1;
-- (id)scaleSettingsForIndex:(unsigned long long)arg1;
+- (id)responseForProposedChildResponse:(id)arg1 childModifier:(id)arg2 event:(id)arg3;
+- (double)scaleForIndex:(unsigned long long)arg1;
+- (id)transitionWillUpdate;
 - (long long)wallpaperStyle;
 
 @end

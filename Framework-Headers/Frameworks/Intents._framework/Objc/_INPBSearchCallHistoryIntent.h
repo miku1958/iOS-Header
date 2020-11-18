@@ -23,7 +23,6 @@
         unsigned int unseen:1;
     } _has;
     BOOL _unseen;
-    BOOL __encodeLegacyGloryData;
     int _callType;
     int _preferredCallProvider;
     _INPBDateTimeRange *_dateCreated;
@@ -32,7 +31,6 @@
     _INPBContact *_targetContact;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, nonatomic) int *callCapabilities;
 @property (readonly, nonatomic) unsigned long long callCapabilitiesCount;
 @property (nonatomic) int callType; // @synthesize callType=_callType;

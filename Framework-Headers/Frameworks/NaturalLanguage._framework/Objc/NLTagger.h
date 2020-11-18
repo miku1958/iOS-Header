@@ -31,6 +31,9 @@
 + (void)requestAssetsForLanguage:(id)arg1 tagScheme:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (id)_customGazetteerAtIndex:(unsigned long long)arg1 unit:(long long)arg2 gazetteerDictionary:(id)arg3;
+- (id)_customHypothesesAtIndex:(unsigned long long)arg1 fromHypothesisDictionary:(id)arg2;
+- (id)_customHypothesesAtIndex:(unsigned long long)arg1 unit:(long long)arg2 scheme:(id)arg3 maximumCount:(unsigned long long)arg4 options:(unsigned long long)arg5 modelDictionary:(id)arg6 gazetteerDictionary:(id)arg7;
+- (id)_customHypothesisDictionaryForSentence:(id)arg1 options:(unsigned long long)arg2 model:(id)arg3 gazetteer:(id)arg4 maximumCount:(unsigned long long)arg5;
 - (id)_customModelAtIndex:(unsigned long long)arg1 unit:(long long)arg2 modelDictionary:(id)arg3;
 - (id)_customTagAtIndex:(unsigned long long)arg1 fromTagDictionary:(id)arg2;
 - (id)_customTagAtIndex:(unsigned long long)arg1 unit:(long long)arg2 scheme:(id)arg3 options:(unsigned long long)arg4 modelDictionary:(id)arg5 gazetteerDictionary:(id)arg6;
@@ -49,8 +52,10 @@
 - (void)setOrthography:(id)arg1 range:(struct _NSRange)arg2;
 - (void)stringEditedInRange:(struct _NSRange)arg1 changeInLength:(long long)arg2;
 - (id)tagAtIndex:(unsigned long long)arg1 unit:(long long)arg2 scheme:(id)arg3 tokenRange:(struct _NSRange *)arg4;
+- (id)tagHypothesesAtIndex:(unsigned long long)arg1 unit:(long long)arg2 scheme:(id)arg3 maximumCount:(unsigned long long)arg4 tokenRange:(struct _NSRange *)arg5;
 - (id)tagsInRange:(struct _NSRange)arg1 unit:(long long)arg2 scheme:(id)arg3 options:(unsigned long long)arg4 tokenRanges:(id *)arg5;
 - (struct _NSRange)tokenRangeAtIndex:(unsigned long long)arg1 unit:(long long)arg2;
+- (struct _NSRange)tokenRangeForRange:(struct _NSRange)arg1 unit:(long long)arg2;
 
 @end
 

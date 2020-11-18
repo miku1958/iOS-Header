@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <Silex/NSCopying-Protocol.h>
+#import <Silex/NSFastEnumeration-Protocol.h>
 #import <Silex/NSMutableCopying-Protocol.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary;
 
-@interface SXComponents : NSObject <NSCopying, NSMutableCopying>
+@interface SXComponents : NSObject <NSCopying, NSMutableCopying, NSFastEnumeration>
 {
     NSMutableArray *_components;
     NSMutableDictionary *_componentsByIdentifier;
@@ -32,6 +33,8 @@
 - (id)componentsForContainerComponentWithIdentifier:(id)arg1;
 - (id)componentsForContainerComponentWithPath:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (void)enumerateComponentsWithBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)indexOfComponent:(id)arg1;
 - (id)init;
 - (id)initWithArray:(id)arg1;

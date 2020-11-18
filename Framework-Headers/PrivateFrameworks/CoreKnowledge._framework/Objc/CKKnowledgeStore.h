@@ -30,8 +30,48 @@
 + (id)synchedKnowledgeStoreWithName:(id)arg1;
 + (id)userDefaultsKnowledgeStore;
 - (void).cxx_destruct;
+- (id)dictionaryRepresentationAndReturnError:(id *)arg1;
+- (void)dictionaryRepresentationForKeysMatching:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)dictionaryRepresentationForKeysMatching:(id)arg1 error:(id *)arg2;
+- (void)dictionaryRepresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)disableSyncAndDeleteCloudDataWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)entitiesAndReturnError:(id *)arg1;
+- (void)entitiesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)entityWithIdentifier:(id)arg1;
+- (void)importContentsOfJSONLDAtPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)importTriplesFromFileAtPath:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)inferLinkTo:(id)arg1 withPredicate:(id)arg2 when:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (BOOL)inferLinkTo:(id)arg1 withPredicate:(id)arg2 when:(id)arg3 error:(id *)arg4;
 - (id)init;
 - (BOOL)isEqual:(id)arg1;
+- (id)keysAndReturnError:(id *)arg1;
+- (void)keysMatching:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)keysMatching:(id)arg1 error:(id *)arg2;
+- (void)keysWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (BOOL)removeAllValuesAndReturnError:(id *)arg1;
+- (void)removeAllValuesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)removeEntity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)removeEntity:(id)arg1 error:(id *)arg2;
+- (void)removeValueForKey:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)removeValueForKey:(id)arg1 error:(id *)arg2;
+- (void)removeValuesForKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)removeValuesForKeys:(id)arg1 error:(id *)arg2;
+- (void)removeValuesMatching:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)removeValuesMatching:(id)arg1 error:(id *)arg2;
+- (void)setValue:(id)arg1 forKey:(id)arg2;
+- (void)setValue:(id)arg1 forKey:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)sparqlResultsForQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)subgraphWithEntities:(id)arg1;
+- (void)triplesMatching:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)triplesMatching:(id)arg1 error:(id *)arg2;
+- (id)valueForKey:(id)arg1;
+- (void)valueForKey:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)valuesAndReturnError:(id *)arg1;
+- (void)valuesForKeys:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)valuesForKeysMatching:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)valuesForKeysMatching:(id)arg1 error:(id *)arg2;
+- (void)valuesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)writeBatch;
 
 @end
 

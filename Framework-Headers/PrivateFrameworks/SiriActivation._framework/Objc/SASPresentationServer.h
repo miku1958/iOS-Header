@@ -42,7 +42,9 @@
 - (oneway void)failedToPresentSiriWithError:(id)arg1;
 - (oneway void)handleMarkBulletinWithIdentifier:(id)arg1 asRead:(id)arg2;
 - (id)init;
+- (oneway void)pong;
 - (oneway void)registerPresentationIdentifier:(id)arg1;
+- (oneway void)resetSiriToActive;
 - (oneway void)speechRequestCancelledFromSiriOrb;
 - (oneway void)speechRequestStartedFromSiriOrb;
 - (oneway void)unregisterPresentationIdentifier:(id)arg1;

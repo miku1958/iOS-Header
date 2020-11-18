@@ -9,7 +9,7 @@
 #import <FamilyCircleUI/AAUIServerHook-Protocol.h>
 #import <FamilyCircleUI/PSCloudStorageOffersManagerDelegate-Protocol.h>
 
-@class AAUIServerHookResponse, NSString, PSCloudStorageOffersManager;
+@class AAUIServerHookResponse, NSString, PSCloudStorageOffersManager, RUIObjectModel;
 @protocol AAUIServerHookDelegate;
 
 @interface FABuyStorageHook : NSObject <PSCloudStorageOffersManagerDelegate, AAUIServerHook>
@@ -24,6 +24,7 @@
 @property (weak, nonatomic) id<AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) RUIObjectModel *objectModel;
 @property (strong, nonatomic) AAUIServerHookResponse *serverHookResponse;
 @property (readonly) Class superclass;
 

@@ -16,6 +16,7 @@
 }
 
 @property (copy, nonatomic) NSURL *URL;
+@property (readonly, nonatomic, getter=isSuspiciousURL) BOOL suspiciousURL;
 
 - (void).cxx_destruct;
 - (void)commonInit;

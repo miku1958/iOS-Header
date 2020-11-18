@@ -6,11 +6,15 @@
 
 #import <MPSNeuralNetwork/MPSCNNKernel.h>
 
+@class MPSImage, MPSMatrix;
 @protocol MPSNNLossCallback;
 
 @interface MPSNNForwardLoss : MPSCNNKernel
 {
+    BOOL _reduceAcrossBatch;
     id<MPSNNLossCallback> _propertyCallback;
+    MPSMatrix *_reductionBuffer;
+    MPSImage *_firstLossImage;
     unsigned int _lossType;
     int _reductionType;
     float _weight;
@@ -25,10 +29,11 @@
 @property (nonatomic) float labelSmoothing; // @synthesize labelSmoothing=_labelSmoothing;
 @property (readonly, nonatomic) unsigned int lossType; // @synthesize lossType=_lossType;
 @property (readonly, nonatomic) unsigned long long numberOfClasses; // @synthesize numberOfClasses=_numberOfClasses;
+@property (readonly, nonatomic) BOOL reduceAcrossBatch; // @synthesize reduceAcrossBatch=_reduceAcrossBatch;
 @property (readonly, nonatomic) int reductionType; // @synthesize reductionType=_reductionType;
 @property (nonatomic) float weight; // @synthesize weight=_weight;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;

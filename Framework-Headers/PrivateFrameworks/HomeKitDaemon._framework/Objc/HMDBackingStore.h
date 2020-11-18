@@ -36,6 +36,7 @@
 
 + (id)allowedTypes;
 + (id)currentDevice;
++ (id)deeplyProblematicObjectTypes;
 + (id)flushBackingStore;
 + (id)internalAllowedTypes;
 + (id)logCategory;

@@ -12,7 +12,7 @@
 #import <TSPersistence/TSPPassphraseConsumer-Protocol.h>
 #import <TSPersistence/TSPSupportDirectoryDelegate-Protocol.h>
 
-@class NSData, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSProgress, NSRecursiveLock, NSSet, NSString, NSURL, NSUUID, SFUCryptoKey, TSPCancellationState, TSPComponentManager, TSPDataDownloadManager, TSPDataManager, TSPDocumentMetadata, TSPDocumentProperties, TSPDocumentRevision, TSPDocumentSaveOperationState, TSPObject, TSPObjectContainer, TSPObjectUUIDMap, TSPPackage, TSPPackageWriteCoordinator, TSPRegistry, TSPResourceContext, TSPSupportManager, TSPSupportMetadata, TSUTemporaryDirectory;
+@class NSData, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSProgress, NSRecursiveLock, NSSet, NSString, NSURL, NSUUID, SFUCryptoKey, TSPCancellationState, TSPComponentManager, TSPDataDownloadManager, TSPDataManager, TSPDocumentMetadata, TSPDocumentProperties, TSPDocumentRevision, TSPDocumentSaveOperationState, TSPObject, TSPObjectContainer, TSPObjectUUIDMap, TSPPackage, TSPPackageWriteCoordinator, TSPRegistry, TSPResourceContext, TSPSupportManager, TSPSupportMetadata, TSPSupportPackageWriteCoordinator, TSUTemporaryDirectory;
 @protocol NSFilePresenter, OS_dispatch_group, OS_dispatch_queue, TSPObjectContextDelegate;
 
 @interface TSPObjectContext : NSObject <TSPFileCoordinatorDelegate, TSPLazyReferenceDelegate, TSPObjectDelegate, TSPSupportDirectoryDelegate, TSPPassphraseConsumer>
@@ -63,7 +63,7 @@
     NSHashTable *_asynchronousObjectModifiers;
     NSMutableArray *_suspendedAsynchronousObjectModifierStack;
     TSPObject *_supportObject;
-    TSPPackageWriteCoordinator *_supportWriteCoordinator;
+    TSPSupportPackageWriteCoordinator *_supportWriteCoordinator;
     NSHashTable *_objectProviders;
     NSObject<OS_dispatch_queue> *_objectProvidersQueue;
     struct {
@@ -125,6 +125,7 @@
 @property (readonly, nonatomic) TSPPackage *documentPackage;
 @property (readonly, nonatomic) NSString *documentPasswordHint; // @synthesize documentPasswordHint=_documentPasswordHint;
 @property (readonly, nonatomic) TSPDocumentProperties *documentProperties;
+@property (readonly, nonatomic) unsigned long long documentReadVersion;
 @property (strong) TSPDocumentRevision *documentRevision;
 @property (readonly, nonatomic) unsigned long long documentSize;
 @property (readonly, nonatomic) NSURL *documentURL;
@@ -135,6 +136,8 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL ignoreDocumentResourcesWhileReading;
 @property (readonly, nonatomic) BOOL ignoreDocumentSupport;
+@property (readonly, nonatomic) BOOL ignoreDocumentSupportVersioning;
+@property (readonly, nonatomic) BOOL ignoreReferencesToUnknownObjects;
 @property (readonly, nonatomic) BOOL ignoreUnknownContentWhileReading;
 @property (readonly, nonatomic) BOOL ignoreVersionCheckingWhileReading;
 @property (readonly, nonatomic) BOOL isDocumentModified;
@@ -309,7 +312,7 @@
 - (BOOL)updateDocumentUUIDPreserveOriginalDocumentSupport:(BOOL)arg1 preserveShareUUID:(BOOL)arg2 error:(id *)arg3;
 - (long long)updateModifyObjectToken;
 - (void)waitForSaveToFinishIfNeeded;
-- (void)willModifyObject:(id)arg1 duringReadOperation:(BOOL)arg2;
+- (void)willModifyObject:(id)arg1 options:(unsigned long long)arg2;
 - (BOOL)writeToURL:(id)arg1 encryptionKey:(id)arg2 error:(id *)arg3;
 - (BOOL)writeToURL:(id)arg1 originalPackage:(id)arg2 supportURL:(id)arg3 originalSupportPackage:(id)arg4 encryptionKey:(id)arg5 error:(id *)arg6;
 

@@ -7,6 +7,7 @@
 #import <GameCenterFoundation/GKLeaderboard.h>
 
 @interface GKLeaderboard (UI)
++ (id)localizedStringForLeaderboardOccurrence:(long long)arg1;
 + (id)localizedStringForTimeScope:(long long)arg1;
 - (id)imageURL;
 - (void)loadImageWithCompletionHandler:(CDUnknownBlockType)arg1;

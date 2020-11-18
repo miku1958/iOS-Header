@@ -22,7 +22,7 @@
     id<PKPassPaymentApplicationViewDelegate> _delegate;
 }
 
-@property (nonatomic) id<PKPassPaymentApplicationViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKPassPaymentApplicationViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 @property (strong, nonatomic) PKPaymentApplication *selectedApplication; // @synthesize selectedApplication=_selectedApplication;
 @property (nonatomic) BOOL showHeader; // @synthesize showHeader=_showHeader;

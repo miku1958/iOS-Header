@@ -7,11 +7,12 @@
 #import <PhotosUICore/PXActionPerformerDelegate-Protocol.h>
 
 @class PXAssetCollectionActionPerformer;
-@protocol PXDisplayAssetCollection;
+@protocol PXDisplayAssetCollection, PXDisplayAssetFetchResult;
 
 @protocol PXAssetCollectionActionPerformerDelegate <PXActionPerformerDelegate>
 
 @optional
 - (void)assetCollectionActionPerformer:(PXAssetCollectionActionPerformer *)arg1 playMovieForAssetCollection:(id<PXDisplayAssetCollection>)arg2;
+- (void)assetCollectionActionPerformer:(PXAssetCollectionActionPerformer *)arg1 showMapWithAssetsFetchResult:(id<PXDisplayAssetFetchResult>)arg2;
 @end
 

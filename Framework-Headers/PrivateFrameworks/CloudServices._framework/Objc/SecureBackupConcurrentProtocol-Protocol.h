@@ -6,7 +6,11 @@
 
 #import <CloudServices/NSObject-Protocol.h>
 
+@class NSString, SecureBackupTermsInfo;
+
 @protocol SecureBackupConcurrentProtocol <NSObject>
 - (void)daemonPasscodeRequestOpinion:(void (^)(unsigned int, NSError *))arg1;
+- (void)getAcceptedTermsForAltDSID:(NSString *)arg1 reply:(void (^)(NSArray *, NSError *))arg2;
+- (void)saveTermsAcceptance:(SecureBackupTermsInfo *)arg1 reply:(void (^)(NSError *))arg2;
 @end
 

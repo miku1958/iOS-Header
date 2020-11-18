@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class DEManifest, DEManifestSync, DEUpdaterState, DEWorkQueues, NSDate, NSString, NSURL;
+@class DEManifest, DEUpdaterState, DEWorkQueues, NSDate, NSString, NSURL;
 
 @interface DEUpdater : NSObject
 {
+    BOOL _manifestSyncing;
     BOOL _disableManifestSync;
     BOOL _foregroundManifestSync;
+    BOOL _logToCoreAnalytics;
     NSString *_distribution;
     NSURL *_publicationURL;
     NSDate *_publicationErrorTime;
     double _publicationErrorTTL;
-    NSURL *_downloadBase;
+    NSURL *_downloadURLPrefix;
     NSURL *_builtinDir;
     NSURL *_updateDir;
     NSURL *_storageBase;
@@ -25,18 +27,19 @@
     DEManifest *_builtinManifest;
     DEManifest *_latestManifest;
     DEWorkQueues *_queues;
+    DEWorkQueues *_syncQueues;
     DEUpdaterState *_state;
-    DEManifestSync *_manifestSync;
 }
 
 @property (strong, nonatomic) NSURL *builtinDir; // @synthesize builtinDir=_builtinDir;
 @property (strong, nonatomic) DEManifest *builtinManifest; // @synthesize builtinManifest=_builtinManifest;
 @property (nonatomic) BOOL disableManifestSync; // @synthesize disableManifestSync=_disableManifestSync;
 @property (strong, nonatomic) NSString *distribution; // @synthesize distribution=_distribution;
-@property (strong, nonatomic) NSURL *downloadBase; // @synthesize downloadBase=_downloadBase;
+@property (strong, nonatomic) NSURL *downloadURLPrefix; // @synthesize downloadURLPrefix=_downloadURLPrefix;
 @property (nonatomic) BOOL foregroundManifestSync; // @synthesize foregroundManifestSync=_foregroundManifestSync;
 @property (strong, nonatomic) DEManifest *latestManifest; // @synthesize latestManifest=_latestManifest;
-@property (strong, nonatomic) DEManifestSync *manifestSync; // @synthesize manifestSync=_manifestSync;
+@property (nonatomic) BOOL logToCoreAnalytics; // @synthesize logToCoreAnalytics=_logToCoreAnalytics;
+@property (nonatomic) BOOL manifestSyncing; // @synthesize manifestSyncing=_manifestSyncing;
 @property (strong, nonatomic) NSURL *overlayBase; // @synthesize overlayBase=_overlayBase;
 @property (nonatomic) double publicationErrorTTL; // @synthesize publicationErrorTTL=_publicationErrorTTL;
 @property (strong, nonatomic) NSDate *publicationErrorTime; // @synthesize publicationErrorTime=_publicationErrorTime;
@@ -44,50 +47,93 @@
 @property (strong, nonatomic) DEWorkQueues *queues; // @synthesize queues=_queues;
 @property (strong, nonatomic) DEUpdaterState *state; // @synthesize state=_state;
 @property (strong, nonatomic) NSURL *storageBase; // @synthesize storageBase=_storageBase;
+@property (strong, nonatomic) DEWorkQueues *syncQueues; // @synthesize syncQueues=_syncQueues;
 @property (strong, nonatomic) NSURL *tmpBase; // @synthesize tmpBase=_tmpBase;
 @property (strong, nonatomic) NSURL *updateDir; // @synthesize updateDir=_updateDir;
 
 + (id)appendPublicationName:(id)arg1;
++ (void)clearURLParamsCache;
 + (BOOL)copyFrom:(id)arg1 to:(id)arg2;
-+ (id)getPublicationURL:(id)arg1 manifestDir:(id)arg2;
-+ (id)getPublicationURL:(id)arg1 manifestDir:(id)arg2 URLVersion:(id)arg3;
-+ (id)getUpdateDirFor:(id)arg1;
-+ (id)loadPublication:(id)arg1;
-+ (BOOL)package:(id)arg1 summary:(id)arg2 to:(id)arg3 manifestDest:(id)arg4 overrides:(id)arg5 keyId:(unsigned long long)arg6 multipart:(BOOL)arg7 updating:(id)arg8;
-+ (BOOL)prepareDistribution:(id)arg1 withManifestDir:(id)arg2 disabled:(BOOL)arg3 in:(id)arg4 tag:(id)arg5 keyId:(unsigned long long)arg6 multipart:(BOOL)arg7;
-+ (BOOL)putManifest:(id)arg1 summary:(id)arg2 overrides:(id)arg3;
++ (id)getDefaultCategory;
++ (id)getDispatchQueue;
++ (id)getDownloadURLPrefix:(id)arg1;
++ (id)getManifestName;
++ (id)getPublicationPath:(id)arg1 category:(id)arg2;
++ (id)getPublicationPath:(id)arg1 category:(id)arg2 URLVersion:(unsigned long long)arg3;
++ (id)getPublicationURL:(id)arg1;
++ (id)getPublicationURL:(id)arg1 prefixURL:(id)arg2 category:(id)arg3;
++ (id)getURLParams:(id)arg1;
++ (id)getURLParams:(id)arg1 URLVersion:(unsigned long long)arg2;
++ (id)getURLParams:(id)arg1 URLVersion:(unsigned long long)arg2 manifest:(id)arg3;
++ (id)getUpdateDirFor:(id)arg1 base:(id)arg2;
++ (id)getVersionSeed:(unsigned long long)arg1;
++ (BOOL)hasDefaultURLs:(id)arg1 publicationURL:(id)arg2 downloadURLPrefix:(id)arg3;
++ (id)loadPublication:(id)arg1 defaultTag:(id)arg2 allowAllKeys:(BOOL)arg3;
++ (BOOL)manifestExists:(id)arg1;
++ (BOOL)package:(id)arg1 src:(id)arg2 contents:(id)arg3 summary:(id)arg4 dest:(id)arg5 manifestDest:(id)arg6 overrides:(id)arg7 dirDownloadType:(unsigned long long)arg8 keyId:(unsigned long long)arg9 privateKey:(id)arg10 updating:(id)arg11 publicationURL:(id)arg12 downloadURLPrefix:(id)arg13;
++ (BOOL)package:(id)arg1 src:(id)arg2 contents:(id)arg3 summary:(id)arg4 dest:(id)arg5 manifestDest:(id)arg6 overrides:(id)arg7 keyId:(unsigned long long)arg8 privateKey:(id)arg9 updating:(id)arg10;
++ (BOOL)packageDirectory:(id)arg1 src:(id)arg2 contents:(id)arg3 summary:(id)arg4 dest:(id)arg5 manifestDest:(id)arg6 downloadType:(unsigned long long)arg7 keyId:(unsigned long long)arg8 privateKey:(id)arg9 updating:(id)arg10;
++ (BOOL)prepareDistribution:(id)arg1 disabled:(BOOL)arg2 in:(id)arg3 tag:(id)arg4 keyId:(unsigned long long)arg5 privateKey:(id)arg6;
++ (BOOL)putDirectoryManifest:(id)arg1 src:(id)arg2 contents:(id)arg3 summary:(id)arg4 downloadType:(unsigned long long)arg5;
++ (BOOL)putManifest:(id)arg1 src:(id)arg2 contents:(id)arg3 summary:(id)arg4 overrides:(id)arg5;
++ (BOOL)putManifest:(id)arg1 src:(id)arg2 contents:(id)arg3 summary:(id)arg4 overrides:(id)arg5 dirDownloadType:(unsigned long long)arg6;
 + (void)remove:(id)arg1 from:(id)arg2;
-+ (id)summarize:(id)arg1;
++ (id)summarize:(id)arg1 filter:(id)arg2;
 - (void).cxx_destruct;
+- (BOOL)applyUpdate;
+- (BOOL)checkManifest:(id)arg1 manifestURL:(id)arg2;
 - (void)checkOverlay:(id)arg1 version:(id)arg2;
+- (id)chooseOverlayBase;
 - (id)chooseURLFor:(id)arg1 version:(id)arg2 versionFound:(BOOL *)arg3;
+- (BOOL)directoryDistributionValid;
 - (void)find:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)find:(id)arg1 downloadType:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
 - (id)find:(id)arg1 downloadType:(unsigned long long)arg2 status:(id *)arg3;
 - (id)find:(id)arg1 status:(id *)arg2;
+- (void)findDirectory:(BOOL)arg1 block:(CDUnknownBlockType)arg2;
+- (void)findDirectory:(BOOL)arg1 downloadType:(unsigned long long)arg2 block:(CDUnknownBlockType)arg3;
+- (id)findDirectory:(BOOL)arg1 downloadType:(unsigned long long)arg2 status:(id *)arg3;
+- (id)findDirectory:(BOOL)arg1 status:(id *)arg2;
+- (void)findDirectoryLocally:(BOOL)arg1 block:(CDUnknownBlockType)arg2;
+- (id)findDirectoryLocally:(BOOL)arg1 status:(id *)arg2;
 - (void)findLocally:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (id)findLocally:(id)arg1 status:(id *)arg2;
 - (id)getDownloadURLFor:(id)arg1 encryptedVersion:(id)arg2;
+- (id)getOutOfDateVersion:(id)arg1;
 - (id)getStorageURLFor:(id)arg1 version:(id)arg2;
 - (id)getVersionFor:(id)arg1;
 - (id)getVersionFor:(id)arg1 encryptedVersion:(id *)arg2;
+- (BOOL)individualDistributionValid;
 - (id)init;
 - (id)initPlaceholder;
-- (id)initWithDistribution:(id)arg1 publicationURL:(id)arg2 downloadBase:(id)arg3 builtinDir:(id)arg4;
+- (id)initWithBuiltinDir:(id)arg1;
+- (id)initWithBuiltinDir:(id)arg1 filter:(id)arg2;
+- (id)initWithBuiltinDir:(id)arg1 updateDir:(id)arg2;
+- (id)initWithPublicationURL:(id)arg1 downloadURLPrefix:(id)arg2 builtinDir:(id)arg3;
+- (id)initWithPublicationURL:(id)arg1 downloadURLPrefix:(id)arg2 builtinDir:(id)arg3 updateDir:(id)arg4 filter:(id)arg5;
+- (BOOL)isDirectoryDistribution;
 - (BOOL)linkToOverlay:(id)arg1 from:(id)arg2 replace:(BOOL)arg3;
+- (BOOL)linkToOverlay:(id)arg1 from:(id)arg2 replace:(BOOL)arg3 shouldSymlink:(BOOL)arg4;
 - (BOOL)loadState;
-- (void)prepare:(id)arg1 version:(id)arg2 encryptedVersion:(id)arg3 linkOnlyIfLatest:(BOOL)arg4 publication:(id)arg5 block:(CDUnknownBlockType)arg6;
-- (BOOL)prepareBuiltinManifest:(BOOL)arg1;
+- (BOOL)matches:(id)arg1 filter:(id)arg2;
+- (BOOL)nameKnown:(id)arg1 blockRequired:(BOOL *)arg2;
+- (void)prepare:(id)arg1 version:(id)arg2 encryptedVersion:(id)arg3 linkIfLatest:(BOOL)arg4 publication:(id)arg5 block:(CDUnknownBlockType)arg6;
+- (BOOL)prepareBuiltinManifest:(BOOL)arg1 filter:(id)arg2;
+- (void)prepareLatestManifest;
 - (id)prepared:(id)arg1 version:(id)arg2;
 - (void)removeFromOverlay:(id)arg1;
 - (void)removeFromStorage:(id)arg1;
 - (BOOL)resetState;
+- (void)runSyncBlock:(CDUnknownBlockType)arg1;
 - (BOOL)saveState;
 - (id)store:(id)arg1 version:(id)arg2 encryptedVersion:(id)arg3 from:(id)arg4 src:(id)arg5;
-- (void)sync;
-- (void)unorderedPrepare:(id)arg1 version:(id)arg2 encryptedVersion:(id)arg3 linkOnlyIfLatest:(BOOL)arg4 publication:(id)arg5 block:(CDUnknownBlockType)arg6;
-- (void)unorderedUpdate:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)sync:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (BOOL)syncNeeded;
+- (void)unorderedPrepare:(id)arg1 version:(id)arg2 encryptedVersion:(id)arg3 linkIfLatest:(BOOL)arg4 publication:(id)arg5 block:(CDUnknownBlockType)arg6;
+- (void)unorderedSync:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)unorderedUpdate:(id)arg1 block:(CDUnknownBlockType)arg2 syncBlock:(CDUnknownBlockType)arg3 syncInForeground:(id)arg4;
 - (void)update:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (BOOL)updateIsReady;
 
 @end
 

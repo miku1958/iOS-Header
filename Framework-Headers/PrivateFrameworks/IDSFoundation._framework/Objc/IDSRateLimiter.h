@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSMultiReadUniWriteLock, NSMutableDictionary;
+@class NSMutableDictionary;
 
 @interface IDSRateLimiter : NSObject
 {
-    NSMutableDictionary *_cacheMap;
-    NSMultiReadUniWriteLock *_readWriteLock;
-    double _timeLimit;
+    struct os_unfair_lock_s _lock;
     long long _limit;
+    double _timeLimit;
+    NSMutableDictionary *_cacheMap;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *cacheMap; // @synthesize cacheMap=_cacheMap;
 @property (nonatomic) long long limit; // @synthesize limit=_limit;
-@property (strong, nonatomic) NSMultiReadUniWriteLock *readWriteLock; // @synthesize readWriteLock=_readWriteLock;
+@property (nonatomic) struct os_unfair_lock_s lock; // @synthesize lock=_lock;
 @property (nonatomic) double timeLimit; // @synthesize timeLimit=_timeLimit;
 
 - (void).cxx_destruct;

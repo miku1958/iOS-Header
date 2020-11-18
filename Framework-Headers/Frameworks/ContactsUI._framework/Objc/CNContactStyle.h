@@ -22,6 +22,7 @@
     UIColor *_disabledTextColor;
     UIColor *_placeholderTextColor;
     UIColor *_highlightedTextColor;
+    UIColor *_highlightedTextLightColor;
     UIColor *_suggestedLabelTextColor;
     UIColor *_suggestedValueTextColor;
     UIColor *_readOnlyTextColor;
@@ -42,11 +43,17 @@
     UIColor *_sectionBackgroundColor;
     UIColor *_selectedCellBackgroundColor;
     UIColor *_groupedBackgroundColor;
+    UIColor *_searchCellBackgroundColor;
     long long _barStyle;
     long long _keyboardAppearance;
     long long _modalTransitionStyle;
     long long _topActionsViewStyle;
     long long _inlineActionsViewStyle;
+    long long _contactViewPlatterStyle;
+    long long _overridenStyle;
+    double _sectionMaximumPlatterWidth;
+    double _sectionCornerRadius;
+    double _sectionContentInset;
     struct UIEdgeInsets _separatorInset;
 }
 
@@ -56,20 +63,27 @@
 @property (readonly, nonatomic) UIFont *boldTextFont;
 @property (strong, nonatomic) UIColor *contactHeaderBackgroundColor; // @synthesize contactHeaderBackgroundColor=_contactHeaderBackgroundColor;
 @property (strong, nonatomic) UIColor *contactHeaderDropShadowColor; // @synthesize contactHeaderDropShadowColor=_contactHeaderDropShadowColor;
+@property (nonatomic) long long contactViewPlatterStyle; // @synthesize contactViewPlatterStyle=_contactViewPlatterStyle;
 @property (strong, nonatomic) UIColor *disabledTextColor; // @synthesize disabledTextColor=_disabledTextColor;
 @property (strong, nonatomic) UIColor *groupedBackgroundColor; // @synthesize groupedBackgroundColor=_groupedBackgroundColor;
 @property (strong, nonatomic) UIColor *headerBackgroundColor; // @synthesize headerBackgroundColor=_headerBackgroundColor;
 @property (strong, nonatomic) UIColor *highlightedTextColor; // @synthesize highlightedTextColor=_highlightedTextColor;
+@property (strong, nonatomic) UIColor *highlightedTextLightColor; // @synthesize highlightedTextLightColor=_highlightedTextLightColor;
 @property (nonatomic) long long inlineActionsViewStyle; // @synthesize inlineActionsViewStyle=_inlineActionsViewStyle;
 @property (nonatomic) long long keyboardAppearance; // @synthesize keyboardAppearance=_keyboardAppearance;
 @property (nonatomic) long long modalTransitionStyle; // @synthesize modalTransitionStyle=_modalTransitionStyle;
 @property (strong, nonatomic) UIColor *notesTextColor; // @synthesize notesTextColor=_notesTextColor;
+@property (nonatomic) long long overridenStyle; // @synthesize overridenStyle=_overridenStyle;
 @property (strong, nonatomic) UIColor *placeholderTextColor; // @synthesize placeholderTextColor=_placeholderTextColor;
 @property (strong, nonatomic) UIColor *readOnlyTextColor; // @synthesize readOnlyTextColor=_readOnlyTextColor;
 @property (strong, nonatomic) UIColor *searchBarBackgroundColor; // @synthesize searchBarBackgroundColor=_searchBarBackgroundColor;
+@property (strong, nonatomic) UIColor *searchCellBackgroundColor; // @synthesize searchCellBackgroundColor=_searchCellBackgroundColor;
 @property (strong, nonatomic) UIColor *sectionBackgroundColor; // @synthesize sectionBackgroundColor=_sectionBackgroundColor;
+@property (nonatomic) double sectionContentInset; // @synthesize sectionContentInset=_sectionContentInset;
+@property (nonatomic) double sectionCornerRadius; // @synthesize sectionCornerRadius=_sectionCornerRadius;
 @property (strong, nonatomic) UIColor *sectionHeaderTextColor; // @synthesize sectionHeaderTextColor=_sectionHeaderTextColor;
 @property (strong, nonatomic) UIColor *sectionIndexBackgroundColor; // @synthesize sectionIndexBackgroundColor=_sectionIndexBackgroundColor;
+@property (nonatomic) double sectionMaximumPlatterWidth; // @synthesize sectionMaximumPlatterWidth=_sectionMaximumPlatterWidth;
 @property (strong, nonatomic) UIColor *selectedCellBackgroundColor; // @synthesize selectedCellBackgroundColor=_selectedCellBackgroundColor;
 @property (nonatomic) long long separatorBackdropOverlayBlendMode; // @synthesize separatorBackdropOverlayBlendMode=_separatorBackdropOverlayBlendMode;
 @property (strong, nonatomic) UIColor *separatorColor; // @synthesize separatorColor=_separatorColor;
@@ -86,15 +100,18 @@
 @property (strong, nonatomic) UIColor *transportBackgroundColor; // @synthesize transportBackgroundColor=_transportBackgroundColor;
 @property (strong, nonatomic) UIColor *transportBoldBackgroundColor; // @synthesize transportBoldBackgroundColor=_transportBoldBackgroundColor;
 @property (strong, nonatomic) UIColor *transportBorderColor; // @synthesize transportBorderColor=_transportBorderColor;
+@property (readonly, nonatomic) BOOL usesInsetPlatterStyle;
 @property (nonatomic) BOOL usesOpaqueBackground; // @synthesize usesOpaqueBackground=_usesOpaqueBackground;
 @property (nonatomic) BOOL usesTranslucentBarStyle; // @synthesize usesTranslucentBarStyle=_usesTranslucentBarStyle;
 
 + (id)currentStyle;
 + (id)darkStyle;
++ (id)darkStyleWithOverrideUserInterfaceStyle:(long long)arg1;
 + (id)defaultStyle;
 + (id)faceTimeStyle;
 + (void)setCurrentStyle:(id)arg1;
 + (id)siriStyle;
++ (id)spotlightStyle;
 + (BOOL)supportsSecureCoding;
 + (id)testStyle;
 + (id)watchStyle;

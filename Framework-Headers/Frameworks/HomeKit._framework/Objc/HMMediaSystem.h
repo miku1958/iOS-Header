@@ -18,7 +18,7 @@
 @class HMAccessoryCategory, HMAccessorySettings, HMApplicationData, HMFUnfairLock, HMHome, HMMediaSession, HMMutableArray, HMSymptomsHandler, NSArray, NSString, NSUUID, _HMContext;
 @protocol HMMediaSystemDelegate, OS_dispatch_queue;
 
-@interface HMMediaSystem : NSObject <HMFLogging, HMFMessageReceiver, NSSecureCoding, HMObjectMerge, HMControllable, HMMediaObject, HMApplicationData, HMAccessorySettingsContainer>
+@interface HMMediaSystem : NSObject <HMFLogging, HMFMessageReceiver, HMControllable, HMObjectMerge, NSSecureCoding, HMAccessorySettingsContainer, HMApplicationData, HMMediaObject>
 {
     HMFUnfairLock *_lock;
     BOOL _compatible;
@@ -66,15 +66,15 @@
 - (void)__configureWithContext:(id)arg1 home:(id)arg2;
 - (void)_handleRootSettingsUpdated:(id)arg1;
 - (void)_handleSystemUpdatedNotification:(id)arg1;
-- (void)_invalidate;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2 includeSettingsAndAppData:(BOOL)arg3;
 - (void)_registerNotificationHandlers;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)_updateAccessoryReference;
 - (void)_updateApplicationData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithHome:(id)arg1 uuid:(id)arg2 name:(id)arg3 configuredName:(id)arg4 compatible:(BOOL)arg5 components:(id)arg6 settings:(id)arg7 symptomHandler:(id)arg8;
 - (BOOL)isEqual:(id)arg1;

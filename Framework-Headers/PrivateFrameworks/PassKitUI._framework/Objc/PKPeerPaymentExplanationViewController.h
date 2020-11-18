@@ -8,21 +8,17 @@
 
 #import <PassKitUI/PKExplanationViewControllerDelegate-Protocol.h>
 #import <PassKitUI/PKExplanationViewDelegate-Protocol.h>
-#import <PassKitUI/PKPaymentSelectPassesViewControllerDelegate-Protocol.h>
+#import <PassKitUI/PKPeerPaymentSetupFlowControllerDataSource-Protocol.h>
 
-@class NSString, PKPaymentProvisioningController, PKPeerPaymentCredential, PKPeerPaymentTermsController, PKPeerPaymentWebService, UIImage;
-@protocol PKPaymentSetupViewControllerDelegate;
+@class NSString, PKPeerPaymentSetupFlowController, PKPeerPaymentSetupFlowProvisionConfiguration, UIViewController;
 
-@interface PKPeerPaymentExplanationViewController : PKExplanationViewController <PKExplanationViewDelegate, PKPaymentSelectPassesViewControllerDelegate, PKExplanationViewControllerDelegate>
+@interface PKPeerPaymentExplanationViewController : PKExplanationViewController <PKExplanationViewDelegate, PKExplanationViewControllerDelegate, PKPeerPaymentSetupFlowControllerDataSource>
 {
-    PKPaymentProvisioningController *_provisioningController;
-    PKPeerPaymentCredential *_credential;
-    id<PKPaymentSetupViewControllerDelegate> _setupDelegate;
-    PKPeerPaymentTermsController *_termsController;
-    PKPeerPaymentWebService *_peerPaymentWebService;
-    UIImage *_passSnapShot;
+    unsigned long long _operations;
+    PKPeerPaymentSetupFlowController *_peerPaymentSetupFlowController;
+    UIViewController *_nextViewController;
+    PKPeerPaymentSetupFlowProvisionConfiguration *_configuration;
     BOOL _hidesSetupLater;
-    BOOL _presentedDeviceToDeviceEncryptionFlow;
     BOOL _allowsManualEntry;
 }
 
@@ -35,22 +31,14 @@
 - (void).cxx_destruct;
 - (void)_addDifferentCard;
 - (id)_bodyText;
-- (void)_continuePressed;
-- (void)_displayTermsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_handleNextStep;
-- (void)_presentAlertControllerForError:(id)arg1;
-- (void)_presentDeviceToDeviceEncryptionFlow;
-- (void)_presentNextViewController;
-- (void)_presentSetupWillCompleteLaterAlertController;
+- (void)_presentDisplayableError:(id)arg1;
 - (void)_showSpinner:(BOOL)arg1;
-- (struct CGSize)_snapshotSize;
 - (void)_terminateSetupFlow;
-- (void)explanationViewControllerDidSelectCancel:(id)arg1;
 - (void)explanationViewDidSelectContinue:(id)arg1;
 - (void)explanationViewDidSelectSetupLater:(id)arg1;
-- (id)initWithProvisioningController:(id)arg1 context:(long long)arg2 setupDelegate:(id)arg3 credential:(id)arg4;
-- (void)selectPassesViewController:(id)arg1 didSelectPasses:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)setHideSetupLaterButton:(BOOL)arg1;
+- (id)initWithProvisoningController:(id)arg1 setupDelegate:(id)arg2 context:(long long)arg3 credential:(id)arg4;
+- (BOOL)shouldPushTerms;
 - (void)viewDidLoad;
 
 @end

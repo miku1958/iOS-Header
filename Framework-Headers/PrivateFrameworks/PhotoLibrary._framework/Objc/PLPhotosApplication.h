@@ -16,8 +16,6 @@
     int _observeForRechabilityChanges;
     BOOL _isReachable;
     BOOL _isOnWifi;
-    BOOL _photoStreamIsBusy;
-    BOOL _sharedPhotoStreamIsBusy;
     int _photoStreamActivityToken;
     int _sharedPhotoStreamActivityToken;
     int _sharedPhotoStreamInvitationFailureToken;
@@ -49,9 +47,6 @@
 - (void)_startObservingReachabilityChanges;
 - (void)_stopObservingReachabilityChanges;
 - (void)_unregisterForPhotoStreamActivityNotifications;
-- (void)_updateNetworkActivityIndicatorAsync;
-- (void)_updatePhotoStreamProgressDisplay;
-- (void)_updateSharedPhotoStreamProgressDisplay;
 - (void)_updateSuspensionSettings;
 - (void)applicationDidFinishLaunching:(id)arg1;
 - (void)dealloc;

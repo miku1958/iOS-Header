@@ -4,6 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSString;
+
 @protocol RPVideoEditorExtensionProtocol
+- (oneway void)doAction:(NSString *)arg1;
 @end
 

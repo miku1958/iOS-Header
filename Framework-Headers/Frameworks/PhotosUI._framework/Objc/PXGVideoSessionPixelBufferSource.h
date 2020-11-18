@@ -10,7 +10,6 @@
 #import <PhotosUICore/PXGDisplayAssetPixelBufferSource-Protocol.h>
 
 @class NSString, PXVideoSession;
-@protocol PXGVideoSessionPixelBufferSourceDelegate;
 
 @interface PXGVideoSessionPixelBufferSource : NSObject <PXChangeObserver, PXGDisplayAssetPixelBufferSource>
 {
@@ -18,18 +17,16 @@
     NSString *_bufferRequestIdentifier;
     CDUnknownBlockType _pixelBufferDidChangeHandler;
     long long _desiredPlayState;
-    id<PXGVideoSessionPixelBufferSourceDelegate> _delegate;
 }
 
 @property (readonly, nonatomic) struct __CVBuffer *currentPixelBuffer;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<PXGVideoSessionPixelBufferSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long desiredPlayState; // @synthesize desiredPlayState=_desiredPlayState;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType pixelBufferDidChangeHandler; // @synthesize pixelBufferDidChangeHandler=_pixelBufferDidChangeHandler;
+@property (readonly, nonatomic) struct CGAffineTransform preferredTransform;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) struct CGAffineTransform videoRotationTransform;
 
 - (void).cxx_destruct;
 - (void)_prepareVideoSession;

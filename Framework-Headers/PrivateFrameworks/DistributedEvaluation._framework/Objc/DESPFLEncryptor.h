@@ -6,23 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDictionary, NSString;
 
 @interface DESPFLEncryptor : NSObject
 {
+    NSDictionary *_recipeUserInfo;
     NSString *_privatizationIdentifier;
     long long _version;
+    double _weight;
     CDUnknownBlockType _privatizer;
 }
 
 @property (copy, nonatomic) NSString *privatizationIdentifier; // @synthesize privatizationIdentifier=_privatizationIdentifier;
 @property (copy, nonatomic) CDUnknownBlockType privatizer; // @synthesize privatizer=_privatizer;
 @property (nonatomic) long long version; // @synthesize version=_version;
+@property (nonatomic) double weight; // @synthesize weight=_weight;
 
 + (void)initialize;
 + (BOOL)privatizationSupported;
 - (void).cxx_destruct;
 - (id)_encryptedDataWithPublicKey:(id)arg1 noiseable:(id)arg2 error:(id *)arg3;
+- (void)_maybeQuantizeDataTransportOfNoisable:(id)arg1;
+- (id)_newNoiseable;
+- (id)_requestedTransport;
 - (id)encryptedAndPrivatizedDataWithPublicKey:(id)arg1 inPlaceNumbers:(float *)arg2 count:(unsigned long long)arg3 error:(id *)arg4;
 - (id)encryptedAndPrivatizedDataWithPublicKey:(id)arg1 numbers:(const float *)arg2 count:(unsigned long long)arg3 error:(id *)arg4;
 - (id)encryptedDataWithPublicKey:(id)arg1 data:(id)arg2 error:(id *)arg3;
@@ -31,6 +37,8 @@
 - (id)encryptedDataWithPublicKey:(id)arg1 inPlaceDataFloatNumbers:(float *)arg2 count:(unsigned long long)arg3 error:(id *)arg4;
 - (id)encryptedDataWithPublicKey:(id)arg1 inPlaceDataNumbers:(double *)arg2 count:(unsigned long long)arg3 error:(id *)arg4;
 - (id)init;
+- (id)initWithRecipe:(id)arg1;
+- (id)initWithRecipeUserInfo:(id)arg1;
 
 @end
 

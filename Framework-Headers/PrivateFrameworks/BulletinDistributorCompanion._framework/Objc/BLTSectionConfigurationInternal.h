@@ -28,7 +28,7 @@
 - (id)init;
 - (unsigned long long)legacyMapLocationForSectionID:(id)arg1;
 - (BOOL)setCoordinationType:(unsigned long long)arg1 sectionID:(id)arg2;
-- (BOOL)shouldSectionIDAlwaysAlert:(id)arg1;
+- (BOOL)shouldSectionIDAlwaysAlert:(id)arg1 category:(id)arg2;
 - (BOOL)shouldSectionIDSettingsAlwaysSync:(id)arg1;
 - (BOOL)shouldUsePhoneExpirationDateForSectionID:(id)arg1;
 - (id)watchVersionThatUsesAttachmentURLForSectionID:(id)arg1;

@@ -10,24 +10,23 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBMediaItemValue-Protocol.h>
 
-@class NSArray, NSString, _INPBImageValue, _INPBValueMetadata;
+@class NSArray, NSString, _INPBImageValue, _INPBPrivateMediaItemValueData, _INPBValueMetadata;
 
 @interface _INPBMediaItemValue : PBCodable <_INPBMediaItemValue, NSSecureCoding, NSCopying>
 {
     CDStruct_f953fb60 _has;
-    BOOL __encodeLegacyGloryData;
     int _type;
     NSString *_artist;
     _INPBImageValue *_artwork;
     NSString *_assetInfo;
     NSString *_identifier;
     NSArray *_namedEntities;
+    _INPBPrivateMediaItemValueData *_privateMediaItemValueData;
     NSString *_title;
     NSArray *_topics;
     _INPBValueMetadata *_valueMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSString *artist; // @synthesize artist=_artist;
 @property (strong, nonatomic) _INPBImageValue *artwork; // @synthesize artwork=_artwork;
 @property (copy, nonatomic) NSString *assetInfo; // @synthesize assetInfo=_assetInfo;
@@ -37,6 +36,7 @@
 @property (readonly, nonatomic) BOOL hasArtwork;
 @property (readonly, nonatomic) BOOL hasAssetInfo;
 @property (readonly, nonatomic) BOOL hasIdentifier;
+@property (readonly, nonatomic) BOOL hasPrivateMediaItemValueData;
 @property (readonly, nonatomic) BOOL hasTitle;
 @property (nonatomic) BOOL hasType;
 @property (readonly, nonatomic) BOOL hasValueMetadata;
@@ -44,6 +44,7 @@
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSArray *namedEntities; // @synthesize namedEntities=_namedEntities;
 @property (readonly, nonatomic) unsigned long long namedEntitiesCount;
+@property (strong, nonatomic) _INPBPrivateMediaItemValueData *privateMediaItemValueData; // @synthesize privateMediaItemValueData=_privateMediaItemValueData;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 @property (copy, nonatomic) NSArray *topics; // @synthesize topics=_topics;

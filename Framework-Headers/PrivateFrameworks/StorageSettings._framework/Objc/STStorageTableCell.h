@@ -16,15 +16,19 @@
     NSLayoutConstraint *_iconSizeConstraint;
     NSLayoutConstraint *_sizeRightConstraint;
     NSLayoutConstraint *_minHeightConstraint;
+    NSLayoutConstraint *_noCloudIconConstraint;
+    NSLayoutConstraint *_cloudIconConstraint;
     UIImageView *_iconView;
     UIView *_titleInfoView;
     UILabel *_titleLabel;
     UILabel *_infoLabel;
     UILabel *_sizeLabel;
+    UIImageView *_cloudIconView;
     long long _size;
     UIActivityIndicatorView *_spinner;
 }
 
+@property (nonatomic) BOOL cloudIconHidden;
 @property (strong, nonatomic) UIImage *icon;
 @property (strong, nonatomic) NSString *info;
 @property (nonatomic) BOOL infoHidden;

@@ -64,6 +64,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_isOwner;
 - (BOOL)_isOwnerOrShareAlreadyAccepted;
 - (void)_isUserSignedInToiCloudDrive;
+- (BOOL)_isiWorkLinkInsideFolderShare;
 - (BOOL)_isiWorkShare;
 - (void)_jumpToSelector:(SEL)arg1;
 - (void)_jumpToSelectorInQueue:(SEL)arg1;

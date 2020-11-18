@@ -16,6 +16,7 @@
 {
     unsigned long long _aggdStartTime;
     BSMonotonicReferenceTime *_lastPressDownReferenceTime;
+    int _sysdiagnoseDidBeginNotificationToken;
     SBLockHardwareButtonActions *_buttonActions;
     SBHardwareButtonGestureParameters *_buttonGestureParameters;
     SBPressGestureRecognizer *_buttonDownGestureRecognizer;
@@ -63,6 +64,7 @@
 - (void)_updatePressCountForDownEvent;
 - (void)buttonDown:(id)arg1;
 - (void)cancelLongPress;
+- (void)dealloc;
 - (void)doublePress:(id)arg1;
 - (void)forceResetSequenceDidBegin;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;

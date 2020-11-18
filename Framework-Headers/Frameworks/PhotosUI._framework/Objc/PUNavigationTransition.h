@@ -6,7 +6,7 @@
 
 #import <PhotosUI/PUViewControllerTransition.h>
 
-@class UINavigationController;
+@class UINavigationController, UIViewController;
 
 @interface PUNavigationTransition : PUViewControllerTransition
 {
@@ -15,9 +15,11 @@
     double _popDuration;
     UINavigationController *_navigationController;
     long long __operation;
+    UIViewController *_expectedDestinationOnPop;
 }
 
 @property (nonatomic, setter=_setOperation:) long long _operation; // @synthesize _operation=__operation;
+@property (weak) UIViewController *expectedDestinationOnPop; // @synthesize expectedDestinationOnPop=_expectedDestinationOnPop;
 @property (weak, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property (readonly, nonatomic) double popDuration; // @synthesize popDuration=_popDuration;
 @property (readonly, nonatomic) double pushDuration; // @synthesize pushDuration=_pushDuration;

@@ -32,14 +32,14 @@
 - (void)cancel;
 - (void)dealloc;
 - (void)didParseData;
-- (void)failWithError:(id)arg1;
+- (void)failWithError:(id)arg1 forRequest:(id)arg2;
 - (id)handleWillLoadRequest:(id)arg1;
 - (id)init;
 - (BOOL)isLoading;
 - (void)loadRequest:(id)arg1;
 - (void)loadStatusChanged;
 - (void)parseData:(id)arg1;
-- (BOOL)receivedValidResponse:(id)arg1;
+- (BOOL)receivedValidResponse:(id)arg1 forRequest:(id)arg2;
 - (id)request;
 - (id)sessionConfiguration;
 - (void)shouldLoadRequest:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

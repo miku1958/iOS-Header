@@ -38,6 +38,7 @@
 - (struct HDDemoDataHeartRate)_computeHeartRateForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (long long)_computeMaxHRForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (long long)_computeRespirationRateForDemoPerson:(id)arg1 atTime:(double)arg2;
+- (id)averageHeartRateForOxygenSaturation:(id)arg1 atTime:(double)arg2;
 - (struct HDDemoDataBloodPressure)bloodPressureForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (id)bodyTempInCelsiusForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (void)encodeWithCoder:(id)arg1;
@@ -45,7 +46,7 @@
 - (struct HDDemoDataHeartRate)heartRateForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)oxygenSaturationForDemoPerson:(id)arg1 atTime:(double)arg2;
+- (id)oxygenSaturationForDemoPerson:(id)arg1 atTime:(double)arg2 currentDate:(id)arg3;
 - (id)peripheralPerfusionIndexForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (id)respirationRateForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (void)setupWithDemoDataGenerator:(id)arg1;

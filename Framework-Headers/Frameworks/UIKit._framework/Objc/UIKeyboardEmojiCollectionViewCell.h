@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UICollectionViewCell.h>
 
-@class UIKeyboardEmoji, UILabel;
+@class UIKeyboardEmoji, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
 @interface UIKeyboardEmojiCollectionViewCell : UICollectionViewCell
@@ -15,16 +15,19 @@ __attribute__((visibility("hidden")))
     BOOL _unreleasedHighlight;
     UILabel *_unreleasedBanner;
     UIKeyboardEmoji *_emoji;
+    UIView *_navigationHighlightView;
 }
 
 @property (copy, nonatomic) UIKeyboardEmoji *emoji; // @synthesize emoji=_emoji;
 @property (nonatomic) long long emojiFontSize;
+@property (strong, nonatomic) UIView *navigationHighlightView; // @synthesize navigationHighlightView=_navigationHighlightView;
 @property (strong, nonatomic) UILabel *unreleasedBanner; // @synthesize unreleasedBanner=_unreleasedBanner;
 @property (nonatomic) BOOL unreleasedHighlight; // @synthesize unreleasedHighlight=_unreleasedHighlight;
 
 - (void).cxx_destruct;
 - (id)debugDescription;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)setSelected:(BOOL)arg1;
 
 @end
 

@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithString:(id)arg1;
 - (BOOL)isRichTextResolved;
 - (void)loadRichTextWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)setFormattedTextPieces:(id)arg1;
 - (void)setText:(id)arg1;
 
 @end

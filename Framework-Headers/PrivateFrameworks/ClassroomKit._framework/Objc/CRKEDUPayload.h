@@ -11,6 +11,7 @@
 @interface CRKEDUPayload : NSObject
 {
     BOOL _screenObservationPermissionModificationAllowed;
+    BOOL _isEphemeralMultiUserDevice;
     NSString *_payloadDisplayName;
     NSString *_payloadDescriptionName;
     NSString *_organizationUUID;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) NSArray *departments; // @synthesize departments=_departments;
 @property (strong, nonatomic) NSArray *deviceGroups; // @synthesize deviceGroups=_deviceGroups;
 @property (strong, nonatomic) NSArray *groups; // @synthesize groups=_groups;
+@property (readonly, nonatomic) BOOL isEphemeralMultiUserDevice; // @synthesize isEphemeralMultiUserDevice=_isEphemeralMultiUserDevice;
 @property (strong, nonatomic) NSArray *leaderPayloadCertificateAnchorPersistentID; // @synthesize leaderPayloadCertificateAnchorPersistentID=_leaderPayloadCertificateAnchorPersistentID;
 @property (strong, nonatomic) NSArray *leaderPayloadCertificateAnchorUUID; // @synthesize leaderPayloadCertificateAnchorUUID=_leaderPayloadCertificateAnchorUUID;
 @property (strong, nonatomic) NSArray *memberPayloadCertificateAnchorPersistentID; // @synthesize memberPayloadCertificateAnchorPersistentID=_memberPayloadCertificateAnchorPersistentID;
@@ -51,8 +53,10 @@
 @property (strong, nonatomic) NSArray *users; // @synthesize users=_users;
 
 - (void).cxx_destruct;
+- (BOOL)areCredentialsValidForStub:(BOOL)arg1 error:(id *)arg2;
 - (id)description;
 - (id)initWithDictionary:(id)arg1 isStub:(BOOL)arg2 error:(id *)arg3;
+- (id)initWithDictionary:(id)arg1 isStub:(BOOL)arg2 isEphemeralMultiUserDevice:(BOOL)arg3 error:(id *)arg4;
 - (id)parseDepartmentFromDictionary:(id)arg1 isStub:(BOOL)arg2 outError:(id *)arg3;
 - (id)parseDeviceGroupFromDictionary:(id)arg1 isStub:(BOOL)arg2 outError:(id *)arg3;
 - (BOOL)parseDictionary:(id)arg1 isStub:(BOOL)arg2 outError:(id *)arg3;

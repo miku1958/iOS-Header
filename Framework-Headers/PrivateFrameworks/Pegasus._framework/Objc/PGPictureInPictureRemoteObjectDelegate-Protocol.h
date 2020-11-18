@@ -6,13 +6,14 @@
 
 #import <Pegasus/NSObject-Protocol.h>
 
-@class PGPictureInPictureRemoteObject, PGPictureInPictureViewController;
+@class NSString, PGPictureInPictureRemoteObject, PGPictureInPictureViewController;
 
 @protocol PGPictureInPictureRemoteObjectDelegate <NSObject>
 
 @optional
 - (void)pictureInPictureRemoteObject:(PGPictureInPictureRemoteObject *)arg1 didCreatePictureInPictureViewController:(PGPictureInPictureViewController *)arg2;
 - (void)pictureInPictureRemoteObject:(PGPictureInPictureRemoteObject *)arg1 didHidePictureInPictureViewController:(PGPictureInPictureViewController *)arg2;
+- (void)pictureInPictureRemoteObject:(PGPictureInPictureRemoteObject *)arg1 didRequestPictureInPictureStopForViewController:(PGPictureInPictureViewController *)arg2 sourceSceneSessionIdentifier:(NSString *)arg3 animated:(BOOL)arg4;
 - (void)pictureInPictureRemoteObject:(PGPictureInPictureRemoteObject *)arg1 didShowPictureInPictureViewController:(PGPictureInPictureViewController *)arg2;
 - (void)pictureInPictureRemoteObject:(PGPictureInPictureRemoteObject *)arg1 willDestroyPictureInPictureViewController:(PGPictureInPictureViewController *)arg2;
 - (void)pictureInPictureRemoteObject:(PGPictureInPictureRemoteObject *)arg1 willHidePictureInPictureViewController:(PGPictureInPictureViewController *)arg2;

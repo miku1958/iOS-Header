@@ -6,16 +6,29 @@
 
 #import <WorkflowKit/WFEnumerationParameter.h>
 
-@class NSArray;
+#import <WorkflowKit/WFWorkflowReferencing-Protocol.h>
 
-@interface WFWorkflowPickerParameter : WFEnumerationParameter
+@class NSArray, NSString, WFWorkflow;
+
+@interface WFWorkflowPickerParameter : WFEnumerationParameter <WFWorkflowReferencing>
 {
     NSArray *_possibleStates;
+    WFWorkflow *_workflow;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (weak, nonatomic) WFWorkflow *workflow; // @synthesize workflow=_workflow;
+
 - (void).cxx_destruct;
+- (id)accessoryIconForPossibleState:(id)arg1;
+- (id)localizedLabelForPossibleState:(id)arg1;
+- (BOOL)parameterStateIsValid:(id)arg1;
 - (id)possibleStates;
 - (Class)singleStateClass;
+- (id)workflowForState:(id)arg1;
 
 @end
 

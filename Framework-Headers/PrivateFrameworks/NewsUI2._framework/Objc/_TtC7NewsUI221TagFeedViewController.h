@@ -8,13 +8,17 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI221TagFeedViewController : UIViewController
 {
+    MISSING_TYPE *adPresentationDelegateProvider;
     MISSING_TYPE *feedDescriptor;
     MISSING_TYPE *styler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *blueprintViewController;
+    MISSING_TYPE *commands;
+    MISSING_TYPE *refreshStateMachine;
+    MISSING_TYPE *refreshControl;
+    MISSING_TYPE *sharingActivityProviderFactory;
 }
 
 - (void).cxx_destruct;

@@ -8,7 +8,7 @@
 
 #import <CoreLocationProtobuf/NSCopying-Protocol.h>
 
-@class CLPMotionActivity, CLPPipelineDiagnosticReport, CLPSatelliteReport, NSMutableArray;
+@class CLPBaroCalibrationIndication, CLPMotionActivity, CLPPipelineDiagnosticReport, CLPSatelliteReport, NSMutableArray;
 
 @interface CLPLocation : PBCodable <NSCopying>
 {
@@ -17,6 +17,7 @@
     double _timestamp;
     float _altitude;
     NSMutableArray *_appBundleIdIndices;
+    CLPBaroCalibrationIndication *_baroCalibrationIndication;
     int _context;
     float _course;
     float _courseAccuracy;
@@ -64,12 +65,14 @@
 
 @property (nonatomic) float altitude; // @synthesize altitude=_altitude;
 @property (strong, nonatomic) NSMutableArray *appBundleIdIndices; // @synthesize appBundleIdIndices=_appBundleIdIndices;
+@property (strong, nonatomic) CLPBaroCalibrationIndication *baroCalibrationIndication; // @synthesize baroCalibrationIndication=_baroCalibrationIndication;
 @property (nonatomic) int context; // @synthesize context=_context;
 @property (nonatomic) float course; // @synthesize course=_course;
 @property (nonatomic) float courseAccuracy; // @synthesize courseAccuracy=_courseAccuracy;
 @property (strong, nonatomic) CLPMotionActivity *dominantMotionActivity; // @synthesize dominantMotionActivity=_dominantMotionActivity;
 @property (nonatomic) int floor; // @synthesize floor=_floor;
 @property (nonatomic) BOOL hasAltitude;
+@property (readonly, nonatomic) BOOL hasBaroCalibrationIndication;
 @property (nonatomic) BOOL hasContext;
 @property (nonatomic) BOOL hasCourse;
 @property (nonatomic) BOOL hasCourseAccuracy;

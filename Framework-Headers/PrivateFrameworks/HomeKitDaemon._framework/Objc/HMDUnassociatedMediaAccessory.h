@@ -22,7 +22,7 @@
 @property (readonly) Class superclass;
 
 + (id)logCategory;
-+ (Class)modelClass;
++ (id)modelForChangeType:(unsigned long long)arg1 uuid:(id)arg2 parentUUID:(id)arg3;
 - (void).cxx_destruct;
 - (id)addTransactionForHome:(id)arg1 configurationAppIdentifier:(id)arg2;
 - (long long)associationOptions;
@@ -32,6 +32,7 @@
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isHAPAirPlay2Accessory;
 - (id)logIdentifier;
+- (unsigned long long)transportTypes;
 - (void)updateAdvertisementData:(id)arg1;
 
 @end

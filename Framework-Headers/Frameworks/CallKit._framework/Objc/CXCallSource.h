@@ -19,6 +19,7 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
+@property (readonly, nonatomic) CDStruct_6ad76789 auditToken;
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier;
 @property (readonly, copy, nonatomic) NSURL *bundleURL;
 @property (nonatomic, getter=isConnected) BOOL connected; // @synthesize connected=_connected;
@@ -27,6 +28,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *identifier;
+@property (readonly, copy, nonatomic) NSString *localizedName;
 @property (readonly, nonatomic, getter=isPermittedToUseBluetoothAccessories) BOOL permittedToUseBluetoothAccessories;
 @property (readonly, nonatomic, getter=isPermittedToUsePrivateAPI) BOOL permittedToUsePrivateAPI;
 @property (readonly, nonatomic, getter=isPermittedToUsePublicAPI) BOOL permittedToUsePublicAPI;

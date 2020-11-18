@@ -17,6 +17,7 @@
 - (id)_gkFrameworkVersionDescription;
 - (BOOL)_gkIsBadgingEnabled;
 - (BOOL)_gkIsDaemon;
+- (BOOL)_gkIsFirstParty;
 - (BOOL)_gkIsGameCenter;
 - (BOOL)_gkIsGameCenterExtension;
 - (BOOL)_gkIsPreferences;
@@ -30,7 +31,6 @@
 - (id)_gkPathForMessageImage;
 - (id)_gkPathForSoundWithName:(id)arg1;
 - (id)_gkPreferredLanguage;
-- (BOOL)_gkShouldAddQuickActions;
 - (id)_gkSystemLocalizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
 @end
 

@@ -13,6 +13,7 @@
 @interface CEMApplicationStoreDeclaration : CEMConfigurationBase <CEMRegisteredTypeProtocol>
 {
     NSNumber *_payloadAllowAppInstallation;
+    NSNumber *_payloadAllowAppClips;
     NSNumber *_payloadAllowUIAppInstallation;
     NSNumber *_payloadAllowAutomaticAppDownloads;
     NSNumber *_payloadAllowSystemAppRemoval;
@@ -24,6 +25,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSNumber *payloadAllowAppClips; // @synthesize payloadAllowAppClips=_payloadAllowAppClips;
 @property (copy, nonatomic) NSNumber *payloadAllowAppInstallation; // @synthesize payloadAllowAppInstallation=_payloadAllowAppInstallation;
 @property (copy, nonatomic) NSNumber *payloadAllowAppRemoval; // @synthesize payloadAllowAppRemoval=_payloadAllowAppRemoval;
 @property (copy, nonatomic) NSNumber *payloadAllowAutomaticAppDownloads; // @synthesize payloadAllowAutomaticAppDownloads=_payloadAllowAutomaticAppDownloads;
@@ -35,6 +37,7 @@
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1;
++ (id)buildWithIdentifier:(id)arg1 withAllowAppInstallation:(id)arg2 withAllowAppClips:(id)arg3 withAllowUIAppInstallation:(id)arg4 withAllowAutomaticAppDownloads:(id)arg5 withAllowSystemAppRemoval:(id)arg6 withAllowAppRemoval:(id)arg7 withAllowInAppPurchases:(id)arg8 withForceITunesStorePasswordEntry:(id)arg9;
 + (id)buildWithIdentifier:(id)arg1 withAllowAppInstallation:(id)arg2 withAllowUIAppInstallation:(id)arg3 withAllowAutomaticAppDownloads:(id)arg4 withAllowSystemAppRemoval:(id)arg5 withAllowAppRemoval:(id)arg6 withAllowInAppPurchases:(id)arg7 withForceITunesStorePasswordEntry:(id)arg8;
 + (id)profileType;
 + (id)registeredClassName;

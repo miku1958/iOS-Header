@@ -12,7 +12,7 @@
 #import <UserNotificationsUIKit/NCNotificationListViewDataSource-Protocol.h>
 
 @class NCNotificationListCache, NCNotificationListSectionHeaderView, NCNotificationListSectionRevealHintView, NCNotificationListView, NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
-@protocol NCNotificationStructuredSectionListDelegate;
+@protocol NCNotificationListComponent, NCNotificationStructuredSectionListDelegate;
 
 @interface NCNotificationStructuredSectionList : NSObject <NCNotificationListViewDataSource, NCNotificationGroupListDelegate, NCNotificationListSectionHeaderViewDelegate, NCNotificationListComponent>
 {
@@ -22,23 +22,28 @@
     BOOL _supportsDynamicGrouping;
     BOOL _historySection;
     BOOL _notificationListViewRevealed;
+    BOOL _preloadsNotificationRequests;
     BOOL _headerViewHeightValid;
     BOOL _performingDynamicGrouping;
     BOOL _dynamicGroupingActive;
     NSString *_logDescription;
     id<NCNotificationStructuredSectionListDelegate> _delegate;
     NCNotificationListCache *_notificationListCache;
+    NSString *_sectionListDestination;
     NSString *_title;
     NSMutableArray *_notificationGroups;
     NSMutableSet *_hiddenNotificationGroups;
     NSMutableSet *_hiddenNotificationRequests;
     NSMutableDictionary *_filteredNotificationRequests;
+    NSMutableDictionary *_preloadedNotificationGroups;
+    NSMutableSet *_loadedNotificationSections;
     NCNotificationListView *_sectionListView;
     NCNotificationListSectionHeaderView *_headerView;
     NCNotificationListSectionRevealHintView *_revealHintView;
     double _headerViewHeight;
     unsigned long long _dynamicGroupingThreshold;
     NSMutableSet *_groupListsToSort;
+    id<NCNotificationListComponent> _groupListPresentingLongLook;
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
@@ -52,7 +57,9 @@
 @property (nonatomic, getter=isDynamicGroupingActive) BOOL dynamicGroupingActive; // @synthesize dynamicGroupingActive=_dynamicGroupingActive;
 @property (nonatomic) unsigned long long dynamicGroupingThreshold; // @synthesize dynamicGroupingThreshold=_dynamicGroupingThreshold;
 @property (strong, nonatomic) NSMutableDictionary *filteredNotificationRequests; // @synthesize filteredNotificationRequests=_filteredNotificationRequests;
+@property (strong, nonatomic) id<NCNotificationListComponent> groupListPresentingLongLook; // @synthesize groupListPresentingLongLook=_groupListPresentingLongLook;
 @property (strong, nonatomic) NSMutableSet *groupListsToSort; // @synthesize groupListsToSort=_groupListsToSort;
+@property (readonly, nonatomic) BOOL hasVisibleContentToReveal;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NCNotificationListSectionHeaderView *headerView; // @synthesize headerView=_headerView;
 @property (nonatomic) double headerViewHeight; // @synthesize headerViewHeight=_headerViewHeight;
@@ -60,6 +67,7 @@
 @property (strong, nonatomic) NSMutableSet *hiddenNotificationGroups; // @synthesize hiddenNotificationGroups=_hiddenNotificationGroups;
 @property (strong, nonatomic) NSMutableSet *hiddenNotificationRequests; // @synthesize hiddenNotificationRequests=_hiddenNotificationRequests;
 @property (nonatomic, getter=isHistorySection) BOOL historySection; // @synthesize historySection=_historySection;
+@property (strong, nonatomic) NSMutableSet *loadedNotificationSections; // @synthesize loadedNotificationSections=_loadedNotificationSections;
 @property (copy, nonatomic) NSString *logDescription; // @synthesize logDescription=_logDescription;
 @property (readonly, nonatomic) unsigned long long notificationCount;
 @property (strong, nonatomic) NSMutableArray *notificationGroups; // @synthesize notificationGroups=_notificationGroups;
@@ -67,7 +75,10 @@
 @property (nonatomic, getter=isNotificationListViewRevealed) BOOL notificationListViewRevealed; // @synthesize notificationListViewRevealed=_notificationListViewRevealed;
 @property (nonatomic, getter=isPerformingDynamicGrouping) BOOL performingDynamicGrouping; // @synthesize performingDynamicGrouping=_performingDynamicGrouping;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory;
+@property (strong, nonatomic) NSMutableDictionary *preloadedNotificationGroups; // @synthesize preloadedNotificationGroups=_preloadedNotificationGroups;
+@property (nonatomic) BOOL preloadsNotificationRequests; // @synthesize preloadsNotificationRequests=_preloadsNotificationRequests;
 @property (strong, nonatomic) NCNotificationListSectionRevealHintView *revealHintView; // @synthesize revealHintView=_revealHintView;
+@property (strong, nonatomic) NSString *sectionListDestination; // @synthesize sectionListDestination=_sectionListDestination;
 @property (strong, nonatomic) NCNotificationListView *sectionListView; // @synthesize sectionListView=_sectionListView;
 @property (nonatomic) BOOL shouldPresentEmptySectionHint; // @synthesize shouldPresentEmptySectionHint=_shouldPresentEmptySectionHint;
 @property (readonly) Class superclass;
@@ -78,24 +89,32 @@
 - (void)_addHiddenNotificationGroupList:(id)arg1;
 - (id)_backgroundGroupNameBase;
 - (unsigned long long)_existingIndexOfGroupForNotificationRequest:(id)arg1;
-- (unsigned long long)_existingIndexOfGroupForNotificationRequest:(id)arg1 withSectionIdentifier:(id)arg2 threadIdentifier:(id)arg3;
-- (unsigned long long)_existingIndexOfGroupWithSectionIdentifier:(id)arg1 threadIdentifier:(id)arg2;
+- (unsigned long long)_existingIndexOfGroupForNotificationRequest:(id)arg1 inNotificationGroupLists:(id)arg2;
+- (unsigned long long)_existingIndexOfGroupForNotificationRequest:(id)arg1 withSectionIdentifier:(id)arg2 threadIdentifier:(id)arg3 inNotificationGroupLists:(id)arg4;
+- (unsigned long long)_existingIndexOfGroupWithSectionIdentifier:(id)arg1 threadIdentifier:(id)arg2 inNotificationGroupLists:(id)arg3;
 - (void)_filterNotificationRequest:(id)arg1;
 - (void)_filterNotificationRequestsForSectionIdentifier:(id)arg1;
+- (id)_groupListForPreloadedNotificationRequest:(id)arg1 createNewIfNecessary:(BOOL)arg2;
 - (void)_hideNotificationGroupsOnDeviceReauthentication;
 - (void)_hideNotificationGroupsPassingTest:(CDUnknownBlockType)arg1;
 - (void)_insertNotificationGroupList:(id)arg1;
+- (void)_insertPreloadedNotificationRequest:(id)arg1;
 - (double)_insetHorizontalMargin;
 - (id)_legibilitySettings;
 - (void)_modifyHiddenNotificationRequest:(id)arg1;
+- (void)_modifyPreloadedNotificationRequest:(id)arg1;
+- (id)_newGroupListForNotificationRequest:(id)arg1;
+- (void)_postPreloadedNotificationRequestsForSectionIdentifier:(id)arg1;
 - (void)_removeFilteredNotificationRequest:(id)arg1;
 - (void)_removeHiddenNotificationRequest:(id)arg1;
 - (void)_removeNotificationGroupList:(id)arg1;
+- (void)_removePreloadedNotificationRequest:(id)arg1;
 - (id)_sectionSettingsForSectionIdentifier:(id)arg1;
 - (BOOL)_shouldFilterNotificationRequest:(id)arg1;
 - (BOOL)_shouldHideForSectionIdentifier:(id)arg1;
 - (BOOL)_shouldHideNotificationGroupList:(id)arg1;
 - (BOOL)_shouldHideNotificationRequest:(id)arg1;
+- (BOOL)_shouldPreloadNotificationRequest:(id)arg1;
 - (void)_showHiddenNotificationGroupsOnDeviceAuthentication;
 - (void)_showHiddenNotificationGroupsPassingTest:(CDUnknownBlockType)arg1;
 - (void)_showHiddenNotificationRequestsPassingTest:(CDUnknownBlockType)arg1;
@@ -124,10 +143,13 @@
 - (void)notificationGroupListDidRemoveAllNotificationRequests:(id)arg1;
 - (BOOL)notificationGroupListShouldScrollToTop:(id)arg1;
 - (id)notificationGroupListsForMigrationPassingTest:(CDUnknownBlockType)arg1 filterPersistentRequests:(BOOL)arg2;
+- (void)notificationListComponent:(id)arg1 isPresentingLongLookForViewController:(id)arg2;
+- (void)notificationListComponent:(id)arg1 shouldFinishLongLookTransitionForNotificationRequest:(id)arg2 trigger:(long long)arg3 withCompletionBlock:(CDUnknownBlockType)arg4;
 - (double)notificationListView:(id)arg1 heightForItemAtIndex:(unsigned long long)arg2;
 - (id)notificationListView:(id)arg1 viewForItemAtIndex:(unsigned long long)arg2;
 - (BOOL)notificationListViewIsGroup:(id)arg1;
 - (unsigned long long)notificationListViewNumberOfItems:(id)arg1;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)recycleView:(id)arg1;
 - (void)regroupNotificationGroups;
 - (void)reloadNotificationRequest:(id)arg1;

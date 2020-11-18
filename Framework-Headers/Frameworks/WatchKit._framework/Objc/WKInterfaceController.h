@@ -34,7 +34,6 @@
 + (void)_removePageControllersAtIndexes:(id)arg1;
 + (BOOL)openParentApplication:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (void)reloadRootControllersWithNames:(id)arg1 contexts:(id)arg2;
-+ (void)reloadRootPageControllersWithNames:(id)arg1 contexts:(id)arg2 orientation:(long long)arg3 pageIndex:(long long)arg4;
 + (struct CGRect)screenBounds;
 + (double)screenScale;
 - (void).cxx_destruct;
@@ -55,9 +54,7 @@
 - (void)didDeactivate;
 - (void)didRegisterWithRemoteInterface;
 - (void)dismissAddPassesController;
-- (void)dismissAudioRecorderController;
 - (void)dismissController;
-- (void)dismissMediaPlayerController;
 - (void)dismissTextInputController;
 - (void)endGlanceUpdates;
 - (void)handleActionWithIdentifier:(id)arg1 forLocalNotification:(id)arg2;
@@ -76,14 +73,11 @@
 - (void)popController;
 - (void)popToRootController;
 - (void)presentAddPassesControllerWithPasses:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)presentAudioRecorderControllerWithOutputURL:(id)arg1 preset:(long long)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)presentControllerWithName:(id)arg1 context:(id)arg2;
 - (void)presentControllerWithNames:(id)arg1 contexts:(id)arg2;
-- (void)presentMediaPlayerControllerWithURL:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentTextInputControllerWithSuggestions:(id)arg1 allowedInputMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentTextInputControllerWithSuggestionsForLanguage:(CDUnknownBlockType)arg1 allowedInputMode:(long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)pushControllerWithName:(id)arg1 context:(id)arg2;
-- (void)scrollToObject:(id)arg1 atScrollPosition:(long long)arg2 animated:(BOOL)arg3;
 - (void)setTitle:(id)arg1;
 - (void)table:(id)arg1 didSelectRowAtIndex:(long long)arg2;
 - (void)updateUserActivity:(id)arg1 userInfo:(id)arg2;

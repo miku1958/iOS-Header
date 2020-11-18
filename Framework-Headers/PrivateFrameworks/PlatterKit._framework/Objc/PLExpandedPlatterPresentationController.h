@@ -39,9 +39,11 @@
     UIPanGestureRecognizer *_homeAffordancePanGesture;
     double _additionalHomeAffordanceSpacing;
     id<PLKeyboardHomeAffordanceAssertion> _keyboardHomeAffordance;
+    struct CGPoint _additionalContentTranslation;
     struct CGRect _keyboardFrame;
 }
 
+@property (nonatomic) struct CGPoint additionalContentTranslation; // @synthesize additionalContentTranslation=_additionalContentTranslation;
 @property (nonatomic) double additionalHomeAffordanceSpacing; // @synthesize additionalHomeAffordanceSpacing=_additionalHomeAffordanceSpacing;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -97,11 +99,9 @@
 - (void)keyboardWillShow:(id)arg1;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (void)presentationTransitionWillBegin;
-- (struct CGSize)sizeForChildContentContainer:(id)arg1 withParentContainerSize:(struct CGSize)arg2;
 - (void)viewControllerAnimator:(id)arg1 willBeginDismissalAnimationWithTransitionContext:(id)arg2;
 - (void)viewControllerAnimator:(id)arg1 willBeginPresentationAnimationWithTransitionContext:(id)arg2;
-- (void)viewControllerAnimatorDidFinishFirstResponderChanges:(id)arg1;
-- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2 superBlock:(CDUnknownBlockType)arg3;
+- (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end
 

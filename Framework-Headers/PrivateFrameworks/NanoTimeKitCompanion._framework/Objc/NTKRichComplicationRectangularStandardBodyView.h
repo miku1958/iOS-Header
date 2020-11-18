@@ -4,27 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKRichComplicationRectangularBaseView.h>
+#import <NanoTimeKitCompanion/NTKRichComplicationRectangularLargeHeadlineBaseView.h>
 
-@class NTKColoringLabel, NTKRichComplicationImageView;
+@class NTKColoringLabel;
 
-@interface NTKRichComplicationRectangularStandardBodyView : NTKRichComplicationRectangularBaseView
+@interface NTKRichComplicationRectangularStandardBodyView : NTKRichComplicationRectangularLargeHeadlineBaseView
 {
-    NTKRichComplicationImageView *_headerImageView;
-    NTKColoringLabel *_headerLabel;
     NTKColoringLabel *_line1Label;
     NTKColoringLabel *_line2Label;
 }
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
-+ (BOOL)supportsComplicationFamily:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_editingDidEnd;
 - (void)_enumerateLabelsWithBlock:(CDUnknownBlockType)arg1;
 - (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
 - (id)init;
 - (void)layoutSubviews;
-- (void)setPaused:(BOOL)arg1;
 - (void)transitionToMonochromeWithFraction:(double)arg1;
 - (void)updateMonochromeColor;
 

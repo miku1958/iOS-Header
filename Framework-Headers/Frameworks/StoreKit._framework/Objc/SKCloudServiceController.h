@@ -6,26 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@protocol OS_dispatch_queue;
+@class ICCloudServiceStatusMonitor;
 
 @interface SKCloudServiceController : NSObject
 {
-    BOOL _hasValidCloudServiceCapability;
-    unsigned long long _cloudServiceCapability;
-    NSObject<OS_dispatch_queue> *_accessQueue;
+    ICCloudServiceStatusMonitor *_cloudServiceStatusMonitor;
+    struct os_unfair_lock_s _lock;
     BOOL _allowsPromptingForPrivacyAcknowledgement;
 }
 
 @property (nonatomic, setter=_setAllowsPromptingForPrivacyAcknowledgement:) BOOL _allowsPromptingForPrivacyAcknowledgement; // @synthesize _allowsPromptingForPrivacyAcknowledgement;
 
++ (id)_publicErrorForPrivateError:(id)arg1;
 + (long long)authorizationStatus;
 + (void)requestAuthorization:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-- (void)_accountStoreDidChangeNotification;
-- (void)_handleInvalidation;
-- (void)_playbackCapabilitiesDidChangeNotification;
-- (void)_storefrontDidChangeNotification;
-- (void)_updateCapabilitiesWithResponse:(id)arg1 postNotification:(BOOL)arg2;
+- (id)_cloudServiceStatusMonitorWithError:(id *)arg1;
+- (void)_handleCapabilitiesDidChangeNotification:(id)arg1;
+- (void)_handleStorefrontCountryCodeDidChangeNotification:(id)arg1;
+- (void)_handleStorefrontIdentifierDidChangeNotification:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)requestCapabilitiesWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -6,7 +6,6 @@
 
 #import <ChatKit/CKUIBehavior.h>
 
-__attribute__((visibility("hidden")))
 @interface CKUIBehaviorPhone : CKUIBehavior
 {
 }

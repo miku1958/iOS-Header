@@ -10,8 +10,8 @@
 
 @interface SSRankingManager : NSObject
 {
-    BOOL _isInternalDevice;
     BOOL _isCancelled;
+    BOOL _bullseyeRankingEnabled;
     PRSRankingConfiguration *_rankingConfiguration;
     NSMutableString *_logValues;
     double _blendingTime;
@@ -21,32 +21,44 @@
 
 @property (strong) NSSet *allowedTopHitSections; // @synthesize allowedTopHitSections=_allowedTopHitSections;
 @property (nonatomic) double blendingTime; // @synthesize blendingTime=_blendingTime;
+@property (nonatomic) BOOL bullseyeRankingEnabled; // @synthesize bullseyeRankingEnabled=_bullseyeRankingEnabled;
 @property BOOL isCancelled; // @synthesize isCancelled=_isCancelled;
-@property BOOL isInternalDevice; // @synthesize isInternalDevice=_isInternalDevice;
-@property (strong) NSMutableString *logValues; // @synthesize logValues=_logValues;
+@property (strong, nonatomic) NSMutableString *logValues; // @synthesize logValues=_logValues;
 @property (strong) NSString *query; // @synthesize query=_query;
 @property (strong, nonatomic) PRSRankingConfiguration *rankingConfiguration; // @synthesize rankingConfiguration=_rankingConfiguration;
 
++ (void)determineTopHitsForSafariSection:(id)arg1 forQuery:(id)arg2;
 + (void)fetchDuetValues;
++ (id)getSuggestionsRankingThresholds;
 + (void)initialize;
++ (id)keyForIntervalType:(long long)arg1;
++ (void)moveSafariTopHitsToTopOfSection:(id)arg1;
++ (void)reloadCommittedSearchParametersFromTrial;
++ (void)reloadRankingParametersFromTrial;
++ (void)reloadRecencyThresholds;
++ (void)reloadSuggestionsRankingThresholds;
++ (void)reloadTopHitsParametersFromTrial;
 - (void).cxx_destruct;
 - (void)addCEPValuesForTTR;
 - (void)applyTopHitRankingPolicyToSection:(id)arg1 topResultSection:(id)arg2 maxTopHitCount:(long long)arg3 isShortcut:(BOOL)arg4;
-- (id)applyTopSectionPolicy:(id)arg1 withTopHitSection:(id)arg2 isPeopleSearch:(BOOL)arg3 triggerEvent:(unsigned long long)arg4 correction:(id)arg5;
+- (id)applyTopSectionPolicy:(id)arg1 withTopHitSection:(id)arg2 isPeopleSearch:(BOOL)arg3 queryKind:(unsigned long long)arg4 correction:(id)arg5 queryLength:(unsigned long long)arg6 ranker:(id)arg7;
 - (void)cancel;
 - (long long)compareDate:(id)arg1 withDate:(id)arg2;
 - (void)finalizeLog;
 - (id)groupSectionsByCategory:(id)arg1 genreMap:(id)arg2 topSections:(id)arg3;
 - (id)initWithQuery:(id)arg1;
 - (id)keyForSection:(id)arg1;
-- (id)makeTopHitSectionUsingSections:(id)arg1 withItemRanker:(id)arg2 sectionHeader:(id)arg3 shortcutResult:(id)arg4;
+- (id)makeTopHitSectionUsingSections:(id)arg1 withItemRanker:(id)arg2 sectionHeader:(id)arg3 shortcutResult:(id)arg4 isBullseyeNonCommittedSearch:(BOOL)arg5 isBullseyeCommittedSearch:(BOOL)arg6 parsecEnabled:(BOOL)arg7 maxNumAppsInTopHitSection:(unsigned long long)arg8;
 - (id)rankAppsAtTopForScopedSearchWithSections:(id)arg1;
-- (id)rankSectionsUsingBundleIDToSectionMapping:(id)arg1 withRanker:(id)arg2 isPeopleSearch:(BOOL)arg3 isScopedAppSearch:(BOOL)arg4 queryId:(unsigned long long)arg5 isCJK:(BOOL)arg6;
+- (id)rankSectionsUsingBundleIDToSectionMapping:(id)arg1 withRanker:(id)arg2 preferredBundleIds:(id)arg3 isPeopleSearch:(BOOL)arg4 isScopedAppSearch:(BOOL)arg5 queryId:(unsigned long long)arg6 isCJK:(BOOL)arg7 isBullseyeNonCommittedSearch:(BOOL)arg8 isBullseyeCommittedSearch:(BOOL)arg9;
 - (void)refineSectionShowingVisibleResultsWithBetterTextMatches:(id)arg1;
 - (id)relativeRankWithAbsRank:(id)arg1 numberValues:(unsigned long long)arg2;
 - (id)removeBlackListedSectionsForMapping:(id)arg1;
 - (id)removeBlackListedSectionsForMapping:(id)arg1 withRankingConfiguration:(id)arg2;
 - (double)roundedValueForScore:(double)arg1;
+- (BOOL)sectionContainsOnlyStaleApps:(id)arg1;
+- (BOOL)sectionsContainsOnlyOneAppSection:(id)arg1;
+- (void)sendTTRLogsWithSections:(id)arg1 searchString:(id)arg2 queryKind:(unsigned long long)arg3 isCommittedSearch:(BOOL)arg4 parsecCameLaterThanSRT:(BOOL)arg5;
 - (void)updateServerScoresUsingBlockOrder:(id)arg1 bundleFeatures:(id)arg2;
 - (void)updateWithNewRankingInfo:(id)arg1;
 

@@ -35,9 +35,11 @@
 
 - (id).cxx_construct;
 - (BOOL)_MapsCarPlay_isEqual:(id)arg1;
-- (void)initSupportWithRoute:(id)arg1 step:(id)arg2 toNodeSignificance:(int)arg3 currentTransitLineColor:(id)arg4;
-- (id)initWithRoute:(id)arg1 startPoint:(unsigned int)arg2 pointCount:(unsigned int)arg3 step:(id)arg4 stepIndex:(unsigned long long)arg5 toNodeSignificance:(int)arg6 currentTransitLineColor:(id)arg7 startDistance:(double)arg8 lengthScaleFactor:(double)arg9;
-- (id)initWithRoute:(id)arg1 startPoint:(unsigned int)arg2 pointCount:(unsigned int)arg3 step:(id)arg4 stepIndex:(unsigned long long)arg5 toNodeSignificance:(int)arg6 currentTransitLineColor:(id)arg7 startDistance:(double)arg8 lengthScaleFactor:(double)arg9 fallbackStartCoordinate:(CDStruct_c3b9c2ee)arg10 fallbackEndCoordinate:(CDStruct_c3b9c2ee)arg11;
+- (id)_hallForStop:(id)arg1 withDecoderData:(id)arg2;
+- (void)_initSupportWithDecoderData:(id)arg1 step:(id)arg2 toNodeSignificance:(int)arg3 transitLineColor:(id)arg4;
+- (id)_stationForHall:(id)arg1 withDecoderData:(id)arg2;
+- (id)initWithCoordinates:(id)arg1 segment:(id)arg2 segmentIndex:(unsigned long long)arg3 steps:(id)arg4 startCoordinateIndex:(unsigned int)arg5 coordinateCount:(unsigned int)arg6 stepIndex:(unsigned long long)arg7 toNodeSignificance:(int)arg8 transitLineColor:(id)arg9 startDistance:(double)arg10 lengthScaleFactor:(double)arg11 decoderData:(id)arg12;
+- (id)initWithCoordinates:(id)arg1 segment:(id)arg2 segmentIndex:(unsigned long long)arg3 steps:(id)arg4 startCoordinateIndex:(unsigned int)arg5 coordinateCount:(unsigned int)arg6 stepIndex:(unsigned long long)arg7 toNodeSignificance:(int)arg8 transitLineColor:(id)arg9 startDistance:(double)arg10 lengthScaleFactor:(double)arg11 fallbackStartCoordinate:(CDStruct_c3b9c2ee)arg12 fallbackEndCoordinate:(CDStruct_c3b9c2ee)arg13;
 
 @end
 

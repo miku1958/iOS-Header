@@ -26,6 +26,7 @@
 - (id)changeSetByConvertingOldIndexesUsingChangeSet:(id)arg1 andNewIndexesUsingChangeSet:(id)arg2;
 - (id)changeSetBySubtractingChangeSet:(id)arg1;
 - (id)initWithAddedIndexes:(id)arg1 removedIndexes:(id)arg2 movedIndexesByNewIndex:(id)arg3 updatedIndexesByNewIndex:(id)arg4;
+- (id)inverseChangeSet;
 - (long long)newIndexByShiftingOldIndex:(long long)arg1 grouped:(BOOL)arg2;
 - (long long)newIndexForOldIndex:(long long)arg1;
 - (long long)oldIndexForNewIndex:(long long)arg1;

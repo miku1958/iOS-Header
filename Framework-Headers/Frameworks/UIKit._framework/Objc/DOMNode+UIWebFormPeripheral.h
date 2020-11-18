@@ -26,6 +26,7 @@
 @property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
+@property (nonatomic) BOOL acceptsInitialEmojiKeyboard;
 @property (nonatomic) BOOL acceptsPayloads;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
 @property (nonatomic) long long autocapitalizationType;
@@ -74,6 +75,7 @@
 @property (readonly, nonatomic) UITextRange *markedTextRange;
 @property (copy, nonatomic) NSDictionary *markedTextStyle;
 @property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
+@property (nonatomic) BOOL preferOnlineDictation;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
 @property (copy, nonatomic) NSString *responseContext;
 @property (nonatomic) BOOL returnKeyGoesToNextResponder;
@@ -120,6 +122,7 @@
 - (void)_deleteBackwardAndNotify:(BOOL)arg1;
 - (void)_deleteByWord;
 - (void)_deleteForwardAndNotify:(BOOL)arg1;
+- (void)_deleteForwardByWord;
 - (void)_deleteToEndOfLine;
 - (void)_deleteToEndOfParagraph;
 - (void)_deleteToStartOfLine;
@@ -176,6 +179,7 @@
 - (void)_replaceDocumentWithText:(id)arg1;
 - (BOOL)_requiresAccessoryView;
 - (BOOL)_requiresInputView;
+- (id)_responderWindow;
 - (void)_scrollRectToVisible:(struct CGRect)arg1 animated:(BOOL)arg2;
 - (void)_selectAll;
 - (id)_selectableText;
@@ -201,6 +205,7 @@
 - (BOOL)_supportsAutoFill;
 - (id)_textColorForCaretSelection;
 - (id)_textFormElement;
+- (id)_textInteraction;
 - (id)_textRangeFromNSRange:(struct _NSRange)arg1;
 - (void)_transpose;
 - (void)_unmarkText;
@@ -262,8 +267,10 @@
 - (BOOL)hasCustomLineHeight;
 - (BOOL)hasSelection;
 - (int)initialSelectionBehavior;
+- (id)inputAssistantItem;
 - (void)insertDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
 - (void)insertText:(id)arg1;
+- (id)insertTextPlaceholderWithSize:(struct CGSize)arg1;
 - (BOOL)isAutoFillMode;
 - (BOOL)isEditable;
 - (BOOL)isEditing;
@@ -297,6 +304,7 @@
 - (id)rangeOfEnclosingWord:(id)arg1;
 - (id)rectsForNSRange:(struct _NSRange)arg1;
 - (void)removeDictationResultPlaceholder:(id)arg1 willInsertResult:(BOOL)arg2;
+- (void)removeTextPlaceholder:(id)arg1;
 - (BOOL)rendersAsBlock;
 - (void)replaceCurrentWordWithText:(id)arg1;
 - (void)replaceRange:(id)arg1 withText:(id)arg2;

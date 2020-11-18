@@ -25,7 +25,7 @@
 @property (strong, nonatomic) NSArray *overlayConstraints; // @synthesize overlayConstraints=_overlayConstraints;
 @property (strong, nonatomic) UIScrollView *overlayScrollView; // @synthesize overlayScrollView=_overlayScrollView;
 @property (strong, nonatomic) PXPeopleDetailStatusOverlayView *overlayView; // @synthesize overlayView=_overlayView;
-@property (strong, nonatomic) NSArray *people; // @synthesize people=_people;
+@property (copy, nonatomic) NSArray *people; // @synthesize people=_people;
 @property (nonatomic, getter=isProcessingFaces) BOOL processingFaces; // @synthesize processingFaces=_processingFaces;
 @property (readonly) Class superclass;
 

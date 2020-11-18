@@ -6,8 +6,11 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7NewsUI230URLNotificationResponseHandler : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *urlHandler;
 }
 
 @end

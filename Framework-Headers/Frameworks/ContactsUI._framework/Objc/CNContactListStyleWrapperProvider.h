@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (id)cellNameTextEmphasisedFont;
 - (id)cellNameTextFont;
 - (id)cellNameTextHighlightedColor;
+- (id)cellSearchBackgroundColor;
 - (id)cellSearchResultTextColor;
 - (id)cellSearchResultTextDisabledColor;
 - (struct UIEdgeInsets)cellSeparatorInset;
@@ -50,6 +51,7 @@ __attribute__((visibility("hidden")))
 - (id)tableSeparatorColor;
 - (long long)tableSeparatorOverlayBlendMode;
 - (long long)tableSeparatorStyle;
+- (BOOL)usesInsetPlatterStyle;
 
 @end
 

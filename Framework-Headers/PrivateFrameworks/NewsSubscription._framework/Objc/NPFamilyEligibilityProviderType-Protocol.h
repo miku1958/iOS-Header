@@ -4,7 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NFPromise;
+
 @protocol NPFamilyEligibilityProviderType
-- (id)requestFamilyEligibility;
+- (NFPromise *)requestFamilyEligibility;
 @end
 

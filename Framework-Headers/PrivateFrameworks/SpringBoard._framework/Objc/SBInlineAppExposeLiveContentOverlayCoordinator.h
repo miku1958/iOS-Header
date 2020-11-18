@@ -37,6 +37,8 @@
 - (id)_appLayoutFromLayoutState:(id)arg1;
 - (void)_removeLiveContentOverlay;
 - (id)animationControllerForTransitionRequest:(id)arg1;
+- (void)appLayoutDidBecomeHidden:(id)arg1;
+- (void)appLayoutWillBecomeVisible:(id)arg1;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidBeginWithTransitionContext:(id)arg2;
 - (void)layoutStateTransitionCoordinator:(id)arg1 transitionDidEndWithTransitionContext:(id)arg2;
 - (void)noteKeyboardFocusDidChangeToSceneID:(id)arg1;

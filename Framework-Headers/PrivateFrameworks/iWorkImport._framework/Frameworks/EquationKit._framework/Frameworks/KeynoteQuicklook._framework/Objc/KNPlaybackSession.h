@@ -8,19 +8,17 @@
 
 #import <KeynoteQuicklook/TSDAnimationSession-Protocol.h>
 
-@class CALayer, KNAnimatedSlideView, KNAnimatedTextureManager, KNAnimationContext, KNAnimationTestResultLogger, KNShow, KNSlide, KNSlideNode, NSArray, NSMutableArray, NSString, TSDBitmapRenderingQualityInfo, TSDGLLayer, TSDMPSImageConversionStorage, TSDMetalLayer, TSKAccessController, TSULRUCache;
-@protocol MTLDevice, TSDCanvasDelegate, TSKAccessControllerReadTicket;
+@class CALayer, KNAnimatedSlideView, KNAnimatedTextureManager, KNAnimationContext, KNAnimationTestResultLogger, KNPlaybackSessionConfiguration, KNShow, KNSlide, KNSlideNode, NSArray, NSMutableArray, NSString, TSDBitmapRenderingQualityInfo, TSDGLLayer, TSDMPSImageConversionStorage, TSKAccessController, TSULRUCache;
+@protocol KNPlaybackLayerHost, TSDCanvasDelegate, TSKAccessControllerReadTicket;
 
 @interface KNPlaybackSession : NSObject <TSDAnimationSession>
 {
+    KNPlaybackSessionConfiguration *_configuration;
     KNSlideNode *_currentSlideNode;
     NSMutableArray *_breadCrumbTrail;
     BOOL _hasEndShowHandlerBeenCancelled;
-    unsigned int _isMetalEnabledByCaller:1;
-    unsigned int _isMetalCapable:1;
-    unsigned int _isMetalCapableCheckInitialized:1;
-    unsigned int _isDiscreteGPUAcquired:1;
     CALayer *_noMetalBadgeLayer;
+    CALayer *_sceneRenderingMetalBadgeLayer;
     BOOL _disableAutoAnimationRemoval;
     BOOL _disableTransitionTextureCaching;
     BOOL _isExitingShow;
@@ -42,9 +40,7 @@
     BOOL _shouldRespectSkippedSlides;
     BOOL _shouldAlwaysLoop;
     TSDGLLayer *_sharedGLLayer;
-    id<MTLDevice> _metalDevice;
     KNShow *_show;
-    CALayer *_rootLayer;
     id<TSDCanvasDelegate> _canvasDelegate;
     CDUnknownBlockType _endShowHandler;
     id<TSKAccessControllerReadTicket> _accessControllerReadTicket;
@@ -53,7 +49,8 @@
     KNAnimationTestResultLogger *_animationTestResultLogger;
     TSDBitmapRenderingQualityInfo *_bitmapRenderingQualityInfo;
     long long _playMode;
-    TSDMetalLayer *_sharedMetalLayer;
+    double _autoplayTransitionDelay;
+    double _autoplayBuildDelay;
     TSDMPSImageConversionStorage *_mpsImageConversionStorage;
     long long _floatingCommentBehavior;
     NSArray *_slideNodesWithinPlayableRange;
@@ -62,21 +59,25 @@
     NSMutableArray *_eventDurationArray;
     NSMutableArray *_workDurationArray;
     NSMutableArray *_animationStringArray;
-    KNAnimatedSlideView *_animatedSlideViewForNextSlide;
     KNSlideNode *_alternateNextSlideNode;
+    unsigned long long _analyticsMovieCount;
+    unsigned long long _analyticsHDRMovieCount;
 }
 
 @property (readonly, nonatomic) TSKAccessController *accessController;
 @property (strong, nonatomic) id<TSKAccessControllerReadTicket> accessControllerReadTicket; // @synthesize accessControllerReadTicket=_accessControllerReadTicket;
 @property (strong, nonatomic) KNSlideNode *alternateNextSlideNode; // @synthesize alternateNextSlideNode=_alternateNextSlideNode;
+@property (nonatomic) unsigned long long analyticsHDRMovieCount; // @synthesize analyticsHDRMovieCount=_analyticsHDRMovieCount;
+@property (nonatomic) unsigned long long analyticsMovieCount; // @synthesize analyticsMovieCount=_analyticsMovieCount;
 @property (readonly, nonatomic) KNAnimatedSlideView *animatedSlideViewForCurrentSlide;
-@property (readonly, nonatomic) KNAnimatedSlideView *animatedSlideViewForNextSlide; // @synthesize animatedSlideViewForNextSlide=_animatedSlideViewForNextSlide;
 @property (readonly, nonatomic) KNAnimationContext *animationContext; // @synthesize animationContext=_animationContext;
 @property (readonly, nonatomic) NSMutableArray *animationDurationArray; // @synthesize animationDurationArray=_animationDurationArray;
 @property (readonly, nonatomic) NSMutableArray *animationStringArray; // @synthesize animationStringArray=_animationStringArray;
 @property (readonly, nonatomic) KNAnimationTestResultLogger *animationTestResultLogger; // @synthesize animationTestResultLogger=_animationTestResultLogger;
 @property (readonly, nonatomic) BOOL atBeginningOfDeck;
 @property (readonly, nonatomic) BOOL atEndOfDeck;
+@property (nonatomic) double autoplayBuildDelay; // @synthesize autoplayBuildDelay=_autoplayBuildDelay;
+@property (nonatomic) double autoplayTransitionDelay; // @synthesize autoplayTransitionDelay=_autoplayTransitionDelay;
 @property (strong, nonatomic) TSDBitmapRenderingQualityInfo *bitmapRenderingQualityInfo; // @synthesize bitmapRenderingQualityInfo=_bitmapRenderingQualityInfo;
 @property (copy, nonatomic) NSArray *breadCrumbTrail;
 @property (weak, nonatomic) id<TSDCanvasDelegate> canvasDelegate; // @synthesize canvasDelegate=_canvasDelegate;
@@ -93,17 +94,18 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isDisplayLinkThread;
 @property (nonatomic) BOOL isExitingShow; // @synthesize isExitingShow=_isExitingShow;
-@property (readonly, nonatomic) BOOL isMetalCapable;
 @property (readonly, nonatomic) BOOL isMetalEnabled;
 @property (nonatomic) BOOL isMovieExport; // @synthesize isMovieExport=_isMovieExport;
 @property (readonly, nonatomic) BOOL isOffscreenPlayback;
 @property (readonly, nonatomic) BOOL isPreCachingOperationActive;
 @property (readonly, nonatomic) BOOL isPreview;
+@property (readonly, nonatomic) BOOL isRealtime;
+@property (readonly, nonatomic) BOOL isSceneRenderingEnabled;
 @property (nonatomic) BOOL isShowLayerVisible; // @synthesize isShowLayerVisible=_isShowLayerVisible;
 @property (readonly, nonatomic) BOOL isTexturePreCachingThread;
 @property (readonly, nonatomic) BOOL isWideGamut;
 @property (readonly, nonatomic) KNSlideNode *lastSlideNode;
-@property (readonly, nonatomic) id<MTLDevice> metalDevice; // @synthesize metalDevice=_metalDevice;
+@property (readonly, nonatomic) id<KNPlaybackLayerHost> layerHost;
 @property (readonly, nonatomic) TSULRUCache *movieAssetCache; // @synthesize movieAssetCache=_movieAssetCache;
 @property (readonly, nonatomic) TSDMPSImageConversionStorage *mpsImageConversionStorage; // @synthesize mpsImageConversionStorage=_mpsImageConversionStorage;
 @property (readonly, nonatomic) KNSlide *nextSlideAfterCurrent;
@@ -111,9 +113,7 @@
 @property (nonatomic) long long playMode; // @synthesize playMode=_playMode;
 @property (readonly, nonatomic) NSArray *playableSlideNodes;
 @property (readonly, nonatomic) KNSlideNode *previousSlideNodeBeforeCurrent;
-@property (readonly, nonatomic) CALayer *rootLayer; // @synthesize rootLayer=_rootLayer;
 @property (readonly, nonatomic) TSDGLLayer *sharedGLLayer; // @synthesize sharedGLLayer=_sharedGLLayer;
-@property (strong, nonatomic) TSDMetalLayer *sharedMetalLayer; // @synthesize sharedMetalLayer=_sharedMetalLayer;
 @property (nonatomic) BOOL shouldAllowBackgroundAlpha; // @synthesize shouldAllowBackgroundAlpha=_shouldAllowBackgroundAlpha;
 @property (nonatomic) BOOL shouldAlwaysLoop; // @synthesize shouldAlwaysLoop=_shouldAlwaysLoop;
 @property (nonatomic) BOOL shouldAlwaysSetCurrentGLContextWhenDrawing; // @synthesize shouldAlwaysSetCurrentGLContextWhenDrawing=_shouldAlwaysSetCurrentGLContextWhenDrawing;
@@ -122,6 +122,7 @@
 @property (nonatomic) BOOL shouldAutomaticallyPlayMovies; // @synthesize shouldAutomaticallyPlayMovies=_shouldAutomaticallyPlayMovies;
 @property (nonatomic) BOOL shouldDrawTexturesAsynchronously; // @synthesize shouldDrawTexturesAsynchronously=_shouldDrawTexturesAsynchronously;
 @property (nonatomic) BOOL shouldForceTextureGeneration; // @synthesize shouldForceTextureGeneration=_shouldForceTextureGeneration;
+@property (readonly, nonatomic) BOOL shouldIgnoreBuildVisibility;
 @property (nonatomic) BOOL shouldNotBakeActionTextures; // @synthesize shouldNotBakeActionTextures=_shouldNotBakeActionTextures;
 @property (nonatomic) BOOL shouldPreferCARenderer; // @synthesize shouldPreferCARenderer=_shouldPreferCARenderer;
 @property (nonatomic) BOOL shouldRespectSkippedSlides; // @synthesize shouldRespectSkippedSlides=_shouldRespectSkippedSlides;
@@ -134,16 +135,18 @@
 @property (readonly, nonatomic) double showScale;
 @property (copy, nonatomic) NSArray *slideNodesWithinPlayableRange; // @synthesize slideNodesWithinPlayableRange=_slideNodesWithinPlayableRange;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) KNAnimatedTextureManager *textureManager; // @synthesize textureManager=_textureManager;
+@property (readonly, nonatomic) KNAnimatedTextureManager *textureManager; // @synthesize textureManager=_textureManager;
 @property (readonly, nonatomic) NSMutableArray *workDurationArray; // @synthesize workDurationArray=_workDurationArray;
 
++ (void)p_updateAnimationContext:(id)arg1 fromConfiguration:(id)arg2;
++ (double)p_viewScaleByUpdatingShowLayerGeometry:(id)arg1 forConfiguration:(id)arg2 showSize:(struct CGSize)arg3;
 - (void).cxx_destruct;
-- (void)acquireDiscreteGPUIfNeeded;
 - (id)animatedSlideViewFor:(id)arg1;
 - (id)breadCrumb;
+- (BOOL)canMakeInfoVisible:(id)arg1 allowAudioOnlyMovies:(BOOL)arg2;
 - (void)cancelEndShowHandler;
 - (void)dealloc;
-- (void)discardDiscreteGPUIfAcquired;
+- (void)didChangeRootLayerGeometryAndScreenEnvironment:(id)arg1;
 - (void)dropABreadCrumb;
 - (void)enableMetalBadge:(BOOL)arg1;
 - (void)executeEndShowHandlerAfterDelay:(double)arg1;
@@ -152,8 +155,9 @@
 - (id)gotoNextSlide;
 - (id)gotoPreviousSlide;
 - (void)gotoSlideNode:(id)arg1;
-- (id)initWithShow:(id)arg1 viewScale:(double)arg2 showLayer:(id)arg3 canvasDelegate:(id)arg4 isMetalEnabled:(BOOL)arg5 endShowHandler:(CDUnknownBlockType)arg6;
+- (id)initWithShow:(id)arg1 configuration:(id)arg2 canvasDelegate:(id)arg3;
 - (void)makeSharedMetalLayerVisible:(BOOL)arg1;
+- (id)newCanvasForInfos:(id)arg1;
 - (id)nextSlideNodeAfterSlideNode:(id)arg1;
 - (BOOL)p_checkArrayInclusionIncludingUUID:(id)arg1 object:(id)arg2;
 - (BOOL)p_checkNodeEqualityIncludingUUID:(id)arg1 secondSlideNode:(id)arg2;
@@ -162,12 +166,10 @@
 - (id)p_intersectArraysWithUUIDEquality:(id)arg1 secondArray:(id)arg2;
 - (id)p_nextBestSlideNodeToSlideNode:(id)arg1;
 - (void)p_setCurrentSlideNode:(id)arg1;
-- (void)p_setupBadging;
 - (BOOL)p_slideNodeIsPlayable:(id)arg1;
 - (void)performSlideRead:(CDUnknownBlockType)arg1;
 - (id)previousSlideNodeBeforeSlideNode:(id)arg1;
 - (id)repForInfo:(id)arg1 onCanvas:(id)arg2;
-- (void)resizeShowLayer;
 - (void)setSharedGLContextAsCurrentContextShouldCreate:(BOOL)arg1;
 - (unsigned long long)slideNumberForSlideNode:(id)arg1;
 - (void)tearDown;

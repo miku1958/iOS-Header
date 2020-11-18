@@ -50,6 +50,7 @@
 + (BOOL)destroyAtURL:(id)arg1 error:(id *)arg2;
 + (id)errorForKGDBReturnCode:(int)arg1 description:(id)arg2;
 + (BOOL)hasMarker:(id)arg1;
++ (void)initialize;
 + (BOOL)migrateFromURL:(id)arg1 toURL:(id)arg2 error:(id *)arg3;
 + (void)performBitmapTest;
 + (id)persistentStoreFileExtension;
@@ -62,11 +63,12 @@
 - (void)_setModelNodePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(long long)arg3;
 - (void)addEdge:(id)arg1 requiresTesting:(BOOL)arg2;
 - (void)addNode:(id)arg1 requiresTesting:(BOOL)arg2;
-- (void)appendPropertyValuesForElementId:(unsigned long long)arg1 cursors:(map_f5a6a24a *)arg2 dataTypes:(map_d80ba52d *)arg3 dictionary:(id)arg4;
 - (unsigned long long)attrIdForPropertyName:(id)arg1 sampleValue:(id)arg2;
 - (void)beginTransactionIfNeeded;
 - (void)checkTransaction;
 - (void)closePersistentStore;
+- (BOOL)copyToURL:(id)arg1 error:(id *)arg2;
+- (struct Database *)database;
 - (void)dealloc;
 - (unsigned long long)degasLabelIdForLabelName:(id)arg1;
 - (unsigned long long)degasLabelIdForMatisseDomain:(unsigned short)arg1;
@@ -82,7 +84,7 @@
 - (void)enumerateModelNodesForLabels:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateModelNodesPropertiesWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateModelNodesWithBlock:(CDUnknownBlockType)arg1;
-- (void)enumeratePropertiesForDataTypes:(map_d80ba52d *)arg1 usingCursors:(map_f5a6a24a *)arg2 withBlock:(CDUnknownBlockType)arg3;
+- (void)enumeratePropertiesForCursor:(struct AttributeValueCursor *)arg1 block:(CDUnknownBlockType)arg2;
 - (id)initWithFileURL:(id)arg1 options:(long long)arg2;
 - (void)invalidateMemoryCaches;
 - (void)invalidatePersistentStores;
@@ -96,6 +98,7 @@
 - (short)matisseDomainForDegasLabel:(unsigned long long)arg1;
 - (BOOL)migrateToURL:(id)arg1 error:(id *)arg2;
 - (id)propertyNameForAttrId:(unsigned long long)arg1;
+- (id)propertyValueForCursor:(struct AttributeValueCursor *)arg1;
 - (void)removeModelEdgeForIdentifier:(unsigned long long)arg1;
 - (void)removeModelEdgePropertiesForIdentifier:(long long)arg1;
 - (void)removeModelEdgePropertyForKey:(id)arg1 andIdentifier:(long long)arg2;
@@ -109,12 +112,14 @@
 - (void)removePreviousPersistenceStore;
 - (id)returnLabelAndDomain:(short *)arg1 forDegasLabels:(struct Bitmap *)arg2;
 - (void)save:(CDUnknownBlockType)arg1;
+- (void)setEdgeWeight:(float)arg1 forIdentifier:(long long)arg2;
 - (void)setLabel:(id)arg1 forDegasLabel:(unsigned long long)arg2;
 - (void)setMarker;
 - (void)setModelEdgeProperties:(id)arg1 forIdentifier:(long long)arg2 clobberExisting:(BOOL)arg3;
 - (void)setModelEdgePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(long long)arg3;
 - (void)setModelNodeProperties:(id)arg1 forIdentifier:(long long)arg2 clobberExisting:(BOOL)arg3;
 - (void)setModelNodePropertyValue:(id)arg1 forKey:(id)arg2 andIdentifier:(long long)arg3;
+- (void)setNodeWeight:(float)arg1 forIdentifier:(long long)arg2;
 
 @end
 

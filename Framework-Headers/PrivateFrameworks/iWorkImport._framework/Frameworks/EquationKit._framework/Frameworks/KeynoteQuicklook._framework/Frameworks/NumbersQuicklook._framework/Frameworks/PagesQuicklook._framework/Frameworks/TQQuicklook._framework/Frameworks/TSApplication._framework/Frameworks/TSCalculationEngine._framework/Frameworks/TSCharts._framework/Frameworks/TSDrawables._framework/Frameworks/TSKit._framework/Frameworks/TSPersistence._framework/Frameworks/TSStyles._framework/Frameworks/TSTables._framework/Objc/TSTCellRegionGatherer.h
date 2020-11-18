@@ -9,6 +9,7 @@
 @interface TSTCellRegionGatherer : NSObject
 {
     struct TSTCellRegionGathererMap _gathererMap;
+    struct unordered_map<TSUCellCoord, TSUCellRect, std::__1::hash<TSUCellCoord>, std::__1::equal_to<TSUCellCoord>, std::__1::allocator<std::__1::pair<const TSUCellCoord, TSUCellRect>>> _originToRangeMap;
     BOOL _mightOverlap;
     unsigned long long _debugCellRangeMerges;
 }

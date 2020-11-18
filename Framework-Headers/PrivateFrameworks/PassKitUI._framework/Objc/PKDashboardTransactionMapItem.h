@@ -21,6 +21,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
 
++ (id)identifier;
 - (void).cxx_destruct;
 
 @end

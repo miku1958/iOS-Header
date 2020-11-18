@@ -18,7 +18,6 @@
 - (BOOL)disableWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (void)enableWithInfo:(NSDictionary *)arg1 completionBlock:(void (^)(NSError *))arg2;
 - (BOOL)enableWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
-- (id)init;
 - (id)initWithContext:(CDPContext *)arg1;
 - (NSDictionary *)recoverWithInfo:(NSDictionary *)arg1 error:(id *)arg2;
 - (void)uncacheAllSecrets;

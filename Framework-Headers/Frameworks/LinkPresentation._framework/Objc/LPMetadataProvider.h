@@ -9,7 +9,7 @@
 #import <LinkPresentation/LPMetadataProviderSpecializationDelegate-Protocol.h>
 #import <LinkPresentation/WKNavigationDelegate-Protocol.h>
 
-@class BKSProcessAssertion, LPAnimatedImageTranscoder, LPFetcherGroup, LPLinkMetadata, LPMetadataProviderSpecialization, NSMutableArray, NSString, NSTimer, NSURL, WKWebView;
+@class BKSProcessAssertion, LPAnimatedImageTranscoder, LPEvent, LPFetcherGroup, LPLinkMetadata, LPMetadataProviderSpecialization, NSMutableArray, NSString, NSTimer, NSURL, WKWebView;
 @protocol OS_dispatch_group;
 
 @interface LPMetadataProvider : NSObject <WKNavigationDelegate, LPMetadataProviderSpecializationDelegate>
@@ -20,11 +20,15 @@
     NSURL *_originalURL;
     NSTimer *_watchdog;
     BKSProcessAssertion *_processAssertion;
+    LPEvent *_event;
+    LPEvent *_mainResourceLoadEvent;
+    LPEvent *_webProcessLaunchEvent;
     LPLinkMetadata *_metadata;
     BOOL _complete;
     BOOL _fetchingFromExistingWebView;
     BOOL _hasStartedFetching;
     BOOL _hasEverStartedFetchingMetadataFromWebView;
+    BOOL _timedOut;
     BOOL _useSpecializedProviders;
     unsigned long long _allowedSpecializedProviders;
     NSObject<OS_dispatch_group> *_subresourceFetchGroup;
@@ -39,6 +43,7 @@
     CDUnknownBlockType _completionHandler;
 }
 
+@property (readonly, nonatomic) LPEvent *_event; // @synthesize _event;
 @property (nonatomic) unsigned long long allowedSpecializedProviders; // @synthesize allowedSpecializedProviders=_allowedSpecializedProviders;
 @property BOOL cancelled; // @synthesize cancelled=_cancelled;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
@@ -61,6 +66,7 @@
 - (void)_cancelDueToTimeout;
 - (void)_completedWithError:(id)arg1;
 - (void)_failedWithErrorCode:(long long)arg1 underlyingError:(id)arg2;
+- (void)_fetchAssociatedApplicationMetadataWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_fetchImplicitIcons;
 - (void)_fetchMetadataFromWebView;
 - (void)_fetchSubresources;
@@ -94,6 +100,7 @@
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
+- (void)webView:(id)arg1 didStartProvisionalNavigation:(id)arg2;
 - (void)webViewWebContentProcessDidTerminate:(id)arg1;
 
 @end

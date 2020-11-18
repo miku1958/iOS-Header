@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)init;
+- (id)initWithScreen:(id)arg1;
 - (void)performHapticFeedbackForFocusUpdateInContext:(id)arg1;
 
 @end

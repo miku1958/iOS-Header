@@ -10,12 +10,11 @@
 #import <HMFoundation/HMFMessageTransportDelegate-Protocol.h>
 
 @class HMFMessageTransport, HMFTimer, NSBackgroundActivityScheduler, NSDictionary, NSMutableOrderedSet, NSObject, NSSet, NSString;
-@protocol HMFLocking, OS_dispatch_queue;
+@protocol OS_dispatch_queue;
 
 @interface HMFMessageDispatcher : HMFObject <HMFLogging, HMFMessageTransportDelegate>
 {
-    id<HMFLocking> _lock;
-    NSObject<OS_dispatch_queue> *_queue;
+    struct hmf_unfair_data_lock_s _lock;
     NSMutableOrderedSet *_handlers;
     HMFTimer *_indexWatchdog;
     NSBackgroundActivityScheduler *_indexScheduler;
@@ -40,6 +39,7 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (void)dealloc;
 - (void)deregisterForMessage:(id)arg1 receiver:(id)arg2;
 - (void)deregisterReceiver:(id)arg1;
 - (void)dispatchMessage:(id)arg1;

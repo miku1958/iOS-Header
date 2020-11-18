@@ -20,11 +20,11 @@
 @property (weak, nonatomic) id<CSKeywordAnalyzerNDEAPIScoreDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
-- (void)checkForTriggerWithBytes:(const short *)arg1 withNumberOfSamples:(long long)arg2;
+- (id)checkForTriggerWithBytes:(const short *)arg1 withNumberOfSamples:(long long)arg2;
 - (void)dealloc;
 - (id)initWithBlob:(id)arg1;
-- (void)processAudioBytes:(void *)arg1 withNumberOfSamples:(long long)arg2;
-- (void)processAudioChunk:(id)arg1;
+- (id)processAudioBytes:(void *)arg1 withNumberOfSamples:(long long)arg2;
+- (id)processAudioChunk:(id)arg1;
 - (void)reset;
 
 @end

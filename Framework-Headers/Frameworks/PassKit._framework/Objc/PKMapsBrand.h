@@ -42,8 +42,10 @@
 @property (readonly, nonatomic, getter=isValid) BOOL valid;
 
 + (void)deleteFromCloudStoreRecord:(id)arg1;
++ (id)recordNamePrefix;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)description;
 - (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
 - (void)encodeWithCloudStoreCoder:(id)arg1;
@@ -57,6 +59,7 @@
 - (BOOL)isEqualToMapsBrand:(id)arg1;
 - (unsigned long long)itemType;
 - (id)jsonRepresentation;
+- (id)primaryIdentifier;
 - (id)recordTypesAndNamesIncludingServerData:(BOOL)arg1;
 
 @end

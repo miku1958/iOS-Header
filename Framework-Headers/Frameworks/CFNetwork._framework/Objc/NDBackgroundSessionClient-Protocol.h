@@ -9,7 +9,8 @@
 @class NSArray, NSData, NSDictionary, NSError, NSHTTPURLResponse, NSString, NSURL, NSURLAuthenticationChallenge, NSURLCredential, NSURLProtectionSpace, NSURLRequest, NSURLResponse, NSValue, __CFN_TaskMetrics, __CFN_TransactionMetrics;
 
 @protocol NDBackgroundSessionClient <NSObject>
-- (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didLoadTimeRange:(NSValue *)arg2 totalTimeRangesLoaded:(NSArray *)arg3 timeRangeExpectedToLoad:(NSValue *)arg4;
+- (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didFinishDownloadForMediaSelectionPropertyList:(NSDictionary *)arg2;
+- (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didLoadTimeRange:(NSValue *)arg2 totalTimeRangesLoaded:(NSArray *)arg3 timeRangeExpectedToLoad:(NSValue *)arg4 forMediaSelectionPropertyList:(NSDictionary *)arg5;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didReceiveDownloadToken:(unsigned long long)arg2;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 didResolveMediaSelectionProperyList:(id)arg2 reply:(void (^)(void))arg3;
 - (void)backgroundAVAssetDownloadTask:(unsigned long long)arg1 willDownloadToURL:(NSURL *)arg2;

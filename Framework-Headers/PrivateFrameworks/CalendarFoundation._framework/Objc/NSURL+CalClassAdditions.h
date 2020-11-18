@@ -30,7 +30,6 @@
 - (id)hostWithoutWWW;
 - (id)initWithCalDirtyString:(id)arg1;
 - (id)initWithScheme:(id)arg1 host:(id)arg2 port:(int)arg3 path:(id)arg4;
-- (BOOL)isEqualToURL:(id)arg1;
 - (BOOL)isEqualToURLIgnoringScheme:(id)arg1;
 - (BOOL)isNoMail;
 - (BOOL)isNoTel;

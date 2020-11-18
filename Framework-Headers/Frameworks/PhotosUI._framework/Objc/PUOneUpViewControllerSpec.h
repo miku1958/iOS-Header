@@ -38,6 +38,8 @@ __attribute__((visibility("hidden")))
     long long _tileInitialContentMode;
     struct CGSize _progressIndicatorSize;
     struct CGSize _bufferingIndicatorSize;
+    struct CGSize _renderIndicatorSize;
+    struct UIEdgeInsets _progressIndicatorContentInsets;
 }
 
 @property (readonly, nonatomic) BOOL allowAccessoryVisibility;
@@ -56,7 +58,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setMaximumToolbarHeight:) double maximumToolbarHeight; // @synthesize maximumToolbarHeight=_maximumToolbarHeight;
 @property (readonly, nonatomic) unsigned long long options; // @synthesize options=_options;
 @property (readonly, nonatomic) struct CGSize playButtonSize;
+@property (nonatomic, setter=_setProgressIndicatorContentInsets:) struct UIEdgeInsets progressIndicatorContentInsets; // @synthesize progressIndicatorContentInsets=_progressIndicatorContentInsets;
 @property (nonatomic, setter=_setProgressIndicatorSize:) struct CGSize progressIndicatorSize; // @synthesize progressIndicatorSize=_progressIndicatorSize;
+@property (readonly, nonatomic) struct CGSize renderIndicatorSize; // @synthesize renderIndicatorSize=_renderIndicatorSize;
 @property (nonatomic, setter=_setShouldAutoplayOnAppear:) BOOL shouldAutoplayOnAppear; // @synthesize shouldAutoplayOnAppear=_shouldAutoplayOnAppear;
 @property (nonatomic, setter=_setShouldCounterrotateReviewScreenBars:) BOOL shouldCounterrotateReviewScreenBars; // @synthesize shouldCounterrotateReviewScreenBars=_shouldCounterrotateReviewScreenBars;
 @property (readonly, nonatomic) BOOL shouldDisableNavigationBarsVisibility;
@@ -82,6 +86,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (BOOL)_isAssetExplorerReviewScreen;
+- (void)_setRenderIndicatorSize:(struct CGSize)arg1;
 - (BOOL)_shouldForceBlackBackground;
 - (id)initWithOptions:(unsigned long long)arg1;
 - (id)newSpecChange;

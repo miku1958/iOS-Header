@@ -8,8 +8,8 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class NSString;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class MapsSuggestionsTimer, NSString;
+@protocol OS_dispatch_queue;
 
 @interface MapsSuggestionsCanKicker : NSObject <MapsSuggestionsObject>
 {
@@ -18,7 +18,7 @@
     CDUnknownBlockType _block;
     double _time;
     double _leeway;
-    NSObject<OS_dispatch_source> *_timer;
+    MapsSuggestionsTimer *_timer;
     unsigned long long _count;
 }
 
@@ -29,7 +29,6 @@
 @property (readonly, nonatomic) NSString *uniqueName;
 
 - (void).cxx_destruct;
-- (void)_kickCan;
 - (void)cancel;
 - (void)dealloc;
 - (id)initWithName:(id)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
@@ -37,7 +36,6 @@
 - (id)initWithName:(id)arg1 time:(double)arg2 queue:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (void)kickCanBySameTime;
 - (void)kickCanByTime:(double)arg1;
-- (void)kickCanByTime:(double)arg1 leeway:(double)arg2;
 
 @end
 

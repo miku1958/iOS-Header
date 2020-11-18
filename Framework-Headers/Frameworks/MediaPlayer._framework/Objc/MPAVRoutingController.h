@@ -8,15 +8,13 @@
 
 #import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
-@class MPAVRoute, MPAVRoutingControllerSelectionQueue, MPAVRoutingDataSource, NSArray, NSMutableArray, NSSet, NSString;
+@class MPAVRoute, MPAVRoutingControllerSelectionQueue, MPAVRoutingDataSource, NSArray, NSSet, NSString;
 @protocol MPAVOutputDevicePlaybackDataSource, MPAVRoutingControllerDelegate;
 
 @interface MPAVRoutingController : NSObject <_MPStateDumpPropertyListTransformable>
 {
     NSArray *_cachedRoutes;
     NSArray *_cachedPickedRoutes;
-    NSMutableArray *_asyncFetchingCompletionHandlers;
-    BOOL _asyncFetchingRoutes;
     long long _externalScreenType;
     BOOL _hasExternalScreenType;
     BOOL _scheduledSendDelegateRoutesChanged;
@@ -69,6 +67,10 @@
 + (void)_getActiveRouteWithTimeout:(double)arg1 discoveredRoutes:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (id)_iconImageForIdentifier:(id)arg1;
 + (id)_iconImageForRoute:(id)arg1;
++ (id)_iconImageForRoutes:(id)arg1;
++ (id)_iconImageNameForDeviceComposition:(id)arg1;
++ (id)_iconImageNameForDeviceSubtypes:(id)arg1;
++ (id)_iconNameForRoute:(id)arg1;
 + (id)_sharedSerialQueue;
 + (BOOL)bundleIdRepresentsLongFormVideoContent:(id)arg1;
 + (void)getActiveRouteWithCompletion:(CDUnknownBlockType)arg1;
@@ -85,7 +87,6 @@
 - (void)_externalScreenTypeDidChangeNotification:(id)arg1;
 - (void)_mediaServerDiedNotification:(id)arg1;
 - (void)_onQueueSetExternalScreenType:(long long)arg1;
-- (void)_onQueue_clearCachedRoutes;
 - (BOOL)_pickRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_pickableRoutesDidChangeNotification:(id)arg1;
 - (id)_pickedRouteInArray:(id)arg1;
@@ -99,6 +100,7 @@
 - (void)_setExternalScreenType:(long long)arg1;
 - (void)_setVolumeControlStateForPickedRoute:(long long)arg1;
 - (id)_stateDumpObject;
+- (void)_syncUpdateRoutes;
 - (void)_unregisterNotifications;
 - (void)_updateCachedRoutes;
 - (void)_volumeControlAvailabilityDidChangeNotification:(id)arg1;
@@ -106,6 +108,8 @@
 - (BOOL)addPickedRoute:(id)arg1;
 - (BOOL)addPickedRoute:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)airtunesRouteIsPicked;
+- (id)cachedPickedRoutes;
+- (id)cachedRoutes;
 - (void)clearCachedRoutes;
 - (void)dealloc;
 - (void)fetchAvailableRoutesWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -129,9 +133,13 @@
 - (BOOL)routeOtherThanHandsetAndSpeakerAvailable;
 - (BOOL)routeOtherThanHandsetAvailable;
 - (void)selectRoute:(id)arg1 operation:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)selectRoutes:(id)arg1 operation:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setCachedRoutes:(id)arg1;
 - (BOOL)speakerRouteIsPicked;
 - (void)unpickAirPlayScreenRouteWithCompletion:(CDUnknownBlockType)arg1;
 - (void)unpickTVRoutes;
+- (id)updateAvailableRoutes;
+- (id)updatePickedRoutes;
 - (id)videoRouteForRoute:(id)arg1;
 - (BOOL)wirelessDisplayRouteIsPicked;
 - (BOOL)wirelessDisplayRoutesAvailable;

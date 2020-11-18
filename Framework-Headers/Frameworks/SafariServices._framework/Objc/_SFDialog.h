@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray;
+@class NSArray, _SFDialogController;
 
 @interface _SFDialog : NSObject
 {
     BOOL _completed;
     BOOL _shouldIgnoreGlobalModalUIDisplayPolicy;
+    _SFDialogController *_dialogController;
 }
 
 @property (readonly, copy, nonatomic) NSArray *additionalCancellationExemptions;
@@ -19,15 +20,16 @@
 @property (readonly, nonatomic) BOOL canceledOnCommittedNavigation;
 @property (readonly, nonatomic) BOOL canceledOnProvisionalNavigation;
 @property (readonly, nonatomic) BOOL completionHandlerBlocksWebProcess;
+@property (weak, nonatomic) _SFDialogController *dialogController; // @synthesize dialogController=_dialogController;
 @property (readonly, nonatomic) long long presentationStyle;
 @property (readonly, nonatomic) BOOL shouldIgnoreGlobalModalUIDisplayPolicy; // @synthesize shouldIgnoreGlobalModalUIDisplayPolicy=_shouldIgnoreGlobalModalUIDisplayPolicy;
 
++ (id)_appLinkRedirectDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)_dialogWithTitle:(id)arg1 message:(id)arg2 acceptAction:(id)arg3 secondaryAction:(id)arg4 cancelAction:(id)arg5 applicationModal:(BOOL)arg6 completionHandler:(CDUnknownBlockType)arg7;
 + (id)_dialogWithTitle:(id)arg1 message:(id)arg2 primaryAction:(id)arg3 secondaryAction:(id)arg4 applicationModal:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;
 + (id)allowDownloadDialogWithDownload:(id)arg1 initiatingURL:(id)arg2 allowViewAction:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
-+ (id)appLinkRedirectDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (id)authenticationDialogWithAuthenticationChallenge:(id)arg1 committedURL:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-+ (id)authenticatorDialogForPanel:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)authenticatorDialogForPanel:(id)arg1 dialogController:(id)arg2;
 + (id)blockedPopupWindowDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)continuePrintingDialogWithTitle:(id)arg1 message:(id)arg2 applicationModal:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (id)dialogWithWebUIAlert:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
@@ -45,9 +47,12 @@
 + (id)permanentlyAcceptCertificateDialogWithAcceptanceHandler:(CDUnknownBlockType)arg1;
 + (id)printBlockedDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)redirectDialogWithMessage:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
++ (id)redirectDialogWithNavigationResult:(id)arg1 promptPolicy:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)requestStorageAccessDialogForDomain:(id)arg1 underCurrentDomain:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)telephonyNavigationDialogWithCompletionHandler:(CDUnknownBlockType)arg1;
 + (id)userMediaPermissionDialogWithHost:(id)arg1 devices:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
++ (id)websiteLocationDialogForURL:(id)arg1 preciseLocation:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void).cxx_destruct;
 - (void)completeWithResponse:(id)arg1;
 - (void)didCompleteWithResponse:(id)arg1;
 - (id)newDialogViewRepresentation;

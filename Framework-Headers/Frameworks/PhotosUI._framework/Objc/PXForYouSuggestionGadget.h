@@ -16,6 +16,7 @@
 {
     BOOL _contentHidden;
     BOOL _blursDegradedContent;
+    BOOL _shouldSuppressSelectionAnimation;
     BOOL _contentViewVisible;
     unsigned short _suggestionType;
     PXGadgetSpec *_gadgetSpec;
@@ -46,7 +47,6 @@
 @property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
-@property (readonly, nonatomic) BOOL hasContentToDisplay;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long headerStyle;
 @property (strong, nonatomic) id<PXDisplayAsset> keyAsset; // @synthesize keyAsset=_keyAsset;
@@ -54,6 +54,7 @@
 @property (strong, nonatomic) PXUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly, nonatomic) PXRegionOfInterest *regionOfInterestForOneUpTransition;
+@property (nonatomic) BOOL shouldSuppressSelectionAnimation; // @synthesize shouldSuppressSelectionAnimation=_shouldSuppressSelectionAnimation;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) id<PXDisplaySuggestion> suggestion; // @synthesize suggestion=_suggestion;
 @property (nonatomic) unsigned short suggestionType; // @synthesize suggestionType=_suggestionType;

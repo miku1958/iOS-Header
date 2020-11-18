@@ -10,6 +10,7 @@
 @protocol MNLocationProvider;
 
 @protocol MNLocationProviderDelegate <NSObject>
+- (void)locationProvider:(id<MNLocationProvider>)arg1 didChangeCoarseMode:(BOOL)arg2;
 - (void)locationProvider:(id<MNLocationProvider>)arg1 didReceiveError:(NSError *)arg2;
 - (void)locationProvider:(id<MNLocationProvider>)arg1 didUpdateHeading:(CLHeading *)arg2;
 - (void)locationProvider:(id<MNLocationProvider>)arg1 didUpdateLocation:(MNLocation *)arg2;

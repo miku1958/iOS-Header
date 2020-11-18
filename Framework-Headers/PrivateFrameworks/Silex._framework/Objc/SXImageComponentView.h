@@ -46,7 +46,7 @@
 - (void)layoutImageView;
 - (void)loadComponent:(id)arg1;
 - (struct CGRect)originalFrameForContentView:(id)arg1 behavior:(id)arg2;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)renderContents;
 - (struct CGRect)transitionContentFrame;
 - (id)transitionContentView;

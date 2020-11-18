@@ -6,18 +6,18 @@
 
 #import <Preferences/PSListController.h>
 
-@class CTServiceDescriptor, NSMutableArray, PSSpecifier;
+@class CTServiceDescriptor, PSSpecifier;
 
 __attribute__((visibility("hidden")))
 @interface PSUICellularDataOptionsController : PSListController
 {
-    NSMutableArray *_ratSpecifiers;
     PSSpecifier *_parentSpecifier;
     CTServiceDescriptor *_serviceDescriptor;
 }
 
 - (void).cxx_destruct;
-- (id)controllerForSpecifier:(id)arg1;
+- (void)airplaneModeChanged;
+- (void)dealloc;
 - (id)getCDMARoamingStatus:(id)arg1;
 - (id)getDataRoamingStatus:(id)arg1;
 - (id)getDataRoamingStatusForService:(id)arg1;
@@ -35,7 +35,6 @@ __attribute__((visibility("hidden")))
 - (void)setEUInternetEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setEUInternetEnabledConfirmed:(id)arg1;
 - (id)specifiers;
-- (void)viewDidAppear:(BOOL)arg1;
 
 @end
 

@@ -18,16 +18,16 @@
     float mRadius;
     float mBottomZ;
     float mTopZ;
-    long long mCapOffset;
-    long long mCapCount;
+    unsigned int mCapOffset;
+    unsigned int mCapCount;
     TSCH3DNormalDirectionMapper *mNormalDirectionMapper;
 }
 
 @property (nonatomic) long long angleSteps; // @synthesize angleSteps=mAngleSteps;
 @property (nonatomic) long long bevelEdgeSteps; // @synthesize bevelEdgeSteps=mBevelEdgeSteps;
 @property (nonatomic) float bottomZ; // @synthesize bottomZ=mBottomZ;
-@property (readonly, nonatomic) long long capCount; // @synthesize capCount=mCapCount;
-@property (readonly, nonatomic) long long capOffset; // @synthesize capOffset=mCapOffset;
+@property (readonly, nonatomic) unsigned int capCount; // @synthesize capCount=mCapCount;
+@property (readonly, nonatomic) unsigned int capOffset; // @synthesize capOffset=mCapOffset;
 @property (nonatomic) float endAngle; // @synthesize endAngle=mEndAngle;
 @property (readonly, nonatomic) TSCH3DNormalDirectionMapper *normalDirectionMapper; // @synthesize normalDirectionMapper=mNormalDirectionMapper;
 @property (nonatomic) float radius; // @synthesize radius=mRadius;

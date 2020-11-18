@@ -27,8 +27,8 @@
 - (void).cxx_destruct;
 - (void)appendWallpaperBundle:(id)arg1;
 - (id)initWithWallpaperType:(unsigned long long)arg1 previewBundle:(id)arg2;
-- (id)wallpaperBundleAtIndex:(unsigned long long)arg1;
-- (id)wallpaperBundleWithIdentifier:(unsigned long long)arg1;
+- (id)wallpaperBundleAtIndex:(long long)arg1;
+- (id)wallpaperBundleWithIdentifier:(long long)arg1;
 
 @end
 

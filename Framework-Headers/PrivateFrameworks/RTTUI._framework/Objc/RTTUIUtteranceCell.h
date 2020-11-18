@@ -49,6 +49,7 @@
 - (void)updateLayout;
 - (void)updateUtterance:(id)arg1;
 - (void)updateUtterance:(id)arg1 postNotifications:(BOOL)arg2;
+- (id)utteranceTextColor;
 
 @end
 

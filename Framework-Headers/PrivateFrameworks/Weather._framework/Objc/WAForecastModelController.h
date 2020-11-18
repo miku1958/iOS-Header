@@ -9,7 +9,6 @@
 @class NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString, WFServiceConnection, WFWeatherStoreService;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface WAForecastModelController : NSObject
 {
     NSOperationQueue *_forecastOperationQueue;
@@ -37,10 +36,12 @@ __attribute__((visibility("hidden")))
 - (id)_commaSeparatedUpdatingCitiesNames;
 - (void)_handleForecastOperationCompletion:(id)arg1;
 - (id)_queue_executeFetchForCity:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_queue_executeFetchForCity:(id)arg1 withUnits:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)cancelAllFetchRequests;
 - (void)dealloc;
 - (BOOL)fetchForecastForCities:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)fetchForecastForCity:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)fetchForecastForCity:(id)arg1 withUnits:(int)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)init;
 - (BOOL)isCityBeingUpdated:(id)arg1;
 

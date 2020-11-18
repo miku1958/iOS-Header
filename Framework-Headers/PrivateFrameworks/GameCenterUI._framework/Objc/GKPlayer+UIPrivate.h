@@ -12,9 +12,11 @@
 
 @property (strong, nonatomic) CNContact *contact;
 
++ (id)monogramComponentsForDisplayName:(id)arg1;
 + (id)monogramQueue;
 + (void)preloadImagesForPlayers:(id)arg1 size:(long long)arg2;
 + (long long)sizeForPhotoSize:(long long)arg1;
++ (void)stringForMonogramWithDisplayNameComponents:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_loadPhotoForSize:(long long)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (void)_playerAvatarWithSize:(long long)arg1 useUIImage:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)avatarImageRenderer;

@@ -15,21 +15,12 @@
     NSMutableArray *_entrys;
 }
 
-@property (strong, nonatomic) NSMutableArray *entrys; // @synthesize entrys=_entrys;
-
-+ (Class)entryType;
 - (void).cxx_destruct;
-- (void)addEntry:(id)arg1;
-- (void)clearEntrys;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
-- (id)entryAtIndex:(unsigned long long)arg1;
-- (unsigned long long)entrysCount;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
-- (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

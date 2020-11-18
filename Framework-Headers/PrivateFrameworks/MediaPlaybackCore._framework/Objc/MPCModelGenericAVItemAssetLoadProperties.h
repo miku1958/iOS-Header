@@ -15,6 +15,7 @@
     BOOL _prefersVideoContent;
     BOOL _prefersHighQualityContent;
     BOOL _radioPlayback;
+    BOOL _followUp;
     NSString *_assetSourceStorefrontID;
     id<MPCModelPlaybackAssetCacheProviding> _assetCacheProvider;
     MPModelFileAsset *_fileAsset;
@@ -34,6 +35,7 @@
 @property (copy, nonatomic) NSString *assetSourceStorefrontID; // @synthesize assetSourceStorefrontID=_assetSourceStorefrontID;
 @property (nonatomic) unsigned long long delegatedAccountID; // @synthesize delegatedAccountID=_delegatedAccountID;
 @property (strong, nonatomic) MPModelFileAsset *fileAsset; // @synthesize fileAsset=_fileAsset;
+@property (nonatomic, getter=isFollowUp) BOOL followUp; // @synthesize followUp=_followUp;
 @property (strong, nonatomic) MPModelGenericObject *genericObject; // @synthesize genericObject=_genericObject;
 @property (strong, nonatomic) MPModelHomeSharingAsset *homeSharingAsset; // @synthesize homeSharingAsset=_homeSharingAsset;
 @property (copy, nonatomic) NSString *householdID; // @synthesize householdID=_householdID;

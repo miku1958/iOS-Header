@@ -20,6 +20,8 @@
 @property (readonly, copy, nonatomic) NSDate *receivedDate; // @synthesize receivedDate=_receivedDate;
 @property (readonly, copy, nonatomic) NSURL *serverBaseURL;
 
++ (id)hrs_sampleResourceObjectWithFHIRResource:(id)arg1;
++ (id)hrs_sampleResourceObjectWithFHIRResource:(id)arg1 error:(id *)arg2;
 + (id)identifierDetectedInJSONObject:(id)arg1 error:(id *)arg2;
 + (id)resourceObjectWithJSONObject:(id)arg1 serverBaseURL:(id)arg2 FHIRVersion:(id)arg3 receivedDate:(id)arg4 error:(id *)arg5;
 + (id)resourceObjectWithJSONObject:(id)arg1 sourceURL:(id)arg2 FHIRVersion:(id)arg3 receivedDate:(id)arg4 extractionHints:(unsigned long long)arg5 error:(id *)arg6;

@@ -6,8 +6,10 @@
 
 #import <GeoServices/NSObject-Protocol.h>
 
+@class NSDictionary;
+
 @protocol GEOURLSerializable <NSObject>
-- (id)initWithUrlRepresentation:(id)arg1;
-- (id)urlRepresentation;
+- (id)initWithUrlRepresentation:(NSDictionary *)arg1;
+- (NSDictionary *)urlRepresentation;
 @end
 

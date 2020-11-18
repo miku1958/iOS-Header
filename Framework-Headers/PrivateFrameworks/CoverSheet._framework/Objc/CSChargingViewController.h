@@ -6,25 +6,37 @@
 
 #import <CoverSheet/CSCoverSheetViewControllerBase.h>
 
-@class BCBatteryDeviceController, CSBatteryChargingView;
+#import <CoverSheet/BCBatteryDeviceObserving-Protocol.h>
 
-@interface CSChargingViewController : CSCoverSheetViewControllerBase
+@class BCBatteryDeviceController, CSBatteryChargingInfo, CSBatteryChargingView, NSString;
+
+@interface CSChargingViewController : CSCoverSheetViewControllerBase <BCBatteryDeviceObserving>
 {
     BCBatteryDeviceController *_batteryController;
     CSBatteryChargingView *_chargingView;
+    CSBatteryChargingInfo *_chargingInfo;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_createNewChargingViewForDoubleBattery:(BOOL)arg1;
 - (void)_updateChargingViewIfNecessary;
 - (void)_updateChargingViewLegibility;
 - (void)aggregateAppearance:(id)arg1;
-- (void)dealloc;
+- (void)connectedDevicesDidChange:(id)arg1;
+- (double)durationBeforeDismissal;
 - (BOOL)handleEvent:(id)arg1;
 - (id)init;
+- (id)initWithChargingInfo:(id)arg1;
+- (void)performDismissalAnimationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (long long)presentationPriority;
 - (long long)presentationStyle;
 - (long long)presentationType;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

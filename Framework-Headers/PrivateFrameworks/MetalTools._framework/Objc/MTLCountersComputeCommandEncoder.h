@@ -31,6 +31,8 @@
 - (void)setBytes:(const void *)arg1 length:(unsigned long long)arg2 atIndex:(unsigned long long)arg3;
 - (void)setComputePipelineState:(id)arg1;
 - (void)setImageBlockWidth:(unsigned long long)arg1 height:(unsigned long long)arg2;
+- (void)setIntersectionFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setIntersectionFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
 - (void)setLabel:(id)arg1;
 - (void)setSamplerState:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setSamplerState:(id)arg1 lodMinClamp:(float)arg2 lodMaxClamp:(float)arg3 atIndex:(unsigned long long)arg4;
@@ -41,6 +43,8 @@
 - (void)setTexture:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setTextures:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setThreadgroupMemoryLength:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
+- (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
 - (void)updateFence:(id)arg1;
 - (void)useHeap:(id)arg1;
 - (void)useHeaps:(const id *)arg1 count:(unsigned long long)arg2;

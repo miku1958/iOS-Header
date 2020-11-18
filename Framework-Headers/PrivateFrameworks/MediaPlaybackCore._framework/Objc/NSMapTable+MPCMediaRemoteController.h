@@ -18,6 +18,6 @@
 @property (readonly) Class superclass;
 
 - (id)_allCommandInfos;
-- (struct _MRMediaRemoteCommandInfo *)commandInfoForCommand:(unsigned int)arg1;
+- (void *)commandInfoForCommand:(unsigned int)arg1;
 @end
 

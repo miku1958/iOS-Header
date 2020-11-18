@@ -9,7 +9,7 @@
 #import <SpringBoard/SBHardwareButtonGestureParametersObserver-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class BKSButtonHapticsDefinition, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, SBHardwareButtonGestureParameters, SBHomeHardwareButtonActions, SBHomeHardwareButtonGestureRecognizerConfiguration, SBNotificationBannerDestination, UIGestureRecognizer;
+@class BKSButtonHapticsDefinition, NSMutableDictionary, NSMutableOrderedSet, NSMutableSet, NSString, SBHardwareButtonGestureParameters, SBHomeHardwareButtonActions, SBHomeHardwareButtonGestureRecognizerConfiguration, UIGestureRecognizer;
 @protocol BSInvalidatable;
 
 @interface SBHomeHardwareButton : NSObject <UIGestureRecognizerDelegate, SBHardwareButtonGestureParametersObserver>
@@ -18,7 +18,6 @@
     NSMutableSet *_hintSuppressionAssertions;
     NSMutableOrderedSet *_longPressDurationAssertions;
     BOOL _longPressDidOccur;
-    SBNotificationBannerDestination *_bannerDestination;
     SBHomeHardwareButtonActions *_buttonActions;
     SBHardwareButtonGestureParameters *_buttonGestureParameters;
     SBHomeHardwareButtonGestureRecognizerConfiguration *_gestureRecognizerConfiguration;
@@ -30,7 +29,6 @@
     BKSButtonHapticsDefinition *_buttonDefinition;
 }
 
-@property (weak, nonatomic) SBNotificationBannerDestination *bannerDestination; // @synthesize bannerDestination=_bannerDestination;
 @property (strong, nonatomic) SBHomeHardwareButtonActions *buttonActions; // @synthesize buttonActions=_buttonActions;
 @property (strong, nonatomic) BKSButtonHapticsDefinition *buttonDefinition; // @synthesize buttonDefinition=_buttonDefinition;
 @property (readonly, nonatomic, getter=isButtonDown) BOOL buttonDown;

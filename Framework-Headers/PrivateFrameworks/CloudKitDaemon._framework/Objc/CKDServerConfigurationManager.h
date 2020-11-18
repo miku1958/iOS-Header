@@ -11,7 +11,6 @@
 @class CKDServerConfiguration, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSString;
 @protocol OS_dispatch_queue, OS_dispatch_source;
 
-__attribute__((visibility("hidden")))
 @interface CKDServerConfigurationManager : NSObject <CKDSystemAvailabilityWatcher>
 {
     BOOL _shouldDropAllConfigurations;
@@ -58,7 +57,7 @@ __attribute__((visibility("hidden")))
 - (void)expireConfigurationForContextInfoProvider:(id)arg1 accountInfoProvider:(id)arg2;
 - (void)expireGlobalConfiguration;
 - (id)init;
-- (void)systemAvailabilityChanged:(unsigned long long)arg1;
+- (BOOL)systemAvailabilityChanged:(unsigned long long)arg1;
 
 @end
 

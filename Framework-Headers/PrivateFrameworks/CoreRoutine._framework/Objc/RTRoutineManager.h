@@ -57,6 +57,7 @@
 - (void)createConnection;
 - (void)dealloc;
 - (void)engageInVehicleEventWithIdentifier:(id)arg1;
+- (void)enumerateObjectsWithOptions:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateStoredLocationsWithOptions:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)extendLifetimeOfVisitWithIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)extendLifetimeOfVisitsWithIdentifiers:(id)arg1 handler:(CDUnknownBlockType)arg2;
@@ -64,6 +65,7 @@
 - (void)fetchAutomaticVehicleEventDetectionSupportedWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchCloudSyncAuthorizationState:(CDUnknownBlockType)arg1;
 - (void)fetchCurrentPredictedLocationsOfInterestLookingBack:(double)arg1 lookingAhead:(double)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)fetchFormattedPostalAddressesFromMeCard:(CDUnknownBlockType)arg1;
 - (void)fetchLastVehicleEventsWithHandler:(CDUnknownBlockType)arg1;
 - (void)fetchLocationOfInterestAtLocation:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (void)fetchLocationOfInterestWithIdentifier:(id)arg1 withHandler:(CDUnknownBlockType)arg2;

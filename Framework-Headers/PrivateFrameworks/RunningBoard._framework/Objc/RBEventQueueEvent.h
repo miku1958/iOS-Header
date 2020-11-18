@@ -6,11 +6,7 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
-
-@class NSString;
-
-@interface RBEventQueueEvent : NSObject <BSDescriptionProviding>
+@interface RBEventQueueEvent : NSObject
 {
     id _context;
     double _eventTime;
@@ -19,18 +15,11 @@
 
 @property (copy, nonatomic) CDUnknownBlockType action; // @synthesize action=_action;
 @property (strong, nonatomic) id context; // @synthesize context=_context;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (nonatomic) double eventTime; // @synthesize eventTime=_eventTime;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
+- (id)description;
 
 @end
 

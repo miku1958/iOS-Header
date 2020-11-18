@@ -70,6 +70,7 @@
 - (void)__viewControllerWillBePresented:(BOOL)arg1;
 - (void)_callPreparationHandler:(CDUnknownBlockType)arg1;
 - (void)_cloudSharingControllerDidActivateShowSharedFolder;
+- (void)_cloudSharingControllerDidChooseTransport:(id)arg1;
 - (void)_cloudSharingControllerDidModifyPrimarySwitch:(BOOL)arg1;
 - (void)_cloudSharingControllerDidModifySecondarySwitch:(BOOL)arg1;
 - (BOOL)_commonInit;

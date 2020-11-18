@@ -28,6 +28,7 @@
     NSString *_name;
     NSString *_productKind;
     struct CGImage *_icon;
+    NSString *_systemSymbolName;
     NSString *_transportType;
     NSString *_UUIDString;
     NSString *_locationDescription;
@@ -91,6 +92,7 @@
 @property (readonly, getter=isRemote) BOOL remote; // @synthesize remote=_remote;
 @property (readonly, nonatomic) NSString *serialNumberString; // @synthesize serialNumberString=_serialNumberString;
 @property (readonly) double softwareInstallPercentDone; // @synthesize softwareInstallPercentDone=_softwareInstallPercentDone;
+@property (readonly, copy, nonatomic) NSString *systemSymbolName; // @synthesize systemSymbolName=_systemSymbolName;
 @property (copy, nonatomic) NSString *transportType; // @synthesize transportType=_transportType;
 @property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 @property (nonatomic) int usbLocationID; // @synthesize usbLocationID=_usbLocationID;

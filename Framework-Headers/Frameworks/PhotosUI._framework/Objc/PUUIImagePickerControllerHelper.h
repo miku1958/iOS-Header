@@ -46,7 +46,6 @@ __attribute__((visibility("hidden")))
 - (void)_selectAsset:(id)arg1 withHintCollection:(id)arg2 hintIndexPath:(id)arg3;
 - (void)_showImageViewController:(id)arg1;
 - (void)cancelPhotoPicker;
-- (BOOL)clientSuppressesForchTouch;
 - (void)handleKeyboardAvoidanceIfNeeded:(id)arg1;
 - (void)handleSelectionOfAsset:(id)arg1 inCollection:(id)arg2 resizeTaskDescriptor:(id)arg3;
 - (void)handleSelectionOfAssets:(id)arg1 resizeTaskDescriptor:(id)arg2;

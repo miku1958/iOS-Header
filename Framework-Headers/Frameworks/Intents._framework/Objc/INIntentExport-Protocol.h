@@ -22,6 +22,6 @@
 + (NSString *)typeName;
 - (void)_redactForMissingPrivacyEntitlementOptions:(unsigned long long)arg1 containingAppBundleId:(NSString *)arg2;
 - (id)init;
-- (void)trimDataAgainstTCCForAuditToken:(CDStruct_6ad76789)arg1 bundle:(NSBundle *)arg2;
+- (void)trimDataAgainstTCCForAuditToken:(CDStruct_4c969caf)arg1 bundle:(NSBundle *)arg2;
 @end
 

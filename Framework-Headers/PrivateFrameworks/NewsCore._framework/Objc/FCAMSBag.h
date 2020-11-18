@@ -10,7 +10,6 @@
 {
 }
 
-+ (id)_keySet;
 + (id)bag;
 
 @end

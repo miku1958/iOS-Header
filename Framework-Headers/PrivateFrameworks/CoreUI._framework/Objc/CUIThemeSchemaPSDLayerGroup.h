@@ -13,6 +13,7 @@
 
 @property (nonatomic) BOOL isStart; // @synthesize isStart;
 
+- (id)description;
 
 @end
 

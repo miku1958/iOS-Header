@@ -8,7 +8,7 @@
 
 #import <FileProvider/NSCopying-Protocol.h>
 
-@class CSSearchQuery, FPQueryEnumerationSettings;
+@class CSSearchQuery, FPQueryEnumerationSettings, NSString;
 
 @interface FPSpotlightQueryDescriptor : NSObject <NSCopying>
 {
@@ -16,6 +16,7 @@
     FPQueryEnumerationSettings *_settings;
 }
 
+@property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) FPQueryEnumerationSettings *settings; // @synthesize settings=_settings;
 
 - (void).cxx_destruct;

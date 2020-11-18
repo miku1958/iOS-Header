@@ -29,6 +29,7 @@
 - (id)playbackInfoForItem:(id)arg1;
 - (void)reloadSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)section:(id)arg1 supportsShuffleType:(long long)arg2;
+- (BOOL)supportsAutoPlayForItem:(id)arg1 inSection:(id)arg2;
 - (id)uniqueIdentifier;
 
 @end

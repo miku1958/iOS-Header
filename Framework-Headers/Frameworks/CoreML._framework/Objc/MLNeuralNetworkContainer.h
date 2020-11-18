@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MLModel, MLNeuralNetworksCompileTimeParams, NSArray, NSDictionary, NSString;
+@class MLModel, MLNeuralNetworksCompileTimeParams, MLVersionInfo, NSArray, NSDictionary, NSString;
 
 @interface MLNeuralNetworkContainer : NSObject
 {
@@ -14,6 +14,7 @@
     BOOL _hasOptionalInputSequenceConcat;
     BOOL _hasDynamicLayer;
     BOOL _ndArrayInterpretation;
+    BOOL _modelIsEncrypted;
     int _precision;
     int _engine;
     NSString *_modelFilePath;
@@ -29,6 +30,8 @@
     MLModel *_transformDesc;
     NSDictionary *_imagePreprocessingParams;
     MLNeuralNetworksCompileTimeParams *_updatableModelCompiledParams;
+    NSDictionary *_optionalInputDefaultValues;
+    MLVersionInfo *_modelVersionInfo;
     map_7c549560 _optionalInputTypes;
 }
 
@@ -44,8 +47,11 @@
 @property (strong, nonatomic) NSDictionary *inputDescription; // @synthesize inputDescription=_inputDescription;
 @property (readonly, strong, nonatomic) NSArray *inputLayerNames; // @synthesize inputLayerNames=_inputLayerNames;
 @property (strong, nonatomic) NSString *modelFilePath; // @synthesize modelFilePath=_modelFilePath;
+@property (nonatomic) BOOL modelIsEncrypted; // @synthesize modelIsEncrypted=_modelIsEncrypted;
+@property (strong, nonatomic) MLVersionInfo *modelVersionInfo; // @synthesize modelVersionInfo=_modelVersionInfo;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property BOOL ndArrayInterpretation; // @synthesize ndArrayInterpretation=_ndArrayInterpretation;
+@property (strong, nonatomic) NSDictionary *optionalInputDefaultValues; // @synthesize optionalInputDefaultValues=_optionalInputDefaultValues;
 @property (nonatomic) map_7c549560 optionalInputTypes; // @synthesize optionalInputTypes=_optionalInputTypes;
 @property (strong, nonatomic) NSDictionary *outputDescription; // @synthesize outputDescription=_outputDescription;
 @property (readonly, strong, nonatomic) NSArray *outputLayerNames; // @synthesize outputLayerNames=_outputLayerNames;
@@ -55,6 +61,7 @@
 
 + (id)containerFromCompiledArchive:(struct _MLModelInputArchiver *)arg1 modelVersionInfo:(id)arg2 compilerVersionInfo:(id)arg3 configuration:(id)arg4 error:(id *)arg5;
 + (id)containerFromFilePath:(id)arg1 inputLayerNames:(id)arg2 outputLayerNames:(id)arg3 parameters:(id)arg4;
++ (BOOL)readIsClassifier:(struct IArchive *)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)initWithFeatureDescriptions:(id)arg1 transformDesc:(id)arg2 outputLayerNames:(id)arg3 parameters:(id)arg4 configurations:(id)arg5 classScoreVectorName:(id)arg6 classLabels:(id)arg7 hasBidirectionalLayer:(BOOL)arg8 hasOptionalInputSequenceConcat:(BOOL)arg9 hasDynamicLayer:(BOOL)arg10;

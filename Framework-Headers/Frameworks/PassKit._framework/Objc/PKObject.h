@@ -9,24 +9,25 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
-@class NSData, NSString, NSURL, PKContent, PKDataAccessor, PKDisplayProfile, PKImageSet;
+@class NSData, NSString, NSURL, PKContent, PKDataAccessor, PKDisplayProfile, PKDisplayTraitCollection, PKImageSet;
 
 @interface PKObject : NSObject <NSCopying, NSSecureCoding>
 {
+    struct os_unfair_lock_s _lock;
     PKContent *_content;
     PKImageSet *_imageSets[7];
-    struct os_unfair_lock_s _lock;
+    PKDisplayTraitCollection *_preferredDisplayTraits;
     BOOL _initializedViaInitWithCoder;
     NSString *_uniqueID;
     NSData *_manifestHash;
     PKDataAccessor *_dataAccessor;
     PKDisplayProfile *_displayProfile;
-    double _preferredImageScale;
-    NSString *_preferredImageSuffix;
     NSURL *_webServiceURL;
     NSString *_authenticationToken;
     unsigned long long _settings;
     long long _shareCount;
+    double _preferredImageScale;
+    NSString *_preferredImageSuffix;
 }
 
 @property (copy, nonatomic) NSString *authenticationToken; // @synthesize authenticationToken=_authenticationToken;
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) PKDisplayProfile *displayProfile; // @synthesize displayProfile=_displayProfile;
 @property (readonly, nonatomic) BOOL initializedViaInitWithCoder; // @synthesize initializedViaInitWithCoder=_initializedViaInitWithCoder;
 @property (copy, nonatomic) NSData *manifestHash; // @synthesize manifestHash=_manifestHash;
+@property (strong, nonatomic) PKDisplayTraitCollection *preferredDisplayTraits; // @dynamic preferredDisplayTraits;
 @property (nonatomic) double preferredImageScale; // @synthesize preferredImageScale=_preferredImageScale;
 @property (strong, nonatomic) NSString *preferredImageSuffix; // @synthesize preferredImageSuffix=_preferredImageSuffix;
 @property (nonatomic) unsigned long long settings; // @synthesize settings=_settings;
@@ -45,6 +47,7 @@
 + (BOOL)isValidObjectWithFileURL:(id)arg1 warnings:(id *)arg2 orError:(id *)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_lock_flushLoadedImageSets;
 - (id)archiveData;
 - (id)content;
 - (id)contentLoadedIfNeeded;
@@ -71,6 +74,7 @@
 - (BOOL)isContentLoaded;
 - (BOOL)isImageSetLoaded:(long long)arg1;
 - (BOOL)isImageSetType:(long long)arg1 equalToImageSetTypeFromObject:(id)arg2;
+- (void)loadCachedImageSet:(long long)arg1;
 - (void)loadContentAsyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)loadContentSync;
 - (void)loadImageSetAsync:(long long)arg1 preheat:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
@@ -78,6 +82,7 @@
 - (id)localizedString:(id)arg1;
 - (id)modificationDate;
 - (void)noteShared;
+- (id)passLocalizedStringForKey:(id)arg1;
 - (void)reloadDisplayProfileOfType:(long long)arg1;
 - (BOOL)remoteAssetsDownloadedForSEIDs:(id)arg1;
 - (void)requestUpdateWithCompletion:(CDUnknownBlockType)arg1;
@@ -87,7 +92,6 @@
 - (void)setImageSet:(id)arg1 forImageSetType:(long long)arg2;
 - (void)setMissingImageSetsFromObject:(id)arg1;
 - (void)setSettingsWithoutUpdatingDataAccessor:(unsigned long long)arg1;
-- (void)updateImageSetForURL:(id)arg1 withCacheURL:(id)arg2;
 
 @end
 

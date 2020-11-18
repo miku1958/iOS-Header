@@ -12,7 +12,7 @@
 
 + (id)_allDayFormatter;
 + (id)_dateTimeFormatter;
-+ (id)dateTimeStringForEventDate:(id)arg1 alwaysIncludeDate:(BOOL)arg2 allDayEvent:(BOOL)arg3;
++ (id)dateTimeStringForEventDate:(id)arg1 alwaysIncludeDate:(BOOL)arg2 allDayEvent:(BOOL)arg3 dateProvider:(id)arg4;
 
 @end
 

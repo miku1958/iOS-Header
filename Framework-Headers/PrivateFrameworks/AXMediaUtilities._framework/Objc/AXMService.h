@@ -10,15 +10,17 @@
 #import <AXMediaUtilities/AXMServiceInterface-Protocol.h>
 
 @class NSString, NSXPCConnection;
-@protocol OS_dispatch_queue;
+@protocol AXMServiceDelegate, OS_dispatch_queue;
 
 @interface AXMService : NSObject <AXMServiceClientInterface, AXMServiceInterface>
 {
     NSObject<OS_dispatch_queue> *_xpcConnectionQueue;
+    id<AXMServiceDelegate> _delegate;
     NSXPCConnection *_xpcConnection;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<AXMServiceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;

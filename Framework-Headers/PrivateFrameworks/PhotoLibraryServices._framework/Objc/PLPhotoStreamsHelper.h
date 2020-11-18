@@ -12,7 +12,6 @@
 }
 
 + (BOOL)_photoStreamsEnabled;
-+ (BOOL)canInitiateDistributedPhotoStreamDeletionForAssetUUID:(id)arg1;
 + (void)deletePhotoStreamAssetsWithLibraryServiceManager:(id)arg1 withReason:(id)arg2 jobStreamID:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (id)iCloudServiceAccount;
 + (BOOL)photoStreamsEnabledForPhotoLibraryURL:(id)arg1;
@@ -30,9 +29,9 @@
 - (struct CGSize)derivedAssetSizeForMasterSizeWidth:(double)arg1 height:(double)arg2;
 - (BOOL)enqueueAssetForPSPublishing:(id)arg1 fullPath:(id)arg2 fileSize:(id)arg3 reenqueueCount:(unsigned long long)arg4 publicGlobalUUID:(id *)arg5;
 - (void)enumerateMasterHashesAndPublicGlobalUUIDsForAssets:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (void)fetchMPSStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchMPSStateWithLibrary:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)friendsLimit;
-- (void)handleMPSStateIfNecessary;
+- (void)handleMPSStateIfNecessaryInLibrary:(id)arg1;
 - (long long)imageLimitForFriendStream;
 - (long long)imageLimitForOwnStream;
 - (id)imageLimitsByAssetType;

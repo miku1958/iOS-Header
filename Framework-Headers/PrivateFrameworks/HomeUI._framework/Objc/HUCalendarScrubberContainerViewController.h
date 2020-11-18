@@ -44,8 +44,8 @@
 - (void)handleNextButton:(id)arg1;
 - (void)handlePreviousButton:(id)arg1;
 - (id)initWithPlaybackEngine:(id)arg1;
-- (void)playbackEngine:(id)arg1 didUpdateClipManager:(id)arg2;
-- (void)playbackEngine:(id)arg1 didUpdateClips:(id)arg2;
+- (void)playbackEngine:(id)arg1 didRemoveEvents:(id)arg2;
+- (void)playbackEngine:(id)arg1 didUpdateEvents:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdatePlaybackPosition:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdateTimeControlStatus:(unsigned long long)arg2;
 - (void)scrubberViewController:(id)arg1 didMoveToSection:(unsigned long long)arg2;

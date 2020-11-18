@@ -12,11 +12,12 @@
 #import <HomeUI/HUAlarmEditViewControllerDelegate-Protocol.h>
 #import <HomeUI/HUHomePodAlarmItemModuleControllerDelegate-Protocol.h>
 #import <HomeUI/HUPresentationDelegateHost-Protocol.h>
+#import <HomeUI/UITableViewDelegatePrivate-Protocol.h>
 
 @class HUHomePodAlarmItemModuleController, MTAlarm, NSString, UIBarButtonItem, _UIContentUnavailableView;
 @protocol HFMediaProfileContainer, HUPresentationDelegate;
 
-@interface HUAlarmTableViewController : HUItemTableViewController <HUAlarmEditViewControllerDelegate, HUHomePodAlarmItemModuleControllerDelegate, HFAccessoryObserver, HFMediaObjectObserver, HFAccessorySettingMobileTimerAdapterObserver, HUPresentationDelegateHost>
+@interface HUAlarmTableViewController : HUItemTableViewController <HUAlarmEditViewControllerDelegate, HUHomePodAlarmItemModuleControllerDelegate, HFAccessoryObserver, HFMediaObjectObserver, HFAccessorySettingMobileTimerAdapterObserver, UITableViewDelegatePrivate, HUPresentationDelegateHost>
 {
     BOOL _isAccessoryControllable;
     BOOL _isAlarmsSettingReady;
@@ -56,26 +57,33 @@
 - (void)accessoryDidUpdateControllable:(id)arg1;
 - (void)accessoryDidUpdateReachability:(id)arg1;
 - (void)accessoryDidUpdateReachableTransports:(id)arg1;
-- (void)alarmEditController:(id)arg1 didAddAlarm:(id)arg2;
-- (void)alarmEditController:(id)arg1 didDeleteAlarm:(id)arg2;
-- (void)alarmEditController:(id)arg1 didEditAlarm:(id)arg2;
+- (void)alarmEditController:(id)arg1 didAddAlarm:(id)arg2 forMediaProfile:(id)arg3;
+- (void)alarmEditController:(id)arg1 didDeleteAlarm:(id)arg2 forMediaProfile:(id)arg3;
+- (void)alarmEditController:(id)arg1 didEditAlarm:(id)arg2 forMediaProfile:(id)arg3;
+- (void)alarmEditController:(id)arg1 didMoveAlarm:(id)arg2 fromProfile:(id)arg3 toProfile:(id)arg4;
 - (void)alarmEditControllerDidCancel:(id)arg1;
 - (id)alarmItemManager;
-- (void)alarmItemModuleController:(id)arg1 didSelectAlarm:(id)arg2;
+- (void)alarmItemModuleController:(id)arg1 didSelectAlarmItem:(id)arg2;
 - (BOOL)alwaysUseDeltaTableViewUpdatesAfterViewHasAppeared;
 - (id)backgroundView;
 - (void)dismissViewControllerAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)editViewControllerForAlarm:(id)arg1;
+- (id)editViewControllerForAlarmItem:(id)arg1;
+- (double)heightForFooterInTableView:(id)arg1;
 - (id)initWithMediaProfileContainer:(id)arg1;
 - (void)itemManager:(id)arg1 performUpdateRequest:(id)arg2;
 - (id)itemModuleControllers;
 - (void)mobileTimerAdapterDidUpdateReadiness:(id)arg1;
 - (long long)numberOfSectionsInTableView:(id)arg1;
+- (struct CGSize)preferredContentSize;
+- (void)presentAddNewAlarmViewController;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldHideFooterBelowSection:(long long)arg1;
 - (BOOL)shouldHideHeaderAboveSection:(long long)arg1;
 - (void)tableView:(id)arg1 commitEditingStyle:(long long)arg2 forRowAtIndexPath:(id)arg3;
-- (void)viewDidAppear:(BOOL)arg1;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldDrawTopSeparatorForSection:(long long)arg2;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

@@ -58,6 +58,7 @@
 @property (strong, nonatomic) NSData *iconData; // @synthesize iconData=_iconData;
 @property (readonly, nonatomic) int identifier; // @synthesize identifier=_id;
 @property (readonly, nonatomic, getter=isInserted) BOOL inserted; // @synthesize inserted=_inserted;
+@property (readonly, nonatomic) BOOL isReadingListItem;
 @property (strong, nonatomic) NSDictionary *localAttributes; // @synthesize localAttributes=_localAttributes;
 @property (strong, nonatomic) NSString *localPreviewText;
 @property (nonatomic) BOOL locallyAdded;
@@ -99,7 +100,6 @@
 - (void)_setUUID:(id)arg1;
 - (void)_setUsedForInMemoryChangeTracking:(BOOL)arg1;
 - (unsigned long long)_sizeForFileOrDirectory:(id)arg1 withAttributes:(id)arg2;
-- (id)_suggestedFileNameForWebView:(id)arg1;
 - (BOOL)_usedForInMemoryChangeTracking;
 - (unsigned long long)archiveSize;
 - (void)cleanupRedundantPreviewText;
@@ -119,6 +119,7 @@
 - (id)initWhiteListBookmarkWithTitle:(id)arg1 address:(id)arg2;
 - (id)initWithDictionaryRepresentationForInMemoryChangeTracking:(id)arg1;
 - (id)initWithTitle:(id)arg1 address:(id)arg2;
+- (id)initWithTitle:(id)arg1 address:(id)arg2 parentID:(int)arg3;
 - (BOOL)isBookmarksBarFolder;
 - (BOOL)isBookmarksMenuFolder;
 - (BOOL)isBuiltinBookmark;
@@ -126,7 +127,6 @@
 - (BOOL)isEqualToBookmark:(id)arg1;
 - (BOOL)isFrequentlyVisitedSitesFolder;
 - (BOOL)isReadingListFolder;
-- (BOOL)isReadingListItem;
 - (BOOL)isWebFilterWhiteListFolder;
 - (id)localizedTitle;
 - (id)offlineArchiveDirectoryPath;
@@ -135,7 +135,7 @@
 - (BOOL)shouldReattemptArchiveWithAutomaticArchivingEnabled:(BOOL)arg1;
 - (id)webarchivePathForNextPageURL:(id)arg1;
 - (id)webarchivePathInReaderForm:(BOOL)arg1 fileExists:(BOOL *)arg2;
-- (BOOL)writeOfflineWebView:(id)arg1 asArchive:(BOOL)arg2 inReaderForm:(BOOL)arg3;
+- (void)writeOfflineWebView:(id)arg1 withOptions:(unsigned long long)arg2 quickLookFilePath:(id)arg3 suggestedFileName:(id)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

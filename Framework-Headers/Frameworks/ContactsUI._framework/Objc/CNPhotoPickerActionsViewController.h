@@ -42,6 +42,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIView *transitionContainerView; // @synthesize transitionContainerView=_transitionContainerView;
 
++ (id)log;
 - (void).cxx_destruct;
 - (void)actionsModel:(id)arg1 didAssignToContact:(id)arg2 atIndexPath:(id)arg3;
 - (void)actionsModel:(id)arg1 didDelete:(id)arg2 atIndexPath:(id)arg3;

@@ -14,7 +14,6 @@
     MISSING_TYPE *tagService;
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *tagStreamingResults;
-    MISSING_TYPE *numberOfSearchResultsPerQuery;
 }
 
 @end

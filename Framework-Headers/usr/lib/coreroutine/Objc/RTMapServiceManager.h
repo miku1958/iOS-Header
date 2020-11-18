@@ -29,6 +29,7 @@
 - (void)fetchMapItemsFromLocation:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchMapItemsFromLocations:(id)arg1 accessPoints:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 options:(id)arg5 handler:(CDUnknownBlockType)arg6;
 - (void)fetchMapItemsFromNaturalLanguageQuery:(id)arg1 location:(id)arg2 options:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (void)fetchPostalAddressForMapItem:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)mapItemWithIdentifier:(id)arg1 geoMapItem:(id)arg2 source:(unsigned long long)arg3 creationDate:(id)arg4 error:(id *)arg5;
 - (id)mapItemWithIdentifier:(id)arg1 geoMapItemStorage:(id)arg2 source:(unsigned long long)arg3 creationDate:(id)arg4 error:(id *)arg5;

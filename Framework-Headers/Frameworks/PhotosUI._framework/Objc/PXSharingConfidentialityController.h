@@ -16,6 +16,8 @@
 + (BOOL)confidentialWarningRequiredForAssets:(id)arg1;
 + (BOOL)confidentialWarningRequiredForShareableSelection:(id)arg1;
 + (id)confidentialityAlertWithActions:(id)arg1;
++ (id)confidentialityAlertWithConfirmAction:(CDUnknownBlockType)arg1;
++ (id)confidentialityAlertWithConfirmAction:(CDUnknownBlockType)arg1 abortAction:(CDUnknownBlockType)arg2;
 + (BOOL)confidentialityCheckRequired;
 + (id)confidentialityWarningMessage;
 + (id)confidentialityWarningTitle;

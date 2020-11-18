@@ -69,32 +69,7 @@
         unsigned int has_shownToUser:1;
         unsigned int read_subactionMetaData:1;
         unsigned int read_suggestionSectionType:1;
-        unsigned int wrote_contactRelevanceScore:1;
-        unsigned int wrote_fractionOfMatch:1;
-        unsigned int wrote_mapsSuggestionsContactRevelanceScore:1;
-        unsigned int wrote_mapsSuggestionsIsTouristScore:1;
-        unsigned int wrote_mapsSuggestionsPoiRevelanceScore:1;
-        unsigned int wrote_subactionMetaData:1;
-        unsigned int wrote_suggestionSectionType:1;
-        unsigned int wrote_age:1;
-        unsigned int wrote_autocompleteResultCellType:1;
-        unsigned int wrote_distanceToSuggestion:1;
-        unsigned int wrote_peopleSuggesterRank:1;
-        unsigned int wrote_poiOpenState:1;
-        unsigned int wrote_serverEntryType:1;
-        unsigned int wrote_serverItemIndexInSection:1;
-        unsigned int wrote_serverSectionIndex:1;
-        unsigned int wrote_suggestionType:1;
-        unsigned int wrote_tapBehavior:1;
-        unsigned int wrote_discreteFeatureValuesAvailable:1;
-        unsigned int wrote_isFavorite:1;
-        unsigned int wrote_isProminentResult:1;
-        unsigned int wrote_matchedUsingAddress:1;
-        unsigned int wrote_matchedUsingEventName:1;
-        unsigned int wrote_matchedUsingLabel:1;
-        unsigned int wrote_matchedUsingName:1;
-        unsigned int wrote_matchedUsingOrganization:1;
-        unsigned int wrote_shownToUser:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -158,8 +133,6 @@
 - (int)StringAsServerEntryType:(id)arg1;
 - (int)StringAsSuggestionType:(id)arg1;
 - (int)StringAsTapBehavior:(id)arg1;
-- (void)_readSubactionMetaData;
-- (void)_readSuggestionSectionType;
 - (id)autocompleteResultCellTypeAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -168,7 +141,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)poiOpenStateAsString:(int)arg1;
 - (void)readAll:(BOOL)arg1;

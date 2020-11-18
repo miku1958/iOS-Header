@@ -19,11 +19,13 @@
     BOOL _retryInAirplaneMode;
     BOOL _logToRegistration;
     IMTimer *_timer;
+    BOOL _disallowRetry;
 }
 
 @property (readonly) NSArray *allMessages;
 @property (readonly) BOOL busy;
 @property (readonly) IDSBaseMessage *currentMessage;
+@property (nonatomic) BOOL disallowRetry; // @synthesize disallowRetry=_disallowRetry;
 @property (readonly) BOOL hasQueuedItems;
 @property BOOL logToRegistration; // @synthesize logToRegistration=_logToRegistration;
 @property unsigned long long maxConcurrentMessages; // @synthesize maxConcurrentMessages=_maxConcurrentMessages;

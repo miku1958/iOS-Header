@@ -24,7 +24,7 @@
 @property (readonly, nonatomic) unsigned long long sourceGradientFeatureChannels; // @synthesize sourceGradientFeatureChannels=_inputFeatureChannels;
 @property (readonly, nonatomic) unsigned long long sourceImageFeatureChannels; // @synthesize sourceImageFeatureChannels=_outputFeatureChannels;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)PeakAtWeights:(id)arg1;
 - (id)biases;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;

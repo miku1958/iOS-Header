@@ -17,6 +17,7 @@
     long long _dismissalType;
     long long _transitionPhase;
     struct CGRect _contentRect;
+    struct CGRect _homeGrabberContentRect;
 }
 
 @property (nonatomic) double backgroundWeighting;
@@ -29,6 +30,7 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long dismissalType; // @synthesize dismissalType=_dismissalType;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) struct CGRect homeGrabberContentRect; // @synthesize homeGrabberContentRect=_homeGrabberContentRect;
 @property (readonly) Class superclass;
 @property (nonatomic) long long transitionPhase; // @synthesize transitionPhase=_transitionPhase;
 

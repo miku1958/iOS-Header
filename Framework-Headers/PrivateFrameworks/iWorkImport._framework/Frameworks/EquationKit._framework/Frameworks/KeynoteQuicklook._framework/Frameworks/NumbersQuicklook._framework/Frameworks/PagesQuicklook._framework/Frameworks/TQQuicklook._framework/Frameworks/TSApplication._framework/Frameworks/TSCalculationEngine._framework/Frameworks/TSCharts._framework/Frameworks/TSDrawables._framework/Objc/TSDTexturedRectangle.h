@@ -7,11 +7,12 @@
 #import <objc/NSObject.h>
 
 #import <TSDrawables/NSCopying-Protocol.h>
+#import <TSDrawables/TSDMetalRendererDirectTextureSourceUpdating-Protocol.h>
 
 @class CALayer, NSMapTable, NSOperation, NSString, NSUUID, TSDBitmapRenderingQualityInfo, TSDTextureSet, TSUBezierPath, TSUColor;
-@protocol MTLTexture;
+@protocol MTLTexture, TSDMetalRenderer;
 
-@interface TSDTexturedRectangle : NSObject <NSCopying>
+@interface TSDTexturedRectangle : NSObject <NSCopying, TSDMetalRendererDirectTextureSourceUpdating>
 {
     struct CGRect _originalFrame;
     CDUnknownBlockType _renderBlock;
@@ -27,6 +28,7 @@
     struct CGSize _originalCaretSize;
     struct CGRect _originalLeadingCaretRect;
     struct CGRect _originalTrailingCaretRect;
+    unsigned long long _signpostID;
     BOOL _isIncomingContent;
     BOOL _isVerticalText;
     BOOL _isFlattenedRepresentation;
@@ -72,8 +74,11 @@
 @property (weak, nonatomic) TSDBitmapRenderingQualityInfo *bitmapRenderingQualityInfo; // @synthesize bitmapRenderingQualityInfo=_bitmapRenderingQualityInfo;
 @property (nonatomic) struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property (nonatomic) struct CGRect contentRect; // @synthesize contentRect=_contentRect;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct CGRect frame;
 @property (readonly, nonatomic) struct CGRect frameOnCanvas;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) struct CGImage *image;
 @property (readonly, nonatomic) BOOL isBackgroundTexture;
 @property (readonly, nonatomic) BOOL isBaked;
@@ -87,6 +92,7 @@
 @property (nonatomic) BOOL isVerticalText; // @synthesize isVerticalText=_isVerticalText;
 @property (readonly, nonatomic) CALayer *layer; // @synthesize layer=_layer;
 @property (nonatomic) struct CGRect leadingCaretRect; // @synthesize leadingCaretRect=_leadingCaretRect;
+@property (readonly, nonatomic) id<TSDMetalRenderer> liveTexturedRectangleRenderer;
 @property (readonly, nonatomic) id<MTLTexture> metalTexture; // @synthesize metalTexture=_metalTexture;
 @property (strong, nonatomic) TSDTexturedRectangle *metalTextureProxy; // @synthesize metalTextureProxy=_metalTextureProxy;
 @property (nonatomic) struct CGPoint offset; // @synthesize offset=_offset;
@@ -107,6 +113,7 @@
 @property (nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly, nonatomic) unsigned long long sizeInBytes;
 @property struct CGImage *sourceImage; // @synthesize sourceImage=_sourceImage;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (nonatomic) double textBaseline; // @synthesize textBaseline=_textBaseline;
 @property (copy, nonatomic) TSUColor *textBorderColor; // @synthesize textBorderColor=_textBorderColor;
@@ -117,6 +124,7 @@
 @property (nonatomic) long long textureType; // @synthesize textureType=_textureType;
 @property (nonatomic) struct CGRect trailingCaretRect; // @synthesize trailingCaretRect=_trailingCaretRect;
 @property (strong, nonatomic) NSUUID *uuid; // @synthesize uuid=_uuid;
+@property (readonly, nonatomic) BOOL willRenderWithLiveTexturedRectangleSource;
 
 + (struct CGRect)boundingRectForTextures:(id)arg1;
 + (struct CGRect)boundingRectOnCanvasForTextures:(id)arg1;
@@ -125,14 +133,13 @@
 - (void)adjustAnchorRelativeToCenterOfRotation:(struct CGPoint)arg1 atEventIndex:(unsigned long long)arg2;
 - (void)bakeLayerWithAngle:(double)arg1 scale:(double)arg2 layer:(id)arg3;
 - (BOOL)canReuseMetalTextureWith:(id)arg1;
+- (void)clearLiveTexturedRectangleSource;
 - (struct CGRect)convertToCanvasCoordinates:(struct CGRect)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
-- (id)description;
 - (void)drawFrameWithMetalContext:(id)arg1;
 - (void)evictRenderedResources;
-- (BOOL)hasLiveTexturedRectangleSource;
-- (id)init;
+- (BOOL)hasLiveTexturedRectangleSourceWithNewRenderingForTimingInfo:(CDStruct_d6fcdff4)arg1;
 - (id)initWithCGImage:(struct CGImage *)arg1;
 - (id)initWithLayer:(id)arg1;
 - (id)initWithLayer:(id)arg1 forGLTexture:(id)arg2;
@@ -142,21 +149,21 @@
 - (id)initWithTextureInfo:(id)arg1 frame:(struct CGRect)arg2;
 - (BOOL)isMetalTextureSetup;
 - (id)metalTextureWithContext:(id)arg1;
-- (id)p_allocateMetalTextureForDevice:(id)arg1 renderTarget:(BOOL)arg2 writable:(BOOL)arg3 private:(BOOL)arg4 maxSize:(struct CGSize)arg5;
+- (BOOL)needsToUpdateDirectTextureSourcesForTimingInfo:(CDStruct_d6fcdff4)arg1;
 - (void)p_bakeLayerWithAngle:(double)arg1 scale:(double)arg2 layer:(id)arg3;
 - (id)p_colorForColorspaceWithColor:(id)arg1;
 - (struct CGColorSpace *)p_colorSpace;
-- (void)p_initializeMap;
-- (id)p_latestTextureNotAfterLayerTime:(double)arg1;
+- (void)p_initialize;
 - (id)p_newImageAndBufferWithTransform:(struct CGAffineTransform)arg1;
 - (CDUnknownBlockType)p_rasterizationBlockWithBitmapSize:(struct CGSize)arg1;
 - (void)p_renderIntoContext:(struct CGContext *)arg1 viewLayer:(id)arg2 shouldApplyAlpha:(BOOL)arg3 shouldIgnoreLayerVisibility:(BOOL)arg4 shouldClipToBounds:(BOOL)arg5;
 - (void)p_setupSingleTextureAndGenerateMipMaps:(BOOL)arg1 withContext:(id)arg2;
 - (char *)p_setupTextureDataWithSize:(struct CGSize)arg1;
 - (unsigned long long)p_textureDataSizeWithBitmapSize:(struct CGSize)arg1;
-- (struct CGSize)p_textureSizeWithDevice:(id)arg1 maxSize:(struct CGSize)arg2;
+- (struct CGSize)p_textureSizeWithMaxSize:(struct CGSize)arg1;
 - (struct CGAffineTransform)p_transformWithAngle:(double)arg1 scale:(double)arg2 offset:(struct CGPoint)arg3;
 - (void)p_updateFrame;
+- (void)promiseLiveTexturedRectangleSource;
 - (void)releaseMetalTexture;
 - (void)releaseSingleTexture;
 - (void)renderIntoContext:(struct CGContext *)arg1 eventIndex:(unsigned long long)arg2 shouldApplyAlpha:(BOOL)arg3 shouldClipToBounds:(BOOL)arg4;
@@ -165,7 +172,8 @@
 - (void)renderLayerContentsIfNeeded;
 - (void)resetAnchorPointAtEventIndex:(unsigned long long)arg1;
 - (void)resetToSourceImageAtEventIndex:(unsigned long long)arg1;
-- (void)setLiveTexturedRectangleSource:(id)arg1;
+- (void)setLiveTextureRectangleDirectTextureSource:(id)arg1 fallbackRenderer:(id)arg2;
+- (void)setLiveTexturedRectangleRenderer:(id)arg1;
 - (void)setLiveTexturedRectangleSourceProxy:(id)arg1;
 - (void)setupMetalTextureForContext:(id)arg1;
 - (void)setupMetalTextureForDevice:(id)arg1 commandQueue:(id)arg2;
@@ -174,6 +182,7 @@
 - (void)setupSingleTextureWithContext:(id)arg1;
 - (id)shortDescription;
 - (void)teardown;
+- (void)updateDirectTextureSourcesWithUpdateContext:(id)arg1;
 - (id)viewLayerAtEventIndex:(unsigned long long)arg1;
 - (void)waitUntilAsyncRenderingIsCompleteShouldCancel:(BOOL)arg1;
 

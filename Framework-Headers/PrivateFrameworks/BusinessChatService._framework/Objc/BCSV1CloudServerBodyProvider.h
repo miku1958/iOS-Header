@@ -20,14 +20,14 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)bodyDictionaryForBloomFilterRequestWithStartIndex:(long long)arg1 shardCount:(long long)arg2;
 - (id)bodyDictionaryForBusinessItemRequestWithBizID:(id)arg1;
-- (id)bodyDictionaryForBusinessItemRequestWithBucketStartIndex:(long long)arg1 endIndex:(long long)arg2;
-- (id)bodyDictionaryForConfigItem;
-- (id)bodyForBloomFilterRequestWithStartIndex:(long long)arg1 shardCount:(long long)arg2;
+- (id)bodyDictionaryForBusinessItemRequestWithBucketStartIndex:(long long)arg1 endIndex:(long long)arg2 type:(long long)arg3;
+- (id)bodyDictionaryForChatSuggestBloomFilterRequestWithStartIndex:(long long)arg1 shardCount:(long long)arg2 type:(long long)arg3;
+- (id)bodyDictionaryForConfigItemWithType:(long long)arg1;
+- (id)bodyForBloomFilterRequestWithStartIndex:(long long)arg1 shardCount:(long long)arg2 type:(long long)arg3;
 - (id)bodyForBusinessItemRequestWithBizID:(id)arg1;
-- (id)bodyForBusinessItemRequestWithBucketStartIndex:(long long)arg1 endIndex:(long long)arg2;
-- (id)bodyForConfigItemRequest;
+- (id)bodyForConfigItemRequestWithType:(long long)arg1;
+- (id)bodyForItemRequestWithBucketStartIndex:(long long)arg1 endIndex:(long long)arg2 type:(long long)arg3;
 - (id)jsonDataForBodyDictionary:(id)arg1;
 
 @end

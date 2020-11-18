@@ -6,12 +6,13 @@
 
 #import <iTunesStore/NSObject-Protocol.h>
 
-@class AMSBagValue, NSDate, NSString;
+@class ACAccount, AMSBagValue, AMSProcessInfo, NSDate, NSString;
 
 @protocol AMSBagProtocol <NSObject>
 
 @property (readonly, nonatomic) NSDate *expirationDate;
 @property (readonly, nonatomic, getter=isExpired) BOOL expired;
+@property (readonly, copy, nonatomic) AMSProcessInfo *processInfo;
 @property (readonly, copy, nonatomic) NSString *profile;
 @property (readonly, copy, nonatomic) NSString *profileVersion;
 
@@ -23,5 +24,8 @@
 - (AMSBagValue *)doubleForKey:(NSString *)arg1;
 - (AMSBagValue *)integerForKey:(NSString *)arg1;
 - (AMSBagValue *)stringForKey:(NSString *)arg1;
+
+@optional
+- (AMSBagValue *)URLForKey:(NSString *)arg1 account:(ACAccount *)arg2;
 @end
 

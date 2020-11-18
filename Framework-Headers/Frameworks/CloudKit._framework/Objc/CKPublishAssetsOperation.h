@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary;
+#import <CloudKit/CKPublishAssetsOperationCallbacks-Protocol.h>
 
-@interface CKPublishAssetsOperation : CKDatabaseOperation
+@class CKPublishAssetsOperationInfo, NSArray, NSDictionary, NSMutableDictionary;
+@protocol CKPublishAssetsOperationCallbacks;
+
+@interface CKPublishAssetsOperation : CKDatabaseOperation <CKPublishAssetsOperationCallbacks>
 {
     CDUnknownBlockType _assetPublishedBlock;
     CDUnknownBlockType _publishAssetCompletionBlock;
@@ -21,19 +24,22 @@
 
 @property (nonatomic) unsigned long long URLOptions; // @synthesize URLOptions=_URLOptions;
 @property (copy, nonatomic) CDUnknownBlockType assetPublishedBlock; // @synthesize assetPublishedBlock=_assetPublishedBlock;
-@property (strong, nonatomic) NSDictionary *fileNamesByAssetFieldNames; // @synthesize fileNamesByAssetFieldNames=_fileNamesByAssetFieldNames;
+@property (readonly, nonatomic) id<CKPublishAssetsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property (copy, nonatomic) NSDictionary *fileNamesByAssetFieldNames; // @synthesize fileNamesByAssetFieldNames=_fileNamesByAssetFieldNames;
+@property (readonly, nonatomic) CKPublishAssetsOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (strong, nonatomic) NSMutableDictionary *perItemErrorsByRecordID; // @synthesize perItemErrorsByRecordID=_perItemErrorsByRecordID;
 @property (copy, nonatomic) CDUnknownBlockType publishAssetCompletionBlock; // @synthesize publishAssetCompletionBlock=_publishAssetCompletionBlock;
 @property (strong, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 @property (nonatomic) unsigned long long requestedTTL; // @synthesize requestedTTL=_requestedTTL;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleAssetPublishCompletionForRecordID:(id)arg1 publishedAsset:(id)arg2 recordKey:(id)arg3 error:(id)arg4;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)initWithRecordIDs:(id)arg1;
 - (void)performCKOperation;

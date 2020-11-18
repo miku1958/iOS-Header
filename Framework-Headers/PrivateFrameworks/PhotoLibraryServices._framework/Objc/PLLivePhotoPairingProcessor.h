@@ -10,7 +10,7 @@
 {
 }
 
-- (id)combinePairs:(id)arg1 error:(id *)arg2;
+- (id)combinePair:(id)arg1 error:(id *)arg2;
 - (id)fetchRequestForLibrary;
 - (id)fetchRequestForSortedGroupIDs:(id)arg1;
 - (id)firstGroupFromAssets:(id)arg1;

@@ -16,8 +16,8 @@ __attribute__((visibility("hidden")))
 {
     struct WeakObjCPtr<WKContentView> _contentView;
     struct RetainPtr<WKFocusedElementInfo> _focusedElementInfo;
-    struct RetainPtr<UIView> _customInputView;
-    struct RetainPtr<UIView> _customInputAccessoryView;
+    RetainPtr_1ac284e4 _customInputView;
+    RetainPtr_1ac284e4 _customInputAccessoryView;
     struct RetainPtr<NSArray<UITextSuggestion *>> _suggestions;
     BOOL _accessoryViewShouldNotShow;
     BOOL _forceSecureTextEntry;

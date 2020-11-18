@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) NSArray *results;
 @property (readonly) Class superclass;
 
++ (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 - (void).cxx_destruct;
 - (void)clearCompleteCount;
 - (void)clearErrors;

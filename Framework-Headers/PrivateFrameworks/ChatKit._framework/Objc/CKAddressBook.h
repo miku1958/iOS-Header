@@ -10,16 +10,15 @@
 {
 }
 
-+ (void *)addressBook;
 + (id)contactImageCache;
-+ (id)contactImageOfDiameter:(double)arg1 forRecordID:(int)arg2 monogramStyle:(long long)arg3 tintMonogramText:(BOOL)arg4;
-+ (id)contactImageOfDiameter:(double)arg1 forRecordID:(int)arg2 monogramStyle:(long long)arg3 tintMonogramText:(BOOL)arg4 customFont:(id)arg5;
++ (id)contactImageOfDiameter:(double)arg1 forID:(id)arg2 monogramStyle:(long long)arg3 tintMonogramText:(BOOL)arg4;
++ (id)contactImageOfDiameter:(double)arg1 forID:(id)arg2 monogramStyle:(long long)arg3 tintMonogramText:(BOOL)arg4 customFont:(id)arg5;
 + (void)flushMonogrammers;
-+ (id)locationSharingContactImageOfDiameter:(double)arg1 forRecordID:(int)arg2 useCustomFont:(BOOL)arg3;
++ (id)locationSharingContactImageOfDiameter:(double)arg1 forID:(id)arg2 useCustomFont:(BOOL)arg3;
 + (id)monogrammerProvider;
 + (id)monogrammerWithDiameter:(double)arg1 style:(long long)arg2 useAppTintColor:(BOOL)arg3 customFont:(id)arg4;
 + (id)placeholderContactImageOfDiameter:(double)arg1 monogramStyle:(long long)arg2 tintMonogramText:(BOOL)arg3;
-+ (id)transcriptContactImageOfDiameter:(double)arg1 forRecordID:(int)arg2;
++ (id)transcriptContactImageOfDiameter:(double)arg1 forID:(id)arg2;
 
 @end
 

@@ -6,21 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class BSXPCCoder, RBSXPCMessageContext;
-@protocol BSXPCEncoding><BSXPCDecoding;
+@class RBSXPCCoder, RBSXPCMessageContext;
+@protocol RBSXPCEncoding><RBSXPCDecoding;
 
 @interface RBSXPCMessageReply : NSObject
 {
-    BSXPCCoder *_payload;
+    RBSXPCCoder *_payload;
     RBSXPCMessageContext *_context;
     BOOL _sent;
 }
 
 @property (readonly, nonatomic) RBSXPCMessageContext *context; // @synthesize context=_context;
-@property (readonly, nonatomic) id<BSXPCEncoding><BSXPCDecoding> payload; // @synthesize payload=_payload;
+@property (readonly, nonatomic) id<RBSXPCEncoding><RBSXPCDecoding> payload; // @synthesize payload=_payload;
 
 - (void).cxx_destruct;
-- (id)_initWithMessage:(id)arg1;
 - (void)encode:(CDUnknownBlockType)arg1;
 - (void)prepareForHandoff;
 - (void)send;

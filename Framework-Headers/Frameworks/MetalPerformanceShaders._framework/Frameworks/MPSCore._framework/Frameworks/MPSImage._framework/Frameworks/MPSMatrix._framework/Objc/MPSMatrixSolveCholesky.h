@@ -21,7 +21,7 @@
 @property (nonatomic) unsigned long long order; // @synthesize order=_order;
 @property (readonly, nonatomic) BOOL upper; // @synthesize upper=_upper;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (void)dealloc;
 - (void)encodeToCommandBuffer:(id)arg1 sourceMatrix:(id)arg2 rightHandSideMatrix:(id)arg3 solutionMatrix:(id)arg4;
 - (id)initWithDevice:(id)arg1 upper:(BOOL)arg2 order:(unsigned long long)arg3 numberOfRightHandSides:(unsigned long long)arg4;

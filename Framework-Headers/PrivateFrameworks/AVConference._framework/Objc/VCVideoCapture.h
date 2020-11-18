@@ -6,18 +6,27 @@
 
 #import <objc/NSObject.h>
 
-@protocol VideoCaptureServer;
+@class NSArray, NSMutableArray, NSString, VideoAttributes;
+@protocol VCVideoCaptureServer;
 
 __attribute__((visibility("hidden")))
 @interface VCVideoCapture : NSObject
 {
-    NSObject<VideoCaptureServer> *_captureServer;
+    id _captureServer;
+    NSMutableArray *_sinkArray;
+    NSString *_sourceUID;
+    VideoAttributes *_localVideoAttributes;
+    struct _opaque_pthread_mutex_t _sinkArrayMutex;
 }
 
-@property (readonly) NSObject<VideoCaptureServer> *captureServer;
+@property (readonly) NSObject<VCVideoCaptureServer> *captureServer;
+@property (readonly) NSArray *sinkArray; // @synthesize sinkArray=_sinkArray;
 
+- (void)addSink:(id)arg1;
 - (void)dealloc;
+- (void)distributeVideoFrame:(struct opaqueCMSampleBuffer *)arg1 frameTime:(CDStruct_1b6d18a9)arg2 preview:(BOOL)arg3 orientation:(int)arg4 fromCamera:(BOOL)arg5 camera:(int)arg6 switching:(BOOL)arg7 videoMirrored:(BOOL)arg8;
 - (id)initWithCaptureServer:(id)arg1;
+- (void)removeSink:(id)arg1;
 
 @end
 

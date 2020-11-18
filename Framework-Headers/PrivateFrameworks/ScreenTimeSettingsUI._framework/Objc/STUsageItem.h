@@ -9,12 +9,12 @@
 #import <ScreenTimeSettingsUI/NSCopying-Protocol.h>
 #import <ScreenTimeSettingsUI/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSNumber, NSString, UIColor, UIImage;
+@class NSDate, NSNumber, NSString, STUsageTrustIdentifier, UIColor, UIImage;
 
 @interface STUsageItem : NSObject <NSCopying, NSSecureCoding>
 {
     NSString *_identifier;
-    NSString *_budgetItemIdentifier;
+    STUsageTrustIdentifier *_trustIdentifier;
     NSString *_categoryIdentifier;
     unsigned long long _itemType;
     UIColor *_color;
@@ -25,7 +25,7 @@
     NSNumber *_minUsage;
 }
 
-@property (copy, nonatomic) NSString *budgetItemIdentifier; // @synthesize budgetItemIdentifier=_budgetItemIdentifier;
+@property (readonly, copy, nonatomic) NSString *budgetItemIdentifier;
 @property (copy, nonatomic) NSString *categoryIdentifier; // @synthesize categoryIdentifier=_categoryIdentifier;
 @property (strong, nonatomic) UIColor *color; // @synthesize color=_color;
 @property (readonly, copy, nonatomic) NSString *displayName;
@@ -37,6 +37,8 @@
 @property (copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (nonatomic) unsigned long long timePeriod; // @synthesize timePeriod=_timePeriod;
 @property (copy, nonatomic) NSNumber *totalUsage; // @synthesize totalUsage=_totalUsage;
+@property (copy, nonatomic) STUsageTrustIdentifier *trustIdentifier; // @synthesize trustIdentifier=_trustIdentifier;
+@property (readonly, nonatomic) BOOL usageTrusted;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

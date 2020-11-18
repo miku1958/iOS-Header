@@ -26,6 +26,8 @@
     NSString *_url;
     NSDictionary *_headers;
     NSData *_bodyData;
+    NSString *_experimentId;
+    NSString *_treatmentId;
     unsigned long long _whichTrigger;
 }
 
@@ -36,6 +38,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (nonatomic) int endpoint; // @synthesize endpoint=_endpoint;
+@property (copy, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
 @property (readonly, nonatomic) id feedbackJSON;
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
@@ -48,6 +51,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long timestamp;
 @property (nonatomic) unsigned long long timestamp;
+@property (copy, nonatomic) NSString *treatmentId; // @synthesize treatmentId=_treatmentId;
 @property (nonatomic) int triggerEvent; // @synthesize triggerEvent=_triggerEvent;
 @property (nonatomic) int tuscanyStatus; // @synthesize tuscanyStatus=_tuscanyStatus;
 @property (copy, nonatomic) NSString *url; // @synthesize url=_url;

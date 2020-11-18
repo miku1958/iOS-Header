@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 {
     NSArray *_cellControllers;
     EKUITableViewCell *_addAttachmentCell;
+    BOOL _documentPickerPresented;
     BOOL _attachmentsModified;
     EKEvent *_eventToModify;
 }
@@ -36,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_loadAndAddDataAttachmentFromItem:(id)arg1;
 - (BOOL)_shouldCondenseIntoSingleItem;
 - (BOOL)_shouldShowAddAttachmentCell;
-- (void)_showAddAttachmentViewController;
+- (void)_showAddAttachmentViewControllerAnimated:(BOOL)arg1;
 - (void)attachmentEditViewController:(id)arg1 attachmentDidChange:(long long)arg2;
 - (id)attachmentEvent;
 - (BOOL)canBeConfiguredForCalendarConstraints:(id)arg1;

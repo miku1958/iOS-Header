@@ -6,7 +6,7 @@
 
 #import <CoreData/NSManagedObject.h>
 
-@class NSData, NSDate, NSSet, NSString, NSUUID;
+@class DownloadRecord, NSData, NSDate, NSSet, NSString, NSUUID;
 
 __attribute__((visibility("hidden")))
 @interface KTRequest : NSManagedObject
@@ -18,8 +18,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSData *clientLoggableDatas; // @dynamic clientLoggableDatas;
 @property (copy, nonatomic) NSDate *earliestAddedDate; // @dynamic earliestAddedDate;
 @property (strong, nonatomic) NSSet *failures; // @dynamic failures;
+@property (strong, nonatomic) NSSet *fetchRecord; // @dynamic fetchRecord;
 @property (strong, nonatomic) NSData *queryRequest; // @dynamic queryRequest;
 @property (strong, nonatomic) NSData *queryResponse; // @dynamic queryResponse;
+@property (strong, nonatomic) DownloadRecord *requestDownloadRecord; // @dynamic requestDownloadRecord;
 @property (strong, nonatomic) NSSet *requestIDCache; // @dynamic requestIDCache;
 @property (copy, nonatomic) NSUUID *requestId; // @dynamic requestId;
 @property (nonatomic) double requestTime; // @dynamic requestTime;
@@ -28,7 +30,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long sequenceId; // @dynamic sequenceId;
 @property (copy, nonatomic) NSString *serverHint; // @dynamic serverHint;
 @property (strong, nonatomic) NSData *serverLoggableDatas; // @dynamic serverLoggableDatas;
+@property (strong, nonatomic) DownloadRecord *smtDownloadRecord; // @dynamic smtDownloadRecord;
 @property (strong, nonatomic) NSSet *smts; // @dynamic smts;
+@property (nonatomic) BOOL tooManyVRFs; // @dynamic tooManyVRFs;
 @property (nonatomic) long long type; // @dynamic type;
 @property (copy, nonatomic) NSString *uri; // @dynamic uri;
 @property (nonatomic) long long verificationResult; // @dynamic verificationResult;

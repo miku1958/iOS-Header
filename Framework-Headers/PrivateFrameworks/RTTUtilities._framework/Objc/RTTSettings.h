@@ -7,14 +7,16 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSLock, NSMutableDictionary, NSMutableSet, NSString;
+@protocol OS_dispatch_queue;
 
 @interface RTTSettings : NSObject
 {
     NSLock *_synchronizeDomainsLock;
-    NSMutableDictionary *_serverCachedSettings;
+    NSMutableDictionary *_cachedSettings;
     NSMutableSet *_registeredNotifications;
     NSMutableSet *_synchronizePreferences;
     NSMutableDictionary *_updateBlocks;
+    NSObject<OS_dispatch_queue> *_nanoSynchronizeQueue;
 }
 
 @property (nonatomic) BOOL TTYHardwareEnabled;
@@ -27,9 +29,12 @@
 @property (nonatomic) BOOL internalOverrideTTYAvailability;
 @property (nonatomic) double lastCallCountReset;
 @property (nonatomic) double lastDBVacuum;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *nanoSynchronizeQueue; // @synthesize nanoSynchronizeQueue=_nanoSynchronizeQueue;
 @property (nonatomic) long long outgoingTTYCallCount;
 @property (strong, nonatomic) NSString *preferredRelayNumber;
 @property (strong, nonatomic) NSMutableSet *registeredNotifications; // @synthesize registeredNotifications=_registeredNotifications;
+@property (nonatomic) BOOL rttInlineAbbreviationBarEnabled;
+@property (nonatomic) BOOL rttNotificationsEnabled;
 @property (strong, nonatomic) NSMutableSet *synchronizePreferences; // @synthesize synchronizePreferences=_synchronizePreferences;
 @property (nonatomic) BOOL ttyShouldBeRealtime;
 @property (strong, nonatomic) NSMutableDictionary *updateBlocks; // @synthesize updateBlocks=_updateBlocks;

@@ -12,7 +12,6 @@
 @interface NTKCUpNextDataSourcesManager : NSObject
 {
     RERelevanceEngine *_relevanceEngine;
-    unsigned int _watchVersion;
     NSArray *_firstPartyDataSourceEntries;
     NSArray *_thirdPartyDataSourceEntries;
     NSArray *_sportsDataSourceEntries;
@@ -20,6 +19,7 @@
     id<NTKCUpNextDataSourcesManagerIdentifiersDelegate> _thirdPartyIdentifiersDelegate;
     id<NTKCUpNextDataSourcesManagerIdentifiersDelegate> _sportsIdentifiersDelegate;
     NSObject<OS_dispatch_queue> *_fetchQueue;
+    CDStruct_f6aba300 _watchVersion;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *fetchQueue; // @synthesize fetchQueue=_fetchQueue;
@@ -29,7 +29,7 @@
 @property (weak, nonatomic) id<NTKCUpNextDataSourcesManagerIdentifiersDelegate> sportsIdentifiersDelegate; // @synthesize sportsIdentifiersDelegate=_sportsIdentifiersDelegate;
 @property (copy) NSArray *thirdPartyDataSourceEntries; // @synthesize thirdPartyDataSourceEntries=_thirdPartyDataSourceEntries;
 @property (weak, nonatomic) id<NTKCUpNextDataSourcesManagerIdentifiersDelegate> thirdPartyIdentifiersDelegate; // @synthesize thirdPartyIdentifiersDelegate=_thirdPartyIdentifiersDelegate;
-@property (readonly, nonatomic) unsigned int watchVersion; // @synthesize watchVersion=_watchVersion;
+@property (readonly, nonatomic) CDStruct_f6aba300 watchVersion; // @synthesize watchVersion=_watchVersion;
 
 - (void).cxx_destruct;
 - (void)_appsChangedNotification:(id)arg1;
@@ -44,7 +44,7 @@
 - (id)_preGraceThirdPartyBundleIdentifiers;
 - (void)dealloc;
 - (void)fetchIdentifiers;
-- (id)initWatchVersion:(unsigned int)arg1;
+- (id)initWatchVersion:(CDStruct_f6aba300)arg1;
 
 @end
 

@@ -11,11 +11,11 @@
 
 @interface GKServiceProxy : NSObject
 {
-    NSDictionary *_serviceLookup;
-    GKThreadsafeDictionary *_pendingRequests;
     unsigned int _serviceGeneration;
+    GKThreadsafeDictionary *_pendingRequests;
     GKDaemonProxy *_baseProxy;
     GKPlayerInternal *_localPlayer;
+    NSDictionary *_serviceLookup;
 }
 
 @property (readonly) id<GKAccountService> accountService;
@@ -35,7 +35,7 @@
 @property (readonly) id<GKGameSessionServicePrivate> gameSessionServicePrivate;
 @property (readonly) id<GKGameStatService> gameStatService;
 @property (readonly) id<GKGameStatServicePrivate> gameStatServicePrivate;
-@property (strong) GKPlayerInternal *localPlayer; // @synthesize localPlayer=_localPlayer;
+@property (weak) GKPlayerInternal *localPlayer; // @synthesize localPlayer=_localPlayer;
 @property (readonly) id<GKMultiplayerService> multiplayerService;
 @property (readonly) id<GKMultiplayerServicePrivate> multiplayerServicePrivate;
 @property (strong) GKThreadsafeDictionary *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
@@ -50,10 +50,10 @@
 @property (readonly) id<GKUtilityService> utilityService;
 @property (readonly) id<GKUtilityServicePrivate> utilityServicePrivate;
 
+- (void).cxx_destruct;
 - (void)addService:(id)arg1 forProtocol:(id)arg2 toLookup:(id)arg3;
 - (void)buildServiceLookup;
 - (void)buildServiceLookupIfNeccessary;
-- (void)dealloc;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithPlayer:(id)arg1;
 - (id)methodSignatureForProtocol:(id)arg1 selector:(SEL)arg2;

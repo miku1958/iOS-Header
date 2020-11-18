@@ -27,6 +27,7 @@
 + (id)scripting;
 + (id)search;
 + (id)siriKit;
++ (id)suggestedAttributes;
 + (id)ui;
 + (id)userAction;
 + (id)utility;

@@ -52,16 +52,16 @@
 + (id)region:(id)arg1 subtractingRowIndexes:(id)arg2;
 + (id)regionFillingColumnsFromRegion:(id)arg1;
 + (id)regionFillingRowsFromRegion:(id)arg1;
++ (id)regionFromCellCoordSet:(const struct TSCECellCoordSet *)arg1;
 + (id)regionFromCellDiffMap:(id)arg1 withTableInfo:(id)arg2;
 + (id)regionFromCellIDVector:(const vector_38b190b0 *)arg1;
 + (id)regionFromCellMap:(id)arg1 withTableInfo:(id)arg2;
 + (id)regionFromCellMap:(id)arg1 withTableInfo:(id)arg2 passingTest:(CDUnknownBlockType)arg3;
 + (id)regionFromCellRangeVector:(const vector_e87daf7b *)arg1;
-+ (id)regionFromCellUIDVector:(const vector_7670e6f2 *)arg1 withTableInfo:(id)arg2;
++ (id)regionFromCellUIDVector:(const vector_0c3ec296 *)arg1 withTableInfo:(id)arg2;
 + (id)regionFromColumnIndexes:(id)arg1 rowIndexes:(id)arg2;
 + (id)regionFromColumnIndices:(id)arg1;
 + (id)regionFromColumnIndices:(id)arg1 rowRange:(struct _NSRange)arg2;
-+ (id)regionFromConcurrentCellMap:(id)arg1 withTableInfo:(id)arg2;
 + (id)regionFromMergeActionArray:(id)arg1 withTableInfo:(id)arg2;
 + (id)regionFromMergeList:(const vector_e87daf7b *)arg1;
 + (id)regionFromModelCellRect:(struct TSUModelCellRect)arg1;

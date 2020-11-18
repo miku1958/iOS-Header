@@ -81,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (long long)auxillaryHostAuxillaryKind;
 - (id)auxillaryHostContainer;
 - (struct CGSize)auxillaryHostContentSize;
+- (struct NSDirectionalEdgeInsets)auxillaryHostEdgeInsetsForAuxillaryOfKind:(id)arg1;
 - (unsigned long long)auxillaryHostLayoutAxis;
 - (struct CGSize)auxillaryHostPinningContentSize;
 - (id)auxillaryHostPreferredSizes;

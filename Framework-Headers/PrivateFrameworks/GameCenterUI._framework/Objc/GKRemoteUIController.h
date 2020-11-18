@@ -21,11 +21,11 @@
     BOOL _complete;
     BOOL _isServerAuthenticated;
     int _layoutStyle;
-    UINavigationController *_navigationControllerWeak;
     NSString *_appleID;
     CDUnknownBlockType _completionHandler;
     NSError *_error;
     NSMutableArray *_objectModels;
+    UINavigationController *_navigationController;
     NSArray *_staticViewControllers;
     RUILoader *_loader;
     GKRemoteUIController *_presentedRemoteUIController;
@@ -63,7 +63,7 @@
 @property (strong, nonatomic) RUILoader *loader; // @synthesize loader=_loader;
 @property (nonatomic) BOOL loading; // @synthesize loading=_loading;
 @property (nonatomic) BOOL loadingInitialUI; // @synthesize loadingInitialUI=_loadingInitialUI;
-@property (nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationControllerWeak;
+@property (weak, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property (strong, nonatomic) NSMutableArray *objectModels; // @synthesize objectModels=_objectModels;
 @property (strong, nonatomic) GKLocalPlayer *playerForRemoteUI; // @synthesize playerForRemoteUI=_playerForRemoteUI;
 @property (strong, nonatomic) NSString *playerID; // @synthesize playerID=_playerID;

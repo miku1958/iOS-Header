@@ -13,10 +13,7 @@
 
 @interface BSUIDefaultDateLabel : UILabel <BSUIDateLabel>
 {
-    NSDate *_timeZoneRelativeStartDate;
     NSDate *_timeZoneRelativeEndDate;
-    BOOL _allDay;
-    BOOL _isTimestamp;
     NSDate *_effectiveAllDayStartDate;
     NSDate *_effectiveAllDayLastValidDate;
     NSDate *_effectiveAllDayEndDate;
@@ -24,8 +21,11 @@
     BOOL _isCoalescingUpdates;
     BOOL _needsUpdateFromCoalesce;
     NSTimer *_updateTimer;
+    BOOL _allDay;
+    BOOL _isTimestamp;
     id<BSUIDateLabelDelegate> _delegate;
     long long _labelType;
+    NSDate *_timeZoneRelativeStartDate;
 }
 
 @property (nonatomic, getter=isAllDay) BOOL allDay; // @synthesize allDay=_allDay;
@@ -38,16 +38,8 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSDate *timeZoneRelativeStartDate; // @synthesize timeZoneRelativeStartDate=_timeZoneRelativeStartDate;
 
-+ (id)_currentCalendar;
 - (void).cxx_destruct;
-- (void)_configureTimer;
-- (id)_constructNonAllDayLabelStringWithDate:(id)arg1 startTime:(double)arg2 startIsToday:(BOOL)arg3 sameDayDates:(BOOL)arg4 eventOngoing:(BOOL)arg5 withCurrentDate:(id)arg6 forStartLabel:(BOOL)arg7;
 - (void)_forceUpdate;
-- (void)_invalidateTimer;
-- (id)_localDateForDate:(id)arg1 inTimeZone:(id)arg2;
-- (void)_resetEffectiveAllDayState:(BOOL)arg1;
-- (void)_resetModelProperties;
-- (void)_updateEffectiveAllDayTimes;
 - (void)_updateTimerFired:(id)arg1;
 - (id)constructLabelString;
 - (void)dealloc;
@@ -63,7 +55,6 @@
 - (void)stopCoalescingUpdates;
 - (void)update;
 - (void)updateTextIfNecessary;
-- (void)updateTextIfNecessary:(BOOL)arg1;
 
 @end
 

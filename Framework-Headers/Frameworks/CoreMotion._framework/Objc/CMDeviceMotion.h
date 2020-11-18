@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) CDStruct_27fd20ed magneticField;
 @property (readonly, nonatomic) int magneticFieldCalibrationLevel;
 @property (readonly, nonatomic) CDStruct_31142d93 rotationRate;
+@property (readonly, nonatomic) long long sensorLocation;
 @property (readonly, nonatomic) CDStruct_31142d93 userAcceleration;
 
 + (BOOL)supportsSecureCoding;
@@ -30,7 +31,7 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDeviceMotion:(CDStruct_981b33bd)arg1 internal:(CDStruct_37a3040a)arg2 timestamp:(double)arg3;
+- (id)initWithDeviceMotion:(CDStruct_69e6d857)arg1 internal:(CDStruct_37a3040a)arg2 timestamp:(double)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

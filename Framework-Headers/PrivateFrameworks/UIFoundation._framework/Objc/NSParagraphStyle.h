@@ -44,6 +44,7 @@
 @property (readonly, nonatomic) double headIndent;
 @property (readonly, nonatomic) float hyphenationFactor;
 @property (readonly, nonatomic) long long lineBreakMode;
+@property (readonly, nonatomic) unsigned long long lineBreakStrategy;
 @property (readonly, nonatomic) double lineHeightMultiple;
 @property (readonly, nonatomic) double lineSpacing;
 @property (readonly, nonatomic) double maximumLineHeight;
@@ -75,7 +76,6 @@
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (unsigned long long)lineBreakStrategy;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 - (id)textBlocks;
 - (id)textLists;

@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     NSString *_runningOperationID;
     NSMutableSet *_dependentOperationIDs;
     NSMutableDictionary *_dependentOperationIDsByItemID;
+    NSMutableDictionary *_unitTestOverrides;
     CKDOperation *_initialOperation;
 }
 
@@ -52,6 +53,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *runningOperationID; // @synthesize runningOperationID=_runningOperationID;
 @property (nonatomic) long long scope; // @synthesize scope=_scope;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
+@property (strong, nonatomic) NSMutableDictionary *unitTestOverrides; // @synthesize unitTestOverrides=_unitTestOverrides;
 
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;

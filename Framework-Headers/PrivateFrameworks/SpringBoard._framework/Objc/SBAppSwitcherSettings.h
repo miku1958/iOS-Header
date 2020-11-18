@@ -47,6 +47,7 @@
     double _switcherCardShadowOpacity;
     double _switcherCardShadowOffsetHorizontal;
     double _switcherCardShadowOffsetVertical;
+    double _switcherCenterYOffsetPercentOfScreenHeight;
     double _switcherCardShadowRadiusWhileTouched;
     double _switcherCardShadowOpacityWhileTouched;
     double _switcherCardShadowOffsetHorizontalWhileTouched;
@@ -172,6 +173,7 @@
 @property double switcherCardShadowOpacityWhileTouched; // @synthesize switcherCardShadowOpacityWhileTouched=_switcherCardShadowOpacityWhileTouched;
 @property double switcherCardShadowRadius; // @synthesize switcherCardShadowRadius=_switcherCardShadowRadius;
 @property double switcherCardShadowRadiusWhileTouched; // @synthesize switcherCardShadowRadiusWhileTouched=_switcherCardShadowRadiusWhileTouched;
+@property double switcherCenterYOffsetPercentOfScreenHeight; // @synthesize switcherCenterYOffsetPercentOfScreenHeight=_switcherCenterYOffsetPercentOfScreenHeight;
 @property long long switcherStyle; // @synthesize switcherStyle=_switcherStyle;
 @property double tetheredInsertionRemovalInsetForDeterminingVisibility; // @synthesize tetheredInsertionRemovalInsetForDeterminingVisibility=_tetheredInsertionRemovalInsetForDeterminingVisibility;
 @property double titleOpacityACoeff; // @synthesize titleOpacityACoeff=_titleOpacityACoeff;
@@ -183,6 +185,7 @@
 
 + (id)settingsControllerModule;
 - (void).cxx_destruct;
+- (double)_spacingBetweenLeadingEdgeAndIcon;
 - (id)archiveValueForKey:(id)arg1;
 - (long long)effectiveSwitcherStyle;
 - (void)setDefaultValues;

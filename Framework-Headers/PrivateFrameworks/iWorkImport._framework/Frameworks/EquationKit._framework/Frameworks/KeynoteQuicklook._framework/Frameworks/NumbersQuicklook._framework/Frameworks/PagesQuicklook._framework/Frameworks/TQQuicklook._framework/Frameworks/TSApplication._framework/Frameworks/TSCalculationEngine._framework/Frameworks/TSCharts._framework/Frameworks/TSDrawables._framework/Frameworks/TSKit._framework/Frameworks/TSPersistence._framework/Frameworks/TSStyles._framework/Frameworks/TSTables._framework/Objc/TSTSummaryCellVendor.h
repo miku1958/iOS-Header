@@ -15,6 +15,7 @@
     map_cd95b0b7 _cellUIDMap;
 }
 
+@property (readonly, nonatomic) unsigned long long cellCount;
 @property (readonly, nonatomic) map_cd95b0b7 *cellUIDMap; // @synthesize cellUIDMap=_cellUIDMap;
 @property (nonatomic) BOOL hasCustomFormatsToPaste; // @synthesize hasCustomFormatsToPaste=_hasCustomFormatsToPaste;
 @property (readonly, weak, nonatomic) TSTTableInfo *tableInfo; // @synthesize tableInfo=_tableInfo;

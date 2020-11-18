@@ -10,6 +10,8 @@
 
 @property (readonly) long long _calendarDirection;
 
++ (id)__effectiveLanguageForBundle:(id)arg1;
++ (id)_deviceLanguage;
 + (id)_preferredMeasurementSystem;
 + (id)_preferredTemperatureUnit;
 + (void)_setPreferredMeasurementSystem:(id)arg1;

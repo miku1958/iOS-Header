@@ -9,21 +9,24 @@
 #import <AssistantUI/AFUISceneControllerDelegate-Protocol.h>
 
 @class AFUISceneConfiguration, AFUISceneController, FBScene, FBSceneClientProviderInvalidationAction, NSString, UIView;
-@protocol BSInvalidatable, FBSceneHost, UIScenePresenter;
+@protocol BSInvalidatable, UIScenePresenter;
 
 @interface AFUISceneHostingViewController : UIViewController <AFUISceneControllerDelegate>
 {
+    BOOL _inFluidDismissal;
     BOOL _pauseDeferrals;
+    BOOL _safeAreaInsetsAreSuspended;
     long long _deferralMode;
     AFUISceneConfiguration *_configuration;
     AFUISceneController *_sceneController;
     UIView *_windowSceneHostingView;
     id<UIScenePresenter> _presentation;
     FBSceneClientProviderInvalidationAction *_invalidationAction;
-    id<FBSceneHost> _sceneHost;
     FBScene *_scene;
     id<BSInvalidatable> _predicateInvalidationHandler;
     long long _currentOrientation;
+    struct UIEdgeInsets _effectiveSafeAreaInsets;
+    struct UIEdgeInsets _suspendedSafeAreaInsets;
 }
 
 @property (readonly, nonatomic) AFUISceneConfiguration *configuration; // @synthesize configuration=_configuration;
@@ -31,29 +34,36 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) long long deferralMode; // @synthesize deferralMode=_deferralMode;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) struct UIEdgeInsets effectiveSafeAreaInsets; // @synthesize effectiveSafeAreaInsets=_effectiveSafeAreaInsets;
 @property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isInFluidDismissal) BOOL inFluidDismissal; // @synthesize inFluidDismissal=_inFluidDismissal;
 @property (strong, nonatomic) FBSceneClientProviderInvalidationAction *invalidationAction; // @synthesize invalidationAction=_invalidationAction;
 @property (nonatomic) BOOL pauseDeferrals; // @synthesize pauseDeferrals=_pauseDeferrals;
 @property (strong, nonatomic) id<BSInvalidatable> predicateInvalidationHandler; // @synthesize predicateInvalidationHandler=_predicateInvalidationHandler;
 @property (strong, nonatomic) id<UIScenePresenter> presentation; // @synthesize presentation=_presentation;
+@property (nonatomic) BOOL safeAreaInsetsAreSuspended; // @synthesize safeAreaInsetsAreSuspended=_safeAreaInsetsAreSuspended;
 @property (strong, nonatomic) FBScene *scene; // @synthesize scene=_scene;
 @property (strong, nonatomic) AFUISceneController *sceneController; // @synthesize sceneController=_sceneController;
-@property (nonatomic) id<FBSceneHost> sceneHost; // @synthesize sceneHost=_sceneHost;
 @property (readonly) Class superclass;
+@property (nonatomic) struct UIEdgeInsets suspendedSafeAreaInsets; // @synthesize suspendedSafeAreaInsets=_suspendedSafeAreaInsets;
 @property (strong, nonatomic) UIView *windowSceneHostingView; // @synthesize windowSceneHostingView=_windowSceneHostingView;
 
 - (void).cxx_destruct;
 - (void)_audioCategoriesDisablingVolumeHUDDidChangeTo:(id)arg1;
 - (void)_commonInit;
 - (void)_handleInvalidationForReason:(unsigned long long)arg1 explanation:(id)arg2;
+- (void)_handleSceneDidActivateWithIdentifier:(id)arg1;
 - (BOOL)_hasScene;
 - (BOOL)_shouldDeferHIDEventsForMode;
 - (void)_transitionContentsWithView:(id)arg1 forContentState:(long long)arg2;
 - (void)_updateDeferralChainWithWindow:(id)arg1;
-- (void)deactivateSceneForReason:(unsigned long long)arg1 explanation:(id)arg2;
+- (void)_updateSceneSafeAreaInsets;
+- (void)_updateSceneUIApplicationSceneSettingsWithBlock:(CDUnknownBlockType)arg1;
+- (void)deactivateSceneForExtendingTTSInBackground;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (void)invalidateAndPauseDeferringHIDEvents;
+- (void)invalidateSceneForReason:(unsigned long long)arg1 explanation:(id)arg2;
 - (BOOL)isDeferringHIDEvents;
 - (BOOL)isHostingScene;
 - (id)sceneConfigurationForDelegate;
@@ -68,6 +78,7 @@
 - (void)updateSceneWithConfiguration:(id)arg1;
 - (void)updateSettingsForInterfaceOrientationChange:(long long)arg1 willAnimationWithDuration:(double)arg2;
 - (void)viewDidMoveToWindow:(id)arg1 shouldAppearOrDisappear:(BOOL)arg2;
+- (void)viewSafeAreaInsetsDidChange;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;

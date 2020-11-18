@@ -20,7 +20,7 @@
 @property (readonly, strong, nonatomic) id<MPSCNNInstanceNormalizationDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (nonatomic) float epsilon; // @synthesize epsilon=_epsilon;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (id)debugDescription;

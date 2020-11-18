@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)_getObject:(id *)arg1 atIndex:(unsigned long long)arg2 context:(struct LSContext *)arg3;
+- (id)_initWithContext:(struct LSContext *)arg1;
 - (BOOL)_prepareWithContext:(struct LSContext *)arg1 error:(id *)arg2;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
 - (id)nextObject;

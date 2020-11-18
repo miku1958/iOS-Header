@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
++ (const vector_3203cf93 *)allLandmarksPointsIndexes;
 - (BOOL)_buildCalibrationMatrix:(id)arg1 calibrationMatrix:(float *)arg2 error:(id *)arg3;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 

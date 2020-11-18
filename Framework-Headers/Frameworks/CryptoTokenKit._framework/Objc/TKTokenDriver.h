@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSMutableDictionary, NSString, TKSharedResourceSlot, TKTokenDriverContext;
+@class NSArray, NSDictionary, NSMutableDictionary, NSString, TKSharedResourceSlot, TKTokenDriverContext;
 @protocol TKTokenDriverDelegate;
 
 @interface TKTokenDriver : NSObject
@@ -26,12 +26,13 @@
 @property (strong, nonatomic) id keepAlive;
 @property (strong, nonatomic) TKSharedResourceSlot *keepAliveResourceSlot; // @synthesize keepAliveResourceSlot=_keepAliveResourceSlot;
 @property (readonly, nonatomic) NSMutableDictionary *tokenConnections; // @synthesize tokenConnections=_tokenConnections;
+@property (readonly, nonatomic) NSArray *tokenSessions;
 
 + (id)createDriver;
 - (void).cxx_destruct;
 - (void)acquireTokenWithInstanceID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)acquireTokenWithSlot:(id)arg1 AID:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)auditAuthOperation:(id)arg1 auditToken:(CDStruct_6ad76789)arg2 success:(BOOL)arg3;
+- (void)auditAuthOperation:(id)arg1 auditToken:(CDStruct_4c969caf)arg2 success:(BOOL)arg3;
 - (void)configureWithReply:(CDUnknownBlockType)arg1;
 - (id)createTokenWithSlot:(id)arg1 AID:(id)arg2 error:(id *)arg3;
 - (void)dealloc;

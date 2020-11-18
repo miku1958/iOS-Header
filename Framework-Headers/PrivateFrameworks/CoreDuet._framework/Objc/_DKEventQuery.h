@@ -17,6 +17,7 @@
     NSObject<OS_dispatch_queue> *_defaultQueue;
     BOOL _readMetadata;
     BOOL _deduplicateValues;
+    BOOL _returnsDistinctResults;
     NSPredicate *_predicate;
     NSArray *_eventStreams;
     NSArray *_sortDescriptors;
@@ -40,6 +41,7 @@
 @property BOOL readMetadata; // @synthesize readMetadata=_readMetadata;
 @property long long resultType; // @synthesize resultType=_resultType;
 @property (copy) CDUnknownBlockType resultsHandler; // @synthesize resultsHandler=_resultsHandler;
+@property BOOL returnsDistinctResults; // @synthesize returnsDistinctResults=_returnsDistinctResults;
 @property (strong) NSArray *sortDescriptors; // @synthesize sortDescriptors=_sortDescriptors;
 
 + (id)eventQueryWithPredicate:(id)arg1 eventStreams:(id)arg2 offset:(unsigned long long)arg3 limit:(unsigned long long)arg4 sortDescriptors:(id)arg5;

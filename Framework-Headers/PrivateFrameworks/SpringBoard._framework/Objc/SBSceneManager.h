@@ -33,9 +33,7 @@
     NSMapTable *_persistentMapSceneIdentityToSceneHandle;
     NSMapTable *_transientMapSceneIdentityToSceneHandle;
     BSCopyingCacheSet *_allScenes;
-    BSCopyingCacheSet *_windowScenes;
     BSCopyingCacheSet *_daemonScenes;
-    BSCopyingCacheSet *_pluginScenes;
     BSCopyingCacheSet *_workspaceScenes;
     BSCopyingCacheSet *_externalApplicationSceneHandles;
     BSCopyingCacheSet *_externalForegroundApplicationSceneHandles;
@@ -70,12 +68,12 @@
 - (void)_addReportedForegroundExternalApplicationSceneHandle:(id)arg1;
 - (id)_createRootWindowScenePresentationBinder;
 - (void)_doObserverCalloutWithBlock:(CDUnknownBlockType)arg1;
-- (id)_fetchOrCreateApplicationSceneHandleForApplication:(id)arg1 withIdentity:(id)arg2 orScene:(id)arg3;
 - (BOOL)_handleAction:(id)arg1 forScene:(id)arg2;
 - (id)_newSceneLayoutViewController;
 - (void)_noteDidChangeToVisibility:(unsigned long long)arg1 previouslyExisted:(BOOL)arg2 forScene:(id)arg3;
 - (void)_noteDidCommitUpdateForScene:(id)arg1;
 - (void)_noteObserversDidInvalidate;
+- (void)_reconnectSceneRemnant:(id)arg1 forProcess:(id)arg2 sceneManager:(id)arg3;
 - (void)_removeReportedForegroundExternalApplicationSceneHandle:(id)arg1;
 - (void)_scene:(id)arg1 didUpdateClientSettingsWithDiff:(id)arg2 oldClientSettings:(id)arg3 transitionContext:(id)arg4;
 - (void)_scene:(id)arg1 interceptUpdateWithNewSettings:(id)arg2;
@@ -103,12 +101,11 @@
 - (id)existingSceneHandleForSceneIdentity:(id)arg1;
 - (id)externalApplicationSceneHandles;
 - (id)externalForegroundApplicationSceneHandles;
-- (id)fetchOrCreateApplicationSceneHandleForApplication:(id)arg1 withIdentity:(id)arg2;
+- (id)fetchOrCreateApplicationSceneHandleForRequest:(id)arg1;
 - (id)init;
 - (id)initWithReference:(id)arg1;
 - (void)invalidate;
 - (id)newSceneIdentityForApplication:(id)arg1;
-- (id)pluginScenes;
 - (void)removeObserver:(id)arg1;
 - (void)removeSlaveTransactionProvider:(id)arg1;
 - (void)scene:(id)arg1 didApplyUpdateWithContext:(id)arg2;
@@ -132,7 +129,6 @@
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (id)transientApplicationSceneHandleIdentityForApplication:(id)arg1;
-- (id)windowScenes;
 
 @end
 

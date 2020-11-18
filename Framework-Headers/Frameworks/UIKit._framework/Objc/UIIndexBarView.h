@@ -55,6 +55,7 @@
 - (BOOL)_canDrawContent;
 - (BOOL)_defaultCanBecomeFocused;
 - (BOOL)_didSelectEntry:(id)arg1 atIndex:(long long)arg2;
+- (void)_largeContentViewerEnabledStatusDidChange:(id)arg1;
 - (BOOL)_selectEntry:(id)arg1 atIndex:(long long)arg2;
 - (void)_setupAXHUDGestureIfNecessary;
 - (void)_updateBackgroundColor;

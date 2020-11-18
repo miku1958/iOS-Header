@@ -27,9 +27,9 @@
 + (BOOL)isValidPhoneNumberChar:(unsigned short)arg1;
 + (id)phoneNumberWithDigits:(id)arg1 countryCode:(id)arg2;
 + (id)phoneNumberWithDigits:(long long)arg1 digits:(id)arg2 countryCode:(id)arg3;
+- (void).cxx_destruct;
 - (id)canonicalFormat;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (id)encodedString;
 - (id)formatForCallingCountry:(id)arg1;
 - (id)initWithDigits:(id)arg1 countryCode:(id)arg2;

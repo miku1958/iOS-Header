@@ -6,18 +6,23 @@
 
 #import <VideosUI/VUIButton.h>
 
+@class AAUIProfilePictureStore;
+
 __attribute__((visibility("hidden")))
 @interface VUIAccountSettingsButton : VUIButton
 {
+    AAUIProfilePictureStore *_profilePictureStore;
 }
 
+@property (strong, nonatomic) AAUIProfilePictureStore *profilePictureStore; // @synthesize profilePictureStore=_profilePictureStore;
+
+- (void).cxx_destruct;
 - (void)_accountStoreDidChange:(id)arg1;
 - (void)_setup;
 - (void)_setupAccountImageView;
 - (void)_updateAccountButtonVisibility:(BOOL)arg1;
 - (void)_updateAccountImage;
 - (id)initWithButtonLayout:(id)arg1 interfaceStyle:(long long)arg2;
-- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

@@ -7,9 +7,7 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (BuddyPinAutoLayout)
-- (void)pinToEdges:(id)arg1;
-- (void)pinToEdges:(id)arg1;
-- (id)pinToEdgesConstraints:(id)arg1;
-- (id)pinToEdgesConstraints:(id)arg1;
+- (void)ob_pinToEdges:(id)arg1;
+- (id)ob_pinToEdgesConstraints:(id)arg1;
 @end
 

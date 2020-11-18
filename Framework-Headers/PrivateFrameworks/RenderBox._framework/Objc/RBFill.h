@@ -9,12 +9,16 @@
 @interface RBFill : NSObject
 {
     struct RBFillData _data;
+    struct InlineHeap<64> _heap;
 }
 
 @property (readonly, nonatomic) struct RBFillData *fillData;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
+- (void)invalidateContents;
 - (void)set9PartImage:(struct CGImage *)arg1 transform:(struct CGAffineTransform)arg2 destinationRect:(struct CGRect)arg3 capInsets:(CDStruct_d2b197d1)arg4 repeat:(BOOL)arg5 interpolation:(int)arg6 tintColor:(CDStruct_0b1c536a)arg7 flags:(unsigned int)arg8;
 - (void)set9PartRBImage:(CDStruct_27041886)arg1 transform:(struct CGAffineTransform)arg2 destinationRect:(struct CGRect)arg3 capInsets:(CDStruct_d2b197d1)arg4 repeat:(BOOL)arg5 interpolation:(int)arg6 tintColor:(CDStruct_0b1c536a)arg7 flags:(unsigned int)arg8;
 - (void)setAxialGradientStartPoint:(struct CGPoint)arg1 endPoint:(struct CGPoint)arg2 stopCount:(long long)arg3 colors:(const CDStruct_0b1c536a *)arg4 locations:(const double *)arg5 flags:(unsigned int)arg6;

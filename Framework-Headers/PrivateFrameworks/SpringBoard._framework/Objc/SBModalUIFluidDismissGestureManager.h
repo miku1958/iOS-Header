@@ -36,6 +36,10 @@
 - (void)_addOrRemoveGestureForCurrentSettings;
 - (long long)_dismissalTypeForCurrentContext;
 - (id)customScreenEdgePanGestureRecognizerForHomeGestureInteraction:(id)arg1;
+- (void)handleGestureBegan:(id)arg1 initiatedFromBottomEdge:(BOOL)arg2;
+- (void)handleGestureBegan:(id)arg1 initiatedFromBottomEdge:(BOOL)arg2 dismissalThreshold:(double)arg3 initiatedFromIndirectEdge:(BOOL)arg4;
+- (void)handleGestureChanged:(id)arg1;
+- (void)handleGestureEnded:(id)arg1;
 - (BOOL)homeGestureInteraction:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (unsigned long long)homeGestureInteraction:(id)arg1 systemGestureTypeForType:(long long)arg2;
 - (void)homeGestureInteractionBegan:(id)arg1;

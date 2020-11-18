@@ -18,7 +18,7 @@
     struct CGSize _itemSize;
 }
 
-@property (readonly, nonatomic) NSArray *children;
+@property (strong, nonatomic) NSArray *children; // @synthesize children;
 @property (nonatomic) struct CGSize interItemSpacing; // @synthesize interItemSpacing=_interItemSpacing;
 @property (nonatomic) struct CGSize itemSize; // @synthesize itemSize=_itemSize;
 @property (nonatomic) long long layoutAxis; // @synthesize layoutAxis=_layoutAxis;
@@ -31,7 +31,6 @@
 - (void)_performLayoutPass;
 - (struct CGSize)performLayout;
 - (void)prepareForReuse;
-- (void)setChildren:(id)arg1;
 
 @end
 

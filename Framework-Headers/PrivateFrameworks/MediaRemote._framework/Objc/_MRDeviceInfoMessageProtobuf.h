@@ -17,6 +17,8 @@
     NSString *_applicationBundleIdentifier;
     NSString *_applicationBundleVersion;
     NSData *_bluetoothAddress;
+    NSString *_clusterID;
+    NSString *_clusterLeaderID;
     int _deviceClass;
     NSString *_deviceUID;
     NSString *_groupName;
@@ -69,6 +71,8 @@
 @property (strong, nonatomic) NSString *applicationBundleIdentifier; // @synthesize applicationBundleIdentifier=_applicationBundleIdentifier;
 @property (strong, nonatomic) NSString *applicationBundleVersion; // @synthesize applicationBundleVersion=_applicationBundleVersion;
 @property (strong, nonatomic) NSData *bluetoothAddress; // @synthesize bluetoothAddress=_bluetoothAddress;
+@property (strong, nonatomic) NSString *clusterID; // @synthesize clusterID=_clusterID;
+@property (strong, nonatomic) NSString *clusterLeaderID; // @synthesize clusterLeaderID=_clusterLeaderID;
 @property (nonatomic) BOOL connected; // @synthesize connected=_connected;
 @property (nonatomic) int deviceClass; // @synthesize deviceClass=_deviceClass;
 @property (strong, nonatomic) NSString *deviceUID; // @synthesize deviceUID=_deviceUID;
@@ -79,6 +83,8 @@
 @property (readonly, nonatomic) BOOL hasApplicationBundleIdentifier;
 @property (readonly, nonatomic) BOOL hasApplicationBundleVersion;
 @property (readonly, nonatomic) BOOL hasBluetoothAddress;
+@property (readonly, nonatomic) BOOL hasClusterID;
+@property (readonly, nonatomic) BOOL hasClusterLeaderID;
 @property (nonatomic) BOOL hasConnected;
 @property (nonatomic) BOOL hasDeviceClass;
 @property (readonly, nonatomic) BOOL hasDeviceUID;

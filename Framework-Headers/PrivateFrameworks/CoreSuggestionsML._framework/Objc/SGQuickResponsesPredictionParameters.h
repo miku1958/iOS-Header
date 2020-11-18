@@ -13,6 +13,8 @@
     BOOL _isPersonalizationDisabled;
     BOOL _isReplyTextRandomized;
     BOOL _isPerCategory;
+    BOOL _dynamicLabelsEnabled;
+    BOOL _hasNegativeClass;
     double _weightForCategoryAverage;
     double _weightForCategoryMax;
     double _weightForIndividualModel;
@@ -29,10 +31,13 @@
     NSString *_promptJoiningString;
     NSString *_modelTypeName;
     NSString *_subModelKeyString;
+    double _negativeClassMaximumToPredict;
 }
 
 @property (readonly, nonatomic) double classDiscount; // @synthesize classDiscount=_classDiscount;
 @property (readonly, nonatomic) unsigned long long defaultResponsesToReturn; // @synthesize defaultResponsesToReturn=_defaultResponsesToReturn;
+@property (readonly, nonatomic) BOOL dynamicLabelsEnabled; // @synthesize dynamicLabelsEnabled=_dynamicLabelsEnabled;
+@property (readonly, nonatomic) BOOL hasNegativeClass; // @synthesize hasNegativeClass=_hasNegativeClass;
 @property (readonly, nonatomic) BOOL isPerCategory; // @synthesize isPerCategory=_isPerCategory;
 @property (readonly, nonatomic) BOOL isPersonalizationDisabled; // @synthesize isPersonalizationDisabled=_isPersonalizationDisabled;
 @property (readonly, nonatomic) BOOL isReplyTextRandomized; // @synthesize isReplyTextRandomized=_isReplyTextRandomized;
@@ -40,6 +45,7 @@
 @property (readonly, nonatomic) double maxPromptWindowSeconds; // @synthesize maxPromptWindowSeconds=_maxPromptWindowSeconds;
 @property (readonly, nonatomic) double minToShowThreshold; // @synthesize minToShowThreshold=_minToShowThreshold;
 @property (readonly, nonatomic) NSString *modelTypeName; // @synthesize modelTypeName=_modelTypeName;
+@property (readonly, nonatomic) double negativeClassMaximumToPredict; // @synthesize negativeClassMaximumToPredict=_negativeClassMaximumToPredict;
 @property (readonly, nonatomic) double personalizationDisplayedPseudocount; // @synthesize personalizationDisplayedPseudocount=_personalizationDisplayedPseudocount;
 @property (readonly, nonatomic) double personalizationExplorationFactor; // @synthesize personalizationExplorationFactor=_personalizationExplorationFactor;
 @property (readonly, nonatomic) double personalizationSelectedPseudocountPerSemanticClass; // @synthesize personalizationSelectedPseudocountPerSemanticClass=_personalizationSelectedPseudocountPerSemanticClass;

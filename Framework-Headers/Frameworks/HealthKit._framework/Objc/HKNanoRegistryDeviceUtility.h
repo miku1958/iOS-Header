@@ -6,14 +6,17 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface HKNanoRegistryDeviceUtility : NSObject
 {
 }
 
++ (id)activePairedDevice;
++ (id)activePairedDeviceProductType;
++ (id)activePairedDeviceSystemBuildVersion;
 + (BOOL)isDeviceRunningSeed:(id)arg1;
 + (BOOL)isDeviceSeries3OrOlder:(id)arg1;
 + (BOOL)isDeviceSeries4:(id)arg1;
++ (id)productTypeForDevice:(id)arg1;
 + (id)systemBuildVersionForDevice:(id)arg1;
 + (unsigned int)systemVersionForDevice:(id)arg1;
 

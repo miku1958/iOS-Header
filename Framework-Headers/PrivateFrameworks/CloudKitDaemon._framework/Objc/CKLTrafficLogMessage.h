@@ -24,6 +24,8 @@
 }
 
 @property (nonatomic) long long bodyStreamResetCount; // @synthesize bodyStreamResetCount=_bodyStreamResetCount;
+@property (readonly, nonatomic) NSString *bundleIdentifier;
+@property (readonly, nonatomic) NSString *containerIdentifier;
 @property (strong, nonatomic) NSDictionary *requestHeaders; // @synthesize requestHeaders=_requestHeaders;
 @property (strong, nonatomic) NSString *requestMethod; // @synthesize requestMethod=_requestMethod;
 @property (strong, nonatomic) NSArray *requestObjects; // @synthesize requestObjects=_requestObjects;
@@ -36,6 +38,7 @@
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
 - (void).cxx_destruct;
+- (id)CKPropertiesDescription;
 - (id)_initWithUUID:(id)arg1 requestMetadata:(id)arg2 requestObjects:(id)arg3 bodyStreamResetCount:(long long)arg4 responseMetadata:(id)arg5 responseObjects:(id)arg6;
 - (id)description;
 

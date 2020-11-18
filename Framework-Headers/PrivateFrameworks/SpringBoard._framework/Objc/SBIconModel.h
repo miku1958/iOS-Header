@@ -25,10 +25,11 @@
 - (void)_noteApplicationIconImageChanged:(id)arg1;
 - (void)_replaceAppIconsWithDownloadingIcons;
 - (void)_replaceAppIconsWithDownloadingIcons:(id)arg1;
+- (BOOL)_shouldSkipAddingIcon:(id)arg1 toRootFolder:(id)arg2;
 - (id)addBookmarkIconForWebClip:(id)arg1;
 - (id)addDownloadingIconForDownload:(id)arg1;
-- (void)addIconForApplication:(id)arg1;
-- (void)addIconForApplication:(id)arg1 force:(BOOL)arg2;
+- (id)addIconForApplication:(id)arg1;
+- (id)addIconForApplication:(id)arg1 force:(BOOL)arg2;
 - (void)adjustIconsToShow:(id)arg1 iconsToHide:(id)arg2 afterChangeToVisibleIconTags:(id)arg3 hiddenIconTags:(id)arg4;
 - (id)applicationIconForBundleIdentifier:(id)arg1;
 - (id)applicationWithBundleIdentifier:(id)arg1;
@@ -51,6 +52,7 @@
 - (id)placeholdersByDisplayID;
 - (BOOL)shouldAvoidCreatingIconForApplication:(id)arg1;
 - (BOOL)shouldAvoidPlacingIconOnFirstPage:(id)arg1;
+- (void)updateExistingBookmarkIcon:(id)arg1 forUpdatedWebClip:(id)arg2;
 - (void)willLayout;
 
 @end

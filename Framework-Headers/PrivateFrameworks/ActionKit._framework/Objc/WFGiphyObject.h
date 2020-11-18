@@ -7,12 +7,13 @@
 #import <WorkflowKit/MTLModel.h>
 
 #import <ActionKit/MTLJSONSerializing-Protocol.h>
+#import <ActionKit/NSSecureCoding-Protocol.h>
 #import <ActionKit/WFNaming-Protocol.h>
 #import <ActionKit/WFSerializableContent-Protocol.h>
 
 @class NSDictionary, NSString, NSURL;
 
-@interface WFGiphyObject : MTLModel <WFNaming, WFSerializableContent, MTLJSONSerializing>
+@interface WFGiphyObject : MTLModel <NSSecureCoding, WFNaming, WFSerializableContent, MTLJSONSerializing>
 {
     NSString *_objectId;
     NSString *_type;
@@ -34,9 +35,11 @@
 @property (readonly, copy, nonatomic) NSString *wfName;
 
 + (id)JSONKeyPathsByPropertyKey;
++ (id)allowedSecureCodingClassesByPropertyKey;
 + (id)captionJSONTransformer;
 + (id)imagesJSONTransformer;
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
++ (BOOL)supportsSecureCoding;
 + (id)urlJSONTransformer;
 - (void).cxx_destruct;
 - (id)originalImage;

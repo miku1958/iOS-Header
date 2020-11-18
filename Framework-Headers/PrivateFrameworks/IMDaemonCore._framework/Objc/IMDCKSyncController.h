@@ -128,6 +128,7 @@
 - (double)reloadTimeInterval;
 - (void)sendRestoreFailuresLogDumps;
 - (void)sendRestoreFailuresLogDumpsIfNeeded;
+- (BOOL)shouldMarkAllIncompatibleMessagesForDeletion;
 - (id)statsCollector;
 - (void)syncAttachmentMetadataFirstSyncWithActivity:(id)arg1 deviceConditionsToCheck:(unsigned long long)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)syncChatsWithMessageContext:(id)arg1;

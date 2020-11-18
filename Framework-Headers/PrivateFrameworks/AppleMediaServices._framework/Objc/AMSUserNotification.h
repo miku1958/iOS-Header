@@ -8,7 +8,7 @@
 
 #import <AppleMediaServices/AMSBagConsumer-Protocol.h>
 
-@class ACAccount, AMSUserNotificationAction, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSString, NSURL;
+@class ACAccount, AMSUserNotificationAction, NSArray, NSDate, NSDictionary, NSMutableDictionary, NSSet, NSString, NSURL;
 
 @interface AMSUserNotification : NSObject <AMSBagConsumer>
 {
@@ -25,6 +25,7 @@
     NSString *_logKey;
     NSDictionary *_metricsEvent;
     NSDate *_scheduledTime;
+    NSSet *_subsections;
     NSString *_subtitle;
     NSString *_title;
     NSMutableDictionary *_userInfo;
@@ -50,6 +51,7 @@
 @property (strong, nonatomic) NSDictionary *metricsEvent; // @synthesize metricsEvent=_metricsEvent;
 @property (strong, nonatomic) NSDate *scheduledTime; // @synthesize scheduledTime=_scheduledTime;
 @property (nonatomic) BOOL shouldSuppressDefaultAction; // @synthesize shouldSuppressDefaultAction=_shouldSuppressDefaultAction;
+@property (strong, nonatomic) NSSet *subsections; // @synthesize subsections=_subsections;
 @property (strong, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
@@ -66,6 +68,7 @@
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
 + (long long)explicitEnabledForCenterBundleID:(id)arg1;
 + (id)handleNotificationResponse:(id)arg1 bag:(id)arg2;
 + (id)handleNotificationResponse:(id)arg1 bagContract:(id)arg2;
@@ -74,7 +77,7 @@
 + (id)notificationCenter:(id)arg1 openSettingsForNotification:(id)arg2 bag:(id)arg3;
 + (id)notificationWithPayload:(id)arg1 andConfig:(id)arg2;
 + (void)openAppUsingBundleIdentifier:(id)arg1;
-+ (BOOL)shouldDeleteNotificationForPayload:(id)arg1 outIdentifier:(id *)arg2;
++ (BOOL)shouldDeleteNotificationForPayload:(id)arg1 outIdentifier:(id *)arg2 scheduledOnly:(BOOL *)arg3;
 + (BOOL)shouldHandleNotificationResponse:(id)arg1;
 + (BOOL)shouldHandleServiceExtensionNotificationRequest:(id)arg1;
 - (void).cxx_destruct;
@@ -84,6 +87,7 @@
 - (id)createUNNotificationActions;
 - (id)createUNNotificationContent;
 - (id)createUNNotificationRequestFromContent:(id)arg1;
+- (id)determineSelectedActionFromResponse:(id)arg1 error:(id *)arg2;
 - (id)handleSelectedButton:(id)arg1 bag:(id)arg2;
 - (id)handleSelectedButton:(id)arg1 bagContract:(id)arg2;
 - (id)initWithNSUserNotification:(id)arg1;

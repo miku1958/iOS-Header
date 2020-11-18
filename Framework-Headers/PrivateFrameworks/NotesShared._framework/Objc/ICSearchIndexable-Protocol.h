@@ -12,6 +12,8 @@
 - (NSArray *)authorsExcludingCurrentUser;
 - (NSString *)contentIdentifier;
 - (NSDate *)creationDate;
+- (NSString *)dataSourceIdentifier;
+- (BOOL)isDeletable;
 - (BOOL)isHiddenFromSearch;
 - (BOOL)isMovable;
 - (NSManagedObjectContext *)managedObjectContext;

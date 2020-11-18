@@ -4,13 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeUI/HUIconCell.h>
+#import <UIKit/UITableViewCell.h>
+
+#import <HomeUI/HUDisableableCellProtocol-Protocol.h>
 
 @class NSString, UITextView;
 @protocol UITextViewDelegate;
 
-@interface HUEditableTextViewCell : HUIconCell
+@interface HUEditableTextViewCell : UITableViewCell <HUDisableableCellProtocol>
 {
+    BOOL _disabled;
     BOOL _editEnabled;
     BOOL _showingPlaceholder;
     NSString *_text;
@@ -18,9 +21,14 @@
     UITextView *_textView;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic, getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
 @property (nonatomic) BOOL editEnabled; // @synthesize editEnabled=_editEnabled;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSString *placeholderText; // @synthesize placeholderText=_placeholderText;
 @property (nonatomic) BOOL showingPlaceholder; // @synthesize showingPlaceholder=_showingPlaceholder;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 @property (strong, nonatomic) UITextView *textView; // @synthesize textView=_textView;
 @property (weak, nonatomic) id<UITextViewDelegate> textViewDelegate;
@@ -30,7 +38,6 @@
 - (void)handleUITextViewTextDidEndEditingNotification:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)prepareForReuse;
-- (void)setDisabled:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)trimmedStringForText:(id)arg1;

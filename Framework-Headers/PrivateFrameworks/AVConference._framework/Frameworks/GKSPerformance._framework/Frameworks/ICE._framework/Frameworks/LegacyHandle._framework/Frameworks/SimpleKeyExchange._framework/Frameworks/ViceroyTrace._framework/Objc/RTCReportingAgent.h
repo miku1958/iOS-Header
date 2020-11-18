@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)deriveFromParentHierarchyToken:(id)arg1;
 - (void)didSendMessageForReportingClient:(id)arg1 event:(id)arg2;
+- (void)finalizeAggregation;
 - (void)initAdaptiveLearningWithParameters:(id)arg1;
 - (id)initWithCallID:(unsigned int)arg1 clientType:(int)arg2 parentHierarchyToken:(id)arg3;
 - (int)learntBitrateForSegment:(id)arg1 defaultValue:(int)arg2;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (void)report:(id)arg1 segmentDirection:(int)arg2;
 - (void)reportQR:(id)arg1;
 - (unsigned short)reportingCallMethodForClientType:(int)arg1;
+- (unsigned short)reportingSegmentMethodForClientType:(int)arg1;
 - (unsigned short)reportingSessionMethodForClientType:(int)arg1;
 - (unsigned short)reportingSessionTypeForClientType:(int)arg1;
 - (void)reportingSetReportCallback:(CDUnknownFunctionPointerType)arg1 withContext:(void *)arg2;

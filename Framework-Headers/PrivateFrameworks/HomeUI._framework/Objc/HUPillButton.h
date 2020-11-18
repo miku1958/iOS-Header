@@ -6,20 +6,16 @@
 
 #import <UIKit/UIButton.h>
 
-@class NAUILayoutConstraintSet, NSString, UIFont, UILabel, UIView;
+@class NAUILayoutConstraintSet, NSString, UIColor, UIFont, UILabel, UIView;
 
 @interface HUPillButton : UIButton
 {
     unsigned long long _style;
+    unsigned long long _cornerRadiusStyle;
     NAUILayoutConstraintSet *_constraintSet;
     UIView *_backgroundView;
     UILabel *_buttonLabel;
-    struct {
-        double topToLabelBaselineDistance;
-        double labelBaselineToBottomDistance;
-        double minHorizontalPadding;
-        double minWidth;
-    } _metrics;
+    CDStruct_e9cf424c _metrics;
 }
 
 @property (nonatomic) BOOL adjustsFontSizeToFitWidth; // @dynamic adjustsFontSizeToFitWidth;
@@ -27,11 +23,13 @@
 @property (strong, nonatomic) UIFont *buttonFont;
 @property (readonly, nonatomic) UILabel *buttonLabel; // @synthesize buttonLabel=_buttonLabel;
 @property (copy, nonatomic) NSString *buttonText; // @dynamic buttonText;
+@property (strong, nonatomic) UIColor *buttonTextColor;
 @property (readonly, nonatomic) NAUILayoutConstraintSet *constraintSet; // @synthesize constraintSet=_constraintSet;
-@property (nonatomic) CDStruct_d2b197d1 metrics; // @synthesize metrics=_metrics;
+@property (readonly, nonatomic) unsigned long long cornerRadiusStyle; // @synthesize cornerRadiusStyle=_cornerRadiusStyle;
+@property (nonatomic) CDStruct_e9cf424c metrics; // @synthesize metrics=_metrics;
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
 
-+ (CDStruct_d2b197d1)defaultMetrics;
++ (CDStruct_e9cf424c)defaultMetrics;
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
 - (void)_didTap:(id)arg1;
@@ -39,6 +37,7 @@
 - (id)description;
 - (void)didMoveToSuperview;
 - (id)initWithBackgroundStyle:(unsigned long long)arg1;
+- (id)initWithBackgroundStyle:(unsigned long long)arg1 cornerRadiusStyle:(unsigned long long)arg2;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (void)setHighlighted:(BOOL)arg1;

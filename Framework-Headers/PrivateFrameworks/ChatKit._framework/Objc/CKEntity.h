@@ -20,7 +20,6 @@
 }
 
 @property (readonly, copy, nonatomic) NSString *IDSCanonicalAddress;
-@property (readonly, nonatomic) void *abRecord;
 @property (readonly, copy, nonatomic) NSString *abbreviatedDisplayName;
 @property (strong, nonatomic) IMChat *chat; // @synthesize chat=_chat;
 @property (strong, nonatomic) IMAccount *chatAccount; // @synthesize chatAccount=_chatAccount;
@@ -29,13 +28,12 @@
 @property (nonatomic) BOOL enlargedContactImage; // @synthesize enlargedContactImage=_enlargedContactImage;
 @property (readonly, copy, nonatomic) NSString *fullName;
 @property (strong, nonatomic) IMHandle *handle; // @synthesize handle=_handle;
-@property (readonly, nonatomic) int identifier;
 @property (readonly, nonatomic) BOOL isMe;
 @property (readonly, nonatomic) UIImage *locationMapViewContactImage;
 @property (readonly, nonatomic) UIImage *locationShareBalloonContactImage;
 @property (readonly, copy, nonatomic) NSString *name;
 @property (readonly, copy, nonatomic) NSString *originalAddress;
-@property (readonly, nonatomic) int propertyType;
+@property (readonly, nonatomic) NSString *propertyType;
 @property (readonly, copy, nonatomic) NSString *rawAddress;
 @property (readonly, copy, nonatomic) NSString *textToneIdentifier;
 @property (readonly, copy, nonatomic) NSString *textVibrationIdentifier;
@@ -44,21 +42,28 @@
 
 + (id)_copyEntityForAddressString:(id)arg1 onAccount:(id)arg2;
 + (id)copyEntityForAddressString:(id)arg1;
++ (id)entityForAddress:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_allowedByScreenTime;
 - (id)_croppedImageFromImageData:(id)arg1;
+- (void)_invalidateContactStoreCache:(id)arg1;
+- (void)_invalidatePartialContactStoreCache:(id)arg1;
 - (void)_setBusinessInfoForMutableContact:(id)arg1 enlargedImageData:(id)arg2;
+- (void)addToken:(id)arg1 ifAvailableToTokens:(id)arg2;
 - (id)cnContactWithKeys:(id)arg1;
 - (id)cnContactWithKeys:(id)arg1 shouldFetchSuggestedContact:(BOOL)arg2;
-- (void)contactStoreDidChange:(id)arg1;
-- (void)dealloc;
 - (id)description;
+- (id)displayNameMatchingInputText:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithChat:(id)arg1 imHandle:(id)arg2;
 - (id)initWithIMHandle:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isMentionable;
+- (id)mentionTokens;
+- (id)mentionsHandleID;
 - (id)personViewControllerWithDelegate:(id)arg1 isUnknown:(BOOL *)arg2;
 - (id)personViewControllerWithDelegate:(id)arg1 isUnknown:(BOOL *)arg2 contactStoreProvider:(id)arg3;
+- (id)pinnedConversationContactItemIdentifier;
 
 @end
 

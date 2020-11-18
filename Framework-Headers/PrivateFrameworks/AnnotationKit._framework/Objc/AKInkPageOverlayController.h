@@ -44,6 +44,7 @@
 - (struct CGRect)_convertRect:(struct CGRect)arg1 fromDrawingInCanvasView:(id)arg2 toPageControllerModelSpace:(id)arg3;
 - (void)_enclosingScrollViewDidScroll:(id)arg1;
 - (void)_fullSetup;
+- (void)_inkCanvasAnnotationUpdated:(id)arg1;
 - (void)_inkDidChangeNotification:(id)arg1;
 - (void)_partialTeardown;
 - (void)_performDelayedShapeDetection;

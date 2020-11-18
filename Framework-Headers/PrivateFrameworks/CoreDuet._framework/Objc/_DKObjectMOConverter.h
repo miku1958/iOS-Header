@@ -16,13 +16,11 @@
     NSCache *_cache;
 }
 
-@property (strong) NSCache *cache; // @synthesize cache=_cache;
 @property BOOL deduplicateValues; // @synthesize deduplicateValues=_deduplicateValues;
 @property (strong) NSArray *excludedMetadataKeys; // @synthesize excludedMetadataKeys=_excludedMetadataKeys;
 @property BOOL readMetadata; // @synthesize readMetadata=_readMetadata;
 
 - (void).cxx_destruct;
-- (BOOL)copyObject:(id)arg1 intoManagedObject:(id)arg2;
 - (id)dataIntervalsFromManagedObjects:(id)arg1;
 - (id)init;
 - (id)insertObject:(id)arg1 inManagedObjectContext:(id)arg2;

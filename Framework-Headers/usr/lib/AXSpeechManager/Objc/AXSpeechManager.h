@@ -91,9 +91,7 @@
 + (void)test_setAvailableVoices:(id)arg1;
 + (void)test_setUnitTestMode:(BOOL)arg1;
 - (void).cxx_destruct;
-- (void)__activeAudioRouteChanged:(id)arg1;
 - (void)__speechJobFinished:(id)arg1;
-- (void)_activeAudioRouteChanged:(id)arg1;
 - (void)_clearSpeechQueue;
 - (void)_continueSpeaking;
 - (void)_didBeginInterruption;
@@ -118,7 +116,6 @@
 - (void)_tearDown;
 - (void)_updateAudioSessionProperties;
 - (void)_updateAuxiliarySession;
-- (void)_updateAuxiliarySession:(BOOL)arg1;
 - (void)_updateUserSubstitutions;
 - (void)clearSpeechQueue;
 - (void)continueSpeaking;

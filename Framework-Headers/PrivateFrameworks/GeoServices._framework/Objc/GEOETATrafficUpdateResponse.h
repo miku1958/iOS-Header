@@ -7,13 +7,17 @@
 #import <ProtocolBuffer/PBCodable.h>
 
 #import <GeoServices/NSCopying-Protocol.h>
+#import <GeoServices/_GEOEnrouteNoticesProvider-Protocol.h>
 
-@class GEOClientMetrics, GEOETAServiceResponseSummary, GEOPDDatasetABStatus, NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOClientMetrics, GEOETAServiceResponseSummary, GEOETATrafficUpdateWaypointRoute, GEOPDDatasetABStatus, NSData, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
-@interface GEOETATrafficUpdateResponse : PBCodable <NSCopying>
+@interface GEOETATrafficUpdateResponse : PBCodable <_GEOEnrouteNoticesProvider, NSCopying>
 {
     PBDataReader *_reader;
     PBUnknownFields *_unknownFields;
+    struct GEOProblemDetail *_problemDetails;
+    unsigned long long _problemDetailsCount;
+    unsigned long long _problemDetailsSpace;
     NSMutableArray *_arrivalParameters;
     NSMutableArray *_cameras;
     GEOClientMetrics *_clientMetrics;
@@ -25,6 +29,7 @@
     NSMutableArray *_routes;
     NSData *_sessionState;
     NSMutableArray *_trafficSignals;
+    GEOETATrafficUpdateWaypointRoute *_waypointRoute;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -33,6 +38,7 @@
         unsigned int has_debugServerLatencyMs:1;
         unsigned int has_status:1;
         unsigned int read_unknownFields:1;
+        unsigned int read_problemDetails:1;
         unsigned int read_arrivalParameters:1;
         unsigned int read_cameras:1;
         unsigned int read_clientMetrics:1;
@@ -43,19 +49,8 @@
         unsigned int read_routes:1;
         unsigned int read_sessionState:1;
         unsigned int read_trafficSignals:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_arrivalParameters:1;
-        unsigned int wrote_cameras:1;
-        unsigned int wrote_clientMetrics:1;
-        unsigned int wrote_datasetAbStatus:1;
-        unsigned int wrote_debugData:1;
-        unsigned int wrote_debugServerLatencyMs:1;
-        unsigned int wrote_etaServiceSummary:1;
-        unsigned int wrote_responseId:1;
-        unsigned int wrote_routes:1;
-        unsigned int wrote_sessionState:1;
-        unsigned int wrote_trafficSignals:1;
-        unsigned int wrote_status:1;
+        unsigned int read_waypointRoute:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -64,7 +59,9 @@
 @property (strong, nonatomic) GEOClientMetrics *clientMetrics;
 @property (strong, nonatomic) GEOPDDatasetABStatus *datasetAbStatus;
 @property (strong, nonatomic) NSString *debugData;
+@property (readonly, copy) NSString *debugDescription;
 @property (nonatomic) unsigned long long debugServerLatencyMs;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) GEOETAServiceResponseSummary *etaServiceSummary;
 @property (readonly, nonatomic) BOOL hasClientMetrics;
 @property (readonly, nonatomic) BOOL hasDatasetAbStatus;
@@ -74,12 +71,18 @@
 @property (readonly, nonatomic) BOOL hasResponseId;
 @property (readonly, nonatomic) BOOL hasSessionState;
 @property (nonatomic) BOOL hasStatus;
+@property (readonly, nonatomic) BOOL hasWaypointRoute;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) struct GEOProblemDetail *problemDetails;
+@property (readonly, nonatomic) unsigned long long problemDetailsCount;
 @property (strong, nonatomic) NSData *responseId;
 @property (strong, nonatomic) NSMutableArray *routes;
 @property (strong, nonatomic) NSData *sessionState;
 @property (nonatomic) int status;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) NSMutableArray *trafficSignals;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
+@property (strong, nonatomic) GEOETATrafficUpdateWaypointRoute *waypointRoute;
 
 + (Class)arrivalParametersType;
 + (Class)cameraType;
@@ -88,22 +91,11 @@
 + (Class)trafficSignalType;
 - (void).cxx_destruct;
 - (int)StringAsStatus:(id)arg1;
-- (void)_addNoFlagsArrivalParameters:(id)arg1;
-- (void)_addNoFlagsCamera:(id)arg1;
-- (void)_addNoFlagsRoute:(id)arg1;
-- (void)_addNoFlagsTrafficSignal:(id)arg1;
-- (void)_readArrivalParameters;
-- (void)_readCameras;
-- (void)_readClientMetrics;
-- (void)_readDatasetAbStatus;
-- (void)_readDebugData;
-- (void)_readEtaServiceSummary;
-- (void)_readResponseId;
-- (void)_readRoutes;
-- (void)_readSessionState;
-- (void)_readTrafficSignals;
+- (id)_geoTrafficCameras;
+- (id)_geoTrafficSignals;
 - (void)addArrivalParameters:(id)arg1;
 - (void)addCamera:(id)arg1;
+- (void)addProblemDetail:(struct GEOProblemDetail)arg1;
 - (void)addRoute:(id)arg1;
 - (void)addTrafficSignal:(id)arg1;
 - (id)arrivalParametersAtIndex:(unsigned long long)arg1;
@@ -112,22 +104,27 @@
 - (unsigned long long)camerasCount;
 - (void)clearArrivalParameters;
 - (void)clearCameras;
+- (void)clearProblemDetails;
 - (void)clearRoutes;
 - (void)clearTrafficSignals;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
+- (void)dealloc;
 - (id)dictionaryRepresentation;
-- (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
+- (struct GEOProblemDetail)problemDetailAtIndex:(unsigned long long)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)routeAtIndex:(unsigned long long)arg1;
 - (unsigned long long)routesCount;
+- (void)setProblemDetails:(struct GEOProblemDetail *)arg1 count:(unsigned long long)arg2;
 - (id)statusAsString:(int)arg1;
 - (id)trafficSignalAtIndex:(unsigned long long)arg1;
 - (unsigned long long)trafficSignalsCount;

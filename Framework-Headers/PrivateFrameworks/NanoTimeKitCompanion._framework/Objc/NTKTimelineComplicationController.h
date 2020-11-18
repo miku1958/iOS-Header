@@ -11,6 +11,7 @@
 @interface NTKTimelineComplicationController : NTKComplicationController
 {
     BOOL _ignoreNewTemplates;
+    BOOL _useSampleTemplate;
     CLKComplicationTemplate *_alwaysOnTemplate;
     CLKComplicationTemplate *_lockedTemplate;
 }
@@ -19,6 +20,7 @@
 @property (readonly, nonatomic) CLKComplicationTemplate *alwaysOnTemplate; // @synthesize alwaysOnTemplate=_alwaysOnTemplate;
 @property (nonatomic) BOOL ignoreNewTemplates; // @synthesize ignoreNewTemplates=_ignoreNewTemplates;
 @property (readonly, nonatomic) CLKComplicationTemplate *lockedTemplate; // @synthesize lockedTemplate=_lockedTemplate;
+@property (nonatomic) BOOL useSampleTemplate; // @synthesize useSampleTemplate=_useSampleTemplate;
 
 + (BOOL)_isLegacy;
 - (void).cxx_destruct;

@@ -9,17 +9,18 @@
 @class HKSource, NSMutableArray, NSMutableSet, NSSet, NSString, NSUUID;
 @protocol OS_dispatch_source;
 
+__attribute__((visibility("hidden")))
 @interface _HDAuthorizationRequestGroup : NSObject
 {
     NSMutableSet *_typesToWrite;
     NSMutableSet *_typesToRead;
     BOOL _inTransaction;
-    HKSource *_source;
-    NSUUID *_promptSessionIdentifier;
-    CDUnknownBlockType _promptHandler;
     NSMutableArray *_requests;
     NSMutableArray *_completions;
     NSObject<OS_dispatch_source> *_sessionTimeoutSource;
+    HKSource *_source;
+    NSUUID *_promptSessionIdentifier;
+    CDUnknownBlockType _promptHandler;
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleIdentifier;

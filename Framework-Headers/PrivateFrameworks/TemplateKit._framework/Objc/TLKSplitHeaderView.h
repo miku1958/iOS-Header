@@ -8,11 +8,13 @@
 
 #import <TemplateKit/NUIContainerViewDelegate-Protocol.h>
 
-@class NSString, NUIContainerGridView, TLKEmbossedLabel, TLKImage, TLKImageView, TLKLabel, TLKMultilineText;
+@class NSString, NUIContainerGridView, NUIContainerStackView, TLKEmbossedLabel, TLKImage, TLKImageView, TLKLabel, TLKMultilineText;
 
 @interface TLKSplitHeaderView : TLKView <NUIContainerViewDelegate>
 {
+    BOOL _useLargeTitle;
     BOOL _shouldBadgeSubtitle;
+    BOOL _useCompactWidth;
     TLKMultilineText *_title;
     TLKMultilineText *_subtitle1;
     TLKMultilineText *_subtitle2;
@@ -29,6 +31,7 @@
     TLKLabel *_trailingTitleLabel;
     TLKLabel *_trailingSubtitleLabel;
     TLKLabel *_titleLabel;
+    NUIContainerStackView *_subtitleStackView;
     TLKLabel *_subtitle1Label;
     TLKEmbossedLabel *_subtitle2Label;
 }
@@ -48,6 +51,7 @@
 @property (strong, nonatomic) TLKLabel *subtitle1Label; // @synthesize subtitle1Label=_subtitle1Label;
 @property (strong, nonatomic) TLKMultilineText *subtitle2; // @synthesize subtitle2=_subtitle2;
 @property (strong, nonatomic) TLKEmbossedLabel *subtitle2Label; // @synthesize subtitle2Label=_subtitle2Label;
+@property (strong, nonatomic) NUIContainerStackView *subtitleStackView; // @synthesize subtitleStackView=_subtitleStackView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) TLKMultilineText *title; // @synthesize title=_title;
 @property (strong, nonatomic) TLKLabel *titleLabel; // @synthesize titleLabel=_titleLabel;
@@ -57,26 +61,24 @@
 @property (strong, nonatomic) TLKLabel *trailingSubtitleLabel; // @synthesize trailingSubtitleLabel=_trailingSubtitleLabel;
 @property (strong, nonatomic) TLKMultilineText *trailingTitle; // @synthesize trailingTitle=_trailingTitle;
 @property (strong, nonatomic) TLKLabel *trailingTitleLabel; // @synthesize trailingTitleLabel=_trailingTitleLabel;
+@property (nonatomic) BOOL useCompactWidth; // @synthesize useCompactWidth=_useCompactWidth;
+@property (nonatomic) BOOL useLargeTitle; // @synthesize useLargeTitle=_useLargeTitle;
 
-+ (id)footnoteFont;
 - (void).cxx_destruct;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
-- (struct UIEdgeInsets)effectiveAlignmentRectInsets;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
+- (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
 - (id)firstRowOfViews;
-- (id)footnoteLabel;
 - (id)grid;
 - (id)leadingImageInView;
-- (id)leadingSubtitleText;
 - (void)observedPropertiesChanged;
 - (BOOL)secondRowIsHidden;
 - (id)secondRowOfViews;
 - (id)setupContentView;
-- (id)subtitleLabelText;
+- (id)subtitleLabel;
 - (id)thirdRowOfViews;
-- (id)titleFont;
-- (id)titleLabelText;
 - (id)trailingImageInView;
-- (id)trailingSubtitleText;
+- (BOOL)usesDefaultLayoutMargins;
 
 @end
 

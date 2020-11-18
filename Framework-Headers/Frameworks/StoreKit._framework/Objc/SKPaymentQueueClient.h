@@ -9,6 +9,7 @@
 #import <StoreKit/NSCopying-Protocol.h>
 
 @class NSNumber, NSString;
+@protocol SKPaymentQueueClientDelegate;
 
 @interface SKPaymentQueueClient : NSObject <NSCopying>
 {
@@ -23,11 +24,13 @@
     NSNumber *_storeExternalVersion;
     NSNumber *_storeItemIdentifier;
     NSString *_vendorIdentifier;
+    id<SKPaymentQueueClientDelegate> _delegate;
 }
 
 @property (nonatomic) BOOL allowsBootstrapCellularData; // @synthesize allowsBootstrapCellularData=_allowsBootstrapCellularData;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
+@property (weak, nonatomic) id<SKPaymentQueueClientDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long environmentType; // @synthesize environmentType=_environmentType;
 @property (nonatomic) BOOL hidesConfirmationDialogs; // @synthesize hidesConfirmationDialogs=_hidesConfirmationDialogs;
 @property (nonatomic) BOOL ignoresInAppPurchaseRestriction; // @synthesize ignoresInAppPurchaseRestriction=_ignoresInAppPurchaseRestriction;

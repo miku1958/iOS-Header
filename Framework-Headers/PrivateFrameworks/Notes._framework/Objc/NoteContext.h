@@ -8,7 +8,7 @@
 
 #import <Notes/ICLegacyContext-Protocol.h>
 
-@class AccountUtilities, CPExclusiveLock, ICManagedObjectContextUpdater, NSManagedObjectContext, NSMutableDictionary, NSNumber, NoteAccountObject, NoteStoreObject;
+@class AccountUtilities, CPExclusiveLock, ICManagedObjectContextUpdater, ICSelectorDelayer, NSManagedObjectContext, NSMutableDictionary, NSNumber, NoteAccountObject, NoteStoreObject;
 
 @interface NoteContext : NSObject <ICLegacyContext>
 {
@@ -29,10 +29,13 @@
     BOOL _isMainContext;
     BOOL _usePrivateQueue;
     ICManagedObjectContextUpdater *_mocUpdater;
+    ICSelectorDelayer *_externalChangeNotificationDelayer;
 }
 
 @property (strong, nonatomic) AccountUtilities *accountUtilities; // @synthesize accountUtilities=_accountUtilities;
+@property (strong, nonatomic) ICSelectorDelayer *externalChangeNotificationDelayer; // @synthesize externalChangeNotificationDelayer=_externalChangeNotificationDelayer;
 @property (nonatomic) BOOL isMainContext; // @synthesize isMainContext=_isMainContext;
+@property (readonly, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (strong, nonatomic) ICManagedObjectContextUpdater *mocUpdater; // @synthesize mocUpdater=_mocUpdater;
 @property (nonatomic) BOOL usePrivateQueue; // @synthesize usePrivateQueue=_usePrivateQueue;
@@ -41,13 +44,19 @@
 + (id)allVisibleNotesMatchingPredicate:(id)arg1 sorted:(BOOL)arg2 context:(id)arg3;
 + (id)allVisibleNotesMatchingPredicate:(id)arg1 sorted:(BOOL)arg2 context:(id)arg3 fetchLimit:(unsigned long long)arg4;
 + (void)clearTestsNotesRootPath;
++ (unsigned long long)countOfVisibleNotesInCollection:(id)arg1;
++ (unsigned long long)countOfVisibleNotesInCollectionIncludingNotesWithoutBodyContent:(id)arg1;
++ (unsigned long long)countOfVisibleNotesMatchingPredicate:(id)arg1 context:(id)arg2;
++ (unsigned long long)countOfVisibleNotesMatchingPredicate:(id)arg1 includingNoteWithoutBodyContent:(BOOL)arg2 context:(id)arg3;
 + (BOOL)databaseIsCorrupt:(id)arg1;
 + (id)defaultNotesSortDescriptors;
 + (id)fileProtectionOption;
 + (id)fileURLProtectionOption;
 + (id)generateGUID;
 + (id)managedObjectModel;
++ (id)newFetchRequestForAccounts;
 + (id)newFetchRequestForNotes;
++ (id)newFetchRequestForStores;
 + (id)newLegacyContext;
 + (id)newManagedObjectContext;
 + (id)newlyAddedAttachmentInContext:(id)arg1;
@@ -61,6 +70,7 @@
 + (BOOL)shouldLogIndexing;
 + (id)storeOptions;
 + (id)urlForPersistentStore;
++ (id)visibleNotesIncludingEmptyBodyContentPredicate;
 + (id)visibleNotesPredicate;
 - (void).cxx_destruct;
 - (void)_createLocalAccount:(id *)arg1 andStore:(id *)arg2;
@@ -116,14 +126,18 @@
 - (id)initWithAccountUtilities:(id)arg1 inMigrator:(BOOL)arg2;
 - (id)initWithAccountUtilities:(id)arg1 inMigrator:(BOOL)arg2 isMainContext:(BOOL)arg3 usePrivateQueue:(BOOL)arg4;
 - (id)initWithPrivateQueue;
+- (id)initWithPrivateQueue:(BOOL)arg1;
 - (void)invalidate;
 - (id)liveNotesNeedingBodiesPredicate;
 - (id)localAccount;
 - (id)localStore;
 - (void)managedObjectContextWillSaveNotification:(id)arg1;
 - (id)mostRecentlyModifiedNoteInCollection:(id)arg1;
+- (id)newFRCForAccountsWithDelegate:(id)arg1;
 - (id)newFRCForCollection:(id)arg1 delegate:(id)arg2;
 - (id)newFRCForCollection:(id)arg1 delegate:(id)arg2 performFetch:(BOOL)arg3;
+- (id)newFRCForFetchRequest:(id)arg1 delegate:(id)arg2 performFetch:(BOOL)arg3;
+- (id)newFRCForStoresWithDelegate:(id)arg1;
 - (id)newFetchRequestForNotes;
 - (id)newlyAddedAccount;
 - (id)newlyAddedAttachment;
@@ -137,6 +151,7 @@
 - (id)notesForIntegerIds:(id)arg1;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)performBlockAndWait:(CDUnknownBlockType)arg1;
+- (void)postNotesChangedExternally;
 - (id)propertyValueForKey:(id)arg1;
 - (void)receiveDarwinNotificationWithChangeLogging:(BOOL)arg1;
 - (void)reset;

@@ -33,7 +33,6 @@
 - (id)safari_displayNameWithTitle:(id)arg1;
 - (BOOL)safari_hasCharactersBeyondPath;
 - (BOOL)safari_hasLocalScheme;
-- (BOOL)safari_hasSameOriginAsURL:(id)arg1;
 - (BOOL)safari_hasScheme:(id)arg1;
 - (BOOL)safari_hasUserOrPassword;
 - (BOOL)safari_isDataURL;
@@ -50,5 +49,6 @@
 - (id)safari_userVisibleString;
 - (id)safari_userVisibleStringConsideringLongURLs;
 - (id)safari_wellKnownChangePasswordURL;
+- (id)safari_wellKnownResponseCodeReliabilityURL;
 @end
 

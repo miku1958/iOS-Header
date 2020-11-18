@@ -24,7 +24,6 @@
 @property (readonly, nonatomic) struct CGPoint contactPoint; // @synthesize contactPoint=_contactPoint;
 
 + (id)allocWithZone:(struct _NSZone *)arg1;
-+ (id)copyWithZone:(struct _NSZone *)arg1;
 - (void).cxx_destruct;
 
 @end

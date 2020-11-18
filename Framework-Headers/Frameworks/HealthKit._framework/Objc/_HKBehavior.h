@@ -10,8 +10,10 @@
 
 @interface _HKBehavior : NSObject
 {
+    NSNumber *_overriddenSupportsCloudSync;
     NSNumber *_overriddenSupportsSwimmingWorkoutSessions;
     NSNumber *_overriddenEnableManateeForHSA2Accounts;
+    NSNumber *_overriddenSupportsWorkoutSmoothing;
     struct _HKLazyLoader<bool> _futureMigrationsEnabled;
     BOOL _isDeviceSupported;
     BOOL _isAppleInternalInstall;
@@ -19,19 +21,19 @@
     BOOL _isCompanionCapable;
     BOOL _hasTelephonyCapability;
     BOOL _isRunningStoreDemoMode;
-    BOOL _runningInStoreDemoModeF201;
-    BOOL _deviceSupportsHeartRateMotionContexts;
     BOOL _collectsCalorimetry;
     BOOL _collectsData;
     BOOL _performsWorkoutCondensation;
     BOOL _supportsAWDMetricSubmission;
     BOOL _supportsActivitySharing;
     BOOL _supportsAppSubscriptions;
+    BOOL _supportsComputedUserCharacteristicCaching;
     BOOL _supportsFeatureAvailabilityAssets;
     BOOL _supportsHeartRateDataCollection;
     BOOL _supportsNanoSync;
     BOOL _supportsSampleExpiration;
     BOOL _supportsWorkouts;
+    BOOL _supportsOntology;
     BOOL _showSensitiveLogItems;
     BOOL _unitTest_useEmbeddedOntology;
     BOOL _unitTest_useEmbeddedOntologyAsset;
@@ -40,13 +42,18 @@
     BOOL _ignoreOntologyVersionCheckDuringReferenceOntologyImport;
     BOOL _hasOntologyFeaturesEnabled;
     BOOL _isTestingDevice;
+    BOOL _supportsWorkoutRouteSmoothing;
+    BOOL _tinkerModeEnabled;
     BOOL _healthAppHidden;
+    BOOL _runningInStoreDemoModeF201;
+    BOOL _journalDatabaseFeatureEnabled;
     NSString *_unitTest_deviceRegionCode;
+    NSString *_currentDeviceClass;
 }
 
 @property (nonatomic) BOOL collectsCalorimetry; // @synthesize collectsCalorimetry=_collectsCalorimetry;
 @property (nonatomic) BOOL collectsData; // @synthesize collectsData=_collectsData;
-@property (readonly, copy, nonatomic) NSString *currentDeviceClass;
+@property (copy, nonatomic) NSString *currentDeviceClass; // @synthesize currentDeviceClass=_currentDeviceClass;
 @property (readonly, copy, nonatomic) NSString *currentDeviceDisplayName;
 @property (readonly, copy, nonatomic) NSString *currentDeviceManufacturer;
 @property (readonly, copy, nonatomic) NSString *currentDeviceName;
@@ -59,7 +66,6 @@
 @property (readonly, copy, nonatomic) NSString *currentOSName;
 @property (readonly, copy, nonatomic) NSString *currentOSVersion;
 @property (readonly, nonatomic) CDStruct_f6aba300 currentOSVersionStruct;
-@property (nonatomic) BOOL deviceSupportsHeartRateMotionContexts; // @synthesize deviceSupportsHeartRateMotionContexts=_deviceSupportsHeartRateMotionContexts;
 @property (nonatomic) BOOL futureMigrationsEnabled;
 @property (nonatomic) BOOL hasOntologyFeaturesEnabled; // @synthesize hasOntologyFeaturesEnabled=_hasOntologyFeaturesEnabled;
 @property (nonatomic) BOOL hasTelephonyCapability; // @synthesize hasTelephonyCapability=_hasTelephonyCapability;
@@ -74,30 +80,34 @@
 @property (nonatomic) BOOL isDeviceSupported; // @synthesize isDeviceSupported=_isDeviceSupported;
 @property (readonly, nonatomic) BOOL isRunningStoreDemoMode; // @synthesize isRunningStoreDemoMode=_isRunningStoreDemoMode;
 @property (nonatomic) BOOL isTestingDevice; // @synthesize isTestingDevice=_isTestingDevice;
+@property (nonatomic) BOOL journalDatabaseFeatureEnabled; // @synthesize journalDatabaseFeatureEnabled=_journalDatabaseFeatureEnabled;
 @property (readonly, copy, nonatomic) NSTimeZone *localTimeZone;
 @property (readonly, nonatomic, getter=isManateeEnabledForHSA2Accounts) BOOL manateeEnabledForHSA2Accounts;
 @property (nonatomic) BOOL ontologyAvailabilityRequiresAccounts; // @synthesize ontologyAvailabilityRequiresAccounts=_ontologyAvailabilityRequiresAccounts;
 @property (nonatomic) BOOL performsWorkoutCondensation; // @synthesize performsWorkoutCondensation=_performsWorkoutCondensation;
-@property (readonly, nonatomic) BOOL runningInStoreDemoModeF201; // @synthesize runningInStoreDemoModeF201=_runningInStoreDemoModeF201;
+@property (nonatomic) BOOL runningInStoreDemoModeF201; // @synthesize runningInStoreDemoModeF201=_runningInStoreDemoModeF201;
 @property (nonatomic) BOOL showSensitiveLogItems; // @synthesize showSensitiveLogItems=_showSensitiveLogItems;
 @property (nonatomic) BOOL supportsAWDMetricSubmission; // @synthesize supportsAWDMetricSubmission=_supportsAWDMetricSubmission;
 @property (nonatomic) BOOL supportsActivitySharing; // @synthesize supportsActivitySharing=_supportsActivitySharing;
 @property (nonatomic) BOOL supportsAppSubscriptions; // @synthesize supportsAppSubscriptions=_supportsAppSubscriptions;
-@property (readonly, nonatomic) BOOL supportsCloudSync;
+@property (nonatomic) BOOL supportsCloudSync;
+@property (nonatomic) BOOL supportsComputedUserCharacteristicCaching; // @synthesize supportsComputedUserCharacteristicCaching=_supportsComputedUserCharacteristicCaching;
 @property (readonly, nonatomic) BOOL supportsEED;
 @property (readonly, nonatomic) BOOL supportsFeatureAvailabilityAssets; // @synthesize supportsFeatureAvailabilityAssets=_supportsFeatureAvailabilityAssets;
 @property (nonatomic) BOOL supportsHeartRateDataCollection; // @synthesize supportsHeartRateDataCollection=_supportsHeartRateDataCollection;
 @property (nonatomic) BOOL supportsNanoSync; // @synthesize supportsNanoSync=_supportsNanoSync;
+@property (readonly, nonatomic) BOOL supportsOntology; // @synthesize supportsOntology=_supportsOntology;
 @property (nonatomic) BOOL supportsSampleExpiration; // @synthesize supportsSampleExpiration=_supportsSampleExpiration;
 @property (nonatomic) BOOL supportsSwimmingWorkoutSessions;
+@property (nonatomic) BOOL supportsWorkoutRouteSmoothing; // @synthesize supportsWorkoutRouteSmoothing=_supportsWorkoutRouteSmoothing;
 @property (nonatomic) BOOL supportsWorkouts; // @synthesize supportsWorkouts=_supportsWorkouts;
+@property (nonatomic) BOOL tinkerModeEnabled; // @synthesize tinkerModeEnabled=_tinkerModeEnabled;
 @property (readonly, nonatomic) unsigned long long totalDiskCapacity;
 @property (copy, nonatomic) NSString *unitTest_deviceRegionCode; // @synthesize unitTest_deviceRegionCode=_unitTest_deviceRegionCode;
 @property (nonatomic) BOOL unitTest_useEmbeddedOntology; // @synthesize unitTest_useEmbeddedOntology=_unitTest_useEmbeddedOntology;
 @property (nonatomic) BOOL unitTest_useEmbeddedOntologyAsset; // @synthesize unitTest_useEmbeddedOntologyAsset=_unitTest_useEmbeddedOntologyAsset;
 
 + (BOOL)_condensesHeartRateSamples;
-+ (BOOL)_deviceSupportsHeartRateMotionContexts;
 + (BOOL)_futureMigrationsEnabled;
 + (BOOL)_hasCompletedBuddyWithVersion:(long long)arg1;
 + (BOOL)_hasTelephonyCapability;
@@ -107,7 +117,6 @@
 + (BOOL)_isForceBuddyEnabled;
 + (BOOL)_isProductTypeSeries3OrOlder:(id)arg1;
 + (BOOL)_isRunningStoreDemoMode;
-+ (BOOL)_readEnableManateeForHSA2AccountsFromHealthdDefaults;
 + (BOOL)_runningInStoreDemoModeF201;
 + (long long)_runningInStoreDemoModeFProgramNumber;
 + (void)_setHasCompletedBuddyWithVersion:(long long)arg1;
@@ -115,6 +124,7 @@
 + (BOOL)_showSensitiveLogItems;
 + (id)_simulatorDefaultName;
 + (id)_simulatorSettings;
++ (BOOL)_tinkerModeEnabled;
 + (BOOL)activePairedWatchHasSmartFitnessCoaching;
 + (BOOL)activePairedWatchSupportsBradycardiaDetection;
 + (BOOL)activePairedWatchSupportsHeartRateMotionContexts;
@@ -139,6 +149,7 @@
 + (BOOL)isManateeEnabledByDefault;
 + (BOOL)isRunningStoreDemoMode;
 + (BOOL)isTestingDevice;
++ (BOOL)isiPod;
 + (int)nanoSyncProtocolVersionForCompanionSystemBuildVersion:(id)arg1;
 + (int)nanoSyncProtocolVersionForWatchSystemBuildVersion:(id)arg1;
 + (void)resetSharedBehavior;
@@ -154,6 +165,7 @@
 - (id)currentDeviceReleaseType;
 - (id)init;
 - (void)setManateeEnabledForHSA2AccountsOverride:(BOOL)arg1;
+- (void)setSupportsWorkoutRouteSmoothingOverride:(BOOL)arg1;
 
 @end
 

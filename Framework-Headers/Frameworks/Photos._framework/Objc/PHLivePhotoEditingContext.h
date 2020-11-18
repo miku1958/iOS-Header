@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class CIImage, ISEditSession;
+@class CIImage, PFLivePhotoEditSession;
 
 @interface PHLivePhotoEditingContext : NSObject
 {
-    ISEditSession *_editSession;
+    PFLivePhotoEditSession *_editSession;
 }
 
 @property float audioVolume;

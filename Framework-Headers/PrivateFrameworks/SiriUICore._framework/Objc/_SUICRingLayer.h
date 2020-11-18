@@ -10,8 +10,10 @@
 
 @interface _SUICRingLayer : CAShapeLayer
 {
+    double _customLineWidth;
 }
 
+@property (nonatomic) double customLineWidth; // @synthesize customLineWidth=_customLineWidth;
 @property (copy, nonatomic) UIColor *ringColor;
 
 - (id)init;

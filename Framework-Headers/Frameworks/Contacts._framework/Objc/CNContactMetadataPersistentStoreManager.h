@@ -28,7 +28,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)createStoreDirectoryIfNeeded:(id *)arg1;
 - (id)init;
 - (id)initWithStoreLocation:(id)arg1;
-- (void)performWorkWithManagedObjectContext:(CDUnknownBlockType)arg1 error:(id *)arg2;
+- (BOOL)performWorkWithManagedObjectContext:(CDUnknownBlockType)arg1 error:(id *)arg2;
 - (id)persistentStoreCoordinator;
 - (BOOL)setupIfNeeded:(id *)arg1;
 - (id)storeDescription;

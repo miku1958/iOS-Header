@@ -6,35 +6,40 @@
 
 #import <objc/NSObject.h>
 
-@class NSCalendar, NSDate, NSDateComponents, NSLocale, NSTimeZone, _UIDatePickerChineseCalendar;
+@class NSCalendar, NSDate, NSDateComponents, NSLocale, NSString, NSTimeZone, _UIDatePickerChineseCalendar, _UIDatePickerDateRange;
 
 __attribute__((visibility("hidden")))
 @interface _UIDatePickerDataModel : NSObject
 {
     NSLocale *_effectiveLocale;
+    NSCalendar *_effectiveCalendar;
     _UIDatePickerChineseCalendar *_chineseWrapperCalendar;
+    _UIDatePickerDateRange *_dateRange;
+    long long _datePickerStyle;
     long long _datePickerMode;
     NSLocale *_locale;
     NSCalendar *_calendar;
     NSTimeZone *_timeZone;
     NSDate *_date;
     NSDateComponents *_lastSelectedDateComponents;
-    NSDate *_minimumDate;
-    NSDate *_maximumDate;
     long long _minuteInterval;
+    NSString *_customFontDesign;
 }
 
 @property (copy, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
+@property (strong, nonatomic) NSString *customFontDesign; // @synthesize customFontDesign=_customFontDesign;
 @property (strong, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (nonatomic) long long datePickerMode; // @synthesize datePickerMode=_datePickerMode;
+@property (nonatomic) long long datePickerStyle; // @synthesize datePickerStyle=_datePickerStyle;
 @property (readonly, nonatomic) NSCalendar *effectiveCalendar;
 @property (readonly, nonatomic) NSDate *effectiveDate;
+@property (readonly, copy, nonatomic) NSDateComponents *effectiveDateComponents;
 @property (readonly, nonatomic) NSLocale *effectiveLocale;
 @property (readonly, nonatomic) NSCalendar *formattingCalendar;
 @property (strong, nonatomic) NSDateComponents *lastSelectedDateComponents; // @synthesize lastSelectedDateComponents=_lastSelectedDateComponents;
 @property (strong, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
-@property (strong, nonatomic) NSDate *maximumDate; // @synthesize maximumDate=_maximumDate;
-@property (strong, nonatomic) NSDate *minimumDate; // @synthesize minimumDate=_minimumDate;
+@property (strong, nonatomic) NSDate *maximumDate;
+@property (strong, nonatomic) NSDate *minimumDate;
 @property (nonatomic) long long minuteInterval; // @synthesize minuteInterval=_minuteInterval;
 @property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 

@@ -72,7 +72,7 @@
 - (void)_prepareScenesForSceneUpdates;
 - (void)_prepareScenesForTransition;
 - (BOOL)_sceneEntities:(id)arg1 hasEntityRepresentingSceneID:(id)arg2;
-- (void)_sendActivationResultWithSuccess:(BOOL)arg1;
+- (void)_sendActivationResultWithError:(id)arg1;
 - (void)_updateAggregateDictionary;
 - (void)_updateKeyboardContextMaskStyles:(BOOL)arg1;
 - (void)_updateScenesForTransitionCompletion;

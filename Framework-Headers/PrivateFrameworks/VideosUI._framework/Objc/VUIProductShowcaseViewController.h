@@ -32,7 +32,10 @@ __attribute__((visibility("hidden")))
 - (void)_configureNavigationBarGradient;
 - (void)_configureTransitionBackgroundView;
 - (id)_gradientLayer;
+- (void)_handleAppWillEnterForeground:(id)arg1;
+- (void)_handleAutoHighlightScroll:(id)arg1;
 - (long long)_overrideLargeTitleDisplayMode;
+- (void)_setUserActivityData;
 - (void)_setupProductBanner;
 - (void)configureAppearanceTransition;
 - (long long)preferredStatusBarStyle;
@@ -40,7 +43,9 @@ __attribute__((visibility("hidden")))
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateWithViewElement:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)willTransitionToTraitCollection:(id)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

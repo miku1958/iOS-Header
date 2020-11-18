@@ -25,9 +25,10 @@
 - (id)initWithAssetName:(id)arg1 forPhoneTarget:(BOOL)arg2;
 - (id)initWithFrame:(struct CGRect)arg1 assetName:(id)arg2 forPhoneTarget:(BOOL)arg3;
 - (void)setDigitalCardImage:(id)arg1;
-- (void)setImageForCard:(id)arg1 image:(id)arg2;
+- (void)setImage:(id)arg1 forPublishedObjectWithName:(id)arg2;
 - (void)setPlasticCardImage:(id)arg1;
 - (void)setState:(unsigned long long)arg1 animated:(BOOL)arg2;
+- (void)setWatchAssetImage:(id)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

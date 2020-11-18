@@ -40,9 +40,12 @@
 @property (strong, nonatomic) NSLayoutConstraint *widthAnchorLayoutConstraint; // @synthesize widthAnchorLayoutConstraint=_widthAnchorLayoutConstraint;
 
 - (void).cxx_destruct;
+- (BOOL)_hasBaseline;
 - (void)commonInit;
+- (id)firstBaselineAnchor;
 - (id)initWithTitle:(id)arg1;
 - (id)initWithTitle:(id)arg1 theme:(unsigned long long)arg2;
+- (id)lastBaselineAnchor;
 - (void)loadConstraints;
 - (double)scaledLayoutValueForBaseValue:(double)arg1;
 - (double)scaledLayoutValueForBaseValue:(double)arg1 shouldLowerBound:(BOOL)arg2;

@@ -34,6 +34,8 @@
     UIView *_snapshotOverlayView;
     UITapGestureRecognizer *_backGestureRecognizer;
     NSUUID *_currentRunningAnimationsUUID;
+    BOOL _shouldDeactivateReachabilityWhenTransitioning;
+    BOOL _forcePresentationInPresenterScene;
     BOOL _changedPresentingViewControllerDuringAdaptation;
     BOOL _shouldContinueTouchesOnTargetViewController;
     BOOL _containerIgnoresDirectTouchEvents;
@@ -73,6 +75,7 @@
 @property (copy, nonatomic) CDUnknownBlockType _currentTransitionDidComplete; // @synthesize _currentTransitionDidComplete=__currentTransitionDidComplete;
 @property (copy, nonatomic) CDUnknownBlockType _customFromViewForCurrentTransition; // @synthesize _customFromViewForCurrentTransition=__customFromViewForCurrentTransition;
 @property (copy, nonatomic) CDUnknownBlockType _customToViewForCurrentTransition; // @synthesize _customToViewForCurrentTransition=__customToViewForCurrentTransition;
+@property (nonatomic, setter=_setForcePresentationInPresenterScene:) BOOL _forcePresentationInPresenterScene; // @synthesize _forcePresentationInPresenterScene;
 @property (copy, nonatomic) CDUnknownBlockType _fromViewForCurrentTransition; // @synthesize _fromViewForCurrentTransition=__fromViewForCurrentTransition;
 @property (readonly, nonatomic) BOOL _isPresentedInFullScreen;
 @property (readonly, nonatomic) BOOL _mayChildGrabPresentedViewControllerView;
@@ -95,6 +98,7 @@
 @property (weak, nonatomic) id<UIAdaptivePresentationControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly, nonatomic) struct CGRect frameOfPresentedViewInContainerView;
 @property (readonly) unsigned long long hash;
@@ -113,6 +117,7 @@
 @property (strong, nonatomic, setter=_setPresentingViewController:) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (readonly, nonatomic, getter=_realSourceView) UIView *realSourceView; // @synthesize realSourceView=_realSourceView;
 @property (nonatomic, getter=_shouldContinueTouchesOnTargetViewController, setter=_setShouldContinueTouchesOnTargetViewController:) BOOL shouldContinueTouchesOnTargetViewController; // @synthesize shouldContinueTouchesOnTargetViewController=_shouldContinueTouchesOnTargetViewController;
+@property (nonatomic, getter=_shouldDeactivateReachabilityWhenTransitioning, setter=_setShouldDeactivateReachabilityWhenTransitioning:) BOOL shouldDeactivateReachabilityWhenTransitioning; // @synthesize shouldDeactivateReachabilityWhenTransitioning=_shouldDeactivateReachabilityWhenTransitioning;
 @property (readonly, nonatomic) BOOL shouldPresentInFullscreen;
 @property (readonly, nonatomic) BOOL shouldRemovePresentersView;
 @property (nonatomic) struct CGRect sourceRect; // @synthesize sourceRect=_sourceRect;
@@ -126,7 +131,7 @@
 + (BOOL)_preventsAppearanceProxyCustomization;
 + (void)_scheduleTransition:(CDUnknownBlockType)arg1;
 + (BOOL)_shouldDeferTransitions;
-+ (struct UIEdgeInsets)_statusBarOverlapAndMarginInfoForView:(id)arg1;
++ (struct UIEdgeInsets)_statusBarOverlapAndMarginInfoForView:(id)arg1 inWindow:(id)arg2;
 + (void)initialize;
 - (void).cxx_destruct;
 - (CDStruct_912cb5d2)__sizeClassPair;
@@ -139,14 +144,17 @@
 - (Class)_appearanceGuideClass;
 - (struct UIEdgeInsets)_baseContentInsetsWithLeftMargin:(double *)arg1 rightMargin:(double *)arg2;
 - (void)_beginOcclusionIfNecessary:(BOOL)arg1;
+- (BOOL)_canPresentInSeparateScene;
 - (id)_childPresentationController;
 - (void)_cleanup;
+- (void)_closeScene;
 - (void)_containedViewControllerModalStateChanged;
 - (void)_containerViewBoundsDidChange;
 - (void)_containerViewLayoutSubviews;
 - (void)_containerViewSafeAreaInsetsDidChange;
 - (void)_containerViewTraitCollectionDidChange;
 - (void)_containerViewWillLayoutSubviews;
+- (void)_convertToSceneFromPresentingViewController:(id)arg1;
 - (void)_coverWithSnapshot;
 - (id)_currentContextPresentationSuperview;
 - (long long)_defaultPresentationStyleForTraitCollection:(id)arg1;
@@ -161,13 +169,15 @@
 - (BOOL)_forcesPreferredAnimationControllers;
 - (struct CGRect)_frameForChildContentContainer:(id)arg1;
 - (struct CGRect)_frameForTransitionViewInPresentationSuperview:(id)arg1;
+- (struct CGRect)_frameForTransitionViewInPresentationSuperview:(id)arg1 inWindow:(id)arg2;
 - (struct CGRect)_frameOfPresentedViewControllerViewInSuperview;
 - (id)_fullscreenPresentationSuperview;
-- (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(id)arg2;
 - (BOOL)_gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)_gestureRecognizerShouldBegin:(id)arg1;
 - (BOOL)_inheritsPresentingViewControllerThemeLevel;
 - (void)_initViewHierarchyForPresentationSuperview:(id)arg1;
+- (void)_initViewHierarchyForPresentationSuperview:(id)arg1 inWindow:(id)arg2;
 - (id)_initialPresentationViewControllerForViewController:(id)arg1;
 - (BOOL)_isAdapted;
 - (BOOL)_isModal;
@@ -184,7 +194,7 @@
 - (id)_preferredInteractionControllerForDismissal:(id)arg1;
 - (id)_preferredInteractionControllerForPresentation:(id)arg1;
 - (void)_prepareForWindowDeallocRecursively:(BOOL)arg1;
-- (void)_presentWithAnimationController:(id)arg1 interactionController:(id)arg2 target:(id)arg3 didEndSelector:(SEL)arg4;
+- (void)_presentWithAnimationController:(id)arg1 inWindow:(id)arg2 interactionController:(id)arg3 target:(id)arg4 didEndSelector:(SEL)arg5;
 - (id)_presentationControllerForTraitCollection:(id)arg1;
 - (BOOL)_presentationPotentiallyUnderlapsStatusBar;
 - (id)_presentedViewControllerForPresentationController:(id)arg1 traitCollection:(id)arg2;
@@ -203,6 +213,7 @@
 - (void)_setOverrideTraitCollection:(id)arg1 updatingPresentedViewControllerImmediately:(BOOL)arg2;
 - (void)_setRealSourceView:(id)arg1;
 - (BOOL)_shouldAdaptFromTraitCollection:(id)arg1 toTraitCollection:(id)arg2;
+- (BOOL)_shouldConvertToScene;
 - (BOOL)_shouldDisableInteractionDuringTransitions;
 - (BOOL)_shouldDisablePresentersAppearanceCallbacks;
 - (BOOL)_shouldDismiss;

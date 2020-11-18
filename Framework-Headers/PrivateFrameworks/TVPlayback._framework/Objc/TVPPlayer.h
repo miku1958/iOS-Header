@@ -23,6 +23,7 @@
     BOOL _preventsSleepDuringVideoPlayback;
     BOOL _updatesMediaRemoteInfoAutomatically;
     BOOL _isLive;
+    BOOL _prefersSDRVideo;
     BOOL _limitsBandwidthForCellularAccess;
     BOOL _allowsCellularUsage;
     BOOL _allowsConstrainedNetworkUsage;
@@ -38,6 +39,7 @@
     BOOL _currentPlayerItemContainsRealDates;
     BOOL _modifyingAVPlayerRate;
     BOOL _modifyingAVPlayerQueue;
+    BOOL _playerItemChangeIsHappening;
     BOOL _sceneCompletelyBuffered;
     BOOL _outputObscuredDueToInsufficientExternalProtection;
     BOOL _asyncDelegateInProgress;
@@ -81,6 +83,8 @@
     NSHashTable *_videoViewWeakReferences;
     NSMutableSet *_mediaItemLoaders;
     long long _currentMediaItemVideoRange;
+    long long _currentMediaItemAudioFormat;
+    long long _currentMediaItemAudioChannels;
     NSArray *_pendingSelectedMediaArray;
     TVPPlayerItem *_currentPlayerItem;
     NSDate *_dateBeingSeekedTo;
@@ -147,6 +151,8 @@
 @property (strong, nonatomic) TVPInterstitial *currentInterstitial; // @synthesize currentInterstitial=_currentInterstitial;
 @property (strong, nonatomic) TVPInterstitialCollection *currentInterstitialCollection; // @synthesize currentInterstitialCollection=_currentInterstitialCollection;
 @property (strong, nonatomic) NSObject<TVPMediaItem> *currentMediaItem;
+@property (nonatomic) long long currentMediaItemAudioChannels; // @synthesize currentMediaItemAudioChannels=_currentMediaItemAudioChannels;
+@property (nonatomic) long long currentMediaItemAudioFormat; // @synthesize currentMediaItemAudioFormat=_currentMediaItemAudioFormat;
 @property (nonatomic) BOOL currentMediaItemHasDates; // @synthesize currentMediaItemHasDates=_currentMediaItemHasDates;
 @property (nonatomic) BOOL currentMediaItemHasVideoContent; // @synthesize currentMediaItemHasVideoContent=_currentMediaItemHasVideoContent;
 @property (nonatomic) BOOL currentMediaItemInitialLoadingComplete; // @synthesize currentMediaItemInitialLoadingComplete=_currentMediaItemInitialLoadingComplete;
@@ -201,6 +207,7 @@
 @property (copy, nonatomic) NSDate *playbackDate;
 @property (strong, nonatomic) NSDate *playbackDateAtStartOfSeek; // @synthesize playbackDateAtStartOfSeek=_playbackDateAtStartOfSeek;
 @property (strong, nonatomic) NSArray *playbackEndTimeBoundaryObserverTokens; // @synthesize playbackEndTimeBoundaryObserverTokens=_playbackEndTimeBoundaryObserverTokens;
+@property (nonatomic) BOOL playerItemChangeIsHappening; // @synthesize playerItemChangeIsHappening=_playerItemChangeIsHappening;
 @property (strong, nonatomic) TVPPlayerItem *playerItemFromCacheManager; // @synthesize playerItemFromCacheManager=_playerItemFromCacheManager;
 @property (strong, nonatomic) TVPPlayerReporter *playerReporter; // @synthesize playerReporter=_playerReporter;
 @property (strong, nonatomic) TVPPlaylist *playlist;
@@ -209,6 +216,7 @@
 @property (strong, nonatomic) TVPPlaybackState *postLoadingState; // @synthesize postLoadingState=_postLoadingState;
 @property (nonatomic) double preferredForwardBufferDuration; // @synthesize preferredForwardBufferDuration=_preferredForwardBufferDuration;
 @property (nonatomic) struct CGSize preferredMaximumResolution; // @synthesize preferredMaximumResolution=_preferredMaximumResolution;
+@property (nonatomic) BOOL prefersSDRVideo; // @synthesize prefersSDRVideo=_prefersSDRVideo;
 @property (nonatomic) BOOL preventsSleepDuringVideoPlayback; // @synthesize preventsSleepDuringVideoPlayback=_preventsSleepDuringVideoPlayback;
 @property (strong, nonatomic) TVPProgressiveJumpingScrubber *progressiveJumpingScrubber; // @synthesize progressiveJumpingScrubber=_progressiveJumpingScrubber;
 @property (readonly, nonatomic) double rate;
@@ -242,10 +250,12 @@
 @property (nonatomic) float volume; // @synthesize volume=_volume;
 @property (nonatomic) BOOL waitsAfterPreparingMediaItems; // @synthesize waitsAfterPreparingMediaItems=_waitsAfterPreparingMediaItems;
 
++ (long long)_audioFormatForAudioCodecType:(unsigned int)arg1;
 + (id)_audioSelectionCriteriaForMediaItemLoader:(id)arg1;
 + (id)_newAVQueuePlayer;
 + (void)_playerDidBecomeInactive:(id)arg1;
 + (void)_playerWillBecomeActive:(id)arg1;
++ (id)_stringForAudioFormat:(long long)arg1;
 + (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (void)initialize;
 + (void)removeTemporaryDownloadDirectory;
@@ -351,6 +361,7 @@
 - (void)_timeControlStatusDidChangeTo:(long long)arg1;
 - (void)_updateAVPlayerActionAtItemEnd;
 - (void)_updateAudioSelectionCriteriaForMediaItemLoader:(id)arg1;
+- (void)_updateCurrentMediaItemAudioInfoForPlayerItem:(id)arg1 tracks:(id)arg2;
 - (void)_updateIsLiveForElapsedTime:(CDStruct_1b6d18a9)arg1;
 - (void)_updateMediaRemoteManager;
 - (void)_updateMetadataWithVideoQualityColorRangeAndDolbyAtmosForPlayerItem:(id)arg1 tracks:(id)arg2;
@@ -394,6 +405,7 @@
 - (void)removeBoundaryTimeObserverWithToken:(id)arg1;
 - (void)removeElapsedTimeObserverWithToken:(id)arg1;
 - (void)removeWeakReferenceToVideoView:(id)arg1;
+- (void)restartPlaybackWithState:(id)arg1;
 - (void)scanWithRate:(double)arg1;
 - (void)scanWithRate:(double)arg1 withAVKitCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)seeking;

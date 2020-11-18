@@ -23,9 +23,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_autocompleteEntry:1;
         unsigned int read_browseCategory:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_autocompleteEntry:1;
-        unsigned int wrote_browseCategory:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -37,8 +35,6 @@
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readAutocompleteEntry;
-- (void)_readBrowseCategory;
 - (void)clearSensitiveFields;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
@@ -48,8 +44,11 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithSearchCategory:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

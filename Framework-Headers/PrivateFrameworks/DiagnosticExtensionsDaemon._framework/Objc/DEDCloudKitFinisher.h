@@ -44,6 +44,9 @@
 - (void)didFinishAllCollections;
 - (void)didStartCollectingDiagnosticExtensionWithIdentifier:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (id)encryptLogsForExtensionIdentifier:(id)arg1 withAttachmentUrl:(id)arg2;
+- (id)encryptLogsIfNecessary:(id)arg1;
+- (id)extractExtensionIdentifierFromAttachmentUrl:(id)arg1;
 - (void)finishSession:(id)arg1 withConfiguration:(id)arg2;
 - (id)flattenDirectories:(id)arg1;
 - (id)initWithCoder:(id)arg1;

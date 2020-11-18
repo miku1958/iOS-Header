@@ -17,7 +17,7 @@
 
 + (id)preferredStreamFromMasterPlaylist:(id)arg1;
 - (void).cxx_destruct;
-- (id)initCanUseCellularData:(BOOL)arg1 powerRequired:(BOOL)arg2;
+- (id)initCanUseCellularData:(BOOL)arg1 powerRequired:(BOOL)arg2 bundleID:(id)arg3;
 - (id)setupDownloadTaskForFetchingMasterPlaylistAndSelectingStreamFromMasterPlaylistURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

@@ -8,6 +8,7 @@
 
 @class NSDate, NSDictionary, NSString;
 
+__attribute__((visibility("hidden")))
 @interface HDClientKeepAliveAssertion : HDAssertion
 {
     long long _launchCount;

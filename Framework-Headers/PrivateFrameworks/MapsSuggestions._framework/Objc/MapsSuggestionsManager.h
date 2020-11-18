@@ -10,103 +10,74 @@
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 #import <MapsSuggestions/MapsSuggestionsSourceDelegate-Protocol.h>
 
-@class GEOAutomobileOptions, MapsSuggestionsCanKicker, MapsSuggestionsFakePullSource, MapsSuggestionsTracker, NSArray, NSDate, NSHashTable, NSMutableDictionary, NSMutableSet, NSString;
+@class CLLocation, GEOAutomobileOptions, MapsSuggestionsCanKicker, MapsSuggestionsObservers, MapsSuggestionsTracker, NSArray, NSDate, NSMutableDictionary, NSMutableSet, NSString;
 @protocol MapsSuggestionsLocationUpdater, MapsSuggestionsStrategy, OS_dispatch_queue;
 
 @interface MapsSuggestionsManager : NSObject <MapsSuggestionsObject, MapsSuggestionsSourceDelegate, MapsSuggestionsLocationUpdaterDelegate>
 {
-    id<MapsSuggestionsStrategy> _strategy;
-    NSMutableDictionary *_additionalFiltersPerSink;
-    unsigned long long _countToRequest;
-    MapsSuggestionsTracker *_tracker;
-    NSDate *_etaValidUntil;
-    NSMutableSet *_sources;
-    NSHashTable *_sinks;
-    NSMutableDictionary *_storage;
-    NSArray *_latestResults;
     NSObject<OS_dispatch_queue> *_gatheringQueue;
     NSObject<OS_dispatch_queue> *_storageQueue;
-    BOOL _dirtyFlag;
+    id<MapsSuggestionsStrategy> _strategy;
+    NSMutableDictionary *_additionalFiltersPerSink;
+    MapsSuggestionsTracker *_tracker;
+    NSDate *_etaValidUntil;
+    MapsSuggestionsObservers *_sinks;
+    NSMutableSet *_sources;
+    NSMutableDictionary *_storage;
+    NSArray *_latestResults;
     int _defaultTansportType;
     MapsSuggestionsCanKicker *_expiredEntryInvalidator;
     MapsSuggestionsCanKicker *_wipeStaleETAWiper;
     MapsSuggestionsCanKicker *_deferredSourcesUpdater;
+    CLLocation *_oldLocation;
     int _mapType;
-    long long _style;
     GEOAutomobileOptions *_automobileOptions;
     id<MapsSuggestionsLocationUpdater> _locationUpdater;
-    MapsSuggestionsFakePullSource *_fakeSource;
 }
 
 @property (strong, nonatomic) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) MapsSuggestionsFakePullSource *fakeSource; // @synthesize fakeSource=_fakeSource;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<MapsSuggestionsLocationUpdater> locationUpdater; // @synthesize locationUpdater=_locationUpdater;
 @property (nonatomic) int mapType; // @synthesize mapType=_mapType;
 @property (strong, nonatomic) id<MapsSuggestionsStrategy> strategy; // @synthesize strategy=_strategy;
-@property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uniqueName;
 
 - (void).cxx_destruct;
-- (unsigned long long)_addOrUpdateSuggestionEntries:(id)arg1 source:(id)arg2;
-- (unsigned long long)_deleteEntries:(id)arg1 source:(id)arg2;
-- (id)_filteredEntries:(id)arg1 forSink:(id)arg2 limit:(unsigned long long)arg3;
-- (BOOL)_loadStorageFromFile:(id)arg1;
-- (id)_pruneExpiredFromEntries:(id)arg1;
-- (void)_pruneExpiredSourceEntries;
-- (BOOL)_removeEntry:(id)arg1;
-- (BOOL)_removeEntry:(id)arg1 sourceName:(id)arg2;
-- (void)_restartLocationUpdaterIfNeeded;
-- (void)_scheduleInvalidateSinksOnFirstExpiredOfEntries:(id)arg1;
-- (void)_sendInvalidateToAllSinks;
-- (BOOL)_sink:(id)arg1 allowsEntry:(id)arg2;
-- (void)_startAllSources;
-- (void)_startLocationUpdater;
-- (void)_startSource:(id)arg1;
-- (void)_stopAllSources;
-- (void)_stopLocationUpdater;
-- (void)_updateAllSourcesOnce;
-- (void)_updateCurrentLocation:(id)arg1;
-- (BOOL)_updateResult;
-- (void)_updateSource:(id)arg1 forType:(long long)arg2 repeat:(BOOL)arg3;
-- (void)_updateSource:(id)arg1 repeat:(BOOL)arg2;
-- (void)_wipeStaleETAs;
 - (void)addAdditionalFilter:(id)arg1 forSink:(id)arg2;
 - (unsigned long long)addOrUpdateSuggestionEntries:(id)arg1 source:(id)arg2;
 - (void)attachSink:(id)arg1;
-- (BOOL)attachSource:(id)arg1;
+- (void)attachSource:(id)arg1;
 - (void)awaitGatheringQueue;
 - (void)awaitStorageQueue;
-- (unsigned long long)clearAllEntriesFromSource:(id)arg1;
-- (void)clearResults;
 - (void)dealloc;
-- (unsigned long long)deleteEntries:(id)arg1 source:(id)arg2;
-- (BOOL)detachSink:(id)arg1;
-- (BOOL)detachSource:(id)arg1;
-- (id)dumpStorage;
+- (void)detachSink:(id)arg1;
+- (void)detachSource:(id)arg1;
+- (void)didLoseLocationPermission;
+- (void)didUpdateLocation:(id)arg1;
 - (void)feedbackForContact:(id)arg1 action:(long long)arg2;
 - (void)feedbackForEntry:(id)arg1 action:(long long)arg2;
 - (void)feedbackForMapItem:(id)arg1 action:(long long)arg2;
 - (void)hintRefreshOfType:(long long)arg1;
-- (id)initWithStrategy:(id)arg1 locationUpdater:(id)arg2 ETARequirements:(id)arg3;
+- (id)initWithStrategy:(id)arg1 locationUpdater:(id)arg2 network:(id)arg3 flightUpdater:(id)arg4 ETARequirements:(id)arg5 virtualGarage:(id)arg6;
 - (BOOL)loadStorageFromFile:(id)arg1;
 - (BOOL)loadStorageFromFile:(id)arg1 callback:(CDUnknownBlockType)arg2 callbackQueue:(id)arg3;
+- (BOOL)oneShotTopSuggestionsForSink:(id)arg1 count:(unsigned long long)arg2 queue:(id)arg3 handler:(CDUnknownBlockType)arg4;
+- (BOOL)oneShotTopSuggestionsForSink:(id)arg1 count:(unsigned long long)arg2 transportType:(int)arg3 callback:(CDUnknownBlockType)arg4 onQueue:(id)arg5;
+- (BOOL)oneShotTopSuggestionsForSink:(id)arg1 transportType:(int)arg2 count:(unsigned long long)arg3 queue:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)removeAdditionalFilter:(id)arg1 forSink:(id)arg2;
 - (BOOL)removeEntry:(id)arg1 behavior:(long long)arg2 handler:(CDUnknownBlockType)arg3;
-- (BOOL)saveStorageToFile:(id)arg1;
-- (void)scheduleUpdateAllSourcesOnce;
-- (void)sendInvalidateToAllSinks;
-- (void)setTitleFormatter:(id)arg1 forType:(long long)arg2;
+- (BOOL)saveStorageToFile:(id)arg1 callback:(CDUnknownBlockType)arg2;
 - (id)sinks;
 - (id)sources;
 - (id)storage;
 - (id)storageForSource:(id)arg1;
+- (BOOL)topSuggestionsForSink:(id)arg1 count:(unsigned long long)arg2 queue:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (BOOL)topSuggestionsForSink:(id)arg1 count:(unsigned long long)arg2 transportType:(int)arg3 callback:(CDUnknownBlockType)arg4 onQueue:(id)arg5;
+- (BOOL)topSuggestionsForSink:(id)arg1 transportType:(int)arg2 count:(unsigned long long)arg3 queue:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)trackerRefreshedETAsUntil:(id)arg1;
-- (void)updateLocation:(id)arg1;
 
 @end
 

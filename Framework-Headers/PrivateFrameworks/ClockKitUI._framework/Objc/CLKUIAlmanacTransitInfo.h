@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <ClockKitUI/NSSecureCoding-Protocol.h>
+
 @class NSArray, NSDate;
 
-@interface CLKUIAlmanacTransitInfo : NSObject
+@interface CLKUIAlmanacTransitInfo : NSObject <NSSecureCoding>
 {
     NSDate *_day;
     long long _constantSun;
@@ -27,6 +29,7 @@
 @property (strong, nonatomic) NSArray *solarMidnights; // @synthesize solarMidnights=_solarMidnights;
 @property (strong, nonatomic) NSDate *solarNoon; // @synthesize solarNoon=_solarNoon;
 
++ (BOOL)supportsSecureCoding;
 + (id)transitInfoForDate:(id)arg1;
 + (id)transitInfoForDate:(id)arg1 city:(id)arg2;
 + (id)transitInfoForDate:(id)arg1 city:(id)arg2 sunAltitude:(double)arg3;
@@ -34,6 +37,8 @@
 + (id)transitInfoForDate:(id)arg1 location:(CDStruct_2c43369c)arg2 sunAltitude:(double)arg3;
 - (void).cxx_destruct;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDate:(id)arg1;
 - (id)initWithDate:(id)arg1 city:(id)arg2;
 - (id)initWithDate:(id)arg1 city:(id)arg2 sunAltitude:(double)arg3;

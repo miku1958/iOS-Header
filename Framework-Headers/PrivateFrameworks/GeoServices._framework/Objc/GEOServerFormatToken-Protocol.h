@@ -14,7 +14,9 @@
 
 @property (readonly, nonatomic) id<GEOTransitArtworkDataSource> artworkValue;
 @property (readonly, nonatomic) id<GEOServerFormatTokenCountdownValue> countdownValue;
+@property (readonly, nonatomic) float percentageValue;
 @property (readonly, nonatomic) id<GEOServerFormatTokenPriceValue> priceValue;
+@property (readonly, nonatomic) BOOL shouldScaleUnits;
 @property (readonly, nonatomic) NSString *stringValue;
 @property (readonly, nonatomic) NSArray *timeStampValues;
 @property (readonly, nonatomic) NSString *token;

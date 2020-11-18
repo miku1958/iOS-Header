@@ -6,25 +6,29 @@
 
 #import <GameCenterUI/GKHeaderWithUnderlineView.h>
 
-@class GKButton, GKLabel, NSString;
+@class GKButton, GKLabel, NSLayoutConstraint, NSString, UIView;
 
 @interface GKSectionHeaderView : GKHeaderWithUnderlineView
 {
     BOOL _manualItemCount;
     BOOL _allSectionItemsVisible;
+    GKLabel *_leftLabel;
     SEL _showAllAction;
     id _rightTarget;
     SEL _rightAction;
     CDUnknownFunctionPointerType _itemCountFormatter;
     long long _maxRange;
-    GKLabel *_leftLabel;
+    UIView *_backgroundView;
     GKButton *_rightButton;
     unsigned long long _sectionIndex;
     long long _itemCount;
     long long _maxItemCount;
+    NSLayoutConstraint *_backgroundViewHeightConstraint;
 }
 
 @property (nonatomic) BOOL allSectionItemsVisible; // @synthesize allSectionItemsVisible=_allSectionItemsVisible;
+@property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property (strong, nonatomic) NSLayoutConstraint *backgroundViewHeightConstraint; // @synthesize backgroundViewHeightConstraint=_backgroundViewHeightConstraint;
 @property (nonatomic) long long itemCount; // @synthesize itemCount=_itemCount;
 @property (nonatomic) CDUnknownFunctionPointerType itemCountFormatter; // @synthesize itemCountFormatter=_itemCountFormatter;
 @property (strong, nonatomic) GKLabel *leftLabel; // @synthesize leftLabel=_leftLabel;

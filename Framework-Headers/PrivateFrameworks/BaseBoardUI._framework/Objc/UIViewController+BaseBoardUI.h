@@ -6,7 +6,19 @@
 
 #import <UIKit/UIViewController.h>
 
-@interface UIViewController (BaseBoardUI)
+#import <BaseBoardUI/BSTraitEnvironment-Protocol.h>
+
+@class NSString, UITraitCollection;
+
+@interface UIViewController (BaseBoardUI) <BSTraitEnvironment>
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) UITraitCollection *traitCollection;
+
++ (id)bs_nextViewControllerForView:(id)arg1;
 - (BOOL)bs_addChildViewController:(id)arg1;
 - (BOOL)bs_addChildViewController:(id)arg1 animated:(BOOL)arg2 transitionBlock:(CDUnknownBlockType)arg3;
 - (BOOL)bs_addChildViewController:(id)arg1 withSuperview:(id)arg2;
@@ -24,5 +36,6 @@
 - (BOOL)bs_removeChildViewController:(id)arg1;
 - (BOOL)bs_removeChildViewController:(id)arg1 animated:(BOOL)arg2 transitionBlock:(CDUnknownBlockType)arg3;
 - (id)bs_topPresentedViewController;
+- (void)bs_traitCollectionDidChange:(id)arg1 forManagedTraitEnvironment:(id)arg2;
 @end
 

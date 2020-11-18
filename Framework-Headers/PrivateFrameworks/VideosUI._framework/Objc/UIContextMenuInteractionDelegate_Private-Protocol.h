@@ -13,7 +13,6 @@
 
 @optional
 - (NSArray *)_contextMenuInteraction:(UIContextMenuInteraction *)arg1 accessoriesForMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
-- (NSArray *)_contextMenuInteraction:(UIContextMenuInteraction *)arg1 accessoriesForMenuWithConfiguration:(UIContextMenuConfiguration *)arg2 layoutAnchor:(CDStruct_4bcfbbae)arg3;
 - (BOOL)_contextMenuInteraction:(UIContextMenuInteraction *)arg1 failedToBeginForSecondaryClickAtLocation:(struct CGPoint)arg2;
 - (_UIContextMenuStyle *)_contextMenuInteraction:(UIContextMenuInteraction *)arg1 styleForMenuWithConfiguration:(UIContextMenuConfiguration *)arg2;
 - (void)contextMenuInteraction:(UIContextMenuInteraction *)arg1 willCommitWithAnimator:(id<UIContextMenuInteractionCommitAnimating>)arg2;

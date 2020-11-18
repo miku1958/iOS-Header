@@ -23,9 +23,9 @@
 - (BOOL)containsValidData;
 - (id)exifOrientation;
 - (id)imageURL;
-- (id)imageUTI;
 - (id)initWithRequestID:(int)arg1 assetResource:(id)arg2;
 - (id)mediaMetadata;
+- (id)uniformTypeIdentifier;
 - (id)videoURL;
 
 @end

@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (CDStruct_912cb5d2)blockPathForX:(id)arg1 zoom:(long long)arg2;
-- (void)blocksRequestedFromPath:(CDStruct_912cb5d2)arg1 toPath:(CDStruct_912cb5d2)arg2;
+- (void)blocksRequestedFromPath:(CDStruct_912cb5d2)arg1 toPath:(CDStruct_912cb5d2)arg2 priorityDelegate:(id)arg3;
 - (id)cachedBlockForPath:(CDStruct_912cb5d2)arg1 context:(id)arg2;
 - (id)initWithCGPoints:(struct CGPoint *)arg1 count:(long long)arg2 unitForY:(id)arg3;
 - (id)initWithValuePoints:(id)arg1 unitForY:(id)arg2;

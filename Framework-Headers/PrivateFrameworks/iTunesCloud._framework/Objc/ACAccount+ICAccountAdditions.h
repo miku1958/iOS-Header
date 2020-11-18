@@ -25,11 +25,15 @@
 @property (nonatomic, getter=ic_isManagedAppleID, setter=ic_setManagedAppleID:) BOOL ic_managedAppleID;
 @property (copy, nonatomic, setter=ic_setMergeWithCloudLibraryPreference:) NSNumber *ic_mergeWithCloudLibraryPreference;
 @property (copy, nonatomic, setter=ic_setPrivateListeningEnabled:) NSNumber *ic_privateListeningEnabled;
-@property (readonly, copy, nonatomic) NSDictionary *ic_privateListeningEnabledForHomeUsers;
+@property (copy, nonatomic, setter=ic_setPrivateListeningEnabledForHomeUsers:) NSDictionary *ic_privateListeningEnabledForHomeUsers;
 @property (nonatomic, getter=ic_isSandboxed, setter=ic_setSandboxed:) BOOL ic_sandboxed;
 @property (copy, nonatomic, setter=ic_setStorefront:) NSString *ic_storefront;
 @property (nonatomic, getter=ic_isSubscriptionStatusEnabled, setter=ic_setSubscriptionStatusEnabled:) BOOL ic_subscriptionStatusEnabled;
 @property (copy, nonatomic, setter=ic_setUniqueIdentifier:) NSNumber *ic_uniqueIdentifier;
 
+- (BOOL)_updateAutomaticDownloadKindsByAddingMediaKindMusic:(BOOL)arg1 error:(id *)arg2;
+- (BOOL)ic_isAutomaticDownloadsEnabledForMediaKindMusic;
+- (void)ic_updateAutomaticDownloadKindsByAddingMediaKindMusic:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (BOOL)ic_updateAutomaticDownloadKindsByAddingMediaKindMusic:(BOOL)arg1 error:(id *)arg2;
 @end
 

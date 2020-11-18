@@ -26,11 +26,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_alias:1;
         unsigned int read_localizedNames:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_alias:1;
-        unsigned int wrote_geoOntologyId:1;
-        unsigned int wrote_localizedNames:1;
-        unsigned int wrote_level:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -44,9 +40,6 @@
 + (BOOL)isValid:(id)arg1;
 + (Class)localizedNamesType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsLocalizedNames:(id)arg1;
-- (void)_readAlias;
-- (void)_readLocalizedNames;
 - (void)addLocalizedNames:(id)arg1;
 - (void)clearLocalizedNames;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -57,8 +50,11 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithPlaceDataCategory:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)localizedNamesAtIndex:(unsigned long long)arg1;
 - (unsigned long long)localizedNamesCount;
 - (void)mergeFrom:(id)arg1;

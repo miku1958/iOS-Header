@@ -8,7 +8,7 @@
 
 @class NSString, SXFeedNavigationAppearance, SXJSONDictionary, SXTabBarAppearance;
 
-@interface SXMetaData : SXJSONObject
+@interface SXMetadata : SXJSONObject
 {
 }
 

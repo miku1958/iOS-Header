@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@protocol MTLTexture;
+@protocol MTLDevice, MTLTexture;
 
 __attribute__((visibility("hidden")))
 @interface CIImageProcessorInOut : NSObject
@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) unsigned long long bytesPerRow;
-@property (readonly, nonatomic) void *device;
+@property (readonly, nonatomic) id<MTLDevice> device;
 @property (readonly, nonatomic) int format;
 @property (readonly, nonatomic) struct __CVBuffer *pixelBuffer;
 @property (readonly, nonatomic) struct CGRect region; // @synthesize region=_region;

@@ -20,11 +20,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)apiKey;
-- (id)container;
-- (id)environment;
-- (id)urlForLookupActionAPI;
-- (id)urlForQueryActionAPI;
+- (id)apiKeyWithType:(long long)arg1;
+- (id)containerWithType:(long long)arg1;
+- (id)environmentWithType:(long long)arg1;
+- (id)urlForLookupActionAPIWithType:(long long)arg1;
+- (id)urlForQueryActionAPIWithType:(long long)arg1;
 
 @end
 

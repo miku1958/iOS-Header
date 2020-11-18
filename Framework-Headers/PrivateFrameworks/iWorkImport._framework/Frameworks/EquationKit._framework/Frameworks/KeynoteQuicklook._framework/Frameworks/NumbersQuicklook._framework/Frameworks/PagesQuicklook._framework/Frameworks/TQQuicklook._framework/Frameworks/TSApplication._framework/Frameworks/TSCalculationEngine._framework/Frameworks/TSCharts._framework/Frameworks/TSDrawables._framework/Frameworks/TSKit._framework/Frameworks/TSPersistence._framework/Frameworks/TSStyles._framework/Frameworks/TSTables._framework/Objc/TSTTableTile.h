@@ -6,9 +6,11 @@
 
 #import <TSPersistence/TSPObject.h>
 
+#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
+
 @class NSIndexSet, NSPointerArray;
 
-@interface TSTTableTile : TSPObject
+@interface TSTTableTile : TSPObject <TSTCompatibilityVersionProviding>
 {
     unsigned char _storageVersion;
     BOOL _lastSavedInBNC;
@@ -61,6 +63,7 @@
 - (void)spliceRowInfo:(id)arg1 atTileRowIndex:(unsigned int)arg2 overwrite:(BOOL)arg3;
 - (void)spliceRows:(id)arg1 atTileRowIndex:(unsigned int)arg2;
 - (void)swapRowAtTileRowIndex:(unsigned int)arg1 withRowAtTileRowIndex:(unsigned int)arg2;
+- (void)widenAllRowsForUpgrade;
 - (void)willModify;
 - (id)yankRowInfoAtTileRowIndex:(unsigned int)arg1;
 - (id)yankRowsAtTileRowIndex:(unsigned int)arg1;

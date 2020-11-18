@@ -10,13 +10,14 @@
 #import <UIKitCore/UITextInputAdditions-Protocol.h>
 #import <UIKitCore/UITextInput_Internal-Protocol.h>
 #import <UIKitCore/UIUserActivityRestoring-Protocol.h>
+#import <UIKitCore/_UIPressesEventRespondable-Protocol.h>
 #import <UIKitCore/_UIStateRestorationContinuation-Protocol.h>
-#import <UIKitCore/_UITouchable-Protocol.h>
+#import <UIKitCore/_UITouchesEventRespondable-Protocol.h>
 
 @class NSArray, NSString, NSUndoManager, NSUserActivity, UIInputViewController, UITextInputAssistantItem, UITextInputMode, UIView;
 @protocol UIActivityItemsConfigurationReading, UITextInput, UITextInputPrivate, _UICopyConfigurationReading;
 
-@interface UIResponder : NSObject <UITextInput_Internal, UITextInputAdditions, UIUserActivityRestoring, _UIStateRestorationContinuation, _UITouchable, UIResponderStandardEditActions>
+@interface UIResponder : NSObject <UITextInput_Internal, UITextInputAdditions, UIUserActivityRestoring, _UIStateRestorationContinuation, _UITouchesEventRespondable, _UIPressesEventRespondable, UIResponderStandardEditActions>
 {
     struct {
         unsigned int hasOverrideClient:1;
@@ -29,7 +30,6 @@
 @property (readonly, nonatomic, getter=_proxyTextInput) UIResponder<UITextInput> *__content;
 @property (strong, nonatomic, setter=_setCopyConfiguration:) id<_UICopyConfigurationReading> _copyConfiguration;
 @property (readonly, nonatomic) UIResponder *_editingDelegate;
-@property (readonly, nonatomic) UIResponder *_responderForEditing;
 @property (readonly, nonatomic) UIView<UITextInputPrivate> *_textSelectingContainer;
 @property (strong, nonatomic) id<UIActivityItemsConfigurationReading> activityItemsConfiguration;
 @property (readonly, nonatomic) BOOL canBecomeFirstResponder;
@@ -75,7 +75,9 @@
 - (void)__tearDownInteractionAssistantIfNecessary;
 - (id)__textInteractionFromAssistant;
 - (void)_addShortcut:(id)arg1;
+- (id)_additionalTextInputLocales;
 - (id)_asTextSelection;
+- (long long)_availableTextServices;
 - (void)_becomeFirstResponder;
 - (void)_becomeFirstResponderAndMakeVisible;
 - (BOOL)_becomeFirstResponderWhenPossible;
@@ -85,7 +87,7 @@
 - (BOOL)_canBecomeFirstResponderWhenPossible;
 - (BOOL)_canChangeFirstResponder:(id)arg1 toResponder:(id)arg2;
 - (BOOL)_canResignIfContainsFirstResponder;
-- (BOOL)_canShowTextServices;
+- (BOOL)_canShowTextServiceForType:(long long)arg1;
 - (id)_captureOverrideState;
 - (unsigned int)_characterAfterCaretSelection;
 - (unsigned int)_characterBeforeCaretSelection;
@@ -97,7 +99,6 @@
 - (void)_clearOverrideHost;
 - (void)_clearOverrideNextResponder;
 - (void)_clearRestorableResponderStatus;
-- (void)_clearTextInputSource;
 - (void)_completeForwardingTouches:(id)arg1 phase:(long long)arg2 event:(id)arg3;
 - (void)_completeForwardingTouches:(id)arg1 phase:(long long)arg2 event:(id)arg3 index:(unsigned long long)arg4;
 - (BOOL)_containedInAbsoluteResponderChain;
@@ -112,6 +113,7 @@
 - (void)_deleteBackwardAndNotify:(BOOL)arg1;
 - (void)_deleteByWord;
 - (void)_deleteForwardAndNotify:(BOOL)arg1;
+- (void)_deleteForwardByWord;
 - (void)_deleteToEndOfLine;
 - (void)_deleteToEndOfParagraph;
 - (void)_deleteToStartOfLine;
@@ -122,6 +124,7 @@
 - (long long)_dragDataOwner;
 - (long long)_dropDataOwner;
 - (id)_effectiveActivityItemsConfiguration;
+- (id)_effectiveActivityItemsConfigurationAtLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2 sender:(id)arg3;
 - (id)_effectiveActivityItemsConfigurationForSender:(id)arg1;
 - (id)_effectiveActivityItemsConfigurationForView:(id)arg1 location:(struct CGPoint)arg2 sender:(id)arg3;
 - (id)_effectivePasteConfiguration;
@@ -133,6 +136,7 @@
 - (void)_extendCurrentSelection:(int)arg1;
 - (id)_findPleasingWordBoundaryFromPosition:(id)arg1;
 - (BOOL)_finishResignFirstResponder;
+- (id)_firstNonnullActivityItemsConfigurationInResponderChainForLocation:(struct CGPoint)arg1 inCoordinateSpace:(id)arg2 skipPresentingViewControllers:(BOOL)arg3 sender:(id)arg4 responder:(id *)arg5;
 - (id)_firstNonnullActivityItemsConfigurationInResponderChainForView:(id)arg1 location:(struct CGPoint)arg2 sender:(id)arg3 responder:(id *)arg4;
 - (id)_firstResponder;
 - (id)_fontForCaretSelection;
@@ -153,6 +157,7 @@
 - (BOOL)_isPinningInputViews;
 - (BOOL)_isRootForKeyResponderCycle;
 - (BOOL)_isTransitioningFromView:(id)arg1;
+- (BOOL)_isView;
 - (BOOL)_isViewController;
 - (id)_keyCommandForEvent:(id)arg1;
 - (id)_keyCommandForEvent:(id)arg1 target:(out id *)arg2;
@@ -180,6 +185,7 @@
 - (BOOL)_nextResponderChainContainsResponder:(id)arg1;
 - (id)_nextResponderOverride;
 - (id)_nextResponderThatCanBecomeFirstResponder;
+- (id)_nextResponderUsingLookupStrategy:(unsigned long long)arg1;
 - (void)_nonDestructivelyResignFirstResponder;
 - (id)_normalizedStringForRangeComparison:(id)arg1;
 - (struct _NSRange)_nsrangeForTextRange:(id)arg1;
@@ -187,6 +193,8 @@
 - (id)_overrideHost;
 - (void)_overrideInputAccessoryViewNextResponderWithResponder:(id)arg1;
 - (void)_overrideInputViewNextResponderWithResponder:(id)arg1;
+- (void)_overrideNextResponderWithResponder:(id)arg1 forType:(long long)arg2;
+- (void)_overrideRehostedViewControllerNextResponderWithResponder:(id)arg1;
 - (BOOL)_ownsInputAccessoryView;
 - (id)_positionAtStartOfWords:(unsigned long long)arg1 beforePosition:(id)arg2;
 - (id)_positionFromPosition:(id)arg1 inDirection:(long long)arg2 offset:(long long)arg3 withAffinityDownstream:(BOOL)arg4;
@@ -207,6 +215,7 @@
 - (id)_rangeOfTextUnit:(long long)arg1 enclosingPosition:(id)arg2;
 - (id)_rangeSpanningTextUnit:(long long)arg1 andPosition:(id)arg2;
 - (void)_rebuildStateRestorationIdentifierPath;
+- (struct CGRect)_rectToScrollToVisibleInCellInWindow:(id)arg1;
 - (void)_replaceCurrentWordWithText:(id)arg1;
 - (void)_replaceDocumentWithText:(id)arg1;
 - (BOOL)_requiresKeyboardResetOnReload;
@@ -216,6 +225,7 @@
 - (BOOL)_resignIfContainsFirstResponder;
 - (struct CGRect)_responderExternalTouchRectForWindow:(id)arg1;
 - (id)_responderForBecomeFirstResponder;
+- (id)_responderForEditing;
 - (id)_responderSelectionContainerViewForResponder:(id)arg1;
 - (id)_responderSelectionImage;
 - (struct CGRect)_responderSelectionRectForWindow:(id)arg1;
@@ -260,6 +270,7 @@
 - (id)_targetForAction:(SEL)arg1 sender:(id)arg2 skipViewControllersPresentingModally:(BOOL)arg3;
 - (id)_textColorForCaretSelection;
 - (long long)_textInputSource;
+- (id)_textInteraction;
 - (id)_textRangeFromNSRange:(struct _NSRange)arg1;
 - (id)_textServicesResponderProxy;
 - (void)_transpose;

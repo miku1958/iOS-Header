@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class NSArray, NSMutableArray, NSMutableDictionary, NSMutableSet;
+@protocol CKFetchRecordZonesOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchRecordZonesOperation : CKDDatabaseOperation
@@ -24,6 +25,7 @@ __attribute__((visibility("hidden")))
     NSMutableSet *_zoneIDsNeedingDugongKeyRoll;
 }
 
+@property (strong, nonatomic) id<CKFetchRecordZonesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (nonatomic) BOOL ignorePCSFailures; // @synthesize ignorePCSFailures=_ignorePCSFailures;
 @property (nonatomic) BOOL isFetchAllRecordZonesOperation; // @synthesize isFetchAllRecordZonesOperation=_isFetchAllRecordZonesOperation;
 @property (nonatomic) long long numZoneSaveAttempts; // @synthesize numZoneSaveAttempts=_numZoneSaveAttempts;
@@ -32,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) CDUnknownBlockType recordZoneFetchedProgressBlock; // @synthesize recordZoneFetchedProgressBlock=_recordZoneFetchedProgressBlock;
 @property (strong, nonatomic) NSArray *recordZoneIDs; // @synthesize recordZoneIDs=_recordZoneIDs;
 @property (nonatomic) BOOL shouldRetry; // @synthesize shouldRetry=_shouldRetry;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 @property (strong, nonatomic) NSMutableSet *zoneIDsNeedingDugongKeyRoll; // @synthesize zoneIDsNeedingDugongKeyRoll=_zoneIDsNeedingDugongKeyRoll;
 @property (strong, nonatomic) NSMutableArray *zoneIDsNeedingPCSUpdateRetry; // @synthesize zoneIDsNeedingPCSUpdateRetry=_zoneIDsNeedingPCSUpdateRetry;
 @property (strong, nonatomic) NSMutableDictionary *zonesToSaveForPCSUpdateByZoneID; // @synthesize zonesToSaveForPCSUpdateByZoneID=_zonesToSaveForPCSUpdateByZoneID;
@@ -52,6 +55,8 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (BOOL)makeStateTransition;
 - (id)nameForState:(unsigned long long)arg1;
+- (int)operationType;
+- (id)relevantZoneIDs;
 - (void)saveZonesWithUpdatedZonePCS;
 
 @end

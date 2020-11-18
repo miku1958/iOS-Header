@@ -9,7 +9,12 @@
 __attribute__((visibility("hidden")))
 @interface ACHVisibilityEnvironment : NSObject
 {
+    long long _activityMoveMode;
+    unsigned long long _experienceType;
 }
+
+@property (nonatomic) long long activityMoveMode; // @synthesize activityMoveMode=_activityMoveMode;
+@property (nonatomic) unsigned long long experienceType; // @synthesize experienceType=_experienceType;
 
 - (id)valueForUndefinedKey:(id)arg1;
 

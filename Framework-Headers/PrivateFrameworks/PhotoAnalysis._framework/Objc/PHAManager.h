@@ -8,7 +8,7 @@
 
 #import <PhotoAnalysis/PHAServiceOperationHandling-Protocol.h>
 
-@class NSMutableDictionary, NSURL, PHAAssetResourceDataLoader, PHAExecutive, PHAGraphManager, PHAJobCoordinator, PHAMonitoring, PHPhotoLibrary;
+@class CPAnalytics, NSMutableDictionary, NSURL, PHAAssetResourceDataLoader, PHAExecutive, PHAGraphManager, PHAJobCoordinator, PHAMonitoring, PHPhotoLibrary;
 
 @interface PHAManager : NSObject <PHAServiceOperationHandling>
 {
@@ -20,9 +20,11 @@
     NSURL *_libraryURL;
     PHPhotoLibrary *_photoLibrary;
     PHAJobCoordinator *_jobCoordinator;
+    CPAnalytics *_analytics;
     NSMutableDictionary *_photoAnalysisWorkersByType;
 }
 
+@property (readonly) CPAnalytics *analytics; // @synthesize analytics=_analytics;
 @property (readonly) PHAExecutive *executive; // @synthesize executive=_executive;
 @property (readonly) PHAGraphManager *graphManager; // @synthesize graphManager=_graphManager;
 @property (readonly) PHAJobCoordinator *jobCoordinator; // @synthesize jobCoordinator=_jobCoordinator;
@@ -49,9 +51,10 @@
 - (void)handleOperation:(id)arg1;
 - (id)init;
 - (id)initWithPhotoLibraryURL:(id)arg1 executive:(id)arg2;
-- (BOOL)isInitialSyncActive;
+- (BOOL)isReadyForAnalysis;
 - (id)monitoring;
 - (BOOL)photosIsConnected;
+- (id)presentationWorker;
 - (void)reportTurboEnabledWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)requestLocalizedSceneAncestryInformationWithContext:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)shutdown;

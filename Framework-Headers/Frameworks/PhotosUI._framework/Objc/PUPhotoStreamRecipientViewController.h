@@ -6,29 +6,24 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <PhotosUI/CNAutocompleteResultsTableViewControllerDelegate-Protocol.h>
+#import <PhotosUI/CNAutocompleteSearchConsumer-Protocol.h>
+#import <PhotosUI/CNComposeRecipientTextViewDelegate-Protocol.h>
 #import <PhotosUI/CNContactPickerDelegate-Protocol.h>
 #import <PhotosUI/IDSBatchIDQueryControllerDelegate-Protocol.h>
-#import <PhotosUI/MFComposeRecipientTextViewDelegate-Protocol.h>
-#import <PhotosUI/MFContactsSearchConsumer-Protocol.h>
 #import <PhotosUI/UIPopoverPresentationControllerDelegate-Protocol.h>
-#import <PhotosUI/UITableViewDataSource-Protocol.h>
-#import <PhotosUI/UITableViewDelegate-Protocol.h>
 
-@class CNContactPickerViewController, CNContactStore, IDSBatchIDQueryController, MFComposeRecipientTextView, MFContactsSearchManager, MFContactsSearchResultsModel, NSArray, NSMutableSet, NSNumber, NSString, UIScrollView, UITableView;
+@class CNAutocompleteResultsTableViewController, CNAutocompleteSearchManager, CNComposeRecipientTextView, CNContactPickerViewController, CNContactStore, IDSBatchIDQueryController, NSArray, NSMutableSet, NSNumber, NSString, UIScrollView;
 
-@interface PUPhotoStreamRecipientViewController : UIViewController <MFContactsSearchConsumer, UITableViewDataSource, UITableViewDelegate, CNContactPickerDelegate, UIPopoverPresentationControllerDelegate, MFComposeRecipientTextViewDelegate, IDSBatchIDQueryControllerDelegate>
+@interface PUPhotoStreamRecipientViewController : UIViewController <UIPopoverPresentationControllerDelegate, IDSBatchIDQueryControllerDelegate, CNContactPickerDelegate, CNAutocompleteResultsTableViewControllerDelegate, CNComposeRecipientTextViewDelegate, CNAutocompleteSearchConsumer>
 {
-    UITableView *_searchResultsTable;
-    MFComposeRecipientTextView *_recipientView;
+    CNAutocompleteResultsTableViewController *_searchResultsTableViewController;
+    CNComposeRecipientTextView *_recipientView;
     UIScrollView *_recipientContainerView;
-    MFContactsSearchManager *_searchManager;
-    MFContactsSearchResultsModel *_searchResultsModel;
+    CNAutocompleteSearchManager *_searchManager;
     NSNumber *_currentSearchTaskID;
-    NSArray *_searchResults;
     IDSBatchIDQueryController *_idsBatchIDQueryController;
     NSMutableSet *_validPhoneNumbers;
-    BOOL _wasFirstResponder;
-    BOOL _showingContactPicker;
     CNContactPickerViewController *_contactPickerPresentedController;
     struct CGSize _recipientViewSize;
     double _lastHeight;
@@ -54,13 +49,16 @@
 - (id)_searchManager;
 - (id)_selectedNormalizedPhoneForRecipient:(id)arg1;
 - (void)_setSearchResults:(id)arg1;
+- (void)autocompleteResultsController:(id)arg1 didRequestInfoAboutRecipient:(id)arg2;
+- (void)autocompleteResultsController:(id)arg1 didSelectRecipient:(id)arg2 atIndex:(unsigned long long)arg3;
+- (void)autocompleteResultsController:(id)arg1 tintColorForRecipient:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)batchQueryController:(id)arg1 updatedDestinationsStatus:(id)arg2 onService:(id)arg3 error:(id)arg4;
-- (void)beganNetworkActivity;
 - (id)composeRecipientView:(id)arg1 composeRecipientForAddress:(id)arg2;
 - (void)composeRecipientView:(id)arg1 didAddRecipient:(id)arg2;
 - (void)composeRecipientView:(id)arg1 didChangeSize:(struct CGSize)arg2;
 - (void)composeRecipientView:(id)arg1 didFinishEnteringAddress:(id)arg2;
 - (void)composeRecipientView:(id)arg1 didRemoveRecipient:(id)arg2;
+- (void)composeRecipientView:(id)arg1 disambiguateRecipientForAtom:(id)arg2;
 - (void)composeRecipientView:(id)arg1 showPersonCardForAtom:(id)arg2;
 - (void)composeRecipientView:(id)arg1 textDidChange:(id)arg2;
 - (void)composeRecipientViewDidFinishPickingRecipient:(id)arg1;
@@ -70,18 +68,12 @@
 - (void)contactPicker:(id)arg1 didSelectContactProperty:(id)arg2;
 - (void)contactPickerDidCancel:(id)arg1;
 - (void)dealloc;
-- (void)endedNetworkActivity;
 - (void)finishedSearchingForAutocompleteResults;
-- (void)finishedTaskWithID:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)makeRecipientViewFirstResponder;
 - (void)makeRecipientViewResignFirstResponder;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (void)prepareForPopoverPresentation:(id)arg1;
-- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
-- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
-- (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
-- (void)tableView:(id)arg1 willDisplayCell:(id)arg2 forRowAtIndexPath:(id)arg3;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

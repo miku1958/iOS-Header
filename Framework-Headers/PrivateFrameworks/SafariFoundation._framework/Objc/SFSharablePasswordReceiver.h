@@ -11,7 +11,7 @@
 }
 
 + (BOOL)canSavePasswordWithoutConflict:(id)arg1;
-+ (void)savePassword:(id)arg1;
++ (id)savePassword:(id)arg1;
 
 @end
 

@@ -8,6 +8,7 @@
 
 @class AVPlayer, NSString, UIViewPropertyAnimator, _MPAVPlayerViewPlayerLayerView;
 
+__attribute__((visibility("hidden")))
 @interface _MPAVPlayerView : UIView
 {
     _MPAVPlayerViewPlayerLayerView *_playerLayerView;

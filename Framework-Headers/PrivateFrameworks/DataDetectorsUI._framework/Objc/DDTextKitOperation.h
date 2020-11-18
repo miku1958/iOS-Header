@@ -18,7 +18,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UITextView *container; // @dynamic container;
 @property struct _NSRange range; // @synthesize range=_range;
 
-- (struct _NSRange)_addResultToAttributes:(id)arg1 inStorage:(id)arg2;
+- (struct _NSRange)_addResultToAttributes:(id)arg1 inStorage:(id)arg2 editing:(BOOL)arg3;
 - (struct _NSRange)_addResultsToAttributesInStorage:(id)arg1;
 - (struct __DDScanQuery *)_createScanQueryForBackend;
 - (BOOL)_rangeValidForContainer;

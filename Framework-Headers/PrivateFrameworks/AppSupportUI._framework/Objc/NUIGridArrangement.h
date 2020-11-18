@@ -37,7 +37,6 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_cacheDisplayScaleIfNeeded;
 - (struct CGSize)contentLayoutSizeFittingSize:(struct CGSize)arg1 forArrangedSubview:(id)arg2;
 - (void)dealloc;
 - (struct CGRect)frameForColumns:(struct _NSRange)arg1 rows:(struct _NSRange)arg2 inBounds:(struct CGRect)arg3;

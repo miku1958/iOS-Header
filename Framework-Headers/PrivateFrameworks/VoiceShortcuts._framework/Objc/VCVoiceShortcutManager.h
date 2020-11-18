@@ -8,58 +8,62 @@
 
 #import <VoiceShortcuts/HMHomeManagerDelegate-Protocol.h>
 
-@class HMHomeManager, NSPersistentStoreDescription, NSString, VCCoreDataStore, VCRealmDataStore, WFDatabase;
+@class HMHomeManager, NSString, WFDatabase;
+@protocol VCDatabaseProvider;
 
 @interface VCVoiceShortcutManager : NSObject <HMHomeManagerDelegate>
 {
-    VCCoreDataStore *_coreDataStore;
+    BOOL _addingDefaultShortcuts;
     HMHomeManager *_homeManager;
-    WFDatabase *_database;
-    NSPersistentStoreDescription *_storeDescription;
-    VCRealmDataStore *_realmDataStore;
+    id<VCDatabaseProvider> _databaseProvider;
 }
 
-@property (readonly, nonatomic) VCCoreDataStore *coreDataStore; // @synthesize coreDataStore=_coreDataStore;
-@property (readonly, nonatomic) WFDatabase *database; // @synthesize database=_database;
+@property (nonatomic) BOOL addingDefaultShortcuts; // @synthesize addingDefaultShortcuts=_addingDefaultShortcuts;
+@property (readonly, nonatomic) WFDatabase *database;
+@property (readonly, nonatomic) id<VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMHomeManager *homeManager; // @synthesize homeManager=_homeManager;
-@property (readonly, nonatomic) VCRealmDataStore *realmDataStore; // @synthesize realmDataStore=_realmDataStore;
-@property (readonly, copy, nonatomic) NSPersistentStoreDescription *storeDescription; // @synthesize storeDescription=_storeDescription;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)addExtraVocabForDemoIfAppropriate:(id)arg1;
+- (void)addDefaultShortcutsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)addDefaultShortcutsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)addNewFolderWithPersonalizedShortcuts:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)addVoiceShortcut:(id)arg1 phrase:(id)arg2 accessSpecifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)coreDataStoreWithError:(id *)arg1;
+- (void)createShortcutWithRecordData:(id)arg1 name:(id)arg2 accessSpecifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)createSleepWorkflow:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)deleteSleepWorkflowWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deleteStaleSuggestions;
 - (void)deleteSuggestionsFromApps:(id)arg1;
-- (void)deleteVoiceShortcutWithIdentifier:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)generateSingleUseTokenForWorkflowIdentifier:(id)arg1;
+- (void)deleteVoiceShortcutWithIdentifier:(id)arg1 name:(id)arg2 accessSpecifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)drawGlyphs:(id)arg1 withBackgroundColorValues:(id)arg2 intoContext:(id)arg3;
+- (void)getDefaultShortcutEligibilityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getInactiveAppsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getNumberOfVoiceShortcutsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)getShareSheetWorkflowsForExtensionMatchingDictionaries:(id)arg1 hostBundleIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getResultsForWorkflowQuery:(id)arg1 resultClass:(Class)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getShortcutSuggestionsForAllAppsWithLimit:(unsigned long long)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getShortcutSuggestionsForAppWithBundleIdentifier:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getSleepActionSuggestionsForAllAppsFilteringBySleep:(BOOL)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getSleepActionSuggestionsForAllAppsWithOptions:(unsigned long long)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getSleepActionSuggestionsForAppWithBundleIdentifier:(id)arg1 accessSpecifier:(id)arg2 options:(unsigned long long)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)getSleepActionSuggestionsForAppWithBundleIdentifier:(id)arg1 shouldFilterBySleep:(BOOL)arg2 accessSpecifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)getValueForDescriptor:(id)arg1 resultClass:(Class)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getVoiceShortcutWithIdentifier:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getVoiceShortcutWithPhrase:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getVoiceShortcutsForAppsWithBundleIdentifiers:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getVoiceShortcutsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)handleAssistantPreferencesChangedNotification;
-- (id)initWithDatabase:(id)arg1 error:(id *)arg2;
-- (id)initWithDatabase:(id)arg1 storeDescription:(id)arg2 error:(id *)arg3;
+- (id)initWithDatabaseProvider:(id)arg1;
+- (BOOL)isPhraseUsable:(id)arg1 inDatabase:(id)arg2 error:(id *)arg3;
 - (BOOL)lsDatabaseChangedSinceLastCheck;
-- (void)migrateVoiceShortcutsToBeShortcuts;
 - (BOOL)phraseHasHomeKitConflict:(id)arg1;
 - (void)requestDataMigrationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)requestShortcutsSpotlightFullReindex;
-- (id)sanitizePhrase:(id)arg1;
+- (void)resetDefaultShortcutFlagsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setShortcutSuggestions:(id)arg1 forAppWithBundleIdentifier:(id)arg2 accessSpecifier:(id)arg3;
 - (void)updateLSDatabaseAnchors;
-- (void)updateShortcutsVocabularyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)updateVoiceShortcutWithIdentifier:(id)arg1 phrase:(id)arg2 shortcut:(id)arg3 accessSpecifier:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)validateVoiceShortcutPhrases:(id)arg1 accessSpecifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

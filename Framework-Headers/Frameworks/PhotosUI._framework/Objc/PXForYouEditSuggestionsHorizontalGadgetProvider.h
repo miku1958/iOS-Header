@@ -22,7 +22,7 @@
 @property (readonly, nonatomic) long long priorityType;
 
 - (void).cxx_destruct;
-- (id)initWithContentGadgetProviders:(id)arg1 title:(id)arg2;
+- (id)initWithContentGadgetProvider:(id)arg1 title:(id)arg2;
 - (void)resetPriorityDate;
 - (BOOL)supportsDynamicRanking;
 

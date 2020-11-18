@@ -18,8 +18,11 @@
 - (id)imageNameForCurrentState;
 - (struct CGSize)intrinsicContentSize;
 - (void)setAllowAutoHDR:(BOOL)arg1;
+- (void)setHDRMode:(long long)arg1 animated:(BOOL)arg2;
 - (void)setOrientation:(long long)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldShowSlashForCurrentState;
 - (BOOL)shouldUseActiveTintForCurrentState;
+- (BOOL)shouldUseSlash;
 
 @end
 

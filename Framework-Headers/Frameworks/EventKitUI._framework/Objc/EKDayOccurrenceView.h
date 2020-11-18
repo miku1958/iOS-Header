@@ -35,6 +35,7 @@
     long long _currentRequestId;
     EKDayOccurrenceState *_currentImageState;
     unsigned long long _invalidatedRequestOptions;
+    struct CGPoint _contentLocationDuringReducedProcessing;
     UIColor *_stagedBackgroundColor;
     _UICursorInteraction *_cursorInteraction;
     BOOL _isVibrant;
@@ -57,6 +58,8 @@
     BOOL _showsTravelTime;
     BOOL _reduceLayoutProcessingForAnimation;
     BOOL _pointerInteractionDisabled;
+    BOOL _hasPrecedingDuration;
+    BOOL _hasTrailingDuration;
     BOOL _touchesAreBeingTracked;
     NSObject<EKDayOccurrenceViewDelegate> *_delegate;
     EKDayOccurrenceView *_selectedCopy;
@@ -66,6 +69,7 @@
     double _cappedColorBarHeight;
     double _travelTime;
     long long _occurrenceBackgroundStyle;
+    double _topPinningProximity;
     double _bottomPinningProximity;
     double _topYBoundaryForText;
     struct UIEdgeInsets _margin;
@@ -85,6 +89,8 @@
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL dimmed; // @synthesize dimmed=_dimmed;
 @property (nonatomic) BOOL drawsResizeHandles; // @synthesize drawsResizeHandles=_drawsResizeHandles;
+@property (nonatomic) BOOL hasPrecedingDuration; // @synthesize hasPrecedingDuration=_hasPrecedingDuration;
+@property (nonatomic) BOOL hasTrailingDuration; // @synthesize hasTrailingDuration=_hasTrailingDuration;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hideBackgroundImage; // @synthesize hideBackgroundImage=_hideBackgroundImage;
 @property (nonatomic) BOOL hideText; // @synthesize hideText=_hideText;
@@ -105,6 +111,7 @@
 @property (nonatomic) BOOL showsTravelTime; // @synthesize showsTravelTime=_showsTravelTime;
 @property (readonly) Class superclass;
 @property (nonatomic, getter=isTentative) BOOL tentative; // @synthesize tentative=_tentative;
+@property (nonatomic) double topPinningProximity; // @synthesize topPinningProximity=_topPinningProximity;
 @property (nonatomic) double topYBoundaryForText; // @synthesize topYBoundaryForText=_topYBoundaryForText;
 @property (nonatomic) BOOL touchesAreBeingTracked; // @synthesize touchesAreBeingTracked=_touchesAreBeingTracked;
 @property (nonatomic) double travelTime; // @synthesize travelTime=_travelTime;
@@ -127,7 +134,7 @@
 + (struct UIEdgeInsets)defaultPadding;
 + (double)enoughHeightForOneLineForEvent:(id)arg1 usingSmallText:(BOOL)arg2 sizeClass:(long long)arg3;
 + (id)framePathForExternalDragOperationWithSize:(struct CGSize)arg1;
-+ (id)imageForExternalDragOperationFromEvent:(id)arg1;
++ (id)imageForExternalDragOperationFromEvent:(id)arg1 style:(long long)arg2;
 + (double)minNaturalTextHeightForEvent:(id)arg1 usingSmallText:(BOOL)arg2 sizeClass:(long long)arg3;
 + (double)minimumHeightForSizeClass:(long long)arg1 orientation:(long long)arg2;
 + (double)minimumHeightForSizeClass:(long long)arg1 orientation:(long long)arg2 isAllDay:(BOOL)arg3;
@@ -141,6 +148,7 @@
 - (long long)_compareOccurrenceViewTopToBottom:(id)arg1;
 - (long long)_compareOccurrenceViewTopToBottomLeftToRight:(id)arg1;
 - (struct CGRect)_computeTravelTimeContentRect;
+- (struct CGRect)_frameForText;
 - (struct CGRect)_frameMutatedForProximityToHourLine:(struct CGRect)arg1;
 - (void)_invalidateAllImages;
 - (void)_invalidateBackgroundImage;
@@ -160,6 +168,7 @@
 - (void)_updateColors;
 - (void)_updateContentImageViewIfNeeded;
 - (void)_updateContentWithPayload:(id)arg1;
+- (void)_updateCornerRadius;
 - (void)_updateResizeHandleLocations;
 - (double)_verticalContentInset;
 - (void)animateToFrame:(struct CGRect)arg1 isAllDay:(BOOL)arg2 beginFromCurrentState:(BOOL)arg3 whenFinished:(CDUnknownBlockType)arg4;

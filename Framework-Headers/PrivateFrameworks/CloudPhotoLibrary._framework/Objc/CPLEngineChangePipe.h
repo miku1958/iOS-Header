@@ -17,7 +17,6 @@
 @property (readonly, nonatomic) unsigned long long countOfQueuedBatches;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CPLPlatformObject *platformObject;
 @property (readonly) Class superclass;
@@ -32,6 +31,7 @@
 - (BOOL)hasSomeChangeInScopesWithIdentifiers:(id)arg1;
 - (BOOL)hasSomeChangeWithScopeFilter:(id)arg1;
 - (BOOL)hasSomeChangeWithScopedIdentifier:(id)arg1;
+- (BOOL)isEmpty;
 - (id)nextBatch;
 - (id)popAllChangeBatchesWithError:(id *)arg1;
 - (BOOL)popChangeBatch:(id *)arg1 error:(id *)arg2;

@@ -18,9 +18,12 @@
     MISSING_TYPE *stateViewNodeRenderer;
     MISSING_TYPE *customNodeRenderer;
     MISSING_TYPE *webEmbedNodeRenderer;
+    MISSING_TYPE *adMetricsNodeRenderer;
     MISSING_TYPE *webEmbedViewControllerReuseManager;
     MISSING_TYPE *rendererTool;
     MISSING_TYPE *behaviorRenderer;
+    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *timer;
 }
 
 @end

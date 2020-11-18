@@ -15,12 +15,7 @@
     _DKEvent *_event;
 }
 
-@property (strong) NSDate *date; // @synthesize date=_date;
-@property (strong) _DKEvent *event; // @synthesize event=_event;
-@property unsigned long long type; // @synthesize type=_type;
-
 - (void).cxx_destruct;
-- (id)initWithDate:(id)arg1 type:(unsigned long long)arg2 event:(id)arg3;
 
 @end
 

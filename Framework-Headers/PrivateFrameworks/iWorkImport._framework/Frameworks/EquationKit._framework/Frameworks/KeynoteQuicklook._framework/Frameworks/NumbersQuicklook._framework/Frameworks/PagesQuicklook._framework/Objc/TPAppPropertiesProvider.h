@@ -10,12 +10,15 @@
 
 @interface TPAppPropertiesProvider : TSAApplicationPropertiesProvider
 {
+    NSArray *_iBADocumentTypes;
 }
 
+@property (readonly, nonatomic) NSArray *iBADocumentTypes; // @synthesize iBADocumentTypes=_iBADocumentTypes;
 @property (readonly, nonatomic) NSArray *rtfDocumentTypes;
 @property (readonly, nonatomic) NSArray *textDocumentTypes;
 @property (readonly, nonatomic) NSArray *wordDocumentTypes;
 
+- (void).cxx_destruct;
 - (id)applicationDisplayName;
 - (id)applicationName;
 - (unsigned long long)applicationType;
@@ -28,6 +31,7 @@
 - (id)nativeDocumentType;
 - (id)nativeSFFDocumentType;
 - (id)strokeWidthsForFreehandDrawingToolType:(unsigned long long)arg1;
+- (BOOL)supportsTabNavigationOfCanvasObjects;
 - (id)tangierEditingFormatDocumentType;
 - (id)templateDocumentType;
 - (id)templateSFFDocumentType;

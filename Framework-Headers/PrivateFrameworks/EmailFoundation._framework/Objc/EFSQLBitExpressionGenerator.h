@@ -6,14 +6,14 @@
 
 #import <EmailFoundation/EFSQLExpressionGenerator.h>
 
-@protocol EFSQLExpressable;
+@protocol EFSQLValueExpressable;
 
 @interface EFSQLBitExpressionGenerator : EFSQLExpressionGenerator
 {
-    id<EFSQLExpressable> _bitExpression;
+    id<EFSQLValueExpressable> _bitExpression;
 }
 
-@property (readonly, nonatomic) id<EFSQLExpressable> bitExpression; // @synthesize bitExpression=_bitExpression;
+@property (readonly, nonatomic) id<EFSQLValueExpressable> bitExpression; // @synthesize bitExpression=_bitExpression;
 
 - (void).cxx_destruct;
 - (void)bitExpressionWithKeyColumn:(id)arg1;

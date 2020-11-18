@@ -6,11 +6,44 @@
 
 #import <AppleMediaServices/AMSTask.h>
 
-__attribute__((visibility("hidden")))
-@interface AMSPurchaseTask : AMSTask
+#import <AppleMediaServices/AMSAuthenticateTaskDelegate-Protocol.h>
+#import <AppleMediaServices/AMSBagConsumer-Protocol.h>
+#import <AppleMediaServices/AMSURLProtocolDelegate-Protocol.h>
+#import <AppleMediaServices/NSURLSessionDelegate-Protocol.h>
+
+@class AMSPurchaseInfo, AMSURLSession, NSString;
+@protocol AMSBagProtocol, AMSPurchaseDelegate;
+
+@interface AMSPurchaseTask : AMSTask <NSURLSessionDelegate, AMSURLProtocolDelegate, AMSAuthenticateTaskDelegate, AMSBagConsumer>
 {
+    id<AMSBagProtocol> _bag;
+    AMSPurchaseInfo *_purchaseInfo;
+    AMSURLSession *_session;
 }
 
+@property (strong, nonatomic) id<AMSBagProtocol> bag; // @synthesize bag=_bag;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<AMSPurchaseDelegate> delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong, nonatomic) AMSPurchaseInfo *purchaseInfo; // @synthesize purchaseInfo=_purchaseInfo;
+@property (readonly, nonatomic) AMSURLSession *session; // @synthesize session=_session;
+@property (readonly) Class superclass;
+
++ (id)bagKeySet;
++ (id)bagSubProfile;
++ (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
+- (void).cxx_destruct;
+- (void)_generateFraudScoreWithInfo:(id)arg1;
+- (id)_performPreauthenticate;
+- (id)_performPurchaseWithError:(id *)arg1;
+- (id)_promptForAccount;
+- (id)_recordEngagementEventWithInfo:(id)arg1 result:(id)arg2 error:(id)arg3;
+- (id)_runAuthenticateRequest:(id)arg1;
+- (id)_runDialogRequest:(id)arg1;
+- (BOOL)_shouldPreauthenticatePurchase:(id)arg1;
+- (void)authenticateTask:(id)arg1 handleDialogRequest:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithPurchase:(id)arg1 bag:(id)arg2;
 - (id)performPurchase;
 

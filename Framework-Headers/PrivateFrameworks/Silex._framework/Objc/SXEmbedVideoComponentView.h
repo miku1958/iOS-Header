@@ -13,7 +13,7 @@
 #import <Silex/_WKFullscreenDelegate-Protocol.h>
 
 @class NSString, SWCrashRetryThrottler, UIActivityIndicatorView, WKWebView, WKWebsiteDataStore;
-@protocol SXComponentActionHandler;
+@protocol SXComponentActionHandler, SXProxyAuthenticationHandler;
 
 @interface SXEmbedVideoComponentView : SXMediaComponentView <WKNavigationDelegate, WKNavigationDelegatePrivate, WKUIDelegate, SXViewportChangeListener, _WKFullscreenDelegate>
 {
@@ -24,6 +24,7 @@
     SWCrashRetryThrottler *_webCrashRetryThrottler;
     WKWebsiteDataStore *_dataStore;
     UIActivityIndicatorView *_activityIndicator;
+    id<SXProxyAuthenticationHandler> _proxyAuthenticationHandler;
 }
 
 @property (readonly, nonatomic) id<SXComponentActionHandler> actionHandler; // @synthesize actionHandler=_actionHandler;
@@ -33,6 +34,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isPresentingFullscreen; // @synthesize isPresentingFullscreen=_isPresentingFullscreen;
+@property (readonly, nonatomic) id<SXProxyAuthenticationHandler> proxyAuthenticationHandler; // @synthesize proxyAuthenticationHandler=_proxyAuthenticationHandler;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) SWCrashRetryThrottler *webCrashRetryThrottler; // @synthesize webCrashRetryThrottler=_webCrashRetryThrottler;
 @property (strong, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
@@ -41,17 +43,19 @@
 + (id)sharedConfiguration;
 - (void).cxx_destruct;
 - (void)_webViewDidEnterElementFullscreen:(id)arg1;
+- (void)_webViewDidEnterFullscreen:(id)arg1;
 - (void)_webViewDidExitElementFullscreen:(id)arg1;
+- (void)_webViewDidExitFullscreen:(id)arg1;
 - (void)_webViewWebProcessDidCrash:(id)arg1;
 - (BOOL)allowHierarchyRemoval;
 - (unsigned long long)analyticsMediaType;
 - (unsigned long long)analyticsVideoType;
 - (void)discardContents;
 - (void)handleError:(id)arg1;
-- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 actionHandler:(id)arg7 websiteDataStore:(id)arg8;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 analyticsReporting:(id)arg5 appStateMonitor:(id)arg6 actionHandler:(id)arg7 websiteDataStore:(id)arg8 proxyAuthenticationHandler:(id)arg9;
 - (void)initializeWebViewWithURL:(id)arg1;
 - (void)layoutSubviews;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)renderContents;
 - (BOOL)shouldAllowRequestToURL:(id)arg1;
 - (struct CGRect)transitionContentFrame;
@@ -63,6 +67,9 @@
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
+- (void)webView:(id)arg1 didReceiveAuthenticationChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)webViewEnteredFullscreen:(id)arg1;
+- (void)webViewExitedFullscreen:(id)arg1;
 
 @end
 

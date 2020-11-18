@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotosUICore/PXBaseDisplayCollection.h>
 
 #import <PhotosUICore/NSCopying-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSString;
+@class NSArray, NSMutableArray, NSMutableSet, NSObject, NSString;
 @protocol OS_dispatch_queue;
 
-@interface PXImportAssetCollection : NSObject <NSCopying>
+@interface PXImportAssetCollection : PXBaseDisplayCollection <NSCopying>
 {
     NSObject<OS_dispatch_queue> *_assetQueue;
     NSMutableArray *_assetList;

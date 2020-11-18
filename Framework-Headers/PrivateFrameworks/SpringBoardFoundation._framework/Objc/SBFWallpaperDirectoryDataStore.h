@@ -63,7 +63,6 @@
 - (id)wallpaperColorForVariant:(long long)arg1;
 - (id)wallpaperColorNameForVariant:(long long)arg1;
 - (id)wallpaperGradientForVariant:(long long)arg1;
-- (id)wallpaperImageDataForVariant:(long long)arg1 wallpaperMode:(long long)arg2 error:(id *)arg3;
 - (id)wallpaperImageForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
 - (id)wallpaperImageHashDataForVariant:(long long)arg1 wallpaperMode:(long long)arg2;
 - (id)wallpaperImageURLForVariant:(long long)arg1 wallpaperMode:(long long)arg2;

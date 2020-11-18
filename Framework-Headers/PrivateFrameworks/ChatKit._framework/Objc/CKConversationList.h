@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class CKConversation, NSMutableArray, NSMutableDictionary;
+@class CKConversation, NSArray, NSMutableArray, NSMutableDictionary;
 
 @interface CKConversationList : NSObject
 {
@@ -15,17 +15,19 @@
     BOOL _loadedConversations;
     BOOL _remergingConversations;
     BOOL _holdingWasKnownSenderUpdates;
+    BOOL _completedInitalPinLoad;
     CKConversation *_pendingConversation;
     NSMutableDictionary *_conversationsDictionary;
-    unsigned long long _filteredConversationCount;
+    NSArray *_pinnedConversations;
 }
 
+@property (nonatomic) BOOL completedInitalPinLoad; // @synthesize completedInitalPinLoad=_completedInitalPinLoad;
 @property (strong, nonatomic) NSMutableDictionary *conversationsDictionary; // @synthesize conversationsDictionary=_conversationsDictionary;
-@property (nonatomic) unsigned long long filteredConversationCount; // @synthesize filteredConversationCount=_filteredConversationCount;
 @property (nonatomic) BOOL holdingWasKnownSenderUpdates; // @synthesize holdingWasKnownSenderUpdates=_holdingWasKnownSenderUpdates;
 @property (readonly, nonatomic) BOOL loadedConversations; // @synthesize loadedConversations=_loadedConversations;
 @property (readonly, nonatomic) BOOL loadingConversations; // @synthesize loadingConversations=_loadingConversations;
 @property (strong, nonatomic) CKConversation *pendingConversation; // @synthesize pendingConversation=_pendingConversation;
+@property (strong, nonatomic) NSArray *pinnedConversations; // @synthesize pinnedConversations=_pinnedConversations;
 @property (nonatomic) BOOL remergingConversations; // @synthesize remergingConversations=_remergingConversations;
 
 + (void)_handleRegistryDidLoadNotification:(id)arg1;
@@ -39,46 +41,48 @@
 - (void)_abPartialChanged:(id)arg1;
 - (id)_alreadyTrackedConversationForChat:(id)arg1;
 - (void)_beginTrackingAllExistingChatsIfNeeded;
-- (id)_beginTrackingConversationWithChat:(id)arg1;
 - (void)_beginTrackingConversationWithChat:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_beginTrackingConversationWithChatIndirect:(id)arg1;
 - (void)_chatItemsDidChange:(id)arg1;
 - (void)_chatPropertiesChanged:(id)arg1;
 - (id)_conversationForChat:(id)arg1;
 - (id)_copyEntitiesForAddressStrings:(id)arg1;
+- (id)_dnd_deprecated_globalIdentifierForChat:(id)arg1;
 - (void)_handleChatJoinStateDidChange:(id)arg1;
 - (void)_handleChatParticipantsDidChange:(id)arg1;
 - (void)_handleChatsDidRemergeNotification:(id)arg1;
 - (void)_handleChatsWillRemergeNotification:(id)arg1;
 - (void)_handleEngroupFinishedUpdating:(id)arg1;
+- (void)_handleGroupNameChanged:(id)arg1;
+- (void)_handleGroupPhotoChanged:(id)arg1;
 - (void)_handleMemoryWarning:(id)arg1;
 - (void)_handlePreferredServiceChangedNotification:(id)arg1;
 - (void)_handleRegistryDidRegisterChatNotification:(id)arg1;
 - (void)_handleRegistryWillUnregisterChatNotification:(id)arg1;
+- (void)_invalidateABCaches:(id)arg1;
+- (void)_invalidatePartialABCaches:(id)arg1;
 - (BOOL)_isUnreadChat:(id)arg1 ignoringMessages:(id)arg2;
-- (BOOL)_messageFilteringEnabled;
-- (BOOL)_messageIsFromFilteredSenderServiceIsSMS:(BOOL)arg1 lastMessageIsSMS:(BOOL)arg2 isContact:(BOOL)arg3 isFiltered:(BOOL)arg4 isSpam:(BOOL)arg5 unknownFilteringEnabled:(BOOL)arg6 smsSpamFilteringEnabled:(BOOL)arg7;
 - (BOOL)_messageSpamFilteringEnabled;
 - (BOOL)_messageUnknownFilteringEnabled;
 - (void)_postConversationListChangedNotification;
 - (void)_postConversationListUpdateVisibleConversationsNotificationForUID:(id)arg1;
 - (void)_setConversations:(id)arg1 forFilterMode:(unsigned long long)arg2;
 - (BOOL)_shouldBailBeginTrackingForCurrentProcess;
-- (BOOL)_shouldCleanupFilter;
 - (BOOL)_shouldFilterForParticipants:(id)arg1;
-- (BOOL)_shouldShowInboxView;
 - (id)_testingTrackedConversations;
 - (void)beginTrackingConversation:(id)arg1 forChat:(id)arg2;
 - (void)beginWasKnownSenderHold;
 - (id)conversationForExistingChat:(id)arg1;
+- (id)conversationForExistingChatWithDeviceIndependentID:(id)arg1;
 - (id)conversationForExistingChatWithGUID:(id)arg1;
 - (id)conversationForExistingChatWithGroupID:(id)arg1;
 - (id)conversationForExistingChatWithIMChatGroupID:(id)arg1;
 - (id)conversationForExistingChatWithIMChatPersonCentricID:(id)arg1;
+- (id)conversationForExistingChatWithPinningIdentifier:(id)arg1;
 - (id)conversationForHandles:(id)arg1 displayName:(id)arg2 joinedChatsOnly:(BOOL)arg3 create:(BOOL)arg4;
 - (id)conversationForHandles:(id)arg1 displayName:(id)arg2 lastAddressedHandle:(id)arg3 lastAddressedSIMID:(id)arg4 joinedChatsOnly:(BOOL)arg5 create:(BOOL)arg6;
 - (id)conversations;
 - (id)conversationsForFilterMode:(unsigned long long)arg1;
-- (void)dealloc;
 - (void)deleteConversation:(id)arg1;
 - (void)deleteConversations:(id)arg1;
 - (id)description;
@@ -87,7 +91,12 @@
 - (BOOL)hasActiveConversations;
 - (id)init;
 - (BOOL)isHoldingWasKnownSenderUpdates;
+- (void)logConversationsTopCount:(long long)arg1 bottomCount:(long long)arg2;
+- (void)migrateDNDInfoIfNeeded;
 - (id)pendingConversationCreatingIfNecessary;
+- (void)performDNDMigrationIfNecessary;
+- (id)pinningIdentifierMap;
+- (void)postFinishedInitalPinLoadIfNecessary;
 - (void)releaseWasKnownSenderHold;
 - (void)removeConversation:(id)arg1;
 - (void)resetCaches;
@@ -101,7 +110,9 @@
 - (id)unreadLastMessages;
 - (void)updateConversationFilteredFlagsAndReportSpam;
 - (void)updateConversationListsAndSortIfEnabled;
+- (void)updateConversationsForNewPinnedConversations:(id)arg1;
 - (void)updateConversationsWasKnownSender;
+- (void)updatePinnedConversationsFromDataSource;
 
 @end
 

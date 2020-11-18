@@ -12,6 +12,8 @@
 __attribute__((visibility("hidden")))
 @interface PUAssetSharedViewModel : PUViewModel
 {
+    BOOL _needsDeferredProcessing;
+    unsigned short _deferredProcessingNeeded;
     id<PUDisplayAsset> _asset;
     PUOperationStatus *_loadingStatus;
     NSProgress *_saveProgress;
@@ -19,10 +21,12 @@ __attribute__((visibility("hidden")))
     long long _flippingFullSizeRenderState;
 }
 
-@property (readonly, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
+@property (strong, nonatomic) id<PUDisplayAsset> asset; // @synthesize asset=_asset;
 @property (readonly, nonatomic) PUAssetSharedViewModelChange *currentChange;
+@property (nonatomic) unsigned short deferredProcessingNeeded; // @synthesize deferredProcessingNeeded=_deferredProcessingNeeded;
 @property (nonatomic) long long flippingFullSizeRenderState; // @synthesize flippingFullSizeRenderState=_flippingFullSizeRenderState;
 @property (strong, nonatomic) PUOperationStatus *loadingStatus; // @synthesize loadingStatus=_loadingStatus;
+@property (nonatomic) BOOL needsDeferredProcessing; // @synthesize needsDeferredProcessing=_needsDeferredProcessing;
 @property (strong, nonatomic) NSProgress *saveProgress; // @synthesize saveProgress=_saveProgress;
 @property (nonatomic) long long saveState; // @synthesize saveState=_saveState;
 

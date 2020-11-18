@@ -12,6 +12,7 @@
 {
     NSMutableDictionary *_layoutItemByAssetCache;
     NSCache *_fetchedKeyAssetByAssetCollectionLocalIdentifierCache;
+    NSCache *_assetReferenceNearestToAssetCache;
     PXPhotosDataSource *_photosDataSource;
     PXPhotosDataSourceChange *_change;
 }
@@ -20,26 +21,41 @@
 @property (readonly, nonatomic) PXPhotosDataSource *photosDataSource; // @synthesize photosDataSource=_photosDataSource;
 
 + (id)dataSourceWithAsset:(id)arg1;
++ (id)dataSourceWithAssets:(id)arg1;
 - (void).cxx_destruct;
+- (id)_assetCollectionReferenceNearestToObjectReferenceAssumingSortedByIncreasingCreationDate:(id)arg1;
+- (id)_assetReferenceReferenceNearestToAssetReferenceUsingExhaustiveSearch:(id)arg1;
 - (id)_fastKeyCuratedAssetForAssetCollection:(id)arg1;
+- (struct PXSimpleIndexPath)_indexPathForObjectReference:(id)arg1 restrictedToSection:(long long)arg2;
 - (BOOL)areAllSectionsConsideredAccurate;
 - (id)assetCollectionReferenceNearestToObjectReference:(id)arg1;
 - (id)assetCollectionReferencesWithParentAssetCollectionReference:(id)arg1;
 - (id)assetCollectionReferencesWithParentAssetCollectionReference:(id)arg1 assetCollectionReferenceWithSameKeyAssetAsParent:(id *)arg2;
 - (id)assetIdentifierAtItemIndexPath:(struct PXSimpleIndexPath)arg1;
+- (id)containerCollection;
 - (BOOL)containsAnyItems;
 - (BOOL)containsMultipleItems;
 - (BOOL)couldObjectReferenceAppear:(id)arg1;
 - (id)description;
 - (unsigned long long)estimatedAssetCountForSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (long long)estimatedAssetsCountWithEnrichmentState:(unsigned short)arg1;
+- (unsigned long long)estimatedOtherCount;
+- (unsigned long long)estimatedPhotosCount;
+- (unsigned long long)estimatedVideosCount;
+- (id)filterPredicate;
 - (id)firstAssetCollection;
 - (BOOL)hasCurationForAssetCollection:(id)arg1;
 - (unsigned long long)identifier;
+- (struct PXSimpleIndexPath)indexPathForObjectID:(id)arg1;
 - (struct PXSimpleIndexPath)indexPathForObjectReference:(id)arg1;
+- (id)indexPathSetForObjectIDs:(id)arg1;
 - (id)initWithImmutablePhotosDataSource:(id)arg1 withChange:(id)arg2;
 - (id)inputForItem:(id)arg1;
 - (BOOL)isAssetAtIndexPathPartOfCuratedSet:(struct PXSimpleIndexPath)arg1;
+- (BOOL)isFiltered;
+- (BOOL)isFilteringAssetCollection:(id)arg1;
+- (BOOL)isFilteringDisabledForAssetCollection:(id)arg1;
+- (BOOL)isSorted;
 - (struct PXSimpleIndexPath)keyAssetIndexPathForSectionIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)keyAssetsForAssetCollection:(id)arg1;
 - (id)keyAssetsInSectionIndexPath:(struct PXSimpleIndexPath)arg1;
@@ -55,6 +71,7 @@
 - (id)objectAtIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)objectReferenceAtIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)objectReferenceNearestToObjectReference:(id)arg1;
+- (id)objectReferenceNearestToObjectReference:(id)arg1 inSection:(long long)arg2;
 - (id)objectsInIndexPath:(struct PXSimpleIndexPath)arg1;
 - (id)photosGraphSuggestedContributions;
 - (void)prefetchIndexPaths:(id)arg1;
@@ -62,6 +79,8 @@
 - (void)prefetchSections:(id)arg1;
 - (id)selectionSnapshotForAsset:(id)arg1 assetCollection:(id)arg2;
 - (id)startingAssetReference;
+- (long long)startingSection;
+- (BOOL)startsAtEnd;
 
 @end
 

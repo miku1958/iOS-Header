@@ -12,8 +12,12 @@
 {
     NSString *_vendorIdentifier;
     NSString *_productIdentifier;
+    BOOL _hasVendorIdentifier;
+    BOOL _hasProductIdentifier;
 }
 
+@property (nonatomic) BOOL hasProductIdentifier; // @synthesize hasProductIdentifier=_hasProductIdentifier;
+@property (nonatomic) BOOL hasVendorIdentifier; // @synthesize hasVendorIdentifier=_hasVendorIdentifier;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *productIdentifier; // @synthesize productIdentifier=_productIdentifier;
 @property (copy, nonatomic) NSString *vendorIdentifier; // @synthesize vendorIdentifier=_vendorIdentifier;

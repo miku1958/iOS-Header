@@ -6,24 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <ProactiveML/PMLDictionarySerializableProtocol-Protocol.h>
 #import <ProactiveML/PMLPlistAndChunksSerializableProtocol-Protocol.h>
 
 @class NSString, PMLMutableDenseVector;
 
-@interface PMLModelWeights : NSObject <PMLDictionarySerializableProtocol, PMLPlistAndChunksSerializableProtocol>
+@interface PMLModelWeights : NSObject <PMLPlistAndChunksSerializableProtocol>
 {
     PMLMutableDenseVector *_data;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) int length;
-@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 
 + (id)constWeightsOfLength:(int)arg1 value:(float)arg2;

@@ -7,9 +7,9 @@
 #import <UIKit/UIButton.h>
 
 @interface UIButton (PXCMM)
-+ (id)buttonBackgroundImageForType:(unsigned long long)arg1 color:(id)arg2 cornerRadius:(double)arg3 controlState:(unsigned long long)arg4;
-+ (id)buttonWithPXType:(unsigned long long)arg1 color:(id)arg2;
 + (id)px_actionButtonWithTitle:(id)arg1 target:(id)arg2 action:(SEL)arg3 color:(id)arg4;
++ (id)px_buttonBackgroundImageForType:(unsigned long long)arg1 color:(id)arg2 cornerRadius:(double)arg3 controlState:(unsigned long long)arg4;
++ (id)px_buttonWithPXType:(unsigned long long)arg1 color:(id)arg2;
 - (void)px_setTitle:(id)arg1 orAttributedTitle:(id)arg2 forState:(unsigned long long)arg3;
 - (void)px_updateTitleUsingBlock:(CDUnknownBlockType)arg1;
 @end

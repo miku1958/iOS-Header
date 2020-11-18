@@ -17,12 +17,10 @@
     struct {
         unsigned int deviceType:1;
     } _has;
-    BOOL __encodeLegacyGloryData;
     int _deviceType;
     _INPBContact *_contact;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBContact *contact; // @synthesize contact=_contact;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

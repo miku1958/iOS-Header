@@ -16,16 +16,16 @@
     struct _opaque_pthread_mutex_t _helperLock;
 }
 
-+ (BOOL)contactExistsInArray:(id)arg1 withName:(id)arg2 andHandle:(id)arg3;
 + (id)findContactsForDetailType:(unsigned long long)arg1 andValue:(id)arg2;
 + (id)findContactsForPerson:(id)arg1 fetchingKeys:(id)arg2;
 + (id)normalizedDigits:(id)arg1;
++ (BOOL)personExistsInContacts:(id)arg1 name:(id)arg2 handle:(id)arg3;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (id)init;
 - (BOOL)numberMatchesContactsForm:(id)arg1;
-- (BOOL)numberMatchesContactsForm:(id)arg1 usingPredicate:(id)arg2;
+- (BOOL)numberMatchesContactsForm:(id)arg1 amongContactsWithIdentifiers:(id)arg2;
 
 @end
 

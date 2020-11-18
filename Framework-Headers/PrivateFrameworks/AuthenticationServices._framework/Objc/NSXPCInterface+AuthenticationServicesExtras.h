@@ -7,6 +7,8 @@
 #import <Foundation/NSXPCInterface.h>
 
 @interface NSXPCInterface (AuthenticationServicesExtras)
++ (id)_as_accountModificationExtensionInterface;
++ (id)_as_accountModificationHostInterface;
 + (id)_as_credentialProviderExtensionInterface;
 + (id)_as_credentialProviderHostInterface;
 @end

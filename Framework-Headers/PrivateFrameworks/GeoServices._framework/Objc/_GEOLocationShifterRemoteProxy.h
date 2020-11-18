@@ -28,6 +28,8 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (BOOL)_isLocationShiftRequiredForCoordinateInProcess:(CDStruct_c3b9c2ee)arg1;
+- (BOOL)_isLocationShiftRequiredForCoordinateViaProxy:(CDStruct_c3b9c2ee)arg1;
 - (void)flushDiskCache;
 - (id)init;
 - (BOOL)isLocationShiftEnabled;

@@ -10,7 +10,7 @@
 {
 }
 
-- (void)fetchArticleOrFeedWithArticleURL:(id)arg1 feedURL:(id)arg2 callbackQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)fetchArticleWithURL:(id)arg1 callbackQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)initWithConfigurationManager:(id)arg1;
 - (void)reportConcern:(id)arg1 callbackQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)submitWebAccessWithTagID:(id)arg1 purchaseID:(id)arg2 emailAddress:(id)arg3 purchaseReceipt:(id)arg4 countryCode:(id)arg5 languageCode:(id)arg6 callbackQueue:(id)arg7 completion:(CDUnknownBlockType)arg8;

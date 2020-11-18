@@ -4,18 +4,23 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC16NewsSubscription15PurchaseManager : _TtCs12_SwiftObject
+@interface _TtC16NewsSubscription15PurchaseManager : NSObject
 {
     MISSING_TYPE *purchaseObservers;
     MISSING_TYPE *transactionObservers;
     MISSING_TYPE *internalPurchaseManager;
     MISSING_TYPE *purchaseController;
     MISSING_TYPE *purchaseContextEntriesManager;
+    MISSING_TYPE *metricsBuilder;
+    MISSING_TYPE *bundleSubscriptionManager;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

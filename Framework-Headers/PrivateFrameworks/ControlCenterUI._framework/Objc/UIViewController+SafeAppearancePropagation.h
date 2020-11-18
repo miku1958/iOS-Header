@@ -7,6 +7,9 @@
 #import <UIKit/UIViewController.h>
 
 @interface UIViewController (SafeAppearancePropagation)
+
+@property (readonly, nonatomic) BOOL ccui_shouldPropagateAppearanceCalls;
+
 - (id)_ccui_childViewControllersForAppearancePropagation;
 - (void)ccui_safelyBeginAppearanceTransition:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)ccui_safelyBeginAppearanceTransitionForChildViewControllers:(BOOL)arg1 animated:(BOOL)arg2;

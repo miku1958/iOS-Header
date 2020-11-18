@@ -8,6 +8,7 @@
 
 @interface AVAudioFile (RCAdditions)
 
+@property (readonly, nonatomic) unsigned int rc_audioFormat;
 @property (readonly, nonatomic) double rc_durationInSeconds;
 @property (readonly, nonatomic) double rc_sampleRate;
 

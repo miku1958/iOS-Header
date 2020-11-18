@@ -21,8 +21,8 @@
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
 
+- (void).cxx_destruct;
 - (void)addedOnInterface:(unsigned int)arg1 named:(id)arg2;
-- (void)dealloc;
 - (id)init;
 - (id)initWithServiceName:(id)arg1 type:(id)arg2 andDomain:(id)arg3;
 - (void)removedFromInterface:(unsigned int)arg1 named:(id)arg2;

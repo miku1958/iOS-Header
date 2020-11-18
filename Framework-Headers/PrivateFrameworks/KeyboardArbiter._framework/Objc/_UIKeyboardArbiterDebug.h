@@ -15,7 +15,11 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
     int _importantCount;
     NSMutableArray *_entries;
+    BOOL _disable;
+    BOOL _pause;
 }
+
+@property (nonatomic) BOOL pause; // @synthesize pause=_pause;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;

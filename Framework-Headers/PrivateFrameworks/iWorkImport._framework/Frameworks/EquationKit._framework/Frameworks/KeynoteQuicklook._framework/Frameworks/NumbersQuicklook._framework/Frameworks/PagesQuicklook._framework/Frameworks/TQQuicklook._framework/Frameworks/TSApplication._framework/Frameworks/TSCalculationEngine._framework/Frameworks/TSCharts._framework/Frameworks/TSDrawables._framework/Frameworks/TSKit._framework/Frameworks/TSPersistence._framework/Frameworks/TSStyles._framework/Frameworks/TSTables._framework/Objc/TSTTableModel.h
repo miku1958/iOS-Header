@@ -11,6 +11,7 @@
 #import <TSTables/TSCEFormulaOwning-Protocol.h>
 #import <TSTables/TSCEReferenceResolving-Protocol.h>
 #import <TSTables/TSDMixing-Protocol.h>
+#import <TSTables/TSTCompatibilityVersionProviding-Protocol.h>
 #import <TSTables/TSTCustomStrokeProviding-Protocol.h>
 #import <TSTables/TSTStyleProviding-Protocol.h>
 #import <TSTables/TSTTableStrokeProviding-Protocol.h>
@@ -18,14 +19,13 @@
 
 @class NSArray, NSMapTable, NSString, NSUUID, TSCECalculationEngine, TSCEHauntedOwner, TSCEOwnerUidMapper, TSDStroke, TSTCategoryOwner, TSTCellDictionary, TSTCellStyle, TSTCellWillChangeDistributor, TSTColumnRowUIDMap, TSTConcurrentMutableCellUIDSet, TSTConditionalStyleFormulaOwner, TSTHiddenStateFormulaOwner, TSTHiddenStatesOwner, TSTMergeOwner, TSTPencilAnnotationOwner, TSTSortRuleReferenceTracker, TSTStrokeSidecar, TSTStructuredTextImportRecord, TSTTableDataStore, TSTTableFilterSet, TSTTableInfo, TSTTableSortOrder, TSTTableStyle, TSTTableStylePreset, TSWPParagraphStyle, TSWPShapeStyle, TSWPStorage;
 
-@interface TSTTableModel : TSPObject <TSCEReferenceResolving, TSCEColumnRowUIDMapping, TSCECalculationEngineRegistration, TSCEFormulaOwning, TSDMixing, TSTCustomStrokeProviding, TSTStyleProviding, TSTTableStrokeProviding, TSTTableTileCreating>
+@interface TSTTableModel : TSPObject <TSCEReferenceResolving, TSCEColumnRowUIDMapping, TSCECalculationEngineRegistration, TSCEFormulaOwning, TSDMixing, TSTCompatibilityVersionProviding, TSTCustomStrokeProviding, TSTStyleProviding, TSTTableStrokeProviding, TSTTableTileCreating>
 {
     TSTHiddenStateFormulaOwner *_hiddenStateFormulaOwnerForRows;
     TSTHiddenStateFormulaOwner *_hiddenStateFormulaOwnerForColumns;
     TSTStrokeSidecar *_strokeSidecar;
     struct TSCECellRefSet _clearErrorCells;
     struct os_unfair_lock_s _clearErrorLock;
-    BOOL _hasEmbiggened;
     BOOL _wasCut;
     BOOL _headerRowsFrozen;
     BOOL _headerColumnsFrozen;
@@ -39,7 +39,8 @@
     struct TSUModelColumnIndex _numberOfHeaderColumns;
     struct TSUModelRowIndex _numberOfHeaderRows;
     struct TSUModelRowIndex _numberOfFooterRows;
-    unsigned long long _versionAtUnarchive;
+    unsigned long long _lastArchivedAppVersion;
+    unsigned long long _archivingCompatibilityVersion;
     TSCECalculationEngine *_calcEngine;
     TSTTableDataStore *_dataStore;
     double _defaultRowHeight;
@@ -102,7 +103,7 @@
     UUIDData_5fbc143e _fromGroupByUID;
 }
 
-@property (readonly, nonatomic) unsigned long long archivingCompatibilityVersion;
+@property (readonly, nonatomic) unsigned long long archivingCompatibilityVersion; // @synthesize archivingCompatibilityVersion=_archivingCompatibilityVersion;
 @property (strong, nonatomic) TSTCellStyle *bodyCellStyle; // @synthesize bodyCellStyle=_bodyCellStyle;
 @property (readonly, nonatomic) TSDStroke *bodyColumnStroke;
 @property (readonly, nonatomic) TSDStroke *bodyRowStroke;
@@ -171,7 +172,6 @@
 @property (nonatomic) UUIDData_5fbc143e fromGroupByUID; // @synthesize fromGroupByUID=_fromGroupByUID;
 @property (nonatomic) UUIDData_5fbc143e fromTableUID; // @synthesize fromTableUID=_fromTableUID;
 @property (readonly, nonatomic) BOOL hasAlternatingRows;
-@property (readonly, nonatomic) BOOL hasEmbiggened; // @synthesize hasEmbiggened=_hasEmbiggened;
 @property (readonly, nonatomic) BOOL hasMigratableStylesInCells;
 @property (readonly, nonatomic) BOOL hasTableBorder;
 @property (readonly) unsigned long long hash;
@@ -204,6 +204,7 @@
 @property (strong, nonatomic) TSWPParagraphStyle *labelLevel4TextStyle; // @synthesize labelLevel4TextStyle=_labelLevel4TextStyle;
 @property (strong, nonatomic) TSTCellStyle *labelLevel5CellStyle; // @synthesize labelLevel5CellStyle=_labelLevel5CellStyle;
 @property (strong, nonatomic) TSWPParagraphStyle *labelLevel5TextStyle; // @synthesize labelLevel5TextStyle=_labelLevel5TextStyle;
+@property (readonly, nonatomic) unsigned long long lastArchivedAppVersion; // @synthesize lastArchivedAppVersion=_lastArchivedAppVersion;
 @property (readonly, nonatomic) TSTMergeOwner *mergeOwner; // @synthesize mergeOwner=_mergeOwner;
 @property (readonly, nonatomic) NSUUID *nsTableUID;
 @property (readonly, nonatomic) struct TSUModelColumnIndex numberOfColumns;
@@ -244,7 +245,6 @@
 @property (readonly, nonatomic) UUIDData_5fbc143e upgradeHiddenFormulaOwnerForColumnsUID;
 @property (readonly, nonatomic) UUIDData_5fbc143e upgradeHiddenFormulaOwnerForRowsUID;
 @property (readonly, nonatomic) BOOL upgradeNeedsToUpdateFilterSetForImport;
-@property (readonly, nonatomic) unsigned long long versionAtUnarchive; // @synthesize versionAtUnarchive=_versionAtUnarchive;
 @property (nonatomic) BOOL wasCut; // @synthesize wasCut=_wasCut;
 @property (nonatomic) BOOL wasUnarchivedFromAProvidedTable; // @synthesize wasUnarchivedFromAProvidedTable=_wasUnarchivedFromAProvidedTable;
 
@@ -316,17 +316,18 @@
 - (void)didApplyConcurrentCellMap:(id)arg1;
 - (void)documentLocaleDidChange;
 - (id)drawableInfo;
-- (void)enumerateDataStoreCellsWithBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateCellsForSOSSerializationWithBlock:(CDUnknownBlockType)arg1;
 - (struct TSCERecalculationState)evaluateFormulaAt:(struct TSUCellCoord)arg1 withCalcEngine:(id)arg2 recalcOptions:(struct TSCERecalculationState)arg3;
 - (long long)evaluationMode;
 - (id)fillForColumn:(struct TSUModelColumnIndex)arg1;
 - (id)fillForRow:(struct TSUModelRowIndex)arg1;
 - (struct TSUModelCellRect)footerRowRange;
 - (id)formatForCalcEngineAtBaseCellCoord:(struct TSUModelCellCoord)arg1 formatIsExplicitOut:(BOOL *)arg2;
-- (struct TSCEFormula *)formulaAtBaseCellCoord:(struct TSUModelCellCoord)arg1;
+- (id)formulaAtBaseCellCoord:(struct TSUModelCellCoord)arg1;
 - (id)formulaOwner;
 - (UUIDData_5fbc143e)formulaOwnerUID;
 - (id)formulaSpecAtBaseCellCoord:(struct TSUModelCellCoord)arg1;
+- (id)formulaSyntaxErrorAtBaseCellCoord:(struct TSUModelCellCoord)arg1;
 - (int)getCell:(id)arg1 atBaseCellCoord:(struct TSUModelCellCoord)arg2;
 - (int)getCell:(id)arg1 atBaseCellCoord:(struct TSUModelCellCoord)arg2 suppressCellBorder:(BOOL)arg3;
 - (int)getDefaultCell:(out id)arg1 forBaseCellCoord:(struct TSUModelCellCoord)arg2;
@@ -360,6 +361,7 @@
 - (BOOL)isRegisteredWithCalcEngine:(id)arg1;
 - (id)linkedResolver;
 - (void)loadFromUnarchiver:(id)arg1;
+- (void)logTableTileAuditStatus:(BOOL)arg1 withVersion:(unsigned long long)arg2;
 - (void)makePasteboardCustomFormatList;
 - (id)mapReassigningPasteboardCustomFormatKeys:(id)arg1;
 - (void)mapTableStylesToStylesheet:(id)arg1 withMapper:(id)arg2;
@@ -483,6 +485,7 @@
 - (unsigned long long)tableStyleAreaForRow:(struct TSUModelRowIndex)arg1;
 - (BOOL)textStyle:(id)arg1 isEqualToDefaultTextStyleForBaseCellCoord:(struct TSUModelCellCoord)arg2;
 - (id)textStyleAtBaseCellCoord:(struct TSUModelCellCoord)arg1 isDefault:(out BOOL *)arg2;
+- (id)textStyleForCalcEngineAtBaseCellCoord:(struct TSUModelCellCoord)arg1 isDefault:(out BOOL *)arg2;
 - (id)textStyleForCellWithEmptyStyleAtBaseCellCoord:(struct TSUModelCellCoord)arg1 isDefault:(out BOOL *)arg2;
 - (id)textStyleOfColumnAtIndex:(struct TSUModelColumnIndex)arg1 isDefault:(out BOOL *)arg2;
 - (id)textStyleOfRowAtIndex:(struct TSUModelRowIndex)arg1 isDefault:(out BOOL *)arg2;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVCStatisticsCollector, SenderLargeFrameInfo;
+@class AVCStatisticsCollector, SenderLargeFrameInfo, VCRateControlServerBag;
 
 __attribute__((visibility("hidden")))
 @interface VCRateControlMediaController : NSObject
@@ -30,7 +30,6 @@ __attribute__((visibility("hidden")))
     double _lastAudioFractionChangeTime;
     double _lastAudioEnoughRateTime;
     unsigned char _videoPayloadType;
-    unsigned short _videoTransactionID;
     unsigned int _videoRefreshFrameTimestamp;
     unsigned int _videoRefreshFramePacketCount;
     double _lastVideoKeyFrameTime;
@@ -42,6 +41,9 @@ __attribute__((visibility("hidden")))
     BOOL _shouldDisableLargeFrameRequestsWhenInitialRampUp;
     BOOL _isRateLimitedMaxTimeExceeded;
     BOOL _isSenderProbingEnabled;
+    BOOL _enableAggressiveProbingSequence;
+    VCRateControlServerBag *_serverBag;
+    double _minProbingSpacingAggressive;
     int _basebandFlushCount;
     int _basebandFlushedVideoCount;
     int _basebandFlushedAudioCount;
@@ -60,6 +62,7 @@ __attribute__((visibility("hidden")))
     double _lastBasebandHighNBDCDTime;
     BOOL _isBasebandQueuingDelayHigh;
     void *_logBasebandDump;
+    void *_logBWEDump;
     unsigned int _afrcRemoteEstimatedBandwidth;
 }
 
@@ -70,6 +73,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) int basebandFlushCount; // @synthesize basebandFlushCount=_basebandFlushCount;
 @property (readonly, nonatomic) int basebandFlushedAudioCount; // @synthesize basebandFlushedAudioCount=_basebandFlushedAudioCount;
 @property (readonly, nonatomic) int basebandFlushedVideoCount; // @synthesize basebandFlushedVideoCount=_basebandFlushedVideoCount;
+@property (nonatomic) BOOL enableAggressiveProbingSequence; // @synthesize enableAggressiveProbingSequence=_enableAggressiveProbingSequence;
 @property (nonatomic) BOOL isAudioOnly; // @synthesize isAudioOnly=_isAudioOnly;
 @property (readonly, nonatomic) BOOL isInThrottlingMode; // @synthesize isInThrottlingMode=_isInThrottlingMode;
 @property (nonatomic) BOOL isRTPFlushBasebandFromVCRateControl; // @synthesize isRTPFlushBasebandFromVCRateControl=_isRTPFlushBasebandFromVCRateControl;
@@ -83,6 +87,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int probingLargeFrameSize; // @synthesize probingLargeFrameSize=_probingLargeFrameSize;
 @property (readonly, nonatomic) unsigned int probingSequencePacketCount; // @synthesize probingSequencePacketCount=_probingSequencePacketCount;
 @property (readonly, nonatomic) unsigned int probingSequencePacketSize; // @synthesize probingSequencePacketSize=_probingSequencePacketSize;
+@property (strong, nonatomic) VCRateControlServerBag *serverBag; // @synthesize serverBag=_serverBag;
 @property (nonatomic) BOOL shouldDisableLargeFrameRequestsWhenInitialRampUp; // @synthesize shouldDisableLargeFrameRequestsWhenInitialRampUp=_shouldDisableLargeFrameRequestsWhenInitialRampUp;
 @property (strong, nonatomic) AVCStatisticsCollector *statisticsCollector; // @synthesize statisticsCollector=_statisticsCollector;
 @property (nonatomic) unsigned int targetBitrate; // @synthesize targetBitrate=_targetBitrate;
@@ -92,6 +97,7 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (void)decreaseFlushCount:(int)arg1;
 - (BOOL)didMediaGetFlushedWithPayloadType:(unsigned char)arg1 transactionID:(unsigned short)arg2 packetDropped:(unsigned short)arg3 sequenceNumberArray:(unsigned short *)arg4;
+- (void)enableBWELogDump:(void *)arg1;
 - (void)enableBasebandLogDump:(void *)arg1;
 - (void)getMediaQueueInVideoBitrate:(double *)arg1 outVideoBitrate:(double *)arg2 inAudioBitrate:(double *)arg3 outAudioBitrate:(double *)arg4;
 - (void)getMediaQueueRateChangeCounter:(unsigned int *)arg1 rateChangeTime:(double *)arg2;
@@ -100,16 +106,15 @@ __attribute__((visibility("hidden")))
 - (id)initWithMediaQueue:(struct tagHANDLE *)arg1 delegate:(id)arg2;
 - (BOOL)isProbingLargeFrameRequiredAtTime:(double)arg1;
 - (void)pauseVideoByUser:(BOOL)arg1;
-- (void)printLargeFrameStatsAtTime:(double)arg1 timeSinceLastProbingSequence:(double)arg2 frameSize:(unsigned int)arg3 wastedBytes:(unsigned int)arg4 isFrameRequested:(BOOL)arg5;
+- (void)printLargeFrameStatsAtTime:(double)arg1 timestamp:(unsigned int)arg2 timeSinceLastProbingSequence:(double)arg3 frameSize:(unsigned int)arg4 wastedBytes:(unsigned int)arg5 fecRatio:(double)arg6 isFrameRequested:(BOOL)arg7;
 - (BOOL)rampDownAudioFraction;
 - (BOOL)rampUpAudioFraction;
 - (void)recordVideoRefreshFrameWithTimestamp:(unsigned int)arg1 payloadType:(unsigned char)arg2 packetCount:(unsigned int)arg3 isKeyFrame:(BOOL)arg4;
-- (void)resetAFRCVideoSendingBitrate;
 - (void)resumeVideoByVCRateControl;
 - (void)scheduleProbingSequenceAtTime:(double)arg1;
-- (void)scheduleProbingSequenceWithFrameSize:(unsigned int)arg1 paddingBytes:(unsigned int)arg2 isProbingSequenceScheduled:(BOOL *)arg3;
+- (void)scheduleProbingSequenceWithFrameSize:(unsigned int)arg1 paddingBytes:(unsigned int)arg2 timestamp:(unsigned int)arg3 fecRatio:(double)arg4 isProbingSequenceScheduled:(BOOL *)arg5;
 - (void)stopVideoByVCRateControl;
-- (void)updateBasebandSuggestionWithStatistics:(CDStruct_b21f1e06)arg1;
+- (void)updateBasebandSuggestionWithStatistics:(CDStruct_56e8fa21)arg1;
 - (void)updateLargeFrameSizeWithBandwidth:(unsigned int)arg1;
 - (void)updateProbingLargeFrameSizeCap;
 

@@ -38,6 +38,7 @@
 - (id)initWithXPCConnection:(id)arg1 serverHandle:(id)arg2;
 - (void)observeData:(id)arg1 forDomain:(unsigned long long)arg2;
 - (void)observeDomains:(id)arg1;
+- (void)reportUserInteraction:(id)arg1 forDomain:(unsigned long long)arg2;
 - (void)stopObservingDomains:(id)arg1;
 
 @end

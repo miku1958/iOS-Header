@@ -4,14 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <HomeKitDaemon/HMDTLVBase.h>
+#import <CoreHAP/HAPTLVBase.h>
 
-#import <HomeKitDaemon/HMDTLVCreateParse-Protocol.h>
+#import <HomeKitDaemon/HAPTLVCreateParse-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
 @class HMDReselectedRTPParameters, HMDVideoAttributes;
 
-@interface HMDReselectedVideoParameters : HMDTLVBase <HMDTLVCreateParse, NSSecureCoding>
+@interface HMDReselectedVideoParameters : HAPTLVBase <HAPTLVCreateParse, NSSecureCoding>
 {
     HMDVideoAttributes *_videoAttributes;
     HMDReselectedRTPParameters *_rtpParameters;

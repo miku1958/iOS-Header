@@ -22,7 +22,7 @@
 - (void).cxx_destruct;
 - (id)description;
 - (unsigned long long)hash;
-- (id)initWithFeature:(CDStruct_123780e2 *)arg1 coordinates:(CDStruct_2c43369c)arg2 isDeadEnd:(BOOL)arg3;
+- (id)initWithFeature:(CDStruct_66740237 *)arg1 coordinates:(CDStruct_2c43369c)arg2 isDeadEnd:(BOOL)arg3;
 - (id)initWithFeatureWrapper:(id)arg1 coordinates:(CDStruct_2c43369c)arg2 isDeadEnd:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
 

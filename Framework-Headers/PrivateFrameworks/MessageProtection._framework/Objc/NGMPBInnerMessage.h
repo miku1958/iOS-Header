@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 {
     unsigned int _counter;
     NSData *_debugInfo;
+    NSData *_ktGossipData;
     NSData *_message;
     struct {
         unsigned int counter:1;
@@ -25,9 +26,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSData *debugInfo; // @synthesize debugInfo=_debugInfo;
 @property (nonatomic) BOOL hasCounter;
 @property (readonly, nonatomic) BOOL hasDebugInfo;
+@property (readonly, nonatomic) BOOL hasKtGossipData;
+@property (strong, nonatomic) NSData *ktGossipData; // @synthesize ktGossipData=_ktGossipData;
 @property (strong, nonatomic) NSData *message; // @synthesize message=_message;
 
 - (void).cxx_destruct;
+- (id)attributes;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

@@ -8,7 +8,7 @@
 
 #import <Notes/ICSearchIndexableNote-Protocol.h>
 
-@class NSArray, NSData, NSDate, NSNumber, NSSet, NSString, NSURL, NoteBodyObject, NoteStoreObject;
+@class NSData, NSDate, NSNumber, NSSet, NSString, NSURL, NoteBodyObject, NoteStoreObject;
 
 @interface NoteObject : NSManagedObject <ICSearchIndexableNote>
 {
@@ -23,6 +23,7 @@
 @property (readonly, nonatomic) NSString *contentAsPlainTextPreservingNewlines;
 @property (strong, nonatomic) NSNumber *contentType; // @dynamic contentType;
 @property (strong, nonatomic) NSDate *creationDate; // @dynamic creationDate;
+@property (readonly, nonatomic) long long currentStatus;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) NSNumber *deletedFlag; // @dynamic deletedFlag;
 @property (readonly, copy) NSString *description;
@@ -33,16 +34,19 @@
 @property (strong, nonatomic) NSNumber *externalServerIntId; // @dynamic externalServerIntId;
 @property (nonatomic) unsigned long long flags;
 @property (readonly, strong, nonatomic) NSString *guid; // @dynamic guid;
+@property (readonly, nonatomic) BOOL hasUnreadChanges;
 @property (readonly, nonatomic) BOOL hasValidServerIntId;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSNumber *integerId; // @dynamic integerId;
 @property (readonly, nonatomic) BOOL isBeingMarkedForDeletion;
 @property (strong, nonatomic) NSNumber *isBookkeepingEntry; // @dynamic isBookkeepingEntry;
+@property (readonly, nonatomic) BOOL isDeletedOrInTrash;
 @property (readonly, nonatomic) BOOL isMarkedForDeletion;
 @property (readonly, nonatomic) BOOL isModernNote;
+@property (readonly, nonatomic) BOOL isPinned;
 @property (nonatomic) BOOL isPlainText;
 @property (strong, nonatomic) NSDate *modificationDate; // @dynamic modificationDate;
-@property (readonly, nonatomic) NSArray *noteCellKeyPaths;
+@property (readonly, nonatomic) NSSet *noteCellKeyPaths;
 @property (readonly, nonatomic) NSURL *noteId;
 @property (nonatomic) unsigned long long sequenceNumber;
 @property (strong, nonatomic) NSString *serverId; // @dynamic serverId;
@@ -59,11 +63,12 @@
 - (id)contentIdentifier;
 - (id)contentInfoText;
 - (id)dataForTypeIdentifier:(id)arg1;
-- (id)dateForCurrentSortType;
+- (id)dataSourceIdentifier;
 - (id)defaultTitleForEmptyNote;
 - (id)folderName;
 - (id)folderNameForNoteList;
 - (id)identifier;
+- (BOOL)isDeletable;
 - (BOOL)isHiddenFromSearch;
 - (BOOL)isMovable;
 - (BOOL)isPasswordProtected;

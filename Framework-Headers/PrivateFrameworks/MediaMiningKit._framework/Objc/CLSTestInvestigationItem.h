@@ -8,14 +8,14 @@
 
 #import <MediaMiningKit/CLSInvestigationItem-Protocol.h>
 
-@class CLLocation, NSArray, NSData, NSDate, NSDateComponents, NSSet, NSString, VNSceneprint;
+@class CLLocation, NSArray, NSDate, NSDateComponents, NSSet, NSString, VNSceneprint;
 
 @interface CLSTestInvestigationItem : NSObject <CLSInvestigationItem>
 {
-    BOOL _isUtility;
-    BOOL _isBlurry;
+    BOOL _clsIsUtility;
+    BOOL _clsIsBlurry;
     BOOL _isVideo;
-    BOOL _isScreenshotOrScreenRecording;
+    BOOL _clsIsScreenshotOrScreenRecording;
     BOOL _isFavorite;
     BOOL _clsIsAnInterestingVideo;
     BOOL _clsIsAnInterestingPhoto;
@@ -40,7 +40,6 @@
     long long _clsPlayCount;
     long long _clsShareCount;
     double _clsContentScore;
-    NSData *_clsDistanceIdentity;
     NSSet *_clsSceneClassifications;
     VNSceneprint *_clsSceneprint;
     NSArray *_clsUnprefetchedPeopleNames;
@@ -52,13 +51,13 @@
     double _clsHighlightVisibilityScore;
     double _clsAutoplaySuggestionScore;
     double _clsDuration;
+    double _clsSquareCropScore;
 }
 
 @property (readonly, nonatomic) double clsAestheticScore; // @synthesize clsAestheticScore=_clsAestheticScore;
 @property (readonly, nonatomic) double clsAutoplaySuggestionScore; // @synthesize clsAutoplaySuggestionScore=_clsAutoplaySuggestionScore;
 @property (readonly) BOOL clsAvoidIfPossibleForKeyItem; // @synthesize clsAvoidIfPossibleForKeyItem=_clsAvoidIfPossibleForKeyItem;
 @property (nonatomic) double clsContentScore; // @synthesize clsContentScore=_clsContentScore;
-@property (readonly) NSData *clsDistanceIdentity;
 @property (readonly, nonatomic) double clsDuration; // @synthesize clsDuration=_clsDuration;
 @property (readonly, nonatomic) double clsExposureScore; // @synthesize clsExposureScore=_clsExposureScore;
 @property (readonly, nonatomic) double clsFaceScore; // @synthesize clsFaceScore=_clsFaceScore;
@@ -67,8 +66,9 @@
 @property (readonly) BOOL clsHasInterestingScenes; // @synthesize clsHasInterestingScenes=_clsHasInterestingScenes;
 @property (readonly) BOOL clsHasPoorResolution; // @synthesize clsHasPoorResolution=_clsHasPoorResolution;
 @property (readonly, nonatomic) double clsHighlightVisibilityScore; // @synthesize clsHighlightVisibilityScore=_clsHighlightVisibilityScore;
-@property (readonly) NSString *clsIdentifier;
+@property (readonly, nonatomic) NSString *clsIdentifier; // @synthesize clsIdentifier=_clsIdentifier;
 @property (readonly, nonatomic) BOOL clsIsAestheticallyPrettyGood; // @synthesize clsIsAestheticallyPrettyGood=_clsIsAestheticallyPrettyGood;
+@property (readonly, nonatomic) BOOL clsIsBlurry; // @synthesize clsIsBlurry=_clsIsBlurry;
 @property (readonly) BOOL clsIsInhabited; // @synthesize clsIsInhabited=_clsIsInhabited;
 @property (readonly, nonatomic) BOOL clsIsInterestingHDR; // @synthesize clsIsInterestingHDR=_clsIsAnInterestingHDR;
 @property (readonly, nonatomic) BOOL clsIsInterestingLivePhoto; // @synthesize clsIsInterestingLivePhoto=_clsIsAnInterestingPhoto;
@@ -79,14 +79,17 @@
 @property (readonly, nonatomic) BOOL clsIsLongExposure; // @synthesize clsIsLongExposure=_clsIsLongExposure;
 @property (readonly, nonatomic) BOOL clsIsLoopOrBounce; // @synthesize clsIsLoopOrBounce=_clsIsLoopOrBounce;
 @property (readonly, nonatomic) BOOL clsIsNonMemorable; // @synthesize clsIsNonMemorable=_clsIsNonMemorable;
+@property (readonly, nonatomic) BOOL clsIsScreenshotOrScreenRecording; // @synthesize clsIsScreenshotOrScreenRecording=_clsIsScreenshotOrScreenRecording;
+@property (readonly, nonatomic) BOOL clsIsUtility; // @synthesize clsIsUtility=_clsIsUtility;
 @property (strong, nonatomic) CLLocation *clsLocation; // @synthesize clsLocation=_clsLocation;
 @property (readonly, nonatomic) unsigned long long clsPeopleCount;
 @property (strong, nonatomic) NSArray *clsPeopleNames; // @synthesize clsPeopleNames=_clsPeopleNames;
 @property (readonly, nonatomic) long long clsPlayCount; // @synthesize clsPlayCount=_clsPlayCount;
 @property (copy, nonatomic) NSSet *clsSceneClassifications; // @synthesize clsSceneClassifications=_clsSceneClassifications;
-@property (readonly) VNSceneprint *clsSceneprint;
+@property (readonly, nonatomic) VNSceneprint *clsSceneprint; // @synthesize clsSceneprint=_clsSceneprint;
 @property (readonly, nonatomic) long long clsShareCount; // @synthesize clsShareCount=_clsShareCount;
 @property (readonly, nonatomic) double clsSharpnessScore; // @synthesize clsSharpnessScore=_clsSharpnessScore;
+@property (readonly, nonatomic) double clsSquareCropScore; // @synthesize clsSquareCropScore=_clsSquareCropScore;
 @property (readonly, nonatomic) NSArray *clsUnprefetchedPeopleNames; // @synthesize clsUnprefetchedPeopleNames=_clsUnprefetchedPeopleNames;
 @property (readonly, nonatomic) long long clsViewCount; // @synthesize clsViewCount=_clsViewCount;
 @property (readonly, nonatomic) NSDate *cls_localDate;
@@ -95,24 +98,21 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) BOOL isBlurry; // @synthesize isBlurry=_isBlurry;
 @property (readonly, nonatomic) BOOL isFavorite; // @synthesize isFavorite=_isFavorite;
-@property (readonly, nonatomic) BOOL isScreenshotOrScreenRecording; // @synthesize isScreenshotOrScreenRecording=_isScreenshotOrScreenRecording;
-@property (readonly, nonatomic) BOOL isUtility; // @synthesize isUtility=_isUtility;
 @property (readonly, nonatomic) BOOL isVideo; // @synthesize isVideo=_isVideo;
 @property (readonly, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) NSArray *peopleNames;
 @property (readonly, nonatomic) struct CLLocationCoordinate2D pl_coordinate;
 @property (readonly, nonatomic) NSDate *pl_date;
+@property (readonly, nonatomic) double pl_gpsHorizontalAccuracy;
+@property (readonly, nonatomic) NSString *pl_uuid;
 @property (readonly) Class superclass;
 
-+ (id)contextForItems:(id)arg1;
 + (id)itemWithPeopleNames:(id)arg1 universalDate:(id)arg2 coordinate:(struct CLLocationCoordinate2D)arg3;
 + (id)itemWithUniversalDate:(id)arg1 sceneClassifications:(id)arg2;
 - (void).cxx_destruct;
-- (struct CGImage *)createThumbnailWithResolution:(unsigned long long)arg1 fillMode:(BOOL)arg2 networkAllowed:(BOOL)arg3;
 - (id)init;
-- (double)scoreWithContext:(id)arg1;
+- (double)scoreInContext:(id)arg1;
 
 @end
 

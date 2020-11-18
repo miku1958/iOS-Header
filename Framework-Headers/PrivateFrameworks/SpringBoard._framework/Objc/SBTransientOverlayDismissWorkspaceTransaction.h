@@ -13,7 +13,7 @@
 + (BOOL)isValidForTransitionRequest:(id)arg1;
 - (void)_begin;
 - (void)_didComplete;
-- (void)_sendActivationResultWithSuccess:(BOOL)arg1;
+- (void)_sendActivationResultWithError:(id)arg1;
 
 @end
 

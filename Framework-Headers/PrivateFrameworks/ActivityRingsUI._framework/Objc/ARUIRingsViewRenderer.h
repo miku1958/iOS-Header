@@ -4,52 +4,19 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <ActivityRingsUI/ARUIRenderer.h>
 
-#import <ActivityRingsUI/ARUIRingsRendering-Protocol.h>
-
-@class ARUICelebrationsRenderer, ARUIRingsRenderPipelineFactory, ARUIRingsRenderer, ARUISpritesRenderPipelineFactory, ARUISpritesRenderer, NSString;
-@protocol MTLCommandQueue, MTLDeviceSPI;
-
-@interface ARUIRingsViewRenderer : NSObject <ARUIRingsRendering>
+@interface ARUIRingsViewRenderer : ARUIRenderer
 {
-    id<MTLDeviceSPI> _device;
-    id<MTLCommandQueue> _commandQueue;
-    ARUIRingsRenderPipelineFactory *_ringsRenderPipelineFactory;
-    ARUIRingsRenderer *_ringsRenderer;
-    ARUISpritesRenderPipelineFactory *_spritesRenderPipelineFactory;
-    ARUISpritesRenderer *_spritesRenderer;
-    ARUICelebrationsRenderer *_celebrationsRenderer;
-    double _screenScale;
-    BOOL _presentsWithTransaction;
     unsigned long long _maximumRingCount;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long maximumRingCount; // @synthesize maximumRingCount=_maximumRingCount;
-@property (nonatomic) BOOL presentsWithTransaction; // @synthesize presentsWithTransaction=_presentsWithTransaction;
-@property (readonly) Class superclass;
 
-+ (unsigned long long)maximumRingCountForControllers:(id)arg1;
 + (id)rendererForRingGroupController:(id)arg1;
 + (id)rendererForRingGroupControllers:(id)arg1;
-- (void).cxx_destruct;
-- (void)_updateSpriteAttributesForRingGroupController:(id)arg1 andRingIndex:(unsigned long long)arg2;
-- (void)_updateSpriteUniformsForRingGroupController:(id)arg1 andRingIndex:(unsigned long long)arg2;
-- (void)dealloc;
 - (id)initWithMaximumRingCount:(unsigned long long)arg1;
 - (id)initWithMaximumRingCount:(unsigned long long)arg1 commandQueue:(id)arg2;
-- (void)prewarmRendererForCelebrationOfType:(unsigned long long)arg1;
-- (id)renderPipelineFactoryWithDevice:(id)arg1 library:(id)arg2;
-- (id)renderPipelineFactoryWithDeviceSPI:(id)arg1 librarySPI:(id)arg2;
-- (void)renderRingGroupControllers:(id)arg1 withSize:(id)arg2 intoTexture:(id)arg3 withDrawable:(BOOL)arg4 waitUntilCompleted:(CDUnknownBlockType)arg5 completionHandler: /* Error: Ran out of types for this method. */;
-- (id)ringTextureWithCommandBuffer:(id)arg1 rings:(id)arg2 andSize: /* Error: Ran out of types for this method. */;
-- (id)ringsRenderPipelineConfigurationForRingGroupController:(id)arg1;
-- (id)ringsRenderPipelineConfigurationForRings:(id)arg1;
-- (id)snapshotRingGroupControllers:(id)arg1 withSize: /* Error: Ran out of types for this method. */;
-- (id)spriteRenderPipelineConfigurationForRingGroupController:(id)arg1;
 
 @end
 

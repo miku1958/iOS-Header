@@ -17,8 +17,6 @@
     AKNativeAccountRecoveryController *_nativeRecoveryController;
     BOOL _forceInlinePresentation;
     BOOL _presentingServerUI;
-    NSString *_cancelButtonString;
-    NSString *_privacyBundleIdentifier;
     UIViewController *_presentingViewController;
     id<AKAppleIDAuthenticationInAppContextDelegate> _delegate;
     id<AKInAppAuthenticationUIProvider> _inAppAuthUIProvider;
@@ -29,7 +27,6 @@
 
 @property (weak, nonatomic, setter=_setPasswordDelegate:) id<AKAppleIDAuthenticationInAppContextPasswordDelegate> _passwordDelegate; // @synthesize _passwordDelegate=__passwordDelegate;
 @property (weak, nonatomic) id<AKAppleIDAuthenticationInAppContextAlertDelegate> alertDelegate; // @synthesize alertDelegate=_alertDelegate;
-@property (strong) NSString *cancelButtonString; // @synthesize cancelButtonString=_cancelButtonString;
 @property (strong, nonatomic, setter=_setCdpUiProvider:) id<CDPStateUIProvider> cdpUiProvider; // @synthesize cdpUiProvider=_cdpUiProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AKAppleIDAuthenticationInAppContextDelegate> delegate; // @synthesize delegate=_delegate;
@@ -39,7 +36,6 @@
 @property (strong, nonatomic) id<AKInAppAuthenticationUIProvider> inAppAuthUIProvider; // @synthesize inAppAuthUIProvider=_inAppAuthUIProvider;
 @property (nonatomic, getter=isPresentingServerUI) BOOL presentingServerUI; // @synthesize presentingServerUI=_presentingServerUI;
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
-@property (copy) NSString *privacyBundleIdentifier; // @synthesize privacyBundleIdentifier=_privacyBundleIdentifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -50,6 +46,7 @@
 - (void)_dismissServerProvidedUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handleBackButtonTap:(id)arg1;
 - (void)_presentLoginAlertWithError:(id)arg1 title:(id)arg2 message:(id)arg3 waitForInteraction:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)_presentTooManyLoginAttemptsViewWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_remoteUIControllerDelegate;
 - (void)completeWithError:(id)arg1;
 - (void)dismissBasicLoginUIWithCompletion:(CDUnknownBlockType)arg1;
@@ -66,9 +63,9 @@
 - (void)presentSecondFactorUIWithCompletion:(CDUnknownBlockType)arg1;
 - (void)presentServerProvidedUIWithConfiguration:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)remoteUIController:(id)arg1 didDismissModalNavigationWithObjectModels:(id)arg2;
-- (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2;
+- (void)remoteUIController:(id)arg1 didFinishLoadWithError:(id)arg2 forRequest:(id)arg3;
 - (void)remoteUIController:(id)arg1 didReceiveChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2;
+- (void)remoteUIController:(id)arg1 didReceiveHTTPResponse:(id)arg2 forRequest:(id)arg3;
 - (void)remoteUIController:(id)arg1 didReceiveObjectModel:(id)arg2 actionSignal:(unsigned long long *)arg3;
 - (void)remoteUIController:(id)arg1 shouldLoadRequest:(id)arg2 redirectResponse:(id)arg3 withCompletionHandler:(CDUnknownBlockType)arg4;
 - (void)remoteUIController:(id)arg1 willPresentModalNavigationController:(id)arg2;

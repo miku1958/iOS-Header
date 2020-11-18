@@ -29,7 +29,6 @@
 + (id)sessionWithCircleDelegate:(id)arg1 session:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)accessSession;
-- (void)attemptSosUpgrade;
 - (id)encryptedInitialMessage:(id)arg1 error:(id *)arg2;
 - (id)encryptedPeerInfo:(id *)arg1;
 - (id)handleCircleBlob:(id)arg1 error:(id *)arg2;
@@ -40,6 +39,8 @@
 - (id)processMessage:(id)arg1 error:(id *)arg2;
 - (void)setContextIDOnJoiningConfiguration:(id)arg1;
 - (void)setControlObject:(id)arg1;
+- (BOOL)shouldJoinSOS:(id)arg1 pairingMessage:(id)arg2;
+- (void)waitForOctagonUpgrade;
 
 @end
 

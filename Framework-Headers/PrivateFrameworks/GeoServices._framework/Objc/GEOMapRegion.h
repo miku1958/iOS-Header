@@ -65,12 +65,17 @@
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)initWithCoordinateRegion:(CDStruct_90e2a262)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithLatitude:(double)arg1 longitude:(double)arg2;
 - (id)initWithMapRect:(CDStruct_90e2a262)arg1;
 - (id)initWithRadialPlace:(id)arg1;
+- (id)intersectionsOnPolyline:(id)arg1;
 - (BOOL)intersectsMapRect:(CDStruct_90e2a262)arg1;
+- (BOOL)intersectsRegion:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid;
+- (id)jsonRepresentation;
 - (id)mapRegionSourceTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

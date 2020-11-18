@@ -9,6 +9,7 @@
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
 @class NSArray, NSString, UIBarButtonItem, UIColor, UIImageView, UITapGestureRecognizer;
+@protocol UIDimmingViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface UIDimmingView : UIView <UIGestureRecognizerDelegate>
@@ -22,13 +23,13 @@ __attribute__((visibility("hidden")))
     UIColor *_dimmingColor;
     UITapGestureRecognizer *_singleFingerTapRecognizer;
     BOOL _suppressesBackdrops;
-    id _delegate;
+    id<UIDimmingViewDelegate> _delegate;
     double _percentDisplayed;
     double _percentLightened;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<UIDimmingViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UIColor *dimmingColor; // @synthesize dimmingColor=_dimmingColor;
 @property (readonly, nonatomic) BOOL displayed;
@@ -44,6 +45,7 @@ __attribute__((visibility("hidden")))
 + (id)defaultDimmingColor;
 - (void).cxx_destruct;
 - (id)_backdropViewsToAnimate;
+- (void)_sendDelegateDimmingViewWasTapped;
 - (void)_simulateTap;
 - (void)dealloc;
 - (void)dimmingRemovalAnimationDidStop;

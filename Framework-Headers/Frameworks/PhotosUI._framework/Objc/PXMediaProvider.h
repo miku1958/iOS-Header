@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
-@class PXLoadingStatusManager;
+@class NSArray, PXLoadingStatusManager;
 
 @interface PXMediaProvider : NSObject
 {
+    NSArray *_availableThumbnailSizes;
     PXLoadingStatusManager *_loadingStatusManager;
 }
 
+@property (readonly, nonatomic) NSArray *availableThumbnailSizes;
 @property (strong, nonatomic) PXLoadingStatusManager *loadingStatusManager; // @synthesize loadingStatusManager=_loadingStatusManager;
 @property (readonly, nonatomic) struct CGSize masterThumbnailSize;
 

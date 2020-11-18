@@ -17,7 +17,7 @@
     NSArray *_collectedSessions;
 }
 
-@property (readonly) NSArray *collectedSessions; // @synthesize collectedSessions=_collectedSessions;
+@property (readonly, nonatomic) NSArray *collectedSessions; // @synthesize collectedSessions=_collectedSessions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -33,8 +33,9 @@
 - (id)init;
 - (id)lastTrainingFeaturizationForModelName:(id)arg1 andLocale:(id)arg2;
 - (id)planReceivedWithPayload:(id)arg1 error:(id *)arg2;
+- (id)planReceivedWithRecipe:(id)arg1 attachments:(id)arg2 error:(id *)arg3;
 - (void)setSourceRecoverer:(CDUnknownBlockType)arg1;
-- (void)trimDb;
+- (void)trimDbWithDeferralBlock:(CDUnknownBlockType)arg1;
 - (void)updateLastTrainingFeaturizationForModel:(id)arg1 andData:(id)arg2;
 - (void)updateSessionsAndLabelForModel:(id)arg1 block:(CDUnknownBlockType)arg2;
 

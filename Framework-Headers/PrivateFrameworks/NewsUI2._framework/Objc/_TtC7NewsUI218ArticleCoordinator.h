@@ -17,6 +17,7 @@
     MISSING_TYPE *channelDataFactory;
     MISSING_TYPE *scienceDataFactory;
     MISSING_TYPE *externalEventSubmitter;
+    MISSING_TYPE *newsActivityManager;
     MISSING_TYPE *issue;
 }
 

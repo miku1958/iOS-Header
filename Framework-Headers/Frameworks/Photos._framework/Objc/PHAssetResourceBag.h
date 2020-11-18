@@ -13,7 +13,8 @@
     NSArray *_assetResourceContexts;
     BOOL _didValidateForInsertion;
     BOOL _valid;
-    BOOL _hasAdjustments;
+    BOOL _hasCurrentAdjustment;
+    BOOL _hasOriginalAdjustment;
     BOOL _hasRAW;
     BOOL _hasSpatialOverCapture;
     PHAssetCreationRequest *_assetCreationRequest;
@@ -26,7 +27,9 @@
 @property (readonly, weak, nonatomic) PHAssetCreationRequest *assetCreationRequest; // @synthesize assetCreationRequest=_assetCreationRequest;
 @property (readonly, nonatomic) NSArray *assetResources; // @synthesize assetResources=_assetResources;
 @property (readonly, nonatomic) BOOL didValidateForInsertion; // @synthesize didValidateForInsertion=_didValidateForInsertion;
-@property (readonly, nonatomic) BOOL hasAdjustments; // @synthesize hasAdjustments=_hasAdjustments;
+@property (readonly, nonatomic) BOOL hasAdjustments;
+@property (readonly, nonatomic) BOOL hasCurrentAdjustment; // @synthesize hasCurrentAdjustment=_hasCurrentAdjustment;
+@property (readonly, nonatomic) BOOL hasOriginalAdjustment; // @synthesize hasOriginalAdjustment=_hasOriginalAdjustment;
 @property (readonly, nonatomic) BOOL hasRAW; // @synthesize hasRAW=_hasRAW;
 @property (readonly, nonatomic) BOOL hasSpatialOverCapture; // @synthesize hasSpatialOverCapture=_hasSpatialOverCapture;
 @property (readonly, nonatomic) unsigned long long mediaSubtype; // @synthesize mediaSubtype=_mediaSubtype;

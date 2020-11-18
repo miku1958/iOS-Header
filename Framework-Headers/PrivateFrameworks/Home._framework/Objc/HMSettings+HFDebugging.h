@@ -19,6 +19,7 @@
 @property (readonly) Class superclass;
 
 + (id)hf_LoadSettingsWhitelist:(unsigned long long)arg1;
++ (void)hf_resetWhiteLists;
 - (id)hf_accessorySettingAtKeyPath:(id)arg1;
 - (id)hf_accessorySettingGroupAtKeyPath:(id)arg1;
 - (id)hf_accessorySettingItemAtKeyPath:(id)arg1;

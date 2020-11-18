@@ -9,6 +9,7 @@
 @interface NSUserDefaults (SafariCoreExtras)
 + (id)safari_cloudBookmarksDefaults;
 + (id)safari_notificationNameForUserDefaultsKey:(id)arg1;
++ (BOOL)safari_passwordManagerIsInDemoMode;
 - (BOOL)safari_boolForKey:(id)arg1 defaultValue:(BOOL)arg2;
 - (id)safari_dateForKey:(id)arg1;
 - (void)safari_incrementNumberForKey:(id)arg1;
@@ -16,6 +17,7 @@
 - (id)safari_observeValueForKey:(id)arg1 onQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)safari_setBool:(BOOL)arg1 andNotifyForKey:(id)arg2;
 - (void)safari_setDate:(id)arg1 forKey:(id)arg2;
+- (void)safari_setInteger:(long long)arg1 andNotifyForKey:(id)arg2;
 - (BOOL)safari_toggleBoolAndNotifyForKey:(id)arg1;
 - (BOOL)safari_toggleBoolForKey:(id)arg1;
 @end

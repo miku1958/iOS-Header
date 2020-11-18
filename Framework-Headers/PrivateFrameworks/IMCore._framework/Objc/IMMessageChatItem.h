@@ -24,6 +24,7 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSDate *time;
 
+- (BOOL)canReply;
 
 @end
 

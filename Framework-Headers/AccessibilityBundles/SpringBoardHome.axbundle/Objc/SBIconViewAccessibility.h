@@ -20,25 +20,33 @@
 - (id)_accessibilityBundleIdentifier;
 - (BOOL)_accessibilityCanDrag;
 - (BOOL)_accessibilityCanPerformEscapeAction;
-- (BOOL)_accessibilityCanShowContextMenuForInteraction:(id)arg1 atLocation:(struct CGPoint)arg2;
+- (BOOL)_accessibilityCanReceiveGrabbedIcons;
+- (BOOL)_accessibilityCanReceiveIcons:(id)arg1;
+- (void)_accessibilityDeleteActions:(id)arg1;
 - (BOOL)_accessibilityDeleteApp;
 - (void)_accessibilityDropFromFolderAction:(id)arg1;
 - (BOOL)_accessibilityElementShouldBeInvalid;
 - (BOOL)_accessibilityHasBadge;
 - (void)_accessibilityInDockActions:(id)arg1;
+- (BOOL)_accessibilityIsCategoryIconView;
 - (BOOL)_accessibilityIsFolderIconView;
 - (BOOL)_accessibilityIsInCmdTabSwitcher;
 - (BOOL)_accessibilityIsInFolder;
 - (BOOL)_accessibilityIsInShortcutMenu;
 - (BOOL)_accessibilityIsTimedOut;
+- (BOOL)_accessibilityIsWidgetIconView;
+- (BOOL)_accessibilityIsWidgetInAddWidgetSheet;
+- (BOOL)_accessibilityIsWidgetStackIconView;
 - (BOOL)_accessibilityLaunchAppWithRole:(long long)arg1 onLeadingSide:(BOOL)arg2;
 - (BOOL)_accessibilityLaunchFloatingTrailing:(id)arg1;
 - (BOOL)_accessibilityLaunchLeading:(id)arg1;
 - (BOOL)_accessibilityLaunchTrailing:(id)arg1;
+- (unsigned int)_accessibilityMediaAnalysisOptions;
 - (BOOL)_accessibilityOverridesInvisibility;
 - (id)_accessibilityPreferredScrollActions;
 - (BOOL)_accessibilityRetainsCustomRotorActionSetting;
 - (id)_accessibilityScrollStatus;
+- (BOOL)_accessibilityScrollToVisible;
 - (BOOL)_accessibilityShouldIncludeArrowKeyCommandsForDirectionalFocusMovement;
 - (BOOL)_accessibilityShowTodayView;
 - (id)_accessibilitySupportGesturesAttributes;
@@ -47,11 +55,15 @@
 - (BOOL)_accessibilityUpdatesSwitchMenu;
 - (id)_accessibilityUserTestingChildren;
 - (BOOL)_axIsIconEditing;
+- (BOOL)_axIsInDock;
 - (id)_focusGroupDescriptor;
+- (long long)_insertionIndexOfFocusLayerInView;
 - (void)_updateCloseBoxAnimated:(BOOL)arg1;
+- (void)_updateCustomIconImageViewControllerHitTesting;
 - (id)_viewToAddFocusLayer;
 - (BOOL)accessibilityActivate;
 - (struct CGPoint)accessibilityActivationPoint;
+- (long long)accessibilityContainerType;
 - (id)accessibilityCustomActions;
 - (id)accessibilityDragSourceDescriptors;
 - (id)accessibilityDropPointDescriptors;
@@ -61,12 +73,12 @@
 - (id)accessibilityLabel;
 - (id)accessibilityPath;
 - (BOOL)accessibilityPerformEscape;
-- (BOOL)accessibilityScrollToVisible;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityValue;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)contextMenuInteraction:(id)arg1 willEndForConfiguration:(id)arg2 animator:(id)arg3;
 - (BOOL)isAccessibilityElement;
+- (BOOL)shouldGroupAccessibilityChildren;
 
 @end
 

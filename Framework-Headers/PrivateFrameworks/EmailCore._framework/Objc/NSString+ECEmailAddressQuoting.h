@@ -23,6 +23,12 @@
 @property (readonly, nonatomic) NSString *stringValue;
 @property (readonly) Class superclass;
 
++ (void)__ec_extractFirstName:(id *)arg1 middleName:(id *)arg2 lastName:(id *)arg3 extension:(id *)arg4 fromString:(id)arg5;
++ (id)ec_nameExtensions;
++ (id)ec_partialSurnames;
+- (BOOL)ec_appearsToBeAnInitial;
+- (id)ec_personNameComponents;
+- (id)ec_trimCommasSpacesQuotes;
 - (id)ecemailaddress_quotedString;
 @end
 

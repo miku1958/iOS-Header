@@ -22,7 +22,6 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_isPushOrLocalNotificationRequest:(id)arg1;
 - (void)_requestAuthenticationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dispatcher:(id)arg1 didExecuteAction:(id)arg2 forNotificationRequest:(id)arg3;
 - (void)dispatcher:(id)arg1 launchBackgroundApplicationForAction:(id)arg2 notificationRequest:(id)arg3 fromDestination:(id)arg4 withParameters:(id)arg5;

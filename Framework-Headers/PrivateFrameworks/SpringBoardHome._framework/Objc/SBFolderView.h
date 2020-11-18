@@ -7,15 +7,17 @@
 #import <UIKit/UIView.h>
 
 #import <SpringBoardHome/BSDescriptionProviding-Protocol.h>
+#import <SpringBoardHome/SBFolderObserver-Protocol.h>
+#import <SpringBoardHome/SBIconListLayoutDelegate-Protocol.h>
 #import <SpringBoardHome/SBIconListPageControlDelegate-Protocol.h>
 #import <SpringBoardHome/SBIconListViewDragDelegate-Protocol.h>
 #import <SpringBoardHome/SBIconScrollViewDelegate-Protocol.h>
 #import <SpringBoardHome/UITextFieldDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSString, SBFolder, SBFolderIconImageCache, SBFolderTitleTextField, SBHIconImageCache, SBIconLayoutOverrideStrategy, SBIconListPageControl, SBIconListView, SBIconPageIndicatorImageSetCache, SBIconScrollView, UIPanGestureRecognizer, UIScrollView, _UILegibilitySettings;
+@class NSArray, NSMutableArray, NSMutableSet, NSString, SBFolder, SBFolderIconImageCache, SBFolderTitleTextField, SBHIconImageCache, SBIconListModel, SBIconListPageControl, SBIconListView, SBIconPageIndicatorImageSetCache, SBIconScrollView, SBIconView, UIPanGestureRecognizer, UIScrollView, _UILegibilitySettings;
 @protocol SBFolderViewDelegate, SBIconListLayoutProvider, SBIconViewProviding;
 
-@interface SBFolderView : UIView <SBIconListPageControlDelegate, UITextFieldDelegate, SBIconScrollViewDelegate, BSDescriptionProviding, SBIconListViewDragDelegate>
+@interface SBFolderView : UIView <SBIconListPageControlDelegate, UITextFieldDelegate, SBIconListLayoutDelegate, SBIconScrollViewDelegate, SBFolderObserver, BSDescriptionProviding, SBIconListViewDragDelegate>
 {
     NSMutableArray *_iconListViews;
     NSMutableSet *_scrollingDisabledReasons;
@@ -24,6 +26,7 @@
     SBIconScrollView *_scrollView;
     SBFolderTitleTextField *_titleTextField;
     NSMutableSet *_scrollViewIsScrollingOverrides;
+    NSMutableSet *_parallaxDisabledReasons;
     UIView *_scalingView;
     struct SBVisibleColumnRange _visibleColumnRange;
     struct SBFolderPredictedVisibleColumn _predictedVisibleColumn;
@@ -32,24 +35,27 @@
     NSMutableArray *_scrollFrames;
     unsigned long long _scrollFrameCount;
     double _scrollStartContentOffset;
+    long long _scrollMinimumVisiblePageIndex;
+    long long _scrollMaximumVisiblePageIndex;
     unsigned long long _ignoreScrollingDidEndNotificationsCount;
     NSMutableArray *_scrollCompletionBlocks;
     NSMutableArray *_rotationCompletionBlocks;
-    SBIconLayoutOverrideStrategy *_iconLayoutOverrideStrategy;
     double _headerHeight;
+    SBIconView *_cachedHiddenIconView;
     BOOL _isEditing;
     BOOL _rotating;
     BOOL _occluded;
     BOOL _hasEverBeenInAWindow;
+    BOOL _suppressesEditingStateForListViews;
+    BOOL _automaticallyCreatesIconListViews;
+    BOOL _includesHiddenIconListPages;
     long long _currentPageIndex;
-    double _statusBarHeight;
     id<SBFolderViewDelegate> _delegate;
     SBFolder *_folder;
     id<SBIconListLayoutProvider> _listLayoutProvider;
     long long _orientation;
     unsigned long long _allowedOrientations;
     id<SBIconViewProviding> _iconViewProvider;
-    double _effectiveStatusBarHeight;
     unsigned long long _userInterfaceLayoutDirectionHandling;
     UIView *_headerView;
     _UILegibilitySettings *_legibilitySettings;
@@ -62,6 +68,9 @@
 @property (readonly, nonatomic, getter=isRTL) BOOL RTL;
 @property (readonly, nonatomic) double additionalScrollWidthToKeepVisibleInOneDirection;
 @property (readonly, nonatomic) unsigned long long allowedOrientations; // @synthesize allowedOrientations=_allowedOrientations;
+@property (nonatomic) BOOL automaticallyCreatesIconListViews; // @synthesize automaticallyCreatesIconListViews=_automaticallyCreatesIconListViews;
+@property (readonly, nonatomic) unsigned long long countOfAdditionalPagesToKeepVisibleInOneDirection;
+@property (readonly, nonatomic) SBIconListModel *currentIconListModel;
 @property (readonly, nonatomic) SBIconListView *currentIconListView;
 @property (readonly, nonatomic) long long currentPageIndex; // @synthesize currentPageIndex=_currentPageIndex;
 @property (readonly, copy) NSString *debugDescription;
@@ -69,7 +78,6 @@
 @property (weak, nonatomic) id<SBFolderViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isEditing) BOOL editing; // @synthesize editing=_isEditing;
-@property (readonly, nonatomic) double effectiveStatusBarHeight; // @synthesize effectiveStatusBarHeight=_effectiveStatusBarHeight;
 @property (readonly, nonatomic) long long firstIconPageIndex;
 @property (strong, nonatomic) SBFolder *folder; // @synthesize folder=_folder;
 @property (strong, nonatomic) SBFolderIconImageCache *folderIconImageCache; // @synthesize folderIconImageCache=_folderIconImageCache;
@@ -78,13 +86,13 @@
 @property (readonly, nonatomic) double headerHeight;
 @property (readonly, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
 @property (strong, nonatomic) SBHIconImageCache *iconImageCache; // @synthesize iconImageCache=_iconImageCache;
-@property (strong, nonatomic) SBIconLayoutOverrideStrategy *iconLayoutOverrideStrategy; // @synthesize iconLayoutOverrideStrategy=_iconLayoutOverrideStrategy;
 @property (readonly, nonatomic) unsigned long long iconListViewCount;
-@property (readonly, copy, nonatomic) NSArray *iconListViews; // @synthesize iconListViews=_iconListViews;
+@property (readonly, copy, nonatomic) NSArray *iconListViews;
 @property (readonly, copy, nonatomic) NSString *iconLocation;
 @property (strong, nonatomic) SBIconPageIndicatorImageSetCache *iconPageIndicatorImageSetCache; // @synthesize iconPageIndicatorImageSetCache=_iconPageIndicatorImageSetCache;
 @property (readonly, weak, nonatomic) id<SBIconViewProviding> iconViewProvider; // @synthesize iconViewProvider=_iconViewProvider;
 @property (readonly, nonatomic) long long iconVisibilityHandling;
+@property (nonatomic) BOOL includesHiddenIconListPages; // @synthesize includesHiddenIconListPages=_includesHiddenIconListPages;
 @property (readonly, nonatomic) long long lastIconPageIndex;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (readonly, nonatomic) _UILegibilitySettings *legibilitySettingsForIconListViews;
@@ -100,6 +108,7 @@
 @property (readonly, nonatomic) double pageControlAreaHeight;
 @property (nonatomic, getter=isPageControlHidden) BOOL pageControlHidden;
 @property (readonly, nonatomic) unsigned long long pageCount;
+@property (readonly, nonatomic, getter=isParallaxEnabled) BOOL parallaxEnabled;
 @property (nonatomic, getter=isRotating) BOOL rotating; // @synthesize rotating=_rotating;
 @property (readonly, nonatomic) UIView *scalingView;
 @property (readonly, nonatomic, getter=isScalingViewBorrowed) BOOL scalingViewBorrowed; // @synthesize scalingViewBorrowed=_isScalingViewBorrowed;
@@ -107,33 +116,41 @@
 @property (readonly, nonatomic) double scrollableWidthForVisibleColumnRange;
 @property (readonly, nonatomic, getter=isScrolling) BOOL scrolling;
 @property (strong, nonatomic) UIPanGestureRecognizer *scrollingDisabledGestureRecognizer; // @synthesize scrollingDisabledGestureRecognizer=_scrollingDisabledGestureRecognizer;
-@property (nonatomic) double statusBarHeight; // @synthesize statusBarHeight=_statusBarHeight;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL suppressesEditingStateForListViews; // @synthesize suppressesEditingStateForListViews=_suppressesEditingStateForListViews;
 @property (readonly, nonatomic, getter=_titleTextField) SBFolderTitleTextField *titleTextField;
 @property (readonly, nonatomic) BOOL updatesPredictedVisibleColumnWhileScrolling;
 @property (readonly, nonatomic) long long userInterfaceLayoutDirection;
 @property (readonly, nonatomic) unsigned long long userInterfaceLayoutDirectionHandling; // @synthesize userInterfaceLayoutDirectionHandling=_userInterfaceLayoutDirectionHandling;
 
-+ (unsigned long long)_pageOffsetForOffset:(double)arg1 behavior:(long long)arg2 pageWidth:(double)arg3 pageCount:(unsigned long long)arg4 userInterfaceLayoutDirection:(long long)arg5 fractionOfDistanceThroughPage:(double *)arg6;
++ (unsigned long long)_pageOffsetForOffset:(double)arg1 behavior:(long long)arg2 pageWidth:(double)arg3 pageSpacing:(double)arg4 pageCount:(unsigned long long)arg5 userInterfaceLayoutDirection:(long long)arg6 fractionOfDistanceThroughPage:(double *)arg7;
 + (Class)_scrollViewClass;
 + (unsigned long long)countOfAdditionalPagesToKeepVisibleInOneDirection;
 + (Class)defaultIconListViewClass;
 + (id)defaultIconLocation;
 - (void).cxx_destruct;
 - (void)_addIconListView:(id)arg1;
+- (void)_addIconListView:(id)arg1 atEnd:(BOOL)arg2;
 - (void)_addIconListViewsForModels:(id)arg1;
 - (void)_addScrollingCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)_backgroundContrastDidChange:(id)arg1;
 - (void)_checkIfScrollStateChanged;
-- (id)_createIconListViewForList:(id)arg1 atIndex:(unsigned long long)arg2;
+- (void)_configureIconListView:(id)arg1;
+- (id)_createIconListViewForList:(id)arg1;
 - (void)_currentPageIndexDidChange;
 - (void)_currentPageIndexDidChangeFromPageIndex:(long long)arg1;
+- (void)_didAddIconListView:(id)arg1;
+- (void)_didRemoveIconListView:(id)arg1;
 - (void)_disableUserInteractionBeforeSignificantAnimation;
 - (void)_enableUserInteractionAfterSignificantAnimation;
+- (id)_findHiddenIconView;
+- (struct CGRect)_frameForIconListAtIndex:(unsigned long long)arg1;
 - (struct CGRect)_frameForScalingView;
+- (void)_handleClippingScrollViewDidScroll:(id)arg1;
 - (BOOL)_hasLeadingCustomPages;
 - (BOOL)_hasTrailingCustomPages;
 - (struct CGRect)_iconListFrameForPageRect:(struct CGRect)arg1 atIndex:(unsigned long long)arg2;
+- (struct CGSize)_iconListViewSize;
 - (void)_ignoreScrollingDidEndNotifications;
 - (id)_interactionTintColor;
 - (BOOL)_isValidIconListViewIndex:(long long)arg1;
@@ -141,19 +158,24 @@
 - (void)_layoutSubviews;
 - (unsigned long long)_leadingCustomPageCount;
 - (id)_legibilitySettingsWithPrimaryColor:(id)arg1;
+- (void)_markListViewsAsPurged;
 - (id)_newPageControl;
+- (void)_noteFolderListsDidChange:(unsigned long long)arg1;
 - (double)_offsetToCenterPageControlInSpaceForPageControl;
 - (void)_orientationDidChange:(long long)arg1;
+- (long long)_pageCountForPageControl;
 - (long long)_pageIndexForOffset:(double)arg1;
 - (long long)_pageIndexForOffset:(double)arg1 behavior:(long long)arg2 fractionOfDistanceThroughPage:(double *)arg3;
+- (double)_pageSpacing;
 - (double)_pageWidth;
-- (void)_purgeListViews;
+- (void)_precacheIconImages;
 - (void)_removeIconListView:(id)arg1;
+- (void)_removeIconListView:(id)arg1 purge:(BOOL)arg2;
 - (void)_resetIconListViews;
-- (double)_scrollOffsetForContentAtPageIndex:(long long)arg1;
-- (double)_scrollOffsetForFirstListView;
-- (double)_scrollOffsetForPageAtIndex:(long long)arg1;
-- (double)_scrollOffsetForPageAtIndex:(long long)arg1 pageWidth:(double)arg2;
+- (struct CGPoint)_scrollOffsetForContentAtPageIndex:(long long)arg1;
+- (struct CGPoint)_scrollOffsetForFirstListView;
+- (struct CGPoint)_scrollOffsetForPageAtIndex:(long long)arg1;
+- (struct CGPoint)_scrollOffsetForPageAtIndex:(long long)arg1 pageWidth:(double)arg2;
 - (struct SBHFloatRange)_scrollRangeForContentAtPageIndex:(long long)arg1 pageWidth:(double)arg2;
 - (struct SBHFloatRange)_scrollRangeForPageAtIndex:(long long)arg1;
 - (struct SBHFloatRange)_scrollRangeForPageAtIndex:(long long)arg1 pageWidth:(double)arg2;
@@ -162,20 +184,27 @@
 - (void)_setCurrentPageIndex:(long long)arg1 deferringPageControlUpdate:(BOOL)arg2;
 - (void)_setFolderName:(id)arg1;
 - (void)_setPageControlDisabled:(BOOL)arg1 forReason:(id)arg2;
+- (void)_setParallaxDisabled:(BOOL)arg1 forReason:(id)arg2;
 - (void)_setScrollViewContentOffset:(struct CGPoint)arg1 animated:(BOOL)arg2;
 - (void)_setScrollingDisabled:(BOOL)arg1 forReason:(id)arg2;
 - (BOOL)_shouldIgnoreScrollingDidEndNotifications;
+- (BOOL)_shouldManageScrolledHiddenClippedIconView;
 - (BOOL)_showsTitle;
 - (double)_titleFontSize;
 - (unsigned long long)_trailingCustomPageCount;
 - (void)_unignoreScrollingDidEndNotifications;
 - (void)_updateEditingStateAnimated:(BOOL)arg1;
+- (void)_updateHiddenIconViewForScrolling:(BOOL)arg1;
 - (void)_updateIconListContainment:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)_updateIconListFrames;
 - (void)_updateIconListLegibilitySettings;
+- (void)_updateIconListViews:(long long)arg1;
+- (void)_updateIconListViewsWithCurrentIconListModel:(id)arg1;
+- (void)_updateIconListViewsWithCurrentPageIndex:(long long)arg1 currentIconListModel:(id)arg2;
 - (void)_updatePageControlCurrentPage;
 - (void)_updatePageControlNumberOfPages;
 - (void)_updatePageControlToIndex:(long long)arg1;
+- (void)_updateParallaxSettings;
 - (void)_updateScalingViewFrame;
 - (void)_updateScrollingIfNeeded;
 - (void)_updateScrollingState:(BOOL)arg1;
@@ -188,6 +217,7 @@
 - (id)additionalIconListViews;
 - (id)allIconListViews;
 - (void)animateScrollToDefaultPageWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (BOOL)animatesRotationForAllVisibleIconListViews;
 - (id)borrowScalingView;
 - (BOOL)canChangeCurrentPageIndexToIndex:(unsigned long long)arg1;
 - (void)cancelScrolling;
@@ -204,13 +234,22 @@
 - (BOOL)doesPageContainIconListView:(long long)arg1;
 - (void)enumerateIconListViewsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateIconListViewsWithOptions:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateScrollViewPageViewsUsingBlock:(CDUnknownBlockType)arg1;
 - (void)fadeContentForMagnificationFraction:(double)arg1;
 - (void)fadeContentForMinificationFraction:(double)arg1;
 - (id)firstIconListView;
+- (void)folder:(id)arg1 didAddList:(id)arg2;
+- (void)folder:(id)arg1 didMoveList:(id)arg2 fromIndex:(unsigned long long)arg3 toIndex:(unsigned long long)arg4;
+- (void)folder:(id)arg1 didRemoveLists:(id)arg2 atIndexes:(id)arg3;
 - (void)folderDidChange;
 - (void)folderWillChange:(id)arg1;
+- (void)getLeadingVisiblePageIndex:(long long *)arg1 trailingVisiblePageIndex:(long long *)arg2;
+- (BOOL)hasIconPages;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (unsigned long long)iconListModelIndexForPageIndex:(long long)arg1;
+- (id)iconListView:(id)arg1 animatorForRemovingIcons:(id)arg2 proposedAnimator:(id)arg3;
 - (BOOL)iconListView:(id)arg1 canHandleIconDropSession:(id)arg2;
+- (id)iconListView:(id)arg1 customSpringAnimationBehaviorForDroppingItem:(id)arg2;
 - (void)iconListView:(id)arg1 iconDragItem:(id)arg2 willAnimateDropWithAnimator:(id)arg3;
 - (void)iconListView:(id)arg1 iconDropSession:(id)arg2 didPauseAtLocation:(struct CGPoint)arg3;
 - (void)iconListView:(id)arg1 iconDropSessionDidEnter:(id)arg2;
@@ -220,25 +259,39 @@
 - (id)iconListView:(id)arg1 previewForDroppingIconDragItem:(id)arg2 proposedPreview:(id)arg3;
 - (BOOL)iconListView:(id)arg1 shouldAllowSpringLoadedInteractionForIconDropSession:(id)arg2 onIconView:(id)arg3;
 - (void)iconListView:(id)arg1 springLoadedInteractionForIconDragDidCompleteOnIconView:(id)arg2;
+- (void)iconListView:(id)arg1 willUseIconView:(id)arg2 forDroppingIconDragItem:(id)arg3;
 - (id)iconListViewAtIndex:(unsigned long long)arg1;
 - (id)iconListViewAtPoint:(struct CGPoint)arg1;
+- (id)iconListViewAtScrollPoint:(struct CGPoint)arg1;
+- (id)iconListViewDisplayingIconView:(id)arg1;
 - (id)iconListViewForDrag:(id)arg1;
+- (id)iconListViewForIconListModelIndex:(unsigned long long)arg1;
+- (id)iconListViewForPageIndex:(long long)arg1;
 - (id)iconListViewForTouch:(id)arg1;
+- (unsigned long long)iconListViewIndexForIconListModelIndex:(unsigned long long)arg1;
 - (unsigned long long)iconListViewIndexForPageIndex:(long long)arg1;
 - (id)iconListViewWithList:(id)arg1;
-- (id)iconLocationForListAtIndex:(unsigned long long)arg1;
+- (id)iconLocationForList:(id)arg1;
+- (unsigned long long)iconPageCount;
 - (BOOL)iconScrollView:(id)arg1 shouldSetAutoscrollContentOffset:(struct CGPoint)arg2;
 - (BOOL)iconScrollView:(id)arg1 shouldSetContentOffset:(struct CGPoint *)arg2 animated:(BOOL)arg3;
 - (void)iconScrollViewDidCancelTouchTracking:(id)arg1;
 - (void)iconScrollViewWillCancelTouchTracking:(id)arg1;
+- (unsigned long long)indexOfIconListView:(id)arg1;
 - (id)initWithConfiguration:(id)arg1;
+- (BOOL)isPageTypeIcon:(long long)arg1;
+- (BOOL)isVisibleColumnRangeValid:(struct SBVisibleColumnRange)arg1;
 - (id)lastIconListView;
 - (void)layoutIconLists:(double)arg1 animationType:(long long)arg2 forceRelayout:(BOOL)arg3;
 - (void)layoutSubviews;
 - (Class)listViewClass;
 - (BOOL)locationCountsAsInsideFolder:(struct CGPoint)arg1;
+- (void)minimumHomeScreenScaleDidChange;
 - (void)noteUserIsInteractingWithIcons;
-- (void)pageControl:(id)arg1 didReceiveTouchInDirection:(unsigned long long)arg2;
+- (void)pageControl:(id)arg1 didMoveCurrentPageToPage:(long long)arg2 withScrubbing:(BOOL)arg3;
+- (void)pageControlDidReceiveButtonTap:(id)arg1;
+- (long long)pageIndexForIconListModel:(id)arg1;
+- (long long)pageIndexForIconListModelIndex:(unsigned long long)arg1;
 - (long long)pageIndexForIconListViewIndex:(unsigned long long)arg1;
 - (void)prepareForTransition;
 - (void)prepareToOpen;
@@ -265,6 +318,7 @@
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 - (void)tearDownListViews;
+- (void)textFieldDidBeginEditing:(id)arg1;
 - (void)textFieldDidEndEditing:(id)arg1;
 - (BOOL)textFieldShouldBeginEditing:(id)arg1;
 - (BOOL)textFieldShouldReturn:(id)arg1;

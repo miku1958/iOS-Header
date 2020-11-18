@@ -11,9 +11,11 @@
 }
 
 + (id)_findPPRItem:(id)arg1;
++ (id)backgroundColorForRemotePlan:(BOOL)arg1;
 + (id)formattedPhoneNumber:(id)arg1 withCountryCode:(id)arg2;
 + (id)getErrorTitleDetail:(id)arg1 forCarrier:(id)arg2;
 + (id)preinstallPPRAlertControllerWithItems:(id)arg1 completion:(CDUnknownBlockType)arg2;
++ (id)textColorForRemotePlan:(BOOL)arg1;
 
 @end
 

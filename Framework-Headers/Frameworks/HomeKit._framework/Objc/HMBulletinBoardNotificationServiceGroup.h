@@ -54,6 +54,8 @@
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_registerNotificationHandlers;
 - (void)_requestServiceGroup;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleConfigureNotification:(id)arg1;

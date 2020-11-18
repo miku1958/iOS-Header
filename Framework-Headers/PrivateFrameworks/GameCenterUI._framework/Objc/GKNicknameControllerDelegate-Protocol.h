@@ -15,7 +15,9 @@
 - (void)keyboardWillShow:(NSNotification *)arg1;
 - (void)nicknameDidBecomeFirstResponder;
 - (void)nicknameDidResignFirstResponder;
+- (BOOL)nicknameShouldBeginEditing;
 - (void)nicknameTextDidChangeWithMessage:(NSString *)arg1;
+- (void)nicknameUpdateAvatarImage:(NSString *)arg1;
 - (void)nicknameUpdateRequestCompletedWithStatus:(NSString *)arg1 error:(NSError *)arg2;
 @end
 

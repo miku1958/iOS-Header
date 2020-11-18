@@ -17,7 +17,6 @@
     VKMapImageCanvas *_mapCanvas;
     VKGlobeImageCanvas *_globeCanvas;
     int _mapType;
-    CDStruct_80aa614a _mapDisplayStyle;
     GEOPOICategoryFilter *_pointsOfInterestFilter;
     struct VKEdgeInsets _edgeInsets;
     BOOL _didBecomeFullyDrawn;
@@ -39,7 +38,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long labelScaleFactor;
 @property (nonatomic) BOOL localizeLabels;
-@property (nonatomic) CDStruct_80aa614a mapDisplayStyle; // @synthesize mapDisplayStyle=_mapDisplayStyle;
+@property (nonatomic) CDStruct_511c724f mapDisplayStyle;
 @property (nonatomic) int mapType;
 @property (strong, nonatomic) GEOPOICategoryFilter *pointsOfInterestFilter; // @synthesize pointsOfInterestFilter=_pointsOfInterestFilter;
 @property (strong, nonatomic) VKRouteContext *routeContext; // @synthesize routeContext=_routeContext;
@@ -58,6 +57,7 @@
 - (void)_transferSettingsFrom:(id)arg1 to:(id)arg2;
 - (id)activeCanvas;
 - (void)addCustomFeatureDataSource:(id)arg1;
+- (BOOL)canChangeVenueFocus;
 - (void)cancel;
 - (void)cancelFlushingTileDecodes:(BOOL)arg1;
 - (void)dealloc;
@@ -67,7 +67,7 @@
 - (void)didReceiveMemoryWarning;
 - (void)didStartLoadingData;
 - (void)didUpdateSceneStatus:(unsigned char)arg1;
-- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 homeQueue:(id)arg3 signpostId:(unsigned long long)arg4 auditToken:(id)arg5;
+- (id)initWithSize:(struct CGSize)arg1 scale:(double)arg2 homeQueue:(id)arg3 signpostId:(unsigned long long)arg4 mapType:(int)arg5 auditToken:(id)arg6;
 - (void)labelManagerDidLayout;
 - (void)labelMarkerDidChangeState:(const shared_ptr_2d33c5e4 *)arg1;
 - (void)lookAtX:(unsigned long long)arg1 y:(unsigned long long)arg2 z:(unsigned long long)arg3;
@@ -76,12 +76,14 @@
 - (void)renderSnapshot:(CDUnknownBlockType)arg1;
 - (void)selectedLabelMarkerWillDisappear:(const shared_ptr_2d33c5e4 *)arg1;
 - (void)setCenterCoordinate:(CDStruct_c3b9c2ee)arg1 altitude:(double)arg2 yaw:(double)arg3 pitch:(double)arg4;
+- (void)setClearFontCache:(BOOL)arg1;
+- (void)setLabelExclusionRegions:(id)arg1;
 - (void)setMapRegion:(id)arg1 pitch:(double)arg2 yaw:(double)arg3;
 - (void)softDealloc;
 - (void)venueCreated:(const struct Venue *)arg1 building:(const struct VenueBuilding *)arg2;
 - (BOOL)wantsTimerTick;
 - (void)willBecomeFullyDrawn;
-- (void)willLayoutWithTimestamp:(double)arg1;
+- (void)willLayoutWithTimestamp:(double)arg1 withContext:(struct LayoutContext *)arg2;
 
 @end
 

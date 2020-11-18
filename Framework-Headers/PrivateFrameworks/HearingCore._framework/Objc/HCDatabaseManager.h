@@ -24,7 +24,6 @@
 - (id)databaseFilePath;
 - (void)dealloc;
 - (id)init;
-- (BOOL)isProtectedDataAvailable;
 - (void)logMessage:(id)arg1;
 - (id)managedObjectModelName;
 - (BOOL)saveIfPossible;

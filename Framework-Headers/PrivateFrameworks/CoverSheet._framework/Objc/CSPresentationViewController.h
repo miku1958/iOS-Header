@@ -9,6 +9,7 @@
 #import <CoverSheet/BSDescriptionProviding-Protocol.h>
 
 @class NSArray, NSMutableArray, NSString;
+@protocol CSPresentationViewControllerDelegate;
 
 @interface CSPresentationViewController : CSCoverSheetViewControllerBase <BSDescriptionProviding>
 {
@@ -16,6 +17,7 @@
     unsigned long long _transitioning;
     NSMutableArray *_contentViewControllers;
     NSArray *_activeContentViewControllers;
+    id<CSPresentationViewControllerDelegate> _presentationDelegate;
 }
 
 @property (readonly, copy, nonatomic) NSArray *contentViewControllers; // @synthesize contentViewControllers=_contentViewControllers;
@@ -23,12 +25,14 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=hasContent) BOOL hasContent;
 @property (readonly) unsigned long long hash;
+@property (weak, nonatomic) id<CSPresentationViewControllerDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
 @property (readonly, copy, nonatomic) NSArray *presentedViewControllers; // @synthesize presentedViewControllers=_activeContentViewControllers;
 @property (readonly, nonatomic, getter=isPresentingContent) BOOL presentingContent;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isTransitioning) BOOL transitioning;
 
 - (void).cxx_destruct;
+- (void)_didTransitionViewController:(id)arg1 toPresented:(BOOL)arg2;
 - (void)_reflowPresentationWithAnimationSettings:(id)arg1;
 - (void)_updateContentViewControllersAnimated:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updatePresentationForViewController:(id)arg1 presentation:(id)arg2 animationSettings:(id)arg3;

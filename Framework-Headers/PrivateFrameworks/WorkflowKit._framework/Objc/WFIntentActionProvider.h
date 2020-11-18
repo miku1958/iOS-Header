@@ -6,23 +6,27 @@
 
 #import <WorkflowKit/WFActionProvider.h>
 
-@class NSDictionary;
+@class INStringLocalizer, NSDictionary;
 
 @interface WFIntentActionProvider : WFActionProvider
 {
     BOOL _observingInstalledApplicationsChanges;
     NSDictionary *_cachedSchemasByBundleIdentifier;
+    INStringLocalizer *_stringLocalizer;
 }
 
 @property (copy, nonatomic) NSDictionary *cachedSchemasByBundleIdentifier; // @synthesize cachedSchemasByBundleIdentifier=_cachedSchemasByBundleIdentifier;
 @property (nonatomic, getter=isObservingInstalledApplicationsChanges) BOOL observingInstalledApplicationsChanges; // @synthesize observingInstalledApplicationsChanges=_observingInstalledApplicationsChanges;
+@property (readonly, nonatomic) INStringLocalizer *stringLocalizer; // @synthesize stringLocalizer=_stringLocalizer;
 
++ (id)disabledPlatformsForIntentWithTypeName:(id)arg1;
 + (void)initialize;
 - (void).cxx_destruct;
 - (id)actionIdentifiersForBundleIdentifier:(id)arg1 schema:(id)arg2;
 - (id)availableActionIdentifiers;
 - (void)createActionsForRequests:(id)arg1;
 - (id)createAllAvailableActions;
+- (id)init;
 - (void)installedApplicationsDidChange:(id)arg1;
 - (void)observeInstalledApplicationsChangesIfNeeded;
 - (id)schemaForBundleIdentifier:(id)arg1 ignoreCache:(BOOL)arg2;

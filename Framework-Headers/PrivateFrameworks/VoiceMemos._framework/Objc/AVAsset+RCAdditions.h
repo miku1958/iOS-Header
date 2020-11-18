@@ -15,5 +15,6 @@
 @property (readonly, nonatomic) NSDictionary *rc_recordingMetadata;
 
 + (BOOL)rc_updateMetadataInFile:(id)arg1 withMetadata:(id)arg2 error:(id *)arg3;
++ (BOOL)rc_updateMetadataInFile:(id)arg1 withRecordingMetadata:(id)arg2 error:(id *)arg3;
 @end
 

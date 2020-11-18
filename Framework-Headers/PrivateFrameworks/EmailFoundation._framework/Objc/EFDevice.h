@@ -21,6 +21,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property BOOL isInternal; // @synthesize isInternal=_isInternal;
+@property (readonly) BOOL isRunningNative;
 @property (readonly) NSString *platformName;
 @property (readonly) Class superclass;
 
@@ -32,6 +33,7 @@
 + (id)testingDeviceWithInternal:(BOOL)arg1;
 - (void).cxx_destruct;
 - (id)_init;
+- (BOOL)isPlatform:(long long)arg1;
 
 @end
 

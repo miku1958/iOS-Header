@@ -11,14 +11,21 @@
 @interface MKPolylineRenderer : MKOverlayPathRenderer
 {
     VKVectorOverlayPolylineGroup *_vectorGeometry;
+    double _strokeStart;
+    double _strokeEnd;
 }
 
 @property (readonly, nonatomic) MKPolyline *polyline;
+@property (nonatomic) double strokeEnd;
+@property (nonatomic) double strokeStart;
 
 + (Class)_mapkitLeafClass;
 - (void).cxx_destruct;
 - (BOOL)_canProvideVectorGeometry;
+- (void)_performInitialConfiguration;
+- (void)_setNeedsVectorGeometryUpdate;
 - (void)_updateRenderColors;
+- (void)_updateVectorGeometry:(id)arg1;
 - (id)_vectorGeometry;
 - (void)createPath;
 - (void)drawMapRect:(CDStruct_02837cd9)arg1 zoomScale:(double)arg2 inContext:(struct CGContext *)arg3;

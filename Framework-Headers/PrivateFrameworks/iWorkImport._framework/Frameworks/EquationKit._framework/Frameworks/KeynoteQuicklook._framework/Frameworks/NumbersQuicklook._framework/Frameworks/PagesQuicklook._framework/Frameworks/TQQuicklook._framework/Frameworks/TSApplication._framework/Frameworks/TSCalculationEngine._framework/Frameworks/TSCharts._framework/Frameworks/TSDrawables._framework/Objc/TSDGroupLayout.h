@@ -8,7 +8,7 @@
 
 #import <TSDrawables/TSDWrappableParent-Protocol.h>
 
-@class TSDLayoutGeometry, TSUBezierPath;
+@class NSOrderedSet, TSDLayoutGeometry, TSUBezierPath;
 
 @interface TSDGroupLayout : TSDContainerLayout <TSDWrappableParent>
 {
@@ -16,11 +16,14 @@
     struct CGRect mBoundsForStandardKnobs;
     TSUBezierPath *mCachedWrapPath;
     TSUBezierPath *mCachedPathForClippingConnectionLines;
+    NSOrderedSet *mCachedGroupedChildren;
+    BOOL mHasInvalidated;
 }
 
 - (void).cxx_destruct;
 - (id)additionalDependenciesForChildLayout:(id)arg1;
 - (struct CGRect)alignmentFrame;
+- (struct CGRect)alignmentFrameForCaptionEdgeInsetsCalculation;
 - (BOOL)allowsConnections;
 - (void)beginDynamicOperation;
 - (struct CGRect)boundsForStandardKnobs;
@@ -35,21 +38,23 @@
 - (BOOL)descendentWrappablesContainsWrappable:(id)arg1;
 - (void)dragBy:(struct CGPoint)arg1;
 - (void)endDynamicOperation;
+- (struct CGRect)frameForCaptionPositioning;
+- (void)i_clearInvalidationCache;
 - (id)i_computeWrapPath;
 - (id)i_wrapPath;
+- (id)i_wrapPathIncludingTitleAndCaption;
 - (void)invalidate;
 - (void)invalidateExteriorWrap;
 - (BOOL)isDraggable;
 - (id)layoutGeometryFromInfo;
 - (id)layoutsForProvidingGuidesForChildLayouts;
 - (struct CGSize)minimumSize;
-- (id)p_childWrapPathsFrom:(id)arg1 inDescendents:(id)arg2;
+- (id)p_childWrapPathsFrom:(id)arg1 inDescendents:(id)arg2 includingTitleAndCaption:(BOOL)arg3;
 - (void)p_createDynamicCopies;
 - (void)p_destroyDynamicCopies;
-- (void)p_invalidateDescendentWrapPaths;
-- (void)p_invalidateDescendentWrapPathsInRoot;
+- (id)p_groupInfo;
+- (id)p_groupedChildren;
 - (void)p_invalidateParentForWrap;
-- (void)p_updateDescendentWrapPathsWithTransform:(struct CGAffineTransform)arg1;
 - (id)pathForClippingConnectionLines;
 - (void)processChangedProperty:(int)arg1;
 - (BOOL)providesGuidesForChildLayouts;
@@ -59,12 +64,13 @@
 - (id)reliedOnLayouts;
 - (BOOL)resizeMayChangeAspectRatio;
 - (void)setDynamicGeometry:(id)arg1;
-- (void)setGeometry:(id)arg1;
 - (BOOL)shouldBeIncludedInParentFrameForCulling;
 - (BOOL)supportsFlipping;
 - (BOOL)supportsInspectorPositioning;
+- (BOOL)supportsParentFlipping;
 - (BOOL)supportsRotation;
 - (void)transferLayoutGeometryToInfo:(id)arg1 withAdditionalTransform:(struct CGAffineTransform)arg2 assertIfInDocument:(BOOL)arg3;
+- (void)updateChildrenFromInfo;
 - (void)updateLayoutGeometryInPreparationForPartitioning;
 - (id)visibleGeometries;
 

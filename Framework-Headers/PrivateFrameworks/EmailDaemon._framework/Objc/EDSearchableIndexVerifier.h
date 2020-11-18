@@ -34,7 +34,7 @@
 - (id)_verifyDataSamples:(id)arg1;
 - (id)_verifySamples:(id)arg1;
 - (id)initWithDataSource:(id)arg1;
-- (void)verifyDataSamplesWithCompletionHandler:(CDUnknownBlockType)arg1 queue:(id)arg2;
+- (void)verifyDataSamplesWithCompletionHandler:(CDUnknownBlockType)arg1 scheduler:(id)arg2;
 
 @end
 

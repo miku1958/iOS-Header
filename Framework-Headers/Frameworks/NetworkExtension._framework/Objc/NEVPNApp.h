@@ -13,9 +13,11 @@
     BOOL _noRestriction;
     BOOL _restrictDomains;
     NSArray *_appRules;
+    NSArray *_excludedDomains;
 }
 
 @property (copy) NSArray *appRules; // @synthesize appRules=_appRules;
+@property (copy) NSArray *excludedDomains; // @synthesize excludedDomains=_excludedDomains;
 @property BOOL noRestriction; // @synthesize noRestriction=_noRestriction;
 @property BOOL restrictDomains; // @synthesize restrictDomains=_restrictDomains;
 

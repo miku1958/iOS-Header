@@ -21,14 +21,15 @@
     BOOL _showExistingMatches;
     BOOL _showPlay;
     BOOL _showQuit;
+    GKCollectionViewController *_masterViewController;
     GKGame *_game;
     GKMatchRequest *_matchRequest;
-    GKCollectionViewController *_masterViewController;
     id<GKTurnBasedMatchesViewControllerDelegate> _delegate;
     GKTurnBasedMatchesDataSource *_matchesDataSource;
     long long _maxMatchesSeen;
     NSString *_matchIDWaitingForTurnEvent;
     GKTurnBasedInviteViewController *_inviteController;
+    double _initialSectionHeaderHeight;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,6 +37,7 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) GKGame *game; // @synthesize game=_game;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double initialSectionHeaderHeight; // @synthesize initialSectionHeaderHeight=_initialSectionHeaderHeight;
 @property (strong, nonatomic) GKTurnBasedInviteViewController *inviteController; // @synthesize inviteController=_inviteController;
 @property (weak, nonatomic) GKCollectionViewController *masterViewController; // @synthesize masterViewController=_masterViewController;
 @property (strong, nonatomic) NSString *matchIDWaitingForTurnEvent; // @synthesize matchIDWaitingForTurnEvent=_matchIDWaitingForTurnEvent;
@@ -77,6 +79,7 @@
 - (void)showDetailForMatch:(id)arg1;
 - (void)showInviteControllerAnimated:(BOOL)arg1;
 - (void)showMatch:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)turnBasedInviteViewController:(id)arg1 didCreateMatchID:(id)arg2;
 - (void)turnBasedInviteViewController:(id)arg1 didFailWithError:(id)arg2;
 - (void)turnBasedInviteViewControllerWasCancelled:(id)arg1;
@@ -87,7 +90,9 @@
 - (void)turnBasedMatchDetailViewControllerDidRemoveMatch:(id)arg1;
 - (void)turnBasedMatchDetailViewControllerDidShowStore:(id)arg1;
 - (void)turnBasedMatchesDataSource:(id)arg1 didQuitMatch:(id)arg2;
+- (void)updateUIBasedOnTraitCollection;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

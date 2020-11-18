@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class ICRadioGetTracksRequest, ICRadioGetTracksResponse, ICUserIdentityProperties, NSError, SSVPlayActivityController;
+@class ICPlayActivityController, ICRadioGetTracksRequest, ICRadioGetTracksResponse, ICUserIdentityProperties, NSError;
 
 @interface MPCModelRadioGetTracksStep : NSObject
 {
     NSError *_error;
     BOOL _finished;
-    SSVPlayActivityController *_playActivityController;
+    ICPlayActivityController *_playActivityController;
     unsigned long long _playActivitySessionToken;
     ICUserIdentityProperties *_identityProperties;
     ICUserIdentityProperties *_delegatedIdentityProperties;
@@ -27,7 +27,7 @@
 @property (readonly, nonatomic, getter=isFinished) BOOL finished; // @synthesize finished=_finished;
 @property (readonly, copy, nonatomic) ICUserIdentityProperties *identityProperties; // @synthesize identityProperties=_identityProperties;
 @property (readonly, nonatomic) unsigned long long playActitySessionToken; // @synthesize playActitySessionToken=_playActitySessionToken;
-@property (readonly, copy, nonatomic) SSVPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
+@property (readonly, copy, nonatomic) ICPlayActivityController *playActivityController; // @synthesize playActivityController=_playActivityController;
 @property (readonly, copy, nonatomic) ICRadioGetTracksRequest *request; // @synthesize request=_request;
 @property (readonly, copy, nonatomic) ICRadioGetTracksResponse *response; // @synthesize response=_response;
 @property (readonly, nonatomic) ICRadioGetTracksResponse *siriAssetInfoGetTracksResponse; // @synthesize siriAssetInfoGetTracksResponse=_siriAssetInfoGetTracksResponse;

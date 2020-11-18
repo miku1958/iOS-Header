@@ -6,20 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NTKDelayedBlock, NTKFaceSnapshottingWindow;
+#import <NanoTimeKitCompanion/NTKComplicationCollectionObserver-Protocol.h>
 
-@interface NTKFaceSnapshotter : NSObject
+@class NSString, NTKFaceSnapshottingWindow;
+
+@interface NTKFaceSnapshotter : NSObject <NTKComplicationCollectionObserver>
 {
     NTKFaceSnapshottingWindow *_snapshotWindow;
-    NTKDelayedBlock *_hideSnapshotWindowBlock;
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 + (id)defaultModernSnapshotOptions;
 + (id)renderSnapshotFromWindow:(id)arg1;
 - (void).cxx_destruct;
 - (void)_hideSnapshotWindow;
-- (void)_mainQueue_takeSnapshotOfFace:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_mainQueue_serviceRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_queue_serviceRequestIfIdle;
+- (void)_setupNotificationForCollectionLoadForDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_showSnapshotWindowForDevice:(id)arg1;
+- (void)complicationCollectionDidLoad:(id)arg1;
 - (void)dealloc;
 - (id)init;
 - (void)provideSnapshotOfFace:(id)arg1 completion:(CDUnknownBlockType)arg2;

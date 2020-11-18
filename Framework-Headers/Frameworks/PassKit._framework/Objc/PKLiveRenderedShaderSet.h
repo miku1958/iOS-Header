@@ -18,10 +18,10 @@
     NSString *_fragmentEntryPointShader;
 }
 
-@property (strong, nonatomic) NSString *fragmentEntryPointShader; // @synthesize fragmentEntryPointShader=_fragmentEntryPointShader;
-@property (strong, nonatomic) NSString *geometryEntryPointShader; // @synthesize geometryEntryPointShader=_geometryEntryPointShader;
-@property (strong, nonatomic) NSString *lightingModelEntryPointShader; // @synthesize lightingModelEntryPointShader=_lightingModelEntryPointShader;
-@property (strong, nonatomic) NSString *surfaceEntryPointShader; // @synthesize surfaceEntryPointShader=_surfaceEntryPointShader;
+@property (readonly, copy, nonatomic) NSString *fragmentEntryPointShader; // @synthesize fragmentEntryPointShader=_fragmentEntryPointShader;
+@property (readonly, copy, nonatomic) NSString *geometryEntryPointShader; // @synthesize geometryEntryPointShader=_geometryEntryPointShader;
+@property (readonly, copy, nonatomic) NSString *lightingModelEntryPointShader; // @synthesize lightingModelEntryPointShader=_lightingModelEntryPointShader;
+@property (readonly, copy, nonatomic) NSString *surfaceEntryPointShader; // @synthesize surfaceEntryPointShader=_surfaceEntryPointShader;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -8,7 +8,8 @@
 
 #import <HomeUI/HFCameraPlaybackEngineObserver-Protocol.h>
 
-@class HFCameraPlaybackEngine, NSString, UIActivityIndicatorView, UIImageView, UILabel, UIVisualEffectView;
+@class HFCameraPlaybackEngine, HUCameraLoadingActivityIndicatorView, NSString, UIImageView, UILabel, UIView;
+@protocol HFCameraRecordingEvent;
 
 @interface HUCameraPlayerAccessoryViewController : UIViewController <HFCameraPlaybackEngineObserver>
 {
@@ -17,31 +18,35 @@
     BOOL _showingNoActivity;
     BOOL _showingError;
     BOOL _showingLoadingIndicator;
-    BOOL _showingBlur;
+    BOOL _reachabilityEventWasOffline;
     HFCameraPlaybackEngine *_playbackEngine;
+    UIView *_loadingOverlayView;
     UIImageView *_noResponseView;
-    UIActivityIndicatorView *_loadingActivityIndicator;
+    HUCameraLoadingActivityIndicatorView *_loadingActivityIndicator;
     UILabel *_noActivityLabel;
     UILabel *_primaryErrorLabel;
     UILabel *_secondaryErrorLabel;
-    UIVisualEffectView *_blurView;
     unsigned long long _currentAccessMode;
+    id<HFCameraRecordingEvent> _lastDisplayedEvent;
+    unsigned long long _lastEngineMode;
 }
 
-@property (strong, nonatomic) UIVisualEffectView *blurView; // @synthesize blurView=_blurView;
 @property (nonatomic) BOOL canShowOverlayContent; // @synthesize canShowOverlayContent=_canShowOverlayContent;
 @property (nonatomic) unsigned long long currentAccessMode; // @synthesize currentAccessMode=_currentAccessMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UIActivityIndicatorView *loadingActivityIndicator; // @synthesize loadingActivityIndicator=_loadingActivityIndicator;
+@property (weak, nonatomic) id<HFCameraRecordingEvent> lastDisplayedEvent; // @synthesize lastDisplayedEvent=_lastDisplayedEvent;
+@property (nonatomic) unsigned long long lastEngineMode; // @synthesize lastEngineMode=_lastEngineMode;
+@property (strong, nonatomic) HUCameraLoadingActivityIndicatorView *loadingActivityIndicator; // @synthesize loadingActivityIndicator=_loadingActivityIndicator;
+@property (weak, nonatomic) UIView *loadingOverlayView; // @synthesize loadingOverlayView=_loadingOverlayView;
 @property (strong, nonatomic) UILabel *noActivityLabel; // @synthesize noActivityLabel=_noActivityLabel;
 @property (strong, nonatomic) UIImageView *noResponseView; // @synthesize noResponseView=_noResponseView;
 @property (weak, nonatomic) HFCameraPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property (strong, nonatomic) UILabel *primaryErrorLabel; // @synthesize primaryErrorLabel=_primaryErrorLabel;
+@property (nonatomic) BOOL reachabilityEventWasOffline; // @synthesize reachabilityEventWasOffline=_reachabilityEventWasOffline;
 @property (strong, nonatomic) UILabel *secondaryErrorLabel; // @synthesize secondaryErrorLabel=_secondaryErrorLabel;
 @property (nonatomic) BOOL shouldShowLoadingIndicatorForClipPlayback; // @synthesize shouldShowLoadingIndicatorForClipPlayback=_shouldShowLoadingIndicatorForClipPlayback;
-@property (nonatomic) BOOL showingBlur; // @synthesize showingBlur=_showingBlur;
 @property (nonatomic) BOOL showingError; // @synthesize showingError=_showingError;
 @property (nonatomic) BOOL showingLoadingIndicator; // @synthesize showingLoadingIndicator=_showingLoadingIndicator;
 @property (nonatomic) BOOL showingNoActivity; // @synthesize showingNoActivity=_showingNoActivity;
@@ -49,20 +54,22 @@
 
 + (id)_newLabel;
 - (void).cxx_destruct;
+- (void)_displayReachabilityMessageForEvent:(id)arg1;
 - (id)_errorStringDetailsForError:(id)arg1;
 - (BOOL)_shouldShortCircuitBlurEffect;
-- (BOOL)_shouldShortCircuitLoadingIndicator;
 - (void)_updateAllOverlayStateAnimated:(BOOL)arg1;
-- (void)_updateBlurVisibilityAnimated:(BOOL)arg1;
 - (void)_updateErrorStateAnimated:(BOOL)arg1;
 - (void)_updateLoadingStateAnimated:(BOOL)arg1;
 - (void)_updateNoActivityStateAnimated:(BOOL)arg1;
 - (void)_updateStateAnimated:(BOOL)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)hu_reloadData;
 - (id)initWithPlaybackEngine:(id)arg1;
+- (void)playbackEngine:(id)arg1 didRemoveEvents:(id)arg2;
+- (void)playbackEngine:(id)arg1 didUpdateEvents:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdatePlaybackError:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdatePlaybackPosition:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdateTimeControlStatus:(unsigned long long)arg2;
+- (BOOL)shouldShortCircuitLoadingIndicator;
 - (void)viewDidLoad;
 
 @end

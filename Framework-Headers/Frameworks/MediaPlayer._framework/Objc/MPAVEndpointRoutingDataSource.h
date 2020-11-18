@@ -27,7 +27,7 @@
 - (void)dealloc;
 - (BOOL)devicePresenceDetected;
 - (long long)discoveryMode;
-- (void)getRoutesForCategory:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)getRoutesForCategory:(id)arg1;
 - (id)init;
 - (id)initWithThrottlingEnabled:(BOOL)arg1;
 - (void)setDiscoveryMode:(long long)arg1;

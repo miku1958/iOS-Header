@@ -31,7 +31,7 @@
 - (BOOL)_updateRefreshPlayback:(id)arg1;
 - (unsigned long long)capability;
 - (void)encodeWithCoder:(id)arg1;
-- (void)handleAccessoryConfigured:(id)arg1;
+- (void)handleAccessoryConnected:(id)arg1;
 - (void)handleCharacteristicsUpdated:(id)arg1;
 - (void)handleHomeCharacteristicValuesChanged:(id)arg1;
 - (id)initWithMediaServices:(id)arg1;

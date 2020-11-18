@@ -6,9 +6,16 @@
 
 #import <objc/NSObject.h>
 
+@class MISSING_TYPE, UIViewController;
+
 @interface ENUIViewControllerFactory : NSObject
 {
+    MISSING_TYPE *inflightOnboardingStack;
+    MISSING_TYPE *inflightVerificationStack;
 }
+
+@property (nonatomic, weak) UIViewController *inflightOnboardingStack; // @synthesize inflightOnboardingStack;
+@property (nonatomic, weak) UIViewController *inflightVerificationStack; // @synthesize inflightVerificationStack;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;

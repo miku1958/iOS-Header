@@ -10,6 +10,7 @@
 
 @interface _TtC15HealthRecordsUI26AccountStateChangeListener : NSObject
 {
+    MISSING_TYPE *_latestChange;
     MISSING_TYPE *handler;
 }
 

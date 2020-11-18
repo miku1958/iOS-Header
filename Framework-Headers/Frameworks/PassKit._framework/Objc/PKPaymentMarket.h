@@ -13,8 +13,8 @@
 @interface PKPaymentMarket : NSObject <NSSecureCoding>
 {
     NSDictionary *_localizedNames;
+    NSDictionary *_renotifyCampaigns;
     NSSet *_geoFences;
-    NSString *_expressNotificationIdentifier;
     BOOL _productsRequiredForRegion;
     BOOL _shouldConsiderCellularRegion;
     long long _type;
@@ -38,6 +38,7 @@
 @property (readonly, copy) NSString *name; // @dynamic name;
 @property (readonly) BOOL productsRequiredForRegion; // @synthesize productsRequiredForRegion=_productsRequiredForRegion;
 @property (readonly, copy) NSString *region; // @synthesize region=_region;
+@property (readonly, copy) NSString *renotifyOpenLoopCampaignIdentifier;
 @property (readonly) BOOL shouldConsiderCellularRegion; // @synthesize shouldConsiderCellularRegion=_shouldConsiderCellularRegion;
 @property (readonly, copy) NSSet *supportedCredentialTypes; // @synthesize supportedCredentialTypes=_supportedCredentialTypes;
 @property (readonly, copy) NSSet *supportedTransitNetworks; // @synthesize supportedTransitNetworks=_supportedTransitNetworks;
@@ -49,7 +50,6 @@
 - (BOOL)containsLocation:(id)arg1;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)expressNotificationIdentifier;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 forDeviceClass:(id)arg2 version:(id)arg3;

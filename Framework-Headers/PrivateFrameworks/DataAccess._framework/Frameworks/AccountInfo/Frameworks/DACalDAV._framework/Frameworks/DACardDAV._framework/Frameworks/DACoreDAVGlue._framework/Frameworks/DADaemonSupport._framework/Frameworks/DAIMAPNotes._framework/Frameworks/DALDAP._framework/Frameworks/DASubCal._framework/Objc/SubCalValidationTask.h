@@ -8,7 +8,7 @@
 
 #import <DASubCal/SubCalURLRequestDelegate-Protocol.h>
 
-@class NSData, NSString, NSURL, SubCalURLRequest;
+@class ICSDocument, NSData, NSString, NSURL, SubCalURLRequest;
 @protocol SubCalValidationTaskDelegate;
 
 @interface SubCalValidationTask : SubCalDATask <SubCalURLRequestDelegate>
@@ -22,6 +22,7 @@
     NSString *_password;
     SubCalURLRequest *_request;
     NSData *_icsData;
+    ICSDocument *_icsDocument;
     NSString *_calendarName;
     unsigned long long _searchIndex;
 }
@@ -34,6 +35,7 @@
 @property (nonatomic) BOOL foundCalName; // @synthesize foundCalName=_foundCalName;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSData *icsData; // @synthesize icsData=_icsData;
+@property (strong, nonatomic) ICSDocument *icsDocument; // @synthesize icsDocument=_icsDocument;
 @property (strong, nonatomic) NSString *password; // @synthesize password=_password;
 @property (nonatomic) BOOL performQuickValidation; // @synthesize performQuickValidation=_performQuickValidation;
 @property (strong, nonatomic) SubCalURLRequest *request; // @synthesize request=_request;
@@ -55,6 +57,7 @@
 - (void)subCalURLRequest:(id)arg1 didRedirectToURL:(id)arg2;
 - (void)subCalURLRequest:(id)arg1 finishedWithData:(id)arg2 error:(id)arg3;
 - (void)subCalURLRequest:(id)arg1 updatedData:(id)arg2;
+- (void)subCalURLRequestNeedsUsernameAndPasswordForHost:(id)arg1 continuation:(CDUnknownBlockType)arg2;
 - (void)willFinish;
 
 @end

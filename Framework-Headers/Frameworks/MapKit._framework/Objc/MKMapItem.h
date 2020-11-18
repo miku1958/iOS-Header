@@ -11,7 +11,7 @@
 #import <MapKit/NSItemProviderWriting-Protocol.h>
 #import <MapKit/NSSecureCoding-Protocol.h>
 
-@class GEOAddress, GEOBusinessHours, GEOFeatureStyleAttributes, GEOMapItemDetourInfo, GEOMapItemStorage, GEOMapItemStorageUserValues, GEOMapRegion, GEOModuleLayoutEntry, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPlace, GEORelatedPlaceList, MKMapItemIdentifier, MKMapItemMetadata, MKPlacemark, NSArray, NSData, NSDate, NSNumber, NSNumberFormatter, NSString, NSTimeZone, NSURL, UIColor, _MKMapItemPhotosAttribution, _MKMapItemPlaceAttribution, _MKMapItemReviewsAttribution, _MKPlaceReservationInfo;
+@class GEOAddress, GEOBusinessHours, GEOFeatureStyleAttributes, GEOMapItemDetourInfo, GEOMapItemStorage, GEOMapItemStorageUserValues, GEOMapRegion, GEOModuleLayoutEntry, GEOMuninViewState, GEOPDBusinessClaim, GEOPDFlyover, GEOPlace, GEORelatedPlaceList, MKMapItemIdentifier, MKMapItemMetadata, MKPlacemark, NSArray, NSData, NSDate, NSDictionary, NSNumber, NSNumberFormatter, NSString, NSTimeZone, NSURL, UIColor, _MKMapItemPhotosAttribution, _MKMapItemPlaceAttribution, _MKMapItemReviewsAttribution, _MKPlaceReservationInfo;
 @protocol GEOAnnotatedItemList, GEOEncyclopedicInfo, GEOMapItem, GEOMapItemPrivate, GEOMapItemTransitInfo, GEOMapItemVenueInfo, GEOTransitAttribution, MKTransitInfoPreload, NSObject;
 
 @interface MKMapItem : NSObject <NSSecureCoding, NSItemProviderReading, NSItemProviderWriting, GEOURLSerializable>
@@ -34,6 +34,7 @@
     NSString *_firstLocalizedCategoryName;
     NSNumberFormatter *_numberFormatterForAdamId;
     NSString *_localizedSampleSizeForUserRatingScoreString;
+    NSDictionary *_cachedHoursBuilder;
     BOOL _isMapItemTypeTransit;
     MKMapItemMetadata *_metadata;
     GEOPlace *_place;
@@ -51,6 +52,8 @@
 @property (readonly, nonatomic, getter=_browseCategories) NSArray *browseCategories;
 @property (readonly, nonatomic, getter=_businessClaim) GEOPDBusinessClaim *businessClaim;
 @property (readonly, nonatomic, getter=_businessHours) NSArray *businessHours;
+@property (readonly, nonatomic, getter=_chargerNumberString) NSString *chargerNumberString;
+@property (readonly, nonatomic, getter=_placeCollectionIds) NSArray *collectionIds;
 @property (readonly, nonatomic, getter=_coordinate) struct CLLocationCoordinate2D coordinate;
 @property (readonly, nonatomic, getter=_customIconID) unsigned long long customIconID;
 @property (readonly, copy) NSString *debugDescription;
@@ -79,6 +82,7 @@
 @property (readonly, nonatomic, getter=_hasBrandMUID) BOOL hasBrandMUID;
 @property (readonly, nonatomic, getter=_hasBusinessClaim) BOOL hasBusinessClaim;
 @property (readonly, nonatomic, getter=_hasBusinessHours) BOOL hasBusinessHours;
+@property (readonly, nonatomic, getter=_hasChargerNumberString) BOOL hasChargerNumberString;
 @property (readonly, nonatomic, getter=_hasCorrectedHomeWorkAddress) BOOL hasCorrectedHomeWorkAddress;
 @property (readonly, nonatomic, getter=_hasCorrectedHomeWorkCoordinate) BOOL hasCorrectedHomeWorkCoordinate;
 @property (readonly, nonatomic, getter=_hasDisplayMaxZoom) BOOL hasDisplayMaxZoom;
@@ -158,6 +162,7 @@
 @property (readonly, nonatomic) NSString *reviewsProviderDisplayName;
 @property (readonly, nonatomic, getter=_sampleSizeForUserRatingScore) unsigned int sampleSizeForUserRatingScore;
 @property (readonly, nonatomic, getter=_secondaryName) NSString *secondaryName;
+@property (readonly, nonatomic, getter=_secondaryQuickLinks) NSArray *secondaryQuickLinks;
 @property (readonly, nonatomic, getter=_secondarySpokenName) NSString *secondarySpokenName;
 @property (readonly, nonatomic, getter=_shortAddress) NSString *shortAddress;
 @property (readonly, nonatomic, getter=_styleAttributes) GEOFeatureStyleAttributes *styleAttributes;
@@ -236,16 +241,26 @@
 - (id)_addressFormattedAsStreetOnly;
 - (id)_addressFormattedAsTitlesForMapRect:(CDStruct_02837cd9)arg1;
 - (id)_addressFormattedAsWeatherDisplayName;
+- (id)_addressFormattedAsWeatherLocationName;
 - (id)_addressOrNil:(id)arg1;
 - (id)_attributionFor:(id)arg1 sourceStringFormat:(id)arg2 moreSourceStringFormat:(id)arg3 imageTintColor:(id)arg4;
 - (id)_attributionWithDisplayName:(id)arg1 attributionFormat:(id)arg2 logo:(id)arg3 isSnippetLogo:(BOOL)arg4;
 - (id)_bestBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
 - (id)_bestNavbarBrandIconURLForSize:(struct CGSize)arg1 allowSmaller:(BOOL)arg2;
+- (BOOL)_browseCategory_canDisplayBrowseCategoriesForPlace;
+- (BOOL)_browseCategory_canDisplayBrowseCategoriesForVenue;
+- (BOOL)_browseCategory_isVenueItem;
+- (int)_browseCategory_placeCardType;
 - (BOOL)_canGetDirections;
 - (id)_cnPostalAddress;
 - (id)_formatterForAdamId;
 - (id)_fullAddressWithMultiline:(BOOL)arg1;
 - (id)_getBusiness;
+- (void)_getFirstAvailableAppClipLinkFromQuickLinks:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_getFirstAvailableAppClipLinkWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_getFirstAvailableSecondaryAppClipLinkWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_getHasAvailableAppClipWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_getHasAvailableSecondaryAppClipWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)_hasLocalizedCategoryNamesForType:(unsigned int)arg1;
 - (BOOL)_hasRestaurantExtensionInfo;
 - (id)_htmlRepresentation;
@@ -272,11 +287,13 @@
 - (id)_vCardFilename;
 - (id)_vCardRepresentation;
 - (id)_weatherDisplayName;
+- (id)_weatherLocationName;
 - (void)dealloc;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)formattedNumberOfReviewsIncludingProvider:(BOOL)arg1 formatter:(id)arg2;
 - (BOOL)hasAmenityType:(int)arg1;
+- (id)hoursBuilderForSearchResultCellForOptions:(unsigned long long)arg1;
 - (id)initWithAddressDictionary:(id)arg1;
 - (id)initWithCLLocation:(id)arg1;
 - (id)initWithCLLocation:(id)arg1 placeType:(int)arg2;

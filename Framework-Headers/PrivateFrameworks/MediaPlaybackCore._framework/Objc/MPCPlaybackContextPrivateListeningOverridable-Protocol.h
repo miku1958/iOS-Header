@@ -9,6 +9,8 @@
 @class NSNumber;
 
 @protocol MPCPlaybackContextPrivateListeningOverridable <NSObject>
-- (void)setPrivateListeningOverride:(NSNumber *)arg1;
+
+@property (copy, nonatomic) NSNumber *privateListeningOverride;
+
 @end
 

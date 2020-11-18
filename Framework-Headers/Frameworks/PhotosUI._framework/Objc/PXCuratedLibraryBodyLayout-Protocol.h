@@ -6,13 +6,8 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class PXCuratedLibraryLayoutSpec;
-
 @protocol PXCuratedLibraryBodyLayout <NSObject>
-
-@property (strong, nonatomic) PXCuratedLibraryLayoutSpec *spec;
-
-- (NSDateInterval * (^)(unsigned long long))dateIntervalFutureForContentInRect:(struct CGRect)arg1;
+- (NSDateInterval * (^)(unsigned long long))dateIntervalFutureForContentInRect:(struct CGRect)arg1 type:(unsigned long long)arg2;
 - (NSArray * (^)(unsigned long long))locationNamesFutureForContentInRect:(struct CGRect)arg1;
 @end
 

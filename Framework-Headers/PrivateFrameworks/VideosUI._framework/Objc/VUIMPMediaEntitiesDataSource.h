@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 - (void)_loadImageUrlsByPurchaseHistoryIds:(id)arg1;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didCompleteWithResult:(id)arg3;
 - (void)controller:(id)arg1 fetchRequests:(id)arg2 didFailWithError:(id)arg3;
+- (void)dealloc;
 - (id)initWithMediaLibrary:(id)arg1 fetchRequest:(id)arg2;
 - (void)startFetch;
 

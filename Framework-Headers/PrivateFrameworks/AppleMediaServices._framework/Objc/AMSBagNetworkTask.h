@@ -9,19 +9,15 @@
 #import <AppleMediaServices/AMSURLProtocolDelegate-Protocol.h>
 #import <AppleMediaServices/NSURLSessionTaskDelegate-Protocol.h>
 
-@class AMSProcessInfo, AMSURLSession, NSMutableArray, NSObject, NSString;
-@protocol OS_dispatch_queue;
+@class AMSProcessInfo, AMSURLSession, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AMSBagNetworkTask : AMSTask <NSURLSessionTaskDelegate, AMSURLProtocolDelegate>
 {
-    BOOL _waitingForConnectivity;
     AMSProcessInfo *_clientInfo;
     NSString *_profile;
     NSString *_profileVersion;
     AMSURLSession *_URLSession;
-    NSMutableArray *_waitingForConnectivityBlocks;
-    NSObject<OS_dispatch_queue> *_waitingForConnectivityQueue;
     NSString *_logKey;
 }
 
@@ -34,9 +30,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSString *profileVersion; // @synthesize profileVersion=_profileVersion;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL waitingForConnectivity; // @synthesize waitingForConnectivity=_waitingForConnectivity;
-@property (strong, nonatomic) NSMutableArray *waitingForConnectivityBlocks; // @synthesize waitingForConnectivityBlocks=_waitingForConnectivityBlocks;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *waitingForConnectivityQueue; // @synthesize waitingForConnectivityQueue=_waitingForConnectivityQueue;
 
 + (id)_OSBuildTypeString;
 + (id)_URLCookieNamesForProfile:(id)arg1;
@@ -49,13 +42,10 @@ __attribute__((visibility("hidden")))
 + (id)bagStorefrontForAccountMediaType:(id)arg1;
 - (void).cxx_destruct;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)URLSession:(id)arg1 taskIsWaitingForConnectivity:(id)arg2;
 - (id)_cookiesForNames:(id)arg1;
 - (id)_createRequestWithCookieNames:(id)arg1 storefront:(id)arg2;
 - (BOOL)_shouldRetryForResult:(id)arg1 cookieNames:(id)arg2 urlCookies:(id)arg3 newStorefront:(id)arg4;
 - (void)_updateStorefrontSuffixIfNecessaryWithBagData:(id)arg1;
-- (void)_updateWaitingForConnectivity:(BOOL)arg1;
-- (void)addWaitingForConnectivityBlock:(CDUnknownBlockType)arg1;
 - (id)initWithClientInfo:(id)arg1 profile:(id)arg2 profileVersion:(id)arg3;
 - (id)performFetch;
 

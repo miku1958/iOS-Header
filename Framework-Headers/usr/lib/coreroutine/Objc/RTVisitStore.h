@@ -6,13 +6,23 @@
 
 #import <coreroutine/RTStore.h>
 
-@interface RTVisitStore : RTStore
+#import <coreroutine/RTEnumerableStore-Protocol.h>
+
+@class NSString;
+
+@interface RTVisitStore : RTStore <RTEnumerableStore>
 {
 }
+
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void)_fetchVisitsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_purgeVisitsPredating:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_storeVisit:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)fetchRequestFromOptions:(id)arg1 offset:(unsigned long long)arg2 error:(id *)arg3;
 - (void)fetchVisitsWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)purgeVisitsPredating:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)storeVisit:(id)arg1 handler:(CDUnknownBlockType)arg2;

@@ -53,6 +53,9 @@
     NSSet *_activeRemoteParticipantHandles;
     CXHandoffContext *_handoffContext;
     NSDictionary *_context;
+    unsigned long long _originatingUIType;
+    long long _junkConfidence;
+    long long _identificationCategory;
     struct CXCallUpdateHasSet _hasSet;
     NSUUID *_UUID;
 }
@@ -75,12 +78,15 @@
 @property (nonatomic) struct CXCallUpdateHasSet hasSet; // @synthesize hasSet=_hasSet;
 @property (nonatomic) BOOL hasVideo; // @synthesize hasVideo=_hasVideo;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long identificationCategory; // @synthesize identificationCategory=_identificationCategory;
 @property (nonatomic) long long inCallSoundRegion; // @synthesize inCallSoundRegion=_inCallSoundRegion;
+@property (nonatomic) long long junkConfidence; // @synthesize junkConfidence=_junkConfidence;
 @property (copy, nonatomic) NSUUID *localSenderIdentityAccountUUID; // @synthesize localSenderIdentityAccountUUID=_localSenderIdentityAccountUUID;
 @property (copy, nonatomic) NSUUID *localSenderIdentityUUID; // @synthesize localSenderIdentityUUID=_localSenderIdentityUUID;
 @property (copy, nonatomic) NSString *localizedCallerName; // @synthesize localizedCallerName=_localizedCallerName;
 @property (nonatomic) BOOL mayRequireBreakBeforeMake; // @synthesize mayRequireBreakBeforeMake=_mayRequireBreakBeforeMake;
 @property (nonatomic, getter=isMutuallyExclusiveCall) BOOL mutuallyExclusiveCall; // @synthesize mutuallyExclusiveCall=_mutuallyExclusiveCall;
+@property (nonatomic) unsigned long long originatingUIType; // @synthesize originatingUIType=_originatingUIType;
 @property (nonatomic) BOOL prefersExclusiveAccessToCellularNetwork; // @synthesize prefersExclusiveAccessToCellularNetwork=_prefersExclusiveAccessToCellularNetwork;
 @property (nonatomic) long long priority; // @synthesize priority=_priority;
 @property (copy, nonatomic) CXHandle *remoteHandle; // @synthesize remoteHandle=_remoteHandle;

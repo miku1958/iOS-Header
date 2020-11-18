@@ -6,7 +6,7 @@
 
 #import <RunningBoard/NSObject-Protocol.h>
 
-@class NSArray, NSObject, RBProcess, RBProcessState, RBProcessStateChangeSet, RBSProcessIdentity, RBSProcessMonitorConfiguration, RBSProcessPredicate;
+@class NSArray, NSObject, NSSet, RBProcess, RBProcessState, RBProcessStateChangeSet, RBSProcessIdentity, RBSProcessMonitorConfiguration, RBSProcessPredicate;
 @protocol OS_dispatch_queue, RBProcessMonitorObserving;
 
 @protocol RBProcessMonitoring <NSObject>
@@ -16,7 +16,9 @@
 - (void)addObserver:(id<RBProcessMonitorObserving>)arg1;
 - (void)didAddProcess:(RBProcess *)arg1 withState:(RBProcessState *)arg2;
 - (void)didRemoveProcess:(RBProcess *)arg1 withState:(RBProcessState *)arg2;
+- (void)didResolvePreventLaunchPredicates:(NSSet *)arg1;
 - (void)didUpdateProcessStates:(RBProcessStateChangeSet *)arg1;
+- (NSSet *)preventLaunchPredicates;
 - (void)removeObserver:(id<RBProcessMonitorObserving>)arg1;
 - (void)removeStateForProcessIdentity:(RBSProcessIdentity *)arg1;
 - (NSArray *)statesMatchingConfiguration:(RBSProcessMonitorConfiguration *)arg1;

@@ -32,9 +32,6 @@
 + (id)encodeFont:(id)arg1;
 + (id)encodeTextAttributes:(id)arg1;
 + (void)encodeTextPropertiesOfAnnotation:(id)arg1 withCoder:(id)arg2;
-+ (id)insecurelyConvertLegacyAnnotationArchiveToRTFArchive:(id)arg1;
-+ (id)insecurelyConvertLegacyModelControllerArchive:(id)arg1;
-+ (id)insecurelyConvertLegacyTextAttributeDataToRTFData:(id)arg1;
 + (id)secureCodingCompliantObjectForData:(id)arg1 ofClasses:(id)arg2 withOptionalKey:(id)arg3;
 
 @end

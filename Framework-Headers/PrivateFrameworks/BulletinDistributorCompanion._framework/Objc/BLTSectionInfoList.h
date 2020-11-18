@@ -51,14 +51,14 @@
 - (id)overrides;
 - (void)reloadBBSection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)reloadWithCompletion:(CDUnknownBlockType)arg1;
-- (void)removedSectionWithSectionID:(id)arg1;
+- (void)removedSectionWithSectionID:(id)arg1 transaction:(id)arg2;
 - (id)sectionIDs;
 - (id)sectionOverrideOnlyForSectionID:(id)arg1;
 - (id)sectionOverridesOnly;
 - (id)settingsDescriptionForSectionIDs:(id)arg1;
 - (id)universalSectionIDForSectionID:(id)arg1;
-- (void)updateOverrides:(id)arg1 forSectionID:(id)arg2;
-- (void)updateSectionInfoForSectionIDs:(id)arg1;
+- (void)updateOverrides:(id)arg1 forSectionID:(id)arg2 transaction:(id)arg3;
+- (void)updateSectionInfoForSectionIDs:(id)arg1 transaction:(id)arg2;
 
 @end
 

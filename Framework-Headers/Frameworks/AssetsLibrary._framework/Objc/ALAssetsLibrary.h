@@ -39,6 +39,7 @@
 - (void)addAssetsGroupAlbumWithName:(id)arg1 resultBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)assetForURL:(id)arg1 resultBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (id)assetsGroupsRelatedToAssetsGroup:(id)arg1;
+- (void)checkPhotosAccessAllowedWithScope:(long long)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (void)enumerateGroupsWithTypes:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;
 - (void)groupForURL:(id)arg1 resultBlock:(CDUnknownBlockType)arg2 failureBlock:(CDUnknownBlockType)arg3;

@@ -6,17 +6,17 @@
 
 #import <objc/NSObject.h>
 
-#import <ProactiveML/PMLMultiLabelClassifierModelProtocol-Protocol.h>
+#import <ProactiveML/PMLMultiLabelClassifierProtocol-Protocol.h>
 
 @class NSString;
 
-@interface PMLMultiLabelEspressoClassifier : NSObject <PMLMultiLabelClassifierModelProtocol>
+@interface PMLMultiLabelEspressoClassifier : NSObject <PMLMultiLabelClassifierProtocol>
 {
     CDStruct_2bc666a5 _espressoModel;
     void *_espressoPlan;
     void *_espressoContext;
     unsigned long long _outputNumReplyClasses;
-    unsigned long long _inputMaxSequenceLength;
+    unsigned long long _inputNumParameters;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -24,14 +24,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (id)classify:(id)arg1;
-- (unsigned long long)count;
++ (id)classifierWithEspressoModelFile:(id)arg1 intercept:(BOOL)arg2;
++ (unsigned long long)getNumParametersFromShape:(unsigned long long [10])arg1 rank:(unsigned long long)arg2;
++ (id)makeStringForShape:(unsigned long long [10])arg1;
 - (void)dealloc;
-- (BOOL)finalizeNetWithInputOutputShape:(id)arg1;
-- (id)initWithEspressoModelsFromFile:(id)arg1 intercept:(BOOL)arg2;
-- (id)initWithModels:(CDStruct_2bc666a5)arg1;
+- (id)initWithEspressoContext:(void *)arg1 espressoPlan:(void *)arg2 espressoModel:(CDStruct_2bc666a5)arg3 inputNumParameters:(unsigned long long)arg4 outputNumReplyClasses:(unsigned long long)arg5;
+- (unsigned long long)outputDimension;
 - (id)predict:(id)arg1;
-- (id)shapeJSONFromFile:(id)arg1;
 
 @end
 

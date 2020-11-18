@@ -8,6 +8,7 @@
 
 @class NSCalendar, NSDateInterval, NSMutableDictionary;
 
+__attribute__((visibility("hidden")))
 @interface _HDSleepReportBuilder : NSObject
 {
     NSDateInterval *_resultInterval;

@@ -41,7 +41,12 @@
 - (id)pk_locationForKey:(id)arg1;
 - (id)pk_numberForKey:(id)arg1;
 - (id)pk_objectForKey:(id)arg1 ofClass:(Class)arg2;
+- (id)pk_participantWithEmailAddress:(id)arg1;
+- (id)pk_participantWithLookupInfo:(id)arg1;
+- (id)pk_participantWithPhoneNumber:(id)arg1;
+- (id)pk_participantWithRecipientHandle:(id)arg1;
 - (id)pk_referenceForKey:(id)arg1;
+- (id)pk_share;
 - (id)pk_stringForKey:(id)arg1;
 - (unsigned long long)pk_uint64ForKey:(id)arg1;
 - (unsigned long long)pk_unsignedIntegerForKey:(id)arg1;

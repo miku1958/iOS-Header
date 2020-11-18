@@ -13,11 +13,14 @@
 @interface WFCloudKitWorkflow : NSObject <WFCloudKitItem>
 {
     CKRecordID *_identifier;
+    NSData *_recordSystemFieldsData;
     NSDate *_createdAt;
     NSDate *_modifiedAt;
     NSString *_name;
     NSString *_workflowSubtitle;
     NSString *_associatedAppBundleIdentifier;
+    NSString *_source;
+    NSString *_galleryIdentifier;
     WFFileRepresentation *_serializedDataFile;
     long long _cachedSyncHash;
     NSData *_serializedQuarantineData;
@@ -32,18 +35,22 @@
 @property (readonly, nonatomic) NSDate *createdAt; // @synthesize createdAt=_createdAt;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *galleryIdentifier; // @synthesize galleryIdentifier=_galleryIdentifier;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CKRecordID *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *lastSavedOnDeviceName; // @synthesize lastSavedOnDeviceName=_lastSavedOnDeviceName;
 @property (readonly, nonatomic) NSDate *modifiedAt; // @synthesize modifiedAt=_modifiedAt;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy, nonatomic) NSData *recordSystemFieldsData; // @synthesize recordSystemFieldsData=_recordSystemFieldsData;
 @property (copy, nonatomic) NSData *serializedAccessResourcePerWorkflowStateData; // @synthesize serializedAccessResourcePerWorkflowStateData=_serializedAccessResourcePerWorkflowStateData;
 @property (strong, nonatomic) WFFileRepresentation *serializedDataFile; // @synthesize serializedDataFile=_serializedDataFile;
 @property (copy, nonatomic) NSData *serializedQuarantineData; // @synthesize serializedQuarantineData=_serializedQuarantineData;
+@property (copy, nonatomic) NSString *source; // @synthesize source=_source;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *workflowSubtitle; // @synthesize workflowSubtitle=_workflowSubtitle;
 
 + (id)properties;
++ (id)recordIDWithZoneID:(id)arg1 workflowID:(id)arg2;
 + (id)recordType;
 - (void).cxx_destruct;
 - (id)initWithRecord:(id)arg1 identifier:(id)arg2;

@@ -31,9 +31,10 @@
 @property (nonatomic, getter=isShowingMoreScores) BOOL showingMoreScores; // @synthesize showingMoreScores=_showingMoreScores;
 @property (nonatomic) long long timeScope; // @dynamic timeScope;
 @property (nonatomic) SEL timeScopeAction; // @synthesize timeScopeAction=_timeScopeAction;
-@property (nonatomic) id timeScopeTarget; // @synthesize timeScopeTarget=_timeScopeTarget;
+@property (weak, nonatomic) id timeScopeTarget; // @synthesize timeScopeTarget=_timeScopeTarget;
 @property (nonatomic) long long visibleItemCount; // @synthesize visibleItemCount=_visibleItemCount;
 
+- (void).cxx_destruct;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 referenceSizeForFooterInSection:(long long)arg3;
@@ -41,7 +42,6 @@
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
-- (void)dealloc;
 - (BOOL)hasFriendsButton;
 - (id)initWithGameRecord:(id)arg1 leaderboard:(id)arg2;
 - (BOOL)isShowMoreIndexPath:(id)arg1;

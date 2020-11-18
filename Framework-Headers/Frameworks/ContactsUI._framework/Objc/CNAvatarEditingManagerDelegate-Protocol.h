@@ -9,6 +9,6 @@
 @class CNAvatarEditingManager, CNPhotoPickerProviderItem;
 
 @protocol CNAvatarEditingManagerDelegate <NSObject>
-- (void)avatarPosePickerManager:(CNAvatarEditingManager *)arg1 didFinishWithProviderItem:(CNPhotoPickerProviderItem *)arg2;
+- (void)avatarEditingManager:(CNAvatarEditingManager *)arg1 didFinishWithProviderItem:(CNPhotoPickerProviderItem *)arg2;
 @end
 

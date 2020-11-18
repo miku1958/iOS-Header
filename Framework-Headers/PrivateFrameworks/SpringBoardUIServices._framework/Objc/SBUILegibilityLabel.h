@@ -37,7 +37,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) float hyphenationFactor; // @dynamic hyphenationFactor;
 @property (readonly, nonatomic) double lastBaselineOffsetFromBottom;
-@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings;
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (nonatomic) long long lineBreakMode; // @dynamic lineBreakMode;
 @property (nonatomic) double minimumScaleFactor; // @dynamic minimumScaleFactor;
 @property (nonatomic) long long numberOfLines; // @dynamic numberOfLines;

@@ -18,7 +18,14 @@
     MISSING_TYPE *readingListObserver;
     MISSING_TYPE *paywallFactory;
     MISSING_TYPE *previewManager;
+    MISSING_TYPE *contextBuilder;
     MISSING_TYPE *eventManager;
+    MISSING_TYPE *offerManager;
+    MISSING_TYPE *articlePaywallTypeProvider;
+    MISSING_TYPE *articlePurchaseOffersProvider;
+    MISSING_TYPE *loadingIndicatorProvider;
+    MISSING_TYPE *articleLoadingStateMachine;
+    MISSING_TYPE *errorMessageFactory;
 }
 
 @end

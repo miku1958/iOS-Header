@@ -26,6 +26,7 @@
 @property (readonly, copy) _HMDAccountIdentifier *internal; // @synthesize internal=_internal;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
+@property (readonly, copy) NSString *senderCorrelationIdentifier;
 @property (readonly, copy) NSString *shortDescription;
 @property (readonly) Class superclass;
 

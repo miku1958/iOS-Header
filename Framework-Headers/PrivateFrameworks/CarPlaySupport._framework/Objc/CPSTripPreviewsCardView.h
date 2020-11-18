@@ -33,6 +33,7 @@
 @property (strong, nonatomic) CPTripPreviewTextConfiguration *textConfiguration; // @synthesize textConfiguration=_textConfiguration;
 @property (readonly, weak, nonatomic) id<CPSTripInitiating> tripDelegate; // @synthesize tripDelegate=_tripDelegate;
 @property (readonly, copy, nonatomic) NSArray *trips; // @synthesize trips=_trips;
+@property (readonly, nonatomic) BOOL useRightHandDriveFocusGuide;
 
 - (void).cxx_destruct;
 - (id)_linearFocusItems;

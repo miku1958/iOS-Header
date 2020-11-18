@@ -37,16 +37,7 @@
         unsigned int read_displayLanguages:1;
         unsigned int read_feedbackRequestParameters:1;
         unsigned int read_userInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_abClientMetadata:1;
-        unsigned int wrote_analyticMetadata:1;
-        unsigned int wrote_clientCapabilities:1;
-        unsigned int wrote_clientMetadata:1;
-        unsigned int wrote_debugSettings:1;
-        unsigned int wrote_displayLanguages:1;
-        unsigned int wrote_feedbackRequestParameters:1;
-        unsigned int wrote_userInfo:1;
-        unsigned int wrote_feedbackRequestType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -73,16 +64,9 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsFeedbackRequestType:(id)arg1;
-- (void)_addNoFlagsDisplayLanguage:(id)arg1;
 - (void)_initForSubmissionParameters;
-- (void)_readAbClientMetadata;
-- (void)_readAnalyticMetadata;
-- (void)_readClientCapabilities;
-- (void)_readClientMetadata;
-- (void)_readDebugSettings;
-- (void)_readDisplayLanguages;
-- (void)_readFeedbackRequestParameters;
-- (void)_readUserInfo;
+- (void)_setupSubmissionParameters;
+- (void)_sharedInitWithRequestParameters:(id)arg1 userInfo:(id)arg2 traits:(id)arg3;
 - (void)addDisplayLanguage:(id)arg1;
 - (void)clearDisplayLanguages;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -96,14 +80,19 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithFeedbackRequestParameters:(id)arg1 traits:(id)arg2;
 - (id)initWithFeedbackRequestParameters:(id)arg1 userCredentials:(id)arg2 pushToken:(id)arg3 allowContactBackAtEmailAddress:(id)arg4 traits:(id)arg5;
+- (id)initWithFeedbackRequestParameters:(id)arg1 userInfo:(id)arg2 traits:(id)arg3;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isPOIEnrichment;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (unsigned int)requestTypeCode;
 - (Class)responseClass;
-- (void)setPreferredEmailAddress:(id)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

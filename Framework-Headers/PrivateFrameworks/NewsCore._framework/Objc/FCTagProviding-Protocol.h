@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) NSArray *iAdKeywords;
 @property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL isArticleReadCountReportingEnabled;
+@property (readonly, nonatomic) BOOL isAutoDarkModeEnabled;
 @property (readonly, nonatomic) BOOL isBlockedExplicitContent;
 @property (readonly, nonatomic) BOOL isDeprecated;
 @property (readonly, nonatomic) BOOL isExplicitContent;

@@ -13,7 +13,10 @@
     CIContext *_ctx;
     CIImage *_fillImage;
     struct CGRect _lastFillRect;
+    struct CGRect hightlightRect;
 }
+
+@property struct CGRect hightlightRect; // @synthesize hightlightRect;
 
 - (void).cxx_destruct;
 - (struct __CVBuffer *)ResampleCVPixels:(struct __CVBuffer *)arg1 clipToRect:(struct CGRect)arg2 outputSize:(struct CGSize)arg3;

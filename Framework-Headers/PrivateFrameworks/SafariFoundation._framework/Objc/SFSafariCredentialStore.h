@@ -12,7 +12,7 @@
 
 + (void)_approvedAndValidSharedWebCredentialsDatabaseEntriesForAppWithAppID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)_approvedSharedWebCredentialsDatabaseEntriesForAppWithAppID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-+ (id)_bestDomainFromApprovedDomainsForWebCredentials:(id)arg1 appLinks:(id)arg2 continuity:(id)arg3 appID:(id)arg4 allDomains:(id *)arg5;
++ (id)_bestDomainFromApprovedDomainsForWebCredentials:(id)arg1 appLinks:(id)arg2 otherServices:(id)arg3 appID:(id)arg4 allDomains:(id *)arg5;
 + (id)_credentialProviderExtensionHelperProxy;
 + (id)_credentialsMatchingSharedWebCredentialsDatabaseEntries:(id)arg1 websiteURL:(id)arg2 savedPasswords:(id)arg3;
 + (void)_getAllowedActionForAppCredentialsWithAppID:(id)arg1 websiteURL:(id)arg2 user:(id)arg3 password:(id)arg4 shouldAnalyzeExistingCredentials:(BOOL)arg5 completionHandler:(CDUnknownBlockType)arg6;

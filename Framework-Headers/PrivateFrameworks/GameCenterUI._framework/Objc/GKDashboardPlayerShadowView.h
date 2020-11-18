@@ -17,9 +17,10 @@
 @property (readonly, nonatomic) BOOL isUsingPlaceholder; // @dynamic isUsingPlaceholder;
 @property (nonatomic) UICollectionViewCell *parentCell; // @synthesize parentCell=_parentCell;
 @property (readonly, nonatomic) UIView *parentView; // @dynamic parentView;
-@property (nonatomic) GKDashboardPlayerPhotoView *photoView; // @synthesize photoView=_photoView;
+@property (strong, nonatomic) GKDashboardPlayerPhotoView *photoView; // @synthesize photoView=_photoView;
 @property (strong, nonatomic) GKPlayer *player; // @dynamic player;
 
+- (void).cxx_destruct;
 - (void)awakeFromNib;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)invalidatePhoto;

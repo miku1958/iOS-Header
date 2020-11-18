@@ -30,12 +30,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_localityName:1;
         unsigned int read_locationName:1;
         unsigned int read_secondaryLocationName:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_endHeading:1;
-        unsigned int wrote_localityName:1;
-        unsigned int wrote_locationName:1;
-        unsigned int wrote_secondaryLocationName:1;
-        unsigned int wrote_startHeading:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -53,9 +48,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readLocalityName;
-- (void)_readLocationName;
-- (void)_readSecondaryLocationName;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -64,7 +56,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

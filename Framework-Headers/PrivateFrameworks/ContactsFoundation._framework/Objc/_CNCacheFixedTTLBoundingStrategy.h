@@ -14,6 +14,7 @@
 @interface _CNCacheFixedTTLBoundingStrategy : NSObject <CNCacheBoundingStrategy>
 {
     double _ttl;
+    unsigned long long _renewalOptions;
     id<CNTimeProvider> _timeProvider;
     NSMutableDictionary *_timestamps;
 }
@@ -21,6 +22,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long renewalOptions; // @synthesize renewalOptions=_renewalOptions;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<CNTimeProvider> timeProvider; // @synthesize timeProvider=_timeProvider;
 @property (readonly, nonatomic) NSMutableDictionary *timestamps; // @synthesize timestamps=_timestamps;
@@ -29,8 +31,9 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithTTL:(double)arg1;
-- (id)initWithTTL:(double)arg1 timeProvider:(id)arg2;
+- (id)initWithTTL:(double)arg1 renewalOptions:(unsigned long long)arg2 timeProvider:(id)arg3;
 - (BOOL)shouldEvictKey:(id)arg1;
+- (void)updateTimestampForKey:(id)arg1;
 - (void)willAccessKey:(id)arg1;
 - (void)willUpdateCacheBy:(unsigned long long)arg1 forKey:(id)arg2 keysToEvict:(id *)arg3;
 

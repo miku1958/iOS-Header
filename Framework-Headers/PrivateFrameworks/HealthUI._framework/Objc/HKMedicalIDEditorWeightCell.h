@@ -25,7 +25,6 @@
 @property (strong, nonatomic) NSNumber *kilogramValue; // @synthesize kilogramValue=_kilogramValue;
 @property (readonly) Class superclass;
 
-+ (double)defaultKilogramValue;
 - (void).cxx_destruct;
 - (void)_commonInit;
 - (void)_hidePicker;

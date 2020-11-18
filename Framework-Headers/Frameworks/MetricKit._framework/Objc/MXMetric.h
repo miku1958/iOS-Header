@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (id)DictionaryRepresentation;
 - (id)JSONRepresentation;
+- (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

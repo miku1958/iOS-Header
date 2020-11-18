@@ -106,7 +106,6 @@ __attribute__((visibility("hidden")))
 - (BOOL)_updateGuidanceStateWithLocation:(id)arg1 withMatch:(id)arg2 withNavigatorState:(int)arg3 stepChanged:(BOOL *)arg4;
 - (void)_updatePrepareForNextStep;
 - (id)_updateValidateRouteMatchForLocation:(id)arg1;
-- (void)addInjectedEvent:(id)arg1;
 - (void)dealloc;
 - (id)initWithNavigationSession:(id)arg1 proceedToRoute:(BOOL)arg2 allowMidRouteStart:(BOOL)arg3;
 - (CDStruct_c3b9c2ee)maneuverStepCoordinate;

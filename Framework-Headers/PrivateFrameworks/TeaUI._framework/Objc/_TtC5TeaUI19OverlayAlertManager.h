@@ -13,7 +13,7 @@
     MISSING_TYPE *renderer;
     MISSING_TYPE *layoutAttributesFactory;
     MISSING_TYPE *accessibilityAnnouncer;
-    MISSING_TYPE *viewController;
+    MISSING_TYPE *window;
     MISSING_TYPE *alertView;
 }
 

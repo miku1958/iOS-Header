@@ -39,17 +39,7 @@
         unsigned int read_unknownFields:1;
         unsigned int read_announcements:1;
         unsigned int read_timeGaps:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_announcements:1;
-        unsigned int wrote_timeGaps:1;
-        unsigned int wrote_alignment:1;
-        unsigned int wrote_endDesiredTime:1;
-        unsigned int wrote_exclusiveSetIdentifier:1;
-        unsigned int wrote_numChainedVariants:1;
-        unsigned int wrote_priority:1;
-        unsigned int wrote_repetitionInterval:1;
-        unsigned int wrote_startDesiredTime:1;
-        unsigned int wrote_tapBeforeAnnouncement:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -78,10 +68,6 @@
 + (Class)timeGapType;
 - (void).cxx_destruct;
 - (int)StringAsAlignment:(id)arg1;
-- (void)_addNoFlagsAnnouncement:(id)arg1;
-- (void)_addNoFlagsTimeGap:(id)arg1;
-- (void)_readAnnouncements;
-- (void)_readTimeGaps;
 - (void)addAnnouncement:(id)arg1;
 - (void)addTimeGap:(id)arg1;
 - (id)alignmentAsString:(int)arg1;
@@ -97,7 +83,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

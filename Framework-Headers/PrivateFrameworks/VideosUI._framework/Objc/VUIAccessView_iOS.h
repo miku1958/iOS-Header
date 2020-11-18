@@ -22,9 +22,7 @@ __attribute__((visibility("hidden")))
     UIStackView *_logoStack;
     UIStackView *_bottomStack;
     UIButton *_allowButton;
-    UIButton *_disallowButton;
     UIButton *_nackButton;
-    UILabel *_privacyLabel;
     UIButton *_seeAllButton;
     _TVCarouselView *_carouselView;
     BOOL _didLayout;
@@ -46,7 +44,6 @@ __attribute__((visibility("hidden")))
 - (id)bodyScroll;
 - (id)carouselView:(id)arg1 cellForItemAtIndex:(unsigned long long)arg2;
 - (void)dealloc;
-- (id)disallowButton;
 - (id)initWithApps:(id)arg1;
 - (void)layoutSubviews;
 - (id)nackButton;
@@ -54,7 +51,6 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)seeAllButton;
 - (void)setBody:(id)arg1;
-- (void)setFooter:(id)arg1;
 - (void)setTitle:(id)arg1;
 - (void)showNackScreen;
 

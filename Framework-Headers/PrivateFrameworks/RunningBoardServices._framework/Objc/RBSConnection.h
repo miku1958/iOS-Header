@@ -9,7 +9,7 @@
 #import <RunningBoardServices/RBSClientProtocol-Protocol.h>
 #import <RunningBoardServices/RBSServiceLocalProtocol-Protocol.h>
 
-@class NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, RBSAssertionIdentifier, RBSProcessHandle, RBSProcessIdentity;
+@class NSHashTable, NSMapTable, NSMutableDictionary, NSMutableSet, NSSet, RBSProcessHandle, RBSProcessIdentity;
 @protocol OS_dispatch_queue, OS_xpc_object, RBSConnectionServiceDelegate;
 
 @interface RBSConnection : NSObject <RBSClientProtocol, RBSServiceLocalProtocol>
@@ -27,11 +27,11 @@
     NSMapTable *_acquiredAssertionsByIdentifier;
     NSHashTable *_processMonitors;
     NSMutableDictionary *_stateByIdentity;
+    NSSet *_preventLaunchPredicates;
     NSMutableSet *_inheritances;
-    NSHashTable *_expirationWarningAssertions;
+    NSHashTable *_expirationWarningClients;
     NSMutableDictionary *_deathHandlers;
     unsigned long long _state;
-    RBSAssertionIdentifier *_handshakeIdentifier;
 }
 
 @property (readonly, nonatomic) RBSProcessHandle *handle;
@@ -39,24 +39,16 @@
 
 + (id)connectionQueue;
 + (id)handshakeQueue;
++ (void)setInDaemon;
 + (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_connection;
-- (void)_disconnect;
-- (void)_handleDaemonDidStart;
-- (void)_handleMessage:(id)arg1;
-- (void)_handshake;
-- (id)_handshakeDescriptor;
-- (id)_init;
-- (BOOL)_invalidateAssertionIdentifier:(id)arg1 error:(out id *)arg2;
-- (BOOL)_isPlugIn;
-- (id)_lock_connect;
-- (void)_subscribeToProcessDeath:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)acquireAssertion:(id)arg1 error:(out id *)arg2;
 - (id)assertionDescriptorsByPidWithFlattenedAttributes:(BOOL)arg1 error:(out id *)arg2;
 - (oneway void)async_assertionWillInvalidate:(id)arg1;
 - (oneway void)async_assertionsDidInvalidate:(id)arg1 withError:(id)arg2;
 - (oneway void)async_didChangeInheritances:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)async_observedPreventLaunchPredicatesUpdate:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (oneway void)async_observedProcessExitEvents:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)async_observedProcessStatesDidChange:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (oneway void)async_processDidExit:(id)arg1 withContext:(id)arg2;
 - (oneway void)async_willExpireAssertionsSoon;
@@ -77,7 +69,9 @@
 - (id)lastExitContextForInstance:(id)arg1 error:(out id *)arg2;
 - (id)limitationsForInstance:(id)arg1 error:(out id *)arg2;
 - (id)observeProcessAssertionsExpirationWarningWithBlock:(CDUnknownBlockType)arg1;
-- (void)plugInHandshakeComplete;
+- (id)portForIdentifier:(id)arg1;
+- (id)preventLaunchPredicatesWithError:(out id *)arg1;
+- (id)processName:(id)arg1;
 - (void)registerServiceDelegate:(id)arg1;
 - (void)reset;
 - (id)statesForPredicate:(id)arg1 withDescriptor:(id)arg2 error:(out id *)arg3;

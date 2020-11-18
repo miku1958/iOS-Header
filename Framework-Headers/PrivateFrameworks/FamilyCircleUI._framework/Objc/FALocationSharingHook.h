@@ -8,7 +8,7 @@
 
 #import <FamilyCircleUI/AAUIServerHook-Protocol.h>
 
-@class AAUIServerHookResponse, NSString, UIViewController;
+@class AAUIServerHookResponse, NSString, RUIObjectModel, UIViewController;
 @protocol AAUIServerHookDelegate;
 
 @interface FALocationSharingHook : NSObject <AAUIServerHook>
@@ -21,6 +21,7 @@
 @property (weak, nonatomic) id<AAUIServerHookDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) RUIObjectModel *objectModel;
 @property (strong, nonatomic) AAUIServerHookResponse *serverHookResponse;
 @property (readonly) Class superclass;
 

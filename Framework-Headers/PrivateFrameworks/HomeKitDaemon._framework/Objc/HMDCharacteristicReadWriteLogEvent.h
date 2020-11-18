@@ -7,10 +7,11 @@
 #import <HomeKitDaemon/HMDLogEvent.h>
 
 #import <HomeKitDaemon/HMDAWDLogEvent-Protocol.h>
+#import <HomeKitDaemon/HMDCoreDuetLogEvent-Protocol.h>
 
 @class HAPAccessory, HMDAccessory, NSArray, NSString, NSUUID;
 
-@interface HMDCharacteristicReadWriteLogEvent : HMDLogEvent <HMDAWDLogEvent>
+@interface HMDCharacteristicReadWriteLogEvent : HMDLogEvent <HMDCoreDuetLogEvent, HMDAWDLogEvent>
 {
     BOOL _isWriteOperation;
     BOOL _isTimedWrite;
@@ -19,21 +20,33 @@
     BOOL _isResidentAvailable;
     BOOL _isRemoteAccessAllowed;
     BOOL _isRemotelyReachable;
+    unsigned int _numAccessoriesInHome;
+    unsigned int _numNonEmptyScenesInHome;
     NSArray *_characteristicsToRead;
     HAPAccessory *_hapAccessory;
     HMDAccessory *_hmdAccessory;
+    long long _linkType;
     NSUUID *_transactionId;
     unsigned long long _triggerSource;
     NSString *_primaryServiceType;
     unsigned long long _consecutiveFailureCount;
     double _timeIntervalSinceFirstFailure;
+    NSString *_bundleId;
+    NSArray *_writtenValues;
+    NSString *_transportProtocolVersion;
 }
 
+@property (readonly, copy, nonatomic) NSString *bundleId; // @synthesize bundleId=_bundleId;
 @property (readonly, nonatomic) NSArray *characteristicsToRead; // @synthesize characteristicsToRead=_characteristicsToRead;
 @property (nonatomic) unsigned long long consecutiveFailureCount; // @synthesize consecutiveFailureCount=_consecutiveFailureCount;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long duetEventType;
+@property (readonly, copy) NSArray *eventDataToLog;
 @property (readonly, weak, nonatomic) HAPAccessory *hapAccessory; // @synthesize hapAccessory=_hapAccessory;
+@property (readonly) unsigned long long hash;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) HMDAccessory *hmdAccessory; // @synthesize hmdAccessory=_hmdAccessory;
 @property (readonly, nonatomic) BOOL isCached; // @synthesize isCached=_isCached;
@@ -43,21 +56,29 @@
 @property (readonly, nonatomic) BOOL isResidentAvailable; // @synthesize isResidentAvailable=_isResidentAvailable;
 @property (readonly, nonatomic) BOOL isTimedWrite; // @synthesize isTimedWrite=_isTimedWrite;
 @property (readonly, nonatomic) BOOL isWriteOperation; // @synthesize isWriteOperation=_isWriteOperation;
+@property (readonly, nonatomic) long long linkType; // @synthesize linkType=_linkType;
+@property (readonly, nonatomic) unsigned int numAccessoriesInHome; // @synthesize numAccessoriesInHome=_numAccessoriesInHome;
+@property (readonly, nonatomic) unsigned int numNonEmptyScenesInHome; // @synthesize numNonEmptyScenesInHome=_numNonEmptyScenesInHome;
 @property (readonly, nonatomic) NSString *primaryServiceType; // @synthesize primaryServiceType=_primaryServiceType;
+@property (readonly) Class superclass;
 @property (readonly) Class superclass;
 @property (nonatomic) double timeIntervalSinceFirstFailure; // @synthesize timeIntervalSinceFirstFailure=_timeIntervalSinceFirstFailure;
 @property (readonly, nonatomic) NSUUID *transactionId; // @synthesize transactionId=_transactionId;
+@property (readonly, copy, nonatomic) NSString *transportProtocolVersion; // @synthesize transportProtocolVersion=_transportProtocolVersion;
 @property (readonly, nonatomic) unsigned long long triggerSource; // @synthesize triggerSource=_triggerSource;
+@property (readonly, copy, nonatomic) NSArray *writtenValues; // @synthesize writtenValues=_writtenValues;
 
-+ (id)characteristicReadLogEvent:(id)arg1 hmdAccessory:(id)arg2 hapAccessory:(id)arg3 source:(unsigned long long)arg4 isLocal:(BOOL)arg5 transactionId:(id)arg6 isCached:(BOOL)arg7;
-+ (id)characteristicWriteLogEvent:(id)arg1 hmdAccessory:(id)arg2 hapAccessory:(id)arg3 source:(unsigned long long)arg4 isTimedWrite:(BOOL)arg5 isLocal:(BOOL)arg6 transactionId:(id)arg7;
++ (id)characteristicReadLogEvent:(id)arg1 hmdAccessory:(id)arg2 hapAccessory:(id)arg3 source:(unsigned long long)arg4 isLocal:(BOOL)arg5 transactionId:(id)arg6 isCached:(BOOL)arg7 bundleId:(id)arg8;
++ (id)characteristicWriteLogEvent:(id)arg1 hmdAccessory:(id)arg2 hapAccessory:(id)arg3 source:(unsigned long long)arg4 isTimedWrite:(BOOL)arg5 isLocal:(BOOL)arg6 transactionId:(id)arg7 bundleId:(id)arg8 writtenValues:(id)arg9;
 + (id)uuid;
 - (void).cxx_destruct;
 - (unsigned int)AWDMessageType;
-- (id)initReadWriteLogEvent:(id)arg1 hmdAccessory:(id)arg2 hapAccessory:(id)arg3 source:(unsigned long long)arg4 isWriteOperation:(BOOL)arg5 isTimedWrite:(BOOL)arg6 isLocal:(BOOL)arg7 transactionId:(id)arg8 isCached:(BOOL)arg9;
+- (id)initReadWriteLogEvent:(id)arg1 hmdAccessory:(id)arg2 hapAccessory:(id)arg3 source:(unsigned long long)arg4 isWriteOperation:(BOOL)arg5 isTimedWrite:(BOOL)arg6 isLocal:(BOOL)arg7 transactionId:(id)arg8 isCached:(BOOL)arg9 bundleId:(id)arg10 writtenValues:(id)arg11;
+- (id)metadataForCharacteristicAtIndex:(unsigned long long)arg1;
 - (id)metricForAWD;
 - (void)setLocal:(BOOL)arg1;
 - (void)submitAtDate:(id)arg1 error:(id)arg2;
+- (id)valueForCharacteristicAtIndex:(unsigned long long)arg1;
 
 @end
 

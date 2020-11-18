@@ -26,7 +26,6 @@ __attribute__((visibility("hidden")))
 - (void)_placeCounterRotationViewWithView:(id)arg1 inWindow:(id)arg2 fromOrientation:(long long)arg3 toOrientation:(long long)arg4 force:(BOOL)arg5;
 - (void)_removeCounterRotation;
 - (void)_setPresentedViewController:(id)arg1;
-- (BOOL)_shouldPresentedViewControllerControlStatusBarAppearance;
 - (BOOL)_shouldRespectDefinesPresentationContext;
 - (void)dealloc;
 - (void)dismissalTransitionDidEnd:(BOOL)arg1;

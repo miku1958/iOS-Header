@@ -8,7 +8,7 @@
 
 #import <ContactsAutocompleteUI/CNComposeRecipientTableViewCellDelegate-Protocol.h>
 
-@class NSArray, NSMutableArray, NSMutableSet, NSString, _CNAutocompleteResultsTableViewModel;
+@class CNAvatarViewControllerSettings, NSArray, NSMutableArray, NSMutableSet, NSString, _CNAutocompleteResultsTableViewModel;
 @protocol CNAutocompleteResultsTableViewControllerDelegate;
 
 @interface CNAutocompleteResultsTableViewController : UITableViewController <CNComposeRecipientTableViewCellDelegate>
@@ -21,11 +21,12 @@
     BOOL _deferTableViewUpdates;
     BOOL _inDisambiguationMode;
     BOOL _hasPerformedRecipientExpansion;
-    BOOL _isDeviceLocked;
+    BOOL _supportsInfoButton;
     id<CNAutocompleteResultsTableViewControllerDelegate> _delegate;
     NSArray *_recipients;
     double _trailingButtonMidlineInsetFromLayoutMargin;
     NSMutableSet *_expandedIdentifiers;
+    CNAvatarViewControllerSettings *_sharedAvatarViewControllerSettings;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -36,11 +37,13 @@
 @property (nonatomic) BOOL hasPerformedRecipientExpansion; // @synthesize hasPerformedRecipientExpansion=_hasPerformedRecipientExpansion;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL inDisambiguationMode; // @synthesize inDisambiguationMode=_inDisambiguationMode;
-@property (nonatomic) BOOL isDeviceLocked; // @synthesize isDeviceLocked=_isDeviceLocked;
 @property (copy, nonatomic) NSArray *recipients; // @synthesize recipients=_recipients;
+@property (strong, nonatomic) CNAvatarViewControllerSettings *sharedAvatarViewControllerSettings; // @synthesize sharedAvatarViewControllerSettings=_sharedAvatarViewControllerSettings;
 @property (readonly) Class superclass;
+@property (nonatomic) BOOL supportsInfoButton; // @synthesize supportsInfoButton=_supportsInfoButton;
 @property (nonatomic) double trailingButtonMidlineInsetFromLayoutMargin; // @synthesize trailingButtonMidlineInsetFromLayoutMargin=_trailingButtonMidlineInsetFromLayoutMargin;
 
++ (BOOL)avatarsAreHidden;
 + (void)dispatchMainIfNecessary:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
 - (id)_combinedResults;
@@ -52,9 +55,14 @@
 - (double)_tableViewHeaderHeight;
 - (id)_unifiedRecipientForRecipientAtIndexPath:(id)arg1;
 - (void)_updateTableViewModelAnimated:(BOOL)arg1;
+- (BOOL)attemptDisambiguationToggleAtSelectedRowIsExpand:(BOOL)arg1;
+- (BOOL)collapseSelectedRecipient;
 - (BOOL)confirmSelectedRecipient;
+- (void)didHover:(id)arg1;
 - (void)didTapDisambiguationChevronForCell:(id)arg1;
 - (void)didTapInfoButtonForCell:(id)arg1;
+- (void)didToggleDisambiguationAtIndexPath:(id)arg1;
+- (BOOL)expandSelectedRecipient;
 - (id)initWithStyle:(long long)arg1;
 - (void)invalidateAddressTintColors;
 - (void)invalidatePreferredRecipients;
@@ -66,6 +74,7 @@
 - (BOOL)recipientIsExpandedParent:(id)arg1;
 - (void)selectNextSearchResult;
 - (void)selectPreviousSearchResult;
+- (void)selectRowAtIndexPath:(id)arg1;
 - (BOOL)shouldShowCheckmarkForRecipient:(id)arg1 preferredRecipient:(id)arg2;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
@@ -82,6 +91,7 @@
 - (BOOL)updatePreferredRecipientForCell:(id)arg1 isInvalidation:(BOOL)arg2;
 - (void)updateRecipients:(id)arg1 disambiguatingRecipient:(id)arg2;
 - (void)viewLayoutMarginsDidChange;
+- (BOOL)willProvideOverrideImageDataForCell:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 
 @end
 

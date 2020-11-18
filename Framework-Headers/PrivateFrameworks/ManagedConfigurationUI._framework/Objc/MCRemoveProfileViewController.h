@@ -6,23 +6,15 @@
 
 #import <ManagedConfigurationUI/MCInstallProfileViewController.h>
 
-#import <ManagedConfigurationUI/MCInteractionDelegate-Protocol.h>
+#import <ManagedConfigurationUI/DevicePINControllerDelegate-Protocol.h>
 #import <ManagedConfigurationUI/MCProfileViewControllerDelegate-Protocol.h>
-#import <ManagedConfigurationUI/PSStateRestoration-Protocol.h>
-#import <ManagedConfigurationUI/UIActionSheetDelegate-Protocol.h>
-#import <ManagedConfigurationUI/UITextFieldDelegate-Protocol.h>
 
 @class MCProfile, NSString, UITextField;
 
 __attribute__((visibility("hidden")))
-@interface MCRemoveProfileViewController : MCInstallProfileViewController <MCInteractionDelegate, MCProfileViewControllerDelegate, PSStateRestoration, UIActionSheetDelegate, UITextFieldDelegate>
+@interface MCRemoveProfileViewController : MCInstallProfileViewController <MCProfileViewControllerDelegate, DevicePINControllerDelegate>
 {
     BOOL _profileWantsToReEnroll;
-    BOOL _actionButtonHidden;
-    struct {
-        unsigned int installedThisLaunch:1;
-        unsigned int profileSuggestsReboot:1;
-    } _configurationFlags;
     MCProfile *_updatingProfile;
     UITextField *_passwordField;
 }
@@ -31,19 +23,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UITextField *passwordField; // @synthesize passwordField=_passwordField;
+@property (nonatomic) BOOL profileWantsToReEnroll; // @synthesize profileWantsToReEnroll=_profileWantsToReEnroll;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) MCProfile *updatingProfile; // @synthesize updatingProfile=_updatingProfile;
 
 - (void).cxx_destruct;
-- (void)_clearCachedTableCells;
-- (BOOL)_isProfileInstalled;
+- (void)_didFinishEnteringPINWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_leaveRemoteManagementAndErase;
 - (id)_mdmProfileRemovalAlertBody;
 - (void)_performReEnroll;
 - (void)_performReEnrollAfterPINVerification;
-- (void)_profileListChanged:(id)arg1;
-- (void)_profileRemovalDidFinish;
-- (void)_removeProfile;
 - (void)_resetWithMode:(int)arg1;
 - (void)_showEraseDeviceAlert;
 - (void)_showLeaveRemoteManagementAlert;
@@ -51,13 +40,13 @@ __attribute__((visibility("hidden")))
 - (void)_showRemovalWarningAfterPINVerification;
 - (void)_showRemovalWarningAlert;
 - (void)_showWrongRemovalPasswordAlert;
-- (BOOL)_signatureForProfile:(id)arg1 matchesProfileB:(id)arg2;
-- (void)_updateProfile;
 - (void)didAcceptEnteredPIN:(id)arg1;
 - (void)didCancelEnteringPIN;
 - (id)initWithProfile:(id)arg1;
+- (void)profileRemovalDidFinish;
 - (void)profileViewControllerDidSelectRemoveProfile:(id)arg1;
 - (void)profileViewControllerDidSelectUpdateProfile:(id)arg1;
+- (BOOL)profileViewControllerIsProfileInstalled;
 - (void)setInstallState:(int)arg1 animated:(BOOL)arg2;
 - (void)updateBarButtonItemsForProfileInstallationState:(int)arg1 animated:(BOOL)arg2;
 - (void)updateTitleForProfileInstallationState:(int)arg1;

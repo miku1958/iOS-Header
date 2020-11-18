@@ -21,10 +21,12 @@
 @property (readonly, nonatomic, getter=isCellConnection) BOOL cellConnection;
 @property (readonly, nonatomic, getter=isNetworkConstrained) BOOL networkConstrained;
 @property (readonly, nonatomic, getter=isNetworkReachable) BOOL networkReachable;
+@property (readonly, nonatomic, getter=isWiFiConnection) BOOL wifiConnection;
 
 + (id)sharedNetworkObserver;
 - (void).cxx_destruct;
 - (void)_initializeNetworkMonitor;
+- (BOOL)_isConnectionType:(int)arg1;
 - (void)_networkPathUpdated:(id)arg1;
 - (void)addNetworkReachableObserver:(id)arg1 selector:(SEL)arg2;
 - (void)dealloc;

@@ -82,9 +82,12 @@
 - (BOOL)_consolidateKnownPlaceTypesWithError:(id *)arg1;
 - (BOOL)_deferTrainingDueToAvailability;
 - (BOOL)_deferTrainingDueToRecentResetSync;
+- (BOOL)_deferTrainingLOIsDueToCloudStoreNotChangeSinceLastTrainingDate:(id)arg1;
 - (id)_enabledMapItemProviders;
 - (void)_fetchLatestVisitWithHandler:(CDUnknownBlockType)arg1;
 - (id)_filterVisits:(id)arg1 lastLearnedVisit:(id)arg2;
+- (void)_harvestVisits:(id)arg1 places:(id)arg2;
+- (BOOL)_isUpdateLearnedPlaceWithISO3166CountryCodeAndSubdivisionCodeRequired:(id)arg1;
 - (id)_lastVisitWithError:(id *)arg1;
 - (void)_logCloudStoreWithReason:(id)arg1;
 - (void)_logDatabasesWithReason:(id)arg1;
@@ -92,6 +95,7 @@
 - (id)_mapItemProviderForClass:(Class)arg1 error:(id *)arg2;
 - (void)_onContactsManagerNotification:(id)arg1;
 - (void)_onFingerprintManagerNotification:(id)arg1;
+- (void)_onMapsSupportManagerNotification:(id)arg1;
 - (void)_onVisitManagerNotification:(id)arg1;
 - (id)_performPerDeviceReconiliationWithError:(id *)arg1;
 - (id)_performPerVisitReconciliationWithError:(id *)arg1;
@@ -117,10 +121,14 @@
 - (BOOL)_trainVisitsFromDate:(id)arg1 toDate:(id)arg2 forLastLearnedVisit:(id)arg3 error:(id *)arg4;
 - (void)_trainWithFromDate:(id)arg1 ToDate:(id)arg2 forLastLearnedVisit:(id)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)_trainWithHandler:(CDUnknownBlockType)arg1;
+- (id)_transitionsForVisits:(id)arg1 lastLearnedVisit:(id)arg2 creationDate:(id)arg3;
 - (void)_unregisterForNotifications;
 - (id)_updateLearnedPlaceWithISO3166CountryCodeAndSubdivisionCode:(id)arg1;
 - (void)_updateMonitorFingerprintsWithVisit:(id)arg1;
+- (void)_updateUnlabeledVisitsWithPlaceInformation:(id)arg1;
 - (id)_visitsFromDate:(id)arg1 toDate:(id)arg2 error:(id *)arg3;
+- (id)calculateMetricsToReplayOldHomeWorkInferenceAlgoWithStartDate:(id)arg1 endDate:(id)arg2 homeMapItem:(id)arg3 workMapItem:(id)arg4 locationsOfOthers:(id *)arg5 error:(id *)arg6;
+- (void)calculateNewMetricsAndSubmitAlongWithTheOldMetrics:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 homeMapItem:(id)arg4 workMapItem:(id)arg5 distanceThresholdArray:(id)arg6 locationsOfOthers:(id)arg7;
 - (void)classifyPlaceTypesWithHandler:(CDUnknownBlockType)arg1;
 - (id)createRelabeler;
 - (id)createRelabelerPersisterWithError:(id *)arg1;
@@ -133,6 +141,7 @@
 - (id)initWithAccountManager:(id)arg1 algorithmMetricCalculator:(id)arg2 contactsManager:(id)arg3 defaultsManager:(id)arg4 diagnostics:(id)arg5 distanceCalculator:(id)arg6 eventManager:(id)arg7 fingerprintManager:(id)arg8 learnedLocationStore:(id)arg9 locationManager:(id)arg10 locationStore:(id)arg11 mapServiceManager:(id)arg12 mapsSupportManager:(id)arg13 metricManager:(id)arg14 motionActivityManager:(id)arg15 platform:(id)arg16 portraitManager:(id)arg17 reconcilerPerVisit:(id)arg18 reconcilerPerDevice:(id)arg19 settledStateTransitionStore:(id)arg20 visitManager:(id)arg21 xpcActivityManager:(id)arg22;
 - (void)onContactsManagerNotification:(id)arg1;
 - (void)onFingerprintManagerNotification:(id)arg1;
+- (void)onMapsSupportManagerNotification:(id)arg1;
 - (void)onVisitManagerNotification:(id)arg1;
 - (void)performPurgeOfType:(long long)arg1 referenceDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)queryMapItemProvider:(id)arg1 options:(id)arg2 handler:(CDUnknownBlockType)arg3;
@@ -141,6 +150,7 @@
 - (void)requestTrainLocationsOfInterestModelWithHandler:(CDUnknownBlockType)arg1;
 - (void)setup;
 - (void)shutdown;
+- (void)submitVisitMetrics;
 - (void)submitVisitSettledStateMetricsForVisits:(id)arg1 transitions:(id)arg2;
 - (void)trainLocationsOfInterestModelWithHandler:(CDUnknownBlockType)arg1;
 - (void)trainWithHandler:(CDUnknownBlockType)arg1;

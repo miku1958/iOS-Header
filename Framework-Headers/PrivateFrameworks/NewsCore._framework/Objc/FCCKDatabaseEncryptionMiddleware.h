@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsCore/FCCKDatabaseOperationMiddleware-Protocol.h>
 #import <NewsCore/FCCKDatabaseRecordMiddleware-Protocol.h>
 
 @class FCCKPrivateDatabaseSchema, NSString;
 @protocol FCCKRecordNameCipher;
 
-@interface FCCKDatabaseEncryptionMiddleware : NSObject <FCCKDatabaseRecordMiddleware>
+@interface FCCKDatabaseEncryptionMiddleware : NSObject <FCCKDatabaseRecordMiddleware, FCCKDatabaseOperationMiddleware>
 {
     FCCKPrivateDatabaseSchema *_encryptionSchema;
     id<FCCKRecordNameCipher> _recordNameCipher;
@@ -41,6 +42,7 @@
 - (id)clientToServerRecordType:(id)arg1 withRecordID:(id)arg2 inDatabase:(id)arg3 error:(id *)arg4;
 - (id)clientToServerRecordZone:(id)arg1 inDatabase:(id)arg2 error:(id *)arg3;
 - (id)clientToServerRecordZoneID:(id)arg1 inDatabase:(id)arg2 error:(id *)arg3;
+- (long long)database:(id)arg1 willEnqueueOperation:(id)arg2 error:(id *)arg3;
 - (id)initWithEncryptionSchema:(id)arg1;
 - (id)initWithEncryptionSchema:(id)arg1 recordNameCipher:(id)arg2;
 - (id)serverToClientRecord:(id)arg1 inDatabase:(id)arg2 error:(id *)arg3;

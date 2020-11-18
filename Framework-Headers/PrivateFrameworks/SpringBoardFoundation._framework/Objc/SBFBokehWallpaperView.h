@@ -15,13 +15,13 @@
     NSMutableArray *_circleArray;
     NSDictionary *_options;
     long long _circleFillColor;
-    unsigned long long _blurFrameCount;
     UIImage *_cachedSnapshotImage;
     struct __IOSurface *_snapshotBuffer;
     UIImage *_cachedFolderBlurImage;
     BOOL _isOnLockScreen;
     BOOL _contentIsVisible;
     BOOL _hasSingleVariant;
+    BOOL _blursNeedInvalidation;
 }
 
 @property (readonly, nonatomic) CAGradientLayer *layer;
@@ -61,7 +61,6 @@
 - (void)_updateCircleFillColor;
 - (void)_updateGradientAndFillColor;
 - (void)_updateOrientationIfNeeded;
-- (void)_updateSnapshotImageIfNeeded;
 - (void)_updateVariantStatus;
 - (void)_wallpaperDidChange:(id)arg1;
 - (id)cacheGroup;

@@ -7,19 +7,25 @@
 #import <ITMLKit/IKJSObject.h>
 
 #import <ITMLKit/IKJSKeyboard-Protocol.h>
+#import <ITMLKit/_IKJSKeyboard-Protocol.h>
+#import <ITMLKit/_IKJSKeyboardProxy-Protocol.h>
 
-@class NSString;
+@class JSValue, NSString;
 @protocol IKAppKeyboardBridge;
 
-@interface IKJSKeyboard : IKJSObject <IKJSKeyboard>
+@interface IKJSKeyboard : IKJSObject <IKJSKeyboard, _IKJSKeyboardProxy, _IKJSKeyboard>
 {
     id<IKAppKeyboardBridge> _appBridge;
 }
 
 @property (strong, nonatomic) id<IKAppKeyboardBridge> appBridge; // @synthesize appBridge=_appBridge;
+@property (copy, nonatomic) JSValue *hints;
+@property (copy, nonatomic) JSValue *suggestions;
 @property (copy, nonatomic) NSString *text;
 
 - (void).cxx_destruct;
+- (id)asPrivateIKJSKeyboard;
+- (void)jsDidSelectHint:(id)arg1;
 - (void)jsTextDidChange;
 
 @end

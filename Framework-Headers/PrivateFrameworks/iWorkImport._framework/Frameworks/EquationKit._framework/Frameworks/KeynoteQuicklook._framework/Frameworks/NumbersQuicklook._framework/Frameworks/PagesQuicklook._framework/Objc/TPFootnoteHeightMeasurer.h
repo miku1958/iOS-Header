@@ -6,19 +6,22 @@
 
 #import <objc/NSObject.h>
 
+#import <PagesQuicklook/TSDCanvasDelegate-Protocol.h>
 #import <PagesQuicklook/TSWPFootnoteHeightMeasurer-Protocol.h>
 
-@class NSString, TPFootnoteContainerLayout, TSDLayoutController, TSULRUCache;
-@protocol TPFootnotePageDelegate;
+@class NSString, TPDocumentRoot, TPFootnoteContainerLayout, TSDCanvas, TSULRUCache;
+@protocol TPFootnotePageDelegate, TSDCanvasProxyDelegate;
 
-@interface TPFootnoteHeightMeasurer : NSObject <TSWPFootnoteHeightMeasurer>
+@interface TPFootnoteHeightMeasurer : NSObject <TSDCanvasDelegate, TSWPFootnoteHeightMeasurer>
 {
     TPFootnoteContainerLayout *_footnoteContainerLayout;
-    TSDLayoutController *_layoutController;
+    TPDocumentRoot *_documentRoot;
+    TSDCanvas *_canvas;
     TSULRUCache *_footnoteLayoutCache;
     id<TPFootnotePageDelegate> _pageDelegate;
 }
 
+@property (readonly, nonatomic) id<TSDCanvasProxyDelegate> canvasProxyDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -27,6 +30,7 @@
 - (void).cxx_destruct;
 - (void)addFootnoteReferenceStorage:(id)arg1;
 - (BOOL)canHaveFootnotesFromPreviousTarget:(id)arg1;
+- (id)documentRoot;
 - (double)footnoteBlockHeight;
 - (double)footnoteBlockHeightForTarget:(id)arg1;
 - (BOOL)footnoteContainerFitsForTarget:(id)arg1;
@@ -38,6 +42,7 @@
 - (void)removeFootnoteReferenceStorage:(id)arg1;
 - (void)setContainerLineWidth:(double)arg1;
 - (void)setFootnoteSpacing:(long long)arg1;
+- (BOOL)shouldShowInstructionalTextForLayout:(id)arg1;
 - (void)tearDown;
 
 @end

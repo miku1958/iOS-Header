@@ -6,12 +6,12 @@
 
 #import <Photos/NSObject-Protocol.h>
 
-@class PHCompositeMediaResult, PHMediaRequest;
-@protocol PLResourceIdentity;
+@class NSProgress, PHCompositeMediaResult, PHMediaRequest;
 
 @protocol PHMediaRequestDelegate <NSObject>
 - (void)mediaRequest:(PHMediaRequest *)arg1 didFindLocallyAvailableResult:(BOOL)arg2 isDegraded:(BOOL)arg3;
 - (void)mediaRequest:(PHMediaRequest *)arg1 didFinishWithResult:(PHCompositeMediaResult *)arg2;
-- (BOOL)mediaRequest:(PHMediaRequest *)arg1 didStartLocalAvailabilityChangeRequestForResource:(id<PLResourceIdentity>)arg2;
+- (void)mediaRequest:(PHMediaRequest *)arg1 didReportProgress:(NSProgress *)arg2;
+- (void)mediaRequest:(PHMediaRequest *)arg1 didRequestRetryWithHintsAllowed:(BOOL)arg2;
 @end
 

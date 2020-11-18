@@ -13,6 +13,7 @@
 @interface ICIAMMessageRule : PBCodable <NSCopying>
 {
     NSString *_identifier;
+    NSString *_requiredApplicationContextBundleIdentifier;
     int _ruleOperator;
     NSMutableArray *_subrules;
     ICIAMTriggerCondition *_triggerCondition;
@@ -25,11 +26,13 @@
 }
 
 @property (readonly, nonatomic) BOOL hasIdentifier;
+@property (readonly, nonatomic) BOOL hasRequiredApplicationContextBundleIdentifier;
 @property (nonatomic) BOOL hasRuleOperator;
 @property (readonly, nonatomic) BOOL hasTriggerCondition;
 @property (readonly, nonatomic) BOOL hasTriggerEventName;
 @property (nonatomic) BOOL hasType;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) NSString *requiredApplicationContextBundleIdentifier; // @synthesize requiredApplicationContextBundleIdentifier=_requiredApplicationContextBundleIdentifier;
 @property (nonatomic) int ruleOperator; // @synthesize ruleOperator=_ruleOperator;
 @property (strong, nonatomic) NSMutableArray *subrules; // @synthesize subrules=_subrules;
 @property (strong, nonatomic) ICIAMTriggerCondition *triggerCondition; // @synthesize triggerCondition=_triggerCondition;

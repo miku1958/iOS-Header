@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (double)_contentViewHeight;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;

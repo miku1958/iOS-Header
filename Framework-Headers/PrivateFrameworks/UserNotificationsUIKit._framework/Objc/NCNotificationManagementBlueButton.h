@@ -6,11 +6,11 @@
 
 #import <UIKit/UIButton.h>
 
-#import <UserNotificationsUIKit/_UICursorInteractionDelegate-Protocol.h>
+#import <UserNotificationsUIKit/UIPointerInteractionDelegate-Protocol.h>
 
 @class NSString, UIColor;
 
-@interface NCNotificationManagementBlueButton : UIButton <_UICursorInteractionDelegate>
+@interface NCNotificationManagementBlueButton : UIButton <UIPointerInteractionDelegate>
 {
     UIColor *_backgroundColor;
 }
@@ -23,9 +23,9 @@
 + (id)buttonWithTitle:(id)arg1;
 - (void).cxx_destruct;
 - (id)backgroundColor;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)setBackgroundColor:(id)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 

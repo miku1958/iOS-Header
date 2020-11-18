@@ -6,21 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class CPAnalyticsSystemProperties, NSDate, NSDictionary, NSString;
+#import <CPAnalytics/CPAnalyticsEventProtocol-Protocol.h>
 
-@interface CPAnalyticsEvent : NSObject
+@class CPAnalyticsSystemProperties, NSCalendar, NSDate, NSDictionary, NSString;
+
+@interface CPAnalyticsEvent : NSObject <CPAnalyticsEventProtocol>
 {
     NSString *_name;
     NSDate *_timestamp;
     NSDictionary *_payload;
     CPAnalyticsSystemProperties *_systemProperties;
+    NSCalendar *_gregorianCalendar;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) NSCalendar *gregorianCalendar; // @synthesize gregorianCalendar=_gregorianCalendar;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) NSDictionary *payload; // @synthesize payload=_payload;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) CPAnalyticsSystemProperties *systemProperties; // @synthesize systemProperties=_systemProperties;
 @property (readonly, nonatomic) NSDate *timestamp; // @synthesize timestamp=_timestamp;
 
++ (id)_dayOfWeekFromDate:(id)arg1;
++ (id)_hourOfDayFromDate:(id)arg1;
++ (void)initialize;
 - (void).cxx_destruct;
 - (id)copyRawPayload;
 - (id)initWithName:(id)arg1 payload:(id)arg2 systemProperties:(id)arg3;

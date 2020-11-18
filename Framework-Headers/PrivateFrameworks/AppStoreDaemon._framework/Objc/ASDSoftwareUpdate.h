@@ -22,14 +22,18 @@
     long long _rawUpdateState;
     NSDate *_timestamp;
     long long _updateState;
+    BOOL _iOSBinaryMacOSCompatible;
     BOOL _downloaded;
+    long long _deviceFamilies;
 }
 
 @property (copy, nonatomic) NSArray *blockedBy; // @synthesize blockedBy=_blockedBy;
 @property (readonly, nonatomic) NSString *bundleIdentifier;
 @property (readonly, nonatomic) NSString *buyParams;
+@property (readonly, nonatomic) long long deviceFamilies; // @synthesize deviceFamilies=_deviceFamilies;
 @property (nonatomic, getter=isDownloaded) BOOL downloaded; // @synthesize downloaded=_downloaded;
 @property (readonly, nonatomic) NSNumber *externalVersionIdentifier;
+@property (nonatomic, getter=isIOSBinaryMacOSCompatible) BOOL iOSBinaryMacOSCompatible; // @synthesize iOSBinaryMacOSCompatible=_iOSBinaryMacOSCompatible;
 @property (copy, nonatomic) NSDate *installDate; // @synthesize installDate=_installDate;
 @property (copy, nonatomic) NSDictionary *metrics; // @synthesize metrics=_metrics;
 @property (readonly, nonatomic) long long parentalControlsRank;

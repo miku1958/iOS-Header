@@ -13,6 +13,9 @@
     MISSING_TYPE *defaultImage;
     MISSING_TYPE *alternateImages;
     MISSING_TYPE *accessibilityText;
+    MISSING_TYPE *sizeClassCropCodes;
+    MISSING_TYPE *sizeClassAspectRatios;
+    MISSING_TYPE *preferredSizeClassToDeviceImageMap;
 }
 
 @end

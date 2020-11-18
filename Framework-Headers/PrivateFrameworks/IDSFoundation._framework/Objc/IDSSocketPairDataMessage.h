@@ -20,6 +20,7 @@
     BOOL _expectsPeerResponse;
     BOOL _wantsAppAck;
     BOOL _compressed;
+    BOOL _didWakeHint;
     NSString *_peerResponseIdentifier;
     NSString *_messageUUID;
     NSDate *_expiryDate;
@@ -27,6 +28,7 @@
 
 @property (nonatomic) BOOL compressed; // @synthesize compressed=_compressed;
 @property (readonly, nonatomic) NSData *data;
+@property (nonatomic) BOOL didWakeHint; // @synthesize didWakeHint=_didWakeHint;
 @property (readonly, nonatomic) BOOL expectsPeerResponse; // @synthesize expectsPeerResponse=_expectsPeerResponse;
 @property (strong, nonatomic) NSDate *expiryDate; // @synthesize expiryDate=_expiryDate;
 @property (readonly, nonatomic) NSString *messageUUID; // @synthesize messageUUID=_messageUUID;
@@ -39,7 +41,7 @@
 - (id)_nonHeaderData;
 - (unsigned char)command;
 - (id)initWithCommand:(unsigned char)arg1 underlyingData:(id)arg2;
-- (id)initWithSequenceNumber:(unsigned int)arg1 streamID:(unsigned short)arg2 expectsPeerResponse:(BOOL)arg3 wantsAppAck:(BOOL)arg4 compressed:(BOOL)arg5 peerResponseIdentifier:(id)arg6 messageUUID:(id)arg7 data:(id)arg8 expiryDate:(id)arg9;
+- (id)initWithSequenceNumber:(unsigned int)arg1 streamID:(unsigned short)arg2 expectsPeerResponse:(BOOL)arg3 wantsAppAck:(BOOL)arg4 compressed:(BOOL)arg5 didWakeHint:(BOOL)arg6 peerResponseIdentifier:(id)arg7 messageUUID:(id)arg8 data:(id)arg9 expiryDate:(id)arg10;
 
 @end
 

@@ -22,7 +22,6 @@
 + (id)controlObject:(id *)arg1;
 + (id)controlObject:(BOOL)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (void)attemptSosUpgrade:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)createRecoveryKey:(id)arg1 contextID:(id)arg2 recoveryKey:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)dealloc;
 - (void)encryptionKey:(CDUnknownBlockType)arg1;
@@ -31,12 +30,15 @@
 - (void)fetchCliqueStatus:(id)arg1 context:(id)arg2 configuration:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)fetchEgoPeerID:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)fetchEscrowContents:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)fetchEscrowRecords:(id)arg1 contextID:(id)arg2 forceFetch:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)fetchTrustStatus:(id)arg1 context:(id)arg2 configuration:(id)arg3 reply:(CDUnknownBlockType)arg4;
+- (void)fetchUserControllableViewsSyncStatus:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)getCDPStatus:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (id)getConnection:(CDUnknownBlockType)arg1;
 - (void)handleIdentityChangeForSigningKey:(id)arg1 ForEncryptionKey:(id)arg2 ForPeerID:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)healthCheck:(id)arg1 context:(id)arg2 skipRateLimitingCheck:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (id)initWithConnection:(id)arg1 sync:(BOOL)arg2;
+- (void)invalidateEscrowCache:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)joinWithRecoveryKey:(id)arg1 contextID:(id)arg2 recoveryKey:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)launchBottledPeer:(id)arg1 bottleID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)leaveClique:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
@@ -60,6 +62,7 @@
 - (void)rpcVoucherWithConfiguration:(id)arg1 peerID:(id)arg2 permanentInfo:(id)arg3 permanentInfoSig:(id)arg4 stableInfo:(id)arg5 stableInfoSig:(id)arg6 reply:(CDUnknownBlockType)arg7;
 - (void)scrubBottledPeer:(id)arg1 bottleID:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setCDPEnabled:(id)arg1 contextID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)setUserControllableViewsSyncStatus:(id)arg1 contextID:(id)arg2 enabled:(BOOL)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)signIn:(id)arg1 container:(id)arg2 context:(id)arg3 reply:(CDUnknownBlockType)arg4;
 - (void)signOut:(id)arg1 context:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)signingKey:(CDUnknownBlockType)arg1;

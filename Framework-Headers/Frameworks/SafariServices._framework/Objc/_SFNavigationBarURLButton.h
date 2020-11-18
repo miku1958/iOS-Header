@@ -6,41 +6,44 @@
 
 #import <UIKit/UIButton.h>
 
+#import <SafariServices/PKScribbleInteractionDelegate-Protocol.h>
+#import <SafariServices/PKScribbleInteractionElementSource-Protocol.h>
 #import <SafariServices/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, UIGestureRecognizer, UIVibrancyEffect, UIView, UIVisualEffectView, _SFNavigationBarTheme;
+@class NSString, PKScribbleInteraction, UIGestureRecognizer, UIVibrancyEffect, UIView, UIVisualEffectView, _SFNavigationBarTheme;
 @protocol _SFNavigationBarURLButtonDelegate;
 
 __attribute__((visibility("hidden")))
-@interface _SFNavigationBarURLButton : UIButton <UIGestureRecognizerDelegate>
+@interface _SFNavigationBarURLButton : UIButton <PKScribbleInteractionDelegate, PKScribbleInteractionElementSource, UIGestureRecognizerDelegate>
 {
     UIVibrancyEffect *_highlightedVibrancyEffect;
     UIVibrancyEffect *_vibrancyEffect;
     UIVisualEffectView *_effectView;
     UIView *_effectMask;
     UIGestureRecognizer *_longPressGestureRecognizer;
+    PKScribbleInteraction *_pencilScribbleInteraction;
     double _backgroundAlphaFactor;
     _SFNavigationBarTheme *_theme;
     id<_SFNavigationBarURLButtonDelegate> _delegate;
     double _urlOutlineCornerRadius;
 }
 
-@property (nonatomic) double backgroundAlphaFactor; // @synthesize backgroundAlphaFactor=_backgroundAlphaFactor;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<_SFNavigationBarURLButtonDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) _SFNavigationBarTheme *theme; // @synthesize theme=_theme;
-@property (nonatomic, setter=setURLOutlineCornerRadius:) double urlOutlineCornerRadius; // @synthesize urlOutlineCornerRadius=_urlOutlineCornerRadius;
 
 - (void).cxx_destruct;
-- (id)_accessibilityQuickSpeakContent;
 - (void)_dismissMenu:(id)arg1;
 - (void)_handleLongPress:(id)arg1;
 - (void)_hover:(id)arg1;
-- (void)_updateBackgroundImageAnimated:(BOOL)arg1;
-- (void)_updateEffectView;
+- (void)_scribbleInteraction:(id)arg1 didFinishWritingInElement:(id)arg2;
+- (void)_scribbleInteraction:(id)arg1 focusElement:(id)arg2 initialFocusSelectionReferencePoint:(struct CGPoint)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)_scribbleInteraction:(id)arg1 focusWillTransformElement:(id)arg2;
+- (struct CGRect)_scribbleInteraction:(id)arg1 frameForElement:(id)arg2;
+- (void)_scribbleInteraction:(id)arg1 requestElementsInRect:(struct CGRect)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)_scribbleInteraction:(id)arg1 shouldBeginAtLocation:(struct CGPoint)arg2;
+- (void)_scribbleInteraction:(id)arg1 willBeginWritingInElement:(id)arg2;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)copy:(id)arg1;

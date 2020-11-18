@@ -105,6 +105,7 @@
 - (BOOL)_canScrollCarouselView;
 - (id)_cellForItemAtIndex:(unsigned long long)arg1;
 - (long long)_centerCollectionViewCellIndex;
+- (void)_centerItemAtPageIndex:(long long)arg1 animated:(BOOL)arg2;
 - (double)_centeringAnimationDuration;
 - (id)_collectionView;
 - (struct CGSize)_collectionViewLayoutItemSize;
@@ -113,6 +114,7 @@
 - (void)_handlePlayGesture:(id)arg1;
 - (unsigned long long)_itemIndexForIndexPath:(id)arg1;
 - (long long)_numberOfCells;
+- (void)_pageControlValueChanged:(id)arg1;
 - (id)_prepareIndexMap:(long long)arg1;
 - (unsigned long long)_previousItemIndexForIndexPath:(id)arg1;
 - (void)_setContentOffsetForCollectionViewIndex:(long long)arg1;

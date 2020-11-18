@@ -10,39 +10,39 @@
 #import <SearchUI/UIDragInteractionDelegate_Private-Protocol.h>
 
 @class NSString, SearchUIRowModel, UIView;
-@protocol OS_os_transaction;
+@protocol SearchUIFeedbackDelegate;
 
 @interface SearchUIDragSource : NSObject <UIDragInteractionDelegate, UIDragInteractionDelegate_Private>
 {
     SearchUIRowModel *_dragObject;
     UIView *_overrideDragPreviewView;
     UIView *_dragSourceView;
-    NSObject<OS_os_transaction> *_transaction;
+    id<SearchUIFeedbackDelegate> _feedbackDelegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) SearchUIRowModel *dragObject; // @synthesize dragObject=_dragObject;
 @property (weak) UIView *dragSourceView; // @synthesize dragSourceView=_dragSourceView;
+@property (weak) id<SearchUIFeedbackDelegate> feedbackDelegate; // @synthesize feedbackDelegate=_feedbackDelegate;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *overrideDragPreviewView; // @synthesize overrideDragPreviewView=_overrideDragPreviewView;
 @property (readonly) Class superclass;
-@property (strong) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
 
-+ (id)dragSourceForView:(id)arg1 dragObject:(id)arg2;
++ (id)dragSourceForView:(id)arg1 dragObject:(id)arg2 feedbackDelegate:(id)arg3;
 - (void).cxx_destruct;
 - (long long)_dragInteraction:(id)arg1 dataOwnerForSession:(id)arg2;
 - (id)_requiredContextIDsForDragSessionInView:(id)arg1;
 - (BOOL)_shouldPerformHitTestingForDragSessionInView:(id)arg1;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
 - (id)dragInteraction:(id)arg1 previewForLiftingItem:(id)arg2 session:(id)arg3;
-- (void)dragInteraction:(id)arg1 session:(id)arg2 didEndWithOperation:(unsigned long long)arg3;
 - (BOOL)dragInteraction:(id)arg1 sessionAllowsMoveOperation:(id)arg2;
 - (BOOL)dragInteraction:(id)arg1 sessionIsRestrictedToDraggingApplication:(id)arg2;
 - (void)dragInteraction:(id)arg1 sessionWillBegin:(id)arg2;
 - (id)dragParametersForPreviewView:(id)arg1;
-- (id)initWithView:(id)arg1 dragObject:(id)arg2;
+- (id)initWithView:(id)arg1 dragObject:(id)arg2 feedbackDelegate:(id)arg3;
 - (BOOL)isMailDrag;
+- (void)sendDragFeedback;
 
 @end
 

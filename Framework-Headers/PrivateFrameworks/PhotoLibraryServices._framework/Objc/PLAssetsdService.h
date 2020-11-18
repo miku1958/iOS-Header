@@ -8,7 +8,7 @@
 
 #import <PhotoLibraryServices/PLAssetsdServiceProtocol-Protocol.h>
 
-@class NSString, NSURL, NSXPCConnection, PLAssetsdCPLResourceDownloader, PLAssetsdConnectionAuthorization, PLAssetsdInnerService, PLLibraryServicesManager, PLPhotoLibrary, PLPhotoLibraryBundle, PLPhotoLibraryBundleController;
+@class NSString, NSURL, NSXPCConnection, PLAssetsdCPLResourceDownloader, PLAssetsdConnectionAuthorization, PLAssetsdInnerService, PLCacheMetricsCollectorServerShell, PLLibraryServicesManager, PLPhotoLibrary, PLPhotoLibraryBundle, PLPhotoLibraryBundleController;
 
 @interface PLAssetsdService : NSObject <PLAssetsdServiceProtocol>
 {
@@ -17,6 +17,8 @@
     PLAssetsdInnerService *_innerSystemLibraryURLReadOnlyService;
     PLAssetsdInnerService *_innerLibraryManagementService;
     PLAssetsdInnerService *_innerPhotoKitService;
+    PLAssetsdInnerService *_innerPhotoKitAddService;
+    PLAssetsdInnerService *_innerResourceAvailabilityService;
     PLAssetsdInnerService *_innerResourceService;
     PLAssetsdInnerService *_innerResourceWriteOnlyService;
     PLAssetsdInnerService *_innerResourceInternalService;
@@ -28,6 +30,7 @@
     PLAssetsdInnerService *_innerDemoService;
     PLAssetsdInnerService *_innerDiagnosticsService;
     PLAssetsdInnerService *_innerDebugService;
+    PLAssetsdInnerService *_innerPrivacySupportService;
     BOOL _readyForDaemonJobs;
     NSXPCConnection *_connection;
     int _remotePID;
@@ -37,8 +40,10 @@
     PLAssetsdConnectionAuthorization *_connectionAuthorization;
     PLAssetsdCPLResourceDownloader *_resourceDownloader;
     NSURL *_libraryURL;
+    PLCacheMetricsCollectorServerShell *_cacheMetricsShellObject;
 }
 
+@property (readonly, nonatomic) PLCacheMetricsCollectorServerShell *cacheMetricsShellObject; // @synthesize cacheMetricsShellObject=_cacheMetricsShellObject;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -51,7 +56,7 @@
 - (id)_photoLibrary;
 - (BOOL)_prepareToRunDaemonJob:(id)arg1 error:(id *)arg2;
 - (id)_waitForLibraryServicesForDaemonJob;
-- (void)bindToPhotoLibraryURL:(id)arg1 bookmark:(id)arg2 withReply:(CDUnknownBlockType)arg3;
+- (void)bindToPhotoLibraryURL:(id)arg1 sandboxExtension:(id)arg2 clientOptions:(id)arg3 withReply:(CDUnknownBlockType)arg4;
 - (void)bindToPhotoLibraryURL:(id)arg1 sandboxExtension:(id)arg2 withReply:(CDUnknownBlockType)arg3;
 - (id)clientDebugDescription;
 - (void)getCloudInternalServiceWithReply:(CDUnknownBlockType)arg1;
@@ -64,7 +69,10 @@
 - (void)getLibraryServiceWithReply:(CDUnknownBlockType)arg1;
 - (void)getMigrationServiceWithReply:(CDUnknownBlockType)arg1;
 - (void)getNotificationServiceWithReply:(CDUnknownBlockType)arg1;
+- (void)getPhotoKitAddServiceWithReply:(CDUnknownBlockType)arg1;
 - (void)getPhotoKitServiceWithReply:(CDUnknownBlockType)arg1;
+- (void)getPrivacySupportServiceWithReply:(CDUnknownBlockType)arg1;
+- (void)getResourceAvailabilityServiceWithReply:(CDUnknownBlockType)arg1;
 - (void)getResourceInternalServiceWithReply:(CDUnknownBlockType)arg1;
 - (void)getResourceServiceWithReply:(CDUnknownBlockType)arg1;
 - (void)getResourceWriteOnlyServiceWithReply:(CDUnknownBlockType)arg1;
@@ -73,23 +81,6 @@
 - (void)handleInterruption;
 - (void)handleInvalidation;
 - (id)initWithConnection:(id)arg1 libraryBundleController:(id)arg2;
-- (void)initializeAllServices;
-- (void)initializeCloudInternalService;
-- (void)initializeCloudService;
-- (void)initializeDebugService;
-- (void)initializeDemoService;
-- (void)initializeDiagnosticsService;
-- (void)initializeLibraryInternalService;
-- (void)initializeLibraryManagementService;
-- (void)initializeLibraryService;
-- (void)initializeMigrationService;
-- (void)initializeNotificationService;
-- (void)initializePhotoKitService;
-- (void)initializeResourceInternalService;
-- (void)initializeResourceService;
-- (void)initializeResourceWriteOnlyService;
-- (void)initializeSyncService;
-- (void)initializeSystemLibraryURLReadOnlyService;
 - (void)invalidateConnectionWithReason:(id)arg1;
 - (void)logStatus;
 - (id)newCloudInternalService;
@@ -102,7 +93,10 @@
 - (id)newLibraryService;
 - (id)newMigrationService;
 - (id)newNotificationService;
+- (id)newPhotoKitAddService;
 - (id)newPhotoKitService;
+- (id)newPrivacySupportService;
+- (id)newResourceAvailabilityService;
 - (id)newResourceInternalService;
 - (id)newResourceService;
 - (id)newResourceWriteOnlyService;
@@ -118,7 +112,10 @@
 - (id)permissionsForLibraryService;
 - (id)permissionsForMigrationService;
 - (id)permissionsForNotificationService;
+- (id)permissionsForPhotoKitAddService;
 - (id)permissionsForPhotoKitService;
+- (id)permissionsForPrivacySupportService;
+- (id)permissionsForResourceAvailabilityService;
 - (id)permissionsForResourceInternalService;
 - (id)permissionsForResourceService;
 - (id)permissionsForResourceWriteOnlyService;
@@ -134,7 +131,10 @@
 - (long long)requiredStateForLibraryService;
 - (long long)requiredStateForMigrationService;
 - (long long)requiredStateForNotificationService;
+- (long long)requiredStateForPhotoKitAddService;
 - (long long)requiredStateForPhotoKitService;
+- (long long)requiredStateForPrivacySupportService;
+- (long long)requiredStateForResourceAvailabilityService;
 - (long long)requiredStateForResourceInternalService;
 - (long long)requiredStateForResourceService;
 - (long long)requiredStateForResourceWriteOnlyService;

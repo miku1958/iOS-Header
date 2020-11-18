@@ -6,17 +6,22 @@
 
 #import <ContactsUI/CNContactAction.h>
 
+@class NSNumber;
+
 __attribute__((visibility("hidden")))
 @interface CNContactToggleBlockCallerAction : CNContactAction
 {
+    NSNumber *_isBlockedCachedValue;
 }
 
-@property (readonly, nonatomic) BOOL isBlocked;
+@property (strong, nonatomic) NSNumber *isBlockedCachedValue; // @synthesize isBlockedCachedValue=_isBlockedCachedValue;
 
+- (void).cxx_destruct;
 - (id)allNumbersAndEmails;
-- (void)block;
+- (id)checkIsContactBlocked;
+- (BOOL)isContactBlockedPreservingChanges:(BOOL)arg1;
 - (void)performActionWithSender:(id)arg1;
-- (void)unblock;
+- (void)setContactBlocked:(BOOL)arg1;
 
 @end
 

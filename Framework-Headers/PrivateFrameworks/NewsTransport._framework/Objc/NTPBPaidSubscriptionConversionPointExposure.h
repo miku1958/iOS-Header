@@ -25,6 +25,7 @@
     NSString *_parentFeedId;
     int _parentFeedType;
     NSString *_purchaseId;
+    int _purchaseType;
     NSString *_sectionId;
     NSString *_sourceChannelId;
     NSData *_subscriptionPurchaseSessionId;
@@ -37,6 +38,7 @@
         unsigned int paidSubscriptionConversionPointExposurePresentationReason:1;
         unsigned int paidSubscriptionConversionPointType:1;
         unsigned int parentFeedType:1;
+        unsigned int purchaseType:1;
         unsigned int userAction:1;
         unsigned int arrivedFromAd:1;
         unsigned int subscriptionOnlyArticlePreview:1;
@@ -63,6 +65,7 @@
 @property (readonly, nonatomic) BOOL hasParentFeedId;
 @property (nonatomic) BOOL hasParentFeedType;
 @property (readonly, nonatomic) BOOL hasPurchaseId;
+@property (nonatomic) BOOL hasPurchaseType;
 @property (readonly, nonatomic) BOOL hasSectionId;
 @property (readonly, nonatomic) BOOL hasSourceChannelId;
 @property (nonatomic) BOOL hasSubscriptionOnlyArticlePreview;
@@ -76,6 +79,7 @@
 @property (strong, nonatomic) NSString *parentFeedId; // @synthesize parentFeedId=_parentFeedId;
 @property (nonatomic) int parentFeedType; // @synthesize parentFeedType=_parentFeedType;
 @property (strong, nonatomic) NSString *purchaseId; // @synthesize purchaseId=_purchaseId;
+@property (nonatomic) int purchaseType; // @synthesize purchaseType=_purchaseType;
 @property (strong, nonatomic) NSString *sectionId; // @synthesize sectionId=_sectionId;
 @property (strong, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;
 @property (nonatomic) BOOL subscriptionOnlyArticlePreview; // @synthesize subscriptionOnlyArticlePreview=_subscriptionOnlyArticlePreview;
@@ -87,6 +91,7 @@
 - (int)StringAsPaidSubscriptionConversionPointExposureLocation:(id)arg1;
 - (int)StringAsPaidSubscriptionConversionPointType:(id)arg1;
 - (int)StringAsParentFeedType:(id)arg1;
+- (int)StringAsPurchaseType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -97,6 +102,7 @@
 - (id)paidSubscriptionConversionPointExposureLocationAsString:(int)arg1;
 - (id)paidSubscriptionConversionPointTypeAsString:(int)arg1;
 - (id)parentFeedTypeAsString:(int)arg1;
+- (id)purchaseTypeAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)writeTo:(id)arg1;
 

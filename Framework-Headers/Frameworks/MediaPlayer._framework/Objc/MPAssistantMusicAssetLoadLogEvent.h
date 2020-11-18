@@ -6,6 +6,7 @@
 
 #import <MediaPlayer/MPAssistantMusicLogEvent.h>
 
+__attribute__((visibility("hidden")))
 @interface MPAssistantMusicAssetLoadLogEvent : MPAssistantMusicLogEvent
 {
     double _duration;

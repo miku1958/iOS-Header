@@ -10,7 +10,7 @@
 
 @protocol CKSearchResultCell <NSObject>
 
-@property (nonatomic, getter=isEditing) BOOL editing;
+@property (nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) BOOL _ck_editing;
 @property (nonatomic) struct UIEdgeInsets marginInsets;
 
 + (NSString *)reuseIdentifier;

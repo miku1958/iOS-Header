@@ -6,11 +6,9 @@
 
 #import <CoreKnowledge/NSObject-Protocol.h>
 
-@class CKGenericCondition, CKTripleCondition, INIntent, INInteraction, NSArray, NSData, NSDictionary, NSString, NSURL, NSUUID;
+@class CKGenericCondition, CKTripleCondition, NSArray, NSDictionary, NSString;
 
 @protocol CKDaemonInterface <NSObject>
-- (void)appMatchesForIntent:(INIntent *)arg1 candidateBundleIDs:(NSArray *)arg2 completionHandler:(void (^)(SRAppMatches *))arg3;
-- (void)appMatchesForJSONIntent:(NSData *)arg1 candidateBundleIDs:(NSArray *)arg2 completionHandler:(void (^)(SRAppMatches *))arg3;
 - (void)decreaseWeightForLinkWithLabel:(NSString *)arg1 betweenSubject:(NSString *)arg2 andObject:(NSString *)arg3 inStoreWithIdentifier:(NSString *)arg4 completionHandler:(void (^)(NSError *, long long))arg5;
 - (void)disableSyncAndDeleteCloudDataWithCompletionHandler:(void (^)(NSError *))arg1;
 - (void)dropLinkWithLabel:(NSString *)arg1 betweenSubject:(NSString *)arg2 andObject:(NSString *)arg3 inStoreWithIdentifier:(NSString *)arg4 completionHandler:(void (^)(NSError *))arg5;
@@ -21,7 +19,6 @@
 - (void)keysAndValuesInStoreWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *, NSDictionary *))arg2;
 - (void)keysInStoreWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *, NSArray *))arg2;
 - (void)keysMatchingCondition:(CKGenericCondition *)arg1 inStoreWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *, NSArray *))arg3;
-- (void)relativeAppUsageProbabilitiesForBundleIDs:(NSArray *)arg1 overDays:(long long)arg2 completionHandler:(void (^)(NSDictionary *))arg3;
 - (void)removeAllValuesFromStoreWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)removeAllValuesFromSynchedStoreWithIdentifier:(NSString *)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)removeValueForKey:(NSString *)arg1 fromStoreWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
@@ -30,10 +27,8 @@
 - (void)removeValuesForKeys:(NSArray *)arg1 fromSynchedStoreWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)removeValuesMatchingCondition:(CKGenericCondition *)arg1 fromStoreWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)removeValuesMatchingCondition:(CKGenericCondition *)arg1 fromSynchedStoreWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
-- (void)saveInteraction:(INInteraction *)arg1 dkEventUUID:(NSUUID *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)saveKeysAndValues:(NSDictionary *)arg1 toStoreWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)saveKeysAndValues:(NSDictionary *)arg1 toSynchedStoreWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
-- (void)setSiriRemembersDBURL:(NSURL *)arg1;
 - (void)setWeightForLinkWithLabel:(NSString *)arg1 betweenSubject:(NSString *)arg2 andObject:(NSString *)arg3 toValue:(long long)arg4 inStoreWithIdentifier:(NSString *)arg5 completionHandler:(void (^)(NSError *))arg6;
 - (void)triplesComponentsMatching:(CKTripleCondition *)arg1 inStoreWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *, NSArray *))arg3;
 - (void)valueForKey:(NSString *)arg1 inStoreWithIdentifier:(NSString *)arg2 completionHandler:(void (^)(NSError *, id))arg3;

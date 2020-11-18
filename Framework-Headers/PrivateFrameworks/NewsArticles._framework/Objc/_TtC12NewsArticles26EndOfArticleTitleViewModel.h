@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *title;
     MISSING_TYPE *backgroundColor;
+    MISSING_TYPE *nativeAdData;
 }
 
 @end

@@ -6,14 +6,25 @@
 
 #import <TeaUI/TSTransitionContainerViewController.h>
 
-@class UIViewController;
+#import <TeaUI/TSSearchResultsPanable-Protocol.h>
+#import <TeaUI/TSTabBarSplitViewAutoObserver-Protocol.h>
 
-@interface TSTransitionContainerViewController (TeaUI)
+@class NSArray, UITabBarItem, UIViewController;
+
+@interface TSTransitionContainerViewController (TeaUI) <TSTabBarSplitViewAutoObserver, TSSearchResultsPanable>
 
 @property (nonatomic, readonly) UIViewController *childViewControllerForHomeIndicatorAutoHidden;
 @property (nonatomic, readonly) UIViewController *childViewControllerForStatusBarHidden;
 @property (nonatomic, readonly) UIViewController *childViewControllerForStatusBarStyle;
+@property (nonatomic) BOOL hidesBottomBarWhenPushed;
+@property (nonatomic, readonly) BOOL isSearchResultsPane;
+@property (nonatomic, readonly) NSArray *leftBarButtonItems;
+@property (nonatomic, readonly) NSArray *rightBarButtonItems;
+@property (nonatomic, strong) UITabBarItem *tabBarItem;
 
+- (void)handleDismiss;
+- (void)handleSidebarWithSender:(id)arg1;
+- (void)tabBarSplitViewDidChangeTraitCollectionToTraitCollection:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;

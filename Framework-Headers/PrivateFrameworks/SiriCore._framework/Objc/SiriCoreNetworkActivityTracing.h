@@ -22,14 +22,15 @@
 - (void)_networkActivityAddNWConnection:(id)arg1;
 - (void)_networkActivityRemoveNWConnection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_networkActivityStart:(long long)arg1 activate:(BOOL)arg2;
-- (void)_networkActivityStop:(long long)arg1;
+- (void)_networkActivityStop:(long long)arg1 withReason:(long long)arg2;
 - (void)_networkActivityTracingCancel;
+- (void)currentNetworkActivityTokenWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)networkActivityActivate:(long long)arg1;
 - (void)networkActivityAddNWConnection:(id)arg1;
 - (void)networkActivityRemoveNWConnection:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)networkActivityStart:(long long)arg1 activate:(BOOL)arg2;
-- (void)networkActivityStop:(long long)arg1;
+- (void)networkActivityStop:(long long)arg1 withReason:(long long)arg2;
 - (void)networkActivityTracingCancel;
 
 @end

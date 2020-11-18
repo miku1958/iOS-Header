@@ -82,6 +82,7 @@
 - (id)categoryForIdentifier:(id)arg1;
 - (id)categoryForOther;
 - (id)categoryForType:(id)arg1;
+- (id)categoryTypeFromName:(id)arg1;
 - (id)characteristicNameFromType:(id)arg1;
 - (id)characteristicTypeFromName:(id)arg1;
 - (id)characteristicValueUnit:(id)arg1;
@@ -129,10 +130,10 @@
 - (id)serviceNameFromType:(id)arg1;
 - (id)serviceSubtypeForValue:(id)arg1 forServiceType:(id)arg2;
 - (id)serviceTypeFromName:(id)arg1;
-- (BOOL)shouldAllowHomeNotificationForCharacteristicType:(id)arg1 serviceType:(id)arg2;
 - (BOOL)shouldAllowWriteToWakeSuspendedAccessoryForService:(id)arg1 characteristicType:(id)arg2 value:(id)arg3;
 - (BOOL)shouldAutoEnableNotificationForCharacteristic:(id)arg1 ofService:(id)arg2;
 - (BOOL)shouldCoalesceCharacteristicNotifications:(id)arg1 forService:(id)arg2;
+- (BOOL)shouldEnableHomeNotificationForCharacteristicType:(id)arg1 serviceType:(id)arg2;
 - (BOOL)shouldFilterChangeNotificationsForCharacteristicType:(id)arg1 serviceType:(id)arg2;
 - (BOOL)shouldFilterCharacteristicOfType:(id)arg1;
 - (BOOL)shouldFilterCharacteristicOfTypeFromApp:(id)arg1;

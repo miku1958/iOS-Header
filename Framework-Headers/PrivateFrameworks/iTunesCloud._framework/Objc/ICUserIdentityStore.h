@@ -9,7 +9,7 @@
 #import <iTunesCloud/ICUserIdentityStoreBackendDelegate-Protocol.h>
 #import <iTunesCloud/NSSecureCoding-Protocol.h>
 
-@class ACAccountStore, ICDelegateAccountStore, ICDelegateAccountStoreOptions, ICLocalStoreAccountProperties, ICUserIdentityStoreCoding, ICValueHistory, NSOperationQueue, NSString;
+@class ACAccountStore, ICDelegateAccountStore, ICDelegateAccountStoreOptions, ICLocalStoreAccountProperties, ICUserIdentityStoreCoding, ICValueHistory, NSString;
 @protocol ICUserIdentityStoreBackend, OS_dispatch_queue;
 
 @interface ICUserIdentityStore : NSObject <ICUserIdentityStoreBackendDelegate, NSSecureCoding>
@@ -22,7 +22,6 @@
     ICDelegateAccountStore *_delegateAccountStore;
     ICDelegateAccountStoreOptions *_delegateAccountStoreOptions;
     ICLocalStoreAccountProperties *_localStoreAccountProperties;
-    NSOperationQueue *_operationQueue;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
 }
@@ -48,21 +47,21 @@
 - (void)_delegateAccountStoreDidChangeNotification:(id)arg1;
 - (void)_dispatchDidChangeNotification:(BOOL)arg1 didDelegateAccountStoreChange:(BOOL)arg2;
 - (id)_dsidForTimestamp:(unsigned long long)arg1 history:(id)arg2;
-- (void)_dsidForUserIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_existingIdentityPropertiesForUserIdentity:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (id)_dsidForUserIdentity:(id)arg1 error:(id *)arg2;
+- (id)_existingIdentityPropertiesForUserIdentity:(id)arg1 error:(id *)arg2;
 - (id)_icValidStoreAccountsFromACAccounts:(id)arg1;
 - (void)_importValuesFromCodingHelper:(id)arg1;
 - (id)_initCommon;
 - (id)_initWithStyle:(long long)arg1 delegateAccountStoreOptions:(id)arg2;
 - (void)_initializeLocalStoreAccountProperties;
-- (void)_openDelegateAccountStoreForUserIdentity:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)_openDelegateAccountStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)_openDelegateAccountStoreForUserIdentity:(id)arg1 error:(id *)arg2;
+- (id)_openDelegateAccountStoreWithError:(id *)arg1;
 - (void)_prepareDelegateAccountStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_refreshLocalStoreAccountPropertiesAllowingDidChangeNotification:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)_refreshLocalStoreAccountPropertiesAllowingDidChangeNotification:(BOOL)arg1;
 - (void)_registerForDelegateAccountStoreNotifications:(id)arg1;
 - (void)_reloadForExternalChange;
 - (void)_resetDelegateAccountStoreWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)_saveIdentityProperties:(id)arg1 andPostAccountChangeNotification:(BOOL)arg2 forUserIdentity:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (BOOL)_saveIdentityProperties:(id)arg1 andPostAccountChangeNotification:(BOOL)arg2 forUserIdentity:(id)arg3 error:(id *)arg4;
 - (void)_unregisterForDelegateAccountStoreNotifications:(id)arg1;
 - (void)_unsafe_deleteDelegateAccountStore;
 - (void)_updateDelegateAccountStoreUsingBlock:(CDUnknownBlockType)arg1;
@@ -74,6 +73,7 @@
 - (void)getDelegationUUIDsForUserIdentity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getPropertiesForActiveICloudAccountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getPropertiesForUserIdentity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)getPropertiesForUserIdentity:(id)arg1 error:(id *)arg2;
 - (void)getUserIdentitiesForManageableAccountsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getVerificationContextForUserIdentity:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)getuserIdentitiesForAllStoreAccountsWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -8,7 +8,7 @@
 
 #import <AnnotationKit/AKPenDetectionGestureRecognizerProtocol-Protocol.h>
 
-@class NSMutableArray, NSString;
+@class NSMutableArray, NSMutableSet, NSString;
 
 @interface AKPanGestureRecognizer : UIPanGestureRecognizer <AKPenDetectionGestureRecognizerProtocol>
 {
@@ -16,9 +16,12 @@
     double _currentWeight;
     double _currentMaxWeight;
     NSMutableArray *_currentAccumulatedTouches;
+    NSMutableSet *_additionalTouches;
     struct CGPoint _locationOfFirstTouch;
 }
 
+@property (readonly, nonatomic) unsigned long long additionalNumberOfTouches;
+@property (strong, nonatomic) NSMutableSet *additionalTouches; // @synthesize additionalTouches=_additionalTouches;
 @property (strong, nonatomic) NSMutableArray *currentAccumulatedTouches; // @synthesize currentAccumulatedTouches=_currentAccumulatedTouches;
 @property (nonatomic) double currentMaxWeight; // @synthesize currentMaxWeight=_currentMaxWeight;
 @property (nonatomic) double currentWeight; // @synthesize currentWeight=_currentWeight;
@@ -35,6 +38,7 @@
 - (struct CGPoint)locationOfFirstTouchInView:(id)arg1;
 - (void)reset;
 - (void)resetAccumulatedTouches;
+- (void)resetAdditionalTouches;
 - (void)touchesBegan:(id)arg1 withEvent:(id)arg2;
 - (void)touchesCancelled:(id)arg1 withEvent:(id)arg2;
 - (void)touchesEnded:(id)arg1 withEvent:(id)arg2;

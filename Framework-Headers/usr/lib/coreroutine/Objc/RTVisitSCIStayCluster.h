@@ -23,10 +23,12 @@
     NSDate *_lastProcessedSample;
     NSMutableArray *_outliers;
     RTLocation *_centroid;
+    RTLocation *_lastTrustedLocation;
 }
 
 @property (readonly, nonatomic) RTLocation *centroid; // @synthesize centroid=_centroid;
 @property (readonly, nonatomic) NSDate *lastProcessedSample; // @synthesize lastProcessedSample=_lastProcessedSample;
+@property (readonly, nonatomic) RTLocation *lastTrustedLocation; // @synthesize lastTrustedLocation=_lastTrustedLocation;
 @property (readonly, nonatomic) unsigned long long numOfAdaptionSample; // @synthesize numOfAdaptionSample=_numOfAdaptionSample;
 @property (readonly, nonatomic) unsigned long long numOfDataPoints; // @synthesize numOfDataPoints=_numOfDataPoints;
 @property (readonly, nonatomic) unsigned long long numOfOutliers;
@@ -41,10 +43,13 @@
 - (void).cxx_destruct;
 - (void)addNewPoint:(id)arg1 event:(unsigned long long)arg2 lcFSMState:(unsigned long long)arg3 fsmState:(unsigned long long)arg4;
 - (void)addOutlier:(id)arg1;
+- (id)centroidForVisitType:(long long)arg1 confidence:(double)arg2;
 - (id)createVisit:(long long)arg1 confidence:(double)arg2;
 - (id)description;
+- (double)dwellTimeIntervalWithDate:(id)arg1;
 - (double)getRadiusForDate:(id)arg1;
 - (id)init;
+- (void)updateLastTrustedLocation:(id)arg1;
 
 @end
 

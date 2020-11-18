@@ -47,6 +47,7 @@
 - (id)initWithVisits:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)managedObjectWithContext:(id)arg1;
+- (void)updateManagedObject:(id)arg1;
 
 @end
 

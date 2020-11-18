@@ -6,22 +6,25 @@
 
 #import <WebKit/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, NSURL, UIImage, WKActionSheetAssistant, _WKActivatedElementInfo;
+@class NSDictionary, NSString, NSURL, UIImage, UITargetedPreview, WKActionSheetAssistant, _WKActivatedElementInfo;
 
 @protocol WKActionSheetAssistantDelegate <NSObject>
 - (RetainPtr_f649c0c3)actionSheetAssistant:(WKActionSheetAssistant *)arg1 decideActionsForElement:(_WKActivatedElementInfo *)arg2 defaultActions:(RetainPtr_f649c0c3)arg3;
 - (void)actionSheetAssistant:(WKActionSheetAssistant *)arg1 openElementAtLocation:(struct CGPoint)arg2;
-- (void)actionSheetAssistant:(WKActionSheetAssistant *)arg1 performAction:(int)arg2;
+- (void)actionSheetAssistant:(WKActionSheetAssistant *)arg1 performAction:(BOOL)arg2;
 - (void)actionSheetAssistant:(WKActionSheetAssistant *)arg1 shareElementWithURL:(NSURL *)arg2 rect:(struct CGRect)arg3;
 - (BOOL)actionSheetAssistant:(WKActionSheetAssistant *)arg1 shouldIncludeAppLinkActionsForElement:(_WKActivatedElementInfo *)arg2;
-- (Optional_677bf244)positionInformationForActionSheetAssistant:(WKActionSheetAssistant *)arg1;
+- (Optional_b5290310)positionInformationForActionSheetAssistant:(WKActionSheetAssistant *)arg1;
 
 @optional
 - (void)actionSheetAssistant:(WKActionSheetAssistant *)arg1 getAlternateURLForImage:(UIImage *)arg2 completion:(void (^)(NSURL *, NSDictionary *))arg3;
+- (void)actionSheetAssistant:(WKActionSheetAssistant *)arg1 shareElementWithImage:(UIImage *)arg2 rect:(struct CGRect)arg3;
 - (BOOL)actionSheetAssistant:(WKActionSheetAssistant *)arg1 showCustomSheetForElement:(_WKActivatedElementInfo *)arg2;
 - (void)actionSheetAssistant:(WKActionSheetAssistant *)arg1 willStartInteractionWithElement:(_WKActivatedElementInfo *)arg2;
 - (void)actionSheetAssistantDidStopInteraction:(WKActionSheetAssistant *)arg1;
-- (NSDictionary *)dataDetectionContextForActionSheetAssistant:(WKActionSheetAssistant *)arg1;
+- (UITargetedPreview *)createTargetedContextMenuHintForActionSheetAssistant:(WKActionSheetAssistant *)arg1;
+- (NSDictionary *)dataDetectionContextForActionSheetAssistant:(WKActionSheetAssistant *)arg1 positionInformation:(const struct InteractionInformationAtPosition *)arg2;
+- (void)removeContextMenuViewIfPossibleForActionSheetAssistant:(WKActionSheetAssistant *)arg1;
 - (NSString *)selectedTextForActionSheetAssistant:(WKActionSheetAssistant *)arg1;
 - (struct CGRect)unoccludedWindowBoundsForActionSheetAssistant:(WKActionSheetAssistant *)arg1;
 - (void)updatePositionInformationForActionSheetAssistant:(WKActionSheetAssistant *)arg1;

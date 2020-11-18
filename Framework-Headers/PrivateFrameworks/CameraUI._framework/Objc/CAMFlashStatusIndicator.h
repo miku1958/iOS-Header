@@ -18,8 +18,11 @@
 @property (nonatomic, getter=isFlashUnavailable) BOOL flashUnavailable; // @synthesize flashUnavailable=_flashUnavailable;
 
 - (id)imageNameForCurrentState;
+- (void)setFlashMode:(long long)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldShowSlashForCurrentState;
 - (BOOL)shouldUseActiveTintForCurrentState;
 - (BOOL)shouldUseOutline;
+- (BOOL)shouldUseSlash;
 
 @end
 

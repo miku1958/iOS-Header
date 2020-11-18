@@ -15,12 +15,15 @@
 - (void)messageEntryContentViewCancelWasTapped:(CKMessageEntryContentView *)arg1 shelfPluginPayload:(IMPluginPayload *)arg2;
 - (void)messageEntryContentViewDidBeginEditing:(CKMessageEntryContentView *)arg1 wasAlreadyActive:(BOOL)arg2;
 - (void)messageEntryContentViewDidChange:(CKMessageEntryContentView *)arg1;
+- (void)messageEntryContentViewDidChangeSelection:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewDidEndEditing:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewDidReturn:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewDidTapHandwritingKey:(CKMessageEntryContentView *)arg1;
+- (void)messageEntryContentViewDidTapMention:(CKMessageEntryContentView *)arg1 characterIndex:(double)arg2;
 - (struct CGSize)messageEntryContentViewMaxShelfPluginViewSize:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewShelfDidChange:(CKMessageEntryContentView *)arg1;
 - (BOOL)messageEntryContentViewShouldBeginEditing:(CKMessageEntryContentView *)arg1;
 - (void)messageEntryContentViewWasTapped:(CKMessageEntryContentView *)arg1 isLongPress:(BOOL)arg2;
+- (BOOL)messageEntryContentViewWillChangeText:(CKMessageEntryContentView *)arg1 inRange:(struct _NSRange)arg2 withReplacementText:(NSString *)arg3;
 @end
 

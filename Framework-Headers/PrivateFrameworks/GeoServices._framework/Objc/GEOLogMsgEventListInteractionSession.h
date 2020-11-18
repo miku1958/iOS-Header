@@ -23,9 +23,7 @@
         unsigned int has_listType:1;
         unsigned int read_listResultItems:1;
         unsigned int read_searchString:1;
-        unsigned int wrote_listResultItems:1;
-        unsigned int wrote_searchString:1;
-        unsigned int wrote_listType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,9 +37,6 @@
 + (Class)listResultItemType;
 - (void).cxx_destruct;
 - (int)StringAsListType:(id)arg1;
-- (void)_addNoFlagsListResultItem:(id)arg1;
-- (void)_readListResultItems;
-- (void)_readSearchString;
 - (void)addListResultItem:(id)arg1;
 - (void)clearListResultItems;
 - (void)copyTo:(id)arg1;
@@ -51,7 +46,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)listResultItemAtIndex:(unsigned long long)arg1;
 - (unsigned long long)listResultItemsCount;
 - (id)listTypeAsString:(int)arg1;

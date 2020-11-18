@@ -18,11 +18,13 @@
     _MKMapItemAttribution *_attribution;
     NSString *_glyph;
     UIColor *_glyphColor;
+    UIColor *_backgroundColor;
     MKPlaceCardActionItem *_selectedItem;
     id _value;
 }
 
 @property (strong, nonatomic) _MKMapItemAttribution *attribution; // @synthesize attribution=_attribution;
+@property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (readonly, copy, nonatomic) NSString *displayString; // @synthesize displayString=_displayString;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (copy, nonatomic) NSString *glyph; // @synthesize glyph=_glyph;

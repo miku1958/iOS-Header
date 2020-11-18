@@ -73,10 +73,13 @@
 - (BOOL)respondWithError:(id)arg1;
 - (BOOL)respondWithPayload:(id)arg1;
 - (BOOL)respondWithPayload:(id)arg1 error:(id)arg2;
+- (BOOL)respondWithSuccess;
+- (id)setForKey:(id)arg1;
 - (void)setLogEventSession:(id)arg1;
 - (id)shortDescription;
 - (id)stringForKey:(id)arg1;
 - (id)timeZoneForKey:(id)arg1;
+- (id)unarchivedObjectForKey:(id)arg1 ofClasses:(id)arg2;
 - (id)uuidForKey:(id)arg1;
 
 @end

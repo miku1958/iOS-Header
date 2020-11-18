@@ -6,27 +6,34 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzerProviding-Protocol.h>
+#import <SoundAnalysis/NSCopying-Protocol.h>
+#import <SoundAnalysis/NSSecureCoding-Protocol.h>
+#import <SoundAnalysis/SNAnalyzerCreating-Protocol.h>
 #import <SoundAnalysis/SNRequest-Protocol.h>
 
-@class NSString, SNFeaturePrintExtractor;
-@protocol SNAnalyzing;
+@class NSString;
 
-@interface SNCreateFeaturePrintRequest : NSObject <SNAnalyzerProviding, SNRequest>
+@interface SNCreateFeaturePrintRequest : NSObject <SNAnalyzerCreating, NSCopying, NSSecureCoding, SNRequest>
 {
-    SNFeaturePrintExtractor *_featureExtractor;
+    float _overlapFactor;
+    long long _featurePrintType;
 }
 
-@property (readonly, weak, nonatomic) id<SNAnalyzing> analyzer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic) long long featurePrintType;
+@property (nonatomic) long long featurePrintType; // @synthesize featurePrintType=_featurePrintType;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) float overlapFactor;
+@property (nonatomic) float overlapFactor; // @synthesize overlapFactor=_overlapFactor;
 @property (readonly) Class superclass;
 
-- (void).cxx_destruct;
++ (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createAnalyzerWithError:(id *)arg1;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToCreateFeaturePrintRequest:(id)arg1;
 
 @end
 

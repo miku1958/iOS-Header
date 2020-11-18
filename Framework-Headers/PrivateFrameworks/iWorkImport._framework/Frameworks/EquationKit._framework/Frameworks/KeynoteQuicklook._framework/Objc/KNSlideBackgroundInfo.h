@@ -11,11 +11,11 @@
 #import <KeynoteQuicklook/TSKTransformableObject-Protocol.h>
 
 @class KNAbstractSlide, NSString, TSDFill, TSDInfoGeometry, TSPObject, TSSPropertySetChangeDetails;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@protocol TSDInfo, TSDOwningAttachment;
 
 @interface KNSlideBackgroundInfo : NSObject <TSDChangeableInfo, TSKDocumentObject, TSKTransformableObject>
 {
-    NSObject<TSDContainerInfo> *_parentInfo;
+    NSObject<TSDInfo> *_parentInfo;
     TSSPropertySetChangeDetails *_changes;
     TSDInfoGeometry *_geometry;
     KNAbstractSlide *_slide;
@@ -30,10 +30,11 @@
 @property (copy, nonatomic) TSDInfoGeometry *geometry; // @synthesize geometry=_geometry;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @synthesize parentInfo=_parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo; // @synthesize parentInfo=_parentInfo;
 @property (readonly, weak, nonatomic) KNAbstractSlide *slide; // @synthesize slide=_slide;
 @property (readonly) Class superclass;
 

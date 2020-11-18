@@ -6,23 +6,32 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSXPCConnection;
+@class NSMutableArray, NSMutableDictionary, NSXPCConnection;
 @protocol OS_dispatch_queue;
 
 @interface DMFPolicyMonitor : NSObject
 {
+    int _firstUnlockToken;
     NSXPCConnection *_xpcConnection;
+    NSObject<OS_dispatch_queue> *_firstUnlockQueue;
     NSObject<OS_dispatch_queue> *_registrationCallbackQueue;
     NSMutableDictionary *_notificationTokensByPolicyMonitorIdentifier;
+    NSMutableArray *_pendingRequests;
 }
 
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *firstUnlockQueue; // @synthesize firstUnlockQueue=_firstUnlockQueue;
+@property (readonly, nonatomic) int firstUnlockToken; // @synthesize firstUnlockToken=_firstUnlockToken;
 @property (readonly, nonatomic) NSMutableDictionary *notificationTokensByPolicyMonitorIdentifier; // @synthesize notificationTokensByPolicyMonitorIdentifier=_notificationTokensByPolicyMonitorIdentifier;
+@property (readonly, nonatomic) NSMutableArray *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *registrationCallbackQueue; // @synthesize registrationCallbackQueue=_registrationCallbackQueue;
 @property (readonly, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
++ (BOOL)hasFirstUnlocked;
++ (const char *)mobileKeyBagFirstUnlockNotificationName;
 + (id)policyMonitor;
 + (id)remoteInterface;
 - (void).cxx_destruct;
+- (void)_dispatchRequest:(CDUnknownBlockType)arg1;
 - (void)addRegistration:(id)arg1 forPolicyMonitorIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (id)init;

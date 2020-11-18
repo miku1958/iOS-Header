@@ -8,47 +8,50 @@
 
 #import <UIKitCore/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, UIImage, UIVisualEffect, _UIVisualEffectBackdropView, _UIVisualEffectEnvironment, _UIVisualEffectHost, _UIVisualEffectViewBackdropCaptureGroup, _UIVisualEffectViewCornerMask;
+@class NSArray, NSMutableArray, NSString, UIImage, UIVisualEffect, _UIVisualEffectBackdropView, _UIVisualEffectEnvironment, _UIVisualEffectHost, _UIVisualEffectViewBackdropCaptureGroup, _UIVisualEffectViewCornerMask;
 
 @interface UIVisualEffectView : UIView <NSSecureCoding>
 {
     UIView *_maskView;
     UIImage *_maskImage;
     _UIVisualEffectViewBackdropCaptureGroup *_captureGroup;
+    NSMutableArray *_captureDependents;
     _UIVisualEffectHost *_backgroundHost;
     _UIVisualEffectHost *_contentHost;
     _UIVisualEffectEnvironment *_environment;
-    BOOL _backgroundHostNeedsUpdate;
-    BOOL _contentHostNeedsUpdate;
-    BOOL _isDependent;
-    BOOL _isUpdatingSubviews;
-    double _backdropViewBackgroundColorAlpha;
-    BOOL _useReducedTransparencyForContentHost;
-    BOOL __useKeyframeWorkaround;
+    struct {
+        unsigned int backgroundHostNeedsUpdate:1;
+        unsigned int contentHostNeedsUpdate:1;
+        unsigned int allowsDithering:1;
+        unsigned int allowsBlurring:1;
+        unsigned int allowsGroupFiltering:1;
+        unsigned int useReducedTransparencyForContentHost:1;
+        unsigned int isUpdatingSubviews:1;
+        unsigned int hasBackdropBackgroundColorAlpha:1;
+    } _effectViewFlags;
     BOOL _useLiveMasking;
-    BOOL _allowsDithering;
-    BOOL _allowsBlurring;
+    UIVisualEffectView *_captureSource;
     UIVisualEffect *_effect;
     _UIVisualEffectViewCornerMask *__cornerMask;
-    NSArray *__captureDependents;
     NSArray *_backgroundEffects;
     NSArray *_contentEffects;
 }
 
 @property (nonatomic, setter=_setAllowsGroupFiltering:) BOOL _allowsGroupFiltering;
 @property (readonly, nonatomic) BOOL _applyCornerMaskToSelf;
-@property (nonatomic, getter=_backdropViewBackgroundColorAlpha, setter=_setBackdropViewBackgroundColorAlpha:) double _backdropViewBackgroundColorAlpha;
-@property (copy, nonatomic, setter=_setCaptureDependents:) NSArray *_captureDependents; // @synthesize _captureDependents=__captureDependents;
-@property (readonly, nonatomic) _UIVisualEffectViewBackdropCaptureGroup *_captureGroup; // @synthesize _captureGroup;
+@property (nonatomic, setter=_setBackdropViewBackgroundColorAlpha:) double _backdropViewBackgroundColorAlpha;
+@property (copy, nonatomic, setter=_setCaptureDependents:) NSArray *_captureDependents;
+@property (readonly, nonatomic) _UIVisualEffectViewBackdropCaptureGroup *_captureGroup;
+@property (readonly, weak, nonatomic) UIVisualEffectView *_captureSource; // @synthesize _captureSource;
 @property (weak, nonatomic, setter=_setCaptureView:) _UIVisualEffectBackdropView *_captureView;
 @property (strong, nonatomic, setter=_setCornerMask:) _UIVisualEffectViewCornerMask *_cornerMask; // @synthesize _cornerMask=__cornerMask;
 @property (nonatomic, setter=_setCornerRadius:) double _cornerRadius;
 @property (copy, nonatomic, setter=_setGroupName:) NSString *_groupName;
 @property (strong, nonatomic, setter=_setMaskImage:) UIImage *_maskImage;
 @property (nonatomic, getter=_isNoiseEnabled, setter=_setNoiseEnabled:) BOOL _noiseEnabled;
-@property (nonatomic, setter=_setUseKeyframeWorkaround:) BOOL _useKeyframeWorkaround; // @synthesize _useKeyframeWorkaround=__useKeyframeWorkaround;
-@property (nonatomic) BOOL allowsBlurring; // @synthesize allowsBlurring=_allowsBlurring;
-@property (nonatomic) BOOL allowsDithering; // @synthesize allowsDithering=_allowsDithering;
+@property (nonatomic, setter=_setRenderMode:) long long _renderMode;
+@property (nonatomic) BOOL allowsBlurring;
+@property (nonatomic) BOOL allowsDithering;
 @property (copy, nonatomic) NSArray *backgroundEffects; // @synthesize backgroundEffects=_backgroundEffects;
 @property (copy, nonatomic) NSArray *contentEffects; // @synthesize contentEffects=_contentEffects;
 @property (readonly, nonatomic) UIView *contentView;
@@ -59,6 +62,7 @@
 + (Class)_contentViewClass;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_addCaptureDependent:(id)arg1;
 - (void)_addSubview:(id)arg1 positioned:(long long)arg2 relativeTo:(id)arg3;
 - (void)_applyCornerRadiusToSubviews;
 - (id)_backgroundHost;
@@ -75,12 +79,12 @@
 - (void)_generateBackgroundEffects:(id)arg1 contentEffects:(id)arg2;
 - (void)_generateDeferredAnimations:(id)arg1;
 - (void)_generateEffectAnimations:(id)arg1;
-- (void)_generateWorkaroundKeyframeAnimationsForEffects:(id)arg1;
 - (id)_initialValueForKey:(id)arg1;
 - (id)_maskImageForMaskView:(id)arg1;
 - (id)_maskView;
 - (void)_populateArchivedSubviews:(id)arg1;
 - (void)_registerNotifications;
+- (void)_removeCaptureDependent:(id)arg1;
 - (void)_resetEffect;
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (void)_setCornerRadius:(double)arg1 continuous:(BOOL)arg2 maskedCorners:(unsigned long long)arg3;
@@ -89,6 +93,7 @@
 - (void)_setTintOpacity:(double)arg1;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
 - (void)_unregisterNotifications;
+- (void)_updateCaptureDependents;
 - (void)_updateEffectBackgroundColor;
 - (void)_updateEffectForAccessibilityChanges:(id)arg1;
 - (void)_updateEffectForAlphaTransitionDidEnd:(id)arg1;

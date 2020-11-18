@@ -25,7 +25,12 @@
     CALayer *_minuteHandTransitionPegLayer;
     CALayer *_hourHandTransitionBodyLayer;
     CALayer *_hourHandTransitionStemLayer;
-    unsigned long long _style;
+    UIView *_hourShadowView;
+    UIView *_minuteShadowView;
+    UIView *_secondShadowView;
+    BOOL _shadowCompositingEnabled;
+    BOOL _useDirectionalShadows;
+    UIView *_directionalShadowContainerView;
     BOOL _timeScrubbing;
     BOOL _frozen;
     BOOL _showDebugClientSideHands;
@@ -67,6 +72,8 @@
 @property (readonly, nonatomic) BOOL timeScrubbing; // @synthesize timeScrubbing=_timeScrubbing;
 @property (strong, nonatomic) NSTimeZone *timeZone; // @synthesize timeZone=_timeZone;
 
++ (double)hourHandAngleForDate:(id)arg1;
++ (double)minuteHandAngleForDate:(id)arg1;
 + (long long)preferredCountOfInstancesToCache;
 - (void).cxx_destruct;
 - (void)_accessibilityInvalidateElements;
@@ -76,6 +83,7 @@
 - (BOOL)_dontRepointDebugHands;
 - (void)_enumerateHandViews:(CDUnknownBlockType)arg1;
 - (void)_enumerateSecondHandViewsWithBlock:(CDUnknownBlockType)arg1;
+- (void)_enumerateShadowViews:(CDUnknownBlockType)arg1;
 - (void)_handleDisplayLink;
 - (double)_minuteHandDotDiameter;
 - (void)_removeColorTransitionViews;
@@ -89,18 +97,27 @@
 - (void)applyHourMinuteHandsTransitionFraction:(double)arg1 fromStrokeColor:(id)arg2 fromFillColor:(id)arg3 toStrokeColor:(id)arg4 toFillColor:(id)arg5;
 - (void)applySecondHandColor:(id)arg1;
 - (void)applySecondHandTransitionFraction:(double)arg1 fromColor:(id)arg2 toColor:(id)arg3;
+- (id)createHourHandView;
+- (id)createMinuteHandView;
+- (id)createSecondHandView;
 - (void)dealloc;
 - (void)didMoveToWindow;
 - (id)displayTime;
 - (void)endScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (id)hourHandConfiguration;
 - (id)initForDevice:(id)arg1;
-- (id)initForDevice:(id)arg1 withStyle:(unsigned long long)arg2;
+- (void)layoutShadowViews;
 - (void)layoutSubviews;
+- (id)minuteHandConfiguration;
 - (void)scrubToDate:(id)arg1 animated:(BOOL)arg2;
+- (id)secondHandConfiguration;
 - (void)setOverrideDate:(id)arg1 duration:(double)arg2;
 - (void)setTimeOffset:(double)arg1;
+- (void)setUseDirectionalShadows:(BOOL)arg1;
+- (BOOL)shadowCompositingEnabled;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (BOOL)useDirectionalShadows;
 
 @end
 

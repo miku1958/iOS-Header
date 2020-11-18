@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_completionQueue;
     BOOL _disableCrossQueueHazardTracking;
     BOOL _openGLQueue;
+    unsigned long long _devicePartition;
 }
 
 @property BOOL isOpenGLQueue; // @synthesize isOpenGLQueue=_openGLQueue;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)commitSynchronously;
 - (id)completionQueue;
 - (id)description;
+- (unsigned long long)devicePartition;
 - (BOOL)disableCrossQueueHazardTracking;
 - (id)formattedDescription:(unsigned long long)arg1;
 - (id)init;
@@ -35,6 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)setCommitQueue:(id)arg1;
 - (void)setCommitSynchronously:(BOOL)arg1;
 - (void)setCompletionQueue:(id)arg1;
+- (void)setDevicePartition:(unsigned long long)arg1;
 - (void)setDisableCrossQueueHazardTracking:(BOOL)arg1;
 - (void)setMaxCommandBufferCount:(unsigned long long)arg1;
 - (void)setQosLevel:(unsigned long long)arg1;

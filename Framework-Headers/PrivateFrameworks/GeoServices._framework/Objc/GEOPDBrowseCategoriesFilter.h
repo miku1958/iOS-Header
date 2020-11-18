@@ -14,8 +14,14 @@ __attribute__((visibility("hidden")))
 @interface GEOPDBrowseCategoriesFilter : PBCodable <NSCopying>
 {
     PBUnknownFields *_unknownFields;
+    BOOL _includeAllCategoriesForVenue;
+    struct {
+        unsigned int has_includeAllCategoriesForVenue:1;
+    } _flags;
 }
 
+@property (nonatomic) BOOL hasIncludeAllCategoriesForVenue;
+@property (nonatomic) BOOL includeAllCategoriesForVenue;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
@@ -26,7 +32,10 @@ __attribute__((visibility("hidden")))
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

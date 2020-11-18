@@ -6,7 +6,7 @@
 
 #import <HomeKit/_HMAccessoryProfile.h>
 
-@class HMCameraClipManager, HMCameraUserSettings, NSArray, _HMCameraAudioControl, _HMCameraSettingsControl, _HMCameraSnapshotControl, _HMCameraStreamControl;
+@class HMCameraClipManager, HMCameraRecordingEventManager, HMCameraRecordingReachabilityEventManager, HMCameraUserSettings, NSArray, _HMCameraAudioControl, _HMCameraSettingsControl, _HMCameraSnapshotControl, _HMCameraStreamControl;
 
 @interface _HMCameraProfile : _HMAccessoryProfile
 {
@@ -17,11 +17,15 @@
     _HMCameraAudioControl *_microphoneControl;
     HMCameraUserSettings *_userSettings;
     HMCameraClipManager *_clipManager;
+    HMCameraRecordingReachabilityEventManager *_reachabilityEventManager;
+    HMCameraRecordingEventManager *_recordingEventManager;
 }
 
 @property (strong) HMCameraClipManager *clipManager; // @synthesize clipManager=_clipManager;
 @property (readonly, copy) NSArray *controls;
 @property (readonly) _HMCameraAudioControl *microphoneControl; // @synthesize microphoneControl=_microphoneControl;
+@property (strong) HMCameraRecordingReachabilityEventManager *reachabilityEventManager; // @synthesize reachabilityEventManager=_reachabilityEventManager;
+@property (strong) HMCameraRecordingEventManager *recordingEventManager; // @synthesize recordingEventManager=_recordingEventManager;
 @property (readonly) _HMCameraSettingsControl *settingsControl; // @synthesize settingsControl=_settingsControl;
 @property (readonly) _HMCameraSnapshotControl *snapshotControlInternal; // @synthesize snapshotControlInternal=_snapshotControlInternal;
 @property (readonly) _HMCameraAudioControl *speakerControl; // @synthesize speakerControl=_speakerControl;
@@ -32,12 +36,10 @@
 - (void).cxx_destruct;
 - (void)__configureWithContext:(id)arg1 accessory:(id)arg2;
 - (void)_createControls:(id)arg1;
-- (void)_registerNotificationHandlers;
 - (void)addUserSettings:(id)arg1;
-- (void)deleteAllClipsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithUUID:(id)arg1 services:(id)arg2;
 
 @end
 

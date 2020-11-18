@@ -17,8 +17,8 @@
     NSData *_referenceSignature;
 }
 
-@property (readonly, nonatomic) NSData *fileSignature; // @synthesize fileSignature=_fileSignature;
-@property (nonatomic) long long listIndex; // @synthesize listIndex=_listIndex;
+@property (readonly, copy, nonatomic) NSData *fileSignature; // @synthesize fileSignature=_fileSignature;
+@property (readonly, nonatomic) long long listIndex; // @synthesize listIndex=_listIndex;
 @property (readonly, nonatomic) NSData *referenceSignature; // @synthesize referenceSignature=_referenceSignature;
 
 + (BOOL)supportsSecureCoding;
@@ -30,6 +30,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithRepairZoneRecordID:(id)arg1 databaseScope:(long long)arg2 recordID:(id)arg3 recordType:(id)arg4 fieldName:(id)arg5;
 - (id)initWithRepairZoneRecordID:(id)arg1 databaseScope:(long long)arg2 recordID:(id)arg3 recordType:(id)arg4 fieldName:(id)arg5 fileSignature:(id)arg6 referenceSignature:(id)arg7;
+- (id)initWithRepairZoneRecordID:(id)arg1 databaseScope:(long long)arg2 recordID:(id)arg3 recordType:(id)arg4 fieldName:(id)arg5 fileSignature:(id)arg6 referenceSignature:(id)arg7 listIndex:(long long)arg8;
 - (BOOL)isEqual:(id)arg1;
 
 @end

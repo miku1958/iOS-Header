@@ -15,7 +15,7 @@
     CLLocation *_relativeLocation;
 }
 
-@property (copy, nonatomic) CLLocation *relativeLocation; // @synthesize relativeLocation=_relativeLocation;
+@property (readonly, copy, nonatomic) CLLocation *relativeLocation; // @synthesize relativeLocation=_relativeLocation;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

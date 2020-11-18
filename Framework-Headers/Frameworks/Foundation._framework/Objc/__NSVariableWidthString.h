@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly) unsigned long long length;
 
+- (id)_widthVariants;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

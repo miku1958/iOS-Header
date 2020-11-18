@@ -34,6 +34,7 @@
 @property (readonly, copy, nonatomic) NSURL *remoteURL; // @synthesize remoteURL=_remoteURL;
 
 - (void).cxx_destruct;
+- (void)_resetUnderlyingAsset;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (id)init;

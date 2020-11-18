@@ -24,3 +24,13 @@ struct _NSRange {
     unsigned long long length;
 };
 
+#pragma mark Typedef'd Structures
+
+typedef struct {
+    struct {
+        long long _field1;
+        long long _field2;
+    } _field1;
+    unsigned long long _field2;
+} CDStruct_b1a60774;
+

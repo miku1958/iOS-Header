@@ -35,12 +35,7 @@
 + (BOOL)_unsafe_isUsablePort:(unsigned int)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (void)_critical:(CDUnknownBlockType)arg1;
-- (id)_initWithPort:(unsigned int)arg1 owner:(int)arg2 trace:(id)arg3;
 - (id)_lock_encodePort:(unsigned int)arg1;
-- (void)_lock_invalidate;
-- (void)_lock_invalidateForOwner:(int)arg1;
-- (BOOL)_lock_isUsable;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithXPCDictionary:(id)arg1;

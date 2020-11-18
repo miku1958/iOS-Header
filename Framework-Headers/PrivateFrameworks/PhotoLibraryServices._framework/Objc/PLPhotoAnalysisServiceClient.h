@@ -11,7 +11,6 @@
 
 @interface PLPhotoAnalysisServiceClient : NSObject
 {
-    NSURL *_libraryURL;
     NSDictionary *_cachedRequestContextDictionary;
     NSObject<OS_dispatch_queue> *_backgroundQueue;
     NSXPCConnection *_xpcConnection;
@@ -19,22 +18,24 @@
     unsigned long long _graphLoadcount;
     BOOL _graphLoadWasSent;
     struct os_unfair_lock_s _lock;
+    NSURL *_libraryURL;
 }
+
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *backgroundQueue;
+@property (readonly, nonatomic) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
+@property (readonly, nonatomic) NSXPCConnection *xpcConnection;
 
 - (void).cxx_destruct;
 - (void)_sendGraphLoadIfNeeded;
 - (void)_setupXPCConnection;
 - (id)_xpcConnection;
-- (id)backgroundQueue;
 - (void)cancelOperationsWithIdentifiers:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)differencesBetweenClustersInClusterCacheAndLibrary:(id *)arg1;
 - (void)dispatchOnQueue:(id)arg1 blockWithoutBoost:(CDUnknownBlockType)arg2;
 - (id)dumpAnalysisStatusError:(id *)arg1;
-- (void)enrichDataModelWithProgress:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)faceCandidatesForKeyFaceForPersonsWithLocalIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)faceClusteringInformation:(unsigned long long)arg1 error:(id *)arg2;
-- (void)faceProcessingStatusForUserInterface:(CDUnknownBlockType)arg1;
 - (void)generateMemoriesRelatedDiagnosticsLogsWithReply:(CDUnknownBlockType)arg1;
 - (void)generateMemoriesWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)generateSuggestionsWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
@@ -54,9 +55,9 @@
 - (void)rebuildGraphWithOptions:(id)arg1 progress:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (BOOL)rebuildPersonsWithOptions:(id)arg1 error:(id *)arg2;
 - (BOOL)reclusterFacesWithOptions:(id)arg1 error:(id *)arg2;
+- (void)recordFeatureUsageFromCounts:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)reloadWidgetTimelineWithReply:(CDUnknownBlockType)arg1;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
-- (void)renderFaceTilesForFaceLocalIdentifiers:(id)arg1 inAssetWithLocalIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)renderFaceTilesForFaceLocalIdentifiers:(id)arg1 inAssetWithLocalIdentifier:(id)arg2 error:(id *)arg3;
 - (BOOL)reportMetricsWithOptions:(id)arg1 error:(id *)arg2;
 - (id)requestAllSocialGroupsForPersonIdentifier:(id)arg1 withError:(id *)arg2;
 - (id)requestAssetCollectionsRelatedToAssetCollectionWithLocalIdentifier:(id)arg1 options:(id)arg2 error:(id *)arg3;
@@ -69,6 +70,7 @@
 - (id)requestAssetsForPersonIdentifiers:(id)arg1 withError:(id *)arg2;
 - (id)requestAvailableSuggestionTypeInfosWithOptions:(id)arg1 error:(id *)arg2;
 - (id)requestBatchSuggestedRecipientsForMomentUUIDByAssetUUID:(id)arg1 options:(id)arg2 error:(id *)arg3;
+- (id)requestContactInferencesForPersonLocalIdentifiers:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)requestContextDictionary;
 - (id)requestContextDictionaryWithOperationId:(BOOL)arg1;
 - (id)requestCuratedAssetForAssetCollectionWithLocalIdentifier:(id)arg1 referenceAssetLocalIdentifier:(id)arg2 precision:(unsigned long long)arg3 options:(id)arg4 error:(id *)arg5;
@@ -99,12 +101,14 @@
 - (id)requestMemoryInfosWithOptions:(id)arg1 error:(id *)arg2;
 - (id)requestMemoryTreeDebugInformationWithOptions:(id)arg1 error:(id *)arg2;
 - (id)requestMetadataSnapshotFolderCreation:(id *)arg1;
+- (id)requestOnDemandFaceCropsForFaceLocalIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)requestPeopleSuggestionLearningStatisticsWithError:(id *)arg1;
 - (id)requestPeopleSuggestionLearningWithError:(id *)arg1;
 - (BOOL)requestPerformUpdatesForMomentLocalIdentifiersToInsert:(id)arg1 momentLocalIdentifiersToDelete:(id)arg2 momentLocalIdentifiersToReload:(id)arg3 error:(id *)arg4;
 - (id)requestRelatedDebugInformationBetweenAssetForLocalIdentifier:(id)arg1 andRelatedAssetCollectionForLocalIdentifier:(id)arg2 options:(id)arg3 precision:(unsigned long long)arg4 relatedType:(unsigned long long)arg5 error:(id *)arg6;
 - (id)requestRelatedDebugInformationBetweenReferenceAssetCollectionForLocalIdentifier:(id)arg1 andRelatedAssetCollectionForLocalIdentifier:(id)arg2 options:(id)arg3 precision:(unsigned long long)arg4 relatedType:(unsigned long long)arg5 error:(id *)arg6;
 - (id)requestRelatedMomentsForPersonIdentifiers:(id)arg1 withError:(id *)arg2;
+- (id)requestRelationshipInferencesForPersonLocalIdentifiers:(id)arg1 error:(id *)arg2;
 - (id)requestRepresentativeAssetsForAssetCollectionWithLocalIdentifier:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)requestRunPFLWithAttachments:(id)arg1 recipeUserInfo:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
 - (id)requestSearchIndexKeywordsForAssetCollectionUUIDs:(id)arg1 ofType:(unsigned long long)arg2 withOptions:(id)arg3 error:(id *)arg4;
@@ -113,6 +117,7 @@
 - (id)requestSharingMessageSuggestionDebugInformationForAssetCollectionLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)requestSharingSuggestionDebugInformationForAssetCollectionLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)requestSharingSuggestionsFromMessageStrings:(id)arg1 participantPHIdentifiers:(id)arg2 error:(id *)arg3;
+- (id)requestSignalModelInfosWithError:(id *)arg1;
 - (id)requestSnapshotServiceForPeopleCurationResultsWithGraphOptions:(id)arg1 error:(id *)arg2;
 - (void)requestSnapshotServiceForRelatedDebugInfoBetweenAssetForLocalIdentifier:(id)arg1 andRelatedResultsForLocalIdentifiers:(id)arg2 precision:(unsigned long long)arg3 relatedType:(unsigned long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)requestSnapshotServiceForRelatedDebugInfoBetweenMomentForLocalIdentifier:(id)arg1 andRelatedResultsForLocalIdentifiers:(id)arg2 precision:(unsigned long long)arg3 relatedType:(unsigned long long)arg4 additionalSnapshotSummaryInfo:(id)arg5 reply:(CDUnknownBlockType)arg6;
@@ -124,6 +129,7 @@
 - (id)requestSuggestedContactIdentifiersForPersonLocalIdentifier:(id)arg1 error:(id *)arg2;
 - (id)requestSuggestedContributionsForAssetsMetadata:(id)arg1 error:(id *)arg2;
 - (id)requestSuggestedMePersonIdentifierWithError:(id *)arg1;
+- (id)requestSuggestedPersonsWithOptions:(id)arg1 error:(id *)arg2;
 - (id)requestSuggestedRecipientsForAssetLocalIdentifiers:(id)arg1 momentLocalIdentifiers:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)requestSuggestionInfosWithOptions:(id)arg1 error:(id *)arg2;
 - (id)requestSynonymsDictionariesWithError:(id *)arg1;
@@ -138,7 +144,6 @@
 - (id)requestZeroKeywordsWithOptions:(id)arg1 error:(id *)arg2;
 - (BOOL)resetFaceClassificationModel:(id *)arg1;
 - (BOOL)resetFaceClusteringState:(id *)arg1;
-- (BOOL)resetPeople:(id *)arg1;
 - (id)runCurationWithItems:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)runTurboAnalysis;
 - (id)sceneNodesForSceneIdentifiers:(id)arg1 error:(id *)arg2;
@@ -148,15 +153,12 @@
 - (void)setJobProcessingConstraintsWithValues:(id)arg1 mask:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)simulateMemoriesNotificationWithOptions:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)stopTurboAnalysis;
-- (long long)suggestVerifiedPersonLocalIdentifierForFaceWithLocalIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (long long)suggestVerifiedPersonLocalIdentifierForPersonWithLocalIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (long long)suggestedPersonsForPersonWithLocalIdentifier:(id)arg1 toBeConfirmedPersonSuggestions:(id)arg2 toBeRejectedPersonSuggestions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (BOOL)turboIsEnabled;
 - (void)unloadGraph;
 - (long long)updateKeyFacesOfPersonsWithLocalIdentifiers:(id)arg1 forceUpdate:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)writeQALog:(id)arg1;
-- (id)xpcConnection;
 
 @end
 

@@ -18,13 +18,13 @@
     SOSPersistentTimerLocationManager *_sosPersistentTimerLocationManager;
     NSDate *_timeToStopSendingMessages;
     NSDate *_timeLastMessageSent;
-    CLLocation *_lastLocationSent;
     SOSContactsManager *_contactsManager;
     NSString *_medicalIDName;
     long long _notifyContactsReason;
     FKFriendsManager *_friendsManager;
     _MKLocationShifter *_locationShifter;
     NSMutableArray *_clientConnections;
+    CLLocation *_lastLocationSent;
 }
 
 @property (strong, nonatomic) NSMutableArray *clientConnections; // @synthesize clientConnections=_clientConnections;
@@ -32,7 +32,9 @@
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) FKFriendsManager *friendsManager; // @synthesize friendsManager=_friendsManager;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) CLLocation *lastLocationSent; // @synthesize lastLocationSent=_lastLocationSent;
 @property (strong, nonatomic) _MKLocationShifter *locationShifter; // @synthesize locationShifter=_locationShifter;
+@property (readonly, nonatomic) SOSPersistentTimerLocationManager *sosPersistentTimerLocationManager; // @synthesize sosPersistentTimerLocationManager=_sosPersistentTimerLocationManager;
 @property (readonly) Class superclass;
 
 + (id)GPSCoordinatesURLForLocation:(id)arg1;

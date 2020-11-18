@@ -6,11 +6,11 @@
 
 #import <Photos/NSObject-Protocol.h>
 
-@class NSURL;
+@class NSError, NSURL;
 @protocol PHAssetResourceRequest;
 
 @protocol PHAssetResourceRequestDelegate <NSObject>
 - (void)assetResourceRequest:(id<PHAssetResourceRequest>)arg1 didFindFileURL:(NSURL *)arg2;
-- (void)assetResourceRequestDidFinish:(id<PHAssetResourceRequest>)arg1;
+- (void)assetResourceRequest:(id<PHAssetResourceRequest>)arg1 didFinishWithError:(NSError *)arg2;
 @end
 

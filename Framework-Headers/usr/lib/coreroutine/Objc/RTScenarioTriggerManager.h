@@ -65,6 +65,7 @@
 - (void)setInterestedInConstantFootprint:(unsigned long long)arg1;
 - (void)setInterestedInSettledState:(unsigned long long)arg1;
 - (void)setMotionSettledState:(unsigned long long)arg1;
+- (void)setSettledStateAndSubmitMetricsForSettledState:(unsigned long long)arg1;
 - (void)setWiFiFootprintState:(long long)arg1;
 - (void)simulateScenarioTrigger:(id)arg1 handler:(CDUnknownBlockType)arg2;
 

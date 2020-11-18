@@ -23,6 +23,7 @@
 }
 
 @property (weak, nonatomic) id accessibilityContainer; // @synthesize accessibilityContainer=_accessibilityContainer;
+@property (readonly, nonatomic) struct CGRect containerAccessibilityFrame;
 @property (nonatomic) unsigned int contextId; // @synthesize contextId=_contextId;
 @property (nonatomic) BOOL deniesDirectAppConnection; // @synthesize deniesDirectAppConnection=_deniesDirectAppConnection;
 @property (readonly, nonatomic) unsigned int localHostingWindowContextId;

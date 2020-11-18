@@ -13,8 +13,6 @@
 {
     _Atomic unsigned int _maintenanceOperations;
     int *_cancelPtr;
-    BOOL _suspended;
-    BOOL _softSuspended;
     BOOL _scheduledStringsCleanup;
     NSMapTable *_checkedInClients;
     NSMutableSet *_knownClients;
@@ -51,6 +49,7 @@
 + (void)initialize;
 - (void).cxx_destruct;
 - (void)_addNewClientWithBundleID:(id)arg1;
+- (void)_appendRervseInfo:(id)arg1 dictionary:(id)arg2 key:(id)arg3 level:(unsigned long long)arg4;
 - (void)_backgroundDeleteItems:(id)arg1 bundleID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_cancelIdleTimer;
 - (void)_deleteSearchableItemsMatchingQuery:(id)arg1 forBundleIds:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
@@ -87,8 +86,8 @@
 - (void)deleteSearchableItemsWithDomainIdentifiers:(id)arg1 forBundleID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)deleteSearchableItemsWithPersonaIds:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dirty;
+- (void)dirty:(BOOL)arg1;
 - (void)dumpAllRankingDiagnosticInformationForQuery:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-- (void)ensureOpenIndexFiles;
 - (void)fetchAllCompletedBundleIDsForIndexerTask:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)fetchAttributes:(id)arg1 bundleID:(id)arg2 identifiers:(id)arg3 includeParents:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)fetchAttributes:(id)arg1 bundleID:(id)arg2 identifiers:(id)arg3 includeParents:(BOOL)arg4 completionHandler:(CDUnknownBlockType)arg5;
@@ -104,6 +103,9 @@
 - (id)initWithQueue:(id)arg1 protectionClass:(id)arg2 cancelPtr:(int *)arg3;
 - (void)issueConsistencyCheck;
 - (void)issueDefrag:(id)arg1;
+- (void)issueDumpForward:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)issueDumpReverse:(unsigned long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)issueDuplicateOidCheck;
 - (void)issueRepair;
 - (void)issueSplit;
 - (void)mergeWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -125,7 +127,6 @@
 - (void)shrink:(unsigned long long)arg1;
 - (void)startQueryWithQueryTask:(id)arg1 startHandler:(CDUnknownBlockType)arg2 eventHandler:(CDUnknownBlockType)arg3 resultsHandler:(CDUnknownBlockType)arg4;
 - (void)startReindexAll;
-- (void)suspendIndexForDeviceLock;
 - (void)updateRankingDates;
 - (void)willModifySearchableItemsWithIdentifiers:(id)arg1 forBundleID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)writeDiagnostic:(id)arg1 bundleID:(id)arg2 identifier:(id)arg3;

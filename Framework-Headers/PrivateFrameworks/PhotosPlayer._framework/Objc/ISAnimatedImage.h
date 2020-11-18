@@ -4,41 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <PhotosFormats/PFAnimatedImage.h>
 
-@class ISFrameCache;
-
-@interface ISAnimatedImage : NSObject
+@interface ISAnimatedImage : PFAnimatedImage
 {
-    struct CGImageSource *_imageSource;
-    double *_frameDelayTimes;
-    unsigned long long _frameCount;
-    unsigned long long _loopCount;
-    double _duration;
-    ISFrameCache *_frameCache;
-    struct CGSize _pixelSize;
 }
-
-@property (nonatomic) long long cacheStrategy;
-@property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
-@property (readonly, nonatomic) ISFrameCache *frameCache; // @synthesize frameCache=_frameCache;
-@property (readonly, nonatomic) unsigned long long frameCount; // @synthesize frameCount=_frameCount;
-@property (readonly, nonatomic) unsigned long long loopCount; // @synthesize loopCount=_loopCount;
-@property (readonly, nonatomic) struct CGSize pixelSize; // @synthesize pixelSize=_pixelSize;
-
-- (void).cxx_destruct;
-- (void)_preloadDelayTimes;
-- (void)dealloc;
-- (double)frameDelayAtIndex:(unsigned long long)arg1;
-- (id)init;
-- (id)initWithData:(id)arg1;
-- (id)initWithData:(id)arg1 cachingStrategy:(long long)arg2;
-- (id)initWithImageSource:(struct CGImageSource *)arg1;
-- (id)initWithImageSource:(struct CGImageSource *)arg1 cachingStrategy:(long long)arg2;
-- (id)initWithImageSource:(struct CGImageSource *)arg1 cachingStrategy:(long long)arg2 useGlobalDecodeQueue:(BOOL)arg3;
-- (id)initWithURL:(id)arg1;
-- (id)initWithURL:(id)arg1 cachingStrategy:(long long)arg2;
-- (id)initWithURL:(id)arg1 cachingStrategy:(long long)arg2 useGlobalDecodeQueue:(BOOL)arg3;
 
 @end
 

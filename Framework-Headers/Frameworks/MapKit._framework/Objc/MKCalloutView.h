@@ -23,6 +23,7 @@
 @property (readonly, nonatomic, getter=isVisible) BOOL visible;
 
 - (void).cxx_destruct;
+- (void)annotationViewFrameDidChange;
 - (void)dismissAnimated:(BOOL)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)initWithAnnotationView:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -33,6 +33,7 @@
 @property (weak, nonatomic) id<PXActionPerformerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) NSObject<PXAnonymousViewController> *hostViewController;
 @property (readonly, nonatomic) NSObject<PXAnonymousViewController> *presentedViewController; // @synthesize presentedViewController=_presentedViewController;
 @property (weak, nonatomic) id sender; // @synthesize sender=_sender;
 @property (readonly, nonatomic) unsigned long long state; // @synthesize state=_state;
@@ -54,6 +55,7 @@
 - (void)cancelActionWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)completeBackgroundTaskWithSuccess:(BOOL)arg1 error:(id)arg2;
 - (void)completeUserInteractionTaskWithSuccess:(BOOL)arg1 error:(id)arg2;
+- (id)disambiguationMenuForUseCase:(unsigned long long)arg1 withMenuActionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)dismissViewController:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithActionType:(id)arg1;
@@ -64,6 +66,7 @@
 - (void)performUserInteractionTask;
 - (BOOL)performerResetsAfterCompletion;
 - (BOOL)presentViewController:(id)arg1;
+- (BOOL)pushViewController:(id)arg1;
 - (BOOL)requiresUnlockedDevice;
 
 @end

@@ -9,24 +9,43 @@
 #import <PassKitCore/NSCopying-Protocol.h>
 #import <PassKitCore/NSSecureCoding-Protocol.h>
 
+@class NSDate, NSSet;
+
 @interface PKPeerPaymentPreferences : NSObject <NSSecureCoding, NSCopying>
 {
     BOOL _requiresConfirmation;
     BOOL _canReceiveFormalPaymentRequests;
+    BOOL _dirty;
+    NSSet *_notifications;
+    NSSet *_restrictions;
+    NSDate *_lastUpdated;
 }
 
 @property (nonatomic) BOOL canReceiveFormalPaymentRequests; // @synthesize canReceiveFormalPaymentRequests=_canReceiveFormalPaymentRequests;
+@property (nonatomic, getter=isDirty) BOOL dirty; // @synthesize dirty=_dirty;
+@property (strong, nonatomic) NSDate *lastUpdated; // @synthesize lastUpdated=_lastUpdated;
+@property (copy, nonatomic) NSSet *notifications; // @synthesize notifications=_notifications;
 @property (nonatomic) BOOL requiresConfirmation; // @synthesize requiresConfirmation=_requiresConfirmation;
+@property (copy, nonatomic) NSSet *restrictions; // @synthesize restrictions=_restrictions;
 
-+ (id)preferencesWithDictionary:(id)arg1;
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
+- (void)addRestrictionType:(unsigned long long)arg1 altDSID:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
+- (void)didUpdateNotification:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (id)initWithDictionary:(id)arg1 lastUpdated:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToPreferences:(id)arg1;
+- (BOOL)isOutOfDate;
+- (id)notificationWithType:(unsigned long long)arg1 altDSID:(id)arg2;
+- (void)removeRestrictionType:(unsigned long long)arg1 altDSID:(id)arg2;
+- (id)restrictionWithType:(unsigned long long)arg1 altDSID:(id)arg2;
 
 @end
 

@@ -10,6 +10,7 @@
 {
 }
 
+- (id)appIdentifier;
 - (void)initializeParameters;
 - (void)resourceAvailabilityChanged;
 - (void)runAsynchronouslyWithInput:(id)arg1;

@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-#import <HealthUI/HKInteractiveChartCurrentValueViewDataSource-Protocol.h>
+#import <HealthUI/HKInteractiveChartAnnotationViewDataSource-Protocol.h>
 
-@class HKDateCache, HKDisplayCategoryController, HKDisplayType, HKHealthStore, HKSelectedRangeFormatter, NSArray, NSString, UIColor, UIFont;
-@protocol HKCurrentValueViewDataSourceValueRangeFormatter;
+@class HKDateCache, HKDisplayCategoryController, HKDisplayType, HKHealthStore, HKSelectedRangeFormatter, NSArray, NSString, UIColor, UIFont, UILabel;
+@protocol HKCurrentValueViewDataSourceDelegate;
 
-@interface HKCurrentValueViewDataSource : NSObject <HKInteractiveChartCurrentValueViewDataSource>
+@interface HKCurrentValueViewDataSource : NSObject <HKInteractiveChartAnnotationViewDataSource>
 {
     BOOL _pendingData;
     NSArray *_selectedRangeData;
-    id<HKCurrentValueViewDataSourceValueRangeFormatter> _valueRangeFormatter;
+    id<HKCurrentValueViewDataSourceDelegate> _delegate;
     UIColor *_titleColor;
     HKSelectedRangeFormatter *_selectedRangeFormatter;
     HKDateCache *_dateCache;
@@ -26,11 +26,16 @@
     UIColor *_valueColor;
     UIFont *_majorFont;
     UIFont *_minorFont;
+    UILabel *_dateLabelView;
+    NSArray *_annotationLabels;
 }
 
+@property (strong, nonatomic) NSArray *annotationLabels; // @synthesize annotationLabels=_annotationLabels;
 @property (strong, nonatomic) HKDateCache *dateCache; // @synthesize dateCache=_dateCache;
 @property (strong, nonatomic) NSString *dateIntervalString; // @synthesize dateIntervalString=_dateIntervalString;
+@property (strong, nonatomic) UILabel *dateLabelView; // @synthesize dateLabelView=_dateLabelView;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<HKCurrentValueViewDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) HKDisplayCategoryController *displayCategoryController; // @synthesize displayCategoryController=_displayCategoryController;
 @property (strong, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
@@ -44,26 +49,22 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UIColor *titleColor; // @synthesize titleColor=_titleColor;
 @property (strong, nonatomic) UIColor *valueColor; // @synthesize valueColor=_valueColor;
-@property (weak, nonatomic) id<HKCurrentValueViewDataSourceValueRangeFormatter> valueRangeFormatter; // @synthesize valueRangeFormatter=_valueRangeFormatter;
 
 + (id)defaultStringForValueRange:(id)arg1 timeScope:(long long)arg2;
 - (void).cxx_destruct;
-- (id)_dividerForRangeData:(id)arg1 font:(id)arg2 foregroundColor:(id)arg3;
-- (BOOL)_isAudioExposureDisplayType;
-- (BOOL)_isDataMinMax;
-- (BOOL)_isMenstruationDisplayType;
-- (long long)_numberOfColumns;
-- (BOOL)_rangeDataIsBloodPressure:(id)arg1;
-- (BOOL)_rangeDataIsMenstruation:(id)arg1;
-- (BOOL)_rangeDataIsSleep:(id)arg1;
-- (id)_selectedRangeDataForColumnAtIndex:(long long)arg1;
-- (id)attributedTitleStringForCurrentValueView:(id)arg1;
-- (id)attributedValueStringForCurrentValueView:(id)arg1;
+- (id)_annotationLabelsFromRangeData:(id)arg1;
+- (id)_dateIntervalStringForGraphView:(id)arg1 timeScope:(long long)arg2;
+- (id)_delegateTitleForSelectedRangeData:(id)arg1;
+- (id)_delegateValueForSelectedRangeData:(id)arg1;
+- (id)_delegateValueStringForGraphView:(id)arg1 timeScope:(long long)arg2;
+- (BOOL)_pendingDataForGraphView:(id)arg1;
+- (id)dateViewWithOrientation:(long long)arg1;
 - (id)initWithDateCache:(id)arg1 displayCategoryController:(id)arg2 healthStore:(id)arg3 selectedRangeFormatter:(id)arg4;
-- (id)secondaryStringForCurrentValueView:(id)arg1;
-- (id)secondaryTextColorForCurrentValueView:(id)arg1;
-- (id)textColorForCurrentValueView:(id)arg1;
+- (id)leftMarginViewWithOrientation:(long long)arg1;
+- (long long)numberOfValuesForAnnotationView:(id)arg1;
+- (BOOL)showSeparators;
 - (void)updateDataSourceWithGraphView:(id)arg1 displayType:(id)arg2 timeScope:(long long)arg3;
+- (id)valueViewForColumnAtIndex:(long long)arg1 orientation:(long long)arg2;
 
 @end
 

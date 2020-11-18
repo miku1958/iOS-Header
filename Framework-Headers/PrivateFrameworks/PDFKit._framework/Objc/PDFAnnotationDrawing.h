@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 + (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withLinkAnnotation:(id)arg3;
 + (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withMarkupAnnotation:(id)arg3;
 + (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withPopupAnnotation:(id)arg3;
++ (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withRedactAnnotation:(id)arg3;
 + (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withSquareAnnotation:(id)arg3;
 + (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withStampAnnotation:(id)arg3;
 + (void)drawWithBox:(long long)arg1 inContext:(struct CGContext *)arg2 withTextAnnotation:(id)arg3;

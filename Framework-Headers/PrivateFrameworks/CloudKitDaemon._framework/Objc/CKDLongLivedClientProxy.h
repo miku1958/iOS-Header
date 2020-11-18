@@ -16,16 +16,16 @@
 + (id)sharedLongLivedProxies;
 - (id)CKPropertiesDescription;
 - (id)_clientPrefixEntitlement;
-- (void)_handleCompletionForOperation:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (void)_handleProgressForOperation:(id)arg1 withArguments:(id)arg2;
+- (void)_handleCompletionForOperation:(id)arg1 initialMessageReplyBlock:(CDUnknownBlockType)arg2 customCompletionBlock:(CDUnknownBlockType)arg3;
 - (BOOL)_hasCustomAccountsEntitlement;
 - (BOOL)_hasEnvironmentEntitlement;
 - (void)addOperationWithOperationInfo:(id)arg1;
 - (id)applicationBundleID;
-- (id)applicationBundleIDForPush;
+- (id)applicationBundleIdentifierForPush;
+- (id)applicationID;
 - (id)apsEnvironmentEntitlement;
 - (id)associatedApplicationBundleID;
-- (id)bundleIdentifier;
+- (id)callbackProxyForOperationInfo:(id)arg1 clientProvidedCallbackProxy:(id)arg2;
 - (id)description;
 - (BOOL)hasAllowAccessDuringBuddyEntitlement;
 - (BOOL)hasAllowUnverifiedAccountEntitlement;
@@ -33,7 +33,6 @@
 - (BOOL)hasDarkWakeNetworkReachabilityEnabledEntitlement;
 - (BOOL)hasDeviceIdentifierEntitlement;
 - (BOOL)hasDisplaysSystemAcceptPromptEntitlement;
-- (BOOL)hasExplicitCodeOperationURLEntitlement;
 - (BOOL)hasLightweightPCSEntitlement;
 - (BOOL)hasMasqueradingEntitlement;
 - (BOOL)hasNonLegacyShareURLEntitlement;
@@ -41,11 +40,11 @@
 - (BOOL)hasParticipantPIIEntitlement;
 - (BOOL)hasProtectionDataEntitlement;
 - (BOOL)hasTCCAuthorization;
+- (BOOL)hasValidatedEntitlements;
 - (BOOL)hasZoneProtectionDataEntitlement;
 - (id)initWithClientContext:(id)arg1;
 - (BOOL)isLongLived;
-- (id)serviceNameForContainerMapEntitlement;
-- (id)sourceApplicationBundleIdentifier;
+- (id)serviceNameForContainerIdentifierMapEntitlement;
 
 @end
 

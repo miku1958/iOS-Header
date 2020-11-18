@@ -7,17 +7,20 @@
 #import <objc/NSObject.h>
 
 @class NSArray, NSDateInterval, PLDateRangeTitleGenerator, PLFrequentLocationManager, PLLocalCreationDateCreator;
+@protocol PLMomentGenerationDataManagement;
 
 @interface PLPhotosHighlightClusterGenerator : NSObject
 {
-    NSArray *_allMoments;
+    NSArray *_allMomentsSorted;
+    id<PLMomentGenerationDataManagement> _dataManager;
     PLFrequentLocationManager *_frequentLocationManager;
     NSDateInterval *_recentHighlightsDateInterval;
     PLLocalCreationDateCreator *_localCreationDateCreator;
     PLDateRangeTitleGenerator *_dateRangeTitleGenerator;
 }
 
-@property (readonly, nonatomic) NSArray *allMoments; // @synthesize allMoments=_allMoments;
+@property (readonly, nonatomic) NSArray *allMomentsSorted; // @synthesize allMomentsSorted=_allMomentsSorted;
+@property (readonly, weak, nonatomic) id<PLMomentGenerationDataManagement> dataManager; // @synthesize dataManager=_dataManager;
 @property (readonly, nonatomic) PLDateRangeTitleGenerator *dateRangeTitleGenerator; // @synthesize dateRangeTitleGenerator=_dateRangeTitleGenerator;
 @property (readonly, nonatomic) PLFrequentLocationManager *frequentLocationManager; // @synthesize frequentLocationManager=_frequentLocationManager;
 @property (readonly, nonatomic) PLLocalCreationDateCreator *localCreationDateCreator; // @synthesize localCreationDateCreator=_localCreationDateCreator;
@@ -28,8 +31,8 @@
 - (id)_aggregationsInMoments:(id)arg1 unavailableMoments:(id)arg2 intersectingMoments:(id)arg3;
 - (id)_dayMomentClustersWithMomentsSortedByDate:(id)arg1 localCreationDateCreator:(id)arg2;
 - (BOOL)_isRecent:(id)arg1;
-- (id)_recentHighlightClusterWithMoments:(id)arg1;
-- (id)_recentHighlightClusterWithMoments:(id)arg1 intersectingMoments:(id)arg2;
+- (id)_recentHighlightClusterWithRecentMoments:(id)arg1;
+- (id)_recentHighlightClusterWithRecentMoments:(id)arg1 intersectingMoments:(id)arg2;
 - (id)_recentMoments;
 - (id)_remainingHighlightClusterWithMoments:(id)arg1;
 - (id)_remainingHighlightClustersWithClusters:(id)arg1 intersectingMoments:(id)arg2;
@@ -37,7 +40,7 @@
 - (id)_tripHighlightClustersForMoments:(id)arg1 tripType:(unsigned long long)arg2;
 - (id)_tripsInMoments:(id)arg1;
 - (id)highlightClustersIntersectingMoments:(id)arg1 includeAllTripHighlightClusters:(BOOL)arg2;
-- (id)initWithAllMoments:(id)arg1 frequentLocationManager:(id)arg2 recentHighlightDateInterval:(id)arg3 localCreationDateCreator:(id)arg4 dateRangeTitleGenerator:(id)arg5;
+- (id)initWithDataManager:(id)arg1 frequentLocationManager:(id)arg2 recentHighlightDateInterval:(id)arg3 localCreationDateCreator:(id)arg4 dateRangeTitleGenerator:(id)arg5;
 - (id)recentMomentsInMomentClusters:(id)arg1;
 
 @end

@@ -6,83 +6,28 @@
 
 #import <Foundation/NSExtensionContext.h>
 
-#import <AudioToolboxCore/AUAudioUnitXPCProtocol-Protocol.h>
+@class AUAudioUnitViewService, AURemoteHost;
 
-@class AUAudioUnit, AUAudioUnitViewService, AUParameterTree, NSMutableArray, NSObject, NSXPCConnection;
-@protocol OS_dispatch_queue, OS_dispatch_source, OS_voucher;
-
-@interface AURemoteExtensionContext : NSExtensionContext <AUAudioUnitXPCProtocol>
+@interface AURemoteExtensionContext : NSExtensionContext
 {
-    AUAudioUnit *_audioUnit;
+    AURemoteHost *_host;
     BOOL _isUIExtension;
-    struct AudioComponentDescription _componentDescription;
-    NSXPCConnection *_remoteHostXPCConnection;
-    struct AUExtRenderingServer *_renderServer;
-    NSObject<OS_voucher> *_initializationVoucher;
-    AUParameterTree *_cachedParameterTree;
-    struct reply_watchdog_factory _replyWatchdogFactory;
-    NSObject<OS_dispatch_queue> *_presetMonitoringQueue;
-    NSObject<OS_dispatch_source> *_presetFolderWatcher;
     BOOL _isRunningInProcess;
-    NSMutableArray *_userPresets;
-    int _deferPropertyChangeNotifications;
     AUAudioUnitViewService *_viewService;
-    NSObject<OS_dispatch_queue> *_propertyObserverQueue;
-    NSMutableArray *_pendingChangedProperties;
 }
 
-@property (nonatomic) int deferPropertyChangeNotifications; // @synthesize deferPropertyChangeNotifications=_deferPropertyChangeNotifications;
-@property (readonly, nonatomic) NSMutableArray *pendingChangedProperties; // @synthesize pendingChangedProperties=_pendingChangedProperties;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyObserverQueue; // @synthesize propertyObserverQueue=_propertyObserverQueue;
 @property (nonatomic) AUAudioUnitViewService *viewService; // @synthesize viewService=_viewService;
 
 + (id)_extensionAuxiliaryHostProtocol;
 + (id)_extensionAuxiliaryVendorProtocol;
-- (id).cxx_construct;
++ (BOOL)conformsToProtocol:(id)arg1;
++ (BOOL)instancesRespondToSelector:(SEL)arg1;
 - (void).cxx_destruct;
-- (id)_fetchAndClearPendingChangedProperties;
-- (id)_getBus:(unsigned int)arg1 scope:(unsigned int)arg2 error:(id *)arg3;
-- (BOOL)_identifyBus:(id)arg1 scope:(unsigned int *)arg2 element:(unsigned int *)arg3;
-- (void)addPropertyObserver:(id)arg1 context:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)close:(CDUnknownBlockType)arg1;
-- (id)currentParameterTree;
-- (void)dealloc;
-- (void)deleteUserPreset:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)disableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)enableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)getBusses:(unsigned int)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)getParameter:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)getParameterTree:(CDUnknownBlockType)arg1;
+- (id)forwardingTargetForSelector:(SEL)arg1;
 - (id)iOSViewController;
 - (id)initWithInputItems:(id)arg1 listenerEndpoint:(id)arg2 contextUUID:(id)arg3;
-- (void)initialize2:(int)arg1 formats:(id)arg2 maxFrames:(unsigned long long)arg3 buffer:(id)arg4 bufferSize:(unsigned int)arg5 beginSem:(id)arg6 endSem:(id)arg7 reply:(CDUnknownBlockType)arg8;
-- (void)initialize:(unsigned long long)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)loadUserPresets:(CDUnknownBlockType)arg1;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)open:(CDUnknownBlockType)arg1;
-- (void)parameterNode:(id)arg1 displayNameWithLength:(long long)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)parameterStringFromValue:(float)arg1 currentValue:(BOOL)arg2 address:(unsigned long long)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)parameterValueFromString:(id)arg1 address:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)parametersForOverviewWithCount:(long long)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)presetStateFor:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)profileStateForCable:(unsigned char)arg1 channel:(unsigned char)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)removePropertyObserver:(id)arg1 context:(unsigned long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)reset:(CDUnknownBlockType)arg1;
-- (void)saveUserPreset:(id)arg1 state:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)selectViewConfiguration:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)setBusCount:(unsigned long long)arg1 scope:(unsigned int)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)setBusFormat:(unsigned int)arg1 scope:(unsigned int)arg2 format:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)setBusName:(unsigned int)arg1 scope:(unsigned int)arg2 name:(id)arg3 reply:(CDUnknownBlockType)arg4;
-- (void)setValue:(id)arg1 forKey:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)setValue:(id)arg1 forProperty:(id)arg2 reply:(CDUnknownBlockType)arg3;
-- (void)setWorkIntervalPort:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)startUserPresetFolderMonitoring;
-- (void)supportedViewConfigurations:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)syncParameter:(unsigned long long)arg1 value:(float)arg2 extOriginator:(unsigned long long)arg3 hostTime:(unsigned long long)arg4 eventType:(unsigned int)arg5;
-- (void)uninitialize:(CDUnknownBlockType)arg1;
-- (void)valueForKey:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)valueForProperty:(id)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end
 

@@ -6,11 +6,12 @@
 
 #import <SearchFoundation/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString;
+@class NSArray, NSData, NSDictionary, NSMutableDictionary, NSString;
 
 @protocol SFSearchSuggestion <NSObject>
 
 @property (copy, nonatomic) NSString *bundleIdentifier;
+@property (copy, nonatomic) NSString *detailText;
 @property (readonly, nonatomic) NSDictionary *dictionaryRepresentation;
 @property (copy, nonatomic) NSArray *duplicateSuggestions;
 @property (copy, nonatomic) NSString *fbr;
@@ -20,6 +21,7 @@
 @property (copy, nonatomic) NSString *query;
 @property (copy, nonatomic) NSString *scopedSearchApplicationBundleIdentifier;
 @property (nonatomic) double score;
+@property (copy, nonatomic) NSMutableDictionary *serverFeatures;
 @property (copy, nonatomic) NSString *suggestion;
 @property (copy, nonatomic) NSString *topicIdentifier;
 @property (nonatomic) int type;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property float confidence; // @synthesize confidence=_confidence;
 @property long long objectType; // @synthesize objectType=_objectType;
 
+- (id)description;
 - (id)initWithObjectType:(long long)arg1 boundingBox:(struct CGRect)arg2 confidence:(float)arg3;
 
 @end

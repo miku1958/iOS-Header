@@ -6,7 +6,12 @@
 
 #import <NewsArticles/_TtC12NewsArticles24PDFReplicaViewController.h>
 
-@interface _TtC12NewsArticles24PDFReplicaViewController (NewsArticles)
+#import <NewsArticles/PDFViewDelegate-Protocol.h>
+
+@interface _TtC12NewsArticles24PDFReplicaViewController (NewsArticles) <PDFViewDelegate>
+- (void)PDFViewWillClickOnLink:(id)arg1 withURL:(id)arg2;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (void)handlePinchGesture;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

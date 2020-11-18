@@ -13,6 +13,7 @@
 
 @interface PXGViewTextureConverter : NSObject <PXGTextureConverter>
 {
+    BOOL _lowMemoryMode;
     NSObject<OS_dispatch_queue> *_requestQueue;
     NSObject<OS_dispatch_queue> *_processingQueue;
 }
@@ -20,6 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL lowMemoryMode; // @synthesize lowMemoryMode=_lowMemoryMode;
 @property (readonly, nonatomic) int presentationType;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *processingQueue; // @synthesize processingQueue=_processingQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *requestQueue; // @synthesize requestQueue=_requestQueue;
@@ -28,6 +30,7 @@
 @property (readonly, nonatomic) PXGImageTexture *transparentTexture;
 
 - (void).cxx_destruct;
+- (id)createAtlasForTextureAtlasManager:(id)arg1;
 - (id)createPayloadTextureFromPayload:(id)arg1;
 - (id)createTextureAtlasManagerForImageDataSpec:(CDStruct_1b544862)arg1;
 - (id)createTextureFromCGImage:(struct CGImage *)arg1 orientation:(unsigned int)arg2;

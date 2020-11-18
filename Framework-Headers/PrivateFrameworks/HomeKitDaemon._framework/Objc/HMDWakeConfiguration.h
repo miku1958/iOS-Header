@@ -6,20 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDWakeConfigurationParamaters, NSData, NSString;
+@class HMDWakeConfigurationParameters, NSData, NSString;
 
-@interface HMDWakeConfiguration : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDWakeConfiguration : NSObject <NSCopying, HAPTLVProtocol>
 {
     NSData *_reserved;
-    HMDWakeConfigurationParamaters *_custom1;
-    HMDWakeConfigurationParamaters *_custom2;
+    HMDWakeConfigurationParameters *_custom1;
+    HMDWakeConfigurationParameters *_custom2;
 }
 
-@property (strong, nonatomic) HMDWakeConfigurationParamaters *custom1; // @synthesize custom1=_custom1;
-@property (strong, nonatomic) HMDWakeConfigurationParamaters *custom2; // @synthesize custom2=_custom2;
+@property (strong, nonatomic) HMDWakeConfigurationParameters *custom1; // @synthesize custom1=_custom1;
+@property (strong, nonatomic) HMDWakeConfigurationParameters *custom2; // @synthesize custom2=_custom2;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

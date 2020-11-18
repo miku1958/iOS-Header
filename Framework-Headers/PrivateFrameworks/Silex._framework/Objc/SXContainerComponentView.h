@@ -40,7 +40,7 @@
 - (BOOL)isTransitionable;
 - (struct CGRect)originalFrameForContentView:(id)arg1 behavior:(id)arg2;
 - (void)prepareForTransitionType:(unsigned long long)arg1;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)removeComponentView:(id)arg1;
 - (struct CGRect)transitionContentFrame;
 - (id)transitionContentView;

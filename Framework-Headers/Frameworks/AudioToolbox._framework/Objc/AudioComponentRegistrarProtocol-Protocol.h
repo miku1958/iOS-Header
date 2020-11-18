@@ -8,6 +8,6 @@
 
 @protocol AudioComponentRegistrarProtocol
 - (void)canRegisterComponent:(NSDictionary *)arg1 reply:(void (^)(BOOL))arg2;
-- (void)getComponentList:(NSString *)arg1 linkedSDKVersion:(int)arg2 includeExtensions:(BOOL)arg3 reply:(void (^)(NSData *, NSData *, NSArray *, BOOL))arg4;
+- (void)getComponentList:(NSString *)arg1 linkedSDKRequiresEntitlement:(BOOL)arg2 includeExtensions:(BOOL)arg3 reply:(void (^)(NSData *, NSData *, NSArray *, BOOL))arg4;
 @end
 

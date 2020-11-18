@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMDHome, HMFLogEventSession, HMFMessageDispatcher, NSArray, NSMutableArray, NSObject, NSString, NSUUID;
+@class HMDHome, HMFMessageDispatcher, NSArray, NSMutableArray, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDAssistantCommandHelper : HMFObject <HMFMessageReceiver, HMFLogging>
@@ -27,7 +27,6 @@
     NSArray *_requests;
     NSArray *_mediaRequests;
     NSMutableArray *_mediaResponses;
-    HMFLogEventSession *_logEventSession;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -35,7 +34,6 @@
 @property (nonatomic) BOOL executingActionSet; // @synthesize executingActionSet=_executingActionSet;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) HMDHome *home; // @synthesize home=_home;
-@property (strong, nonatomic) HMFLogEventSession *logEventSession; // @synthesize logEventSession=_logEventSession;
 @property (strong, nonatomic) NSArray *mediaRequests; // @synthesize mediaRequests=_mediaRequests;
 @property (copy, nonatomic) CDUnknownBlockType mediaResponseHandler; // @synthesize mediaResponseHandler=_mediaResponseHandler;
 @property (strong, nonatomic) NSMutableArray *mediaResponses; // @synthesize mediaResponses=_mediaResponses;
@@ -53,7 +51,7 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
-- (void)__handleAccessoryCharacteristicsChangedNotification:(id)arg1;
+- (void)__handleAccessoryCharacteristicsChanged:(id)arg1;
 - (void)_register;
 - (void)_reportOperationStartedForAccessory:(id)arg1;
 - (void)_reportResponses;
@@ -63,7 +61,8 @@
 - (void)addReadRequests:(id)arg1 home:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addWriteRequests:(id)arg1 home:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
-- (id)initWithQueue:(id)arg1 msgDispatcher:(id)arg2 logEventSession:(id)arg3;
+- (void)handleAccessoryCharacteristicsChangedNotification:(id)arg1;
+- (id)initWithQueue:(id)arg1 msgDispatcher:(id)arg2;
 - (void)removeResponses:(id)arg1;
 - (void)reportOperationStartedForAccessory:(id)arg1;
 - (void)timeoutAndReportResults;

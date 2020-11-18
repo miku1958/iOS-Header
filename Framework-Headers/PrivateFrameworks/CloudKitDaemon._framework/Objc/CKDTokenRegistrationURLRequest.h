@@ -23,14 +23,14 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL skipBundleIDCheck; // @synthesize skipBundleIDCheck=_skipBundleIDCheck;
 
 - (void).cxx_destruct;
+- (id)applicationBundleIdentifierForContainerAccess;
+- (id)applicationBundleIdentifierForNetworkAttribution;
 - (id)flowControlKey;
 - (id)generateRequestOperations;
-- (id)initWithApsToken:(id)arg1 apsEnvironmentString:(id)arg2 bundleID:(id)arg3 skipBundleIDCheck:(BOOL)arg4;
-- (int)operationType;
+- (id)initWithOperation:(id)arg1 apsToken:(id)arg2 apsEnvironmentString:(id)arg3 bundleID:(id)arg4 skipBundleIDCheck:(BOOL)arg5;
 - (id)requestDidParseProtobufObject:(id)arg1;
 - (id)requestOperationClasses;
 - (BOOL)requiresTokenRegistration;
-- (id)sourceApplicationBundleIdentifier;
 - (id)sourceApplicationSecondaryIdentifier;
 
 @end

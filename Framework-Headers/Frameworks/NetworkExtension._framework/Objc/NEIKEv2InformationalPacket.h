@@ -18,7 +18,6 @@
 @property (strong) NSArray *deletes; // @synthesize deletes=_deletes;
 @property (readonly) BOOL isDeleteChild;
 @property (readonly) BOOL isDeleteIKE;
-@property (readonly) BOOL isKeepalive;
 @property (readonly) BOOL isMOBIKE;
 
 + (id)copyTypeDescription;
@@ -39,7 +38,6 @@
 - (BOOL)validateDeleteChild:(id)arg1;
 - (BOOL)validateDeleteIKE;
 - (BOOL)validateInformational;
-- (BOOL)validateKeepalive;
 - (BOOL)validateMOBIKE:(id)arg1;
 - (BOOL)validateUpdateAddresses:(id)arg1;
 

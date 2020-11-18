@@ -30,10 +30,8 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_activeDownloadForIdentifierSet:(id)arg1;
 - (struct MPLibraryActiveKeepLocalStatus)_calculateCurrentStatus;
 - (void)_handleDownloadStateChanged:(id)arg1;
-- (id)_pausedDownloadForIdentifierSet:(id)arg1;
 - (void)_transientStateDidChangeNotification:(id)arg1;
 - (BOOL)_updateActiveDownloadsAllowingDownloadRemoval:(BOOL)arg1;
 - (void)_updateCurrentStatus;

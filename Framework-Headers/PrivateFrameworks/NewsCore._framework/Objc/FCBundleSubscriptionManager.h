@@ -64,6 +64,7 @@
 - (void)removeObserver:(id)arg1;
 - (void)renewalNoticeShownWithPurchaseID:(id)arg1;
 - (void)setupCachedSubscription;
+- (void)silentExpireBundleSubscription;
 - (void)updateCachedSubscriptionWithSubscription:(id)arg1;
 - (void)updateHasRunEntitlementOnce:(BOOL)arg1;
 

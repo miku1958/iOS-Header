@@ -9,12 +9,12 @@
 #import <CloudKitDaemon/CKDFlowControllable-Protocol.h>
 #import <CloudKitDaemon/CKDURLRequestAuthRetryDelegate-Protocol.h>
 #import <CloudKitDaemon/CKDURLRequestMetricsDelegate-Protocol.h>
+#import <CloudKitDaemon/CKThrottlingCriteria-Protocol.h>
 
-@class CKDClientContext, CKDClientProxy, CKDOperationMetrics, CKDURLRequest, CKOperationInfo, CKOperationMMCSRequestOptions, CKOperationResult, NSDate, NSError, NSMutableArray, NSNumber, NSObject, NSString;
-@protocol NSObject, OS_dispatch_group, OS_dispatch_queue, OS_os_activity;
+@class CKDClientContext, CKDClientProxy, CKDOperationMetrics, CKDURLRequest, CKOperationInfo, CKOperationMMCSRequestOptions, CKOperationMetrics, NSDate, NSError, NSMutableArray, NSMutableDictionary, NSNumber, NSObject, NSString;
+@protocol CKOperationCallbacks, NSObject, OS_dispatch_group, OS_dispatch_queue, OS_os_activity;
 
-__attribute__((visibility("hidden")))
-@interface CKDOperation : NSOperation <CKDURLRequestMetricsDelegate, CKDURLRequestAuthRetryDelegate, CKDFlowControllable>
+@interface CKDOperation : NSOperation <CKDURLRequestMetricsDelegate, CKDURLRequestAuthRetryDelegate, CKThrottlingCriteria, CKDFlowControllable>
 {
     unsigned long long _state;
     NSObject<OS_os_activity> *_osActivity;
@@ -22,11 +22,12 @@ __attribute__((visibility("hidden")))
     BOOL _isExecuting;
     BOOL _useEncryption;
     BOOL _useClearAssetEncryption;
-    BOOL _isProxyOperation;
+    BOOL _isLongLivedCallbackRelayOperation;
     BOOL _shouldPipelineFetchAllChangesRequests;
     BOOL _didAttemptDugongKeyRoll;
     _Atomic int _pcsWaitCount;
     CKDURLRequest *_request;
+    id<CKOperationCallbacks> _clientOperationCallbackProxy;
     NSDate *_startDate;
     CKDOperation *_parentOperation;
     CKDClientContext *_context;
@@ -53,11 +54,15 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL allowsBackgroundNetworking;
 @property (readonly, nonatomic) BOOL allowsCellularAccess;
 @property (readonly, nonatomic) BOOL allowsPowerNapScheduling;
+@property (readonly, nonatomic) NSString *applicationBundleIdentifierForContainerAccess;
+@property (readonly, nonatomic) NSString *applicationBundleIdentifierForNetworkAttribution;
 @property (readonly, nonatomic) NSString *authPromptReason;
 @property (readonly, nonatomic) BOOL automaticallyRetryNetworkFailures;
+@property (readonly, nonatomic) NSNumber *cacheDeleteAvailableSpaceClass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (strong, nonatomic) NSMutableArray *childOperations; // @synthesize childOperations=_childOperations;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *childOperationsGroup; // @synthesize childOperationsGroup=_childOperationsGroup;
+@property (strong, nonatomic) id<CKOperationCallbacks> clientOperationCallbackProxy; // @synthesize clientOperationCallbackProxy=_clientOperationCallbackProxy;
 @property (strong, nonatomic) NSString *clientSuppliedDeviceIdentifier; // @synthesize clientSuppliedDeviceIdentifier=_clientSuppliedDeviceIdentifier;
 @property (strong, nonatomic) CKDOperationMetrics *cloudKitMetrics; // @synthesize cloudKitMetrics=_cloudKitMetrics;
 @property (strong, nonatomic) CKDClientContext *context; // @synthesize context=_context;
@@ -68,6 +73,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long discretionaryWhenBackgroundedState;
 @property (readonly, nonatomic) unsigned long long duetPreClearedMode;
 @property (strong) NSError *error; // @synthesize error=_error;
+@property (readonly, nonatomic) BOOL expectDelayBeforeRequestBegins;
 @property (strong, nonatomic) NSMutableArray *finishedChildOperationIDs; // @synthesize finishedChildOperationIDs=_finishedChildOperationIDs;
 @property (readonly, nonatomic) NSString *flowControlKey;
 @property (readonly) unsigned long long hash;
@@ -75,7 +81,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isExecuting; // @synthesize isExecuting=_isExecuting;
 @property (nonatomic) BOOL isFinished; // @synthesize isFinished=_isFinished;
 @property (readonly, nonatomic) BOOL isLongLived;
-@property (readonly, nonatomic) BOOL isProxyOperation; // @synthesize isProxyOperation=_isProxyOperation;
+@property (readonly, nonatomic) BOOL isLongLivedCallbackRelayOperation; // @synthesize isLongLivedCallbackRelayOperation=_isLongLivedCallbackRelayOperation;
 @property (strong, nonatomic) NSDate *metricExecuteStartDate; // @synthesize metricExecuteStartDate=_metricExecuteStartDate;
 @property (readonly, nonatomic) unsigned long long networkServiceType;
 @property (readonly, nonatomic) NSString *operationGroupID;
@@ -83,7 +89,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSNumber *operationGroupQuantityNumber;
 @property (readonly, nonatomic) NSString *operationID;
 @property (strong, nonatomic) CKOperationInfo *operationInfo; // @synthesize operationInfo=_operationInfo;
-@property (readonly, nonatomic) CKOperationResult *operationResult;
+@property (readonly, nonatomic) CKOperationMetrics *operationMetrics;
 @property (readonly, nonatomic) NSObject<OS_os_activity> *osActivity;
 @property (weak, nonatomic) CKDOperation *parentOperation; // @synthesize parentOperation=_parentOperation;
 @property (nonatomic) _Atomic int pcsWaitCount; // @synthesize pcsWaitCount=_pcsWaitCount;
@@ -97,8 +103,6 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned long long resolvedDiscretionaryNetworkBehavior;
 @property (readonly, nonatomic) BOOL shouldCheckAppVersion;
 @property (nonatomic) BOOL shouldPipelineFetchAllChangesRequests; // @synthesize shouldPipelineFetchAllChangesRequests=_shouldPipelineFetchAllChangesRequests;
-@property (readonly, nonatomic) BOOL shouldSkipZonePCSUpdate;
-@property (readonly, nonatomic) NSString *sourceApplicationBundleIdentifier;
 @property (readonly, nonatomic) NSString *sourceApplicationSecondaryIdentifier;
 @property (strong, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (nonatomic) unsigned long long state;
@@ -108,6 +112,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) double timeoutIntervalForRequest;
 @property (readonly, nonatomic) double timeoutIntervalForResource;
 @property (readonly, weak, nonatomic) CKDOperation *topmostParentOperation;
+@property (readonly, nonatomic) NSMutableDictionary *unitTestOverrides;
 @property (nonatomic) BOOL useClearAssetEncryption; // @synthesize useClearAssetEncryption=_useClearAssetEncryption;
 @property (nonatomic) BOOL useEncryption; // @synthesize useEncryption=_useEncryption;
 @property (readonly, nonatomic) BOOL usesBackgroundSession;
@@ -141,10 +146,12 @@ __attribute__((visibility("hidden")))
 - (id)analyticsPayload;
 - (id)baseOperationAndErrorInfoCoreAnalyticsPayloadWithError:(id)arg1;
 - (void)cancel;
+- (BOOL)checkAndClearUnitTestOverrides:(id)arg1;
 - (id)ckShortDescription;
 - (void)combineMetricsWithOperation:(id)arg1;
 - (void)configureQualityOfServiceFromOperationInfo:(id)arg1;
 - (void)configureRequest:(id)arg1;
+- (id)containerID;
 - (id)createConcurrentQueue;
 - (id)createInactiveConcurrentQueue;
 - (id)createInactiveSerialQueue;
@@ -152,13 +159,12 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (unsigned long long)discretionaryNetworkBehavior;
 - (id)dugongKeyRollAnalyticsPayloadWithError:(id)arg1;
-- (void)fillOutOperationResult:(id)arg1;
 - (void)finishWithError:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (BOOL)isConcurrent;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isNetworkingBehaviorEquivalentForOperation:(id)arg1;
-- (BOOL)isTopLevelDaemonOperationForMetrics;
+- (BOOL)isTopLevelDaemonOperation;
 - (BOOL)isWaitingOnPCS;
 - (void)main;
 - (BOOL)makeStateTransition;
@@ -166,8 +172,8 @@ __attribute__((visibility("hidden")))
 - (id)nameForState:(unsigned long long)arg1;
 - (void)noteOperationDidFinishWaitingOnPCS;
 - (void)noteOperationWillWaitOnPCS;
-- (Class)operationResultClass;
 - (BOOL)operationShouldBeFlowControlled;
+- (int)operationType;
 - (void)request:(id)arg1 didFinishWithMetrics:(id)arg2 w3cNavigationTiming:(id)arg3;
 - (void)requestDidBeginWaitingForUserAuth:(id)arg1;
 - (void)requestDidEndWaitingForUserAuth:(id)arg1;

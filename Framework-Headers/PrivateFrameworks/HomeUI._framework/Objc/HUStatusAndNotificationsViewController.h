@@ -37,11 +37,13 @@
 - (void)conditionEditorModuleController:(id)arg1 didUpdateConditionCollection:(id)arg2;
 - (void)conditionEditorModuleController:(id)arg1 dismissDetailViewController:(id)arg2;
 - (void)conditionEditorModuleController:(id)arg1 presentDetailViewController:(id)arg2;
-- (id)initWithServiceItem:(id)arg1 home:(id)arg2;
+- (id)initWithServiceItem:(id)arg1 inHome:(id)arg2 displayingDetails:(BOOL)arg3;
 - (id)itemModuleControllers;
+- (void)setupCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3;
 - (BOOL)shouldHideHeaderAboveSection:(long long)arg1;
 - (void)smartNotificationSettingsModuleController:(id)arg1 didUpdateConditionCollection:(id)arg2;
 - (void)switchCell:(id)arg1 didTurnOn:(BOOL)arg2;
+- (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 indexPath:(id)arg3 animated:(BOOL)arg4;

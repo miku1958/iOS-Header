@@ -20,6 +20,10 @@
 - (void).cxx_destruct;
 - (id)_remoteObjectProxy;
 - (void)_unblockPendingQueries;
+- (BOOL)contactHandlesForSource:(id)arg1 error:(id *)arg2 handleBatch:(CDUnknownBlockType)arg3;
+- (void)contactHandlesForSourceBatch:(id)arg1 isLast:(BOOL)arg2 error:(id)arg3 queryId:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
+- (BOOL)contactHandlesForTopics:(id)arg1 error:(id *)arg2 handleBatch:(CDUnknownBlockType)arg3;
+- (void)contactHandlesForTopicsBatch:(id)arg1 isLast:(BOOL)arg2 error:(id)arg3 queryId:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)contactNameRecordBatch:(id)arg1 isLast:(BOOL)arg2 error:(id)arg3 queryId:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)contactNameRecordChangesBatch:(id)arg1 isLast:(BOOL)arg2 error:(id)arg3 queryId:(unsigned long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)contactNameRecordChangesForClient:(id)arg1 completion:(CDUnknownBlockType)arg2;

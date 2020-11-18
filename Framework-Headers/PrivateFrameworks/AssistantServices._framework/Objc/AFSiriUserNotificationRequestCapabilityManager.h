@@ -18,6 +18,7 @@
     BOOL _inWirelessSplitterSessionStateValid;
     BOOL _routeAvailableForSpokenMessages;
     BOOL _lastKnownEligibilityState;
+    BOOL _localVoiceAssetAvailable;
     AFSettingsConnection *_settingsConnection;
     AFNotifyObserver *_pairedInfoChangeObserver;
     AFNotifyObserver *_wirelessSplitterSessionObserver;
@@ -33,8 +34,13 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)requiredIntentIDInNotificationCategory;
++ (id)_announceableIntentIdentifiersForAnnouncementType:(long long)arg1;
++ (BOOL)_isRouteAvailableForAnnouncement:(id)arg1;
++ (id)_requiredIntentIdentifiersForAnnouncementType:(long long)arg1;
++ (long long)announcementTypeForBundleID:(id)arg1;
++ (BOOL)applicationWithBundleID:(id)arg1 canAnnounceNotificationWithIntentIdentifiers:(id)arg2;
 + (id)sharedManager;
++ (BOOL)supportedByApplicationWithBundleID:(id)arg1;
 - (void).cxx_destruct;
 - (void)_fetchPairedBluetoothDevicesFromSourceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_fetchWirelessSplitterSessionInfoAndStartObservingFromSourceWithCompletion:(CDUnknownBlockType)arg1;
@@ -44,7 +50,9 @@
 - (BOOL)_updateAudioRouteAvailabilityForSpokenMessagesAndBroadcast:(BOOL)arg1;
 - (void)addObserver:(id)arg1;
 - (void)fetchEligibleSetupStateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchElligibleSetupStateAndNotifyObservers:(id)arg1;
 - (void)fetchInitialState;
+- (void)fetchLocalVoiceAssetAvailabilityWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchRequestCanBeHandledStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchWirelessSplitterSessionInfoAndStartObservingSync;
 - (BOOL)hasEligibleSetup;
@@ -52,10 +60,8 @@
 - (void)notifyObserver:(id)arg1 didReceiveNotificationWithToken:(int)arg2;
 - (void)notifyObserversOfCurrentEligibleSetupState:(BOOL)arg1;
 - (void)notifyObserversOfCurrentRequestCanBeHandledState;
-- (void)pairedDevicesChanged:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (BOOL)requestCanBeHandled;
-- (BOOL)supportedByApplicationWithBundleID:(id)arg1;
 - (void)updateWirelessSplitterSessionInfoAndObserve;
 
 @end

@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoPassKit/NPKTransitItemField-Protocol.h>
+#import <NanoPassKit/NPKPassItemField-Protocol.h>
 
-@class NSString;
+@class NSArray, NSString;
 @protocol NPKDateRange;
 
-@protocol NPKCommutePlanField <NPKTransitItemField>
+@protocol NPKCommutePlanField <NPKPassItemField>
 
 @property (readonly, nonatomic) NSString *detailLabel;
+@property (readonly, nonatomic) NSArray *details;
 @property (readonly, nonatomic) BOOL isCountBasedCommutePlan;
 @property (readonly, nonatomic) id<NPKDateRange> usageDateRange;
 

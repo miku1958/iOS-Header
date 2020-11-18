@@ -12,6 +12,7 @@
 {
     NSMutableDictionary *_siblingsMap;
     NSHashTable *_allIMHandles;
+    NSMutableDictionary *_IDToHandlesMap;
     NSMutableDictionary *_CNIDToHandlesMap;
     IMBusinessNameManager *_businessNameManager;
 }
@@ -19,7 +20,9 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)CNIDToHandlesMap;
+- (id)IDToHandlesMap;
 - (id)_accountSiblingsForHandle:(id)arg1;
+- (void)_addIMHandleToIDToHandlesMap:(id)arg1;
 - (void)_addressBookChanged;
 - (void)_buildSiblingsForIMHandle:(id)arg1;
 - (id)_chatSiblingsForHandle:(id)arg1;
@@ -33,6 +36,8 @@
 - (void)_handleDeleteContactChangeHistoryEvent:(id)arg1;
 - (void)_handleDropEverythingChangeHistoryEvent;
 - (void)_handleUpdateContactChangeHistoryEvent:(id)arg1;
+- (void)_postContactChangeHistoryEventClientNotifications;
+- (void)_removeIMHandleToIDToHandlesMap:(id)arg1;
 - (void)addHandleToCNIDMap:(id)arg1 CNContact:(id)arg2;
 - (id)allIMHandles;
 - (id)businessNameForUID:(id)arg1 updateHandler:(CDUnknownBlockType)arg2;

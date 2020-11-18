@@ -19,6 +19,7 @@
 - (id)courseWithIdentifier:(id)arg1 inRoster:(id)arg2;
 - (void)createClassOperationDidFinish:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)createClassWithProperties:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (CDUnknownBlockType)errorWrappingCompletionForCompletion:(CDUnknownBlockType)arg1 selectorName:(id)arg2;
 - (id)initWithRequirements:(id)arg1;
 - (id)objectIDForCourseWithIdentifier:(id)arg1 inRoster:(id)arg2 error:(id *)arg3;
 - (void)removeCourseWithIdentifier:(id)arg1 roster:(id)arg2 completion:(CDUnknownBlockType)arg3;

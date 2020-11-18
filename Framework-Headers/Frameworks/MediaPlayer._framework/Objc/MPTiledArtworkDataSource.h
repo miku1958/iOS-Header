@@ -15,6 +15,7 @@
 {
     NSCountedSet *_loadingTiledArtworkRequests;
     NSObject<OS_dispatch_queue> *_loadingTiledArtworkRequestsAccessQueue;
+    NSObject<OS_dispatch_queue> *_renderingTiledArtworkRequestsQueue;
     NSCache *_tiledArtworkRepresentationFallbackCache;
     NSOperationQueue *_tilingArtworkCatalogOperationQueue;
 }

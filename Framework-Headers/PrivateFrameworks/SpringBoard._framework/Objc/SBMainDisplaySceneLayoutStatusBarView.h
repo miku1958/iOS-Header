@@ -10,7 +10,7 @@
 #import <SpringBoard/SBDeviceApplicationSceneStatusBarStateObserver-Protocol.h>
 #import <SpringBoard/UIStatusBarStyleDelegate_SpringBoardOnly-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSString, SBDeviceApplicationSceneHandle, SBMedusaSettings, SBOrientationTransformWrapperView, UIColor, UIStatusBar, _UIStatusBar;
+@class NSMutableDictionary, NSMutableSet, NSString, SBMedusaSettings, SBOrientationTransformWrapperView, UIColor, UIStatusBar, _UIStatusBar;
 @protocol SBMainDisplaySceneLayoutStatusBarViewDataSource, UIStatusBarStyleDelegate_SpringBoardOnly;
 
 @interface SBMainDisplaySceneLayoutStatusBarView : UIView <PTSettingsKeyObserver, UIStatusBarStyleDelegate_SpringBoardOnly, SBDeviceApplicationSceneStatusBarStateObserver>
@@ -23,8 +23,9 @@
     NSMutableDictionary *_partIdentifiersDefaultStyles;
     NSMutableDictionary *_partIdentifiersCustomStyles;
     NSMutableDictionary *_hitTestLayers;
-    SBDeviceApplicationSceneHandle *_statusBarBreadcrumbSceneHandle;
+    NSString *_statusBarBreadcrumbSceneIdentifier;
     BOOL _statusBarLaidOutForClassic;
+    BOOL _lastHiddenValueForAnimation;
     SBMedusaSettings *_medusaSettings;
     BOOL _debugBackgroundColorEnabled;
     BOOL _debugOffsetEnabled;
@@ -79,11 +80,11 @@
 - (struct CGAffineTransform)_hiddenTransformForAnimation:(long long)arg1;
 - (void)_layoutStatusBarForOrientation:(long long)arg1;
 - (id)_sceneHandleForClassicApplicationIfAny;
-- (id)_sceneHandleForPrimaryApplicationIfAny;
 - (void)_setDebugBackgroundColor:(id)arg1;
 - (void)_setDebugOffsetIndex:(unsigned long long)arg1;
 - (void)_setupDebugging;
 - (struct CGRect)_statusBarAvoidanceFrame;
+- (id)_statusBarDescriberForPrimaryApplicationIfAny;
 - (struct CGRect)_statusBarFrameForOrientation:(long long)arg1;
 - (BOOL)_statusBarNeedsSpecialLayoutForClassic;
 - (void)_statusBarScrollToTop:(id)arg1;

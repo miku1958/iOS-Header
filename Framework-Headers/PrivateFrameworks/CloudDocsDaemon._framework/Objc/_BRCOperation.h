@@ -59,6 +59,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_finishIfCancelled;
 - (void)_main;
 - (void)_scheduleExecutionWithPreviousError:(id)arg1;
+- (void)_setTelemetryHeaderOnCKOpIfNecessary:(id)arg1;
 - (void)addSubOperation:(id)arg1;
 - (void)addSubOperation:(id)arg1 overrideContext:(id)arg2 allowsCellularAccess:(id)arg3;
 - (void)associateCKOperationsToEventMetric:(id)arg1;

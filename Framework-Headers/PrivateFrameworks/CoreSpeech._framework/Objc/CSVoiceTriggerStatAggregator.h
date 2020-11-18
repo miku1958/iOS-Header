@@ -18,7 +18,11 @@
 + (id)sharedAggregator;
 - (void)_borealisPowerlog:(id)arg1;
 - (id)init;
+- (void)logAOPFirstPassTriggerWakeupLatency:(float)arg1;
+- (void)logAudioZeroRun:(float)arg1;
 - (void)logFalseWakeUp:(BOOL)arg1;
+- (void)logSecondPassResult:(int)arg1 eventInfo:(id)arg2 triggerAPWakeUp:(BOOL)arg3;
+- (void)logTriggerLengthSampleCountStatistics:(unsigned long long)arg1 withFirstPassDeterministicTriggerLengthSampleCount:(unsigned long long)arg2;
 - (void)powerLogVoiceTriggerStart;
 - (void)powerLogVoiceTriggerStop;
 

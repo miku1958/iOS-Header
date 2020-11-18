@@ -10,7 +10,7 @@
 #import <UIKitCore/UICollectionViewDelegate-Protocol.h>
 #import <UIKitCore/UIKeyboardMediaControllerDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, UICollectionViewFlowLayout, UIKeyboardEmojiCategory, UIKeyboardEmojiCollectionView, UIKeyboardEmojiGraphicsTraits, UIResponder;
+@class NSIndexPath, NSString, UICollectionViewFlowLayout, UIKBTree, UIKeyboardEmojiCategory, UIKeyboardEmojiCollectionView, UIKeyboardEmojiGraphicsTraits, UIResponder;
 @protocol UIKBEmojiHitTestResponder;
 
 __attribute__((visibility("hidden")))
@@ -29,27 +29,44 @@ __attribute__((visibility("hidden")))
     BOOL _useWideAnimojiCell;
     BOOL _hasShownAnimojiCell;
     double _frameInset;
+    BOOL _showingVariants;
+    long long _selectedVariant;
+    long long _currentVariantRow;
+    UIKBTree *_selectedPopupKey;
+    BOOL _supportsMemoji;
+    BOOL _hasCheckedMemojiPreference;
+    BOOL _currentlyCheckingMemojiPreference;
     CDUnknownBlockType _completionBlock;
     UIResponder<UIKBEmojiHitTestResponder> *_hitTestResponder;
+    NSIndexPath *_selectedIndexPath;
 }
 
 @property UIKeyboardEmojiCategory *category; // @synthesize category=_category;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
+@property BOOL currentlyCheckingMemojiPreference; // @synthesize currentlyCheckingMemojiPreference=_currentlyCheckingMemojiPreference;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property BOOL hasCheckedMemojiPreference; // @synthesize hasCheckedMemojiPreference=_hasCheckedMemojiPreference;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) UIResponder<UIKBEmojiHitTestResponder> *hitTestResponder; // @synthesize hitTestResponder=_hitTestResponder;
 @property (readonly) BOOL isDraggingInputView; // @synthesize isDraggingInputView=_isDraggingInputView;
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath; // @synthesize selectedIndexPath=_selectedIndexPath;
 @property (readonly) Class superclass;
+@property BOOL supportsMemoji; // @synthesize supportsMemoji=_supportsMemoji;
 @property (nonatomic) NSIndexPath *tappedSkinToneEmoji; // @synthesize tappedSkinToneEmoji=_tappedSkinToneEmoji;
 
 + (BOOL)shouldHighlightEmoji:(id)arg1;
++ (BOOL)wantsScreenTraits;
+- (BOOL)_handleBaseKeySelectionEvent:(id)arg1;
+- (BOOL)_handleInitialSelectionEvent:(id)arg1;
+- (BOOL)_handleVariantSelectionEvent:(id)arg1;
 - (double)_recentlyUsedMediaRoundedOffset:(double)arg1 recentlyUsedMediaCellWidth:(double)arg2;
 - (void)_setUserHasSelectedSkinToneEmoji:(BOOL)arg1;
 - (BOOL)_shouldReverseLayoutDirection;
 - (BOOL)_shouldShowRecentlyUsedMedia;
 - (BOOL)_userHasSelectedSkinToneEmoji;
 - (BOOL)baseStringIsCoupleEmoji:(id)arg1;
+- (BOOL)cellShouldScrollWhenSelectedAtIndexPath:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
 - (struct UIEdgeInsets)collectionView:(id)arg1 layout:(id)arg2 insetForSectionAtIndex:(long long)arg3;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumInteritemSpacingForSectionAtIndex:(long long)arg3;
@@ -59,19 +76,32 @@ __attribute__((visibility("hidden")))
 - (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)dealloc;
+- (void)didDismissCardForKeyboardMediaController:(id)arg1;
 - (long long)didInputSubTree:(id)arg1;
+- (void)didInsertMediaForKeyboardMediaController:(id)arg1;
 - (void)didMoveToWindow;
+- (void)didPresentCardForKeyboardMediaController:(id)arg1;
 - (void)didTearDownRecentsViewForKeyboardMediaController:(id)arg1;
 - (void)dimKeys:(id)arg1;
 - (id)emojiBaseFirstCharacterString:(id)arg1;
 - (id)emojiBaseString:(id)arg1;
 - (id)firstFullyVisibleHeader;
 - (BOOL)genderEmojiBaseStringNeedVariantSelector:(id)arg1;
+- (BOOL)handleKeyEvent:(id)arg1;
+- (BOOL)handleKeyInputForCollectionViewNavigation:(id)arg1;
+- (BOOL)handleKeyInputForFamilySelector:(id)arg1;
+- (BOOL)handleKeyInputForVariantSelector:(id)arg1;
+- (BOOL)handleSelectionEvent:(id)arg1;
 - (long long)indexForPrettyCategoryDisplay:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 keyplane:(id)arg2 key:(id)arg3 screenTraits:(id)arg4;
+- (void)insertSelectedEmoji:(id)arg1 shouldDismissPopover:(BOOL)arg2;
 - (id)itemInRect:(struct CGRect)arg1;
+- (BOOL)keySupportsVariants:(id)arg1;
 - (BOOL)memojiSettingEnabled;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
+- (void)preferencesControllerChanged:(id)arg1;
+- (void)resetSelectionIfNeeded;
 - (void)scrollViewDidEndDecelerating:(id)arg1;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillBeginDragging:(id)arg1;
@@ -82,6 +112,11 @@ __attribute__((visibility("hidden")))
 - (BOOL)skinToneWasUsedForEmoji:(id)arg1;
 - (double)snappedXOffsetForOffset:(double)arg1 scrubbing:(BOOL)arg2;
 - (id)subTreeHitTest:(struct CGPoint)arg1;
+- (id)treeForCell:(id)arg1;
+- (void)updateHighlightForIndexPath:(id)arg1 scrollIfNeeded:(BOOL)arg2 animateScroll:(BOOL)arg3;
+- (void)updateLastSeenItemForIndexPath:(id)arg1;
+- (void)updateMemojiPreference;
+- (void)updatePreferencesForSelectedEmoji:(id)arg1;
 - (void)updateToCategory:(long long)arg1;
 - (long long)updateToCategoryWithOffsetPercentage:(double)arg1;
 - (void)willDisplayModalActionView:(id)arg1 withSubTreeKeyView:(id)arg2 completion:(CDUnknownBlockType)arg3;

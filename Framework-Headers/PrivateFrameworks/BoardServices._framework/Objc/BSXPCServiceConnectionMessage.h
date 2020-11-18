@@ -20,24 +20,15 @@
     id<BSServiceDispatchingQueue> _replyQueue;
 }
 
-@property (nonatomic) unsigned long long childIdentifier;
-@property (nonatomic) BOOL childIdentifierIsRemotelyDefined;
-@property (copy, nonatomic) CDUnknownBlockType completion; // @synthesize completion=_completion;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSString *messageID;
-@property (strong, nonatomic) id<BSServiceDispatchingQueue> replyQueue; // @synthesize replyQueue=_replyQueue;
-@property (strong, nonatomic) NSString *selectorName;
 @property (readonly) Class superclass;
 
-+ (id)messageWithXPCConnection:(id)arg1 targetQueue:(id)arg2;
 - (void).cxx_destruct;
-- (BOOL)_sendSynchronously:(BOOL)arg1;
 - (id)createReply;
 - (BOOL)expectsReply;
 - (id)initWithMessage:(id)arg1;
-- (id)initWithXPCConnection:(id)arg1 targetQueue:(id)arg2;
 - (void)invalidate;
 - (BOOL)send;
 - (BOOL)sendSynchronously;

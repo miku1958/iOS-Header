@@ -6,16 +6,14 @@
 
 #import <PhotosUICore/PXCollectionsDataSource.h>
 
-@class NSString, PHFetchResult;
+@class PHFetchResult;
 
 @interface PXTransientCollectionsDataSource : PXCollectionsDataSource
 {
     PHFetchResult *_fetchResult;
-    NSString *_navigationRootIdentifier;
 }
 
 @property (readonly, nonatomic) PHFetchResult *fetchResult; // @synthesize fetchResult=_fetchResult;
-@property (readonly, nonatomic) NSString *navigationRootIdentifier; // @synthesize navigationRootIdentifier=_navigationRootIdentifier;
 
 - (void).cxx_destruct;
 - (id)collectionAtIndexPath:(id)arg1;
@@ -23,7 +21,6 @@
 - (id)indexPathForCollection:(id)arg1;
 - (id)init;
 - (id)initWithFetchResult:(id)arg1;
-- (id)initWithNavigationRootTitle:(id)arg1 identifier:(id)arg2 photoLibrary:(id)arg3;
 - (long long)numberOfItemsInSection:(long long)arg1;
 - (long long)numberOfSections;
 - (long long)numberOfSubitemsInItem:(long long)arg1 section:(long long)arg2;

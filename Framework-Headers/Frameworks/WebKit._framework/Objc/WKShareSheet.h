@@ -6,27 +6,39 @@
 
 #import <objc/NSObject.h>
 
+#import <WebKit/UIAdaptivePresentationControllerDelegate-Protocol.h>
+
+@class NSString;
 @protocol WKShareSheetDelegate;
 
 __attribute__((visibility("hidden")))
-@interface WKShareSheet : NSObject
+@interface WKShareSheet : NSObject <UIAdaptivePresentationControllerDelegate>
 {
+    struct RetainPtr<NSURL> _temporaryFileShareDirectory;
     struct WeakObjCPtr<WKWebView> _webView;
     struct WeakObjCPtr<id<WKShareSheetDelegate>> _delegate;
     CompletionHandler_e3f3fa93 _completionHandler;
     struct RetainPtr<UIActivityViewController> _shareSheetViewController;
     struct RetainPtr<UIViewController> _presentationViewController;
+    BOOL _didShareSuccessfully;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WKShareSheetDelegate> delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
++ (id)createRandomSharingDirectoryForFile:(id)arg1;
++ (id)createTemporarySharingDirectory;
++ (id)writeFileToShareableURL:(id)arg1 data:(id)arg2 temporaryDirectory:(id)arg3;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)_didCompleteWithSuccess:(BOOL)arg1;
 - (void)dismiss;
-- (void)dispatchDidDismiss;
 - (id)initWithView:(id)arg1;
 - (void)presentWithParameters:(const struct ShareDataWithParsedURL *)arg1 inRect:(Optional_93f3c085)arg2 completionHandler:(CompletionHandler_e3f3fa93 *)arg3;
+- (void)presentWithShareDataArray:(id)arg1 inRect:(Optional_93f3c085)arg2;
+- (void)presentationControllerDidDismiss:(id)arg1;
 
 @end
 

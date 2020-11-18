@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSIndexPath, NSLock, NSMutableArray, NSPointerArray, RTTUtterance;
+@class NSIndexPath, NSLock, NSMutableArray, NSMutableSet, NSPointerArray, RTTUtterance;
 @protocol OS_dispatch_queue;
 
 @interface RTTUIConversationControllerCoordinator : NSObject
@@ -17,6 +17,7 @@
     NSIndexPath *_inProgressRealTimeIndexPath;
     RTTUtterance *_inProgressRealTimeUtterance;
     struct __CTServerConnection *_ctConnection;
+    NSMutableSet *_registeredCalls;
     BOOL _processingUtteranceBuffer;
     NSMutableArray *_utteranceBuffer;
 }
@@ -35,7 +36,9 @@
 - (id)init;
 - (void)processUtteranceQueue;
 - (BOOL)realtimeTextDidChange:(id)arg1 forUtterance:(id)arg2 lastRowPath:(id)arg3;
+- (void)registerForCallUpdates:(id)arg1;
 - (void)sendNewUtteranceString:(id)arg1 controller:(id)arg2;
+- (id)viewControllerForCallUUID:(id)arg1;
 
 @end
 

@@ -19,7 +19,7 @@
 - (void)_axHideWebView:(BOOL)arg1;
 - (void)_axSetAnnounceTimer:(id)arg1;
 - (void)_axUpdateAccessibilityElements;
-- (void)_setShowingCompletions:(BOOL)arg1 popoverDismissalReason:(long long)arg2;
+- (void)_setShowingCompletions:(BOOL)arg1 popoverDismissalReason:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_unifiedFieldDownKey:(id)arg1;
 - (void)_unifiedFieldUpKey:(id)arg1;
 - (void)completionList:(id)arg1 topHitDidBecomeReadyForString:(id)arg2;

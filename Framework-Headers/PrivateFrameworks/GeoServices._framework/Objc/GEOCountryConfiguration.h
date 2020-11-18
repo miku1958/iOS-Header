@@ -9,13 +9,13 @@
 #import <GeoServices/GEOResourceManifestTileGroupObserver-Protocol.h>
 #import <GeoServices/_GEOCountryConfigurationServerProxyDelegate-Protocol.h>
 
-@class NSMutableArray, NSMutableDictionary, NSString, geo_isolater;
+@class NSMutableArray, NSMutableDictionary, NSString, _GEOCountryConfigurationInfo, geo_isolater;
 @protocol _GEOCountryConfigurationServerProxy;
 
 @interface GEOCountryConfiguration : NSObject <GEOResourceManifestTileGroupObserver, _GEOCountryConfigurationServerProxyDelegate>
 {
     geo_isolater *_isolater;
-    NSString *_countryCode;
+    _GEOCountryConfigurationInfo *_countryCodeInfo;
     NSMutableArray *_updateCompletionHandlers;
     NSMutableDictionary *_supportedFeatures;
     geo_isolater *_currentCountrySupportsNavigationIsolater;
@@ -30,6 +30,7 @@
 @property (readonly, nonatomic) BOOL currentCountrySupportsCarIntegration;
 @property (readonly, nonatomic) BOOL currentCountrySupportsCommute;
 @property (readonly, nonatomic) BOOL currentCountrySupportsDirections;
+@property (readonly, nonatomic) BOOL currentCountrySupportsElectricVehicleRouting;
 @property (readonly, nonatomic) BOOL currentCountrySupportsNavigation;
 @property (readonly, nonatomic) BOOL currentCountrySupportsRouteGenius;
 @property (readonly, nonatomic) BOOL currentCountrySupportsTraffic;
@@ -51,6 +52,7 @@
 - (id)_defaultForKey:(id)arg1 inCountry:(id)arg2 defaultValue:(id)arg3 sourcePtr:(long long *)arg4 decoder:(CDUnknownBlockType)arg5;
 - (void)_resetSupportedFeatures;
 - (BOOL)countryCode:(id)arg1 supportsFeature:(long long)arg2;
+- (id)countryCodeWithSource:(unsigned int *)arg1 updatedAtTime:(id *)arg2;
 - (BOOL)currentCountrySupportsFeature:(long long)arg1;
 - (void)dealloc;
 - (id)defaultForKey:(id)arg1 defaultValue:(id)arg2;

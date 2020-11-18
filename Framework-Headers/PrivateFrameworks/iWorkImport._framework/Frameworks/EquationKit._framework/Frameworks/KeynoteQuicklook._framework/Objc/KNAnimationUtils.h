@@ -26,7 +26,6 @@
 + (BOOL)isFPSLoggingEnabled;
 + (BOOL)isFPSLoggingTimerDisabled;
 + (BOOL)isGLStateValidationEnabled;
-+ (BOOL)isMaxConcurrentTexturePrecachingEnabled;
 + (BOOL)isMetalDisabled;
 + (BOOL)isMotionBlurBlacklistedWithCapabilities:(id)arg1;
 + (BOOL)isMotionBlurCapableWithAnimationContext:(id)arg1;
@@ -34,7 +33,7 @@
 + (BOOL)isRenderingLocal;
 + (BOOL)isResponsivenessLoggingEnabled;
 + (BOOL)isSOATSImageExportTestEnabled;
-+ (BOOL)isTexturePrecachingDisabled;
++ (BOOL)isTexturePreCachingDisabled;
 + (unsigned long long)randomBasicDirection;
 + (unsigned long long)randomDirection;
 + (struct CGRect)recommendedLayerBoundsForNaturalPlaybackSize:(struct CGSize)arg1 inContainerWithBounds:(struct CGRect)arg2 contentsScale:(double)arg3 isExternalDisplay:(BOOL)arg4;

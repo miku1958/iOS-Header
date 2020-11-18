@@ -6,11 +6,14 @@
 
 #import <CoreLocation/CLLocation.h>
 
-@class GEONavigationMatchInfo, GEORoadMatch, GEORouteMatch, NSDate, NSString;
+#import <Navigation/NSSecureCoding-Protocol.h>
 
-@interface MNLocation : CLLocation
+@class GEONavigationMatchInfo, GEORoadMatch, GEORouteMatch, NSDate, NSString, NSUUID;
+
+@interface MNLocation : CLLocation <NSSecureCoding>
 {
     unsigned long long _state;
+    NSUUID *_routeID;
     GEORouteMatch *_routeMatch;
     GEORoadMatch *_roadMatch;
     CLLocation *_rawLocation;
@@ -20,6 +23,7 @@
     NSString *_shieldText;
     long long _shieldType;
     unsigned int _roadLineType;
+    int _rampType;
     unsigned long long _speedLimit;
     BOOL _speedLimitIsMPH;
     long long _speedLimitShieldType;
@@ -29,7 +33,6 @@
     NSDate *_originalDate;
     unsigned long long _traceIndex;
     BOOL _isLeeched;
-    int _rampType;
 }
 
 @property (readonly, nonatomic) int _nav_source;
@@ -46,6 +49,7 @@
 @property (nonatomic) unsigned int roadLineType; // @synthesize roadLineType=_roadLineType;
 @property (strong, nonatomic) GEORoadMatch *roadMatch; // @synthesize roadMatch=_roadMatch;
 @property (copy, nonatomic) NSString *roadName; // @synthesize roadName=_roadName;
+@property (readonly, nonatomic) NSUUID *routeID; // @synthesize routeID=_routeID;
 @property (strong, nonatomic) GEORouteMatch *routeMatch; // @synthesize routeMatch=_routeMatch;
 @property (copy, nonatomic) NSString *shieldText; // @synthesize shieldText=_shieldText;
 @property (nonatomic) long long shieldType; // @synthesize shieldType=_shieldType;
@@ -56,6 +60,7 @@
 @property (readonly, nonatomic) unsigned long long stepIndex;
 @property (nonatomic) unsigned long long traceIndex;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_navigation_detailedMatchInfo;
 - (BOOL)_navigation_hasValidCourse;
@@ -63,16 +68,17 @@
 - (struct CLLocationCoordinate2D)_navigation_rawShiftedCoordinate;
 - (id)_navigation_routeMatch;
 - (id)_referenceFrameAsString:(int)arg1;
-- (CDStruct_123780e2 *)_roadFeature;
+- (CDStruct_66740237 *)_roadFeature;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)initWithClientLocation:(CDStruct_a4140ae0)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithGEOLocation:(id)arg1;
-- (id)initWithLocationDetails:(id)arg1;
-- (id)initWithLocationDetails:(id)arg1 route:(id)arg2;
 - (id)initWithRawLocation:(id)arg1;
 - (id)initWithRawLocation:(id)arg1 locationMatchType:(unsigned long long)arg2;
 - (id)initWithRoadMatch:(id)arg1 rawLocation:(id)arg2 locationMatchType:(unsigned long long)arg3;
 - (id)initWithRouteMatch:(id)arg1 rawLocation:(id)arg2 locationMatchType:(unsigned long long)arg3;
+- (BOOL)isEqualToLocation:(id)arg1;
 - (id)matchInfo;
 - (id)propagatedLocationForTimeInterval:(double)arg1 shouldProjectAlongRoute:(BOOL)arg2;
 

@@ -6,26 +6,32 @@
 
 #import <objc/NSObject.h>
 
-#import <SoundAnalysis/SNAnalyzerProviding-Protocol.h>
+#import <SoundAnalysis/SNAnalyzerCreating-Protocol.h>
 #import <SoundAnalysis/SNRequest-Protocol.h>
 
-@class NSString, SNSoundClassifier;
-@protocol SNAnalyzing;
+@class MLModel, NSString;
 
-@interface SNClassifySoundRequest : NSObject <SNAnalyzerProviding, SNRequest>
+@interface SNClassifySoundRequest : NSObject <SNAnalyzerCreating, SNRequest>
 {
-    SNSoundClassifier *_classifier;
+    MLModel *_model;
+    double _overlapFactor;
 }
 
-@property (readonly, weak, nonatomic) id<SNAnalyzing> analyzer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property double overlapFactor;
+@property double overlapFactor; // @synthesize overlapFactor=_overlapFactor;
 @property (readonly) Class superclass;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)createAnalyzerWithError:(id *)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithMLModel:(id)arg1 error:(id *)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToClassifySoundRequest:(id)arg1;
 
 @end
 

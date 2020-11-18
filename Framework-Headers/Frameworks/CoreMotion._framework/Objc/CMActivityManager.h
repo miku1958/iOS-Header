@@ -18,6 +18,7 @@
 - (id)init;
 - (long long)overrideOscarSideband:(BOOL)arg1 withState:(long long)arg2;
 - (long long)simulateMotionState:(BOOL)arg1 withState:(long long)arg2;
+- (long long)simulateMotionStateYouthWithState:(long long)arg1;
 
 @end
 

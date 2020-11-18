@@ -14,10 +14,11 @@
 
 @property (strong, nonatomic) TLKHeaderView *contentView; // @dynamic contentView;
 
++ (int)defaultSeparatorStyleForCardSection:(id)arg1;
 + (id)dragSubtitleForCardSection:(id)arg1;
 + (id)dragTitleForCardSection:(id)arg1;
-+ (int)separatorStyleForCardSection:(id)arg1;
 + (BOOL)supportsRecyclingForCardSection:(id)arg1;
+- (void)containerView:(id)arg1 willMeasureArrangedSubviewsFittingSize:(struct CGSize)arg2 forReason:(long long)arg3;
 - (id)setupContentView;
 - (void)updateWithRowModel:(id)arg1;
 

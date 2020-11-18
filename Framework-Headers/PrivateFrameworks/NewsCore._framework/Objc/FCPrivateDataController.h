@@ -86,7 +86,6 @@
 - (void)assertReadyForUse;
 - (BOOL)canHelpPruneZoneName:(id)arg1;
 - (BOOL)canHelpRestoreZoneName:(id)arg1;
-- (long long)commandQueue:(id)arg1 qualityOfServiceForCommand:(id)arg2;
 - (void)createLocalStore;
 - (void)dealloc;
 - (void)disableSyncing;
@@ -107,6 +106,7 @@
 - (void)performFirstSyncWithCompletion:(CDUnknownBlockType)arg1;
 - (void)prepareForUse;
 - (id)pruneRecords:(id)arg1 forZoneName:(id)arg2;
+- (long long)qualityOfServiceForNextCommandInCommandQueue:(id)arg1;
 - (void)recordSyncManager:(id)arg1 stateDidChange:(id)arg2;
 - (void)recordSyncManagerNotifyObservers:(id)arg1;
 - (id)recordsForRestoringZoneName:(id)arg1;

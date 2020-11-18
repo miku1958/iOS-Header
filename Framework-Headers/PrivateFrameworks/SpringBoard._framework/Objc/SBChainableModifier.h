@@ -7,19 +7,21 @@
 #import <objc/NSObject.h>
 
 #import <SpringBoard/BSDescriptionProviding-Protocol.h>
+#import <SpringBoard/NSCopying-Protocol.h>
 #import <SpringBoard/SBChainableModifierContext-Protocol.h>
 #import <SpringBoard/SBChainableModifierQuery-Protocol.h>
 
-@class NSString, SBModifierCacheCoordinator, SBModifierMethodCache;
+@class NSString, SBChainableModifierMethodCache, SBModifierCacheCoordinator;
 @protocol SBChainableModifierDelegate;
 
-@interface SBChainableModifier : NSObject <SBChainableModifierQuery, SBChainableModifierContext, BSDescriptionProviding>
+@interface SBChainableModifier : NSObject <BSDescriptionProviding, SBChainableModifierQuery, SBChainableModifierContext, NSCopying>
 {
-    SBModifierMethodCache *_queryCache;
-    SBModifierMethodCache *_contextCache;
     BOOL _hasNotifiedChildrenDidMoveToParent;
+    SBChainableModifierMethodCache *_queryCache;
+    SBChainableModifierMethodCache *_contextCache;
     SBChainableModifier *_parentModifier;
     id<SBChainableModifierDelegate> _delegate;
+    long long _state;
     SBChainableModifier *_previousContextModifier;
     SBChainableModifier *_nextQueryModifier;
     long long _modifierLevel;
@@ -37,51 +39,56 @@
 @property (nonatomic) SBChainableModifier *parentModifier; // @synthesize parentModifier=_parentModifier;
 @property (nonatomic) SBChainableModifier *previousContextModifier; // @synthesize previousContextModifier=_previousContextModifier;
 @property (strong, nonatomic) SBModifierCacheCoordinator *queryCacheCoordinator;
+@property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
++ (void)_initalizeIMPCaching;
 + (id)baseClassForQueryProtocol;
 + (id)contextProtocol;
 + (id)contextSelectors;
-+ (void)initalizeIMPCaching;
 + (void)initialize;
++ (Class)makeDynamicSubclassWithDescriptor:(id)arg1 implementation:(id)arg2 forSelector:(SEL)arg3 ofProtocol:(id)arg4;
 + (id)newCacheWithSelectorList:(id)arg1 subsequentMethodCacheFunc:(CDUnknownFunctionPointerType)arg2 cachingDictionary:(id)arg3;
 + (id)newContextCache;
++ (id)newEventResponse;
 + (id)newQueryCache;
 + (id)queryProtocol;
 + (id)querySelectors;
-+ (void)verifyIsFloorModifier;
++ (void)verifyModifierImplementsAllMethodsOfProtocol:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addChildModifier:(id)arg1 atLevel:(long long)arg2 key:(id)arg3 queryAction:(unsigned long long)arg4 contextAction:(unsigned long long)arg5;
-- (void)_addChildModifier:(id)arg1 queryAction:(unsigned long long)arg2 contextAction:(unsigned long long)arg3;
-- (void)_addImplementation:(id)arg1 forClass:(Class)arg2 selector:(SEL)arg3 protocol:(id)arg4;
+- (void)_addChildModifier:(id)arg1 atLevel:(long long)arg2 key:(id)arg3 queryResponse:(unsigned long long)arg4 contextResponse:(unsigned long long)arg5;
 - (BOOL)_anyDescendentImplementsAnyContextMethod;
 - (BOOL)_anyDescendentImplementsAnyQueryMethod;
-- (id)_createAndConfigureDynamicModifierWithName:(id)arg1;
-- (void)_insertModifier:(id)arg1 afterModifier:(id)arg2 queryAction:(unsigned long long)arg3 contextAction:(unsigned long long)arg4;
+- (id)_forwardEvent:(id)arg1 toChildModifier:(id)arg2;
+- (id)_handleEvent:(id)arg1;
+- (void)_insertModifier:(id)arg1 afterModifier:(id)arg2 queryResponse:(unsigned long long)arg3 contextResponse:(unsigned long long)arg4;
 - (id)_lastDeepChildModifier;
-- (id)_nextDynamicQueryModifier;
 - (void)_notifyChildrenDidMoveToParentIfNeeded;
-- (id)_previousDynamicContextModifier;
-- (void)_removeChildModifier:(id)arg1 queryAction:(unsigned long long)arg2 contextAction:(unsigned long long)arg3;
+- (void)_removeChildModifier:(id)arg1 queryResponse:(unsigned long long)arg2 contextResponse:(unsigned long long)arg3;
 - (void)addChildModifier:(id)arg1;
 - (void)addChildModifier:(id)arg1 atLevel:(long long)arg2 key:(id)arg3;
 - (id)childModifierByKey:(id)arg1;
 - (unsigned long long)childModifierCount;
+- (BOOL)completesWhenChildrenComplete;
 - (BOOL)containsChildModifier:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)didMoveToParentModifier:(id)arg1;
 - (void)enumerateChildModifiersWithBlock:(CDUnknownBlockType)arg1;
+- (id)handleEvent:(id)arg1;
 - (id)init;
+- (id)loggingCategory;
 - (void)performTransactionWithTemporaryChildModifier:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)provideNextQueryImplementation:(id)arg1 forSelector:(SEL)arg2;
 - (void)providePreviousContextImplementation:(id)arg1 forSelector:(SEL)arg2;
 - (void)removeChildModifier:(id)arg1;
-- (void)removeChildModifiers:(id)arg1;
-- (BOOL)respondsToSelectorWithoutForwarding:(SEL)arg1;
+- (id)responseForProposedChildResponse:(id)arg1 childModifier:(id)arg2 event:(id)arg3;
+- (BOOL)runsInternalVerificationAfterEventDispatch;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
+- (void)verifyInternalIntegrityAfterHandlingEvent:(id)arg1;
 
 @end
 

@@ -22,6 +22,7 @@
 - (void)insertRule:(PKRule *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)processDiscoveryItemsAndMessagesWithCompletion:(void (^)(NSError *))arg1;
 - (void)removeDiscoveryMessageWithIdentifier:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)removeDiscoveryUserNotificationsWithCompletion:(void (^)(NSError *))arg1;
 - (void)rulesWithCompletion:(void (^)(NSSet *, NSError *))arg1;
 - (void)updateDiscoveryEngagementMessageWithIdentifier:(NSString *)arg1 forAction:(long long)arg2 completion:(void (^)(NSError *))arg3;
 - (void)updateDiscoveryItemWithIdentifier:(NSString *)arg1 forAction:(long long)arg2 completion:(void (^)(NSError *))arg3;

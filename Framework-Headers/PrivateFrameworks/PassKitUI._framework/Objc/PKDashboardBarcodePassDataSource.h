@@ -26,7 +26,7 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)footerTextForSection:(unsigned long long)arg1;
+- (id)footerTextItemForSection:(unsigned long long)arg1;
 - (void)groupViewDidChangeFrontmostPassView:(id)arg1 withContext:(id)arg2;
 - (void)groupViewDidUpdatePassView:(id)arg1;
 - (id)initWithGroupView:(id)arg1 context:(id)arg2;

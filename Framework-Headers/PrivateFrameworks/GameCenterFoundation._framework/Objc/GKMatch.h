@@ -10,7 +10,7 @@
 #import <GameCenterFoundation/GKSessionPrivateDelegate-Protocol.h>
 
 @class GKConnection, GKSession, GKThreadsafeDictionary, NSArray, NSData, NSDictionary, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
-@protocol GKMatchDelegate, OS_dispatch_queue;
+@protocol GKMatchDelegate, GKMatchDelegatePrivate, OS_dispatch_queue;
 
 @interface GKMatch : NSObject <GKSessionDelegate, GKSessionPrivateDelegate>
 {
@@ -22,7 +22,7 @@
     GKThreadsafeDictionary *_playersByIdentifier;
     NSMutableSet *_connectedPlayerIDs;
     NSObject<OS_dispatch_queue> *_stateChangeQueue;
-    id<GKMatchDelegate> _delegateWeak;
+    id<GKMatchDelegate> _delegate;
     GKSession *_session;
     GKConnection *_connection;
     unsigned long long _expectedPlayerCount;
@@ -31,7 +31,7 @@
     NSMutableDictionary *_playerEventQueues;
     NSMutableArray *_reinvitedPlayers;
     NSData *_selfBlob;
-    id<GKMatchDelegate> _inviteDelegateWeak;
+    id<GKMatchDelegatePrivate> _inviteDelegateWeak;
     NSMutableDictionary *_playerPushTokens;
     NSMutableArray *_opponentIDs;
     NSString *_rematchID;
@@ -45,7 +45,7 @@
 @property (strong, nonatomic) NSMutableSet *connectedPlayerIDs; // @synthesize connectedPlayerIDs=_connectedPlayerIDs;
 @property (strong, nonatomic) GKConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<GKMatchDelegate> delegate; // @synthesize delegate=_delegateWeak;
+@property (weak, nonatomic) id<GKMatchDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long expectedPlayerCount; // @synthesize expectedPlayerCount=_expectedPlayerCount;
 @property (strong, nonatomic) NSMutableDictionary *guestConnections; // @synthesize guestConnections=_guestConnections;
@@ -53,7 +53,7 @@
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hostScoreForQuery; // @synthesize hostScoreForQuery=_hostScoreForQuery;
 @property (strong, nonatomic) NSMutableDictionary *hostScores; // @synthesize hostScores=_hostScores;
-@property (nonatomic) id<GKMatchDelegate> inviteDelegate; // @synthesize inviteDelegate=_inviteDelegateWeak;
+@property (weak, nonatomic) id<GKMatchDelegatePrivate> inviteDelegate; // @synthesize inviteDelegate=_inviteDelegateWeak;
 @property (nonatomic) BOOL needHostScore; // @synthesize needHostScore=_needHostScore;
 @property (strong, nonatomic) NSDictionary *networkStatistics; // @synthesize networkStatistics=_networkStatistics;
 @property (strong, nonatomic) NSMutableArray *opponentIDs; // @synthesize opponentIDs=_opponentIDs;
@@ -72,15 +72,18 @@
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned char version; // @synthesize version=_version;
 
+- (void).cxx_destruct;
 - (void)_delegate:(id)arg1 didReceiveData:(id)arg2 forRecipient:(id)arg3 fromPlayer:(id)arg4;
 - (void)acceptRelayResponse:(id)arg1 player:(id)arg2;
 - (void)addHostScore:(int)arg1 forPlayer:(id)arg2;
 - (void)addPlayers:(id)arg1;
 - (id)allIDs;
 - (void)applicationWillEnterForeground:(id)arg1;
+- (void)applicationWillTerminateNotification:(id)arg1;
 - (void)calculateHostScore;
 - (void)chooseBestHostPlayerWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)chooseBestHostingPlayerWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)clearSession;
 - (void)conditionallyReinvitePlayer:(id)arg1 sessionToken:(id)arg2;
 - (void)conditionallyRelaunchPlayer:(id)arg1;
 - (void)connectToGuestPlayer:(id)arg1 withHostPlayer:(id)arg2;
@@ -122,6 +125,7 @@
 - (void)requestRelayInitForPlayer:(id)arg1;
 - (void)requestRelayUpdateForPlayer:(id)arg1;
 - (BOOL)selectHostIfRequestedAndAllScored;
+- (void)sendConnectingStateCallbackToDelegate:(id)arg1 forPlayers:(id)arg2;
 - (void)sendData:(id)arg1 forRecipient:(id)arg2 fromPlayer:(id)arg3;
 - (BOOL)sendData:(id)arg1 toPlayers:(id)arg2 dataMode:(long long)arg3 error:(id *)arg4;
 - (BOOL)sendData:(id)arg1 toPlayers:(id)arg2 withDataMode:(long long)arg3 error:(id *)arg4;
@@ -129,6 +133,7 @@
 - (void)sendHostScoreAsQuery:(BOOL)arg1;
 - (BOOL)sendInviteData:(id)arg1 error:(id *)arg2;
 - (void)sendQueuedPacketsForPlayer:(id)arg1;
+- (void)sendQueuedStatesAndPackets;
 - (void)sendStateCallbackForPlayer:(id)arg1 state:(long long)arg2;
 - (void)sendStateCallbackToDelegate:(id)arg1 forPlayer:(id)arg2 state:(long long)arg3;
 - (void)sendVersionData:(unsigned char)arg1;

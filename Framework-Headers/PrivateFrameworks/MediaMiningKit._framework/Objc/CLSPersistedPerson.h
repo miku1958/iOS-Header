@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaMiningKit/CLSPerson.h>
+#import <MediaMiningKit/CLSPersonIdentity.h>
 
-@interface CLSPersistedPerson : CLSPerson
+@interface CLSPersistedPerson : CLSPersonIdentity
 {
 }
 

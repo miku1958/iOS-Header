@@ -25,17 +25,19 @@
 - (void).cxx_destruct;
 - (id)_asyncProxy;
 - (id)_getConnection;
+- (id)_minuteZeroResponse;
 - (id)_predicateForBlacklist:(id)arg1;
 - (id)_simulatorResponse;
 - (id)_syncProxy;
 - (id)appPredictionsForConsumerSubType:(unsigned char)arg1 blackList:(id)arg2 limit:(int)arg3 runningDiagnostics:(BOOL)arg4;
 - (id)appPredictionsForConsumerSubType:(unsigned char)arg1 limit:(int)arg2;
+- (id)atxResponseFromBlendingAppPredictionCacheForConsumerSubType:(unsigned char)arg1 filterPredicate:(id)arg2 limit:(int)arg3;
 - (void)dealloc;
 - (BOOL)forceCacheUpdateForConsumerSubType:(unsigned char)arg1 intent:(id)arg2 candidateBundleIdentifiers:(id)arg3 candidateIntentTypeIdentifiers:(id)arg4;
 - (id)getAppPredictorAssetMappingDescription;
 - (id)init;
 - (id)initWithConsumerType:(unsigned long long)arg1 cacheBasePath:(id)arg2;
-- (void)logUserFeedback:(id)arg1 aprResponse:(id)arg2 consumerSubType:(unsigned char)arg3 engagementType:(unsigned long long)arg4 bundleIdentifier:(id)arg5 bundleIdsShown:(id)arg6;
+- (void)logUserFeedback:(id)arg1 consumerSubType:(unsigned char)arg2 engagementType:(unsigned long long)arg3 bundleIdentifier:(id)arg4 bundleIdsShown:(id)arg5 explicitlyRejectedIds:(id)arg6;
 - (void)sortAppsByLaunches:(id)arg1 reply:(CDUnknownBlockType)arg2;
 
 @end

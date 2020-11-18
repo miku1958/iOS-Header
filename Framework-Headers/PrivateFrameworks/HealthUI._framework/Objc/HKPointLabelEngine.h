@@ -35,7 +35,9 @@
 
 - (void).cxx_destruct;
 - (CDStruct_d6e4b0bd)_computeRenderingDataForValue:(double)arg1 transformedPoint:(struct CGPoint)arg2 previousSlope:(long long)arg3 nextSlope:(long long)arg4 previousOptions:(long long)arg5;
+- (void)_layoutTransformRectVerticallyForData:(CDStruct_d6e4b0bd *)arg1 withTransformedPoint:(struct CGPoint)arg2;
 - (long long)_slopeForPoint:(struct CGPoint)arg1 otherPoint:(struct CGPoint)arg2;
+- (void)_transformRectIfNeededForData:(CDStruct_d6e4b0bd *)arg1 withTransformedPoint:(struct CGPoint)arg2;
 - (id)initWithBoundingRegion:(struct CGRect)arg1 isLabelShiftingEnabled:(BOOL)arg2 labelSizeBlock:(CDUnknownBlockType)arg3;
 - (BOOL)processLastPoint;
 - (BOOL)processTransformedPoint:(struct CGPoint)arg1 untransformedPoint:(struct CGPoint)arg2;

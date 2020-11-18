@@ -10,15 +10,15 @@
 #import <AVKit/AVFullScreenViewControllerDelegate-Protocol.h>
 #import <AVKit/AVPictureInPictureContentSource-Protocol.h>
 #import <AVKit/AVPictureInPictureControllerDelegate-Protocol.h>
-#import <AVKit/AVPlaybackControlsVisibilityControllerDelegate-Protocol.h>
+#import <AVKit/AVPlaybackControlsViewVisibilityDelegate-Protocol.h>
 #import <AVKit/AVTransitionControllerDelegate-Protocol.h>
 #import <AVKit/UIGestureRecognizerDelegate-Protocol.h>
 #import <AVKit/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class AVBehaviorStorage, AVContentOverlayView, AVFullScreenViewController, AVObservationController, AVPictureInPictureController, AVPlaybackControlsController, AVPlaybackControlsVisibilityController, AVPlayer, AVPlayerController, AVPlayerControllerVolumeAnimator, AVPlayerView, AVPlayerViewControllerContentView, AVPlayerViewControllerCustomControlsView, AVPresentationContext, AVSecondScreenConnection, AVTransitionController, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSString, NSValue, UIHoverGestureRecognizer, UIPopoverPresentationController, UIView, UIWindow, __AVPlayerLayerView;
+@class AVBehaviorStorage, AVContentOverlayView, AVFullScreenViewController, AVObservationController, AVPictureInPictureController, AVPlaybackControlsController, AVPlayer, AVPlayerController, AVPlayerControllerVolumeAnimator, AVPlayerView, AVPlayerViewControllerContentView, AVPlayerViewControllerCustomControlsView, AVPresentationContext, AVSecondScreenConnection, AVTransitionController, NSArray, NSDictionary, NSMutableDictionary, NSNumber, NSString, NSValue, UIHoverGestureRecognizer, UIPopoverPresentationController, UIView, UIWindow, __AVPlayerLayerView;
 @protocol AVPlayerViewControllerContentTransitioning_NewsOnly, AVPlayerViewControllerDelegate;
 
-@interface AVPlayerViewController : UIViewController <AVPictureInPictureControllerDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, AVPlaybackControlsVisibilityControllerDelegate, AVFullScreenViewControllerDelegate, AVTransitionControllerDelegate, AVPictureInPictureContentSource, AVContentOverlayViewDelegate>
+@interface AVPlayerViewController : UIViewController <AVPictureInPictureControllerDelegate, UIGestureRecognizerDelegate, UIPopoverPresentationControllerDelegate, AVFullScreenViewControllerDelegate, AVTransitionControllerDelegate, AVPictureInPictureContentSource, AVContentOverlayViewDelegate, AVPlaybackControlsViewVisibilityDelegate>
 {
     BOOL _playerShouldAutoplay;
     BOOL _showsPlaybackControls;
@@ -32,7 +32,6 @@
     AVPictureInPictureController *_pictureInPictureController;
     UIPopoverPresentationController *_mediaSelectionPopoverPresentationController;
     AVTransitionController *_transitionController;
-    AVPlaybackControlsVisibilityController *_playbackControlsVisibilityController;
     AVPlaybackControlsController *_playbackControlsController;
     AVPlayerView *_playerViewControllerView;
     NSValue *_overrideLayoutMarginsWhenEmbeddedInline;
@@ -40,6 +39,7 @@
     BOOL _canToggleVideoGravityWhenEmbeddedInline;
     BOOL _playbackControlsShouldControlSystemVolume;
     BOOL _updatesNowPlayingInfoCenter;
+    BOOL _showsTimecodes;
     BOOL _readyForDisplay;
     BOOL _entersFullScreenWhenPlaybackBegins;
     BOOL _exitsFullScreenWhenPlaybackEnds;
@@ -48,7 +48,6 @@
     BOOL _hasPerformedInitialSetup;
     BOOL _wasInitializedUsingWebKitSPI;
     BOOL _requiresImmediateAssetInspection;
-    BOOL _showsTimecodes;
     BOOL _canPausePlaybackWhenExitingFullScreen;
     BOOL _playbackControlsIncludeVolumeControls;
     BOOL _canIncludePlaybackControlsWhenInline;
@@ -60,6 +59,7 @@
     AVContentOverlayView *__actualContentOverlayView;
     NSNumber *__defaultPlaybackRateStorage;
     CDUnknownBlockType _finishPreparingForInteractiveDismissalHandler;
+    CDUnknownBlockType _pendingRestoreUserInterfaceForPictureInPictureStopHandler;
     CDUnknownBlockType _interactiveDismissalCompletionHandler;
     AVObservationController *__observationController;
     AVBehaviorStorage *__behaviorStorage;
@@ -89,6 +89,7 @@
 @property (readonly, nonatomic) long long activeContentTransitionType;
 @property (nonatomic) BOOL allowsEnteringFullScreen;
 @property (nonatomic) BOOL allowsPictureInPicturePlayback;
+@property (readonly, nonatomic, getter=isAudioOnlyContent) BOOL audioOnlyContent;
 @property (readonly, nonatomic) BOOL avkit_isVisible;
 @property (readonly, nonatomic) struct CGRect avkit_videoRectInWindow;
 @property (readonly, nonatomic) UIWindow *avkit_window;
@@ -130,6 +131,7 @@
 @property (nonatomic) unsigned long long overrideRouteSharingPolicy; // @synthesize overrideRouteSharingPolicy=_overrideRouteSharingPolicy;
 @property (copy, nonatomic) NSString *overrideRoutingContextUID; // @synthesize overrideRoutingContextUID=_overrideRoutingContextUID;
 @property (nonatomic) struct CGAffineTransform overrideTransformForProminentPlayButton;
+@property (copy, nonatomic) CDUnknownBlockType pendingRestoreUserInterfaceForPictureInPictureStopHandler; // @synthesize pendingRestoreUserInterfaceForPictureInPictureStopHandler=_pendingRestoreUserInterfaceForPictureInPictureStopHandler;
 @property (readonly, nonatomic, getter=isPictureInPictureActive) BOOL pictureInPictureActive; // @synthesize pictureInPictureActive=_pictureInPictureActive;
 @property (readonly, nonatomic, getter=isPictureInPicturePossible) BOOL pictureInPicturePossible;
 @property (readonly, nonatomic, getter=isPictureInPictureSuspended) BOOL pictureInPictureSuspended;
@@ -141,7 +143,6 @@
 @property (nonatomic) BOOL playbackControlsIncludeTransportControls;
 @property (nonatomic) BOOL playbackControlsIncludeVolumeControls; // @synthesize playbackControlsIncludeVolumeControls=_playbackControlsIncludeVolumeControls;
 @property (nonatomic) BOOL playbackControlsShouldControlSystemVolume;
-@property (readonly, nonatomic) AVPlaybackControlsVisibilityController *playbackControlsVisibilityController;
 @property (strong, nonatomic) AVPlayer *player; // @synthesize player=_player;
 @property (strong, nonatomic) AVPlayerController *playerController; // @synthesize playerController=_playerController;
 @property (strong, nonatomic) __AVPlayerLayerView *playerLayerView; // @synthesize playerLayerView=_playerLayerView;
@@ -208,7 +209,6 @@
 - (void)_handleVolumeDownKeyReleasedCommand:(id)arg1;
 - (void)_handleVolumeUpKeyPressedCommand:(id)arg1;
 - (void)_handleVolumeUpKeyReleasedCommand:(id)arg1;
-- (BOOL)_isAudioOnlyContent;
 - (BOOL)_isDescendantOfRootViewController;
 - (BOOL)_isTrackingUserInteraction;
 - (BOOL)_isTrackingUserInteractionWithInteractiveView;
@@ -238,11 +238,14 @@
 - (void)activeContentViewDidChange;
 - (long long)adaptivePresentationStyleForPresentationController:(id)arg1;
 - (void)addBehavior:(id)arg1;
+- (void)avkit_beginReducingResourcesForPictureInPictureViewController:(id)arg1 playerController:(id)arg2;
+- (void)avkit_endReducingResourcesForPictureInPictureViewController:(id)arg1 playerController:(id)arg2;
 - (BOOL)avkit_isEffectivelyFullScreen;
 - (id)avkit_makePlayerControllerIfNeeded:(id)arg1;
 - (id)avkit_pictureInPictureViewController;
 - (void)avkit_startRoutingVideoToPictureInPictureViewController:(id)arg1;
 - (void)avkit_stopRoutingVideoToPictureInPictureViewController:(id)arg1;
+- (void)avkit_willBeginStoppingPictureInPictureForPictureInPictureViewController:(id)arg1;
 - (BOOL)canBecomeFirstResponder;
 - (void)contentOverlayViewDidAddOrRemoveSubview:(id)arg1;
 - (void)dealloc;
@@ -283,8 +286,8 @@
 - (void)pictureInPictureControllerWillStopPictureInPicture:(id)arg1;
 - (id)playbackContainerViewForFullScreenViewController:(id)arg1;
 - (BOOL)playbackControlsIncludeVolumeControlsControls;
-- (void)playbackControlsVisibilityController:(id)arg1 animateAlongsideVisibilityAnimationsWithAnimationCoordinator:(id)arg2 appearingViews:(id)arg3 disappearingViews:(id)arg4;
-- (void)playbackControlsVisibilityController:(id)arg1 updateStatusBarAppearanceUsingAnimator:(id)arg2;
+- (void)playbackControlsView:(id)arg1 animateAlongsideVisibilityAnimationsWithAnimationCoordinator:(id)arg2 appearingViews:(id)arg3 disappearingViews:(id)arg4;
+- (void)playbackControlsViewNeedsUpdateStatusBarAppearance:(id)arg1;
 - (void)popoverPresentationControllerDidDismissPopover:(id)arg1;
 - (long long)preferredInterfaceOrientationForPresentation;
 - (long long)preferredStatusBarStyle;

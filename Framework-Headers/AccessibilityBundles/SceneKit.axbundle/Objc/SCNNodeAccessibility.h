@@ -15,6 +15,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (struct CGRect)_accessibilityConvertRect:(struct CGRect)arg1 toNode:(id)arg2;
+- (id)_accessibilityConvertSCNVector3Points:(id)arg1 toNode:(id)arg2;
+- (id)_accessibilitySCNVector3BoundingBoxPoints;
 - (id)accessibilityContainer;
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrame;

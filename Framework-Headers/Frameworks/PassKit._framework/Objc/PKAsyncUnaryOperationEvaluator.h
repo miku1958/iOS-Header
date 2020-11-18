@@ -14,6 +14,7 @@
 {
     struct os_unfair_lock_s _lock;
     NSMutableArray *_operations;
+    _Atomic BOOL _crashed;
     id _value;
     CDUnknownBlockType _completion;
     BOOL _started;

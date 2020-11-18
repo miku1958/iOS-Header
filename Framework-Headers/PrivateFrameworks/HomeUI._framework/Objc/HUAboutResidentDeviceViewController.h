@@ -55,6 +55,7 @@
 - (id)initWithStyle:(unsigned long long)arg1;
 - (void)updateViews;
 - (void)updateViewsAndConstraints;
+- (BOOL)useNavigationBarForAutomationTabStyle;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

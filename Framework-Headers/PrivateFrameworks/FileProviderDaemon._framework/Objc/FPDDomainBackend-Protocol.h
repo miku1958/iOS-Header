@@ -4,13 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FileProviderDaemon/FPProviderDomainAccessControl-Protocol.h>
 #import <FileProviderDaemon/NSObject-Protocol.h>
 
 @class FPCTLTermDumper, FPDDomain, FPDDomainIndexer, FPDExtension, FPDRequest, FPExtensionEnumerationSettings, FPItem, FPItemID, FPSandboxingURLWrapper, NSArray, NSData, NSObject, NSProgress, NSURL;
 @protocol FPDLifetimeExtender, FPXEnumeratorObserver, OS_dispatch_queue;
 
-@protocol FPDDomainBackend <NSObject, FPProviderDomainAccessControl>
+@protocol FPDDomainBackend <NSObject>
 
 @property (readonly) NSObject<OS_dispatch_queue> *backendQueue;
 @property (readonly, copy) NSArray *rootURLs;

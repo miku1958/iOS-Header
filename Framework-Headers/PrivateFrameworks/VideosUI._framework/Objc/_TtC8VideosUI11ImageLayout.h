@@ -6,16 +6,8 @@
 
 #import <VideosUI/_TtC8VideosUI10ViewLayout.h>
 
-@class MISSING_TYPE;
-
 @interface _TtC8VideosUI11ImageLayout : _TtC8VideosUI10ViewLayout
 {
-    MISSING_TYPE *upscaleFactor;
-    MISSING_TYPE *aspectRatio;
-    MISSING_TYPE *scaleMode;
-    MISSING_TYPE *borderColor;
-    MISSING_TYPE *borderWidth;
-    MISSING_TYPE *continuousBorder;
 }
 
 @end

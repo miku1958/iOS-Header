@@ -23,6 +23,7 @@
 @property (readonly) unsigned char remoteVoiceActivityVAD;
 @property (readonly) struct AudioStreamBasicDescription *streamDescription;
 @property (readonly) unsigned long long timeStamp;
+@property (readonly) BOOL upsamplingSourceAudio;
 
 - (void)dealloc;
 - (void)finalize;

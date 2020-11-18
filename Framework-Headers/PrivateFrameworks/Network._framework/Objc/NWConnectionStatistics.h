@@ -25,6 +25,7 @@
 @property (strong, nonatomic) NSArray *activities; // @synthesize activities=_activities;
 @property (nonatomic) unsigned int awdMetricID; // @synthesize awdMetricID=_awdMetricID;
 @property (strong, nonatomic) PBCodable *awdReport; // @synthesize awdReport=_awdReport;
+@property (strong, nonatomic) NSString *bundleID;
 @property (readonly, nonatomic) unsigned long long bytesDuplicate;
 @property (readonly, nonatomic) unsigned long long bytesIn;
 @property (readonly, nonatomic) unsigned long long bytesOOO;
@@ -36,11 +37,13 @@
 @property (readonly, nonatomic) BOOL connected;
 @property (readonly, nonatomic) int connectedInterfaceType;
 @property (readonly, nonatomic) unsigned int connectionEstablishmentTimeMsecs;
+@property (readonly, nonatomic) unsigned int connectionReportReason;
 @property (readonly, nonatomic) NSUUID *connectionUUID;
 @property (readonly, nonatomic) BOOL delegated;
 @property (strong, nonatomic) NWDeviceReport *deviceReport; // @synthesize deviceReport=_deviceReport;
 @property (readonly, nonatomic) BOOL dnsAnswersCached;
 @property (readonly, nonatomic) unsigned int dnsResolvedTimeMsecs;
+@property (strong, nonatomic) NSString *effectiveBundleID;
 @property (strong, nonatomic) NSArray *externallyVisibleActivityUUIDs; // @synthesize externallyVisibleActivityUUIDs=_externallyVisibleActivityUUIDs;
 @property (strong, nonatomic) NSUUID *externallyVisibleConnectionUUID; // @synthesize externallyVisibleConnectionUUID=_externallyVisibleConnectionUUID;
 @property (readonly, nonatomic) BOOL fallbackEligible;

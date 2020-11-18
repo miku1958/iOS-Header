@@ -6,11 +6,12 @@
 
 #import <CarPlaySupport/CPSBannerView.h>
 
-@class CPSAbridgableLabel, SBUIStarkBannerViewButton, UIImageView;
+@class CPSAbridgableLabel, CPUIBannerViewButton, UIImageView, UIStackView;
 
 @interface CPSGuidanceBannerView : CPSBannerView
 {
-    SBUIStarkBannerViewButton *_actionButton;
+    UIStackView *_labelStackView;
+    CPUIBannerViewButton *_actionButton;
     UIImageView *_applicationIconImageView;
     UIImageView *_guidanceImageView;
     CPSAbridgableLabel *_guidanceTextLabel;
@@ -18,16 +19,19 @@
     long long _currentInterfaceStyle;
 }
 
-@property (strong, nonatomic) SBUIStarkBannerViewButton *actionButton; // @synthesize actionButton=_actionButton;
+@property (strong, nonatomic) CPUIBannerViewButton *actionButton; // @synthesize actionButton=_actionButton;
 @property (strong, nonatomic) UIImageView *applicationIconImageView; // @synthesize applicationIconImageView=_applicationIconImageView;
 @property (nonatomic) long long currentInterfaceStyle; // @synthesize currentInterfaceStyle=_currentInterfaceStyle;
 @property (strong, nonatomic) CPSAbridgableLabel *guidanceDetailTextLabel; // @synthesize guidanceDetailTextLabel=_guidanceDetailTextLabel;
 @property (strong, nonatomic) UIImageView *guidanceImageView; // @synthesize guidanceImageView=_guidanceImageView;
 @property (strong, nonatomic) CPSAbridgableLabel *guidanceTextLabel; // @synthesize guidanceTextLabel=_guidanceTextLabel;
+@property (strong, nonatomic) UIStackView *labelStackView; // @synthesize labelStackView=_labelStackView;
 
 - (void).cxx_destruct;
 - (void)_setGuidanceImageViewForImageSet:(id)arg1;
-- (id)initWithContext:(id)arg1;
+- (void)_updateBannerSelectedState;
+- (void)_updateLabels;
+- (id)initWithBannerItem:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateBannerWithBannerItem:(id)arg1;
 

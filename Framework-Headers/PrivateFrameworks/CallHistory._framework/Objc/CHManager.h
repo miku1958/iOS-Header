@@ -6,7 +6,7 @@
 
 #import <CallHistory/CHSynchronizedLoggable.h>
 
-@class NSArray, NSDate, NSNumber, NSPredicate, NSString;
+@class NSArray, NSDate, NSPredicate, NSString;
 @protocol SyncManagerProtocol;
 
 @interface CHManager : CHSynchronizedLoggable
@@ -28,7 +28,6 @@
     id<SyncManagerProtocol> _syncManager;
     NSArray *_uncoalescedRecentCalls;
     NSArray *_uncoalescedUnFilteredRecentCalls;
-    NSNumber *_unreadCallCount;
 }
 
 @property BOOL cacheIsDirty; // @synthesize cacheIsDirty=_cacheIsDirty;
@@ -48,7 +47,6 @@
 @property (strong) id<SyncManagerProtocol> syncManager; // @synthesize syncManager=_syncManager;
 @property (strong, nonatomic, getter=uncoalescedRecentCallsSync) NSArray *uncoalescedRecentCalls; // @synthesize uncoalescedRecentCalls=_uncoalescedRecentCalls;
 @property (strong) NSArray *uncoalescedUnFilteredRecentCalls; // @synthesize uncoalescedUnFilteredRecentCalls=_uncoalescedUnFilteredRecentCalls;
-@property (strong) NSNumber *unreadCallCount; // @synthesize unreadCallCount=_unreadCallCount;
 
 + (unsigned int)CHCallStatusForCallWithDuration:(double)arg1 isOriginated:(BOOL)arg2 isAnswered:(BOOL)arg3;
 + (id)limitingCallKindsForCallType:(unsigned int)arg1;
@@ -57,14 +55,15 @@
 - (void)addToCallHistory:(id)arg1;
 - (id)applyPredicate:(id)arg1 toCalls:(id)arg2;
 - (unsigned long long)callCountWithPredicate:(id)arg1;
+- (id)callIdentifiersWithPredicate:(id)arg1 limit:(unsigned long long)arg2 offset:(unsigned long long)arg3 batchSize:(unsigned long long)arg4;
 - (double)callTimersGetIncoming;
 - (double)callTimersGetLifetime;
 - (double)callTimersGetOutgoing;
 - (void)callTimersReset;
 - (id)callsWithPredicate:(id)arg1 limit:(unsigned long long)arg2 offset:(unsigned long long)arg3 batchSize:(unsigned long long)arg4;
 - (void)clearDatabase;
-- (id)coalesceCalls:(id)arg1;
 - (unsigned long long)coalescedCallCountWithPredicate:(id)arg1;
+- (id)coalescedCallsWithCalls:(id)arg1 usingStrategy:(id)arg2;
 - (id)coalescedCallsWithPredicate:(id)arg1 limit:(unsigned long long)arg2 offset:(unsigned long long)arg3 batchSize:(unsigned long long)arg4;
 - (unsigned long long)countCallsWithPredicate:(id)arg1;
 - (unsigned long long)countCallsWithPredicateSync:(id)arg1;
@@ -79,7 +78,6 @@
 - (void)deleteTheseCalls:(id)arg1;
 - (void)deleteTheseCallsSync:(id)arg1;
 - (id)fetchRecentCallsSyncWithCoalescing:(BOOL)arg1;
-- (unsigned long long)fetchUnreadCallsCount;
 - (void)flush;
 - (id)getLimitsDictionary;
 - (void)handleCallHistoryContactStoreChangedInternalNotification:(id)arg1;

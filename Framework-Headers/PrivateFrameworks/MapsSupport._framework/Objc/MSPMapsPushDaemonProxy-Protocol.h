@@ -20,6 +20,7 @@
 - (void)clearTrafficConditionsBulletin;
 - (void)clearTrafficIncidentBulletinWithAlertID:(NSData *)arg1;
 - (void)clearTrafficIncidentsBulletin;
+- (void)clearVenueBulletin;
 - (void)eraseRAPData;
 - (void)fetchAnnouncementsFilePath:(void (^)(NSString *))arg1;
 - (void)fetchAnnouncementsURLPath:(void (^)(NSString *))arg1;
@@ -46,6 +47,7 @@
 - (void)showPredictedRouteTrafficIncidentBulletinForCommuteDetails:(GEOCommuteNotificationDetails *)arg1 afterDelay:(double)arg2;
 - (void)showTrafficConditionsBulletinWithTitle:(NSString *)arg1 message:(NSString *)arg2 actionURL:(NSURL *)arg3;
 - (void)showTrafficIncidentAlertWithID:(NSData *)arg1 withReroute:(BOOL)arg2 title:(NSString *)arg3 description:(NSString *)arg4;
+- (void)showVenueBulletinWithTitle:(NSString *)arg1 message:(NSString *)arg2 actionURL:(NSURL *)arg3;
 - (void)simulateAnnouncement:(GEOAnnouncement *)arg1 afterDelay:(double)arg2;
 - (void)simulateProblemResolution;
 - (void)updateActiveAnnouncement;

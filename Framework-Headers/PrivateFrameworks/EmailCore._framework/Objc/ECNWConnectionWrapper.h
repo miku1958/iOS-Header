@@ -96,6 +96,8 @@
 - (void)registerForBytesAvailableWithHandler:(CDUnknownBlockType)arg1;
 - (id)securityProtocol;
 - (BOOL)setSecurityProtocol:(id)arg1;
+- (void)startActivity;
+- (void)stopActivity;
 - (void)unregisterForBytesAvailable;
 - (long long)writeBytes:(const char *)arg1 length:(unsigned long long)arg2;
 

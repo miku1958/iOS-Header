@@ -35,6 +35,7 @@
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL useRealtimePriority; // @synthesize useRealtimePriority=_useRealtimePriority;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)didBeginClockGrandmasterChangeForClock:(id)arg1;
 - (void)didChangeClockMasterForClock:(id)arg1;

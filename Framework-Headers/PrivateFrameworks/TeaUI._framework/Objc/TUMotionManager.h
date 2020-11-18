@@ -18,11 +18,11 @@
 + (id)shared;
 - (void).cxx_destruct;
 - (void)addObserver:(id)arg1;
-- (void)applicationDidBecomeActive;
-- (void)applicationDidEnterBackground;
 - (void)handleReduceMotionChanged;
 - (id)init;
 - (void)removeObserver:(id)arg1;
+- (void)scenDidEnterBackground;
+- (void)sceneDidBecomeActive;
 
 @end
 

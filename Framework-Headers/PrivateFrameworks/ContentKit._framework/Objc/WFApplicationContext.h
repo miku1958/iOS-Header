@@ -35,6 +35,7 @@
 @property (readonly, nonatomic) NSLock *observersLock; // @synthesize observersLock=_observersLock;
 @property (strong, nonatomic) id<WFApplicationContextProvider> provider; // @synthesize provider=_provider;
 @property (readonly, nonatomic) BOOL shouldReverseLayoutDirection;
+@property (readonly, nonatomic) long long userInterfaceStyle;
 
 + (id)imageNamed:(id)arg1;
 + (id)sharedContext;

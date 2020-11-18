@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) MPModelSong *currentPlayingSong;
 @property (nonatomic) BOOL limitedUI;
 @property (readonly, copy, nonatomic) NSString *nowPlayingBundleID;
+@property (readonly, nonatomic) long long playerState;
 @property (weak, nonatomic) Class tableCellClass;
 
 - (void)beginRequestObservation;

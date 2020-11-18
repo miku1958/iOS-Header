@@ -12,7 +12,6 @@
 
 @property (readonly, nonatomic) BOOL debugAdSlotsEnabled;
 @property (readonly, nonatomic) id<SXAdvertisingSettings> debugAdvertisementSettings;
-@property (readonly, nonatomic) BOOL debugInteractivityEnabled;
 
 @end
 

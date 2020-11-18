@@ -10,7 +10,7 @@
 #import <SpringBoardHome/SBViewControllerTransitionCoordinator-Protocol.h>
 
 @class BSUIAnimationFactory, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, UIView;
-@protocol SBViewControllerTransitionContextDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
+@protocol SBHWidgetConfigurationAnimationContext, SBViewControllerTransitionContextDelegate, UIViewControllerAnimatedTransitioning, UIViewControllerInteractiveTransitioning;
 
 @interface SBViewControllerTransitionContext : NSObject <SBViewControllerContextTransitioning, SBViewControllerTransitionCoordinator>
 {
@@ -68,6 +68,7 @@
 @property (readonly, nonatomic) BOOL transitionWasCancelled;
 @property (strong, nonatomic) id userInfo; // @synthesize userInfo=_userInfo;
 @property (nonatomic) BOOL wantsAnimation; // @synthesize wantsAnimation=_wantsAnimation;
+@property (readonly, nonatomic) id<SBHWidgetConfigurationAnimationContext> widgetConfigurationAnimationContext;
 
 - (void).cxx_destruct;
 - (CDUnknownBlockType)_acquireTransitionCompletion;

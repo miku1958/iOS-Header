@@ -13,16 +13,15 @@
 #import <PhotosUI/PUOneUpSharingAnimationControllerDelegate-Protocol.h>
 #import <PhotosUI/PUPhotoEditViewControllerPresentationDelegate-Protocol.h>
 #import <PhotosUI/PUPhotoMarkupViewControllerObserver-Protocol.h>
-#import <PhotosUI/PUPhotosSharingViewControllerDelegate-Protocol.h>
 #import <PhotosUI/PUSlideshowViewControllerDelegate-Protocol.h>
 #import <PhotosUI/PXActivitySharingControllerDelegate-Protocol.h>
 #import <PhotosUI/PXForcedDismissableViewController-Protocol.h>
 #import <PhotosUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
-@class NSHashTable, NSString, PUActivitySharingController, PUAssetReference, PUAvalancheReviewController, PUEditViewController, PUFunEffectsViewController, PUPhotoMarkupViewController, PUPhotosSharingViewController, PUSlideshowViewController;
-@protocol PUOverOneUpPresentationSessionBarsDelegate, PUOverOneUpPresentationSessionDelegate;
+@class NSHashTable, NSString, PUActivitySharingController, PUAssetReference, PUAvalancheReviewController, PUEditViewController, PUFunEffectsViewController, PUPhotoMarkupViewController, PUSlideshowViewController;
+@protocol PUOverOneUpPresentationSessionBarsDelegate, PUOverOneUpPresentationSessionDelegate, PXActivitySharingControllerDelegate;
 
-@interface PUOverOneUpPresentationSession : NSObject <PUPhotoEditViewControllerPresentationDelegate, PUSlideshowViewControllerDelegate, PUAvalancheReviewControllerDelegate, PUPhotosSharingViewControllerDelegate, PXActivitySharingControllerDelegate, PUOneUpPhotosSharingTransitionDelegate, PUCollectionViewLayoutProvider, PXForcedDismissableViewController, PUPhotoMarkupViewControllerObserver, PUFunEffectsViewControllerObserver, UIViewControllerTransitioningDelegate, PUOneUpSharingAnimationControllerDelegate>
+@interface PUOverOneUpPresentationSession : NSObject <PUPhotoEditViewControllerPresentationDelegate, PUSlideshowViewControllerDelegate, PUAvalancheReviewControllerDelegate, PXActivitySharingControllerDelegate, PUOneUpPhotosSharingTransitionDelegate, PUCollectionViewLayoutProvider, PXForcedDismissableViewController, PUPhotoMarkupViewControllerObserver, PUFunEffectsViewControllerObserver, UIViewControllerTransitioningDelegate, PUOneUpSharingAnimationControllerDelegate>
 {
     struct {
         BOOL respondsToTilingView;
@@ -40,7 +39,6 @@
     BOOL __needsUpdatePresentedViewControllers;
     id<PUOverOneUpPresentationSessionDelegate> _delegate;
     id<PUOverOneUpPresentationSessionBarsDelegate> _barsDelegate;
-    PUPhotosSharingViewController *__sharingViewController;
     PUAvalancheReviewController *__avalancheReviewController;
     PUSlideshowViewController *__slideshowViewController;
     PUEditViewController *__editViewController;
@@ -49,6 +47,7 @@
     PUAssetReference *__stashedAssetReference;
     NSHashTable *__presentedViewControllers;
     PUActivitySharingController *_activitySharingController;
+    id<PXActivitySharingControllerDelegate> _activitySharingControllerDelegate;
 }
 
 @property (strong, nonatomic, setter=_setAvalancheReviewController:) PUAvalancheReviewController *_avalancheReviewController; // @synthesize _avalancheReviewController=__avalancheReviewController;
@@ -57,10 +56,10 @@
 @property (nonatomic, setter=_setNeedsUpdatePresentedViewControllers:) BOOL _needsUpdatePresentedViewControllers; // @synthesize _needsUpdatePresentedViewControllers=__needsUpdatePresentedViewControllers;
 @property (strong, nonatomic, setter=_setPhotoMarkupViewController:) PUPhotoMarkupViewController *_photoMarkupViewController; // @synthesize _photoMarkupViewController=__photoMarkupViewController;
 @property (strong, nonatomic, setter=_setPresentedViewControllers:) NSHashTable *_presentedViewControllers; // @synthesize _presentedViewControllers=__presentedViewControllers;
-@property (strong, nonatomic, setter=_setSharingViewController:) PUPhotosSharingViewController *_sharingViewController; // @synthesize _sharingViewController=__sharingViewController;
 @property (strong, nonatomic, setter=_setSlideshowViewController:) PUSlideshowViewController *_slideshowViewController; // @synthesize _slideshowViewController=__slideshowViewController;
 @property (copy, nonatomic, setter=_setStashedAssetReference:) PUAssetReference *_stashedAssetReference; // @synthesize _stashedAssetReference=__stashedAssetReference;
 @property (strong, nonatomic) PUActivitySharingController *activitySharingController; // @synthesize activitySharingController=_activitySharingController;
+@property (weak, nonatomic) id<PXActivitySharingControllerDelegate> activitySharingControllerDelegate; // @synthesize activitySharingControllerDelegate=_activitySharingControllerDelegate;
 @property (weak, nonatomic) id<PUOverOneUpPresentationSessionBarsDelegate> barsDelegate; // @synthesize barsDelegate=_barsDelegate;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PUOverOneUpPresentationSessionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -82,10 +81,8 @@
 - (BOOL)_dismissEditViewController:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_dismissFunEffectsViewController:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_dismissPhotoMarkupViewController:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (BOOL)_dismissPhotosSharingViewController:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_dismissSlideshowViewController:(id)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_finalizeAvalancheReviewControllerDismiss;
-- (void)_finalizeSharingViewControllerDismiss;
 - (void)_finishOverOneUpPresentationSessionDismissForced:(BOOL)arg1 animated:(BOOL)arg2;
 - (struct CGRect)_frameAtIndexPath:(id)arg1;
 - (struct CGRect)_frameForAssetReference:(id)arg1;
@@ -98,13 +95,11 @@
 - (void)_performNavigationRequestForAssetDisplayDescriptor:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_popToOneUpFromViewController:(id)arg1 animated:(BOOL)arg2;
 - (void)_prepareForActivitySharingControllerDismiss:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_prepareForSharingViewControllerDismiss:(id)arg1 withAsset:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)_presentActivityViewController:(id)arg1;
 - (BOOL)_presentAvalancheReviewController:(id)arg1;
 - (BOOL)_presentEditViewController:(id)arg1;
 - (BOOL)_presentFunEffectsViewController:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)_presentPhotoMarkupViewController:(id)arg1;
-- (BOOL)_presentPhotosSharingViewController:(id)arg1;
 - (BOOL)_presentScreenRoutePickerViewController:(id)arg1;
 - (BOOL)_presentSlideshowViewController:(id)arg1;
 - (void)_removeViewController:(id)arg1;
@@ -135,9 +130,7 @@
 - (id)photosSharingTransitionTransitioningView:(id)arg1;
 - (void)photosSharingTransitionWillAnimateDismissal:(id)arg1;
 - (void)photosSharingTransitionWillAnimatePresentation:(id)arg1;
-- (void)photosSharingViewController:(id)arg1 didCompleteWithActivityType:(id)arg2 success:(BOOL)arg3 withAsset:(id)arg4;
-- (void)photosSharingViewControllerDidCancel:(id)arg1 needsDismiss:(BOOL)arg2;
-- (void)photosSharingViewControllerWillCancel:(id)arg1 withAsset:(id)arg2;
+- (id)ppt_activityViewController;
 - (void)ppt_cancelActivity;
 - (void)ppt_dismissShareSheetWithCompletion:(CDUnknownBlockType)arg1;
 - (void)ppt_presentPhotoEditor;

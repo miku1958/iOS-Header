@@ -44,6 +44,7 @@
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)addDeviceWithIdentifier:(id)arg1;
 - (void)callStatusDidChange:(id)arg1;
 - (void)checkConnectionPeers:(CDUnknownBlockType)arg1;
 - (void)checkConnectionToHearingDevice:(CDUnknownBlockType)arg1;

@@ -24,6 +24,7 @@
 }
 
 @property (readonly, nonatomic) NSData *data;
+@property (readonly, nonatomic) BOOL didWakeHint;
 @property (readonly, nonatomic) BOOL encrypted; // @synthesize encrypted=_encrypted;
 @property (readonly, nonatomic) BOOL expectsPeerResponse;
 @property (strong, nonatomic) NSDate *expiryDate;

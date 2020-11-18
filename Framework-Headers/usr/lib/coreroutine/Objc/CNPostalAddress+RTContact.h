@@ -8,7 +8,6 @@
 
 @interface CNPostalAddress (RTContact)
 + (id)_rt_labelStringWithAddressLabelType:(unsigned long long)arg1;
-+ (id)_rt_postalAddressWithPostalAddress:(id)arg1;
 - (id)_rt_toString;
 @end
 

@@ -14,6 +14,7 @@
 {
     BOOL _canGenerateNewAttachment;
     BOOL _allowUserAttachmentSelection;
+    BOOL _isEnhancedLoggingStateOn;
     NSString *_loggingConsent;
 }
 
@@ -22,6 +23,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isEnhancedLoggingStateOn; // @synthesize isEnhancedLoggingStateOn=_isEnhancedLoggingStateOn;
 @property (copy, nonatomic) NSString *loggingConsent; // @synthesize loggingConsent=_loggingConsent;
 @property (readonly) Class superclass;
 
@@ -36,7 +38,10 @@
 - (void)enableLogging;
 - (id)filesInDir:(id)arg1 matchingPattern:(id)arg2 excludingPattern:(id)arg3;
 - (id)init;
+- (void)isExtensionEnhancedLoggingStateOnWithHandler:(CDUnknownBlockType)arg1;
 - (BOOL)isLoggingEnabled;
+- (void)setupWithParameters:(id)arg1;
+- (void)teardownWithParameters:(id)arg1;
 
 @end
 

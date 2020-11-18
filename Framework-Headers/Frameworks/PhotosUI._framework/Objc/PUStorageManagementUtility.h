@@ -20,6 +20,7 @@
 + (void)expungeTrashedSpatialOverCaptureResourcesWithCompletionBlock:(CDUnknownBlockType)arg1;
 + (id)fetchVideoAssetsBySizeWithSortOrder:(BOOL)arg1;
 + (BOOL)isCPLEnabled;
++ (BOOL)isCPLInExitMode;
 + (BOOL)isCPLInInitialUploadingState;
 + (BOOL)isDeletableItemsInTrash;
 + (BOOL)isOptimizedModeOn;
@@ -29,6 +30,7 @@
 + (id)sizeForRecentlyDeletedItems;
 + (id)sizeForTrashedSpatialOvercaptureResources;
 + (id)stringWithSizeUnitForValue:(id)arg1;
++ (id)systemPhotoLibrary;
 + (unsigned long long)totalReclaimableSizeFromPurgingVideoClips;
 
 @end

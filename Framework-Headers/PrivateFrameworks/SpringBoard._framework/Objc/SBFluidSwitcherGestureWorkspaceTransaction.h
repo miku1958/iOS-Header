@@ -8,20 +8,21 @@
 
 #import <SpringBoard/SBSceneLayoutWorkspaceTransactionDelegate-Protocol.h>
 #import <SpringBoard/SBUIAnimationControllerObserver-Protocol.h>
+#import <SpringBoard/SBViewMorphAnimatorObserver-Protocol.h>
 #import <SpringBoard/SBWorkspaceApplicationSceneTransitionContextDelegate-Protocol.h>
 
 @class NSString, NSTimer, NSUUID, SBAppLayout, SBAutoPiPWorkspaceTransaction, SBFluidSwitcherViewController, SBMainDisplayLayoutState, SBMainWorkspaceTransaction, SBSceneLayoutWorkspaceTransaction, SBTransientOverlayViewController, SBUISwitcherAnimationController, UIApplicationSceneDeactivationAssertion;
 @protocol BSInvalidatable, SBFluidSwitcherGestureWorkspaceTransactionDelegate;
 
-@interface SBFluidSwitcherGestureWorkspaceTransaction : SBSystemGestureWorkspaceTransaction <SBUIAnimationControllerObserver, SBSceneLayoutWorkspaceTransactionDelegate, SBWorkspaceApplicationSceneTransitionContextDelegate>
+@interface SBFluidSwitcherGestureWorkspaceTransaction : SBSystemGestureWorkspaceTransaction <SBUIAnimationControllerObserver, SBSceneLayoutWorkspaceTransactionDelegate, SBWorkspaceApplicationSceneTransitionContextDelegate, SBViewMorphAnimatorObserver>
 {
     BOOL _calledBeginWithGesture;
     BOOL _hasActiveLayoutStateTransitionCoordinatorTransition;
     BOOL _hasCompletedFirstCACommitSinceTransactionBeganForPPT;
     id<BSInvalidatable> _deferOrientationUpdatesAssertion;
     long long _numberOfAppLayoutsTraveledWithArcSwipe;
-    BOOL _isPointerTouch;
     double _digitizerSurfaceHeightForLastGestureEvent;
+    BOOL _isPointerTouch;
     BOOL _shouldCancelGestureUponInterruption;
     BOOL _hasCompletedAtLeastOneGesture;
     SBFluidSwitcherViewController *_switcherViewController;
@@ -87,10 +88,12 @@
 - (void)_updatePPTsForGestureTransactionBegan;
 - (void)_updateWithGesture:(id)arg1;
 - (void)_willInterruptWithReason:(id)arg1;
+- (struct CGRect)applicationTransitionContext:(id)arg1 frameForApplicationSceneEntity:(id)arg2;
 - (BOOL)canInterruptForTransitionRequest:(id)arg1;
 - (void)completeGestureWithTransitionRequest:(id)arg1;
 - (id)createSceneEntityForHandle:(id)arg1;
 - (void)dealloc;
+- (void)didEndAllAnimations;
 - (id)initWithTransitionRequest:(id)arg1 fluidSwitcherViewController:(id)arg2 delegate:(id)arg3;
 - (id)layoutStateForApplicationTransitionContext:(id)arg1;
 - (id)previousLayoutStateForApplicationTransitionContext:(id)arg1;

@@ -32,13 +32,12 @@
 
 - (void).cxx_destruct;
 - (void)_flushFilesWhileUnlocked;
-- (void)_garbageCollectFilesAsync;
 - (void)_openFilesForProcessingWhileLocked;
-- (void)_processPoppedItemResult:(CDStruct_7663941a)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)_processPoppedItemResult:(CDStruct_632d45bc)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)_read:(CDStruct_beb4cc23)arg1 fileId:(int)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)_trimPermafailDirectory;
 - (void)_unlinkFileWithIdLocked:(int)arg1;
-- (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(BOOL)arg3 item:(id)arg4 callback:(CDUnknownBlockType)arg5;
+- (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(BOOL)arg3 customPriorityCriteria:(unsigned char)arg4 item:(id)arg5 callback:(CDUnknownBlockType)arg6;
 - (void)close;
 - (unsigned long long)count;
 - (void)countHighPriorityItems:(unsigned long long *)arg1 lowPriorityItems:(unsigned long long *)arg2;
@@ -46,7 +45,9 @@
 - (void)deleteWithItemId:(long long)arg1 fileId:(int)arg2;
 - (id)initWithDirectory:(id)arg1;
 - (void)markAsFailedWithId:(long long)arg1;
+- (void)performMaintenanceTasks;
 - (void)pop:(CDUnknownBlockType)arg1;
+- (void)popByCustomPriorityCriteria:(unsigned char)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)popByItemId:(long long)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)popBySourceKey:(id)arg1 messageId:(id)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)popHighPriority:(CDUnknownBlockType)arg1;

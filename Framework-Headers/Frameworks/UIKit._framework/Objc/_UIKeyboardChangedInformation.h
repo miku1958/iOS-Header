@@ -16,11 +16,13 @@
     BOOL _avoidIntersectability;
     BOOL _keyboardOnScreen;
     BOOL _shouldTakeSnapshot;
-    NSString *_sourceCanvasIdentifier;
+    NSString *_sourceSceneIdentityString;
     NSString *_sourceDisplayIdentifier;
+    NSString *_sourceBundleIdentifier;
     BKSAnimationFenceHandle *_animationFence;
     struct CGRect _keyboardPosition;
     struct CGRect _keyboardPositionWithIAV;
+    struct CGRect _keyboardPositionWithRemoteIAV;
 }
 
 @property (readonly, copy) BKSAnimationFenceHandle *animationFence; // @synthesize animationFence=_animationFence;
@@ -28,9 +30,11 @@
 @property (readonly) BOOL keyboardOnScreen; // @synthesize keyboardOnScreen=_keyboardOnScreen;
 @property (readonly) struct CGRect keyboardPosition; // @synthesize keyboardPosition=_keyboardPosition;
 @property (readonly) struct CGRect keyboardPositionWithIAV; // @synthesize keyboardPositionWithIAV=_keyboardPositionWithIAV;
+@property struct CGRect keyboardPositionWithRemoteIAV; // @synthesize keyboardPositionWithRemoteIAV=_keyboardPositionWithRemoteIAV;
 @property (nonatomic) BOOL shouldTakeSnapshot; // @synthesize shouldTakeSnapshot=_shouldTakeSnapshot;
-@property (copy, nonatomic) NSString *sourceCanvasIdentifier; // @synthesize sourceCanvasIdentifier=_sourceCanvasIdentifier;
+@property (copy, nonatomic) NSString *sourceBundleIdentifier; // @synthesize sourceBundleIdentifier=_sourceBundleIdentifier;
 @property (copy, nonatomic) NSString *sourceDisplayIdentifier; // @synthesize sourceDisplayIdentifier=_sourceDisplayIdentifier;
+@property (copy, nonatomic) NSString *sourceSceneIdentityString; // @synthesize sourceSceneIdentityString=_sourceSceneIdentityString;
 
 + (id)animationFence;
 + (id)informationForKeyboardDown;

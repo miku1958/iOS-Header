@@ -9,6 +9,7 @@
 @class NSString, NSURL, TKAdaptiveImage_Trait, UIColor, UIImage;
 @protocol TKNetworkTask;
 
+__attribute__((visibility("hidden")))
 @interface TKAdaptiveImage : TKAdaptiveResourceObject
 {
     BOOL _supportsTraits;

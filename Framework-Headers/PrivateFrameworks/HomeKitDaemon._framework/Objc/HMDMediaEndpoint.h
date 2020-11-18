@@ -9,16 +9,16 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
 @class HMDMediaBrowser, NSArray, NSMutableArray, NSObject, NSSet, NSString;
-@protocol OS_dispatch_queue;
+@protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDMediaEndpoint : HMFObject <HMFLogging>
 {
+    id<HMFLocking> _lock;
     unsigned int _connectionState;
     void *_retainedEndpoint;
     NSSet *_outputDeviceIdentifiers;
     NSString *_sessionIdentifier;
     NSString *_localizedName;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     NSString *_logID;
     HMDMediaBrowser *_browser;
     NSObject<OS_dispatch_queue> *_workQueue;
@@ -37,7 +37,6 @@
 @property (readonly, nonatomic) NSString *logID; // @synthesize logID=_logID;
 @property (strong, nonatomic) NSSet *outputDeviceIdentifiers; // @synthesize outputDeviceIdentifiers=_outputDeviceIdentifiers;
 @property (strong, nonatomic) NSMutableArray *pendingBlocks; // @synthesize pendingBlocks=_pendingBlocks;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *propertyQueue; // @synthesize propertyQueue=_propertyQueue;
 @property (readonly) void *retainedEndpoint; // @synthesize retainedEndpoint=_retainedEndpoint;
 @property (readonly, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
 @property (readonly) Class superclass;

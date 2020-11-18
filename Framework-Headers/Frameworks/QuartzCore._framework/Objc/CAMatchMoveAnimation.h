@@ -26,6 +26,7 @@
 @property BOOL usesNormalizedCoordinates;
 
 + (id)defaultValueForKey:(id)arg1;
+- (BOOL)CA_validateValue:(id)arg1 forKey:(id)arg2;
 - (struct Animation *)_copyRenderAnimationForLayer:(id)arg1;
 - (unsigned int)_propertyFlagsForLayer:(id)arg1;
 - (BOOL)_setCARenderAnimation:(struct Animation *)arg1 layer:(id)arg2;

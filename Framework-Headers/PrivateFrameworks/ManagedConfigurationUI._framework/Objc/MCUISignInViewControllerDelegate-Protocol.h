@@ -10,6 +10,8 @@
 
 @protocol MCUISignInViewControllerDelegate <NSObject>
 - (void)signInViewController:(MCUISignInViewController *)arg1 didAuthenticateWithResults:(NSMutableDictionary *)arg2 error:(NSError *)arg3;
+
+@optional
 - (void)signInViewController:(MCUISignInViewController *)arg1 willAuthenticateWithCompletionHandler:(void (^)(void))arg2;
 - (void)signInViewControllerDidCancelAuthentication:(MCUISignInViewController *)arg1;
 @end

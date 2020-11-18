@@ -37,8 +37,11 @@
 - (long long)compare:(id)arg1 deviceClass:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;
+- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToOSVersionRequirement:(id)arg1;
 - (id)versionForDeviceClass:(id)arg1;
 
 @end

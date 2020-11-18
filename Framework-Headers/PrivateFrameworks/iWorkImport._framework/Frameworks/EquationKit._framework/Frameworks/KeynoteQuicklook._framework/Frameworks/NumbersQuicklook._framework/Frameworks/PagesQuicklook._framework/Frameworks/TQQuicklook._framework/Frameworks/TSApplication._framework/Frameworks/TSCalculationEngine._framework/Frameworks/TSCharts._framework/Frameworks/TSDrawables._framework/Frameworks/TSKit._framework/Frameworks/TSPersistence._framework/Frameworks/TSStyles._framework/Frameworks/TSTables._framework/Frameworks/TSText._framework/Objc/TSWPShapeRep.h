@@ -9,7 +9,7 @@
 #import <TSText/TSWPContainerTextEditingRep-Protocol.h>
 #import <TSText/TSWPShapeLayoutDelegate-Protocol.h>
 
-@class CALayer, NSArray, NSObject, NSString, TSWPRep;
+@class CALayer, NSObject, NSString, TSWPRep;
 @protocol TSDContainerInfo;
 
 @interface TSWPShapeRep : TSDShapeRep <TSWPContainerTextEditingRep, TSWPShapeLayoutDelegate>
@@ -19,7 +19,6 @@
     TSWPRep *_containedRep;
 }
 
-@property (readonly, nonatomic) NSArray *childReps;
 @property (readonly, nonatomic) TSWPRep *containedRep; // @synthesize containedRep=_containedRep;
 @property (readonly, nonatomic) NSObject<TSDContainerInfo> *containerInfo;
 @property (readonly, copy) NSString *debugDescription;
@@ -28,15 +27,12 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)addAdditionalChildLayersToArray:(id)arg1;
-- (BOOL)canSelectChildRep:(id)arg1;
+- (id)childReps;
+- (id)childRepsForHitTesting;
 - (void)dealloc;
 - (id)initWithLayout:(id)arg1 canvas:(id)arg2;
-- (void)recursivelyPerformSelector:(SEL)arg1;
-- (void)recursivelyPerformSelector:(SEL)arg1 withObject:(id)arg2;
-- (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1;
-- (void)recursivelyPerformSelectorIfImplemented:(SEL)arg1 withObject:(id)arg2;
-- (void)selectChildRep:(id)arg1 extendingSelection:(BOOL)arg2;
+- (id)layoutsForChildReps;
+- (struct CGRect)reflectionFrameInRootForClipping;
 - (void)updateChildrenFromLayout;
 
 @end

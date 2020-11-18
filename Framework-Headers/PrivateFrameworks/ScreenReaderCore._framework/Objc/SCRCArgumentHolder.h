@@ -6,31 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class SCRCArgumentHolderPrivate;
+@class NSString;
 
 @interface SCRCArgumentHolder : NSObject
 {
-    SCRCArgumentHolderPrivate *_private;
+    BOOL _required;
+    NSString *_option;
+    NSString *_argument;
+    NSString *_argumentDescription;
+    id _target;
+    SEL _action;
 }
 
+@property (readonly, nonatomic) SEL action; // @synthesize action=_action;
+@property (copy, nonatomic) NSString *argument; // @synthesize argument=_argument;
+@property (readonly, copy, nonatomic) NSString *argumentDescription; // @synthesize argumentDescription=_argumentDescription;
+@property (readonly, copy, nonatomic) NSString *option; // @synthesize option=_option;
+@property (readonly, nonatomic) BOOL required; // @synthesize required=_required;
+@property (readonly, weak, nonatomic) id target; // @synthesize target=_target;
+
 - (void).cxx_destruct;
-- (SEL)action;
-- (id)argument;
-- (id)argumentDescription;
 - (long long)compare:(id)arg1;
-- (unsigned long long)hash;
 - (id)init;
+- (id)initWithArgument:(id)arg1 option:(id)arg2 description:(id)arg3 target:(id)arg4 action:(SEL)arg5 required:(BOOL)arg6;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)isRequired;
-- (id)option;
 - (BOOL)process;
-- (void)setAction:(SEL)arg1;
-- (void)setArgument:(id)arg1;
-- (void)setArgumentDescription:(id)arg1;
-- (void)setIsRequired:(BOOL)arg1;
-- (void)setOption:(id)arg1;
-- (void)setTarget:(id)arg1;
-- (id)target;
 
 @end
 

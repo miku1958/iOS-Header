@@ -18,8 +18,10 @@ __attribute__((visibility("hidden")))
     CDUnknownBlockType _responseHandler;
     unsigned long long _sendTicks;
     NSObject<OS_dispatch_source> *_timer;
+    unsigned long long _length;
 }
 
+@property (nonatomic) unsigned long long length; // @synthesize length=_length;
 @property (copy, nonatomic) NSDictionary *options; // @synthesize options=_options;
 @property (copy, nonatomic) NSString *requestID; // @synthesize requestID=_requestID;
 @property (copy, nonatomic) CDUnknownBlockType responseHandler; // @synthesize responseHandler=_responseHandler;

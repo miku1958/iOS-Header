@@ -38,6 +38,7 @@
 - (struct _NSRange)charRangeRemappedFromStorage:(struct _NSRange)arg1;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (id)characterStyleAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (id)characterStyleForDropCapAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (id)dropCapStyleAtCharIndex:(unsigned long long)arg1;
 - (void)enumerateSmartFieldsWithAttributeKind:(unsigned long long)arg1 inRange:(struct _NSRange)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateWithAttributeKind:(unsigned long long)arg1 inRange:(struct _NSRange)arg2 usingBlock:(CDUnknownBlockType)arg3;
@@ -57,6 +58,7 @@
 - (unsigned long long)previousCharacterIndex:(unsigned long long)arg1;
 - (struct _NSRange)rangeForSelectionAtCharIndex:(unsigned long long)arg1 caretIndex:(unsigned long long)arg2;
 - (struct _NSRange)rangeOfDropCapAtCharIndex:(unsigned long long)arg1;
+- (struct _NSRange)rangeOfDropCapAtCharIndex:(unsigned long long)arg1 actualCharacterCount:(out unsigned long long *)arg2;
 - (struct _NSRange)scanBackwardForWordAtCharIndex:(unsigned long long)arg1;
 - (id)smartFieldAtCharIndex:(unsigned long long)arg1 attributeKind:(unsigned long long)arg2 effectiveRange:(struct _NSRange *)arg3;
 - (id)smartFieldsWithAttributeKind:(unsigned long long)arg1 intersectingRange:(struct _NSRange)arg2;

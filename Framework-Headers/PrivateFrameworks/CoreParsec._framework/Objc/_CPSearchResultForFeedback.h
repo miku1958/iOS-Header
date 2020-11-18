@@ -19,6 +19,12 @@
     BOOL _publiclyIndexable;
     BOOL _isFuzzyMatch;
     BOOL _doNotFold;
+    BOOL _shouldUseCompactDisplay;
+    BOOL _noGoTakeover;
+    BOOL _preferTopPlatter;
+    BOOL _wasCompact;
+    BOOL _didTakeoverGo;
+    BOOL _usesCompactDisplay;
     int _topHit;
     int _type;
     int _knownResultBundleId;
@@ -27,7 +33,6 @@
     NSString *_identifier;
     _CPActionItemForFeedback *_action;
     _CPPunchoutForFeedback *_punchout;
-    NSString *_srf;
     _CPStruct *_localFeatures;
     NSString *_resultType;
     double _rankingScore;
@@ -55,6 +60,7 @@
 @property (copy, nonatomic) NSString *correctedQuery; // @synthesize correctedQuery=_correctedQuery;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL didTakeoverGo; // @synthesize didTakeoverGo=_didTakeoverGo;
 @property (nonatomic) BOOL doNotFold; // @synthesize doNotFold=_doNotFold;
 @property (copy, nonatomic) NSData *entityData; // @synthesize entityData=_entityData;
 @property (copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
@@ -74,6 +80,8 @@
 @property (nonatomic) int knownResultBundleId; // @synthesize knownResultBundleId=_knownResultBundleId;
 @property (nonatomic) int knownSectionBundleIdentifier; // @synthesize knownSectionBundleIdentifier=_knownSectionBundleIdentifier;
 @property (strong, nonatomic) _CPStruct *localFeatures; // @synthesize localFeatures=_localFeatures;
+@property (nonatomic) BOOL noGoTakeover; // @synthesize noGoTakeover=_noGoTakeover;
+@property (nonatomic) BOOL preferTopPlatter; // @synthesize preferTopPlatter=_preferTopPlatter;
 @property (nonatomic) BOOL publiclyIndexable; // @synthesize publiclyIndexable=_publiclyIndexable;
 @property (strong, nonatomic) _CPPunchoutForFeedback *punchout; // @synthesize punchout=_punchout;
 @property (nonatomic) unsigned long long queryId; // @synthesize queryId=_queryId;
@@ -81,11 +89,13 @@
 @property (copy, nonatomic) NSString *resultBundleId; // @synthesize resultBundleId=_resultBundleId;
 @property (copy, nonatomic) NSString *resultType; // @synthesize resultType=_resultType;
 @property (copy, nonatomic) NSString *sectionBundleIdentifier; // @synthesize sectionBundleIdentifier=_sectionBundleIdentifier;
-@property (copy, nonatomic) NSString *srf; // @synthesize srf=_srf;
+@property (nonatomic) BOOL shouldUseCompactDisplay; // @synthesize shouldUseCompactDisplay=_shouldUseCompactDisplay;
 @property (readonly) Class superclass;
 @property (nonatomic) int topHit; // @synthesize topHit=_topHit;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (copy, nonatomic) NSString *userInput; // @synthesize userInput=_userInput;
+@property (nonatomic) BOOL usesCompactDisplay; // @synthesize usesCompactDisplay=_usesCompactDisplay;
+@property (nonatomic) BOOL wasCompact; // @synthesize wasCompact=_wasCompact;
 @property (readonly, nonatomic) unsigned long long whichApplicationbundleid; // @synthesize whichApplicationbundleid=_whichApplicationbundleid;
 @property (readonly, nonatomic) unsigned long long whichResultbundleidentifier; // @synthesize whichResultbundleidentifier=_whichResultbundleidentifier;
 @property (readonly, nonatomic) unsigned long long whichSectionbundleid; // @synthesize whichSectionbundleid=_whichSectionbundleid;

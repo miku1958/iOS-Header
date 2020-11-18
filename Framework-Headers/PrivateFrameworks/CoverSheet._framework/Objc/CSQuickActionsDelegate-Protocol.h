@@ -11,6 +11,7 @@
 @protocol CSQuickActionsDelegate <NSObject>
 - (BOOL)allowsCameraPress;
 - (BOOL)allowsFlashlight;
+- (BOOL)allowsFlashlightInteraction;
 - (void)fireActionForButton:(CSQuickActionsButton *)arg1;
 - (BOOL)hasCamera;
 - (BOOL)hasFlashlight;

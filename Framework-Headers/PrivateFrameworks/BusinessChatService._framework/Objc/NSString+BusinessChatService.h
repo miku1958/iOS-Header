@@ -10,5 +10,7 @@
 - (id)bizIDWithoutPrefix;
 - (BOOL)isBusinessID;
 - (id)prefixedBizID;
+- (id)removeFilePrefix;
+- (id)stringByRemovingOccurancesOfCharacter:(id)arg1 fromPosition:(long long)arg2;
 @end
 

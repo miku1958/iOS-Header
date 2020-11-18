@@ -6,18 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class HMFSystemInfo;
-
 @interface HMFLogEventReporter : NSObject
 {
-    HMFSystemInfo *_systemInfo;
 }
 
 @property (readonly, nonatomic, getter=isEnabled) BOOL enabled;
-@property (readonly, nonatomic) HMFSystemInfo *systemInfo; // @synthesize systemInfo=_systemInfo;
 
 + (id)sharedReporter;
-- (void).cxx_destruct;
 - (id)adoptVoucher:(id)arg1 signpostId:(unsigned long long)arg2 finalizeBlock:(CDUnknownBlockType)arg3;
 - (id)initWithSystemInfo:(id)arg1;
 - (id)startSessionForServiceName:(id)arg1 signpostId:(unsigned long long)arg2 finalizeBlock:(CDUnknownBlockType)arg3;

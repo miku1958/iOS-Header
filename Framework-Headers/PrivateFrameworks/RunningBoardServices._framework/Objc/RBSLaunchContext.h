@@ -6,22 +6,38 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
-@class NSArray, NSDictionary, NSNumber, NSString, NSUUID, RBSProcessIdentity;
+@class NSArray, NSDictionary, NSNumber, NSString, NSUUID, RBProcess, RBSProcessIdentity;
 
-@interface RBSLaunchContext : NSObject <BSXPCSecureCoding, NSCopying>
+@interface RBSLaunchContext : NSObject <RBSXPCSecureCoding, NSCopying>
 {
+    BOOL _lsManageRoleOnly;
+    BOOL _forceSubmit;
+    unsigned char _initialRole;
     unsigned char _spawnType;
+    unsigned short _lsUMask;
+    unsigned int _lsPersona;
+    int _hostPid;
+    unsigned long long _lsSpawnFlags;
+    NSArray *_lsBinpref;
+    NSString *_bundleIdentifier;
+    NSDictionary *_extensionOverlay;
+    NSUUID *_oneShotUUID;
+    NSString *_standardOutputPath;
+    NSString *_standardErrorPath;
+    NSString *_standardInPath;
+    NSString *_beforeTranslocationBundlePath;
+    NSString *_homeDirectory;
+    NSString *_tmpDirectory;
     RBSProcessIdentity *_identity;
     NSArray *_arguments;
     unsigned long long _executionOptions;
-    NSString *_standardOutputPath;
-    NSString *_standardErrorPath;
     NSArray *_attributes;
     NSString *_explanation;
     NSString *_managedPersona;
+    RBProcess *_hostProcess;
     NSString *__overrideExecutablePath;
     NSArray *__additionalMachServices;
     NSDictionary *__additionalEnvironment;
@@ -34,30 +50,47 @@
 @property (copy, nonatomic, setter=_setOverrideExecutablePath:) NSString *_overrideExecutablePath; // @synthesize _overrideExecutablePath=__overrideExecutablePath;
 @property (copy, nonatomic) NSArray *arguments; // @synthesize arguments=_arguments;
 @property (copy, nonatomic) NSArray *attributes; // @synthesize attributes=_attributes;
+@property (copy, nonatomic) NSString *beforeTranslocationBundlePath; // @synthesize beforeTranslocationBundlePath=_beforeTranslocationBundlePath;
+@property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSDictionary *environment;
 @property (copy, nonatomic) NSString *executablePath;
 @property (nonatomic) unsigned long long executionOptions; // @synthesize executionOptions=_executionOptions;
 @property (copy, nonatomic) NSString *explanation; // @synthesize explanation=_explanation;
+@property (strong, nonatomic) NSDictionary *extensionOverlay; // @synthesize extensionOverlay=_extensionOverlay;
+@property (nonatomic) BOOL forceSubmit; // @synthesize forceSubmit=_forceSubmit;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *homeDirectory; // @synthesize homeDirectory=_homeDirectory;
+@property (nonatomic) int hostPid; // @synthesize hostPid=_hostPid;
+@property (strong, nonatomic) RBProcess *hostProcess; // @synthesize hostProcess=_hostProcess;
 @property (copy, nonatomic) RBSProcessIdentity *identity; // @synthesize identity=_identity;
+@property (nonatomic) unsigned char initialRole; // @synthesize initialRole=_initialRole;
+@property (copy, nonatomic) NSArray *lsBinpref; // @synthesize lsBinpref=_lsBinpref;
+@property (nonatomic) unsigned int lsInitialRole;
+@property (nonatomic) BOOL lsManageRoleOnly; // @synthesize lsManageRoleOnly=_lsManageRoleOnly;
+@property (nonatomic) unsigned int lsPersona; // @synthesize lsPersona=_lsPersona;
+@property (nonatomic) unsigned long long lsSpawnFlags; // @synthesize lsSpawnFlags=_lsSpawnFlags;
+@property (nonatomic) unsigned short lsUMask; // @synthesize lsUMask=_lsUMask;
 @property (copy, nonatomic) NSArray *machServices;
 @property (copy, nonatomic) NSString *managedPersona; // @synthesize managedPersona=_managedPersona;
+@property (strong, nonatomic) NSUUID *oneShotUUID; // @synthesize oneShotUUID=_oneShotUUID;
 @property (copy, nonatomic) NSUUID *requiredCacheUUID; // @synthesize requiredCacheUUID=_requiredCacheUUID;
 @property (copy, nonatomic) NSNumber *requiredSequenceNumber; // @synthesize requiredSequenceNumber=_requiredSequenceNumber;
 @property (nonatomic) unsigned char spawnType; // @synthesize spawnType=_spawnType;
 @property (copy, nonatomic) NSString *standardErrorPath; // @synthesize standardErrorPath=_standardErrorPath;
+@property (copy, nonatomic) NSString *standardInPath; // @synthesize standardInPath=_standardInPath;
 @property (copy, nonatomic) NSString *standardOutputPath; // @synthesize standardOutputPath=_standardOutputPath;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *tmpDirectory; // @synthesize tmpDirectory=_tmpDirectory;
 
 + (id)context;
 + (id)contextWithIdentity:(id)arg1;
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

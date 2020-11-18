@@ -28,6 +28,7 @@
 @property (readonly, nonatomic) long long workoutEventType;
 
 + (id)_newWorkoutEventWithType:(long long)arg1 dateInterval:(id)arg2 metadata:(id)arg3;
++ (id)_unvalidatedWorkoutEventWithType:(long long)arg1 dateInterval:(id)arg2 metadata:(id)arg3;
 + (id)_workoutEventWithInternalEvent:(id)arg1;
 + (id)_workoutEventWithType:(long long)arg1 date:(id)arg2 metadata:(id)arg3;
 + (id)_workoutEventWithType:(long long)arg1 dateInterval:(id)arg2 metadata:(id)arg3;
@@ -38,8 +39,8 @@
 - (void).cxx_destruct;
 - (void)_assertPropertiesValid;
 - (id)_init;
-- (id)_validateConfiguration;
-- (id)awakeAfterUsingCoder:(id)arg1;
+- (void)_setWorkoutEventMetadata:(id)arg1;
+- (id)_validateWithConfiguration:(struct HKObjectValidationConfiguration)arg1;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

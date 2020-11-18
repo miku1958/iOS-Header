@@ -11,17 +11,18 @@
 
 @interface HMFMemoryMonitor : HMFObject
 {
-    HMFUnfairLock *_lock;
     BOOL _monitoring;
-    long long _memoryState;
+    HMFUnfairLock *_lock;
     NSObject<OS_dispatch_queue> *_clientQueue;
-    NSObject<OS_dispatch_source> *_memoryPressure;
+    NSObject<OS_dispatch_source> *_memoryPressureSource;
+    long long _systemMemoryState;
 }
 
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
-@property (readonly, nonatomic) NSObject<OS_dispatch_source> *memoryPressure; // @synthesize memoryPressure=_memoryPressure;
-@property (readonly, nonatomic) long long memoryState; // @synthesize memoryState=_memoryState;
+@property (readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
+@property (readonly, nonatomic) NSObject<OS_dispatch_source> *memoryPressureSource; // @synthesize memoryPressureSource=_memoryPressureSource;
 @property (nonatomic, getter=isMonitoring) BOOL monitoring; // @synthesize monitoring=_monitoring;
+@property (nonatomic) long long systemMemoryState; // @synthesize systemMemoryState=_systemMemoryState;
 
 + (id)memoryMonitor;
 - (void).cxx_destruct;

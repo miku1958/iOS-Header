@@ -6,11 +6,11 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableArray;
+@class IOKConnection, NSMutableArray;
 
 @interface TSClockManager : NSObject
 {
-    unsigned int _connection;
+    IOKConnection *_connection;
     NSMutableArray *_clockPersonalities;
     struct mach_timebase_info _timebaseInfo;
     unsigned long long _machAbsoluteNanosecondClockIdentifier;
@@ -20,12 +20,13 @@
 
 + (id)clockManager;
 + (id)defaultClockPersonalities;
-+ (id)diagnosticDescriptionForClockService:(unsigned int)arg1 withIndent:(id)arg2;
-+ (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
++ (id)diagnosticDescriptionForClockService:(id)arg1 withIndent:(id)arg2;
++ (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
 + (void)notifyWhenClockManagerIsAvailable:(CDUnknownBlockType)arg1;
 + (id)sharedClockManager;
 + (id)sharedClockManagerSyncWithTimeout:(unsigned long long)arg1;
 + (id)timeSyncAudioClockDeviceUIDForClockIdentifier:(unsigned long long)arg1;
+- (void).cxx_destruct;
 - (void)addClockPersonality:(id)arg1;
 - (BOOL)addMappingFromClockID:(unsigned long long)arg1 toCoreAudioClockDomain:(unsigned int *)arg2 error:(id *)arg3;
 - (BOOL)addTSNCaptureServicesWithError:(id *)arg1;
@@ -33,7 +34,6 @@
 - (BOOL)addgPTPServicesWithError:(id *)arg1;
 - (id)availableClockIdentifiers;
 - (id)clockWithClockIdentifier:(unsigned long long)arg1;
-- (void)dealloc;
 - (BOOL)getMachAbsoluteClockID:(unsigned long long *)arg1 error:(id *)arg2;
 - (id)init;
 - (unsigned long long)machAbsoluteToNanoseconds:(unsigned long long)arg1;

@@ -20,15 +20,15 @@
 - (BOOL)isKindOfClass:(Class)arg1;
 - (BOOL)isMemberOfClass:(Class)arg1;
 - (BOOL)isProxy;
-- (id *)performSelector:(SEL)arg1;
-- (id *)performSelector:(SEL)arg1 withObject:(id)arg2;
-- (id *)performSelector:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3;
-- (void)release;
+- (id)performSelector:(SEL)arg1;
+- (id)performSelector:(SEL)arg1 withObject:(id)arg2;
+- (id)performSelector:(SEL)arg1 withObject:(id)arg2 withObject:(id)arg3;
+- (oneway void)release;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (id)retain;
-- (long long)retainCount;
+- (unsigned long long)retainCount;
 - (id)self;
-- (void *)zone;
+- (struct _NSZone *)zone;
 
 @optional
 @end

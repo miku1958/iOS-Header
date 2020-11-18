@@ -6,23 +6,28 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class NSArray;
+#import <CloudKit/CKFetchWhitelistedBundleIDsOperationCallbacks-Protocol.h>
 
-@interface CKFetchWhitelistedBundleIDsOperation : CKOperation
+@class NSArray;
+@protocol CKFetchWhitelistedBundleIDsOperationCallbacks;
+
+@interface CKFetchWhitelistedBundleIDsOperation : CKOperation <CKFetchWhitelistedBundleIDsOperationCallbacks>
 {
     CDUnknownBlockType _fetchWhitelistedBundleIDsCompletionBlock;
     NSArray *_bundleIDs;
 }
 
 @property (copy, nonatomic) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
+@property (readonly, nonatomic) id<CKFetchWhitelistedBundleIDsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) CDUnknownBlockType fetchWhitelistedBundleIDsCompletionBlock; // @synthesize fetchWhitelistedBundleIDsCompletionBlock=_fetchWhitelistedBundleIDsCompletionBlock;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
++ (SEL)daemonCallbackCompletionSelector;
 - (void).cxx_destruct;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleCompletionCallback:(id)arg1;
 - (id)activityCreate;
+- (void)handleOperationDidCompleteWithBundleIDs:(id)arg1 metrics:(id)arg2 error:(id)arg3;
 - (BOOL)hasCKOperationCallbacksSet;
-- (Class)operationInfoClass;
 - (void)performCKOperation;
 
 @end

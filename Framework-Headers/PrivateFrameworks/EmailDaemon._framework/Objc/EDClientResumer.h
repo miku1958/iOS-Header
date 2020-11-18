@@ -11,13 +11,13 @@
 #import <EmailDaemon/EFContentProtectionObserver-Protocol.h>
 
 @class BKSProcessAssertion, EDPersistenceHookRegistry, NSString;
-@protocol EDForegroundReporting, EFScheduler, OS_dispatch_queue;
+@protocol EDClientStateReporting, EFScheduler, OS_dispatch_queue;
 
 @interface EDClientResumer : NSObject <EDProtectedDataReconciliationHookResponder, EFContentProtectionObserver, EDResumable>
 {
     NSString *_bundleID;
     BKSProcessAssertion *_assertion;
-    id<EDForegroundReporting> _foregroundReporter;
+    id<EDClientStateReporting> _clientState;
     EDPersistenceHookRegistry *_hookRegistry;
     NSObject<OS_dispatch_queue> *_queue;
     id<EFScheduler> _scheduler;
@@ -29,13 +29,15 @@
 @property (readonly) Class superclass;
 
 + (id)log;
++ (id)signpostLog;
 - (void).cxx_destruct;
 - (void)contentProtectionStateChanged:(int)arg1 previousState:(int)arg2;
 - (void)dealloc;
-- (id)initWithClientBundleIdentifier:(id)arg1 hookRegistry:(id)arg2 foregroundReporter:(id)arg3;
+- (id)initWithClientBundleIdentifier:(id)arg1 hookRegistry:(id)arg2 clientState:(id)arg3;
 - (void)invalidate;
 - (void)persistenceDidReconcileProtectedData;
 - (void)resumeForUpdates;
+- (unsigned long long)signpostID;
 
 @end
 

@@ -6,11 +6,15 @@
 
 #import <PhotosUICore/PXGLayoutContentSource-Protocol.h>
 
-@class NSDictionary, NSString, PXGLayout;
+@class NSAttributedString, NSDictionary, NSString, PXGLayout;
 
 @protocol PXGStringSource <PXGLayoutContentSource>
+- (NSAttributedString *)attributedStringForSpriteAtIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
 - (NSString *)stringAtIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
 - (NSDictionary *)stringAttributesAtIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
 - (long long)verticalAlignmentForStringAtIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
+
+@optional
+- (long long)stringDrawingOptionsForSpriteAtIndex:(unsigned int)arg1 inLayout:(PXGLayout *)arg2;
 @end
 

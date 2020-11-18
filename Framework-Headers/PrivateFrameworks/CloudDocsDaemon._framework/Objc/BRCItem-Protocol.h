@@ -7,21 +7,31 @@
 #import <CloudDocsDaemon/NSCopying-Protocol.h>
 #import <CloudDocsDaemon/NSSecureCoding-Protocol.h>
 
-@class BRCAccountSession, BRCClientZone, BRCItemID, BRCServerZone, BRCStatInfo, BRCUserRowID;
+@class BRCAccountSession, BRCClientZone, BRCItemGlobalID, BRCItemID, BRCServerZone, BRCStatInfo, BRCUserRowID;
 
 @protocol BRCItem <NSCopying, NSSecureCoding>
 
 @property (readonly, nonatomic) BRCClientZone *clientZone;
+@property (readonly, nonatomic) BOOL hasShareIDAndIsOwnedByMe;
 @property (readonly, nonatomic) BOOL isBRAlias;
+@property (readonly, nonatomic) BOOL isChildSharedItem;
 @property (readonly, nonatomic) BOOL isDead;
 @property (readonly, nonatomic) BOOL isDirectory;
 @property (readonly, nonatomic) BOOL isDocument;
 @property (readonly, nonatomic) BOOL isFSRoot;
 @property (readonly, nonatomic) BOOL isFinderBookmark;
 @property (readonly, nonatomic) BOOL isLive;
+@property (readonly, nonatomic) BOOL isOwnedByMe;
 @property (readonly, nonatomic) BOOL isPackage;
+@property (readonly, nonatomic) BOOL isShared;
+@property (readonly, nonatomic) BOOL isSharedByMe;
+@property (readonly, nonatomic) BOOL isSharedToMe;
+@property (readonly, nonatomic) BOOL isSharedToMeChildItem;
+@property (readonly, nonatomic) BOOL isSharedToMeTopLevelItem;
 @property (readonly, nonatomic) BOOL isSymLink;
+@property (readonly, nonatomic) BOOL isTopLevelSharedItem;
 @property (readonly, nonatomic) BOOL isZoneRoot;
+@property (readonly, nonatomic) BRCItemGlobalID *itemGlobalID;
 @property (readonly, nonatomic) BRCItemID *itemID;
 @property (readonly, nonatomic) BRCUserRowID *ownerKey;
 @property (readonly, nonatomic) BRCServerZone *serverZone;

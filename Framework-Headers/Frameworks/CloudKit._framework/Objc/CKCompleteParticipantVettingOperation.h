@@ -6,12 +6,14 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class CKShareMetadata, NSData, NSError, NSString, NSURL;
+#import <CloudKit/CKCompleteParticipantVettingOperationCallbacks-Protocol.h>
 
-@interface CKCompleteParticipantVettingOperation : CKOperation
+@class CKCompleteParticipantVettingOperationInfo, CKShareMetadata, NSData, NSString, NSURL;
+@protocol CKCompleteParticipantVettingOperationCallbacks;
+
+@interface CKCompleteParticipantVettingOperation : CKOperation <CKCompleteParticipantVettingOperationCallbacks>
 {
     CDUnknownBlockType _completeParticipantVettingCompletionBlock;
-    NSError *_verificationError;
     NSString *_vettingToken;
     NSString *_vettingEmail;
     NSString *_vettingPhone;
@@ -24,13 +26,14 @@
 }
 
 @property (copy, nonatomic) NSString *baseToken; // @synthesize baseToken=_baseToken;
+@property (readonly, nonatomic) id<CKCompleteParticipantVettingOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (copy, nonatomic) CDUnknownBlockType completeParticipantVettingCompletionBlock; // @synthesize completeParticipantVettingCompletionBlock=_completeParticipantVettingCompletionBlock;
 @property (copy, nonatomic) NSString *displayedHostname; // @synthesize displayedHostname=_displayedHostname;
 @property (copy, nonatomic) NSData *encryptedKey; // @synthesize encryptedKey=_encryptedKey;
+@property (readonly, nonatomic) CKCompleteParticipantVettingOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (copy, nonatomic) NSURL *reconstructedShareURL; // @synthesize reconstructedShareURL=_reconstructedShareURL;
 @property (copy, nonatomic) NSString *routingKey; // @synthesize routingKey=_routingKey;
 @property (strong, nonatomic) CKShareMetadata *shareMetadata; // @synthesize shareMetadata=_shareMetadata;
-@property (strong, nonatomic) NSError *verificationError; // @synthesize verificationError=_verificationError;
 @property (copy, nonatomic) NSString *vettingEmail; // @synthesize vettingEmail=_vettingEmail;
 @property (copy, nonatomic) NSString *vettingPhone; // @synthesize vettingPhone=_vettingPhone;
 @property (copy, nonatomic) NSString *vettingToken; // @synthesize vettingToken=_vettingToken;
@@ -38,10 +41,11 @@
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleFetchedShareMetadata:(id)arg1;
+- (void)handleReconstructedShareURL:(id)arg1;
 - (id)init;
 - (id)initWithVettingToken:(id)arg1 vettingRecord:(id)arg2 displayedHostname:(id)arg3;
 - (void)performCKOperation;

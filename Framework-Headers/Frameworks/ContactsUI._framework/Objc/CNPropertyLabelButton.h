@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)propertyLabelButton;
+- (void)tintColorDidChange;
 - (void)updateConstraints;
 
 @end

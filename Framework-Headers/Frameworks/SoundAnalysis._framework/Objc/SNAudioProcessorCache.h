@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary;
+@class NSMapTable;
 
 __attribute__((visibility("hidden")))
 @interface SNAudioProcessorCache : NSObject
 {
-    NSMutableDictionary *_activeProcessorsCache;
+    NSMapTable *_activeProcessorsCache;
 }
 
 - (void).cxx_destruct;

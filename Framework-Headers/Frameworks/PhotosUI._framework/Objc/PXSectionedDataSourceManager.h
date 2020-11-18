@@ -22,6 +22,7 @@
 - (void)_reevaluateWaitingConditions;
 - (void)_setDataSource:(id)arg1;
 - (void)_waitingConditionDidTimeout:(id)arg1;
+- (id)allChangeDetailsFromDataSource:(id)arg1 toDataSource:(id)arg2;
 - (id)changeDetailsFromDataSource:(id)arg1 toDataSource:(id)arg2;
 - (id)createInitialDataSource;
 - (void)didPublishChanges;

@@ -4,13 +4,26 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Home/HFStatusItem.h>
+#import <Home/HFAbstractPositionStatusItem.h>
 
-@interface HFGarageDoorOpenerStatusItem : HFStatusItem
+@interface HFGarageDoorOpenerStatusItem : HFAbstractPositionStatusItem
 {
 }
 
-- (id)_subclass_updateWithOptions:(id)arg1;
++ (id)serviceType;
+- (id)_formatStringTypeComponent;
+- (id)multipleClosedServicesFormatString;
+- (id)multipleClosingServicesFormatString;
+- (id)multipleObstructedServicesFormatString;
+- (id)multipleOpenServicesFormatString;
+- (id)multipleOpeningServicesFormatString;
+- (id)multipleUnknownServicesFormatString;
+- (id)oneClosedServiceFormatString;
+- (id)oneClosingServiceFormatString;
+- (id)oneObstructedServiceFormatString;
+- (id)oneOpenServiceFormatString;
+- (id)oneOpeningServiceFormatString;
+- (id)oneUnknownServiceFormatString;
 
 @end
 

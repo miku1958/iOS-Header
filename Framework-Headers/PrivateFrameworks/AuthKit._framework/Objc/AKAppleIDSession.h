@@ -18,8 +18,8 @@
     AKAnisetteProvisioningController *_pairedDeviceAnisetteController;
     AKAnisetteData *_proxiedAnisetteData;
     NSLock *_anisetteControllerLock;
-    AKDevice *_pairedDevice;
     id<AKAnisetteServiceProtocol> _anisetteDataProvider;
+    AKDevice *_pairedDevice;
 }
 
 @property (strong, nonatomic) id<AKAnisetteServiceProtocol> anisetteDataProvider; // @synthesize anisetteDataProvider=_anisetteDataProvider;

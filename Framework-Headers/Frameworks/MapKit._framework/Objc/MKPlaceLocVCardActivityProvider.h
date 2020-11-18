@@ -6,11 +6,11 @@
 
 #import <MapKit/MKPlaceActivityProvider.h>
 
-#import <MapKit/MKActivityItemSource-Protocol.h>
+#import <MapKit/UIActivityItemSource-Protocol.h>
 
 @class CNContact, NSString;
 
-@interface MKPlaceLocVCardActivityProvider : MKPlaceActivityProvider <MKActivityItemSource>
+@interface MKPlaceLocVCardActivityProvider : MKPlaceActivityProvider <UIActivityItemSource>
 {
     CNContact *_contact;
 }

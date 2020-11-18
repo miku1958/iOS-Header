@@ -9,7 +9,7 @@
 #import <Email/EFFutureDelegate-Protocol.h>
 #import <Email/EFLoggable-Protocol.h>
 
-@class EMBlockedSenderManager, EMMailboxRepository, EMRemoteConnection, NSArray, NSCache, NSHashTable, NSMapTable, NSString;
+@class EFPromise, EMBlockedSenderManager, EMMailboxRepository, EMRemoteConnection, EMRemoteConnectionRecoveryAssertion, NSArray, NSCache, NSHashTable, NSMapTable, NSString, NSURL;
 @protocol EMVIPManager;
 
 @interface EMMessageRepository : EMRepository <EFFutureDelegate, EFLoggable>
@@ -20,14 +20,18 @@
     NSHashTable *_recoverableObservers;
     struct os_unfair_lock_s _messageListItemCacheLock;
     struct os_unfair_lock_s _observersLock;
+    EMRemoteConnectionRecoveryAssertion *_connectionRecoveryAssertion;
     EMRemoteConnection *_connection;
     id<EMVIPManager> _vipManager;
     EMBlockedSenderManager *_blockedSenderManager;
     NSCache *_queryCountCache;
+    NSURL *_cacheURL;
+    EFPromise *_remoteContentCachePromise;
     EMMailboxRepository *_mailboxRepository;
 }
 
 @property (readonly, nonatomic) EMBlockedSenderManager *blockedSenderManager; // @synthesize blockedSenderManager=_blockedSenderManager;
+@property (strong, nonatomic) NSURL *cacheURL; // @synthesize cacheURL=_cacheURL;
 @property (strong) EMRemoteConnection *connection; // @synthesize connection=_connection;
 @property (readonly, copy) NSArray *currentObservers;
 @property (readonly, copy) NSString *debugDescription;
@@ -35,6 +39,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) EMMailboxRepository *mailboxRepository; // @synthesize mailboxRepository=_mailboxRepository;
 @property (strong, nonatomic) NSCache *queryCountCache; // @synthesize queryCountCache=_queryCountCache;
+@property (strong, nonatomic) EFPromise *remoteContentCachePromise; // @synthesize remoteContentCachePromise=_remoteContentCachePromise;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<EMVIPManager> vipManager; // @synthesize vipManager=_vipManager;
 
@@ -50,27 +55,31 @@
 - (void)_detectChangesForMatchedAddedObjectIDs:(id)arg1 observerationIdentifier:(id)arg2 matchedChangesHandler:(CDUnknownBlockType)arg3;
 - (id)_existingObservedItemForObjectID:(id)arg1;
 - (void)_notifyRecoverableObservers;
-- (id)_predictMailboxForMovingMessagesWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_undoActionForConversationAction:(id)arg1;
 - (void)_updateObserversForAction:(id)arg1;
 - (void)_updateObserversForDeletedObjectIDs:(id)arg1;
 - (void)_updateObserversForFlagChangeAction:(id)arg1;
 - (void)_vipsDidChange:(id)arg1;
 - (id)cachedMetadataJSONForKey:(id)arg1 messageID:(id)arg2;
+- (void)dealloc;
 - (void)didFinishBlockingMainThreadForFuture:(id)arg1;
 - (void)didStartBlockingMainThreadForFuture:(id)arg1;
 - (id)initInternal;
 - (id)initWithRemoteConnection:(id)arg1 mailboxRepository:(id)arg2 vipManager:(id)arg3 blockedSenderManager:(id)arg4;
 - (void)loadOlderMessagesForMailboxes:(id)arg1;
 - (id)messageForObjectID:(id)arg1;
+- (id)messageForSearchableItemIdentifier:(id)arg1;
 - (id)messageListItemsForObjectIDs:(id)arg1;
 - (id)messageListItemsForObjectIDs:(id)arg1 observationIdentifier:(id)arg2;
+- (id)messageObjectIDForURL:(id)arg1;
+- (id)messageObjectIDsForSearchableItemIdentifiers:(id)arg1;
 - (void)performCountQuery:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)performMessageChangeAction:(id)arg1;
 - (id)performMessageChangeActionReturningUndoAction:(id)arg1;
 - (void)performQuery:(id)arg1 limit:(long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)performQuery:(id)arg1 withObserver:(id)arg2;
 - (id)predictMailboxForMovingMessages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)predictMailboxForMovingMessagesWithIDs:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)requestRepresentationForMessageWithID:(id)arg1 options:(id)arg2 delegate:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)requestRepresentationForMessageWithID:(id)arg1 requestID:(unsigned long long)arg2 options:(id)arg3 delegate:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)resetAllPrecomputedThreadScopes;

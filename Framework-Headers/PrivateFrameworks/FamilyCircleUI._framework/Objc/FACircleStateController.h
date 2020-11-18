@@ -6,27 +6,45 @@
 
 #import <objc/NSObject.h>
 
-@class FARequestConfigurator, RUIStyle, UIViewController;
+#import <FamilyCircleUI/FACirclePresenterDelegate-Protocol.h>
+#import <FamilyCircleUI/FARemoteViewControllerDelegate-Protocol.h>
 
-@interface FACircleStateController : NSObject
+@class FARequestConfigurator, NSString, RUIStyle, UIViewController;
+
+@interface FACircleStateController : NSObject <FARemoteViewControllerDelegate, FACirclePresenterDelegate>
 {
     FARequestConfigurator *_requestConfigurator;
     CDUnknownBlockType _performOperationCompletion;
     UIViewController *_presenter;
+    CDUnknownBlockType _presentationHandler;
     RUIStyle *_customRUIStyle;
+    long long _modalPresentationStyle;
 }
 
 @property (strong, nonatomic) RUIStyle *customRUIStyle; // @synthesize customRUIStyle=_customRUIStyle;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) long long modalPresentationStyle; // @synthesize modalPresentationStyle=_modalPresentationStyle;
+@property (copy, nonatomic) CDUnknownBlockType presentationHandler; // @synthesize presentationHandler=_presentationHandler;
 @property (weak, nonatomic) UIViewController *presenter; // @synthesize presenter=_presenter;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_contextRequiresRemoteService:(id)arg1;
 - (void)_ensurePresenterWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_performOperationWithContext:(id)arg1 viewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (void)_presentViewServiceWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_presentFlowUsingSpringBoardWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_presentViewServiceWithContext:(id)arg1 viewController:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)_processRequiresSpringBoardServices;
+- (id)_whitelistedInProcessClients;
+- (void)circlePresenterDidPresent:(id)arg1;
+- (void)dealloc;
 - (id)init;
 - (id)initWithPresenter:(id)arg1;
 - (void)performOperationWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)performWithContext:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)remoteViewControllerDidStartFlow:(id)arg1;
 
 @end
 

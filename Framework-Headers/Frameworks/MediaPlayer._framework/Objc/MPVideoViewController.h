@@ -132,7 +132,6 @@
 - (struct CGRect)calculateArtworkImageViewFrame;
 - (struct CGRect)calculateFullScreenArtworkImageViewFrame;
 - (BOOL)canHideOverlay:(BOOL)arg1;
-- (void)crossedTimeMakerWithEvent:(id)arg1;
 - (void)dealloc;
 - (unsigned long long)disabledPartsForProposedParts:(unsigned long long)arg1;
 - (long long)displayArtworkImageStyle;

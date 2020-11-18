@@ -41,6 +41,7 @@
 @property (readonly, nonatomic) id recipe;
 @property (readonly, nonatomic) unsigned long long relevanceDurationInDays;
 @property (readonly, nonatomic) NSArray *representativeAssets; // @synthesize representativeAssets=_representativeAssets;
+@property (readonly, nonatomic) double score;
 @property (readonly, nonatomic) unsigned short state;
 @property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly, nonatomic) unsigned short subtype; // @synthesize subtype=_subtype;
@@ -54,6 +55,7 @@
 
 - (void).cxx_destruct;
 - (id)_whitelistedMeaningLabels;
+- (id)assetCollectionToShareForAssetCollection:(id)arg1 loggingConnection:(id)arg2;
 - (id)initWithType:(unsigned short)arg1 subtype:(unsigned short)arg2 enrichableEvent:(id)arg3 sharingSuggestionResults:(id)arg4 manager:(id)arg5 loggingConnection:(id)arg6;
 
 @end

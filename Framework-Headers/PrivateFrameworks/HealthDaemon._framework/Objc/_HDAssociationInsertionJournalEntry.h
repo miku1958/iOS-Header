@@ -8,6 +8,7 @@
 
 @class NSData, NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface _HDAssociationInsertionJournalEntry : HDJournalEntry
 {
     BOOL _enforceSameSource;

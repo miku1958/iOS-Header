@@ -17,7 +17,6 @@
 @property (nonatomic) BOOL isProposedTime;
 @property (nonatomic) BOOL isSelected;
 @property (nonatomic) BOOL isVibrant;
-@property (nonatomic) struct UIEdgeInsets margin;
 @property (strong, nonatomic) EKEvent *occurrence;
 @property (nonatomic) double topYBoundaryForText;
 @property (strong, nonatomic) UITraitCollection *traitCollection;

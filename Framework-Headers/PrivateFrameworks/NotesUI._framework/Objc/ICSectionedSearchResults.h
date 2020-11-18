@@ -35,6 +35,7 @@
 - (id)indexPathOfObject:(id)arg1;
 - (id)indexPathOfSearchResult:(id)arg1;
 - (id)init;
+- (void)noteWillBeDeletedOrTrashed:(id)arg1;
 - (void)noteWillBeUndeletedOrUntrashed:(id)arg1;
 - (void)objectsDidChange:(id)arg1;
 - (BOOL)passesVisibilityTesting:(id)arg1 forSearchResult:(id)arg2;

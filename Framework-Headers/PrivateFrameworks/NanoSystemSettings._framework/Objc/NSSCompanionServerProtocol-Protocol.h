@@ -6,10 +6,11 @@
 
 #import <NanoSystemSettings/NSSServerProtocol-Protocol.h>
 
-@class NSData, NSString;
+@class NSData, NSDictionary, NSNumber, NSString;
 
 @protocol NSSCompanionServerProtocol <NSSServerProtocol>
 - (void)cancelActiveLogFileTranfers;
+- (void)cancelDiagnosticLogTranfer:(NSString *)arg1 withCompletion:(void (^)(NSError *))arg2;
 - (void)deleteDiagnosticLogFile:(NSString *)arg1 withResult:(void (^)(NSError *))arg2;
 - (void)getAboutInfo:(void (^)(NSDictionary *, NSError *))arg1;
 - (void)getAccountsInfoForAccountType:(NSString *)arg1 completionHandler:(void (^)(NSDictionary *, NSError *))arg2;
@@ -24,7 +25,11 @@
 - (void)obliterateGizmoPreservingeSIM:(BOOL)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)purgeUsageBundle:(NSString *)arg1 replyHandler:(void (^)(NSError *))arg2;
 - (void)rebootDevice;
+- (void)recordSoftwareUpdateSpaceFailure:(NSNumber *)arg1 osBeingUpdatedTo:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)removeProfileWithIdentifier:(NSString *)arg1 replyHandler:(void (^)(NSError *))arg2;
+- (void)retrieveAirplaneModeSettingsWithCompletionHandler:(void (^)(NSDictionary *, NSError *))arg1;
+- (void)retrieveDiagnosticLogTransferProgress:(NSString *)arg1 withProgress:(void (^)(unsigned long long, NSError *))arg2;
+- (void)setAirplaneModeSettings:(NSDictionary *)arg1 withCompletionHandler:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)setDeviceName:(NSString *)arg1;
 @end
 

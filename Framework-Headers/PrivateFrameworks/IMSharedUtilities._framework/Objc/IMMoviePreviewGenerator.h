@@ -11,13 +11,13 @@
 }
 
 + (id)UTITypes;
-+ (Class)__AVAssetImageGeneratorClass;
-+ (Class)__AVURLAssetClass;
 + (id)_avAssetForURL:(id)arg1;
 + (id)fetchUTITypes;
++ (id)generateAndPersistPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 outSize:(struct CGSize *)arg3 error:(id *)arg4;
 + (BOOL)isAutoloopAsset:(id)arg1;
 + (struct CGImage *)newPreviewFromSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
 + (struct CGSize)sizePreviewAtSourceURL:(id)arg1 withPreviewConstraints:(struct IMPreviewConstraints)arg2 error:(id *)arg3;
++ (BOOL)writesToDisk;
 
 @end
 

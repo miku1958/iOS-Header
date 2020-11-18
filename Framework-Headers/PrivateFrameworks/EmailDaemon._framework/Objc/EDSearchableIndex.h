@@ -13,15 +13,15 @@
 #import <EmailDaemon/EFSignpostable-Protocol.h>
 #import <EmailDaemon/EMSearchableIndexInterface-Protocol.h>
 
-@class CSSearchableIndex, EFCancelationToken, EFFuture, EFLazyCache, EFObservable, NSMutableArray, NSMutableSet, NSString, _EMSearchableIndexPendingRemovals;
-@protocol EDSearchableIndexDataSource, EDSearchableIndexReasonProvider, EDSearchableIndexSchedulableDelegate, EFScheduler, OS_dispatch_queue, OS_dispatch_source, OS_os_activity;
+@class CSSearchableIndex, EFCancelationToken, EFFuture, EFLazyCache, EFObservable, EFStoppableScheduler, NSMutableArray, NSMutableSet, NSString, _EMSearchableIndexPendingRemovals;
+@protocol EDSearchableIndexDataSource, EDSearchableIndexReasonProvider, EDSearchableIndexSchedulableDelegate, EFAssertableScheduler, EFCancelable, EFSuspendableScheduler><EFAssertableScheduler, OS_os_activity;
 
 @interface EDSearchableIndex : NSObject <CSSearchableIndexDelegate, EDSearchableIndexVerifierDataSource, EFLoggable, EFSignpostable, EDSearchableIndexSchedulable, EMSearchableIndexInterface>
 {
     NSString *_indexName;
     EFCancelationToken *_cancelationToken;
-    NSObject<OS_dispatch_queue> *_stateTransitionQueue;
-    NSObject<OS_dispatch_source> *_coalescingTimer;
+    EFStoppableScheduler<EFAssertableScheduler> *_stateTransitionScheduler;
+    id<EFCancelable> _coalescingTimer;
     long long _resumeCount;
     long long _transaction;
     unsigned long long _throttledIndexingBatchSize;
@@ -35,11 +35,12 @@
     NSMutableArray *_processingItems;
     NSMutableSet *_pendingDomainRemovals;
     _EMSearchableIndexPendingRemovals *_pendingIdentifierRemovals;
-    NSObject<OS_dispatch_queue> *_indexingQueue;
-    NSObject<OS_dispatch_queue> *_dataSourceQueue;
-    id<EFScheduler> _preprocessingScheduler;
+    EFStoppableScheduler<EFSuspendableScheduler><EFAssertableScheduler> *_indexingScheduler;
+    EFStoppableScheduler *_dataSourceScheduler;
+    EFStoppableScheduler *_addIndexItemsScheduler;
+    EFStoppableScheduler *_preprocessingScheduler;
     struct os_unfair_lock_s _mainThreadAccessibleIvarLock;
-    id<EFScheduler> _indexingBatchScheduler;
+    EFStoppableScheduler *_indexingBatchScheduler;
     EFLazyCache *_searchResultsCache;
     BOOL _isActive;
     BOOL _needsRefresh;
@@ -114,10 +115,11 @@
 - (void)_dataSourceRequestNeededUpdatesExcludingIdentifiers:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_dataSourceScheduleWork:(CDUnknownBlockType)arg1;
 - (void)_dataSourceVerifyRepresentativeSampleWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_doIndexItems:(id)arg1 fromRefresh:(BOOL)arg2 immediately:(BOOL)arg3;
 - (id)_eventDataForTransitionState:(id)arg1;
 - (void)_fetchLastClientState;
 - (void)_getDomainRemovals:(id *)arg1 identifierRemovals:(id *)arg2;
-- (void)_handleFailingTransactionIDs:(id)arg1 sampleCount:(unsigned long long)arg2;
+- (void)_handleFailingTransactionIDs:(id)arg1;
 - (id)_identifiersForItems:(id)arg1;
 - (id)_identifiersStringForItems:(id)arg1 maxLength:(unsigned long long)arg2;
 - (void)_indexItems:(id)arg1 fromRefresh:(BOOL)arg2 immediately:(BOOL)arg3;
@@ -144,6 +146,7 @@
 - (void)_queueTransitionActive:(BOOL)arg1 fromRefresh:(BOOL)arg2;
 - (void)_registerDistantFutureSpotlightVerification;
 - (void)_resume;
+- (void)_resumeIndexingScheduler;
 - (void)_scheduleDataSourceRefresh;
 - (void)_scheduleProcessPendingItemsFromRefresh:(BOOL)arg1;
 - (void)_scheduleSpotlightVerification;
@@ -151,6 +154,7 @@
 - (void)_startCoalescingTimer;
 - (void)_stopCoalescingTimer;
 - (void)_suspend;
+- (void)_suspendIndexingScheduler;
 - (double)_throttleRequestedSize:(unsigned long long *)arg1 targetTime:(double)arg2 action:(CDUnknownBlockType)arg3;
 - (void)_transitionWithBudgetTimeUsed:(double)arg1;
 - (void)_verifySpotlightIndex;
@@ -160,7 +164,7 @@
 - (void)beginUpdatesAffectingDataSourceAndIndex;
 - (id)bundleIdentifierForSearchableIndexVerifier:(id)arg1;
 - (id)currentReasons;
-- (id)dataSamplesForSearchableIndexVerifier:(id)arg1 searchableIndex:(id)arg2 count:(unsigned long long)arg3;
+- (id)dataSamplesForSearchableIndexVerifier:(id)arg1 searchableIndex:(id)arg2 count:(unsigned long long)arg3 lastVerifiedMessageID:(long long)arg4;
 - (id)dataSourceRefreshReasons;
 - (void)dealloc;
 - (void)endUpdatesAffectingDataSourceAndIndex;
@@ -197,7 +201,7 @@
 - (id)searchableIndexForSearchableIndexVerifier:(id)arg1;
 - (void)setForeground:(BOOL)arg1;
 - (void)suspend;
-- (void)waitForAsynchronousWork;
+- (void)test_tearDown;
 
 @end
 

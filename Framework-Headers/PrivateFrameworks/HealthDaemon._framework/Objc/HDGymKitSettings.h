@@ -32,8 +32,10 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_currentActivityMoveModeWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_enableNFCAlwaysOnIfWatchWorkout;
 - (void)_handleNFCPreferencesForNFCAlwaysOn:(BOOL)arg1;
+- (BOOL)_isSatelliteWatch;
 - (void)_monitorFieldAndPrivacySettings;
 - (void)_setConnectedGymPreferencesDefaultNFCAlwaysOnEnabled:(BOOL)arg1;
 - (void)_setNFCAlwaysOnPreferenceIfNecessary;
@@ -44,6 +46,7 @@
 - (void)device:(id)arg1 propertyDidChange:(id)arg2 fromValue:(id)arg3;
 - (id)initWithProfile:(id)arg1;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
+- (void)unitTest_simulateNRDeviceUpdate;
 
 @end
 

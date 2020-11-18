@@ -12,8 +12,8 @@
 __attribute__((visibility("hidden")))
 @interface PSUITotalCellularUsageSubgroup : NSObject
 {
-    PSDataUsageStatisticsCache *_statisticsCache;
     id<PSBillingPeriodSource> _billingPeriodSource;
+    PSDataUsageStatisticsCache *_statisticsCache;
     PSSpecifier *_totalUsageSpecifier;
     PSSpecifier *_totalRoamingUsageSpecifier;
 }

@@ -4,62 +4,56 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIViewController.h>
+#import <ManagedConfigurationUI/MCUIViewController.h>
 
 #import <ManagedConfigurationUI/DevicePINControllerDelegate-Protocol.h>
 #import <ManagedConfigurationUI/MCInstallationConsentDelegate-Protocol.h>
 #import <ManagedConfigurationUI/MCInstallationWarningDelegate-Protocol.h>
-#import <ManagedConfigurationUI/MCInteractionDelegate-Protocol.h>
 #import <ManagedConfigurationUI/MCProfileQuestionsControllerDelegate-Protocol.h>
 #import <ManagedConfigurationUI/MCProfileViewControllerDelegate-Protocol.h>
 #import <ManagedConfigurationUI/MCUISignInViewControllerDelegate-Protocol.h>
-#import <ManagedConfigurationUI/PSStateRestoration-Protocol.h>
 #import <ManagedConfigurationUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 
-@class MCInstallProfileQuestionViewController, MCProfile, MCProfileViewController, NSArray, NSData, NSSManager, NSString, UIAlertController;
+@class MCInstallProfileQuestionViewController, MCProfile, MCProfileViewController, NSArray, NSData, NSSManager, NSString;
 @protocol MCInstallProfileDelegate;
 
-@interface MCInstallProfileViewController : UIViewController <MCUISignInViewControllerDelegate, UIAdaptivePresentationControllerDelegate, MCInstallationConsentDelegate, MCInstallationWarningDelegate, MCProfileQuestionsControllerDelegate, PSStateRestoration, DevicePINControllerDelegate, MCProfileViewControllerDelegate, MCInteractionDelegate>
+@interface MCInstallProfileViewController : MCUIViewController <MCInstallationConsentDelegate, DevicePINControllerDelegate, MCProfileQuestionsControllerDelegate, MCInstallationWarningDelegate, MCProfileViewControllerDelegate, MCUISignInViewControllerDelegate, UIAdaptivePresentationControllerDelegate>
 {
-    MCInstallProfileQuestionViewController *_questionsController;
-    CDUnknownBlockType _didAppearBlock;
     BOOL _processingPayload;
-    BOOL _installHasFailed;
     BOOL _userCancelledInstall;
-    BOOL _waitingForMoreInput;
-    BOOL _isInteractionDelegate;
     BOOL _secondaryProfileReceived;
-    BOOL _initialQuestionsHaveBeenAsked;
-    BOOL _installingFromPurgatory;
-    BOOL _delayUserInput;
+    BOOL _installHasFailed;
+    BOOL _questionsAlreadyAsked;
+    BOOL _waitingForNextQuestion;
+    BOOL _delayNextQuesion;
     int _installState;
-    NSString *_pin;
-    MCProfile *_profile;
-    NSData *_profileData;
     id<MCInstallProfileDelegate> _delegate;
+    MCProfile *_originalProfile;
+    NSData *_profileData;
+    NSData *_originalProfileData;
     CDUnknownBlockType _signInCompletionHandler;
     NSString *_enrollmentPersonaID;
-    MCProfileViewController *_profileViewController;
-    NSArray *_warningsToPresent;
-    UIAlertController *_activeAlertController;
-    NSData *_originalProfileData;
-    MCProfile *_originalProfile;
-    id _profileListChangedObserver;
     NSSManager *_nssManager;
+    MCProfile *_profile;
+    MCProfileViewController *_profileViewController;
+    MCInstallProfileQuestionViewController *_questionsController;
+    NSString *_pin;
+    NSArray *_warnings;
+    CDUnknownBlockType _didAppearBlock;
 }
 
-@property (strong, nonatomic) UIAlertController *activeAlertController; // @synthesize activeAlertController=_activeAlertController;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) BOOL delayUserInput; // @synthesize delayUserInput=_delayUserInput;
+@property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) BOOL delayNextQuesion; // @synthesize delayNextQuesion=_delayNextQuesion;
 @property (weak, nonatomic) id<MCInstallProfileDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (copy, nonatomic) CDUnknownBlockType didAppearBlock; // @synthesize didAppearBlock=_didAppearBlock;
 @property (copy, nonatomic) NSString *enrollmentPersonaID; // @synthesize enrollmentPersonaID=_enrollmentPersonaID;
 @property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL initialQuestionsHaveBeenAsked; // @synthesize initialQuestionsHaveBeenAsked=_initialQuestionsHaveBeenAsked;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL installHasFailed; // @synthesize installHasFailed=_installHasFailed;
 @property (nonatomic) int installState; // @synthesize installState=_installState;
-@property (nonatomic) BOOL installingFromPurgatory; // @synthesize installingFromPurgatory=_installingFromPurgatory;
-@property (nonatomic) BOOL isInteractionDelegate; // @synthesize isInteractionDelegate=_isInteractionDelegate;
 @property (strong, nonatomic) NSSManager *nssManager; // @synthesize nssManager=_nssManager;
 @property (strong, nonatomic) MCProfile *originalProfile; // @synthesize originalProfile=_originalProfile;
 @property (strong, nonatomic) NSData *originalProfileData; // @synthesize originalProfileData=_originalProfileData;
@@ -67,70 +61,65 @@
 @property (nonatomic) BOOL processingPayload; // @synthesize processingPayload=_processingPayload;
 @property (strong, nonatomic) MCProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSData *profileData; // @synthesize profileData=_profileData;
-@property (strong, nonatomic) id profileListChangedObserver; // @synthesize profileListChangedObserver=_profileListChangedObserver;
 @property (strong, nonatomic) MCProfileViewController *profileViewController; // @synthesize profileViewController=_profileViewController;
+@property (nonatomic) BOOL questionsAlreadyAsked; // @synthesize questionsAlreadyAsked=_questionsAlreadyAsked;
+@property (strong, nonatomic) MCInstallProfileQuestionViewController *questionsController; // @synthesize questionsController=_questionsController;
 @property (nonatomic) BOOL secondaryProfileReceived; // @synthesize secondaryProfileReceived=_secondaryProfileReceived;
 @property (copy, nonatomic) CDUnknownBlockType signInCompletionHandler; // @synthesize signInCompletionHandler=_signInCompletionHandler;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (nonatomic) BOOL userCancelledInstall; // @synthesize userCancelledInstall=_userCancelledInstall;
-@property (nonatomic) BOOL waitingForMoreInput; // @synthesize waitingForMoreInput=_waitingForMoreInput;
-@property (strong, nonatomic) NSArray *warningsToPresent; // @synthesize warningsToPresent=_warningsToPresent;
+@property (nonatomic) BOOL waitingForNextQuestion; // @synthesize waitingForNextQuestion=_waitingForNextQuestion;
+@property (strong, nonatomic) NSArray *warnings; // @synthesize warnings=_warnings;
 
-+ (void)_showRebootAlert;
 - (void).cxx_destruct;
 - (void)_applicationDidEnterBackground:(id)arg1;
-- (void)_cancelActiveAlertController:(BOOL)arg1;
+- (BOOL)_attemptRemoteInstallAfterCompletingPrecheck;
+- (void)_beginInstallFlow;
 - (void)_cancelInstallAfterMAIDAuthenticationAnimated:(BOOL)arg1;
-- (void)_cancelInstallAfterPresentingWarningsAnimated:(BOOL)arg1;
-- (void)_cancelInstallationWithProperRequest;
-- (void)_cancelUserInputAnimated:(BOOL)arg1;
-- (void)_continueInstallAfterPresentingWarnings;
+- (void)_cancelInstallDueToApplicationExit;
+- (void)_didFinishEnteringPINWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_didFinishPresentingConsent:(id)arg1;
-- (BOOL)_displayedAsSheet;
-- (void)_finishWaitingForMoreUserInput;
+- (void)_finishWaitingForMoreQuestions;
+- (void)_handleInstallationError:(id)arg1;
 - (void)_hideProgressIndicatorIfNeeded;
-- (void)_hideProgressIndicatorWithShowButtons:(BOOL)arg1;
 - (BOOL)_installErrorIsUserCancelledError:(id)arg1;
 - (void)_installFinishedWithIdentifier:(id)arg1 error:(id)arg2;
-- (void)_installProfile;
-- (BOOL)_isProfileInstalled;
+- (void)_installProfileOnWatchWithCompletion:(CDUnknownBlockType)arg1;
 - (id)_localizedCPLFinalWarningString;
-- (void)_performInstall;
-- (void)_performInstallAfterPINVerification;
+- (id)_newRightBarButtonItem;
 - (void)_presentConsent:(id)arg1;
-- (void)_profileRemovalDidFinish;
-- (void)_promptUserWithUserInput:(id)arg1;
-- (void)_pushInstallationWarningControllerWithWarnings:(id)arg1;
-- (id)_redirectURLFromInstallError:(id)arg1;
+- (void)_promptUserWithQuestions:(id)arg1;
+- (void)_promptUserWithQuestionsAfterDelay:(id)arg1;
 - (void)_removePhoneProfileWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_removeWatchProfileWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resetInstallationVariables;
-- (void)_setDidAppearBlock:(CDUnknownBlockType)arg1;
-- (void)_showAlertForInstallError:(id)arg1;
+- (void)_returnToSender;
+- (void)_showAlertForError:(id)arg1 suggestedTitle:(id)arg2 suggestedMessage:(id)arg3;
 - (void)_showCPLFinalInstallationWarning:(CDUnknownBlockType)arg1 withMDMWarning:(BOOL)arg2;
-- (void)_showFinalInstallationWarning:(CDUnknownBlockType)arg1;
-- (void)_showMDMFinalInstallationWarning:(CDUnknownBlockType)arg1;
-- (void)_showPINSheet;
-- (void)_showProgressIndicator;
-- (void)_showReEnrollFailureAlert;
 - (void)_signInMAID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (BOOL)_signatureForProfile:(id)arg1 matchesProfileB:(id)arg2;
-- (void)_submitResponses:(id)arg1;
 - (void)_takeMeBack;
-- (void)_waitForMoreUserInput;
-- (BOOL)canBeShownFromSuspendedState;
+- (void)_waitForNextQuestion;
+- (void)addCancelActionToAlert:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)addInstallActionWithTitle:(id)arg1 style:(long long)arg2 toAlert:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)cancelInstallWhilePresentingConsentAndWarningsAnimated:(BOOL)arg1;
+- (void)cancelInstallWhilePresentingConsentAndWarningsUponDidAppear;
+- (void)cancelInstallWhilePresentingQuestionsAnimated:(BOOL)arg1;
+- (void)consentExtensionShowConsentAndWarnings:(id)arg1;
+- (void)continueInstallFlowAfterCompletingPrecheck;
+- (void)continueInstallFlowAfterPINVerification;
 - (void)dealloc;
 - (void)didAcceptEnteredPIN:(id)arg1;
 - (void)didCancelEnteringPIN;
-- (id)initCommonWithProfile:(id)arg1 profileViewMode:(long long)arg2 swizzle:(BOOL)arg3;
-- (id)initCommonWithProfileData:(id)arg1 profileViewMode:(long long)arg2 swizzle:(BOOL)arg3;
-- (id)initWithProfileDataFromPurgatory:(id)arg1;
+- (BOOL)displayedAsSheet;
+- (void)hideProgressIndicatorWithShowButtons:(BOOL)arg1;
+- (id)initWithInstallableProfileData:(id)arg1 fromSource:(unsigned long long)arg2;
+- (id)initWithProfile:(id)arg1 viewMode:(long long)arg2;
 - (id)initWithProfileDataFromSettingsJump:(id)arg1;
-- (void)installProfileRemotelyWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)installationConsentViewController:(id)arg1 finishedWithUserContinueResponse:(BOOL)arg2;
 - (void)installationWarningViewController:(id)arg1 finishedWithUserContinueResponse:(BOOL)arg2;
-- (id)newRightBarButtonItem;
 - (void)performRemoveAfterFinalVerification;
+- (void)pinExtensionShowPINSheet;
 - (void)presentationControllerDidAttemptToDismiss:(id)arg1;
 - (void)profileConnection:(id)arg1 didBeginInstallingNextProfile:(id)arg2;
 - (void)profileConnection:(id)arg1 didFinishInstallationWithIdentifier:(id)arg2 error:(id)arg3;
@@ -140,18 +129,27 @@
 - (void)profileConnection:(id)arg1 didShowUserWarnings:(id)arg2;
 - (void)profileConnection:(id)arg1 didUpdateStatus:(id)arg2;
 - (void)profileConnectionDidRequestCurrentPasscode:(id)arg1;
+- (void)profileRemovalDidFinish;
 - (void)profileViewControllerDidSelectRemoveProfile:(id)arg1;
+- (BOOL)profileViewControllerIsProfileInstalled;
 - (void)questionsController:(id)arg1 didFinishWithResponses:(id)arg2;
 - (BOOL)questionsControllerIsDisplayedInSheet:(id)arg1;
+- (void)questionsExtensionDidFinishPreflightWithError:(id)arg1;
+- (void)questionsExtensionDidRequestAnswersForQuestions:(id)arg1;
+- (void)questionsExtensionInstallFinished;
 - (void)queueNextProfileData:(id)arg1;
 - (void)setCurrentQuestionsController:(id)arg1;
 - (void)setInstallState:(int)arg1 animated:(BOOL)arg2;
+- (void)showFinalInstallationAlert:(CDUnknownBlockType)arg1;
+- (void)showMDMFinalInstallationAlert:(CDUnknownBlockType)arg1;
+- (void)showProgressIndicator;
+- (void)showReEnrollFailureAlert;
 - (void)signInViewController:(id)arg1 didAuthenticateWithResults:(id)arg2 error:(id)arg3;
-- (void)signInViewControllerDidCancelAuthentication:(id)arg1;
+- (void)submitQuestionAnswers:(id)arg1;
 - (void)updateBarButtonItemsForProfileInstallationState:(int)arg1 animated:(BOOL)arg2;
 - (void)updateTitleForProfileInstallationState:(int)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
-- (void)viewWillDisappear:(BOOL)arg1;
+- (void)warningsExtensionPushWarningsControllerWithWarnings:(id)arg1;
 
 @end
 

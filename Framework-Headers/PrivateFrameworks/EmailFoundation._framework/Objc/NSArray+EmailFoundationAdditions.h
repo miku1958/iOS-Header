@@ -6,11 +6,11 @@
 
 #import <Foundation/NSArray.h>
 
-#import <EmailFoundation/EFSQLExpressable-Protocol.h>
+#import <EmailFoundation/EFSQLValueCollectionExpressable-Protocol.h>
 
 @class NSString;
 
-@interface NSArray (EmailFoundationAdditions) <EFSQLExpressable>
+@interface NSArray (EmailFoundationAdditions) <EFSQLValueCollectionExpressable>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -23,6 +23,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
+- (id)ef_SQLIsolatedExpression;
 - (BOOL)ef_all:(CDUnknownBlockType)arg1;
 - (BOOL)ef_any:(CDUnknownBlockType)arg1;
 - (id)ef_arrayByAddingAbsentObjectsFromArray:(id)arg1;
@@ -48,7 +49,10 @@
 - (id)ef_partition:(CDUnknownBlockType)arg1;
 - (id)ef_prefix:(unsigned long long)arg1;
 - (id)ef_reduce:(CDUnknownBlockType)arg1;
+- (void)ef_renderSQLExpressionInto:(id)arg1;
+- (void)ef_renderSQLExpressionInto:(id)arg1 conjoiner:(id)arg2;
 - (id)ef_subarraysOfSize:(unsigned long long)arg1;
+- (id)ef_suffix:(unsigned long long)arg1;
 - (id)ef_uniquifyWithComparator:(CDUnknownBlockType)arg1;
 @end
 

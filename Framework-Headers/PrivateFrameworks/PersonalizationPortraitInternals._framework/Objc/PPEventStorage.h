@@ -13,13 +13,14 @@
 {
     _PASLock *_lock;
     struct atomic_flag _pendingReset;
-    NSObject<OS_dispatch_queue> *_resetQueue;
+    NSObject<OS_dispatch_queue> *_serialQueue;
 }
 
 + (id)defaultStorage;
 - (void).cxx_destruct;
 - (id)_init;
 - (BOOL)_isAllDayOrMultiDayEvent:(id)arg1 guardedData:(id)arg2;
+- (BOOL)_isSuggestedEvent:(id)arg1 guardedData:(id)arg2;
 - (void)_loadCalendars;
 - (id)_predicateForRange:(struct _NSRange)arg1;
 - (void)clearCaches;
@@ -33,6 +34,7 @@
 - (id)resolveEventFromEKChange:(id)arg1;
 - (void)setCalendarVisibilityChangeHandler:(CDUnknownBlockType)arg1;
 - (BOOL)shouldIngestEvent:(id)arg1;
+- (id)suggestedEventsInRange:(struct _NSRange)arg1;
 
 @end
 

@@ -13,10 +13,12 @@
 {
     unsigned long long _interval;
     long long _frequency;
+    unsigned long long _weeklyRecurrenceDays;
 }
 
 @property (readonly, nonatomic) long long frequency; // @synthesize frequency=_frequency;
 @property (readonly, nonatomic) unsigned long long interval; // @synthesize interval=_interval;
+@property (readonly, nonatomic) unsigned long long weeklyRecurrenceDays; // @synthesize weeklyRecurrenceDays=_weeklyRecurrenceDays;
 
 + (BOOL)supportsSecureCoding;
 - (id)_dictionaryRepresentation;
@@ -27,6 +29,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithInterval:(unsigned long long)arg1 frequency:(long long)arg2;
+- (id)initWithInterval:(unsigned long long)arg1 frequency:(long long)arg2 weeklyRecurrenceDays:(unsigned long long)arg3;
 - (BOOL)isEqual:(id)arg1;
 
 @end

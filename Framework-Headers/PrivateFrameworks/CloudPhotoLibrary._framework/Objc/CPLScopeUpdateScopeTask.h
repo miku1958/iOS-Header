@@ -7,12 +7,12 @@
 #import <CloudPhotoLibrary/CPLEngineScopedTask.h>
 
 @class NSData, NSObject;
-@protocol CPLEngineTransportFetchTransportScopeTask, CPLEngineTransportGetLibraryInfoTask, OS_dispatch_queue;
+@protocol CPLEngineTransportFetchTransportScopeTask, CPLEngineTransportGetScopeInfoTask, OS_dispatch_queue;
 
 @interface CPLScopeUpdateScopeTask : CPLEngineScopedTask
 {
     NSObject<OS_dispatch_queue> *_queue;
-    id<CPLEngineTransportGetLibraryInfoTask> _getLibraryInfo;
+    id<CPLEngineTransportGetScopeInfoTask> _getLibraryInfo;
     id<CPLEngineTransportFetchTransportScopeTask> _fetchTransportScope;
     NSData *_fetchedTransportScope;
     BOOL _retryingFetchingTransportScope;

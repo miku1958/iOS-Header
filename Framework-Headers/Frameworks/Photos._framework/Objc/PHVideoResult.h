@@ -6,16 +6,19 @@
 
 #import <Photos/PHCompositeMediaResult.h>
 
-@class NSURL;
+@class NSString, NSURL;
 
 @interface PHVideoResult : PHCompositeMediaResult
 {
     NSURL *_videoURL;
+    NSString *_uniformTypeIdentifier;
 }
 
+@property (copy, nonatomic) NSString *uniformTypeIdentifier; // @synthesize uniformTypeIdentifier=_uniformTypeIdentifier;
 @property (strong, nonatomic) NSURL *videoURL; // @synthesize videoURL=_videoURL;
 
 - (void).cxx_destruct;
+- (id)allowedInfoKeys;
 - (BOOL)containsValidData;
 - (void)setVideoAdjustmentData:(id)arg1;
 - (id)videoAdjustmentData;

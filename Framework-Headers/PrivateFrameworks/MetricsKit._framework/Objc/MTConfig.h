@@ -30,6 +30,7 @@
 - (id)configValueForKeyPath:(id)arg1 sources:(id)arg2;
 - (id)deResFieldsForSources:(id)arg1;
 - (BOOL)disabledForSources:(id)arg1;
+- (id)injectedSource;
 - (BOOL)metricsDisabledOrBlacklistedEvent:(id)arg1 sources:(id)arg2;
 - (void)removeBlacklistedFields:(id)arg1 sources:(id)arg2;
 - (id)sources;

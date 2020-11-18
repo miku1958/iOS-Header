@@ -41,7 +41,6 @@
 }
 
 @property (readonly, nonatomic) long long currentFinalDestination;
-@property (strong, nonatomic) SBHomeGestureDockSwitcherModifier *dockModifier; // @synthesize dockModifier=_dockModifier;
 @property (readonly, nonatomic) NSString *finalDestinationReason; // @synthesize finalDestinationReason=_finalDestinationReason;
 @property (readonly, nonatomic) BOOL hasSeenAccelerationDipForAppSwitcher; // @synthesize hasSeenAccelerationDipForAppSwitcher=_hasSeenAccelerationDipForAppSwitcher;
 
@@ -61,7 +60,7 @@
 - (id)handleGestureEvent:(id)arg1;
 - (id)handleHomeGestureSettingsChangedEvent:(id)arg1;
 - (id)handleSwitcherSettingsChangedEvent:(id)arg1;
-- (id)initWithDelegate:(id)arg1 initialTranslationAdjustment:(struct CGPoint)arg2 startingEnvironmentMode:(long long)arg3 continuingGesture:(BOOL)arg4;
+- (id)initWithDelegate:(id)arg1 initialTranslationAdjustment:(struct CGPoint)arg2 startingEnvironmentMode:(long long)arg3 continuingGesture:(BOOL)arg4 dockModifier:(id)arg5;
 - (id)studyLogData;
 
 @end

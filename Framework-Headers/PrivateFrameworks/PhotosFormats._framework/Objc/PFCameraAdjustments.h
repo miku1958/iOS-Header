@@ -34,6 +34,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAdjustments:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithEffectFilter:(id)arg1 cropRect:(struct CGRect)arg2;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 
 @end

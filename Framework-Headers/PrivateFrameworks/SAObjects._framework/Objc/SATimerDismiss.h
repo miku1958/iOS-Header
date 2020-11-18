@@ -6,9 +6,13 @@
 
 #import <SAObjects/SADomainCommand.h>
 
+@class NSArray;
+
 @interface SATimerDismiss : SADomainCommand
 {
 }
+
+@property (copy, nonatomic) NSArray *timerIds;
 
 + (id)dismiss;
 + (id)dismissWithDictionary:(id)arg1 context:(id)arg2;

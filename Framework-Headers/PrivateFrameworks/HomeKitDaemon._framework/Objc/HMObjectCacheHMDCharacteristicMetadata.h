@@ -11,6 +11,7 @@
 }
 
 + (id)cachedInstanceForCharacteristicMetadata:(id)arg1;
++ (BOOL)enabled;
 
 @end
 

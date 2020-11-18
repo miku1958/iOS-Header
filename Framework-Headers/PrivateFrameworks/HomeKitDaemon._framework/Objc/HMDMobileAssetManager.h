@@ -6,24 +6,20 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
-
-@class HMFTimer, NSString;
+@class NSBackgroundActivityScheduler;
 @protocol HMDMobileAssetManagerDelegate, OS_dispatch_queue;
 
-@interface HMDMobileAssetManager : NSObject <HMFTimerDelegate>
+@interface HMDMobileAssetManager : NSObject
 {
+    BOOL _indexDownloaded;
     id<HMDMobileAssetManagerDelegate> _delegate;
-    HMFTimer *_periodicMobileCatalogUpdateTimer;
+    NSBackgroundActivityScheduler *_scheduler;
     NSObject<OS_dispatch_queue> *_workQueue;
 }
 
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HMDMobileAssetManagerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (strong) HMFTimer *periodicMobileCatalogUpdateTimer; // @synthesize periodicMobileCatalogUpdateTimer=_periodicMobileCatalogUpdateTimer;
-@property (readonly) Class superclass;
+@property BOOL indexDownloaded; // @synthesize indexDownloaded=_indexDownloaded;
+@property (readonly, nonatomic) NSBackgroundActivityScheduler *scheduler; // @synthesize scheduler=_scheduler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;
@@ -31,16 +27,10 @@
 - (void)_downloadNewAsset:(id)arg1 availableVersion:(unsigned long long)arg2 newVersion:(unsigned long long)arg3;
 - (void)_handleMetadataAssetUpdated;
 - (void)_installAvailableAsset:(id)arg1 version:(unsigned long long)arg2;
-- (void)_resetPeriodicMobileCatalogUpdateTimer;
-- (void)_startPeriodicMobileCatalogUpdateTimer;
 - (void)_updateMetadata;
 - (void)handleMetadataAssetUpdated;
-- (void)handleMetadataAssetUpdated:(id)arg1;
 - (id)init;
-- (id)initWithQueue:(id)arg1;
 - (void)purgeAllInstalledAssets;
-- (void)registerForNotification;
-- (void)timerDidFire:(id)arg1;
 
 @end
 

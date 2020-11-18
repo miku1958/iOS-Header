@@ -35,7 +35,7 @@
 + (id)contactFuture:(id)arg1 contactStore:(id)arg2 scheduler:(id)arg3;
 + (id)descriptorForRequiredKeys;
 + (id)observableFromLikenessProviderBlock:(CDUnknownBlockType)arg1 withScheduler:(id)arg2;
-+ (id)photoObservableWithPhotoFuture:(id)arg1 scheduler:(id)arg2;
++ (id)photoObservableWithPhotoFuture:(id)arg1 likenessFingerprint:(id)arg2 scheduler:(id)arg3;
 - (void).cxx_destruct;
 - (id)basicMonogramObservableFromString:(id)arg1 color:(id)arg2;
 - (id)basicMonogramObservableWithContactFuture:(id)arg1 monogramColor:(id)arg2;

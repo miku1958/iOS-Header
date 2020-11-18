@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <WorkflowKit/NSCopying-Protocol.h>
 #import <WorkflowKit/WFVariableSerialization-Protocol.h>
 #import <WorkflowKit/WFVariableStringContent-Protocol.h>
 
 @class NSArray, NSDictionary, NSHashTable, NSString, WFImage;
 @protocol WFVariableProvider;
 
-@interface WFVariable : NSObject <WFVariableStringContent, WFVariableSerialization>
+@interface WFVariable : NSObject <WFVariableStringContent, NSCopying, WFVariableSerialization>
 {
     NSArray *_aggrandizements;
     NSHashTable *_delegates;
@@ -43,8 +44,9 @@
 
 - (void).cxx_destruct;
 - (void)addDelegate:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)getContentWithContext:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)getContentWithContext:(id)arg1 trackContentSource:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)getContentWithContext:(id)arg1 trackContentAttribution:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)getObjectRepresentationForClass:(Class)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
 - (id)initWithDictionary:(id)arg1 variableProvider:(id)arg2;

@@ -24,9 +24,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_configKeyValues:1;
         unsigned int read_debugExperimentBranch:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_configKeyValues:1;
-        unsigned int wrote_debugExperimentBranch:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -38,9 +36,6 @@ __attribute__((visibility("hidden")))
 + (Class)configKeyValueType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsConfigKeyValue:(id)arg1;
-- (void)_readConfigKeyValues;
-- (void)_readDebugExperimentBranch;
 - (void)addConfigKeyValue:(id)arg1;
 - (void)clearConfigKeyValues;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -53,7 +48,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

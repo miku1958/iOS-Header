@@ -14,7 +14,7 @@
 @property (readonly, nonatomic) NSString *identifier;
 
 - (CALayer *)coverLayerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3;
-- (id<BCUOperation>)newOperationWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 priority:(float)arg4 options:(NSDictionary *)arg5 completion:(void (^)(id<BCUOperation>, id<BCUPurgeableImage>, struct UIEdgeInsets, id))arg6;
+- (id<BCUOperation>)newOperationWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 priority:(float)arg4 options:(NSDictionary *)arg5 waitForCPUSynchronization:(BOOL)arg6 completion:(void (^)(id<BCUOperation>, id<BCUPurgeableImage>, struct UIEdgeInsets, id))arg7;
 - (CALayer *)shadowLayerWithImage:(struct CGImage *)arg1 size:(struct CGSize)arg2 contentsScale:(double)arg3 kind:(unsigned long long)arg4;
 @end
 

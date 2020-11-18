@@ -8,7 +8,7 @@
 
 #import <IMCore/NSCopying-Protocol.h>
 
-@class IMHandle, IMMessageItem, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSError, NSString;
+@class IMBalloonPluginDataSource, IMHandle, IMMessageItem, NSArray, NSAttributedString, NSData, NSDate, NSDictionary, NSError, NSString;
 
 @interface IMMessage : NSObject <NSCopying>
 {
@@ -33,10 +33,15 @@
     long long _messageID;
     NSDictionary *_bizIntent;
     NSString *_locale;
+    BOOL _isAddressedToMe;
+    BOOL _hasMention;
     BOOL _isSOS;
     NSString *_associatedMessageGUID;
     long long _associatedMessageType;
     NSDictionary *_messageSummaryInfo;
+    NSString *_threadIdentifier;
+    IMMessage *_threadOriginator;
+    NSDictionary *_replyCountsByPart;
     NSString *_associatedBalloonBundleID;
     NSString *_sourceApplicationID;
     NSData *_customTypingIndicatorIcon;
@@ -62,8 +67,9 @@
 @property (strong, nonatomic, setter=_updateGUID:) NSString *guid; // @synthesize guid=_guid;
 @property (readonly, nonatomic) BOOL hasDataDetectorResults;
 @property (readonly, nonatomic) BOOL hasInlineAttachments;
+@property (nonatomic) BOOL hasMention; // @synthesize hasMention=_hasMention;
 @property (readonly, nonatomic) NSArray *inlineAttachmentAttributesArray;
-@property (readonly, nonatomic) BOOL isAddressedToMe;
+@property (readonly, nonatomic) BOOL isAddressedToMe; // @synthesize isAddressedToMe=_isAddressedToMe;
 @property (readonly, nonatomic) BOOL isAlert;
 @property (readonly, nonatomic) BOOL isAssociatedMessage;
 @property (readonly, nonatomic) BOOL isAudioMessage;
@@ -78,6 +84,7 @@
 @property (readonly, nonatomic) BOOL isLocatingMessage;
 @property (readonly, nonatomic) BOOL isPlayed;
 @property (readonly, nonatomic) BOOL isRead;
+@property (readonly, nonatomic) BOOL isRichLinkMessage;
 @property (nonatomic) BOOL isSOS; // @synthesize isSOS=_isSOS;
 @property (readonly, nonatomic) BOOL isSent;
 @property (readonly, nonatomic) BOOL isSystemMessage;
@@ -90,6 +97,8 @@
 @property (strong, nonatomic) NSString *notificationIDSTokenURI; // @synthesize notificationIDSTokenURI=_notificationIDSTokenURI;
 @property (strong, nonatomic) NSData *payloadData; // @synthesize payloadData=_payloadData;
 @property (readonly, nonatomic) NSString *plainBody;
+@property (strong, nonatomic) NSDictionary *replyCountsByPart; // @synthesize replyCountsByPart=_replyCountsByPart;
+@property (readonly, nonatomic) IMBalloonPluginDataSource *richLinkDataSource;
 @property (strong, nonatomic, setter=_updateSender:) IMHandle *sender; // @synthesize sender=_sender;
 @property (readonly, nonatomic) NSString *senderName;
 @property (nonatomic) unsigned long long sortID; // @synthesize sortID=_sortID;
@@ -97,6 +106,8 @@
 @property (readonly, nonatomic) IMHandle *subject; // @synthesize subject=_subject;
 @property (readonly, nonatomic) NSString *summaryString;
 @property (strong, nonatomic, setter=_updateText:) NSAttributedString *text; // @synthesize text=_text;
+@property (copy, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
+@property (strong, nonatomic) IMMessage *threadOriginator; // @synthesize threadOriginator=_threadOriginator;
 @property (strong, nonatomic, setter=_updateTime:) NSDate *time; // @synthesize time=_time;
 @property (strong, nonatomic, setter=_updateTimeDelivered:) NSDate *timeDelivered; // @synthesize timeDelivered=_timeDelivered;
 @property (strong, nonatomic) NSDate *timeExpressiveSendPlayed; // @synthesize timeExpressiveSendPlayed=_timeExpressiveSendPlayed;
@@ -106,7 +117,7 @@
 @property (readonly, nonatomic) BOOL wasDowngraded;
 
 + (id)_vCardDataWithCLLocation:(id)arg1;
-+ (id)breadcrumbMessageWithText:(id)arg1 associatedMessageGUID:(id)arg2 balloonBundleID:(id)arg3 fileTransferGUIDs:(id)arg4 payloadData:(id)arg5;
++ (id)breadcrumbMessageWithText:(id)arg1 associatedMessageGUID:(id)arg2 balloonBundleID:(id)arg3 fileTransferGUIDs:(id)arg4 payloadData:(id)arg5 threadIdentifier:(id)arg6;
 + (id)defaultInvitationMessageFromSender:(id)arg1 flags:(unsigned long long)arg2;
 + (id)determineRichLinksInMessage:(id)arg1;
 + (id)determineRichLinksInMessage:(id)arg1 additionalSupportedSchemes:(id)arg2;
@@ -114,12 +125,13 @@
 + (id)fromMeIMHandle:(id)arg1 withText:(id)arg2 fileTransferGUIDs:(id)arg3 flags:(unsigned long long)arg4;
 + (BOOL)hasKnownSchemesForRichLinkURL:(id)arg1;
 + (BOOL)hasKnownSchemesForRichLinkURL:(id)arg1 additionalSupportedSchemes:(id)arg2;
-+ (id)instantMessageWithAssociatedMessageContent:(id)arg1 flags:(unsigned long long)arg2 associatedMessageGUID:(id)arg3 associatedMessageType:(long long)arg4 associatedMessageRange:(struct _NSRange)arg5 messageSummaryInfo:(id)arg6;
-+ (id)instantMessageWithText:(id)arg1 flags:(unsigned long long)arg2;
-+ (id)instantMessageWithText:(id)arg1 messageSubject:(id)arg2 fileTransferGUIDs:(id)arg3 flags:(unsigned long long)arg4;
++ (id)instantMessageWithAssociatedMessageContent:(id)arg1 flags:(unsigned long long)arg2 associatedMessageGUID:(id)arg3 associatedMessageType:(long long)arg4 associatedMessageRange:(struct _NSRange)arg5 messageSummaryInfo:(id)arg6 threadIdentifier:(id)arg7;
++ (id)instantMessageWithText:(id)arg1 flags:(unsigned long long)arg2 threadIdentifier:(id)arg3;
 + (id)instantMessageWithText:(id)arg1 messageSubject:(id)arg2 fileTransferGUIDs:(id)arg3 flags:(unsigned long long)arg4 balloonBundleID:(id)arg5 payloadData:(id)arg6 expressiveSendStyleID:(id)arg7;
-+ (id)instantMessageWithText:(id)arg1 messageSubject:(id)arg2 flags:(unsigned long long)arg3;
++ (id)instantMessageWithText:(id)arg1 messageSubject:(id)arg2 fileTransferGUIDs:(id)arg3 flags:(unsigned long long)arg4 threadIdentifier:(id)arg5;
 + (id)instantMessageWithText:(id)arg1 messageSubject:(id)arg2 flags:(unsigned long long)arg3 expressiveSendStyleID:(id)arg4;
++ (id)instantMessageWithText:(id)arg1 messageSubject:(id)arg2 flags:(unsigned long long)arg3 expressiveSendStyleID:(id)arg4 threadIdentifier:(id)arg5;
++ (id)instantMessageWithText:(id)arg1 messageSubject:(id)arg2 flags:(unsigned long long)arg3 threadIdentifier:(id)arg4;
 + (id)locatingMessageWithGuid:(id)arg1 error:(id)arg2;
 + (id)messageFromIMMessageItem:(id)arg1 sender:(id)arg2 subject:(id)arg3;
 + (id)messageFromIMMessageItemDictionary:(id)arg1 body:(id)arg2 sender:(id)arg3 subject:(id)arg4;
@@ -128,7 +140,7 @@
 + (BOOL)supportedRichLinkURL:(id)arg1 additionalSupportedSchemes:(id)arg2;
 - (void).cxx_destruct;
 - (id)_copyWithFlags:(unsigned long long)arg1;
-- (id)_initWithSender:(id)arg1 time:(id)arg2 timeRead:(id)arg3 timeDelivered:(id)arg4 timePlayed:(id)arg5 plainText:(id)arg6 text:(id)arg7 messageSubject:(id)arg8 fileTransferGUIDs:(id)arg9 flags:(unsigned long long)arg10 error:(id)arg11 guid:(id)arg12 messageID:(long long)arg13 subject:(id)arg14 balloonBundleID:(id)arg15 payloadData:(id)arg16 expressiveSendStyleID:(id)arg17 timeExpressiveSendPlayed:(id)arg18 associatedMessageGUID:(id)arg19 associatedMessageType:(long long)arg20 associatedMessageRange:(struct _NSRange)arg21 messageSummaryInfo:(id)arg22;
+- (id)_initWithSender:(id)arg1 time:(id)arg2 timeRead:(id)arg3 timeDelivered:(id)arg4 timePlayed:(id)arg5 plainText:(id)arg6 text:(id)arg7 messageSubject:(id)arg8 fileTransferGUIDs:(id)arg9 flags:(unsigned long long)arg10 error:(id)arg11 guid:(id)arg12 messageID:(long long)arg13 subject:(id)arg14 balloonBundleID:(id)arg15 payloadData:(id)arg16 expressiveSendStyleID:(id)arg17 timeExpressiveSendPlayed:(id)arg18 associatedMessageGUID:(id)arg19 associatedMessageType:(long long)arg20 associatedMessageRange:(struct _NSRange)arg21 messageSummaryInfo:(id)arg22 threadIdentifier:(id)arg23;
 - (void)_ovverrideGUIDForTest:(id)arg1;
 - (long long)compare:(id)arg1;
 - (long long)compare:(id)arg1 comparisonType:(long long)arg2;
@@ -139,13 +151,17 @@
 - (id)descriptionForPurpose:(long long)arg1 inChat:(id)arg2 senderDisplayName:(id)arg3;
 - (id)initWithSender:(id)arg1 fileTransfer:(id)arg2;
 - (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 fileTransferGUIDs:(id)arg4 flags:(unsigned long long)arg5 error:(id)arg6 guid:(id)arg7 subject:(id)arg8;
+- (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 fileTransferGUIDs:(id)arg4 flags:(unsigned long long)arg5 error:(id)arg6 guid:(id)arg7 subject:(id)arg8 threadIdentifier:(id)arg9;
 - (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 messageSubject:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 subject:(id)arg9;
 - (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 messageSubject:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 subject:(id)arg9 associatedMessageGUID:(id)arg10 associatedMessageType:(long long)arg11 associatedMessageRange:(struct _NSRange)arg12 associatedMessageInfo:(id)arg13;
 - (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 messageSubject:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 subject:(id)arg9 associatedMessageGUID:(id)arg10 associatedMessageType:(long long)arg11 associatedMessageRange:(struct _NSRange)arg12 messageSummaryInfo:(id)arg13;
+- (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 messageSubject:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 subject:(id)arg9 associatedMessageGUID:(id)arg10 associatedMessageType:(long long)arg11 associatedMessageRange:(struct _NSRange)arg12 messageSummaryInfo:(id)arg13 threadIdentifier:(id)arg14;
 - (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 messageSubject:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 subject:(id)arg9 balloonBundleID:(id)arg10 payloadData:(id)arg11 expressiveSendStyleID:(id)arg12;
+- (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 messageSubject:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 subject:(id)arg9 balloonBundleID:(id)arg10 payloadData:(id)arg11 expressiveSendStyleID:(id)arg12 threadIdentifier:(id)arg13;
+- (id)initWithSender:(id)arg1 time:(id)arg2 text:(id)arg3 messageSubject:(id)arg4 fileTransferGUIDs:(id)arg5 flags:(unsigned long long)arg6 error:(id)arg7 guid:(id)arg8 subject:(id)arg9 threadIdentifier:(id)arg10;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isReply;
 - (id)messagesBySeparatingRichLinks;
-- (void)setIsAddressedToMe:(BOOL)arg1;
 
 @end
 

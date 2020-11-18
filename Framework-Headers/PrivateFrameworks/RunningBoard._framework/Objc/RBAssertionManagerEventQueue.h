@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
-
-@class NSString, RBEventQueue, RBProcessMap;
+@class RBEventQueue, RBProcessMap;
 @protocol OS_dispatch_queue, RBAssertionManagerQueueDelegate;
 
-@interface RBAssertionManagerEventQueue : NSObject <BSDescriptionProviding>
+@interface RBAssertionManagerEventQueue : NSObject
 {
     struct os_unfair_lock_s _lock;
     NSObject<OS_dispatch_queue> *_queue;
@@ -21,24 +19,11 @@
 }
 
 @property (readonly) unsigned long long count;
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<RBAssertionManagerQueueDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_queue_enqueueEventsForAssertion:(id)arg1;
-- (void)_queue_enqueueInvalidationEventForAssertion:(id)arg1 startTime:(double)arg2;
-- (void)_queue_enqueueProcessExpirationEventsForProcesses:(id)arg1;
-- (void)_queue_enqueueWarningEventForAssertion:(id)arg1 startTime:(double)arg2;
-- (void)_queue_removeEventsForContext:(id)arg1;
-- (void)_queue_updateEventsForAssertion:(id)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)description;
 - (id)init;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 - (void)updateEventsForAssertions:(id)arg1;
 
 @end

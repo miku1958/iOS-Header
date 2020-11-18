@@ -8,6 +8,7 @@
 
 @interface EKCalendarSuggestionNotification (CUIKDescription)
 - (id)allDescriptionStringsWithOptions:(unsigned long long)arg1;
+- (id)descriptionStrings:(unsigned long long)arg1;
 - (BOOL)supportsDisplay;
 @end
 

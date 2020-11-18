@@ -6,9 +6,10 @@
 
 #import <CarPlay/CPTemplateDelegate-Protocol.h>
 
-@class CPListItem, CPListTemplate;
+@class CPListImageRowItem, CPListTemplate, NSUUID;
 
 @protocol CPListClientTemplateDelegate <CPTemplateDelegate>
-- (void)listTemplate:(CPListTemplate *)arg1 didSelectListItem:(CPListItem *)arg2 completionHandler:(void (^)(void))arg3;
+- (void)listTemplate:(CPListTemplate *)arg1 didSelectImageAtIndex:(unsigned long long)arg2 inImageRowItem:(CPListImageRowItem *)arg3;
+- (void)listTemplate:(CPListTemplate *)arg1 didSelectListItemWithIdentifier:(NSUUID *)arg2 completionHandler:(void (^)(void))arg3;
 @end
 

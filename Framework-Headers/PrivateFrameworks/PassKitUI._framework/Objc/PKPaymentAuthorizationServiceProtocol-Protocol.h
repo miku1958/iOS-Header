@@ -6,7 +6,7 @@
 
 #import <PassKitUI/NSObject-Protocol.h>
 
-@class NSArray, NSError, PKApplePayTrustSignatureRequest, PKPaymentAuthorizationResult, PKPaymentMerchantSession, PKPaymentRequest, PKPaymentRequestPaymentMethodUpdate, PKPaymentRequestShippingContactUpdate, PKPaymentRequestShippingMethodUpdate;
+@class NSArray, NSError, PKApplePayTrustSignatureRequest, PKPaymentAuthorizationResult, PKPaymentMerchantSession, PKPaymentRequest, PKPaymentRequestMerchantSessionUpdate, PKPaymentRequestPaymentMethodUpdate, PKPaymentRequestShippingContactUpdate, PKPaymentRequestShippingMethodUpdate;
 
 @protocol PKPaymentAuthorizationServiceProtocol <NSObject>
 - (void)authorizationDidAuthorizeApplePayTrustSignatureCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;
@@ -15,7 +15,7 @@
 - (void)authorizationDidAuthorizePaymentCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;
 - (void)authorizationDidAuthorizePeerPaymentQuoteCompleteWithResult:(PKPaymentAuthorizationResult *)arg1;
 - (void)authorizationDidAuthorizePurchaseCompleteWithStatus:(long long)arg1;
-- (void)authorizationDidRequestMerchantSessionCompleteWithSession:(PKPaymentMerchantSession *)arg1 error:(NSError *)arg2;
+- (void)authorizationDidRequestMerchantSessionCompleteWithUpdate:(PKPaymentRequestMerchantSessionUpdate *)arg1;
 - (void)authorizationDidSelectPaymentMethodCompleteWithUpdate:(PKPaymentRequestPaymentMethodUpdate *)arg1;
 - (void)authorizationDidSelectShippingAddressCompleteWithUpdate:(PKPaymentRequestShippingContactUpdate *)arg1;
 - (void)authorizationDidSelectShippingMethodCompleteWithUpdate:(PKPaymentRequestShippingMethodUpdate *)arg1;
@@ -25,6 +25,7 @@
 
 @optional
 - (void)authorizationDidAuthorizePaymentCompleteWithStatus:(long long)arg1;
+- (void)authorizationDidRequestMerchantSessionCompleteWithSession:(PKPaymentMerchantSession *)arg1 error:(NSError *)arg2;
 - (void)authorizationDidSelectPaymentMethodCompleteWithPaymentSummaryItems:(NSArray *)arg1;
 - (void)authorizationDidSelectShippingAddressCompleteWithStatus:(long long)arg1 shippingMethods:(NSArray *)arg2 paymentSummaryItems:(NSArray *)arg3;
 - (void)authorizationDidSelectShippingMethodCompleteWithStatus:(long long)arg1 paymentSummaryItems:(NSArray *)arg2;

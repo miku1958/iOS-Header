@@ -31,8 +31,6 @@
 - (void)addAlarmsFiredObserver:(id)arg1 selector:(SEL)arg2;
 - (void)deactivate;
 - (void)didRegisterForAlarms;
-- (void)didRegisterForBackgroundTaskAgentJobs;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
 - (id)initWithAlarmEngine:(id)arg1 notificationCenter:(id)arg2;
 - (void)protectedDataDidBecomeAvailable;
 - (void)receivedAlarmNamed:(id)arg1;

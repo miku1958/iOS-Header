@@ -15,12 +15,13 @@
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityApproveButtonAction:(id)arg1;
 - (void)_accessibilityDeclineButtonAction:(id)arg1;
-- (BOOL)accessibilityActivate;
+- (id)_accessibilitySupplementaryFooterViews;
+- (id)_accessibilityUserTestingChildren;
+- (id)_axFollowButton;
 - (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
 - (id)accessibilitySocialPersonCustomActions;
 - (unsigned long long)accessibilityTraits;
-- (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 - (void)setAccessibilitySocialPersonCustomActions:(id)arg1;
 

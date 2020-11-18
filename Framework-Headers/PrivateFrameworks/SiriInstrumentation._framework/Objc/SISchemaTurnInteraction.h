@@ -11,8 +11,10 @@
 @interface SISchemaTurnInteraction : PBCodable
 {
     NSString *_interactionId;
+    BOOL _hasInteractionId;
 }
 
+@property (nonatomic) BOOL hasInteractionId; // @synthesize hasInteractionId=_hasInteractionId;
 @property (copy, nonatomic) NSString *interactionId; // @synthesize interactionId=_interactionId;
 @property (readonly, nonatomic) NSData *jsonData;
 

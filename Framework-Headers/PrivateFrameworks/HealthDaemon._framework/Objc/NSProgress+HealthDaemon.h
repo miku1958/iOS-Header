@@ -8,5 +8,6 @@
 
 @interface NSProgress (HealthDaemon)
 + (id)hd_progressMirroringProgress:(id)arg1;
++ (id)hk_finishedDiscreteProgressWithTotalUnitCount:(long long)arg1;
 @end
 

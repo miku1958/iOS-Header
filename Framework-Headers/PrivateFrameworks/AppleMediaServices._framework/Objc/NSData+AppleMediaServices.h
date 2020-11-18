@@ -21,6 +21,12 @@
 + (id)_generateInitializationVectorDataWithError:(id *)arg1;
 + (id)_labelForDataProtectionClass:(unsigned long long)arg1;
 + (id)ams_generateEncryptionKey;
+- (id)_compressGZIP;
+- (id)_compressLZMA;
+- (id)_decompressGZIP;
+- (id)_decompressLZMA;
+- (id)ams_compressWithAlgorithm:(long long)arg1;
+- (id)ams_decompressWithAlgorithm:(long long)arg1;
 - (id)ams_decryptUsingDataProtectionClass:(unsigned long long)arg1 initializationVectorData:(id)arg2 tagData:(id)arg3 error:(id *)arg4;
 - (id)ams_decryptUsingKey:(id)arg1 initializationVectorData:(id)arg2 tagData:(id)arg3 error:(id *)arg4;
 - (CDStruct_0f015c83)ams_encryptDataUsingDataProtectionClass:(unsigned long long)arg1 error:(id *)arg2;

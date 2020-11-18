@@ -18,6 +18,7 @@
     float _progress;
     MAAsset *_rawAsset;
     NSString *_definitionLanguage;
+    long long _preferredOrder;
 }
 
 @property (nonatomic) BOOL activated; // @synthesize activated=_activated;
@@ -29,19 +30,17 @@
 @property (readonly) NSString *localizedLanguageName;
 @property (readonly) NSString *localizedSortName;
 @property (readonly) BOOL needsDownloadNewerVersion;
+@property long long preferredOrder; // @synthesize preferredOrder=_preferredOrder;
 @property float progress; // @synthesize progress=_progress;
 @property (readonly) MAAsset *rawAsset; // @synthesize rawAsset=_rawAsset;
 
-+ (id)displayNameForLanguageIdentifier:(id)arg1 forSorting:(BOOL)arg2;
++ (id)displayNameForLanguageIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (id)_definitionValueForTerm:(id)arg1;
 - (BOOL)_hasDefinitionForTerm:(id)arg1;
-- (BOOL)assetIsDeletable;
-- (BOOL)assetIsLocal;
 - (void)dealloc;
 - (id)description;
 - (id)initWithAsset:(id)arg1;
-- (id)localizedLanguageName:(BOOL)arg1;
 - (void)setAssetToUpgrade:(id)arg1;
 
 @end

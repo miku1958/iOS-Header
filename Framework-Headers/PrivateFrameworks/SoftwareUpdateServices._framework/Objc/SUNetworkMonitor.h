@@ -9,7 +9,7 @@
 #import <SoftwareUpdateServices/CoreTelephonyClientCarrierBundleDelegate-Protocol.h>
 #import <SoftwareUpdateServices/CoreTelephonyClientRegistrationDelegate-Protocol.h>
 
-@class CoreTelephonyClient, NSArray, NSHashTable, NSString;
+@class CoreTelephonyClient, NSArray, NSHashTable, NSString, NWPathEvaluator;
 @protocol OS_dispatch_queue;
 
 @interface SUNetworkMonitor : NSObject <CoreTelephonyClientRegistrationDelegate, CoreTelephonyClientCarrierBundleDelegate>
@@ -21,6 +21,7 @@
     CoreTelephonyClient *_ctClient;
     NSObject<OS_dispatch_queue> *_ctQueue;
     NSArray *_subscriptions;
+    NWPathEvaluator *_pathEvaluator;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -48,12 +49,15 @@
 - (id)init;
 - (BOOL)isCellularDataRoamingEnabled;
 - (BOOL)isCellularRoaming;
+- (BOOL)isCurrentNetworkTypeCellular;
+- (BOOL)isCurrentNetworkTypeExpensive;
 - (BOOL)isNetworkTypeCellular:(int)arg1;
 - (void)operatorBundleChange:(id)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)setCellularRoaming:(BOOL)arg1;
 - (void)setCurrentNetworkType:(int)arg1;
 - (void)setSubscriptions;
+- (BOOL)usingWifi;
 
 @end
 

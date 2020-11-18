@@ -6,16 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class NSPointerArray;
-@protocol TSTCategoryProviding, TSTTableHiddenRowColumnProviding><TSTTableInternalGeometryProviding, TSTTableStrokeProviding;
+@class NSPointerArray, TSTTableInfo;
+@protocol TSTTableHiddenRowColumnProviding><TSTTableInternalGeometryProviding, TSTTableStrokeProviding;
 
 @interface TSTStrokeDefaultVendor : NSObject
 {
     BOOL _isValid;
     id<TSTTableStrokeProviding> _strokeProvider;
     id<TSTTableHiddenRowColumnProviding><TSTTableInternalGeometryProviding> _tableProvider;
-    id<TSTCategoryProviding> _categoryProvider;
+    TSTTableInfo *_categoryProvider;
     NSPointerArray *_strokeTypeToLayerMap;
+    NSPointerArray *_strokeTypeToLayerStackMap;
     struct _NSRange _headerSideBorderColumnRange;
     struct _NSRange _headerColumnSeparatorColumnRange;
     struct _NSRange _bodySideBorderColumnRange;
@@ -27,7 +28,7 @@
 
 @property (nonatomic) struct _NSRange bodySideBorderColumnRange; // @synthesize bodySideBorderColumnRange=_bodySideBorderColumnRange;
 @property (nonatomic) struct _NSRange bottomBorderRowRange; // @synthesize bottomBorderRowRange=_bottomBorderRowRange;
-@property (weak, nonatomic) id<TSTCategoryProviding> categoryProvider; // @synthesize categoryProvider=_categoryProvider;
+@property (weak, nonatomic) TSTTableInfo *categoryProvider; // @synthesize categoryProvider=_categoryProvider;
 @property (nonatomic) struct _NSRange footerRowSeparatorRowRange; // @synthesize footerRowSeparatorRowRange=_footerRowSeparatorRowRange;
 @property (nonatomic) struct _NSRange headerColumnSeparatorColumnRange; // @synthesize headerColumnSeparatorColumnRange=_headerColumnSeparatorColumnRange;
 @property (nonatomic) struct _NSRange headerRowSeparatorRowRange; // @synthesize headerRowSeparatorRowRange=_headerRowSeparatorRowRange;
@@ -35,6 +36,7 @@
 @property (nonatomic) BOOL isValid; // @synthesize isValid=_isValid;
 @property (weak, nonatomic) id<TSTTableStrokeProviding> strokeProvider; // @synthesize strokeProvider=_strokeProvider;
 @property (strong, nonatomic) NSPointerArray *strokeTypeToLayerMap; // @synthesize strokeTypeToLayerMap=_strokeTypeToLayerMap;
+@property (strong, nonatomic) NSPointerArray *strokeTypeToLayerStackMap; // @synthesize strokeTypeToLayerStackMap=_strokeTypeToLayerStackMap;
 @property (weak, nonatomic) id<TSTTableHiddenRowColumnProviding><TSTTableInternalGeometryProviding> tableProvider; // @synthesize tableProvider=_tableProvider;
 @property (nonatomic) struct _NSRange topBorderRowRange; // @synthesize topBorderRowRange=_topBorderRowRange;
 
@@ -50,6 +52,9 @@
 - (id)strokeLayerForColumn:(unsigned int)arg1;
 - (id)strokeLayerForRow:(unsigned int)arg1;
 - (id)strokeLayerForStrokeType:(int)arg1;
+- (id)strokeLayerStackForColumn:(unsigned int)arg1;
+- (id)strokeLayerStackForRow:(unsigned int)arg1;
+- (id)strokeLayerStackForStrokeType:(int)arg1;
 - (int)validateChangeDescriptors:(id)arg1;
 - (BOOL)validateGeometry;
 

@@ -11,13 +11,14 @@
 @interface SGModelSampler : NSObject
 {
     double _positiveRate;
+    double _dynamicLabelRate;
     double _negativeRate;
     _PASRng *_rng;
 }
 
 - (void).cxx_destruct;
-- (id)initWithPositiveRate:(double)arg1 negativeRate:(double)arg2 rng:(id)arg3;
-- (BOOL)shouldSampleForLabel:(id)arg1;
+- (id)initWithPositiveRate:(double)arg1 dynamicLabelRate:(double)arg2 negativeRate:(double)arg3 rng:(id)arg4;
+- (BOOL)shouldSampleForLabel:(id)arg1 isDynamicLabel:(BOOL)arg2;
 
 @end
 

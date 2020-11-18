@@ -24,13 +24,15 @@
 + (id)contactHeaderViewWithContact:(id)arg1 shouldAllowTakePhotoAction:(BOOL)arg2 monogramOnly:(BOOL)arg3 delegate:(id)arg4;
 + (id)contactHeaderViewWithContact:(id)arg1 shouldAllowTakePhotoAction:(BOOL)arg2 showingNavBar:(BOOL)arg3 monogramOnly:(BOOL)arg4 delegate:(id)arg5;
 + (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(BOOL)arg2 shouldAllowImageDrops:(BOOL)arg3 monogramOnly:(BOOL)arg4;
++ (id)sizeAttributesShowingNavBar:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)calculateLabelSizesIfNeeded;
 - (double)defaultMaxHeight;
+- (void)didFinishUsing;
 - (void)editButtonPressed;
 - (BOOL)hasPhoto;
 - (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 shouldAllowTakePhotoAction:(BOOL)arg3 delegate:(id)arg4 showingNavBar:(BOOL)arg5 monogramOnly:(BOOL)arg6;
-- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 shouldAllowTakePhotoAction:(BOOL)arg3 monogramOnly:(BOOL)arg4 delegate:(id)arg5;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 shouldAllowTakePhotoAction:(BOOL)arg3 showingNavBar:(BOOL)arg4 monogramOnly:(BOOL)arg5 delegate:(id)arg6;
 - (double)maxHeight;
 - (BOOL)photoIsModified;
 - (void)saveContactPhoto;

@@ -7,10 +7,12 @@
 #import <HealthUI/HKOverlayRoomViewControllerIntegratedContext.h>
 
 @class HKInteractiveChartOverlayPredicate, NSDictionary;
+@protocol HKOverlayRoomViewControllerIntegratedContextDelegate;
 
 @interface HKOverlayRoomViewControllerDistributionContext : HKOverlayRoomViewControllerIntegratedContext
 {
     long long _distributionStyle;
+    id<HKOverlayRoomViewControllerIntegratedContextDelegate> _optionalDelegate;
     long long _options;
     HKInteractiveChartOverlayPredicate *_namedPredicate;
     NSDictionary *_styleToMetricColors;
@@ -18,6 +20,7 @@
 
 @property (nonatomic) long long distributionStyle; // @synthesize distributionStyle=_distributionStyle;
 @property (strong, nonatomic) HKInteractiveChartOverlayPredicate *namedPredicate; // @synthesize namedPredicate=_namedPredicate;
+@property (weak, nonatomic) id<HKOverlayRoomViewControllerIntegratedContextDelegate> optionalDelegate; // @synthesize optionalDelegate=_optionalDelegate;
 @property (nonatomic) long long options; // @synthesize options=_options;
 @property (strong, nonatomic) NSDictionary *styleToMetricColors; // @synthesize styleToMetricColors=_styleToMetricColors;
 
@@ -25,12 +28,14 @@
 - (id)_computeTitleFromStyleAndPredicate;
 - (id)_representativeDisplayTypeForStyle:(long long)arg1;
 - (id)_selectedMetricColorsForDistributionStyle:(long long)arg1;
-- (id)buildContextItemWithValue:(id)arg1 valueContext:(id)arg2 forTimeScope:(long long)arg3;
+- (id)buildContextItemWithValue:(id)arg1 unit:(id)arg2 valueContext:(id)arg3 forTimeScope:(long long)arg4;
 - (id)buildOverlayDisplayTypeForTimeScope:(long long)arg1;
 - (void)fetchCachedDataForTimeScope:(long long)arg1 dateInterval:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)initWithStyle:(long long)arg1 namedPredicate:(id)arg2 overlayChartController:(id)arg3 applicationItems:(id)arg4 options:(long long)arg5 mode:(long long)arg6;
+- (id)initWithStyle:(long long)arg1 namedPredicate:(id)arg2 overlayChartController:(id)arg3 applicationItems:(id)arg4 optionalDelegate:(id)arg5 options:(long long)arg6 mode:(long long)arg7;
 - (BOOL)isEqual:(id)arg1;
 - (id)representativeDisplayType;
+- (id)unitString:(id)arg1 applicationItems:(id)arg2 representativeDisplayType:(id)arg3;
+- (id)valueString:(id)arg1 applicationItems:(id)arg2 representativeDisplayType:(id)arg3;
 
 @end
 

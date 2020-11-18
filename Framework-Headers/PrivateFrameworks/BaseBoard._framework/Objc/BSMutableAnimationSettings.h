@@ -6,23 +6,24 @@
 
 #import <BaseBoard/BSAnimationSettings.h>
 
-@class CAMediaTimingFunction;
+#import <BaseBoard/BSAnimationSettingsMutating-Protocol.h>
 
-@interface BSMutableAnimationSettings : BSAnimationSettings
+@class CAMediaTimingFunction, NSString;
+
+@interface BSMutableAnimationSettings : BSAnimationSettings <BSAnimationSettingsMutating>
 {
 }
 
-@property (nonatomic) double delay; // @dynamic delay;
+@property (readonly, copy) NSString *debugDescription;
+@property (nonatomic) double delay;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) double duration; // @dynamic duration;
-@property (nonatomic) double frameInterval; // @dynamic frameInterval;
-@property (nonatomic) float speed; // @dynamic speed;
-@property (strong, nonatomic) CAMediaTimingFunction *timingFunction; // @dynamic timingFunction;
+@property (nonatomic) double frameInterval;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) float speed;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) CAMediaTimingFunction *timingFunction;
 
-+ (id)settingsWithDuration:(double)arg1;
-+ (id)settingsWithDuration:(double)arg1 delay:(double)arg2;
-+ (id)settingsWithDuration:(double)arg1 delay:(double)arg2 timingFunction:(id)arg3;
-+ (id)settingsWithDuration:(double)arg1 timingFunction:(id)arg2;
-- (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end
 

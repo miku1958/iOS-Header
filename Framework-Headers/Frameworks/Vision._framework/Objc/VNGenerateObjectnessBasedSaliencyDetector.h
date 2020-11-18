@@ -12,11 +12,13 @@ __attribute__((visibility("hidden")))
 }
 
 + (id)configurationOptionKeysForDetectorKey;
++ (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
++ (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
 - (id)_observationsForImageIn32BGRAPixelBuffer:(struct __CVBuffer *)arg1 withOptions:(id)arg2 originalImageSize:(struct CGSize)arg3 regionOfInterest:(struct CGRect)arg4 warningRecorder:(id)arg5 error:(id *)arg6;
-- (id)espressoModelFileNameForConfigurationOptions:(id)arg1;
-- (id)espressoModelInputImageDimensionsBlobNameForConfigurationOptions:(id)arg1;
+- (BOOL)_runAnalysisOnImage:(struct __CVBuffer *)arg1 espressoResources:(id)arg2 inputBlobName:(id)arg3 error:(id *)arg4;
 - (id)processWithOptions:(id)arg1 regionOfInterest:(struct CGRect)arg2 warningRecorder:(id)arg3 error:(id *)arg4;
 - (BOOL)supportsProcessingDevice:(id)arg1;
+- (BOOL)warmUpSession:(id)arg1 withOptions:(id)arg2 error:(id *)arg3;
 
 @end
 

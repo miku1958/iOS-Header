@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
     struct CGSize _intrinsicContentSize;
     struct CGRect _formerTextEffectsContentFrame;
     BOOL _observingTextEffectsWindowRotation;
+    long long _interfaceOrientation;
     struct {
         unsigned int hasIntrinsicContentSize:1;
         unsigned int observingBoundingPathChanges:1;
@@ -44,17 +45,20 @@ __attribute__((visibility("hidden")))
 - (void)_clearNeedsRemoteViewServiceBoundingPathUpdate;
 - (void)_didMoveFromWindow:(id)arg1 toWindow:(id)arg2;
 - (BOOL)_fencingEffectsAreVisible;
-- (void)_geometryChanges:(id)arg1 forAncestor:(id)arg2;
+- (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(id)arg2;
 - (long long)_interfaceOrientationForScene:(id)arg1;
 - (struct CGSize)_intrinsicSizeWithinSize:(struct CGSize)arg1;
 - (BOOL)_needsTextEffectsUpdateToFrame:(struct CGRect)arg1;
 - (void)_scrollToTopFromTouchAtScreenLocation:(struct CGPoint)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (void)_setNeedsRemoteViewServiceBoundingPathUpdate;
 - (void)_textEffectsWindowDidRotate:(id)arg1;
+- (void)_updateSceneGeometries:(id)arg1;
 - (void)_updateSceneGeometries:(id)arg1 forOrientation:(long long)arg2;
 - (void)_updateTextEffectsGeometries:(struct CGRect)arg1;
 - (void)_updateTextEffectsGeometries:(struct CGRect)arg1 textEffectsWindow:(id)arg2;
 - (void)_updateTextEffectsGeometriesImmediately;
+- (void)_updateTextEffectsWindowSafeAreaInsets;
+- (void)_updateTextEffectsWindowSceneSize;
 - (void)_willMoveToWindow:(id)arg1;
 - (BOOL)canBecomeFocused;
 - (void)dealloc;

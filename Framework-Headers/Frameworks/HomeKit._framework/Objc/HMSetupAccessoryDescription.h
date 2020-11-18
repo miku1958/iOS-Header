@@ -9,7 +9,7 @@
 #import <HomeKit/NSCopying-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessory, HMAccessoryCategory, HMAccessoryOwnershipToken, HMSetupAccessoryBrowsingRequest, HMSetupAccessoryPayload, NSString, NSUUID;
+@class HMAccessory, HMAccessoryCategory, HMAccessoryOwnershipToken, HMSetupAccessoryBrowsingRequest, HMSetupAccessoryPayload, NSError, NSString, NSURL, NSUUID;
 
 @interface HMSetupAccessoryDescription : NSObject <NSCopying, NSSecureCoding>
 {
@@ -29,6 +29,8 @@
     unsigned long long _userConsentReasons;
     NSString *_storeID;
     NSString *_bundleID;
+    NSString *_marketingName;
+    NSURL *_installationGuideURL;
     NSUUID *_accessoryUUID;
     NSString *_accessoryName;
     NSString *_manufacturerName;
@@ -39,6 +41,7 @@
     HMSetupAccessoryPayload *_setupAccessoryPayload;
     HMSetupAccessoryBrowsingRequest *_accessoryBrowsingRequest;
     HMAccessory *_accessoryBeingReplaced;
+    NSError *_cancellationReason;
     NSUUID *_addRequestIdentifier;
     NSString *_accessoryServerIdentifier;
 }
@@ -52,14 +55,17 @@
 @property (strong, nonatomic) NSUUID *addRequestIdentifier; // @synthesize addRequestIdentifier=_addRequestIdentifier;
 @property (strong, nonatomic) NSString *appIdentifier; // @synthesize appIdentifier=_appIdentifier;
 @property (strong, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (strong, nonatomic) NSError *cancellationReason; // @synthesize cancellationReason=_cancellationReason;
 @property (strong, nonatomic) HMAccessoryCategory *category; // @synthesize category=_category;
 @property (nonatomic) unsigned long long certificationStatus; // @synthesize certificationStatus=_certificationStatus;
 @property (readonly, nonatomic) BOOL hasAddRequest;
 @property (readonly, nonatomic) NSString *homeName; // @synthesize homeName=_homeName;
 @property (readonly, nonatomic) NSUUID *homeUUID; // @synthesize homeUUID=_homeUUID;
+@property (strong, nonatomic) NSURL *installationGuideURL; // @synthesize installationGuideURL=_installationGuideURL;
 @property (nonatomic) BOOL isTrustedOrigin; // @synthesize isTrustedOrigin=_isTrustedOrigin;
 @property (nonatomic) BOOL legacyAPI; // @synthesize legacyAPI=_legacyAPI;
 @property (strong, nonatomic) NSString *manufacturerName; // @synthesize manufacturerName=_manufacturerName;
+@property (strong, nonatomic) NSString *marketingName; // @synthesize marketingName=_marketingName;
 @property (readonly, nonatomic) HMAccessoryOwnershipToken *ownershipToken; // @synthesize ownershipToken=_ownershipToken;
 @property (readonly, nonatomic, getter=isPaired) BOOL paired; // @synthesize paired=_paired;
 @property (strong, nonatomic) HMSetupAccessoryPayload *setupAccessoryPayload; // @synthesize setupAccessoryPayload=_setupAccessoryPayload;
@@ -86,6 +92,7 @@
 - (id)initToSetupAccessories:(id)arg1 legacyAPI:(BOOL)arg2 homeName:(id)arg3 homeUUID:(id)arg4 trustedOrigin:(BOOL)arg5 browseRequest:(id)arg6;
 - (id)initToSetupAccessoriesWithSetupAccessoryPayload:(id)arg1 appID:(id)arg2 homeName:(id)arg3 homeUUID:(id)arg4;
 - (id)initToSetupAccessoriesWithSetupAccessoryPayload:(id)arg1 appID:(id)arg2 homeName:(id)arg3 homeUUID:(id)arg4 trustedOrigin:(BOOL)arg5 ownershipToken:(id)arg6;
+- (id)initToSetupAccessoriesWithSetupAccessoryPayload:(id)arg1 appID:(id)arg2 homeName:(id)arg3 homeUUID:(id)arg4 trustedOrigin:(BOOL)arg5 ownershipToken:(id)arg6 marketingName:(id)arg7 installationGuideURL:(id)arg8;
 - (id)initWithAccessoryUUID:(id)arg1 accessoryName:(id)arg2 appID:(id)arg3 homeName:(id)arg4 homeUUID:(id)arg5;
 - (id)initWithAccessoryUUID:(id)arg1 accessoryName:(id)arg2 appID:(id)arg3 homeName:(id)arg4 homeUUID:(id)arg5 trustedOrigin:(BOOL)arg6;
 - (id)initWithAddRequest:(id)arg1 setupAccessoryPayload:(id)arg2 appID:(id)arg3 ownershipToken:(id)arg4;
@@ -94,6 +101,7 @@
 - (void)updateAppIdentifier:(id)arg1;
 - (void)updateOwnershipToken:(id)arg1;
 - (void)updateWithAccessory:(id)arg1;
+- (void)updateWithMarketingName:(id)arg1 installationGuideURL:(id)arg2;
 - (void)updateWithSetupAccessoryPayload:(id)arg1;
 
 @end

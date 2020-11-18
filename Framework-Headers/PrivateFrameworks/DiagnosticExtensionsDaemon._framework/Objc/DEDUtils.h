@@ -10,11 +10,19 @@
 {
 }
 
++ (id)deviceClass;
++ (id)deviceClassForProductType:(id)arg1;
++ (id)deviceColor;
++ (id)deviceEnclosureColor;
++ (id)deviceModel;
++ (id)deviceName;
++ (id)deviceProductType;
 + (BOOL)isInternalInstall;
++ (id)modelForProductType:(id)arg1;
 + (id)osBuild;
-+ (id)osVersion;
++ (id)platform;
 + (id)sharedLog;
-+ (id)systemName;
++ (id)uniqueDeviceSpecifier;
 
 @end
 

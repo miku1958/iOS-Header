@@ -22,6 +22,8 @@ __attribute__((visibility("hidden")))
     struct __CFData *auditToken;
     struct __CFString *bundleIdentifier;
     char logging_id_str[75];
+    unsigned int https_is_opaque:1;
+    unsigned int use_tls:1;
     unsigned int is_dry_run:1;
 }
 

@@ -8,7 +8,7 @@
 
 #import <AssistantServices/AFNetworkAvailabilityObserver-Protocol.h>
 
-@class AFAudioPowerUpdater, AFCallSiteInfo, AFSpeechRequestOptions, NSArray, NSMutableData, NSSet, NSString, NSXPCConnection;
+@class AFAnalyticsEvent, AFAudioPowerUpdater, AFCallSiteInfo, AFSpeechRequestOptions, NSArray, NSMutableData, NSSet, NSString, NSXPCConnection;
 @protocol AFDictationDelegate, OS_dispatch_group, OS_dispatch_queue, OS_dispatch_source;
 
 @interface AFDictationConnection : NSObject <AFNetworkAvailabilityObserver>
@@ -16,6 +16,7 @@
     NSXPCConnection *_connection;
     NSString *_lastUsedLanguage;
     NSSet *_knownOfflineInstalledLanguages;
+    BOOL _isWaitingForKnownOfflineInstalledLanguages;
     id<AFDictationDelegate> _delegate;
     AFCallSiteInfo *_initiationCallSiteInfo;
     AFAudioPowerUpdater *_inputAudioPowerUpdater;
@@ -35,6 +36,8 @@
     BOOL _narrowband;
     NSString *_requestIdString;
     NSArray *_previouslyRecognizedPhrases;
+    NSString *_onDeviceDictationUIInteractionIdentifier;
+    AFAnalyticsEvent *_preheatEvent;
     NSObject<OS_dispatch_queue> *_delegateQueue;
 }
 
@@ -51,6 +54,7 @@
 + (void)getForcedOfflineDictationSupportedLanguagesWithCompletion:(CDUnknownBlockType)arg1;
 + (BOOL)languageDetectorIsEnabled;
 - (void).cxx_destruct;
+- (void)_addPreheatAnalyticsEvent;
 - (void)_availabilityChanged;
 - (void)_cancelBufferFlushTimer;
 - (void)_cancelRequestTimeout;
@@ -68,9 +72,11 @@
 - (void)_dispatchCallbackGroupBlock:(CDUnknownBlockType)arg1;
 - (void)_extendRequestTimeout;
 - (void)_invokeRequestTimeout;
+- (void)_logRequestCompetionStatusWithEventType:(long long)arg1 error:(id)arg2;
 - (void)_registerInvalidationHandlerForXPCConnection:(id)arg1;
 - (void)_scheduleRequestTimeout;
 - (void)_sendDataIfNeeded;
+- (void)_sendPendingAnalyticsEvents;
 - (void)_setActivationTimeOnOptionsIfNecessary:(id)arg1;
 - (void)_startInputAudioPowerUpdatesWithXPCWrapper:(id)arg1;
 - (void)_stopInputAudioPowerUpdates;
@@ -113,8 +119,10 @@
 - (void)networkAvailability:(id)arg1 isAvailable:(BOOL)arg2;
 - (float)peakPower;
 - (void)preheat;
+- (void)preheatTestWithLanguage:(id)arg1 options:(id)arg2;
 - (void)preheatWithRecordDeviceIdentifier:(id)arg1;
 - (void)reportIssueForError:(id)arg1 eventType:(long long)arg2 context:(id)arg3;
+- (void)reportIssueForError:(id)arg1 eventType:(long long)arg2 subtype:(id)arg3 context:(id)arg4;
 - (void)requestOfflineDictationSupportForLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)sendEngagementFeedback:(long long)arg1 voiceQueryIdentifier:(id)arg2;
 - (void)sendSpeechCorrection:(id)arg1 forIdentifier:(id)arg2;
@@ -126,6 +134,7 @@
 - (void)startDictationWithSpeechFileAtURL:(id)arg1 options:(id)arg2 forLanguage:(id)arg3;
 - (void)startRecordedAudioDictationWithOptions:(id)arg1 forLanguage:(id)arg2;
 - (void)startRecordedAudioDictationWithOptions:(id)arg1 forLanguage:(id)arg2 narrowband:(BOOL)arg3;
+- (void)startRecordedAudioDictationWithOptions:(id)arg1 forLanguage:(id)arg2 narrowband:(BOOL)arg3 forceSampling:(BOOL)arg4;
 - (CDUnknownBlockType)startRecordingForPendingDictationWithLanguageCode:(id)arg1 options:(id)arg2 speechOptions:(id)arg3;
 - (void)stopSpeech;
 - (void)stopSpeechWithOptions:(id)arg1;

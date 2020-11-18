@@ -20,12 +20,18 @@
 @property (readonly, getter=isBrowsing) BOOL browsing;
 @property id<ICDeviceBrowserDelegate> delegate;
 @property (nonatomic) NSArray *devices; // @synthesize devices=_devices;
+@property (nonatomic, getter=isSuspended) BOOL suspended;
 
+- (id)contentsAuthorizationStatus;
+- (id)controlAuthorizationStatus;
 - (void)dealloc;
 - (id)init;
 - (id)internalDevices;
+- (void)requestContentsAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
+- (void)requestControlAuthorizationWithCompletion:(CDUnknownBlockType)arg1;
 - (void)start;
 - (void)stop;
+- (BOOL)suspended;
 
 @end
 

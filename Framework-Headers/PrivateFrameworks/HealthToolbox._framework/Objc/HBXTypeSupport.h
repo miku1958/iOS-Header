@@ -14,7 +14,7 @@
 + (id)categoryIdentifiersForType:(id)arg1;
 + (id)categoryStringForIdentifier:(long long)arg1;
 + (long long)codeForType:(id)arg1;
-+ (id)displayNameForType:(id)arg1;
++ (id)displayNameForType:(id)arg1 inHealthStore:(id)arg2;
 + (void)enumerateDisplayCategoriesWithHandler:(CDUnknownBlockType)arg1;
 + (id)iconForType:(id)arg1;
 + (id)makeTypeForCode:(long long)arg1;

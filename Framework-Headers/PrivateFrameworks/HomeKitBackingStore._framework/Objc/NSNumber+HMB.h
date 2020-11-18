@@ -20,5 +20,6 @@
 + (id)hmbDecodeQueryableParameter:(id)arg1;
 + (id)hmbDescriptionForEncodedQueryableVariable:(id)arg1;
 + (id)hmbEncodeQueryableParameter:(id)arg1;
++ (id)hmbNumberWithSQLite3Column:(struct sqlite3_stmt *)arg1 column:(int)arg2;
 @end
 

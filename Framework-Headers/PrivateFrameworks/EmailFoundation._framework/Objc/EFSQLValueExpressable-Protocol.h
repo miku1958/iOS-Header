@@ -6,6 +6,9 @@
 
 #import <EmailFoundation/EFSQLExpressable-Protocol.h>
 
+@protocol EFSQLValueExpressable;
+
 @protocol EFSQLValueExpressable <EFSQLExpressable>
+- (id<EFSQLValueExpressable>)ef_SQLIsolatedExpression;
 @end
 

@@ -5,8 +5,10 @@
 //
 
 @protocol TSLocationDetectionManagerType
-- (BOOL)authorized;
+
+@property (nonatomic, readonly) BOOL authorized;
+@property (nonatomic, readonly) BOOL locationServicesEnabled;
+
 - (void)fetchLocationWithCompletion:(void (^)(CLLocation *))arg1;
-- (BOOL)locationServicesEnabled;
 @end
 

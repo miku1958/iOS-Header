@@ -10,47 +10,59 @@
 
 @interface OBButtonTray : UIView
 {
-    long long _backdropStyle;
+    BOOL _detached;
+    OBPrivacyLinkController *_privacyLinkController;
     UIViewController *_parentViewController;
+    long long _backdropStyle;
     NSMutableArray *_buttons;
     OBButtonTrayLayoutGuide *_buttonLayoutGuide;
-    OBPrivacyLinkController *_privacyLinkController;
     OBTemplateLabel *_captionLabel;
+    long long _captionStyle;
     UIStackView *_stackView;
     UIView *_backdropContainer;
     UIVisualEffectView *_effectView;
-    NSLayoutConstraint *_stackViewTopConstraint;
-    NSLayoutConstraint *_stackViewBottomConstraint;
-    NSLayoutConstraint *_stackViewLeadingConstraint;
-    NSLayoutConstraint *_stackViewTrailingConstraint;
+    NSLayoutConstraint *_buttonViewTopConstraint;
+    NSLayoutConstraint *_buttonViewBottomConstraint;
+    NSLayoutConstraint *_buttonViewLeadingConstraint;
+    NSLayoutConstraint *_buttonViewTrailingConstraint;
 }
 
 @property (strong, nonatomic) UIView *backdropContainer; // @synthesize backdropContainer=_backdropContainer;
 @property (nonatomic) long long backdropStyle; // @synthesize backdropStyle=_backdropStyle;
 @property (strong, nonatomic) OBButtonTrayLayoutGuide *buttonLayoutGuide; // @synthesize buttonLayoutGuide=_buttonLayoutGuide;
+@property (strong, nonatomic) NSLayoutConstraint *buttonViewBottomConstraint; // @synthesize buttonViewBottomConstraint=_buttonViewBottomConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *buttonViewLeadingConstraint; // @synthesize buttonViewLeadingConstraint=_buttonViewLeadingConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *buttonViewTopConstraint; // @synthesize buttonViewTopConstraint=_buttonViewTopConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *buttonViewTrailingConstraint; // @synthesize buttonViewTrailingConstraint=_buttonViewTrailingConstraint;
 @property (strong, nonatomic) NSMutableArray *buttons; // @synthesize buttons=_buttons;
 @property (strong, nonatomic) OBTemplateLabel *captionLabel; // @synthesize captionLabel=_captionLabel;
+@property (nonatomic) long long captionStyle; // @synthesize captionStyle=_captionStyle;
+@property (nonatomic, getter=isDetached) BOOL detached; // @synthesize detached=_detached;
 @property (strong, nonatomic) UIVisualEffectView *effectView; // @synthesize effectView=_effectView;
 @property (weak, nonatomic) UIViewController *parentViewController; // @synthesize parentViewController=_parentViewController;
 @property (strong, nonatomic) OBPrivacyLinkController *privacyLinkController; // @synthesize privacyLinkController=_privacyLinkController;
 @property (strong, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
-@property (strong, nonatomic) NSLayoutConstraint *stackViewBottomConstraint; // @synthesize stackViewBottomConstraint=_stackViewBottomConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *stackViewLeadingConstraint; // @synthesize stackViewLeadingConstraint=_stackViewLeadingConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *stackViewTopConstraint; // @synthesize stackViewTopConstraint=_stackViewTopConstraint;
-@property (strong, nonatomic) NSLayoutConstraint *stackViewTrailingConstraint; // @synthesize stackViewTrailingConstraint=_stackViewTrailingConstraint;
 
 - (void).cxx_destruct;
-- (id)_captionFont;
 - (void)_setUpBackdrops;
+- (BOOL)_shouldHandleLandscapeiPhoneLayout;
 - (void)_updateButtonConstraints;
+- (void)_updateCaptionTextAppearance;
 - (void)_updateTrayVisibility;
 - (void)addButton:(id)arg1;
 - (void)addCaptionText:(id)arg1;
 - (void)addPrivacyLinkForBundles:(id)arg1;
 - (double)bottomPadding;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
+- (void)removeAllButtons;
+- (void)removeButton:(id)arg1;
 - (void)removeFromSuperview;
+- (void)setCaptionText:(id)arg1;
+- (void)setCaptionText:(id)arg1 style:(long long)arg2;
+- (void)setPrivacyLinkForBundles:(id)arg1;
+- (double)topPadding;
 - (void)traitCollectionDidChange:(id)arg1;
 
 @end

@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class _TtC9Coherence11ObjCVersion;
+@class ObjCVersion;
 
 @protocol CRStringDecoderProtocol
-- (_TtC9Coherence11ObjCVersion *)addedByVersionWithError:(id *)arg1;
+- (ObjCVersion *)addedByVersionWithError:(id *)arg1;
 - (id)context;
 - (void)decodeSubstring:(long long)arg1;
 - (id)storageWithError:(id *)arg1;
@@ -20,6 +20,6 @@
 - (long long)substringChildCount;
 - (long long)substringCount;
 - (unsigned int)substringLength;
-- (_TtC9Coherence11ObjCVersion *)versionWithError:(id *)arg1;
+- (ObjCVersion *)versionWithError:(id *)arg1;
 @end
 

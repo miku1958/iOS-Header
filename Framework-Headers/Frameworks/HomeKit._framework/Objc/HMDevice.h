@@ -14,6 +14,7 @@
 
 @interface HMDevice : NSObject <HMFObject, HMObjectMerge, NSSecureCoding>
 {
+    NSString *_idsDestination;
     HMFUnfairLock *_lock;
     BOOL _currentDevice;
     NSUUID *_uniqueIdentifier;
@@ -41,6 +42,7 @@
 + (id)shortDescription;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)IDSDestinationForIDSService:(id)arg1;
 - (id)IDSDeviceForIDSService:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;

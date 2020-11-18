@@ -17,6 +17,7 @@
 @property (readonly, strong, nonatomic) NSDictionary *displayInformation;
 @property (readonly, strong, nonatomic) id identifier;
 @property (strong, nonatomic) NSString *representedApplicationBundle;
+@property (nonatomic) BOOL requireUserInteraction;
 @property (readonly, nonatomic) unsigned long long response;
 @property (readonly, nonatomic) unsigned long long responseFlags;
 @property (readonly, strong, nonatomic) NSDictionary *responseInformation;
@@ -27,9 +28,9 @@
 
 + (id)userNotificationWithIdentifier:(id)arg1 timeout:(double)arg2 alertLevel:(unsigned long long)arg3 displayFlags:(unsigned long long)arg4 displayInformation:(id)arg5;
 + (id)userNotificationWithIdentifier:(id)arg1 title:(id)arg2 message:(id)arg3 defaultButton:(id)arg4 alternateButton:(id)arg5 otherButton:(id)arg6;
+- (void).cxx_destruct;
 - (id)_initWithIdentifier:(id)arg1 timeout:(double)arg2 displayFlags:(unsigned long long)arg3 displayInformation:(id)arg4;
 - (void)_setResponseFlags:(unsigned long long)arg1 responseInformation:(id)arg2;
-- (void)dealloc;
 
 @end
 

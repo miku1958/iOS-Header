@@ -6,23 +6,18 @@
 
 #import <UIKit/UIButton.h>
 
-@class AVTAvatarActionButtonBlockHandler;
-
 @interface AVTAvatarActionButton : UIButton
 {
     BOOL _isDestructive;
-    AVTAvatarActionButtonBlockHandler *_blockHandler;
 }
 
-@property (strong, nonatomic) AVTAvatarActionButtonBlockHandler *blockHandler; // @synthesize blockHandler=_blockHandler;
 @property (nonatomic) BOOL isDestructive; // @synthesize isDestructive=_isDestructive;
 
-+ (id)buttonWithTitle:(id)arg1 actionBlock:(CDUnknownBlockType)arg2;
-+ (id)defaultButtonWithTitle:(id)arg1 actionBlock:(CDUnknownBlockType)arg2;
-+ (id)destructiveButtonWithTitle:(id)arg1 actionBlock:(CDUnknownBlockType)arg2;
-- (void).cxx_destruct;
++ (id)buttonWithAction:(id)arg1;
++ (id)defaultButtonWithAction:(id)arg1;
++ (id)destructiveButtonWithAction:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (void)performActionBlock;
+- (void)setHighlighted:(BOOL)arg1;
 
 @end
 

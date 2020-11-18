@@ -6,26 +6,34 @@
 
 #import <UIKit/UIView.h>
 
-@class HUChevronButton, HUColoredButton, NSArray, UILabel;
+#import <HomeUI/HUNewUserEducationWrapperViewDelegate-Protocol.h>
+
+@class HUChevronButton, HUColoredButton, HUNewUserEducationWrapperView, NSArray, NSString, UILabel;
 @protocol HUGridEmptyHomeViewDelegate;
 
-@interface HUGridEmptyHomeView : UIView
+@interface HUGridEmptyHomeView : UIView <HUNewUserEducationWrapperViewDelegate>
 {
     id<HUGridEmptyHomeViewDelegate> _delegate;
     UILabel *_instructionsLabel;
     HUColoredButton *_addAccessoryButton;
     HUChevronButton *_learnToAddAccessoryButton;
     HUChevronButton *_storeButton;
+    HUNewUserEducationWrapperView *_userEducationView;
     NSArray *_constraints;
 }
 
 @property (strong, nonatomic) HUColoredButton *addAccessoryButton; // @synthesize addAccessoryButton=_addAccessoryButton;
 @property (readonly, nonatomic) BOOL canAddAccessories;
 @property (strong, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUGridEmptyHomeViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UILabel *instructionsLabel; // @synthesize instructionsLabel=_instructionsLabel;
 @property (strong, nonatomic) HUChevronButton *learnToAddAccessoryButton; // @synthesize learnToAddAccessoryButton=_learnToAddAccessoryButton;
 @property (strong, nonatomic) HUChevronButton *storeButton; // @synthesize storeButton=_storeButton;
+@property (readonly) Class superclass;
+@property (strong, nonatomic) HUNewUserEducationWrapperView *userEducationView; // @synthesize userEducationView=_userEducationView;
 
 + (BOOL)requiresConstraintBasedLayout;
 - (void).cxx_destruct;
@@ -36,6 +44,7 @@
 - (void)didMoveToSuperview;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)newUserEducationWrapperViewLearnMoreButtonPressed:(id)arg1;
 - (void)tintColorDidChange;
 - (void)updateConstraints;
 

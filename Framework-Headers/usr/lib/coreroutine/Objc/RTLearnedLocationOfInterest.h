@@ -33,7 +33,7 @@
 + (id)createWithLearnedLocationOfInterestMO:(id)arg1;
 + (id)createWithLearnedLocationOfInterestVisitMO:(id)arg1;
 + (id)createWithManagedObject:(id)arg1;
-+ (unsigned long long)mapItemSourceFromGeoMapItemSource:(long long)arg1;
++ (unsigned long long)mapItemSourceFromGeoMapItemSource:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)filterWithDateInterval:(id)arg1;
 - (id)init;

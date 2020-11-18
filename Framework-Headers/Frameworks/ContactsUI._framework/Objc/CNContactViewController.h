@@ -10,7 +10,7 @@
 #import <ContactsUI/UIAdaptivePresentationControllerDelegate-Protocol.h>
 #import <ContactsUI/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class CNContact, CNContactContentViewController, CNContactFormatter, CNContactRecentsReference, CNContactStore, CNContainer, CNGroup, CNPolicy, NSArray, NSAttributedString, NSString, UIView, _UIAccessDeniedView, _UIRemoteViewController;
+@class CNContact, CNContactContentViewController, CNContactFormatter, CNContactRecentsReference, CNContactStore, CNContainer, CNGroup, CNPolicy, NSArray, NSAttributedString, NSString, UINavigationItem, UIView, _UIAccessDeniedView, _UIRemoteViewController;
 @protocol CNContactContentViewController, CNContactViewControllerDelegate, CNContactViewControllerPPTDelegate, CNContactViewControllerPrivateDelegate;
 
 @interface CNContactViewController : UIViewController <CNContactViewHostProtocol, _UIRemoteViewControllerContaining, UIAdaptivePresentationControllerDelegate>
@@ -20,6 +20,7 @@
     BOOL _shouldShowLinkedContacts;
     BOOL _highlightedPropertyImportant;
     BOOL _requiresSetup;
+    BOOL _hasCompletedSetup;
     BOOL _showingMeContact;
     BOOL _shouldDrawNavigationBar;
     BOOL _editingProposedInformation;
@@ -41,17 +42,18 @@
     NSString *_highlightedPropertyIdentifier;
     NSArray *_extraBarButtonItems;
     NSArray *_preEditLeftBarButtonItems;
+    UINavigationItem *_observedNavigationItem;
     UIViewController<CNContactContentViewController> *_viewController;
     CNPolicy *_policy;
     CNContact *_additionalContact;
     id<CNContactViewControllerPPTDelegate> _pptDelegate;
-    NSArray *_prohibitedPropertyKeys;
     NSString *_initialPrompt;
     long long _displayMode;
     long long _editMode;
     long long _actions;
     CNContactFormatter *_contactFormatter;
     CNContactRecentsReference *_recentsData;
+    NSArray *_prohibitedPropertyKeys;
     NSString *_primaryPropertyKey;
     NSString *_importantMessage;
     NSString *_warningMessage;
@@ -84,6 +86,7 @@
 @property (nonatomic) long long editMode; // @synthesize editMode=_editMode;
 @property (nonatomic) BOOL editingProposedInformation; // @synthesize editingProposedInformation=_editingProposedInformation;
 @property (strong, nonatomic) NSArray *extraBarButtonItems; // @synthesize extraBarButtonItems=_extraBarButtonItems;
+@property (nonatomic) BOOL hasCompletedSetup; // @synthesize hasCompletedSetup=_hasCompletedSetup;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *highlightedPropertyIdentifier; // @synthesize highlightedPropertyIdentifier=_highlightedPropertyIdentifier;
 @property (nonatomic) BOOL highlightedPropertyImportant; // @synthesize highlightedPropertyImportant=_highlightedPropertyImportant;
@@ -93,6 +96,7 @@
 @property (strong, nonatomic) NSString *initialPrompt; // @synthesize initialPrompt=_initialPrompt;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (readonly, nonatomic) long long mode; // @synthesize mode=_mode;
+@property (strong, nonatomic) UINavigationItem *observedNavigationItem; // @synthesize observedNavigationItem=_observedNavigationItem;
 @property (strong, nonatomic) CNContainer *parentContainer; // @synthesize parentContainer=_parentContainer;
 @property (strong, nonatomic) CNGroup *parentGroup; // @synthesize parentGroup=_parentGroup;
 @property (readonly, nonatomic) CNPolicy *policy; // @synthesize policy=_policy;
@@ -147,6 +151,7 @@
 - (void)isPresentingFullscreen:(BOOL)arg1;
 - (void)loadView;
 - (id)navigationItemController;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)presentCancelConfirmationAlert;
 - (void)presentConfirmCancelAlertControllerAnchoredAtButtonItem:(id)arg1;
 - (void)presentationControllerDidAttemptToDismiss:(id)arg1;

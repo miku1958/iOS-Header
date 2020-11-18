@@ -37,6 +37,7 @@
 - (void).cxx_destruct;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initLegacyTLSWarningWithFailingURL:(id)arg1 canGoBack:(BOOL)arg2;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithWarningCategory:(long long)arg1 failingURL:(id)arg2 numberOfDaysInvalid:(long long)arg3 canGoBack:(BOOL)arg4 clockSkew:(double)arg5;
 

@@ -29,6 +29,7 @@
 @property (readonly, nonatomic) unsigned long long multiIntervalTime; // @dynamic multiIntervalTime;
 
 - (id).cxx_construct;
+- (void).cxx_destruct;
 - (unsigned long long)_calculateNewTimestamp:(unsigned long long)arg1;
 - (unsigned long long)addTimestamp:(unsigned long long)arg1;
 - (unsigned long long)addTimestamp:(unsigned long long)arg1 entry:(long long *)arg2;

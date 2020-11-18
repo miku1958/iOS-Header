@@ -11,6 +11,7 @@
 
 @protocol PHChangeRequest <NSObject>
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
 @property (readonly, nonatomic) NSString *managedEntityName;

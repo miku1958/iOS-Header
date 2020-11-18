@@ -8,13 +8,13 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI221WelcomeViewController : UIViewController
 {
     MISSING_TYPE *colorStyler;
     MISSING_TYPE *eventHandler;
     MISSING_TYPE *viewProvider;
     MISSING_TYPE *viewAnimator;
+    MISSING_TYPE *toolbarManager;
     MISSING_TYPE *keyFrame;
     MISSING_TYPE *startedFirstAnimation;
 }

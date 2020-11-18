@@ -8,12 +8,11 @@
 
 #import <CoreSuggestionsInternals/SGJournalContactsObserver-Protocol.h>
 
-@class NSOperationQueue, NSString, NSURL, SGSqlEntityStore;
+@class NSString, NSURL, SGSqlEntityStore;
 
 @interface SGSpotlightContactsAdapter : NSObject <SGJournalContactsObserver>
 {
     NSURL *_vCardsDirectoryURL;
-    NSOperationQueue *_spotlightWriteQueue;
     SGSqlEntityStore *_store;
 }
 
@@ -23,14 +22,15 @@
 @property (weak, nonatomic) SGSqlEntityStore *store; // @synthesize store=_store;
 @property (readonly) Class superclass;
 
++ (id)dispatchGroup;
 + (id)entityIdentifiersFromCNIdentifiers:(id)arg1;
++ (void)notifyWhenFlushed:(CDUnknownBlockType)arg1;
 + (id)searchableIndex;
 - (void).cxx_destruct;
 - (void)addContact:(id)arg1;
 - (void)confirmContact:(id)arg1;
 - (void)confirmOrRejectContact:(id)arg1;
 - (id)coreSpotlightAttributeSetForContact:(id)arg1;
-- (id)init;
 - (id)initWithSGSqlEntityStore:(id)arg1;
 - (id)pseudoContactVcardDirectory;
 - (void)rejectContact:(id)arg1;
@@ -38,7 +38,6 @@
 - (void)removeAllStoredPseudoContacts;
 - (id)searchableItemsForContactsForInternalIdentifiers:(id)arg1;
 - (void)sendContactToSpotlight:(id)arg1;
-- (void)storeClosing;
 - (id)urlForRecordIdVCard:(id)arg1;
 - (id)urlForStorageContactVCard:(id)arg1;
 

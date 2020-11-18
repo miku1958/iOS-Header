@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) BOOL allowLowAffinityRecommendations;
 @property (copy, nonatomic) NSDictionary *authServiceClientTokenCache;
 @property (readonly, copy, nonatomic) NSNumber *authServiceClientTokenTimeToLive;
+@property (nonatomic) BOOL automaticDownloadsEnabled;
 @property (nonatomic) BOOL bypassBagSanityChecks; // @synthesize bypassBagSanityChecks=_bypassBagSanityChecks;
 @property (copy, nonatomic) NSDictionary *cachedMusicUserTokens;
 @property (copy, nonatomic) NSDictionary *cachedSubscriptionStatus;
@@ -42,6 +43,7 @@
 @property (copy, nonatomic) NSDictionary *lastKnownLocalStoreAccountProperties;
 @property (copy, nonatomic) NSDictionary *lastKnownSubscriptionStatusBaseCacheKey;
 @property (copy, nonatomic) NSDictionary *lastKnownUserAgeVerificationState;
+@property (readonly, nonatomic, getter=isLegacyStoreCacheBusterEnabled) BOOL legacyStoreCacheBusterEnabled;
 @property (copy, nonatomic) NSDictionary *mediaLibraryAccessApplicationIdentifiersWithTCCAcceptanceDates;
 @property (readonly, copy, nonatomic) NSNumber *networkTypeOverride;
 @property (readonly, nonatomic, getter=isPrivacyAcknowledgementDisabledForMusic) BOOL privacyAcknowledgementDisabledForMusic;
@@ -52,12 +54,17 @@
 @property (readonly, nonatomic) BOOL shouldForceiPhoneBehaviors;
 @property (readonly, nonatomic) BOOL shouldReduceLibraryRecommendationsXPCInterval;
 @property (nonatomic) BOOL shouldRunAgeVerification;
+@property (readonly, nonatomic) BOOL shouldTreatInitialSagaImportAsFailed;
+@property (readonly, nonatomic) BOOL shouldTreatSagaAddComputerCallAsFailed;
+@property (readonly, nonatomic) BOOL shouldTreatSubscriptionStatusAsExpired;
+@property (readonly, nonatomic) BOOL shouldTreatSubscriptionStatusCheckAsIncomplete;
 
 + (id)standardDefaults;
 - (void).cxx_destruct;
 - (id)_musicUserDefaults;
 - (void)_setOrRemoveObject:(id)arg1 forKey:(id)arg2;
 - (BOOL)_shouldSpoofIPhoneRequestProperties;
+- (void)deleteAutomaticDownloadsKey;
 - (id)init;
 - (void)synchronize;
 

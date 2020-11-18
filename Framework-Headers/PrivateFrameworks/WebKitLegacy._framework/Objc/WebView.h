@@ -70,9 +70,11 @@
 + (id)MIMETypesShownAsHTML;
 + (BOOL)_HTTPPipeliningEnabled;
 + (id)_MIMETypeForFile:(id)arg1;
-+ (void)_addOriginAccessWhitelistEntryWithSourceOrigin:(id)arg1 destinationProtocol:(id)arg2 destinationHost:(id)arg3 allowDestinationSubdomains:(BOOL)arg4;
++ (void)_addOriginAccessAllowListEntryWithSourceOrigin:(id)arg1 destinationProtocol:(id)arg2 destinationHost:(id)arg3 allowDestinationSubdomains:(BOOL)arg4;
++ (void)_addUserScriptToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 includeMatchPatternStrings:(id)arg5 excludeMatchPatternStrings:(id)arg6 injectionTime:(int)arg7 injectedFrames:(int)arg8;
 + (void)_addUserScriptToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6 injectionTime:(int)arg7;
 + (void)_addUserScriptToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6 injectionTime:(int)arg7 injectedFrames:(int)arg8;
++ (void)_addUserStyleSheetToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 includeMatchPatternStrings:(id)arg5 excludeMatchPatternStrings:(id)arg6 injectedFrames:(int)arg7;
 + (void)_addUserStyleSheetToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6;
 + (void)_addUserStyleSheetToGroup:(id)arg1 world:(id)arg2 source:(id)arg3 url:(id)arg4 whitelist:(id)arg5 blacklist:(id)arg6 injectedFrames:(int)arg7;
 + (unsigned long long)_cacheModel;
@@ -106,18 +108,18 @@
 + (void)_registerViewClass:(Class)arg1 representationClass:(Class)arg2 forURLScheme:(id)arg3;
 + (void)_releaseMemoryNow;
 + (void)_removeAllUserContentFromGroup:(id)arg1;
-+ (void)_removeOriginAccessWhitelistEntryWithSourceOrigin:(id)arg1 destinationProtocol:(id)arg2 destinationHost:(id)arg3 allowDestinationSubdomains:(BOOL)arg4;
++ (void)_removeOriginAccessAllowListEntryWithSourceOrigin:(id)arg1 destinationProtocol:(id)arg2 destinationHost:(id)arg3 allowDestinationSubdomains:(BOOL)arg4;
 + (void)_removeUserScriptFromGroup:(id)arg1 world:(id)arg2 url:(id)arg3;
 + (void)_removeUserScriptsFromGroup:(id)arg1 world:(id)arg2;
 + (void)_removeUserStyleSheetFromGroup:(id)arg1 world:(id)arg2 url:(id)arg3;
 + (void)_removeUserStyleSheetsFromGroup:(id)arg1 world:(id)arg2;
 + (void)_reportException:(struct OpaqueJSValue *)arg1 inContext:(struct OpaqueJSContext *)arg2;
 + (BOOL)_representationExistsForURLScheme:(id)arg1;
-+ (void)_resetOriginAccessWhitelists;
++ (void)_resetOriginAccessAllowLists;
 + (void)_setAlwaysUsesComplexTextCodePath:(BOOL)arg1;
 + (void)_setCacheModel:(unsigned long long)arg1;
 + (void)_setDomainRelaxationForbidden:(BOOL)arg1 forURLScheme:(id)arg2;
-+ (void)_setFontWhitelist:(id)arg1;
++ (void)_setFontAllowList:(id)arg1;
 + (void)_setHTTPPipeliningEnabled:(BOOL)arg1;
 + (void)_setIconLoadingEnabled:(BOOL)arg1;
 + (void)_setLoadResourcesSerially:(BOOL)arg1;
@@ -179,6 +181,7 @@
 - (void)_detachScriptDebuggerFromAllFrames;
 - (unsigned long long)_deviceOrientation;
 - (id)_deviceOrientationProvider;
+- (Vector_05504c84)_dictationAlternatives:(ObjectIdentifier_2e565102)arg1;
 - (void)_didCommitLoadForFrame:(id)arg1;
 - (void)_didConcludeEditDrag;
 - (void)_didFinishScrollingOrZooming;
@@ -193,7 +196,7 @@
 - (id)_editingDelegateForwarder;
 - (id)_elementAtWindowPoint:(struct CGPoint)arg1;
 - (void)_endedDataInteraction:(struct CGPoint)arg1 global:(struct CGPoint)arg2;
-- (void)_enterVideoFullscreenForVideoElement:(struct HTMLVideoElement *)arg1 mode:(unsigned int)arg2;
+- (void)_enterVideoFullscreenForVideoElement:(NakedPtr_311734dd)arg1 mode:(unsigned int)arg2;
 - (unsigned long long)_enteredDataInteraction:(id)arg1 client:(struct CGPoint)arg2 global:(struct CGPoint)arg3 operation:(unsigned long long)arg4;
 - (void)_executeCoreCommandByName:(id)arg1 value:(id)arg2;
 - (void)_exitVideoFullscreen;
@@ -214,10 +217,13 @@
 - (void)_geolocationDidFailWithMessage:(id)arg1;
 - (id)_geolocationProvider;
 - (id)_getDataInteractionData;
+- (void)_getWebCoreDictationAlternatives:(Vector_4aeed4b7 *)arg1 fromTextAlternatives:(const Vector_15b552f4 *)arg2;
 - (BOOL)_inFastImageScalingMode;
 - (id)_initWithArguments:(id)arg1;
 - (id)_initWithFrame:(struct CGRect)arg1 frameName:(id)arg2 groupName:(id)arg3;
+- (void)_injectLaBanquePostaleQuirks;
 - (void)_insertNewlineInQuotedContent;
+- (void)_installVisualIdentificationOverlayForViewIfNeeded:(id)arg1 kind:(id)arg2;
 - (void)_invalidateUserAgentCache;
 - (BOOL)_isClosed;
 - (BOOL)_isClosing;
@@ -266,6 +272,7 @@
 - (void)_pushPerformingProgrammaticFocus;
 - (float)_realZoomMultiplier;
 - (BOOL)_realZoomMultiplierIsTextOnly;
+- (void)_removeDictationAlternatives:(ObjectIdentifier_2e565102)arg1;
 - (void)_removeFromAllWebViewsSet;
 - (void)_removeObjectForIdentifier:(unsigned long long)arg1;
 - (unsigned long long)_renderTreeSize;
@@ -279,8 +286,8 @@
 - (void)_restorePlugInsFromCache;
 - (void)_retrieveKeyboardUIModeFromPreferences:(id)arg1;
 - (void)_scaleWebView:(float)arg1 atOrigin:(struct CGPoint)arg2;
-- (void)_scheduleCompositingLayerFlush;
-- (void)_scheduleLayerFlushForPendingTileCacheRepaint;
+- (void)_scheduleRenderingUpdateForPendingTileCacheRepaint;
+- (void)_scheduleUpdateRendering;
 - (id)_selectedOrMainFrame;
 - (BOOL)_selectionIsAll;
 - (BOOL)_selectionIsCaret;
@@ -321,6 +328,7 @@
 - (void)_setWebGLEnabled:(BOOL)arg1;
 - (void)_setZoomMultiplier:(float)arg1 isTextOnly:(BOOL)arg2;
 - (BOOL)_shouldChangeSelectedDOMRange:(id)arg1 toDOMRange:(id)arg2 affinity:(unsigned long long)arg3 stillSelecting:(BOOL)arg4;
+- (void)_showDictationAlternativeUI:(const struct FloatRect *)arg1 forDictationContext:(ObjectIdentifier_2e565102)arg2;
 - (void)_simplifyMarkup:(id)arg1 endNode:(id)arg2;
 - (void)_startAllPlugIns;
 - (void)_startDrag:(const struct DragItem *)arg1;
@@ -358,7 +366,6 @@
 - (void)alignJustified:(id)arg1;
 - (void)alignLeft:(id)arg1;
 - (void)alignRight:(id)arg1;
-- (BOOL)allowsNewCSSAnimationsWhileSuspended;
 - (BOOL)allowsRemoteInspection;
 - (BOOL)allowsUndo;
 - (void)applyStyle:(id)arg1;
@@ -393,7 +400,6 @@
 - (unsigned long long)countMatchesForText:(id)arg1 caseSensitive:(BOOL)arg2 highlight:(BOOL)arg3 limit:(unsigned long long)arg4 markMatches:(BOOL)arg5;
 - (unsigned long long)countMatchesForText:(id)arg1 inDOMRange:(id)arg2 options:(unsigned long long)arg3 highlight:(BOOL)arg4 limit:(unsigned long long)arg5 markMatches:(BOOL)arg6;
 - (unsigned long long)countMatchesForText:(id)arg1 options:(unsigned long long)arg2 highlight:(BOOL)arg3 limit:(unsigned long long)arg4 markMatches:(BOOL)arg5;
-- (BOOL)cssAnimationsSuspended;
 - (id)currentNodeHighlight;
 - (void)cut:(id)arg1;
 - (void)dealloc;
@@ -505,7 +511,7 @@
 - (void)orderFrontSubstitutionsPanel:(id)arg1;
 - (void)outdent:(id)arg1;
 - (void)overWrite:(id)arg1;
-- (struct Page *)page;
+- (NakedPtr_4f2b354f)page;
 - (void)pageDown:(id)arg1;
 - (void)pageDownAndModifySelection:(id)arg1;
 - (float)pageSizeMultiplier;
@@ -534,6 +540,7 @@
 - (void)resetPageZoom:(id)arg1;
 - (void)resetTrackedRepaints;
 - (void)resumeAllMediaPlayback;
+- (void)revealCurrentSelection;
 - (void)scheduleInRunLoop:(id)arg1 forMode:(id)arg2;
 - (id)scriptDebugDelegate;
 - (void)scrollDOMRangeToVisible:(id)arg1;
@@ -552,11 +559,9 @@
 - (void)selectSentence:(id)arg1;
 - (void)selectToMark:(id)arg1;
 - (void)selectWord:(id)arg1;
-- (void)setAllowsNewCSSAnimationsWhileSuspended:(BOOL)arg1;
 - (void)setAllowsRemoteInspection:(BOOL)arg1;
 - (void)setAllowsUndo:(BOOL)arg1;
 - (void)setBackgroundColor:(struct CGColor *)arg1;
-- (void)setCSSAnimationsSuspended:(BOOL)arg1;
 - (void)setCaretChangeListener:(id)arg1;
 - (void)setCurrentNodeHighlight:(id)arg1;
 - (void)setDefersCallbacks:(BOOL)arg1;

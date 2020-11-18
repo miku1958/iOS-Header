@@ -10,13 +10,7 @@
 {
 }
 
-+ (void *)_abAddressBookRef;
-+ (id)_threadedABAddressBookLock;
-+ (void *)_threadedABAddressBookRef;
-+ (void)_watchLocaleChanges;
-+ (void *)abAddressBookRef;
 + (BOOL)addressBookEnabled;
-+ (void)performBlock:(CDUnknownBlockType)arg1;
 + (void)setAddressBookEnabled:(BOOL)arg1;
 
 @end

@@ -17,8 +17,8 @@
     unsigned long long _enabledPermissions;
 }
 
-@property (strong, nonatomic) NSArray *applicationBundleIDs; // @synthesize applicationBundleIDs=_applicationBundleIDs;
-@property (strong, nonatomic) NSArray *containerIDs; // @synthesize containerIDs=_containerIDs;
+@property (copy, nonatomic) NSArray *applicationBundleIDs; // @synthesize applicationBundleIDs=_applicationBundleIDs;
+@property (copy, nonatomic) NSArray *containerIDs; // @synthesize containerIDs=_containerIDs;
 @property (nonatomic) unsigned long long enabledPermissions; // @synthesize enabledPermissions=_enabledPermissions;
 
 + (BOOL)supportsSecureCoding;
@@ -26,6 +26,7 @@
 - (id)CKPropertiesDescription;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 
 @end

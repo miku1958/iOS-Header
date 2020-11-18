@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
 - (void)pickerView:(id)arg1 row:(int)arg2 column:(int)arg3 checked:(BOOL)arg4;
 - (id)pickerView:(id)arg1 viewForRow:(long long)arg2 forComponent:(long long)arg3 reusingView:(id)arg4;
+- (BOOL)selectFormAccessoryHasCheckedItemAtRow:(long long)arg1;
 - (void)selectRow:(long long)arg1 inComponent:(long long)arg2 extendingSelection:(BOOL)arg3;
 
 @end

@@ -28,11 +28,7 @@
         unsigned int read_detailFormatteds:1;
         unsigned int read_noticeFormatteds:1;
         unsigned int read_priceFormatteds:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_commandFormatteds:1;
-        unsigned int wrote_detailFormatteds:1;
-        unsigned int wrote_noticeFormatteds:1;
-        unsigned int wrote_priceFormatteds:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -52,14 +48,6 @@
 + (Class)noticeFormattedType;
 + (Class)priceFormattedType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsCommandFormatted:(id)arg1;
-- (void)_addNoFlagsDetailFormatted:(id)arg1;
-- (void)_addNoFlagsNoticeFormatted:(id)arg1;
-- (void)_addNoFlagsPriceFormatted:(id)arg1;
-- (void)_readCommandFormatteds;
-- (void)_readDetailFormatteds;
-- (void)_readNoticeFormatteds;
-- (void)_readPriceFormatteds;
 - (void)_transit_prepareForDeepMergeFrom:(id)arg1;
 - (void)addCommandFormatted:(id)arg1;
 - (void)addDetailFormatted:(id)arg1;
@@ -79,7 +67,10 @@
 - (id)dictionaryRepresentation;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)noticeFormattedAtIndex:(unsigned long long)arg1;
 - (unsigned long long)noticeFormattedsCount;

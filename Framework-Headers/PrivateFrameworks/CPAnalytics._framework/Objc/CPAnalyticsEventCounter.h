@@ -10,20 +10,24 @@
 
 @interface CPAnalyticsEventCounter : NSObject
 {
-    unsigned long long _count;
     NSString *_name;
+    unsigned long long _count;
     CPAnalyticsEventMatcher *_matcher;
+    NSString *_countKey;
 }
 
 @property (nonatomic) unsigned long long count; // @synthesize count=_count;
+@property (readonly, nonatomic) NSString *countKey; // @synthesize countKey=_countKey;
 @property (readonly, nonatomic) CPAnalyticsEventMatcher *matcher; // @synthesize matcher=_matcher;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
 
 + (id)_validateAndParseEventName:(id)arg1;
 - (void).cxx_destruct;
 - (void)countEvent:(id)arg1;
-- (id)getName;
 - (id)initWithConfig:(id)arg1;
+- (id)initWithEventName:(id)arg1;
+- (id)initWithName:(id)arg1 matcher:(id)arg2;
+- (void)resetCount;
 
 @end
 

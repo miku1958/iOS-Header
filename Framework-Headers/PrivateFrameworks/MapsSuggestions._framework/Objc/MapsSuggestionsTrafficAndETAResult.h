@@ -14,12 +14,16 @@
     double _seconds;
     NSString *_shortTrafficString;
     NSString *_longTrafficString;
+    NSString *_writtenRouteName;
+    NSString *_spokenRouteName;
 }
 
 @property (nonatomic) BOOL isSuccess; // @synthesize isSuccess=_isSuccess;
 @property (copy, nonatomic) NSString *longTrafficString; // @synthesize longTrafficString=_longTrafficString;
 @property (nonatomic) double seconds; // @synthesize seconds=_seconds;
 @property (copy, nonatomic) NSString *shortTrafficString; // @synthesize shortTrafficString=_shortTrafficString;
+@property (copy, nonatomic) NSString *spokenRouteName; // @synthesize spokenRouteName=_spokenRouteName;
+@property (copy, nonatomic) NSString *writtenRouteName; // @synthesize writtenRouteName=_writtenRouteName;
 
 - (void).cxx_destruct;
 - (id)initWithGEOTrafficAndETAResult:(id)arg1;

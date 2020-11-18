@@ -22,6 +22,7 @@
 @property (readonly, nonatomic) NSArray *errors;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) PKPaymentAuthorizationDataModel *model; // @synthesize model=_model;
+@property (readonly, nonatomic) NSArray *paymentContactFormatErrors;
 @property (readonly, nonatomic, getter=isRejected) BOOL rejected;
 @property (nonatomic) long long status; // @synthesize status=_status;
 @property (readonly) Class superclass;

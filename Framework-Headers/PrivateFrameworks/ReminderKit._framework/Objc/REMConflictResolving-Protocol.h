@@ -4,11 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSSet, NSString, REMResolutionTokenMap;
+@class NSData, NSSet, NSString, REMResolutionTokenMap;
 
 @protocol REMConflictResolving
 
 @property (strong, nonatomic) REMResolutionTokenMap *resolutionTokenMap;
+@property (strong, nonatomic) NSData *resolutionTokenMapData;
 
 - (NSSet *)changedKeys;
 - (NSString *)resolutionTokenKeyForChangedKey:(NSString *)arg1;

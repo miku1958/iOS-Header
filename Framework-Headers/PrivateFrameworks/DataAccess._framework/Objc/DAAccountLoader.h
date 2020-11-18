@@ -21,6 +21,7 @@
 @property (strong, nonatomic) NSMutableDictionary *acAccountTypeToClassNames; // @synthesize acAccountTypeToClassNames=_acAccountTypeToClassNames;
 @property (strong, nonatomic) NSMutableDictionary *acParentAccountTypeToChildAccountTypes; // @synthesize acParentAccountTypeToChildAccountTypes=_acParentAccountTypeToChildAccountTypes;
 
++ (void)_findPrivateFrameworks;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_addAccountInfo:(id)arg1 forFrameworkNamed:(id)arg2;

@@ -6,9 +6,6 @@
 
 #import <DataDeliveryServices/NSObject-Protocol.h>
 
-@class NSString;
-
 @protocol DDSManagingDelegate <NSObject>
-- (void)didUpdateAssetsWithType:(NSString *)arg1;
 @end
 

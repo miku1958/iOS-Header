@@ -20,10 +20,9 @@
 @property (readonly) Class superclass;
 
 + (Class)replyClass;
-+ (BOOL)supportsSecureCoding;
-- (void)encodeWithCoder:(id)arg1;
+- (void)encodeToXPCDictionary:(id)arg1;
 - (BOOL)expectsReply;
-- (id)initWithCoder:(id)arg1;
+- (id)initWithXPCDictionary:(id)arg1 error:(id *)arg2;
 - (BOOL)isValid;
 
 @end

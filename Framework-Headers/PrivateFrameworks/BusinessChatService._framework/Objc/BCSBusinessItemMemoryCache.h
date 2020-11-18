@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <BusinessChatService/BCSItemCaching-Protocol.h>
+
 @class BCSBusinessItem, NSData;
 
-@interface BCSBusinessItemMemoryCache : NSObject
+@interface BCSBusinessItemMemoryCache : NSObject <BCSItemCaching>
 {
     BCSBusinessItem *_lastFetchedBusinessItem;
     BCSBusinessItem *_bizItemForLastFetchedIcon;
@@ -22,8 +24,13 @@
 + (id)sharedCache;
 - (void).cxx_destruct;
 - (void)deleteCache;
+- (void)deleteExpiredItemsOfType:(long long)arg1;
+- (void)deleteItemMatching:(id)arg1;
+- (void)deleteItemsOfType:(long long)arg1;
+- (id)itemMatching:(id)arg1;
 - (id)lastFetchedBusinessItemIconDataForBizItem:(id)arg1;
 - (void)setLastFetchedBusinesIconData:(id)arg1 withMatchingBusinessItem:(id)arg2;
+- (void)updateItem:(id)arg1 withItemIdentifier:(id)arg2;
 
 @end
 

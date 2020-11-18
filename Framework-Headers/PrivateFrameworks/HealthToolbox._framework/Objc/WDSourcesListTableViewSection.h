@@ -24,6 +24,7 @@
 @property (copy, nonatomic) NSString *restorationSourceBundleIdentifier; // @synthesize restorationSourceBundleIdentifier=_restorationSourceBundleIdentifier;
 @property (readonly) Class superclass;
 
++ (id)detailViewControllerForSourceModel:(id)arg1 withProfile:(id)arg2;
 - (void).cxx_destruct;
 - (void)dataSourceDidUpdate;
 - (void)dealloc;

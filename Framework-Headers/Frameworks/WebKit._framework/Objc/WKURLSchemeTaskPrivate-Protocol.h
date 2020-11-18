@@ -6,10 +6,11 @@
 
 #import <WebKit/WKURLSchemeTask-Protocol.h>
 
-@class NSURLRequest, NSURLResponse;
+@class NSURLRequest, NSURLResponse, WKFrameInfo;
 
 @protocol WKURLSchemeTaskPrivate <WKURLSchemeTask>
 
+@property (readonly, nonatomic) WKFrameInfo *_frame;
 @property (readonly, nonatomic) BOOL _requestOnlyIfCached;
 
 - (void)_didPerformRedirection:(NSURLResponse *)arg1 newRequest:(NSURLRequest *)arg2;

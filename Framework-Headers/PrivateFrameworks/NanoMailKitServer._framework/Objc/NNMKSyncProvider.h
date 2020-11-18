@@ -94,6 +94,7 @@
 - (id)_initialSyncForMailbox:(id)arg1 messages:(id)arg2 shouldUseProtectedChannel:(BOOL)arg3;
 - (BOOL)_isConnectedToWatch;
 - (BOOL)_isPaired;
+- (BOOL)_isUsingCompaionSync;
 - (id)_legacy_sendFirstMessages:(id)arg1 syncedMailbox:(id)arg2 shouldUseProtectedChannel:(BOOL)arg3;
 - (void)_markConversationIdForNotify:(id)arg1 messages:(id)arg2 includesProtectedMessages:(BOOL)arg3 mailbox:(id)arg4;
 - (void)_markConversationWithId:(id)arg1 forNotify:(BOOL)arg2 mailbox:(id)arg3;

@@ -33,6 +33,7 @@
 - (id)defaultTextForTextField:(id)arg1 item:(id)arg2;
 - (unsigned long long)didSelectItem:(id)arg1;
 - (id)initWithModule:(id)arg1;
+- (id)leadingSwipeActionsForItem:(id)arg1;
 - (id)placeholderTextForTextField:(id)arg1 item:(id)arg2;
 - (long long)rowAnimationForOperationType:(unsigned long long)arg1 item:(id)arg2 suggestedAnimation:(long long)arg3;
 - (void)setupCell:(id)arg1 forItem:(id)arg2;
@@ -41,6 +42,7 @@
 - (void)textFieldDidBeginEditing:(id)arg1 item:(id)arg2;
 - (void)textFieldDidEndEditing:(id)arg1 item:(id)arg2;
 - (id)textFieldForVisibleItem:(id)arg1;
+- (id)trailingSwipeActionsForItem:(id)arg1;
 - (void)updateCell:(id)arg1 forItem:(id)arg2 animated:(BOOL)arg3;
 
 @end

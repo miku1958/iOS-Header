@@ -24,7 +24,6 @@
 - (BOOL)isLastBackupMakingPeer:(id *)arg1;
 - (KCPairingChannel *)pairingChannelAcceptor:(id *)arg1;
 - (KCPairingChannel *)pairingChannelInitiator:(id *)arg1;
-- (unsigned long long)peerCount;
 - (NSDictionary *)peerDeviceNamesByPeerID;
 - (NSString *)peerId;
 - (BOOL)registerCredentials;
@@ -37,6 +36,7 @@
 - (BOOL)requestToJoinCircleAfterRestore:(id *)arg1;
 - (BOOL)requestToResetCircle:(id *)arg1;
 - (BOOL)requestToResetCloudKitDataForReason:(NSString *)arg1 error:(id *)arg2;
+- (OTClique *)requestToResetProtectedData:(id *)arg1;
 - (BOOL)setViewsWithEnableSet:(NSSet *)arg1 disableSet:(NSSet *)arg2;
 - (BOOL)synchronizeCircleViews;
 - (BOOL)tryRegisteringCredentials;

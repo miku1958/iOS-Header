@@ -9,13 +9,14 @@
 #import <HealthDaemon/HDDevicePowerObserver-Protocol.h>
 #import <HealthDaemon/HDDiagnosticObject-Protocol.h>
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
+#import <HealthDaemon/HDSchoolTimeObserverDelegate-Protocol.h>
 #import <HealthDaemon/HDWorkoutDataAccumulatorObserver-Protocol.h>
 #import <HealthDaemon/HDWorkoutSessionObserver-Protocol.h>
 
-@class HDAlertSuppressor, HDAssertion, HDLocationManager, HDProfile, HDWatchAppStateMonitor, HDWorkoutLocationSmoother, HDWorkoutSessionServer, HKObserverSet, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
+@class HDAlertSuppressor, HDAssertion, HDLocationManager, HDProfile, HDSchoolTimeObserver, HDWatchAppStateMonitor, HDWorkoutLocationSmoother, HDWorkoutSessionServer, HKObserverSet, NSHashTable, NSMutableArray, NSMutableDictionary, NSString;
 @protocol OS_dispatch_queue;
 
-@interface HDWorkoutManager : NSObject <HDDevicePowerObserver, HDDiagnosticObject, HDHealthDaemonReadyObserver, HDWorkoutDataAccumulatorObserver, HDWorkoutSessionObserver>
+@interface HDWorkoutManager : NSObject <HDDevicePowerObserver, HDDiagnosticObject, HDHealthDaemonReadyObserver, HDWorkoutDataAccumulatorObserver, HDSchoolTimeObserverDelegate, HDWorkoutSessionObserver>
 {
     HDWorkoutSessionServer *_currentWorkout;
     HDAssertion *_currentWorkoutAssertion;
@@ -30,6 +31,7 @@
     NSMutableArray *_postLaunchRecoveryBlocks;
     NSObject<OS_dispatch_queue> *_postLaunchRecoveryCallbackQueue;
     HKObserverSet *_currentWorkoutObservers;
+    HDSchoolTimeObserver *_schoolTime;
     HDProfile *_profile;
     HDAlertSuppressor *_alertSuppressor;
     NSObject<OS_dispatch_queue> *_queue;
@@ -56,7 +58,11 @@
 - (void)_queue_beginTransitionToWorkoutSession:(id)arg1;
 - (unsigned long long)_queue_currentWorkoutActivityType;
 - (long long)_queue_currentWorkoutLocationType;
+- (void)_queue_endSessionForSchoolMode:(id)arg1;
+- (BOOL)_queue_endSessionIfInSchoolMode:(id)arg1;
+- (BOOL)_queue_inSchoolMode;
 - (void)_queue_logWorkoutStateToPowerLog;
+- (void)_queue_schoolModeDidChangeTo:(BOOL)arg1;
 - (void)_queue_sessionFinished:(id)arg1;
 - (id)_queue_sessionServerForRecoveryForClient:(id)arg1;
 - (void)_queue_setCurrentWorkout:(id)arg1;
@@ -97,16 +103,19 @@
 - (void)registerCurrentWorkoutObserver:(id)arg1;
 - (void)removeWorkoutEventObserver:(id)arg1;
 - (void)removeWorkoutSessionObserver:(id)arg1;
+- (void)schoolTime:(id)arg1 didChangeSchoolModeTo:(BOOL)arg2;
 - (void)sessionServerFromSessionIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)sessionServerWithConfiguration:(id)arg1 sessionUUID:(id)arg2 taskServer:(id)arg3 error:(id *)arg4;
 - (void)startWatchAppWithWorkoutConfiguration:(id)arg1 client:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)unitTest_currentWorkoutSession;
 - (void)unitTest_finishAllDetachedWorkoutBuilders;
+- (void)unitTest_setInSchoolMode:(BOOL)arg1;
 - (void)unitTest_smoothRoute:(id)arg1 withSmoother:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)unregisterCurrentWorkoutObserver:(id)arg1;
 - (void)workoutSession:(id)arg1 didChangeToState:(long long)arg2 fromState:(long long)arg3 date:(id)arg4;
 - (void)workoutSession:(id)arg1 didFailWithError:(id)arg2;
 - (void)workoutSession:(id)arg1 didGenerateEvent:(id)arg2;
+- (void)workoutSession:(id)arg1 didUpdateControllerStateForRecoveryIdentifier:(id)arg2;
 - (void)workoutSession:(id)arg1 didUpdateDataAccumulator:(id)arg2;
 
 @end

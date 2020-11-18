@@ -38,7 +38,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL enabled;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) long long layoutOrientation;
+@property (nonatomic) long long layoutOrientation; // @synthesize layoutOrientation=_layoutOrientation;
 @property (nonatomic) double maximumApertureValue;
 @property (nonatomic) double minimumApertureValue;
 @property (readonly, nonatomic) double originalApertureValue;
@@ -55,7 +55,6 @@ __attribute__((visibility("hidden")))
 - (id)init;
 - (void)loadView;
 - (void)setApertureValueClosestTo:(double)arg1;
-- (void)setLayoutOrientation:(long long)arg1;
 - (void)setLayoutOrientation:(long long)arg1 withTransitionCoordinator:(id)arg2;
 - (void)setOriginalApertureValueClosestTo:(double)arg1;
 - (void)setUseTranslucentBackground:(BOOL)arg1 animated:(BOOL)arg2;

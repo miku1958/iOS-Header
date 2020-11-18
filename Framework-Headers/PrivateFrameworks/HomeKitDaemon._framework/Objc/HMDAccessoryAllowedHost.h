@@ -12,6 +12,7 @@
 
 @interface HMDAccessoryAllowedHost : HMFObject <NSSecureCoding>
 {
+    HMDNetworkRouterFirewallRuleWAN *_cachedWANRule;
     NSString *_jsonWANRule;
 }
 
@@ -21,6 +22,8 @@
 @property (readonly) unsigned long long purpose;
 @property (readonly, nonatomic) HMDNetworkRouterFirewallRuleWAN *wanRule;
 
++ (id)allowedHostForFullWANAccess;
++ (id)allowedHostsFromFirewallRuleConfiguration:(id)arg1;
 + (id)allowedHostsFromJSONFirewallWANRules:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
@@ -30,6 +33,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithJSONFirewallWANRule:(id)arg1;
+- (id)initWithWANRule:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

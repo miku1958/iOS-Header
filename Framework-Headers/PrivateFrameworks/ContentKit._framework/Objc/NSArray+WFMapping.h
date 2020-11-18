@@ -40,11 +40,7 @@
 - (id)objectMatchingKey:(id)arg1 value:(id)arg2;
 - (id)objectsMatchingClass:(Class)arg1;
 - (id)objectsNotMatchingClass:(Class)arg1;
-- (id)safeObjectAtIndex:(unsigned long long)arg1;
 - (void)sortedArrayUsingContentSortDescriptors:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)sortedArrayUsingContentSortDescriptors:(id)arg1 propertySubstitutor:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)transformObjectsUsingAsynchronousBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)transformObjectsUsingAsynchronousBlock:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2 queue:(id)arg3;
-- (id)wf_firstObjectMatchingPredicate:(id)arg1;
 @end
 

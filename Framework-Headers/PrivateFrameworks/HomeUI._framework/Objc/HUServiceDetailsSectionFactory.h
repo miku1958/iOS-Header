@@ -14,8 +14,8 @@
 @property (copy, nonatomic) CDUnknownBlockType customComparator; // @synthesize customComparator=_customComparator;
 
 - (void).cxx_destruct;
+- (CDUnknownBlockType)_serviceDetailsItemComparatorForSectionIdentifier:(id)arg1;
 - (id)buildServiceDetailsItemSectionForSourceItem:(id)arg1 sectionIdentifier:(id)arg2 items:(id)arg3;
-- (CDUnknownBlockType)serviceDetailsItemComparatorForSectionIdentifier:(id)arg1;
 
 @end
 

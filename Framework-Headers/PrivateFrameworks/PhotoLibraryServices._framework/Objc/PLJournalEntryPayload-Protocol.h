@@ -6,7 +6,7 @@
 
 #import <PhotoLibraryServices/NSObject-Protocol.h>
 
-@class NSData, NSSet, NSString, PLJournalEntry;
+@class NSArray, NSData, NSSet, NSString, PLJournalEntry;
 @protocol PLJournalEntryPayload, PLJournalEntryPayloadID;
 
 @protocol PLJournalEntryPayload <NSObject>
@@ -21,7 +21,7 @@
 - (BOOL)decodePayloadData:(NSData *)arg1 error:(id *)arg2;
 - (NSString *)descriptionForEntry:(PLJournalEntry *)arg1;
 - (void)mergePayload:(id<PLJournalEntryPayload>)arg1;
-- (void)migrateMergedPayload;
+- (void)migrateMergedPayloadWithUpdatePayloads:(NSArray *)arg1;
 - (NSData *)payloadDataWithError:(id *)arg1;
 - (NSString *)prettyDescriptionForEntry:(PLJournalEntry *)arg1 indent:(long long)arg2;
 @end

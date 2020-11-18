@@ -5,6 +5,6 @@
 //
 
 @protocol NSMutableCopying
-- (id)mutableCopyWithZone:(void *)arg1;
+- (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 @end
 

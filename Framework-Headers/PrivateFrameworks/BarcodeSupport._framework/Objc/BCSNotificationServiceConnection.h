@@ -10,9 +10,11 @@
 
 @interface BCSNotificationServiceConnection : NSObject
 {
+    CDUnknownBlockType _interruptionHandler;
     NSXPCConnection *_serviceConnection;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (strong, nonatomic) NSXPCConnection *serviceConnection; // @synthesize serviceConnection=_serviceConnection;
 
 - (void).cxx_destruct;
@@ -20,6 +22,8 @@
 - (void)dealloc;
 - (void)didReceiveNotificationResponse:(id)arg1;
 - (void)notifyParsedCodeWithData:(id)arg1 codePayload:(id)arg2 shouldReplacePreviousNotifications:(BOOL)arg3 withReply:(CDUnknownBlockType)arg4;
+- (void)startNFCReaderWithDelegate:(id)arg1 errorHandler:(CDUnknownBlockType)arg2;
+- (void)stopNFCReaderWithErrorHandler:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -19,7 +19,7 @@
 @property (strong, nonatomic) ISPlayerSettings *playerSettings; // @synthesize playerSettings=_playerSettings;
 @property (strong, nonatomic) ISVitalitySettings *vitalitySettings; // @synthesize vitalitySettings=_vitalitySettings;
 
-+ (id)_archiveFileName;
++ (id)_defaultsKey;
 + (id)settingsControllerModule;
 + (id)sharedInstance;
 - (void).cxx_destruct;

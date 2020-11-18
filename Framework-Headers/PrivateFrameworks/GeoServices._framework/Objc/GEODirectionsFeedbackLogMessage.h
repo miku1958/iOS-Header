@@ -21,7 +21,7 @@
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     BOOL _arrivedAtDestination;
-    CDStruct_57366784 _flags;
+    CDStruct_8bb9be38 _flags;
 }
 
 @property (nonatomic) BOOL arrivedAtDestination;
@@ -37,9 +37,6 @@
 + (Class)directionsFeedbackType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsDirectionsFeedback:(id)arg1;
-- (void)_readDirectionsFeedbacks;
-- (void)_readFinalLocation;
 - (void)addDirectionsFeedback:(id)arg1;
 - (void)clearDirectionsFeedbacks;
 - (void)copyTo:(id)arg1;
@@ -51,7 +48,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -11,7 +11,7 @@
 }
 
 + (id)deleteRowAction:(id)arg1 forRow:(id)arg2;
-+ (id)setRoleRowActionWithParticipant:(id)arg1 withSetRoleBlock:(CDUnknownBlockType)arg2;
++ (id)setRoleRowActionWithParticipant:(id)arg1 withSetRoleBlock:(CDUnknownBlockType)arg2 forSections:(id)arg3;
 
 @end
 

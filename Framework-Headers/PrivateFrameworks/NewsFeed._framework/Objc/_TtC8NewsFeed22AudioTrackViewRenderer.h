@@ -14,7 +14,6 @@
     MISSING_TYPE *logoCache;
     MISSING_TYPE *rendererTool;
     MISSING_TYPE *traitCollection;
-    MISSING_TYPE *durationFormatter;
     MISSING_TYPE *layoutAttributes;
     MISSING_TYPE *thumbnailFallbackAssetHandle;
 }

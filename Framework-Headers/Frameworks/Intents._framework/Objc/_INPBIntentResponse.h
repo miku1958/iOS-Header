@@ -21,14 +21,12 @@
     } _has;
     BOOL _requiresAuthentication;
     BOOL _requiresProtectedData;
-    BOOL __encodeLegacyGloryData;
     int _type;
     _INPBIntentResponsePayloadFailure *_payloadFailure;
     _INPBIntentResponsePayloadSuccess *_payloadSuccess;
     _INPBUserActivity *_userActivity;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasPayloadFailure;

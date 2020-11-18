@@ -18,6 +18,7 @@
     NSString *_sessionIdentifier;
     unsigned long long _presentationMode;
     BOOL _canAutosaveToFiles;
+    BOOL _skipShutterSound;
     unsigned int _externalFlashLayerContextID;
     SSImageSurface *_imageSurface;
     double _imageScale;
@@ -51,6 +52,7 @@
 @property (nonatomic) unsigned long long presentationMode; // @synthesize presentationMode=_presentationMode;
 @property (strong, nonatomic) SSUIServiceOptions *serviceOptions; // @synthesize serviceOptions=_serviceOptions;
 @property (copy, nonatomic) NSString *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property (nonatomic) BOOL skipShutterSound; // @synthesize skipShutterSound=_skipShutterSound;
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;

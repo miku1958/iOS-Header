@@ -16,8 +16,11 @@
     BOOL _useSymbolicNames;
     BOOL _allowTableName;
     BOOL _allowSpanningColumnReferenceBodyQualifier;
+    BOOL _showGeometricAsBase;
     BOOL _quoteComponents;
     BOOL _forceEscaping;
+    BOOL _forceTableName;
+    BOOL _forceSheetName;
     BOOL _forFormulaPlainText;
     BOOL _usedSymbolicName;
     NSString *_contextSheetName;
@@ -29,8 +32,11 @@
 @property (strong, nonatomic) NSString *contextSheetName; // @synthesize contextSheetName=_contextSheetName;
 @property (nonatomic) BOOL forFormulaPlainText; // @synthesize forFormulaPlainText=_forFormulaPlainText;
 @property (nonatomic) BOOL forceEscaping; // @synthesize forceEscaping=_forceEscaping;
+@property (nonatomic) BOOL forceSheetName; // @synthesize forceSheetName=_forceSheetName;
+@property (nonatomic) BOOL forceTableName; // @synthesize forceTableName=_forceTableName;
 @property (nonatomic) UUIDData_5fbc143e hostTableUID; // @synthesize hostTableUID=_hostTableUID;
 @property (nonatomic) BOOL quoteComponents; // @synthesize quoteComponents=_quoteComponents;
+@property (nonatomic) BOOL showGeometricAsBase; // @synthesize showGeometricAsBase=_showGeometricAsBase;
 @property (nonatomic) BOOL suppressIdenticalEndReference; // @synthesize suppressIdenticalEndReference=_suppressIdenticalEndReference;
 @property (nonatomic) BOOL useSymbolicNames; // @synthesize useSymbolicNames=_useSymbolicNames;
 @property (nonatomic) BOOL usedSymbolicName; // @synthesize usedSymbolicName=_usedSymbolicName;

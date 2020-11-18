@@ -8,31 +8,38 @@
 
 #import <CoreRoutine/NSSecureCoding-Protocol.h>
 
-@class NSString, RTLocation, RTMapItem;
+@class NSString, NSUUID, RTLocation, RTMapItem;
 
 @interface RTPlaceInference : NSObject <NSSecureCoding>
 {
     RTLocation *_referenceLocation;
     RTMapItem *_mapItem;
     unsigned long long _userType;
+    unsigned long long _userTypeSource;
     unsigned long long _placeType;
     double _confidence;
+    NSUUID *_loiIdentifier;
 }
 
 @property (readonly, nonatomic) double confidence; // @synthesize confidence=_confidence;
+@property (readonly, nonatomic) NSUUID *loiIdentifier; // @synthesize loiIdentifier=_loiIdentifier;
 @property (readonly, nonatomic) RTMapItem *mapItem; // @synthesize mapItem=_mapItem;
 @property (readonly, nonatomic) unsigned long long placeType; // @synthesize placeType=_placeType;
 @property (readonly, nonatomic) NSString *preferredName;
 @property (readonly, nonatomic) RTLocation *referenceLocation; // @synthesize referenceLocation=_referenceLocation;
 @property (readonly, nonatomic) unsigned long long userType; // @synthesize userType=_userType;
+@property (readonly, nonatomic) unsigned long long userTypeSource; // @synthesize userTypeSource=_userTypeSource;
 
++ (id)placeTypeToString:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
++ (id)userSpecificPlaceTypeSourceToString:(unsigned long long)arg1;
++ (id)userSpecificPlaceTypeToString:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithMapItem:(id)arg1 userType:(unsigned long long)arg2 placeType:(unsigned long long)arg3 referenceLocation:(id)arg4 confidence:(double)arg5;
+- (id)initWithMapItem:(id)arg1 userType:(unsigned long long)arg2 userTypeSource:(unsigned long long)arg3 placeType:(unsigned long long)arg4 referenceLocation:(id)arg5 confidence:(double)arg6 loiIdentifier:(id)arg7;
 - (id)nameFromUserType:(unsigned long long)arg1;
 
 @end

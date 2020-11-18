@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
     UIView *__contentView;
     long long __contentInsetsChangeReason;
     double __minimumVisibleHeight;
+    double __editorHeightDelta;
     struct CGRect __contentBounds;
     struct CGRect __untransformedMasterContentFrame;
     struct UIEdgeInsets __contentInsets;
@@ -48,6 +49,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic, setter=_setContentInsetsChangeReason:) long long _contentInsetsChangeReason; // @synthesize _contentInsetsChangeReason=__contentInsetsChangeReason;
 @property (strong, nonatomic, setter=_setContentView:) UIView *_contentView; // @synthesize _contentView=__contentView;
 @property (strong, nonatomic, setter=_setContentViewController:) UIViewController<PUAccessoryContentViewController> *_contentViewController; // @synthesize _contentViewController=__contentViewController;
+@property (nonatomic, setter=_setEditorHeightDelta:) double _editorHeightDelta; // @synthesize _editorHeightDelta=__editorHeightDelta;
 @property (nonatomic, setter=_setKeyboardFrame:) struct CGRect _keyboardFrame; // @synthesize _keyboardFrame=__keyboardFrame;
 @property (strong, nonatomic, setter=_setLoadedContentViewController:) UIViewController<PUAccessoryContentViewController> *_loadedContentViewController; // @synthesize _loadedContentViewController=__loadedContentViewController;
 @property (nonatomic, setter=_setMinimumVisibleHeight:) double _minimumVisibleHeight; // @synthesize _minimumVisibleHeight=__minimumVisibleHeight;
@@ -79,6 +81,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateIfNeeded;
 - (void)_updateLoadedContentViewControllerIfNeeded;
 - (void)_updateMasterContentOffsetIfNeeded;
+- (void)accessoryContentViewController:(id)arg1 editorHeightDidChange:(double)arg2;
 - (void)accessoryContentViewControllerContentBoundsDidChange:(id)arg1;
 - (id)accessoryContentViewControllerViewHostingGestureRecognizers:(id)arg1;
 - (void)applyLayoutInfo:(id)arg1;

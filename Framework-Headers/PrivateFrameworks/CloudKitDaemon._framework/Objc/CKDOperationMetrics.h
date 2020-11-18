@@ -12,7 +12,6 @@
 
 @class NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString;
 
-__attribute__((visibility("hidden")))
 @interface CKDOperationMetrics : NSObject <MMCSOperationMetric, NSCopying, NSSecureCoding>
 {
     NSDate *_startDate;

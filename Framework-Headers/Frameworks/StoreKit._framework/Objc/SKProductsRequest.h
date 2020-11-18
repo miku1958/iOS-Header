@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (id)_newResponseForProducts:(id)arg1 invalidIdentifiers:(id)arg2;
 - (void)_start;
+- (void)_startWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithProductIdentifiers:(id)arg1;
 

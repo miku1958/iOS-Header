@@ -29,6 +29,11 @@ struct PRSL2FeatureScoreSmallCache {
     unsigned short count;
 };
 
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
 struct __CFArray;
 
 struct __CFDictionary;
@@ -64,13 +69,6 @@ struct prs_feature_population_ctx_t {
     unsigned long long _field12;
     long long _field13;
     unsigned long long _field14;
-};
-
-struct prs_model_resource_header {
-    unsigned int _field1;
-    unsigned int _field2;
-    unsigned int _field3;
-    unsigned char _field4[0];
 };
 
 #pragma mark Typedef'd Structures

@@ -6,7 +6,7 @@
 
 #import <PassKitUI/PKDashboardCollectionViewCell.h>
 
-@class NSString, UIButton, UILabel;
+@class NSString, UIButton, UIColor, UILabel;
 
 @interface PKDashboardTitleHeaderView : PKDashboardCollectionViewCell
 {
@@ -15,13 +15,18 @@
     BOOL _isTemplateLayout;
     BOOL _isCompactUI;
     BOOL _useCompactTopInset;
+    NSString *_title;
+    UIColor *_titleColor;
+    unsigned long long _titleStyle;
     NSString *_actionTitle;
     CDUnknownBlockType _action;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType action; // @synthesize action=_action;
 @property (copy, nonatomic) NSString *actionTitle; // @synthesize actionTitle=_actionTitle;
-@property (readonly, nonatomic) UILabel *titleLabel;
+@property (copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (copy, nonatomic) UIColor *titleColor; // @synthesize titleColor=_titleColor;
+@property (nonatomic) unsigned long long titleStyle; // @synthesize titleStyle=_titleStyle;
 @property (nonatomic) BOOL useCompactTopInset; // @synthesize useCompactTopInset=_useCompactTopInset;
 
 + (id)defaultBackgroundColor;

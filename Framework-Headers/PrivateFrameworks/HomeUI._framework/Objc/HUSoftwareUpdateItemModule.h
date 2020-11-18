@@ -30,6 +30,7 @@
 @property (nonatomic) BOOL unifyDownloadAndDescriptionSections; // @synthesize unifyDownloadAndDescriptionSections=_unifyDownloadAndDescriptionSections;
 
 - (void).cxx_destruct;
+- (void)_reloadItemProviders;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1 home:(id)arg2 sourceItem:(id)arg3;

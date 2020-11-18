@@ -21,6 +21,7 @@
 - (id)initWithExportRequest:(id)arg1;
 - (id)initWithImageExportRequest:(id)arg1;
 - (BOOL)render:(out id *)arg1;
+- (id)renderer:(out id *)arg1;
 - (id)result;
 - (BOOL)wantsOutputGeometry;
 - (BOOL)wantsOutputImage;

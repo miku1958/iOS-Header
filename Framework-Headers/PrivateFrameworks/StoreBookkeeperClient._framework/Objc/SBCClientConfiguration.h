@@ -10,6 +10,7 @@
 
 @class SBCPlaybackPositionDomain;
 
+__attribute__((visibility("hidden")))
 @interface SBCClientConfiguration : NSObject <NSSecureCoding>
 {
     SBCPlaybackPositionDomain *_playbackPositionDomain;

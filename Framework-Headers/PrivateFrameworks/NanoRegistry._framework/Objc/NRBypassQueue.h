@@ -17,7 +17,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)assertOnQueue;
 - (void)enqueueBlock:(CDUnknownBlockType)arg1;
 - (void)enqueueBlockAsync:(CDUnknownBlockType)arg1;
 - (void)enqueueBypassBlock:(CDUnknownBlockType)arg1;

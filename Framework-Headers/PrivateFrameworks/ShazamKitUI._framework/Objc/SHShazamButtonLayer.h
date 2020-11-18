@@ -40,8 +40,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) CAShapeLayer *topTransparentLayer; // @synthesize topTransparentLayer=_topTransparentLayer;
 
 - (void).cxx_destruct;
-- (id)bottomStrokeLongPath;
-- (id)bottomStrokePath;
+- (struct CGPath *)bottomStrokeLongPath;
+- (struct CGPath *)bottomStrokePath;
 - (void)buildView;
 - (void)drawSolidShape;
 - (void)drawSolidShapeWithDuration:(double)arg1 delay:(double)arg2 completion:(CDUnknownBlockType)arg3;
@@ -55,9 +55,9 @@ __attribute__((visibility("hidden")))
 - (void)removeTransparentShape;
 - (void)removeTransparentShapeWithDuration:(double)arg1 delay:(double)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)skipIntroAnimation;
-- (id)strokeLayerWithPath:(id)arg1 color:(id)arg2;
-- (id)topStrokeLongPath;
-- (id)topStrokePath;
+- (id)strokeLayerWithPath:(struct CGPath *)arg1 color:(struct CGColor *)arg2;
+- (struct CGPath *)topStrokeLongPath;
+- (struct CGPath *)topStrokePath;
 
 @end
 

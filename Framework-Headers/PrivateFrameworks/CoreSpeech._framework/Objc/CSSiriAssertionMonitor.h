@@ -30,7 +30,6 @@
 - (void)dealloc;
 - (void)disableAssertionReceived;
 - (void)enableAssertionReceived;
-- (void)handleXPCMessage:(id)arg1 messageBody:(id)arg2 client:(id)arg3;
 - (id)init;
 - (BOOL)isEnabled;
 

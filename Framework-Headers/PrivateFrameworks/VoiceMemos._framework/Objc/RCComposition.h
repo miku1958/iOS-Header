@@ -10,7 +10,7 @@
 #import <VoiceMemos/NSMutableCopying-Protocol.h>
 #import <VoiceMemos/RCDictionaryPListRepresentationCoding-Protocol.h>
 
-@class NSArray, NSDate, NSString, NSURL;
+@class NSArray, NSDate, NSDictionary, NSString, NSURL;
 
 @interface RCComposition : NSObject <NSMutableCopying, NSCopying, RCDictionaryPListRepresentationCoding>
 {
@@ -19,6 +19,7 @@
     NSArray *_composedFragments;
     NSString *_savedRecordingUUID;
     NSDate *_creationDate;
+    NSDictionary *_musicMemoMetadata;
     NSURL *_composedAVURL;
     NSURL *_composedWaveformURL;
     NSArray *_decomposedFragments;
@@ -40,6 +41,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isContentBeingModified;
+@property (strong, nonatomic) NSDictionary *musicMemoMetadata; // @synthesize musicMemoMetadata=_musicMemoMetadata;
 @property (nonatomic) BOOL readonly; // @synthesize readonly=_readonly;
 @property (strong, nonatomic) NSString *savedRecordingUUID; // @synthesize savedRecordingUUID=_savedRecordingUUID;
 @property (readonly) Class superclass;
@@ -64,6 +66,7 @@
 + (BOOL)excludeFromBackup:(id)arg1 error:(id *)arg2;
 + (BOOL)includeInBackup:(id)arg1 error:(id *)arg2;
 + (BOOL)migrateBackupExclusionFlag:(id)arg1;
++ (id)uriRepresentationForLegacyComposedAVURL:(id)arg1;
 - (void).cxx_destruct;
 - (id)_calculateComposedFragments;
 - (double)_composedDuration;
@@ -71,8 +74,9 @@
 - (id)_eaccess_repairDecomposedFragmentMetadataIfNecessaryAndSave:(BOOL)arg1;
 - (void)_eaccess_saveCompositionAndRecordingDuration:(BOOL)arg1;
 - (unsigned long long)_fileSizeOfComposedAssetsIncludingRelatedResources:(BOOL)arg1;
-- (id)_initWithComposedAVURL:(id)arg1 savedRecordingUUID:(id)arg2 creationDate:(id)arg3 title:(id)arg4 decomposedFragments:(id)arg5 composedFragments:(id)arg6;
+- (id)_initWithComposedAVURL:(id)arg1 savedRecordingUUID:(id)arg2 creationDate:(id)arg3 title:(id)arg4 musicMemoMetadata:(id)arg5 decomposedFragments:(id)arg6 composedFragments:(id)arg7;
 - (id)_initWithSavedRecording:(id)arg1 decomposedFragments:(id)arg2 composedFragments:(id)arg3;
+- (void)_loadMusicMemoMetadata;
 - (id)_privateModel;
 - (id)composedFragmentsIntersectingTimeRange:(CDStruct_73a5d3ca)arg1;
 - (id)compositionAsset;

@@ -18,7 +18,6 @@
 @property (readonly) Class superclass;
 
 - (id)afterDelay:(double)arg1 performBlock:(CDUnknownBlockType)arg2;
-- (void)performBlock:(CDUnknownBlockType)arg1;
 - (id)performCancelableBlock:(CDUnknownBlockType)arg1;
 @end
 

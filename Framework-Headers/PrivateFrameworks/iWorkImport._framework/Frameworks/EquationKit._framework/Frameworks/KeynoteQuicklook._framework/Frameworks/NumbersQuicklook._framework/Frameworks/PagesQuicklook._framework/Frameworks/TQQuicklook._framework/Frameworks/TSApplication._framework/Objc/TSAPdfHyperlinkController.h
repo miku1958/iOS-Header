@@ -15,9 +15,8 @@
 }
 
 - (void).cxx_destruct;
-- (void)addHyperlinkForRect:(struct CGRect)arg1 withUrl:(id)arg2 context:(struct CGContext *)arg3;
-- (void)addHyperlinksForContents:(id)arg1 context:(struct CGContext *)arg2;
-- (void)addHyperlinksForRep:(id)arg1 context:(struct CGContext *)arg2;
+- (void)addHyperlinkForRect:(struct CGRect)arg1 withUrl:(id)arg2;
+- (void)addHyperlinksForRep:(id)arg1;
 - (struct CGRect)canvasRect;
 - (void)commitHyperlinksToPDF:(struct CGContext *)arg1 targetRect:(struct CGRect)arg2;
 - (id)destinationFromUrl:(id)arg1;
@@ -28,8 +27,7 @@
 - (void)p_combineSimilarElements:(id)arg1;
 - (void)p_commitDestinationToPDF:(id)arg1 cgrect:(struct CGRect)arg2 context:(struct CGContext *)arg3;
 - (void)p_commitUrlToPDF:(id)arg1 cgrect:(struct CGRect)arg2 context:(struct CGContext *)arg3;
-- (id)p_hyperlinkRegionsForRep:(id)arg1 context:(struct CGContext *)arg2;
-- (id)p_splitIntoSubshapes:(id)arg1;
+- (id)p_hyperlinkRegionsForRep:(id)arg1;
 
 @end
 

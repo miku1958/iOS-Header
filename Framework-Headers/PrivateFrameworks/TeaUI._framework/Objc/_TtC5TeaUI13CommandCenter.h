@@ -11,7 +11,8 @@
 @interface _TtC5TeaUI13CommandCenter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *handlers;
-    MISSING_TYPE *observers;
+    MISSING_TYPE *stateObserverStore;
+    MISSING_TYPE *executionObserverStore;
     MISSING_TYPE *contextStore;
 }
 

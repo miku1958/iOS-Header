@@ -18,9 +18,12 @@
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue;
 
 - (void).cxx_destruct;
+- (void)_updateCacheLimit;
 - (void)cacheAdditionalInfo:(id)arg1 withKey:(id)arg2;
 - (id)init;
 - (void)invalidateCache;
+- (void)lowMemoryModeDidChange;
+- (void)releaseCachedResources;
 - (void)requestCGImageAndAdditionalInfoWithCacheKey:(id)arg1 imageProvider:(CDUnknownBlockType)arg2 resultHandler:(CDUnknownBlockType)arg3;
 - (void)requestCGImageWithCacheKey:(id)arg1 imageProvider:(CDUnknownBlockType)arg2 resultHandler:(CDUnknownBlockType)arg3;
 

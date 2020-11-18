@@ -6,11 +6,13 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
+@class NSString;
 @protocol PXGAXGroup;
 
 @protocol PXGAXGroupSource <NSObject>
 
 @property (readonly, nonatomic) struct CGRect axFrame;
+@property (readonly, nonatomic) NSString *axLocalizedLabel;
 @property (readonly, nonatomic) struct CGRect axVisibleRect;
 
 - (struct CGPoint)axConvertPoint:(struct CGPoint)arg1 fromDescendantGroup:(id<PXGAXGroup>)arg2;

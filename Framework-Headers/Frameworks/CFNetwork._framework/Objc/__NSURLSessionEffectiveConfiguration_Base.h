@@ -9,7 +9,7 @@
 #import <CFNetwork/NSCopying-Protocol.h>
 #import <CFNetwork/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSHTTPCookieStorage, NSNumber, NSSet, NSString, NSURL, NSURLCache, NSURLCredentialStorage, NSURLSessionConfiguration;
+@class NSArray, NSData, NSDictionary, NSHTTPCookieStorage, NSNumber, NSSet, NSString, NSURL, NSURLCache, NSURLCredentialStorage, NSURLSessionConfiguration, _NSHTTPAlternativeServicesStorage;
 @protocol NSURLSessionAppleIDContext;
 
 @interface __NSURLSessionEffectiveConfiguration_Base : NSObject <NSSecureCoding, NSCopying>
@@ -26,15 +26,18 @@
 @property (readonly) unsigned long long _TCPAdaptiveWriteTimeout; // @dynamic _TCPAdaptiveWriteTimeout;
 @property (readonly) BOOL _allowsConstrainedNetworkAccess; // @dynamic _allowsConstrainedNetworkAccess;
 @property (readonly) BOOL _allowsExpensiveAccess; // @dynamic _allowsExpensiveAccess;
+@property (readonly) BOOL _allowsHTTP3; // @dynamic _allowsHTTP3;
 @property (readonly) BOOL _allowsIndefiniteConnections; // @dynamic _allowsIndefiniteConnections;
 @property (readonly) BOOL _allowsMultipathTCP; // @dynamic _allowsMultipathTCP;
 @property (readonly) BOOL _allowsPowerNapScheduling; // @dynamic _allowsPowerNapScheduling;
+@property (readonly) BOOL _allowsReachabilityCheck; // @dynamic _allowsReachabilityCheck;
 @property (readonly) BOOL _allowsResponseMonitoringDuringBodyTranmission; // @dynamic _allowsResponseMonitoringDuringBodyTranmission;
 @property (readonly) BOOL _allowsTCPFastOpen; // @dynamic _allowsTCPFastOpen;
 @property (readonly) BOOL _allowsTLSFalseStart; // @dynamic _allowsTLSFalseStart;
 @property (readonly) BOOL _allowsTLSSessionResumption; // @dynamic _allowsTLSSessionResumption;
 @property (readonly) BOOL _allowsTLSSessionTickets; // @dynamic _allowsTLSSessionTickets;
 @property (readonly) BOOL _allowsWCA; // @dynamic _allowsWCA;
+@property (readonly, strong) _NSHTTPAlternativeServicesStorage *_alternativeServicesStorage; // @dynamic _alternativeServicesStorage;
 @property (readonly) BOOL _alwaysPerformDefaultTrustEvaluation; // @dynamic _alwaysPerformDefaultTrustEvaluation;
 @property (readonly, copy) id<NSURLSessionAppleIDContext> _appleIDContext; // @dynamic _appleIDContext;
 @property (readonly, copy) NSSet *_authenticatorStatusCodes; // @dynamic _authenticatorStatusCodes;
@@ -80,7 +83,6 @@
 + (BOOL)supportsSecureCoding;
 - (const void *)_copyAttribute:(struct __CFString *)arg1;
 - (id)_initWithConfiguration:(id)arg1;
-- (id)_initWithMeOther:(id)arg1;
 - (id)_sessionConfiguration;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;

@@ -11,7 +11,7 @@
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/UIScrollViewDelegate-Protocol.h>
 
-@class NSArray, NSString, SBAppSwitcherPageView, SBAppSwitcherSettings, SBFFluidBehaviorSettings, SBFailureNotifyingTapGestureRecognizer, SBFluidSwitcherIconOverlayView, SBFluidSwitcherItemContainerHeaderView, SBFluidSwitcherTouchPassThroughScrollView, SBMedusaSettings, UIHoverGestureRecognizer, UILongPressGestureRecognizer, UITapGestureRecognizer, UIView;
+@class NSArray, NSString, SBAppLayout, SBAppSwitcherPageView, SBAppSwitcherSettings, SBFFluidBehaviorSettings, SBFailureNotifyingTapGestureRecognizer, SBFluidSwitcherIconOverlayView, SBFluidSwitcherItemContainerHeaderView, SBFluidSwitcherTouchPassThroughScrollView, SBMedusaSettings, UIHoverGestureRecognizer, UILongPressGestureRecognizer, UITapGestureRecognizer, UIView;
 @protocol SBAppSwitcherPageContentView, SBFluidSwitcherItemContainerDelegate;
 
 @interface SBFluidSwitcherItemContainer : SBFTouchPassThroughView <UIScrollViewDelegate, UIGestureRecognizerDelegate, SBFailureNotifyingTapGestureRecognizerDelegate, SBAppPlatterDragSourceViewProviding>
@@ -39,23 +39,24 @@
     UIHoverGestureRecognizer *_hoverGestureRecognizer;
     BOOL _dragging;
     BOOL _clipsToUnobscuredMargin;
+    BOOL _selectable;
     BOOL _killable;
     BOOL _shouldScaleOverlayToFillBounds;
     BOOL _active;
     BOOL _visible;
-    BOOL _cursorInteractionEnabled;
+    BOOL _pointerInteractionEnabled;
     BOOL _highlightedFromDirectTouch;
     BOOL _highlightedFromCursorHover;
     double _unobscuredMargin;
+    SBAppLayout *_appLayout;
     unsigned long long _killAxis;
     double _minimumTranslationForKillingContainer;
     double _contentAlpha;
-    NSString *_additionalDescriptionDebugText;
     NSArray *_headerItems;
 }
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
-@property (copy, nonatomic) NSString *additionalDescriptionDebugText; // @synthesize additionalDescriptionDebugText=_additionalDescriptionDebugText;
+@property (strong, nonatomic) SBAppLayout *appLayout; // @synthesize appLayout=_appLayout;
 @property (nonatomic) BOOL blocksContentViewTouches;
 @property (nonatomic) BOOL clipsToUnobscuredMargin; // @synthesize clipsToUnobscuredMargin=_clipsToUnobscuredMargin;
 @property (nonatomic) double contentAlpha; // @synthesize contentAlpha=_contentAlpha;
@@ -63,7 +64,7 @@
 @property (strong, nonatomic) UIView *contentOverlay;
 @property (nonatomic) double contentPageViewScale; // @synthesize contentPageViewScale=_contentPageViewScale;
 @property (strong, nonatomic) UIView<SBAppSwitcherPageContentView> *contentView;
-@property (nonatomic, getter=isCursorInteractionEnabled) BOOL cursorInteractionEnabled; // @synthesize cursorInteractionEnabled=_cursorInteractionEnabled;
+@property (readonly, nonatomic) BOOL contentViewHasSceneOverlay;
 @property (nonatomic) double darkeningAlpha;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SBFluidSwitcherItemContainerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -79,10 +80,13 @@
 @property (readonly, nonatomic) double killingProgress;
 @property (nonatomic) double lighteningAlpha;
 @property (nonatomic) double minimumTranslationForKillingContainer; // @synthesize minimumTranslationForKillingContainer=_minimumTranslationForKillingContainer;
+@property (nonatomic, getter=isPointerInteractionEnabled) BOOL pointerInteractionEnabled; // @synthesize pointerInteractionEnabled=_pointerInteractionEnabled;
+@property (nonatomic, getter=isSelectable) BOOL selectable; // @synthesize selectable=_selectable;
 @property (nonatomic) double shadowAlpha;
 @property (nonatomic) double shadowOffset;
 @property (nonatomic) long long shadowStyle;
 @property (nonatomic) BOOL shouldScaleOverlayToFillBounds; // @synthesize shouldScaleOverlayToFillBounds=_shouldScaleOverlayToFillBounds;
+@property (nonatomic) BOOL shouldUseBackgroundWallpaperTreatment;
 @property (readonly) Class superclass;
 @property (nonatomic) double titleAndIconOpacity; // @synthesize titleAndIconOpacity=_titleAndIconOpacity;
 @property (nonatomic) double titleOpacity; // @synthesize titleOpacity=_titleOpacity;
@@ -131,7 +135,7 @@
 - (void)gestureRecognizerTransitionedToFailed:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
-- (id)initWithFrame:(struct CGRect)arg1 delegate:(id)arg2 active:(BOOL)arg3;
+- (id)initWithFrame:(struct CGRect)arg1 appLayout:(id)arg2 delegate:(id)arg3 active:(BOOL)arg4;
 - (id)initialCornerRadiusConfiguration;
 - (id)initialDiffuseShadowFilters;
 - (struct SBDragPreviewShadowParameters)initialDiffuseShadowParameters;

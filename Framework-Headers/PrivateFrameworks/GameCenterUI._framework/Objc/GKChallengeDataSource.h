@@ -4,37 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <GameCenterUI/GKCollectionDataSource.h>
+#import <GameCenterUI/GKDashboardChallengeDataSource.h>
 
-#import <GameCenterUI/GKDashboardChallengeDetailViewControllerDelegate-Protocol.h>
-
-@class GKGameRecord, NSArray;
-
-@interface GKChallengeDataSource : GKCollectionDataSource <GKDashboardChallengeDetailViewControllerDelegate>
+@interface GKChallengeDataSource : GKDashboardChallengeDataSource
 {
-    BOOL _shouldShowPlay;
-    GKGameRecord *_gameRecord;
-    NSArray *_challenges;
 }
 
-@property (strong, nonatomic) NSArray *challenges; // @synthesize challenges=_challenges;
-@property (strong, nonatomic) GKGameRecord *gameRecord; // @synthesize gameRecord=_gameRecord;
-@property (nonatomic) BOOL shouldShowPlay; // @synthesize shouldShowPlay=_shouldShowPlay;
-
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
+- (double)collectionView:(id)arg1 layout:(id)arg2 minimumInteritemSpacingForSectionAtIndex:(long long)arg3;
+- (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
-- (BOOL)collectionView:(id)arg1 shouldSelectItemAtIndexPath:(id)arg2;
-- (void)dealloc;
-- (id)initWithGameRecord:(id)arg1;
-- (long long)itemCount;
-- (id)itemForIndexPath:(id)arg1;
-- (void)loadDataWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (long long)numberOfSectionsInCollectionView:(id)arg1;
-- (double)preferredCollectionHeight;
-- (id)sectionHeaderText;
+- (id)collectionView:(id)arg1 viewForSupplementaryElementOfKind:(id)arg2 atIndexPath:(id)arg3;
 - (void)setupCollectionView:(id)arg1;
-- (void)userDidSelectPlay:(id)arg1;
 
 @end
 

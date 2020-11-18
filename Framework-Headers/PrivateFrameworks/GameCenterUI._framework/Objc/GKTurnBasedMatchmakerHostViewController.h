@@ -13,11 +13,11 @@
 
 @interface GKTurnBasedMatchmakerHostViewController : GKExtensionRemoteViewController <GKTurnBasedMatchmakerHostProtocol, GKTurnBasedMatchmakerServiceProtocol>
 {
-    GKTurnBasedMatchmakerViewController *_delegateWeak;
+    GKTurnBasedMatchmakerViewController *_delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) GKTurnBasedMatchmakerViewController *delegate; // @synthesize delegate=_delegateWeak;
+@property (weak, nonatomic) GKTurnBasedMatchmakerViewController *delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) GKGame *game;
 @property (readonly) unsigned long long hash;
@@ -25,7 +25,7 @@
 
 + (BOOL)dismissAutomaticallyAfterExtensionCompletion;
 + (id)turnBasedMatchmakerExtension;
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)extensionIsCanceling;
 - (id)extensionObjectProxy;
 - (void)messageFromExtension:(id)arg1;

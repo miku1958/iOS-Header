@@ -6,34 +6,74 @@
 
 #import <objc/NSObject.h>
 
-@class _PASLock, _PASNotificationToken;
+@class NSCache, PPTrialWrapper, _PASLock, _PASNotificationToken;
 
 @interface PPConfiguration : NSObject
 {
     _PASLock *_lock;
     _PASNotificationToken *_assetUpdateHandlerToken;
-    int _abGroupOverrideChangedNotificationToken;
+    NSCache *_cachedAlgorithms;
+    PPTrialWrapper *_trialWrapper;
 }
 
-+ (id)_loadConfigPlistWithPath:(id)arg1;
-+ (id)_loadTopicCalibrationPlistWithPath:(id)arg1;
++ (void)reload;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)_algorithmsForNode:(id)arg1 bundleId:(id)arg2 customRules:(id)arg3;
+- (id)_algorithmsToDelete:(id)arg1 bundleId:(id)arg2 customRules:(id)arg3;
 - (void)_loadConfigParams;
+- (void)_loadContactsConfigParams;
+- (void)_loadContactsConfigParamsWithGuardedData:(id)arg1;
+- (void)_loadGlobalConfigParams;
+- (void)_loadGlobalConfigParamsWithGuardedData:(id)arg1;
+- (void)_loadLocationsConfigParams;
+- (void)_loadLocationsConfigParamsWithGuardedData:(id)arg1;
+- (void)_loadNamedEntitiesConfigParams;
+- (void)_loadNamedEntitiesConfigParamsWithGuardedData:(id)arg1;
+- (void)_loadQuickTypeConfigParams;
+- (void)_loadQuickTypeConfigParamsWithGuardedData:(id)arg1;
+- (void)_loadTopicsConfigParams;
+- (void)_loadTopicsConfigParamsWithGuardedData:(id)arg1;
+- (id)_mapAlgorithmNamesToNumbers:(id)arg1 domain:(unsigned char)arg2;
 - (id)availablePortraitVariantNames;
-- (void)dealloc;
+- (id)contactsLabelScoringMap;
+- (unsigned char)customTaggerMaxTokenCount;
+- (double)decayedFeedbackCountsHalfLifeDays;
+- (id)differentiallyPrivateEntityLogLevels;
+- (id)dynamicEntityCategories;
+- (id)engagementKValues;
+- (id)extractionAlgorithmsForBundleId:(id)arg1 sourceLanguage:(id)arg2 conservative:(BOOL)arg3 domain:(unsigned char)arg4;
 - (float)feedbackSessionLogsExtractionsSamplingRate;
 - (int)feedbackSessionLogsGeohashLength;
 - (float)feedbackSessionLogsSamplingRate;
+- (id)feedbackSessionLogsSamplingRateOverrides;
+- (BOOL)flattenNamedEntitiesForCoreML;
+- (BOOL)flattenTopicsForCoreML;
 - (double)halfValuePosition;
 - (BOOL)highLevelTopicExtractionEnabled;
-- (double)highLevelTopicScoreAttenuationFactor;
-- (double)highLevelTopicScoreThreshold;
-- (id)init;
+- (id)hyperparametersForMappingId:(id)arg1;
+- (id)initWithTrialWrapper:(id)arg1;
+- (BOOL)isMultilingual;
 - (double)locationDecayHalfLifeSeconds;
+- (BOOL)locationFeedbackUsesCoreML;
+- (BOOL)locationScoringUsesCoreML;
+- (BOOL)locationScoringUsesHybrid;
+- (double)mapsSearchQueryFromDateInterval;
+- (unsigned int)mapsSearchQueryLimit;
+- (int)maxNumberMappedTopics;
+- (int)maxNumberNamedEntities;
 - (double)namedEntityDecayHalfLifeSeconds;
+- (BOOL)namedEntityFeedbackUsesCoreML;
+- (unsigned int)namedEntityLoadAndMonitorInitialLoadLimit;
+- (BOOL)namedEntityScoringUsesCoreML;
+- (BOOL)namedEntityScoringUsesHybrid;
 - (id)naturalPortraitVariantName;
+- (unsigned int)navigationMinimumDistanceInMeters;
+- (double)navigationMinimumTimeInterval;
+- (unsigned char)nextEventsFuzzMinutes;
 - (double)nonReaderTextWeight;
+- (BOOL)notificationExtractionEnabled;
+- (unsigned char)peopleSuggesterMax;
 - (int)portraitAnalyticsGeohashLength;
 - (int)portraitAnalyticsMaximumNumberOfRecords;
 - (double)portraitAnalyticsSamplingRate;
@@ -44,20 +84,31 @@
 - (double)portraitMusicDataCollectionSamplingRateForAMP;
 - (double)portraitMusicDataCollectionSamplingRateForCTS;
 - (id)portraitVariantName;
+- (int)queryTimeNextFromMinutes;
+- (unsigned int)queryTimeNextToMinutes;
+- (unsigned int)queryTimeOtherToMinutes;
+- (float)recordSourceContactsInitialScore;
+- (float)recordSourceNonContactsInitialScore;
 - (float)remoteTopicsMultiplier;
-- (id)resourceForMappingId:(id)arg1;
+- (double)routineExtractionScoreCountWeight;
+- (double)routineExtractionScoreDecayHalfLifeDays;
+- (double)routineExtractionScoreDurationWeight;
 - (BOOL)safariDataDetectorsEnabledForHighMemoryDevices;
 - (BOOL)safariDonationTitleExtractionEnabled;
-- (double)scalingFactorForMappingId:(id)arg1;
 - (float)scoreThresholdForLocation;
 - (float)scoreThresholdForNamedEntity;
 - (float)scoreThresholdForTopic;
 - (id)topicCalibrationTrie;
 - (double)topicDecayHalfLifeSeconds;
+- (BOOL)topicFeedbackUsesCoreML;
+- (double)topicMappingCoreMLThreshold;
+- (BOOL)topicMappingUsesCoreML;
+- (BOOL)topicScoringUsesCoreML;
+- (BOOL)topicScoringUsesHybrid;
 - (float)topicsMultiplierForBundleId:(id)arg1 algorithm:(unsigned long long)arg2;
-- (double)topicsScalingFactor;
-- (double)topicsSigmoidPeakValue;
-- (double)topicsSigmoidWidth;
+- (BOOL)use2StageScoreInterpreterForLocationScoring;
+- (BOOL)use2StageScoreInterpreterForNEScoring;
+- (BOOL)use2StageScoreInterpreterForTPScoring;
 
 @end
 

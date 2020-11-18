@@ -68,9 +68,7 @@
 + (id)fetchCustomMetadataWithName:(id)arg1 valueHash:(id)arg2 context:(id)arg3;
 + (id)fromPBCodable:(id)arg1;
 + (BOOL)isValidURL:(id)arg1;
-+ (id)keyPathForMOKeyPath:(id)arg1;
 + (id)metadataForInteraction:(id)arg1 storeKeyImage:(BOOL)arg2;
-+ (id)moKeyPathForKeyPath:(id)arg1;
 + (id)objectFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 excludedMetadataKeys:(id)arg3 cache:(id)arg4;
 + (BOOL)supportsSecureCoding;
 + (id)uncachedEventValueFromManagedObject:(id)arg1 readMetadata:(BOOL)arg2 excludedMetadataKeys:(id)arg3 cache:(id)arg4;

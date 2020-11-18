@@ -9,15 +9,18 @@
 #import <MapKit/MKUserLocationHeadingAnimatableIndicator-Protocol.h>
 #import <MapKit/MKUserLocationHeadingIndicator-Protocol.h>
 
-@class NSString, _MKPuckAnnotationView;
+@class NSString, UITraitCollection, _MKPuckAnnotationView;
 
 __attribute__((visibility("hidden")))
 @interface MKUserLocationHeadingArrowLayer : CAShapeLayer <MKUserLocationHeadingIndicator, MKUserLocationHeadingAnimatableIndicator>
 {
+    double _maxUncertaintyAngleToShowArrow;
     double _baseRadius;
     double _tipRadius;
     double _baseHalfAngle;
-    double _maxUncertaintyAngleToShowArrow;
+    UITraitCollection *_traitCollection;
+    double _minimumAccuracyRadius;
+    unsigned long long _mapType;
     _MKPuckAnnotationView *_userLocationView;
     double _headingRadians;
 }
@@ -26,7 +29,10 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) double headingRadians; // @synthesize headingRadians=_headingRadians;
+@property (nonatomic) unsigned long long mapType; // @synthesize mapType=_mapType;
+@property (nonatomic) double minimumAccuracyRadius; // @synthesize minimumAccuracyRadius=_minimumAccuracyRadius;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 @property (readonly, weak, nonatomic) _MKPuckAnnotationView *userLocationView; // @synthesize userLocationView=_userLocationView;
 
 - (void).cxx_destruct;
@@ -39,6 +45,7 @@ __attribute__((visibility("hidden")))
 - (double)_tipRadiusWhenVisible:(BOOL)arg1;
 - (void)animateToSetVisible:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithUserLocationView:(id)arg1;
+- (void)setAccuracyRadius:(double)arg1 duration:(double)arg2;
 - (void)updateHeading:(double)arg1;
 - (void)updateHeadingAccuracy:(double)arg1 previousAccuracy:(double)arg2;
 - (void)updateTintColor:(id)arg1;

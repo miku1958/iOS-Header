@@ -14,6 +14,8 @@
     MISSING_TYPE *healthAgencyModel;
     MISSING_TYPE *hasTraveled;
     MISSING_TYPE *dataSource;
+    MISSING_TYPE *traveledCell;
+    MISSING_TYPE *notTraveledCell;
     MISSING_TYPE *primaryButton;
     MISSING_TYPE *secondaryButton;
 }
@@ -27,6 +29,7 @@
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
+- (double)tableView:(id)arg1 heightForRowAtIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;

@@ -7,6 +7,6 @@
 @class NSString;
 
 @protocol NELSProxy
-- (void)fetchLSBundleProxyForBundleIdentifier:(NSString *)arg1 completionHandler:(void (^)(LSBundleProxy *, NSArray *))arg2;
+- (void)fetchLSBundleProxyForBundleIdentifier:(NSString *)arg1 completionHandler:(void (^)(NEBundleProxy *, NSArray *))arg2;
 @end
 

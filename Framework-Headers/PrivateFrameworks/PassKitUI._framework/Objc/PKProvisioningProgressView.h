@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, PKCheckGlyphLayer, UILabel, UIProgressView, UIScrollView, UITextView;
+@class LAUICheckmarkLayer, NSString, UILabel, UIProgressView, UIScrollView, UITextView;
 
 @interface PKProvisioningProgressView : UIView
 {
@@ -18,10 +18,10 @@
     UILabel *_secondaryLabel;
     UIProgressView *_progressView;
     UILabel *_progressLabel;
-    PKCheckGlyphLayer *_checkmarkGlyph;
+    LAUICheckmarkLayer *_checkmarkLayer;
 }
 
-@property (readonly, nonatomic) PKCheckGlyphLayer *checkmarkGlyph; // @synthesize checkmarkGlyph=_checkmarkGlyph;
+@property (readonly, nonatomic) LAUICheckmarkLayer *checkmarkLayer; // @synthesize checkmarkLayer=_checkmarkLayer;
 @property (strong, nonatomic) UIView *headerView; // @synthesize headerView=_headerView;
 @property (readonly, nonatomic) UITextView *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
 @property (strong, nonatomic) NSString *primaryText; // @synthesize primaryText=_primaryText;

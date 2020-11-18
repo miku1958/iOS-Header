@@ -11,7 +11,6 @@
 @class CKDMMCSItem, CKDMMCSItemGroupContext, NSString;
 @protocol CKDMMCSItemReaderWriterProtocol;
 
-__attribute__((visibility("hidden")))
 @interface CKDMMCSTestEncryptedItemReader : NSObject <CKDMMCSItemReaderWriterProtocol>
 {
     CKDMMCSItemGroupContext *_MMCSRequest;

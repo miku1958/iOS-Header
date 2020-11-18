@@ -34,12 +34,12 @@
 + (id)unarchivingContext;
 + (id)undoDeleteContext;
 + (id)unhidingContext;
+- (void).cxx_destruct;
 - (void)addDrawable:(id)arg1;
 - (void)addDrawables:(id)arg1;
 - (void)addInsertedTableInfo:(id)arg1;
 - (id)addedDrawables;
 - (BOOL)autoUpdateSmartFields;
-- (void)dealloc;
 - (id)importerID;
 - (id)insertedTableInfos;
 - (BOOL)invokeDOLC;

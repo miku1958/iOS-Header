@@ -6,11 +6,12 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class NSMutableDictionary, NSMutableSet, PKCloudRecordObject, PKCloudStoreService, PKPaymentTransaction;
+@class NSArray, NSMutableDictionary, NSMutableSet, PKCloudRecordObject, PKCloudStoreService, PKPaymentTransaction;
 
 @interface PKTransactionCloudKitDebugDetailsViewController : UITableViewController
 {
     PKCloudRecordObject *_cloudRecordObject;
+    NSArray *_records;
     PKPaymentTransaction *_transaction;
     PKCloudStoreService *_cloudStoreService;
     BOOL _loadingCloudRecordObject;

@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
 #import <RunningBoardServices/RBSProcessMonitorConfiguring-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSArray, NSHashTable, NSString, RBSProcessStateDescriptor;
 
-@interface RBSProcessMonitorConfiguration : NSObject <RBSProcessMonitorConfiguring, NSCopying, BSXPCSecureCoding>
+@interface RBSProcessMonitorConfiguration : NSObject <RBSProcessMonitorConfiguring, NSCopying, RBSXPCSecureCoding>
 {
     NSHashTable *_matchedHandles;
     NSString *_desc;
@@ -21,37 +21,34 @@
     unsigned long long _identifier;
     NSArray *_predicates;
     RBSProcessStateDescriptor *_stateDescriptor;
+    unsigned long long _events;
     CDUnknownBlockType _updateHandler;
+    CDUnknownBlockType _preventLaunchUpdateHandler;
 }
 
 @property (readonly, nonatomic) int clientPid; // @synthesize clientPid=_clientPid;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned long long events; // @synthesize events=_events;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSArray *predicates; // @synthesize predicates=_predicates;
+@property (copy, nonatomic) CDUnknownBlockType preventLaunchUpdateHandler; // @synthesize preventLaunchUpdateHandler=_preventLaunchUpdateHandler;
 @property (nonatomic) unsigned int serviceClass; // @synthesize serviceClass=_serviceClass;
 @property (copy, nonatomic) RBSProcessStateDescriptor *stateDescriptor; // @synthesize stateDescriptor=_stateDescriptor;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType updateHandler; // @synthesize updateHandler=_updateHandler;
 
-+ (unsigned long long)_nextIdentifier;
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
 - (void).cxx_destruct;
-- (id)_initWithIdentifier:(unsigned long long)arg1 andPid:(int)arg2;
-- (void)_validate;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)fullDescription;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)init;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)matchedProcesses;
 - (BOOL)matchesProcess:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
+- (void)setPreventLaunchUpdateHandle:(CDUnknownBlockType)arg1;
 
 @end
 

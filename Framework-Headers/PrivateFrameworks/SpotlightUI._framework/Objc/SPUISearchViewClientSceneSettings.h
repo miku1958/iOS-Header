@@ -18,6 +18,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) double distanceToTopOfIcons;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned int searchHeaderContextID;
+@property (readonly) unsigned long long searchHeaderLayerRenderID;
 @property (readonly) Class superclass;
 
 - (id)keyDescriptionForSetting:(long long)arg1;

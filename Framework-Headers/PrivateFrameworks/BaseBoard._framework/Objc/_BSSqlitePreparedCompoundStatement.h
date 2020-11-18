@@ -15,7 +15,6 @@
 
 - (void).cxx_destruct;
 - (BOOL)executeWithBindings:(id)arg1 resultRowHandler:(CDUnknownBlockType)arg2 error:(out id *)arg3;
-- (id)initWithDatabaseConnection:(id)arg1 statements:(id)arg2;
 
 @end
 

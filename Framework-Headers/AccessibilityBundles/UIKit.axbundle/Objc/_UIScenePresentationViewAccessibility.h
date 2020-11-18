@@ -13,7 +13,19 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_accessibilityGetRemoteElementArray;
+- (BOOL)_accessibilityHandlesRemoteFocusMovement;
+- (int)_accessibilityRemotePid;
+- (id)_accessibilityRemoteSceneID;
+- (void)_accessibilityResetRemoteElementArray;
+- (void)_accessibilitySetRemoteElementArray:(id)arg1;
+- (void)_accessibilitySetRemoteElementIfNecessary;
+- (BOOL)_accessibilityShouldUseRemoteElement;
+- (id)_axRemoteChild;
+- (id)_viewToAddFocusLayer;
 - (id)accessibilityElements;
+- (BOOL)canBecomeFocused;
+- (void)dealloc;
 
 @end
 

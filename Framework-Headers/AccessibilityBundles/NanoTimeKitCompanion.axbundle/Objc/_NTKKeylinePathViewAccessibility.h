@@ -16,6 +16,7 @@
 - (id)_accessibilityCustomActions;
 - (id)_accessibilityEditPageView;
 - (BOOL)_accessibilityOverridesInvalidFrames;
+- (BOOL)accessibilityActivate;
 - (void)accessibilityDecrement;
 - (void)accessibilityElementDidBecomeFocused;
 - (id)accessibilityHint;

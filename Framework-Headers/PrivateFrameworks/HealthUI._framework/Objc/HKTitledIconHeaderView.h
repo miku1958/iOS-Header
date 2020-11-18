@@ -21,7 +21,7 @@
 
 @property (nonatomic) BOOL centersSubtitle; // @synthesize centersSubtitle=_centersSubtitle;
 @property (strong, nonatomic) UIImage *iconImage; // @synthesize iconImage=_iconImage;
-@property (strong, nonatomic) UIColor *iconImageTint;
+@property (copy, nonatomic) UIColor *iconImageTint;
 @property (strong, nonatomic) UIImageView *iconImageView; // @synthesize iconImageView=_iconImageView;
 @property (copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (strong, nonatomic) UILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;

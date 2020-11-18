@@ -24,6 +24,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=_isEligibleForFocusInteraction) BOOL eligibleForFocusInteraction;
+@property (readonly, copy, nonatomic) NSString *focusGroupIdentifier;
 @property (readonly, nonatomic) id<UIFocusItemContainer> focusItemContainer;
 @property (readonly, nonatomic) struct CGRect frame; // @dynamic frame;
 @property (readonly) unsigned long long hash;
@@ -47,6 +48,7 @@
 - (id)_accessibilityAttributedValueForRange:(struct _NSRange *)arg1;
 - (unsigned long long)_accessibilityAutomationType;
 - (struct CGRect)_accessibilityBoundsForRange:(struct _NSRange)arg1;
+- (struct _NSRange)_accessibilityCharacterRangeForPosition:(unsigned long long)arg1;
 - (struct _NSRange)_accessibilityCheckRowRangeForTrait:(unsigned long long)arg1;
 - (id)_accessibilityColorDescription;
 - (id)_accessibilityContainerTypes;
@@ -62,6 +64,7 @@
 - (long long)_accessibilityExpandedStatus;
 - (BOOL)_accessibilityHandlesArrowKeys;
 - (BOOL)_accessibilityHandwritingAttributeAcceptsContractedBraille;
+- (BOOL)_accessibilityHasNativeFocus;
 - (BOOL)_accessibilityHasOtherAccessibleChildElements:(id)arg1;
 - (BOOL)_accessibilityHasTextOperations;
 - (id)_accessibilityHeaderElementsForColumn:(unsigned long long)arg1;
@@ -70,15 +73,18 @@
 - (void)_accessibilityInsertText:(id)arg1;
 - (BOOL)_accessibilityIsDataEmpty:(id)arg1;
 - (BOOL)_accessibilityIsFrameOutOfBounds;
+- (BOOL)_accessibilityIsGroupedParent;
 - (BOOL)_accessibilityIsPressed;
 - (BOOL)_accessibilityIsScrollDivDescendent;
 - (BOOL)_accessibilityIsScrollable;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_accessibilityIsTopMostWebElement;
 - (id)_accessibilityLineEndMarker:(id)arg1;
+- (long long)_accessibilityLineEndPosition;
 - (id)_accessibilityLinePosition:(BOOL)arg1 withMarker:(id)arg2;
 - (struct _NSRange)_accessibilityLineRangeForPosition:(unsigned long long)arg1;
 - (id)_accessibilityLineStartMarker:(id)arg1;
+- (long long)_accessibilityLineStartPosition;
 - (id)_accessibilityMakeScrollStatus:(struct CGRect)arg1 scrollPosition:(struct CGPoint)arg2 contentSize:(struct CGSize)arg3;
 - (id)_accessibilityMarkerForPoint:(struct CGPoint)arg1;
 - (id)_accessibilityMarkerPosition:(BOOL)arg1 withMarker:(id)arg2;
@@ -100,6 +106,7 @@
 - (void)_accessibilityReplaceCharactersAtCursor:(unsigned long long)arg1 withString:(id)arg2;
 - (BOOL)_accessibilityReplaceTextInRange:(struct _NSRange)arg1 withString:(id)arg2;
 - (BOOL)_accessibilityRequiresContextIdConversion;
+- (id)_accessibilityResolvedEditingStyles;
 - (id)_accessibilityRoleDescription;
 - (id)_accessibilityScrollAncestor;
 - (struct CGPoint)_accessibilityScrollRectToVisible:(struct CGRect)arg1;
@@ -119,8 +126,9 @@
 - (id)_accessibilityTextMarkerForPosition:(long long)arg1;
 - (id)_accessibilityTextMarkerRange;
 - (id)_accessibilityTextMarkerRangeForSelection;
-- (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1 string:(id)arg2;
+- (id)_accessibilityTextRectsForSpeakThisStringRange:(struct _NSRange)arg1 string:(id)arg2 wantsSentences:(BOOL)arg3;
 - (id)_accessibilityTextViewTextOperationResponder;
+- (unsigned long long)_accessibilityTraitsHelper;
 - (id)_accessibilityUserTestingChildren;
 - (id)_accessibilityUserTestingElementBaseType;
 - (id)_accessibilityValueForHandwriting;
@@ -139,8 +147,6 @@
 - (unsigned long long)_axContainedByLandmarkTrait;
 - (unsigned long long)_axContainedByListTrait;
 - (unsigned long long)_axContainedByTableTrait;
-- (id)_axDefaultFocusGroupDescriptor;
-- (id)_axGetStoredDefaultFocusGroupDescriptor;
 - (BOOL)_axHasMultipleAccessibleChildren:(long long *)arg1;
 - (unsigned long long)_axHasTextCursorTrait;
 - (unsigned long long)_axHeaderTrait;
@@ -157,7 +163,6 @@
 - (unsigned long long)_axSecureTextFieldTrait;
 - (unsigned long long)_axSelectedTrait;
 - (void)_axSetAreChildrenFocused:(BOOL)arg1;
-- (void)_axSetStoredDefaultFocusGroupDescriptor:(id)arg1;
 - (void)_axSetWebAreaURL:(id)arg1;
 - (unsigned long long)_axStaticTextTrait;
 - (unsigned long long)_axTabButtonTrait;
@@ -178,7 +183,7 @@
 - (BOOL)_axWebKitSupportsARIAPressed;
 - (id)_axWebKitTrueLinkParent;
 - (void)_destroyFocusLayer;
-- (void)_enqueueReorderingNotification:(id)arg1;
+- (void)_enqueReorderingNotification:(id)arg1;
 - (id)_focusGroupDescriptor;
 - (BOOL)_isCheckBox;
 - (BOOL)_isIBooks;
@@ -187,6 +192,7 @@
 - (void)_performPostScrollStatus:(id)arg1;
 - (id)_preferredFocusRegionCoordinateSpace;
 - (BOOL)_prepareAccessibilityCall;
+- (struct _NSRange)_rangeForWebTextMarkers:(id)arg1;
 - (id)_regionForFocusedItem:(id)arg1 inCoordinateSpace:(id)arg2;
 - (void)_repostFocusChangeNotification;
 - (void)_repostWebNotificaton:(id)arg1;
@@ -202,6 +208,7 @@
 - (id)accessibilityCustomActions;
 - (id)accessibilityCustomRotors;
 - (void)accessibilityDecrement;
+- (void)accessibilityElementDidBecomeFocused;
 - (struct CGRect)accessibilityFrame;
 - (struct CGRect)accessibilityFrameForScrolling;
 - (id)accessibilityHint;

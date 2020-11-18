@@ -7,51 +7,46 @@
 #import <Photos/PHAssetChangeRequest.h>
 
 #import <Photos/PHInsertChangeRequest-Protocol.h>
-#import <Photos/PHMomentSharePropertySet-Protocol.h>
 
-@class NSData, NSDictionary, NSManagedObjectID, NSMutableArray, NSMutableDictionary, NSObject, NSString, PHAssetCreationAdjustmentBakeInOptions, PHAssetCreationMetadataCopyOptions, PHAssetCreationPhotoStreamPublishingRequest, PHAssetResourceBag, PHMomentShare, PHRelationshipChangeRequestHelper, PLManagedAsset;
+@class NSDictionary, NSManagedObjectID, NSMutableArray, NSMutableDictionary, NSString, PHAssetCreationAdjustmentBakeInOptions, PHAssetCreationDerivativeContext, PHAssetCreationMetadataCopyOptions, PHAssetCreationPhotoStreamPublishingRequest, PHAssetResourceBag;
 
-@interface PHAssetCreationRequest : PHAssetChangeRequest <PHInsertChangeRequest, PHMomentSharePropertySet>
+@interface PHAssetCreationRequest : PHAssetChangeRequest <PHInsertChangeRequest>
 {
     NSMutableArray *_assetResources;
     PHAssetResourceBag *_assetResourceBag;
     NSMutableDictionary *_movedFiles;
     BOOL _duplicateAllowsPrivateMetadata;
     BOOL _shouldCreateScreenshot;
-    CDUnknownBlockType _concurrentWorkBlock;
-    PLManagedAsset *_asset;
-    NSObject *_previewImage;
-    NSObject *_thumbnailImage;
-    NSData *_originalHash;
-    BOOL _shouldPerformConcurrentWork;
+    PHAssetCreationDerivativeContext *_derivativeContext;
     BOOL _duplicateLivePhotoAsStill;
     BOOL _duplicateAsOriginal;
     BOOL _duplicateSinglePhotoFromBurst;
     BOOL _duplicateSpatialOverCaptureResources;
+    BOOL _duplicateAsAlternateAsset;
     short _importedBy;
     unsigned short _duplicateAssetPhotoLibraryType;
     NSString *_importSessionID;
     PHAssetCreationPhotoStreamPublishingRequest *__photoStreamPublishingRequest;
-    PHMomentShare *_momentShare;
-    NSString *_momentShareUUID;
-    PHRelationshipChangeRequestHelper *_momentShareHelper;
+    NSManagedObjectID *_limitedLibraryFetchFilterObjectID;
     NSString *_duplicateAssetIdentifier;
     PHAssetCreationAdjustmentBakeInOptions *_adjustmentBakeInOptions;
     PHAssetCreationMetadataCopyOptions *_metadataCopyOptions;
     CDUnknownBlockType _destinationAssetAvailabilityHandler;
+    NSString *_forcePairingIdentifier;
     CDStruct_1b6d18a9 _duplicateStillSourceTime;
 }
 
 @property (readonly, nonatomic) NSDictionary *_movedFiles;
 @property (strong, nonatomic, setter=_setPhotoStreamPublishingRequest:) PHAssetCreationPhotoStreamPublishingRequest *_photoStreamPublishingRequest; // @synthesize _photoStreamPublishingRequest=__photoStreamPublishingRequest;
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (copy, nonatomic, setter=_setAdjustmentBakeInOptions:) PHAssetCreationAdjustmentBakeInOptions *adjustmentBakeInOptions; // @synthesize adjustmentBakeInOptions=_adjustmentBakeInOptions;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic, setter=_setDestinationAssetAvailabilityHandler:) CDUnknownBlockType destinationAssetAvailabilityHandler; // @synthesize destinationAssetAvailabilityHandler=_destinationAssetAvailabilityHandler;
 @property (nonatomic, setter=_setDuplicateAllowsPrivateMetadata:) BOOL duplicateAllowsPrivateMetadata;
+@property (nonatomic, setter=_setDuplicateAsAlternateAsset:) BOOL duplicateAsAlternateAsset; // @synthesize duplicateAsAlternateAsset=_duplicateAsAlternateAsset;
 @property (nonatomic, setter=_setDuplicateAsOriginal:) BOOL duplicateAsOriginal; // @synthesize duplicateAsOriginal=_duplicateAsOriginal;
 @property (strong, nonatomic, setter=_setDuplicateAssetIdentifier:) NSString *duplicateAssetIdentifier; // @synthesize duplicateAssetIdentifier=_duplicateAssetIdentifier;
 @property (nonatomic, setter=_setDuplicateAssetPhotoLibraryType:) unsigned short duplicateAssetPhotoLibraryType; // @synthesize duplicateAssetPhotoLibraryType=_duplicateAssetPhotoLibraryType;
@@ -59,21 +54,24 @@
 @property (nonatomic, setter=_setDuplicateSinglePhotoFromBurst:) BOOL duplicateSinglePhotoFromBurst; // @synthesize duplicateSinglePhotoFromBurst=_duplicateSinglePhotoFromBurst;
 @property (nonatomic, setter=_setDuplicateSpatialOverCaptureResources:) BOOL duplicateSpatialOverCaptureResources; // @synthesize duplicateSpatialOverCaptureResources=_duplicateSpatialOverCaptureResources;
 @property (nonatomic, setter=_setDuplicateStillSourceTime:) CDStruct_1b6d18a9 duplicateStillSourceTime; // @synthesize duplicateStillSourceTime=_duplicateStillSourceTime;
+@property (readonly, nonatomic) NSString *forcePairingIdentifier; // @synthesize forcePairingIdentifier=_forcePairingIdentifier;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *importSessionID; // @synthesize importSessionID=_importSessionID;
 @property (nonatomic) short importedBy; // @synthesize importedBy=_importedBy;
 @property (readonly) BOOL isNewRequest;
+@property (strong, nonatomic, getter=_limitedLibraryFetchFilterObjectID, setter=_setLimitedLibraryFetchFilterObjectID:) NSManagedObjectID *limitedLibraryFetchFilterObjectID; // @synthesize limitedLibraryFetchFilterObjectID=_limitedLibraryFetchFilterObjectID;
 @property (readonly, nonatomic) NSString *managedEntityName;
 @property (copy, nonatomic, setter=_setMetadataCopyOptions:) PHAssetCreationMetadataCopyOptions *metadataCopyOptions; // @synthesize metadataCopyOptions=_metadataCopyOptions;
-@property (strong, nonatomic) PHMomentShare *momentShare; // @synthesize momentShare=_momentShare;
-@property (readonly, nonatomic) PHRelationshipChangeRequestHelper *momentShareHelper; // @synthesize momentShareHelper=_momentShareHelper;
-@property (strong, nonatomic) NSString *momentShareUUID; // @synthesize momentShareUUID=_momentShareUUID;
+@property (readonly, getter=isMutated) BOOL mutated;
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (nonatomic, getter=_shouldCreateScreenshot, setter=_setShouldCreateScreenshot:) BOOL shouldCreateScreenshot;
-@property (nonatomic) BOOL shouldPerformConcurrentWork; // @synthesize shouldPerformConcurrentWork=_shouldPerformConcurrentWork;
+@property (nonatomic) BOOL shouldPerformConcurrentWork;
 @property (readonly) Class superclass;
 
++ (id)_creationOptionsFromExternalResource:(id)arg1 andSourceUrl:(id)arg2;
 + (id)_creationRequestForAssetUsingUUID:(id)arg1;
++ (id)_imageIOThumbnailCreationOptionsFromDerivativeContext:(id)arg1;
++ (id)_jpegDataFromRAWData:(id)arg1 derivativeContext:(id)arg2;
 + (id)creationRequestForAsset;
 + (id)creationRequestForAssetCopyFromAsset:(id)arg1;
 + (id)creationRequestForAssetCopyFromAsset:(id)arg1 options:(id)arg2;
@@ -93,38 +91,36 @@
 - (void)_copyMediaAnalysisProperties:(id)arg1;
 - (void)_copyMetadataFromAsset:(id)arg1;
 - (void)_copyUserSpecificMetadataFromAsset:(id)arg1;
-- (BOOL)_createAssetAsAdjusted:(id)arg1 fromValidatedResources:(id)arg2 error:(id *)arg3;
-- (BOOL)_createAssetAsPhotoIris:(id)arg1 fromValidatedResources:(id)arg2 error:(id *)arg3;
+- (BOOL)_createAssetAsAdjusted:(id)arg1 fromValidatedResources:(id)arg2 mainFileMetadata:(id)arg3 error:(id *)arg4;
+- (BOOL)_createAssetAsPhotoIris:(id)arg1 fromValidatedResources:(id)arg2 mainFileMetadata:(id)arg3 error:(id *)arg4;
+- (id)_createAssetFromValidatedResources:(id)arg1 withUUID:(id)arg2 assetAlreadyExistsAsPlaceholder:(BOOL)arg3 inPhotoLibrary:(id)arg4 error:(id *)arg5;
 - (BOOL)_createAudioResourceForAsset:(id)arg1 fromValidatedResources:(id)arg2 photoLibrary:(id)arg3 error:(id *)arg4;
 - (BOOL)_createOriginalResourceForAsset:(id)arg1 fromValidatedResource:(id)arg2 resourceType:(unsigned int)arg3 photoLibrary:(id)arg4 destinationURL:(id)arg5 error:(id *)arg6;
-- (BOOL)_createRAWSidecarForAsset:(id)arg1 fromValidatedResources:(id)arg2 photoLibrary:(id)arg3 error:(id *)arg4;
+- (BOOL)_createRAWSidecarForAsset:(id)arg1 fromValidatedResources:(id)arg2 mainFileMetadata:(id)arg3 photoLibrary:(id)arg4 error:(id *)arg5;
 - (BOOL)_createSocResourceForAsset:(id)arg1 fromValidatedResources:(id)arg2 photoLibrary:(id)arg3 error:(id *)arg4;
 - (BOOL)_createXmpResourceForAsset:(id)arg1 fromValidatedResources:(id)arg2 photoLibrary:(id)arg3 error:(id *)arg4;
 - (void)_didMoveFileFromURL:(id)arg1 toURL:(id)arg2;
 - (id)_duplicatedAssetResourcesFromAsset:(id)arg1 stillSourceTime:(CDStruct_1b6d18a9)arg2 flattenLivePhotoIntoStillPhoto:(BOOL)arg3 original:(BOOL)arg4 removeBurstIdentifier:(BOOL)arg5 error:(id *)arg6;
 - (id)_exifPropertiesFromSourceImageDataExifProperties:(id)arg1;
 - (id)_externalLivePhotoResourceForAsset:(id)arg1;
+- (struct CGImageSource *)_imageSourceForDerivatives;
 - (id)_ingestOriginalFromSrcURL:(id)arg1 toDstURL:(id)arg2 useSecureMove:(BOOL)arg3 resource:(id)arg4 resourceType:(unsigned int)arg5 asset:(id)arg6 error:(id *)arg7;
 - (BOOL)_ingestOriginalInPlaceSrcURL:(id)arg1 dstURL:(id)arg2 asset:(id)arg3 error:(id *)arg4;
-- (id)_managedAssetFromPrimaryResourceData:(id)arg1 withUUID:(id)arg2 photoLibrary:(id)arg3 getImageSource:(struct CGImageSource **)arg4 imageData:(id *)arg5;
+- (id)_managedAssetFromPrimaryResourceData:(id)arg1 withUUID:(id)arg2 photoLibrary:(id)arg3 mainFileMetadata:(id *)arg4 getImageSource:(struct CGImageSource **)arg5 imageData:(id *)arg6;
 - (long long)_mediaTypeForCreatedAsset;
-- (id)_mutableMomentShareObjectIDsAndUUIDs;
-- (void)_pairLivePhotoResource:(id)arg1 withAssetInLibrary:(id)arg2 metadata:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)_populateDuplicatingAssetCreationRequest:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
-- (void)_prepareMomentShareHelperIfNeeded;
 - (void)_resetMovedFiles;
 - (BOOL)_restoreMovedFilesOnFailure;
 - (short)_savedAssetTypeForAsset;
 - (id)_secureMove:(BOOL)arg1 assetResource:(id)arg2 photoLibrary:(id)arg3 error:(id *)arg4;
 - (id)_secureMove:(BOOL)arg1 fileAtURL:(id)arg2 toURL:(id)arg3 capabilities:(id)arg4 error:(id *)arg5;
-- (void)_setupConcurrentWorkIfNecessaryWithImageSource:(struct CGImageSource *)arg1 originalImageData:(id)arg2;
-- (id)_sourceOptionsForCreateThumbnailWithAsset:(id)arg1 hasAdjustments:(BOOL)arg2;
+- (void)_setupDerivativeCreationContextForAsset:(id)arg1 imageSource:(struct CGImageSource *)arg2 imageData:(id)arg3;
 - (void)_updateMutationsForDuplicatingPrivateMetadataFromAsset:(id)arg1;
+- (BOOL)_validateNewObjectUUID:(id)arg1 inPhotoLibrary:(id)arg2 error:(id *)arg3;
 - (BOOL)_writeDataToDisk:(id)arg1 imageUTIType:(id)arg2 exifProperties:(id)arg3 mainFileURL:(id)arg4 thumbnailData:(id)arg5;
 - (void)addResourceWithType:(long long)arg1 data:(id)arg2 options:(id)arg3;
 - (void)addResourceWithType:(long long)arg1 fileURL:(id)arg2 options:(id)arg3;
-- (BOOL)applyMutationsToManagedObject:(id)arg1 photoLibrary:(id)arg2 error:(id *)arg3;
-- (id)createAssetFromValidatedResources:(id)arg1 withUUID:(id)arg2 inPhotoLibrary:(id)arg3 error:(id *)arg4;
+- (id)createAssetFromValidatedResources:(id)arg1 withUUID:(id)arg2 assetAlreadyExistsAsPlaceholder:(BOOL)arg3 inPhotoLibrary:(id)arg4 error:(id *)arg5;
 - (id)createManagedObjectForInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 - (void)encodeToXPCDict:(id)arg1;
 - (void)finalizeRequestWithBatchSuccess:(BOOL)arg1;
@@ -132,13 +128,13 @@
 - (id)initForNewObjectWithUUID:(id)arg1;
 - (id)initWithHelper:(id)arg1;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
+- (BOOL)isDuplicateAssetCreationRequest;
 - (BOOL)isNew;
 - (id)makeSubstitueRenderImageFileFromPath:(id)arg1 primaryResource:(id)arg2 fileSuffix:(id)arg3 error:(id *)arg4;
 - (id)makeSubstitueRenderVideoFileFromPath:(id)arg1 primaryResource:(id)arg2 fileSuffix:(id)arg3 error:(id *)arg4;
-- (BOOL)needsConcurrentWork;
+- (void)performConcurrentWork;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
 - (id)placeholderForCreatedAsset;
-- (void)updateOriginalResourceOptionsWithResource:(id)arg1 sourceUrl:(id)arg2;
 - (BOOL)validateInsertIntoPhotoLibrary:(id)arg1 error:(id *)arg2;
 
 @end

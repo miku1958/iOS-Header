@@ -9,10 +9,11 @@
 #import <ReminderKit/REMConflictResolving-Protocol.h>
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMSaveRequestTrackedValue-Protocol.h>
+#import <ReminderKit/REMSortingStyleReadWriteProtocol-Protocol.h>
 
 @class NSArray, NSData, NSDate, NSDictionary, NSOrderedSet, NSSet, NSString, REMAccount, REMAccountCapabilities, REMChangedKeysObserver, REMColor, REMListAppearanceContextChangeItem, REMListCalDAVNotificationContextChangeItem, REMListShareeContextChangeItem, REMListStorage, REMListSublistContextChangeItem, REMObjectID, REMResolutionTokenMap, REMSaveRequest;
 
-@interface REMListChangeItem : NSObject <REMConflictResolving, REMSaveRequestTrackedValue, REMExternalSyncMetadataWritableProviding>
+@interface REMListChangeItem : NSObject <REMConflictResolving, REMSaveRequestTrackedValue, REMExternalSyncMetadataWritableProviding, REMSortingStyleReadWriteProtocol>
 {
     REMSaveRequest *_saveRequest;
     REMListStorage *_storage;
@@ -29,6 +30,7 @@
 @property (readonly, nonatomic) BOOL canBeIncludedInGroup;
 @property (strong, nonatomic) REMChangedKeysObserver *changedKeysObserver; // @synthesize changedKeysObserver=_changedKeysObserver;
 @property (strong, nonatomic) REMColor *color; // @dynamic color;
+@property (readonly, nonatomic) NSString *currentUserShareParticipantID; // @dynamic currentUserShareParticipantID;
 @property (strong, nonatomic) NSDictionary *daBulkRequests; // @dynamic daBulkRequests;
 @property (nonatomic) long long daDisplayOrder; // @dynamic daDisplayOrder;
 @property (strong, nonatomic) NSString *daExternalIdentificationTag; // @dynamic daExternalIdentificationTag;
@@ -46,6 +48,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isGroup; // @dynamic isGroup;
 @property (readonly, nonatomic) BOOL isPlaceholder; // @dynamic isPlaceholder;
+@property (readonly, nonatomic) BOOL isShared;
 @property (readonly, nonatomic) BOOL isSharedToMe;
 @property (copy, nonatomic) NSDate *lastUserAccessDate; // @dynamic lastUserAccessDate;
 @property (copy, nonatomic) NSString *name; // @dynamic name;
@@ -56,9 +59,11 @@
 @property (readonly, nonatomic) REMObjectID *remObjectID; // @dynamic remObjectID;
 @property (readonly, nonatomic) NSOrderedSet *reminderIDsMergeableOrdering; // @dynamic reminderIDsMergeableOrdering;
 @property (readonly, nonatomic) NSData *reminderIDsMergeableOrderingData; // @dynamic reminderIDsMergeableOrderingData;
+@property (strong, nonatomic) NSDictionary *reminderIDsOrderingHints; // @dynamic reminderIDsOrderingHints;
 @property (strong, nonatomic) NSSet *reminderIDsToUndelete; // @dynamic reminderIDsToUndelete;
 @property (nonatomic) BOOL remindersICSDisplayOrderChanged; // @dynamic remindersICSDisplayOrderChanged;
 @property (strong, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @dynamic resolutionTokenMap;
+@property (strong, nonatomic) NSData *resolutionTokenMapData; // @dynamic resolutionTokenMapData;
 @property (readonly, nonatomic) REMSaveRequest *saveRequest; // @synthesize saveRequest=_saveRequest;
 @property (copy, nonatomic) NSString *sharedOwnerAddress; // @dynamic sharedOwnerAddress;
 @property (strong, nonatomic) REMObjectID *sharedOwnerID; // @dynamic sharedOwnerID;
@@ -67,6 +72,8 @@
 @property (strong, nonatomic) NSArray *sharees; // @dynamic sharees;
 @property (nonatomic) long long sharingStatus; // @dynamic sharingStatus;
 @property (nonatomic) BOOL showingLargeAttachments; // @dynamic showingLargeAttachments;
+@property (nonatomic) long long sortingDirection; // @dynamic sortingDirection;
+@property (copy, nonatomic) NSString *sortingStyle; // @dynamic sortingStyle;
 @property (readonly, copy, nonatomic) REMListStorage *storage; // @synthesize storage=_storage;
 @property (readonly, nonatomic) REMListSublistContextChangeItem *sublistContext;
 @property (readonly) Class superclass;
@@ -75,6 +82,7 @@
 - (void).cxx_destruct;
 - (void)_editReminderIDsOrderingUsingBlock:(CDUnknownBlockType)arg1;
 - (void)_lowLevelAddReminderChangeItemToOrdering:(id)arg1 atIndexOfSibling:(id)arg2 isAfter:(BOOL)arg3 withParent:(id)arg4;
+- (BOOL)_lowLevelAddReminderIDToOrdering:(id)arg1 relativeToSiblingID:(id)arg2 isAfter:(BOOL)arg3;
 - (void)_lowLevelApplyUndoToOrdering:(id)arg1;
 - (void)_reassignReminderChangeItem:(id)arg1 withParentReminderChangeItem:(id)arg2;
 - (void)_testingOnly_setReminderIDsMergeableOrder:(id)arg1;
@@ -94,6 +102,7 @@
 - (void)insertReminderChangeItem:(id)arg1 beforeReminderChangeItem:(id)arg2;
 - (void)lowLevelAddReminderIDToOrdering:(id)arg1 withParentReminderChangeItem:(id)arg2;
 - (id)lowLevelRemoveReminderIDFromOrdering:(id)arg1;
+- (BOOL)optimisticallyInsertReminderIDToOrderingForReminderChangeItemBeingSaved:(id)arg1;
 - (id)removeFromAccountAllowingUndo;
 - (void)removeFromParent;
 - (id)removeFromParentAllowingUndo;

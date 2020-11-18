@@ -39,7 +39,6 @@
 - (id)initWithManager:(id)arg1;
 - (void)purgeSearchableItemsWithIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (id)supportedContentTypes;
-- (id)supportedINIntentClassNames;
 
 @end
 

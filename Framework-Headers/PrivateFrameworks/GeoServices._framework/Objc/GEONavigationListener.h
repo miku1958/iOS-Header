@@ -28,7 +28,6 @@
     CDUnknownBlockType _positionFromSignUpdatedHandler;
     CDUnknownBlockType _positionFromManeuverUpdatedHandler;
     CDUnknownBlockType _positionFromDestinationUpdatedHandler;
-    CDUnknownBlockType _trafficIncidentAlertDetailsDataUpdatedHandler;
     CDUnknownBlockType _navigationVoiceVolumeUpdatedHandler;
     unsigned long long _navigationState;
     int _transportType;
@@ -51,7 +50,6 @@
 @property (copy, nonatomic) CDUnknownBlockType routeSummaryUpdatedHandler; // @synthesize routeSummaryUpdatedHandler=_routeSummaryUpdatedHandler;
 @property (copy, nonatomic) CDUnknownBlockType stepIndexUpdatedHandler; // @synthesize stepIndexUpdatedHandler=_stepIndexUpdatedHandler;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) CDUnknownBlockType trafficIncidentAlertDetailsDataUpdatedHandler; // @synthesize trafficIncidentAlertDetailsDataUpdatedHandler=_trafficIncidentAlertDetailsDataUpdatedHandler;
 @property (copy, nonatomic) CDUnknownBlockType transitSummaryUpdatedHandler; // @synthesize transitSummaryUpdatedHandler=_transitSummaryUpdatedHandler;
 
 - (void).cxx_destruct;
@@ -68,7 +66,6 @@
 - (void)_notifyWithRouteSummary:(id)arg1;
 - (void)_notifyWithStepIndex:(unsigned long long)arg1;
 - (void)_notifyWithStepNameInfo:(id)arg1;
-- (void)_notifyWithTrafficIncidentDetailsData:(id)arg1;
 - (void)_notifyWithTransitSummary:(id)arg1;
 - (void)_open;
 - (void)currentRoadNameUpdated:(id)arg1;
@@ -87,7 +84,6 @@
 - (void)requestRouteSummary;
 - (void)requestStepIndex;
 - (void)requestStepNameInfo;
-- (void)requestTrafficIncidentDetailsData;
 - (void)requestTransitSummary;
 - (void)routeSummaryUpdatedWithActiveRouteDetailsData:(id)arg1;
 - (void)routeSummaryUpdatedWithGuidanceStateData:(id)arg1;
@@ -98,7 +94,6 @@
 - (void)routeSummaryUpdatedWithRideSelectionData:(id)arg1;
 - (void)routeSummaryUpdatedWithStepIndexData:(id)arg1;
 - (void)routeSummaryUpdatedWithStepNameInfoData:(id)arg1;
-- (void)routeSummaryUpdatedWithTrafficIncidentAlertDetailsData:(id)arg1;
 - (void)routeSummaryUpdatedWithTransitSummaryData:(id)arg1;
 
 @end

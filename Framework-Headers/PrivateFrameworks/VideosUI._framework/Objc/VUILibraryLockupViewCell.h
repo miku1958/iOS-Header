@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 @property (strong, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
++ (void)configureImageViewArtworkForLockupCell:(id)arg1 withMedia:(id)arg2 width:(double)arg3;
 + (void)configureLockupCell:(id)arg1 withMedia:(id)arg2 width:(double)arg3 forMetrics:(BOOL)arg4;
 - (void).cxx_destruct;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;

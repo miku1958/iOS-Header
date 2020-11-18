@@ -44,7 +44,7 @@
 @property (weak, nonatomic) UIViewController *viewController; // @synthesize viewController=_viewController;
 
 - (void).cxx_destruct;
-- (void)_configurePersonViewController:(id)arg1 invitation:(id)arg2;
+- (void)_configurePersonViewController:(id)arg1 invitation:(id)arg2 isRemovable:(BOOL)arg3;
 - (id)_contactForUser:(id)arg1;
 - (void)_didAddUser:(id)arg1;
 - (void)_didInsertAtIndex:(unsigned long long)arg1;

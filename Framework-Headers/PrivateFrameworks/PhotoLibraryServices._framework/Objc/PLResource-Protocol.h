@@ -37,5 +37,6 @@
 - (BOOL)isDefaultOrientation;
 - (BOOL)isDerivative;
 - (BOOL)isPlayableVideo;
+- (float)scaleGivenAssetHasAdjustments:(BOOL)arg1 currentWidth:(long long)arg2 currentHeight:(long long)arg3;
 @end
 

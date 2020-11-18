@@ -31,13 +31,7 @@
         unsigned int read_servicesState:1;
         unsigned int read_statusNotificationId:1;
         unsigned int read_userCredentials:1;
-        unsigned int wrote_abAssignmentMetadata:1;
-        unsigned int wrote_analyticMetadata:1;
-        unsigned int wrote_clientCapabilities:1;
-        unsigned int wrote_problemIds:1;
-        unsigned int wrote_servicesState:1;
-        unsigned int wrote_statusNotificationId:1;
-        unsigned int wrote_userCredentials:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -58,14 +52,6 @@
 + (BOOL)isValid:(id)arg1;
 + (Class)problemIdType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsProblemId:(id)arg1;
-- (void)_readAbAssignmentMetadata;
-- (void)_readAnalyticMetadata;
-- (void)_readClientCapabilities;
-- (void)_readProblemIds;
-- (void)_readServicesState;
-- (void)_readStatusNotificationId;
-- (void)_readUserCredentials;
 - (void)addProblemId:(id)arg1;
 - (void)clearProblemIds;
 - (void)copyTo:(id)arg1;
@@ -75,7 +61,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)populateAnalyticsMetadata;
 - (id)problemIdAtIndex:(unsigned long long)arg1;

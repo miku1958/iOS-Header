@@ -39,7 +39,6 @@
 
 + (int)_currentAuthorizationStatus;
 + (id)alarmWithAbsoluteDate:(id)arg1;
-+ (id)alarmWithAlarm:(id)arg1;
 + (id)alarmWithRelativeOffset:(double)arg1;
 + (BOOL)areLocationsAllowed;
 + (BOOL)areLocationsAllowedWithAuthorizationStatus:(int)arg1;
@@ -47,10 +46,11 @@
 + (BOOL)areLocationsCurrentlyEnabled;
 + (double)defaultGeofencedReminderRadius;
 + (Class)frozenClass;
++ (id)knownIdentityKeysForComparison;
 + (id)knownRelationshipMultiValueKeys;
 + (id)knownRelationshipSingleValueKeys;
++ (id)knownSingleValueKeysForComparison;
 + (long long)maxPublicProximity;
-+ (id)noneTriggerDate;
 - (void).cxx_destruct;
 - (BOOL)_reset;
 - (id)acknowledgedDate;
@@ -58,25 +58,20 @@
 - (long long)alarmType;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (BOOL)defaultAlarm;
 - (id)description;
 - (id)init;
 - (id)initWithAbsoluteDate:(id)arg1;
 - (id)initWithRelativeOffset:(double)arg1;
-- (BOOL)isTimeToLeaveAlarm;
 - (BOOL)isTopographicallyEqualToAlarm:(id)arg1;
-- (BOOL)isVehicleAlarm;
 - (id)ownerUUID;
 - (id)relativeOffsetRaw;
 - (void)removeSnoozedAlarm:(id)arg1;
 - (id)semanticIdentifier;
 - (void)setAcknowledgedDate:(id)arg1;
 - (void)setAlarmType:(long long)arg1;
-- (void)setIsTimeToLeaveAlarm:(BOOL)arg1;
 - (void)setRelativeOffsetRaw:(id)arg1;
-- (void)setTriggerIsNotRelativeToTravelTime:(BOOL)arg1;
 - (void)setUUID:(id)arg1;
-- (BOOL)shouldIncludeInNormalAlarms;
-- (BOOL)triggerIsNotRelativeToTravelTime;
 - (BOOL)validateWithOwner:(id)arg1 error:(id *)arg2;
 
 @end

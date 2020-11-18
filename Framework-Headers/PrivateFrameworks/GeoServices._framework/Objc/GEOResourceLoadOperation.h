@@ -9,7 +9,7 @@
 #import <GeoServices/GEOResourceLoadOperation-Protocol.h>
 #import <GeoServices/NSURLSessionDataDelegate-Protocol.h>
 
-@class GEOApplicationAuditToken, GEOReportedProgress, NSData, NSMutableData, NSProgress, NSString, NSURL, NSURLSession, NSURLSessionTask;
+@class GEOApplicationAuditToken, GEOReportedProgress, NSData, NSDate, NSMutableData, NSProgress, NSString, NSURL, NSURLSession, NSURLSessionTask;
 @protocol GEORequestCounterTicket, OS_dispatch_queue, OS_os_log;
 
 @interface GEOResourceLoadOperation : NSObject <NSURLSessionDataDelegate, GEOResourceLoadOperation>
@@ -21,6 +21,7 @@
     NSURLSession *_session;
     NSURLSessionTask *_task;
     id<GEORequestCounterTicket> _requestCounterTicket;
+    NSString *_eTag;
     NSMutableData *_data;
     BOOL _expectsPartialContent;
     GEOApplicationAuditToken *_auditToken;
@@ -30,6 +31,8 @@
     BOOL _preferDirectNetworking;
     GEOReportedProgress *_progress;
     NSObject<OS_os_log> *_log;
+    NSString *_serviceAddress;
+    NSDate *_starttime;
 }
 
 @property (readonly, nonatomic) NSData *data; // @synthesize data=_data;
@@ -45,10 +48,11 @@
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
 - (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
+- (void)URLSession:(id)arg1 task:(id)arg2 didFinishCollectingMetrics:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didReceiveChallenge:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)cancel;
 - (void)dealloc;
-- (id)initWithResource:(id)arg1 existingPartialData:(id)arg2 auditToken:(id)arg3 baseURL:(id)arg4 proxyURL:(id)arg5 log:(id)arg6;
+- (id)initWithResource:(id)arg1 existingPartialData:(id)arg2 eTag:(id)arg3 auditToken:(id)arg4 baseURL:(id)arg5 alternateURLs:(id)arg6 proxyURL:(id)arg7 log:(id)arg8;
 - (void)startWithCompletionHandler:(CDUnknownBlockType)arg1 callbackQueue:(id)arg2;
 
 @end

@@ -14,9 +14,7 @@
 + (id)imageRendererWithSize:(struct CGSize)arg1 scale:(double)arg2;
 + (void)initialize;
 + (id)inkIdentifierForToolType:(long long)arg1;
-+ (id)inkPicker;
 + (id)inkWithIdentifier:(id)arg1 color:(id)arg2 weight:(double)arg3;
-+ (id)inlineInkPickerWithFrame:(struct CGRect)arg1;
 + (BOOL)modernPencilKitAvailable;
 + (BOOL)pencilKitAvailable;
 + (id)recognizerWithType:(int)arg1 mode:(int)arg2;

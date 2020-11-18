@@ -9,8 +9,8 @@
 @interface NSNumber (FCHLSPlaylist)
 
 @property (readonly, nonatomic) double CGFloatValue;
-@property (readonly, nonatomic) unsigned long long bl_hlsUnsignedIntegerValue;
 
+- (unsigned long long)bl_hlsUnsignedIntegerValue;
 - (BOOL)fc_isGreaterThan:(id)arg1;
 - (BOOL)fc_isLessThan:(id)arg1;
 - (BOOL)fc_isLessThanOrEqualTo:(id)arg1;

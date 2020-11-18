@@ -19,14 +19,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) id<MTLDevice> device;
+@property (readonly, nonatomic) unsigned long long gpuAddress;
 @property (readonly) unsigned long long hash;
 @property (readonly) NSString *label;
-@property (nonatomic) unsigned long long resourceIndex;
+@property (readonly, nonatomic) unsigned long long pixelFormat;
+@property (readonly, nonatomic) unsigned long long resourceIndex;
 @property (readonly) Class superclass;
 @property (readonly) unsigned long long uniqueIdentifier;
 
-- (void)acceptVisitor:(id)arg1;
-- (void)dealloc;
 
 @end
 

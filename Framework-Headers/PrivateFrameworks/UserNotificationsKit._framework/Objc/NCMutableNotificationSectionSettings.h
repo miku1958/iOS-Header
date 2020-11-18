@@ -14,6 +14,7 @@
 
 @property (copy, nonatomic) NSString *displayName; // @dynamic displayName;
 @property (nonatomic) BOOL hasProvisionalAuthorization; // @dynamic hasProvisionalAuthorization;
+@property (nonatomic) BOOL isAppClip; // @dynamic isAppClip;
 @property (nonatomic) BOOL isDeliveredQuietly; // @dynamic isDeliveredQuietly;
 @property (copy, nonatomic) NSString *sectionIdentifier; // @dynamic sectionIdentifier;
 @property (copy, nonatomic) NSDictionary *settings; // @dynamic settings;

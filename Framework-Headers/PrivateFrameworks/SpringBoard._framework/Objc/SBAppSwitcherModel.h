@@ -36,7 +36,7 @@
 - (void)dealloc;
 - (void)hide:(id)arg1;
 - (id)init;
-- (id)initWithIconController:(id)arg1 applicationController:(id)arg2;
+- (id)initWithIconController:(id)arg1 applicationController:(id)arg2 recents:(id)arg3;
 - (void)recentAppLayouts:(id)arg1 didRemoveAppLayoutForFallingOffList:(id)arg2;
 - (id)recentDisplayItemsForBundleIdentifier:(id)arg1 includingHiddenAppLayouts:(BOOL)arg2;
 - (void)remove:(id)arg1;

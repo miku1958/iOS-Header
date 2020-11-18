@@ -12,8 +12,8 @@
 {
     BOOL _shouldDeactivateAfterInitialResults;
     BOOL _shouldSuppressDataCollection;
-    HKObjectType *_objectType;
     NSString *_debugIdentifier;
+    HKObjectType *_objectType;
     _HKFilter *_filter;
     long long _qualityOfService;
     double _activationTime;

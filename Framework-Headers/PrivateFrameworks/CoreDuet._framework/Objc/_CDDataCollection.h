@@ -27,28 +27,13 @@
 }
 
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *activity; // @synthesize activity=_activity;
-@property (readonly, copy, nonatomic) NSDate *collectionDate; // @synthesize collectionDate=_collectionDate;
-@property (readonly, copy, nonatomic) NSString *dataDirectory; // @synthesize dataDirectory=_dataDirectory;
-@property (readonly, copy, nonatomic) NSString *dataPath;
-@property (readonly, nonatomic) unsigned long long daysPerBatch; // @synthesize daysPerBatch=_daysPerBatch;
-@property (nonatomic) BOOL deleteSessionOnCleanup; // @synthesize deleteSessionOnCleanup=_deleteSessionOnCleanup;
-@property (readonly, nonatomic) _CDEventStreamsRegister *eventStreamsRegister; // @synthesize eventStreamsRegister=_eventStreamsRegister;
-@property (readonly, nonatomic) unsigned long long maxBatches; // @synthesize maxBatches=_maxBatches;
-@property (readonly, nonatomic) double samplingRate; // @synthesize samplingRate=_samplingRate;
-@property (nonatomic) BOOL selectedForDataCollection; // @synthesize selectedForDataCollection=_selectedForDataCollection;
-@property (strong, nonatomic) _CDDataCollectionSession *session; // @synthesize session=_session;
-@property (readonly, copy, nonatomic) NSString *sessionPath; // @synthesize sessionPath=_sessionPath;
 @property (readonly, nonatomic) id<_DKKnowledgeQuerying> storage; // @synthesize storage=_storage;
 @property (copy, nonatomic) CDUnknownBlockType submissionBlock; // @synthesize submissionBlock=_submissionBlock;
 
 - (void).cxx_destruct;
-- (void)_execute;
-- (void)cleanup;
 - (void)execute;
 - (id)initWithStorage:(id)arg1 activity:(id)arg2;
 - (id)initWithStorage:(id)arg1 activity:(id)arg2 sessionPath:(id)arg3 dataDirectory:(id)arg4 collectionDate:(id)arg5 samplingRate:(double)arg6 daysPerBatch:(unsigned long long)arg7 eventStreams:(id)arg8 maxBatches:(unsigned long long)arg9;
-- (BOOL)submitDataForCollection;
-- (id)truncatedFileHandle;
 
 @end
 

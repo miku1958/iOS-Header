@@ -14,6 +14,9 @@
 }
 
 @property (readonly, copy, nonatomic) NSURL *baseURL;
+@property (readonly, nonatomic, getter=isContinueListeningAvailable) BOOL continueListeningAvailable;
+@property (readonly, nonatomic) long long continueListeningMaxQueueSizeInRequest;
+@property (readonly, nonatomic) long long continueListeningMaxUpcomingTracksSizeToMaintain;
 @property (readonly, nonatomic) long long getTracksDPInfoKBSyncCount;
 @property (readonly, nonatomic) long long maxSupportedProtocolVersion;
 

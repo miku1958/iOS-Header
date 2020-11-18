@@ -13,7 +13,7 @@ __attribute__((visibility("hidden")))
 @interface SYOutgoingSyncAllObjectsSession : SYSession
 {
     NSObject<OS_os_activity> *_sessionActivity;
-    long long _state;
+    unsigned int _state;
     BOOL _errorIsLocal;
     NSObject<OS_dispatch_source> *_stateUpdateSource;
     NSObject<OS_dispatch_source> *_sessionTimer;
@@ -33,7 +33,7 @@ __attribute__((visibility("hidden")))
 - (void)_sendChanges;
 - (void)_sessionCompleteWithError:(id)arg1;
 - (void)_sessionFailed;
-- (void)_setStateQuietly:(long long)arg1;
+- (void)_setStateQuietly:(unsigned int)arg1;
 - (BOOL)canRestart;
 - (BOOL)canRollback;
 - (void)cancelWithError:(id)arg1;
@@ -44,9 +44,9 @@ __attribute__((visibility("hidden")))
 - (double)remainingSessionTime;
 - (void)setCanRestart:(BOOL)arg1;
 - (void)setCanRollback:(BOOL)arg1;
-- (void)setState:(long long)arg1;
+- (void)setState:(unsigned int)arg1;
 - (void)start:(CDUnknownBlockType)arg1;
-- (long long)state;
+- (unsigned int)state;
 - (BOOL)wasCancelled;
 
 @end

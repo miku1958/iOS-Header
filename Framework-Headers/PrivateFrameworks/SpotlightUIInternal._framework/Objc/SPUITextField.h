@@ -4,62 +4,128 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SearchUI/SearchUISearchField.h>
+#import <UIKit/UISearchTextField.h>
 
-@class NSArray, NSString, SPSearchEntity, SPUIHeaderBlurView, UIButton, UIImage, UIView;
-@protocol SearchUITextFieldDelegate;
+#import <SpotlightUIInternal/UIGestureRecognizerDelegate-Protocol.h>
+#import <SpotlightUIInternal/UIScribbleInteractionDelegate-Protocol.h>
 
-@interface SPUITextField : SearchUISearchField
+@class MTMaterialView, NSArray, NSString, NSTimer, SPSearchEntity, SPUICompletionStringModel, SPUICompletionStringView, SPUIHeaderBlurView, UIGestureRecognizer, UIImage, UIResponder, UIScribbleInteraction, UIView;
+@protocol SPUITextFieldDelegate, UITextCursorAssertion;
+
+@interface SPUITextField : UISearchTextField <UIGestureRecognizerDelegate, UIScribbleInteractionDelegate>
 {
+    BOOL _useChunkyMetrics;
     BOOL _ignoreTokensUpdate;
-    NSArray *_suggestions;
-    UIImage *_clearButtonImage;
-    UIButton *_microphoneButton;
+    BOOL _lastUpdateWasDeletion;
+    UIResponder *_responderForKeyboardInput;
+    SPUICompletionStringModel *_searchFieldModel;
     long long _activeInterfaceOrientation;
-    SPUIHeaderBlurView *_blurView;
+    NSArray *_suggestions;
     UIView *_tintView;
-    NSString *_lastSearchText;
-    SPSearchEntity *_lastSearchEntity;
-    struct CGSize _imageSize;
+    SPUIHeaderBlurView *_blurView;
+    MTMaterialView *_materialView;
+    SPUICompletionStringView *_hintingView;
+    UIGestureRecognizer *_completionTapGestureRecognizer;
+    id<UITextCursorAssertion> _caretAssertion;
+    UIScribbleInteraction *_scribbleInteraction;
+    NSString *_restorationStringOnKBMovement;
+    NSTimer *_switchBackToSuggestionsTimer;
+    UIImage *_microphoneImage;
 }
 
-@property long long activeInterfaceOrientation; // @synthesize activeInterfaceOrientation=_activeInterfaceOrientation;
-@property (strong) SPUIHeaderBlurView *blurView; // @synthesize blurView=_blurView;
-@property (strong) UIImage *clearButtonImage; // @synthesize clearButtonImage=_clearButtonImage;
-@property (strong) id<SearchUITextFieldDelegate> delegate; // @dynamic delegate;
+@property (nonatomic) long long activeInterfaceOrientation; // @synthesize activeInterfaceOrientation=_activeInterfaceOrientation;
+@property (strong, nonatomic) SPUIHeaderBlurView *blurView; // @synthesize blurView=_blurView;
+@property (strong) id<UITextCursorAssertion> caretAssertion; // @synthesize caretAssertion=_caretAssertion;
+@property (readonly) BOOL completionResultIsPotentiallyPunchout;
+@property (strong) UIGestureRecognizer *completionTapGestureRecognizer; // @synthesize completionTapGestureRecognizer=_completionTapGestureRecognizer;
+@property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<SPUITextFieldDelegate> delegate; // @dynamic delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (strong) SPUICompletionStringView *hintingView; // @synthesize hintingView=_hintingView;
 @property BOOL ignoreTokensUpdate; // @synthesize ignoreTokensUpdate=_ignoreTokensUpdate;
-@property struct CGSize imageSize; // @synthesize imageSize=_imageSize;
-@property (strong) SPSearchEntity *lastSearchEntity; // @synthesize lastSearchEntity=_lastSearchEntity;
-@property (strong) NSString *lastSearchText; // @synthesize lastSearchText=_lastSearchText;
-@property (strong) UIButton *microphoneButton; // @synthesize microphoneButton=_microphoneButton;
+@property BOOL lastUpdateWasDeletion; // @synthesize lastUpdateWasDeletion=_lastUpdateWasDeletion;
+@property (strong) MTMaterialView *materialView; // @synthesize materialView=_materialView;
+@property (strong) UIImage *microphoneImage; // @synthesize microphoneImage=_microphoneImage;
+@property (readonly, nonatomic) BOOL needsLandscapeHeight;
+@property (readonly, nonatomic) BOOL optOutOfGoButton;
+@property (weak, nonatomic) UIResponder *responderForKeyboardInput; // @synthesize responderForKeyboardInput=_responderForKeyboardInput;
+@property (strong) NSString *restorationStringOnKBMovement; // @synthesize restorationStringOnKBMovement=_restorationStringOnKBMovement;
+@property (strong) UIScribbleInteraction *scribbleInteraction; // @synthesize scribbleInteraction=_scribbleInteraction;
 @property (readonly) SPSearchEntity *searchEntity;
+@property (strong, nonatomic) SPUICompletionStringModel *searchFieldModel; // @synthesize searchFieldModel=_searchFieldModel;
 @property (strong) NSArray *suggestions; // @synthesize suggestions=_suggestions;
+@property (readonly) Class superclass;
+@property (strong) NSTimer *switchBackToSuggestionsTimer; // @synthesize switchBackToSuggestionsTimer=_switchBackToSuggestionsTimer;
+@property (readonly, nonatomic) NSString *textIncludingTokens;
 @property (strong) UIView *tintView; // @synthesize tintView=_tintView;
+@property (nonatomic) BOOL useChunkyMetrics; // @synthesize useChunkyMetrics=_useChunkyMetrics;
 
 + (Class)_backgroundViewClass;
-+ (BOOL)_isRTL;
 + (id)removeDictationCharacterInString:(id)arg1;
++ (void)updateBlueButton;
 - (void).cxx_destruct;
 - (void)_handleKeyUIEvent:(id)arg1;
-- (struct CGRect)_microphoneRectForBounds:(struct CGRect)arg1;
+- (void)_promoteCompletionAndMoveForward:(BOOL)arg1;
 - (struct CGRect)_shiftedBoundsForText:(struct CGRect)arg1;
 - (BOOL)_shouldSendContentChangedNotificationsIfOnlyMarkedTextChanged;
+- (void)applyMetrics;
+- (void)beginFloatingCursorAtPoint:(struct CGPoint)arg1;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)clearAllTokens;
 - (struct CGRect)clearButtonRectForBounds:(struct CGRect)arg1;
+- (void)commandBPressed;
+- (void)commandCPressed;
+- (void)commitToCommitedSearch;
+- (id)currentQueryContext;
 - (struct CGRect)editingRectForBounds:(struct CGRect)arg1;
+- (void)enterKeyPressed;
 - (void)escapeKeyCommand;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+- (BOOL)hasContent;
 - (id)init;
+- (void)insertText:(id)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (id)keyCommands;
+- (BOOL)keyboardInput:(id)arg1 shouldInsertText:(id)arg2 isMarkedText:(BOOL)arg3;
+- (void)keyboardInputChangedSelection:(id)arg1;
+- (BOOL)keyboardInputShouldDelete:(id)arg1;
+- (void)layoutSubviews;
+- (void)leftArrowPressed;
 - (struct CGRect)leftViewRectForBounds:(struct CGRect)arg1;
-- (BOOL)needsLandscapeHeight;
+- (id)nextResponder;
+- (struct CGRect)placeholderRectForBounds:(struct CGRect)arg1;
+- (void)pressesEnded:(id)arg1 withEvent:(id)arg2;
+- (void)promoteCompletionIfPossibleAndMoveForward:(BOOL)arg1;
+- (struct CGRect)rectForMagnifierForOriginalRect:(struct CGRect)arg1 bounds:(struct CGRect)arg2 isLeftSide:(BOOL)arg3;
+- (void)removeCaretAssertion;
+- (void)removeCompletionAndHighlight;
+- (void)resetClearButtonWithScale:(long long)arg1;
+- (void)resetMicrophoneButtonWithScale:(long long)arg1;
+- (void)resetPhoneClearButton;
+- (BOOL)resignFirstResponder;
+- (void)rightArrowPressed;
 - (struct CGRect)rightViewRectForBounds:(struct CGRect)arg1;
-- (id)textIncludingTokens;
+- (void)scribbleInteractionWillBeginWriting:(id)arg1;
+- (void)selectAll:(id)arg1;
+- (void)setFont:(id)arg1;
+- (void)setTextColor:(id)arg1;
+- (BOOL)shouldPromoteCompletion;
+- (double)textFieldHeight;
 - (struct CGRect)textRectForBounds:(struct CGRect)arg1;
+- (void)tintColorDidChange;
+- (void)toggleBackToCommittedSearch;
+- (void)toggleCommitedSearch;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)updateCaretVisibility;
+- (void)updateCaretVisibility:(BOOL)arg1;
+- (void)updateFocusResult:(id)arg1 cardSection:(id)arg2 focusIsOnFirstResult:(BOOL)arg3;
+- (void)updateRightView;
 - (void)updateTextRange:(id)arg1;
 - (void)updateToken:(id)arg1;
 - (void)updateWithPrimaryColor:(id)arg1 secondaryColor:(id)arg2 isOnDarkBackground:(BOOL)arg3;
+- (double)widthOfPlaceholderLabel;
 
 @end
 

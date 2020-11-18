@@ -10,10 +10,8 @@
 
 @interface HDSQLiteRawCheckConstraint : HDSQLiteCheckConstraint
 {
-    NSString *__rawSQL;
+    NSString *_rawSQL;
 }
-
-@property (readonly, copy, nonatomic) NSString *_rawSQL; // @synthesize _rawSQL=__rawSQL;
 
 + (id)checkConstraintWithSQL:(id)arg1;
 - (void).cxx_destruct;

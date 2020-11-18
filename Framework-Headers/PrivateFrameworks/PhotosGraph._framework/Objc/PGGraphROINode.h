@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <PhotosGraph/PGGraphNode.h>
+#import <PhotosGraph/PGGraphPropertylessNode.h>
 
 #import <PhotosGraph/PGGraphLocalizable-Protocol.h>
 #import <PhotosGraph/PGGraphPortraitTopic-Protocol.h>
@@ -12,8 +12,9 @@
 
 @class NSArray, NSString;
 
-@interface PGGraphROINode : PGGraphNode <PGGraphPortraitTopic, PGGraphLocalizable, PGGraphSynonymSupport>
+@interface PGGraphROINode : PGGraphPropertylessNode <PGGraphPortraitTopic, PGGraphLocalizable, PGGraphSynonymSupport>
 {
+    NSString *_label;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -29,6 +30,12 @@
 @property (readonly) Class superclass;
 
 + (id)_localizationKeyForROINode:(id)arg1;
++ (id)validROILabels;
+- (void).cxx_destruct;
+- (unsigned short)domain;
+- (id)initWithLabel:(id)arg1;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (id)label;
 
 @end
 

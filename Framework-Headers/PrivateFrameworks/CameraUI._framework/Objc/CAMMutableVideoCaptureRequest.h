@@ -12,15 +12,17 @@
 #import <CameraUI/CAMMutableCaptureRequestPersistence-Protocol.h>
 #import <CameraUI/CAMMutableCaptureRequestPower-Protocol.h>
 
-@class CLHeading, CLLocation, NSString, NSURL;
+@class CAMAnalyticsCaptureEvent, CLHeading, CLLocation, NSString, NSURL;
 @protocol CAMVideoCaptureRequestDelegate;
 
 @interface CAMMutableVideoCaptureRequest : CAMVideoCaptureRequest <CAMMutableCaptureRequestPersistence, CAMMutableCaptureRequestLocation, CAMMutableCaptureRequestPower, CAMMutableCaptureRequestOrigin, CAMMutableCaptureRequestEncodingBehavior>
 {
 }
 
+@property (strong, nonatomic) CAMAnalyticsCaptureEvent *analyticsEvent; // @dynamic analyticsEvent;
 @property (nonatomic) unsigned int assertionIdentifier;
 @property (nonatomic) long long captureDevice; // @dynamic captureDevice;
+@property (nonatomic, getter=isCaptureMirrored) BOOL captureMirrored; // @dynamic captureMirrored;
 @property (nonatomic) long long captureMode; // @dynamic captureMode;
 @property (nonatomic) long long captureOrientation; // @dynamic captureOrientation;
 @property (nonatomic) long long captureVideoConfiguration; // @dynamic captureVideoConfiguration;

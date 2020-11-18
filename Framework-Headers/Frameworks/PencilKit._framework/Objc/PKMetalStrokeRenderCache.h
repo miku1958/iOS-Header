@@ -26,7 +26,7 @@
 - (void)addBuffer:(id)arg1;
 - (unsigned long long)cacheCost;
 - (id)init;
-- (unsigned long long)inkVersion;
+- (BOOL)isCompatibleWithInk:(id)arg1;
 - (BOOL)lockPurgeableResourcesAddToSet:(id)arg1;
 - (BOOL)needsCompute;
 

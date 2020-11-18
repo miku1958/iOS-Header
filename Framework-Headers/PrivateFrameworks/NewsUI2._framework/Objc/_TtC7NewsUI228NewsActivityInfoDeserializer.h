@@ -11,6 +11,9 @@
 @interface _TtC7NewsUI228NewsActivityInfoDeserializer : NSObject
 {
     MISSING_TYPE *analyticsReferralFactory;
+    MISSING_TYPE *intentDeserializer;
+    MISSING_TYPE *featureAvailability;
+    MISSING_TYPE *feedIDKey;
 }
 
 - (void).cxx_destruct;

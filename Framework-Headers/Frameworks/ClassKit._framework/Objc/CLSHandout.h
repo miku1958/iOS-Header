@@ -40,9 +40,11 @@
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 
++ (id)new;
 + (id)relations;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_adjustPublishingStateIfNeeded;
 - (id)_init;
 - (void)addHandoutAttachment:(id)arg1;
 - (void)addHandoutRecipient:(id)arg1;

@@ -11,6 +11,7 @@
 }
 
 + (id)localizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3;
++ (id)localizedStringForKey:(id)arg1 value:(id)arg2 table:(id)arg3 allowSiri:(BOOL)arg4;
 
 @end
 

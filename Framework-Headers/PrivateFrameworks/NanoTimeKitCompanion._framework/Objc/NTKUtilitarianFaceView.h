@@ -48,7 +48,6 @@
 - (double)_handsAlphaForEditMode:(long long)arg1;
 - (double)_keylineCornerRadiusForComplicationSlot:(id)arg1;
 - (struct CGRect)_keylineFrameForColorEditing;
-- (struct CGRect)_keylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (struct CGRect)_keylineFrameForDensityEditing;
 - (unsigned long long)_keylineLabelAlignmentForColorEditing;
 - (unsigned long long)_keylineLabelAlignmentForComplicationSlot:(id)arg1;
@@ -60,6 +59,7 @@
 - (id)_keylineViewForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (id)_keylineViewForDensityEditing;
 - (long long)_legacyLayoutOverrideforComplicationType:(unsigned long long)arg1 slot:(id)arg2;
+- (struct CGRect)_legacyUnscaledKeylineFrameForCustomEditMode:(long long)arg1 slot:(id)arg2;
 - (void)_loadLayoutRules;
 - (void)_loadScene;
 - (id)_newLegacyViewForComplication:(id)arg1 family:(long long)arg2 slot:(id)arg3;

@@ -17,12 +17,15 @@
 - (void)_handleButtonEventConsumePressMessage:(id)arg1;
 - (void)acquireAssertionOfType:(long long)arg1 forReason:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (id)acquireHUDHiddenAssertionForIdentifier:(id)arg1;
+- (void)addWidgetWithIdentifier:(id)arg1 toPage:(int)arg2 withSizing:(int)arg3;
+- (void)addWidgetsToEachPage;
 - (void)countScenesForBundleIdentifier:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)disableRemoteStateDumpWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enableRemoteStateDumpWithTimeout:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchHapticTypeForButtonKind:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)fetchUnlockCredentialSetWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handleMessage:(id)arg1 withType:(long long)arg2;
+- (void)loadStashedSwitcherModelFromPath:(id)arg1;
 - (void)requestAppSwitcherAppearanceForHiddenApplicationWithBundleIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)requestStateDump:(unsigned long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)resetToHomeScreenAnimated:(BOOL)arg1;
@@ -31,10 +34,13 @@
 - (void)setButtonEventServiceIsWaitingForServerMessages:(BOOL)arg1;
 - (void)setEventMask:(unsigned long long)arg1 forButtonKind:(long long)arg2 priority:(long long)arg3;
 - (void)setHapticType:(long long)arg1 forButtonKind:(long long)arg2;
+- (void)setHiddenFeaturesEnabled:(BOOL)arg1;
 - (void)setIdleTimerEnabled:(BOOL)arg1;
+- (void)setMallocStackLoggingEnabled:(BOOL)arg1;
 - (void)setOrientationLockEnabled:(BOOL)arg1;
 - (void)setRequestsHIDEvents:(BOOL)arg1 token:(id)arg2 forButtonKind:(long long)arg3;
 - (void)setTestRunnerRecoveryApplicationBundleIdentifier:(id)arg1;
+- (void)stashSwitcherModelToPath:(id)arg1;
 - (void)suspendAllDisplays;
 - (long long)toggleStateForButtonKind:(long long)arg1;
 

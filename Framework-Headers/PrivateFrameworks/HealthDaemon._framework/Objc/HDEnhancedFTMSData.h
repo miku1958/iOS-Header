@@ -16,8 +16,6 @@
     NSNumber *_averageSpeed;
 }
 
-@property (strong, nonatomic) NSNumber *averageSpeed; // @synthesize averageSpeed=_averageSpeed;
-@property (strong, nonatomic) NSNumber *instantaneousSpeed; // @synthesize instantaneousSpeed=_instantaneousSpeed;
 @property (readonly, nonatomic) NSDate *updateTime;
 
 + (id)_buildWithBinaryValue:(id)arg1 error:(id *)arg2;

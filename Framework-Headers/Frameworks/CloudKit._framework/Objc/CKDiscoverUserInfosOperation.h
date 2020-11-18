@@ -6,34 +6,22 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class NSArray, NSMutableDictionary;
+@class NSArray;
 
 @interface CKDiscoverUserInfosOperation : CKOperation
 {
-    CDUnknownBlockType _discoverUserInfosCompletionBlock;
     NSArray *_emailAddresses;
     NSArray *_userRecordIDs;
-    NSMutableDictionary *_emailsToUserInfos;
-    NSMutableDictionary *_userRecordIDsToUserInfos;
+    CDUnknownBlockType _discoverUserInfosCompletionBlock;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType discoverUserInfosCompletionBlock; // @synthesize discoverUserInfosCompletionBlock=_discoverUserInfosCompletionBlock;
 @property (copy, nonatomic) NSArray *emailAddresses; // @synthesize emailAddresses=_emailAddresses;
-@property (strong, nonatomic) NSMutableDictionary *emailsToUserInfos; // @synthesize emailsToUserInfos=_emailsToUserInfos;
 @property (copy, nonatomic) NSArray *userRecordIDs; // @synthesize userRecordIDs=_userRecordIDs;
-@property (strong, nonatomic) NSMutableDictionary *userRecordIDsToUserInfos; // @synthesize userRecordIDsToUserInfos=_userRecordIDsToUserInfos;
 
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
-- (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
-- (void)fillFromOperationInfo:(id)arg1;
-- (void)fillOutOperationInfo:(id)arg1;
-- (BOOL)hasCKOperationCallbacksSet;
-- (id)init;
 - (id)initWithEmailAddresses:(id)arg1 userRecordIDs:(id)arg2;
-- (Class)operationInfoClass;
-- (void)performCKOperation;
 
 @end
 

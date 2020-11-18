@@ -8,6 +8,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface _HDCarouselSessionAssertion : HDAssertion
 {
     BOOL _supportsAOT;

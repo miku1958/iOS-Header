@@ -17,9 +17,9 @@
 
 @property (strong, nonatomic) NSMutableIndexSet *visibleIndexSet; // @synthesize visibleIndexSet=_visibleIndexSet;
 
+- (void).cxx_destruct;
 - (BOOL)anyHiddenIndicesInRange:(struct _NSRange)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)deleteRange:(struct _NSRange)arg1;
 - (unsigned long long)findNthNextVisibleIndex:(unsigned long long)arg1 fromIndex:(unsigned long long)arg2;
 - (unsigned long long)findNthPreviousVisibleIndex:(unsigned long long)arg1 fromIndex:(unsigned long long)arg2;

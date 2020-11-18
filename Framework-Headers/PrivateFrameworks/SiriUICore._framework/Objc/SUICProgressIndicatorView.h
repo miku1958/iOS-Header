@@ -31,7 +31,9 @@
 - (void)setDarkened:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setProgressValue:(double)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setRingColor:(id)arg1;
+- (void)setRingLineWidth:(double)arg1;
 - (void)setShadowColor:(id)arg1;
+- (void)setShadowLineWidth:(double)arg1;
 
 @end
 

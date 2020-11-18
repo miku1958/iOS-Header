@@ -31,12 +31,12 @@
 - (void)_axClearRemoteElements;
 - (void)_didRelaunchProcess;
 - (void)_hideKeyboard;
-- (BOOL)_isEligibleForFocusInteraction;
 - (void)_pasteboardChanged:(id)arg1;
 - (void)_processDidExit;
 - (void)_registerForNotificationsIfNecessary;
 - (void)_setAccessibilityWebProcessToken:(id)arg1;
 - (void)_signalAccessibilityPageLoadCompleteForCatalyst;
+- (id)_systemDefaultFocusGroupDescriptor;
 - (id)_viewToAddFocusLayer;
 - (void)_zoomToRevealFocusedElement;
 - (struct CGPoint)accessibilityActivationPoint;
@@ -50,7 +50,9 @@
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
 - (void)dealloc;
+- (void)decreaseSizeForWebView:(id)arg1;
 - (void)handleKeyWebEvent:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
+- (void)increaseSizeForWebView:(id)arg1;
 - (BOOL)isAccessibilityElement;
 - (void)paste:(id)arg1;
 - (void)selectAll:(id)arg1;

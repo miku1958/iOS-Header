@@ -11,6 +11,8 @@
 __attribute__((visibility("hidden")))
 @interface _TtC12NewsArticles29TextSizeControlViewController : UIViewController
 {
+    MISSING_TYPE *commandCenter;
+    MISSING_TYPE *tracker;
     MISSING_TYPE *styler;
     MISSING_TYPE *divider;
     MISSING_TYPE *stackView;

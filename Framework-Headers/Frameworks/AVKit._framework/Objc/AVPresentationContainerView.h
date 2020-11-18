@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)_setContinuousCornerRadius:(double)arg1;
 - (void)_setCornerRadius:(double)arg1;
 - (BOOL)avkit_isBeingDismissed;
+- (BOOL)avkit_isBeingPresented;
 - (BOOL)avkit_isCounterRotatedForTransition;
 - (BOOL)avkit_isVideoGravityFrozen;
 - (struct UIEdgeInsets)avkit_overrideLayoutMarginsForCounterRotation;

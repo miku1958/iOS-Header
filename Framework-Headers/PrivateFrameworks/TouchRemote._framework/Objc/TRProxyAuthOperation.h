@@ -19,6 +19,8 @@
 @property (strong, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (strong, nonatomic) NSSet *targetedServices; // @synthesize targetedServices=_targetedServices;
 
++ (long long)_appleIDServiceTypeForTRAccountServices:(id)arg1;
++ (id)_logStringForAppleIDServiceType:(long long)arg1;
 - (void).cxx_destruct;
 - (void)_handleProxyAuthenticationResponse:(id)arg1;
 - (void)_handleProxyDeviceResponse:(id)arg1;

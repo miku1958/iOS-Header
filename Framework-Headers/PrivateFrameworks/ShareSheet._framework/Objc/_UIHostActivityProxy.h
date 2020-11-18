@@ -15,16 +15,24 @@
     BOOL _disabled;
     BOOL _favorite;
     BOOL _restricted;
+    BOOL _longPressable;
     NSUUID *_proxyIdentifier;
     NSNumber *_imageSlot;
     NSNumber *_labelSlot;
     double _platterTextHeight;
+    NSUUID *_activityIdentifierShare;
+    NSUUID *_activityIdentifierOpen;
+    NSUUID *_activityIdentifierCopy;
 }
 
+@property (strong, nonatomic) NSUUID *activityIdentifierCopy; // @synthesize activityIdentifierCopy=_activityIdentifierCopy;
+@property (strong, nonatomic) NSUUID *activityIdentifierOpen; // @synthesize activityIdentifierOpen=_activityIdentifierOpen;
+@property (strong, nonatomic) NSUUID *activityIdentifierShare; // @synthesize activityIdentifierShare=_activityIdentifierShare;
 @property (nonatomic, getter=isDisabled) BOOL disabled; // @synthesize disabled=_disabled;
 @property (nonatomic, getter=isFavorite) BOOL favorite; // @synthesize favorite=_favorite;
 @property (strong, nonatomic) NSNumber *imageSlot; // @synthesize imageSlot=_imageSlot;
 @property (strong, nonatomic) NSNumber *labelSlot; // @synthesize labelSlot=_labelSlot;
+@property (nonatomic, getter=isLongPressable) BOOL longPressable; // @synthesize longPressable=_longPressable;
 @property (nonatomic) double platterTextHeight; // @synthesize platterTextHeight=_platterTextHeight;
 @property (strong, nonatomic) NSUUID *proxyIdentifier; // @synthesize proxyIdentifier=_proxyIdentifier;
 @property (nonatomic, getter=isRestricted) BOOL restricted; // @synthesize restricted=_restricted;

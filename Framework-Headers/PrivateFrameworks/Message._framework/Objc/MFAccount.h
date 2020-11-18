@@ -10,20 +10,27 @@
 #import <Message/EDAccount-Protocol.h>
 #import <Message/EFPubliclyDescribable-Protocol.h>
 
-@class ACAccount, ECAccount, ECAuthenticationScheme, NSArray, NSDictionary, NSMutableDictionary, NSString;
+@class ACAccount, ECAccount, ECAuthenticationScheme, EFLocked, NSArray, NSDictionary, NSMutableDictionary, NSString;
 
 @interface MFAccount : NSObject <EDAccount, ECAuthenticatableAccount, EFPubliclyDescribable>
 {
     ACAccount *_persistentAccount;
     struct os_unfair_lock_s _persistentAccountLock;
     NSMutableDictionary *_unsavedAccountProperties;
+    struct os_unfair_lock_s _descriptionLock;
+    struct os_unfair_lock_s _privacyDescriptionLock;
+    NSString *_cachedPrivacySafeDescription;
+    NSString *_cachedDescription;
     NSArray *emailAddressStrings;
     ECAccount *_baseAccount;
     NSString *_sourceApplicationBundleIdentifier;
+    EFLocked *_currentConnections;
 }
 
 @property (readonly) ACAccount *accountForRenewingCredentials;
 @property (readonly, nonatomic) ECAccount *baseAccount; // @synthesize baseAccount=_baseAccount;
+@property (readonly, nonatomic) BOOL connectionsAreConstrained;
+@property (readonly, nonatomic) EFLocked *currentConnections; // @synthesize currentConnections=_currentConnections;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *displayName;
@@ -40,6 +47,7 @@
 @property (readonly) NSString *parentAccountIdentifier;
 @property (copy, nonatomic) NSString *password;
 @property (readonly) ACAccount *persistentAccount;
+@property (readonly) NSString *personaIdentifier;
 @property (strong, nonatomic) ECAuthenticationScheme *preferredAuthScheme;
 @property (readonly, nonatomic) BOOL primaryiCloudAccount;
 @property (readonly) NSDictionary *properties;
@@ -47,7 +55,7 @@
 @property (readonly, copy, nonatomic) NSString *statisticsKind;
 @property (readonly) Class superclass;
 @property (readonly) NSString *syncStoreIdentifier;
-@property (readonly, copy, nonatomic) ACAccount *systemAccount;
+@property (readonly, nonatomic) ACAccount *systemAccount;
 @property (readonly) NSString *type;
 @property (readonly) NSString *uniqueID;
 @property (strong) NSString *username;
@@ -136,7 +144,6 @@
 - (id)networkAccountIdentifier;
 - (void)persistentAccountDidChange:(id)arg1 previousAccount:(id)arg2;
 - (unsigned int)portNumber;
-- (BOOL)promptUserForPasswordWithTitle:(id)arg1 message:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)promptUserForWebLoginWithURL:(id)arg1 shouldConfirm:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)releaseAllConnections;
 - (void)releaseAllForcedConnections;

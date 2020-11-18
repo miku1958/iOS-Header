@@ -10,6 +10,21 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct CSAttributeEvaluatorContext {
+    id _field1;
+    CDUnknownBlockType _field2;
+    unsigned long long _field3;
+    BOOL _field4;
+    char *_field5;
+    long long _field6;
+    long long _field7;
+    CDStruct_183601bc *_field8;
+    CDStruct_183601bc *_field9;
+    long long *_field10;
+    long long _field11;
+    long long _field12;
+};
+
 struct CSUnpackInfo {
     short _field1;
     short _field2;
@@ -28,6 +43,13 @@ struct os_unfair_lock_s {
 };
 
 #pragma mark Typedef'd Structures
+
+typedef struct {
+    long long _field1;
+    long long _field2;
+} CDStruct_912cb5d2;
+
+typedef struct CDStruct_183601bc;
 
 typedef struct {
     char *containerBytes;

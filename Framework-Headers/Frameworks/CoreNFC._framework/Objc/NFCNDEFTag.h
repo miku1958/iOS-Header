@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
+- (void).cxx_destruct;
 - (void)_connectWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)_connectWithError:(id *)arg1;
 - (BOOL)_disconnectWithError:(id *)arg1;
@@ -35,7 +36,6 @@ __attribute__((visibility("hidden")))
 - (void)_setSession:(id)arg1;
 - (void)_setTag:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (void)dealloc;
 - (void)dispatchBlockOnDelegateQueueAsync:(CDUnknownBlockType)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

@@ -45,20 +45,7 @@
         unsigned int read_requestGuid:1;
         unsigned int read_siriClientMetadata:1;
         unsigned int read_sourceURL:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_assignments:1;
-        unsigned int wrote_branchExpirationTtlHours:1;
-        unsigned int wrote_clientConfig:1;
-        unsigned int wrote_mapsAbClientMetadata:1;
-        unsigned int wrote_parsecClientMetadata:1;
-        unsigned int wrote_rapClientMetadata:1;
-        unsigned int wrote_refreshIntervalSeconds:1;
-        unsigned int wrote_requestGuid:1;
-        unsigned int wrote_siriClientMetadata:1;
-        unsigned int wrote_sourceURL:1;
-        unsigned int wrote_timestamp:1;
-        unsigned int wrote_invalidatePoiCache:1;
-        unsigned int wrote_invalidateTileCache:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -92,16 +79,7 @@
 + (Class)assignmentType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsAssignment:(id)arg1;
 - (id)_clientConfigValueForKey:(id)arg1;
-- (void)_readAssignments;
-- (void)_readClientConfig;
-- (void)_readMapsAbClientMetadata;
-- (void)_readParsecClientMetadata;
-- (void)_readRapClientMetadata;
-- (void)_readRequestGuid;
-- (void)_readSiriClientMetadata;
-- (void)_readSourceURL;
 - (void)addAssignment:(id)arg1;
 - (id)assignmentAtIndex:(unsigned long long)arg1;
 - (unsigned long long)assignmentsCount;
@@ -114,7 +92,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

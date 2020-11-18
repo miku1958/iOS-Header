@@ -15,6 +15,7 @@
 }
 
 + (BOOL)readingAvailable;
+- (void).cxx_destruct;
 - (void)_callbackDidBecomeActive;
 - (void)_callbackDidInvalidateWithError:(id)arg1;
 - (id)_getVASDataWithConfig:(id)arg1 lastInSequence:(BOOL)arg2;

@@ -6,25 +6,23 @@
 
 #import <QuartzCore/CALayer.h>
 
-@class CATextLayer, NSAttributedString;
+@class AVPictureInPictureIndicatorSublayer, NSString;
 
 __attribute__((visibility("hidden")))
 @interface AVPictureInPictureIndicatorLayer : CALayer
 {
-    NSAttributedString *_attributedText;
-    struct CGSize _imageSize;
-    struct NSEdgeInsets _languageAwareOutsets;
-    double _lineHeight;
-    double _baselineOffset;
-    CATextLayer *_textLayer;
-    CALayer *_imageLayer;
+    AVPictureInPictureIndicatorSublayer *_contentLayer;
+    struct CGRect _videoRectWhenPIPBegan;
 }
+
+@property (readonly, nonatomic) AVPictureInPictureIndicatorSublayer *contentLayer; // @synthesize contentLayer=_contentLayer;
+@property (copy, nonatomic) NSString *customText;
+@property (readonly, nonatomic) struct CGRect videoRectWhenPIPBegan; // @synthesize videoRectWhenPIPBegan=_videoRectWhenPIPBegan;
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithDisplayScale:(double)arg1 placeholderImage:(struct CGImage *)arg2 opaque:(BOOL)arg3;
+- (id)initWithDisplayScale:(double)arg1 placeholderImage:(struct CGImage *)arg2 opaque:(BOOL)arg3 videoRectWhenPIPBegan:(struct CGRect)arg4;
 - (void)layoutSublayers;
-- (struct CGRect)textBoundingRectWhenDrawnInRect:(struct CGRect)arg1;
 
 @end
 

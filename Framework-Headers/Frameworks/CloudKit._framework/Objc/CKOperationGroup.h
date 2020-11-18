@@ -12,12 +12,12 @@
 
 @interface CKOperationGroup : NSObject <NSSecureCoding>
 {
+    CKOperationGroupSystemImposedInfo *_systemImposedInfo_locked;
     long long _expectedSendSize;
     long long _expectedReceiveSize;
     CKOperationConfiguration *_defaultConfiguration;
     NSString *_operationGroupID;
     NSString *_name;
-    CKOperationGroupSystemImposedInfo *_systemImposedInfo;
     NSNumber *_quantityNumber;
     NSString *_authPromptReason;
 }
@@ -32,7 +32,7 @@
 @property (readonly, copy, nonatomic) NSString *operationGroupID; // @synthesize operationGroupID=_operationGroupID;
 @property unsigned long long quantity;
 @property (copy, nonatomic) NSNumber *quantityNumber; // @synthesize quantityNumber=_quantityNumber;
-@property (strong, nonatomic) CKOperationGroupSystemImposedInfo *systemImposedInfo; // @synthesize systemImposedInfo=_systemImposedInfo;
+@property (copy, nonatomic) CKOperationGroupSystemImposedInfo *systemImposedInfo;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

@@ -7,6 +7,6 @@
 #import <TSDrawables/TSDMovieInfo.h>
 
 @interface TSDMovieInfo (TSTextAdditions)
-- (int)elementKind;
+- (unsigned int)elementKind;
 @end
 

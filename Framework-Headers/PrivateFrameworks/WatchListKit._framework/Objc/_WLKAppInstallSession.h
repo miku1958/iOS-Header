@@ -8,7 +8,7 @@
 
 #import <WatchListKit/LSApplicationWorkspaceObserverProtocol-Protocol.h>
 
-@class NSString, SSLookupItemOffer;
+@class AMSLookupItemOffer, NSString;
 @protocol OS_dispatch_queue, WLKInstallable;
 
 @interface _WLKAppInstallSession : NSObject <LSApplicationWorkspaceObserverProtocol>
@@ -17,14 +17,14 @@
     NSObject<OS_dispatch_queue> *_queue;
     CDUnknownBlockType _progressHandler;
     id<WLKInstallable> _installable;
-    SSLookupItemOffer *_offer;
+    AMSLookupItemOffer *_offer;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<WLKInstallable> installable; // @synthesize installable=_installable;
-@property (readonly, nonatomic) SSLookupItemOffer *offer; // @synthesize offer=_offer;
+@property (readonly, nonatomic) AMSLookupItemOffer *offer; // @synthesize offer=_offer;
 @property (readonly) Class superclass;
 
 + (id)_matchingAppProxyFromProxies:(id)arg1 forInstallable:(id)arg2;

@@ -6,10 +6,11 @@
 
 #import <CarPlay/NSObject-Protocol.h>
 
-@class CPWindow;
+@class CPWindow, UITraitCollection;
 
 @protocol CPWindowProviding <NSObject>
 
+@property (readonly, nonatomic) UITraitCollection *carTraitCollection;
 @property (readonly, nonatomic) CPWindow *carWindow;
 
 - (long long)activationState;

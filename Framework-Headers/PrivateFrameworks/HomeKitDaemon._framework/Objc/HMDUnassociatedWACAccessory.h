@@ -14,11 +14,11 @@
 
 @interface HMDUnassociatedWACAccessory : HMDUnassociatedAccessory <HMFLogging, HMFTimerDelegate>
 {
+    NSObject<OS_dispatch_queue> *_queue;
     id<HMDWACDevice> _wacDevice;
     CDUnknownBlockType _completionHandler;
     HMFTimer *_handoffExpirationTimer;
     long long _state;
-    NSObject<OS_dispatch_queue> *_propertyQueue;
     HMDUnassociatedAccessory *_postWACAccessory;
     id<HMDWACAccessoryConfigurationDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
@@ -50,6 +50,7 @@
 - (void)setDelegate:(id)arg1 withQueue:(id)arg2;
 - (void)startConfigurationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)timerDidFire:(id)arg1;
+- (unsigned long long)transportTypes;
 - (void)updateWithMatchingUnassociatedAccessory:(id)arg1;
 
 @end

@@ -6,7 +6,7 @@
 
 #import <SpringBoard/SiriPresentationControllerDelegate-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, SiriPresentationSpringBoardMainScreenViewController;
 @protocol SiriPresentation;
 
 @protocol SiriPresentationSpringBoardMainScreenViewControllerDelegate <SiriPresentationControllerDelegate>
@@ -16,5 +16,10 @@
 
 @optional
 - (void)siriPresentation:(id<SiriPresentation>)arg1 didUpdateAudioCategoriesDisablingVolumeHUD:(NSArray *)arg2;
+- (void)siriPresentation:(SiriPresentationSpringBoardMainScreenViewController *)arg1 didUpdateHomeGestureSharing:(BOOL)arg2;
+- (void)siriPresentation:(SiriPresentationSpringBoardMainScreenViewController *)arg1 didUpdateShouldDismissForSwipesOutsideContent:(BOOL)arg2;
+- (void)siriPresentation:(SiriPresentationSpringBoardMainScreenViewController *)arg1 didUpdateShouldDismissForTapOutsideContentTo:(BOOL)arg2;
+- (void)siriPresentation:(SiriPresentationSpringBoardMainScreenViewController *)arg1 didUpdateShouldDismissForTapsOutsideContent:(BOOL)arg2;
+- (void)siriPresentation:(SiriPresentationSpringBoardMainScreenViewController *)arg1 didUpdateShouldPassTouchesThroughToSpringBoard:(BOOL)arg2;
 @end
 

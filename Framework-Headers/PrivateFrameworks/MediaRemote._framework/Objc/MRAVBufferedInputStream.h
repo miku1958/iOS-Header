@@ -20,8 +20,6 @@
 }
 
 - (void).cxx_destruct;
-- (void)_init;
-- (void)_onSerialQueue_handleDataReceived:(id)arg1;
 - (void)close;
 - (id)delegate;
 - (BOOL)getBuffer:(char **)arg1 length:(unsigned long long *)arg2;

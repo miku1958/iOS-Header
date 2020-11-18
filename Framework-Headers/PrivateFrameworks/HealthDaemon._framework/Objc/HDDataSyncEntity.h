@@ -24,6 +24,7 @@
 + (id)_objectWithCodable:(id)arg1;
 + (id)_predicateForSyncSession:(id)arg1;
 + (id)_provenanceFromCollection:(id)arg1 syncStore:(id)arg2 profile:(id)arg3 error:(id *)arg4;
++ (id)_pruningPredicateWithDate:(id)arg1 profile:(id)arg2 anchor:(id)arg3;
 + (id)decodeSyncObjectWithData:(id)arg1;
 + (BOOL)generateSyncObjectsForSession:(id)arg1 syncAnchorRange:(struct HDSyncAnchorRange)arg2 profile:(id)arg3 messageHandler:(id)arg4 error:(id *)arg5;
 + (Class)healthEntityClass;
@@ -33,6 +34,8 @@
 + (long long)receiveSyncObjects:(id)arg1 syncStore:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)syncEntityDependenciesForSyncProtocolVersion:(int)arg1;
 + (id)syncEntityIdentifier;
++ (id)unitTest_predicateForSyncSession:(id)arg1;
++ (id)unitTest_pruningPredicateForDate:(id)arg1 profile:(id)arg2;
 
 @end
 

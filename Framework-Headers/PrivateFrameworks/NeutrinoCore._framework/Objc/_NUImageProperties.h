@@ -28,7 +28,7 @@
 
 @property long long alphaInfo; // @synthesize alphaInfo=_alphaInfo;
 @property (strong) NSDictionary *auxiliaryImagesProperties; // @synthesize auxiliaryImagesProperties=_auxiliaryImagesProperties;
-@property struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
+@property (strong) struct CGColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property long long componentInfo; // @synthesize componentInfo=_componentInfo;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -44,6 +44,7 @@
 }
 
 @property (readonly, copy, nonatomic) NSString *applicationIdentifier; // @synthesize applicationIdentifier=_applicationIdentifier;
+@property (readonly, nonatomic) BOOL canBePaused;
 @property (strong, nonatomic) HDHealthStoreClient *client; // @synthesize client=_client;
 @property (readonly, copy, nonatomic) NSString *clientProcessBundleIdentifier; // @synthesize clientProcessBundleIdentifier=_clientProcessBundleIdentifier;
 @property (readonly, copy, nonatomic) HKSource *clientSource; // @synthesize clientSource=_clientSource;
@@ -53,6 +54,7 @@
 @property (readonly, copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isActive;
 @property (readonly, nonatomic) BOOL isFirstParty;
+@property (readonly, nonatomic) BOOL shouldStopPreviousSession;
 @property (readonly, copy, nonatomic) NSDate *startDate; // @synthesize startDate=_startDate;
 @property (readonly, nonatomic) long long state;
 @property (readonly, copy, nonatomic) NSDate *stopDate; // @synthesize stopDate=_stopDate;
@@ -68,8 +70,8 @@
 + (id)clientTargetStateMachineForConfiguration:(id)arg1 sessionUUID:(id)arg2;
 + (BOOL)finishAllWorkoutSessionsForClient:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (BOOL)finishAllWorkoutsExcludingSessions:(id)arg1 profile:(id)arg2 error:(id *)arg3;
-+ (id)postRestartRecoveredSessionServerWithProfile:(id)arg1 workoutManager:(id)arg2 error:(id *)arg3;
 + (id)recoveredSessionServerWithProfile:(id)arg1 sessionUUID:(id)arg2 workoutManager:(id)arg3 error:(id *)arg4;
++ (id)sessionIdentifierForRecoveryInProfile:(id)arg1 error:(id *)arg2;
 + (void)unitTest_setDefaultStopEventGenerationWaitInterval:(double)arg1;
 + (id)workoutSessionServerStateMachineForConfiguration:(id)arg1 sessionUUID:(id)arg2;
 - (void).cxx_destruct;
@@ -83,6 +85,7 @@
 - (id)_queue_currentWorkoutSessionConfiguration;
 - (void)_queue_deleteSessionAndFinishAssociatedBuilderAtDate:(id)arg1;
 - (void)_queue_evaluateRequestedTargetStateAtDate:(id)arg1;
+- (void)_queue_generateConfigurationUpdate:(id)arg1;
 - (void)_queue_generateError:(id)arg1;
 - (void)_queue_generateEvent:(id)arg1;
 - (void)_queue_generateEventWithType:(long long)arg1 date:(id)arg2;
@@ -109,6 +112,7 @@
 - (BOOL)endWithError:(id *)arg1;
 - (void)finish;
 - (void)finishAggregationWithDate:(id)arg1;
+- (void)generateConfigurationUpdate:(id)arg1;
 - (void)generateError:(id)arg1;
 - (void)generateEvent:(id)arg1;
 - (void)generateMetadata:(id)arg1;
@@ -129,10 +133,13 @@
 - (BOOL)storeSessionControllerState:(id)arg1 forRecoveryIdentifier:(id)arg2 error:(id *)arg3;
 - (id)taskServerConfigurationForRecoveryWithError:(id *)arg1;
 - (void)unitTest_generateStopEvent;
+- (void)unitTest_generateWorkoutConfigurationUpdate:(id)arg1;
+- (void)unitTest_setCMWorkoutManager:(id)arg1;
 - (void)unitTest_setSessionController:(id)arg1;
 - (void)unitTest_setStopEventGenerationWaitInterval:(double)arg1;
 - (BOOL)unitTest_updateLatestActivityDate:(id)arg1;
 - (void)workoutDataDestination:(id)arg1 didChangeFromState:(unsigned long long)arg2 toState:(unsigned long long)arg3;
+- (void)workoutDataDestination:(id)arg1 didUpdateConfiguration:(id)arg2;
 - (void)workoutDataDestination:(id)arg1 requestsDataFrom:(id)arg2 to:(id)arg3;
 - (void)workoutDataDestination:(id)arg1 requestsFinalDataFrom:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;
 

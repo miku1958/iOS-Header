@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC8FMIPCore22FMIPLocationController : NSObject <CLLocationManagerDelegate>
 {
     MISSING_TYPE *locationManager;
+    MISSING_TYPE *locationShifter;
     MISSING_TYPE *delegate;
     MISSING_TYPE *locationUpdatingQueue;
     MISSING_TYPE *currentLocation;

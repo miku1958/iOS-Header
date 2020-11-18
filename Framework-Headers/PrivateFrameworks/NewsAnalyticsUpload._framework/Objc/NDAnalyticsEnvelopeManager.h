@@ -11,7 +11,6 @@
 #import <NewsAnalyticsUpload/NDAnalyticsUploadSchedulerDelegate-Protocol.h>
 
 @class FCKeyValueStore, NDAnalyticsEnvelopeStore, NDAnalyticsPayloadAssembler, NDAnalyticsPayloadUploader, NDAnalyticsUploadScheduler, NFMutexLock, NSString;
-@protocol NDAnalyticsEnvelopeTracker;
 
 @interface NDAnalyticsEnvelopeManager : NSObject <NDAnalyticsEnvelopeStoreObserver, NDAnalyticsUploadSchedulerDelegate, NDAnalyticsService>
 {
@@ -21,13 +20,11 @@
     NDAnalyticsUploadScheduler *_uploadScheduler;
     FCKeyValueStore *_lastUploadDatesByContentType;
     NFMutexLock *_keyValueStoreLock;
-    id<NDAnalyticsEnvelopeTracker> _envelopeTracker;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NDAnalyticsEnvelopeStore *envelopeStore; // @synthesize envelopeStore=_envelopeStore;
-@property (strong, nonatomic) id<NDAnalyticsEnvelopeTracker> envelopeTracker; // @synthesize envelopeTracker=_envelopeTracker;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NFMutexLock *keyValueStoreLock; // @synthesize keyValueStoreLock=_keyValueStoreLock;
 @property (strong, nonatomic) FCKeyValueStore *lastUploadDatesByContentType; // @synthesize lastUploadDatesByContentType=_lastUploadDatesByContentType;
@@ -44,7 +41,7 @@
 - (void)envelopeStore:(id)arg1 didFlushEnvelopesForEntries:(id)arg2;
 - (void)handleLaunchEventForBackgroundSessionWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
-- (id)initWithAppConfigurationManager:(id)arg1 storeDirectoryFileURL:(id)arg2 URLSessionQueue:(id)arg3 envelopeTracker:(id)arg4;
+- (id)initWithAppConfigurationManager:(id)arg1 storeDirectoryFileURL:(id)arg2 URLSessionQueue:(id)arg3;
 - (void)submitEnvelopes:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)submitEnvelopes:(id)arg1 withSubmissionCompletion:(CDUnknownBlockType)arg2 foregroundUploadCompletion:(CDUnknownBlockType)arg3;
 - (void)uploadScheduler:(id)arg1 performUploadWithCompletion:(CDUnknownBlockType)arg2;

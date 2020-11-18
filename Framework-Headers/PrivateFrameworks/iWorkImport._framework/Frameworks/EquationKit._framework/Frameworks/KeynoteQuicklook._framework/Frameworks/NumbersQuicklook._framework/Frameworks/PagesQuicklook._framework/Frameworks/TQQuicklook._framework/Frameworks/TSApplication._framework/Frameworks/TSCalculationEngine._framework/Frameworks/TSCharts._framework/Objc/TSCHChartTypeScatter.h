@@ -11,10 +11,8 @@
 }
 
 - (id)allCDESectionLabels;
-- (id)cellsCreatedWarning;
 - (id)defaultSeriesType:(unsigned long long)arg1;
 - (id)init;
-- (unsigned long long)maxCellsForInsert;
 - (BOOL)supportsErrorBarsScatterX;
 - (id)userInterfaceName;
 - (long long)userInterfaceTag;

@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBDataString, _INPBReservationAction, _INPBTimestamp;
+@class NSArray, NSString, _INPBDataString, _INPBReservationAction, _INPBTimestamp, _INPBURLValue;
 
 @protocol _INPBReservation <NSObject>
 
@@ -18,10 +18,12 @@
 @property (readonly, nonatomic) BOOL hasReservationHolderName;
 @property (readonly, nonatomic) BOOL hasReservationNumber;
 @property (nonatomic) BOOL hasReservationStatus;
+@property (readonly, nonatomic) BOOL hasUrl;
 @property (strong, nonatomic) _INPBDataString *itemReference;
 @property (copy, nonatomic) NSString *reservationHolderName;
 @property (copy, nonatomic) NSString *reservationNumber;
 @property (nonatomic) int reservationStatus;
+@property (strong, nonatomic) _INPBURLValue *url;
 
 + (Class)actionsType;
 - (int)StringAsReservationStatus:(NSString *)arg1;

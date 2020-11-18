@@ -23,7 +23,6 @@
 - (id)additionalURLQueryItems;
 - (CDStruct_d1a7ebee)dataRequestKindForRequest:(id)arg1 traits:(id)arg2;
 - (id)debugRequestName;
-- (unsigned char)requestCounterInfoTypeForRequest:(id)arg1;
 - (id)serviceTypeNumber;
 - (unsigned long long)urlType;
 

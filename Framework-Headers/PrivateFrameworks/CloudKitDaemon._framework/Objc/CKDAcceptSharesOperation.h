@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDDatabaseOperation.h>
 
 @class NSMutableArray, NSMutableDictionary;
+@protocol CKAcceptSharesOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDAcceptSharesOperation : CKDDatabaseOperation
@@ -21,10 +22,12 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) CDUnknownBlockType acceptCompletionBlock; // @synthesize acceptCompletionBlock=_acceptCompletionBlock;
 @property (strong, nonatomic) NSMutableArray *acceptedShareURLsToFetch; // @synthesize acceptedShareURLsToFetch=_acceptedShareURLsToFetch;
+@property (strong, nonatomic) id<CKAcceptSharesOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSMutableDictionary *clientProvidedMetadatasByURL; // @synthesize clientProvidedMetadatasByURL=_clientProvidedMetadatasByURL;
 @property (nonatomic) unsigned long long numShareAcceptAttempts; // @synthesize numShareAcceptAttempts=_numShareAcceptAttempts;
 @property (strong, nonatomic) NSMutableDictionary *shareMetadatasToAcceptByURL; // @synthesize shareMetadatasToAcceptByURL=_shareMetadatasToAcceptByURL;
 @property (strong, nonatomic) NSMutableArray *shareURLsToAccept; // @synthesize shareURLsToAccept=_shareURLsToAccept;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 
 - (void).cxx_destruct;
 - (BOOL)_acceptShares;
@@ -44,6 +47,7 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (BOOL)makeStateTransition;
 - (id)nameForState:(unsigned long long)arg1;
+- (int)operationType;
 - (unsigned long long)sharingServiceTypeForShareMetadata:(id)arg1;
 
 @end

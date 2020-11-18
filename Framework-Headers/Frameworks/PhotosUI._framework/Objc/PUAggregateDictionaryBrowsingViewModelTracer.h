@@ -8,13 +8,12 @@
 
 #import <PhotosUI/PUBrowsingViewModelChangeObserver-Protocol.h>
 
-@class NSHashTable, NSString, PUBrowsingViewModel, PXAssetAnalyzer;
+@class NSHashTable, NSString, PUBrowsingViewModel;
 @protocol PUDisplayAsset;
 
 __attribute__((visibility("hidden")))
 @interface PUAggregateDictionaryBrowsingViewModelTracer : NSObject <PUBrowsingViewModelChangeObserver>
 {
-    PXAssetAnalyzer *_assetAnalyzer;
     BOOL __isPerformingChanges;
     BOOL __isPerformingUpdate;
     BOOL __needsUpdateViewedAsset;

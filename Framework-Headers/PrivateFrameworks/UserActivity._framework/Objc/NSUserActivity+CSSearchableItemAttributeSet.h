@@ -6,11 +6,17 @@
 
 #import <Foundation/NSUserActivity.h>
 
-@class CSSearchableItemAttributeSet, NSUUID;
+@class CSSearchableItemAttributeSet, NSDate, NSUUID;
 
 @interface NSUserActivity (CSSearchableItemAttributeSet)
 
+@property (readonly, copy) NSDate *_madeCurrentDate;
+@property (readonly, copy) NSDate *_madeCurrentEndDate;
+@property (readonly) double _madeCurrentInterval;
+@property (readonly, copy) NSDate *_madeInitiallyCurrentDate;
 @property (readonly, copy) NSUUID *_originalUniqueIdentifier;
+@property (readonly, copy) NSDate *_sentToIndexerDate;
+@property (getter=_isUniversalLink) BOOL _universalLink;
 @property (readonly) unsigned long long _userInfoChangeCount;
 @property (copy) CSSearchableItemAttributeSet *contentAttributeSet; // @dynamic contentAttributeSet;
 

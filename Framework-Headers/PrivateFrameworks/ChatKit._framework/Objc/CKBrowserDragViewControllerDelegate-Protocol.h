@@ -6,10 +6,11 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKBrowserDragControllerTarget, CKBrowserDragViewController;
+@class CKBrowserDragControllerTarget, CKBrowserDragViewController, UIView;
 
 @protocol CKBrowserDragViewControllerDelegate <NSObject>
 - (void)browserDragViewController:(CKBrowserDragViewController *)arg1 dragEndedWithTarget:(CKBrowserDragControllerTarget *)arg2;
 - (void)browserDragViewController:(CKBrowserDragViewController *)arg1 draggedWithTarget:(CKBrowserDragControllerTarget *)arg2;
+- (UIView *)browserDragViewControllerTargetView:(CKBrowserDragViewController *)arg1;
 @end
 

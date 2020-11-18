@@ -6,31 +6,29 @@
 
 #import <MetalTools/MTLToolsHeap.h>
 
+#import <MetalTools/MTLDebugResourcePurgeable-Protocol.h>
+
 @class MTLDebugDevice;
 
-@interface MTLDebugHeap : MTLToolsHeap
+@interface MTLDebugHeap : MTLToolsHeap <MTLDebugResourcePurgeable>
 {
-    struct os_unfair_lock_s _historyLock;
-    struct HeapHistoryEvent *_oldestEvent;
-    struct HeapHistoryEvent *_latestEvent;
+    struct atomic<int> _purgeableStateToken;
+    BOOL _purgeableStateHasBeenSet;
     MTLDebugDevice *_debugDevice;
 }
 
 @property (readonly, nonatomic) MTLDebugDevice *debugDevice; // @synthesize debugDevice=_debugDevice;
-@property (nonatomic) struct HeapHistoryEvent *latestEvent; // @synthesize latestEvent=_latestEvent;
-@property (nonatomic) struct HeapHistoryEvent *oldestEvent; // @synthesize oldestEvent=_oldestEvent;
 
-- (void)accessHistoryEventsUsingBlock:(CDUnknownBlockType)arg1;
-- (void)addResourceToHistory:(id)arg1 madeAliasable:(BOOL)arg2;
-- (void)dealloc;
 - (id)initWithHeap:(id)arg1 device:(id)arg2;
+- (void)lockPurgeableState;
 - (unsigned long long)maxAvailableSizeWithAlignment:(unsigned long long)arg1;
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (id)newBufferWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2 offset:(unsigned long long)arg3;
 - (id)newTextureWithDescriptor:(id)arg1;
 - (id)newTextureWithDescriptor:(id)arg1 offset:(unsigned long long)arg2;
-- (void)removeResourceFromHistory:(id)arg1;
+- (BOOL)purgeableStateValidForRendering;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
+- (void)unlockPurgeableState;
 - (void)validateHeapResourceOptions:(unsigned long long)arg1 isTexture:(BOOL)arg2 isIOSurface:(BOOL)arg3;
 - (void)validateHeapTextureUsage:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (void)validateOffset:(unsigned long long)arg1 withRequirements:(CDStruct_4bcfbbae)arg2;

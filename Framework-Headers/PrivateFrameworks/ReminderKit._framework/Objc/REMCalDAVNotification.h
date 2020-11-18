@@ -48,12 +48,14 @@
 @property (strong, nonatomic) NSString *uuidString; // @synthesize uuidString=_uuidString;
 
 + (id)cdEntityName;
++ (BOOL)isChangeTrackableModel;
 + (id)newObjectID;
 + (id)objectIDWithUUID:(id)arg1;
 + (CDUnknownBlockType)rem_DA_deletedKeyFromLazyDeletedModelObjectBlock;
 + (CDUnknownBlockType)rem_DA_deletedKeyFromTombstoneBlock;
 + (CDUnknownBlockType)rem_DA_fetchByObjectIDBlock;
 + (CDUnknownBlockType)rem_DA_fetchByObjectIDsBlock;
++ (id)rem_DA_lazyDeleteProperties;
 + (BOOL)rem_DA_supportsFetching;
 + (BOOL)rem_DA_supportsLazyDelete;
 + (BOOL)supportsSecureCoding;

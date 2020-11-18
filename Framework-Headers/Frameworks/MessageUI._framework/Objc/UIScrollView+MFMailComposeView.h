@@ -7,9 +7,13 @@
 #import <UIKit/UIScrollView.h>
 
 @interface UIScrollView (MFMailComposeView)
+
+@property (readonly, nonatomic) struct CGPoint mf_maxContentOffset;
+@property (readonly, nonatomic) struct CGPoint mf_minContentOffset;
+@property (readonly, nonatomic) struct CGRect mf_visibleBounds;
+@property (readonly, nonatomic) struct CGRect mf_visibleFrame;
+@property (readonly, nonatomic) double mf_visibleHeight;
+
 - (BOOL)mf_needsToAdjustContentOffset;
-- (struct CGRect)mf_visibleBounds;
-- (struct CGRect)mf_visibleFrame;
-- (double)mf_visibleHeight;
 @end
 

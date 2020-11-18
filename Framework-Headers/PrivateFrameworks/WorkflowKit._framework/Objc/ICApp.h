@@ -14,7 +14,6 @@
     BOOL _installed;
     BOOL _checkedInstallStatus;
     NSArray *_schemes;
-    NSArray *_shareExtensions;
     NSString *_localizedName;
     WFImage *_icon;
     NSString *_identifier;
@@ -39,7 +38,6 @@
 @property (readonly, nonatomic) NSArray *metadata;
 @property (readonly, nonatomic) NSString *name;
 @property (readonly, nonatomic) NSArray *schemes; // @synthesize schemes=_schemes;
-@property (readonly, nonatomic) NSArray *shareExtensions; // @synthesize shareExtensions=_shareExtensions;
 @property (readonly, nonatomic) NSString *shortName;
 @property (readonly, nonatomic) long long state;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *stateAccessQueue; // @synthesize stateAccessQueue=_stateAccessQueue;

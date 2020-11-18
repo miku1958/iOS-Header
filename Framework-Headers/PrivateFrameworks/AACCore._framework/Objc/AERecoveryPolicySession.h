@@ -20,15 +20,8 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
 }
 
-@property (readonly, nonatomic) id<AEPerformancePrimitives> performancePrimitives; // @synthesize performancePrimitives=_performancePrimitives;
-@property (readonly, copy, nonatomic) NSArray *persistentDeactivations; // @synthesize persistentDeactivations=_persistentDeactivations;
-@property (readonly, nonatomic) id<AEPolicyStore> policyStore; // @synthesize policyStore=_policyStore;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-
 - (void).cxx_destruct;
 - (void)deactivateWithCompletion:(CDUnknownBlockType)arg1;
-- (void)deactivateWithRemainingPersistentDeactivations:(id)arg1 currentEvent:(long long)arg2 errors:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)initWithPolicyStore:(id)arg1 performancePrimitives:(id)arg2 persistentDeactivations:(id)arg3;
 
 @end
 

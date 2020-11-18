@@ -24,12 +24,15 @@
 - (id)errorFromResolutionResult:(id)arg1 forSlot:(id)arg2 onIntent:(id)arg3;
 - (id)icon;
 - (id)insufficientFundsError;
+- (id)localizedDisplayableAppNameForBundleIdentifier:(id)arg1;
 - (id)localizedKeyParameterDisplayName;
 - (id)localizedPaymentServiceName;
+- (id)minimumSupportedClientVersion;
 - (id)noBankAccountError;
 - (id)noRecipientAccountError:(BOOL)arg1;
 - (BOOL)opensInApp;
-- (BOOL)showsWhenRun;
+- (void)resolveSlot:(id)arg1 withProcessedValue:(id)arg2 parameter:(id)arg3 input:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (id)showsWhenRunIfApplicable;
 
 @end
 

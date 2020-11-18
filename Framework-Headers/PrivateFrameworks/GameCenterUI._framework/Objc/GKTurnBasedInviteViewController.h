@@ -12,37 +12,42 @@
 @interface GKTurnBasedInviteViewController : GKMultiplayerViewController
 {
     BOOL _deletePreloadedMatch;
-    id<GKTurnBasedInviteViewControllerDelegate> _delegateWeak;
     NSMutableDictionary *_inviteMessageDictionary;
+    id<GKTurnBasedInviteViewControllerDelegate> _delegate;
     long long _mode;
     GKTurnBasedMatch *_match;
 }
 
-@property (nonatomic) id<GKTurnBasedInviteViewControllerDelegate> delegate; // @synthesize delegate=_delegateWeak;
+@property (weak, nonatomic) id<GKTurnBasedInviteViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL deletePreloadedMatch; // @synthesize deletePreloadedMatch=_deletePreloadedMatch;
 @property (strong, nonatomic) NSMutableDictionary *inviteMessageDictionary; // @synthesize inviteMessageDictionary=_inviteMessageDictionary;
 @property (readonly, nonatomic, getter=isLoadingOrRemovingPreloadedMatch) BOOL loadingOrRemovingPreloadedMatch;
 @property (strong, nonatomic) GKTurnBasedMatch *match; // @synthesize match=_match;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 
+- (void).cxx_destruct;
+- (long long)automatchParticipantStatus;
 - (BOOL)canStartForcedAutomatch;
 - (void)cancel;
 - (void)cleanupStateForCancelOrErrorWithHandler:(CDUnknownBlockType)arg1;
 - (void)createGameWithPlayersToInvite:(id)arg1 forSharing:(BOOL)arg2 handler:(CDUnknownBlockType)arg3;
-- (void)dealloc;
+- (void)didClickCancelForServiceUnavailableAlert;
+- (void)didInviteContactPlayers;
 - (void)finishWithError:(id)arg1;
 - (void)finishWithMatchID:(id)arg1;
+- (void)handleNewParticipantCount:(long long)arg1;
 - (void)invitePlayers:(id)arg1;
-- (void)loadShareURLWithCompletion:(CDUnknownBlockType)arg1;
+- (BOOL)isInSetupMode;
+- (void)performActionsForButtonCancelCurrentMatching;
 - (void)playNow;
 - (void)removeCurrentMatchAndSetFlagIfNotLoaded:(BOOL)arg1 withHandler:(CDUnknownBlockType)arg2;
+- (void)sendInvitesToContactPlayers:(id)arg1 legacyPlayers:(id)arg2;
 - (void)setInvitesFailedWithError:(id)arg1;
-- (void)shareFinishedWithContactPlayers:(id)arg1 legacyPlayers:(id)arg2;
+- (void)startGameButtonPressed;
+- (void)updateStartGameButtonTitle;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;
-- (void)willQueryGKIDs;
-- (void)willShare;
 
 @end
 

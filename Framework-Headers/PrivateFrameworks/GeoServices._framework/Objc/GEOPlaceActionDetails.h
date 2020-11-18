@@ -41,18 +41,7 @@
         unsigned int read_photoId:1;
         unsigned int read_richProviderId:1;
         unsigned int read_transitPlaceCard:1;
-        unsigned int wrote_actionUrl:1;
-        unsigned int wrote_animationID:1;
-        unsigned int wrote_businessID:1;
-        unsigned int wrote_destinationApp:1;
-        unsigned int wrote_photoId:1;
-        unsigned int wrote_placeID:1;
-        unsigned int wrote_richProviderId:1;
-        unsigned int wrote_searchResponseRelativeTimestamp:1;
-        unsigned int wrote_targetID:1;
-        unsigned int wrote_transitPlaceCard:1;
-        unsigned int wrote_localSearchProviderID:1;
-        unsigned int wrote_resultIndex:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -90,11 +79,6 @@
 + (id)actionDetailsWithTargetID:(unsigned long long)arg1;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readActionUrl;
-- (void)_readDestinationApp;
-- (void)_readPhotoId;
-- (void)_readRichProviderId;
-- (void)_readTransitPlaceCard;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -102,10 +86,13 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (id)initWithMapItem:(id)arg1 childPlace:(id)arg2 relativeTimestamp:(double)arg3 resultIndex:(int)arg4 targetID:(unsigned long long)arg5 transitCardCategory:(int)arg6 transitSystem:(id)arg7 transitDepartureSequence:(id)arg8 transitIncident:(id)arg9;
 - (id)initWithMapItem:(id)arg1 relativeTimestamp:(double)arg2 resultIndex:(int)arg3;
 - (id)initWithMapItem:(id)arg1 relativeTimestamp:(double)arg2 resultIndex:(int)arg3 targetID:(unsigned long long)arg4;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

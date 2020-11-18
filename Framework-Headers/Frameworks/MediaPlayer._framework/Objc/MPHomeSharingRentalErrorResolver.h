@@ -10,6 +10,7 @@
 
 @class MPHomeSharingML3DataProvider, NSError, NSString, SSRentalCheckoutRequest;
 
+__attribute__((visibility("hidden")))
 @interface MPHomeSharingRentalErrorResolver : MPAVErrorResolver <SSRequestDelegate>
 {
     unsigned long long _accountID;

@@ -11,7 +11,9 @@
 @interface NSProgress (FPAdditions) <FPCancellable>
 - (void)fp_addChildProgress:(id)arg1;
 - (id)fp_fileOperationKind;
+- (id)fp_fileOperationKindStrict:(BOOL)arg1;
 - (BOOL)fp_isOfFileOperationKind:(id)arg1;
+- (BOOL)fp_isOfFileOperationKind:(id)arg1 strict:(BOOL)arg2;
 - (void)fp_setFileOperationKind:(id)arg1;
 @end
 

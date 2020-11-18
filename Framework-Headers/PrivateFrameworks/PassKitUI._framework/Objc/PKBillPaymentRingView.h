@@ -33,7 +33,6 @@
     NSDecimalNumber *_pinnedAmount;
     double _pinnedAmountAngle;
     unsigned long long _pinnedAmountAngleIndex;
-    unsigned long long _screenType;
     PKRenderLoop *_renderLoop;
     UISelectionFeedbackGenerator *_feedbackGenerator;
     UITapGestureRecognizer *_tapRecognizer;
@@ -73,9 +72,9 @@
 @property (readonly, copy, nonatomic) NSDecimalNumber *amount;
 @property (readonly, copy, nonatomic) UIColor *currentEndColor;
 @property (readonly, copy, nonatomic) UIColor *currentStartColor;
-@property (nonatomic) id<PKBillPaymentRingViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
+@property (weak, nonatomic) id<PKBillPaymentRingViewDataSource> dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKBillPaymentRingViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<PKBillPaymentRingViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;

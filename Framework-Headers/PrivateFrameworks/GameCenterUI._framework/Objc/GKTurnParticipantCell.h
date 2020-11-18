@@ -6,54 +6,78 @@
 
 #import <GameCenterUI/GKBasePlayerCell.h>
 
-@class GKContiguousContainerView, GKLabel, GKTurnBasedMatch, GKTurnBasedParticipant, NSLayoutConstraint, UIButton, UIImageView;
+@class GKLabel, GKTurnBasedMatch, GKTurnBasedParticipant, NSArray, NSLayoutConstraint, UIButton, UIImageView, UILabel, UIStackView, UIView, _TtC12GameCenterUI22OverlappingPlayersView;
 
 @interface GKTurnParticipantCell : GKBasePlayerCell
 {
     BOOL _isDetail;
+    BOOL _loadingPlayerAvatars;
     GKTurnBasedMatch *_match;
     GKTurnBasedParticipant *_participant;
     SEL _detailPressedAction;
-    GKLabel *_topLabel;
+    UIView *_divider;
     GKLabel *_bottomLabel;
     UIButton *_detailButton;
     UIImageView *_statusImageView;
-    GKContiguousContainerView *_textContainerView;
+    UIStackView *_textStackView;
     NSLayoutConstraint *_iconLeadingConstraint;
+    NSLayoutConstraint *_textStackViewToSuperViewLeadingConstraint;
+    NSLayoutConstraint *_textStackViewToIconViewLeadingConstraint;
     NSLayoutConstraint *_statusImageTrailingConstraint;
     NSLayoutConstraint *_textContainerTrailingConstraint;
     NSLayoutConstraint *_detailButtonConstraint;
+    NSLayoutConstraint *_overlappingPlayersViewWidthConstraint;
+    NSLayoutConstraint *_overlappingPlayersViewTrailingConstraint;
+    _TtC12GameCenterUI22OverlappingPlayersView *_overlappingPlayersView;
+    UIView *_overlappingPlayersViewContainer;
+    UILabel *_additionalPlayerCountLabel;
+    NSArray *_playerAvatars;
+    NSArray *_constraints;
     struct UIEdgeInsets _insets;
 }
 
+@property (strong, nonatomic) UILabel *additionalPlayerCountLabel; // @synthesize additionalPlayerCountLabel=_additionalPlayerCountLabel;
 @property (strong, nonatomic) GKLabel *bottomLabel; // @synthesize bottomLabel=_bottomLabel;
+@property (strong, nonatomic) NSArray *constraints; // @synthesize constraints=_constraints;
 @property (strong, nonatomic) UIButton *detailButton; // @synthesize detailButton=_detailButton;
 @property (strong, nonatomic) NSLayoutConstraint *detailButtonConstraint; // @synthesize detailButtonConstraint=_detailButtonConstraint;
 @property (nonatomic) SEL detailPressedAction; // @synthesize detailPressedAction=_detailPressedAction;
+@property (strong, nonatomic) UIView *divider; // @synthesize divider=_divider;
 @property (strong, nonatomic) NSLayoutConstraint *iconLeadingConstraint; // @synthesize iconLeadingConstraint=_iconLeadingConstraint;
 @property (nonatomic) struct UIEdgeInsets insets; // @synthesize insets=_insets;
 @property (nonatomic) BOOL isDetail; // @synthesize isDetail=_isDetail;
+@property (nonatomic) BOOL loadingPlayerAvatars; // @synthesize loadingPlayerAvatars=_loadingPlayerAvatars;
 @property (strong, nonatomic) GKTurnBasedMatch *match; // @synthesize match=_match;
+@property (strong, nonatomic) _TtC12GameCenterUI22OverlappingPlayersView *overlappingPlayersView; // @synthesize overlappingPlayersView=_overlappingPlayersView;
+@property (strong, nonatomic) UIView *overlappingPlayersViewContainer; // @synthesize overlappingPlayersViewContainer=_overlappingPlayersViewContainer;
+@property (strong, nonatomic) NSLayoutConstraint *overlappingPlayersViewTrailingConstraint; // @synthesize overlappingPlayersViewTrailingConstraint=_overlappingPlayersViewTrailingConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *overlappingPlayersViewWidthConstraint; // @synthesize overlappingPlayersViewWidthConstraint=_overlappingPlayersViewWidthConstraint;
 @property (strong, nonatomic) GKTurnBasedParticipant *participant; // @synthesize participant=_participant;
+@property (strong, nonatomic) NSArray *playerAvatars; // @synthesize playerAvatars=_playerAvatars;
 @property (strong, nonatomic) NSLayoutConstraint *statusImageTrailingConstraint; // @synthesize statusImageTrailingConstraint=_statusImageTrailingConstraint;
 @property (strong, nonatomic) UIImageView *statusImageView; // @synthesize statusImageView=_statusImageView;
 @property (strong, nonatomic) NSLayoutConstraint *textContainerTrailingConstraint; // @synthesize textContainerTrailingConstraint=_textContainerTrailingConstraint;
-@property (strong, nonatomic) GKContiguousContainerView *textContainerView; // @synthesize textContainerView=_textContainerView;
-@property (strong, nonatomic) GKLabel *topLabel; // @synthesize topLabel=_topLabel;
+@property (strong, nonatomic) UIStackView *textStackView; // @synthesize textStackView=_textStackView;
+@property (strong, nonatomic) NSLayoutConstraint *textStackViewToIconViewLeadingConstraint; // @synthesize textStackViewToIconViewLeadingConstraint=_textStackViewToIconViewLeadingConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *textStackViewToSuperViewLeadingConstraint; // @synthesize textStackViewToSuperViewLeadingConstraint=_textStackViewToSuperViewLeadingConstraint;
 
 + (double)defaultRowHeight;
 + (id)itemHeightList;
 + (void)registerCellClassesForCollectionView:(id)arg1;
+- (void).cxx_destruct;
 - (void)configureForDetail;
 - (void)configureForMatch;
-- (void)dealloc;
+- (void)configureOverlappingPlayersView;
 - (void)detailPressed:(id)arg1;
 - (void)didUpdateModel;
 - (void)establishConstraints;
+- (double)getOverlappingPlayerAvatarIconSize;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)matchWantsLocalPlayerAttention;
+- (void)prepareForReuse;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateMarginConstraints;
-- (id)viewForPopover;
+- (void)updateUIBasedOnTraitCollection;
 
 @end
 

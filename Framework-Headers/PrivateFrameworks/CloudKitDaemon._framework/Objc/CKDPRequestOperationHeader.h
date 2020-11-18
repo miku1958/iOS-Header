@@ -18,6 +18,7 @@
     unsigned long long _deviceProtocolVersion;
     unsigned long long _globalConfigVersion;
     unsigned long long _operationGroupQuantity;
+    NSMutableArray *_activeThrottlingLabels;
     NSString *_applicationBundle;
     NSString *_applicationContainer;
     int _applicationContainerEnvironment;
@@ -32,7 +33,9 @@
     CKDPIdentifier *_deviceIdentifier;
     NSString *_deviceLibraryName;
     NSString *_deviceLibraryVersion;
+    NSString *_deviceSerialNumber;
     NSString *_deviceSoftwareVersion;
+    NSString *_deviceUDID;
     int _isolationLevel;
     CKDPLocale *_locale;
     NSString *_mmcsProtocolVersion;
@@ -42,6 +45,7 @@
     NSString *_userIDContainerID;
     NSString *_userToken;
     BOOL _deviceSoftwareIsAppleInternal;
+    BOOL _entitlementsValidated;
     struct {
         unsigned int applicationConfigVersion:1;
         unsigned int deviceFlowControlBudget:1;
@@ -54,9 +58,11 @@
         unsigned int isolationLevel:1;
         unsigned int targetDatabase:1;
         unsigned int deviceSoftwareIsAppleInternal:1;
+        unsigned int entitlementsValidated:1;
     } _has;
 }
 
+@property (strong, nonatomic) NSMutableArray *activeThrottlingLabels; // @synthesize activeThrottlingLabels=_activeThrottlingLabels;
 @property (strong, nonatomic) NSString *applicationBundle; // @synthesize applicationBundle=_applicationBundle;
 @property (nonatomic) unsigned long long applicationConfigVersion; // @synthesize applicationConfigVersion=_applicationConfigVersion;
 @property (strong, nonatomic) NSString *applicationContainer; // @synthesize applicationContainer=_applicationContainer;
@@ -75,8 +81,11 @@
 @property (strong, nonatomic) NSString *deviceLibraryName; // @synthesize deviceLibraryName=_deviceLibraryName;
 @property (strong, nonatomic) NSString *deviceLibraryVersion; // @synthesize deviceLibraryVersion=_deviceLibraryVersion;
 @property (nonatomic) unsigned long long deviceProtocolVersion; // @synthesize deviceProtocolVersion=_deviceProtocolVersion;
+@property (strong, nonatomic) NSString *deviceSerialNumber; // @synthesize deviceSerialNumber=_deviceSerialNumber;
 @property (nonatomic) BOOL deviceSoftwareIsAppleInternal; // @synthesize deviceSoftwareIsAppleInternal=_deviceSoftwareIsAppleInternal;
 @property (strong, nonatomic) NSString *deviceSoftwareVersion; // @synthesize deviceSoftwareVersion=_deviceSoftwareVersion;
+@property (strong, nonatomic) NSString *deviceUDID; // @synthesize deviceUDID=_deviceUDID;
+@property (nonatomic) BOOL entitlementsValidated; // @synthesize entitlementsValidated=_entitlementsValidated;
 @property (nonatomic) unsigned long long globalConfigVersion; // @synthesize globalConfigVersion=_globalConfigVersion;
 @property (readonly, nonatomic) BOOL hasApplicationBundle;
 @property (nonatomic) BOOL hasApplicationConfigVersion;
@@ -96,8 +105,11 @@
 @property (readonly, nonatomic) BOOL hasDeviceLibraryName;
 @property (readonly, nonatomic) BOOL hasDeviceLibraryVersion;
 @property (nonatomic) BOOL hasDeviceProtocolVersion;
+@property (readonly, nonatomic) BOOL hasDeviceSerialNumber;
 @property (nonatomic) BOOL hasDeviceSoftwareIsAppleInternal;
 @property (readonly, nonatomic) BOOL hasDeviceSoftwareVersion;
+@property (readonly, nonatomic) BOOL hasDeviceUDID;
+@property (nonatomic) BOOL hasEntitlementsValidated;
 @property (nonatomic) BOOL hasGlobalConfigVersion;
 @property (nonatomic) BOOL hasIsolationLevel;
 @property (readonly, nonatomic) BOOL hasLocale;
@@ -117,6 +129,7 @@
 @property (strong, nonatomic) NSString *userIDContainerID; // @synthesize userIDContainerID=_userIDContainerID;
 @property (strong, nonatomic) NSString *userToken; // @synthesize userToken=_userToken;
 
++ (Class)activeThrottlingLabelType;
 + (Class)serviceIdentityKeyIDsType;
 - (void).cxx_destruct;
 - (int)StringAsApplicationContainerEnvironment:(id)arg1;
@@ -125,8 +138,12 @@
 - (id)_applicationContainerEnvironmentCKLogValue;
 - (id)_isolationLevelCKLogValue;
 - (id)_targetDatabaseCKLogValue;
+- (id)activeThrottlingLabelAtIndex:(unsigned long long)arg1;
+- (unsigned long long)activeThrottlingLabelsCount;
+- (void)addActiveThrottlingLabel:(id)arg1;
 - (void)addServiceIdentityKeyIDs:(id)arg1;
 - (id)applicationContainerEnvironmentAsString:(int)arg1;
+- (void)clearActiveThrottlingLabels;
 - (void)clearServiceIdentityKeyIDs;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

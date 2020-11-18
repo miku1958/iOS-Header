@@ -13,7 +13,7 @@
     NSString *_locationName;
 }
 
-@property (readonly, nonatomic) NSString *locationName;
+@property (readonly, nonatomic) NSString *locationName; // @synthesize locationName=_locationName;
 
 - (void).cxx_destruct;
 - (id)initWithLocationName:(id)arg1;

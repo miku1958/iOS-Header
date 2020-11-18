@@ -24,9 +24,7 @@ __attribute__((visibility("hidden")))
         unsigned int has_currentLocation:1;
         unsigned int read_mapItemStorage:1;
         unsigned int read_place:1;
-        unsigned int wrote_mapItemStorage:1;
-        unsigned int wrote_place:1;
-        unsigned int wrote_currentLocation:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -39,8 +37,6 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_readMapItemStorage;
-- (void)_readPlace;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -48,7 +44,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (id)mapItem;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;

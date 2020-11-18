@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface TVPPlaybackReportingEvent : NSObject
 {
+    BOOL _isUIInteraction;
     NSString *_name;
     double _timestamp;
     id _value;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic) double duration; // @synthesize duration=_duration;
 @property (nonatomic) long long durationMS; // @synthesize durationMS=_durationMS;
+@property (nonatomic) BOOL isUIInteraction; // @synthesize isUIInteraction=_isUIInteraction;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (weak, nonatomic) TVPPlaybackReportingEvent *startEvent; // @synthesize startEvent=_startEvent;
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;

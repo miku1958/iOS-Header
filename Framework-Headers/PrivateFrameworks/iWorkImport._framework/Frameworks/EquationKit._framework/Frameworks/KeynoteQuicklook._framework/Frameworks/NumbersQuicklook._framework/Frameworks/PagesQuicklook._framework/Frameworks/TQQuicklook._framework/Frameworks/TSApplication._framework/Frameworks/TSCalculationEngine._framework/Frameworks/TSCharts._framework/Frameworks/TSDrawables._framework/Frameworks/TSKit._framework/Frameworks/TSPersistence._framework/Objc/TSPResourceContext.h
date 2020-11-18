@@ -12,6 +12,7 @@
 @interface TSPResourceContext : NSObject
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
+    NSObject<OS_dispatch_queue> *_progressAggregationQueue;
     NSHashTable *_accessQueue_resourceRequests;
     NSMapTable *_accessQueue_resourceRequestTable;
     TSPDocumentResourceCache *_documentResourceCache;

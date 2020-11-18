@@ -35,6 +35,7 @@
 @property (strong, nonatomic) NSNumber *touchIDAuthenticationRetryLimit;
 @property (weak, nonatomic) id<LAUIDelegate> uiDelegate;
 
++ (id)_optionsForEvent:(long long)arg1;
 + (unsigned int)newCommandId;
 + (unsigned int)newInstanceId;
 + (void)notifyEvent:(long long)arg1;
@@ -48,12 +49,14 @@
 - (id)_publicErrorFromInternalError:(id)arg1 options:(id)arg2;
 - (id)_serverPropertyValueForOption:(long long)arg1;
 - (id)_serverPropertyValueForOption:(long long)arg1 log:(long long)arg2;
-- (BOOL)_setCredential:(id)arg1 type:(long long)arg2 log:(long long)arg3 cid:(unsigned long long)arg4 error:(id *)arg5;
+- (BOOL)_setCredential:(id)arg1 type:(long long)arg2 log:(long long)arg3 cid:(unsigned int)arg4 error:(id *)arg5;
 - (void)_setCredential:(id)arg1 type:(long long)arg2 log:(long long)arg3 cid:(unsigned int)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)_setServerPropertyForOption:(long long)arg1 value:(id)arg2;
 - (void)_setServerPropertyForOption:(long long)arg1 value:(id)arg2 log:(long long)arg3;
 - (void)authMethodWithReply:(CDUnknownBlockType)arg1;
+- (void)bootstrapServiceType:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)canEvaluatePolicy:(long long)arg1 error:(id *)arg2;
+- (BOOL)checkContextValidWithError:(id *)arg1;
 - (void)dealloc;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
@@ -93,8 +96,11 @@
 - (id)optionMaxBiometryFailures;
 - (id)optionNoFailureUI;
 - (id)optionNotInteractive;
+- (id)optionPINCharset;
 - (id)optionPINFirst;
 - (id)optionPINLength;
+- (id)optionPINMaxLength;
+- (id)optionPINMinLength;
 - (id)optionPINTitle;
 - (id)optionPasscodeScreenBlur;
 - (id)optionPasscodeScreenStyle;
@@ -103,6 +109,7 @@
 - (id)optionPhysicalButtonTitle;
 - (id)optionPresentationStyle;
 - (id)optionReturnBiometryDatabaseHash;
+- (id)optionSecurePassphrase;
 - (id)optionSharedValidity;
 - (id)optionSoftwareUpdateManifest;
 - (id)optionSoftwareUpdateStashMode;
@@ -111,6 +118,7 @@
 - (id)optionTransitionStyle;
 - (id)optionUserCancel;
 - (id)optionUserFallback;
+- (void)optionsForInternalOperation:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)prearmTouchIDWithReply:(CDUnknownBlockType)arg1;
 - (void)resetProcessedEvent:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)resetWithReply:(CDUnknownBlockType)arg1;
@@ -134,8 +142,11 @@
 - (void)setOptionMaxBiometryFailures:(id)arg1;
 - (void)setOptionNoFailureUI:(id)arg1;
 - (void)setOptionNotInteractive:(id)arg1;
+- (void)setOptionPINCharset:(id)arg1;
 - (void)setOptionPINFirst:(id)arg1;
 - (void)setOptionPINLength:(id)arg1;
+- (void)setOptionPINMaxLength:(id)arg1;
+- (void)setOptionPINMinLength:(id)arg1;
 - (void)setOptionPINTitle:(id)arg1;
 - (void)setOptionPasscodeScreenBlur:(id)arg1;
 - (void)setOptionPasscodeScreenStyle:(id)arg1;
@@ -144,6 +155,7 @@
 - (void)setOptionPhysicalButtonTitle:(id)arg1;
 - (void)setOptionPresentationStyle:(id)arg1;
 - (void)setOptionReturnBiometryDatabaseHash:(id)arg1;
+- (void)setOptionSecurePassphrase:(id)arg1;
 - (void)setOptionSharedValidity:(id)arg1;
 - (void)setOptionSoftwareUpdateManifest:(id)arg1;
 - (void)setOptionSoftwareUpdateStashMode:(id)arg1;
@@ -152,7 +164,9 @@
 - (void)setOptionTransitionStyle:(id)arg1;
 - (void)setOptionUserCancel:(id)arg1;
 - (void)setOptionUserFallback:(id)arg1;
+- (void)setOptions:(id)arg1 forInternalOperation:(long long)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)setShowingCoachingHint:(BOOL)arg1 event:(long long)arg2 reply:(CDUnknownBlockType)arg3;
+- (id)uuid;
 
 @end
 

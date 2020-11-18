@@ -26,14 +26,19 @@
 + (id)usagesummary;
 - (void).cxx_destruct;
 - (id)args;
+- (id)dataForPathOrStdin:(id)arg1;
 - (id)description;
 - (id)init;
 - (id)initWithArgc:(int)arg1 argv:(char **)arg2 options:(unsigned char)arg3;
 - (void)output:(id)arg1;
+- (void)output:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
 - (void)outputError:(id)arg1;
+- (void)outputError:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
 - (BOOL)processArgc:(int)arg1 argv:(char **)arg2;
-- (BOOL)processOption:(BOOL)arg1 arg:(id)arg2;
+- (BOOL)processOption:(int)arg1 arg:(id)arg2;
+- (void)waitForSigInt;
 - (void)willProcessOptions;
+- (BOOL)writeData:(id)arg1 toPathOrStdout:(id)arg2;
 
 @end
 

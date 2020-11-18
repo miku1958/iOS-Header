@@ -8,26 +8,23 @@
 
 #import <ChatKit/CKDetailsCell-Protocol.h>
 
-@class NSString, UILabel;
+@class NSString;
 
 @interface CKDetailsSIMCell : CKDetailsCell <CKDetailsCell>
 {
-    UILabel *_simTitleLabel;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) UILabel *simTitleLabel; // @synthesize simTitleLabel=_simTitleLabel;
 @property (readonly) Class superclass;
 
 + (double)preferredHeight;
 + (id)reuseIdentifier;
 + (BOOL)shouldHighlight;
-- (void).cxx_destruct;
-- (void)initConstraints;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

@@ -6,13 +6,16 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface SHAudioUtilities : NSObject
 {
 }
 
++ (id)audioBufferFromData:(void *)arg1 byteSize:(unsigned long long)arg2 inFormat:(id)arg3;
++ (id)bufferTail:(id)arg1 length:(double)arg2;
++ (unsigned long long)convertMachTimeToMillisecods:(unsigned long long)arg1;
 + (id)extractFromBuffer:(id)arg1 atPosition:(unsigned int)arg2 length:(unsigned int)arg3;
 + (BOOL)isAudioFormatSupported:(id)arg1;
++ (double)lengthOfBuffer:(id)arg1;
 + (id)splitBuffer:(id)arg1 atPosition:(unsigned int)arg2;
 + (id)splitBuffer:(id)arg1 fromStartPosition:(unsigned int)arg2 intoLengthsOfSize:(double)arg3;
 

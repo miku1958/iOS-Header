@@ -78,6 +78,7 @@
 - (BOOL)currentParagraphNeedsSpans;
 - (unsigned long long)depthOfContext:(id)arg1;
 - (unsigned long long)depthOfTopmostTagOfType:(int)arg1;
+- (void)dispatchObject:(id)arg1 tableBlock:(CDUnknownBlockType)arg2 tocBlock:(CDUnknownBlockType)arg3 drawableBlock:(CDUnknownBlockType)arg4;
 - (id)documentRoot;
 - (void)endAncillaryTextRunWithRange:(struct _NSRange)arg1 baseTextRange:(struct _NSRange)arg2;
 - (void)endChartTitle;
@@ -110,6 +111,8 @@
 - (void)endTextStorageChunk:(id)arg1;
 - (void)executeBlock:(CDUnknownBlockType)arg1;
 - (void)executeBlockForCurrentParagraph:(CDUnknownBlockType)arg1;
+- (void)handleDropCapAdornment:(id)arg1;
+- (void)handleObject:(id)arg1 tableBlock:(CDUnknownBlockType)arg2 tocBlock:(CDUnknownBlockType)arg3 drawableBlock:(CDUnknownBlockType)arg4;
 - (id)imager;
 - (unsigned long long)indexOfFirstVisibleCharInParagraphAtOrAfterCharIndex:(unsigned long long)arg1;
 - (unsigned long long)indexOfLastVisibleCharInParagraphBeforeCharIndex:(unsigned long long)arg1;
@@ -118,6 +121,7 @@
 - (void)popContextWithExpectedClass:(Class)arg1;
 - (void)popTagStackUntilReachingHeight:(unsigned long long)arg1;
 - (void)pushContext:(id)arg1;
+- (id)regularDrawableRepForObjectRep:(id)arg1;
 - (void)restoreStateFromTopOfContextStackWithExpectedClass:(Class)arg1;
 - (id)retrieveHighestInfoAtCharIndex:(unsigned long long)arg1 returnTagType:(int *)arg2;
 - (void)setState:(id)arg1;

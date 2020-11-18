@@ -40,10 +40,14 @@
 - (id)ic_imageDataWithUTType:(id)arg1 metadata:(id)arg2;
 - (id)ic_imageFromRect:(struct CGRect)arg1;
 - (long long)ic_imageOrientation;
+- (id)ic_imageWithFilledBackgroundColor:(id)arg1;
+- (id)ic_imageWithFilledBackgroundColor:(id)arg1 size:(struct CGSize)arg2;
 - (id)ic_imageWithFont:(id)arg1;
 - (id)ic_imageWithFont:(id)arg1 cappedToSize:(double)arg2;
 - (id)ic_imageWithFont:(id)arg1 scale:(long long)arg2;
 - (id)ic_imageWithScale:(long long)arg1;
+- (id)ic_imageWithSymbolOverlayWithName:(id)arg1 overlayBottomOffset:(double)arg2 size:(struct CGSize)arg3;
+- (id)ic_imageWithSymbolOverlayWithName:(id)arg1 overlaySymbolConfiguration:(id)arg2 overlayBottomOffset:(double)arg3 size:(struct CGSize)arg4;
 - (id)ic_imageWithTextStyle:(id)arg1;
 - (id)ic_imageWithTextStyle:(id)arg1 scale:(long long)arg2;
 - (id)ic_imageWithTint:(id)arg1 size:(struct CGSize)arg2;

@@ -6,7 +6,7 @@
 
 #import <EventKit/EKObject.h>
 
-@class EKAvailabilityCache, EKSourceConstraints, NSDate, NSNumber, NSSet, NSString, REMObjectID;
+@class EKAvailabilityCache, EKSourceConstraints, NSData, NSDate, NSDictionary, NSError, NSNumber, NSSet, NSString, REMObjectID;
 
 @interface EKSource : EKObject
 {
@@ -31,6 +31,8 @@
 @property (readonly, nonatomic) NSSet *calendars;
 @property (readonly, nonatomic) EKSourceConstraints *constraints;
 @property (strong, nonatomic) NSString *constraintsDescriptionPath;
+@property (strong, nonatomic) NSString *constraintsDescriptionPathForUnitTesting;
+@property (strong, nonatomic) NSString *constraintsName;
 @property (copy, nonatomic) NSString *creatorBundleID;
 @property (copy, nonatomic) NSString *creatorCodeSigningIdentity;
 @property (copy, nonatomic) NSNumber *defaultAlarmOffset;
@@ -40,19 +42,26 @@
 @property (copy, nonatomic) NSString *externalID;
 @property (copy, nonatomic) NSString *externalModificationTag;
 @property (nonatomic) int flags;
+@property (nonatomic) int flags2;
 @property (readonly, nonatomic) BOOL hasOwnerEmailAddress;
 @property (readonly, nonatomic) BOOL isDelegate;
+@property (readonly, nonatomic) BOOL isEnabledForEvents;
 @property (nonatomic) BOOL isFacebook; // @synthesize isFacebook=_isFacebook;
 @property (readonly, nonatomic) BOOL isFacebookSource;
 @property (readonly, nonatomic) BOOL isSyncing;
 @property (readonly, nonatomic) BOOL isWritable;
 @property (strong, nonatomic) NSDate *lastSyncEndDate;
-@property (nonatomic) unsigned long long lastSyncError;
+@property (readonly, nonatomic) unsigned long long lastSyncError;
+@property (strong, nonatomic) NSData *lastSyncErrorData;
+@property (readonly, copy, nonatomic) NSDictionary *lastSyncErrorUserInfo;
 @property (strong, nonatomic) NSDate *lastSyncStartDate;
 @property (nonatomic) BOOL onlyCreatorCanModify;
 @property (readonly, nonatomic) NSSet *ownerAddresses;
 @property (readonly, nonatomic) NSString *personaIdentifier;
+@property (readonly, nonatomic) BOOL preferUsingEventOrganizerEmailWhenComposingMail;
 @property (nonatomic) long long preferredEventPrivateValue;
+@property (readonly, nonatomic) NSString *preferredOwnerAddress;
+@property (readonly, nonatomic) BOOL prefersSuggestingNewTimeViaEmail;
 @property (nonatomic) BOOL prohibitsDetachmentOnCommentChange;
 @property (nonatomic) BOOL prohibitsICSImport;
 @property (nonatomic) BOOL prohibitsMultipleDaysInMonthlyRecurrence;
@@ -66,19 +75,29 @@
 @property (readonly, nonatomic) BOOL serverUsesSSL;
 @property (nonatomic) BOOL showsNotifications;
 @property (nonatomic) BOOL snoozeAlarmRequiresDetach; // @synthesize snoozeAlarmRequiresDetach=_snoozeAlarmRequiresDetach;
+@property (readonly, nonatomic) NSError *sourceError;
 @property (strong, nonatomic) NSString *sourceIdentifier;
 @property (nonatomic) long long sourceType;
 @property (nonatomic) long long strictestEventPrivateValue;
 @property (nonatomic) BOOL supportsAlarmAcknowledgedDate;
+@property (readonly, nonatomic) BOOL supportsAttendeeEventForwarding;
 @property (nonatomic) BOOL supportsAvailabilityRequests;
 @property (readonly, nonatomic) BOOL supportsCalendarCreation;
+@property (readonly, nonatomic) BOOL supportsEventCalendarCreation;
+@property (readonly, nonatomic) BOOL supportsFloatingTimeZone;
+@property (readonly, nonatomic) BOOL supportsFreebusy;
 @property (nonatomic) BOOL supportsIgnoringEventsInAvailabilityRequests;
 @property (readonly, nonatomic) BOOL supportsJunkReporting;
 @property (nonatomic) BOOL supportsLocationDirectorySearches;
+@property (readonly, nonatomic) BOOL supportsMultipleAlarms;
+@property (readonly, nonatomic) BOOL supportsMultipleDaysInMonthlyRecurrence;
+@property (readonly, nonatomic) BOOL supportsMultipleMonthsInYearlyRecurrence;
 @property (readonly, nonatomic) BOOL supportsPhoneNumbers;
 @property (nonatomic) BOOL supportsPrivateEvents;
 @property (readonly, nonatomic) BOOL supportsReminderActions;
 @property (nonatomic) BOOL supportsSharedCalendars;
+@property (readonly, nonatomic) BOOL supportsURLs;
+@property (readonly, nonatomic) BOOL supportsYearlyRecurrenceWithArbitraryInterval;
 @property (readonly, nonatomic) BOOL syncs;
 @property (strong, nonatomic) NSDate *timeOfLastExternalIdentificationCache; // @synthesize timeOfLastExternalIdentificationCache=_timeOfLastExternalIdentificationCache;
 @property (copy, nonatomic) NSString *title;
@@ -90,12 +109,18 @@
 + (int)_ekPrivacyLevelToCalEventPrivacyLevel:(long long)arg1;
 + (Class)frozenClass;
 + (BOOL)isWeakRelationship;
++ (id)knownIdentityKeysForComparison;
++ (id)knownSingleValueKeysForComparison;
 + (id)sourceWithEventStore:(id)arg1;
 - (void).cxx_destruct;
+- (id)UUID;
 - (void)_cacheExternalIdentification;
 - (void)_cacheExternalIdentificationIfNeeded;
+- (id)_calDAVOfficeHoursFromEKOfficeHours:(id)arg1;
 - (void)_countCalendarItemsOfCalType:(int)arg1 resultHandler:(CDUnknownBlockType)arg2;
+- (id)_ekOfficeHoursFromCalDAVOfficeHours:(id)arg1;
 - (BOOL)_reset;
+- (void)_setConstraintsNameWithoutValidation:(id)arg1;
 - (id)calendarWithExternalIdentifier:(id)arg1;
 - (id)calendarsForEntityType:(unsigned long long)arg1;
 - (BOOL)commit:(id *)arg1;
@@ -103,6 +128,8 @@
 - (void)countCalendarItemsWithResultHandler:(CDUnknownBlockType)arg1;
 - (id)description;
 - (BOOL)disabled;
+- (void)fetchOfficeHoursWithCompletion:(CDUnknownBlockType)arg1 onQueue:(id)arg2;
+- (BOOL)flag2:(int)arg1;
 - (BOOL)flag:(int)arg1;
 - (int)managedConfigurationAccountAccess;
 - (int)preferredEventPrivateValueRaw;
@@ -111,9 +138,15 @@
 - (BOOL)remove:(id *)arg1;
 - (BOOL)removeCalendarItemsOlderThanDate:(id)arg1 entityTypeMask:(unsigned long long)arg2 error:(id *)arg3;
 - (void)setDisabled:(BOOL)arg1;
+- (void)setFlag2:(int)arg1 value:(BOOL)arg2;
 - (void)setFlag:(int)arg1 value:(BOOL)arg2;
+- (void)setLastSyncError:(unsigned long long)arg1;
+- (void)setLastSyncError:(unsigned long long)arg1 userInfo:(id)arg2;
+- (void)setLastSyncErrorUserInfo:(id)arg1;
+- (void)setOfficeHours:(id)arg1 withCompletion:(CDUnknownBlockType)arg2 onQueue:(id)arg3;
 - (void)setPreferredEventPrivateValueRaw:(int)arg1;
 - (void)setStrictestEventPrivateValueRaw:(int)arg1;
+- (void)setUUID:(id)arg1;
 - (int)strictestEventPrivateValueRaw;
 - (BOOL)validate:(id *)arg1;
 

@@ -10,7 +10,7 @@
 #import <CoverSheet/CSScrollViewDelegate-Protocol.h>
 #import <CoverSheet/CSScrollableView-Protocol.h>
 
-@class CSFixedFooterView, CSLayoutStrategy, CSLocketForcePressGestureRecognizer, CSQuickActionsView, CSRegionsDebugView, CSScrollModifier, CSTeachableMomentsContainerView, NSArray, NSString, SBFLockScreenDateView, SBFPagedScrollView, SBFStatusBarLegibilityView, SBUIBackgroundView, UIColor, UIGestureRecognizer, UITapGestureRecognizer, UIVisualEffectView, _UILegibilitySettings;
+@class CSFixedFooterView, CSLayoutStrategy, CSQuickActionsView, CSRegionsDebugView, CSScrollModifier, CSTeachableMomentsContainerView, NSArray, NSString, SBFLockScreenDateView, SBFPagedScrollView, SBFStatusBarLegibilityView, SBUIBackgroundView, UIColor, UIGestureRecognizer, UITapGestureRecognizer, UIVisualEffectView, _UILegibilitySettings;
 @protocol CSCoverSheetViewDelegate, CSWallpaperView;
 
 @interface CSCoverSheetView : UIView <CSScrollViewDelegate, CSCoverSheetViewTransitionSource, CSScrollableView>
@@ -42,6 +42,7 @@
     CSFixedFooterView *_fixedFooterView;
     UIView *_proudLockContainerView;
     UIView *_cameraCoveredView;
+    UIView *_poseidonContainerView;
     CSTeachableMomentsContainerView *_teachableMomentsContainerView;
     CSQuickActionsView *_quickActionsView;
     long long _dateViewPageAlignment;
@@ -51,7 +52,6 @@
     long long _statusBarBackgroundPageAlignment;
     UIGestureRecognizer *_wallpaperGestureRecognizer;
     UITapGestureRecognizer *_quickNoteGestureRecognizer;
-    CSLocketForcePressGestureRecognizer *_locketGestureRecognizer;
     UIView *_scalableContentView;
     UIView *_modalPresentationView;
     UIView *_wakeEffectView;
@@ -90,11 +90,11 @@
 @property (weak, nonatomic) CSLayoutStrategy *layoutStrategy; // @synthesize layoutStrategy=_layoutStrategy;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (nonatomic) BOOL legibilitySettingsOverrideVibrancy; // @synthesize legibilitySettingsOverrideVibrancy=_legibilitySettingsOverrideVibrancy;
-@property (strong, nonatomic) CSLocketForcePressGestureRecognizer *locketGestureRecognizer; // @synthesize locketGestureRecognizer=_locketGestureRecognizer;
 @property (strong, nonatomic) UIView *mainPageView; // @synthesize mainPageView=_mainPageView;
 @property (strong, nonatomic) UIView *modalPresentationView; // @synthesize modalPresentationView=_modalPresentationView;
 @property (strong, nonatomic) NSArray *pageViews;
 @property (readonly, nonatomic) long long participantState;
+@property (strong, nonatomic) UIView *poseidonContainerView; // @synthesize poseidonContainerView=_poseidonContainerView;
 @property (strong, nonatomic) UIView *proudLockContainerView; // @synthesize proudLockContainerView=_proudLockContainerView;
 @property (nonatomic) struct CGPoint proudLockIconViewOffset; // @synthesize proudLockIconViewOffset=_proudLockIconViewOffset;
 @property (strong, nonatomic) CSQuickActionsView *quickActionsView; // @synthesize quickActionsView=_quickActionsView;
@@ -124,6 +124,7 @@
 - (void)_addDateTimeContainer;
 - (void)_addHigherSlideableContentView;
 - (void)_addScalableContentView;
+- (void)_addScalableContentViewWithContentView:(id)arg1;
 - (void)_addScrollView;
 - (void)_addSlideableContentView;
 - (void)_addStatusBarLegibilityView;
@@ -151,11 +152,11 @@
 - (void)_removeScalableContentView;
 - (struct CGPoint)_scrollView:(id)arg1 adjustedOffsetForOffset:(struct CGPoint)arg2 translation:(struct CGPoint)arg3 startPoint:(struct CGPoint)arg4 locationInView:(struct CGPoint)arg5 horizontalVelocity:(inout double *)arg6 verticalVelocity:(inout double *)arg7;
 - (void)_setDateView:(id)arg1 forTesting:(BOOL)arg2;
-- (void)_setupLocketGestureOnScrollView:(BOOL)arg1;
 - (void)_setupQuickNoteGestureOnScrollView:(BOOL)arg1;
 - (void)_setupWallpaperGestureOnScrollView:(BOOL)arg1;
 - (void)_updateLegibility;
 - (void)addScalableContentView;
+- (void)addScalableContentViewWithCustomContentView:(id)arg1;
 - (long long)backgroundStyle;
 - (void)beginTransitionToBackgroundStyle:(long long)arg1;
 - (void)cancelTransition;

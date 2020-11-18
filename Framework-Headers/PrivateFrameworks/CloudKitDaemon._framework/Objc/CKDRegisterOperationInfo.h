@@ -6,7 +6,6 @@
 
 #import <objc/NSObject.h>
 
-__attribute__((visibility("hidden")))
 @interface CKDRegisterOperationInfo : NSObject
 {
     unsigned long long _options;

@@ -6,24 +6,24 @@
 
 #import <HMFoundation/HMFObject.h>
 
-#import <HomeKitDaemon/HMDCameraNotificationCharacteristicsAvailabilityListenerDelegate-Protocol.h>
+#import <HomeKitDaemon/HMDCharacteristicsAvailabilityListenerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDCameraNotificationCharacteristicsAvailabilityListener, HMDHAPAccessory, NSNotificationCenter, NSObject, NSSet, NSString;
+@class HMDCharacteristicsAvailabilityListener, HMDHAPAccessory, NSNotificationCenter, NSObject, NSSet, NSString;
 @protocol HMDCameraRecordingSessionNotificationTriggerDelegate, OS_dispatch_queue;
 
-@interface HMDCameraRecordingSessionNotificationTrigger : HMFObject <HMDCameraNotificationCharacteristicsAvailabilityListenerDelegate, HMFLogging>
+@interface HMDCameraRecordingSessionNotificationTrigger : HMFObject <HMDCharacteristicsAvailabilityListenerDelegate, HMFLogging>
 {
     id<HMDCameraRecordingSessionNotificationTriggerDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMDHAPAccessory *_cameraAccessory;
-    HMDCameraNotificationCharacteristicsAvailabilityListener *_availabilityListener;
+    HMDCharacteristicsAvailabilityListener *_availabilityListener;
     NSNotificationCenter *_notificationCenter;
     NSSet *_availableCharacteristics;
     NSString *_clientIdentifier;
 }
 
-@property (readonly) HMDCameraNotificationCharacteristicsAvailabilityListener *availabilityListener; // @synthesize availabilityListener=_availabilityListener;
+@property (readonly) HMDCharacteristicsAvailabilityListener *availabilityListener; // @synthesize availabilityListener=_availabilityListener;
 @property (strong) NSSet *availableCharacteristics; // @synthesize availableCharacteristics=_availableCharacteristics;
 @property (readonly, weak) HMDHAPAccessory *cameraAccessory; // @synthesize cameraAccessory=_cameraAccessory;
 @property (readonly, copy) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
@@ -39,7 +39,7 @@
 - (void).cxx_destruct;
 - (void)_handleObservedCharacteristicsValueUpdate:(id)arg1;
 - (void)dealloc;
-- (void)handleAccessoryConfigured:(id)arg1;
+- (void)handleAccessoryConnected:(id)arg1;
 - (void)handleCharacteristicsValueUpdated:(id)arg1;
 - (id)initWithCamera:(id)arg1 workQueue:(id)arg2;
 - (id)initWithCamera:(id)arg1 workQueue:(id)arg2 availabilityListener:(id)arg3 notificationCenter:(id)arg4;

@@ -7,16 +7,18 @@
 #import <objc/NSObject.h>
 
 @class NSDate, NSString;
-@protocol CPLSyncSessionRescheduler;
+@protocol CPLSyncSessionRescheduler, OS_xpc_object;
 
 @interface CPLSyncSession : NSObject
 {
     NSDate *_expectedDate;
     unsigned long long _sequenceNumber;
     id<CPLSyncSessionRescheduler> _rescheduler;
+    NSObject<OS_xpc_object> *_detachedActivity;
 }
 
 @property (readonly, nonatomic, getter=isDetached) BOOL detached;
+@property (strong, nonatomic) NSObject<OS_xpc_object> *detachedActivity; // @synthesize detachedActivity=_detachedActivity;
 @property (readonly, nonatomic) NSDate *expectedDate; // @synthesize expectedDate=_expectedDate;
 @property (readonly, nonatomic) BOOL mightNeedForegroundToStart;
 @property (strong, nonatomic) id<CPLSyncSessionRescheduler> rescheduler; // @synthesize rescheduler=_rescheduler;

@@ -48,16 +48,13 @@
 - (void).cxx_destruct;
 - (id)biasForLayer:(id)arg1 error:(id *)arg2;
 - (void)cancelUpdate;
-- (id)collectMetricsFromTaskContext:(id)arg1 isInCallBack:(BOOL)arg2 error:(id *)arg3;
-- (void)createClassLabelToIndexMap;
+- (id)collectMetricsFromTaskContext:(id)arg1 isInCallBack:(BOOL)arg2;
 - (id)createEspressoTaskFrom:(id)arg1 updateParameters:(struct NetworkUpdateParameters *)arg2 lossInputName:(id)arg3 lossTargetName:(id)arg4 lossOutputName:(id)arg5 updatableLayerNames:(id)arg6 configuration:(id)arg7 error:(id *)arg8;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCompiledArchive:(struct _MLModelInputArchiver *)arg1 nnContainer:(id)arg2 configuration:(id)arg3 error:(id *)arg4;
 - (void)loadLossInputName:(id *)arg1 updatableLayerNames:(id *)arg2 fromCompiledArchive:(struct _MLModelInputArchiver *)arg3;
 - (void)loadLossTargetName:(id *)arg1 lossOutputName:(id *)arg2 fromUpdateParameters:(struct NetworkUpdateParameters *)arg3;
-- (void)loadParameterDescriptionsAndContainerFromUpdateParameters:(const struct NetworkUpdateParameters *)arg1;
-- (BOOL)loadUpdateParameters:(struct NetworkUpdateParameters *)arg1 fromCompiledArchive:(struct _MLModelInputArchiver *)arg2 error:(id *)arg3;
 - (id)parameterValueForKey:(id)arg1;
 - (id)parameterValueForKey:(id)arg1 error:(id *)arg2;
 - (id)paramsForLayer:(id)arg1 parameterType:(unsigned long long)arg2 error:(id *)arg3;
@@ -68,10 +65,12 @@
 - (void)resumeUpdate;
 - (void)resumeUpdateWithParameters:(id)arg1;
 - (void)setUpdateProgressHandlers:(id)arg1 dispatchQueue:(id)arg2;
+- (BOOL)setWeightsOrBiasesForLayer:(id)arg1 layerType:(unsigned long long)arg2 value:(id)arg3 error:(id *)arg4;
 - (id)stringForDataType:(unsigned long long)arg1;
 - (BOOL)updateLearningRateWithTaskContext:(id)arg1 isInCallBack:(BOOL)arg2 error:(id *)arg3;
 - (void)updateModelWithData:(id)arg1;
 - (id)updateParameters;
+- (BOOL)updateWeightsAndBiasesFromConfigParams:(id)arg1 error:(id *)arg2;
 - (id)weightsForLayer:(id)arg1 error:(id *)arg2;
 - (BOOL)writeToURL:(id)arg1 error:(id *)arg2;
 

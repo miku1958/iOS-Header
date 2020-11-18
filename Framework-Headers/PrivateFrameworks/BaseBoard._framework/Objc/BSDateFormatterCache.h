@@ -37,7 +37,6 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_resetFormatters;
-- (BOOL)_shouldShowHoursForTimerDuration:(double)arg1;
 - (void)dealloc;
 - (id)formatAbbreviatedTimerDuration:(double)arg1;
 - (id)formatAlarmSnoozeDuration:(double)arg1;
@@ -60,7 +59,6 @@
 - (id)formatNumberAsDecimal:(id)arg1;
 - (id)formatTimerDuration:(double)arg1;
 - (id)init;
-- (id)multiLineDayOfWeekMonthDayFormatForLocale:(id)arg1;
 - (void)resetFormatters:(id)arg1;
 - (void)resetFormattersIfNecessary;
 - (BOOL)supportsMultiLineDayOfWeekMonthDayStyle;

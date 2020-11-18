@@ -6,32 +6,38 @@
 
 #import <UIKit/UIViewController.h>
 
+#import <CoverSheet/BCBatteryDeviceObserving-Protocol.h>
 #import <CoverSheet/BSDescriptionProviding-Protocol.h>
+#import <CoverSheet/CAAnimationDelegate-Protocol.h>
 #import <CoverSheet/CSCoverSheetViewControllerProtocol-Protocol.h>
 #import <CoverSheet/CSCoverSheetViewDelegate-Protocol.h>
 #import <CoverSheet/CSCoverSheetViewTransitionSource-Protocol.h>
 #import <CoverSheet/CSDateTimeLayoutAggregating-Protocol.h>
+#import <CoverSheet/CSEmbeddedContentActionManagerDelegate-Protocol.h>
 #import <CoverSheet/CSInterstitialTransitionDelegate-Protocol.h>
 #import <CoverSheet/CSLegibilityProviderDelegate-Protocol.h>
-#import <CoverSheet/CSLocketTransitionDelegate-Protocol.h>
-#import <CoverSheet/CSLocketViewControllerDelegate-Protocol.h>
+#import <CoverSheet/CSMainPageContentViewControllerNotificationObserver-Protocol.h>
 #import <CoverSheet/CSNotificationClearingTriggerDelegate-Protocol.h>
 #import <CoverSheet/CSNotificationDestination-Protocol.h>
 #import <CoverSheet/CSPasscodeViewControllerDelegate-Protocol.h>
 #import <CoverSheet/CSPersistentContentLayoutProviding-Protocol.h>
+#import <CoverSheet/CSPresentationViewControllerDelegate-Protocol.h>
+#import <CoverSheet/CSRemoteContentSessionHostDelegate-Protocol.h>
 #import <CoverSheet/CSScrollGestureControllerDelegate-Protocol.h>
 #import <CoverSheet/CSTimerViewControllerDelegate-Protocol.h>
 #import <CoverSheet/FBSDisplayLayoutPublisherObserving-Protocol.h>
+#import <CoverSheet/SBFDashBoardModalPresenterProtocol-Protocol.h>
 #import <CoverSheet/SBFIrisWallpaperViewDelegate-Protocol.h>
-#import <CoverSheet/SBFTodayOverlayObserving-Protocol.h>
+#import <CoverSheet/SBFOverlayDismissalDelegate-Protocol.h>
+#import <CoverSheet/SBFOverlayObserving-Protocol.h>
 #import <CoverSheet/SBLockScreenActionProvider-Protocol.h>
 #import <CoverSheet/UIGestureRecognizerDelegate-Protocol.h>
 #import <CoverSheet/_UISettingsKeyObserver-Protocol.h>
 
-@class BSTimer, CSAppearance, CSBehavior, CSChargingViewController, CSCoverSheetView, CSDismissableModalViewController, CSFaceOcclusionMonitor, CSFixedFooterViewController, CSHomeButtonShowPasscodeRecognizer, CSHomeButtonSuppressAfterUnlockRecognizer, CSInterstitialTransitionSource, CSLayoutStrategy, CSLockScreenSettings, CSLocketForcePressGestureRecognizer, CSLocketTransitionSource, CSMainPageContentViewController, CSModalPresentationViewController, CSNotificationClearingTrigger, CSNotificationDispatcher, CSPowerChangeObserver, CSPresentation, CSPresentationViewController, CSProudLockViewController, CSQuickActionsViewController, CSScrollGestureController, CSTeachableMomentsContainerViewController, CSTimerViewController, CSUserPresenceMonitor, FBDisplayLayoutTransition, NSArray, NSHashTable, NSSet, NSString, SBFLockScreenActionContext, SBFLockScreenDateSubtitleView, SBFLockScreenDateViewController, SBFLockScreenWakeAnimator, SBFSteppedAnimationTimingFunctionCalculator, SBLockScreenDefaults, SBWallpaperAggdLogger, UIColor, UIGestureRecognizer, UIStatusBar, UITapGestureRecognizer, UIVisualEffectView, _UILegibilitySettings;
-@protocol BSInvalidatable, CSApplicationLaunching, CSCameraPrewarming, CSCoverSheetContextProviding, CSCoverSheetViewControllerDelegate, CSCoverSheetViewPresenting, CSCoverSheetViewTransitionSource, CSEmergencyCalling, CSIdleTimerControlling, CSLegibilityProviding, CSNotificationDispatcher, CSOrientationUpdateControlling, CSSpotlightPresenting, CSWallpaperColorProvider, SBFIrisWallpaperView, SBFLockOutStatusProvider, SBFScreenWakeAnimationControlling, SBFScreenWakeAnimationTarget, SBFTodayOverlayControlling><CSExternalBehaviorProviding><CSExternalEventHandling, SBNotificationDestination, UICoordinateSpace;
+@class BCBatteryDeviceController, BSTimer, CSAppearance, CSBehavior, CSChargingViewController, CSCoverSheetView, CSEmbeddedContentActionManager, CSFaceOcclusionMonitor, CSFixedFooterViewController, CSHomeButtonShowPasscodeRecognizer, CSHomeButtonSuppressAfterUnlockRecognizer, CSInterstitialTransitionSource, CSLayoutStrategy, CSLockScreenSettings, CSMainPageContentViewController, CSModalPresentationViewController, CSNotificationClearingTrigger, CSNotificationDispatcher, CSPoseidonViewController, CSPowerChangeObserver, CSPresentation, CSPresentationViewController, CSProudLockViewController, CSQuickActionsViewController, CSRemoteContentModalViewController, CSRemoteContentSessionManager, CSScrollGestureController, CSTeachableMomentsContainerViewController, CSTimerViewController, CSUserPresenceMonitor, FBDisplayLayoutTransition, NSArray, NSHashTable, NSSet, NSString, SBFLockScreenActionContext, SBFLockScreenDateSubtitleView, SBFLockScreenDateViewController, SBFLockScreenWakeAnimator, SBFSteppedAnimationTimingFunctionCalculator, SBLockScreenDefaults, SBWallpaperAggdLogger, UIColor, UIGestureRecognizer, UIStatusBar, UITapGestureRecognizer, UIVisualEffectView, _UILegibilitySettings;
+@protocol BSInvalidatable, CSApplicationLaunching, CSCameraPrewarming, CSCoverSheetContextProviding, CSCoverSheetViewControllerDelegate, CSCoverSheetViewPresenting, CSCoverSheetViewTransitionSource, CSEmergencyCalling, CSIdleTimerControlling, CSLegibilityProviding, CSNotificationDispatcher, CSOrientationUpdateControlling, CSSpotlightPresenting, CSWallpaperColorProvider, SBFIrisWallpaperView, SBFLockOutStatusProvider, SBFOverlayControlling><CSExternalBehaviorProviding><CSExternalEventHandling, SBFScreenWakeAnimationControlling, SBFScreenWakeAnimationTarget, SBNotificationDestination, UICoordinateSpace;
 
-@interface CSCoverSheetViewController : UIViewController <CSPersistentContentLayoutProviding, CSDateTimeLayoutAggregating, CSCoverSheetViewDelegate, UIGestureRecognizerDelegate, CSLegibilityProviderDelegate, SBLockScreenActionProvider, SBFIrisWallpaperViewDelegate, CSCoverSheetViewTransitionSource, CSNotificationDestination, CSTimerViewControllerDelegate, _UISettingsKeyObserver, CSScrollGestureControllerDelegate, CSNotificationClearingTriggerDelegate, CSInterstitialTransitionDelegate, CSLocketTransitionDelegate, CSPasscodeViewControllerDelegate, CSLocketViewControllerDelegate, SBFTodayOverlayObserving, FBSDisplayLayoutPublisherObserving, CSCoverSheetViewControllerProtocol, BSDescriptionProviding>
+@interface CSCoverSheetViewController : UIViewController <CSPersistentContentLayoutProviding, CSDateTimeLayoutAggregating, BCBatteryDeviceObserving, CSCoverSheetViewDelegate, UIGestureRecognizerDelegate, CSLegibilityProviderDelegate, SBLockScreenActionProvider, SBFIrisWallpaperViewDelegate, CSCoverSheetViewTransitionSource, CSNotificationDestination, CSTimerViewControllerDelegate, _UISettingsKeyObserver, CSScrollGestureControllerDelegate, CSNotificationClearingTriggerDelegate, CSInterstitialTransitionDelegate, CSPasscodeViewControllerDelegate, SBFOverlayObserving, SBFOverlayDismissalDelegate, FBSDisplayLayoutPublisherObserving, CSRemoteContentSessionHostDelegate, CSEmbeddedContentActionManagerDelegate, CSMainPageContentViewControllerNotificationObserver, CSPresentationViewControllerDelegate, CAAnimationDelegate, CSCoverSheetViewControllerProtocol, BSDescriptionProviding, SBFDashBoardModalPresenterProtocol>
 {
     id<CSCoverSheetContextProviding> _coverSheetContext;
     CSLockScreenSettings *_prototypeSettings;
@@ -56,10 +62,12 @@
     CSHomeButtonSuppressAfterUnlockRecognizer *_homeButtonSuppressAfterUnlockRecognizer;
     CSModalPresentationViewController *_modalPresentationController;
     CSChargingViewController *_chargingViewController;
+    BCBatteryDeviceController *_batteryDeviceController;
     BSTimer *_chargingViewControllerTimer;
     CDUnknownBlockType _chargingViewTimerHandler;
     CSFixedFooterViewController *_fixedFooterViewController;
     CSProudLockViewController *_proudLockViewController;
+    CSPoseidonViewController *_poseidonViewController;
     CSTeachableMomentsContainerViewController *_teachableMomentsContainerViewController;
     CSQuickActionsViewController *_quickActionsViewController;
     CSScrollGestureController *_scrollGestureController;
@@ -68,7 +76,6 @@
     BOOL _statusBarInLockdownForTeardown;
     UITapGestureRecognizer *_quickNoteGestureRecognizer;
     UIGestureRecognizer *_wallpaperGestureRecognizer;
-    CSLocketForcePressGestureRecognizer *_locketGestureRecognizer;
     CSNotificationClearingTrigger *_notificationClearingTrigger;
     int _lastAppearState;
     BOOL _wantsAccessibilityContentSizes;
@@ -79,7 +86,10 @@
     BOOL _interstitialTransitionStartedFromPasscodePresented;
     SBLockScreenDefaults *_lockScreenDefaults;
     SBFLockScreenWakeAnimator *_lockScreenWakeAnimator;
-    CSDismissableModalViewController *_dismissableModalViewController;
+    CSRemoteContentSessionManager *_remoteContentSessionManager;
+    CSRemoteContentModalViewController *_remoteContentModalViewController;
+    BOOL _didSuppressRemoteContentOnDisappear;
+    CSEmbeddedContentActionManager *_embeddedContentActionManager;
     SBFLockScreenDateSubtitleView *_chargingLabel;
     CSUserPresenceMonitor *_userPresenceMonitor;
     CSFaceOcclusionMonitor *_faceOcclusionMonitor;
@@ -87,6 +97,7 @@
     BOOL _authenticated;
     BOOL _irisPlayerIsInteracting;
     BOOL _shouldTransitionIrisWallpaperToStillWhenPlaybackFinishes;
+    int _wakeSource;
     double _backlightLevel;
     SBFLockScreenActionContext *_customLockScreenActionContext;
     id<CSCoverSheetViewControllerDelegate> _delegate;
@@ -122,9 +133,9 @@
     id<SBFLockOutStatusProvider> _lockOutController;
     id<CSCoverSheetViewTransitionSource> _currentTransitionSource;
     CSInterstitialTransitionSource *_interstitialTransitionSource;
-    CSLocketTransitionSource *_locketTransitionSource;
-    id<SBFTodayOverlayControlling><CSExternalBehaviorProviding><CSExternalEventHandling> _todayOverlayController;
+    id<SBFOverlayControlling><CSExternalBehaviorProviding><CSExternalEventHandling> _overlayController;
     id<BSInvalidatable> _suspendWallpaperAnimationAssertion;
+    double _initialOverlayPresentationProgress;
     id<SBFScreenWakeAnimationControlling> _screenWakeAnimationController;
     SBWallpaperAggdLogger *_wallpaperAggdLogger;
 }
@@ -151,7 +162,9 @@
 @property (strong, nonatomic, getter=_customLockScreenActionContext) SBFLockScreenActionContext *customLockScreenActionContext; // @synthesize customLockScreenActionContext=_customLockScreenActionContext;
 @property (strong, nonatomic) SBFLockScreenDateViewController *dateViewController; // @synthesize dateViewController=_dateViewController;
 @property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<CSCoverSheetViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<CSNotificationDispatcher> dispatcher; // @synthesize dispatcher=_dispatcher;
 @property (readonly, nonatomic) long long effectiveInterfaceOrientation;
@@ -163,10 +176,12 @@
 @property (strong, nonatomic) UIStatusBar *fakeStatusBar; // @synthesize fakeStatusBar=_fakeStatusBar;
 @property (readonly, nonatomic) BOOL hasContentAboveCoverSheet; // @synthesize hasContentAboveCoverSheet=_hasContentAboveCoverSheet;
 @property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<CSIdleTimerControlling> idleTimerController; // @synthesize idleTimerController=_idleTimerController;
 @property (readonly, nonatomic) long long idleTimerDuration;
 @property (readonly, nonatomic) long long idleTimerMode;
 @property (readonly, nonatomic) long long idleWarnMode;
+@property (nonatomic) double initialOverlayPresentationProgress; // @synthesize initialOverlayPresentationProgress=_initialOverlayPresentationProgress;
 @property (strong, nonatomic) CSInterstitialTransitionSource *interstitialTransitionSource; // @synthesize interstitialTransitionSource=_interstitialTransitionSource;
 @property (strong, nonatomic) CSBehavior *irisBehavior; // @synthesize irisBehavior=_irisBehavior;
 @property (nonatomic) BOOL irisPlayerIsInteracting; // @synthesize irisPlayerIsInteracting=_irisPlayerIsInteracting;
@@ -179,13 +194,13 @@
 @property (strong, nonatomic) CSBehavior *localBehavior; // @synthesize localBehavior=_localBehavior;
 @property (strong, nonatomic, getter=_lockOutController, setter=_setLockOutController:) id<SBFLockOutStatusProvider> lockOutController; // @synthesize lockOutController=_lockOutController;
 @property (readonly, nonatomic) id<SBFScreenWakeAnimationTarget> lockScreenWakeAnimator; // @synthesize lockScreenWakeAnimator=_lockScreenWakeAnimator;
-@property (strong, nonatomic) CSLocketTransitionSource *locketTransitionSource; // @synthesize locketTransitionSource=_locketTransitionSource;
 @property (strong, nonatomic, setter=_setMainPageContentViewController:) CSMainPageContentViewController *mainPageContentViewController; // @synthesize mainPageContentViewController=_mainPageContentViewController;
 @property (readonly, nonatomic) CSPresentationViewController *mainPagePresentationViewController;
 @property (strong, nonatomic) CSModalPresentationViewController *modalPresentationController; // @synthesize modalPresentationController=_modalPresentationController;
 @property (readonly, nonatomic) long long notificationBehavior;
 @property (readonly, nonatomic) id<SBNotificationDestination> notificationDestination;
 @property (strong, nonatomic) id<CSOrientationUpdateControlling> orientationUpdateController; // @synthesize orientationUpdateController=_orientationUpdateController;
+@property (strong, nonatomic) id<SBFOverlayControlling><CSExternalBehaviorProviding><CSExternalEventHandling> overlayController; // @synthesize overlayController=_overlayController;
 @property (copy, nonatomic, setter=_setPageViewControllers:) NSArray *pageViewControllers; // @synthesize pageViewControllers=_pageViewControllers;
 @property (readonly, nonatomic) long long participantState;
 @property (strong, nonatomic) CSPowerChangeObserver *powerChangeObserver; // @synthesize powerChangeObserver=_powerChangeObserver;
@@ -199,6 +214,7 @@
 @property (weak, nonatomic) id<CSCoverSheetViewPresenting> presenter;
 @property (copy, nonatomic) CSAppearance *previousAppearance; // @synthesize previousAppearance=_previousAppearance;
 @property (readonly, nonatomic) long long proximityDetectionMode;
+@property (readonly, nonatomic, getter=isRestToOpenAvailable) BOOL restToOpenAvailable;
 @property (readonly, nonatomic) unsigned long long restrictedCapabilities;
 @property (strong, nonatomic, getter=_screenWakeAnimationController, setter=_setScreenWakeAnimationController:) id<SBFScreenWakeAnimationControlling> screenWakeAnimationController; // @synthesize screenWakeAnimationController=_screenWakeAnimationController;
 @property (readonly, nonatomic) long long scrollingStrategy;
@@ -208,17 +224,18 @@
 @property (weak, nonatomic) id<CSSpotlightPresenting> spotlightPresenter; // @synthesize spotlightPresenter=_spotlightPresenter;
 @property (strong, nonatomic) UIVisualEffectView *statusBarBackgroundView; // @synthesize statusBarBackgroundView=_statusBarBackgroundView;
 @property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) id<BSInvalidatable> suspendWallpaperAnimationAssertion; // @synthesize suspendWallpaperAnimationAssertion=_suspendWallpaperAnimationAssertion;
 @property (strong, nonatomic) CSTimerViewController *timerViewController; // @synthesize timerViewController=_timerViewController;
-@property (strong, nonatomic) id<SBFTodayOverlayControlling><CSExternalBehaviorProviding><CSExternalEventHandling> todayOverlayController; // @synthesize todayOverlayController=_todayOverlayController;
 @property (readonly, nonatomic) CDStruct_7238a68f transitionContext; // @synthesize transitionContext=_transitionContext;
 @property (readonly, nonatomic, getter=isTransitioning) BOOL transitioning;
+@property (readonly, nonatomic) int wakeSource; // @synthesize wakeSource=_wakeSource;
 @property (strong, nonatomic) SBWallpaperAggdLogger *wallpaperAggdLogger; // @synthesize wallpaperAggdLogger=_wallpaperAggdLogger;
 @property (weak, nonatomic) id<CSWallpaperColorProvider> wallpaperColorProvider; // @synthesize wallpaperColorProvider=_wallpaperColorProvider;
 @property (strong, nonatomic) UIGestureRecognizer *wallpaperGestureRecognizer; // @synthesize wallpaperGestureRecognizer=_wallpaperGestureRecognizer;
 
 - (void).cxx_destruct;
-- (id)__currentDesiredAppearanceWithStartIndex:(unsigned long long *)arg1 targetIndex:(unsigned long long *)arg2 targetAppearance:(id *)arg3 targetPresentation:(id *)arg4 modalAppearance:(id *)arg5 proudLockAppearance:(id *)arg6;
+- (id)__currentDesiredAppearanceWithStartIndex:(unsigned long long *)arg1 targetIndex:(unsigned long long *)arg2 targetAppearance:(id *)arg3 targetPresentation:(id *)arg4 modalAppearance:(id *)arg5 proudLockAppearance:(id *)arg6 poseidonAppearance:(id *)arg7;
 - (void)_activateCameraAnimated:(BOOL)arg1 actions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)_activeViewControllers;
 - (void)_actuallyUpdateUIForIrisNotPlaying;
@@ -226,21 +243,26 @@
 - (void)_actuallyUpdateUIForIrisPlaying:(BOOL)arg1;
 - (void)_addBedtimeGreetingBackgroundView;
 - (void)_addOrRemoveBlockedViewIfNecessaryAnimated:(BOOL)arg1;
+- (void)_addOrRemoveRemoteContentViewIfNecessary;
+- (void)_addOrRemoveRemoteContentViewIfNecessaryMaintainingState:(BOOL)arg1;
 - (void)_addOrRemoveResetRestoreViewIfNecessaryAnimated:(BOOL)arg1;
 - (void)_addOrRemoveThermalTrapViewIfNecessaryAnimated:(BOOL)arg1;
+- (void)_addRemoteViewControllerForAction:(id)arg1;
 - (void)_addStateCaptureHandlers;
 - (void)_addVisiblePageViewController:(id)arg1;
+- (void)_addWhitePointAnimationForKeyPath:(id)arg1 onLayer:(id)arg2 toValues:(id)arg3 withDuration:(double)arg4 dispatchGroup:(id)arg5;
 - (double)_alphaForTransitionFromHidden:(BOOL)arg1 toHidden:(BOOL)arg2 timingFunction:(id)arg3;
 - (double)_alphaForTransitionFromHidden:(BOOL)arg1 toHidden:(BOOL)arg2 unhiddenAlpha:(double)arg3 timingFunction:(id)arg4;
+- (void)_animateView:(id)arg1 toWhitePointReduced:(BOOL)arg2 withDispatchGroup:(id)arg3;
 - (id)_appearanceForParticipant:(id)arg1;
 - (id)_averageLockScreenWallpaperColor;
+- (id)_batteryDeviceController;
 - (void)_beginAppearanceTransitionForPageViewControllersToVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (id)_behaviorForParticipant:(id)arg1;
 - (void)_calculateAppearanceForCurrentOrientation;
+- (BOOL)_canShowEmbeddedRemoteContent;
 - (BOOL)_canShowWhileLocked;
-- (void)_cleanupLocketPresentationForCompleted:(BOOL)arg1;
 - (id)_componentForHidingWithType:(long long)arg1;
-- (void)_conformsToCSCoverSheetViewPresenting;
 - (id)_createFakeStatusBar;
 - (void)_createStatusBarBackgroundViewIfNeeded;
 - (double)_dateTimeAlphaForFade;
@@ -249,6 +271,8 @@
 - (double)_dateViewAlphaForCurrentWakeState;
 - (void)_dismissModalViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_dismissModalViewControllersWithIdentifier:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)_dismissRemoteViewControllerForReason:(long long)arg1;
+- (BOOL)_dismissRemoteViewControllerForReason:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_dismissToMainPageFromPageViewController:(id)arg1;
 - (void)_displayDidDisappearImplementation;
 - (void)_displayWillAppearImplementation;
@@ -257,11 +281,11 @@
 - (id)_eligiblePageViewControllers;
 - (void)_endAppearanceTransitionForPageViewControllersToVisible:(BOOL)arg1;
 - (id)_fakeStatusBarSettings;
+- (id)_filterValuesForWhitePointReduced:(BOOL)arg1 lighterReduction:(BOOL)arg2;
 - (struct CGPoint)_finalizeOffset:(struct CGPoint)arg1 referenceFrame:(struct CGRect)arg2;
 - (BOOL)_gestureRecognizer:(id)arg1 isLocatedOverHorizontalContentRegionInViewController:(id)arg2;
 - (BOOL)_handleEvent:(id)arg1;
 - (BOOL)_handleEventType:(long long)arg1;
-- (void)_handleLocketForcePressGestureRecognizer:(id)arg1;
 - (void)_handleQuickNoteLaunch:(id)arg1;
 - (unsigned long long)_indexOfCameraPage;
 - (unsigned long long)_indexOfMainPage;
@@ -272,9 +296,11 @@
 - (BOOL)_isMainPageShowing;
 - (BOOL)_isPageContentHidden;
 - (BOOL)_isPresentingModalViewControllerWithIdentifier:(id)arg1;
+- (BOOL)_isRemoteContentPresentedInUnlockMode;
 - (BOOL)_isSlideableContentOffsetOnscreen:(struct CGPoint)arg1;
 - (BOOL)_isSlideableContentOnscreen;
 - (BOOL)_isSourceForHorizontalScrolling:(id)arg1;
+- (BOOL)_isTodayViewOverlayShowing;
 - (BOOL)_isWakeAnimationInProgress;
 - (void)_listenForDisplayLayoutChanges:(BOOL)arg1;
 - (void)_loadViewsForRestrictedPagesIfPossible;
@@ -283,26 +309,34 @@
 - (BOOL)_overSlidingControlForLocation:(struct CGPoint)arg1 inView:(id)arg2;
 - (unsigned long long)_pageCapabilities;
 - (id)_pageForScrollPercent:(double)arg1;
+- (long long)_passcodePresentationMode;
 - (id)_passcodeViewController;
 - (void)_powerStatusChangedToConnectedState:(BOOL)arg1;
 - (void)_preferredContentSizeDidChange;
-- (void)_prepareForLocketPresentation;
 - (void)_prepareForViewWillAppearIfNecessary;
 - (void)_presentModalViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_presentModalViewController:(id)arg1 shouldDismissOverlays:(BOOL)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)_presentationForParticipant:(id)arg1;
 - (id)_presentedModalViewControllerWithIdentifier:(id)arg1;
 - (BOOL)_quickActionsSupported;
 - (void)_removeAllowedPageViewController:(id)arg1;
 - (void)_removeBedtimeGreetingBackgroundViewAnimated:(BOOL)arg1;
+- (void)_removeReduceWhitePointAnimationForKeyPath:(id)arg1 onLayer:(id)arg2;
+- (BOOL)_removeRemoteViewControllerForInvalidatedSession:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (double)_scaleForTransitionFromScale:(double)arg1 toScale:(double)arg2 timingFunction:(id)arg3;
+- (void)_scrollPanGestureBegan:(id)arg1;
+- (void)_scrollPanGestureChanged:(id)arg1;
+- (void)_scrollPanGestureEnded:(id)arg1;
 - (void)_sendAuthenticationChangedEvent;
 - (void)_setFakeStatusBarEnabled:(BOOL)arg1;
 - (void)_setHasContentAboveCoverSheet:(BOOL)arg1;
 - (void)_setModalPresentationControllerVisibility:(BOOL)arg1;
 - (void)_setModalPresentationControllerVisibility:(BOOL)arg1 cancelTouches:(BOOL)arg2;
-- (void)_setupLocketGestureRecognizer;
 - (void)_setupQuickNoteGestureRecognizer;
 - (void)_setupWallpaperGesture;
+- (BOOL)_shouldReduceWhitePoint;
+- (BOOL)_shouldReduceWhitePointForAppearance:(id)arg1;
+- (BOOL)_shouldSetUpWallpaperGesture;
 - (BOOL)_shouldUpdateActiveAppearanceForReason:(id)arg1;
 - (struct CGPoint)_slideableContentOffset;
 - (void)_startFadeInAnimationForSource:(long long)arg1;
@@ -326,10 +360,10 @@
 - (void)_updateLegibilitySettings;
 - (void)_updateLocalAppearanceForPresentation;
 - (void)_updateLocalAppearanceForRequester:(id)arg1 animationSettings:(id)arg2 actions:(CDUnknownBlockType)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)_updateLocketPresentationWithProgress:(double)arg1 completed:(BOOL)arg2;
 - (void)_updateModalPresentationControllerVisibility;
 - (void)_updateNotificationClearingTriggerForEvent:(id)arg1;
 - (void)_updatePageContent;
+- (void)_updatePoseidon;
 - (void)_updateProudLockView;
 - (void)_updateProudLockViewUpdateSuspension;
 - (void)_updateQuickActions;
@@ -343,21 +377,34 @@
 - (void)_updateUIForPlaying:(BOOL)arg1 immediately:(BOOL)arg2;
 - (void)_updateVisibilityForPageViewControllersWithVisiblePageViewController:(id)arg1;
 - (void)_updateWallpaperEffectView;
+- (void)_updateWhitePoint;
 - (double)_valueForTransitionInterval:(CDStruct_3e878e9e)arg1 timingFunction:(id)arg2;
 - (BOOL)_wallpaperGestureShouldRequireUserPresence;
+- (id)_whitePointReductionFilterFromValues:(id)arg1;
+- (id)_whitePointValues;
+- (id)_whitePointValuesForAppearance:(id)arg1;
 - (id)_windowsFromViewControllers:(id)arg1;
 - (BOOL)_wouldUpdateActiveAppearance;
+- (void)actionManager:(id)arg1 addedAction:(id)arg2;
+- (void)actionManager:(id)arg1 removedAction:(id)arg2;
 - (void)activateCameraViewAnimated:(BOOL)arg1 sendingActions:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)activateMainPageWithCompletion:(CDUnknownBlockType)arg1;
 - (void)activatePage:(unsigned long long)arg1 animated:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)activateTodayViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addApplicationHoster:(id)arg1;
 - (void)addCoverSheetObserver:(id)arg1;
+- (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
 - (double)bottomContentInset;
 - (BOOL)canBeDeactivatedForUIUnlockFromSource:(int)arg1;
 - (BOOL)canHostAnApp;
 - (void)cancelTransition;
 - (void)cleanupInterstitialPresentationToPresented:(BOOL)arg1 inPlace:(BOOL)arg2;
+- (void)conformsToCSAppearanceProviding;
+- (void)conformsToCSBehaviorProviding;
+- (void)conformsToCSCoverSheetViewControlling;
+- (void)conformsToCSCoverSheetViewPresenting;
+- (void)conformsToCSEventHandling;
+- (void)connectedDevicesDidChange:(id)arg1;
 - (BOOL)containsCenteredDateTimeLayout;
 - (BOOL)controller:(id)arg1 shouldAllowPanScrollingWithSystemGestureRecognizer:(id)arg2;
 - (void)controllerWillCancelHorizontalScrolling:(id)arg1;
@@ -370,16 +417,19 @@
 - (double)dateTimeMostExtremeTrailingX;
 - (double)dateTimeSubtitleMaximumWidth;
 - (id)dateView;
+- (void)deactivateTodayViewWithCompletion:(CDUnknownBlockType)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)dismissLocketViewController:(double)arg1;
+- (void)didPostNotificationRequest:(id)arg1;
+- (void)dismissHomeScreenOverlay;
+- (void)dismissModalViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)dismissNotificationInLongLookAnimated:(BOOL)arg1;
 - (void)dismissOverlaysAnimated:(BOOL)arg1;
-- (void)dismissTodayOverlay;
 - (void)externalAppearanceProviderBehaviorChanged:(id)arg1;
 - (void)externalBehaviorProviderBehaviorChanged:(id)arg1;
 - (void)externalLockProviderStateChanged:(id)arg1;
 - (void)externalPresentationProviderPresentationChanged:(id)arg1;
+- (void)fillRestToOpenWithDuration:(double)arg1;
 - (void)finishUIUnlockFromSource:(int)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
@@ -402,6 +452,7 @@
 - (void)idleTimerDidWarn;
 - (void)idleTimerWillRefresh;
 - (id)initWithPageViewControllers:(id)arg1 mainPageContentViewController:(id)arg2 context:(id)arg3;
+- (BOOL)interceptDismissalGestureForOverlayController:(id)arg1;
 - (void)invalidateLockScreenActionContext;
 - (void)irisWallpaperView:(id)arg1 didReplaceGestureRecognizer:(id)arg2 withGestureRecognizer:(id)arg3;
 - (void)irisWallpaperViewIsInteractingDidChange:(id)arg1;
@@ -409,6 +460,7 @@
 - (BOOL)isHostingAnApp;
 - (BOOL)isInScreenOffMode;
 - (BOOL)isLockScreenShowingDefaultContent;
+- (BOOL)isLockScreenShowingDefaultContentExceptControlCenter;
 - (BOOL)isMainPageVisible;
 - (BOOL)isNotificationContentExtensionVisible:(id)arg1;
 - (BOOL)isPasscodeLockVisible;
@@ -424,19 +476,27 @@
 - (void)noteDeviceBlockedStatusUpdated;
 - (void)noteResetRestoreStateUpdated;
 - (void)noteWillPresentForUserGesture;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
+- (void)overlayController:(id)arg1 didChangePresentationProgress:(double)arg2 fromLeading:(BOOL)arg3;
+- (void)overlayController:(id)arg1 visibilityDidChange:(BOOL)arg2;
+- (void)overlayControllerDidBeginChangingPresentationProgress:(id)arg1;
+- (void)overlayControllerRequestsDismissal:(id)arg1;
 - (id)pageViewControllerAtIndex:(unsigned long long)arg1;
 - (void)passcodeViewController:(id)arg1 didCompletePasscodeEntry:(BOOL)arg2;
 - (void)passcodeViewControllerDidBeginPasscodeEntry:(id)arg1;
 - (void)passcodeViewControllerDidCancelPasscodeEntry:(id)arg1;
+- (BOOL)passcodeViewControllerShouldHideStatusBar:(id)arg1;
 - (void)postNotificationRequest:(id)arg1;
 - (long long)preferredInterfaceOrientationForPresentation;
 - (void)prepareForInterstitialPresentation;
 - (void)prepareForUILock;
 - (void)prepareForUIUnlock;
+- (void)presentModalViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentModalViewController:(id)arg1 fromRect:(struct CGRect)arg2 inView:(id)arg3 animated:(BOOL)arg4;
 - (void)presentModalViewController:(id)arg1 withTransition:(int)arg2;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)presentViewController:(id)arg1 withTransition:(int)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)presentationViewController:(id)arg1 didTransitionViewController:(id)arg2 toPresented:(BOOL)arg3;
 - (void)publisher:(id)arg1 didUpdateLayout:(id)arg2 withTransition:(id)arg3;
 - (void)registerExternalAppearanceProvider:(id)arg1;
 - (void)registerExternalBehaviorProvider:(id)arg1;
@@ -444,9 +504,14 @@
 - (void)registerExternalLockProvider:(id)arg1;
 - (void)registerExternalPresentationProvider:(id)arg1;
 - (id)relinquishHostingOfWallpaperOverlay;
+- (void)remoteContentDidUpdateStyle;
+- (void)remoteContentSession:(id)arg1 didInvalidateWithError:(id)arg2;
+- (BOOL)remoteContentSession:(id)arg1 dismissWithReason:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)remoteContentSession:(id)arg1 presentViewController:(id)arg2;
 - (void)removeApplicationHoster:(id)arg1;
 - (void)removeCoverSheetObserver:(id)arg1;
 - (void)resetMainPageContentOffset;
+- (void)resetRestToOpen;
 - (void)scrollPanGestureDidUpdate:(id)arg1;
 - (void)setCoverSheetIsVisible:(BOOL)arg1;
 - (void)setInScreenOffMode:(BOOL)arg1;
@@ -456,6 +521,7 @@
 - (void)setPasscodeLockVisible:(BOOL)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setPasscodeLockVisible:(BOOL)arg1 animated:(BOOL)arg2 forceBiometricPresentation:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)settings:(id)arg1 changedValueForKey:(id)arg2;
+- (BOOL)shouldActivateRemoteContentSession:(id)arg1;
 - (BOOL)shouldAutoUnlockForSource:(int)arg1;
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods;
 - (BOOL)shouldAutorotate;
@@ -464,6 +530,7 @@
 - (BOOL)shouldUnlockUIOnKeyDownEvent;
 - (void)startHostingWallpaperOverlay:(id)arg1;
 - (void)startLockScreenFadeInAnimationForSource:(int)arg1;
+- (void)startRestToOpenCoachingWithCompletion:(CDUnknownBlockType)arg1;
 - (long long)statusBarStyle;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
@@ -477,7 +544,6 @@
 - (double)timeToSubtitleLabelBaselineDifferenceY;
 - (void)timerControllerDidStartTimer:(id)arg1;
 - (void)timerControllerDidStopTimer:(id)arg1;
-- (void)todayOverlayController:(id)arg1 didChangePresentationProgress:(double)arg2;
 - (void)transitionSource:(id)arg1 didEndWithContext:(CDStruct_7238a68f)arg2;
 - (void)transitionSource:(id)arg1 didUpdateTransitionWithContext:(CDStruct_7238a68f)arg2;
 - (void)transitionSource:(id)arg1 willBeginWithType:(long long)arg2;

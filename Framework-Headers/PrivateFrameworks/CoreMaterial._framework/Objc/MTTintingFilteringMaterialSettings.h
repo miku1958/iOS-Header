@@ -6,12 +6,13 @@
 
 #import <CoreMaterial/MTTintingMaterialSettings.h>
 
-#import <CoreMaterial/MTMaterialFiltering-Protocol.h>
+#import <CoreMaterial/MTMaterialFilteringInternal-Protocol.h>
 
 @class NSArray, NSString;
 
-@interface MTTintingFilteringMaterialSettings : MTTintingMaterialSettings <MTMaterialFiltering>
+@interface MTTintingFilteringMaterialSettings : MTTintingMaterialSettings <MTMaterialFilteringInternal>
 {
+    struct CGImage *_variableBlurInputMask;
     BOOL _averageColorEnabled;
     BOOL _blurAtEnd;
     double _luminanceAmount;
@@ -22,6 +23,7 @@
     double _zoom;
     double _backdropScale;
     NSString *_blurInputQuality;
+    NSString *_variableBlurInputMaskName;
     struct CAColorMatrix _colorMatrix;
 }
 
@@ -39,11 +41,14 @@
 @property (readonly, copy, nonatomic) NSArray *luminanceValues; // @synthesize luminanceValues=_luminanceValues;
 @property (readonly, nonatomic) double saturation; // @synthesize saturation=_saturation;
 @property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSString *variableBlurInputMaskName; // @synthesize variableBlurInputMaskName=_variableBlurInputMaskName;
 @property (readonly, nonatomic) double zoom; // @synthesize zoom=_zoom;
 
 - (void).cxx_destruct;
-- (void)_processMaterialFilteringDescription:(id)arg1 defaultingToIdentity:(BOOL)arg2;
-- (id)initWithMaterialDescription:(id)arg1 andDescendantDescriptions:(id)arg2;
+- (void)_processMaterialFilteringDescription:(id)arg1 defaultingToIdentity:(BOOL)arg2 bundle:(id)arg3;
+- (void)dealloc;
+- (id)initWithMaterialDescription:(id)arg1 andDescendantDescriptions:(id)arg2 bundle:(id)arg3;
+- (struct CGImage *)variableBlurInputMask;
 
 @end
 

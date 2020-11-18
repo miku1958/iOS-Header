@@ -7,17 +7,21 @@
 #import <AppleIDSSOAuthentication/AIDAServiceContext.h>
 
 @class NSDictionary, UIViewController;
-@protocol CDPStateUIProvider;
+@protocol AASignInFlowControllerDelegate, AASignOutFlowControllerDelegate, CDPStateUIProvider;
 
 @interface AIDAMutableServiceContext : AIDAServiceContext
 {
 }
 
-@property (copy, nonatomic) NSDictionary *authenticationResults; // @dynamic authenticationResults;
-@property (weak, nonatomic) id<CDPStateUIProvider> cdpUiProvider; // @dynamic cdpUiProvider;
-@property (nonatomic) long long operationUIPermissions; // @dynamic operationUIPermissions;
-@property (nonatomic) BOOL shouldForceOperation; // @dynamic shouldForceOperation;
-@property (strong, nonatomic) UIViewController *viewController; // @dynamic viewController;
+@property (strong, nonatomic) id<AASignInFlowControllerDelegate> aaSignInFlowControllerDelegate;
+@property (strong, nonatomic) id<AASignOutFlowControllerDelegate> aaSignOutFlowControllerDelegate;
+@property (copy, nonatomic) NSDictionary *authenticationResults;
+@property (weak, nonatomic) id<CDPStateUIProvider> cdpUiProvider;
+@property (nonatomic) long long operationUIPermissions;
+@property (nonatomic) BOOL shouldForceOperation;
+@property (strong, nonatomic) NSDictionary *signInContexts;
+@property (strong, nonatomic) NSDictionary *signOutContexts;
+@property (strong, nonatomic) UIViewController *viewController;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;

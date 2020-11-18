@@ -16,13 +16,12 @@
 + (id)grantWithBackgroundPriority;
 + (id)grantWithForegroundPriority;
 + (id)grantWithPriority:(long long)arg1;
-+ (BOOL)supportsBSXPCSecureCoding;
-- (id)_initWithPriority:(long long)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
++ (BOOL)supportsRBSXPCSecureCoding;
+- (id)description;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)succinctDescriptionBuilder;
 
 @end
 

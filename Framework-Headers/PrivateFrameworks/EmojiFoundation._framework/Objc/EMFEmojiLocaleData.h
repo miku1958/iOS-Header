@@ -6,21 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class EMFEmojiSearchEngine, NSArray, NSString;
 
 @interface EMFEmojiLocaleData : NSObject
 {
     NSString *_localeIdentifier;
     struct __EmojiLocaleDataWrapper *_localeDataRef;
+    BOOL _didTryLoadingSearchEngine;
+    EMFEmojiSearchEngine *_searchEngine;
 }
 
 @property (readonly, nonatomic) const struct __EmojiLocaleDataWrapper *emojiLocaleDataRef; // @synthesize emojiLocaleDataRef=_localeDataRef;
 @property (readonly, copy, nonatomic) NSArray *emojiTokens;
 @property (readonly, copy, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
+@property (readonly, strong, nonatomic) EMFEmojiSearchEngine *searchEngine; // @synthesize searchEngine=_searchEngine;
 
 + (id)emojiLocaleDataWithCEMEmojiLocaleData:(struct __EmojiLocaleDataWrapper *)arg1;
 + (id)emojiLocaleDataWithLocaleIdentifier:(id)arg1;
 - (void).cxx_destruct;
+- (id)_rawSearchEngineReference;
 - (unsigned long long)cfCompareFlagsFromNSOptions:(unsigned long long)arg1;
 - (void)dealloc;
 - (id)description;
@@ -29,6 +33,7 @@
 - (void)enumerateSearchResultsInText:(id)arg1 range:(struct _NSRange)arg2 options:(unsigned long long)arg3 searchType:(int)arg4 usingBlock:(CDUnknownBlockType)arg5;
 - (id)initWithCEMEmojiLocaleData:(struct __EmojiLocaleDataWrapper *)arg1;
 - (id)initWithLocaleIdentifier:(id)arg1;
+- (void)preheatSearchEngine;
 
 @end
 

@@ -22,7 +22,9 @@
     long long _currentSearchItem;
     UIColor *_normalTextViewBackground;
     UIColor *_selectedTextViewBackground;
+    UIColor *_currentSelectionForeground;
     UIColor *_currentSelectionBackground;
+    UIColor *_otherSelectionForeground;
     UIColor *_otherSelectionBackground;
     double _currentKeyboardHeight;
 }
@@ -32,11 +34,13 @@
 @property (strong) _IncrementalSearchOperation *currentSearch; // @synthesize currentSearch=_currentSearch;
 @property long long currentSearchItem; // @synthesize currentSearchItem=_currentSearchItem;
 @property (readonly, nonatomic) UIColor *currentSelectionBackground; // @synthesize currentSelectionBackground=_currentSelectionBackground;
+@property (readonly, nonatomic) UIColor *currentSelectionForeground; // @synthesize currentSelectionForeground=_currentSelectionForeground;
 @property (readonly) NSData *data; // @synthesize data=_data;
 @property (readonly, nonatomic) NSString *dataAsString; // @synthesize dataAsString=_dataAsString;
 @property (readonly, nonatomic) HKIncrementalSearchBar *incrementalSearchBar; // @synthesize incrementalSearchBar=_incrementalSearchBar;
 @property (readonly, nonatomic) UIColor *normalTextViewBackground; // @synthesize normalTextViewBackground=_normalTextViewBackground;
 @property (readonly, nonatomic) UIColor *otherSelectionBackground; // @synthesize otherSelectionBackground=_otherSelectionBackground;
+@property (readonly, nonatomic) UIColor *otherSelectionForeground; // @synthesize otherSelectionForeground=_otherSelectionForeground;
 @property (readonly, nonatomic) NSOperationQueue *searchQueue; // @synthesize searchQueue=_searchQueue;
 @property (readonly, nonatomic) UIColor *selectedTextViewBackground; // @synthesize selectedTextViewBackground=_selectedTextViewBackground;
 @property (readonly, nonatomic) UITextView *textView; // @synthesize textView=_textView;

@@ -11,6 +11,7 @@
 @interface _TtC9Coherence15CopiedReference : _TtCs12_SwiftObject
 {
     MISSING_TYPE *copied;
+    MISSING_TYPE *anon;
     MISSING_TYPE *reference;
 }
 

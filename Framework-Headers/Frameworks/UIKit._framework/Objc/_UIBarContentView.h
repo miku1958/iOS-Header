@@ -13,7 +13,6 @@
 __attribute__((visibility("hidden")))
 @interface _UIBarContentView : UIView <_UIButtonBarAppearanceDelegate>
 {
-    BOOL _barWantsLetterpress;
     BOOL _barIsBlack;
     BOOL _centerTextButtons;
     Class _appearanceGuideClass;
@@ -29,7 +28,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIImage *backIndicatorMaskImage; // @synthesize backIndicatorMaskImage=_backIndicatorMaskImage;
 @property (nonatomic) BOOL barIsBlack; // @synthesize barIsBlack=_barIsBlack;
 @property (readonly, nonatomic) long long barType;
-@property (nonatomic) BOOL barWantsLetterpress; // @synthesize barWantsLetterpress=_barWantsLetterpress;
 @property (readonly, nonatomic) struct CGRect bounds;
 @property (nonatomic) BOOL centerTextButtons; // @synthesize centerTextButtons=_centerTextButtons;
 @property (readonly, nonatomic) BOOL compactMetrics;

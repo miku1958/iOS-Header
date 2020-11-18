@@ -13,14 +13,12 @@
 
 @interface HMDCameraClipsQuotaManager : NSObject <HMDDatabaseDelegate, HMFLogging>
 {
-    BOOL _enabled;
     HMBCloudDatabase *_cloudDatabase;
 }
 
 @property (readonly) HMBCloudDatabase *cloudDatabase; // @synthesize cloudDatabase=_cloudDatabase;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
@@ -29,11 +27,11 @@
 + (id)defaultManager;
 + (id)logCategory;
 - (void).cxx_destruct;
-- (id)_addFunctionInvokeOperationWithFunctionName:(id)arg1 serializedRequest:(id)arg2;
-- (id)database:(id)arg1 willRemoveOwnedZoneWithName:(id)arg2;
+- (id)_addCodeOperationWithFunctionName:(id)arg1 request:(id)arg2 responseClass:(Class)arg3;
+- (id)database:(id)arg1 willRemoveZoneWithName:(id)arg2 isPrivate:(BOOL)arg3;
 - (id)disableCloudStorageForZoneWithName:(id)arg1;
 - (id)enableCloudStorageForZoneWithName:(id)arg1;
-- (id)initWithDatabase:(id)arg1 isEnabled:(BOOL)arg2;
+- (id)initWithDatabase:(id)arg1;
 - (id)logIdentifier;
 
 @end

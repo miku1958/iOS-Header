@@ -17,12 +17,14 @@
     } mFlags;
 }
 
+@property (readonly, copy, nonatomic) CDUnknownBlockType blockToExcludeCaptionsAndDescendantsOfCaptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isInvisible;
 @property (readonly, nonatomic) double opacity;
 @property (readonly, nonatomic) TSDReflection *reflection;
+@property (readonly, nonatomic) struct CGRect reflectionFrameInRootForClipping;
 @property (readonly, nonatomic) TSDShadow *shadow;
 @property (readonly, nonatomic) BOOL shouldShowReflection;
 @property (readonly, nonatomic) BOOL shouldShowShadow;
@@ -50,6 +52,7 @@
 - (struct CGImage *)newFrameMaskForViewScale:(double)arg1 frameRect:(struct CGRect *)arg2;
 - (struct CGImage *)newShadowImageWithSize:(struct CGSize)arg1 shadow:(id)arg2 drawSelector:(SEL)arg3 unflipped:(BOOL)arg4;
 - (struct CGImage *)newShadowImageWithSize:(struct CGSize)arg1 unflipped:(BOOL)arg2 withChildren:(BOOL)arg3;
+- (struct CGRect)p_baseReflectionFrameInRootForClipping;
 - (struct CGRect)p_clipRectInRootForTransform:(struct CGAffineTransform)arg1 includeShadow:(BOOL)arg2 includeReflection:(BOOL)arg3;
 - (void)p_drawReflectionInContext:(struct CGContext *)arg1;
 - (void)p_drawReflectionIntoReflectionFrameInContext:(struct CGContext *)arg1 withTransparencyLayer:(BOOL)arg2 applyingOpacity:(BOOL)arg3 shouldClipGradient:(BOOL)arg4 withBlock:(CDUnknownBlockType)arg5;

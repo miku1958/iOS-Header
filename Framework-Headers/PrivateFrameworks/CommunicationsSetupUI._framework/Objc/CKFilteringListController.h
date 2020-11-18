@@ -8,6 +8,7 @@
 
 @class CKNSExtension, NSArray, NSDictionary, NSMutableArray, NSString, PSSpecifier;
 
+__attribute__((visibility("hidden")))
 @interface CKFilteringListController : PSListController
 {
     BOOL _showingParentViewController;
@@ -47,17 +48,20 @@
 - (id)getDefaultExtension;
 - (id)getExtensionNameAndWarning:(id)arg1;
 - (id)getSpamSpecifiers;
+- (void)grayOutSMSFilteringIfNecessary:(id)arg1;
 - (id)init;
 - (id)isConversationListFilteringEnabled:(id)arg1;
 - (id)isSpamFilteringEnabled:(id)arg1;
 - (void)setConversationListFilteringEnabled:(id)arg1 specifier:(id)arg2;
 - (void)setIsSpamFilteringDefaultEnabled;
-- (void)setSpamFilteringEnabled:(id)arg1 specifier:(id)arg2;
-- (void)showPrivacyAccessWarning:(id)arg1 isToggle:(BOOL)arg2;
+- (void)shouldShowPrivacyAccessWarning:(id)arg1;
 - (void)showPrivacyLegalVC;
 - (id)specifiers;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
+- (void)tappedNoFilterCell:(id)arg1;
 - (void)tappedSpamAppCell:(id)arg1;
+- (void)userChangedSpamFilteringSettings;
 - (BOOL)verifyCurrentExtensionIDValidity;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

@@ -21,7 +21,7 @@
 
 @property (strong, nonatomic) GKCollectionViewDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<GKSegmentInfoDelegagte> delegate; // @synthesize delegate=_delegateWeak;
+@property (weak, nonatomic) id<GKSegmentInfoDelegagte> delegate; // @synthesize delegate=_delegateWeak;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) GKPlaceholderContentStateMachine *loadingMatchine; // @synthesize loadingMatchine=_loadingMatchine;
@@ -29,7 +29,7 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)didEnterErrorState;
 - (void)didEnterLoadingState;
 - (void)didEnterNoContentState;

@@ -8,6 +8,7 @@
 
 #import <SoftwareUpdateServices/NSSecureCoding-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface SUEmptyObject : NSObject <NSSecureCoding>
 {
 }

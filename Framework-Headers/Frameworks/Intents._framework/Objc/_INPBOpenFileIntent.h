@@ -15,7 +15,6 @@
 @interface _INPBOpenFileIntent : PBCodable <_INPBOpenFileIntent, NSSecureCoding, NSCopying>
 {
     CDStruct_5a81f70e _has;
-    BOOL __encodeLegacyGloryData;
     int _entityType;
     int _scope;
     _INPBString *_appId;
@@ -25,7 +24,6 @@
     _INPBString *_scopeEntityName;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBString *appId; // @synthesize appId=_appId;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

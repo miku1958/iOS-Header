@@ -11,6 +11,7 @@
 @protocol PPTopicReadOnlyServerProtocol <PPFeedbackAccepting>
 - (void)rankedTopicsWithQuery:(PPTopicQuery *)arg1 queryId:(unsigned long long)arg2;
 - (void)scoresForTopicMapping:(NSString *)arg1 query:(PPTopicQuery *)arg2 queryId:(unsigned long long)arg3;
+- (void)topicExtractionsFromText:(NSString *)arg1 queryId:(unsigned long long)arg2;
 - (void)topicRecordsWithQuery:(PPTopicQuery *)arg1 queryId:(unsigned long long)arg2;
 - (void)unmapMappedTopicIdentifier:(NSString *)arg1 mappingIdentifier:(NSString *)arg2 completion:(void (^)(NSDictionary *, NSError *))arg3;
 @end

@@ -20,17 +20,11 @@
 @property (readonly, copy, nonatomic) NSString *pluginDirectory; // @synthesize pluginDirectory=_pluginDirectory;
 
 + (id)mainManager;
-+ (id)managerForBundle:(id)arg1;
 - (void).cxx_destruct;
 - (id)description;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)initWithBundle:(id)arg1;
 - (id)pluginBundleForIdentifier:(id)arg1;
 - (id)pluginBundleForName:(id)arg1 type:(id)arg2;
 - (id)pluginBundlesForType:(id)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

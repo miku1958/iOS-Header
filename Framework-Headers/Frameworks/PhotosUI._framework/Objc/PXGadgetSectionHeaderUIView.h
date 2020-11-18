@@ -24,7 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) UIView *divider; // @synthesize divider=_divider;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) PXGadgetSectionHeader *headerModel; // @synthesize headerModel=_headerModel;
+@property (strong, nonatomic) PXGadgetSectionHeader *headerModel; // @synthesize headerModel=_headerModel;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 

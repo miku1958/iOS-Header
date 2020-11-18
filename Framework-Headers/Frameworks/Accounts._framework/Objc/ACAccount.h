@@ -31,7 +31,7 @@
     NSURL *_objectID;
     NSDate *_date;
     NSDate *_lastCredentialRenewalRejectionDate;
-    NSString *_parentAccountIdentifier;
+    NSString *_modificationID;
     ACAccount *_parentAccount;
     NSArray *_childAccounts;
     ACMutableTrackedSet *_trackedProvisionedDataclasses;
@@ -45,9 +45,9 @@
     BOOL _accountAccessAvailable;
     BOOL _authenticated;
     BOOL _active;
+    BOOL _warmingUp;
     BOOL _supportsAuthentication;
     BOOL _visible;
-    BOOL _haveCheckedForParentAccount;
     BOOL _haveCheckedForChildAccounts;
     BOOL _wasProvisionedDataclassesReset;
     BOOL _wasEnabledDataclassesReset;
@@ -77,7 +77,11 @@
 @property (strong, nonatomic) NSMutableSet *enabledDataclasses;
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) ACAccountCredential *internalCredential;
 @property (strong, nonatomic) NSDate *lastCredentialRenewalRejectionDate;
+@property (strong) NSString *managingOwnerIdentifier;
+@property (strong) NSString *managingSourceName;
+@property (readonly, nonatomic) NSString *modificationID;
 @property (readonly, nonatomic) NSURL *objectID;
 @property (strong, nonatomic) ACAccount *parentAccount;
 @property (readonly, nonatomic) NSString *parentAccountIdentifier;
@@ -91,9 +95,11 @@
 @property (readonly, nonatomic) NSString *userFullName;
 @property (copy, nonatomic) NSString *username;
 @property (nonatomic, getter=isVisible) BOOL visible;
+@property (nonatomic, getter=isWarmingUp) BOOL warmingUp;
 @property (readonly, nonatomic) BOOL wasEnabledDataclassesReset; // @synthesize wasEnabledDataclassesReset=_wasEnabledDataclassesReset;
 @property (readonly, nonatomic) BOOL wasProvisionedDataclassesReset; // @synthesize wasProvisionedDataclassesReset=_wasProvisionedDataclassesReset;
 
++ (id)keypathsRequiredForInitialization;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_applyDirtyStateFromAccount:(id)arg1;
@@ -107,7 +113,6 @@
 - (void)_installCredentialsChangedObserver;
 - (BOOL)_isDifferentFrom:(id)arg1;
 - (void)_loadAllCachedProperties;
-- (void)_loadCachedPropertiesWithoutCredentials;
 - (void)_markAccountPropertyDirty:(id)arg1;
 - (void)_markCredentialDirty;
 - (void)_markDataclassPropertyDirty:(id)arg1;

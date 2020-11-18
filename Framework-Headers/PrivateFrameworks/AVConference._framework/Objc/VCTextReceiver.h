@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
     VCTextJitterBuffer *_jitterBuffer;
     double _lastReceivedRTPPacketTime;
     double _lastReceivedRTCPPacketTime;
+    struct OpaqueVCTransportStreamRunLoop *_runLoop;
 }
 
 @property (nonatomic) id<VCTextReceiverDelegate> delegate;

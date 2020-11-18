@@ -40,20 +40,18 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) id<NSCopying><NSSecureCoding> value;
 
++ (CDUnknownBlockType)Value;
 + (id)allValuesInArray:(id)arg1;
 + (id)emptyEntries;
 + (id)entriesByUnifyingEntryArrays:(id)arg1 forProperty:(id)arg2;
 + (id)entryForIdentifier:(id)arg1 inArray:(id)arg2;
 + (id)entryWithIdentifier:(id)arg1 label:(id)arg2 value:(id)arg3;
 + (id)firstLabeledValueWithValue:(id)arg1 inArray:(id)arg2;
-+ (id)identifierProvider;
 + (BOOL)isArrayOfEntries:(id)arg1 equalToArrayOfEntriesIgnoringIdentifiers:(id)arg2;
 + (id)labelForIdentifier:(id)arg1 inArray:(id)arg2;
 + (id)labeledValueWithIdentifier:(id)arg1 inArray:(id)arg2;
 + (id)labeledValueWithLabel:(id)arg1 value:(id)arg2;
 + (id)localizedStringForLabel:(id)arg1;
-+ (id)makeIdentifier;
-+ (id)propertyDescriptionOwnersByLabel;
 + (BOOL)supportsSecureCoding;
 + (CDUnknownBlockType)testMatchingIdentifier:(id)arg1;
 + (id)valueForIdentifier:(id)arg1 inArray:(id)arg2;
@@ -67,8 +65,6 @@
 - (id)initWithLabel:(id)arg1 value:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualIgnoringIdentifiers:(id)arg1;
-- (BOOL)isEqualToLabeledValue:(id)arg1;
-- (BOOL)isEqualToLabeledValue:(id)arg1 includeIdentifiers:(BOOL)arg2;
 - (id)labeledValueBySettingLabel:(id)arg1;
 - (id)labeledValueBySettingLabel:(id)arg1 value:(id)arg2;
 - (id)labeledValueBySettingValue:(id)arg1;

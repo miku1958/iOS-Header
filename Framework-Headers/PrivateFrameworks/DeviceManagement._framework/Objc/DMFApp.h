@@ -40,6 +40,8 @@
     unsigned long long _installationState;
     NSString *_VPNUUIDString;
     NSArray *_associatedDomains;
+    NSNumber *_associatedDomainsEnableDirectDownloads;
+    NSNumber *_removable;
     NSDictionary *_configuration;
     NSDictionary *_feedback;
     DMFAppManagementInformation *_managementInformation;
@@ -47,6 +49,7 @@
 
 @property (copy, nonatomic) NSString *VPNUUIDString; // @synthesize VPNUUIDString=_VPNUUIDString;
 @property (copy, nonatomic) NSArray *associatedDomains; // @synthesize associatedDomains=_associatedDomains;
+@property (copy, nonatomic) NSNumber *associatedDomainsEnableDirectDownloads; // @synthesize associatedDomainsEnableDirectDownloads=_associatedDomainsEnableDirectDownloads;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (copy, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
@@ -69,6 +72,7 @@
 @property (nonatomic) BOOL isValidated; // @synthesize isValidated=_isValidated;
 @property (copy, nonatomic) DMFAppManagementInformation *managementInformation; // @synthesize managementInformation=_managementInformation;
 @property (copy, nonatomic) NSNumber *onDemandResourcesUsage; // @synthesize onDemandResourcesUsage=_onDemandResourcesUsage;
+@property (copy, nonatomic) NSNumber *removable; // @synthesize removable=_removable;
 @property (copy, nonatomic) NSNumber *sharedUsage; // @synthesize sharedUsage=_sharedUsage;
 @property (copy, nonatomic) NSString *shortVersion; // @synthesize shortVersion=_shortVersion;
 @property (copy, nonatomic) NSNumber *staticUsage; // @synthesize staticUsage=_staticUsage;

@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
     int _type;
-    CDStruct_24aeab2f _flags;
+    CDStruct_dc56225f _flags;
 }
 
 @property (strong, nonatomic) NSString *field;
@@ -37,10 +37,6 @@ __attribute__((visibility("hidden")))
 + (Class)operandType;
 - (void).cxx_destruct;
 - (int)StringAsType:(id)arg1;
-- (void)_addNoFlagsOperand:(id)arg1;
-- (void)_readField;
-- (void)_readOperands;
-- (void)_readValue;
 - (void)addOperand:(id)arg1;
 - (void)clearOperands;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -51,7 +47,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (id)operandAtIndex:(unsigned long long)arg1;
 - (unsigned long long)operandsCount;

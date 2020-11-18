@@ -9,7 +9,7 @@
 #import <DocumentManagerCore/NSCopying-Protocol.h>
 #import <DocumentManagerCore/NSSecureCoding-Protocol.h>
 
-@class NSNumber, NSString, UIColor;
+@class NSNumber, NSString;
 
 @interface DOCTag : NSObject <NSSecureCoding, NSCopying>
 {
@@ -21,7 +21,6 @@
     NSNumber *_sidebarPinned;
 }
 
-@property (readonly, nonatomic) UIColor *displayColor;
 @property (readonly, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
 @property (readonly, nonatomic) long long itemCount; // @synthesize itemCount=_itemCount;
 @property (readonly, nonatomic) long long labelIndex; // @synthesize labelIndex=_labelIndex;
@@ -30,7 +29,6 @@
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 
 + (BOOL)supportsSecureCoding;
-+ (id)tagColorWithLabelIndex:(long long)arg1;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;

@@ -17,6 +17,10 @@
     NSArray *_instructionVariants;
     CPTravelEstimates *_initialTravelEstimates;
     NSArray *_attributedInstructionVariants;
+    NSArray *_dashboardInstructionVariants;
+    NSArray *_dashboardAttributedInstructionVariants;
+    NSArray *_notificationInstructionVariants;
+    NSArray *_notificationAttributedInstructionVariants;
     id _userInfo;
     NSUUID *_identifier;
     unsigned long long _maneuverType;
@@ -27,9 +31,18 @@
     NSSet *_junctionElementAngles;
     long long _displayStyle;
     CPImageSet *_junctionImageSet;
+    CPImageSet *_dashboardSymbolImageSet;
+    CPImageSet *_dashboardJunctionImageSet;
+    CPImageSet *_notificationSymbolImageSet;
 }
 
 @property (copy, nonatomic) NSArray *attributedInstructionVariants; // @synthesize attributedInstructionVariants=_attributedInstructionVariants;
+@property (copy, nonatomic) NSArray *dashboardAttributedInstructionVariants; // @synthesize dashboardAttributedInstructionVariants=_dashboardAttributedInstructionVariants;
+@property (copy, nonatomic) NSArray *dashboardInstructionVariants; // @synthesize dashboardInstructionVariants=_dashboardInstructionVariants;
+@property (strong, nonatomic) UIImage *dashboardJunctionImage;
+@property (strong, nonatomic) CPImageSet *dashboardJunctionImageSet; // @synthesize dashboardJunctionImageSet=_dashboardJunctionImageSet;
+@property (strong, nonatomic) UIImage *dashboardSymbolImage;
+@property (strong, nonatomic) CPImageSet *dashboardSymbolImageSet; // @synthesize dashboardSymbolImageSet=_dashboardSymbolImageSet;
 @property (nonatomic) long long displayStyle; // @synthesize displayStyle=_displayStyle;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) CPTravelEstimates *initialTravelEstimates; // @synthesize initialTravelEstimates=_initialTravelEstimates;
@@ -40,6 +53,10 @@
 @property (strong, nonatomic) CPImageSet *junctionImageSet; // @synthesize junctionImageSet=_junctionImageSet;
 @property (nonatomic) unsigned long long junctionType; // @synthesize junctionType=_junctionType;
 @property (nonatomic) unsigned long long maneuverType; // @synthesize maneuverType=_maneuverType;
+@property (copy, nonatomic) NSArray *notificationAttributedInstructionVariants; // @synthesize notificationAttributedInstructionVariants=_notificationAttributedInstructionVariants;
+@property (copy, nonatomic) NSArray *notificationInstructionVariants; // @synthesize notificationInstructionVariants=_notificationInstructionVariants;
+@property (strong, nonatomic) UIImage *notificationSymbolImage;
+@property (strong, nonatomic) CPImageSet *notificationSymbolImageSet; // @synthesize notificationSymbolImageSet=_notificationSymbolImageSet;
 @property (copy, nonatomic) NSArray *roadFollowingManeuverVariants; // @synthesize roadFollowingManeuverVariants=_roadFollowingManeuverVariants;
 @property (readonly) NSArray *stringInstructionVariants;
 @property (strong, nonatomic) UIImage *symbolImage;

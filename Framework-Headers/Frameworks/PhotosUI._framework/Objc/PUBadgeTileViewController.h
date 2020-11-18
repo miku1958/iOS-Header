@@ -54,7 +54,6 @@ __attribute__((visibility("hidden")))
 - (void)becomeReusable;
 - (id)loadView;
 - (void)prepareForReuse;
-- (void)toggleOverCaptureBadgeAppearance;
 - (void)viewDidLoad;
 - (void)viewModel:(id)arg1 didChange:(id)arg2;
 

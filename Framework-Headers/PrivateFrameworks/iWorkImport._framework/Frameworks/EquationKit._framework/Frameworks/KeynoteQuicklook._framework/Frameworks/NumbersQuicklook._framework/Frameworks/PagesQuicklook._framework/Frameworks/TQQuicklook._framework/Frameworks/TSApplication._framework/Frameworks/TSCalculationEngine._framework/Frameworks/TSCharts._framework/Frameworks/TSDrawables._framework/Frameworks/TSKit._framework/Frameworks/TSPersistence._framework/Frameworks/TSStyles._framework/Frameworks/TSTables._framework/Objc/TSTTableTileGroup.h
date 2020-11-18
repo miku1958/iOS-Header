@@ -20,6 +20,7 @@
 + (id)groupWithStartingTileID:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)_tileForLazyReference:(id)arg1;
+- (void)enumerateLoadedTilesWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateReferencesWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateTilesWithBlock:(CDUnknownBlockType)arg1;
 - (id)init;

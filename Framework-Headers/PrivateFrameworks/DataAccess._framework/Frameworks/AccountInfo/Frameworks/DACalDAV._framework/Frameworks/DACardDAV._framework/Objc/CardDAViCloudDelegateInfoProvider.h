@@ -8,20 +8,18 @@
 
 #import <DACardDAV/CardDAVDelegateInfoProvider-Protocol.h>
 
-@class ACAccountStore, ACAccountType, CNPromise, NSString;
+@class ACAccountStore, ACAccountType, NSString;
 
 @interface CardDAViCloudDelegateInfoProvider : NSObject <CardDAVDelegateInfoProvider>
 {
     ACAccountStore *_accountStore;
     ACAccountType *_accountsType;
-    CNPromise *_familyCirclePromise;
 }
 
 @property (strong, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (strong, nonatomic) ACAccountType *accountsType; // @synthesize accountsType=_accountsType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) CNPromise *familyCirclePromise; // @synthesize familyCirclePromise=_familyCirclePromise;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
@@ -30,11 +28,11 @@
 - (id)appleIDsOfExistingDelegates:(id)arg1;
 - (id)cardDAVAccounts;
 - (id)collectDelegatesForAccount:(id)arg1 error:(id *)arg2;
+- (id)familyCircleReturningError:(id *)arg1;
 - (id)familyMembersPromise;
-- (BOOL)fetchGuardianStatus:(BOOL *)arg1 account:(id)arg2 error:(id *)arg3;
+- (BOOL)fetchGuardianStatus:(BOOL *)arg1 family:(id)arg2 account:(id)arg3 error:(id *)arg4;
 - (id)init;
-- (id)nonParentsInFamilyReturningError:(id *)arg1;
-- (void)resetFamilyCirclePromise;
+- (id)nonParentsInFamily:(id)arg1 error:(id *)arg2;
 
 @end
 

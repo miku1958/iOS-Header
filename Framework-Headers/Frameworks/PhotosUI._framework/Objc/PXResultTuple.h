@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class PHFetchResult;
+@class NSPredicate, PHFetchResult;
 
 @interface PXResultTuple : NSObject
 {
@@ -14,16 +14,18 @@
     PHFetchResult *_fetchResult;
     PHFetchResult *_curatedFetchResult;
     PHFetchResult *_keyAssetsFetchResult;
+    NSPredicate *_filterPredicate;
 }
 
 @property (readonly, nonatomic) PHFetchResult *curatedFetchResult; // @synthesize curatedFetchResult=_curatedFetchResult;
 @property (readonly, nonatomic) PHFetchResult *fetchResult; // @synthesize fetchResult=_fetchResult;
 @property (readonly, nonatomic) BOOL fetchedWithReverseSortOrder; // @synthesize fetchedWithReverseSortOrder=_fetchedWithReverseSortOrder;
+@property (readonly, nonatomic) NSPredicate *filterPredicate; // @synthesize filterPredicate=_filterPredicate;
 @property (readonly, nonatomic) PHFetchResult *keyAssetsFetchResult; // @synthesize keyAssetsFetchResult=_keyAssetsFetchResult;
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)initWithFetchResult:(id)arg1 fetchedWithReverseSortOrder:(BOOL)arg2 curatedFetchResult:(id)arg3 keyAssetsFetchResult:(id)arg4;
+- (id)initWithFetchResult:(id)arg1 fetchedWithReverseSortOrder:(BOOL)arg2 curatedFetchResult:(id)arg3 keyAssetsFetchResult:(id)arg4 filterPredicate:(id)arg5;
 - (id)resultTupleUpdatedWithChange:(id)arg1;
 
 @end

@@ -23,7 +23,10 @@
 - (void).cxx_destruct;
 - (id)description;
 - (id)initInSyncCircle:(id)arg1 disabledOwnerIdentifiers:(id)arg2;
+- (id)initInZone:(id)arg1 disabledOwnerIdentifiers:(id)arg2;
 - (id)initWithCKRecord:(id)arg1 disabledOwnerIdentifiers:(id)arg2 schemaVersion:(long long)arg3;
+- (id)initWithCKRecord:(id)arg1 schemaVersion:(long long)arg2;
+- (id)serializeUnderlyingMessage;
 
 @end
 

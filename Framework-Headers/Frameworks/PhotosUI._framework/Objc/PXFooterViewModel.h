@@ -24,6 +24,7 @@
     NSString *_actionConfirmationAlertButtonTitle;
     CDUnknownBlockType _action;
     UIView *_accessoryView;
+    UIView *_filterView;
 }
 
 @property (readonly, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
@@ -35,6 +36,7 @@
 @property (readonly, nonatomic) NSString *actionTitle; // @synthesize actionTitle=_actionTitle;
 @property (readonly, nonatomic) long long animatedIconMode; // @synthesize animatedIconMode=_animatedIconMode;
 @property (readonly, nonatomic) NSString *extendedTitle; // @synthesize extendedTitle=_extendedTitle;
+@property (readonly, nonatomic) UIView *filterView; // @synthesize filterView=_filterView;
 @property (readonly, nonatomic) BOOL isPaused; // @synthesize isPaused=_isPaused;
 @property (readonly, nonatomic) float progress; // @synthesize progress=_progress;
 @property (readonly, nonatomic) NSString *subtitle1; // @synthesize subtitle1=_subtitle1;
@@ -54,6 +56,7 @@
 - (void)setActionTitle:(id)arg1;
 - (void)setAnimatedIconMode:(long long)arg1;
 - (void)setExtendedTitle:(id)arg1;
+- (void)setFilterView:(id)arg1;
 - (void)setIsPaused:(BOOL)arg1;
 - (void)setProgress:(float)arg1;
 - (void)setSubtitle1:(id)arg1;

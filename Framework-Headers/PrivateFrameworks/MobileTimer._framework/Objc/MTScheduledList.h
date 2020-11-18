@@ -34,6 +34,8 @@
 + (id)_nextScheduledObjectInSets:(id)arg1;
 + (CDUnknownBlockType)_scheduledObjectComparator;
 + (void)_sort:(id)arg1;
++ (void)_sortAndFilter:(id)arg1;
++ (void)_sortAndFilter:(id)arg1 objectsToScheduleAhead:(id)arg2;
 - (void).cxx_destruct;
 - (void)_performScheduleChangingBlock:(CDUnknownBlockType)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)_scheduleObject:(id)arg1;

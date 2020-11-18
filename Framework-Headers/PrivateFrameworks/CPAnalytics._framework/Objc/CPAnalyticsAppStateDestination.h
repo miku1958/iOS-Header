@@ -4,45 +4,53 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CPAnalytics/CPAnalyticsDashboardDestination.h>
 
-#import <CPAnalytics/CPAnalyticsDestination-Protocol.h>
+#import <CPAnalytics/CPAnalyticsDynamicPropertyProvider-Protocol.h>
 
-@class CPAnalytics, CPAnalyticsScreenManager, NSDictionary, NSMutableArray, NSSet;
+@class CPAnalyticsScreenManager, NSArray, NSSet, NSString;
 
-@interface CPAnalyticsAppStateDestination : NSObject <CPAnalyticsDestination>
+@interface CPAnalyticsAppStateDestination : CPAnalyticsDashboardDestination <CPAnalyticsDynamicPropertyProvider>
 {
-    CPAnalytics *_cpAnalyticsInstance;
-    NSDictionary *_config;
     CPAnalyticsScreenManager *_screenManager;
     NSSet *_appEventNames;
-    NSMutableArray *_counters;
+    NSArray *_sessionCounters;
+    NSArray *_featureCounters;
 }
 
 @property (readonly, nonatomic) NSSet *appEventNames; // @synthesize appEventNames=_appEventNames;
-@property (readonly, nonatomic) NSDictionary *config; // @synthesize config=_config;
-@property (strong, nonatomic) NSMutableArray *counters; // @synthesize counters=_counters;
-@property (readonly, weak, nonatomic) CPAnalytics *cpAnalyticsInstance; // @synthesize cpAnalyticsInstance=_cpAnalyticsInstance;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSArray *featureCounters; // @synthesize featureCounters=_featureCounters;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) CPAnalyticsScreenManager *screenManager; // @synthesize screenManager=_screenManager;
+@property (strong, nonatomic) NSArray *sessionCounters; // @synthesize sessionCounters=_sessionCounters;
+@property (readonly) Class superclass;
 
 + (BOOL)_isValidSessionEndEvent:(id)arg1;
 - (void).cxx_destruct;
-- (id)_allMediaProperties;
-- (id)_allStandardProperties;
-- (id)_buildCoreAnalyticsEventPayloadWithProperties:(id)arg1 forEvent:(id)arg2 withRawPayload:(id)arg3 intoTargetEventPayload:(id)arg4;
 - (id)_computeSessionData:(id)arg1;
-- (void)_initNewSession:(id)arg1;
-- (void)_initializeCounters:(id)arg1;
-- (void)_sendAppSessionEvent:(id)arg1;
-- (void)_sendCoreAnalyticsEventWithStandardPropertiesForEvent:(id)arg1 withPayload:(id)arg2;
+- (id)_createCountersFromAppEvents:(id)arg1;
+- (id)_createCountersFromConfig:(id)arg1 withKey:(id)arg2;
+- (id)_createCountersFromScreenNames:(id)arg1;
+- (void)_resetCounters;
+- (void)_sendAppSessionEventFromSourceEvent:(id)arg1 payload:(id)arg2;
 - (void)_sendDashboardAppEventForEvent:(id)arg1;
+- (void)_sendDashboardErrorEventForEvent:(id)arg1;
+- (void)_sendDashboardErrorEventIfNeededForEvent:(id)arg1;
 - (void)_sendDashboardMediaEventForEvent:(id)arg1;
-- (void)_sendDashboardMediaEventIfNeeded:(id)arg1;
+- (void)_sendDashboardMediaEventIfNeededForEvent:(id)arg1;
 - (void)_sendDashboardScreenViewEventForEvent:(id)arg1;
+- (void)_sendFeatureCounts;
+- (BOOL)_shouldSendSampleWithRate:(unsigned long long)arg1;
 - (void)_updateDependenciesBeforeProcessingEvent:(id)arg1;
 - (id)_validateAndParseAppEvents:(id)arg1;
+- (id)allStandardProperties;
+- (id)getDynamicProperty:(id)arg1 forEventName:(id)arg2 payloadForSystemPropertyExtraction:(id)arg3;
 - (id)initWithConfig:(id)arg1 cpAnalyticsInstance:(id)arg2;
 - (void)processEvent:(id)arg1;
+- (void)registerSystemProperties:(id)arg1;
+- (void)updateWithConfig:(id)arg1;
 
 @end
 

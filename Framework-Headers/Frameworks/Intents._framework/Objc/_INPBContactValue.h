@@ -19,7 +19,6 @@
         unsigned int suggestionType:1;
     } _has;
     BOOL _isMe;
-    BOOL __encodeLegacyGloryData;
     int _suggestionType;
     NSArray *_aliases;
     _INPBContactHandle *_contactHandle;
@@ -43,7 +42,6 @@
     _INPBValueMetadata *_valueMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (copy, nonatomic) NSArray *aliases; // @synthesize aliases=_aliases;
 @property (readonly, nonatomic) unsigned long long aliasesCount;
 @property (strong, nonatomic) _INPBContactHandle *contactHandle; // @synthesize contactHandle=_contactHandle;

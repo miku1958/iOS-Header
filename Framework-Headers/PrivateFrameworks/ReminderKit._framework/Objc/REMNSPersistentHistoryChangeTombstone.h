@@ -17,6 +17,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)assignmentOwningReminderIdentifier;
 - (id)daIsEventOnlyContainer;
 - (void)encodeWithCoder:(id)arg1;
 - (id)externalIdentifier;

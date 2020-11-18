@@ -6,12 +6,12 @@
 
 #import <UIKitCore/UIControl.h>
 
-@class UIColor, UILabel, UIView;
+@class UIColor, UILabel, _UIToolbarNavigationButton;
 
 @interface UIToolbarButton : UIControl
 {
     struct CGRect _hitRect;
-    UIView *_info;
+    _UIToolbarNavigationButton *_info;
     UILabel *_label;
     long long _barStyle;
     long long _style;

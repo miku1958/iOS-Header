@@ -84,6 +84,8 @@
 - (id)fullscreenBackgroundColor;
 - (void)handlePerformedKeyCommandIfNeeded:(id)arg1;
 - (void)hideSaveEditProgressIndicator;
+- (void)hostApplicationDidBecomeActive;
+- (void)hostApplicationDidEnterBackground:(id)arg1;
 - (id)init;
 - (void)loadPreviewControllerIfNeededWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)loadPreviewControllerWithContents:(id)arg1 context:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

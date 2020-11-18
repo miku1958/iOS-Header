@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEORPAccessPointCorrections, GEORPAmenityCorrections, GEORPCorrectedCoordinate, GEORPMapLocation, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEORPAccessPointCorrections, GEORPAmenityCorrections, GEORPCorrectedCoordinate, GEORPMapLocation, GEORPPlaceContainmentCorrections, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 @interface GEORPTransitPoiCorrections : PBCodable <NSCopying>
 {
@@ -17,6 +17,7 @@
     GEORPAccessPointCorrections *_accessPoint;
     GEORPAmenityCorrections *_amenity;
     NSMutableArray *_businessHours;
+    GEORPPlaceContainmentCorrections *_containmentCorrections;
     GEORPCorrectedCoordinate *_coordinate;
     GEORPMapLocation *_mapLocation;
     NSString *_name;
@@ -33,29 +34,23 @@
         unsigned int read_accessPoint:1;
         unsigned int read_amenity:1;
         unsigned int read_businessHours:1;
+        unsigned int read_containmentCorrections:1;
         unsigned int read_coordinate:1;
         unsigned int read_mapLocation:1;
         unsigned int read_name:1;
         unsigned int read_originalName:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_accessPoint:1;
-        unsigned int wrote_amenity:1;
-        unsigned int wrote_businessHours:1;
-        unsigned int wrote_coordinate:1;
-        unsigned int wrote_mapLocation:1;
-        unsigned int wrote_name:1;
-        unsigned int wrote_originalName:1;
-        unsigned int wrote_lineScheduleDelay:1;
-        unsigned int wrote_lineShapeIncorrect:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
 @property (strong, nonatomic) GEORPAccessPointCorrections *accessPoint;
 @property (strong, nonatomic) GEORPAmenityCorrections *amenity;
 @property (strong, nonatomic) NSMutableArray *businessHours;
+@property (strong, nonatomic) GEORPPlaceContainmentCorrections *containmentCorrections;
 @property (strong, nonatomic) GEORPCorrectedCoordinate *coordinate;
 @property (readonly, nonatomic) BOOL hasAccessPoint;
 @property (readonly, nonatomic) BOOL hasAmenity;
+@property (readonly, nonatomic) BOOL hasContainmentCorrections;
 @property (readonly, nonatomic) BOOL hasCoordinate;
 @property (nonatomic) BOOL hasLineScheduleDelay;
 @property (nonatomic) BOOL hasLineShapeIncorrect;
@@ -72,14 +67,6 @@
 + (Class)businessHoursType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsBusinessHours:(id)arg1;
-- (void)_readAccessPoint;
-- (void)_readAmenity;
-- (void)_readBusinessHours;
-- (void)_readCoordinate;
-- (void)_readMapLocation;
-- (void)_readName;
-- (void)_readOriginalName;
 - (void)addBusinessHours:(id)arg1;
 - (id)businessHoursAtIndex:(unsigned long long)arg1;
 - (unsigned long long)businessHoursCount;
@@ -92,7 +79,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

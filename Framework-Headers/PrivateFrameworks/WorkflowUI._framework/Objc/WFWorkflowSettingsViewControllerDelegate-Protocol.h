@@ -9,7 +9,6 @@
 @class WFWorkflowSettingsViewController;
 
 @protocol WFWorkflowSettingsViewControllerDelegate <NSObject>
-- (void)settingsViewControllerDidFinish:(WFWorkflowSettingsViewController *)arg1;
 - (void)settingsViewControllerWantsWorkflowReload:(WFWorkflowSettingsViewController *)arg1;
 @end
 

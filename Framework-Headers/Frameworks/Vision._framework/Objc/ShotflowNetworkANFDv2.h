@@ -4,29 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <Vision/ShotflowNetwork.h>
+#import <Vision/ShotflowNetworkANODBase.h>
 
 __attribute__((visibility("hidden")))
-@interface ShotflowNetworkANFDv2 : ShotflowNetwork
+@interface ShotflowNetworkANFDv2 : ShotflowNetworkANODBase
 {
 }
 
-+ (const vector_7584168e *)cellStartsX;
-+ (const vector_7584168e *)cellStartsY;
-+ (BOOL)hasObjectnessOutputs;
 + (const vector_eb9481f9 *)importantClasses;
-+ (struct CGSize)inputImageSize;
 + (id)modelName;
-+ (unsigned long long)mumberBinsNegativeMaxout;
 + (unsigned long long)mumberPosClasses;
-+ (float)nonSquareRollDefault;
-+ (float)nonSquareYawDefault;
-+ (unsigned long long)numberMaxoutLayers;
-+ (const vector_7584168e *)objectnessFilterThresholds;
-+ (BOOL)poseSquare;
-+ (const vector_7584168e *)ratios;
-- (id)initWithModelPath:(id)arg1 espressoEngineID:(int)arg2 espressoDeviceID:(int)arg3 espressoStorageType:(int)arg4 threshold:(float)arg5;
-- (void)initializeBuffers;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <ChatKit/CKBalloonChatItem.h>
 
-@class IMMessage, NSArray, UIItemProvider;
+@class IMMessage, IMMessageItem, NSArray, NSString, UIItemProvider;
 
 @interface CKMessagePartChatItem : CKBalloonChatItem
 {
@@ -18,12 +18,17 @@
 @property (readonly, nonatomic) UIItemProvider *dragItemProvider;
 @property (readonly, nonatomic) BOOL hasMessageAcknowledgment;
 @property (readonly, nonatomic) BOOL hasStickers;
+@property (readonly, nonatomic) long long index;
 @property (readonly, nonatomic) BOOL isBlackholed;
 @property (readonly, nonatomic) BOOL isCorrupt;
+@property (readonly, nonatomic) BOOL isReply;
+@property (readonly, nonatomic) BOOL isReplyContextPreview;
 @property (readonly, nonatomic) IMMessage *message;
 @property (readonly, copy, nonatomic) NSArray *messageAcknowledgments;
 @property (readonly, nonatomic) struct _NSRange messagePartRange;
 @property (readonly, copy, nonatomic) NSArray *pasteboardItems;
+@property (readonly, nonatomic) NSString *threadIdentifier;
+@property (readonly, nonatomic) IMMessageItem *threadOriginator;
 @property (readonly, nonatomic) NSArray *visibleAssociatedMessageChatItems; // @synthesize visibleAssociatedMessageChatItems=_visibleAssociatedMessageChatItems;
 
 - (void).cxx_destruct;
@@ -32,17 +37,22 @@
 - (BOOL)canAttachStickers;
 - (BOOL)canCopy;
 - (BOOL)canForward;
+- (BOOL)canInlineReply;
 - (BOOL)canSendAsTextMessage;
+- (unsigned long long)chatItemReplyLineContiguousTypeForChatStyle:(unsigned char)arg1;
 - (id)composition;
 - (void)configureBalloonView:(id)arg1;
 - (id)description;
 - (BOOL)failed;
+- (id)fileURLForAttachment;
 - (id)initWithIMChatItem:(id)arg1 maxWidth:(double)arg2;
 - (BOOL)isFromMe;
+- (id)rtfDocumentItemsWithFormatString:(id)arg1 selectedTextRange:(struct _NSRange)arg2;
 - (long long)selectedType;
 - (id)sender;
 - (BOOL)shouldShowVotingView;
 - (BOOL)stickersSnapToPoint;
+- (id)supplementaryItemsWithLayoutEnvironment:(id)arg1;
 - (id)time;
 - (id)votingCounts;
 

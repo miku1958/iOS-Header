@@ -12,6 +12,7 @@
 
 @interface KNAnimationPluginContext : NSObject <KNAnimationPluginContext>
 {
+    BOOL _isSceneRenderingEnabled;
     BOOL _isMotionBlurred;
     BOOL _isPreview;
     BOOL _isMovieExport;
@@ -49,7 +50,6 @@
 @property (nonatomic) unsigned long long direction; // @synthesize direction=_direction;
 @property (nonatomic) struct CGRect drawableFrame; // @synthesize drawableFrame=_drawableFrame;
 @property (nonatomic) double duration; // @synthesize duration=_duration;
-@property (readonly, nonatomic) BOOL hasLiveTextureSources;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isBuild;
 @property (readonly, nonatomic) BOOL isFrameRenderer;
@@ -59,6 +59,7 @@
 @property (nonatomic) BOOL isMovieExport; // @synthesize isMovieExport=_isMovieExport;
 @property (readonly, nonatomic) BOOL isOpenGLRenderer;
 @property (nonatomic) BOOL isPreview; // @synthesize isPreview=_isPreview;
+@property (nonatomic) BOOL isSceneRenderingEnabled; // @synthesize isSceneRenderingEnabled=_isSceneRenderingEnabled;
 @property (readonly, nonatomic) BOOL isTransition;
 @property (nonatomic) BOOL isWarmingUp; // @synthesize isWarmingUp=_isWarmingUp;
 @property (weak, nonatomic) NSArray *magicMoveMatches; // @synthesize magicMoveMatches=_magicMoveMatches;
@@ -73,6 +74,7 @@
 @property (strong, nonatomic) NSArray *tags; // @synthesize tags=_tags;
 @property (strong, nonatomic) NSArray *textures; // @synthesize textures=_textures;
 @property (weak, nonatomic) NSDictionary *transitionAttributes; // @synthesize transitionAttributes=_transitionAttributes;
+@property (readonly, nonatomic) BOOL willRenderWithLiveTextureSources;
 
 - (void).cxx_destruct;
 

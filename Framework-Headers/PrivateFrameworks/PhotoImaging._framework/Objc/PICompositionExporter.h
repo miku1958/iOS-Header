@@ -13,13 +13,12 @@
 + (id)metadataConverter;
 + (id)resetImageProperties:(id)arg1 preserveRegions:(BOOL)arg2;
 + (void)setMetadataConverter:(id)arg1;
-- (void)_exportVideoToURL:(id)arg1 composition:(id)arg2 options:(id)arg3 metadata:(id)arg4 progress:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)_exportVideoToURLFull:(id)arg1 composition:(id)arg2 options:(id)arg3 metadata:(id)arg4 progress:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (void)_prepareToExportVideo:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_exportVideoToURL:(id)arg1 composition:(id)arg2 options:(id)arg3 properties:(id)arg4 progress:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)_exportVideoToURLFull:(id)arg1 composition:(id)arg2 options:(id)arg3 properties:(id)arg4 progress:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)addImageProperties:(id)arg1 composition:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)addVideoProperties:(id)arg1 composition:(id)arg2 options:(id)arg3 error:(id *)arg4;
 - (id)exportComposition:(id)arg1 options:(id)arg2 completionQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)exportComposition:(id)arg1 toPrimaryURL:(id)arg2 videoComplementURL:(id)arg3 videoPosterFrameURL:(id)arg4 completionQueue:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (id)exportComposition:(id)arg1 toPrimaryURL:(id)arg2 videoComplementURL:(id)arg3 videoPosterFrameURL:(id)arg4 priority:(id)arg5 completionQueue:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)exportImageToDataWithComposition:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)exportImageToURL:(id)arg1 composition:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)exportVideoToURL:(id)arg1 composition:(id)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;

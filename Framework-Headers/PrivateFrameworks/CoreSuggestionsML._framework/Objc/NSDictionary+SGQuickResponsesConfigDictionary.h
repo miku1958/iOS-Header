@@ -8,6 +8,7 @@
 
 @interface NSDictionary (SGQuickResponsesConfigDictionary)
 - (id)arrayAssertedForKey:(id)arg1;
+- (id)dictAssertedForKey:(id)arg1;
 - (id)numberAssertedForKey:(id)arg1;
 - (id)objectAssertedForKey:(id)arg1;
 - (id)stringAssertedForKey:(id)arg1;

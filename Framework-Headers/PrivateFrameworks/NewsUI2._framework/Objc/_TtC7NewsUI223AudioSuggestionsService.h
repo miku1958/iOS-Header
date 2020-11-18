@@ -15,7 +15,7 @@
     MISSING_TYPE *audioPlaylist;
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *subscriptionController;
-    MISSING_TYPE *personalizer;
+    MISSING_TYPE *personalizationService;
 }
 
 @end

@@ -36,8 +36,6 @@
 - (void)ceaseMonitoringForEventWithExternalURL:(id)arg1;
 - (void)deactivate;
 - (void)didRegisterForAlarms;
-- (void)didRegisterForBackgroundTaskAgentJobs;
-- (void)handleBTAJob:(id)arg1 named:(const char *)arg2;
 - (id)initWithTravelEngine:(id)arg1;
 - (void)protectedDataDidBecomeAvailable;
 - (void)receivedAlarmNamed:(id)arg1;

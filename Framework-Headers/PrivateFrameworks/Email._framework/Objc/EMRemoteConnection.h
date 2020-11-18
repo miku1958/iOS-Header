@@ -7,12 +7,13 @@
 #import <objc/NSObject.h>
 
 #import <Email/EFLoggable-Protocol.h>
+#import <Email/EMRemoteConnectionRecoveryAssertionDelegate-Protocol.h>
 #import <Email/EMXPCProxyCreating-Protocol.h>
 
 @class NSMutableArray, NSString, Protocol;
 @protocol OS_dispatch_queue;
 
-@interface EMRemoteConnection : NSObject <EFLoggable, EMXPCProxyCreating>
+@interface EMRemoteConnection : NSObject <EFLoggable, EMRemoteConnectionRecoveryAssertionDelegate, EMXPCProxyCreating>
 {
     NSObject<OS_dispatch_queue> *_queue;
     CDUnknownBlockType _generator;
@@ -25,13 +26,13 @@
     struct os_unfair_lock_s _lock;
     struct os_unfair_lock_s _proxyLock;
     BOOL _waitingForRecovery;
-    BOOL _preferImmediateRecovery;
+    _Atomic unsigned int _activeVouchers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property BOOL preferImmediateRecovery; // @synthesize preferImmediateRecovery=_preferImmediateRecovery;
+@property (readonly) BOOL prefersImmediateActivity;
 @property (readonly) Protocol *protocol; // @synthesize protocol=_protocol;
 @property (readonly) id reattemptingRemoteObjectProxy;
 @property (readonly) id remoteObjectProxy;
@@ -51,8 +52,11 @@
 - (id)reattemptingRemoteObjectProxyWithReattemptHandler:(CDUnknownBlockType)arg1;
 - (void)recover;
 - (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)requestRecoveryAssertion;
 - (void)reset;
 - (id)synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (void)voucherInitialized;
+- (void)voucherInvalidated;
 
 @end
 

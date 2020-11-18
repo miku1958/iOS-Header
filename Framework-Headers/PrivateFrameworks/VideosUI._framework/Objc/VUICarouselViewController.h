@@ -8,28 +8,19 @@
 
 #import <VideosUI/TVCarouselViewDelegate-Protocol.h>
 
-@class NSNumber, NSString, UIView;
-@protocol VUIPageControlView;
+@class NSString;
 
 __attribute__((visibility("hidden")))
 @interface VUICarouselViewController : _TVCarouselViewController <TVCarouselViewDelegate>
 {
-    UIView<VUIPageControlView> *_pageControlView;
-    NSNumber *_pageControlBottomMarginNumber;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) NSNumber *pageControlBottomMarginNumber; // @synthesize pageControlBottomMarginNumber=_pageControlBottomMarginNumber;
-@property (strong, nonatomic) UIView<VUIPageControlView> *pageControlView; // @synthesize pageControlView=_pageControlView;
 @property (readonly) Class superclass;
 
-- (void).cxx_destruct;
-- (void)_pageChanged:(long long)arg1;
-- (void)carouselView:(id)arg1 didCenterItemAtIndex:(unsigned long long)arg2;
 - (void)updateWithViewElement:(id)arg1;
-- (void)viewDidLayoutSubviews;
 
 @end
 

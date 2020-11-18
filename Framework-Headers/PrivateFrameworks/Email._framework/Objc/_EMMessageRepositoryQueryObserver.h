@@ -9,7 +9,7 @@
 #import <Email/EMMessageListItemQueryResultsObserver-Protocol.h>
 #import <Email/EMRecoverableObserver-Protocol.h>
 
-@class EFCancelationToken, EFQuery, EMMessageRepository, EMObjectID, NSString;
+@class EFCancelationToken, EFQuery, EMMessageRepository, EMObjectID, NSDate, NSString;
 @protocol EMQueryResultsObserver;
 
 __attribute__((visibility("hidden")))
@@ -20,6 +20,8 @@ __attribute__((visibility("hidden")))
     EMObjectID *_observationIdentifier;
     id<EMQueryResultsObserver> _observer;
     EFCancelationToken *_token;
+    NSDate *_lastRecoveryAttemptDate;
+    long long _recoveryAttempt;
 }
 
 @property (readonly, copy) NSString *debugDescription;

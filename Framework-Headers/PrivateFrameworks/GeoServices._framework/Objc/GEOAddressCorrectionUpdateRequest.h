@@ -25,10 +25,7 @@
         unsigned int read_addressID:1;
         unsigned int read_addressResults:1;
         unsigned int read_significantLocations:1;
-        unsigned int wrote_addressID:1;
-        unsigned int wrote_addressResults:1;
-        unsigned int wrote_significantLocations:1;
-        unsigned int wrote_correctionStatus:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -44,11 +41,6 @@
 + (Class)significantLocationType;
 - (void).cxx_destruct;
 - (int)StringAsCorrectionStatus:(id)arg1;
-- (void)_addNoFlagsAddressResult:(id)arg1;
-- (void)_addNoFlagsSignificantLocation:(id)arg1;
-- (void)_readAddressID;
-- (void)_readAddressResults;
-- (void)_readSignificantLocations;
 - (void)addAddressResult:(id)arg1;
 - (void)addSignificantLocation:(id)arg1;
 - (id)addressResultAtIndex:(unsigned long long)arg1;
@@ -64,7 +56,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

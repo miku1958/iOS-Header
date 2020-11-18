@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (long long)_accessibilityCurrentPageIndex;
+- (BOOL)_accessibilityGoToNextPage;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)_accessibilityScrollAncestor;
 - (BOOL)_accessibilityServesAsContainingParentForOrdering;

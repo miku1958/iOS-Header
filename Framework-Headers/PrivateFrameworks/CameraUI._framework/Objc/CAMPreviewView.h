@@ -6,14 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-@class AVCaptureVideoPreviewLayer, CAMFocusIndicatorView, CAMGridView, CAMLevelIndicatorView, CAMStageLightOverlayView, CAMSubjectIndicatorView, CAMVideoPreviewView, UILabel;
+@class AVCaptureVideoPreviewLayer, CAMFocusIndicatorView, CAMGridView, CAMInterfaceModulationView, CAMLevelIndicatorView, CAMStageLightOverlayView, CAMSubjectIndicatorView, CAMVideoPreviewView, UILabel;
 
 @interface CAMPreviewView : UIView
 {
     int __exposureBiasSide;
     long long _orientation;
     CAMVideoPreviewView *_videoPreviewView;
-    UIView *_indicatorContainerView;
+    CAMInterfaceModulationView *_indicatorContainerView;
     long long _indicatorClippingStyle;
     CAMFocusIndicatorView *_continuousIndicator;
     CAMFocusIndicatorView *_pointIndicator;
@@ -34,7 +34,7 @@
 @property (strong, nonatomic) CAMFocusIndicatorView *continuousIndicator; // @synthesize continuousIndicator=_continuousIndicator;
 @property (nonatomic) CAMGridView *gridView; // @synthesize gridView=_gridView;
 @property (nonatomic) long long indicatorClippingStyle; // @synthesize indicatorClippingStyle=_indicatorClippingStyle;
-@property (readonly, nonatomic) UIView *indicatorContainerView; // @synthesize indicatorContainerView=_indicatorContainerView;
+@property (readonly, nonatomic) CAMInterfaceModulationView *indicatorContainerView; // @synthesize indicatorContainerView=_indicatorContainerView;
 @property (nonatomic) CAMLevelIndicatorView *levelView; // @synthesize levelView=_levelView;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (nonatomic) struct CGRect overlayFrame; // @synthesize overlayFrame=_overlayFrame;

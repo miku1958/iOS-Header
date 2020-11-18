@@ -11,12 +11,14 @@
 @protocol PLAssetsdDebugServiceProtocol <NSObject>
 - (void)asynchronousUnloadImageFilesForAssetWithObjectURI:(NSURL *)arg1 minimumFormat:(unsigned short)arg2 reply:(void (^)(BOOL, NSError *))arg3;
 - (void)cleanupEmptyHighlightsWithReply:(void (^)(void))arg1;
+- (void)clearPrefetchState;
 - (void)coalesceJournalsForPayloadClassIDs:(NSSet *)arg1 withChangeJournalOverThreshold:(float)arg2 reply:(void (^)(void))arg3;
 - (void)debugSidecarURLsWithObjectURI:(NSURL *)arg1 reply:(void (^)(BOOL, NSDictionary *, NSError *))arg2;
 - (void)deferredLogDumpWithFormat:(NSNumber *)arg1 reply:(void (^)(NSString *))arg2;
 - (void)dropSearchIndexWithReply:(void (^)(void))arg1;
 - (void)dumpMetadataForMomentsToPath:(NSString *)arg1 reply:(void (^)(NSDictionary *))arg2;
 - (void)dumpMomentsMetadataToPath:(NSString *)arg1 reply:(void (^)(NSDictionary *))arg2;
+- (void)enqueuePrefetch;
 - (void)getCPLStateWithReply:(void (^)(NSString *))arg1;
 - (void)getXPCTransactionStatusWithReply:(void (^)(NSString *))arg1;
 - (void)identifyAssetsWithInconsistentCloudState;
@@ -38,7 +40,7 @@
 - (void)resetDupesAnalysis;
 - (void)revertToOriginalWithObjectURI:(NSURL *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)setSearchIndexPaused:(BOOL)arg1 reason:(NSString *)arg2 reply:(void (^)(void))arg3;
-- (void)snapshotJournalsForPayloadClassIDs:(NSSet *)arg1 reply:(void (^)(void))arg2;
+- (void)snapshotJournalsForPayloadClassIDs:(NSSet *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)statusWithReply:(void (^)(NSString *))arg1;
 - (void)updateHighlightTitlesWithReply:(void (^)(void))arg1;
 - (void)updateSiriVocabulary;

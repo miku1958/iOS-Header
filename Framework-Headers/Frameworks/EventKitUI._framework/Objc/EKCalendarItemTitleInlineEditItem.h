@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (id)cellForSubitemAtIndex:(unsigned long long)arg1;
 - (void)dealloc;
 - (double)defaultCellHeightForSubitemAtIndex:(unsigned long long)arg1 forWidth:(double)arg2;
+- (BOOL)editor:(id)arg1 canSelectSubitem:(unsigned long long)arg2;
 - (id)init;
 - (BOOL)isInline;
 - (BOOL)isSaveable;

@@ -14,9 +14,9 @@
 @property (copy, nonatomic) CDUnknownBlockType sectionInfoRetriever; // @synthesize sectionInfoRetriever=_sectionInfoRetriever;
 
 - (void).cxx_destruct;
-- (unsigned long long)_blockingReasonForSectionInfo:(id)arg1;
+- (unsigned long long)_blockingReasonForSectionInfo:(id)arg1 isCritical:(BOOL)arg2;
 - (BOOL)isScreenTimeBlockedForBundleIdentifier:(id)arg1 ignoresDowntime:(BOOL)arg2;
-- (unsigned long long)willNanoPresentNotificationForSectionInfo:(id)arg1 subsectionIDs:(id)arg2 isWristDetectDisabled:(BOOL)arg3 hasSectionIDOptedOutOfCoordination:(BOOL)arg4 hasSectionIDOptedForwardOnly:(BOOL)arg5 ignoresDowntime:(BOOL)arg6;
+- (unsigned long long)willNanoPresentNotificationForSectionInfo:(id)arg1 subsectionIDs:(id)arg2 isWristDetectDisabled:(BOOL)arg3 hasSectionIDOptedOutOfCoordination:(BOOL)arg4 hasSectionIDOptedForwardOnly:(BOOL)arg5 ignoresDowntime:(BOOL)arg6 isCritical:(BOOL)arg7;
 
 @end
 

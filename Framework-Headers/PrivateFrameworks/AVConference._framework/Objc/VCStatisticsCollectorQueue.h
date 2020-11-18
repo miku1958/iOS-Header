@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
     struct OpaqueFigThread *_thread;
     BOOL _isThreadRunning;
     BOOL _shouldBlockWhenFull;
-    CDStruct_b21f1e06 _messageQueue[100];
+    CDStruct_56e8fa21 _messageQueue[300];
     int _firstMessageIndex;
     int _nextMessageIndex;
     int _maxQueueSize;
@@ -31,15 +31,15 @@ __attribute__((visibility("hidden")))
 @property (readonly) BOOL isThreadRunning; // @synthesize isThreadRunning=_isThreadRunning;
 @property (copy) CDUnknownBlockType messageHandler; // @synthesize messageHandler=_messageHandler;
 
-- (BOOL)addStatisticsMessage:(CDStruct_b21f1e06)arg1;
+- (BOOL)addStatisticsMessage:(CDStruct_56e8fa21)arg1;
 - (void)cancelWait;
 - (void)dealloc;
-- (BOOL)dequeue:(CDStruct_b21f1e06 *)arg1;
+- (BOOL)dequeue:(CDStruct_56e8fa21 *)arg1;
 - (void)drainAndProcessAllStatistics;
-- (BOOL)enqueue:(CDStruct_b21f1e06)arg1;
+- (BOOL)enqueue:(CDStruct_56e8fa21)arg1;
 - (id)initWithQueueSize:(int)arg1 shouldBlockWhenFull:(BOOL)arg2 queueWaitTimeMs:(unsigned int)arg3 useExternalThread:(BOOL)arg4;
 - (BOOL)isQueueFull;
-- (void)processMessage:(CDStruct_b21f1e06)arg1;
+- (void)processMessage:(CDStruct_56e8fa21)arg1;
 - (int)queueSize;
 - (void)start;
 - (void)stop;

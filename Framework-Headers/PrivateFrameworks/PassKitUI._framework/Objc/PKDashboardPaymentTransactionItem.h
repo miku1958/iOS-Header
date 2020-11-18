@@ -8,13 +8,15 @@
 
 #import <PassKitUI/PKDashboardItem-Protocol.h>
 
-@class NSString, PKAccount, PKPaymentPass, PKPaymentTransaction;
+@class NSString, PKAccount, PKPaymentPass, PKPaymentTransaction, PKTransactionSource;
 
 @interface PKDashboardPaymentTransactionItem : NSObject <PKDashboardItem>
 {
     PKPaymentPass *_pass;
     PKPaymentTransaction *_transaction;
     BOOL _isFeaturedTransaction;
+    PKTransactionSource *_transactionSource;
+    PKTransactionSource *_secondaryTransactionSource;
     PKAccount *_account;
 }
 
@@ -23,12 +25,15 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isFeaturedTransaction; // @synthesize isFeaturedTransaction=_isFeaturedTransaction;
-@property (readonly, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
+@property (strong, nonatomic) PKTransactionSource *secondaryTransactionSource; // @synthesize secondaryTransactionSource=_secondaryTransactionSource;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) PKPaymentTransaction *transaction; // @synthesize transaction=_transaction;
+@property (readonly, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
 
++ (id)identifier;
 - (void).cxx_destruct;
-- (id)initWithPaymentPass:(id)arg1 transaction:(id)arg2 account:(id)arg3;
+- (id)initWithTransactionSource:(id)arg1 transaction:(id)arg2 account:(id)arg3;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

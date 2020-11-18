@@ -26,6 +26,7 @@
 - (id)_currentDraggingIconViewInView:(id)arg1 forLocation:(struct CGPoint)arg2;
 - (void)_removeAnySourceURLForOperation:(id)arg1;
 - (BOOL)allowsSpringLoadForSession:(id)arg1 onIconView:(id)arg2;
+- (long long)dragPlacementForDropSession:(id)arg1 iconListView:(id)arg2 point:(struct CGPoint)arg3 icon:(id)arg4 options:(unsigned long long)arg5;
 - (BOOL)dropInteraction:(id)arg1 canHandleSession:(id)arg2;
 - (void)handleSpringLoadOnIconView:(id)arg1;
 - (id)init;

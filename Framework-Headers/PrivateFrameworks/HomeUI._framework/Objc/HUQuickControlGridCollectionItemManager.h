@@ -48,6 +48,8 @@
 - (id)_generateViewControllersForControlItems:(id)arg1;
 - (id)configuration;
 - (id)gridItemProvider;
+- (id)headerAccessoryButtonTargetForSection:(unsigned long long)arg1;
+- (id)headerAccessoryButtonTitleForSection:(unsigned long long)arg1;
 - (id)initWithDelegate:(id)arg1 controlItems:(id)arg2;
 - (id)initWithDelegate:(id)arg1 sourceItem:(id)arg2;
 - (id)sourceItem;

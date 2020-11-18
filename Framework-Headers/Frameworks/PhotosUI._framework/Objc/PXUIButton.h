@@ -17,11 +17,11 @@
 
 + (BOOL)_cursorInteractionEnabled;
 - (void).cxx_destruct;
-- (struct CGRect)_cursorRectForCurrentState;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
+- (struct CGRect)_pointerRectForCurrentState;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)setHighlighted:(BOOL)arg1;
 
 @end

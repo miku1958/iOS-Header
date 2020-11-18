@@ -21,8 +21,8 @@
     long long _entityType;
     unsigned long long _libraryID;
     long long _artworkType;
-    ML3MusicLibrary *_library;
     MPMediaLibraryArtwork *_libraryArtwork;
+    ML3MusicLibrary *_library;
     ICUserIdentity *_userIdentity;
 }
 
@@ -43,6 +43,7 @@
 - (void)clearFailedFetchableToken;
 - (id)description;
 - (unsigned long long)hash;
+- (id)initWithIdentifier:(unsigned long long)arg1 entityType:(long long)arg2 artworkType:(long long)arg3;
 - (id)initWithLibrary:(id)arg1 identifier:(unsigned long long)arg2 entityType:(long long)arg3 artworkType:(long long)arg4;
 - (id)initWithLibrary:(id)arg1 identifier:(unsigned long long)arg2 entityType:(long long)arg3 artworkType:(long long)arg4 mediaType:(unsigned long long)arg5;
 - (id)initWithML3Library:(id)arg1 identifier:(unsigned long long)arg2 entityType:(long long)arg3 artworkType:(long long)arg4;

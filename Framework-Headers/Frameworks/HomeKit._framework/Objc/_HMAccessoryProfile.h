@@ -43,9 +43,11 @@ __attribute__((visibility("hidden")))
 - (void)__configureWithContext:(id)arg1 accessory:(id)arg2;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_registerNotificationHandlers;
+- (void)_unconfigure;
+- (void)_unconfigureContext;
+- (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleRuntimeStateUpdate:(id)arg1;
-- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithUUID:(id)arg1 services:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

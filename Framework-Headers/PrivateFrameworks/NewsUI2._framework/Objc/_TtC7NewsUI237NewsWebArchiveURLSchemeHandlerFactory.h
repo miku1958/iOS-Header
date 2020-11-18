@@ -10,7 +10,6 @@
 
 @class MISSING_TYPE;
 
-__attribute__((visibility("hidden")))
 @interface _TtC7NewsUI237NewsWebArchiveURLSchemeHandlerFactory : NSObject <SWURLSchemeHandlerFactory>
 {
     MISSING_TYPE *webArchiveService;

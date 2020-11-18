@@ -50,7 +50,6 @@
 - (id)createMediaSystem;
 - (void)createMediaSystemWithAccessory:(id)arg1;
 - (id)finishPresentation:(id)arg1 animated:(BOOL)arg2;
-- (id)initForCreatingNewMediaSystem:(id)arg1;
 - (id)initForCreatingNewMediaSystemFromMediaAccessories:(id)arg1 home:(id)arg2;
 - (id)initForEditingExistingMediaSystemBuilder:(id)arg1;
 - (id)mediaSystemEditorGrid:(id)arg1 didUpdateMediaSystemBuilder:(id)arg2;

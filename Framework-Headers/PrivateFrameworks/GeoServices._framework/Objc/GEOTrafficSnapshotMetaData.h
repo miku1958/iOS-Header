@@ -22,12 +22,15 @@ __attribute__((visibility("hidden")))
     unsigned long long _publishTime;
     NSMutableArray *_regions;
     NSString *_snapshotId;
+    NSString *_vendorSnapshotId;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
+    unsigned int _maxAgeSeconds;
     int _vendor;
     struct {
         unsigned int has_publishTime:1;
+        unsigned int has_maxAgeSeconds:1;
         unsigned int has_vendor:1;
         unsigned int read_basemapId:1;
         unsigned int read_branchId:1;
@@ -36,15 +39,8 @@ __attribute__((visibility("hidden")))
         unsigned int read_isoCountryCode:1;
         unsigned int read_regions:1;
         unsigned int read_snapshotId:1;
-        unsigned int wrote_basemapId:1;
-        unsigned int wrote_branchId:1;
-        unsigned int wrote_environment:1;
-        unsigned int wrote_feedId:1;
-        unsigned int wrote_isoCountryCode:1;
-        unsigned int wrote_publishTime:1;
-        unsigned int wrote_regions:1;
-        unsigned int wrote_snapshotId:1;
-        unsigned int wrote_vendor:1;
+        unsigned int read_vendorSnapshotId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -57,27 +53,23 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) BOOL hasEnvironment;
 @property (readonly, nonatomic) BOOL hasFeedId;
 @property (readonly, nonatomic) BOOL hasIsoCountryCode;
+@property (nonatomic) BOOL hasMaxAgeSeconds;
 @property (nonatomic) BOOL hasPublishTime;
 @property (readonly, nonatomic) BOOL hasSnapshotId;
 @property (nonatomic) BOOL hasVendor;
+@property (readonly, nonatomic) BOOL hasVendorSnapshotId;
 @property (strong, nonatomic) NSString *isoCountryCode;
+@property (nonatomic) unsigned int maxAgeSeconds;
 @property (nonatomic) unsigned long long publishTime;
 @property (strong, nonatomic) NSMutableArray *regions;
 @property (strong, nonatomic) NSString *snapshotId;
 @property (nonatomic) int vendor;
+@property (strong, nonatomic) NSString *vendorSnapshotId;
 
 + (BOOL)isValid:(id)arg1;
 + (Class)regionsType;
 - (void).cxx_destruct;
 - (int)StringAsVendor:(id)arg1;
-- (void)_addNoFlagsRegions:(id)arg1;
-- (void)_readBasemapId;
-- (void)_readBranchId;
-- (void)_readEnvironment;
-- (void)_readFeedId;
-- (void)_readIsoCountryCode;
-- (void)_readRegions;
-- (void)_readSnapshotId;
 - (void)addRegions:(id)arg1;
 - (void)clearRegions;
 - (void)copyTo:(id)arg1;
@@ -87,7 +79,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

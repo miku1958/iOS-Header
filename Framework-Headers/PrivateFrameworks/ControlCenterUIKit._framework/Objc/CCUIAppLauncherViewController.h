@@ -6,11 +6,10 @@
 
 #import <ControlCenterUIKit/CCUIMenuModuleViewController.h>
 
-@class CCUIAppLauncherModule, SBFApplication, SCUIAssetProvider;
+@class CCUIAppLauncherModule, SCUIAssetProvider;
 
 @interface CCUIAppLauncherViewController : CCUIMenuModuleViewController
 {
-    SBFApplication *_application;
     SCUIAssetProvider *_assetProvider;
     CCUIAppLauncherModule *_module;
 }
@@ -19,6 +18,7 @@
 
 - (void).cxx_destruct;
 - (void)_activateApplicationForShortcutItem:(id)arg1;
+- (id)_assetProvider;
 - (BOOL)_canShowWhileLocked;
 - (id)_menuItemForShortcutItem:(id)arg1;
 - (void)_updateApplicationShortcutsActions;

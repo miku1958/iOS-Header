@@ -8,15 +8,19 @@
 
 #import <IMCore/TUCallProviderManagerDelegate-Protocol.h>
 
-@class DMFApplicationPolicyMonitor, IMCommLimitsPolicyCache, NSMutableDictionary, NSSet, NSString, TUCallProviderManager;
+@class DMFApplicationPolicyMonitor, IMCommLimitsPolicyCache, NSMutableDictionary, NSSet, NSString, STConversation, TUCallProviderManager;
 @protocol OS_dispatch_queue;
 
 @interface IMWhitelistController : NSObject <TUCallProviderManagerDelegate>
 {
+    struct os_unfair_lock_s _stateLock;
+    BOOL _needsNotificationsRegistering;
+    STConversation *_stateLock_STConversation;
+    NSSet *_stateLock_emergencyNumbersSet;
     BOOL _isRunningFromMacMessagesApp;
     TUCallProviderManager *_callProviderManager;
     NSObject<OS_dispatch_queue> *_screenTimeDispatchQueue;
-    NSSet *_emergencyNumbersSet;
+    NSObject<OS_dispatch_queue> *_setupDispatchQueue;
     IMCommLimitsPolicyCache *_policyCache;
     NSMutableDictionary *_bundleIDPolicyMap;
     DMFApplicationPolicyMonitor *_appPolicyMonitor;
@@ -27,30 +31,36 @@
 @property (strong, nonatomic) TUCallProviderManager *callProviderManager; // @synthesize callProviderManager=_callProviderManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) NSSet *emergencyNumbersSet; // @synthesize emergencyNumbersSet=_emergencyNumbersSet;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isRunningFromMacMessagesApp; // @synthesize isRunningFromMacMessagesApp=_isRunningFromMacMessagesApp;
 @property (strong, nonatomic) IMCommLimitsPolicyCache *policyCache; // @synthesize policyCache=_policyCache;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *screenTimeDispatchQueue; // @synthesize screenTimeDispatchQueue=_screenTimeDispatchQueue;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *setupDispatchQueue; // @synthesize setupDispatchQueue=_setupDispatchQueue;
 @property (readonly) Class superclass;
 
-+ (id)STConversation;
++ (id)fetchEmergencyNumbersSetWithProviderManager:(id)arg1;
 + (BOOL)isContactLimitsFeatureEnabled;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (id)STConversation;
 - (void)_addObserversToChat:(id)arg1;
+- (void)_doRegisterForScreenTimeNotifications;
 - (void)_participantsForChatDidChange:(id)arg1;
 - (BOOL)allowedToShowAppExtensionWithBundleIdentifier:(id)arg1;
 - (BOOL)allowedToShowConversationForChat:(id)arg1 sync:(BOOL)arg2;
 - (BOOL)allowedToShowConversationWithHandleIDs:(id)arg1 sync:(BOOL)arg2 context:(id *)arg3;
+- (BOOL)allowedToShowConversationWithHandleIDs:(id)arg1 sync:(BOOL)arg2 context:(id *)arg3 participantIDsHash:(id)arg4;
 - (id)conversationContextForChat:(id)arg1;
+- (id)emergencyNumbers;
 - (void)fetchScreenTimeAppPolicy;
+- (void)getSTConversation:(CDUnknownBlockType)arg1;
 - (id)init;
 - (void)initializeContext:(id)arg1 participantIDsHash:(id)arg2;
+- (BOOL)isEmergencyHandle:(id)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)providersChangedForProviderManager:(id)arg1;
 - (void)registerForScreenTimeNotifications;
-- (void)reloadEmergencyNumbersSet;
+- (void)setEmergencyNumbers:(id)arg1;
 
 @end
 

@@ -127,7 +127,6 @@
 - (void)mergeNotificationRequests:(id)arg1;
 - (void)modifyNotificationRequest:(id)arg1;
 - (void)notificationListCell:(id)arg1 didMoveToNewXPosition:(double)arg2;
-- (BOOL)notificationListCell:(id)arg1 shouldPanHorizontallyWithTouch:(id)arg2;
 - (void)notificationListCellDidHideCellActions:(id)arg1 resetCellScrollPosition:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)notificationListCellDidRevealCellActions:(id)arg1;
 - (void)notificationListCellDidSignificantUserInteraction:(id)arg1;
@@ -136,6 +135,7 @@
 - (void)notificationListCellRequestsPresentingLongLook:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)notificationListCellRequestsPresentingManagementView:(id)arg1 withPresentingView:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)notificationListCellRequestsSectionSettings:(id)arg1 sectionIdentifier:(id)arg2;
+- (BOOL)notificationListCellShouldPanHorizontally:(id)arg1;
 - (BOOL)notificationListCellShouldPerformClipping:(id)arg1;
 - (void)notificationListCoalescingControlsHandler:(id)arg1 didTransitionToClearState:(BOOL)arg2;
 - (void)notificationListCoalescingControlsHandlerDidBeginPreviewInteraction:(id)arg1;
@@ -154,6 +154,7 @@
 - (void)notificationViewController:(id)arg1 executeAction:(id)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (struct CGRect)notificationViewController:(id)arg1 finalFrameForDismissingLongLookFromView:(id)arg2;
 - (struct CGRect)notificationViewController:(id)arg1 initialFrameForPresentingLongLookFromView:(id)arg2;
+- (void)notificationViewController:(id)arg1 isPerformingHoverHighlighting:(BOOL)arg2;
 - (id)notificationViewController:(id)arg1 keyboardAssertionForGestureWindow:(id)arg2;
 - (void)notificationViewController:(id)arg1 requestPermissionToExecuteAction:(id)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)notificationViewController:(id)arg1 requestsExpandingCoalescedBundleForNotificationRequest:(id)arg2;
@@ -168,6 +169,7 @@
 - (BOOL)notificationViewControllerShouldPerformHoverHighlighting:(id)arg1;
 - (void)notificationViewControllerWillBeginUserInteraction:(id)arg1;
 - (void)notificationViewControllerWillDismissForCancelAction:(id)arg1;
+- (void)notificationsLoadedForSectionIdentifier:(id)arg1;
 - (void)recycleView:(id)arg1;
 - (void)reloadNotificationRequest:(id)arg1;
 - (void)removeNotificationRequest:(id)arg1;

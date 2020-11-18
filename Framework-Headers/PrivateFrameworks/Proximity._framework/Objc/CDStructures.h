@@ -79,10 +79,46 @@ struct NeighborMeasurements {
     BOOL _field12;
 };
 
+struct ResponderSuperframeStats {
+    double _field1;
+    unsigned short _field2;
+    struct SlaveSFCompleteEvent _field3;
+    struct optional<double> _field4;
+};
+
 struct SharingImportanceManager;
 
 struct SharingImportanceMeasurements {
     struct vector<NeighborMeasurements, std::__1::allocator<NeighborMeasurements>> userSharingInput;
+};
+
+struct SlaveSFCompleteEvent {
+    unsigned short _field1;
+    unsigned short _field2;
+    unsigned char _field3;
+    double _field4;
+    struct array<unsigned char, 8> _field5;
+    unsigned short _field6;
+    unsigned short _field7;
+    unsigned short _field8;
+    unsigned char _field9;
+    unsigned char _field10;
+    unsigned char _field11;
+    unsigned char _field12;
+    unsigned char _field13;
+    unsigned char _field14;
+    double _field15;
+    unsigned char _field16;
+    unsigned char _field17;
+    unsigned char _field18;
+    unsigned char _field19;
+    struct vector<Rose::SlaveSFRxPacketInfo, std::__1::allocator<Rose::SlaveSFRxPacketInfo>> _field20;
+};
+
+struct SlaveSFRxPacketInfo;
+
+struct array<unsigned char, 8> {
+    unsigned char _field1[8];
 };
 
 struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
@@ -132,6 +168,19 @@ struct optional<Rose::HelloResponse::AdditionalInfo> {
     BOOL _field2;
 };
 
+struct optional<double> {
+    union {
+        char _field1;
+        double _field2;
+    } _field1;
+    BOOL _field2;
+};
+
+struct shared_ptr<rose::ResponderSuperframeStats> {
+    struct ResponderSuperframeStats *__ptr_;
+    struct __shared_weak_count *__cntrl_;
+};
+
 struct unique_ptr<SharingImportanceManager, std::__1::default_delete<SharingImportanceManager>> {
     struct __compressed_pair<SharingImportanceManager *, std::__1::default_delete<SharingImportanceManager>> {
         struct SharingImportanceManager *__value_;
@@ -150,6 +199,14 @@ struct vector<NeighborMeasurements, std::__1::allocator<NeighborMeasurements>> {
     struct __compressed_pair<NeighborMeasurements *, std::__1::allocator<NeighborMeasurements>> {
         struct NeighborMeasurements *__value_;
     } __end_cap_;
+};
+
+struct vector<Rose::SlaveSFRxPacketInfo, std::__1::allocator<Rose::SlaveSFRxPacketInfo>> {
+    struct SlaveSFRxPacketInfo *_field1;
+    struct SlaveSFRxPacketInfo *_field2;
+    struct __compressed_pair<Rose::SlaveSFRxPacketInfo *, std::__1::allocator<Rose::SlaveSFRxPacketInfo>> {
+        struct SlaveSFRxPacketInfo *_field1;
+    } _field3;
 };
 
 #pragma mark Typedef'd Structures

@@ -15,17 +15,20 @@
     BOOL _hasCloudLibraryEnabled;
     BOOL _delegated;
     BOOL _activeAccount;
+    BOOL _privateListeningEnabled;
     ICUserIdentity *_userIdentity;
+    ICMusicSubscriptionStatus *_subscriptionStatus;
     NSString *_hashedDSID;
     NSString *_storeFrontIdentifier;
-    ICMusicSubscriptionStatus *_subscriptionStatus;
 }
 
 @property (nonatomic, getter=isActiveAccount) BOOL activeAccount; // @synthesize activeAccount=_activeAccount;
+@property (readonly, nonatomic) BOOL canAutoPlay;
 @property (readonly, nonatomic, getter=isDelegated) BOOL delegated; // @synthesize delegated=_delegated;
 @property (readonly, nonatomic) BOOL hasCatalogPlaybackCapability;
 @property (nonatomic) BOOL hasCloudLibraryEnabled; // @synthesize hasCloudLibraryEnabled=_hasCloudLibraryEnabled;
 @property (copy, nonatomic) NSString *hashedDSID; // @synthesize hashedDSID=_hashedDSID;
+@property (nonatomic, getter=isPrivateListeningEnabled) BOOL privateListeningEnabled; // @synthesize privateListeningEnabled=_privateListeningEnabled;
 @property (copy, nonatomic) NSString *storeFrontIdentifier; // @synthesize storeFrontIdentifier=_storeFrontIdentifier;
 @property (readonly, nonatomic) ICMusicSubscriptionStatus *subscriptionStatus; // @synthesize subscriptionStatus=_subscriptionStatus;
 @property (readonly, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;

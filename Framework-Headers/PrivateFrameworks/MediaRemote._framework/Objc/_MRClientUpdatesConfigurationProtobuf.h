@@ -14,12 +14,14 @@
     BOOL _keyboardUpdates;
     BOOL _nowPlayingUpdates;
     BOOL _outputDeviceUpdates;
+    BOOL _systemEndpointUpdates;
     BOOL _volumeUpdates;
     struct {
         unsigned int artworkUpdates:1;
         unsigned int keyboardUpdates:1;
         unsigned int nowPlayingUpdates:1;
         unsigned int outputDeviceUpdates:1;
+        unsigned int systemEndpointUpdates:1;
         unsigned int volumeUpdates:1;
     } _has;
 }
@@ -29,10 +31,12 @@
 @property (nonatomic) BOOL hasKeyboardUpdates;
 @property (nonatomic) BOOL hasNowPlayingUpdates;
 @property (nonatomic) BOOL hasOutputDeviceUpdates;
+@property (nonatomic) BOOL hasSystemEndpointUpdates;
 @property (nonatomic) BOOL hasVolumeUpdates;
 @property (nonatomic) BOOL keyboardUpdates; // @synthesize keyboardUpdates=_keyboardUpdates;
 @property (nonatomic) BOOL nowPlayingUpdates; // @synthesize nowPlayingUpdates=_nowPlayingUpdates;
 @property (nonatomic) BOOL outputDeviceUpdates; // @synthesize outputDeviceUpdates=_outputDeviceUpdates;
+@property (nonatomic) BOOL systemEndpointUpdates; // @synthesize systemEndpointUpdates=_systemEndpointUpdates;
 @property (nonatomic) BOOL volumeUpdates; // @synthesize volumeUpdates=_volumeUpdates;
 
 - (void)copyTo:(id)arg1;

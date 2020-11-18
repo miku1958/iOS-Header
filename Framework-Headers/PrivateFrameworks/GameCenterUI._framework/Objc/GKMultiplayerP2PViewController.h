@@ -12,55 +12,67 @@
 @interface GKMultiplayerP2PViewController : GKMultiplayerViewController
 {
     BOOL _hosted;
-    id<GKMultiplayerP2PViewControllerDelegate> _delegateWeak;
+    id<GKMultiplayerP2PViewControllerDelegate> _delegate;
     long long _mode;
     GKInvite *_acceptedInvite;
     double _inviteeConnectionTimeStamp;
 }
 
-@property (copy, nonatomic) GKInvite *acceptedInvite; // @synthesize acceptedInvite=_acceptedInvite;
-@property (nonatomic) id<GKMultiplayerP2PViewControllerDelegate> delegate; // @synthesize delegate=_delegateWeak;
+@property (strong, nonatomic) GKInvite *acceptedInvite; // @synthesize acceptedInvite=_acceptedInvite;
+@property (weak, nonatomic) id<GKMultiplayerP2PViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic, getter=isHosted) BOOL hosted; // @synthesize hosted=_hosted;
 @property (nonatomic) double inviteeConnectionTimeStamp; // @synthesize inviteeConnectionTimeStamp=_inviteeConnectionTimeStamp;
 @property (nonatomic) long long mode; // @synthesize mode=_mode;
 
+- (void).cxx_destruct;
 - (void)applicationWillEnterForeground;
+- (long long)automatchParticipantStatus;
 - (BOOL)canStartForcedAutomatch;
 - (void)cancel;
 - (void)cancelAlertWithoutDelegateCallback;
 - (void)cancelPendingInvites;
 - (void)configureDataSource;
 - (void)dealloc;
+- (void)displayCancelConfirmationDialog;
 - (void)finishWithError:(id)arg1;
 - (BOOL)haveInvitedPlayers;
 - (BOOL)havePendingPlayers;
 - (id)initWithAcceptedInvite:(id)arg1;
 - (void)invitePlayers:(id)arg1;
 - (void)inviterCancelled;
+- (BOOL)isCanceling;
+- (BOOL)isInSetupMode;
 - (void)loadShareURLWithCompletion:(CDUnknownBlockType)arg1;
+- (void)performActionsForButtonCancelCurrentMatching;
 - (void)playNow;
 - (void)playerConnected:(id)arg1;
 - (void)playerDisconnected:(id)arg1;
 - (void)processStatusUpdateMessageFromBytes:(const char *)arg1 withLength:(unsigned int)arg2;
 - (void)removedPlayer:(id)arg1;
+- (void)resetInviteesStatus;
+- (void)sendInvitesToContactPlayers:(id)arg1 legacyPlayers:(id)arg2;
 - (void)sendStatusUpdate;
 - (void)setAutomatchFailedWithError:(id)arg1;
 - (void)setAutomatchPlayerCount:(long long)arg1;
+- (void)setConnectingStateForPlayer:(id)arg1;
 - (void)setExistingPlayers:(id)arg1;
 - (void)setFailedWithError:(id)arg1;
 - (void)setInvitesFailedWithError:(id)arg1;
 - (void)setPlayer:(id)arg1 connected:(BOOL)arg2;
 - (void)setPlayer:(id)arg1 responded:(long long)arg2;
 - (void)setPlayer:(id)arg1 sentData:(id)arg2;
-- (void)shareFinishedWithContactPlayers:(id)arg1 legacyPlayers:(id)arg2;
+- (void)setShareInvitees;
 - (void)showAutomatchingErrorAlert;
 - (void)showInviterDisconnectedAlert;
+- (void)showMatchDisconnectedAlertForPlayer:(id)arg1;
+- (void)showParentalControlsRestrictionAlert;
 - (void)startGame;
+- (void)startGameButtonPressed;
+- (void)updateForNewMode;
+- (void)updateStartGameButtonTitle;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)willPresentPlayerPicker:(id)arg1;
-- (void)willQueryGKIDs;
-- (void)willShare;
 
 @end
 

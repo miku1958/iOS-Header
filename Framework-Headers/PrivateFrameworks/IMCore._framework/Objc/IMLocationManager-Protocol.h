@@ -14,8 +14,9 @@
 @property (readonly, nonatomic) CLLocation *location;
 @property (readonly, nonatomic) BOOL locationAuthorizationDenied;
 @property (readonly, nonatomic) BOOL locationAuthorizationDetermined;
+@property (readonly, nonatomic) BOOL preciseLocationAuthorized;
 
-- (void)startUpdatingCurrentLocationWithForegroundAssertionForBundleIdentifier:(NSString *)arg1 updateHandler:(void (^)(CLLocation *, NSError *))arg2;
-- (void)startUpdatingCurrentLocationWithHandler:(void (^)(CLLocation *, NSError *))arg1;
+- (void)startUpdatingCurrentLocationWithAuthorizedHandler:(void (^)(void))arg1 updateHandler:(void (^)(CLLocation *, NSError *))arg2;
+- (void)startUpdatingCurrentLocationWithForegroundAssertionForBundleIdentifier:(NSString *)arg1 withAuthorizedHandler:(void (^)(void))arg2 updateHandler:(void (^)(CLLocation *, NSError *))arg3;
 @end
 

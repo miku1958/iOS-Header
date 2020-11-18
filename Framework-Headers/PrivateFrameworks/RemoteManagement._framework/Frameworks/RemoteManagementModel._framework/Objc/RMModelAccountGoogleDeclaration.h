@@ -12,20 +12,20 @@
 
 @interface RMModelAccountGoogleDeclaration : RMModelConfigurationBase <RMModelRegisteredTypeProtocol>
 {
-    NSString *_payloadDescription;
+    NSString *_payloadVisibleName;
     NSString *_payloadUserIdentityAssetReference;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (copy, nonatomic) NSString *payloadDescription; // @synthesize payloadDescription=_payloadDescription;
 @property (copy, nonatomic) NSString *payloadUserIdentityAssetReference; // @synthesize payloadUserIdentityAssetReference=_payloadUserIdentityAssetReference;
+@property (copy, nonatomic) NSString *payloadVisibleName; // @synthesize payloadVisibleName=_payloadVisibleName;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
-+ (id)buildRequiredOnlyWithIdentifier:(id)arg1;
-+ (id)buildWithIdentifier:(id)arg1 description:(id)arg2 userIdentityAssetReference:(id)arg3;
++ (id)buildRequiredOnlyWithIdentifier:(id)arg1 userIdentityAssetReference:(id)arg2;
++ (id)buildWithIdentifier:(id)arg1 visibleName:(id)arg2 userIdentityAssetReference:(id)arg3;
 + (id)registeredClassName;
 + (id)registeredIdentifier;
 - (void).cxx_destruct;

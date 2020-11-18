@@ -24,8 +24,9 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)_applicationSupportServiceEndpoint;
 - (id)_remoteTarget;
-- (id)applicationInitializationContext;
+- (id)applicationInitializationContextWithParameters:(id)arg1;
 - (void)dealloc;
 - (void)destroyScenesWithPersistentIdentifiers:(id)arg1 animationType:(unsigned long long)arg2 destroySessions:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)init;

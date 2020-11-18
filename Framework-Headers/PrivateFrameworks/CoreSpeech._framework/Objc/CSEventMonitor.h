@@ -25,6 +25,7 @@
 - (id)init;
 - (void)notifyObserver:(id)arg1;
 - (void)removeObserver:(id)arg1;
+- (unsigned long long)type;
 
 @end
 

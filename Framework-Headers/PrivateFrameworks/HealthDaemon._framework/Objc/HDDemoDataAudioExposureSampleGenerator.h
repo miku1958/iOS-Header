@@ -38,9 +38,8 @@
 - (id)_makeBeatsHeadphones;
 - (id)_makeEarPods;
 - (id)_makeEnvironmentalSamplesWithType:(id)arg1 rawSampleValues:(id)arg2 sampleUnit:(id)arg3 initialSampleDate:(id)arg4 sampleDuration:(double)arg5 distanceBetweenSamples:(double)arg6;
-- (id)_makeEvenlyDistributedAudioExposureLevelsWithCount:(unsigned long long)arg1 headphones:(BOOL)arg2;
 - (id)_makeHeadphoneSamplesWithType:(id)arg1 rawSampleValues:(id)arg2 sampleUnit:(id)arg3 initialSampleDate:(id)arg4 sampleDuration:(double)arg5 distanceBetweenSamples:(double)arg6 demoPerson:(id)arg7;
-- (id)_makeNormallyDistributedAudioExposureLevelsWithCount:(unsigned long long)arg1 headphones:(BOOL)arg2;
+- (id)_makeNormallyDistributedAudioExposureLevelsWithCount:(unsigned long long)arg1 headphones:(BOOL)arg2 loudData:(BOOL)arg3;
 - (id)_makeQuantitySampleWithType:(id)arg1 value:(id)arg2 unit:(id)arg3 startDate:(id)arg4 endDate:(id)arg5 metadata:(id)arg6;
 - (id)_makeQuantitySeriesSamplesWithType:(id)arg1 rawSampleValues:(id)arg2 sampleUnit:(id)arg3 initialSampleDate:(id)arg4 sampleDuration:(double)arg5 distanceBetweenSamples:(double)arg6 demoPerson:(id)arg7;
 - (id)_makeUnknownHeadphones;

@@ -9,6 +9,7 @@
 @protocol CSPowerStatusProviding <NSObject>
 
 @property (readonly, nonatomic, getter=isConnectedToExternalChargingSource) BOOL connectedToExternalChargingSource;
+@property (readonly, nonatomic, getter=isConnectedToQiPower) BOOL connectedToQiPower;
 @property (readonly, nonatomic, getter=isOnAC) BOOL onAC;
 
 @end

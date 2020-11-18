@@ -7,6 +7,7 @@
 #import <CoreData/NSPersistentStoreCoordinator.h>
 
 @interface NSPersistentStoreCoordinator (IC)
+- (id)ic_managedObjectIDForURIRepresentation:(id)arg1;
 - (id)ic_managedObjectIDForURIString:(id)arg1;
 @end
 

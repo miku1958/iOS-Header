@@ -6,13 +6,14 @@
 
 #import <coreroutine/RTNotifier.h>
 
+#import <coreroutine/RTPersistenceContainerDelegate-Protocol.h>
 #import <coreroutine/RTPersistenceContextDelegate-Protocol.h>
 #import <coreroutine/RTPersistenceModelProvider-Protocol.h>
 
 @class NSArray, NSManagedObjectModel, NSMutableArray, NSPointerArray, NSRecursiveLock, NSString, NSURL, RTPersistenceContainer, RTPersistenceStore;
 @protocol RTPersistenceDelegate, RTPersistenceMirroringDelegate;
 
-@interface RTPersistenceManager : RTNotifier <RTPersistenceModelProvider, RTPersistenceContextDelegate>
+@interface RTPersistenceManager : RTNotifier <RTPersistenceContainerDelegate, RTPersistenceModelProvider, RTPersistenceContextDelegate>
 {
     NSURL *_modelsDirectory;
     NSURL *_storesDirectory;
@@ -44,7 +45,10 @@
 - (void)_onCoreDataResetSync:(id)arg1;
 - (BOOL)_setupPersistenceContainers;
 - (void)_setupRemoteStoreServers;
+- (void)_updateAvailabilityAfterSetupAttemptWithAvailability:(unsigned long long)arg1;
 - (void)_updateStoreAvailability:(unsigned long long)arg1;
+- (void)container:(id)arg1 failedToActivateRequestsQueue:(id)arg2;
+- (void)container:(id)arg1 willActivateRequestsQueue:(id)arg2;
 - (unsigned long long)countOfPersistenceStores;
 - (void)createManagedObjectContext:(CDUnknownBlockType)arg1;
 - (void)dealloc;

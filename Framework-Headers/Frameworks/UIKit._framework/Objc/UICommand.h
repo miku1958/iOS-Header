@@ -31,6 +31,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) UIImage *image; // @dynamic image;
 @property (readonly, nonatomic) id propertyList; // @synthesize propertyList=_propertyList;
+@property (readonly, nonatomic) BOOL requiresAuthenticatedInput;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *title; // @dynamic title;
@@ -39,15 +40,17 @@
 + (id)_defaultCommands;
 + (id)commandWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 propertyList:(id)arg4;
 + (id)commandWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 propertyList:(id)arg4 alternates:(id)arg5;
++ (id)commandWithTitle:(id)arg1 imageName:(id)arg2 action:(SEL)arg3;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (BOOL)_acceptBoolMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3;
 - (BOOL)_acceptBoolMenuVisit:(CDUnknownBlockType)arg1 leafVisit:(CDUnknownBlockType)arg2;
-- (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3;
+- (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 commandVisit:(CDUnknownBlockType)arg2 actionVisit:(CDUnknownBlockType)arg3 deferredElementVisit:(CDUnknownBlockType)arg4;
 - (void)_acceptMenuVisit:(CDUnknownBlockType)arg1 leafVisit:(CDUnknownBlockType)arg2;
 - (id)_alternateForModifierFlags:(long long)arg1;
 - (id)_identifier;
 - (id)_immutableCopy;
+- (BOOL)_isDefaultCommand;
 - (id)_leafAlternates;
 - (id)_leafKeyInput;
 - (long long)_leafKeyModifierFlags;
@@ -59,7 +62,9 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCommand:(id)arg1;
 - (id)initWithTitle:(id)arg1 image:(id)arg2 action:(SEL)arg3 propertyList:(id)arg4 alternates:(id)arg5 discoverabilityTitle:(id)arg6 attributes:(unsigned long long)arg7 state:(long long)arg8;
+- (id)initWithTitle:(id)arg1 image:(id)arg2 imageName:(id)arg3 action:(SEL)arg4 propertyList:(id)arg5 alternates:(id)arg6 discoverabilityTitle:(id)arg7 attributes:(unsigned long long)arg8 state:(long long)arg9;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isLeaf;
 
 @end
 

@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKOperation.h>
 
-@class CKShareMetadata, NSString;
+#import <CloudKit/CKInitiateParticipantVettingOperationCallbacks-Protocol.h>
 
-@interface CKInitiateParticipantVettingOperation : CKOperation
+@class CKInitiateParticipantVettingOperationInfo, CKShareMetadata, NSString;
+@protocol CKInitiateParticipantVettingOperationCallbacks;
+
+@interface CKInitiateParticipantVettingOperation : CKOperation <CKInitiateParticipantVettingOperationCallbacks>
 {
     CDUnknownBlockType _participantVettingInitiatedBlock;
     CDUnknownBlockType _participantVettingInitiationCompletionBlock;
@@ -18,19 +21,21 @@
 }
 
 @property (copy, nonatomic) NSString *address; // @synthesize address=_address;
+@property (readonly, nonatomic) id<CKInitiateParticipantVettingOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
+@property (readonly, nonatomic) CKInitiateParticipantVettingOperationInfo *operationInfo; // @dynamic operationInfo;
 @property (copy, nonatomic) NSString *participantID; // @synthesize participantID=_participantID;
 @property (copy, nonatomic) CDUnknownBlockType participantVettingInitiatedBlock; // @synthesize participantVettingInitiatedBlock=_participantVettingInitiatedBlock;
 @property (copy, nonatomic) CDUnknownBlockType participantVettingInitiationCompletionBlock; // @synthesize participantVettingInitiationCompletionBlock=_participantVettingInitiationCompletionBlock;
-@property (strong, nonatomic) CKShareMetadata *shareMetadata; // @synthesize shareMetadata=_shareMetadata;
+@property (copy, nonatomic) CKShareMetadata *shareMetadata; // @synthesize shareMetadata=_shareMetadata;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleParticipantVettingProgressWithError:(id)arg1;
 - (id)initWithShareMetadata:(id)arg1 participantID:(id)arg2 address:(id)arg3;
-- (Class)operationInfoClass;
 - (void)performCKOperation;
 - (void)retryTimes:(unsigned long long)arg1 container:(id)arg2 participantVettingInitiatedBlock:(CDUnknownBlockType)arg3 participantVettingInitiationCompletionBlock:(CDUnknownBlockType)arg4;
 

@@ -7,15 +7,15 @@
 #import <AccessibilityPlatformTranslation/AXPTranslator.h>
 
 @class AXUIElement, NSMutableDictionary, NSObject;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface AXPTranslator_iOS : AXPTranslator
 {
     NSMutableDictionary *_translationCache;
     NSMutableDictionary *_backTranslationCache;
     NSObject<OS_dispatch_queue> *_cacheQueue;
-    struct __IOHIDEventSystemClient *_ioSystemPostBackClient;
     BOOL _axAppReadyFlag;
+    NSObject<OS_dispatch_semaphore> *_threadSemaphore;
     BOOL _accessibilityEnabled;
     struct __AXObserver *_axEventObserver;
     AXUIElement *_systemAppElement;
@@ -30,38 +30,54 @@
 + (id)sharedInstance;
 + (id)translationObjectFromUIKitObject:(id)arg1;
 - (void).cxx_destruct;
-- (id)_axArrayWithPossiblyNilArrays:(unsigned long long)arg1;
-- (void)_initializeAccessibility;
-- (void)_postEvent:(id)arg1;
+- (void)_enableAccessibilityBridgeRuntime;
 - (id)_postProcessAttributeRequest:(id)arg1 iosAttribute:(long long)arg2 axpAttribute:(unsigned long long)arg3 result:(id)arg4;
 - (id)_preprocessRequest:(long long)arg1 parameter:(id)arg2;
 - (id)_processAccessibilityAttributeValue:(long long)arg1;
 - (id)_processAccessibilityAttributeValue:(long long)arg1 forParameter:(id)arg2;
 - (id)_processAttributeSpecialCases:(unsigned long long)arg1 uiElement:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processAttributeSpecialCases:(unsigned long long)arg1 uiElement:(id)arg2 parameter:(id)arg3 error:(unsigned long long *)arg4;
-- (id)_processAttributedLabelAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processAttributedStringForRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
+- (id)_processAuditIssuesAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
+- (id)_processAuditIssuesResult:(id)arg1;
 - (id)_processBoundsForRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processChildrenAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processClassNameAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processCustomActionsAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processCustomRotorData:(id)arg1;
 - (id)_processDirectAttributeRequest:(id)arg1 iosAttribute:(long long)arg2 axpAttribute:(unsigned long long)arg3 parameter:(id)arg4 error:(unsigned long long *)arg5;
+- (id)_processFirstContainedElement:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
+- (id)_processFirstElementForFocus:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
+- (id)_processFocusedElementAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processIsEnabledAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
+- (id)_processIsFocusedAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
+- (id)_processIsRemoteElementAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processIsSelectedAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
+- (id)_processLabelAttributeRequest:(id)arg1 error:(unsigned long long *)arg2 axpAttribute:(unsigned long long)arg3;
+- (id)_processLastContainedElement:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processLineRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processMoveFocusToOpaqueElementAttributeRequest:(id)arg1 parameter:(id)arg2 direction:(long long)arg3 error:(unsigned long long *)arg4;
+- (id)_processNextLineRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processNumberOfCharactersAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processOutgoingCustomRotorSearchResult:(id)arg1;
 - (id)_processParameterizedAttributeRequest:(id)arg1 attribute:(long long)arg2 parameter:(id)arg3 error:(unsigned long long *)arg4;
 - (BOOL)_processPerformAction:(int)arg1 value:(id)arg2;
+- (id)_processPreviousLineRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processRawElementDataRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processRoleAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
+- (unsigned long long)_processRoleAttributeRequest:(id)arg1 traits:(unsigned long long)arg2 error:(unsigned long long *)arg3;
+- (id)_processRoleDescriptionAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
+- (id)_processSelectedTextRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processStartsMediaSessionAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processStringForRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processSubroleAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
+- (id)_processSyntheticValueAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
+- (id)_processUserInputLabelsAttributeRequest:(id)arg1 error:(unsigned long long *)arg2 axpAttribute:(unsigned long long)arg3;
+- (id)_processValueAttributeRequest:(id)arg1 error:(unsigned long long *)arg2 axpAttribute:(unsigned long long)arg3;
+- (id)_processViewControllerDescriptionAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
+- (id)_processVisibleOpaqueElements:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processingSmuggledMarzipanRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
-- (void)_sendPressFingerEvent:(BOOL)arg1 location:(struct CGPoint)arg2 force:(double)arg3 contextId:(unsigned int)arg4;
+- (void)_registerAccessibilityNotifications;
 - (void)_signalAppAXReady;
 - (BOOL)accessibilityEnabled;
 - (long long)attributeFromRequest:(unsigned long long)arg1;
@@ -85,7 +101,6 @@
 - (id)processSupportedActions:(id)arg1;
 - (id)remoteTranslationDataWithTranslation:(id)arg1 pid:(int)arg2;
 - (void)setAccessibilityEnabled:(BOOL)arg1;
-- (void)simulatePressAtPoint:(struct CGPoint)arg1 withContextId:(unsigned int)arg2 withDelay:(float)arg3 withForce:(double)arg4;
 - (id)translationCache;
 - (id)translationObjectFromData:(id)arg1;
 - (id)translationObjectFromPlatformElement:(struct __AXUIElement *)arg1;

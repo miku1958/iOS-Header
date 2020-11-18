@@ -14,16 +14,17 @@
 
 @interface REElement : NSObject <REAutomaticExportedInterface, NSCopying, NSCoding>
 {
-    NSString *_bundleIdentifier;
     NSString *_identifier;
     unsigned long long _privacyBehavior;
     REContent *_content;
     REContent *_idealizedContent;
     NSArray *_relevanceProviders;
     REElementAction *_action;
+    NSString *_bundleIdentifier;
 }
 
 @property (readonly, nonatomic) REElementAction *action; // @synthesize action=_action;
+@property (strong) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) REContent *content; // @synthesize content=_content;
 @property (readonly, nonatomic) REContent *idealizedContent; // @synthesize idealizedContent=_idealizedContent;
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
@@ -34,7 +35,6 @@
 - (void).cxx_destruct;
 - (BOOL)_relevanceProvidersEqualToElement:(id)arg1;
 - (void)_updateIdentifier:(id)arg1;
-- (id)bundleIdentifier;
 - (id)copyElementWithUpdatedRelevanceProviders:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -50,7 +50,6 @@
 - (id)initWithIdentifier:(id)arg1 content:(id)arg2 idealizedContent:(id)arg3 action:(id)arg4 relevanceProviders:(id)arg5 privacyBehavior:(unsigned long long)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isNoContentElement;
-- (void)setBundleIdentifier:(id)arg1;
 - (id)shallowCopy;
 
 @end

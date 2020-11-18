@@ -13,11 +13,12 @@
 #import <ChatKit/IMCNMeCardSharingOnboardingEditViewControllerDelegate-Protocol.h>
 #import <ChatKit/UINavigationControllerDelegate-Protocol.h>
 
-@class AVPlayer, AVPlayerLooper, AVTAvatarStore, CKCNSharingProfileOnboardingFlowManager, CNSharingProfileAvatarItemProviderConfiguration, IMCNMeCardSharingResult, IMCloudKitSyncState, NSString, OBWelcomeFullCenterContentController, UINavigationController;
-@protocol AVTAvatarRecord, CKOnboardingControllerDelegate;
+@class AVPlayer, AVPlayerLooper, AVTAvatarStore, CKCNSharingProfileOnboardingFlowManager, CNSharingProfileAvatarItemProviderConfiguration, IMCloudKitSyncState, NSString, OBWelcomeFullCenterContentController, UINavigationController;
+@protocol AVTAvatarRecord, CKOnboardingControllerDelegate, IMCNMeCardSharingResult;
 
 @interface CKOnboardingController : NSObject <CNMeCardSharingPickerViewControllerDelegate, AVTAvatarEditorViewControllerDelegate, IMCNMeCardSharingOnboardingEditViewControllerDelegate, IMCNMeCardSharingOnboardingAudienceViewControllerDelegate, UINavigationControllerDelegate, CKCNSharingProfileOnboardingFlowManagerDelegate>
 {
+    BOOL _presentingFromPrefs;
     int _micLayout;
     id<CKOnboardingControllerDelegate> _delegate;
     IMCloudKitSyncState *_syncState;
@@ -27,7 +28,7 @@
     AVPlayerLooper *_memojiVideoPlayerLooper;
     AVTAvatarStore *_avatarStore;
     id<AVTAvatarRecord> _avatarRecord;
-    IMCNMeCardSharingResult *_pendingMeCardSharingResult;
+    id<IMCNMeCardSharingResult> _pendingMeCardSharingResult;
     CKCNSharingProfileOnboardingFlowManager *_nicknameFlowManager;
     CNSharingProfileAvatarItemProviderConfiguration *_avatarItemProviderConfiguration;
 }
@@ -45,13 +46,15 @@
 @property (nonatomic) int micLayout; // @synthesize micLayout=_micLayout;
 @property (strong, nonatomic) UINavigationController *navigationController; // @synthesize navigationController=_navigationController;
 @property (strong, nonatomic) CKCNSharingProfileOnboardingFlowManager *nicknameFlowManager; // @synthesize nicknameFlowManager=_nicknameFlowManager;
-@property (strong, nonatomic) IMCNMeCardSharingResult *pendingMeCardSharingResult; // @synthesize pendingMeCardSharingResult=_pendingMeCardSharingResult;
+@property (strong, nonatomic) id<IMCNMeCardSharingResult> pendingMeCardSharingResult; // @synthesize pendingMeCardSharingResult=_pendingMeCardSharingResult;
+@property (nonatomic) BOOL presentingFromPrefs; // @synthesize presentingFromPrefs=_presentingFromPrefs;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) IMCloudKitSyncState *syncState; // @synthesize syncState=_syncState;
 
 - (void).cxx_destruct;
 - (void)_beginMOCFlowForState:(id)arg1 rampState:(id)arg2;
 - (void)_beginMiCWelcomeScreen;
+- (void)_fetchMemojiWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (id)_introController;
 - (BOOL)_isRunningTest;
 - (unsigned long long)_meCardSharingAudience;
@@ -64,6 +67,7 @@
 - (void)_onClickMiCNotNow;
 - (void)_onClickMiCOnboard;
 - (void)_presentMemojiCreationIfNeeded:(CDUnknownBlockType)arg1 skipAction:(CDUnknownBlockType)arg2;
+- (void)_pushOnboardingViewController:(id)arg1 animated:(BOOL)arg2;
 - (BOOL)_readyToShowNextScreenWithTimeout:(unsigned long long)arg1;
 - (BOOL)_shouldPresentMiCWelcome;
 - (BOOL)_shouldPresentNewInMessages;
@@ -86,6 +90,7 @@
 - (void)completedOnboardingWithCompletion:(CDUnknownBlockType)arg1;
 - (id)contactForNicknameOnboarding;
 - (void)flowManager:(id)arg1 didFinishWithResult:(id)arg2;
+- (void)flowManagerDidSelectSetupLater:(id)arg1;
 - (void)meCardSharingOnboardingAudienceViewControllerDidFinish:(id)arg1 withSharingAudience:(unsigned long long)arg2;
 - (void)meCardSharingOnboardingEditController:(id)arg1 didFinishWithOnboardingResult:(id)arg2;
 - (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
@@ -94,8 +99,10 @@
 - (unsigned long long)nicknameOnboardingLastShownVersion;
 - (void)prepareForOnboarding;
 - (void)prepareForSuspend;
+- (void)presentFromPrefsPresentationController;
 - (void)presentMemojiSetup;
 - (BOOL)presentNicknameSharingSetupFlow;
+- (BOOL)presentNicknameSharingSetupFlowWithMemoji:(BOOL)arg1;
 - (void)presentOnboarding:(id)arg1;
 - (BOOL)presentOnboardingIfNeeded;
 - (void)pushMemojiCreationStep;
@@ -111,6 +118,7 @@
 - (void)sharingPicker:(id)arg1 didSelectSharingAudience:(unsigned long long)arg2;
 - (void)sharingPickerDidFinish:(id)arg1;
 - (void)startNicknameOnboardingIfNeeded;
+- (void)viewIssues:(id)arg1;
 
 @end
 

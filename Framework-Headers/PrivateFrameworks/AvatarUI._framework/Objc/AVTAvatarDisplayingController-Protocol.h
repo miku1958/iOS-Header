@@ -16,6 +16,7 @@
 - (void)displayAvatarForRecord:(id<AVTAvatarRecord>)arg1 animated:(BOOL)arg2;
 - (id)initWithDataSource:(AVTAvatarRecordDataSource *)arg1 environment:(AVTUIEnvironment *)arg2;
 - (void)prepareToTransitionToVisible:(BOOL)arg1 completionHandler:(CDUnknownBlockType *)arg2;
+- (void)prepareViewWithLayout:(id<AVTViewCarouselLayout>)arg1;
 - (void)reloadData;
 - (void)stopUsingAVTViewSessionSynchronously:(BOOL)arg1 completionHandler:(void (^)(BOOL))arg2;
 - (void)useAVTViewFromSession:(AVTViewSession *)arg1 withLayout:(id<AVTViewCarouselLayout>)arg2;

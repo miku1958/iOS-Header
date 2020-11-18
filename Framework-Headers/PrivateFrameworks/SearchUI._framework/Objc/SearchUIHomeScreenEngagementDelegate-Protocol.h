@@ -10,6 +10,6 @@
 
 @protocol SearchUIHomeScreenEngagementDelegate <NSObject>
 - (void)didEngageResult:(SFSearchResult *)arg1;
-- (void)dismissIfNecessaryForIconDrag;
+- (void)didEngageResult:(SFSearchResult *)arg1 withTriggerEvent:(unsigned long long)arg2 destination:(unsigned long long)arg3;
 @end
 

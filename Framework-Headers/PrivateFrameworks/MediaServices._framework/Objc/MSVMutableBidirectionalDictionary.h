@@ -10,6 +10,9 @@
 {
 }
 
++ (BOOL)supportsSecureCoding;
+- (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)initWithDictionary:(id)arg1;
 - (void)removeAllObjects;
 - (void)removeKeyForObject:(id)arg1;
 - (void)removeObjectForKey:(id)arg1;

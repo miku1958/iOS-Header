@@ -6,7 +6,7 @@
 
 #import <WorkflowKit/NSObject-Protocol.h>
 
-@class NSDictionary, NSMutableDictionary, NSString, WFContentItem, WFParameter;
+@class INStringLocalizer, NSDictionary, NSMutableDictionary, NSString, WFContentItem, WFParameter;
 @protocol WFParameterState;
 
 @protocol WFIntentParameterDescription <NSObject>
@@ -15,12 +15,12 @@
 @property (readonly, nonatomic) Class wf_facadeClass;
 @property (readonly, nonatomic) BOOL wf_multipleValues;
 @property (readonly, nonatomic) Class wf_objectClass;
-@property (readonly, nonatomic) NSString *wf_outputDisplayName;
 @property (readonly, nonatomic) Class wf_parameterClass;
 @property (readonly, nonatomic) NSString *wf_slotName;
 
 - (WFContentItem *)wf_contentItemForValue:(id)arg1;
 - (void)wf_getProcessedIntentValueForParameterValue:(id)arg1 parameter:(WFParameter *)arg2 completionHandler:(void (^)(id, NSError *))arg3;
+- (NSString *)wf_outputDisplayNameWithLocalizer:(INStringLocalizer *)arg1;
 - (id<WFParameterState>)wf_parameterStateForIntentValue:(id)arg1 parameterDefinition:(NSDictionary *)arg2;
 - (id)wf_processedParameterValueForValue:(id)arg1;
 - (void)wf_updateParameterDictionary:(NSMutableDictionary *)arg1 parameterClass:(Class)arg2;

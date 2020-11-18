@@ -19,6 +19,7 @@
 @property (nonatomic) struct CGPoint initialCentroid; // @synthesize initialCentroid=_initialCentroid;
 @property (nonatomic) struct CGPoint translationWithoutScale; // @synthesize translationWithoutScale=_translationWithoutScale;
 
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (long long)type;
 
 @end

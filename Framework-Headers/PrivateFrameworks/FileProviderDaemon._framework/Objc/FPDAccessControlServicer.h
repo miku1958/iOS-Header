@@ -8,25 +8,19 @@
 
 #import <FileProviderDaemon/FPDAccessControlServicing-Protocol.h>
 
-@class FPDAccessControlStore, FPDExtensionManager;
+@class FPDAccessControlStore;
 
 __attribute__((visibility("hidden")))
 @interface FPDAccessControlServicer : NSObject <FPDAccessControlServicing>
 {
-    FPDExtensionManager *_extensionManager;
     FPDAccessControlStore *_accessStore;
 }
 
 @property (weak, nonatomic) FPDAccessControlStore *accessStore; // @synthesize accessStore=_accessStore;
-@property (weak, nonatomic) FPDExtensionManager *extensionManager; // @synthesize extensionManager=_extensionManager;
 
 - (void).cxx_destruct;
-- (id)_lowerToUpperBundleIdentifiers;
-- (void)accessibleItemsForBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)bundleIdentifiersWithAccessToAnyItemCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)fetchEnumeratorForItemsAccessibleByBundleIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (id)initWithExtensionManager:(id)arg1 accessStore:(id)arg2;
-- (void)revokeAccessToAllBundlesCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)initWithAccessStore:(id)arg1;
 - (void)revokeAccessToAllItemsForBundle:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 
 @end

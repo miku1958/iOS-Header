@@ -6,20 +6,25 @@
 
 #import <objc/NSObject.h>
 
-@interface MTLIndirectCommandBufferDescriptor : NSObject
+#import <Metal/NSCopying-Protocol.h>
+
+@interface MTLIndirectCommandBufferDescriptor : NSObject <NSCopying>
 {
+    struct MTLIndirectCommandBufferDescriptorState _state;
 }
 
-@property (nonatomic) unsigned long long commandTypes; // @dynamic commandTypes;
-@property (nonatomic) BOOL inheritBuffers; // @dynamic inheritBuffers;
-@property (nonatomic) BOOL inheritPipelineState; // @dynamic inheritPipelineState;
-@property (nonatomic) unsigned long long maxFragmentBufferBindCount; // @dynamic maxFragmentBufferBindCount;
-@property (nonatomic) unsigned long long maxKernelBufferBindCount; // @dynamic maxKernelBufferBindCount;
-@property (nonatomic) unsigned long long maxVertexBufferBindCount; // @dynamic maxVertexBufferBindCount;
+@property (nonatomic) unsigned long long commandTypes;
+@property (nonatomic) BOOL inheritBuffers;
+@property (nonatomic) BOOL inheritPipelineState;
+@property (nonatomic) unsigned long long maxFragmentBufferBindCount;
+@property (nonatomic) unsigned long long maxKernelBufferBindCount;
+@property (nonatomic) unsigned long long maxVertexBufferBindCount;
+@property (nonatomic) unsigned long long resourceIndex;
 
-+ (id)alloc;
-+ (id)allocWithZone:(struct _NSZone *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (unsigned long long)hash;
+- (id)init;
+- (BOOL)isEqual:(id)arg1;
 
 @end
 

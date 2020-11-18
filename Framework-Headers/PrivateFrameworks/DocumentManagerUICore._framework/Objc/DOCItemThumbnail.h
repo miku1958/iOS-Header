@@ -55,6 +55,7 @@
 - (void)_fetchThumbnailWithOptions:(unsigned long long)arg1;
 - (void)_notifyListeners;
 - (void)addListener:(id)arg1;
+- (id)averageColorInRect:(struct CGRect)arg1;
 - (void)fetchWithOptions:(unsigned long long)arg1;
 - (id)initWithGenerator:(id)arg1 item:(id)arg2 descriptor:(id)arg3 fallback:(id)arg4;
 - (BOOL)registerGenerationCompletionHandler:(CDUnknownBlockType)arg1;

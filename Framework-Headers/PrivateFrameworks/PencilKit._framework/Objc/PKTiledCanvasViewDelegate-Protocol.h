@@ -6,25 +6,31 @@
 
 #import <PencilKit/NSObject-Protocol.h>
 
-@class NSArray, PKDrawing, PKStroke, PKTiledCanvasView, PKUndoCommand, UITouch;
+@class NSArray, PKDrawing, PKInk, PKStroke, PKTiledCanvasView, UITouch, UIView;
 
 @protocol PKTiledCanvasViewDelegate <NSObject>
 
 @optional
-- (void)_canvasView:(PKTiledCanvasView *)arg1 didFinishRenderingStrokeOnRenderQueue:(PKStroke *)arg2 inDrawing:(PKDrawing *)arg3;
-- (void)_canvasView:(PKTiledCanvasView *)arg1 showEditMenuFromLocation:(struct CGPoint)arg2;
+- (void)_canvasView:(PKTiledCanvasView *)arg1 didFinishRenderingStrokesOnRenderQueue:(NSArray *)arg2 inDrawing:(PKDrawing *)arg3;
 - (void)_canvasViewDidEraseStrokes:(NSArray *)arg1;
 - (void)_canvasViewWillBeginDrawing:(PKTiledCanvasView *)arg1;
 - (void)canvasView:(PKTiledCanvasView *)arg1 beganStroke:(PKStroke *)arg2;
 - (void)canvasView:(PKTiledCanvasView *)arg1 cancelledStroke:(PKStroke *)arg2;
+- (void)canvasView:(PKTiledCanvasView *)arg1 didPresentWithCanvasOffset:(struct CGPoint)arg2;
 - (void)canvasView:(PKTiledCanvasView *)arg1 drawingDidChange:(PKDrawing *)arg2;
 - (void)canvasView:(PKTiledCanvasView *)arg1 endedStroke:(PKStroke *)arg2;
-- (void)canvasView:(PKTiledCanvasView *)arg1 registerUndoCommand:(PKUndoCommand *)arg2;
+- (PKInk *)canvasView:(PKTiledCanvasView *)arg1 inkForStroke:(PKStroke *)arg2;
+- (void)canvasView:(PKTiledCanvasView *)arg1 registerUndoCommands:(NSArray *)arg2;
 - (BOOL)canvasView:(PKTiledCanvasView *)arg1 shouldBeginDrawingWithTouch:(UITouch *)arg2;
 - (void)canvasViewDidBeginDrawing:(PKTiledCanvasView *)arg1;
 - (void)canvasViewDidEndDrawing:(PKTiledCanvasView *)arg1;
 - (void)canvasViewDidFinishAnimatingStrokes:(PKTiledCanvasView *)arg1;
-- (void)canvasViewDrawingMoved:(PKTiledCanvasView *)arg1;
+- (void)canvasViewDrawingMoved:(PKTiledCanvasView *)arg1 withTouch:(UITouch *)arg2;
+- (void)canvasViewHasVisibleStrokesChanged:(PKTiledCanvasView *)arg1;
+- (void)canvasViewInvalidateTiles:(PKTiledCanvasView *)arg1;
+- (BOOL)canvasViewShouldDisableShapeRecognition:(PKTiledCanvasView *)arg1;
+- (UIView *)canvasViewTouchView:(PKTiledCanvasView *)arg1;
 - (void)canvasViewWillBeginNewStroke:(PKTiledCanvasView *)arg1 withTouch:(UITouch *)arg2;
+- (void)replayCanvasViewDrawingMoved:(PKTiledCanvasView *)arg1 inputPoint:(CDStruct_6422aa5d)arg2;
 @end
 

@@ -6,24 +6,24 @@
 
 #import <objc/NSObject.h>
 
-#import <CloudKit/CKRecordKeyValueSetting-Protocol.h>
+#import <CloudKit/CKContainerAssignment-Protocol.h>
 #import <CloudKit/NSCopying-Protocol.h>
 #import <CloudKit/NSSecureCoding-Protocol.h>
 
 @class CKContainerID, CKEncryptedData, CKEncryptedRecordValueStore, CKRecordID, CKRecordValueStore, CKReference, NSArray, NSData, NSDate, NSDictionary, NSSet, NSString, NSURL;
 @protocol CKRecordKeyValueSetting;
 
-@interface CKRecord : NSObject <CKRecordKeyValueSetting, NSSecureCoding, NSCopying>
+@interface CKRecord : NSObject <CKContainerAssignment, NSSecureCoding, NSCopying>
 {
+    BOOL _serializeProtectionData;
     BOOL _hasUpdatedShare;
     BOOL _hasUpdatedParent;
-    BOOL _trackChanges;
     BOOL _knownToServer;
     BOOL _wasCached;
-    BOOL _serializeProtectionData;
-    BOOL _wantsPublicSharingKey;
     BOOL _wantsChainPCS;
     BOOL _useLightweightPCS;
+    BOOL _wantsPublicSharingKey;
+    BOOL _trackChanges;
     NSString *_recordType;
     CKRecordID *_recordID;
     CKRecordID *_creatorUserRecordID;
@@ -33,6 +33,14 @@
     CKReference *_share;
     CKReference *_parent;
     CKContainerID *_containerID;
+    NSData *_zoneishKeyID;
+    NSString *_previousProtectionEtag;
+    NSString *_protectionEtag;
+    NSString *_zoneProtectionEtag;
+    NSString *_shareEtag;
+    NSString *_previousProtectionEtagFromUnitTest;
+    NSData *_pcsKeyID;
+    NSArray *_allPCSKeyIDs;
     CKReference *_previousShare;
     CKReference *_previousParent;
     CKEncryptedData *_chainPrivateKey;
@@ -41,48 +49,40 @@
     NSData *_chainParentPublicKeyID;
     NSArray *_tombstonedPublicKeyIDs;
     NSURL *_mutableURL;
-    CKRecordValueStore *_valueStore;
-    CKEncryptedRecordValueStore *_encryptedValueStore;
-    NSString *_modifiedByDevice;
+    long long _permission;
+    NSDictionary *_pluginFields;
     NSString *_etag;
     NSArray *_conflictLoserEtags;
-    NSData *_zoneishKeyID;
+    NSString *_modifiedByDevice;
     NSData *_protectionData;
-    NSString *_previousProtectionEtag;
-    NSString *_protectionEtag;
-    NSString *_zoneProtectionEtag;
-    NSString *_shareEtag;
     NSString *_routingKey;
     NSString *_baseToken;
     NSString *_displayedHostname;
-    long long _permission;
-    NSDictionary *_pluginFields;
-    NSString *_previousProtectionEtagFromUnitTest;
-    NSData *_pcsKeyID;
+    CKRecordValueStore *_valueStore;
+    CKEncryptedRecordValueStore *_encryptedValueStore;
 }
 
 @property (readonly, copy, nonatomic) NSURL *URL;
+@property (strong, nonatomic) NSArray *allPCSKeyIDs; // @synthesize allPCSKeyIDs=_allPCSKeyIDs;
 @property (readonly, nonatomic) unsigned long long assetCount;
 @property (readonly, nonatomic) unsigned long long assetDiskSize;
-@property (strong, nonatomic) NSString *baseToken; // @synthesize baseToken=_baseToken;
+@property (copy, nonatomic) NSString *baseToken; // @synthesize baseToken=_baseToken;
 @property (strong, nonatomic) NSData *chainParentPublicKeyID; // @synthesize chainParentPublicKeyID=_chainParentPublicKeyID;
 @property (strong, nonatomic) CKEncryptedData *chainPrivateKey; // @synthesize chainPrivateKey=_chainPrivateKey;
 @property (strong, nonatomic) NSData *chainProtectionInfo; // @synthesize chainProtectionInfo=_chainProtectionInfo;
-@property (strong, nonatomic) NSSet *changedKeysSet;
-@property (strong, nonatomic) NSArray *conflictLoserEtags; // @synthesize conflictLoserEtags=_conflictLoserEtags;
+@property (copy, nonatomic) NSSet *changedKeysSet;
+@property (copy, nonatomic) NSArray *conflictLoserEtags; // @synthesize conflictLoserEtags=_conflictLoserEtags;
 @property (copy, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property (readonly, nonatomic) BOOL containsAssetValues;
 @property (readonly, nonatomic) BOOL containsPackageValues;
 @property (copy, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (copy, nonatomic) CKRecordID *creatorUserRecordID; // @synthesize creatorUserRecordID=_creatorUserRecordID;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *displayedHostname; // @synthesize displayedHostname=_displayedHostname;
 @property (readonly, nonatomic) NSData *encryptedFullTokenData;
-@property (readonly, nonatomic) NSData *encryptedPublicSharingKey;
-@property (strong, nonatomic) CKEncryptedRecordValueStore *encryptedValueStore; // @synthesize encryptedValueStore=_encryptedValueStore;
-@property (readonly, nonatomic) id<CKRecordKeyValueSetting> encryptedValuesByKey;
-@property (strong, nonatomic) NSString *etag; // @synthesize etag=_etag;
+@property (readonly, copy, nonatomic) NSData *encryptedPublicSharingKey;
+@property (copy, nonatomic) CKEncryptedRecordValueStore *encryptedValueStore; // @synthesize encryptedValueStore=_encryptedValueStore;
+@property (readonly, copy, nonatomic) id<CKRecordKeyValueSetting> encryptedValuesByKey;
+@property (copy, nonatomic) NSString *etag; // @synthesize etag=_etag;
 @property (readonly, nonatomic) NSString *fullToken;
 @property (readonly, nonatomic) BOOL hasChainPCS;
 @property (readonly, nonatomic) BOOL hasEncryptedData;
@@ -92,16 +92,15 @@
 @property (readonly, nonatomic) BOOL hasPropertiesRequiringEncryption;
 @property (nonatomic) BOOL hasUpdatedParent; // @synthesize hasUpdatedParent=_hasUpdatedParent;
 @property (nonatomic) BOOL hasUpdatedShare; // @synthesize hasUpdatedShare=_hasUpdatedShare;
-@property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isKnownToServer) BOOL knownToServer; // @synthesize knownToServer=_knownToServer;
 @property (copy, nonatomic) CKRecordID *lastModifiedUserRecordID; // @synthesize lastModifiedUserRecordID=_lastModifiedUserRecordID;
 @property (copy, nonatomic) NSDate *modificationDate; // @synthesize modificationDate=_modificationDate;
 @property (copy, nonatomic) NSString *modifiedByDevice; // @synthesize modifiedByDevice=_modifiedByDevice;
 @property (strong, nonatomic) CKEncryptedData *mutableEncryptedPSK; // @synthesize mutableEncryptedPSK=_mutableEncryptedPSK;
-@property (strong, nonatomic) CKEncryptedData *mutableEncryptedPublicSharingKey;
-@property (strong, nonatomic) NSData *mutableEncryptedPublicSharingKeyData;
+@property (copy, nonatomic) CKEncryptedData *mutableEncryptedPublicSharingKey;
+@property (copy, nonatomic) NSData *mutableEncryptedPublicSharingKeyData;
 @property (copy, nonatomic) NSURL *mutableURL; // @synthesize mutableURL=_mutableURL;
-@property (readonly, nonatomic) NSDictionary *originalValues;
+@property (readonly, copy, nonatomic) NSDictionary *originalValues;
 @property (copy, nonatomic) CKReference *parent; // @synthesize parent=_parent;
 @property (strong, nonatomic) NSData *pcsKeyID; // @synthesize pcsKeyID=_pcsKeyID;
 @property long long permission; // @synthesize permission=_permission;
@@ -111,27 +110,26 @@
 @property (strong, nonatomic) NSString *previousProtectionEtagFromUnitTest; // @synthesize previousProtectionEtagFromUnitTest=_previousProtectionEtagFromUnitTest;
 @property (strong, nonatomic) CKReference *previousShare; // @synthesize previousShare=_previousShare;
 @property (readonly, nonatomic) NSString *privateToken;
-@property (strong, nonatomic) NSData *protectionData; // @synthesize protectionData=_protectionData;
+@property (copy, nonatomic) NSData *protectionData; // @synthesize protectionData=_protectionData;
 @property (strong, nonatomic) NSString *protectionEtag; // @synthesize protectionEtag=_protectionEtag;
 @property (readonly, copy, nonatomic) NSString *recordChangeTag;
 @property (copy, nonatomic) CKRecordID *recordID; // @synthesize recordID=_recordID;
-@property (copy, nonatomic) NSString *recordType; // @synthesize recordType=_recordType;
-@property (strong, nonatomic) NSString *routingKey; // @synthesize routingKey=_routingKey;
+@property (readonly, copy, nonatomic) NSString *recordType; // @synthesize recordType=_recordType;
+@property (copy, nonatomic) NSString *routingKey; // @synthesize routingKey=_routingKey;
 @property (nonatomic) BOOL serializeProtectionData; // @synthesize serializeProtectionData=_serializeProtectionData;
 @property (copy, nonatomic) CKReference *share; // @synthesize share=_share;
 @property (strong, nonatomic) NSString *shareEtag; // @synthesize shareEtag=_shareEtag;
 @property (readonly, nonatomic) NSData *shortSharingTokenData;
 @property (readonly, nonatomic) NSData *shortSharingTokenHashData;
-@property (readonly, nonatomic) NSString *shortToken;
+@property (readonly, copy, nonatomic) NSString *shortToken;
 @property (readonly, nonatomic) unsigned long long size;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) NSArray *tombstonedPublicKeyIDs; // @synthesize tombstonedPublicKeyIDs=_tombstonedPublicKeyIDs;
 @property (nonatomic) BOOL trackChanges; // @synthesize trackChanges=_trackChanges;
-@property (readonly, nonatomic) NSURL *uncachedURL;
+@property (readonly, copy, nonatomic) NSURL *uncachedURL;
 @property (nonatomic) BOOL useLightweightPCS; // @synthesize useLightweightPCS=_useLightweightPCS;
-@property (strong, nonatomic) CKRecordValueStore *valueStore; // @synthesize valueStore=_valueStore;
-@property (readonly, nonatomic) NSDictionary *values;
-@property (readonly, nonatomic) id<CKRecordKeyValueSetting> valuesByKey;
+@property (copy, nonatomic) CKRecordValueStore *valueStore; // @synthesize valueStore=_valueStore;
+@property (readonly, copy, nonatomic) NSDictionary *values;
+@property (readonly, copy, nonatomic) id<CKRecordKeyValueSetting> valuesByKey;
 @property (nonatomic) BOOL wantsChainPCS; // @synthesize wantsChainPCS=_wantsChainPCS;
 @property (nonatomic) BOOL wantsPublicSharingKey; // @synthesize wantsPublicSharingKey=_wantsPublicSharingKey;
 @property (nonatomic) BOOL wasCached; // @synthesize wasCached=_wasCached;
@@ -168,16 +166,20 @@
 - (void)claimPackagesWithSuccessBlock:(CDUnknownBlockType)arg1 failureBlock:(CDUnknownBlockType)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (id)copyWithOriginalValues;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)debugDescription;
 - (id)decryptFullToken:(id)arg1;
+- (id)description;
 - (void)encodeSystemFieldsWithCoder:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithRecordTransport:(id)arg1;
 - (id)initWithRecordType:(id)arg1;
 - (id)initWithRecordType:(id)arg1 recordID:(id)arg2;
 - (id)initWithRecordType:(id)arg1 zoneID:(id)arg2;
 - (id)objectForKey:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
+- (void)preTiboEncodeWithCoder:(id)arg1;
 - (void)releasePackages;
 - (void)removePackages;
 - (void)resetChangedKeys;
@@ -187,6 +189,7 @@
 - (void)setObjectNoValidate:(id)arg1 forKey:(id)arg2;
 - (void)setParentReferenceFromRecord:(id)arg1;
 - (void)setParentReferenceFromRecordID:(id)arg1;
+- (void)setRecordType:(id)arg1;
 - (void)setStreamingAssetRequestOptions:(id)arg1;
 - (void)setValue:(id)arg1 forKey:(id)arg2;
 - (id)shortSharingToken;

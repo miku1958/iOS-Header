@@ -6,24 +6,23 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableSet, NSSet, NSString;
+@class NSMutableSet, NSString;
 
 @interface SXComponentNode : NSObject
 {
     NSString *_componentIdentifier;
     long long _attribute;
     NSMutableSet *_mutableDependencies;
+    NSMutableSet *_toPositionDependencies;
+    NSMutableSet *_toSizeDependencies;
 }
 
-@property (readonly, nonatomic) long long attribute; // @synthesize attribute=_attribute;
-@property (readonly, nonatomic) NSString *componentIdentifier; // @synthesize componentIdentifier=_componentIdentifier;
-@property (readonly, nonatomic) NSSet *dependencies;
 @property (strong, nonatomic) NSMutableSet *mutableDependencies; // @synthesize mutableDependencies=_mutableDependencies;
+@property (readonly, nonatomic) NSMutableSet *toPositionDependencies; // @synthesize toPositionDependencies=_toPositionDependencies;
+@property (readonly, nonatomic) NSMutableSet *toSizeDependencies; // @synthesize toSizeDependencies=_toSizeDependencies;
 
 - (void).cxx_destruct;
-- (void)addComponentDependency:(id)arg1;
 - (id)description;
-- (BOOL)hasDependencyToComponentIdentifier:(id)arg1 attribute:(long long)arg2;
 - (unsigned long long)hash;
 - (id)initWithComponentIdentifier:(id)arg1 andAttribute:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;

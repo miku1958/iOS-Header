@@ -17,10 +17,12 @@ __attribute__((visibility("hidden")))
     unsigned long long _basemapId;
     GEOLatLng *_center;
     unsigned long long _muid;
+    int _mapsResultType;
     int _resultProviderId;
     struct {
         unsigned int has_basemapId:1;
         unsigned int has_muid:1;
+        unsigned int has_mapsResultType:1;
         unsigned int has_resultProviderId:1;
     } _flags;
 }
@@ -29,21 +31,28 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOLatLng *center;
 @property (nonatomic) BOOL hasBasemapId;
 @property (readonly, nonatomic) BOOL hasCenter;
+@property (nonatomic) BOOL hasMapsResultType;
 @property (nonatomic) BOOL hasMuid;
 @property (nonatomic) BOOL hasResultProviderId;
+@property (nonatomic) int mapsResultType;
 @property (nonatomic) unsigned long long muid;
 @property (nonatomic) int resultProviderId;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
+- (int)StringAsMapsResultType:(id)arg1;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
+- (id)mapsResultTypeAsString:(int)arg1;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

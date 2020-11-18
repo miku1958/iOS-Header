@@ -29,10 +29,10 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *type;
 
++ (id)makeDataItem:(id)arg1:(id)arg2;
 - (void).cxx_destruct;
 - (id)asPrivateIKJSDataItem;
 - (id)init;
-- (id)initConstructor:(id)arg1:(id)arg2;
 - (id)initWithType:(id)arg1;
 - (id)initWithType:(id)arg1 identifier:(id)arg2;
 - (id)initWithValue:(id)arg1;

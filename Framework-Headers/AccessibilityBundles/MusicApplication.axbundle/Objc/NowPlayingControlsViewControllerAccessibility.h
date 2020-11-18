@@ -13,15 +13,12 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
-- (id)_accessibilityLeftButtonLabelString;
 - (id)_accessibilityLeftbuttonValueString;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)_accessibilityPlayPauseButtonString;
 - (void)_axAudioRouteNameCommandChanged:(id)arg1;
 - (id)_axLikedBannedValueForState:(long long)arg1;
 - (void)_axLikedStateCommandChanged:(id)arg1;
 - (void)_axMediaRemoteCommandChanged:(id)arg1;
-- (id)_axTrackList;
 - (id)_axUpNextBadgeValue;
 - (BOOL)accessibilityPerformEscape;
 - (BOOL)axAudioRouteNotificationRegistered;
@@ -30,6 +27,7 @@
 - (void)axSetAudioRouteNotificationRegistered:(BOOL)arg1;
 - (void)axSetLikedStateNotificationRegistered:(BOOL)arg1;
 - (void)axSetMediaCommandNotificationRegistered:(BOOL)arg1;
+- (void)setControlsHidden:(BOOL)arg1 animator:(id)arg2;
 - (void)viewDidLoad;
 
 @end

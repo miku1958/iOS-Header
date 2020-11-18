@@ -35,13 +35,14 @@
 @property (strong, nonatomic) UICollectionViewLayoutAttributes *titleSupplementaryAttr; // @synthesize titleSupplementaryAttr=_titleSupplementaryAttr;
 
 - (void).cxx_destruct;
-- (double)_avatarBoundWidth;
-- (double)_avatarBoundWidthLayoutMode:(unsigned long long)arg1;
 - (BOOL)_canShowShadowClipping;
 - (unsigned long long)_itemCount;
 - (void)_setupBannerLayout;
-- (void)_setupPancakeLayout;
+- (void)_setupDefaultLayout;
 - (BOOL)_shouldShowContactNames;
+- (BOOL)_shouldShowCutouts;
+- (BOOL)_shouldShowTitle;
+- (BOOL)_usesGroupAvatar;
 - (struct CGSize)collectionViewContentSize;
 - (id)finalLayoutAttributesForDisappearingDecorationElementOfKind:(id)arg1 atIndexPath:(id)arg2;
 - (id)finalLayoutAttributesForDisappearingItemAtIndexPath:(id)arg1;
@@ -58,6 +59,7 @@
 - (id)nameLayoutAttributesCollectionAtPoint:(struct CGPoint)arg1;
 - (void)prepareLayout;
 - (BOOL)shouldInvalidateLayoutForBoundsChange:(struct CGRect)arg1;
+- (BOOL)wantsChromelessAppearance;
 
 @end
 

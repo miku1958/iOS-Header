@@ -8,15 +8,15 @@
 
 #import <SpringBoard/SPUIRemoteSearchViewDelegate-Protocol.h>
 
-@class NSString;
-@protocol SBMultiplexedSpotlightDelegate;
+@class NSMutableDictionary, NSString;
 
 @interface SBSpotlightDelegateManager : NSObject <SPUIRemoteSearchViewDelegate>
 {
-    id<SBMultiplexedSpotlightDelegate> _delegates[3];
+    NSMutableDictionary *_delegatesForLevel;
 }
 
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) NSMutableDictionary *delegatesForLevel; // @synthesize delegatesForLevel=_delegatesForLevel;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -25,9 +25,9 @@
 - (void).cxx_destruct;
 - (void)_modifyDelegatesWithBlock:(CDUnknownBlockType)arg1;
 - (id)activeDelegate;
+- (void)addSpotlightDelegate:(id)arg1 forLevel:(unsigned long long)arg2;
 - (void)dismissSearchView;
-- (void)removeSpotlightDelegateForLevel:(unsigned long long)arg1;
-- (void)setSpotlightDelegate:(id)arg1 forLevel:(unsigned long long)arg2;
+- (void)removeSpotlightDelegate:(id)arg1 forLevel:(unsigned long long)arg2;
 
 @end
 

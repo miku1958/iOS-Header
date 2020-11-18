@@ -6,13 +6,14 @@
 
 #import <SpringBoard/SBApplicationSceneView.h>
 
+#import <SpringBoard/PTSettingsKeyObserver-Protocol.h>
 #import <SpringBoard/SBAppSwitcherPageContentView-Protocol.h>
 #import <SpringBoard/SBDeviceApplicationSceneClassicAccessoryViewDelegate-Protocol.h>
 
-@class NSString, SBApplicationSceneViewStatusBarDescriptor, SBDeviceApplicationSceneClassicAccessoryView, SBDeviceApplicationSceneHandle, SBFHomeGrabberSettings, SBHomeGrabberRotationView, SBHomeGrabberView, SBSceneHandleBlockObserver, UIApplicationSceneClientSettingsDiffInspector, UIApplicationSceneSettingsDiffInspector, UIView, _UIDirectionalRotationView;
+@class NSMutableArray, NSMutableDictionary, NSString, SBApplicationSceneViewStatusBarDescriptor, SBDeviceApplicationSceneClassicAccessoryView, SBDeviceApplicationSceneHandle, SBFHomeGrabberSettings, SBHomeGrabberRotationView, SBHomeGrabberView, SBSceneHandleBlockObserver, UIApplicationSceneClientSettingsDiffInspector, UIApplicationSceneSettingsDiffInspector, UIView, _UIDirectionalRotationView;
 @protocol SBApplicationSceneBackgroundView, UISceneLayerTarget, UIScenePresentation;
 
-@interface SBDeviceApplicationSceneView : SBApplicationSceneView <SBDeviceApplicationSceneClassicAccessoryViewDelegate, SBAppSwitcherPageContentView>
+@interface SBDeviceApplicationSceneView : SBApplicationSceneView <SBDeviceApplicationSceneClassicAccessoryViewDelegate, PTSettingsKeyObserver, SBAppSwitcherPageContentView>
 {
     id<UISceneLayerTarget> _statusBarLayerTarget;
     SBSceneHandleBlockObserver *_sceneHandleObserver;
@@ -22,20 +23,23 @@
     _UIDirectionalRotationView *_hostCounterRotationView;
     SBHomeGrabberRotationView *_grabberRotationView;
     SBFHomeGrabberSettings *_grabberSettings;
+    BOOL _grabberLivesInCounterRotationView;
+    NSMutableDictionary *_overlayViewsByPriority;
     long long _lastStableOverlayOrientation;
+    BOOL _waitingForBoundsUpdateDuringRotation;
+    long long _overlayOrientationAtStartOfRotation;
     SBDeviceApplicationSceneClassicAccessoryView *_classicAccessoryView;
     UIView *_classicWrapperView;
     UIView *_classicPositioningView;
     UIView<UIScenePresentation> *_wrappedHostView;
+    NSMutableArray *_multitaskingExclusionRectDebugViews;
     BOOL _active;
     BOOL _visible;
     BOOL _counterRotationViewTransformUpdatesPaused;
     double _statusBarAlpha;
-    UIView *_appOverlayView;
 }
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
-@property (strong, nonatomic) UIView *appOverlayView; // @synthesize appOverlayView=_appOverlayView;
 @property (strong, nonatomic) UIView<SBApplicationSceneBackgroundView> *backgroundView; // @dynamic backgroundView;
 @property (readonly, nonatomic) BOOL contentRequiresGroupOpacity;
 @property (nonatomic) double cornerRadius;
@@ -72,10 +76,12 @@
 - (void)_sceneHandleDidUpdateSettingsWithDiff:(id)arg1 previousSettings:(id)arg2;
 - (void)_tearDownHostCounterRotationViewIfNecessary;
 - (id)_transitionViewForHostView;
+- (void)_updateDragAndDropExclusionDebugViewsIfNecessary;
 - (void)_updateEdgeProtectAndAutoHideOnHomeGrabberView;
 - (void)_updateReferenceSize:(struct CGSize)arg1 andOrientation:(long long)arg2;
 - (void)_updateStatusBarVisibilityForHostView;
 - (long long)_wallpaperStyle;
+- (void)addOverlayView:(id)arg1 withPriority:(long long)arg2;
 - (void)applicationSceneCompatibilityModeAnimatingChangeTo:(long long)arg1;
 - (void)createClassicAccesoryViewIfNecessary;
 - (void)createHomeGrabberViewIfNecessaryWithSettings:(id)arg1;
@@ -84,6 +90,9 @@
 - (id)initWithSceneHandle:(id)arg1 referenceSize:(struct CGSize)arg2 orientation:(long long)arg3 hostRequester:(id)arg4;
 - (void)invalidate;
 - (void)layoutSubviews;
+- (void)removeOverlayView:(id)arg1 withPriority:(long long)arg2;
+- (void)setBounds:(struct CGRect)arg1;
+- (void)settings:(id)arg1 changedValueForKey:(id)arg2;
 - (void)tearDownHomeGrabberView;
 - (void)teardownClassicAccesoryViewIfNecessary;
 

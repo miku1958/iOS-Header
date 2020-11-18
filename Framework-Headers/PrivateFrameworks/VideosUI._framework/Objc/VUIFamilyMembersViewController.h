@@ -7,13 +7,14 @@
 #import <UIKit/UIViewController.h>
 
 #import <VideosUI/UICollectionViewDelegate-Protocol.h>
+#import <VideosUI/VUICollectionViewDelegate-Protocol.h>
 #import <VideosUI/VUILibraryDataSourceDelegate-Protocol.h>
 
 @class NSDictionary, NSString, UICollectionViewDiffableDataSource, VUICollectionView, VUIFamilyMemberCell, VUILibraryFamilyMembersDataSource, VUIViewControllerContentPresenter;
 @protocol VUIFamilyMembersViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface VUIFamilyMembersViewController : UIViewController <VUILibraryDataSourceDelegate, UICollectionViewDelegate>
+@interface VUIFamilyMembersViewController : UIViewController <VUILibraryDataSourceDelegate, UICollectionViewDelegate, VUICollectionViewDelegate>
 {
     BOOL _requiresRelayout;
     id<VUIFamilyMembersViewControllerDelegate> _delegate;
@@ -52,7 +53,7 @@ __attribute__((visibility("hidden")))
 - (id)_generateFamilyMemberHashToFamilyMemberDictionaryForFamilyMembers:(id)arg1;
 - (id)_getFamilyMemberIdentifiersFromFamilyMembers;
 - (void)_updateCurrentViewIfNeeded;
-- (void)_updateLayout;
+- (void)_updateLayoutForSize:(struct CGSize)arg1;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (double)collectionView:(id)arg1 layout:(id)arg2 minimumLineSpacingForSectionAtIndex:(long long)arg3;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;

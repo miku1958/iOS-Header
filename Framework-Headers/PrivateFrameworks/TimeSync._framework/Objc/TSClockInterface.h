@@ -33,7 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (void)didChangeClockMasterForClock:(id)arg1;
 - (void)didChangeLocalPortWithGrandmasterID:(unsigned long long)arg1 localPort:(unsigned short)arg2 forClock:(id)arg3;
 - (void)didChangeLockStateTo:(int)arg1 forClock:(id)arg2;

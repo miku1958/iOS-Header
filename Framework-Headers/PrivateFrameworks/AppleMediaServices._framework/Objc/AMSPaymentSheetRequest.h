@@ -6,15 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, AMSBiometricsSignatureRequest, NSArray, NSAttributedString, NSNumber, NSString, NSURL;
+@class ACAccount, AMSBiometricsSignatureRequest, NSArray, NSAttributedString, NSDictionary, NSNumber, NSString, NSURL;
 
 __attribute__((visibility("hidden")))
 @interface AMSPaymentSheetRequest : NSObject
 {
+    BOOL _applePayClassic;
     BOOL _requiresAuthorization;
     BOOL _shouldUppercaseText;
     ACAccount *_account;
     NSString *_accountHeader;
+    NSArray *_attributedList;
     AMSBiometricsSignatureRequest *_biometricsRequest;
     long long _confirmationTitle;
     NSString *_currencyCode;
@@ -24,6 +26,7 @@ __attribute__((visibility("hidden")))
     NSArray *_flexList;
     NSArray *_inlineImages;
     NSString *_logKey;
+    NSDictionary *_merchantSession;
     NSString *_message;
     long long _payee;
     NSString *_paymentSession;
@@ -46,6 +49,8 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSString *accountHeader; // @synthesize accountHeader=_accountHeader;
 @property (readonly, nonatomic) unsigned long long ams_confirmationStyle;
 @property (readonly, nonatomic) unsigned long long ams_paymentRequestorType;
+@property (nonatomic, getter=isApplePayClassic) BOOL applePayClassic; // @synthesize applePayClassic=_applePayClassic;
+@property (copy, nonatomic) NSArray *attributedList; // @synthesize attributedList=_attributedList;
 @property (strong, nonatomic) AMSBiometricsSignatureRequest *biometricsRequest; // @synthesize biometricsRequest=_biometricsRequest;
 @property (nonatomic) long long confirmationTitle; // @synthesize confirmationTitle=_confirmationTitle;
 @property (copy, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
@@ -55,6 +60,7 @@ __attribute__((visibility("hidden")))
 @property (copy, nonatomic) NSArray *flexList; // @synthesize flexList=_flexList;
 @property (strong, nonatomic) NSArray *inlineImages; // @synthesize inlineImages=_inlineImages;
 @property (strong, nonatomic) NSString *logKey; // @synthesize logKey=_logKey;
+@property (copy, nonatomic) NSDictionary *merchantSession; // @synthesize merchantSession=_merchantSession;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (nonatomic) long long payee; // @synthesize payee=_payee;
 @property (copy, nonatomic) NSString *paymentSession; // @synthesize paymentSession=_paymentSession;
@@ -90,12 +96,14 @@ __attribute__((visibility("hidden")))
 - (long long)_imageTypeForURL:(id)arg1;
 - (id)_removeAllImagePlaceholderTags:(id)arg1;
 - (id)_replaceImagePlaceholderTagWithImageData:(id)arg1 tag:(id)arg2 data:(id)arg3 scale:(float)arg4 tint:(BOOL)arg5;
+- (id)_summaryItemsForAttributedList:(id)arg1 cache:(id)arg2 bag:(id)arg3;
 - (id)ams_createContentItemForAccount;
 - (id)ams_createContentItemForRating;
 - (id)ams_createContentItemForSalableInfoWithCache:(id)arg1 bag:(id)arg2;
 - (id)ams_createContentItemsForFlexibleListWithCache:(id)arg1 bag:(id)arg2;
 - (id)ams_createContentItemsForPreScreenDialogWithCache:(id)arg1 bag:(id)arg2;
 - (id)ams_createSummaryItems;
+- (id)ams_createSummaryItemsForAttributedListWithCache:(id)arg1 bag:(id)arg2;
 
 @end
 

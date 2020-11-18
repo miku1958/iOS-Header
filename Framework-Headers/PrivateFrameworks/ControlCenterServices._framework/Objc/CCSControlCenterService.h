@@ -19,7 +19,10 @@
 - (void)getEnabledStateOfModuleWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)presentModuleWithIdentifier:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)requestAvailableModuleIdentifiersWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestDisableModuleWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)requestEnableModuleWithIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)requestEnableModuleWithIdentifier:(id)arg1 force:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)setVisibility:(BOOL)arg1 forModuleWithIdentifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

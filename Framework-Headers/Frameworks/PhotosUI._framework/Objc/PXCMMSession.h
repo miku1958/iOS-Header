@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXTapToRadar-Protocol.h>
 
-@class NSDictionary, NSSet, NSString, PXAssetsDataSourceManager, PXCMMActionManager, PXCMMPeopleSuggestionsDataSourceManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMSendBackSuggestionSource, PXCMMViewModel, PXUIMediaProvider;
+@class NSDictionary, NSSet, NSString, PXAssetsDataSourceManager, PXCMMActionManager, PXCMMPeopleSuggestionsDataSourceManager, PXCMMPeopleSuggestionsMediaProvider, PXCMMSendBackSuggestionSource, PXCMMViewModel, PXMomentShareStatus, PXUIMediaProvider;
 @protocol PXAssetImportStatusManager;
 
 @interface PXCMMSession : NSObject <PXTapToRadar>
@@ -27,6 +27,8 @@
     unsigned long long _sourceType;
     NSDictionary *_preparationOptionsPerAsset;
     PXCMMViewModel *_viewModel;
+    NSString *_importSessionID;
+    PXMomentShareStatus *_momentShareStatus;
     double _ppt_delay;
 }
 
@@ -38,8 +40,10 @@
 @property (readonly, nonatomic) NSDictionary *diagnosticDictionary;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL hideActionMenu; // @synthesize hideActionMenu=_hideActionMenu;
+@property (readonly, nonatomic) NSString *importSessionID; // @synthesize importSessionID=_importSessionID;
 @property (readonly, nonatomic) id<PXAssetImportStatusManager> importStatusManager;
 @property (readonly, nonatomic) PXUIMediaProvider *mediaProvider; // @synthesize mediaProvider=_mediaProvider;
+@property (readonly, nonatomic) PXMomentShareStatus *momentShareStatus; // @synthesize momentShareStatus=_momentShareStatus;
 @property (readonly, nonatomic) NSSet *notificationSuppressionContexts;
 @property (readonly, nonatomic) PXCMMPeopleSuggestionsDataSourceManager *peopleSuggestionsDataSourceManager; // @synthesize peopleSuggestionsDataSourceManager=_peopleSuggestionsDataSourceManager;
 @property (readonly, nonatomic) PXCMMPeopleSuggestionsMediaProvider *peopleSuggestionsMediaProvider; // @synthesize peopleSuggestionsMediaProvider=_peopleSuggestionsMediaProvider;

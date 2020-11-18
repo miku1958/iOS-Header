@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (id)clientZonesChildrenNeedingSyncUpAreIn;
 - (BOOL)containsFault;
 - (BOOL)containsOverQuotaItems;
+- (BOOL)containsPendingDeleteDocuments;
 - (BOOL)containsPendingDownload;
 - (BOOL)containsPendingUploadOrSyncUp;
 - (unsigned long long)diffAgainstServerItem:(id)arg1;
@@ -52,6 +53,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)isDirectory;
 - (BOOL)isDirectoryWithPackageName;
 - (BOOL)isShareableItem;
+- (BOOL)isSharedByMeOrContainsSharedByMeItem;
+- (BOOL)isSharedToMeOrContainsSharedToMeItem;
 - (BOOL)markChildrenLost;
 - (void)markRemovedFromFilesystemForServerEdit:(BOOL)arg1;
 - (BOOL)possiblyContainsSharedByMeItem;

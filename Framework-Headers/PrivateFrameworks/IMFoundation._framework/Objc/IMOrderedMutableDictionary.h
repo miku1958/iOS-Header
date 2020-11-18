@@ -19,10 +19,10 @@
 
 @property (readonly) unsigned long long count;
 
+- (void).cxx_destruct;
 - (BOOL)containsKey:(id)arg1;
 - (BOOL)containsOrderedObject:(id)arg1;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
-- (void)dealloc;
 - (id)init;
 - (id)orderedObjectForKey:(id)arg1;
 - (id)orderedObjects;

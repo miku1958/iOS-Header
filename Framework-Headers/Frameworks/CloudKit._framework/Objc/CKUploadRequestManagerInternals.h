@@ -12,7 +12,6 @@
 @class CKAssetRepairScheduler, CKContainer, CKSchedulerActivity, CKSyncEngine, CKUploadRequestConfiguration, CKUploadRequestManagerResponseActionThrottler, CKUploadRequestManagerStateMachine, CKUploadRequestPersistentStore, NSMutableDictionary, NSString;
 @protocol NSObject, OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface CKUploadRequestManagerInternals : NSObject <CKAssetRepairSchedulerDelegate, CKSyncEngineDataSource>
 {
     BOOL _ignoringSystemConditions;

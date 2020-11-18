@@ -21,9 +21,7 @@
 @property (readonly, nonatomic) FBProcess *hostProcess;
 
 - (void).cxx_destruct;
-- (id)initWithHandle:(id)arg1 identity:(id)arg2 executionContext:(id)arg3;
-- (id)initWithHandle:(id)arg1 identity:(id)arg2 hostPID:(int)arg3;
-- (id)initWithHandle:(id)arg1 identity:(id)arg2 hostProcess:(id)arg3;
+- (void)_finishInit;
 - (BOOL)isExtensionProcess;
 - (id)succinctDescriptionBuilder;
 

@@ -39,7 +39,7 @@
 - (id)initWithPlanId:(id)arg1 version:(unsigned long long)arg2 returningAfterRunning:(BOOL)arg3;
 - (id)initWithPlist:(id)arg1 chunks:(id)arg2 context:(id)arg3;
 - (id)initWithVersion:(unsigned long long)arg1;
-- (id)runWhile:(CDUnknownBlockType)arg1 didFinish:(BOOL *)arg2;
+- (id)runWithError:(id *)arg1;
 - (id)toPlistWithChunks:(id)arg1;
 
 @end

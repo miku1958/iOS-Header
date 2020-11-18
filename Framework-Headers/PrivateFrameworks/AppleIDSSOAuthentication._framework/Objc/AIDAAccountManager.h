@@ -30,7 +30,6 @@
 - (void)addAccountChangeObserver:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)aidaAccountForService:(id)arg1;
 - (void)dealloc;
-- (id)grandSlamAccountForService:(id)arg1;
 - (id)init;
 - (id)initWithAccountStore:(id)arg1;
 - (void)removeAccountChangeObserver:(id)arg1;

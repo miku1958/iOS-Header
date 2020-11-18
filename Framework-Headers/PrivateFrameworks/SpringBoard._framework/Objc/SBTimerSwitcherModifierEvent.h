@@ -16,6 +16,7 @@
 @property (readonly, nonatomic) NSString *reason; // @synthesize reason=_reason;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)initWithReason:(id)arg1;
 - (long long)type;

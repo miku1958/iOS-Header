@@ -15,16 +15,20 @@
     NSString *_label;
     NSUUID *_instance;
     NSObject<OS_xpc_object> *_additionalProperties;
+    NSString *_program;
 }
 
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *additionalProperties; // @synthesize additionalProperties=_additionalProperties;
 @property (readonly, nonatomic) NSUUID *instance; // @synthesize instance=_instance;
 @property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
+@property (readonly, nonatomic) NSString *program; // @synthesize program=_program;
 @property (readonly, nonatomic) int requestedJetsamPriority; // @synthesize requestedJetsamPriority=_requestedJetsamPriority;
 
++ (id)_propertiesFromAttrs:(id)arg1;
++ (id)propertiesForJob:(id)arg1 error:(id *)arg2;
 + (id)propertiesForPid:(int)arg1 error:(id *)arg2;
 - (void).cxx_destruct;
-- (id)initWithLabel:(id)arg1 instance:(id)arg2 requestedJetsamPriority:(int)arg3 additionalProperties:(id)arg4;
+- (id)initWithLabel:(id)arg1 instance:(id)arg2 requestedJetsamPriority:(int)arg3 additionalProperties:(id)arg4 program:(id)arg5;
 
 @end
 

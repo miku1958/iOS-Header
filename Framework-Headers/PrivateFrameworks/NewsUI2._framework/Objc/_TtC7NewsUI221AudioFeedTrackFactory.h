@@ -13,6 +13,7 @@
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *paidBundleConfigManager;
     MISSING_TYPE *assetHandleFactory;
+    MISSING_TYPE *paidAccessChecker;
 }
 
 @end

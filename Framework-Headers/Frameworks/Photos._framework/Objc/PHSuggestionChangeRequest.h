@@ -17,11 +17,12 @@
     PHRelationshipChangeRequestHelper *_representativeAssetsHelper;
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
-@property (readonly, nonatomic) CDUnknownBlockType concurrentWorkBlock;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) unsigned short featuredState;
 @property (readonly) unsigned long long hash;
 @property (readonly) BOOL isNewRequest;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *keyAssetsHelper; // @synthesize keyAssetsHelper=_keyAssetsHelper;
@@ -31,11 +32,11 @@
 @property (readonly, nonatomic) NSManagedObjectID *objectID;
 @property (readonly, nonatomic) PHObjectPlaceholder *placeholderForCreatedSuggestion;
 @property (readonly, nonatomic) PHRelationshipChangeRequestHelper *representativeAssetsHelper; // @synthesize representativeAssetsHelper=_representativeAssetsHelper;
+@property (nonatomic) BOOL shouldPerformConcurrentWork;
 @property (strong, nonatomic) NSString *subtitle;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *title;
 
-+ (BOOL)canGenerateUUIDWithoutEntitlements;
 + (id)changeRequestForSuggestion:(id)arg1;
 + (id)creationRequestForSuggestion;
 + (id)creationRequestForSuggestionWithType:(unsigned short)arg1 subtype:(unsigned short)arg2 keyAssets:(id)arg3 representativeAssets:(id)arg4 creationDate:(id)arg5 relevantUntilDate:(id)arg6 version:(long long)arg7;
@@ -61,8 +62,6 @@
 - (void)markReactivated;
 - (void)markRetired;
 - (void)performTransactionCompletionHandlingInPhotoLibrary:(id)arg1;
-- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (id)relevantUntilDate;
 - (void)setActionData:(id)arg1;
 - (void)setActionProperties:(id)arg1;

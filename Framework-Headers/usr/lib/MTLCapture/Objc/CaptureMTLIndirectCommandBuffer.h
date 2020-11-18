@@ -10,7 +10,7 @@
 #import <MTLCapture/MTLIndirectCommandBuffer-Protocol.h>
 #import <MTLCapture/MTLResourceSPI-Protocol.h>
 
-@class CaptureMTLDevice, MTLResourceAllocationInfo, NSString;
+@class CaptureMTLDevice, NSString;
 @protocol MTLDevice, MTLHeap, MTLIndirectCommandBuffer, MTLIndirectCommandBuffer><MTLResourceSPI;
 
 @interface CaptureMTLIndirectCommandBuffer : NSObject <MTLIndirectCommandBuffer, MTLResourceSPI, CaptureMTLObject>
@@ -24,7 +24,6 @@
 @property (readonly) unsigned long long allocatedSize;
 @property (readonly) unsigned long long allocationID;
 @property (readonly) id<MTLIndirectCommandBuffer> baseObject;
-@property (readonly) MTLResourceAllocationInfo *cachedAllocationInfo;
 @property (readonly) unsigned long long cpuCacheMode;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -37,7 +36,6 @@
 @property (readonly) unsigned long long protectionOptions;
 @property (readonly) unsigned long long resourceOptions;
 @property int responsibleProcess;
-@property (readonly) MTLResourceAllocationInfo *sharedAllocationInfo;
 @property (readonly) unsigned long long size;
 @property (readonly) unsigned long long storageMode;
 @property (readonly) unsigned long long streamReference;
@@ -60,6 +58,7 @@
 - (BOOL)isComplete;
 - (BOOL)isPurgeable;
 - (void)makeAliasable;
+- (id)originalObject;
 - (void)resetWithRange:(struct _NSRange)arg1;
 - (BOOL)respondsToSelector:(SEL)arg1;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;

@@ -6,25 +6,29 @@
 
 #import <objc/NSObject.h>
 
-@class NSPersonNameComponents, NSString, NSURL;
+@class ACAccount, ACAccountStore, NSPersonNameComponents, NSString, NSURL;
 
 @interface CKDBackingAccount : NSObject
 {
-    BOOL _isPrimaryEmailVerified;
+    BOOL _iCloudDriveAllowsCellularAccess;
+    ACAccountStore *_accountStore;
+    ACAccount *_appleAccount;
 }
 
+@property (readonly, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
+@property (strong, nonatomic) ACAccount *appleAccount; // @synthesize appleAccount=_appleAccount;
+@property (readonly, nonatomic) ACAccount *ckAccount;
 @property (readonly, nonatomic) NSString *displayedHostname;
 @property (readonly, nonatomic) NSString *dsid;
 @property (readonly, nonatomic) NSPersonNameComponents *fullName;
-@property (readonly, nonatomic) BOOL iCloudDriveAllowsCellularAccess;
+@property (readonly, nonatomic) BOOL iCloudDriveAllowsCellularAccess; // @synthesize iCloudDriveAllowsCellularAccess=_iCloudDriveAllowsCellularAccess;
 @property (readonly, nonatomic) NSString *identifier;
 @property (readonly, nonatomic) BOOL isFakeAccount;
-@property (readonly, nonatomic) BOOL isPrimaryEmailVerified; // @synthesize isPrimaryEmailVerified=_isPrimaryEmailVerified;
+@property (readonly, nonatomic) BOOL isPrimaryEmailVerified;
 @property (readonly, nonatomic) NSString *personaIdentifier;
 @property (readonly, nonatomic) NSString *primaryEmail;
 @property (readonly, nonatomic) NSURL *privateCloudDBURL;
 @property (readonly, nonatomic) NSURL *privateCodeServiceURL;
-@property (readonly, nonatomic) NSURL *privateDatabaseRPCServiceURL;
 @property (readonly, nonatomic) NSURL *privateDeviceServiceURL;
 @property (readonly, nonatomic) NSURL *privateMetricsServiceURL;
 @property (readonly, nonatomic) NSURL *privateShareServiceURL;
@@ -33,23 +37,24 @@
 @property (readonly, nonatomic) NSString *username;
 
 + (BOOL)_lockedEnsureCloudKitChildAccountOnParentAccount:(id)arg1 inStore:(id)arg2;
-+ (Class)_platformBackingAccountClass;
 + (id)accountQueue;
 + (id)accountWithIdentifier:(id)arg1 inStore:(id)arg2;
 + (void)deviceCountForAccount:(id)arg1 ignoreCache:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)ensureCloudKitChildAccountOnParentAccount:(id)arg1 inStore:(id)arg2;
-+ (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2 propertyOverrides:(id)arg3 overridesByDataclass:(id)arg4;
++ (id)fakeAccountWithEmail:(id)arg1 password:(id)arg2 inStore:(id)arg3 propertyOverrides:(id)arg4 overridesByDataclass:(id)arg5;
 + (id)primaryAccountInStore:(id)arg1;
-- (id)_init;
+- (void).cxx_destruct;
+- (id)_accountCredentialForAccount:(id)arg1 withError:(id *)arg2;
+- (id)_initWithAccountStore:(id)arg1;
+- (void)_setOverridesOnVettingContext:(id)arg1;
 - (id)accountPropertiesForDataclass:(id)arg1;
 - (BOOL)canRenew;
-- (id)ckAccount;
 - (id)cloudKitAuthTokenWithError:(id *)arg1;
 - (void)deviceCountWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)iCloudAuthTokenWithError:(id *)arg1;
 - (id)init;
 - (BOOL)isDataclassEnabled:(id)arg1;
-- (id)parentAppleAccount;
+- (BOOL)isDataclassEnabledForCellular:(id)arg1;
 - (id)privateCodeServiceURLPreferringGateway:(BOOL)arg1;
 - (void)renewAuthTokenInStore:(id)arg1 withOptions:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateAccountPropertiesAndSaveAccountInStore:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

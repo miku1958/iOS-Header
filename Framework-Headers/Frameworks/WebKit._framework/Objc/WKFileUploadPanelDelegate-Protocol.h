@@ -11,6 +11,7 @@
 @protocol WKFileUploadPanelDelegate <NSObject>
 
 @optional
+- (BOOL)fileUploadPanelDestinationIsManaged:(WKFileUploadPanel *)arg1;
 - (void)fileUploadPanelDidDismiss:(WKFileUploadPanel *)arg1;
 @end
 

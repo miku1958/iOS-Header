@@ -10,7 +10,7 @@
 #import <CloudKitDaemon/CKDContainerScopedUserIDProvider-Protocol.h>
 #import <CloudKitDaemon/CKDContextInfoProvider-Protocol.h>
 
-@class CKAccountOverrideInfo, CKContainerID, CKDAccount, CKDAppContainerIntersectionMetadata, CKDAppContainerTuple, CKDApplicationMetadata, CKDCachePurger, CKDFlowControlManager, CKDKeyValueDiskCache, CKDMMCS, CKDPCSCache, CKDPCSManager, CKDPublicIdentityLookupService, CKDServerConfiguration, CKDZoneGatekeeper, NSHashTable, NSMutableDictionary, NSString, NSURL;
+@class CKAccountOverrideInfo, CKContainerID, CKDAccount, CKDAppContainerIntersectionMetadata, CKDAppContainerTuple, CKDApplicationID, CKDApplicationMetadata, CKDCachePurger, CKDFlowControlManager, CKDKeyValueDiskCache, CKDMMCS, CKDPCSCache, CKDPCSManager, CKDPublicIdentityLookupService, CKDServerConfiguration, CKDZoneGatekeeper, NSHashTable, NSMutableDictionary, NSString, NSURL;
 @protocol OS_dispatch_group, OS_dispatch_queue;
 
 @interface CKDClientContext : NSObject <CKDContextInfoProvider, CKDAccountAccessInfoProvider, CKDContainerScopedUserIDProvider>
@@ -23,6 +23,7 @@
     BOOL _bypassPCSEncryption;
     BOOL _forceEnableReadOnlyManatee;
     BOOL _isSiloedContext;
+    BOOL _hasExplicitCodeOperationURLEntitlement;
     BOOL _sandboxed;
     BOOL _finishedAppProxySetup;
     BOOL _finishedProxySetup;
@@ -34,14 +35,12 @@
     NSURL *_publicDeviceServiceURL;
     NSURL *_publicCodeServiceURL;
     NSURL *_publicMetricsServiceURL;
-    NSURL *_publicDatabaseRPCServiceURL;
     NSString *_containerScopedUserID;
     NSString *_orgAdminUserID;
     NSHashTable *_proxies;
     long long _cachedEnvironment;
     CKContainerID *_containerID;
     NSString *_applicationBundleID;
-    NSString *_sourceApplicationBundleID;
     NSString *_personaID;
     NSString *_applicationVersion;
     NSURL *_applicationIcon;
@@ -94,8 +93,9 @@
 @property (readonly, nonatomic) CKDAppContainerTuple *appContainerTuple; // @synthesize appContainerTuple=_appContainerTuple;
 @property (strong, nonatomic) NSString *applicationAssetDbDirectory; // @synthesize applicationAssetDbDirectory=_applicationAssetDbDirectory;
 @property (strong, nonatomic) NSString *applicationBundleID; // @synthesize applicationBundleID=_applicationBundleID;
-@property (readonly, nonatomic) NSString *applicationBundleIDForPush;
-@property (readonly, nonatomic) NSString *applicationBundleIDForServer;
+@property (readonly, nonatomic) NSString *applicationBundleIdentifierForContainerAccess;
+@property (readonly, nonatomic) NSString *applicationBundleIdentifierForNetworkAttribution;
+@property (readonly, nonatomic) NSString *applicationBundleIdentifierForPush;
 @property (strong, nonatomic) NSString *applicationCachesDirectory; // @synthesize applicationCachesDirectory=_applicationCachesDirectory;
 @property (strong, nonatomic) NSString *applicationContainerCloudKitDirectory; // @synthesize applicationContainerCloudKitDirectory=_applicationContainerCloudKitDirectory;
 @property (strong, nonatomic) NSString *applicationContainerPath; // @synthesize applicationContainerPath=_applicationContainerPath;
@@ -103,6 +103,7 @@
 @property (strong, nonatomic) NSString *applicationFileDownloadDirectory; // @synthesize applicationFileDownloadDirectory=_applicationFileDownloadDirectory;
 @property (strong, nonatomic) NSString *applicationFileStagingDirectory; // @synthesize applicationFileStagingDirectory=_applicationFileStagingDirectory;
 @property (strong, nonatomic) NSString *applicationFrameworkCachesDirectory; // @synthesize applicationFrameworkCachesDirectory=_applicationFrameworkCachesDirectory;
+@property (readonly, nonatomic) CKDApplicationID *applicationID;
 @property (readonly, nonatomic) NSURL *applicationIcon; // @synthesize applicationIcon=_applicationIcon;
 @property (strong, nonatomic) NSString *applicationMMCSDirectory; // @synthesize applicationMMCSDirectory=_applicationMMCSDirectory;
 @property (strong, nonatomic) CKDApplicationMetadata *applicationMetadata; // @synthesize applicationMetadata=_applicationMetadata;
@@ -152,7 +153,7 @@
 @property (nonatomic) BOOL hasAllowUnverifiedAccountEntitlement;
 @property (nonatomic) BOOL hasDataContainer; // @synthesize hasDataContainer=_hasDataContainer;
 @property (nonatomic) BOOL hasDisplaysSystemAcceptPromptEntitlement;
-@property (nonatomic) BOOL hasExplicitCodeOperationURLEntitlement;
+@property (nonatomic) BOOL hasExplicitCodeOperationURLEntitlement; // @synthesize hasExplicitCodeOperationURLEntitlement=_hasExplicitCodeOperationURLEntitlement;
 @property (nonatomic) BOOL hasLightweightPCSEntitlement;
 @property (nonatomic) BOOL hasMasqueradingEntitlement;
 @property (nonatomic) BOOL hasNonLegacyShareURLEntitlement;
@@ -174,7 +175,6 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *proxyPreparationGroup; // @synthesize proxyPreparationGroup=_proxyPreparationGroup;
 @property (copy) NSURL *publicCloudDBURL; // @synthesize publicCloudDBURL=_publicCloudDBURL;
 @property (copy) NSURL *publicCodeServiceURL; // @synthesize publicCodeServiceURL=_publicCodeServiceURL;
-@property (copy) NSURL *publicDatabaseRPCServiceURL; // @synthesize publicDatabaseRPCServiceURL=_publicDatabaseRPCServiceURL;
 @property (copy) NSURL *publicDeviceServiceURL; // @synthesize publicDeviceServiceURL=_publicDeviceServiceURL;
 @property (strong, nonatomic) CKDKeyValueDiskCache *publicIdentitiesDiskCache; // @synthesize publicIdentitiesDiskCache=_publicIdentitiesDiskCache;
 @property (copy) NSURL *publicMetricsServiceURL; // @synthesize publicMetricsServiceURL=_publicMetricsServiceURL;
@@ -183,7 +183,6 @@
 @property (nonatomic) BOOL returnPCSMetadata; // @synthesize returnPCSMetadata=_returnPCSMetadata;
 @property (nonatomic, getter=isSandboxed) BOOL sandboxed; // @synthesize sandboxed=_sandboxed;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *setupQueue; // @synthesize setupQueue=_setupQueue;
-@property (readonly, nonatomic) NSString *sourceApplicationBundleID; // @synthesize sourceApplicationBundleID=_sourceApplicationBundleID;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL useZoneWidePCS; // @synthesize useZoneWidePCS=_useZoneWidePCS;
 @property (nonatomic) BOOL wasInitializedWithProxy; // @synthesize wasInitializedWithProxy=_wasInitializedWithProxy;
@@ -201,10 +200,10 @@
 - (void).cxx_destruct;
 - (id)CKPropertiesDescription;
 - (BOOL)_anyAssociatedProxyHasTCCAuthorization;
+- (BOOL)_canBeReusedForAppContainerTuple:(id)arg1 accountInfoOverride:(id)arg2 isSandboxed:(BOOL)arg3 internalUse:(BOOL)arg4 encryptionServiceName:(id)arg5 ignoreSandboxCheck:(BOOL)arg6;
 - (void)_cancelAllLongLivedOperations;
 - (void)_clearCaches;
 - (BOOL)_cloudKitEnabledForCurrentClient;
-- (id)_dataclassNameForContainerIdentifier:(id)arg1;
 - (void)_determineHardwareInfo;
 - (void)_fetchContainerInfoForOperation:(id)arg1 requireUserIDs:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_issueSandboxExtensionForPath:(id)arg1 withAuditToken:(CDStruct_6ad76789)arg2 error:(id *)arg3;
@@ -214,8 +213,10 @@
 - (id)_urlBySettingCustomBaseURL:(id)arg1 onURL:(id)arg2;
 - (void)addClientProxy:(id)arg1;
 - (unsigned long long)aggregatedOutstandingOperationCount;
+- (id)applicationBundleIDForCacheDirectory;
 - (id)assetDirectoryContext;
 - (id)baseURLForServerType:(long long)arg1 partitionType:(long long)arg2;
+- (BOOL)canBeReusedForContext:(id)arg1 ignoreSandboxCheck:(BOOL)arg2;
 - (void)clearAssetCache;
 - (void)clearAssetCacheWithDatabaseScope:(long long)arg1;
 - (void)clearAuthTokensForRecordWithID:(id)arg1 databaseScope:(long long)arg2;

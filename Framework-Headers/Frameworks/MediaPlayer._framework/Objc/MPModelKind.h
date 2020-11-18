@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) MPModelKind *identityKind;
 @property (readonly, nonatomic) Class modelClass; // @synthesize modelClass=_modelClass;
 
++ (id)_kindWithModelClass:(Class)arg1 cacheKey:(id)arg2 block:(CDUnknownBlockType)arg3;
 + (id)identityKind;
 + (id)kindWithModelClass:(Class)arg1;
 + (id)kindWithModelClass:(Class)arg1 cacheKey:(id)arg2 block:(CDUnknownBlockType)arg3;

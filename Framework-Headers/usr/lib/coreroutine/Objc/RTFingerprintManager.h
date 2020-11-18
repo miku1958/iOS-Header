@@ -7,10 +7,11 @@
 #import <coreroutine/RTService.h>
 
 #import <coreroutine/RTPurgable-Protocol.h>
+#import <coreroutine/RTStoreManager-Protocol.h>
 
 @class NSDate, NSString, RTDefaultsManager, RTFingerprintStore, RTScenarioTriggerManager, RTWiFiManager;
 
-@interface RTFingerprintManager : RTService <RTPurgable>
+@interface RTFingerprintManager : RTService <RTPurgable, RTStoreManager>
 {
     BOOL _available;
     BOOL _fingerprintMonitoringEnabled;
@@ -39,9 +40,11 @@
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) RTWiFiManager *wifiManager; // @synthesize wifiManager=_wifiManager;
 
++ (id)vendedClasses;
 - (void).cxx_destruct;
 - (void)_setup;
 - (void)_shutdown;
+- (void)fetchEnumerableObjectsWithOptions:(id)arg1 offset:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchFingerprintsBetweenStartDate:(id)arg1 endDate:(id)arg2 filteredBySettledState:(unsigned long long)arg3 handler:(CDUnknownBlockType)arg4;
 - (void)fetchFingerprintsInDateInterval:(id)arg1 filteredBySettledState:(unsigned long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)fetchWifiAccessPointsForFingerprint:(id)arg1 handler:(CDUnknownBlockType)arg2;

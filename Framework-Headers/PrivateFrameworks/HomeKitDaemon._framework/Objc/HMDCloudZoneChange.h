@@ -20,6 +20,7 @@
 @property (weak, nonatomic) HMDCloudZone *cloudZone; // @synthesize cloudZone=_cloudZone;
 @property (readonly, nonatomic) BOOL controllerIdentifierChanged;
 @property (readonly, nonatomic) BOOL decryptionFailed;
+@property (readonly) BOOL doRecordsExistInCache;
 @property (readonly, nonatomic) BOOL encryptionFailed;
 @property (readonly, nonatomic) BOOL hasValidChanges;
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;

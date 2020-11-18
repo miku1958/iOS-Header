@@ -11,6 +11,7 @@
 @interface SBMedusaSettings : PTSettings
 {
     BOOL _persistentDock;
+    BOOL _showContentDragExclusionRects;
     BOOL _statusBarDebugBackgroundColorsEnabled;
     BOOL _statusBarDebugOffsettingEnabled;
     SBMedusa1oSettings *_medusa1oSettings;
@@ -40,6 +41,7 @@
     SBFFluidBehaviorSettings *_medusaAnimationSettings;
     SBFFluidBehaviorSettings *_resizeAnimationSettings;
     SBFFluidBehaviorSettings *_platterAnimationSettings;
+    SBFFluidBehaviorSettings *_dropAnimationSettings;
     double _dropAnimationUnblurThresholdPercentage;
     double _movePanGestureThresholdPercentage;
     double _movePanGesturePositiveVelocityThreshold;
@@ -114,6 +116,7 @@
 @property (nonatomic) double draggingPlatterFullscreenActivationRegionHeight; // @synthesize draggingPlatterFullscreenActivationRegionHeight=_draggingPlatterFullscreenActivationRegionHeight;
 @property (nonatomic) double draggingPlatterFullscreenActivationRegionWidth; // @synthesize draggingPlatterFullscreenActivationRegionWidth=_draggingPlatterFullscreenActivationRegionWidth;
 @property (nonatomic) double draggingPlatterSideActivationGutterPadding; // @synthesize draggingPlatterSideActivationGutterPadding=_draggingPlatterSideActivationGutterPadding;
+@property (strong, nonatomic) SBFFluidBehaviorSettings *dropAnimationSettings; // @synthesize dropAnimationSettings=_dropAnimationSettings;
 @property (nonatomic) double dropAnimationUnblurThresholdPercentage; // @synthesize dropAnimationUnblurThresholdPercentage=_dropAnimationUnblurThresholdPercentage;
 @property (nonatomic) double floatingAppCardScaleWhileCursorHovered; // @synthesize floatingAppCardScaleWhileCursorHovered=_floatingAppCardScaleWhileCursorHovered;
 @property (nonatomic) double floatingAppCardScaleWhileTouched; // @synthesize floatingAppCardScaleWhileTouched=_floatingAppCardScaleWhileTouched;
@@ -140,6 +143,7 @@
 @property (strong, nonatomic) SBFFluidBehaviorSettings *resizeAnimationSettings; // @synthesize resizeAnimationSettings=_resizeAnimationSettings;
 @property (nonatomic) double rimShadowOpacity; // @synthesize rimShadowOpacity=_rimShadowOpacity;
 @property (nonatomic) double rimShadowRadius; // @synthesize rimShadowRadius=_rimShadowRadius;
+@property (nonatomic) BOOL showContentDragExclusionRects; // @synthesize showContentDragExclusionRects=_showContentDragExclusionRects;
 @property (nonatomic) BOOL statusBarDebugBackgroundColorsEnabled; // @synthesize statusBarDebugBackgroundColorsEnabled=_statusBarDebugBackgroundColorsEnabled;
 @property (nonatomic) BOOL statusBarDebugOffsettingEnabled; // @synthesize statusBarDebugOffsettingEnabled=_statusBarDebugOffsettingEnabled;
 @property (nonatomic) double vibrantColorMatrixM11; // @synthesize vibrantColorMatrixM11=_vibrantColorMatrixM11;

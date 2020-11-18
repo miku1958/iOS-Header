@@ -20,8 +20,8 @@
 + (id)_itemWithTitleKey:(id)arg1 valueKey:(id)arg2 hideSeparator:(BOOL)arg3;
 + (id)_tableTitleAttributes;
 + (id)_whoExposureTextItem;
-+ (BOOL)infographicSupportedForDisplayType:(id)arg1;
-+ (id)infographicViewControllerForDisplayType:(id)arg1;
++ (BOOL)infographicSupportedForDisplayType:(id)arg1 healthStore:(id)arg2;
++ (id)infographicViewControllerForDisplayType:(id)arg1 healthStore:(id)arg2;
 
 @end
 

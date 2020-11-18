@@ -57,6 +57,7 @@
 + (void)_printDebugInfo;
 + (int)_processIdentifierForID:(id)arg1;
 + (BOOL)_provideRecursively;
++ (unsigned long long)_providedItemGenerationCount;
 + (unsigned long long)_readingOptions;
 + (void)_removeFileProvider:(id)arg1;
 + (void)_removeInfoForID:(id)arg1;
@@ -65,6 +66,7 @@
 + (void)_setCurrentClaimPurposeIdentifier:(id)arg1;
 + (void)_setKernelMaterializationOperation:(unsigned int)arg1;
 + (void)_setNextClaimIdentifier:(id)arg1;
++ (void)_setProvidedItemRecursiveGenerationCount:(unsigned long long)arg1;
 + (void)_setReadingOptions:(unsigned long long)arg1;
 + (BOOL)_skipCoordinationWork;
 + (void)_startInProcessFileCoordinationAndProgressServers;

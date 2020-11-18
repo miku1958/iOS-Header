@@ -7,6 +7,6 @@
 #import <CertUI/CertUITrustManager.h>
 
 @interface CertUITrustManager (SafariServicesExtras)
-- (BOOL)userAllowsCertificateTrust:(struct __SecTrust *)arg1 host:(id)arg2 shouldPrompt:(BOOL)arg3;
+- (void)userAllowsCertificateTrust:(struct __SecTrust *)arg1 host:(id)arg2 shouldPrompt:(BOOL)arg3 completionHandler:(CDUnknownBlockType)arg4;
 @end
 

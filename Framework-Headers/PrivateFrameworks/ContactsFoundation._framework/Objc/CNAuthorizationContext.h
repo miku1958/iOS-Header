@@ -6,25 +6,55 @@
 
 #import <objc/NSObject.h>
 
-@class NSNumber;
+#import <ContactsFoundation/CNTCCSimulation-Protocol.h>
 
-@interface CNAuthorizationContext : NSObject
+@class CNAuditToken, NSNumber;
+@protocol CNTCC><CNTCCSimulation;
+
+@interface CNAuthorizationContext : NSObject <CNTCCSimulation>
 {
-    NSNumber *_number_isFirstParty;
-    BOOL _hasAuditToken;
-    Class _entitlementVerifierClass;
-    CDStruct_4c969caf _auditToken;
+    CNAuditToken *_auditToken;
+    id<CNTCC><CNTCCSimulation> _tccServices;
+    Class _entitlementVerifier;
+    NSNumber *_authorizationStatusCachedValue;
+    NSNumber *_isNotesAccessGrantedCachedValue;
+    NSNumber *_isClientFirstOrSecondPartyCachedValue;
 }
 
-@property (readonly, nonatomic) CDStruct_4c969caf auditToken; // @synthesize auditToken=_auditToken;
-@property (readonly, nonatomic) Class entitlementVerifierClass; // @synthesize entitlementVerifierClass=_entitlementVerifierClass;
-@property (readonly, nonatomic) BOOL hasAuditToken; // @synthesize hasAuditToken=_hasAuditToken;
-@property (readonly, nonatomic) BOOL isValidatingFirstPartyClient;
+@property (strong, nonatomic) CNAuditToken *auditToken; // @synthesize auditToken=_auditToken;
+@property (readonly, nonatomic) long long authorizationStatus;
+@property (strong, nonatomic) NSNumber *authorizationStatusCachedValue; // @synthesize authorizationStatusCachedValue=_authorizationStatusCachedValue;
+@property (strong, nonatomic) Class entitlementVerifier; // @synthesize entitlementVerifier=_entitlementVerifier;
+@property (readonly, nonatomic) BOOL isAccess1Granted;
+@property (readonly, nonatomic) BOOL isAccess2Granted;
+@property (readonly, nonatomic) BOOL isAccessGranted;
+@property (readonly, nonatomic) BOOL isAccessRestricted;
+@property (readonly, nonatomic) BOOL isClientFirstOrSecondParty;
+@property (strong, nonatomic) NSNumber *isClientFirstOrSecondPartyCachedValue; // @synthesize isClientFirstOrSecondPartyCachedValue=_isClientFirstOrSecondPartyCachedValue;
+@property (readonly, nonatomic) BOOL isClientTCCWhitelisted;
+@property (readonly, nonatomic) BOOL isNotesAccessGranted;
+@property (strong, nonatomic) NSNumber *isNotesAccessGrantedCachedValue; // @synthesize isNotesAccessGrantedCachedValue=_isNotesAccessGrantedCachedValue;
+@property (strong, nonatomic) id<CNTCC><CNTCCSimulation> tccServices; // @synthesize tccServices=_tccServices;
 
++ (id)os_log;
++ (id)sharedInstance;
 - (void).cxx_destruct;
-- (id)_isFirstParty;
+- (void)checkAndUpdateAuthorizationStatusIfUnknown;
+- (id)checkIfNotesAccessGranted;
+- (BOOL)checkIsClientNotesEntitled;
+- (BOOL)checkIsClientTCCWhitelisted;
+- (id)checkIsFirstPartyOrSecondPartyOrContactsSPIEntitled;
+- (id)errorForStatus:(long long)arg1;
+- (id)init;
 - (id)initWithAuditToken:(CDStruct_4c969caf)arg1;
-- (id)initWithEntitlementVerifier:(Class)arg1 isFirstParty:(BOOL)arg2;
+- (id)initWithCNAuditToken:(id)arg1 tccServices:(id)arg2 entitlementVerifier:(Class)arg3;
+- (BOOL)isAccessGrantedRequestingAccessIfNeeded;
+- (BOOL)requestAccessWithError:(id *)arg1;
+- (void)requestAuthorization:(long long)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)requestAuthorizationFuture:(long long)arg1;
+- (long long)resolveRequestAuthorizationFuture:(id)arg1;
+- (void)simulateStatus:(long long)arg1;
+- (void)stopSimulation;
 
 @end
 

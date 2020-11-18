@@ -13,11 +13,10 @@
 
 @interface AUParameterTree : AUParameterGroup <NSSecureCoding>
 {
-    BOOL __autoCreatedForV2AU;
-    BOOL __suppressObserverCallbacks;
+    struct shared_ptr<AUObserverController> _observerController;
+    int __autoCreatedForV2AU;
     int _numRecorders;
     NSObject<OS_dispatch_queue> *_observationQueue;
-    struct AUObserverController *_observerController;
     NSObject<OS_dispatch_queue> *_valueAccessQueue;
     AUAudioUnit_XH *__auXH;
     struct AURemoteParameterObserver *_remoteObserverToken;
@@ -27,12 +26,10 @@
 }
 
 @property (weak, nonatomic) AUAudioUnit_XH *_auXH; // @synthesize _auXH=__auXH;
-@property (nonatomic) BOOL _autoCreatedForV2AU; // @synthesize _autoCreatedForV2AU=__autoCreatedForV2AU;
-@property (nonatomic) BOOL _suppressObserverCallbacks; // @synthesize _suppressObserverCallbacks=__suppressObserverCallbacks;
+@property (nonatomic) int _autoCreatedForV2AU; // @synthesize _autoCreatedForV2AU=__autoCreatedForV2AU;
 @property (nonatomic) vector_66b3461a addrToParamIndex; // @synthesize addrToParamIndex=_addrToParamIndex;
 @property (nonatomic) int numRecorders; // @synthesize numRecorders=_numRecorders;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *observationQueue; // @synthesize observationQueue=_observationQueue;
-@property (nonatomic) struct AUObserverController *observerController; // @synthesize observerController=_observerController;
 @property (nonatomic) struct AURemoteParameterObserver *remoteObserverToken; // @synthesize remoteObserverToken=_remoteObserverToken;
 @property (weak, nonatomic) NSXPCConnection *remoteParameterSynchronizerXPCConnection; // @synthesize remoteParameterSynchronizerXPCConnection=_remoteParameterSynchronizerXPCConnection;
 @property (nonatomic) struct AURemoteParameterObserver *remoteRecorderToken; // @synthesize remoteRecorderToken=_remoteRecorderToken;
@@ -52,6 +49,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithChildren:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (struct AUObserverController *)observerController;
 - (id)parameterWithAddress:(unsigned long long)arg1;
 - (id)parameterWithID:(unsigned int)arg1 scope:(unsigned int)arg2 element:(unsigned int)arg3;
 - (void)remoteSyncParameter:(unsigned long long)arg1 value:(float)arg2 extOriginator:(unsigned long long)arg3 hostTime:(unsigned long long)arg4 eventType:(unsigned int)arg5;

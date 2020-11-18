@@ -26,7 +26,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isForeground) BOOL foreground; // @dynamic foreground;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) SBModalAlertPresentationCoordinator *modalAlertPresentationCoordinator; // @synthesize modalAlertPresentationCoordinator=_modalAlertPresentationCoordinator;
 @property (strong, nonatomic, setter=_setScene:) FBScene *scene; // @synthesize scene=_scene;
+@property (strong, nonatomic) FBSceneManager *sceneManager; // @synthesize sceneManager=_sceneManager;
 @property (readonly, nonatomic, getter=isShowingModalAlert) BOOL showingModalAlert; // @dynamic showingModalAlert;
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long visibleModalAlertCount; // @synthesize visibleModalAlertCount=_visibleModalAlertCount;

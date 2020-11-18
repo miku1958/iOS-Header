@@ -23,9 +23,7 @@
         unsigned int has_groupId:1;
         unsigned int read_features:1;
         unsigned int read_geometry:1;
-        unsigned int wrote_features:1;
-        unsigned int wrote_geometry:1;
-        unsigned int wrote_groupId:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -38,9 +36,6 @@
 + (Class)featureType;
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
-- (void)_addNoFlagsFeature:(id)arg1;
-- (void)_readFeatures;
-- (void)_readGeometry;
 - (void)addFeature:(id)arg1;
 - (void)clearFeatures;
 - (void)copyTo:(id)arg1;
@@ -52,7 +47,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

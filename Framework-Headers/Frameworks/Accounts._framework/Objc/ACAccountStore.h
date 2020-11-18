@@ -6,30 +6,41 @@
 
 #import <objc/NSObject.h>
 
-@class ACRemoteAccountStoreSession, NSArray, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue;
+@class ACRemoteAccountStoreSession, ACTimedExpirer, NSArray, NSMutableDictionary, NSString, NSXPCListenerEndpoint;
+@protocol ACRemoteAccountStoreSessionDelegate, OS_dispatch_queue;
 
 @interface ACAccountStore : NSObject
 {
-    NSObject<OS_dispatch_queue> *_replyQueue;
     id _daemonAccountStoreDidChangeObserver;
     NSMutableDictionary *_accountCache;
+    NSMutableDictionary *_accountsWithAccountTypeCache;
+    NSXPCListenerEndpoint *_endpoint;
     ACRemoteAccountStoreSession *_remoteAccountStoreSession;
+    struct os_unfair_lock_s _remoteAccountStoreSessionLock;
+    ACTimedExpirer *_remoteAccountStoreSessionExpirer;
     ACRemoteAccountStoreSession *_longLivedRemoteAccountStoreSession;
+    struct os_unfair_lock_s _longLivedRemoteAccountStoreSessionLock;
+    ACTimedExpirer *_longLivedRemoteAccountStoreSessionExpirer;
+    NSObject<OS_dispatch_queue> *_replyQueue;
     NSString *_effectiveBundleID;
 }
 
 @property (readonly, weak, nonatomic) NSArray *accounts;
+@property (readonly) id<ACRemoteAccountStoreSessionDelegate> connectionDelegate;
 @property (readonly) NSString *effectiveBundleID; // @synthesize effectiveBundleID=_effectiveBundleID;
-@property (readonly, nonatomic) ACRemoteAccountStoreSession *longLivedRemoteAccountStoreSession; // @synthesize longLivedRemoteAccountStoreSession=_longLivedRemoteAccountStoreSession;
-@property (readonly, nonatomic) ACRemoteAccountStoreSession *remoteAccountStoreSession; // @synthesize remoteAccountStoreSession=_remoteAccountStoreSession;
+@property (readonly, nonatomic) ACRemoteAccountStoreSession *longLivedRemoteAccountStoreSession;
+@property (readonly, nonatomic) ACRemoteAccountStoreSession *remoteAccountStoreSession;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *replyQueue; // @synthesize replyQueue=_replyQueue;
 
 + (id)_defaultStore;
++ (id)_obsoleteAccountTypeIDsToRemove;
++ (void)_setConnectionTimeout:(unsigned long long)arg1;
 + (void)_setDefaultStore:(id)arg1;
 + (int)accountsWithAccountTypeIdentifierExist:(id)arg1;
 + (BOOL)canSaveAccountsOfAccountTypeIdentifier:(id)arg1;
 + (long long)countOfAccountsWithAccountTypeIdentifier:(id)arg1;
 - (void).cxx_destruct;
+- (void)_clearAccountCaches;
 - (id)_connectionFailureError;
 - (id)_createSMTPAccountForServerAccount:(id)arg1;
 - (void)_removeObsoleteAccountsInternal:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -63,6 +74,7 @@
 - (id)allDataclasses;
 - (id)appPermissionsForAccountType:(id)arg1;
 - (void)cachedAccountWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)cachedAccountsWithAccountType:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)canSaveAccount:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
 - (id)childAccountsForAccount:(id)arg1;
 - (id)childAccountsForAccount:(id)arg1 error:(id *)arg2;
@@ -70,7 +82,6 @@
 - (void)clearAllPermissionsGrantedForAccountType:(id)arg1;
 - (void)clearGrantedPermissionsForAccountType:(id)arg1;
 - (id)clientTokenForAccount:(id)arg1;
-- (void)connectToRemoteAccountStoreUsingEndpoint:(id)arg1;
 - (id)credentialForAccount:(id)arg1;
 - (id)credentialForAccount:(id)arg1 bundleID:(id)arg2;
 - (id)credentialForAccount:(id)arg1 error:(id *)arg2;
@@ -101,6 +112,7 @@
 - (BOOL)isPushSupportedForAccount:(id)arg1;
 - (BOOL)isTetheredSyncingEnabledForDataclass:(id)arg1;
 - (void)kerberosAccountsForDomainFromURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)migrateCredentialForAccount:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)notifyRemoteDevicesOfModifiedAccount:(id)arg1;
 - (void)notifyRemoteDevicesOfNewAccount:(id)arg1;
 - (void)notifyRemoteDevicesOfNewAccount:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -140,6 +152,7 @@
 - (void)setCredential:(id)arg1 forAccount:(id)arg2 serviceID:(id)arg3 error:(id *)arg4;
 - (void)setNotificationsEnabled:(BOOL)arg1;
 - (void)setPermissionGranted:(BOOL)arg1 forBundleID:(id)arg2 onAccountType:(id)arg3;
+- (void)shutdownAccountsD:(CDUnknownBlockType)arg1;
 - (id)supportedDataclassesForAccountType:(id)arg1;
 - (id)syncableDataclassesForAccountType:(id)arg1;
 - (id)tetheredSyncSourceTypeForDataclass:(id)arg1;

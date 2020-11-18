@@ -35,6 +35,7 @@
 + (id)managedObjectModel;
 + (id)managedObjectModelURL;
 + (void)removePhotosDatabaseWithPathManager:(id)arg1;
++ (BOOL)shouldTrackIndexUse;
 - (void).cxx_destruct;
 - (BOOL)_configurePersistentStoreCoordinator:(id)arg1 overrideCurrentModelVersionInStore:(BOOL)arg2 error:(id *)arg3;
 - (long long)configureSharedPersistentStoreCoordinatorAndMigrateOrRebuildIfNecessaryWithModelMigrator:(id)arg1 migrationPolicy:(unsigned int)arg2 error:(id *)arg3;

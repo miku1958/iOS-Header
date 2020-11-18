@@ -10,6 +10,11 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 
 #pragma mark Named Structures
 
+struct ArrayTable {
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field1;
+    struct sqlite3 *_field2;
+};
+
 struct AttributeTable {
     CDUnknownFunctionPointerType *_field1;
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field2;
@@ -21,20 +26,48 @@ struct AttributeTable {
     struct shared_ptr<degas::Statement> _field8;
 };
 
+struct AttributeValueCursor {
+    struct shared_ptr<degas::Statement> _field1;
+};
+
+struct AttributeValueTable {
+    CDUnknownFunctionPointerType *_field1;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field2;
+    struct sqlite3 *_field3;
+    struct shared_ptr<degas::Statement> _field4;
+    struct shared_ptr<degas::Statement> _field5;
+    struct shared_ptr<degas::Statement> _field6;
+    struct shared_ptr<degas::Statement> _field7;
+    struct shared_ptr<degas::Statement> _field8;
+    struct shared_ptr<degas::Statement> _field9;
+    struct shared_ptr<degas::Statement> _field10;
+    struct shared_ptr<degas::Statement> _field11;
+    struct shared_ptr<degas::Statement> _field12;
+    struct shared_ptr<degas::Statement> _field13;
+    struct shared_ptr<degas::Statement> _field14;
+    struct shared_ptr<degas::Statement> _field15;
+    struct shared_ptr<degas::Statement> _field16;
+    struct shared_ptr<degas::Statement> _field17;
+    struct shared_ptr<degas::Statement> _field18;
+    struct shared_ptr<degas::Statement> _field19;
+    int _field20;
+};
+
 struct Bitmap {
-    unsigned long long _field1;
-    unsigned long long _field2;
-    struct vector<degas::BitsetPtr, std::__1::allocator<degas::BitsetPtr>> _field3;
-    BOOL _field4;
+    unsigned long long _bitCount;
+    unsigned long long _lastOffsetFoundAt;
+    struct vector<degas::BitsetPtr, std::__1::allocator<degas::BitsetPtr>> _bitSets;
+    BOOL _dirty;
 };
 
 struct BitmapTable {
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field1;
     struct sqlite3 *_field2;
-    struct Bitmap *_field3;
 };
 
 struct BitsetPtr;
+
+struct CountedPathCollection;
 
 struct Database {
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field1;
@@ -44,16 +77,27 @@ struct Database {
     struct NodeTable _field5;
     struct EdgeTable _field6;
     struct AttributeTable _field7;
-    struct map<unsigned long long, degas::AttributeInstanceTable, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, degas::AttributeInstanceTable>>> _field8;
-    struct map<unsigned long long, degas::AttributeInstanceTable, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, degas::AttributeInstanceTable>>> _field9;
+    struct AttributeValueTable _field8;
+    struct AttributeValueTable _field9;
     struct Statement *_field10;
     struct Statement *_field11;
     struct BitmapTable _field12;
+    struct ArrayTable _field13;
+    long long _field14;
+    long long _field15;
+    struct map<unsigned long long, degas::Bitmap, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, degas::Bitmap>>> _field16;
+    struct map<unsigned long long, degas::Bitmap, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, degas::Bitmap>>> _field17;
+    BOOL _field18;
+    int _field19;
+    struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field20;
+    BOOL _field21;
 };
 
 struct EdgeCursor {
     struct shared_ptr<degas::Statement> _field1;
 };
+
+struct EdgeFilter;
 
 struct EdgeTable {
     CDUnknownFunctionPointerType *_field1;
@@ -93,6 +137,8 @@ struct NodeCursor {
     struct shared_ptr<degas::Statement> _field1;
 };
 
+struct NodeFilter;
+
 struct NodeTable {
     CDUnknownFunctionPointerType *_field1;
     struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> _field2;
@@ -106,6 +152,28 @@ struct NodeTable {
 };
 
 struct Statement;
+
+struct StepSpecification;
+
+struct Traversal {
+    struct Database *_field1;
+    int _field2;
+    struct Bitmap _field3;
+    struct Bitmap _field4;
+    shared_ptr_880b949f _field5;
+    struct vector<degas::StepSpecification, std::__1::allocator<degas::StepSpecification>> _field6;
+    struct shared_ptr<degas::CountedPathCollection> _field7;
+    struct shared_ptr<degas::UncountedPathCollection> _field8;
+};
+
+struct UncountedPathCollection;
+
+struct _NSRange {
+    unsigned long long _field1;
+    unsigned long long _field2;
+};
+
+struct __shared_weak_count;
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {
     struct __tree_node_base<void *> *_field1;
@@ -135,37 +203,13 @@ struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>
     } _field1;
 };
 
-struct map<unsigned long long, degas::AttributeInstanceCursor, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, degas::AttributeInstanceCursor>>> {
-    struct __tree<std::__1::__value_type<unsigned long long, degas::AttributeInstanceCursor>, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, degas::AttributeInstanceCursor>, std::__1::less<unsigned long long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long long, degas::AttributeInstanceCursor>>> {
+struct map<unsigned long long, degas::Bitmap, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, degas::Bitmap>>> {
+    struct __tree<std::__1::__value_type<unsigned long long, degas::Bitmap>, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, degas::Bitmap>, std::__1::less<unsigned long long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long long, degas::Bitmap>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long long, degas::AttributeInstanceCursor>, void *>>> {
+        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long long, degas::Bitmap>, void *>>> {
             struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
         } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, degas::AttributeInstanceCursor>, std::__1::less<unsigned long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<unsigned long long, degas::AttributeInstanceTable, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, degas::AttributeInstanceTable>>> {
-    struct __tree<std::__1::__value_type<unsigned long long, degas::AttributeInstanceTable>, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, degas::AttributeInstanceTable>, std::__1::less<unsigned long long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long long, degas::AttributeInstanceTable>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long long, degas::AttributeInstanceTable>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, degas::AttributeInstanceTable>, std::__1::less<unsigned long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-};
-
-struct map<unsigned long long, degas::DataType, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, degas::DataType>>> {
-    struct __tree<std::__1::__value_type<unsigned long long, degas::DataType>, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, degas::DataType>, std::__1::less<unsigned long long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long long, degas::DataType>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long long, degas::DataType>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, degas::DataType>, std::__1::less<unsigned long long>, true>> {
+        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, degas::Bitmap>, std::__1::less<unsigned long long>, true>> {
             unsigned long long _field1;
         } _field3;
     } _field1;
@@ -175,45 +219,59 @@ struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
 
+struct shared_ptr<degas::CountedPathCollection> {
+    struct CountedPathCollection *_field1;
+    struct __shared_weak_count *_field2;
+};
+
+struct shared_ptr<degas::EdgeFilter> {
+    struct EdgeFilter *_field1;
+    struct __shared_weak_count *_field2;
+};
+
+struct shared_ptr<degas::NodeFilter> {
+    struct NodeFilter *_field1;
+    struct __shared_weak_count *_field2;
+};
+
 struct shared_ptr<degas::Statement> {
     struct Statement *_field1;
+    struct __shared_weak_count *_field2;
+};
+
+struct shared_ptr<degas::UncountedPathCollection> {
+    struct UncountedPathCollection *_field1;
     struct __shared_weak_count *_field2;
 };
 
 struct sqlite3;
 
 struct vector<degas::BitsetPtr, std::__1::allocator<degas::BitsetPtr>> {
-    struct BitsetPtr *_field1;
-    struct BitsetPtr *_field2;
+    struct BitsetPtr *__begin_;
+    struct BitsetPtr *__end_;
     struct __compressed_pair<degas::BitsetPtr *, std::__1::allocator<degas::BitsetPtr>> {
-        struct BitsetPtr *_field1;
+        struct BitsetPtr *__value_;
+    } __end_cap_;
+};
+
+struct vector<degas::StepSpecification, std::__1::allocator<degas::StepSpecification>> {
+    struct StepSpecification *_field1;
+    struct StepSpecification *_field2;
+    struct __compressed_pair<degas::StepSpecification *, std::__1::allocator<degas::StepSpecification>> {
+        struct StepSpecification *_field1;
     } _field3;
 };
 
 #pragma mark Typedef'd Structures
 
 // Template types
-typedef struct map<unsigned long long, degas::AttributeInstanceCursor, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, degas::AttributeInstanceCursor>>> {
-    struct __tree<std::__1::__value_type<unsigned long long, degas::AttributeInstanceCursor>, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, degas::AttributeInstanceCursor>, std::__1::less<unsigned long long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long long, degas::AttributeInstanceCursor>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long long, degas::AttributeInstanceCursor>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, degas::AttributeInstanceCursor>, std::__1::less<unsigned long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-} map_f5a6a24a;
+typedef struct shared_ptr<degas::EdgeFilter> {
+    struct EdgeFilter *_field1;
+    struct __shared_weak_count *_field2;
+} shared_ptr_4dd6561c;
 
-typedef struct map<unsigned long long, degas::DataType, std::__1::less<unsigned long long>, std::__1::allocator<std::__1::pair<const unsigned long long, degas::DataType>>> {
-    struct __tree<std::__1::__value_type<unsigned long long, degas::DataType>, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, degas::DataType>, std::__1::less<unsigned long long>, true>, std::__1::allocator<std::__1::__value_type<unsigned long long, degas::DataType>>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<std::__1::__value_type<unsigned long long, degas::DataType>, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::__map_value_compare<unsigned long long, std::__1::__value_type<unsigned long long, degas::DataType>, std::__1::less<unsigned long long>, true>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-} map_d80ba52d;
+typedef struct shared_ptr<degas::NodeFilter> {
+    struct NodeFilter *_field1;
+    struct __shared_weak_count *_field2;
+} shared_ptr_880b949f;
 

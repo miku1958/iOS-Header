@@ -7,6 +7,7 @@
 #import <UIKit/UIView.h>
 
 #import <LinkPresentation/CAAnimationDelegate-Protocol.h>
+#import <LinkPresentation/LPComponentViewDelegate-Protocol.h>
 #import <LinkPresentation/LPTapToLoadViewDelegate-Protocol.h>
 #import <LinkPresentation/LPThemeClient-Protocol.h>
 #import <LinkPresentation/UIContextMenuInteractionDelegate-Protocol.h>
@@ -15,7 +16,7 @@
 @class LPAnimationMaskView, LPCaptionBarPresentationProperties, LPCaptionButtonPresentationProperties, LPImage, LPImagePresentationProperties, LPInlineMediaPlaybackInformation, LPLinkMetadata, LPLinkViewComponents, LPTheme, LPVideo, NSArray, NSHashTable, NSMutableArray, NSString, NSURL, UIColor, UIContextMenuInteraction;
 @protocol LPLinkViewDelegate;
 
-@interface LPLinkView : UIView <UIContextMenuInteractionDelegate, UIGestureRecognizerDelegate, CAAnimationDelegate, LPTapToLoadViewDelegate, LPThemeClient>
+@interface LPLinkView : UIView <UIContextMenuInteractionDelegate, UIGestureRecognizerDelegate, CAAnimationDelegate, LPComponentViewDelegate, LPTapToLoadViewDelegate, LPThemeClient>
 {
     unsigned int _loggingID;
     NSHashTable *_pendingMetadataProviders;
@@ -25,7 +26,8 @@
     LPTheme *_theme;
     NSMutableArray *_tapGestureRecognizers;
     NSMutableArray *_highlightGestureRecognizers;
-    UIView *_highlightView;
+    UIView *_captionHighlightView;
+    UIView *_mediaHighlightView;
     BOOL _isPreliminary;
     long long _style;
     LPCaptionBarPresentationProperties *_captionBar;
@@ -41,6 +43,7 @@
     UIColor *_overrideBackgroundColor;
     LPInlineMediaPlaybackInformation *_inlinePlaybackInformation;
     double _minimumHeight;
+    NSString *_domainNameForIndicator;
     LPLinkViewComponents *_components;
     LPLinkViewComponents *_componentsForSizing;
     UIView *_contentView;
@@ -64,12 +67,14 @@
     BOOL _disableHighlightGesture;
     BOOL _disablePreviewGesture;
     BOOL _disableAutoPlay;
+    BOOL _allowsLoadingMediaWithAutoPlayDisabled;
     BOOL _disablePlayback;
     BOOL _disablePlaybackControls;
     BOOL _allowsTapToLoad;
     BOOL _forceFlexibleWidth;
     BOOL _applyCornerRadius;
     long long _animationOrigin;
+    NSURL *_overrideURL;
     unsigned long long _preferredSizeClass;
     NSString *_sourceBundleIdentifier;
     id<LPLinkViewDelegate> _delegate;
@@ -79,6 +84,7 @@
 }
 
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
+@property (nonatomic, setter=_setAllowsLoadingMediaWithAutoPlayDisabled:) BOOL _allowsLoadingMediaWithAutoPlayDisabled; // @synthesize _allowsLoadingMediaWithAutoPlayDisabled;
 @property (nonatomic, setter=_setAllowsTapToLoad:) BOOL _allowsTapToLoad; // @synthesize _allowsTapToLoad;
 @property (nonatomic, setter=_setAnimationOrigin:) long long _animationOrigin; // @synthesize _animationOrigin;
 @property (nonatomic, setter=_setApplyCornerRadius:) BOOL _applyCornerRadius; // @synthesize _applyCornerRadius;
@@ -91,6 +97,7 @@
 @property (nonatomic, setter=_setDisableTapGesture:) BOOL _disableTapGesture; // @synthesize _disableTapGesture;
 @property (nonatomic, setter=_setForceFlexibleWidth:) BOOL _forceFlexibleWidth; // @synthesize _forceFlexibleWidth;
 @property (nonatomic, setter=_setNeedsMessagesTranscriptPushCounterAnimation:) BOOL _needsMessagesTranscriptPushCounterAnimation; // @synthesize _needsMessagesTranscriptPushCounterAnimation;
+@property (strong, nonatomic, setter=_setOverrideURL:) NSURL *_overrideURL; // @synthesize _overrideURL;
 @property (nonatomic, setter=_setPreferredSizeClass:) unsigned long long _preferredSizeClass; // @synthesize _preferredSizeClass;
 @property (readonly, nonatomic) struct CGRect _primaryCaptionBarFrame;
 @property (strong, nonatomic, setter=_setSourceBundleIdentifier:) NSString *_sourceBundleIdentifier; // @synthesize _sourceBundleIdentifier;
@@ -106,14 +113,18 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_addHighlightRecognizerToView:(id)arg1;
-- (void)_addTapRecognizerToView:(id)arg1;
+- (void)_addHighlightRecognizerToView:(id)arg1 forMedia:(BOOL)arg2;
+- (void)_addTapRecognizerToView:(id)arg1 forMedia:(BOOL)arg2;
 - (void)_cancelActiveHighlight;
+- (void)_captionBarButtonPressed:(id)arg1;
+- (void)_captionHighlightRecognized:(id)arg1;
+- (void)_captionTapRecognized:(id)arg1;
 - (void)_commonInitWithURL:(id)arg1;
 - (void)_computePresentationPropertiesFromMetadataIfNeeded;
 - (void)_configureWithoutLoadingMetadataFromURLs:(id)arg1;
 - (id)_createCaptionBar;
 - (id)_createComponents;
+- (id)_createDomainNameIndicator;
 - (id)_createMediaBottomCaptionBarView;
 - (id)_createMediaTopCaptionBarView;
 - (id)_createMediaView;
@@ -123,7 +134,6 @@
 - (unsigned long long)_edgesPropagatingSafeAreaInsetsToDescendants;
 - (void)_fetchMetadata;
 - (id)_fetchMetadataForURL:(id)arg1 withSubresources:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (void)_highlightRecognized:(id)arg1;
 - (id)_initWithMetadataLoadedFromURLs:(id)arg1;
 - (id)_initWithMultipleMetadata:(id)arg1;
 - (void)_installHighlightGestureRecognizers;
@@ -131,12 +141,17 @@
 - (void)_installTapGestureRecognizers;
 - (void)_invalidateLayout;
 - (void)_invalidatePresentationProperties;
+- (BOOL)_isUsingAppClipPresentation;
 - (void)_layoutLinkView;
 - (struct CGSize)_layoutLinkViewForSize:(struct CGSize)arg1 applyingLayout:(BOOL)arg2;
-- (void)_performDeferredLayout;
+- (void)_mediaHighlightRecognized:(id)arg1;
+- (void)_mediaTapRecognized:(id)arg1;
+- (void)_openURLAllowingSensitiveSchemes:(BOOL)arg1 allowingAssociatedApplications:(BOOL)arg2;
 - (void)_rebuildGestureRecognizersIfNeeded;
 - (void)_rebuildSubviewsWithAnimation:(BOOL)arg1;
 - (void)_setAction:(CDUnknownBlockType)arg1 withText:(id)arg2;
+- (void)_setHighlightCaption:(BOOL)arg1;
+- (void)_setHighlightMedia:(BOOL)arg1;
 - (void)_setMaskImage:(id)arg1;
 - (void)_setMetadata:(id)arg1 isFinal:(BOOL)arg2;
 - (void)_setMetadataInternal:(id)arg1;
@@ -146,7 +161,6 @@
 - (BOOL)_shouldApplyCornerRadius;
 - (BOOL)_shouldClipAnimationView;
 - (BOOL)_shouldUseAnimations;
-- (void)_tapRecognized:(id)arg1;
 - (void)_uninstallHighlightGestureRecognizers;
 - (void)_uninstallPreviewGestureRecognizer;
 - (void)_uninstallTapGestureRecognizers;
@@ -157,6 +171,8 @@
 - (void)animateInViews;
 - (void)animateOutAndRemoveViews;
 - (void)animationDidStop:(id)arg1 finished:(BOOL)arg2;
+- (long long)componentView:(id)arg1 allowedImageFilterForFilter:(long long)arg2;
+- (void)componentViewDidChangeIntrinsicContentSize:(id)arg1;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)contextMenuInteraction:(id)arg1 willDisplayMenuForConfiguration:(id)arg2 animator:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
@@ -164,6 +180,7 @@
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
+- (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (id)initWithMetadata:(id)arg1;

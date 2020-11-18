@@ -11,6 +11,7 @@
 
 @class MPAVItem, MPAlternateTrack, NSString, UITableView, _UIBackdropView;
 
+__attribute__((visibility("hidden")))
 @interface _MPAudioAndSubtitlesController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
     MPAVItem *_avItem;

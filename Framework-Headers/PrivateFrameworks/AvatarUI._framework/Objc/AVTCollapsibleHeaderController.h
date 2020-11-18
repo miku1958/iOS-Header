@@ -60,7 +60,7 @@
 - (void).cxx_destruct;
 - (void)collapseAnimated:(BOOL)arg1;
 - (void)expandAnimated:(BOOL)arg1;
-- (void)expandAnimated:(BOOL)arg1 withFocusRect:(struct CGRect)arg2;
+- (void)expandAnimated:(BOOL)arg1 withFocusRect:(struct CGRect)arg2 standardItemHeight:(double)arg3;
 - (id)forwardingTargetForSelector:(SEL)arg1;
 - (double)headerHeightForContentOffset:(double)arg1 contentInset:(struct UIEdgeInsets)arg2;
 - (id)initWithScrollView:(id)arg1 headerView:(id)arg2 minHeight:(double)arg3 maxHeight:(double)arg4;

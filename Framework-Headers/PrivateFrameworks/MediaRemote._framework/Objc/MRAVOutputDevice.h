@@ -25,8 +25,6 @@
     BOOL _proxyGroupPlayer;
     BOOL _canRelayCommunicationChannel;
     BOOL _supportsBufferedAirPlay;
-    BOOL _supportsRapport;
-    BOOL _isAddedToHomeKit;
     BOOL _deviceGroupable;
     BOOL _pickedOnPairedDevice;
     BOOL _hasBatteryLevel;
@@ -36,6 +34,8 @@
     BOOL _parentGroupContainsDiscoverableLeader;
     BOOL _volumeControlAvailable;
     BOOL _supportsHAP;
+    BOOL _supportsRapport;
+    BOOL _isAddedToHomeKit;
     unsigned int _deviceType;
     unsigned int _deviceSubtype;
     float _batteryLevel;
@@ -45,16 +45,17 @@
     NSString *_modelID;
     NSString *_firmwareVersion;
     NSString *_groupID;
-    NSString *_logicalDeviceID;
     NSData *_MACAddress;
     NSDictionary *_modelSpecificInfo;
     NSString *_playingPairedDeviceName;
+    NSArray *_clusterComposition;
     NSString *_parentGroupIdentifier;
-    MRAVOutputDeviceSourceInfo *_sourceInfo;
     NSString *_bluetoothID;
+    MRAVEndpoint *_endpoint;
+    MRAVOutputDeviceSourceInfo *_sourceInfo;
+    NSString *_logicalDeviceID;
     NSString *_currentBluetoothListeningMode;
     NSArray *_availableBluetoothListeningModes;
-    MRAVEndpoint *_endpoint;
 }
 
 @property (readonly, nonatomic) NSData *MACAddress; // @synthesize MACAddress=_MACAddress;
@@ -69,6 +70,7 @@
 @property (readonly, nonatomic) BOOL canPlayEncryptedProgressiveDownloadAssets; // @synthesize canPlayEncryptedProgressiveDownloadAssets=_canPlayEncryptedProgressiveDownloadAssets;
 @property (readonly, nonatomic) BOOL canRelayCommunicationChannel; // @synthesize canRelayCommunicationChannel=_canRelayCommunicationChannel;
 @property (readonly, nonatomic) NSString *capabilitiesDescription;
+@property (readonly, nonatomic) NSArray *clusterComposition; // @synthesize clusterComposition=_clusterComposition;
 @property (readonly, nonatomic) NSString *composedTypeDescription;
 @property (readonly, nonatomic) NSString *currentBluetoothListeningMode; // @synthesize currentBluetoothListeningMode=_currentBluetoothListeningMode;
 @property (readonly, nonatomic) NSString *debugName;
@@ -107,6 +109,7 @@
 @property (readonly, nonatomic) BOOL supportsHAP; // @synthesize supportsHAP=_supportsHAP;
 @property (readonly, nonatomic) BOOL supportsRapport; // @synthesize supportsRapport=_supportsRapport;
 @property (readonly, nonatomic) NSString *uid; // @synthesize uid=_uid;
+@property (readonly, nonatomic, getter=isUsingJSONProtocol) BOOL usingJSONProtocol;
 @property (nonatomic) float volume; // @synthesize volume=_volume;
 @property (readonly, nonatomic) unsigned int volumeCapabilities;
 @property (readonly, nonatomic, getter=isVolumeControlAvailable) BOOL volumeControlAvailable; // @synthesize volumeControlAvailable=_volumeControlAvailable;
@@ -114,6 +117,7 @@
 + (id)localDeviceLocalizedName;
 + (id)localDeviceUID;
 - (void).cxx_destruct;
+- (BOOL)containsUID:(id)arg1;
 - (id)description;
 - (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;

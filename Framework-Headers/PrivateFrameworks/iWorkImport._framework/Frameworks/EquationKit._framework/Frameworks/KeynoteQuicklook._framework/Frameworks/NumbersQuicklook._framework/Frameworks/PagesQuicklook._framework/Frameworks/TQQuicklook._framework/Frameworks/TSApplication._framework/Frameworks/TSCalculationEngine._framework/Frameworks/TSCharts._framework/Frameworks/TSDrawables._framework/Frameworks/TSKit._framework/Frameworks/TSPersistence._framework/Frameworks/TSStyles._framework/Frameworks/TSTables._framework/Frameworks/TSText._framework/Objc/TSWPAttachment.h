@@ -41,7 +41,7 @@
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
 - (BOOL)changesWithPageCount;
 - (id)copyWithContext:(id)arg1;
-- (int)elementKind;
+- (unsigned int)elementKind;
 - (unsigned long long)findCharIndex;
 - (void)infoChanged;
 - (id)initWithContext:(id)arg1;

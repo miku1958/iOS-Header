@@ -29,22 +29,15 @@
     RBSystemState *_systemState;
 }
 
-@property (strong, nonatomic) RBAssertionCollection *assertionCollection; // @synthesize assertionCollection=_assertionCollection;
-@property (strong, nonatomic) id<RBBundlePropertiesManaging> bundlePropertiesManager; // @synthesize bundlePropertiesManager=_bundlePropertiesManager;
 @property (readonly, nonatomic) RBProcessStateChangeSet *changeSet; // @synthesize changeSet=_changeSet;
-@property (strong, nonatomic) id<RBDomainAttributeManaging> domainAttributeManager; // @synthesize domainAttributeManager=_domainAttributeManager;
-@property (strong, nonatomic) id<RBEntitlementManaging> entitlementManager; // @synthesize entitlementManager=_entitlementManager;
 @property (readonly, nonatomic) NSSet *gainedStartTimeDefining; // @synthesize gainedStartTimeDefining=_gainedStartTimeDefining;
 @property (readonly, nonatomic) NSSet *lostStartTimeDefining; // @synthesize lostStartTimeDefining=_lostStartTimeDefining;
-@property (strong, nonatomic) RBProcessIndex *processIndex; // @synthesize processIndex=_processIndex;
-@property (strong, nonatomic) RBProcessMap *stateMap; // @synthesize stateMap=_stateMap;
 @property (readonly, nonatomic) RBSystemState *systemState; // @synthesize systemState=_systemState;
 @property (readonly, nonatomic) NSSet *touchedAssertions; // @synthesize touchedAssertions=_touchedAssertions;
 
 - (void).cxx_destruct;
 - (id)_assertionGraphFromAssertion:(id)arg1;
 - (void)_assertionGraphFromAssertion:(id)arg1 graph:(id)arg2;
-- (id)_createContextForAssertion:(id)arg1;
 - (void)_finalizeStateChangeSet;
 - (id)_inheritancesForOriginator:(id)arg1;
 - (id)_latestStateForIdentity:(id)arg1;
@@ -53,8 +46,6 @@
 - (void)_resolveSystemState;
 - (void)_suspendOrResumeAssertionsForTarget:(id)arg1 oldState:(id)arg2 newState:(id)arg3;
 - (void)_updateStatesForAssertion:(id)arg1;
-- (id)initWithAssertions:(id)arg1;
-- (void)resolve;
 
 @end
 

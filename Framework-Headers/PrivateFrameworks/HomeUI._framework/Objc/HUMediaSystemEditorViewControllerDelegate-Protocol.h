@@ -6,10 +6,11 @@
 
 #import <HomeUI/NSObject-Protocol.h>
 
-@class HMAccessory, HMMediaSystem, HUMediaSystemEditorViewController;
+@class HMAccessory, HMMediaSystem, HUItemTableViewController;
+@protocol HUPresentationDelegateHost;
 
 @protocol HUMediaSystemEditorViewControllerDelegate <NSObject>
-- (void)mediaSystemEditor:(HUMediaSystemEditorViewController *)arg1 didAbortMediaSystemCreationDueToAccessoryNeedingUpdate:(HMAccessory *)arg2;
-- (void)mediaSystemEditor:(HUMediaSystemEditorViewController *)arg1 didCreateMediaSystem:(HMMediaSystem *)arg2;
+- (void)mediaSystemEditor:(HUItemTableViewController<HUPresentationDelegateHost> *)arg1 didAbortMediaSystemCreationDueToAccessoryNeedingUpdate:(HMAccessory *)arg2;
+- (void)mediaSystemEditor:(HUItemTableViewController<HUPresentationDelegateHost> *)arg1 didCreateMediaSystem:(HMMediaSystem *)arg2;
 @end
 

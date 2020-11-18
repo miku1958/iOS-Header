@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSString, _MRDeviceInfoMessageProtobuf;
+@class MRDeviceInfo, NSError, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MRExternalDeviceTransport : NSObject
@@ -17,7 +17,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (readonly, nonatomic) long long connectionType; // @synthesize connectionType=_connectionType;
-@property (readonly, nonatomic) _MRDeviceInfoMessageProtobuf *deviceInfo;
+@property (readonly, nonatomic) MRDeviceInfo *deviceInfo;
 @property (readonly, nonatomic) NSError *error;
 @property (readonly, nonatomic) NSString *hostname;
 @property (readonly, nonatomic) NSString *name;
@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *uid; // @synthesize uid=_uid;
 
 - (void).cxx_destruct;
-- (BOOL)getInputStream:(id *)arg1 outputStream:(id *)arg2;
+- (BOOL)getInputStream:(id *)arg1 outputStream:(id *)arg2 userInfo:(id)arg3;
 - (void)reset;
 
 @end

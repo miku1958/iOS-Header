@@ -23,7 +23,6 @@
 - (BOOL)canMakeJingleRequest;
 - (id)init;
 - (void)jingleRequestCompleted:(id)arg1;
-- (id)makeOptOutRequest:(id)arg1 status:(BOOL)arg2 timestamp:(double)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (id)makeSegmentRequest:(id)arg1 forceSegments:(BOOL)arg2 withCompletion:(CDUnknownBlockType)arg3;
 - (void)startJingleRequest:(id)arg1;
 

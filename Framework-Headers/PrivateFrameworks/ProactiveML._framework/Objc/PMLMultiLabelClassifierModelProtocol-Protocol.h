@@ -4,13 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <ProactiveML/NSObject-Protocol.h>
+#import <ProactiveML/PMLMultiLabelClassifierProtocol-Protocol.h>
 
-@class NSArray, PMLSparseVector;
+@class NSArray;
 
-@protocol PMLMultiLabelClassifierModelProtocol <NSObject>
-- (NSArray *)classify:(PMLSparseVector *)arg1;
-- (unsigned long long)count;
-- (NSArray *)predict:(PMLSparseVector *)arg1;
+@protocol PMLMultiLabelClassifierModelProtocol <PMLMultiLabelClassifierProtocol>
+- (id)initWithWeightsArray:(NSArray *)arg1 andIntercept:(BOOL)arg2;
 @end
 

@@ -6,21 +6,33 @@
 
 #import <UIKit/UITableViewCell.h>
 
-@class UISegmentedControl;
+#import <ChatKit/CKConversationListFilterCellCommon-Protocol.h>
+
+@class NSString, UISegmentedControl;
+@protocol CKConversationListFilterDelegate;
 
 __attribute__((visibility("hidden")))
-@interface CKConversationListFilterCell : UITableViewCell
+@interface CKConversationListFilterCell : UITableViewCell <CKConversationListFilterCellCommon>
 {
+    id<CKConversationListFilterDelegate> _filterDelegate;
     UISegmentedControl *_filterControl;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) UISegmentedControl *filterControl; // @synthesize filterControl=_filterControl;
+@property (weak, nonatomic) id<CKConversationListFilterDelegate> filterDelegate; // @synthesize filterDelegate=_filterDelegate;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
-+ (double)defaultHeight;
++ (long long)defaultCellStyle;
++ (double)defaultHeight:(long long)arg1;
 + (id)identifier;
 - (void).cxx_destruct;
+- (void)_filterCellSelectionChanged:(id)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
+- (void)updateControl:(id)arg1 selectedIndex:(unsigned long long)arg2 isEnabeld:(BOOL)arg3;
 
 @end
 

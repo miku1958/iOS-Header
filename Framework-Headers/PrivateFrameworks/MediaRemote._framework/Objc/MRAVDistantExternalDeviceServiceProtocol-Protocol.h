@@ -6,14 +6,16 @@
 
 #import <MediaRemote/NSObject-Protocol.h>
 
-@class NSArray, NSData, NSError, NSString;
+@class NSArray, NSData, NSDictionary, NSError, NSString;
 
 @protocol MRAVDistantExternalDeviceServiceProtocol <NSObject>
-- (void)connectWithOptions:(unsigned int)arg1;
+- (void)connectWithOptions:(unsigned int)arg1 userInfo:(NSDictionary *)arg2;
 - (void)disconnect:(NSError *)arg1;
 - (void)getConnectionStateWithCompletion:(void (^)(unsigned int, NSError *))arg1;
 - (void)getCustomOriginDataWithCompletion:(void (^)(NSData *, NSError *))arg1;
+- (void)getExternalDeviceIsPairedWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)getExternalDeviceMetadataWithCompletion:(void (^)(MRAVDistantExternalDeviceMetadata *, NSError *))arg1;
+- (void)getPersonalOutputDevices:(void (^)(NSArray *))arg1;
 - (void)modifyOutputContextOfType:(unsigned int)arg1 addingDeviceUIDs:(NSArray *)arg2 removingDeviceUIDs:(NSArray *)arg3 settingDeviceUIDs:(NSArray *)arg4 completion:(void (^)(NSError *))arg5;
 - (void)outputDeviceVolume:(NSString *)arg1 withCompletion:(void (^)(float, NSError *))arg2;
 - (void)outputDeviceVolumeControlCapabilities:(NSString *)arg1 withCompletion:(void (^)(unsigned int, NSError *))arg2;

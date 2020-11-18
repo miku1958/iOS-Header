@@ -35,13 +35,14 @@
 - (void)_didConnectToServer;
 - (void)_initializeAssertionBookkeeping;
 - (void)_processAssertionBacklog;
+- (id)_sendMessage:(id)arg1 error:(id *)arg2;
 - (id)_serviceName;
 - (void)_wasDisconnectedFromClient;
 - (void)_willClearServer;
-- (void)acquireAssertionWithType:(id)arg1 identifier:(id)arg2;
+- (void)acquireAssertionWithType:(id)arg1 identifier:(id)arg2 synchronously:(BOOL)arg3;
 - (void)dealloc;
 - (id)init;
-- (void)relinquishAssertionWithType:(id)arg1 identifier:(id)arg2;
+- (void)relinquishAssertionWithType:(id)arg1 identifier:(id)arg2 synchronously:(BOOL)arg3;
 - (void)sendAsynchronousMessage:(id)arg1 replyOnQueue:(id)arg2 boolResultHandler:(CDUnknownBlockType)arg3;
 - (void)sendAsynchronousMessage:(id)arg1 replyOnQueue:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)sendAsynchronousMessage:(id)arg1 replyOnQueue:(id)arg2 objectResultHandler:(CDUnknownBlockType)arg3;

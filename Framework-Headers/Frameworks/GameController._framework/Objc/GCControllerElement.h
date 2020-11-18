@@ -6,22 +6,57 @@
 
 #import <objc/NSObject.h>
 
-@class GCController;
+@class GCController, NSMutableSet, NSString;
 
 @interface GCControllerElement : NSObject
 {
+    BOOL _updatePending;
+    BOOL _boundToSystemGesture;
+    BOOL _remappable;
+    BOOL _mappableToSystemGestures;
+    float _pendingValue;
+    float _deadzone;
+    int _remappingKey;
     GCControllerElement *_collection;
     GCController *_controller;
+    NSString *_primaryAlias;
+    long long _preferredSystemGestureState;
+    NSString *_sfSymbolsName;
+    NSString *_localizedName;
+    NSString *_unmappedSfSymbolsName;
+    NSString *_unmappedLocalizedName;
+    NSMutableSet *_aliases;
 }
 
+@property (strong, nonatomic) NSMutableSet *aliases; // @synthesize aliases=_aliases;
 @property (readonly, nonatomic, getter=isAnalog) BOOL analog;
+@property (nonatomic, getter=isBoundToSystemGesture) BOOL boundToSystemGesture; // @synthesize boundToSystemGesture=_boundToSystemGesture;
 @property (weak, nonatomic) GCControllerElement *collection; // @synthesize collection=_collection;
 @property (weak, nonatomic) GCController *controller; // @synthesize controller=_controller;
+@property (nonatomic) float deadzone; // @synthesize deadzone=_deadzone;
+@property (strong, nonatomic) NSString *localizedName; // @synthesize localizedName=_localizedName;
+@property (nonatomic) BOOL mappableToSystemGestures; // @synthesize mappableToSystemGestures=_mappableToSystemGestures;
+@property float pendingValue; // @synthesize pendingValue=_pendingValue;
+@property (nonatomic) long long preferredSystemGestureState; // @synthesize preferredSystemGestureState=_preferredSystemGestureState;
+@property (strong, nonatomic) NSString *primaryAlias; // @synthesize primaryAlias=_primaryAlias;
+@property (nonatomic) BOOL remappable; // @synthesize remappable=_remappable;
+@property (nonatomic) int remappingKey; // @synthesize remappingKey=_remappingKey;
+@property (strong, nonatomic) NSString *sfSymbolsName; // @synthesize sfSymbolsName=_sfSymbolsName;
+@property (strong, nonatomic) NSString *unmappedLocalizedName; // @synthesize unmappedLocalizedName=_unmappedLocalizedName;
+@property (strong, nonatomic) NSString *unmappedSfSymbolsName; // @synthesize unmappedSfSymbolsName=_unmappedSfSymbolsName;
+@property BOOL updatePending; // @synthesize updatePending=_updatePending;
 
 - (void).cxx_destruct;
+- (BOOL)_commitPendingValueOnQueue:(id)arg1;
+- (void)_resetPendingValue;
+- (void)_setPendingValue:(float)arg1;
+- (BOOL)_setPendingValueIfChanged:(float)arg1;
 - (BOOL)_setValue:(float)arg1;
 - (BOOL)_setValue:(float)arg1 queue:(id)arg2;
 - (int)getAndResetTimesPressed;
+- (unsigned long long)hash;
+- (id)init;
+- (BOOL)isEqual:(id)arg1;
 - (float)value;
 
 @end

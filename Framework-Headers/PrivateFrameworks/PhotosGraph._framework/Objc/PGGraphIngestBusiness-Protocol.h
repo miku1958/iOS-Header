@@ -6,7 +6,7 @@
 
 #import <PhotosGraph/NSObject-Protocol.h>
 
-@class NSArray, NSDateInterval, NSString;
+@class CLCircularRegion, NSArray, NSDateInterval, NSString;
 
 @protocol PGGraphIngestBusiness <NSObject>
 
@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) BOOL hasRoutineVisit;
 @property (readonly, nonatomic) unsigned long long muid;
 @property (readonly, nonatomic) NSString *name;
+@property (readonly, nonatomic) CLCircularRegion *region;
 @property (readonly, nonatomic) double routineVisitConfidence;
 @property (readonly, nonatomic) long long venueCapacity;
 

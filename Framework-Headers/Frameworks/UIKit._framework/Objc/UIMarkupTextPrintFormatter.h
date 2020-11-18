@@ -19,7 +19,9 @@
 
 - (void).cxx_destruct;
 - (long long)_recalcPageCount;
+- (void)_resetPaginationInfo;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (void)dealloc;
 - (void)drawInRect:(struct CGRect)arg1 forPageAtIndex:(long long)arg2;
 - (id)initWithMarkupText:(id)arg1;
 - (struct CGRect)rectForPageAtIndex:(long long)arg1;

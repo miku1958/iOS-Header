@@ -72,6 +72,7 @@
 @property (readonly, nonatomic) BOOL isAccessibleElement;
 @property (readonly, nonatomic) BOOL isAutoscrolling;
 @property (readonly, nonatomic) BOOL isComboBox;
+@property (readonly, nonatomic) BOOL isControlCenterVisible;
 @property (readonly, nonatomic) BOOL isKeyboardKey;
 @property (readonly, nonatomic) BOOL isMathEquation;
 @property (readonly, nonatomic) BOOL isScannerElement;
@@ -238,6 +239,7 @@
 - (BOOL)setNativeFocus;
 - (BOOL)showContextMenu;
 - (BOOL)supportsAction:(int)arg1;
+- (BOOL)systemLongPressTVHomeButton;
 - (BOOL)systemLongPressTVMenuButton;
 - (BOOL)systemPressTVDownButton;
 - (BOOL)systemPressTVHomeButton;

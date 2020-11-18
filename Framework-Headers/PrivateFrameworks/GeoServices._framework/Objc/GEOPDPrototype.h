@@ -26,10 +26,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_componentType:1;
         unsigned int read_values:1;
         unsigned int read_version:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_componentType:1;
-        unsigned int wrote_values:1;
-        unsigned int wrote_version:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,10 +40,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 + (Class)valueType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsValue:(id)arg1;
-- (void)_readComponentType;
-- (void)_readValues;
-- (void)_readVersion;
 - (void)addValue:(id)arg1;
 - (void)clearUnknownFields:(BOOL)arg1;
 - (void)clearValues;
@@ -57,7 +50,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

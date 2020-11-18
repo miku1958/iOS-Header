@@ -6,7 +6,13 @@
 
 #import <SAObjects/SABaseCommand.h>
 
+@class NSString, SAIntentGroupProtobufMessage;
+
 @interface SABaseCommand (INSExtensionService)
+
+@property (strong, nonatomic, setter=ins_setJSONEncodedIntent:) NSString *ins_jsonEncodedIntent;
+@property (strong, nonatomic, setter=ins_setProtobufEncodedIntent:) SAIntentGroupProtobufMessage *ins_protobufEncodedIntent;
+
 - (id)ins_aceIntent;
 - (id)ins_aceIntentResponse;
 - (id)ins_afAnalyticsContext;
@@ -15,9 +21,7 @@
 - (void)ins_invokeErrorCompletionHandler:(CDUnknownBlockType)arg1 forUnderlyingError:(id)arg2;
 - (void)ins_invokeErrorCompletionHandler:(CDUnknownBlockType)arg1 withErrorCode:(long long)arg2 underlyingError:(id)arg3;
 - (BOOL)ins_isJSONPayload;
-- (id)ins_jsonEncodedIntent;
 - (id)ins_jsonEncodedIntentResponse;
-- (id)ins_protobufEncodedIntent;
 - (id)ins_protobufEncodedIntentResponse;
 - (void)ins_sendIntent:(id)arg1 toExtensionProxy:(id)arg2 onQueue:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 @end

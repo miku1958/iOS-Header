@@ -35,7 +35,7 @@
 - (void).cxx_destruct;
 - (void)_ensureMainAlertController;
 - (void)_ensureOneTimeConfirmationAlertController;
-- (void)_getDeleteActionSheetTitle:(id *)arg1 destructiveButtonTitle:(id *)arg2 cancelButtonTitle:(id *)arg3 forAssets:(id)arg4 additionalPhotoStreamAssets:(id)arg5;
+- (void)_getDeleteActionSheetTitle:(id *)arg1 destructiveButtonTitle:(id *)arg2 cancelButtonTitle:(id *)arg3 isDestructiveBehavior:(BOOL *)arg4 forAssets:(id)arg5 additionalPhotoStreamAssets:(id)arg6;
 - (void)_handleFinalUserDecisionShouldDelete:(BOOL)arg1;
 - (void)_handleMainAlertConfirmed:(BOOL)arg1;
 - (void)_handleOneTimeAlertConfirmed;

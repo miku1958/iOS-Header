@@ -15,6 +15,8 @@
     NSMutableDictionary *_settings;
 }
 
++ (id)IPXEditSettings;
++ (id)PUEditSettings;
 + (id)globalSettings;
 - (void).cxx_destruct;
 - (id)decoratorRenderFiltersForImages;

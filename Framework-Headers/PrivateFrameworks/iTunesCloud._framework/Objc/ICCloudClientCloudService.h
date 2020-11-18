@@ -7,16 +7,16 @@
 #import <objc/NSObject.h>
 
 @class NSXPCConnection;
-@protocol ICCloudServerListenerEndpointProvider, OS_dispatch_queue;
+@protocol ICCloudServerListenerEndpointProviding, OS_dispatch_queue;
 
 @interface ICCloudClientCloudService : NSObject
 {
     NSXPCConnection *_xpcConnection;
     NSObject<OS_dispatch_queue> *_serialQueue;
-    id<ICCloudServerListenerEndpointProvider> _listenerEndpointProvider;
+    id<ICCloudServerListenerEndpointProviding> _listenerEndpointProvider;
 }
 
-@property (readonly, weak, nonatomic) id<ICCloudServerListenerEndpointProvider> listenerEndpointProvider; // @synthesize listenerEndpointProvider=_listenerEndpointProvider;
+@property (readonly, weak, nonatomic) id<ICCloudServerListenerEndpointProviding> listenerEndpointProvider; // @synthesize listenerEndpointProvider=_listenerEndpointProvider;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (readonly, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 

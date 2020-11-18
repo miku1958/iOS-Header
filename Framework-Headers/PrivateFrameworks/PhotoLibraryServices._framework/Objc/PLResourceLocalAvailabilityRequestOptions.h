@@ -11,19 +11,22 @@
 @interface PLResourceLocalAvailabilityRequestOptions : NSObject
 {
     BOOL _networkAccessAllowed;
-    BOOL _shouldPrioritize;
+    BOOL _wantsProgress;
     BOOL _transient;
     NSString *_taskIdentifier;
-    CDUnknownBlockType _progressHandler;
     CDUnknownBlockType _dataHandler;
+    NSString *_clientBundleID;
+    unsigned long long _downloadIntent;
 }
 
+@property (copy, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
 @property (copy, nonatomic) CDUnknownBlockType dataHandler; // @synthesize dataHandler=_dataHandler;
+@property (nonatomic) unsigned long long downloadIntent; // @synthesize downloadIntent=_downloadIntent;
 @property (nonatomic, getter=isNetworkAccessAllowed) BOOL networkAccessAllowed; // @synthesize networkAccessAllowed=_networkAccessAllowed;
-@property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
-@property (nonatomic) BOOL shouldPrioritize; // @synthesize shouldPrioritize=_shouldPrioritize;
+@property (readonly, nonatomic) BOOL shouldPrioritize;
 @property (copy, nonatomic) NSString *taskIdentifier; // @synthesize taskIdentifier=_taskIdentifier;
 @property (nonatomic, getter=isTransient) BOOL transient; // @synthesize transient=_transient;
+@property (nonatomic) BOOL wantsProgress; // @synthesize wantsProgress=_wantsProgress;
 
 - (void).cxx_destruct;
 

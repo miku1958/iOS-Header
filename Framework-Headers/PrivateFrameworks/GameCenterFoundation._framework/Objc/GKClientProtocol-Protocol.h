@@ -30,6 +30,7 @@
 - (oneway void)receivedChallengeSelected:(GKChallengeInternal *)arg1;
 - (oneway void)refreshContentsForDataType:(unsigned int)arg1 userInfo:(NSDictionary *)arg2;
 - (oneway void)relayPushNotification:(NSDictionary *)arg1;
+- (oneway void)requestSandboxExtension:(void (^)(NSString *))arg1;
 - (oneway void)resetNetworkActivity;
 - (oneway void)respondedToNearbyInvite:(NSDictionary *)arg1;
 - (oneway void)scoreSelected:(GKScoreInternal *)arg1;

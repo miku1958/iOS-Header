@@ -20,6 +20,7 @@
 - (void).cxx_destruct;
 - (id)initWithIdentifier:(unsigned long long)arg1 syncedShortcuts:(id)arg2;
 - (id)initWithPath:(id)arg1;
+- (BOOL)isConsistentWithClientState:(unsigned long long)arg1;
 - (void)saveToPath:(id)arg1;
 
 @end

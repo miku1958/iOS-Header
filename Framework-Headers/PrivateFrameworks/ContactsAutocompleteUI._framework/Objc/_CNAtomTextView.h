@@ -17,9 +17,8 @@
 @property (readonly) NSArray *atoms;
 @property (weak) CNComposeRecipientTextView *hostRecipientView; // @synthesize hostRecipientView=_hostRecipientView;
 
++ (id)os_log;
 - (void).cxx_destruct;
-- (BOOL)_delegateSupportsKeyboardEvents;
-- (void)_handleKeyUIEvent:(id)arg1;
 - (long long)baseWritingDirection;
 - (void)batchTextStorageUpdates:(CDUnknownBlockType)arg1;
 - (BOOL)becomeFirstResponder;
@@ -27,20 +26,32 @@
 - (struct CGRect)convertGlyphRect:(struct CGRect)arg1;
 - (void)copy:(id)arg1;
 - (void)cut:(id)arg1;
+- (void)downArrowPressed;
 - (void)enumerateAtomAttachments:(CDUnknownBlockType)arg1;
 - (void)enumerateAtoms:(CDUnknownBlockType)arg1;
 - (void)enumerateAtomsInCharacterRange:(struct _NSRange)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (BOOL)hostRecipientViewHasSearchResults;
+- (BOOL)hostRecipientViewHasSearchTextOrTokensAndNoSearchResults;
 - (id)initWithFrame:(struct CGRect)arg1 textContainer:(id)arg2;
 - (BOOL)isEditingTextStorage;
+- (id)keyCommands;
+- (void)leftArrowPressed;
 - (void)makeTextWritingDirectionLeftToRight:(id)arg1;
 - (void)makeTextWritingDirectionRightToLeft:(id)arg1;
+- (BOOL)notifyDelegateWithBooleanSelector:(SEL)arg1;
+- (BOOL)notifyDelegateWithSelector:(SEL)arg1 checkReturnValue:(BOOL)arg2;
+- (BOOL)notifyDelegateWithVoidSelector:(SEL)arg1;
 - (void)paste:(id)arg1;
 - (BOOL)resignFirstResponder;
+- (void)returnPressed;
+- (void)rightArrowPressed;
 - (id)selectionRectsForRange:(id)arg1;
 - (void)setContentOffset:(struct CGPoint)arg1;
+- (void)tabPressed;
 - (id)textStylingAtPosition:(id)arg1 inDirection:(long long)arg2;
 - (id)undoManager;
+- (void)upArrowPressed;
 
 @end
 

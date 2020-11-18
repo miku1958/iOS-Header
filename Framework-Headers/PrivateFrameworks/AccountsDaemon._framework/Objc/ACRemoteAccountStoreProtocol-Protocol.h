@@ -6,7 +6,7 @@
 
 #import <AccountsDaemon/NSObject-Protocol.h>
 
-@class ACAccount, ACAccountCredential, ACAccountType, ACCredentialItem, NSArray, NSDictionary, NSNumber, NSString, NSURL;
+@class ACAccount, ACAccountCredential, ACAccountType, ACCredentialItem, NSArray, NSDictionary, NSNumber, NSSet, NSString, NSURL;
 
 @protocol ACRemoteAccountStoreProtocol <NSObject>
 - (void)accessKeysForAccountType:(ACAccountType *)arg1 handler:(void (^)(NSSet *, NSError *))arg2;
@@ -48,6 +48,7 @@
 - (void)isPushSupportedForAccount:(ACAccount *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)isTetheredSyncingEnabledForDataclass:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)kerberosAccountsForDomainFromURL:(NSURL *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
+- (void)migrateCredentialForAccount:(ACAccount *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)notifyRemoteDevicesOfModifiedAccount:(ACAccount *)arg1 withChangeType:(NSString *)arg2;
 - (void)notifyRemoteDevicesOfModifiedAccount:(ACAccount *)arg1 withChangeType:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)openAuthenticationURL:(NSURL *)arg1 forAccount:(ACAccount *)arg2 shouldConfirm:(BOOL)arg3 completion:(void (^)(BOOL, NSError *))arg4;
@@ -56,12 +57,12 @@
 - (void)permissionForAccountType:(ACAccountType *)arg1 withHandler:(void (^)(NSNumber *, NSError *))arg2;
 - (void)preloadDataclassOwnersWithCompletion:(void (^)(NSError *))arg1;
 - (void)provisionedDataclassesForAccountWithIdentifier:(NSString *)arg1 handler:(void (^)(NSSet *, NSError *))arg2;
+- (void)registerMonitorForAccountsOfTypes:(NSSet *)arg1 completion:(void (^)(NSArray *, NSError *))arg2;
 - (void)removeAccount:(ACAccount *)arg1 withDataclassActions:(NSDictionary *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)removeAccountType:(ACAccountType *)arg1 withHandler:(void (^)(NSNumber *, NSError *))arg2;
 - (void)removeAccountsFromPairedDeviceWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)removeCredentialItem:(ACCredentialItem *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)renewCredentialsForAccount:(ACAccount *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSNumber *, NSError *))arg3;
-- (void)reportTelemetryForLandmarkEvent:(void (^)(BOOL, NSError *))arg1;
 - (void)requestAccessForAccountTypeWithIdentifier:(NSString *)arg1 options:(NSDictionary *)arg2 withHandler:(void (^)(NSNumber *, NSError *))arg3;
 - (void)resetDatabaseToVersion:(NSNumber *)arg1 withCompletion:(void (^)(BOOL, NSError *))arg2;
 - (void)saveAccount:(ACAccount *)arg1 toPairedDeviceWithOptions:(NSDictionary *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
@@ -73,6 +74,7 @@
 - (void)setCredential:(ACAccountCredential *)arg1 forAccount:(ACAccount *)arg2 serviceID:(NSString *)arg3 completion:(void (^)(BOOL, NSError *))arg4;
 - (void)setNotificationsEnabled:(BOOL)arg1;
 - (void)setPermissionGranted:(NSNumber *)arg1 forBundleID:(NSString *)arg2 onAccountType:(ACAccountType *)arg3 withHandler:(void (^)(id, NSError *))arg4;
+- (void)shutdownAccountsD:(void (^)(BOOL, NSError *))arg1;
 - (void)supportedDataclassesForAccountType:(ACAccountType *)arg1 handler:(void (^)(NSSet *, NSError *))arg2;
 - (void)syncableDataclassesForAccountType:(ACAccountType *)arg1 handler:(void (^)(NSSet *, NSError *))arg2;
 - (void)tetheredSyncSourceTypeForDataclass:(NSString *)arg1 completion:(void (^)(NSString *, NSError *))arg2;

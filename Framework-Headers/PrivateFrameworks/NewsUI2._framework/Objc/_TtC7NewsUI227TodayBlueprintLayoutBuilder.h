@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *feedLayoutSolver;
     MISSING_TYPE *assetManager;
+    MISSING_TYPE *baseStyler;
 }
 
 @end

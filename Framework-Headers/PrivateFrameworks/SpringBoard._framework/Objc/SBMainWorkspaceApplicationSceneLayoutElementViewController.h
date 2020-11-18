@@ -12,8 +12,8 @@
 #import <SpringBoard/SBMedusaDecoratedDeviceApplicationSceneViewControlling-Protocol.h>
 #import <SpringBoard/SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal-Protocol.h>
 
-@class BSCornerRadiusConfiguration, NSMutableSet, NSString, SBHomeGrabberView, SBInlineAppExposeContainerViewController, SBSceneHandle, SBSceneViewStatusBarAssertion, UIDropInteraction, UIView;
-@protocol SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
+@class BSCornerRadiusConfiguration, NSMutableSet, NSString, SBDeviceApplicationSceneHandle, SBHomeGrabberView, SBInlineAppExposeContainerViewController, SBSceneViewStatusBarAssertion, UIDropInteraction, UIView;
+@protocol SBApplicationSceneBackgroundView, SBApplicationSceneViewControllingStatusBarDelegate, SBScenePlaceholderContentContext;
 
 @interface SBMainWorkspaceApplicationSceneLayoutElementViewController : SBAppContainerViewController <SBDeviceApplicationSceneHandleObserver, SBInlineAppExposeContainerViewControllerDelegate, SBMedusaDecoratedDeviceApplicationSceneViewControlling_Internal, SBMainDisplaySceneLayoutElementViewControlling, SBMedusaDecoratedDeviceApplicationSceneViewControlling>
 {
@@ -31,6 +31,7 @@
 }
 
 @property (weak, nonatomic) id<SBApplicationSceneViewControllingStatusBarDelegate> applicationSceneStatusBarDelegate;
+@property (strong, nonatomic) UIView<SBApplicationSceneBackgroundView> *backgroundView;
 @property (readonly, nonatomic, getter=isBlurred) BOOL blurred;
 @property (nonatomic) BOOL clipsToBounds; // @synthesize clipsToBounds=_clipsToBounds;
 @property (readonly, nonatomic) long long contentInterfaceOrientation;
@@ -51,7 +52,7 @@
 @property (nonatomic, getter=isNubViewHighlighted) BOOL nubViewHighlighted;
 @property (readonly, nonatomic) long long overrideStatusBarStyle;
 @property (strong, nonatomic) id<SBScenePlaceholderContentContext> placeholderContentContext;
-@property (readonly, nonatomic) SBSceneHandle *sceneHandle;
+@property (readonly, nonatomic) SBDeviceApplicationSceneHandle *sceneHandle;
 @property (nonatomic) double shadowOffset; // @synthesize shadowOffset=_shadowOffset;
 @property (nonatomic) double shadowOpacity; // @synthesize shadowOpacity=_shadowOpacity;
 @property (readonly, nonatomic) double statusBarAlpha;
@@ -60,6 +61,8 @@
 - (void).cxx_destruct;
 - (BOOL)SB_conformsToMainDisplaySceneLayoutElementViewControlling;
 - (BOOL)SB_conformsToMedusaDecoratedDeviceApplicationSceneViewControlling;
+- (BOOL)SB_conformsToSceneLayoutMedusaStatusBarAssertionProviding;
+- (BOOL)SB_conformsToSceneLayoutStatusBarAssertionProviding;
 - (id)_applicationSceneViewController;
 - (id)_applicationSceneViewControllerForSceneHandle:(id)arg1;
 - (void)_beginRequiringSceneViewMatchMoveAnimationForReason:(id)arg1;

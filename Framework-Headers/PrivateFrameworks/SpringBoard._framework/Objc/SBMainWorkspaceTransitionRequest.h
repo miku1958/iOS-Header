@@ -7,6 +7,7 @@
 #import <SpringBoard/SBWorkspaceTransitionRequest.h>
 
 @class SBMainWorkspace;
+@protocol SBBannerUnfurlSourceContextProviding;
 
 @interface SBMainWorkspaceTransitionRequest : SBWorkspaceTransitionRequest
 {
@@ -14,9 +15,15 @@
     CDUnknownBlockType _transactionProvider;
     CDUnknownBlockType _transactionConfigurator;
     CDUnknownBlockType _completionBlock;
+    BOOL _shouldPreventEmergencyNotificationBannerDismissal;
+    BOOL _shouldPreventAutoPiP;
+    id<SBBannerUnfurlSourceContextProviding> _bannerUnfurlSourceContextProvider;
 }
 
+@property (strong, nonatomic) id<SBBannerUnfurlSourceContextProviding> bannerUnfurlSourceContextProvider; // @synthesize bannerUnfurlSourceContextProvider=_bannerUnfurlSourceContextProvider;
 @property (copy, nonatomic) CDUnknownBlockType completionBlock; // @synthesize completionBlock=_completionBlock;
+@property (nonatomic) BOOL shouldPreventAutoPiP; // @synthesize shouldPreventAutoPiP=_shouldPreventAutoPiP;
+@property (nonatomic) BOOL shouldPreventEmergencyNotificationBannerDismissal; // @synthesize shouldPreventEmergencyNotificationBannerDismissal=_shouldPreventEmergencyNotificationBannerDismissal;
 @property (nonatomic) long long source; // @synthesize source=_source;
 @property (copy, nonatomic) CDUnknownBlockType transactionConfigurator; // @synthesize transactionConfigurator=_transactionConfigurator;
 @property (copy, nonatomic) CDUnknownBlockType transactionProvider; // @synthesize transactionProvider=_transactionProvider;

@@ -7,11 +7,12 @@
 #import <UIKit/UIViewController.h>
 
 #import <EventKitUI/EKCalendarEditItemDelegate-Protocol.h>
+#import <EventKitUI/EKUIManagedViewController-Protocol.h>
 
 @class EKCalendar, EKCalendarColorEditItem, EKCalendarShareesEditItem, EKEventStore, EKSource, NSArray, NSString, UITableView;
 @protocol EKCalendarEditorDelegate, EKStyleProvider;
 
-@interface EKCalendarEditor : UIViewController <EKCalendarEditItemDelegate>
+@interface EKCalendarEditor : UIViewController <EKCalendarEditItemDelegate, EKUIManagedViewController>
 {
     UITableView *_tableView;
     NSArray *_editItems;
@@ -19,6 +20,7 @@
     EKCalendarColorEditItem *_colorEditItem;
     unsigned long long _entityType;
     EKSource *_limitedToSource;
+    struct CGSize _preferredContentSize;
     BOOL _isNewCalendar;
     EKEventStore *_eventStore;
     EKCalendar *_calendar;
@@ -45,6 +47,7 @@
 - (void)_presentValidationAlert:(id)arg1;
 - (BOOL)_shouldShowDeleteButton;
 - (void)calendarItemStartedEditing:(id)arg1;
+- (BOOL)canManagePresentationStyle;
 - (void)cancel:(id)arg1;
 - (void)dealloc;
 - (void)done:(id)arg1;
@@ -54,6 +57,7 @@
 - (long long)numberOfSectionsInTableView:(id)arg1;
 - (id)owningNavigationController;
 - (struct CGSize)preferredContentSize;
+- (void)saveChanges;
 - (void)scrollViewDidScroll:(id)arg1;
 - (int)sectionForCalendarEditItem:(id)arg1;
 - (void)setupForCalendar;
@@ -71,6 +75,7 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
+- (BOOL)wantsManagement;
 
 @end
 

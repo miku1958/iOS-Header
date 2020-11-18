@@ -13,6 +13,7 @@
     MISSING_TYPE *delegate;
     MISSING_TYPE *dataManager;
     MISSING_TYPE *followingSelection;
+    MISSING_TYPE *offerManager;
 }
 
 @end

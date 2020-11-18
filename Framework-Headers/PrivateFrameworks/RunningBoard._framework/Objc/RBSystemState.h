@@ -6,40 +6,33 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoard/BSDescriptionProviding-Protocol.h>
 #import <RunningBoard/NSCopying-Protocol.h>
 #import <RunningBoard/NSMutableCopying-Protocol.h>
 
-@class NSMutableSet, NSSet, NSString;
+@class NSMutableSet, NSSet;
 
-@interface RBSystemState : NSObject <NSCopying, NSMutableCopying, BSDescriptionProviding>
+@interface RBSystemState : NSObject <NSCopying, NSMutableCopying>
 {
     NSMutableSet *_tags;
     BOOL _preventLaunch;
     BOOL _preventIdleSleep;
     NSMutableSet *_preventIdleSleepIdentifiers;
-    BOOL _throttleBestEffortNetworking;
+    NSMutableSet *_preventLaunchPredicates;
 }
 
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL preventIdleSleep; // @synthesize preventIdleSleep=_preventIdleSleep;
 @property (readonly, nonatomic) NSSet *preventIdleSleepIdentifiers; // @synthesize preventIdleSleepIdentifiers=_preventIdleSleepIdentifiers;
 @property (readonly, nonatomic) BOOL preventLaunch; // @synthesize preventLaunch=_preventLaunch;
-@property (readonly) Class superclass;
+@property (readonly, copy, nonatomic) NSSet *preventLaunchPredicates; // @synthesize preventLaunchPredicates=_preventLaunchPredicates;
 @property (readonly, copy, nonatomic) NSSet *tags; // @synthesize tags=_tags;
-@property (readonly, nonatomic) BOOL throttleBestEffortNetworking; // @synthesize throttleBestEffortNetworking=_throttleBestEffortNetworking;
 
 - (void).cxx_destruct;
 - (id)_init;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
+- (id)description;
+- (unsigned long long)hash;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

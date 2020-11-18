@@ -6,7 +6,7 @@
 
 #import <ChatKit/NSObject-Protocol.h>
 
-@class CKBrowserDragControllerTarget, CKBrowserDragManager;
+@class CKBrowserDragControllerTarget, CKBrowserDragManager, UIView;
 
 @protocol CKBrowserDragControllerTranscriptDelegate <NSObject>
 - (void)dragManager:(CKBrowserDragManager *)arg1 draggedItemWithTarget:(CKBrowserDragControllerTarget *)arg2;
@@ -16,5 +16,6 @@
 
 @optional
 - (void)dragManager:(CKBrowserDragManager *)arg1 overrideDropPointForTarget:(CKBrowserDragControllerTarget *)arg2 completion:(void (^)(struct CGPoint))arg3;
+- (UIView *)dragManagerTargetView:(CKBrowserDragManager *)arg1;
 @end
 

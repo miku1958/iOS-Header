@@ -14,7 +14,9 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_axAnnounceCurrentScrubPosition;
+- (void)_axUpdateAccessibilityCustomActions;
 - (void)_setControlsContainerSubviewsVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)_setPlaybackControlsState:(long long)arg1 animated:(BOOL)arg2;
 - (void)_timerFiredForHidingPlaybackControls:(id)arg1;
 - (void)didPressLeftArrowB39;
 - (void)didPressRightArrowB39;

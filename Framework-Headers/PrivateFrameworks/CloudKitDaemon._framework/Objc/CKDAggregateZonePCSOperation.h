@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long maxZoneSaveAttempts; // @synthesize maxZoneSaveAttempts=_maxZoneSaveAttempts;
 @property (nonatomic) long long numZoneSaveAttempts; // @synthesize numZoneSaveAttempts=_numZoneSaveAttempts;
 @property (strong, nonatomic) NSArray *sourceZoneIDs; // @synthesize sourceZoneIDs=_sourceZoneIDs;
+@property (nonatomic) unsigned long long state; // @dynamic state;
 @property (strong, nonatomic) CKRecordZone *targetZone; // @synthesize targetZone=_targetZone;
 @property (strong, nonatomic) NSMutableDictionary *zonePCSDataByZoneID; // @synthesize zonePCSDataByZoneID=_zonePCSDataByZoneID;
 
@@ -38,6 +39,8 @@ __attribute__((visibility("hidden")))
 - (void)main;
 - (BOOL)makeStateTransition;
 - (id)nameForState:(unsigned long long)arg1;
+- (int)operationType;
+- (id)relevantZoneIDs;
 
 @end
 

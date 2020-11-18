@@ -6,16 +6,16 @@
 
 #import <objc/NSObject.h>
 
-@class PHAMutableFloatArray;
+@class MAFloatVector;
 
 @interface PHAPrivateFederatedLearningLayerParameterDeltas : NSObject
 {
-    PHAMutableFloatArray *_weightDeltas;
-    PHAMutableFloatArray *_biasDeltas;
+    MAFloatVector *_weightDeltas;
+    MAFloatVector *_biasDeltas;
 }
 
-@property (strong, nonatomic) PHAMutableFloatArray *biasDeltas; // @synthesize biasDeltas=_biasDeltas;
-@property (strong, nonatomic) PHAMutableFloatArray *weightDeltas; // @synthesize weightDeltas=_weightDeltas;
+@property (strong, nonatomic) MAFloatVector *biasDeltas; // @synthesize biasDeltas=_biasDeltas;
+@property (strong, nonatomic) MAFloatVector *weightDeltas; // @synthesize weightDeltas=_weightDeltas;
 
 + (id)deltasFromLayerParameters:(id)arg1 toLayerParameters:(id)arg2;
 - (void).cxx_destruct;

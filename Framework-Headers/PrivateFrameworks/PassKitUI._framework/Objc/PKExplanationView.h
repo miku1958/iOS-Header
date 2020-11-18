@@ -10,7 +10,7 @@
 #import <PassKitUI/UITextViewDelegate-Protocol.h>
 #import <PassKitUI/_PKUIKVisibilityBackdropViewDelegate-Protocol.h>
 
-@class NSAttributedString, NSString, OBPrivacyLinkController, PKCheckGlyphLayer, PKPaymentSetupDockView, UIActivityIndicatorView, UIButton, UIColor, UIFont, UIImage, UIImageView, UILabel, UIScrollView, UITextView, _PKUIKVisibilityBackdropView;
+@class LAUICheckmarkLayer, NSAttributedString, NSString, OBPrivacyLinkController, PKPaymentSetupDockView, UIActivityIndicatorView, UIButton, UIColor, UIFont, UIImage, UIImageView, UILabel, UIScrollView, UITextView, _PKUIKVisibilityBackdropView;
 @protocol PKExplanationViewDelegate;
 
 @interface PKExplanationView : UIView <UIScrollViewDelegate, UITextViewDelegate, _PKUIKVisibilityBackdropViewDelegate>
@@ -22,7 +22,6 @@
     NSString *_titleText;
     UILabel *_titleLabel;
     UIActivityIndicatorView *_activityIndicator;
-    PKCheckGlyphLayer *_checkmarkLayer;
     _PKUIKVisibilityBackdropView *_backdropView;
     double _backdropWeight;
     BOOL _showPrivacyView;
@@ -49,12 +48,15 @@
     NSString *_bodyButtonText;
     long long _bodyButtonNumberOfLines;
     UIView *_bodyView;
+    double _bodyViewPadding;
     long long _bodyTextAlignment;
     unsigned long long _bodyDataDetectorTypes;
     OBPrivacyLinkController *_privacyLink;
     UIScrollView *_scrollView;
+    LAUICheckmarkLayer *_checkmarkLayer;
     UIImageView *_logoImageView;
     UITextView *_bodyTextView;
+    struct CGSize _logoImageViewTargetSize;
 }
 
 @property (readonly, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
@@ -68,7 +70,8 @@
 @property (readonly, nonatomic) UIFont *bodyTextFont;
 @property (strong, nonatomic) UITextView *bodyTextView; // @synthesize bodyTextView=_bodyTextView;
 @property (strong, nonatomic) UIView *bodyView; // @synthesize bodyView=_bodyView;
-@property (readonly, nonatomic) PKCheckGlyphLayer *checkmarkLayer; // @synthesize checkmarkLayer=_checkmarkLayer;
+@property (nonatomic) double bodyViewPadding; // @synthesize bodyViewPadding=_bodyViewPadding;
+@property (readonly, nonatomic) LAUICheckmarkLayer *checkmarkLayer; // @synthesize checkmarkLayer=_checkmarkLayer;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKExplanationViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -80,6 +83,7 @@
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (readonly, nonatomic) UIImageView *imageView;
 @property (strong, nonatomic) UIImageView *logoImageView; // @synthesize logoImageView=_logoImageView;
+@property (nonatomic) struct CGSize logoImageViewTargetSize; // @synthesize logoImageViewTargetSize=_logoImageViewTargetSize;
 @property (strong, nonatomic) OBPrivacyLinkController *privacyLink; // @synthesize privacyLink=_privacyLink;
 @property (readonly, nonatomic) UIScrollView *scrollView; // @synthesize scrollView=_scrollView;
 @property (nonatomic) BOOL showPrivacyView; // @synthesize showPrivacyView=_showPrivacyView;

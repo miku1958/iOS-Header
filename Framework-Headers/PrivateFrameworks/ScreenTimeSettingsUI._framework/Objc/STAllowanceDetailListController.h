@@ -44,7 +44,6 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isSetupController; // @synthesize isSetupController=_isSetupController;
 @property (strong, nonatomic) PSSpecifier *selectedTimeSpecifier; // @synthesize selectedTimeSpecifier=_selectedTimeSpecifier;
-@property (readonly) BOOL shouldShowCompatibilityAlert;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) PSSpecifier *timeGroupSpecifier; // @synthesize timeGroupSpecifier=_timeGroupSpecifier;
 @property (strong, nonatomic) PSSpecifier *timePickerSpecifier; // @synthesize timePickerSpecifier=_timePickerSpecifier;

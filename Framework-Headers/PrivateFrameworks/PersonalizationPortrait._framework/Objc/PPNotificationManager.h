@@ -6,13 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class _PASLock;
+@class NSNotificationCenter, _PASLock;
 @protocol OS_dispatch_queue;
 
 @interface PPNotificationManager : NSObject
 {
     _PASLock *_lockedData;
     NSObject<OS_dispatch_queue> *_serialQueue;
+    NSNotificationCenter *_notificationCenter;
 }
 
 + (void)addContactsObserverForLifetimeOfObject:(id)arg1 block:(CDUnknownBlockType)arg2;
@@ -21,9 +22,8 @@
 + (void)addPortraitChangeObserverForLifetimeOfObject:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (void)addPortraitInvalidationObserverForLifetimeOfObject:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (void)addSuggestionsObserverForLifetimeOfObject:(id)arg1 block:(CDUnknownBlockType)arg2;
-+ (id)createNewSharedManager;
++ (id)new;
 + (id)sharedInstance;
-+ (void)unsetSharedManager;
 - (void).cxx_destruct;
 - (void)_registerForEventKitChangeTrackingWithGuardedData:(id)arg1;
 - (void)addContactsChangeBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;
@@ -33,16 +33,12 @@
 - (void)addPortraitInvalidationBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;
 - (void)addSuggestionsChangeBlock:(CDUnknownBlockType)arg1 forLifetimeOfObject:(id)arg2;
 - (void)dealloc;
-- (void)fireEventKitHandler:(id)arg1 events:(id)arg2;
-- (void)fireHandler:(id)arg1;
 - (id)init;
-- (void)simulateContactsChange;
-- (void)simulateEventKitChange;
-- (void)simulateMeCardChange;
+- (id)initWithQueueName:(const char *)arg1 notificationCenter:(id)arg2;
 - (void)simulatePortraitChange;
 - (void)simulatePortraitInvalidation;
-- (void)simulateSuggestionsChange;
 - (void)stopListening;
+- (void)waitOnQueueToDrain;
 
 @end
 

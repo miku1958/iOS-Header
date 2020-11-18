@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityUseWindowBoundsForOutOfBoundsChecking;
+- (void)setHidden:(BOOL)arg1;
 
 @end
 

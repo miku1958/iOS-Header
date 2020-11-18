@@ -10,6 +10,8 @@
 {
 }
 
+- (BOOL)allowExpensiveNetwork;
+- (id)computAutoDownloadEndDateFromDate:(id)arg1;
 - (id)computeTimeOfWifiOnlyPeriodEndFromDate:(id)arg1;
 - (id)initWithDescriptor:(id)arg1;
 - (BOOL)isDownloadAllowableForCellular;

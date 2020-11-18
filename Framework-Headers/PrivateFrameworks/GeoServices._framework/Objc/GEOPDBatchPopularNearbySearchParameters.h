@@ -28,11 +28,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_unknownFields:1;
         unsigned int read_suggestionEntryMetadatas:1;
         unsigned int read_viewportInfo:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_requestLocalTimestamp:1;
-        unsigned int wrote_suggestionEntryMetadatas:1;
-        unsigned int wrote_viewportInfo:1;
-        unsigned int wrote_maxResults:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -48,9 +44,6 @@ __attribute__((visibility("hidden")))
 + (BOOL)isValid:(id)arg1;
 + (Class)suggestionEntryMetadataType;
 - (void).cxx_destruct;
-- (void)_addNoFlagsSuggestionEntryMetadata:(id)arg1;
-- (void)_readSuggestionEntryMetadatas;
-- (void)_readViewportInfo;
 - (void)addSuggestionEntryMetadata:(id)arg1;
 - (void)clearSuggestionEntryMetadatas;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -61,7 +54,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

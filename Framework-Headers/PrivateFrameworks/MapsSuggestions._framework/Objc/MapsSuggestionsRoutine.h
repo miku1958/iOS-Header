@@ -8,16 +8,18 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class GEOLocationShifter, MapsSuggestionsLimitedDictionary, NSMutableDictionary, NSString;
-@protocol MapsSuggestionsNetworkRequester, MapsSuggestionsRoutineRequester;
+@class GEOLocationShifter, MapsSuggestionsLimitedDictionary, MapsSuggestionsObservers, NSMutableDictionary, NSString;
+@protocol MapsSuggestionsNetworkRequester, MapsSuggestionsRoutineConnector;
 
 @interface MapsSuggestionsRoutine : NSObject <MapsSuggestionsObject>
 {
-    id<MapsSuggestionsRoutineRequester> _routineRequester;
+    id<MapsSuggestionsRoutineConnector> _connector;
     id<MapsSuggestionsNetworkRequester> _networkRequester;
     struct Queue _queue;
+    MapsSuggestionsObservers *_parkedCarObservers;
     NSMutableDictionary *_loiLocationsForHome;
     NSMutableDictionary *_loiLocationsForWork;
+    NSMutableDictionary *_loiLocationsForSchool;
     NSMutableDictionary *_loiVisits;
     MapsSuggestionsLimitedDictionary *_mapItemCache;
     MapsSuggestionsLimitedDictionary *_mapItemCacheOrigin;
@@ -33,34 +35,22 @@
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)_addCalendarFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
-- (BOOL)_addFieldsToSuggestionsEntry:(id)arg1 fromRTMapItem:(id)arg2;
-- (void)_addLabelForEntry:(id)arg1;
-- (BOOL)_addMapItemToShortcut:(id)arg1 fromLOI:(id)arg2 group:(id)arg3;
-- (BOOL)_addParkedCarFieldsToSuggestionsEntry:(id)arg1 vehicleEvent:(id)arg2;
-- (BOOL)_addRecentsFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
-- (BOOL)_addResumeRouteFieldsToSuggestionEntry:(id)arg1 fromSource:(id)arg2;
-- (long long)_convertType:(long long)arg1 source:(id)arg2;
-- (void)_resolveMapItemsAndAddEntries:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_setFrequentLocationsAreAvailable:(BOOL)arg1;
-- (id)_suggestionEntryForPLOI:(id)arg1;
-- (void)_treatLOIs:(id)arg1 handler:(CDUnknownBlockType)arg2;
-- (void)_treatPLOIs:(id)arg1 stepName:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)addParkedCarObserver:(id)arg1;
 - (BOOL)canProduceEntriesOfType:(long long)arg1;
 - (unsigned long long)countHomeLOIs;
+- (unsigned long long)countSchoolLOIs;
 - (unsigned long long)countWorkLOIs;
-- (double)distanceToNearest:(long long)arg1;
 - (BOOL)fetchEntriesForLocation:(id)arg1 period:(id)arg2 handler:(CDUnknownBlockType)arg3;
+- (BOOL)fetchLastVisitAtLocation:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)fetchLocationsSinceDate:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (BOOL)fetchSuggestedShortcutsForType:(long long)arg1 minVisits:(unsigned long long)arg2 maxAge:(double)arg3 handler:(CDUnknownBlockType)arg4;
-- (id)init;
-- (id)initWithRoutineRequester:(id)arg1 networkRequester:(id)arg2;
-- (id)networkRequester;
+- (void)forgetLocationOfInterest:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (id)initFromResourceDepot:(id)arg1;
+- (id)initWithRoutineConnector:(id)arg1 networkRequester:(id)arg2;
+- (BOOL)predictedExitTimeFromLocation:(id)arg1 date:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)readMeCardWithMinVisits:(unsigned long long)arg1 maxAge:(double)arg2 handler:(CDUnknownBlockType)arg3;
+- (void)removeParkedCarObserver:(id)arg1;
 - (void)removeParkedCarsAllowingFeature:(BOOL)arg1 handler:(CDUnknownBlockType)arg2;
-- (id)routineRequester;
-- (BOOL)startParkedCarEventsWithHandler:(CDUnknownBlockType)arg1;
-- (void)stopParkedCarEvents;
 - (BOOL)touristBitForLocation:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)updateFixedLOIs;
 

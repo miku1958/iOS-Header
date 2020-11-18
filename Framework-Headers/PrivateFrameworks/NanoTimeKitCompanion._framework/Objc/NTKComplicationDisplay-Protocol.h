@@ -19,5 +19,6 @@
 @optional
 - (void)setEditing:(BOOL)arg1;
 - (void)setMaxSize:(struct CGSize)arg1;
+- (long long)tritiumUpdateMode;
 @end
 

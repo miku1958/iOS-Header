@@ -6,17 +6,19 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class GEOStyleAttributes, NSString;
 
 @interface GEOCategorySearchResultSection : NSObject
 {
     long long _cellType;
     NSString *_headerDisplayName;
     NSString *_subHeaderDisplayName;
+    GEOStyleAttributes *_styleAttributes;
 }
 
 @property (nonatomic) long long cellType; // @synthesize cellType=_cellType;
 @property (copy, nonatomic) NSString *headerDisplayName; // @synthesize headerDisplayName=_headerDisplayName;
+@property (readonly, nonatomic) GEOStyleAttributes *styleAttributes; // @synthesize styleAttributes=_styleAttributes;
 @property (copy, nonatomic) NSString *subHeaderDisplayName; // @synthesize subHeaderDisplayName=_subHeaderDisplayName;
 
 - (void).cxx_destruct;

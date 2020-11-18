@@ -6,26 +6,25 @@
 
 #import <objc/NSObject.h>
 
+#import <BaseBoard/BSDescriptionProviding-Protocol.h>
+
 @class NSArray, NSString;
 
-@interface BSPluginSpecification : NSObject
+@interface BSPluginSpecification : NSObject <BSDescriptionProviding>
 {
+    NSArray *_allowListedNames;
     NSString *_type;
-    NSArray *_whitelistedNames;
     NSString *_classOrProtocolName;
 }
 
-@property (readonly, nonatomic) NSString *requiredClassOrProtocolName; // @synthesize requiredClassOrProtocolName=_classOrProtocolName;
-@property (readonly, copy, nonatomic) NSString *type; // @synthesize type=_type;
-@property (readonly, nonatomic, getter=isValid) BOOL valid;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
-+ (id)specificationsFromHostBundle:(id)arg1;
 - (void).cxx_destruct;
-- (id)description;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
-- (id)initWithPlistSpecification:(id)arg1;
-- (BOOL)matchesPluginBundle:(id)arg1;
 - (id)succinctDescription;
 - (id)succinctDescriptionBuilder;
 

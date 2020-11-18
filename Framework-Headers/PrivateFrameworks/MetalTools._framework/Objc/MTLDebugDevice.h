@@ -6,23 +6,18 @@
 
 #import <MetalTools/MTLToolsDevice.h>
 
-@class NSMutableSet;
-
 @interface MTLDebugDevice : MTLToolsDevice
 {
-    BOOL _prevResourceTrackingEnabled;
-    NSMutableSet *_buffersAlreadyChecksummedInFrame;
     struct MTLSamplerDescriptorHashMap _argumentBufferSamplers;
-    BOOL _resourceTrackingEnabled;
-    BOOL _resourceTrackingChecksummingEnabled;
-    BOOL _resourceTrackingChecksummingForceAll;
-    unsigned int _frameNum;
+    struct os_unfair_lock_s _referenceTrackingCommandBufferLock;
+    struct unordered_set<MTLDebugCommandBuffer *, std::__1::hash<MTLDebugCommandBuffer *>, std::__1::equal_to<MTLDebugCommandBuffer *>, std::__1::allocator<MTLDebugCommandBuffer *>> _referenceTrackingCommandBuffers;
+    struct CheckerboardRenderTargetPipelineCache _checkerboardRTPipelineCache;
+    BOOL _storeValidationEnabled;
+    BOOL _loadValidationEnabled;
 }
 
-@property (nonatomic) unsigned int frameNum; // @synthesize frameNum=_frameNum;
-@property (readonly, nonatomic) BOOL resourceTrackingChecksummingEnabled; // @synthesize resourceTrackingChecksummingEnabled=_resourceTrackingChecksummingEnabled;
-@property (readonly, nonatomic) BOOL resourceTrackingChecksummingForceAll; // @synthesize resourceTrackingChecksummingForceAll=_resourceTrackingChecksummingForceAll;
-@property (readonly, nonatomic) BOOL resourceTrackingEnabled; // @synthesize resourceTrackingEnabled=_resourceTrackingEnabled;
+@property (readonly) BOOL loadValidationEnabled; // @synthesize loadValidationEnabled=_loadValidationEnabled;
+@property (readonly) BOOL storeValidationEnabled; // @synthesize storeValidationEnabled=_storeValidationEnabled;
 
 + (BOOL)complainAboutSloppyTextureUsage;
 - (id).cxx_construct;
@@ -35,19 +30,21 @@
 - (id)_newRenderPipelineStateWithDescriptor:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (void)_newRenderPipelineStateWithTileDescriptor:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)_newRenderPipelineStateWithTileDescriptor:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
-- (id)_newSharedEventWithParent:(id)arg1;
-- (void)_resourceTrackingChecksummingEndOfFrame;
-- (void)bufferChecksummedInFrame:(id)arg1;
-- (unsigned int)checksumBuffer:(id)arg1;
-- (void)dealloc;
-- (void)eventSignaled:(id)arg1 value:(unsigned long long)arg2;
+- (CDStruct_14f26992)accelerationStructureSizesWithDescriptor:(id)arg1;
+- (void)addReferenceTrackingCommandBuffer:(id)arg1;
+- (void)clearRenderEncoder:(id)arg1 writeMask:(unsigned long long)arg2 withCheckerboard:(float *)arg3;
 - (CDStruct_4bcfbbae)heapBufferSizeAndAlignWithLength:(unsigned long long)arg1 options:(unsigned long long)arg2;
 - (CDStruct_4bcfbbae)heapTextureSizeAndAlignWithDescriptor:(id)arg1;
 - (id)initWithBaseObject:(id)arg1 parent:(id)arg2;
+- (id)loadDynamicLibrariesForComputeDescriptor:(id)arg1 error:(id *)arg2;
 - (unsigned long long)minLinearTextureAlignmentForPixelFormat:(unsigned long long)arg1;
 - (unsigned long long)minimumLinearTextureAlignmentForPixelFormat:(unsigned long long)arg1;
+- (id)newAccelerationStructureWithDescriptor:(id)arg1;
+- (id)newAccelerationStructureWithSize:(unsigned long long)arg1;
 - (id)newArgumentEncoderWithArguments:(id)arg1;
 - (id)newArgumentEncoderWithLayout:(id)arg1;
+- (id)newBinaryArchiveWithDescriptor:(id)arg1 error:(id *)arg2;
+- (id)newBinaryLibraryWithOptions:(unsigned long long)arg1 url:(id)arg2 error:(id *)arg3;
 - (id)newBufferWithBytes:(const void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3;
 - (id)newBufferWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 options:(unsigned long long)arg3 deallocator:(CDUnknownBlockType)arg4;
 - (id)newBufferWithIOSurface:(struct __IOSurface *)arg1;
@@ -64,12 +61,21 @@
 - (void)newComputePipelineStateWithFunction:(id)arg1 options:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)newComputePipelineStateWithFunction:(id)arg1 options:(unsigned long long)arg2 reflection:(id *)arg3 error:(id *)arg4;
 - (id)newComputePipelineStateWithImageFilterFunctionsSPI:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
+- (id)newCounterSampleBufferWithDescriptor:(id)arg1 error:(id *)arg2;
 - (id)newDefaultLibrary;
 - (id)newDefaultLibraryWithBundle:(id)arg1 error:(id *)arg2;
 - (id)newDepthStencilStateWithDescriptor:(id)arg1;
+- (id)newDynamicLibrary:(id)arg1 computeDescriptor:(id)arg2 error:(id *)arg3;
+- (id)newDynamicLibrary:(id)arg1 error:(id *)arg2;
+- (id)newDynamicLibraryFromURL:(id)arg1 error:(id *)arg2;
+- (id)newDynamicLibraryWithURL:(id)arg1 error:(id *)arg2;
+- (id)newDynamicLibraryWithURL:(id)arg1 options:(unsigned long long)arg2 error:(id *)arg3;
 - (id)newEvent;
+- (id)newFence;
 - (id)newHeapWithDescriptor:(id)arg1;
 - (id)newIndirectCommandBufferWithDescriptor:(id)arg1 maxCommandCount:(unsigned long long)arg2 options:(unsigned long long)arg3;
+- (id)newIntersectionFunctionTableWithDescriptor:(id)arg1;
+- (id)newLibraryWithDAG:(id)arg1 functions:(id)arg2 error:(id *)arg3;
 - (id)newLibraryWithData:(id)arg1 error:(id *)arg2;
 - (id)newLibraryWithFile:(id)arg1 error:(id *)arg2;
 - (id)newLibraryWithImageFilterFunctionsSPI:(id)arg1 imageFilterFunctionInfo:(const CDStruct_dbc1e4aa *)arg2 error:(id *)arg3;
@@ -94,13 +100,17 @@
 - (id)newTextureWithBytesNoCopy:(void *)arg1 length:(unsigned long long)arg2 descriptor:(id)arg3 deallocator:(CDUnknownBlockType)arg4;
 - (id)newTextureWithDescriptor:(id)arg1;
 - (id)newTextureWithDescriptor:(id)arg1 iosurface:(struct __IOSurface *)arg2 plane:(unsigned long long)arg3;
+- (id)newVisibleFunctionTableWithDescriptor:(id)arg1;
+- (void)notifyExternalReferencesNonZeroOnDealloc:(id)arg1;
 - (void)notifySamplerStateDeallocated:(id)arg1;
-- (BOOL)overrideResourceTrackingEnabled:(BOOL)arg1;
-- (void)resourceTrackingEndOfFrame;
-- (BOOL)restoreResourceTrackingEnabled;
-- (void)validateMemorylessResource:(id)arg1;
-- (void)validateNewBufferArgs:(unsigned long long)arg1 options:(unsigned long long)arg2;
-- (void)validateResourceOptions:(unsigned long long)arg1 isTexture:(BOOL)arg2 isIOSurface:(BOOL)arg3;
+- (void)removeReferenceTrackingCommandBuffer:(id)arg1;
+- (const struct MTLTargetDeviceArch *)targetDeviceInfo;
+- (BOOL)validateDynamicLibrary:(id)arg1 state:(BOOL)arg2 error:(id *)arg3;
+- (BOOL)validateDynamicLibraryURL:(id)arg1 error:(id *)arg2;
+- (void)validateLinkedFunctions:(id)arg1;
+- (void)validateMemorylessResource:(id)arg1 context:(struct _MTLMessageContext *)arg2;
+- (void)validateNewBufferArgs:(unsigned long long)arg1 options:(unsigned long long)arg2 context:(struct _MTLMessageContext *)arg3;
+- (void)validateResourceOptions:(unsigned long long)arg1 isTexture:(BOOL)arg2 isIOSurface:(BOOL)arg3 context:(struct _MTLMessageContext *)arg4;
 - (void)validateTraceBuffer:(unsigned long long)arg1 maxBufferCount:(unsigned long long)arg2 options:(unsigned long long)arg3;
 
 @end

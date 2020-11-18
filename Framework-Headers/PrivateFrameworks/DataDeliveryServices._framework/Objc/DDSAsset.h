@@ -6,35 +6,45 @@
 
 #import <objc/NSObject.h>
 
-@class ASAsset, MAAsset, NSDictionary, NSString, NSURL;
+@class MAAsset, NSDictionary, NSString, NSURL;
 
 @interface DDSAsset : NSObject
 {
     NSDictionary *_attributes;
-    long long _compatibilityVersion;
     NSURL *_localURL;
-    ASAsset *_asAsset;
+    unsigned long long _assetState;
+    NSString *_dataType;
+    NSString *_assetType;
     MAAsset *_maAsset;
+    NSString *_debuggingID;
+    NSString *_uniqueIdentifier;
 }
 
-@property (strong, nonatomic) ASAsset *asAsset; // @synthesize asAsset=_asAsset;
-@property (strong, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
-@property (readonly, nonatomic) long long compatibilityVersion; // @synthesize compatibilityVersion=_compatibilityVersion;
-@property (readonly, nonatomic) NSString *debuggingID;
-@property (strong, nonatomic) NSURL *localURL; // @synthesize localURL=_localURL;
+@property (readonly, nonatomic) unsigned long long assetState; // @synthesize assetState=_assetState;
+@property (readonly, nonatomic) NSString *assetType; // @synthesize assetType=_assetType;
+@property (readonly, nonatomic) NSString *assetUUID;
+@property (readonly, nonatomic) NSDictionary *attributes; // @synthesize attributes=_attributes;
+@property (readonly, nonatomic) unsigned long long compatibilityVersion;
+@property (readonly, nonatomic) unsigned long long contentVersion;
+@property (readonly, nonatomic) NSString *dataType; // @synthesize dataType=_dataType;
+@property (strong, nonatomic) NSString *debuggingID; // @synthesize debuggingID=_debuggingID;
+@property (readonly, nonatomic) NSString *installDate;
+@property (readonly, nonatomic) NSURL *localURL; // @synthesize localURL=_localURL;
+@property (readonly, nonatomic) NSString *locale;
 @property (strong, nonatomic) MAAsset *maAsset; // @synthesize maAsset=_maAsset;
-@property (readonly, nonatomic) NSString *uniqueIdentifier;
+@property (readonly, nonatomic) NSString *shortName;
+@property (strong, nonatomic) NSString *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
 
 + (id)asset;
-+ (id)assetWithASAsset:(id)arg1;
 + (id)assetWithMAAsset:(id)arg1;
 + (id)debuggingIDsForAssets:(id)arg1;
-+ (id)uniqueIdentifierForASAsset:(id)arg1;
 + (id)uniqueIdentifierForMAAsset:(id)arg1;
 - (void).cxx_destruct;
 - (void)_mergeAttributes:(id)arg1;
+- (id)description;
 - (id)init;
-- (void)setasAsset:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToAsset:(id)arg1;
 
 @end
 

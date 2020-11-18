@@ -11,8 +11,10 @@
 @interface _TtCV7SwiftUIP33_A96961F3546506F21D8995C6092F15B511AnyViewList4Item : _TtC7SwiftUI18_ViewList_Subgraph
 {
     MISSING_TYPE *type;
-    MISSING_TYPE *list;
+    MISSING_TYPE *owner;
+    MISSING_TYPE *_list;
     MISSING_TYPE *id;
+    MISSING_TYPE *isUnary;
     MISSING_TYPE *allItems;
 }
 

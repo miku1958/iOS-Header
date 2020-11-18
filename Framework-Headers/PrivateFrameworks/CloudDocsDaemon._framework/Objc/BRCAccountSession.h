@@ -8,8 +8,8 @@
 
 #import <CloudDocsDaemon/BRCCloudDocsAppsObserver-Protocol.h>
 
-@class BRCAccountWaitOperation, BRCAnalyticsReporter, BRCApplyScheduler, BRCClientState, BRCContainerScheduler, BRCDeadlineScheduler, BRCDiskSpaceReclaimer, BRCDownloadTrackers, BRCFSDownloader, BRCFSReader, BRCFSUploader, BRCFSWriter, BRCFairScheduler, BRCGlobalProgress, BRCItemTransmogrifier, BRCNotificationManager, BRCPQLConnection, BRCRecentsEnumerator, BRCServerPersistedState, BRCStageRegistry, BRCSyncUpScheduler, BRCThrottle, BRCUserNotification, BRCVolume, NSHashTable, NSMutableDictionary, NSMutableSet, NSString, NSURL, br_pacer;
-@protocol OS_dispatch_queue, OS_dispatch_source;
+@class BRCAccountWaitOperation, BRCAnalyticsReporter, BRCApplyScheduler, BRCClientState, BRCContainerScheduler, BRCDeadlineScheduler, BRCDiskSpaceReclaimer, BRCDownloadTrackers, BRCFSDownloader, BRCFSReader, BRCFSUploader, BRCFSWriter, BRCFairScheduler, BRCGlobalProgress, BRCItemTransmogrifier, BRCNotificationManager, BRCPQLConnection, BRCRecentsEnumerator, BRCServerPersistedState, BRCStageRegistry, BRCSyncUpScheduler, BRCThrottle, BRCUserNotification, BRCVolume, NSHashTable, NSMutableDictionary, NSMutableSet, NSNumber, NSString, NSURL, br_pacer;
+@protocol OS_dispatch_queue, OS_dispatch_source, OS_dispatch_workloop;
 
 @interface BRCAccountSession : NSObject <BRCCloudDocsAppsObserver>
 {
@@ -19,9 +19,9 @@
     NSObject<OS_dispatch_source> *_dbWatcher;
     NSObject<OS_dispatch_queue> *_dbWatcherQueue;
     NSObject<OS_dispatch_queue> *_dbCorruptionQueue;
-    NSObject<OS_dispatch_queue> *_clientTruthWorkloop;
-    NSObject<OS_dispatch_queue> *_serverTruthWorkloop;
-    NSObject<OS_dispatch_queue> *_readOnlyWorkloop;
+    NSObject<OS_dispatch_workloop> *_clientTruthWorkloop;
+    NSObject<OS_dispatch_workloop> *_serverTruthWorkloop;
+    NSObject<OS_dispatch_workloop> *_readOnlyWorkloop;
     int _cloudDocsFD;
     CDUnknownBlockType _dbProfilingHook;
     NSString *_databaseID;
@@ -54,6 +54,7 @@
     BOOL _accountIsReady;
     BRCAccountWaitOperation *_accountWaitOperation;
     BOOL _isDBOpened;
+    NSNumber *_isInCarry;
     NSMutableDictionary *_rootsByFolderType;
     NSMutableDictionary *_fsEventsMonitors;
     BOOL _isCancelled;
@@ -100,7 +101,7 @@
 @property (strong, nonatomic) NSString *cacheDirPath; // @synthesize cacheDirPath=_cacheDirPath;
 @property (readonly, nonatomic) BRCPQLConnection *clientDB;
 @property (readonly, nonatomic) BRCClientState *clientState;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *clientTruthWorkloop; // @dynamic clientTruthWorkloop;
+@property (readonly, nonatomic) NSObject<OS_dispatch_workloop> *clientTruthWorkloop; // @dynamic clientTruthWorkloop;
 @property (readonly, nonatomic) BRCContainerScheduler *containerScheduler; // @synthesize containerScheduler=_containerScheduler;
 @property (readonly, nonatomic) unsigned long long databaseID;
 @property (readonly, copy) NSString *debugDescription;
@@ -124,12 +125,12 @@
 @property (readonly, nonatomic) BRCNotificationManager *notificationManager; // @synthesize notificationManager=_notificationManager;
 @property (readonly, nonatomic) BRCThrottle *operationFailureThrottle; // @synthesize operationFailureThrottle=_operationFailureThrottle;
 @property (readonly, nonatomic) BRCPQLConnection *readOnlyDB;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *readOnlyWorkloop; // @dynamic readOnlyWorkloop;
+@property (readonly, nonatomic) NSObject<OS_dispatch_workloop> *readOnlyWorkloop; // @dynamic readOnlyWorkloop;
 @property (readonly, nonatomic) BRCRecentsEnumerator *recentsEnumerator; // @synthesize recentsEnumerator=_recentsEnumerator;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *resetQueue; // @synthesize resetQueue=_resetQueue;
 @property (readonly, nonatomic) BRCPQLConnection *serverDB;
 @property (readonly, nonatomic) BRCServerPersistedState *serverState;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *serverTruthWorkloop; // @dynamic serverTruthWorkloop;
+@property (readonly, nonatomic) NSObject<OS_dispatch_workloop> *serverTruthWorkloop; // @dynamic serverTruthWorkloop;
 @property (readonly, nonatomic) BRCThrottle *sharedAppLibraryResetThrottle; // @synthesize sharedAppLibraryResetThrottle=_sharedAppLibraryResetThrottle;
 @property (readonly, nonatomic) BRCStageRegistry *stageRegistry; // @synthesize stageRegistry=_stageRegistry;
 @property (readonly) Class superclass;
@@ -144,13 +145,14 @@
 + (id)_classesForClientState;
 + (BOOL)_openConnection:(id)arg1 databaseName:(id)arg2 baseURL:(id)arg3 readonly:(BOOL)arg4 error:(id *)arg5;
 + (BOOL)_openConnection:(id)arg1 serverTruth:(BOOL)arg2 databaseName:(id)arg3 baseURL:(id)arg4 initialVersion:(unsigned int *)arg5 lastCurrentVersion:(unsigned int *)arg6 error:(id *)arg7;
-+ (void)_registerLastBootIfNeeded:(id)arg1 table:(id)arg2;
++ (void)_registerLastBootIfNeeded:(id)arg1 table:(id)arg2 cleanTelemetryIfNeeded:(BOOL)arg3;
 + (BOOL)_registerStaticDBFunctions:(id)arg1 error:(id *)arg2;
 + (BOOL)_validateDatabase:(id)arg1 baseURL:(id)arg2 session:(id)arg3 serverTruth:(BOOL)arg4 initialVersion:(unsigned int)arg5 lastCurrentVersion:(unsigned int)arg6 error:(id *)arg7;
 + (id)nameComponentsForKey:(id)arg1 db:(id)arg2;
 + (id)nameComponentsForName:(id)arg1 db:(id)arg2;
 + (BOOL)openAndValidateDatabase:(id)arg1 serverTruth:(BOOL)arg2 session:(id)arg3 baseURL:(id)arg4 skipBackupDetection:(BOOL)arg5 error:(id *)arg6;
 + (id)sessionForBackingUpDatabasesAtURL:(id)arg1;
++ (id)sessionForCheckingInconsistencies;
 + (id)sessionForDumpingDatabasesAtURL:(id)arg1;
 + (BOOL)upgradeOfflineDB:(id)arg1 serverTruth:(BOOL)arg2 session:(id)arg3 error:(id *)arg4;
 + (id)userIdentityForKey:(id)arg1 db:(id)arg2;
@@ -163,6 +165,7 @@
 - (void)__registerServerZone:(id)arg1 clientZone:(id)arg2 appLibrary:(id)arg3 isShared:(BOOL)arg4;
 - (id)_appLibrariesEnumerator:(id)arg1;
 - (id)_appLibrariesMatchingSearchString:(id)arg1;
+- (id)_appLibraryEnumeratorForZoneRowID:(id)arg1 db:(id)arg2;
 - (void)_clearNeedsUpgradeErrors:(id)arg1 brVersion:(id)arg2;
 - (id)_clientZonesMatchingSearchString:(id)arg1;
 - (id)_containerMetadataRecordsToSaveWithBatchSize:(unsigned long long)arg1;
@@ -211,7 +214,7 @@
 - (BOOL)_shouldPrivateAppLibraryBeCZMMoved:(id)arg1;
 - (void)_startWatcher;
 - (BOOL)_stepBackupDetector:(struct backup_detector)arg1 newState:(struct backup_detector *)arg2 error:(id *)arg3;
-- (id)_syncContextForContextIdentifier:(id)arg1 sourceAppIdentifier:(id)arg2 isShared:(BOOL)arg3 createIfNeeded:(BOOL)arg4;
+- (id)_syncContextForContextIdentifier:(id)arg1 isShared:(BOOL)arg2 createIfNeeded:(BOOL)arg3;
 - (id)_unloadClientZones;
 - (unsigned long long)accountSize;
 - (id)accountStatisticsWithDB:(id)arg1;
@@ -299,6 +302,7 @@
 - (id)globalItemByFileID:(unsigned long long)arg1 db:(id)arg2;
 - (BOOL)hasFSEventsMonitorForSyncedFolderType:(unsigned long long)arg1;
 - (BOOL)hasRootForSyncedFolderType:(unsigned long long)arg1;
+- (BOOL)icloudAccountIsInCarry;
 - (id)init;
 - (id)initWithAccountID:(id)arg1 salt:(id)arg2;
 - (BOOL)initializeOfflineDatabaseWhileUpgrading:(BOOL)arg1 error:(id *)arg2;

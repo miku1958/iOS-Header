@@ -9,7 +9,7 @@
 #import <CoreUI/CUIStructuredThemeStorage-Protocol.h>
 #import <CoreUI/CUIStructuredThemeStorage2-Protocol.h>
 
-@class CUICommonAssetStorage, NSCache, NSMutableDictionary, NSString;
+@class CUICommonAssetStorage, NSCache, NSDictionary, NSMutableDictionary, NSSet, NSString;
 
 @interface CUIStructuredThemeStore : NSObject <CUIStructuredThemeStorage, CUIStructuredThemeStorage2>
 {
@@ -21,33 +21,36 @@
     NSString *_bundleID;
     NSCache *_namedRenditionKeyCache;
     CDUnknownFunctionPointerType _attributePresent;
+    unsigned int _mainBundle:1;
+    NSDictionary *_aliasDictionary;
+    NSSet *_legacyFlippableSet;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property BOOL mainBundle;
 @property (readonly) Class superclass;
-@property (nonatomic) unsigned long long themeIndex;
 
-- (BOOL)_canGetRenditionWithKey:(const struct _renditionkeytoken *)arg1 isFPO:(BOOL *)arg2 lookForSubstitutions:(BOOL)arg3;
 - (void)_commonInit;
-- (BOOL)_formatStorageKeyArrayBytes:(void *)arg1 length:(unsigned long long)arg2 fromKey:(struct _renditionkeytoken *)arg3;
-- (void)_getKeyForAssetClosestToKey:(struct _renditionkeytoken *)arg1 foundAsset:(BOOL *)arg2;
-- (id)_newRenditionKeyDataFromKey:(struct _renditionkeytoken *)arg1;
+- (BOOL)_formatStorageKeyArrayBytes:(void *)arg1 length:(unsigned long long)arg2 fromKey:(const struct _renditionkeytoken *)arg3;
+- (id)_newRenditionKeyDataFromKey:(const struct _renditionkeytoken *)arg1;
 - (void)_updateKeyWithCompatibilityMapping:(struct _renditionkeytoken *)arg1;
+- (id)aliasForName:(id)arg1;
 - (id)allImageNames;
 - (unsigned short)appearanceIdentifierForName:(id)arg1;
 - (id)appearances;
-- (BOOL)assetExistsForKey:(struct _renditionkeytoken *)arg1;
+- (BOOL)assetExistsForKey:(const struct _renditionkeytoken *)arg1;
 - (unsigned int)authoredWithSchemaVersion;
 - (id)baseGradationKeySignatureForKey:(const struct _renditionkeytoken *)arg1;
 - (id)bundleID;
+- (BOOL)caAllowSubimageOfImage:(struct CGImage *)arg1;
 - (BOOL)canGetRenditionWithKey:(const struct _renditionkeytoken *)arg1;
-- (BOOL)canGetRenditionWithKey:(const struct _renditionkeytoken *)arg1 isFPO:(BOOL *)arg2;
 - (id)catalogGlobals;
 - (void)clearRenditionCache;
 - (unsigned long long)colorSpaceID;
-- (id)convertRenditionKeyToKeyData:(struct _renditionkeytoken *)arg1;
+- (BOOL)containsLookupForName:(id)arg1;
+- (id)convertRenditionKeyToKeyData:(const struct _renditionkeytoken *)arg1;
 - (id)copyKeySignatureForKey:(const struct _renditionkeytoken *)arg1 withBytesNoCopy:(char *)arg2 length:(unsigned long long)arg3;
 - (id)copyLookupKeySignatureForKey:(const struct _renditionkeytoken *)arg1;
 - (void)dealloc;
@@ -59,6 +62,7 @@
 - (BOOL)getFontName:(id *)arg1 baselineOffset:(double *)arg2 forFontType:(id)arg3;
 - (BOOL)getPhysicalColor:(struct _colordef *)arg1 withName:(id)arg2;
 - (BOOL)hasPhysicalColorWithName:(id)arg1;
+- (BOOL)imageNamedShouldFlip:(id)arg1;
 - (id)imagesWithName:(id)arg1;
 - (id)initWithBytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (id)initWithPath:(id)arg1;
@@ -68,7 +72,8 @@
 - (id)keySignatureForKey:(const struct _renditionkeytoken *)arg1;
 - (unsigned short)localizationIdentifierForName:(id)arg1;
 - (id)localizations;
-- (id)lookupAssetForKey:(struct _renditionkeytoken *)arg1;
+- (id)lookupAssetForKey:(const struct _renditionkeytoken *)arg1;
+- (id)mappedAliases;
 - (long long)maximumRenditionKeyTokenCount;
 - (id)nameForAppearanceIdentifier:(unsigned short)arg1;
 - (id)renditionInfoForIdentifier:(unsigned short)arg1;
@@ -78,7 +83,10 @@
 - (id)renditionNameForKeyList:(struct _renditionkeytoken *)arg1;
 - (id)renditionWithKey:(const struct _renditionkeytoken *)arg1;
 - (id)renditionWithKey:(const struct _renditionkeytoken *)arg1 usingKeySignature:(id)arg2;
+- (void)setBundleID:(id)arg1;
+- (void)setThemeIndex:(unsigned long long)arg1;
 - (id)store;
+- (unsigned long long)themeIndex;
 - (id)themeStore;
 - (BOOL)usesCUISystemThemeRenditionKey;
 

@@ -8,14 +8,14 @@
 
 #import <IMCore/IMChatItemRules-Protocol.h>
 
-@class IMChat, IMChatItem, NSArray, NSMutableArray, NSString;
+@class IMChat, NSArray, NSDate, NSMutableArray, NSString;
 
 @interface IMTranscriptChatItemRules : NSObject <IMChatItemRules>
 {
     IMChat *_chat;
     NSArray *_items;
     NSMutableArray *_chatItems;
-    IMChatItem *_nextStaleChatItem;
+    NSDate *_nextStaleTime;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -30,23 +30,36 @@
 - (id)_attributionChatItemForChatItem:(id)arg1;
 - (id)_chatItems;
 - (id)_chatItemsForItem:(id)arg1 previousItem:(id)arg2;
+- (id)_chatItemsWithReplyCountsForNewChatItems:(id)arg1 parentItem:(id)arg2 threadOriginatorItem:(id)arg3;
 - (void)_didProcessChatItems:(id)arg1;
 - (id)_effectControlForChatItem:(id)arg1;
+- (id)_filteredChatItemsForNewChatItems:(id)arg1;
+- (BOOL)_hasEarlierMessagesToLoad;
+- (BOOL)_hasRecentMessagesToLoad;
 - (id)_initWithChat:(id)arg1;
-- (id)_itemWithChatItemsDeleted:(id)arg1 fromItem:(id)arg2;
+- (id)_itemWithChatItemsDeleted:(id)arg1 fromItem:(id)arg2 indexesOfItemsDeleted:(id *)arg3 indexToRangeMapOfItemsDeleted:(id *)arg4;
 - (id)_items;
-- (id)_nextStaleChatItem;
+- (id)_nextStaleTime;
 - (void)_processChatItemsForAttribution:(id)arg1;
 - (void)_processChatItemsForBreadcrumbs:(id)arg1;
 - (void)_processChatItemsForReplayButton:(id)arg1;
+- (id)_replyCountChatItemForChatItem:(id)arg1 parentItem:(id)arg2 threadIdentifier:(id)arg3 replyMessageGUID:(id)arg4 replyIsFromMe:(BOOL)arg5 threadOriginatorMessageItem:(id)arg6;
+- (id)_replyCountChatItemForChatItem:(id)arg1 parentItem:(id)arg2 threadOriginatorMessageItem:(id)arg3;
 - (void)_setItems:(id)arg1;
-- (void)_setNextStaleChatItem:(id)arg1;
+- (void)_setNextStaleTime:(id)arg1;
+- (BOOL)_shouldAppendDateForItem:(id)arg1 previousItem:(id)arg2;
+- (BOOL)_shouldAppendReplyContextForItem:(id)arg1 previousItem:(id)arg2 chatStyle:(unsigned char)arg3;
+- (BOOL)_shouldAppendReplyCountIfNeeded;
+- (BOOL)_shouldAppendServiceForItem:(id)arg1 previousItem:(id)arg2 chatStyle:(unsigned char)arg3;
 - (BOOL)_shouldDisplayAttributionInfo:(id)arg1;
 - (BOOL)_shouldRegenerateChatItemsForItem:(id)arg1 previousItem:(id)arg2 oldPreviousItem:(id)arg3;
 - (BOOL)_shouldReloadChatItem:(id)arg1 oldChatItem:(id)arg2;
 - (BOOL)_shouldReloadChatItemWithAssociatedChatItems:(id)arg1 oldAssociatedChatItems:(id)arg2;
 - (BOOL)_shouldShowEffectPlayButtonForMessage:(id)arg1;
+- (BOOL)_shouldShowReportSpamForChat:(id)arg1 withItems:(id)arg2;
+- (BOOL)_supportsContiguousChatItems;
 - (id)chatItemForIMChatItem:(id)arg1;
+- (id)inlineReplyController;
 - (BOOL)shouldShowExpressiveMessageTextAsText:(id)arg1;
 - (BOOL)shouldShowRaiseMessageStatus;
 - (id)testChatItems;

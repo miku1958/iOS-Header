@@ -27,6 +27,7 @@
 + (BOOL)CA_automaticallyNotifiesObservers:(Class)arg1;
 + (id)defaultValueForKey:(id)arg1;
 + (BOOL)needsDisplayForKey:(id)arg1;
+- (BOOL)CA_validateValue:(id)arg1 forKey:(id)arg2;
 - (void)_applyLinesToFunction:(CDUnknownFunctionPointerType)arg1 info:(void *)arg2;
 - (void)_applyLinesToFunction:(CDUnknownFunctionPointerType)arg1 info:(void *)arg2 truncated:(BOOL *)arg3;
 - (id)_createStringDict;

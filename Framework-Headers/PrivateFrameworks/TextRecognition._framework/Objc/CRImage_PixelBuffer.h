@@ -10,6 +10,7 @@
 {
 }
 
++ (struct __CVBuffer *)_convertPixelBuffer:(struct __CVBuffer *)arg1 toFormat:(unsigned int)arg2;
 + (void)drawVerticalLineAtXOffset:(double)arg1 image:(id)arg2;
 - (struct __CVBuffer *)_pixelBufferFromUrl:(id)arg1;
 - (struct CGImage *)cgImage;
@@ -33,7 +34,6 @@
 - (id)initWithCVPixelBuffer:(struct __CVBuffer *)arg1;
 - (id)initWithContentsOfURL:(id)arg1 toColorSpace:(int)arg2;
 - (struct __CVBuffer *)pixelBuffer;
-- (struct __CVBuffer *)pixelBufferWithFormat:(unsigned int)arg1;
 - (struct __CVBuffer *)pixelBufferWithScale:(double)arg1 paddedToSize:(struct CGSize)arg2;
 - (struct __CVBuffer *)pixelBufferWithScale:(double)arg1 paddedToSize:(struct CGSize)arg2 adjustedToSize:(struct CGSize *)arg3;
 - (struct __CVBuffer *)pixelBufferWithScale:(double)arg1 paddedToSize:(struct CGSize)arg2 adjustedToSize:(struct CGSize *)arg3 mask:(struct CGImage *)arg4;

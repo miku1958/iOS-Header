@@ -12,6 +12,6 @@
 - (BOOL)intervalometer:(CAMCaptureRequestIntervalometer *)arg1 didGenerateCaptureRequest:(CAMCaptureRequest *)arg2;
 
 @optional
-- (void)intervalometerDidReachMaximumCount:(CAMCaptureRequestIntervalometer *)arg1;
+- (void)intervalometer:(CAMCaptureRequestIntervalometer *)arg1 didReachMaximumCountWithRequest:(CAMCaptureRequest *)arg2;
 @end
 

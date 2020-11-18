@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class UIColor, UIVisualEffectView;
+@class UIColor;
 
 __attribute__((visibility("hidden")))
 @interface VUIProgressBarLayout : NSObject
@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     UIColor *_gradientEndColor;
     double _height;
     double _cornerRadius;
-    UIVisualEffectView *_materialView;
     struct UIEdgeInsets _margin;
     struct UIEdgeInsets _padding;
 }
@@ -30,7 +29,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIColor *gradientStartColor; // @synthesize gradientStartColor=_gradientStartColor;
 @property (nonatomic) double height; // @synthesize height=_height;
 @property (nonatomic) struct UIEdgeInsets margin; // @synthesize margin=_margin;
-@property (strong, nonatomic) UIVisualEffectView *materialView; // @synthesize materialView=_materialView;
 @property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property (nonatomic) BOOL shouldProgressBarUseRoundCorner; // @synthesize shouldProgressBarUseRoundCorner=_shouldProgressBarUseRoundCorner;
 @property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;

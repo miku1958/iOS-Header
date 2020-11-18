@@ -7,21 +7,12 @@
 #import <HealthUI/HKDisplayType.h>
 
 @interface HKDisplayType (WDDataProviders)
-
-@property (readonly) long long wd_heartRateDisplayTypeContext;
-
 - (long long)_heartRoomDisplayTypeContext:(long long)arg1;
-- (Class)_wd_addDataViewControllerClass;
 - (Class)_wd_listViewControllerDataProviderClass:(BOOL)arg1;
-- (id)wd_addDataViewControllerWithProfile:(id)arg1 unitController:(id)arg2 initialStartDate:(id)arg3;
-- (id)wd_contextDetailViewControllerWithProfile:(id)arg1 displayDate:(id)arg2;
 - (id)wd_dataListViewControllerWithProfile:(id)arg1;
 - (id)wd_dataListViewControllerWithProfile:(id)arg1 unitController:(id)arg2;
-- (id)wd_defaultValueForAddDataViewController;
 - (id)wd_detailViewControllerWithProfile:(id)arg1 displayDate:(id)arg2;
 - (id)wd_listViewControllerDataProviderWithProfile:(id)arg1 unitController:(id)arg2;
 - (id)wd_listViewControllerDataProviderWithProfile:(id)arg1 unitController:(id)arg2 isHierarchical:(BOOL)arg3;
-- (id)wd_outOfRangeAlertDisplayName;
-- (id)wd_valueOrderForAddDataViewController;
 @end
 

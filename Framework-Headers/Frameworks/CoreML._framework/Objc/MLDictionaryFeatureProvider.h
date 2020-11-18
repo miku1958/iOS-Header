@@ -8,10 +8,11 @@
 
 #import <CoreML/MLFeatureProvider-Protocol.h>
 #import <CoreML/NSFastEnumeration-Protocol.h>
+#import <CoreML/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSSet;
 
-@interface MLDictionaryFeatureProvider : NSObject <MLFeatureProvider, NSFastEnumeration>
+@interface MLDictionaryFeatureProvider : NSObject <MLFeatureProvider, NSFastEnumeration, NSSecureCoding>
 {
     NSDictionary *_dictionary;
 }
@@ -19,9 +20,12 @@
 @property (strong, nonatomic) NSDictionary *dictionary; // @synthesize dictionary=_dictionary;
 @property (readonly, nonatomic) NSSet *featureNames;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (unsigned long long)countByEnumeratingWithState:(CDStruct_70511ce9 *)arg1 objects:(id *)arg2 count:(unsigned long long)arg3;
+- (void)encodeWithCoder:(id)arg1;
 - (id)featureValueForName:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithDictionary:(id)arg1 error:(id *)arg2;
 - (id)initWithFeatureProvider:(id)arg1;
 - (id)initWithFeatureProvider:(id)arg1 featureNames:(id)arg2;

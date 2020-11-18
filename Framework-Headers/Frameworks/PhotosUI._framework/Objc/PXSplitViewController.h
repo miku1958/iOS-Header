@@ -8,35 +8,37 @@
 
 #import <PhotosUICore/UISplitViewControllerDelegate-Protocol.h>
 
-@class UIViewController;
+@class NSHashTable, UIViewController;
 
 @interface PXSplitViewController : UISplitViewController <UISplitViewControllerDelegate>
 {
     BOOL _inViewWillTransitionToSize;
     long long _originalPreferredDisplayMode;
+    NSHashTable *_changeObservers;
     BOOL _wantsSidebarHidden;
     UIViewController *_sidebarViewController;
     UIViewController *_contentViewController;
 }
 
 @property (readonly, nonatomic) UIViewController *contentViewController; // @synthesize contentViewController=_contentViewController;
+@property (readonly, nonatomic) BOOL isSidebarVisible;
 @property (readonly, nonatomic) UIViewController *sidebarViewController; // @synthesize sidebarViewController=_sidebarViewController;
 @property (nonatomic) BOOL wantsSidebarHidden; // @synthesize wantsSidebarHidden=_wantsSidebarHidden;
 
 + (void)initialize;
 - (void).cxx_destruct;
+- (id)_deepestUnambiguousResponder;
 - (BOOL)_isDisplayModeAllVisibleAllowed;
-- (void)_splitViewController:(id)arg1 didEndAnimatedTransitionToStateRequest:(id)arg2;
-- (void)_splitViewController:(id)arg1 willBeginAnimatedTransitionToStateRequest:(id)arg2;
-- (void)_splitViewController:(id)arg1 willUpdateDisplayModeButtonItemForTargetMode:(long long)arg2 withHidden:(BOOL *)arg3 image:(id *)arg4 title:(id *)arg5 showsBackButtonIndicator:(BOOL *)arg6;
-- (id)childViewControllerForStatusBarHidden;
-- (id)childViewControllerForStatusBarStyle;
+- (void)dismissPrimaryColumnIfOverlay;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSidebarNavigationController:(id)arg1 contentViewController:(id)arg2;
-- (id)primaryViewControllerForCollapsingSplitViewController:(id)arg1;
-- (id)primaryViewControllerForExpandingSplitViewController:(id)arg1;
+- (id)keyCommands;
+- (id)px_endPointForTransition:(id)arg1;
+- (void)registerChangeObserver:(id)arg1;
+- (long long)splitViewController:(id)arg1 displayModeForExpandingToProposedDisplayMode:(long long)arg2;
 - (void)splitViewController:(id)arg1 willChangeToDisplayMode:(long long)arg2;
-- (long long)targetDisplayModeForActionInSplitViewController:(id)arg1;
+- (void)toggleSidebarVisibilityAnimated;
+- (void)unregisterChangeObserver:(id)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

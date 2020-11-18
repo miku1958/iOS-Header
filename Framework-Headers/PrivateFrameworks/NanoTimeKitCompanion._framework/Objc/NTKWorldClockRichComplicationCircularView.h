@@ -4,55 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NanoTimeKitCompanion/NTKRichComplicationCircularBaseView.h>
+#import <NanoTimeKitCompanion/NTKWorldClockRichComplicationBaseCircularView.h>
 
-@class NSNumber, NTKRichComplicationDialView, NTKWorldClockRichComplicationHandsView, UIColor, UILabel, WorldClockCity;
-
-@interface NTKWorldClockRichComplicationCircularView : NTKRichComplicationCircularBaseView
+@interface NTKWorldClockRichComplicationCircularView : NTKWorldClockRichComplicationBaseCircularView
 {
-    struct {
-        double cityNameFontSize;
-        double cityNameBaselineOffsetNorthSide;
-        double cityNameBaselineOffsetSouthSide;
-        double dialDiameter;
-        struct CGSize majorTickSize;
-        struct CGSize minorTickSize;
-    } _constants;
-    NTKRichComplicationDialView *_dialView;
-    UILabel *_cityNameLabel;
-    NTKWorldClockRichComplicationHandsView *_handsView;
-    WorldClockCity *_city;
-    NSNumber *_clockTimerToken;
-    BOOL _positionLabelNorthSide;
-    UIColor *_daytimeBackgroundColor;
-    UIColor *_daytimeHandsColor;
-    UIColor *_daytimeHandsDotColor;
-    UIColor *_nighttimeBackgroundColor;
-    UIColor *_nighttimeHandsColor;
-    UIColor *_nighttimeHandsDotColor;
 }
 
-@property (strong, nonatomic) UIColor *daytimeBackgroundColor; // @synthesize daytimeBackgroundColor=_daytimeBackgroundColor;
-@property (strong, nonatomic) UIColor *daytimeHandsColor; // @synthesize daytimeHandsColor=_daytimeHandsColor;
-@property (strong, nonatomic) UIColor *daytimeHandsDotColor; // @synthesize daytimeHandsDotColor=_daytimeHandsDotColor;
-@property (strong, nonatomic) UIColor *nighttimeBackgroundColor; // @synthesize nighttimeBackgroundColor=_nighttimeBackgroundColor;
-@property (strong, nonatomic) UIColor *nighttimeHandsColor; // @synthesize nighttimeHandsColor=_nighttimeHandsColor;
-@property (strong, nonatomic) UIColor *nighttimeHandsDotColor; // @synthesize nighttimeHandsDotColor=_nighttimeHandsDotColor;
-
-- (void).cxx_destruct;
-- (void)_applyPausedUpdate;
-- (void)_handleTemplate:(id)arg1 reason:(long long)arg2;
-- (BOOL)_shouldAnimateWithTemplateUpdateReason:(long long)arg1;
-- (BOOL)_shouldUseDaytimeColoring;
-- (void)_startClockUpdates;
-- (void)_stopClockUpdates;
-- (void)_updateUI;
-- (void)dealloc;
++ (BOOL)supportsComplicationFamily:(long long)arg1;
 - (id)init;
-- (void)layoutSubviews;
-- (void)setPaused:(BOOL)arg1;
-- (void)transitionToMonochromeWithFraction:(double)arg1;
-- (void)updateMonochromeColor;
 
 @end
 

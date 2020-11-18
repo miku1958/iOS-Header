@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class MNNavigationStateManager, MNNavigationTraceManager;
+@class MNLocationProviderCLParameters, MNNavigationStateManager, MNNavigationTraceManager, MNSimulationLocationProvider;
 
 @interface MNNavigationState : NSObject
 {
@@ -15,11 +15,13 @@
     MNNavigationStateManager *_stateManager;
 }
 
+@property (readonly, nonatomic) MNLocationProviderCLParameters *clParameters;
 @property (readonly, nonatomic) unsigned long long desiredLocationProviderType;
 @property (readonly, nonatomic) double locationUpdateInterval; // @synthesize locationUpdateInterval=_locationUpdateInterval;
 @property (readonly, nonatomic) BOOL requiresHighMemoryThreshold;
 @property (readonly, nonatomic) BOOL requiresLocationAccess;
 @property (readonly, nonatomic) BOOL shouldClearStoredRoutes;
+@property (readonly, nonatomic) MNSimulationLocationProvider *simulationLocationProvider;
 @property (readonly, weak, nonatomic) MNNavigationStateManager *stateManager; // @synthesize stateManager=_stateManager;
 @property (readonly, nonatomic) double suggestionUpdateFrequency; // @synthesize suggestionUpdateFrequency=_suggestionUpdateFrequency;
 @property (readonly, nonatomic) MNNavigationTraceManager *traceManager;

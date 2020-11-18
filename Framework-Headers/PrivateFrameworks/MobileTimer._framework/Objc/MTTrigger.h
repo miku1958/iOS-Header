@@ -6,14 +6,16 @@
 
 #import <objc/NSObject.h>
 
+#import <MobileTimer/BSDescriptionProviding-Protocol.h>
 #import <MobileTimer/NAEquatable-Protocol.h>
 #import <MobileTimer/NSCopying-Protocol.h>
 #import <MobileTimer/NSSecureCoding-Protocol.h>
 
 @class NSDate, NSString;
 
-@interface MTTrigger : NSObject <NAEquatable, NSCopying, NSSecureCoding>
+@interface MTTrigger : NSObject <BSDescriptionProviding, NAEquatable, NSCopying, NSSecureCoding>
 {
+    BOOL _isPastOverrideEvent;
     unsigned long long _triggerType;
     NSDate *_triggerDate;
 }
@@ -27,6 +29,7 @@
 @property (readonly, nonatomic) BOOL isForGoToBed;
 @property (readonly, nonatomic) BOOL isForNotification;
 @property (readonly, nonatomic) BOOL isForSnooze;
+@property (readonly, nonatomic) BOOL isPastOverrideEvent; // @synthesize isPastOverrideEvent=_isPastOverrideEvent;
 @property (readonly, nonatomic) BOOL isScheduled;
 @property (readonly, nonatomic) BOOL isWakeUpRelated;
 @property (readonly) Class superclass;
@@ -36,14 +39,20 @@
 + (id)_stringForType:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)triggerWithDate:(id)arg1 triggerType:(unsigned long long)arg2;
++ (id)triggerWithDate:(id)arg1 triggerType:(unsigned long long)arg2 isPastOverrideEvent:(BOOL)arg3;
 - (void).cxx_destruct;
 - (long long)compare:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
+- (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDate:(id)arg1 type:(unsigned long long)arg2;
+- (id)initWithDate:(id)arg1 type:(unsigned long long)arg2 isPastOverrideEvent:(BOOL)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToTrigger:(id)arg1;
+- (id)succinctDescription;
+- (id)succinctDescriptionBuilder;
 
 @end
 

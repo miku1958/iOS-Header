@@ -41,6 +41,7 @@
 - (struct _NSRange)charRangeRemappedFromStorage:(struct _NSRange)arg1;
 - (unsigned short)characterAtIndex:(unsigned long long)arg1;
 - (id)characterStyleAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
+- (id)characterStyleForDropCapAtCharIndex:(unsigned long long)arg1 effectiveRange:(struct _NSRange *)arg2;
 - (void)checkDebug;
 - (id)dropCapStyleAtCharIndex:(unsigned long long)arg1;
 - (id)footnoteReferenceAtCharIndex:(unsigned long long)arg1;

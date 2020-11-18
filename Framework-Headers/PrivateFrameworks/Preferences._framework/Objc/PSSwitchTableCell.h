@@ -25,6 +25,7 @@
 - (void)refreshCellContentsWithSpecifier:(id)arg1;
 - (void)reloadWithSpecifier:(id)arg1 animated:(BOOL)arg2;
 - (void)setCellEnabled:(BOOL)arg1;
+- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setValue:(id)arg1;
 
 @end

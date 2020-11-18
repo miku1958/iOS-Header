@@ -64,6 +64,7 @@
     struct _NSGlyphIndexForPointCache _glyphIndexForPointCache;
     long long _currentChangeInLength;
     double _timeStampForResizeInScroll;
+    CDUnknownBlockType _didCompleteLayoutObserverBlock;
 }
 
 @end

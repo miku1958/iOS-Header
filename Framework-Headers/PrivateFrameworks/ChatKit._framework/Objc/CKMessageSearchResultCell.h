@@ -13,7 +13,7 @@
 
 @interface CKMessageSearchResultCell : UICollectionViewCell <CKSearchResultCell>
 {
-    BOOL editing;
+    BOOL _ck_editing;
     NSString *_searchText;
     CALayer *_topHairline;
     CALayer *_bottomHairline;
@@ -22,21 +22,26 @@
     struct UIEdgeInsets _marginInsets;
 }
 
-@property (strong, nonatomic) CALayer *bottomHairline; // @synthesize bottomHairline=_bottomHairline;
+@property (nonatomic, getter=_ck_isEditing, setter=_ck_setEditing:) BOOL _ck_editing; // @synthesize _ck_editing;
+@property (readonly, nonatomic) CALayer *bottomHairline; // @synthesize bottomHairline=_bottomHairline;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (nonatomic, getter=isEditing) BOOL editing; // @synthesize editing;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) struct UIEdgeInsets marginInsets; // @synthesize marginInsets=_marginInsets;
 @property (strong, nonatomic) CKSpotlightQueryResult *result; // @synthesize result=_result;
 @property (strong, nonatomic) UITableViewCell<CKConversationSearchCellProtocol> *searchCell; // @synthesize searchCell=_searchCell;
 @property (copy, nonatomic) NSString *searchText; // @synthesize searchText=_searchText;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) CALayer *topHairline; // @synthesize topHairline=_topHairline;
+@property (readonly, nonatomic) CALayer *topHairline; // @synthesize topHairline=_topHairline;
+@property (nonatomic) double widthForDeterminingAvatarVisibility;
 
 + (id)reuseIdentifier;
 - (void).cxx_destruct;
+- (void)_updateViewConfigurationsWithState:(unsigned long long)arg1;
+- (unsigned long long)_viewConfigurationState;
+- (id)configurationState;
 - (void)configureWithQueryResult:(id)arg1 searchText:(id)arg2 mode:(unsigned long long)arg3;
+- (void)forwardStateToEmbeddedCell:(unsigned long long)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (id)preferredLayoutAttributesFittingAttributes:(id)arg1;

@@ -16,7 +16,9 @@
 @property (strong, nonatomic) NSLayoutConstraint *heightConstraint; // @synthesize heightConstraint=_heightConstraint;
 
 - (void).cxx_destruct;
+- (double)_buttonLabelHeight;
 - (void)_updateForCurrentSizeCategory;
+- (struct CGSize)intrinsicContentSize;
 - (void)setTitle:(id)arg1 forState:(unsigned long long)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 

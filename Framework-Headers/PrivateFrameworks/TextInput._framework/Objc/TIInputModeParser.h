@@ -6,13 +6,19 @@
 
 #import <objc/NSObject.h>
 
+@class NSCharacterSet, NSMutableDictionary;
+
 @interface TIInputModeParser : NSObject
 {
+    NSMutableDictionary *_inputModeDicts;
+    NSCharacterSet *_invalidCharacterSet;
 }
 
-+ (id)invalidInputModeIdentifierCharacterSet;
-+ (id)parseInputMode:(id)arg1;
-+ (id)stringByReplacingInvalidCharactersWithUnderscores:(id)arg1;
++ (id)sharedInstance;
+- (void).cxx_destruct;
+- (id)init;
+- (id)parseInputMode:(id)arg1;
+- (id)stringByReplacingInvalidCharactersWithUnderscores:(id)arg1;
 
 @end
 

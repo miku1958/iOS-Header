@@ -15,7 +15,6 @@
 @interface _INPBPaymentMethodValue : PBCodable <_INPBPaymentMethodValue, NSSecureCoding, NSCopying>
 {
     CDStruct_f953fb60 _has;
-    BOOL __encodeLegacyGloryData;
     int _type;
     _INPBImageValue *_icon;
     NSString *_identificationHint;
@@ -23,7 +22,6 @@
     _INPBValueMetadata *_valueMetadata;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasIcon;

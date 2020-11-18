@@ -8,25 +8,21 @@
 
 #import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
 
-@class IKViewElement, NSString, VUIImageView, VUILabel, VUIOfferView;
+@class IKViewElement, NSString, VUILabel, VUIOfferView;
 
 __attribute__((visibility("hidden")))
 @interface VUIOfferCell : VUIFocusableCollectionViewCell <VUIRentalExpirationLabelDelegate>
 {
-    IKViewElement *_viewElement;
     VUIOfferView *_offerView;
     VUILabel *_belowCardTextLabel;
-    VUIImageView *_secondChinImageView;
-    struct CGSize _cardSize;
+    IKViewElement *_viewElement;
 }
 
 @property (strong, nonatomic) VUILabel *belowCardTextLabel; // @synthesize belowCardTextLabel=_belowCardTextLabel;
-@property (nonatomic) struct CGSize cardSize; // @synthesize cardSize=_cardSize;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) VUIOfferView *offerView; // @synthesize offerView=_offerView;
-@property (strong, nonatomic) VUIImageView *secondChinImageView; // @synthesize secondChinImageView=_secondChinImageView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 

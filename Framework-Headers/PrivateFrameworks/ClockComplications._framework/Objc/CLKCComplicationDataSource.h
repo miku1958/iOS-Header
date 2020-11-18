@@ -26,6 +26,7 @@
 
 + (BOOL)acceptsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
 + (BOOL)hasSensitiveUI;
++ (long long)tritiumUpdatePriority;
 + (BOOL)wantsToSkipPauseWhenEnteringTritium;
 - (void).cxx_destruct;
 - (id)alwaysOnTemplate;
@@ -51,6 +52,7 @@
 - (id)privacyTemplate;
 - (void)resume;
 - (void)resumeAnimations;
+- (id)sampleTemplate;
 
 @end
 

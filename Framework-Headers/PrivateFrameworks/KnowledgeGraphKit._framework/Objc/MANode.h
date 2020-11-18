@@ -4,30 +4,44 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <KnowledgeGraphKit/MAElement.h>
+#import <objc/NSObject.h>
 
-@class NSMutableArray;
+#import <KnowledgeGraphKit/KGNode-Protocol.h>
+#import <KnowledgeGraphKit/MAElement-Protocol.h>
+#import <KnowledgeGraphKit/NSCopying-Protocol.h>
 
-@interface MANode : MAElement
+@class MABaseGraph, MAGraphReference, NSArray, NSDictionary, NSString;
+@protocol MANodeImplementationProtocol;
+
+@interface MANode : NSObject <KGNode, MAElement, NSCopying>
 {
-    NSMutableArray *_edges;
+    unsigned int _identifier;
+    MAGraphReference *_graphReference;
+    id<MANodeImplementationProtocol> _implementation;
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned short domain; // @dynamic domain;
+@property (readonly, weak, nonatomic) MABaseGraph *graph;
+@property (strong, nonatomic) MAGraphReference *graphReference; // @synthesize graphReference=_graphReference;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) unsigned long long identifier;
+@property (nonatomic) unsigned int identifier; // @synthesize identifier=_identifier;
+@property (strong, nonatomic) id<MANodeImplementationProtocol> implementation; // @synthesize implementation=_implementation;
+@property (readonly, copy, nonatomic) NSString *label; // @dynamic label;
+@property (readonly, copy, nonatomic) NSArray *labels;
+@property (readonly, copy, nonatomic) NSDictionary *properties;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) float weight;
+@property (nonatomic) float weight; // @dynamic weight;
+
 - (void).cxx_destruct;
-- (void)_addEdge:(id)arg1;
-- (id)_anyEdgeWithOppositeNode:(id)arg1 type:(unsigned long long)arg2;
-- (id)_edgesWithOppositeNode:(id)arg1 type:(unsigned long long)arg2;
-- (void)_enumerateEdgesOfType:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)_enumerateEdgesWithDomains:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
-- (void)_enumerateEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (void)_enumerateNeighborNodesWithLabel:(id)arg1 domain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
-- (BOOL)_hasEdgesWithOppositeNode:(id)arg1 type:(unsigned long long)arg2;
-- (unsigned long long)_memoryFootprint:(id)arg1;
-- (void)_removeAllPersistentStoreProperties;
-- (void)_removeEdge:(id)arg1;
-- (void)_removePersistentStorePropertyForKey:(id)arg1;
-- (void)_setPersistentStoreProperties:(id)arg1;
-- (void)_setPersistentStorePropertyValue:(id)arg1 forKey:(id)arg2;
+- (void)addEdge:(id)arg1;
 - (id)allEdges;
 - (id)anyEdgeFromNode:(id)arg1;
 - (id)anyEdgeTowardNode:(id)arg1;
@@ -41,26 +55,24 @@
 - (id)anyNeighborNodeThroughOutEdges;
 - (id)anyNeighborNodeThroughOutEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2;
 - (id)associatedNodesForRemoval;
-- (id)commonNeighborNodesThroughEdgesWithNode:(id)arg1;
-- (id)commonNeighborNodesThroughInEdgesWithNode:(id)arg1;
-- (id)commonNeighborNodesThroughOutEdgesWithNode:(id)arg1;
-- (id)commonNeighborNodesWithNode:(id)arg1;
 - (BOOL)conformsToNodeSchema:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)countOfEdgesWithLabel:(id)arg1;
 - (unsigned long long)countOfEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2;
-- (id)description;
 - (unsigned long long)edgesCount;
 - (id)edgesForLabel:(id)arg1;
 - (id)edgesForLabel:(id)arg1 domain:(unsigned short)arg2;
 - (id)edgesFromNode:(id)arg1;
 - (id)edgesTowardNode:(id)arg1;
 - (id)edgesWithNode:(id)arg1;
+- (void)enumerateDeepNeighborsWithLabel:(id)arg1 domain:(unsigned short)arg2 edgeType:(unsigned long long)arg3 excluding:(id)arg4 shouldStop:(BOOL *)arg5 block:(CDUnknownBlockType)arg6;
 - (void)enumerateEdgesOfType:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateEdgesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateEdgesWithDomains:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateEdgesWithLabel:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateInEdgesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumerateNeighborNodesThroughEdgesOfType:(unsigned long long)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateNeighborNodesThroughEdgesWithDomains:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateNeighborNodesThroughEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateNeighborNodesThroughEdgesWithLabel:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -69,6 +81,7 @@
 - (void)enumerateNeighborNodesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateNeighborNodesWithLabel:(id)arg1 domain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateOutEdgesUsingBlock:(CDUnknownBlockType)arg1;
+- (void)enumeratePropertiesUsingBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateSiblingNodesThroughEdgesWithDomains:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)enumerateSiblingNodesThroughEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (void)enumerateSiblingNodesThroughEdgesWithLabel:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
@@ -78,23 +91,46 @@
 - (BOOL)hasEdgeWithLabel:(id)arg1;
 - (BOOL)hasEdgeWithLabel:(id)arg1 domain:(unsigned short)arg2;
 - (BOOL)hasEdgeWithNode:(id)arg1;
+- (BOOL)hasEqualPropertiesToNode:(id)arg1;
+- (BOOL)hasProperties;
+- (BOOL)hasProperties:(id)arg1;
 - (unsigned long long)inEdgesCount;
-- (id)init;
+- (id)initWithIdentifier:(unsigned long long)arg1 labels:(id)arg2 weight:(float)arg3 properties:(id)arg4;
+- (id)initWithLabel:(id)arg1 domain:(unsigned short)arg2 weight:(float)arg3;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToNode:(id)arg1;
-- (BOOL)isNode;
+- (BOOL)isIdentifiedByProperties:(id)arg1;
 - (BOOL)isOrphan;
+- (BOOL)isSameNodeAsNode:(id)arg1;
 - (BOOL)isUnique;
+- (BOOL)matchesNode:(id)arg1 includingProperties:(BOOL)arg2;
+- (unsigned long long)memoryFootprint:(id)arg1;
+- (void)mergeProperties:(id)arg1;
 - (id)neighborNodes;
 - (id)neighborNodesThroughEdgesWithLabel:(id)arg1;
 - (id)neighborNodesThroughEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2;
 - (id)neighborNodesThroughInEdges;
 - (id)neighborNodesThroughOutEdges;
 - (id)neighborNodesWithLabel:(id)arg1 domain:(unsigned short)arg2;
+- (id)objectForKeyedSubscript:(id)arg1;
 - (unsigned long long)outEdgesCount;
+- (unsigned long long)propertiesCount;
+- (id)propertyDictionary;
+- (id)propertyForKey:(id)arg1;
+- (id)propertyForKey:(id)arg1 kindOfClass:(Class)arg2;
+- (id)propertyKeys;
+- (void)removeAllProperties;
+- (void)removeEdge:(id)arg1;
+- (void)removePropertyForKey:(id)arg1;
+- (void)setLocalProperties:(id)arg1;
+- (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;
+- (void)setProperties:(id)arg1;
+- (void)setPropertyValue:(id)arg1 forKey:(id)arg2;
 - (id)shortDescription;
 - (id)shortestPathToNode:(id)arg1 directed:(BOOL)arg2;
 - (id)siblingNodesThroughEdgesWithLabel:(id)arg1;
 - (id)siblingNodesThroughEdgesWithLabel:(id)arg1 domain:(unsigned short)arg2;
+- (void)updatePersistedWeight:(float)arg1;
 - (id)visualString;
 - (id)visualStringWithName:(id)arg1;
 - (id)visualStringWithName:(id)arg1 andPropertyKeys:(id)arg2;

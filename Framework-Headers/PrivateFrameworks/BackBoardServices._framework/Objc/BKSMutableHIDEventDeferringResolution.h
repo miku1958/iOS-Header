@@ -6,16 +6,18 @@
 
 #import <BackBoardServices/BKSHIDEventDeferringResolution.h>
 
-@class BKSHIDEventDeferringEnvironment, BKSHIDEventDeferringToken, BKSHIDEventDisplay;
+@class BKSHIDEventDeferringEnvironment, BKSHIDEventDeferringToken, BKSHIDEventDisplay, NSString;
 
 @interface BKSMutableHIDEventDeferringResolution : BKSHIDEventDeferringResolution
 {
 }
 
+@property (copy, nonatomic) NSString *bundleIdentifier; // @dynamic bundleIdentifier;
 @property (copy, nonatomic) BKSHIDEventDisplay *display; // @dynamic display;
 @property (copy, nonatomic) BKSHIDEventDeferringEnvironment *environment; // @dynamic environment;
 @property (nonatomic) int pid; // @dynamic pid;
 @property (copy, nonatomic) BKSHIDEventDeferringToken *token; // @dynamic token;
+@property (nonatomic) long long versionedPID; // @dynamic versionedPID;
 
 + (id)new;
 - (id)copyWithZone:(struct _NSZone *)arg1;

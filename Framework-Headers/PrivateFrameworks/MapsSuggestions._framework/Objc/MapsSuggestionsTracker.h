@@ -8,34 +8,35 @@
 
 #import <MapsSuggestions/MapsSuggestionsObject-Protocol.h>
 
-@class CLLocation, GEOAutomobileOptions, GEOLocationShifter, MapsSuggestionsCanKicker, MapsSuggestionsDonater, MapsSuggestionsETARequester, MapsSuggestionsETARequirements, MapsSuggestionsFlightUpdater, MapsSuggestionsManager, MapsSuggestionsMutableWeakEntries, MapsSuggestionsNetworkRequester, MapsSuggestionsPredictor, NSMutableDictionary, NSString;
-@protocol MapsSuggestionsFlightRequester, OS_dispatch_queue, OS_dispatch_source;
+@class CLLocation, GEOAutomobileOptions, MapsSuggestionsCanKicker, MapsSuggestionsDonater, MapsSuggestionsETARequester, MapsSuggestionsETARequirements, MapsSuggestionsFlightUpdater, MapsSuggestionsManager, MapsSuggestionsMutableWeakEntries, MapsSuggestionsPredictor, MapsSuggestionsVirtualGarage, NSMutableDictionary, NSString;
+@protocol MapsSuggestionsNetworkRequester, MapsSuggestionsTimer, OS_dispatch_queue;
 
 @interface MapsSuggestionsTracker : NSObject <MapsSuggestionsObject>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    NSObject<OS_dispatch_source> *_refreshTimer;
+    MapsSuggestionsETARequirements *_requirements;
+    id<MapsSuggestionsTimer> _refreshTimer;
     double _refreshInterval;
+    double _refreshLeeway;
     double _refreshDeferTime;
     int _transportType;
     MapsSuggestionsManager *_manager;
-    GEOLocationShifter *_locationShifter;
     NSMutableDictionary *_etaTitleFormatters;
     NSMutableDictionary *_distanceTitleFormatters;
+    NSMutableDictionary *_etaChargeTitleFormatters;
     BOOL _shouldBeRunning;
     MapsSuggestionsETARequester *_etaRequester;
     MapsSuggestionsDonater *_donater;
     MapsSuggestionsCanKicker *_currentLocationWiper;
     NSMutableDictionary *_previousETAs;
     id _transportTypeChangedListener;
-    id<MapsSuggestionsFlightRequester> _flightRequester;
+    MapsSuggestionsVirtualGarage *_virtualGarage;
     MapsSuggestionsFlightUpdater *_flightUpdater;
     int _mapType;
-    MapsSuggestionsETARequirements *_requirements;
     GEOAutomobileOptions *_automobileOptions;
     CLLocation *_currentLocation;
     MapsSuggestionsMutableWeakEntries *_trackedEntries;
-    MapsSuggestionsNetworkRequester *_networkRequester;
+    id<MapsSuggestionsNetworkRequester> _networkRequester;
     MapsSuggestionsPredictor *_predictor;
 }
 
@@ -45,39 +46,16 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) int mapType; // @synthesize mapType=_mapType;
-@property (strong, nonatomic) MapsSuggestionsNetworkRequester *networkRequester; // @synthesize networkRequester=_networkRequester;
+@property (strong, nonatomic) id<MapsSuggestionsNetworkRequester> networkRequester; // @synthesize networkRequester=_networkRequester;
 @property (strong, nonatomic) MapsSuggestionsPredictor *predictor; // @synthesize predictor=_predictor;
-@property (copy) MapsSuggestionsETARequirements *requirements; // @synthesize requirements=_requirements;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) MapsSuggestionsMutableWeakEntries *trackedEntries; // @synthesize trackedEntries=_trackedEntries;
 @property (readonly, nonatomic) NSString *uniqueName;
 
-+ (BOOL)_isLocationShiftRequiredForLocation:(id)arg1;
 - (void).cxx_destruct;
-- (id)_bestValidOfflineETAForEntry:(id)arg1 destinationKey:(id)arg2;
-- (void)_captureSignalsFromEntries:(id)arg1;
-- (void)_decorateETA:(id)arg1 forEntry:(id)arg2;
-- (void)_decorateFlightInfoForEntry:(id)arg1;
-- (id)_distanceTitleFormatterForType:(long long)arg1;
-- (id)_etaTitleFormatterForType:(long long)arg1;
-- (BOOL)_hasTitleFormatterForType:(long long)arg1;
-- (BOOL)_isMatchingTransportType:(int)arg1;
-- (BOOL)_isUnusableETA:(id)arg1;
-- (void)_prepareShiftForLocation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2 withShiftRequestBlock:(CDUnknownBlockType)arg3;
-- (void)_prunePreviousETAs;
-- (void)_refresh;
-- (void)_rememberETA:(id)arg1 forEntry:(id)arg2;
-- (void)_requestDistances;
-- (void)_requestETAs;
-- (void)_requestFlightInfo;
-- (void)_resetAllTitleFormatting;
-- (void)_scheduleRefresh;
-- (void)_scheduleRefreshIfCurrentLocationIsMuchBetterThanLocation:(id)arg1;
-- (void)_shiftLocation:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2 callbackQueue:(id)arg3;
-- (void)_unschedule;
+- (void)clearLocationAndETAs;
 - (void)dealloc;
-- (id)initWithManager:(id)arg1 requirements:(id)arg2;
-- (id)location;
+- (id)initWithManager:(id)arg1 requirements:(id)arg2 network:(id)arg3 flightUpdater:(id)arg4 virtualGarage:(id)arg5;
 - (void)resetAllTitleFormatting;
 - (void)scheduleRefresh;
 - (void)setLocation:(id)arg1;

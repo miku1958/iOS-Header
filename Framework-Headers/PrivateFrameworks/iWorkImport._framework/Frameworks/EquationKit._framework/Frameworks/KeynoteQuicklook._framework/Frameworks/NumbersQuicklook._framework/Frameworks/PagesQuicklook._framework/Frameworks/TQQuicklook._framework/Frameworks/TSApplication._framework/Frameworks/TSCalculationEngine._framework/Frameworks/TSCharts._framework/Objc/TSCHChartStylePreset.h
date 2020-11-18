@@ -73,7 +73,7 @@
 - (void)loadFromUnarchiver:(id)arg1;
 - (id)migratedPresetInTheme:(id)arg1 followReplacements:(BOOL)arg2;
 - (id)p_initWithContext:(id)arg1;
-- (id)presetByAdoptingStylesheet:(id)arg1 withMapper:(id)arg2;
+- (id)presetByAdoptingStylesheet:(id)arg1 withMapper:(id)arg2 paragraphStyles:(id)arg3;
 - (id)referencedStyles;
 - (void)saveToArchiver:(id)arg1;
 - (id)styleOwnerFromSwapType:(int)arg1 andIndex:(unsigned long long)arg2;

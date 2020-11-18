@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class BSAuditToken, BSProcessHandle, NSArray, UISApplicationInitializationContext, UISApplicationSupportService;
+@class BSAuditToken, BSProcessHandle, NSArray, UISApplicationInitializationContext, UISApplicationInitializationContextParameters, UISApplicationSupportService;
 
 @protocol UISApplicationSupportServiceDelegate <NSObject>
 
@@ -16,6 +16,7 @@
 - (void)requestPasscodeUnlockUIForClient:(BSAuditToken *)arg1 withCompletion:(void (^)(BOOL))arg2;
 - (UISApplicationInitializationContext *)service:(UISApplicationSupportService *)arg1 initializeClient:(BSProcessHandle *)arg2;
 - (void)service:(UISApplicationSupportService *)arg1 initializeClient:(BSProcessHandle *)arg2 withCompletion:(void (^)(UISApplicationInitializationContext *))arg3;
+- (UISApplicationInitializationContext *)service:(UISApplicationSupportService *)arg1 initializeClient:(BSProcessHandle *)arg2 withParameters:(UISApplicationInitializationContextParameters *)arg3;
 - (BOOL)service:(UISApplicationSupportService *)arg1 overrideClientInitialization:(BSProcessHandle *)arg2;
 @end
 

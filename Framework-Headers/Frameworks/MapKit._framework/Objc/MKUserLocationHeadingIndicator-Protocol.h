@@ -6,9 +6,15 @@
 
 #import <MapKit/NSObject-Protocol.h>
 
-@class UIColor;
+@class UIColor, UITraitCollection;
 
 @protocol MKUserLocationHeadingIndicator <NSObject>
+
+@property (nonatomic) unsigned long long mapType;
+@property (nonatomic) double minimumAccuracyRadius;
+@property (strong, nonatomic) UITraitCollection *traitCollection;
+
+- (void)setAccuracyRadius:(double)arg1 duration:(double)arg2;
 - (void)updateHeading:(double)arg1;
 - (void)updateHeadingAccuracy:(double)arg1 previousAccuracy:(double)arg2;
 - (void)updateTintColor:(UIColor *)arg1;

@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
 + (id)exportedInterface;
 + (id)serviceViewControllerInterface;
 - (void).cxx_destruct;
-- (void)didCancel;
+- (void)didCancel:(id)arg1;
 - (void)didFinishWithDocumentInfoCollection:(id)arg1;
 - (void)dismiss;
 - (void)viewControllerWasDismissed;

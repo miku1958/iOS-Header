@@ -8,6 +8,7 @@
 
 @interface TSTTableRepProcessChangesActions : NSObject
 {
+    vector_e87daf7b _dirtyCellRanges;
     BOOL _invalidateAllChrome;
     BOOL _invalidateAllChromeCaches;
     BOOL _invalidateColumnChrome;
@@ -22,11 +23,9 @@
     BOOL _hideStepperHUD;
     BOOL _expandDirtyRegionForReferences;
     BOOL _repositionStockPopover;
-    struct TSUCellRect _dirtyCellRange;
     struct TSUCellRect _dirtyStrokeRange;
 }
 
-@property (nonatomic) struct TSUCellRect dirtyCellRange; // @synthesize dirtyCellRange=_dirtyCellRange;
 @property (nonatomic) struct TSUCellRect dirtyStrokeRange; // @synthesize dirtyStrokeRange=_dirtyStrokeRange;
 @property (nonatomic) BOOL expandDirtyRegionForReferences; // @synthesize expandDirtyRegionForReferences=_expandDirtyRegionForReferences;
 @property (nonatomic) BOOL hideChromeContextMenuButton; // @synthesize hideChromeContextMenuButton=_hideChromeContextMenuButton;
@@ -43,6 +42,10 @@
 @property (nonatomic) BOOL syncReferenceHighlightState; // @synthesize syncReferenceHighlightState=_syncReferenceHighlightState;
 @property (nonatomic) BOOL updateEditorRemainders; // @synthesize updateEditorRemainders=_updateEditorRemainders;
 
+- (id).cxx_construct;
+- (void).cxx_destruct;
+- (vector_e87daf7b *)dirtyCellRanges;
+- (void)setDirtyCellRange:(struct TSUCellRect)arg1;
 
 @end
 

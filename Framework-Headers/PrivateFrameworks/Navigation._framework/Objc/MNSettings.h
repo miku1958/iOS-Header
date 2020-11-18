@@ -18,46 +18,20 @@
     BOOL _muteSpeechOverride;
     BOOL _speechEnabled;
     unsigned long long _maxAlternateRoutesCount;
-    BOOL _drivingVoiceGuidance;
-    BOOL _walkingVoiceGuidance;
     BOOL _beepBeforeInstruction;
     NSString *_voiceLanguage;
-    double _etaRequestInterval;
-    double _initialRequestDelay;
-    double _backgroundTimeWindow;
-    long long _fakeTrafficIncidentAlert;
-    double _initialTraceSpeedMultiplier;
-    BOOL _shouldLoadReroutesFromTrace;
-    BOOL _shouldLoadETAUpdatesFromTrace;
-    BOOL _isTracePlaybackCameraTestMode;
-    BOOL _shouldRecordTrace;
-    double _simulationSpeed;
-    double _simulationGPSError;
     BOOL _shouldUseGuidanceEventManager;
 }
 
-@property (readonly, nonatomic) double backgroundTimeWindow; // @synthesize backgroundTimeWindow=_backgroundTimeWindow;
 @property (readonly, nonatomic) BOOL beepBeforeInstruction; // @synthesize beepBeforeInstruction=_beepBeforeInstruction;
 @property (readonly, nonatomic) unsigned long long distanceUnits; // @synthesize distanceUnits=_distanceUnits;
-@property (readonly, nonatomic) BOOL drivingVoiceGuidance; // @synthesize drivingVoiceGuidance=_drivingVoiceGuidance;
-@property (readonly, nonatomic) double etaRequestInterval; // @synthesize etaRequestInterval=_etaRequestInterval;
-@property (readonly, nonatomic) long long fakeTrafficIncidentAlert; // @synthesize fakeTrafficIncidentAlert=_fakeTrafficIncidentAlert;
-@property (readonly, nonatomic) double initialRequestDelay; // @synthesize initialRequestDelay=_initialRequestDelay;
-@property (readonly, nonatomic) double initialTraceSpeedMultiplier; // @synthesize initialTraceSpeedMultiplier=_initialTraceSpeedMultiplier;
-@property (readonly, nonatomic) BOOL isTracePlaybackCameraTestMode; // @synthesize isTracePlaybackCameraTestMode=_isTracePlaybackCameraTestMode;
 @property (readonly, nonatomic) unsigned long long maxAlternateRoutesCount; // @synthesize maxAlternateRoutesCount=_maxAlternateRoutesCount;
 @property (readonly, nonatomic) BOOL muteSpeechOverride; // @synthesize muteSpeechOverride=_muteSpeechOverride;
 @property (readonly, nonatomic) BOOL pauseSpokenAudio; // @synthesize pauseSpokenAudio=_pauseSpokenAudio;
-@property (readonly, nonatomic) BOOL shouldLoadETAUpdatesFromTrace; // @synthesize shouldLoadETAUpdatesFromTrace=_shouldLoadETAUpdatesFromTrace;
-@property (readonly, nonatomic) BOOL shouldLoadReroutesFromTrace; // @synthesize shouldLoadReroutesFromTrace=_shouldLoadReroutesFromTrace;
-@property (readonly, nonatomic) BOOL shouldRecordTrace; // @synthesize shouldRecordTrace=_shouldRecordTrace;
 @property (readonly, nonatomic) BOOL shouldUseGuidanceEventManager; // @synthesize shouldUseGuidanceEventManager=_shouldUseGuidanceEventManager;
-@property (readonly, nonatomic) double simulationGPSError; // @synthesize simulationGPSError=_simulationGPSError;
-@property (readonly, nonatomic) double simulationSpeed; // @synthesize simulationSpeed=_simulationSpeed;
 @property (readonly, nonatomic) BOOL speechEnabled; // @synthesize speechEnabled=_speechEnabled;
 @property (readonly, nonatomic) NSString *voiceLanguage;
 @property (readonly, nonatomic) unsigned long long voiceVolume; // @synthesize voiceVolume=_voiceVolume;
-@property (readonly, nonatomic) BOOL walkingVoiceGuidance; // @synthesize walkingVoiceGuidance=_walkingVoiceGuidance;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

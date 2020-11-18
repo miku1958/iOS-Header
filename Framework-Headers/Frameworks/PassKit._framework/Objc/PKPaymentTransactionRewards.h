@@ -20,8 +20,11 @@
 @property (strong, nonatomic) NSArray *rewardsItems; // @synthesize rewardsItems=_rewardsItems;
 
 + (id)_rewardsItemsSetFromJsonString:(id)arg1;
++ (id)recordNamePrefix;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)_rewardItemsFromRecord:(id)arg1;
+- (void)applyPropertiesFromCloudStoreRecord:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (void)encodeServerAndDeviceDataWithCloudStoreCoder:(id)arg1;
@@ -37,7 +40,9 @@
 - (unsigned long long)itemType;
 - (id)jsonArrayRepresentation;
 - (id)jsonString;
+- (id)primaryIdentifier;
 - (id)recordTypesAndNamesIncludingServerData:(BOOL)arg1;
+- (id)totalEligibleValueForUnit:(unsigned long long)arg1;
 
 @end
 

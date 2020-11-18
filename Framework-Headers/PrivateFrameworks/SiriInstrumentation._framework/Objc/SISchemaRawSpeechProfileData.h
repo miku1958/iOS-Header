@@ -10,9 +10,11 @@
 
 @interface SISchemaRawSpeechProfileData : PBCodable
 {
+    BOOL _hasR;
     NSData *_r;
 }
 
+@property (nonatomic) BOOL hasR; // @synthesize hasR=_hasR;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSData *r; // @synthesize r=_r;
 

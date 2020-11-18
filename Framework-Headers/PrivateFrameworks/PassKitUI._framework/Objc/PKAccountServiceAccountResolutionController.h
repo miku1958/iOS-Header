@@ -6,14 +6,14 @@
 
 #import <objc/NSObject.h>
 
-@class PKAccount, PKBusinessChatController, PKPaymentPass, UIViewController;
+@class PKAccount, PKBusinessChatController, PKTransactionSource, UIViewController;
 @protocol PKAccountBillPaymentObserver, PKAccountServiceAccountResolutionControllerDelegate;
 
 @interface PKAccountServiceAccountResolutionController : NSObject
 {
     PKBusinessChatController *_businessChatController;
     PKAccount *_account;
-    PKPaymentPass *_pass;
+    PKTransactionSource *_transactionSource;
     id<PKAccountServiceAccountResolutionControllerDelegate> _delegate;
     id<PKAccountBillPaymentObserver> _billPaymentObserver;
     UIViewController *_presentingViewController;
@@ -22,8 +22,8 @@
 @property (strong, nonatomic) PKAccount *account; // @synthesize account=_account;
 @property (weak, nonatomic) id<PKAccountBillPaymentObserver> billPaymentObserver; // @synthesize billPaymentObserver=_billPaymentObserver;
 @property (weak, nonatomic) id<PKAccountServiceAccountResolutionControllerDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) PKPaymentPass *pass; // @synthesize pass=_pass;
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
+@property (strong, nonatomic) PKTransactionSource *transactionSource; // @synthesize transactionSource=_transactionSource;
 
 - (void).cxx_destruct;
 - (id)_alertControllerForBusinessChatContext:(id)arg1;
@@ -32,7 +32,7 @@
 - (void)_openBusinessChatWithContext:(id)arg1;
 - (void)_presentAccountServiceAction:(unsigned long long)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_presentViewController:(id)arg1;
-- (id)initWithAccount:(id)arg1 pass:(id)arg2;
+- (id)initWithAccount:(id)arg1 transactionSource:(id)arg2;
 - (void)presentFlowForAccountResolution:(unsigned long long)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

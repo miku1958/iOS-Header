@@ -9,15 +9,13 @@
 #import <HealthKit/HKCloudSyncObserverClientInterface-Protocol.h>
 #import <HealthKit/_HKXPCExportable-Protocol.h>
 
-@class HKCloudSyncObserverStatus, HKHealthStore, HKTaskServerProxyProvider, NSProgress, NSString, NSUUID;
+@class HKCloudSyncObserverStatus, HKTaskServerProxyProvider, NSProgress, NSString, NSUUID;
 @protocol HKCloudSyncObserverDelegate;
 
 @interface HKCloudSyncObserver : NSObject <_HKXPCExportable, HKCloudSyncObserverClientInterface>
 {
     NSUUID *_identifier;
-    HKHealthStore *_healthStore;
     HKTaskServerProxyProvider *_proxyProvider;
-    BOOL _observingSyncStatus;
     NSProgress *_progress;
     HKCloudSyncObserverStatus *_status;
     id<HKCloudSyncObserverDelegate> _delegate;
@@ -34,16 +32,14 @@
 + (id)clientInterface;
 + (id)serverInterface;
 - (void).cxx_destruct;
+- (void)_clientQueue_didCompleteSyncWithStatus:(long long)arg1 error:(id)arg2;
 - (void)clientRemote_didUpdateObserverWithSyncStatus:(id)arg1;
 - (void)clientRemote_syncDidStart;
 - (void)connectionInvalidated;
-- (void)didCompleteSyncWithStatus:(long long)arg1 error:(id)arg2;
 - (id)exportedInterface;
 - (id)initWithHealthStore:(id)arg1 delegate:(id)arg2;
-- (BOOL)isObservingSyncStatus;
 - (id)progress;
 - (id)remoteInterface;
-- (void)setObservingSyncStatus:(BOOL)arg1;
 - (void)setProgress:(id)arg1;
 - (void)setStatus:(id)arg1;
 - (void)startObservingSyncStatus;

@@ -14,9 +14,11 @@
 + (long long)_controlCenterRecipe;
 + (id)_darkMaterialView;
 + (id)_lightFillMaterialView;
++ (id)_moduleBackgroundMaterialView;
 + (id)_tertiaryMaterialView;
 + (id)controlCenterDarkMaterial;
 + (id)controlCenterLightFill;
++ (id)controlCenterModuleBackgroundMaterial;
 + (id)controlCenterTertiaryMaterial;
 + (id)secondaryMaterialView;
 

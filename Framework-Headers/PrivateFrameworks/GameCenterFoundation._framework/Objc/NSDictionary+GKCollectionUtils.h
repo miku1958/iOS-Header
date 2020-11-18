@@ -10,7 +10,7 @@
 + (id)_gkClientImageDictionaryForServerImageURLs:(id)arg1;
 + (id)_gkDictionaryWithFormEncodedString:(id)arg1;
 + (id)_gkImageCacheKeyPathsByKey;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)_gkDictionaryByRemovingObjectForKey:(id)arg1;
 - (id)_gkDictionaryByRemovingObjectsForKeys:(id)arg1;
 - (id)_gkImageURLForSize:(long long)arg1 scale:(double)arg2;

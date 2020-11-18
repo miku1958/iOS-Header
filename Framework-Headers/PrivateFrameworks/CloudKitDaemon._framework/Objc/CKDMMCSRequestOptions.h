@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class C2MetricOptions, CKOperationMMCSRequestOptions, NSArray, NSData, NSDictionary, NSString;
+@class C2MetricOptions, CKContainerID, CKOperationMMCSRequestOptions, NSArray, NSData, NSDictionary, NSNumber, NSString;
 
 __attribute__((visibility("hidden")))
 @interface CKDMMCSRequestOptions : NSObject
@@ -14,13 +14,13 @@ __attribute__((visibility("hidden")))
     BOOL _allowsCellularAccess;
     BOOL _allowsPowerNapScheduling;
     BOOL _resolvedAutomaticallyRetryNetworkFailures;
+    BOOL _isCrossOwner;
     long long _databaseScope;
-    long long _containerEnvironment;
+    CKContainerID *_containerID;
     NSString *_topmostParentOperationID;
     NSString *_topmostParentOperationGroupID;
     NSString *_applicationBundleID;
     NSString *_applicationSecondaryID;
-    NSString *_containerID;
     NSArray *_zoneNames;
     NSString *_deviceHardwareID;
     NSData *_authPutResponse;
@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
     unsigned long long _resolvedDiscretionaryNetworkBehavior;
     unsigned long long _duetPreClearedMode;
     C2MetricOptions *_metricOptions;
+    NSNumber *_cacheDeleteAvailableSpaceClass;
     unsigned long long _networkServiceType;
     CKOperationMMCSRequestOptions *_MMCSRequestOptions;
 }
@@ -41,11 +42,12 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *applicationSecondaryID; // @synthesize applicationSecondaryID=_applicationSecondaryID;
 @property (strong, nonatomic) NSData *authPutResponse; // @synthesize authPutResponse=_authPutResponse;
 @property (strong, nonatomic) NSDictionary *authPutResponseHeaders; // @synthesize authPutResponseHeaders=_authPutResponseHeaders;
-@property (nonatomic) long long containerEnvironment; // @synthesize containerEnvironment=_containerEnvironment;
-@property (strong, nonatomic) NSString *containerID; // @synthesize containerID=_containerID;
+@property (strong, nonatomic) NSNumber *cacheDeleteAvailableSpaceClass; // @synthesize cacheDeleteAvailableSpaceClass=_cacheDeleteAvailableSpaceClass;
+@property (strong, nonatomic) CKContainerID *containerID; // @synthesize containerID=_containerID;
 @property (nonatomic) long long databaseScope; // @synthesize databaseScope=_databaseScope;
 @property (strong, nonatomic) NSString *deviceHardwareID; // @synthesize deviceHardwareID=_deviceHardwareID;
 @property (nonatomic) unsigned long long duetPreClearedMode; // @synthesize duetPreClearedMode=_duetPreClearedMode;
+@property (nonatomic) BOOL isCrossOwner; // @synthesize isCrossOwner=_isCrossOwner;
 @property (strong, nonatomic) C2MetricOptions *metricOptions; // @synthesize metricOptions=_metricOptions;
 @property (nonatomic) unsigned long long networkServiceType; // @synthesize networkServiceType=_networkServiceType;
 @property (nonatomic) long long qualityOfService; // @synthesize qualityOfService=_qualityOfService;

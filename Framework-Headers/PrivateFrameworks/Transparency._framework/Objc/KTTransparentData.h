@@ -8,16 +8,18 @@
 
 #import <Transparency/NSSecureCoding-Protocol.h>
 
-@class NSData, NSMutableArray;
+@class NSData, NSDate, NSMutableArray;
 
 @interface KTTransparentData : NSObject <NSSecureCoding>
 {
     NSMutableArray *_accounts;
+    NSDate *_currentTreeEpochBeginDate;
     NSData *_inclusionProof;
     NSData *_uriVRFOutput;
 }
 
 @property (strong) NSMutableArray *accounts; // @synthesize accounts=_accounts;
+@property (strong) NSDate *currentTreeEpochBeginDate; // @synthesize currentTreeEpochBeginDate=_currentTreeEpochBeginDate;
 @property (strong) NSData *inclusionProof; // @synthesize inclusionProof=_inclusionProof;
 @property (strong) NSData *uriVRFOutput; // @synthesize uriVRFOutput=_uriVRFOutput;
 
@@ -45,9 +47,9 @@
 - (BOOL)updateWithMutation:(id)arg1 error:(id *)arg2;
 - (BOOL)updateWithSMTs:(id)arg1 error:(id *)arg2;
 - (BOOL)validateActiveClientDatasForAccountId:(id)arg1 error:(id *)arg2;
-- (BOOL)validateAndUpdateWithServerLoggableDatas:(id)arg1 accountId:(id)arg2 error:(id *)arg3;
+- (BOOL)validateAndUpdateWithServerLoggableDatas:(id)arg1 accountId:(id)arg2 requestTime:(double)arg3 error:(id *)arg4;
 - (BOOL)validateAndUpdateWithSyncedLoggableDatas:(id)arg1 accountId:(id)arg2 error:(id *)arg3;
-- (BOOL)validateOtherAccountIDsInactiveForAccountId:(id)arg1 error:(id *)arg2;
+- (BOOL)validateOtherAccountIDsInactiveForAccountId:(id)arg1 requestTime:(double)arg2 error:(id *)arg3;
 
 @end
 

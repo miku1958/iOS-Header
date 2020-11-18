@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@protocol VUIDocumentCreator, VUIWidgetCreator;
+@protocol VUIDocumentCreator;
 
 __attribute__((visibility("hidden")))
 @interface VUIInterfaceFactory : NSObject
@@ -15,11 +15,9 @@ __attribute__((visibility("hidden")))
         BOOL respondsToViewControllerCreation;
     } _documentCreatorFlags;
     NSObject<VUIDocumentCreator> *_documentCreator;
-    NSObject<VUIWidgetCreator> *_widgetCreator;
 }
 
 @property (strong, nonatomic) NSObject<VUIDocumentCreator> *documentCreator; // @synthesize documentCreator=_documentCreator;
-@property (strong, nonatomic) NSObject<VUIWidgetCreator> *widgetCreator; // @synthesize widgetCreator=_widgetCreator;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;

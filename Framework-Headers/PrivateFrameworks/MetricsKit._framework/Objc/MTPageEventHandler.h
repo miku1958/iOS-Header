@@ -18,10 +18,10 @@
 @property (strong, nonatomic) NSMutableArray *trackedPageHistory; // @synthesize trackedPageHistory=_trackedPageHistory;
 
 - (void).cxx_destruct;
+- (void)didCreateMetricsData:(id)arg1;
 - (id)eventType;
 - (id)eventVersion:(id)arg1;
 - (id)knownFields;
-- (id)metricsDataWithCallerSuppliedFields:(id)arg1;
 - (id)pageHistory:(id)arg1;
 - (void)updatePageHistoryWithPage:(id)arg1;
 

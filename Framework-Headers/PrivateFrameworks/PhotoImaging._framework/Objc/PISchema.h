@@ -14,6 +14,7 @@
 + (id)autoLoopSchema;
 + (id)cropSchema;
 + (id)curvesSchema;
++ (id)debugSchema;
 + (id)definitionSchema;
 + (id)depthEffectSchema;
 + (id)effect3DSchema;
@@ -43,8 +44,10 @@
 + (id)smartToneSchema;
 + (id)sourceSelectSchema;
 + (id)trimSchema;
++ (id)videoCrossfadeLoopSchema;
 + (id)videoPosterFrameSchema;
 + (id)videoReframeSchema;
++ (id)videoStabilizeSchema;
 + (id)vignetteSchema;
 + (id)whiteBalanceSchema;
 

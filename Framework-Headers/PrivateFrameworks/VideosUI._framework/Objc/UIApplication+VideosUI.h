@@ -11,6 +11,7 @@
 @interface UIApplication (VideosUI)
 
 @property (readonly, nonatomic) id<VUIApplicationDelegate> vui_delegate;
+@property (readonly, nonatomic) BOOL vui_isNonLightningAVAdapterConnected;
 
 @end
 

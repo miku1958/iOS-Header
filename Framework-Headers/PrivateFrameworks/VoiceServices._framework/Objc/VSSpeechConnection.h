@@ -36,6 +36,7 @@ __attribute__((visibility("hidden")))
 - (id)availableVoicesForLanguageCode:(id)arg1;
 - (void)beginAudioPowerUpdateWithReply:(CDUnknownBlockType)arg1;
 - (void)cachePresynthesizedAudioRequest:(id)arg1;
+- (void)cancelDownloads:(CDUnknownBlockType)arg1;
 - (oneway void)cleanUnusedAssets:(CDUnknownBlockType)arg1;
 - (id)concurrentSynthesisRequests;
 - (void)continueCurrentSpeechRequest;
@@ -44,13 +45,14 @@ __attribute__((visibility("hidden")))
 - (void)estimateDurationWithRequest:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)forwardStreamObject:(id)arg1;
 - (void)getAutoDownloadedVoiceAssetsWithClientID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-- (void)getLocalVoiceAssets:(CDUnknownBlockType)arg1;
+- (void)getLocalVoiceAssetsForLanguage:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getLocalVoiceResources:(CDUnknownBlockType)arg1;
 - (void)getLogToFile:(CDUnknownBlockType)arg1;
 - (void)getTTSServerVoicesWithFilter:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)getVoiceInfoForLanguageCode:(id)arg1 footprint:(long long)arg2 gender:(long long)arg3 type:(long long)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)getVoiceResourceForLanguage:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)init;
+- (void)invokeDaemon:(CDUnknownBlockType)arg1;
 - (BOOL)isSystemSpeaking;
 - (BOOL)isSystemSpeakingOnBehalfOfCurrentConnection;
 - (void)killDaemon;

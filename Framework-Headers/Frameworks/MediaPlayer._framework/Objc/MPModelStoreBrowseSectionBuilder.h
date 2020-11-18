@@ -8,6 +8,7 @@
 
 @class MPPropertySet;
 
+__attribute__((visibility("hidden")))
 @interface MPModelStoreBrowseSectionBuilder : NSObject
 {
     struct {

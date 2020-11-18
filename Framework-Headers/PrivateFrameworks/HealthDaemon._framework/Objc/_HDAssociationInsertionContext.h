@@ -6,25 +6,26 @@
 
 #import <objc/NSObject.h>
 
-@class HDProfile, HDSQLiteDatabase, NSUUID;
+@class HDDatabaseTransaction, HDProfile, NSUUID;
 
+__attribute__((visibility("hidden")))
 @interface _HDAssociationInsertionContext : NSObject
 {
     BOOL _enforceSameSource;
     BOOL _permitPendingAssociations;
     NSUUID *_parentUUID;
     HDProfile *_profile;
-    HDSQLiteDatabase *_database;
+    HDDatabaseTransaction *_transaction;
 }
 
-@property (readonly, nonatomic) HDSQLiteDatabase *database; // @synthesize database=_database;
 @property (readonly, nonatomic) BOOL enforceSameSource; // @synthesize enforceSameSource=_enforceSameSource;
 @property (readonly, copy, nonatomic) NSUUID *parentUUID; // @synthesize parentUUID=_parentUUID;
 @property (readonly, nonatomic) BOOL permitPendingAssociations; // @synthesize permitPendingAssociations=_permitPendingAssociations;
 @property (readonly, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
+@property (readonly, nonatomic) HDDatabaseTransaction *transaction; // @synthesize transaction=_transaction;
 
 - (void).cxx_destruct;
-- (id)initWithParentUUID:(id)arg1 enforceSameSource:(BOOL)arg2 permitPendingAssociations:(BOOL)arg3 profile:(id)arg4 database:(id)arg5;
+- (id)initWithParentUUID:(id)arg1 enforceSameSource:(BOOL)arg2 permitPendingAssociations:(BOOL)arg3 profile:(id)arg4 transaction:(id)arg5;
 
 @end
 

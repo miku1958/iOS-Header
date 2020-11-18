@@ -19,7 +19,7 @@
 
 @property (readonly, nonatomic) BOOL clippedBack; // @synthesize clippedBack=_clippedBack;
 @property (readonly, nonatomic) BOOL clippedFront; // @synthesize clippedFront=_clippedFront;
-@property (readonly, nonatomic) CDStruct_c8b5ad3f *feature;
+@property (readonly, nonatomic) CDStruct_4da79865 *feature;
 @property (readonly, nonatomic) shared_ptr_92bc9970 mapEdge; // @synthesize mapEdge=_mapEdge;
 @property (readonly, nonatomic) unsigned long long mapEdgeOffset; // @synthesize mapEdgeOffset=_mapEdgeOffset;
 @property (readonly, nonatomic) unsigned long long pointCount;

@@ -36,6 +36,8 @@
     SKScrollDetector *_scrollDetector;
     BOOL _viewWasOnScreen;
     CDUnknownBlockType _dismissalCompleted;
+    NSString *_hostBundleIdentifier;
+    NSString *_usageContext;
 }
 
 @property (copy, nonatomic) NSString *additionalBuyParameters; // @synthesize additionalBuyParameters=_additionalBuyParameters;
@@ -48,6 +50,7 @@
 @property (weak, nonatomic) id<SKStoreProductViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSString *hostBundleIdentifier; // @synthesize hostBundleIdentifier=_hostBundleIdentifier;
 @property (nonatomic) long long productPageStyle; // @synthesize productPageStyle=_productPageStyle;
 @property (copy, nonatomic) NSString *promptString; // @synthesize promptString=_promptString;
 @property (copy, nonatomic) NSString *rightBarButtonTitle; // @synthesize rightBarButtonTitle=_rightBarButtonTitle;
@@ -55,6 +58,7 @@
 @property (nonatomic) BOOL showsRightBarButton; // @synthesize showsRightBarButton=_showsRightBarButton;
 @property (nonatomic) BOOL showsStoreButton; // @synthesize showsStoreButton=_showsStoreButton;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *usageContext; // @synthesize usageContext=_usageContext;
 
 + (id)_defaultIXStoreSheetDictionary;
 + (void)_validateURL:(id)arg1 withSheetInfo:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
@@ -78,6 +82,7 @@
 - (void)_sk_applicationDidEnterBackground:(id)arg1;
 - (void)_sk_applicationWillEnterForeground:(id)arg1;
 - (void)_throwUnsupportedPresentationException;
+- (void)_viewTapped:(id)arg1;
 - (void)_willBecomeContentViewControllerOfPopover:(id)arg1;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (void)dealloc;
@@ -93,6 +98,7 @@
 - (long long)modalPresentationStyle;
 - (long long)modalTransitionStyle;
 - (long long)preferredStatusBarStyle;
+- (void)setNoClippingIfNeeded;
 - (void)setParentViewController:(id)arg1;
 - (void)setPresentationStyleIfNeeded;
 - (BOOL)shouldAutorotate;

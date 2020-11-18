@@ -10,13 +10,27 @@
 {
     BOOL _wantsDrawerLayout;
     BOOL _orientation;
+    BOOL _shouldConfigureForDarkFSM;
+    BOOL _insertingBeforeReplyPreview;
+    BOOL _insertingWithReplyPreview;
+    BOOL _suppressAnimationsForLineUpdates;
     double _drawerPercentRevealed;
     double _associatedItemOffset;
+    long long _insertionType;
+    double _insertionDuration;
+    double _insertionBeginTime;
 }
 
 @property (nonatomic) double associatedItemOffset; // @synthesize associatedItemOffset=_associatedItemOffset;
 @property (nonatomic) double drawerPercentRevealed; // @synthesize drawerPercentRevealed=_drawerPercentRevealed;
+@property (nonatomic) BOOL insertingBeforeReplyPreview; // @synthesize insertingBeforeReplyPreview=_insertingBeforeReplyPreview;
+@property (nonatomic) BOOL insertingWithReplyPreview; // @synthesize insertingWithReplyPreview=_insertingWithReplyPreview;
+@property (nonatomic) double insertionBeginTime; // @synthesize insertionBeginTime=_insertionBeginTime;
+@property (nonatomic) double insertionDuration; // @synthesize insertionDuration=_insertionDuration;
+@property (nonatomic) long long insertionType; // @synthesize insertionType=_insertionType;
 @property (nonatomic) BOOL orientation; // @synthesize orientation=_orientation;
+@property (nonatomic) BOOL shouldConfigureForDarkFSM; // @synthesize shouldConfigureForDarkFSM=_shouldConfigureForDarkFSM;
+@property (nonatomic, getter=suppressesAnimationsForLineUpdates) BOOL suppressAnimationsForLineUpdates; // @synthesize suppressAnimationsForLineUpdates=_suppressAnimationsForLineUpdates;
 @property (nonatomic) BOOL wantsDrawerLayout; // @synthesize wantsDrawerLayout=_wantsDrawerLayout;
 
 - (void)addFilter:(id)arg1;

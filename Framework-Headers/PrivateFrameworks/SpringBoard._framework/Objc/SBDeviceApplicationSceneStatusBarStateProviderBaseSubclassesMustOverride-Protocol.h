@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSDictionary, NSString, SBDeviceApplicationSceneHandle;
+@class NSDictionary, NSString;
 
 @protocol SBDeviceApplicationSceneStatusBarStateProviderBaseSubclassesMustOverride <NSObject>
 - (long long)_fallbackInterfaceOrientation;
@@ -19,7 +19,6 @@
 - (long long)_statusBarStyleForPartWithIdentifier:(NSString *)arg1 suppressingInherited:(BOOL)arg2;
 - (BOOL)_suppressInheritedPartStyles;
 - (struct CGRect)statusBarAvoidanceFrame;
-- (SBDeviceApplicationSceneHandle *)statusBarControllingSceneHandle;
 - (NSString *)statusBarSceneIdentifier;
 - (int)statusBarStyleOverridesToSuppress;
 @end

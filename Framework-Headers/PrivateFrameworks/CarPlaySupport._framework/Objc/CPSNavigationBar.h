@@ -20,6 +20,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMapTable *lastFocusedItems; // @synthesize lastFocusedItems=_lastFocusedItems;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL useRightHandDriveFocusGuide;
 
 - (void).cxx_destruct;
 - (id)_linearFocusItems;

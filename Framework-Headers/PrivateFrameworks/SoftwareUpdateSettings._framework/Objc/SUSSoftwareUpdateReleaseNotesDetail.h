@@ -6,13 +6,14 @@
 
 #import <Preferences/PSListController.h>
 
-#import <SoftwareUpdateSettings/UIWebViewDelegate-Protocol.h>
+#import <SoftwareUpdateSettings/WKNavigationDelegate-Protocol.h>
 
-@class NSString;
+@class NSString, WKWebView;
 
-@interface SUSSoftwareUpdateReleaseNotesDetail : PSListController <UIWebViewDelegate>
+@interface SUSSoftwareUpdateReleaseNotesDetail : PSListController <WKNavigationDelegate>
 {
     NSString *_releaseNotes;
+    WKWebView *_webView;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -20,12 +21,13 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *releaseNotes; // @synthesize releaseNotes=_releaseNotes;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 
 - (void).cxx_destruct;
 - (id)init;
-- (void)loadView;
 - (id)specifiers;
-- (BOOL)webView:(id)arg1 shouldStartLoadWithRequest:(id)arg2 navigationType:(long long)arg3;
+- (void)viewDidLoad;
+- (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

@@ -11,6 +11,7 @@
 }
 
 + (id)fontDescriptorForSectName:(id)arg1;
++ (id)fontDescriptorForSectName:(id)arg1 fromMachO:(const struct mach_header_64 *)arg2;
 
 @end
 

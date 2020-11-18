@@ -6,40 +6,58 @@
 
 #import <objc/NSObject.h>
 
-@class AVTEditingModelColors, AVTUILogger, NSData, NSError;
+@class AVTEditingModelColors, AVTUILogger, NSData, NSDictionary, NSError, NSString;
 
 @interface AVTEditingModelDefinitionsParser : NSObject
 {
+    unsigned long long _platform;
+    NSString *_platformDictionaryKey;
     AVTUILogger *_logger;
     NSData *_plistData;
     NSError *_error;
     AVTEditingModelColors *_colorCache;
+    NSDictionary *_neutralMemojiPresetsIdentifierPerCategory;
+    NSDictionary *_presetPickersDefinitions;
+    NSDictionary *_colorPickersDefinitions;
 }
 
 @property (strong, nonatomic) AVTEditingModelColors *colorCache; // @synthesize colorCache=_colorCache;
+@property (strong, nonatomic) NSDictionary *colorPickersDefinitions; // @synthesize colorPickersDefinitions=_colorPickersDefinitions;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (readonly, nonatomic) AVTUILogger *logger; // @synthesize logger=_logger;
+@property (strong, nonatomic) NSDictionary *neutralMemojiPresetsIdentifierPerCategory; // @synthesize neutralMemojiPresetsIdentifierPerCategory=_neutralMemojiPresetsIdentifierPerCategory;
+@property (readonly, nonatomic) unsigned long long platform; // @synthesize platform=_platform;
+@property (readonly, nonatomic) NSString *platformDictionaryKey; // @synthesize platformDictionaryKey=_platformDictionaryKey;
 @property (readonly, nonatomic) NSData *plistData; // @synthesize plistData=_plistData;
+@property (strong, nonatomic) NSDictionary *presetPickersDefinitions; // @synthesize presetPickersDefinitions=_presetPickersDefinitions;
 
 + (id)dataFromAvatarKit;
 + (id)dataFromBundle;
++ (unsigned long long)defaultSortingOptionForPlatform:(unsigned long long)arg1;
 + (id)errorWithDescription:(id)arg1 underlyingError:(id)arg2;
++ (id)localizedString:(id)arg1;
++ (id)platformDictionaryKeyForPlatform:(unsigned long long)arg1;
++ (id)sortedModelRows:(id)arg1 forPlatform:(unsigned long long)arg2;
 - (void).cxx_destruct;
+- (id)applyPlatformOverrideForDictionary:(id)arg1;
 - (id)coreModelCategoryFromCategoryDictionary:(id)arg1;
-- (id)coreModelColorPaletteForColorPickerDictionary:(id)arg1 settingDestination:(long long)arg2 inCategory:(long long)arg3;
 - (id)coreModelColorsForColorDefinitions:(id)arg1 paletteSettingKind:(CDStruct_597dd055)arg2;
 - (id)coreModelColorsForPaletteSettingKind:(CDStruct_597dd055)arg1;
+- (id)coreModelColorsRowForColorPickerDictionary:(id)arg1 settingDestination:(long long)arg2 inCategory:(long long)arg3 defaultOptions:(id)arg4;
 - (id)coreModelGroupFromGroupDictionary:(id)arg1;
 - (id)coreModelPresetsForCategory:(long long)arg1;
-- (id)coreModelRowFromRowDictionary:(id)arg1 availableTags:(id)arg2 usedTags:(id)arg3;
+- (id)coreModelRowFromRowDictionary:(id)arg1 availableTags:(id)arg2 usedTags:(id)arg3 defaultOptions:(id)arg4;
 - (id)coreModelRowOptionsFromOptionsDictionary:(id)arg1;
 - (id)decodePropertyListObjects:(id)arg1;
 - (id)gatherAllTagsFromPresets:(id)arg1;
-- (id)initWithLogger:(id)arg1;
-- (id)initWithPlistData:(id)arg1 logger:(id)arg2;
-- (id)parseCoreModelFromDefinitions:(id)arg1;
+- (id)initForPlatform:(unsigned long long)arg1 withLogger:(id)arg2;
+- (id)initWithPlistData:(id)arg1 forPlatform:(unsigned long long)arg2 logger:(id)arg3;
+- (id)neutralMemojiPresetIdentifierForCategory:(long long)arg1;
+- (id)pairingFromDictionary:(id)arg1;
+- (id)parseCoreModelFromGroupsDefinitions:(id)arg1;
 - (void)parseWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (BOOL)validateForCategoryWithEnumValue:(id)arg1 presetPickers:(id)arg2 colorPickers:(id)arg3;
+- (id)symbolNamesFromGroupDictionary:(id)arg1;
+- (BOOL)validateForCategoryWithEnumValue:(id)arg1 pickers:(id)arg2;
 - (BOOL)validateForColorPicker:(id)arg1 colorPaletteCategory:(id)arg2 error:(id *)arg3;
 
 @end

@@ -6,20 +6,52 @@
 
 #import <PhotosUICore/PXAssetCollectionActionPerformer.h>
 
-@interface PXPhotoKitAssetCollectionActionPerformer : PXAssetCollectionActionPerformer
+#import <PhotosUICore/PXAssetsSharingHelperDelegate-Protocol.h>
+#import <PhotosUICore/PXPhotoKitAssetCollectionActionPerformerInput-Protocol.h>
+#import <PhotosUICore/PXPhotoStreamComposeServiceDelegate-Protocol.h>
+#import <PhotosUICore/PXVideoTrimQueueControllerDelegate-Protocol.h>
+
+@class NSString, PHFetchResult, PXAssetReference, PXAssetsDataSource, PXPhotoStreamComposeServiceViewController, PXVideoTrimQueueController;
+@protocol UIDragSession, UIDropSession;
+
+@interface PXPhotoKitAssetCollectionActionPerformer : PXAssetCollectionActionPerformer <PXPhotoStreamComposeServiceDelegate, PXVideoTrimQueueControllerDelegate, PXAssetsSharingHelperDelegate, PXPhotoKitAssetCollectionActionPerformerInput>
 {
+    PXVideoTrimQueueController *_trimController;
+    PXPhotoStreamComposeServiceViewController *_composeServiceController;
 }
 
-+ (BOOL)canPerformOnAssetCollection:(id)arg1 people:(id)arg2;
+@property (readonly, nonatomic) PXAssetsDataSource *assetsDataSource;
+@property (readonly, nonatomic) PHFetchResult *assetsFetchResult;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) id<UIDragSession> dragSession;
+@property (readonly, nonatomic) id<UIDropSession> dropSession;
+@property (readonly, nonatomic) PXAssetReference *dropTargetAssetReference;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) PHFetchResult *people;
+@property (readonly) Class superclass;
+
++ (BOOL)canPerformActionType:(id)arg1 onAssetCollectionReference:(id)arg2 withInputs:(id)arg3;
++ (BOOL)canPerformOnAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
 + (id)createActivityWithTitle:(id)arg1 actionType:(id)arg2 actionSystemImageName:(id)arg3;
 + (id)createAlertActionWithTitle:(id)arg1 handler:(CDUnknownBlockType)arg2;
-+ (id)createBarButtonItemForAssetCollection:(id)arg1 withTarget:(id)arg2 action:(SEL)arg3;
-+ (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollection:(id)arg2 person:(id)arg3;
-+ (id)systemImageNameForAssetCollection:(id)arg1 person:(id)arg2;
++ (id)createBarButtonItemForAssetCollectionReference:(id)arg1 withTarget:(id)arg2 action:(SEL)arg3;
++ (id)localizedTitleForUseCase:(unsigned long long)arg1 assetCollectionReference:(id)arg2 withInputs:(id)arg3;
++ (id)systemImageNameForAssetCollectionReference:(id)arg1 withInputs:(id)arg2;
+- (void).cxx_destruct;
 - (id)_confirmationAlertTitleForBlacklistingAction:(id)arg1 viewSpec:(id)arg2;
+- (void)_handleAddToCloudSharedAlbum:(id)arg1 pickedAssets:(id)arg2;
 - (void)_promptBlacklistingConfirmatonForUserAction:(id)arg1 viewSpec:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_promptDeleteMemoryConfirmatonWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (id)_warningMessageForBlacklistingAction:(id)arg1 viewSpec:(id)arg2;
+- (BOOL)assetsSharingHelper:(id)arg1 dismissViewController:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (BOOL)assetsSharingHelper:(id)arg1 presentViewController:(id)arg2;
+- (void)controller:(id)arg1 didCancelTrimmingVideoSources:(id)arg2;
+- (void)controller:(id)arg1 didFinishTrimmingVideoSources:(id)arg2;
+- (void)controller:(id)arg1 dismissViewControllerWithCompletion:(CDUnknownBlockType)arg2;
+- (void)controller:(id)arg1 presentViewController:(id)arg2;
+- (id)localizedTitleForUseCase:(unsigned long long)arg1;
+- (void)photoStreamComposeService:(id)arg1 didPostComment:(id)arg2;
+- (void)photoStreamComposeServiceDidCancel:(id)arg1;
 
 @end
 

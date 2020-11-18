@@ -8,7 +8,7 @@
 
 #import <NewsToday/NTTodayProtoitem-Protocol.h>
 
-@class NSString, SFSearchResult;
+@class NSString, NSURL, SFSearchResult;
 @protocol FCHeadlineProviding;
 
 @interface NTTodayHeadlineProtoitem : NSObject <NTTodayProtoitem>
@@ -16,20 +16,22 @@
     NSString *_identifier;
     id<FCHeadlineProviding> _headline;
     SFSearchResult *_searchResult;
+    NSURL *_actionURL;
 }
 
+@property (readonly, copy, nonatomic) NSURL *actionURL; // @synthesize actionURL=_actionURL;
 @property (readonly, copy, nonatomic) id<FCHeadlineProviding> headline; // @synthesize headline=_headline;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, copy, nonatomic) SFSearchResult *searchResult; // @synthesize searchResult=_searchResult;
 
 - (void).cxx_destruct;
-- (id)assetHandlesWithOperationInfo:(id)arg1 forLeadingCellAppearance:(BOOL)arg2;
+- (id)assetHandlesWithOperationInfo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithIdentifier:(id)arg1 headline:(id)arg2 searchResult:(id)arg3;
+- (id)initWithIdentifier:(id)arg1 headline:(id)arg2 searchResult:(id)arg3 actionURL:(id)arg4;
 - (BOOL)isEqual:(id)arg1;
-- (id)itemWithContentContext:(id)arg1 operationInfo:(id)arg2 sectionDescriptor:(id)arg3 todayData:(id)arg4 assetFileURLsByRemoteURL:(id)arg5 forLeadingCellAppearance:(BOOL)arg6 preferredDynamicSlotAllocation:(unsigned long long)arg7;
+- (id)itemWithContentContext:(id)arg1 operationInfo:(id)arg2 sectionDescriptor:(id)arg3 todayData:(id)arg4 assetFileURLsByRemoteURL:(id)arg5 preferredDynamicSlotAllocation:(unsigned long long)arg6;
 
 @end
 

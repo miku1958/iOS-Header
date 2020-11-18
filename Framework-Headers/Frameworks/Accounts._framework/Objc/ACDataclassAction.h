@@ -16,6 +16,8 @@
     BOOL _isDestructive;
     long long _type;
     NSArray *_affectedContainers;
+    NSString *_undoAlertTitle;
+    NSString *_undoAlertMessage;
 }
 
 @property (readonly, getter=_isError) BOOL _error;
@@ -26,6 +28,8 @@
 @property (readonly, nonatomic) BOOL isDestructive; // @synthesize isDestructive=_isDestructive;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
+@property (strong, nonatomic) NSString *undoAlertMessage; // @synthesize undoAlertMessage=_undoAlertMessage;
+@property (strong, nonatomic) NSString *undoAlertTitle; // @synthesize undoAlertTitle=_undoAlertTitle;
 
 + (id)_actionForError:(id)arg1;
 + (id)actionWithType:(long long)arg1;

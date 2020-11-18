@@ -19,6 +19,8 @@
     NSMutableSet *_calendars;
     NSMutableArray *_duplicateCalendars;
     CalDAVServerVersion *_serverVersion;
+    NSString *_usernameForDiscovery;
+    NSString *_hostForDiscovery;
     BOOL _needsAccountPropertyRefresh;
     BOOL _isRefreshing;
     BOOL _searchQueriesShouldCancel;
@@ -85,8 +87,7 @@
 @property (readonly, nonatomic) NSArray *wellKnownPaths;
 
 - (void).cxx_destruct;
-- (id)_calendarConstraintsPath;
-- (id)_calendarConstraintsResource;
+- (id)_calendarConstraintsName;
 - (void)_clearOrphanedCalendarItemChangesOfType:(int)arg1 withContext:(id)arg2 goodCalendarIds:(id)arg3;
 - (void)_clearOrphanedChangesWithChangesCall:(CDUnknownFunctionPointerType)arg1 entityType:(int)arg2 withContext:(id)arg3;
 - (void)_clearOrphanedChangesWithContext:(id)arg1;
@@ -111,11 +112,12 @@
 - (BOOL)_updateCalendarStoreNoDBOpen:(BOOL)arg1;
 - (BOOL)_updateCalendarStoreProperties:(void *)arg1;
 - (id)accountDescription;
-- (BOOL)accountHasSignificantPropertyChangesFromOldAccountInfo:(id)arg1;
+- (BOOL)accountHasSignificantPropertyChangesWithChangeInfo:(id)arg1;
 - (void)addCalendar:(id)arg1;
 - (void)addPrincipal:(id)arg1;
 - (void)addToCoreDAVLoggingDelegates;
 - (BOOL)addressIsAccountOwner:(id)arg1;
+- (void)calendarsDataclassModified;
 - (void)cancelRefreshWithCompletion:(CDUnknownBlockType)arg1;
 - (id)childAccountWithIdentifier:(id)arg1;
 - (void *)copyCalStore;
@@ -127,6 +129,7 @@
 - (void)discoveryTask:(id)arg1 gotAccountInfo:(id)arg2 error:(id)arg3;
 - (void)dropPowerAssertions;
 - (id)emailAddresses;
+- (id)host;
 - (void)ingestBackingAccountInfoProperties;
 - (id)init;
 - (id)initWithBackingAccountInfo:(id)arg1;
@@ -138,6 +141,8 @@
 - (id)logHandle;
 - (void)noteHomeSetOnDifferentHost:(id)arg1;
 - (id)onBehalfOfBundleIdentifier;
+- (void)performDiscoveryWithHostname:(id)arg1 username:(id)arg2 consumer:(id)arg3;
+- (id)preferredAddress;
 - (id)principalPath;
 - (void)reattainPowerAssertions;
 - (void)refreshActor:(id)arg1 didCompleteWithError:(id)arg2;
@@ -149,6 +154,7 @@
 - (void)removeFromCoreDAVLoggingDelegates;
 - (void)removePrincipal:(id)arg1;
 - (void)retainPowerAssertion;
+- (BOOL)retryDiscoveryTask:(id)arg1;
 - (BOOL)saveModifiedPropertiesOnBackingAccount;
 - (void)setAccountDescription:(id)arg1;
 - (void)setDelegatePrincipalPath:(id)arg1;
@@ -160,6 +166,7 @@
 - (void)task:(id)arg1 didFinishWithError:(id)arg2;
 - (void)updateDelegates;
 - (BOOL)upgradeAccount;
+- (id)username;
 
 @end
 

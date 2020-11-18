@@ -6,13 +6,12 @@
 
 #import <PhotosUICore/NSObject-Protocol.h>
 
-@class CALayer, ISLivePhotoUIView;
+@class CALayer;
 
 @protocol PXMutableImageLayerModulator <NSObject>
 
 @property (nonatomic) BOOL displayingVideoComplement;
 @property (strong, nonatomic) CALayer *layer;
-@property (strong, nonatomic) ISLivePhotoUIView *livePhotoView;
 
 - (void)animateChangesWithDuration:(double)arg1;
 - (void)removeFilterFromUnownedLayer:(CALayer *)arg1;

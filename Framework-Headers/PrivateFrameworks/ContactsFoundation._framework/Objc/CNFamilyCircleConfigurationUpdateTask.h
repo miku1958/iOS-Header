@@ -6,7 +6,7 @@
 
 #import <ContactsFoundation/CNTask.h>
 
-@class ACAccountStore, CNResult, NSMutableArray;
+@class ACAccountStore, CNResult, NSArray;
 @protocol CNDelegateAccountSink, CNDelegateAccountSource;
 
 @interface CNFamilyCircleConfigurationUpdateTask : CNTask
@@ -14,14 +14,14 @@
     id<CNDelegateAccountSource> _accountSource;
     id<CNDelegateAccountSink> _accountSink;
     ACAccountStore *_accountStore;
-    NSMutableArray *_delegateAccounts;
+    NSArray *_delegateAccounts;
     CNResult *_result;
 }
 
 @property (readonly, nonatomic) id<CNDelegateAccountSink> accountSink; // @synthesize accountSink=_accountSink;
 @property (readonly, nonatomic) id<CNDelegateAccountSource> accountSource; // @synthesize accountSource=_accountSource;
 @property (readonly, nonatomic) ACAccountStore *accountStore; // @synthesize accountStore=_accountStore;
-@property (readonly, nonatomic) NSMutableArray *delegateAccounts; // @synthesize delegateAccounts=_delegateAccounts;
+@property (readonly, nonatomic) NSArray *delegateAccounts; // @synthesize delegateAccounts=_delegateAccounts;
 @property (strong, nonatomic) CNResult *result; // @synthesize result=_result;
 
 + (id)os_log;

@@ -8,24 +8,28 @@
 
 #import <GameCenterUI/GKPlayerAvatarViewDelegate-Protocol.h>
 
-@class GKDashboardPlayerPhotoView, GKGradientLabel, NSLayoutConstraint, NSString, UILabel, UITapGestureRecognizer;
+@class GKDashboardPlayerPhotoView, GKGradientLabel, NSLayoutConstraint, NSString, UIImageView, UILabel, UITapGestureRecognizer;
 @protocol GKAvatarContainerViewDelegate;
 
 @interface GKAvatarContainerView : UIView <GKPlayerAvatarViewDelegate>
 {
     id<GKAvatarContainerViewDelegate> _delegate;
+    GKDashboardPlayerPhotoView *_playerAvatarView;
     UILabel *_nicknameLabel;
     UILabel *_emailLabel;
     UIView *_imageContainer;
     GKGradientLabel *_editLabel;
+    UIView *_editImage;
+    UIImageView *_editImageBackground;
     NSLayoutConstraint *_imageContainerTopConstraint;
-    GKDashboardPlayerPhotoView *_playerAvatarView;
     UITapGestureRecognizer *_tapGesture;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<GKAvatarContainerViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UIView *editImage; // @synthesize editImage=_editImage;
+@property (strong, nonatomic) UIImageView *editImageBackground; // @synthesize editImageBackground=_editImageBackground;
 @property (strong, nonatomic) GKGradientLabel *editLabel; // @synthesize editLabel=_editLabel;
 @property (strong, nonatomic) UILabel *emailLabel; // @synthesize emailLabel=_emailLabel;
 @property (readonly) unsigned long long hash;
@@ -46,6 +50,8 @@
 - (void)refreshHeaderViewProfileImage;
 - (void)refreshViewForLocalPlayer;
 - (void)setUserInteractionEnabled:(BOOL)arg1;
+- (void)setupEditImageBackground;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateAvatarEditingAvailability;
 
 @end

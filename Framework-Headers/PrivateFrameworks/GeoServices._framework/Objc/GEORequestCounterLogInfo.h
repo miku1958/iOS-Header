@@ -16,7 +16,7 @@
 }
 
 @property (readonly, nonatomic) double oldestTimestamp;
-@property (readonly, nonatomic) unsigned char requestType;
+@property (readonly, nonatomic) CDStruct_d1a7ebee requestType;
 
 + (id)counterLogInfoWithDictionary:(id)arg1;
 + (BOOL)supportsSecureCoding;

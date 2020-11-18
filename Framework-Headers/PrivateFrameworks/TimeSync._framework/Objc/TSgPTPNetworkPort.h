@@ -6,11 +6,11 @@
 
 #import <TimeSync/TSgPTPPort.h>
 
-@class NSMutableArray, NSString;
+@class IOKConnection, NSMutableArray, NSString;
 
 @interface TSgPTPNetworkPort : TSgPTPPort
 {
-    unsigned int _connection;
+    IOKConnection *_connection;
     NSMutableArray *_clients;
     BOOL _remoteIsSameDevice;
     BOOL _asCapable;
@@ -48,7 +48,7 @@
 }
 
 @property (nonatomic, getter=isASCapable) BOOL asCapable; // @synthesize asCapable=_asCapable;
-@property (readonly, nonatomic) unsigned int connection;
+@property (readonly, nonatomic) IOKConnection *connection;
 @property (copy, nonatomic) NSString *destinationAddressString; // @synthesize destinationAddressString=_destinationAddressString;
 @property (nonatomic) BOOL enabled; // @synthesize enabled=_enabled;
 @property (nonatomic) BOOL hasLocalFrequencyStability; // @synthesize hasLocalFrequencyStability=_hasLocalFrequencyStability;
@@ -82,11 +82,13 @@
 @property (nonatomic) unsigned char remoteTimestampingMode; // @synthesize remoteTimestampingMode=_remoteTimestampingMode;
 @property (copy, nonatomic) NSString *sourceAddressString; // @synthesize sourceAddressString=_sourceAddressString;
 
-+ (id)diagnosticDescriptionForService:(unsigned int)arg1 withIndent:(id)arg2;
-- (BOOL)_commonInitWithService:(unsigned int)arg1;
++ (id)diagnosticDescriptionForService:(id)arg1 withIndent:(id)arg2;
++ (id)iokitMatchingDictionaryForClockIdentifier:(unsigned long long)arg1;
+- (void).cxx_destruct;
+- (BOOL)_commonInitWithService:(id)arg1;
 - (id)_destinationAddressString;
 - (BOOL)_enabled;
-- (void)_handleNotification:(int)arg1 withArg1:(unsigned long long)arg2 andArg2:(unsigned long long)arg3;
+- (void)_handleNotification:(int)arg1 withArg1:(unsigned long long)arg2 arg2:(unsigned long long)arg3 arg3:(unsigned long long)arg4 arg4:(unsigned long long)arg5 arg5:(unsigned long long)arg6 arg6:(unsigned long long)arg7;
 - (BOOL)_hasLocalFrequencyStability;
 - (BOOL)_hasLocalFrequencyTolerance;
 - (BOOL)_hasRemoteFrequencyStability;
@@ -118,7 +120,6 @@
 - (unsigned char)_remoteTimestampingMode;
 - (id)_sourceAddressString;
 - (void)addClient:(id)arg1;
-- (void)dealloc;
 - (BOOL)deregisterAsyncCallbackError:(id *)arg1;
 - (BOOL)disablePortError:(id *)arg1;
 - (BOOL)enablePortError:(id *)arg1;
@@ -128,6 +129,7 @@
 - (void)removeClient:(id)arg1;
 - (BOOL)requestRemoteMessageIntervalsWithPDelayMessageInterval:(BOOL)arg1 syncMessageInterval:(BOOL)arg2 announceMessageInterval:(BOOL)arg3 error:(id *)arg4;
 - (BOOL)restoreReceiveMatchingError:(id *)arg1;
+- (void)serviceTerminated;
 - (void)updateProperties;
 
 @end

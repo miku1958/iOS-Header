@@ -8,7 +8,7 @@
 
 #import <ChatKit/QLPreviewItem-Protocol.h>
 
-@class NSData, NSDictionary, NSString, NSURL, UITraitCollection;
+@class NSData, NSDate, NSDictionary, NSString, NSURL, UITraitCollection;
 @protocol CKFileTransfer, OS_dispatch_group;
 
 @interface CKMediaObject : NSObject <QLPreviewItem>
@@ -16,8 +16,10 @@
     BOOL _isFromMe;
     BOOL _suppressPreviewForUnknownSender;
     BOOL _forceInlinePreviewGeneration;
+    BOOL _cachedValidPreviewExists;
     id<CKFileTransfer> _transfer;
     UITraitCollection *_transcriptTraitCollection;
+    NSDate *_time;
     NSURL *_cachedHighQualityFileURL;
     NSObject<OS_dispatch_group> *_highQualityFetchInProgressGroup;
     unsigned long long _oopPreviewRequestCount;
@@ -25,6 +27,7 @@
 
 @property (readonly, copy, nonatomic) NSString *UTIType;
 @property (strong, nonatomic) NSURL *cachedHighQualityFileURL; // @synthesize cachedHighQualityFileURL=_cachedHighQualityFileURL;
+@property (nonatomic) BOOL cachedValidPreviewExists; // @synthesize cachedValidPreviewExists=_cachedValidPreviewExists;
 @property (readonly, nonatomic) BOOL canShareItem;
 @property (readonly, copy, nonatomic) NSData *data;
 @property (readonly, copy) NSString *debugDescription;
@@ -37,6 +40,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *highQualityFetchInProgressGroup; // @synthesize highQualityFetchInProgressGroup=_highQualityFetchInProgressGroup;
 @property (nonatomic) BOOL isFromMe; // @synthesize isFromMe=_isFromMe;
 @property (readonly, nonatomic) int mediaType;
+@property (readonly, nonatomic) NSString *metricsCollectorMediaType;
 @property (readonly, copy, nonatomic) NSString *mimeType;
 @property (readonly, nonatomic) BOOL needsAnimation;
 @property (nonatomic) unsigned long long oopPreviewRequestCount; // @synthesize oopPreviewRequestCount=_oopPreviewRequestCount;
@@ -45,6 +49,7 @@
 @property (readonly, nonatomic) NSURL *previewItemURL;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL suppressPreviewForUnknownSender; // @synthesize suppressPreviewForUnknownSender=_suppressPreviewForUnknownSender;
+@property (strong, nonatomic) NSDate *time; // @synthesize time=_time;
 @property (readonly, copy, nonatomic) NSDictionary *transcoderUserInfo;
 @property (strong, nonatomic) UITraitCollection *transcriptTraitCollection; // @synthesize transcriptTraitCollection=_transcriptTraitCollection;
 @property (strong, nonatomic) id<CKFileTransfer> transfer; // @synthesize transfer=_transfer;
@@ -53,7 +58,7 @@
 
 + (id)UTITypes;
 + (Class)__ck_attachmentItemClass;
-+ (id)attachmentSummary:(unsigned long long)arg1;
++ (BOOL)canGeneratePreviewInMVSHostProcess;
 + (id)fallbackFilenamePrefix;
 + (id)iconCache;
 + (BOOL)isPreviewable;
@@ -64,10 +69,14 @@
 - (void).cxx_destruct;
 - (id)ASTCDataFromImage:(id)arg1;
 - (id)JPEGDataFromImage:(id)arg1;
+- (id)_balloonViewForClassWithWidth:(double)arg1 orientation:(BOOL)arg2;
+- (id)_composeImageForBalloonView:(id)arg1 colorType:(BOOL)arg2;
 - (struct IMPreviewConstraints)_previewConstraintsForWidth:(double)arg1;
 - (id)_qlThumbnailGeneratorSharedGenerator;
 - (void)_sampleImageEdges:(id)arg1 usingRect:(struct CGRect)arg2 forMostlyWhitePixels:(unsigned long long *)arg3 otherPixels:(unsigned long long *)arg4;
+- (BOOL)_shouldBlacklistFromRichIcon;
 - (id)_transcodeControllerSharedInstance;
+- (id)attachmentSummary:(unsigned long long)arg1;
 - (Class)balloonViewClassForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)bbPreviewFillToSize:(struct CGSize)arg1;
 - (struct CGSize)bbSize;
@@ -82,13 +91,16 @@
 - (void)fetchHighQualityFile:(CDUnknownBlockType)arg1;
 - (id)fileManager;
 - (id)fileSizeString;
+- (id)generateIconWithURL:(id)arg1;
 - (void)generateOOPPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)generatePreviewFromThumbnail:(id)arg1 width:(double)arg2 orientation:(BOOL)arg3;
 - (id)generateThumbnailFillToSize:(struct CGSize)arg1 contentAlignmentInsets:(struct UIEdgeInsets)arg2;
 - (id)generateThumbnailForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (id)icon;
+- (id)image:(id)arg1 withBackgroundColor:(id)arg2;
 - (id)initWithTransfer:(id)arg1 isFromMe:(BOOL)arg2 suppressPreview:(BOOL)arg3 forceInlinePreview:(BOOL)arg4;
 - (Class)inlineStickerBalloonViewClass;
+- (id)invisibleInkEffectImageWithPreview:(id)arg1;
 - (BOOL)isDirectory;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isPreviewable;
@@ -97,7 +109,7 @@
 - (id)pasteboardItem;
 - (Class)previewBalloonViewClass;
 - (id)previewCacheKeyWithOrientation:(BOOL)arg1;
-- (id)previewCachesFileURLWithOrientation:(BOOL)arg1 extension:(id)arg2;
+- (id)previewCachesFileURLWithOrientation:(BOOL)arg1 extension:(id)arg2 generateIntermediaries:(BOOL)arg3;
 - (id)previewDispatchCache;
 - (id)previewForWidth:(double)arg1 orientation:(BOOL)arg2;
 - (void)prewarmPreviewForWidth:(double)arg1 orientation:(BOOL)arg2;

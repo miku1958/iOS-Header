@@ -7,11 +7,10 @@
 #import <objc/NSObject.h>
 
 @class BSUIMappedImageCache, NSArray;
-@protocol HFProcessedWallpaperSource, HMFLocking;
+@protocol HFProcessedWallpaperSource;
 
 @interface HFWallpaperImageCache : NSObject
 {
-    id<HMFLocking> _lock;
     id<HFProcessedWallpaperSource> _processedWallpaperSource;
     BSUIMappedImageCache *_imageCache;
 }

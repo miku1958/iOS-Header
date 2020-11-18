@@ -10,13 +10,14 @@
 {
 }
 
-+ (BOOL)checkTransparencyForImageAtCorners:(id)arg1;
++ (BOOL)checkTransparencyForImageAtCorners:(struct CGImage *)arg1 tlkImage:(id)arg2 uiImage:(id)arg3;
 + (void)executeBlock:(CDUnknownBlockType)arg1 async:(BOOL)arg2;
-+ (BOOL)hasTransparencyAtPoint:(struct CGPoint)arg1 forImage:(id)arg2;
++ (BOOL)hasTransparencyAtPoint:(struct CGPoint)arg1 forCGImage:(struct CGImage *)arg2;
 + (id)imageForSFImage:(id)arg1;
 + (id)imageForSFImage:(id)arg1 withCompletionHandler:(CDUnknownBlockType)arg2;
-+ (BOOL)imageIsProbablyOpaque:(id)arg1;
++ (BOOL)imageIsProbablyOpaque:(id)arg1 tlkImage:(id)arg2;
 + (id)imagesForSFImages:(id)arg1;
++ (unsigned long long)tlkCornerRoundingStyleForSFCornerRoundingStyle:(int)arg1;
 
 @end
 

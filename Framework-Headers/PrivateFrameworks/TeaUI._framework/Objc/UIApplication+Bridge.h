@@ -6,7 +6,12 @@
 
 #import <UIKit/UIApplication.h>
 
+@class UIWindow;
+
 @interface UIApplication (Bridge)
+
+@property (nonatomic, readonly) UIWindow *key_window;
+
 - (double)defaultStatusBarHeight;
 - (BOOL)isRunningPerformanceTest;
 - (id)ts_statusBarWindow;

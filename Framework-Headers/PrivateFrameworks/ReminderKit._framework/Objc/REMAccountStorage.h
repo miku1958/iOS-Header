@@ -11,7 +11,7 @@
 #import <ReminderKit/REMExternalSyncMetadataWritableProviding-Protocol.h>
 #import <ReminderKit/REMObjectIDProviding-Protocol.h>
 
-@class NSSet, NSString, REMCRMergeableOrderedSet, REMObjectID, REMResolutionTokenMap;
+@class NSData, NSSet, NSString, REMCRMergeableOrderedSet, REMObjectID, REMResolutionTokenMap;
 
 @interface REMAccountStorage : NSObject <NSCopying, NSSecureCoding, REMObjectIDProviding, REMExternalSyncMetadataWritableProviding>
 {
@@ -35,8 +35,9 @@
     long long _type;
     NSString *_name;
     REMCRMergeableOrderedSet *_listIDsMergeableOrdering;
-    REMResolutionTokenMap *_resolutionTokenMap;
     NSSet *_listIDsToUndelete;
+    REMResolutionTokenMap *_resolutionTokenMap;
+    NSData *_resolutionTokenMapData;
     NSString *_daConstraintsDescriptionPath;
 }
 
@@ -61,6 +62,7 @@
 @property (strong, nonatomic) REMObjectID *objectID; // @synthesize objectID=_objectID;
 @property (readonly, nonatomic) REMObjectID *remObjectID;
 @property (strong, nonatomic) REMResolutionTokenMap *resolutionTokenMap; // @synthesize resolutionTokenMap=_resolutionTokenMap;
+@property (strong, nonatomic) NSData *resolutionTokenMapData; // @synthesize resolutionTokenMapData=_resolutionTokenMapData;
 @property (nonatomic) long long type; // @synthesize type=_type;
 
 + (id)cdEntityName;
@@ -69,6 +71,7 @@
 + (id)objectIDWithUUID:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)cdKeyToStorageKeyMap;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)description;

@@ -23,6 +23,7 @@
 @property BOOL allowsConstrainedNetworkAccess; // @dynamic allowsConstrainedNetworkAccess;
 @property BOOL allowsExpensiveNetworkAccess; // @dynamic allowsExpensiveNetworkAccess;
 @property unsigned long long cachePolicy; // @dynamic cachePolicy;
+@property (getter=isKnownHTTP3Capable) BOOL knownHTTP3Capable; // @dynamic knownHTTP3Capable;
 @property (copy) NSURL *mainDocumentURL; // @dynamic mainDocumentURL;
 @property unsigned long long networkServiceType; // @dynamic networkServiceType;
 @property double timeoutInterval; // @dynamic timeoutInterval;

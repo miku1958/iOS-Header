@@ -12,6 +12,7 @@
 @protocol AFAssistantUIService <NSObject>
 
 @optional
+- (void)assistantConnection:(AFConnection *)arg1 appLaunchFailedWithBundleIdentifier:(NSString *)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 audioSessionDidBecomeActive:(BOOL)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 audioSessionWillBecomeActive:(BOOL)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 didChangeAudioSessionID:(unsigned int)arg2;
@@ -31,6 +32,7 @@
 - (void)assistantConnection:(AFConnection *)arg1 startUIRequestWithInfo:(AFRequestInfo *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)assistantConnection:(AFConnection *)arg1 startUIRequestWithText:(NSString *)arg2 completion:(void (^)(BOOL))arg3;
 - (void)assistantConnection:(AFConnection *)arg1 wantsToCacheImage:(INImage *)arg2;
+- (void)assistantConnection:(AFConnection *)arg1 willProcessAppLaunchWithBundleIdentifier:(NSString *)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 willProcessStartPlayback:(long long)arg2;
 - (void)assistantConnection:(AFConnection *)arg1 willProcessStartPlayback:(long long)arg2 intent:(INIntent *)arg3 completion:(void (^)(BOOL, BOOL))arg4;
 - (void)assistantConnection:(AFConnection *)arg1 willStartAudioPlaybackRequest:(AFAudioPlaybackRequest *)arg2;

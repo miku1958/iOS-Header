@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 
 + (id)customAttributes;
 - (id)outputImage;
+- (id)unifiedRenderingOutputImage:(struct CGImageMetadata *)arg1;
 
 @end
 

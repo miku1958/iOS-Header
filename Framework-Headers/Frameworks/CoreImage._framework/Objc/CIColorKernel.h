@@ -15,7 +15,7 @@
 + (id)SDOFV2MetalKernelNamed:(id)arg1;
 + (id)SDOFV3MetalKernelNamed:(id)arg1;
 + (id)kernelWithString:(id)arg1;
-- (id)_initWithReflection:(struct CIKernelReflection)arg1 constants:(id)arg2;
+- (id)_initWithReflection:(struct CIKernelReflection)arg1 constants:(id)arg2 constantTypes:(id)arg3;
 - (id)applyWithExtent:(struct CGRect)arg1 arguments:(id)arg2;
 - (id)applyWithExtent:(struct CGRect)arg1 arguments:(id)arg2 options:(id)arg3;
 - (id)applyWithExtent:(struct CGRect)arg1 roiCallback:(CDUnknownBlockType)arg2 arguments:(id)arg3;

@@ -8,7 +8,7 @@
 
 #import <PhotosUICore/PXDisplayAsset-Protocol.h>
 
-@class NSDate, NSString, UIImage;
+@class NSDate, NSNumber, NSString, UIImage;
 
 @interface PXImageAsset : NSObject <PXDisplayAsset>
 {
@@ -26,9 +26,10 @@
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) float hdrGain;
+@property (readonly, nonatomic) NSNumber *hdrGain;
 @property (readonly, nonatomic) UIImage *image; // @synthesize image=_image;
 @property (readonly, nonatomic) NSDate *importDate;
+@property (readonly, nonatomic) BOOL isAutoPlaybackEligibilityEstimated;
 @property (readonly, nonatomic) BOOL isEligibleForAutoPlayback;
 @property (readonly, nonatomic) BOOL isInCloud;
 @property (readonly, nonatomic) NSDate *localCreationDate;

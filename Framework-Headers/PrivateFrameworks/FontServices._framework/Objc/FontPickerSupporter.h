@@ -6,25 +6,28 @@
 
 #import <objc/NSObject.h>
 
-@class NSXPCConnection, NSXPCListenerEndpoint;
+@class NSMutableSet, NSXPCConnection, NSXPCListenerEndpoint;
 
 @interface FontPickerSupporter : NSObject
 {
     BOOL _clientHasFontAccessEntitlement;
     NSXPCConnection *_connection;
     NSXPCListenerEndpoint *_clientEndpoint;
+    NSMutableSet *_activatedFontFilePaths;
 }
 
-@property (readonly, strong, nonatomic) NSXPCListenerEndpoint *clientEndpoint; // @synthesize clientEndpoint=_clientEndpoint;
+@property (strong, nonatomic) NSMutableSet *activatedFontFilePaths; // @synthesize activatedFontFilePaths=_activatedFontFilePaths;
+@property (strong, nonatomic) NSXPCListenerEndpoint *clientEndpoint; // @synthesize clientEndpoint=_clientEndpoint;
 @property (nonatomic) BOOL clientHasFontAccessEntitlement; // @synthesize clientHasFontAccessEntitlement=_clientHasFontAccessEntitlement;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 
 - (void).cxx_destruct;
+- (void)checkin:(CDUnknownBlockType)arg1;
+- (BOOL)clientHasFontAccessEntitlement:(CDStruct_6ad76789)arg1;
 - (void)done;
 - (id)initWithEndpoint:(id)arg1;
-- (id)locallyActivatedFontFilePaths;
-- (void)makeConnection;
 - (void)setup;
+- (void)synchronize:(id)arg1 deactivated:(id)arg2 includingFontAssets:(BOOL)arg3;
 
 @end
 

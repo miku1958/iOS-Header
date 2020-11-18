@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/HDHealthDaemonReadyObserver-Protocol.h>
 
-@class HDAWDSubmissionManager, HDActivityCacheManager, HDAppSubscriptionManager, HDAssertionManager, HDAuthorizationManager, HDCloudSyncManager, HDCurrentActivitySummaryHelper, HDDaemon, HDDaemonSyncEngine, HDDataCollectionManager, HDDataManager, HDDataProvenanceManager, HDDatabase, HDDatabasePruningManager, HDDeviceManager, HDFitnessMachineManager, HDHealthServiceManager, HDMedicalIDDataManager, HDMetadataManager, HDMigrationManager, HDNanoSyncManager, HDNotificationManager, HDOntologyLifecycleManager, HDRestorableAlarmScheduler, HDServiceConnectionManager, HDSourceManager, HDSourceOrderManager, HDUnitPreferencesManager, HDUserCharacteristicsManager, HDWorkoutCondenser, HDWorkoutManager, HKProfileIdentifier, NSDictionary, NSString, NSURL;
+@class HDAWDSubmissionManager, HDActivityCacheManager, HDAppSubscriptionManager, HDAssertionManager, HDAuthorizationManager, HDBackgroundObservationServerExtensionManager, HDCloudSharingInviteRequestManager, HDCloudSyncManager, HDContributorManager, HDCurrentActivitySummaryHelper, HDDaemon, HDDaemonSyncEngine, HDDataCollectionManager, HDDataManager, HDDataProvenanceManager, HDDatabase, HDDatabasePruningManager, HDDeviceManager, HDFitnessMachineManager, HDHealthServiceManager, HDMedicalIDDataManager, HDMetadataManager, HDMigrationManager, HDNanoSyncManager, HDNotificationManager, HDOnboardingCompletionManager, HDOntologyLifecycleManager, HDRestorableAlarmScheduler, HDServiceConnectionManager, HDSharingEntryManager, HDSourceManager, HDSourceOrderManager, HDTinkerPrivacyAlertCoordinator, HDUnitPreferencesManager, HDUserCharacteristicsManager, HDWorkoutCondenser, HDWorkoutManager, HKProfileIdentifier, NSDictionary, NSString, NSURL;
 @protocol HDHealthDaemon, HDSyncEngine;
 
 @interface HDProfile : NSObject <HDHealthDaemonReadyObserver>
@@ -17,28 +17,34 @@
     HDSourceManager *_sourceManager;
     HDDeviceManager *_deviceManager;
     HDAuthorizationManager *_authorizationManager;
+    HDOntologyLifecycleManager *_ontologyLifecycleManager;
+    HDBackgroundObservationServerExtensionManager *_extensionManager;
     NSString *_directoryPath;
     HDDaemonSyncEngine *_syncEngine;
     NSDictionary *_profileExtensionsByIdentifier;
     struct os_unfair_lock_s _profileLock;
+    BOOL _testModeEnabled;
     HDDaemon *_daemon;
     HDCloudSyncManager *_cloudSyncManager;
+    HDContributorManager *_contributorManager;
     HDDataManager *_dataManager;
     HDDataProvenanceManager *_dataProvenanceManager;
     HDMetadataManager *_metadataManager;
+    HDOnboardingCompletionManager *_onboardingCompletionManager;
     HDAssertionManager *_sessionAssertionManager;
+    HDSharingEntryManager *_sharingEntryManager;
     HDSourceOrderManager *_sourceOrderManager;
     HDUserCharacteristicsManager *_userCharacteristicsManager;
     HDWorkoutCondenser *_workoutCondenser;
-    long long _profileType;
+    HDCloudSharingInviteRequestManager *_cloudSharingInviteRequestManager;
     HKProfileIdentifier *_profileIdentifier;
     NSString *_medicalIDDirectoryPath;
+    HDUnitPreferencesManager *_unitPreferencesManager;
     HDRestorableAlarmScheduler *_alarmScheduler;
     HDAWDSubmissionManager *_awdSubmissionManager;
     HDDatabasePruningManager *_databasePruningManager;
     HDMedicalIDDataManager *_medicalIDDataManager;
     HDMigrationManager *_migrationManager;
-    HDUnitPreferencesManager *_unitPreferencesManager;
 }
 
 @property (readonly, nonatomic) HDActivityCacheManager *activityCacheManager;
@@ -46,7 +52,9 @@
 @property (readonly, nonatomic) HDAppSubscriptionManager *appSubscriptionManager;
 @property (readonly, nonatomic) HDAuthorizationManager *authorizationManager;
 @property (readonly, nonatomic) HDAWDSubmissionManager *awdSubmissionManager; // @synthesize awdSubmissionManager=_awdSubmissionManager;
+@property (readonly, nonatomic) HDCloudSharingInviteRequestManager *cloudSharingInviteRequestManager; // @synthesize cloudSharingInviteRequestManager=_cloudSharingInviteRequestManager;
 @property (readonly, nonatomic) HDCloudSyncManager *cloudSyncManager; // @synthesize cloudSyncManager=_cloudSyncManager;
+@property (readonly, nonatomic) HDContributorManager *contributorManager; // @synthesize contributorManager=_contributorManager;
 @property (readonly, nonatomic) HDCurrentActivitySummaryHelper *currentActivitySummaryHelper;
 @property (readonly, weak, nonatomic) HDDaemon *daemon; // @synthesize daemon=_daemon;
 @property (readonly, nonatomic) HDDataCollectionManager *dataCollectionManager;
@@ -59,6 +67,7 @@
 @property (readonly, nonatomic) HDDeviceManager *deviceManager; // @synthesize deviceManager=_deviceManager;
 @property (readonly, copy, nonatomic) NSString *directoryPath;
 @property (readonly, copy, nonatomic) NSURL *directoryURL;
+@property (readonly, nonatomic) HDBackgroundObservationServerExtensionManager *extensionManager;
 @property (readonly, nonatomic) HDFitnessMachineManager *fitnessMachineManager;
 @property (readonly, nonatomic) BOOL hasHealthRecordsAccounts;
 @property (readonly) unsigned long long hash;
@@ -69,16 +78,20 @@
 @property (readonly, nonatomic) HDMigrationManager *migrationManager; // @synthesize migrationManager=_migrationManager;
 @property (readonly, nonatomic) HDNanoSyncManager *nanoSyncManager;
 @property (readonly, nonatomic) HDNotificationManager *notificationManager;
+@property (readonly, nonatomic) HDOnboardingCompletionManager *onboardingCompletionManager; // @synthesize onboardingCompletionManager=_onboardingCompletionManager;
 @property (readonly, nonatomic) HDOntologyLifecycleManager *ontologyLifecycleManager;
 @property (readonly, copy, nonatomic) HKProfileIdentifier *profileIdentifier; // @synthesize profileIdentifier=_profileIdentifier;
-@property (readonly, nonatomic) long long profileType; // @synthesize profileType=_profileType;
+@property (readonly, nonatomic) long long profileType;
 @property (readonly, nonatomic) HDServiceConnectionManager *serviceConnectionManager;
 @property (readonly, nonatomic) HDHealthServiceManager *serviceManager;
 @property (readonly, nonatomic) HDAssertionManager *sessionAssertionManager; // @synthesize sessionAssertionManager=_sessionAssertionManager;
+@property (readonly, nonatomic) HDSharingEntryManager *sharingEntryManager; // @synthesize sharingEntryManager=_sharingEntryManager;
 @property (readonly, nonatomic) HDSourceManager *sourceManager; // @synthesize sourceManager=_sourceManager;
 @property (readonly, nonatomic) HDSourceOrderManager *sourceOrderManager; // @synthesize sourceOrderManager=_sourceOrderManager;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) id<HDSyncEngine> syncEngine;
+@property (nonatomic) BOOL testModeEnabled; // @synthesize testModeEnabled=_testModeEnabled;
+@property (readonly, nonatomic) HDTinkerPrivacyAlertCoordinator *tinkerPrivacyAlertCoordinator;
 @property (readonly, nonatomic) HDUnitPreferencesManager *unitPreferencesManager; // @synthesize unitPreferencesManager=_unitPreferencesManager;
 @property (readonly, nonatomic) HDUserCharacteristicsManager *userCharacteristicsManager; // @synthesize userCharacteristicsManager=_userCharacteristicsManager;
 @property (readonly, nonatomic) HDWorkoutCondenser *workoutCondenser; // @synthesize workoutCondenser=_workoutCondenser;
@@ -90,18 +103,29 @@
 - (id)_lastNameWithError:(id *)arg1;
 - (id)_newAWDSubmissionManager;
 - (id)_newCloudSyncManager;
+- (id)_newContributorManager;
+- (id)_newDatabase;
 - (id)_newUserCharacteristicsManager;
+- (id)_testModeIndicatorURL;
+- (id)allProfileExtensions;
+- (void)awakeFromDisk;
 - (void)daemonReady:(id)arg1;
 - (BOOL)fetchDisplayFirstName:(id *)arg1 lastName:(id *)arg2 error:(id *)arg3;
+- (id)fetchDisplayImageDataWithError:(id *)arg1;
 - (id)healthDeviceManager;
 - (id)healthSourceManager;
-- (id)initWithDirectoryPath:(id)arg1 medicalIDDirectoryPath:(id)arg2 daemon:(id)arg3 profileType:(long long)arg4 profileIdentifier:(id)arg5;
+- (id)initWithDirectoryPath:(id)arg1 medicalIDDirectoryPath:(id)arg2 daemon:(id)arg3 profileIdentifier:(id)arg4;
 - (void)invalidateAndWait;
 - (void)obliterateAndTerminateWithOptions:(unsigned long long)arg1 reason:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)obliterateWithOptions:(unsigned long long)arg1 reason:(id)arg2;
+- (id)pairedGuardianParticipantWithError:(id *)arg1;
+- (id)pairedGuardianUserInfoWithError:(id *)arg1;
 - (id)profileExtensionWithIdentifier:(id)arg1;
 - (id)profileExtensionsConformingToProtocol:(id)arg1;
 - (BOOL)setDisplayFirstName:(id)arg1 lastName:(id)arg2 error:(id *)arg3;
+- (BOOL)setDisplayImageData:(id)arg1 error:(id *)arg2;
+- (BOOL)setPairedGuardianParticipant:(id)arg1 error:(id *)arg2;
+- (BOOL)setPairedGuardianUserInfo:(id)arg1 error:(id *)arg2;
 - (void)terminationCleanup;
 
 @end

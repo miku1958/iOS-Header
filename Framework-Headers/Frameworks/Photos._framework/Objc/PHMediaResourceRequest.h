@@ -39,7 +39,7 @@
 - (void)_receiveAssetResourceDataPart:(id)arg1;
 - (void)_reportProgress:(double)arg1;
 - (void)assetResourceRequest:(id)arg1 didFindFileURL:(id)arg2;
-- (void)assetResourceRequestDidFinish:(id)arg1;
+- (void)assetResourceRequest:(id)arg1 didFinishWithError:(id)arg2;
 - (void)cancel;
 - (void)handleAvailabilityChangeForResource:(id)arg1 url:(id)arg2 info:(id)arg3 error:(id)arg4;
 - (id)initWithRequestID:(int)arg1 requestIndex:(unsigned long long)arg2 contextType:(long long)arg3 managerID:(unsigned long long)arg4 asset:(id)arg5 assetResource:(id)arg6 networkAccessAllowed:(BOOL)arg7 wantsURLOnly:(BOOL)arg8 synchronous:(BOOL)arg9 delegate:(id)arg10;

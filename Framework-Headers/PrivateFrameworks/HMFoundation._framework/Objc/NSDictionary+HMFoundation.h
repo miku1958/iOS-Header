@@ -56,6 +56,7 @@
 - (id)hmf_setForKey:(id)arg1;
 - (id)hmf_stringForKey:(id)arg1;
 - (id)hmf_timeZoneForKey:(id)arg1;
+- (id)hmf_unarchivedObjectForKey:(id)arg1 ofClasses:(id)arg2;
 - (id)hmf_valueForKey:(id)arg1;
 - (id)mutableArrayForKey:(id)arg1;
 - (id)mutableDictionaryForKey:(id)arg1;

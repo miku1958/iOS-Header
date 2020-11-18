@@ -6,11 +6,13 @@
 
 #import <UIKit/UITableViewController.h>
 
-@class SFEditableTableViewCell, UIBarButtonItem;
+#import <SafariServices/UITextFieldDelegate-Protocol.h>
+
+@class NSString, SFEditableTableViewCell, UIBarButtonItem;
 @protocol SFAddPasswordViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFAddPasswordViewController : UITableViewController
+@interface SFAddPasswordViewController : UITableViewController <UITextFieldDelegate>
 {
     UIBarButtonItem *_cancelBarButtonItem;
     UIBarButtonItem *_doneBarButtonItem;
@@ -20,16 +22,23 @@ __attribute__((visibility("hidden")))
     id<SFAddPasswordViewControllerDelegate> _delegate;
 }
 
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<SFAddPasswordViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_cancelBarButtonItemTapped:(id)arg1;
 - (void)_doneBarButtonItemTapped:(id)arg1;
+- (void)_savePasswordAndDismiss;
 - (void)_textFieldChanged:(id)arg1;
 - (id)init;
 - (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
+- (BOOL)textFieldShouldReturn:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 
 @end

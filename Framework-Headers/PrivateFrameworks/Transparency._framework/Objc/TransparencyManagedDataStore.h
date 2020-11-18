@@ -21,6 +21,7 @@
 @property (weak) TransparencyManagedDataStoreController *controller; // @synthesize controller=_controller;
 @property BOOL permanentContext; // @synthesize permanentContext=_permanentContext;
 
++ (void)cleanseError:(id *)arg1;
 + (id)deserializeLoggableDatas:(id)arg1 error:(id *)arg2;
 + (void)reportCoreDataEventForEntity:(id)arg1 hardFailure:(BOOL)arg2 write:(BOOL)arg3 code:(long long)arg4 underlyingError:(id)arg5;
 + (void)reportCoreDataEventForEntity:(id)arg1 write:(BOOL)arg2 code:(long long)arg3 underlyingError:(id)arg4;
@@ -37,6 +38,8 @@
 - (unsigned long long)countTotalSMTsForApplication:(id)arg1 error:(id *)arg2;
 - (unsigned long long)countTotalSTHsForApplication:(id)arg1 error:(id *)arg2;
 - (id)createDownloadRecord:(unsigned long long)arg1 application:(id)arg2;
+- (id)createFetchRecord;
+- (id)createFetchRecordForRequestData:(id)arg1 request:(id)arg2 error:(id *)arg3;
 - (void)createKTRequestID:(id)arg1 request:(id)arg2;
 - (id)createRequest;
 - (id)createRequestFailure;
@@ -60,6 +63,7 @@
 - (id)fetchCompletedRequests:(id)arg1 olderThan:(id)arg2 error:(id *)arg3;
 - (id)fetchDownloadRecord:(unsigned long long)arg1 application:(id)arg2 error:(id *)arg3;
 - (id)fetchDownloadRecordById:(id)arg1 error:(id *)arg2;
+- (id)fetchFetchRecordById:(id)arg1 error:(id *)arg2;
 - (id)fetchRequestForUUID:(id)arg1 error:(id *)arg2;
 - (id)fetchRequestWithUri:(id)arg1 application:(id)arg2 accountID:(id)arg3 loggableDatas:(id)arg4 youngerThan:(id)arg5 error:(id *)arg6;
 - (id)fetchRequestsForURI:(id)arg1 error:(id *)arg2;
@@ -78,6 +82,7 @@
 - (BOOL)logSMTMetricsForApplication:(id)arg1 error:(id *)arg2;
 - (BOOL)logSTHMetricsForApplication:(id)arg1 error:(id *)arg2;
 - (BOOL)performAndWaitForDownloadId:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
+- (BOOL)performAndWaitForFetchId:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (BOOL)performAndWaitForRequestId:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (void)performBlock:(CDUnknownBlockType)arg1;
 - (void)performBlockAndWait:(CDUnknownBlockType)arg1;
@@ -86,6 +91,7 @@
 - (void)performForRequestsWithPendingResponses:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (void)performForRequestsWithPendingSMTs:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (void)performForSMTsWithUnverifiedSignature:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
+- (void)performForSTHs:(id)arg1 isMapHead:(BOOL)arg2 revision:(id)arg3 error:(id *)arg4 block:(CDUnknownBlockType)arg5;
 - (void)performForSTHsWithUnverifiedSignature:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (void)performOnBatchesOfEntity:(id)arg1 predicate:(id)arg2 enforceMax:(BOOL)arg3 error:(id *)arg4 block:(CDUnknownBlockType)arg5;
 - (void)performOnRequestsForPredicate:(id)arg1 enforceMax:(BOOL)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;

@@ -50,22 +50,7 @@ __attribute__((visibility("hidden")))
         unsigned int read_placeSearchRequest:1;
         unsigned int read_query:1;
         unsigned int read_userLocation:1;
-        unsigned int wrote_sessionID:1;
-        unsigned int wrote_mapRegion:1;
-        unsigned int wrote_placeSearchRequest:1;
-        unsigned int wrote_query:1;
-        unsigned int wrote_userLocation:1;
-        unsigned int wrote_clientImgFmt:1;
-        unsigned int wrote_clientImgMaxHeight:1;
-        unsigned int wrote_clientImgMaxWidth:1;
-        unsigned int wrote_mapCenterX:1;
-        unsigned int wrote_mapCenterY:1;
-        unsigned int wrote_mapSpanX:1;
-        unsigned int wrote_mapSpanY:1;
-        unsigned int wrote_requestType:1;
-        unsigned int wrote_tilesizeX:1;
-        unsigned int wrote_tilesizeY:1;
-        unsigned int wrote_zoomlevel:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -106,10 +91,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)StringAsClientImgFmt:(id)arg1;
 - (int)StringAsRequestType:(id)arg1;
-- (void)_readMapRegion;
-- (void)_readPlaceSearchRequest;
-- (void)_readQuery;
-- (void)_readUserLocation;
 - (id)clientImgFmtAsString:(int)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -118,7 +99,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

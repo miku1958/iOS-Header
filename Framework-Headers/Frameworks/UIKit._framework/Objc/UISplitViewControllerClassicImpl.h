@@ -106,7 +106,9 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) float gutterWidth;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL hidesMasterViewInPortrait;
+@property (readonly, nonatomic) BOOL inCollapsingToProposedTopColumnCallback;
 @property (readonly, nonatomic, getter=_lastFocusedChildViewControllerIndex) unsigned long long lastFocusedChildViewControllerIndex; // @synthesize lastFocusedChildViewControllerIndex=_lastFocusedChildViewControllerIndex;
+@property (readonly, nonatomic) BOOL lockedForDelegateCallback;
 @property (readonly, nonatomic, getter=_masterFocusContainerGuide) UIFocusContainerGuide *masterFocusContainerGuide; // @synthesize masterFocusContainerGuide=_masterFocusContainerGuide;
 @property (nonatomic) double maximumPrimaryColumnWidth; // @synthesize maximumPrimaryColumnWidth=_maximumPrimaryColumnWidth;
 @property (nonatomic) double minimumPrimaryColumnWidth; // @synthesize minimumPrimaryColumnWidth=_minimumPrimaryColumnWidth;
@@ -116,6 +118,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL presentsWithGesture; // @synthesize presentsWithGesture=_presentsWithGesture;
 @property (nonatomic) long long primaryBackgroundStyle;
 @property (nonatomic) long long primaryEdge;
+@property (readonly, nonatomic) long long style;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesDeviceOverlayPreferences;
 @property (nonatomic, getter=_usesExtraWidePrimaryColumn, setter=_setUsesExtraWidePrimaryColumn:) BOOL usesExtraWidePrimaryColumn;
@@ -142,6 +145,7 @@ __attribute__((visibility("hidden")))
 - (double)_contentMarginForChildViewController:(id)arg1;
 - (struct CGSize)_contentSizeForChildViewController:(id)arg1 inPopoverController:(id)arg2;
 - (long long)_currentInterfaceIdiom;
+- (id)_deepestUnambiguousResponder;
 - (id)_defaultDisplayModes;
 - (double)_defaultMaximumPrimaryColumnWidthForSize:(struct CGSize)arg1;
 - (long long)_defaultTargetDisplayMode;
@@ -174,6 +178,7 @@ __attribute__((visibility("hidden")))
 - (void)_initWithCoder:(id)arg1;
 - (long long)_internalModeForTraitCollection:(id)arg1 orientation:(long long)arg2 viewSize:(struct CGSize)arg3 medusaState:(long long)arg4;
 - (void)_invalidateHidesMasterViewForAspectRatio:(long long)arg1;
+- (BOOL)_isAnimating;
 - (BOOL)_isBasicallyHorizontallyCompact;
 - (BOOL)_isCollapsed;
 - (BOOL)_isHidesMasterInLandscapeInvalid;
@@ -192,6 +197,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)_masterViewFrame:(struct CGRect)arg1;
 - (long long)_medusaState;
 - (long long)_medusaStateForOrientation:(long long)arg1 viewWidth:(double)arg2;
+- (id)_multitaskingDragExclusionRects;
 - (BOOL)_optsOutOfPopoverControllerHierarchyCheck;
 - (void)_popoverController:(id)arg1 didChangeFromVisible:(BOOL)arg2;
 - (void)_popoverController:(id)arg1 willChangeToVisible:(BOOL)arg2;
@@ -202,6 +208,7 @@ __attribute__((visibility("hidden")))
 - (double)_primaryColumnWidthForSize:(struct CGSize)arg1 isCompact:(BOOL)arg2;
 - (id)_primaryContentResponder;
 - (id)_primaryDimmingView;
+- (double)_primaryDividerPosition;
 - (long long)_primaryHidingState;
 - (long long)_primaryHidingStateForCurrentOrientation;
 - (id)_primaryViewControllerForCollapsing;
@@ -224,6 +231,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldPreventAutorotation;
 - (BOOL)_shouldUseRelativeInsets;
 - (void)_showMasterViewAnimated:(BOOL)arg1;
+- (double)_supplementaryDividerPosition;
 - (unsigned long long)_targetEdgeForPopover;
 - (id)_traitCollectionForChildEnvironment:(id)arg1;
 - (void)_triggerDisplayModeAction:(id)arg1;

@@ -24,18 +24,14 @@
 
 @property (readonly, nonatomic) NSString *basePath; // @synthesize basePath=_basePath;
 @property (readonly, copy) NSString *debugDescription;
-@property (readonly, weak, nonatomic) id<EDPersistenceDatabaseConnectionDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSString *fullPath;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isValid;
 @property (readonly, nonatomic) BOOL isWriter;
-@property (strong, nonatomic) EDPersistenceDatabaseJournal *journal; // @synthesize journal=_journal;
 @property (readonly, nonatomic) BOOL journalDatabaseAttached;
-@property (copy, nonatomic) NSString *journalDatabaseName; // @synthesize journalDatabaseName=_journalDatabaseName;
 @property (readonly, nonatomic) long long lastInsertedDatabaseID;
 @property (readonly, nonatomic) BOOL protectedDatabaseAttached;
-@property (copy, nonatomic) NSString *protectedDatabaseName; // @synthesize protectedDatabaseName=_protectedDatabaseName;
 @property (readonly, copy, nonatomic) NSString *protectedDatabasePath;
 @property (readonly, nonatomic) EFSQLConnection *sqlConnection; // @synthesize sqlConnection=_sqlConnection;
 @property (readonly, nonatomic) struct sqlite3 *sqlDB;
@@ -44,16 +40,6 @@
 
 + (id)log;
 - (void).cxx_destruct;
-- (long long)_adjustedDatabaseTypeForType:(long long)arg1;
-- (BOOL)_attachDatabaseWithName:(id)arg1 url:(id)arg2 error:(id *)arg3;
-- (id)_databasePathForFileName:(id)arg1;
-- (BOOL)_detachDatabaseWithName:(id)arg1;
-- (BOOL)_executePreparedStatement:(id)arg1 withBlock:(CDUnknownBlockType)arg2 description:(id)arg3 error:(id *)arg4;
-- (BOOL)_fetchTransactionWriteGenerationWithSQLConnection:(id)arg1 newGeneration:(long long *)arg2;
-- (BOOL)_finishTransactionWithSQLConnection:(id)arg1 afterSuccess:(BOOL)arg2 transactionError:(id *)arg3;
-- (void)_fixFilePermissionForPath:(const char *)arg1;
-- (BOOL)_startTransactionWithSQLConnection:(id)arg1 forWriting:(BOOL)arg2 error:(id *)arg3;
-- (BOOL)_storeTransactionWriteGenerationWithSQLConnection:(id)arg1 newGeneration:(long long)arg2;
 - (BOOL)attachJournalDatabase:(id)arg1 withName:(id)arg2;
 - (BOOL)attachJournalDatabase:(id)arg1 withName:(id)arg2 error:(id *)arg3;
 - (BOOL)attachProtectedDatabaseWithName:(id)arg1;
@@ -86,7 +72,7 @@
 - (id)initWithBasePath:(id)arg1 databaseName:(id)arg2 isWriter:(BOOL)arg3 delegate:(id)arg4;
 - (id)initWithSQLDB:(struct sqlite3 *)arg1 isWriter:(BOOL)arg2 delegate:(id)arg3;
 - (void)open;
-- (BOOL)performUsingTransaction:(BOOL)arg1 isWriter:(BOOL)arg2 transactionError:(id *)arg3 block:(CDUnknownBlockType)arg4;
+- (BOOL)performWithOptions:(unsigned long long)arg1 transactionError:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (id)preparedStatementForQueryString:(id)arg1;
 - (void)setIsWriter:(BOOL)arg1;
 - (BOOL)tableExists:(id)arg1;

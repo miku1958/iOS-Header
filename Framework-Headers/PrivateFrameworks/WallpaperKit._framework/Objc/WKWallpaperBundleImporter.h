@@ -28,8 +28,8 @@
 - (void)_raiseInvalidMetadataExceptionForMetadataKeypath:(id)arg1;
 - (id)init;
 - (id)wallpaperBundleCollectionForWallpaperType:(unsigned long long)arg1;
-- (id)wallpaperBundleWithIdentifier:(unsigned long long)arg1;
-- (unsigned long long)wallpaperTypeAtIndex:(unsigned long long)arg1;
+- (id)wallpaperBundleWithIdentifier:(long long)arg1;
+- (unsigned long long)wallpaperTypeAtIndex:(long long)arg1;
 
 @end
 

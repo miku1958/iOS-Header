@@ -129,15 +129,17 @@ typedef struct {
 } CDStruct_2a523a1a;
 
 typedef struct {
+    unsigned int contentFetchDate:1;
     unsigned int widgetArticleCount:1;
     unsigned int widgetArticleCountInSection:1;
     unsigned int widgetArticleRank:1;
     unsigned int widgetArticleRankInSection:1;
     unsigned int widgetContentType:1;
+    unsigned int widgetDisplayMode:1;
     unsigned int widgetEngagementType:1;
     unsigned int widgetSectionDisplayRank:1;
     unsigned int widgetVideoPresentationReason:1;
-} CDStruct_de6d94e7;
+} CDStruct_7b5281db;
 
 typedef struct {
     unsigned int isEligibleForGrouping:1;
@@ -179,6 +181,10 @@ typedef struct {
 typedef struct {
     unsigned int moduloForHashing:1;
 } CDStruct_3f5c4e18;
+
+typedef struct {
+    unsigned int purchaseType:1;
+} CDStruct_53d4ade2;
 
 typedef struct {
     unsigned int type:1;

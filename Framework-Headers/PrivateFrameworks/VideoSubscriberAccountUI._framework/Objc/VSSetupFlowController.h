@@ -12,7 +12,7 @@
 #import <VideoSubscriberAccountUI/VSRemoteNotifierDelegate-Protocol.h>
 #import <VideoSubscriberAccountUI/VSSupportedAppsViewControllerDelegate-Protocol.h>
 
-@class NSArray, NSOperationQueue, NSString, VSAppDescription, VSDevice, VSIdentityProviderRequestManager, VSPersistentStorage, VSPreferences, VSRemoteNotifier;
+@class NSArray, NSOperationQueue, NSString, VSAccountSerializationCenter, VSAppDescription, VSDevice, VSIdentityProviderRequestManager, VSPersistentStorage, VSPreferences, VSRemoteNotifier;
 @protocol VSSetupFlowControllerDelegate;
 
 @interface VSSetupFlowController : NSObject <VSIdentityProviderPickerViewControllerDelegate, VSIdentityProviderViewControllerDelegate, VSRemoteNotifierDelegate, VSSupportedAppsViewControllerDelegate, VSIdentityProviderRequestManagerDelegate>
@@ -31,6 +31,7 @@
     VSIdentityProviderRequestManager *_requestManager;
     CDUnknownBlockType _goingBackActivationCompletionBlock;
     VSDevice *_currentDevice;
+    VSAccountSerializationCenter *_serializationCenter;
 }
 
 @property (strong, nonatomic) VSAppDescription *appDescription; // @synthesize appDescription=_appDescription;
@@ -48,6 +49,7 @@
 @property (strong, nonatomic) NSString *providerAccountUsername; // @synthesize providerAccountUsername=_providerAccountUsername;
 @property (strong, nonatomic) VSRemoteNotifier *remoteNotifier; // @synthesize remoteNotifier=_remoteNotifier;
 @property (strong, nonatomic) VSIdentityProviderRequestManager *requestManager; // @synthesize requestManager=_requestManager;
+@property (strong, nonatomic) VSAccountSerializationCenter *serializationCenter; // @synthesize serializationCenter=_serializationCenter;
 @property (nonatomic, getter=isSigningIn) BOOL signingIn; // @synthesize signingIn=_signingIn;
 @property (strong, nonatomic) VSPersistentStorage *storage; // @synthesize storage=_storage;
 @property (readonly) Class superclass;
@@ -85,7 +87,7 @@
 - (void)remoteNotifier:(id)arg1 didReceiveRemoteNotificationWithUserInfo:(id)arg2;
 - (void)showSupportedApps;
 - (void)signOutForNotNowFlowWithIdentityProvider:(id)arg1;
-- (void)startLoadingWhenGoingBack:(BOOL)arg1;
+- (void)startLoadingWhenGoingBack:(BOOL)arg1 serializedAccountDataToImport:(id)arg2;
 - (void)startSigningIn;
 - (void)startSigningInForIdentityProvider:(id)arg1;
 - (void)startSilentSigningInForSTBFromActivation:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;

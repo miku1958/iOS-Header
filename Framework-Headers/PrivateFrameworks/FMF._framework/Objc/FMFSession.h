@@ -8,7 +8,7 @@
 
 #import <FMF/FMFXPCInternalClientProtocol-Protocol.h>
 
-@class NSMutableDictionary, NSMutableSet, NSOperationQueue, NSSet, NSString, NSXPCConnection;
+@class FMFuture, NSMutableDictionary, NSMutableSet, NSOperationQueue, NSSet, NSString, NSXPCConnection;
 @protocol FMFSessionDelegate, OS_dispatch_queue;
 
 @interface FMFSession : NSObject <FMFXPCInternalClientProtocol>
@@ -25,6 +25,8 @@
     NSMutableDictionary *_cachedCanShareLocationWithHandleByHandle;
     NSObject<OS_dispatch_queue> *_connectionQueue;
     NSObject<OS_dispatch_queue> *_handlesQueue;
+    FMFuture *_sessionInvalidationFuture;
+    FMFuture *_sessionInterruptionFuture;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *cachedCanShareLocationWithHandleByHandle; // @synthesize cachedCanShareLocationWithHandleByHandle=_cachedCanShareLocationWithHandleByHandle;
@@ -43,6 +45,8 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSMutableSet *internalHandles; // @synthesize internalHandles=_internalHandles;
 @property (nonatomic) BOOL isModelInitialized; // @synthesize isModelInitialized=_isModelInitialized;
+@property (strong, nonatomic) FMFuture *sessionInterruptionFuture; // @synthesize sessionInterruptionFuture=_sessionInterruptionFuture;
+@property (strong, nonatomic) FMFuture *sessionInvalidationFuture; // @synthesize sessionInvalidationFuture=_sessionInvalidationFuture;
 @property (readonly) Class superclass;
 
 + (BOOL)FMFAllowed;
@@ -55,6 +59,7 @@
 - (void)_checkAndDisplayMeDeviceSwitchAlert;
 - (void)_daemonDidLaunch;
 - (BOOL)_isNoMappingPacketReturnedError:(id)arg1;
+- (void)_registerForApplicationLifecycleEvents;
 - (void)_registerForFMFDLaunchedNotification;
 - (void)_sendAutoSwitchMeDevice;
 - (void)_sendFriendshipOfferToHandles:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
@@ -63,6 +68,10 @@
 - (void)addFavorite:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addFence:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)addHandles:(id)arg1;
+- (void)addInterruptionHander:(CDUnknownBlockType)arg1;
+- (void)addInvalidationHander:(CDUnknownBlockType)arg1;
+- (void)applicationDidEnterBackground;
+- (void)applicationWillEnterForeground;
 - (void)approveFriendshipRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)cachedLocationForHandle:(id)arg1;
 - (BOOL)canGetLocationForHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3;
@@ -135,9 +144,7 @@
 - (id)init;
 - (id)initWithDelegate:(id)arg1;
 - (id)initWithDelegate:(id)arg1 delegateQueue:(id)arg2;
-- (id)internalConnection;
 - (void)invalidate;
-- (void)invalidateWithError:(id)arg1;
 - (BOOL)is5XXError:(id)arg1;
 - (void)isAllowFriendRequestsEnabled:(CDUnknownBlockType)arg1;
 - (void)isIn5XXGracePeriodWithCompletion:(CDUnknownBlockType)arg1;
@@ -148,6 +155,7 @@
 - (void)mappingPacketSendFailed:(id)arg1 toHandle:(id)arg2 withError:(id)arg3;
 - (double)maxLocatingInterval;
 - (oneway void)modelDidLoad;
+- (void)muteFencesForHandle:(id)arg1 untilDate:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)nearbyLocationsWithCompletion:(CDUnknownBlockType)arg1;
 - (oneway void)networkReachabilityUpdated:(BOOL)arg1;
 - (void)receivedMappingPacket:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -157,12 +165,14 @@
 - (void)removeDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeFavorite:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)removeHandles:(id)arg1;
+- (void)restoreClientConnection;
 - (void)sendFriendshipInviteToHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)sendFriendshipOfferToHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)sendFriendshipOfferToHandles:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 endDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)sendIDSMessage:(id)arg1 toIdentifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)sendIDSPacket:(id)arg1 toHandle:(id)arg2;
 - (oneway void)sendMappingPacket:(id)arg1 toHandle:(id)arg2;
+- (void)sendNotNowToHandle:(id)arg1 callerId:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)serverProxy;
 - (void)sessionHandleReport:(CDUnknownBlockType)arg1;
 - (void)setActiveDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -177,6 +187,7 @@
 - (void)stopSharingMyLocationWithHandle:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)stopSharingMyLocationWithHandles:(id)arg1 groupId:(id)arg2 callerId:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)triggerWithUUID:(id)arg1 forFenceWithID:(id)arg2 withStatus:(id)arg3 forDate:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)triggerWithUUID:(id)arg1 forFenceWithID:(id)arg2 withStatus:(id)arg3 forDate:(id)arg4 triggerLocation:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (id)verifyRestrictionsAndShowDialogIfRequired;
 
 @end

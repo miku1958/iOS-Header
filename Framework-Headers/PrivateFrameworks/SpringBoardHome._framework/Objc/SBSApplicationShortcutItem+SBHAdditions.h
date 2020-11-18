@@ -6,11 +6,20 @@
 
 #import <SpringBoardServices/SBSApplicationShortcutItem.h>
 
+@class UIView;
+
 @interface SBSApplicationShortcutItem (SBHAdditions)
 
+@property (strong, nonatomic) UIView *badgeView;
 @property (readonly, nonatomic) BOOL sbh_isDestructive;
 @property (readonly, nonatomic) BOOL sbh_isShortcutSpringBoardOnly;
-@property (readonly, nonatomic) BOOL sbh_isSystemShortcut;
+@property (readonly, nonatomic) unsigned long long sbh_shortcutSection;
 
+- (id)_assetManager;
+- (id)_darkMonogrammer;
+- (id)_lightMonogrammer;
+- (id)_monogrammerForKey:(char *)arg1 style:(long long)arg2;
+- (void)_setupAssetManagerWithApplicationBundleURL:(id)arg1;
+- (void)sb_buildIconImageWithApplicationBundleURL:(id)arg1 image:(id *)arg2 systemImageName:(id *)arg3;
 @end
 

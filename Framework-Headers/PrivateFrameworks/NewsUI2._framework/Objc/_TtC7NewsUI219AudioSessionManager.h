@@ -22,5 +22,7 @@
     MISSING_TYPE *onNextTrack;
 }
 
+- (void)captureArticleViewContextWithSessionID:(id)arg1;
+
 @end
 

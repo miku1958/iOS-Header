@@ -8,6 +8,7 @@
 
 @class FTRegConnectionHandler, IMServiceImpl, NSArray;
 
+__attribute__((visibility("hidden")))
 @interface FTRegAccountMonitor : NSObject
 {
     long long _serviceType;

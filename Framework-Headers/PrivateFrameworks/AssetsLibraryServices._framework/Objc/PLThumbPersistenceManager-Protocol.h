@@ -15,7 +15,7 @@
 
 - (NSString *)_debugDescription;
 - (id)beginThumbnailSafePropertyUpdatesOnAssetThumbnailIdentifier:(NSString *)arg1;
-- (struct CGImage *)createImageWithIdentifier:(NSString *)arg1 orIndex:(unsigned long long)arg2 decodeSession:(void *)arg3;
+- (struct CGImage *)createImageWithIdentifier:(NSString *)arg1 orIndex:(unsigned long long)arg2;
 - (void)endThumbnailSafePropertyUpdatesOnAssetThumbnailIdentifier:(NSString *)arg1 withToken:(id)arg2;
 - (NSData *)imageDataWithIdentifier:(NSString *)arg1 orIndex:(unsigned long long)arg2 width:(int *)arg3 height:(int *)arg4 bytesPerRow:(int *)arg5 dataWidth:(int *)arg6 dataHeight:(int *)arg7 dataOffset:(int *)arg8;
 - (void)preheatDataForThumbnailIndexes:(NSIndexSet *)arg1;

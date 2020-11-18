@@ -10,13 +10,12 @@
 #import <TSDrawables/TSDMixing-Protocol.h>
 #import <TSDrawables/TSDModelContainer-Protocol.h>
 #import <TSDrawables/TSDMutableContainerInfo-Protocol.h>
-#import <TSDrawables/TSDSelectionStatisticsContributor-Protocol.h>
 #import <TSDrawables/TSKDocumentObject-Protocol.h>
 
 @class NSArray, NSMutableArray, NSObject, NSSet, NSString, TSDInfoGeometry, TSPObject;
-@protocol TSDContainerInfo, TSDOwningAttachment;
+@protocol TSDInfo, TSDOwningAttachment;
 
-@interface TSDGroupInfo : TSDDrawableInfo <TSDMutableContainerInfo, TSDMixing, TSKDocumentObject, TSDSelectionStatisticsContributor, TSDModelContainer, TSDAttachmentAwareContainerInfo>
+@interface TSDGroupInfo : TSDDrawableInfo <TSDMutableContainerInfo, TSDMixing, TSKDocumentObject, TSDModelContainer, TSDAttachmentAwareContainerInfo>
 {
     NSMutableArray *mChildInfos;
     BOOL mIsInDocument;
@@ -37,13 +36,14 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSSet *infosToObserveForAttachedInfo;
 @property (readonly, nonatomic, getter=isInlineWithText) BOOL inlineWithText; // @dynamic inlineWithText;
+@property (readonly, nonatomic, getter=isInlineWithTextWithWrap) BOOL inlineWithTextWithWrap;
 @property (readonly, nonatomic) BOOL isEffectivelyEmpty;
 @property (readonly, nonatomic) BOOL isFreehandDrawing;
 @property (readonly, nonatomic) BOOL isMaster;
 @property (nonatomic) BOOL matchesObjectPlaceholderGeometry;
 @property (nonatomic) TSPObject<TSDOwningAttachment> *owningAttachment; // @dynamic owningAttachment;
 @property (readonly, nonatomic) TSPObject<TSDOwningAttachment> *owningAttachmentNoRecurse; // @dynamic owningAttachmentNoRecurse;
-@property (nonatomic) NSObject<TSDContainerInfo> *parentInfo; // @dynamic parentInfo;
+@property (nonatomic) NSObject<TSDInfo> *parentInfo; // @dynamic parentInfo;
 @property (readonly) Class superclass;
 
 + (Class)classForUnarchiver:(id)arg1;
@@ -55,10 +55,13 @@
 - (void)acceptVisitor:(id)arg1;
 - (void)addChildInfo:(id)arg1;
 - (void)adoptStylesheet:(id)arg1 withMapper:(id)arg2;
+- (BOOL)allowsCaption;
 - (BOOL)allowsParentGroupToBeResizedWithoutAspectRatioLock;
+- (BOOL)allowsTitle;
 - (BOOL)canAnchor;
 - (BOOL)canCopyData;
 - (id)childEnumerator;
+- (id)childEnumeratorForUserSearch;
 - (id)copyWithContext:(id)arg1;
 - (void)dealloc;
 - (void)didCopy;
@@ -70,6 +73,7 @@
 - (void)insertChildInfo:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)insertChildInfo:(id)arg1 below:(id)arg2;
 - (void)insertContainedModel:(id)arg1 atIndex:(unsigned long long)arg2;
+- (BOOL)isNonGroupedChild:(id)arg1;
 - (Class)layoutClass;
 - (void)loadFromArchive:(const struct GroupArchive *)arg1 unarchiver:(id)arg2 upgradeDOLC:(BOOL)arg3;
 - (void)loadFromUnarchiver:(id)arg1;
@@ -81,7 +85,6 @@
 - (BOOL)needsDownload;
 - (void)p_didUpdateChildInfos;
 - (id)p_ungroupedGeometryForInfo:(id)arg1;
-- (void)processSelectedStoragesWithStatisticsController:(id)arg1;
 - (void)removeAllChildrenInDocument:(BOOL)arg1;
 - (void)removeChildInfo:(id)arg1;
 - (void)removeContainedModel:(id)arg1;
@@ -93,6 +96,7 @@
 - (BOOL)shouldShowInPrint;
 - (BOOL)supportsParentRotation;
 - (id)ungroupedGeometryForChildInfo:(id)arg1;
+- (BOOL)wantsCounterRotationWhenNotSupportingParentRotationInRotatedParent;
 - (void)wasAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;
 - (void)wasRemovedFromDocumentRoot:(id)arg1;
 - (void)willBeAddedToDocumentRoot:(id)arg1 dolcContext:(id)arg2;

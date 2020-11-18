@@ -19,16 +19,17 @@
     PLMomentGeneration *_generator;
     NSDictionary *_generationOptions;
     BOOL _observingReachability;
-    BOOL _isLightweightMigrationManager;
+    struct os_unfair_lock_s _lightweightMigrationLock;
     PLPhotoLibraryPathManager *_lightWeightMigrationPathManager;
     PLLibraryServicesManager *_libraryServicesManager;
     PLRoutineService *_routineManager;
     BOOL _shouldPerformLightweightValidation;
     BOOL _previousValidationSucceeded;
+    BOOL _isLightweightMigrationManager;
     long long _previousValidatedModelVersion;
     PLCameraAppWatcher *_cameraWatcher;
-    NSManagedObjectContext *_managedObjectContext;
     PLPhotoLibrary *_momentGenerationLibrary;
+    NSManagedObjectContext *_managedObjectContext;
 }
 
 @property (readonly, weak, nonatomic) CNContactStore *_contactStore;
@@ -37,6 +38,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) NSDictionary *generationOptions;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isLightweightMigrationManager; // @synthesize isLightweightMigrationManager=_isLightweightMigrationManager;
 @property (strong, nonatomic) NSManagedObjectContext *managedObjectContext; // @synthesize managedObjectContext=_managedObjectContext;
 @property (strong, nonatomic) PLPhotoLibrary *momentGenerationLibrary; // @synthesize momentGenerationLibrary=_momentGenerationLibrary;
 @property (nonatomic) long long previousValidatedModelVersion; // @synthesize previousValidatedModelVersion=_previousValidatedModelVersion;
@@ -105,6 +107,7 @@
 - (void)invalidateLocationDataForAssetsWithOIDs:(id)arg1;
 - (void)invalidateShiftedLocationForAllAssetsInMoments;
 - (BOOL)isNetworkReachable;
+- (id)lastLocationOfInterestVisit;
 - (id)locationCoordinatesForAssetIDs:(id)arg1;
 - (id)locationsOfInterest;
 - (void)logRoutineInformation;

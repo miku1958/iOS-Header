@@ -4,85 +4,31 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <AudioToolboxCore/AUAudioUnit.h>
+#import <AudioToolboxCore/AUAudioUnit_XPC.h>
 
-@class AUAudioUnitBusArray_XH, AUParameterTree, NSArray, NSExtension, NSObject, NSUUID, NSXPCConnection;
+@class NSExtension, NSObject, NSUUID;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
-@interface AUAudioUnit_XH : AUAudioUnit
+@interface AUAudioUnit_XH : AUAudioUnit_XPC
 {
     NSExtension *_extension;
-    struct OpaqueAudioComponentInstance *_componentInstance;
     NSUUID *_requestIdentifier;
-    int _remotePID;
-    BOOL _canRender;
-    BOOL _canProcess;
-    BOOL _removingObserverWithContext;
-    BOOL _installedParamTreeObserver;
-    AUAudioUnitBusArray_XH *_inputBusses;
-    AUAudioUnitBusArray_XH *_outputBusses;
-    struct unique_ptr<AUProcAndUserData, std::__1::default_delete<AUProcAndUserData>> _elementCountListenerToken;
-    struct recursive_mutex _propListenerMutex;
-    struct vector<AUAudioUnit_XH_PropListener, std::__1::allocator<AUAudioUnit_XH_PropListener>> _propListeners;
-    struct IPCAURenderingClient _renderClient;
-    AUParameterTree *_cachedParameterTree;
     NSObject<OS_dispatch_queue> *_viewControllerRequestQueue;
-    NSArray *_userPresets;
-    AUAudioUnit_XH *_strongInstance;
-    NSXPCConnection *_xpcConnection;
+    AUAudioUnit_XPC *_strongInstance;
+    CDUnknownBlockType _speechSynthesisOutputMetadataBlock;
 }
 
-@property (strong, nonatomic) AUAudioUnit_XH *strongInstance; // @synthesize strongInstance=_strongInstance;
-@property (weak, nonatomic) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
+@property (strong, nonatomic) AUAudioUnit_XPC *strongInstance; // @synthesize strongInstance=_strongInstance;
 
-+ (BOOL)automaticallyNotifiesObserversForKey:(id)arg1;
 + (void)instantiateWithExtension:(id)arg1 componentDescription:(struct AudioComponentDescription)arg2 instance:(struct OpaqueAudioComponentInstance *)arg3 options:(unsigned int)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (id).cxx_construct;
 - (void).cxx_destruct;
-- (id)_getBus:(unsigned int)arg1 scope:(unsigned int)arg2 error:(id *)arg3;
-- (id)_getValueForKey:(id)arg1;
-- (id)_getValueForProperty:(id)arg1;
-- (void)_refreshBusses:(unsigned int)arg1;
-- (BOOL)_setBusCount:(unsigned long long)arg1 scope:(unsigned int)arg2 error:(id *)arg3;
-- (void)_setValue:(id)arg1 forKey:(id)arg2;
-- (void)_setValue:(id)arg1 forProperty:(id)arg2;
-- (void)addObserver:(id)arg1 forKeyPath:(id)arg2 options:(unsigned long long)arg3 context:(void *)arg4;
-- (void)addParameterTreeObserver;
-- (BOOL)allocateRenderResourcesAndReturnError:(id *)arg1;
+- (void)_doOpen:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_internalInitWithExtension:(id)arg1 componentDescription:(struct AudioComponentDescription)arg2 instance:(struct OpaqueAudioComponentInstance *)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)dealloc;
-- (void)deallocateRenderResources;
-- (BOOL)deleteUserPreset:(id)arg1 error:(id *)arg2;
-- (void)didCrash;
-- (BOOL)disableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 error:(id *)arg4;
-- (void)doOpen:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)enableProfile:(id)arg1 cable:(unsigned char)arg2 onChannel:(unsigned char)arg3 error:(id *)arg4;
-- (id)inputBusses;
-- (void)internalInitWithExtension:(id)arg1 componentDescription:(struct AudioComponentDescription)arg2 instance:(struct OpaqueAudioComponentInstance *)arg3 completion:(CDUnknownBlockType)arg4;
-- (CDUnknownBlockType)internalRenderBlock;
-- (void)invalidateAllParameters;
-- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
-- (id)outputBusses;
-- (id)parameterTree;
-- (id)parametersForOverviewWithCount:(long long)arg1;
-- (id)presetStateFor:(id)arg1 error:(id *)arg2;
-- (id)profileStateForCable:(unsigned char)arg1 channel:(unsigned char)arg2;
-- (void)propertiesChanged:(id)arg1;
-- (BOOL)providesUserInterface;
-- (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
-- (void)removeObserver:(id)arg1 forKeyPath:(id)arg2 context:(void *)arg3;
-- (void)removeParameterTreeObserver;
 - (void)requestViewControllerWithCompletionHandler:(CDUnknownBlockType)arg1;
-- (void)reset;
-- (BOOL)saveUserPreset:(id)arg1 error:(id *)arg2;
-- (void)selectViewConfiguration:(id)arg1;
-- (void)setCurrentPreset:(id)arg1;
-- (void)setFullState:(id)arg1;
-- (void)setFullStateForDocument:(id)arg1;
-- (void)setValue:(id)arg1 forUndefinedKey:(id)arg2;
-- (id)supportedViewConfigurations:(id)arg1;
-- (id)userPresets;
-- (id)valueForUndefinedKey:(id)arg1;
+- (void)setSpeechSynthesisOutputMetadataBlock:(CDUnknownBlockType)arg1;
+- (CDUnknownBlockType)speechSynthesisOutputMetadataBlock;
 
 @end
 

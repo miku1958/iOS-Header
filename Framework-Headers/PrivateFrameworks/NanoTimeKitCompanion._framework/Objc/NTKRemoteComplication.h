@@ -6,36 +6,44 @@
 
 #import <NanoTimeKitCompanion/NTKComplication.h>
 
-@class NSString;
+@class CLKComplicationDescriptor, NSString;
 
 @interface NTKRemoteComplication : NTKComplication
 {
     NSString *_clientIdentifier;
     NSString *_appBundleIdentifier;
+    CLKComplicationDescriptor *_complicationDescriptor;
 }
 
 @property (readonly, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property (readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (readonly, nonatomic) CLKComplicationDescriptor *complicationDescriptor; // @synthesize complicationDescriptor=_complicationDescriptor;
 
 + (id)_allComplicationConfigurationsWithType:(unsigned long long)arg1;
-+ (id)_remoteStocksComplication;
-+ (id)complicationWithClientIdentifier:(id)arg1 appBundleIdentifier:(id)arg2;
++ (id)_remoteStocksComplicationForDevice:(id)arg1;
++ (id)complicationWithClientIdentifier:(id)arg1 appBundleIdentifier:(id)arg2 complicationDescriptor:(id)arg3;
++ (id)remoteStocksComplicationDescriptorForDevice:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_addKeysToJSONDictionary:(id)arg1;
+- (id)_generatUniqueIdentifier;
 - (id)_initWithComplicationType:(unsigned long long)arg1 JSONDictionary:(id)arg2;
+- (id)appIdentifier;
+- (id)companionLocalizedKeylineLabelText;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)customDailySnapshotKey;
+- (id)customDailySnapshotKeyForFamily:(long long)arg1 device:(id)arg2;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithComplicationType:(unsigned long long)arg1;
-- (BOOL)isEqual:(id)arg1;
 - (id)localizedDetailText;
 - (id)localizedKeylineLabelText;
 - (id)localizedRichDetailText;
 - (id)localizedRichKeylineLabelText;
+- (id)ntk_localizedNameWithOptions:(unsigned long long)arg1 forRichComplicationSlot:(BOOL)arg2;
+- (void)resetComplicationDescriptor;
+- (BOOL)supportsComplicationFamily:(long long)arg1 forDevice:(id)arg2;
+- (id)watchLocalizedKeylineLabelText;
 
 @end
 

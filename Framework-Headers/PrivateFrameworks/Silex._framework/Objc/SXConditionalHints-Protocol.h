@@ -8,13 +8,13 @@
 
 @protocol SXConditionalHints <NSObject>
 
-@property (readonly, nonatomic) BOOL autoplacement;
-@property (readonly, nonatomic) BOOL componentLayouts;
-@property (readonly, nonatomic) BOOL componentStyles;
-@property (readonly, nonatomic) BOOL componentTextStyles;
-@property (readonly, nonatomic) BOOL components;
-@property (readonly, nonatomic) BOOL documentStyle;
-@property (readonly, nonatomic) BOOL textStyles;
+@property (readonly, nonatomic) long long autoplacement;
+@property (readonly, nonatomic) long long componentLayouts;
+@property (readonly, nonatomic) long long componentStyles;
+@property (readonly, nonatomic) long long componentTextStyles;
+@property (readonly, nonatomic) long long components;
+@property (readonly, nonatomic) long long documentStyle;
+@property (readonly, nonatomic) long long textStyles;
 
 @end
 

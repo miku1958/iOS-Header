@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class NSSet, NSString, SBLayoutElement, SBMainDisplayLayoutState, SBMainDisplayWorkspaceAppInteractionEventSource;
+@class NSSet, NSString, SBBookmark, SBLayoutElement, SBMainDisplayLayoutState, SBMainDisplayWorkspaceAppInteractionEventSource;
 
 @protocol SBMainDisplayWorkspaceAppInteractionEventSourceObserving <NSObject>
 
@@ -17,6 +17,7 @@
 - (void)eventSource:(SBMainDisplayWorkspaceAppInteractionEventSource *)arg1 didFinishTransitionToMode:(long long)arg2 withLayoutState:(SBMainDisplayLayoutState *)arg3 activatingElement:(SBLayoutElement *)arg4 triggeredBy:(long long)arg5;
 - (void)eventSource:(SBMainDisplayWorkspaceAppInteractionEventSource *)arg1 keyboardFocusChangedToApplication:(NSString *)arg2;
 - (void)eventSource:(SBMainDisplayWorkspaceAppInteractionEventSource *)arg1 userDeletedApplications:(NSSet *)arg2;
+- (void)eventSource:(SBMainDisplayWorkspaceAppInteractionEventSource *)arg1 userDeletedWebBookmark:(SBBookmark *)arg2;
 - (void)eventSource:(SBMainDisplayWorkspaceAppInteractionEventSource *)arg1 userQuitApplicationInSwitcher:(NSString *)arg2;
 - (void)eventSource:(SBMainDisplayWorkspaceAppInteractionEventSource *)arg1 userRemovedSuggestions:(NSSet *)arg2;
 - (void)eventSource:(SBMainDisplayWorkspaceAppInteractionEventSource *)arg1 userTouchedApplication:(NSString *)arg2;

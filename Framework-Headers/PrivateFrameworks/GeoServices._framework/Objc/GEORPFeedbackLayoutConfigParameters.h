@@ -8,12 +8,11 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOLatLng, GEOMapRegion, GEOPDMapsIdentifier, PBDataReader, PBUnknownFields;
+@class GEOLatLng, GEOMapRegion, GEOPDMapsIdentifier, PBDataReader;
 
 @interface GEORPFeedbackLayoutConfigParameters : PBCodable <NSCopying>
 {
     PBDataReader *_reader;
-    PBUnknownFields *_unknownFields;
     GEOLatLng *_coordinate;
     GEOMapRegion *_mapRegion;
     GEOPDMapsIdentifier *_mapsId;
@@ -23,15 +22,10 @@
     int _formType;
     struct {
         unsigned int has_formType:1;
-        unsigned int read_unknownFields:1;
         unsigned int read_coordinate:1;
         unsigned int read_mapRegion:1;
         unsigned int read_mapsId:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_coordinate:1;
-        unsigned int wrote_mapRegion:1;
-        unsigned int wrote_mapsId:1;
-        unsigned int wrote_formType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,15 +37,10 @@
 @property (readonly, nonatomic) BOOL hasMapsId;
 @property (strong, nonatomic) GEOMapRegion *mapRegion;
 @property (strong, nonatomic) GEOPDMapsIdentifier *mapsId;
-@property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsFormType:(id)arg1;
-- (void)_readCoordinate;
-- (void)_readMapRegion;
-- (void)_readMapsId;
-- (void)clearUnknownFields:(BOOL)arg1;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
@@ -60,7 +49,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

@@ -6,7 +6,7 @@
 
 #import <HealthUI/HKGraphSeries.h>
 
-@class HKStrokeStyle, NSArray;
+@class HKLineSeriesPointMarkerStyle, HKStrokeStyle, NSArray;
 
 @interface HKSleepPeriodSeries : HKGraphSeries
 {
@@ -14,18 +14,24 @@
     HKStrokeStyle *_tiledStrokeStyle;
     NSArray *_defaultFillStyles;
     NSArray *_highlightedFillStyles;
-    HKStrokeStyle *_goalLineStokeStyle;
+    NSArray *_inactiveFillStyles;
+    HKStrokeStyle *_goalLineStrokeStyle;
+    HKLineSeriesPointMarkerStyle *_upperGoalLineMarkerStyle;
+    HKLineSeriesPointMarkerStyle *_lowerGoalLineMarkerStyle;
     CDUnknownBlockType _startOfDayTransform;
     struct CGSize _cornerRadii;
 }
 
 @property (nonatomic) struct CGSize cornerRadii; // @synthesize cornerRadii=_cornerRadii;
 @property (copy, nonatomic) NSArray *defaultFillStyles; // @synthesize defaultFillStyles=_defaultFillStyles;
-@property (copy, nonatomic) HKStrokeStyle *goalLineStokeStyle; // @synthesize goalLineStokeStyle=_goalLineStokeStyle;
+@property (copy, nonatomic) HKStrokeStyle *goalLineStrokeStyle; // @synthesize goalLineStrokeStyle=_goalLineStrokeStyle;
 @property (copy, nonatomic) NSArray *highlightedFillStyles; // @synthesize highlightedFillStyles=_highlightedFillStyles;
+@property (copy, nonatomic) NSArray *inactiveFillStyles; // @synthesize inactiveFillStyles=_inactiveFillStyles;
+@property (strong, nonatomic) HKLineSeriesPointMarkerStyle *lowerGoalLineMarkerStyle; // @synthesize lowerGoalLineMarkerStyle=_lowerGoalLineMarkerStyle;
 @property (copy, nonatomic) CDUnknownBlockType startOfDayTransform; // @synthesize startOfDayTransform=_startOfDayTransform;
 @property (copy, nonatomic) HKStrokeStyle *strokeStyle; // @synthesize strokeStyle=_strokeStyle;
 @property (copy, nonatomic) HKStrokeStyle *tiledStrokeStyle; // @synthesize tiledStrokeStyle=_tiledStrokeStyle;
+@property (strong, nonatomic) HKLineSeriesPointMarkerStyle *upperGoalLineMarkerStyle; // @synthesize upperGoalLineMarkerStyle=_upperGoalLineMarkerStyle;
 
 + (id)_sleepCircleImageWithWidth:(double)arg1 diameter:(double)arg2 color:(id)arg3;
 + (id)asleepImageCompatibleWithFont:(id)arg1 withColor:(id)arg2;
@@ -33,11 +39,13 @@
 - (void).cxx_destruct;
 - (void)_addAnnotationForValue:(double)arg1;
 - (void)_assertCoordinateCompatibility:(id)arg1;
-- (void)_drawGoalLinePath:(id)arg1 context:(struct CGContext *)arg2;
+- (id)_attributedAxisString:(id)arg1;
+- (void)_drawGoalLinePath:(id)arg1 goalMarkerPoints:(id)arg2 markerImage:(id)arg3 context:(struct CGContext *)arg4;
 - (void)_drawPaths:(id)arg1 withFillStyles:(id)arg2 strokeStyle:(id)arg3 axisRect:(struct CGRect)arg4 context:(struct CGContext *)arg5;
 - (void)_drawWithBlockCoordinates:(id)arg1 visibleBarCount:(long long)arg2 pointTransform:(struct CGAffineTransform)arg3 context:(struct CGContext *)arg4 axisRect:(struct CGRect)arg5;
 - (double)_maximumYForCoordinate:(id)arg1;
 - (double)_minimumYForCoordinate:(id)arg1;
+- (id)_stringFromTimeSinceNoon:(id)arg1;
 - (long long)_visibleBarCountWithZoomLevelConfiguration:(id)arg1;
 - (double)barWidthForVisibleBarCount:(long long)arg1 axisRect:(struct CGRect)arg2 minimumSpacing:(double)arg3;
 - (BOOL)blockCoordinate:(id)arg1 greaterThan:(id)arg2;
@@ -48,7 +56,6 @@
 - (double)distanceFromPoint:(struct CGPoint)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect)arg3;
 - (void)drawSeriesWithBlockCoordinates:(id)arg1 axisRect:(struct CGRect)arg2 zoomLevelConfiguration:(id)arg3 pointTransform:(struct CGAffineTransform)arg4 renderContext:(struct CGContext *)arg5 secondaryRenderContext:(id)arg6;
 - (BOOL)shouldInvertAxis;
-- (id)stringFromTimeSinceNoon:(id)arg1;
 - (BOOL)supportsMultiTouchSelection;
 - (double)xAxisDistanceFromPoint:(struct CGPoint)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect)arg3;
 - (double)yAxisDifferenceToPoint:(struct CGPoint)arg1 blockCoordinate:(id)arg2 chartRect:(struct CGRect)arg3;

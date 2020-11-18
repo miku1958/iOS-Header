@@ -8,7 +8,7 @@
 
 #import <HealthDaemon/CBPeripheralDelegate-Protocol.h>
 
-@class CBPeripheral, HDHealthServiceManager, HDProfile, HKDevice, NSMutableDictionary, NSString, NSUUID, _HKExpiringCompletionTimer;
+@class CBPeripheral, HDHealthServiceManager, HDProfile, HKDevice, NSMutableDictionary, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HDHealthPeripheral : NSObject <CBPeripheralDelegate>
@@ -22,7 +22,6 @@
     HDHealthServiceManager *_serviceManager;
     HDProfile *_profile;
     NSObject<OS_dispatch_queue> *_servicesQueue;
-    _HKExpiringCompletionTimer *_privateModeTimer;
     NSMutableDictionary *_serviceForProperty;
     NSMutableDictionary *_propertiesAwaiting;
 }
@@ -36,8 +35,6 @@
 @property (strong, nonatomic) NSMutableDictionary *healthServices; // @synthesize healthServices=_healthServices;
 @property (readonly, nonatomic) NSUUID *identifier;
 @property (readonly) NSString *name; // @synthesize name=_name;
-@property (nonatomic) BOOL privateMode;
-@property (strong, nonatomic) _HKExpiringCompletionTimer *privateModeTimer; // @synthesize privateModeTimer=_privateModeTimer;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 @property (strong, nonatomic) NSMutableDictionary *propertiesAwaiting; // @synthesize propertiesAwaiting=_propertiesAwaiting;
 @property (strong, nonatomic) NSMutableDictionary *serviceForProperty; // @synthesize serviceForProperty=_serviceForProperty;
@@ -50,15 +47,12 @@
 + (id)implementedProperties;
 - (void).cxx_destruct;
 - (BOOL)_queue_addPropertyHandler:(CDUnknownBlockType)arg1 forProperty:(id)arg2;
-- (void)_queue_handleTimerExpiration;
 - (void)_queue_respond:(id)arg1 forProperty:(id)arg2 withError:(id)arg3;
 - (void)_queue_setDeviceInformation:(id)arg1;
-- (void)_queue_setupTimer;
 - (void)_queue_startReadProperty:(id)arg1;
 - (void)addHealthService:(id)arg1;
 - (void)disconnectServices;
 - (void)discoverServices;
-- (void)extendPrivateModeLease;
 - (void)getProperty:(id)arg1 withHandler:(CDUnknownBlockType)arg2;
 - (BOOL)hasServiceWithUUID:(id)arg1;
 - (id)healthServiceForType:(long long)arg1;

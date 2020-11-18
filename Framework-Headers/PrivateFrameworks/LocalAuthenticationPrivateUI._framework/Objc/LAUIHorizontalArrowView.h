@@ -30,13 +30,11 @@
     double _displacement;
     NSString *_text;
     struct CGSize _maximum_line_size;
-    struct UIOffset _displacementOffset;
 }
 
 @property (nonatomic, getter=isAnimating) BOOL animating; // @synthesize animating=_animating;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
 @property (nonatomic) double displacement; // @synthesize displacement=_displacement;
-@property (nonatomic) struct UIOffset displacementOffset; // @synthesize displacementOffset=_displacementOffset;
 @property (nonatomic) struct CGSize maximumLineSize; // @synthesize maximumLineSize=_maximum_line_size;
 @property (copy, nonatomic) NSString *text; // @synthesize text=_text;
 

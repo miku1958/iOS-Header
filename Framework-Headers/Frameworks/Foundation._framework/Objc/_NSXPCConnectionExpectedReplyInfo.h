@@ -7,26 +7,19 @@
 #import <objc/NSObject.h>
 
 @class NSBlock, NSDictionary, NSXPCInterface;
+@protocol OS_dispatch_semaphore;
 
 __attribute__((visibility("hidden")))
 @interface _NSXPCConnectionExpectedReplyInfo : NSObject
 {
     NSBlock *_replyBlock;
     CDUnknownBlockType _errorBlock;
-    CDUnknownBlockType _cleanupBlock;
+    NSObject<OS_dispatch_semaphore> *_timeoutSemaphore;
     SEL _selector;
     NSXPCInterface *_interface;
     NSDictionary *_userInfo;
     unsigned long long _proxyNumber;
 }
-
-@property (copy) CDUnknownBlockType cleanupBlock; // @synthesize cleanupBlock=_cleanupBlock;
-@property (copy) CDUnknownBlockType errorBlock; // @synthesize errorBlock=_errorBlock;
-@property (strong) NSXPCInterface *interface; // @synthesize interface=_interface;
-@property unsigned long long proxyNumber; // @synthesize proxyNumber=_proxyNumber;
-@property (copy) NSBlock *replyBlock; // @synthesize replyBlock=_replyBlock;
-@property SEL selector; // @synthesize selector=_selector;
-@property (strong) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
 
 - (void)dealloc;
 

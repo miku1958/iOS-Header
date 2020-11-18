@@ -25,6 +25,7 @@
     HKQuantity *_totalCyclingDistance;
     HKQuantity *_averageCyclingDistance;
     double _totalCyclingDuration;
+    unsigned long long _workoutsWithEnergyBurned;
     NSDate *_startOfMonth;
 }
 
@@ -40,6 +41,7 @@
 @property (readonly, nonatomic) double totalWalkRunDuration; // @synthesize totalWalkRunDuration=_totalWalkRunDuration;
 @property (readonly, nonatomic) double totalWorkoutDuration; // @synthesize totalWorkoutDuration=_totalWorkoutDuration;
 @property (readonly, nonatomic) unsigned long long workoutCount;
+@property (readonly, nonatomic) unsigned long long workoutsWithEnergyBurned; // @synthesize workoutsWithEnergyBurned=_workoutsWithEnergyBurned;
 
 + (id)_monthFormatter;
 - (void).cxx_destruct;

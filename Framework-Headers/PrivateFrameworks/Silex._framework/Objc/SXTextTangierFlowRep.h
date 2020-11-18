@@ -34,6 +34,7 @@
 - (void).cxx_destruct;
 - (struct _NSRange)_accessibilitySelectedTextRange;
 - (void)_accessibilitySetSelectedTextRange:(struct _NSRange)arg1;
+- (id)_accessibilityUserTestingChildren;
 - (id)accessibilityElements;
 - (struct CGRect)accessibilityFrameForScrolling;
 - (id)accessibilityHitTest:(struct CGPoint)arg1;

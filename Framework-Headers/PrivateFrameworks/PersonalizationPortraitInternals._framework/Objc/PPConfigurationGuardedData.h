@@ -10,9 +10,6 @@
 
 @interface PPConfigurationGuardedData : NSObject
 {
-    double topicsSigmoidWidth;
-    double topicsSigmoidPeakValue;
-    double topicsScalingFactor;
     float remoteTopicsMultiplier;
     double halfValuePosition;
     double nonReaderTextWeight;
@@ -25,20 +22,22 @@
     NSString *variantName;
     NSString *naturalVariantName;
     NSArray *availableVariantNames;
-    NSDictionary *topicMaps;
-    NSDictionary *topicMapsScalingFactors;
+    NSDictionary *dynamicEntityCategories;
+    NSDictionary *differentiallyPrivateEntityLogLevels;
     NSDictionary *topicsSourceMultiplier;
     NSDictionary *topicsAlgorithmMultiplier;
+    NSDictionary *namedEntityAlgorithmConfiguration;
+    NSDictionary *topicAlgorithmConfiguration;
+    NSDictionary *locationAlgorithmConfiguration;
     _PASCFBurstTrie *topicCalibration;
     BOOL highLevelTopicExtractionEnabled;
     BOOL safariDonationTitleExtractionEnabled;
     BOOL safariDataDetectorsEnabledForHighMemoryDevices;
-    double highLevelTopicScoreAttenuationFactor;
-    double highLevelTopicScoreThreshold;
     float scoreThresholdForNamedEntity;
     float scoreThresholdForTopic;
     float scoreThresholdForLocation;
     float feedbackSessionLogsSamplingRate;
+    NSDictionary *feedbackSessionLogsSamplingRateOverrides;
     float feedbackSessionLogsExtractionsSamplingRate;
     int feedbackSessionLogsGeohashLength;
     double analyticsTopicsSamplingRate;
@@ -47,6 +46,45 @@
     double topicDecayHalfLifeSeconds;
     double namedEntityDecayHalfLifeSeconds;
     double locationDecayHalfLifeSeconds;
+    BOOL topicScoringUsesCoreML;
+    BOOL namedEntityScoringUsesCoreML;
+    BOOL flattenTopicsForCoreML;
+    BOOL flattenNamedEntitiesforCoreML;
+    BOOL namedEntityScoringUsesHybrid;
+    BOOL topicScoringUsesHybrid;
+    BOOL locationScoringUsesHybrid;
+    double decayedFeedbackCountsHalfLifeDays;
+    BOOL notificationExtractionEnabled;
+    BOOL namedEntityFeedbackUsesCoreML;
+    BOOL topicFeedbackUsesCoreML;
+    BOOL locationFeedbackUsesCoreML;
+    NSArray *engagementKValues;
+    BOOL use2StageScoreInterpreterForNEScoring;
+    BOOL use2StageScoreInterpreterForTPScoring;
+    BOOL use2StageScoreInterpreterForLocationScoring;
+    BOOL topicMappingUsesCoreML;
+    double topicMappingCoreMLThreshold;
+    BOOL locationScoringUsesCoreML;
+    double routineExtractionScoreCountWeight;
+    double routineExtractionScoreDurationWeight;
+    double routineExtractionScoreDecayHalfLifeDays;
+    NSDictionary *linearModelHyperparameters;
+    int maxNumberMappedTopics;
+    int maxNumberNamedEntities;
+    unsigned char customTaggerMaxTokenCount;
+    unsigned int mapsSearchQueryLimit;
+    double mapsSearchQueryFromDateInterval;
+    unsigned int namedEntityLoadAndMonitorInitialLoadLimit;
+    NSDictionary *contactsLabelScoringMap;
+    float recordSourceContactsInitialScore;
+    float recordSourceNonContactsInitialScore;
+    unsigned char peopleSuggesterMaxCount;
+    double navigationMinimumTimeInterval;
+    unsigned int navigationMinimumDistanceInMeters;
+    unsigned char nextEventFuzzMinutes;
+    int queryTimeNextEventFromMinutes;
+    unsigned int queryTimeNextEventToMinutes;
+    unsigned int queryTimeOtherEventToMinutes;
 }
 
 - (void).cxx_destruct;

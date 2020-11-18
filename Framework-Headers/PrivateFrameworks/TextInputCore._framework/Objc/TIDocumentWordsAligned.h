@@ -19,7 +19,7 @@
 
 - (void).cxx_destruct;
 - (void)addToContextMap:(id)arg1;
-- (BOOL)deleteWordsUptoContext:(id)arg1;
+- (int)deleteWordsUptoContext:(id)arg1;
 - (id)description;
 - (id)init;
 - (void)insertWord:(id)arg1 atIndex:(long long)arg2;

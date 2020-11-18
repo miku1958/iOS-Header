@@ -8,6 +8,5 @@
 
 @interface NSBundle (ResourcesBundle)
 + (id)sh_UIBundle;
-+ (id)sh_loadNibNamed:(id)arg1 owner:(id)arg2 options:(id)arg3;
 @end
 

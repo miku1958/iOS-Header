@@ -30,7 +30,7 @@
 @property (nonatomic) long long forceTouchCapability; // @synthesize forceTouchCapability=_forceTouchCapability;
 @property (nonatomic) long long horizontalSizeClass; // @synthesize horizontalSizeClass=_horizontalSizeClass;
 @property (strong, nonatomic) NSArray *preferredContentSizeCategories; // @synthesize preferredContentSizeCategories=_preferredContentSizeCategories;
-@property (strong, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
+@property (copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
 @property (readonly, nonatomic) unsigned long long specificity; // @synthesize specificity=_specificity;
 @property (copy, nonatomic) NSArray *subviews; // @synthesize subviews=_subviewsValue;
 @property (readonly, nonatomic) UITraitCollection *traitCollection;

@@ -29,6 +29,7 @@
 @property (strong, nonatomic) PXTitleSubtitleLabelSpec *textViewSpec; // @synthesize textViewSpec=_textViewSpec;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;
 
++ (struct CGRect)convertedImageContentsRectOfRegionOfInterest:(id)arg1 toCoordinateSpace:(id)arg2 fittingSize:(struct CGSize)arg3 flipped:(BOOL)arg4;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithRect:(struct CGRect)arg1 inCoordinateSpace:(id)arg2;

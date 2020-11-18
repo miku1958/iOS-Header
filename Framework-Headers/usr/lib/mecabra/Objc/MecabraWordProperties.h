@@ -41,6 +41,7 @@
 - (id)tonesForString:(id)arg1;
 - (id)valueForKey:(int)arg1;
 - (id)wubixingCodes;
+- (id)wubixingCodesForStandard:(int)arg1;
 - (id)zhuyinInformationForString:(id)arg1;
 
 @end

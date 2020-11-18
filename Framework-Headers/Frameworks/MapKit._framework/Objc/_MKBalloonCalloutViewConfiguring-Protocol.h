@@ -10,9 +10,12 @@
 
 @protocol _MKBalloonCalloutViewConfiguring <NSObject>
 
+@property (readonly, nonatomic, getter=_balloonCalloutShouldCenterWhenOffscreen) BOOL balloonCalloutShouldCenterWhenOffscreen;
+@property (readonly, nonatomic, getter=_balloonCalloutShouldShowArrow) BOOL balloonCalloutShouldShowArrow;
 @property (readonly, nonatomic, getter=_balloonCalloutStyle) long long balloonCalloutStyle;
 @property (readonly, nonatomic, getter=_balloonContentView) UIView *balloonContentView;
 @property (readonly, nonatomic, getter=_balloonImage) UIImage *balloonImage;
+@property (readonly, nonatomic, getter=_balloonImageTintColor) UIColor *balloonImageTintColor;
 @property (readonly, nonatomic, getter=_balloonInnerStrokeColor) UIColor *balloonInnerStrokeColor;
 @property (readonly, nonatomic, getter=_balloonStrokeColor) UIColor *balloonStrokeColor;
 @property (readonly, nonatomic, getter=_balloonTintColor) UIColor *balloonTintColor;

@@ -27,7 +27,6 @@
 + (id)containerBoxViewWithArrangedSubviews:(id)arg1;
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (long long)_effectiveAlignmentForArrangedSubview:(id)arg1 inAxis:(long long)arg2;
 - (id)arrangedDescription;
 - (struct CGSize)calculateArrangedSizeFittingSize:(struct CGSize)arg1;
 - (id)calculateViewForFirstBaselineLayout;

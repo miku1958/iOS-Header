@@ -19,6 +19,7 @@
 
 + (id)logCategory;
 - (void).cxx_destruct;
+- (unsigned long long)_getCurrentFrameSize;
 - (void)_readFrameHeaderIfPossible;
 - (unsigned long long)bytesNeededForCurrentFrame;
 - (BOOL)hasCompleteFrame;

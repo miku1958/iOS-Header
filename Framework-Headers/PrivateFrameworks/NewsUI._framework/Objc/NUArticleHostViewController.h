@@ -70,8 +70,10 @@
 - (void)reload;
 - (void)reportEvent:(id)arg1;
 - (BOOL)resignFirstResponder;
+- (void)updateContentScaleAndSize;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillLayoutSubviews;
 
 @end

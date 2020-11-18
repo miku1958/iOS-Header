@@ -24,11 +24,11 @@
 + (id)attributeWithDomain:(id)arg1 name:(id)arg2 sourceEnvironment:(id)arg3;
 - (void).cxx_destruct;
 - (id)_initWithDomain:(id)arg1 name:(id)arg2 sourceEnvironment:(id)arg3;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (id)description;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
-- (id)succinctDescriptionBuilder;
 
 @end
 

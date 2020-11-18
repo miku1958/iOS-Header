@@ -8,13 +8,14 @@
 
 #import <ChatKit/UIWindowSceneDelegate-Protocol.h>
 
-@class NSString, UIWindow, UIWindowScene;
+@class CKMacToolbarController, NSString, UIWindow, UIWindowScene;
 
 @interface CKSceneDelegate : NSObject <UIWindowSceneDelegate>
 {
     BOOL _handlingLaunchTask;
     UIWindowScene *_scene;
     UIWindow *_window;
+    CKMacToolbarController *_toolbarController;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -23,6 +24,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, weak, nonatomic) UIWindowScene *scene; // @synthesize scene=_scene;
 @property (readonly) Class superclass;
+@property (strong, nonatomic) CKMacToolbarController *toolbarController; // @synthesize toolbarController=_toolbarController;
 @property (strong, nonatomic) UIWindow *window; // @synthesize window=_window;
 
 + (Class)containerClassForType:(long long)arg1;
@@ -45,6 +47,7 @@
 - (long long)type;
 - (void)updateSceneActivationConditions;
 - (void)updateSceneTitleForConversation:(id)arg1;
+- (void)windowSceneDidBecomeVisible:(id)arg1;
 
 @end
 

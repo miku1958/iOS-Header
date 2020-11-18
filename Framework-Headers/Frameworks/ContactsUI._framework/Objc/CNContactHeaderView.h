@@ -65,6 +65,7 @@
 + (id)descriptorForRequiredKeysIncludingAvatarViewDescriptors:(BOOL)arg1;
 + (id)makePhotoViewWithMonogrammerStyle:(long long)arg1 shouldAllowTakePhotoAction:(BOOL)arg2 shouldAllowImageDrops:(BOOL)arg3 monogramOnly:(BOOL)arg4;
 + (BOOL)requiresConstraintBasedLayout;
++ (id)sizeAttributesShowingNavBar:(BOOL)arg1;
 - (void).cxx_destruct;
 - (void)calculateLabelSizesIfNeeded;
 - (BOOL)canBecomeFirstResponder;
@@ -77,7 +78,8 @@
 - (double)defaultMaxBaseHeight;
 - (double)defaultMaxHeight;
 - (id)descriptorForRequiredKeys;
-- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3 shouldAllowTakePhotoAction:(BOOL)arg4 shouldAllowImageDrops:(BOOL)arg5 monogramOnly:(BOOL)arg6 delegate:(id)arg7;
+- (void)didFinishUsing;
+- (id)initWithContact:(id)arg1 frame:(struct CGRect)arg2 monogrammerStyle:(long long)arg3 shouldAllowTakePhotoAction:(BOOL)arg4 shouldAllowImageDrops:(BOOL)arg5 showingNavBar:(BOOL)arg6 monogramOnly:(BOOL)arg7 delegate:(id)arg8;
 - (void)layoutSubviews;
 - (void)photoView:(id)arg1 didSaveImageDropToContact:(id)arg2;
 - (void)photoViewDidUpdate:(id)arg1;
@@ -90,6 +92,7 @@
 - (void)setNeedsReload;
 - (void)updateConstraints;
 - (void)updateFontSizes;
+- (void)updateForShowingNavBar:(BOOL)arg1;
 - (void)updateSizeDependentAttributes;
 - (void)updateWithContacts:(id)arg1;
 - (void)updateWithNewContact:(id)arg1;

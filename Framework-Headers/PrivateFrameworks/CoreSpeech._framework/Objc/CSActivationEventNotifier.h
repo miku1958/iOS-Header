@@ -6,45 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class CSActivationEvent, NSMapTable;
 @protocol OS_dispatch_queue;
 
 @interface CSActivationEventNotifier : NSObject
 {
-    int _notifyToken;
     NSObject<OS_dispatch_queue> *_queue;
-    NSMapTable *_delegates;
-    CSActivationEvent *_pendingActivationEvent;
-    CDUnknownBlockType _pendingCompletion;
 }
 
-@property (strong, nonatomic) NSMapTable *delegates; // @synthesize delegates=_delegates;
-@property (nonatomic) int notifyToken; // @synthesize notifyToken=_notifyToken;
-@property (strong, nonatomic) CSActivationEvent *pendingActivationEvent; // @synthesize pendingActivationEvent=_pendingActivationEvent;
-@property (copy, nonatomic) CDUnknownBlockType pendingCompletion; // @synthesize pendingCompletion=_pendingCompletion;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 
 + (id)sharedNotifier;
-+ (id)sharedNotifierForCoreSpeechDaemon;
 - (void).cxx_destruct;
 - (id)_createXPCClientConnection;
-- (void)_didReceiveAOPFirstPassTrigger:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (BOOL)_hasPendingActivationForType:(unsigned long long)arg1;
-- (BOOL)_isVoiceTriggerEvent:(id)arg1;
-- (void)_notifyActivationEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_setupTestNotification;
-- (void)_startMonitoring;
-- (void)_stopMonitoring;
-- (void)dealloc;
 - (id)init;
 - (void)notifyActivationEvent:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)notifyActivationEvent:(unsigned long long)arg1 deviceId:(id)arg2 activationInfo:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (void)notifyActivationEventForCoreSpeechDaemon:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)receiveTestNotificationAOPMode;
-- (void)receiveTestNotificationAPMode;
-- (void)setDelegate:(id)arg1 for:(unsigned long long)arg2;
-- (void)start;
-- (void)stop;
 
 @end
 

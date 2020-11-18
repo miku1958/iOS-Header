@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AVCStatisticsCollector, NSDictionary, NSMutableDictionary;
+@class AVCStatisticsCollector, NSDictionary, NSMutableDictionary, VCRateControlMediaController;
 
 __attribute__((visibility("hidden")))
 @interface VCVideoTransmitterConfig : NSObject
@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
     BOOL _enableCVO;
     int _videoPayload;
     int _encodingMode;
+    NSDictionary *_colorInfo;
     _Atomic unsigned char *_videoPriorityPointer;
     unsigned long long _customWidth;
     unsigned long long _customHeight;
@@ -36,10 +37,16 @@ __attribute__((visibility("hidden")))
     BOOL _useRateControl;
     unsigned int _pixelFormat;
     NSMutableDictionary *_customFeatureListStrings;
+    VCRateControlMediaController *_mediaController;
+    void *_mediaControlInfoGenerator;
+    BOOL _reinitEncoderOnFrameSizeChangeEnabled;
+    BOOL _isIPv6;
     unsigned int _qualityIndex;
+    unsigned long long _remoteIDSParticipantID;
 }
 
 @property (nonatomic) long long codecType; // @synthesize codecType=_codecType;
+@property (nonatomic) NSDictionary *colorInfo; // @synthesize colorInfo=_colorInfo;
 @property (readonly, nonatomic) NSDictionary *customFeatureListStrings; // @synthesize customFeatureListStrings=_customFeatureListStrings;
 @property (nonatomic) unsigned long long customHeight; // @synthesize customHeight=_customHeight;
 @property (nonatomic) unsigned long long customWidth; // @synthesize customWidth=_customWidth;
@@ -47,11 +54,16 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL enableCVO; // @synthesize enableCVO=_enableCVO;
 @property (nonatomic) int encodingMode; // @synthesize encodingMode=_encodingMode;
 @property (nonatomic) unsigned long long framerate; // @synthesize framerate=_framerate;
+@property (nonatomic) BOOL isIPv6; // @synthesize isIPv6=_isIPv6;
 @property (nonatomic) unsigned long long keyFrameInterval; // @synthesize keyFrameInterval=_keyFrameInterval;
+@property (nonatomic) void *mediaControlInfoGenerator; // @synthesize mediaControlInfoGenerator=_mediaControlInfoGenerator;
+@property (strong, nonatomic) VCRateControlMediaController *mediaController; // @synthesize mediaController=_mediaController;
 @property (nonatomic) int mode; // @synthesize mode=_mode;
 @property (nonatomic) unsigned int pixelFormat; // @synthesize pixelFormat=_pixelFormat;
 @property (nonatomic) unsigned int qualityIndex; // @synthesize qualityIndex=_qualityIndex;
 @property (nonatomic) unsigned long long recommendedMTU; // @synthesize recommendedMTU=_recommendedMTU;
+@property (nonatomic) BOOL reinitEncoderOnFrameSizeChangeEnabled; // @synthesize reinitEncoderOnFrameSizeChangeEnabled=_reinitEncoderOnFrameSizeChangeEnabled;
+@property (nonatomic) unsigned long long remoteIDSParticipantID; // @synthesize remoteIDSParticipantID=_remoteIDSParticipantID;
 @property (nonatomic) struct opaqueRTCReporting *reportingAgent; // @synthesize reportingAgent=_reportingAgent;
 @property (nonatomic) int reportingParentID; // @synthesize reportingParentID=_reportingParentID;
 @property (strong, nonatomic) AVCStatisticsCollector *statisticsCollector; // @synthesize statisticsCollector=_statisticsCollector;

@@ -24,6 +24,7 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (void)_addRequestForNotification:(id)arg1 codeType:(long long)arg2;
 - (void)_configureUserNotificationCenter;
 - (id)_notificationWithIdentifier:(id)arg1;
 - (id)_userNotificationCenterForCodeType:(long long)arg1;

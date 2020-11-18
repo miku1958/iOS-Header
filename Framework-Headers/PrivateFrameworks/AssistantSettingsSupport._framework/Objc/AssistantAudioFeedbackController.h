@@ -22,9 +22,14 @@
 - (id)_localizeTriggerString:(id)arg1;
 - (void)_refreshFooterForSpecifier:(id)arg1;
 - (void)_updateSpecifiersFromPreferences;
+- (id)alwaysShowRecognizedSpeech;
 - (id)footerVariant;
+- (id)isAlwaysPrintSiriResponseEnabled:(id)arg1;
 - (void)preferencesDidChange:(id)arg1;
+- (void)setAlwaysPrintSiriResponseEnabled:(id)arg1 forSpecifier:(id)arg2;
+- (void)setAlwaysShowRecognizedSpeech:(id)arg1 forSpecifier:(id)arg2;
 - (id)specifiers;
+- (id)tableView:(id)arg1 cellForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;

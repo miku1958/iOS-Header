@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSLock, NSString;
 
 @interface CTCategories : NSObject
 {
     NSString *_indexVersionId;
+    NSLock *_lookupLock;
 }
 
 @property (readonly, copy) NSArray *availableCategoryIDs;
@@ -18,6 +19,7 @@
 + (long long)currentIOSDevice;
 + (void)initialize;
 + (id)sharedCategories;
++ (id)supportedWebBrowserBundleIdentifiersForDeviceFamily:(long long)arg1;
 + (id)systemBlockableBundleIdentifiers;
 + (id)systemBlockableBundleIdentifiersForDeviceFamily:(long long)arg1;
 + (id)systemBundleIdentifiers;

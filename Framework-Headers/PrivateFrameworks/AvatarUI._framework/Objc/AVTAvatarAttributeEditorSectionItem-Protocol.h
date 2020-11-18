@@ -10,7 +10,7 @@
 
 @protocol AVTAvatarAttributeEditorSectionItem <NSObject>
 
-@property (readonly, copy, nonatomic) CDUnknownBlockType avatarUpdater;
+@property (readonly, copy, nonatomic) NSString *identifier;
 @property (readonly, copy, nonatomic) NSString *localizedName;
 @property (nonatomic, getter=isSelected) BOOL selected;
 

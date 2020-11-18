@@ -19,7 +19,6 @@
 #import <UIKitCore/UITextPasteConfigurationSupporting-Protocol.h>
 #import <UIKitCore/UITextPasteConfigurationSupporting_Internal-Protocol.h>
 #import <UIKitCore/UIViewGhostedRangeSupporting-Protocol.h>
-#import <UIKitCore/_UICursorInteractionDelegate-Protocol.h>
 #import <UIKitCore/_UILayoutBaselineUpdating-Protocol.h>
 #import <UIKitCore/_UIMultilineTextContentSizing-Protocol.h>
 #import <UIKitCore/_UITextContainerViewDelegate-Protocol.h>
@@ -32,7 +31,7 @@
 @class CUICatalog, NSAttributedString, NSDictionary, NSIndexSet, NSLayoutManager, NSString, NSTextContainer, NSTextStorage, UIAutoscroll, UIColor, UIDragInteraction, UIDropInteraction, UIFont, UIImage, UIInputContextHistory, UILabel, UILayoutManagerBasedDraggableGeometry, UIPasteConfiguration, UITextInputController, UITextInputPasswordRules, UITextInputTraits, UITextInteractionAssistant, UITextPosition, UITextRange, UIView, _UICharacterStreamingManager, _UITextContainerView, _UITextItemDiscoverer, _UITextLayoutView, _UITextSizeCache, _UITextViewContentPadding, _UITextViewRestorableScrollPosition, _UITextViewVisualStyle;
 @protocol UICoordinateSpace, UITextDragDelegate, UITextDragDropSupport, UITextDropDelegate, UITextInputDelegate, UITextInputTokenizer, UITextPasteDelegate, UITextViewDelegate;
 
-@interface UITextView : UIScrollView <_UIViewBaselineSpacing, _UITextContainerViewDelegate, _UITextViewContentPaddingDelegate, UITextInputControllerDelegate, UITextAutoscrolling, UIKeyboardInput, UITextInputTraits_Private, _UIMultilineTextContentSizing, _UILayoutBaselineUpdating, UIViewGhostedRangeSupporting, _UITextItemInteracting, UITextPasteConfigurationSupporting_Internal, UITextDragSupporting, UITextDropSupporting, _UICursorInteractionDelegate, _UITextContent, _UITextItemDiscoverable, UITextDraggable, UITextDroppable, UITextPasteConfigurationSupporting, UITextInput, UIContentSizeCategoryAdjusting>
+@interface UITextView : UIScrollView <_UIViewBaselineSpacing, _UITextContainerViewDelegate, _UITextViewContentPaddingDelegate, UITextInputControllerDelegate, UITextAutoscrolling, UIKeyboardInput, UITextInputTraits_Private, _UIMultilineTextContentSizing, _UILayoutBaselineUpdating, UIViewGhostedRangeSupporting, _UITextItemInteracting, UITextPasteConfigurationSupporting_Internal, UITextDragSupporting, UITextDropSupporting, _UITextContent, _UITextItemDiscoverable, UITextDraggable, UITextDroppable, UITextPasteConfigurationSupporting, UITextInput, UIContentSizeCategoryAdjusting>
 {
     NSTextStorage *_textStorage;
     NSTextContainer *_textContainer;
@@ -66,6 +65,8 @@
     unsigned long long _dataDetectorTypes;
     double _preferredMaxLayoutWidth;
     UILabel *_placeholderLabel;
+    NSAttributedString *_overriddenPlaceholder;
+    long long _overriddenPlaceholderAlignment;
     UIView *_inputAccessoryView;
     NSDictionary *_linkTextAttributes;
     _UICharacterStreamingManager *_characterStreamingManager;
@@ -102,6 +103,7 @@
 @property (nonatomic) BOOL acceptsDictationSearchResults;
 @property (nonatomic) BOOL acceptsEmoji;
 @property (nonatomic) BOOL acceptsFloatingKeyboard;
+@property (nonatomic) BOOL acceptsInitialEmojiKeyboard;
 @property (nonatomic) BOOL acceptsPayloads;
 @property (nonatomic) BOOL acceptsSplitKeyboard;
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
@@ -163,6 +165,7 @@
 @property (copy, nonatomic) UITextInputPasswordRules *passwordRules;
 @property (copy, nonatomic) UIPasteConfiguration *pasteConfiguration; // @dynamic pasteConfiguration;
 @property (weak, nonatomic) id<UITextPasteDelegate> pasteDelegate; // @synthesize pasteDelegate=_pasteDelegate;
+@property (nonatomic) BOOL preferOnlineDictation;
 @property (copy, nonatomic) NSString *recentInputIdentifier;
 @property (copy, nonatomic) NSString *responseContext;
 @property (nonatomic) BOOL returnKeyGoesToNextResponder;
@@ -219,6 +222,7 @@
 + (id)_defaultTextColor;
 + (BOOL)_isCompatibilityTextView;
 - (void).cxx_destruct;
+- (id)_activityItemsConfigurationAtLocation:(struct CGPoint)arg1;
 - (void)_addShortcut:(id)arg1;
 - (void)_adjustFontForAccessibilityTraits:(BOOL)arg1;
 - (BOOL)_allowAnimatedUpdateSelectionRectViews;
@@ -245,6 +249,7 @@
 - (double)_currentPreferredMaxLayoutWidth;
 - (long long)_defaultTextPreviewOptions;
 - (void)_define:(id)arg1;
+- (BOOL)_delegatesAllowingTextItemInteractions;
 - (void)_deleteBackwardAndNotify:(BOOL)arg1;
 - (void)_diagnoseFocusabilityForReport:(id)arg1;
 - (void)_didFinishSpeechRecognition;
@@ -277,6 +282,7 @@
 - (BOOL)_isDisplayingShareViewController;
 - (BOOL)_isDisplayingShortcutViewController;
 - (BOOL)_isInteractiveTextSelectionDisabled;
+- (BOOL)_isSystemAttachment:(id)arg1;
 - (BOOL)_isTextSizeCacheEnabled;
 - (void)_keyboardDidShow:(id)arg1;
 - (struct CGPoint)_lastGlyphBaselineLeftPointWithLayoutManager:(id)arg1;
@@ -302,6 +308,7 @@
 - (Class)_printFormatterClass;
 - (void)_promptForReplace:(id)arg1;
 - (struct CGRect)_rectForScrollToVisible:(struct _NSRange)arg1;
+- (struct CGRect)_rectToScrollToVisibleInCellInWindow:(id)arg1;
 - (void)_registerUndoOperationForReplacementWithActionName:(id)arg1 replacementText:(id)arg2;
 - (void)_resetDataDetectorsResults;
 - (void)_resetUsesExplicitPreferredMaxLayoutWidth;
@@ -331,6 +338,7 @@
 - (void)_setInteractiveTextSelectionDisabled:(BOOL)arg1;
 - (void)_setMultilineContextWidth:(double)arg1;
 - (void)_setNeedsTextLayout;
+- (void)_setOverridePlaceholder:(id)arg1 alignment:(long long)arg2;
 - (void)_setPreferredMaxLayoutWidth:(double)arg1;
 - (void)_setSiriAnimationDictationStyleWithCharacterInsertionRate:(double)arg1 minimumDurationBetweenHypotheses:(double)arg2;
 - (void)_setTextColor:(id)arg1;
@@ -348,6 +356,7 @@
 - (void)_startDataDetectors;
 - (void)_startDataDetectorsIfNeeded;
 - (void)_syncTypingAttributesToTextContainerAttributesForExtraLineFragment;
+- (id)_systemDefaultFocusGroupDescriptor;
 - (id)_targetedPreviewForTextInteractableItem:(id)arg1 dismissing:(BOOL)arg2;
 - (void)_textContainerSizeDidChange:(id)arg1;
 - (id)_textGeometry;
@@ -371,6 +380,7 @@
 - (struct _NSRange)_visibleRangeWithLayout:(BOOL)arg1;
 - (BOOL)_wantsBaselineUpdatingFollowingConstraintsPass;
 - (id)_whitelistedTypingAttributes;
+- (struct CGRect)accessibilityFrame;
 - (void)addGhostedRange:(id)arg1;
 - (void)addInvisibleRange:(id)arg1;
 - (void)addSnapshotSeparation:(double)arg1 withAffinity:(long long)arg2;
@@ -406,10 +416,6 @@
 - (id)closestPositionToPoint:(struct CGPoint)arg1 withinRange:(id)arg2;
 - (long long)comparePosition:(id)arg1 toPosition:(id)arg2;
 - (void)copy:(id)arg1;
-- (id)cursorInteraction:(id)arg1 regionForLocation:(struct CGPoint)arg2 defaultRegion:(id)arg3;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
-- (void)cursorInteraction:(id)arg1 willEnterRegion:(id)arg2;
-- (void)cursorInteraction:(id)arg1 willExitRegion:(id)arg2;
 - (void)cut:(id)arg1;
 - (void)dealloc;
 - (void)decodeRestorableStateWithCoder:(id)arg1;
@@ -532,6 +538,7 @@
 - (void)textInputDidAnimatePaste:(id)arg1;
 - (void)textInputDidChange:(id)arg1;
 - (void)textInputDidChangeSelection:(id)arg1;
+- (BOOL)textInputShouldExtendCaretHeight:(id)arg1;
 - (void)textInputWillAnimatePaste:(id)arg1;
 - (id)textItemsOfType:(long long)arg1 inTextRange:(id)arg2;
 - (id)textRangeFromPosition:(id)arg1 toPosition:(id)arg2;

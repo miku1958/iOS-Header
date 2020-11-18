@@ -12,19 +12,20 @@
 
 @interface TSAppDelegate : UIResponder <UIApplicationDelegate>
 {
-    MISSING_TYPE *resolver;
+    MISSING_TYPE *$__lazy_storage_$_resolverManager;
+    MISSING_TYPE *$__lazy_storage_$_resolvers;
     MISSING_TYPE *window;
-    MISSING_TYPE *windowToolbarManager;
-    MISSING_TYPE *sessionObserver;
+    MISSING_TYPE *swiftSingletonPool;
+    MISSING_TYPE *objcSingletonPool;
     MISSING_TYPE *$__lazy_storage_$_menuManager;
+    MISSING_TYPE *$__lazy_storage_$_commandCenter;
+    MISSING_TYPE *$__lazy_storage_$_tracker;
 }
 
 @property (nonatomic, strong) UIWindow *window; // @synthesize window;
 
 - (void).cxx_destruct;
 - (void)bootstrapWithApplication:(id)arg1;
-- (void)bootstrapWithContainer:(id)arg1 application:(id)arg2;
-- (void)bootstrapWithWindow:(id)arg1 application:(id)arg2;
 - (id)init;
 
 @end

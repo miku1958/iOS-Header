@@ -36,6 +36,7 @@
 + (id)sharedController;
 - (void).cxx_destruct;
 - (void)_cachedSettingsDidChange;
+- (void)_cachedSettingsDidChangeAndWriteImmediately:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_captureDevicesAreAllDefaultsGivenPermission:(unsigned long long)arg1;
 - (id)_dictionaryRepresentation;
 - (void)_dispatchAsyncOnInternalQueue:(CDUnknownBlockType)arg1;
@@ -78,8 +79,10 @@
 - (long long)preferencesStoreKeyForPreference:(id)arg1;
 - (void)reloadPreferences;
 - (void)removeAllOriginsAddedAfterDate:(id)arg1;
+- (void)removeAllPermissionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removePreferenceValuesForDomains:(id)arg1 fromPreference:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)resetOriginPermissions;
+- (void)resetOriginPermissionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)saltForOrigin:(id)arg1 topLevelOrigin:(id)arg2 frameIdentifier:(unsigned long long)arg3;
 - (void)savePendingChangesBeforeTermination;
 - (void)savePendingChangesWithCompletionHandler:(CDUnknownBlockType)arg1;

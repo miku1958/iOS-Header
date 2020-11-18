@@ -59,7 +59,7 @@ __attribute__((visibility("hidden")))
 - (id)renderAvatarWithPoseWithSize:(double)arg1;
 - (id)renderDefaultAvatarImage;
 - (BOOL)shouldShowCaption;
-- (void)updateContact:(id)arg1;
+- (void)updateVisualIdentity:(id)arg1;
 - (id)variantIdentifier;
 
 @end

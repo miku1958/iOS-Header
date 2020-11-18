@@ -9,12 +9,10 @@
 #import <AppSSO/SORemoteExtensionServiceProtocol-Protocol.h>
 
 @class NSString, NSXPCConnection, NSXPCListenerEndpoint;
-@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface SOExtensionServiceConnection : NSObject <SORemoteExtensionServiceProtocol>
 {
-    NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_xpcConnection;
     NSXPCListenerEndpoint *_serviceXpcEndpoint;
 }

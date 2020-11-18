@@ -6,29 +6,46 @@
 
 #import <UIKit/UITableViewController.h>
 
-#import <SafariServices/SFEditableTableViewCellDelegate-Protocol.h>
+#import <SafariServices/ASAccountAuthenticationModificationControllerDelegate-Protocol.h>
+#import <SafariServices/ASAccountAuthenticationModificationControllerPresentationContextProviding-Protocol.h>
+#import <SafariServices/PSStateRestoration-Protocol.h>
+#import <SafariServices/UITextFieldDelegate-Protocol.h>
+#import <SafariServices/_ASAccountAuthenticationModificationExtensionManagerObserver-Protocol.h>
 #import <SafariServices/_SFTableViewDiffableDataSourceDelegate-Protocol.h>
 
-@class NSArray, NSString, SFEditableTableViewCell, SFSafariViewController, UIBarButtonItem, UITableViewCell, WBSPasswordEvaluation, WBSSavedPassword, _SFTableViewDiffableDataSource;
-@protocol SFPasswordDetailViewControllerDelegate;
+@class ASAccountAuthenticationModificationController, NSExtension, NSObject, NSString, SFEditableTableViewCell, SFSafariViewController, SFSecurityRecommendationInfoCell, UIBarButtonItem, UITableViewCell, WBSPasswordWarning, WBSSavedPassword, _SFTableViewDiffableDataSource;
+@protocol OS_dispatch_queue, SFPasswordDetailViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface SFPasswordDetailViewController : UITableViewController <_SFTableViewDiffableDataSourceDelegate, SFEditableTableViewCellDelegate>
+@interface SFPasswordDetailViewController : UITableViewController <_ASAccountAuthenticationModificationExtensionManagerObserver, ASAccountAuthenticationModificationControllerDelegate, ASAccountAuthenticationModificationControllerPresentationContextProviding, UITextFieldDelegate, _SFTableViewDiffableDataSourceDelegate, PSStateRestoration>
 {
     WBSSavedPassword *_savedPassword;
-    NSArray *_reusedSavedPasswords;
-    BOOL _hidesPassword;
+    BOOL _hidesSensitiveInformation;
     unsigned long long _options;
     UIBarButtonItem *_editBarButtonItem;
+    UIBarButtonItem *_shareBarButtonItem;
     UIBarButtonItem *_cancelBarButtonItem;
     UIBarButtonItem *_doneBarButtonItem;
     UIBarButtonItem *_backBarButtonItem;
     SFEditableTableViewCell *_userCell;
     SFEditableTableViewCell *_passwordCell;
-    UITableViewCell *_changePasswordCell;
+    NSString *_userForEditing;
+    NSString *_passwordForEditing;
+    UITableViewCell *_changePasswordOnWebsiteCell;
     _SFTableViewDiffableDataSource *_tableViewDiffableDataSource;
+    NSObject<OS_dispatch_queue> *_diffableDataSourceQueue;
+    SFSecurityRecommendationInfoCell *_securityRecommendationInfoCell;
+    WBSPasswordWarning *_passwordWarning;
     SFSafariViewController *_changePasswordSafariViewController;
-    WBSPasswordEvaluation *_passwordEvaluation;
+    UITableViewCell *_upgradeToSignInWithAppleCell;
+    UITableViewCell *_changeToStrongPasswordCell;
+    NSString *_rulesForStrongPasswordChange;
+    NSExtension *_accountModificationExtension;
+    BOOL _eligibleToChangeToStrongPassword;
+    BOOL _eligibleToUpgradeToSignInWithApple;
+    BOOL _completedUpgradeToStrongPassword;
+    BOOL _completedUpgradeToSignInWithApple;
+    ASAccountAuthenticationModificationController *_accountAuthenticationModificationController;
     BOOL _showsChangePasswordControllerOnAppearance;
     id<SFPasswordDetailViewControllerDelegate> _delegate;
 }
@@ -47,28 +64,48 @@ __attribute__((visibility("hidden")))
 - (void)_appWillResignActive:(id)arg1;
 - (void)_cancelBarButtonItemTapped:(id)arg1;
 - (id)_cellForIdentifier:(id)arg1 indexPath:(id)arg2;
-- (void)_configureCell:(id)arg1 withText:(id)arg2 detailText:(id)arg3 detailPlaceholderText:(id)arg4;
+- (void)_completedSignInWithAppleUpgrade;
+- (void)_completedStrongPasswordUpgrade;
+- (BOOL)_completedUpgrade;
+- (void)_configureCell:(id)arg1 withText:(id)arg2 detailText:(id)arg3 detailPlaceholderText:(id)arg4 secureEntry:(BOOL)arg5;
 - (void)_configurePasswordCell:(id)arg1;
+- (void)_configureSecurityRecommendationInfoCell;
 - (void)_configureUserCell:(id)arg1;
+- (id)_deletePasswordCellForTableView:(id)arg1;
 - (void)_doneBarButtonItemTapped:(id)arg1;
 - (void)_editBarButtonItemTapped:(id)arg1;
 - (id)_editableCellWithCell:(id)arg1;
+- (void)_initiateChangeToStrongPassword;
+- (void)_initiateUpgradeToSignInWithApple;
 - (long long)_itemTypeForIdentifier:(id)arg1;
 - (id)_lastModifiedDateString;
 - (id)_passwordAuditor;
 - (id)_passwordEvaluator;
+- (id)_passwordGenerator;
 - (void)_passwordStoreDidUpdate;
-- (void)_reloadTableViewDiffableDataSource;
+- (id)_passwordWarningManager;
+- (void)_reloadDiffableDataSourceAnimated:(BOOL)arg1;
+- (void)_reloadDiffableDataSourceOnInternalQueueAnimated:(BOOL)arg1;
+- (void)_savePasswordAndFinishEditing;
 - (id)_savedPasswordWebsiteCellForTableView:(id)arg1 atIndexPath:(id)arg2;
 - (long long)_sectionTypeForSection:(long long)arg1;
+- (id)_securityRecommendationSubtitleString;
 - (void)_setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)_setHighLyLegibleFontForDetailTextInCell:(id)arg1;
-- (void)_sharePasswordFromCell:(id)arg1;
+- (void)_shareBarButtonItemTapped:(id)arg1;
+- (void)_sharePasswordWithPopoverPresentationControllerConfiguration:(CDUnknownBlockType)arg1;
 - (void)_showChangePasswordSafariViewController;
+- (void)_showConfirmationToDeletePassword;
 - (void)_textFieldChanged:(id)arg1;
+- (void)_updateAccountModificationOptions;
 - (void)_updateMenuItems;
-- (id)_warningFooterText;
+- (void)_updateWarningForSavedPassword;
+- (id)_warningTitleForPassword;
 - (void)_willHideUIMenuController:(id)arg1;
+- (void)accountAuthenticationModificationController:(id)arg1 didFailRequest:(id)arg2 withError:(id)arg3;
+- (void)accountAuthenticationModificationController:(id)arg1 didSuccessfullyCompleteRequest:(id)arg2 withUserInfo:(id)arg3;
+- (void)accountModificationExtensionManagerExtensionListDidChange:(id)arg1;
+- (BOOL)canBeShownFromSuspendedState;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canPerformAction:(SEL)arg1 withSender:(id)arg2;
 - (void)dataSource:(id)arg1 commitEditingStyle:(long long)arg2 forItemIdentifier:(id)arg3;
@@ -76,20 +113,23 @@ __attribute__((visibility("hidden")))
 - (id)dataSource:(id)arg1 headerTextForSection:(long long)arg2;
 - (void)dealloc;
 - (id)initWithSavedPassword:(id)arg1 options:(unsigned long long)arg2;
-- (void)performAirDropActionForCell:(id)arg1;
+- (id)presentationAnchorForAccountAuthenticationModificationController:(id)arg1;
 - (void)safari_copyPassword:(id)arg1;
 - (void)safari_copyUserName:(id)arg1;
 - (void)safari_sharePassword:(id)arg1;
-- (BOOL)tableView:(id)arg1 canPerformAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 estimatedHeightForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 performAction:(SEL)arg2 forRowAtIndexPath:(id)arg3 withSender:(id)arg4;
 - (BOOL)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 shouldShowMenuForRowAtIndexPath:(id)arg2;
+- (void)textFieldDidEndEditing:(id)arg1;
+- (BOOL)textFieldShouldReturn:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

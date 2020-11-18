@@ -7,6 +7,7 @@
 #import <CloudKitDaemon/CKDOperation.h>
 
 @class NSArray;
+@protocol CKFetchWhitelistedBundleIDsOperationCallbacks;
 
 __attribute__((visibility("hidden")))
 @interface CKDFetchWhitelistedBundleIDsOperation : CKDOperation
@@ -15,13 +16,13 @@ __attribute__((visibility("hidden")))
 }
 
 @property (copy, nonatomic) NSArray *bundleIDs; // @synthesize bundleIDs=_bundleIDs;
+@property (strong, nonatomic) id<CKFetchWhitelistedBundleIDsOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 
 - (void).cxx_destruct;
 - (id)activityCreate;
-- (void)fillOutOperationResult:(id)arg1;
 - (id)initWithOperationInfo:(id)arg1 clientContext:(id)arg2;
 - (void)main;
-- (Class)operationResultClass;
+- (int)operationType;
 
 @end
 

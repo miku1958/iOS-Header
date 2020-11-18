@@ -20,15 +20,18 @@
     BOOL _gestureDetected;
     BOOL _ignoreFingerTouchesUntilReset;
     id<PKDrawingGestureTarget> drawingTarget;
+    unsigned long long _activeInputProperties;
     UITouch *_drawingTouch;
 }
 
+@property (readonly, nonatomic) unsigned long long activeInputProperties; // @synthesize activeInputProperties=_activeInputProperties;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<PKDrawingGestureRecognizerDelegate> delegate; // @dynamic delegate;
 @property (readonly, copy) NSString *description;
 @property (weak, nonatomic) id<PKDrawingGestureTarget> drawingTarget; // @synthesize drawingTarget;
 @property (strong, nonatomic) UITouch *drawingTouch; // @synthesize drawingTouch=_drawingTouch;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isReplaying;
 @property (readonly) Class superclass;
 @property (nonatomic) double thresholdDistance; // @synthesize thresholdDistance=_thresholdDistance;
 

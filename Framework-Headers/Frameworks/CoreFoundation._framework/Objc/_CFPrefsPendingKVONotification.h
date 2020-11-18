@@ -14,10 +14,6 @@ __attribute__((visibility("hidden")))
     id values;
 }
 
-@property (strong) id oldValues; // @synthesize oldValues;
-@property (strong) NSObject *source; // @synthesize source;
-@property (strong) id values; // @synthesize values;
-
 - (void)dealloc;
 
 @end

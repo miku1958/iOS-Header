@@ -12,6 +12,7 @@
 {
     BOOL _selectable;
     BOOL _showsLastPlayedStatusText;
+    BOOL _showsMessagesHandleInStatusText;
     UIImageView *_selectionView;
     UIButton *_selectionButton;
     NSLayoutConstraint *_nameConstraint;
@@ -34,6 +35,7 @@
 @property (nonatomic) NSLayoutConstraint *selectionVerticalConstraint; // @synthesize selectionVerticalConstraint=_selectionVerticalConstraint;
 @property (nonatomic) UIImageView *selectionView; // @synthesize selectionView=_selectionView;
 @property (nonatomic) BOOL showsLastPlayedStatusText; // @synthesize showsLastPlayedStatusText=_showsLastPlayedStatusText;
+@property (nonatomic) BOOL showsMessagesHandleInStatusText; // @synthesize showsMessagesHandleInStatusText=_showsMessagesHandleInStatusText;
 @property (nonatomic) NSLayoutConstraint *statusHeightConstraint; // @synthesize statusHeightConstraint=_statusHeightConstraint;
 @property (nonatomic) double statusInitialConstant; // @synthesize statusInitialConstant=_statusInitialConstant;
 

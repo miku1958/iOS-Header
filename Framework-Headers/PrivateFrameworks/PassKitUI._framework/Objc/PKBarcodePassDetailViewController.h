@@ -49,7 +49,7 @@
 }
 
 @property (readonly, copy) NSString *debugDescription;
-@property (nonatomic) id<PKPassDeleteHandler> deleteOverrider; // @synthesize deleteOverrider=_deleteOverrider;
+@property (weak, nonatomic) id<PKPassDeleteHandler> deleteOverrider; // @synthesize deleteOverrider=_deleteOverrider;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) PKPass *pass; // @synthesize pass=_pass;
@@ -57,8 +57,6 @@
 @property (readonly) Class superclass;
 @property (nonatomic) unsigned long long suppressedContent; // @synthesize suppressedContent=_suppressedContent;
 
-+ (id)_linkColor;
-+ (id)_linkTextAttributes;
 + (BOOL)isWifiEnabled;
 - (void).cxx_destruct;
 - (id)_automaticSelectionCell;
@@ -72,8 +70,8 @@
 - (id)_fieldForRow:(unsigned long long)arg1;
 - (BOOL)_isBluetoothEnabled;
 - (BOOL)_linkedAppAvailable;
+- (id)_locationHelpTextWithLink:(id *)arg1 linkRange:(struct _NSRange *)arg2;
 - (id)_locationHelpViewForTableView:(id)arg1;
-- (id)_locationRelevancyHelpText;
 - (unsigned long long)_numberOfAvailableSettings;
 - (double)_offscreenHeaderHeight;
 - (void)_passSettingsChanged:(id)arg1;

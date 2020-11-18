@@ -9,13 +9,14 @@
 #import <SpringBoard/SBHomeGestureDockSwitcherModifierDelegate-Protocol.h>
 #import <SpringBoard/SBHomeGestureFinalDestinationSwitcherModifierDelegate-Protocol.h>
 
-@class NSString, SBAppLayout, SBCoplanarSwitcherModifier, SBHomeGestureDockSwitcherModifier, SBHomeGestureFinalDestinationSwitcherModifier;
+@class NSString, SBAppLayout, SBCoplanarSwitcherModifier, SBDismissSiriSwitcherModifier, SBHomeGestureDockSwitcherModifier, SBHomeGestureFinalDestinationSwitcherModifier;
 
 @interface SBReduceMotionHomeGestureSwitcherModifier : SBGestureSwitcherModifier <SBHomeGestureDockSwitcherModifierDelegate, SBHomeGestureFinalDestinationSwitcherModifierDelegate>
 {
     SBCoplanarSwitcherModifier *_coplanarLayoutModifier;
     SBHomeGestureDockSwitcherModifier *_dockModifier;
     SBHomeGestureFinalDestinationSwitcherModifier *_finalDestinationModifier;
+    SBDismissSiriSwitcherModifier *_dismissSiriModifier;
     SBAppLayout *_selectedAppLayout;
     long long _startingEnvironmentMode;
     BOOL _continuingGesture;
@@ -39,40 +40,39 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (id)_actionForActivatingFinalDestination:(long long)arg1;
 - (void)_applyPrototypeSettings;
+- (id)_newDockModifierRequiringVerticalSwipeToTrackDock:(BOOL)arg1 startingEnvironmentMode:(long long)arg2;
+- (id)_responseForActivatingFinalDestination:(long long)arg1;
 - (id)_updateForGestureDidBeginWithEvent:(id)arg1;
 - (id)_updateForGestureDidChangeWithEvent:(id)arg1;
 - (id)_updateForGestureDidEndWithEvent:(id)arg1;
 - (void)_updateGestureTranslationAndVelocityWithEvent:(id)arg1;
 - (id)_updateReduceMotionAxisIfNecessaryWithEvent:(id)arg1;
 - (void)_updateTranslationAdjustmentForGestureFromHomeScreenIfNeededWithEvent:(id)arg1;
-- (long long)backdropBlurType;
+- (id)appLayoutsToCacheFullsizeSnapshots;
+- (id)appLayoutsToCacheSnapshots;
+- (id)appLayoutsToResignActive;
 - (struct UIRectCornerRadii)cardCornerRadiiForIndex:(unsigned long long)arg1;
 - (long long)currentFinalDestination;
 - (void)didMoveToParentModifier:(id)arg1;
 - (struct CGRect)frameForIndex:(unsigned long long)arg1;
-- (struct _NSRange)fullSizeSnapshotsRange;
 - (id)handleGestureEvent:(id)arg1;
 - (id)handleHomeGestureSettingsChangedEvent:(id)arg1;
 - (id)handleMainTransitionEvent:(id)arg1;
-- (id)initWithGestureID:(id)arg1 selectedAppLayout:(id)arg2 startingEnvironmentMode:(long long)arg3 continuingGesture:(BOOL)arg4 lastGestureWasAnArcSwipe:(BOOL)arg5;
+- (long long)homeScreenBackdropBlurType;
+- (id)initWithGestureID:(id)arg1 selectedAppLayout:(id)arg2 startingEnvironmentMode:(long long)arg3 scrunchInitiated:(BOOL)arg4 continuingGesture:(BOOL)arg5 lastGestureWasAnArcSwipe:(BOOL)arg6;
 - (BOOL)isHomeScreenContentRequired;
-- (BOOL)isIndexVisible:(unsigned long long)arg1;
 - (BOOL)isSwitcherWindowUserInteractionEnabled;
 - (BOOL)isSwitcherWindowVisible;
 - (BOOL)isWallpaperRequiredForSwitcher;
-- (long long)keyboardSuppressionMode;
-- (long long)liveContentRasterizationStyle;
-- (unsigned long long)numberOfAppLayoutsToCacheSnapshots;
+- (id)keyboardSuppressionMode;
+- (id)liveContentRasterizationAttributesForAppLayout:(id)arg1;
 - (double)opacityForIndex:(unsigned long long)arg1;
 - (double)scaleForIndex:(unsigned long long)arg1;
-- (long long)sceneDeactivationReason;
-- (BOOL)shouldRubberbandHomeGrabberView;
+- (BOOL)shouldRubberbandFullScreenHomeGrabberView;
 - (double)unconditionalDistanceThresholdForHome;
+- (id)visibleAppLayouts;
 - (long long)wallpaperStyle;
-- (BOOL)wantsMinificationFilter;
-- (BOOL)wantsResignActiveAssertion;
 
 @end
 

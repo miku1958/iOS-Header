@@ -16,6 +16,7 @@
 @property (copy, nonatomic) CDUnknownBlockType unitTest_queryServerWillSendBatchHandler; // @synthesize unitTest_queryServerWillSendBatchHandler=_unitTest_queryServerWillSendBatchHandler;
 
 - (void).cxx_destruct;
+- (CDUnknownBlockType)_processBatchHandlerForResearchAppECGAccess:(CDUnknownBlockType)arg1;
 - (long long)batchObjectsWithEnumerator:(id)arg1 error:(id *)arg2 handler:(CDUnknownBlockType)arg3;
 - (long long)batchObjectsWithEnumerator:(id)arg1 includeDeletedObjects:(BOOL)arg2 error:(id *)arg3 batchHandler:(CDUnknownBlockType)arg4;
 

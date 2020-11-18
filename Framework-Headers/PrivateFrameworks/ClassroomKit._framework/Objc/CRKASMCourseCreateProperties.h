@@ -21,6 +21,7 @@
 @property (copy, nonatomic) CRKASMCourseUpdateProperties *updateProperties; // @synthesize updateProperties=_updateProperties;
 
 - (void).cxx_destruct;
+- (BOOL)areFulfilledByCourse:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 
 @end

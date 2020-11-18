@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class NSMutableArray, NSString, PBDataReader, PBUnknownFields;
+@class GEOStyleAttributes, NSMutableArray, NSString, PBDataReader, PBUnknownFields;
 
 __attribute__((visibility("hidden")))
 @interface GEOPDSSearchResultSection : PBCodable <NSCopying>
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_resolvedItems;
     NSString *_sectionHeaderDisplayName;
     NSString *_sectionSubHeaderDisplayName;
+    GEOStyleAttributes *_styleAttributes;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -30,12 +31,8 @@ __attribute__((visibility("hidden")))
         unsigned int read_resolvedItems:1;
         unsigned int read_sectionHeaderDisplayName:1;
         unsigned int read_sectionSubHeaderDisplayName:1;
-        unsigned int wrote_unknownFields:1;
-        unsigned int wrote_resolvedItems:1;
-        unsigned int wrote_sectionHeaderDisplayName:1;
-        unsigned int wrote_sectionSubHeaderDisplayName:1;
-        unsigned int wrote_searchResultSectionCellType:1;
-        unsigned int wrote_searchResultSectionType:1;
+        unsigned int read_styleAttributes:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -43,11 +40,13 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL hasSearchResultSectionType;
 @property (readonly, nonatomic) BOOL hasSectionHeaderDisplayName;
 @property (readonly, nonatomic) BOOL hasSectionSubHeaderDisplayName;
+@property (readonly, nonatomic) BOOL hasStyleAttributes;
 @property (strong, nonatomic) NSMutableArray *resolvedItems;
 @property (nonatomic) int searchResultSectionCellType;
 @property (nonatomic) int searchResultSectionType;
 @property (strong, nonatomic) NSString *sectionHeaderDisplayName;
 @property (strong, nonatomic) NSString *sectionSubHeaderDisplayName;
+@property (strong, nonatomic) GEOStyleAttributes *styleAttributes;
 @property (readonly, nonatomic) PBUnknownFields *unknownFields;
 
 + (BOOL)isValid:(id)arg1;
@@ -55,10 +54,6 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (int)StringAsSearchResultSectionCellType:(id)arg1;
 - (int)StringAsSearchResultSectionType:(id)arg1;
-- (void)_addNoFlagsResolvedItem:(id)arg1;
-- (void)_readResolvedItems;
-- (void)_readSectionHeaderDisplayName;
-- (void)_readSectionSubHeaderDisplayName;
 - (void)addResolvedItem:(id)arg1;
 - (void)clearResolvedItems;
 - (void)clearUnknownFields:(BOOL)arg1;
@@ -69,7 +64,10 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

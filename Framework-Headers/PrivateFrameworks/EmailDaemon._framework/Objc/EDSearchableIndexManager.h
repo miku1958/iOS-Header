@@ -31,9 +31,8 @@
 
 + (id)log;
 - (void).cxx_destruct;
-- (id)_filterInMessagesWithValidPersistentIDsFromMessages:(id)arg1;
 - (void)_removeAllItemsFromIndexAndWait:(BOOL)arg1 options:(unsigned long long)arg2;
-- (void)_removeItemsForIndexableMessages:(id)arg1;
+- (void)_removeItemsForPersistedMessages:(id)arg1;
 - (void)enableIndexingAndBeginScheduling:(BOOL)arg1;
 - (void)enableIndexingAndBeginScheduling:(BOOL)arg1 budgetConfiguration:(id)arg2;
 - (id)initWithDatabase:(id)arg1 hookResponder:(id)arg2;
@@ -47,6 +46,7 @@
 - (void)removeAllItemsFromIndexAndWait:(BOOL)arg1 skipInvalidation:(BOOL)arg2;
 - (void)scheduleRecurringActivity;
 - (void)setNeedsReindex;
+- (void)test_tearDown;
 
 @end
 

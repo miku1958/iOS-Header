@@ -6,12 +6,13 @@
 
 #import <objc/NSObject.h>
 
-#import <RunningBoardServices/BSXPCSecureCoding-Protocol.h>
 #import <RunningBoardServices/NSCopying-Protocol.h>
+#import <RunningBoardServices/NSSecureCoding-Protocol.h>
+#import <RunningBoardServices/RBSXPCSecureCoding-Protocol.h>
 
 @class NSString;
 
-@interface RBSProcessExitStatus : NSObject <BSXPCSecureCoding, NSCopying>
+@interface RBSProcessExitStatus : NSObject <RBSXPCSecureCoding, NSSecureCoding, NSCopying>
 {
     unsigned int _domain;
     unsigned long long _code;
@@ -24,26 +25,24 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (id)_nameForDomain:(unsigned int)arg1;
-+ (id)_nameForDomain:(unsigned int)arg1 code:(unsigned long long)arg2;
 + (id)statusWithDomain:(unsigned int)arg1 code:(unsigned long long)arg2;
-+ (BOOL)supportsBSXPCSecureCoding;
++ (BOOL)supportsRBSXPCSecureCoding;
++ (BOOL)supportsSecureCoding;
 - (id)_dictionaryRepresentation;
 - (id)_initWithDictionaryRepresentation:(id)arg1;
 - (BOOL)_isVoluntary;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
-- (id)descriptionWithMultilinePrefix:(id)arg1;
-- (void)encodeWithBSXPCCoder:(id)arg1;
+- (void)encodeWithCoder:(id)arg1;
+- (void)encodeWithRBSXPCCoder:(id)arg1;
 - (id)error;
-- (id)initWithBSXPCCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
+- (id)initWithRBSXPCCoder:(id)arg1;
 - (BOOL)isCrash;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isFairPlayFailure;
 - (BOOL)isJetsam;
 - (BOOL)isSignal;
 - (BOOL)isValid;
-- (id)succinctDescription;
-- (id)succinctDescriptionBuilder;
 
 @end
 

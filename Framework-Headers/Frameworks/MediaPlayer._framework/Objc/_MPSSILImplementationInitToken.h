@@ -8,11 +8,12 @@
 
 #import <MediaPlayer/MPExclusiveAccessToken-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface _MPSSILImplementationInitToken : NSObject <MPExclusiveAccessToken>
 {
 }
 
-- (void)assertHasExclusiveAccess;
+- (void)assertHasExclusiveAccessForOwner:(id)arg1;
 
 @end
 

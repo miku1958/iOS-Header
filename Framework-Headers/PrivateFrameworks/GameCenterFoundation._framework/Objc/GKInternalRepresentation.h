@@ -18,7 +18,7 @@
 + (id)internalRepresentation;
 + (id)secureCodedPropertyKeys;
 + (BOOL)supportsSecureCoding;
-- (id)_gkDescriptionWithChildren:(int)arg1;
+- (id)_gkDescriptionWithChildren:(long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)descriptionSubstitutionMap;

@@ -6,8 +6,8 @@
 
 #import <EmailDaemon/NSObject-Protocol.h>
 
-@class ECAngleBracketIDHash, ECMessageFlagChange, EDPersistenceDatabaseGenerationWindow, NSArray, NSData, NSSet, NSURL;
-@protocol ECMessage;
+@class ECMessageFlagChange, EDPersistenceDatabaseGenerationWindow, NSArray, NSData, NSSet, NSURL;
+@protocol ECMessage, EDPersistedMessage;
 
 @protocol EDMessageChangeHookResponder <NSObject>
 
@@ -16,13 +16,13 @@
 - (void)persistenceDidAddMessages:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceDidChangeConversationNotificationLevel:(long long)arg1 conversationID:(long long)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
 - (void)persistenceDidChangeFlags:(ECMessageFlagChange *)arg1 messages:(NSArray *)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
-- (void)persistenceDidChangeMessageIDHeaderHash:(ECAngleBracketIDHash *)arg1 oldConversationID:(long long)arg2 message:(id<ECMessage>)arg3 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg4;
+- (void)persistenceDidChangeGlobalMessageID:(long long)arg1 orConversationID:(long long)arg2 message:(id<EDPersistedMessage>)arg3 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg4;
 - (void)persistenceDidDeleteAllMessagesInMailboxesWithURLs:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceDidDeleteMessages:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
 - (void)persistenceDidFinishUpdates;
 - (void)persistenceDidReconcileJournaledMessages:(NSArray *)arg1 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg2;
-- (void)persistenceDidUpdateData:(NSData *)arg1 message:(id<ECMessage>)arg2;
-- (void)persistenceDidUpdateProperties:(NSArray *)arg1 message:(id<ECMessage>)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
+- (void)persistenceDidUpdateData:(NSData *)arg1 message:(id<EDPersistedMessage>)arg2;
+- (void)persistenceDidUpdateProperties:(NSArray *)arg1 message:(id<EDPersistedMessage>)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
 - (void)persistenceIsAddingMessages:(NSArray *)arg1 journaled:(BOOL)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
 - (void)persistenceIsChangingConversationID:(long long)arg1 messages:(NSArray *)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;
 - (void)persistenceIsChangingFlags:(ECMessageFlagChange *)arg1 messages:(NSArray *)arg2 generationWindow:(EDPersistenceDatabaseGenerationWindow *)arg3;

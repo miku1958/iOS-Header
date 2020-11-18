@@ -6,14 +6,13 @@
 
 #import <objc/NSObject.h>
 
-@class BMManagedObjectConverter, NSError, NSManagedObjectContext, NSPersistentContainer, NSURL;
+@class BMBehaviorDatabaseMetadata, BMManagedObjectConverter, NSManagedObjectContext, NSPersistentContainer, NSURL;
 
 @interface BMBehaviorStorage : NSObject
 {
-    struct os_unfair_lock_s _setupLock;
     BOOL _readOnly;
     NSURL *_URL;
-    NSError *_setupError;
+    BMBehaviorDatabaseMetadata *_metadata;
     NSPersistentContainer *_container;
     NSManagedObjectContext *_context;
     BMManagedObjectConverter *_converter;
@@ -23,18 +22,20 @@
 @property (strong, nonatomic) NSPersistentContainer *container; // @synthesize container=_container;
 @property (strong, nonatomic) NSManagedObjectContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) BMManagedObjectConverter *converter; // @synthesize converter=_converter;
+@property (strong, nonatomic) BMBehaviorDatabaseMetadata *metadata; // @synthesize metadata=_metadata;
 @property (readonly, nonatomic) BOOL readOnly; // @synthesize readOnly=_readOnly;
-@property (copy, nonatomic) NSError *setupError; // @synthesize setupError=_setupError;
 
 + (id)defaultURL;
 - (void).cxx_destruct;
-- (void)deleteAllWithError:(id *)arg1;
+- (id)description;
+- (id)fetchRulesWithAbsoluteSupport:(unsigned long long)arg1 support:(double)arg2 confidence:(double)arg3 conviction:(double)arg4 lift:(double)arg5 rulePowerFactor:(double)arg6 uniqueDaysLastWeek:(unsigned long long)arg7 uniqueDaysTotal:(unsigned long long)arg8 filters:(id)arg9 limit:(unsigned long long)arg10 error:(id *)arg11;
 - (id)fetchRulesWithSupport:(double)arg1 confidence:(double)arg2 filters:(id)arg3 error:(id *)arg4;
 - (id)fetchRulesWithSupport:(double)arg1 confidence:(double)arg2 filters:(id)arg3 limit:(unsigned long long)arg4 error:(id *)arg5;
 - (id)init;
 - (id)initWithURL:(id)arg1 readOnly:(BOOL)arg2;
+- (id)initWithURL:(id)arg1 readOnly:(BOOL)arg2 error:(id *)arg3;
+- (void)resetStorageWithMetadata:(id)arg1 error:(id *)arg2;
 - (void)saveRules:(id)arg1 error:(id *)arg2;
-- (void)setupStorage;
 
 @end
 

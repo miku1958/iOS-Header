@@ -10,13 +10,12 @@
 #import <WorkflowUI/UICollectionViewDelegate-Protocol.h>
 #import <WorkflowUI/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class NSArray, NSString, UICollectionView;
-@protocol WFActionDrawerAppsTableViewCellDelegate;
+@class NSArray, NSString, UICollectionView, WFActionDrawerCoordinator;
 
 @interface WFActionDrawerAppsTableViewCell : UITableViewCell <UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout>
 {
     NSArray *_appSections;
-    id<WFActionDrawerAppsTableViewCellDelegate> _delegate;
+    WFActionDrawerCoordinator *_coordinator;
     UICollectionView *_appsCollectionView;
     NSArray *_appItems;
 }
@@ -24,8 +23,8 @@
 @property (strong, nonatomic) NSArray *appItems; // @synthesize appItems=_appItems;
 @property (strong, nonatomic) NSArray *appSections; // @synthesize appSections=_appSections;
 @property (strong, nonatomic) UICollectionView *appsCollectionView; // @synthesize appsCollectionView=_appsCollectionView;
+@property (weak, nonatomic) WFActionDrawerCoordinator *coordinator; // @synthesize coordinator=_coordinator;
 @property (readonly, copy) NSString *debugDescription;
-@property (weak, nonatomic) id<WFActionDrawerAppsTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
@@ -35,7 +34,7 @@
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
-- (void)configureWithActionDrawerSections:(id)arg1;
+- (void)configureWithActionDrawerSections:(id)arg1 coordinator:(id)arg2;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 
 @end

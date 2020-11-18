@@ -35,7 +35,9 @@
 - (id)localizedPayloadSummaryByType;
 - (id)managedPayloads;
 - (id)payloads;
+- (id)serializedDictionary;
 - (id)stubDictionary;
+- (id)verboseDescription;
 
 @end
 

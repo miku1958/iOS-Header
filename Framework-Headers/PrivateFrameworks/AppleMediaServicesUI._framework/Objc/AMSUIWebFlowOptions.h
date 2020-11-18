@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     BOOL _animated;
     BOOL _deferredPresentation;
+    BOOL _initialLoad;
     BOOL _isReappear;
     NSString *_backgroundColor;
     AMSUIWebLoadingPageModel *_loadingPage;
@@ -25,6 +26,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL animated; // @synthesize animated=_animated;
 @property (strong, nonatomic) NSString *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (nonatomic) BOOL deferredPresentation; // @synthesize deferredPresentation=_deferredPresentation;
+@property (nonatomic) BOOL initialLoad; // @synthesize initialLoad=_initialLoad;
 @property (nonatomic) BOOL isReappear; // @synthesize isReappear=_isReappear;
 @property (strong, nonatomic) AMSUIWebLoadingPageModel *loadingPage; // @synthesize loadingPage=_loadingPage;
 @property (nonatomic) long long modalPresentationStyle; // @synthesize modalPresentationStyle=_modalPresentationStyle;

@@ -40,10 +40,12 @@
 - (void)doneButtonTapped;
 - (void)interactionCoordinator:(id)arg1 colorPaletteDidChange:(id)arg2;
 - (void)interactionCoordinator:(id)arg1 didSelectColorAtIndexPath:(id)arg2;
+- (void)interactionCoordinator:(id)arg1 viewValueDidChange:(id)arg2;
 - (id)overrideStatusText;
 - (struct CGSize)preferredContentSize;
 - (void)presentFullColorViewForInteractionCoordinator:(id)arg1 selectedColorIndexPath:(id)arg2;
 - (void)quickControlItemUpdater:(id)arg1 didUpdateResultsForControlItems:(id)arg2;
+- (void)updateValueFromControlItem;
 
 @end
 

@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithPersistentStore:(id)arg1;
+- (void)migrate:(id)arg1;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (void)save;
 - (void)setObject:(id)arg1 forKeyedSubscript:(id)arg2;

@@ -16,33 +16,22 @@
     NSUUID *_identifier;
     NSString *_name;
     NSUUID *_sessionIdentifier;
-    double _lastUpdateTimestamp;
     CDStruct_14d5dc5e _transform;
-    CDStruct_14d5dc5e _referenceTransform;
 }
 
 @property (readonly, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
-@property (nonatomic) double lastUpdateTimestamp; // @synthesize lastUpdateTimestamp=_lastUpdateTimestamp;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
-@property (nonatomic) CDStruct_14d5dc5e referenceTransform; // @synthesize referenceTransform=_referenceTransform;
-@property (strong, nonatomic) NSUUID *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
-@property (nonatomic) CDStruct_14d5dc5e transform; // @synthesize transform=_transform;
+@property (readonly, nonatomic) NSUUID *sessionIdentifier; // @synthesize sessionIdentifier=_sessionIdentifier;
+@property (readonly, nonatomic) CDStruct_14d5dc5e transform; // @synthesize transform=_transform;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)_description:(BOOL)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)debugQuickLookObject;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
 - (id)initWithAnchor:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 transform:(CDStruct_14d5dc5e)arg2;
 - (id)initWithName:(id)arg1 transform:(CDStruct_14d5dc5e)arg2;
 - (id)initWithTransform:(CDStruct_14d5dc5e)arg1;
-- (BOOL)isEqual:(id)arg1;
-- (BOOL)isEqualToAnchor:(id)arg1;
 
 @end
 

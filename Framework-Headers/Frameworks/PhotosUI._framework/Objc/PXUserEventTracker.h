@@ -19,7 +19,6 @@
 
 @property (strong, nonatomic, setter=_setRelatedLookupTable:) NSHashTable *_relatedLookupTable; // @synthesize _relatedLookupTable=__relatedLookupTable;
 
-+ (BOOL)_isMemoryTriggered:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_aggdDurationLoggingDryrun:(unsigned long long)arg1 duration:(double)arg2;

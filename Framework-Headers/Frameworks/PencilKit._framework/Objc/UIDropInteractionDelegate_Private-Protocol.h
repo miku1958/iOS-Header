@@ -7,11 +7,12 @@
 #import <PencilKit/UIDropInteractionDelegate-Protocol.h>
 
 @class UIDragItem, UIDropInteraction;
-@protocol UIDropSession;
+@protocol UIDropSession, UIViewSpringAnimationBehaviorDescribing;
 
 @protocol UIDropInteractionDelegate_Private <UIDropInteractionDelegate>
 
 @optional
+- (id<UIViewSpringAnimationBehaviorDescribing>)_dropInteraction:(UIDropInteraction *)arg1 customSpringAnimationBehaviorForDroppingItem:(UIDragItem *)arg2;
 - (long long)_dropInteraction:(UIDropInteraction *)arg1 dataOwnerForSession:(id<UIDropSession>)arg2;
 - (void)_dropInteraction:(UIDropInteraction *)arg1 delayedPreviewProviderForDroppingItem:(UIDragItem *)arg2 previewProvider:(void (^)(UITargetedDragPreview *))arg3;
 @end

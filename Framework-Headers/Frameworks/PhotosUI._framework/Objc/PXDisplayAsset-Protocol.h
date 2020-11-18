@@ -6,7 +6,7 @@
 
 #import <PhotosUICore/PXDisplayThumbnailAsset-Protocol.h>
 
-@class NSDate, NSString;
+@class NSDate, NSNumber, NSString;
 @protocol PXAssetdestinationAssetCopyProperties, PXDisplayAsset;
 
 @protocol PXDisplayAsset <PXDisplayThumbnailAsset>
@@ -17,8 +17,9 @@
 @property (readonly, nonatomic) Class defaultImageProviderClass;
 @property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic, getter=isFavorite) BOOL favorite;
-@property (readonly, nonatomic) float hdrGain;
+@property (readonly, nonatomic) NSNumber *hdrGain;
 @property (readonly, nonatomic) NSDate *importDate;
+@property (readonly, nonatomic) BOOL isAutoPlaybackEligibilityEstimated;
 @property (readonly, nonatomic) BOOL isEligibleForAutoPlayback;
 @property (readonly, nonatomic) BOOL isInCloud;
 @property (readonly, nonatomic) NSDate *localCreationDate;
@@ -40,5 +41,6 @@
 - (struct CGRect)bestCropRectForAspectRatio:(double)arg1 verticalContentMode:(long long)arg2 cropMode:(long long)arg3;
 - (id<PXAssetdestinationAssetCopyProperties>)destinationAssetCopyProperties;
 - (NSString *)localizedDetailedGeoDescriptionForRTL:(BOOL)arg1;
+- (struct CGRect)suggestedCropForTargetSize:(struct CGSize)arg1 withFocusRegion:(struct CGRect)arg2;
 @end
 

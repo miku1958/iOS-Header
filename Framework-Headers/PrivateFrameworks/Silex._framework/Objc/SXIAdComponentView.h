@@ -57,8 +57,6 @@
 - (void)adDocumentAppearing;
 - (void)adDocumentDisappeared;
 - (void)adSheetDisconnectedNotification:(id)arg1;
-- (void)applicationDidBecomeActive:(id)arg1;
-- (void)applicationDidEnterBackground:(id)arg1;
 - (void)bannerView:(id)arg1 didFailToReceiveAdWithError:(id)arg2;
 - (void)bannerViewDidLoadAd:(id)arg1;
 - (void)cancelAdRequest;
@@ -68,10 +66,12 @@
 - (void)invalidateLayoutIfNeeded;
 - (void)layoutBannerView;
 - (void)loadComponent:(id)arg1;
-- (void)presentComponentWithChanges:(CDStruct_1cc9d0d0)arg1;
+- (void)presentComponentWithChanges:(CDStruct_12a35e6e)arg1;
 - (void)registerForViewportChanges;
 - (void)removeBannerViewWithError:(id)arg1;
 - (void)requestBannerView;
+- (void)sceneDidActivate:(id)arg1;
+- (void)sceneDidEnterBackground:(id)arg1;
 - (void)sendOpportunityEvent;
 - (BOOL)shouldRegisterForViewportChanges;
 - (BOOL)shouldRequestBannerView;

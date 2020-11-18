@@ -16,7 +16,6 @@
     id<FCContentContext> _contentContext;
     id<FCFeedPersonalizing> _feedPersonalizer;
     NSDictionary *_todayConfigOperationHeldRecordsByType;
-    unsigned long long _maximumCachedAgeForForYou;
     NTCatchUpOperationForYouRequest *_forYouRequest;
     NSDictionary *_resultsByArticleListID;
     NSDictionary *_resultsByArticleIDsRequestID;
@@ -39,7 +38,6 @@
 @property (copy, nonatomic) NTCatchUpOperationForYouFetchInfo *forYouFetchInfo; // @synthesize forYouFetchInfo=_forYouFetchInfo;
 @property (copy, nonatomic) NTCatchUpOperationForYouRequest *forYouRequest; // @synthesize forYouRequest=_forYouRequest;
 @property (copy, nonatomic) NTCatchUpOperationResults *forYouResults; // @synthesize forYouResults=_forYouResults;
-@property (nonatomic) unsigned long long maximumCachedAgeForForYou; // @synthesize maximumCachedAgeForForYou=_maximumCachedAgeForForYou;
 @property (copy, nonatomic) NSDictionary *resultsByArticleIDsRequestID; // @synthesize resultsByArticleIDsRequestID=_resultsByArticleIDsRequestID;
 @property (copy, nonatomic) NSDictionary *resultsByArticleListID; // @synthesize resultsByArticleListID=_resultsByArticleListID;
 @property (strong, nonatomic) NSDictionary *todayConfigOperationHeldRecordsByType; // @synthesize todayConfigOperationHeldRecordsByType=_todayConfigOperationHeldRecordsByType;

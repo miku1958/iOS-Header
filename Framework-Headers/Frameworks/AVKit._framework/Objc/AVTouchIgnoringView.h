@@ -6,13 +6,42 @@
 
 #import <UIKit/UIView.h>
 
+#import <AVKit/AVPlaybackControlsViewItem-Protocol.h>
+
+@class AVLayoutItemAttributes, NSString;
+
 __attribute__((visibility("hidden")))
-@interface AVTouchIgnoringView : UIView
+@interface AVTouchIgnoringView : UIView <AVPlaybackControlsViewItem>
 {
+    BOOL _hasAlternateAppearance;
+    BOOL _hasFullScreenAppearance;
+    BOOL _collapsedOrExcluded;
+    BOOL _collapsed;
+    BOOL _removed;
+    BOOL _included;
+    AVLayoutItemAttributes *_layoutAttributes;
+    struct CGSize _extrinsicContentSize;
 }
 
+@property (nonatomic, getter=isCollapsed) BOOL collapsed; // @synthesize collapsed=_collapsed;
+@property (readonly, nonatomic, getter=isCollapsedOrExcluded) BOOL collapsedOrExcluded; // @synthesize collapsedOrExcluded=_collapsedOrExcluded;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (nonatomic) struct CGSize extrinsicContentSize; // @synthesize extrinsicContentSize=_extrinsicContentSize;
+@property (nonatomic) BOOL hasAlternateAppearance; // @synthesize hasAlternateAppearance=_hasAlternateAppearance;
+@property (nonatomic) BOOL hasFullScreenAppearance; // @synthesize hasFullScreenAppearance=_hasFullScreenAppearance;
+@property (readonly) unsigned long long hash;
+@property (nonatomic, getter=isIncluded) BOOL included; // @synthesize included=_included;
+@property (readonly, nonatomic) AVLayoutItemAttributes *layoutAttributes; // @synthesize layoutAttributes=_layoutAttributes;
+@property (nonatomic, getter=isRemoved) BOOL removed; // @synthesize removed=_removed;
+@property (readonly) Class superclass;
+
+- (void).cxx_destruct;
+- (void)_updateLayoutItem;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (void)setHidden:(BOOL)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
+- (void)layoutAttributesDidChange;
+- (struct CGSize)minimumSize;
 
 @end
 

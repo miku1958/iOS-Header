@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
 {
     NSObject<OS_dispatch_source> *_stateUpdateSource;
     NSObject<OS_os_activity> *_sessionActivity;
-    long long _state;
+    unsigned int _state;
     NSObject<OS_dispatch_queue> *_changeFetcherQueue;
     _SYCountedSemaphore *_changeConcurrencySemaphore;
     NSObject<OS_os_activity> *_changeWaitActivity;
@@ -31,10 +31,10 @@ __attribute__((visibility("hidden")))
 - (void)_notifySessionComplete;
 - (void)_peerProcessedMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
 - (void)_processNextState;
-- (void)_sendSyncBatch:(id)arg1 nextState:(long long)arg2;
+- (void)_sendSyncBatch:(id)arg1 nextState:(unsigned int)arg2;
 - (void)_sentMessageWithIdentifier:(id)arg1 userInfo:(id)arg2;
 - (void)_setMessageTimerForSeqno:(unsigned long long)arg1;
-- (void)_setStateQuietly:(long long)arg1;
+- (void)_setStateQuietly:(unsigned int)arg1;
 - (void)_setupChangeConcurrency;
 - (void)_waitForMessageWindow;
 - (BOOL)canRestart;
@@ -46,9 +46,9 @@ __attribute__((visibility("hidden")))
 - (unsigned long long)protocolVersion;
 - (void)setCanRestart:(BOOL)arg1;
 - (void)setCanRollback:(BOOL)arg1;
-- (void)setState:(long long)arg1;
+- (void)setState:(unsigned int)arg1;
 - (void)start:(CDUnknownBlockType)arg1;
-- (long long)state;
+- (unsigned int)state;
 - (BOOL)wasCancelled;
 
 @end

@@ -25,6 +25,7 @@
 - (id)_evaluateVideoProperties:(out id *)arg1;
 - (id)_transformWithError:(out id *)arg1;
 - (BOOL)canPropagateOriginalAuxiliaryData;
+- (BOOL)canPropagateOriginalLivePhotoMetadataTrack;
 - (id)debugQuickLookObject;
 - (id)initWithRect:(CDStruct_996ac03c)arg1 input:(id)arg2;
 - (id)initWithRect:(CDStruct_996ac03c)arg1 input:(id)arg2 resetCleanAperture:(BOOL)arg3 settings:(id)arg4;

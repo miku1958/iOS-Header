@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _UIIdleModeController : NSObject
 {
     BOOL _didApplyVisualEffects;
+    unsigned long long _dismissalTransactionID;
     UIWindow *_backgroundWindow;
     UIImageView *_vignetteView;
     BOOL _keyWindowAllowedGroupBlending;

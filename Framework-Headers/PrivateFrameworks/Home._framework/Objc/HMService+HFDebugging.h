@@ -11,12 +11,13 @@
 #import <Home/HFHomeStatusVisible-Protocol.h>
 #import <Home/HFReorderableHomeKitObject-Protocol.h>
 #import <Home/HFRoomContextProviding-Protocol.h>
+#import <Home/HFServiceNameComponentsProviding-Protocol.h>
 #import <Home/HFStateDumpBuildable-Protocol.h>
 #import <Home/HFUserNotificationServiceSettingsProviding-Protocol.h>
 
 @class HFServiceNameComponents, HFUserNotificationServiceSettings, HMCharacteristic, HMHome, HMRoom, NSDate, NSString, NSUUID;
 
-@interface HMService (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFHomeStatusVisible, HFHomeContainedObject, HFRoomContextProviding, HFUserNotificationServiceSettingsProviding, HFReorderableHomeKitObject>
+@interface HMService (HFDebugging) <HFStateDumpBuildable, HFFavoritable, HFHomeStatusVisible, HFHomeContainedObject, HFRoomContextProviding, HFUserNotificationServiceSettingsProviding, HFReorderableHomeKitObject, HFServiceNameComponentsProviding>
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -42,6 +43,7 @@
 @property (readonly, nonatomic) BOOL hf_hasSetFavorite;
 @property (readonly, nonatomic) BOOL hf_hasSetVisibleInHomeStatus;
 @property (readonly, nonatomic) BOOL hf_isFavorite;
+@property (readonly, nonatomic) BOOL hf_isForcedVisibleInHomeStatus;
 @property (readonly, nonatomic) BOOL hf_isProgrammableSwitch;
 @property (readonly, nonatomic) BOOL hf_isVisibleInHomeStatus;
 @property (readonly, nonatomic) HMCharacteristic *hf_labelIndexCharacteristic;
@@ -63,40 +65,62 @@
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
 + (id)_hf_allowedChildServicesTypeMap;
++ (id)hf_alarmSensorServiceTypes;
 + (id)hf_allRequiredCharacteristicTypesForStandardServices;
++ (id)hf_characteristicsInServices:(id)arg1;
 + (id)hf_defaultServiceSubtypeForServiceType:(id)arg1;
 + (id)hf_descriptionForServiceSubtype:(id)arg1;
++ (id)hf_getUserFriendlyDescriptionKey:(id)arg1;
 + (id)hf_programmableSwitchServiceTypes;
 + (id)hf_requiredCharacteristicTypesForDisplayMetadataWithServiceType:(id)arg1;
 + (id)hf_roomsForServices:(id)arg1;
 + (id)hf_sensorCharacteristicTypeForServiceType:(id)arg1;
++ (id)hf_sensorServiceTypes;
 + (CDUnknownBlockType)hf_serviceComparator;
++ (id)hf_serviceTypesHiddenFromScenesOrAutomations;
 + (id)hf_standardServiceTypes;
-+ (id)hf_standardServices;
++ (id)hf_userFriendlyLocalizedCapitalizedDescription:(id)arg1;
++ (id)hf_userFriendlyLocalizedLowercaseDescription:(id)arg1;
 - (id)_hf_firstLinkedServiceOfType:(id)arg1;
 - (BOOL)_hf_isDirectlyOrIndirectlyLinkedToService:(id)arg1;
+- (id)hf_accessories;
 - (BOOL)hf_canGroupWithService:(id)arg1;
+- (id)hf_characteristicEqualToType:(id)arg1 forServiceType:(id)arg2;
 - (id)hf_characteristicOfType:(id)arg1;
 - (id)hf_childServices;
 - (id)hf_childServicesOfType:(id)arg1;
 - (id)hf_effectiveServiceSubtype;
 - (id)hf_effectiveServiceType;
 - (id)hf_iconDescriptor;
+- (BOOL)hf_isAlarmSensorService;
+- (BOOL)hf_isCameraContainedMotionSensor;
 - (BOOL)hf_isChildService;
+- (BOOL)hf_isDisplayableSensor;
 - (BOOL)hf_isInGroup;
 - (BOOL)hf_isLegacyService;
+- (BOOL)hf_isSensorService;
 - (BOOL)hf_isTelevision;
 - (BOOL)hf_isValidObject;
 - (BOOL)hf_isVisible;
+- (id)hf_lightProfiles;
 - (id)hf_parentService;
+- (id)hf_profiles;
 - (id)hf_requiredCharacteristicTypesForDisplayMetadata;
+- (BOOL)hf_requiresDeviceUnlock;
 - (id)hf_serviceDescriptor;
+- (id)hf_serviceGroup;
+- (id)hf_services;
+- (BOOL)hf_showsAsServiceInControlCentre;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (BOOL)hf_supportsGroups;
+- (BOOL)hf_supportsNaturalLighting;
+- (id)hf_topLevelAccessoryLikeHomeObject;
 - (id)hf_updateDateAdded:(id)arg1;
 - (id)hf_updateIconDescriptor:(id)arg1;
 - (id)hf_updateIsFavorite:(BOOL)arg1;
 - (id)hf_updateIsVisibleInHomeStatus:(BOOL)arg1;
 - (id)hf_updateUserNotificationSettings:(id)arg1;
+- (id)hf_userFriendlyLocalizedCapitalizedDescription;
+- (id)hf_userFriendlyLocalizedLowercaseDescription;
 @end
 

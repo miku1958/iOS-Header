@@ -6,24 +6,25 @@
 
 #import <Silex/SXDOM.h>
 
-@class NSMutableDictionary, SXMutableComponents;
+@class NSMutableDictionary, SXMetadata, SXMutableComponents, SXMutableDOMAnalysis;
 @protocol SXAutoPlacement, SXDocumentStyle;
 
 @interface SXMutableDOM : SXDOM
 {
 }
 
+@property (copy, nonatomic) SXMutableDOMAnalysis *analysis;
 @property (strong, nonatomic) id<SXAutoPlacement> autoPlacement;
 @property (readonly, copy, nonatomic) NSMutableDictionary *componentLayouts;
 @property (readonly, copy, nonatomic) NSMutableDictionary *componentStyles;
 @property (readonly, copy, nonatomic) NSMutableDictionary *componentTextStyles;
 @property (readonly, copy, nonatomic) SXMutableComponents *components;
 @property (strong, nonatomic) id<SXDocumentStyle> documentStyle;
+@property (readonly, copy, nonatomic) SXMetadata *metadata;
 @property (readonly, copy, nonatomic) NSMutableDictionary *resources;
 @property (readonly, copy, nonatomic) NSMutableDictionary *textStyles;
 
-- (id)debugDescription;
-- (id)initWithComponents:(id)arg1 componentLayouts:(id)arg2 componentStyles:(id)arg3 componentTextStyles:(id)arg4 textStyles:(id)arg5 resources:(id)arg6 autoPlacement:(id)arg7 documentStyle:(id)arg8;
+- (id)initWithComponents:(id)arg1 componentLayouts:(id)arg2 componentStyles:(id)arg3 componentTextStyles:(id)arg4 textStyles:(id)arg5 resources:(id)arg6 autoPlacement:(id)arg7 documentStyle:(id)arg8 analysis:(id)arg9 metadata:(id)arg10;
 
 @end
 

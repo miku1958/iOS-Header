@@ -11,6 +11,7 @@
 @class IMAccount, NSString, NSTimer, UIBarButtonItem;
 @protocol CNFRegFirstRunDelegate;
 
+__attribute__((visibility("hidden")))
 @interface CNFRegFirstRunController : CNFRegListController <CNFRegFirstRunExperience>
 {
     Class _completionControllerClass;

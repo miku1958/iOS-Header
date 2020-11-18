@@ -18,7 +18,7 @@
     __NSCFLocalDownloadFile *_downloadFile;
     NSObject<OS_dispatch_data> *_writeBuffer;
     unsigned long long _ioSuspend;
-    unsigned long long _totalWrote;
+    long long _totalWrote;
     CDUnknownBlockType _resumeCallback;
     long long _initialResumeSize;
     NSDictionary *_originalResumeInfo;
@@ -32,46 +32,26 @@
     BOOL _didIssueNeedFinish;
 }
 
-@property (copy) CDUnknownBlockType _afterDidReportProgressOnQueue; // @synthesize _afterDidReportProgressOnQueue;
-@property (copy) CDUnknownBlockType dataAckCompletion; // @synthesize dataAckCompletion=_dataAckCompletion;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong) __NSCFLocalDownloadFile *downloadFile; // @synthesize downloadFile=_downloadFile;
-@property (copy) CDUnknownBlockType fileCompletion; // @synthesize fileCompletion=_fileCompletion;
 @property (readonly) unsigned long long hash;
-@property (copy) CDUnknownBlockType resumeCallback; // @synthesize resumeCallback=_resumeCallback;
 @property (readonly) Class superclass;
 
 + (id)_expandResumeData:(id)arg1;
-+ (id)_requestFromResumeDataDictionary:(id)arg1;
-+ (id)_requestFromResumeDataDictionary:(id)arg1 key:(id)arg2;
 - (const struct __CFDictionary *)_copySocketStreamProperties;
 - (void)_onqueue_cancelByProducingResumeData:(CDUnknownBlockType)arg1;
 - (void)_onqueue_completeInitialization;
 - (void)_onqueue_didReceiveResponse:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_onqueue_willCacheResponse:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
-- (void)_private_errorCompletion;
-- (void)_private_fileCompletion;
-- (void)_private_posixError:(int)arg1;
-- (void)_supplyExtractorWithData:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_task_onqueue_didFinish;
 - (void)_task_onqueue_didReceiveDispatchData:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)cancelByProducingResumeData:(CDUnknownBlockType)arg1;
-- (void)checkWrite;
 - (id)createResumeInformation:(id)arg1;
 - (void)dealloc;
-- (id)explicitDownloadDirectory;
-- (id)initWithLocalSessionTask:(id)arg1 connection:(id)arg2;
-- (id)initWithTaskGroup:(id)arg1 request:(id)arg2 filePath:(id)arg3 ident:(unsigned long long)arg4;
-- (id)initWithTaskGroup:(id)arg1 request:(id)arg2 ident:(unsigned long long)arg3;
-- (id)initWithTaskGroup:(id)arg1 resumeData:(id)arg2 ident:(unsigned long long)arg3;
 - (BOOL)isKindOfClass:(Class)arg1;
 - (int)openItemForPath:(id)arg1 mode:(int)arg2;
-- (void)reportProgress:(unsigned long long)arg1;
-- (BOOL)setupForNewDownload:(id)arg1;
-- (void)suspendExtractor;
 - (void)terminateExtractorWithError:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)writeAndResume;
 
 @end
 

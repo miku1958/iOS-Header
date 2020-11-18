@@ -8,6 +8,7 @@
 
 @class MPMediaLibraryView;
 
+__attribute__((visibility("hidden")))
 @interface _MPModelLibraryRequestItemsQueryOperation : MPAsyncOperation
 {
     MPMediaLibraryView *_libraryView;

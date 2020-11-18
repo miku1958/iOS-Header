@@ -14,6 +14,5 @@
 - (BOOL)isMakingEmergencyCall;
 - (void)launchEmergencyDialer;
 - (void)launchEmergencyDialerAnimated:(BOOL)arg1;
-- (void)launchInCallAlert;
 @end
 

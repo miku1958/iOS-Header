@@ -6,9 +6,9 @@
 
 #import <SIMToolkitUI/NSObject-Protocol.h>
 
-@class NSArray, NSDictionary;
+@class CTXPCServiceSubscriptionContext, NSArray, NSDictionary;
 
 @protocol STKTelephonyListItemsProvider <NSObject>
-- (NSArray *)selectionListItemsFromOptions:(NSDictionary *)arg1;
+- (NSArray *)selectionListItemsForContext:(CTXPCServiceSubscriptionContext *)arg1 options:(NSDictionary *)arg2;
 @end
 

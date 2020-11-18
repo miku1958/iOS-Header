@@ -21,6 +21,7 @@
 @property (readonly, nonatomic) NSString *systemDisplayLanguage; // @synthesize systemDisplayLanguage=_systemDisplayLanguage;
 @property (readonly, nonatomic) NSArray *systemLanguages; // @synthesize systemLanguages=_systemLanguages;
 
++ (BOOL)canRemoveLanguages:(id)arg1 fromPreferredLanguages:(id)arg2;
 + (id)effectiveSystemLanguagesWithUnsupportedVariant:(BOOL)arg1 forPreferredLanguages:(id)arg2;
 + (id)generator;
 + (void)preheat;

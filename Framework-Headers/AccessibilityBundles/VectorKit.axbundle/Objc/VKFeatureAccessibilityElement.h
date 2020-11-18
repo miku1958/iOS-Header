@@ -52,14 +52,14 @@
 - (struct CGRect)accessibilityFrame;
 - (id)accessibilityLabel;
 - (id)accessibilityPaths;
-- (void)addFeature:(CDStruct_123780e2 *)arg1;
+- (void)addFeature:(CDStruct_66740237 *)arg1;
 - (void)addFeatureWrapper:(id)arg1;
 - (void)addFeaturesFromElement:(id)arg1;
 - (void)dealloc;
 - (id)description;
 - (id)detailedFeatureElementInfoAtPoint:(struct CGPoint)arg1;
 - (id)initWithAccessibilityContainer:(id)arg1;
-- (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_123780e2 *)arg2 ignoreMissingName:(BOOL)arg3 useLocalizedLabels:(BOOL)arg4;
+- (id)initWithAccessibilityContainer:(id)arg1 feature:(CDStruct_66740237 *)arg2 ignoreMissingName:(BOOL)arg3 useLocalizedLabels:(BOOL)arg4;
 - (BOOL)pointInside:(struct CGPoint)arg1;
 - (id)pointsFromFeatureWrapper:(id)arg1;
 - (void)removeFeatures;

@@ -27,7 +27,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (void)_commonInitWithDecoderData:(id)arg1;
-- (unsigned int)distance;
+- (double)distance;
 - (void)encodeWithCoder:(id)arg1;
 - (CDStruct_39925896)endGeoCoordinate;
 - (id)initWithCoder:(id)arg1;

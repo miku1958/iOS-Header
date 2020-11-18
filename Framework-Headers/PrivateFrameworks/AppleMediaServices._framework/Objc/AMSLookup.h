@@ -42,6 +42,7 @@
 + (id)bagKeySet;
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
++ (id)createBagForSubProfile;
 - (void).cxx_destruct;
 - (void)_addJSSignatureToRequest:(id)arg1;
 - (id)_compileQueryParametersWithBundleIds:(id)arg1 itemIds:(id)arg2;

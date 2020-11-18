@@ -19,6 +19,7 @@
     NSObject<OS_dispatch_queue> *_workQueue;
     _CDInteractionStoreNotifier *_notifier;
     NSObject<OS_dispatch_queue> *_pendingShareInteractionQueue;
+    BOOL _inMaintenanceMode;
     BOOL _readConcurrently;
     _CDInteraction *_pendingShareSheetInteraction;
     id<_DKLocationHistorian> _locationHistorian;
@@ -65,7 +66,9 @@
 - (BOOL)deleteStorage;
 - (unsigned long long)deleteUnreferencedContacts;
 - (unsigned long long)deleteUnreferencedKeywords;
+- (void)enterMaintenanceMode;
 - (id)errorForException:(id)arg1;
+- (void)exitMaintenanceMode;
 - (id)fetchOrCreateAttachmentRecord:(id)arg1 context:(id)arg2 cache:(id)arg3 error:(id *)arg4;
 - (id)fetchOrCreateContactRecord:(id)arg1 context:(id)arg2 cache:(id)arg3 error:(id *)arg4;
 - (id)fetchOrCreateContactRecord:(id)arg1 context:(id)arg2 error:(id *)arg3;
@@ -85,12 +88,14 @@
 - (void)queryContactsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)queryContactsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 error:(id *)arg4;
 - (id)queryContactsUsingPredicate:(id)arg1 withLimit:(unsigned long long)arg2 error:(id *)arg3;
+- (id)queryInteractionsUsingPredicate:(id)arg1 matchingNameTokens:(id)arg2 sortDescriptors:(id)arg3 limit:(unsigned long long)arg4 error:(id *)arg5;
 - (id)queryInteractionsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3;
 - (void)queryInteractionsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)queryInteractionsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 error:(id *)arg4;
 - (id)queryInteractionsUsingPredicate:(id)arg1 sortDescriptors:(id)arg2 limit:(unsigned long long)arg3 offset:(unsigned long long)arg4 error:(id *)arg5;
 - (id)queryInteractionsUsingPredicate:(id)arg1 withLimit:(unsigned long long)arg2;
 - (long long)queryVersionNumber;
+- (id)recipientArrayWithMostRecentSenderFirstFromIncomingInteraction:(id)arg1 outgoingInteraction:(id)arg2;
 - (BOOL)recordInteraction:(id)arg1;
 - (BOOL)recordInteractions:(id)arg1;
 - (void)recordInteractions:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

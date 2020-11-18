@@ -8,6 +8,7 @@
 
 @class NSData;
 
+__attribute__((visibility("hidden")))
 @interface DCAsset : NSObject
 {
     unsigned long long _version;

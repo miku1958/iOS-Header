@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class GEODirectionsRequest, GEOQuickETARequest, GEOQuickETARequester, MKDirectionsRequest;
+@class GEODirectionsRequest, GEOQuickETARequest, GEOQuickETARequester, GEORouteAttributes, MKDirectionsRequest, NSError;
 @protocol MKLocationManagerOperation, OS_dispatch_group;
 
 @interface MKDirections : NSObject
@@ -17,14 +17,19 @@
     GEOQuickETARequester *_etaRequester;
     id<MKLocationManagerOperation> _locationOperation;
     NSObject<OS_dispatch_group> *_waypointsDispatchGroup;
+    GEORouteAttributes *_routeAttributes;
+    NSError *_previousError;
 }
 
 @property (readonly, nonatomic, getter=isCalculating) BOOL calculating;
 
 - (void).cxx_destruct;
+- (void)_calculateDirectionsWithTraits:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_calculateETAWithTraits:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_cleanupLocationOperation;
 - (void)_establishCurrentLocationAndThen:(CDUnknownBlockType)arg1;
+- (void)_issueDirectionsRequestForOrigin:(id)arg1 destination:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_issueETARequestForOrigin:(id)arg1 destination:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_performWithValidCurrentLocationAndWaypointsForQuickETA:(BOOL)arg1 traits:(id)arg2 handler:(CDUnknownBlockType)arg3;
 - (void)calculateDirectionsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)calculateETAWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <WorkflowUI/WFIconView.h>
 
 @class WFWorkflowIconDrawer;
 
-@interface WFIconComposePreviewView : UIView
+@interface WFIconComposePreviewView : WFIconView
 {
     WFWorkflowIconDrawer *_iconDrawer;
 }
@@ -19,6 +19,7 @@
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
+- (void)redrawIcon;
 - (void)setIcon:(id)arg1;
 
 @end

@@ -45,6 +45,7 @@
 - (void)setRemoteSwipeGestureEnabled:(BOOL)arg1;
 - (void)viewServiceDidTerminateWithError:(id)arg1;
 - (void)willDismissServiceViewController;
+- (void)willOpenCurrentPageInBrowser;
 - (void)willOpenURLInHostApplication:(id)arg1;
 
 @end

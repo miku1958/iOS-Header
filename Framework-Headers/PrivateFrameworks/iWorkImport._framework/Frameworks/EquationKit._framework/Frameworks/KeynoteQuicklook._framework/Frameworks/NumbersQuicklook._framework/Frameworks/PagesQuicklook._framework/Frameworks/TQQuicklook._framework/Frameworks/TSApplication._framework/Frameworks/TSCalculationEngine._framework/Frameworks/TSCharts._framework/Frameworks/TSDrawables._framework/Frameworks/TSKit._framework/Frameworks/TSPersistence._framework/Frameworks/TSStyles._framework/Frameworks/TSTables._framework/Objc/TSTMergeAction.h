@@ -12,18 +12,18 @@
 {
     int _type;
     vector_793e6c56 _uidRanges;
-    vector_eeb872f1 _mergeFormulas;
+    vector_9beef99b _mergeFormulas;
     vector_06e666a8 _mergeFormulaIndexes;
 }
 
 @property (readonly, nonatomic) BOOL hasMergeFormulas;
 @property (readonly, nonatomic) BOOL hasMultiRowMerge;
 @property (nonatomic) const vector_06e666a8 *mergeFormulaIndexes; // @synthesize mergeFormulaIndexes=_mergeFormulaIndexes;
-@property (nonatomic) const vector_eeb872f1 *mergeFormulas; // @synthesize mergeFormulas=_mergeFormulas;
+@property (nonatomic) const vector_9beef99b *mergeFormulas; // @synthesize mergeFormulas=_mergeFormulas;
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (nonatomic) const vector_793e6c56 *uidRanges; // @synthesize uidRanges=_uidRanges;
 
-+ (UUIDRect_d701734b)cellUIDRangeFromMergeFormula:(const struct TSCEFormula *)arg1 calcEngine:(id)arg2;
++ (UUIDRect_d701734b)cellUIDRangeFromMergeFormula:(id)arg1 calcEngine:(id)arg2;
 + (id)mergeActionForGrowingRange:(const UUIDRect_d701734b *)arg1 coveringRange:(const UUIDRect_d701734b *)arg2 inTable:(id)arg3;
 + (id)mergeActionForInsertingRange:(const UUIDRect_d701734b *)arg1 inTable:(id)arg2;
 + (id)mergeActionForRemovingRanges:(const vector_793e6c56 *)arg1 inTable:(id)arg2;
@@ -31,7 +31,7 @@
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (id)actionByExpandingWithAction:(id)arg1;
-- (void)addFormula:(const struct TSCEFormula *)arg1;
+- (void)addFormula:(id)arg1;
 - (void)addFormulaIndex:(unsigned long long)arg1;
 - (id)cellRegionForTable:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;

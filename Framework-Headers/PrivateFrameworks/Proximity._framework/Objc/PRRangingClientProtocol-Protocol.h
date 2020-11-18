@@ -10,7 +10,7 @@
 
 @protocol PRRangingClientProtocol <NSObject>
 - (void)didFailWithError:(NSError *)arg1;
-- (void)rangingServiceDidUpdateState:(unsigned long long)arg1;
+- (void)rangingServiceDidUpdateState:(unsigned long long)arg1 cause:(long long)arg2;
 
 @optional
 - (void)didReceiveNewSolutions:(NSArray *)arg1;

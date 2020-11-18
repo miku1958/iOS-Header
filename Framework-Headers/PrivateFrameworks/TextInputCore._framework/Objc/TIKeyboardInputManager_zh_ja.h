@@ -140,6 +140,7 @@
 - (void)suspend;
 - (BOOL)syncToKeyboardState:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)syncToKeyboardState:(id)arg1 from:(id)arg2 afterContextChange:(BOOL)arg3;
+- (void)tearDown;
 - (void)textAccepted:(id)arg1 fromPredictiveInputBar:(BOOL)arg2 withInput:(id)arg3;
 - (id)touchDataForPathIndex:(long long)arg1;
 - (void)updateComposedText;

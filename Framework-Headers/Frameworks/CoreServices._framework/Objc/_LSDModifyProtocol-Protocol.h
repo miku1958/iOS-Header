@@ -10,9 +10,12 @@
 - (void)garbageCollectDatabaseWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)installApplication:(NSString *)arg1 atURL:(NSURL *)arg2 withOptions:(NSDictionary *)arg3 installType:(unsigned long long)arg4 reply:(void (^)(NSArray *, NSError *))arg5;
 - (void)rebuildApplicationDatabasesForSystem:(BOOL)arg1 internal:(BOOL)arg2 user:(BOOL)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
+- (void)refreshContentInFrameworkAtURL:(NSURL *)arg1 reply:(void (^)(NSError *))arg2;
 - (void)registerContainerURL:(NSURL *)arg1 completionHandler:(void (^)(unsigned int, NSError *))arg2;
 - (void)registerExtensionPoint:(NSString *)arg1 platform:(unsigned int)arg2 withInfo:(NSDictionary *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)registerItemInfo:(LSRegistrationInfo *)arg1 alias:(NSData *)arg2 diskImageAlias:(NSData *)arg3 bundleURL:(NSURL *)arg4 installationPlist:(NSDictionary *)arg5 completionHandler:(void (^)(BOOL, unsigned int, NSArray *, BOOL, NSError *))arg6;
+- (void)relaxApplicationTypeRequirements:(BOOL)arg1 forBundleIdentifier:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
+- (void)removeAllHandlersWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
 - (void)removeHandlerForContentType:(NSString *)arg1 roles:(unsigned int)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)removeHandlerForURLScheme:(NSString *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)resetServerStoreWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;

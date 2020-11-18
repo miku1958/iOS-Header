@@ -6,11 +6,13 @@
 
 #import <HealthDaemon/HDSyncSession.h>
 
+__attribute__((visibility("hidden")))
 @interface _HDStaticSyncSession : HDSyncSession
 {
 }
 
-- (long long)maxEncodedBytesPerMessageForSyncEntityClass:(Class)arg1;
+- (long long)maxEncodedBytesPerChangeSetForSyncEntityClass:(Class)arg1;
+- (long long)maxEncodedBytesPerCodableChangeForSyncEntityClass:(Class)arg1;
 - (id)newChangeWithSyncEntityClass:(Class)arg1;
 
 @end

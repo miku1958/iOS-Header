@@ -6,9 +6,11 @@
 
 #import <Intents/INCodableAttributeMetadata.h>
 
+#import <Intents/INCodableAttributeDefaultValueProviding-Protocol.h>
+
 @class NSString;
 
-@interface INCodableStringAttributeMetadata : INCodableAttributeMetadata
+@interface INCodableStringAttributeMetadata : INCodableAttributeMetadata <INCodableAttributeDefaultValueProviding>
 {
     BOOL _multiline;
     BOOL _disableAutocorrect;
@@ -20,16 +22,42 @@
 }
 
 @property (nonatomic) long long capitalization; // @synthesize capitalization=_capitalization;
+@property (readonly, copy) NSString *debugDescription;
 @property (copy, nonatomic) NSString *defaultValue; // @synthesize defaultValue=_defaultValue;
 @property (copy, nonatomic) NSString *defaultValueID; // @synthesize defaultValueID=_defaultValueID;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) BOOL disableAutocorrect; // @synthesize disableAutocorrect=_disableAutocorrect;
 @property (nonatomic) BOOL disableSmartDashes; // @synthesize disableSmartDashes=_disableSmartDashes;
 @property (nonatomic) BOOL disableSmartQuotes; // @synthesize disableSmartQuotes=_disableSmartQuotes;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *localizedDefaultValue;
 @property (nonatomic, getter=isMultiline) BOOL multiline; // @synthesize multiline=_multiline;
+@property (readonly) Class superclass;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)__INCodableDescriptionCapitalizationKey;
+- (id)__INCodableDescriptionDefaultValueIDKey;
+- (id)__INCodableDescriptionDefaultValueKey;
+- (id)__INCodableDescriptionDisableAutocorrectKey;
+- (id)__INCodableDescriptionDisableSmartDashesKey;
+- (id)__INCodableDescriptionDisableSmartQuotesKey;
+- (id)__INCodableDescriptionMultilineKey;
+- (id)__INIntentResponseCodableDescriptionCapitalizationKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueIDKey;
+- (id)__INIntentResponseCodableDescriptionDefaultValueKey;
+- (id)__INIntentResponseCodableDescriptionDisableAutocorrectKey;
+- (id)__INIntentResponseCodableDescriptionDisableSmartDashesKey;
+- (id)__INIntentResponseCodableDescriptionDisableSmartQuotesKey;
+- (id)__INIntentResponseCodableDescriptionMultilineKey;
+- (id)__INTypeCodableDescriptionCapitalizationKey;
+- (id)__INTypeCodableDescriptionDefaultValueIDKey;
+- (id)__INTypeCodableDescriptionDefaultValueKey;
+- (id)__INTypeCodableDescriptionDisableAutocorrectKey;
+- (id)__INTypeCodableDescriptionDisableSmartDashesKey;
+- (id)__INTypeCodableDescriptionDisableSmartQuotesKey;
+- (id)__INTypeCodableDescriptionMultilineKey;
+- (id)defaultValueForIntentDefaultValueProvider;
 - (id)dictionaryRepresentationWithLocalizer:(id)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;

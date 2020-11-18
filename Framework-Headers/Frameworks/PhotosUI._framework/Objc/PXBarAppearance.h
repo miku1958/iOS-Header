@@ -9,7 +9,7 @@
 #import <PhotosUICore/PXChangeObserver-Protocol.h>
 #import <PhotosUICore/PXMutableBarAppearance-Protocol.h>
 
-@class NSString, PXBarAnimationOptions, UIViewController;
+@class NSString, PXBarAnimationOptions, UIColor, UIViewController;
 @protocol PXBarAppearanceImplementationDelegate;
 
 @interface PXBarAppearance : PXObservable <PXMutableBarAppearance, PXChangeObserver>
@@ -26,6 +26,8 @@
     BOOL __hasViewAppeared;
     BOOL _enabled;
     id<PXBarAppearanceImplementationDelegate> __implementationDelegate;
+    long long _barAppearancePreferredStatusBarStyle;
+    UIColor *_navigationBarTintColor;
     PXBarAnimationOptions *__animationOptions;
     long long __preferredStatusBarUpdateAnimation;
     UIViewController *_viewController;
@@ -36,11 +38,13 @@
 @property (nonatomic, setter=_setHasViewAppeared:) BOOL _hasViewAppeared; // @synthesize _hasViewAppeared=__hasViewAppeared;
 @property (weak, nonatomic, setter=_setImplementationDelegate:) id<PXBarAppearanceImplementationDelegate> _implementationDelegate; // @synthesize _implementationDelegate=__implementationDelegate;
 @property (nonatomic, setter=_setPreferredStatusBarUpdateAnimation:) long long _preferredStatusBarUpdateAnimation; // @synthesize _preferredStatusBarUpdateAnimation=__preferredStatusBarUpdateAnimation;
+@property (readonly, nonatomic) long long barAppearancePreferredStatusBarStyle; // @synthesize barAppearancePreferredStatusBarStyle=_barAppearancePreferredStatusBarStyle;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isEnabled) BOOL enabled; // @synthesize enabled=_enabled;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<PXBarAppearanceImplementationDelegate> implementationDelegate; // @synthesize implementationDelegate=_implementationDelegate;
+@property (readonly, copy, nonatomic) UIColor *navigationBarTintColor; // @synthesize navigationBarTintColor=_navigationBarTintColor;
 @property (readonly, nonatomic) BOOL prefersNavigationBarVisible; // @synthesize prefersNavigationBarVisible=_prefersNavigationBarVisible;
 @property (readonly, nonatomic) BOOL prefersStatusBarVisible; // @synthesize prefersStatusBarVisible=_prefersStatusBarVisible;
 @property (readonly, nonatomic) BOOL prefersTabBarVisible; // @synthesize prefersTabBarVisible=_prefersTabBarVisible;
@@ -50,14 +54,16 @@
 
 - (void).cxx_destruct;
 - (void)_performBarsTransition:(CDUnknownBlockType)arg1;
+- (void)_setNavigationBarTintColor:(id)arg1 withAnimationOptions:(id)arg2;
 - (void)_setNavigationBarVisible:(BOOL)arg1 withAnimationOptions:(id)arg2;
 - (void)_setTabBarVisible:(BOOL)arg1 withAnimationOptions:(id)arg2;
 - (void)_setToolbarVisible:(BOOL)arg1 withAnimationOptions:(id)arg2;
 - (void)_update;
 - (void)_updateImplementationDelegate;
 - (void)_updateOnViewWillAppear:(BOOL)arg1;
-- (void)_updateStatusBarVisibilityWithAnimationOptions:(id)arg1;
+- (void)_updateStatusBarStyleAndVisibilityWithAnimationOptions:(id)arg1;
 - (void)_updateWithAnimationOptions:(id)arg1 isStatusBarHidden:(BOOL)arg2;
+- (long long)adjustedPreferredStatusBarStyle:(long long)arg1;
 - (long long)adjustedPreferredStatusBarUpdateAnimation:(long long)arg1;
 - (BOOL)adjustedPrefersStatusBarHidden:(BOOL)arg1;
 - (id)init;
@@ -66,6 +72,8 @@
 - (void)observable:(id)arg1 didChange:(unsigned long long)arg2 context:(void *)arg3;
 - (void)performChanges:(CDUnknownBlockType)arg1;
 - (void)performChangesWithAnimationOptions:(id)arg1 changes:(CDUnknownBlockType)arg2;
+- (void)setBarAppearancePreferredStatusBarStyle:(long long)arg1;
+- (void)setNavigationBarTintColor:(id)arg1;
 - (void)setPrefersNavigationBarVisible:(BOOL)arg1;
 - (void)setPrefersStatusBarVisible:(BOOL)arg1;
 - (void)setPrefersTabBarVisible:(BOOL)arg1;

@@ -13,6 +13,8 @@
 + (void)_accessibilityPerformValidations:(id)arg1;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (id)_axActionForButton:(id)arg1 withLabel:(id)arg2;
+- (id)accessibilityCustomActions;
 - (id)accessibilityLabel;
 
 @end

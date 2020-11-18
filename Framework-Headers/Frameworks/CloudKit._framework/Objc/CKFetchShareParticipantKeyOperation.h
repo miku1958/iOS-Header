@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKDatabaseOperation.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary;
+#import <CloudKit/CKFetchShareParticipantKeyOperationCallbacks-Protocol.h>
 
-@interface CKFetchShareParticipantKeyOperation : CKDatabaseOperation
+@class CKFetchShareParticipantKeyOperationInfo, NSArray, NSDictionary, NSMutableDictionary;
+@protocol CKFetchShareParticipantKeyOperationCallbacks;
+
+@interface CKFetchShareParticipantKeyOperation : CKDatabaseOperation <CKFetchShareParticipantKeyOperationCallbacks>
 {
     CDUnknownBlockType _shareParticipantKeyFetchedBlock;
     CDUnknownBlockType _shareParticipantKeyCompletionBlock;
@@ -18,23 +21,25 @@
     NSMutableDictionary *_errorsByShareID;
 }
 
-@property (strong, nonatomic) NSDictionary *baseTokensByShareID; // @synthesize baseTokensByShareID=_baseTokensByShareID;
-@property (strong, nonatomic) NSDictionary *childRecordIDsByShareID; // @synthesize childRecordIDsByShareID=_childRecordIDsByShareID;
+@property (copy, nonatomic) NSDictionary *baseTokensByShareID; // @synthesize baseTokensByShareID=_baseTokensByShareID;
+@property (copy, nonatomic) NSDictionary *childRecordIDsByShareID; // @synthesize childRecordIDsByShareID=_childRecordIDsByShareID;
+@property (readonly, nonatomic) id<CKFetchShareParticipantKeyOperationCallbacks> clientOperationCallbackProxy; // @dynamic clientOperationCallbackProxy;
 @property (strong, nonatomic) NSMutableDictionary *errorsByShareID; // @synthesize errorsByShareID=_errorsByShareID;
-@property (strong, nonatomic) NSArray *shareIDs; // @synthesize shareIDs=_shareIDs;
+@property (readonly, nonatomic) CKFetchShareParticipantKeyOperationInfo *operationInfo; // @dynamic operationInfo;
+@property (copy, nonatomic) NSArray *shareIDs; // @synthesize shareIDs=_shareIDs;
 @property (copy, nonatomic) CDUnknownBlockType shareParticipantKeyCompletionBlock; // @synthesize shareParticipantKeyCompletionBlock=_shareParticipantKeyCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType shareParticipantKeyFetchedBlock; // @synthesize shareParticipantKeyFetchedBlock=_shareParticipantKeyFetchedBlock;
 
++ (void)applyDaemonCallbackInterfaceTweaks:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)CKOperationShouldRun:(id *)arg1;
 - (void)_finishOnCallbackQueueWithError:(id)arg1;
-- (void)_handleProgressCallback:(id)arg1;
 - (id)activityCreate;
 - (void)fillFromOperationInfo:(id)arg1;
 - (void)fillOutOperationInfo:(id)arg1;
+- (void)handleParticipantKeyFetchForRecordID:(id)arg1 participantKey:(id)arg2 error:(id)arg3;
 - (BOOL)hasCKOperationCallbacksSet;
 - (id)initWithShareIDs:(id)arg1;
-- (Class)operationInfoClass;
 - (void)performCKOperation;
 
 @end

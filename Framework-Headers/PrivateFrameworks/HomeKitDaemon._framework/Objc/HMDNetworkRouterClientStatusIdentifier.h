@@ -6,19 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <HomeKitDaemon/HMDTLVProtocol-Protocol.h>
+#import <HomeKitDaemon/HAPTLVProtocol-Protocol.h>
 #import <HomeKitDaemon/NSCopying-Protocol.h>
 
-@class HMDNetworkRouterIPAddress, HMDTLVUnsignedNumberValue, NSData, NSString;
+@class HAPTLVUnsignedNumberValue, HMDNetworkRouterIPAddress, NSData, NSString;
 
-@interface HMDNetworkRouterClientStatusIdentifier : NSObject <NSCopying, HMDTLVProtocol>
+@interface HMDNetworkRouterClientStatusIdentifier : NSObject <NSCopying, HAPTLVProtocol>
 {
-    HMDTLVUnsignedNumberValue *_clientIdentifier;
+    HAPTLVUnsignedNumberValue *_clientIdentifier;
     NSData *_macAddress;
     HMDNetworkRouterIPAddress *_ipAddress;
 }
 
-@property (strong, nonatomic) HMDTLVUnsignedNumberValue *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (strong, nonatomic) HAPTLVUnsignedNumberValue *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

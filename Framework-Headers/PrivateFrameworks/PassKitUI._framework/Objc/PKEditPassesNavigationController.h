@@ -13,6 +13,7 @@
 - (void)_done;
 - (id)init;
 - (id)initWithExistingGroupsController:(id)arg1;
+- (id)initWithExistingGroupsController:(id)arg1 specificGroup:(id)arg2 delegate:(id)arg3;
 
 @end
 

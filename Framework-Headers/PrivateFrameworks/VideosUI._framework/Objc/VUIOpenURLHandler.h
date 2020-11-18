@@ -6,36 +6,64 @@
 
 #import <objc/NSObject.h>
 
-@class NSURL;
+#import <VideosUI/AMSUIDynamicViewControllerDelegate-Protocol.h>
 
-@interface VUIOpenURLHandler : NSObject
+@class AMSURLParser, NSDictionary, NSString, NSURL;
+
+@interface VUIOpenURLHandler : NSObject <AMSUIDynamicViewControllerDelegate>
 {
+    struct os_unfair_lock_s _isFinishedLock;
+    BOOL _isFinished;
     BOOL _openedByDeeplink;
     CDUnknownBlockType _completionHandler;
     NSURL *_deferredOpenURL;
     CDUnknownBlockType _deferredOpenURLCompletion;
+    NSString *_offerURLString;
+    NSDictionary *_contextData;
+    AMSURLParser *_amsURLParser;
+    CDUnknownBlockType _deferredAMSDynamicURLCompletion;
 }
 
+@property (strong, nonatomic) AMSURLParser *amsURLParser; // @synthesize amsURLParser=_amsURLParser;
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
+@property (strong, nonatomic) NSDictionary *contextData; // @synthesize contextData=_contextData;
+@property (readonly, copy) NSString *debugDescription;
+@property (copy, nonatomic) CDUnknownBlockType deferredAMSDynamicURLCompletion; // @synthesize deferredAMSDynamicURLCompletion=_deferredAMSDynamicURLCompletion;
 @property (strong, nonatomic) NSURL *deferredOpenURL; // @synthesize deferredOpenURL=_deferredOpenURL;
 @property (copy, nonatomic) CDUnknownBlockType deferredOpenURLCompletion; // @synthesize deferredOpenURLCompletion=_deferredOpenURLCompletion;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isFinished;
+@property (strong, nonatomic) NSString *offerURLString; // @synthesize offerURLString=_offerURLString;
 @property (nonatomic) BOOL openedByDeeplink; // @synthesize openedByDeeplink=_openedByDeeplink;
+@property (readonly) Class superclass;
 
-+ (id)_getIDfromURLQueryParameters:(id)arg1 idKeyName:(id)arg2;
 + (void)_handleDeeplinkAction:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (void)_insertPageBehindTop:(id)arg1 viewControllers:(id)arg2 clearStack:(BOOL)arg3;
 + (void)_pushPageViewControllers:(id)arg1 viewControllers:(id)arg2 skipLastViewController:(BOOL)arg3;
++ (id)queryParameterStringfromURL:(id)arg1 parameter:(id)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)_addMetricsTo:(id)arg1;
 - (void)_fetchLocalMediaWithAdamID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
-- (void)_handleOpenURLRouterDataSource:(id)arg1 appContext:(id)arg2 clearStack:(BOOL)arg3 startDate:(id)arg4;
+- (void)_handleAMSDynamicURL:(id)arg1 isDeeplink:(BOOL)arg2 contextData:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_handleAMSWebURL:(id)arg1 useAMSWebView:(BOOL)arg2;
+- (void)_handleBundleOfferCompletion:(BOOL)arg1;
+- (void)_handleOpenURLRouterDataSource:(id)arg1 appContext:(id)arg2 clearStack:(BOOL)arg3 startDate:(id)arg4 openURL:(id)arg5;
+- (BOOL)_isBundlePurchased:(id)arg1 forOfferDomain:(id)arg2;
+- (void)_processDeeplink:(id)arg1 appContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_processFamilySetup:(id)arg1;
 - (void)_processLocalLibraryLink:(id)arg1 playbackInitiationDate:(id)arg2 openURLCompletionDate:(id)arg3;
 - (void)_processLocalLink:(id)arg1 appContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_processNonLocalLink:(id)arg1 appContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_setIsFinished:(BOOL)arg1;
+- (void)_showBundlePurchaseConfirmationForResult:(id)arg1;
+- (void)dynamicViewController:(id)arg1 didFinishWithPurchaseResult:(id)arg2 error:(id)arg3;
 - (void)handleDeferredURLWithAppContext:(id)arg1;
+- (id)init;
 - (void)parseURL:(id)arg1 appContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)processEntityWithContextData:(id)arg1 appContext:(id)arg2;
-- (void)processURL:(id)arg1 appContext:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)processLink:(id)arg1 appContext:(id)arg2 isDeeplink:(BOOL)arg3 contextData:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)saveDeferredURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

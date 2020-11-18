@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDictionary, TPPolicyVersion;
+@class NSArray, NSData, NSDictionary, NSSet, TPPolicyVersion;
 
 @interface TPPolicyDocument : NSObject
 {
@@ -15,6 +15,8 @@
     NSDictionary *_introducersByCategory;
     NSDictionary *_redactions;
     NSArray *_keyViewMapping;
+    NSSet *_userControllableViewList;
+    NSSet *_piggybackViews;
     TPPolicyVersion *_version;
     NSData *_protobuf;
 }
@@ -23,8 +25,10 @@
 @property (strong, nonatomic) NSDictionary *introducersByCategory; // @synthesize introducersByCategory=_introducersByCategory;
 @property (strong, nonatomic) NSArray *keyViewMapping; // @synthesize keyViewMapping=_keyViewMapping;
 @property (strong, nonatomic) NSArray *modelToCategory; // @synthesize modelToCategory=_modelToCategory;
+@property (strong, nonatomic) NSSet *piggybackViews; // @synthesize piggybackViews=_piggybackViews;
 @property (strong, nonatomic) NSData *protobuf; // @synthesize protobuf=_protobuf;
 @property (strong, nonatomic) NSDictionary *redactions; // @synthesize redactions=_redactions;
+@property (strong, nonatomic) NSSet *userControllableViewList; // @synthesize userControllableViewList=_userControllableViewList;
 @property (strong, nonatomic) TPPolicyVersion *version; // @synthesize version=_version;
 
 + (void)addCategoriesByView:(id)arg1 toPB:(id)arg2;
@@ -39,8 +43,8 @@
 + (id)modelToCategoryFromPb:(id)arg1;
 + (id)modelToCategoryRulesFromArray:(id)arg1;
 + (id)policyDocWithHash:(id)arg1 data:(id)arg2;
-+ (id)policyDocumentWithInternalVersion:(unsigned long long)arg1 modelToCategory:(id)arg2 categoriesByView:(id)arg3 introducersByCategory:(id)arg4 redactions:(id)arg5 keyViewMapping:(id)arg6 hashAlgo:(long long)arg7 error:(id *)arg8;
-+ (id)policyDocumentWithVersion:(unsigned long long)arg1 modelToCategory:(id)arg2 categoriesByView:(id)arg3 introducersByCategory:(id)arg4 redactions:(id)arg5 keyViewMapping:(id)arg6 hashAlgo:(long long)arg7 error:(id *)arg8;
++ (id)policyDocumentWithInternalVersion:(unsigned long long)arg1 modelToCategory:(id)arg2 categoriesByView:(id)arg3 introducersByCategory:(id)arg4 redactions:(id)arg5 keyViewMapping:(id)arg6 userControllableViewList:(id)arg7 piggybackViews:(id)arg8 hashAlgo:(long long)arg9 error:(id *)arg10;
++ (id)policyDocumentWithVersion:(unsigned long long)arg1 modelToCategory:(id)arg2 categoriesByView:(id)arg3 introducersByCategory:(id)arg4 redactions:(id)arg5 keyViewMapping:(id)arg6 userControllableViewList:(id)arg7 piggybackViews:(id)arg8 hashAlgo:(long long)arg9 error:(id *)arg10;
 + (id)redactionWithEncrypter:(id)arg1 modelToCategory:(id)arg2 categoriesByView:(id)arg3 introducersByCategory:(id)arg4 keyViewMapping:(id)arg5 error:(id *)arg6;
 + (id)redactionsFromPb:(id)arg1;
 - (void).cxx_destruct;

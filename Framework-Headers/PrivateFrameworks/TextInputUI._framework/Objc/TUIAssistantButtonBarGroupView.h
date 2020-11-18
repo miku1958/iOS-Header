@@ -21,7 +21,7 @@
 
 @property (strong, nonatomic) UIBarButtonItemGroup *barButtonItemGroup; // @synthesize barButtonItemGroup=_barButtonItemGroup;
 @property (weak, nonatomic) id<TUIButtonBarViewProvider> buttonProvider; // @synthesize buttonProvider=_buttonProvider;
-@property (nonatomic, getter=isCollapsed) BOOL collapsed; // @synthesize collapsed=_collapsed;
+@property (nonatomic, getter=isCollapsed) BOOL collapsed;
 @property (readonly, nonatomic) BOOL containsFlexibleItems;
 @property (nonatomic) double itemSpacing; // @synthesize itemSpacing=_itemSpacing;
 @property (readonly, nonatomic) NSArray *visibleButtons;

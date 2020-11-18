@@ -42,10 +42,11 @@
 - (void)downloadAllPaymentPasses;
 - (void)endRequiringUpgradedPasscodeIfNecessary;
 - (void)enforceUpgradedPasscodePolicyWithCompletion:(CDUnknownBlockType)arg1;
+- (void)familyMembersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)featureApplicationsForProvisioningWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getConfigurationDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getContextWithCompletion:(CDUnknownBlockType)arg1;
-- (void)getProvisioningDataWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getProvisioningDataIncludingDeviceMetadata:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)getRegistrationDataWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getTrustedDeviceEnrollmentInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)handlePotentialExpressPass:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

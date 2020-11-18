@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) WFVariable *variable; // @synthesize variable=_variable;
 
 + (Class)processingValueClass;
++ (id)processingValueClasses;
 + (id)serializedRepresentationFromValue:(id)arg1;
 + (id)valueFromSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
 - (void).cxx_destruct;

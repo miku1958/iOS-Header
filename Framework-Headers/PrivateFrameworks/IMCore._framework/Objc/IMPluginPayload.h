@@ -29,6 +29,7 @@
     NSString *_associatedMessageGUID;
     NSString *_pluginBundleID;
     NSArray *_consumedSessionPayloads;
+    NSString *_threadIdentifier;
     NSString *_pluginSessionGUID;
     DDScannerResult *_dataDetectedResult;
     NSArray *_attachments;
@@ -54,6 +55,7 @@
 @property (strong, nonatomic) NSString *statusText; // @synthesize statusText=_statusText;
 @property (nonatomic, getter=isSticker) BOOL sticker; // @synthesize sticker=_sticker;
 @property (strong, nonatomic) NSAttributedString *text; // @synthesize text=_text;
+@property (readonly, nonatomic) NSString *threadIdentifier; // @synthesize threadIdentifier=_threadIdentifier;
 @property (strong, nonatomic) NSDate *time; // @synthesize time=_time;
 @property (nonatomic, getter=isUpdate) BOOL update; // @synthesize update=_update;
 @property (strong, nonatomic) NSURL *url; // @synthesize url=_url;

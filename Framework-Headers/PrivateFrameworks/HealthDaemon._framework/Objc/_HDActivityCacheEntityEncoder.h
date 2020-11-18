@@ -6,10 +6,14 @@
 
 #import <HealthDaemon/HDEntityEncoder.h>
 
+@class NSSet;
+
 @interface _HDActivityCacheEntityEncoder : HDEntityEncoder
 {
+    NSSet *_activityStatisticsQuantityInfoClasses;
 }
 
+- (void).cxx_destruct;
 - (void)_applyActivityCacheStatisticsToObject:(id)arg1 persistentID:(long long)arg2 row:(struct HDSQLiteRow *)arg3;
 - (void)_applyPrivateActivityCachePropertiesToObject:(id)arg1 persistentID:(long long)arg2 row:(struct HDSQLiteRow *)arg3;
 - (id)_decodeActivityQuantityStatisticsInfosWithRow:(struct HDSQLiteRow *)arg1 column:(int)arg2;

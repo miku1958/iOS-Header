@@ -24,10 +24,12 @@
     NSString *_executableName;
     NSString *_localizedName;
     NSString *_proxyAppBundleID;
+    NSString *_userAgentSuffix;
     AMSMappedBundleInfo *_mappedBundleInfo;
 }
 
 @property (strong, nonatomic) NSString *accountMediaType; // @synthesize accountMediaType=_accountMediaType;
+@property (readonly, nonatomic, getter=isAccountsDaemon) BOOL accountsDaemon;
 @property (strong, nonatomic) NSData *auditTokenData; // @synthesize auditTokenData=_auditTokenData;
 @property (strong, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (strong, nonatomic) NSURL *bundleURL; // @synthesize bundleURL=_bundleURL;
@@ -37,14 +39,16 @@
 @property (readonly, nonatomic) AMSMappedBundleInfo *mappedBundleInfo; // @synthesize mappedBundleInfo=_mappedBundleInfo;
 @property (strong, nonatomic) NSString *partnerHeader;
 @property (strong, nonatomic) NSString *proxyAppBundleID; // @synthesize proxyAppBundleID=_proxyAppBundleID;
+@property (strong, nonatomic) NSString *userAgentSuffix; // @synthesize userAgentSuffix=_userAgentSuffix;
 
 + (void)_accessProcessInfoCache:(CDUnknownBlockType)arg1;
++ (id)_bundleForIdentifier:(id)arg1 record:(id)arg2;
++ (id)_bundleRecordForIdentifier:(id)arg1;
 + (void)_cacheProcessInfo:(id)arg1;
 + (id)_cachedProcessInfoForIdentifier:(id)arg1;
 + (id)_currentProcessBundleIdentifier;
 + (BOOL)boolForEntitlement:(id)arg1;
 + (BOOL)boolForMachLookupAccess:(id)arg1;
-+ (id)bundleForIdentifier:(id)arg1;
 + (void)copyPropertiesFrom:(id)arg1 to:(id)arg2;
 + (id)currentProcess;
 + (id)defaultMediaTypeAccessQueue;

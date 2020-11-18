@@ -7,15 +7,14 @@
 #import <objc/NSObject.h>
 
 @class NSMutableDictionary;
-@protocol OS_dispatch_queue;
 
 @interface IMTimingCollection : NSObject
 {
     NSMutableDictionary *_timings;
-    NSObject<OS_dispatch_queue> *_queue;
+    struct os_unfair_lock_s _lock;
 }
 
-- (void)dealloc;
+- (void).cxx_destruct;
 - (id)description;
 - (BOOL)hasKey:(id)arg1;
 - (id)init;

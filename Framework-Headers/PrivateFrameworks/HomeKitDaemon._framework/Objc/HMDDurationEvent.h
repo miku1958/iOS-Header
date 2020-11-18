@@ -16,12 +16,13 @@
 
 @interface HMDDurationEvent : HMDTimeEvent <NSSecureCoding, HMFDumpState, HMFLogging, HMDHomeMessageReceiver>
 {
+    struct os_unfair_lock_s _lock;
     NSNumber *_duration;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (copy, nonatomic) NSNumber *duration; // @synthesize duration=_duration;
+@property (copy) NSNumber *duration; // @synthesize duration=_duration;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
@@ -35,12 +36,12 @@
 - (id)_nextTimerDate;
 - (void)_transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)_transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
+- (id)analyticsTriggerEventData;
 - (id)createPayload;
 - (id)emptyModelObject;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithModel:(id)arg1 home:(id)arg2;
-- (id)metricData;
 - (id)modelObjectWithChangeType:(unsigned long long)arg1;
 
 @end

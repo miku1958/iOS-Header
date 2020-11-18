@@ -15,6 +15,7 @@
 
 @interface CEKDiscreteSlider : UIControl <UIScrollViewDelegate, CEKSliderTickMarksDelegate, CEKAbstractSlider>
 {
+    BOOL _useTextLegibilityBackgrounds;
     BOOL _useTextLegibilityShadows;
     BOOL __needsUpdateContentOffset;
     BOOL __overscrolling;
@@ -84,6 +85,7 @@
 @property (copy, nonatomic) NSString *titleText; // @synthesize titleText=_titleText;
 @property (nonatomic) BOOL useLegibilityBackgrounds;
 @property (nonatomic) BOOL useLegibilityShadows;
+@property (nonatomic) BOOL useTextLegibilityBackgrounds; // @synthesize useTextLegibilityBackgrounds=_useTextLegibilityBackgrounds;
 @property (nonatomic) BOOL useTextLegibilityShadows; // @synthesize useTextLegibilityShadows=_useTextLegibilityShadows;
 @property (nonatomic) BOOL useTickMarkLegibilityShadows;
 

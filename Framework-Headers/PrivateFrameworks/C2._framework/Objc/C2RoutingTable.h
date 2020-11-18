@@ -8,6 +8,7 @@
 
 @class NSMutableDictionary;
 
+__attribute__((visibility("hidden")))
 @interface C2RoutingTable : NSObject
 {
     NSMutableDictionary *_routingTable;

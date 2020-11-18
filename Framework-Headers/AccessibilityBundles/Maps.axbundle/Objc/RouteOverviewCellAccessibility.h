@@ -14,8 +14,10 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
-- (id)accessibilityLabel;
-- (id)detailsButton;
+- (void)_axAnnotateLabels;
+- (id)_axTextForFakeElement;
+- (id)artworkList;
+- (id)tertiaryLabel;
 
 @end
 

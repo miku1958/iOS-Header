@@ -38,6 +38,7 @@
 - (id)printableTextContentForAppearanceType:(unsigned long long)arg1;
 - (void)resetZoom;
 - (void)saveIfNeeded;
+- (void)setViewSelected:(BOOL)arg1 inWindow:(id)arg2;
 - (void)updatePaletteVisibility;
 - (id)viewProviderForParentView:(id)arg1 characterIndex:(unsigned long long)arg2 layoutManager:(id)arg3;
 

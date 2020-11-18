@@ -36,7 +36,7 @@
 @property (nonatomic) float mergeLocalityThreshold; // @synthesize mergeLocalityThreshold=_mergeLocalityThreshold;
 @property (nonatomic) unsigned short minLineLength; // @synthesize minLineLength=_minLineLength;
 
-+ (const struct MPSLibraryInfo *)libraryInfo;
++ (const struct MPSLibraryInfo *)libraryInfo:(struct MPSDevice *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1 device:(id)arg2;
 - (void)dealloc;
 - (void)encodeToCommandBuffer:(id)arg1 sourceTexture:(id)arg2 destinationTexture:(id)arg3 endpointBuffer:(id)arg4 endpointOffset:(unsigned long long)arg5;

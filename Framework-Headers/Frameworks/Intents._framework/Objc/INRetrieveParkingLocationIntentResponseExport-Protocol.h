@@ -7,12 +7,13 @@
 #import <Intents/JSExport-Protocol.h>
 #import <Intents/NSObject-Protocol.h>
 
-@class CLPlacemark;
+@class CLPlacemark, NSString;
 
 @protocol INRetrieveParkingLocationIntentResponseExport <NSObject, JSExport>
 
 @property (readonly, nonatomic) long long code;
 @property (copy, nonatomic) CLPlacemark *parkingLocation;
+@property (copy, nonatomic) NSString *parkingNote;
 
 @end
 

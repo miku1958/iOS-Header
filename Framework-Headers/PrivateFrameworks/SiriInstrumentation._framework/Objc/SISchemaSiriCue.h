@@ -11,8 +11,12 @@
 @interface SISchemaSiriCue : PBCodable
 {
     int _siriCueType;
+    struct {
+        unsigned int siriCueType:1;
+    } _has;
 }
 
+@property (nonatomic) BOOL hasSiriCueType;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) int siriCueType; // @synthesize siriCueType=_siriCueType;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSString, NSUUID;
+@class BKDevice, NSDate, NSString, NSUUID;
 
 @interface BKIdentity : NSObject
 {
@@ -15,9 +15,11 @@
     long long _type;
     NSString *_name;
     NSDate *_creationTime;
+    BKDevice *_device;
 }
 
 @property (strong, nonatomic) NSDate *creationTime; // @synthesize creationTime=_creationTime;
+@property (strong, nonatomic) BKDevice *device; // @synthesize device=_device;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) long long type; // @synthesize type=_type;
 @property (nonatomic) unsigned int userID; // @synthesize userID=_userID;
@@ -25,7 +27,10 @@
 
 + (id)identity;
 - (void).cxx_destruct;
-- (id)initWithServerIdentity:(id)arg1;
+- (unsigned long long)hash;
+- (id)initWithServerIdentity:(id)arg1 device:(id)arg2;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToIdentity:(id)arg1;
 - (id)serverIdentity;
 
 @end

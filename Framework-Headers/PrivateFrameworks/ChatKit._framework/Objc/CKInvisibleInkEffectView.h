@@ -33,9 +33,13 @@
 + (void)initialize;
 + (double)updateInterval;
 - (void).cxx_destruct;
+- (void)endEmittersForTouchesCancelled:(id)arg1;
+- (void)endEmittersForTouchesEnded:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)invisibleInkEffectCoverageTrackerDidUncover:(id)arg1;
 - (void)layoutSubviews;
+- (void)moveEmittersForTouchesBegan:(id)arg1;
+- (void)moveEmittersForTouchesMoved:(id)arg1;
 - (void)reset;
 
 @end

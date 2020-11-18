@@ -6,7 +6,7 @@
 
 #import <WorkflowUI/WFRunWorkflowViewControllerDelegate-Protocol.h>
 
-@class WFEditWorkflowViewController;
+@class UIBarButtonItem, UIView, WFAction, WFEditWorkflowViewController;
 
 @protocol WFEditWorkflowViewControllerDelegate <WFRunWorkflowViewControllerDelegate>
 
@@ -15,6 +15,9 @@
 - (void)workflowViewControllerDidAddAction:(WFEditWorkflowViewController *)arg1;
 - (void)workflowViewControllerDidRemoveAction:(WFEditWorkflowViewController *)arg1;
 - (void)workflowViewControllerInvalidatedSuggestions:(WFEditWorkflowViewController *)arg1;
+- (void)workflowViewControllerRequestsContentClassesEditor:(WFEditWorkflowViewController *)arg1 sender:(UIView *)arg2;
+- (void)workflowViewControllerRequestsDocumentation:(WFEditWorkflowViewController *)arg1 action:(WFAction *)arg2 sender:(UIView *)arg3;
+- (void)workflowViewControllerRequestsShareWorkflow:(WFEditWorkflowViewController *)arg1 sender:(UIBarButtonItem *)arg2;
 - (void)workflowViewControllerRequestsTutorial:(WFEditWorkflowViewController *)arg1;
 @end
 

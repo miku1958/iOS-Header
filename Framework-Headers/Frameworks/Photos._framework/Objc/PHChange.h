@@ -77,6 +77,7 @@
 - (id)initWithInsertedObjectIDs:(id)arg1 updatedObjectIDs:(id)arg2 deletedObjectIDs:(id)arg3 deletedUuidsByObjectId:(id)arg4 changedAttributesByOID:(id)arg5 changedRelationshipsByOID:(id)arg6 unknownMergeEvent:(BOOL)arg7 changeToken:(id)arg8 managedObjectContext:(id)arg9;
 - (id)insertedObjectIDs;
 - (BOOL)intersectsWithDetectionCriteria:(id)arg1 managedObjectContext:(id)arg2;
+- (BOOL)keyAssetsChangedForPHAssetCollectionOID:(id)arg1;
 - (BOOL)keyFaceChangedForPersonOID:(id)arg1;
 - (BOOL)momentRelationshipChangedForPhotosHighlightWithIdentifier:(id)arg1;
 - (BOOL)packedBadgeAttributesChangedForPHAssetOID:(id)arg1;

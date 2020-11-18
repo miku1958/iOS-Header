@@ -10,6 +10,7 @@
 
 @property (readonly, nonatomic) struct CGSize hf_sizeInScreenScale;
 
++ (id)hf_fetchImageFromURL:(id)arg1;
 - (id)imageWithNormalizedOrientation;
 @end
 

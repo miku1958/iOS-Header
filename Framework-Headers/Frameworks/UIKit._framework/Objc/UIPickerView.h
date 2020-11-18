@@ -12,24 +12,18 @@
 #import <UIKitCore/UITableViewDataSource-Protocol.h>
 #import <UIKitCore/UITableViewDelegate-Protocol.h>
 
-@class CALayer, NSMutableArray, NSString, UIColor, UIImageView, UISelectionFeedbackGenerator, _UIPickerViewTestParameters;
+@class CALayer, NSMutableArray, NSString, UIColor, UISelectionFeedbackGenerator, _UIPickerViewTestParameters;
 @protocol UIPickerViewDataSource, UIPickerViewDelegate;
 
 @interface UIPickerView : UIView <UIPickerViewScrollTesting, UIPickerTableViewContainerDelegate, UITableViewDelegate, UITableViewDataSource, NSCoding>
 {
     NSMutableArray *_tables;
-    UIView *_topFrame;
-    NSMutableArray *_dividers;
-    NSMutableArray *_selectionBars;
     id<UIPickerViewDataSource> _dataSource;
     id<UIPickerViewDelegate> _delegate;
-    UIView *_backgroundView;
     long long _numberOfComponents;
-    UIImageView *_topGradient;
-    UIImageView *_bottomGradient;
     UIView *_foregroundView;
     CALayer *_maskGradientLayer;
-    UIView *_topLineView;
+    UIView *_topLineOrFillView;
     UIView *_bottomLineView;
     struct {
         unsigned int needsLayout:1;
@@ -55,6 +49,7 @@
     _UIPickerViewTestParameters *_currentTestParameters;
     BOOL _magnifierEnabled;
     BOOL _enabled;
+    long long _magnifierStyle;
     UISelectionFeedbackGenerator *_selectionFeedbackGenerator;
     UIColor *_magnifierLineColor;
 }
@@ -68,6 +63,7 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic, getter=_highlightColor, setter=_setHighlightColor:) UIColor *highlightColor;
 @property (strong, nonatomic, getter=_magnifierLineColor, setter=_setMagnifierLineColor:) UIColor *magnifierLineColor; // @synthesize magnifierLineColor=_magnifierLineColor;
+@property (nonatomic, getter=_magnifierStyle, setter=_setMagnifierStyle:) long long magnifierStyle; // @synthesize magnifierStyle=_magnifierStyle;
 @property (readonly, nonatomic) long long numberOfComponents; // @synthesize numberOfComponents=_numberOfComponents;
 @property (strong, nonatomic, getter=_selectionFeedbackGenerator, setter=_setSelectionFeedbackGenerator:) UISelectionFeedbackGenerator *selectionFeedbackGenerator; // @synthesize selectionFeedbackGenerator=_selectionFeedbackGenerator;
 @property (nonatomic) BOOL showsSelectionIndicator;
@@ -83,6 +79,7 @@
 + (struct CGSize)sizeForMainScreenTraitsThatFits:(struct CGSize)arg1;
 + (struct CGSize)sizeThatFits:(struct CGSize)arg1 forTraits:(id)arg2;
 - (void).cxx_destruct;
+- (void)_addHighlightRectForRowHeight:(double)arg1;
 - (void)_addMagnifierLinesForRowHeight:(double)arg1;
 - (BOOL)_canHostViewControllerContentScrollView;
 - (void)_completeCurrentTest;
@@ -92,7 +89,6 @@
 - (id)_contentView;
 - (id)_createColumnWithTableFrame:(struct CGRect)arg1 rowHeight:(double)arg2;
 - (id)_createTableWithFrame:(struct CGRect)arg1 forComponent:(long long)arg2;
-- (id)_createViewForPickerPiece:(long long)arg1;
 - (id)_delegateAttributedTitleForRow:(long long)arg1 forComponent:(long long)arg2;
 - (long long)_delegateNumberOfComponents;
 - (long long)_delegateNumberOfRowsInComponent:(long long)arg1;
@@ -136,7 +132,6 @@
 - (void)_willPlayClickSound;
 - (BOOL)allowsMultipleSelection;
 - (long long)columnForTableView:(id)arg1;
-- (id)createDividerWithFrame:(struct CGRect)arg1;
 - (void)dealloc;
 - (struct CGSize)defaultSize;
 - (void)didMoveToWindow;

@@ -33,16 +33,19 @@
     struct CGPoint _logoPositionRing;
     struct CGPoint _logoPositionNoDigits;
     struct CGPoint _logoPositionBig;
+    struct CGPoint _logoPositionSmallFont;
     struct CGPoint _logoPositionCircularDial;
     double _dialShapeFraction;
     id<NTKVictoryAnalogBackgroundColorPalette> _palette;
     unsigned long long _style;
     unsigned long long _dialShape;
+    UIImage *_logoImage;
     id<NTKVictoryAnalogBackgroundViewDelegate> _delegate;
 }
 
 @property (weak, nonatomic) id<NTKVictoryAnalogBackgroundViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) unsigned long long dialShape; // @synthesize dialShape=_dialShape;
+@property (strong, nonatomic) UIImage *logoImage; // @synthesize logoImage=_logoImage;
 @property (strong, nonatomic) id<NTKVictoryAnalogBackgroundColorPalette> palette; // @synthesize palette=_palette;
 @property (nonatomic) unsigned long long style; // @synthesize style=_style;
 
@@ -66,7 +69,6 @@
 - (double)_elementScaleForTransitionProgress:(double)arg1 initialScale:(double)arg2 middleScale:(double)arg3 finalScale:(double)arg4;
 - (struct CATransform3D)_intermediateTransformForBigNumberAtIndex:(unsigned long long)arg1 fraction:(double)arg2;
 - (struct CGColor *)_layerTransitionColorFromColor:(id)arg1 toColor:(id)arg2 amount:(double)arg3;
-- (id)_logoImage;
 - (void)_logoTapped:(id)arg1;
 - (struct CGPoint)_ringDigitOffsetAtIndex:(unsigned long long)arg1;
 - (void)_setRingLayerAtIndex:(unsigned long long)arg1 isDigit:(BOOL)arg2;

@@ -4,7 +4,7 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <UIKit/UIView.h>
+#import <AppleMediaServicesUI/AMSUICommonView.h>
 
 #import <AppleMediaServicesUI/AMSUIWebViewClientInterface-Protocol.h>
 #import <AppleMediaServicesUI/WKNavigationDelegatePrivate-Protocol.h>
@@ -14,8 +14,9 @@
 @protocol AMSUIWebViewPluginInterface;
 
 __attribute__((visibility("hidden")))
-@interface AMSUIWebView : UIView <AMSUIWebViewClientInterface, WKUIDelegate, WKNavigationDelegatePrivate>
+@interface AMSUIWebView : AMSUICommonView <AMSUIWebViewClientInterface, WKUIDelegate, WKNavigationDelegatePrivate>
 {
+    BOOL _contentLoaded;
     WKWebView *_underlyingWebView;
     NSArray *_baseScripts;
     AMSBinaryPromise *_contentRulesPromise;
@@ -27,6 +28,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) NSArray *baseScripts; // @synthesize baseScripts=_baseScripts;
+@property (readonly, nonatomic) BOOL contentLoaded; // @synthesize contentLoaded=_contentLoaded;
 @property (strong, nonatomic) AMSBinaryPromise *contentRulesPromise; // @synthesize contentRulesPromise=_contentRulesPromise;
 @property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) AMSBinaryPromise *currentLoadPromise; // @synthesize currentLoadPromise=_currentLoadPromise;
@@ -63,9 +65,11 @@ __attribute__((visibility("hidden")))
 - (void)updateUserScriptsWithScripts:(id)arg1;
 - (void)webPlugInDidCreateContext;
 - (void)webPlugInWillDestroyContext;
+- (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 decisionHandler:(CDUnknownBlockType)arg3;
 - (void)webView:(id)arg1 didCommitNavigation:(id)arg2;
 - (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFinishNavigation:(id)arg2;
+- (void)webView:(id)arg1 didReceiveAuthenticationChallenge:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)webView:(id)arg1 didStartProvisionalNavigation:(id)arg2;
 
 @end

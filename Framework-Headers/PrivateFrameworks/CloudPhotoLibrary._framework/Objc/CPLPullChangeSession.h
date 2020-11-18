@@ -12,6 +12,7 @@
 
 @interface CPLPullChangeSession : CPLChangeSession <CPLAbstractObject>
 {
+    double _sentBatchTimeInterval;
 }
 
 @property (readonly, copy) NSString *debugDescription;

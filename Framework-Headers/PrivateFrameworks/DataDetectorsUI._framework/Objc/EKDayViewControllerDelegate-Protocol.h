@@ -38,6 +38,7 @@
 - (void)dayViewControllerIsPinchingDayView:(EKDayViewController *)arg1;
 - (double)dayViewControllerPersistedHourScalePreference:(EKDayViewController *)arg1;
 - (BOOL)dayViewControllerShouldAllowLongPress:(EKDayViewController *)arg1;
+- (BOOL)dayViewControllerShouldDrawSynchronously:(EKDayViewController *)arg1;
 - (BOOL)dayViewControllerShouldEndGestureEditingOnTap:(EKDayViewController *)arg1;
 - (BOOL)dayViewControllerShouldShowDetachDialogOnGestureDraggingEnd:(EKDayViewController *)arg1;
 - (void)dayViewcontrollerDidBeginMovingEventWithGesture:(EKDayViewController *)arg1;

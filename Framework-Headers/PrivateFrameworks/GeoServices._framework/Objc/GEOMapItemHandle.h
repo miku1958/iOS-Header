@@ -25,10 +25,7 @@
         unsigned int read_clientAttributes:1;
         unsigned int read_placeRefinementParameters:1;
         unsigned int read_placeRequestData:1;
-        unsigned int wrote_clientAttributes:1;
-        unsigned int wrote_placeRefinementParameters:1;
-        unsigned int wrote_placeRequestData:1;
-        unsigned int wrote_handleType:1;
+        unsigned int wrote_anyField:1;
     } _flags;
 }
 
@@ -45,9 +42,6 @@
 + (BOOL)isValid:(id)arg1;
 - (void).cxx_destruct;
 - (int)StringAsHandleType:(id)arg1;
-- (void)_readClientAttributes;
-- (void)_readPlaceRefinementParameters;
-- (void)_readPlaceRequestData;
 - (void)clearSensitiveFields;
 - (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -57,7 +51,10 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithData:(id)arg1;
+- (id)initWithDictionary:(id)arg1;
+- (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)jsonRepresentation;
 - (void)mergeFrom:(id)arg1;
 - (void)readAll:(BOOL)arg1;
 - (BOOL)readFrom:(id)arg1;

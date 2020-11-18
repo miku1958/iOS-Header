@@ -10,10 +10,11 @@
 
 @interface _TtC16HealthExperience14MedicalIDCache : NSObject
 {
-    MISSING_TYPE *medicalIDDataResult;
+    MISSING_TYPE *_medicalIDDataResult;
     MISSING_TYPE *medicalIDFetchOperation;
     MISSING_TYPE *medicalIDChangeObserver;
-    MISSING_TYPE *healthStore;
+    MISSING_TYPE *medicalIDStore;
+    MISSING_TYPE *medicalIDFetchQueue;
 }
 
 - (void).cxx_destruct;

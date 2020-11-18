@@ -4,30 +4,37 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <CoreSuggestionsInternals/SGExtractionDocument.h>
 
-@class NSArray, NSDictionary, SGPipelineEntity, SGTextMessage;
+@class NSArray, SGDuplicateKey, SGMessage, SGPipelineEntity;
 
-@interface SGReminderMessage : NSObject
+@interface SGReminderMessage : SGExtractionDocument
 {
-    NSDictionary *_modelOutput;
-    SGTextMessage *_message;
+    SGMessage *_message;
     SGPipelineEntity *_entity;
-    NSArray *_enrichedTaggedCharacterRanges;
+    NSArray *_plainTextDetectedData;
+    SGDuplicateKey *_extractedReminderDuplicateKey;
 }
 
-@property (strong, nonatomic) NSArray *enrichedTaggedCharacterRanges; // @synthesize enrichedTaggedCharacterRanges=_enrichedTaggedCharacterRanges;
 @property (strong, nonatomic) SGPipelineEntity *entity; // @synthesize entity=_entity;
-@property (strong, nonatomic) SGTextMessage *message; // @synthesize message=_message;
-@property (strong, nonatomic) NSDictionary *modelOutput; // @synthesize modelOutput=_modelOutput;
+@property (strong, nonatomic) SGDuplicateKey *extractedReminderDuplicateKey; // @synthesize extractedReminderDuplicateKey=_extractedReminderDuplicateKey;
+@property (strong, nonatomic) SGMessage *message; // @synthesize message=_message;
+@property (strong, nonatomic) NSArray *plainTextDetectedData; // @synthesize plainTextDetectedData=_plainTextDetectedData;
 
-+ (id)_labelTokenIndexesForOutputName:(id)arg1 label:(id)arg2 modelOutput:(id)arg3;
-+ (id)allDayDateComponentsFromDate:(id)arg1;
-+ (id)blacklist;
-+ (BOOL)blacklistedContent:(id)arg1;
-+ (id)detectedTitleInModelOutput:(id)arg1 enrichedTaggedCharacterRanges:(id)arg2 textContent:(id)arg3;
++ (id)confirmationOptionalTokens;
++ (id)detectedTitleInModelOutput:(id)arg1 enrichedTaggedCharacterRanges:(id)arg2 textContent:(id)arg3 language:(id)arg4;
 + (BOOL)enrichedTaggedCharacterRangesContainsProfanity:(id)arg1;
-+ (id)regexFromJoinedArray:(id)arg1;
++ (id)excludeList;
++ (BOOL)excludedContent:(id)arg1;
++ (id)frenchPrependForEnrichedTaggedCharacterRanges:(id)arg1 actionVerbIndexRange:(struct _NSRange)arg2;
++ (BOOL)isConfirmationOptionalForContent:(id)arg1;
++ (id)posTaggerNouns;
++ (id)regexFromJoinedArray:(id)arg1 wordBoundary:(id)arg2;
++ (id)searchTokensForReminderTitle:(id)arg1;
++ (BOOL)shouldAddTitlePrefixForContent:(id)arg1;
++ (id)titlePrefixTokens;
++ (id)titlePrependForActionVerbIndexRange:(struct _NSRange)arg1 enrichedTaggedCharacterRanges:(id)arg2 language:(id)arg3 content:(id)arg4;
++ (BOOL)tokensMatchedInContent:(id)arg1 content:(id)arg2;
 + (id)triggerOptionalTokens;
 + (BOOL)validActionVerbIndexRange:(struct _NSRange)arg1 enrichedTaggedCharacterRanges:(id)arg2;
 + (BOOL)validModelOutput:(id)arg1 error:(id *)arg2;
@@ -35,12 +42,15 @@
 - (void).cxx_destruct;
 - (id)_labelTokenIndexesForOutputName:(id)arg1 label:(id)arg2;
 - (id)detectedDueDateComponents;
-- (id)detectedTitle;
+- (id)detectedTitleForLanguage:(id)arg1;
+- (id)dueDateDataDetectorMatches;
 - (id)dueLocation;
 - (BOOL)hasTrigger;
 - (id)initWithMessage:(id)arg1 entity:(id)arg2 enrichedTaggedCharacterRanges:(id)arg3 modelOutput:(id)arg4;
+- (id)initWithMessage:(id)arg1 plainTextDetectedData:(id)arg2 enrichedTaggedCharacterRanges:(id)arg3 modelOutput:(id)arg4;
 - (BOOL)isConfirmation;
 - (BOOL)isProposal;
+- (BOOL)isRejection;
 - (BOOL)isTriggerOptional;
 
 @end

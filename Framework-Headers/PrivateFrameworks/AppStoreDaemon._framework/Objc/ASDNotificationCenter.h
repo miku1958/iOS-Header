@@ -29,6 +29,7 @@
 - (void)addProgressObserver:(id)arg1;
 - (void)deliverAuthenticateRequest:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 - (void)deliverDialogRequest:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
+- (void)deliverEngagementRequest:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;
 - (void)deliverNotifications:(id)arg1;
 - (void)deliverProgress:(id)arg1;
 - (id)init;

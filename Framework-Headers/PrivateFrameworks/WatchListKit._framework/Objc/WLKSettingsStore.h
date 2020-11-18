@@ -13,8 +13,6 @@
 {
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_readWriteQueue;
-    BOOL _privateModeEnabled;
-    BOOL _sportsScoreSpoilersAllowed;
     NSString *_pushToken;
     NSString *_accountID;
     NSNumber *_optedInVal;

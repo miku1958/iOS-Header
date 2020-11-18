@@ -11,6 +11,8 @@
 @interface _TtC5TeaUI22CommandExecutionSource : _TtCs12_SwiftObject
 {
     MISSING_TYPE *sourceView;
+    MISSING_TYPE *location;
+    MISSING_TYPE *commandTracker;
     MISSING_TYPE *onExecuteBlock;
 }
 

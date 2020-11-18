@@ -15,10 +15,7 @@
 + (BOOL)deviceSupportsPencil;
 + (BOOL)deviceSupportsTouchID;
 + (struct CGSize)notesDeviceDrawingSize;
-+ (BOOL)notesDeviceSupportsLetterpress;
-+ (BOOL)notesLowEndHardware;
 + (id)notesProductType;
-+ (BOOL)shouldOnlyDrawWithPencil;
 
 @end
 

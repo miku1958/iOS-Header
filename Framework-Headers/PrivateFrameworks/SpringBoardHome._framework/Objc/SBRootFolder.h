@@ -11,30 +11,51 @@
 
 @interface SBRootFolder : SBFolder
 {
+    BOOL _supportsTodayList;
     id<SBRootFolderDelegate> _delegate;
     SBHIconModel *_model;
 }
 
+@property (readonly, nonatomic) BOOL containsVisibleWidgetIconExcludingTodayList;
+@property (readonly, nonatomic) BOOL containsWidgetIconExcludingTodayList;
 @property (weak, nonatomic) id<SBRootFolderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic, setter=_setDock:) SBIconListModel *dock;
+@property (strong, nonatomic, setter=_setFavoriteTodayList:) SBIconListModel *favoriteTodayList;
+@property (strong, nonatomic, setter=_setIgnoredList:) SBIconListModel *ignoredList;
 @property (weak, nonatomic) SBHIconModel *model; // @synthesize model=_model;
+@property (readonly, nonatomic) BOOL supportsBadging;
 @property (readonly, nonatomic) BOOL supportsDock;
+@property (readonly, nonatomic) BOOL supportsIgnoredList;
+@property (readonly, nonatomic) BOOL supportsTodayList; // @synthesize supportsTodayList=_supportsTodayList;
+@property (strong, nonatomic, setter=_setTodayList:) SBIconListModel *todayList;
 
 + (BOOL)isRootFolderClass;
 - (void).cxx_destruct;
-- (id)_listsForCompaction;
+- (BOOL)_compactsFirstList;
+- (void)_didExplicitlyRemoveHiddenLists:(id)arg1;
+- (unsigned long long)_specialIndexOfList:(id)arg1;
 - (BOOL)canAddIconCount:(unsigned long long)arg1 startingAtList:(id)arg2;
 - (BOOL)canBounceIcon:(id)arg1;
 - (BOOL)canEditDisplayName;
 - (BOOL)canRemoveIcons;
+- (void)enumerateExtraListsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)folderContainingIndexPath:(id)arg1 relativeIndexPath:(id *)arg2;
+- (unsigned long long)hiddenIndexOfList:(id)arg1;
 - (id)icons;
-- (id)indexPathForFirstFreeSlotStartingAtList:(id)arg1 avoidingFirstList:(BOOL)arg2;
+- (unsigned long long)indexOfList:(id)arg1;
 - (BOOL)isIconAtIndexPathInDock:(id)arg1;
 - (BOOL)isIconAtIndexPathInDock:(id)arg1 includingDockFolders:(BOOL)arg2;
+- (BOOL)isIconAtIndexPathInFavoriteTodayList:(id)arg1;
+- (BOOL)isIconAtIndexPathInIgnoredList:(id)arg1;
+- (BOOL)isIconAtIndexPathInTodayList:(id)arg1;
 - (BOOL)isRootFolder;
+- (BOOL)isValidListIndex:(unsigned long long)arg1;
+- (id)listAtIndex:(unsigned long long)arg1;
 - (id)nodeDescriptionWithPrefix:(id)arg1;
 - (id)nodeIdentifier;
+- (void)removeList:(id)arg1;
+- (BOOL)supportsTodayPage;
+- (unsigned long long)visibleIndexOfList:(id)arg1;
 
 @end
 

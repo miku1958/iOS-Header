@@ -36,7 +36,9 @@
 @property (strong, nonatomic) NSString *simulatedConversationID2; // @synthesize simulatedConversationID2=_simulatedConversationID2;
 
 + (id)_extensionBlacklist;
++ (id)balloonProviderBundlePathURL;
 + (void)disableExtensionDiscovery;
++ (void)enableAlternatePathPlugins;
 + (BOOL)isRunningPPT;
 + (void)setIsRunningPPT:(BOOL)arg1;
 + (id)sharedInstance;
@@ -82,8 +84,8 @@
 - (void)insertDataSource:(id)arg1 forGUID:(id)arg2;
 - (void)loadExtensionWithIdentifierIfNeeded:(id)arg1;
 - (id)localParticipantIdentifierForAppID:(id)arg1 conversationID:(id)arg2;
-- (void)pluginChatItem:(id)arg1 didRelenquishNonResuableController:(id)arg2;
-- (void)pluginChatItem:(id)arg1 didRelinquishReusableController:(id)arg2;
+- (void)pluginChatItem:(id)arg1 didRelenquishNonResuableController:(id)arg2 wantsOverlayLayout:(BOOL)arg3;
+- (void)pluginChatItem:(id)arg1 didRelinquishReusableController:(id)arg2 wantsOverlayLayout:(BOOL)arg3;
 - (id)recipientIDForRecipient:(id)arg1 appID:(id)arg2;
 - (void)removePluginWithBundleID:(id)arg1;
 - (void)setPluginEnabled:(BOOL)arg1 identifier:(id)arg2;

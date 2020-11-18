@@ -19,23 +19,7 @@
     id<BSServiceDispatchingQueue> _replyQueue;
 }
 
-@property (strong, nonatomic) NSObject<OS_xpc_object> *XPCConnection; // @synthesize XPCConnection=_XPCConnection;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *XPCConnectionTargetQueue; // @synthesize XPCConnectionTargetQueue=_XPCConnectionTargetQueue;
-@property (strong, nonatomic) BSXPCServiceConnection *connection; // @synthesize connection=_connection;
-@property (strong, nonatomic) BSObjCProtocol *localProtocol; // @synthesize localProtocol=_localProtocol;
-@property (strong, nonatomic) BSObjCProtocol *remoteProtocol; // @synthesize remoteProtocol=_remoteProtocol;
-@property (strong, nonatomic) id<BSServiceDispatchingQueue> replyQueue; // @synthesize replyQueue=_replyQueue;
-
-+ (id)concreteArgumentsForArguments:(id)arg1;
-+ (void)createImplementationForProtocol:(id)arg1;
-+ (void)decodeArguments:(id)arg1 outArgs:(out id [10])arg2 fromMessage:(id)arg3 forConnection:(id)arg4;
-+ (void)encodeArguments:(id)arg1 inArgs:(in id [10])arg2 toMessage:(id)arg3 forConnection:(id)arg4;
-+ (void)invokeMethod:(id)arg1 onTarget:(id)arg2 withMessage:(id)arg3 forConnection:(id)arg4;
-+ (CDStruct_ab087b89)invokeMethod:(id)arg1 onTarget:(id)arg2 withObjects:(in id [10])arg3;
-+ (void)invokeReplyBlock:(CDUnknownBlockType)arg1 withArguments:(id)arg2 andPayload:(id)arg3 error:(id)arg4 forConnection:(id)arg5;
-+ (id)proxyForConnection:(id)arg1 withInterface:(id)arg2 activeXPCConnection:(id)arg3 xpcConnectionTargetQueue:(id)arg4 replyQueue:(id)arg5;
 - (void)dealloc;
-- (BOOL)invokeMessage:(id)arg1 onTarget:(id)arg2;
 
 @end
 

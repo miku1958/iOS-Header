@@ -6,9 +6,11 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView;
+#import <MapKit/MKCompassView-Protocol.h>
 
-@interface MKCompassView : UIView
+@class NSString, UIImageView;
+
+@interface MKCompassView : UIView <MKCompassView>
 {
     UIImageView *_imageView;
     long long _compassViewSize;
@@ -17,7 +19,11 @@
 
 @property (readonly, nonatomic) long long compassViewSize; // @synthesize compassViewSize=_compassViewSize;
 @property (readonly, nonatomic) long long compassViewStyle; // @synthesize compassViewStyle=_compassViewStyle;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double mapHeading;
+@property (readonly) Class superclass;
 @property (nonatomic) double yaw;
 
 + (id)_parameterForSize:(long long)arg1;

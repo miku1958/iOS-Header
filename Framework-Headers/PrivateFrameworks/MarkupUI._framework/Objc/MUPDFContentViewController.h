@@ -8,12 +8,13 @@
 
 #import <MarkupUI/MUContentViewControllerProtocol-Protocol.h>
 #import <MarkupUI/PDFAKControllerDelegateProtocol-Protocol.h>
+#import <MarkupUI/PDFDocumentDelegate-Protocol.h>
 #import <MarkupUI/PDFViewDelegatePrivate-Protocol.h>
 #import <MarkupUI/_UIViewBoundingPathChangeObserver-Protocol.h>
 
 @class MUPDFPageLabelView, NSArray, NSLayoutConstraint, NSString, PDFDocument, PDFPage, PDFThumbnailView, PDFView, UIScrollView, UIView;
 
-@interface MUPDFContentViewController : MUContentViewController <PDFAKControllerDelegateProtocol, PDFViewDelegatePrivate, _UIViewBoundingPathChangeObserver, MUContentViewControllerProtocol>
+@interface MUPDFContentViewController : MUContentViewController <PDFAKControllerDelegateProtocol, PDFViewDelegatePrivate, _UIViewBoundingPathChangeObserver, PDFDocumentDelegate, MUContentViewControllerProtocol>
 {
     PDFDocument *_pdfDocument;
     BOOL _showsThumbnailView;
@@ -99,6 +100,7 @@
 - (void)editCheckpointReachedForAnnotationController:(id)arg1;
 - (void)highlight:(id)arg1;
 - (struct CGSize)idealContentSizeForScreenSize:(struct CGSize)arg1 windowDecorationSize:(struct CGSize)arg2;
+- (id)initWithNibName:(id)arg1 bundle:(id)arg2 delegate:(id)arg3;
 - (id)initWithPDFDocument:(id)arg1 delegate:(id)arg2;
 - (void)loadContentWithCompletionBlock:(CDUnknownBlockType)arg1;
 - (void)pdfDocumentDidUnlock:(id)arg1;

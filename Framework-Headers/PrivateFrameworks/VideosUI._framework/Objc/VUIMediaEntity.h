@@ -25,6 +25,8 @@
 @property (readonly, copy, nonatomic) NSNumber *HLSResolution;
 @property (readonly, copy, nonatomic) NSDate *addedDate;
 @property (readonly, copy, nonatomic) NSNumber *audioCapability;
+@property (readonly, copy, nonatomic) NSString *brandID;
+@property (readonly, copy, nonatomic) NSString *brandName;
 @property (nonatomic) BOOL cachesPropertiesOnFirstAccess; // @synthesize cachesPropertiesOnFirstAccess=_cachesPropertiesOnFirstAccess;
 @property (readonly, copy, nonatomic) NSString *canonicalID;
 @property (readonly, copy, nonatomic) NSNumber *colorCapability;
@@ -38,6 +40,7 @@
 @property (readonly, copy, nonatomic) NSNumber *isLocal;
 @property (readonly, nonatomic) VUIMediaEntityKind *kind; // @synthesize kind=_kind;
 @property (nonatomic, getter=hasLocalChanges) BOOL localChanges; // @synthesize localChanges=_localChanges;
+@property (readonly, nonatomic) BOOL markedAsDeleted;
 @property (strong, nonatomic) VUIMediaLibrary *mediaLibrary; // @synthesize mediaLibrary=_mediaLibrary;
 @property (copy, nonatomic) NSNumber *playedState;
 @property (readonly, copy, nonatomic) NSNumber *purchaseHistoryID;

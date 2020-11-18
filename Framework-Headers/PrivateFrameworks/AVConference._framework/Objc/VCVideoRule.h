@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrameWidth:(int)arg1 frameHeight:(int)arg2 frameRate:(float)arg3 payload:(int)arg4;
 - (id)initWithFrameWidth:(int)arg1 frameHeight:(int)arg2 frameRate:(float)arg3 payload:(int)arg4 priority:(float)arg5;
 - (BOOL)isEqual:(id)arg1;
+- (BOOL)isVideoFullHD;
 - (void)setFrameWidth:(int)arg1 frameHeight:(int)arg2 frameRate:(float)arg3;
 - (void)setToVideoRule:(id)arg1;
 

@@ -12,6 +12,7 @@
 {
     BOOL _objectGraphDrainingEnabled;
     NSMutableDictionary *_singletons;
+    NSMutableDictionary *_containerSingletons;
     NSMutableDictionary *_graph;
     unsigned long long _depth;
     unsigned long long _drainDepth;
@@ -19,6 +20,7 @@
     NSMutableArray *_onDrainCopyPoolObjectGraphBlocks;
 }
 
+@property (strong, nonatomic) NSMutableDictionary *containerSingletons; // @synthesize containerSingletons=_containerSingletons;
 @property (nonatomic) unsigned long long depth; // @synthesize depth=_depth;
 @property (nonatomic) unsigned long long drainDepth; // @synthesize drainDepth=_drainDepth;
 @property (strong, nonatomic) NSMutableDictionary *graph; // @synthesize graph=_graph;
@@ -33,6 +35,7 @@
 - (void)drain;
 - (id)enter:(CDUnknownBlockType)arg1;
 - (id)init;
+- (id)initWithSingletonPool:(id)arg1;
 - (void)linkDepth:(CDUnknownBlockType)arg1;
 - (void)onDrain:(CDUnknownBlockType)arg1;
 - (void)onDrainCopyPoolObjectGraph:(CDUnknownBlockType)arg1;

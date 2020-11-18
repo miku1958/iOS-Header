@@ -19,6 +19,7 @@
     struct CGRect _attributesContentViewFrame;
 }
 
+@property (readonly, nonatomic) BOOL RTL;
 @property (nonatomic) struct CGRect attributesContentViewFrame; // @synthesize attributesContentViewFrame=_attributesContentViewFrame;
 @property (readonly, nonatomic) struct UIEdgeInsets attributesContentViewInsets;
 @property (readonly, nonatomic) struct UIEdgeInsets attributesContentViewScrollIndicatorInsets;
@@ -32,6 +33,8 @@
 @property (readonly, nonatomic) double headerMaskingViewAlpha;
 @property (readonly, nonatomic) struct CGRect headerMaskingViewFrame;
 @property (readonly, nonatomic) double screenScale;
+@property (readonly, nonatomic) BOOL showSideGroupPicker;
+@property (readonly, nonatomic) struct CGRect sideGroupContainerFrame;
 @property (readonly, nonatomic) unsigned long long supportedLayoutOrientation;
 @property (readonly, nonatomic) struct CGRect userInfoFrame;
 @property (readonly, nonatomic) double verticalRuleAlpha;

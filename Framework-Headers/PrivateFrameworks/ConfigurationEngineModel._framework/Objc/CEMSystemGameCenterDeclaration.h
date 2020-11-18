@@ -15,6 +15,11 @@
     NSNumber *_payloadAllowGameCenter;
     NSNumber *_payloadAllowMultiplayerGaming;
     NSNumber *_payloadAllowAddingGameCenterFriends;
+    NSNumber *_payloadAllowGameCenterNearbyMultiplayer;
+    NSNumber *_payloadAllowGameCenterPrivateMessaging;
+    NSNumber *_payloadAllowGameCenterProfilePrivacyModification;
+    NSNumber *_payloadAllowGameCenterProfileModification;
+    NSNumber *_payloadAllowedGameCenterOtherPlayerTypes;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -22,12 +27,18 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSNumber *payloadAllowAddingGameCenterFriends; // @synthesize payloadAllowAddingGameCenterFriends=_payloadAllowAddingGameCenterFriends;
 @property (copy, nonatomic) NSNumber *payloadAllowGameCenter; // @synthesize payloadAllowGameCenter=_payloadAllowGameCenter;
+@property (copy, nonatomic) NSNumber *payloadAllowGameCenterNearbyMultiplayer; // @synthesize payloadAllowGameCenterNearbyMultiplayer=_payloadAllowGameCenterNearbyMultiplayer;
+@property (copy, nonatomic) NSNumber *payloadAllowGameCenterPrivateMessaging; // @synthesize payloadAllowGameCenterPrivateMessaging=_payloadAllowGameCenterPrivateMessaging;
+@property (copy, nonatomic) NSNumber *payloadAllowGameCenterProfileModification; // @synthesize payloadAllowGameCenterProfileModification=_payloadAllowGameCenterProfileModification;
+@property (copy, nonatomic) NSNumber *payloadAllowGameCenterProfilePrivacyModification; // @synthesize payloadAllowGameCenterProfilePrivacyModification=_payloadAllowGameCenterProfilePrivacyModification;
 @property (copy, nonatomic) NSNumber *payloadAllowMultiplayerGaming; // @synthesize payloadAllowMultiplayerGaming=_payloadAllowMultiplayerGaming;
+@property (copy, nonatomic) NSNumber *payloadAllowedGameCenterOtherPlayerTypes; // @synthesize payloadAllowedGameCenterOtherPlayerTypes=_payloadAllowedGameCenterOtherPlayerTypes;
 @property (readonly) Class superclass;
 
 + (id)allowedPayloadKeys;
 + (id)buildRequiredOnlyWithIdentifier:(id)arg1;
 + (id)buildWithIdentifier:(id)arg1 withAllowGameCenter:(id)arg2 withAllowMultiplayerGaming:(id)arg3 withAllowAddingGameCenterFriends:(id)arg4;
++ (id)buildWithIdentifier:(id)arg1 withAllowGameCenter:(id)arg2 withAllowMultiplayerGaming:(id)arg3 withAllowAddingGameCenterFriends:(id)arg4 withAllowGameCenterNearbyMultiplayer:(id)arg5 withAllowGameCenterPrivateMessaging:(id)arg6 withAllowGameCenterProfilePrivacyModification:(id)arg7 withAllowGameCenterProfileModification:(id)arg8 withAllowedGameCenterOtherPlayerTypes:(id)arg9;
 + (id)profileType;
 + (id)registeredClassName;
 + (id)registeredIdentifier;

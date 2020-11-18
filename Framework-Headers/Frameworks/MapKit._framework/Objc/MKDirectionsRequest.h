@@ -8,7 +8,7 @@
 
 #import <MapKit/NSCopying-Protocol.h>
 
-@class GEOAutomobileOptions, GEOTransitOptions, GEOWalkingOptions, MKMapItem, NSArray, NSDate;
+@class GEOAutomobileOptions, GEOCyclingOptions, GEOTransitOptions, GEOWalkingOptions, MKMapItem, NSArray, NSDate;
 
 @interface MKDirectionsRequest : NSObject <NSCopying>
 {
@@ -21,6 +21,7 @@
     BOOL _includeZilchRoutePoints;
     BOOL _includeBasicRoutePoints;
     BOOL _includeEntryPoints;
+    BOOL _resolveExtraAutomobileOptions;
     BOOL _includeDistanceInETA;
     NSDate *_departureDate;
     NSDate *_arrivalDate;
@@ -28,6 +29,7 @@
     GEOAutomobileOptions *_automobileOptions;
     GEOTransitOptions *_transitOptions;
     GEOWalkingOptions *_walkingOptions;
+    GEOCyclingOptions *_cyclingOptions;
 }
 
 @property (readonly, nonatomic) BOOL _includeBasicRoutePoints; // @synthesize _includeBasicRoutePoints;
@@ -36,8 +38,10 @@
 @property (readonly, nonatomic) BOOL _includeTravelTimes; // @synthesize _includeTravelTimes;
 @property (readonly, nonatomic) BOOL _includeTypicalRouteDuration;
 @property (readonly, nonatomic) BOOL _includeZilchRoutePoints; // @synthesize _includeZilchRoutePoints;
+@property (readonly, nonatomic) BOOL _resolveExtraAutomobileOptions; // @synthesize _resolveExtraAutomobileOptions;
 @property (strong, nonatomic, getter=_additionalTransportTypesRequested, setter=_setAdditionalTransportTypesRequested:) NSArray *additionalTransportTypesRequested; // @synthesize additionalTransportTypesRequested=_additionalTransportTypesRequested;
 @property (strong, nonatomic, getter=_automobileOptions, setter=_setAutomobileOptions:) GEOAutomobileOptions *automobileOptions; // @synthesize automobileOptions=_automobileOptions;
+@property (strong, nonatomic, getter=_cyclingOptions, setter=_setCyclingOptions:) GEOCyclingOptions *cyclingOptions; // @synthesize cyclingOptions=_cyclingOptions;
 @property (strong, nonatomic) MKMapItem *destination; // @synthesize destination=_destination;
 @property (nonatomic, getter=_includeDistanceInETA, setter=_setIncludeDistanceInETA:) BOOL includeDistanceInETA; // @synthesize includeDistanceInETA=_includeDistanceInETA;
 @property (strong, nonatomic) MKMapItem *source; // @synthesize source=_source;
@@ -54,7 +58,7 @@
 - (id)_mapkit_initWithSource:(id)arg1 destination:(id)arg2 transportType:(unsigned long long)arg3 arrivalDate:(id)arg4;
 - (id)_mapkit_initWithSource:(id)arg1 destination:(id)arg2 transportType:(unsigned long long)arg3 arrivalDate:(id)arg4 includeTravelTimes:(BOOL)arg5 includeTrafficIncidents:(BOOL)arg6 includeEntryPoints:(BOOL)arg7 includeRoutePoints:(BOOL)arg8;
 - (id)_mapkit_initWithSource:(id)arg1 destination:(id)arg2 transportType:(unsigned long long)arg3 departureDate:(id)arg4;
-- (id)_mapkit_initWithSource:(id)arg1 destination:(id)arg2 transportType:(unsigned long long)arg3 departureDate:(id)arg4 includeTravelTimes:(BOOL)arg5 includeTrafficIncidents:(BOOL)arg6 includeEntryPoints:(BOOL)arg7 includeRoutePoints:(BOOL)arg8;
+- (id)_mapkit_initWithSource:(id)arg1 destination:(id)arg2 transportType:(unsigned long long)arg3 departureDate:(id)arg4 includeTravelTimes:(BOOL)arg5 includeTrafficIncidents:(BOOL)arg6 includeEntryPoints:(BOOL)arg7 includeRoutePoints:(BOOL)arg8 resolveExtraAutomobileOptions:(BOOL)arg9;
 - (unsigned long long)_transportType;
 - (id)arrivalDate;
 - (id)copyWithZone:(struct _NSZone *)arg1;

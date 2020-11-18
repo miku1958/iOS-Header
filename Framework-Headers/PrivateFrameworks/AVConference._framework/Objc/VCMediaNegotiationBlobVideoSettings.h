@@ -15,14 +15,18 @@ __attribute__((visibility("hidden")))
 {
     unsigned int _customVideoHeight;
     unsigned int _customVideoWidth;
+    unsigned int _pixelFormats;
     unsigned int _rtpSSRC;
     unsigned int _tilesPerFrame;
     NSMutableArray *_videoPayloadCollections;
     BOOL _allowRTCPFB;
+    BOOL _ltrpEnabled;
     struct {
         unsigned int customVideoHeight:1;
         unsigned int customVideoWidth:1;
+        unsigned int pixelFormats:1;
         unsigned int tilesPerFrame:1;
+        unsigned int ltrpEnabled:1;
     } _has;
 }
 
@@ -31,11 +35,16 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned int customVideoWidth; // @synthesize customVideoWidth=_customVideoWidth;
 @property (nonatomic) BOOL hasCustomVideoHeight;
 @property (nonatomic) BOOL hasCustomVideoWidth;
+@property (nonatomic) BOOL hasLtrpEnabled;
+@property (nonatomic) BOOL hasPixelFormats;
 @property (nonatomic) BOOL hasTilesPerFrame;
+@property (nonatomic) BOOL ltrpEnabled; // @synthesize ltrpEnabled=_ltrpEnabled;
+@property (nonatomic) unsigned int pixelFormats; // @synthesize pixelFormats=_pixelFormats;
 @property (nonatomic) unsigned int rtpSSRC; // @synthesize rtpSSRC=_rtpSSRC;
 @property (nonatomic) unsigned int tilesPerFrame; // @synthesize tilesPerFrame=_tilesPerFrame;
 @property (strong, nonatomic) NSMutableArray *videoPayloadCollections; // @synthesize videoPayloadCollections=_videoPayloadCollections;
 
++ (unsigned int)storePixelFormatsInBitMap:(id)arg1;
 + (Class)videoPayloadCollectionsType;
 - (void)addVideoPayloadCollections:(id)arg1;
 - (void)checkAndInsertRuleWithWidth:(unsigned int)arg1 height:(unsigned int)arg2 framerate:(int)arg3 payload:(int)arg4 priority:(double)arg5 negotiationBitfield:(unsigned int *)arg6 negotiationBit:(unsigned int)arg7 rules:(id)arg8 isCellular16x9Capable:(BOOL)arg9;
@@ -48,12 +57,13 @@ __attribute__((visibility("hidden")))
 - (id)getPayloadSettingsForPayload:(int)arg1;
 - (unsigned long long)hash;
 - (id)initWithSSRC:(unsigned int)arg1 allowRTCPFB:(BOOL)arg2 videoRuleCollections:(id)arg3 featureStrings:(id)arg4 isCellular16x9Capable:(BOOL)arg5;
-- (id)initWithScreenSSRC:(unsigned int)arg1 allowRTCPFB:(BOOL)arg2 videoRuleCollections:(id)arg3 featureStrings:(id)arg4 isCellular16x9Capable:(BOOL)arg5 customVideoWidth:(unsigned int)arg6 customVideoHeight:(unsigned int)arg7 tilesPerFrame:(unsigned int)arg8;
+- (id)initWithScreenSSRC:(unsigned int)arg1 allowRTCPFB:(BOOL)arg2 videoRuleCollections:(id)arg3 featureStrings:(id)arg4 isCellular16x9Capable:(BOOL)arg5 customVideoWidth:(unsigned int)arg6 customVideoHeight:(unsigned int)arg7 tilesPerFrame:(unsigned int)arg8 ltrpEnabled:(BOOL)arg9 pixelFormats:(id)arg10;
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (id)newFeatureStrings;
 - (id)newVideoRuleCollectionsForScreen:(BOOL)arg1 isCellular16x9Capable:(BOOL)arg2 isLocalConfig:(BOOL)arg3;
 - (id)parameterSetStringFromPayloadSettings:(id)arg1;
+- (void)prepareFormatString:(id)arg1 format:(id)arg2 formatIndex:(unsigned int)arg3 preferredFormat:(unsigned int)arg4;
 - (void)printScreenWithLogFile:(void *)arg1;
 - (void)printVideoWithLogFile:(void *)arg1;
 - (BOOL)readFrom:(id)arg1;

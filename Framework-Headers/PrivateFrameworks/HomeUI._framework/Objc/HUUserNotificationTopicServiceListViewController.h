@@ -6,23 +6,28 @@
 
 #import <HomeUI/HUItemTableViewController.h>
 
-@class HFUserNotificationServiceTopic, HMHome, HUUserNotificationTopicServiceListModuleController;
+@class HFUserNotificationServiceTopic, HMHome, HUFaceRecognitionItemModuleController, HUUserNotificationTopicServiceListModuleController;
 
 @interface HUUserNotificationTopicServiceListViewController : HUItemTableViewController
 {
     HMHome *_home;
     HFUserNotificationServiceTopic *_topic;
     HUUserNotificationTopicServiceListModuleController *_moduleController;
+    HUFaceRecognitionItemModuleController *_faceRecognitionModuleController;
 }
 
+@property (strong, nonatomic) HUFaceRecognitionItemModuleController *faceRecognitionModuleController; // @synthesize faceRecognitionModuleController=_faceRecognitionModuleController;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) HUUserNotificationTopicServiceListModuleController *moduleController; // @synthesize moduleController=_moduleController;
 @property (readonly, nonatomic) HFUserNotificationServiceTopic *topic; // @synthesize topic=_topic;
 
 - (void).cxx_destruct;
+- (BOOL)_shouldShowFaceRecognition;
 - (id)buildItemModuleControllerForModule:(id)arg1;
 - (id)initWithHome:(id)arg1 topic:(id)arg2;
 - (id)initWithItemManager:(id)arg1 tableViewStyle:(long long)arg2;
+- (id)presentFaceRecognitionAddPersonSettingsForUnknownPersonEvent:(id)arg1 animated:(BOOL)arg2;
+- (id)presentFaceRecognitionPersonSettingsForPerson:(id)arg1 personManager:(id)arg2 animated:(BOOL)arg3;
 - (id)showNotificationSettingsForHomeKitObject:(id)arg1 animated:(BOOL)arg2;
 
 @end

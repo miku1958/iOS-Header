@@ -44,7 +44,6 @@
 - (id)getUploadItemForTask:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithConfiguration:(id)arg1 session:(id)arg2;
-- (BOOL)isWatch;
 
 @end
 

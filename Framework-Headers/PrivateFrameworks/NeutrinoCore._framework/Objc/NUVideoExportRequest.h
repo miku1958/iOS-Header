@@ -6,26 +6,29 @@
 
 #import <NeutrinoCore/NUExportRequest.h>
 
-@class NSArray, NSDictionary, NSProgress, NUColorSpace;
+@class NSArray, NSDictionary, NSProgress, NUCGAffineTransform, NUColorSpace;
 
 @interface NUVideoExportRequest : NUExportRequest
 {
     BOOL _bypassOutputSettingsIfNoComposition;
+    BOOL _requireHardwareEncoder;
     BOOL _requiresVideoComposition;
     NSDictionary *_outputSettings;
+    NUColorSpace *_colorSpace;
     NSArray *_metadata;
     NSProgress *_progress;
     double _bitRateMultiplicationFactor;
-    NUColorSpace *_cachedColorSpace;
+    NUCGAffineTransform *_preferredTransform;
 }
 
 @property (nonatomic) double bitRateMultiplicationFactor; // @synthesize bitRateMultiplicationFactor=_bitRateMultiplicationFactor;
 @property (nonatomic) BOOL bypassOutputSettingsIfNoComposition; // @synthesize bypassOutputSettingsIfNoComposition=_bypassOutputSettingsIfNoComposition;
-@property (strong) NUColorSpace *cachedColorSpace; // @synthesize cachedColorSpace=_cachedColorSpace;
-@property (readonly) NUColorSpace *colorSpace;
+@property (strong, nonatomic) NUColorSpace *colorSpace; // @synthesize colorSpace=_colorSpace;
 @property (copy) NSArray *metadata; // @synthesize metadata=_metadata;
 @property (copy) NSDictionary *outputSettings; // @synthesize outputSettings=_outputSettings;
+@property (strong) NUCGAffineTransform *preferredTransform; // @synthesize preferredTransform=_preferredTransform;
 @property (strong) NSProgress *progress; // @synthesize progress=_progress;
+@property (nonatomic) BOOL requireHardwareEncoder; // @synthesize requireHardwareEncoder=_requireHardwareEncoder;
 @property (nonatomic) BOOL requiresVideoComposition; // @synthesize requiresVideoComposition=_requiresVideoComposition;
 
 - (void).cxx_destruct;

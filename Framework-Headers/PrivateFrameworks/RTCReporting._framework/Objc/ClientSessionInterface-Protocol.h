@@ -11,9 +11,12 @@
 - (void)fetchStatesWithUserInfo:(NSDictionary *)arg1 completionHandler:(void (^)(NSArray *, NSArray *, NSArray *))arg2;
 - (void)finishSessionGracefully;
 - (void)flushMessagesWithCompletion:(void (^)(NSString *, NSError *))arg1;
+- (void)getSessionId:(void (^)(NSString *))arg1;
+- (void)removeEphemeralSession:(NSString *)arg1 withHandler:(void (^)(BOOL))arg2;
 - (void)sendMessageWithDictionary:(NSDictionary *)arg1 reply:(void (^)(NSString *))arg2;
 - (void)sendMessageWithSessionInfo:(NSDictionary *)arg1 userInfo:(NSDictionary *)arg2 category:(unsigned short)arg3 type:(unsigned short)arg4 payload:(NSDictionary *)arg5 reply:(void (^)(NSString *))arg6;
 - (void)setDigestKey:(NSData *)arg1 algorithm:(int)arg2;
+- (void)setEphemeralSession:(NSString *)arg1 enabled:(BOOL)arg2;
 - (void)setSessionInfo:(NSDictionary *)arg1 userInfo:(NSDictionary *)arg2 frameworksToCheck:(NSArray *)arg3 hasAggregationBlock:(BOOL)arg4;
 - (void)startConfigWithCompletionHandler:(void (^)(NSArray *, NSArray *, NSArray *))arg1;
 - (void)updateSharedDataForKey:(NSString *)arg1 value:(NSObject *)arg2;

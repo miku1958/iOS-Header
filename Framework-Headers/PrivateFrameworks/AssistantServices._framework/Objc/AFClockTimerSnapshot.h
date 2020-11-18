@@ -6,12 +6,14 @@
 
 #import <objc/NSObject.h>
 
+#import <AssistantServices/AFContextSnapshot-Protocol.h>
+#import <AssistantServices/AFDictionaryConvertible-Protocol.h>
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSOrderedSet;
+@class NSDate, NSDictionary, NSOrderedSet, NSString;
 
-@interface AFClockTimerSnapshot : NSObject <NSCopying, NSSecureCoding>
+@interface AFClockTimerSnapshot : NSObject <AFContextSnapshot, NSCopying, NSSecureCoding, AFDictionaryConvertible>
 {
     unsigned long long _generation;
     NSDate *_date;
@@ -20,22 +22,35 @@
 }
 
 @property (readonly, copy, nonatomic) NSDate *date; // @synthesize date=_date;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) unsigned long long generation; // @synthesize generation=_generation;
+@property (readonly) unsigned long long hash;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSOrderedSet *notifiedFiringTimerIDs; // @synthesize notifiedFiringTimerIDs=_notifiedFiringTimerIDs;
+@property (readonly) Class superclass;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSDictionary *timersByID; // @synthesize timersByID=_timersByID;
 
 + (id)newWithBuilder:(CDUnknownBlockType)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_descriptionWithIndent:(unsigned long long)arg1;
+- (id)ad_shortDescription;
+- (id)buildDictionaryRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (unsigned long long)hash;
+- (BOOL)hasFiringTimers;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithDictionaryRepresentation:(id)arg1;
 - (id)initWithGeneration:(unsigned long long)arg1 date:(id)arg2 timersByID:(id)arg3 notifiedFiringTimerIDs:(id)arg4;
+- (id)initWithSerializedBackingStore:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
+- (id)mostRecentFiringTimer;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
+- (id)serializedBackingStore;
 
 @end
 

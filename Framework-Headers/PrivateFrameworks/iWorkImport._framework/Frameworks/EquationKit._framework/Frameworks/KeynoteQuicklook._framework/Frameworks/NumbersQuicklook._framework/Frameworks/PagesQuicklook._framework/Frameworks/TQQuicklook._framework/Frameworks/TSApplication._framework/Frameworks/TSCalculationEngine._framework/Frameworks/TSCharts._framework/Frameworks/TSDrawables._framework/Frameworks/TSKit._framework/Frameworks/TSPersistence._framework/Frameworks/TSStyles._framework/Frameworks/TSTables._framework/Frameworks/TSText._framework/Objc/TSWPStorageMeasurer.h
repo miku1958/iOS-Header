@@ -85,6 +85,7 @@
 - (id)interiorClippingPath;
 - (BOOL)isLastTarget;
 - (BOOL)isLayoutOffscreen;
+- (id)layoutForInlineDrawable:(id)arg1;
 - (void)layoutManager:(id)arg1 didClearDirtyRangeWithDelta:(long long)arg2 afterCharIndex:(unsigned long long)arg3;
 - (void)layoutManagerNeedsLayout:(id)arg1;
 - (void)markHiddenInlineDrawableLayout:(id)arg1;
@@ -97,7 +98,6 @@
 - (double)textScaleForChild:(id)arg1;
 - (id)textWrapper;
 - (id)validatedLayoutForAnchoredDrawable:(id)arg1;
-- (id)validatedLayoutForInlineDrawable:(id)arg1;
 - (double)widthForColumnIndex:(unsigned long long)arg1 bodyWidth:(double)arg2;
 
 @end

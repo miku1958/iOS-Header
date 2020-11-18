@@ -10,15 +10,21 @@
 
 @interface PKPaymentInstructions : NSObject
 {
+    long long _version;
     NSData *_instructionsData;
     NSData *_signatureData;
+    NSData *_fortifiedInstructionsData;
+    NSData *_fortifiedSignatureData;
     NSDictionary *_instructionsDictionary;
 }
 
 @property (readonly, nonatomic) NSArray *allImageKeys;
-@property (readonly, nonatomic) NSData *instructionsData; // @synthesize instructionsData=_instructionsData;
+@property (strong, nonatomic) NSData *fortifiedInstructionsData; // @synthesize fortifiedInstructionsData=_fortifiedInstructionsData;
+@property (strong, nonatomic) NSData *fortifiedSignatureData; // @synthesize fortifiedSignatureData=_fortifiedSignatureData;
+@property (strong, nonatomic) NSData *instructionsData; // @synthesize instructionsData=_instructionsData;
 @property (strong, nonatomic) NSDictionary *instructionsDictionary; // @synthesize instructionsDictionary=_instructionsDictionary;
-@property (readonly, nonatomic) NSData *signatureData; // @synthesize signatureData=_signatureData;
+@property (strong, nonatomic) NSData *signatureData; // @synthesize signatureData=_signatureData;
+@property (readonly, nonatomic) long long version; // @synthesize version=_version;
 
 - (void).cxx_destruct;
 - (struct CGDataProvider *)_createImageDataProviderForImageKey:(id)arg1;
@@ -27,7 +33,7 @@
 - (BOOL)archiveToDirectoryAtURL:(id)arg1 error:(id *)arg2;
 - (id)description;
 - (struct CGImage *)imageForKey:(id)arg1;
-- (id)initWithInstructions:(id)arg1 signature:(id)arg2;
+- (id)initWithDictionary:(id)arg1;
 
 @end
 

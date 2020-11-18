@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBSearchSuggestion-Protocol.h>
 
-@class NSArray, NSData, NSString, _SFPBGraphicalFloat;
+@class NSArray, NSData, NSDictionary, NSString, _SFPBGraphicalFloat;
 
 @interface _SFPBSearchSuggestion : PBCodable <_SFPBSearchSuggestion, NSSecureCoding>
 {
@@ -25,11 +25,14 @@
     NSString *_fbr;
     NSString *_scopedSearchApplicationBundleIdentifier;
     NSString *_utteranceText;
+    NSString *_detailText;
+    NSDictionary *_serverFeatures;
 }
 
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSString *detailText; // @synthesize detailText=_detailText;
 @property (copy, nonatomic) NSArray *duplicateSuggestions; // @synthesize duplicateSuggestions=_duplicateSuggestions;
 @property (copy, nonatomic) NSString *fbr; // @synthesize fbr=_fbr;
 @property (readonly) unsigned long long hash;
@@ -39,6 +42,7 @@
 @property (copy, nonatomic) NSString *query; // @synthesize query=_query;
 @property (copy, nonatomic) NSString *scopedSearchApplicationBundleIdentifier; // @synthesize scopedSearchApplicationBundleIdentifier=_scopedSearchApplicationBundleIdentifier;
 @property (strong, nonatomic) _SFPBGraphicalFloat *score; // @synthesize score=_score;
+@property (copy, nonatomic) NSDictionary *serverFeatures; // @synthesize serverFeatures=_serverFeatures;
 @property (copy, nonatomic) NSString *suggestion; // @synthesize suggestion=_suggestion;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) NSString *topicIdentifier; // @synthesize topicIdentifier=_topicIdentifier;
@@ -51,11 +55,13 @@
 - (id)dictionaryRepresentation;
 - (id)duplicateSuggestionsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)duplicateSuggestionsCount;
+- (BOOL)getServerFeatures:(double *)arg1 forKey:(id)arg2;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithFacade:(id)arg1;
 - (id)initWithJSON:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (void)setServerFeatures:(double)arg1 forKey:(id)arg2;
 - (void)writeTo:(id)arg1;
 
 @end

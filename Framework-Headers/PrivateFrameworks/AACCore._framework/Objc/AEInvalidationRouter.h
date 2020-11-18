@@ -20,17 +20,10 @@ __attribute__((visibility("hidden")))
     NSError *_storedError;
 }
 
-@property (weak, nonatomic) id<AEInvalidationRouterDelegate> delegate; // @synthesize delegate=_delegate;
-@property (nonatomic, getter=didForwardError) BOOL forwardError; // @synthesize forwardError=_forwardError;
 @property (readonly, nonatomic) CDUnknownBlockType invalidationHandler;
-@property (nonatomic) long long mode; // @synthesize mode=_mode;
-@property (nonatomic, getter=hasProcessedInvalidation) BOOL processedInvalidation; // @synthesize processedInvalidation=_processedInvalidation;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
-@property (strong, nonatomic) NSError *storedError; // @synthesize storedError=_storedError;
 
 - (void).cxx_destruct;
 - (void)fetchCapturedErrorWithCompletion:(CDUnknownBlockType)arg1;
-- (void)forwardError;
 - (id)init;
 - (void)setRouterDelegate:(id)arg1;
 - (void)setRouterMode:(long long)arg1;

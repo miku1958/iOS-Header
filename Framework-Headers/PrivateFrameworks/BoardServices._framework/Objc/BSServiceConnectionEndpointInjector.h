@@ -32,7 +32,6 @@
 
 + (id)injectorWithConfigurator:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
-- (id)_initWithManager:(id)arg1 configurator:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)init;
 - (void)invalidate;

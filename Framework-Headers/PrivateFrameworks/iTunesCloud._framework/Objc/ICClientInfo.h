@@ -34,6 +34,9 @@
 @property (readonly, copy, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
 @property (readonly, copy, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;
 
++ (id)_clientInfoForCloudDaemonOriginatedMusicKitRequestWithRequestingBundleIdentifier:(id)arg1;
++ (id)clientInfoForMusicKitRequestWithClientIdentifier:(id)arg1 clientVersion:(id)arg2;
++ (id)clientInfoForMusicKitRequestWithClientIdentifier:(id)arg1 clientVersion:(id)arg2 bundleIdentifier:(id)arg3;
 + (id)defaultInfo;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

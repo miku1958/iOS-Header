@@ -18,14 +18,13 @@
     PXRoundedCornerOverlayView *_roundedOverlayView;
     long long _priority;
     id<PXGadgetDelegate> _delegate;
-    unsigned long long _accessoryButtonType;
     PXGadgetSpec *_gadgetSpec;
     id<PXCMMSuggestion> _suggestion;
     id<PXMessagesCMMSuggestionGadgetActionDelegate> _actionDelegate;
 }
 
 @property (readonly, nonatomic) NSString *accessoryButtonTitle;
-@property (readonly, nonatomic) unsigned long long accessoryButtonType; // @synthesize accessoryButtonType=_accessoryButtonType;
+@property (readonly, nonatomic) unsigned long long accessoryButtonType;
 @property (weak, nonatomic) id<PXMessagesCMMSuggestionGadgetActionDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
 @property (readonly, nonatomic) Class collectionViewItemClass;
 @property (readonly, copy) NSString *debugDescription;
@@ -34,7 +33,6 @@
 @property (readonly, nonatomic) unsigned long long gadgetCapabilities;
 @property (strong, nonatomic) PXGadgetSpec *gadgetSpec; // @synthesize gadgetSpec=_gadgetSpec;
 @property (readonly, nonatomic) unsigned long long gadgetType;
-@property (readonly, nonatomic) BOOL hasContentToDisplay;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long headerStyle;
 @property (readonly, nonatomic) NSString *localizedTitle;

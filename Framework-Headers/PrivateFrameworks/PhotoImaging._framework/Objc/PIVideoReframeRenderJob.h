@@ -26,7 +26,6 @@
 - (BOOL)prepare:(out id *)arg1;
 - (id)result;
 - (id)scalePolicy;
-- (id)videoReframeRequest;
 - (BOOL)wantsCompleteStage;
 - (BOOL)wantsOutputVideo;
 - (BOOL)wantsRenderStage;

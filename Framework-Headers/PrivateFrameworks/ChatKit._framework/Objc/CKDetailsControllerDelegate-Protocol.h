@@ -9,7 +9,10 @@
 @class UIViewController;
 
 @protocol CKDetailsControllerDelegate <NSObject>
+- (UIViewController *)detailsControllerBusinessPrivacyInfoPresentingViewController:(UIViewController *)arg1;
 - (void)detailsControllerDidDismiss:(UIViewController *)arg1;
 - (void)detailsControllerWillDismiss:(UIViewController *)arg1;
+- (void)dismissDetailsNavigationController;
+- (BOOL)isDetailsNavigationControllerDetached;
 @end
 

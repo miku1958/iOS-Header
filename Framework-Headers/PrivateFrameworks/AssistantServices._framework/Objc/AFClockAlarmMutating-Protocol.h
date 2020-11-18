@@ -21,5 +21,6 @@
 - (void)setMinute:(unsigned long long)arg1;
 - (void)setRepeatOptions:(unsigned long long)arg1;
 - (void)setTitle:(NSString *)arg1;
+- (void)setType:(unsigned long long)arg1;
 @end
 

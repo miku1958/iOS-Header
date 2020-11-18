@@ -9,16 +9,15 @@
 #import <SpringBoard/SBSceneLayoutWorkspaceTransactionObserver-Protocol.h>
 #import <SpringBoard/SBWorkspaceApplicationSceneTransitionContextDelegate-Protocol.h>
 #import <SpringBoard/UIDragInteractionDelegate_Private-Protocol.h>
-#import <SpringBoard/UIDropInteractionDelegate-Protocol.h>
+#import <SpringBoard/UIDropInteractionDelegate_Private-Protocol.h>
 
 @class CADisplayLink, NSMutableDictionary, NSMutableSet, NSString, NSUUID, SBAppPlatterDragPreview, SBApplicationDropSession, SBApplicationSceneUpdateTransaction, SBDeviceApplicationSceneHandle, SBFluidSwitcherGesture, SBFluidSwitcherViewController, SBLayoutElement, SBMainDisplayLayoutState, SBMainDisplaySceneLayoutViewController, SBMainWorkspaceTransitionRequest, SBMedusaSettings, SBToAppsWorkspaceTransaction, SBTouchHistory, UIView, UIViewFloatAnimatableProperty;
 @protocol BSInvalidatable, SBAppPlatterDragSourceViewProviding, SBDragAndDropAppActivationWorkspaceTransactionDelegate;
 
-@interface SBDragAndDropAppActivationWorkspaceTransaction : SBMainWorkspaceTransaction <SBWorkspaceApplicationSceneTransitionContextDelegate, SBSceneLayoutWorkspaceTransactionObserver, UIDragInteractionDelegate_Private, UIDropInteractionDelegate>
+@interface SBDragAndDropAppActivationWorkspaceTransaction : SBMainWorkspaceTransaction <SBWorkspaceApplicationSceneTransitionContextDelegate, SBSceneLayoutWorkspaceTransactionObserver, UIDragInteractionDelegate_Private, UIDropInteractionDelegate_Private>
 {
     SBFluidSwitcherViewController *_mainSwitcherContentController;
     SBMainDisplaySceneLayoutViewController *_sceneLayoutViewController;
-    SBFluidSwitcherViewController *_floatingSwitcherContentController;
     id<SBDragAndDropAppActivationWorkspaceTransactionDelegate> _delegate;
     SBMainDisplayLayoutState *_initialLayoutState;
     SBMainDisplayLayoutState *_currentLayoutState;
@@ -96,8 +95,10 @@
 - (void)_didComplete;
 - (void)_didInterruptWithReason:(id)arg1;
 - (void)_displayLinkDidUpdate:(id)arg1;
+- (id)_dragInteraction:(id)arg1 customSpringAnimationBehaviorForCancellingItem:(id)arg2;
 - (void)_dragInteractionDidCancelLiftWithoutDragging:(id)arg1;
 - (id)_dragPreviewForDroppingItem:(id)arg1 withDefault:(id)arg2;
+- (id)_dropInteraction:(id)arg1 customSpringAnimationBehaviorForDroppingItem:(id)arg2;
 - (void)_endDragAndDropFluidGesture;
 - (void)_endRequiringSceneViewMatchMoveAnimation;
 - (void)_fadeOutPreviousLayoutElementViewControllersIfNecessary;
@@ -148,6 +149,7 @@
 - (void)_updateSeparatorViewWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_willInterruptForTransitionRequest:(id)arg1;
 - (void)_willInterruptWithReason:(id)arg1;
+- (struct CGRect)applicationTransitionContext:(id)arg1 frameForApplicationSceneEntity:(id)arg2;
 - (BOOL)canInterruptForTransitionRequest:(id)arg1;
 - (void)dragInteraction:(id)arg1 item:(id)arg2 willAnimateCancelWithAnimator:(id)arg3;
 - (id)dragInteraction:(id)arg1 itemsForBeginningSession:(id)arg2;
@@ -166,7 +168,7 @@
 - (void)dropInteraction:(id)arg1 sessionDidEnter:(id)arg2;
 - (void)dropInteraction:(id)arg1 sessionDidExit:(id)arg2;
 - (id)dropInteraction:(id)arg1 sessionDidUpdate:(id)arg2;
-- (id)initWithTransitionRequest:(id)arg1 mainSwitcherContentController:(id)arg2 floatingSwitcherContentController:(id)arg3 sceneLayoutViewController:(id)arg4 dropSession:(id)arg5 delegate:(id)arg6;
+- (id)initWithTransitionRequest:(id)arg1 mainSwitcherContentController:(id)arg2 sceneLayoutViewController:(id)arg3 dropSession:(id)arg4 delegate:(id)arg5;
 - (id)layoutStateForApplicationTransitionContext:(id)arg1;
 - (BOOL)matchesApplicationDropSession:(id)arg1;
 - (BOOL)matchesUIDragDropSession:(id)arg1;

@@ -59,6 +59,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithTextGeometryRef:(struct __C3DTextGeometry *)arg1;
 - (CDStruct_8bd95810)params;
+- (id)patchFont:(id)arg1;
 - (id)presentationGeometry;
 - (long long)primitiveType;
 - (void)setDiscretizedStraightLineMaxLength:(double)arg1;

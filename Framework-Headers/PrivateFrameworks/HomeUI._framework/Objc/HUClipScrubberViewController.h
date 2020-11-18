@@ -6,21 +6,20 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <HomeUI/HFCameraClipFeedbackObserving-Protocol.h>
 #import <HomeUI/HFCameraPlaybackEngineObserver-Protocol.h>
 #import <HomeUI/HUCameraPlayerScrubbing-Protocol.h>
 #import <HomeUI/HUFeedbackConsentViewControllerDelegate-Protocol.h>
 #import <HomeUI/NSURLSessionDelegate-Protocol.h>
+#import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CADisplayLink, HFCameraPlaybackEngine, HMCameraClipFetchVideoAssetContextOperation, HUClipScrubberDataSource, HUClipScrubberScrollDelegate, HUClipScrubberView, NSLayoutConstraint, NSString, UIButton, UIView;
+@class CADisplayLink, HFCameraAnalyticsCameraClipExportSessionEvent, HFCameraPlaybackEngine, HMCameraClipFetchVideoAssetContextOperation, HUClipScrubberDataSource, HUClipScrubberScrollDelegate, HUClipScrubberView, NSLayoutConstraint, NSString, UIButton, UITapGestureRecognizer, UIView;
 
-@interface HUClipScrubberViewController : UIViewController <NSURLSessionDelegate, HUFeedbackConsentViewControllerDelegate, HUCameraPlayerScrubbing, HFCameraClipFeedbackObserving, HFCameraPlaybackEngineObserver>
+@interface HUClipScrubberViewController : UIViewController <NSURLSessionDelegate, UIGestureRecognizerDelegate, HUFeedbackConsentViewControllerDelegate, HUCameraPlayerScrubbing, HFCameraPlaybackEngineObserver>
 {
     BOOL _isVisible;
     CDUnknownBlockType _accessoryButtonHandler;
     CDUnknownBlockType _beginEditingHandler;
     CDUnknownBlockType _endEditingHandler;
-    CDUnknownBlockType _deletionHandler;
     HFCameraPlaybackEngine *_playbackEngine;
     HUClipScrubberView *_scrubberView;
     UIButton *_selectionButton;
@@ -39,6 +38,9 @@
     CADisplayLink *_scrubberUpdateDisplayLink;
     unsigned long long _lastEngineMode;
     HMCameraClipFetchVideoAssetContextOperation *_exportDownloadOperation;
+    UITapGestureRecognizer *_singleTapGestureRecognizer;
+    UITapGestureRecognizer *_doubleTapGestureRecognizer;
+    HFCameraAnalyticsCameraClipExportSessionEvent *_exportSessionEvent;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType accessoryButtonHandler; // @synthesize accessoryButtonHandler=_accessoryButtonHandler;
@@ -47,10 +49,11 @@
 @property (readonly, nonatomic) double currentScrubberResolution;
 @property (strong, nonatomic) HUClipScrubberDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;
-@property (copy, nonatomic) CDUnknownBlockType deletionHandler; // @synthesize deletionHandler=_deletionHandler;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) UITapGestureRecognizer *doubleTapGestureRecognizer; // @synthesize doubleTapGestureRecognizer=_doubleTapGestureRecognizer;
 @property (copy, nonatomic) CDUnknownBlockType endEditingHandler; // @synthesize endEditingHandler=_endEditingHandler;
 @property (weak, nonatomic) HMCameraClipFetchVideoAssetContextOperation *exportDownloadOperation; // @synthesize exportDownloadOperation=_exportDownloadOperation;
+@property (strong, nonatomic) HFCameraAnalyticsCameraClipExportSessionEvent *exportSessionEvent; // @synthesize exportSessionEvent=_exportSessionEvent;
 @property (strong, nonatomic) UIButton *feedbackButton; // @synthesize feedbackButton=_feedbackButton;
 @property (strong, nonatomic) UIView *feedbackPlatter; // @synthesize feedbackPlatter=_feedbackPlatter;
 @property (strong, nonatomic) NSLayoutConstraint *feedbackPlatterTopAnchorConstraint; // @synthesize feedbackPlatterTopAnchorConstraint=_feedbackPlatterTopAnchorConstraint;
@@ -68,6 +71,7 @@
 @property (strong, nonatomic) UIButton *selectionButton; // @synthesize selectionButton=_selectionButton;
 @property (strong, nonatomic) UIView *selectionPlatter; // @synthesize selectionPlatter=_selectionPlatter;
 @property (strong, nonatomic) NSLayoutConstraint *selectionPlatterTopAnchorConstraint; // @synthesize selectionPlatterTopAnchorConstraint=_selectionPlatterTopAnchorConstraint;
+@property (strong, nonatomic) UITapGestureRecognizer *singleTapGestureRecognizer; // @synthesize singleTapGestureRecognizer=_singleTapGestureRecognizer;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -78,30 +82,32 @@
 - (void)_presentAlertWithTitle:(id)arg1 message:(id)arg2;
 - (void)_scrubberDisplayLinkTick:(id)arg1;
 - (void)_updatePlaybackPosition:(id)arg1 animated:(BOOL)arg2;
-- (void)_updateScrubberDisplayLinkState;
 - (void)changeToLiveMode;
 - (void)consentController:(id)arg1 didFinishConsentWithAnswer:(BOOL)arg2;
 - (void)dealloc;
 - (void)deleteClip;
+- (void)didDoubleTap:(id)arg1;
 - (void)didPinch:(id)arg1;
 - (void)didSelectFeedbackButton;
-- (void)didSelectLeftActionButton:(id)arg1;
 - (void)didSelectRightActionButton:(id)arg1;
 - (void)didTap:(id)arg1;
 - (void)dismissEditInterface;
 - (unsigned long long)displayMode;
+- (void)donateAllClips;
+- (void)donateClip:(id)arg1;
 - (void)exportCurrentClipWithCompletion:(CDUnknownBlockType)arg1;
 - (void)exportLocalClipAtURL:(id)arg1;
+- (BOOL)gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2;
 - (id)initWithPlaybackEngine:(id)arg1;
 - (void)loadView;
-- (void)manager:(id)arg1 didSubmitCameraClip:(id)arg2;
-- (void)manager:(id)arg1 didSubmitCameraClips:(id)arg2;
 - (id)outputURLForClip:(id)arg1;
 - (id)platterWithView:(id)arg1;
-- (void)playbackEngine:(id)arg1 didUpdateClipManager:(id)arg2;
+- (void)playbackEngine:(id)arg1 didRemoveEvents:(id)arg2;
+- (void)playbackEngine:(id)arg1 didUpdateEvents:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdatePlaybackError:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdatePlaybackPosition:(id)arg2;
 - (void)playbackEngine:(id)arg1 didUpdateTimeControlStatus:(unsigned long long)arg2;
+- (void)playbackEngine:(id)arg1 didUpdateTimelineState:(unsigned long long)arg2;
 - (void)presentFeedbackConsent;
 - (void)presentFeedbackOptions;
 - (void)presentPreviouslySubmittedClipAlert;
@@ -110,12 +116,13 @@
 - (void)showAssociatedAccessories;
 - (void)showDeleteInterface;
 - (void)showEditInterface;
-- (void)submitAllUnsubmittedClips;
 - (void)submitCurrentClip;
 - (void)togglePlayPause;
+- (void)updateAccessoryViews;
 - (void)updateDisplayForLiveMode;
+- (void)updateScrubberDisplayLinkState;
 - (void)updateScrubberViewAndAssociatedConstraints;
-- (void)updateTimelineState:(unsigned long long)arg1;
+- (void)updateSelectionPlatterDisplay;
 - (id)uploadURLCameraClip:(id)arg1;
 - (BOOL)userIsScrubbing;
 - (void)verifySubmitAllClips;

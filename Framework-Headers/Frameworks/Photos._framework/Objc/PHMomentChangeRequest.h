@@ -14,6 +14,7 @@
 {
 }
 
+@property (readonly, nonatomic) long long accessScopeOptionsRequirement;
 @property (nonatomic) float aggregationScore;
 @property (readonly, nonatomic, getter=isClientEntitled) BOOL clientEntitled;
 @property (readonly, nonatomic) NSString *clientName;
@@ -34,8 +35,6 @@
 - (void)encodeToXPCDict:(id)arg1;
 - (id)initWithUUID:(id)arg1 objectID:(id)arg2;
 - (id)initWithXPCDict:(id)arg1 request:(id)arg2 clientAuthorization:(id)arg3;
-- (BOOL)prepareForPhotoLibraryCheck:(id)arg1 error:(id *)arg2;
-- (BOOL)prepareForServicePreflightCheck:(id *)arg1;
 - (BOOL)validateMutationsToManagedObject:(id)arg1 error:(id *)arg2;
 
 @end

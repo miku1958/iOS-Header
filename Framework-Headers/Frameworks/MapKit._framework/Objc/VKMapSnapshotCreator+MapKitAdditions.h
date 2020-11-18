@@ -8,6 +8,7 @@
 
 @interface VKMapSnapshotCreator (MapKitAdditions)
 - (void)_mapkit_configureFromDefaults;
+- (void)_mapkit_configureLabelSizesForContentSizeCategory:(id)arg1;
 - (void)_mapkit_configureWithOptions:(id)arg1;
 @end
 

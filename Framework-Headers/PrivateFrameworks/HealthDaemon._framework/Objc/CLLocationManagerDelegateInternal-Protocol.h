@@ -6,19 +6,24 @@
 
 #import <HealthDaemon/CLLocationManagerDelegate-Protocol.h>
 
-@class CLLocation, CLLocationManager, NSArray, NSDictionary, NSError, _CLRangingPeer;
+@class CLLocation, CLLocationManager, CLRegion, CLVisit, NSArray, NSDictionary, NSError, _CLRangingPeer;
 
 @protocol CLLocationManagerDelegateInternal <CLLocationManagerDelegate>
 
 @optional
+- (void)locationManager:(CLLocationManager *)arg1 didArrive:(CLVisit *)arg2 completion:(void (^)(void))arg3;
 - (void)locationManager:(CLLocationManager *)arg1 didChangeAppStatusFor:(NSDictionary *)arg2;
 - (void)locationManager:(CLLocationManager *)arg1 didChangeStatusForTechnology:(int)arg2 active:(BOOL)arg3;
+- (void)locationManager:(CLLocationManager *)arg1 didDepart:(CLVisit *)arg2 completion:(void (^)(void))arg3;
+- (void)locationManager:(CLLocationManager *)arg1 didEnter:(CLRegion *)arg2 completion:(void (^)(void))arg3;
+- (void)locationManager:(CLLocationManager *)arg1 didExit:(CLRegion *)arg2 completion:(void (^)(void))arg3;
 - (void)locationManager:(CLLocationManager *)arg1 didFailFindingPlacemarkForLocation:(CLLocation *)arg2 withError:(NSError *)arg3;
 - (void)locationManager:(CLLocationManager *)arg1 didFindPlacemark:(NSDictionary *)arg2 forLocation:(CLLocation *)arg3;
 - (void)locationManager:(CLLocationManager *)arg1 didNotReceiveLocationUpdatesForRegionMonitoringInInterval:(double)arg2;
 - (void)locationManager:(CLLocationManager *)arg1 didRangePeers:(NSArray *)arg2;
 - (void)locationManager:(CLLocationManager *)arg1 didReceiveApproval:(BOOL)arg2;
 - (void)locationManager:(CLLocationManager *)arg1 didRecordHistoricLocation:(CLLocation *)arg2 forInterval:(double)arg3;
+- (void)locationManager:(CLLocationManager *)arg1 didSignificantlyChangeLocation:(CLLocation *)arg2 completion:(void (^)(void))arg3;
 - (void)locationManager:(CLLocationManager *)arg1 didStartRangingForPeer:(_CLRangingPeer *)arg2;
 - (void)locationManager:(CLLocationManager *)arg1 didStopRangingForPeer:(_CLRangingPeer *)arg2;
 - (void)locationManager:(CLLocationManager *)arg1 didUpdateToLocation:(CLLocation *)arg2 fromLocation:(CLLocation *)arg3 usingSupportInfo:(NSDictionary *)arg4;

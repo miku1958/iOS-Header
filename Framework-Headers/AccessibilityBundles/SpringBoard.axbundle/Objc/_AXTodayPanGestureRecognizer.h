@@ -9,12 +9,16 @@
 @interface _AXTodayPanGestureRecognizer : UIPanGestureRecognizer
 {
     BOOL _show;
+    BOOL _leading;
     long long _overriddenState;
 }
 
+@property (nonatomic) BOOL leading; // @synthesize leading=_leading;
 @property (nonatomic) long long overriddenState; // @synthesize overriddenState=_overriddenState;
 @property (nonatomic) BOOL show; // @synthesize show=_show;
 
+- (double)_xDimensionForTransition;
+- (id)initGestureToShow:(BOOL)arg1 leading:(BOOL)arg2;
 - (long long)state;
 - (struct CGPoint)translationInView:(id)arg1;
 - (struct CGPoint)velocityInView:(id)arg1;

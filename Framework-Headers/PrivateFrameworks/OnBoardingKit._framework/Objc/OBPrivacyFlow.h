@@ -34,6 +34,7 @@
 @property (readonly, nonatomic) BOOL showInCombinedList;
 
 + (id)_modelSpecificLocalizedStringKeyForKey:(id)arg1 preferredDeviceType:(unsigned long long)arg2;
++ (id)_splashPlistFromBundle:(id)arg1 forContentName:(id)arg2;
 + (id)flowWithBundle:(id)arg1;
 - (void).cxx_destruct;
 - (id)_bundleImageNamed:(id)arg1;
@@ -43,6 +44,7 @@
 - (id)_iconType;
 - (id)_splashLocalizedStringForKey:(id)arg1 language:(id)arg2 preferredDeviceType:(unsigned long long)arg3;
 - (id)_splashLocalizedStringForKey:(id)arg1 language:(id)arg2 table:(id)arg3 preferredDeviceType:(unsigned long long)arg4;
+- (id)_splashPlist;
 - (id)_textForConditionalItem:(id)arg1 language:(id)arg2 preferredDeviceType:(unsigned long long)arg3;
 - (id)initWithBundle:(id)arg1;
 - (id)initWithSplashContent:(id)arg1;

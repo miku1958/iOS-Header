@@ -54,6 +54,7 @@
     unsigned int _leftPresetBitmask;
     unsigned int _rightPresetBitmask;
     int _availableInputEars;
+    int _earsSupportingWatch;
     NSString *leftUUID;
     NSString *rightUUID;
     NSString *name;
@@ -104,6 +105,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, strong, nonatomic) NSString *deviceUUID;
+@property (nonatomic) int earsSupportingWatch; // @synthesize earsSupportingWatch=_earsSupportingWatch;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isConnecting; // @synthesize isConnecting;
 @property (nonatomic) BOOL isPaired; // @synthesize isPaired;
@@ -172,10 +174,12 @@
 @property (nonatomic) BOOL supportsCombinedVolumes; // @synthesize supportsCombinedVolumes=_supportsCombinedVolumes;
 
 + (id)characteristicsUUIDs;
++ (id)deviceIDFromLeftID:(id)arg1 andRightID:(id)arg2;
 - (void).cxx_destruct;
 - (void)_init;
 - (void)_sendDelayedWrites;
 - (BOOL)addPeripheral:(id)arg1;
+- (BOOL)addPeripheral:(id)arg1 asLeft:(BOOL)arg2;
 - (unsigned long long)availablePropertiesForPeripheral:(id)arg1;
 - (void)checkPairingStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)connect;

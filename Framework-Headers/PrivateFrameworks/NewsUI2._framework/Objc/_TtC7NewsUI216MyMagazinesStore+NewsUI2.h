@@ -6,7 +6,11 @@
 
 #import <NewsUI2/_TtC7NewsUI216MyMagazinesStore.h>
 
-@interface _TtC7NewsUI216MyMagazinesStore (NewsUI2)
+#import <NewsUI2/FCOfflineIssueListObserving-Protocol.h>
+
+@interface _TtC7NewsUI216MyMagazinesStore (NewsUI2) <FCOfflineIssueListObserving>
 - (void)issueReadingHistoryDidChange:(id)arg1 forIssueIDs:(id)arg2;
+- (void)offlineIssueList:(id)arg1 didAddIssues:(id)arg2 removeIssues:(id)arg3;
+- (void)subscriptionController:(id)arg1 didAddTags:(id)arg2 changeTags:(id)arg3 moveTags:(id)arg4 removeTags:(id)arg5 subscriptionType:(unsigned long long)arg6 eventInitiationLevel:(long long)arg7;
 @end
 

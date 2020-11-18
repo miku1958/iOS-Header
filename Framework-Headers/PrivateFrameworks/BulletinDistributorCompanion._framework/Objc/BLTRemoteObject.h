@@ -8,7 +8,7 @@
 
 #import <BulletinDistributorCompanion/IDSServiceDelegate-Protocol.h>
 
-@class BLTPBProtobufSequenceNumberManager, NSLock, NSMutableDictionary, NSString;
+@class BLTPBProtobufSequenceNumberManager, BLTSimpleCache, NSLock, NSMutableDictionary, NSString;
 @protocol BLTAbstractIDSDevice, BLTAbstractIDSService, OS_dispatch_queue;
 
 @interface BLTRemoteObject : NSObject <IDSServiceDelegate>
@@ -23,6 +23,7 @@
     NSMutableDictionary *_idsRequestMessageTypeToSelector;
     NSLock *_sequenceNumberSendLock;
     NSObject<OS_dispatch_queue> *_connectionStatusQueue;
+    unsigned long long _stateHandler;
     unsigned long long _simConnectionState;
     id _simConnectionStateHandlerToken;
     BOOL _pairedDeviceReady;
@@ -30,6 +31,8 @@
     unsigned long long _lastKnownConnectionStatus;
     id<BLTAbstractIDSService> _service;
     BLTPBProtobufSequenceNumberManager *_sequenceNumberManager;
+    BLTSimpleCache *_mruCacheOfSends;
+    BLTSimpleCache *_mruCacheOfReceives;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *clientQueue; // @synthesize clientQueue=_clientQueue;
@@ -37,6 +40,8 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) unsigned long long lastKnownConnectionStatus; // @synthesize lastKnownConnectionStatus=_lastKnownConnectionStatus;
+@property (strong, nonatomic) BLTSimpleCache *mruCacheOfReceives; // @synthesize mruCacheOfReceives=_mruCacheOfReceives;
+@property (strong, nonatomic) BLTSimpleCache *mruCacheOfSends; // @synthesize mruCacheOfSends=_mruCacheOfSends;
 @property (getter=isPairedDeviceReady) BOOL pairedDeviceReady; // @synthesize pairedDeviceReady=_pairedDeviceReady;
 @property (readonly, nonatomic) BLTPBProtobufSequenceNumberManager *sequenceNumberManager; // @synthesize sequenceNumberManager=_sequenceNumberManager;
 @property (readonly, nonatomic) id<BLTAbstractIDSService> service; // @synthesize service=_service;
@@ -48,7 +53,7 @@
 - (void)_handleNewSessionState:(unsigned long long)arg1;
 - (BOOL)_idsQueueCallSendCompletionHandlerWithSuccess:(BOOL)arg1 identifier:(id)arg2 error:(id)arg3;
 - (void)_queueHandleIDSProtobuf:(id)arg1;
-- (void)_queuePerformSend:(CDUnknownBlockType)arg1 responseToRequest:(id)arg2 withTimeout:(id)arg3 withDescription:(id)arg4 shortDescription:(id)arg5 onlyOneFor:(id)arg6 allowCloudDelivery:(BOOL)arg7 didSend:(CDUnknownBlockType)arg8 andResponse:(CDUnknownBlockType)arg9;
+- (void)_queuePerformSend:(CDUnknownBlockType)arg1 responseToRequest:(id)arg2 withTimeout:(id)arg3 withDescription:(id)arg4 shortDescription:(id)arg5 onlyOneFor:(id)arg6 allowCloudDelivery:(BOOL)arg7 nonWaking:(BOOL)arg8 didSend:(CDUnknownBlockType)arg9 andResponse:(CDUnknownBlockType)arg10;
 - (void)_queueSendRequest:(id)arg1;
 - (void)_queueUpdateConnectionStatusWithResetDefaulteDevice:(BOOL)arg1;
 - (void)_removeAndHandleResponseHandler:(id)arg1;

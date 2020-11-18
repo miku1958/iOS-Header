@@ -65,7 +65,7 @@
 - (void).cxx_destruct;
 - (void)_createConstraints;
 - (void)_createSubviews;
-- (struct CGSize)_imageSizeForScreenType:(unsigned long long)arg1 showingTransferButton:(BOOL)arg2;
+- (struct CGSize)_imageSizeShowingTransferButton:(BOOL)arg1;
 - (id)_paymentRequestForAmount:(id)arg1;
 - (void)_presentAddCardAlert:(id)arg1;
 - (void)_presentTermsAndConditionsWithCompletion:(CDUnknownBlockType)arg1;

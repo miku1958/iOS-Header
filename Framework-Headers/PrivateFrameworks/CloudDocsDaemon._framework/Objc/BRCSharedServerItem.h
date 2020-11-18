@@ -17,7 +17,6 @@ __attribute__((visibility("hidden")))
 - (id)fallbackParentItemIDOnFS;
 - (id)fallbackParentItemOnFS;
 - (id)fallbackParentServerItemOnFS;
-- (BOOL)isSharedItem;
 - (BOOL)isSharedToMeChildItem;
 - (BOOL)isSharedToMeTopLevelItem;
 - (id)parentItemIDOnFS;

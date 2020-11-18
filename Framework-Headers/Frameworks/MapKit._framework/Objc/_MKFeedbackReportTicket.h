@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)cancel;
 - (id)initWithFeedbackReportTicket:(id)arg1;
+- (void)submitWithCallbackQueue:(id)arg1 handler:(CDUnknownBlockType)arg2 networkActivity:(CDUnknownBlockType)arg3;
 - (void)submitWithHandler:(CDUnknownBlockType)arg1 networkActivity:(CDUnknownBlockType)arg2;
 
 @end

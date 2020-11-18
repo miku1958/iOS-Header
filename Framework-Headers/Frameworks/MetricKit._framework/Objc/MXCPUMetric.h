@@ -11,8 +11,10 @@
 @interface MXCPUMetric : MXMetric
 {
     NSMeasurement *_cumulativeCPUTime;
+    NSMeasurement *_cumulativeCPUInstructions;
 }
 
+@property (readonly) NSMeasurement *cumulativeCPUInstructions; // @synthesize cumulativeCPUInstructions=_cumulativeCPUInstructions;
 @property (readonly) NSMeasurement *cumulativeCPUTime; // @synthesize cumulativeCPUTime=_cumulativeCPUTime;
 
 + (BOOL)supportsSecureCoding;
@@ -20,6 +22,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithCumulativeCPUTimeMeasurement:(id)arg1;
+- (id)initWithCumulativeCPUTimeMeasurement:(id)arg1 withCumulativeCPUInstructions:(id)arg2;
+- (id)initWithCumulativeCPUTimeMeasurement:(id)arg1 withCumulativeCPUInstructions:(id)arg2 withCumulativeForegroundCPUTimeMeasurement:(id)arg3 withCumulativeBackgroundCPUTimeMeasurement:(id)arg4;
 - (id)toDictionary;
 
 @end

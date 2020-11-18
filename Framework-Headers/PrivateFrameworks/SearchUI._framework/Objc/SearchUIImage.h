@@ -16,19 +16,17 @@
     SFImage *_sfImage;
 }
 
+@property (readonly, nonatomic) int defaultCornerRoundingStyle;
 @property (nonatomic) BOOL needsTinting; // @synthesize needsTinting=_needsTinting;
-@property (strong, nonatomic) SFImage *sfImage; // @synthesize sfImage=_sfImage;
+@property (readonly, nonatomic) SFImage *sfImage; // @synthesize sfImage=_sfImage;
 @property (strong, nonatomic) UIImage *uiImage; // @synthesize uiImage=_uiImage;
 @property (nonatomic) BOOL useFastPathShadow; // @synthesize useFastPathShadow=_useFastPathShadow;
 
-+ (BOOL)image:(id)arg1 isEqualToImage:(id)arg2;
-+ (id)imageForSuggestionCardSectionType:(int)arg1;
 + (id)imageWithSFImage:(id)arg1;
 + (id)imageWithSFImage:(id)arg1 variantForAppIcon:(unsigned long long)arg2;
-+ (BOOL)isEqualHasSubclassOverrideForImage1:(id)arg1 image2:(id)arg2;
-+ (BOOL)isEqualHasSubclassOverrideForImage:(id)arg1;
 - (void).cxx_destruct;
 - (double)cornerRadius;
+- (int)cornerRoundingStyle;
 - (unsigned long long)hash;
 - (id)imageData;
 - (id)initWithImage:(id)arg1;

@@ -13,6 +13,7 @@
 
 @property (copy) CDUnknownBlockType callback; // @synthesize callback=_callback;
 
+- (void).cxx_destruct;
 - (void)dealloc;
 - (void)handlePreferencesOrProfileChanged;
 - (void)start:(CDUnknownBlockType)arg1;

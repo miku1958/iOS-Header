@@ -6,20 +6,25 @@
 
 #import <objc/NSObject.h>
 
+@class NSString;
 @protocol OS_nw_endpoint, OS_nw_interface, OS_nw_parameters, nw_listener_inbox_delegate;
 
 __attribute__((visibility("hidden")))
 @interface nw_listener_inbox : NSObject
 {
     NSObject<nw_listener_inbox_delegate> *_delegate;
+    struct os_unfair_lock_s _lock;
+    NSString *_description;
     NSObject<OS_nw_endpoint> *_local_endpoint;
     NSObject<OS_nw_interface> *_interface;
     NSObject<OS_nw_parameters> *_parameters;
     unsigned int _suspended:1;
+    BOOL _multicast;
 }
 
 @property (readonly, nonatomic) NSObject<OS_nw_interface> *interface; // @synthesize interface=_interface;
 @property (readonly, nonatomic) NSObject<OS_nw_endpoint> *local_endpoint; // @synthesize local_endpoint=_local_endpoint;
+@property (nonatomic) BOOL multicast; // @synthesize multicast=_multicast;
 
 - (void).cxx_destruct;
 - (BOOL)cancel;

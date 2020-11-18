@@ -31,6 +31,7 @@
 - (BOOL)iterEventHighlightsFrom:(id)arg1 to:(id)arg2 error:(id *)arg3 block:(CDUnknownBlockType)arg4;
 - (BOOL)iterEventHighlightsFrom:(id)arg1 to:(id)arg2 options:(int)arg3 error:(id *)arg4 block:(CDUnknownBlockType)arg5;
 - (BOOL)iterEventNameRecordsForClient:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
+- (BOOL)iterScoredEventsWithQuery:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (BOOL)iterWeeklyEventHighlightsError:(id *)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)iterWeeklyEventHighlightsWithOptions:(int)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (BOOL)loadEventNameRecordsAndMonitorChangesWithDelegate:(id)arg1 error:(id *)arg2;

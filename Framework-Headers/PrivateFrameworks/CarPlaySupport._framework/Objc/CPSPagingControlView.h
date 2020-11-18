@@ -33,6 +33,7 @@
 @property (strong, nonatomic) UILabel *positionLabel; // @synthesize positionLabel=_positionLabel;
 @property (strong, nonatomic) UIButton *previousButton; // @synthesize previousButton=_previousButton;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) BOOL useRightHandDriveFocusGuide;
 
 - (void).cxx_destruct;
 - (void)_handleNextButton:(id)arg1;

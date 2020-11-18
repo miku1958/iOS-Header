@@ -6,7 +6,7 @@
 
 #import <DeviceManagement/DMFInstallAppRequest.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSNumber, NSString;
 
 @interface DMFMDMv1InstallAppRequest : DMFInstallAppRequest
 {
@@ -16,18 +16,22 @@
     unsigned long long _managementOptions;
     NSString *_VPNUUIDString;
     NSArray *_associatedDomains;
+    NSNumber *_associatedDomainsEnableDirectDownloads;
+    NSNumber *_removable;
     NSDictionary *_configuration;
     NSString *_personaID;
 }
 
 @property (copy, nonatomic) NSString *VPNUUIDString; // @synthesize VPNUUIDString=_VPNUUIDString;
 @property (copy, nonatomic) NSArray *associatedDomains; // @synthesize associatedDomains=_associatedDomains;
+@property (copy, nonatomic) NSNumber *associatedDomainsEnableDirectDownloads; // @synthesize associatedDomainsEnableDirectDownloads=_associatedDomainsEnableDirectDownloads;
 @property (copy, nonatomic) NSDictionary *configuration; // @synthesize configuration=_configuration;
 @property (nonatomic) BOOL manage; // @synthesize manage=_manage;
 @property (nonatomic) unsigned long long managementOptions; // @synthesize managementOptions=_managementOptions;
 @property (copy, nonatomic) NSString *originator; // @synthesize originator=_originator;
 @property (copy, nonatomic) NSString *personaID; // @synthesize personaID=_personaID;
 @property (copy, nonatomic) NSString *redemptionCode; // @synthesize redemptionCode=_redemptionCode;
+@property (copy, nonatomic) NSNumber *removable; // @synthesize removable=_removable;
 
 + (BOOL)isPermittedOnSystemConnection;
 + (BOOL)isPermittedOnUserConnection;

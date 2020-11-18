@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     UIImage *m_image;
     SEL m_action;
     int m_type;
+    BOOL m_requiresAuthenticatedTouch;
     CDUnknownBlockType m_configurationBlock;
 }
 
@@ -23,8 +24,9 @@ __attribute__((visibility("hidden")))
 
 + (id)buttonDescriptionWithImage:(id)arg1 action:(SEL)arg2 type:(int)arg3;
 + (id)buttonDescriptionWithTitle:(id)arg1 action:(SEL)arg2 type:(int)arg3;
++ (id)buttonDescriptionWithTitle:(id)arg1 action:(SEL)arg2 type:(int)arg3 requiresAuthenticatedTouch:(BOOL)arg4;
 - (void).cxx_destruct;
-- (id)initWithTitle:(id)arg1 orImage:(id)arg2 action:(SEL)arg3 type:(int)arg4;
+- (id)initWithTitle:(id)arg1 orImage:(id)arg2 action:(SEL)arg3 type:(int)arg4 requiresAuthenticatedTouch:(BOOL)arg5;
 - (id)materializeButtonInView:(id)arg1;
 
 @end

@@ -12,6 +12,7 @@
 
 @interface HMDMPCResolveDestinationOperation : HMFOperation <HMFObject>
 {
+    BOOL _forceSingleGroup;
     MPCAssistantMutableRemoteControlDestination *_resolvedDestination;
     NSArray *_hashedRouteIDs;
     CDUnknownBlockType _resolveDestinationCompletionBlock;
@@ -21,6 +22,7 @@
 @property (readonly, copy, nonatomic) NSArray *attributeDescriptions;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL forceSingleGroup; // @synthesize forceSingleGroup=_forceSingleGroup;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSArray *hashedRouteIDs; // @synthesize hashedRouteIDs=_hashedRouteIDs;
 @property (readonly, nonatomic) long long mediaApplicationDestination; // @synthesize mediaApplicationDestination=_mediaApplicationDestination;
@@ -33,7 +35,7 @@
 
 + (id)shortDescription;
 - (void).cxx_destruct;
-- (id)initWithHashedRouteIDs:(id)arg1 mediaApplicationDestination:(long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (id)initWithHashedRouteIDs:(id)arg1 mediaApplicationDestination:(long long)arg2 forceSingleGroup:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)main;
 - (void)setCompletionBlock:(CDUnknownBlockType)arg1;
 

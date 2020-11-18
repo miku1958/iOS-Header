@@ -13,11 +13,13 @@ __attribute__((visibility("hidden")))
 {
     double _minimumPresentationIntervalNormal;
     double _minimumPresentationIntervalRestricted;
+    double _pageEventDelay;
     NSArray *_whitelistedFields;
 }
 
 @property (nonatomic) double minimumPresentationIntervalNormal; // @synthesize minimumPresentationIntervalNormal=_minimumPresentationIntervalNormal;
 @property (nonatomic) double minimumPresentationIntervalRestricted; // @synthesize minimumPresentationIntervalRestricted=_minimumPresentationIntervalRestricted;
+@property (nonatomic) double pageEventDelay; // @synthesize pageEventDelay=_pageEventDelay;
 @property (strong, nonatomic) NSArray *whitelistedFields; // @synthesize whitelistedFields=_whitelistedFields;
 
 - (void).cxx_destruct;

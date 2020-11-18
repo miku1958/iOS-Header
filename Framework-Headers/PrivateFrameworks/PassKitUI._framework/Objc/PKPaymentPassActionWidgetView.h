@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSString, PKPaymentPass, PKPeerPaymentAccount;
+@class NSArray, NSString, PKFamilyMember, PKPaymentPass, PKPeerPaymentAccount;
 @protocol PKPaymentPassActionWidgetViewDelegate;
 
 @interface PKPaymentPassActionWidgetView : UIView
@@ -15,6 +15,7 @@
     NSString *_phoneNumber;
     NSString *_website;
     NSString *_email;
+    PKFamilyMember *_currentUser;
     unsigned long long _widgetViewStyle;
     BOOL _usesAccessibilityLayout;
     unsigned long long _numberOfWidgetsPerRow;
@@ -23,6 +24,7 @@
     id<PKPaymentPassActionWidgetViewDelegate> _delegate;
 }
 
+@property (strong, nonatomic) PKFamilyMember *currentUser; // @synthesize currentUser=_currentUser;
 @property (weak, nonatomic) id<PKPaymentPassActionWidgetViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) PKPaymentPass *paymentPass; // @synthesize paymentPass=_paymentPass;
 @property (strong, nonatomic) PKPeerPaymentAccount *peerPaymentAccount; // @synthesize peerPaymentAccount=_peerPaymentAccount;
@@ -32,13 +34,21 @@
 - (void)_determineWidgetContentWithAvailableWidgets;
 - (id)_titleForAddMoneyWidgetForActions:(id)arg1;
 - (void)cleanUpExistingWidgets;
+- (BOOL)hasSingleColumnLayout;
 - (id)initWithWidgetViewStyle:(unsigned long long)arg1;
 - (void)layoutSubviews;
 - (unsigned long long)numberOfRows;
+- (unsigned long long)numberOfRowsWithWidgetsPerRow:(unsigned long long)arg1;
+- (unsigned long long)numberOfWidgetsPerRowWithSize:(struct CGSize)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (double)targetWidgetWidthForRowWithNumberOfWidgets:(unsigned long long)arg1;
+- (double)targetWidgetWidthForRowWithNumberOfWidgets:(unsigned long long)arg1 rowBounds:(struct CGRect)arg2;
+- (double)targetWidgetWidthForRowWithNumberOfWidgets:(unsigned long long)arg1 rowSize:(struct CGSize)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateNumberOfWidgetsPerRow;
 - (void)updateUseAccessibilityLayout;
+- (void)updateWidgetsAccessibilityLayoutState;
+- (struct CGRect)widgetBoundsForRowWithBounds:(struct CGRect)arg1;
 
 @end
 

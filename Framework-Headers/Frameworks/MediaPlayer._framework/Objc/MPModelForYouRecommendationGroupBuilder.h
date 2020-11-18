@@ -8,6 +8,7 @@
 
 @class MPModelForYouRecommendationItemBuilder, MPMutableSectionedCollection, MPPropertySet, NSDateFormatter, NSDictionary;
 
+__attribute__((visibility("hidden")))
 @interface MPModelForYouRecommendationGroupBuilder : NSObject
 {
     struct {

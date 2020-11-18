@@ -10,7 +10,7 @@
 
 @interface USKNodeSiblingIterator : NSObject <USKIterator>
 {
-    iterator_range_d33a38e4 _range;
+    iterator_range_68be7782 _range;
     struct UsdPrimSiblingIterator _it;
 }
 
@@ -18,7 +18,7 @@
 - (void).cxx_destruct;
 - (id)initWithPrim:(const struct UsdPrim *)arg1;
 - (id)initWithPrim:(const struct UsdPrim *)arg1 withPredicate:(struct Usd_PrimFlagsPredicate)arg2;
-- (id)initWithSiblingRange:(const iterator_range_d33a38e4 *)arg1;
+- (id)initWithSiblingRange:(const iterator_range_68be7782 *)arg1;
 - (id)nextObject;
 
 @end

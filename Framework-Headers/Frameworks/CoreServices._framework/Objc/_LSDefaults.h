@@ -42,6 +42,7 @@
 @property (readonly) NSURL *databaseStoreFileURL;
 @property (readonly) NSURL *dbRecoveryFileURL;
 @property (readonly) NSURL *dbSentinelFileURL;
+@property (readonly) NSURL *dbSyncInterruptedFileURL;
 @property (readonly) BOOL hasPersistentPreferences; // @synthesize hasPersistentPreferences=_hasPersistentPreferences;
 @property BOOL hasServer; // @synthesize hasServer=_hasServer;
 @property (readonly) NSURL *identifiersFileURL;
@@ -60,8 +61,10 @@
 @property (readonly) NSURL *simulatorRootURL;
 @property (readonly) NSString *simulatorRuntimeBuildVersion;
 @property (readonly) NSString *simulatorRuntimeVersion;
+@property (readonly) BOOL surrogatesOnlyFindBundleContainerizedBundles; // @dynamic surrogatesOnlyFindBundleContainerizedBundles;
 @property (readonly) NSURL *systemContainerURL;
 @property (readonly) NSURL *systemGroupContainerURL;
+@property (readonly, getter=isSystemServer) BOOL systemServer; // @dynamic systemServer;
 @property (readonly) NSURL *userContainerURL;
 
 + (BOOL)appleInternal;
@@ -75,9 +78,10 @@
 + (id)userContainerURL;
 - (void).cxx_destruct;
 - (id)classesWithNameForXCTests:(const char *)arg1;
-- (id)darwinNotificationNameForCurrentUser:(id)arg1;
+- (id)darwinNotificationNameForCurrentUser:(id)arg1 userID:(const unsigned int *)arg2;
 - (id)databaseStoreFileURLWithUID:(unsigned int)arg1;
 - (id)databaseUpdateNotificationName;
+- (id)databaseUpdateNotificationNameForUserID:(unsigned int)arg1;
 - (id)debugDescription;
 - (id)init;
 - (id)preferencesFileChangeNotificationName;

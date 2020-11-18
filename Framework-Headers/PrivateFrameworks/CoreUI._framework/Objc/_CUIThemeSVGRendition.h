@@ -6,10 +6,12 @@
 
 #import <CoreUI/CUIThemeRendition.h>
 
+#import <CoreUI/NSLocking-Protocol.h>
+
 @class NSArray, NSData;
 
 __attribute__((visibility("hidden")))
-@interface _CUIThemeSVGRendition : CUIThemeRendition
+@interface _CUIThemeSVGRendition : CUIThemeRendition <NSLocking>
 {
     struct CGSVGDocument *_svgDocument;
     NSData *_fileData;
@@ -20,24 +22,27 @@ __attribute__((visibility("hidden")))
     CDStruct_3c058996 _alignmentRectInsets;
     BOOL _isAlignmentRect;
     struct CGSize _canvasSize;
+    float _templateVersion;
     struct os_unfair_lock_s _lock;
 }
 
 - (id)_initWithCSIHeader:(const struct _csiheader *)arg1;
 - (void)_initalizeMetadataFromCSIData:(const struct _csiheader *)arg1;
-- (struct CGSVGDocument *)_nts_svgDocument;
 - (struct CGSize)canvasSize;
 - (void)dealloc;
-- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2 artworkStatus:(long long)arg3;
+- (id)initWithCSIData:(id)arg1 forKey:(const struct _renditionkeytoken *)arg2;
+- (void)lock;
 - (id)metrics;
 - (int)pixelFormat;
 - (id)rawData;
 - (struct CGSVGDocument *)svgDocument;
+- (void)unlock;
 - (CDStruct_3c058996)vectorGlyphAlignmentRectInsets;
 - (id)vectorGlyphAvailableSizes;
 - (double)vectorGlyphBaseline;
 - (double)vectorGlyphCapLine;
 - (double)vectorGlyphReferencePointSize;
+- (float)vectorGlyphTemplateVersion;
 
 @end
 

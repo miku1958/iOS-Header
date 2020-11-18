@@ -6,15 +6,15 @@
 
 #import <AppleAccount/AAFamilyRequest.h>
 
-@class NSString, SSAccount;
+@class ACAccount, NSString;
 
 @interface FAFamilySetupBuddyMLRequest : AAFamilyRequest
 {
-    SSAccount *_iTunesAccount;
+    ACAccount *_iTunesAccount;
     NSString *_inviteCode;
 }
 
-@property (strong, nonatomic, setter=setiTunesAccount:) SSAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
+@property (strong, nonatomic, setter=setiTunesAccount:) ACAccount *iTunesAccount; // @synthesize iTunesAccount=_iTunesAccount;
 @property (copy, nonatomic) NSString *inviteCode; // @synthesize inviteCode=_inviteCode;
 
 - (void).cxx_destruct;

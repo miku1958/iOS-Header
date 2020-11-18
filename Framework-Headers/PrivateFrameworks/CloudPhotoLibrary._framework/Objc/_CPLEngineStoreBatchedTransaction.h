@@ -6,8 +6,11 @@
 
 #import <objc/NSObject.h>
 
+@class CPLTransaction;
+
 @interface _CPLEngineStoreBatchedTransaction : NSObject
 {
+    CPLTransaction *_dirty;
     CDUnknownBlockType _block;
     CDUnknownBlockType _completionHandler;
 }
@@ -16,6 +19,9 @@
 @property (copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 
 - (void).cxx_destruct;
+- (void)_releaseDirty;
+- (void)dealloc;
+- (id)init;
 
 @end
 

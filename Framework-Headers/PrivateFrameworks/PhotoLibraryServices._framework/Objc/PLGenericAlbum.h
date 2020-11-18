@@ -62,8 +62,12 @@
 @property (readonly, nonatomic) BOOL isPendingPhotoStreamAlbum;
 @property (readonly, nonatomic) BOOL isPhotoStreamAlbum;
 @property (nonatomic) BOOL isPinned; // @dynamic isPinned;
+@property (readonly, nonatomic) BOOL isProjectAlbum;
+@property (readonly, nonatomic) BOOL isProjectAlbumRootFolder;
+@property (nonatomic) BOOL isPrototype; // @dynamic isPrototype;
 @property (readonly, nonatomic) BOOL isRecentlyAddedAlbum;
 @property (nonatomic) BOOL isRegisteredForChanges; // @synthesize isRegisteredForChanges;
+@property (readonly, nonatomic) BOOL isRegularRootFolder;
 @property (readonly, nonatomic) BOOL isRootFolder;
 @property (readonly, nonatomic) BOOL isSmartAlbum;
 @property (readonly, nonatomic) BOOL isStandInAlbum;
@@ -104,7 +108,7 @@
 @property (strong, nonatomic) NSString *uuid; // @dynamic uuid;
 @property (readonly, nonatomic) unsigned long long videosCount;
 
-+ (id)_albumsMatchingPredicate:(id)arg1 inManagedObjectContext:(id)arg2;
++ (id)_albumsMatchingPredicate:(id)arg1 expectedResultCount:(id)arg2 inManagedObjectContext:(id)arg3;
 + (id)_insertNewAlbumWithKind:(int)arg1 title:(id)arg2 lastInterestingDate:(id)arg3 intoLibrary:(id)arg4;
 + (id)_predicateForSupportedAlbumTypes;
 + (void)_removeAlbumsAndFolders:(id)arg1 inManagedObjectContext:(id)arg2;
@@ -119,12 +123,10 @@
 + (id)albumWithObjectID:(id)arg1 inLibrary:(id)arg2;
 + (id)albumWithUUID:(id)arg1 inLibrary:(id)arg2;
 + (id)albumsForStreamID:(id)arg1 inLibrary:(id)arg2;
-+ (id)albumsMatchingPredicate:(id)arg1 inLibrary:(id)arg2;
++ (id)albumsMatchingPredicate:(id)arg1 expectedResultCount:(id)arg2 inLibrary:(id)arg3;
 + (id)albumsToUploadInitiallyInLibrary:(id)arg1 limit:(unsigned long long)arg2;
-+ (id)albumsWithCloudGUID:(id)arg1 inLibrary:(id)arg2;
 + (id)albumsWithCloudGUIDs:(id)arg1 inLibrary:(id)arg2;
 + (id)albumsWithKind:(int)arg1 inManagedObjectContext:(id)arg2;
-+ (id)albumsWithUUID:(id)arg1 inManagedObjectContext:(id)arg2;
 + (id)allAlbumsInLibrary:(id)arg1;
 + (id)allAlbumsInManagedObjectContext:(id)arg1;
 + (id)allAlbumsRegisteredWithManagedObjectContext:(id)arg1;
@@ -150,6 +152,7 @@
 + (id)insertNewCloudSharedAlbumWithTitle:(id)arg1 lastInterestingDate:(id)arg2 intoLibrary:(id)arg3;
 + (id)insertNewFolderWithTitle:(id)arg1 intoLibrary:(id)arg2;
 + (id)insertNewLegacyFaceAlbumIntoLibrary:(id)arg1;
++ (id)insertNewProjectAlbumWithTitle:(id)arg1 documentType:(id)arg2 intoLibrary:(id)arg3;
 + (id)insertNewSmartAlbumIntoLibrary:(id)arg1;
 + (id)insertNewSyncedEventIntoLibrary:(id)arg1;
 + (id)insertNewSyncedEventWithTitle:(id)arg1 intoLibrary:(id)arg2;
@@ -168,7 +171,7 @@
 + (void)removeEmptyAlbumsAndFoldersForCloudResetInManagedObjectContext:(id)arg1;
 + (void)removeInvalidAlbumsAndFoldersInManagedObjectContext:(id)arg1;
 + (void)removeTrashedAlbumsAndFoldersForCloudResetInManagedObjectContext:(id)arg1;
-+ (void)resetAlbumStateForCloudInLibrary:(id)arg1 hardReset:(BOOL)arg2;
++ (void)resetAlbumStateForCloudInLibrary:(id)arg1;
 + (id)rootFolderInLibrary:(id)arg1;
 + (id)searchIndexAllowedPredicate;
 + (id)syncProgressAlbumInLibrary:(id)arg1;
@@ -204,6 +207,7 @@
 - (void)enumerateDerivedAlbums:(CDUnknownBlockType)arg1;
 - (void)enumerateDerivedIndexMappers:(CDUnknownBlockType)arg1;
 - (BOOL)hasDerivedIndexMappers;
+- (BOOL)isProjectAlbumSupportingCloudUpload;
 - (BOOL)isSyncableChange;
 - (id)momentShare;
 - (id)payloadForChangedKeys:(id)arg1;

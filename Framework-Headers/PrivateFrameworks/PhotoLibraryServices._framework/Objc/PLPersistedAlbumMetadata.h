@@ -12,6 +12,7 @@
 {
     BOOL _isFolder;
     BOOL _pinned;
+    BOOL _prototype;
     BOOL _inTrash;
     BOOL _customSortAscending;
     BOOL _allowsOverwrite;
@@ -24,6 +25,7 @@
     NSMutableOrderedSet *_assetUUIDs;
     NSString *_importSessionID;
     NSData *_userQueryData;
+    NSString *_projectDocumentType;
     PLGenericAlbum *_genericAlbum;
     NSURL *_metadataURL;
 }
@@ -41,12 +43,15 @@
 @property (strong, nonatomic) NSNumber *kind; // @synthesize kind=_kind;
 @property (strong, nonatomic) NSURL *metadataURL; // @synthesize metadataURL=_metadataURL;
 @property (nonatomic, getter=isPinned) BOOL pinned; // @synthesize pinned=_pinned;
+@property (strong, nonatomic) NSString *projectDocumentType; // @synthesize projectDocumentType=_projectDocumentType;
+@property (nonatomic, getter=isPrototype) BOOL prototype; // @synthesize prototype=_prototype;
 @property (strong, nonatomic) NSString *title; // @synthesize title=_title;
 @property (strong, nonatomic) NSData *userQueryData; // @synthesize userQueryData=_userQueryData;
 @property (strong, nonatomic) NSString *uuid; // @synthesize uuid=_uuid;
 
 + (BOOL)isValidPath:(id)arg1;
 - (void).cxx_destruct;
+- (id)_fetchChildUUIDs;
 - (BOOL)_readMetadata;
 - (void)_saveMetadata;
 - (id)description;

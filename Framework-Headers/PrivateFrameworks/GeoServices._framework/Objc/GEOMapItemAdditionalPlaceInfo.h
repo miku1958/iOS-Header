@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 @class GEOMapRegion, GEOPlace, NSString;
+@protocol GEOMapItem;
 
 @interface GEOMapItemAdditionalPlaceInfo : NSObject
 {
     GEOPlace *_place;
+    id<GEOMapItem> _mapItem;
 }
 
 @property (readonly, nonatomic) double areaInMeters;
@@ -20,6 +22,7 @@
 @property (readonly, nonatomic) int placeType;
 
 - (void).cxx_destruct;
+- (id)initWithMapItem:(id)arg1;
 - (id)initWithName:(id)arg1 placeType:(int)arg2 areaInMeters:(double)arg3;
 - (id)initWithPlace:(id)arg1;
 

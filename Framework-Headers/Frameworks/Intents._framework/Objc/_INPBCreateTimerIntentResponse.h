@@ -15,11 +15,9 @@
 @interface _INPBCreateTimerIntentResponse : PBCodable <_INPBCreateTimerIntentResponse, NSSecureCoding, NSCopying>
 {
     struct _has;
-    BOOL __encodeLegacyGloryData;
     _INPBTimer *_createdTimer;
 }
 
-@property (nonatomic, setter=_setEncodeLegacyGloryData:) BOOL _encodeLegacyGloryData; // @synthesize _encodeLegacyGloryData=__encodeLegacyGloryData;
 @property (strong, nonatomic) _INPBTimer *createdTimer; // @synthesize createdTimer=_createdTimer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

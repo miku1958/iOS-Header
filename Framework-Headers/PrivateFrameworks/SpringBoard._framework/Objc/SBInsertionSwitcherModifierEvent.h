@@ -20,6 +20,7 @@
 @property (readonly, nonatomic) unsigned long long phase; // @synthesize phase=_phase;
 
 - (void).cxx_destruct;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)initWithAppLayout:(id)arg1 intoIndex:(unsigned long long)arg2 phase:(unsigned long long)arg3;
 - (long long)type;
