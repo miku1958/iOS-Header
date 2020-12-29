@@ -53,6 +53,7 @@
 - (void)addCaptionText:(id)arg1;
 - (void)addPrivacyLinkForBundles:(id)arg1;
 - (double)bottomPadding;
+- (struct CGSize)detachedSize;
 - (BOOL)hasContent;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;

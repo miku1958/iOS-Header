@@ -16,6 +16,7 @@
 - (void)_sbClassicLayout_applyTransformsForClassicPresentationInReferenceSpace:(BOOL)arg1 forInterfaceOrientation:(long long)arg2 withInheritedScaleFromContainer:(double)arg3 applyInheritedScaleToTranslationAndCorners:(BOOL)arg4;
 - (void)sbClassicLayout_applyTransformsForClassicPresentationInLayoutSpaceForInterfaceOrientation:(long long)arg1 withInheritedScaleFromContainer:(double)arg2 applyInheritedScaleToTranslationAndCorners:(BOOL)arg3;
 - (void)sbClassicLayout_applyTransformsForClassicPresentationInReferenceSpaceForInterfaceOrientation:(long long)arg1;
+- (id)sb_ancestorInHierarchyOfView:(id)arg1;
 - (id)sb_firstDescendantOfClass:(Class)arg1;
 - (id)sb_firstDescendantOfClassNamed:(id)arg1;
 - (id)sb_firstDescendantPassingTest:(CDUnknownBlockType)arg1;

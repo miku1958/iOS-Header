@@ -14,5 +14,6 @@
 
 @optional
 - (HROnboardingBaseViewController *)onboardingManager:(HROnboardingManager *)arg1 customViewControllerForPage:(HROnboardingPage *)arg2;
+- (long long)upgradingFromAlgorithmVersionForOnboardingManager:(HROnboardingManager *)arg1;
 @end
 

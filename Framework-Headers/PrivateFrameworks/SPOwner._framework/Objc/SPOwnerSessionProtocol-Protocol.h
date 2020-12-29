@@ -6,7 +6,7 @@
 
 #import <SPOwner/NSObject-Protocol.h>
 
-@class FMFuture, NSArray, NSSet, SPBeacon, SPCommand;
+@class FMFuture, NSArray, NSDate, NSSet, NSUUID, SPBeacon, SPCommand;
 
 @protocol SPOwnerSessionProtocol <NSObject>
 
@@ -18,13 +18,21 @@
 @property (copy, nonatomic) NSSet *locationSources;
 
 - (void)allBeaconsWithCompletion:(void (^)(NSSet *))arg1;
+- (void)disableUTAppAlert:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (FMFuture *)executeCommand:(SPCommand *)arg1;
 - (void)executeCommand:(SPCommand *)arg1 completion:(void (^)(NSError *))arg2;
+- (FMFuture *)executeUTPlaySoundCommand:(SPCommand *)arg1;
+- (void)fetchUnauthorizedEncryptedPayload:(NSUUID *)arg1 completion:(void (^)(NSURL *))arg2;
+- (void)isUTAppAlertDisabled:(void (^)(BOOL))arg1;
 - (void)locationsForBeacons:(NSArray *)arg1 completion:(void (^)(NSDictionary *))arg2;
 - (void)removeBeacon:(SPBeacon *)arg1 completion:(void (^)(NSError *))arg2;
+- (void)shareBeacon:(SPBeacon *)arg1 handles:(NSArray *)arg2 expiration:(NSDate *)arg3 completion:(void (^)(NSDictionary *))arg4;
 - (void)startRefreshing;
 - (void)startRefreshingBeacons:(NSArray *)arg1;
 - (void)stopRefreshing;
 - (void)unacceptedBeaconsWithCompletion:(void (^)(NSSet *))arg1;
+- (void)unknownBeaconsForUUIDs:(NSArray *)arg1 completion:(void (^)(NSArray *))arg2;
+- (void)updateBatteryStatus:(unsigned char)arg1 beaconUUID:(NSUUID *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)updateBeaconObservations:(NSArray *)arg1 completion:(void (^)(NSError *))arg2;
 @end
 

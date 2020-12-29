@@ -25,6 +25,7 @@
     MISSING_TYPE *sessionHandOffContinuityID;
     MISSING_TYPE *preferencesLanguageCode;
     MISSING_TYPE *personalDomainsAuthenticationMode;
+    MISSING_TYPE *bargeInContext;
     MISSING_TYPE *isLockedWithPasscodeClosure;
     MISSING_TYPE *isHomePodGestalt;
     MISSING_TYPE *isAppleTVGestalt;

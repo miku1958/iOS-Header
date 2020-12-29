@@ -30,6 +30,7 @@
     MISSING_TYPE *serverUnfilledReason;
     MISSING_TYPE *mediaMetricHelper;
     MISSING_TYPE *attachedToView;
+    MISSING_TYPE *vended;
     MISSING_TYPE *discarded;
     MISSING_TYPE *consumed;
     MISSING_TYPE *unfilledReasonDelegate;
@@ -65,6 +66,7 @@
 @property (nonatomic, copy) NSArray *representations;
 @property (nonatomic) long long serverUnfilledReason; // @synthesize serverUnfilledReason;
 @property (nonatomic, readonly) NSDictionary *transparencyDetailsDictionary;
+@property (nonatomic) BOOL vended; // @synthesize vended;
 
 - (void).cxx_destruct;
 - (id)init;

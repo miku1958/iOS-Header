@@ -11,15 +11,16 @@
 @interface _TtC12GameCenterUI14EmptyStateView : UIView
 {
     MISSING_TYPE *imageView;
+    MISSING_TYPE *wordmarkView;
     MISSING_TYPE *primaryLabel;
     MISSING_TYPE *secondaryLabel;
     MISSING_TYPE *button;
     MISSING_TYPE *disabled;
     MISSING_TYPE *imageType;
-    MISSING_TYPE *addFriendsHandler;
+    MISSING_TYPE *buttonActionBlock;
 }
 
-@property (nonatomic, copy) CDUnknownBlockType addFriendsHandler;
+@property (nonatomic, copy) CDUnknownBlockType buttonActionBlock;
 
 + (id)addAdditionalFriendsEmptyStateView;
 + (id)addFriendsEmptyStateView;

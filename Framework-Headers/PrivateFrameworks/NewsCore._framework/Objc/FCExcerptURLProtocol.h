@@ -15,6 +15,8 @@
 
 @property (strong, nonatomic) FCCKContentFetchOperation *fetchOperation; // @synthesize fetchOperation=_fetchOperation;
 
++ (BOOL)canHandleURL:(id)arg1;
++ (BOOL)canHandleURLWithComponents:(id)arg1;
 + (BOOL)canInitWithRequest:(id)arg1;
 + (id)canonicalRequestForRequest:(id)arg1;
 + (id)excerptURLForArticleID:(id)arg1 changeTag:(id)arg2;

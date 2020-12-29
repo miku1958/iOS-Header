@@ -80,6 +80,7 @@
 - (id)_localizedLanguageSpecificKeysByOriginalKeyForContentStoreFrontID:(id)arg1 languageCode:(id)arg2;
 - (void)_prepareForUse;
 - (id)_recordBaseFromCKRecord:(id)arg1;
+- (id)_recordFromCKRecord:(id)arg1;
 - (id)_saveCKRecordsWithWriteLock:(id)arg1 updateFetchDateForRecordIdentifiers:(id)arg2 fetchContext:(id)arg3;
 - (void)cacheCoordinator:(id)arg1 flushKeysWithWriteLock:(id)arg2;
 - (unsigned long long)cacheCoordinatorCurrentSizeWithReadLock:(id)arg1;
@@ -96,6 +97,7 @@
 - (id)init;
 - (id)initWithContentDatabase:(id)arg1 contentDirectory:(id)arg2;
 - (id)initWithContentDatabase:(id)arg1 contentDirectory:(id)arg2 experimentalizableFieldsPostfix:(id)arg3 activeTreatmentID:(id)arg4;
+- (id)interestTokenForRecordIDs:(id)arg1;
 - (BOOL)isRecordStale:(id)arg1 withCachePolicy:(id)arg2;
 - (id)jsonEncodableObject;
 - (id)keyValueRepresentationOfRecord:(id)arg1;
@@ -103,8 +105,9 @@
 - (int)pbRecordType;
 - (BOOL)recognizesRecordID:(id)arg1;
 - (id)recordFromCKRecord:(id)arg1 base:(id)arg2;
-- (id)recordIDPrefix;
+- (id)recordIDPrefixes;
 - (id)recordType;
+- (id)savePBRecords:(id)arg1;
 - (id)saveRecords:(id)arg1;
 - (id)storeFilename;
 - (unsigned long long)storeVersion;

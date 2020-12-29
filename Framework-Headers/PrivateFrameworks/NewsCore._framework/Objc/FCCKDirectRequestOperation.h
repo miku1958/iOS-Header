@@ -56,7 +56,6 @@
 - (id)_bundleIDToReport;
 - (id)_errorFromHTTPResponse:(id)arg1;
 - (id)_errorFromOperationResultError:(id)arg1;
-- (id)_mmeClientInfo;
 - (void)_processResponseData:(id)arg1;
 - (id)_requestBodyData;
 - (id)_requestHeadersWithBaseURL:(id)arg1;

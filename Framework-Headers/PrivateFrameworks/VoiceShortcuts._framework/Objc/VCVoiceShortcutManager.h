@@ -56,6 +56,7 @@
 - (void)getVoiceShortcutsWithAccessSpecifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithDatabaseProvider:(id)arg1;
 - (BOOL)isPhraseUsable:(id)arg1 inDatabase:(id)arg2 error:(id *)arg3;
+- (void)logHomescreenFastPathRunEventForShortcutWithWebClip:(id)arg1;
 - (BOOL)lsDatabaseChangedSinceLastCheck;
 - (BOOL)phraseHasHomeKitConflict:(id)arg1;
 - (void)requestDataMigrationWithCompletion:(CDUnknownBlockType)arg1;

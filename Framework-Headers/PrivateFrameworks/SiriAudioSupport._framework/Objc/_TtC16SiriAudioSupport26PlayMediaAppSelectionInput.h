@@ -10,57 +10,35 @@
 
 @interface _TtC16SiriAudioSupport26PlayMediaAppSelectionInput : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *n_candidates;
-    MISSING_TYPE *result_asrConfidenceLevel;
-    MISSING_TYPE *result_asrConfidenceScore;
-    MISSING_TYPE *result_audioRoutes;
     MISSING_TYPE *result_clientCarConnected;
     MISSING_TYPE *result_clientCarplay;
     MISSING_TYPE *result_clientDaylight;
-    MISSING_TYPE *result_clientDayOfWeek;
     MISSING_TYPE *result_clientDevice;
     MISSING_TYPE *result_clientHourOfDay;
     MISSING_TYPE *result_clientIsActiveForegroundApp;
     MISSING_TYPE *result_clientLocaleIdentifier;
-    MISSING_TYPE *result_clientLocaleLanguage;
     MISSING_TYPE *result_clientLocked;
     MISSING_TYPE *result_clientMotion;
     MISSING_TYPE *result_clientNavigating;
     MISSING_TYPE *result_clientWorkout;
-    MISSING_TYPE *result_entitySearchDirichletScore;
-    MISSING_TYPE *result_entitySearchSecondsSinceLastInteraction;
-    MISSING_TYPE *result_foregroundAppDuetElapsedSeconds;
     MISSING_TYPE *result_foregroundAppIsLastUsed;
     MISSING_TYPE *result_interactionType;
     MISSING_TYPE *result_isNowPlayingApp;
-    MISSING_TYPE *result_isNowPlayingDuetApp;
-    MISSING_TYPE *result_libraryItems;
-    MISSING_TYPE *result_mediaAlbumPresent;
     MISSING_TYPE *result_mediaArtistPresent;
     MISSING_TYPE *result_mediaGenrePresent;
-    MISSING_TYPE *result_mediaMoodPresent;
     MISSING_TYPE *result_mediaNamePresent;
     MISSING_TYPE *result_mediaParsecCategory;
     MISSING_TYPE *result_mediaPlaybackLocation;
-    MISSING_TYPE *result_mediaReleaseDatePresent;
     MISSING_TYPE *result_mediaType;
-    MISSING_TYPE *result_nlConfidenceLevel;
-    MISSING_TYPE *result_nlConfidenceScore;
-    MISSING_TYPE *result_nowPlayingDuetElapsedSeconds;
     MISSING_TYPE *result_nowPlayingState;
     MISSING_TYPE *result_nowPlayingUsage7Days;
     MISSING_TYPE *result_nowPlayingUsage1Day;
     MISSING_TYPE *result_nowPlayingUsage14Days;
-    MISSING_TYPE *result_serverSearchResultsAmpConfidenceLevel;
-    MISSING_TYPE *result_serverSearchResultsAmpConfidenceScore;
-    MISSING_TYPE *result_serverSearchResultsMediaType;
-    MISSING_TYPE *result_serverSearchResultsPresent;
-    MISSING_TYPE *result_serverSearchResultsSelected;
-    MISSING_TYPE *result_serverSignals;
-    MISSING_TYPE *result_spotlightMatches;
-    MISSING_TYPE *result_subscriptionStatus;
-    MISSING_TYPE *result_supportedMediaCategories;
-    MISSING_TYPE *result_unionOfMediaCategories;
+    MISSING_TYPE *result_entitySearchBundleScore;
+    MISSING_TYPE *result_entitySearchBundleRecency;
+    MISSING_TYPE *result_foregroundAppElapsedSeconds;
+    MISSING_TYPE *result_nowPlayingLastBundle;
+    MISSING_TYPE *result_nowPlayingLastBundleRecency;
 }
 
 @property (nonatomic, readonly) NSSet *featureNames;

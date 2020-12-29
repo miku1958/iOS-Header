@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
 - (void)enterCustomFullScreen;
 - (id)initWithVideo:(id)arg1 style:(id)arg2 posterFrame:(id)arg3 posterFrameStyle:(id)arg4 configuration:(id)arg5;
 - (BOOL)isMuted;
+- (void)setAllowsUserInteractionWithVideoPlayer:(BOOL)arg1;
 - (void)setMuted:(BOOL)arg1;
 - (void)setPlaying:(BOOL)arg1;
 - (void)setVolume:(double)arg1;

@@ -28,9 +28,9 @@
 @property (readonly) PHAExecutive *executive; // @synthesize executive=_executive;
 @property (readonly) PHAGraphManager *graphManager; // @synthesize graphManager=_graphManager;
 @property (readonly) PHAJobCoordinator *jobCoordinator; // @synthesize jobCoordinator=_jobCoordinator;
-@property (strong) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
+@property (readonly) NSURL *libraryURL; // @synthesize libraryURL=_libraryURL;
 @property (strong) NSMutableDictionary *photoAnalysisWorkersByType; // @synthesize photoAnalysisWorkersByType=_photoAnalysisWorkersByType;
-@property (strong) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
+@property (readonly) PHPhotoLibrary *photoLibrary; // @synthesize photoLibrary=_photoLibrary;
 @property (readonly, getter=isQuiescent) BOOL quiescent;
 
 + (id)allWorkerClasses;

@@ -9,7 +9,7 @@
 #import <PlugInKit/NSXPCConnectionDelegate-Protocol.h>
 #import <PlugInKit/PKPlugInPrivate-Protocol.h>
 
-@class NSArray, NSBundle, NSDate, NSDictionary, NSObject, NSString, NSURL, NSUUID, NSUserDefaults, NSXPCConnection, Protocol;
+@class NSArray, NSBundle, NSDate, NSDictionary, NSMutableSet, NSObject, NSString, NSURL, NSUUID, NSUserDefaults, NSXPCConnection, Protocol;
 @protocol OS_dispatch_queue, PKCorePlugInProtocol, PKPlugIn;
 
 @interface PKHostPlugIn : PKPlugInCore <PKPlugInPrivate, NSXPCConnectionDelegate>
@@ -39,6 +39,7 @@
     NSDate *_beganUsingAt;
     NSDictionary *_sourceForm;
     NSDictionary *_environment;
+    NSMutableSet *_requests;
 }
 
 @property (strong) NSObject<OS_dispatch_queue> *_replyQueue; // @synthesize _replyQueue=__replyQueue;
@@ -73,6 +74,7 @@
 @property (strong) NSXPCConnection *pluginConnection; // @synthesize pluginConnection=_pluginConnection;
 @property (strong) id queuedHostPrincipal; // @synthesize queuedHostPrincipal=_queuedHostPrincipal;
 @property (strong) Protocol *queuedHostProtocol; // @synthesize queuedHostProtocol=_queuedHostProtocol;
+@property (readonly) NSMutableSet *requests; // @synthesize requests=_requests;
 @property (strong) NSArray *sandboxExtensions; // @synthesize sandboxExtensions=_sandboxExtensions;
 @property (strong) id<PKCorePlugInProtocol> service; // @synthesize service=_service;
 @property (strong) NSString *serviceExtension; // @synthesize serviceExtension=_serviceExtension;
@@ -92,7 +94,12 @@
 @property (readonly) NSString *version;
 
 - (void).cxx_destruct;
+- (void)addRequest:(id)arg1;
 - (void)beginUsing:(CDUnknownBlockType)arg1;
+- (void)beginUsingRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)beginUsingRequest:(id)arg1 error:(id *)arg2;
+- (void)beginUsingRequest:(id)arg1 withSubsystemOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)beginUsingRequest:(id)arg1 withSubsystemOptions:(id)arg2 error:(id *)arg3;
 - (BOOL)beginUsingWithError:(id *)arg1;
 - (void)beginUsingWithSubsystemOptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)beginUsingWithSubsystemOptions:(id)arg1 error:(id *)arg2;
@@ -100,6 +107,8 @@
 - (void)connection:(id)arg1 handleInvocation:(id)arg2 isReply:(BOOL)arg3;
 - (id)createInstanceWithUUID:(id)arg1;
 - (void)endUsing:(CDUnknownBlockType)arg1;
+- (void)endUsingRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)endUsingRequest:(id)arg1 error:(id *)arg2;
 - (BOOL)endUsingWithError:(id *)arg1;
 - (id)initWithForm:(id)arg1;
 - (BOOL)isSandboxed;
@@ -110,7 +119,7 @@
 - (void)setBootstrapWithSubsystemOptions:(id)arg1;
 - (void)setHostPrincipal:(id)arg1 withProtocol:(id)arg2;
 - (void)setReplyQueue:(id)arg1;
-- (void)startPlugInSynchronously:(BOOL)arg1 subsystemOptions:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)startPlugInRequest:(id)arg1 synchronously:(BOOL)arg2 subsystemOptions:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)suspend;
 - (void)unwind:(unsigned long long)arg1 force:(BOOL)arg2;
 - (void)updateFromForm:(id)arg1;

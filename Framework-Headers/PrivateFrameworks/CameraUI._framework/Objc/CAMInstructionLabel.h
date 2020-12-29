@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSString, UILabel;
+@class NSAttributedString, NSString, UIColor, UILabel;
 @protocol CAMInstructionLabelDelegate;
 
 @interface CAMInstructionLabel : UIView
@@ -16,10 +16,14 @@
     id<CAMInstructionLabelDelegate> _delegate;
     long long _style;
     UILabel *__label;
+    NSAttributedString *__attributedText;
 }
 
+@property (copy, nonatomic) NSAttributedString *_attributedText; // @synthesize _attributedText=__attributedText;
 @property (readonly, nonatomic) double _backgroundAlpha;
 @property (readonly, nonatomic) UILabel *_label; // @synthesize _label=__label;
+@property (readonly, nonatomic) NSString *_symbolPrefixName;
+@property (readonly, nonatomic) UIColor *_textColor;
 @property (readonly, nonatomic) struct UIEdgeInsets _textInsets;
 @property (weak, nonatomic) id<CAMInstructionLabelDelegate> delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) long long style; // @synthesize style=_style;
@@ -28,6 +32,7 @@
 
 - (void).cxx_destruct;
 - (id)_textAttributes;
+- (void)_updateAttributedText;
 - (void)_updateLabel;
 - (void)_updateLayer;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -12,8 +12,13 @@
 
 @interface WFRemoteAppSettings : NSObject <WFSettings>
 {
+    BOOL _disableForecastRequestCancelation;
+    BOOL _disablePriorityForecastRequestQueue;
+    BOOL _loadSavedCitiesFromKVSOnly;
+    BOOL _disableLimitReverseGeocoding;
     float _dataSamplingRate;
     float _telemetrySamplingRate;
+    float _locationGeocodingSamplingRate;
     NSString *_apiVersion;
     NSString *_apiVersionFallback;
     NSSet *_aqiEnabledCountryCodes;
@@ -25,6 +30,9 @@
     NSURL *_appAnalyticsEndpointUrl;
     double _userIdentifierResetTimeInterval;
     double _privateUserIdentifierResetTimeInterval;
+    double _cachedGeocodeLocationExpirationTimeInterval;
+    double _locationUpdateMinTimeInterval;
+    double _locationUpdateMinDistance;
     NSDictionary *_config;
     long long _appConfigRefreshRate;
     NSDate *_lastModificationDate;
@@ -44,15 +52,23 @@
 @property (readonly, nonatomic) long long appConfigRefreshRate; // @synthesize appConfigRefreshRate=_appConfigRefreshRate;
 @property (readonly, nonatomic) NSSet *aqiEnabledCountryCodes; // @synthesize aqiEnabledCountryCodes=_aqiEnabledCountryCodes;
 @property (readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (readonly, nonatomic) double cachedGeocodeLocationExpirationTimeInterval; // @synthesize cachedGeocodeLocationExpirationTimeInterval=_cachedGeocodeLocationExpirationTimeInterval;
 @property (readonly, nonatomic) NSDictionary *config; // @synthesize config=_config;
 @property (readonly, nonatomic) NSString *countryCode; // @synthesize countryCode=_countryCode;
 @property (readonly, nonatomic) float dataSamplingRate; // @synthesize dataSamplingRate=_dataSamplingRate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) BOOL disableForecastRequestCancelation; // @synthesize disableForecastRequestCancelation=_disableForecastRequestCancelation;
+@property (readonly, nonatomic) BOOL disableLimitReverseGeocoding; // @synthesize disableLimitReverseGeocoding=_disableLimitReverseGeocoding;
+@property (readonly, nonatomic) BOOL disablePriorityForecastRequestQueue; // @synthesize disablePriorityForecastRequestQueue=_disablePriorityForecastRequestQueue;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isExpired;
 @property (readonly, nonatomic) NSDate *lastModificationDate; // @synthesize lastModificationDate=_lastModificationDate;
+@property (readonly, nonatomic) BOOL loadSavedCitiesFromKVSOnly; // @synthesize loadSavedCitiesFromKVSOnly=_loadSavedCitiesFromKVSOnly;
+@property (readonly, nonatomic) float locationGeocodingSamplingRate; // @synthesize locationGeocodingSamplingRate=_locationGeocodingSamplingRate;
 @property (readonly, nonatomic) unsigned long long locationNumDecimalsOfPrecision; // @synthesize locationNumDecimalsOfPrecision=_locationNumDecimalsOfPrecision;
+@property (readonly, nonatomic) double locationUpdateMinDistance; // @synthesize locationUpdateMinDistance=_locationUpdateMinDistance;
+@property (readonly, nonatomic) double locationUpdateMinTimeInterval; // @synthesize locationUpdateMinTimeInterval=_locationUpdateMinTimeInterval;
 @property (readonly, nonatomic) unsigned long long networkFailedAttemptsLimit; // @synthesize networkFailedAttemptsLimit=_networkFailedAttemptsLimit;
 @property (readonly, nonatomic) unsigned long long networkSwitchExpirationTimeInSeconds; // @synthesize networkSwitchExpirationTimeInSeconds=_networkSwitchExpirationTimeInSeconds;
 @property (readonly, nonatomic) double privateUserIdentifierResetTimeInterval; // @synthesize privateUserIdentifierResetTimeInterval=_privateUserIdentifierResetTimeInterval;

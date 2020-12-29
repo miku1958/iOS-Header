@@ -6,25 +6,30 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache;
+@class HMFUnfairLock, NSCache;
 @protocol NAScheduler;
 
 @interface HUCAPackageIconManager : NSObject
 {
     NSCache *_packageDataCache;
     NSCache *_packageReuseQueue;
+    HMFUnfairLock *_queueLock;
     id<NAScheduler> _prefetchScheduler;
+    unsigned long long _signpostID;
 }
 
 @property (strong, nonatomic) NSCache *packageDataCache; // @synthesize packageDataCache=_packageDataCache;
 @property (strong, nonatomic) NSCache *packageReuseQueue; // @synthesize packageReuseQueue=_packageReuseQueue;
 @property (strong, nonatomic) id<NAScheduler> prefetchScheduler; // @synthesize prefetchScheduler=_prefetchScheduler;
+@property (strong, nonatomic) HMFUnfairLock *queueLock; // @synthesize queueLock=_queueLock;
+@property (nonatomic) unsigned long long signpostID; // @synthesize signpostID=_signpostID;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_loadPackageWithIconDescriptor:(id)arg1;
 - (id)_packageDataForIconDescriptor:(id)arg1;
 - (id)_queueForIconDescriptorIdentifier:(id)arg1;
+- (void)cancelPrefetchWithCancelable:(id)arg1;
 - (id)init;
 - (id)packageForIconDescriptor:(id)arg1;
 - (id)prefetchIconDescriptors:(id)arg1;

@@ -25,7 +25,7 @@
 - (unsigned long long)hash;
 - (id)initWithLockup:(id)arg1 storeSheetHostBundleID:(id)arg2 storeSheetUsageContext:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
-- (void)present;
+- (void)present:(CDUnknownBlockType)arg1;
 - (void)presentFromViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

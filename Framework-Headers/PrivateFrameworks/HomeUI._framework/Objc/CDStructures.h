@@ -63,6 +63,11 @@ struct CLLocationCoordinate2D {
     double longitude;
 };
 
+struct HUDownloadControlStatus {
+    long long statusType;
+    double downloadProgress;
+};
+
 struct HUGridPosition {
     long long _field1;
     long long _field2;

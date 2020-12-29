@@ -52,6 +52,7 @@
 - (void)processPlatformNotification:(unsigned long long)arg1 data:(id)arg2;
 - (id)processSetAttribute:(id)arg1;
 - (id)processSupportedActions:(id)arg1;
+- (id)processSupportsAttributes:(id)arg1;
 - (id)processTranslatorRequest:(id)arg1;
 - (id)remoteTranslationDataWithTranslation:(id)arg1 pid:(int)arg2;
 - (id)sendTranslatorRequest:(id)arg1;

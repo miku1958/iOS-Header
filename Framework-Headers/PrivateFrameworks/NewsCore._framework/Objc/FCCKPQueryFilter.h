@@ -10,6 +10,7 @@
 
 @class FCCKPRecordFieldIdentifier, FCCKPRecordFieldValue;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPQueryFilter : PBCodable <NSCopying>
 {
     FCCKPRecordFieldIdentifier *_fieldName;
@@ -25,7 +26,6 @@
 @property (nonatomic) BOOL hasType;
 @property (nonatomic) int type; // @synthesize type=_type;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

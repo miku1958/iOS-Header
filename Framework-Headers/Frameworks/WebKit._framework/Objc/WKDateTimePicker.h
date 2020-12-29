@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
 {
     struct RetainPtr<UIDatePicker> _datePicker;
     NSString *_formatString;
-    NSString *_initialValue;
+    struct RetainPtr<NSString> _initialValue;
     double _initialValueAsNumber;
     BOOL _shouldRemoveTimeZoneInformation;
     BOOL _isTimeInput;

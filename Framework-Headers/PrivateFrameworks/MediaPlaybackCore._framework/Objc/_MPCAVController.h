@@ -24,6 +24,7 @@
 @property (nonatomic) BOOL autoPlayWhenLikelyToKeepUp;
 @property (nonatomic) BOOL automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds;
 @property (readonly, nonatomic) MPAVItem *currentItem;
+@property (readonly, nonatomic) float currentRate;
 @property (nonatomic) double currentTime;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -35,6 +36,7 @@
 @property (readonly, weak, nonatomic) MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property (strong, nonatomic) id<MPAVQueueController> queueController;
 @property (readonly, nonatomic) MPQueuePlayer *queuePlayer;
+@property (readonly, nonatomic, getter=isReloadingPlaybackContext) BOOL reloadingPlaybackContext;
 @property (readonly, nonatomic) long long state;
 @property (readonly, nonatomic) long long stateBeforeInterruption;
 @property (readonly) Class superclass;
@@ -77,6 +79,7 @@
 - (void)queueController:(id)arg1 didChangeShuffleType:(long long)arg2;
 - (void)queueController:(id)arg1 didIncrementVersionForSegment:(id)arg2;
 - (void)reloadWithPlaybackContext:(id)arg1 identifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)replaceCurrentItemWithPlaybackContext:(id)arg1 identifier:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)togglePlaybackWithOptions:(unsigned long long)arg1;
 - (void)updateAudioSession;
 

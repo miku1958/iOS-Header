@@ -14,7 +14,6 @@
     MISSING_TYPE *requestStore;
     MISSING_TYPE *journal;
     MISSING_TYPE *documentControllerProvider;
-    MISSING_TYPE *layoutBlueprint;
 }
 
 @end

@@ -6,32 +6,18 @@
 
 #import <NewsCore/FCPrivateDataController.h>
 
-#import <NewsCore/FCOfflineArticleContributing-Protocol.h>
-#import <NewsCore/FCOperationThrottlerDelegate-Protocol.h>
+@class FCCloudContext, FCMTWriterLock, NSMutableDictionary;
 
-@class FCCloudContext, FCMTWriterLock, FCObservable, NSMutableDictionary, NSString;
-@protocol FCOperationThrottler;
-
-@interface FCReadingList : FCPrivateDataController <FCOperationThrottlerDelegate, FCOfflineArticleContributing>
+@interface FCReadingList : FCPrivateDataController
 {
-    FCObservable *_articleIDsToDownload;
-    long long _articleDownloadOptions;
     NSMutableDictionary *_entriesByArticleID;
     FCCloudContext *_cloudContext;
-    id<FCOperationThrottler> _articleIDsAvailableForOfflineReadingUpdateThrottler;
     FCMTWriterLock *_itemsLock;
 }
 
-@property (readonly, nonatomic) long long articleDownloadOptions; // @synthesize articleDownloadOptions=_articleDownloadOptions;
-@property (strong, nonatomic) id<FCOperationThrottler> articleIDsAvailableForOfflineReadingUpdateThrottler; // @synthesize articleIDsAvailableForOfflineReadingUpdateThrottler=_articleIDsAvailableForOfflineReadingUpdateThrottler;
-@property (readonly, nonatomic) FCObservable *articleIDsToDownload; // @synthesize articleIDsToDownload=_articleIDsToDownload;
 @property (strong, nonatomic) FCCloudContext *cloudContext; // @synthesize cloudContext=_cloudContext;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSMutableDictionary *entriesByArticleID; // @synthesize entriesByArticleID=_entriesByArticleID;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) FCMTWriterLock *itemsLock; // @synthesize itemsLock=_itemsLock;
-@property (readonly) Class superclass;
 
 + (id)backingRecordIDs;
 + (id)backingRecordZoneIDs;
@@ -61,13 +47,10 @@
 - (BOOL)canHelpRestoreZoneName:(id)arg1;
 - (unsigned long long)countOfAllArticlesSavedOutsideOfNewsSince:(id)arg1;
 - (id)dateArticleWasAdded:(id)arg1;
-- (void)expressInterestInOfflineArticlesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)handleSyncWithChangedRecords:(id)arg1 deletedRecordNames:(id)arg2;
 - (id)initWithContext:(id)arg1 pushNotificationCenter:(id)arg2 storeDirectory:(id)arg3;
 - (BOOL)isArticleOnReadingList:(id)arg1;
 - (void)loadLocalCachesFromStore;
-- (void)operationThrottler:(id)arg1 performAsyncOperationWithCompletion:(CDUnknownBlockType)arg2;
-- (void)prepareToContributeWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)recordsForRestoringZoneName:(id)arg1;
 - (void)removeArticleFromReadingList:(id)arg1;
 - (void)removeObserver:(id)arg1;

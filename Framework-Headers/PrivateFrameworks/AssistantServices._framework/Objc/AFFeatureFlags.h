@@ -13,10 +13,12 @@
 + (void)dump;
 + (id)featureFlags;
 + (BOOL)isAnnounceEnabled;
++ (BOOL)isAudioSessionCoordinationEnabled;
 + (BOOL)isHALEnabled;
 + (BOOL)isHintsEnabled;
 + (BOOL)isLocationSearchContinuityEnabled;
 + (BOOL)isMessagesOnSiriKitNative;
++ (BOOL)isSeymourEnabled;
 + (void)setLocationSearchContinuityEnabled:(BOOL)arg1;
 + (id)sharedInstance;
 

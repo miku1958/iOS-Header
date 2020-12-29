@@ -10,7 +10,7 @@
 @protocol NTHeadlineAnalyticsElementProviding;
 
 @protocol NTTodayEventTracker <NSObject>
-- (void)userDidReadHeadlineWithAnalyticsElement:(id<NTHeadlineAnalyticsElementProviding>)arg1 atDate:(NSDate *)arg2;
-- (void)userDidSeeHeadlinesWithAnalyticsElements:(NSArray *)arg1 atDate:(NSDate *)arg2;
+- (void)writeUserDidReadHeadlineWithAnalyticsElement:(id<NTHeadlineAnalyticsElementProviding>)arg1 atDate:(NSDate *)arg2 withCompletion:(void (^)(void))arg3;
+- (void)writeUserDidSeeHeadlinesWithAnalyticsElements:(NSArray *)arg1 atDate:(NSDate *)arg2 withCompletion:(void (^)(void))arg3;
 @end
 

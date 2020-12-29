@@ -51,6 +51,7 @@
 @property (readonly) CDStruct_79c71658 highResStillImageDimensions;
 @property (readonly, getter=isHighResStillImageSupported) BOOL highResStillImageSupported;
 @property (readonly, nonatomic) int intelligentDistortionCorrectionVersion;
+@property (readonly) unsigned int internalDemosaicedRawPixelFormat;
 @property (readonly, getter=isIrisSupported) BOOL irisSupported;
 @property (readonly, getter=isIrisVideoStabilizationSupported) BOOL irisVideoStabilizationSupported;
 @property (readonly) BOOL is10bitVideoFormat;
@@ -103,6 +104,7 @@
 @property (readonly, getter=isStudioAndContourPreviewRenderingSupported) BOOL studioAndContourPreviewRenderingSupported;
 @property (readonly, getter=isSupplementalTimeOfFlightCameraSupported) BOOL supplementalTimeOfFlightCameraSupported;
 @property (readonly) NSArray *supportedColorSpaces;
+@property (readonly) unsigned int supportedDemosaicedRawPixelFormat;
 @property (readonly) NSArray *supportedDepthDataFormats;
 @property (readonly) unsigned int supportedRawPixelFormat;
 @property (readonly, getter=isVariableFrameRateVideoCaptureSupported) BOOL variableFrameRateVideoCaptureSupported;

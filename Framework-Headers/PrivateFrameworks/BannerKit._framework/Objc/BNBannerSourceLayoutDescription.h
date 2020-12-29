@@ -12,6 +12,7 @@
 
 @interface BNBannerSourceLayoutDescription : NSObject <BSXPCSecureCoding>
 {
+    double _offsetFromPresentationEdge;
     struct CGSize _containerSize;
     struct CGSize _presentationSize;
 }
@@ -20,12 +21,14 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double offsetFromPresentationEdge; // @synthesize offsetFromPresentationEdge=_offsetFromPresentationEdge;
 @property (readonly, nonatomic) struct CGSize presentationSize; // @synthesize presentationSize=_presentationSize;
 @property (readonly) Class superclass;
 
 + (id)bannerSourceLayoutDescriptionWithPresentationSize:(struct CGSize)arg1 containerSize:(struct CGSize)arg2;
++ (id)bannerSourceLayoutDescriptionWithPresentationSize:(struct CGSize)arg1 containerSize:(struct CGSize)arg2 offsetFromPresentationEdge:(double)arg3;
 + (BOOL)supportsBSXPCSecureCoding;
-- (id)_initWithPresentationSize:(struct CGSize)arg1 containerSize:(struct CGSize)arg2;
+- (id)_initWithPresentationSize:(struct CGSize)arg1 containerSize:(struct CGSize)arg2 offsetFromPresentationEdge:(double)arg3;
 - (void)encodeWithBSXPCCoder:(id)arg1;
 - (id)initWithBSXPCCoder:(id)arg1;
 

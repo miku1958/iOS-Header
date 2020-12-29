@@ -4,25 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <UIKit/UIViewController.h>
 
 #import <MediaPlaybackCore/AVPlayerViewControllerDelegate-Protocol.h>
+#import <MediaPlaybackCore/MPCPlaybackEngineEventObserving-Protocol.h>
 #import <MediaPlaybackCore/MPCVideoOutput-Protocol.h>
 
-@class AVPlayerViewController, NSString, UIViewController;
+@class AVPlayerViewController, MPCPlaybackEngine, NSString;
 @protocol MPCVideoOutputDelegate;
 
-@interface _MPCVideoViewControllerMediaFoundationImplementation : NSObject <MPCVideoOutput, AVPlayerViewControllerDelegate>
+__attribute__((visibility("hidden")))
+@interface _MPCVideoViewControllerMediaFoundationImplementation : UIViewController <AVPlayerViewControllerDelegate, MPCPlaybackEngineEventObserving, MPCVideoOutput>
 {
+    int _videoDebugToken;
+    unsigned long long _stateHandle;
     id<MPCVideoOutputDelegate> _videoOutputDelegate;
+    MPCPlaybackEngine *_playbackEngine;
     AVPlayerViewController *_internalController;
 }
 
-@property (readonly, nonatomic) AVPlayerViewController *avPlayerViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) AVPlayerViewController *internalController; // @synthesize internalController=_internalController;
+@property (readonly, weak, nonatomic) MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property (readonly, nonatomic) UIViewController *playerViewController;
 @property (readonly, nonatomic, getter=isReadyForDisplay) BOOL readyForDisplay;
 @property (nonatomic) BOOL showsPlaybackControls;
@@ -31,15 +36,24 @@
 @property (copy, nonatomic) NSString *videoGravity;
 @property (weak, nonatomic) id<MPCVideoOutputDelegate> videoOutputDelegate; // @synthesize videoOutputDelegate=_videoOutputDelegate;
 
-+ (id)keyPathsForValuesAffectingReadyForDisplay;
++ (id)keyPathsForValuesAffectingIsReadyForDisplay;
++ (id)keyPathsForValuesAffectingShowsPlaybackControls;
 + (id)keyPathsForValuesAffectingVideoBounds;
++ (id)keyPathsForValuesAffectingVideoGravity;
 - (void).cxx_destruct;
+- (id)_stateDictionary;
+- (void)_updateViewControllerHierarchyForPlaybackEngine:(id)arg1;
+- (void)dealloc;
+- (void)engine:(id)arg1 willChangeToItem:(id)arg2 fromItem:(id)arg3;
+- (void)engineDidResetMediaServices:(id)arg1;
 - (void)enterFullScreenWithCompletion:(CDUnknownBlockType)arg1;
 - (void)exitFullScreenWithCompletion:(CDUnknownBlockType)arg1;
+- (void)forwardInvocation:(id)arg1;
 - (id)initWithPlaybackEngine:(id)arg1;
-- (void)playerViewController:(id)arg1 willBeginFullScreenPresentationWithAnimationCoordinator:(id)arg2;
-- (void)playerViewController:(id)arg1 willEndFullScreenPresentationWithAnimationCoordinator:(id)arg2;
+- (BOOL)respondsToSelector:(SEL)arg1;
 - (void)showFullScreenPresentationFromView:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)viewDidLayoutSubviews;
+- (void)viewDidLoad;
 
 @end
 

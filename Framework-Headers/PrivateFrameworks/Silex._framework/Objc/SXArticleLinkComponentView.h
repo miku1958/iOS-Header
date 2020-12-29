@@ -6,9 +6,26 @@
 
 #import <Silex/SXContainerComponentView.h>
 
+@protocol SXActionComponentInteractionHandlerFactory, SXArticleURLFactory, SXComponentInteractionHandler, SXComponentInteractionHandlerManager, SXURLActionFactory;
+
 @interface SXArticleLinkComponentView : SXContainerComponentView
 {
+    id<SXComponentInteractionHandlerManager> _interactionHandlerManager;
+    id<SXActionComponentInteractionHandlerFactory> _interactionHandlerFactory;
+    id<SXURLActionFactory> _URLActionFactory;
+    id<SXArticleURLFactory> _articleURLFactory;
+    id<SXComponentInteractionHandler> _interactionHandler;
 }
+
+@property (readonly, nonatomic) id<SXURLActionFactory> URLActionFactory; // @synthesize URLActionFactory=_URLActionFactory;
+@property (readonly, nonatomic) id<SXArticleURLFactory> articleURLFactory; // @synthesize articleURLFactory=_articleURLFactory;
+@property (weak, nonatomic) id<SXComponentInteractionHandler> interactionHandler; // @synthesize interactionHandler=_interactionHandler;
+@property (readonly, nonatomic) id<SXActionComponentInteractionHandlerFactory> interactionHandlerFactory; // @synthesize interactionHandlerFactory=_interactionHandlerFactory;
+@property (readonly, nonatomic) id<SXComponentInteractionHandlerManager> interactionHandlerManager; // @synthesize interactionHandlerManager=_interactionHandlerManager;
+
+- (void).cxx_destruct;
+- (id)initWithDOMObjectProvider:(id)arg1 viewport:(id)arg2 presentationDelegate:(id)arg3 componentStyleRendererFactory:(id)arg4 mediaSharingPolicyProvider:(id)arg5 interactionHandlerManager:(id)arg6 interactionHandlerFactory:(id)arg7 URLActionFactory:(id)arg8 articleURLFactory:(id)arg9;
+- (void)loadComponent:(id)arg1;
 
 @end
 

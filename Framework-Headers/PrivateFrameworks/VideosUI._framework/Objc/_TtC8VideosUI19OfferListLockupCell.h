@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI19OfferListLockupCell : VUIBaseListViewCell
 {
+    MISSING_TYPE *enableHighlight;
     MISSING_TYPE *containerView;
 }
 
@@ -18,6 +19,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)setHighlighted:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end

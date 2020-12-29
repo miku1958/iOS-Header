@@ -108,6 +108,7 @@
 - (BOOL)canGenerateIntermediaryRepresentationForItemClass:(Class)arg1;
 - (BOOL)canGenerateRepresentationForType:(id)arg1;
 - (BOOL)canPerformCoercion:(id)arg1;
+- (id)changeTransaction;
 - (void)coerceToItemClass:(Class)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)coerceToItemClasses:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)coerceToItemClasses:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;

@@ -25,6 +25,7 @@
     NSString *_unavailableDescription;
     ASCLockupView *_appStoreView;
     BOOL _lockupViewStateDidChange;
+    BOOL _lockupViewDidUpdateStateForInstallingOrOpenable;
     BPSWatchView *_watchView;
     NTKGreenfieldHighlightableFaceContainerView *_faceView;
     long long _installMode;

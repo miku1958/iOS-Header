@@ -26,5 +26,6 @@
 - (void)carouselView:(_TVCarouselView *)arg1 willDisplayCell:(UICollectionViewCell *)arg2 forItemAtIndex:(unsigned long long)arg3;
 - (void)carouselView:(_TVCarouselView *)arg1 willDisplayItemAtIndex:(unsigned long long)arg2;
 - (void)carouselViewDidScroll:(_TVCarouselView *)arg1;
+- (unsigned long long)indexForPreferredCenteredViewInCarouselView:(_TVCarouselView *)arg1;
 @end
 

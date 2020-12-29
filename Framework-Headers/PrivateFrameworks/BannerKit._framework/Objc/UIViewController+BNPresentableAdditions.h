@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) struct UIEdgeInsets bannerContentOutsets;
 @property (readonly, copy, nonatomic) BSAnimationSettings *bannerSizeTransitionAnimationSettings;
 
+- (BOOL)bn_shouldAnimateViewTransitionToSize:(struct CGSize)arg1;
 - (struct CGSize)preferredContentSizeWithPresentationSize:(struct CGSize)arg1 containerSize:(struct CGSize)arg2;
 @end
 

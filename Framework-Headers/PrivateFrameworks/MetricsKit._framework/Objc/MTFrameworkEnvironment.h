@@ -7,10 +7,12 @@
 #import <objc/NSObject.h>
 
 @class NSString;
+@protocol MTIDSecretStore;
 
 @interface MTFrameworkEnvironment : NSObject
 {
     NSString *_localDataPath;
+    id<MTIDSecretStore> _secretStore;
 }
 
 @property (copy, nonatomic) NSString *localDataPath;
@@ -21,7 +23,9 @@
 + (void)withEnvironment:(id)arg1 execute:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
 - (id)date;
+- (id)hostProcessBundleIdentifier;
 - (BOOL)isInternalBuild;
+- (id)metricsKitBundleIdentifier;
 - (id)secretStore;
 - (BOOL)useCloudKitSandbox;
 - (id)valueForEntitlement:(id)arg1;

@@ -9,13 +9,13 @@
 #import <SensorKit/SRAuthorizationClientDelegate-Protocol.h>
 #import <SensorKit/SRDaemonNotificationDelegate-Protocol.h>
 
-@class NSDictionary, NSString, NSXPCConnection, SRAuthorizationClient, SRDaemonNotification, SRSensorDatastore;
+@class NSDictionary, NSString, NSXPCConnection, SRAuthorizationClient, SRDaemonNotification, SRDatastore;
 @protocol SRSensorReaderDelegate;
 
 @interface SRSensorReader : NSObject <SRAuthorizationClientDelegate, SRDaemonNotificationDelegate>
 {
     SRDaemonNotification *_daemonNotification;
-    SRSensorDatastore *_datastore;
+    SRDatastore *_datastore;
     NSDictionary *_deviceDetails;
     double _serviceStartTime;
     double _earliestEligibleTime;
@@ -38,7 +38,7 @@
 @property (nonatomic) BOOL bypassHoldingPeriod; // @synthesize bypassHoldingPeriod=_bypassHoldingPeriod;
 @property (strong, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property BOOL connectionDidInvalidate; // @synthesize connectionDidInvalidate=_connectionDidInvalidate;
-@property (readonly, strong) SRSensorDatastore *datastore;
+@property (readonly, strong) SRDatastore *datastore;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<SRSensorReaderDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -63,6 +63,7 @@
 + (void)requestAuthorizationForBundle:(id)arg1 sensors:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;
 + (void)requestAuthorizationForSensors:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;
+- (void)_startRecordingWithSensorConfiguration:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)authorizedServices;
 - (void)authorizedServicesDidChange:(id)arg1 deniedServices:(id)arg2 dataCollectionEnabled:(BOOL)arg3 onboardingCompleted:(BOOL)arg4 forBundleIdentifier:(id)arg5;
 - (void)continueFetchRequest:(id)arg1 from:(double)arg2 to:(double)arg3 withDatastoreFiles:(id)arg4 callback:(CDUnknownBlockType)arg5;

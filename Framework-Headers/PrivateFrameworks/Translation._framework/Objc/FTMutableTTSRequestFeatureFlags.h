@@ -11,6 +11,7 @@ __attribute__((visibility("hidden")))
 {
 }
 
+@property (nonatomic) BOOL cache_only;
 @property (nonatomic) BOOL disable_prompts;
 @property (nonatomic) BOOL fe_feature;
 @property (nonatomic) BOOL fe_feature_only;

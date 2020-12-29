@@ -17,6 +17,7 @@
     BOOL _captureOnTouchDown;
     BOOL _responsiveShutterSupported;
     BOOL _mirroredFrontCapturesSupported;
+    BOOL _mirroredFrontVideosSupported;
     BOOL _backFlashSupported;
     BOOL _frontFlashSupported;
     BOOL _backTorchSupported;
@@ -47,6 +48,7 @@
     BOOL _squareModeSupported;
     BOOL _videoSupported;
     BOOL _stillDuringVideoSupported;
+    BOOL _PALVideoSupported;
     BOOL _back4k24VideoSupported;
     BOOL _front4k24VideoSupported;
     BOOL _back4k30VideoSupported;
@@ -92,6 +94,7 @@
     BOOL _deepFusionSupported;
     BOOL _deferredProcessingSupported;
     BOOL _contentAwareDistortionCorrectionSupported;
+    BOOL _linearDNGSupported;
     BOOL _hasSystemTelephonyOfAnyKind;
     BOOL _forceTouchSupported;
     BOOL _splitScreenSupported;
@@ -151,6 +154,7 @@
     double _superWideDisplayZoomFactor;
     double _telephotoDisplayZoomFactor;
     long long _hostProcess;
+    double _minimumMachineReadableCodeNormalizedHeight;
     double __backPhotoModeMaximumZoomFactor;
     double __frontPhotoModeMaximumZoomFactor;
     double __backVideoModeMaximumZoomFactor;
@@ -177,6 +181,7 @@
 @property (readonly, nonatomic, getter=isHDR10BitVideoSupports60FPS) BOOL HDR10BitVideoSupports60FPS; // @synthesize HDR10BitVideoSupports60FPS=_HDR10BitVideoSupports60FPS;
 @property (readonly, nonatomic, getter=isHDREV0CaptureSupported) BOOL HDREV0CaptureSupported; // @synthesize HDREV0CaptureSupported=_HDREV0CaptureSupported;
 @property (readonly, nonatomic, getter=isHEVCEncodingSupported) BOOL HEVCEncodingSupported; // @synthesize HEVCEncodingSupported=_HEVCEncodingSupported;
+@property (readonly, nonatomic, getter=isPALVideoSupported) BOOL PALVideoSupported; // @synthesize PALVideoSupported=_PALVideoSupported;
 @property (readonly, nonatomic) double _backCaptureInterval; // @synthesize _backCaptureInterval=__backCaptureInterval;
 @property (readonly, nonatomic) double _backDualCameraSwitchOverZoomFactor; // @synthesize _backDualCameraSwitchOverZoomFactor=__backDualCameraSwitchOverZoomFactor;
 @property (readonly, nonatomic) double _backDualPhotoModeMaximumZoomFactor; // @synthesize _backDualPhotoModeMaximumZoomFactor=__backDualPhotoModeMaximumZoomFactor;
@@ -302,6 +307,7 @@
 @property (readonly, nonatomic) BOOL interactiveVideoFormatControlAlwaysEnabled; // @synthesize interactiveVideoFormatControlAlwaysEnabled=_interactiveVideoFormatControlAlwaysEnabled;
 @property (readonly, nonatomic) BOOL interactiveVideoFormatControlSupported; // @synthesize interactiveVideoFormatControlSupported=_interactiveVideoFormatControlSupported;
 @property (readonly, nonatomic, getter=isInternalInstall) BOOL internalInstall; // @synthesize internalInstall=_internalInstall;
+@property (readonly, nonatomic, getter=isLinearDNGSupported) BOOL linearDNGSupported; // @synthesize linearDNGSupported=_linearDNGSupported;
 @property (readonly, nonatomic, getter=isLiveFilteringSupported) BOOL liveFilteringSupported; // @synthesize liveFilteringSupported=_liveFilteringSupported;
 @property (readonly, nonatomic, getter=isLivePhotoAutoModeSupported) BOOL livePhotoAutoModeSupported; // @synthesize livePhotoAutoModeSupported=_livePhotoAutoModeSupported;
 @property (readonly, nonatomic, getter=isLivePhotoSupported) BOOL livePhotoSupported;
@@ -312,8 +318,10 @@
 @property (readonly, nonatomic) long long maximumNumberOfInflightRequests; // @synthesize maximumNumberOfInflightRequests=_maximumNumberOfInflightRequests;
 @property (readonly, nonatomic) double maximumPortraitEffectIntensity;
 @property (readonly, nonatomic) long long maximumRecordedFileSize; // @synthesize maximumRecordedFileSize=_maximumRecordedFileSize;
+@property (readonly, nonatomic) double minimumMachineReadableCodeNormalizedHeight; // @synthesize minimumMachineReadableCodeNormalizedHeight=_minimumMachineReadableCodeNormalizedHeight;
 @property (readonly, nonatomic) double minimumPortraitEffectIntensity;
 @property (readonly, nonatomic, getter=isMirroredFrontCapturesSupported) BOOL mirroredFrontCapturesSupported; // @synthesize mirroredFrontCapturesSupported=_mirroredFrontCapturesSupported;
+@property (readonly, nonatomic, getter=isMirroredFrontVideosSupported) BOOL mirroredFrontVideosSupported; // @synthesize mirroredFrontVideosSupported=_mirroredFrontVideosSupported;
 @property (readonly, nonatomic, getter=isModernHDRSupported) BOOL modernHDRSupported; // @synthesize modernHDRSupported=_modernHDRSupported;
 @property (readonly, nonatomic, getter=isNaturalLightingAppliedToOriginal) BOOL naturalLightingAppliedToOriginal; // @synthesize naturalLightingAppliedToOriginal=_naturalLightingAppliedToOriginal;
 @property (readonly, nonatomic, getter=isNeuralEngineSupported) BOOL neuralEngineSupported; // @synthesize neuralEngineSupported=_neuralEngineSupported;
@@ -352,6 +360,7 @@
 @property (readonly, nonatomic) long long zoomDialStyle; // @synthesize zoomDialStyle=_zoomDialStyle;
 
 + (id)capabilities;
++ (BOOL)isPALVideoConfiguration:(long long)arg1;
 - (void).cxx_destruct;
 - (double)_doubleForKey:(id)arg1 applicationID:(id)arg2;
 - (BOOL)_isSpatialOverCaptureSupportedForMode:(long long)arg1;
@@ -391,6 +400,7 @@
 - (BOOL)isHDROnSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isHDRSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isHDRSupportedForMode:(long long)arg1 devicePosition:(long long)arg2;
+- (BOOL)isLinearDNGSupportedForMode:(long long)arg1;
 - (BOOL)isLivePhotoSupportedForDevicePosition:(long long)arg1;
 - (BOOL)isLivePhotoSupportedForMode:(long long)arg1 devicePosition:(long long)arg2;
 - (BOOL)isLivePreviewSupportedForLightingType:(long long)arg1 devicePosition:(long long)arg2;

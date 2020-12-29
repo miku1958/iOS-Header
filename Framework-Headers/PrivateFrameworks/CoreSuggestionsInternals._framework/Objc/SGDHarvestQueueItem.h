@@ -14,6 +14,9 @@
     CSSearchableItem *_item;
     unsigned long long _fails;
     unsigned char _customPriorityCriteria;
+    BOOL _receivedOnPower;
+    int _storageReason;
+    double _receivedTime;
 }
 
 @property (readonly, nonatomic) unsigned char customPriorityCriteria; // @synthesize customPriorityCriteria=_customPriorityCriteria;
@@ -21,10 +24,13 @@
 @property (readonly, nonatomic) BOOL highPriority;
 @property (readonly) CSSearchableItem *item; // @synthesize item=_item;
 @property (readonly, nonatomic) long long itemId; // @synthesize itemId=_itemId;
+@property (readonly, nonatomic) BOOL receivedOnPower; // @synthesize receivedOnPower=_receivedOnPower;
+@property (readonly, nonatomic) double receivedTime; // @synthesize receivedTime=_receivedTime;
+@property (nonatomic) int storageReason; // @synthesize storageReason=_storageReason;
 
 - (void).cxx_destruct;
 - (void)finish;
-- (id)initWithItemId:(long long)arg1 item:(id)arg2 fails:(int)arg3 customPriorityCriteria:(unsigned char)arg4;
+- (id)initWithItemId:(long long)arg1 item:(id)arg2 fails:(int)arg3 customPriorityCriteria:(unsigned char)arg4 receivedOnPower:(BOOL)arg5 receivedTime:(double)arg6 storageReason:(int)arg7;
 - (void)markAsFailed;
 
 @end

@@ -15,6 +15,7 @@
 + (id)_intersectAvailabilityRegions:(id)arg1 withAvailabilityRegions:(id)arg2;
 + (BOOL)_versionsMatchBetweenAvailabilityRegions:(id)arg1 availabilityRegions:(id)arg2;
 + (long long)isRegionCodeFound:(id)arg1 availabilityWatch:(id)arg2 availabilityPhone:(id)arg3;
++ (BOOL)isRegionCodeFound:(id)arg1 forLocalDeviceWithAvailability:(id)arg2;
 + (long long)unitTest_isRegionCodeFound:(id)arg1 availabilityWatch:(id)arg2 availabilityPhone:(id)arg3;
 
 @end

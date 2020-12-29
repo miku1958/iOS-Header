@@ -33,6 +33,8 @@
     NSDictionary *_assistantCharacteristics;
     NSDictionary *_assistantChrHAPTypeNameMap;
     NSDictionary *_assistantUnits;
+    NSDictionary *_firmwareUpdateStagingPolicies;
+    NSDictionary *_firmwareUpdateAutoApplyPolicies;
 }
 
 @property (strong, nonatomic) NSDictionary *assistantCharacteristics; // @synthesize assistantCharacteristics=_assistantCharacteristics;
@@ -42,6 +44,8 @@
 @property (strong, nonatomic) NSDictionary *assistantUnits; // @synthesize assistantUnits=_assistantUnits;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSDictionary *firmwareUpdateAutoApplyPolicies; // @synthesize firmwareUpdateAutoApplyPolicies=_firmwareUpdateAutoApplyPolicies;
+@property (strong, nonatomic) NSDictionary *firmwareUpdateStagingPolicies; // @synthesize firmwareUpdateStagingPolicies=_firmwareUpdateStagingPolicies;
 @property (strong, nonatomic) HAPMetadata *hapMetadata; // @synthesize hapMetadata=_hapMetadata;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSDictionary *hmAccessoryCategories; // @synthesize hmAccessoryCategories=_hmAccessoryCategories;
@@ -79,6 +83,7 @@
 - (id)aliasedHAPServiceTypes;
 - (BOOL)allowsSecuringWriteFor:(id)arg1 withValue:(id)arg2;
 - (id)audioAccessoryCategory;
+- (id)autoApplyPolicyConfigurationForService:(id)arg1 category:(id)arg2;
 - (id)categoryForIdentifier:(id)arg1;
 - (id)categoryForOther;
 - (id)categoryForType:(id)arg1;
@@ -117,13 +122,18 @@
 - (BOOL)parseAndSetAssistantMetadataWithAssistantPlist:(id)arg1;
 - (BOOL)parseAndSetAssistantServices:(id)arg1;
 - (BOOL)parseAndSetAssistantUnits:(id)arg1;
+- (void)parseAndSetHMAccessoryFirmwareUpdatePolicies:(id)arg1;
 - (void)parseAndSetHMCategories:(id)arg1;
 - (BOOL)parseAndSetHMMetadataWithHMPlist:(id)arg1;
 - (void)parseAndSetPowerOnWriteFilter:(id)arg1;
 - (id)parseAndSetRawPlist:(id)arg1;
 - (id)parseCharacteristicArray:(id)arg1;
+- (id)parseHMAccessoryFirmwareUpdatePolicyCharacteristics:(id)arg1;
+- (id)parseHMAccessoryFirmwareUpdatePolicyCriteria:(id)arg1;
+- (id)parseHMAccessoryFirmwareUpdatePolicyServices:(id)arg1;
 - (id)parseMetadataTupleSetFromPlist:(id)arg1;
 - (id)parseServiceArray:(id)arg1;
+- (BOOL)policyConfigurationAvailableForAllHAPServices;
 - (id)protoBufObjectWithEncodingOption:(id)arg1;
 - (BOOL)requiresDeviceUnlock:(id)arg1 forService:(id)arg2;
 - (BOOL)requiresTimedWrite:(id)arg1 forService:(id)arg2;
@@ -143,6 +153,7 @@
 - (BOOL)shouldHomeAppShowTileForServiceType:(id)arg1;
 - (BOOL)shouldNotCacheCharacteristicOfType:(id)arg1;
 - (BOOL)shouldRefreshValueForCharacteristicWithType:(id)arg1 serviceType:(id)arg2;
+- (id)stagingPolicyConfigurationForService:(id)arg1 category:(id)arg2;
 - (id)statusHAPCharacteristicTypesForServiceType;
 - (BOOL)supportsAuthorizationData:(id)arg1 forService:(id)arg2;
 - (BOOL)supportsLocalization:(id)arg1;

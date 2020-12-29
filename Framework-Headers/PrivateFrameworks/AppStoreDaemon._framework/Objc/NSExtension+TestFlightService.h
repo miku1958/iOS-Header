@@ -7,8 +7,6 @@
 #import <Foundation/NSExtension.h>
 
 @interface NSExtension (TestFlightService)
-- (id)testFlightServiceExtensionContainerBundleIdentifier;
-- (id)testFlightServiceExtensionContainerBundleProxy;
 - (id)testFlightServiceExtensionCustomServiceTime;
 @end
 

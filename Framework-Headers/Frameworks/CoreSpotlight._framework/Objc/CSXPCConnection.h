@@ -41,9 +41,9 @@
 + (id)copyPlistFromXPCObject:(id)arg1;
 + (id)dataWrapperForKey:(const char *)arg1 sizeKey:(const char *)arg2 fromXPCDictionary:(id)arg3;
 + (id)dataWrapperForKey:(const char *)arg1 sizeKey:(const char *)arg2 fromXPCDictionary:(id)arg3 allowWritableSharedMemory:(BOOL)arg4;
-+ (void)dictionary:(id)arg1 setData:(const void *)arg2 withSize:(unsigned long long)arg3 forKey:(const char *)arg4 destructor:(CDUnknownBlockType)arg5;
 + (void)dictionary:(id)arg1 setNumberArray:(id)arg2 forKey:(const char *)arg3;
-+ (void)dictionary:(id)arg1 setPlistBytes:(const struct __MDPlistBytes *)arg2 forKey:(const char *)arg3;
++ (void)dictionary:(id)arg1 setPlistBytes:(struct __MDPlistBytes *)arg2 forKey:(const char *)arg3 sizeKey:(const char *)arg4;
++ (void)dictionary:(id)arg1 setPlistContainer:(const struct _MDPlistContainer *)arg2 forKey:(const char *)arg3 sizeKey:(const char *)arg4;
 + (BOOL)dictionary:(id)arg1 setSharedMemory:(void *)arg2 forKey:(const char *)arg3 size:(unsigned long long)arg4 forSizeKey:(const char *)arg5;
 + (void)dictionary:(id)arg1 setStringArray:(id)arg2 forKey:(const char *)arg3;
 + (void)journalDictionary:(id)arg1 toFolderPath:(const char *)arg2 forPID:(int)arg3 withLabel:(const char *)arg4 andID:(unsigned long long)arg5;

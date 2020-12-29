@@ -8,23 +8,34 @@
 
 #import <MediaPlaybackCore/MPCPlaybackEngineEventConsumer-Protocol.h>
 
-@class NSString;
-@protocol MPCPlaybackEngineEventStreamSubscription;
+@class MPCPlaybackEngine, NSString;
+@protocol MPCPlaybackEngineEventStreamSubscription, OS_dispatch_queue;
 
 @interface MPCAssistantAnalyticsEventConsumer : NSObject <MPCPlaybackEngineEventConsumer>
 {
+    NSObject<OS_dispatch_queue> *_eventQueue;
+    NSString *_lastSiriReferenceIdentifierForPlaybackStart;
+    struct OpaqueCMTimebase *_observedTimebase;
+    MPCPlaybackEngine *_playbackEngine;
     id<MPCPlaybackEngineEventStreamSubscription> _subscription;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, weak, nonatomic) MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 @property (readonly, nonatomic) id<MPCPlaybackEngineEventStreamSubscription> subscription; // @synthesize subscription=_subscription;
 @property (readonly) Class superclass;
 
 + (id)identifier;
 - (void).cxx_destruct;
+- (void)_attemptPlaybackStartReportingEventWithItem:(id)arg1;
 - (id)_contextWithEvent:(id)arg1;
+- (id)_createContextDictionaryWithSiriReferenceIdentifier:(id)arg1 siriWHAMetricsInfo:(id)arg2;
+- (void)_handleAssetLoadEnd:(id)arg1 cursor:(id)arg2;
+- (void)_itemTimebaseDidChangeNotification:(id)arg1;
+- (void)_timebaseEffectiveRateChangedNotification;
+- (id)initWithPlaybackEngine:(id)arg1;
 - (void)subscribeToEventStream:(id)arg1;
 - (void)unsubscribeFromEventStream:(id)arg1;
 

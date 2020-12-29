@@ -4,11 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <objc/NSObject.h>
+#import <BiomeStreams/BMEventBase.h>
+
+#import <BiomeStreams/BMStoreData-Protocol.h>
+#import <BiomeStreams/NSSecureCoding-Protocol.h>
 
 @class NSString, NSURL;
 
-@interface BMAppClipLaunchEvent : NSObject
+@interface BMAppClipLaunchEvent : BMEventBase <BMStoreData, NSSecureCoding>
 {
     NSString *_URLHash;
     NSString *_clipBundleID;
@@ -23,16 +26,25 @@
 @property (readonly, copy, nonatomic) NSString *URLHash; // @synthesize URLHash=_URLHash;
 @property (readonly, copy, nonatomic) NSString *appBundleID; // @synthesize appBundleID=_appBundleID;
 @property (readonly, copy, nonatomic) NSString *clipBundleID; // @synthesize clipBundleID=_clipBundleID;
+@property (readonly, nonatomic) unsigned int dataVersion;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSURL *fullURL; // @synthesize fullURL=_fullURL;
+@property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *launchReason; // @synthesize launchReason=_launchReason;
 @property (readonly, copy, nonatomic) NSString *referrerBundleID; // @synthesize referrerBundleID=_referrerBundleID;
 @property (readonly, copy, nonatomic) NSURL *referrerURL; // @synthesize referrerURL=_referrerURL;
+@property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *webAppBundleID; // @synthesize webAppBundleID=_webAppBundleID;
 
++ (id)eventWithData:(id)arg1 dataVersion:(unsigned int)arg2;
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (id)init;
+- (id)initWithCoder:(id)arg1;
 - (id)initWithURLHash:(id)arg1 clipBundleID:(id)arg2 appBundleID:(id)arg3 webAppBundleID:(id)arg4 launchReason:(id)arg5 fullURL:(id)arg6 referrerURL:(id)arg7 referrerBundleID:(id)arg8;
+- (id)serialize;
 
 @end
 

@@ -7,13 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <HeartRhythmUI/HROnboardingElectrocardiogramSetupCompleteViewControllerDelegate-Protocol.h>
+#import <HeartRhythmUI/HROnboardingElectrocardiogramUpdateCompleteViewControllerDelegate-Protocol.h>
 #import <HeartRhythmUI/HROnboardingManagerDataSource-Protocol.h>
 #import <HeartRhythmUI/HROnboardingManagerDelegate-Protocol.h>
 
 @class HROnboardingManager, NSString;
 @protocol HRElectrocardiogramOnboardingManagerDelegate;
 
-@interface HRElectrocardiogramOnboardingManager : NSObject <HROnboardingManagerDataSource, HROnboardingManagerDelegate, HROnboardingElectrocardiogramSetupCompleteViewControllerDelegate>
+@interface HRElectrocardiogramOnboardingManager : NSObject <HROnboardingManagerDataSource, HROnboardingManagerDelegate, HROnboardingElectrocardiogramSetupCompleteViewControllerDelegate, HROnboardingElectrocardiogramUpdateCompleteViewControllerDelegate>
 {
     BOOL _isFirstTimeOnboarding;
     BOOL _isSampleInteractive;
@@ -30,7 +31,12 @@
 @property (readonly, nonatomic) HROnboardingManager *onboardingManager; // @synthesize onboardingManager=_onboardingManager;
 @property (readonly) Class superclass;
 
++ (long long)algorithmVersionForSample:(id)arg1;
++ (id)electrocardiogramPossibleResultsViewControllerForAlgorithmVersion:(long long)arg1 forOnboarding:(BOOL)arg2;
++ (id)electrocardiogramPossibleResultsViewControllerForSample:(id)arg1;
++ (id)electrocardiogramPossibleResultsViewControllerForSample:(id)arg1 forAlgorithmVersion:(long long)arg2;
 - (void).cxx_destruct;
+- (long long)availableAlgorithmVersion;
 - (id)availableOnboardingStepsForOnboardingManager:(id)arg1;
 - (void)didBeginOnboardingForOnboardingManager:(id)arg1;
 - (void)didCancelOnboardingForOnboardingManager:(id)arg1;
@@ -44,6 +50,8 @@
 - (void)onboardingManager:(id)arg1 willMoveToPage:(id)arg2;
 - (id)onboardingNavigationController;
 - (void)recordOnboardingAsCompleted;
+- (long long)upgradingFromAlgorithmVersion;
+- (long long)upgradingFromAlgorithmVersionForOnboardingManager:(id)arg1;
 
 @end
 

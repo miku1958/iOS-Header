@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)setPiggybackBlobPreference;
 - (void)setQuickRelayServerProvider:(int)arg1;
 - (void)start;
+- (void)startMKMRecoveryForParticipantIDs:(id)arg1;
 - (void)stop;
 
 @end

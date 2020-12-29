@@ -40,6 +40,7 @@
     NSArray *_clipVerifiedAssociatedDomains;
     CPSClipInvocationPolicy *_invocationPolicy;
     NSString *_fullAppName;
+    NSString *_fullAppShortName;
     NSString *_fullAppCaption;
     NSString *_fullAppContentRating;
     NSString *_fullAppBundleID;
@@ -88,6 +89,7 @@
 @property (copy, nonatomic) NSString *fullAppContentRating; // @synthesize fullAppContentRating=_fullAppContentRating;
 @property (copy, nonatomic) NSURL *fullAppIconURL; // @synthesize fullAppIconURL=_fullAppIconURL;
 @property (copy, nonatomic) NSString *fullAppName; // @synthesize fullAppName=_fullAppName;
+@property (copy, nonatomic) NSString *fullAppShortName; // @synthesize fullAppShortName=_fullAppShortName;
 @property (copy, nonatomic) NSURL *fullAppStoreURL; // @synthesize fullAppStoreURL=_fullAppStoreURL;
 @property (readonly, nonatomic) BOOL hasAppStoreMetadata; // @synthesize hasAppStoreMetadata=_hasAppStoreMetadata;
 @property (readonly, nonatomic) BOOL hasBusinessItemMetadata; // @synthesize hasBusinessItemMetadata=_hasBusinessItemMetadata;

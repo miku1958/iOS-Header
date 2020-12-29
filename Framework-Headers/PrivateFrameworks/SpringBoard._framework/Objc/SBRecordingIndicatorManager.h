@@ -11,7 +11,7 @@
 #import <SpringBoard/SBSensorActivityObserver-Protocol.h>
 #import <SpringBoard/SBUIActiveOrientationObserver-Protocol.h>
 
-@class NSDate, NSString, NSTimer, SBRecordingIndicatorViewController, UIWindow;
+@class NSDate, NSString, NSTimer, SBRecordingIndicatorViewController, SBSensorActivityDataProvider, UIWindow;
 
 @interface SBRecordingIndicatorManager : NSObject <SBAppStatusBarAssertionManagerObserver, SBSensorActivityObserver, SBUIActiveOrientationObserver, PTSettingsKeyObserver>
 {
@@ -24,6 +24,7 @@
     BOOL _visibilityIsForcedByPrototypeSettings;
     NSDate *_indicatorDisplayTime;
     NSTimer *_minimumTimeOnScreenTimer;
+    SBSensorActivityDataProvider *_dataProvider;
     BOOL _isIndicatorVisible;
 }
 
@@ -35,15 +36,17 @@
 
 - (void).cxx_destruct;
 - (BOOL)_allowStatusBarDelayForCameraApp:(id)arg1;
-- (void)_updateIndicatorColorForSensorType:(long long)arg1;
 - (void)_updateIndicatorStyleForSensorActivityAttributions:(id)arg1;
+- (void)_updateIndicatorViewForSensorType:(long long)arg1;
 - (void)activeInterfaceOrientationDidChangeToOrientation:(long long)arg1 willAnimateWithDuration:(double)arg2 fromOrientation:(long long)arg3;
 - (void)activeInterfaceOrientationWillChangeToOrientation:(long long)arg1;
 - (void)activityDidChangeForSensorActivityDataProvider:(id)arg1;
 - (void)controlCenterDidDismiss:(id)arg1;
 - (void)controlCenterWillPresent:(id)arg1;
 - (void)dataProviderDidUpdate:(id)arg1;
+- (void)differentiateWithoutColorDidChange:(id)arg1;
 - (id)indicatorColorForSensorType:(long long)arg1;
+- (unsigned long long)indicatorShapeForSensorType:(long long)arg1;
 - (id)initWithSensorActivityDataProvider:(id)arg1;
 - (void)setIndicatorVisible:(BOOL)arg1;
 - (void)setIndicatorVisible:(BOOL)arg1 allowStatusBarDelayForCameraApp:(BOOL)arg2;

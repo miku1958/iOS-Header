@@ -8,5 +8,6 @@
 
 @interface CKContainer (Workflow)
 + (id)wf_shortcutsContainer;
+- (void)wf_setShortcutsAppAttribution;
 @end
 

@@ -16,6 +16,9 @@
     MISSING_TYPE *sectionDecorationFactory;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *audioFeedPlacardLayoutAttributesFactory;
+    MISSING_TYPE *sectionFooterViewLayoutAttributesFactory;
+    MISSING_TYPE *baseStyler;
+    MISSING_TYPE *configurationManager;
 }
 
 @end

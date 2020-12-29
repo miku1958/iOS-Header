@@ -16,7 +16,6 @@
 @interface MPCModelRadioPlaybackContext : MPPlaybackContext <MPCPlaybackContextUserIdentityConsuming, MPCPlaybackContextPrivateListeningOverridable, MPCModelPlaybackRequestEnvironmentConsuming>
 {
     BOOL _continueListeningStation;
-    ICUserIdentity *_userIdentity;
     MPCPlaybackRequestEnvironment *_playbackRequestEnvironment;
     id<MPCContinueListeningRadioQueueProviding> _continueListeningQueueProvider;
     long long _continueListeningMaxQueueReferences;
@@ -41,7 +40,7 @@
 @property (copy, nonatomic) MPCModelRadioContentReference *seedContentReference; // @synthesize seedContentReference=_seedContentReference;
 @property (copy, nonatomic) NSURL *stationURL; // @synthesize stationURL=_stationURL;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) ICUserIdentity *userIdentity; // @synthesize userIdentity=_userIdentity;
+@property (copy, nonatomic) ICUserIdentity *userIdentity;
 
 + (Class)queueFeederClass;
 + (BOOL)supportsSecureCoding;

@@ -8,5 +8,6 @@
 
 @interface NSData (MD5)
 - (void)MD5:(unsigned char [16])arg1;
+- (unsigned long long)blt_sizeof;
 @end
 

@@ -10,14 +10,12 @@
 
 @interface VSIdentityProviderInfoQueryResult : NSObject
 {
-    BOOL _isInSetTopBoxMode;
     VSIdentityProvider *_identityProvider;
     NSString *_designatedAppBundleIdentifier;
 }
 
 @property (copy, nonatomic) NSString *designatedAppBundleIdentifier; // @synthesize designatedAppBundleIdentifier=_designatedAppBundleIdentifier;
 @property (copy, nonatomic) VSIdentityProvider *identityProvider; // @synthesize identityProvider=_identityProvider;
-@property (nonatomic) BOOL isInSetTopBoxMode; // @synthesize isInSetTopBoxMode=_isInSetTopBoxMode;
 
 - (void).cxx_destruct;
 - (id)description;

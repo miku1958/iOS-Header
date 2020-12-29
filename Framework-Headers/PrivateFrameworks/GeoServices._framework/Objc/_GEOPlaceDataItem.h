@@ -45,6 +45,7 @@
 @property (readonly, nonatomic) NSArray *areasOfInterest;
 @property (readonly, nonatomic, getter=_associatedApp) GEOAssociatedApp *associatedApp;
 @property (readonly, nonatomic, getter=_attribution) GEOMapItemPlaceAttribution *attribution;
+@property (readonly, nonatomic, getter=_bestAvailableCountryCode) NSString *bestAvailableCountryCode;
 @property (readonly, nonatomic, getter=_brandMUID) unsigned long long brandMUID;
 @property (readonly, nonatomic, getter=_browseCategories) NSArray *browseCategories;
 @property (readonly, nonatomic, getter=_businessClaim) GEOPDBusinessClaim *businessClaim;

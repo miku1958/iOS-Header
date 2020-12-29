@@ -11,6 +11,7 @@
 @interface _TtC12GameCenterUI17SectionHeaderView : UICollectionReusableView
 {
     MISSING_TYPE *avoidanceRegion;
+    MISSING_TYPE *achievementsTheme;
     MISSING_TYPE *sectionHeaderLabel;
 }
 

@@ -20,6 +20,7 @@
     NSString *_groupID;
     NSString *_announcerID;
     NSString *_announcerName;
+    NSString *_announcerUserUniqueID;
     NSString *_announcerUserID;
     NSString *_homeName;
     NSString *_homeID;
@@ -39,6 +40,7 @@
 @property (readonly, nonatomic) BOOL announcerIsAccessory; // @synthesize announcerIsAccessory=_announcerIsAccessory;
 @property (readonly, nonatomic) NSString *announcerName; // @synthesize announcerName=_announcerName;
 @property (readonly, nonatomic) NSString *announcerUserID; // @synthesize announcerUserID=_announcerUserID;
+@property (readonly, nonatomic) NSString *announcerUserUniqueID; // @synthesize announcerUserUniqueID=_announcerUserUniqueID;
 @property (readonly, nonatomic) NSNumber *audioFileDuration; // @synthesize audioFileDuration=_audioFileDuration;
 @property (readonly, nonatomic) NSDictionary *contextDictionary;
 @property (readonly, nonatomic) int deviceClass; // @synthesize deviceClass=_deviceClass;

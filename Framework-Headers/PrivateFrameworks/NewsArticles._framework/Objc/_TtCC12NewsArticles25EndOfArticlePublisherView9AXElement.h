@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) struct CGRect accessibilityFrame;
+@property (nonatomic) unsigned long long accessibilityTraits;
 
 - (void).cxx_destruct;
 - (id)init;

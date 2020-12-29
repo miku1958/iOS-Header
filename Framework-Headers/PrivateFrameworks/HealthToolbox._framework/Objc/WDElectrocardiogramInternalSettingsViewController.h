@@ -6,14 +6,15 @@
 
 #import <HealthUI/HKTableViewController.h>
 
+#import <HealthToolbox/HKHeartRhythmAvailabilityObserver-Protocol.h>
 #import <HealthToolbox/HRElectrocardiogramOnboardingManagerDelegate-Protocol.h>
 #import <HealthToolbox/UIPickerViewDataSource-Protocol.h>
 #import <HealthToolbox/UIPickerViewDelegate-Protocol.h>
 
-@class HKDateCache, HKHealthStore, HKHeartRhythmAvailability, HKHostingAreaLayoutView, HRElectrocardiogramOnboardingManager, NPSManager, NSArray, NSString, UIPickerView;
+@class HKDateCache, HKHealthStore, HKHeartRhythmAvailability, HKHostingAreaLayoutView, HKKeyValueDomain, HRElectrocardiogramOnboardingManager, NPSManager, NSArray, NSDictionary, NSString, UIPickerView;
 
 __attribute__((visibility("hidden")))
-@interface WDElectrocardiogramInternalSettingsViewController : HKTableViewController <UIPickerViewDelegate, UIPickerViewDataSource, HRElectrocardiogramOnboardingManagerDelegate>
+@interface WDElectrocardiogramInternalSettingsViewController : HKTableViewController <UIPickerViewDelegate, UIPickerViewDataSource, HRElectrocardiogramOnboardingManagerDelegate, HKHeartRhythmAvailabilityObserver>
 {
     BOOL _deletingSamples;
     NSArray *_allDemoResults;
@@ -28,6 +29,9 @@ __attribute__((visibility("hidden")))
     HKDateCache *_dateCache;
     HKHeartRhythmAvailability *_heartRhythmAvailability;
     HRElectrocardiogramOnboardingManager *_onboardingManager;
+    HKKeyValueDomain *_keyValueDomain;
+    NSArray *_keyValueDomainContentKeys;
+    NSDictionary *_keyValueDomainContent;
 }
 
 @property (strong, nonatomic) UIPickerView *algorithmVersionPicker; // @synthesize algorithmVersionPicker=_algorithmVersionPicker;
@@ -42,6 +46,9 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HKHealthStore *healthStore; // @synthesize healthStore=_healthStore;
 @property (readonly, nonatomic) HKHeartRhythmAvailability *heartRhythmAvailability; // @synthesize heartRhythmAvailability=_heartRhythmAvailability;
+@property (readonly, nonatomic) HKKeyValueDomain *keyValueDomain; // @synthesize keyValueDomain=_keyValueDomain;
+@property (strong, nonatomic) NSDictionary *keyValueDomainContent; // @synthesize keyValueDomainContent=_keyValueDomainContent;
+@property (strong, nonatomic) NSArray *keyValueDomainContentKeys; // @synthesize keyValueDomainContentKeys=_keyValueDomainContentKeys;
 @property (strong, nonatomic) HRElectrocardiogramOnboardingManager *onboardingManager; // @synthesize onboardingManager=_onboardingManager;
 @property (readonly, nonatomic) HKHostingAreaLayoutView *pickerInputView; // @synthesize pickerInputView=_pickerInputView;
 @property (readonly, nonatomic) UIPickerView *resultPicker; // @synthesize resultPicker=_resultPicker;
@@ -50,14 +57,19 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)_buttonCellForTableView:(id)arg1;
+- (id)_onboardingCompletedAlgorithmVersion;
 - (unsigned long long)_overrideAlgorithmVersion;
-- (void)_saveOverrideAlgorithmVersion:(long long)arg1;
+- (void)_presentOnboardingManagerWithOnboardingType:(long long)arg1;
+- (void)_saveOverrideAlgorithmVersionIfNeeded:(long long)arg1;
+- (void)_startFullOnboarding;
+- (void)_startUpgrade;
 - (id)_styleValue1CellForTableView:(id)arg1 inputView:(id)arg2;
-- (id)_versionForAlgorithmVersionText:(id)arg1;
 - (void)clearCellIndexNumberLabels;
+- (void)dealloc;
 - (void)didCompleteOnboarding;
 - (void)didDismissOnboarding;
 - (void)didTapOnElectrocardiogram:(id)arg1;
+- (void)heartRhythmAvailabilityDidUpdate;
 - (id)initWithHealthStore:(id)arg1 dateCache:(id)arg2;
 - (void)keyboardDidDismiss:(id)arg1;
 - (long long)numberOfComponentsInPickerView:(id)arg1;
@@ -65,6 +77,7 @@ __attribute__((visibility("hidden")))
 - (void)pickerView:(id)arg1 didSelectRow:(long long)arg2 inComponent:(long long)arg3;
 - (long long)pickerView:(id)arg1 numberOfRowsInComponent:(long long)arg2;
 - (id)pickerView:(id)arg1 titleForRow:(long long)arg2 forComponent:(long long)arg3;
+- (void)reloadKeyValueDomainContent;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;
 - (BOOL)tableView:(id)arg1 canEditRowAtIndexPath:(id)arg2;
 - (BOOL)tableView:(id)arg1 canMoveRowAtIndexPath:(id)arg2;

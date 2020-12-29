@@ -23,8 +23,10 @@
     NSNumber *_speed;
     NSNumber *_verticalAccuracy;
     NSNumber *_horizontalAccuracy;
+    long long _accessState;
 }
 
+@property (readonly, nonatomic) long long accessState; // @synthesize accessState=_accessState;
 @property (readonly, copy, nonatomic) NSNumber *altitude; // @synthesize altitude=_altitude;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -53,7 +55,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionaryRepresentation:(id)arg1;
-- (id)initWithLatitude:(id)arg1 longitude:(id)arg2 altitude:(id)arg3 direction:(id)arg4 speed:(id)arg5 verticalAccuracy:(id)arg6 horizontalAccuracy:(id)arg7 preciseLocationEnabled:(BOOL)arg8;
+- (id)initWithLatitude:(id)arg1 longitude:(id)arg2 altitude:(id)arg3 direction:(id)arg4 speed:(id)arg5 verticalAccuracy:(id)arg6 horizontalAccuracy:(id)arg7 preciseLocationEnabled:(BOOL)arg8 accessState:(long long)arg9;
 - (id)initWithSerializedBackingStore:(id)arg1;
 - (id)initWithSetRequestOrigin:(id)arg1;
 - (BOOL)isEqual:(id)arg1;

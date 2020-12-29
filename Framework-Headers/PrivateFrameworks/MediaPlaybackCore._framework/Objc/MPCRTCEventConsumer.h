@@ -8,11 +8,15 @@
 
 #import <MediaPlaybackCore/MPCPlaybackEngineEventConsumer-Protocol.h>
 
-@class NSString;
-@protocol MPCPlaybackEngineEventStreamSubscription;
+@class NSString, RTCReporting;
+@protocol MPCPlaybackEngineEventStreamSubscription, OS_dispatch_group, OS_dispatch_queue;
 
 @interface MPCRTCEventConsumer : NSObject <MPCPlaybackEngineEventConsumer>
 {
+    RTCReporting *_rtcSessionPlaybackSession;
+    RTCReporting *_rtcSessionPlaybackItem;
+    NSObject<OS_dispatch_group> *_rtcSessionGroup;
+    NSObject<OS_dispatch_queue> *_rtcSessionQueue;
     id<MPCPlaybackEngineEventStreamSubscription> _subscription;
 }
 
@@ -22,9 +26,32 @@
 @property (readonly, nonatomic) id<MPCPlaybackEngineEventStreamSubscription> subscription; // @synthesize subscription=_subscription;
 @property (readonly) Class superclass;
 
++ (id)dateFormatter;
 + (id)identifier;
 - (void).cxx_destruct;
-- (id)_reportingSessionWithToken:(id)arg1 serviceIdentifier:(id)arg2;
+- (void)_generateSessionStartIfNeeded:(id)arg1 forItemEvent:(id)arg2;
+- (void)_getReportingSessionWithToken:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_logReportSendResult:(BOOL)arg1 category:(long long)arg2 payload:(id)arg3 error:(id)arg4;
+- (id)_networkSignalPayload:(id)arg1;
+- (id)_networkType:(id)arg1 fromEvent:(id)arg2;
+- (id)_payloadForItemAssetLoad:(id)arg1 fromEvent:(id)arg2 withItemQueueIdentifier:(id)arg3;
+- (id)_payloadForItemAssetLoad:(id)arg1 fromItemEvent:(id)arg2;
+- (id)_payloadForItemSummary:(id)arg1 fromEvent:(id)arg2;
+- (id)_payloadForItemSummary:(id)arg1 fromItemEvent:(id)arg2;
+- (id)_payloadForQueueLoad:(id)arg1 fromQueueLoadEndEvent:(id)arg2;
+- (id)_payloadForSessionStart:(id)arg1 fromEvent:(id)arg2;
+- (id)_payloadForSessionSummary:(id)arg1 fromSessionEndEvent:(id)arg2;
+- (id)_rtcSessionInfoWithToken:(id)arg1;
+- (id)_rtcUserInfo;
+- (void)_sendReportForItemAssetLoad:(id)arg1 event:(id)arg2;
+- (void)_sendReportForItemSummary:(id)arg1 event:(id)arg2;
+- (void)_sendReportForPlaybackSessionStart:(id)arg1 event:(id)arg2 withType:(long long)arg3;
+- (void)_sendReportForQueueLoad:(id)arg1 event:(id)arg2;
+- (void)_sendReportForSessionSummary:(id)arg1 event:(id)arg2;
+- (void)_sendReportWithSession:(id)arg1 category:(long long)arg2 type:(long long)arg3 payload:(id)arg4;
+- (void)_sendReportWithToken:(id)arg1 category:(long long)arg2 type:(long long)arg3 payload:(id)arg4;
+- (long long)_sessionStartReportingType:(id)arg1 forItemEvent:(id)arg2;
+- (id)init;
 - (void)subscribeToEventStream:(id)arg1;
 - (void)unsubscribeFromEventStream:(id)arg1;
 

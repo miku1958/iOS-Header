@@ -30,6 +30,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_flushBuffer;
 - (void)close;
 - (void)dealloc;
+- (BOOL)hasBufferedData;
 - (BOOL)hasSpaceAvailable;
 - (id)initWithBufferSize:(unsigned long long)arg1 underlyingOutputStream:(id)arg2 queue:(id)arg3;
 - (void)stream:(id)arg1 handleEvent:(unsigned long long)arg2;

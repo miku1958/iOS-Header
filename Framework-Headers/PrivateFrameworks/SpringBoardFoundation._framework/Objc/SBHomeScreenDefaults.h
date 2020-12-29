@@ -35,6 +35,7 @@
 
 - (void)_bindAndRegisterDefaults;
 - (BOOL)automaticallyAddsNewApplicationsExists;
+- (BOOL)hasLayoutLowDensityBeenAltered;
 
 @end
 

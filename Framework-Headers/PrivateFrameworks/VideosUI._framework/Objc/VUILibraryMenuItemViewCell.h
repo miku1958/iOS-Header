@@ -6,12 +6,12 @@
 
 #import <VideosUI/VUIListCollectionViewCell.h>
 
-@class NSString, VUIImageView, VUILabel, VUISeparatorView;
+@class NSString, VUILabel, VUISeparatorView, VUIVideosImageView;
 
 __attribute__((visibility("hidden")))
 @interface VUILibraryMenuItemViewCell : VUIListCollectionViewCell
 {
-    VUIImageView *_imageView;
+    VUIVideosImageView *_imageView;
     BOOL _hideChevron;
     BOOL _shouldAppearAsHeader;
     NSString *_title;

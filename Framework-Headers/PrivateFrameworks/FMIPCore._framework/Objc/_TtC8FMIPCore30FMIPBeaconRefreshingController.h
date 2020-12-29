@@ -24,6 +24,7 @@
 }
 
 - (void)handleBeaconsChanged;
+- (void)handleUnknownBeaconsChanged;
 
 @end
 

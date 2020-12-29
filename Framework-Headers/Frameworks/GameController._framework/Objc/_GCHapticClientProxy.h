@@ -71,6 +71,7 @@ __attribute__((visibility("hidden")))
 - (void)copyCustomAudioEvent:(unsigned long long)arg1 options:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)createCustomAudioEvent:(id)arg1 format:(id)arg2 frames:(unsigned long long)arg3 options:(id)arg4 reply:(CDUnknownBlockType)arg5;
 - (void)dealloc;
+- (void)debugEngineIsRunning:(CDUnknownBlockType)arg1;
 - (void)debugExpectNotifyOnFinishAfter:(double)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)description;
 - (void)detachSequence:(unsigned long long)arg1;

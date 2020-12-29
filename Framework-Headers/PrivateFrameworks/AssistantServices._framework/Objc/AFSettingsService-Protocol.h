@@ -34,6 +34,7 @@
 - (oneway void)fetchMultiUserVoiceIdentificationSetting:(void (^)(BOOL))arg1;
 - (oneway void)fetchSupportedLanguagesWithReply:(void (^)(NSArray *, NSError *))arg1;
 - (oneway void)forceMultiUserSync:(BOOL)arg1 download:(BOOL)arg2 completion:(void (^)(BOOL))arg3;
+- (oneway void)getAudioSessionCoordinationSnapshotWithCompletion:(void (^)(AFAudioSessionCoordinationSnapshot *))arg1;
 - (oneway void)getAvailableVoicesIncludingAssetInfo:(BOOL)arg1 completion:(void (^)(NSArray *))arg2;
 - (oneway void)getBluetoothDeviceInfoWithAddress:(NSString *)arg1 completion:(void (^)(AFBluetoothDeviceInfo *))arg2;
 - (oneway void)getBluetoothDeviceInfoWithUID:(NSUUID *)arg1 completion:(void (^)(AFBluetoothDeviceInfo *))arg2;

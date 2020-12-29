@@ -55,6 +55,7 @@
 @property (readonly, nonatomic, getter=isB372Route) BOOL b372Route;
 @property (readonly, nonatomic, getter=isB419Route) BOOL b419Route;
 @property (readonly, nonatomic, getter=isB444Route) BOOL b444Route;
+@property (readonly, nonatomic, getter=isB515Route) BOOL b515Route;
 @property (readonly, nonatomic, getter=isB520Route) BOOL b520Route; // @synthesize b520Route=_b520Route;
 @property (readonly, nonatomic) MPAVBatteryLevel *batteryLevel; // @synthesize batteryLevel=_batteryLevel;
 @property (readonly, nonatomic, getter=isBeatsSoloRoute) BOOL beatsSoloRoute;

@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     id __processAssertion;
     id<EXExtensionContextVending> __extensionVendorProxy;
     NSXPCListener *__auxiliaryListener;
+    NSUUID *__pkUUID;
     NSUUID *__UUID;
     NSArray *_inputItems;
     NSXPCConnection *__auxiliaryConnection;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property (setter=_setExtensionHostAuditToken:) CDStruct_4c969caf _extensionHostAuditToken; // @synthesize _extensionHostAuditToken=__extensionHostAuditToken;
 @property (strong, setter=_setExtensionHostProxy:) id<EXExtensionContextHosting> _extensionHostProxy; // @synthesize _extensionHostProxy=__extensionHostProxy;
 @property (strong, setter=_setExtensionVendorProxy:) id<EXExtensionContextVending> _extensionVendorProxy; // @synthesize _extensionVendorProxy=__extensionVendorProxy;
+@property (copy) NSUUID *_pkUUID; // @synthesize _pkUUID=__pkUUID;
 @property (setter=_setPrincipalObject:) id _principalObject; // @synthesize _principalObject=__principalObject;
 @property (strong, setter=_setProcessAssertion:) id _processAssertion; // @synthesize _processAssertion=__processAssertion;
 @property (copy, setter=_setRequestCleanUpBlock:) CDUnknownBlockType _requestCleanUpBlock; // @synthesize _requestCleanUpBlock=__requestCleanUpBlock;

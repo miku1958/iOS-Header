@@ -25,6 +25,7 @@
     NSMutableArray *_mutableNetworkEvents;
     NSDictionary *_feedRequestsByFeedID;
     NSDictionary *_databaseLookupsByFeedID;
+    unsigned long long _queryBudget;
     NSMutableDictionary *_resultFeedResponses;
     FCHeldRecords *_resultHeldArticleRecords;
     FCHeldRecords *_resultHeldTagRecords;
@@ -44,6 +45,7 @@
 @property (strong, nonatomic) NSMutableArray *mutableNetworkEvents; // @synthesize mutableNetworkEvents=_mutableNetworkEvents;
 @property (readonly, nonatomic) NSArray *networkEvents;
 @property (nonatomic) long long options; // @synthesize options=_options;
+@property (nonatomic) unsigned long long queryBudget; // @synthesize queryBudget=_queryBudget;
 @property (copy, nonatomic) CDUnknownBlockType requestCompletionHandler; // @synthesize requestCompletionHandler=_requestCompletionHandler;
 @property (copy, nonatomic) CDUnknownBlockType requestCompletionHandlerWithHeldRecords; // @synthesize requestCompletionHandlerWithHeldRecords=_requestCompletionHandlerWithHeldRecords;
 @property (strong, nonatomic) NSMutableDictionary *resultFeedResponses; // @synthesize resultFeedResponses=_resultFeedResponses;
@@ -59,9 +61,10 @@
 - (id)_additionalHTTPHeadersForOrderFeedRequest;
 - (BOOL)_countOfDroppedFeeds;
 - (id)_failureResponseForRequest:(id)arg1 error:(id)arg2;
-- (void)_gatherAllFeedResponsesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)_gatherAllMultiFeedResponsesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_gatherAllOrderFeedResponsesWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)_gatherEdgeCachedFeedResponsesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (unsigned long long)_maxAllowedDroppedFeeds;
 - (unsigned long long)_networkEventCount;
 - (id)_normalizedFeedRange:(id)arg1;
 - (id)_orderFeedIDFromFeedID:(id)arg1;

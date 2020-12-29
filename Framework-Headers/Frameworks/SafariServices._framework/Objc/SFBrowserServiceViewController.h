@@ -63,6 +63,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_redirectToHostAppWithExpectedCallbackSchemeIfPossible:(id)arg1;
 - (BOOL)_redirectToHostAppWithNavigationResult:(id)arg1 options:(id)arg2;
 - (BOOL)_shouldReloadImmediatelyAfterPageLoadError;
+- (void)_updateMaxVisibleHeightPercentageUserDriven:(BOOL)arg1;
 - (void)_updateRemoteSwipeGestureState;
 - (id)_webDataStoreRootURLForHSTSStorage:(BOOL)arg1;
 - (id)_websiteDataStoreURLForHSTSStorage:(BOOL)arg1;

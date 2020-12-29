@@ -23,12 +23,14 @@ __attribute__((visibility("hidden")))
     int _playerOptions;
     _MRNowPlayingPlayerPathProtobuf *_playerPath;
     NSString *_requestID;
+    BOOL _allowFadeTransition;
     struct {
         unsigned int playbackPosition:1;
         unsigned int playbackRate:1;
         unsigned int endpointOptions:1;
         unsigned int playbackState:1;
         unsigned int playerOptions:1;
+        unsigned int allowFadeTransition:1;
     } _has;
 }
 

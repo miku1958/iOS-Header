@@ -13,6 +13,7 @@
 @property (readonly, nonatomic) struct UIEdgeInsets bannerContentOutsets;
 @property (readonly, nonatomic, getter=isDraggingDismissalEnabled) BOOL draggingDismissalEnabled;
 @property (readonly, nonatomic, getter=isDraggingInteractionEnabled) BOOL draggingInteractionEnabled;
+@property (readonly, nonatomic, getter=isPanGestureProxySupported) BOOL panGestureProxySupported;
 @property (readonly, nonatomic) struct CGSize preferredContentSize;
 @property (readonly, nonatomic, getter=isTouchOutsideDismissalEnabled) BOOL touchOutsideDismissalEnabled;
 

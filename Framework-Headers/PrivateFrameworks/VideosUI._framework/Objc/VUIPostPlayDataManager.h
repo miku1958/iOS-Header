@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 + (void)_fetchPostPlayItemFromJSForSeriesCanonicalID:(id)arg1 andVideoCanonicalID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)_fetchPostPlayItemFromLibraryContentForStoreID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)_generateMediaItemFromJSResponse:(id)arg1 canAutoPlay:(BOOL)arg2;
++ (id)_metricsForPostPlayMediaItemFromLibrary:(id)arg1;
 + (void)fetchPostPlayItemForCurrentMediaItem:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end

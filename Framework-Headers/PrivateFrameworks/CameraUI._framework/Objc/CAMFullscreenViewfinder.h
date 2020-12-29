@@ -14,7 +14,7 @@
 #import <CameraUI/CAMViewfinderTransitionable-Protocol.h>
 #import <CameraUI/CEKBadgeViewDelegate-Protocol.h>
 
-@class AVSpatialOverCaptureVideoPreviewLayer, CAMAdditiveAnimator, CAMBadgeTray, CAMCTMDescriptionOverlayView, CAMControlDrawer, CAMControlStatusBar, CAMCreativeCameraButton, CAMDynamicShutterControl, CAMElapsedTimeView, CAMFilterNameBadge, CAMFlipButton, CAMFullscreenModeSelector, CAMFullscreenViewfinderLayout, CAMImageWell, CAMInterfaceModulationView, CAMLowLightInstructionLabel, CAMModeDial, CAMModeIndicatorView, CAMPanoramaView, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPreviewAlignmentGuide, CAMPreviewView, CAMQRCodeInstructionLabel, CAMTimerIndicatorView, CAMViewfinderReticleView, CAMZoomControl, CAMZoomSlider, CEKLightingControl, CEKLightingNameBadge, NSString, UILongPressGestureRecognizer;
+@class AVSpatialOverCaptureVideoPreviewLayer, CAMAdditiveAnimator, CAMBadgeTray, CAMCTMDescriptionOverlayView, CAMControlDrawer, CAMControlStatusBar, CAMCreativeCameraButton, CAMDynamicShutterControl, CAMElapsedTimeView, CAMFilterNameBadge, CAMFlashCompromisedInstructionLabel, CAMFlipButton, CAMFullscreenModeSelector, CAMFullscreenViewfinderLayout, CAMImageWell, CAMInterfaceModulationView, CAMLowLightInstructionLabel, CAMModeDial, CAMModeIndicatorView, CAMPanoramaView, CAMPortraitModeDescriptionOverlayView, CAMPortraitModeInstructionLabel, CAMPreviewAlignmentGuide, CAMPreviewView, CAMQRCodeInstructionLabel, CAMTimerIndicatorView, CAMViewfinderReticleView, CAMZoomControl, CAMZoomSlider, CEKLightingControl, CEKLightingNameBadge, NSString, UILongPressGestureRecognizer;
 @protocol CAMFullscreenViewfinderDelegate;
 
 @interface CAMFullscreenViewfinder : UIView <CAMAdditiveAnimatorDelegate, CAMControlDrawerPresentationDelegate, CEKBadgeViewDelegate, CAMInstructionLabelDelegate, CAMViewfinderTransitionable, CAMAccessibilityHUDItemProvider, CAMBarsAccessibilityHUDManagerGestureProvider>
@@ -31,6 +31,7 @@
     BOOL _previewAlignmentGuideVisible;
     BOOL _legibilityBackgroundsVisible;
     BOOL _portraitControlsAllowed;
+    BOOL _flashCompromisedInstructionLabelVisible;
     BOOL __usingCreativeCameraControls;
     BOOL __controlDrawerPresentedModally;
     id<CAMFullscreenViewfinderDelegate> _delegate;
@@ -65,6 +66,7 @@
     CAMQRCodeInstructionLabel *_qrCodeInstructionLabel;
     CAMPortraitModeDescriptionOverlayView *_portraitModeOverlayView;
     CAMCTMDescriptionOverlayView *_ctmOverlayView;
+    CAMFlashCompromisedInstructionLabel *_flashCompromisedInstructionLabel;
     UIView *__previewContainerView;
     UIView *__modeClippingView;
     CAMViewfinderReticleView *__reticleView;
@@ -102,6 +104,8 @@
 @property (readonly, nonatomic) CAMElapsedTimeView *elapsedTimeView; // @synthesize elapsedTimeView=_elapsedTimeView;
 @property (nonatomic, getter=isElapsedTimeViewVisible) BOOL elapsedTimeViewVisible; // @synthesize elapsedTimeViewVisible=_elapsedTimeViewVisible;
 @property (readonly, nonatomic) CAMFilterNameBadge *filterNameBadge; // @synthesize filterNameBadge=_filterNameBadge;
+@property (strong, nonatomic, setter=_setFlashCompromisedInstructionLabel:) CAMFlashCompromisedInstructionLabel *flashCompromisedInstructionLabel; // @synthesize flashCompromisedInstructionLabel=_flashCompromisedInstructionLabel;
+@property (nonatomic, getter=isFlashCompromisedInstructionLabelVisible) BOOL flashCompromisedInstructionLabelVisible; // @synthesize flashCompromisedInstructionLabelVisible=_flashCompromisedInstructionLabelVisible;
 @property (readonly, nonatomic) CAMFlipButton *flipButton; // @synthesize flipButton=_flipButton;
 @property (nonatomic, getter=isFlipButtonVisible) BOOL flipButtonVisible; // @synthesize flipButtonVisible=_flipButtonVisible;
 @property (readonly) unsigned long long hash;
@@ -203,6 +207,7 @@
 - (void)setControlDrawerAllowed:(BOOL)arg1 modeUIAllowed:(BOOL)arg2 animated:(BOOL)arg3;
 - (void)setControlDrawerExpanded:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setElapsedTimeViewVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)setFlashCompromisedInstructionLabelVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setFlipButtonVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)setInterfaceModulation:(unsigned long long)arg1 animated:(BOOL)arg2;
 - (void)setLegibilityBackgroundsVisible:(BOOL)arg1 animated:(BOOL)arg2;

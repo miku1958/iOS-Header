@@ -24,6 +24,7 @@
     BOOL _actionsHidden;
     BOOL _shouldShowShareButton;
     BOOL _observingSharingEnabledUserDefault;
+    BOOL _isNewShortcutFlow;
     unsigned long long _visibleToolbarPlacement;
     WFWorkflow *_workflow;
     WFEditWorkflowViewController *_workflowViewController;
@@ -67,6 +68,7 @@
 @property (strong, nonatomic) WFEditorViewController *editorViewController; // @synthesize editorViewController=_editorViewController;
 @property (strong, nonatomic) WFComposeFlowController *flowController; // @synthesize flowController=_flowController;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isNewShortcutFlow; // @synthesize isNewShortcutFlow=_isNewShortcutFlow;
 @property (strong, nonatomic) WFWorkflowSettingsLayoutMetrics *layoutMetrics; // @synthesize layoutMetrics=_layoutMetrics;
 @property (readonly, nonatomic) id<WFModuleDelegate> moduleDelegate;
 @property (readonly, nonatomic) NSHashTable *movedDragControllers; // @synthesize movedDragControllers=_movedDragControllers;
@@ -138,6 +140,7 @@
 - (void)setEditingState:(unsigned long long)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setUpToolbar;
 - (id)settingsButtonWithConfiguration:(id)arg1;
+- (BOOL)settingsViewControllerWantsToKnowIfNewShortcutFlow:(id)arg1;
 - (void)settingsViewControllerWantsWorkflowReload:(id)arg1;
 - (void)setupDrawerIfNeeded;
 - (void)shareWorkflowWithSender:(id)arg1;

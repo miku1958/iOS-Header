@@ -6,22 +6,26 @@
 
 #import <UIKit/UIView.h>
 
-@class HUIconView, NSArray, NSString, UILabel, UIStackView, UIVisualEffectView;
+@class HUIconView, NSMutableArray, NSString, UIImage, UIImageView, UILabel, UIStackView, UIVisualEffectView;
 
 @interface HUQuickControlSummaryView : UIView
 {
     NSString *_primaryText;
     NSString *_secondaryText;
     HUIconView *_iconView;
+    UIImage *_image;
+    UIImageView *_imageView;
     UILabel *_primaryLabel;
     UILabel *_secondaryLabel;
-    NSArray *_contentConstraints;
+    NSMutableArray *_contentConstraints;
     UIVisualEffectView *_secondaryLabelEffectView;
     UIStackView *_verticalStackView;
 }
 
-@property (strong, nonatomic) NSArray *contentConstraints; // @synthesize contentConstraints=_contentConstraints;
+@property (strong, nonatomic) NSMutableArray *contentConstraints; // @synthesize contentConstraints=_contentConstraints;
 @property (readonly, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
+@property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
+@property (readonly, nonatomic) UIImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) UILabel *primaryLabel; // @synthesize primaryLabel=_primaryLabel;
 @property (copy, nonatomic) NSString *primaryText; // @synthesize primaryText=_primaryText;
 @property (strong, nonatomic) UILabel *secondaryLabel; // @synthesize secondaryLabel=_secondaryLabel;

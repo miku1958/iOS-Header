@@ -12,7 +12,7 @@
 #import <SafariSharedUI/WBSTranslationContextTranslating-Protocol.h>
 #import <SafariSharedUI/WBSTranslationErrorControllerDelegate-Protocol.h>
 
-@class NSArray, NSNumber, NSString, NSURL, WBSFluidProgressController, WBSFluidProgressState, WBSTranslationContextSnapshot, WBSTranslationDiagnosticData, WBSTranslationErrorController, _LTTranslationSession, _LTTranslator;
+@class NSArray, NSNumber, NSString, NSURL, WBSFluidProgressController, WBSFluidProgressState, WBSTranslationContextSnapshot, WBSTranslationDiagnosticData, WBSTranslationErrorController, WBSTranslationScrollInteractionAnalyticsHelper, _LTTranslationSession, _LTTranslator;
 @protocol OS_dispatch_queue, WBSTranslationContentExtracting, WBSTranslationContentFilling, WBSTranslationContextDelegate, WBSTranslationContextLanguageDetecting, WBSTranslationContextPreferenceProviding, WBSTranslationContextTranslating;
 
 @interface WBSTranslationContext : NSObject <WBSTranslationErrorControllerDelegate, WBSFluidProgressStateSource, WBSTranslationContentExtractionDelegate, WBSTranslationContentFillingDelegate, WBSTranslationContextTranslating>
@@ -34,6 +34,7 @@
     NSArray *_cachedTextSamples;
     BOOL _hasReportedFirstParagraphFinishedFillingForAnalytics;
     BOOL _hasReportedInitialPageFinishedFillingForAnalytics;
+    WBSTranslationScrollInteractionAnalyticsHelper *_scrollInteractionAnalyticsHelper;
     NSString *_previousPageTargetLocale;
     NSString *_previousPageSourceLocale;
     NSString *_previousPageHighLevelDomain;
@@ -76,6 +77,7 @@
 - (id)_currentSnapshot;
 - (void)_dominantLocaleForTextSample:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)_generateJSONVersionOfContent:(id)arg1 forPurpose:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)_generateJSONVersionOfErrors:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)_genericErrorMessage;
 - (BOOL)_nextURLIsEligibleForContinuedTranslation:(id)arg1;
 - (void)_notifyDelegateToReportProgressInUnifiedField:(BOOL)arg1;
@@ -123,6 +125,7 @@
 - (void)owningWebViewWillNavigateToBackForwardListItemWithSnapshotStore:(id)arg1 inPageCache:(BOOL)arg2;
 - (id)progressState;
 - (void)reloadPageInOriginalLanguage;
+- (void)requestSendFeedbackWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)requestTranslatingWebpageToLocale:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setConsentedToFirstTimeAlert:(BOOL)arg1;
 - (void)setContentTranslator:(id)arg1;
@@ -131,6 +134,7 @@
 - (void)setWebpageLocaleWithExtractedTextSamples:(id)arg1 url:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)supportedLocalePairsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)translationContext:(id)arg1 translateWebpageContents:(id)arg2 toTargetLocale:(id)arg3 translationHandler:(CDUnknownBlockType)arg4;
+- (void)updateMaxVisibleHeightPercentageIfNeeded:(double)arg1 userDriven:(BOOL)arg2;
 - (id)userPreferredTargetLocales;
 - (BOOL)validateTargetLocale:(id)arg1;
 - (void)validateTargetLocale:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

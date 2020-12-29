@@ -37,8 +37,12 @@
 @property (strong, nonatomic) BRSetupControllerTracker *setupControllerTracker; // @synthesize setupControllerTracker=_setupControllerTracker;
 
 - (void).cxx_destruct;
-- (void)addEventToPendingQueue:(unsigned long long)arg1 withValue:(id)arg2;
+- (void)_addEvent:(unsigned long long)arg1 withValue:(id)arg2 withError:(id)arg3;
+- (void)_addEventToPendingQueue:(unsigned long long)arg1 withValue:(id)arg2;
+- (BOOL)_eventClearedForRecord:(unsigned long long)arg1;
+- (void)_writeToPairingPlist:(id)arg1 withValue:(id)arg2;
 - (void)addMetaKeys;
+- (void)addPairingTimeEventStringToPairingReportPlist:(unsigned long long)arg1 withValue:(id)arg2 withError:(id)arg3;
 - (void)addPairingTimeEventToPairingReportPlist:(unsigned long long)arg1 withValue:(id)arg2 withError:(id)arg3;
 - (void)addPendingEventToMetric;
 - (void)archivePairingMetric:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
@@ -52,7 +56,6 @@
 - (void)completeRTCPairingMetricForMetricID:(id)arg1 withSuccess:(CDUnknownBlockType)arg2;
 - (void)createPairingReportPlistWithPairingType:(unsigned long long)arg1;
 - (id)deltaForControllerAction:(id)arg1;
-- (BOOL)eventClearedForRecord:(unsigned long long)arg1;
 - (void)flagForAutomation;
 - (id)initWithPairingBeginsType:(unsigned long long)arg1;
 - (void)initializeEndToEndMetric;
@@ -62,7 +65,6 @@
 - (id)truncateSetupControllerClassName:(id)arg1;
 - (void)writeDeltasForSetupControllerActions:(id)arg1 action:(unsigned long long)arg2;
 - (void)writePushOrHoldToPairingPlist:(id)arg1 action:(unsigned long long)arg2;
-- (void)writeToPairingPlist:(id)arg1 withValue:(id)arg2;
 
 @end
 

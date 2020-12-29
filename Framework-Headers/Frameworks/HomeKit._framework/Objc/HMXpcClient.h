@@ -14,9 +14,11 @@ __attribute__((visibility("hidden")))
 @interface HMXPCClient : HMFMessageTransport <HMFMessageTransportDelegate>
 {
     NSMutableArray *_reconnectionHandlers;
+    unsigned long long _homeDataAuthorizationStatus;
     BOOL _connectionValid;
     BOOL _requiresCheckin;
     BOOL _notifyRegistered;
+    BOOL _isAuthorizedForHomeDataAccess;
     int _notifyRegisterToken;
     NSXPCConnection *_connection;
     NSDictionary *_userInfo;
@@ -27,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isAuthorizedForHomeDataAccess; // @synthesize isAuthorizedForHomeDataAccess=_isAuthorizedForHomeDataAccess;
 @property (nonatomic) int notifyRegisterToken; // @synthesize notifyRegisterToken=_notifyRegisterToken;
 @property (nonatomic) BOOL notifyRegistered; // @synthesize notifyRegistered=_notifyRegistered;
 @property (nonatomic) BOOL requiresCheckin; // @synthesize requiresCheckin=_requiresCheckin;

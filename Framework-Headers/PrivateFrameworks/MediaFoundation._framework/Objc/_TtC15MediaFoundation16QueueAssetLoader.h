@@ -10,15 +10,7 @@
 
 @interface _TtC15MediaFoundation16QueueAssetLoader : _TtCs12_SwiftObject
 {
-    MISSING_TYPE *delegate;
-    MISSING_TYPE *token;
-    MISSING_TYPE *wrapAround;
-    MISSING_TYPE *queueController;
-    MISSING_TYPE *itemLoader;
-    MISSING_TYPE *itemBuffer;
-    MISSING_TYPE *loadingCompletions;
-    MISSING_TYPE *reporter;
-    MISSING_TYPE *errorController;
+    MISSING_TYPE *stateMachine;
 }
 
 @property (nonatomic, readonly) NSDictionary *stateDictionary;

@@ -30,6 +30,7 @@
     NTPBDiscoverMoreVideosInfo *_shareDiscoverMoreVideosInfo;
     NSDictionary *_channelUpsellConfigsByChannelID;
     FCPaidBundleConfiguration *_paidBundleConfig;
+    NSString *_myMagazinesTagID;
     NSDictionary *_configDictionary;
     NSString *_storefrontID;
     NSDictionary *_languageConfigDictionary;
@@ -42,6 +43,7 @@
 }
 
 @property (readonly, nonatomic) NSArray *aLaCartePaidSubscriptionGroupWhitelistedChannelIDs;
+@property (readonly, nonatomic) BOOL adImpressionTrackingEnabled;
 @property (readonly, nonatomic) BOOL adInstrumentationEnabled;
 @property (readonly, nonatomic) long long alternateUniversalLinksBannerPresentationCount;
 @property (readonly, nonatomic) BOOL alternateUniversalLinksEnabledDefaultForFamilyMember;
@@ -52,6 +54,7 @@
 @property (readonly, nonatomic) long long analyticsEndpointMaxPayloadSize;
 @property (readonly, nonatomic) NSString *anfRenderingConfiguration;
 @property (readonly, nonatomic) long long appConfigRefreshRate;
+@property (readonly, nonatomic) long long articleAdPrefetchLimit;
 @property (readonly, nonatomic) double articleBannerAdRequestThrottle;
 @property (readonly, nonatomic) double articleDiversificationSimilarityExpectationEnd;
 @property (readonly, nonatomic) double articleDiversificationSimilarityExpectationStart;
@@ -80,10 +83,12 @@
 @property (readonly, nonatomic) long long corryBarMaxArticleCountForSingleArticle;
 @property (readonly, nonatomic) long long criticalStorageThreshold;
 @property (readonly, nonatomic) NSNumber *currentTreatment;
+@property (readonly, nonatomic) long long dailyChannelUpsellsCountLimit;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic) double delayBeforeRetryingDroppedFeeds;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL disableThumbnailsForArticleRecirculation;
+@property (readonly, nonatomic) NSArray *discoverNewsPlusChannelIDs;
 @property (readonly, nonatomic) BOOL diversifyOptionalTopStories;
 @property (readonly, nonatomic) NSString *editorialChannelID;
 @property (readonly, nonatomic) NSString *editorialGemsSectionID;
@@ -112,6 +117,7 @@
 @property (readonly, nonatomic) FCForYouGroupsConfiguration *forYouGroupsConfiguration; // @synthesize forYouGroupsConfiguration=_forYouGroupsConfiguration;
 @property (readonly, nonatomic) long long forYouMaxDailyEvergreenArticlesForFreeUsers;
 @property (readonly, nonatomic) long long forYouMaxDailyEvergreenArticlesForPaidUsers;
+@property (readonly, nonatomic) NSString *forYouPremiumRecordConfigID;
 @property (readonly, nonatomic) NSString *forYouRecordConfigID;
 @property (readonly, copy, nonatomic) FCVideoGroupsConfig *forYouVideoGroupsConfig; // @synthesize forYouVideoGroupsConfig=_forYouVideoGroupsConfig;
 @property (readonly, nonatomic) NSString *freeEvergreenArticleListID;
@@ -144,6 +150,7 @@
 @property (readonly, nonatomic) long long minimumDurationBetweenTrendingGroupsWeekday;
 @property (readonly, nonatomic) long long minimumDurationBetweenTrendingGroupsWeekend;
 @property (readonly, nonatomic) double minimumTrendingUnseenRatio;
+@property (readonly, nonatomic) NSString *myMagazinesTagID; // @synthesize myMagazinesTagID=_myMagazinesTagID;
 @property (readonly, nonatomic) double nativeInArticleAdRequestThrottle;
 @property (readonly, nonatomic) double nativeInFeedAdRequestThrottle;
 @property (readonly, nonatomic) BOOL newAdsEnabled;
@@ -165,11 +172,13 @@
 @property (readonly, nonatomic) NSString *paidEvergreenArticleListID;
 @property (readonly, nonatomic) double parsecPopulationCeiling;
 @property (readonly, nonatomic) double parsecPopulationFloor;
+@property (readonly, nonatomic) NSArray *permanentChannelIDs;
 @property (readonly, nonatomic) NSString *personalizationBundleIdMappingResourceId;
 @property (readonly, nonatomic) NSString *personalizationFavorabilityResourceId;
 @property (readonly, nonatomic) NSString *personalizationUrlMappingResourceId;
 @property (readonly, nonatomic) NSString *personalizationWhitelistResourceId;
 @property (readonly, nonatomic) FCPrefetchConfiguration *prefetchConfig; // @synthesize prefetchConfig=_prefetchConfig;
+@property (readonly, nonatomic) BOOL premiumTodayFeedEnabled;
 @property (readonly, nonatomic) double prerollAdRequestThrottle;
 @property (readonly, nonatomic) double prerollLoadingTimeout;
 @property (readonly, nonatomic) NSArray *presubscribedFeedIDs;
@@ -221,6 +230,7 @@
 @property (readonly, nonatomic) NSString *userVectorWhitelistResourceId;
 @property (readonly, nonatomic) NSString *webEmbedContentBlockerOverrides;
 @property (readonly, nonatomic) NSString *webEmbedContentBlockers;
+@property (readonly, nonatomic) BOOL widgetAnalyticsEnabled;
 @property (readonly, nonatomic) FCWidgetConfig *widgetConfig; // @synthesize widgetConfig=_widgetConfig;
 @property (readonly, nonatomic) NSString *widgetConfigID;
 @property (readonly, nonatomic) BOOL widgetContentPrefetchEnabled;
@@ -237,6 +247,7 @@
 + (id)configurationWithData:(id)arg1 storefrontID:(id)arg2 preferredLanguageTags:(id)arg3;
 + (id)defaultAudioConfigRecordIDByLocalizedStorefrontID;
 + (id)defaultConfigurationForStoreFrontID:(id)arg1;
++ (id)defaultForYouPremiumRecordConfigIDByLocalizedStorefrontID;
 + (id)defaultForYouRecordConfigIDByLocalizedStorefrontID;
 + (id)defaultFreeEvergreenArticleListIDByLocalizedStorefrontID;
 + (id)defaultMagazinesConfigRecordIDByLocalizedStorefrontID;
@@ -244,6 +255,7 @@
 + (id)defaultWidgetRecordConfigIDByLocalizedStorefrontID;
 + (id)languageConfigDictionaryForConfig:(id)arg1 preferredLanguageTags:(id)arg2;
 + (id)overrideForYouConfigID;
++ (id)overrideForYouPremiumConfigID;
 + (id)overrideWidgetSectionConfigID;
 - (void).cxx_destruct;
 - (void)_loadChannelUpsellConfigurations;
@@ -260,6 +272,7 @@
 - (id)analyticsEnvelopeContentTypeConfigsForEnvironment:(unsigned long long)arg1;
 - (id)appAnalyticsEndpointUrlForEnvironment:(unsigned long long)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)expFieldForKey:(id)arg1;
 - (id)init;
 - (id)initWithConfigDictionary:(id)arg1 storefrontID:(id)arg2 languageConfigDictionary:(id)arg3;
 - (id)initWithConfigDictionary:(id)arg1 storefrontID:(id)arg2 languageConfigDictionary:(id)arg3 lastModificationDate:(id)arg4;

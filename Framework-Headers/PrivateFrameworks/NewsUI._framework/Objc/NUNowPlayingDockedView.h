@@ -6,10 +6,12 @@
 
 #import <NewsUI/NUNowPlayingBackgroundView.h>
 
-@class UIButton, UILabel, UIView;
+#import <NewsUI/NUMagicTappableDockView-Protocol.h>
+
+@class NSString, UIButton, UILabel, UIView;
 @protocol NUNowPlayingDockedViewDelegate;
 
-@interface NUNowPlayingDockedView : NUNowPlayingBackgroundView
+@interface NUNowPlayingDockedView : NUNowPlayingBackgroundView <NUMagicTappableDockView>
 {
     BOOL _waiting;
     id<NUNowPlayingDockedViewDelegate> _delegate;
@@ -21,15 +23,20 @@
 }
 
 @property (readonly, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
+@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NUNowPlayingDockedViewDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) UIButton *playPauseButton; // @synthesize playPauseButton=_playPauseButton;
 @property (readonly, nonatomic) UILabel *publisherLabel; // @synthesize publisherLabel=_publisherLabel;
 @property (readonly, nonatomic) UIButton *rewindButton; // @synthesize rewindButton=_rewindButton;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (nonatomic) BOOL waiting; // @synthesize waiting=_waiting;
 
 - (void).cxx_destruct;
 - (void)_updateTitleAccessibilityLabel;
+- (BOOL)handleAccessibilityMagicTap;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)pauseButtonTapped:(id)arg1;

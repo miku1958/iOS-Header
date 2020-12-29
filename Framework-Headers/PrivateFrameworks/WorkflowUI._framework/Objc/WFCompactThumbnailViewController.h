@@ -10,9 +10,11 @@
 
 @interface WFCompactThumbnailViewController : UIViewController
 {
+    BOOL _contentHeightLikelyToChange;
     id<WFCompactThumbnailViewControllerDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) BOOL contentHeightLikelyToChange; // @synthesize contentHeightLikelyToChange=_contentHeightLikelyToChange;
 @property (weak, nonatomic) id<WFCompactThumbnailViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) unsigned long long preferredContentMode;
 

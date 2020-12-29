@@ -25,7 +25,7 @@
 
  class NewsPersonalization.ServiceAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3cd400011970 (0x4d400011970) in binary!
+WARNING: couldn't find address 0x3ccc00011998 (0x4cc00011998) in binary!
 	0x18000000c  @objc ServiceAssembly.(null) <stripped>
  }
 
@@ -44,7 +44,7 @@ WARNING: couldn't find address 0x3cd400011970 (0x4d400011970) in binary!
 	let xavierEnabled : Bool
 
 	// Swift methods
-	0x2d30  class func ScoringService.__allocating_init(cloudContext:) // init 
+	0x28a0  class func ScoringService.__allocating_init(cloudContext:) // init 
  }
 
  struct NewsPersonalization.PersonalizationAggregate {
@@ -59,7 +59,7 @@ WARNING: couldn't find address 0x3cd400011970 (0x4d400011970) in binary!
 
  class NewsPersonalization.FactoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3ca400011940 (0x4a400011940) in binary!
+WARNING: couldn't find address 0x3c9c00011968 (0x49c00011968) in binary!
 	0x18000000c  @objc FactoryAssembly.(null) <stripped>
  }
 
@@ -76,13 +76,13 @@ WARNING: couldn't find address 0x3ca400011940 (0x4a400011940) in binary!
 	// Properties
 	let feedPersonalizer : FCFeedPersonalizing // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let trainer : ç4 // +0x0 (0x0)
+	let trainer : 5 // +0x0 (0x0)
 	let context : FCPersonalizationData // +0x0 (0x8)
 	let queue : OS_dispatch_queue // +0x0 (0x8)
 	let xavierEnabled : Bool // +0x0 (0x1)
 
 	// Swift methods
-	0x127e0  class func NewsPersonalizer.__allocating_init(context:feedPersonalizer:xavierEnabled:) // init 
+	0x12800  class func NewsPersonalizer.__allocating_init(context:feedPersonalizer:xavierEnabled:) // init 
  }
 
  class NewsPersonalization.SubscriptionWebAuthenticationEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -99,7 +99,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let todayFeedEnabled : Bool
 
 	// Swift methods
-	0x15620  class func GroupingService.__allocating_init(cloudContext:) // init 
+	0x15640  class func GroupingService.__allocating_init(cloudContext:) // init 
  }
 
  class NewsPersonalization.NewsPersonalizationService : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -129,15 +129,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let personalizer : NewsPersonalizer
 	let actionTranslators : XavierActionTranslatorType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let jsonDecoder : §1
+	let jsonDecoder : ×1
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _configuration : i9
+	var _configuration : ™9
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3c7400011910 (0x47400011910) in binary!
-	0x3c70  @objc XavierEventProcessor.(null) <stripped>
+WARNING: couldn't find address 0x3c6c00011938 (0x46c00011938) in binary!
+	0x3c68  @objc XavierEventProcessor.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffeb440  @objc XavierEventProcessor.(null) <stripped>
+	0xfffeb488  @objc XavierEventProcessor.(null) <stripped>
 
 	// Swift methods
  }
@@ -152,11 +152,11 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let assemblies : [NFAssembly]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3c3c000118c0 (0x43c000118c0) in binary!
-	0x3c30  @objc Assembly.(null) <stripped>
-WARNING: couldn't find address 0x3c2c000118b0 (0x42c000118b0) in binary!
+WARNING: couldn't find address 0x3c34000118e8 (0x434000118e8) in binary!
+	0x3c28  @objc Assembly.(null) <stripped>
+WARNING: couldn't find address 0x3c24000118d8 (0x424000118d8) in binary!
 	0x18000000c  @objc Assembly.(null) <stripped>
-WARNING: couldn't find address 0x3c0c000118a8 (0x40c000118a8) in binary!
+WARNING: couldn't find address 0x3c04000118d0 (0x404000118d0) in binary!
 	0x18000000c  @objc Assembly.(null) <stripped>
  }
 
@@ -191,7 +191,7 @@ WARNING: couldn't find address 0x3c0c000118a8 (0x40c000118a8) in binary!
 	let featureFactory : PersonalizationFeatureFactory // +0x18 (0x8)
 	let eventTranslators : PersonalizationEventTranslatorType // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let jsonDecoder : Ã8 // +0x28 (0x8)
+	let jsonDecoder : ó8 // +0x28 (0x8)
 
 	// Swift methods
  }
@@ -201,20 +201,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let action : FCPersonalizationAction
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : ÿ3
+	let articleData : /4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleExposureContextData : 7
+	let articleExposureContextData : 77
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : /4
+	let channelData : _4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let displayRank : /:
+	let displayRank : :
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupRank : /:
+	let groupRank : :
 	let groupType : Int?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : i8
+	let issueData : ™8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : !7
+	let tagData : Q7
  }
 
  enum NewsPersonalization.PersonalizationActionType {
@@ -227,7 +227,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsPersonalization.AnalyticsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3c0c000118a8 (0x40c000118a8) in binary!
+WARNING: couldn't find address 0x3c04000118d0 (0x404000118d0) in binary!
 	0x18000000c  @objc AnalyticsAssembly.(null) <stripped>
  }
 

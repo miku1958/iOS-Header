@@ -13,7 +13,6 @@
     MISSING_TYPE *titleTextLayout;
     MISSING_TYPE *subtitleTextLayout;
     MISSING_TYPE *descriptionTextLayout;
-    MISSING_TYPE *buttonLayout;
 }
 
 @end

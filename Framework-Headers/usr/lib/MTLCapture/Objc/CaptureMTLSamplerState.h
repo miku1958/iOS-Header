@@ -35,6 +35,7 @@
 @property (readonly) struct GTTraceStream *traceStream;
 @property (readonly) unsigned long long uniqueIdentifier;
 
++ (BOOL)newCaptureSamplerState:(out id *)arg1 associatedWithBaseSamplerState:(id)arg2 captureDevice:(id)arg3;
 - (void).cxx_destruct;
 - (id)_quicklookData;
 - (BOOL)conformsToProtocol:(id)arg1;

@@ -95,6 +95,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithServerResponseDictionary:(id)arg1;
+- (id)preferredLocalizationsFromArray:(id)arg1;
 
 @end
 

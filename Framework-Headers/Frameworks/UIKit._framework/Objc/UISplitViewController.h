@@ -100,6 +100,7 @@
 - (BOOL)_layoutPrimaryOnRight;
 - (void)_marginInfoForChild:(id)arg1 leftMargin:(double *)arg2 rightMargin:(double *)arg3;
 - (id)_multitaskingDragExclusionRects;
+- (void)_navigationController:(id)arg1 navigationBar:(id)arg2 itemBackButtonUpdated:(id)arg3;
 - (void)_navigationController:(id)arg1 navigationBar:(id)arg2 topItemUpdatedContentLayout:(id)arg3;
 - (id)_navigationController:(id)arg1 navigationBarAdditionalActionsForBackButtonMenu:(id)arg2;
 - (void)_navigationControllerDidChangeNavigationBarHidden:(id)arg1;

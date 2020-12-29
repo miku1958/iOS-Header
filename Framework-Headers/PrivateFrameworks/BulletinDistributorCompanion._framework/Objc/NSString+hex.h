@@ -9,6 +9,7 @@
 @interface NSString (hex)
 - (BOOL)_validHexChar:(BOOL)arg1;
 - (id)blt_sanitizeForURL;
+- (unsigned long long)blt_sizeof;
 - (id)fromHex;
 - (id)hex;
 @end

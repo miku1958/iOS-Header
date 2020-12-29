@@ -24,6 +24,7 @@
 + (id)playNext;
 + (id)playing;
 + (id)readStory;
++ (id)reload;
 + (id)removeIssueActivity;
 + (id)removeIssueFromMyMagazinesActivity;
 + (id)reportActivity;

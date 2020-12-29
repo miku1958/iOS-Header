@@ -15,6 +15,7 @@
 - (void)newInterstitialRequest:(id)arg1;
 - (void)newNativeRequest:(id)arg1;
 - (void)newPromotedContent:(id)arg1;
+- (id)promotedContentAppAdWithSize:(struct CGSize)arg1 adamId:(id)arg2 adType:(long long)arg3;
 - (id)promotedContentInterstitialViewWithInfo:(id)arg1;
 - (id)promotedContentInterstitialWithSize:(struct CGSize)arg1;
 - (id)promotedContentVideo;

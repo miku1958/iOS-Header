@@ -39,6 +39,7 @@
 - (id)_usersForClientID:(id)arg1 activeOnly:(BOOL)arg2;
 - (id)allStoredValues;
 - (id)dataForKey:(id)arg1;
+- (BOOL)deleteEntriesForUser:(id)arg1 withState:(unsigned char)arg2 withError:(id *)arg3;
 - (BOOL)deleteEntry:(id)arg1 withError:(id *)arg2;
 - (BOOL)hasActiveEntries;
 - (BOOL)hasPendingEntries;

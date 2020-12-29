@@ -175,6 +175,7 @@
 - (id)linguisticTaggerForLanguage:(id)arg1 string:(id)arg2 range:(struct _NSRange)arg3 taggerIndex:(unsigned long long *)arg4;
 - (void)loadLanguageModelForLanguage:(id)arg1;
 - (void)loadLexiconsAndLanguageModelsForLanguage:(id)arg1;
+- (unsigned long long)loadedLexiconsCountForLanguage:(id)arg1;
 - (id)localDictionaryArrayForLanguage:(id)arg1;
 - (id)localizationForLanguage:(id)arg1;
 - (id)localizationsForLanguage:(id)arg1;

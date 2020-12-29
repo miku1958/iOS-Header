@@ -183,13 +183,13 @@
 - (unsigned int)nextSessionInfoReqID;
 - (BOOL)processDataMessageErrorIndication:(id)arg1;
 - (BOOL)processInfoIndication:(id)arg1 arrivalTime:(double)arg2;
-- (BOOL)processInfoResponse:(id)arg1 packetBuffer:(CDStruct_12676517 *)arg2 headerOverhead:(unsigned long long)arg3;
+- (BOOL)processInfoResponse:(id)arg1 packetBuffer:(CDStruct_78c9ccae *)arg2 headerOverhead:(unsigned long long)arg3;
 - (id)processParticipantsData:(char *)arg1 dataLen:(int)arg2;
 - (BOOL)processSessionInfoIndication:(id)arg1 arrivalTime:(double)arg2;
 - (void)processSessionInfoRequestTimeout:(id)arg1;
-- (BOOL)processSessionInfoResponse:(id)arg1 packetBuffer:(CDStruct_12676517 *)arg2 headerOverhead:(unsigned long long)arg3;
+- (BOOL)processSessionInfoResponse:(id)arg1 packetBuffer:(CDStruct_78c9ccae *)arg2 headerOverhead:(unsigned long long)arg3;
 - (BOOL)processStatsResponse:(id)arg1 arrivalTime:(double)arg2;
-- (BOOL)processStunErrorResponse:(id)arg1 packetBuffer:(CDStruct_12676517 *)arg2 headerOverhead:(unsigned long long)arg3;
+- (BOOL)processStunErrorResponse:(id)arg1 packetBuffer:(CDStruct_78c9ccae *)arg2 headerOverhead:(unsigned long long)arg3;
 - (BOOL)processTestResponse:(id)arg1 arrivalTime:(double)arg2;
 - (void)removeStunRequest:(id)arg1;
 - (void)sendInfoRequest:(id)arg1;

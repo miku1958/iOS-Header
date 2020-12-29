@@ -19,9 +19,9 @@
 
 - (id)imageNameForCurrentState;
 - (void)setFlashMode:(long long)arg1 animated:(BOOL)arg2;
+- (BOOL)shouldFillOutlineForCurrentState;
 - (BOOL)shouldShowSlashForCurrentState;
 - (BOOL)shouldUseActiveTintForCurrentState;
-- (BOOL)shouldUseOutline;
 - (BOOL)shouldUseSlash;
 
 @end

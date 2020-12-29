@@ -15,10 +15,12 @@ __attribute__((visibility("hidden")))
 {
     NSString *_bundleIdentifier;
     NSString *_containerBundleIdentifier;
+    NSString *_containingViewControllerClassName;
 }
 
 @property (readonly, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
 @property (readonly, nonatomic) NSString *containerBundleIdentifier; // @synthesize containerBundleIdentifier=_containerBundleIdentifier;
+@property (readonly, nonatomic) NSString *containingViewControllerClassName; // @synthesize containingViewControllerClassName=_containingViewControllerClassName;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

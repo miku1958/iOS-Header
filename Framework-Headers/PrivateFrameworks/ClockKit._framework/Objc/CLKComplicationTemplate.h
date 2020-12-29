@@ -36,13 +36,24 @@
 @property (nonatomic, setter=setUISensitivity:) long long uiSensitivity; // @synthesize uiSensitivity=_uiSensitivity;
 @property (readonly, nonatomic) BOOL usesSwiftUI;
 
++ (BOOL)_arrayIsCompatibleWithJSONSerialization:(id)arg1;
++ (id)_createJSONRepresentationFromArray:(id)arg1 bundlePath:(id)arg2 purpose:(unsigned long long)arg3;
++ (id)_jsonObjectRepresentationFromObject:(id)arg1 bundlePath:(id)arg2 purpose:(unsigned long long)arg3;
++ (id)_jsonRepresentationFromValue:(id)arg1 bundlePath:(id)arg2 purpose:(unsigned long long)arg3;
++ (id)_secureCodingRepresentationOfEmbeddedObjectsArray:(id)arg1 bundlePath:(id)arg2;
++ (id)_secureCodingRepresentationOfEmbeddedObjectsDictionary:(id)arg1 bundlePath:(id)arg2;
++ (id)_secureCodingRepresentationOfValue:(id)arg1 bundlePath:(id)arg2;
++ (Class)_superClassFromCompatibleJSONSerializationClass:(Class)arg1;
++ (BOOL)classIsCompatibleWithJSONSerialization:(Class)arg1;
++ (id)classesCompatibleWithJSONSerialization;
 + (id)complicationTemplateWithJSONObjectRepresentation:(id)arg1 bundle:(id)arg2 purpose:(unsigned long long)arg3;
++ (id)createJSONRepresentationFromDictionary:(id)arg1 bundlePath:(id)arg2 purpose:(unsigned long long)arg3;
++ (BOOL)dictionaryIsCompatibleWithJSONSerialization:(id)arg1;
 + (id)new;
++ (id)objectFromJSON:(id)arg1 bundle:(id)arg2;
 + (BOOL)supportsSecureCoding;
-+ (id)validMetadataClasses;
 - (void).cxx_destruct;
 - (id)JSONObjectRepresentationWritingResourcesToBundlePath:(id)arg1 purpose:(unsigned long long)arg2;
-- (id)_createEncodableComplicationJsonDictionary:(id)arg1 bundlePath:(id)arg2;
 - (void)_enumerateAllBasicKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateBOOLKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateDateKeysWithBlock:(CDUnknownBlockType)arg1;

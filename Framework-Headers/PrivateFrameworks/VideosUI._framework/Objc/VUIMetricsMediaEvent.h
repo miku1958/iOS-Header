@@ -12,7 +12,11 @@
 
 + (id)_metricsDataFromTVPMediaItem:(id)arg1 isBackground:(BOOL)arg2 isAmbient:(BOOL)arg3;
 + (id)clickMetricsDataFromTVPMediaItem:(id)arg1;
++ (id)generateSkipImpressionsFromSkipInfo:(id)arg1;
++ (id)impressionsMetricsDataFromTVPMediaItem:(id)arg1;
 + (void)recordBGVideoPlayOfTVPMediaItem:(id)arg1 isAmbient:(BOOL)arg2;
++ (void)recordClickOfSkipInfo:(id)arg1 onMediaItem:(id)arg2;
++ (void)recordImpressionsOfSkipButton:(id)arg1 onMediaItem:(id)arg2;
 + (void)recordPlay:(id)arg1 isLaunchingExtras:(BOOL)arg2;
 + (void)recordPlayOfTVPMediaItem:(id)arg1;
 + (void)recordPunchout:(id)arg1 isUrlForPlay:(BOOL)arg2;

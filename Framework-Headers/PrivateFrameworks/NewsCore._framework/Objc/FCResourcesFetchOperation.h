@@ -13,15 +13,21 @@
 {
     BOOL _downloadAssets;
     long long _cacheLifetimeHint;
+    unsigned long long _maxConcurrentFetchCount;
     CDUnknownBlockType _progressHandler;
+    CDUnknownBlockType _interestTokenHandler;
+    CDUnknownBlockType _archiveHandler;
     id<FCContentContext> _context;
     NSArray *_resourceIDs;
     NSArray *_resources;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType archiveHandler; // @synthesize archiveHandler=_archiveHandler;
 @property (nonatomic) long long cacheLifetimeHint; // @synthesize cacheLifetimeHint=_cacheLifetimeHint;
 @property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
 @property (readonly, nonatomic) BOOL downloadAssets; // @synthesize downloadAssets=_downloadAssets;
+@property (copy, nonatomic) CDUnknownBlockType interestTokenHandler; // @synthesize interestTokenHandler=_interestTokenHandler;
+@property (nonatomic) unsigned long long maxConcurrentFetchCount; // @synthesize maxConcurrentFetchCount=_maxConcurrentFetchCount;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (readonly, nonatomic) NSArray *resourceIDs; // @synthesize resourceIDs=_resourceIDs;
 @property (strong, nonatomic) NSArray *resources; // @synthesize resources=_resources;
@@ -33,6 +39,7 @@
 - (id)fetchResourcesWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithContext:(id)arg1 resourceIDs:(id)arg2 downloadAssets:(BOOL)arg3;
+- (void)operationWillFinishWithError:(id)arg1;
 - (BOOL)validateOperation;
 
 @end

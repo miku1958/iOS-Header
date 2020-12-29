@@ -12,6 +12,8 @@
 @interface HUSoftwareUpdateItemModule : HFItemModule
 {
     BOOL _unifyDownloadAndDescriptionSections;
+    BOOL _hideAppleUpdates;
+    BOOL _hideThirdPartyUpdates;
     NSSet *_itemProviders;
     HMHome *_home;
     HFItem<HFSoftwareUpdatableItemProtocol> *_sourceItem;
@@ -23,6 +25,8 @@
 
 @property (readonly, nonatomic) NSSet *accessories; // @synthesize accessories=_accessories;
 @property (strong, nonatomic) HUSoftwareUpdateActionAndProgressItem *actionAndProgressItem; // @synthesize actionAndProgressItem=_actionAndProgressItem;
+@property (nonatomic) BOOL hideAppleUpdates; // @synthesize hideAppleUpdates=_hideAppleUpdates;
+@property (nonatomic) BOOL hideThirdPartyUpdates; // @synthesize hideThirdPartyUpdates=_hideThirdPartyUpdates;
 @property (readonly, nonatomic) HMHome *home; // @synthesize home=_home;
 @property (strong, nonatomic) HFStaticItem *learnMoreItem; // @synthesize learnMoreItem=_learnMoreItem;
 @property (strong, nonatomic) HUSoftwareUpdateInfoItemProvider *softwareUpdateInfoItemProvider; // @synthesize softwareUpdateInfoItemProvider=_softwareUpdateInfoItemProvider;
@@ -35,6 +39,7 @@
 - (id)initWithItemUpdater:(id)arg1;
 - (id)initWithItemUpdater:(id)arg1 home:(id)arg2 sourceItem:(id)arg3;
 - (id)itemProviders;
+- (void)setValue:(id)arg1 forKey:(id)arg2;
 
 @end
 

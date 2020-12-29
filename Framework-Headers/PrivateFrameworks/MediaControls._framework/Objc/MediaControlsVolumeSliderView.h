@@ -41,6 +41,7 @@
 - (void)layoutSubviews;
 - (void)resetThresholdAcknowledgment;
 - (void)setContinuousSliderCornerRadius:(double)arg1;
+- (void)setGlyphPackageDescription:(id)arg1 state:(id)arg2 animated:(BOOL)arg3;
 - (void)setupEUDevice;
 
 @end

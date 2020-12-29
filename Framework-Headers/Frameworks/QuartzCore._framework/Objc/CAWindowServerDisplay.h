@@ -83,6 +83,8 @@
 @property int processId;
 @property (readonly) unsigned int rendererFlags;
 @property double scale;
+@property BOOL scalePreservesAspect;
+@property struct CGSize scales;
 @property (getter=isSecure) BOOL secure;
 @property (readonly) Class superclass;
 @property (readonly) BOOL supportsColorSpaces;

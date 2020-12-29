@@ -16,10 +16,10 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *viewImpressioner;
     MISSING_TYPE *headerViewModel;
     MISSING_TYPE *viewElement;
-    MISSING_TYPE *viewModel;
+    MISSING_TYPE *collectionViewModel;
     MISSING_TYPE *$__lazy_storage_$_visibleCellViewModels;
     MISSING_TYPE *$__lazy_storage_$_carouselViewContainer;
-    MISSING_TYPE *items;
+    MISSING_TYPE *dataModelItems;
     MISSING_TYPE *lastViewWidth;
     MISSING_TYPE *centeredItemIndex;
     MISSING_TYPE *impressionsTracker;

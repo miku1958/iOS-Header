@@ -72,6 +72,7 @@
 - (void)_updatePlayerState;
 - (void)announcementsDidChangeForGroupID:(id)arg1;
 - (void)audioSessionInterruptionActive:(BOOL)arg1;
+- (void)cleanForExit;
 - (void)dealloc;
 - (void)didPlayAnnouncement:(id)arg1;
 - (void)endSessionWithReply:(CDUnknownBlockType)arg1;

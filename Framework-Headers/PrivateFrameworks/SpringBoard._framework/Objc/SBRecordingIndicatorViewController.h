@@ -6,7 +6,7 @@
 
 #import <UIKit/UIViewController.h>
 
-@class CAContext, CALayer, UIColor, UIView, UIViewPropertyAnimator;
+@class CAContext, CALayer, SBRecordingIndicatorView, UIColor, UIViewPropertyAnimator;
 
 @interface SBRecordingIndicatorViewController : UIViewController
 {
@@ -23,7 +23,7 @@
     CALayer *_rootLayer;
     CALayer *_contentLayer;
     BOOL _isStatusBarPortal;
-    UIView *_indicatorView;
+    SBRecordingIndicatorView *_indicatorView;
     UIColor *_indicatorColor;
     unsigned long long _indicatorAnimationState;
     long long _activeInterfaceOrientation;
@@ -32,7 +32,7 @@
 @property (nonatomic, getter=activeInterfaceOrientation) long long activeInterfaceOrientation; // @synthesize activeInterfaceOrientation=_activeInterfaceOrientation;
 @property (readonly, nonatomic) unsigned long long indicatorAnimationState; // @synthesize indicatorAnimationState=_indicatorAnimationState;
 @property (strong, nonatomic, getter=indicatorColor) UIColor *indicatorColor; // @synthesize indicatorColor=_indicatorColor;
-@property (readonly, nonatomic, getter=indicatorView) UIView *indicatorView; // @synthesize indicatorView=_indicatorView;
+@property (readonly, nonatomic, getter=indicatorView) SBRecordingIndicatorView *indicatorView; // @synthesize indicatorView=_indicatorView;
 @property (nonatomic) BOOL isStatusBarPortal; // @synthesize isStatusBarPortal=_isStatusBarPortal;
 
 - (void).cxx_destruct;
@@ -46,6 +46,7 @@
 - (void)calculateInitialIndicatorPositionAndSize;
 - (id)initForPortalView:(BOOL)arg1;
 - (unsigned long long)supportedInterfaceOrientations;
+- (void)updateIndicatorShape:(unsigned long long)arg1;
 - (void)updateIndicatorVisibility:(BOOL)arg1;
 - (void)updateIndicatorVisibility:(BOOL)arg1 skipFadeOutAnimation:(BOOL)arg2;
 - (void)updateIndicatorVisibilityWithFastFadeAnimation:(BOOL)arg1;

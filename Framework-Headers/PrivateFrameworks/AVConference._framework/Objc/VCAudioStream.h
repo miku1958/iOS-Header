@@ -152,7 +152,7 @@ __attribute__((visibility("hidden")))
 - (void)setStreamDirection:(long long)arg1;
 - (void)setStreamIDs:(id)arg1 repairStreamIDs:(id)arg2;
 - (void)setTargetBitrate:(unsigned int)arg1 rateChangeCounter:(unsigned int)arg2;
-- (void)setVCStatistics:(CDStruct_1a067c5f)arg1;
+- (void)setVCStatistics:(CDStruct_bae76c55)arg1;
 - (void)setupAudioPowerSpectrum;
 - (BOOL)setupAudioStreamWithClientPid:(int)arg1;
 - (BOOL)setupPayloads;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     const struct TextToSpeechFeature *_root;
 }
 
+@property (readonly, nonatomic) NSArray *neural_phoneme_sequence;
 @property (readonly, nonatomic) NSArray *normalized_text;
 @property (readonly, nonatomic) NSArray *phoneme_sequence;
 @property (readonly, nonatomic) NSArray *prompts;

@@ -8,7 +8,7 @@
 
 #import <CalendarNotification/CLLocationManagerDelegate-Protocol.h>
 
-@class CLLocationManager, EKTimedEventStorePurger, NSMutableDictionary, NSString;
+@class CLLocationManager, EKTimedEventStorePurger, NSDate, NSMutableDictionary, NSString;
 @protocol CALNRouteHypothesizerProvider, OS_dispatch_queue, OS_dispatch_source;
 
 @interface EKTravelEngine : NSObject <CLLocationManagerDelegate>
@@ -23,6 +23,7 @@
     NSMutableDictionary *_eventExternalURLsToAgendaEntries;
     CLLocationManager *_locationManager;
     EKTimedEventStorePurger *_timedEventStorePurger;
+    NSDate *_lastRefreshDate;
     BOOL _authorizedInternal;
     CDUnknownBlockType _adviceBlock;
     CDUnknownBlockType _authorizationChangedBlock;

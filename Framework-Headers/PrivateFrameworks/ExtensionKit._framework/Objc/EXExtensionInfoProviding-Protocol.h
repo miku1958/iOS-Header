@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) NSString *bundleIdentifier;
 @property (readonly, nonatomic) NSString *containerBundleIdentifier;
+@property (readonly, nonatomic) NSString *containingViewControllerClassName;
 
 @end
 

@@ -33,11 +33,12 @@
 - (void).cxx_destruct;
 - (void)_flushFilesWhileUnlocked;
 - (void)_openFilesForProcessingWhileLocked;
-- (void)_processPoppedItemResult:(CDStruct_632d45bc)arg1 callback:(CDUnknownBlockType)arg2;
+- (void)_processPoppedItemResult:(CDStruct_e8711410)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)_read:(CDStruct_beb4cc23)arg1 fileId:(int)arg2 callback:(CDUnknownBlockType)arg3;
 - (void)_trimPermafailDirectory;
 - (void)_unlinkFileWithIdLocked:(int)arg1;
 - (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(BOOL)arg3 customPriorityCriteria:(unsigned char)arg4 item:(id)arg5 callback:(CDUnknownBlockType)arg6;
+- (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(BOOL)arg3 customPriorityCriteria:(unsigned char)arg4 receivedOnPower:(BOOL)arg5 receivedTime:(double)arg6 storageReason:(int)arg7 item:(id)arg8 callback:(CDUnknownBlockType)arg9;
 - (void)close;
 - (unsigned long long)count;
 - (void)countHighPriorityItems:(unsigned long long *)arg1 lowPriorityItems:(unsigned long long *)arg2;

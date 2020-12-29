@@ -10,6 +10,7 @@
 
 @class FCCKPOperation, FCCKPQueryRetrieveResponse, FCCKPRecordRetrieveResponse, FCCKPResponseOperationResult;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPResponseOperation : PBCodable <NSCopying>
 {
     unsigned int _operationCost;
@@ -33,7 +34,6 @@
 @property (strong, nonatomic) FCCKPOperation *response; // @synthesize response=_response;
 @property (strong, nonatomic) FCCKPResponseOperationResult *result; // @synthesize result=_result;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

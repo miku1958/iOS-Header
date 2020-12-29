@@ -18,6 +18,7 @@
 - (void).cxx_destruct;
 - (id)_bestObjectForParsing:(id)arg1;
 - (BOOL)_isLikelyLastScannedObject:(id)arg1;
+- (BOOL)_shouldSkipIncomingObject:(id)arg1;
 - (double)_temporalStickyFactorForObject:(id)arg1;
 - (void)_updateSessionWithMetadataObject:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dealloc;

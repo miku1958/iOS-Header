@@ -54,14 +54,20 @@
  {
 	// getter
  }
+ protocol SiriAudioSupport.AppSelectionIndependentSignal // 2 requirements
+ {
+	// class base protocol
+	// class method
+ }
  protocol SiriAudioSupport.AppNameResolving // 1 requirements
  {
 	// method
  }
- protocol SiriAudioSupport.AppSignal // 4 requirements
+ protocol SiriAudioSupport.AppSignal // 5 requirements
  {
 	// getter
 	// class getter
+	// method
 	// method
 	// method
  }
@@ -71,7 +77,7 @@
 	// getter
 	// getter
  }
- protocol SiriAudioSupport.AppSelectionGenericSignal // 2 requirements
+ protocol SiriAudioSupport.AppSelectionIntentDependentSignal // 2 requirements
  {
 	// class base protocol
 	// class method
@@ -80,16 +86,15 @@
  {
 	// method
  }
- protocol SiriAudioSupport.AppSelectionCandidateDependentSignal // 2 requirements
- {
-	// class base protocol
-	// class method
- }
  protocol SiriAudioSupport.PlaybackLocalSearching // 1 requirements
  {
 	// method
  }
  protocol SiriAudioSupport.PlaybackCreateRadioProviding // 1 requirements
+ {
+	// method
+ }
+ protocol SiriAudioSupport.NowPlayingUsageProviding // 1 requirements
  {
 	// method
  }
@@ -105,9 +110,15 @@
 	// getter
 	// method
  }
- protocol SiriAudioSupport.FeatureFlagProviding // 2 requirements
+ protocol SiriAudioSupport.FeatureFlagProviding // 8 requirements
  {
 	// getter
+	// getter
+	// getter
+	// getter
+	// getter
+	// setter
+	// modify coroutine
 	// getter
  }
  protocol SiriAudioSupport.ExecutorProviding // 4 requirements
@@ -123,10 +134,8 @@
 	// method
 	// method
  }
- protocol SiriAudioSupport.AppSelectionConfigurationLevelProviding // 6 requirements
+ protocol SiriAudioSupport.AppSelectionConfigurationLevelProviding // 4 requirements
  {
-	// getter
-	// getter
 	// getter
 	// getter
 	// getter
@@ -200,16 +209,6 @@
 	let signals : [String : Any] // +0x10
  }
 
- class SiriAudioSupport.FakeStore : NowPlayingUsageSignal.KnowledgeProvider { }
-
- struct SiriAudioSupport.LastNowPlayingSignal {
-
-	// Properties
-	let lastApp : String? // +0x0
-	let timeSinceLastApp : NSNumber? // +0x10
-	let timeElapsed : Double // +0x18
- }
-
  class SiriAudioSupport.SiriRemembersEntitySignal : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
@@ -224,15 +223,15 @@
 	let timeElapsed : Double
 
 	// Swift methods
-	0xa4c0  func <stripped> // method 
-	0xa960  func <stripped> // method 
+	0x8e50  func <stripped> // method 
+	0x9120  func <stripped> // method 
  }
 
  class SiriAudioSupport.PodcastPlaybackHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xbe30  class func <stripped> // getter 
-	0xbe40  class func <stripped> // getter 
-	0xbe80  class func <stripped> // init 
+	0x9fc0  class func <stripped> // getter 
+	0x9fd0  class func <stripped> // getter 
+	0xa010  class func <stripped> // init 
  }
 
  struct SiriAudioSupport.SubscriptionProvider { }
@@ -273,7 +272,7 @@
 	var enabledLanguagesLock : NSLock
 
 	// Swift methods
-	0x15d10  func MorphunProvider.hasNeededDataToUseMorphunInflection(for:) // method 
+	0x13f20  func MorphunProvider.hasNeededDataToUseMorphunInflection(for:) // method 
  }
 
  class SiriAudioSupport.PodcastCollectionPlaybackHandler : PodcastPlaybackHandler { }
@@ -338,11 +337,11 @@
 	let identifier : Identifier
 
 	// Swift methods
-	0x3ff90  func PlaybackItem.description.getter // getter 
-	0x40420  class func PlaybackItem.__allocating_init(_:assetInfo:) // init 
-	0x404e0  func PlaybackItem.assetInfo.getter // getter 
-	0x40520  func PlaybackItem.assetInfo.setter // setter 
-	0x40560  func PlaybackItem.assetInfo.modify // modifyCoroutine 
+	0x3c980  func PlaybackItem.description.getter // getter 
+	0x3ce10  class func PlaybackItem.__allocating_init(_:assetInfo:) // init 
+	0x3ced0  func PlaybackItem.assetInfo.getter // getter 
+	0x3cf10  func PlaybackItem.assetInfo.setter // setter 
+	0x3cf50  func PlaybackItem.assetInfo.modify // modifyCoroutine 
  }
 
  struct SiriAudioSupport.Identifier {
@@ -391,66 +390,44 @@
  class SiriAudioSupport.PlayMediaAppSelectionInput : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var n_candidates : Double
-	var result_asrConfidenceLevel : String
-	var result_asrConfidenceScore : Double
-	var result_audioRoutes : Double
 	var result_clientCarConnected : String
 	var result_clientCarplay : String
 	var result_clientDaylight : String
-	var result_clientDayOfWeek : Double
 	var result_clientDevice : String
 	var result_clientHourOfDay : Double
 	var result_clientIsActiveForegroundApp : Double
 	var result_clientLocaleIdentifier : String
-	var result_clientLocaleLanguage : String
 	var result_clientLocked : String
 	var result_clientMotion : String
 	var result_clientNavigating : String
 	var result_clientWorkout : String
-	var result_entitySearchDirichletScore : Double
-	var result_entitySearchSecondsSinceLastInteraction : Double
-	var result_foregroundAppDuetElapsedSeconds : Double
 	var result_foregroundAppIsLastUsed : Double
 	var result_interactionType : String
 	var result_isNowPlayingApp : Double
-	var result_isNowPlayingDuetApp : Double
-	var result_libraryItems : Double
-	var result_mediaAlbumPresent : Double
 	var result_mediaArtistPresent : Double
 	var result_mediaGenrePresent : Double
-	var result_mediaMoodPresent : Double
 	var result_mediaNamePresent : Double
 	var result_mediaParsecCategory : String
 	var result_mediaPlaybackLocation : String
-	var result_mediaReleaseDatePresent : Double
 	var result_mediaType : String
-	var result_nlConfidenceLevel : String
-	var result_nlConfidenceScore : Double
-	var result_nowPlayingDuetElapsedSeconds : Double
 	var result_nowPlayingState : String
 	var result_nowPlayingUsage7Days : Double
 	var result_nowPlayingUsage1Day : Double
 	var result_nowPlayingUsage14Days : Double
-	var result_serverSearchResultsAmpConfidenceLevel : String
-	var result_serverSearchResultsAmpConfidenceScore : Double
-	var result_serverSearchResultsMediaType : String
-	var result_serverSearchResultsPresent : Double
-	var result_serverSearchResultsSelected : Double
-	var result_serverSignals : [String : Double]
-	var result_spotlightMatches : Double
-	var result_subscriptionStatus : String
-	var result_supportedMediaCategories : [String : Double]
-	var result_unionOfMediaCategories : [String : Double]
+	var result_entitySearchBundleScore : Double
+	var result_entitySearchBundleRecency : Double
+	var result_foregroundAppElapsedSeconds : Double
+	var result_nowPlayingLastBundle : Double
+	var result_nowPlayingLastBundleRecency : Double
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x11f2c00036090 (0x72c00036090) in binary!
-	0x6cca  @objc PlayMediaAppSelectionInput.(null) <stripped>
+WARNING: couldn't find address 0x1069400032498 (0x69400032498) in binary!
+	0x6602  @objc PlayMediaAppSelectionInput.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x54fff48778  @objc PlayMediaAppSelectionInput.(null) <stripped>
+	0x45cfff4bbc0  @objc PlayMediaAppSelectionInput.(null) <stripped>
 
 	// Swift methods
-	0x43110  func <stripped> // method 
+	0x3fc10  func <stripped> // method 
  }
 
  class SiriAudioSupport.PlayMediaAppSelectionOutput : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -458,18 +435,18 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	// Properties
 	let provider : MLFeatureProvider
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_result_isRequestedApp : ýä
+	var $__lazy_storage_$_result_isRequestedApp : QÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_result_isRequestedAppProbability :  empty-list 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x11f0c00036070 (0x70c00036070) in binary!
-	0x6caa  @objc PlayMediaAppSelectionOutput.(null) <stripped>
+WARNING: couldn't find address 0x1067400032478 (0x67400032478) in binary!
+	0x65e2  @objc PlayMediaAppSelectionOutput.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x4d4fffa4b78  @objc PlayMediaAppSelectionOutput.(null) <stripped>
+	0x17cfffa7990  @objc PlayMediaAppSelectionOutput.(null) <stripped>
 
 	// Swift methods
-	0x44a10  func <stripped> // getter 
+	0x409b0  func <stripped> // getter 
  }
 
  class SiriAudioSupport.PlayMediaAppSelection : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -478,18 +455,11 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let model : MLModel
 
 	// Swift methods
-	0x44c10  func <stripped> // method 
+	0x40bb0  func <stripped> // method 
  }
 
  class SiriAudioSupport.NowPlayingStateClient : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
- }
-
- struct SiriAudioSupport.NowPlayingStateSignal {
-
-	// Properties
-	let nowPlayingState : String // +0x0
-	let timeElapsed : Double // +0x10
  }
 
  struct SiriAudioSupport.LibraryProvider {
@@ -573,8 +543,8 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let playbackStarter : PlaybackStarting
 
 	// Swift methods
-	0x5dc30  func <stripped> // method 
-	0x5f580  func <stripped> // method 
+	0x58cf0  func <stripped> // method 
+	0x5a640  func <stripped> // method 
  }
 
  class SiriAudioSupport.ServerEntitySignal : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -588,18 +558,11 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let mediaPlayback : MediaPlaybackProviding
 
 	// Swift methods
-	0x669c0  func PlaybackLocalSearcher.search(mediaName:artistName:albumName:genreNames:completion:) // method 
+	0x61a80  func PlaybackLocalSearcher.search(mediaName:artistName:albumName:genreNames:completion:) // method 
  }
 
  class SiriAudioSupport.NowPlayingClient : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
- }
-
- struct SiriAudioSupport.NowPlayingAppSignal {
-
-	// Properties
-	let nowPlayingBundleIdentifier : String? // +0x0
-	let timeElapsed : Double // +0x10
  }
 
  struct SiriAudioSupport.AppNameResolver {
@@ -614,6 +577,9 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	// Properties
 	let isBoltEnabled : Bool // +0x0
 	let isPymEnabled : Bool // +0x1
+	let isAppTrainingDisambiguationEnabled : Bool // +0x2
+	let isAppSelectionEnabled : Bool // +0x3
+	let appTrainingDisambiguationRate : Int // +0x8
  }
 
  class SiriAudioSupport.LocalGenreCollectionPlaybackHandler : LocalPlaybackHandler { }
@@ -624,8 +590,8 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class SiriAudioSupport.PlayMediaAppSelector : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x720b0  func PlayMediaAppSelector.select(for:completion:) // method 
-	0x75850  func PlayMediaAppSelector.recordSignals(for:bundleIdentifier:completion:) // method 
+	0x6d1f0  func PlayMediaAppSelector.select(for:completion:) // method 
+	0x6fc30  func PlayMediaAppSelector.recordSignals(for:bundleIdentifier:force:completion:) // method 
  }
 
  struct SiriAudioSupport.AppSelectionReport {
@@ -636,7 +602,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let treatmentId : String // +0x18
 	let rolloutId : String // +0x28
 	let confidenceAbs : Double // +0x38
-	let confidenceNorm : Double // +0x40
+	let confidenceOddsRatio : Double // +0x40
 	let bundleIdentifier : String // +0x48
  }
 
@@ -647,13 +613,15 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var record : RecordableResult
 
 	// Swift methods
-	0x77860  func AppSelectionContext.report.getter // getter 
-	0x77940  func AppSelectionContext.report.setter // setter 
-	0x77a20  func AppSelectionContext.report.modify // modifyCoroutine 
-	0x77a50  func AppSelectionContext.record.getter // getter 
-	0x77a90  func AppSelectionContext.record.setter // setter 
-	0x77ad0  func AppSelectionContext.record.modify // modifyCoroutine 
+	0x71e90  func AppSelectionContext.report.getter // getter 
+	0x71f70  func AppSelectionContext.report.setter // setter 
+	0x72060  func AppSelectionContext.report.modify // modifyCoroutine 
+	0x72090  func AppSelectionContext.record.getter // getter 
+	0x720d0  func AppSelectionContext.record.setter // setter 
+	0x72110  func AppSelectionContext.record.modify // modifyCoroutine 
  }
+
+ struct SiriAudioSupport.Aggregations { }
 
  struct SiriAudioSupport.AppSelectionConfigurationLevelProvider: AppSelectionConfigurationLevelProviding {
 
@@ -685,12 +653,12 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let playbackQueueLocation : PlaybackQueueLocationProviding
 
 	// Swift methods
-	0x84600  class func <stripped> // init 
-	0x850e0  class func <stripped> // init 
-	0x849e0  func <stripped> // method 
-	0x85d90  func <stripped> // method 
-	0x86ff0  func <stripped> // method 
-	0x84e70  func <stripped> // method 
+	0x80090  class func <stripped> // init 
+	0x80b70  class func <stripped> // init 
+	0x80470  func <stripped> // method 
+	0x81820  func <stripped> // method 
+	0x82a80  func <stripped> // method 
+	0x80900  func <stripped> // method 
  }
 
  class SiriAudioSupport.SpotlightSearchProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -705,14 +673,16 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let handlerHydrator : PlaybackHandling
 
 	// Swift methods
-	0x90210  func PlaybackService.warm(item:playbackAttributes:completion:) // method 
-	0x905a0  func PlaybackService.play(item:playbackAttributes:continuation:completion:) // method 
+	0x8bca0  func PlaybackService.warm(item:playbackAttributes:completion:) // method 
+	0x8c030  func PlaybackService.play(item:playbackAttributes:continuation:completion:) // method 
  }
+
+ struct SiriAudioSupport.DirichletScore { }
 
  struct SiriAudioSupport.SupportedMediaSignal {
 
 	// Properties
-	let candidateMediaCategories : [String : [String]] // +0x0
+	let mediaCategories : [String : [String]] // +0x0
 	let timeElapsed : Double // +0x8
 	var unionMediaCategories : Set<String> // +0x10
  }
@@ -728,10 +698,35 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let privateListening : NSNumber? // +0x8
  }
 
+ class SiriAudioSupport.CustomAppResolutionProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var conversionAppResolutionStateProviding : ŸÆ
+	var updatedIntent : INIntent
+
+	// Swift methods
+	0x943f0  class func CustomAppResolutionProvider.__allocating_init(conversionAppResolutionStateProviding:updatedIntent:) // init 
+	0x944a0  func CustomAppResolutionProvider.getRequestedApp() // method 
+	0x944c0  func CustomAppResolutionProvider.getSuggestedApp() // method 
+	0x94520  func CustomAppResolutionProvider.getConfirmationResponse() // method 
+	0x94560  func CustomAppResolutionProvider.getUpdatedIntent() // method 
+ }
+
  struct SiriAudioSupport.CreateStationPlaybackHandler {
 
 	// Properties
 	let createRadioProvider : PlaybackCreateRadioProviding // +0x0
+ }
+
+ class SiriAudioSupport.SpotlightSignal : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var matches : [String : Double]
+	let timeElapsed : Double
+
+	// Swift methods
+	0x97060  func <stripped> // method 
  }
 
  class SiriAudioSupport.Keys : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -744,34 +739,10 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let spotlight : SpotlightSearchProviding
 
 	// Swift methods
-	0x9a750  func <stripped> // method 
+	0x971a0  func <stripped> // method 
  }
 
- struct SiriAudioSupport.SpotlightSignal {
-
-	// Properties
-	var matches : [String : NSNumber] // +0x0
-	let timeElapsed : Double // +0x8
- }
-
- struct SiriAudioSupport.ClientContextSignal {
-
-	// Properties
-	let timeElapsed : Double // +0x0
-	let workout : Int // +0x8
-	let locked : Int // +0x10
-	let carplay : Int // +0x18
-	let carConnected : Int // +0x20
-	let navigating : Int // +0x28
-	let daylight : Int // +0x30
-	let motionState : Int // +0x38
-	let localeIdentifier : String // +0x40
-	let localeLanguage : String // +0x50
-	let foregroundAppBundleId : String? // +0x60
-	let hourOfDay : Int // +0x70
-	let dayOfWeek : Int // +0x78
-	let device : String // +0x80
- }
+ struct SiriAudioSupport.Time { }
 
  class SiriAudioSupport.WholeLibraryHandler : MPMediaQueryHandler { }
 
@@ -793,38 +764,37 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let test : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6f0a00035ce0 (0x70a00035ce0) in binary!
-	0x6c6a  @objc RecordableResult.(null) <stripped>
-WARNING: couldn't find address 0x11eb400035d60 (0x6b400035d60) in binary!
-	0x11eb0  @objc RecordableResult.(null) <stripped>
-WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
-	0x36f69647541  @objc RecordableResult.(null) <stripped>
-WARNING: couldn't find address 0x5250202074726f70 (0x2074726f70) in binary!
-	0x16475416972  @objc RecordableResult.(null) <stripped>
+WARNING: couldn't find address 0x1061e00032188 (0x61e00032188) in binary!
+	0x65a2  @objc RecordableResult.(null) <stripped>
+WARNING: couldn't find address 0x1061c00032188 (0x61c00032188) in binary!
+	0x10618  @objc RecordableResult.(null) <stripped>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	0x1533a4d4152  @objc RecordableResult.(null) <stripped>
+WARNING: couldn't find address 0x7075536f69647541 (0x36f69647541) in binary!
+	0x25443454a4f  @objc RecordableResult.(null) <stripped>
 
 	// Swift methods
-	0xa0fd0  func RecordableResult.info.getter // getter 
-	0xa1010  func RecordableResult.info.setter // setter 
-	0xa1060  func RecordableResult.info.modify // modifyCoroutine 
-	0xa0d70  class func RecordableResult.__allocating_init(name:version:timeElapsed:rows:info:signalTiming:test:) // init 
-	0xa1180  func RecordableResult.json() // method 
-	0xa1650  func RecordableResult.encode(with:) // method 
-	0xa1980  class func RecordableResult.__allocating_init(coder:) // init 
+	0x9c940  func RecordableResult.info.getter // getter 
+	0x9c980  func RecordableResult.info.setter // setter 
+	0x9c9d0  func RecordableResult.info.modify // modifyCoroutine 
+	0x9c6e0  class func RecordableResult.__allocating_init(name:version:timeElapsed:rows:info:signalTiming:test:) // init 
+	0x9caf0  func RecordableResult.json() // method 
+	0x9cfc0  func RecordableResult.encode(with:) // method 
+	0x9d2f0  class func RecordableResult.__allocating_init(coder:) // init 
  }
 
  struct SiriAudioSupport.AppSelectionConfiguration {
 
 	// Properties
 	let appSelectionEnabled : Bool // +0x0
-	let minimumNormalizedConfidence : Double // +0x8
+	let minimumConfidenceOddsRatio : Double // +0x8
 	let minimumAbsoluteConfidence : Double // +0x10
-	let entitySearchBandwidthSeconds : Double // +0x18
-	let videoAppBundleIdentifiers : Set<String> // +0x20
+	let videoAppBundleIdentifiers : Set<String> // +0x18
+	let model : PlayMediaAppSelection // +0x20
 	let trialTrackingId : TRITrackingId? // +0x28
 	let trialExperimentId : String? // +0x30
 	let trialTreatmentId : String? // +0x40
 	let trialRolloutId : String? // +0x50
-	let modelValue : AtomicValue // +0x60
  }
 
  struct SiriAudioSupport.UserPreferenceLookupData {
@@ -841,15 +811,6 @@ WARNING: couldn't find address 0x5250202074726f70 (0x2074726f70) in binary!
 
  class SiriAudioSupport.RemoteAlbumPlaybackHandler : RemotePlaybackHandler { }
 
- struct SiriAudioSupport.IntentMediaSignal {
-
-	// Properties
-	let media : INMediaSearch? // +0x0
-	let parsecCategory : INParsecCategory // +0x8
-	let playbackLocation : INPlaybackQueueLocation // +0x18
-	let timeElapsed : Double // +0x20
- }
-
  class SiriAudioSupport.MPCAssistantQueueHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
@@ -859,12 +820,12 @@ WARNING: couldn't find address 0x5250202074726f70 (0x2074726f70) in binary!
 	let playbackQueueLocation : PlaybackQueueLocationProviding
 
 	// Swift methods
-	0xad8c0  class func <stripped> // getter 
-	0xad910  class func <stripped> // getter 
-	0xad4f0  class func <stripped> // init 
-	0xad960  class func <stripped> // init 
-	0xaf0d0  func <stripped> // method 
-	0xaf120  func <stripped> // method 
+	0xa2c60  class func <stripped> // getter 
+	0xa2cb0  class func <stripped> // getter 
+	0xa2890  class func <stripped> // init 
+	0xa2d00  class func <stripped> // init 
+	0xa4470  func <stripped> // method 
+	0xa44c0  func <stripped> // method 
  }
 
  struct SiriAudioSupport.DeviceProvider {
@@ -897,7 +858,7 @@ WARNING: couldn't find address 0x5250202074726f70 (0x2074726f70) in binary!
 	let track : Int?
 	let playCount : Int?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lastUsed : ë
+	let lastUsed : µÕ
 	let availableLocally : Bool?
 	let genre : String?
  }
@@ -912,6 +873,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SiriAudioSupport.ClientContextEntitySignal : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
+ }
+
+ class SiriAudioSupport.FakeStore : ForegroundAppSignal.KnowledgeProvider { }
+
+ class SiriAudioSupport.KnowledgeProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+	0xa84e0  func <stripped> // method 
  }
 
  struct SiriAudioSupport.ForegroundAppSignal {
@@ -938,10 +906,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let playbackQueueLocation : PlaybackQueueLocationProviding
 
 	// Swift methods
-	0xb60f0  class func <stripped> // init 
-	0xb7520  class func <stripped> // init 
-	0xb64d0  func <stripped> // method 
+	0xab760  class func <stripped> // init 
+	0xacb90  class func <stripped> // init 
+	0xabb40  func <stripped> // method 
  }
+
+ struct SiriAudioSupport.Normalize { }
 
  class SiriAudioSupport.PodcastLibraryPlaybackHandler : PodcastPlaybackHandler { }
 
@@ -967,13 +937,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SiriAudioSupport.RecordStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xc61a0  func RecordStore.shouldMakeRecord(force:frequencyDenominator:) // method 
-	0xc61b0  func RecordStore.makeRecord(result:completion:) // method 
+	0xbfcc0  func RecordStore.permitted.getter // getter 
+	0xbfd00  func RecordStore.shouldMakeRecord(force:frequencyDenominator:) // method 
+	0xbfd10  func RecordStore.makeRecord(result:completion:) // method 
  }
 
  class SiriAudioSupport.MPMediaQueryHandler : MPCAssistantQueueHandler {
 	// Swift methods
-	0xc9eb0  func <stripped> // method 
+	0xc3570  func <stripped> // method 
  }
 
  struct SiriAudioSupport.MPMediaQueryAttributes {
@@ -993,32 +964,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let entityType : MPMediaEntityType // +0x8
  }
 
- struct SiriAudioSupport.PrivateIntentDataSignal {
-
-	// Properties
-	let serverSearchResultsPresent : Bool // +0x0
-	let serverSearchResultsBundleId : String // +0x8
-	let serverSearchResultsMediaType : String // +0x18
-	let serverSearchResultsAmpConfidenceLevel : String // +0x28
-	let serverSearchResultsAmpConfidenceScore : Double // +0x38
-	let asrConfidenceLevel : String // +0x40
-	let asrConfidenceScore : Double // +0x50
-	let nlConfidenceLevel : String // +0x58
-	let nlConfidenceScore : Double // +0x68
-	let serverSignals : [String] // +0x70
-	let audioRoutes : Int // +0x78
-	let timeElapsed : Double // +0x80
- }
-
  class SiriAudioSupport.ContextProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
- }
-
- struct SiriAudioSupport.UserContextSignal {
-
-	// Properties
-	let userContext : [String : INMediaUserContext] // +0x0
-	let timeElapsed : Double // +0x8
  }
 
  class SiriAudioSupport.AtomicOnce : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1029,8 +976,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let name : String
 
 	// Swift methods
-	0xd3ce0  class func AtomicOnce.__allocating_init(name:) // init 
-	0xd3e20  func AtomicOnce.evaluate(_:) // method 
+	0xc6460  class func AtomicOnce.__allocating_init(name:) // init 
+	0xc65a0  func AtomicOnce.evaluate(_:) // method 
  }
 
  struct SiriAudioSupport.DispatchQueues { }
@@ -1047,14 +994,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let executor : ExecutorProviding
 
 	// Swift methods
-	0xddb00  func <stripped> // method 
-	0xdf030  func <stripped> // method 
-	0xe0190  func <stripped> // method 
-	0xe1510  func <stripped> // method 
-	0xe1ca0  func <stripped> // method 
-	0xe30d0  func <stripped> // method 
-	0xe3a40  func <stripped> // method 
-	0xe4a10  func <stripped> // method 
+	0xcf7c0  func <stripped> // method 
+	0xd0cf0  func <stripped> // method 
+	0xd1e50  func <stripped> // method 
+	0xd3200  func <stripped> // method 
+	0xd3a00  func <stripped> // method 
+	0xd4e30  func <stripped> // method 
+	0xd57a0  func <stripped> // method 
+	0xd6770  func <stripped> // method 
  }
 
  class SiriAudioSupport.MediaPlaybackLite : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1067,30 +1014,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var prepareForSetQueueValue : AtomicValue
 
 	// Swift methods
-	0xe59e0  func MediaPlaybackLite.lastOrigin.getter // getter 
-	0xe5a20  func MediaPlaybackLite.lastOrigin.setter // setter 
-	0xe5a60  func MediaPlaybackLite.lastOrigin.modify // modifyCoroutine 
-	0xe6380  func MediaPlaybackLite.warm(refId:completion:) // method 
-	0xe6730  func MediaPlaybackLite.waitForPrepareForSetQueue(completion:) // method 
-	0xe6c40  func MediaPlaybackLite.prepareForSetQueue(refId:ignoreCache:completion:) // method 
-	0xe7200  func MediaPlaybackLite.setRepeatMode(refId:repeatMode:completion:) // method 
-	0xe76c0  func MediaPlaybackLite.prepareForAudioHandoff(completion:) // method 
+	0xd7740  func MediaPlaybackLite.lastOrigin.getter // getter 
+	0xd7780  func MediaPlaybackLite.lastOrigin.setter // setter 
+	0xd77c0  func MediaPlaybackLite.lastOrigin.modify // modifyCoroutine 
+	0xd80e0  func MediaPlaybackLite.warm(refId:completion:) // method 
+	0xd8490  func MediaPlaybackLite.waitForPrepareForSetQueue(completion:) // method 
+	0xd89a0  func MediaPlaybackLite.prepareForSetQueue(refId:ignoreCache:completion:) // method 
+	0xd8f60  func MediaPlaybackLite.setRepeatMode(refId:repeatMode:completion:) // method 
+	0xd9420  func MediaPlaybackLite.prepareForAudioHandoff(completion:) // method 
  }
 
- class SiriAudioSupport.KnowledgeProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-	// Swift methods
-	0xf68a0  func <stripped> // method 
- }
-
- class SiriAudioSupport.FakeStore : NowPlayingUsageSignal.KnowledgeProvider { }
-
- struct SiriAudioSupport.NowPlayingUsageSignal {
+ class SiriAudioSupport.LastNowPlayingSignal : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let usage1Day : [String : NSNumber] // +0x0
-	let usage7Days : [String : NSNumber] // +0x8
-	let usage14Days : [String : NSNumber] // +0x10
-	let timeElapsed : Double // +0x18
+	let mostRecentBundleIdentifier : String?
+	let mostRecentBundleIdentifierElapsed : Double
+	let bundleRecency : [String : Double]
+	var bundleScore : [String : Double]
+	var counts : [String : Int]
+	let timeElapsed : Double
+	var usage1Day : [String : Double]
+	var usage7Days : [String : Double]
+	var usage14Days : [String : Double]
+
+	// Swift methods
+	0xe8af0  func <stripped> // method 
+	0xe91b0  func <stripped> // method 
+	0xe9870  func <stripped> // method 
  }
 
  class SiriAudioSupport.PlaybackItemContainer : PlaybackItem {
@@ -1101,7 +1051,48 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let sharedUserIdFromPlayableMusicAccount : String?
 
 	// Swift methods
-	0xfa170  class func PlaybackItemContainer.__allocating_init(_:assetInfo:subItems:recommendationID:sharedUserIdFromPlayableMusicAccount:) // init 
+	0xeac70  class func PlaybackItemContainer.__allocating_init(_:assetInfo:subItems:recommendationID:sharedUserIdFromPlayableMusicAccount:) // init 
+ }
+
+ class SiriAudioSupport.NowPlayingUsageProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var store : Store
+	let lock : NSLock
+
+	// Swift methods
+	0xeb0d0  func <stripped> // method 
+	0xec240  func <stripped> // method 
+ }
+
+ struct SiriAudioSupport.Store {
+
+	// Properties
+	let timestamp : Double // +0x0
+	var recent : Event // +0x8
+	var eventsByDay : [Int : [String : Int]] // +0x10
+ }
+
+ enum SiriAudioSupport.CodingKeys {
+
+	// Properties
+	case timestamp  
+	case recent  
+	case eventsByDay  
+ }
+
+ struct SiriAudioSupport.Event {
+
+	// Properties
+	let bundleIdentifier : String // +0x0
+	let timestamp : Double // +0x10
+ }
+
+ enum SiriAudioSupport.CodingKeys {
+
+	// Properties
+	case bundleIdentifier  
+	case timestamp  
  }
 
  class SiriAudioSupport.PodcastStationPlaybackHandler : PodcastPlaybackHandler { }
@@ -1126,17 +1117,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var hasPickedVirtualAudioRoute : Áë
+	var hasPickedVirtualAudioRoute : éÚ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var hasAvailableW1Route : Áë
+	var hasAvailableW1Route : éÚ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var speakerRouteEnabled : Áë
+	var speakerRouteEnabled : éÚ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var isConnectedToCompanion : Áë
+	var isConnectedToCompanion : éÚ
  }
-
- enum __C.INPlaybackQueueLocation { }
-
- enum __C.INParsecCategory { }
 
  enum __C.MPMediaEntityType { }

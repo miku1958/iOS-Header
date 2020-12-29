@@ -12,31 +12,43 @@
 @interface FCOfflineANFArticlesFetchOperation : FCOperation
 {
     BOOL _cachedOnly;
-    unsigned long long _maximumMissingArticles;
+    unsigned long long _maxBatchSize;
+    unsigned long long _maxMissingArticles;
     CDUnknownBlockType _progressHandler;
+    CDUnknownBlockType _interestTokenHandler;
+    CDUnknownBlockType _archiveHandler;
     CDUnknownBlockType _fetchCompletionHandler;
     id<FCContentContext> _context;
     id<FCFlintHelper> _flintHelper;
     NSArray *_articleIDs;
-    id _resultHoldToken;
+    NSArray *_inputHeadlines;
 }
 
-@property (strong, nonatomic) NSArray *articleIDs; // @synthesize articleIDs=_articleIDs;
+@property (copy, nonatomic) CDUnknownBlockType archiveHandler; // @synthesize archiveHandler=_archiveHandler;
+@property (readonly, copy, nonatomic) NSArray *articleIDs; // @synthesize articleIDs=_articleIDs;
 @property (nonatomic) BOOL cachedOnly; // @synthesize cachedOnly=_cachedOnly;
-@property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
+@property (readonly, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
 @property (copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
-@property (strong, nonatomic) id<FCFlintHelper> flintHelper; // @synthesize flintHelper=_flintHelper;
-@property (nonatomic) unsigned long long maximumMissingArticles; // @synthesize maximumMissingArticles=_maximumMissingArticles;
+@property (readonly, nonatomic) id<FCFlintHelper> flintHelper; // @synthesize flintHelper=_flintHelper;
+@property (readonly, copy, nonatomic) NSArray *inputHeadlines; // @synthesize inputHeadlines=_inputHeadlines;
+@property (copy, nonatomic) CDUnknownBlockType interestTokenHandler; // @synthesize interestTokenHandler=_interestTokenHandler;
+@property (nonatomic) unsigned long long maxBatchSize; // @synthesize maxBatchSize=_maxBatchSize;
+@property (nonatomic) unsigned long long maxMissingArticles; // @synthesize maxMissingArticles=_maxMissingArticles;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
-@property (strong, nonatomic) id resultHoldToken; // @synthesize resultHoldToken=_resultHoldToken;
 
 - (void).cxx_destruct;
-- (id)_promiseANFResourcesFromHeadlines:(id)arg1;
-- (id)_promiseHeadlines;
-- (id)_promiseThumbnailsAndANFDocumentsFromHeadlines:(id)arg1;
+- (id)_desiredArticleKeys;
+- (id)_promiseANFDocumentsFromArticleRecords:(id)arg1;
+- (id)_promiseANFResourcesFromArticleRecords:(id)arg1 anfAssetHandles:(id)arg2;
+- (id)_promiseArticleRecords;
+- (id)_promiseCachedArticleRecords;
+- (id)_promiseFetchedArticleRecords;
+- (id)_promiseThumbnailsFromArticleRecords:(id)arg1;
 - (id)initWithContext:(id)arg1 flintHelper:(id)arg2 articleIDs:(id)arg3;
+- (id)initWithContext:(id)arg1 flintHelper:(id)arg2 headlines:(id)arg3;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
+- (BOOL)validateOperation;
 
 @end
 

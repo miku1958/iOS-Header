@@ -143,6 +143,7 @@ __attribute__((visibility("hidden")))
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)pause;
 - (void)play;
+- (id)preferredFocusEnvironments;
 - (BOOL)shouldUpdateFocusInContext:(id)arg1;
 - (void)showAlphaImage:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)stop;

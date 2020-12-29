@@ -15,12 +15,14 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *validResultCategoryId;
     MISSING_TYPE *isShowingHints;
     MISSING_TYPE *$__lazy_storage_$_portraitFullScreenSizeClass;
+    MISSING_TYPE *$__lazy_storage_$_prototypeCellDictionary;
 }
 
 - (void).cxx_destruct;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)didMoveToParentViewController:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidLoad;
 
 @end

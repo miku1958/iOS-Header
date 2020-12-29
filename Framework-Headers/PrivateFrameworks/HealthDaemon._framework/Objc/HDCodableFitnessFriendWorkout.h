@@ -28,7 +28,8 @@
     NSString *_deviceModel;
     NSData *_friendUUID;
     HDCodableSample *_sample;
-    NSString *_scwi;
+    NSString *_seymourCatalogWorkoutIdentifier;
+    NSString *_seymourMediaType;
     struct {
         unsigned int amm:1;
         unsigned int duration:1;
@@ -64,7 +65,8 @@
 @property (nonatomic) BOOL hasIsIndoorWorkout;
 @property (nonatomic) BOOL hasIsWatchWorkout;
 @property (readonly, nonatomic) BOOL hasSample;
-@property (readonly, nonatomic) BOOL hasScwi;
+@property (readonly, nonatomic) BOOL hasSeymourCatalogWorkoutIdentifier;
+@property (readonly, nonatomic) BOOL hasSeymourMediaType;
 @property (nonatomic) BOOL hasTotalBasalEnergyBurnedInCanonicalUnit;
 @property (nonatomic) BOOL hasTotalDistanceInCanonicalUnit;
 @property (nonatomic) BOOL hasTotalEnergyBurnedInCanonicalUnit;
@@ -73,7 +75,8 @@
 @property (nonatomic) long long isIndoorWorkout; // @synthesize isIndoorWorkout=_isIndoorWorkout;
 @property (nonatomic) long long isWatchWorkout; // @synthesize isWatchWorkout=_isWatchWorkout;
 @property (strong, nonatomic) HDCodableSample *sample; // @synthesize sample=_sample;
-@property (strong, nonatomic) NSString *scwi; // @synthesize scwi=_scwi;
+@property (strong, nonatomic) NSString *seymourCatalogWorkoutIdentifier; // @synthesize seymourCatalogWorkoutIdentifier=_seymourCatalogWorkoutIdentifier;
+@property (strong, nonatomic) NSString *seymourMediaType; // @synthesize seymourMediaType=_seymourMediaType;
 @property (readonly) Class superclass;
 @property (nonatomic) double totalBasalEnergyBurnedInCanonicalUnit; // @synthesize totalBasalEnergyBurnedInCanonicalUnit=_totalBasalEnergyBurnedInCanonicalUnit;
 @property (nonatomic) double totalDistanceInCanonicalUnit; // @synthesize totalDistanceInCanonicalUnit=_totalDistanceInCanonicalUnit;

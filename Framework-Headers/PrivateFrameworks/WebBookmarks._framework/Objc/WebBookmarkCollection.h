@@ -316,7 +316,7 @@
 - (id)listWithID:(int)arg1;
 - (id)listWithID:(int)arg1 skipOffset:(unsigned int)arg2;
 - (id)listWithID:(int)arg1 skipOffset:(unsigned int)arg2 includeHidden:(BOOL)arg3;
-- (id)listWithID:(int)arg1 skipOffset:(unsigned int)arg2 includeHidden:(BOOL)arg3 filteredUsingString:(id)arg4;
+- (id)listWithID:(int)arg1 skipOffset:(unsigned int)arg2 includeHidden:(BOOL)arg3 includeDescendantsAsChildren:(BOOL)arg4 filteredUsingString:(id)arg5;
 - (id)listWithSpecialID:(int)arg1;
 - (void)localeSettingsChanged;
 - (BOOL)markAllFavoritesAsNeedingIcons;

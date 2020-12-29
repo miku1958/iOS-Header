@@ -31,12 +31,16 @@
     GCControllerButtonInput *_leftThumbstickButton;
     GCControllerButtonInput *_rightThumbstickButton;
     id _gamepadEventObservation;
+    BOOL _snapshotUsagePresent;
+    BOOL _recordUsagePresent;
+    GCControllerButtonInput *__buttonShare;
     GCControllerButtonInput *_buttonMenu;
     GCControllerButtonInput *_buttonOptions;
     GCControllerButtonInput *_buttonHome;
 }
 
 @property (readonly, nonatomic) GCControllerButtonInput *_buttonHome;
+@property (readonly, nonatomic) GCControllerButtonInput *_buttonShare; // @synthesize _buttonShare=__buttonShare;
 @property (readonly, nonatomic) GCControllerButtonInput *button0;
 @property (readonly, nonatomic) GCControllerButtonInput *button1;
 @property (readonly, nonatomic) GCControllerButtonInput *button2;
@@ -57,10 +61,12 @@
 @property (readonly, nonatomic) GCControllerDirectionPad *leftThumbstick; // @synthesize leftThumbstick=_leftThumbstick;
 @property (readonly, nonatomic) GCControllerButtonInput *leftThumbstickButton; // @synthesize leftThumbstickButton=_leftThumbstickButton;
 @property (readonly, nonatomic) GCControllerButtonInput *leftTrigger; // @synthesize leftTrigger=_leftTrigger;
+@property (readonly, nonatomic) BOOL recordUsagePresent; // @synthesize recordUsagePresent=_recordUsagePresent;
 @property (readonly, nonatomic) GCControllerButtonInput *rightShoulder; // @synthesize rightShoulder=_rightShoulder;
 @property (readonly, nonatomic) GCControllerDirectionPad *rightThumbstick; // @synthesize rightThumbstick=_rightThumbstick;
 @property (readonly, nonatomic) GCControllerButtonInput *rightThumbstickButton; // @synthesize rightThumbstickButton=_rightThumbstickButton;
 @property (readonly, nonatomic) GCControllerButtonInput *rightTrigger; // @synthesize rightTrigger=_rightTrigger;
+@property (readonly, nonatomic) BOOL snapshotUsagePresent; // @synthesize snapshotUsagePresent=_snapshotUsagePresent;
 @property (readonly) Class superclass;
 @property (copy, nonatomic) CDUnknownBlockType valueChangedHandler; // @synthesize valueChangedHandler=_valueChangedHandler;
 
@@ -71,13 +77,14 @@
 - (BOOL)allowsRotation;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleEvent:(struct __IOHIDEvent *)arg1;
-- (void)initAuxiliaryButtonsWithInitInfo:(const CDStruct_8de101df *)arg1;
+- (void)initAuxiliaryButtonsWithInitInfo:(const CDStruct_4d38efe0 *)arg1;
+- (void)initShareFunctionalityWithInitInfo:(const CDStruct_4d38efe0 *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithController:(id)arg1;
-- (id)initWithController:(id)arg1 initInfo:(const CDStruct_8de101df *)arg2;
+- (id)initWithController:(id)arg1 initInfo:(const CDStruct_4d38efe0 *)arg2;
 - (id)initWithIdentifier:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 info:(const CDStruct_8de101df *)arg2;
-- (id)initWithInfo:(const CDStruct_8de101df *)arg1;
+- (id)initWithIdentifier:(id)arg1 info:(const CDStruct_4d38efe0 *)arg2;
+- (id)initWithInfo:(const CDStruct_4d38efe0 *)arg1;
 - (id)name;
 - (id)productCategory;
 - (BOOL)reportsAbsoluteDpadValues;

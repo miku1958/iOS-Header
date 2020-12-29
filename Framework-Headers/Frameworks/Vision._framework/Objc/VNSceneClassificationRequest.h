@@ -39,6 +39,7 @@
 - (void)applyConfigurationOfRequest:(id)arg1;
 - (BOOL)defineCustomHierarchy:(id)arg1 error:(id *)arg2;
 - (id)defineCustomHierarchyWithRelationships:(id)arg1 error:(id *)arg2;
+- (long long)dependencyProcessingOrdinality;
 - (id)initWithSceneObservation:(id)arg1;
 - (id)initWithSceneObservation:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)internalPerformRevision:(unsigned long long)arg1 inContext:(id)arg2 error:(id *)arg3;

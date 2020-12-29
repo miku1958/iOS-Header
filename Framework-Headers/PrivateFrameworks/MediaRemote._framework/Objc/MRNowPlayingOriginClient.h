@@ -34,6 +34,7 @@
     CDUnknownBlockType _playbackSessionMigrateBeginCallback;
     CDUnknownBlockType _playbackSessionMigrateEndCallback;
     CDUnknownBlockType _playbackSessionMigrateRequestCallback;
+    CDUnknownBlockType _clientMessageCallback;
     NSMutableArray *_nowPlayingClients;
     unsigned int _hardwareRemoteBehavior;
     MRClient *_activeNowPlayingClient;
@@ -45,6 +46,7 @@
 @property (copy, nonatomic) NSArray *applicationPickedRoutes;
 @property (copy, nonatomic) CDUnknownBlockType beginLyricsEventCallback;
 @property (nonatomic) BOOL canBeNowPlayingApp;
+@property (copy, nonatomic) CDUnknownBlockType clientMessageCallback;
 @property (copy, nonatomic) CDUnknownBlockType commandCallback;
 @property (strong, nonatomic) MRDeviceInfo *deviceInfo;
 @property (copy, nonatomic) CDUnknownBlockType endLyricsEventCallback;

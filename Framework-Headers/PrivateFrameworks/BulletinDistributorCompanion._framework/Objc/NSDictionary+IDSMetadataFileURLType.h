@@ -7,6 +7,7 @@
 #import <Foundation/NSDictionary.h>
 
 @interface NSDictionary (IDSMetadataFileURLType)
+- (unsigned long long)blt_sizeof;
 - (id)idsMetadataFileKey;
 - (long long)idsMetadataFileURLType;
 - (id)objectSentinelNull;

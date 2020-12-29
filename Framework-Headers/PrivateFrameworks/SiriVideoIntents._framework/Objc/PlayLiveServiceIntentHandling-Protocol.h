@@ -10,7 +10,7 @@
 
 @protocol PlayLiveServiceIntentHandling <NSObject>
 - (void)handlePlayLiveService:(PlayLiveServiceIntent *)arg1 completion:(void (^)(PlayLiveServiceIntentResponse *))arg2;
-- (void)resolveLiveServiceForPlayLiveService:(PlayLiveServiceIntent *)arg1 withCompletion:(void (^)(LiveServiceResolutionResult *))arg2;
+- (void)resolveLiveServiceForPlayLiveService:(PlayLiveServiceIntent *)arg1 withCompletion:(void (^)(PlayLiveServiceLiveServiceResolutionResult *))arg2;
 
 @optional
 - (void)confirmPlayLiveService:(PlayLiveServiceIntent *)arg1 completion:(void (^)(PlayLiveServiceIntentResponse *))arg2;

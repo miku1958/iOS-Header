@@ -9,7 +9,7 @@
 #import <Weather/CLLocationManagerDelegate-Protocol.h>
 #import <Weather/SynchronizedDefaultsDelegate-Protocol.h>
 
-@class NSString, WFGeocodeRequest, WeatherLocationManager, WeatherPreferences;
+@class NSDate, NSString, WFGeocodeRequest, WeatherLocationManager, WeatherPreferences;
 
 @interface WATodayAutoupdatingLocationModel : WATodayModel <CLLocationManagerDelegate, SynchronizedDefaultsDelegate>
 {
@@ -17,9 +17,12 @@
     BOOL _locationServicesActive;
     BOOL _stopUpdateIfNeeded;
     WeatherLocationManager *_locationManager;
+    double _minTimeBetweenUpdates;
+    double _minDistanceChangeInMeters;
     WFGeocodeRequest *_geocodeRequest;
     unsigned long long _citySource;
     unsigned long long _fallbackCitySource;
+    NSDate *_lastLocationUpdateDate;
     WeatherPreferences *_preferences;
     CDUnknownBlockType _WeatherLocationManagerGenerator;
 }
@@ -32,8 +35,11 @@
 @property (strong, nonatomic) WFGeocodeRequest *geocodeRequest; // @synthesize geocodeRequest=_geocodeRequest;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) BOOL isLocationTrackingEnabled; // @synthesize isLocationTrackingEnabled=_isLocationTrackingEnabled;
+@property (strong, nonatomic) NSDate *lastLocationUpdateDate; // @synthesize lastLocationUpdateDate=_lastLocationUpdateDate;
 @property (strong, nonatomic) WeatherLocationManager *locationManager; // @synthesize locationManager=_locationManager;
 @property (nonatomic) BOOL locationServicesActive; // @synthesize locationServicesActive=_locationServicesActive;
+@property (readonly, nonatomic) double minDistanceChangeInMeters; // @synthesize minDistanceChangeInMeters=_minDistanceChangeInMeters;
+@property (readonly, nonatomic) double minTimeBetweenUpdates; // @synthesize minTimeBetweenUpdates=_minTimeBetweenUpdates;
 @property (strong, nonatomic) WeatherPreferences *preferences; // @synthesize preferences=_preferences;
 @property (nonatomic) BOOL stopUpdateIfNeeded; // @synthesize stopUpdateIfNeeded=_stopUpdateIfNeeded;
 @property (readonly) Class superclass;
@@ -59,6 +65,7 @@
 - (void)locationManager:(id)arg1 didUpdateLocations:(id)arg2;
 - (void)setCitySource:(unsigned long long)arg1 fireNotification:(BOOL)arg2;
 - (BOOL)shouldNotUseUpdatedLocation;
+- (BOOL)shouldUseNewLocation:(id)arg1 oldLocation:(id)arg2;
 - (void)syncLastUpdateTime;
 - (void)ubiquitousDefaultsDidChange:(id)arg1;
 - (BOOL)updateLocationTrackingStatus;

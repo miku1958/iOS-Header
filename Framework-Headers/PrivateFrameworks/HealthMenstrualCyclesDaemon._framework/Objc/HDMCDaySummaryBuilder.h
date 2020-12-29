@@ -18,6 +18,8 @@
     NSMutableArray *_ovulationTestResultSamples;
     NSMutableArray *_cervicalMucusQualitySamples;
     NSMutableArray *_basalBodyTemperatureSamples;
+    NSMutableArray *_startedCycleFactors;
+    NSMutableArray *_endedCycleFactors;
     NSMutableDictionary *_sampleCountByType;
     long long _dayIndex;
 }
@@ -27,10 +29,12 @@
 - (void).cxx_destruct;
 - (id)_basalBodyTemperature;
 - (long long)_cervicalMucusQuality;
+- (id)_endedCycleFactors;
 - (BOOL)_intermenstrualBleeding;
 - (long long)_menstrualFlowWithModificationDay:(long long *)arg1 startOfCycleFromCycleTracking:(id *)arg2;
 - (long long)_ovulationTestResult;
 - (long long)_sexualActivity;
+- (id)_startedCycleFactors;
 - (unsigned long long)_symptoms;
 - (void)addCycleTrackingSample:(id)arg1;
 - (id)createDaySummaryWithDevice:(id)arg1;

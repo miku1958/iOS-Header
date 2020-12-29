@@ -56,6 +56,7 @@
 - (void)beginSignpostForThumbnailGenerationForAsset:(id)arg1 inputResourceTypeLabel:(id)arg2;
 - (id)dataForThumbnailFileAtPath:(id)arg1 rotatedToOrientation:(long long)arg2 size:(struct CGSize)arg3 compressionQuality:(float)arg4;
 - (void)dealloc;
+- (id)embeddedThumbnailDataForAsset:(id)arg1 smallerThanDataLengthLimit:(unsigned long long)arg2;
 - (void)endSignpostForThumbnailGenerationForAsset:(id)arg1;
 - (id)fetchObjectIDsForAssetsExposedToPTPFromObjectIDs:(id)arg1;
 - (void)handlePhotoLibraryAvailableNotification;

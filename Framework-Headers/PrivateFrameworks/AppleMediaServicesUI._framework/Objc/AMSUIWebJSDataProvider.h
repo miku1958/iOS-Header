@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)_postSubscriptionChangedWithType:(long long)arg1;
 - (void)_purchaseDidSucceed:(id)arg1;
 - (void)_safariDataUpdate:(id)arg1;
+- (void)_subscriptionStatusChangeActivity:(id)arg1;
 - (void)_subscriptionStatusChangeAppStore:(id)arg1;
 - (void)_subscriptionStatusChangeMusic:(id)arg1;
 - (void)_subscriptionStatusChangeNews:(id)arg1;

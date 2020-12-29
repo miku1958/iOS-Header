@@ -454,20 +454,20 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : %
+	let rawValue : ›
  }
 
  struct __C.NSDirectionalEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : ±
+	var top : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var leading : ±
+	var leading : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : ±
+	var bottom : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var trailing : ±
+	var trailing : a
  }
 
  struct __C.CGRect {
@@ -495,7 +495,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : Å
+	let rawValue : 9
  }
 
  struct __C.TraitKey {
@@ -514,7 +514,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : ±
+	let rawValue : a
  }
 
  class __C.CGColor {
@@ -548,38 +548,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : ±
+	var width : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : ±
+	var height : a
  }
 
  struct __C.CGPoint {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : ±
+	var x : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : ±
+	var y : a
  }
 
  class HealthExperienceUI.NavigationCollectionViewCell : CollectionViewListDisclosureCell {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13ecc00066268 (0x6cc00066268) in binary!
-	0x14bd0  @objc NavigationCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x13f8c00066558 (0x78c00066558) in binary!
+	0x14c90  @objc NavigationCollectionViewCell.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffed1ff8  @objc NavigationCollectionViewCell.(null) <stripped>
+	0xffed1cc8  @objc NavigationCollectionViewCell.(null) <stripped>
 
 	// Swift methods
-	0x1ec30  func <stripped> // method 
+	0x1f670  func <stripped> // method 
  }
 
  class HealthExperienceUI.SecondaryActivityChartViewController : DataTypeDetailViewController {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x14bbc00065b00 (0x3bc00065b00) in binary!
+WARNING: couldn't find address 0x14c7c00065da8 (0x47c00065da8) in binary!
 	0x58000000c  @objc SecondaryActivityChartViewController.(null) <stripped>
 
 	// Swift methods
-	0x21030  class func SecondaryActivityChartViewController.__allocating_init(kind:healthStore:) // init 
+	0x21a70  class func SecondaryActivityChartViewController.__allocating_init(kind:healthStore:) // init 
  }
 
  class HealthExperienceUI.SecondaryActivityChartDataSourceProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -589,13 +589,13 @@ WARNING: couldn't find address 0x14bbc00065b00 (0x3bc00065b00) in binary!
 	let healthStore : HKHealthStore
 
 	// Swift methods
-	0x213d0  func <stripped> // getter 
-	0x21400  func <stripped> // setter 
-	0x21430  func <stripped> // modifyCoroutine 
-	0x21470  func <stripped> // getter 
-	0x210a0  class func SecondaryActivityChartDataSourceProvider.__allocating_init(kind:healthStore:) // init 
-	0x214e0  func <stripped> // method 
-	0x21b40  func <stripped> // method 
+	0x21e10  func <stripped> // getter 
+	0x21e40  func <stripped> // setter 
+	0x21e70  func <stripped> // modifyCoroutine 
+	0x21eb0  func <stripped> // getter 
+	0x21ae0  class func SecondaryActivityChartDataSourceProvider.__allocating_init(kind:healthStore:) // init 
+	0x21f20  func <stripped> // method 
+	0x22580  func <stripped> // method 
  }
 
  class HealthExperienceUI.SpecifierHeaderView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -609,26 +609,26 @@ WARNING: couldn't find address 0x14bbc00065b00 (0x3bc00065b00) in binary!
 	var $__lazy_storage_$_statusLabel : UILabel?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x14ba400064ef8 (0x3a400064ef8) in binary!
-	0x14b98  @objc SpecifierHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x147a500064ee8 (0x7a500064ee8) in binary!
-	0x13e70  @objc SpecifierHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x1899400065138 (0x19400065138) in binary!
+WARNING: couldn't find address 0x14c64000651a0 (0x464000651a0) in binary!
+	0x14c58  @objc SpecifierHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x1486500065190 (0x6500065190) in binary!
+	0x13f30  @objc SpecifierHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x18a54000653e0 (0x254000653e0) in binary!
 	0x98000000c  @objc SpecifierHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x14b5c00065aa0 (0x35c00065aa0) in binary!
-	0x18978  @objc SpecifierHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x1413000064ea8 (0x13000064ea8) in binary!
-	0x18258  @objc SpecifierHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x14c1c00065d48 (0x41c00065d48) in binary!
+	0x18a38  @objc SpecifierHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x141f000065150 (0x1f000065150) in binary!
+	0x18318  @objc SpecifierHeaderView.(null) <stripped>
 
 	// Swift methods
-	0x227d0  class func SpecifierHeaderView.__allocating_init(specifier:) // init 
-	0x228d0  func <stripped> // getter 
-	0x22990  func <stripped> // getter 
-	0x229b0  func <stripped> // getter 
-	0x22a30  func <stripped> // method 
-	0x22d00  func <stripped> // method 
-	0x22ef0  func <stripped> // method 
-	0x23140  func <stripped> // method 
+	0x23210  class func SpecifierHeaderView.__allocating_init(specifier:) // init 
+	0x23310  func <stripped> // getter 
+	0x233d0  func <stripped> // getter 
+	0x233f0  func <stripped> // getter 
+	0x23470  func <stripped> // method 
+	0x23740  func <stripped> // method 
+	0x23930  func <stripped> // method 
+	0x23b80  func <stripped> // method 
  }
 
  struct HealthExperienceUI.Configuration {
@@ -648,41 +648,41 @@ WARNING: couldn't find address 0x1413000064ea8 (0x13000064ea8) in binary!
 	var shouldReloadSpecifiersOnViewWillAppear : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x14b5c00065aa0 (0x35c00065aa0) in binary!
-	0x18978  @objc SpecifierViewController.(null) <stripped>
-WARNING: couldn't find address 0x1413000064ea8 (0x13000064ea8) in binary!
-	0x18258  @objc SpecifierViewController.(null) <stripped>
-WARNING: couldn't find address 0x1894c00066530 (0x14c00066530) in binary!
-	0x14830  @objc SpecifierViewController.(null) <stripped>
-WARNING: couldn't find address 0x1482c000664e8 (0x2c000664e8) in binary!
-	0x15584  @objc SpecifierViewController.(null) <stripped>
-WARNING: couldn't find address 0x1891c000650c0 (0x11c000650c0) in binary!
+WARNING: couldn't find address 0x14c1c00065d48 (0x41c00065d48) in binary!
+	0x18a38  @objc SpecifierViewController.(null) <stripped>
+WARNING: couldn't find address 0x141f000065150 (0x1f000065150) in binary!
+	0x18318  @objc SpecifierViewController.(null) <stripped>
+WARNING: couldn't find address 0x18a0c00066828 (0x20c00066828) in binary!
+	0x148f0  @objc SpecifierViewController.(null) <stripped>
+WARNING: couldn't find address 0x148ec000667e0 (0xec000667e0) in binary!
+	0x15644  @objc SpecifierViewController.(null) <stripped>
+WARNING: couldn't find address 0x189dc00065368 (0x1dc00065368) in binary!
 	0x98000000c  @objc SpecifierViewController.(null) <stripped>
-WARNING: couldn't find address 0x13dd400066170 (0x5d400066170) in binary!
-	0x188f8  @objc SpecifierViewController.(null) <stripped>
-WARNING: couldn't find address 0x14acc00065a10 (0x2cc00065a10) in binary!
-	0x14960  @objc SpecifierViewController.(null) <stripped>
-WARNING: couldn't find address 0x1429500066538 (0x29500066538) in binary!
-	0x188d0  @objc SpecifierViewController.(null) <stripped>
-WARNING: couldn't find address 0x1427d00066530 (0x27d00066530) in binary!
-	0x188b8  @objc SpecifierViewController.(null) <stripped>
+WARNING: couldn't find address 0x13e9400066460 (0x69400066460) in binary!
+	0x189b8  @objc SpecifierViewController.(null) <stripped>
+WARNING: couldn't find address 0x14b8c00065cb8 (0x38c00065cb8) in binary!
+	0x14a20  @objc SpecifierViewController.(null) <stripped>
+WARNING: couldn't find address 0x1435500066830 (0x35500066830) in binary!
+	0x18990  @objc SpecifierViewController.(null) <stripped>
+WARNING: couldn't find address 0x1433d00066828 (0x33d00066828) in binary!
+	0x18978  @objc SpecifierViewController.(null) <stripped>
 
 	// Swift methods
-	0x235b0  func <stripped> // getter 
-	0x23600  func <stripped> // setter 
-	0x23650  func <stripped> // modifyCoroutine 
-	0x23750  func <stripped> // getter 
-	0x23790  func <stripped> // setter 
-	0x237f0  func <stripped> // modifyCoroutine 
-	0x23910  func <stripped> // getter 
-	0x23930  func <stripped> // setter 
-	0x23950  func <stripped> // modifyCoroutine 
-	0x23a50  func <stripped> // getter 
-	0x23aa0  func <stripped> // setter 
-	0x23b00  func <stripped> // modifyCoroutine 
-	0x23b50  class func SpecifierViewController.__allocating_init(dataSource:delegate:shouldHaveDoneButton:) // init 
-	0x23ec0  func <stripped> // method 
-	0x256a0  func <stripped> // method 
+	0x23ff0  func <stripped> // getter 
+	0x24040  func <stripped> // setter 
+	0x24090  func <stripped> // modifyCoroutine 
+	0x24190  func <stripped> // getter 
+	0x241d0  func <stripped> // setter 
+	0x24230  func <stripped> // modifyCoroutine 
+	0x24350  func <stripped> // getter 
+	0x24370  func <stripped> // setter 
+	0x24390  func <stripped> // modifyCoroutine 
+	0x24490  func <stripped> // getter 
+	0x244e0  func <stripped> // setter 
+	0x24540  func <stripped> // modifyCoroutine 
+	0x24590  class func SpecifierViewController.__allocating_init(dataSource:delegate:shouldHaveDoneButton:) // init 
+	0x24900  func <stripped> // method 
+	0x260e0  func <stripped> // method 
  }
 
  struct HealthExperienceUI.EmptyHeaderItem {
@@ -697,46 +697,46 @@ WARNING: couldn't find address 0x1427d00066530 (0x27d00066530) in binary!
 	var hostView : HostView
 	var recreateViewControllerOnHostedFeedItemChange : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13dd400066170 (0x5d400066170) in binary!
-	0x188f8  @objc HostViewCell.(null) <stripped>
-WARNING: couldn't find address 0x14acc00065a10 (0x2cc00065a10) in binary!
-	0x14960  @objc HostViewCell.(null) <stripped>
-WARNING: couldn't find address 0x1429500066538 (0x29500066538) in binary!
-	0x188d0  @objc HostViewCell.(null) <stripped>
-WARNING: couldn't find address 0x1427d00066530 (0x27d00066530) in binary!
-	0x188b8  @objc HostViewCell.(null) <stripped>
-WARNING: couldn't find address 0x188a400065048 (0xa400065048) in binary!
+WARNING: couldn't find address 0x13e9400066460 (0x69400066460) in binary!
+	0x189b8  @objc HostViewCell.(null) <stripped>
+WARNING: couldn't find address 0x14b8c00065cb8 (0x38c00065cb8) in binary!
+	0x14a20  @objc HostViewCell.(null) <stripped>
+WARNING: couldn't find address 0x1435500066830 (0x35500066830) in binary!
+	0x18990  @objc HostViewCell.(null) <stripped>
+WARNING: couldn't find address 0x1433d00066828 (0x33d00066828) in binary!
+	0x18978  @objc HostViewCell.(null) <stripped>
+WARNING: couldn't find address 0x18964000652f0 (0x164000652f0) in binary!
 	0x48000000c  @objc HostViewCell.(null) <stripped>
-WARNING: couldn't find address 0x149c800065588 (0x1c800065588) in binary!
-	0x14a60  @objc HostViewCell.(null) <stripped>
-WARNING: couldn't find address 0x148f400066298 (0xf400066298) in binary!
-	0x18868  @objc HostViewCell.(null) <stripped>
+WARNING: couldn't find address 0x14a8800065830 (0x28800065830) in binary!
+	0x14b20  @objc HostViewCell.(null) <stripped>
+WARNING: couldn't find address 0x149b400066590 (0x1b400066590) in binary!
+	0x18928  @objc HostViewCell.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x16cffedd9b0  @objc HostViewCell.(null) <stripped>
-	0xffedda58  @objc HostViewCell.Ñ  <stripped>
+	0x414ffedd680  @objc HostViewCell.(null) <stripped>
+	0xffedd728  @objc HostViewCell.ã: <stripped>
 
 	// Swift methods
-	0x29300  func <stripped> // getter 
-	0x29320  func <stripped> // setter 
-	0x29340  func <stripped> // modifyCoroutine 
-	0x293d0  func <stripped> // getter 
-	0x293f0  func <stripped> // setter 
-	0x29410  func <stripped> // modifyCoroutine 
-	0x29490  func <stripped> // getter 
-	0x29500  func <stripped> // setter 
-	0x29570  func <stripped> // modifyCoroutine 
-	0x29950  func <stripped> // method 
-	0x299d0  func <stripped> // method 
-	0x29a70  func <stripped> // getter 
-	0x29a90  func <stripped> // setter 
-	0x29ac0  func <stripped> // modifyCoroutine 
-	0x29b60  func <stripped> // method 
-	0x29da0  func <stripped> // method 
-	0x2a1e0  func <stripped> // method 
-	0x2a350  func <stripped> // getter 
+	0x29d40  func <stripped> // getter 
+	0x29d60  func <stripped> // setter 
+	0x29d80  func <stripped> // modifyCoroutine 
+	0x29e10  func <stripped> // getter 
+	0x29e30  func <stripped> // setter 
+	0x29e50  func <stripped> // modifyCoroutine 
+	0x29ed0  func <stripped> // getter 
+	0x29f40  func <stripped> // setter 
+	0x29fb0  func <stripped> // modifyCoroutine 
+	0x2a390  func <stripped> // method 
+	0x2a410  func <stripped> // method 
+	0x2a4b0  func <stripped> // getter 
+	0x2a4d0  func <stripped> // setter 
+	0x2a500  func <stripped> // modifyCoroutine 
+	0x2a5a0  func <stripped> // method 
+	0x2a7e0  func <stripped> // method 
+	0x2ac20  func <stripped> // method 
+	0x2ad90  func <stripped> // getter 
  }
 
  class HealthExperienceUI.HostViewTableCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -745,33 +745,33 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var hostView : HostView
 	var recreateViewControllerOnHostedFeedItemChange : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x149c800065588 (0x1c800065588) in binary!
-	0x14a60  @objc HostViewTableCell.(null) <stripped>
-WARNING: couldn't find address 0x148f400066298 (0xf400066298) in binary!
-	0x18868  @objc HostViewTableCell.(null) <stripped>
+WARNING: couldn't find address 0x14a8800065830 (0x28800065830) in binary!
+	0x14b20  @objc HostViewTableCell.(null) <stripped>
+WARNING: couldn't find address 0x149b400066590 (0x1b400066590) in binary!
+	0x18928  @objc HostViewTableCell.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x16cffedd9b0  @objc HostViewTableCell.(null) <stripped>
-	0xffedda58  @objc HostViewTableCell.Ñ  <stripped>
+	0x414ffedd680  @objc HostViewTableCell.(null) <stripped>
+	0xffedd728  @objc HostViewTableCell.ã: <stripped>
 
 	// Swift methods
-	0x2a7c0  func <stripped> // getter 
-	0x2a820  func <stripped> // setter 
-	0x2a880  func <stripped> // modifyCoroutine 
-	0x2a980  func <stripped> // getter 
-	0x2a9d0  func <stripped> // setter 
-	0x2aa30  func <stripped> // modifyCoroutine 
-	0x2ab60  func <stripped> // getter 
-	0x2abc0  func <stripped> // setter 
-	0x2ac40  func <stripped> // modifyCoroutine 
-	0x2c630  func <stripped> // method 
-	0x2ae70  func <stripped> // method 
-	0x2b2c0  func <stripped> // getter 
-	0x2b340  func <stripped> // setter 
-	0x2b370  func <stripped> // modifyCoroutine 
-	0x2b410  func <stripped> // method 
+	0x2b200  func <stripped> // getter 
+	0x2b260  func <stripped> // setter 
+	0x2b2c0  func <stripped> // modifyCoroutine 
+	0x2b3c0  func <stripped> // getter 
+	0x2b410  func <stripped> // setter 
+	0x2b470  func <stripped> // modifyCoroutine 
+	0x2b5a0  func <stripped> // getter 
+	0x2b600  func <stripped> // setter 
+	0x2b680  func <stripped> // modifyCoroutine 
+	0x2d070  func <stripped> // method 
+	0x2b8b0  func <stripped> // method 
+	0x2bd00  func <stripped> // getter 
+	0x2bd80  func <stripped> // setter 
+	0x2bdb0  func <stripped> // modifyCoroutine 
+	0x2be50  func <stripped> // method 
  }
 
  struct HealthExperienceUI.EmptyStateTableViewCellItem {
@@ -787,18 +787,18 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	// Properties
 	var $__lazy_storage_$_emptyStateCellView : EmptyStateCellView // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M // +0x10 (0x28)
+	var item :  // +0x10 (0x28)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1499000065550 (0x19000065550) in binary!
-	0x14a28  @objc EmptyStateTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x1883c00064fe0 (0x3c00064fe0) in binary!
+WARNING: couldn't find address 0x14a50000657f8 (0x250000657f8) in binary!
+	0x14ae8  @objc EmptyStateTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x188fc00065288 (0xfc00065288) in binary!
 	0x38000000c  @objc EmptyStateTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x13cf400066090 (0x4f400066090) in binary!
-	0x149f8  @objc EmptyStateTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x13db400066380 (0x5b400066380) in binary!
+	0x14ab8  @objc EmptyStateTableViewCell.(null) <stripped>
 
 	// Swift methods
-	0x2c980  func <stripped> // getter 
+	0x2d3c0  func <stripped> // getter 
  }
 
  struct HealthExperienceUI.HeaderWithIconItem {
@@ -822,7 +822,7 @@ WARNING: couldn't find address 0x13cf400066090 (0x4f400066090) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 	var $__lazy_storage_$_titleLabel : UILabel?
 	var $__lazy_storage_$_iconImageView : UIImageView?
 	var titleLabelCenterYConstraint : NSLayoutConstraint?
@@ -831,23 +831,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var iconImageViewBottomConstraint : NSLayoutConstraint?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13cf400066090 (0x4f400066090) in binary!
-	0x149f8  @objc HeaderWithIconView.(null) <stripped>
-WARNING: couldn't find address 0x1880c00064fb0 (0xc00064fb0) in binary!
+WARNING: couldn't find address 0x13db400066380 (0x5b400066380) in binary!
+	0x14ab8  @objc HeaderWithIconView.(null) <stripped>
+WARNING: couldn't find address 0x188cc00065258 (0xcc00065258) in binary!
 	0x38000000c  @objc HeaderWithIconView.(null) <stripped>
-WARNING: couldn't find address 0x13cc400066060 (0x4c400066060) in binary!
-	0x149c8  @objc HeaderWithIconView.(null) <stripped>
+WARNING: couldn't find address 0x13d8400066350 (0x58400066350) in binary!
+	0x14a88  @objc HeaderWithIconView.(null) <stripped>
 
 	// Swift methods
-	0x2d660  func <stripped> // getter 
-	0x2d6a0  func <stripped> // setter 
-	0x2d700  func <stripped> // modifyCoroutine 
-	0x2d770  func <stripped> // getter 
-	0x2d950  func <stripped> // getter 
-	0x2d9b0  func <stripped> // getter 
-	0x2dce0  func <stripped> // method 
-	0x2e0c0  func <stripped> // method 
-	0x2e420  func <stripped> // method 
+	0x2e0a0  func <stripped> // getter 
+	0x2e0e0  func <stripped> // setter 
+	0x2e140  func <stripped> // modifyCoroutine 
+	0x2e1b0  func <stripped> // getter 
+	0x2e390  func <stripped> // getter 
+	0x2e3f0  func <stripped> // getter 
+	0x2e720  func <stripped> // method 
+	0x2eb00  func <stripped> // method 
+	0x2ee60  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDescriptionDataSource {
@@ -865,21 +865,21 @@ WARNING: couldn't find address 0x13cc400066060 (0x4c400066060) in binary!
 	var symbolicTraits : SymbolicTraits
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13cc400066060 (0x4c400066060) in binary!
-	0x149c8  @objc DynamicFontLabel.(null) <stripped>
-WARNING: couldn't find address 0x187dc00064f80 (0x7dc00064f80) in binary!
+WARNING: couldn't find address 0x13d8400066350 (0x58400066350) in binary!
+	0x14a88  @objc DynamicFontLabel.(null) <stripped>
+WARNING: couldn't find address 0x1889c00065228 (0x9c00065228) in binary!
 	0x38000000c  @objc DynamicFontLabel.(null) <stripped>
-WARNING: couldn't find address 0x180c400065088 (0xc400065088) in binary!
-	0x146a8  @objc DynamicFontLabel.(null) <stripped>
+WARNING: couldn't find address 0x1818400065330 (0x18400065330) in binary!
+	0x14768  @objc DynamicFontLabel.(null) <stripped>
 
 	// Swift methods
-	0x32270  func <stripped> // getter 
-	0x322b0  func <stripped> // setter 
-	0x32330  func <stripped> // modifyCoroutine 
-	0x323d0  func <stripped> // getter 
-	0x32400  func <stripped> // setter 
-	0x32450  func <stripped> // modifyCoroutine 
-	0x328e0  func <stripped> // method 
+	0x32c90  func <stripped> // getter 
+	0x32cd0  func <stripped> // setter 
+	0x32d50  func <stripped> // modifyCoroutine 
+	0x32df0  func <stripped> // getter 
+	0x32e20  func <stripped> // setter 
+	0x32e70  func <stripped> // modifyCoroutine 
+	0x33300  func <stripped> // method 
  }
 
  enum HealthExperienceUI.Symbol {
@@ -899,20 +899,20 @@ WARNING: couldn't find address 0x180c400065088 (0xc400065088) in binary!
 	let profileType : HKProfileType
 	var presentingViewController : weak UIViewController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cancellable : °
+	var cancellable : Y
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x180c400065088 (0xc400065088) in binary!
-	0x146a8  @objc ProfileBuddyFlow.(null) <stripped>
-WARNING: couldn't find address 0x187ac00064f50 (0x7ac00064f50) in binary!
+WARNING: couldn't find address 0x1818400065330 (0x18400065330) in binary!
+	0x14768  @objc ProfileBuddyFlow.(null) <stripped>
+WARNING: couldn't find address 0x1886c000651f8 (0x6c000651f8) in binary!
 	0x88000000c  @objc ProfileBuddyFlow.(null) <stripped>
-WARNING: couldn't find address 0x14974000658b8 (0x174000658b8) in binary!
-	0x18788  @objc ProfileBuddyFlow.(null) <stripped>
+WARNING: couldn't find address 0x14a3400065b60 (0x23400065b60) in binary!
+	0x18848  @objc ProfileBuddyFlow.(null) <stripped>
 
 	// Swift methods
-	0x33290  class func ProfileBuddyFlow.__allocating_init(profileType:buddyProfileCreator:buddyProfileCharacteristicsSetter:) // init 
-	0x33460  func <stripped> // method 
-	0x33510  func <stripped> // method 
+	0x33cb0  class func ProfileBuddyFlow.__allocating_init(profileType:buddyProfileCreator:buddyProfileCharacteristicsSetter:) // init 
+	0x33e80  func <stripped> // method 
+	0x33f30  func <stripped> // method 
  }
 
  enum HealthExperienceUI.SummarySegment {
@@ -937,14 +937,14 @@ WARNING: couldn't find address 0x14974000658b8 (0x174000658b8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var userData : u¯
+	var userData : %˙
 	var healthStore : HKHealthStore
 	let presentation : Presentation
 	var uniqueIdentifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var contentKind : •˘
+	var contentKind : U˚
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var relevantDateInterval : Ø˙
+	var relevantDateInterval : g¸
  }
 
  class HealthExperienceUI.FeedItemSuggestedActionViewController : UICollectionViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -952,47 +952,47 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var dataSourceAdaptor : DiffableCollectionViewAdaptor // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let suggestedAction : =˚ // +0x6100085 (0x0)
+	let suggestedAction : ı¸ // +0x6100085 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var suggestedActionDelegate : ˝ // +0x89 (0x10)
+	var suggestedActionDelegate : œ˛ // +0x89 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_dataSource : „ // +0x0 (0x8)
+	var $__lazy_storage_$_dataSource : õ // +0x0 (0x8)
 	var $__lazy_storage_$_layout : UICollectionViewLayout? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x14974000658b8 (0x174000658b8) in binary!
-	0x18788  @objc FeedItemSuggestedActionViewController.(null) <stripped>
-WARNING: couldn't find address 0x1877c00066560 (0x77c00066560) in binary!
-	0x18070  @objc FeedItemSuggestedActionViewController.(null) <stripped>
-WARNING: couldn't find address 0x151b400064cb8 (0x1b400064cb8) in binary!
-	0x14938  @objc FeedItemSuggestedActionViewController.(null) <stripped>
-WARNING: couldn't find address 0x153a800066310 (0x3a800066310) in binary!
-	0x18740  @objc FeedItemSuggestedActionViewController.(null) <stripped>
+WARNING: couldn't find address 0x14a3400065b60 (0x23400065b60) in binary!
+	0x18848  @objc FeedItemSuggestedActionViewController.(null) <stripped>
+WARNING: couldn't find address 0x1883c00066858 (0x3c00066858) in binary!
+	0x18130  @objc FeedItemSuggestedActionViewController.(null) <stripped>
+WARNING: couldn't find address 0x1527400064f60 (0x27400064f60) in binary!
+	0x149f8  @objc FeedItemSuggestedActionViewController.(null) <stripped>
+WARNING: couldn't find address 0x1546800066608 (0x46800066608) in binary!
+	0x18800  @objc FeedItemSuggestedActionViewController.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x44ffee8308  @objc FeedItemSuggestedActionViewController.(null) <stripped>
-	0x70c00064fd8  @objc FeedItemSuggestedActionViewController. <stripped>
-WARNING: couldn't find address 0x662c4ffee8c58 (0x2c4ffee8c58) in binary!
-	0xd400065818  @objc FeedItemSuggestedActionViewController.(null) <stripped>
-WARNING: couldn't find address 0x64e8cffee9160 (0x68cffee9160) in binary!
+	0x2ecffee7fb8  @objc FeedItemSuggestedActionViewController.(null) <stripped>
+	0x7cc00065280  @objc FeedItemSuggestedActionViewController.~ <stripped>
+WARNING: couldn't find address 0x665bcffee8908 (0x5bcffee8908) in binary!
+	0x19400065ac0  @objc FeedItemSuggestedActionViewController.(null) <stripped>
+WARNING: couldn't find address 0x65134ffee8e10 (0x134ffee8e10) in binary!
 	0x28000000c  @objc FeedItemSuggestedActionViewController.(null) <stripped>
 
 	// Swift methods
-	0x36040  func <stripped> // getter 
-	0x36110  func <stripped> // getter 
-	0x36150  func <stripped> // setter 
-	0x361b0  func <stripped> // modifyCoroutine 
-	0x36290  func <stripped> // getter 
-	0x363b0  func <stripped> // getter 
-	0x364e0  class func FeedItemSuggestedActionViewController.__allocating_init(_:) // init 
-	0x36ba0  func <stripped> // method 
+	0x36a60  func <stripped> // getter 
+	0x36b30  func <stripped> // getter 
+	0x36b70  func <stripped> // setter 
+	0x36bd0  func <stripped> // modifyCoroutine 
+	0x36cb0  func <stripped> // getter 
+	0x36dd0  func <stripped> // getter 
+	0x36f00  class func FeedItemSuggestedActionViewController.__allocating_init(_:) // init 
+	0x375c0  func <stripped> // method 
  }
 
  class HealthExperienceUI.EmptyIconSourcesCell : IconWithNameCell {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13bfc00065f98 (0x3fc00065f98) in binary!
-	0x14900  @objc EmptyIconSourcesCell.(null) <stripped>
+WARNING: couldn't find address 0x13cbc00066288 (0x4bc00066288) in binary!
+	0x149c0  @objc EmptyIconSourcesCell.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x2c4ffee8c58  @objc EmptyIconSourcesCell.(null) <stripped>
+	0x5bcffee8908  @objc EmptyIconSourcesCell.(null) <stripped>
  }
 
  class HealthExperienceUI.EmptyIconSourcesItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1004,11 +1004,11 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	let isSelectable : Bool
 
 	// Swift methods
-	0x37960  func <stripped> // getter 
-	0x37a30  func <stripped> // getter 
-	0x37b70  func <stripped> // setter 
-	0x37b90  func <stripped> // modifyCoroutine 
-	0x37c30  class func EmptyIconSourcesItem.__allocating_init(name:isSelectable:) // init 
+	0x38380  func <stripped> // getter 
+	0x38450  func <stripped> // getter 
+	0x38590  func <stripped> // setter 
+	0x385b0  func <stripped> // modifyCoroutine 
+	0x38650  class func EmptyIconSourcesItem.__allocating_init(name:isSelectable:) // init 
  }
 
  class HealthExperienceUI.MessageTileViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1017,27 +1017,28 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	let messageView : MessageWithActionTileView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1870c00064fd8 (0x70c00064fd8) in binary!
-	0x1535c  @objc MessageTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x148d400065818 (0xd400065818) in binary!
-	0x186e8  @objc MessageTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x187cc00065280 (0x7cc00065280) in binary!
+	0x1541c  @objc MessageTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x1499400065ac0 (0x19400065ac0) in binary!
+	0x187a8  @objc MessageTileViewController.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x7ecffee9760  @objc MessageTileViewController.(null) <stripped>
-	0x6b400065bf0  @objc MessageTileViewController.UHâÂAWAVSPHâ◊ˇ <stripped>
+	0x294ffee9410  @objc MessageTileViewController.(null) <stripped>
+	0x77400065ea0  @objc MessageTileViewController.HçUËHâHãH: <stripped>
 
 	// Swift methods
-	0x38290  func <stripped> // method 
-	0x38530  func <stripped> // method 
+	0x38cb0  func <stripped> // method 
+	0x38f50  func <stripped> // method 
  }
 
  class HealthExperienceUI.ChromeHostViewCellWithPersonalizedTraining : ChromeHostViewCell {
 	// ObjC -> Swift bridged methods
-	0x148a8  +[ProfileCharacteristicsViewController nameRowsHiddenForProfileIdentifier:]
+WARNING: couldn't find address 0x13c6400066230 (0x46400066230) in binary!
+	0x14968  @objc ChromeHostViewCellWithPersonalizedTraining.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x7ccffef3920  @objc ChromeHostViewCellWithPersonalizedTraining.(null) <stripped>
+	0x274ffef35d0  @objc ChromeHostViewCellWithPersonalizedTraining.(null) <stripped>
 
 	// Swift methods
-	0x38a30  func <stripped> // method 
+	0x39450  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDetailActivitySummaryDataSource {
@@ -1046,23 +1047,23 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let healthExperienceStore :  // +0x8 (0x28)
+	let healthExperienceStore : Õ // +0x8 (0x28)
 	var dataSource : HealthKitProfileInformationDataSource // +0x30 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var profileInformationCancellable : ° // +0x38 (0x8)
+	var profileInformationCancellable : Y // +0x38 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x186b400065bf0 (0x6b400065bf0) in binary!
-	0x14888  @objc ProfileCharacteristicsWithAutoAvatarImageViewController.(null) <stripped>
-WARNING: couldn't find address 0x1487c00065b40 (0x7c00065b40) in binary!
-	0x18690  @objc ProfileCharacteristicsWithAutoAvatarImageViewController.(null) <stripped>
+WARNING: couldn't find address 0x1877400065ea0 (0x77400065ea0) in binary!
+	0x14948  @objc ProfileCharacteristicsWithAutoAvatarImageViewController.(null) <stripped>
+WARNING: couldn't find address 0x1493c00065de8 (0x13c00065de8) in binary!
+	0x18750  @objc ProfileCharacteristicsWithAutoAvatarImageViewController.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x69cffef4c88  @objc ProfileCharacteristicsWithAutoAvatarImageViewController.(null) <stripped>
-	0x77cffef4f10  @objc ProfileCharacteristicsWithAutoAvatarImageViewController.âÂAãM <stripped>
+	0x144ffef4938  @objc ProfileCharacteristicsWithAutoAvatarImageViewController.(null) <stripped>
+	0x224ffef4bc0  @objc ProfileCharacteristicsWithAutoAvatarImageViewController. <stripped>
 
 	// Swift methods
-	0x42610  class func ProfileCharacteristicsWithAutoAvatarImageViewController.__allocating_init(healthStore:healthExperienceStore:) // init 
-	0x427f0  func <stripped> // method 
+	0x43030  class func ProfileCharacteristicsWithAutoAvatarImageViewController.__allocating_init(healthStore:healthExperienceStore:) // init 
+	0x43210  func <stripped> // method 
  }
 
  enum HealthExperienceUI.PluginAppDelegateError {
@@ -1078,30 +1079,30 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	var dataSourceProvider : CompoundDataSourceViewControllerDataSourceProvider
 	var $__lazy_storage_$_adaptor : SectionedTableViewAdaptor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_dataSource : '˙
+	var $__lazy_storage_$_dataSource : ﬂ˚
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1867c00064f48 (0x67c00064f48) in binary!
-	0x1fa02  @objc CompoundDataSourceViewController.(null) <stripped>
-WARNING: couldn't find address 0x152c000066228 (0x2c000066228) in binary!
-	0x14838  @objc CompoundDataSourceViewController.(null) <stripped>
-WARNING: couldn't find address 0x1864c00064df0 (0x64c00064df0) in binary!
+WARNING: couldn't find address 0x1873c000651f0 (0x73c000651f0) in binary!
+	0x1fac2  @objc CompoundDataSourceViewController.(null) <stripped>
+WARNING: couldn't find address 0x1538000066520 (0x38000066520) in binary!
+	0x148f8  @objc CompoundDataSourceViewController.(null) <stripped>
+WARNING: couldn't find address 0x1870c00065098 (0x70c00065098) in binary!
 	0x18000000c  @objc CompoundDataSourceViewController.(null) <stripped>
-WARNING: couldn't find address 0x1452c000661e8 (0x52c000661e8) in binary!
+WARNING: couldn't find address 0x145ec000664e0 (0x5ec000664e0) in binary!
 	0x38000000c  @objc CompoundDataSourceViewController.(null) <stripped>
-WARNING: couldn't find address 0x1861c00066520 (0x61c00066520) in binary!
-	0x14500  @objc CompoundDataSourceViewController.(null) <stripped>
+WARNING: couldn't find address 0x186dc00066818 (0x6dc00066818) in binary!
+	0x145c0  @objc CompoundDataSourceViewController.(null) <stripped>
 
 	// Swift methods
-	0x43c40  func <stripped> // getter 
-	0x43c90  func <stripped> // setter 
-	0x43ce0  func <stripped> // modifyCoroutine 
-	0x43d80  func <stripped> // getter 
-	0x43e40  func <stripped> // setter 
-	0x43e60  func <stripped> // modifyCoroutine 
-	0x43f10  func <stripped> // getter 
-	0x44070  func <stripped> // setter 
-	0x44090  func <stripped> // modifyCoroutine 
+	0x44660  func <stripped> // getter 
+	0x446b0  func <stripped> // setter 
+	0x44700  func <stripped> // modifyCoroutine 
+	0x447a0  func <stripped> // getter 
+	0x44860  func <stripped> // setter 
+	0x44880  func <stripped> // modifyCoroutine 
+	0x44930  func <stripped> // getter 
+	0x44a90  func <stripped> // setter 
+	0x44ab0  func <stripped> // modifyCoroutine 
  }
 
  class HealthExperienceUI.FeedItemViewControllerCache : NSObject /usr/lib/libobjc.A.dylib {
@@ -1110,72 +1111,72 @@ WARNING: couldn't find address 0x1861c00066520 (0x61c00066520) in binary!
 	let healthStore : HKHealthStore
 	let presentation : Presentation
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var originalEventHandler : É˙
+	var originalEventHandler : ;¸
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dataSource : q¯
+	var dataSource : )˙
 	let cache : NSCache<NSString, UIViewController>
 	var viewController : weak UIViewController?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1861c00066520 (0x61c00066520) in binary!
-	0x14500  @objc FeedItemViewControllerCache.(null) <stripped>
-WARNING: couldn't find address 0x1860400064da8 (0x60400064da8) in binary!
+WARNING: couldn't find address 0x186dc00066818 (0x6dc00066818) in binary!
+	0x145c0  @objc FeedItemViewControllerCache.(null) <stripped>
+WARNING: couldn't find address 0x186c400065050 (0x6c400065050) in binary!
 	0x18000000c  @objc FeedItemViewControllerCache.(null) <stripped>
-WARNING: couldn't find address 0x144dc00066308 (0x4dc00066308) in binary!
+WARNING: couldn't find address 0x1459c00066600 (0x59c00066600) in binary!
 	0x68000000c  @objc FeedItemViewControllerCache.(null) <stripped>
 
 	// Swift methods
-	0x44e60  class func FeedItemViewControllerCache.__allocating_init(dataSource:healthStore:presentation:viewController:) // init 
-	0x44f20  func <stripped> // method 
-	0x454c0  func <stripped> // method 
-	0x454d0  func <stripped> // method 
-	0x45b90  func <stripped> // method 
-	0x46790  func <stripped> // method 
-	0x46b30  func <stripped> // method 
+	0x45880  class func FeedItemViewControllerCache.__allocating_init(dataSource:healthStore:presentation:viewController:) // init 
+	0x45940  func <stripped> // method 
+	0x45ee0  func <stripped> // method 
+	0x45ef0  func <stripped> // method 
+	0x465b0  func <stripped> // method 
+	0x471b0  func <stripped> // method 
+	0x47550  func <stripped> // method 
  }
 
  class HealthExperienceUI.ScaledLabelConstraint : NSLayoutConstraint /System/Library/Frameworks/Foundation.framework/Foundation {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rawConstant : ±
+	var rawConstant : a
 	var referenceLabel : weak UILabel?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x144c400064b30 (0x4c400064b30) in binary!
-	0x17ec8  @objc ScaledLabelConstraint.(null) <stripped>
-WARNING: couldn't find address 0x185bc000664f8 (0x5bc000664f8) in binary!
-	0x185b0  @objc ScaledLabelConstraint.(null) <stripped>
-WARNING: couldn't find address 0x1449400064de0 (0x49400064de0) in binary!
-	0x18598  @objc ScaledLabelConstraint.(null) <stripped>
+WARNING: couldn't find address 0x1458400064dd8 (0x58400064dd8) in binary!
+	0x17f88  @objc ScaledLabelConstraint.(null) <stripped>
+WARNING: couldn't find address 0x1867c000667f0 (0x67c000667f0) in binary!
+	0x18670  @objc ScaledLabelConstraint.(null) <stripped>
+WARNING: couldn't find address 0x1455400065088 (0x55400065088) in binary!
+	0x18658  @objc ScaledLabelConstraint.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x50cffefaf10  @objc ScaledLabelConstraint.(null) <stripped>
-	0x4ecffefaff8  @objc ScaledLabelConstraint.‘Hâ«ËY <stripped>
-	0xffefb350  @objc ScaledLabelConstraint.Ï0Hã˜Ù <stripped>
+	0x4ffefabc0  @objc ScaledLabelConstraint.(null) <stripped>
+	0x7e4ffefaca8  @objc ScaledLabelConstraint. <stripped>
+	0xffefb000  @objc ScaledLabelConstraint.Hã5∏ﬁ <stripped>
 
 	// Swift methods
-	0x47dc0  func <stripped> // getter 
-	0x47df0  func <stripped> // setter 
-	0x47ed0  func <stripped> // modifyCoroutine 
-	0x48040  func <stripped> // getter 
-	0x480c0  func <stripped> // setter 
-	0x48190  func <stripped> // modifyCoroutine 
-	0x48350  func <stripped> // method 
-	0x48490  func <stripped> // method 
+	0x487e0  func <stripped> // getter 
+	0x48810  func <stripped> // setter 
+	0x488f0  func <stripped> // modifyCoroutine 
+	0x48a60  func <stripped> // getter 
+	0x48ae0  func <stripped> // setter 
+	0x48bb0  func <stripped> // modifyCoroutine 
+	0x48d70  func <stripped> // method 
+	0x48eb0  func <stripped> // method 
  }
 
  class HealthExperienceUI.ThresholdSpecifierViewControllerCell : PSTableCell /System/Library/PrivateFrameworks/Preferences.framework/Preferences {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x146c000065280 (0x6c000065280) in binary!
-	0x16368  @objc ThresholdSpecifierViewControllerCell.(null) <stripped>
-WARNING: couldn't find address 0x1474c00065690 (0x74c00065690) in binary!
-	0x17e60  @objc ThresholdSpecifierViewControllerCell.(null) <stripped>
-WARNING: couldn't find address 0x1855400064cf8 (0x55400064cf8) in binary!
+WARNING: couldn't find address 0x1478000065528 (0x78000065528) in binary!
+	0x16428  @objc ThresholdSpecifierViewControllerCell.(null) <stripped>
+WARNING: couldn't find address 0x1480c00065938 (0xc00065938) in binary!
+	0x17f20  @objc ThresholdSpecifierViewControllerCell.(null) <stripped>
+WARNING: couldn't find address 0x1861400064fa0 (0x61400064fa0) in binary!
 	0x58000000c  @objc ThresholdSpecifierViewControllerCell.(null) <stripped>
-WARNING: couldn't find address 0x1471c00065660 (0x71c00065660) in binary!
-	0x18530  @objc ThresholdSpecifierViewControllerCell.(null) <stripped>
-WARNING: couldn't find address 0x1441c00064a90 (0x41c00064a90) in binary!
-	0x146f8  @objc ThresholdSpecifierViewControllerCell.(null) <stripped>
+WARNING: couldn't find address 0x147dc00065908 (0x7dc00065908) in binary!
+	0x185f0  @objc ThresholdSpecifierViewControllerCell.(null) <stripped>
+WARNING: couldn't find address 0x144dc00064d38 (0x4dc00064d38) in binary!
+	0x147b8  @objc ThresholdSpecifierViewControllerCell.(null) <stripped>
  }
 
  enum HealthExperienceUI.SourcesType {
@@ -1193,30 +1194,30 @@ WARNING: couldn't find address 0x1441c00064a90 (0x41c00064a90) in binary!
 	let profileName : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1471c00065660 (0x71c00065660) in binary!
-	0x18530  @objc SourcesViewController.(null) <stripped>
-WARNING: couldn't find address 0x1441c00064a90 (0x41c00064a90) in binary!
-	0x146f8  @objc SourcesViewController.(null) <stripped>
-WARNING: couldn't find address 0x1850c00064cb0 (0x50c00064cb0) in binary!
+WARNING: couldn't find address 0x147dc00065908 (0x7dc00065908) in binary!
+	0x185f0  @objc SourcesViewController.(null) <stripped>
+WARNING: couldn't find address 0x144dc00064d38 (0x4dc00064d38) in binary!
+	0x147b8  @objc SourcesViewController.(null) <stripped>
+WARNING: couldn't find address 0x185cc00064f58 (0x5cc00064f58) in binary!
 	0x28000000c  @objc SourcesViewController.(null) <stripped>
-WARNING: couldn't find address 0x139c400065d60 (0x1c400065d60) in binary!
-	0x146c8  @objc SourcesViewController.(null) <stripped>
+WARNING: couldn't find address 0x13a8400066050 (0x28400066050) in binary!
+	0x14788  @objc SourcesViewController.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x5ecffeff510  @objc SourcesViewController.(null) <stripped>
+	0x94ffeff1c0  @objc SourcesViewController.(null) <stripped>
 
 	// Swift methods
-	0x4afb0  class func SourcesViewController.__allocating_init(sourceType:profileName:) // init 
-	0x4b530  func <stripped> // method 
-	0x4b990  func <stripped> // method 
-	0x4be70  func <stripped> // method 
+	0x4b9d0  class func SourcesViewController.__allocating_init(sourceType:profileName:) // init 
+	0x4bf50  func <stripped> // method 
+	0x4c3b0  func <stripped> // method 
+	0x4c890  func <stripped> // method 
  }
 
  class HealthExperienceUI.AppSourcesCell : IconWithNameCell {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x139c400065d60 (0x1c400065d60) in binary!
-	0x146c8  @objc AppSourcesCell.(null) <stripped>
+WARNING: couldn't find address 0x13a8400066050 (0x28400066050) in binary!
+	0x14788  @objc AppSourcesCell.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x5ecffeff510  @objc AppSourcesCell.(null) <stripped>
+	0x94ffeff1c0  @objc AppSourcesCell.(null) <stripped>
 
 	// Swift methods
  }
@@ -1231,44 +1232,45 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var icon : UIImage
 
 	// Swift methods
-	0x4d1f0  func <stripped> // getter 
-	0x4d240  func <stripped> // getter 
-	0x4d4c0  func <stripped> // getter 
-	0x4d500  func <stripped> // setter 
-	0x4d540  func <stripped> // modifyCoroutine 
-	0x4d600  func <stripped> // getter 
-	0x4d630  func <stripped> // setter 
-	0x4d670  func <stripped> // modifyCoroutine 
-	0x4cd20  class func AppSourcesItem.__allocating_init(sourceDataModel:healthStore:sourceType:) // init 
-	0x4dd20  func <stripped> // method 
+	0x4dc10  func <stripped> // getter 
+	0x4dc60  func <stripped> // getter 
+	0x4dee0  func <stripped> // getter 
+	0x4df20  func <stripped> // setter 
+	0x4df60  func <stripped> // modifyCoroutine 
+	0x4e020  func <stripped> // getter 
+	0x4e050  func <stripped> // setter 
+	0x4e090  func <stripped> // modifyCoroutine 
+	0x4d740  class func AppSourcesItem.__allocating_init(sourceDataModel:healthStore:sourceType:) // init 
+	0x4e740  func <stripped> // method 
  }
 
  class HealthExperienceUI.HighlightsCategoryCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x14610000651d0 (0x610000651d0) in binary!
-	0x146a8  @objc HighlightsCategoryCell.(null) <stripped>
-WARNING: couldn't find address 0x184bc00064c60 (0x4bc00064c60) in binary!
+WARNING: couldn't find address 0x146d000065478 (0x6d000065478) in binary!
+	0x14768  @objc HighlightsCategoryCell.(null) <stripped>
+WARNING: couldn't find address 0x1857c00064f08 (0x57c00064f08) in binary!
 	0x68000000c  @objc HighlightsCategoryCell.(null) <stripped>
-WARNING: couldn't find address 0x14684000655c8 (0x684000655c8) in binary!
-	0x18498  @objc HighlightsCategoryCell.(null) <stripped>
+WARNING: couldn't find address 0x1474400065870 (0x74400065870) in binary!
+	0x18558  @objc HighlightsCategoryCell.(null) <stripped>
 
 	// Swift methods
-	0x4ef50  func <stripped> // getter 
-	0x4ef90  func <stripped> // setter 
-	0x4eff0  func <stripped> // modifyCoroutine 
-	0x4f060  func <stripped> // method 
+	0x4f970  func <stripped> // getter 
+	0x4f9b0  func <stripped> // setter 
+	0x4fa10  func <stripped> // modifyCoroutine 
+	0x4fa80  func <stripped> // method 
  }
 
  enum HealthExperienceUI.SafetyCheckAnalyticSource {
 
 	// Properties
 	case profile  
-	case url  
+	case externalURL  
+	case internalURL  
 	case updateAlert  
  }
 
@@ -1276,32 +1278,32 @@ WARNING: couldn't find address 0x14684000655c8 (0x684000655c8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_mainStore : ¡˝
+	var $__lazy_storage_$_mainStore : yˇ
 	var $__lazy_storage_$_dataSources : HealthChecklistDataSourceProvider
 	var analyticsSource : SafetyCheckAnalyticSource
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x14684000655c8 (0x684000655c8) in binary!
-	0x18498  @objc SafetyCheckViewController.(null) <stripped>
-WARNING: couldn't find address 0x1849400065628 (0x49400065628) in binary!
-	0x17d80  @objc SafetyCheckViewController.(null) <stripped>
-WARNING: couldn't find address 0x1465400066010 (0x65400066010) in binary!
-	0x18468  @objc SafetyCheckViewController.(null) <stripped>
+WARNING: couldn't find address 0x1474400065870 (0x74400065870) in binary!
+	0x18558  @objc SafetyCheckViewController.(null) <stripped>
+WARNING: couldn't find address 0x18554000658d0 (0x554000658d0) in binary!
+	0x17e40  @objc SafetyCheckViewController.(null) <stripped>
+WARNING: couldn't find address 0x1471400066308 (0x71400066308) in binary!
+	0x18528  @objc SafetyCheckViewController.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x4b4fff02a00  @objc SafetyCheckViewController.(null) <stripped>
-	0xfff02bd8  @objc SafetyCheckViewController.E–IãHã5≥ <stripped>
+	0x7a4fff02790  @objc SafetyCheckViewController.(null) <stripped>
+	0xfff02968  @objc SafetyCheckViewController.â«Ëﬂè <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x53cfff02cf0  @objc SafetyCheckViewController.(null) <stripped>
+	0x7e4fff02a80  @objc SafetyCheckViewController.(null) <stripped>
 
 	// Swift methods
-	0x4fad0  func <stripped> // getter 
-	0x4fb90  func <stripped> // getter 
-	0x4fe50  class func SafetyCheckViewController.__allocating_init() // init 
-	0x4ffe0  class func SafetyCheckViewController.__allocating_init(sender:) // init 
-	0x50660  func <stripped> // method 
-	0x509f0  func <stripped> // method 
-	0x50af0  func <stripped> // method 
-	0x511a0  func <stripped> // method 
+	0x50520  func <stripped> // getter 
+	0x505e0  func <stripped> // getter 
+	0x508b0  class func SafetyCheckViewController.__allocating_init() // init 
+	0x50a40  class func SafetyCheckViewController.__allocating_init(sender:) // init 
+	0x510c0  func <stripped> // method 
+	0x51450  func <stripped> // method 
+	0x51550  func <stripped> // method 
+	0x51c40  func <stripped> // method 
  }
 
  struct HealthExperienceUI.SafetyCheckAnalyticEvent {
@@ -1314,36 +1316,36 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
  class HealthExperienceUI.ChromeHostViewCell : HostViewCell {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x144d400065e78 (0x4d400065e78) in binary!
-	0x13918  @objc ChromeHostViewCell.(null) <stripped>
-WARNING: couldn't find address 0x1461c00065560 (0x61c00065560) in binary!
+WARNING: couldn't find address 0x1459400066170 (0x59400066170) in binary!
+	0x139d8  @objc ChromeHostViewCell.(null) <stripped>
+WARNING: couldn't find address 0x146dc00065808 (0x6dc00065808) in binary!
 	0x38000000c  @objc ChromeHostViewCell.(null) <stripped>
-WARNING: couldn't find address 0x1456000065120 (0x56000065120) in binary!
-	0x145f8  @objc ChromeHostViewCell.(null) <stripped>
+WARNING: couldn't find address 0x14620000653c8 (0x620000653c8) in binary!
+	0x146b8  @objc ChromeHostViewCell.(null) <stripped>
 
 	// Swift methods
-	0x52220  func <stripped> // getter 
+	0x52d20  func <stripped> // getter 
  }
 
  class HealthExperienceUI.ChromeHostViewTableCell : HostViewTableCell {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1456000065120 (0x56000065120) in binary!
-	0x145f8  @objc ChromeHostViewTableCell.(null) <stripped>
-WARNING: couldn't find address 0x1448c00065e30 (0x48c00065e30) in binary!
+WARNING: couldn't find address 0x14620000653c8 (0x620000653c8) in binary!
+	0x146b8  @objc ChromeHostViewTableCell.(null) <stripped>
+WARNING: couldn't find address 0x1454c00066128 (0x54c00066128) in binary!
 	0x28000000c  @objc ChromeHostViewTableCell.(null) <stripped>
-WARNING: couldn't find address 0x138c400065c60 (0xc400065c60) in binary!
-	0x145c8  @objc ChromeHostViewTableCell.(null) <stripped>
+WARNING: couldn't find address 0x1398400065f50 (0x18400065f50) in binary!
+	0x14688  @objc ChromeHostViewTableCell.(null) <stripped>
 
 	// Swift methods
-	0x52720  func <stripped> // getter 
+	0x53220  func <stripped> // getter 
  }
 
  class HealthExperienceUI.UninstalledAppSourcesCell : EmptyIconSourcesCell {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x138c400065c60 (0xc400065c60) in binary!
-	0x145c8  @objc UninstalledAppSourcesCell.(null) <stripped>
+WARNING: couldn't find address 0x1398400065f50 (0x18400065f50) in binary!
+	0x14688  @objc UninstalledAppSourcesCell.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff09140  @objc UninstalledAppSourcesCell.(null) <stripped>
+	0xfff08ed0  @objc UninstalledAppSourcesCell.(null) <stripped>
 
 	// Swift methods
  }
@@ -1354,7 +1356,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let uninstalledAppSources : [HKSourceDataModel]
 
 	// Swift methods
-	0x52cf0  class func UninstalledAppsItem.__allocating_init(uninstalledAppSources:) // init 
+	0x537f0  class func UninstalledAppsItem.__allocating_init(uninstalledAppSources:) // init 
  }
 
  struct HealthExperienceUI.EditFavoritesItem {
@@ -1380,7 +1382,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var location : aˆ
+	var location : ¯
  }
 
  class HealthExperienceUI.GradientView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1390,18 +1392,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var gradientColors : (firstColor: UIColor, secondColor: UIColor)? // +0x10 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17cbc00064c18 (0x4bc00064c18) in binary!
-	0x13880  @objc GradientView.(null) <stripped>
-WARNING: couldn't find address 0x14584000654c8 (0x584000654c8) in binary!
-	0x18398  @objc GradientView.(null) <stripped>
+WARNING: couldn't find address 0x17d7c00064ec0 (0x57c00064ec0) in binary!
+	0x13940  @objc GradientView.(null) <stripped>
+WARNING: couldn't find address 0x1464400065770 (0x64400065770) in binary!
+	0x18458  @objc GradientView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x444fff9ab50  @objc GradientView.(null) <stripped>
-	0x525000648e8  @objc GradientView.IâˇLã%&Ï <stripped>
+	0x73cfff9a8f0  @objc GradientView.(null) <stripped>
+	0x5e500064b90  @objc GradientView. <stripped>
 
 	// Swift methods
-	0x58980  func <stripped> // getter 
-	0x58a70  func <stripped> // method 
-	0x58a90  func <stripped> // method 
+	0x59480  func <stripped> // getter 
+	0x59570  func <stripped> // method 
+	0x59590  func <stripped> // method 
  }
 
  class HealthExperienceUI.MutableArrayDataSourceWithLayout {
@@ -1409,27 +1411,28 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : = // +0x0 (0x0)
+	let date : ÌÒ // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dateInterval : ÕÔ // +0x74735f5f (0x0)
+	let dateInterval : }Ò // +0x74735f5f (0x0)
 	let preferredOverlayRawValue : Int? // +0x0 (0x9)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17c4c000648c8 (0x44c000648c8) in binary!
-	0x14520  @objc ChartContext.(null) <stripped>
-WARNING: couldn't find address 0x1422400064b70 (0x22400064b70) in binary!
-	0x18328  @objc ChartContext.(null) <stripped>
+WARNING: couldn't find address 0x17d0c00064b70 (0x50c00064b70) in binary!
+	0x145e0  @objc ChartContext.(null) <stripped>
+WARNING: couldn't find address 0x142e400064e18 (0x2e400064e18) in binary!
+	0x183e8  @objc ChartContext.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x7b4fff11840  @objc ChartContext.(null) <stripped>
-	0xfff11c08  @objc ChartContext.¥Ÿ <stripped>
+	0x2acfff115d0  @objc ChartContext.(null) <stripped>
+	0xfff11998  @objc ChartContext.Hâ]»Ñ
+ <stripped>
 
 	// Swift methods
-	0x5ba90  func <stripped> // getter 
-	0x5c100  func <stripped> // method 
-	0x5c3d0  class func ChartContext.__allocating_init(coder:) // init 
-	0x5c480  func <stripped> // method 
-	0x5cb50  class func ChartContext.__allocating_init(from:) // init 
-	0x5cef0  func <stripped> // method 
+	0x5c590  func <stripped> // getter 
+	0x5cc00  func <stripped> // method 
+	0x5ced0  class func ChartContext.__allocating_init(coder:) // init 
+	0x5cf80  func <stripped> // method 
+	0x5d650  class func ChartContext.__allocating_init(from:) // init 
+	0x5d9f0  func <stripped> // method 
  }
 
  enum HealthExperienceUI.CodingKeys {
@@ -1444,20 +1447,20 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var backingDataSource : √Û
+	var backingDataSource : {ı
 	let collectionView : UICollectionView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var diffableDataSource : Ô˚
+	var diffableDataSource : ß˝
 	var loaded : Bool
 
 	// Swift methods
-	0x5dac0  class func DiffableCollectionViewAdaptor.__allocating_init(collectionView:backingDataSource:) // init 
-	0x5e990  func <stripped> // method 
-	0x5ea40  func <stripped> // method 
-	0x5f9f0  func <stripped> // method 
-	0x5fac0  func <stripped> // method 
-	0x5fae0  func <stripped> // method 
-	0x5fba0  func <stripped> // method 
+	0x5e5c0  class func DiffableCollectionViewAdaptor.__allocating_init(collectionView:backingDataSource:) // init 
+	0x5f490  func <stripped> // method 
+	0x5f540  func <stripped> // method 
+	0x604f0  func <stripped> // method 
+	0x605c0  func <stripped> // method 
+	0x605e0  func <stripped> // method 
+	0x606a0  func <stripped> // method 
  }
 
  struct HealthExperienceUI.ItemWrapper {
@@ -1484,43 +1487,43 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var stackedItems : StackedItemModel
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1831400064be0 (0x31400064be0) in binary!
-	0x17c08  @objc OnboardingStackedItemViewController.(null) <stripped>
-WARNING: couldn't find address 0x182fc00064aa0 (0x2fc00064aa0) in binary!
+WARNING: couldn't find address 0x183d400064e88 (0x3d400064e88) in binary!
+	0x17cc8  @objc OnboardingStackedItemViewController.(null) <stripped>
+WARNING: couldn't find address 0x183bc00064d48 (0x3bc00064d48) in binary!
 	0x38000000c  @objc OnboardingStackedItemViewController.(null) <stripped>
-WARNING: couldn't find address 0x137b400065b50 (0x7b400065b50) in binary!
-	0x144b8  @objc OnboardingStackedItemViewController.(null) <stripped>
+WARNING: couldn't find address 0x1387400065e40 (0x7400065e40) in binary!
+	0x14578  @objc OnboardingStackedItemViewController.(null) <stripped>
 
 	// Swift methods
-	0x609f0  class func OnboardingStackedItemViewController.__allocating_init(title:detailText:healthExperienceStore:healthStore:stackedItems:) // init 
-	0x61210  func <stripped> // method 
+	0x614f0  class func OnboardingStackedItemViewController.__allocating_init(title:detailText:healthExperienceStore:healthStore:stackedItems:) // init 
+	0x61d10  func <stripped> // method 
  }
 
  class HealthExperienceUI.ProfileNameCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 	let nameLabel : UILabel
 	let subtitleView : LabelWithSpinner
 	var subtitleViewHeightConstraint : NSLayoutConstraint?
 	var subtitleViewTopSpaceConstraint : NSLayoutConstraint?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x137b400065b50 (0x7b400065b50) in binary!
-	0x144b8  @objc ProfileNameCell.(null) <stripped>
-WARNING: couldn't find address 0x182cc00064a70 (0x2cc00064a70) in binary!
+WARNING: couldn't find address 0x1387400065e40 (0x7400065e40) in binary!
+	0x14578  @objc ProfileNameCell.(null) <stripped>
+WARNING: couldn't find address 0x1838c00064d18 (0x38c00064d18) in binary!
 	0x58000000c  @objc ProfileNameCell.(null) <stripped>
-WARNING: couldn't find address 0x141a400065fd8 (0x1a400065fd8) in binary!
-	0x14198  @objc ProfileNameCell.(null) <stripped>
+WARNING: couldn't find address 0x14264000662d0 (0x264000662d0) in binary!
+	0x14258  @objc ProfileNameCell.(null) <stripped>
 
 	// Swift methods
-	0x620a0  func <stripped> // getter 
-	0x620e0  func <stripped> // setter 
-	0x62140  func <stripped> // modifyCoroutine 
-	0x62460  func <stripped> // getter 
-	0x62820  func <stripped> // method 
-	0x62e80  func <stripped> // method 
+	0x62ba0  func <stripped> // getter 
+	0x62be0  func <stripped> // setter 
+	0x62c40  func <stripped> // modifyCoroutine 
+	0x62f60  func <stripped> // getter 
+	0x63320  func <stripped> // method 
+	0x63980  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeMostRecentSamplesDisclosureItemsDataSource {
@@ -1531,16 +1534,16 @@ WARNING: couldn't find address 0x141a400065fd8 (0x1a400065fd8) in binary!
 	let unitPreferencesController : HKUnitPreferenceController
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x141a400065fd8 (0x1a400065fd8) in binary!
-	0x14198  @objc DataMetadataDelegate.(null) <stripped>
-WARNING: couldn't find address 0x1418c00065510 (0x18c00065510) in binary!
-	0x14180  @objc DataMetadataDelegate.(null) <stripped>
-WARNING: couldn't find address 0x1828400064a28 (0x28400064a28) in binary!
+WARNING: couldn't find address 0x14264000662d0 (0x264000662d0) in binary!
+	0x14258  @objc DataMetadataDelegate.(null) <stripped>
+WARNING: couldn't find address 0x1424c000657b8 (0x24c000657b8) in binary!
+	0x14240  @objc DataMetadataDelegate.(null) <stripped>
+WARNING: couldn't find address 0x1834400064cd0 (0x34400064cd0) in binary!
 	0x28000000c  @objc DataMetadataDelegate.(null) <stripped>
-WARNING: couldn't find address 0x1444c00065390 (0x44c00065390) in binary!
-	0x18260  @objc DataMetadataDelegate.(null) <stripped>
+WARNING: couldn't find address 0x1450c00065638 (0x50c00065638) in binary!
+	0x18320  @objc DataMetadataDelegate.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x364fff17d78  @objc DataMetadataDelegate.(null) <stripped>
+	0x60cfff17b08  @objc DataMetadataDelegate.(null) <stripped>
 
 	// Swift methods
  }
@@ -1553,10 +1556,10 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var uninstalledApps : [HKSourceDataModel]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1444c00065390 (0x44c00065390) in binary!
-	0x18260  @objc UninstalledAppSourcesViewController.(null) <stripped>
+WARNING: couldn't find address 0x1450c00065638 (0x50c00065638) in binary!
+	0x18320  @objc UninstalledAppSourcesViewController.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x364fff17d78  @objc UninstalledAppSourcesViewController.(null) <stripped>
+	0x60cfff17b08  @objc UninstalledAppSourcesViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -1569,16 +1572,16 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var spinnerZeroWidthConstraint : NSLayoutConstraint?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1371c00065ab8 (0x71c00065ab8) in binary!
-	0x14420  @objc LabelWithSpinner.(null) <stripped>
-WARNING: couldn't find address 0x18234000649d8 (0x234000649d8) in binary!
+WARNING: couldn't find address 0x137dc00065da8 (0x7dc00065da8) in binary!
+	0x144e0  @objc LabelWithSpinner.(null) <stripped>
+WARNING: couldn't find address 0x182f400064c80 (0x2f400064c80) in binary!
 	0xa8000000c  @objc LabelWithSpinner.(null) <stripped>
-WARNING: couldn't find address 0x1410c00065980 (0x10c00065980) in binary!
-	0x17b10  @objc LabelWithSpinner.(null) <stripped>
+WARNING: couldn't find address 0x141cc00065e00 (0x1cc00065e00) in binary!
+	0x17bd0  @objc LabelWithSpinner.(null) <stripped>
 
 	// Swift methods
-	0x678c0  func <stripped> // method 
-	0x67960  func <stripped> // method 
+	0x683c0  func <stripped> // method 
+	0x68460  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDetailDescriptionCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1588,33 +1591,33 @@ WARNING: couldn't find address 0x1410c00065980 (0x10c00065980) in binary!
 	var attributionTextView : weak UITextView?
 	var labelSpacingConstraint : weak NSLayoutConstraint?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1410c00065980 (0x10c00065980) in binary!
-	0x17b10  @objc DataTypeDetailDescriptionCell.(null) <stripped>
-WARNING: couldn't find address 0x140f400064798 (0xf400064798) in binary!
-	0x17af8  @objc DataTypeDetailDescriptionCell.(null) <stripped>
-WARNING: couldn't find address 0x140dc00064790 (0xdc00064790) in binary!
-	0x17ae0  @objc DataTypeDetailDescriptionCell.(null) <stripped>
-WARNING: couldn't find address 0x181d400066110 (0x1d400066110) in binary!
-	0x13698  @objc DataTypeDetailDescriptionCell.(null) <stripped>
-WARNING: couldn't find address 0x1439c000652e0 (0x39c000652e0) in binary!
-	0x181b0  @objc DataTypeDetailDescriptionCell.(null) <stripped>
+WARNING: couldn't find address 0x141cc00065e00 (0x1cc00065e00) in binary!
+	0x17bd0  @objc DataTypeDetailDescriptionCell.(null) <stripped>
+WARNING: couldn't find address 0x141b400064a40 (0x1b400064a40) in binary!
+	0x17bb8  @objc DataTypeDetailDescriptionCell.(null) <stripped>
+WARNING: couldn't find address 0x1419c00064a38 (0x19c00064a38) in binary!
+	0x17ba0  @objc DataTypeDetailDescriptionCell.(null) <stripped>
+WARNING: couldn't find address 0x1829400066408 (0x29400066408) in binary!
+	0x13758  @objc DataTypeDetailDescriptionCell.(null) <stripped>
+WARNING: couldn't find address 0x1445c00065588 (0x45c00065588) in binary!
+	0x18270  @objc DataTypeDetailDescriptionCell.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0xd4fff192c8  @objc DataTypeDetailDescriptionCell.(null) <stripped>
-	0x17c00064a48  @objc DataTypeDetailDescriptionCell.ã˘ <stripped>
-WARNING: couldn't find address 0x66394fff19c08 (0x394fff19c08) in binary!
-	0x5c000065d28  @objc DataTypeDetailDescriptionCell.(null) <stripped>
-WARNING: couldn't find address 0x6527cfff19ef0 (0x27cfff19ef0) in binary!
-	0x14c000648f0  @objc DataTypeDetailDescriptionCell.(null) <stripped>
-WARNING: couldn't find address 0xfff19e98 (0xfff19e98) in binary!
-	0x13400065d90  @objc DataTypeDetailDescriptionCell.(null) <stripped>
+	0x37cfff19058  @objc DataTypeDetailDescriptionCell.(null) <stripped>
+	0x23c00064cf0  @objc DataTypeDetailDescriptionCell.Iâ˝Lã5~È <stripped>
+WARNING: couldn't find address 0x6668cfff19998 (0x68cfff19998) in binary!
+	0x68000066020  @objc DataTypeDetailDescriptionCell.(null) <stripped>
+WARNING: couldn't find address 0x65524fff19c80 (0x524fff19c80) in binary!
+	0x20c00064b98  @objc DataTypeDetailDescriptionCell.(null) <stripped>
+WARNING: couldn't find address 0xfff19c28 (0xfff19c28) in binary!
+	0x1f400066088  @objc DataTypeDetailDescriptionCell.(null) <stripped>
 
 	// Swift methods
-	0x680c0  func <stripped> // method 
-	0x68280  func <stripped> // method 
-	0x68770  func <stripped> // method 
+	0x68bc0  func <stripped> // method 
+	0x68d80  func <stripped> // method 
+	0x69270  func <stripped> // method 
  }
 
  class HealthExperienceUI.ActivityIndicatorViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1624,21 +1627,21 @@ WARNING: couldn't find address 0xfff19e98 (0xfff19e98) in binary!
 	var $__lazy_storage_$_cancelBarButtonItem : UIBarButtonItem?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1817c00064a48 (0x17c00064a48) in binary!
-	0x17a70  @objc ActivityIndicatorViewController.(null) <stripped>
-WARNING: couldn't find address 0x14dc000065d28 (0x5c000065d28) in binary!
-	0x14338  @objc ActivityIndicatorViewController.(null) <stripped>
-WARNING: couldn't find address 0x1814c000648f0 (0x14c000648f0) in binary!
+WARNING: couldn't find address 0x1823c00064cf0 (0x23c00064cf0) in binary!
+	0x17b30  @objc ActivityIndicatorViewController.(null) <stripped>
+WARNING: couldn't find address 0x14e8000066020 (0x68000066020) in binary!
+	0x143f8  @objc ActivityIndicatorViewController.(null) <stripped>
+WARNING: couldn't find address 0x1820c00064b98 (0x20c00064b98) in binary!
 	0x48000000c  @objc ActivityIndicatorViewController.(null) <stripped>
-WARNING: couldn't find address 0x1813400065d90 (0x13400065d90) in binary!
-	0x14264  @objc ActivityIndicatorViewController.(null) <stripped>
-WARNING: couldn't find address 0x142fc00065240 (0x2fc00065240) in binary!
-	0x18110  @objc ActivityIndicatorViewController.(null) <stripped>
+WARNING: couldn't find address 0x181f400066088 (0x1f400066088) in binary!
+	0x14324  @objc ActivityIndicatorViewController.(null) <stripped>
+WARNING: couldn't find address 0x143bc000654e8 (0x3bc000654e8) in binary!
+	0x181d0  @objc ActivityIndicatorViewController.(null) <stripped>
 
 	// Swift methods
-	0x69480  func <stripped> // getter 
-	0x69500  func <stripped> // getter 
-	0x69770  func <stripped> // method 
+	0x69f80  func <stripped> // getter 
+	0x6a000  func <stripped> // getter 
+	0x6a270  func <stripped> // method 
  }
 
  struct HealthExperienceUI.EmbeddedViewDataSourceItem {
@@ -1660,23 +1663,23 @@ WARNING: couldn't find address 0x142fc00065240 (0x2fc00065240) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 	var embeddedView : UIView?
 	var embeddedViewController : UIViewController?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1813400065d90 (0x13400065d90) in binary!
-	0x14264  @objc EmbeddedViewTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x142fc00065240 (0x2fc00065240) in binary!
-	0x18110  @objc EmbeddedViewTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x181f400066088 (0x1f400066088) in binary!
+	0x14324  @objc EmbeddedViewTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x143bc000654e8 (0x3bc000654e8) in binary!
+	0x181d0  @objc EmbeddedViewTableViewCell.(null) <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x214fff1d358  @objc EmbeddedViewTableViewCell.(null) <stripped>
-	0x274fff1d630  @objc EmbeddedViewTableViewCell.ˇÍ <stripped>
+	0x4bcfff1d0e8  @objc EmbeddedViewTableViewCell.(null) <stripped>
+	0x51cfff1d3c0  @objc EmbeddedViewTableViewCell.@ <stripped>
 
 	// Swift methods
-	0x6a780  func <stripped> // getter 
-	0x6a7c0  func <stripped> // setter 
-	0x6a820  func <stripped> // modifyCoroutine 
+	0x6b280  func <stripped> // getter 
+	0x6b2c0  func <stripped> // setter 
+	0x6b320  func <stripped> // modifyCoroutine 
  }
 
  class HealthExperienceUI.CompoundDataSourceCollectionViewController : UICollectionViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1684,65 +1687,65 @@ WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
 	// Properties
 	var dataSourceProvider : CompoundSectionedDataSourceProvider
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_dataSource : '˙
+	var $__lazy_storage_$_dataSource : ﬂ˚
 	var dataSourceAdaptor : DiffableCollectionViewAdaptor
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x142dc00065c98 (0x2dc00065c98) in binary!
-	0x142d0  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x180e4000649b0 (0xe4000649b0) in binary!
-	0x180e0  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x180cc00065eb0 (0xcc00065eb0) in binary!
-	0x179c0  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x179b400064668 (0x1b400064668) in binary!
-	0x14d04  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x1809c00064840 (0x9c00064840) in binary!
+WARNING: couldn't find address 0x1439c00065f90 (0x39c00065f90) in binary!
+	0x14390  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x181a400064c58 (0x1a400064c58) in binary!
+	0x181a0  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x1818c000661a8 (0x18c000661a8) in binary!
+	0x17a80  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x17a7400064910 (0x27400064910) in binary!
+	0x14dc4  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x1815c00064ae8 (0x15c00064ae8) in binary!
 	0x18000000c  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x13f7c000645f0 (0x77c000645f0) in binary!
+WARNING: couldn't find address 0x1403c00064898 (0x3c00064898) in binary!
 	0x38000000c  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x1353c000658d8 (0x53c000658d8) in binary!
-	0x14240  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x18054000647f8 (0x54000647f8) in binary!
+WARNING: couldn't find address 0x135fc00065bc8 (0x5fc00065bc8) in binary!
+	0x14300  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x1811400064aa0 (0x11400064aa0) in binary!
 	0xc8000000c  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
-WARNING: couldn't find address 0x13f2c000645f8 (0x72c000645f8) in binary!
-	0x17930  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
+WARNING: couldn't find address 0x13fec000648a0 (0x7ec000648a0) in binary!
+	0x179f0  @objc CompoundDataSourceCollectionViewController.(null) <stripped>
 
 	// Swift methods
-	0x6b830  func <stripped> // getter 
-	0x6b8c0  func <stripped> // setter 
-	0x6b910  func <stripped> // modifyCoroutine 
-	0x6b950  func <stripped> // getter 
-	0x6b9c0  func <stripped> // getter 
-	0x6ba00  func <stripped> // setter 
-	0x6ba50  func <stripped> // modifyCoroutine 
-	0x6ccb0  class func CompoundDataSourceCollectionViewController.__allocating_init(dataSource:) // init 
-	0x6baa0  func <stripped> // method 
-	0x6c890  func <stripped> // method 
-	0x6c8a0  func <stripped> // method 
-	0x6c560  func <stripped> // method 
-	0x6bb20  func <stripped> // method 
-	0x6bc40  func <stripped> // method 
-	0x6bc80  func <stripped> // method 
+	0x6c330  func <stripped> // getter 
+	0x6c3c0  func <stripped> // setter 
+	0x6c410  func <stripped> // modifyCoroutine 
+	0x6c450  func <stripped> // getter 
+	0x6c4c0  func <stripped> // getter 
+	0x6c500  func <stripped> // setter 
+	0x6c550  func <stripped> // modifyCoroutine 
+	0x6d7b0  class func CompoundDataSourceCollectionViewController.__allocating_init(dataSource:) // init 
+	0x6c5a0  func <stripped> // method 
+	0x6d390  func <stripped> // method 
+	0x6d3a0  func <stripped> // method 
+	0x6d060  func <stripped> // method 
+	0x6c620  func <stripped> // method 
+	0x6c740  func <stripped> // method 
+	0x6c780  func <stripped> // method 
  }
 
  class HealthExperienceUI.EmptyHeaderCollectionReusableView : UICollectionReusableView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1353c000658d8 (0x53c000658d8) in binary!
-	0x14240  @objc EmptyHeaderCollectionReusableView.(null) <stripped>
-WARNING: couldn't find address 0x18054000647f8 (0x54000647f8) in binary!
+WARNING: couldn't find address 0x135fc00065bc8 (0x5fc00065bc8) in binary!
+	0x14300  @objc EmptyHeaderCollectionReusableView.(null) <stripped>
+WARNING: couldn't find address 0x1811400064aa0 (0x11400064aa0) in binary!
 	0xc8000000c  @objc EmptyHeaderCollectionReusableView.(null) <stripped>
-WARNING: couldn't find address 0x13f2c000645f8 (0x72c000645f8) in binary!
-	0x17930  @objc EmptyHeaderCollectionReusableView.(null) <stripped>
+WARNING: couldn't find address 0x13fec000648a0 (0x7ec000648a0) in binary!
+	0x179f0  @objc EmptyHeaderCollectionReusableView.(null) <stripped>
 
 	// Swift methods
-	0x6ea00  func <stripped> // getter 
-	0x6ea40  func <stripped> // setter 
-	0x6ea90  func <stripped> // modifyCoroutine 
+	0x6f500  func <stripped> // getter 
+	0x6f540  func <stripped> // setter 
+	0x6f590  func <stripped> // modifyCoroutine 
  }
 
  class HealthExperienceUI.DataTypeDetailFavoritesCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1754,34 +1757,34 @@ WARNING: couldn't find address 0x13f2c000645f8 (0x72c000645f8) in binary!
 	var favoritesController : WDFavoriteDisplayTypesController?
 	var parentViewController : weak UIViewController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13f2c000645f8 (0x72c000645f8) in binary!
-	0x17930  @objc DataTypeDetailFavoritesCell.(null) <stripped>
-WARNING: couldn't find address 0x13f1400066610 (0x71400066610) in binary!
-	0x17918  @objc DataTypeDetailFavoritesCell.(null) <stripped>
-WARNING: couldn't find address 0x13efc000645e0 (0x6fc000645e0) in binary!
-	0x17900  @objc DataTypeDetailFavoritesCell.(null) <stripped>
-WARNING: couldn't find address 0x17ff400065f30 (0x7f400065f30) in binary!
-	0x139a9  @objc DataTypeDetailFavoritesCell.(null) <stripped>
-WARNING: couldn't find address 0x17fe400065c48 (0x7e400065c48) in binary!
-	0x134a0  @objc DataTypeDetailFavoritesCell.(null) <stripped>
-WARNING: couldn't find address 0x141a4000650e8 (0x1a4000650e8) in binary!
-	0x17fb8  @objc DataTypeDetailFavoritesCell.(null) <stripped>
+WARNING: couldn't find address 0x13fec000648a0 (0x7ec000648a0) in binary!
+	0x179f0  @objc DataTypeDetailFavoritesCell.(null) <stripped>
+WARNING: couldn't find address 0x13fd400066910 (0x7d400066910) in binary!
+	0x179d8  @objc DataTypeDetailFavoritesCell.(null) <stripped>
+WARNING: couldn't find address 0x13fbc00064888 (0x7bc00064888) in binary!
+	0x179c0  @objc DataTypeDetailFavoritesCell.(null) <stripped>
+WARNING: couldn't find address 0x180b400066228 (0xb400066228) in binary!
+	0x13a69  @objc DataTypeDetailFavoritesCell.(null) <stripped>
+WARNING: couldn't find address 0x180a400065f40 (0xa400065f40) in binary!
+	0x13560  @objc DataTypeDetailFavoritesCell.(null) <stripped>
+WARNING: couldn't find address 0x1426400065390 (0x26400065390) in binary!
+	0x18078  @objc DataTypeDetailFavoritesCell.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x6e4fff209c0  @objc DataTypeDetailFavoritesCell.(null) <stripped>
-	0xfff20c08  @objc DataTypeDetailFavoritesCell.âﬂˇ0› <stripped>
+	0x18cfff20750  @objc DataTypeDetailFavoritesCell.(null) <stripped>
+	0xfff20998  @objc DataTypeDetailFavoritesCell.â˜Lâ˙Lâ·Aˇ’HÉ¯	á? <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x8cfff218a0  @objc DataTypeDetailFavoritesCell.(null) <stripped>
-	0xfff21908  @objc DataTypeDetailFavoritesCell.‘Hç 1 <stripped>
+	0x334fff21630  @objc DataTypeDetailFavoritesCell.(null) <stripped>
+	0xfff21698  @objc DataTypeDetailFavoritesCell. <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x5cfff22d20  @objc DataTypeDetailFavoritesCell.(null) <stripped>
-	0xfff22da8  @objc DataTypeDetailFavoritesCell.Éƒ[]ˇ%ù <stripped>
+	0x304fff22ab0  @objc DataTypeDetailFavoritesCell.(null) <stripped>
+	0xfff22b38  @objc DataTypeDetailFavoritesCell.«Ë‡á <stripped>
 
 	// Swift methods
-	0x6f640  func <stripped> // getter 
-	0x6fcc0  func <stripped> // method 
+	0x70140  func <stripped> // getter 
+	0x707c0  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDetailViewControllerWithLoadAction : DataTypeDetailViewController {
@@ -1791,20 +1794,20 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var shouldRunLoadAction : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17f7400064840 (0x77400064840) in binary!
-	0x14148  @objc DataTypeDetailViewControllerWithLoadAction.(null) <stripped>
-WARNING: couldn't find address 0x17f5c00064700 (0x75c00064700) in binary!
+WARNING: couldn't find address 0x1803400064ae8 (0x3400064ae8) in binary!
+	0x14208  @objc DataTypeDetailViewControllerWithLoadAction.(null) <stripped>
+WARNING: couldn't find address 0x1801c000649a8 (0x1c000649a8) in binary!
 	0x38000000c  @objc DataTypeDetailViewControllerWithLoadAction.(null) <stripped>
-WARNING: couldn't find address 0x13414000657b0 (0x414000657b0) in binary!
-	0x14118  @objc DataTypeDetailViewControllerWithLoadAction.(null) <stripped>
+WARNING: couldn't find address 0x134d400065aa0 (0x4d400065aa0) in binary!
+	0x141d8  @objc DataTypeDetailViewControllerWithLoadAction.(null) <stripped>
 
 	// Swift methods
-	0x712b0  func <stripped> // getter 
-	0x71320  func <stripped> // setter 
-	0x71390  func <stripped> // modifyCoroutine 
-	0x71460  func <stripped> // getter 
-	0x71490  func <stripped> // setter 
-	0x714d0  func <stripped> // modifyCoroutine 
+	0x71db0  func <stripped> // getter 
+	0x71e20  func <stripped> // setter 
+	0x71e90  func <stripped> // modifyCoroutine 
+	0x71f60  func <stripped> // getter 
+	0x71f90  func <stripped> // setter 
+	0x71fd0  func <stripped> // modifyCoroutine 
  }
 
  struct HealthExperienceUI.OnLoadAction {
@@ -1826,33 +1829,33 @@ WARNING: couldn't find address 0x13414000657b0 (0x414000657b0) in binary!
 	// Properties
 	var $__lazy_storage_$_emptyStateCellView : EmptyStateCellView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13414000657b0 (0x414000657b0) in binary!
-	0x14118  @objc EmptyStateCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x17f2c000646d0 (0x72c000646d0) in binary!
+WARNING: couldn't find address 0x134d400065aa0 (0x4d400065aa0) in binary!
+	0x141d8  @objc EmptyStateCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x17fec00064978 (0x7ec00064978) in binary!
 	0x38000000c  @objc EmptyStateCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x133e400065780 (0x3e400065780) in binary!
-	0x140e8  @objc EmptyStateCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x134a400065a70 (0x4a400065a70) in binary!
+	0x141a8  @objc EmptyStateCollectionViewCell.(null) <stripped>
 
 	// Swift methods
-	0x72410  func <stripped> // getter 
-	0x72600  func <stripped> // getter 
-	0x72640  func <stripped> // setter 
-	0x726f0  func <stripped> // modifyCoroutine 
+	0x72f10  func <stripped> // getter 
+	0x73100  func <stripped> // getter 
+	0x73140  func <stripped> // setter 
+	0x731f0  func <stripped> // modifyCoroutine 
  }
 
  class HealthExperienceUI.AllFeedItemsListDataSourceProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var store : 
+	var store : Õ
 
 	// Swift methods
-	0x73400  class func AllFeedItemsListDataSourceProvider.__allocating_init(for:) // init 
-	0x73460  func <stripped> // method 
-	0x734b0  func <stripped> // method 
+	0x73f00  class func AllFeedItemsListDataSourceProvider.__allocating_init(for:) // init 
+	0x73f60  func <stripped> // method 
+	0x73fb0  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDetailDisclosureItemsDataSource {
@@ -1867,22 +1870,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthExperienceUI.FakeCollectionViewCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x133e400065780 (0x3e400065780) in binary!
-	0x140e8  @objc FakeCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x17efc000646a0 (0x6fc000646a0) in binary!
+WARNING: couldn't find address 0x134a400065a70 (0x4a400065a70) in binary!
+	0x141a8  @objc FakeCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x17fbc00064948 (0x7bc00064948) in binary!
 	0x38000000c  @objc FakeCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x133b400065750 (0x3b400065750) in binary!
-	0x140b8  @objc FakeCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x1347400065a40 (0x47400065a40) in binary!
+	0x14178  @objc FakeCollectionViewCell.(null) <stripped>
  }
 
  class HealthExperienceUI.FakeCollectionViewHeader : UICollectionReusableView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x133b400065750 (0x3b400065750) in binary!
-	0x140b8  @objc FakeCollectionViewHeader.(null) <stripped>
-WARNING: couldn't find address 0x17ecc00064670 (0x6cc00064670) in binary!
+WARNING: couldn't find address 0x1347400065a40 (0x47400065a40) in binary!
+	0x14178  @objc FakeCollectionViewHeader.(null) <stripped>
+WARNING: couldn't find address 0x17f8c00064918 (0x78c00064918) in binary!
 	0x38000000c  @objc FakeCollectionViewHeader.(null) <stripped>
-WARNING: couldn't find address 0x17eb400064780 (0x6b400064780) in binary!
-	0x14088  @objc FakeCollectionViewHeader.(null) <stripped>
+WARNING: couldn't find address 0x17f7400064a28 (0x77400064a28) in binary!
+	0x14148  @objc FakeCollectionViewHeader.(null) <stripped>
  }
 
  class HealthExperienceUI.FeedItemListViewController : DataTypeDetailViewController {
@@ -1893,20 +1896,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var contentKinds :  empty-list 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17eb400064780 (0x6b400064780) in binary!
-	0x14088  @objc FeedItemListViewController.(null) <stripped>
-WARNING: couldn't find address 0x17e9c00064640 (0x69c00064640) in binary!
+WARNING: couldn't find address 0x17f7400064a28 (0x77400064a28) in binary!
+	0x14148  @objc FeedItemListViewController.(null) <stripped>
+WARNING: couldn't find address 0x17f5c000648e8 (0x75c000648e8) in binary!
 	0x58000000c  @objc FeedItemListViewController.(null) <stripped>
-WARNING: couldn't find address 0x17e8400064750 (0x68400064750) in binary!
-	0x17778  @objc FeedItemListViewController.(null) <stripped>
+WARNING: couldn't find address 0x17f44000649f8 (0x744000649f8) in binary!
+	0x17838  @objc FeedItemListViewController.(null) <stripped>
 
 	// Swift methods
-	0x768d0  func <stripped> // getter 
-	0x76910  func <stripped> // setter 
-	0x76960  func <stripped> // modifyCoroutine 
-	0x76a50  func <stripped> // getter 
-	0x76a90  func <stripped> // setter 
-	0x76ae0  func <stripped> // modifyCoroutine 
+	0x773d0  func <stripped> // getter 
+	0x77410  func <stripped> // setter 
+	0x77460  func <stripped> // modifyCoroutine 
+	0x77550  func <stripped> // getter 
+	0x77590  func <stripped> // setter 
+	0x775e0  func <stripped> // modifyCoroutine 
  }
 
  class HealthExperienceUI.BrowseTileViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1918,47 +1921,48 @@ WARNING: couldn't find address 0x17e8400064750 (0x68400064750) in binary!
 	var categoryLabel : UILabel?
 	var disclosureImageView : UIImageView?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let margin : ±
+	let margin : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topAndBottomDistance : ±
+	let topAndBottomDistance : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var iconWidth : ±
+	var iconWidth : a
 	var labelLeadingConstraint : NSLayoutConstraint?
 	var iconAspectConstraint : NSLayoutConstraint?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17e8400064750 (0x68400064750) in binary!
-	0x17778  @objc BrowseTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x14ac800065a30 (0x2c800065a30) in binary!
-	0x14040  @objc BrowseTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x17e54000645f8 (0x654000645f8) in binary!
+WARNING: couldn't find address 0x17f44000649f8 (0x744000649f8) in binary!
+	0x17838  @objc BrowseTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x14b8800065d28 (0x38800065d28) in binary!
+	0x14100  @objc BrowseTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x17f14000648a0 (0x714000648a0) in binary!
 	0x18000000c  @objc BrowseTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x13d2c00065ad8 (0x52c00065ad8) in binary!
+WARNING: couldn't find address 0x13dec00065dd0 (0x5ec00065dd0) in binary!
 	0x68000000c  @objc BrowseTileViewController.(null) <stripped>
-	0x17e18  @objc BrowseTileViewController. <stripped>
+WARNING: couldn't find address 0x140c4000651f0 (0xc4000651f0) in binary!
+	0x17ed8  @objc BrowseTileViewController.(null) <stripped>
 
 	// Swift methods
-	0x775c0  func <stripped> // getter 
-	0x77630  func <stripped> // setter 
-	0x776e0  func <stripped> // modifyCoroutine 
-	0x77cc0  func <stripped> // getter 
-	0x77de0  func <stripped> // setter 
-	0x77e90  func <stripped> // modifyCoroutine 
-	0x77fb0  func <stripped> // getter 
-	0x77fd0  func <stripped> // setter 
-	0x77ff0  func <stripped> // modifyCoroutine 
-	0x780a0  func <stripped> // getter 
-	0x780c0  func <stripped> // setter 
-	0x780e0  func <stripped> // modifyCoroutine 
-	0x78190  func <stripped> // getter 
-	0x781f0  func <stripped> // setter 
-	0x78250  func <stripped> // modifyCoroutine 
-	0x78560  func <stripped> // method 
-	0x78970  func <stripped> // method 
-	0x789b0  func <stripped> // method 
-	0x78f90  func <stripped> // method 
-	0x794e0  func <stripped> // method 
-	0x79890  func <stripped> // method 
+	0x780c0  func <stripped> // getter 
+	0x78130  func <stripped> // setter 
+	0x781e0  func <stripped> // modifyCoroutine 
+	0x787c0  func <stripped> // getter 
+	0x788e0  func <stripped> // setter 
+	0x78990  func <stripped> // modifyCoroutine 
+	0x78ab0  func <stripped> // getter 
+	0x78ad0  func <stripped> // setter 
+	0x78af0  func <stripped> // modifyCoroutine 
+	0x78ba0  func <stripped> // getter 
+	0x78bc0  func <stripped> // setter 
+	0x78be0  func <stripped> // modifyCoroutine 
+	0x78c90  func <stripped> // getter 
+	0x78cf0  func <stripped> // setter 
+	0x78d50  func <stripped> // modifyCoroutine 
+	0x79060  func <stripped> // method 
+	0x79470  func <stripped> // method 
+	0x794b0  func <stripped> // method 
+	0x79a90  func <stripped> // method 
+	0x79fe0  func <stripped> // method 
+	0x7a390  func <stripped> // method 
  }
 
  class HealthExperienceUI.UIPluginBundleProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1989,31 +1993,32 @@ WARNING: couldn't find address 0x13d2c00065ad8 (0x52c00065ad8) in binary!
 	var control : UISegmentedControl
 
 	// ObjC -> Swift bridged methods
-	0x17e18  @objc SegmentedContentView. <stripped>
-WARNING: couldn't find address 0x1899c000656a8 (0x19c000656a8) in binary!
-	0x17e00  @objc SegmentedContentView.(null) <stripped>
-WARNING: couldn't find address 0x132c400065660 (0x2c400065660) in binary!
-	0x17de8  @objc SegmentedContentView.(null) <stripped>
+WARNING: couldn't find address 0x140c4000651f0 (0xc4000651f0) in binary!
+	0x17ed8  @objc SegmentedContentView.(null) <stripped>
+WARNING: couldn't find address 0x18a5c00065998 (0x25c00065998) in binary!
+	0x17ec0  @objc SegmentedContentView.(null) <stripped>
+WARNING: couldn't find address 0x1338400065950 (0x38400065950) in binary!
+	0x17ea8  @objc SegmentedContentView.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x164fff2be30  @objc SegmentedContentView.(null) <stripped>
-	0x174fff2c108  @objc SegmentedContentView.ã<;Hã5¸  <stripped>
-	0xfff2c370  @objc SegmentedContentView.Lâ:HçrZ <stripped>
+	0x45cfff2bbc0  @objc SegmentedContentView.(null) <stripped>
+	0x46cfff2be98  @objc SegmentedContentView.∫⁄ <stripped>
+	0xfff2c100  @objc SegmentedContentView.AVSHÉÏ8Iâ˛Hâ˜ˇ	 <stripped>
 
 	// Swift methods
  }
 
  class HealthExperienceUI.AppNavigationController : UINavigationController /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x181d400064130 (0x1d400064130) in binary!
-	0x18a52  @objc AppNavigationController.(null) <stripped>
-WARNING: couldn't find address 0x13f9c00065b48 (0x79c00065b48) in binary!
-	0x14a0c  @objc AppNavigationController.(null) <stripped>
-WARNING: couldn't find address 0x13f8400064ec8 (0x78400064ec8) in binary!
+WARNING: couldn't find address 0x18294000643c0 (0x294000643c0) in binary!
+	0x18b12  @objc AppNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x1405c00065e40 (0x5c00065e40) in binary!
+	0x14acc  @objc AppNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x1404400065170 (0x4400065170) in binary!
 	0x28000000c  @objc AppNavigationController.(null) <stripped>
-WARNING: couldn't find address 0x1325c000655f8 (0x25c000655f8) in binary!
-	0x13f60  @objc AppNavigationController.(null) <stripped>
+WARNING: couldn't find address 0x1331c000658e8 (0x31c000658e8) in binary!
+	0x14020  @objc AppNavigationController.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x684fff35008  @objc AppNavigationController.(null) <stripped>
+	0x12cfff34d98  @objc AppNavigationController.(null) <stripped>
  }
 
  class HealthExperienceUI.HealthExperienceStoreIncrementalCoreSpotlightDelegate {
@@ -2044,33 +2049,33 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 	let summarySectionPredicate : NSPredicate
 	let getMoreFromHealthPredicate : NSPredicate
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var store : 
+	var store : Õ
 	var chrOnly : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sourceProfile : cÍ
+	let sourceProfile : Ï
 	let showNoData : Bool
 
 	// Swift methods
-	0x815b0  func <stripped> // getter 
-	0x815f0  func <stripped> // setter 
-	0x81640  func <stripped> // modifyCoroutine 
-	0x816f0  func <stripped> // getter 
-	0x81720  func <stripped> // setter 
-	0x81750  func <stripped> // modifyCoroutine 
-	0x818b0  class func CategoryViewDataSourceProvider.__allocating_init(summarySectionPredicate:getMoreFromHealthPredicate:store:sourceProfile:chrOnly:showNoData:) // init 
-	0x81a30  func <stripped> // method 
-	0x81a40  func <stripped> // method 
-	0x81ec0  func <stripped> // method 
-	0x82510  func <stripped> // method 
-	0x82b60  func <stripped> // method 
+	0x820b0  func <stripped> // getter 
+	0x820f0  func <stripped> // setter 
+	0x82140  func <stripped> // modifyCoroutine 
+	0x821f0  func <stripped> // getter 
+	0x82220  func <stripped> // setter 
+	0x82250  func <stripped> // modifyCoroutine 
+	0x823b0  class func CategoryViewDataSourceProvider.__allocating_init(summarySectionPredicate:getMoreFromHealthPredicate:store:sourceProfile:chrOnly:showNoData:) // init 
+	0x82530  func <stripped> // method 
+	0x82540  func <stripped> // method 
+	0x829c0  func <stripped> // method 
+	0x83010  func <stripped> // method 
+	0x83660  func <stripped> // method 
  }
 
  class HealthExperienceUI.DeviceSourcesCell : IconWithNameCell {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1325c000655f8 (0x25c000655f8) in binary!
-	0x13f60  @objc DeviceSourcesCell.(null) <stripped>
+WARNING: couldn't find address 0x1331c000658e8 (0x31c000658e8) in binary!
+	0x14020  @objc DeviceSourcesCell.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x684fff35008  @objc DeviceSourcesCell.(null) <stripped>
+	0x12cfff34d98  @objc DeviceSourcesCell.(null) <stripped>
 
 	// Swift methods
  }
@@ -2089,33 +2094,33 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 	let mainTextLabel : UILabel
 	let disclosure : UIImageView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1323c000655d8 (0x23c000655d8) in binary!
-	0x13f40  @objc DataTypeNoDataAvailableCell.(null) <stripped>
-WARNING: couldn't find address 0x13715000659b8 (0x715000659b8) in binary!
-	0x17d50  @objc DataTypeNoDataAvailableCell.(null) <stripped>
-WARNING: couldn't find address 0x136fd000659b0 (0x6fd000659b0) in binary!
-	0x17d38  @objc DataTypeNoDataAvailableCell.(null) <stripped>
-WARNING: couldn't find address 0x17d24000644c8 (0x524000644c8) in binary!
+WARNING: couldn't find address 0x132fc000658c8 (0x2fc000658c8) in binary!
+	0x14000  @objc DataTypeNoDataAvailableCell.(null) <stripped>
+WARNING: couldn't find address 0x137d500065cb0 (0x7d500065cb0) in binary!
+	0x17e10  @objc DataTypeNoDataAvailableCell.(null) <stripped>
+WARNING: couldn't find address 0x137bd00065ca8 (0x7bd00065ca8) in binary!
+	0x17df8  @objc DataTypeNoDataAvailableCell.(null) <stripped>
+WARNING: couldn't find address 0x17de400064770 (0x5e400064770) in binary!
 	0x38000000c  @objc DataTypeNoDataAvailableCell.(null) <stripped>
-WARNING: couldn't find address 0x13eec00064e30 (0x6ec00064e30) in binary!
-	0x17d00  @objc DataTypeNoDataAvailableCell.(null) <stripped>
-WARNING: couldn't find address 0x17cf400064498 (0x4f400064498) in binary!
+WARNING: couldn't find address 0x13fac000650d8 (0x7ac000650d8) in binary!
+	0x17dc0  @objc DataTypeNoDataAvailableCell.(null) <stripped>
+WARNING: couldn't find address 0x17db400064740 (0x5b400064740) in binary!
 	0x28000000c  @objc DataTypeNoDataAvailableCell.(null) <stripped>
-WARNING: couldn't find address 0x131ac00065548 (0x1ac00065548) in binary!
-	0x13eb0  @objc DataTypeNoDataAvailableCell.(null) <stripped>
+WARNING: couldn't find address 0x1326c00065838 (0x26c00065838) in binary!
+	0x13f70  @objc DataTypeNoDataAvailableCell.(null) <stripped>
 
 	// Swift methods
-	0x84920  func <stripped> // getter 
-	0x84960  func <stripped> // setter 
-	0x849c0  func <stripped> // modifyCoroutine 
-	0x84fa0  func <stripped> // method 
-	0x85430  func <stripped> // method 
-	0x857d0  func <stripped> // method 
+	0x85420  func <stripped> // getter 
+	0x85460  func <stripped> // setter 
+	0x854c0  func <stripped> // modifyCoroutine 
+	0x85aa0  func <stripped> // method 
+	0x85f30  func <stripped> // method 
+	0x862d0  func <stripped> // method 
  }
 
  enum HealthExperienceUI.CellDeselectionBehavior {
@@ -2133,22 +2138,22 @@ WARNING: couldn't find address 0x131ac00065548 (0x1ac00065548) in binary!
 	var $__lazy_storage_$_healthStore : HKHealthStore?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13eec00064e30 (0x6ec00064e30) in binary!
-	0x17d00  @objc AllHighlightsViewController.(null) <stripped>
-WARNING: couldn't find address 0x17cf400064498 (0x4f400064498) in binary!
+WARNING: couldn't find address 0x13fac000650d8 (0x7ac000650d8) in binary!
+	0x17dc0  @objc AllHighlightsViewController.(null) <stripped>
+WARNING: couldn't find address 0x17db400064740 (0x5b400064740) in binary!
 	0x28000000c  @objc AllHighlightsViewController.(null) <stripped>
-WARNING: couldn't find address 0x131ac00065548 (0x1ac00065548) in binary!
-	0x13eb0  @objc AllHighlightsViewController.(null) <stripped>
+WARNING: couldn't find address 0x1326c00065838 (0x26c00065838) in binary!
+	0x13f70  @objc AllHighlightsViewController.(null) <stripped>
 
 	// Swift methods
-	0x868b0  func <stripped> // getter 
-	0x868f0  func <stripped> // setter 
-	0x86940  func <stripped> // modifyCoroutine 
-	0x869e0  func <stripped> // getter 
-	0x86a10  func <stripped> // setter 
-	0x86a50  func <stripped> // modifyCoroutine 
-	0x86aa0  func <stripped> // getter 
-	0x86710  class func AllHighlightsViewController.__allocating_init(_:collectionViewLayout:healthStore:) // init 
+	0x873b0  func <stripped> // getter 
+	0x873f0  func <stripped> // setter 
+	0x87440  func <stripped> // modifyCoroutine 
+	0x874e0  func <stripped> // getter 
+	0x87510  func <stripped> // setter 
+	0x87550  func <stripped> // modifyCoroutine 
+	0x875a0  func <stripped> // getter 
+	0x87210  class func AllHighlightsViewController.__allocating_init(_:collectionViewLayout:healthStore:) // init 
  }
 
  class HealthExperienceUI.AllHighlightsExperienceViewController : DataTypeDetailViewController {
@@ -2157,23 +2162,23 @@ WARNING: couldn't find address 0x131ac00065548 (0x1ac00065548) in binary!
 	let keyword : String // +0x60 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13e9c00064de0 (0x69c00064de0) in binary!
-	0x17cb0  @objc AllHighlightsExperienceViewController.(null) <stripped>
-WARNING: couldn't find address 0x17ca400064448 (0x4a400064448) in binary!
+WARNING: couldn't find address 0x13f5c00065088 (0x75c00065088) in binary!
+	0x17d70  @objc AllHighlightsExperienceViewController.(null) <stripped>
+WARNING: couldn't find address 0x17d64000646f0 (0x564000646f0) in binary!
 	0x38000000c  @objc AllHighlightsExperienceViewController.(null) <stripped>
-WARNING: couldn't find address 0x13e6c00064db0 (0x66c00064db0) in binary!
-	0x13150  @objc AllHighlightsExperienceViewController.(null) <stripped>
+WARNING: couldn't find address 0x13f2c00065058 (0x72c00065058) in binary!
+	0x13210  @objc AllHighlightsExperienceViewController.(null) <stripped>
 
 	// Swift methods
-	0x87c60  class func AllHighlightsExperienceViewController.__allocating_init(_:title:healthStore:) // init 
+	0x88760  class func AllHighlightsExperienceViewController.__allocating_init(_:title:healthStore:) // init 
  }
 
  class HealthExperienceUI.AllHighlightCategoriesButton : NavigationCollectionViewCell {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x131ac00065548 (0x1ac00065548) in binary!
-	0x13eb0  @objc AllHighlightCategoriesButton.(null) <stripped>
+WARNING: couldn't find address 0x1326c00065838 (0x26c00065838) in binary!
+	0x13f70  @objc AllHighlightCategoriesButton.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x57cfff37ef8  @objc AllHighlightCategoriesButton.(null) <stripped>
+	0x24fff37c88  @objc AllHighlightCategoriesButton.(null) <stripped>
  }
 
  class HealthExperienceUI.AllDataSummaryDataSource {
@@ -2184,26 +2189,26 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let imageView : UIImageView
 	var $__lazy_storage_$_titleView : UILabel?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var profileInformationSink : °
+	var profileInformationSink : Y
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13e6c00064db0 (0x66c00064db0) in binary!
-	0x13150  @objc ProfileNavigationBarView.(null) <stripped>
-WARNING: couldn't find address 0x17c7400064418 (0x47400064418) in binary!
+WARNING: couldn't find address 0x13f2c00065058 (0x72c00065058) in binary!
+	0x13210  @objc ProfileNavigationBarView.(null) <stripped>
+WARNING: couldn't find address 0x17d34000646c0 (0x534000646c0) in binary!
 	0x48000000c  @objc ProfileNavigationBarView.(null) <stripped>
-WARNING: couldn't find address 0x1755c00066108 (0x55c00066108) in binary!
-	0x17550  @objc ProfileNavigationBarView.(null) <stripped>
+WARNING: couldn't find address 0x1761c00066400 (0x61c00066400) in binary!
+	0x17610  @objc ProfileNavigationBarView.(null) <stripped>
 
 	// Swift methods
-	0x8d1d0  func <stripped> // getter 
-	0x8d2f0  func <stripped> // setter 
-	0x8d310  func <stripped> // modifyCoroutine 
-	0x8cf90  class func ProfileNavigationBarView.__allocating_init(profileInformationPublisher:) // init 
-	0x8d410  func <stripped> // method 
-	0x8d490  func <stripped> // method 
-	0x8d850  func <stripped> // method 
-	0x8d870  func <stripped> // method 
-	0x8df50  func <stripped> // method 
+	0x8dcd0  func <stripped> // getter 
+	0x8ddf0  func <stripped> // setter 
+	0x8de10  func <stripped> // modifyCoroutine 
+	0x8da90  class func ProfileNavigationBarView.__allocating_init(profileInformationPublisher:) // init 
+	0x8df10  func <stripped> // method 
+	0x8df90  func <stripped> // method 
+	0x8e350  func <stripped> // method 
+	0x8e370  func <stripped> // method 
+	0x8ea50  func <stripped> // method 
  }
 
  class HealthExperienceUI.SearchHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2211,15 +2216,15 @@ WARNING: couldn't find address 0x1755c00066108 (0x55c00066108) in binary!
 	// Properties
 	var resultToken : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let healthExperienceStore : 
+	let healthExperienceStore : Õ
 	let searchDataSource : SearchDataSource
 	let spotlightSearch : SpotlightSearch
 	let behaviours : Behaviours
 
 	// Swift methods
-	0x8f240  func <stripped> // method 
-	0x90ba0  func <stripped> // method 
-	0x90de0  func <stripped> // method 
+	0x8fd40  func <stripped> // method 
+	0x916a0  func <stripped> // method 
+	0x918e0  func <stripped> // method 
  }
 
  struct HealthExperienceUI.SearchResult {
@@ -2236,100 +2241,98 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_doneButton : OBBoldTrayButton?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1755c00066108 (0x55c00066108) in binary!
-	0x17550  @objc OnboardingViewControllerWithNextButton.(null) <stripped>
-WARNING: couldn't find address 0x19be4000660e0 (0x3e4000660e0) in binary!
-	0x17c38  @objc OnboardingViewControllerWithNextButton.(null) <stripped>
+WARNING: couldn't find address 0x1761c00066400 (0x61c00066400) in binary!
+	0x17610  @objc OnboardingViewControllerWithNextButton.(null) <stripped>
+WARNING: couldn't find address 0x19ca4000663d8 (0x4a4000663d8) in binary!
+	0x17cf8  @objc OnboardingViewControllerWithNextButton.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x53cfff47e60  @objc OnboardingViewControllerWithNextButton.(null) <stripped>
-	0xfff48458  @objc OnboardingViewControllerWithNextButton.LâÔHãŒ <stripped>
+	0x7e4fff47bf0  @objc OnboardingViewControllerWithNextButton.(null) <stripped>
+	0xfff481e8  @objc OnboardingViewControllerWithNextButton.UHâÂH=}D <stripped>
 
 	// Swift methods
-	0x97310  func <stripped> // getter 
-	0x97470  func <stripped> // getter 
-	0x975d0  class func OnboardingViewControllerWithNextButton.__allocating_init(title:detailText:icon:contentLayout:isLastPage:) // init 
+	0x97e10  func <stripped> // getter 
+	0x97f70  func <stripped> // getter 
+	0x980d0  class func OnboardingViewControllerWithNextButton.__allocating_init(title:detailText:icon:contentLayout:isLastPage:) // init 
  }
 
  class HealthExperienceUI.ProfileAvatarImageCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 	let avatarImageView : UIImageView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x130f400065490 (0xf400065490) in binary!
-	0x13df8  @objc ProfileAvatarImageCell.(null) <stripped>
-WARNING: couldn't find address 0x17c0c000643b0 (0x40c000643b0) in binary!
+	0x13eb8  -[WDManualDataEntryTableViewCell setBodyFont:]
+WARNING: couldn't find address 0x17ccc00064658 (0x4cc00064658) in binary!
 	0x88000000c  @objc ProfileAvatarImageCell.(null) <stripped>
-WARNING: couldn't find address 0x130c400065460 (0xc400065460) in binary!
-	0x13dc8  @objc ProfileAvatarImageCell.(null) <stripped>
+WARNING: couldn't find address 0x1318400065750 (0x18400065750) in binary!
+	0x13e88  @objc ProfileAvatarImageCell.(null) <stripped>
 
 	// Swift methods
-	0x97ba0  func <stripped> // getter 
-	0x97be0  func <stripped> // setter 
-	0x97c40  func <stripped> // modifyCoroutine 
-	0x97fd0  func <stripped> // method 
-	0x98310  func <stripped> // method 
+	0x986a0  func <stripped> // getter 
+	0x986e0  func <stripped> // setter 
+	0x98740  func <stripped> // modifyCoroutine 
+	0x98ad0  func <stripped> // method 
+	0x98e10  func <stripped> // method 
  }
 
  class HealthExperienceUI.SearchDataSource {
  class HealthExperienceUI.BasicBuddyProfileCharacteristicsSetter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x993b0  class func BasicBuddyProfileCharacteristicsSetter.__allocating_init() // init 
-	0x993e0  func <stripped> // method 
-	0x9aeb0  func <stripped> // method 
-	0x9b230  func <stripped> // method 
+	0x99ec0  class func BasicBuddyProfileCharacteristicsSetter.__allocating_init() // init 
+	0x99ef0  func <stripped> // method 
+	0x9b9c0  func <stripped> // method 
+	0x9bd40  func <stripped> // method 
  }
 
  class HealthExperienceUI.CollectionViewListDisclosureCell : _UICollectionViewListCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M // +0x8 (0x28)
+	var item :  // +0x8 (0x28)
 	var $__lazy_storage_$_textLabel : DynamicFontLabel // +0x30 (0x8)
 	var $__lazy_storage_$_detailTextLabel : DynamicFontLabel // +0x38 (0x8)
 	var showDisclosureIndicator : Bool // +0x40 (0x1)
 	var currentLayoutConstraints : [NSLayoutConstraint] // +0x48 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var detailTextObservation : u‰ // +0x50 (0x8)
+	var detailTextObservation : %Ê // +0x50 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x130c400065460 (0xc400065460) in binary!
-	0x13dc8  @objc CollectionViewListDisclosureCell.(null) <stripped>
-WARNING: couldn't find address 0x17bdc00064430 (0x3dc00064430) in binary!
-	0x17bd0  @objc CollectionViewListDisclosureCell.(null) <stripped>
-WARNING: couldn't find address 0x174c400064420 (0x4c400064420) in binary!
-	0x13aa8  @objc CollectionViewListDisclosureCell.(null) <stripped>
-WARNING: couldn't find address 0x17bac000660b0 (0x3ac000660b0) in binary!
-	0x17ba0  @objc CollectionViewListDisclosureCell.(null) <stripped>
+WARNING: couldn't find address 0x1318400065750 (0x18400065750) in binary!
+	0x13e88  @objc CollectionViewListDisclosureCell.(null) <stripped>
+WARNING: couldn't find address 0x17c9c000646d8 (0x49c000646d8) in binary!
+	0x17c90  @objc CollectionViewListDisclosureCell.(null) <stripped>
+WARNING: couldn't find address 0x17584000646c8 (0x584000646c8) in binary!
+	0x13b68  @objc CollectionViewListDisclosureCell.(null) <stripped>
+WARNING: couldn't find address 0x17c6c000663b0 (0x46c000663b0) in binary!
+	0x17c60  @objc CollectionViewListDisclosureCell.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x3ecfff53d38  @objc CollectionViewListDisclosureCell.(null) <stripped>
-	0xfff53da0  @objc CollectionViewListDisclosureCell.LâÚHâŸˇd% <stripped>
+	0x6dcfff53ad8  @objc CollectionViewListDisclosureCell.(null) <stripped>
+	0xfff53b40  @objc CollectionViewListDisclosureCell.ƒHç <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x6ecfff55468  @objc CollectionViewListDisclosureCell.(null) <stripped>
-	0x2dcfff56560  @objc CollectionViewListDisclosureCell.5Û
- <stripped>
+	0x1e4fff55208  @objc CollectionViewListDisclosureCell.(null) <stripped>
+	0x584fff56300  @objc CollectionViewListDisclosureCell.√UHâÂAVSHâ˚Hã=> <stripped>
 
 	// Swift methods
-	0x9b900  func <stripped> // getter 
-	0x9b940  func <stripped> // setter 
-	0x9b9b0  func <stripped> // modifyCoroutine 
-	0x9ba40  func <stripped> // getter 
-	0x9bbb0  func <stripped> // getter 
-	0x9bbd0  func <stripped> // getter 
-	0x9bce0  func <stripped> // getter 
-	0x9bd10  func <stripped> // setter 
-	0x9bd80  func <stripped> // modifyCoroutine 
-	0x9ec50  func <stripped> // method 
-	0x9be40  func <stripped> // method 
-	0x9c100  func <stripped> // method 
-	0x9c240  func <stripped> // method 
-	0x9c3e0  func <stripped> // method 
-	0x9c470  func <stripped> // method 
-	0x9c590  func <stripped> // method 
+	0x9c410  func <stripped> // getter 
+	0x9c450  func <stripped> // setter 
+	0x9c4c0  func <stripped> // modifyCoroutine 
+	0x9c550  func <stripped> // getter 
+	0x9c6c0  func <stripped> // getter 
+	0x9c6e0  func <stripped> // getter 
+	0x9c7f0  func <stripped> // getter 
+	0x9c820  func <stripped> // setter 
+	0x9c890  func <stripped> // modifyCoroutine 
+	0x9f760  func <stripped> // method 
+	0x9c950  func <stripped> // method 
+	0x9cc10  func <stripped> // method 
+	0x9cd50  func <stripped> // method 
+	0x9cef0  func <stripped> // method 
+	0x9cf80  func <stripped> // method 
 	0x9d0a0  func <stripped> // method 
-	0x9ddc0  func <stripped> // getter 
+	0x9dbb0  func <stripped> // method 
+	0x9e8d0  func <stripped> // getter 
  }
 
  struct HealthExperienceUI.CloudSyncAlert {
@@ -2363,27 +2366,27 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var icloudAccount : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13d6c00064cb0 (0x56c00064cb0) in binary!
-	0x13050  @objc ProfileAvatarWithNameBelow.(null) <stripped>
-WARNING: couldn't find address 0x17b7400064318 (0x37400064318) in binary!
+WARNING: couldn't find address 0x13e2c00064f58 (0x62c00064f58) in binary!
+	0x13110  @objc ProfileAvatarWithNameBelow.(null) <stripped>
+WARNING: couldn't find address 0x17c34000645c0 (0x434000645c0) in binary!
 	0x48000000c  @objc ProfileAvatarWithNameBelow.(null) <stripped>
-WARNING: couldn't find address 0x17b5c00064428 (0x35c00064428) in binary!
-	0x13d30  @objc ProfileAvatarWithNameBelow.(null) <stripped>
+WARNING: couldn't find address 0x17c1c000646d0 (0x41c000646d0) in binary!
+	0x13df0  @objc ProfileAvatarWithNameBelow.(null) <stripped>
 
 	// Swift methods
  }
 
  class HealthExperienceUI.SummaryLayoutManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xa3fa0  class func SummaryLayoutManager.__allocating_init() // init 
-	0xa3fd0  func <stripped> // method 
+	0xa4ab0  class func SummaryLayoutManager.__allocating_init() // init 
+	0xa4ae0  func <stripped> // method 
  }
 
  class HealthExperienceUI.SearchViewController : CompoundDataSourceCollectionViewController {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_mainStore : ¡˝
+	var $__lazy_storage_$_mainStore : yˇ
 	let layoutManager : SearchLayoutManager
 	var $__lazy_storage_$_dataSources : SearchDataSourceProvider
 	var $__lazy_storage_$_spotlightSearch : SpotlightSearch
@@ -2393,26 +2396,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var searchState : State
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17b5c00064428 (0x35c00064428) in binary!
-	0x13d30  @objc SearchViewController.(null) <stripped>
-WARNING: couldn't find address 0x13d2400064c68 (0x52400064c68) in binary!
-	0x17b38  @objc SearchViewController.(null) <stripped>
+WARNING: couldn't find address 0x17c1c000646d0 (0x41c000646d0) in binary!
+	0x13df0  @objc SearchViewController.(null) <stripped>
+WARNING: couldn't find address 0x13de400064f10 (0x5e400064f10) in binary!
+	0x17bf8  @objc SearchViewController.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x26cfff582c0  @objc SearchViewController.(null) <stripped>
-	0x1f400064340  @objc SearchViewController. <stripped>
+	0x514fff58060  @objc SearchViewController.(null) <stripped>
+	0x2b4000645e8  @objc SearchViewController.âCHçƒ <stripped>
 
 	// Swift methods
-	0xa48f0  func <stripped> // getter 
-	0xa4a80  func <stripped> // getter 
-	0xa4ae0  func <stripped> // getter 
-	0xa4c20  func <stripped> // getter 
-	0xa4dd0  func <stripped> // getter 
-	0xa4ec0  func <stripped> // getter 
-	0xa4f60  func <stripped> // setter 
-	0xa4f80  func <stripped> // modifyCoroutine 
-	0xa4fe0  func <stripped> // getter 
-	0xa5b90  func <stripped> // method 
-	0xa5f00  func <stripped> // method 
+	0xa5400  func <stripped> // getter 
+	0xa5590  func <stripped> // getter 
+	0xa55f0  func <stripped> // getter 
+	0xa5730  func <stripped> // getter 
+	0xa58e0  func <stripped> // getter 
+	0xa59d0  func <stripped> // getter 
+	0xa5a70  func <stripped> // setter 
+	0xa5a90  func <stripped> // modifyCoroutine 
+	0xa5af0  func <stripped> // getter 
+	0xa66a0  func <stripped> // method 
+	0xa6a10  func <stripped> // method 
  }
 
  enum HealthExperienceUI.State {
@@ -2438,17 +2441,17 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var $__lazy_storage_$_vibrancyView : UIView?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x139f400064340 (0x1f400064340) in binary!
-	0x13cd8  @objc AlertVerticalSeparator.(null) <stripped>
-WARNING: couldn't find address 0x12fbc00065358 (0x7bc00065358) in binary!
-	0x17ae0  @objc AlertVerticalSeparator.(null) <stripped>
+WARNING: couldn't find address 0x13ab4000645e8 (0x2b4000645e8) in binary!
+	0x13d98  @objc AlertVerticalSeparator.(null) <stripped>
+WARNING: couldn't find address 0x1307c00065648 (0x7c00065648) in binary!
+	0x17ba0  @objc AlertVerticalSeparator.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x3e4fff5f6d8  @objc AlertVerticalSeparator.(null) <stripped>
-	0x24cfff60200  @objc AlertVerticalSeparator.‘Hâ«ËÂ <stripped>
+	0x68cfff5f478  @objc AlertVerticalSeparator.(null) <stripped>
+	0x4f4fff5ffa0  @objc AlertVerticalSeparator.ã5í# <stripped>
 
 	// Swift methods
-	0xa9770  func <stripped> // getter 
-	0xa99a0  func <stripped> // method 
+	0xaa280  func <stripped> // getter 
+	0xaa4b0  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDetailWorkoutRouteDisclosureItemsDataSource {
@@ -2461,22 +2464,22 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var title : String? // +0x20 (0x10)
 
 	// Swift methods
-	0xab1e0  func <stripped> // getter 
-	0xab220  func <stripped> // setter 
-	0xab260  func <stripped> // modifyCoroutine 
-	0xab340  func <stripped> // getter 
-	0xab380  func <stripped> // setter 
-	0xab3c0  func <stripped> // modifyCoroutine 
-	0xab3f0  class func AllHighlightCategoriesButtonDataSourceItem.__allocating_init(title:) // init 
-	0xab530  func <stripped> // method 
-	0xab630  func <stripped> // getter 
+	0xabcf0  func <stripped> // getter 
+	0xabd30  func <stripped> // setter 
+	0xabd70  func <stripped> // modifyCoroutine 
+	0xabe50  func <stripped> // getter 
+	0xabe90  func <stripped> // setter 
+	0xabed0  func <stripped> // modifyCoroutine 
+	0xabf00  class func AllHighlightCategoriesButtonDataSourceItem.__allocating_init(title:) // init 
+	0xac040  func <stripped> // method 
+	0xac140  func <stripped> // getter 
  }
 
  class HealthExperienceUI.AllHighlightsExperienceDataSourceProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let store : 
+	let store : Õ
 	let keyword : String
 	let healthStore : HKHealthStore
 
@@ -2487,26 +2490,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var store : 
+	var store : Õ
 	var hkType : HKObjectType
 	var hideShowAll : Bool
 	var collectionView : weak UICollectionView?
 	let healthStore : HKHealthStore
 
 	// Swift methods
-	0xabfb0  func <stripped> // getter 
-	0xabff0  func <stripped> // setter 
-	0xac040  func <stripped> // modifyCoroutine 
-	0xac100  func <stripped> // getter 
-	0xac130  func <stripped> // setter 
-	0xac170  func <stripped> // modifyCoroutine 
-	0xac220  func <stripped> // getter 
-	0xac250  func <stripped> // setter 
-	0xac280  func <stripped> // modifyCoroutine 
-	0xaa740  class func AllHighlightsDataSourceProvider.__allocating_init(for:hideShowAll:store:collectionView:healthStore:) // init 
-	0xac4b0  func <stripped> // method 
-	0xac4c0  func <stripped> // method 
-	0xacc60  func <stripped> // method 
+	0xacac0  func <stripped> // getter 
+	0xacb00  func <stripped> // setter 
+	0xacb50  func <stripped> // modifyCoroutine 
+	0xacc10  func <stripped> // getter 
+	0xacc40  func <stripped> // setter 
+	0xacc80  func <stripped> // modifyCoroutine 
+	0xacd30  func <stripped> // getter 
+	0xacd60  func <stripped> // setter 
+	0xacd90  func <stripped> // modifyCoroutine 
+	0xab250  class func AllHighlightsDataSourceProvider.__allocating_init(for:hideShowAll:store:collectionView:healthStore:) // init 
+	0xacfc0  func <stripped> // method 
+	0xacfd0  func <stripped> // method 
+	0xad770  func <stripped> // method 
  }
 
  class HealthExperienceUI.AllHighlightsExperienceDataSource {
@@ -2517,19 +2520,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var header : TileHeader // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12f9c00065338 (0x79c00065338) in binary!
-	0x13ca0  @objc ChromeHostView.(null) <stripped>
-WARNING: couldn't find address 0x173b400064310 (0x3b400064310) in binary!
-	0x17aa8  @objc ChromeHostView.(null) <stripped>
+WARNING: couldn't find address 0x1305c00065628 (0x5c00065628) in binary!
+	0x13d60  @objc ChromeHostView.(null) <stripped>
+WARNING: couldn't find address 0x17474000645b8 (0x474000645b8) in binary!
+	0x17b68  @objc ChromeHostView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x2f4fff606c0  @objc ChromeHostView.(null) <stripped>
-	0xfff60838  @objc ChromeHostView.»Aˇ◊LâÔAˇ◊Hã}–Aˇ◊EÑˆuHã5≥ <stripped>
+	0x5e4fff60460  @objc ChromeHostView.(null) <stripped>
+	0xfff605d8  @objc ChromeHostView. <stripped>
 
 	// Swift methods
-	0xaf710  func <stripped> // getter 
-	0xafb30  func <stripped> // method 
-	0xafd80  func <stripped> // method 
-	0xaff90  func <stripped> // method 
+	0xb0220  func <stripped> // getter 
+	0xb0640  func <stripped> // method 
+	0xb0890  func <stripped> // method 
+	0xb0aa0  func <stripped> // method 
  }
 
  class HealthExperienceUI.PlatterView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2538,12 +2541,12 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var isHighlighted : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17a94000659d0 (0x294000659d0) in binary!
-	0x12f58  @objc PlatterView.(null) <stripped>
-WARNING: couldn't find address 0x13c5c00064ba0 (0x45c00064ba0) in binary!
+WARNING: couldn't find address 0x17b5400065cc8 (0x35400065cc8) in binary!
+	0x13018  @objc PlatterView.(null) <stripped>
+WARNING: couldn't find address 0x13d1c00064e48 (0x51c00064e48) in binary!
 	0x38000000c  @objc PlatterView.(null) <stripped>
-WARNING: couldn't find address 0x1395400065cb0 (0x15400065cb0) in binary!
-	0x13948  @objc PlatterView.(null) <stripped>
+WARNING: couldn't find address 0x13a1400065fa8 (0x21400065fa8) in binary!
+	0x13a08  @objc PlatterView.(null) <stripped>
 
 	// Swift methods
  }
@@ -2558,20 +2561,20 @@ WARNING: couldn't find address 0x1395400065cb0 (0x15400065cb0) in binary!
 	var messageTileViewLeadingConstraint : NSLayoutConstraint?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12f04000652a0 (0x704000652a0) in binary!
-	0x13c08  @objc MessageWithActionTileViewWithImage.(null) <stripped>
-WARNING: couldn't find address 0x1731c00064278 (0x31c00064278) in binary!
-	0x17a10  @objc MessageWithActionTileViewWithImage.(null) <stripped>
-WARNING: couldn't find address 0x17a04000641a8 (0x204000641a8) in binary!
+WARNING: couldn't find address 0x12fc400065590 (0x7c400065590) in binary!
+	0x13cc8  @objc MessageWithActionTileViewWithImage.(null) <stripped>
+WARNING: couldn't find address 0x173dc00064520 (0x3dc00064520) in binary!
+	0x17ad0  @objc MessageWithActionTileViewWithImage.(null) <stripped>
+WARNING: couldn't find address 0x17ac400064450 (0x2c400064450) in binary!
 	0x38000000c  @objc MessageWithActionTileViewWithImage.(null) <stripped>
-WARNING: couldn't find address 0x12ebc00065258 (0x6bc00065258) in binary!
-	0x13bc0  @objc MessageWithActionTileViewWithImage.(null) <stripped>
-WARNING: couldn't find address 0x179d400064178 (0x1d400064178) in binary!
+WARNING: couldn't find address 0x12f7c00065548 (0x77c00065548) in binary!
+	0x13c80  @objc MessageWithActionTileViewWithImage.(null) <stripped>
+WARNING: couldn't find address 0x17a9400064420 (0x29400064420) in binary!
 	0x68000000c  @objc MessageWithActionTileViewWithImage.(null) <stripped>
 
 	// Swift methods
-	0xb3360  func <stripped> // method 
-	0xb38c0  func <stripped> // method 
+	0xb3e70  func <stripped> // method 
+	0xb43d0  func <stripped> // method 
  }
 
  struct HealthExperienceUI.ViewModel {
@@ -2589,25 +2592,25 @@ WARNING: couldn't find address 0x179d400064178 (0x1d400064178) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 	let label : DynamicFontLabel
 	let imageView : UIImageView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12ebc00065258 (0x6bc00065258) in binary!
-	0x13bc0  @objc EditFavoritesCellView.(null) <stripped>
-WARNING: couldn't find address 0x179d400064178 (0x1d400064178) in binary!
+WARNING: couldn't find address 0x12f7c00065548 (0x77c00065548) in binary!
+	0x13c80  @objc EditFavoritesCellView.(null) <stripped>
+WARNING: couldn't find address 0x17a9400064420 (0x29400064420) in binary!
 	0x68000000c  @objc EditFavoritesCellView.(null) <stripped>
-WARNING: couldn't find address 0x12e8c00065228 (0x68c00065228) in binary!
-	0x13b90  @objc EditFavoritesCellView.(null) <stripped>
+WARNING: couldn't find address 0x12f4c00065518 (0x74c00065518) in binary!
+	0x13c50  @objc EditFavoritesCellView.(null) <stripped>
 
 	// Swift methods
-	0xb5e50  func <stripped> // getter 
-	0xb5e90  func <stripped> // setter 
-	0xb5ef0  func <stripped> // modifyCoroutine 
-	0xb5f60  func <stripped> // getter 
-	0xb6500  func <stripped> // method 
-	0xb6b40  func <stripped> // method 
+	0xb6960  func <stripped> // getter 
+	0xb69a0  func <stripped> // setter 
+	0xb6a00  func <stripped> // modifyCoroutine 
+	0xb6a70  func <stripped> // getter 
+	0xb7010  func <stripped> // method 
+	0xb7650  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeTileHeaderView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2616,82 +2619,82 @@ WARNING: couldn't find address 0x12e8c00065228 (0x68c00065228) in binary!
 	var chromeHostView : ChromeHostView // +0x8 (0x8)
 	var heightConstraint : NSLayoutConstraint? // +0x10 (0x8)
 	var currentTileHeaderDetailKind : TileHeaderDetailKind // +0x0 (0x0)
-	var dataSource : TileHeaderDataSource // +0x1618c0 (0x28)
-	var titleLabel : DynamicFontLabel // +0x12179 (0x8)
-	var detailLabel : DynamicFontLabel // +0x1618c0 (0x8)
+	var dataSource : TileHeaderDataSource // +0x162630 (0x28)
+	var titleLabel : DynamicFontLabel // +0x12239 (0x8)
+	var detailLabel : DynamicFontLabel // +0x162630 (0x8)
 	var accessoryLabel : DynamicFontLabel // +0x0 (0x8)
 	var detailContainerView : UIView? // +0x2 (0x8)
 	var $__lazy_storage_$_accessoryImage : UIImage?? // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minimumViewHeight : ± // +0x0 (0x8)
+	let minimumViewHeight : a // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleToTop : ± // +0x63675f5f (0x8)
+	let titleToTop : a // +0x63675f5f (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleToBottom : ± // +0x74706563 (0x8)
+	let titleToBottom : a // +0x74706563 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleToAccessory : ± // +0x45545f5f (0x8)
+	let titleToAccessory : a // +0x45545f5f (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleToDetail : ± // +0x0 (0x8)
+	let titleToDetail : a // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let detailToAccessory : ± // +0x173a3c (0x8)
+	let detailToAccessory : a // +0x17486c (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var glyphBaselineOffset : ± // +0x260 (0x8)
+	var glyphBaselineOffset : a // +0x260 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12e8c00065228 (0x68c00065228) in binary!
-	0x13b90  @objc DataTypeTileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x172a400066028 (0x2a400066028) in binary!
-	0x17298  @objc DataTypeTileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x1798c00065fa8 (0x18c00065fa8) in binary!
-	0x17980  @objc DataTypeTileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x12f4c00065518 (0x74c00065518) in binary!
+	0x13c50  @objc DataTypeTileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x1736400066328 (0x36400066328) in binary!
+	0x17358  @objc DataTypeTileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x17a4c000662a8 (0x24c000662a8) in binary!
+	0x17a40  @objc DataTypeTileHeaderView.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0xcfff6e8a8  @objc DataTypeTileHeaderView.(null) <stripped>
-	0x7e4fff6f610  @objc DataTypeTileHeaderView.ÁHâ¬π <stripped>
-	0xd4fff6fd18  @objc DataTypeTileHeaderView.âﬂAˇ÷Hâ√Hã5±‘ <stripped>
+	0x30cfff6e648  @objc DataTypeTileHeaderView.(null) <stripped>
+	0x2e4fff6f3b0  @objc DataTypeTileHeaderView.ã5≤ <stripped>
+	0x37cfff6fab8  @objc DataTypeTileHeaderView.ã0Lâ˜æ <stripped>
 
 	// Swift methods
-	0xb72e0  func <stripped> // getter 
-	0xb7320  func <stripped> // setter 
-	0xb7370  func <stripped> // modifyCoroutine 
-	0xb7510  func <stripped> // getter 
-	0xb7580  func <stripped> // setter 
-	0xb7620  func <stripped> // modifyCoroutine 
-	0xb7b40  func <stripped> // method 
-	0xb7d70  func <stripped> // method 
-	0xb7ee0  func <stripped> // method 
-	0xb81f0  func <stripped> // method 
-	0xb8410  func <stripped> // method 
-	0xb8610  func <stripped> // getter 
-	0xb8630  func <stripped> // setter 
-	0xb8650  func <stripped> // modifyCoroutine 
-	0xb86d0  func <stripped> // getter 
-	0xb86f0  func <stripped> // setter 
-	0xb8710  func <stripped> // modifyCoroutine 
-	0xb8790  func <stripped> // getter 
-	0xb87b0  func <stripped> // setter 
-	0xb87d0  func <stripped> // modifyCoroutine 
-	0xb88f0  func <stripped> // getter 
-	0xb8950  func <stripped> // setter 
-	0xb89b0  func <stripped> // modifyCoroutine 
-	0xb8a00  func <stripped> // getter 
-	0xb8a60  func <stripped> // method 
-	0xb97c0  func <stripped> // method 
-	0xb9e90  func <stripped> // method 
-	0xba7a0  func <stripped> // method 
-	0xbb360  func <stripped> // method 
-	0xbb480  func <stripped> // method 
-	0xbb5a0  func <stripped> // method 
-	0xbb770  func <stripped> // method 
-	0xbb9e0  func <stripped> // method 
-	0xbbb40  func <stripped> // method 
-	0xbbf90  func <stripped> // getter 
-	0xbc3c0  func <stripped> // getter 
-	0xbc590  func <stripped> // getter 
-	0xbc760  func <stripped> // getter 
-	0xbc980  func <stripped> // method 
-	0xbcca0  func <stripped> // method 
-	0xbcf60  func <stripped> // method 
-	0xbd320  func <stripped> // method 
+	0xb7df0  func <stripped> // getter 
+	0xb7e30  func <stripped> // setter 
+	0xb7e80  func <stripped> // modifyCoroutine 
+	0xb8020  func <stripped> // getter 
+	0xb8090  func <stripped> // setter 
+	0xb8130  func <stripped> // modifyCoroutine 
+	0xb8650  func <stripped> // method 
+	0xb8880  func <stripped> // method 
+	0xb89f0  func <stripped> // method 
+	0xb8d00  func <stripped> // method 
+	0xb8f20  func <stripped> // method 
+	0xb9120  func <stripped> // getter 
+	0xb9140  func <stripped> // setter 
+	0xb9160  func <stripped> // modifyCoroutine 
+	0xb91e0  func <stripped> // getter 
+	0xb9200  func <stripped> // setter 
+	0xb9220  func <stripped> // modifyCoroutine 
+	0xb92a0  func <stripped> // getter 
+	0xb92c0  func <stripped> // setter 
+	0xb92e0  func <stripped> // modifyCoroutine 
+	0xb9400  func <stripped> // getter 
+	0xb9460  func <stripped> // setter 
+	0xb94c0  func <stripped> // modifyCoroutine 
+	0xb9510  func <stripped> // getter 
+	0xb9570  func <stripped> // method 
+	0xba2d0  func <stripped> // method 
+	0xba9a0  func <stripped> // method 
+	0xbb2b0  func <stripped> // method 
+	0xbbe70  func <stripped> // method 
+	0xbbf90  func <stripped> // method 
+	0xbc0b0  func <stripped> // method 
+	0xbc280  func <stripped> // method 
+	0xbc4f0  func <stripped> // method 
+	0xbc650  func <stripped> // method 
+	0xbcaa0  func <stripped> // getter 
+	0xbced0  func <stripped> // getter 
+	0xbd0a0  func <stripped> // getter 
+	0xbd270  func <stripped> // getter 
+	0xbd490  func <stripped> // method 
+	0xbd7b0  func <stripped> // method 
+	0xbda70  func <stripped> // method 
+	0xbde30  func <stripped> // method 
  }
 
  struct HealthExperienceUI.DefaultBehaviours: Behaviours {
@@ -2710,26 +2713,26 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	var $__lazy_storage_$_queue : NSOperationQueue?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1796c000641c0 (0x16c000641c0) in binary!
-	0x17260  @objc InteractiveGenerationListener.(null) <stripped>
-WARNING: couldn't find address 0x1725400066008 (0x25400066008) in binary!
-	0x17248  @objc InteractiveGenerationListener.(null) <stripped>
-WARNING: couldn't find address 0x1382c00064178 (0x2c00064178) in binary!
-	0x17930  @objc InteractiveGenerationListener.(null) <stripped>
+WARNING: couldn't find address 0x17a2c00064468 (0x22c00064468) in binary!
+	0x17320  @objc InteractiveGenerationListener.(null) <stripped>
+WARNING: couldn't find address 0x1731400066308 (0x31400066308) in binary!
+	0x17308  @objc InteractiveGenerationListener.(null) <stripped>
+WARNING: couldn't find address 0x138ec00064420 (0xec00064420) in binary!
+	0x179f0  @objc InteractiveGenerationListener.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x234fff727f8  @objc InteractiveGenerationListener.(null) <stripped>
-	0xfff728f0  @objc InteractiveGenerationListener.A_]√UHâÂAWAVAUATSHÉÏ8Hâ˚Hâ◊ˇ« <stripped>
+	0x4dcfff72598  @objc InteractiveGenerationListener.(null) <stripped>
+	0xfff72690  @objc InteractiveGenerationListener.«Ëé <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff72a18  @objc InteractiveGenerationListener.(null) <stripped>
+	0xfff727b8  @objc InteractiveGenerationListener.(null) <stripped>
 
 	// Swift methods
-	0xbe970  func <stripped> // getter 
-	0xbec30  func <stripped> // method 
-	0xbed90  func <stripped> // method 
-	0xbefa0  func <stripped> // method 
-	0xbf4c0  func <stripped> // method 
-	0xbf770  func <stripped> // method 
-	0xbf990  func <stripped> // method 
+	0xbf480  func <stripped> // getter 
+	0xbf740  func <stripped> // method 
+	0xbf8a0  func <stripped> // method 
+	0xbfab0  func <stripped> // method 
+	0xbffd0  func <stripped> // method 
+	0xc0280  func <stripped> // method 
+	0xc04a0  func <stripped> // method 
  }
 
  class HealthExperienceUI.ProfileStoreBuddyProfileCreator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2738,51 +2741,51 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let profileStore : HKProfileStore
 
 	// Swift methods
-	0xc0270  class func ProfileStoreBuddyProfileCreator.__allocating_init(profileStore:) // init 
-	0xc02b0  func <stripped> // method 
+	0xc0d80  class func ProfileStoreBuddyProfileCreator.__allocating_init(profileStore:) // init 
+	0xc0dc0  func <stripped> // method 
  }
 
  class HealthExperienceUI.HostView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var userDataObserver : u‰ // +0x8 (0x8)
+	var userDataObserver : %Ê // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentUserInterface : °„ // +0x0 (0x0)
+	var currentUserInterface : YÂ // +0x0 (0x0)
 	var currentFeedItemUniqueIdentifier : String? // +0x0 (0x10)
 	var recreateViewControllerOnHostedFeedItemChange : Bool // +0x736f5f5f (0x1)
 	var parentViewController : weak UIViewController? // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var hostedFeedItem : iÌ // +0x173a3c (0x8)
+	var hostedFeedItem : !Ô // +0x17486c (0x8)
 	var hostedViewController : UIViewController? // +0x0 (0x8)
 	var hostedView : UIView? // +0x6e697274 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12dec00065188 (0x5ec00065188) in binary!
-	0x13af0  @objc HostView.(null) <stripped>
-WARNING: couldn't find address 0x17904000640a8 (0x104000640a8) in binary!
+WARNING: couldn't find address 0x12eac00065478 (0x6ac00065478) in binary!
+	0x13bb0  @objc HostView.(null) <stripped>
+WARNING: couldn't find address 0x179c400064350 (0x1c400064350) in binary!
 	0x18000000c  @objc HostView.(null) <stripped>
-WARNING: couldn't find address 0x137dc00065608 (0x7dc00065608) in binary!
+WARNING: couldn't find address 0x1389c00065900 (0x9c00065900) in binary!
 	0x38000000c  @objc HostView.(null) <stripped>
 
 	// Swift methods
-	0xc05e0  func <stripped> // getter 
-	0xc0600  func <stripped> // getter 
-	0xc1a20  func <stripped> // method 
-	0xc1a30  func <stripped> // method 
-	0xc0620  func <stripped> // getter 
-	0xc0680  func <stripped> // getter 
-	0xc06c0  func <stripped> // setter 
-	0xc06e0  func <stripped> // modifyCoroutine 
-	0xc0880  func <stripped> // getter 
-	0xc08a0  func <stripped> // setter 
-	0xc08c0  func <stripped> // modifyCoroutine 
-	0xc0940  func <stripped> // getter 
-	0xc09a0  func <stripped> // setter 
-	0xc0a30  func <stripped> // modifyCoroutine 
-	0xc0b00  func <stripped> // method 
-	0xc1160  func <stripped> // method 
-	0xc1310  func <stripped> // method 
+	0xc10f0  func <stripped> // getter 
+	0xc1110  func <stripped> // getter 
+	0xc2530  func <stripped> // method 
+	0xc2540  func <stripped> // method 
+	0xc1130  func <stripped> // getter 
+	0xc1190  func <stripped> // getter 
+	0xc11d0  func <stripped> // setter 
+	0xc11f0  func <stripped> // modifyCoroutine 
+	0xc1390  func <stripped> // getter 
+	0xc13b0  func <stripped> // setter 
+	0xc13d0  func <stripped> // modifyCoroutine 
+	0xc1450  func <stripped> // getter 
+	0xc14b0  func <stripped> // setter 
+	0xc1540  func <stripped> // modifyCoroutine 
+	0xc1610  func <stripped> // method 
+	0xc1c70  func <stripped> // method 
+	0xc1e20  func <stripped> // method 
  }
 
  class HealthExperienceUI.PlatformAlertsDataSource {
@@ -2790,22 +2793,22 @@ WARNING: couldn't find address 0x137dc00065608 (0x7dc00065608) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 	var $__lazy_storage_$_headerWithIconView : HeaderWithIconView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12da400065140 (0x5a400065140) in binary!
-	0x13aa8  @objc CollectionHeaderWithIconReusableView.(null) <stripped>
-WARNING: couldn't find address 0x178bc00064060 (0xbc00064060) in binary!
+WARNING: couldn't find address 0x12e6400065430 (0x66400065430) in binary!
+	0x13b68  @objc CollectionHeaderWithIconReusableView.(null) <stripped>
+WARNING: couldn't find address 0x1797c00064308 (0x17c00064308) in binary!
 	0x38000000c  @objc CollectionHeaderWithIconReusableView.(null) <stripped>
-WARNING: couldn't find address 0x171a400063e88 (0x1a400063e88) in binary!
-	0x13788  @objc CollectionHeaderWithIconReusableView.(null) <stripped>
+WARNING: couldn't find address 0x1726400064130 (0x26400064130) in binary!
+	0x13848  @objc CollectionHeaderWithIconReusableView.(null) <stripped>
 
 	// Swift methods
-	0xc5060  func <stripped> // getter 
-	0xc50a0  func <stripped> // setter 
-	0xc5150  func <stripped> // modifyCoroutine 
-	0xc5240  func <stripped> // getter 
+	0xc5b70  func <stripped> // getter 
+	0xc5bb0  func <stripped> // setter 
+	0xc5c60  func <stripped> // modifyCoroutine 
+	0xc5d50  func <stripped> // getter 
  }
 
  class HealthExperienceUI.DataTypeDetailFavoritesDataSource {
@@ -2815,12 +2818,12 @@ WARNING: couldn't find address 0x171a400063e88 (0x1a400063e88) in binary!
 	var updateHandler : (_:)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x171a400063e88 (0x1a400063e88) in binary!
-	0x13788  @objc FavoritesObserver.(null) <stripped>
-WARNING: couldn't find address 0x1788c00064030 (0x8c00064030) in binary!
+WARNING: couldn't find address 0x1726400064130 (0x26400064130) in binary!
+	0x13848  @objc FavoritesObserver.(null) <stripped>
+WARNING: couldn't find address 0x1794c000642d8 (0x14c000642d8) in binary!
 	0x48000000c  @objc FavoritesObserver.(null) <stripped>
-WARNING: couldn't find address 0x12d44000650e0 (0x544000650e0) in binary!
-	0x13a48  @objc FavoritesObserver.(null) <stripped>
+WARNING: couldn't find address 0x12e04000653d0 (0x604000653d0) in binary!
+	0x13b08  @objc FavoritesObserver.(null) <stripped>
 
 	// Swift methods
  }
@@ -2837,16 +2840,16 @@ WARNING: couldn't find address 0x12d44000650e0 (0x544000650e0) in binary!
 	var labelBottomConstraint : NSLayoutConstraint?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12d44000650e0 (0x544000650e0) in binary!
-	0x13a48  @objc MultilineButton.(null) <stripped>
-WARNING: couldn't find address 0x1785c00065e40 (0x5c00065e40) in binary!
-	0x17850  @objc MultilineButton.(null) <stripped>
+WARNING: couldn't find address 0x12e04000653d0 (0x604000653d0) in binary!
+	0x13b08  @objc MultilineButton.(null) <stripped>
+WARNING: couldn't find address 0x1791c00066140 (0x11c00066140) in binary!
+	0x17910  @objc MultilineButton.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0xfcfff79fb8  @objc MultilineButton.(null) <stripped>
-	0x3b4fff7aea0  @objc MultilineButton.A^A_]ˇ‡UHâÂAWAVATSAâ÷HÉ=Û0 <stripped>
+	0x3a4fff79d58  @objc MultilineButton.(null) <stripped>
+	0x6acfff7ac40  @objc MultilineButton.HÉƒ[A\A]A^A_]ˇ‡UHâÂAWAVAUATSPIâ˛Lã=‡Â <stripped>
 
 	// Swift methods
-	0xc9360  func <stripped> // method 
+	0xc9e70  func <stripped> // method 
  }
 
  class HealthExperienceUI.CategoryViewController : CompoundDataSourceCollectionViewController {
@@ -2854,27 +2857,27 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	// Properties
 	let typeGroup : HKTypeGroup
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let healthExperienceStore : 
+	let healthExperienceStore : Õ
 	let providedHealthStore : HKHealthStore
 	let categoryViewDataSource : CategoryViewDataSource
 	let navigationBarStyle : NavigationBarStyle
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13a1c00064960 (0x21c00064960) in binary!
-	0x17830  @objc CategoryViewController.(null) <stripped>
-WARNING: couldn't find address 0x1712400065da0 (0x12400065da0) in binary!
-	0x139f8  @objc CategoryViewController.(null) <stripped>
-WARNING: couldn't find address 0x1780c00063fb0 (0xc00063fb0) in binary!
+WARNING: couldn't find address 0x13adc00064c08 (0x2dc00064c08) in binary!
+	0x178f0  @objc CategoryViewController.(null) <stripped>
+WARNING: couldn't find address 0x171e4000660a0 (0x1e4000660a0) in binary!
+	0x13ab8  @objc CategoryViewController.(null) <stripped>
+WARNING: couldn't find address 0x178cc00064258 (0xcc00064258) in binary!
 	0x28000000c  @objc CategoryViewController.(null) <stripped>
-WARNING: couldn't find address 0x136e400064030 (0x6e400064030) in binary!
-	0x177e8  @objc CategoryViewController.(null) <stripped>
+WARNING: couldn't find address 0x137a4000642d8 (0x7a4000642d8) in binary!
+	0x178a8  @objc CategoryViewController.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x72cfff7c520  @objc CategoryViewController.(null) <stripped>
+	0x1d4fff7c2c0  @objc CategoryViewController.(null) <stripped>
 
 	// Swift methods
-	0xc9ce0  func <stripped> // getter 
-	0xc9cf0  class func CategoryViewController.__allocating_init(typeGroup:healthStore:healthExperienceStore:) // init 
-	0xca710  func <stripped> // method 
+	0xca7f0  func <stripped> // getter 
+	0xca800  class func CategoryViewController.__allocating_init(typeGroup:healthStore:healthExperienceStore:) // init 
+	0xcb220  func <stripped> // method 
  }
 
  enum HealthExperienceUI.NavigationBarStyle {
@@ -2890,17 +2893,17 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var delegate : CloudSyncFlowDelegate
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x136e400064030 (0x6e400064030) in binary!
-	0x177e8  @objc CloudSyncFlow.(null) <stripped>
+WARNING: couldn't find address 0x137a4000642d8 (0x7a4000642d8) in binary!
+	0x178a8  @objc CloudSyncFlow.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x72cfff7c520  @objc CloudSyncFlow.(null) <stripped>
+	0x1d4fff7c2c0  @objc CloudSyncFlow.(null) <stripped>
 
 	// Swift methods
-	0xcbea0  func <stripped> // getter 
-	0xcbee0  func <stripped> // setter 
-	0xcbf40  func <stripped> // modifyCoroutine 
-	0xcc020  func <stripped> // method 
-	0xcc6b0  func <stripped> // method 
+	0xcc9b0  func <stripped> // getter 
+	0xcc9f0  func <stripped> // setter 
+	0xcca50  func <stripped> // modifyCoroutine 
+	0xccb30  func <stripped> // method 
+	0xcd1c0  func <stripped> // method 
  }
 
  class HealthExperienceUI.ThresholdSpecifierViewControllerDataSource : HealthChecklistDataSource {
@@ -2911,22 +2914,22 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var configuration : ThresholdSpecifierConfiguration
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1779400063f38 (0x79400063f38) in binary!
+WARNING: couldn't find address 0x17854000641e0 (0x54000641e0) in binary!
 	0x48000000c  @objc ThresholdSpecifierViewControllerDataSource.(null) <stripped>
 
 	// Swift methods
-	0xcd130  func <stripped> // getter 
-	0xcd150  func <stripped> // setter 
-	0xcd170  func <stripped> // modifyCoroutine 
-	0xcd340  func <stripped> // getter 
-	0xcd3a0  func <stripped> // setter 
-	0xcd420  func <stripped> // modifyCoroutine 
-	0xcd540  func <stripped> // getter 
-	0xcd5f0  func <stripped> // setter 
-	0xcd680  func <stripped> // modifyCoroutine 
-	0xcd750  class func ThresholdSpecifierViewControllerDataSource.__allocating_init(featureName:configuration:) // init 
-	0xcd900  func <stripped> // method 
-	0xcd980  func <stripped> // method 
+	0xcdc40  func <stripped> // getter 
+	0xcdc60  func <stripped> // setter 
+	0xcdc80  func <stripped> // modifyCoroutine 
+	0xcde50  func <stripped> // getter 
+	0xcdeb0  func <stripped> // setter 
+	0xcdf30  func <stripped> // modifyCoroutine 
+	0xce050  func <stripped> // getter 
+	0xce100  func <stripped> // setter 
+	0xce190  func <stripped> // modifyCoroutine 
+	0xce260  class func ThresholdSpecifierViewControllerDataSource.__allocating_init(featureName:configuration:) // init 
+	0xce410  func <stripped> // method 
+	0xce490  func <stripped> // method 
  }
 
  class HealthExperienceUI.ThresholdSpecifierViewControllerDelegate : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2945,13 +2948,13 @@ WARNING: couldn't find address 0x1779400063f38 (0x79400063f38) in binary!
 	var thresholdDelegate : ThresholdSpecifierViewControllerDelegate
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x13994000648d8 (0x194000648d8) in binary!
-	0x177a8  @objc ThresholdSpecifierViewController.(null) <stripped>
+WARNING: couldn't find address 0x13a5400064b80 (0x25400064b80) in binary!
+	0x17868  @objc ThresholdSpecifierViewController.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff7e000  @objc ThresholdSpecifierViewController.(null) <stripped>
+	0xfff7dda0  @objc ThresholdSpecifierViewController.(null) <stripped>
 
 	// Swift methods
-	0xce8a0  class func ThresholdSpecifierViewController.__allocating_init(featureName:configuration:shouldHaveDoneButton:) // init 
+	0xcf3b0  class func ThresholdSpecifierViewController.__allocating_init(featureName:configuration:shouldHaveDoneButton:) // init 
  }
 
  class HealthExperienceUI.DataTypeDetailUnitCell : CollectionViewListDisclosureCell {
@@ -2960,19 +2963,19 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var parentViewController : weak UIViewController? // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1777c00065ee8 (0x77c00065ee8) in binary!
-	0x12c40  @objc DataTypeDetailUnitCell.(null) <stripped>
-WARNING: couldn't find address 0x1394400064888 (0x14400064888) in binary!
-	0x17758  @objc DataTypeDetailUnitCell.(null) <stripped>
+WARNING: couldn't find address 0x1783c000661e8 (0x3c000661e8) in binary!
+	0x12d00  @objc DataTypeDetailUnitCell.(null) <stripped>
+WARNING: couldn't find address 0x13a0400064b30 (0x20400064b30) in binary!
+	0x17818  @objc DataTypeDetailUnitCell.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x5cfff819e0  @objc DataTypeDetailUnitCell.(null) <stripped>
-	0xfff81aa8  @objc DataTypeDetailUnitCell.E–IãHã5≥ <stripped>
+	0x304fff81780  @objc DataTypeDetailUnitCell.(null) <stripped>
+	0xfff81848  @objc DataTypeDetailUnitCell.â«Ëﬂè <stripped>
 
 	// Swift methods
-	0xcfaa0  func <stripped> // getter 
-	0xcfae0  func <stripped> // setter 
-	0xcfb30  func <stripped> // modifyCoroutine 
-	0xd0110  func <stripped> // method 
+	0xd05b0  func <stripped> // getter 
+	0xd05f0  func <stripped> // setter 
+	0xd0640  func <stripped> // modifyCoroutine 
+	0xd0c20  func <stripped> // method 
  }
 
  class HealthExperienceUI.IconWithNameCell : _UICollectionViewListCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -2983,30 +2986,30 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let icon : UIImageView
 	let name : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12c1400064fb0 (0x41400064fb0) in binary!
-	0x13918  @objc IconWithNameCell.(null) <stripped>
-WARNING: couldn't find address 0x1772c00063ed0 (0x72c00063ed0) in binary!
+WARNING: couldn't find address 0x12cd4000652a0 (0x4d4000652a0) in binary!
+	0x139d8  @objc IconWithNameCell.(null) <stripped>
+WARNING: couldn't find address 0x177ec00064178 (0x7ec00064178) in binary!
 	0x88000000c  @objc IconWithNameCell.(null) <stripped>
-WARNING: couldn't find address 0x138f400064838 (0xf400064838) in binary!
-	0x17708  @objc IconWithNameCell.(null) <stripped>
+WARNING: couldn't find address 0x139b400064ae0 (0x1b400064ae0) in binary!
+	0x177c8  @objc IconWithNameCell.(null) <stripped>
 
 	// Swift methods
-	0xd1300  func <stripped> // getter 
-	0xd13b0  func <stripped> // setter 
-	0xd13d0  func <stripped> // modifyCoroutine 
-	0xd1420  func <stripped> // getter 
-	0xd1520  func <stripped> // setter 
-	0xd1540  func <stripped> // modifyCoroutine 
-	0xd15b0  func <stripped> // getter 
-	0xd15f0  func <stripped> // setter 
-	0xd1660  func <stripped> // modifyCoroutine 
-	0xd1ff0  func <stripped> // method 
-	0xd16e0  func <stripped> // method 
-	0xd0ff0  func <stripped> // method 
-	0xd1700  func <stripped> // method 
+	0xd1e10  func <stripped> // getter 
+	0xd1ec0  func <stripped> // setter 
+	0xd1ee0  func <stripped> // modifyCoroutine 
+	0xd1f30  func <stripped> // getter 
+	0xd2030  func <stripped> // setter 
+	0xd2050  func <stripped> // modifyCoroutine 
+	0xd20c0  func <stripped> // getter 
+	0xd2100  func <stripped> // setter 
+	0xd2170  func <stripped> // modifyCoroutine 
+	0xd2b00  func <stripped> // method 
+	0xd21f0  func <stripped> // method 
+	0xd1b00  func <stripped> // method 
+	0xd2210  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDetailViewController : CompoundDataSourceCollectionViewController {
@@ -3018,41 +3021,41 @@ WARNING: couldn't find address 0x138f400064838 (0xf400064838) in binary!
 	var $__lazy_storage_$_personalizedFeedTrainer : PersonalizedFeedTrainer
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x138f400064838 (0xf400064838) in binary!
-	0x17708  @objc DataTypeDetailViewController.(null) <stripped>
-WARNING: couldn't find address 0x1770400063ff0 (0x70400063ff0) in binary!
-	0x176f8  @objc DataTypeDetailViewController.(null) <stripped>
-WARNING: couldn't find address 0x16fe400063c98 (0x7e400063c98) in binary!
-	0x16fd8  @objc DataTypeDetailViewController.(null) <stripped>
-WARNING: couldn't find address 0x138ac00065268 (0xac00065268) in binary!
-	0x176c0  @objc DataTypeDetailViewController.(null) <stripped>
+WARNING: couldn't find address 0x139b400064ae0 (0x1b400064ae0) in binary!
+	0x177c8  @objc DataTypeDetailViewController.(null) <stripped>
+WARNING: couldn't find address 0x177c400064298 (0x7c400064298) in binary!
+	0x177b8  @objc DataTypeDetailViewController.(null) <stripped>
+WARNING: couldn't find address 0x170a400063f40 (0xa400063f40) in binary!
+	0x17098  @objc DataTypeDetailViewController.(null) <stripped>
+WARNING: couldn't find address 0x1396c00065560 (0x16c00065560) in binary!
+	0x17780  @objc DataTypeDetailViewController.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x644fff862c8  @objc DataTypeDetailViewController.(null) <stripped>
-	0xfff85da0  @objc DataTypeDetailViewController.A\A]A^A_]ˇ‡ê;˝ˇˇ°˝ˇˇ‘˝ˇˇ˛ˇˇ:˛ˇˇj˛ˇˇÉˇˇˇåˇˇˇUHâÂAWAVAUATSPIâŒHâ˚Hãq˝ <stripped>
+	0x144fff86068  @objc DataTypeDetailViewController.(null) <stripped>
+	0xfff85b40  @objc DataTypeDetailViewController.DÍ <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x45cfff86178  @objc DataTypeDetailViewController.(null) <stripped>
-	0x54c00063e98  @objc DataTypeDetailViewController. <stripped>
+	0x704fff85f18  @objc DataTypeDetailViewController.(null) <stripped>
+	0x60c00064140  @objc DataTypeDetailViewController.∆ <stripped>
 
 	// Swift methods
-	0xd34c0  func <stripped> // getter 
-	0xd34d0  func <stripped> // getter 
-	0xd3510  func <stripped> // setter 
-	0xd3560  func <stripped> // modifyCoroutine 
-	0xd35b0  func <stripped> // getter 
-	0xd3660  func <stripped> // setter 
-	0xd3680  func <stripped> // modifyCoroutine 
-	0xd3fd0  class func DataTypeDetailViewController.__allocating_init(healthStore:collectionViewLayout:) // init 
-	0xd52e0  class func DataTypeDetailViewController.__allocating_init(coder:healthStore:) // init 
-	0xd36d0  func <stripped> // method 
-	0xd3b10  func <stripped> // method 
+	0xd3fd0  func <stripped> // getter 
+	0xd3fe0  func <stripped> // getter 
+	0xd4020  func <stripped> // setter 
+	0xd4070  func <stripped> // modifyCoroutine 
+	0xd40c0  func <stripped> // getter 
+	0xd4170  func <stripped> // setter 
+	0xd4190  func <stripped> // modifyCoroutine 
+	0xd4ae0  class func DataTypeDetailViewController.__allocating_init(healthStore:collectionViewLayout:) // init 
+	0xd5df0  class func DataTypeDetailViewController.__allocating_init(coder:healthStore:) // init 
+	0xd41e0  func <stripped> // method 
+	0xd4620  func <stripped> // method 
  }
 
  class HealthExperienceUI.DebugActionTapGestureRecognizer : UITapGestureRecognizer /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d6ea000658f0 (0x6ea000658f0) in binary!
-	0x1d6ec  @objc DebugActionTapGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x1d7aa00065be8 (0x7aa00065be8) in binary!
+	0x1d7ac  @objc DebugActionTapGestureRecognizer.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x5f4fff895a8  @objc DebugActionTapGestureRecognizer.(null) <stripped>
+	0x9cfff89348  @objc DebugActionTapGestureRecognizer.(null) <stripped>
 
 	// Swift methods
  }
@@ -3063,13 +3066,13 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let pluginProviding : NotificationHandlerPluginProviding
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1354c00063e98 (0x54c00063e98) in binary!
-	0x17650  @objc PluginNotificationRouter.(null) <stripped>
+WARNING: couldn't find address 0x1360c00064140 (0x60c00064140) in binary!
+	0x17710  @objc PluginNotificationRouter.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x614fff8a5e8  @objc PluginNotificationRouter.(null) <stripped>
+	0x114fff8a388  @objc PluginNotificationRouter.(null) <stripped>
 
 	// Swift methods
-	0xd9c20  func <stripped> // method 
+	0xda730  func <stripped> // method 
  }
 
  class HealthExperienceUI.PlatformNotificationHandlerPluginProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, NotificationHandlerPluginProviding {
@@ -3078,18 +3081,18 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var $__lazy_storage_$_categoriesProvidingPlugins : PluginNotificationCategoriesProviding
 	var $__lazy_storage_$_delegateProvidingPlugins : PluginNotificationCenterDelegateProviding
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pluginBundleProvider : %Í
+	let pluginBundleProvider : ›Î
 
 	// Swift methods
-	0xdaf70  func <stripped> // getter 
-	0xdb450  func <stripped> // getter 
+	0xdba80  func <stripped> // getter 
+	0xdbf60  func <stripped> // getter 
  }
 
  struct HealthExperienceUI.LayoutConfiguration: LayoutConfigurationProviding {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var interItemInset : ± // +0x0
+	var interItemInset : a // +0x0
 	var itemHeight : NSCollectionLayoutDimension // +0x8
 	var itemWidth : NSCollectionLayoutDimension // +0x10
 	var header : BoundarySupplementaryItem // +0x18
@@ -3121,7 +3124,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var footerHeight : NSCollectionLayoutDimension? // +0x18
 	var additionalContentInsets : NSDirectionalEdgeInsets // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var estimatedRowHeight : ± // +0x40
+	var estimatedRowHeight : a // +0x40
 	var separatorInsets : NSDirectionalEdgeInsets // +0x48
 	var contentInsetsReference : UIContentInsetsReference // +0x70
  }
@@ -3134,10 +3137,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let healthStore : HKHealthStore
 
 	// Swift methods
-	0xe0740  func <stripped> // getter 
-	0xe0780  func <stripped> // setter 
-	0xe07c0  func <stripped> // modifyCoroutine 
-	0xe0800  class func HighlightsCategoryItem.__allocating_init(type:healthStore:) // init 
+	0xe1250  func <stripped> // getter 
+	0xe1290  func <stripped> // setter 
+	0xe12d0  func <stripped> // modifyCoroutine 
+	0xe1310  class func HighlightsCategoryItem.__allocating_init(type:healthStore:) // init 
  }
 
  enum HealthExperienceUI.ItemType {
@@ -3152,29 +3155,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let profileContextView : ProfileContextView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12aac00064e48 (0x2ac00064e48) in binary!
-	0x137b0  @objc DataTypeDetailProfileContextCell.(null) <stripped>
-WARNING: couldn't find address 0x175c400063d68 (0x5c400063d68) in binary!
+WARNING: couldn't find address 0x12b6c00065138 (0x36c00065138) in binary!
+	0x13870  @objc DataTypeDetailProfileContextCell.(null) <stripped>
+WARNING: couldn't find address 0x1768400064010 (0x68400064010) in binary!
 	0x28000000c  @objc DataTypeDetailProfileContextCell.(null) <stripped>
-WARNING: couldn't find address 0x12a7c00064e18 (0x27c00064e18) in binary!
-	0x13780  @objc DataTypeDetailProfileContextCell.(null) <stripped>
+WARNING: couldn't find address 0x12b3c00065108 (0x33c00065108) in binary!
+	0x13840  @objc DataTypeDetailProfileContextCell.(null) <stripped>
 
 	// Swift methods
-	0xe1f40  func <stripped> // getter 
-	0xe1f70  func <stripped> // setter 
-	0xe1fe0  func <stripped> // modifyCoroutine 
-	0xe2050  class func <stripped> // method 
+	0xe2a50  func <stripped> // getter 
+	0xe2a80  func <stripped> // setter 
+	0xe2af0  func <stripped> // modifyCoroutine 
+	0xe2b60  class func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDetailChartProfileContextCell : DataTypeDetailProfileContextCell {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12a7c00064e18 (0x27c00064e18) in binary!
-	0x13780  @objc DataTypeDetailChartProfileContextCell.(null) <stripped>
+WARNING: couldn't find address 0x12b3c00065108 (0x33c00065108) in binary!
+	0x13840  @objc DataTypeDetailChartProfileContextCell.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x6a4fff954a8  @objc DataTypeDetailChartProfileContextCell.(null) <stripped>
+	0x14cfff95248  @objc DataTypeDetailChartProfileContextCell.(null) <stripped>
  }
 
  class HealthExperienceUI.ProfileContextView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3187,24 +3190,24 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	let subtitleLabel : DynamicFontLabel // +0x28 (0x8)
 	let style : Style // +0x30 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var profileInformation : Ûﬂ // +0x45545f5f (0x0)
+	var profileInformation : ´· // +0x45545f5f (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x137ec00064730 (0x7ec00064730) in binary!
-	0x12ad0  @objc ProfileContextView.(null) <stripped>
-WARNING: couldn't find address 0x175f400063d98 (0x5f400063d98) in binary!
+WARNING: couldn't find address 0x138ac000649d8 (0xac000649d8) in binary!
+	0x12b90  @objc ProfileContextView.(null) <stripped>
+WARNING: couldn't find address 0x176b400064040 (0x6b400064040) in binary!
 	0x38000000c  @objc ProfileContextView.(null) <stripped>
-WARNING: couldn't find address 0x12aac00064e48 (0x2ac00064e48) in binary!
-	0x137b0  @objc ProfileContextView.(null) <stripped>
+WARNING: couldn't find address 0x12b6c00065138 (0x36c00065138) in binary!
+	0x13870  @objc ProfileContextView.(null) <stripped>
 
 	// Swift methods
-	0xe27e0  func <stripped> // getter 
-	0xe2860  func <stripped> // setter 
-	0xe28d0  func <stripped> // modifyCoroutine 
-	0xe2060  class func ProfileContextView.__allocating_init(_:style:frame:) // init 
-	0xe2d80  func <stripped> // method 
-	0xe3120  func <stripped> // method 
-	0xe3c10  func <stripped> // method 
+	0xe32f0  func <stripped> // getter 
+	0xe3370  func <stripped> // setter 
+	0xe33e0  func <stripped> // modifyCoroutine 
+	0xe2b70  class func ProfileContextView.__allocating_init(_:style:frame:) // init 
+	0xe3890  func <stripped> // method 
+	0xe3c30  func <stripped> // method 
+	0xe4720  func <stripped> // method 
  }
 
  enum HealthExperienceUI.Style {
@@ -3220,7 +3223,7 @@ WARNING: couldn't find address 0x12aac00064e48 (0x2ac00064e48) in binary!
 	let shouldAnimateDiffableCollectionViewAdaptorKey : String
 
 	// Swift methods
-	0xe4b80  func <stripped> // method 
+	0xe5690  func <stripped> // method 
  }
 
  class HealthExperienceUI.DefaultHeaderCollectionReusableView : UICollectionReusableView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3231,34 +3234,34 @@ WARNING: couldn't find address 0x12aac00064e48 (0x2ac00064e48) in binary!
 	var customConstraints : [NSLayoutConstraint]
 	var $__lazy_storage_$_detailButtonHeightConstraint : NSLayoutConstraint?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12a5c00064df8 (0x25c00064df8) in binary!
-	0x13760  @objc DefaultHeaderCollectionReusableView.(null) <stripped>
-WARNING: couldn't find address 0x16e7400063dd0 (0x67400063dd0) in binary!
-	0x16e68  @objc DefaultHeaderCollectionReusableView.(null) <stripped>
-WARNING: couldn't find address 0x1755c00063d00 (0x55c00063d00) in binary!
+WARNING: couldn't find address 0x12b1c000650e8 (0x31c000650e8) in binary!
+	0x13820  @objc DefaultHeaderCollectionReusableView.(null) <stripped>
+WARNING: couldn't find address 0x16f3400064078 (0x73400064078) in binary!
+	0x16f28  @objc DefaultHeaderCollectionReusableView.(null) <stripped>
+WARNING: couldn't find address 0x1761c00063fa8 (0x61c00063fa8) in binary!
 	0x38000000c  @objc DefaultHeaderCollectionReusableView.(null) <stripped>
-WARNING: couldn't find address 0x12a1400064db0 (0x21400064db0) in binary!
-	0x13718  @objc DefaultHeaderCollectionReusableView.(null) <stripped>
-WARNING: couldn't find address 0x1752c00063cd0 (0x52c00063cd0) in binary!
+WARNING: couldn't find address 0x12ad4000650a0 (0x2d4000650a0) in binary!
+	0x137d8  @objc DefaultHeaderCollectionReusableView.(null) <stripped>
+WARNING: couldn't find address 0x175ec00063f78 (0x5ec00063f78) in binary!
 	0x28000000c  @objc DefaultHeaderCollectionReusableView.(null) <stripped>
 
 	// Swift methods
-	0xe4f70  func <stripped> // getter 
-	0xe5020  func <stripped> // getter 
-	0xe5180  func <stripped> // getter 
-	0xe5230  func <stripped> // getter 
-	0xe58e0  func <stripped> // getter 
-	0xe5920  func <stripped> // setter 
-	0xe5980  func <stripped> // modifyCoroutine 
-	0xe5c20  func <stripped> // method 
-	0xe5f00  func <stripped> // method 
-	0xe5fb0  func <stripped> // method 
-	0xe6140  func <stripped> // method 
-	0xe6570  func <stripped> // method 
-	0xe6970  func <stripped> // method 
+	0xe5a80  func <stripped> // getter 
+	0xe5b30  func <stripped> // getter 
+	0xe5c90  func <stripped> // getter 
+	0xe5d40  func <stripped> // getter 
+	0xe63f0  func <stripped> // getter 
+	0xe6430  func <stripped> // setter 
+	0xe6490  func <stripped> // modifyCoroutine 
+	0xe6730  func <stripped> // method 
+	0xe6a10  func <stripped> // method 
+	0xe6ac0  func <stripped> // method 
+	0xe6c50  func <stripped> // method 
+	0xe7080  func <stripped> // method 
+	0xe7480  func <stripped> // method 
  }
 
  struct HealthExperienceUI.TextViewCollectionSupplementaryItem {
@@ -3273,42 +3276,42 @@ WARNING: couldn't find address 0x1752c00063cd0 (0x52c00063cd0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M // +0x8 (0x28)
+	var item :  // +0x8 (0x28)
 	let textView : UITextView // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12a1400064db0 (0x21400064db0) in binary!
-	0x13718  @objc TextViewCollectionReusableView.(null) <stripped>
-WARNING: couldn't find address 0x1752c00063cd0 (0x52c00063cd0) in binary!
+WARNING: couldn't find address 0x12ad4000650a0 (0x2d4000650a0) in binary!
+	0x137d8  @objc TextViewCollectionReusableView.(null) <stripped>
+WARNING: couldn't find address 0x175ec00063f78 (0x5ec00063f78) in binary!
 	0x28000000c  @objc TextViewCollectionReusableView.(null) <stripped>
-WARNING: couldn't find address 0x129e400064d80 (0x1e400064d80) in binary!
-	0x136e8  @objc TextViewCollectionReusableView.(null) <stripped>
+WARNING: couldn't find address 0x12aa400065070 (0x2a400065070) in binary!
+	0x137a8  @objc TextViewCollectionReusableView.(null) <stripped>
 
 	// Swift methods
-	0xe7630  func <stripped> // getter 
-	0xe7670  func <stripped> // setter 
-	0xe76d0  func <stripped> // modifyCoroutine 
-	0xe7c10  func <stripped> // method 
-	0xe7e90  func <stripped> // method 
+	0xe8140  func <stripped> // getter 
+	0xe8180  func <stripped> // setter 
+	0xe81e0  func <stripped> // modifyCoroutine 
+	0xe8720  func <stripped> // method 
+	0xe89a0  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDetailActivityChartCell : DataTypeDetailChartCell {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x129e400064d80 (0x1e400064d80) in binary!
-	0x136e8  @objc DataTypeDetailActivityChartCell.(null) <stripped>
+WARNING: couldn't find address 0x12aa400065070 (0x2a400065070) in binary!
+	0x137a8  @objc DataTypeDetailActivityChartCell.(null) <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x2dcfff98fb0  @objc DataTypeDetailActivityChartCell.(null) <stripped>
+	0x584fff98d50  @objc DataTypeDetailActivityChartCell.(null) <stripped>
 
 	// Swift methods
-	0xe8940  func <stripped> // method 
+	0xe9450  func <stripped> // method 
  }
 
  class HealthExperienceUI.AllHighlightCategoriesTableViewAdaptor : SectionedTableViewAdaptor {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1e8a400065c70 (0xa400065c70) in binary!
-	0x13360  @objc AllHighlightCategoriesTableViewAdaptor.(null) <stripped>
+WARNING: couldn't find address 0x1e96400065f70 (0x16400065f70) in binary!
+	0x13420  @objc AllHighlightCategoriesTableViewAdaptor.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x574fff99de8  @objc AllHighlightCategoriesTableViewAdaptor.(null) <stripped>
+	0x1cfff99b88  @objc AllHighlightCategoriesTableViewAdaptor.(null) <stripped>
  }
 
  class HealthExperienceUI.AllHighlightCategoriesViewController : CompoundDataSourceViewController {
@@ -3317,39 +3320,39 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let allHighlightsAdaptor : AllHighlightCategoriesTableViewAdaptor
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x174f400063dc0 (0x4f400063dc0) in binary!
-	0x1e86c  @objc AllHighlightCategoriesViewController.(null) <stripped>
-WARNING: couldn't find address 0x1e16100063ad8 (0x16100063ad8) in binary!
-	0x1e854  @objc AllHighlightCategoriesViewController.(null) <stripped>
-WARNING: couldn't find address 0x1e14900063ac8 (0x14900063ac8) in binary!
-	0x1e84a  @objc AllHighlightCategoriesViewController.(null) <stripped>
-WARNING: couldn't find address 0x1410800065070 (0x10800065070) in binary!
-	0x13680  @objc AllHighlightCategoriesViewController.(null) <stripped>
-WARNING: couldn't find address 0x1749400063c38 (0x49400063c38) in binary!
+WARNING: couldn't find address 0x175b400064068 (0x5b400064068) in binary!
+	0x1e92c  @objc AllHighlightCategoriesViewController.(null) <stripped>
+WARNING: couldn't find address 0x1e22100063d80 (0x22100063d80) in binary!
+	0x1e914  @objc AllHighlightCategoriesViewController.(null) <stripped>
+WARNING: couldn't find address 0x1e20900063d70 (0x20900063d70) in binary!
+	0x1e90a  @objc AllHighlightCategoriesViewController.(null) <stripped>
+WARNING: couldn't find address 0x141c800065368 (0x1c800065368) in binary!
+	0x13740  @objc AllHighlightCategoriesViewController.(null) <stripped>
+WARNING: couldn't find address 0x1755400063ee0 (0x55400063ee0) in binary!
 	0x28000000c  @objc AllHighlightCategoriesViewController.(null) <stripped>
-WARNING: couldn't find address 0x1e8a400065c70 (0xa400065c70) in binary!
-	0x13360  @objc AllHighlightCategoriesViewController.(null) <stripped>
+WARNING: couldn't find address 0x1e96400065f70 (0x16400065f70) in binary!
+	0x13420  @objc AllHighlightCategoriesViewController.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x574fff99de8  @objc AllHighlightCategoriesViewController.(null) <stripped>
-	0xfff9a0e0  @objc AllHighlightCategoriesViewController.ﬂ1ˆËgÜ <stripped>
+	0x1cfff99b88  @objc AllHighlightCategoriesViewController.(null) <stripped>
+	0xfff99e80  @objc AllHighlightCategoriesViewController.ˇ‡HÉƒ[A^A_]√UHâÂAWAVSPHã*L <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff9e7b8  @objc AllHighlightCategoriesViewController.(null) <stripped>
+	0xfff9e598  @objc AllHighlightCategoriesViewController.(null) <stripped>
 
 	// Swift methods
-	0xe9190  func <stripped> // method 
+	0xe9ca0  func <stripped> // method 
  }
 
  class HealthExperienceUI.ShadowView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1292c00064cc8 (0x12c00064cc8) in binary!
-	0x13630  @objc ShadowView.(null) <stripped>
-WARNING: couldn't find address 0x17444000657c8 (0x444000657c8) in binary!
+WARNING: couldn't find address 0x129ec00064fb8 (0x1ec00064fb8) in binary!
+	0x136f0  @objc ShadowView.(null) <stripped>
+WARNING: couldn't find address 0x1750400065ac0 (0x50400065ac0) in binary!
 	0x18000000c  @objc ShadowView.(null) <stripped>
-WARNING: couldn't find address 0x1360c00065d48 (0x60c00065d48) in binary!
+WARNING: couldn't find address 0x136cc00066040 (0x6cc00066040) in binary!
 	0x18000000c  @objc ShadowView.(null) <stripped>
 
 	// Swift methods
-	0xea760  func <stripped> // method 
+	0xeb270  func <stripped> // method 
  }
 
  class HealthExperienceUI.FeedItemListDataSourceProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3359,34 +3362,34 @@ WARNING: couldn't find address 0x1360c00065d48 (0x60c00065d48) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let contentKinds :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var store : 
+	var store : Õ
 
 	// Swift methods
-	0xee210  class func FeedItemListDataSourceProvider.__allocating_init(for:contentKinds:store:) // init 
-	0xee290  func <stripped> // method 
-	0xee2f0  func <stripped> // method 
+	0xeed60  class func FeedItemListDataSourceProvider.__allocating_init(for:contentKinds:store:) // init 
+	0xeede0  func <stripped> // method 
+	0xeee40  func <stripped> // method 
  }
 
  class HealthExperienceUI.SearchLayoutManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xf0490  func <stripped> // method 
+	0xf0fe0  func <stripped> // method 
  }
 
  class HealthExperienceUI.SearchDataSourceProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_tinkerProfilesSource : Éﬂ // +0x10 (0x8)
+	var $__lazy_storage_$_tinkerProfilesSource : ;· // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_categoriesDataSource : Éﬂ // +0x18 (0x8)
+	var $__lazy_storage_$_categoriesDataSource : ;· // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_searchResultsDataSource : Éﬂ // +0x20 (0x8)
+	var $__lazy_storage_$_searchResultsDataSource : ;· // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mainStore :  // +0x28 (0x28)
+	let mainStore : Õ // +0x28 (0x28)
 	let healthStore : HKHealthStore // +0x50 (0x8)
 	let behaviours : Behaviours // +0x58 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sourceProfile : cÍ // +0x0 (0x0)
+	let sourceProfile : Ï // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_searchResultsController :  empty-list  // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
@@ -3395,12 +3398,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_categoriesController :  empty-list  // +0x0 (0x8)
 
 	// Swift methods
-	0xf2500  func <stripped> // getter 
-	0xf2680  func <stripped> // getter 
-	0xf2800  func <stripped> // getter 
-	0xf2980  func <stripped> // getter 
-	0xf2bb0  func <stripped> // getter 
-	0xf2c10  func <stripped> // getter 
+	0xf3060  func <stripped> // getter 
+	0xf31e0  func <stripped> // getter 
+	0xf3360  func <stripped> // getter 
+	0xf34e0  func <stripped> // getter 
+	0xf3710  func <stripped> // getter 
+	0xf3770  func <stripped> // getter 
  }
 
  struct HealthExperienceUI.EducationItem {
@@ -3421,18 +3424,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x128cc00064c68 (0xcc00064c68) in binary!
-	0x135d0  @objc DownloadingDataCell.(null) <stripped>
-WARNING: couldn't find address 0x173e400063b88 (0x3e400063b88) in binary!
+WARNING: couldn't find address 0x1298c00064f58 (0x18c00064f58) in binary!
+	0x13690  @objc DownloadingDataCell.(null) <stripped>
+WARNING: couldn't find address 0x174a400063e30 (0x4a400063e30) in binary!
 	0x28000000c  @objc DownloadingDataCell.(null) <stripped>
-WARNING: couldn't find address 0x1e7f400065bc0 (0x7f400065bc0) in binary!
-	0x132b0  @objc DownloadingDataCell.(null) <stripped>
+WARNING: couldn't find address 0x1e8b400065ec0 (0xb400065ec0) in binary!
+	0x13370  @objc DownloadingDataCell.(null) <stripped>
 
 	// Swift methods
-	0xf5020  func <stripped> // method 
+	0xf5b80  func <stripped> // method 
  }
 
  class HealthExperienceUI.DownloadingDataItem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3443,43 +3446,43 @@ WARNING: couldn't find address 0x1e7f400065bc0 (0x7f400065bc0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var editFavoritesDataSource : ?‡
+	var editFavoritesDataSource : ˜·
 	var favoritesController : WDFavoriteDisplayTypesController?
 	var $__lazy_storage_$_segmentedControl : UISegmentedControl?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1329c00063be8 (0x29c00063be8) in binary!
-	0x13580  @objc EditFavoritesTableViewController.(null) <stripped>
-WARNING: couldn't find address 0x1739400063c60 (0x39400063c60) in binary!
-	0x17388  @objc EditFavoritesTableViewController.(null) <stripped>
-WARNING: couldn't find address 0x1737c00065cc0 (0x37c00065cc0) in binary!
-	0x13268  @objc EditFavoritesTableViewController.(null) <stripped>
-WARNING: couldn't find address 0x1e6e800063958 (0x6e800063958) in binary!
-	0x1e6ea  @objc EditFavoritesTableViewController.(null) <stripped>
-WARNING: couldn't find address 0x13fa800064f10 (0x7a800064f10) in binary!
-	0x17340  @objc EditFavoritesTableViewController.(null) <stripped>
+WARNING: couldn't find address 0x1335c00063e90 (0x35c00063e90) in binary!
+	0x13640  @objc EditFavoritesTableViewController.(null) <stripped>
+WARNING: couldn't find address 0x1745400063f08 (0x45400063f08) in binary!
+	0x17448  @objc EditFavoritesTableViewController.(null) <stripped>
+WARNING: couldn't find address 0x1743c00065fb8 (0x43c00065fb8) in binary!
+	0x13328  @objc EditFavoritesTableViewController.(null) <stripped>
+WARNING: couldn't find address 0x1e7a800063c00 (0x7a800063c00) in binary!
+	0x1e7aa  @objc EditFavoritesTableViewController.(null) <stripped>
+WARNING: couldn't find address 0x1406800065208 (0x6800065208) in binary!
+	0x17400  @objc EditFavoritesTableViewController.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffa5ea8  @objc EditFavoritesTableViewController.(null) <stripped>
+	0xfffa5c98  @objc EditFavoritesTableViewController.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x2acfffaf340  @objc EditFavoritesTableViewController.(null) <stripped>
-	0x1ec00063a60  @objc EditFavoritesTableViewController.¥‚ <stripped>
-WARNING: couldn't find address 0x63a5cfffaf390 (0x25cfffaf390) in binary!
-	0x3dc00063a58  @objc EditFavoritesTableViewController.(null) <stripped>
-WARNING: couldn't find address 0x63a54fffaf5d8 (0x254fffaf5d8) in binary!
+	0x554fffaf130  @objc EditFavoritesTableViewController.(null) <stripped>
+	0x2ac00063d08  @objc EditFavoritesTableViewController.Hâ¬Lâ·Aˇ÷ÎILâÁLâˆHãÒ <stripped>
+WARNING: couldn't find address 0x63d04fffaf180 (0x504fffaf180) in binary!
+	0x49c00063d00  @objc EditFavoritesTableViewController.(null) <stripped>
+WARNING: couldn't find address 0x63cfcfffaf3c8 (0x4fcfffaf3c8) in binary!
 	0x48000000c  @objc EditFavoritesTableViewController.(null) <stripped>
 
 	// Swift methods
-	0xf5650  func <stripped> // getter 
-	0xf5d60  func <stripped> // method 
-	0xf61e0  func <stripped> // method 
+	0xf61b0  func <stripped> // getter 
+	0xf68c0  func <stripped> // method 
+	0xf6d40  func <stripped> // method 
  }
 
  class HealthExperienceUI.EditFavoritesTableViewAdaptor : SectionedTableViewAdaptor {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1e7f400065bc0 (0x7f400065bc0) in binary!
-	0x132b0  @objc EditFavoritesTableViewAdaptor.(null) <stripped>
+WARNING: couldn't find address 0x1e8b400065ec0 (0xb400065ec0) in binary!
+	0x13370  @objc EditFavoritesTableViewAdaptor.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x4c4fffa4c88  @objc EditFavoritesTableViewAdaptor.(null) <stripped>
+	0x76cfffa4a78  @objc EditFavoritesTableViewAdaptor.(null) <stripped>
  }
 
  class HealthExperienceUI.HealthExperienceStoreIncrementalCoreSpotlightOperation {
@@ -3539,7 +3542,7 @@ WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _cachedFirstRestoreState : ˝€
+	var _cachedFirstRestoreState : µ›
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var firstRestoreStateChangeHandler :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
@@ -3548,31 +3551,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var store : CloudSyncStateStore
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1320400063b50 (0x20400063b50) in binary!
-	0x17308  @objc CloudSyncStateObserver.(null) <stripped>
+WARNING: couldn't find address 0x132c400063df8 (0x2c400063df8) in binary!
+	0x173c8  @objc CloudSyncStateObserver.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x25cfffaf390  @objc CloudSyncStateObserver.(null) <stripped>
+	0x504fffaf180  @objc CloudSyncStateObserver.(null) <stripped>
 
 	// Swift methods
-	0xff2e0  func <stripped> // getter 
-	0xff420  func <stripped> // getter 
-	0xff440  func <stripped> // setter 
-	0xff460  func <stripped> // modifyCoroutine 
-	0xff5b0  func <stripped> // getter 
-	0xff640  func <stripped> // setter 
-	0xff6d0  func <stripped> // modifyCoroutine 
-	0xff710  func <stripped> // modifyCoroutine 
-	0xff750  func <stripped> // getter 
-	0xff8c0  class func CloudSyncStateObserver.__allocating_init(healthStore:store:) // init 
-	0xff9f0  func <stripped> // method 
-	0xffa20  func <stripped> // method 
+	0xffe40  func <stripped> // getter 
+	0xfff80  func <stripped> // getter 
+	0xfffa0  func <stripped> // setter 
+	0xfffc0  func <stripped> // modifyCoroutine 
+	0x100110  func <stripped> // getter 
+	0x1001a0  func <stripped> // setter 
+	0x100230  func <stripped> // modifyCoroutine 
+	0x100270  func <stripped> // modifyCoroutine 
+	0x1002b0  func <stripped> // getter 
+	0x100420  class func CloudSyncStateObserver.__allocating_init(healthStore:store:) // init 
+	0x100550  func <stripped> // method 
+	0x100580  func <stripped> // method 
  }
 
  class HealthExperienceUI.HeaderDescriptionCollectionViewCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 	var $__lazy_storage_$_containerView : UIView?
 	var $__lazy_storage_$_imageBackgroundView : UIView?
 	var $__lazy_storage_$_imageView : UIImageView?
@@ -3584,29 +3587,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var secondaryDescriptionLabelConstraints : [NSLayoutConstraint]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1278c00064b28 (0x78c00064b28) in binary!
-	0x13490  @objc HeaderDescriptionCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x1f35400065c50 (0x35400065c50) in binary!
-	0x17298  @objc HeaderDescriptionCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x1284c00064e18 (0x4c00064e18) in binary!
+	0x13550  @objc HeaderDescriptionCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x1f41400065f48 (0x41400065f48) in binary!
+	0x17358  @objc HeaderDescriptionCollectionViewCell.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x23cfffb7600  @objc HeaderDescriptionCollectionViewCell.(null) <stripped>
-	0x15400063b48  @objc HeaderDescriptionCollectionViewCell.◊HâE–Hã5\‹ <stripped>
+	0x53cfffb73f0  @objc HeaderDescriptionCollectionViewCell.(null) <stripped>
+	0x21400063df0  @objc HeaderDescriptionCollectionViewCell. <stripped>
 
 	// Swift methods
-	0x101420  func <stripped> // getter 
-	0x1014b0  func <stripped> // getter 
-	0x101590  func <stripped> // getter 
-	0x101630  func <stripped> // getter 
-	0x101660  func <stripped> // getter 
-	0x1016f0  func <stripped> // getter 
-	0x101a70  func <stripped> // method 
-	0x101c10  func <stripped> // method 
-	0x102080  func <stripped> // method 
-	0x102320  func <stripped> // method 
-	0x102510  func <stripped> // method 
-	0x102750  func <stripped> // method 
-	0x1029a0  func <stripped> // method 
-	0x102b90  func <stripped> // method 
+	0x101f80  func <stripped> // getter 
+	0x102010  func <stripped> // getter 
+	0x1020f0  func <stripped> // getter 
+	0x102190  func <stripped> // getter 
+	0x1021c0  func <stripped> // getter 
+	0x102250  func <stripped> // getter 
+	0x1025d0  func <stripped> // method 
+	0x102770  func <stripped> // method 
+	0x102be0  func <stripped> // method 
+	0x102e80  func <stripped> // method 
+	0x103070  func <stripped> // method 
+	0x1032b0  func <stripped> // method 
+	0x103500  func <stripped> // method 
+	0x1036f0  func <stripped> // method 
  }
 
  struct HealthExperienceUI.HeaderDescriptionItem {
@@ -3650,22 +3653,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let dwellPolicy : DwellPolicy
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1728400065a50 (0x28400065a50) in binary!
-	0x17278  @objc PersonalizedFeedTrainer.(null) <stripped>
+WARNING: couldn't find address 0x1734400065d50 (0x34400065d50) in binary!
+	0x17338  @objc PersonalizedFeedTrainer.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x64fffbbe10  @objc PersonalizedFeedTrainer.(null) <stripped>
+	0x30cfffbbc00  @objc PersonalizedFeedTrainer.(null) <stripped>
 
 	// Swift methods
-	0x105790  class func PersonalizedFeedTrainer.__allocating_init(delegate:dwellPolicy:) // init 
-	0x105c40  func <stripped> // method 
-	0x105f20  func <stripped> // method 
-	0x1060e0  func <stripped> // method 
-	0x106190  func <stripped> // method 
-	0x1066d0  func <stripped> // method 
-	0x106e40  func <stripped> // method 
-	0x107820  func <stripped> // method 
-	0x107fb0  func <stripped> // method 
-	0x108050  func <stripped> // method 
+	0x1062f0  class func PersonalizedFeedTrainer.__allocating_init(delegate:dwellPolicy:) // init 
+	0x1067a0  func <stripped> // method 
+	0x106a80  func <stripped> // method 
+	0x106c40  func <stripped> // method 
+	0x106cf0  func <stripped> // method 
+	0x107230  func <stripped> // method 
+	0x1079a0  func <stripped> // method 
+	0x108380  func <stripped> // method 
+	0x108b10  func <stripped> // method 
+	0x108bb0  func <stripped> // method 
  }
 
  struct HealthExperienceUI.DwellPolicy {
@@ -3688,24 +3691,24 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	// Properties
 	var tableView : UITableView?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dataProvider : €
+	var dataProvider : Ω‹
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1315400063b48 (0x15400063b48) in binary!
-	0x16b58  @objc SectionedTableViewAdaptor.(null) <stripped>
-WARNING: couldn't find address 0x1313c00063a88 (0x13c00063a88) in binary!
-	0x17240  @objc SectionedTableViewAdaptor.(null) <stripped>
+WARNING: couldn't find address 0x1321400063df0 (0x21400063df0) in binary!
+	0x16c18  @objc SectionedTableViewAdaptor.(null) <stripped>
+WARNING: couldn't find address 0x131fc00063d30 (0x1fc00063d30) in binary!
+	0x17300  @objc SectionedTableViewAdaptor.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x234fffbc1e8  @objc SectionedTableViewAdaptor.(null) <stripped>
-	0x594fffbc490  @objc SectionedTableViewAdaptor.$Hãîo <stripped>
+	0x4dcfffbbfd8  @objc SectionedTableViewAdaptor.(null) <stripped>
+	0x24fffbc280  @objc SectionedTableViewAdaptor.X[A\A]A^A_]√UHâÂAWAVAUATSPHâ˚HÉ«HËÚ‚ <stripped>
 
 	// Swift methods
-	0x10c6a0  func <stripped> // getter 
-	0x10c6e0  func <stripped> // setter 
-	0x10c730  func <stripped> // modifyCoroutine 
-	0x10c780  func <stripped> // getter 
-	0x10c7d0  func <stripped> // setter 
-	0x10c820  func <stripped> // modifyCoroutine 
+	0x10d200  func <stripped> // getter 
+	0x10d240  func <stripped> // setter 
+	0x10d290  func <stripped> // modifyCoroutine 
+	0x10d2e0  func <stripped> // getter 
+	0x10d330  func <stripped> // setter 
+	0x10d380  func <stripped> // modifyCoroutine 
  }
 
  class HealthExperienceUI.DataTypeDetailFavoritesDescriptionCell : UICollectionViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3713,26 +3716,26 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	// Properties
 	var descriptionLabel : weak UILabel?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x130e400063808 (0xe400063808) in binary!
-	0x16ae8  @objc DataTypeDetailFavoritesDescriptionCell.(null) <stripped>
-WARNING: couldn't find address 0x171dc00065118 (0x1dc00065118) in binary!
-	0x126a0  @objc DataTypeDetailFavoritesDescriptionCell.(null) <stripped>
-WARNING: couldn't find address 0x133a4000642e8 (0x3a4000642e8) in binary!
-	0x171b8  @objc DataTypeDetailFavoritesDescriptionCell.(null) <stripped>
+WARNING: couldn't find address 0x131a400063ab0 (0x1a400063ab0) in binary!
+	0x16ba8  @objc DataTypeDetailFavoritesDescriptionCell.(null) <stripped>
+WARNING: couldn't find address 0x1729c00065410 (0x29c00065410) in binary!
+	0x12760  @objc DataTypeDetailFavoritesDescriptionCell.(null) <stripped>
+WARNING: couldn't find address 0x1346400064590 (0x46400064590) in binary!
+	0x17278  @objc DataTypeDetailFavoritesDescriptionCell.(null) <stripped>
 WARNING: couldn't find address 0x108000000c (0x108000000c) in binary!
-	0x154fffbecf0  @objc DataTypeDetailFavoritesDescriptionCell.(null) <stripped>
-	0x7acfffbee08  @objc DataTypeDetailFavoritesDescriptionCell. <stripped>
-	0x7a4fffbf100  @objc DataTypeDetailFavoritesDescriptionCell. <stripped>
+	0x3fcfffbeae0  @objc DataTypeDetailFavoritesDescriptionCell.(null) <stripped>
+	0x254fffbebf8  @objc DataTypeDetailFavoritesDescriptionCell.Lâ˜Lâ¯HÉƒ[A^A_]ˇ‡UHâÂHã~ ]ˇ%o˙ <stripped>
+	0x24cfffbeef0  @objc DataTypeDetailFavoritesDescriptionCell.Lâ˜Hâ¬1…Aˇ◊Lã=é˙ <stripped>
 
 	// Swift methods
-	0x10e850  func <stripped> // getter 
-	0x10eca0  func <stripped> // getter 
-	0x10ece0  func <stripped> // setter 
-	0x10ed40  func <stripped> // modifyCoroutine 
-	0x10edb0  func <stripped> // method 
+	0x10f3b0  func <stripped> // getter 
+	0x10f800  func <stripped> // getter 
+	0x10f840  func <stripped> // setter 
+	0x10f8a0  func <stripped> // modifyCoroutine 
+	0x10f910  func <stripped> // method 
  }
 
  class HealthExperienceUI.TableHeaderWithIconView : UITableViewHeaderFooterView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -3745,48 +3748,48 @@ WARNING: couldn't find address 0x108000000c (0x108000000c) in binary!
 	var iconImageViewBaselineConstraint : weak NSLayoutConstraint?
 	var iconImageViewCenterYConstraint : weak NSLayoutConstraint?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1309400063f10 (0x9400063f10) in binary!
-	0x16a98  @objc TableHeaderWithIconView.(null) <stripped>
-WARNING: couldn't find address 0x1307c000637b0 (0x7c000637b0) in binary!
-	0x16a80  @objc TableHeaderWithIconView.(null) <stripped>
-WARNING: couldn't find address 0x13064000637a8 (0x64000637a8) in binary!
-	0x16a68  @objc TableHeaderWithIconView.(null) <stripped>
-WARNING: couldn't find address 0x1304c000637a0 (0x4c000637a0) in binary!
-	0x16a50  @objc TableHeaderWithIconView.(null) <stripped>
-WARNING: couldn't find address 0x1303400063798 (0x3400063798) in binary!
-	0x16a38  @objc TableHeaderWithIconView.(null) <stripped>
-WARNING: couldn't find address 0x1301c00063790 (0x1c00063790) in binary!
-	0x16a20  @objc TableHeaderWithIconView.(null) <stripped>
-WARNING: couldn't find address 0x1711400065050 (0x11400065050) in binary!
-	0x132e8  @objc TableHeaderWithIconView.(null) <stripped>
-WARNING: couldn't find address 0x132dc00064220 (0x2dc00064220) in binary!
-	0x170f0  @objc TableHeaderWithIconView.(null) <stripped>
+WARNING: couldn't find address 0x13154000641b8 (0x154000641b8) in binary!
+	0x16b58  @objc TableHeaderWithIconView.(null) <stripped>
+WARNING: couldn't find address 0x1313c00063a58 (0x13c00063a58) in binary!
+	0x16b40  @objc TableHeaderWithIconView.(null) <stripped>
+WARNING: couldn't find address 0x1312400063a50 (0x12400063a50) in binary!
+	0x16b28  @objc TableHeaderWithIconView.(null) <stripped>
+WARNING: couldn't find address 0x1310c00063a48 (0x10c00063a48) in binary!
+	0x16b10  @objc TableHeaderWithIconView.(null) <stripped>
+WARNING: couldn't find address 0x130f400063a40 (0xf400063a40) in binary!
+	0x16af8  @objc TableHeaderWithIconView.(null) <stripped>
+WARNING: couldn't find address 0x130dc00063a38 (0xdc00063a38) in binary!
+	0x16ae0  @objc TableHeaderWithIconView.(null) <stripped>
+WARNING: couldn't find address 0x171d400065348 (0x1d400065348) in binary!
+	0x133a8  @objc TableHeaderWithIconView.(null) <stripped>
+WARNING: couldn't find address 0x1339c000644c8 (0x39c000644c8) in binary!
+	0x171b0  @objc TableHeaderWithIconView.(null) <stripped>
 WARNING: couldn't find address 0x1f8000000c (0x1f8000000c) in binary!
-	0x74cfffca598  @objc TableHeaderWithIconView.(null) <stripped>
-	0x744fffca6b0  @objc TableHeaderWithIconView.â˜æ <stripped>
-	0x73cfffca7c8  @objc TableHeaderWithIconView.Ï <stripped>
-	0x734fffca940  @objc TableHeaderWithIconView.Ï <stripped>
-	0x72cfffca978  @objc TableHeaderWithIconView.ãT <stripped>
-	0x724fffca9b0  @objc TableHeaderWithIconView.∏ <stripped>
-	0x71cfffca9e8  @objc TableHeaderWithIconView.åÈ <stripped>
-	0x5f4fffcaa20  @objc TableHeaderWithIconView.âƒLâ˜ˇÖÏ <stripped>
+	0x1f4fffca4e8  @objc TableHeaderWithIconView.(null) <stripped>
+	0x1ecfffca600  @objc TableHeaderWithIconView. <stripped>
+	0x1e4fffca718  @objc TableHeaderWithIconView.Ï0HãÔ <stripped>
+	0x1dcfffca890  @objc TableHeaderWithIconView.˚ <stripped>
+	0x1d4fffca8c8  @objc TableHeaderWithIconView.FHâ^ Hã=#˚ <stripped>
+	0x1ccfffca900  @objc TableHeaderWithIconView.HâFHç7 <stripped>
+	0x1c4fffca938  @objc TableHeaderWithIconView.EÑˆu=Hã˚ <stripped>
+	0x9cfffca970  @objc TableHeaderWithIconView. <stripped>
 
 	// Swift methods
-	0x10f820  func <stripped> // getter 
-	0x10f860  func <stripped> // setter 
-	0x10f8c0  func <stripped> // modifyCoroutine 
-	0x10f990  func <stripped> // getter 
-	0x10fa40  func <stripped> // setter 
-	0x10fb70  func <stripped> // modifyCoroutine 
-	0x10fe60  func <stripped> // getter 
-	0x10fea0  func <stripped> // setter 
-	0x10ff00  func <stripped> // modifyCoroutine 
-	0x10ff70  func <stripped> // getter 
-	0x110330  func <stripped> // method 
-	0x110aa0  func <stripped> // method 
+	0x110380  func <stripped> // getter 
+	0x1103c0  func <stripped> // setter 
+	0x110420  func <stripped> // modifyCoroutine 
+	0x1104f0  func <stripped> // getter 
+	0x1105a0  func <stripped> // setter 
+	0x1106d0  func <stripped> // modifyCoroutine 
+	0x1109c0  func <stripped> // getter 
+	0x110a00  func <stripped> // setter 
+	0x110a60  func <stripped> // modifyCoroutine 
+	0x110ad0  func <stripped> // getter 
+	0x110e90  func <stripped> // method 
+	0x111600  func <stripped> // method 
  }
 
  class HealthExperienceUI.DataTypeDetailHeartbeatSeriesDisclosureItemsDataSource {
@@ -3796,18 +3799,18 @@ WARNING: couldn't find address 0x1f8000000c (0x1f8000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var store : 
+	var store : Õ
 	let typeGroups : HKTypeGroup
 	let healthStore : HKHealthStore
 
 	// Swift methods
-	0x112b50  func <stripped> // getter 
-	0x112b90  func <stripped> // setter 
-	0x112be0  func <stripped> // modifyCoroutine 
-	0x112d00  class func AllHighlightCategoriesDataSourceProvider.__allocating_init(typeGroups:store:healthStore:) // init 
-	0x112df0  func <stripped> // method 
-	0x112e00  func <stripped> // method 
-	0x113250  func <stripped> // method 
+	0x1136b0  func <stripped> // getter 
+	0x1136f0  func <stripped> // setter 
+	0x113740  func <stripped> // modifyCoroutine 
+	0x113860  class func AllHighlightCategoriesDataSourceProvider.__allocating_init(typeGroups:store:healthStore:) // init 
+	0x113950  func <stripped> // method 
+	0x113960  func <stripped> // method 
+	0x113db0  func <stripped> // method 
  }
 
  enum HealthExperienceUI.DeepLinkActivityType {
@@ -3868,17 +3871,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let store : 
+	let store : Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var headerDescriptionDataSource : q¯
+	var headerDescriptionDataSource : )˙
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var activeDataSource : q¯
+	var activeDataSource : )˙
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var inactiveDataSource : q¯
+	var inactiveDataSource : )˙
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unavailableDataSource : q¯
+	var unavailableDataSource : )˙
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var needsReviewDataSource : q¯
+	var needsReviewDataSource : )˙
 
 	// Swift methods
  }
@@ -3913,108 +3916,108 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var actionButtonHeightConstraint : NSLayoutConstraint?
 	var actionButtonStyle : SuggestedActionButtonStyle
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var suggestedActionDelegate : ˝
+	var suggestedActionDelegate : œ˛
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12fcc00063750 (0x7cc00063750) in binary!
+WARNING: couldn't find address 0x1308c000639f8 (0x8c000639f8) in binary!
+	0x16a90  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x13074000639f0 (0x74000639f0) in binary!
+	0x16a78  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x1305c000639e8 (0x5c000639e8) in binary!
+	0x16a60  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x13044000639e0 (0x44000639e0) in binary!
+	0x16a48  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x1302c000639d8 (0x2c000639d8) in binary!
+	0x16a30  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x13014000639d0 (0x14000639d0) in binary!
+	0x16a18  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x12ffc000639c8 (0x7fc000639c8) in binary!
+	0x16a00  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x12fe400065920 (0x7e400065920) in binary!
+	0x169e8  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x12fcc000639a8 (0x7cc000639a8) in binary!
 	0x169d0  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x12fb400063748 (0x7b400063748) in binary!
+WARNING: couldn't find address 0x12fb4000639a0 (0x7b4000639a0) in binary!
 	0x169b8  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x12f9c00063740 (0x79c00063740) in binary!
+WARNING: couldn't find address 0x12f9c00063998 (0x79c00063998) in binary!
 	0x169a0  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x12f8400063738 (0x78400063738) in binary!
-	0x16988  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x12f6c00063730 (0x76c00063730) in binary!
-	0x16970  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x12f5400063728 (0x75400063728) in binary!
+WARNING: couldn't find address 0x1709400063990 (0x9400063990) in binary!
+	0x17088  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x1697c00063ac0 (0x17c00063ac0) in binary!
+	0x17070  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x1696400065e28 (0x16400065e28) in binary!
 	0x16958  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x12f3c00063720 (0x73c00063720) in binary!
-	0x16940  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x12f2400065620 (0x72400065620) in binary!
-	0x16928  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x12f0c00063700 (0x70c00063700) in binary!
-	0x16910  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x12ef4000636f8 (0x6f4000636f8) in binary!
-	0x168f8  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x12edc000636f0 (0x6dc000636f0) in binary!
-	0x168e0  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x16fd4000636e8 (0x7d4000636e8) in binary!
-	0x16fc8  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x168bc00063818 (0xbc00063818) in binary!
-	0x16fb0  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x168a400065b30 (0xa400065b30) in binary!
-	0x16898  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x13be800064b50 (0x3e800064b50) in binary!
-	0x13160  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x16f7400063718 (0x77400063718) in binary!
+WARNING: couldn't find address 0x13ca800064e48 (0x4a800064e48) in binary!
+	0x13220  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x17034000639c0 (0x34000639c0) in binary!
 	0x48000000c  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x1242c000647c8 (0x42c000647c8) in binary!
-	0x13130  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x12e3400064c60 (0x63400064c60) in binary!
-	0x16f38  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x124ec00064ab8 (0x4ec00064ab8) in binary!
+	0x131f0  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x12ef400064f58 (0x6f400064f58) in binary!
+	0x16ff8  @objc SuggestedActionTileViewController.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffd1d30  @objc SuggestedActionTileViewController.(null) <stripped>
+	0xfffd1c80  @objc SuggestedActionTileViewController.(null) <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x75cfffd29a8  @objc SuggestedActionTileViewController.(null) <stripped>
-	0x1ccfffd81f0  @objc SuggestedActionTileViewController.| <stripped>
-	0x5ecfffd8b88  @objc SuggestedActionTileViewController." <stripped>
-	0x7dcfffd9250  @objc SuggestedActionTileViewController.<7Hã5è" <stripped>
-	0xfffd9348  @objc SuggestedActionTileViewController.ï¿]√UHâÂAWAVSPHãjB <stripped>
+	0x204fffd28f8  @objc SuggestedActionTileViewController.(null) <stripped>
+	0x4c4fffd8140  @objc SuggestedActionTileViewController.ÉÏIâ˛Hã=+ <stripped>
+	0x94fffd8ad8  @objc SuggestedActionTileViewController.Lâ‚Aˇ’LâÁˇ17 <stripped>
+	0x284fffd91a0  @objc SuggestedActionTileViewController.Hâ«Ë6õ <stripped>
+	0xfffd9298  @objc SuggestedActionTileViewController. <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x7acfffdccd0  @objc SuggestedActionTileViewController.(null) <stripped>
-	0x614fffdd128  @objc SuggestedActionTileViewController.ˇb% <stripped>
-	0x32c000646c8  @objc SuggestedActionTileViewController.É <stripped>
-WARNING: couldn't find address 0x63f74fffe2298 (0x774fffe2298) in binary!
-	0x644000635e8  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0xfffe27e0 (0xfffe27e0) in binary!
-	0x7ed00063550  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x63b1cfffe2f38 (0x31cfffe2f38) in binary!
-	0x7f400063f38  @objc SuggestedActionTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x635acfffe3100 (0x5acfffe3100) in binary!
+	0x254fffdcc20  @objc SuggestedActionTileViewController.(null) <stripped>
+	0xbcfffdd078  @objc SuggestedActionTileViewController. <stripped>
+	0x3ec000649b8  @objc SuggestedActionTileViewController.K <stripped>
+WARNING: couldn't find address 0x6421cfffe21e8 (0x21cfffe21e8) in binary!
+	0x70400063890  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0xfffe2730 (0xfffe2730) in binary!
+	0xad000637f8  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x63dc4fffe2e88 (0x5c4fffe2e88) in binary!
+	0xb4000641e0  @objc SuggestedActionTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x63854fffe3050 (0x54fffe3050) in binary!
 	0x58000000c  @objc SuggestedActionTileViewController.(null) <stripped>
 
 	// Swift methods
-	0x11b040  func <stripped> // getter 
-	0x11b080  func <stripped> // setter 
-	0x11b0f0  func <stripped> // modifyCoroutine 
-	0x11b190  func <stripped> // getter 
-	0x11b1d0  func <stripped> // setter 
-	0x11b230  func <stripped> // modifyCoroutine 
-	0x11b2c0  func <stripped> // getter 
-	0x11b300  func <stripped> // setter 
-	0x11b360  func <stripped> // modifyCoroutine 
-	0x11b3f0  func <stripped> // getter 
-	0x11b430  func <stripped> // setter 
-	0x11b490  func <stripped> // modifyCoroutine 
-	0x11b6c0  func <stripped> // getter 
-	0x11b700  func <stripped> // setter 
-	0x11b760  func <stripped> // modifyCoroutine 
-	0x11b7f0  func <stripped> // getter 
-	0x11b830  func <stripped> // setter 
-	0x11b890  func <stripped> // modifyCoroutine 
-	0x11b9b0  func <stripped> // getter 
-	0x11b9f0  func <stripped> // setter 
-	0x11ba40  func <stripped> // modifyCoroutine 
-	0x11baf0  func <stripped> // getter 
-	0x11bba0  func <stripped> // setter 
-	0x11bcd0  func <stripped> // modifyCoroutine 
-	0x11be80  func <stripped> // getter 
-	0x11bec0  func <stripped> // setter 
-	0x11bf20  func <stripped> // modifyCoroutine 
-	0x11d090  func <stripped> // method 
-	0x11d120  func <stripped> // method 
-	0x11d190  func <stripped> // method 
-	0x11d1a0  func <stripped> // method 
-	0x11d760  func <stripped> // method 
-	0x11d960  func <stripped> // method 
-	0x11dac0  func <stripped> // method 
-	0x11db80  func <stripped> // method 
-	0x11ddd0  func <stripped> // method 
-	0x11e3c0  func <stripped> // method 
-	0x11e590  func <stripped> // method 
-	0x11ead0  func <stripped> // getter 
-	0x11eb40  func <stripped> // setter 
-	0x11ebf0  func <stripped> // modifyCoroutine 
+	0x11bd00  func <stripped> // getter 
+	0x11bd40  func <stripped> // setter 
+	0x11bdb0  func <stripped> // modifyCoroutine 
+	0x11be50  func <stripped> // getter 
+	0x11be90  func <stripped> // setter 
+	0x11bef0  func <stripped> // modifyCoroutine 
+	0x11bf80  func <stripped> // getter 
+	0x11bfc0  func <stripped> // setter 
+	0x11c020  func <stripped> // modifyCoroutine 
+	0x11c0b0  func <stripped> // getter 
+	0x11c0f0  func <stripped> // setter 
+	0x11c150  func <stripped> // modifyCoroutine 
+	0x11c380  func <stripped> // getter 
+	0x11c3c0  func <stripped> // setter 
+	0x11c420  func <stripped> // modifyCoroutine 
+	0x11c4b0  func <stripped> // getter 
+	0x11c4f0  func <stripped> // setter 
+	0x11c550  func <stripped> // modifyCoroutine 
+	0x11c670  func <stripped> // getter 
+	0x11c6b0  func <stripped> // setter 
+	0x11c700  func <stripped> // modifyCoroutine 
+	0x11c7b0  func <stripped> // getter 
+	0x11c860  func <stripped> // setter 
+	0x11c990  func <stripped> // modifyCoroutine 
+	0x11cb40  func <stripped> // getter 
+	0x11cb80  func <stripped> // setter 
+	0x11cbe0  func <stripped> // modifyCoroutine 
+	0x11dd50  func <stripped> // method 
+	0x11dde0  func <stripped> // method 
+	0x11de50  func <stripped> // method 
+	0x11de60  func <stripped> // method 
+	0x11e420  func <stripped> // method 
+	0x11e620  func <stripped> // method 
+	0x11e780  func <stripped> // method 
+	0x11e840  func <stripped> // method 
+	0x11ea90  func <stripped> // method 
+	0x11f080  func <stripped> // method 
+	0x11f250  func <stripped> // method 
+	0x11f790  func <stripped> // getter 
+	0x11f800  func <stripped> // setter 
+	0x11f8b0  func <stripped> // modifyCoroutine 
  }
 
  struct HealthExperienceUI.SuggestedActionAnalyticsEvent {
@@ -4031,33 +4034,33 @@ WARNING: couldn't find address 0x635acfffe3100 (0x5acfffe3100) in binary!
 	var parentViewController : weak UIViewController?
 	var chartViewController : UIViewController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 	var separatorView : UIView?
 	var separatorViewHeightConstraint : NSLayoutConstraint?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1242c000647c8 (0x42c000647c8) in binary!
-	0x13130  @objc DataTypeDetailChartCell.(null) <stripped>
-WARNING: couldn't find address 0x12e3400064c60 (0x63400064c60) in binary!
-	0x16f38  @objc DataTypeDetailChartCell.(null) <stripped>
+WARNING: couldn't find address 0x124ec00064ab8 (0x4ec00064ab8) in binary!
+	0x131f0  @objc DataTypeDetailChartCell.(null) <stripped>
+WARNING: couldn't find address 0x12ef400064f58 (0x6f400064f58) in binary!
+	0x16ff8  @objc DataTypeDetailChartCell.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffd1d30  @objc DataTypeDetailChartCell.(null) <stripped>
+	0xfffd1c80  @objc DataTypeDetailChartCell.(null) <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x75cfffd29a8  @objc DataTypeDetailChartCell.(null) <stripped>
+	0x204fffd28f8  @objc DataTypeDetailChartCell.(null) <stripped>
 
 	// Swift methods
-	0x120420  func <stripped> // getter 
-	0x120460  func <stripped> // setter 
-	0x1204b0  func <stripped> // modifyCoroutine 
-	0x120580  func <stripped> // getter 
-	0x1205c0  func <stripped> // setter 
-	0x120610  func <stripped> // modifyCoroutine 
-	0x120660  func <stripped> // getter 
-	0x1206a0  func <stripped> // setter 
-	0x120740  func <stripped> // modifyCoroutine 
-	0x1208b0  func <stripped> // getter 
-	0x121c10  func <stripped> // method 
-	0x1209b0  func <stripped> // method 
+	0x1210e0  func <stripped> // getter 
+	0x121120  func <stripped> // setter 
+	0x121170  func <stripped> // modifyCoroutine 
+	0x121240  func <stripped> // getter 
+	0x121280  func <stripped> // setter 
+	0x1212d0  func <stripped> // modifyCoroutine 
+	0x121320  func <stripped> // getter 
+	0x121360  func <stripped> // setter 
+	0x121400  func <stripped> // modifyCoroutine 
+	0x121570  func <stripped> // getter 
+	0x1228d0  func <stripped> // method 
+	0x121670  func <stripped> // method 
  }
 
  class HealthExperienceUI.DismissibleTileHeaderView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4074,123 +4077,123 @@ WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
 	var $__lazy_storage_$_accessoryImage : UIImage??
 	var title : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minimumViewHeight : ±
+	let minimumViewHeight : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleToTop : ±
+	let titleToTop : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleToBottom : ±
+	let titleToBottom : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleToDismiss : ±
+	let titleToDismiss : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let detailToTitle : ±
+	let detailToTitle : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let detailToSeparator : ±
+	let detailToSeparator : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dismissToSeparator : ±
+	let dismissToSeparator : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dismissToTop : ±
+	let dismissToTop : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dismissToBottom : ±
+	let dismissToBottom : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dismissToTrailing : ±
+	let dismissToTrailing : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minimumTappableDismissWidth : ±
+	let minimumTappableDismissWidth : a
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minimumTappableDismissHeight : ±
+	let minimumTappableDismissHeight : a
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1680c00065590 (0xc00065590) in binary!
-	0x16800  @objc DismissibleTileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x12dec000659d0 (0x5ec000659d0) in binary!
-	0x12de0  @objc DismissibleTileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x12dd4000659d0 (0x5d4000659d0) in binary!
-	0x12dc0  @objc DismissibleTileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x1239400064730 (0x39400064730) in binary!
-	0x13098  @objc DismissibleTileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x16eac00063650 (0x6ac00063650) in binary!
+WARNING: couldn't find address 0x168cc00065890 (0xcc00065890) in binary!
+	0x168c0  @objc DismissibleTileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x12eac00065cc8 (0x6ac00065cc8) in binary!
+	0x12ea0  @objc DismissibleTileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x12e9400065cc8 (0x69400065cc8) in binary!
+	0x12e80  @objc DismissibleTileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x1245400064a20 (0x45400064a20) in binary!
+	0x13158  @objc DismissibleTileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x16f6c000638f8 (0x76c000638f8) in binary!
 	0x48000000c  @objc DismissibleTileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x1236400064700 (0x36400064700) in binary!
-	0x13068  @objc DismissibleTileHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x1677c000636d8 (0x77c000636d8) in binary!
-	0x16e70  @objc DismissibleTileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x12424000649f0 (0x424000649f0) in binary!
+	0x13128  @objc DismissibleTileHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x1683c00063980 (0x3c00063980) in binary!
+	0x16f30  @objc DismissibleTileHeaderView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x774fffe2298  @objc DismissibleTileHeaderView.(null) <stripped>
-	0xfffe27e0  @objc DismissibleTileHeaderView.ˇ”Hâ«ËTå <stripped>
+	0x21cfffe21e8  @objc DismissibleTileHeaderView.(null) <stripped>
+	0xfffe2730  @objc DismissibleTileHeaderView.â«Hç=ˇ∆ <stripped>
 
 	// Swift methods
-	0x122f50  func <stripped> // getter 
-	0x122f90  func <stripped> // setter 
-	0x122fe0  func <stripped> // modifyCoroutine 
-	0x123150  func <stripped> // getter 
-	0x123190  func <stripped> // setter 
-	0x1231e0  func <stripped> // modifyCoroutine 
-	0x123220  func <stripped> // method 
-	0x123380  func <stripped> // method 
-	0x1234e0  func <stripped> // method 
-	0x1237f0  func <stripped> // method 
-	0x123810  func <stripped> // method 
-	0x123a40  func <stripped> // getter 
-	0x123a60  func <stripped> // setter 
-	0x123a80  func <stripped> // modifyCoroutine 
-	0x123b00  func <stripped> // getter 
-	0x123b20  func <stripped> // setter 
-	0x123b40  func <stripped> // modifyCoroutine 
-	0x123bc0  func <stripped> // getter 
-	0x123be0  func <stripped> // setter 
-	0x123c00  func <stripped> // modifyCoroutine 
-	0x123d20  func <stripped> // getter 
-	0x123d80  func <stripped> // setter 
-	0x123de0  func <stripped> // modifyCoroutine 
-	0x123e30  func <stripped> // getter 
-	0x123e90  func <stripped> // method 
-	0x124c60  func <stripped> // method 
-	0x1252a0  func <stripped> // method 
-	0x125b70  func <stripped> // method 
-	0x1260e0  func <stripped> // method 
-	0x126e20  func <stripped> // method 
-	0x126f80  func <stripped> // method 
-	0x127430  func <stripped> // method 
-	0x127550  func <stripped> // method 
-	0x127960  func <stripped> // method 
-	0x127b20  func <stripped> // method 
-	0x127e00  func <stripped> // method 
-	0x127f60  func <stripped> // method 
-	0x128390  func <stripped> // method 
-	0x128920  func <stripped> // method 
-	0x129a50  func <stripped> // method 
+	0x123c10  func <stripped> // getter 
+	0x123c50  func <stripped> // setter 
+	0x123ca0  func <stripped> // modifyCoroutine 
+	0x123e10  func <stripped> // getter 
+	0x123e50  func <stripped> // setter 
+	0x123ea0  func <stripped> // modifyCoroutine 
+	0x123ee0  func <stripped> // method 
+	0x124040  func <stripped> // method 
+	0x1241a0  func <stripped> // method 
+	0x1244b0  func <stripped> // method 
+	0x1244d0  func <stripped> // method 
+	0x124700  func <stripped> // getter 
+	0x124720  func <stripped> // setter 
+	0x124740  func <stripped> // modifyCoroutine 
+	0x1247c0  func <stripped> // getter 
+	0x1247e0  func <stripped> // setter 
+	0x124800  func <stripped> // modifyCoroutine 
+	0x124880  func <stripped> // getter 
+	0x1248a0  func <stripped> // setter 
+	0x1248c0  func <stripped> // modifyCoroutine 
+	0x1249e0  func <stripped> // getter 
+	0x124a40  func <stripped> // setter 
+	0x124aa0  func <stripped> // modifyCoroutine 
+	0x124af0  func <stripped> // getter 
+	0x124b50  func <stripped> // method 
+	0x125920  func <stripped> // method 
+	0x125f60  func <stripped> // method 
+	0x126830  func <stripped> // method 
+	0x126da0  func <stripped> // method 
+	0x127ae0  func <stripped> // method 
+	0x127c40  func <stripped> // method 
+	0x1280f0  func <stripped> // method 
+	0x128210  func <stripped> // method 
+	0x128620  func <stripped> // method 
+	0x1287e0  func <stripped> // method 
+	0x128ac0  func <stripped> // method 
+	0x128c20  func <stripped> // method 
+	0x129050  func <stripped> // method 
+	0x1295e0  func <stripped> // method 
+	0x12a710  func <stripped> // method 
  }
 
  class HealthExperienceUI.EmptyStateCellView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 	var $__lazy_storage_$_label : UILabel?
 	var $__lazy_storage_$_spinner : UIActivityIndicatorView?
 	var $__lazy_storage_$_spinnerTrailingConstraint : NSLayoutConstraint?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1236400064700 (0x36400064700) in binary!
-	0x13068  @objc EmptyStateCellView.(null) <stripped>
-WARNING: couldn't find address 0x1677c000636d8 (0x77c000636d8) in binary!
-	0x16e70  @objc EmptyStateCellView.(null) <stripped>
+WARNING: couldn't find address 0x12424000649f0 (0x424000649f0) in binary!
+	0x13128  @objc EmptyStateCellView.(null) <stripped>
+WARNING: couldn't find address 0x1683c00063980 (0x3c00063980) in binary!
+	0x16f30  @objc EmptyStateCellView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x774fffe2298  @objc EmptyStateCellView.(null) <stripped>
-	0xfffe27e0  @objc EmptyStateCellView.ˇ”Hâ«ËTå <stripped>
+	0x21cfffe21e8  @objc EmptyStateCellView.(null) <stripped>
+	0xfffe2730  @objc EmptyStateCellView.â«Hç=ˇ∆ <stripped>
 
 	// Swift methods
-	0x12d2c0  func <stripped> // getter 
-	0x12d300  func <stripped> // setter 
-	0x12d360  func <stripped> // modifyCoroutine 
-	0x12d4e0  func <stripped> // getter 
-	0x12d560  func <stripped> // setter 
-	0x12d5d0  func <stripped> // modifyCoroutine 
-	0x12d6f0  func <stripped> // getter 
-	0x12d7a0  func <stripped> // getter 
-	0x12d830  func <stripped> // setter 
-	0x12d850  func <stripped> // modifyCoroutine 
-	0x12d8b0  func <stripped> // getter 
-	0x12db60  func <stripped> // method 
+	0x12df80  func <stripped> // getter 
+	0x12dfc0  func <stripped> // setter 
+	0x12e020  func <stripped> // modifyCoroutine 
+	0x12e1a0  func <stripped> // getter 
+	0x12e220  func <stripped> // setter 
+	0x12e290  func <stripped> // modifyCoroutine 
+	0x12e3b0  func <stripped> // getter 
+	0x12e460  func <stripped> // getter 
+	0x12e4f0  func <stripped> // setter 
+	0x12e510  func <stripped> // modifyCoroutine 
+	0x12e570  func <stripped> // getter 
+	0x12e820  func <stripped> // method 
  }
 
  class HealthExperienceUI.UninstalledAppSourcesDataSource {
@@ -4208,45 +4211,45 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M // +0x8 (0x28)
+	var item :  // +0x8 (0x28)
 	var $__lazy_storage_$_label : UILabel? // +0x30 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1232c000646c8 (0x32c000646c8) in binary!
-	0x13030  @objc TitleEmptyStateCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x16e44000635e8 (0x644000635e8) in binary!
+WARNING: couldn't find address 0x123ec000649b8 (0x3ec000649b8) in binary!
+	0x130f0  @objc TitleEmptyStateCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x16f0400063890 (0x70400063890) in binary!
 	0x48000000c  @objc TitleEmptyStateCollectionViewCell.(null) <stripped>
-WARNING: couldn't find address 0x127ed00063550 (0x7ed00063550) in binary!
-	0x12f5c  @objc TitleEmptyStateCollectionViewCell.(null) <stripped>
+WARNING: couldn't find address 0x128ad000637f8 (0xad000637f8) in binary!
+	0x1301c  @objc TitleEmptyStateCollectionViewCell.(null) <stripped>
 
 	// Swift methods
-	0x132d60  func <stripped> // getter 
-	0x132da0  func <stripped> // setter 
-	0x132e00  func <stripped> // modifyCoroutine 
-	0x132e70  func <stripped> // getter 
-	0x133160  func <stripped> // method 
-	0x133310  func <stripped> // method 
+	0x133a20  func <stripped> // getter 
+	0x133a60  func <stripped> // setter 
+	0x133ac0  func <stripped> // modifyCoroutine 
+	0x133b30  func <stripped> // getter 
+	0x133e20  func <stripped> // method 
+	0x133fd0  func <stripped> // method 
  }
 
  class HealthExperienceUI.EditFavoritesTableViewCell : UITableViewCell /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 	var $__lazy_storage_$_editFavoritesCellView : EditFavoritesCellView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x127ed00063550 (0x7ed00063550) in binary!
-	0x12f5c  @objc EditFavoritesTableViewCell.(null) <stripped>
-WARNING: couldn't find address 0x12ff400063f38 (0x7f400063f38) in binary!
-	0x16e08  @objc EditFavoritesTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x128ad000637f8 (0xad000637f8) in binary!
+	0x1301c  @objc EditFavoritesTableViewCell.(null) <stripped>
+WARNING: couldn't find address 0x130b4000641e0 (0xb4000641e0) in binary!
+	0x16ec8  @objc EditFavoritesTableViewCell.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x644fffe3c70  @objc EditFavoritesTableViewCell.(null) <stripped>
-	0x6f4fffe7508  @objc EditFavoritesTableViewCell.â√LâÁLã5‹Ó <stripped>
+	0xecfffe3bc0  @objc EditFavoritesTableViewCell.(null) <stripped>
+	0x19cfffe7458  @objc EditFavoritesTableViewCell.ã2˛ <stripped>
 
 	// Swift methods
-	0x133cd0  func <stripped> // getter 
-	0x133e00  func <stripped> // getter 
+	0x134990  func <stripped> // getter 
+	0x134ac0  func <stripped> // getter 
  }
 
  class HealthExperienceUI.FeatureStatusTileViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4281,73 +4284,73 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	var bottomAccessoryViewBottomConstraint : NSLayoutConstraint?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x16df4000636c0 (0x5f4000636c0) in binary!
-	0x166e8  @objc FeatureStatusTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x13a38000649a0 (0x238000649a0) in binary!
-	0x12fb0  @objc FeatureStatusTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x16dc400063568 (0x5c400063568) in binary!
+WARNING: couldn't find address 0x16eb400063968 (0x6b400063968) in binary!
+	0x167a8  @objc FeatureStatusTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x13af800064c98 (0x2f800064c98) in binary!
+	0x13070  @objc FeatureStatusTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x16e8400063810 (0x68400063810) in binary!
 	0x18000000c  @objc FeatureStatusTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x12ca400065910 (0x4a400065910) in binary!
+WARNING: couldn't find address 0x12d6400065c08 (0x56400065c08) in binary!
 	0x38000000c  @objc FeatureStatusTileViewController.(null) <stripped>
-WARNING: couldn't find address 0x1226400064600 (0x26400064600) in binary!
-	0x12f68  @objc FeatureStatusTileViewController.(null) <stripped>
+WARNING: couldn't find address 0x12324000648f0 (0x324000648f0) in binary!
+	0x13028  @objc FeatureStatusTileViewController.(null) <stripped>
 
 	// Swift methods
-	0x134760  func <stripped> // getter 
-	0x1347a0  func <stripped> // setter 
-	0x134820  func <stripped> // modifyCoroutine 
-	0x1348b0  func <stripped> // method 
-	0x134920  func <stripped> // getter 
-	0x134ba0  func <stripped> // method 
-	0x134de0  func <stripped> // getter 
-	0x134e40  func <stripped> // getter 
-	0x134e60  func <stripped> // getter 
-	0x134f50  func <stripped> // getter 
-	0x135050  func <stripped> // getter 
-	0x135100  func <stripped> // getter 
-	0x135180  func <stripped> // getter 
-	0x135230  func <stripped> // method 
-	0x1353e0  func <stripped> // method 
-	0x135500  func <stripped> // method 
-	0x1357c0  func <stripped> // method 
-	0x135ad0  func <stripped> // method 
-	0x135d20  func <stripped> // method 
-	0x136000  func <stripped> // method 
-	0x1362e0  func <stripped> // method 
-	0x136640  func <stripped> // method 
-	0x136940  func <stripped> // method 
-	0x137020  func <stripped> // method 
-	0x137590  func <stripped> // method 
-	0x137880  func <stripped> // method 
-	0x137ae0  func <stripped> // method 
-	0x137c70  func <stripped> // method 
-	0x137e60  func <stripped> // method 
+	0x135420  func <stripped> // getter 
+	0x135460  func <stripped> // setter 
+	0x1354e0  func <stripped> // modifyCoroutine 
+	0x135570  func <stripped> // method 
+	0x1355e0  func <stripped> // getter 
+	0x135860  func <stripped> // method 
+	0x135aa0  func <stripped> // getter 
+	0x135b00  func <stripped> // getter 
+	0x135b20  func <stripped> // getter 
+	0x135c10  func <stripped> // getter 
+	0x135d10  func <stripped> // getter 
+	0x135dc0  func <stripped> // getter 
+	0x135e40  func <stripped> // getter 
+	0x135ef0  func <stripped> // method 
+	0x1360a0  func <stripped> // method 
+	0x1361c0  func <stripped> // method 
+	0x136480  func <stripped> // method 
+	0x136790  func <stripped> // method 
+	0x1369e0  func <stripped> // method 
+	0x136cc0  func <stripped> // method 
+	0x136fa0  func <stripped> // method 
+	0x137300  func <stripped> // method 
+	0x137600  func <stripped> // method 
+	0x137ce0  func <stripped> // method 
+	0x138250  func <stripped> // method 
+	0x138540  func <stripped> // method 
+	0x1387a0  func <stripped> // method 
+	0x138930  func <stripped> // method 
+	0x138b20  func <stripped> // method 
  }
 
  class HealthExperienceUI.FeatureStatusAccessoryView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let labelPadding : ±
+	let labelPadding : a
 	var $__lazy_storage_$_containerView : UIView?
 	var $__lazy_storage_$_separator : HKSeparatorLineView?
 	var $__lazy_storage_$_label : UILabel?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1226400064600 (0x26400064600) in binary!
-	0x12f68  @objc FeatureStatusAccessoryView.(null) <stripped>
-WARNING: couldn't find address 0x16d7c00063520 (0x57c00063520) in binary!
+WARNING: couldn't find address 0x12324000648f0 (0x324000648f0) in binary!
+	0x13028  @objc FeatureStatusAccessoryView.(null) <stripped>
+WARNING: couldn't find address 0x16e3c000637c8 (0x63c000637c8) in binary!
 	0x48000000c  @objc FeatureStatusAccessoryView.(null) <stripped>
-WARNING: couldn't find address 0x12234000645d0 (0x234000645d0) in binary!
-	0x12f38  @objc FeatureStatusAccessoryView.(null) <stripped>
+WARNING: couldn't find address 0x122f4000648c0 (0x2f4000648c0) in binary!
+	0x12ff8  @objc FeatureStatusAccessoryView.(null) <stripped>
 
 	// Swift methods
-	0x138b70  func <stripped> // getter 
-	0x138c00  func <stripped> // getter 
-	0x138ce0  func <stripped> // getter 
-	0x138d40  func <stripped> // method 
-	0x138f50  func <stripped> // method 
-	0x139170  func <stripped> // method 
+	0x139830  func <stripped> // getter 
+	0x1398c0  func <stripped> // getter 
+	0x1399b0  func <stripped> // getter 
+	0x139a10  func <stripped> // method 
+	0x139c20  func <stripped> // method 
+	0x139e40  func <stripped> // method 
  }
 
  class HealthExperienceUI.AllDataSummarySegmentDataSource {
@@ -4355,7 +4358,7 @@ WARNING: couldn't find address 0x12234000645d0 (0x234000645d0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sourceProfile : cÍ
+	let sourceProfile : Ï
  }
 
  class HealthExperienceUI.SnippetView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -4369,56 +4372,56 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var supplementaryLabelBottomConstraint : NSLayoutConstraint?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12234000645d0 (0x234000645d0) in binary!
-	0x12f38  @objc SnippetView.(null) <stripped>
-WARNING: couldn't find address 0x1664c000635a8 (0x64c000635a8) in binary!
-	0x16d40  @objc SnippetView.(null) <stripped>
+WARNING: couldn't find address 0x122f4000648c0 (0x2f4000648c0) in binary!
+	0x12ff8  @objc SnippetView.(null) <stripped>
+WARNING: couldn't find address 0x1670c00063850 (0x70c00063850) in binary!
+	0x16e00  @objc SnippetView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x644fffeeeb8  @objc SnippetView.(null) <stripped>
-	0xfffef3b0  @objc SnippetView. <stripped>
+	0xecfffeee18  @objc SnippetView.(null) <stripped>
+	0xfffef310  @objc SnippetView.Hã=J <stripped>
 
 	// Swift methods
-	0x13cf70  func <stripped> // getter 
-	0x13cf90  func <stripped> // setter 
-	0x13cfb0  func <stripped> // modifyCoroutine 
-	0x13d0e0  func <stripped> // getter 
-	0x13d130  func <stripped> // setter 
-	0x13d190  func <stripped> // modifyCoroutine 
-	0x13d260  func <stripped> // getter 
-	0x13d2a0  func <stripped> // setter 
-	0x13d2c0  func <stripped> // modifyCoroutine 
-	0x13d390  func <stripped> // getter 
-	0x13d530  func <stripped> // setter 
-	0x13d670  func <stripped> // modifyCoroutine 
-	0x13da30  func <stripped> // getter 
-	0x13dac0  func <stripped> // getter 
-	0x13df10  func <stripped> // method 
-	0x13e610  func <stripped> // method 
-	0x13ea00  func <stripped> // method 
-	0x13eb50  func <stripped> // method 
+	0x13dc40  func <stripped> // getter 
+	0x13dc60  func <stripped> // setter 
+	0x13dc80  func <stripped> // modifyCoroutine 
+	0x13ddb0  func <stripped> // getter 
+	0x13de00  func <stripped> // setter 
+	0x13de60  func <stripped> // modifyCoroutine 
+	0x13df30  func <stripped> // getter 
+	0x13df70  func <stripped> // setter 
+	0x13df90  func <stripped> // modifyCoroutine 
+	0x13e060  func <stripped> // getter 
+	0x13e200  func <stripped> // setter 
+	0x13e340  func <stripped> // modifyCoroutine 
+	0x13e700  func <stripped> // getter 
+	0x13e790  func <stripped> // getter 
+	0x13ebe0  func <stripped> // method 
+	0x13f2e0  func <stripped> // method 
+	0x13f6d0  func <stripped> // method 
+	0x13f820  func <stripped> // method 
  }
 
  class HealthExperienceUI.TableViewStyleFooterView : UICollectionReusableView /System/Library/Frameworks/UIKit.framework/UIKit {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 	let textLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x121fc00064598 (0x1fc00064598) in binary!
-	0x12f00  @objc TableViewStyleFooterView.(null) <stripped>
-WARNING: couldn't find address 0x16d14000634b8 (0x514000634b8) in binary!
+WARNING: couldn't find address 0x122bc00064888 (0x2bc00064888) in binary!
+	0x12fc0  @objc TableViewStyleFooterView.(null) <stripped>
+WARNING: couldn't find address 0x16dd400063760 (0x5d400063760) in binary!
 	0x58000000c  @objc TableViewStyleFooterView.(null) <stripped>
-WARNING: couldn't find address 0x121cc00064568 (0x1cc00064568) in binary!
-	0x12ed0  @objc TableViewStyleFooterView.(null) <stripped>
+WARNING: couldn't find address 0x1228c00064858 (0x28c00064858) in binary!
+	0x12f90  @objc TableViewStyleFooterView.(null) <stripped>
 
 	// Swift methods
-	0x13fad0  func <stripped> // getter 
-	0x13fb10  func <stripped> // setter 
-	0x13fb70  func <stripped> // modifyCoroutine 
-	0x13fe90  func <stripped> // method 
-	0x140120  func <stripped> // method 
+	0x1407a0  func <stripped> // getter 
+	0x1407e0  func <stripped> // setter 
+	0x140840  func <stripped> // modifyCoroutine 
+	0x140b60  func <stripped> // method 
+	0x140df0  func <stripped> // method 
  }
 
  struct HealthExperienceUI.TableViewStyleFooterItem {
@@ -4439,38 +4442,38 @@ WARNING: couldn't find address 0x121cc00064568 (0x1cc00064568) in binary!
 	var didTapActionButton : ()?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x121cc00064568 (0x1cc00064568) in binary!
-	0x12ed0  @objc MessageWithActionTileView.(null) <stripped>
-WARNING: couldn't find address 0x16ce4000652c8 (0x4e4000652c8) in binary!
-	0x165d8  @objc MessageWithActionTileView.(null) <stripped>
-WARNING: couldn't find address 0x16ccc00063470 (0x4cc00063470) in binary!
+WARNING: couldn't find address 0x1228c00064858 (0x28c00064858) in binary!
+	0x12f90  @objc MessageWithActionTileView.(null) <stripped>
+WARNING: couldn't find address 0x16da4000655c8 (0x5a4000655c8) in binary!
+	0x16698  @objc MessageWithActionTileView.(null) <stripped>
+WARNING: couldn't find address 0x16d8c00063718 (0x58c00063718) in binary!
 	0x28000000c  @objc MessageWithActionTileView.(null) <stripped>
-WARNING: couldn't find address 0x1218400064520 (0x18400064520) in binary!
-	0x12e88  @objc MessageWithActionTileView.(null) <stripped>
+WARNING: couldn't find address 0x1224400064810 (0x24400064810) in binary!
+	0x12f48  @objc MessageWithActionTileView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x4c4ffff4dd0  @objc MessageWithActionTileView.(null) <stripped>
+	0x76cffff4d30  @objc MessageWithActionTileView.(null) <stripped>
 
 	// Swift methods
-	0x141120  func <stripped> // getter 
-	0x141170  func <stripped> // setter 
-	0x1411d0  func <stripped> // modifyCoroutine 
-	0x141710  func <stripped> // method 
-	0x141e10  func <stripped> // method 
-	0x141fc0  func <stripped> // method 
+	0x141df0  func <stripped> // getter 
+	0x141e40  func <stripped> // setter 
+	0x141ea0  func <stripped> // modifyCoroutine 
+	0x1423e0  func <stripped> // method 
+	0x142ae0  func <stripped> // method 
+	0x142c90  func <stripped> // method 
  }
 
  class HealthExperienceUI.HKTypeGroupTypesDataSource : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var eventHandler : ˘ÿ
+	var eventHandler : ±⁄
 	let group : HKTypeGroup
 
 	// Swift methods
-	0x1425f0  func <stripped> // getter 
-	0x142620  func <stripped> // setter 
-	0x142670  func <stripped> // modifyCoroutine 
-	0x1426d0  class func HKTypeGroupTypesDataSource.__allocating_init(group:) // init 
+	0x1432c0  func <stripped> // getter 
+	0x1432f0  func <stripped> // setter 
+	0x143340  func <stripped> // modifyCoroutine 
+	0x1433a0  class func HKTypeGroupTypesDataSource.__allocating_init(group:) // init 
  }
 
  enum HealthExperienceUI.TileHeaderType {
@@ -4486,7 +4489,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case text : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case date : ”
+	case date : ∑‘
 	case none  
  }
 
@@ -4500,10 +4503,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class HealthExperienceUI.SpotlightSearch {
  class HealthExperienceUI.DataTypeDetailDisclosureCell : CollectionViewListDisclosureCell {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1218400064520 (0x18400064520) in binary!
-	0x12e88  @objc DataTypeDetailDisclosureCell.(null) <stripped>
+WARNING: couldn't find address 0x1224400064810 (0x24400064810) in binary!
+	0x12f48  @objc DataTypeDetailDisclosureCell.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x4c4ffff4dd0  @objc DataTypeDetailDisclosureCell.(null) <stripped>
+	0x76cffff4d30  @objc DataTypeDetailDisclosureCell.(null) <stripped>
  }
 
  class HealthExperienceUI.HealthChecklistDataSource : NSObject /usr/lib/libobjc.A.dylib {
@@ -4512,17 +4515,17 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var analyticsEvent : HealthChecklistDidViewFeatureAnalyticsEvent
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x16c94000634e8 (0x494000634e8) in binary!
-	0x12b78  @objc HealthChecklistDataSource.(null) <stripped>
-WARNING: couldn't find address 0x16c7c00063420 (0x47c00063420) in binary!
+WARNING: couldn't find address 0x16d5400063790 (0x55400063790) in binary!
+	0x12c38  @objc HealthChecklistDataSource.(null) <stripped>
+WARNING: couldn't find address 0x16d3c000636c8 (0x53c000636c8) in binary!
 	0x68000000c  @objc HealthChecklistDataSource.(null) <stripped>
-WARNING: couldn't find address 0x12b5400063390 (0x35400063390) in binary!
-	0x16558  @objc HealthChecklistDataSource.(null) <stripped>
+WARNING: couldn't find address 0x12c1400063638 (0x41400063638) in binary!
+	0x16618  @objc HealthChecklistDataSource.(null) <stripped>
 
 	// Swift methods
-	0x145d30  func <stripped> // getter 
-	0x145d80  class func HealthChecklistDataSource.__allocating_init(featureName:) // init 
-	0x145990  func <stripped> // method 
+	0x146a00  func <stripped> // getter 
+	0x146a50  class func HealthChecklistDataSource.__allocating_init(featureName:) // init 
+	0x146660  func <stripped> // method 
  }
 
  class HealthExperienceUI.AppRecommendationsFetchedResultsController {
@@ -4531,15 +4534,15 @@ WARNING: couldn't find address 0x12b5400063390 (0x35400063390) in binary!
 	// Properties
 	var addDataButton : weak UIButton?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var item : M
+	var item : 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x12b5400063390 (0x35400063390) in binary!
-	0x16558  @objc DataTypeDetailAddDataCell.(null) <stripped>
-WARNING: couldn't find address 0x1654c00063388 (0x54c00063388) in binary!
-	0x12110  @objc DataTypeDetailAddDataCell.(null) <stripped>
-WARNING: couldn't find address 0x12e1400063d58 (0x61400063d58) in binary!
-	0x16c28  @objc DataTypeDetailAddDataCell.(null) <stripped>
+WARNING: couldn't find address 0x12c1400063638 (0x41400063638) in binary!
+	0x16618  @objc DataTypeDetailAddDataCell.(null) <stripped>
+WARNING: couldn't find address 0x1660c00063630 (0x60c00063630) in binary!
+	0x121d0  @objc DataTypeDetailAddDataCell.(null) <stripped>
+WARNING: couldn't find address 0x12ed400064000 (0x6d400064000) in binary!
+	0x16ce8  @objc DataTypeDetailAddDataCell.(null) <stripped>
 WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
 	0x57078456874  @objc DataTypeDetailAddDataCell.(null) <stripped>
 WARNING: couldn't find address 0x2020495565636e65 (0x15565636e65) in binary!
@@ -4548,7 +4551,7 @@ WARNING: couldn't find address 0xa312d70 (0xa312d70) in binary!
 	0x0  @objc DataTypeDetailAddDataCell.(null) <stripped>
 
 	// Swift methods
-	0x147280  func <stripped> // method 
+	0x147f50  func <stripped> // method 
  }
 
  class HealthExperienceUI.GetMoreFromHealthResultsController {
@@ -4559,8 +4562,8 @@ WARNING: couldn't find address 0xa312d70 (0xa312d70) in binary!
 	let router : DeepLinkViewControllerRouter
 
 	// Swift methods
-	0x149a90  class func PluginDeepLinkHandler.__allocating_init(viewControllerRouter:) // init 
-	0x149b30  func <stripped> // method 
-	0x149e20  func <stripped> // method 
-	0x14a2f0  func <stripped> // method 
+	0x14a760  class func PluginDeepLinkHandler.__allocating_init(viewControllerRouter:) // init 
+	0x14a800  func <stripped> // method 
+	0x14aaf0  func <stripped> // method 
+	0x14afc0  func <stripped> // method 
  }

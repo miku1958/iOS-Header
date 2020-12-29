@@ -37,6 +37,7 @@ __attribute__((visibility("hidden")))
     double _lastRTPTimeoutReportTime;
     double _lastRTCPTimeoutReportTime;
     double _lastDecryptionTimeoutReportTime;
+    double _lastDecryptionMKMRecoveryTime;
     double _decryptionErrorStartTime;
     unsigned int _localSSRC;
     unsigned int _transportSessionID;
@@ -90,6 +91,7 @@ __attribute__((visibility("hidden")))
 
 + (BOOL)isSameSRTPKey:(id)arg1 newKey:(id)arg2;
 - (void)checkDecryptionTimeoutAgainstTime:(double)arg1 decryptionErrorStartTime:(double)arg2;
+- (void)checkDecryptionTimeoutForMKMRecoveryAgainstTime:(double)arg1 decryptionErrorStartTime:(double)arg2;
 - (void)checkForDecryptionTimeout;
 - (void)checkRTCPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;
 - (void)checkRTPPacketTimeoutAgainstTime:(double)arg1 lastReceivedPacketTime:(double)arg2;

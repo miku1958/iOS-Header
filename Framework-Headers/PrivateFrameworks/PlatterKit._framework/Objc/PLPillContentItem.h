@@ -6,23 +6,24 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, PLPillContentWrapperView, UIView;
+@class NSAttributedString, NSString, PLPillContentWrapperView, UIView;
 
 @interface PLPillContentItem : NSObject
 {
     BOOL _solo;
     PLPillContentWrapperView *_wrapperView;
-    NSString *_text;
+    id _text;
     unsigned long long _style;
     UIView *_accessoryView;
     NSString *_identifier;
 }
 
 @property (readonly, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
+@property (readonly, nonatomic) NSAttributedString *attributedText;
 @property (readonly, copy, nonatomic, getter=_identifier) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic, getter=isSolo) BOOL solo;
 @property (readonly, nonatomic) unsigned long long style; // @synthesize style=_style;
-@property (readonly, nonatomic) NSString *text; // @synthesize text=_text;
+@property (readonly, nonatomic) NSString *text;
 @property (weak, nonatomic) PLPillContentWrapperView *wrapperView;
 
 - (void).cxx_destruct;
@@ -32,17 +33,23 @@
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithAccessoryView:(id)arg1;
-- (id)initWithIdentifier:(id)arg1 text:(id)arg2 style:(unsigned long long)arg3 accessoryView:(id)arg4;
+- (id)initWithAttributedText:(id)arg1;
+- (id)initWithAttributedText:(id)arg1 style:(unsigned long long)arg2;
+- (id)initWithAttributedText:(id)arg1 style:(unsigned long long)arg2 accessoryView:(id)arg3;
 - (id)initWithText:(id)arg1;
 - (id)initWithText:(id)arg1 style:(unsigned long long)arg2;
 - (id)initWithText:(id)arg1 style:(unsigned long long)arg2 accessoryView:(id)arg3;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isLikePillContentItem:(id)arg1;
+- (id)itemWithAttributedText:(id)arg1;
+- (id)itemWithAttributedText:(id)arg1 style:(unsigned long long)arg2;
+- (id)itemWithAttributedText:(id)arg1 style:(unsigned long long)arg2 accessoryView:(id)arg3;
 - (id)itemWithStyle:(unsigned long long)arg1;
 - (id)itemWithText:(id)arg1;
 - (id)itemWithText:(id)arg1 style:(unsigned long long)arg2;
 - (id)itemWithText:(id)arg1 style:(unsigned long long)arg2 accessoryView:(id)arg3;
 - (id)soloItem;
+- (void)updateWithContentItem:(id)arg1;
 
 @end
 

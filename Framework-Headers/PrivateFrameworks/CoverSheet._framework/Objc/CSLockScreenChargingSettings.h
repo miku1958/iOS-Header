@@ -9,17 +9,25 @@
 @interface CSLockScreenChargingSettings : PTSettings
 {
     BOOL _showWirelessAndAccessoryAnimations;
+    BOOL _warnForIdleDim;
+    BOOL _shouldUseBrightnessFloor;
     double _accessoryAnimationDelayInMilliseconds;
+    double _omniAccessoryAnimationDelayInMilliseconds;
     double _accessoryAnimationBlockingDurationAfterBootInSeconds;
     double _wirelessChargingDebounceDurationInSeconds;
     double _wirelessChargingFirmwareUpdateDebounceDurationInSeconds;
+    double _brightnessFloor;
     long long _wirelessChargingAnimationType;
     long long _wiredChargingAnimationType;
 }
 
 @property (nonatomic) double accessoryAnimationBlockingDurationAfterBootInSeconds; // @synthesize accessoryAnimationBlockingDurationAfterBootInSeconds=_accessoryAnimationBlockingDurationAfterBootInSeconds;
 @property (nonatomic) double accessoryAnimationDelayInMilliseconds; // @synthesize accessoryAnimationDelayInMilliseconds=_accessoryAnimationDelayInMilliseconds;
+@property (nonatomic) double brightnessFloor; // @synthesize brightnessFloor=_brightnessFloor;
+@property (nonatomic) double omniAccessoryAnimationDelayInMilliseconds; // @synthesize omniAccessoryAnimationDelayInMilliseconds=_omniAccessoryAnimationDelayInMilliseconds;
+@property (nonatomic) BOOL shouldUseBrightnessFloor; // @synthesize shouldUseBrightnessFloor=_shouldUseBrightnessFloor;
 @property (nonatomic) BOOL showWirelessAndAccessoryAnimations; // @synthesize showWirelessAndAccessoryAnimations=_showWirelessAndAccessoryAnimations;
+@property (nonatomic) BOOL warnForIdleDim; // @synthesize warnForIdleDim=_warnForIdleDim;
 @property (nonatomic) long long wiredChargingAnimationType; // @synthesize wiredChargingAnimationType=_wiredChargingAnimationType;
 @property (nonatomic) long long wirelessChargingAnimationType; // @synthesize wirelessChargingAnimationType=_wirelessChargingAnimationType;
 @property (nonatomic) double wirelessChargingDebounceDurationInSeconds; // @synthesize wirelessChargingDebounceDurationInSeconds=_wirelessChargingDebounceDurationInSeconds;

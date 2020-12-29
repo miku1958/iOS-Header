@@ -11,19 +11,23 @@
 @interface MPCModelGenericAVItemTimedMetadataResponse : MPModelResponse
 {
     MPModelResponse *_personalizationResponse;
+    BOOL _firstResponse;
+    BOOL _finalResponse;
     NSData *_adamIDData;
     MPCModelGenericAVItemTimedMetadataStreamFields *_streamFields;
     MPSectionedCollection *_unpersonalizedContentDescriptors;
 }
 
 @property (copy, nonatomic) NSData *adamIDData; // @synthesize adamIDData=_adamIDData;
+@property (nonatomic, getter=isFinalResponse) BOOL finalResponse; // @synthesize finalResponse=_finalResponse;
+@property (nonatomic, getter=isFirstResponse) BOOL firstResponse; // @synthesize firstResponse=_firstResponse;
 @property (strong, nonatomic) MPCModelGenericAVItemTimedMetadataStreamFields *streamFields; // @synthesize streamFields=_streamFields;
 @property (copy, nonatomic) MPSectionedCollection *unpersonalizedContentDescriptors; // @synthesize unpersonalizedContentDescriptors=_unpersonalizedContentDescriptors;
 
 - (void).cxx_destruct;
 - (void)_personalizationResponseDidInvalidateNotification:(id)arg1;
 - (void)dealloc;
-- (id)initWithRequest:(id)arg1 personalizationResponse:(id)arg2;
+- (id)initWithRequest:(id)arg1 personalizationResponse:(id)arg2 firstResponse:(BOOL)arg3 finalResponse:(BOOL)arg4;
 
 @end
 

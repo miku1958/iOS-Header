@@ -6,15 +6,35 @@
 
 #import <objc/NSObject.h>
 
-@interface WFHomeScreenController : NSObject
+#import <WorkflowKit/WFDatabaseObjectObserver-Protocol.h>
+
+@class NSMutableSet, WFDatabase;
+@protocol OS_dispatch_queue;
+
+@interface WFHomeScreenController : NSObject <WFDatabaseObjectObserver>
 {
+    WFDatabase *_database;
+    NSObject<OS_dispatch_queue> *_queue;
+    NSMutableSet *_homeScreenShortcutIDs;
 }
 
-+ (BOOL)addWorkflowToHomeScreen:(id)arg1 withName:(id)arg2 icon:(id)arg3 error:(id *)arg4;
+@property (readonly, nonatomic) WFDatabase *database; // @synthesize database=_database;
+@property (readonly, nonatomic) NSMutableSet *homeScreenShortcutIDs; // @synthesize homeScreenShortcutIDs=_homeScreenShortcutIDs;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+
 + (void)drawIcon:(id)arg1 maxSize:(double)arg2 inRect:(struct CGRect)arg3;
 + (id)iconImageForIcon:(id)arg1;
 + (id)launchImageForIcon:(id)arg1 inLandscape:(BOOL)arg2;
-+ (void)migrateWebClipsIfNeeded;
++ (void)migrateOpenAppWebClipsIfNeededWithDatabaseAccessor:(CDUnknownBlockType)arg1;
++ (void)migratePreYukonWebClipsIfNeeded;
++ (void)migrateWebClipsIfNeededWithDatabaseAccessor:(CDUnknownBlockType)arg1;
++ (id)sharedInstance;
+- (void).cxx_destruct;
+- (BOOL)addWorkflowToHomeScreen:(id)arg1 withName:(id)arg2 icon:(id)arg3 error:(id *)arg4;
+- (void)databaseDidChange:(id)arg1 modified:(id)arg2 inserted:(id)arg3 removed:(id)arg4;
+- (id)init;
+- (void)startListeningForDatabaseChanges;
+- (void)updateWebClipIfNeeded:(id)arg1;
 
 @end
 

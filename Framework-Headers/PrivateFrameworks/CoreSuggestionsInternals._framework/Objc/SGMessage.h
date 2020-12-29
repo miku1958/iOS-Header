@@ -10,7 +10,7 @@
 #import <CoreSuggestionsInternals/NSSecureCoding-Protocol.h>
 #import <CoreSuggestionsInternals/SGSpotlightIdentifiers-Protocol.h>
 
-@class CSPerson, NSArray, NSDate, NSString, SGCachedResult;
+@class CSPerson, NSArray, NSDate, NSString, SGCachedResult, SGHarvestQueueMetrics;
 
 @interface SGMessage : NSObject <NSSecureCoding, NSCopying, SGSpotlightIdentifiers>
 {
@@ -31,6 +31,7 @@
     NSArray *_attachments;
     NSArray *_accountHandles;
     NSString *_accountType;
+    SGHarvestQueueMetrics *_harvestMetrics;
 }
 
 @property (copy, nonatomic) NSArray *accountHandles; // @synthesize accountHandles=_accountHandles;
@@ -38,11 +39,13 @@
 @property (readonly, nonatomic) NSArray *attachments; // @synthesize attachments=_attachments;
 @property (readonly, nonatomic) CSPerson *author;
 @property (copy, nonatomic) NSString *bundleIdentifier; // @synthesize bundleIdentifier=_bundleIdentifier;
+@property (readonly, nonatomic) long long contentLength;
 @property (copy, nonatomic) NSDate *date; // @synthesize date=_date;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) struct _NSRange detectedDataSignatureRange;
 @property (copy, nonatomic) NSString *domainIdentifier; // @synthesize domainIdentifier=_domainIdentifier;
+@property (strong, nonatomic) SGHarvestQueueMetrics *harvestMetrics; // @synthesize harvestMetrics=_harvestMetrics;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL isInhumanContent;
 @property (readonly, nonatomic) BOOL isInhumanSender;

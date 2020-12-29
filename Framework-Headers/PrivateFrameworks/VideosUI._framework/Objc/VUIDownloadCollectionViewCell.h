@@ -9,7 +9,7 @@
 #import <VideosUI/VUIDownloadEntityDelegate-Protocol.h>
 #import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
 
-@class NSString, UIImageView, VUIDownloadButton, VUIDownloadEntity, VUILabel;
+@class NSString, UIImageView, VUIDownloadEntity, VUILabel, VUILegacyDownloadButton;
 @protocol VUIDownloadCollectionViewCellDelegate;
 
 __attribute__((visibility("hidden")))
@@ -23,14 +23,14 @@ __attribute__((visibility("hidden")))
     UIImageView *_editImageView;
     VUIDownloadEntity *_downloadEntity;
     unsigned long long _previousDownloadState;
-    VUIDownloadButton *_downloadButton;
+    VUILegacyDownloadButton *_downloadButton;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<VUIDownloadCollectionViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) VUILabel *dotSeparatorLabel; // @synthesize dotSeparatorLabel=_dotSeparatorLabel;
-@property (strong, nonatomic) VUIDownloadButton *downloadButton; // @synthesize downloadButton=_downloadButton;
+@property (strong, nonatomic) VUILegacyDownloadButton *downloadButton; // @synthesize downloadButton=_downloadButton;
 @property (strong, nonatomic) VUIDownloadEntity *downloadEntity; // @synthesize downloadEntity=_downloadEntity;
 @property (strong, nonatomic) UIImageView *editImageView; // @synthesize editImageView=_editImageView;
 @property (nonatomic) BOOL editing; // @synthesize editing=_editing;

@@ -81,6 +81,7 @@
 + (id)availableVoicesForLanguageCode:(id)arg1 queryingMobileAssets:(BOOL)arg2;
 + (BOOL)employSpeechMarkupForType:(long long)arg1 identifier:(id)arg2 withLanguage:(id)arg3;
 + (void)initialize;
++ (BOOL)isSystemVoice:(id)arg1;
 + (id)refreshAllAvailableVoices;
 + (id)refreshAllAvailableVoices:(BOOL)arg1;
 + (void)setSpeechJobFinishedUnitTestBlock:(CDUnknownBlockType)arg1;

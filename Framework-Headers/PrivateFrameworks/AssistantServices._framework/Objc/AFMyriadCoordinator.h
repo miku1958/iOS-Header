@@ -248,6 +248,7 @@
 - (void)startAdvertisingFromVoiceTrigger;
 - (void)startAdvertisingFromVoiceTriggerAdjusted:(BOOL)arg1;
 - (void)startAdvertisingFromVoiceTriggerAdjusted:(BOOL)arg1 withContext:(id)arg2;
+- (void)startAdvertisingFromVoiceTriggerWithAdjustment:(BOOL)arg1 bias:(unsigned char)arg2 withContext:(id)arg3;
 - (void)startAdvertisingFromVoiceTriggerWithContext:(id)arg1;
 - (void)startAdvertisingSlowdown:(unsigned short)arg1;
 - (void)startListening;

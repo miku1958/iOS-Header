@@ -6,19 +6,14 @@
 
 #import <CoverSheet/CSAccessoryView.h>
 
-@class BCBatteryDevice, CALayer, CSBatteryChargingView, SBFLockScreenDateView, UIButton, UIImageView;
-@protocol CSAccessorySleeveViewDelegate;
+@class BCBatteryDevice, CALayer, CSBatteryChargingView, SBFLockScreenDateView, UIImageView;
 
 @interface CSAccessorySleeveView : CSAccessoryView
 {
     BOOL _charging;
-    id<CSAccessorySleeveViewDelegate> _delegate;
     SBFLockScreenDateView *_dateView;
     SBFLockScreenDateView *_secondaryDateView;
     CALayer *_backgroundColorLayer;
-    CALayer *_backgroundColorLayerWithBlendLabelColor1;
-    CALayer *_backgroundColorLayerWithBlendLabelColor2;
-    UIButton *_dismissButton;
     CSBatteryChargingView *_batteryChargingView;
     UIImageView *_chargingBoltImageView;
     BCBatteryDevice *_batteryDevice;
@@ -26,15 +21,11 @@
 }
 
 @property (strong, nonatomic) CALayer *backgroundColorLayer; // @synthesize backgroundColorLayer=_backgroundColorLayer;
-@property (strong, nonatomic) CALayer *backgroundColorLayerWithBlendLabelColor1; // @synthesize backgroundColorLayerWithBlendLabelColor1=_backgroundColorLayerWithBlendLabelColor1;
-@property (strong, nonatomic) CALayer *backgroundColorLayerWithBlendLabelColor2; // @synthesize backgroundColorLayerWithBlendLabelColor2=_backgroundColorLayerWithBlendLabelColor2;
 @property (strong, nonatomic) CSBatteryChargingView *batteryChargingView; // @synthesize batteryChargingView=_batteryChargingView;
 @property (strong, nonatomic) BCBatteryDevice *batteryDevice; // @synthesize batteryDevice=_batteryDevice;
 @property (nonatomic) BOOL charging; // @synthesize charging=_charging;
 @property (strong, nonatomic) UIImageView *chargingBoltImageView; // @synthesize chargingBoltImageView=_chargingBoltImageView;
 @property (strong, nonatomic) SBFLockScreenDateView *dateView; // @synthesize dateView=_dateView;
-@property (weak, nonatomic) id<CSAccessorySleeveViewDelegate> delegate; // @synthesize delegate=_delegate;
-@property (strong, nonatomic) UIButton *dismissButton; // @synthesize dismissButton=_dismissButton;
 @property (strong, nonatomic) SBFLockScreenDateView *secondaryDateView; // @synthesize secondaryDateView=_secondaryDateView;
 @property (nonatomic) struct CGRect visibleWindowFrame; // @synthesize visibleWindowFrame=_visibleWindowFrame;
 
@@ -43,10 +34,8 @@
 - (struct CGRect)_chargingViewFrame;
 - (id)_colorForBatteryLevel:(double)arg1;
 - (void)_dismissAnimation;
-- (void)_dismissButtonTapped:(id)arg1;
 - (void)_presentAnimation;
 - (void)_runAnimationWithType:(unsigned long long)arg1;
-- (void)_updateViewsAfterAnimation:(unsigned long long)arg1;
 - (double)animationDurationBeforeDismissal;
 - (id)batteryChargingViewWithChargingInfo:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

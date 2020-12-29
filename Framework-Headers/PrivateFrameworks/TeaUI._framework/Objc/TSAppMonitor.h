@@ -17,6 +17,7 @@
 }
 
 @property (nonatomic) BOOL isActive; // @synthesize isActive;
+@property (nonatomic) BOOL isTracking; // @synthesize isTracking;
 
 - (void).cxx_destruct;
 - (id)init;

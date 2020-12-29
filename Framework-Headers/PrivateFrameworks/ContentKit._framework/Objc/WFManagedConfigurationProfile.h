@@ -25,6 +25,7 @@
 @property (readonly, nonatomic) NSMutableDictionary *accounts; // @synthesize accounts=_accounts;
 @property (readonly) BOOL isBluetoothModificationAllowed;
 @property (readonly) BOOL isOpenInRestrictionInEffect;
+@property (readonly) BOOL isWallpaperModificationAllowed;
 @property (readonly) BOOL isWiFiPowerModificationAllowed;
 @property (readonly, copy, nonatomic) NSSet *managedAppBundleIDs; // @synthesize managedAppBundleIDs=_managedAppBundleIDs;
 @property (readonly) BOOL mayOpenFromManagedToUnmanaged;

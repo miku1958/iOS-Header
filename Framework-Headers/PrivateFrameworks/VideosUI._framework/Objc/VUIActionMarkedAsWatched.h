@@ -14,8 +14,10 @@ __attribute__((visibility("hidden")))
     NSString *_itemID;
     NSString *_itemType;
     NSString *_channelID;
+    NSString *_adamID;
 }
 
+@property (strong, nonatomic) NSString *adamID; // @synthesize adamID=_adamID;
 @property (strong, nonatomic) NSString *channelID; // @synthesize channelID=_channelID;
 @property (strong, nonatomic) NSString *itemID; // @synthesize itemID=_itemID;
 @property (strong, nonatomic) NSString *itemType; // @synthesize itemType=_itemType;

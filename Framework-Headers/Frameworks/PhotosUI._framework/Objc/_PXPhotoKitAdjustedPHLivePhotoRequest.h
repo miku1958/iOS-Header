@@ -6,14 +6,16 @@
 
 #import <PhotosUICore/_PXPhotoKitAdjustedUIMediaRequest.h>
 
-@class AVPlayerItem, PHLivePhotoRequestOptions, UIImage, _PXPhotoKitAdjustedUIImageRequest, _PXPhotoKitAdjustedVideoRequest;
+@class AVPlayerItem, NSDictionary, PHLivePhotoRequestOptions, UIImage, _PXPhotoKitAdjustedUIImageRequest, _PXPhotoKitAdjustedVideoRequest;
 
 @interface _PXPhotoKitAdjustedPHLivePhotoRequest : _PXPhotoKitAdjustedUIMediaRequest
 {
     _PXPhotoKitAdjustedUIImageRequest *_imageRequest;
     _PXPhotoKitAdjustedVideoRequest *_videoRequest;
     UIImage *_image;
+    NSDictionary *_imageResultInfo;
     AVPlayerItem *_playerItem;
+    NSDictionary *_playerItemResultInfo;
     long long _contentMode;
     PHLivePhotoRequestOptions *_options;
     CDUnknownBlockType _resultHandler;

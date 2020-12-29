@@ -11,7 +11,6 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI14SearchListCell : VUIBaseListViewCell
 {
-    MISSING_TYPE *$__lazy_storage_$_bottomSeparatorView;
     MISSING_TYPE *layout;
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *subtitleLabel;
@@ -20,6 +19,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *accessoryImageView;
     MISSING_TYPE *buttonView;
     MISSING_TYPE *badgeView;
+    MISSING_TYPE *$__lazy_storage_$_bottomSeparatorView;
 }
 
 - (void).cxx_destruct;

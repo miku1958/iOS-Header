@@ -12,7 +12,6 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI23DescriptionTemplateView : UIView
 {
     MISSING_TYPE *subViews;
-    MISSING_TYPE *buttonView;
     MISSING_TYPE *subViewLayouts;
     MISSING_TYPE *debugUIOverlay;
     MISSING_TYPE *$__lazy_storage_$_contentView;

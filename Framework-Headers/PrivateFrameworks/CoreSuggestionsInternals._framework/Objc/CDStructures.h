@@ -221,11 +221,6 @@ typedef struct {
 } CDStruct_a2e78aaa;
 
 typedef struct {
-    unsigned int app:1;
-    unsigned int wasSuggestedContact:1;
-} CDStruct_02d9bdfe;
-
-typedef struct {
     int _field1;
     int _field2;
     unsigned int _field3;
@@ -247,7 +242,10 @@ typedef struct {
     CDStruct_beb4cc23 _field8;
     CDStruct_beb4cc23 _field9;
     long long _field10;
-} CDStruct_632d45bc;
+    BOOL _field11;
+    double _field12;
+    int _field13;
+} CDStruct_e8711410;
 
 typedef struct {
     struct {
@@ -294,6 +292,11 @@ typedef struct {
     unsigned int wasKnownContact:1;
     unsigned int wasSuggestedContact:1;
 } CDStruct_73da3db5;
+
+typedef struct {
+    unsigned int app:1;
+    unsigned int wasSuggestedContact:1;
+} CDStruct_02d9bdfe;
 
 typedef struct {
     unsigned int app:1;

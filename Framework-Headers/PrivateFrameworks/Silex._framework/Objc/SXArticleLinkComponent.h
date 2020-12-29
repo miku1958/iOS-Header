@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) SXJSONDictionary *analytics;
 @property (readonly, nonatomic) id<SXComponentAnchor> anchor;
 @property (readonly, nonatomic) SXComponentAnimation *animation;
+@property (readonly, nonatomic) NSString *articleIdentifier; // @dynamic articleIdentifier;
 @property (readonly, nonatomic) SXJSONArray *behaviors;
 @property (readonly, nonatomic) SXComponentClassification *classification;
 @property (readonly, nonatomic) SXJSONArray *conditional;

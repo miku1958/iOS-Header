@@ -36,7 +36,6 @@
 - (unsigned long long)hash;
 - (id)initWithReadDate:(id)arg1 startDate:(id)arg2 expirationDate:(id)arg3 minutes:(id)arg4 conditions:(id)arg5 descriptions:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
-- (BOOL)shouldUseActiveMinutesInNextHourPrecipitation;
 
 @end
 

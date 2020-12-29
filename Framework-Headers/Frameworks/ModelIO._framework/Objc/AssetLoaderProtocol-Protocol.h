@@ -7,6 +7,6 @@
 @class NSString, NSURL;
 
 @protocol AssetLoaderProtocol
-- (void)loadURL:(NSURL *)arg1 extensionToken:(NSString *)arg2 withReply:(void (^)(MDLAssetLoader *, NSString *))arg3;
+- (void)loadURL:(NSURL *)arg1 extensionToken:(NSString *)arg2 withReply:(void (^)(NSString *))arg3;
 @end
 

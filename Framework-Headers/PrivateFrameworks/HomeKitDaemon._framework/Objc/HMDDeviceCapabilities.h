@@ -39,6 +39,7 @@
 @property (readonly, nonatomic) BOOL supportsDeviceSetup;
 @property (readonly) BOOL supportsDoorbellChime;
 @property (readonly, nonatomic) BOOL supportsFaceClassification;
+@property (readonly, nonatomic) BOOL supportsFirmwareUpdate;
 @property (readonly, nonatomic) BOOL supportsHomeInvitation;
 @property (readonly, nonatomic) BOOL supportsIDSActivityMonitorPresence;
 @property (readonly, nonatomic) BOOL supportsKeyTransferClient;
@@ -48,6 +49,7 @@
 @property (readonly, nonatomic) BOOL supportsMultiUser;
 @property (readonly, nonatomic) BOOL supportsMusicAlarm;
 @property (readonly, nonatomic) BOOL supportsNaturalLighting;
+@property (readonly) BOOL supportsPreferredMediaUser;
 @property (readonly, nonatomic) BOOL supportsRouterManagement;
 @property (readonly, nonatomic) BOOL supportsShortcutActions;
 @property (readonly, nonatomic) BOOL supportsStandaloneMode;

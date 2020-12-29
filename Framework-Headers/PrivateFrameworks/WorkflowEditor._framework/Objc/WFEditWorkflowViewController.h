@@ -120,7 +120,6 @@
 - (void)responderDidEndEditing:(id)arg1;
 - (void)responderDidType:(id)arg1;
 - (void)revealAction:(id)arg1 fromSourceView:(id)arg2 preScrollHandler:(CDUnknownBlockType)arg3 goBackHandler:(CDUnknownBlockType)arg4 scrolledAwayHandler:(CDUnknownBlockType)arg5;
-- (void)runToolbarAddTapped:(id)arg1;
 - (void)runToolbarRedoTapped:(id)arg1;
 - (void)runToolbarShareTapped:(id)arg1 sender:(id)arg2;
 - (void)runToolbarUndoTapped:(id)arg1;

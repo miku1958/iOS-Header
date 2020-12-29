@@ -88,7 +88,6 @@
 - (id)init;
 - (id)initWithController:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
-- (BOOL)isBluetoothAndUSBMirrored;
 - (id)objectForKeyedSubscript:(id)arg1;
 - (id)productCategory;
 - (id)remappedElementForIndex:(long long)arg1;

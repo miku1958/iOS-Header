@@ -17,7 +17,7 @@
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)init:(id)arg1 order:(long long)arg2;
+- (id)init:(id)arg1 emojiSearchMode:(BOOL)arg2 order:(long long)arg3;
 - (void)reportToSession:(id)arg1;
 
 @end

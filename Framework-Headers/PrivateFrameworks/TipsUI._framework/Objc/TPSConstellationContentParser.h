@@ -61,10 +61,10 @@
 - (id)attributedStringForTextNode:(id)arg1;
 - (id)attributesWithMarks:(id)arg1;
 - (struct CGRect)boundsForImage:(id)arg1 size:(struct CGSize)arg2;
+- (void)cancelAssetFetches;
 - (void)dealloc;
 - (void)fetchAssetConfiguration:(id)arg1 cacheIdentifier:(id)arg2 textAttachment:(id)arg3;
 - (id)init;
-- (double)scaledValueForSize:(double)arg1;
 
 @end
 

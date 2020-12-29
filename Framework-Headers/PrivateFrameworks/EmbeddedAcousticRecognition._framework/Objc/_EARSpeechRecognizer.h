@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSData, NSDictionary, NSString, _EARFormatter, _EARSpeechModelInfo, _EARSpeechRecognitionAudioBuffer;
+@class NSArray, NSData, NSDictionary, NSString, _EARFormatter, _EARSpeakerCodeInfo, _EARSpeechModelInfo, _EARSpeechRecognitionAudioBuffer;
 @protocol OS_dispatch_queue;
 
 @interface _EARSpeechRecognizer : NSObject
@@ -29,8 +29,10 @@
     BOOL _recognizeEagerCandidates;
     BOOL _farField;
     BOOL _highPriority;
+    BOOL _scoreNbest;
     NSData *_userProfileData;
     NSData *_jitProfileData;
+    _EARSpeakerCodeInfo *_speakerCodeInfo;
     double _endpointStart;
     double _maximumRecognitionDuration;
     NSDictionary *_recognitionReplacements;
@@ -43,7 +45,7 @@
     NSString *_userId;
     NSString *_sessionId;
     NSArray *_extraLmList;
-    NSString *_speakerCode;
+    NSArray *_scoreNbestExtraLmList;
 }
 
 @property (copy, nonatomic) NSString *bluetoothDeviceId; // @synthesize bluetoothDeviceId=_bluetoothDeviceId;
@@ -63,8 +65,10 @@
 @property (copy, nonatomic) NSDictionary *recognitionReplacements; // @synthesize recognitionReplacements=_recognitionReplacements;
 @property (nonatomic) BOOL recognizeEagerCandidates; // @synthesize recognizeEagerCandidates=_recognizeEagerCandidates;
 @property (copy, nonatomic) NSString *refTranscriptForErrorBlaming; // @synthesize refTranscriptForErrorBlaming=_refTranscriptForErrorBlaming;
+@property (nonatomic) BOOL scoreNbest; // @synthesize scoreNbest=_scoreNbest;
+@property (copy, nonatomic) NSArray *scoreNbestExtraLmList; // @synthesize scoreNbestExtraLmList=_scoreNbestExtraLmList;
 @property (copy, nonatomic) NSString *sessionId; // @synthesize sessionId=_sessionId;
-@property (copy, nonatomic) NSString *speakerCode; // @synthesize speakerCode=_speakerCode;
+@property (readonly, nonatomic) _EARSpeakerCodeInfo *speakerCodeInfo; // @synthesize speakerCodeInfo=_speakerCodeInfo;
 @property (copy, nonatomic) NSString *userId; // @synthesize userId=_userId;
 @property (copy, nonatomic) NSData *userProfileData; // @synthesize userProfileData=_userProfileData;
 
@@ -91,6 +95,8 @@
 - (id)initWithConfiguration:(id)arg1 overrides:(id)arg2 generalVoc:(id)arg3 lexiconEnh:(id)arg4 itnEnh:(id)arg5;
 - (id)initWithConfiguration:(id)arg1 overrides:(id)arg2 overrideConfigFiles:(id)arg3;
 - (id)initWithConfiguration:(id)arg1 overrides:(id)arg2 overrideConfigFiles:(id)arg3 generalVoc:(id)arg4 lexiconEnh:(id)arg5 itnEnh:(id)arg6;
+- (id)initWithConfiguration:(id)arg1 overrides:(id)arg2 overrideConfigFiles:(id)arg3 generalVoc:(id)arg4 lexiconEnh:(id)arg5 itnEnh:(id)arg6 language:(id)arg7;
+- (id)initWithConfiguration:(id)arg1 overrides:(id)arg2 overrideConfigFiles:(id)arg3 language:(id)arg4;
 - (id)initWithConfiguration:(id)arg1 useQuasarFormatter:(BOOL)arg2;
 - (id)initWithConfiguration:(id)arg1 withGeneralVoc:(id)arg2 withLexiconEnh:(id)arg3 withItnEnh:(id)arg4;
 - (id)initWithConfiguration:(id)arg1 withLanguage:(id)arg2 withSdapiConfig:(id)arg3;
@@ -98,12 +104,13 @@
 - (id)recognitionResultsWithAudioData:(id)arg1 userProfileData:(id)arg2 language:(id)arg3 task:(id)arg4 samplingRate:(unsigned long long)arg5;
 - (id)recognitionResultsWithAudioData:(id)arg1 userProfileData:(id)arg2 language:(id)arg3 task:(id)arg4 samplingRate:(unsigned long long)arg5 extraLanguageModel:(id)arg6;
 - (id)recognitionStatistics;
+- (id)recognitionUtteranceInfos;
 - (id)recognitionUtterenceStatistics;
 - (shared_ptr_9f04d411)requestParametersWithUserProfileData:(id)arg1 task:(id)arg2 samplingRate:(unsigned long long)arg3 resultStream:(shared_ptr_5cb47a18)arg4 extraLanguageModel:(id)arg5 symbolTableList:(const shared_ptr_ca83464d *)arg6;
 - (id)runRecognitionWithResultStream:(id)arg1;
 - (id)runRecognitionWithResultStream:(id)arg1 language:(id)arg2 task:(id)arg3 samplingRate:(unsigned long long)arg4;
-- (id)runRecognitionWithResultStream:(id)arg1 language:(id)arg2 task:(id)arg3 samplingRate:(unsigned long long)arg4 userProfileData:(id)arg5 trainingResultStream:(id)arg6;
-- (id)runRecognitionWithResultStream:(id)arg1 trainingResultStream:(id)arg2 language:(id)arg3 task:(id)arg4 samplingRate:(unsigned long long)arg5;
+- (id)runRecognitionWithResultStream:(id)arg1 language:(id)arg2 task:(id)arg3 samplingRate:(unsigned long long)arg4 userProfileData:(id)arg5 speakerCodeWriter:(id)arg6;
+- (id)runRecognitionWithResultStream:(id)arg1 speakerCodeWriter:(id)arg2 language:(id)arg3 task:(id)arg4 samplingRate:(unsigned long long)arg5;
 - (void)setAlternateRawRecognitionTokenSausage:(id)arg1;
 - (void)setLeftContextText:(id)arg1;
 - (void)updateJitProfileData:(id)arg1;

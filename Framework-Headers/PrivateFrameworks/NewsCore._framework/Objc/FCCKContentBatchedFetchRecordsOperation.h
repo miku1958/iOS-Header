@@ -13,6 +13,7 @@
     FCCKContentDatabase *_database;
     NSArray *_recordIDs;
     NSArray *_desiredKeys;
+    unsigned long long _maxBatchSize;
     CDUnknownBlockType _fetchRecordsCompletionBlock;
     NSMutableArray *_remainingRecordIDBatches;
     NSMutableDictionary *_recordsByRecordID;
@@ -24,6 +25,7 @@
 @property (copy, nonatomic) NSArray *desiredKeys; // @synthesize desiredKeys=_desiredKeys;
 @property (strong, nonatomic) NSMutableDictionary *errorsByRecordID; // @synthesize errorsByRecordID=_errorsByRecordID;
 @property (copy, nonatomic) CDUnknownBlockType fetchRecordsCompletionBlock; // @synthesize fetchRecordsCompletionBlock=_fetchRecordsCompletionBlock;
+@property (nonatomic) unsigned long long maxBatchSize; // @synthesize maxBatchSize=_maxBatchSize;
 @property (strong, nonatomic) NSError *operationError; // @synthesize operationError=_operationError;
 @property (copy, nonatomic) NSArray *recordIDs; // @synthesize recordIDs=_recordIDs;
 @property (strong, nonatomic) NSMutableDictionary *recordsByRecordID; // @synthesize recordsByRecordID=_recordsByRecordID;
@@ -34,6 +36,7 @@
 - (id)init;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
+- (void)prepareOperation;
 - (void)resetForRetry;
 - (BOOL)validateOperation;
 

@@ -24,6 +24,7 @@
 + (id)versionForProductWithName:(id)arg1 deviceType:(long long)arg2 error:(out id *)arg3;
 + (id)versionForProductWithName:(id)arg1 error:(out id *)arg2;
 + (id)watchElectrocardiogramRecordingUniqueDeviceIdentifier;
++ (id)watchElectrocardiogramRecordingVersionTwoUniqueDeviceIdentifier;
 + (id)yearOfReleaseForProductWithName:(id)arg1 error:(out id *)arg2;
 
 @end

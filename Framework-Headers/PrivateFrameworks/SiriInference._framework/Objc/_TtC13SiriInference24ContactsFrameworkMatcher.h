@@ -11,7 +11,8 @@
 @interface _TtC13SiriInference24ContactsFrameworkMatcher : _TtCs12_SwiftObject
 {
     MISSING_TYPE *contactStore;
-    MISSING_TYPE *queryToCNContact;
+    MISSING_TYPE *tokenizer;
+    MISSING_TYPE *locale;
 }
 
 @end

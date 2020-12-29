@@ -6,6 +6,11 @@
 
 #import <Silex/SXComponent-Protocol.h>
 
+@class NSString;
+
 @protocol SXArticleLinkComponent <SXComponent>
+
+@property (readonly, nonatomic) NSString *articleIdentifier;
+
 @end
 

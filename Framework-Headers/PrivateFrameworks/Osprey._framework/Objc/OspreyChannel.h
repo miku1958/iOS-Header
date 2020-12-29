@@ -50,6 +50,7 @@
 - (id)initWithURL:(id)arg1 configuration:(id)arg2 useCache:(BOOL)arg3;
 - (void)initializeAbsintheSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)initializeDeviceAuthenticationSessionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)ocp_setAssociatedHandle:(id)arg1;
 - (void)performBidirectionalStreamingRequest:(id)arg1 handler:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)performRequest:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)preconnect;

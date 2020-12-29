@@ -110,7 +110,7 @@
 @property (readonly) unsigned long long cloudSyncPushCount; // @synthesize cloudSyncPushCount=_cloudSyncPushCount;
 @property (readonly) unsigned long long cloudSyncUploadCount; // @synthesize cloudSyncUploadCount=_cloudSyncUploadCount;
 @property (readonly) unsigned long long cloudSyncUploadErrorCount; // @synthesize cloudSyncUploadErrorCount=_cloudSyncUploadErrorCount;
-@property (readonly, nonatomic) NSString *dataSyncState; // @synthesize dataSyncState=_dataSyncState;
+@property (readonly, copy, nonatomic) NSString *dataSyncState; // @synthesize dataSyncState=_dataSyncState;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long erroredXPCRequestsCount; // @synthesize erroredXPCRequestsCount=_erroredXPCRequestsCount;

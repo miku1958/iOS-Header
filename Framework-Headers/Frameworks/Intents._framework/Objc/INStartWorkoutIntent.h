@@ -8,22 +8,27 @@
 
 #import <Intents/INStartWorkoutIntentExport-Protocol.h>
 
-@class INSpeakableString, NSNumber, NSString;
+@class INSpeakableString, NSArray, NSNumber, NSString;
 
 @interface INStartWorkoutIntent : INIntent <INStartWorkoutIntentExport>
 {
 }
 
+@property (copy, nonatomic) NSArray *associatedItems;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSNumber *goalValue;
 @property (readonly) unsigned long long hash;
+@property (copy, nonatomic) NSNumber *isBuiltInWorkoutType;
 @property (readonly, copy, nonatomic) NSNumber *isOpenEnded;
+@property (copy, nonatomic) NSNumber *isVoiceOnly;
+@property (nonatomic) long long sequenceLabel;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) long long workoutGoalUnitType;
 @property (readonly, nonatomic) long long workoutLocationType;
 @property (readonly, copy, nonatomic) INSpeakableString *workoutName;
 
++ (id)_ignoredParameters;
 - (id)_categoryVerb;
 - (id)_dictionaryRepresentation;
 - (id)_goalValueIntentSlotDescription;

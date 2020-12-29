@@ -48,6 +48,7 @@
 - (void)invalidateAvailability;
 - (void)notifyResourcesAboutAvailabilityChange;
 - (void)refreshAvailability;
+- (void)refreshAvailabilityIfNeeded;
 - (void)refreshAvailabilityWithForcedNotification;
 - (void)refreshAvailabilityWithNotification;
 - (void)refreshAvailabilityWithNotification:(BOOL)arg1;

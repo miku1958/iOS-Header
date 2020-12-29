@@ -18,7 +18,6 @@
 @property (readonly, nonatomic) BOOL hasName;
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

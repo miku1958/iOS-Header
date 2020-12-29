@@ -36,6 +36,7 @@
 @property (nonatomic) BOOL showsLinkToUnifiedAbout; // @synthesize showsLinkToUnifiedAbout=_showsLinkToUnifiedAbout;
 
 + (Class)_platformSpecificClass;
++ (id)linkWithBundleAtPath:(id)arg1;
 + (id)linkWithBundleIdentifier:(id)arg1;
 + (id)linkWithBundleIdentifiers:(id)arg1;
 - (void).cxx_destruct;

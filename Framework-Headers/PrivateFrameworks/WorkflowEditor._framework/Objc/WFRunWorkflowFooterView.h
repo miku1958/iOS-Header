@@ -18,13 +18,13 @@
 }
 
 @property (strong, nonatomic) WFFloatingButton *addButton; // @synthesize addButton=_addButton;
+@property (readonly, nonatomic) BOOL addButtonHidden;
 @property (weak, nonatomic) id<WFRunWorkflowFooterViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, nonatomic) WFModulesQuickLookView *quickLookView; // @synthesize quickLookView=_quickLookView;
+@property (readonly, nonatomic) BOOL quickLookViewHidden;
 @property (strong, nonatomic) UIStackView *stackView; // @synthesize stackView=_stackView;
 
-+ (double)preferredAddButtonHeight;
-+ (double)preferredBottomPaddingHeight;
-+ (struct CGSize)preferredQuickLookViewSizeForTraitCollection:(id)arg1;
++ (double)preferredHeightWithQuickLookVisible:(BOOL)arg1 addButtonVisible:(BOOL)arg2 forWidth:(double)arg3;
 - (void).cxx_destruct;
 - (void)didTapAddButton;
 - (id)initWithFrame:(struct CGRect)arg1;

@@ -4,10 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <SiriPlaybackControlIntents/_TtC26SiriPlaybackControlIntents18BaseDialogProvider.h>
+#import <swiftCore/_TtCs12_SwiftObject.h>
 
-@interface _TtC26SiriPlaybackControlIntents14DialogProvider : _TtC26SiriPlaybackControlIntents18BaseDialogProvider
+@class MISSING_TYPE;
+
+@interface _TtC26SiriPlaybackControlIntents14DialogProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *dialogProvider;
 }
 
 @end

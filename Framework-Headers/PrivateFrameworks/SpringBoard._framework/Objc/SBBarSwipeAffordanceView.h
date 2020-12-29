@@ -12,7 +12,7 @@
 #import <SpringBoard/SBSystemGestureRecognizerDelegate-Protocol.h>
 #import <SpringBoard/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSHashTable, NSString, SBHomeGestureInteraction, SBHomeGrabberView, SBSystemGestureManager, UINotificationFeedbackGenerator;
+@class NSHashTable, NSString, SBHomeGestureInteraction, SBHomeGrabberView, SBKeyboardHomeAffordanceAssertion, SBSystemGestureManager, UINotificationFeedbackGenerator;
 @protocol SBBarSwipeAffordanceDelegate, SBHomeGrabberPointerClickDelegate;
 
 @interface SBBarSwipeAffordanceView : UIView <UIGestureRecognizerDelegate, SBHomeGrabberDelegate, SBSystemGestureRecognizerDelegate, SBHomeGestureInteractionDelegate, SBHomeGesturePanGestureRecognizerInterfaceDelegate>
@@ -25,6 +25,7 @@
     BOOL _active;
     BOOL _homeAffordanceHidden;
     id<SBBarSwipeAffordanceDelegate> _delegate;
+    SBKeyboardHomeAffordanceAssertion *_keyboardHomeAffordanceAssertion;
     SBHomeGrabberView *_grabberView;
     long long _feedbackType;
 }
@@ -38,6 +39,7 @@
 @property (readonly, nonatomic) SBHomeGrabberView *grabberView; // @synthesize grabberView=_grabberView;
 @property (readonly) unsigned long long hash;
 @property (nonatomic, getter=isHomeAffordanceHidden) BOOL homeAffordanceHidden; // @synthesize homeAffordanceHidden=_homeAffordanceHidden;
+@property (strong, nonatomic) SBKeyboardHomeAffordanceAssertion *keyboardHomeAffordanceAssertion; // @synthesize keyboardHomeAffordanceAssertion=_keyboardHomeAffordanceAssertion;
 @property (weak, nonatomic) id<SBHomeGrabberPointerClickDelegate> pointerClickDelegate;
 @property (readonly) Class superclass;
 

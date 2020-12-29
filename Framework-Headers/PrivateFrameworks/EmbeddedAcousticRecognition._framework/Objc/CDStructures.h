@@ -929,6 +929,14 @@ struct vector<quasar::PronChoice, std::__1::allocator<quasar::PronChoice>> {
     } _field3;
 };
 
+struct vector<quasar::SystemConfig, std::__1::allocator<quasar::SystemConfig>> {
+    struct SystemConfig *__begin_;
+    struct SystemConfig *__end_;
+    struct __compressed_pair<quasar::SystemConfig *, std::__1::allocator<quasar::SystemConfig>> {
+        struct SystemConfig *__value_;
+    } __end_cap_;
+};
+
 struct vector<quasar::Token, std::__1::allocator<quasar::Token>> {
     struct Token *__begin_;
     struct Token *__end_;

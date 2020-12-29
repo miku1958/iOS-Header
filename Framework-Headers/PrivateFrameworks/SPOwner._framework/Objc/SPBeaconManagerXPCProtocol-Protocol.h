@@ -7,18 +7,40 @@
 #import <SPOwner/NSObject-Protocol.h>
 #import <SPOwner/SPLocalBeaconManagerXPCProtocol-Protocol.h>
 
-@class NSDateInterval, NSString, NSUUID;
+@class NSArray, NSDate, NSDateInterval, NSError, NSString, NSUUID, SPBeaconUpdates, SPCommandKeysCriteria;
 
 @protocol SPBeaconManagerXPCProtocol <NSObject, SPLocalBeaconManagerXPCProtocol>
+- (oneway void)allBeaconingKeysForUUID:(NSUUID *)arg1 dateInterval:(NSDateInterval *)arg2 forceGenerate:(BOOL)arg3 completion:(void (^)(NSArray *))arg4;
 - (oneway void)allBeaconsOfType:(unsigned long long)arg1 completion:(void (^)(NSSet *))arg2;
 - (oneway void)allBeaconsWithCompletion:(void (^)(NSSet *))arg1;
+- (oneway void)allDuriansWithCompletion:(void (^)(NSSet *))arg1;
 - (oneway void)beaconForUUID:(NSUUID *)arg1 completion:(void (^)(SPBeacon *))arg2;
 - (oneway void)beaconingKeysForUUID:(NSUUID *)arg1 dateInterval:(NSDateInterval *)arg2 completion:(void (^)(NSArray *))arg3;
+- (void)beaconsInFirmwareUpdateState:(long long)arg1 dateInterval:(NSDateInterval *)arg2 completion:(void (^)(NSArray *))arg3;
+- (oneway void)commandKeysForUUID:(NSUUID *)arg1 withCriteria:(SPCommandKeysCriteria *)arg2 completion:(void (^)(NSArray *))arg3;
+- (oneway void)commandKeysForUUIDs:(NSArray *)arg1 completion:(void (^)(NSDictionary *))arg2;
+- (oneway void)commandKeysForUUIDs:(NSArray *)arg1 dateInterval:(NSDateInterval *)arg2 completion:(void (^)(NSDictionary *))arg3;
+- (oneway void)connectedToBeacon:(NSUUID *)arg1 withIndex:(unsigned long long)arg2 completion:(void (^)(BOOL))arg3;
+- (oneway void)fetchAllKeyMapFileDescriptorsWithCompletion:(void (^)(NSDictionary *, NSError *))arg1;
+- (oneway void)fetchFirmwareVersionForBeacon:(NSUUID *)arg1 completion:(void (^)(NSData *))arg2;
+- (oneway void)firmwareUpdateCandidateBeaconsWithCompletion:(void (^)(NSArray *))arg1;
+- (void)firmwareUpdateStateForBeaconUUID:(NSUUID *)arg1 completion:(void (^)(SPFirmwareUpdateStateResult *))arg2;
+- (void)initiateFirmwareUpdateForAllEligibleBeaconsWithCompletion:(void (^)(BOOL))arg1;
+- (oneway void)nearOwnerCommandKeysWithCompletion:(void (^)(NSArray *))arg1;
 - (oneway void)notificationBeaconForSubscriptionId:(NSUUID *)arg1 completion:(void (^)(SPBeacon *))arg2;
+- (oneway void)postedLocalNotifyWhenFoundNotificationForUUID:(NSUUID *)arg1 completion:(void (^)(BOOL))arg2;
 - (oneway void)primaryAccountModified;
 - (oneway void)removeLocalAccountDataWithCompletion:(void (^)(BOOL))arg1;
 - (oneway void)repairDataStore:(void (^)(void))arg1;
+- (oneway void)roleCategoriesWithCompletion:(void (^)(NSArray *))arg1;
+- (oneway void)setAlignmentUncertainty:(double)arg1 atIndex:(unsigned long long)arg2 date:(NSDate *)arg3 forBeacon:(NSUUID *)arg4 completion:(void (^)(BOOL))arg5;
+- (oneway void)setCurrentWildKeyIndex:(long long)arg1 forBeacon:(NSUUID *)arg2 completion:(void (^)(BOOL))arg3;
+- (oneway void)setKeyRollInterval:(unsigned long long)arg1 forBeacon:(NSUUID *)arg2 completion:(void (^)(BOOL))arg3;
+- (oneway void)setRole:(long long)arg1 beaconId:(NSUUID *)arg2 completion:(void (^)(SPBeacon *))arg3;
 - (oneway void)setServiceState:(NSString *)arg1 completion:(void (^)(NSError *))arg2;
+- (oneway void)setWildKeyBase:(unsigned long long)arg1 interval:(unsigned long long)arg2 fallback:(unsigned long long)arg3 forBeacon:(NSUUID *)arg4 completion:(void (^)(BOOL))arg5;
 - (oneway void)unacceptedBeaconsWithCompletion:(void (^)(NSSet *))arg1;
+- (oneway void)updateBeacon:(NSUUID *)arg1 updates:(SPBeaconUpdates *)arg2 completion:(void (^)(BOOL))arg3;
+- (oneway void)updateBeaconUUID:(NSUUID *)arg1 firmwareUpdateState:(long long)arg2 systemVersion:(NSString *)arg3 error:(NSError *)arg4 completion:(void (^)(BOOL))arg5;
 @end
 

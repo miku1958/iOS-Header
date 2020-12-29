@@ -21,6 +21,7 @@
     MISSING_TYPE *tracker;
     MISSING_TYPE *router;
     MISSING_TYPE *failedTransactionPurchaseContexts;
+    MISSING_TYPE *familySharingLandingPageLauncher;
 }
 
 - (void)subscriptionsFoundDismissedWithNotification:(id)arg1;

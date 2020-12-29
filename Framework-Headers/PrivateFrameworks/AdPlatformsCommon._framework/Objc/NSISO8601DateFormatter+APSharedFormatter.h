@@ -7,6 +7,7 @@
 #import <Foundation/NSISO8601DateFormatter.h>
 
 @interface NSISO8601DateFormatter (APSharedFormatter)
++ (id)apDefaultSharedFormatter;
 + (id)apLocalSharedFormatter;
 + (id)apUTCSharedFormatter;
 @end

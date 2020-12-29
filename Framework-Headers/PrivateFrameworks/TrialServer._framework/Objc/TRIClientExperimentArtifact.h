@@ -15,6 +15,7 @@
     BOOL _internalBuildOnly;
     int _deploymentId;
     int _cloudKitContainer;
+    int _deploymentEnvironment;
     int _experimentState;
     int _experimentType;
     int _experimentPriority;
@@ -29,6 +30,7 @@
 }
 
 @property (nonatomic) int cloudKitContainer; // @synthesize cloudKitContainer=_cloudKitContainer;
+@property (nonatomic) int deploymentEnvironment; // @synthesize deploymentEnvironment=_deploymentEnvironment;
 @property (nonatomic) int deploymentId; // @synthesize deploymentId=_deploymentId;
 @property (strong, nonatomic) NSData *encodedExperimentDefinition; // @synthesize encodedExperimentDefinition=_encodedExperimentDefinition;
 @property (strong, nonatomic) NSString *encodedExperimentDefinitionSignature; // @synthesize encodedExperimentDefinitionSignature=_encodedExperimentDefinitionSignature;

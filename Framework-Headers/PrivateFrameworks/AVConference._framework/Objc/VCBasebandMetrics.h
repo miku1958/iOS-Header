@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     double _normalizedBDCD;
     double _normalizedDelay;
     BOOL _isBDCDListReady;
+    BOOL _useAverageQueueDepthForDelay;
     struct {
         double time[15];
         double bdcd[15];
@@ -38,6 +39,7 @@ __attribute__((visibility("hidden")))
     unsigned int _averageBitrate;
     unsigned int _previousAverageBitrate;
     unsigned int _averageBitrateLong;
+    double _averageQueueDepth;
     double _expectedQueuingDelay;
     double _expectedQueuingDelayLong;
     BOOL _isTargetBitrateStabilized;
@@ -54,10 +56,12 @@ __attribute__((visibility("hidden")))
 - (void)calculateBitratesAndDelaysWithTotalQueueDepth:(unsigned int)arg1;
 - (void)dealloc;
 - (void)enableBasebandLogDump:(void *)arg1;
-- (CDStruct_1a067c5f)getBasebandMetricsWithNotification:(CDStruct_b203c80d *)arg1;
+- (CDStruct_bae76c55)getBasebandMetricsWithNotification:(CDStruct_b203c80d *)arg1;
+- (id)init;
 - (void)normalizeBDCD:(double)arg1;
 - (void)resetBBNoteHistoryList;
 - (void)resetBDCDList;
+- (double)updateTotalQueueDepth:(unsigned int)arg1;
 
 @end
 

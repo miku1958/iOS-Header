@@ -25,10 +25,21 @@ struct CGSize {
     double height;
 };
 
+struct JUMeasurements {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+};
+
 struct UIEdgeInsets {
     double top;
     double left;
     double bottom;
     double right;
+};
+
+struct os_unfair_lock_s {
+    unsigned int _os_unfair_lock_opaque;
 };
 

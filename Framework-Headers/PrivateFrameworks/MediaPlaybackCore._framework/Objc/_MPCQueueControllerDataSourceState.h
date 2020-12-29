@@ -36,6 +36,7 @@
     long long _state;
     NSString *_sectionIdentifier;
     NSString *_preferredStartItemIdentifier;
+    id _rtcSectionHierarchyToken;
     MPCPlaybackEngineEventStream *_eventStream;
     long long _supplementalPlaybackContextBehavior;
     MPPlaybackContext *_supplementalPlaybackContext;
@@ -51,6 +52,7 @@
 @property (readonly, nonatomic) MPPlaybackContext *originalPlaybackContext; // @synthesize originalPlaybackContext=_originalPlaybackContext;
 @property (readonly, nonatomic) MPPlaybackContext *playbackContext; // @synthesize playbackContext=_playbackContext;
 @property (readonly, nonatomic) NSString *preferredStartItemIdentifier; // @synthesize preferredStartItemIdentifier=_preferredStartItemIdentifier;
+@property (strong, nonatomic) id rtcSectionHierarchyToken; // @synthesize rtcSectionHierarchyToken=_rtcSectionHierarchyToken;
 @property (readonly, nonatomic) NSString *sectionIdentifier; // @synthesize sectionIdentifier=_sectionIdentifier;
 @property (readonly, nonatomic) BOOL shouldAddOriginalPlaybackContextAfterReplacement;
 @property (nonatomic) long long state; // @synthesize state=_state;

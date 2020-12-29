@@ -46,6 +46,7 @@
 - (double)_statusBarHeightForCurrentInterfaceOrientation;
 - (BOOL)_useBackdropViewForWindowBackground;
 - (void)addDoneButtonToViewController:(id)arg1;
+- (void)addVisualEffectViewForView:(id)arg1;
 - (id)blurEffectForTraitCollection:(id)arg1;
 - (void)clientDidCancel;
 - (void)clientDidFinish;

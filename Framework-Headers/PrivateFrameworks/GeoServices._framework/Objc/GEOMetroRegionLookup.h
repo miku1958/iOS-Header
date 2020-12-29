@@ -11,7 +11,6 @@
 }
 
 - (id)lookupRegionWithLocation:(id)arg1;
-- (void)lookupRegionWithLocation:(id)arg1 resultQueue:(id)arg2 resultBlock:(CDUnknownBlockType)arg3;
 
 @end
 

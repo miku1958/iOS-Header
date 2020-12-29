@@ -25,6 +25,8 @@
 + (id)defaultCenter;
 + (id)interface;
 - (void).cxx_destruct;
+- (id)_copyNotificationObserversForName:(id)arg1;
+- (id)_copyProgressObservers;
 - (void)addNotificationObserver:(id)arg1 forName:(id)arg2;
 - (void)addProgressObserver:(id)arg1;
 - (void)deliverAuthenticateRequest:(id)arg1 withResultHandler:(CDUnknownBlockType)arg2;

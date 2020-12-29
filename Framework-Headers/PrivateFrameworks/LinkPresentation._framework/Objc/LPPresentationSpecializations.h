@@ -14,6 +14,7 @@
 + (id)canonicalMetadataURLForURL:(id)arg1;
 + (id)destinationForGoogleRedirectURL:(id)arg1;
 + (BOOL)isAppStoreStoryURL:(id)arg1;
++ (BOOL)isAppleFitnessURL:(id)arg1;
 + (BOOL)isAppleMapsCollectionURL:(id)arg1;
 + (BOOL)isAppleMapsURL:(id)arg1;
 + (BOOL)isAppleNewsURL:(id)arg1;

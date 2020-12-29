@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class FCBundleChannelProvider, NSArray;
+@class FCBundleChannelProvider, NSArray, NSString;
 
 @protocol FCBundleChannelProviderDelegate
-- (void)bundleChannelProvider:(FCBundleChannelProvider *)arg1 bundleChannelIDsDidChangeWithChannelIDs:(NSArray *)arg2;
+- (void)bundleChannelProvider:(FCBundleChannelProvider *)arg1 bundleChannelIDsDidChangeWithChannelIDs:(NSArray *)arg2 version:(NSString *)arg3;
 @end
 

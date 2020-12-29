@@ -13,6 +13,7 @@
 - (void)contextView:(HKDisplayTypeSectionedContextView *)arg1 didSelectItemAtIndexPath:(NSIndexPath *)arg2;
 
 @optional
+- (BOOL)contextView:(HKDisplayTypeSectionedContextView *)arg1 canSelectItemAtIndexPath:(NSIndexPath *)arg2;
 - (void)contextViewDidInvalidateLayout:(HKDisplayTypeSectionedContextView *)arg1;
 @end
 

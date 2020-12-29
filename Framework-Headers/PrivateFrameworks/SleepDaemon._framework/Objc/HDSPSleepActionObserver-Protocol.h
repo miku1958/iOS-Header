@@ -14,6 +14,7 @@
 - (void)bedtimeWasDelayed:(id<HDSPSource>)arg1;
 - (void)bedtimeWasSkipped:(id<HDSPSource>)arg1;
 - (void)goodMorningWasDismissed:(id<HDSPSource>)arg1;
+- (void)sleepLockWasDismissed:(id<HDSPSource>)arg1;
 - (void)sleepModeSet:(long long)arg1 source:(id<HDSPSource>)arg2;
 - (void)wakeNotificationWasConfirmed:(id<HDSPSource>)arg1;
 - (void)wakeUpAlarmWasDismissed:(id<HDSPSource>)arg1;

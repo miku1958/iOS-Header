@@ -20,6 +20,7 @@
 - (void)graphViewDidBeginSelection:(HKGraphView *)arg1;
 - (void)graphViewDidEndSelection:(HKGraphView *)arg1;
 - (void)graphViewDidTapYAxis:(HKGraphView *)arg1;
+- (void)graphViewExternalSelectionEnd:(HKGraphView *)arg1;
 - (void)graphViewSizeChanged:(HKGraphView *)arg1;
 - (UIColor *)seriesSelectionLineColorForGraphView:(HKGraphView *)arg1;
 - (long long)stackCountForGraphView:(HKGraphView *)arg1;

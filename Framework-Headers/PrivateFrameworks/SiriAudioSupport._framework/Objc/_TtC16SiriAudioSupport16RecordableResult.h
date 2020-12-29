@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <SiriAudioSupport/NSSecureCoding-Protocol.h>
+
 @class MISSING_TYPE;
 
-@interface _TtC16SiriAudioSupport16RecordableResult : NSObject
+@interface _TtC16SiriAudioSupport16RecordableResult : NSObject <NSSecureCoding>
 {
     MISSING_TYPE *name;
     MISSING_TYPE *version;

@@ -10,6 +10,7 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPQuery : PBCodable <NSCopying>
 {
     NSMutableArray *_filters;
@@ -31,13 +32,15 @@
 @property (strong, nonatomic) NSMutableArray *sorts; // @synthesize sorts=_sorts;
 @property (strong, nonatomic) NSMutableArray *types; // @synthesize types=_types;
 
++ (Class)filtersType;
++ (Class)sortsType;
++ (Class)typesType;
 - (void)addFilters:(id)arg1;
 - (void)addSorts:(id)arg1;
 - (void)addTypes:(id)arg1;
 - (void)clearFilters;
 - (void)clearSorts;
 - (void)clearTypes;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

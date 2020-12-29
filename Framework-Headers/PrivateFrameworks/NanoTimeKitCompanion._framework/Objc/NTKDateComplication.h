@@ -27,6 +27,7 @@
 - (id)initWithCoder:(id)arg1;
 - (id)initWithComplicationType:(unsigned long long)arg1;
 - (id)ntk_localizedNameWithOptions:(unsigned long long)arg1 forRichComplicationSlot:(BOOL)arg2;
+- (id)ntk_sectionIdentifier;
 - (BOOL)snapshotContext:(id)arg1 isStaleRelativeToContext:(id)arg2;
 
 @end

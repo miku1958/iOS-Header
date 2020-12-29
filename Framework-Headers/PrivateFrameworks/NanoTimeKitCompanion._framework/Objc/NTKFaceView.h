@@ -278,6 +278,7 @@
 - (BOOL)_supportsTimeScrubbing;
 - (BOOL)_supportsUnadornedSnapshot;
 - (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
+- (id)_swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3 refreshHandler:(CDUnknownBlockType)arg4;
 - (void)_teardownComplicationViewsIfNeeded;
 - (id)_timeTravelCaptionAttributedText;
 - (id)_timeTravelCaptionCacheKey;
@@ -410,7 +411,7 @@
 - (void)startScrubbingAnimated:(BOOL)arg1;
 - (void)startScrubbingAnimated:(BOOL)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)supportsUnadornedSnapshot;
-- (id)swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3;
+- (id)swatchImageForEditOption:(id)arg1 mode:(long long)arg2 withSelectedOptions:(id)arg3 refreshHandler:(CDUnknownBlockType)arg4;
 - (struct UIEdgeInsets)timeTravelModuleTouchInsets;
 - (void)updateRichCornerComplicationsInnerColor:(id)arg1 outerColor:(id)arg2;
 - (BOOL)usesCustomZoom;

@@ -33,6 +33,7 @@
 - (id)detectedEndDateComponents;
 - (id)detectedEndPlaceWithError:(id *)arg1;
 - (id)detectedEventName;
+- (BOOL)detectedEventPolarity;
 - (id)detectedPostalAddressExtractionForTokenIndexes:(id)arg1 dataDetectorMatches:(id)arg2 label:(id)arg3;
 - (id)detectedReservationIdWithError:(id *)arg1;
 - (id)detectedStartAddressWithError:(id *)arg1;

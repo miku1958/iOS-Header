@@ -10,6 +10,7 @@
 
 @interface _TtC8VideosUI19SportsOverlayLayout : _TtC8VideosUI10ViewLayout
 {
+    MISSING_TYPE *size;
     MISSING_TYPE *scoreboardType;
     MISSING_TYPE *$__lazy_storage_$_scoreboardLayout;
     MISSING_TYPE *$__lazy_storage_$_appImageLayout;

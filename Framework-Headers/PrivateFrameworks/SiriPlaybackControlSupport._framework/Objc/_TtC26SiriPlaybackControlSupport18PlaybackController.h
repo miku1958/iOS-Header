@@ -11,6 +11,7 @@
 @interface _TtC26SiriPlaybackControlSupport18PlaybackController : NSObject
 {
     MISSING_TYPE *nowPlayingQueue;
+    MISSING_TYPE *assistantDiscovery;
     MISSING_TYPE *mediaRemoteCommandToStringMap;
 }
 

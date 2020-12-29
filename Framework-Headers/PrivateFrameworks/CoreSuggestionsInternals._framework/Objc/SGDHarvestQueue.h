@@ -24,6 +24,7 @@
 + (id)queueWithLegacyStorage:(id)arg1 highPriority:(BOOL)arg2;
 + (id)queueWithOnDiskStorage:(id)arg1;
 + (void)swapInEphemeralDefaultQueueForTesting;
++ (void)swapInEphemeralDefaultQueueForTesting:(id)arg1;
 + (void)swapOutEphemeralDefaultQueueForTesting;
 - (void).cxx_destruct;
 - (void)addItemWithSourceKey:(id)arg1 messageId:(id)arg2 highPriority:(BOOL)arg3 customPriorityCriteria:(unsigned char)arg4 item:(id)arg5 callback:(CDUnknownBlockType)arg6;

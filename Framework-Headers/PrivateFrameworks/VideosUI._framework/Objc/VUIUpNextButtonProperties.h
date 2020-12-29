@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString, VUIButton, VUIUpNextStateView;
+@class NSString, UIView, VUIUpNextStateView;
 @protocol VUIUpNextButtonProtocol;
 
 __attribute__((visibility("hidden")))
@@ -17,14 +17,14 @@ __attribute__((visibility("hidden")))
     BOOL _confirmationShouldWaitCompletion;
     VUIUpNextStateView *_addedStateView;
     VUIUpNextStateView *_removedStateView;
-    VUIButton<VUIUpNextButtonProtocol> *_delegate;
+    UIView<VUIUpNextButtonProtocol> *_delegate;
     NSString *_canonicalID;
 }
 
 @property (readonly, nonatomic) VUIUpNextStateView *addedStateView; // @synthesize addedStateView=_addedStateView;
 @property (strong, nonatomic) NSString *canonicalID; // @synthesize canonicalID=_canonicalID;
 @property (nonatomic) BOOL confirmationShouldWaitCompletion; // @synthesize confirmationShouldWaitCompletion=_confirmationShouldWaitCompletion;
-@property (weak, nonatomic) VUIButton<VUIUpNextButtonProtocol> *delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) UIView<VUIUpNextButtonProtocol> *delegate; // @synthesize delegate=_delegate;
 @property (nonatomic) BOOL dismissOnSelect; // @synthesize dismissOnSelect=_dismissOnSelect;
 @property (nonatomic) BOOL isWatchListed; // @synthesize isWatchListed=_isWatchListed;
 @property (readonly, nonatomic) VUIUpNextStateView *removedStateView; // @synthesize removedStateView=_removedStateView;

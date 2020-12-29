@@ -4,16 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <AppStoreDaemon/ASDExtensionRequestCleanupXPCInterface-Protocol.h>
 #import <AppStoreDaemon/ASDTestFlightServiceExtensionXPCInterface-Protocol.h>
 
 @class NSArray, NSData, NSError, NSString;
 
-@protocol ASDTestFlightServiceExtensionRemoteXPCInterface <ASDTestFlightServiceExtensionXPCInterface>
+@protocol ASDTestFlightServiceExtensionRemoteXPCInterface <ASDTestFlightServiceExtensionXPCInterface, ASDExtensionRequestCleanupXPCInterface>
 - (void)didReachTerminalPhaseWithBetaBundleID:(NSString *)arg1 terminalPhase:(long long)arg2 error:(NSError *)arg3 reply:(void (^)(BOOL, NSError *))arg4;
 - (void)didReceivePushMessages:(NSArray *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)didReceivePushToken:(NSData *)arg1 reply:(void (^)(BOOL, NSError *))arg2;
 - (void)reloadAppsFromServerWithReply:(void (^)(BOOL, NSError *))arg1;
-- (void)serviceExtensionPerformCleanup;
-- (void)serviceExtensionTimeWillExpire;
 @end
 

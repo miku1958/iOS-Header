@@ -6,19 +6,33 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSError;
+@class ADOdmlResponseV2, NSDictionary, NSError;
 
 @interface ADDataObject : NSObject
 {
-    NSDictionary *_iAdData;
+    NSDictionary *_dupAdResponse;
+    NSDictionary *_normalAdResponse;
+    NSDictionary *_noOrganicAdResponse;
+    ADOdmlResponseV2 *_odmlResponse;
+    NSDictionary *_adData;
     NSError *_error;
+    long long _adResponseInUseType;
 }
 
+@property (copy, nonatomic) NSDictionary *adData; // @synthesize adData=_adData;
+@property (readonly) NSDictionary *adResponseInUse;
+@property long long adResponseInUseType; // @synthesize adResponseInUseType=_adResponseInUseType;
+@property (readonly) NSDictionary *dupAdResponse;
 @property (copy, nonatomic) NSError *error; // @synthesize error=_error;
-@property (copy, nonatomic) NSDictionary *iAdData; // @synthesize iAdData=_iAdData;
+@property (readonly) NSDictionary *noOrganicAdResponse;
+@property (readonly) NSDictionary *normalAdResponse;
+@property (readonly) ADOdmlResponseV2 *odmlResponse;
 
 - (void).cxx_destruct;
+- (id)_jsonToDict:(id)arg1 error:(id *)arg2;
 - (id)initWith:(id)arg1 andError:(id)arg2;
+- (id)parseDataForAdResponse:(id)arg1;
+- (id)parseDataForODMLResponse:(id)arg1;
 
 @end
 

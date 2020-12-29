@@ -30,5 +30,6 @@
 - (void)handlePlayBorderHitSound;
 - (void)handlePlayCommandNotSupportedSound;
 - (void)handleStartEditing;
+- (void)handleUserEventOccured;
 @end
 

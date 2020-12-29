@@ -43,6 +43,7 @@
     BOOL _scenelessBackgroundLaunch;
     BOOL _ignoreManifestScope;
     BOOL _configurationIsManaged;
+    NSString *_shortcutIdentifier;
     unsigned long long _contentMode;
     unsigned long long _webClipStatusBarStyle;
 }
@@ -69,6 +70,7 @@
 @property (strong, nonatomic) NSURL *pageURL; // @synthesize pageURL;
 @property BOOL removalDisallowed; // @synthesize removalDisallowed;
 @property BOOL scenelessBackgroundLaunch; // @synthesize scenelessBackgroundLaunch=_scenelessBackgroundLaunch;
+@property (copy, nonatomic) NSString *shortcutIdentifier; // @synthesize shortcutIdentifier=_shortcutIdentifier;
 @property (strong, nonatomic) UIImage *startupImage; // @synthesize startupImage;
 @property (strong) NSURL *startupImageURL; // @synthesize startupImageURL;
 @property (strong, nonatomic) UIImage *startupLandscapeImage; // @synthesize startupLandscapeImage;

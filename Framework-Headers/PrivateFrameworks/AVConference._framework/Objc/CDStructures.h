@@ -1393,7 +1393,7 @@ struct tagVCSourceDestinationInfo {
         } _field2;
         struct {
             unsigned int _field1;
-            CDStruct_54fea20c _field2;
+            CDStruct_4aae7d13 _field2;
         } _field3;
         CDStruct_cc9cf49a _field4;
     } _field2;
@@ -1777,9 +1777,10 @@ typedef struct {
 typedef struct {
     char _field1;
     unsigned short _field2;
-    unsigned short _field3;
-    unsigned char _field4;
-} CDStruct_54fea20c;
+    unsigned char _field3;
+    unsigned short _field4;
+    unsigned char _field5;
+} CDStruct_4aae7d13;
 
 typedef struct {
     double requestTime;
@@ -2020,6 +2021,7 @@ typedef struct {
             unsigned int txBitrate;
             unsigned int averageBitrate;
             unsigned int averageBitrateLong;
+            double averageQueueDepth;
             double expectedQueuingDelay;
             double bdcd;
             double normalizedBDCD;
@@ -2063,7 +2065,7 @@ typedef struct {
             unsigned int packetLossPerFrame;
         } nwConnection;
     } ;
-} CDStruct_1a067c5f;
+} CDStruct_bae76c55;
 
 // Ambiguous groups
 typedef struct {

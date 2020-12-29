@@ -134,7 +134,6 @@
 - (void)_removeReachabilityHandler:(unsigned int)arg1;
 - (id)_resetDimTimer:(id)arg1;
 - (id)_resumeMedia:(id)arg1;
-- (id)_screenLocked:(id)arg1;
 - (void)_setAVCallRoute:(id)arg1;
 - (void)_setCallRoute:(int)arg1 ifCurrentlyRoutedTo:(id)arg2;
 - (void)_setCallRoute:(int)arg1 ifCurrentlyRoutedTo:(id)arg2 withRoutes:(id)arg3;

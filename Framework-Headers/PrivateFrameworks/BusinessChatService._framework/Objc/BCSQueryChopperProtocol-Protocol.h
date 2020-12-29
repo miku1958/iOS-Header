@@ -10,7 +10,7 @@
 @protocol BCSBusinessLinkChoppingMetric, BCSLinkQueryChopperDelegate;
 
 @protocol BCSQueryChopperProtocol <NSObject>
-- (void)queryChopperDelegate:(id<BCSLinkQueryChopperDelegate>)arg1 fetchLinkItemModelWithURL:(NSURL *)arg2 forClientBundleID:(NSString *)arg3 metric:(id<BCSBusinessLinkChoppingMetric>)arg4 completion:(void (^)(BCSLinkItem *, NSError *))arg5;
-- (void)queryChopperDelegate:(id<BCSLinkQueryChopperDelegate>)arg1 isBusinessRegisteredForURL:(NSURL *)arg2 forClientBundleID:(NSString *)arg3 metric:(id<BCSBusinessLinkChoppingMetric>)arg4 completion:(void (^)(BOOL, NSError *))arg5;
+- (void)queryChopperDelegate:(id<BCSLinkQueryChopperDelegate>)arg1 fetchLinkItemModelWithURL:(NSURL *)arg2 isBloomFilterCached:(BOOL)arg3 forClientBundleID:(NSString *)arg4 metric:(id<BCSBusinessLinkChoppingMetric>)arg5 completion:(void (^)(BCSLinkItem *, NSError *))arg6;
+- (void)queryChopperDelegate:(id<BCSLinkQueryChopperDelegate>)arg1 isBusinessRegisteredForURL:(NSURL *)arg2 isBloomFilterCached:(BOOL)arg3 forClientBundleID:(NSString *)arg4 metric:(id<BCSBusinessLinkChoppingMetric>)arg5 completion:(void (^)(BOOL, NSDictionary *, NSError *))arg6;
 @end
 

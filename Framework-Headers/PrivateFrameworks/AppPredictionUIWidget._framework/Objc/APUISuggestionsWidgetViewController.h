@@ -41,12 +41,14 @@
 + (id)previewIdentifierWithIdentifier:(id)arg1 layoutSize:(unsigned long long)arg2;
 + (id)smartStackImageForIconSize:(struct CGSize)arg1 scale:(double)arg2;
 - (void).cxx_destruct;
+- (BOOL)_canDismissSelectedSuggestion;
 - (BOOL)_canShowWhileLocked;
 - (id)_suggestionIdsInLayout:(id)arg1;
 - (void)_topWidgetDidAppear:(id)arg1;
 - (void)_topWidgetDidDisappear:(id)arg1;
 - (void)_updateLayoutWithSuggestionClient:(id)arg1;
 - (void)_updateViewVisibility;
+- (void)_updateWidgetViewIfPossible;
 - (void)dealloc;
 - (void)didSelectApplicationShortcutItem:(id)arg1;
 - (id)initWithIdentifier:(id)arg1 suggestionsClient:(id)arg2 layoutSize:(unsigned long long)arg3;

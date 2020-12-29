@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *sectionViews;
     MISSING_TYPE *airingView;
     MISSING_TYPE *separatorView;
+    MISSING_TYPE *cachedSize;
     MISSING_TYPE *bottomPadding;
 }
 
@@ -22,7 +23,9 @@ __attribute__((visibility("hidden")))
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

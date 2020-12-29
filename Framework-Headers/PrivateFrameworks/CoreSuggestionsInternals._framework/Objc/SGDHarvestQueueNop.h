@@ -4,9 +4,9 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <CoreSuggestionsInternals/SGDHarvestQueue.h>
+#import <CoreSuggestionsInternals/SGDHarvestQueueOnDisk.h>
 
-@interface SGDHarvestQueueNop : SGDHarvestQueue
+@interface SGDHarvestQueueNop : SGDHarvestQueueOnDisk
 {
 }
 

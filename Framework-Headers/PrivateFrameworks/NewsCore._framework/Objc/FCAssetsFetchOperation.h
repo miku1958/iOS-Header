@@ -6,16 +6,27 @@
 
 #import <NewsCore/FCFetchOperation.h>
 
-@class NSArray;
+@class NSArray, NSObject;
+@protocol OS_dispatch_queue, OS_dispatch_semaphore;
 
 @interface FCAssetsFetchOperation : FCFetchOperation
 {
+    unsigned long long _maxConcurrentFetchCount;
     CDUnknownBlockType _progressHandler;
+    CDUnknownBlockType _interestTokenHandler;
+    CDUnknownBlockType _archiveHandler;
     NSArray *_assetHandles;
+    NSObject<OS_dispatch_queue> *_serialQueue;
+    NSObject<OS_dispatch_semaphore> *_semaphore;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType archiveHandler; // @synthesize archiveHandler=_archiveHandler;
 @property (copy, nonatomic) NSArray *assetHandles; // @synthesize assetHandles=_assetHandles;
+@property (copy, nonatomic) CDUnknownBlockType interestTokenHandler; // @synthesize interestTokenHandler=_interestTokenHandler;
+@property (nonatomic) unsigned long long maxConcurrentFetchCount; // @synthesize maxConcurrentFetchCount=_maxConcurrentFetchCount;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
+@property (strong, nonatomic) NSObject<OS_dispatch_semaphore> *semaphore; // @synthesize semaphore=_semaphore;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 
 - (void).cxx_destruct;
 - (void)_finish;

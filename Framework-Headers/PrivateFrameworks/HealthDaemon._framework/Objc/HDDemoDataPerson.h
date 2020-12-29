@@ -54,6 +54,10 @@
     double _heartRateSampleFrequency;
     double _heartRateSampleFrequencyStdDev;
     double _heartRateSampleNoiseStdDev;
+    double _vo2MaxValueStdDev;
+    double _vo2MaxValueMaxConsecutiveDifference;
+    double _vo2MaxValueMaxTotalDifference;
+    double _vo2MaxSampleTimeNoiseStdDev;
     long long _restingRespirationRate;
     double _restingRespirationRateSampleFrequency;
     double _restingRespirationRateSampleNoiseStdDev;
@@ -324,6 +328,10 @@
 @property (nonatomic) double toothbrushingDurationMeanStdDev; // @synthesize toothbrushingDurationMeanStdDev=_toothbrushingDurationMeanStdDev;
 @property (nonatomic) BOOL useContinuousGlucoseMonitoring; // @synthesize useContinuousGlucoseMonitoring=_useContinuousGlucoseMonitoring;
 @property (nonatomic) double uvIndexSampleFrequency; // @synthesize uvIndexSampleFrequency=_uvIndexSampleFrequency;
+@property (nonatomic) double vo2MaxSampleTimeNoiseStdDev; // @synthesize vo2MaxSampleTimeNoiseStdDev=_vo2MaxSampleTimeNoiseStdDev;
+@property (nonatomic) double vo2MaxValueMaxConsecutiveDifference; // @synthesize vo2MaxValueMaxConsecutiveDifference=_vo2MaxValueMaxConsecutiveDifference;
+@property (nonatomic) double vo2MaxValueMaxTotalDifference; // @synthesize vo2MaxValueMaxTotalDifference=_vo2MaxValueMaxTotalDifference;
+@property (nonatomic) double vo2MaxValueStdDev; // @synthesize vo2MaxValueStdDev=_vo2MaxValueStdDev;
 @property (nonatomic) double waistCircumferenceInInches; // @synthesize waistCircumferenceInInches=_waistCircumferenceInInches;
 @property (nonatomic) double wakeUpTimeNoiseStdDev; // @synthesize wakeUpTimeNoiseStdDev=_wakeUpTimeNoiseStdDev;
 @property (nonatomic) long long walkingHeartRateAverage; // @synthesize walkingHeartRateAverage=_walkingHeartRateAverage;

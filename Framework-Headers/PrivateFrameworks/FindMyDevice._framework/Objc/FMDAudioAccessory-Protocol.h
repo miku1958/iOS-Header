@@ -6,11 +6,12 @@
 
 #import <FindMyDevice/NSObject-Protocol.h>
 
-@class NSArray, NSString, NSURL;
+@class FMDAudioAccessoryInfo, NSArray, NSString, NSURL;
 @protocol FMDAsset;
 
 @protocol FMDAudioAccessory <NSObject>
 
+@property (readonly, nonatomic) FMDAudioAccessoryInfo *audioAccessoryInfo;
 @property (readonly, nonatomic) NSString *audioRoutingIdentifier;
 @property (readonly, nonatomic) unsigned long long audioSafetyStatus;
 @property (readonly, nonatomic) NSURL *audioURL;

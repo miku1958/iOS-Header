@@ -24,8 +24,6 @@
 @property (readonly) Class superclass;
 
 + (id)transformationWithDailyLimit:(unsigned long long)arg1 timeInterval:(double)arg2 condition:(CDUnknownBlockType)arg3;
-+ (id)transformationWithDailyLimit:(unsigned long long)arg1 timeInterval:(double)arg2 feedID:(id)arg3;
-+ (id)transformationWithFeedID:(id)arg1 limit:(unsigned long long)arg2;
 - (void).cxx_destruct;
 - (id)transformFeedItems:(id)arg1;
 

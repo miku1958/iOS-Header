@@ -9,7 +9,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/_SFPBCardSection-Protocol.h>
 
-@class NSArray, NSData, NSString, _SFPBCard, _SFPBCardSectionValue, _SFPBUserReportRequest;
+@class NSArray, NSData, NSString, _SFPBCard, _SFPBCardSectionValue, _SFPBCommand, _SFPBUserReportRequest;
 
 @interface _SFPBCardSection : PBCodable <_SFPBCardSection, NSSecureCoding>
 {
@@ -21,9 +21,12 @@
     NSString *_cardSectionId;
     NSString *_resultIdentifier;
     _SFPBUserReportRequest *_userReportRequest;
+    _SFPBCommand *_command;
+    _SFPBCommand *_previewCommand;
 }
 
 @property (copy, nonatomic) NSString *cardSectionId; // @synthesize cardSectionId=_cardSectionId;
+@property (strong, nonatomic) _SFPBCommand *command; // @synthesize command=_command;
 @property (copy, nonatomic) NSArray *commands; // @synthesize commands=_commands;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -31,6 +34,7 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) _SFPBCard *nextCard; // @synthesize nextCard=_nextCard;
 @property (copy, nonatomic) NSArray *parameterKeyPaths; // @synthesize parameterKeyPaths=_parameterKeyPaths;
+@property (strong, nonatomic) _SFPBCommand *previewCommand; // @synthesize previewCommand=_previewCommand;
 @property (copy, nonatomic) NSString *resultIdentifier; // @synthesize resultIdentifier=_resultIdentifier;
 @property (readonly) Class superclass;
 @property (nonatomic) int type; // @synthesize type=_type;

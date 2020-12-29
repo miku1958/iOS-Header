@@ -58,6 +58,7 @@
     unsigned int _forcingIconContentScalingEnabled:1;
     unsigned int _startsDragMoreQuickly:1;
     unsigned int _isDragging:1;
+    unsigned int _isDragLifted:1;
     unsigned int _folderIconFrozen:1;
     unsigned int _showingCloseBox:1;
     unsigned int _allowsAccessoryView:1;
@@ -68,7 +69,6 @@
     unsigned int _hasSetIconImageInfo:1;
     unsigned int _showsSquareCorners:1;
     unsigned int _disableContextMenuInteraction:1;
-    unsigned int _contextMenuInteractionPending:1;
     unsigned int _disallowsBlockedForScreenTimeExpiration:1;
     unsigned int _reallyHasWidget:2;
     unsigned int _reallyHasPopover:2;
@@ -304,7 +304,6 @@
 - (void).cxx_destruct;
 - (void)_acquireHomeButtonPressConsumingAssertionIfNecessary;
 - (double)_additionalLiftScale;
-- (void)_applyAdditionalLiftScale:(BOOL)arg1;
 - (void)_applyEditingStateAnimated:(BOOL)arg1;
 - (void)_applyIconAccessoryAlpha:(double)arg1;
 - (void)_applyIconContentScale:(double)arg1;
@@ -401,6 +400,7 @@
 - (void)_updateCustomIconImageViewControllerHitTesting;
 - (void)_updateDragInteractionLiftDelay;
 - (void)_updateFrameToIconViewSize;
+- (void)_updateIconContentScale;
 - (void)_updateIconImageViewAnimated:(BOOL)arg1;
 - (void)_updateJitter;
 - (void)_updateLabel;
@@ -502,7 +502,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (BOOL)isContextMenuInteractionActive;
-- (BOOL)isContextMenuInteractionPending;
+- (BOOL)isDragLifted;
 - (BOOL)isDragging;
 - (BOOL)isFolderIcon;
 - (BOOL)isLabelTextBold;
@@ -550,12 +550,12 @@
 - (void)setBackgroundAndIconGridImageAlpha:(double)arg1;
 - (void)setBounds:(struct CGRect)arg1;
 - (void)setBoundsSizeFromIconImageSize:(struct CGSize)arg1;
-- (void)setContextMenuInteractionPending:(BOOL)arg1;
 - (void)setContinuityInfo:(id)arg1 animated:(BOOL)arg2;
 - (void)setCrossfadeCornerRadius:(double)arg1;
 - (void)setCrossfadeFraction:(double)arg1;
 - (void)setCustomIconImageViewController:(id)arg1;
 - (void)setDisallowCursorInteraction:(BOOL)arg1;
+- (void)setDragLifted:(BOOL)arg1;
 - (void)setDragging:(BOOL)arg1;
 - (void)setDragging:(BOOL)arg1 updateImmediately:(BOOL)arg2;
 - (void)setEditing:(BOOL)arg1 animated:(BOOL)arg2;

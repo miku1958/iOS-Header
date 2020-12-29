@@ -35,6 +35,7 @@
 - (void)announceReachabilityForHomeUUID:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)announceReachabilityForRoomName:(id)arg1 inHomeName:(id)arg2 reply:(CDUnknownBlockType)arg3;
 - (void)announceReachabilityForRoomUUID:(id)arg1 inHomeUUID:(id)arg2 reply:(CDUnknownBlockType)arg3;
+- (void)cleanForExit;
 - (id)init;
 - (BOOL)listener:(id)arg1 shouldAcceptNewConnection:(id)arg2;
 - (void)reachabilityLevel:(unsigned long long)arg1 didChangeForHome:(id)arg2;

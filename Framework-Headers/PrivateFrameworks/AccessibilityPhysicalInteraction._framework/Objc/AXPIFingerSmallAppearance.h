@@ -22,12 +22,13 @@
 - (id)circularProgressFillColor;
 - (id)deselectedFillColor;
 - (id)deselectedStrokeColor;
-- (double)fingerDiameter;
 - (double)fingerInnerCircleInnerRadius;
 - (double)fingerInnerRadius;
-- (double)fingerOuterRadius;
-- (double)innerCircleStrokeOutlineWidth;
+- (double)fingerWidth;
+- (double)innerCircleStrokeWidth;
+- (double)pressedAlpha;
 - (id)pressedCircularProgressFillColor;
+- (double)pressedScale;
 - (id)selectedFillColor;
 - (id)selectedStrokeColor;
 - (BOOL)showFingerOutlines;
@@ -35,6 +36,8 @@
 - (id)strokeOutlineColor;
 - (double)strokeOutlineWidth;
 - (double)strokeWidth;
+- (double)unpressedAlpha;
+- (double)unpressedScale;
 - (BOOL)useSystemFilters;
 
 @end

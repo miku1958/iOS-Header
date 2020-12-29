@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) NSArray *viewConfigurations; // @synthesize viewConfigurations=_viewConfigurations;
 
 - (void).cxx_destruct;
+- (unsigned long long)displayPriorityForCardSection:(id)arg1;
 - (id)initWithCard:(id)arg1;
 
 @end

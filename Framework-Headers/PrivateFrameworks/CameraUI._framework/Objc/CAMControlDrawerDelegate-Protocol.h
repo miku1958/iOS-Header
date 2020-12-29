@@ -13,6 +13,7 @@
 - (void)controlDrawer:(CAMControlDrawer *)arg1 didChangeFlashMode:(long long)arg2;
 - (void)controlDrawer:(CAMControlDrawer *)arg1 didChangeHDRMode:(long long)arg2;
 - (void)controlDrawer:(CAMControlDrawer *)arg1 didChangeLivePhotoMode:(long long)arg2;
+- (void)controlDrawer:(CAMControlDrawer *)arg1 didChangeRAWMode:(long long)arg2;
 - (void)controlDrawer:(CAMControlDrawer *)arg1 didChangeTimerDuration:(long long)arg2;
 - (void)controlDrawer:(CAMControlDrawer *)arg1 didCreateControlForType:(long long)arg2;
 - (void)controlDrawer:(CAMControlDrawer *)arg1 didSelectMenuItemForControlType:(long long)arg2;

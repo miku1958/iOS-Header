@@ -27,8 +27,9 @@
     HDDataCollectionAssertion *_collectionAssertion;
     BOOL _lastUpdateSuppressedUserNotification;
     NSDate *_lastLockDateForAnalytics;
-    CDUnknownBlockType _unitTesting_daemonDidBecomeReady;
+    CDUnknownBlockType _unitTesting_daemonDidBecomeReadyHandler;
     CDUnknownBlockType _unitTesting_didUpdateHandler;
+    CDUnknownBlockType _unitTesting_didObserveProtectedDataHandler;
     CDUnknownBlockType _unitTesting_didNotifyUser;
     CDUnknownBlockType _unitTesting_protectedDataDidBecomeAvailable;
 }
@@ -38,8 +39,9 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) HDHeadphoneAudioExposureStatisticsCalculator *unitTesting_calculator;
-@property (copy, nonatomic) CDUnknownBlockType unitTesting_daemonDidBecomeReady; // @synthesize unitTesting_daemonDidBecomeReady=_unitTesting_daemonDidBecomeReady;
+@property (copy, nonatomic) CDUnknownBlockType unitTesting_daemonDidBecomeReadyHandler; // @synthesize unitTesting_daemonDidBecomeReadyHandler=_unitTesting_daemonDidBecomeReadyHandler;
 @property (copy, nonatomic) CDUnknownBlockType unitTesting_didNotifyUser; // @synthesize unitTesting_didNotifyUser=_unitTesting_didNotifyUser;
+@property (copy, nonatomic) CDUnknownBlockType unitTesting_didObserveProtectedDataHandler; // @synthesize unitTesting_didObserveProtectedDataHandler=_unitTesting_didObserveProtectedDataHandler;
 @property (copy, nonatomic) CDUnknownBlockType unitTesting_didUpdateHandler; // @synthesize unitTesting_didUpdateHandler=_unitTesting_didUpdateHandler;
 @property (readonly, nonatomic) HDHeadphoneDoseMetadataStore *unitTesting_keyValueStore;
 @property (copy, nonatomic) CDUnknownBlockType unitTesting_protectedDataDidBecomeAvailable; // @synthesize unitTesting_protectedDataDidBecomeAvailable=_unitTesting_protectedDataDidBecomeAvailable;
@@ -49,6 +51,8 @@
 - (void)_handleSignificantTimeChangeNotification:(id)arg1;
 - (void)_headphoneExposureNotificationsEnabledDidChange:(id)arg1;
 - (id)_infoWithError:(id *)arg1;
+- (id)_initWithProfile:(id)arg1 keyValueStore:(id)arg2 calculator:(id)arg3;
+- (id)_initWithProfile:(id)arg1 keyValueStore:(id)arg2 calculator:(id)arg3 unitTesting_daemonDidBecomeReadyHandler:(CDUnknownBlockType)arg4 unitTesting_didObserveProtectedDataHandler:(CDUnknownBlockType)arg5 unitTesting_didUpdateHandler:(CDUnknownBlockType)arg6;
 - (id)_initWithProfile:(id)arg1 keyValueStore:(id)arg2 calculator:(id)arg3 unitTesting_didUpdateHandler:(CDUnknownBlockType)arg4;
 - (id)_lock_pruneWithNowDate:(id)arg1 limit:(unsigned long long)arg2 error:(id *)arg3;
 - (BOOL)_lock_rebuildWithAssertion:(id)arg1 error:(id *)arg2;
@@ -68,7 +72,6 @@
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
 - (id)initWithProfile:(id)arg1;
-- (id)initWithProfile:(id)arg1 keyValueStore:(id)arg2 calculator:(id)arg3;
 - (void)profile:(id)arg1 didDiscardSeriesOfType:(id)arg2;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesJournaled:(id)arg1 type:(id)arg2;

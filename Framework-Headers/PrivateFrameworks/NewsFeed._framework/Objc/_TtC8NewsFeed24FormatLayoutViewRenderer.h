@@ -20,6 +20,7 @@
     MISSING_TYPE *webEmbedNodeRenderer;
     MISSING_TYPE *adMetricsNodeRenderer;
     MISSING_TYPE *micaNodeRenderer;
+    MISSING_TYPE *layeredMediaNodeRenderer;
     MISSING_TYPE *webEmbedViewControllerReuseManager;
     MISSING_TYPE *rendererTool;
     MISSING_TYPE *behaviorRenderer;

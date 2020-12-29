@@ -11,6 +11,7 @@
 
 @protocol AMSDServiceBrokerProtocol <NSObject>
 - (void)addInterruptionHandler:(void (^)(void))arg1;
+- (AMSPromise *)callService:(AMSPromise *)arg1 then:(AMSPromise * (^)(id))arg2;
 - (AMSPromise *)deviceMessengerProxyWithDelegate:(id<AMSDeviceMessengerClientInterface>)arg1;
 - (AMSPromise *)pushNotificationService;
 - (AMSPromise *)securityServiceProxyWithDelegate:(id<AMSSecurityClientInterface>)arg1;

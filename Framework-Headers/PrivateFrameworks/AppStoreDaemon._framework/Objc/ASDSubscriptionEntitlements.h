@@ -14,6 +14,7 @@
     int _newsCacheUpdatedNotificationToken;
     int _appStoreCacheUpdatedNotificationToken;
     int _appStoreArcadeSubscriptionBagUpdatedNotificationToken;
+    int _activityCacheUpdatedNotificationToken;
     int _musicCacheUpdatedNotificationToken;
     int _tvCacheUpdatedNotificationToken;
     int _iCloudCacheUpdatedNotificationToken;

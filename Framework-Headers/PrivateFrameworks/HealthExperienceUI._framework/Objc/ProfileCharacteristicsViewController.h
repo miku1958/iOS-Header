@@ -10,7 +10,7 @@
 #import <HealthExperienceUI/UIPickerViewDataSource-Protocol.h>
 #import <HealthExperienceUI/UIPickerViewDelegate-Protocol.h>
 
-@class CNAvatarViewController, HKBiologicalSexObject, HKBloodTypeObject, HKDisplayTypeController, HKHealthStore, NSArray, NSCalendar, NSDateComponents, NSDictionary, NSDiffableDataSourceSnapshot, NSString, ProfileCharacteristicDiffableDataSource, UIBarButtonItem, UIDatePicker, UIImage, UIImageView, UIPickerView, UITableViewCell, WDDisplayTypeDescriptionTableFooterView, WDProfileEditableTableViewCell, WDProfileHeaderView, WDProfileTableViewCell, WDUserDefaults;
+@class CNAvatarViewController, HKBiologicalSexObject, HKBirthdateChangeManager, HKBloodTypeObject, HKDisplayTypeController, HKHealthStore, NSArray, NSCalendar, NSDateComponents, NSDictionary, NSDiffableDataSourceSnapshot, NSString, ProfileCharacteristicDiffableDataSource, UIBarButtonItem, UIDatePicker, UIImage, UIImageView, UIPickerView, UITableViewCell, WDDisplayTypeDescriptionTableFooterView, WDProfileEditableTableViewCell, WDProfileHeaderView, WDProfileTableViewCell, WDUserDefaults;
 
 @interface ProfileCharacteristicsViewController : UITableViewController <UINavigationControllerDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 {
@@ -35,6 +35,7 @@
     UIPickerView *_fitzpatrickSkinTypePicker;
     UIPickerView *_wheelchairUsePicker;
     UIBarButtonItem *_cancelButtonItem;
+    UIBarButtonItem *_customLeftBarButtonItem;
     WDProfileHeaderView *_headerView;
     WDProfileEditableTableViewCell *_firstNameCell;
     WDProfileEditableTableViewCell *_lastNameCell;
@@ -57,15 +58,19 @@
     BOOL _beginInEditMode;
     BOOL _useMeContactForAvatarImage;
     UIImage *_avatarImage;
+    long long _accessType;
     UIImageView *_avatarOverrideImageView;
     CNAvatarViewController *_avatarViewController;
     NSDiffableDataSourceSnapshot *_currentSnapshot;
     ProfileCharacteristicDiffableDataSource *_dataSource;
+    HKBirthdateChangeManager *_birthdateChangeManager;
 }
 
+@property (nonatomic) long long accessType; // @synthesize accessType=_accessType;
 @property (strong, nonatomic) UIImage *avatarImage; // @synthesize avatarImage=_avatarImage;
 @property (strong, nonatomic) UIImageView *avatarOverrideImageView; // @synthesize avatarOverrideImageView=_avatarOverrideImageView;
 @property (strong, nonatomic) CNAvatarViewController *avatarViewController; // @synthesize avatarViewController=_avatarViewController;
+@property (strong, nonatomic) HKBirthdateChangeManager *birthdateChangeManager; // @synthesize birthdateChangeManager=_birthdateChangeManager;
 @property (strong, nonatomic) NSDiffableDataSourceSnapshot *currentSnapshot; // @synthesize currentSnapshot=_currentSnapshot;
 @property (strong, nonatomic) ProfileCharacteristicDiffableDataSource *dataSource; // @synthesize dataSource=_dataSource;
 @property (readonly, copy) NSString *debugDescription;

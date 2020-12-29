@@ -52,6 +52,7 @@ __attribute__((visibility("hidden")))
     BOOL _shouldMonitorBackgroundEvents;
     long long _currentMediaRemoteInputMode;
     GCKeyboardAndMouseManager *_keyboardAndMouseManager;
+    GCController *__controller_genericBTRemote;
     NSObject<OS_dispatch_queue> *_hidSystemPropertyQueue;
 }
 
@@ -125,7 +126,6 @@ __attribute__((visibility("hidden")))
 - (void)dealloc;
 - (id)init;
 - (BOOL)isExistingController:(id)arg1;
-- (BOOL)isPhysicalB239:(id)arg1;
 - (void)launchHIDInputThread;
 - (id)makeHIDEventSource:(struct __IOHIDEventSystemClient *)arg1;
 - (id)mice;
@@ -144,7 +144,6 @@ __attribute__((visibility("hidden")))
 - (void)removeController:(id)arg1 registryID:(id)arg2;
 - (id)serviceClientForIPCService:(id)arg1;
 - (void)setupHIDMonitor:(BOOL)arg1;
-- (BOOL)shouldStoreController:(id)arg1;
 - (void)startIdleWatchTimer;
 - (void)storeController:(id)arg1;
 - (void)teardownHIDMonitor:(BOOL)arg1;

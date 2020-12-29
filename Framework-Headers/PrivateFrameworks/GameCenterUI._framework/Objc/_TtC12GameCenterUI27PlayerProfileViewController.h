@@ -17,6 +17,7 @@
     MISSING_TYPE *collectionContent;
     MISSING_TYPE *components;
     MISSING_TYPE *clippingLayer;
+    MISSING_TYPE *startTime;
     MISSING_TYPE *_rootController;
     MISSING_TYPE *_specifier;
 }
@@ -47,8 +48,10 @@
 - (void)showController:(id)arg1;
 - (void)showController:(id)arg1 animate:(BOOL)arg2;
 - (id)specifier;
+- (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;
 - (void)viewDidLoad;
+- (void)viewWillDisappear:(BOOL)arg1;
 
 @end
 

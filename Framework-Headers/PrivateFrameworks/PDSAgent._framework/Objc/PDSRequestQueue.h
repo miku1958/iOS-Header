@@ -18,12 +18,14 @@
     FTMessageDelivery *_messageDelivery;
     PDSUserTracker *_userTracker;
     CDUnknownBlockType _pushTokenBlock;
+    CDUnknownBlockType _entryStoreBlock;
     long long _authRetries;
     NSDate *_lastReauthAttempt;
 }
 
 @property (nonatomic) long long authRetries; // @synthesize authRetries=_authRetries;
 @property (weak, nonatomic) id<PDSRequestQueueDelegate> delegate; // @synthesize delegate=_delegate;
+@property (copy, nonatomic) CDUnknownBlockType entryStoreBlock; // @synthesize entryStoreBlock=_entryStoreBlock;
 @property (strong, nonatomic) PDSRequest *inflightRequest; // @synthesize inflightRequest=_inflightRequest;
 @property (strong, nonatomic) NSDate *lastReauthAttempt; // @synthesize lastReauthAttempt=_lastReauthAttempt;
 @property (strong, nonatomic) FTMessageDelivery *messageDelivery; // @synthesize messageDelivery=_messageDelivery;
@@ -43,8 +45,9 @@
 - (id)_machineID;
 - (id)_osVersion;
 - (void)_reAuthAndContinueWithRequest:(id)arg1 forUser:(id)arg2;
+- (void)_removeDeadEntriesForUser:(id)arg1 withError:(id *)arg2;
 - (BOOL)enqueueRequest:(id)arg1;
-- (id)initWithMessageDelivery:(id)arg1 userTracker:(id)arg2 queue:(id)arg3 pushTokenBlock:(CDUnknownBlockType)arg4;
+- (id)initWithMessageDelivery:(id)arg1 userTracker:(id)arg2 queue:(id)arg3 pushTokenBlock:(CDUnknownBlockType)arg4 entryStoreBlock:(CDUnknownBlockType)arg5;
 
 @end
 

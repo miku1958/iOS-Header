@@ -28,6 +28,7 @@
 @property (copy, nonatomic) NSNumber *supportsDeviceSetup; // @dynamic supportsDeviceSetup;
 @property (copy, nonatomic) NSNumber *supportsDoorbellChime; // @synthesize supportsDoorbellChime=_supportsDoorbellChime;
 @property (copy, nonatomic) NSNumber *supportsFaceClassification; // @dynamic supportsFaceClassification;
+@property (copy, nonatomic) NSNumber *supportsFirmwareUpdate; // @dynamic supportsFirmwareUpdate;
 @property (copy, nonatomic) NSNumber *supportsHomeInvitation; // @dynamic supportsHomeInvitation;
 @property (copy, nonatomic) NSNumber *supportsIDSActivityMonitorPresence; // @dynamic supportsIDSActivityMonitorPresence;
 @property (copy, nonatomic) NSNumber *supportsKeyTransferClient; // @dynamic supportsKeyTransferClient;
@@ -37,6 +38,7 @@
 @property (copy, nonatomic) NSNumber *supportsMultiUser; // @dynamic supportsMultiUser;
 @property (copy, nonatomic) NSNumber *supportsMusicAlarm; // @dynamic supportsMusicAlarm;
 @property (copy, nonatomic) NSNumber *supportsNaturalLighting; // @dynamic supportsNaturalLighting;
+@property (copy, nonatomic) NSNumber *supportsPreferredMediaUser; // @dynamic supportsPreferredMediaUser;
 @property (copy, nonatomic) NSNumber *supportsRouterManagement; // @dynamic supportsRouterManagement;
 @property (copy, nonatomic) NSNumber *supportsShortcutActions; // @dynamic supportsShortcutActions;
 @property (copy, nonatomic) NSNumber *supportsStandaloneMode; // @dynamic supportsStandaloneMode;

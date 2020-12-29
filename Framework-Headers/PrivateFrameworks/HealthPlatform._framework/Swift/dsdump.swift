@@ -96,14 +96,14 @@
 	// Properties
 	var ourl_lock : os_unfair_lock_s
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ourl_count : UE
+	var ourl_count : uE
  }
 
  struct __C.os_unfair_lock_s {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _os_unfair_lock_opaque : UE
+	var _os_unfair_lock_opaque : uE
  }
 
  struct HealthPlatform.ContentMagnitudeFeatureTag {
@@ -124,7 +124,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var uniqueIdentifier : String // +0x0
 	var sourceProfile : SourceProfile // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var data : =A // +0x18
+	var data : ]A // +0x18
 	var pluginIdentifier : String // +0x28
  }
 
@@ -142,7 +142,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var uniqueIdentifier : String
 	var userInterface : UserInterface
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var userData : =A
+	var userData : ]A
 	var relevantDateInterval : RelevantDateInterval
 	var contentKind : ContentKind
 	var associatedHKTypes : Set<HKObjectType>
@@ -255,7 +255,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisher : ≈> // +0x0
+	let publisher : Â> // +0x0
 	var domain : GeneratorDomain // +0x8
 	var requiresSerializedGenerators : Bool // +0x21
  }
@@ -264,7 +264,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisher : ´> // +0x0
+	let publisher : À> // +0x0
 	let domain : GeneratorDomain // +0x8
  }
 
@@ -274,11 +274,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var underlyingLock : os_unfair_recursive_lock_s
 
 	// Swift methods
-	0x13010  class func RecursiveUnfairLock.__allocating_init() // init 
+	0x12ff0  class func RecursiveUnfairLock.__allocating_init() // init 
+	0x130c0  func <stripped> // method 
+	0x130d0  func <stripped> // method 
 	0x130e0  func <stripped> // method 
 	0x130f0  func <stripped> // method 
-	0x13100  func <stripped> // method 
-	0x13110  func <stripped> // method 
  }
 
  struct HealthPlatform.MutualExclusionGroupFeatureTag {
@@ -417,6 +417,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case healthRecordsCDAs  
 	case healthRecordsUnreadableData  
 	case noData  
+	case healthProfile  
 	case other  
  }
 
@@ -426,11 +427,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var underlyingLock : os_unfair_lock_s
 
 	// Swift methods
-	0x22310  class func UnfairLock.__allocating_init() // init 
+	0x222f0  class func UnfairLock.__allocating_init() // init 
+	0x223b0  func <stripped> // method 
+	0x223c0  func <stripped> // method 
 	0x223d0  func <stripped> // method 
 	0x223e0  func <stripped> // method 
-	0x223f0  func <stripped> // method 
-	0x22400  func <stripped> // method 
  }
 
  struct HealthPlatform.HKTypesFeatureTag {
@@ -473,7 +474,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let interval : ç:
+	let interval : ≠:
 	let rampUpTime : Double
 	let rampDownTime : Double
  }

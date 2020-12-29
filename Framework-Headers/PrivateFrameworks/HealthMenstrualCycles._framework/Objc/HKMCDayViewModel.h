@@ -8,7 +8,7 @@
 
 #import <HealthMenstrualCycles/HKRedactedDescription-Protocol.h>
 
-@class HKMCDaySummary, NSString;
+@class HKMCDaySummary, NSArray, NSString;
 
 @interface HKMCDayViewModel : NSObject <HKRedactedDescription>
 {
@@ -17,8 +17,10 @@
     unsigned long long _menstruationLevel;
     unsigned long long _fertileWindowLevel;
     HKMCDaySummary *_daySummary;
+    NSArray *_cycleFactors;
 }
 
+@property (readonly, nonatomic) NSArray *cycleFactors; // @synthesize cycleFactors=_cycleFactors;
 @property (readonly, nonatomic) HKMCDaySummary *daySummary; // @synthesize daySummary=_daySummary;
 @property (readonly, nonatomic) unsigned long long fertileWindowLevel; // @synthesize fertileWindowLevel=_fertileWindowLevel;
 @property (readonly, nonatomic, getter=isFetched) BOOL fetched; // @synthesize fetched=_fetched;
@@ -27,10 +29,12 @@
 @property (readonly, nonatomic, getter=isPartiallyLoggedPeriod) BOOL partiallyLoggedPeriod; // @synthesize partiallyLoggedPeriod=_partiallyLoggedPeriod;
 @property (readonly, nonatomic, getter=isSupplementaryDataLogged) BOOL supplementaryDataLogged;
 
++ (id)dayViewModelWithMenstruationLevel:(unsigned long long)arg1 fertileWindowLevel:(unsigned long long)arg2 daySummary:(id)arg3 cycleFactors:(id)arg4 partiallyLoggedPeriod:(BOOL)arg5 fetched:(BOOL)arg6;
 + (id)dayViewModelWithMenstruationLevel:(unsigned long long)arg1 fertileWindowLevel:(unsigned long long)arg2 daySummary:(id)arg3 partiallyLoggedPeriod:(BOOL)arg4 fetched:(BOOL)arg5;
 + (id)emptyDayViewModel;
 + (id)unfetchedDayViewModel;
 - (void).cxx_destruct;
+- (id)_initWithMenstruationLevel:(unsigned long long)arg1 fertileWindowLevel:(unsigned long long)arg2 daySummary:(id)arg3 cycleFactors:(id)arg4 partiallyLoggedPeriod:(BOOL)arg5 fetched:(BOOL)arg6;
 - (id)_initWithMenstruationLevel:(unsigned long long)arg1 fertileWindowLevel:(unsigned long long)arg2 daySummary:(id)arg3 partiallyLoggedPeriod:(BOOL)arg4 fetched:(BOOL)arg5;
 - (id)description;
 - (BOOL)isEqual:(id)arg1;

@@ -21,6 +21,7 @@
     id<ENUIRemotePresentationController> _remotePresentationController;
     BOOL _exposureNotificationEnabled;
     BOOL _exposureNotificationPaused;
+    BOOL _analyticsEnabled;
     unsigned int _clientID;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     long long _exposureNotificationStatus;
@@ -32,6 +33,7 @@
 }
 
 @property (copy, nonatomic) CDUnknownBlockType activityHandler; // @synthesize activityHandler=_activityHandler;
+@property (readonly, nonatomic) BOOL analyticsEnabled; // @synthesize analyticsEnabled=_analyticsEnabled;
 @property (nonatomic) unsigned int clientID; // @synthesize clientID=_clientID;
 @property (copy, nonatomic) CDUnknownBlockType diagnosisKeysAvailableHandler; // @synthesize diagnosisKeysAvailableHandler=_diagnosisKeysAvailableHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;

@@ -30,6 +30,7 @@
 - (id)accessibilityCustomContent;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityURL;
 - (id)accessibilityValue;
 - (BOOL)shouldMeasureBlurriness;
 

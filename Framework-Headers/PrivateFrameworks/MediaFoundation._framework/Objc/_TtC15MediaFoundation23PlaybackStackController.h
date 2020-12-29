@@ -17,7 +17,6 @@
     MISSING_TYPE *internalController;
     MISSING_TYPE *errorController;
     MISSING_TYPE *backgroundTaskController;
-    MISSING_TYPE *currentQueueRestorationItem;
     MISSING_TYPE *currentSetQueueIdentifier;
 }
 

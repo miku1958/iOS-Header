@@ -49,6 +49,7 @@
 - (id)diagnosticDescription;
 - (id)diagnosticInfo;
 - (void)dismissGoodMorningWithCompletion:(CDUnknownBlockType)arg1;
+- (void)dismissSleepLockWithCompletion:(CDUnknownBlockType)arg1;
 - (void)environmentDidBecomeReady:(id)arg1;
 - (void)environmentWillBecomeReady:(id)arg1;
 - (void)environmentWillInvalidate:(id)arg1;

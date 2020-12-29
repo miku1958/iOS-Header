@@ -8,7 +8,7 @@
 
 #import <NearbyInteraction/UWBSessionDelegateProxyProtocol-Protocol.h>
 
-@class NIConfiguration, NIDiscoveryToken, NIServerConnection, NSDictionary, NSError, NSString, NSUUID;
+@class NIConfiguration, NIDiscoveryToken, NIExportedObjectForwarder, NIServerConnection, NSDictionary, NSError, NSString, NSUUID;
 @protocol NIInternalSessionDelegate, NISessionDelegate, OS_dispatch_queue, OS_os_log;
 
 @interface NISession : NSObject <UWBSessionDelegateProxyProtocol>
@@ -17,7 +17,7 @@
     struct mutex _mutex;
     NSUUID *_internalID;
     NIServerConnection *_connection;
-    NSDictionary *_activationResponse;
+    NIExportedObjectForwarder *_exportedObjectForwarder;
     NIConfiguration *_currentConfiguration;
     struct vector<UWBSessionInterruptionBookkeeping, std::__1::allocator<UWBSessionInterruptionBookkeeping>> _interruptions;
     struct atomic<bool> _readyForCallbacks;
@@ -29,9 +29,11 @@
     id<NISessionDelegate> _delegate;
     NSObject<OS_dispatch_queue> *_delegateQueue;
     NSError *_invalidationError;
+    NSDictionary *_activationResponse;
     id<NIInternalSessionDelegate> _internalDelegate;
 }
 
+@property (strong) NSDictionary *activationResponse; // @synthesize activationResponse=_activationResponse;
 @property (readonly, copy, nonatomic) NIConfiguration *configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<NISessionDelegate> delegate; // @synthesize delegate=_delegate;
@@ -67,7 +69,9 @@
 - (void)_handleRunSessionSuccess;
 - (id)_initAndConnectToServer;
 - (void)_interruptSessionWithInternalReason:(long long)arg1 onConnectionQueue:(BOOL)arg2;
+- (void)_invalidateInternalOnConnectionQueue:(BOOL)arg1;
 - (void)_invalidateSessionInternalWithError:(id)arg1;
+- (BOOL)_isInternalClient;
 - (void)_logDurationAndSubmit:(BOOL)arg1;
 - (void)_logTime;
 - (void)_notifyDidInvalidateWithError:(id)arg1;
@@ -91,8 +95,7 @@
 - (id)init;
 - (void)invalidate;
 - (BOOL)isEqual:(id)arg1;
-- (void)objectDidEnter:(id)arg1 region:(id)arg2;
-- (void)objectDidExit:(id)arg1 region:(id)arg2;
+- (void)object:(id)arg1 didUpdateRegion:(id)arg2 previousRegion:(id)arg3;
 - (void)pause;
 - (void)runWithConfiguration:(id)arg1;
 - (void)setConfigurationForTesting:(id)arg1;

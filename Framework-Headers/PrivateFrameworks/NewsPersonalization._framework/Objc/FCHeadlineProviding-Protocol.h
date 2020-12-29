@@ -10,7 +10,7 @@
 #import <NewsPersonalization/NFCopying-Protocol.h>
 #import <NewsPersonalization/NSObject-Protocol.h>
 
-@class FCArticleAudioTrack, FCArticleContentManifest, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
+@class FCArticleAudioTrack, FCArticleContent, FCCoverArt, FCFeedPersonalizedItemScoreProfile, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSData, NSDate, NSSet, NSString, NSURL;
 @protocol FCChannelProviding, FCContentContext, FCHeadlineStocksFields, FCNativeAdProviding;
 
 @protocol FCHeadlineProviding <NSObject, NFCopying, FCFeedElement, FCClassifiable, FCFeedTransformationItem>
@@ -128,7 +128,7 @@
 - (BOOL)isSponsored;
 
 @optional
-- (FCArticleContentManifest *)contentManifestWithContext:(id<FCContentContext>)arg1;
+- (FCArticleContent *)contentWithContext:(id<FCContentContext>)arg1;
 - (BOOL)isBundlePaid;
 - (BOOL)isIssueOnly;
 @end

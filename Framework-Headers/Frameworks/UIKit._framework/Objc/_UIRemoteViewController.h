@@ -116,7 +116,6 @@
 - (BOOL)__interdictServiceViewTouches;
 - (void)__setInterdictServiceViewTouches:(BOOL)arg1;
 - (void)__setMediaOverridePID:(int)arg1;
-- (void)__setServiceMaxFrameSize:(struct CGSize)arg1;
 - (void)__setSupportedInterfaceOrientations:(id)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
 - (BOOL)__shouldRemoteViewControllerFenceOperations;
@@ -158,7 +157,6 @@
 - (id)_clientDeferralTarget;
 - (void)_configureFocusDeferralForEnteringBackground;
 - (void)_configureFocusDeferralForEnteringForeground;
-- (void)_configureSizeViewConstraintsForWindow:(id)arg1 interfaceOrientation:(long long)arg2;
 - (void)_didResignContentViewControllerOfPopover:(id)arg1;
 - (void)_didRotateFromInterfaceOrientation:(long long)arg1 forwardToChildControllers:(BOOL)arg2 skipSelf:(BOOL)arg3;
 - (void)_endNoPresentingViewControllerAlertController:(id)arg1;

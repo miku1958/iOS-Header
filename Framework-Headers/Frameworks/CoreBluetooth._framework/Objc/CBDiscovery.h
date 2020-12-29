@@ -27,6 +27,7 @@
     BOOL _invalidateDone;
     struct LogCategory *_ucat;
     NSObject<OS_xpc_object> *_xpcCnx;
+    BOOL _bleRSSIThresholdHint;
     BOOL _disabledActive;
     BOOL _disabledPending;
     unsigned int _systemOverrideFlags;
@@ -46,9 +47,11 @@
     unsigned long long _discoveryFlags;
     CDUnknownBlockType _errorHandler;
     CDUnknownBlockType _interruptionHandler;
+    unsigned long long _extraDiscoveryFlags;
     NSObject<OS_xpc_object> *_testListenerEndpoint;
 }
 
+@property (nonatomic) BOOL bleRSSIThresholdHint; // @synthesize bleRSSIThresholdHint=_bleRSSIThresholdHint;
 @property (nonatomic) int bleScanRate; // @synthesize bleScanRate=_bleScanRate;
 @property (nonatomic) int bleScanRateOverride; // @synthesize bleScanRateOverride=_bleScanRateOverride;
 @property (readonly, nonatomic) long long bluetoothState; // @synthesize bluetoothState=_bluetoothState;
@@ -63,6 +66,7 @@
 @property (nonatomic) unsigned long long discoveryFlags; // @synthesize discoveryFlags=_discoveryFlags;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
+@property (nonatomic) unsigned long long extraDiscoveryFlags; // @synthesize extraDiscoveryFlags=_extraDiscoveryFlags;
 @property (nonatomic) unsigned int internalFlags; // @synthesize internalFlags=_internalFlags;
 @property (copy, nonatomic) CDUnknownBlockType interruptionHandler; // @synthesize interruptionHandler=_interruptionHandler;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;

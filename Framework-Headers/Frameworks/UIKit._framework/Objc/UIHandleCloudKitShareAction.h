@@ -4,24 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <BaseBoard/BSAction.h>
+#import <UIKitServices/UISHandleCloudKitShareAction.h>
 
-@class CKShareMetadata;
-
-@interface UIHandleCloudKitShareAction : BSAction
+@interface UIHandleCloudKitShareAction : UISHandleCloudKitShareAction
 {
-    CKShareMetadata *_cachedMetadata;
 }
-
-@property (readonly, nonatomic) CKShareMetadata *shareMetadata;
-
-+ (id)cloudKitShareActionWithShareMetadata:(id)arg1;
-+ (void)loadCloudKitFramework;
-- (void).cxx_destruct;
-- (long long)UIActionType;
-- (id)data;
-- (id)initWithShareMetadata:(id)arg1;
-- (id)keyDescriptionForSetting:(unsigned long long)arg1;
 
 @end
 

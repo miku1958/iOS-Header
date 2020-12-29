@@ -44,10 +44,11 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)popCompletedCheckmark;
+- (void)popCompletedCheckmarkWithHaptic:(BOOL)arg1;
 - (void)stopBubbleGlyphAnimation;
 - (void)tintColorDidChange;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)transitionCompletedLayerToVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)transitionCompletedLayerToVisible:(BOOL)arg1 animated:(BOOL)arg2 haptic:(BOOL)arg3;
 - (void)transitionRunningLayerToVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)transitionToState:(long long)arg1;
 - (void)transitionToState:(long long)arg1 animated:(BOOL)arg2;

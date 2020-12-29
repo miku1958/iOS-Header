@@ -34,6 +34,7 @@
     NSNumber *_includeAllPhotosSmartAlbumNumber;
     NSNumber *_includeRecentlyEditedSmartAlbumNumber;
     NSNumber *_includeScreenRecordingsSmartAlbumNumber;
+    NSNumber *_includeRAWSmartAlbumNumber;
     NSNumber *_includeTrashBinAlbumNumber;
     NSNumber *_includeRootFolderNumber;
     NSNumber *_excludeMontageAssetsNumber;
@@ -94,6 +95,7 @@
 @property (nonatomic) BOOL includeOnlyPersonsWithVisibleKeyFaces;
 @property (nonatomic) BOOL includePendingMemories;
 @property (nonatomic) BOOL includePlacesSmartAlbum;
+@property (nonatomic) BOOL includeRAWSmartAlbum;
 @property (nonatomic) BOOL includeRecentlyEditedSmartAlbum;
 @property (nonatomic) BOOL includeRejectedMemories;
 @property (nonatomic) BOOL includeRootFolder;

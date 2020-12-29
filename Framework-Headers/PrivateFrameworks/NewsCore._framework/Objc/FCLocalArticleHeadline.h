@@ -27,9 +27,9 @@
 - (id)allowedStorefrontIDs;
 - (id)articleID;
 - (id)blockedStorefrontIDs;
-- (id)contentManifestWithContext:(id)arg1;
 - (unsigned long long)contentType;
 - (id)contentURL;
+- (id)contentWithContext:(id)arg1;
 - (BOOL)hasThumbnail;
 - (id)iAdCategories;
 - (id)iAdKeywords;

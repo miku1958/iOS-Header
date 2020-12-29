@@ -11,7 +11,7 @@
 }
 
 - (id)description;
-- (id)init:(double)arg1 order:(long long)arg2;
+- (id)init:(double)arg1 emojiSearchMode:(BOOL)arg2 order:(long long)arg3;
 
 @end
 

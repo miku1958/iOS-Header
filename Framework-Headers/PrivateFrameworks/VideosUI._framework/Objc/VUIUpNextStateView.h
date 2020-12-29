@@ -6,16 +6,16 @@
 
 #import <UIKit/UIView.h>
 
-@class VUILabel, _TVImageView;
+@class VUILabel;
 
 __attribute__((visibility("hidden")))
 @interface VUIUpNextStateView : UIView
 {
     VUILabel *_label;
-    _TVImageView *_imageView;
+    UIView *_imageView;
 }
 
-@property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) UIView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) VUILabel *label; // @synthesize label=_label;
 
 - (void).cxx_destruct;

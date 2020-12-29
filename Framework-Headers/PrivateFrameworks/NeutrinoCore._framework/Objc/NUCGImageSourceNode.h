@@ -40,6 +40,7 @@
 + (BOOL)isFusedOvercaptureFromCGImageProperties:(id)arg1;
 - (void).cxx_destruct;
 - (void)_addDefaultFinalizedSourceOptions:(id)arg1;
+- (id)_evaluateAuxiliaryImageForType:(long long)arg1 error:(out id *)arg2;
 - (id)_evaluateImageGeometryWithSourceOptions:(id)arg1 error:(out id *)arg2;
 - (id)_evaluateImagePropertiesWithSourceOptions:(id)arg1 error:(out id *)arg2;
 - (id)_evaluateImageWithSourceOptions:(id)arg1 subsampleFactor:(long long *)arg2 error:(out id *)arg3;

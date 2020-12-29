@@ -79,6 +79,7 @@
 - (void)_backgroundChangedForInteractionAtIndexPath:(id)arg1;
 - (BOOL)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
 - (struct CGRect)_centerInsertionIndicatorFrame:(struct CGRect)arg1 targetAttributes:(id)arg2 axis:(unsigned long long)arg3 edges:(unsigned long long)arg4;
+- (struct CGRect)_contentFrameForSection:(long long)arg1;
 - (struct CGPoint)_contentOffsetForScrollingToSection:(long long)arg1;
 - (struct CGPoint)_contentOffsetFromProposedContentOffset:(struct CGPoint)arg1 forScrollingToItemAtIndexPath:(id)arg2 atScrollPosition:(unsigned long long)arg3;
 - (id)_decorationViewForLayoutAttributes:(id)arg1;

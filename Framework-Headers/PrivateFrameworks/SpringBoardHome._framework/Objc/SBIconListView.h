@@ -223,6 +223,7 @@
 - (void)iconLocationTransitionHandler:(id)arg1 setProgress:(double)arg2;
 - (id)iconViewForCoordinate:(struct SBIconCoordinate)arg1;
 - (id)iconViewForIcon:(id)arg1;
+- (id)iconVisibilityInfoForRect:(struct CGRect)arg1 normalized:(BOOL)arg2;
 - (void)ignoreNextWindowChange;
 - (unsigned long long)indexForCoordinate:(struct SBIconCoordinate)arg1 forOrientation:(long long)arg2;
 - (unsigned long long)indexForCoordinate:(struct SBIconCoordinate)arg1 forOrientation:(long long)arg2 metrics:(id)arg3;

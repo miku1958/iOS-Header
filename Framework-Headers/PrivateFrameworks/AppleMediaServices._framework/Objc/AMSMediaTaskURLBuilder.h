@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)_addCharts:(id)arg1;
 - (void)_addItemIdentifiers:(id)arg1;
 - (void)_addSearchTerm:(id)arg1;
+- (id)_basePath;
 - (id)_devicePlatform;
 - (id)_hostPromise;
 - (id)_pathPromise;

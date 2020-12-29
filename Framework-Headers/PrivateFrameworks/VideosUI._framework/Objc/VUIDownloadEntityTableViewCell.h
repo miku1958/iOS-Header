@@ -9,14 +9,14 @@
 #import <VideosUI/VUIDownloadEntityDelegate-Protocol.h>
 #import <VideosUI/VUIRentalExpirationLabelDelegate-Protocol.h>
 
-@class NSString, VUIDownloadButton, VUIDownloadEntity, VUIImageView, VUILabel, VUILibraryEpisodeFrameView, VUISeparatorView, _TVImageView;
+@class NSString, VUIDownloadEntity, VUILabel, VUILegacyDownloadButton, VUILibraryEpisodeFrameView, VUISeparatorView, VUIVideosImageView, _TVImageView;
 @protocol VUIDownloadEntityTableViewCellDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VUIDownloadEntityTableViewCell : UITableViewCell <VUIRentalExpirationLabelDelegate, VUIDownloadEntityDelegate>
 {
     id<VUIDownloadEntityTableViewCellDelegate> _delegate;
-    VUIDownloadButton *_downloadButton;
+    VUILegacyDownloadButton *_downloadButton;
     VUISeparatorView *_topSeparatorView;
     VUISeparatorView *_bottomSeparatorView;
     VUILabel *_titleLabel;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
     VUILabel *_metaDataHeaderFirstLabel;
     VUILabel *_metaDataHeaderSecondLabel;
     VUILabel *_dotSeparatorLabel;
-    VUIImageView *_rightImageView;
+    VUIVideosImageView *_rightImageView;
     VUILibraryEpisodeFrameView *_episodeImageView;
     VUIDownloadEntity *_downloadEntity;
     unsigned long long _previousDownloadState;
@@ -35,7 +35,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<VUIDownloadEntityTableViewCellDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) VUILabel *dotSeparatorLabel; // @synthesize dotSeparatorLabel=_dotSeparatorLabel;
-@property (strong, nonatomic) VUIDownloadButton *downloadButton; // @synthesize downloadButton=_downloadButton;
+@property (strong, nonatomic) VUILegacyDownloadButton *downloadButton; // @synthesize downloadButton=_downloadButton;
 @property (strong, nonatomic) VUIDownloadEntity *downloadEntity; // @synthesize downloadEntity=_downloadEntity;
 @property (strong, nonatomic) VUILibraryEpisodeFrameView *episodeImageView; // @synthesize episodeImageView=_episodeImageView;
 @property (readonly) unsigned long long hash;
@@ -43,7 +43,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUILabel *metaDataHeaderSecondLabel; // @synthesize metaDataHeaderSecondLabel=_metaDataHeaderSecondLabel;
 @property (strong, nonatomic) _TVImageView *posterImageView; // @synthesize posterImageView=_posterImageView;
 @property (nonatomic) unsigned long long previousDownloadState; // @synthesize previousDownloadState=_previousDownloadState;
-@property (strong, nonatomic) VUIImageView *rightImageView; // @synthesize rightImageView=_rightImageView;
+@property (strong, nonatomic) VUIVideosImageView *rightImageView; // @synthesize rightImageView=_rightImageView;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) VUISeparatorView *topSeparatorView; // @synthesize topSeparatorView=_topSeparatorView;

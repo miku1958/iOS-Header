@@ -9,19 +9,25 @@
 #import <WeatherFoundation/NSCopying-Protocol.h>
 #import <WeatherFoundation/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString;
+@class NSArray, NSString, WFAQIScaleGradient;
 
 @interface WFAQIScale : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _numerical;
+    BOOL _ascending;
     NSString *_identifier;
     NSString *_displayName;
+    NSString *_displayLabel;
     NSArray *_categories;
+    WFAQIScaleGradient *_gradient;
     struct _NSRange _range;
 }
 
+@property (nonatomic, getter=isAscending) BOOL ascending; // @synthesize ascending=_ascending;
 @property (copy, nonatomic) NSArray *categories; // @synthesize categories=_categories;
+@property (copy, nonatomic) NSString *displayLabel; // @synthesize displayLabel=_displayLabel;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
+@property (copy, nonatomic) WFAQIScaleGradient *gradient; // @synthesize gradient=_gradient;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic, getter=isNumerical) BOOL numerical; // @synthesize numerical=_numerical;
 @property (nonatomic) struct _NSRange range; // @synthesize range=_range;
@@ -29,8 +35,12 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)debugDescription;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToScale:(id)arg1;
 
 @end
 

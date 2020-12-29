@@ -4,37 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <FrontBoardServices/FBSWorkspaceSceneRequestOptions.h>
+#import <UIKitServices/UISSceneRequestOptions.h>
 
-#import <UIKitCore/BSXPCSecureCoding-Protocol.h>
-
-@class NSSet, NSString;
-
-@interface UISceneRequestOptions : FBSWorkspaceSceneRequestOptions <BSXPCSecureCoding>
+@interface UISceneRequestOptions : UISSceneRequestOptions
 {
-    BOOL _requestFullscreen;
-    BOOL _requestBackground;
-    BOOL _preserveLayout;
-    NSString *_sourceIdentifier;
-    NSSet *_actions;
-    long long _sceneRequestIntent;
 }
-
-@property (copy, nonatomic) NSSet *actions; // @synthesize actions=_actions;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (nonatomic) BOOL preserveLayout; // @synthesize preserveLayout=_preserveLayout;
-@property (nonatomic) BOOL requestBackground; // @synthesize requestBackground=_requestBackground;
-@property (nonatomic) BOOL requestFullscreen; // @synthesize requestFullscreen=_requestFullscreen;
-@property (nonatomic) long long sceneRequestIntent; // @synthesize sceneRequestIntent=_sceneRequestIntent;
-@property (copy, nonatomic) NSString *sourceIdentifier; // @synthesize sourceIdentifier=_sourceIdentifier;
-@property (readonly) Class superclass;
-
-+ (BOOL)supportsBSXPCSecureCoding;
-- (void).cxx_destruct;
-- (void)encodeWithBSXPCCoder:(id)arg1;
-- (id)initWithBSXPCCoder:(id)arg1;
 
 @end
 

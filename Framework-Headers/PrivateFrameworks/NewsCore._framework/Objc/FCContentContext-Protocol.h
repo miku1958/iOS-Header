@@ -7,8 +7,8 @@
 #import <NewsCore/FCCacheFlushing-Protocol.h>
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCArticleController, FCAssetManager, FCFlintResourceManager, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
-@protocol FCAVAssetPrewarming, FCBackgroundTaskable, FCCacheFlushing, FCContentContextInternal, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
+@class FCArticleController, FCAssetManager, FCContentManifest, FCFlintResourceManager, FCInterestToken, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
+@protocol FCAVAssetPrewarming, FCBackgroundTaskable, FCCacheFlushing, FCContentContextInternal, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext;
 
 @protocol FCContentContext <NSObject, FCCacheFlushing>
 
@@ -26,13 +26,11 @@
 @property (readonly, nonatomic) id<FCContentContextInternal> internalContentContext;
 @property (readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor;
 @property (readonly, nonatomic) id<FCPPTContext> pptContext;
-@property (readonly, nonatomic) long long preferredMediaQuality;
 @property (readonly, copy, nonatomic) NSString *supportedContentStoreFrontID;
 @property (readonly, nonatomic) FCTagController *tagController;
-@property (readonly, nonatomic) NSURL *webArchiveCacheDirectoryURL;
-@property (strong, nonatomic) id<FCWebArchiveSource> webArchiveSource;
 
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1 exceptForFlusher:(id<FCCacheFlushing>)arg2;
+- (FCInterestToken *)interestTokenForContentManifest:(FCContentManifest *)arg1;
 - (id<FCMagazinesConfigurationManager>)magazinesConfigurationManager;
 - (id<FCCoreConfigurationManager><FCNewsAppConfigurationManager>)news_core_ConfigurationManager;
 - (void)ppt_overrideFeedEndpoint:(long long)arg1;

@@ -6,30 +6,26 @@
 
 #import <UIKit/UIView.h>
 
-@class UIImageView, WAAQIScale;
+@class WAAQIScale;
 
 @interface WAAQIScaleView : UIView
 {
     WAAQIScale *_scale;
     unsigned long long _AQI;
     double _aqiPercentageInRange;
-    UIImageView *_thumbImageView;
 }
 
 @property (nonatomic) unsigned long long AQI; // @synthesize AQI=_AQI;
 @property (nonatomic) double aqiPercentageInRange; // @synthesize aqiPercentageInRange=_aqiPercentageInRange;
 @property (strong, nonatomic) WAAQIScale *scale; // @synthesize scale=_scale;
-@property (strong, nonatomic) UIImageView *thumbImageView; // @synthesize thumbImageView=_thumbImageView;
 
 - (void).cxx_destruct;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
-- (void)layoutSubviews;
 - (unsigned long long)sanitizedAQI:(unsigned long long)arg1;
 - (struct CGRect)thumbRectForBounds:(struct CGRect)arg1 trackRect:(struct CGRect)arg2;
 - (struct CGRect)trackRectForBounds:(struct CGRect)arg1;
-- (void)updateThumbImage;
 
 @end
 

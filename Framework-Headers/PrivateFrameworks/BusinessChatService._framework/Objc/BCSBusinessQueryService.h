@@ -25,6 +25,7 @@
 - (void).cxx_destruct;
 - (void)_deleteInMemoryCache;
 - (void)_fetchBusinessItemWithDetailsForPhoneNumber:(id)arg1 forClientBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_isBusinessRegisteredForURL:(id)arg1 chopURL:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)businessItemForPhoneNumber:(id)arg1 isMessageable:(BOOL *)arg2 isChatSuggestVisible:(BOOL *)arg3 error:(id *)arg4;
 - (void)clearCachesForLinkItemsAssociatedWithBundleID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)clearCachesForType:(long long)arg1 completion:(CDUnknownBlockType)arg2;

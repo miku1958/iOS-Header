@@ -3,6 +3,10 @@
 	// method
 	// method
  }
+ protocol NewsArticles.CampaignLandingPageStylerType // 1 requirements
+ {
+	// method
+ }
  protocol NewsArticles.SharingActivityProviderFactoryType // 2 requirements
  {
 	// method
@@ -72,6 +76,15 @@
  }
  protocol NewsArticles.InterstitialAdvertisementRouterType // 0 requirements
  {
+ }
+ protocol NewsArticles.ArticlePreviewable // 1 requirements
+ {
+	// method
+ }
+ protocol NewsArticles.ArticlePreviewManagerType // 2 requirements
+ {
+	// method
+	// method
  }
  protocol NewsArticles.PDFReplicaViewerModuleType // 1 requirements
  {
@@ -311,6 +324,10 @@
 	// method
 	// method
  }
+ protocol NewsArticles.CampaignLandingPageRouterType // 1 requirements
+ {
+	// method
+ }
  protocol NewsArticles.TextViewProviderType // 2 requirements
  {
 	// getter
@@ -385,6 +402,16 @@
  protocol NewsArticles.ReportConcernDetailEventHandlerTypeDelegate // 0 requirements
  {
  }
+ protocol NewsArticles.CampaignLandingPageEventHandlerType // 4 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// method
+ }
+ protocol NewsArticles.CampaignLandingPageEventHandlerTypeDelegate // 0 requirements
+ {
+ }
  protocol NewsArticles.TableOfContentsBlueprintViewCellProviderDelegate // 2 requirements
  {
 	// method
@@ -428,6 +455,10 @@
 	// method
 	// method
  }
+ protocol NewsArticles.CampaignLandingPageModuleType // 1 requirements
+ {
+	// method
+ }
  protocol NewsArticles.ArticleFooterProviderType // 1 requirements
  {
 	// method
@@ -468,6 +499,9 @@
 	// method
 	// method
 	// method
+ }
+ protocol NewsArticles.CampaignLandingPageTrackerType // 0 requirements
+ {
  }
  protocol NewsArticles.IssuePDFReplicaPageServiceType // 1 requirements
  {
@@ -966,6 +1000,15 @@
  protocol NewsArticles.InterstitialAdvertisementDataManagerType // 0 requirements
  {
  }
+ protocol NewsArticles.CampaignLandingPageInteractorType // 3 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+ }
+ protocol NewsArticles.CampaignLandingPageInteractorTypeDelegate // 0 requirements
+ {
+ }
  protocol NewsArticles.InterstitialAdModelFactoryType // 2 requirements
  {
 	// method
@@ -1378,8 +1421,9 @@
  protocol NewsArticles.EndOfArticleBlueprintViewSupplementaryProviderDelegate // 0 requirements
  {
  }
- protocol NewsArticles.EndOfArticleQuotaCandidate // 2 requirements
+ protocol NewsArticles.EndOfArticleQuotaCandidate // 3 requirements
  {
+	// getter
 	// getter
 	// getter
  }
@@ -1438,15 +1482,6 @@
  }
  protocol NewsArticles.ArticleBannerAdFactoryType // 1 requirements
  {
-	// method
- }
- protocol NewsArticles.ArticlePreviewable // 1 requirements
- {
-	// method
- }
- protocol NewsArticles.ArticlePreviewManagerType // 2 requirements
- {
-	// method
 	// method
  }
  protocol NewsArticles.EndOfArticleEventHandlerType // 14 requirements
@@ -1520,12 +1555,6 @@
 	// method
 	// method
 	// method
-	// method
-	// method
- }
- protocol NewsArticles.EndOfArticleCountProviderType // 3 requirements
- {
-	// getter
 	// method
 	// method
  }
@@ -1620,9 +1649,9 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : Yò
+	var x : Èô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : Yò
+	var y : Èô
  }
 
  struct __C.CGRect {
@@ -1642,9 +1671,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : Yò
+	var width : Èô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : Yò
+	var height : Èô
  }
 
  enum __C.SXSubscriptionStatus { }
@@ -1653,13 +1682,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : Yò
+	var top : Èô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : Yò
+	var left : Èô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : Yò
+	var bottom : Èô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : Yò
+	var right : Èô
  }
 
  enum __C.SXVideoQuartile { }
@@ -1673,6 +1702,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var _rawValue : NSString
  }
+
+ enum __C.SXComponentExposureState { }
 
  enum __C.FCNewsletterSubscription { }
 
@@ -1704,7 +1735,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let titleViewRenderer : ArticleViewerTitleViewRendererType
 	let titleViewLayoutAttributesFactory : ArticleViewerTitleViewLayoutAttributesFactoryType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let toolbarManager : ’¨
+	let toolbarManager : ΩÆ
 	let titleView : TitleView
 
 	// Swift methods
@@ -1717,50 +1748,50 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let renderer : PDFReplicaViewerRendererType
 	let eventHandler : PDFReplicaViewerEventHandlerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sessionManager : ≠
+	let sessionManager : Ø
 	let issue : PDFReplicaIssue
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pageViewController : Æ
+	let pageViewController : ∞
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pageBlueprintProvider : ≥´
+	let pageBlueprintProvider : ù≠
 	let toolbarCoverFactory : ToolbarIssueCoverViewBarItemFactoryType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallFactory : ı§
+	let paywallFactory : «¶
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigationItemStyle : £
+	let navigationItemStyle : Á§
 	let titleView : TitleView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var paywallViewController : ˜§
+	var paywallViewController : …¶
 	let paidAccessChecker : FCPaidAccessCheckerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventManager : â¢
+	let eventManager : k§
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featureAvailability : #ø
+	let featureAvailability : -¡
 	let sharingActivityItemFactory : SharingActivityItemFactoryType
 	let subscriptionController : FCSubscriptionController
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let toolbarManager : ’¨
+	let toolbarManager : ΩÆ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var backButton : ≠©
+	var backButton : è´
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nextButton : ≠©
+	var nextButton : è´
 	var barVisibilityAnimator : PDFReplicaBarVisibilityAnimatorType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pageSheetPresentationObserver : ÀØ
+	var pageSheetPresentationObserver : ≈±
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commands : €®
+	let commands : Ω™
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x340f4000fbbd0 (0xf4000fbbd0) in binary!
-	0x31b70  @objc PDFReplicaViewerViewController.(null) <stripped>
-WARNING: couldn't find address 0x340dc000fbbc8 (0xdc000fbbc8) in binary!
-	0x37e58  @objc PDFReplicaViewerViewController.(null) <stripped>
-WARNING: couldn't find address 0x25c3c000fc678 (0x43c000fc678) in binary!
-	0x2e490  @objc PDFReplicaViewerViewController.(null) <stripped>
+WARNING: couldn't find address 0x34b9400102f30 (0x39400102f30) in binary!
+	0x32500  @objc PDFReplicaViewerViewController.(null) <stripped>
+WARNING: couldn't find address 0x34b7c00102f28 (0x37c00102f28) in binary!
+	0x38978  @objc PDFReplicaViewerViewController.(null) <stripped>
+WARNING: couldn't find address 0x2670c001039d8 (0x70c001039d8) in binary!
+	0x2ed70  @objc PDFReplicaViewerViewController.(null) <stripped>
 WARNING: couldn't find address 0xd8000000c (0xd8000000c) in binary!
-	0x65cffe0a348  @objc PDFReplicaViewerViewController.(null) <stripped>
-	0x5acffe09dd0  @objc PDFReplicaViewerViewController. <stripped>
-	0x5fcffe0a178  @objc PDFReplicaViewerViewController.âIãGHâE–HâCHç5€ì2 <stripped>
+	0x1bcffdfe4f8  @objc PDFReplicaViewerViewController.(null) <stripped>
+	0x10cffdfdf80  @objc PDFReplicaViewerViewController.∫EndOfArtHπicle <stripped>
+	0x15cffdfe328  @objc PDFReplicaViewerViewController. AF(C(Mã~8Lâ{8IãF@HâC@MãnHLâkHIãFPHâEÄHâCPIãFXHâCXIãF`HâEàHâC`IãFhHâEòHâChIãFpHâE∏HâCpIãFxHâCxIãÜÄ <stripped>
 
 	// Swift methods
  }
@@ -1773,10 +1804,25 @@ WARNING: couldn't find address 0xd8000000c (0xd8000000c) in binary!
 	case viewDidAppear  
  }
 
+ enum NewsArticles.ArticleEvent {
+
+	// Properties
+	case startedLoading  
+	case articleDidLoad  
+ }
+
  class NewsArticles.IssueHeadlineFetchOperationFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssueHeadlineFetchOperationFactoryType {
 
 	// Properties
 	let context : FCCloudContext
+
+	// Swift methods
+ }
+
+ class NewsArticles.CampaignLandingPageStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, CampaignLandingPageStylerType {
+
+	// Properties
+	let baseStyler : BaseStylerType
 
 	// Swift methods
  }
@@ -1786,7 +1832,7 @@ WARNING: couldn't find address 0xd8000000c (0xd8000000c) in binary!
 	// Properties
 	let headline : FCHeadlineProviding // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î // +0x8
+	let tracker : ñ // +0x8
  }
 
  enum NewsArticles.ReportConcernLayoutModel {
@@ -1805,9 +1851,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let activityTypeProvider : SharingActivityTypeProviderType
 	let issueActivityTypeProvider : SharingIssueActivityTypeProviderType
 	let paidAccessChecker : FCPaidAccessCheckerType
+	let subscriptionController : FCSubscriptionController
 
 	// Swift methods
-	0x10920  class func SharingActivityProviderFactory.__allocating_init(sharingActivityItemFactory:activityTypeProvider:issueActivityTypeProvider:paidAccessChecker:) // init 
+	0x10a50  class func SharingActivityProviderFactory.__allocating_init(sharingActivityItemFactory:activityTypeProvider:issueActivityTypeProvider:paidAccessChecker:subscriptionController:) // init 
  }
 
  struct NewsArticles.TableOfContentsPrewarmBlueprintModifier {
@@ -1815,7 +1862,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let issue : Issue // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let assetHandleFactory : ıº // +0x18
+	let assetHandleFactory : ±æ // +0x18
 	let isSubscribed : Bool // +0x40
  }
 
@@ -1823,16 +1870,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let imageView : E≤
+	let imageView : ¥
 	let borderLayer : CALayer
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2da64000fc0a8 (0x264000fc0a8) in binary!
-	0x37d78  @objc TableOfContentsPDFCellView.(null) <stripped>
-WARNING: couldn't find address 0x2e3bc000fba98 (0x3bc000fba98) in binary!
+WARNING: couldn't find address 0x2e34400103408 (0x34400103408) in binary!
+	0x38898  @objc TableOfContentsPDFCellView.(null) <stripped>
+WARNING: couldn't find address 0x2ec9c00102df8 (0x49c00102df8) in binary!
 	0x58000000c  @objc TableOfContentsPDFCellView.(null) <stripped>
-WARNING: couldn't find address 0x2e3a4000fc628 (0x3a4000fc628) in binary!
-	0x2e398  @objc TableOfContentsPDFCellView.(null) <stripped>
+WARNING: couldn't find address 0x2ec8400103998 (0x48400103998) in binary!
+	0x2ec78  @objc TableOfContentsPDFCellView.(null) <stripped>
  }
 
  enum NewsArticles.BarButtonItemAction {
@@ -1840,7 +1887,7 @@ WARNING: couldn't find address 0x2e3a4000fc628 (0x3a4000fc628) in binary!
 	// Properties
 	case present : (viewController: UIViewController)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case open : +ê
+	case open : 7ë
 	case none  
  }
 
@@ -1857,20 +1904,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let linkedContentProvider : NULinkedArticleContentProvider
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleThumbnailViewRenderer : Èª
+	let articleThumbnailViewRenderer : •Ω
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleThumbnailView : ª
+	let articleThumbnailView : µº
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e3a4000fc628 (0x3a4000fc628) in binary!
-	0x2e398  @objc ArticleThumbnailComponentView.(null) <stripped>
-WARNING: couldn't find address 0x2db0c000fc5e8 (0x30c000fc5e8) in binary!
-	0x2a940  @objc ArticleThumbnailComponentView.(null) <stripped>
-WARNING: couldn't find address 0x2e374000fba50 (0x374000fba50) in binary!
+WARNING: couldn't find address 0x2ec8400103998 (0x48400103998) in binary!
+	0x2ec78  @objc ArticleThumbnailComponentView.(null) <stripped>
+WARNING: couldn't find address 0x2e3ec00103958 (0x3ec00103958) in binary!
+	0x2b3d0  @objc ArticleThumbnailComponentView.(null) <stripped>
+WARNING: couldn't find address 0x2ec5400102db0 (0x45400102db0) in binary!
 	0x18000000c  @objc ArticleThumbnailComponentView.(null) <stripped>
-WARNING: couldn't find address 0x2e4ec000fc210 (0x4ec000fc210) in binary!
+WARNING: couldn't find address 0x2eddc00103570 (0x5dc00103570) in binary!
 	0x18000000c  @objc ArticleThumbnailComponentView.(null) <stripped>
-WARNING: couldn't find address 0x25ce4000fbd40 (0x4e4000fbd40) in binary!
+WARNING: couldn't find address 0x267b4001030a0 (0x7b4001030a0) in binary!
 	0x68000000c  @objc ArticleThumbnailComponentView.(null) <stripped>
 
 	// Swift methods
@@ -1884,7 +1931,7 @@ WARNING: couldn't find address 0x25ce4000fbd40 (0x4e4000fbd40) in binary!
 	let pdfReplicaService : IssuePDFReplicaPageServiceType
 	let anfPageService : ANFIssueServiceType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueCache : Qü
+	let issueCache : ’†
 
 	// Swift methods
  }
@@ -1917,7 +1964,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let thumbnailAssetHandle : FCAssetHandle // +0x58
 	let pageNumber : Int // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let aspectRatio : Yò // +0x68
+	let aspectRatio : Èô // +0x68
  }
 
  class NewsArticles.RSSArticleInteractor : _SwiftObject /usr/lib/swift/libswiftCore.dylib, RSSArticleInteractorType {
@@ -1928,7 +1975,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let dataManager : RSSArticleDataManagerType
 	var coordinator : ArticleCoordinatorType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventManager : eú
+	let eventManager : ˘ù
 
 	// Swift methods
  }
@@ -1945,7 +1992,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let headline : FCHeadlineProviding // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î // +0x8
+	let tracker : ñ // +0x8
  }
 
  class NewsArticles.ToolbarIssueCoverViewStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ToolbarIssueCoverViewStylerType {
@@ -1961,7 +2008,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let operationFactory : IssueHeadlineFetchOperationFactoryType // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let personalizationService : 1∂ // +0x38 (0x28)
+	let personalizationService : Â∑ // +0x38 (0x28)
 
 	// Swift methods
  }
@@ -1997,7 +2044,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsArticles.ReportConcernDetailAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e4ec000fc210 (0x4ec000fc210) in binary!
+WARNING: couldn't find address 0x2eddc00103570 (0x5dc00103570) in binary!
 	0x18000000c  @objc ReportConcernDetailAssembly.(null) <stripped>
  }
 
@@ -2006,7 +2053,7 @@ WARNING: couldn't find address 0x2e4ec000fc210 (0x4ec000fc210) in binary!
 	// Properties
 	let pages : PDFReplicaPage // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î // +0x8
+	let tracker : ñ // +0x8
  }
 
  enum NewsArticles.PDFReplicaViewerPage {
@@ -2019,36 +2066,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bannerView : ÛÆ // +0x8 (0x10)
+	var bannerView : Ø∞ // +0x8 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_debugView : -∞ // +0x18 (0x8)
+	var $__lazy_storage_$_debugView : È± // +0x18 (0x8)
 	let bannerAdFactory : ArticleBannerAdFactoryType // +0x20 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewManager : çØ // +0x48 (0x8)
+	let viewManager : I± // +0x48 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let requestManager : ©Æ // +0x50 (0x8)
+	let requestManager : e∞ // +0x50 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bannerAdRenderer : ∞ // +0x58 (0x28)
+	let bannerAdRenderer : ’± // +0x58 (0x28)
 	let integrator : AdComponentIntegratorType // +0x80 (0x28)
 	let exposureMonitor : SXComponentExposureMonitor // +0xa8 (0x8)
 	let tracker : AdComponentTrackerType // +0xb0 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let journal : ˜∞ // +0xd8 (0x8)
+	let journal : ≥≤ // +0xd8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var layoutAttributes : ]∞ // +0x0 (0x0)
+	var layoutAttributes : ≤ // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2daac000fc588 (0x2ac000fc588) in binary!
-	0x2e320  @objc AdComponentView.(null) <stripped>
-WARNING: couldn't find address 0x30e9c000fba30 (0x69c000fba30) in binary!
-	0x34026  @objc AdComponentView.(null) <stripped>
-WARNING: couldn't find address 0x2a8bc000fc690 (0xbc000fc690) in binary!
-	0x2e2f0  @objc AdComponentView.(null) <stripped>
+WARNING: couldn't find address 0x2e38c001038f8 (0x38c001038f8) in binary!
+	0x2ec00  @objc AdComponentView.(null) <stripped>
+WARNING: couldn't find address 0x317ac00102d90 (0x7ac00102d90) in binary!
+	0x36680  @objc AdComponentView.(null) <stripped>
+WARNING: couldn't find address 0x2b34c00103a00 (0x34c00103a00) in binary!
+	0x2ebd0  @objc AdComponentView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x1acffe20dd8  @objc AdComponentView.(null) <stripped>
-	0x44c000fc170  @objc AdComponentView.C(Mãw8Lâs8IãG@HâC@MãoHLâkHIãGPHâEÄHâCPIãGXHâCXIãG`HâEàHâC`IãGhHâEòHâChIãGpHâE∏HâCpIãGxHâCxIãáÄ <stripped>
-WARNING: couldn't find address 0xffe23a28 (0xffe23a28) in binary!
-	0x444000fbca0  @objc AdComponentView.(null) <stripped>
+	0x50cffe15f78  @objc AdComponentView.(null) <stripped>
+	0x53c001034d0  @objc AdComponentView.ƒ4 <stripped>
+WARNING: couldn't find address 0xffe18bc8 (0xffe18bc8) in binary!
+	0x71400103000  @objc AdComponentView.(null) <stripped>
 
 	// Swift methods
  }
@@ -2068,17 +2115,17 @@ WARNING: couldn't find address 0xffe23a28 (0xffe23a28) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contextBuilder : iÆ
+	let contextBuilder : %∞
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e46c000fc190 (0x46c000fc190) in binary!
-	0x2e2d0  @objc ArticleViewerModule.(null) <stripped>
+WARNING: couldn't find address 0x2ed5c001034f0 (0x55c001034f0) in binary!
+	0x2ebb0  @objc ArticleViewerModule.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe23a28  @objc ArticleViewerModule.(null) <stripped>
+	0xffe18bc8  @objc ArticleViewerModule.(null) <stripped>
 
 	// Swift methods
  }
@@ -2095,9 +2142,9 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	// Properties
 	var controller : weak UIViewController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 
 	// Swift methods
  }
@@ -2106,16 +2153,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 
 	// Swift methods
  }
 
  class NewsArticles.ServiceAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e44c000fc170 (0x44c000fc170) in binary!
+WARNING: couldn't find address 0x2ed3c001034d0 (0x53c001034d0) in binary!
 	0x18000000c  @objc ServiceAssembly.(null) <stripped>
  }
 
@@ -2132,7 +2179,7 @@ WARNING: couldn't find address 0x2e44c000fc170 (0x44c000fc170) in binary!
 
  class NewsArticles.ProxyAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e41c000fc140 (0x41c000fc140) in binary!
+WARNING: couldn't find address 0x2ed0c001034a0 (0x50c001034a0) in binary!
 	0x18000000c  @objc ProxyAssembly.(null) <stripped>
  }
 
@@ -2141,24 +2188,40 @@ WARNING: couldn't find address 0x2e41c000fc140 (0x41c000fc140) in binary!
 	// Properties
 	var controller : weak UIViewController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// Swift methods
+ }
+
+ class NewsArticles.ArticlePreviewManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticlePreviewManagerType {
+
+	// Properties
+	var preview : PreviewContainer
+
+	// Swift methods
+ }
+
+ struct NewsArticles.PreviewContainer {
+
+	// Properties
+	var previewable : ArticlePreviewable // +0x0
+	let articleIdentifier : String // +0x10
+	let channelIdentifier : String // +0x20
  }
 
  class NewsArticles.PDFReplicaViewerModule : NSObject /usr/lib/libobjc.A.dylib, PDFReplicaViewerModuleType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e3ec000fc110 (0x3ec000fc110) in binary!
-	0x2e250  @objc PDFReplicaViewerModule.(null) <stripped>
+WARNING: couldn't find address 0x2ecdc00103470 (0x4dc00103470) in binary!
+	0x2eb30  @objc PDFReplicaViewerModule.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x10cffe25528  @objc PDFReplicaViewerModule.(null) <stripped>
+	0x46cffe1add8  @objc PDFReplicaViewerModule.(null) <stripped>
 
 	// Swift methods
  }
@@ -2173,10 +2236,10 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var viewController : weak UIViewController?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e3cc000fc0f0 (0x3cc000fc0f0) in binary!
-	0x2e230  @objc TableOfContentsURLHandler.(null) <stripped>
+WARNING: couldn't find address 0x2ecbc00103450 (0x4bc00103450) in binary!
+	0x2eb10  @objc TableOfContentsURLHandler.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x41cffe257f8  @objc TableOfContentsURLHandler.(null) <stripped>
+	0x77cffe1b0a8  @objc TableOfContentsURLHandler.(null) <stripped>
 
 	// Swift methods
  }
@@ -2187,13 +2250,13 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var issueImage : UIImage?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x37b9c000fb910 (0x39c000fb910) in binary!
-	0x25980  @objc SharingIssueImageActivityItemSource.(null) <stripped>
-WARNING: couldn't find address 0x2e364000fc088 (0x364000fc088) in binary!
-	0x2e1c8  @objc SharingIssueImageActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x386bc00102c70 (0x6bc00102c70) in binary!
+	0x26450  @objc SharingIssueImageActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x2ec54001033e8 (0x454001033e8) in binary!
+	0x2eaa8  @objc SharingIssueImageActivityItemSource.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0xe4ffe25e90  @objc SharingIssueImageActivityItemSource.(null) <stripped>
-	0x6cffe25fe8  @objc SharingIssueImageActivityItemSource.Ë1 <stripped>
+	0x444ffe1b740  @objc SharingIssueImageActivityItemSource.(null) <stripped>
+	0x3ccffe1b898  @objc SharingIssueImageActivityItemSource.âcKç∂H¡‡HãM†HâL Hãçà˛ˇˇHãïê˛ˇˇHâL(HâT0HãM–HâL8HãM∞HâL@Lâ|HLâlPHçO& <stripped>
 
 	// Swift methods
  }
@@ -2204,18 +2267,18 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	let issue : FCIssue?
 	let headline : FCHeadlineProviding
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutAttributesFactory : µ
+	let layoutAttributesFactory : ]∂
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let renderer : E¥
+	let renderer : çµ
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x37b64000fb8e8 (0x364000fb8e8) in binary!
-	0x2b098  @objc ANFIssueCoverViewProvider.(null) <stripped>
-WARNING: couldn't find address 0x2e32c000fc050 (0x32c000fc050) in binary!
-	0x2e190  @objc ANFIssueCoverViewProvider.(null) <stripped>
+WARNING: couldn't find address 0x3868400102c48 (0x68400102c48) in binary!
+	0x2b928  @objc ANFIssueCoverViewProvider.(null) <stripped>
+WARNING: couldn't find address 0x2ec1c001033b0 (0x41c001033b0) in binary!
+	0x2ea70  @objc ANFIssueCoverViewProvider.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x34cffe282b8  @objc ANFIssueCoverViewProvider.(null) <stripped>
-	0xffe28350  @objc ANFIssueCoverViewProvider.3 <stripped>
+	0x6acffe1dc48  @objc ANFIssueCoverViewProvider.(null) <stripped>
+	0xffe1dce0  @objc ANFIssueCoverViewProvider.â∆Hã_Lã HâﬁËÆÑ˛ˇIâ≈Hç5,ñ4 <stripped>
 
 	// Swift methods
  }
@@ -2226,16 +2289,16 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let styler : ReportConcernDetailStylerType
 	let eventHandler : ReportConcernDetailEventHandlerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : „°
+	let blueprintViewController : £
 	let textViewProvider : TextViewProviderType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x37b2c000fc860 (0x32c000fc860) in binary!
-	0x25910  @objc ReportConcernDetailViewController.(null) <stripped>
-WARNING: couldn't find address 0x2e164000fb840 (0x164000fb840) in binary!
+WARNING: couldn't find address 0x3864c00103bf8 (0x64c00103bf8) in binary!
+	0x263e0  @objc ReportConcernDetailViewController.(null) <stripped>
+WARNING: couldn't find address 0x2ea4400102ba0 (0x24400102ba0) in binary!
 	0x48000000c  @objc ReportConcernDetailViewController.(null) <stripped>
-WARNING: couldn't find address 0x2e14c000fc308 (0x14c000fc308) in binary!
-	0x2e140  @objc ReportConcernDetailViewController.(null) <stripped>
+WARNING: couldn't find address 0x2ea2c00103668 (0x22c00103668) in binary!
+	0x2ea20  @objc ReportConcernDetailViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -2253,19 +2316,19 @@ WARNING: couldn't find address 0x2e14c000fc308 (0x14c000fc308) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contextBuilder : iÆ
+	let contextBuilder : %∞
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x258b4000fc990 (0xb4000fc990) in binary!
-	0x2e298  @objc EndOfArticleModule.(null) <stripped>
-WARNING: couldn't find address 0x2e0fc000fb7d8 (0xfc000fb7d8) in binary!
+WARNING: couldn't find address 0x2638400103d38 (0x38400103d38) in binary!
+	0x2eb88  @objc EndOfArticleModule.(null) <stripped>
+WARNING: couldn't find address 0x2e9dc00102b38 (0x1dc00102b38) in binary!
 	0x28000000c  @objc EndOfArticleModule.(null) <stripped>
-WARNING: couldn't find address 0x37a94000fc560 (0x294000fc560) in binary!
-	0x37a88  @objc EndOfArticleModule.(null) <stripped>
+WARNING: couldn't find address 0x385b4001038f0 (0x5b4001038f0) in binary!
+	0x385a8  @objc EndOfArticleModule.(null) <stripped>
 
 	// Swift methods
  }
@@ -2274,7 +2337,7 @@ WARNING: couldn't find address 0x37a94000fc560 (0x294000fc560) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let assetHandleFactory : ıº
+	let assetHandleFactory : ±æ
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType
 
 	// Swift methods
@@ -2299,7 +2362,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let issueArticleService : IssueArticleServiceType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let personalizationService : 1∂
+	let personalizationService : Â∑
 
 	// Swift methods
  }
@@ -2323,22 +2386,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// Swift methods
  }
 
  class NewsArticles.IssueActivityItemsConfiguration : UIActivityItemsConfiguration /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x37a94000fc560 (0x294000fc560) in binary!
-	0x37a88  @objc IssueActivityItemsConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x385b4001038f0 (0x5b4001038f0) in binary!
+	0x385a8  @objc IssueActivityItemsConfiguration.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe2f990  @objc IssueActivityItemsConfiguration.(null) <stripped>
+	0xffe25360  @objc IssueActivityItemsConfiguration.(null) <stripped>
  }
 
  class NewsArticles.PDFReplicaAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e254000fbf78 (0x254000fbf78) in binary!
+WARNING: couldn't find address 0x2eb44001032d8 (0x344001032d8) in binary!
 	0x18000000c  @objc PDFReplicaAssembly.(null) <stripped>
  }
 
@@ -2354,7 +2417,7 @@ WARNING: couldn't find address 0x2e254000fbf78 (0x254000fbf78) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bannerAd : ´
+	let bannerAd : [¨
 	let duration : Double
  }
 
@@ -2364,7 +2427,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsArticles.InterstitialAdAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e224000fbf48 (0x224000fbf48) in binary!
+WARNING: couldn't find address 0x2eb14001032a8 (0x314001032a8) in binary!
 	0x18000000c  @objc InterstitialAdAssembly.(null) <stripped>
  }
 
@@ -2386,39 +2449,39 @@ WARNING: couldn't find address 0x2e224000fbf48 (0x224000fbf48) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commandCenter : õö
+	let commandCenter : ªõ
 	let shareLinkProvider : ShareLinkProviderType
 	let shareLinkTextProvider : MailShareLinkTextProviderType
 
 	// Swift methods
-	0x35d30  class func SharingActivityItemFactory.__allocating_init(commandCenter:shareLinkProvider:shareLinkTextProvider:) // init 
+	0x373a0  class func SharingActivityItemFactory.__allocating_init(commandCenter:shareLinkProvider:shareLinkTextProvider:) // init 
  }
 
  class NewsArticles.ArticleAdLayoutProcessor : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bannerRequestManager : ©Æ // +0x8 (0x8)
+	let bannerRequestManager : e∞ // +0x8 (0x8)
 	let bannerAdFactory : ArticleBannerAdFactoryType // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let prerollRequestManager : }ß // +0x38 (0x8)
+	let prerollRequestManager : ≈® // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let prerollRequestStore : ù¶ // +0x40 (0x8)
+	let prerollRequestStore : Âß // +0x40 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let prerollJournal : Û© // +0x48 (0x8)
+	let prerollJournal : ;´ // +0x48 (0x8)
 	let documentControllerProvider : SXDocumentControllerProvider // +0x50 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutEnvironmentProvider : }© // +0x58 (0x8)
+	let layoutEnvironmentProvider : ≈™ // +0x58 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var layoutEnvironment : Ø® // +0x0 (0x0)
+	var layoutEnvironment : ˜© // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2af54000fb7a8 (0x754000fb7a8) in binary!
-	0x2e1e8  @objc ArticleAdLayoutProcessor.(null) <stripped>
-WARNING: couldn't find address 0x2e04c000fb728 (0x4c000fb728) in binary!
+WARNING: couldn't find address 0x2b7e400102b08 (0x7e400102b08) in binary!
+	0x2ead8  @objc ArticleAdLayoutProcessor.(null) <stripped>
+WARNING: couldn't find address 0x2e92c00102a88 (0x12c00102a88) in binary!
 	0x28000000c  @objc ArticleAdLayoutProcessor.(null) <stripped>
-WARNING: couldn't find address 0x2e1c4000fbee8 (0x1c4000fbee8) in binary!
-	0x2e028  @objc ArticleAdLayoutProcessor.(null) <stripped>
+WARNING: couldn't find address 0x2eab400103248 (0x2b400103248) in binary!
+	0x2e908  @objc ArticleAdLayoutProcessor.(null) <stripped>
 
 	// Swift methods
  }
@@ -2438,10 +2501,10 @@ WARNING: couldn't find address 0x2e1c4000fbee8 (0x1c4000fbee8) in binary!
 	var onSaveObservers : [String : [()]]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e1c4000fbee8 (0x1c4000fbee8) in binary!
-	0x2e028  @objc ReadingListObserver.(null) <stripped>
+WARNING: couldn't find address 0x2eab400103248 (0x2b400103248) in binary!
+	0x2e908  @objc ReadingListObserver.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe35f00  @objc ReadingListObserver.(null) <stripped>
+	0xffe2b7a0  @objc ReadingListObserver.(null) <stripped>
 
 	// Swift methods
  }
@@ -2450,7 +2513,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let requestManager : ©Æ // +0x10 (0x8)
+	let requestManager : e∞ // +0x10 (0x8)
 	let bannerAdFactory : ArticleBannerAdFactoryType // +0x18 (0x28)
 	let documentControllerProvider : SXDocumentControllerProvider // +0x40 (0x8)
 	let layoutBlueprint : SXLayoutBlueprint // +0x48 (0x8)
@@ -2474,7 +2537,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 
 	// Swift methods
  }
@@ -2499,12 +2562,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let page : ArticleViewerPage
 	let secondaryPage : ArticleViewerPage
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pageVisibilityFactor : Yò
+	let pageVisibilityFactor : Èô
 	let scrollDirection : Direction
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let audioButtonLocation : Yò
+	let audioButtonLocation : Èô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pageWidth : Yò
+	let pageWidth : Èô
  }
 
  class NewsArticles.ArticleInteractor : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleInteractorType {
@@ -2514,36 +2577,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var coordinator : ArticleCoordinatorType
 	var article : FCArticle?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleAccess : ië
+	let articleAccess : yí
 	let dataManager : ArticleDataManagerType
 	let readingListObserver : ReadingListObserverType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallFactory : ı§
+	let paywallFactory : «¶
 	let previewManager : ArticlePreviewManagerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contextBuilder : iÆ
+	let contextBuilder : %∞
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventManager : ≥è
+	let eventManager : ”ê
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offerManager : ≈ë
+	let offerManager : ’í
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articlePaywallTypeProvider : ë
+	let articlePaywallTypeProvider : -í
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articlePurchaseOffersProvider : Öí
+	let articlePurchaseOffersProvider : ïì
 	let loadingIndicatorProvider : CoverViewProviderType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var articleLoadingStateMachine : •è
+	var articleLoadingStateMachine : ≈ê
 	let errorMessageFactory : NUErrorMessageFactory
 	let loggingIdentifier : String
 
 	// Swift methods
- }
-
- enum NewsArticles.Event {
-
-	// Properties
-	case startedLoading  
-	case articleDidLoad  
  }
 
  enum NewsArticles.OpenChannelDestination {
@@ -2555,18 +2611,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsArticles.PDFReplicaViewerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e18c000fbeb0 (0x18c000fbeb0) in binary!
+WARNING: couldn't find address 0x2ea7c00103210 (0x27c00103210) in binary!
 	0x18000000c  @objc PDFReplicaViewerAssembly.(null) <stripped>
  }
 
  class NewsArticles.BlueprintArticleViewerToken : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x483b0  class func BlueprintArticleViewerToken.__allocating_init() // init 
+	0x48f40  class func BlueprintArticleViewerToken.__allocating_init() // init 
  }
 
  class NewsArticles.InterstitialAdPreviewAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e15c000fbe80 (0x15c000fbe80) in binary!
+WARNING: couldn't find address 0x2ea4c001031e0 (0x24c001031e0) in binary!
 	0x18000000c  @objc InterstitialAdPreviewAssembly.(null) <stripped>
  }
 
@@ -2576,7 +2632,7 @@ WARNING: couldn't find address 0x2e15c000fbe80 (0x15c000fbe80) in binary!
 	let supportedActivityTypes : SharingIssueActivity
 
 	// Swift methods
-	0x49a60  class func SharingIssueActivityTypeProvider.__allocating_init(supportedActivityTypes:) // init 
+	0x4a5f0  class func SharingIssueActivityTypeProvider.__allocating_init(supportedActivityTypes:) // init 
  }
 
  class NewsArticles.RemoveFromHistoryCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2594,15 +2650,15 @@ WARNING: couldn't find address 0x2e15c000fbe80 (0x15c000fbe80) in binary!
 	let viewingSessionID : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2573c000fb6e8 (0x73c000fb6e8) in binary!
-	0x2e120  @objc ArticleFooterContext.(null) <stripped>
-WARNING: couldn't find address 0x2df84000fb660 (0x784000fb660) in binary!
+WARNING: couldn't find address 0x2620c00102a48 (0x20c00102a48) in binary!
+	0x2ea10  @objc ArticleFooterContext.(null) <stripped>
+WARNING: couldn't find address 0x2e864001029c0 (0x64001029c0) in binary!
 	0x18000000c  @objc ArticleFooterContext.(null) <stripped>
-WARNING: couldn't find address 0x2e0fc000fbe20 (0xfc000fbe20) in binary!
+WARNING: couldn't find address 0x2e9ec00103180 (0x1ec00103180) in binary!
 	0x18000000c  @objc ArticleFooterContext.(null) <stripped>
 
 	// Swift methods
-	0x49c50  class func ArticleFooterContext.__allocating_init(headline:viewingSessionID:) // init 
+	0x4a7e0  class func ArticleFooterContext.__allocating_init(headline:viewingSessionID:) // init 
  }
 
  class NewsArticles.BlueprintArticleViewerBlueprintProvider {
@@ -2610,7 +2666,7 @@ WARNING: couldn't find address 0x2e0fc000fbe20 (0xfc000fbe20) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case feedItem : 	®
+	case feedItem : W©
  }
 
  class NewsArticles.TextSizeControlStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TextSizeControlStylerType {
@@ -2635,7 +2691,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsArticles.IssueViewerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e0fc000fbe20 (0xfc000fbe20) in binary!
+WARNING: couldn't find address 0x2e9ec00103180 (0x1ec00103180) in binary!
 	0x18000000c  @objc IssueViewerAssembly.(null) <stripped>
  }
 
@@ -2643,17 +2699,17 @@ WARNING: couldn't find address 0x2e0fc000fbe20 (0xfc000fbe20) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contextBuilder : iÆ
+	let contextBuilder : %∞
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e0cc000fbdf0 (0xcc000fbdf0) in binary!
-	0x2df30  @objc IssueViewerModule.(null) <stripped>
+WARNING: couldn't find address 0x2e9bc00103150 (0x1bc00103150) in binary!
+	0x2e810  @objc IssueViewerModule.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x66cffe4dbb8  @objc IssueViewerModule.(null) <stripped>
+	0x1ccffe42aa8  @objc IssueViewerModule.(null) <stripped>
 
 	// Swift methods
  }
@@ -2662,7 +2718,7 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pageBlueprintProvider : ï
+	let pageBlueprintProvider : ;ñ
 
 	// Swift methods
  }
@@ -2683,7 +2739,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let purchaseTraits :  empty-list  // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallType : [ç // +0x20
+	let paywallType : yé // +0x20
  }
 
  class NewsArticles.BarButtonItem : NSObject /usr/lib/libobjc.A.dylib {
@@ -2693,16 +2749,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let additionalPageContentInset : UIEdgeInsets
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e0ac000fb670 (0xac000fb670) in binary!
-	0x30400  @objc BarButtonItem.(null) <stripped>
-WARNING: couldn't find address 0x2e094000fbdb8 (0x94000fbdb8) in binary!
-	0x2def8  @objc BarButtonItem.(null) <stripped>
+WARNING: couldn't find address 0x2e99c001029d0 (0x19c001029d0) in binary!
+	0x30d10  @objc BarButtonItem.(null) <stripped>
+WARNING: couldn't find address 0x2e98400103118 (0x18400103118) in binary!
+	0x2e7d8  @objc BarButtonItem.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x604ffe4e050  @objc BarButtonItem.(null) <stripped>
-	0x59cffe4e3b8  @objc BarButtonItem.@¯HâE¿Hã@@Iâ‰HÉ¿HÉ‡I)ƒLâ‰LãsLã{ HâﬂLâˆË™ì˛ˇIâ≈Hç5H3 <stripped>
+	0x164ffe42f40  @objc BarButtonItem.(null) <stripped>
+	0xfcffe432a8  @objc BarButtonItem.HÉ‚I)◊Lâ¸LâˇHâ∆Lâ‚ˇQHÉÏHçΩ0˛ˇˇHçµX˛ˇˇHçïÄ˛ˇˇHãM®MâIâŸˇu¿ˇuàˇu–ˇu†AUˇuòATˇu∏Hã]ÄSHçÖ®˛ˇˇPAWËE“ <stripped>
 
 	// Swift methods
-	0x506f0  class func BarButtonItem.__allocating_init(barButtonItem:additionalPageContentInset:) // init 
+	0x51280  class func BarButtonItem.__allocating_init(barButtonItem:additionalPageContentInset:) // init 
  }
 
  class NewsArticles.SharingArticleImageActivityItemSource : NSObject /usr/lib/libobjc.A.dylib {
@@ -2711,17 +2767,17 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	let headline : FCHeadlineProviding
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x37894000fb608 (0x94000fb608) in binary!
-	0x25678  @objc SharingArticleImageActivityItemSource.(null) <stripped>
-WARNING: couldn't find address 0x2e05c000fbd80 (0x5c000fbd80) in binary!
-	0x2dec0  @objc SharingArticleImageActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x383b400102968 (0x3b400102968) in binary!
+	0x26148  @objc SharingArticleImageActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x2e94c001030e0 (0x14c001030e0) in binary!
+	0x2e7a0  @objc SharingArticleImageActivityItemSource.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe55148  @objc SharingArticleImageActivityItemSource.(null) <stripped>
+	0xffe4a048  @objc SharingArticleImageActivityItemSource.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe55220  @objc SharingArticleImageActivityItemSource.(null) <stripped>
+	0xffe4a120  @objc SharingArticleImageActivityItemSource.(null) <stripped>
 
 	// Swift methods
-	0x50940  class func SharingArticleImageActivityItemSource.__allocating_init(headline:) // init 
+	0x514d0  class func SharingArticleImageActivityItemSource.__allocating_init(headline:) // init 
  }
 
  enum NewsArticles.AudioAction { }
@@ -2731,7 +2787,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	// Properties
 	var delegate : ReportConcernBlueprintViewCellProviderDelegate
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let imageHeadlineViewRenderer : ±ß
+	let imageHeadlineViewRenderer : ©
 
 	// Swift methods
  }
@@ -2742,7 +2798,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let advertisementModel : InterstitialAdModel // +0x0 (0x0)
 	let articlePage : ArticleViewerPage // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tracker : ≈î // +0x0 (0x8)
+	var tracker : ñ // +0x0 (0x8)
 
 	// Swift methods
  }
@@ -2761,7 +2817,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let paidAccessChecker : FCPaidAccessCheckerType // +0x30
 	let readingList : FCReadingList // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedContextFactory : ¡¢ // +0x40
+	let feedContextFactory : § // +0x40
  }
 
  enum NewsArticles.ArticleViewerBlueprint {
@@ -2815,7 +2871,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsArticles.RSSArticleAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e03c000fbd60 (0x3c000fbd60) in binary!
+WARNING: couldn't find address 0x2e92c001030c0 (0x12c001030c0) in binary!
 	0x18000000c  @objc RSSArticleAssembly.(null) <stripped>
  }
 
@@ -2825,9 +2881,9 @@ WARNING: couldn't find address 0x2e03c000fbd60 (0x3c000fbd60) in binary!
 	let backgroundColor : UIColor
 	let toolbarTint : UIColor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let accessibilityInterfaceStyleIntent : }ç
+	let accessibilityInterfaceStyleIntent : õé
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fullscreenTransitionCoverStyle : oç
+	let fullscreenTransitionCoverStyle : çé
 	let buttonHighlightColor : UIColor
  }
 
@@ -2854,7 +2910,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let layoutAttributesFactory : ToolbarIssueCoverViewLayoutAttributesFactoryType
 	let tableOfContentsModule : IssueTableOfContentsModuleType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let modalViewControllerFactory : Áó
+	let modalViewControllerFactory : 5ô
 
 	// Swift methods
  }
@@ -2895,18 +2951,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let dataManager : ArticleViewerDataManagerType
 	let blueprintProvider : ArticleViewerBlueprintProviderType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pageBlueprintManager : ï
+	let pageBlueprintManager : ;ñ
 	let pageBlueprintFactory : ArticleViewerPageBlueprintFactoryType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let followingManager : £
+	let followingManager : Õ§
 	var insertAdvertisementBlueprintModifier : InsertAdvertisementPageBlueprintModifier
 	let pageTracker : ArticleViewerPageTrackerType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e00c000fbd30 (0xc000fbd30) in binary!
-	0x2de70  @objc ArticleViewerInteractor.(null) <stripped>
+WARNING: couldn't find address 0x2e8fc00103090 (0xfc00103090) in binary!
+	0x2e750  @objc ArticleViewerInteractor.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe5a7f8  @objc ArticleViewerInteractor.(null) <stripped>
+	0xffe4f6f8  @objc ArticleViewerInteractor.(null) <stripped>
+
+	// Swift methods
+ }
+
+ class NewsArticles.ReloadArticleCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let previewManager : ArticlePreviewManagerType
 
 	// Swift methods
  }
@@ -2915,7 +2979,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// Swift methods
  }
@@ -2924,18 +2988,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewController : Yã
+	let viewController : qå
 	let issue : FCIssue
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x377f4000fc528 (0x7f4000fc528) in binary!
-	0x2de38  @objc ANFIssueTableOfContentsViewController.(null) <stripped>
-WARNING: couldn't find address 0x255cc000fc008 (0x5cc000fc008) in binary!
-	0x2de20  @objc ANFIssueTableOfContentsViewController.(null) <stripped>
+WARNING: couldn't find address 0x38314001038c0 (0x314001038c0) in binary!
+	0x2e718  @objc ANFIssueTableOfContentsViewController.(null) <stripped>
+WARNING: couldn't find address 0x2609c00103368 (0x9c00103368) in binary!
+	0x2e700  @objc ANFIssueTableOfContentsViewController.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe5d188  @objc ANFIssueTableOfContentsViewController.(null) <stripped>
+	0xffe52318  @objc ANFIssueTableOfContentsViewController.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe5d490  @objc ANFIssueTableOfContentsViewController.(null) <stripped>
+	0xffe52620  @objc ANFIssueTableOfContentsViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -2946,7 +3010,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let currentlyPlaying : PlayableArticleInfo
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2df84000fcf20 (0x784000fcf20) in binary!
+WARNING: couldn't find address 0x2e874001042d0 (0x74001042d0) in binary!
 	0x18000000c  @objc NoPlayingAudioInfoProvider.(null) <stripped>
 
 	// Swift methods
@@ -2982,7 +3046,7 @@ WARNING: couldn't find address 0x2df84000fcf20 (0x784000fcf20) in binary!
 	var controller : weak UIViewController?
 	let router : RouterType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contextBuilder : iÆ
+	let contextBuilder : %∞
 
 	// Swift methods
  }
@@ -2999,7 +3063,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cover : 9ü
+	let cover : â†
 	let issue : FCIssue
 	let presentationContext : IssueContentPresentationContext
  }
@@ -3017,21 +3081,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var onCancel : ()?
 
 	// Swift methods
-	0x62670  class func CancelHandler.__allocating_init() // init 
+	0x63470  class func CancelHandler.__allocating_init() // init 
  }
 
  class NewsArticles.ManagerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2df6c000fbc90 (0x76c000fbc90) in binary!
+WARNING: couldn't find address 0x2e85c00102ff0 (0x5c00102ff0) in binary!
 	0x18000000c  @objc ManagerAssembly.(null) <stripped>
  }
 
  class NewsArticles.ProxyConfiguration : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2df3c000fb510 (0x73c000fb510) in binary!
-	0x2df30  @objc ProxyConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x2e82c00102870 (0x2c00102870) in binary!
+	0x2e820  @objc ProxyConfiguration.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x434ffe61188  @objc ProxyConfiguration.(null) <stripped>
+	0x794ffe562b8  @objc ProxyConfiguration.(null) <stripped>
  }
 
  class NewsArticles.AdComponentState : NSObject /usr/lib/libobjc.A.dylib {
@@ -3039,14 +3103,14 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	// Properties
 	let identifier : String // +0x8 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bannerState : πñ // +0x27c000 (0x0)
+	let bannerState : ò // +0x289000 (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2df1c000fbc50 (0x71c000fbc50) in binary!
-	0x2df10  @objc AdComponentState.(null) <stripped>
-WARNING: couldn't find address 0x2dd74000fb450 (0x574000fb450) in binary!
+WARNING: couldn't find address 0x2e80c00102fb0 (0xc00102fb0) in binary!
+	0x2e800  @objc AdComponentState.(null) <stripped>
+WARNING: couldn't find address 0x2e654001027b0 (0x654001027b0) in binary!
 	0x18000000c  @objc AdComponentState.(null) <stripped>
-WARNING: couldn't find address 0x2deec000fbc10 (0x6ec000fbc10) in binary!
+WARNING: couldn't find address 0x2e7dc00102f70 (0x7dc00102f70) in binary!
 	0x18000000c  @objc AdComponentState.(null) <stripped>
 
 	// Swift methods
@@ -3061,7 +3125,7 @@ WARNING: couldn't find address 0x2deec000fbc10 (0x6ec000fbc10) in binary!
 
  class NewsArticles.StylerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2deec000fbc10 (0x6ec000fbc10) in binary!
+WARNING: couldn't find address 0x2e7dc00102f70 (0x7dc00102f70) in binary!
 	0x18000000c  @objc StylerAssembly.(null) <stripped>
  }
 
@@ -3074,12 +3138,12 @@ WARNING: couldn't find address 0x2deec000fbc10 (0x6ec000fbc10) in binary!
 
  class NewsArticles.MessagePresenter : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x33954000fb498 (0x154000fb498) in binary!
-	0x256c0  @objc MessagePresenter.(null) <stripped>
-WARNING: couldn't find address 0x2dea4000fbbc8 (0x6a4000fbbc8) in binary!
+WARNING: couldn't find address 0x343f4001027f8 (0x3f4001027f8) in binary!
+	0x26190  @objc MessagePresenter.(null) <stripped>
+WARNING: couldn't find address 0x2e79400102f28 (0x79400102f28) in binary!
 	0x28000000c  @objc MessagePresenter.(null) <stripped>
-WARNING: couldn't find address 0x2de8c000fbbb0 (0x68c000fbbb0) in binary!
-	0x2dcf0  @objc MessagePresenter.(null) <stripped>
+WARNING: couldn't find address 0x2e77c00102f10 (0x77c00102f10) in binary!
+	0x2e5d0  @objc MessagePresenter.(null) <stripped>
 
 	// Swift methods
  }
@@ -3114,13 +3178,13 @@ WARNING: couldn't find address 0x2de8c000fbbb0 (0x68c000fbbb0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2de8c000fbbb0 (0x68c000fbbb0) in binary!
-	0x2dcf0  @objc RSSArticleModule.(null) <stripped>
+WARNING: couldn't find address 0x2e77c00102f10 (0x77c00102f10) in binary!
+	0x2e5d0  @objc RSSArticleModule.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x44cffe661d8  @objc RSSArticleModule.(null) <stripped>
+	0x7acffe5b358  @objc RSSArticleModule.(null) <stripped>
 
 	// Swift methods
  }
@@ -3141,13 +3205,13 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	let comments : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3768c000fc3c0 (0x68c000fc3c0) in binary!
-	0x30fa0  @objc ReportConcernCommand.(null) <stripped>
-WARNING: couldn't find address 0x2de54000fbb78 (0x654000fbb78) in binary!
-	0x2dcb8  @objc ReportConcernCommand.(null) <stripped>
+WARNING: couldn't find address 0x381ac00103758 (0x1ac00103758) in binary!
+	0x31930  @objc ReportConcernCommand.(null) <stripped>
+WARNING: couldn't find address 0x2e74400102ed8 (0x74400102ed8) in binary!
+	0x2e598  @objc ReportConcernCommand.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x34cffe66cd0  @objc ReportConcernCommand.(null) <stripped>
-	0xffe66db8  @objc ReportConcernCommand.ã~ËÚ <stripped>
+	0x6acffe5be50  @objc ReportConcernCommand.(null) <stripped>
+	0xffe5bf38  @objc ReportConcernCommand.â˚Hã>Hâ;LãvLâsËs∏ <stripped>
 
 	// Swift methods
  }
@@ -3174,11 +3238,11 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let assemblies : [NFAssembly]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2de34000fb428 (0x634000fb428) in binary!
-	0x2de28  @objc Assembly.(null) <stripped>
-WARNING: couldn't find address 0x2dc8c000fb368 (0x48c000fb368) in binary!
+WARNING: couldn't find address 0x2e72400102788 (0x72400102788) in binary!
+	0x2e718  @objc Assembly.(null) <stripped>
+WARNING: couldn't find address 0x2e56c001026c8 (0x56c001026c8) in binary!
 	0x18000000c  @objc Assembly.(null) <stripped>
-WARNING: couldn't find address 0x2de04000fbb28 (0x604000fbb28) in binary!
+WARNING: couldn't find address 0x2e6f400102e88 (0x6f400102e88) in binary!
 	0x18000000c  @objc Assembly.(null) <stripped>
  }
 
@@ -3201,21 +3265,21 @@ WARNING: couldn't find address 0x2de04000fbb28 (0x604000fbb28) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case gradient : é
+	case gradient : Wè
  }
 
  enum NewsArticles.Footer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case empty : yû
+	case empty : —ü
  }
 
  enum NewsArticles.Header {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case empty : yû
+	case empty : —ü
 	case publisher : EndOfArticlePublisherViewModel
 	case title : EndOfArticleTitleViewModel
  }
@@ -3232,7 +3296,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsArticles.SubscriptionAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2de04000fbb28 (0x604000fbb28) in binary!
+WARNING: couldn't find address 0x2e6f400102e88 (0x6f400102e88) in binary!
 	0x18000000c  @objc SubscriptionAssembly.(null) <stripped>
  }
 
@@ -3376,7 +3440,7 @@ WARNING: couldn't find address 0x2de04000fbb28 (0x604000fbb28) in binary!
 
  class NewsArticles.SharingAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2ddd4000fbaf8 (0x5d4000fbaf8) in binary!
+WARNING: couldn't find address 0x2e6c400102e58 (0x6c400102e58) in binary!
 	0x18000000c  @objc SharingAssembly.(null) <stripped>
  }
 
@@ -3390,7 +3454,7 @@ WARNING: couldn't find address 0x2ddd4000fbaf8 (0x5d4000fbaf8) in binary!
 
  class NewsArticles.AdComponentAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2dda4000fbac8 (0x5a4000fbac8) in binary!
+WARNING: couldn't find address 0x2e69400102e28 (0x69400102e28) in binary!
 	0x18000000c  @objc AdComponentAssembly.(null) <stripped>
  }
 
@@ -3416,16 +3480,16 @@ WARNING: couldn't find address 0x2dda4000fbac8 (0x5a4000fbac8) in binary!
 
  class NewsArticles.EmptyArticleViewerFeatureTransitionAnimator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleViewerFeatureAnimatedTransitionType {
 	// Swift methods
-	0x74290  func <stripped> // method 
+	0x75380  func <stripped> // method 
  }
 
  class NewsArticles.PDFReplicaViewerPageBlueprintFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PDFReplicaViewerPageBlueprintFactoryType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 
 	// Swift methods
  }
@@ -3434,11 +3498,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contextBuilder : iÆ
+	let contextBuilder : %∞
 
 	// Swift methods
  }
@@ -3447,6 +3511,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	let readingHistory : FCReadingHistory
+
+	// Swift methods
+ }
+
+ struct NewsArticles.HistoryState {
+
+	// Properties
+	let rawValue : Int // +0x0
+ }
+
+ class NewsArticles.ReloadArticleViewerFeatureProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let styler : BaseStylerType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let commandCenter : ªõ
 
 	// Swift methods
  }
@@ -3475,13 +3555,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let videoPlayerViewController : unowned SXVideoPlayerViewController
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2dd74000fb370 (0x574000fb370) in binary!
+WARNING: couldn't find address 0x2e664001026d0 (0x664001026d0) in binary!
 	0x38000000c  @objc VideoAdInteractionPresentationHandler.(null) <stripped>
 
 	// Swift methods
  }
 
  class NewsArticles.ZoomCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
+ class NewsArticles.CampaignLandingPageEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, CampaignLandingPageEventHandlerType {
+
+	// Properties
+	var delegate : CampaignLandingPageEventHandlerTypeDelegate
+	let interactor : CampaignLandingPageInteractorType
+	let router : CampaignLandingPageRouterType
+	let tracker : CampaignLandingPageTrackerType
+
 	// Swift methods
  }
 
@@ -3505,20 +3596,20 @@ WARNING: couldn't find address 0x2dd74000fb370 (0x574000fb370) in binary!
 	var styler : TableOfContentsStylerType
 	let eventHandler : TableOfContentsEventHandlerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : ßÑ
+	let blueprintViewController : €Ñ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchasePresenter : 	|
+	let purchasePresenter : |
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var modalHostStyle : Òy
+	var modalHostStyle : z
 	var pageIdentifierToDisplay : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3757c000fc2b0 (0x57c000fc2b0) in binary!
-	0x25360  @objc TableOfContentsViewController.(null) <stripped>
-WARNING: couldn't find address 0x2dbb4000fb290 (0x3b4000fb290) in binary!
+WARNING: couldn't find address 0x3809c00103648 (0x9c00103648) in binary!
+	0x25e30  @objc TableOfContentsViewController.(null) <stripped>
+WARNING: couldn't find address 0x2e494001025f0 (0x494001025f0) in binary!
 	0x48000000c  @objc TableOfContentsViewController.(null) <stripped>
-WARNING: couldn't find address 0x2db9c000fbd58 (0x39c000fbd58) in binary!
-	0x2db90  @objc TableOfContentsViewController.(null) <stripped>
+WARNING: couldn't find address 0x2e47c001030b8 (0x47c001030b8) in binary!
+	0x2e470  @objc TableOfContentsViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -3556,9 +3647,9 @@ WARNING: couldn't find address 0x2db9c000fbd58 (0x39c000fbd58) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 
 	// Swift methods
  }
@@ -3575,7 +3666,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var delegate : EndOfArticleBlueprintViewCellProviderDelegate
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedItemRenderer : £ê
+	let feedItemRenderer : ﬂê
 
 	// Swift methods
  }
@@ -3586,12 +3677,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let titleLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2d1f4000fb838 (0x1f4000fb838) in binary!
-	0x37508  @objc EndOfArticleTitleView.(null) <stripped>
-WARNING: couldn't find address 0x2db4c000fb228 (0x34c000fb228) in binary!
+WARNING: couldn't find address 0x2dad400102b98 (0x2d400102b98) in binary!
+	0x38028  @objc EndOfArticleTitleView.(null) <stripped>
+WARNING: couldn't find address 0x2e42c00102588 (0x42c00102588) in binary!
 	0x48000000c  @objc EndOfArticleTitleView.(null) <stripped>
-WARNING: couldn't find address 0x3375c000fb550 (0x75c000fb550) in binary!
-	0x3fa68  @objc EndOfArticleTitleView.(null) <stripped>
+WARNING: couldn't find address 0x341fc001028b0 (0x1fc001028b0) in binary!
+	0x40c68  @objc EndOfArticleTitleView.(null) <stripped>
  }
 
  class NewsArticles.CopyArticleCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3607,7 +3698,18 @@ WARNING: couldn't find address 0x3375c000fb550 (0x75c000fb550) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pageBlueprintProvider : ï
+	let pageBlueprintProvider : ;ñ
+
+	// Swift methods
+ }
+
+ class NewsArticles.CampaignLandingPageModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, CampaignLandingPageModuleType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resolver : õ
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : ñ
 
 	// Swift methods
  }
@@ -3616,21 +3718,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adManager : Cä
+	let adManager : 7ä
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adRequestManager : }ß
+	let adRequestManager : ≈®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adRequestStore : ù¶
+	let adRequestStore : Âß
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let journal : Û©
+	let journal : ;´
 	let appConfigurationManager : FCNewsAppConfigurationManager
 	let tracker : VideoAdTrackerType
+	let prerollAdRequester : PrerollAdRequester
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2dc8c000fb9b0 (0x48c000fb9b0) in binary!
-	0x2daf0  @objc VideoAdProviderFactory.(null) <stripped>
+WARNING: couldn't find address 0x2e57c00102d10 (0x57c00102d10) in binary!
+	0x2e3d0  @objc VideoAdProviderFactory.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe7b238  @objc VideoAdProviderFactory.(null) <stripped>
+	0xffe71c48  @objc VideoAdProviderFactory.(null) <stripped>
 
 	// Swift methods
  }
@@ -3647,7 +3750,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let toolbarManager : ’¨
+	let toolbarManager : ΩÆ
 	var toolbarItemProvider : weak Swift.AnyObject?
 	let renderer : ArticleViewerTitleViewRendererType
 	let nextHeadline : FCHeadlineProviding?
@@ -3665,7 +3768,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : EndOfArticlePublisherViewStylerType
 	let imageCache : TSImageCacheType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commandCenter : õö
+	let commandCenter : ªõ
 
 	// Swift methods
  }
@@ -3674,16 +3777,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case deeplink : -f
+	case deeplink : ke
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case weblink : -f
+	case weblink : ke
 	case article : ArticleNavigationAction
 	case articles : ArticleNavigationAction
 	case issue : (identifier: String)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case applenewslink : -f
+	case applenewslink : ke
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case applenewssubscriptionlink : -f
+	case weboptinlink : ke
  }
 
  class NewsArticles.VideoAdProviderMetricsHelper : NSObject /usr/lib/libobjc.A.dylib {
@@ -3694,10 +3797,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let mediaMetricsHelper : APPCMediaMetricsHelping?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2dc54000fb978 (0x454000fb978) in binary!
-	0x2dab8  @objc VideoAdProviderMetricsHelper.(null) <stripped>
+WARNING: couldn't find address 0x2e54400102cd8 (0x54400102cd8) in binary!
+	0x2e398  @objc VideoAdProviderMetricsHelper.(null) <stripped>
 WARNING: couldn't find address 0xd8000000c (0xd8000000c) in binary!
-	0x4dcffe7f290  @objc VideoAdProviderMetricsHelper.(null) <stripped>
+	0x3cffe75bb0  @objc VideoAdProviderMetricsHelper.(null) <stripped>
 
 	// Swift methods
  }
@@ -3710,31 +3813,31 @@ WARNING: couldn't find address 0xd8000000c (0xd8000000c) in binary!
 	let observers : NSHashTable<NUANFDebugSettingsObserver>
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x33624000fb190 (0x624000fb190) in binary!
-	0x3f930  @objc ANFDebugSettingsProvider.(null) <stripped>
-WARNING: couldn't find address 0x3360c000fb188 (0x60c000fb188) in binary!
-	0x3f918  @objc ANFDebugSettingsProvider.(null) <stripped>
-WARNING: couldn't find address 0x2db5c000fb880 (0x35c000fb880) in binary!
-	0x2d9c0  @objc ANFDebugSettingsProvider.(null) <stripped>
+WARNING: couldn't find address 0x340c4001024f0 (0xc4001024f0) in binary!
+	0x40b30  @objc ANFDebugSettingsProvider.(null) <stripped>
+WARNING: couldn't find address 0x340ac001024e8 (0xac001024e8) in binary!
+	0x40b18  @objc ANFDebugSettingsProvider.(null) <stripped>
+WARNING: couldn't find address 0x2e44c00102be0 (0x44c00102be0) in binary!
+	0x2e2a0  @objc ANFDebugSettingsProvider.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x444ffe7f848  @objc ANFDebugSettingsProvider.(null) <stripped>
-	0x31c000fb140  @objc ANFDebugSettingsProvider.Ÿˇu¿ˇuàˇu–ˇu†AUˇuòATˇu∏Hã]ÄSHçÖ®˛ˇˇPAWËµU <stripped>
-WARNING: couldn't find address 0xfb834ffe7f9a8 (0x34ffe7f9a8) in binary!
-	0x174000fb050  @objc ANFDebugSettingsProvider.(null) <stripped>
+	0x7a4ffe76168  @objc ANFDebugSettingsProvider.(null) <stripped>
+	0x40c001024a0  @objc ANFDebugSettingsProvider. <stripped>
+WARNING: couldn't find address 0x102b94ffe762c8 (0x394ffe762c8) in binary!
+	0x254001023b0  @objc ANFDebugSettingsProvider.(null) <stripped>
  }
 
  class NewsArticles.TextSizeControlModule : NSObject /usr/lib/libobjc.A.dylib, TextSizeControlModuleType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2db1c000fb140 (0x31c000fb140) in binary!
-	0x2db10  @objc TextSizeControlModule.(null) <stripped>
-WARNING: couldn't find address 0x2d974000fb050 (0x174000fb050) in binary!
+WARNING: couldn't find address 0x2e40c001024a0 (0x40c001024a0) in binary!
+	0x2e400  @objc TextSizeControlModule.(null) <stripped>
+WARNING: couldn't find address 0x2e254001023b0 (0x254001023b0) in binary!
 	0x18000000c  @objc TextSizeControlModule.(null) <stripped>
-WARNING: couldn't find address 0x2daec000fb810 (0x2ec000fb810) in binary!
+WARNING: couldn't find address 0x2e3dc00102b70 (0x3dc00102b70) in binary!
 	0x18000000c  @objc TextSizeControlModule.(null) <stripped>
 
 	// Swift methods
@@ -3742,7 +3845,7 @@ WARNING: couldn't find address 0x2daec000fb810 (0x2ec000fb810) in binary!
 
  class NewsArticles.AnalyticsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2daec000fb810 (0x2ec000fb810) in binary!
+WARNING: couldn't find address 0x2e3dc00102b70 (0x3dc00102b70) in binary!
 	0x18000000c  @objc AnalyticsAssembly.(null) <stripped>
  }
 
@@ -3750,29 +3853,29 @@ WARNING: couldn't find address 0x2daec000fb810 (0x2ec000fb810) in binary!
 
 	// Properties
 	let headline : FCHeadlineProviding
-	let purchaseProvider : FCPurchaseProviderType
+	let paidAccessChecker : FCPaidAccessCheckerType
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bundlePurchasePrewarmer : Öv
+	let bundlePurchasePrewarmer : Yv
 	let observers : NSHashTable<SXSubscriptionStatusObserving>
 	var bundleSubscriptionStatus : SXSubscriptionStatus
 	var channelSubscriptionStatus : SXSubscriptionStatus
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x30fdc000fb0e8 (0x7dc000fb0e8) in binary!
-	0x3363e  @objc SubscriptionStatusProvider.(null) <stripped>
-WARNING: couldn't find address 0x30fc4000fb0e0 (0x7c4000fb0e0) in binary!
-	0x33626  @objc SubscriptionStatusProvider.(null) <stripped>
-WARNING: couldn't find address 0x2529c000fc290 (0x29c000fc290) in binary!
-	0x2da80  @objc SubscriptionStatusProvider.(null) <stripped>
-WARNING: couldn't find address 0x2d8e4000fafc0 (0xe4000fafc0) in binary!
+WARNING: couldn't find address 0x3196c00102448 (0x16c00102448) in binary!
+	0x35c98  @objc SubscriptionStatusProvider.(null) <stripped>
+WARNING: couldn't find address 0x3195400102440 (0x15400102440) in binary!
+	0x35c80  @objc SubscriptionStatusProvider.(null) <stripped>
+WARNING: couldn't find address 0x25d6c00103638 (0x56c00103638) in binary!
+	0x2e370  @objc SubscriptionStatusProvider.(null) <stripped>
+WARNING: couldn't find address 0x2e1c400102320 (0x1c400102320) in binary!
 	0x48000000c  @objc SubscriptionStatusProvider.(null) <stripped>
-WARNING: couldn't find address 0x2526c000fb378 (0x26c000fb378) in binary!
-	0x25260  @objc SubscriptionStatusProvider.(null) <stripped>
-WARNING: couldn't find address 0x25254000fc258 (0x254000fc258) in binary!
-	0x25248  @objc SubscriptionStatusProvider.(null) <stripped>
+WARNING: couldn't find address 0x25d3c001026d8 (0x53c001026d8) in binary!
+	0x25d30  @objc SubscriptionStatusProvider.(null) <stripped>
+WARNING: couldn't find address 0x25d2400103600 (0x52400103600) in binary!
+	0x25d18  @objc SubscriptionStatusProvider.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x764ffe83110  @objc SubscriptionStatusProvider.(null) <stripped>
+	0x2c4ffe79bf0  @objc SubscriptionStatusProvider.(null) <stripped>
 
 	// Swift methods
  }
@@ -3782,9 +3885,9 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	// Properties
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let createdDate : gd
+	let createdDate : √c
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let endDate : ad
+	let endDate : Ωc
 	let trigger : ArticleSessionTrigger
  }
 
@@ -3801,7 +3904,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pageSession : ≠y
+	let pageSession : ëy
 	let contentIdentifier : String
 	let placementIdentifier : String
  }
@@ -3825,15 +3928,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let observers : NSHashTable<SXDebugLayoutOptionsObserving>
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2da24000fb748 (0x224000fb748) in binary!
-	0x2d888  @objc ANFDebugLayoutOptionsProvider.(null) <stripped>
+WARNING: couldn't find address 0x2e31400102aa8 (0x31400102aa8) in binary!
+	0x2e168  @objc ANFDebugLayoutOptionsProvider.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x30cffe83290  @objc ANFDebugLayoutOptionsProvider.(null) <stripped>
+	0x66cffe79d70  @objc ANFDebugLayoutOptionsProvider.(null) <stripped>
+ }
+
+ class NewsArticles.CampaignLandingPageTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib, CampaignLandingPageTrackerType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : ñ
+
+	// Swift methods
  }
 
  class NewsArticles.CommandAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2d9b4000fb6d8 (0x1b4000fb6d8) in binary!
+WARNING: couldn't find address 0x2e2a400102a38 (0x2a400102a38) in binary!
 	0x18000000c  @objc CommandAssembly.(null) <stripped>
  }
 
@@ -3841,12 +3953,12 @@ WARNING: couldn't find address 0x2d9b4000fb6d8 (0x1b4000fb6d8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedLayoutSolver : ã
+	let feedLayoutSolver : Èä
 	let baseStyler : BaseStylerType
 	let publisherViewLayoutAttributesFactory : EndOfArticlePublisherViewLayoutAttributesFactoryType
 	let titleViewLayoutAttributesFactory : EndOfArticleTitleViewLayoutAttributesFactoryType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featureAvailability : #ø
+	let featureAvailability : -¡
 
 	// Swift methods
  }
@@ -3858,20 +3970,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var itemTitle : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x371a4000faf18 (0x1a4000faf18) in binary!
-	0x24f88  @objc SharingArticleTextActivityItemSource.(null) <stripped>
-WARNING: couldn't find address 0x24f7c000fafb8 (0x77c000fafb8) in binary!
-	0x24f70  @objc SharingArticleTextActivityItemSource.(null) <stripped>
-WARNING: couldn't find address 0x2d954000fb678 (0x154000fb678) in binary!
-	0x2d7b8  @objc SharingArticleTextActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x37cc400102278 (0x4c400102278) in binary!
+	0x25a58  @objc SharingArticleTextActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x25a4c00102318 (0x24c00102318) in binary!
+	0x25a40  @objc SharingArticleTextActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x2e244001029d8 (0x244001029d8) in binary!
+	0x2e098  @objc SharingArticleTextActivityItemSource.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x674ffe93f10  @objc SharingArticleTextActivityItemSource.(null) <stripped>
-	0x3ac000faf70  @objc SharingArticleTextActivityItemSource. <stripped>
-WARNING: couldn't find address 0xfaf6cffe95ca0 (0x76cffe95ca0) in binary!
-	0xfc000fb620  @objc SharingArticleTextActivityItemSource.(null) <stripped>
+	0x1d4ffe884e0  @objc SharingArticleTextActivityItemSource.(null) <stripped>
+	0x64c001022d0  @objc SharingArticleTextActivityItemSource.ﬁº <stripped>
+WARNING: couldn't find address 0x1022ccffe8a270 (0x2ccffe8a270) in binary!
+	0x1ec00102980  @objc SharingArticleTextActivityItemSource.(null) <stripped>
 
 	// Swift methods
-	0x8da10  class func SharingArticleTextActivityItemSource.__allocating_init(headline:) // init 
+	0x8dcb0  class func SharingArticleTextActivityItemSource.__allocating_init(headline:) // init 
  }
 
  class NewsArticles.IssuePDFReplicaPageService : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssuePDFReplicaPageServiceType {
@@ -3902,15 +4014,15 @@ WARNING: couldn't find address 0xfaf6cffe95ca0 (0x76cffe95ca0) in binary!
 	// Properties
 	let layoutInvalidator : SXLayoutInvalidator
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let policyValidator : õá
+	let policyValidator : ëá
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutEnvironmentProvider : }©
+	let layoutEnvironmentProvider : ≈™
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2d934000fb658 (0x134000fb658) in binary!
-	0x2d798  @objc AdComponentIntegrator.(null) <stripped>
+WARNING: couldn't find address 0x2e224001029b8 (0x224001029b8) in binary!
+	0x2e078  @objc AdComponentIntegrator.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x76cffe95ca0  @objc AdComponentIntegrator.(null) <stripped>
+	0x2ccffe8a270  @objc AdComponentIntegrator.(null) <stripped>
 
 	// Swift methods
  }
@@ -3919,7 +4031,7 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagService : 3å
+	let tagService : !å
 
 	// Swift methods
  }
@@ -3939,14 +4051,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var viewControllerPresenting : SXViewControllerPresenting
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x333ac000faf70 (0x3ac000faf70) in binary!
-	0x25118  @objc MailPresenter.(null) <stripped>
-WARNING: couldn't find address 0x2d8fc000fb620 (0xfc000fb620) in binary!
-	0x2d760  @objc MailPresenter.(null) <stripped>
+WARNING: couldn't find address 0x33e4c001022d0 (0x64c001022d0) in binary!
+	0x25be8  @objc MailPresenter.(null) <stripped>
+WARNING: couldn't find address 0x2e1ec00102980 (0x1ec00102980) in binary!
+	0x2e040  @objc MailPresenter.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe96338  @objc MailPresenter.(null) <stripped>
+	0xffe8a908  @objc MailPresenter.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x604ffe96600  @objc MailPresenter.(null) <stripped>
+	0x164ffe8abd0  @objc MailPresenter.(null) <stripped>
 
 	// Swift methods
  }
@@ -3955,15 +4067,15 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2d8c4000fb5e8 (0xc4000fb5e8) in binary!
-	0x2d728  @objc ReportConcernDetailModule.(null) <stripped>
+WARNING: couldn't find address 0x2e1b400102948 (0x1b400102948) in binary!
+	0x2e008  @objc ReportConcernDetailModule.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x5e4ffe96e40  @objc ReportConcernDetailModule.(null) <stripped>
+	0x144ffe8b410  @objc ReportConcernDetailModule.(null) <stripped>
 
 	// Swift methods
  }
@@ -3974,9 +4086,9 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var controller : weak UIViewController? // +0x10 (0x8)
 	let linkHandler : LinkHandlerType // +0x18 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webViewControllerFactory : ≥| // +0x40 (0x28)
+	let webViewControllerFactory : ô| // +0x40 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô // +0x68 (0x28)
+	let resolver : õ // +0x68 (0x28)
 
 	// Swift methods
  }
@@ -3994,10 +4106,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let barHider : BarHider
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2d8a4000fb5c8 (0xa4000fb5c8) in binary!
-	0x2d708  @objc PDFReplicaBarVisibilityAnimatorForiOS.(null) <stripped>
+WARNING: couldn't find address 0x2e19400102928 (0x19400102928) in binary!
+	0x2dfe8  @objc PDFReplicaBarVisibilityAnimatorForiOS.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x1ccffe97060  @objc PDFReplicaBarVisibilityAnimatorForiOS.(null) <stripped>
+	0x52cffe8b630  @objc PDFReplicaBarVisibilityAnimatorForiOS.(null) <stripped>
 
 	// Swift methods
  }
@@ -4013,10 +4125,10 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let barHider : BarHider
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2d854000fb578 (0x54000fb578) in binary!
-	0x2d6b8  @objc PDFReplicaBarVisibilityAnimatorForMacOS.(null) <stripped>
+WARNING: couldn't find address 0x2e144001028d8 (0x144001028d8) in binary!
+	0x2df98  @objc PDFReplicaBarVisibilityAnimatorForMacOS.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x17cffe976d0  @objc PDFReplicaBarVisibilityAnimatorForMacOS.(null) <stripped>
+	0x4dcffe8bca0  @objc PDFReplicaBarVisibilityAnimatorForMacOS.(null) <stripped>
 
 	// Swift methods
  }
@@ -4029,7 +4141,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let navigationBarHidden : Bool
 
 	// Swift methods
-	0x9aa50  func <stripped> // method 
+	0x9acc0  func <stripped> // method 
  }
 
  class NewsArticles.ReplicaAdvertisementLoadingIndicatorProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4058,17 +4170,17 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var headerDelegate : ArticleHeaderDelegate
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x37034000fbd68 (0x34000fbd68) in binary!
-	0x2d678  @objc SponsoredHeaderViewController.(null) <stripped>
-WARNING: couldn't find address 0x2508c000fae68 (0x8c000fae68) in binary!
-	0x2d7f0  @objc SponsoredHeaderViewController.(null) <stripped>
-WARNING: couldn't find address 0x24df4000fb830 (0x5f4000fb830) in binary!
-	0x2d648  @objc SponsoredHeaderViewController.(null) <stripped>
+WARNING: couldn't find address 0x37b5400103100 (0x35400103100) in binary!
+	0x2df58  @objc SponsoredHeaderViewController.(null) <stripped>
+WARNING: couldn't find address 0x25b5c001021c8 (0x35c001021c8) in binary!
+	0x2e0e0  @objc SponsoredHeaderViewController.(null) <stripped>
+WARNING: couldn't find address 0x258c400102b90 (0xc400102b90) in binary!
+	0x2df28  @objc SponsoredHeaderViewController.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x4ffe9e960  @objc SponsoredHeaderViewController.(null) <stripped>
-	0xffe9e998  @objc SponsoredHeaderViewController.AUATSHÉÏXHâ˚Iâ∆LãLãg Lâ˛Ëiú˛ˇIâ≈Hç5˜3 <stripped>
+	0x364ffe930b0  @objc SponsoredHeaderViewController.(null) <stripped>
+	0xffe930e8  @objc SponsoredHeaderViewController.âÛIâ˛1ˇHâ÷Hâ ËF <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x7b4ffe9f580  @objc SponsoredHeaderViewController.(null) <stripped>
+	0x314ffe93cd0  @objc SponsoredHeaderViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -4078,7 +4190,7 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	// Properties
 	var controller : weak UIViewController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// Swift methods
  }
@@ -4087,7 +4199,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fontBookFactory : €â
+	let fontBookFactory : …â
 	let textInputViewLayoutAttributesFactory : TextInputViewLayoutAttributesFactoryType
 
 	// Swift methods
@@ -4112,26 +4224,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commandCenter : õö
+	let commandCenter : ªõ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 	let styler : TextSizeControlStylerType
 	let divider : UIView
 	let stackView : UIStackView
 	let increaseButton : UIButton
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let increaseAction : ~
+	let increaseAction : ~
 	let decreaseButton : UIButton
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let decreaseAction : ~
+	let decreaseAction : ~
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x36fe4000fbd18 (0x7e4000fbd18) in binary!
-	0x24dc8  @objc TextSizeControlViewController.(null) <stripped>
-WARNING: couldn't find address 0x2d61c000facf8 (0x61c000facf8) in binary!
+WARNING: couldn't find address 0x37b04001030b0 (0x304001030b0) in binary!
+	0x25898  @objc TextSizeControlViewController.(null) <stripped>
+WARNING: couldn't find address 0x2defc00102058 (0x6fc00102058) in binary!
 	0x68000000c  @objc TextSizeControlViewController.(null) <stripped>
-WARNING: couldn't find address 0x32a86000fb100 (0x286000fb100) in binary!
-	0x2d5f8  @objc TextSizeControlViewController.(null) <stripped>
+WARNING: couldn't find address 0x3352600102460 (0x52600102460) in binary!
+	0x2ded8  @objc TextSizeControlViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -4141,14 +4253,14 @@ WARNING: couldn't find address 0x32a86000fb100 (0x286000fb100) in binary!
 	// Properties
 	let model : ArticleModel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let observableScrollView : m
+	let observableScrollView : €l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let modalHostStyle : Òy
+	let modalHostStyle : z
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let isImpressionable : ˘l
+	let isImpressionable : øl
 	var pageDelegate : ArticleViewerPageDelegate
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contentBackgroundColor : „l
+	let contentBackgroundColor : ©l
 	var headline : FCHeadlineProviding?
 	let styler : ArticleStylerType
 	let eventHandler : ArticleEventHandlerType
@@ -4157,37 +4269,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let keyCommandManager : NUArticleKeyCommandManager
 	let documentSectionBlueprintProvider : NUDocumentSectionBlueprintProvider
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var hardPaywallViewController : ˜§
+	var hardPaywallViewController : …¶
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var deferredHardPaywallViewController : ˜§
+	var deferredHardPaywallViewController : …¶
 	let footerProvider : ArticleFooterProviderType
 	var footers : [UIViewController & NAArticleFooterType]
 	let headerProvider : ArticleHeaderProviderType
 	var headers : ArticleHeaderType
 	let urlHandler : URLHandler
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallPreparationEventManager : èk
+	let paywallPreparationEventManager : ]k
 	var deferredHardPaywallIsVisible : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var deferredHardPaywallHeightProvider : n
+	var deferredHardPaywallHeightProvider : øm
 	var destinationViewSize : CGSize
 	var viewingSessionID : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scrollDebounce : ü|
+	var scrollDebounce : ï|
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commands : €®
+	let commands : Ω™
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverViewManager : #r
+	let coverViewManager : Òq
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let keyboardInputMonitor : ]v
+	let keyboardInputMonitor : Cv
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x36f64000fbc98 (0x764000fbc98) in binary!
-	0x24d48  @objc ArticleViewController.(null) <stripped>
-WARNING: couldn't find address 0x2d59c000fac78 (0x59c000fac78) in binary!
+WARNING: couldn't find address 0x37a8400103030 (0x28400103030) in binary!
+	0x25818  @objc ArticleViewController.(null) <stripped>
+WARNING: couldn't find address 0x2de7c00101fd8 (0x67c00101fd8) in binary!
 	0x258000000c  @objc ArticleViewController.(null) <stripped>
-WARNING: couldn't find address 0x33284000fb098 (0x284000fb098) in binary!
-	0x24f18  @objc ArticleViewController.(null) <stripped>
+WARNING: couldn't find address 0x33d24001023f8 (0x524001023f8) in binary!
+	0x259e8  @objc ArticleViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -4204,9 +4316,9 @@ WARNING: couldn't find address 0x33284000fb098 (0x284000fb098) in binary!
 	// Properties
 	var controller : weak UIViewController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 
 	// Swift methods
  }
@@ -4220,24 +4332,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var state : State
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x36d6c000fabc8 (0x56c000fabc8) in binary!
-	0x36d60  @objc ArticleNavigationBarMessageContainer.(null) <stripped>
-WARNING: couldn't find address 0x33b44000fc018 (0x344000fc018) in binary!
-	0x2d398  @objc ArticleNavigationBarMessageContainer.(null) <stripped>
-WARNING: couldn't find address 0x2ca1c000fb060 (0x21c000fb060) in binary!
-	0x2d380  @objc ArticleNavigationBarMessageContainer.(null) <stripped>
+WARNING: couldn't find address 0x3788c00101f28 (0x8c00101f28) in binary!
+	0x37880  @objc ArticleNavigationBarMessageContainer.(null) <stripped>
+WARNING: couldn't find address 0x345d4001033c0 (0x5d4001033c0) in binary!
+	0x2dc78  @objc ArticleNavigationBarMessageContainer.(null) <stripped>
+WARNING: couldn't find address 0x2d2fc001023c0 (0x2fc001023c0) in binary!
+	0x2dc60  @objc ArticleNavigationBarMessageContainer.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffeab498  @objc ArticleNavigationBarMessageContainer.(null) <stripped>
+	0xffe9fc38  @objc ArticleNavigationBarMessageContainer.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x1fcffeaba40  @objc ArticleNavigationBarMessageContainer.(null) <stripped>
-	0xffeaba88  @objc ArticleNavigationBarMessageContainer. <stripped>
+	0x55cffea01e0  @objc ArticleNavigationBarMessageContainer.(null) <stripped>
+	0xffea0228  @objc ArticleNavigationBarMessageContainer.Ëc <stripped>
 
 	// Swift methods
-	0xadcf0  func <stripped> // getter 
-	0xadd20  func <stripped> // setter 
-	0xadd60  func <stripped> // modifyCoroutine 
-	0xadea0  class func ArticleNavigationBarMessageContainer.__allocating_init(defaultView:) // init 
-	0xae3d0  func <stripped> // method 
+	0xae130  func <stripped> // getter 
+	0xae160  func <stripped> // setter 
+	0xae1a0  func <stripped> // modifyCoroutine 
+	0xae2e0  class func ArticleNavigationBarMessageContainer.__allocating_init(defaultView:) // init 
+	0xae810  func <stripped> // method 
  }
 
  class NewsArticles.NotifyOnDeinit : NSObject /usr/lib/libobjc.A.dylib {
@@ -4246,12 +4358,12 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let onDeinit : () // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2d354000fb528 (0x354000fb528) in binary!
-	0x2d4d8  @objc NotifyOnDeinit.(null) <stripped>
-WARNING: couldn't find address 0x2d33c000faa18 (0x33c000faa18) in binary!
+WARNING: couldn't find address 0x2dc3400102888 (0x43400102888) in binary!
+	0x2ddc8  @objc NotifyOnDeinit.(null) <stripped>
+WARNING: couldn't find address 0x2dc1c00101d78 (0x41c00101d78) in binary!
 	0x78000000c  @objc NotifyOnDeinit.(null) <stripped>
-WARNING: couldn't find address 0x2d4b4000fab38 (0x4b4000fab38) in binary!
-	0x24cb8  @objc NotifyOnDeinit.(null) <stripped>
+WARNING: couldn't find address 0x2dda400101e98 (0x5a400101e98) in binary!
+	0x25788  @objc NotifyOnDeinit.(null) <stripped>
 
 	// Swift methods
  }
@@ -4288,7 +4400,7 @@ WARNING: couldn't find address 0x2d4b4000fab38 (0x4b4000fab38) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// Swift methods
  }
@@ -4314,31 +4426,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var styler : EndOfArticleStylerType
 	let eventHandler : EndOfArticleEventHandlerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : )t
+	let blueprintViewController : t
 	var footerDelegate : weak NAArticleFooterDelegate?
 	var resultProviderDelegate : weak NAEndOfArticleResultProviderDelegate?
 	let overriddenTraitCollection : UITraitCollection?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var gutterViewController : áq
+	var gutterViewController : ]q
 	let bottomSpacerView : UIView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let urlHandler : o
+	let urlHandler : Ìn
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2d4b4000fab38 (0x4b4000fab38) in binary!
-	0x24cb8  @objc EndOfArticleViewController.(null) <stripped>
-WARNING: couldn't find address 0x2d49c000fab28 (0x49c000fab28) in binary!
-	0x24ca0  @objc EndOfArticleViewController.(null) <stripped>
-WARNING: couldn't find address 0x36ca4000fb9d8 (0x4a4000fb9d8) in binary!
-	0x24a88  @objc EndOfArticleViewController.(null) <stripped>
-WARNING: couldn't find address 0x2d2dc000fa9b8 (0x2dc000fa9b8) in binary!
+WARNING: couldn't find address 0x2dda400101e98 (0x5a400101e98) in binary!
+	0x25788  @objc EndOfArticleViewController.(null) <stripped>
+WARNING: couldn't find address 0x2dd8c00101e88 (0x58c00101e88) in binary!
+	0x25770  @objc EndOfArticleViewController.(null) <stripped>
+WARNING: couldn't find address 0x377c400102d70 (0x7c400102d70) in binary!
+	0x25558  @objc EndOfArticleViewController.(null) <stripped>
+WARNING: couldn't find address 0x2dbbc00101d18 (0x3bc00101d18) in binary!
 	0xe8000000c  @objc EndOfArticleViewController.(null) <stripped>
-WARNING: couldn't find address 0x24ce4000faac0 (0x4e4000faac0) in binary!
-	0x2d448  @objc EndOfArticleViewController.(null) <stripped>
-WARNING: couldn't find address 0x33dc0000fae10 (0x5c0000fae10) in binary!
-	0x30570  @objc EndOfArticleViewController.(null) <stripped>
-WARNING: couldn't find address 0x32fb2000fbec8 (0x7b2000fbec8) in binary!
-	0x2d288  @objc EndOfArticleViewController.(null) <stripped>
+WARNING: couldn't find address 0x257b400101e20 (0x7b400101e20) in binary!
+	0x2dd38  @objc EndOfArticleViewController.(null) <stripped>
+WARNING: couldn't find address 0x3485000102170 (0x5000102170) in binary!
+	0x30f00  @objc EndOfArticleViewController.(null) <stripped>
+WARNING: couldn't find address 0x3560c00103270 (0x60c00103270) in binary!
+	0x2db68  @objc EndOfArticleViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -4358,7 +4470,7 @@ WARNING: couldn't find address 0x32fb2000fbec8 (0x7b2000fbec8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 
 	// Swift methods
  }
@@ -4375,39 +4487,39 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let fadingBar : UIView
 	let opaqueBar : UIView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var horizontalScrollOffset : Yò
+	var horizontalScrollOffset : Èô
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var audioButtonLocation : Yò
+	var audioButtonLocation : Èô
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c88c000faed0 (0x8c000faed0) in binary!
-	0x36ba0  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
-WARNING: couldn't find address 0x31588000faa10 (0x588000faa10) in binary!
-	0x24b78  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
-WARNING: couldn't find address 0x33e7c000faa08 (0x67c000faa08) in binary!
-	0x33e90  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
-WARNING: couldn't find address 0x31558000faa00 (0x558000faa00) in binary!
-	0x34ad8  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
-WARNING: couldn't find address 0x2d19c000faea8 (0x19c000faea8) in binary!
-	0x2d190  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
+WARNING: couldn't find address 0x2d16c00102230 (0x16c00102230) in binary!
+	0x376c0  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
+WARNING: couldn't find address 0x3200800101d70 (0x800101d70) in binary!
+	0x25648  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
+WARNING: couldn't find address 0x3490c00101d68 (0x10c00101d68) in binary!
+	0x34920  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
+WARNING: couldn't find address 0x31fd800101d60 (0x7d800101d60) in binary!
+	0x35598  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
+WARNING: couldn't find address 0x2da7c00102208 (0x27c00102208) in binary!
+	0x2da70  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffeb2768  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
+	0xffea6f58  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x34ffeb2f60  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
-	0x662000facb8  @objc ArticleNavigationBarPaletteContent.~LãsHâ{ˇ¯"% <stripped>
-WARNING: couldn't find address 0xfacb4ffeb3560 (0x4b4ffeb3560) in binary!
-	0x2cc000fbad0  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
-WARNING: couldn't find address 0xfabc4ffeb3178 (0x3c4ffeb3178) in binary!
+	0x394ffea7750  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
+	0x4bc00102018  @objc ArticleNavigationBarPaletteContent.ÿLâ˜Ë^≈ <stripped>
+WARNING: couldn't find address 0x102014ffea7d50 (0x14ffea7d50) in binary!
+	0x59c00102e78  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
+WARNING: couldn't find address 0x101f24ffea7968 (0x724ffea7968) in binary!
 	0x68000000c  @objc ArticleNavigationBarPaletteContent.(null) <stripped>
 
 	// Swift methods
-	0xb4b50  func <stripped> // method 
-	0xb4d80  func <stripped> // method 
-	0xb4f00  func <stripped> // method 
-	0xb5170  func <stripped> // method 
-	0xb5330  func <stripped> // method 
-	0xb6260  func <stripped> // method 
-	0xb57a0  func <stripped> // method 
+	0xb4fe0  func <stripped> // method 
+	0xb5210  func <stripped> // method 
+	0xb5390  func <stripped> // method 
+	0xb5600  func <stripped> // method 
+	0xb57c0  func <stripped> // method 
+	0xb66f0  func <stripped> // method 
+	0xb5c30  func <stripped> // method 
  }
 
  struct NewsArticles.InterstitialAdvertisementSession {
@@ -4433,10 +4545,10 @@ WARNING: couldn't find address 0xfabc4ffeb3178 (0x3c4ffeb3178) in binary!
 	let observers : NSHashTable<SXNewsletterSubscriptionStatusObserving>
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2d2f4000fb018 (0x2f4000fb018) in binary!
-	0x2d158  @objc NewsletterSubscriptionStatusProvider.(null) <stripped>
+WARNING: couldn't find address 0x2dbe400102378 (0x3e400102378) in binary!
+	0x2da38  @objc NewsletterSubscriptionStatusProvider.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x4b4ffeb3560  @objc NewsletterSubscriptionStatusProvider.(null) <stripped>
+	0x14ffea7d50  @objc NewsletterSubscriptionStatusProvider.(null) <stripped>
 
 	// Swift methods
  }
@@ -4452,7 +4564,7 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contextBuilder : iÆ
+	let contextBuilder : %∞
 
 	// Swift methods
  }
@@ -4477,7 +4589,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case navigateToPage : (identifier: String)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case openURL : -f
+	case openURL : ke
  }
 
  enum NewsArticles.IssueTableOfContentsPostAction {
@@ -4503,19 +4615,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var itemCoverDate : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x36abc000fa830 (0x2bc000fa830) in binary!
-	0x248a0  @objc SharingIssueTextActivityItemSource.(null) <stripped>
-WARNING: couldn't find address 0x24894000fa8d0 (0x94000fa8d0) in binary!
-	0x24888  @objc SharingIssueTextActivityItemSource.(null) <stripped>
-WARNING: couldn't find address 0x2d26c000faf90 (0x26c000faf90) in binary!
-	0x2d0d0  @objc SharingIssueTextActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x375dc00101b90 (0x5dc00101b90) in binary!
+	0x25370  @objc SharingIssueTextActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x2536400101c30 (0x36400101c30) in binary!
+	0x25358  @objc SharingIssueTextActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x2db5c001022f0 (0x35c001022f0) in binary!
+	0x2d9b0  @objc SharingIssueTextActivityItemSource.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x7dcffeb7d58  @objc SharingIssueTextActivityItemSource.(null) <stripped>
-	0x7cffeb84b0  @objc SharingIssueTextActivityItemSource.HHâU¿IâˆHâ˚LãHãG HâE»Lâ˛Ë·°˛ˇHâE–MãfMãn Lâ˜LâÊË °˛ˇIâ∆Lâe∞IãEHâE∏Hç}òIâ˝Ë_4˛ˇIãL$¯Hâ«LâˆLâ‚ˇQHç5ﬂ(3 <stripped>
-	0x75cffeb8768  @objc SharingIssueTextActivityItemSource.Ñ <stripped>
+	0x33cffeac548  @objc SharingIssueTextActivityItemSource.(null) <stripped>
+	0x3dcffeacca0  @objc SharingIssueTextActivityItemSource. <stripped>
+	0x2bcffeacf58  @objc SharingIssueTextActivityItemSource.â˘Ëª+ <stripped>
 
 	// Swift methods
-	0xba750  class func SharingIssueTextActivityItemSource.__allocating_init(issue:) // init 
+	0xbabe0  class func SharingIssueTextActivityItemSource.__allocating_init(issue:) // init 
  }
 
  class NewsArticles.SharingTagTextActivityItemSource : NSObject /usr/lib/libobjc.A.dylib {
@@ -4525,20 +4637,20 @@ WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
 	var itemTitle : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x36a6c000fa7e0 (0x26c000fa7e0) in binary!
-	0x24850  @objc SharingTagTextActivityItemSource.(null) <stripped>
-WARNING: couldn't find address 0x24844000fa880 (0x44000fa880) in binary!
-	0x24838  @objc SharingTagTextActivityItemSource.(null) <stripped>
-WARNING: couldn't find address 0x2d21c000faf40 (0x21c000faf40) in binary!
-	0x2d080  @objc SharingTagTextActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x3758c00101b40 (0x58c00101b40) in binary!
+	0x25320  @objc SharingTagTextActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x2531400101be0 (0x31400101be0) in binary!
+	0x25308  @objc SharingTagTextActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x2db0c001022a0 (0x30c001022a0) in binary!
+	0x2d960  @objc SharingTagTextActivityItemSource.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x73cffeba5e8  @objc SharingTagTextActivityItemSource.(null) <stripped>
-	0xfc000fa8a8  @objc SharingTagTextActivityItemSource.ß2 <stripped>
-WARNING: couldn't find address 0xfabc4ffeba6a8 (0x3c4ffeba6a8) in binary!
+	0x29cffeaedd8  @objc SharingTagTextActivityItemSource.(null) <stripped>
+	0x22c00101c08  @objc SharingTagTextActivityItemSource.UHâÂIç}Ëπ∆ <stripped>
+WARNING: couldn't find address 0x101f24ffeaee98 (0x724ffeaee98) in binary!
 	0x38000000c  @objc SharingTagTextActivityItemSource.(null) <stripped>
 
 	// Swift methods
-	0xbb5b0  class func SharingTagTextActivityItemSource.__allocating_init(tag:) // init 
+	0xbba40  class func SharingTagTextActivityItemSource.__allocating_init(tag:) // init 
  }
 
  class NewsArticles.TextResizeArticleViewerFeatureProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4563,10 +4675,10 @@ WARNING: couldn't find address 0xfabc4ffeba6a8 (0x3c4ffeba6a8) in binary!
 	let readingList : FCReadingList
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2d1fc000faf20 (0x1fc000faf20) in binary!
-	0x2d060  @objc EndOfArticleDataManager.(null) <stripped>
+WARNING: couldn't find address 0x2daec00102280 (0x2ec00102280) in binary!
+	0x2d940  @objc EndOfArticleDataManager.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x3c4ffeba6a8  @objc EndOfArticleDataManager.(null) <stripped>
+	0x724ffeaee98  @objc EndOfArticleDataManager.(null) <stripped>
 
 	// Swift methods
  }
@@ -4581,15 +4693,15 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alertPresenter : %p // +0x8 (0x28)
+	let alertPresenter : p
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2e8dc000fa888 (0xdc000fa888) in binary!
-	0x2d1b0  @objc ArticleSavedAlertPresenter.(null) <stripped>
-WARNING: couldn't find address 0x2d014000fa6f0 (0x14000fa6f0) in binary!
+WARNING: couldn't find address 0x2f20c00101be8 (0x20c00101be8) in binary!
+	0x2daa0  @objc ArticleSavedAlertPresenter.(null) <stripped>
+WARNING: couldn't find address 0x2d8f400101a50 (0xf400101a50) in binary!
 	0x58000000c  @objc ArticleSavedAlertPresenter.(null) <stripped>
-WARNING: couldn't find address 0x2d18c000fb2a8 (0x18c000fb2a8) in binary!
-	0x37004  @objc ArticleSavedAlertPresenter.(null) <stripped>
+WARNING: couldn't find address 0x2da7c00102618 (0x27c00102618) in binary!
+	0x37b24  @objc ArticleSavedAlertPresenter.(null) <stripped>
 
 	// Swift methods
  }
@@ -4651,9 +4763,9 @@ WARNING: couldn't find address 0x2d18c000fb2a8 (0x18c000fb2a8) in binary!
 	let audioSharingActivityProviderFactory : SharingActivityProviderFactoryType
 	let paidAccessChecker : FCPaidAccessCheckerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fallbackTracker : ≈î
+	let fallbackTracker : ñ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sceneProvider : j
+	let sceneProvider : ›i
 
 	// Swift methods
  }
@@ -4664,20 +4776,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let type : String
 	let role : SXComponentRole
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 	let bannerAdFactory : ArticleBannerAdFactoryType
 	let integrator : AdComponentIntegratorType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2d18c000fb2a8 (0x18c000fb2a8) in binary!
-	0x37004  @objc AdComponentViewFactory.(null) <stripped>
-WARNING: couldn't find address 0x36994000fa848 (0x194000fa848) in binary!
-	0x2d168  @objc AdComponentViewFactory.(null) <stripped>
-WARNING: couldn't find address 0x2cfcc000fa6a8 (0x7cc000fa6a8) in binary!
+WARNING: couldn't find address 0x2da7c00102618 (0x27c00102618) in binary!
+	0x37b24  @objc AdComponentViewFactory.(null) <stripped>
+WARNING: couldn't find address 0x374b400101ba8 (0x4b400101ba8) in binary!
+	0x2da58  @objc AdComponentViewFactory.(null) <stripped>
+WARNING: couldn't find address 0x2d8ac00101a08 (0xac00101a08) in binary!
 	0x38000000c  @objc AdComponentViewFactory.(null) <stripped>
-WARNING: couldn't find address 0x24754000fa820 (0x754000fa820) in binary!
-	0x2d138  @objc AdComponentViewFactory.(null) <stripped>
-WARNING: couldn't find address 0x2cf9c000fa678 (0x79c000fa678) in binary!
+WARNING: couldn't find address 0x2522400101b80 (0x22400101b80) in binary!
+	0x2da28  @objc AdComponentViewFactory.(null) <stripped>
+WARNING: couldn't find address 0x2d87c001019d8 (0x7c001019d8) in binary!
 	0x18000000c  @objc AdComponentViewFactory.(null) <stripped>
 
 	// Swift methods
@@ -4696,7 +4808,7 @@ WARNING: couldn't find address 0x2cf9c000fa678 (0x79c000fa678) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// Swift methods
  }
@@ -4707,14 +4819,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let issue : FCIssue?
 	let headline : FCHeadlineProviding
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueCoverLayoutAttributesFactory : µ
+	let issueCoverLayoutAttributesFactory : ]∂
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x24754000fa820 (0x754000fa820) in binary!
-	0x2d138  @objc ANFIssueCoverLayoutAttributesFactory.(null) <stripped>
-WARNING: couldn't find address 0x2cf9c000fa678 (0x79c000fa678) in binary!
+WARNING: couldn't find address 0x2522400101b80 (0x22400101b80) in binary!
+	0x2da28  @objc ANFIssueCoverLayoutAttributesFactory.(null) <stripped>
+WARNING: couldn't find address 0x2d87c001019d8 (0x7c001019d8) in binary!
 	0x18000000c  @objc ANFIssueCoverLayoutAttributesFactory.(null) <stripped>
-WARNING: couldn't find address 0x2d114000fae38 (0x114000fae38) in binary!
+WARNING: couldn't find address 0x2da0400102198 (0x20400102198) in binary!
 	0x18000000c  @objc ANFIssueCoverLayoutAttributesFactory.(null) <stripped>
 
 	// Swift methods
@@ -4743,20 +4855,20 @@ WARNING: couldn't find address 0x2d114000fae38 (0x114000fae38) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineService : ˘|
+	let headlineService : Á|
 
 	// Swift methods
  }
 
  class NewsArticles.NewsletterAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2d114000fae38 (0x114000fae38) in binary!
+WARNING: couldn't find address 0x2da0400102198 (0x20400102198) in binary!
 	0x18000000c  @objc NewsletterAssembly.(null) <stripped>
  }
 
  class NewsArticles.ArticleAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2d0e4000fae08 (0xe4000fae08) in binary!
+WARNING: couldn't find address 0x2d9d400102168 (0x1d400102168) in binary!
 	0x18000000c  @objc ArticleAssembly.(null) <stripped>
  }
 
@@ -4780,7 +4892,7 @@ WARNING: couldn't find address 0x2d0e4000fae08 (0xe4000fae08) in binary!
 
  class NewsArticles.AdsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2d0b4000fadd8 (0xb4000fadd8) in binary!
+WARNING: couldn't find address 0x2d9a400102138 (0x1a400102138) in binary!
 	0x18000000c  @objc AdsAssembly.(null) <stripped>
  }
 
@@ -4796,13 +4908,12 @@ WARNING: couldn't find address 0x2d0b4000fadd8 (0xb4000fadd8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let requestManager : }ß
+	let requestManager : ≈®
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let requestStore : ù¶
+	let requestStore : Âß
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let journal : Û©
+	let journal : ;´
 	let documentControllerProvider : SXDocumentControllerProvider
-	let layoutBlueprint : SXLayoutBlueprint
 
 	// Swift methods
  }
@@ -4811,7 +4922,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bannerAd : ´
+	let bannerAd : [¨
  }
 
  class NewsArticles.ReportConcernDataManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ReportConcernDataManagerType {
@@ -4826,18 +4937,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let toolbarManager : ’¨
+	let toolbarManager : ΩÆ
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x36e4c000fa768 (0x64c000fa768) in binary!
-	0x2d078  @objc ChromeControl.(null) <stripped>
-WARNING: couldn't find address 0x2cedc000fa5b8 (0x6dc000fa5b8) in binary!
+WARNING: couldn't find address 0x3796c00101ac8 (0x16c00101ac8) in binary!
+	0x2d968  @objc ChromeControl.(null) <stripped>
+WARNING: couldn't find address 0x2d7bc00101918 (0x7bc00101918) in binary!
 	0x48000000c  @objc ChromeControl.(null) <stripped>
-WARNING: couldn't find address 0x30574000fbdb0 (0x574000fbdb0) in binary!
-	0x32bd6  @objc ChromeControl.(null) <stripped>
+WARNING: couldn't find address 0x30f0400103148 (0x70400103148) in binary!
+	0x35230  @objc ChromeControl.(null) <stripped>
 
 	// Swift methods
-	0xcbc30  class func ChromeControl.__allocating_init(toolbarManager:) // init 
+	0xccc40  class func ChromeControl.__allocating_init(toolbarManager:) // init 
  }
 
  struct NewsArticles.AnalyticsMediaData {
@@ -4853,9 +4964,9 @@ WARNING: couldn't find address 0x30574000fbdb0 (0x574000fbdb0) in binary!
 	// Properties
 	var controller : weak UIViewController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 	let router : RouterType
 
 	// Swift methods
@@ -4878,7 +4989,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let identifier : String
 	let issueCoverPageIdentifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueCoverModel : 9ü
+	let issueCoverModel : â†
 	let issueCoverDateText : String
 	let issueDescriptionText : String
 	let sourceChannelID : String
@@ -4903,7 +5014,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let appStateMonitor : ArticleViewerAppStateMonitor // +0x30 (0x8)
 	let historyRecorder : NAInterstitialAdvertisementHistoryRecorder // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventManager : É] // +0x40 (0x8)
+	let eventManager : k] // +0x40 (0x8)
 	let bundleSubscriptionContextProvider : NUBundleSubscriptionAdContextProvider // +0x48 (0x8)
 	let feedMetadataAdContextProvider : FeedMetadataAdContextProvider // +0x50 (0x8)
 	var timer : NSTimer? // +0x58 (0x8)
@@ -4938,15 +5049,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagService : 3å // +0x10 (0x28)
+	let tagService : !å // +0x10 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineService : ˘| // +0x38 (0x28)
+	let headlineService : Á| // +0x38 (0x28)
 	let stocksFeedService : StocksFeedServiceType // +0x60 (0x28)
 	let paidAccessChecker : FCPaidAccessCheckerType // +0x88 (0x8)
 	let endOfArticleHeadlineModelFactory : EndOfArticleHeadlineModelFactoryType // +0x90 (0x28)
 	let configurationManager : FCCoreConfigurationManager // +0xb8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let createdDate : gd // +0x0 (0x0)
+	let createdDate : √c // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var cache : String // +0x0 (0x8)
 
@@ -4966,9 +5077,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let backgroundColor : UIColor
 	let foregroundColor : UIColor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let barStyle : ´^
+	let barStyle : É^
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let statusBarStyle : ù^
+	let statusBarStyle : u^
 	let buttonHighlightColor : UIColor
  }
 
@@ -4978,7 +5089,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let visibilityProvider : SaveArticleViewerFeatureVisibilityProviderType
 	let styler : BaseStylerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commandCenter : õö
+	let commandCenter : ªõ
 
 	// Swift methods
  }
@@ -5006,7 +5117,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case preview : InterstitialAd
 	case legacy : LegacyInterstitialAd
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case visualDebug : ˇk
+	case visualDebug : l
  }
 
  struct NewsArticles.InterstitialAd {
@@ -5014,7 +5125,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let insertion : o
+	let insertion : )o
  }
 
  struct NewsArticles.LegacyInterstitialAd {
@@ -5045,23 +5156,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var articlesSeenSinceLastInterstitial : Int
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x30574000fbdb0 (0x574000fbdb0) in binary!
-	0x32bd6  @objc InterstitialAdvertisementHistoryRecorder.(null) <stripped>
-WARNING: couldn't find address 0x2ceac000fbd90 (0x6ac000fbd90) in binary!
-	0x2cea0  @objc InterstitialAdvertisementHistoryRecorder.(null) <stripped>
+WARNING: couldn't find address 0x30f0400103148 (0x70400103148) in binary!
+	0x35230  @objc InterstitialAdvertisementHistoryRecorder.(null) <stripped>
+WARNING: couldn't find address 0x2d78c00103128 (0x78c00103128) in binary!
+	0x2d780  @objc InterstitialAdvertisementHistoryRecorder.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x534ffedffa8  @objc InterstitialAdvertisementHistoryRecorder.(null) <stripped>
-	0x7fc000fad20  @objc InterstitialAdvertisementHistoryRecorder. <stripped>
+	0x94ffed5658  @objc InterstitialAdvertisementHistoryRecorder.(null) <stripped>
+	0xec00102080  @objc InterstitialAdvertisementHistoryRecorder. <stripped>
 
 	// Swift methods
  }
 
  class NewsArticles.URLPreviewViewControllerFactory : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3683c000fa710 (0x3c000fa710) in binary!
-	0x2d010  @objc URLPreviewViewControllerFactory.(null) <stripped>
+WARNING: couldn't find address 0x3735c00101a70 (0x35c00101a70) in binary!
+	0x2d900  @objc URLPreviewViewControllerFactory.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x53cffee80a8  @objc URLPreviewViewControllerFactory.(null) <stripped>
+	0x9cffedfac8  @objc URLPreviewViewControllerFactory.(null) <stripped>
  }
 
  class NewsArticles.ArticleViewerFeatureManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleViewerFeatureManagerType {
@@ -5072,7 +5183,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var providers : FeatureProviderWrapper // +0x0 (0x8)
 	var providerState : [String : Any] // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featureAvailability : #ø // +0x0 (0x28)
+	let featureAvailability : -¡ // +0x0 (0x28)
 
 	// Swift methods
  }
@@ -5084,14 +5195,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let createTransition : ArticleViewerFeatureTransition
 	let shouldShowBlock : ArticleViewerPage
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigationBarPaletteHeightBlock : K
+	let navigationBarPaletteHeightBlock : óJ
 	let shouldShowOnScrollAppearanceBlock : ArticleViewerPage
 	let createScrollAppearanceAnimationBlock : ArticleViewerFeatureAnimatedTransitionType
 	let pageVisibilityDidChangeBlock : ArticleViewerFeatureAnimatedTransitionType
 	let inToolbar : Bool
 
 	// Swift methods
-	0xe3fa0  class func <stripped> // init 
+	0xe52f0  class func <stripped> // init 
  }
 
  class NewsArticles.ArticleViewerAppStateMonitor : NSObject /usr/lib/libobjc.A.dylib {
@@ -5103,17 +5214,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var onWindowBackgroundClosures : [()]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2cffc000fad20 (0x7fc000fad20) in binary!
-	0x2ce60  @objc ArticleViewerAppStateMonitor.(null) <stripped>
+WARNING: couldn't find address 0x2d8ec00102080 (0xec00102080) in binary!
+	0x2d740  @objc ArticleViewerAppStateMonitor.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x1d4ffee8328  @objc ArticleViewerAppStateMonitor.(null) <stripped>
+	0x534ffedfd48  @objc ArticleViewerAppStateMonitor.(null) <stripped>
  }
 
  class NewsArticles.ArticleHeaderProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleHeaderProviderType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// Swift methods
  }
@@ -5133,6 +5244,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ struct NewsArticles.ReloadArticleViewerFeatureViewModel {
+
+	// Properties
+	let barButtonItemGroup : UIBarButtonItemGroup // +0x0
+ }
+
  class NewsArticles.RemoveAdvertisementPageBlueprintModifier : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
@@ -5141,7 +5258,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// Swift methods
  }
@@ -5157,9 +5274,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pageBlueprintProvider : ï
+	let pageBlueprintProvider : ;ñ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featureAvailability : #ø
+	let featureAvailability : -¡
 
 	// Swift methods
  }
@@ -5169,7 +5286,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let articleRecirculationService : ArticleRecirculationServiceType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineService : ˘|
+	let headlineService : Á|
 	let previewService : ArticlePreviewServiceType
 
 	// Swift methods
@@ -5181,37 +5298,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : weak NABridgedArticleViewerPageItemActionHandlerDelegateType?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x367b4000fa690 (0x7b4000fa690) in binary!
-	0x2cf88  @objc BridgedArticleViewerPageItemActionHandler.(null) <stripped>
-WARNING: couldn't find address 0x2cdec000fa4c8 (0x5ec000fa4c8) in binary!
+WARNING: couldn't find address 0x372d4001019f0 (0x2d4001019f0) in binary!
+	0x2d878  @objc BridgedArticleViewerPageItemActionHandler.(null) <stripped>
+WARNING: couldn't find address 0x2d6cc00101828 (0x6cc00101828) in binary!
 	0x48000000c  @objc BridgedArticleViewerPageItemActionHandler.(null) <stripped>
-WARNING: couldn't find address 0x24574000fa668 (0x574000fa668) in binary!
-	0x35d58  @objc BridgedArticleViewerPageItemActionHandler.(null) <stripped>
+WARNING: couldn't find address 0x25044001019c8 (0x44001019c8) in binary!
+	0x36878  @objc BridgedArticleViewerPageItemActionHandler.(null) <stripped>
 
 	// Swift methods
-	0xef750  class func BridgedArticleViewerPageItemActionHandler.__allocating_init(delegate:) // init 
+	0xf2e40  class func BridgedArticleViewerPageItemActionHandler.__allocating_init(delegate:) // init 
  }
 
  class NewsArticles.BridgedToolbarIssueCoverBarButtonItemProvider : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 	let bridgedActionHandler : BridgedArticleViewerPageItemActionHandler
 	var barPageItem : Any?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x24574000fa668 (0x574000fa668) in binary!
-	0x35d58  @objc BridgedToolbarIssueCoverBarButtonItemProvider.(null) <stripped>
-WARNING: couldn't find address 0x2cf4c000fac70 (0x74c000fac70) in binary!
-	0x2cdb0  @objc BridgedToolbarIssueCoverBarButtonItemProvider.(null) <stripped>
+WARNING: couldn't find address 0x25044001019c8 (0x44001019c8) in binary!
+	0x36878  @objc BridgedToolbarIssueCoverBarButtonItemProvider.(null) <stripped>
+WARNING: couldn't find address 0x2d83c00101fd0 (0x3c00101fd0) in binary!
+	0x2d690  @objc BridgedToolbarIssueCoverBarButtonItemProvider.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffeeeb58  @objc BridgedToolbarIssueCoverBarButtonItemProvider.(null) <stripped>
+	0xffee65a8  @objc BridgedToolbarIssueCoverBarButtonItemProvider.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x5ccffeeee50  @objc BridgedToolbarIssueCoverBarButtonItemProvider.(null) <stripped>
+	0x17cffee68a0  @objc BridgedToolbarIssueCoverBarButtonItemProvider.(null) <stripped>
 
 	// Swift methods
-	0xefc20  class func BridgedToolbarIssueCoverBarButtonItemProvider.__allocating_init(resolver:bridgedActionHandler:) // init 
+	0xf3310  class func BridgedToolbarIssueCoverBarButtonItemProvider.__allocating_init(resolver:bridgedActionHandler:) // init 
  }
 
  class NewsArticles.ArticleBannerAdPlacementFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleBannerAdPlacementFactoryType {
@@ -5254,7 +5371,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let styler : ArticleViewerAudioStylerType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x27d2c000fc268 (0x52c000fc268) in binary!
+WARNING: couldn't find address 0x2874c00103618 (0x74c00103618) in binary!
 	0x38000000c  @objc ArticleViewerAudioRenderer.(null) <stripped>
 
 	// Swift methods
@@ -5267,15 +5384,15 @@ WARNING: couldn't find address 0x27d2c000fc268 (0x52c000fc268) in binary!
  class NewsArticles.ArticleThumbnailComponentSizer : SXComponentSizer /System/Library/PrivateFrameworks/Silex.framework/Silex {
 
 	// Properties
-	let linkedContentProvider : NULinkedArticleContentProvider
+	let linkedContentProvider : NULinkedArticleContentProvider // +0x8 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x36027000fa628 (0x27000fa628) in binary!
-	0x2a578  @objc ArticleThumbnailComponentSizer.(null) <stripped>
-WARNING: couldn't find address 0x2cd6c000fa448 (0x56c000fa448) in binary!
+WARNING: couldn't find address 0x36b4700101988 (0x34700101988) in binary!
+	0x2ad68  @objc ArticleThumbnailComponentSizer.(null) <stripped>
+WARNING: couldn't find address 0x2d64c001017a8 (0x64c001017a8) in binary!
 	0x58000000c  @objc ArticleThumbnailComponentSizer.(null) <stripped>
-WARNING: couldn't find address 0x3297c000fa600 (0x17c000fa600) in binary!
-	0x3ec88  @objc ArticleThumbnailComponentSizer.(null) <stripped>
+WARNING: couldn't find address 0x3341c00101960 (0x41c00101960) in binary!
+	0x3fe88  @objc ArticleThumbnailComponentSizer.(null) <stripped>
 
 	// Swift methods
  }
@@ -5305,7 +5422,7 @@ WARNING: couldn't find address 0x3297c000fa600 (0x17c000fa600) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : Yò // +0x0
+	let height : Èô // +0x0
 	let textViewFrame : CGRect // +0x8
 	let placeholderFrame : CGRect // +0x28
  }
@@ -5374,18 +5491,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var enabled : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alertPresenter : %p
+	let alertPresenter : p
+	let appConfigurationManager : FCNewsAppConfigurationManager
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3297c000fa600 (0x17c000fa600) in binary!
-	0x3ec88  @objc TagBlockedAlertPresenter.(null) <stripped>
-WARNING: couldn't find address 0x2f82c000fa5f0 (0x2c000fa5f0) in binary!
-	0x2cec0  @objc TagBlockedAlertPresenter.(null) <stripped>
-WARNING: couldn't find address 0x2cd24000fa400 (0x524000fa400) in binary!
+WARNING: couldn't find address 0x3341c00101960 (0x41c00101960) in binary!
+	0x3fe88  @objc TagBlockedAlertPresenter.(null) <stripped>
+WARNING: couldn't find address 0x3013c00101950 (0x13c00101950) in binary!
+	0x2d7b0  @objc TagBlockedAlertPresenter.(null) <stripped>
+WARNING: couldn't find address 0x2d60400101760 (0x60400101760) in binary!
 	0x38000000c  @objc TagBlockedAlertPresenter.(null) <stripped>
-WARNING: couldn't find address 0x3651c000fa5c8 (0x51c000fa5c8) in binary!
-	0x2ce90  @objc TagBlockedAlertPresenter.(null) <stripped>
-WARNING: couldn't find address 0x2ccf4000fa3d0 (0x4f4000fa3d0) in binary!
+WARNING: couldn't find address 0x3703c00101928 (0x3c00101928) in binary!
+	0x2d780  @objc TagBlockedAlertPresenter.(null) <stripped>
+WARNING: couldn't find address 0x2d5d400101730 (0x5d400101730) in binary!
 	0x28000000c  @objc TagBlockedAlertPresenter.(null) <stripped>
 
 	// Swift methods
@@ -5406,15 +5524,15 @@ WARNING: couldn't find address 0x2ccf4000fa3d0 (0x4f4000fa3d0) in binary!
 	let articleBackgroundColor : UIColor?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3651c000fa5c8 (0x51c000fa5c8) in binary!
-	0x2ce90  @objc EndOfArticlePresentationOptions.(null) <stripped>
-WARNING: couldn't find address 0x2ccf4000fa3d0 (0x4f4000fa3d0) in binary!
+WARNING: couldn't find address 0x3703c00101928 (0x3c00101928) in binary!
+	0x2d780  @objc EndOfArticlePresentationOptions.(null) <stripped>
+WARNING: couldn't find address 0x2d5d400101730 (0x5d400101730) in binary!
 	0x28000000c  @objc EndOfArticlePresentationOptions.(null) <stripped>
-WARNING: couldn't find address 0x2ce6c000fab90 (0x66c000fab90) in binary!
-	0x2ccd0  @objc EndOfArticlePresentationOptions.(null) <stripped>
+WARNING: couldn't find address 0x2d75c00101ef0 (0x75c00101ef0) in binary!
+	0x2d5b0  @objc EndOfArticlePresentationOptions.(null) <stripped>
 
 	// Swift methods
-	0xfd050  class func EndOfArticlePresentationOptions.__allocating_init(suppressPrimarySection:suppressSecondarySection:articleBackgroundColor:) // init 
+	0x100820  class func EndOfArticlePresentationOptions.__allocating_init(suppressPrimarySection:suppressSecondarySection:articleBackgroundColor:) // init 
  }
 
  class NewsArticles.IssueViewerRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, IssueViewerRouterType {
@@ -5422,7 +5540,7 @@ WARNING: couldn't find address 0x2ce6c000fab90 (0x66c000fab90) in binary!
 	// Properties
 	var controller : weak UIViewController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// Swift methods
  }
@@ -5452,16 +5570,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var tag : FCTagProviding // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tagURL : m? // +0x0 (0x0)
+	var tagURL : «> // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2ce6c000fab90 (0x66c000fab90) in binary!
-	0x2ccd0  @objc SharingTagURLActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x2d75c00101ef0 (0x75c00101ef0) in binary!
+	0x2d5b0  @objc SharingTagURLActivityItemSource.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x3dcffefa4a8  @objc SharingTagURLActivityItemSource.(null) <stripped>
+	0x73cffef1fd8  @objc SharingTagURLActivityItemSource.(null) <stripped>
 
 	// Swift methods
-	0xfddd0  class func SharingTagURLActivityItemSource.__allocating_init(tag:) // init 
+	0x1015a0  class func SharingTagURLActivityItemSource.__allocating_init(tag:) // init 
  }
 
  struct NewsArticles.RemoveIssue { }
@@ -5483,14 +5601,14 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let supportedActivityTypes : SharingArticleActivity
 
 	// Swift methods
-	0xff7a0  class func SharingActivityTypeProvider.__allocating_init(supportedActivityTypes:) // init 
+	0x102f70  class func SharingActivityTypeProvider.__allocating_init(supportedActivityTypes:) // init 
  }
 
  class NewsArticles.SaveArticleViewerFeatureVisibilityProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SaveArticleViewerFeatureVisibilityProviderType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featureAvailability : #ø
+	let featureAvailability : -¡
 
 	// Swift methods
  }
@@ -5499,11 +5617,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 	let factory : SharingActivityItemFactoryType
 
 	// Swift methods
-	0xffb90  class func SharingActivityItemFactoryWithTracker.__allocating_init(tracker:factory:) // init 
+	0x103360  class func SharingActivityItemFactoryWithTracker.__allocating_init(tracker:factory:) // init 
  }
 
  class NewsArticles.ArticleViewerPageViewControllerProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5521,14 +5639,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : -f
+	let url : ke
  }
 
  class NewsArticles.ArticleViewerRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleViewerRendererType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigationBarBottomPaletteHeight : Yò
+	let navigationBarBottomPaletteHeight : Èô
 	let featureManager : ArticleViewerFeatureManagerType
 
 	// Swift methods
@@ -5539,7 +5657,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contentProviderId : ;o
+	let contentProviderId : ïo
 	let languages : [String]
 	let rating : String?
 	let sectionId : String?
@@ -5549,24 +5667,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let additionalMetadata : Any?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2ce2c000fab50 (0x62c000fab50) in binary!
-	0x2cc90  @objc FeedMetadataAdContextProvider.(null) <stripped>
+WARNING: couldn't find address 0x2d71c00101eb0 (0x71c00101eb0) in binary!
+	0x2d570  @objc FeedMetadataAdContextProvider.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffefdfd8  @objc FeedMetadataAdContextProvider.(null) <stripped>
+	0xffef5ae8  @objc FeedMetadataAdContextProvider.(null) <stripped>
 
 	// Swift methods
-	0x101190  class func FeedMetadataAdContextProvider.__allocating_init(identifier:contentProviderId:languages:rating:sectionId:categories:keywords:targetingId:additionalMetadata:) // init 
+	0x104940  class func FeedMetadataAdContextProvider.__allocating_init(identifier:contentProviderId:languages:rating:sectionId:categories:keywords:targetingId:additionalMetadata:) // init 
  }
 
  class NewsArticles.SharingActivityProviderFactoryWithTracker : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 	let factory : SharingActivityProviderFactoryType
 
 	// Swift methods
-	0x101eb0  class func SharingActivityProviderFactoryWithTracker.__allocating_init(tracker:factory:) // init 
+	0x105660  class func SharingActivityProviderFactoryWithTracker.__allocating_init(tracker:factory:) // init 
  }
 
  class NewsArticles.ArticleViewerStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleViewerStylerType {
@@ -5579,7 +5697,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsArticles.ArticleViewerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2cdf4000fab18 (0x5f4000fab18) in binary!
+WARNING: couldn't find address 0x2d6e400101e78 (0x6e400101e78) in binary!
 	0x18000000c  @objc ArticleViewerAssembly.(null) <stripped>
  }
 
@@ -5588,7 +5706,7 @@ WARNING: couldn't find address 0x2cdf4000fab18 (0x5f4000fab18) in binary!
 	// Properties
 	let styler : ToolbarIssueCoverViewStylerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverViewRenderer : E¥
+	let coverViewRenderer : çµ
 
 	// Swift methods
  }
@@ -5599,21 +5717,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let type : String
 	let role : SXComponentRole
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutStore : 3b
+	let layoutStore : =b
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bannerAdLayoutAttributesFactory : Cc
+	let bannerAdLayoutAttributesFactory : Mc
 	let bannerAdFactory : ArticleBannerAdFactoryType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2cdc4000faee0 (0x5c4000faee0) in binary!
-	0x36c3c  @objc AdComponentSizerFactory.(null) <stripped>
-WARNING: couldn't find address 0x291dc000fa4e0 (0x1dc000fa4e0) in binary!
-	0x2cda0  @objc AdComponentSizerFactory.(null) <stripped>
-WARNING: couldn't find address 0x2cc04000fa2e0 (0x404000fa2e0) in binary!
+WARNING: couldn't find address 0x2d6b400102250 (0x6b400102250) in binary!
+	0x3775c  @objc AdComponentSizerFactory.(null) <stripped>
+WARNING: couldn't find address 0x29c6c00101840 (0x46c00101840) in binary!
+	0x2d690  @objc AdComponentSizerFactory.(null) <stripped>
+WARNING: couldn't find address 0x2d4e400101640 (0x4e400101640) in binary!
 	0x18000000c  @objc AdComponentSizerFactory.(null) <stripped>
-WARNING: couldn't find address 0x2cd7c000faaa0 (0x57c000faaa0) in binary!
+WARNING: couldn't find address 0x2d66c00101e00 (0x66c00101e00) in binary!
 	0x18000000c  @objc AdComponentSizerFactory.(null) <stripped>
-WARNING: couldn't find address 0x24574000fa5d0 (0x574000fa5d0) in binary!
+WARNING: couldn't find address 0x2504400101930 (0x4400101930) in binary!
 	0x38000000c  @objc AdComponentSizerFactory.(null) <stripped>
 
 	// Swift methods
@@ -5631,11 +5749,11 @@ WARNING: couldn't find address 0x24574000fa5d0 (0x574000fa5d0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : ã> // +0x0
+	let frame : Â= // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headerLayoutAttributes : 7? // +0x8
+	let headerLayoutAttributes : ô> // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cellLayoutAttributes : )? // +0x10
+	let cellLayoutAttributes : ã> // +0x10
  }
 
  enum NewsArticles.CodingKeys {
@@ -5650,7 +5768,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 	let activityProviderFactory : SharingActivityProviderFactoryType
 
 	// Swift methods
@@ -5688,9 +5806,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 
 	// Swift methods
  }
@@ -5711,22 +5829,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ struct NewsArticles.ReloadArticleViewerFeatureTransition {
+
+	// Properties
+	let previousViewModel : ReloadArticleViewerFeatureViewModel // +0x0
+	let nextViewModel : ReloadArticleViewerFeatureViewModel // +0x8
+ }
+
  class NewsArticles.EndOfArticleBlueprintModifierFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, EndOfArticleBlueprintModifierFactoryType {
 
 	// Properties
 	let options : EndOfArticlePresentationOptions
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featureAvailability : #ø
+	let featureAvailability : -¡
 	let sectionFactory : EndOfArticleSectionFactoryType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedContextFactory : ¡¢
+	let feedContextFactory : §
 
 	// Swift methods
  }
 
  class NewsArticles.UtilityAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2cd7c000faaa0 (0x57c000faaa0) in binary!
+WARNING: couldn't find address 0x2d66c00101e00 (0x66c00101e00) in binary!
 	0x18000000c  @objc UtilityAssembly.(null) <stripped>
  }
 
@@ -5734,7 +5859,7 @@ WARNING: couldn't find address 0x2cd7c000faaa0 (0x57c000faaa0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featureAvailability : #ø
+	let featureAvailability : -¡
 	let paidAccessChecker : FCPaidAccessCheckerType
 
 	// Swift methods
@@ -5747,17 +5872,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let eventHandler : InterstitialAdPreviewEventHandlerType
 	let interstitialModule : InterstitialAdModuleType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverViewManager : #r
+	let coverViewManager : Òq
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventManager : ÌG
+	let eventManager : ¡G
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3656c000fb2a0 (0x56c000fb2a0) in binary!
-	0x24350  @objc InterstitialAdPreviewViewController.(null) <stripped>
-WARNING: couldn't find address 0x2cba4000fa280 (0x3a4000fa280) in binary!
+WARNING: couldn't find address 0x3708c00102638 (0x8c00102638) in binary!
+	0x24e20  @objc InterstitialAdPreviewViewController.(null) <stripped>
+WARNING: couldn't find address 0x2d484001015e0 (0x484001015e0) in binary!
 	0x58000000c  @objc InterstitialAdPreviewViewController.(null) <stripped>
-WARNING: couldn't find address 0x2cb8c000fad48 (0x38c000fad48) in binary!
-	0x3eac0  @objc InterstitialAdPreviewViewController.(null) <stripped>
+WARNING: couldn't find address 0x2d46c001020a8 (0x46c001020a8) in binary!
+	0x3fcc0  @objc InterstitialAdPreviewViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -5776,28 +5901,28 @@ WARNING: couldn't find address 0x2cb8c000fad48 (0x38c000fad48) in binary!
 	var headline : FCHeadlineProviding?
 	var actionModel : SubscribeActionModel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseStarter : ˘I
+	let purchaseStarter : ΩI
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchasingSpinnerViewControllerFactory : ±J
+	let purchasingSpinnerViewControllerFactory : uJ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_purchasingSpinnerViewController : ëJ
+	var $__lazy_storage_$_purchasingSpinnerViewController : UJ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_verifyingSpinnerViewController : ëJ
+	var $__lazy_storage_$_verifyingSpinnerViewController : UJ
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType
 	let configurationManager : FCCoreConfigurationManager
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let router : 	J
+	let router : ÕI
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let familySharingLandingPageLauncher : ëJ
+	let familySharingLandingPageLauncher : UJ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offerManager : ≈ë
+	let offerManager : ’í
 	var presenter : weak SXViewControllerPresenting?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2ccd4000fa9f8 (0x4d4000fa9f8) in binary!
-	0x2cb38  @objc SubscribeActionHandler.(null) <stripped>
+WARNING: couldn't find address 0x2d5c400101d58 (0x5c400101d58) in binary!
+	0x2d418  @objc SubscribeActionHandler.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x6d4fff10d90  @objc SubscribeActionHandler.(null) <stripped>
+	0x234fff0a810  @objc SubscribeActionHandler.(null) <stripped>
 
 	// Swift methods
  }
@@ -5823,7 +5948,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	case publisher : EndOfArticlePublisherSectionModel
 	case title : EndOfArticleTitleSectionModel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case nativeAd : √^
+	case nativeAd : ∑^
  }
 
  struct NewsArticles.EndOfArticlePublisherSectionModel {
@@ -5843,6 +5968,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let adData : AdDataModelType // +0x30
  }
 
+ class NewsArticles.CampaignLandingPageAssembly : NSObject /usr/lib/libobjc.A.dylib {
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x2d58400101d18 (0x58400101d18) in binary!
+	0x18000000c  @objc CampaignLandingPageAssembly.(null) <stripped>
+ }
+
  class NewsArticles.IssueReadingHistoryRecorder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
@@ -5857,13 +5988,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ class NewsArticles.CampaignLandingPageInteractor : _SwiftObject /usr/lib/swift/libswiftCore.dylib, CampaignLandingPageInteractorType {
+
+	// Properties
+	var delegate : CampaignLandingPageInteractorTypeDelegate
+
+	// Swift methods
+ }
+
  class NewsArticles.InterstitialAdModelFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, InterstitialAdModelFactoryType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewManager : É[
+	let viewManager : ÛZ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let journal : c\
+	let journal : ”[
 
 	// Swift methods
  }
@@ -5875,27 +6014,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let backgroundColor : UIColor
 	let barForegroundColor : UIColor
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let statusBarStyle : ù^
+	let statusBarStyle : u^
  }
 
  class NewsArticles.BridgedIssueTableOfContentsViewControllerFactory : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 	let bridgedActionHandler : BridgedArticleViewerPageItemActionHandler
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x29844000fa3d0 (0x44000fa3d0) in binary!
-	0x364a8  @objc BridgedIssueTableOfContentsViewControllerFactory.(null) <stripped>
-WARNING: couldn't find address 0x2cc7c000fa9a0 (0x47c000fa9a0) in binary!
-	0x2cae0  @objc BridgedIssueTableOfContentsViewControllerFactory.(null) <stripped>
+WARNING: couldn't find address 0x2a0a400101700 (0xa400101700) in binary!
+	0x36f98  @objc BridgedIssueTableOfContentsViewControllerFactory.(null) <stripped>
+WARNING: couldn't find address 0x2d53c00101cd0 (0x53c00101cd0) in binary!
+	0x2d390  @objc BridgedIssueTableOfContentsViewControllerFactory.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x49cfff19c28  @objc BridgedIssueTableOfContentsViewControllerFactory.(null) <stripped>
-	0xfff1a6c0  @objc BridgedIssueTableOfContentsViewControllerFactory.ÿ[A^]√f.Ñ <stripped>
+	0x7ccfff14668  @objc BridgedIssueTableOfContentsViewControllerFactory.(null) <stripped>
+	0xfff15100  @objc BridgedIssueTableOfContentsViewControllerFactory.ãE∏Ë 4 <stripped>
 
 	// Swift methods
-	0x1194a0  class func BridgedIssueTableOfContentsViewControllerFactory.__allocating_init(resolver:bridgedContainer:bridgedActionHandler:) // init 
+	0x11f7c0  class func BridgedIssueTableOfContentsViewControllerFactory.__allocating_init(resolver:bridgedContainer:bridgedActionHandler:) // init 
  }
 
  class NewsArticles.ArticleStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleStylerType {
@@ -5954,7 +6093,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	// Properties
 	let styler : ToolbarIssueCoverViewStylerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverLayoutAttributesFactory : µ
+	let coverLayoutAttributesFactory : ]∂
 
 	// Swift methods
  }
@@ -5964,7 +6103,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let styler : ToolbarIssueCoverViewStylerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverLayoutAttributesFactory : µ
+	let coverLayoutAttributesFactory : ]∂
 
 	// Swift methods
  }
@@ -5973,43 +6112,44 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigationItemStyle : £
+	let navigationItemStyle : Á§
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var observableScrollView : m
+	var observableScrollView : €l
 	var styler : ArticleViewerStylerType
 	let eventHandler : ArticleViewerEventHandlerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pageViewController : cN
+	let pageViewController : √M
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pageBlueprintProvider : ï
+	let pageBlueprintProvider : ;ñ
 	let blueprintProvider : ArticleViewerBlueprintProviderType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverViewManager : #r
+	let coverViewManager : Òq
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventManager : ;C
+	let eventManager : ÉB
 	var prewarm : ()?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let barCompressionManager : 5L
+	let barCompressionManager : ÖK
 	let articleViewerImpressionManager : ArticleViewerImpressionManagerType
 	let interstitialAdManager : ArticleViewerInterstitialAdManagerType
 	let paidAccessChecker : FCPaidAccessCheckerType
 	var featureManager : ArticleViewerFeatureManagerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let toolbarManager : ’¨
+	let toolbarManager : ΩÆ
 	var featureTransitions : ArticleViewerFeatureAppearanceTransitionType
 	var hasPresentedFirstPage : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pageSheetPresentationObserver : ÀØ
+	var pageSheetPresentationObserver : ≈±
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commands : €®
+	let commands : Ω™
+	var onPagePresented : ArticleViewerPage
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3647c000fb1b0 (0x47c000fb1b0) in binary!
-	0x24260  @objc ArticleViewerViewController.(null) <stripped>
-WARNING: couldn't find address 0x2cab4000fa190 (0x2b4000fa190) in binary!
+WARNING: couldn't find address 0x36f6c00102518 (0x76c00102518) in binary!
+	0x24d00  @objc ArticleViewerViewController.(null) <stripped>
+WARNING: couldn't find address 0x2d364001014c0 (0x364001014c0) in binary!
 	0xc8000000c  @objc ArticleViewerViewController.(null) <stripped>
-WARNING: couldn't find address 0x3e9dc000fa660 (0x1dc000fa660) in binary!
-	0x327ae  @objc ArticleViewerViewController.(null) <stripped>
+WARNING: couldn't find address 0x3fbac00101990 (0x3ac00101990) in binary!
+	0x34dd8  @objc ArticleViewerViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -6029,12 +6169,14 @@ WARNING: couldn't find address 0x3e9dc000fa660 (0x1dc000fa660) in binary!
 	// Properties
 	let transformerManager : AnalyticsEventTransformerManagerType
 	let articleCoordinator : ArticleCoordinatorType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let eventManager : ”ê
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2cb94000fa8b8 (0x394000fa8b8) in binary!
-	0x2c9f8  @objc AnalyticsEventReporter.(null) <stripped>
+WARNING: couldn't find address 0x2d45400101be8 (0x45400101be8) in binary!
+	0x2d2a8  @objc AnalyticsEventReporter.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff262a0  @objc AnalyticsEventReporter.(null) <stripped>
+	0xfff210a0  @objc AnalyticsEventReporter.(null) <stripped>
 
 	// Swift methods
  }
@@ -6054,11 +6196,11 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	// Properties
 	let article : Article // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î // +0x40
+	let tracker : ñ // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contextBuilder : iÆ // +0x48
+	let contextBuilder : %∞ // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleAccess : ië // +0x70
+	let articleAccess : yí // +0x70
 	let presentationContext : PresentationContext // +0x78
 	let articleNavigationAction : ArticleNavigationAction // +0x88
  }
@@ -6075,7 +6217,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let article : Article // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î // +0x40
+	let tracker : ñ // +0x40
  }
 
  struct NewsArticles.InterstitialAdvertisementPage {
@@ -6083,7 +6225,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let advertisementModel : InterstitialAdModel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
  }
 
  struct NewsArticles.ReplicaAdvertisementPage {
@@ -6092,7 +6234,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let advertisement : ANFReplicaAdvertisement // +0x0
 	let issue : FCIssue // +0x98
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î // +0xa0
+	let tracker : ñ // +0xa0
  }
 
  struct NewsArticles.RSSArticlePage {
@@ -6100,18 +6242,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let article : Article // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î // +0x40
+	let tracker : ñ // +0x40
  }
 
  class NewsArticles.ArticleModule : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleModuleType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contextBuilder : iÆ
+	let contextBuilder : %∞
 
 	// Swift methods
  }
@@ -6122,17 +6264,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var headline : FCHeadlineProviding // +0x8 (0x8)
 	var sourceChannelPublic : Bool // +0x10 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleURL : m? // +0x0 (0x0)
+	let articleURL : «> // +0x0 (0x0)
 	let mailShareLinkText : String // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2cb5c000fa880 (0x35c000fa880) in binary!
-	0x2c9c0  @objc SharingArticleURLActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x2d41c00101bb0 (0x41c00101bb0) in binary!
+	0x2d270  @objc SharingArticleURLActivityItemSource.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0xccfff2e2c8  @objc SharingArticleURLActivityItemSource.(null) <stripped>
+	0x3fcfff29468  @objc SharingArticleURLActivityItemSource.(null) <stripped>
 
 	// Swift methods
-	0x131e60  class func SharingArticleURLActivityItemSource.__allocating_init(headline:articleURL:mailShareLinkText:) // init 
+	0x138cd0  class func SharingArticleURLActivityItemSource.__allocating_init(headline:articleURL:mailShareLinkText:) // init 
  }
 
  struct NewsArticles.ToolbarIssueCoverViewLayoutAttributes {
@@ -6141,7 +6283,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let frame : CGRect
 	let coverFrame : CGRect
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverLayoutAttributes : O_
+	let coverLayoutAttributes : á^
 	let callToActionLabelFrame : CGRect
 	let callToActionText : NSAttributedString
 	let coverDateLabelFrame : CGRect
@@ -6181,7 +6323,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case playlist   // +0x0
 	case playNow   // +0x200
 	case nextTrack   // +0x0
-	case dailyBriefing   // +0x21a150
+	case dailyBriefing   // +0x226930
 	case hero   // +0x0
 	case siri   // +0x0
 	case feed   // +0x0
@@ -6195,7 +6337,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsArticles.ArticleThumbnailComponentAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2cb1c000fa840 (0x31c000fa840) in binary!
+WARNING: couldn't find address 0x2d3dc00101b70 (0x3dc00101b70) in binary!
 	0x18000000c  @objc ArticleThumbnailComponentAssembly.(null) <stripped>
  }
 
@@ -6205,23 +6347,23 @@ WARNING: couldn't find address 0x2cb1c000fa840 (0x31c000fa840) in binary!
 	let identifier : String
 	var delegate : PDFReplicaViewControllerDelegate
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contentBackgroundColor : „l
+	let contentBackgroundColor : ©l
 	let styler : PDFReplicaStylerType
 	let eventHandler : PDFReplicaEventHandlerType
 	let pdfView : PDFView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverViewManager : #r
+	let coverViewManager : Òq
 	let loadingIndicatorProvider : CoverViewProviderType
 	let pinchRecognizer : UIPinchGestureRecognizer
 	var loadingStateMachine : NFStateMachine?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3630c000fb040 (0x30c000fb040) in binary!
-	0x240f0  @objc PDFReplicaViewController.(null) <stripped>
-WARNING: couldn't find address 0x2c944000fa020 (0x144000fa020) in binary!
+WARNING: couldn't find address 0x36dfc001023a8 (0x5fc001023a8) in binary!
+	0x24b90  @objc PDFReplicaViewController.(null) <stripped>
+WARNING: couldn't find address 0x2d1f400101350 (0x1f400101350) in binary!
 	0x98000000c  @objc PDFReplicaViewController.(null) <stripped>
-WARNING: couldn't find address 0x2f4b4000fa518 (0x4b4000fa518) in binary!
-	0x2c920  @objc PDFReplicaViewController.(null) <stripped>
+WARNING: couldn't find address 0x2fd9400101848 (0x59400101848) in binary!
+	0x2d1d0  @objc PDFReplicaViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -6246,11 +6388,11 @@ WARNING: couldn't find address 0x2f4b4000fa518 (0x4b4000fa518) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î // +0x10 (0x8)
+	let tracker : ñ // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contextBuilder : iÆ // +0x18 (0x28)
+	let contextBuilder : %∞ // +0x18 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleAccessMap : …A // +0x0 (0x0)
+	let articleAccessMap : …@ // +0x0 (0x0)
 	var cache : ArticleViewerPage // +0x0 (0x8)
 
 	// Swift methods
@@ -6260,19 +6402,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverViewButton : \
+	let coverViewButton : A[
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButton : ìC
+	let subscribeButton : ìB
 	let dateLabel : UILabel
 	let descriptionLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2bf44000fa588 (0x744000fa588) in binary!
-	0x36258  @objc TableOfContentsHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x2c89c000f9f78 (0x9c000f9f78) in binary!
+WARNING: couldn't find address 0x2c7f4001018b8 (0x7f4001018b8) in binary!
+	0x36d48  @objc TableOfContentsHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x2d14c001012a8 (0x14c001012a8) in binary!
 	0x48000000c  @objc TableOfContentsHeaderView.(null) <stripped>
-WARNING: couldn't find address 0x2ca14000fab30 (0x214000fab30) in binary!
-	0x3688c  @objc TableOfContentsHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x2d2d400101e70 (0x2d400101e70) in binary!
+	0x3737c  @objc TableOfContentsHeaderView.(null) <stripped>
  }
 
  enum NewsArticles.SharingChannelActivity {
@@ -6289,17 +6431,17 @@ WARNING: couldn't find address 0x2ca14000fab30 (0x214000fab30) in binary!
 	let type : String
 	let role : SXComponentRole
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2ca14000fab30 (0x214000fab30) in binary!
-	0x3688c  @objc ArticleThumbnailComponentViewFactory.(null) <stripped>
-WARNING: couldn't find address 0x2c9fc000fa720 (0x1fc000fa720) in binary!
-	0x2c860  @objc ArticleThumbnailComponentViewFactory.(null) <stripped>
+WARNING: couldn't find address 0x2d2d400101e70 (0x2d400101e70) in binary!
+	0x3737c  @objc ArticleThumbnailComponentViewFactory.(null) <stripped>
+WARNING: couldn't find address 0x2d2bc00101a50 (0x2bc00101a50) in binary!
+	0x2d110  @objc ArticleThumbnailComponentViewFactory.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff39a78  @objc ArticleThumbnailComponentViewFactory.(null) <stripped>
+	0xfff34d28  @objc ArticleThumbnailComponentViewFactory.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x6dcfff3ee10  @objc ArticleThumbnailComponentViewFactory.(null) <stripped>
+	0x20cfff3a2b0  @objc ArticleThumbnailComponentViewFactory.(null) <stripped>
 
 	// Swift methods
  }
@@ -6347,15 +6489,23 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	// Swift methods
  }
 
+ struct NewsArticles.ReloadFeatureContext {
+
+	// Properties
+	let headline : FCHeadlineProviding // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : ñ // +0x8
+ }
+
  class NewsArticles.ArticleViewerTitleViewRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleViewerTitleViewRendererType {
 
 	// Properties
 	let styler : ArticleViewerNavigationItemStyleProviderType
 	let publisherLogoImageCache : TSImageCacheType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleViewReuseProtector : Ì>
+	let titleViewReuseProtector : Ì=
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let toolbarItemReuseProtector : œ>
+	let toolbarItemReuseProtector : œ=
 
 	// Swift methods
  }
@@ -6378,15 +6528,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var zoomable : weak NAZoomable?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x361e4000fa110 (0x1e4000fa110) in binary!
-	0x2c9b8  @objc WeakZoomable.(null) <stripped>
-WARNING: couldn't find address 0x2c81c000f9ef8 (0x1c000f9ef8) in binary!
+WARNING: couldn't find address 0x36cd400101440 (0x4d400101440) in binary!
+	0x2d278  @objc WeakZoomable.(null) <stripped>
+WARNING: couldn't find address 0x2d0cc00101228 (0xcc00101228) in binary!
 	0xa8000000c  @objc WeakZoomable.(null) <stripped>
-WARNING: couldn't find address 0x3242c000fafe0 (0x42c000fafe0) in binary!
-	0x32420  @objc WeakZoomable.(null) <stripped>
+WARNING: couldn't find address 0x32e9c00102350 (0x69c00102350) in binary!
+	0x32e90  @objc WeakZoomable.(null) <stripped>
 
 	// Swift methods
-	0x142f20  class func WeakZoomable.__allocating_init(_:) // init 
+	0x14a090  class func WeakZoomable.__allocating_init(_:) // init 
  }
 
  struct NewsArticles.TableOfContentsArticleViewerFeatureViewModel {
@@ -6417,10 +6567,10 @@ WARNING: couldn't find address 0x3242c000fafe0 (0x42c000fafe0) in binary!
 	let currentlyPlayingObservable : PlayableArticleInfo
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2f30c000fa068 (0x30c000fa068) in binary!
-	0x36128  @objc ArticleScrollPositionManager.(null) <stripped>
+WARNING: couldn't find address 0x2fbec00101398 (0x3ec00101398) in binary!
+	0x36c18  @objc ArticleScrollPositionManager.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x63cfff4ca90  @objc ArticleScrollPositionManager.(null) <stripped>
+	0x1a4fff482c0  @objc ArticleScrollPositionManager.(null) <stripped>
 
 	// Swift methods
  }
@@ -6429,7 +6579,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutOptions : iF
+	let layoutOptions : âE
  }
 
  class NewsArticles.ReportConcernCommandHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -6437,7 +6587,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let reportConcernModule : ReportConcernModuleType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sceneProvider : j
+	let sceneProvider : ›i
 
 	// Swift methods
  }
@@ -6447,7 +6597,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let frame : CGRect
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueCoverViewLayoutAttributes : O_
+	let issueCoverViewLayoutAttributes : á^
 	let dateLabelFrame : CGRect
 	let descriptionFrame : CGRect
 	let subscriptionButtonFrame : CGRect
@@ -6469,22 +6619,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let model : TableOfContentsHeaderViewModel
 	let styler : TableOfContentsHeaderViewStylerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueCoverViewLayoutAttributesFactory : ÕY
+	let issueCoverViewLayoutAttributesFactory : Y
  }
 
  struct NewsArticles.TableOfContentsHeaderViewLayout {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : ã> // +0x0
+	let frame : Â= // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueCoverViewLayoutAttributes : ∑. // +0x8
+	let issueCoverViewLayoutAttributes : ?- // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dateLabelFrame : ã> // +0x10
+	let dateLabelFrame : Â= // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let descriptionFrame : ã> // +0x18
+	let descriptionFrame : Â= // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscriptionButtonFrame : ã> // +0x20
+	let subscriptionButtonFrame : Â= // +0x20
  }
 
  struct NewsArticles.EndOfArticleLegacyNativeAdBlueprintModifier {
@@ -6492,7 +6642,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let nativeAdData : NativeAdData
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedContext : {W
+	let feedContext : ´V
 	let allowFollowing : Bool
  }
 
@@ -6508,7 +6658,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var controller : weak UIViewController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// Swift methods
  }
@@ -6517,9 +6667,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 
 	// Swift methods
  }
@@ -6571,19 +6721,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let logoImageView : UIImageView
 	let logoNameLabel : UILabel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let followButton : @
+	let followButton : ?
 	let backgroundColorView : UIView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let logoImageOnTap : ~
+	let logoImageOnTap : ~
 	var axElement : AXElement
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2bdf4000fa438 (0x5f4000fa438) in binary!
-	0x36108  @objc EndOfArticlePublisherView.(null) <stripped>
-WARNING: couldn't find address 0x2c74c000f9e28 (0x74c000f9e28) in binary!
+WARNING: couldn't find address 0x2c6a400101768 (0x6a400101768) in binary!
+	0x36bf8  @objc EndOfArticlePublisherView.(null) <stripped>
+WARNING: couldn't find address 0x2cffc00101158 (0x7fc00101158) in binary!
 	0xc8000000c  @objc EndOfArticlePublisherView.(null) <stripped>
-WARNING: couldn't find address 0x3235c000fa150 (0x35c000fa150) in binary!
-	0x3e668  @objc EndOfArticlePublisherView.(null) <stripped>
+WARNING: couldn't find address 0x32dcc00101480 (0x5cc00101480) in binary!
+	0x3f838  @objc EndOfArticlePublisherView.(null) <stripped>
  }
 
  class NewsArticles.AXElement : UIAccessibilityElement /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -6592,16 +6742,19 @@ WARNING: couldn't find address 0x3235c000fa150 (0x35c000fa150) in binary!
 	var containerView : EndOfArticlePublisherView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2422c000fb2a8 (0x22c000fb2a8) in binary!
-	0x38880  @objc AXElement.(null) <stripped>
-WARNING: couldn't find address 0x36034000fbb00 (0x34000fbb00) in binary!
-	0x2c808  @objc AXElement.(null) <stripped>
-WARNING: couldn't find address 0x2c66c000f9d48 (0x66c000f9d48) in binary!
+WARNING: couldn't find address 0x24ccc00102620 (0x4cc00102620) in binary!
+	0x39440  @objc AXElement.(null) <stripped>
+WARNING: couldn't find address 0x2d03400102a60 (0x3400102a60) in binary!
+	0x27370  @objc AXElement.(null) <stripped>
+WARNING: couldn't find address 0x36b0c00102e68 (0x30c00102e68) in binary!
+	0x2d0b0  @objc AXElement.(null) <stripped>
+WARNING: couldn't find address 0x2cf0400101060 (0x70400101060) in binary!
 	0x28000000c  @objc AXElement.(null) <stripped>
-WARNING: couldn't find address 0x2bce4000fa328 (0x4e4000fa328) in binary!
-	0x35ff8  @objc AXElement.(null) <stripped>
+WARNING: couldn't find address 0x2c57c00101640 (0x57c00101640) in binary!
+	0x36ad0  @objc AXElement.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x4dcfff54590  @objc AXElement.(null) <stripped>
+	0x7f4fff4ff48  @objc AXElement.(null) <stripped>
+	0x4c001017e0  @objc AXElement.2∏ <stripped>
 
 	// Swift methods
  }
@@ -6647,25 +6800,25 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	// Properties
 	let styler : EndOfArticleTitleViewStylerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cache : :
+	var cache : 9
 
 	// Swift methods
  }
 
  class NewsArticles.AdIgnorableView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2bce4000fa328 (0x4e4000fa328) in binary!
-	0x35ff8  @objc AdIgnorableView.(null) <stripped>
+WARNING: couldn't find address 0x2c57c00101640 (0x57c00101640) in binary!
+	0x36ad0  @objc AdIgnorableView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x4dcfff54590  @objc AdIgnorableView.(null) <stripped>
+	0x7f4fff4ff48  @objc AdIgnorableView.(null) <stripped>
  }
 
  class NewsArticles.AdIgnorableViewFactory : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c7c4000f9f28 (0x7c4000f9f28) in binary!
-	0x2c7b8  @objc AdIgnorableViewFactory.(null) <stripped>
+WARNING: couldn't find address 0x2d06c00101240 (0x6c00101240) in binary!
+	0x2d060  @objc AdIgnorableViewFactory.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff56f70  @objc AdIgnorableViewFactory.(null) <stripped>
+	0xfff52928  @objc AdIgnorableViewFactory.(null) <stripped>
  }
 
  class NewsArticles.TableOfContentsRouter : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TableOfContentsRouterType {
@@ -6673,7 +6826,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	// Properties
 	var controller : weak UIViewController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 	let actionHandler : IssueTableOfContentsActionHandlerType
 
 	// Swift methods
@@ -6691,10 +6844,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delegate : IssueViewerInteractorTypeDelegate
 	let dataManager : IssueViewerDataManagerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adContextBuilder : iÆ
+	let adContextBuilder : %∞
 	var coordinator : IssueViewerCoordinatorType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventManager : ?8
+	let eventManager : O7
 	var issue : Issue
 	var session : IssueViewSession
 
@@ -6719,7 +6872,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsArticles.InterstitialAdvertisementAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c7a4000fa4c8 (0x7a4000fa4c8) in binary!
+WARNING: couldn't find address 0x2d04c001017e0 (0x4c001017e0) in binary!
 	0x18000000c  @objc InterstitialAdvertisementAssembly.(null) <stripped>
  }
 
@@ -6730,6 +6883,8 @@ WARNING: couldn't find address 0x2c7a4000fa4c8 (0x7a4000fa4c8) in binary!
 
 	// Swift methods
  }
+
+ struct NewsArticles.Reload { }
 
  class NewsArticles.TextInputViewLayoutAttributesFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TextInputViewLayoutAttributesFactoryType {
 
@@ -6788,15 +6943,15 @@ WARNING: couldn't find address 0x2c7a4000fa4c8 (0x7a4000fa4c8) in binary!
 	// Properties
 	let articleRecirculationConfigService : ArticleRecirculationConfigurationServiceType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagService : 3å
+	let tagService : !å
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineService : ˘|
+	let headlineService : Á|
 	let articleRecirculationConfigFactory : ArticleRecirculationSpecifiedSectionDataProviderFactoryType
 	let articleProviderService : ArticleProviderServiceType
 	let historyService : HistoryServiceType
 	let endOfArticleQuotaSatisfierFactory : EndOfArticleQuotaSatisfierFactoryType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let personalizationService : 1∂
+	let personalizationService : Â∑
 
 	// Swift methods
  }
@@ -6809,7 +6964,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var primarySectionHeadlines : EndOfArticleHeadlineModel // +0x30
 	var secondarySectionHeadlines : EndOfArticleHeadlineModel // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var configLoadingError : ◊S // +0x40
+	var configLoadingError : QS // +0x40
 	var publisherTag : FCTagProviding? // +0x48
  }
 
@@ -6849,7 +7004,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// Swift methods
  }
@@ -6862,7 +7017,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let currentlyPlayingObservable : PlayableArticleInfo
 	let listeningProgressManager : ArticleListeningProgressManagerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let featureAvailability : #ø
+	let featureAvailability : -¡
 	let bundleSubscriptionManager : FCBundleSubscriptionManagerType
 	let articleAudioPrewarmer : ArticleAudioPrewarmerType
 	let audioActionHandler : NAAudioActionHandlerType
@@ -6893,7 +7048,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let styler : EndOfArticlePublisherViewStylerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cache : è1
+	var cache : Å0
 
 	// Swift methods
  }
@@ -6903,9 +7058,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let nextContext : ArticleViewerShareFeatureContext
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sceneProvider : j
+	let sceneProvider : ›i
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let toolbarManager : ’¨
+	let toolbarManager : ΩÆ
 	var toolbarItemProvider : weak Swift.AnyObject?
 	let sharingActivityProviderFactory : SharingActivityProviderFactoryType
 
@@ -6924,7 +7079,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsArticles.AdSettingsFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x173390  class func AdSettingsFactory.__allocating_init() // init 
+	0x17bda0  class func AdSettingsFactory.__allocating_init() // init 
  }
 
  enum NewsArticles.ReportConcernDetailModel {
@@ -7028,7 +7183,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var delegate : ReportConcernDetailBlueprintViewCellProviderDelegate
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let imageHeadlineViewRenderer : ±ß
+	let imageHeadlineViewRenderer : ©
 	let textInputViewRenderer : TextInputViewRendererType
 	let textViewProvider : TextViewProviderType
 
@@ -7050,11 +7205,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case headline : H
+	case headline : ;G
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case nativeAd : H
+	case nativeAd : )G
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case advertisement : ıG
+	case advertisement : G
  }
 
  struct NewsArticles.Features {
@@ -7068,9 +7223,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleAccessMap : …A // +0x0 (0x0)
+	let articleAccessMap : …@ // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallFactory : ı§ // +0x0 (0x28)
+	let paywallFactory : «¶ // +0x0 (0x28)
 
 	// Swift methods
  }
@@ -7086,13 +7241,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let x : Yò // +0x0
+	let x : Èô // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let y : Yò // +0x8
+	let y : Èô // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let height : Yò // +0x10
+	let height : Èô // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let width : Yò // +0x18
+	let width : Èô // +0x18
  }
 
  enum NewsArticles.LinkType {
@@ -7128,14 +7283,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let linkedContentProvider : NULinkedArticleContentProvider
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c774000fa890 (0x774000fa890) in binary!
-	0x365ec  @objc ArticleThumbnailComponentSizerFactory.(null) <stripped>
-WARNING: couldn't find address 0x2c75c000fa480 (0x75c000fa480) in binary!
-	0x2c5c0  @objc ArticleThumbnailComponentSizerFactory.(null) <stripped>
+WARNING: couldn't find address 0x2d01c00101bb8 (0x1c00101bb8) in binary!
+	0x370c4  @objc ArticleThumbnailComponentSizerFactory.(null) <stripped>
+	0x2ce58  @objc ArticleThumbnailComponentSizerFactory. <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff80d08  @objc ArticleThumbnailComponentSizerFactory.(null) <stripped>
+	0xfff7db70  @objc ArticleThumbnailComponentSizerFactory.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x68cfff84930  @objc ArticleThumbnailComponentSizerFactory.(null) <stripped>
+	0x1a4fff81b98  @objc ArticleThumbnailComponentSizerFactory.(null) <stripped>
 
 	// Swift methods
  }
@@ -7144,9 +7298,9 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let nativeAdInsertion : «D
+	let nativeAdInsertion : ÈC
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedContext : {W
+	let feedContext : ´V
 	let allowFollowing : Bool
  }
 
@@ -7158,10 +7312,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let headline : FCHeadlineProviding // +0x10 (0x8)
 	let origin : EndOfArticleHeadlineModelOrigin // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineState : sF // +0x74735f5f (0x0)
+	let headlineState : ïE // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let nativeAdInfo : ı= // +0x0 (0x0)
-	let isAccessible : Bool // +0x45545f5f (0x1)
+	let nativeAdInfo : = // +0x45545f5f (0x0)
+	let isAccessible : Bool // +0x0 (0x1)
 
 	// Swift methods
  }
@@ -7182,7 +7336,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let headerViewStyler : TableOfContentsHeaderViewStylerType
 	let pdfReplicaCellStyler : TableOfContentsPDFCellViewStylerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueCoverViewLayoutAttributesFactory : ÕY
+	let issueCoverViewLayoutAttributesFactory : Y
 
 	// Swift methods
  }
@@ -7197,13 +7351,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class NewsArticles.BridgedPageKind : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
-	let kind : PageKind // +0x18a720
+	let kind : PageKind // +0x193670
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c704000fa428 (0x704000fa428) in binary!
-	0x2c568  @objc BridgedPageKind.(null) <stripped>
+WARNING: couldn't find address 0x2cfac00101740 (0x7ac00101740) in binary!
+	0x2ce00  @objc BridgedPageKind.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff87080  @objc BridgedPageKind.(null) <stripped>
+	0xfff842e8  @objc BridgedPageKind.(null) <stripped>
 
 	// Swift methods
  }
@@ -7219,7 +7373,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
  class NewsArticles.TextSizeControlAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c6e4000fa408 (0x6e4000fa408) in binary!
+WARNING: couldn't find address 0x2cf8c00101720 (0x78c00101720) in binary!
 	0x18000000c  @objc TextSizeControlAssembly.(null) <stripped>
  }
 
@@ -7235,17 +7389,17 @@ WARNING: couldn't find address 0x2c6e4000fa408 (0x6e4000fa408) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutStore : 3b
+	let layoutStore : =b
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bannerAdLayoutAttributesFactory : Cc
+	let bannerAdLayoutAttributesFactory : Mc
 	let bannerAdFactory : ArticleBannerAdFactoryType
 	var $__lazy_storage_$_isVisualDebuggingEnabled : Bool?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x29d24000fb578 (0x524000fb578) in binary!
-	0x2c518  @objc AdComponentSizer.(null) <stripped>
+WARNING: couldn't find address 0x2a4cc001028e0 (0x4cc001028e0) in binary!
+	0x2cdb0  @objc AdComponentSizer.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0xecfff87c50  @objc AdComponentSizer.(null) <stripped>
+	0x404fff84e98  @objc AdComponentSizer.(null) <stripped>
 
 	// Swift methods
  }
@@ -7261,12 +7415,12 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	var hasPresentedInterstitial : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x35e6c000faba0 (0x66c000faba0) in binary!
-	0x23c50  @objc InterstitialAdvertisementViewController.(null) <stripped>
-WARNING: couldn't find address 0x2c4a4000f9b80 (0x4a4000f9b80) in binary!
+WARNING: couldn't find address 0x3694400101ef0 (0x14400101ef0) in binary!
+	0x246d8  @objc InterstitialAdvertisementViewController.(null) <stripped>
+WARNING: couldn't find address 0x2cd3c00100e98 (0x53c00100e98) in binary!
 	0xa8000000c  @objc InterstitialAdvertisementViewController.(null) <stripped>
-WARNING: couldn't find address 0x23e2c000fa0a0 (0x62c000fa0a0) in binary!
-	0x2f008  @objc InterstitialAdvertisementViewController.(null) <stripped>
+WARNING: couldn't find address 0x248b4001013b8 (0xb4001013b8) in binary!
+	0x2f8d0  @objc InterstitialAdvertisementViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -7286,7 +7440,7 @@ WARNING: couldn't find address 0x23e2c000fa0a0 (0x62c000fa0a0) in binary!
 	// Properties
 	let articleIdentifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headlineService : ˘|
+	let headlineService : Á|
 
 	// Swift methods
  }
@@ -7302,7 +7456,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case discarded : DiscardReason
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case unknown : ≈J
+	case unknown : ?J
 	case adjacentPageAdsUnsupported  
  }
 
@@ -7325,32 +7479,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : IssueViewerStylerType
 	let eventHandler : IssueViewerEventHandlerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sceneStateManager : ±)
+	let sceneStateManager : £(
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverViewManager : #r
+	let coverViewManager : Òq
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let navigationItemStyle : £
+	let navigationItemStyle : Á§
 	var contentViewController : IssueViewerEmbeddable
 	var afterLoad : IssueViewerEmbeddable
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c59c000f9d18 (0x59c000f9d18) in binary!
-	0x2c590  @objc IssueViewerViewController.(null) <stripped>
-WARNING: couldn't find address 0x35da4000faad8 (0x5a4000faad8) in binary!
-	0x23b88  @objc IssueViewerViewController.(null) <stripped>
-WARNING: couldn't find address 0x2c3dc000f9ab8 (0x3dc000f9ab8) in binary!
+WARNING: couldn't find address 0x2ce4400101030 (0x64400101030) in binary!
+	0x2ce38  @objc IssueViewerViewController.(null) <stripped>
+WARNING: couldn't find address 0x3687c00101e28 (0x7c00101e28) in binary!
+	0x24610  @objc IssueViewerViewController.(null) <stripped>
+WARNING: couldn't find address 0x2cc7400100dd0 (0x47400100dd0) in binary!
 	0x78000000c  @objc IssueViewerViewController.(null) <stripped>
-WARNING: couldn't find address 0x2c4b4000f9dd8 (0x4b4000f9dd8) in binary!
-	0x2c3b8  @objc IssueViewerViewController.(null) <stripped>
-WARNING: couldn't find address 0x3e2ec000fa530 (0x2ec000fa530) in binary!
-	0x3e2e0  @objc IssueViewerViewController.(null) <stripped>
+WARNING: couldn't find address 0x2cd5c001010f0 (0x55c001010f0) in binary!
+	0x2cc50  @objc IssueViewerViewController.(null) <stripped>
+WARNING: couldn't find address 0x3f4a400101848 (0x4a400101848) in binary!
+	0x3f498  @objc IssueViewerViewController.(null) <stripped>
 
 	// Swift methods
  }
 
  class NewsArticles.RendererAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c4f4000fa218 (0x4f4000fa218) in binary!
+WARNING: couldn't find address 0x2cd9c00101530 (0x59c00101530) in binary!
 	0x18000000c  @objc RendererAssembly.(null) <stripped>
  }
 
@@ -7359,17 +7513,17 @@ WARNING: couldn't find address 0x2c4f4000fa218 (0x4f4000fa218) in binary!
 	// Properties
 	var styler : TableOfContentsHeaderViewStylerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let coverViewRenderer : E¥
+	let coverViewRenderer : çµ
 
 	// Swift methods
  }
 
  class NewsArticles.ProxyAuthenticationKeyProvider : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2b85c000f9c50 (0x5c000f9c50) in binary!
-	0x2c4b8  @objc ProxyAuthenticationKeyProvider.(null) <stripped>
+WARNING: couldn't find address 0x2c0f400100f68 (0xf400100f68) in binary!
+	0x2cd60  @objc ProxyAuthenticationKeyProvider.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x4e4fff8f9b0  @objc ProxyAuthenticationKeyProvider.(null) <stripped>
+	0x7fcfff8cbc8  @objc ProxyAuthenticationKeyProvider.(null) <stripped>
  }
 
  class NewsArticles.RSSArticleViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -7380,20 +7534,20 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let contentContext : FCContentContext
 	var contentViewController : UIViewController & NULoadable?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contentBackgroundColor : „l
+	let contentBackgroundColor : ©l
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let observableScrollView : m
+	let observableScrollView : €l
 	let styler : RSSArticleStylerType
 	let eventHandler : RSSArticleEventHandlerType
 	let keyCommandManager : NUArticleKeyCommandManager
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x35cc4000fa9f8 (0x4c4000fa9f8) in binary!
-	0x23aa8  @objc RSSArticleViewController.(null) <stripped>
-WARNING: couldn't find address 0x2c2fc000f99d8 (0x2fc000f99d8) in binary!
+WARNING: couldn't find address 0x3679c00101d48 (0x79c00101d48) in binary!
+	0x24530  @objc RSSArticleViewController.(null) <stripped>
+WARNING: couldn't find address 0x2cb9400100cf0 (0x39400100cf0) in binary!
 	0x68000000c  @objc RSSArticleViewController.(null) <stripped>
-WARNING: couldn't find address 0x23c84000f9e38 (0x484000f9e38) in binary!
-	0x2c2d8  @objc RSSArticleViewController.(null) <stripped>
+WARNING: couldn't find address 0x2470c00101150 (0x70c00101150) in binary!
+	0x2cb70  @objc RSSArticleViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -7448,12 +7602,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsArticles.TagActivityItemsConfiguration : UIActivityItemsConfiguration /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x35c44000f9bb8 (0x444000f9bb8) in binary!
-	0x35c38  @objc TagActivityItemsConfiguration.(null) <stripped>
-WARNING: couldn't find address 0x35c2c000fa700 (0x42c000fa700) in binary!
+WARNING: couldn't find address 0x3671c00100ed0 (0x71c00100ed0) in binary!
+	0x36710  @objc TagActivityItemsConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x3670400101a48 (0x70400101a48) in binary!
 	0x38000000c  @objc TagActivityItemsConfiguration.(null) <stripped>
-WARNING: couldn't find address 0x3af08000f9b90 (0x708000f9b90) in binary!
-	0x35c08  @objc TagActivityItemsConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x3bc5000100ea8 (0x45000100ea8) in binary!
+	0x366e0  @objc TagActivityItemsConfiguration.(null) <stripped>
  }
 
  class NewsArticles.ArticleViewerArticleFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticleViewerArticleFactoryType {
@@ -7479,7 +7633,7 @@ WARNING: couldn't find address 0x3af08000f9b90 (0x708000f9b90) in binary!
 	// Properties
 	var controller : weak UIViewController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 
 	// Swift methods
  }
@@ -7488,7 +7642,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let locale : % // +0x0
+	let locale : $ // +0x0
 	let theme : Theme // +0x28
 	let foregroundColor : UIColor // +0x30
 	var backgroundColor : UIColor // +0x38
@@ -7513,11 +7667,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsArticles.ArticleActivityItemsConfiguration : UIActivityItemsConfiguration /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3af08000f9b90 (0x708000f9b90) in binary!
-	0x35c08  @objc ArticleActivityItemsConfiguration.(null) <stripped>
-WARNING: couldn't find address 0x35bfc000fa6d0 (0x3fc000fa6d0) in binary!
+WARNING: couldn't find address 0x3bc5000100ea8 (0x45000100ea8) in binary!
+	0x366e0  @objc ArticleActivityItemsConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x366d400101a18 (0x6d400101a18) in binary!
 	0x18000000c  @objc ArticleActivityItemsConfiguration.(null) <stripped>
-WARNING: couldn't find address 0x2c3c4000fa0e8 (0x3c4000fa0e8) in binary!
+WARNING: couldn't find address 0x2cc6c00101400 (0x46c00101400) in binary!
 	0x18000000c  @objc ArticleActivityItemsConfiguration.(null) <stripped>
  }
 
@@ -7598,7 +7752,7 @@ WARNING: couldn't find address 0x2c3c4000fa0e8 (0x3c4000fa0e8) in binary!
 
  class NewsArticles.TableOfContentsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c3c4000fa0e8 (0x3c4000fa0e8) in binary!
+WARNING: couldn't find address 0x2cc6c00101400 (0x46c00101400) in binary!
 	0x18000000c  @objc TableOfContentsAssembly.(null) <stripped>
  }
 
@@ -7672,12 +7826,12 @@ WARNING: couldn't find address 0x2c3c4000fa0e8 (0x3c4000fa0e8) in binary!
 	// Properties
 	var delegate : EndOfArticleBlueprintViewSupplementaryProviderDelegate
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedItemSupplementaryRenderer : Å=
+	let feedItemSupplementaryRenderer : £<
 	let publisherViewRenderer : EndOfArticlePublisherViewRendererType
 	let titleViewRenderer : EndOfArticleTitleViewRendererType
 	var didTapButton : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commandCenter : Å-
+	let commandCenter : õ,
 
 	// Swift methods
  }
@@ -7701,6 +7855,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let endOfArticleMaxInaccessiblePaidArticleCount : Int // +0x8
  }
 
+ enum NewsArticles.Validation {
+
+	// Properties
+	case short : Int
+	case pass  
+ }
+
+ enum NewsArticles.Validation {
+
+	// Properties
+	case short : Int
+	case over : Int
+	case pass  
+ }
+
  class NewsArticles.URLHandler : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
@@ -7710,15 +7879,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var newWindowClosures :  empty-list 
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c394000fa0b8 (0x394000fa0b8) in binary!
-	0x2c1f8  @objc URLHandler.(null) <stripped>
+WARNING: couldn't find address 0x2cc3c001013d0 (0x43c001013d0) in binary!
+	0x2ca90  @objc URLHandler.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x604fffa9d60  @objc URLHandler.(null) <stripped>
+	0x11cfffa8e78  @objc URLHandler.(null) <stripped>
  }
 
  class NewsArticles.ReportConcernAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c354000fa078 (0x354000fa078) in binary!
+WARNING: couldn't find address 0x2cbfc00101390 (0x3fc00101390) in binary!
 	0x18000000c  @objc ReportConcernAssembly.(null) <stripped>
  }
 
@@ -7727,18 +7896,18 @@ WARNING: couldn't find address 0x2c354000fa078 (0x354000fa078) in binary!
 	// Properties
 	var delegate : ArticleViewerInterstitialAdManagerDelegate
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let requestStore : C4
+	let requestStore : c3
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let requestManager : ˘4
+	let requestManager : 4
 	let adModelFactory : InterstitialAdModelFactoryType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let journal : c\
+	let journal : ”[
 	let historyRecorder : NAInterstitialAdvertisementHistoryRecorder
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventManager : ° 
+	let eventManager : ô
 	var currentPlacementIdentifier : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pendingLoadToken : K5
+	var pendingLoadToken : k4
 	var currentPageIdentifier : String?
 
 	// Swift methods
@@ -7758,22 +7927,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : gd
+	let startDate : √c
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let endDate : gd
+	let endDate : √c
  }
 
  class NewsArticles.VideoAdProvider : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let preroll : œ7 // +0x0 (0x0)
+	let preroll : Ô6 // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let placement : È4 // +0x0 (0x0)
+	let placement : Ωs // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let journal : Û© // +0x0 (0x8)
+	let journal : ;´ // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let request : k7 // +0x0 (0x0)
+	let request : ë6 // +0x0 (0x0)
 	let appConfiguration : FCNewsAppConfiguration // +0x0 (0x8)
 	let presentationHandler : VideoAdInteractionPresentationHandler // +0x0 (0x8)
 	let tracker : VideoAdTrackerType // +0x0 (0x28)
@@ -7782,10 +7951,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var metadata : SXVideoMetadata? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c324000fa048 (0x324000fa048) in binary!
-	0x2c188  @objc VideoAdProvider.(null) <stripped>
+WARNING: couldn't find address 0x2cbcc00101360 (0x3cc00101360) in binary!
+	0x2ca20  @objc VideoAdProvider.(null) <stripped>
 WARNING: couldn't find address 0x158000000c (0x158000000c) in binary!
-	0x3acfffb54a0  @objc VideoAdProvider.(null) <stripped>
+	0x6c4fffb4558  @objc VideoAdProvider.(null) <stripped>
 
 	// Swift methods
  }
@@ -7795,7 +7964,7 @@ WARNING: couldn't find address 0x158000000c (0x158000000c) in binary!
 	// Properties
 	var controller : weak UIViewController?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolver : Åô
+	let resolver : õ
 	let router : RouterType
 	var hasVisitedTableOfContents : Bool
 
@@ -7808,15 +7977,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let styler : ReportConcernStylerType
 	let eventHandler : ReportConcernEventHandlerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let blueprintViewController : Ì(
+	let blueprintViewController : (
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x35a1c000fa750 (0x21c000fa750) in binary!
-	0x23800  @objc ReportConcernViewController.(null) <stripped>
-WARNING: couldn't find address 0x2c054000f9730 (0x54000f9730) in binary!
+WARNING: couldn't find address 0x364f400101aa0 (0x4f400101aa0) in binary!
+	0x24288  @objc ReportConcernViewController.(null) <stripped>
+WARNING: couldn't find address 0x2c8ec00100a48 (0xec00100a48) in binary!
 	0x58000000c  @objc ReportConcernViewController.(null) <stripped>
-WARNING: couldn't find address 0x2c03c000fa1f8 (0x3c000fa1f8) in binary!
-	0x2c030  @objc ReportConcernViewController.(null) <stripped>
+WARNING: couldn't find address 0x2c8d400101510 (0xd400101510) in binary!
+	0x2c8c8  @objc ReportConcernViewController.(null) <stripped>
 
 	// Swift methods
  }
@@ -7840,12 +8009,12 @@ WARNING: couldn't find address 0x2c03c000fa1f8 (0x3c000fa1f8) in binary!
 	var placeholderText : NSAttributedString?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2b684000f9cc8 (0x684000f9cc8) in binary!
-	0x35998  @objc TextInputView.(null) <stripped>
-WARNING: couldn't find address 0x2bfdc000f96b8 (0x7dc000f96b8) in binary!
+WARNING: couldn't find address 0x2bf1c00100fe0 (0x71c00100fe0) in binary!
+	0x36470  @objc TextInputView.(null) <stripped>
+WARNING: couldn't find address 0x2c874001009d0 (0x74001009d0) in binary!
 	0x28000000c  @objc TextInputView.(null) <stripped>
-WARNING: couldn't find address 0x23964000f9c30 (0x164000f9c30) in binary!
-	0x23958  @objc TextInputView.(null) <stripped>
+WARNING: couldn't find address 0x243ec00100f48 (0x3ec00100f48) in binary!
+	0x243e0  @objc TextInputView.(null) <stripped>
  }
 
  class NewsArticles.TableOfContentsArticleViewerFeatureProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -7876,7 +8045,7 @@ WARNING: couldn't find address 0x23964000f9c30 (0x164000f9c30) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let fontBookFactory : €â
+	let fontBookFactory : …â
 
 	// Swift methods
  }
@@ -7898,10 +8067,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let headline : FCHeadlineProviding
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c134000f9e58 (0x134000f9e58) in binary!
-	0x2bf98  @objc DarkModeConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x2c9dc00101170 (0x1dc00101170) in binary!
+	0x2c830  @objc DarkModeConfiguration.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x3f4fffbac20  @objc DarkModeConfiguration.(null) <stripped>
+	0x70cfffb9e88  @objc DarkModeConfiguration.(null) <stripped>
 
 	// Swift methods
  }
@@ -7917,7 +8086,7 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let journal : ˜∞
+	let journal : ≥≤
 
 	// Swift methods
  }
@@ -7929,40 +8098,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case rssArticle : RSSArticlePage
  }
 
- class NewsArticles.ArticlePreviewManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ArticlePreviewManagerType {
-
-	// Properties
-	var preview : PreviewContainer
-
-	// Swift methods
- }
-
- struct NewsArticles.PreviewContainer {
-
-	// Properties
-	var previewable : ArticlePreviewable // +0x0
-	let articleIdentifier : String // +0x10
-	let channelIdentifier : String // +0x20
- }
-
  struct NewsArticles.Context {
 
 	// Properties
 	let pageModel : TableOfContentsPDFCellViewModel
 	let styler : TableOfContentsPDFCellViewStylerType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let layoutOptions : g
+	let layoutOptions : Y
  }
 
  struct NewsArticles.TableOfContentsPDFCellViewLayout {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let frame : ã> // +0x0
+	let frame : Â= // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let imageFrame : ã> // +0x8
+	let imageFrame : Â= // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let borderLayerFrame : ã> // +0x10
+	let borderLayerFrame : Â= // +0x10
  }
 
  struct NewsArticles.LayoutAttributes {
@@ -7987,19 +8140,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let headline : FCHeadlineProviding
 	let coreConfigurationManager : FCCoreConfigurationManager
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bundlePurchasePrewarmer : Öv
+	let bundlePurchasePrewarmer : Yv
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offerManager : ≈ë
+	let offerManager : ’í
 	var $__lazy_storage_$_title : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c0dc000f9e20 (0xdc000f9e20) in binary!
-	0x238e0  @objc SubscriptionButtonTextProvider.(null) <stripped>
-WARNING: couldn't find address 0x2c0c4000f9de8 (0xc4000f9de8) in binary!
-	0x2bf28  @objc SubscriptionButtonTextProvider.(null) <stripped>
+WARNING: couldn't find address 0x2c98400101138 (0x18400101138) in binary!
+	0x24368  @objc SubscriptionButtonTextProvider.(null) <stripped>
+WARNING: couldn't find address 0x2c96c00101100 (0x16c00101100) in binary!
+	0x2c7c0  @objc SubscriptionButtonTextProvider.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x5e4fffc04d0  @objc SubscriptionButtonTextProvider.(null) <stripped>
-	0x84000f9da8  @objc SubscriptionButtonTextProvider.ç=í|% <stripped>
+	0xfcfffbf058  @objc SubscriptionButtonTextProvider.(null) <stripped>
+	0x12c001010c0  @objc SubscriptionButtonTextProvider.% <stripped>
 
 	// Swift methods
  }
@@ -8009,9 +8162,9 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	// Properties
 	let visibilityProvider : ShareArticleViewerFeatureVisibilityProviderType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sceneProvider : j
+	let sceneProvider : ›i
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let toolbarManager : ’¨
+	let toolbarManager : ΩÆ
 	let sharingIntentFactory : ArticleViewerSharingIntentFactoryType
 	let sharingActivityProviderFactory : SharingActivityProviderFactoryType
 
@@ -8026,13 +8179,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let paused : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c0a4000f9dc8 (0xa4000f9dc8) in binary!
-	0x2bf08  @objc PlayableArticleInfo.(null) <stripped>
+WARNING: couldn't find address 0x2c94c001010e0 (0x14c001010e0) in binary!
+	0x2c7a0  @objc PlayableArticleInfo.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffc0f50  @objc PlayableArticleInfo.(null) <stripped>
+	0xfffbfad8  @objc PlayableArticleInfo.(null) <stripped>
 
 	// Swift methods
-	0x1c4de0  class func PlayableArticleInfo.__allocating_init(articleId:listeningProgress:paused:) // init 
+	0x1cf650  class func PlayableArticleInfo.__allocating_init(articleId:listeningProgress:paused:) // init 
  }
 
  class NewsArticles.EndOfArticleEventHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, EndOfArticleEventHandlerType {
@@ -8042,14 +8195,14 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let interactor : EndOfArticleInteractorType
 	let router : EndOfArticleRouterType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : ≈î
+	let tracker : ñ
 
 	// Swift methods
  }
 
  class NewsArticles.FactoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c084000f9da8 (0x84000f9da8) in binary!
+WARNING: couldn't find address 0x2c92c001010c0 (0x12c001010c0) in binary!
 	0x18000000c  @objc FactoryAssembly.(null) <stripped>
  }
 
@@ -8061,7 +8214,7 @@ WARNING: couldn't find address 0x2c084000f9da8 (0x84000f9da8) in binary!
 	case navigateToChannel : (identifier: String)
 	case presentViewController : UIViewController
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case openURL : -f
+	case openURL : ke
 	case navigateToNextPage  
  }
 
@@ -8078,7 +8231,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let visibilityProvider : LikeDislikeArticleViewerFeatureVisibilityProviderType // +0x10 (0x28)
 	let styler : BaseStylerType // +0x38 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commandCenter : õö // +0x60 (0x28)
+	let commandCenter : ªõ // +0x60 (0x28)
 
 	// Swift methods
  }
@@ -8345,14 +8498,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var listeningProgressObservables :  first-element-marker 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paidBundleConfigManager : A4
+	let paidBundleConfigManager : €3
 	var cachedArticleTextRanges : ArticleTextRanges
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c054000f9d78 (0x54000f9d78) in binary!
-	0x2beb8  @objc ArticleListeningProgressManager.(null) <stripped>
+WARNING: couldn't find address 0x2c8fc00101090 (0xfc00101090) in binary!
+	0x2c750  @objc ArticleListeningProgressManager.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffd9450  @objc ArticleListeningProgressManager.(null) <stripped>
+	0xfffd8178  @objc ArticleListeningProgressManager.(null) <stripped>
 
 	// Swift methods
  }
@@ -8383,11 +8536,11 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let count : Int
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2c01c000f9d40 (0x1c000f9d40) in binary!
+WARNING: couldn't find address 0x2c8c400101058 (0xc400101058) in binary!
 	0x18000000c  @objc ArticleCountAdContextProvider.(null) <stripped>
 
 	// Swift methods
-	0x1dfe90  class func ArticleCountAdContextProvider.__allocating_init(count:) // init 
+	0x1ea8a0  class func ArticleCountAdContextProvider.__allocating_init(count:) // init 
  }
 
  class NewsArticles.InterstitialAdPreviewInteractor : _SwiftObject /usr/lib/swift/libswiftCore.dylib, InterstitialAdPreviewInteractorType {
@@ -8395,16 +8548,16 @@ WARNING: couldn't find address 0x2c01c000f9d40 (0x1c000f9d40) in binary!
 	// Properties
 	var delegate : InterstitialAdPreviewInteractorTypeDelegate // +0x10 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let preview : «- // +0x0 (0x0)
+	let preview : a- // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contextBuilder : iÆ // +0x0 (0x28)
+	let contextBuilder : %∞ // +0x0 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adManager : Cä // +0x0 (0x28)
+	let adManager : 7ä // +0x0 (0x28)
 	let dataManager : InterstitialAdPreviewDataManagerType // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewManager : A, // +0x0 (0x8)
+	let viewManager : €+ // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var token : K5 // +0x0 (0x8)
+	var token : k4 // +0x0 (0x8)
 
 	// Swift methods
  }
@@ -8428,7 +8581,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let titleFontMetrics : UIFontMetrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let commandCenter : õö // +0x8
+	let commandCenter : ªõ // +0x8
  }
 
  enum NewsArticles.CommandShareContent {
@@ -8465,10 +8618,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsArticles.Images : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2bef4000f9c18 (0x6f4000f9c18) in binary!
-	0x2bd58  @objc Images.(null) <stripped>
+WARNING: couldn't find address 0x2c78c00100f20 (0x78c00100f20) in binary!
+	0x2c5e0  @objc Images.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x414fffe1580  @objc Images.(null) <stripped>
+	0x71cfffdfca8  @objc Images.(null) <stripped>
  }
 
  class NewsArticles.SharingPlainTextBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -8485,20 +8638,6 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	case article :  first-element-marker 
 	case reason : ConcernModel
- }
-
- enum NewsArticles.EndOfArticleCountProviderError {
-
-	// Properties
-	case notEnoughColumns  
- }
-
- struct NewsArticles.EndOfArticleCountProvider: EndOfArticleCountProviderType {
-
-	// Properties
-	let headlineColumnWidth : Int // +0x0
-	let idealMinimumHeadlines : Int // +0x8
-	let columnCount : Int // +0x10
  }
 
  struct NewsArticles.TableOfContentsColorPalette {
@@ -8527,25 +8666,49 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var issueURL : m? // +0x0 (0x0)
+	var issueURL : «> // +0x0 (0x0)
 	let issueTitle : String // +0x0 (0x10)
 	let issueDescription : String // +0x0 (0x10)
 	let issueCoverDate : String // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2bed4000f9bf8 (0x6d4000f9bf8) in binary!
-	0x2bd38  @objc SharingIssueURLActivityItemSource.(null) <stripped>
+WARNING: couldn't find address 0x2c76c00100f00 (0x76c00100f00) in binary!
+	0x2c5c0  @objc SharingIssueURLActivityItemSource.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x444fffe1750  @objc SharingIssueURLActivityItemSource.(null) <stripped>
+	0x74cfffdfe78  @objc SharingIssueURLActivityItemSource.(null) <stripped>
 
 	// Swift methods
-	0x1e6140  class func SharingIssueURLActivityItemSource.__allocating_init(issue:) // init 
+	0x1f0560  class func SharingIssueURLActivityItemSource.__allocating_init(issue:) // init 
  }
 
  class NewsArticles.EndOfArticleAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2be94000f9bb8 (0x694000f9bb8) in binary!
+WARNING: couldn't find address 0x2c72c00100ec0 (0x72c00100ec0) in binary!
 	0x18000000c  @objc EndOfArticleAssembly.(null) <stripped>
+ }
+
+ class NewsArticles.CampaignLandingPageViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let modalHostStyle : z
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let isImpressionable : øl
+	var pageDelegate : ArticleViewerPageDelegate
+	let articleViewController : ContentBackgroundColorObservable
+	let styler : CampaignLandingPageStylerType
+	let eventHandler : CampaignLandingPageEventHandlerType
+	let urlHandler : URLHandler
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x3614c001016f8 (0x14c001016f8) in binary!
+	0x23ee0  @objc CampaignLandingPageViewController.(null) <stripped>
+WARNING: couldn't find address 0x2c544001006a0 (0x544001006a0) in binary!
+	0x28000000c  @objc CampaignLandingPageViewController.(null) <stripped>
+WARNING: couldn't find address 0x2c52c00101168 (0x52c00101168) in binary!
+	0x240b0  @objc CampaignLandingPageViewController.(null) <stripped>
+
+	// Swift methods
  }
 
  class NewsArticles.ColorPalette : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ColorPaletteProviding {
@@ -8587,18 +8750,18 @@ WARNING: couldn't find address 0x2be94000f9bb8 (0x694000f9bb8) in binary!
 	let titleView : NUTitleView
 	var model : TitleViewModel
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let onTap : ~
+	let onTap : ~
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2be64000f9b88 (0x664000f9b88) in binary!
-	0x35678  @objc TitleView.(null) <stripped>
-WARNING: couldn't find address 0x2bcbc000f99c8 (0x4bc000f99c8) in binary!
-	0x2b340  @objc TitleView.(null) <stripped>
-WARNING: couldn't find address 0x2bca4000f9380 (0x4a4000f9380) in binary!
+WARNING: couldn't find address 0x2c6ac00100e40 (0x6ac00100e40) in binary!
+	0x360f0  @objc TitleView.(null) <stripped>
+WARNING: couldn't find address 0x2c4f400100c80 (0x4f400100c80) in binary!
+	0x2bb78  @objc TitleView.(null) <stripped>
+WARNING: couldn't find address 0x2c4dc00100638 (0x4dc00100638) in binary!
 	0x18000000c  @objc TitleView.(null) <stripped>
-WARNING: couldn't find address 0x2362c000f9918 (0x62c000f9918) in binary!
+WARNING: couldn't find address 0x2405400100bd0 (0x5400100bd0) in binary!
 	0x18000000c  @objc TitleView.(null) <stripped>
-WARNING: couldn't find address 0x2e7fc000f9650 (0x7fc000f9650) in binary!
+WARNING: couldn't find address 0x2f06400100908 (0x6400100908) in binary!
 	0x98000000c  @objc TitleView.(null) <stripped>
  }
 
@@ -8606,19 +8769,19 @@ WARNING: couldn't find address 0x2e7fc000f9650 (0x7fc000f9650) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var coverView : ±-
+	var coverView : E-
 	var callToActionLabel : UILabel
 	var coverDateLabel : UILabel
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2bd74000f9a98 (0x574000f9a98) in binary!
-	0x35588  @objc ToolbarIssueCoverView.(null) <stripped>
-WARNING: couldn't find address 0x2b25c000f98a0 (0x25c000f98a0) in binary!
-	0x2bbc0  @objc ToolbarIssueCoverView.(null) <stripped>
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	0x54e3a4d4152  @objc ToolbarIssueCoverView.(null) <stripped>
-WARNING: couldn't find address 0x73656c6369747241 (0x46369747241) in binary!
-	0x377654e3a54  @objc ToolbarIssueCoverView.(null) <stripped>
+WARNING: couldn't find address 0x2c5bc00100d50 (0x5bc00100d50) in binary!
+	0x36000  @objc ToolbarIssueCoverView.(null) <stripped>
+WARNING: couldn't find address 0x2ba9400100b58 (0x29400100b58) in binary!
+	0x2c3f8  @objc ToolbarIssueCoverView.(null) <stripped>
+WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
+	0x46369747241  @objc ToolbarIssueCoverView.(null) <stripped>
+WARNING: couldn't find address 0x43454a4f52502020 (0x24f52502020) in binary!
+	0xa  @objc ToolbarIssueCoverView.(null) <stripped>
  }
 
  class NewsArticles.ToolbarIssueCoverButton : UIButton /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -8629,27 +8792,27 @@ WARNING: couldn't find address 0x73656c6369747241 (0x46369747241) in binary!
 	var highlightColor : UIColor
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x31884000fb510 (0x84000fb510) in binary!
-	0x3db90  @objc ToolbarIssueCoverButton.(null) <stripped>
-WARNING: couldn't find address 0x355f4000fa328 (0x5f4000fa328) in binary!
-	0x3db88  @objc ToolbarIssueCoverButton.(null) <stripped>
-WARNING: couldn't find address 0x3db9c000fb4f0 (0x39c000fb4f0) in binary!
-	0x237b0  @objc ToolbarIssueCoverButton.(null) <stripped>
-WARNING: couldn't find address 0x37e04000fb4e0 (0x604000fb4e0) in binary!
-	0x2b298  @objc ToolbarIssueCoverButton.(null) <stripped>
-WARNING: couldn't find address 0x2bbfc000f92d8 (0x3fc000f92d8) in binary!
+WARNING: couldn't find address 0x3227c00102808 (0x27c00102808) in binary!
+	0x3ece8  @objc ToolbarIssueCoverButton.(null) <stripped>
+WARNING: couldn't find address 0x3606c00101618 (0x6c00101618) in binary!
+	0x3ece0  @objc ToolbarIssueCoverButton.(null) <stripped>
+WARNING: couldn't find address 0x3ecf4001027e8 (0x4f4001027e8) in binary!
+	0x241d8  @objc ToolbarIssueCoverButton.(null) <stripped>
+WARNING: couldn't find address 0x3894c001027d8 (0x14c001027d8) in binary!
+	0x2bad0  @objc ToolbarIssueCoverButton.(null) <stripped>
+WARNING: couldn't find address 0x2c43400100590 (0x43400100590) in binary!
 	0x48000000c  @objc ToolbarIssueCoverButton.(null) <stripped>
-WARNING: couldn't find address 0x2bd74000f9a98 (0x574000f9a98) in binary!
-	0x35588  @objc ToolbarIssueCoverButton.(null) <stripped>
-WARNING: couldn't find address 0x2b25c000f98a0 (0x25c000f98a0) in binary!
-	0x2bbc0  @objc ToolbarIssueCoverButton.(null) <stripped>
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	0x54e3a4d4152  @objc ToolbarIssueCoverButton.(null) <stripped>
-WARNING: couldn't find address 0x73656c6369747241 (0x46369747241) in binary!
-	0x377654e3a54  @objc ToolbarIssueCoverButton.(null) <stripped>
+WARNING: couldn't find address 0x2c5bc00100d50 (0x5bc00100d50) in binary!
+	0x36000  @objc ToolbarIssueCoverButton.(null) <stripped>
+WARNING: couldn't find address 0x2ba9400100b58 (0x29400100b58) in binary!
+	0x2c3f8  @objc ToolbarIssueCoverButton.(null) <stripped>
+WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
+	0x46369747241  @objc ToolbarIssueCoverButton.(null) <stripped>
+WARNING: couldn't find address 0x43454a4f52502020 (0x24f52502020) in binary!
+	0xa  @objc ToolbarIssueCoverButton.(null) <stripped>
 
 	// Swift methods
-	0x1f8dd0  class func ToolbarIssueCoverButton.__allocating_init(coverView:) // init 
+	0x204950  class func ToolbarIssueCoverButton.__allocating_init(coverView:) // init 
  }
 
  enum NewsArticles.RouteModel {
@@ -8680,11 +8843,11 @@ WARNING: couldn't find address 0x73656c6369747241 (0x46369747241) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var blueprint : üé
+	var blueprint : ≈è
 
 	// Swift methods
-	0x1fbca0  func <stripped> // getter 
-	0x1fbcd0  func <stripped> // setter 
-	0x1fbd10  func <stripped> // modifyCoroutine 
-	0x1fba90  class func ArticleViewerBlueprintProvider.__allocating_init(blueprint:) // init 
+	0x207820  func <stripped> // getter 
+	0x207850  func <stripped> // setter 
+	0x207890  func <stripped> // modifyCoroutine 
+	0x207610  class func ArticleViewerBlueprintProvider.__allocating_init(blueprint:) // init 
  }

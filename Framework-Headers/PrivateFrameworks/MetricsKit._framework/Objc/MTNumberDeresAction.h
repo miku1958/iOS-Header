@@ -6,14 +6,16 @@
 
 #import <MetricsKit/MTTreatmentAction.h>
 
-@class NSNumber;
+@class NSArray;
 
 @interface MTNumberDeresAction : MTTreatmentAction
 {
-    NSNumber *_precision;
+    double _precision;
+    NSArray *_buckets;
 }
 
-@property (strong, nonatomic) NSNumber *precision; // @synthesize precision=_precision;
+@property (strong, nonatomic) NSArray *buckets; // @synthesize buckets=_buckets;
+@property (nonatomic) double precision; // @synthesize precision=_precision;
 
 - (void).cxx_destruct;
 - (id)initWithField:(id)arg1 configDictionary:(id)arg2;

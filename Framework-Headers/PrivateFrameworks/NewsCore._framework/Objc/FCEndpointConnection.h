@@ -10,16 +10,18 @@
 #import <NewsCore/FCEndpointConnectionType-Protocol.h>
 #import <NewsCore/NSURLSessionDelegate-Protocol.h>
 
-@class NSString, NSURLSession;
+@class FCNetworkBehaviorMonitor, NSString, NSURLSession;
 
 @interface FCEndpointConnection : NSObject <NSURLSessionDelegate, FCCoreConfigurationObserving, FCEndpointConnectionType>
 {
     NSURLSession *_session;
+    FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;
 @property (strong, nonatomic) NSURLSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
 
@@ -27,10 +29,14 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithSourceApplicationBundleIdentifier:(id)arg1;
+- (id)initWithSourceApplicationBundleIdentifier:(id)arg1 networkBehaviorMonitor:(id)arg2;
 - (void)performAuthenticatedHTTPRequestWithURL:(id)arg1 valuesByHTTPHeaderField:(id)arg2 method:(id)arg3 data:(id)arg4 contentType:(id)arg5 priority:(float)arg6 reauthenticateIfNeeded:(BOOL)arg7 callbackQueue:(id)arg8 completion:(CDUnknownBlockType)arg9;
+- (void)performAuthenticatedHTTPRequestWithURL:(id)arg1 valuesByHTTPHeaderField:(id)arg2 method:(id)arg3 data:(id)arg4 contentType:(id)arg5 priority:(float)arg6 reauthenticateIfNeeded:(BOOL)arg7 networkEventType:(int)arg8 callbackQueue:(id)arg9 completion:(CDUnknownBlockType)arg10;
 - (void)performHTTPRequestWithURL:(id)arg1 method:(id)arg2 data:(id)arg3 contentType:(id)arg4 priority:(float)arg5 requiresMescalSigning:(BOOL)arg6 callbackQueue:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)performHTTPRequestWithURL:(id)arg1 method:(id)arg2 data:(id)arg3 contentType:(id)arg4 priority:(float)arg5 requiresMescalSigning:(BOOL)arg6 networkEventType:(int)arg7 callbackQueue:(id)arg8 completion:(CDUnknownBlockType)arg9;
 - (void)performHTTPRequestWithURL:(id)arg1 valuesByHTTPHeaderField:(id)arg2 method:(id)arg3 data:(id)arg4 contentType:(id)arg5 priority:(float)arg6 requiresMescalSigning:(BOOL)arg7 callbackQueue:(id)arg8 completion:(CDUnknownBlockType)arg9;
-- (void)performHTTPRequestWithURL:(id)arg1 valuesByHTTPHeaderField:(id)arg2 method:(id)arg3 data:(id)arg4 contentType:(id)arg5 priority:(float)arg6 requiresMescalSigning:(BOOL)arg7 requiresAuthKitHeaders:(BOOL)arg8 callbackQueue:(id)arg9 completion:(CDUnknownBlockType)arg10;
+- (void)performHTTPRequestWithURL:(id)arg1 valuesByHTTPHeaderField:(id)arg2 method:(id)arg3 data:(id)arg4 contentType:(id)arg5 priority:(float)arg6 requiresMescalSigning:(BOOL)arg7 networkEventType:(int)arg8 callbackQueue:(id)arg9 completion:(CDUnknownBlockType)arg10;
+- (void)performHTTPRequestWithURL:(id)arg1 valuesByHTTPHeaderField:(id)arg2 method:(id)arg3 data:(id)arg4 contentType:(id)arg5 priority:(float)arg6 requiresMescalSigning:(BOOL)arg7 requiresAuthKitHeaders:(BOOL)arg8 networkEventType:(int)arg9 callbackQueue:(id)arg10 completion:(CDUnknownBlockType)arg11;
 
 @end
 

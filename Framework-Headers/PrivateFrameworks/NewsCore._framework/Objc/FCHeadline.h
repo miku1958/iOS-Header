@@ -267,7 +267,7 @@
 - (void)applyHeadlineMetadata:(id)arg1 configuration:(id)arg2;
 - (unsigned long long)articleContentType;
 - (void)assignStoryType:(unsigned long long)arg1 withConfiguration:(id)arg2;
-- (id)contentManifestWithContext:(id)arg1;
+- (id)contentWithContext:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)enumerateTopicCohortsWithBlock:(CDUnknownBlockType)arg1;
 - (void)enumerateTopicConversionStatsWithBlock:(CDUnknownBlockType)arg1;

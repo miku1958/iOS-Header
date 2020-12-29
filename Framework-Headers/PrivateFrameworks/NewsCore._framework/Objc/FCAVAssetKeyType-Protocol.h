@@ -4,14 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+#import <NewsCore/FCContentArchivable-Protocol.h>
+
 @class NSData, NSDate;
 
-@protocol FCAVAssetKeyType
+@protocol FCAVAssetKeyType <FCContentArchivable>
 
 @property (readonly, nonatomic) NSDate *creationDate;
-@property (readonly, nonatomic) NSData *data;
 @property (readonly, nonatomic) NSDate *expirationDate;
 @property (readonly, nonatomic) BOOL isExpired;
+@property (readonly, nonatomic) NSData *keyData;
 
 @end
 

@@ -15,9 +15,10 @@
 @interface _TtC13NewsAnalytics15SessionObserver : NSObject <FCBundleSubscriptionChangeObserver, FCUserInfoObserving, FCSubscriptionObserving>
 {
     MISSING_TYPE *sessionManager;
-    MISSING_TYPE *tracker;
     MISSING_TYPE *cloudContext;
     MISSING_TYPE *client;
+    MISSING_TYPE *kind;
+    MISSING_TYPE *tracker;
     MISSING_TYPE *window;
     MISSING_TYPE *sceneSessionIdentifier;
 }
@@ -31,6 +32,7 @@
 - (void)dealloc;
 - (id)init;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)offerDidChange:(id)arg1;
 - (void)pushContentEnvironmentData;
 - (void)pushMobileData;
 - (void)pushOrientationData;

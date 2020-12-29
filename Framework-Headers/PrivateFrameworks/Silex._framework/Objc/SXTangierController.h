@@ -116,7 +116,7 @@
 - (void)interactiveCanvasControllerWillStartInteraction:(id)arg1;
 - (id)layoutDescriptionForComponent:(id)arg1;
 - (struct CGPoint)pointForCharacterAtIndex:(unsigned long long)arg1 inComponentWithIdentifier:(id)arg2;
-- (id)scrollPositionForRect:(struct CGRect)arg1 componentRect:(struct CGRect)arg2 componentIdentifier:(id)arg3 canvasWidth:(double)arg4 relativePageOffset:(double)arg5;
+- (id)scrollPositionForVisibleBounds:(struct CGRect)arg1 canvasWidth:(double)arg2;
 - (void)setUnscaledCanvasRect:(struct CGRect)arg1;
 - (void)teardown;
 - (id)topLevelLayersForInteractiveCanvasController:(id)arg1;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *commandCenter;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *subscriptionController;
 }
 
 @end

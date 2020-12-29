@@ -18,7 +18,6 @@
     NSDictionary *_entitlements;
     NSString *_restrictions;
     NSArray *_consentedBrands;
-    NSDictionary *_location;
     unsigned long long _protocolVersion;
     NSArray *_deniedBrands;
     NSString *_platform;
@@ -31,7 +30,6 @@
 @property (strong, nonatomic) NSDictionary *entitlements; // @synthesize entitlements=_entitlements;
 @property (nonatomic) BOOL internalBuild; // @synthesize internalBuild=_internalBuild;
 @property (strong, nonatomic) NSString *localeIdentifier; // @synthesize localeIdentifier=_localeIdentifier;
-@property (readonly, nonatomic) NSDictionary *location; // @synthesize location=_location;
 @property (strong, nonatomic) NSString *platform; // @synthesize platform=_platform;
 @property (nonatomic) unsigned long long protocolVersion; // @synthesize protocolVersion=_protocolVersion;
 @property (strong, nonatomic) NSString *restrictions; // @synthesize restrictions=_restrictions;
@@ -42,7 +40,6 @@
 - (void).cxx_destruct;
 - (id)_consentQuery;
 - (id)_entitlementsQuery;
-- (id)_locationQueryParameters;
 - (id)_queryParameters;
 - (id)description;
 - (unsigned long long)hash;

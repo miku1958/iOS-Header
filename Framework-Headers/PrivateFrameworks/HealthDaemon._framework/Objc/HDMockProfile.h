@@ -29,6 +29,9 @@
 @property (strong, nonatomic) HDUserCharacteristicsManager *userCharacteristicsManager; // @synthesize userCharacteristicsManager=_userCharacteristicsManager;
 
 - (void).cxx_destruct;
+- (id)nanoSyncManager;
+- (id)profileIdentifier;
+- (long long)profileType;
 
 @end
 

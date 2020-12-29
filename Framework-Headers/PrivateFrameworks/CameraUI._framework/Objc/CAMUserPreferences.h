@@ -22,6 +22,7 @@
     BOOL _shouldUseContentAwareDistortionCorrection;
     BOOL _didAcknowledgePortraitModeDescription;
     BOOL _videoConfigurationControlEnabled;
+    BOOL _PALVideoEnabled;
     BOOL _lowLightVideoEnabled;
     BOOL _shouldForceMonoAudioRecording;
     BOOL _HDR10BitVideoEnabled;
@@ -31,6 +32,8 @@
     BOOL _didAcknowledgeCTMDescription;
     BOOL _overCapturePreviewEnabled;
     BOOL _semanticDevelopmentEnabled;
+    BOOL _rawControlEnabled;
+    BOOL _preserveRAW;
     BOOL _preserveEffectFilter;
     BOOL _preserveCaptureMode;
     BOOL _preserveLivePhoto;
@@ -58,6 +61,7 @@
 }
 
 @property (readonly, nonatomic) BOOL HDR10BitVideoEnabled; // @synthesize HDR10BitVideoEnabled=_HDR10BitVideoEnabled;
+@property (readonly, nonatomic, getter=isPALVideoEnabled) BOOL PALVideoEnabled; // @synthesize PALVideoEnabled=_PALVideoEnabled;
 @property (readonly, nonatomic) BOOL QRBannersEnabledInSettings; // @synthesize QRBannersEnabledInSettings=_QRBannersEnabledInSettings;
 @property (readonly, nonatomic) long long VFRMode; // @synthesize VFRMode=_VFRMode;
 @property (readonly, nonatomic) BOOL _preferHEVCWhenAvailable; // @synthesize _preferHEVCWhenAvailable=__preferHEVCWhenAvailable;
@@ -88,7 +92,9 @@
 @property (readonly, nonatomic) BOOL preserveEffectFilter; // @synthesize preserveEffectFilter=_preserveEffectFilter;
 @property (readonly, nonatomic) BOOL preserveExposure; // @synthesize preserveExposure=_preserveExposure;
 @property (readonly, nonatomic) BOOL preserveLivePhoto; // @synthesize preserveLivePhoto=_preserveLivePhoto;
+@property (readonly, nonatomic) BOOL preserveRAW; // @synthesize preserveRAW=_preserveRAW;
 @property (nonatomic) long long previewViewAspectMode; // @synthesize previewViewAspectMode=_previewViewAspectMode;
+@property (readonly, nonatomic) BOOL rawControlEnabled; // @synthesize rawControlEnabled=_rawControlEnabled;
 @property (strong, nonatomic, setter=_setResetTimeoutDate:) NSDate *resetTimeoutDate; // @synthesize resetTimeoutDate=_resetTimeoutDate;
 @property (readonly, nonatomic) BOOL responsiveShutterEnabled; // @synthesize responsiveShutterEnabled=_responsiveShutterEnabled;
 @property (readonly, nonatomic) BOOL semanticDevelopmentEnabled; // @synthesize semanticDevelopmentEnabled=_semanticDevelopmentEnabled;

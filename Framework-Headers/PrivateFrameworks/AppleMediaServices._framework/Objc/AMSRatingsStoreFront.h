@@ -27,9 +27,11 @@
 @property (readonly, nonatomic) NSString *storeFrontID; // @synthesize storeFrontID=_storeFrontID;
 @property (readonly, nonatomic) NSArray *supportedLanguages; // @synthesize supportedLanguages=_supportedLanguages;
 
++ (id)storeFrontWithDictionary:(id)arg1 mediaType:(unsigned long long)arg2;
 + (id)storeFrontWithDictionary:(id)arg1 mediaType:(unsigned long long)arg2 andStoreFront:(id)arg3;
 - (void).cxx_destruct;
 - (id)description;
+- (id)initWithDictionary:(id)arg1 mediaType:(unsigned long long)arg2;
 - (id)initWithDictionary:(id)arg1 mediaType:(unsigned long long)arg2 andStoreFront:(id)arg3;
 
 @end

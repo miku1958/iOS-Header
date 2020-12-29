@@ -10,7 +10,7 @@
 #import <AppStoreComponents/NSCopying-Protocol.h>
 #import <AppStoreComponents/NSSecureCoding-Protocol.h>
 
-@class ASCAdamID, ASCArtwork, ASCViewMetrics, NSArray, NSSet, NSString;
+@class ASCAdamID, ASCArtwork, ASCScreenshots, ASCTrailers, ASCViewMetrics, NSArray, NSSet, NSString;
 @protocol ASCOffer;
 
 @interface ASCLockup : NSObject <NSSecureCoding, NSCopying, ASCViewModel>
@@ -31,17 +31,24 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, copy, nonatomic) NSArray *features; // @synthesize features=_features;
+@property (readonly, nonatomic) BOOL hasMedia;
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *heading; // @synthesize heading=_heading;
 @property (readonly, copy, nonatomic) ASCArtwork *icon; // @synthesize icon=_icon;
 @property (readonly, copy, nonatomic) ASCAdamID *id; // @synthesize id=_id;
+@property (readonly, nonatomic) BOOL isEditorsChoice;
 @property (readonly, copy, nonatomic) NSString *kind; // @synthesize kind=_kind;
 @property (readonly, copy, nonatomic) ASCViewMetrics *metrics; // @synthesize metrics=_metrics;
 @property (readonly, copy, nonatomic) id<ASCOffer> offer; // @synthesize offer=_offer;
+@property (readonly, copy, nonatomic) NSString *productDescription;
+@property (readonly, nonatomic) float productRating;
+@property (readonly, copy, nonatomic) NSString *productRatingBadge;
+@property (readonly, copy, nonatomic) ASCScreenshots *screenshots;
 @property (readonly, copy, nonatomic) NSSet *signpostTags;
 @property (readonly, copy, nonatomic) NSString *subtitle; // @synthesize subtitle=_subtitle;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *title; // @synthesize title=_title;
+@property (readonly, copy, nonatomic) ASCTrailers *trailers;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

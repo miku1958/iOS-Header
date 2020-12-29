@@ -60,13 +60,6 @@ struct NSDirectionalEdgeInsets {
     double _field4;
 };
 
-struct NSEdgeInsets {
-    double top;
-    double left;
-    double bottom;
-    double right;
-};
-
 struct UIEdgeInsets {
     double top;
     double left;

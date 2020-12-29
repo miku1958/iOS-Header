@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class NSExtension, NSString;
+@class ASDExtensionMonitor, NSExtension, NSString;
 @protocol ASDTestFlightServiceHostDelegate, OS_dispatch_queue;
 
 @interface ASDTestFlightServiceHost : NSObject
 {
-    id _matchingContext;
+    ASDExtensionMonitor *_monitor;
     NSExtension *_currentExtension;
     NSObject<OS_dispatch_queue> *_callbackQueue;
     NSObject<OS_dispatch_queue> *_runQueue;
@@ -23,14 +23,11 @@
 @property (readonly, nonatomic) NSString *extensionIdentifier;
 @property (readonly, nonatomic) long long extensionStatus;
 
-+ (id)_getExtensionFromMatchingExtensions:(id)arg1;
 - (void).cxx_destruct;
 - (void)_callExtensionWithContext:(CDUnknownBlockType)arg1 interruptionBlock:(CDUnknownBlockType)arg2;
-- (void)_reloadExtensions;
-- (void)_startMonitoringExtensions;
-- (void)_stopMonitoringExtensions;
+- (void)_onRunQueue_callExtensionWithContext:(CDUnknownBlockType)arg1 interruptionBlock:(CDUnknownBlockType)arg2;
+- (long long)_onRunQueue_extensionStatus;
 - (void)_updateCurrentExtensionTo:(id)arg1;
-- (void)dealloc;
 - (id)initWithQueue:(id)arg1;
 - (void)notifyOfReachedTerminalPhaseWithBetaBundleID:(id)arg1 terminalPhase:(long long)arg2 error:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)notifyOfReceivedPushMessages:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

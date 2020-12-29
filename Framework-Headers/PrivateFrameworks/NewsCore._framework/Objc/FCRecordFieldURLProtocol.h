@@ -16,6 +16,8 @@
 @property (strong, nonatomic) FCCKContentFetchOperation *fetchOperation; // @synthesize fetchOperation=_fetchOperation;
 
 + (id)URLForRecordID:(id)arg1 fieldName:(id)arg2;
++ (BOOL)canHandleURL:(id)arg1;
++ (BOOL)canHandleURLWithComponents:(id)arg1;
 + (BOOL)canInitWithRequest:(id)arg1;
 + (id)canonicalRequestForRequest:(id)arg1;
 + (BOOL)requestIsCacheEquivalent:(id)arg1 toRequest:(id)arg2;

@@ -47,6 +47,7 @@
 - (BOOL)action:(id)arg1 canProvideInputForParameter:(id)arg2;
 - (void)action:(id)arg1 provideInputForParameters:(id)arg2 withDefaultStates:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (id)actionForAttribution;
+- (id)attributionForMode:(unsigned long long)arg1;
 - (void)cancel;
 - (id)dialogTransformer;
 - (void)dismissPresentedContentWithCompletionHandler:(CDUnknownBlockType)arg1;

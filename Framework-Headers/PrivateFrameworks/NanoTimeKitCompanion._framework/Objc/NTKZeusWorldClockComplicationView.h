@@ -39,6 +39,7 @@
 - (struct CGRect)padContentFrame:(struct CGRect)arg1;
 - (void)setOverrideDate:(id)arg1;
 - (void)setShortCity:(id)arg1;
+- (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;
 - (void)setTimeZone:(id)arg1;
 - (void)timeFormatterTextDidChange:(id)arg1;
 

@@ -60,6 +60,7 @@
 - (void)outputContextImpl:(id)arg1 didReceiveData:(id)arg2 fromCommunicationChannel:(id)arg3;
 - (void)outputContextImplDidChangeCanSetVolume:(id)arg1;
 - (void)outputContextImplDidChangeGlobalOutputDeviceConfiguration:(id)arg1;
+- (void)outputContextImplDidChangePredictedOutputDevice:(id)arg1;
 - (void)outputContextImplDidChangeProvidesControlForAllVolumeFeatures:(id)arg1;
 - (void)outputContextImplDidChangeVolume:(id)arg1;
 - (void)outputContextImplOutgoingCommunicationChannelDidBecomeAvailable:(id)arg1;
@@ -68,9 +69,11 @@
 - (unsigned long long)outputDeviceFeatures;
 - (id)outputDevices;
 - (void)pausePlaybackOnAllOutputDevicesWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)predictedOutputDevice;
 - (BOOL)providesControlForAllVolumeFeatures;
 - (void)removeOutputDevice:(id)arg1;
 - (void)removeOutputDevice:(id)arg1 options:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (void)resetPredictedOutputDevice;
 - (void)setApplicationProcessID:(int)arg1;
 - (void)setCommunicationChannelDelegate:(id)arg1;
 - (BOOL)setOutputDevice:(id)arg1 forFeatures:(unsigned long long)arg2;

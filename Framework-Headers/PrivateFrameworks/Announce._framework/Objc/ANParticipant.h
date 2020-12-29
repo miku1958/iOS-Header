@@ -6,18 +6,19 @@
 
 #import <objc/NSObject.h>
 
-#import <Announce/ANMessage-Protocol.h>
+#import <Announce/ANCompanionMessage-Protocol.h>
 #import <Announce/NSSecureCoding-Protocol.h>
 
 @class NSDictionary, NSString;
 
-@interface ANParticipant : NSObject <ANMessage, NSSecureCoding>
+@interface ANParticipant : NSObject <ANCompanionMessage, NSSecureCoding>
 {
     BOOL _isAccessory;
     NSString *_name;
     NSString *_rapportID;
     NSString *_idsID;
     NSString *_homeKitID;
+    NSString *_homeKitUserID;
     NSString *_userID;
 }
 
@@ -25,6 +26,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSString *homeKitID; // @synthesize homeKitID=_homeKitID;
+@property (strong, nonatomic) NSString *homeKitUserID; // @synthesize homeKitUserID=_homeKitUserID;
 @property (strong, nonatomic) NSString *idsID; // @synthesize idsID=_idsID;
 @property (readonly, nonatomic) NSDictionary *info;
 @property (nonatomic) BOOL isAccessory; // @synthesize isAccessory=_isAccessory;
@@ -45,11 +47,14 @@
 - (id)initWithMessage:(id)arg1;
 - (id)initWithSender:(id)arg1;
 - (id)initWithUser:(id)arg1;
+- (id)initWithUser:(id)arg1 andAccessory:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)message;
+- (id)messageForCompanion;
 - (void)populateWithAccessory:(id)arg1;
 - (void)populateWithDevice:(id)arg1;
 - (void)populateWithUser:(id)arg1;
+- (void)populateWithUser:(id)arg1 andAccessory:(id)arg2;
 
 @end
 

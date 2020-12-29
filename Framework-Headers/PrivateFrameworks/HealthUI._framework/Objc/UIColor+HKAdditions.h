@@ -98,6 +98,9 @@
 + (id)hk_nutritionKeyColor;
 + (id)hk_otherKeyColor;
 + (id)hk_otherSecondaryColor;
++ (id)hk_populationChartLevelBackgroundColor;
++ (id)hk_populationChartSeriesColor;
++ (id)hk_populationChartTextColor;
 + (id)hk_proceduresClinicalKeyColor;
 + (id)hk_profileKeyColor;
 + (id)hk_randomColor;

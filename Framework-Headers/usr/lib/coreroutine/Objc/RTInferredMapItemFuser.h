@@ -6,18 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSUUID, RTDistanceCalculator, RTInferredMapItemDeduper, RTInferredMapItemFuserParameters;
+@class NSUUID, RTDistanceCalculator, RTInferredMapItemDeduper, RTInferredMapItemFuserParameters, RTLearnedLocationStore;
 
 @interface RTInferredMapItemFuser : NSObject
 {
     RTDistanceCalculator *_distanceCalculator;
     RTInferredMapItemFuserParameters *_parameters;
+    RTLearnedLocationStore *_learnedLocationStore;
     RTInferredMapItemDeduper *_deduper;
     NSUUID *_placeholderUUID;
 }
 
 @property (strong, nonatomic) RTInferredMapItemDeduper *deduper; // @synthesize deduper=_deduper;
 @property (strong, nonatomic) RTDistanceCalculator *distanceCalculator; // @synthesize distanceCalculator=_distanceCalculator;
+@property (strong, nonatomic) RTLearnedLocationStore *learnedLocationStore; // @synthesize learnedLocationStore=_learnedLocationStore;
 @property (strong, nonatomic) RTInferredMapItemFuserParameters *parameters; // @synthesize parameters=_parameters;
 @property (readonly, nonatomic) NSUUID *placeholderUUID; // @synthesize placeholderUUID=_placeholderUUID;
 
@@ -30,8 +32,8 @@
 - (id)fusedInferredMapItemsUsingCandidates:(id)arg1 referenceLocation:(id)arg2 snapToBestKnownPlaceAndAoi:(BOOL)arg3 error:(id *)arg4;
 - (id)highestConfidenceAoiMapItemFromFusedInferredMapItems:(id)arg1;
 - (id)init;
-- (id)initWithDefaultsManager:(id)arg1 distanceCalculator:(id)arg2;
-- (id)initWithDistanceCalculator:(id)arg1 parameters:(id)arg2;
+- (id)initWithDefaultsManager:(id)arg1 distanceCalculator:(id)arg2 learnedLocationStore:(id)arg3;
+- (id)initWithDistanceCalculator:(id)arg1 parameters:(id)arg2 learnedLocationStore:(id)arg3;
 - (BOOL)initializeEntriesForNonAoiDedupedInferredMapItems:(id)arg1 aoiDedupedInferredMapItems:(id)arg2 nonAoiUUIDToLogProbMap:(id *)arg3 aoiUUIDToProbArrayMap:(id *)arg4 error:(id *)arg5;
 - (double)logSumExpOfLogProbMap:(id)arg1 error:(id *)arg2;
 - (id)normalizeNonAoiUUIDToLogProbMap:(id)arg1 aoiUUIDToProbArrayMap:(id)arg2 error:(id *)arg3;

@@ -13,6 +13,7 @@
     MISSING_TYPE *configurationManager;
     MISSING_TYPE *familyEligibilityProvider;
     MISSING_TYPE *router;
+    MISSING_TYPE *offerManager;
 }
 
 @end

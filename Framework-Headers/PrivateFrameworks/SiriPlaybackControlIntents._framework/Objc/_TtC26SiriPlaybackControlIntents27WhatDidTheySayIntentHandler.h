@@ -18,6 +18,7 @@
     MISSING_TYPE *queue;
     MISSING_TYPE *assertion;
     MISSING_TYPE *analyticsService;
+    MISSING_TYPE *deviceState;
 }
 
 - (void).cxx_destruct;

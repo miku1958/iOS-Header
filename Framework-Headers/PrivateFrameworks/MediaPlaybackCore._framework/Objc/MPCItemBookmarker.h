@@ -21,6 +21,7 @@
 - (void).cxx_destruct;
 - (void)_setupBookmarkingTimerForItem:(id)arg1;
 - (void)_teardownBookmarkingTimer;
+- (void)currentItemWillChangeFromItem:(id)arg1 toItem:(id)arg2 time:(double)arg3;
 - (id)initWithTranslator:(id)arg1;
 - (void)itemDidBecomeCurrent:(id)arg1 time:(double)arg2;
 - (void)itemDidPlayToEnd:(id)arg1 time:(double)arg2;

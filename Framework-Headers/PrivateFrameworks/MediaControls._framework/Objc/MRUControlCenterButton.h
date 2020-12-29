@@ -7,21 +7,24 @@
 #import <UIKit/UIControl.h>
 
 #import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
+#import <MediaControls/UIPointerInteractionDelegate-Protocol.h>
 
 @class MRUVisualStylingProvider, NSString, UIImage, UIImageView, UILabel, UIView;
 
 __attribute__((visibility("hidden")))
-@interface MRUControlCenterButton : UIControl <MRUVisualStylingProviderObserver>
+@interface MRUControlCenterButton : UIControl <MRUVisualStylingProviderObserver, UIPointerInteractionDelegate>
 {
     UIImage *_image;
     NSString *_title;
     MRUVisualStylingProvider *_stylingProvider;
+    UIView *_contentView;
+    UIView *_backgroundView;
     UIImageView *_imageView;
     UILabel *_titleLabel;
-    UIView *_backgroundView;
 }
 
 @property (strong, nonatomic) UIView *backgroundView; // @synthesize backgroundView=_backgroundView;
+@property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -36,6 +39,8 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)setHighlighted:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateContentSizeCategory;

@@ -16,10 +16,14 @@
     MNLocation *_location;
     NSError *_error;
     MNLocationMatchInfo *_matchInfo;
+    double _correctedCourse;
     long long _locationEventType;
     unsigned long long _originalMatchType;
+    CDStruct_2c43369c _correctedCoordinate;
 }
 
+@property (nonatomic) CDStruct_c3b9c2ee correctedCoordinate; // @synthesize correctedCoordinate=_correctedCoordinate;
+@property (nonatomic) double correctedCourse; // @synthesize correctedCourse=_correctedCourse;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;

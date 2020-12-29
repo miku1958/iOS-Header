@@ -17,22 +17,22 @@
 - (void).cxx_destruct;
 - (id)_getDb;
 - (BOOL)_migrateDb:(id)arg1;
-- (CDStruct_632d45bc)_popWithStringAfterWhereClause:(id)arg1 binder:(CDUnknownBlockType)arg2;
+- (CDStruct_e8711410)_popWithStringAfterWhereClause:(id)arg1 binder:(CDUnknownBlockType)arg2;
 - (id)_recreateDb;
 - (void)close;
 - (void)createFile:(CDUnknownBlockType)arg1;
-- (void)createItemWithId:(long long)arg1 sourceKey:(id)arg2 messageId:(id)arg3 customPriorityCriteria:(unsigned char)arg4 fileId:(int)arg5 metadataChunk:(CDStruct_beb4cc23 *)arg6 htmlChunk:(CDStruct_beb4cc23 *)arg7 textChunk:(CDStruct_beb4cc23 *)arg8;
+- (void)createItemWithId:(long long)arg1 sourceKey:(id)arg2 messageId:(id)arg3 customPriorityCriteria:(unsigned char)arg4 receivedOnPower:(BOOL)arg5 receivedTime:(double)arg6 storageReason:(int)arg7 fileId:(int)arg8 metadataChunk:(CDStruct_beb4cc23 *)arg9 htmlChunk:(CDStruct_beb4cc23 *)arg10 textChunk:(CDStruct_beb4cc23 *)arg11;
 - (BOOL)deleteWithItemId:(long long)arg1 fileId:(int)arg2;
 - (CDStruct_69bb5998)fetchMetadata;
 - (id)filesIdsToOpen;
 - (void)garbageCollectFiles:(CDUnknownBlockType)arg1;
 - (id)initWithDirectory:(id)arg1;
 - (void)markAsFailedWithItemId:(long long)arg1;
-- (CDStruct_632d45bc)popByCustomPriorityCriteria:(unsigned char)arg1;
-- (CDStruct_632d45bc)popByItemId:(long long)arg1;
-- (CDStruct_632d45bc)popBySourceKey:(id)arg1 messageId:(id)arg2;
-- (CDStruct_632d45bc)popHighPriorityItem;
-- (CDStruct_632d45bc)popItem;
+- (CDStruct_e8711410)popByCustomPriorityCriteria:(unsigned char)arg1;
+- (CDStruct_e8711410)popByItemId:(long long)arg1;
+- (CDStruct_e8711410)popBySourceKey:(id)arg1 messageId:(id)arg2;
+- (CDStruct_e8711410)popHighPriorityItem;
+- (CDStruct_e8711410)popItem;
 - (void)resetProgressForItemId:(long long)arg1;
 
 @end

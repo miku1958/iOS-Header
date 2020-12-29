@@ -48,6 +48,7 @@
 - (void)delayBedtimeUntilDate:(id)arg1 source:(id)arg2;
 - (void)dismissGoodMorning:(id)arg1;
 - (void)dismissGoodMorningOnDate:(id)arg1 source:(id)arg2;
+- (void)dismissSleepLock:(id)arg1;
 - (void)environmentWillBecomeReady:(id)arg1;
 - (id)initWithEnvironment:(id)arg1;
 - (void)removeObserver:(id)arg1;

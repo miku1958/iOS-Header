@@ -6,7 +6,12 @@
 
 #import <Foundation/NSDictionary.h>
 
+@class NSString;
+
 @interface NSDictionary (MSVAdditions)
+
+@property (readonly, copy, nonatomic) NSString *msv_compactDescription;
+
 - (void)msv_enumerateKeysAndObjectsOrderedByKeyComparator:(CDUnknownBlockType)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)msv_enumerateKeysAndObjectsOrderedByKeyDescriptors:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
 - (void)msv_enumerateKeysAndObjectsOrderedByKeySelector:(SEL)arg1 usingBlock:(CDUnknownBlockType)arg2;

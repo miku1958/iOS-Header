@@ -31,8 +31,8 @@
 
 + (id)parseFromData:(id)arg1;
 + (BOOL)supportsSecureCoding;
-+ (id)taskWithExperiment:(id)arg1 treatmentId:(id)arg2 taskAttributing:(id)arg3;
-+ (id)taskWithExperiment:(id)arg1 treatmentId:(id)arg2 taskAttributing:(id)arg3 startTime:(id)arg4;
++ (id)taskWithExperiment:(id)arg1 treatmentId:(id)arg2 taskAttributing:(id)arg3 requiresTreatmentInstallation:(BOOL)arg4;
++ (id)taskWithExperiment:(id)arg1 treatmentId:(id)arg2 taskAttributing:(id)arg3 requiresTreatmentInstallation:(BOOL)arg4 startTime:(id)arg5;
 - (void).cxx_destruct;
 - (id)_asPersistedTask;
 - (id)_nextTasksForRunStatus:(int)arg1;

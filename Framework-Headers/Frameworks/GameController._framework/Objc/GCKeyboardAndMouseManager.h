@@ -19,7 +19,7 @@
 
 @property (readonly) GCKeyboard *coalescedKeyboard;
 @property (strong) GCMouse *currentMouse;
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *devicesQueue; // @synthesize devicesQueue=_devicesQueue;
+@property (weak, nonatomic) NSObject<OS_dispatch_queue> *devicesQueue; // @synthesize devicesQueue=_devicesQueue;
 
 - (void).cxx_destruct;
 - (void)_queue_removeDevice:(id)arg1 registryID:(id)arg2;

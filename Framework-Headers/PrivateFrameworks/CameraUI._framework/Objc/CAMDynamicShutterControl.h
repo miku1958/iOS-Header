@@ -213,8 +213,8 @@
 - (void)_updateViewsFromCurrentState;
 - (void)dealloc;
 - (void)externalButtonCancelled;
-- (void)externalButtonPressedWithBehavior:(long long)arg1;
-- (void)externalButtonReleased;
+- (BOOL)externalButtonPressedWithBehavior:(long long)arg1;
+- (BOOL)externalButtonReleased;
 - (void)externalLockButtonPressed;
 - (void)externalLockButtonReleased;
 - (struct CGRect)frameForAlignmentRect:(struct CGRect)arg1 availableWidth:(double)arg2;

@@ -6,36 +6,58 @@
 
 #import <objc/NSObject.h>
 
-@class NSOperationQueue, NSString, VSAccountStore, VSIdentityProvider, VSPreferences;
+#import <VideoSubscriberAccount/VSRemoteNotifierDelegate-Protocol.h>
+
+@class NSError, NSOperationQueue, NSString, VSAccountStore, VSIdentityProvider, VSPreferences, VSRemoteNotifier;
 @protocol OS_dispatch_queue;
 
-@interface VSIdentityProviderInfoCenter : NSObject
+@interface VSIdentityProviderInfoCenter : NSObject <VSRemoteNotifierDelegate>
 {
+    BOOL _cachedIsSetTopBox;
+    BOOL _setupCompleted;
+    BOOL _ignoredFirstNotification;
     VSPreferences *_preferences;
     NSObject<OS_dispatch_queue> *_serialQueue;
     NSOperationQueue *_privateQueue;
     VSAccountStore *_accountStore;
     VSIdentityProvider *_cachedIdentityProvider;
     NSString *_cachedDesignatedAppBundleIdentifier;
+    NSError *_currentError;
+    VSRemoteNotifier *_remoteNotifier;
 }
 
 @property (strong, nonatomic) VSAccountStore *accountStore; // @synthesize accountStore=_accountStore;
 @property (strong, nonatomic) NSString *cachedDesignatedAppBundleIdentifier; // @synthesize cachedDesignatedAppBundleIdentifier=_cachedDesignatedAppBundleIdentifier;
 @property (strong, nonatomic) VSIdentityProvider *cachedIdentityProvider; // @synthesize cachedIdentityProvider=_cachedIdentityProvider;
+@property (nonatomic) BOOL cachedIsSetTopBox; // @synthesize cachedIsSetTopBox=_cachedIsSetTopBox;
+@property (strong, nonatomic) NSError *currentError; // @synthesize currentError=_currentError;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL ignoredFirstNotification; // @synthesize ignoredFirstNotification=_ignoredFirstNotification;
 @property (strong, nonatomic) VSPreferences *preferences; // @synthesize preferences=_preferences;
 @property (strong, nonatomic) NSOperationQueue *privateQueue; // @synthesize privateQueue=_privateQueue;
+@property (strong, nonatomic) VSRemoteNotifier *remoteNotifier; // @synthesize remoteNotifier=_remoteNotifier;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
+@property (nonatomic) BOOL setupCompleted; // @synthesize setupCompleted=_setupCompleted;
+@property (readonly) Class superclass;
 
 + (id)sharedCenter;
 - (void).cxx_destruct;
 - (void)_accountStoreDidChange;
-- (void)_updateCachedBundleInfoWithAdamID:(id)arg1;
+- (void)_developerSettingsDidChange;
+- (void)_postdentityProviderInfoDidChangeNotification;
+- (void)_refresh:(CDUnknownBlockType)arg1;
 - (id)_value:(id)arg1 withDefault:(id)arg2;
 - (void)dealloc;
 - (void)enqueueIdentityProviderAppsQueryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enqueueInfoQueryWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enqueueSetTopBoxProfileProviderQueryWithCompletion:(CDUnknownBlockType)arg1;
+- (void)fetchAccountAndIdentityProvider:(CDUnknownBlockType)arg1;
+- (void)fetchIdentityProviderAppBundleIdFromDeveloperSettings:(CDUnknownBlockType)arg1;
+- (void)fetchIdentityProviderAppBundleIdFromStore:(id)arg1 preferredAppID:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)init;
+- (void)remoteNotifier:(id)arg1 didReceiveRemoteNotificationWithUserInfo:(id)arg2;
 
 @end
 

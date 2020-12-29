@@ -6,23 +6,30 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, UIView, VUIButton, VUIImageView;
 
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI20CollectionHeaderView : UICollectionReusableView
 {
     MISSING_TYPE *containerView;
     MISSING_TYPE *layout;
+    MISSING_TYPE *applySafeAreaInsets;
     MISSING_TYPE *titleView;
     MISSING_TYPE *subtitleView;
     MISSING_TYPE *imageView;
     MISSING_TYPE *buttonView;
 }
 
+@property (nonatomic, readonly) VUIButton *accessibilityButtonView;
+@property (nonatomic, readonly) VUIImageView *accessibilityImageView;
+@property (nonatomic, readonly) UIView *accessibilitySubtitleView;
+@property (nonatomic, readonly) UIView *accessibilityTitleView;
+
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
 

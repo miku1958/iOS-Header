@@ -112,16 +112,16 @@
 	var windowsPerScene : DebugStatusBarWindow
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x883400019df8 (0x3400019df8) in binary!
-	0x790c  @objc DebugStatusBarManager.(null) <stripped>
+WARNING: couldn't find address 0x886400019e28 (0x6400019e28) in binary!
+	0x793c  @objc DebugStatusBarManager.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x564fffc0910  @objc DebugStatusBarManager.(null) <stripped>
+	0x594fffc07d0  @objc DebugStatusBarManager.(null) <stripped>
 
 	// Swift methods
-	0x3020  func <stripped> // getter 
-	0x30b0  func <stripped> // setter 
-	0x3270  func <stripped> // method 
-	0x34f0  func <stripped> // method 
+	0x2eb0  func <stripped> // getter 
+	0x2f40  func <stripped> // setter 
+	0x3100  func <stripped> // method 
+	0x3380  func <stripped> // method 
  }
 
  class WorkflowUICore.DebugStatusBarWindow : UIWindow /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -131,41 +131,41 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	let errorLabel : UILabel
 	let stackView : UIStackView
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rotationObserver : ◊ﬁ
+	var rotationObserver : ﬂ
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x797300019d90 (0x17300019d90) in binary!
-	0x7967  @objc DebugStatusBarWindow.(null) <stripped>
-WARNING: couldn't find address 0x796c0001a4b8 (0x16c0001a4b8) in binary!
-	0x78d4  @objc DebugStatusBarWindow.(null) <stripped>
+WARNING: couldn't find address 0x79a300019dc0 (0x1a300019dc0) in binary!
+	0x7997  @objc DebugStatusBarWindow.(null) <stripped>
+WARNING: couldn't find address 0x799c0001a4e8 (0x19c0001a4e8) in binary!
+	0x7904  @objc DebugStatusBarWindow.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x594fffcba38  @objc DebugStatusBarWindow.(null) <stripped>
-	0xfffcbaa0  @objc DebugStatusBarWindow.u¿Lã•8ˇˇˇLâÊËÔ3 <stripped>
+	0x5c4fffcb8f8  @objc DebugStatusBarWindow.(null) <stripped>
+	0xfffcb960  @objc DebugStatusBarWindow.HçÖ‡˛ˇˇLâˇLâˆHâ⁄Ë;ñ <stripped>
 
 	// Swift methods
-	0x3e10  func <stripped> // method 
+	0x3ca0  func <stripped> // method 
  }
 
  struct WorkflowUICore.DebugMenuView {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _logStreamManager : Å÷
+	var _logStreamManager : ±÷
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _debugStatusBarManager : s÷
+	var _debugStatusBarManager : £÷
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _doubleLength : ÷
+	var _doubleLength : M÷
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _forceRightToLeft : ÷
+	var _forceRightToLeft : M÷
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _accented : ÷
+	var _accented : M÷
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _bounded : ÷
+	var _bounded : M÷
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _showNonLocalized : ÷
+	var _showNonLocalized : M÷
 	let database : WFDatabase
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let binaryUUID : ›
+	let binaryUUID : ;›
 	let close : ()?
  }
 
@@ -181,7 +181,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let reference : WFWorkflowReference // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let progress : _Ã // +0x8
+	let progress : èÃ // +0x8
 	let waiting : Bool // +0x10
 	let stop : () // +0x18
  }
@@ -277,17 +277,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let collectionsResult : WFDatabaseResult<WFWorkflowCollection>
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8b6400019d30 (0x36400019d30) in binary!
-	0x87d0  @objc AllShortcutsGroup.(null) <stripped>
-WARNING: couldn't find address 0x78a800019d28 (0xa800019d28) in binary!
+WARNING: couldn't find address 0x8b9400019d60 (0x39400019d60) in binary!
+	0x8800  @objc AllShortcutsGroup.(null) <stripped>
+WARNING: couldn't find address 0x78d800019d58 (0xd800019d58) in binary!
 	0x28000000c  @objc AllShortcutsGroup.(null) <stripped>
-WARNING: couldn't find address 0x87ac0001a130 (0x7ac0001a130) in binary!
-	0x87a0  @objc AllShortcutsGroup.(null) <stripped>
+WARNING: couldn't find address 0x87dc0001a160 (0x7dc0001a160) in binary!
+	0x87d0  @objc AllShortcutsGroup.(null) <stripped>
 
 	// Swift methods
-	0xe830  func <stripped> // getter 
-	0xee40  func <stripped> // setter 
-	0xee90  func <stripped> // modifyCoroutine 
+	0xe6c0  func <stripped> // getter 
+	0xecd0  func <stripped> // setter 
+	0xed20  func <stripped> // modifyCoroutine 
  }
 
  enum WorkflowUICore.RootNavigationDestination {
@@ -314,6 +314,7 @@ WARNING: couldn't find address 0x87ac0001a130 (0x7ac0001a130) in binary!
 	// Properties
 	let dismissOccludingViewController : Bool // +0x0
 	let clearSearchState : Bool // +0x1
+	let animateTransition : Bool // +0x2
  }
 
  class WorkflowUICore.DatabaseResult {
@@ -321,7 +322,7 @@ WARNING: couldn't find address 0x87ac0001a130 (0x7ac0001a130) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _result : ë«
+	var _result : ¡«
  }
 
  struct WorkflowUICore.RecordProperty {
@@ -337,49 +338,49 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var propertyLoader : RecordProperty // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _properties : Á« // +0x10
+	var _properties : » // +0x10
  }
 
  class WorkflowUICore.LogStreamManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _state : üﬂ
+	var _state : œﬂ
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var observers :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _logs : È√
+	var _logs : ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _faultCount : ﬂ
+	var _faultCount : 3ﬂ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _errorCount : ﬂ
+	var _errorCount : 3ﬂ
 
 	// Swift methods
-	0x26290  func <stripped> // getter 
-	0x26330  func <stripped> // getter 
-	0x26c80  func <stripped> // getter 
-	0x26d20  func <stripped> // getter 
-	0x27180  func <stripped> // getter 
-	0x271a0  func <stripped> // modifyCoroutine 
-	0x27280  func <stripped> // getter 
-	0x277b0  func <stripped> // getter 
-	0x27830  func <stripped> // modifyCoroutine 
-	0x27a90  func <stripped> // getter 
-	0x27ed0  func <stripped> // getter 
-	0x27f60  func <stripped> // setter 
-	0x28080  func <stripped> // modifyCoroutine 
-	0x28230  func <stripped> // method 
-	0x289a0  func <stripped> // method 
-	0x28c10  func <stripped> // method 
-	0x28c90  func <stripped> // method 
-	0x28d00  func <stripped> // method 
+	0x26250  func <stripped> // getter 
+	0x262f0  func <stripped> // getter 
+	0x26c40  func <stripped> // getter 
+	0x26ce0  func <stripped> // getter 
+	0x27140  func <stripped> // getter 
+	0x27160  func <stripped> // modifyCoroutine 
+	0x27240  func <stripped> // getter 
+	0x27770  func <stripped> // getter 
+	0x277f0  func <stripped> // modifyCoroutine 
+	0x27a50  func <stripped> // getter 
+	0x27e90  func <stripped> // getter 
+	0x27f20  func <stripped> // setter 
+	0x28040  func <stripped> // modifyCoroutine 
+	0x281f0  func <stripped> // method 
+	0x28960  func <stripped> // method 
+	0x28bd0  func <stripped> // method 
+	0x28c50  func <stripped> // method 
+	0x28cc0  func <stripped> // method 
  }
 
  enum WorkflowUICore.State {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failedToPrepare : uÀ
+	case failedToPrepare : •À
 	case invalidated : OSLogEventStreamInvalidation
 	case active : OSLogEventLiveStream
 	case none  
@@ -390,17 +391,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let id : ¬ // +0xfeedfacf (0x0)
+	let id : M¬ // +0xfeedfacf (0x0)
 	let type : EventType // +0x3 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : Ö¡ // +0x42 (0x0)
+	let date : µ¡ // +0x42 (0x0)
 	let processName : String // +0x6100085 (0x10)
 	let category : String // +0x19 (0x10)
 	let message : String // +0x45545f5f (0x10)
 
 	// Swift methods
-	0x26470  func <stripped> // method 
-	0x26990  func <stripped> // getter 
+	0x26430  func <stripped> // method 
+	0x26950  func <stripped> // getter 
  }
 
  enum WorkflowUICore.EventType {
@@ -417,9 +418,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _logStreamManager : Å÷ // +0x0
+	var _logStreamManager : ±÷ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _logType : ≈ // +0x10
+	var _logType : ;≈ // +0x10
  }
 
  struct WorkflowUICore.LogRow {
@@ -439,12 +440,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let log : OS_os_log // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let id : gº // +0x0 (0x0)
+	let id : óº // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let name : ƒ // +0x0 (0x11)
+	let name : Iƒ // +0x0 (0x11)
 
 	// Swift methods
-	0x2e8a0  class func WFLogSignpost.__allocating_init(_:_:) // init 
+	0x2e860  class func WFLogSignpost.__allocating_init(_:_:) // init 
  }
 
  class WorkflowUICore.LibraryDataSource : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -455,18 +456,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var observeChanges : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8abc00019c88 (0x2bc00019c88) in binary!
+WARNING: couldn't find address 0x8aec00019cb8 (0x2ec00019cb8) in binary!
 	0x18000000c  @objc LibraryDataSource.(null) <stripped>
 
 	// Swift methods
-	0x2f110  class func LibraryDataSource.__allocating_init() // init 
-	0x2f220  func <stripped> // method 
-	0x2fb70  func <stripped> // getter 
-	0x302c0  func <stripped> // getter 
-	0x302f0  func <stripped> // setter 
-	0x30330  func <stripped> // modifyCoroutine 
-	0x303a0  func <stripped> // method 
-	0x303b0  func <stripped> // method 
+	0x2f0d0  class func LibraryDataSource.__allocating_init() // init 
+	0x2f1e0  func <stripped> // method 
+	0x2fb30  func <stripped> // getter 
+	0x30280  func <stripped> // getter 
+	0x302b0  func <stripped> // setter 
+	0x302f0  func <stripped> // modifyCoroutine 
+	0x30360  func <stripped> // method 
+	0x30370  func <stripped> // method 
  }
 
  enum WorkflowUICore.PresentationKind {
@@ -480,7 +481,7 @@ WARNING: couldn't find address 0x8abc00019c88 (0x2bc00019c88) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let id : S√
+	let id : É√
 	let content : ()
  }
 
@@ -500,13 +501,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var observeChanges : Bool
 
 	// Swift methods
-	0x34220  func <stripped> // getter 
-	0x34250  func <stripped> // setter 
-	0x342a0  func <stripped> // modifyCoroutine 
-	0x343f0  func <stripped> // getter 
-	0x34420  func <stripped> // setter 
-	0x34450  func <stripped> // modifyCoroutine 
-	0x34490  class func StaticSidebarSection.__allocating_init(name:destinations:) // init 
+	0x341f0  func <stripped> // getter 
+	0x34220  func <stripped> // setter 
+	0x34270  func <stripped> // modifyCoroutine 
+	0x343c0  func <stripped> // getter 
+	0x343f0  func <stripped> // setter 
+	0x34420  func <stripped> // modifyCoroutine 
+	0x34460  class func StaticSidebarSection.__allocating_init(name:destinations:) // init 
  }
 
  class WorkflowUICore.FoldersSidebarSection : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SidebarSection {
@@ -517,20 +518,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var observeChanges : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8aa400019c70 (0x2a400019c70) in binary!
+WARNING: couldn't find address 0x8ad400019ca0 (0x2d400019ca0) in binary!
 	0x18000000c  @objc FoldersSidebarSection.(null) <stripped>
 
 	// Swift methods
-	0x347e0  func <stripped> // getter 
-	0x34880  func <stripped> // getter 
-	0x34b40  func <stripped> // getter 
-	0x34b70  func <stripped> // setter 
-	0x34bc0  func <stripped> // modifyCoroutine 
-	0x34c90  class func FoldersSidebarSection.__allocating_init(folders:) // init 
-	0x34dd0  func <stripped> // getter 
-	0x34e00  func <stripped> // setter 
-	0x34e60  func <stripped> // modifyCoroutine 
-	0x34ee0  func <stripped> // method 
+	0x347b0  func <stripped> // getter 
+	0x34850  func <stripped> // getter 
+	0x34b10  func <stripped> // getter 
+	0x34b40  func <stripped> // setter 
+	0x34b90  func <stripped> // modifyCoroutine 
+	0x34c60  class func FoldersSidebarSection.__allocating_init(folders:) // init 
+	0x34da0  func <stripped> // getter 
+	0x34dd0  func <stripped> // setter 
+	0x34e30  func <stripped> // modifyCoroutine 
+	0x34eb0  func <stripped> // method 
  }
 
  class WorkflowUICore.MyShortcutsSidebarSection : _SwiftObject /usr/lib/swift/libswiftCore.dylib, SidebarSection {
@@ -543,21 +544,21 @@ WARNING: couldn't find address 0x8aa400019c70 (0x2a400019c70) in binary!
 	let healthFeatureProvider : WFHealthFeatureAvailability
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8c3a00019c50 (0x43a00019c50) in binary!
+WARNING: couldn't find address 0x8c6a00019c80 (0x46a00019c80) in binary!
 	0x18000000c  @objc MyShortcutsSidebarSection.(null) <stripped>
 
 	// Swift methods
-	0x35240  func <stripped> // getter 
-	0x35270  func <stripped> // setter 
+	0x35210  func <stripped> // getter 
+	0x35240  func <stripped> // setter 
+	0x35280  func <stripped> // modifyCoroutine 
+	0x36fe0  func <stripped> // getter 
+	0x36f90  func <stripped> // setter 
 	0x352b0  func <stripped> // modifyCoroutine 
-	0x37010  func <stripped> // getter 
-	0x36fc0  func <stripped> // setter 
-	0x352e0  func <stripped> // modifyCoroutine 
-	0x37100  func <stripped> // getter 
-	0x37020  func <stripped> // setter 
-	0x35340  func <stripped> // modifyCoroutine 
-	0x35370  class func MyShortcutsSidebarSection.__allocating_init(name:) // init 
-	0x35560  func <stripped> // method 
+	0x370d0  func <stripped> // getter 
+	0x36ff0  func <stripped> // setter 
+	0x35310  func <stripped> // modifyCoroutine 
+	0x35340  class func MyShortcutsSidebarSection.__allocating_init(name:) // init 
+	0x35530  func <stripped> // method 
  }
 
  enum __C.OSLogEventStreamInvalidation { }

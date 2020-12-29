@@ -26,6 +26,7 @@
 - (id)accessibilityCustomContent;
 - (id)accessibilityCustomRotors;
 - (struct CGRect)accessibilityFrame;
+- (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
 - (id)accessibilityURL;

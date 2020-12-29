@@ -6,30 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableSet, NSString;
 
 @interface FCAssetStore : NSObject
 {
     NSString *_directoryPath;
     NSString *_preferredExtension;
-    NSMutableDictionary *_fileURLsByKey;
+    NSMutableSet *_knownKeys;
 }
 
 @property (copy, nonatomic) NSString *directoryPath; // @synthesize directoryPath=_directoryPath;
-@property (copy, nonatomic) NSMutableDictionary *fileURLsByKey; // @synthesize fileURLsByKey=_fileURLsByKey;
+@property (copy, nonatomic) NSMutableSet *knownKeys; // @synthesize knownKeys=_knownKeys;
 @property (copy, nonatomic) NSString *preferredExtension; // @synthesize preferredExtension=_preferredExtension;
 @property (readonly, nonatomic) NSString *rootDirectory;
 
 - (void).cxx_destruct;
 - (id)_filePathForKey:(id)arg1;
 - (id)_keyForFileName:(id)arg1;
-- (unsigned long long)_sizeOfFileAtURL:(id)arg1;
+- (unsigned long long)_sizeOfFileAtPath:(id)arg1;
 - (id)allKeys;
 - (id)copyData:(id)arg1 withKey:(id)arg2;
 - (id)copyFileAtPath:(id)arg1 withKey:(id)arg2;
 - (id)filePathForKey:(id)arg1;
 - (id)fileURLForKey:(id)arg1;
 - (id)initWithDirectoryAtPath:(id)arg1 preferredAssetPathExtension:(id)arg2;
+- (id)initWithDirectoryAtPath:(id)arg1 preferredAssetPathExtension:(id)arg2 knownKeys:(id)arg3;
 - (id)moveFileAtPath:(id)arg1 withKey:(id)arg2;
 - (id)moveFileAtURL:(id)arg1 withKey:(id)arg2;
 - (BOOL)removeAllFiles;

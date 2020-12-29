@@ -45,6 +45,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)setContentItem:(id)arg1 transitionCoordinator:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)updateWithContentItem:(id)arg1;
 
 @end
 

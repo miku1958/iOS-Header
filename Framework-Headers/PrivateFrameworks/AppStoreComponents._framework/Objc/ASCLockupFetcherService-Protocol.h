@@ -6,9 +6,11 @@
 
 #import <AppStoreComponents/NSObject-Protocol.h>
 
-@class ASCLockupBatchRequest, ASCLockupRequest;
+@class ASCCollectionRequest, ASCLockupBatchRequest, ASCLockupRequest, NSString;
 
 @protocol ASCLockupFetcherService <NSObject>
+- (void)getLockupCollectionWithRequest:(ASCCollectionRequest *)arg1 withReplyHandler:(void (^)(NSArray *, NSError *))arg2;
+- (void)getLockupForBundleID:(NSString *)arg1 withContext:(NSString *)arg2 withReplyHandler:(void (^)(ASCLockup *, NSError *))arg3;
 - (void)getLockupWithRequest:(ASCLockupRequest *)arg1 withReplyHandler:(void (^)(ASCLockup *, NSError *))arg2;
 - (void)getLockupsWithRequest:(ASCLockupBatchRequest *)arg1 withReplyHandler:(void (^)(NSDictionary *, NSError *))arg2;
 @end

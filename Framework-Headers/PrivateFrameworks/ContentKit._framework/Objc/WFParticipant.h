@@ -45,6 +45,7 @@
 - (void).cxx_destruct;
 - (id)initWithEKParticipant:(id)arg1;
 - (id)initWithURL:(id)arg1 name:(id)arg2 emailAddress:(id)arg3 status:(long long)arg4 role:(long long)arg5 type:(long long)arg6 sourceIdentifier:(id)arg7 isManaged:(BOOL)arg8 isCurrentUser:(BOOL)arg9 contactPredicate:(id)arg10;
+- (BOOL)isEqual:(id)arg1;
 - (id)wfSerializedRepresentation;
 
 @end

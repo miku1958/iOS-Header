@@ -10,7 +10,10 @@
 {
 }
 
-+ (BOOL)isFitnessAvailableForDevice;
++ (BOOL)_isDeviceTablet;
++ (void)_isStorefrontContentAvailableWithCompletion:(CDUnknownBlockType)arg1;
++ (void)_isSupportedWatchAvailableWithCompletion:(CDUnknownBlockType)arg1;
++ (void)fetchIsFitnessAvailableForDeviceWithCompletion:(CDUnknownBlockType)arg1;
 
 @end
 

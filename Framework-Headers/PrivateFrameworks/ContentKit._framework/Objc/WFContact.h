@@ -67,7 +67,6 @@
 + (void)removeContactsChangeObserver:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (Class)classForCoder;
 - (id)contactWithPropertyID:(int)arg1 multivalueIndex:(long long)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

@@ -24,7 +24,6 @@
 - (void).cxx_destruct;
 - (void)_handleUserIdentityStoreDidChangeNotification:(id)arg1;
 - (BOOL)_privacyAcknowledgementRequiredForIdentifier:(id)arg1;
-- (BOOL)_privacyAcknowledgementRequiredForVideos;
 - (void)_updateForPrivacyAcknowledgementChanged;
 - (void)acknowledgePrivacyPolicyForIdentifier:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)beginObservingPrivacyAcknowledgementForIdentifier:(id)arg1 handler:(CDUnknownBlockType)arg2;

@@ -19,6 +19,7 @@
 {
     BOOL _supportsHorizontalLayout;
     BOOL _onScreen;
+    BOOL _displayNowPlayingInfoAsSuggestion;
     BOOL _deviceLocked;
     MRUEndpointMetadataController *_metadataController;
     id<MRUNowPlayingViewControllerDelegate> _delegate;
@@ -43,6 +44,7 @@
 @property (weak, nonatomic) id<MRUNowPlayingViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (nonatomic, getter=isDeviceLocked) BOOL deviceLocked; // @synthesize deviceLocked=_deviceLocked;
+@property (nonatomic) BOOL displayNowPlayingInfoAsSuggestion; // @synthesize displayNowPlayingInfoAsSuggestion=_displayNowPlayingInfoAsSuggestion;
 @property (readonly, nonatomic) MediaControlsEndpointController *endpointController; // @synthesize endpointController=_endpointController;
 @property (strong, nonatomic) MPVolumeGroupSliderCoordinator *groupSliderCoordinator; // @synthesize groupSliderCoordinator=_groupSliderCoordinator;
 @property (strong, nonatomic) id<MediaControlsInvalidatable> hardwareVolumeControlAssertion; // @synthesize hardwareVolumeControlAssertion=_hardwareVolumeControlAssertion;

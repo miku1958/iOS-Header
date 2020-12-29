@@ -20,7 +20,7 @@
 }
 
 - (void)fetchGroupsWithGroupConfigs:(id)arg1 forYouConfig:(id)arg2 precedingArticleIDs:(id)arg3 prefetchedHeadlinesByID:(id)arg4 assetManager:(id)arg5 completion:(CDUnknownBlockType)arg6;
-- (id)knownGroupForIdentifier:(id)arg1 headlines:(id)arg2 tags:(id)arg3 assetHandles:(id)arg4;
+- (void)fetchKnownGroupForIdentifier:(id)arg1 headlines:(id)arg2 tags:(id)arg3 assetHandles:(id)arg4 completion:(CDUnknownBlockType)arg5;
 
 @end
 

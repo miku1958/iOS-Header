@@ -22,6 +22,7 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *serialQueue; // @synthesize serialQueue=_serialQueue;
 
 + (id)currentDevice;
++ (id)localDeviceInfo;
 - (void).cxx_destruct;
 - (void)_activeDeviceInfoChanged:(id)arg1;
 - (void)_updateDeviceInfoWithCompletion:(CDUnknownBlockType)arg1;

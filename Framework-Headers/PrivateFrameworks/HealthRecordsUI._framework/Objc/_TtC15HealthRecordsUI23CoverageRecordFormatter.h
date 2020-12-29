@@ -11,6 +11,7 @@
 @interface _TtC15HealthRecordsUI23CoverageRecordFormatter : NSObject
 {
     MISSING_TYPE *$__lazy_storage_$_classificationFormatter;
+    MISSING_TYPE *$__lazy_storage_$_identifierFormatter;
     MISSING_TYPE *store;
     MISSING_TYPE *context;
 }

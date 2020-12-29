@@ -16,6 +16,7 @@
 
 @interface WFDialogPresentationManager : NSObject <NSXPCListenerDelegate, WFDialogXPCHostProtocol, WFScreenOnObserverDelegate, WFDialogAlertPresenterDelegate>
 {
+    BOOL _awaitingRemoteAlertConnectionToDismissPersistentMode;
     id<WFDialogPresentationManagerDelegate> _delegate;
     id<WFDialogAlertPresenter> _remoteAlertPresenter;
     NSXPCListener *_listener;
@@ -32,6 +33,7 @@
 }
 
 @property (strong, nonatomic) NSXPCConnection *activeConnection; // @synthesize activeConnection=_activeConnection;
+@property (nonatomic) BOOL awaitingRemoteAlertConnectionToDismissPersistentMode; // @synthesize awaitingRemoteAlertConnectionToDismissPersistentMode=_awaitingRemoteAlertConnectionToDismissPersistentMode;
 @property (copy, nonatomic) CDUnknownBlockType contentDismissalCompletionHandler; // @synthesize contentDismissalCompletionHandler=_contentDismissalCompletionHandler;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFDialogPresentationManagerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -51,12 +53,15 @@
 @property (readonly, nonatomic) WFUserNotificationManager *userNotificationManager;
 
 - (void).cxx_destruct;
+- (void)activateRemoteAlert;
+- (void)activateRemoteAlertTiedToBundleIdentifier:(id)arg1;
 - (void)beginConnection;
 - (void)beginPersistentModeWithRunningContext:(id)arg1 attribution:(id)arg2;
 - (void)clearPersistentModeStateIfNecessary;
 - (void)completePersistentModeWithSuccess:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)connectedDialog;
 - (void)connectedDialogDidDisconnect;
+- (BOOL)contextAllowsPostingDialogNotifications:(id)arg1;
 - (void)deactivateRemoteAlertAndInvalidateConnection;
 - (void)dealloc;
 - (void)dialogAlertPresenterDidDeactivateAlert:(id)arg1;

@@ -24,10 +24,8 @@
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
-- (id)endpointIdentifier;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithContent:(id)arg1 destination:(id)arg2;
-- (void)setEndpointIdentifier:(id)arg1;
 
 @end
 

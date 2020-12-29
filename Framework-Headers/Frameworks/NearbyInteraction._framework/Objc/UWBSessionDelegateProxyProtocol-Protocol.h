@@ -12,8 +12,7 @@
 - (void)didDiscoverNearbyObject:(NINearbyObject *)arg1;
 - (void)didRemoveNearbyObjects:(NSArray *)arg1 withReason:(unsigned long long)arg2;
 - (void)didUpdateNearbyObjects:(NSArray *)arg1;
-- (void)objectDidEnter:(NINearbyObject *)arg1 region:(NIRegionPredicate *)arg2;
-- (void)objectDidExit:(NINearbyObject *)arg1 region:(NIRegionPredicate *)arg2;
+- (void)object:(NINearbyObject *)arg1 didUpdateRegion:(NIRegionPredicate *)arg2 previousRegion:(NIRegionPredicate *)arg3;
 - (void)uwbSessionDidFailWithError:(NSError *)arg1;
 - (void)uwbSessionDidInvalidateWithError:(NSError *)arg1;
 - (void)uwbSessionInterruptedWithReason:(long long)arg1 timestamp:(double)arg2;

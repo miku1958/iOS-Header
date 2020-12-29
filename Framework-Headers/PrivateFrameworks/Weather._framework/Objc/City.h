@@ -8,7 +8,7 @@
 
 #import <Weather/WAIdentifiable-Protocol.h>
 
-@class CLLocation, NSArray, NSDate, NSDictionary, NSError, NSHashTable, NSNumber, NSString, NSTimeZone, NSTimer, NSURL, WFAQIScaleCategory, WFGeocodeRequest, WFLocation, WFNextHourPrecipitation, WFTemperature, WeatherAQIAttribution;
+@class CLLocation, NSArray, NSDate, NSDictionary, NSError, NSHashTable, NSNumber, NSString, NSTimeZone, NSTimer, NSURL, WFAQIScale, WFAQIScaleCategory, WFGeocodeRequest, WFLocation, WFNextHourPrecipitation, WFTemperature, WeatherAQIAttribution;
 
 @interface City : NSObject <WAIdentifiable>
 {
@@ -59,12 +59,14 @@
     NSURL *_severeWeatherEventLearnMoreURL;
     NSNumber *_airQualityIdx;
     NSNumber *_airQualityCategory;
-    NSString *_airQualityScale;
+    NSString *_airQualityScaleIdentifier;
     WFAQIScaleCategory *_airQualityScaleCategory;
     unsigned long long _airQualitySignificance;
-    NSString *_airQualityLocalizedRecommendation;
+    NSString *_airQualityRecommendation;
     WeatherAQIAttribution *_airQualityAttribution;
-    NSURL *_airQualityProviderURL;
+    NSURL *_airQualityLearnMoreURL;
+    WFAQIScale *_airQualityScale;
+    WFAQIScaleCategory *_airQualityCurrentScaleCategory;
     WFLocation *_wfLocation;
     unsigned long long _lastUpdateStatus;
     long long _updateInterval;
@@ -85,13 +87,17 @@
 @property (strong, nonatomic) WeatherAQIAttribution *airQualityAttribution; // @synthesize airQualityAttribution=_airQualityAttribution;
 @property (strong, nonatomic) NSNumber *airQualityCategory; // @synthesize airQualityCategory=_airQualityCategory;
 @property (strong, nonatomic) NSNumber *airQualityCategoryOverride; // @synthesize airQualityCategoryOverride=_airQualityCategoryOverride;
-@property (readonly, nonatomic) BOOL airQualityForceHideRecommendationString;
+@property (strong, nonatomic) WFAQIScaleCategory *airQualityCurrentScaleCategory; // @synthesize airQualityCurrentScaleCategory=_airQualityCurrentScaleCategory;
+@property (readonly, nonatomic) BOOL airQualityForceHideRecommendation;
 @property (strong, nonatomic) NSNumber *airQualityIdx; // @synthesize airQualityIdx=_airQualityIdx;
 @property (strong, nonatomic) NSNumber *airQualityIdxOverride; // @synthesize airQualityIdxOverride=_airQualityIdxOverride;
-@property (copy, nonatomic) NSString *airQualityLocalizedRecommendation; // @synthesize airQualityLocalizedRecommendation=_airQualityLocalizedRecommendation;
-@property (copy, nonatomic) NSURL *airQualityProviderURL; // @synthesize airQualityProviderURL=_airQualityProviderURL;
-@property (copy, nonatomic) NSString *airQualityScale; // @synthesize airQualityScale=_airQualityScale;
+@property (copy, nonatomic) NSURL *airQualityLearnMoreURL; // @synthesize airQualityLearnMoreURL=_airQualityLearnMoreURL;
+@property (copy, nonatomic) NSString *airQualityRecommendation; // @synthesize airQualityRecommendation=_airQualityRecommendation;
+@property (strong, nonatomic) WFAQIScale *airQualityScale; // @synthesize airQualityScale=_airQualityScale;
 @property (strong, nonatomic) WFAQIScaleCategory *airQualityScaleCategory; // @synthesize airQualityScaleCategory=_airQualityScaleCategory;
+@property (copy, nonatomic) NSString *airQualityScaleIdentifier; // @synthesize airQualityScaleIdentifier=_airQualityScaleIdentifier;
+@property (readonly, nonatomic) BOOL airQualityScaleIsAscending;
+@property (readonly, nonatomic) BOOL airQualityScaleIsNumerical;
 @property (nonatomic) unsigned long long airQualitySignificance; // @synthesize airQualitySignificance=_airQualitySignificance;
 @property (nonatomic) unsigned long long airQualitySignificanceOverride; // @synthesize airQualitySignificanceOverride=_airQualitySignificanceOverride;
 @property (nonatomic) BOOL airQualityTemporarilyUnavailable; // @synthesize airQualityTemporarilyUnavailable=_airQualityTemporarilyUnavailable;

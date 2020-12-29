@@ -13,6 +13,7 @@
 + (id)activePairedDevice;
 + (id)activePairedDeviceProductType;
 + (id)activePairedDeviceSystemBuildVersion;
++ (id)electrocardiogramV2AvailableRegionsForDevice:(id)arg1;
 + (BOOL)isDeviceRunningSeed:(id)arg1;
 + (BOOL)isDeviceSeries3OrOlder:(id)arg1;
 + (BOOL)isDeviceSeries4:(id)arg1;

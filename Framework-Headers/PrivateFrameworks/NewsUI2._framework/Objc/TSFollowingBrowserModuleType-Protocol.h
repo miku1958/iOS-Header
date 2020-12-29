@@ -7,7 +7,7 @@
 @class UIViewController;
 
 @protocol TSFollowingBrowserModuleType
-- (UIViewController *)createViewControllerUsingViewController:(UIViewController *)arg1;
-- (void)presentViewControllerFromViewController:(UIViewController *)arg1;
+- (UIViewController *)createViewControllerUsingViewController:(UIViewController *)arg1 sceneType:(long long)arg2;
+- (void)presentViewControllerFromViewController:(UIViewController *)arg1 sceneType:(long long)arg2;
 @end
 

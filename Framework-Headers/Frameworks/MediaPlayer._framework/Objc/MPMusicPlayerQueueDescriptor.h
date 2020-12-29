@@ -12,6 +12,7 @@
 
 @interface MPMusicPlayerQueueDescriptor : NSObject <NSSecureCoding>
 {
+    BOOL _private;
     long long _shuffleType;
     long long _repeatType;
     NSString *_requestingBundleIdentifier;
@@ -22,6 +23,7 @@
 
 @property (readonly, nonatomic, getter=isEmpty) BOOL empty;
 @property (readonly, nonatomic) NSDictionary *endTimes; // @synthesize endTimes=_endTimes;
+@property (nonatomic, getter=isPrivate) BOOL private; // @synthesize private=_private;
 @property (nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property (readonly, nonatomic) NSString *requestingBundleIdentifier; // @synthesize requestingBundleIdentifier=_requestingBundleIdentifier;
 @property (readonly, nonatomic) NSString *requestingBundleVersion; // @synthesize requestingBundleVersion=_requestingBundleVersion;

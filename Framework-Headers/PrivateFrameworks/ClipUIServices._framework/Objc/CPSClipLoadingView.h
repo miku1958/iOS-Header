@@ -6,12 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-@class CAGradientLayer, CPSButton, CPSVibrantLabel, NSString, UIImage, UIImageView, UILabel;
+@class CABackdropLayer, CAGradientLayer, CPSButton, CPSVibrantLabel, NSString, UIImage, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface CPSClipLoadingView : UIView
 {
     UIView *_backdropView;
+    CABackdropLayer *_backdropLayer;
     UIView *_clipNameBackdropView;
     UIView *_clipNameContainerView;
     UILabel *_clipNameLabel;

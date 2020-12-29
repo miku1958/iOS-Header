@@ -29,6 +29,7 @@
     CDUnknownBlockType _replaceRoutes;
     UIViewController *_alertViewController;
     FBSDisplayLayoutMonitor *_displayMonitor;
+    long long _pendingNowPlayingExpandedLayout;
 }
 
 @property (strong, nonatomic) UIViewController *alertViewController; // @synthesize alertViewController=_alertViewController;
@@ -42,6 +43,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType homeGestureDismissalAllowedBlock; // @synthesize homeGestureDismissalAllowedBlock=_homeGestureDismissalAllowedBlock;
 @property (nonatomic, getter=isOnScreen) BOOL onScreen; // @synthesize onScreen=_onScreen;
+@property (nonatomic) long long pendingNowPlayingExpandedLayout; // @synthesize pendingNowPlayingExpandedLayout=_pendingNowPlayingExpandedLayout;
 @property (readonly, nonatomic) double preferredExpandedContentHeight;
 @property (readonly, nonatomic) double preferredExpandedContentWidth;
 @property (readonly, nonatomic) double preferredExpandedContinuousCornerRadius;
@@ -75,9 +77,9 @@
 - (void)metadataControllerDidUpdateRoutingAvailability:(id)arg1;
 - (void)metadataControllerRouteDidUpdate:(id)arg1;
 - (BOOL)metadataControllerShouldAutomaticallyUpdateReponse:(id)arg1;
+- (void)nowPlayingViewController:(id)arg1 applyLayout:(long long)arg2;
 - (void)nowPlayingViewController:(id)arg1 didChangeSizeWithAnimations:(CDUnknownBlockType)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)nowPlayingViewController:(id)arg1 showViewController:(id)arg2;
-- (void)nowPlayingViewControllerDidChangeLayout:(id)arg1;
 - (id)selectedIdentifier;
 - (void)setState:(long long)arg1;
 - (BOOL)shouldExpandModuleOnTouch:(id)arg1;

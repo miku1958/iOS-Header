@@ -8,7 +8,7 @@
 
 #import <UIKitCore/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, UICollectionView, UICollectionViewDiffableDataSource, UIHoverGestureRecognizer, UIMenu, UISelectionFeedbackGenerator, _UIContextMenuSelectionDelayGestureRecognizer, _UIContextMenuSelectionGestureRecognizer, _UICutoutShadowView;
+@class NSDate, NSIndexPath, NSString, UICollectionView, UICollectionViewDiffableDataSource, UIHoverGestureRecognizer, UIMenu, UISelectionFeedbackGenerator, _UIContextMenuSelectionDelayGestureRecognizer, _UIContextMenuSelectionGestureRecognizer, _UICutoutShadowView;
 @protocol _UIContextMenuActionsListViewDelegate;
 
 __attribute__((visibility("hidden")))
@@ -27,12 +27,14 @@ __attribute__((visibility("hidden")))
     UICollectionViewDiffableDataSource *_collectionViewDataSource;
     _UIContextMenuSelectionGestureRecognizer *_selectionGestureRecognizer;
     _UIContextMenuSelectionDelayGestureRecognizer *_selectionDelayGestureRecognizer;
+    NSDate *_appearanceDate;
     UIHoverGestureRecognizer *_highlightHoverGestureRecognizer;
     NSIndexPath *_highlightedIndexPath;
     UISelectionFeedbackGenerator *_feedbackGenerator;
     struct CGSize _visibleContentSize;
 }
 
+@property (strong, nonatomic) NSDate *appearanceDate; // @synthesize appearanceDate=_appearanceDate;
 @property (strong, nonatomic) UIView *clippingView; // @synthesize clippingView=_clippingView;
 @property (strong, nonatomic) UICollectionViewDiffableDataSource *collectionViewDataSource; // @synthesize collectionViewDataSource=_collectionViewDataSource;
 @property (strong, nonatomic) UICollectionView *currentCollectionView; // @synthesize currentCollectionView=_currentCollectionView;

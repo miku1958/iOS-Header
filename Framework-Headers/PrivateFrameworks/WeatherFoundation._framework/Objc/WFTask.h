@@ -26,6 +26,7 @@
 - (void)cleanup;
 - (void)executeSynchronously;
 - (void)handleCancellation;
+- (void)handleError:(id)arg1 forResponseIdentifier:(id)arg2;
 - (void)handleResponse:(id)arg1;
 - (id)init;
 - (id)initWithResponseRequired:(BOOL)arg1;

@@ -41,7 +41,7 @@ struct UIEdgeInsets {
     double right;
 };
 
-struct VUICornerRadii {
+struct _VUICornerRadii {
     double topLeft;
     double topRight;
     double bottomLeft;

@@ -61,6 +61,7 @@
 - (id)initWithHarvestStore:(id)arg1 xpcActivityManager:(id)arg2;
 - (void)performContactDetailCacheRebuildActivity:(id)arg1;
 - (BOOL)processSearchableItem:(id)arg1 pipeline:(id)arg2 context:(id)arg3;
+- (BOOL)processSearchableItem:(id)arg1 pipeline:(id)arg2 context:(id)arg3 harvestMetrics:(id)arg4;
 - (BOOL)processSearchableItemForTesting:(id)arg1;
 - (void)registerForCTS;
 - (void)resetLastFrontfillFinishTimeForTesting;

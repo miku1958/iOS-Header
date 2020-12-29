@@ -6,23 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class ASDAppQuery, NSArray, NSString;
+#import <HealthKit/ASDAppQueryResultsObserver-Protocol.h>
 
-@interface HKWatchAppAvailability : NSObject
+@class ASDAppQuery, HKObserverSet, NSArray, NSString;
+@protocol HKWatchAppAvailabilityObserver;
+
+@interface HKWatchAppAvailability : NSObject <ASDAppQueryResultsObserver>
 {
     NSString *_bundleID;
     ASDAppQuery *_query;
     NSArray *__test_apps;
+    HKObserverSet<HKWatchAppAvailabilityObserver> *_observers;
+    long long _installState;
 }
 
 @property (strong, nonatomic) NSArray *_test_apps; // @synthesize _test_apps=__test_apps;
-@property (copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (readonly, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (nonatomic) long long installState; // @synthesize installState=_installState;
+@property (strong, nonatomic) HKObserverSet<HKWatchAppAvailabilityObserver> *observers; // @synthesize observers=_observers;
 @property (strong, nonatomic) ASDAppQuery *query; // @synthesize query=_query;
+@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)addObserver:(id)arg1 queue:(id)arg2;
 - (void)appInstallStateOnWatch:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)appQuery:(id)arg1 resultsDidChange:(id)arg2;
+- (void)dealloc;
 - (id)findApplicationIn:(id)arg1;
 - (id)initWithBundleID:(id)arg1;
+- (void)removeObserver:(id)arg1;
 
 @end
 

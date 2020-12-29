@@ -15,10 +15,8 @@
     GCControllerButtonInput *_paddleButton3;
     GCControllerButtonInput *_paddleButton4;
     long long _type;
-    GCControllerButtonInput *_buttonShare;
 }
 
-@property (strong, nonatomic) GCControllerButtonInput *buttonShare; // @synthesize buttonShare=_buttonShare;
 @property (readonly, nonatomic) GCControllerButtonInput *paddleButton1; // @synthesize paddleButton1=_paddleButton1;
 @property (readonly, nonatomic) GCControllerButtonInput *paddleButton2; // @synthesize paddleButton2=_paddleButton2;
 @property (readonly, nonatomic) GCControllerButtonInput *paddleButton3; // @synthesize paddleButton3=_paddleButton3;

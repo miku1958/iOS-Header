@@ -6,9 +6,12 @@
 
 #import <CloudKit/CKRecord.h>
 
+@class NSString;
+
 @interface CKRecord (SyncState)
 
 @property (nonatomic, getter=mt_isSynchronized, setter=mt_setSynchronized:) BOOL mt_isSynchronized;
+@property (strong, nonatomic, getter=mt_secretValue, setter=mt_setSecretValue:) NSString *mt_secretValue;
 
 @end
 

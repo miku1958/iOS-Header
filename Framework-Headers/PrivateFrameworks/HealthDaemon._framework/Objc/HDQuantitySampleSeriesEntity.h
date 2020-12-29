@@ -58,6 +58,7 @@
 + (BOOL)isConcreteEntity;
 + (id)joinClausesForProperty:(id)arg1;
 + (id)mergeDataObject:(id)arg1 provenance:(id)arg2 profile:(id)arg3 transaction:(id)arg4 error:(id *)arg5 insertHandler:(CDUnknownBlockType)arg6;
++ (BOOL)migrateDataFromDataStore:(const struct DataStore *)arg1 to:(struct DataStore *)arg2 transaction:(id)arg3 recoveryAnalytics:(id)arg4 error:(id *)arg5;
 + (CDUnknownBlockType)objectInsertionFilterForProfile:(id)arg1;
 + (id)orderingTermForSortDescriptor:(id)arg1;
 + (BOOL)performPostJournalMergeCleanupWithTransaction:(id)arg1 profile:(id)arg2 error:(id *)arg3;
@@ -75,16 +76,18 @@
 + (long long)unitTesting_insertionEra;
 + (void)unitTesting_updateInsertionEra;
 - (id)HFDKeyWithDatabase:(id)arg1 error:(id *)arg2;
-- (long long)_canAddDatumInDatabase:(id)arg1 error:(id *)arg2;
 - (id)_dataOriginProvenanceWithTransaction:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 - (id)_frozenUUIDForUnfrozenQuantitySample:(id)arg1 HFDKey:(long long)arg2 endDate:(id)arg3 transaction:(id)arg4 profile:(id)arg5 error:(id *)arg6;
 - (BOOL)_getFirstTimeEndTimeCountWithTransaction:(id)arg1 HFDKey:(id)arg2 error:(id *)arg3 handler:(CDUnknownBlockType)arg4;
+- (long long)_hasHFDDataWithDatabase:(id)arg1 error:(id *)arg2;
 - (long long)_hasV1SeriesDataWithDatabase:(id)arg1 error:(id *)arg2;
 - (BOOL)_insertValues:(id)arg1 database:(id)arg2 error:(id *)arg3;
+- (long long)_isFrozenInDatabase:(id)arg1 error:(id *)arg2;
 - (BOOL)_isSeriesInDatabase:(id)arg1;
 - (id)_mergeCodableSeriesDataFromQuantitySampleSeries:(id)arg1 profile:(id)arg2 database:(id)arg3 error:(id *)arg4;
 - (BOOL)_setHFDKey:(long long)arg1 database:(id)arg2 error:(id *)arg3;
 - (BOOL)_setInsertionEra:(long long)arg1 database:(id)arg2 error:(id *)arg3;
+- (long long)_shouldMergeQuantitySampleSeries:(id)arg1 codableSeries:(id)arg2 database:(id)arg3 error:(id *)arg4;
 - (id)_updatedSampleForQuantitySeriesSample:(id)arg1 HFDKey:(long long)arg2 endDate:(id)arg3 transaction:(id)arg4 error:(id *)arg5;
 - (id)countForSeriesWithTransaction:(id)arg1 error:(id *)arg2;
 - (BOOL)deleteFromDatabase:(id)arg1 error:(id *)arg2;

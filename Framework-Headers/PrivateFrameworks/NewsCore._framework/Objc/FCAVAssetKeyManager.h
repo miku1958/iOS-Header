@@ -32,6 +32,7 @@
 - (void).cxx_destruct;
 - (void)_completeKeyRequest:(id)arg1 withData:(id)arg2 error:(id)arg3;
 - (id)_keyURIForKeyIdentifier:(id)arg1;
+- (BOOL)_shouldRefreshKey:(id)arg1;
 - (BOOL)_waitingOnRefreshForKeyURI:(id)arg1;
 - (void)contentKeySession:(id)arg1 didProvideContentKeyRequest:(id)arg2;
 - (void)contentKeySession:(id)arg1 didProvidePersistableContentKeyRequest:(id)arg2;

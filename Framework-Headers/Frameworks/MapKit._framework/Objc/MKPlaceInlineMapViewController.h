@@ -8,13 +8,14 @@
 
 #import <MapKit/MKModuleViewControllerProtocol-Protocol.h>
 
-@class MKMapCamera, MKMapItem, NSArray, NSString, _MKPlaceInlineMapContentView, _MKPlaceViewController;
+@class MKGroupedPlacesSnapshotter, MKMapCamera, MKMapItem, NSArray, NSString, _MKPlaceInlineMapContentView, _MKPlaceViewController;
 
 __attribute__((visibility("hidden")))
 @interface MKPlaceInlineMapViewController : UIViewController <MKModuleViewControllerProtocol>
 {
     _MKPlaceInlineMapContentView *_contentView;
     MKMapItem *_updatingInlineMapItem;
+    MKGroupedPlacesSnapshotter *_collectionSnapshotter;
     BOOL _bottomHairlineHidden;
     BOOL _useWindowTrait;
     MKMapItem *_mapItem;
@@ -42,6 +43,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateInlineMapWithRefinedMapItems;
 - (void)_updateMap;
 - (void)_updateSnapshotImage:(id)arg1;
+- (void)cancelSnapshotRequestIfNeeded;
 - (id)initWithMKMapItem:(id)arg1;
 - (void)loadView;
 - (long long)preferredUserInterfaceStyle;

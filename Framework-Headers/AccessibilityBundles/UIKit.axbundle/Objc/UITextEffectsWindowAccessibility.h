@@ -14,6 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (BOOL)_accessibilityCanBeConsideredAsMainWindow;
+- (BOOL)_axHasModalView;
+- (BOOL)accessibilityViewIsModal;
 - (id)initWithFrame:(struct CGRect)arg1;
 
 @end

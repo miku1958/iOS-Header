@@ -55,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)_shouldCycle;
 - (void)_startMarqueeIfNeeded;
 - (void)dealloc;
+- (void)didMoveToWindow;
 - (void)drawTextInRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)setAttributedText:(id)arg1;

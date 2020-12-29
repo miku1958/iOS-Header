@@ -8,7 +8,7 @@
 
 #import <MetricsKit/MTID-Protocol.h>
 
-@class MTIDScheme, MTIDSecret, NSDate, NSDictionary, NSString;
+@class MTIDScheme, MTIDSecret, NSDate, NSDictionary, NSNumber, NSString;
 
 @interface MTIDInfo : NSObject <MTID>
 {
@@ -16,6 +16,7 @@
     MTIDScheme *_scheme;
     MTIDSecret *_secret;
     NSString *_idString;
+    NSNumber *_dsId;
     NSDate *_effectiveDate;
     NSDate *_expirationDate;
     NSDate *_computedDate;
@@ -24,6 +25,7 @@
 @property (strong, nonatomic) NSDate *computedDate; // @synthesize computedDate=_computedDate;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (copy, nonatomic) NSNumber *dsId; // @synthesize dsId=_dsId;
 @property (copy, nonatomic) NSDate *effectiveDate; // @synthesize effectiveDate=_effectiveDate;
 @property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (readonly) unsigned long long hash;
@@ -39,7 +41,7 @@
 
 - (void).cxx_destruct;
 - (id)debugInfo;
-- (id)initWithScheme:(id)arg1 secret:(id)arg2 idString:(id)arg3 effectiveDate:(id)arg4 expirationDate:(id)arg5;
+- (id)initWithScheme:(id)arg1 secret:(id)arg2 idString:(id)arg3 dsId:(id)arg4 effectiveDate:(id)arg5 expirationDate:(id)arg6;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValueExpired;
 

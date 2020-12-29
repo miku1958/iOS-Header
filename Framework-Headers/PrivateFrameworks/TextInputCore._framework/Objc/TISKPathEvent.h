@@ -16,7 +16,7 @@
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)init:(id)arg1 candidate:(id)arg2 order:(long long)arg3;
+- (id)init:(id)arg1 candidate:(id)arg2 emojiSearchMode:(BOOL)arg3 order:(long long)arg4;
 - (BOOL)isMissingATouch;
 - (void)reportInterKeyTiming:(id)arg1 previousEvent:(id)arg2;
 - (void)reportToSession:(id)arg1;

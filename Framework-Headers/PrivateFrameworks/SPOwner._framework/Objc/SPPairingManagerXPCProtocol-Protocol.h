@@ -7,6 +7,10 @@
 #import <SPOwner/NSObject-Protocol.h>
 #import <SPOwner/SPLocalPairingManagerXPCProtocol-Protocol.h>
 
+@class NSUUID;
+
 @protocol SPPairingManagerXPCProtocol <NSObject, SPLocalPairingManagerXPCProtocol>
+- (oneway void)allPairingErrorsWithCompletion:(void (^)(NSArray *))arg1;
+- (oneway void)unpairUUID:(NSUUID *)arg1 force:(BOOL)arg2 completion:(void (^)(NSError *))arg3;
 @end
 

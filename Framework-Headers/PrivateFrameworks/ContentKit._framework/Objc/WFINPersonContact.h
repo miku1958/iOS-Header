@@ -19,7 +19,6 @@
 + (id)objectWithWFSerializedRepresentation:(id)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
-- (Class)classForCoder;
 - (void)encodeWithCoder:(id)arg1;
 - (id)inPerson;
 - (id)initWithCoder:(id)arg1;

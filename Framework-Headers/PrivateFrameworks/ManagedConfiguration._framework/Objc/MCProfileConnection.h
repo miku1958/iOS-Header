@@ -342,6 +342,7 @@
 - (BOOL)isNotificationsModificationAllowedForBundleID:(id)arg1;
 - (BOOL)isOTAPKIUpdatesAllowed;
 - (BOOL)isOnDeviceAppInstallationAllowed;
+- (BOOL)isOnDeviceOnlyDictationForced;
 - (BOOL)isOpenInRestrictionInEffect;
 - (BOOL)isParentalControlsAllowPasscodeAccessToNonWhitelistedAppsUIForcedByRestrictions;
 - (BOOL)isPasscodeCompliantWithNamedPolicy:(id)arg1 outError:(id *)arg2;

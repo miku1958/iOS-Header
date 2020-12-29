@@ -7,8 +7,8 @@
 #import <Foundation/NSURLRequest.h>
 
 @interface NSURLRequest (FCAdditions)
-+ (id)frRequestWithURL:(id)arg1;
-+ (id)frRequestWithURL:(id)arg1 cachePolicy:(unsigned long long)arg2 timeoutInterval:(double)arg3;
++ (id)fcRequestWithURL:(id)arg1;
++ (id)fcRequestWithURL:(id)arg1 cachePolicy:(unsigned long long)arg2 timeoutInterval:(double)arg3;
 + (id)overrideUserAgent;
 + (void)setupFeldsparUserAgent;
 @end

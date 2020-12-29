@@ -25,7 +25,7 @@
 
 + (id)regexRules;
 - (id)_behavesBadlyWithSpellMarkupForVoice:(id)arg1 string:(id)arg2 markupType:(long long)arg3;
-- (id)_ttsCopyVoiceNames:(id)arg1 type:(long long)arg2 queryingMobileAssets:(BOOL)arg3;
+- (id)_ttsCopyVoiceInfo:(id)arg1 type:(long long)arg2 queryingMobileAssets:(BOOL)arg3;
 - (id)audioFileSettingsForVoice:(id)arg1;
 - (BOOL)canInitializeSpeech:(id)arg1;
 - (oneway void)continueSpeechRequest:(id)arg1;

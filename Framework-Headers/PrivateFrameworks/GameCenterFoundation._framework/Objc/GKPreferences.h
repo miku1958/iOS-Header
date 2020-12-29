@@ -25,6 +25,7 @@
 @property (readonly, nonatomic, getter=isAddingFriendsRestricted) BOOL addingFriendsRestricted;
 @property (nonatomic) BOOL allowUnsignedBag;
 @property (readonly, nonatomic, getter=isAppInstallationRestricted) BOOL appInstallationRestricted;
+@property (nonatomic) BOOL arcadeDashboardSection;
 @property (nonatomic) double cacheTTLOverride;
 @property (nonatomic, getter=isClipGestureEnabled) BOOL clipGestureEnabled;
 @property (nonatomic, getter=isComprehensiveLoggingEnabled) BOOL comprehensiveLoggingEnabled;

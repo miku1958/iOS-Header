@@ -6,13 +6,13 @@
 
 #import <UIKit/UIView.h>
 
-@class CAGradientLayer, UIVisualEffectView, _TVImageView;
+@class CAGradientLayer, UIVisualEffectView;
 
 __attribute__((visibility("hidden")))
 @interface VUIProductUberBackgroundView : UIView
 {
     BOOL _isChannelBanner;
-    _TVImageView *_imageView;
+    UIView *_imageView;
     long long _configuredBlurInterfaceStyle;
     CAGradientLayer *_maskGradientLayer;
     UIVisualEffectView *_blurEffectView;
@@ -24,7 +24,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long configuredBlurInterfaceStyle; // @synthesize configuredBlurInterfaceStyle=_configuredBlurInterfaceStyle;
 @property (nonatomic) double contentOffset; // @synthesize contentOffset=_contentOffset;
 @property (nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
-@property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) UIView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) BOOL isChannelBanner; // @synthesize isChannelBanner=_isChannelBanner;
 @property (strong, nonatomic) CAGradientLayer *maskGradientLayer; // @synthesize maskGradientLayer=_maskGradientLayer;
 

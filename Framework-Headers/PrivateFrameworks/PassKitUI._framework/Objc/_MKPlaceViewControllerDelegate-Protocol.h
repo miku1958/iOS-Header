@@ -81,6 +81,7 @@
 - (void)placeViewControllerLinkedServicesDidTapHeaderButton:(_MKPlaceViewController *)arg1;
 - (double)placeViewControllerPlaceCardHeaderTitleTrailingConstant:(_MKPlaceViewController *)arg1;
 - (void)placeViewControllerPresentContactsController:(UINavigationController *)arg1;
+- (BOOL)placeViewControllerShouldOverrideCallToActionForHeader:(_MKPlaceViewController *)arg1;
 - (BOOL)shouldMoveMuninStorefrontViewForPlaceViewController:(_MKPlaceViewController *)arg1;
 - (GEOMapServiceTraits *)traitsForPlaceViewController:(_MKPlaceViewController *)arg1;
 @end

@@ -12,6 +12,7 @@
 
 @property (readonly, copy, nonatomic) NSArray *appLinks;
 @property (strong, nonatomic) CPSClipMetadataRequest *clipMetadataRequest;
+@property (readonly, nonatomic) long long codeType;
 @property (readonly, copy, nonatomic) NSDictionary *debugDescriptionDictionary;
 @property (readonly, copy, nonatomic) NSString *extraPreviewText;
 @property (readonly, nonatomic) BOOL isInvalidDataAction;

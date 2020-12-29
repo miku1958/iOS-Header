@@ -6,35 +6,45 @@
 
 #import <NewsCore/FCOperation.h>
 
-@class FCCachePolicy, NSString;
-@protocol FCContentContext, FCFlintHelper;
+#import <NewsCore/FCOfflineFetchOperationType-Protocol.h>
 
-@interface FCOfflineIssueFetchOperation : FCOperation
+@class FCCachePolicy, FCThreadSafeMutableArray, NSObject, NSString;
+@protocol FCContentContext, FCFlintHelper, OS_dispatch_queue;
+
+@interface FCOfflineIssueFetchOperation : FCOperation <FCOfflineFetchOperationType>
 {
-    BOOL _cachedOnly;
-    CDUnknownBlockType _layeredCoverHandlesProvider;
+    BOOL cachedOnly;
+    CDUnknownBlockType archiveHandler;
+    NSObject<OS_dispatch_queue> *archiveQueue;
+    CDUnknownBlockType fetchCompletionHandler;
+    NSObject<OS_dispatch_queue> *fetchCompletionQueue;
+    CDUnknownBlockType progressHandler;
+    NSObject<OS_dispatch_queue> *progressQueue;
     double _progress;
-    CDUnknownBlockType _progressHandler;
-    CDUnknownBlockType _fetchCompletionHandler;
     id<FCContentContext> _context;
     id<FCFlintHelper> _flintHelper;
     NSString *_issueID;
-    id _resultHoldToken;
+    FCThreadSafeMutableArray *_resultInterestTokens;
     FCCachePolicy *_issueRecordCachePolicy;
 }
 
-@property (nonatomic) BOOL cachedOnly; // @synthesize cachedOnly=_cachedOnly;
+@property (copy, nonatomic) CDUnknownBlockType archiveHandler; // @synthesize archiveHandler;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *archiveQueue; // @synthesize archiveQueue;
+@property (nonatomic) BOOL cachedOnly; // @synthesize cachedOnly;
 @property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
-@property (copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
+@property (copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *fetchCompletionQueue; // @synthesize fetchCompletionQueue;
 @property (strong, nonatomic) id<FCFlintHelper> flintHelper; // @synthesize flintHelper=_flintHelper;
 @property (copy, nonatomic) NSString *issueID; // @synthesize issueID=_issueID;
 @property (strong, nonatomic) FCCachePolicy *issueRecordCachePolicy; // @synthesize issueRecordCachePolicy=_issueRecordCachePolicy;
-@property (copy, nonatomic) CDUnknownBlockType layeredCoverHandlesProvider; // @synthesize layeredCoverHandlesProvider=_layeredCoverHandlesProvider;
 @property double progress; // @synthesize progress=_progress;
-@property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
-@property (strong, nonatomic) id resultHoldToken; // @synthesize resultHoldToken=_resultHoldToken;
+@property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler;
+@property (strong, nonatomic) NSObject<OS_dispatch_queue> *progressQueue; // @synthesize progressQueue;
+@property (readonly, nonatomic) FCThreadSafeMutableArray *resultInterestTokens; // @synthesize resultInterestTokens=_resultInterestTokens;
 
 - (void).cxx_destruct;
+- (void)_handleArchive:(id)arg1;
+- (void)_handleInterestToken:(id)arg1;
 - (id)_itemIdentifiersForKey:(id)arg1 fromMetadataJSONData:(id)arg2;
 - (id)_pdfArchiveURLForIssue:(id)arg1;
 - (id)_promiseANFArticlesForArticleIDs:(id)arg1 withDownloadProgressMin:(double)arg2 downloadProgressMax:(double)arg3;
@@ -42,7 +52,6 @@
 - (id)_promiseANFPagesForIssue:(id)arg1;
 - (id)_promiseCoverImageForIssue:(id)arg1;
 - (id)_promiseIssue;
-- (id)_promiseLayeredCoverAssetsForIssue:(id)arg1;
 - (id)_promiseMetadataForIssue:(id)arg1;
 - (id)_promisePDFPagesForIssue:(id)arg1;
 - (id)_promiseReplicaAdPagesForIssue:(id)arg1 withDownloadProgressMin:(double)arg2 downloadProgressMax:(double)arg3;

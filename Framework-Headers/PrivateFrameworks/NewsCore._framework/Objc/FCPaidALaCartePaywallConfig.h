@@ -32,7 +32,7 @@
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithChannelID:(id)arg1 channelPaywallTitle:(id)arg2 hardPaywallTitle:(id)arg3 leakyPaywallTitle:(id)arg4 promotionalPaywallTitle:(id)arg5;
-- (id)initWithConfigDictionary:(id)arg1;
+- (id)initWithChannelID:(id)arg1 configDictionary:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 
 @end

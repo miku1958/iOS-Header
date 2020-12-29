@@ -42,10 +42,11 @@
 
 - (void).cxx_destruct;
 - (void)_modifyCacheHintForKeys:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
-- (void)addInterestInKeys:(id)arg1;
+- (id)addInterestInKeys:(id)arg1;
 - (BOOL)cacheContainsKey:(id)arg1;
 - (void)dealloc;
 - (void)didAccessKeys:(id)arg1;
+- (void)didInsertKeyIntoCache:(id)arg1;
 - (void)didInsertKeyIntoCache:(id)arg1 withLifetimeHint:(long long)arg2;
 - (void)didInsertKeysIntoCache:(id)arg1 withLifetimeHints:(id)arg2;
 - (void)didRemoveKeysFromCache:(id)arg1;
@@ -64,6 +65,7 @@
 - (void)removeInterestInKeys:(id)arg1;
 - (void)setupWithInitialKeys:(id)arg1;
 - (void)setupWithInitialKeys:(id)arg1 persistedHints:(id)arg2;
+- (BOOL)shouldMaintainCacheHints;
 
 @end
 

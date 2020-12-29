@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData, NSString, SISchemaSiriResponseContext;
+@class NSData, NSString, SISchemaGridCardSection, SISchemaSiriResponseContext;
 
 @interface SISchemaUUFRShown : PBCodable
 {
@@ -18,6 +18,7 @@
     NSString *_aceViewID;
     NSString *_aceViewClass;
     int _viewRegionDesignation;
+    SISchemaGridCardSection *_gridCardSection;
     struct {
         unsigned int siriUILocation:1;
         unsigned int viewRegionDesignation:1;
@@ -28,14 +29,18 @@
     BOOL _hasSiriResponseContext;
     BOOL _hasAceViewID;
     BOOL _hasAceViewClass;
+    BOOL _hasGridCardSection;
+    unsigned long long _whichSubsection;
 }
 
 @property (copy, nonatomic) NSString *aceViewClass; // @synthesize aceViewClass=_aceViewClass;
 @property (copy, nonatomic) NSString *aceViewID; // @synthesize aceViewID=_aceViewID;
 @property (copy, nonatomic) NSString *dialogIdentifier; // @synthesize dialogIdentifier=_dialogIdentifier;
+@property (strong, nonatomic) SISchemaGridCardSection *gridCardSection; // @synthesize gridCardSection=_gridCardSection;
 @property (nonatomic) BOOL hasAceViewClass; // @synthesize hasAceViewClass=_hasAceViewClass;
 @property (nonatomic) BOOL hasAceViewID; // @synthesize hasAceViewID=_hasAceViewID;
 @property (nonatomic) BOOL hasDialogIdentifier; // @synthesize hasDialogIdentifier=_hasDialogIdentifier;
+@property (nonatomic) BOOL hasGridCardSection; // @synthesize hasGridCardSection=_hasGridCardSection;
 @property (nonatomic) BOOL hasSiriResponseContext; // @synthesize hasSiriResponseContext=_hasSiriResponseContext;
 @property (nonatomic) BOOL hasSiriUILocation;
 @property (nonatomic) BOOL hasSnippetClass; // @synthesize hasSnippetClass=_hasSnippetClass;
@@ -47,6 +52,7 @@
 @property (copy, nonatomic) NSString *snippetClass; // @synthesize snippetClass=_snippetClass;
 @property (copy, nonatomic) NSString *viewID; // @synthesize viewID=_viewID;
 @property (nonatomic) int viewRegionDesignation; // @synthesize viewRegionDesignation=_viewRegionDesignation;
+@property (readonly, nonatomic) unsigned long long whichSubsection; // @synthesize whichSubsection=_whichSubsection;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;

@@ -20,13 +20,12 @@
 #import <SpringBoard/SBFMotionGestureObserver-Protocol.h>
 #import <SpringBoard/SBFNotificationExtensionVisibilityProviding-Protocol.h>
 #import <SpringBoard/SBNotificationDestinationHomeButtonPressHandler-Protocol.h>
-#import <SpringBoard/SBNotificationHomeAffordanceControllerClient-Protocol.h>
 #import <SpringBoard/SBUICoronaAnimationControllerParticipant-Protocol.h>
 
 @class BSServiceConnectionEndpoint, DNDEventBehaviorResolutionService, NCNotificationManagementViewPresenter, NCNotificationViewController, NSMutableSet, NSString, SBAppStatusBarSettingsAssertion, SBAssistantController, SBDashBoardLegibilityProvider, SBInAppStatusBarHiddenAssertion, SBLockScreenManager, SBNotificationPresentableViewController, SBSetupManager, UIApplicationSceneDeactivationAssertion;
 @protocol BNPresentable, BSInvalidatable, NCNotificationAlertDestinationDelegate, OS_dispatch_source;
 
-@interface SBNotificationBannerDestination : NSObject <NCNotificationViewControllerDelegatePrivate, CSExternalBehaviorProviding, SBFIdleTimerBehaviorProviding, SBFMotionGestureObserver, SBAssistantObserver, SBNotificationHomeAffordanceControllerClient, NCNotificationManagementContentProviderDelegate, NCNotificationManagementViewPresenterDelegate, NCNotificationPresentableViewControllerDelegate, SBUICoronaAnimationControllerParticipant, SBBacklightControllerObserver, NCNotificationAlertDestination, SBNotificationDestinationHomeButtonPressHandler, SBFNotificationExtensionVisibilityProviding, NCNotificationViewControllerDelegate, NCNotificationViewControllerObserving>
+@interface SBNotificationBannerDestination : NSObject <NCNotificationViewControllerDelegatePrivate, CSExternalBehaviorProviding, SBFIdleTimerBehaviorProviding, SBFMotionGestureObserver, SBAssistantObserver, NCNotificationManagementContentProviderDelegate, NCNotificationManagementViewPresenterDelegate, NCNotificationPresentableViewControllerDelegate, SBUICoronaAnimationControllerParticipant, SBBacklightControllerObserver, NCNotificationAlertDestination, SBNotificationDestinationHomeButtonPressHandler, SBFNotificationExtensionVisibilityProviding, NCNotificationViewControllerDelegate, NCNotificationViewControllerObserving>
 {
     BOOL _userInteractionInProgress;
     id<NCNotificationAlertDestinationDelegate> _delegate;
@@ -163,8 +162,6 @@
 - (void)destinationDidBecomeDisabled;
 - (void)didReceiveRaiseGesture;
 - (BOOL)handleHomeButtonPress;
-- (id)hideHomeAffordanceAnimationSettingsForNotificationViewController:(id)arg1;
-- (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (id)init;
 - (BOOL)isNotificationContentExtensionVisible:(id)arg1;
 - (void)longLookDidDismissForNotificationViewController:(id)arg1;
@@ -187,7 +184,6 @@
 - (void)notificationViewController:(id)arg1 dragInteraction:(id)arg2 session:(id)arg3 willEndWithOperation:(unsigned long long)arg4;
 - (void)notificationViewController:(id)arg1 dragInteraction:(id)arg2 sessionWillBegin:(id)arg3;
 - (void)notificationViewController:(id)arg1 executeAction:(id)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)notificationViewController:(id)arg1 keyboardAssertionForGestureWindow:(id)arg2;
 - (void)notificationViewController:(id)arg1 requestPermissionToExecuteAction:(id)arg2 withParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)notificationViewController:(id)arg1 shouldFinishLongLookTransitionForTrigger:(long long)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
 - (id)notificationViewController:(id)arg1 staticContentProviderForNotificationRequest:(id)arg2;
@@ -208,10 +204,8 @@
 - (void)presentableWillDisappearAsBanner:(id)arg1 withReason:(id)arg2;
 - (struct CGRect)presentedBannerScreenFrame;
 - (void)registerNotificationBannerDestinationObserver:(id)arg1;
-- (id)settleHomeAffordanceAnimationBehaviorDescriptionForNotificationViewController:(id)arg1;
 - (BOOL)shouldAcquireWindowLevelAssertion;
 - (BOOL)shouldDismissForReason:(id)arg1;
-- (id)unhideHomeAffordanceAnimationSettingsForNotificationViewController:(id)arg1;
 - (void)unregisterNotificationBannerDestinationObserver:(id)arg1;
 - (void)userInteractionDidEndForBannerForPresentable:(id)arg1;
 - (void)userInteractionWillBeginForBannerForPresentable:(id)arg1;

@@ -6,18 +6,18 @@
 
 #import <UIKit/UICollectionReusableView.h>
 
-@class IKViewElement, VUIButton;
+@class IKViewElement, VUILegacyButton;
 
 __attribute__((visibility("hidden")))
 @interface VUICollectionFooterView : UICollectionReusableView
 {
     IKViewElement *_viewElement;
     IKViewElement *_buttonViewElement;
-    VUIButton *_buttonView;
+    VUILegacyButton *_buttonView;
     struct UIEdgeInsets _padding;
 }
 
-@property (strong, nonatomic) VUIButton *buttonView; // @synthesize buttonView=_buttonView;
+@property (strong, nonatomic) VUILegacyButton *buttonView; // @synthesize buttonView=_buttonView;
 @property (strong, nonatomic) IKViewElement *buttonViewElement; // @synthesize buttonViewElement=_buttonViewElement;
 @property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;

@@ -23,6 +23,7 @@
 - (void)didCloseViewfinderForReason:(long long)arg1;
 - (void)didOpenViewfinderForReason:(long long)arg1;
 - (void)prepareForDefaultImageSnapshotForScreen:(id)arg1;
+- (BOOL)runNewPPTUICaptureTestWithTestName:(id)arg1 options:(id)arg2;
 - (BOOL)runPresentTestWithName:(id)arg1 options:(id)arg2;
 - (BOOL)runSwitchCamerasTestWithName:(id)arg1 options:(id)arg2;
 - (BOOL)runSwitchModesTestWithName:(id)arg1 options:(id)arg2;

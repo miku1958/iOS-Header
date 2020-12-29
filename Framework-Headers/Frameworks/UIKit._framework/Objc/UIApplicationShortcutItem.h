@@ -6,28 +6,32 @@
 
 #import <objc/NSObject.h>
 
+#import <UIKitCore/BSXPCCoding-Protocol.h>
 #import <UIKitCore/NSCopying-Protocol.h>
 #import <UIKitCore/NSMutableCopying-Protocol.h>
 
 @class NSData, NSDictionary, NSString, SBSApplicationShortcutItem, UIApplicationShortcutIcon;
 
-@interface UIApplicationShortcutItem : NSObject <NSCopying, NSMutableCopying>
+@interface UIApplicationShortcutItem : NSObject <BSXPCCoding, NSCopying, NSMutableCopying>
 {
     NSString *_type;
     NSString *_localizedTitle;
     NSString *_localizedSubtitle;
     UIApplicationShortcutIcon *_icon;
     id _targetContentIdentifier;
-    unsigned long long _activationMode;
     NSData *_userInfoData;
+    unsigned long long _activationMode;
 }
 
-@property (readonly, nonatomic) unsigned long long activationMode;
-@property (nonatomic) unsigned long long activationMode; // @synthesize activationMode=_activationMode;
+@property (readonly, nonatomic) unsigned long long activationMode; // @synthesize activationMode=_activationMode;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (copy, nonatomic) UIApplicationShortcutIcon *icon; // @synthesize icon=_icon;
 @property (copy, nonatomic) NSString *localizedSubtitle; // @synthesize localizedSubtitle=_localizedSubtitle;
 @property (copy, nonatomic) NSString *localizedTitle; // @synthesize localizedTitle=_localizedTitle;
 @property (readonly, copy, nonatomic) SBSApplicationShortcutItem *sbsShortcutItem;
+@property (readonly) Class superclass;
 @property (copy, nonatomic) id targetContentIdentifier; // @synthesize targetContentIdentifier=_targetContentIdentifier;
 @property (copy, nonatomic) NSString *type; // @synthesize type=_type;
 @property (copy, nonatomic) NSDictionary *userInfo;
@@ -35,16 +39,15 @@
 
 + (unsigned long long)_sbsActivationModeFromUIActivationMode:(unsigned long long)arg1;
 + (unsigned long long)_uiActivationModeFromSBSActivationMode:(unsigned long long)arg1;
-+ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_initWithType:(id)arg1 localizedTitle:(id)arg2 localizedSubtitle:(id)arg3 icon:(id)arg4 userInfoData:(id)arg5 activationMode:(unsigned long long)arg6 targetContentIdentifier:(id)arg7;
 - (id)copyWithZone:(struct _NSZone *)arg1;
-- (id)description;
-- (unsigned long long)hash;
+- (void)encodeWithXPCDictionary:(id)arg1;
 - (id)init;
 - (id)initWithSBSApplicationShortcutItem:(id)arg1;
 - (id)initWithType:(id)arg1 localizedTitle:(id)arg2;
 - (id)initWithType:(id)arg1 localizedTitle:(id)arg2 localizedSubtitle:(id)arg3 icon:(id)arg4 userInfo:(id)arg5;
+- (id)initWithXPCDictionary:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutableCopyWithZone:(struct _NSZone *)arg1;
 

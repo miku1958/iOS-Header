@@ -35,6 +35,7 @@
 + (BOOL)dismissSiriTransientOverlayOnSinglePressUp:(long long)arg1;
 + (id)hardwareButtonInteractionForHomeButton;
 + (id)hardwareButtonInteractionForLockButton;
++ (id)hardwareButtonInteractionForVoiceCommandButton;
 - (void).cxx_destruct;
 - (void)_cancelAllSiriActions;
 - (void)_cancelPreheating;

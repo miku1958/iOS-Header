@@ -27,10 +27,12 @@
 
 - (void).cxx_destruct;
 - (id)_cellTitleForEducationRow:(unsigned long long)arg1;
+- (BOOL)_hasOnboardedBefore;
 - (id)_viewControllerForEducationRow:(unsigned long long)arg1;
 - (id)cellForIndex:(unsigned long long)arg1 tableView:(id)arg2;
 - (id)dateCache;
 - (id)healthStore;
+- (id)initWithHealthStore:(id)arg1;
 - (unsigned long long)numberOfRowsInSection;
 - (id)sectionTitle;
 - (void)selectCellForIndex:(unsigned long long)arg1 navigationController:(id)arg2 animated:(BOOL)arg3;

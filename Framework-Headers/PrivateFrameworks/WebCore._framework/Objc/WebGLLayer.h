@@ -9,35 +9,20 @@
 __attribute__((visibility("hidden")))
 @interface WebGLLayer : CALayer
 {
-    float _devicePixelRatio;
-    struct unique_ptr<WebCore::IOSurface, std::__1::default_delete<WebCore::IOSurface>> _contentsBuffer;
-    struct unique_ptr<WebCore::IOSurface, std::__1::default_delete<WebCore::IOSurface>> _drawingBuffer;
-    struct unique_ptr<WebCore::IOSurface, std::__1::default_delete<WebCore::IOSurface>> _spareBuffer;
-    struct IntSize _bufferSize;
-    BOOL _usingAlpha;
-    void *_eglDisplay;
-    void *_eglConfig;
-    void *_contentsPbuffer;
-    void *_drawingPbuffer;
-    void *_sparePbuffer;
-    void *_latchedPbuffer;
+    struct WebGLLayerBuffer _contentsBuffer;
+    struct WebGLLayerBuffer _spareBuffer;
     BOOL _preparedForDisplay;
-    NakedPtr_06b7f1a7 _context;
 }
-
-@property (nonatomic) NakedPtr_06b7f1a7 context; // @synthesize context=_context;
 
 - (id).cxx_construct;
 - (void).cxx_destruct;
-- (BOOL)allocateIOSurfaceBackingStoreWithSize:(struct IntSize)arg1 usingAlpha:(BOOL)arg2;
-- (void)bindFramebufferToNextAvailableSurface;
 - (struct CGImage *)copyImageSnapshotWithColorSpace:(struct CGColorSpace *)arg1;
+- (void *)detachClient;
 - (void)display;
-- (id)initWithGraphicsContextGL:(NakedPtr_06b7f1a7)arg1;
-- (void)prepareForDisplay;
-- (void)releaseGLResources;
+- (id)initWithDevicePixelRatio:(float)arg1 contentsOpaque:(BOOL)arg2;
+- (void)prepareForDisplayWithContents:(struct WebGLLayerBuffer)arg1;
+- (struct WebGLLayerBuffer)recycleBuffer;
 - (void)setAnchorPoint:(struct CGPoint)arg1;
-- (void)setEGLDisplay:(void *)arg1 config:(void *)arg2;
 - (void)setTransform:(struct CATransform3D)arg1;
 
 @end

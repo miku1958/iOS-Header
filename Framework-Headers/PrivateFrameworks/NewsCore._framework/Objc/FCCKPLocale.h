@@ -10,6 +10,7 @@
 
 @class NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPLocale : PBCodable <NSCopying>
 {
     NSString *_activeKeyboard;
@@ -26,9 +27,9 @@
 @property (strong, nonatomic) NSString *languageCode; // @synthesize languageCode=_languageCode;
 @property (strong, nonatomic) NSString *regionCode; // @synthesize regionCode=_regionCode;
 
++ (Class)enabledKeyboardsType;
 - (void)addEnabledKeyboards:(id)arg1;
 - (void)clearEnabledKeyboards;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

@@ -9,7 +9,7 @@
 #import <UIKitCore/UIPointerInteractionDelegate-Protocol.h>
 #import <UIKitCore/UISpringLoadedInteractionSupporting-Protocol.h>
 
-@class NSLayoutConstraint, NSString, _UIBarButtonItemData, _UIButtonBarButtonVisualProvider;
+@class NSDate, NSLayoutConstraint, NSString, _UIBarButtonItemData, _UIButtonBarButtonVisualProvider;
 
 @interface _UIButtonBarButton : UIControl <UIPointerInteractionDelegate, UISpringLoadedInteractionSupporting>
 {
@@ -17,6 +17,7 @@
     NSLayoutConstraint *_widthMinimizingConstraint;
     NSLayoutConstraint *_heightMinimizingConstraint;
     BOOL _autolayoutIsCleanForBoundsChange;
+    NSDate *_appearanceDate;
     BOOL _backButton;
     _UIBarButtonItemData *_appearanceData;
 }
@@ -64,6 +65,7 @@
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (struct CGPoint)menuAttachmentPointForConfiguration:(id)arg1;
+- (void)pasteTouchDown;
 - (BOOL)pointMostlyInside:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
 - (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;

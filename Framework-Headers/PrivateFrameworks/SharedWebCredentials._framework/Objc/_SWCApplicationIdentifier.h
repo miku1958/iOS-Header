@@ -28,6 +28,7 @@
 + (id)new;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)UUIDRepresentation;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)debugDescription;
 - (id)description;

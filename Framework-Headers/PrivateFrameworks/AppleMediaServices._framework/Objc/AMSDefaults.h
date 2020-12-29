@@ -72,6 +72,8 @@
 + (id)metricsCanaryIdentifier;
 + (id)metricsTimingWindowStartTime;
 + (BOOL)migratedDeviceOffers;
++ (BOOL)migratedDeviceOffersForWatch;
++ (BOOL)migratedPrivacyAcknowledgements;
 + (BOOL)migratedToNewCookieStorage;
 + (id)multiUserContainerID;
 + (BOOL)perfomedDeviceOfferSetup;
@@ -121,6 +123,8 @@
 + (void)setMetricsCanaryIdentifier:(id)arg1;
 + (void)setMetricsTimingWindowStartTime:(id)arg1;
 + (void)setMigratedDeviceOffers:(BOOL)arg1;
++ (void)setMigratedDeviceOffersForWatch:(BOOL)arg1;
++ (void)setMigratedPrivacyAcknowledgements:(BOOL)arg1;
 + (void)setMigratedToNewCookieStorage:(BOOL)arg1;
 + (void)setPerfomedDeviceOfferSetup:(BOOL)arg1;
 + (void)setPrimaryBiometricACLVersion:(id)arg1;
@@ -134,13 +138,12 @@
 + (void)setUIURLOverrides:(id)arg1;
 + (id)sharedDatabaseChangeToken;
 + (BOOL)shouldSampleWithPercentage:(double)arg1 sessionDuration:(double)arg2 identifier:(id)arg3;
-+ (BOOL)shouldSampleWithPercentageValue:(id)arg1 sessionDurationValue:(id)arg2 identifier:(id)arg3;
++ (void)shouldSampleWithPercentageValue:(id)arg1 sessionDurationValue:(id)arg2 identifier:(id)arg3 completion:(CDUnknownBlockType)arg4;
 + (BOOL)showSandboxAccountUI;
 + (BOOL)showSpyglassPurchases;
 + (id)sourceOverrides;
 + (BOOL)ss_ignoreServerTrustEvaluation;
 + (id)storefrontSuffixes;
-+ (void)syncWithBlock:(CDUnknownBlockType)arg1;
 + (void)updateBadgeIdsForBundle:(id)arg1 block:(CDUnknownBlockType)arg2;
 + (BOOL)useNewAccountStore;
 + (BOOL)useNewCookieStorage;

@@ -74,7 +74,7 @@
 - (void)lockupPresenterDidFailRequestWithError:(id)arg1;
 - (void)lockupPresenterDidFinishRequest;
 - (void)offerPresenterDidObserveChangeToState:(id)arg1;
-- (void)offerPresenterWillPerformActionOfOffer:(id)arg1 withActivity:(inout id *)arg2;
+- (void)offerPresenterWillPerformActionOfOffer:(id)arg1 inState:(id)arg2 withActivity:(inout id *)arg3;
 - (void)performLockupAction;
 - (void)presentProductDetailsViewController;
 - (void)setHidden:(BOOL)arg1;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSDictionary, NSMutableDictionary, NSMutableSet;
+@class NSArray, NSDictionary, NSMutableDictionary, NSMutableIndexSet, NSMutableSet;
 
 @interface UICollectionViewLayoutInvalidationContext : NSObject
 {
@@ -19,6 +19,7 @@
     struct CGPoint _reorderingTarget;
     struct CGPoint _contentOffsetAdjustment;
     struct CGSize _contentSizeAdjustment;
+    NSMutableIndexSet *_orthogonalSectionsWithContentSizeChanges;
     struct {
         unsigned int invalidateDataSource:1;
         unsigned int invalidateEverything:1;
@@ -27,6 +28,7 @@
     long long _intent;
 }
 
+@property (readonly, nonatomic) NSMutableIndexSet *_orthogonalSectionsWithContentSizeChanges;
 @property (nonatomic) struct CGPoint contentOffsetAdjustment;
 @property (nonatomic) struct CGSize contentSizeAdjustment;
 @property (nonatomic, getter=_intent, setter=_setIntent:) long long intent; // @synthesize intent=_intent;

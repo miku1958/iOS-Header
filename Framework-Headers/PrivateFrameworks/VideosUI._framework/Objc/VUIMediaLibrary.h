@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <VideosUI/VUIImageLoader.h>
+#import <VideosUI/VUIMediaLibraryImageLoader.h>
 
 @class NSObject, NSString, VUIMediaLibraryManager;
 @protocol VUIMediaLibraryIdentifier;
 
-@interface VUIMediaLibrary : VUIImageLoader
+@interface VUIMediaLibrary : VUIMediaLibraryImageLoader
 {
     VUIMediaLibraryManager *_manager;
     NSObject<VUIMediaLibraryIdentifier> *_identifier;

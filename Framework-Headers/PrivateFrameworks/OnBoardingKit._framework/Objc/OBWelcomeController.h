@@ -89,6 +89,7 @@
 - (void)_scrollViewDidLayoutSubviews:(id)arg1;
 - (void)_setupNavigationBarBleed;
 - (void)_setupScrollView;
+- (BOOL)_shouldDetachButtonTray;
 - (void)_unregisterForKeyboardNotifications;
 - (void)_updateButtonTrayBackdrop;
 - (void)_updateHeaderTopOffsetConstraint;

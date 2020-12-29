@@ -21,7 +21,6 @@
     BOOL _needsUISnapshot;
     BOOL _systemMusicApplication;
     BOOL _audioAnalyzerEnabled;
-    id<MPCVideoOutput> _videoOutput;
     NSString *_playerID;
     id<MPCPlaybackEngineDelegate> _delegate;
     MPCPlaybackIntent *_fallbackPlaybackIntent;
@@ -34,6 +33,7 @@
     _MPCLeaseManager *_leaseManager;
     _MPCPlaybackAccountManager *_accountManager;
     _MPCFairPlayPerformanceController *_fairPlayPerformanceController;
+    id<MPCVideoOutput> _videoOutput;
     NSString *_audioSessionCategory;
     unsigned long long _audioSessionOptions;
     MPCAudioSpectrumAnalyzer *_audioAnalyzer;

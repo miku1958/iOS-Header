@@ -10,6 +10,7 @@
 
 @class FCCKPRecord;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPRecordRetrieveResponse : PBCodable <NSCopying>
 {
     FCCKPRecord *_record;
@@ -24,7 +25,6 @@
 @property (readonly, nonatomic) BOOL hasRecord;
 @property (strong, nonatomic) FCCKPRecord *record; // @synthesize record=_record;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

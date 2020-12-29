@@ -44,6 +44,7 @@ __attribute__((visibility("hidden")))
 - (void)didSelectedLeftButton:(id)arg1;
 - (void)didSelectedMiddleButton:(id)arg1;
 - (void)didSelectedRightButton:(id)arg1;
+- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

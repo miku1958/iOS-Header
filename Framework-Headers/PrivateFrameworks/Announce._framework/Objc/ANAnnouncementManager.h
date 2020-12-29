@@ -55,6 +55,7 @@
 - (id)announcementForID:(id)arg1;
 - (id)announcementsForGroupID:(id)arg1;
 - (id)announcementsForIDs:(id)arg1;
+- (void)cleanForExit;
 - (id)init;
 - (void)pauseAllTimers;
 - (void)removeDelegate:(id)arg1;

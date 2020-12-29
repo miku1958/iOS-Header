@@ -5,10 +5,10 @@
 //
 
 @class NSError;
-@protocol MFPlayerItem;
+@protocol MFQueuePlayerItem;
 
 @protocol MPCAssetLoaderDelegate
-- (void)assetLoadingDidCompleteForItem:(id<MFPlayerItem>)arg1 error:(NSError *)arg2;
-- (void)assetLoadingDidStartForItem:(id<MFPlayerItem>)arg1;
+- (void)assetLoadingDidCompleteForItem:(id<MFQueuePlayerItem>)arg1 error:(NSError *)arg2;
+- (void)assetLoadingDidStartForItem:(id<MFQueuePlayerItem>)arg1;
 @end
 

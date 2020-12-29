@@ -8,12 +8,13 @@
 
 #import <HealthMenstrualCyclesDaemon/HDDataObserver-Protocol.h>
 #import <HealthMenstrualCyclesDaemon/HDDatabaseProtectedDataObserver-Protocol.h>
+#import <HealthMenstrualCyclesDaemon/HDFeatureAvailabilityExtensionObserver-Protocol.h>
 #import <HealthMenstrualCyclesDaemon/HKMCSettingsManagerObserver-Protocol.h>
 
-@class HAMenstrualAlgorithmsAnalysis, HDProfile, HKMCAnalysis, HKMCSettingsManager, HKObserverSet, NSArray, NSString, _HKDelayedOperation;
+@class HAMenstrualAlgorithmsAnalysis, HDFeatureAvailabilityManager, HDProfile, HKMCAnalysis, HKMCSettingsManager, HKObserverSet, NSArray, NSString, _HKDelayedOperation;
 @protocol OS_dispatch_queue;
 
-@interface HDMCAnalysisManager : NSObject <HDDataObserver, HDDatabaseProtectedDataObserver, HKMCSettingsManagerObserver>
+@interface HDMCAnalysisManager : NSObject <HDDataObserver, HDDatabaseProtectedDataObserver, HKMCSettingsManagerObserver, HDFeatureAvailabilityExtensionObserver>
 {
     HDProfile *_profile;
     HKObserverSet *_observers;
@@ -22,6 +23,7 @@
     _HKDelayedOperation *_analyzeOperation;
     HKMCAnalysis *_currentAnalysis;
     HKMCSettingsManager *_settingsManager;
+    HDFeatureAvailabilityManager *_featureAvailabilityManager;
     BOOL _needsMaintenenceAnalysis;
     BOOL _maintenanceOperationQueued;
     HAMenstrualAlgorithmsAnalysis *_test_algorithmsAnalysis;
@@ -37,11 +39,15 @@
 - (void).cxx_destruct;
 - (id)_analysisWithAlgorithmsAnalysis:(id)arg1 algorithmsCycles:(id)arg2 recentSymptoms:(unsigned long long)arg3 recentBasalBodyTemperature:(id)arg4 lastLoggedDayIndex:(id)arg5 lastMenstrualFlowDayIndex:(id)arg6;
 - (void)_calendarDayDidChange:(id)arg1;
+- (void)_checkToForceDisablePredictionsFromOngoingCycleFactors:(id)arg1;
+- (void)_forceDisableFertileWindowProjectionsFromOngoingCycleFactors:(id)arg1;
+- (void)_forceDisablePeriodProjectionsFromOngoingCycleFactors:(id)arg1;
 - (void)_queue_analyzeIfNeeded;
 - (id)_queue_analyzeNowWithError:(id *)arg1;
 - (void)_queue_analyzeOperationDidExecute;
 - (void)_queue_enqueueMaintenanceOperationIfNeeded;
 - (void)_runMaintenanceOperation;
+- (void)_setLocalizedTextForVersionMismatchFromOngoingCycleFactors:(id)arg1;
 - (void)_startObserving;
 - (void)_test_setAlgorithmsAnalysis:(id)arg1;
 - (void)_test_setAlgorithmsCycles:(id)arg1;
@@ -50,7 +56,9 @@
 - (id)analyzeWithError:(id *)arg1;
 - (void)database:(id)arg1 protectedDataDidBecomeAvailable:(BOOL)arg2;
 - (void)dealloc;
-- (id)initWithProfile:(id)arg1 settingsManager:(id)arg2;
+- (void)featureAvailabilityProvidingDidUpdateOnboardingCompletion:(id)arg1;
+- (void)featureAvailabilityProvidingDidUpdatePairedDeviceCapability:(id)arg1;
+- (id)initWithProfile:(id)arg1 settingsManager:(id)arg2 featureAvailabilityManager:(id)arg3;
 - (void)removeObserver:(id)arg1;
 - (void)samplesAdded:(id)arg1 anchor:(id)arg2;
 - (void)samplesOfTypesWereRemoved:(id)arg1 anchor:(id)arg2;

@@ -8,6 +8,7 @@
 
 #import <NewsCore/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface FCCKPResponseOperationResultErrorServer : PBCodable <NSCopying>
 {
     int _type;
@@ -17,7 +18,6 @@
 @property (nonatomic) BOOL hasType;
 @property (nonatomic) int type; // @synthesize type=_type;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

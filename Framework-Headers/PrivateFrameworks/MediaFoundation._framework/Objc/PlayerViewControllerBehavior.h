@@ -11,7 +11,8 @@
 @interface PlayerViewControllerBehavior : AVMusicAppBehavior
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *onGoingJumpToTimeIdentifier;
+    MISSING_TYPE *onGoingJumpToTimeInfo;
+    MISSING_TYPE *reporter;
 }
 
 - (void).cxx_destruct;

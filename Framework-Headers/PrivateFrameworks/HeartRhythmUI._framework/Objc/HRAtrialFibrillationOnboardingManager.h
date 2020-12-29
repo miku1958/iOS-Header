@@ -28,7 +28,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_wrapUpOnboardingWithAtrialFibrillationDetectionEnabled:(BOOL)arg1;
+- (void)_wrapUpOnboardingWithNotificationsEnabled:(BOOL)arg1;
 - (id)availableOnboardingStepsForOnboardingManager:(id)arg1;
 - (void)didBeginOnboardingForOnboardingManager:(id)arg1;
 - (void)didCancelOnboardingForOnboardingManager:(id)arg1;

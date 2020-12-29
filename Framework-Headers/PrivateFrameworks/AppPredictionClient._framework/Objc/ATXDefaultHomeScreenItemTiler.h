@@ -36,6 +36,9 @@
 - (BOOL)_addSmallRowGridSize2:(id)arg1;
 - (BOOL)_addSmallRowGridSize3:(id)arg1;
 - (id)_filterForNextUnusedWidgetDescriptor:(id)arg1;
+- (BOOL)_isWidgetAlreadyUsed:(id)arg1;
+- (void)_markWidgetAsUsed:(id)arg1;
+- (void)_unmarkWidgetAsUsed:(id)arg1;
 - (id)initWithDefaultStack:(id)arg1 defaultWidgetsSmall:(id)arg2 defaultWidgetsMedium:(id)arg3 defaultWidgetsLarge:(id)arg4 gridSize:(unsigned long long)arg5;
 
 @end

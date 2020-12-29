@@ -154,6 +154,7 @@
 - (void)_handleReadServiceSignature:(id)arg1 error:(id)arg2;
 - (void)_handleResponseData:(id)arg1 fromCharacteristic:(id)arg2 error:(id)arg3;
 - (void)_handleSecuritySessionSetupExchangeData:(id)arg1;
+- (void)_handleUpdateValueForCharacteristic:(id)arg1 error:(id)arg2;
 - (void)_handleWriteCompletionForCharacteristic:(id)arg1 error:(id)arg2;
 - (id)_hapServicesFromCache;
 - (void)_kickConnectionIdleTimer;

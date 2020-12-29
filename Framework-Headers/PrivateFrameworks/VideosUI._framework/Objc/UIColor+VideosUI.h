@@ -7,8 +7,6 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (VideosUI)
-+ (id)_vui_darkModeKeyBlueColor;
-+ (id)_vui_lightModeKeyBlueColor;
 + (id)vui_backgroundGradientColors;
 + (id)vui_imageBorderColor;
 + (id)vui_imageHighlightColor;
@@ -21,7 +19,6 @@
 + (id)vui_primaryFillColor;
 + (id)vui_primaryTextColor;
 + (id)vui_progressBarFillColor;
-+ (id)vui_progressBarGradientColors;
 + (id)vui_secondaryDynamicBackgroundColor;
 + (id)vui_secondaryFillColor;
 + (id)vui_secondaryTextColor;

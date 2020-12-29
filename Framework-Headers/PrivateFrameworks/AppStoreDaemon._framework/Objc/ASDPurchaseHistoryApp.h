@@ -22,6 +22,7 @@
     BOOL _isPreorder;
     BOOL _isIOSBinaryMacOSAvailable;
     BOOL _isIOSBinaryMacOSCompatible;
+    BOOL _isVerifiedForMacOS;
     BOOL _requiresRosetta;
     BOOL _runsOnIntel;
     BOOL _runsOnAppleSilicon;
@@ -74,6 +75,7 @@
 @property BOOL isIOSBinaryMacOSAvailable; // @synthesize isIOSBinaryMacOSAvailable=_isIOSBinaryMacOSAvailable;
 @property BOOL isIOSBinaryMacOSCompatible; // @synthesize isIOSBinaryMacOSCompatible=_isIOSBinaryMacOSCompatible;
 @property BOOL isPreorder; // @synthesize isPreorder=_isPreorder;
+@property BOOL isVerifiedForMacOS; // @synthesize isVerifiedForMacOS=_isVerifiedForMacOS;
 @property unsigned long long lockerItemID; // @synthesize lockerItemID=_lockerItemID;
 @property (copy) NSString *longTitle; // @synthesize longTitle=_longTitle;
 @property (copy) NSArray *macAppRequiredCapabilities; // @synthesize macAppRequiredCapabilities=_macAppRequiredCapabilities;

@@ -9,7 +9,7 @@
 #import <VideosUI/UIPointerInteractionDelegate-Protocol.h>
 #import <VideosUI/VUILabelBaselineProtocol-Protocol.h>
 
-@class IKViewElement, NSString, UIColor, UILargeContentViewerInteraction, UIView, VUIButtonLayout, VUILabel, _TVImageView;
+@class NSShadow, NSString, UIColor, UILargeContentViewerInteraction, UIView, VUIImageView, VUILabel;
 
 __attribute__((visibility("hidden")))
 @interface VUIButton : UIControl <UIPointerInteractionDelegate, VUILabelBaselineProtocol>
@@ -17,59 +17,93 @@ __attribute__((visibility("hidden")))
     BOOL _hasDisclaimerText;
     BOOL _imageTrailsTextContent;
     BOOL _isTintColorAndBackgroundColorSaturated;
-    VUIButtonLayout *_layout;
-    _TVImageView *_backgroundImageView;
+    UIView *_backgroundImageView;
     NSString *_groupName;
+    NSString *_accessibilityText;
+    double _width;
+    double _height;
+    unsigned long long _buttonType;
+    UIColor *__buttonBackgroundColor;
+    UIColor *_highlightColor;
+    double _cornerRadius;
+    double _minWidth;
+    double _minHeight;
+    double _maxWidth;
+    double _maxHeight;
+    NSShadow *_shadow;
     VUILabel *_textContentView;
-    _TVImageView *_imageView;
-    IKViewElement *_viewElement;
+    VUIImageView *_imageView;
+    double _imageMaxWidth;
+    double _imageMaxHeight;
+    UIColor *_imageTintColor;
+    UIColor *_imageHighlightColor;
     CDUnknownBlockType _selectActionHandler;
     UIColor *_adjustmentModeNormalTintColor;
     UIView *_backdropView;
     UILargeContentViewerInteraction *_largeContentViewerInteraction;
-    _TVImageView *_imagesViewDefaultState;
-    _TVImageView *_imagesViewHighlightedState;
-    _TVImageView *_backgroundImagesViewDefaultState;
-    _TVImageView *_backgroundImagesViewHighlightedState;
+    VUIImageView *_imagesViewDefaultState;
+    VUIImageView *_imagesViewHighlightedState;
+    VUIImageView *_backgroundImagesViewDefaultState;
+    VUIImageView *_backgroundImagesViewHighlightedState;
+    struct UIEdgeInsets _padding;
+    struct UIEdgeInsets _imageMargin;
 }
 
+@property (strong, nonatomic) UIColor *_buttonBackgroundColor; // @synthesize _buttonBackgroundColor=__buttonBackgroundColor;
+@property (copy, nonatomic) NSString *accessibilityText; // @synthesize accessibilityText=_accessibilityText;
 @property (strong, nonatomic) UIColor *adjustmentModeNormalTintColor; // @synthesize adjustmentModeNormalTintColor=_adjustmentModeNormalTintColor;
 @property (strong, nonatomic) UIView *backdropView; // @synthesize backdropView=_backdropView;
-@property (strong, nonatomic) _TVImageView *backgroundImageView; // @synthesize backgroundImageView=_backgroundImageView;
-@property (strong, nonatomic) _TVImageView *backgroundImagesViewDefaultState; // @synthesize backgroundImagesViewDefaultState=_backgroundImagesViewDefaultState;
-@property (strong, nonatomic) _TVImageView *backgroundImagesViewHighlightedState; // @synthesize backgroundImagesViewHighlightedState=_backgroundImagesViewHighlightedState;
+@property (strong, nonatomic) UIView *backgroundImageView; // @synthesize backgroundImageView=_backgroundImageView;
+@property (strong, nonatomic) VUIImageView *backgroundImagesViewDefaultState; // @synthesize backgroundImagesViewDefaultState=_backgroundImagesViewDefaultState;
+@property (strong, nonatomic) VUIImageView *backgroundImagesViewHighlightedState; // @synthesize backgroundImagesViewHighlightedState=_backgroundImagesViewHighlightedState;
+@property (readonly, nonatomic) unsigned long long buttonType; // @synthesize buttonType=_buttonType;
+@property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (copy, nonatomic) NSString *groupName; // @synthesize groupName=_groupName;
 @property (nonatomic) BOOL hasDisclaimerText; // @synthesize hasDisclaimerText=_hasDisclaimerText;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) double height; // @synthesize height=_height;
+@property (strong, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
+@property (strong, nonatomic) UIColor *imageHighlightColor; // @synthesize imageHighlightColor=_imageHighlightColor;
+@property (nonatomic) struct UIEdgeInsets imageMargin; // @synthesize imageMargin=_imageMargin;
+@property (nonatomic) double imageMaxHeight; // @synthesize imageMaxHeight=_imageMaxHeight;
+@property (nonatomic) double imageMaxWidth; // @synthesize imageMaxWidth=_imageMaxWidth;
+@property (strong, nonatomic) UIColor *imageTintColor; // @synthesize imageTintColor=_imageTintColor;
 @property (nonatomic) BOOL imageTrailsTextContent; // @synthesize imageTrailsTextContent=_imageTrailsTextContent;
-@property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
-@property (strong, nonatomic) _TVImageView *imagesViewDefaultState; // @synthesize imagesViewDefaultState=_imagesViewDefaultState;
-@property (strong, nonatomic) _TVImageView *imagesViewHighlightedState; // @synthesize imagesViewHighlightedState=_imagesViewHighlightedState;
+@property (strong, nonatomic) VUIImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) VUIImageView *imagesViewDefaultState; // @synthesize imagesViewDefaultState=_imagesViewDefaultState;
+@property (strong, nonatomic) VUIImageView *imagesViewHighlightedState; // @synthesize imagesViewHighlightedState=_imagesViewHighlightedState;
 @property (nonatomic) BOOL isTintColorAndBackgroundColorSaturated; // @synthesize isTintColorAndBackgroundColorSaturated=_isTintColorAndBackgroundColorSaturated;
 @property (strong, nonatomic) UILargeContentViewerInteraction *largeContentViewerInteraction; // @synthesize largeContentViewerInteraction=_largeContentViewerInteraction;
-@property (strong, nonatomic) VUIButtonLayout *layout; // @synthesize layout=_layout;
+@property (nonatomic) double maxHeight; // @synthesize maxHeight=_maxHeight;
+@property (nonatomic) double maxWidth; // @synthesize maxWidth=_maxWidth;
+@property (nonatomic) double minHeight; // @synthesize minHeight=_minHeight;
+@property (nonatomic) double minWidth; // @synthesize minWidth=_minWidth;
+@property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property (copy, nonatomic) CDUnknownBlockType selectActionHandler; // @synthesize selectActionHandler=_selectActionHandler;
+@property (strong, nonatomic) NSShadow *shadow; // @synthesize shadow=_shadow;
 @property (readonly) Class superclass;
-@property (copy, nonatomic) VUILabel *textContentView; // @synthesize textContentView=_textContentView;
-@property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
+@property (strong, nonatomic) VUILabel *textContentView; // @synthesize textContentView=_textContentView;
+@property (nonatomic) double width; // @synthesize width=_width;
 
 - (void).cxx_destruct;
 - (void)_buttonTapped:(id)arg1;
 - (struct CGPoint)_centerWithViewSize:(struct CGSize)arg1 withParentSize:(struct CGSize)arg2;
-- (void)_configureWithLayout:(id)arg1;
+- (void)_configure;
 - (BOOL)_hasBackgroundImage;
 - (BOOL)_hasImage;
 - (BOOL)_hasTitle;
 - (struct CGSize)_imageSizeThatFits:(struct CGSize)arg1;
 - (struct CGRect)_pointerShapeRect;
+- (void)_setupPrimaryWithUberBackdropView;
 - (void)_updateBackgroundColor;
 - (void)_updateLayout;
 - (double)baselineOffsetFromBottom;
 - (double)bottomMarginWithBaselineMargin:(double)arg1;
+- (void)configureWithLayoutProperties;
 - (id)hitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
-- (id)initWithLayout:(id)arg1 interfaceStyle:(long long)arg2;
+- (id)initWithType:(unsigned long long)arg1 interfaceStyle:(long long)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (id)largeContentImage;
 - (id)largeContentTitle;
@@ -81,7 +115,6 @@ __attribute__((visibility("hidden")))
 - (void)saturateTintColorAndBackgroundColor;
 - (BOOL)scalesLargeContentImage;
 - (void)setBackgroundImage:(id)arg1 state:(unsigned long long)arg2;
-- (void)setCornerRadius:(double)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setImageView:(id)arg1 state:(unsigned long long)arg2;
 - (void)setTintColor:(id)arg1;
@@ -90,7 +123,6 @@ __attribute__((visibility("hidden")))
 - (double)topMarginToLabel:(id)arg1 withBaselineMargin:(double)arg2;
 - (double)topMarginWithBaselineMargin:(double)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateWithElement:(id)arg1;
 
 @end
 

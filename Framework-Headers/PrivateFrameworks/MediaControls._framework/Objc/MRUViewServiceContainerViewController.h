@@ -39,6 +39,7 @@ __attribute__((visibility("hidden")))
 - (void)prepareForPopoverPresentation:(id)arg1;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (id)presentationControllerForPresentedViewController:(id)arg1 presentingViewController:(id)arg2 sourceViewController:(id)arg3;
+- (void)presentationControllerWillDismiss:(id)arg1;
 - (BOOL)shouldPresentUsingPopover;
 - (void)transitionToVisible:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)updateMaterialForPresenting:(BOOL)arg1;

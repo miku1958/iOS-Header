@@ -11,6 +11,7 @@
 }
 
 - (id)protocolVersion;
+- (int)supportsUniqueServerId;
 - (BOOL)versionChangeRequiresAccountUpgrade:(id)arg1;
 
 @end

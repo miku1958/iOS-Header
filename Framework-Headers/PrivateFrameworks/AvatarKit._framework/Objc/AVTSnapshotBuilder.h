@@ -9,13 +9,15 @@
 #import <AvatarKit/SCNSceneRendererDelegate-Protocol.h>
 #import <AvatarKit/_SCNSceneRendererDelegateSPI-Protocol.h>
 
-@class AVTAvatar, AVTRenderer, NSString, SCNRenderer;
+@class AVTAvatar, AVTAvatarEnvironment, NSString, SCNNode, SCNRenderer;
 
 @interface AVTSnapshotBuilder : NSObject <SCNSceneRendererDelegate, _SCNSceneRendererDelegateSPI>
 {
     AVTAvatar *_avatar;
     AVTAvatar *_snapshotedAvatar;
-    AVTRenderer *_renderer;
+    SCNRenderer *_renderer;
+    SCNNode *_avatarNode;
+    AVTAvatarEnvironment *_environment;
 }
 
 @property (strong, nonatomic) AVTAvatar *avatar;
@@ -31,9 +33,12 @@
 - (void)_applyOptions:(id)arg1;
 - (id)_imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
 - (id)_imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3 useACopy:(BOOL)arg4;
+- (void)_renderer:(id)arg1 didBuildSubdivDataForHash:(id)arg2 dataProvider:(CDUnknownBlockType)arg3;
+- (id)_renderer:(id)arg1 subdivDataForHash:(id)arg2;
 - (id)animatedImageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
 - (id)imageWithSize:(struct CGSize)arg1 scale:(double)arg2 options:(id)arg3;
 - (id)init;
+- (void)renderer:(id)arg1 didApplyAnimationsAtTime:(double)arg2;
 - (void)setupAvatarWithOptions:(id)arg1 useACopy:(BOOL)arg2;
 
 @end

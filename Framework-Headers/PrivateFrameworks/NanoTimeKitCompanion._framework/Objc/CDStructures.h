@@ -223,6 +223,17 @@ typedef struct {
 typedef struct {
     double _field1;
     double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+    double _field7;
+    double _field8;
+} CDStruct_7660b417;
+
+typedef struct {
+    double _field1;
+    double _field2;
 } CDStruct_c3b9c2ee;
 
 typedef struct {

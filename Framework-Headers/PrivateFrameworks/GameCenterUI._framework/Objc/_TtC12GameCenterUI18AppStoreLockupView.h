@@ -12,6 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC12GameCenterUI18AppStoreLockupView : UIView
 {
     MISSING_TYPE *appStoreLockup;
+    MISSING_TYPE *appStoreLockupSize;
 }
 
 - (void).cxx_destruct;

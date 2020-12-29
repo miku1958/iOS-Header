@@ -19,6 +19,8 @@
 + (id)firstTimeAtrialFibrillationOnboardingSequence;
 + (id)firstTimeElectrocardiogramAvailabilitySequence;
 + (id)firstTimeElectrocardiogramOnboardingSequenceWithAlgorithmVersion:(long long)arg1;
++ (id)upgradingElectrocardiogramAvailabilitySequence;
++ (id)upgradingElectrocardiogramSequenceFromAlgorithmVersion:(long long)arg1 toAlgorithmVersion:(long long)arg2;
 - (void).cxx_destruct;
 - (id)_initWithPages:(id)arg1;
 

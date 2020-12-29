@@ -9,11 +9,12 @@
 #import <HealthDaemon/HDDecoding-Protocol.h>
 #import <HealthDaemon/NSCopying-Protocol.h>
 
-@class HDCodableCoverageClassificationList, HDCodableMedicalCoding, HDCodableMedicalCodingList, HDCodableMedicalRecord, HDCodableStringList, NSData, NSString;
+@class HDCodableCoverageClassificationList, HDCodableFHIRIdentifierElement, HDCodableMedicalCoding, HDCodableMedicalCodingList, HDCodableMedicalRecord, HDCodableStringList, NSData, NSString;
 
 @interface HDCodableCoverageRecord : PBCodable <HDDecoding, NSCopying>
 {
     NSString *_beneficiary;
+    HDCodableFHIRIdentifierElement *_beneficiaryIdentifier;
     HDCodableCoverageClassificationList *_classification;
     HDCodableMedicalCodingList *_coverageTypeCodingCollection;
     HDCodableMedicalRecord *_medicalRecord;
@@ -26,14 +27,17 @@
     HDCodableMedicalCoding *_statusCoding;
     NSString *_subscriber;
     NSString *_subscriberId;
+    HDCodableFHIRIdentifierElement *_subscriberIdentifier;
 }
 
 @property (strong, nonatomic) NSString *beneficiary; // @synthesize beneficiary=_beneficiary;
+@property (strong, nonatomic) HDCodableFHIRIdentifierElement *beneficiaryIdentifier; // @synthesize beneficiaryIdentifier=_beneficiaryIdentifier;
 @property (strong, nonatomic) HDCodableCoverageClassificationList *classification; // @synthesize classification=_classification;
 @property (strong, nonatomic) HDCodableMedicalCodingList *coverageTypeCodingCollection; // @synthesize coverageTypeCodingCollection=_coverageTypeCodingCollection;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) BOOL hasBeneficiary;
+@property (readonly, nonatomic) BOOL hasBeneficiaryIdentifier;
 @property (readonly, nonatomic) BOOL hasClassification;
 @property (readonly, nonatomic) BOOL hasCoverageTypeCodingCollection;
 @property (readonly, nonatomic) BOOL hasMedicalRecord;
@@ -46,6 +50,7 @@
 @property (readonly, nonatomic) BOOL hasStatusCoding;
 @property (readonly, nonatomic) BOOL hasSubscriber;
 @property (readonly, nonatomic) BOOL hasSubscriberId;
+@property (readonly, nonatomic) BOOL hasSubscriberIdentifier;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HDCodableMedicalRecord *medicalRecord; // @synthesize medicalRecord=_medicalRecord;
 @property (strong, nonatomic) NSString *network; // @synthesize network=_network;
@@ -57,6 +62,7 @@
 @property (strong, nonatomic) HDCodableMedicalCoding *statusCoding; // @synthesize statusCoding=_statusCoding;
 @property (strong, nonatomic) NSString *subscriber; // @synthesize subscriber=_subscriber;
 @property (strong, nonatomic) NSString *subscriberId; // @synthesize subscriberId=_subscriberId;
+@property (strong, nonatomic) HDCodableFHIRIdentifierElement *subscriberIdentifier; // @synthesize subscriberIdentifier=_subscriberIdentifier;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

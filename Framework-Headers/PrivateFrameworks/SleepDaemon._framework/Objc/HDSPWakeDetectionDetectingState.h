@@ -13,7 +13,10 @@ __attribute__((visibility("hidden")))
 
 - (void)didEnterWithPreviousState:(id)arg1 context:(id)arg2;
 - (void)didExitWithNextState:(id)arg1 context:(id)arg2;
+- (void)earlyWakeUpWasNotifiedRemotely;
+- (BOOL)schedulesWakeDetection;
 - (id)stateName;
+- (void)wakeDetectionEventDue;
 - (void)wakeupEventDetected:(id)arg1;
 - (void)willEnterWithPreviousState:(id)arg1 context:(id)arg2;
 

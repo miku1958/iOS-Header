@@ -6,7 +6,7 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSDictionary;
 
 @interface _TtC15MediaFoundation17UserEventsMonitor : _TtCs12_SwiftObject
 {
@@ -14,6 +14,10 @@
     MISSING_TYPE *monitors;
     MISSING_TYPE *reporter;
 }
+
+@property (nonatomic, readonly) NSDictionary *stateDictionary;
+
+- (void)reset;
 
 @end
 

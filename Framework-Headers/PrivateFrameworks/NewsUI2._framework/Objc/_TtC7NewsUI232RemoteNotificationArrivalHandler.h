@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *cloudContext;
     MISSING_TYPE *offlineProvider;
-    MISSING_TYPE *offlineArticleManager;
+    MISSING_TYPE *offlineContentManager;
     MISSING_TYPE *$__lazy_storage_$_pushHandler;
 }
 

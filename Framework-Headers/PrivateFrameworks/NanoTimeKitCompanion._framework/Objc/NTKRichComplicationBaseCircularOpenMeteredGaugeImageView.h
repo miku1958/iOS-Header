@@ -24,6 +24,8 @@
 - (void).cxx_destruct;
 - (void)_editingDidEnd;
 - (void)_enumerateLabelsWithBlock:(CDUnknownBlockType)arg1;
+- (CDStruct_7660b417)_layoutConstraintsWithDevice:(id)arg1 family:(long long)arg2;
+- (double)_smallLabelFontWeight;
 - (id)initWithFamily:(long long)arg1;
 - (void)layoutSubviews;
 - (void)setPaused:(BOOL)arg1;

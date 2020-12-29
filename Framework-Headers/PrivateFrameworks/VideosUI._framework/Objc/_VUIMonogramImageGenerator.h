@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUI/TVImageLoader-Protocol.h>
+#import <VideosUI/VUIImageLoader-Protocol.h>
 
 @class NSOperationQueue, NSString;
 
 __attribute__((visibility("hidden")))
-@interface _VUIMonogramImageGenerator : NSObject <TVImageLoader>
+@interface _VUIMonogramImageGenerator : NSObject <VUIImageLoader>
 {
     NSOperationQueue *_imageGeneratorQueue;
 }

@@ -86,6 +86,7 @@
 - (id)_enabledMapItemProviders;
 - (void)_fetchLatestVisitWithHandler:(CDUnknownBlockType)arg1;
 - (id)_filterVisits:(id)arg1 lastLearnedVisit:(id)arg2;
+- (void)_harvestFeedbackData;
 - (void)_harvestVisits:(id)arg1 places:(id)arg2;
 - (BOOL)_isUpdateLearnedPlaceWithISO3166CountryCodeAndSubdivisionCodeRequired:(id)arg1;
 - (id)_lastVisitWithError:(id *)arg1;

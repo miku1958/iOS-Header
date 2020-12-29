@@ -19,6 +19,7 @@
 }
 
 + (id)defaultBudget;
++ (void)setCanDoWorkOverrideForTesting:(id)arg1;
 - (void).cxx_destruct;
 - (BOOL)_canDoDiscretionaryWork:(id *)arg1;
 - (void)_didConsumeAnExtraBudgetedOperation;

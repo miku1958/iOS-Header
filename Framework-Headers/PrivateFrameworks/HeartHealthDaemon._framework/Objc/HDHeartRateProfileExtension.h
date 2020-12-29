@@ -9,11 +9,12 @@
 #import <HeartHealthDaemon/HDFeatureAvailabilityExtensionProvider-Protocol.h>
 #import <HeartHealthDaemon/HDProfileExtension-Protocol.h>
 
-@class HDFeatureAvailabilityManager, HDHRDailyHeartRateManager, HDHRHealthLiteDataCollector, HDHRNotificationManager, HDProfile, NSString;
+@class HDHRCardioFitnessAnalyticsDailyEventActivity, HDHRCardioFitnessFeatureAvailabilityManager, HDHRDailyHeartRateManager, HDHRHealthLiteDataCollector, HDHRNotificationManager, HDProfile, NSString;
 
 @interface HDHeartRateProfileExtension : NSObject <HDProfileExtension, HDFeatureAvailabilityExtensionProvider>
 {
-    HDFeatureAvailabilityManager *_featureAvailabilityManager;
+    HDHRCardioFitnessFeatureAvailabilityManager *_featureAvailabilityManager;
+    HDHRCardioFitnessAnalyticsDailyEventActivity *_dailyAnalyticsActivity;
     HDProfile *_profile;
     HDHRHealthLiteDataCollector *_healthLiteDataCollector;
     HDHRDailyHeartRateManager *_dailyHeartRateManager;

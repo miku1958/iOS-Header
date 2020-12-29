@@ -35,6 +35,7 @@
 - (void)layoutSubviews;
 - (struct CGRect)padContentFrame:(struct CGRect)arg1;
 - (void)setStopwatchState:(long long)arg1 elapsedTime:(double)arg2 shouldPauseTextCountdown:(BOOL)arg3 timeTravelDate:(id)arg4;
+- (void)setTimeTravelDate:(id)arg1 animated:(BOOL)arg2;
 
 @end
 

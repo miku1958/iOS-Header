@@ -309,6 +309,7 @@
 - (BOOL)handleHomeButtonPress;
 - (BOOL)handleLockButtonPress;
 - (void)handleReopenClosedWindowsButtonTapped:(id)arg1;
+- (BOOL)handleVoiceCommandButtonPress;
 - (BOOL)handleVolumeDownButtonPress;
 - (BOOL)handleVolumeUpButtonPress;
 - (BOOL)hasHomeButton;

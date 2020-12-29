@@ -53,6 +53,7 @@
 + (void)initialize;
 + (id)photoSettings;
 + (id)photoSettingsFromMomentCaptureSettings:(id)arg1 withFormat:(id)arg2;
++ (id)photoSettingsFromMomentCaptureSettings:(id)arg1 withRawPixelFormatType:(unsigned int)arg2 rawFileType:(id)arg3 format:(id)arg4;
 + (id)photoSettingsFromPhotoInitiationSettings:(id)arg1 format:(id)arg2;
 + (id)photoSettingsFromPhotoSettings:(id)arg1;
 + (id)photoSettingsWithFormat:(id)arg1;

@@ -8,57 +8,63 @@
 
 #import <MetricsKit/MTIDCloudKitLocalDBDelegate-Protocol.h>
 #import <MetricsKit/MTIDSecretStore-Protocol.h>
+#import <MetricsKit/MTIDSyncEngineDelegate-Protocol.h>
 
-@class MTIDCloudKitLocalDB, MTIDCloudKitPromiseManager, MTPromise, NSMutableDictionary, NSString;
-@protocol OS_dispatch_queue, OS_os_transaction;
+@class MTIDCloudKitLocalDB, MTIDCloudKitPromiseManager, MTIDSyncEngine, NSMutableDictionary, NSString;
+@protocol OS_dispatch_queue;
 
-@interface MTIDCloudKitStore : NSObject <MTIDCloudKitLocalDBDelegate, MTIDSecretStore>
+@interface MTIDCloudKitStore : NSObject <MTIDCloudKitLocalDBDelegate, MTIDSyncEngineDelegate, MTIDSecretStore>
 {
-    BOOL _entitled;
+    BOOL _canSyncBetweenDevices;
     NSString *_containerIdentifier;
-    MTPromise *_syncEnginePromise;
+    MTIDSyncEngine *_syncEngine;
     MTIDCloudKitLocalDB *_localDB;
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSMutableDictionary *_generatedDates;
-    NSObject<OS_os_transaction> *_transaction;
     MTIDCloudKitPromiseManager *_promiseManager;
 }
 
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *accessQueue; // @synthesize accessQueue=_accessQueue;
+@property BOOL canSyncBetweenDevices; // @synthesize canSyncBetweenDevices=_canSyncBetweenDevices;
 @property (strong, nonatomic) NSString *containerIdentifier; // @synthesize containerIdentifier=_containerIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property BOOL entitled; // @synthesize entitled=_entitled;
 @property (strong, nonatomic) NSMutableDictionary *generatedDates; // @synthesize generatedDates=_generatedDates;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MTIDCloudKitLocalDB *localDB; // @synthesize localDB=_localDB;
 @property (strong, nonatomic) MTIDCloudKitPromiseManager *promiseManager; // @synthesize promiseManager=_promiseManager;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) MTPromise *syncEnginePromise; // @synthesize syncEnginePromise=_syncEnginePromise;
-@property (strong, nonatomic) NSObject<OS_os_transaction> *transaction; // @synthesize transaction=_transaction;
+@property (strong, nonatomic) MTIDSyncEngine *syncEngine; // @synthesize syncEngine=_syncEngine;
 
-+ (void)populateRecord:(id)arg1 withNewSecretForScheme:(id)arg2 date:(id)arg3;
-+ (id)recordIDForScheme:(id)arg1 date:(id)arg2;
++ (id)keyOfReferenceDate:(id)arg1;
 + (id)recordZoneID;
-+ (id)secretFromRecord:(id)arg1;
-+ (void)setTransactionTimeout:(double)arg1;
-+ (double)transactionTimeout;
++ (id)referenceDateOfRecord:(id)arg1;
++ (id)referenceRecordIDForScheme:(id)arg1 dsId:(id)arg2;
++ (id)spanRecordIDForScheme:(id)arg1 referenceRecordID:(id)arg2 serialNumber:(unsigned long long)arg3;
++ (id)spanRecordKeyWithReferenceRecord:(id)arg1 serialNumber:(unsigned long long)arg2;
++ (BOOL)updateRecord:(id)arg1 isSpanRecord:(BOOL)arg2 scheme:(id)arg3 expectedKey:(id)arg4 expiration:(id)arg5 reset:(BOOL)arg6;
 - (void).cxx_destruct;
-- (void)_beginTransaction;
-- (void)_endTransaction;
-- (void)_generateFutureSecretsForScheme:(id)arg1;
-- (void)accountDidChange:(id)arg1;
+- (void)_generateFutureRecordsForScheme:(id)arg1 referenceRecord:(id)arg2;
+- (void)accountDidChangeWithUserRecordID:(id)arg1;
 - (void)clearLocalData;
 - (void)cloudKitLocalDB:(id)arg1 didChangeRecord:(id)arg2;
-- (id)container;
 - (id)debugInfo;
-- (void)generateFutureSecretsForScheme:(id)arg1;
-- (id)initWithContainerIdentifer:(id)arg1;
-- (id)promiseForRecordWithID:(id)arg1 timeout:(double)arg2 updateRecordMaybe:(CDUnknownBlockType)arg3;
-- (id)recordWithID:(id)arg1 updateRecordMaybe:(CDUnknownBlockType)arg2 error:(id *)arg3;
+- (void)fetchChangesIfNeeded;
+- (void)generateFutureRecordsForScheme:(id)arg1 referenceRecord:(id)arg2;
+- (id)initWithContainerIdentifer:(id)arg1 enableSync:(BOOL)arg2;
+- (id)maintainSchemes:(id)arg1 options:(id)arg2;
+- (id)promiseForRecordWithID:(id)arg1 timeout:(double)arg2 qualityOfService:(long long)arg3 updateRecordMaybe:(CDUnknownBlockType)arg4;
+- (void)recordWasDeleted:(id)arg1;
+- (void)recordWasFailedToSave:(id)arg1;
+- (void)recordWasFetched:(id)arg1;
+- (void)recordWasSaved:(id)arg1;
+- (id)recordWithID:(id)arg1;
+- (id)recordWithID:(id)arg1 qualityOfService:(long long)arg2 updateRecordMaybe:(CDUnknownBlockType)arg3 error:(id *)arg4;
+- (id)referenceRecordForScheme:(id)arg1 dsId:(id)arg2 date:(id)arg3 reset:(BOOL)arg4 timeout:(double)arg5 qualityOfService:(long long)arg6;
+- (id)resetSchemes:(id)arg1 options:(id)arg2;
 - (id)secretForScheme:(id)arg1 options:(id)arg2;
-- (id)startSyncEngine;
-- (void)updateUserRecordID:(id)arg1;
+- (id)spanRecordForScheme:(id)arg1 span:(id)arg2 timeout:(double)arg3 qualityOfService:(long long)arg4 referenceRecord:(id)arg5;
+- (void)syncEngineDidStartWithError:(id)arg1;
 
 @end
 

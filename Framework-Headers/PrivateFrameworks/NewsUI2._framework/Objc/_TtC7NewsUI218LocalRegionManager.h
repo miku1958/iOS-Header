@@ -14,6 +14,7 @@
     MISSING_TYPE *localAreasManager;
 }
 
+- (void)fetchLocalAreas:(CDUnknownBlockType)arg1;
 - (void)fetchRegions:(CDUnknownBlockType)arg1;
 
 @end

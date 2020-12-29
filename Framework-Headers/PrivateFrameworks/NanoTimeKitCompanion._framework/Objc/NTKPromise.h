@@ -24,6 +24,7 @@
 @property (readonly, copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (readonly, nonatomic) id object;
 
++ (id)metalPipelinePromiseNamed:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 + (id)promiseNamed:(id)arg1 withBackgroundPriority:(unsigned int)arg2 foregroundPriority:(unsigned int)arg3 block:(CDUnknownBlockType)arg4;
 + (id)promiseNamed:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (void).cxx_destruct;

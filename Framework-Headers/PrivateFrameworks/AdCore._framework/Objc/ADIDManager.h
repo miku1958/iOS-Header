@@ -13,8 +13,8 @@
 @interface ADIDManager : ADSingleton <ADIDManager_XPC>
 {
     DSIDRecord *_activeDSIDRecord;
-    NSDictionary *_usageVectors;
     NSArray *_monthlyResetArray;
+    NSDictionary *_usageVectors;
 }
 
 @property (readonly, nonatomic) long long PersonalizedAdsMonthResetCount;
@@ -33,7 +33,6 @@
 - (id)loadFakeRecord:(id)arg1;
 - (BOOL)loadIDs;
 - (void)logIDs:(id)arg1;
-- (id)readUsageVectors:(id)arg1;
 - (id)reloadRecords:(id)arg1;
 - (void)reloadRecords:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)retrieveDeviceIDs;

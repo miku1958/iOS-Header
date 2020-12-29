@@ -29,6 +29,7 @@
 
 @property (readonly, nonatomic, getter=isAtrialFibrillationDetectionDisabled) BOOL atrialFibrillationDetectionDisabled;
 @property (readonly, nonatomic, getter=isAtrialFibrillationDetectionOnboardingCompleted) BOOL atrialFibrillationDetectionOnboardingCompleted;
+@property (readonly, nonatomic, getter=isAtrialFibrillationDetectionOnboardingCompletedNoCache) BOOL atrialFibrillationDetectionOnboardingCompletedNoCache;
 @property (strong, nonatomic) HKActiveWatchRemoteFeatureAvailabilityDataSource *availabilityDataSource; // @synthesize availabilityDataSource=_availabilityDataSource;
 @property (strong, nonatomic) HKWatchAppAvailability *ecgAppAvailability; // @synthesize ecgAppAvailability=_ecgAppAvailability;
 @property (readonly, nonatomic) NSDate *electrocardiogramFirstOnboardingCompletedDate;
@@ -45,14 +46,24 @@
 @property (nonatomic) int onboardingStateDidChangeNotificationToken; // @synthesize onboardingStateDidChangeNotificationToken=_onboardingStateDidChangeNotificationToken;
 @property (nonatomic) int userCharacteristicsDidChangeNotificationToken; // @synthesize userCharacteristicsDidChangeNotificationToken=_userCharacteristicsDidChangeNotificationToken;
 
++ (id)_ECG2SupportedCountriesOnDevice;
++ (id)_ECG2SupportedCountriesOnDevice:(id)arg1;
 + (unsigned long long)_atrialFibrillationDetectionSupportedStateForDeviceRegion:(id)arg1;
++ (id)_availabilityPlistURL;
 + (unsigned long long)_electrocardiogramSupportedStateForDeviceRegion:(id)arg1;
++ (id)_history:(id)arg1 addCurrentOnboardingVersionCompletedIfApplicable:(long long)arg2 countryCode:(id)arg3;
 + (BOOL)_isAtrialFibrillationDetectionDisabledWithDataSource:(id)arg1;
 + (BOOL)_isAtrialFibrillationDetectionSupportedOnPhone:(id)arg1;
++ (BOOL)_isECG1SupportedOnCompanionDevice:(id)arg1 geolocatedCountryCode:(id)arg2;
++ (BOOL)_isECG2SupportedForCountryCode:(id)arg1 andPhoneDevice:(id)arg2;
++ (BOOL)_isECG2SupportedForCountryCode:(id)arg1 andWatchDevice:(id)arg2;
 + (BOOL)_isElectrocardiogramDisabledWithDataSource:(id)arg1;
++ (BOOL)_isElectrocardiogramSupportedOnCompanionDevice:(id)arg1 geolocatedCountryCode:(id)arg2;
 + (BOOL)_isElectrocardiogramSupportedOnPhone:(id)arg1;
 + (BOOL)_isElectrocardiogramSupportedOnPhone:(id)arg1 geolocatedCountryCode:(id)arg2;
-+ (BOOL)_isElectrocardiogramSupportedOniOSDevice:(id)arg1 geolocatedCountryCode:(id)arg2;
++ (id)_onboardingCountryCodeKeyFromCompletedKey:(id)arg1;
++ (id)_onboardingHistoryKeyFromCompletedKey:(id)arg1;
++ (id)_onboardingHistoryWithVersionCompletedKey:(id)arg1 keyValueDomain:(id)arg2;
 + (id)activePairedDevice;
 + (BOOL)atrialFibrillationDetectionSupportedForDevice:(id)arg1;
 + (unsigned long long)atrialFibrillationDetectionSupportedState;
@@ -63,6 +74,7 @@
 + (long long)currentElectrocardiogramOnboardingVersion;
 + (Class)deviceRegionFeatureSupportedStateProviderForCompanionDevice:(id)arg1;
 + (Class)deviceRegionFeatureSupportedStateProviderForCurrentWatchOSDevice;
++ (id)electrocardiogramOnboardingHistoryMaxKnownWithKeyValueDomain:(id)arg1;
 + (BOOL)electrocardiogramSupportedForDevice:(id)arg1;
 + (unsigned long long)electrocardiogramSupportedState;
 + (unsigned long long)electrocardiogramSupportedStateForActiveWatch;
@@ -93,12 +105,19 @@
 + (id)pairedDevices;
 + (BOOL)shouldInstallWatchApp;
 - (void).cxx_destruct;
+- (BOOL)_activePairedDevicesSupportECGAlgorithmVersionTwo:(id)arg1;
+- (id)_ecg2AvailabilityWithPhoneDevice:(id)arg1;
+- (id)_ecg2AvailabilityWithWatchDevice:(id)arg1;
 - (id)_electrocardiogramFirstOnboardingCompletedDate;
+- (id)_electrocardiogramOnboardingHistory;
+- (id)_electrocardiogramOnboardingHistoryKnown;
 - (void)_featureAvailabilityConditionsDidUpdate;
 - (long long)_getOnboardingVersionForKey:(id)arg1;
+- (BOOL)_isECG1SupportedForCountryCode:(id)arg1 watchOSVersion:(unsigned int)arg2 isWatchOSSeedBuild:(BOOL)arg3;
 - (BOOL)_isOnboardingCompletedForKey:(id)arg1 version:(long long)arg2;
 - (BOOL)_isOnboardingCompletedForKey:(id)arg1 version:(long long)arg2 useCache:(BOOL)arg3;
 - (void)_localeDidChange;
+- (id)_makeOnboardingHistoryWithVersionCompleted:(long long)arg1 versionCompletedKey:(id)arg2 additionalValues:(id)arg3 countryCodeKey:(id)arg4;
 - (BOOL)_meetsMinimumAgeRequirementForAtrialFibrillationDetectionWithCurrentDate:(id)arg1;
 - (BOOL)_meetsMinimumAgeRequirementForElectrocardiogramWithCurrentDate:(id)arg1;
 - (BOOL)_meetsMinimumAgeRequirementWithMinimumRequiredAge:(long long)arg1 currentDate:(id)arg2;
@@ -111,16 +130,22 @@
 - (void)_setElectrocardiogramOnboardingCompletedForVersion:(long long)arg1 inCountryCode:(id)arg2;
 - (void)_setFirstOnboardingCompletedDate:(id)arg1 forKey:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_setOnboardingVersionCompleted:(long long)arg1 forKey:(id)arg2 additionalValues:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (BOOL)_shouldAdvertiseECG2DirectOnboardingWithWatchDevice:(id)arg1;
+- (BOOL)_shouldAdvertiseECG2UpgradeWithDevice:(id)arg1;
 - (BOOL)_shouldAdvertiseECGDirectOnboardingWithDevice:(id)arg1;
+- (BOOL)_shouldAdvertiseElectrocardiogramUpgradeForDevice:(id)arg1;
+- (BOOL)_shouldAdvertiseWithAdvertiseECGVersions:(id)arg1;
 - (void)_triggerFeatureAvailabilityUpdateOnPhoneAndWatchWithDelay:(long long)arg1;
 - (void)_unregisterForNotifications;
 - (void)_updateOnboardingCompletionForKey:(id)arg1 andVersion:(long long)arg2;
+- (BOOL)activePairedDevicesSupportElectrocardiogramAlgorithmVersion:(long long)arg1;
 - (void)addHeartRhythmAvailabilityObserver:(id)arg1;
 - (id)atrialFibrillationDetectionOnboardingCountryCode;
 - (void)dealloc;
 - (void)electrocardiogramAppInstallStateOnActiveWatch:(CDUnknownBlockType)arg1;
 - (long long)electrocardiogramOnboardingCompletedVersionNoCache;
 - (id)electrocardiogramOnboardingCountryCode;
+- (id)electrocardiogramOnboardingHistoryType:(long long)arg1;
 - (id)initWithHealthStore:(id)arg1;
 - (void)isAtrialFibrillationDetectionOnboardingAvailableInCurrentLocation:(CDUnknownBlockType)arg1;
 - (void)isAtrialFibrillationDetectionOnboardingAvailableInCurrentLocationForActiveWatch:(CDUnknownBlockType)arg1;
@@ -128,11 +153,13 @@
 - (BOOL)isAtrialFibrillationDetectionStateSupportedForOnboardingCountryCode:(id)arg1 onWatch:(id)arg2;
 - (BOOL)isAtrialFibrillationDetectionStateSupportedOnActiveWatchForOnboardingCountryCode:(id)arg1;
 - (BOOL)isAtrialFibrillationDetectionStateSupportedOnAnyWatchForOnboardingCountry:(id)arg1;
+- (BOOL)isElectrocardiogramAppInstallAllowedForWatch:(id)arg1;
 - (BOOL)isElectrocardiogramAvailableForOnboardingCountryCode:(id)arg1;
 - (BOOL)isElectrocardiogramAvailableOnWatch:(id)arg1 countryCode:(id)arg2;
 - (void)isElectrocardiogramOnboardingAvailableInCurrentLocation:(CDUnknownBlockType)arg1;
 - (void)isElectrocardiogramOnboardingAvailableInCurrentLocationForActiveWatch:(CDUnknownBlockType)arg1;
 - (void)isElectrocardiogramOnboardingAvailableInCurrentLocationForWatch:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (BOOL)isElectrocardiogramOnboardingCompletedForAnyOnboardingVersion;
 - (BOOL)isElectrocardiogramOnboardingCompletedNoCache;
 - (BOOL)isHeartAgeGatingEnabledOnActiveWatchWithCurrentDate:(id)arg1;
 - (BOOL)isHeartAgeGatingEnabledOnWatch:(id)arg1 currentDate:(id)arg2;
@@ -144,11 +171,15 @@
 - (void)setAtrialFibrillationDetectionOnboardingCompletedForCountryCode:(id)arg1;
 - (void)setElectrocardiogramFirstOnboardingCompletedDate:(id)arg1;
 - (void)setElectrocardiogramOnboardingCompleted;
-- (void)setElectrocardiogramOnboardingCompletedForCountryCode:(id)arg1;
+- (void)setElectrocardiogramOnboardingCompletedVersion:(long long)arg1 countryCode:(id)arg2;
 - (BOOL)shouldAdvertiseAtrialFibrillationDetectionForActiveWatch;
 - (BOOL)shouldAdvertiseAtrialFibrillationDetectionForWatch:(id)arg1;
 - (BOOL)shouldAdvertiseElectrocardiogramForActiveWatch;
 - (BOOL)shouldAdvertiseElectrocardiogramForWatch:(id)arg1;
+- (BOOL)shouldAdvertiseElectrocardiogramUpgradeForActivePhone;
+- (BOOL)shouldAdvertiseElectrocardiogramUpgradeForActiveWatch;
+- (void)unitTest_setElectrocardiogramOnboardingCompletedForVersion:(long long)arg1 countryCode:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)updateElectrocardiogramWatchAppInstallIsAllowed;
 - (void)updateOnboardingCompletionVersionCache;
 
 @end

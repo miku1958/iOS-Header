@@ -61,7 +61,7 @@
 - (void)_didFinishLoadingWithError:(id)arg1;
 - (void)_didUpdateMetadata:(id)arg1;
 - (void)_evictFromCache;
-- (void)_fetchAppMetadataWithBundleID:(id)arg1;
+- (void)_fetchAppMetadataWithBundleID:(id)arg1 accountInvocationPolicy:(id)arg2;
 - (void)_fetchBusinessIconIfNeeded;
 - (void)_fetchBusinessMetadata;
 - (void)_fetchParentApplicationMetadataWithBundleID:(id)arg1;

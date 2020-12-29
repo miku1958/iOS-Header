@@ -31,7 +31,7 @@
 - (id)hourlyHistoryDictFromData:(id)arg1 types:(unsigned long long)arg2;
 - (id)nextHourPrecipitationEventDictFromData:(id)arg1 types:(unsigned long long)arg2;
 - (id)nowLinksDictFromData:(id)arg1 types:(unsigned long long)arg2;
-- (id)parseAQIScaleNamed:(id)arg1 language:(id)arg2 data:(id)arg3 error:(id *)arg4;
+- (id)parseAQIScaleNamed:(id)arg1 data:(id)arg2 error:(id *)arg3;
 - (id)parseAirQualityFromData:(id)arg1 locale:(id)arg2;
 - (id)parseAlmanacFromData:(id)arg1 withUnit:(int)arg2;
 - (id)parseChangeForecastFromData:(id)arg1 withUnit:(int)arg2;
@@ -53,6 +53,7 @@
 - (void)parseWeatherComponentsFromData:(id)arg1 intoConditions:(id)arg2 withUnit:(int)arg3;
 - (id)parseWeatherComponentsFromData:(id)arg1 withUnit:(int)arg2;
 - (id)parsedCategoryFromDictionary:(id)arg1;
+- (id)parsedGradientStopFromDictionary:(id)arg1;
 - (id)pollenDictFromData:(id)arg1 types:(unsigned long long)arg2;
 - (id)severeWeatherEventDictFromData:(id)arg1 types:(unsigned long long)arg2;
 

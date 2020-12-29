@@ -10,7 +10,7 @@
 #import <VideosUI/VUIProductLockupViewDelegate-Protocol.h>
 #import <VideosUI/VUIRoundButtonDelegate-Protocol.h>
 
-@class NSString, VUIDownloadButton, VUILibraryProductInfoView, VUIMediaItem, VUIProductLockupView, VUIViewControllerContentPresenter;
+@class NSString, VUILegacyDownloadButton, VUILibraryProductInfoView, VUIMediaItem, VUIProductLockupView, VUIViewControllerContentPresenter;
 
 __attribute__((visibility("hidden")))
 @interface VUILibraryProductViewController : VUILibraryStackViewController <UICollectionViewDataSource, VUIProductLockupViewDelegate, VUIRoundButtonDelegate>
@@ -18,14 +18,14 @@ __attribute__((visibility("hidden")))
     VUIMediaItem *_mediaItem;
     VUIProductLockupView *_productLockupView;
     VUILibraryProductInfoView *_productInfoView;
-    VUIDownloadButton *_downloadButton;
+    VUILegacyDownloadButton *_downloadButton;
     VUIViewControllerContentPresenter *_contentPresenter;
 }
 
 @property (strong, nonatomic) VUIViewControllerContentPresenter *contentPresenter; // @synthesize contentPresenter=_contentPresenter;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) VUIDownloadButton *downloadButton; // @synthesize downloadButton=_downloadButton;
+@property (strong, nonatomic) VUILegacyDownloadButton *downloadButton; // @synthesize downloadButton=_downloadButton;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 

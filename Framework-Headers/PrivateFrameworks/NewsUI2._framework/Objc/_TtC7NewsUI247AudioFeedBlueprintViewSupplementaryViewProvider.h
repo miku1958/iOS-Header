@@ -12,6 +12,8 @@
 {
     MISSING_TYPE *titleViewRenderer;
     MISSING_TYPE *feedItemSupplementaryRenderer;
+    MISSING_TYPE *sectionFooterViewRenderer;
+    MISSING_TYPE *router;
 }
 
 @end

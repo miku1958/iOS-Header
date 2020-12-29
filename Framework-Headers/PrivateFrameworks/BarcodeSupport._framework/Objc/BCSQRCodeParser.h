@@ -18,6 +18,7 @@
 
 - (void).cxx_destruct;
 - (void)_parseMetadataObject:(id)arg1 reply:(CDUnknownBlockType)arg2 completionHandler:(CDUnknownBlockType)arg3;
+- (id)_payloadForMRCObject:(id)arg1;
 - (id)_qrCodeFeatureFromImage:(struct CGImage *)arg1;
 - (void)parseCodeFromImage:(struct CGImage *)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)parseCodeFromMetadataMachineReadableCodeObject:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;

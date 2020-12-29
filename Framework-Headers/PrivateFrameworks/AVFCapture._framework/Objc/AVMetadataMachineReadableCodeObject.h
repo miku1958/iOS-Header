@@ -17,11 +17,13 @@
 @property (readonly) CIBarcodeDescriptor *descriptor;
 @property (readonly) NSString *stringValue;
 
++ (id)machineReadableCodeObjectWithAppClipCodeDictionary:(id)arg1 input:(id)arg2;
 + (id)machineReadableCodeObjectWithFigEmbeddedCaptureDeviceMachineReadableCodeDictionary:(id)arg1 input:(id)arg2;
 - (id)basicDescriptor;
 - (void)dealloc;
 - (id)description;
 - (id)initDerivedMetadataObjectFromMetadataObject:(id)arg1 withTransform:(struct CGAffineTransform)arg2 isVideoMirrored:(BOOL)arg3 rollAdjustment:(double)arg4;
+- (id)initWithAppClipCodeDictionary:(id)arg1 input:(id)arg2;
 - (id)initWithFigEmbeddedCaptureDeviceMachineReadableCodeDictionary:(id)arg1 input:(id)arg2;
 
 @end

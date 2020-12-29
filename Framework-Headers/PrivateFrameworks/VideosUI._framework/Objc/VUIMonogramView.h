@@ -6,13 +6,13 @@
 
 #import <UIKit/_UIFloatingContentView.h>
 
-#import <VideosUI/TVAuxiliaryViewSelecting-Protocol.h>
+#import <VideosUI/VUIAuxiliaryViewSelecting-Protocol.h>
 #import <VideosUI/_UIFloatingContentViewDelegate-Protocol.h>
 
-@class NSString, TVImageProxy, UIImage, UIView, VUIMonogramDescription, VUIMonogramViewConfiguration, _TVImageView;
+@class NSString, UIImage, UIView, VUIImageProxy, VUIImageView, VUIMonogramDescription, VUIMonogramViewConfiguration;
 
 __attribute__((visibility("hidden")))
-@interface VUIMonogramView : _UIFloatingContentView <_UIFloatingContentViewDelegate, TVAuxiliaryViewSelecting>
+@interface VUIMonogramView : _UIFloatingContentView <_UIFloatingContentViewDelegate, VUIAuxiliaryViewSelecting>
 {
     UIView *_placeholderView;
     UIView *_unfocusedShadowView;
@@ -25,8 +25,8 @@ __attribute__((visibility("hidden")))
     double _unfocusedImageAlpha;
     UIView *_overlayView;
     CDUnknownBlockType _pressCompletionBlock;
-    _TVImageView *_imageView;
-    TVImageProxy *_imageProxy;
+    VUIImageView *_imageView;
+    VUIImageProxy *_imageProxy;
 }
 
 @property (readonly, nonatomic) VUIMonogramViewConfiguration *configuration; // @synthesize configuration=_configuration;
@@ -34,8 +34,8 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIImage *image; // @synthesize image=_image;
-@property (strong, nonatomic) TVImageProxy *imageProxy; // @synthesize imageProxy=_imageProxy;
-@property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) VUIImageProxy *imageProxy; // @synthesize imageProxy=_imageProxy;
+@property (strong, nonatomic) VUIImageView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) VUIMonogramDescription *monogramDescription; // @synthesize monogramDescription=_monogramDescription;
 @property (strong, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;

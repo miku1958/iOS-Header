@@ -12,7 +12,7 @@
 #import <UIKitCore/_UIDictationPrivacySheetControllerDelegate-Protocol.h>
 #import <UIKitCore/_UITouchPhaseChangeDelegate-Protocol.h>
 
-@class AFAnalyticsTurnBasedInstrumentationContext, CADisplayLink, NSArray, NSDictionary, NSMutableArray, NSNumber, NSString, NSTimer, UIAlertController, UIDictationConnection, UIDictationConnectionPreferences, UIDictationStreamingOperations, UIKeyboardInputMode, UITapGestureRecognizer, UIWindow, _UIDictationPrivacySheetController, _UIDictationTelephonyMonitor;
+@class AFAnalyticsTurnBasedInstrumentationContext, CADisplayLink, NSArray, NSDictionary, NSMutableArray, NSNumber, NSString, NSTimer, UIDictationConnection, UIDictationConnectionPreferences, UIDictationStreamingOperations, UIKeyboardInputMode, UITapGestureRecognizer, UIWindow, _UIDictationPrivacySheetController, _UIDictationTelephonyMonitor, _UIVoiceCommandButtonTapGestureRecognizer;
 
 __attribute__((visibility("hidden")))
 @interface UIDictationController : NSObject <UIDictationConnectionDelegate, UIDictationConnectionTokenFilterProtocol, UIAdaptivePresentationControllerDelegate, _UIDictationPrivacySheetControllerDelegate, _UITouchPhaseChangeDelegate>
@@ -20,7 +20,6 @@ __attribute__((visibility("hidden")))
     UIDictationConnection *_dictationConnection;
     UIDictationConnectionPreferences *_preferences;
     NSTimer *_recordingLimitTimer;
-    UIAlertController *_dictationAvailableSoonAlertController;
     BOOL _connectionWasAlreadyAliveForStatisticsLogging;
     UIDictationStreamingOperations *_streamingOperations;
     NSString *_language;
@@ -45,6 +44,7 @@ __attribute__((visibility("hidden")))
     int _dictationInputModeNotifierToken;
     long long _currentShortcutType;
     UITapGestureRecognizer *_hardwareShortcutRecognizer;
+    _UIVoiceCommandButtonTapGestureRecognizer *_hardwareVoiceCommandKeyRecognizer;
     BOOL _prevForceDisplayOverridePlaceholder;
     BOOL _performingStreamingEditingOperation;
     BOOL _discardNextHypothesis;
@@ -301,6 +301,7 @@ __attribute__((visibility("hidden")))
 - (id)fieldIdentifierInputDelegate:(id)arg1;
 - (void)finalizeDictationRecognitionWithPhrases:(id)arg1 languageModel:(id)arg2 correctionIdentifier:(id)arg3 secureInput:(BOOL)arg4 finalResult:(BOOL)arg5;
 - (void)finishDictationRecognitionWithPhrases:(id)arg1 languageModel:(id)arg2 correctionIdentifier:(id)arg3 secureInput:(BOOL)arg4;
+- (void)handleHardwareKeyboardGesture;
 - (id)init;
 - (void)insertSerializedDictationResult:(id)arg1 withCorrectionIdentifier:(id)arg2;
 - (void)instrumentationDictationContextEmitInstrumentation;
@@ -324,14 +325,16 @@ __attribute__((visibility("hidden")))
 - (void)preferencesChanged:(id)arg1;
 - (id)prefixTextForInputDelegate:(id)arg1;
 - (void)preheatIfNecessary;
-- (void)prepareDoubleTapShortcutGesture;
-- (void)prepareDoubleTapShortcutGestureForDelegate:(id)arg1;
+- (void)prepareDoubleTapShortcutGesture:(id)arg1;
+- (void)prepareStartDictationKeyboardGestures;
+- (void)prepareStartDictationKeyboardGesturesForDelegate:(id)arg1;
+- (void)prepareVoiceCommandSingleTapGesture:(id)arg1;
 - (void)presentAlertOfType:(long long)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (void)presentationControllerDidDismiss:(id)arg1;
 - (void)releaseConnection;
 - (void)releaseConnectionAfterDictationRequest;
 - (void)releaseConnectionAfterStatisticsLogging;
-- (void)removeDoubleTapShortcutGesture;
+- (void)removeStartDictationKeyboardGestures;
 - (void)restartDictationForTypeAndTalk;
 - (void)restoreTextFieldPlaceholder;
 - (struct __CFString *)resultTransformForLanguageModel:(id)arg1;
@@ -370,6 +373,7 @@ __attribute__((visibility("hidden")))
 - (void)switchToDictationInputModeWithTouch:(id)arg1 withKeyboardInputMode:(id)arg2;
 - (void)switchToDictationLanguage:(id)arg1;
 - (void)updateDoubleTapShortcutWithPreference:(long long)arg1;
+- (void)voiceCommandSingleTapKey:(id)arg1;
 
 @end
 

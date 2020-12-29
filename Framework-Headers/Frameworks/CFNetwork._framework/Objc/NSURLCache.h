@@ -28,6 +28,7 @@
 - (id)_initWithIdentifier:(id)arg1 memoryCapacity:(long long)arg2 diskCapacity:(long long)arg3 private:(BOOL)arg4;
 - (id)_initWithMemoryCapacity:(unsigned long long)arg1 diskCapacity:(unsigned long long)arg2 relativePath:(id)arg3;
 - (BOOL)_isVaryHeaderSupportEnabled;
+- (double)_maxCacheableEntrySizeRatio;
 - (struct _CFCachedURLResponse *)_nscfBridgeURLCacheCopyResponseForRequest:(struct _CFURLRequest *)arg1;
 - (long long)_nscfBridgeURLCacheCurrentDiskUsage;
 - (long long)_nscfBridgeURLCacheCurrentMemoryUsage;
@@ -51,6 +52,7 @@
 - (void)removeCachedResponseForDataTask:(id)arg1;
 - (void)removeCachedResponseForRequest:(id)arg1;
 - (void)removeCachedResponsesSinceDate:(id)arg1;
+- (void)set_maxCacheableEntrySizeRatio:(double)arg1;
 - (void)storeCachedResponse:(id)arg1 forDataTask:(id)arg2;
 - (void)storeCachedResponse:(id)arg1 forRequest:(id)arg2;
 

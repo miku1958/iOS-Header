@@ -56,6 +56,7 @@
 @property (nonatomic) BOOL userHasOverriddenPreferredOverlay; // @synthesize userHasOverriddenPreferredOverlay=_userHasOverriddenPreferredOverlay;
 
 - (void).cxx_destruct;
+- (BOOL)_canSelectOverlayLocation:(id)arg1;
 - (long long)_contextItemCount;
 - (id)_contextViewBackgroundColor;
 - (id)_currentChartEffectiveVisibleRange;
@@ -77,6 +78,7 @@
 - (void)_updateChartForOverlaySelection:(id)arg1 previousSelection:(id)arg2;
 - (void)_updateContextTiles;
 - (id)contextSectionsForMode:(long long)arg1 applicationItems:(id)arg2 overlayChartController:(id)arg3;
+- (BOOL)contextView:(id)arg1 canSelectItemAtIndexPath:(id)arg2;
 - (void)contextView:(id)arg1 didDeselectItemAtIndexPath:(id)arg2;
 - (void)contextView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (void)contextViewDidInvalidateLayout:(id)arg1;
@@ -84,12 +86,13 @@
 - (id)createChartOverlayViewController;
 - (id)createViewControllerForMode:(long long)arg1 displayDate:(id)arg2 applicationItems:(id)arg3;
 - (void)dealloc;
+- (void)didChangeFromContextItem:(id)arg1 toContextItem:(id)arg2;
 - (void)didUpdateFromDateZoom:(long long)arg1 toDateZoom:(long long)arg2 newVisibleRange:(id)arg3;
+- (void)didUpdateSeriesWithNewValueRange:(id)arg1;
 - (void)didUpdateVisibleValueRange:(id)arg1 changeContext:(long long)arg2;
 - (void)fetchContextItemsIfNeededWithDateInterval:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithDisplayDate:(id)arg1 applicationItems:(id)arg2 mode:(long long)arg3;
 - (id)initialSelectedContextForMode:(long long)arg1;
-- (void)newDataArrivedWithValueRange:(id)arg1;
 - (id)primaryDisplayTypeWithApplicationItems:(id)arg1;
 - (void)refreshOverlayContextItems;
 - (void)reloadOverlayContextItems;

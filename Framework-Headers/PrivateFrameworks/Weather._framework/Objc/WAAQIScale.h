@@ -19,16 +19,14 @@
 @property (readonly, nonatomic) WAAQIGradient *gradient; // @synthesize gradient=_gradient;
 @property (readonly, nonatomic) struct _NSRange range; // @synthesize range=_range;
 
-+ (id)scaleForCanada;
 + (id)scaleForChina;
 + (id)scaleForEurope;
 + (id)scaleForHongKong;
 + (id)scaleForIndia;
 + (id)scaleForMexico;
-+ (id)scaleForSingapore;
-+ (id)scaleForSouthKorea;
 + (id)scaleForUnitedKingdom;
 + (id)scaleForUnitedStates;
++ (id)scaleFromFoundationScale:(id)arg1;
 + (id)scaleFromScaleIdentifier:(id)arg1 fallbackCountryCode:(id)arg2;
 - (void).cxx_destruct;
 - (void)addCategory:(id)arg1;

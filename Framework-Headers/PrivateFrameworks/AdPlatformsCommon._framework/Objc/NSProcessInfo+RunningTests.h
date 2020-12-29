@@ -10,6 +10,7 @@
 
 @property (readonly, nonatomic, getter=isRunningTests) BOOL runningTests;
 
++ (BOOL)isDNUEnabled;
 + (BOOL)isInternalInstall;
 @end
 

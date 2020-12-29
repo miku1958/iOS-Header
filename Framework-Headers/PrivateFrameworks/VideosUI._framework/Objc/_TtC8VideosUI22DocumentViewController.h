@@ -11,6 +11,7 @@
 @interface _TtC8VideosUI22DocumentViewController : UIViewController
 {
     MISSING_TYPE *templateViewController;
+    MISSING_TYPE *deferLoadingTemplateController;
     MISSING_TYPE *documentDelegate;
     MISSING_TYPE *document;
     MISSING_TYPE *isTransitioning;
@@ -19,6 +20,9 @@
     MISSING_TYPE *navBarTitleOpacity;
     MISSING_TYPE *navBarTintColor;
     MISSING_TYPE *navBarPrefersLargeTitles;
+    MISSING_TYPE *navBarTitleView;
+    MISSING_TYPE *navBarTitle;
+    MISSING_TYPE *navBarCachedWidth;
     MISSING_TYPE *pagePerformanceReporter;
 }
 
@@ -29,10 +33,13 @@
 @property (nonatomic, readonly) unsigned long long supportedInterfaceOrientations;
 
 - (void).cxx_destruct;
+- (void)dealloc;
+- (void)didBecomeActive:(id)arg1;
 - (void)didMoveToParentViewController:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (id)overrideTraitCollectionForChildViewController:(id)arg1;
+- (void)scrollToTop;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
@@ -40,6 +47,7 @@
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
+- (void)willResignActive:(id)arg1;
 
 @end
 

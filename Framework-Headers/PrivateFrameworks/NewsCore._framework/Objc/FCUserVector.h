@@ -8,15 +8,17 @@
 
 #import <NewsCore/FCUserVectorProvider-Protocol.h>
 
-@class FCPersonalizationTreatment, NSString, NSURL;
+@class FCPersonalizationTreatment, NSOrderedSet, NSString, NSURL;
 
 @interface FCUserVector : NSObject <FCUserVectorProvider>
 {
     NSURL *_whitelistURL;
     NSURL *_modelURL;
     FCPersonalizationTreatment *_personalizationTreatment;
+    NSOrderedSet *_bundleChannelIDs;
 }
 
+@property (strong, nonatomic) NSOrderedSet *bundleChannelIDs; // @synthesize bundleChannelIDs=_bundleChannelIDs;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -26,10 +28,11 @@
 @property (strong, nonatomic) NSURL *whitelistURL; // @synthesize whitelistURL=_whitelistURL;
 
 - (void).cxx_destruct;
+- (id)bundleSubscribedVector;
 - (id)computePersonalizationVectorWithBaselineAggregate:(id)arg1 allAggregates:(id)arg2;
 - (id)findVector:(id)arg1 closestToBins:(id)arg2;
 - (id)init;
-- (id)initWithWhitelistURL:(id)arg1 modelURL:(id)arg2 personalizationTreatment:(id)arg3;
+- (id)initWithWhitelistURL:(id)arg1 modelURL:(id)arg2 personalizationTreatment:(id)arg3 bundleChannelIDs:(id)arg4;
 
 @end
 

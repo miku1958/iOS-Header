@@ -7,6 +7,8 @@
 #import <TeaUI/_TtC5TeaUI19SectionSelectorView.h>
 
 @interface _TtC5TeaUI19SectionSelectorView (TeaUI)
+- (void)accessibilityDecrement;
+- (void)accessibilityIncrement;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(struct CGPoint *)arg3;
 @end
 

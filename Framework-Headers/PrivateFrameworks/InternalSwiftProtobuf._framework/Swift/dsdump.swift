@@ -149,9 +149,10 @@
 	// class method
 	// class method
  }
- protocol InternalSwiftProtobuf.MapKeyType // 1 requirements
+ protocol InternalSwiftProtobuf.MapKeyType // 2 requirements
  {
 	// class base protocol
+	// class method
  }
  protocol InternalSwiftProtobuf.MapValueType // 1 requirements
  {
@@ -284,9 +285,9 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seconds : 'Ω // +0x0
+	var seconds : óΩ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nanos : Èº // +0x8
+	var nanos : aΩ // +0x8
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -356,9 +357,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var options : BinaryDecodingOptions // +0x68
 	var recursionBudget : Int // +0x78
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownData : ·≥ // +0x80
+	var unknownData : Q¥ // +0x80
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var unknownOverride : ·≥ // +0x90
+	var unknownOverride : Q¥ // +0x90
  }
 
  enum InternalSwiftProtobuf.Google_Protobuf_NullValue {
@@ -413,7 +414,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var work :  empty-list 
 
 	// Swift methods
-	0x41b40  func <stripped> // method 
+	0x43410  func <stripped> // method 
  }
 
  class InternalSwiftProtobuf.AnyMessageStorage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -423,20 +424,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var state : InternalState
 
 	// Swift methods
-	0x43c30  func <stripped> // getter 
-	0x441a0  func <stripped> // method 
-	0x44280  func <stripped> // method 
-	0x44770  func <stripped> // method 
+	0x45500  func <stripped> // getter 
+	0x459c0  func <stripped> // method 
+	0x45aa0  func <stripped> // method 
+	0x45f90  func <stripped> // method 
  }
 
  enum InternalSwiftProtobuf.InternalState {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case binary : È≤
+	case binary : Y≥
 	case message : Message
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case contentJSON : „≤
+	case contentJSON : S≥
  }
 
  struct InternalSwiftProtobuf.OptionalExtensionField: ExtensionField,  AnyExtensionField {
@@ -563,9 +564,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var unknownFields : UnknownStorage // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _start : Å¥ // +0x10
+	var _start : Á¥ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _end : Å¥ // +0x18
+	var _end : Á¥ // +0x18
 	var _options : Google_Protobuf_ExtensionRangeOptions // +0x20
  }
 
@@ -574,9 +575,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var unknownFields : UnknownStorage // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _start : Å¥ // +0x10
+	var _start : Á¥ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _end : Å¥ // +0x18
+	var _end : Á¥ // +0x18
  }
 
  struct InternalSwiftProtobuf.Google_Protobuf_ExtensionRangeOptions {
@@ -591,19 +592,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	var unknownFields : UnknownStorage // +0x0
-	var _name : String? // +0x10
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _number : Å¥ // +0x20
-	var _label : Label // +0x25
-	var _type : TypeEnum // +0x26
-	var _typeName : String? // +0x28
-	var _extendee : String? // +0x38
-	var _defaultValue : String? // +0x48
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _oneofIndex : Å¥ // +0x58
-	var _jsonName : String? // +0x60
-	var _options : Google_Protobuf_FieldOptions // +0x70
-	var _proto3Optional : Bool? // +0x96
+	var _storage : _StorageClass // +0x10
  }
 
  enum InternalSwiftProtobuf.TypeEnum {
@@ -661,9 +650,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var unknownFields : UnknownStorage // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _start : Å¥ // +0x10
+	var _start : Á¥ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _end : Å¥ // +0x18
+	var _end : Á¥ // +0x18
  }
 
  struct InternalSwiftProtobuf.Google_Protobuf_EnumValueDescriptorProto {
@@ -672,7 +661,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var unknownFields : UnknownStorage // +0x0
 	var _name : String? // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _number : Å¥ // +0x20
+	var _number : Á¥ // +0x20
 	var _options : Google_Protobuf_EnumValueOptions // +0x28
  }
 
@@ -816,12 +805,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var unknownFields : UnknownStorage // +0x8
 	var _identifierValue : String? // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _positiveIntValue : ¥ // +0x28
+	var _positiveIntValue : q¥ // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _negativeIntValue : Å≥ // +0x38
+	var _negativeIntValue : Ò≥ // +0x38
 	var _doubleValue : Double? // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _stringValue : ·≥ // +0x58
+	var _stringValue : Q¥ // +0x58
 	var _aggregateValue : String? // +0x68
  }
 
@@ -868,9 +857,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var unknownFields : UnknownStorage // +0x8
 	var _sourceFile : String? // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _begin : Å¥ // +0x28
+	var _begin : Á¥ // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _end : Å¥ // +0x30
+	var _end : Á¥ // +0x30
+ }
+
+ class InternalSwiftProtobuf._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var _name : String?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _number : Á¥
+	var _label : Label
+	var _type : TypeEnum
+	var _typeName : String?
+	var _extendee : String?
+	var _defaultValue : String?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var _oneofIndex : Á¥
+	var _jsonName : String?
+	var _options : Google_Protobuf_FieldOptions
+	var _proto3Optional : Bool?
+
+	// Swift methods
  }
 
  class InternalSwiftProtobuf._StorageClass : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -938,7 +947,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var hasher : ø≤ // +0x0
+	var hasher : ≥ // +0x0
  }
 
  enum InternalSwiftProtobuf.BinaryDelimited { }
@@ -956,7 +965,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var interned : [UnsafeRawBufferPointer]
 
 	// Swift methods
-	0x9ac20  func <stripped> // method 
+	0x9cec0  func <stripped> // method 
  }
 
  struct InternalSwiftProtobuf._NameMap {
@@ -972,13 +981,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case same : ÔØ
+	case same : O∞
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case standard : ÔØ
+	case standard : O∞
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case unique : ·Ø
+	case unique : A∞
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case aliased : ÀØ
+	case aliased : +∞
  }
 
  struct InternalSwiftProtobuf.Names {
@@ -1000,7 +1009,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case string : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case staticString : ©Ø
+	case staticString : 	∞
  }
 
  struct InternalSwiftProtobuf.BinaryDecodingOptions {
@@ -1030,7 +1039,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var data :  empty-list  // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var separator : ¡∞ // +0x8
+	var separator : ± // +0x8
  }
 
  struct InternalSwiftProtobuf.Google_Protobuf_DoubleValue {
@@ -1051,7 +1060,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : 'Ω // +0x0
+	var value : óΩ // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -1059,7 +1068,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : /± // +0x0
+	var value : á± // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -1067,7 +1076,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Èº // +0x0
+	var value : aΩ // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -1075,7 +1084,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : 9∞ // +0x0
+	var value : ë∞ // +0x0
 	var unknownFields : UnknownStorage // +0x8
  }
 
@@ -1097,7 +1106,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : È≤ // +0x0
+	var value : Y≥ // +0x0
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -1137,7 +1146,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var data : È≤ // +0x0
+	var data : Y≥ // +0x0
  }
 
  struct InternalSwiftProtobuf.TextFormatDecoder {
@@ -1146,7 +1155,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var scanner : TextFormatScanner // +0x0
 	var fieldCount : Int // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var terminator : ¡∞ // +0x48
+	var terminator : ± // +0x48
 	var fieldNameMap : _NameMap // +0x50
 	var messageType : Message // +0x70
  }
@@ -1209,7 +1218,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var separator : â´ // +0x0
+	var separator : €´ // +0x0
 	var encoder : JSONEncoder // +0x18
 	let options : JSONEncodingOptions // +0x22
  }
@@ -1225,9 +1234,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seconds : 'Ω // +0x0
+	var seconds : óΩ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nanos : Èº // +0x8
+	var nanos : aΩ // +0x8
 	var unknownFields : UnknownStorage // +0x10
  }
 
@@ -1257,11 +1266,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var kind : Kind // +0x0
 	var cardinality : Cardinality // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var number : Èº // +0x1c
+	var number : aΩ // +0x1c
 	var name : String // +0x20
 	var typeURL : String // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var oneofIndex : Èº // +0x40
+	var oneofIndex : aΩ // +0x40
 	var packed : Bool // +0x44
 	var options : Google_Protobuf_Option // +0x48
 	var jsonName : String // +0x50
@@ -1320,7 +1329,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var name : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var number : Èº // +0x10
+	var number : aΩ // +0x10
 	var options : Google_Protobuf_Option // +0x18
 	var unknownFields : UnknownStorage // +0x20
  }

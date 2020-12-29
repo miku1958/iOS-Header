@@ -13,11 +13,13 @@
 }
 
 @property (nonatomic) int cloudKitContainer; // @dynamic cloudKitContainer;
+@property (nonatomic) int deploymentEnvironment; // @dynamic deploymentEnvironment;
 @property (nonatomic) int deploymentId; // @dynamic deploymentId;
 @property (copy, nonatomic) NSData *encodedExperimentDefinition; // @dynamic encodedExperimentDefinition;
 @property (copy, nonatomic) NSString *encodedExperimentDefinitionSignature; // @dynamic encodedExperimentDefinitionSignature;
 @property (copy, nonatomic) NSString *experimentId; // @dynamic experimentId;
 @property (nonatomic) BOOL hasCloudKitContainer; // @dynamic hasCloudKitContainer;
+@property (nonatomic) BOOL hasDeploymentEnvironment; // @dynamic hasDeploymentEnvironment;
 @property (nonatomic) BOOL hasDeploymentId; // @dynamic hasDeploymentId;
 @property (nonatomic) BOOL hasEncodedExperimentDefinition; // @dynamic hasEncodedExperimentDefinition;
 @property (nonatomic) BOOL hasEncodedExperimentDefinitionSignature; // @dynamic hasEncodedExperimentDefinitionSignature;

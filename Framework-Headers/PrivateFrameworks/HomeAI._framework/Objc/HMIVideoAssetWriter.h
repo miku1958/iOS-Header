@@ -43,7 +43,7 @@
 - (void)_appendSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)_checkNotStarted;
 - (id)_createAssetWriterWithInitialSegmentStartTime:(CDStruct_1b6d18a9)arg1;
-- (void)_ensureFirstAudioSampleBufferHasSufficientPrimingTrim:(struct opaqueCMSampleBuffer *)arg1;
+- (void)_ensureAudioSampleBufferHasSufficientPrimingTrim:(struct opaqueCMSampleBuffer *)arg1;
 - (void)_failWithDescription:(id)arg1;
 - (void)_removeTrimDurationAttachmentsFromAudioSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 - (void)assetWriter:(id)arg1 didOutputSegmentData:(id)arg2 segmentType:(long long)arg3 segmentReport:(id)arg4;

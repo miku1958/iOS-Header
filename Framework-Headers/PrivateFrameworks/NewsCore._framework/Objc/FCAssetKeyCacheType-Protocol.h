@@ -6,9 +6,10 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class NSData;
+@class FCInterestToken, NSArray, NSData;
 
 @protocol FCAssetKeyCacheType <NSObject>
+- (FCInterestToken *)interestTokenForWrappingKeyIDs:(NSArray *)arg1;
 - (void)removeAllWrappingKeys;
 - (void)setWrappingKey:(NSData *)arg1 forWrappingKeyID:(NSData *)arg2;
 - (NSData *)wrappingKeyForWrappingKeyID:(NSData *)arg1;

@@ -6,11 +6,12 @@
 
 #import <HealthDaemon/HDSampleEntity.h>
 
+#import <HealthDaemon/HDSeriesEntity-Protocol.h>
 #import <HealthDaemon/_HDSeriesFreezeJournalEntrySeries-Protocol.h>
 
 @class NSString;
 
-@interface HDSeriesSampleEntity : HDSampleEntity <_HDSeriesFreezeJournalEntrySeries>
+@interface HDSeriesSampleEntity : HDSampleEntity <_HDSeriesFreezeJournalEntrySeries, HDSeriesEntity>
 {
 }
 
@@ -27,7 +28,9 @@
 + (id)entityEncoderForProfile:(id)arg1 transaction:(id)arg2 purpose:(long long)arg3 authorizationFilter:(CDUnknownBlockType)arg4;
 + (id)foreignKeys;
 + (id)freezeSeriesWithIdentifier:(id)arg1 metadata:(id)arg2 profile:(id)arg3 error:(id *)arg4;
++ (id)hasSeriesDataForHFDKey:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 + (id)insertDataObject:(id)arg1 withProvenance:(id)arg2 inDatabase:(id)arg3 persistentID:(id)arg4 error:(id *)arg5;
++ (BOOL)migrateDataFromDataStore:(const struct DataStore *)arg1 to:(struct DataStore *)arg2 transaction:(id)arg3 recoveryAnalytics:(id)arg4 error:(id *)arg5;
 + (CDUnknownBlockType)objectInsertionFilterForProfile:(id)arg1;
 + (BOOL)replaceObjectID:(id)arg1 replacementObjectID:(id)arg2 deleteOriginalHFDData:(BOOL)arg3 insertDeletedObject:(BOOL)arg4 profile:(id)arg5 transaction:(id)arg6 error:(id *)arg7;
 + (id)seriesSampleWithID:(id)arg1 profile:(id)arg2 error:(id *)arg3;

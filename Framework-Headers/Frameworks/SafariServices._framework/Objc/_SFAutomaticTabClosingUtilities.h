@@ -12,10 +12,13 @@
 
 + (id)analyticsTitleForAutomaticTabClosingInterval:(unsigned long long)arg1;
 + (unsigned long long)automaticTabClosingInterval;
++ (void)clearMostDistantLastViewedTime;
 + (id)promptTitleForAutomaticTabClosingInterval:(unsigned long long)arg1;
 + (void)resetAutomaticTabClosingIntervalPreference;
 + (void)setAutomaticTabClosingInterval:(unsigned long long)arg1;
++ (void)setMostDistantLastViewedTime:(double)arg1;
 + (id)settingsTitleForAutomaticTabClosingInterval:(unsigned long long)arg1;
++ (BOOL)shouldCloseTabsAutomaticallyWhenEnteringForeground;
 + (double)timeIntervalForAutomaticTabClosingInterval:(unsigned long long)arg1;
 + (BOOL)userHasPreferenceForAutomaticTabClosingInterval;
 

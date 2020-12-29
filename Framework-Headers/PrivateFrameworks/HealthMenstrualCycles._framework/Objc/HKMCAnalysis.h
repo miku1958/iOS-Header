@@ -22,6 +22,7 @@
     HKQuantity *_recentBasalBodyTemperature;
     NSNumber *_lastLoggedDayIndex;
     NSNumber *_lastMenstrualFlowDayIndex;
+    NSArray *_ongoingCycleFactors;
     NSNumber *_anchor;
 }
 
@@ -32,6 +33,7 @@
 @property (readonly, copy, nonatomic) NSNumber *lastLoggedDayIndex; // @synthesize lastLoggedDayIndex=_lastLoggedDayIndex;
 @property (readonly, copy, nonatomic) NSNumber *lastMenstrualFlowDayIndex; // @synthesize lastMenstrualFlowDayIndex=_lastMenstrualFlowDayIndex;
 @property (readonly, nonatomic) NSArray *menstruationProjections; // @synthesize menstruationProjections=_menstruationProjections;
+@property (readonly, nonatomic) NSArray *ongoingCycleFactors; // @synthesize ongoingCycleFactors=_ongoingCycleFactors;
 @property (readonly, nonatomic) HKQuantity *recentBasalBodyTemperature; // @synthesize recentBasalBodyTemperature=_recentBasalBodyTemperature;
 @property (readonly, nonatomic) unsigned long long recentSymptoms; // @synthesize recentSymptoms=_recentSymptoms;
 @property (readonly, nonatomic) HKMCStatistics *statistics; // @synthesize statistics=_statistics;
@@ -44,6 +46,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithStatistics:(id)arg1 menstruationProjections:(id)arg2 fertileWindowProjections:(id)arg3 cycles:(id)arg4 recentSymptoms:(unsigned long long)arg5 recentBasalBodyTemperature:(id)arg6 lastLoggedDayIndex:(id)arg7 lastMenstrualFlowDayIndex:(id)arg8;
+- (id)initWithStatistics:(id)arg1 menstruationProjections:(id)arg2 fertileWindowProjections:(id)arg3 cycles:(id)arg4 recentSymptoms:(unsigned long long)arg5 recentBasalBodyTemperature:(id)arg6 lastLoggedDayIndex:(id)arg7 lastMenstrualFlowDayIndex:(id)arg8 ongoingCycleFactors:(id)arg9;
 - (BOOL)isEqual:(id)arg1;
 
 @end

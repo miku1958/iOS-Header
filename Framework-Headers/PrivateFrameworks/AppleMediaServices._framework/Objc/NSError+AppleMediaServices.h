@@ -18,6 +18,7 @@
 - (id)ams_errorByAddingUnderlyingError:(id)arg1;
 - (id)ams_errorByAddingUserInfo:(id)arg1;
 - (BOOL)ams_hasDomain:(id)arg1 code:(unsigned long long)arg2;
+- (id)ams_underlyingErrorWithDomain:(id)arg1;
 - (id)ams_underlyingErrorWithDomain:(id)arg1 code:(unsigned long long)arg2;
 @end
 

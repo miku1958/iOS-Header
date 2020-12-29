@@ -66,8 +66,11 @@
 - (BOOL)_needsForegroundContainerView;
 - (void)_prepareForEditing;
 - (void)_prepareForStatusChange:(BOOL)arg1;
+- (void)_removeBackgroundView;
 - (void)_removeViews;
+- (void)_reorderSwitcherSnapshotView;
 - (void)_setComplicationAlphaForTransitionFraction:(double)arg1 fromOption:(id)arg2 toOption:(id)arg3 customEditMode:(long long)arg4 slot:(id)arg5;
+- (void)_setupBackgroundView;
 - (void)_setupDialViewIfNeeded;
 - (void)_setupViews;
 - (id)_simpleTextComplicationColorForEditMode:(long long)arg1;

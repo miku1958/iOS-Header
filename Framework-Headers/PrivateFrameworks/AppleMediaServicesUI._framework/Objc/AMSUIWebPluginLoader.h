@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     NSMutableDictionary *_loadedPluginsMap;
 }
 
-@property (readonly, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
+@property (readonly, weak, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, nonatomic) NSDictionary *installedPluginURLs; // @synthesize installedPluginURLs=_installedPluginURLs;
 @property (readonly, nonatomic) NSArray *loadedPlugins;
 @property (strong, nonatomic) NSMutableDictionary *loadedPluginsMap; // @synthesize loadedPluginsMap=_loadedPluginsMap;

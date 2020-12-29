@@ -6,12 +6,11 @@
 
 #import <MediaPlaybackCore/NSObject-Protocol.h>
 
-@class AVPlayerViewController, NSString, UIView, UIViewController;
+@class NSString, UIView, UIViewController;
 @protocol MPCVideoOutputDelegate;
 
 @protocol MPCVideoOutput <NSObject>
 
-@property (readonly, nonatomic) AVPlayerViewController *avPlayerViewController;
 @property (readonly, nonatomic) UIViewController *playerViewController;
 @property (readonly, nonatomic, getter=isReadyForDisplay) BOOL readyForDisplay;
 @property (nonatomic) BOOL showsPlaybackControls;

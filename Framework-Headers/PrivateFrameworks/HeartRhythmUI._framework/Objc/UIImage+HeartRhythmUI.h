@@ -15,6 +15,7 @@
 + (id)hrui_heartRateIconImage;
 + (id)hrui_screenWidthImageWithName:(id)arg1;
 + (id)hrui_warningImage;
++ (id)hrui_watchIconImage;
 + (id)hrui_waveformImage;
 @end
 

@@ -29,6 +29,9 @@
     MISSING_TYPE *formatService;
     MISSING_TYPE *feedPaywallConfigFactory;
     MISSING_TYPE *offerManager;
+    MISSING_TYPE *myMagazinesStore;
+    MISSING_TYPE *subscriptionList;
+    MISSING_TYPE *offlineManager;
 }
 
 @end

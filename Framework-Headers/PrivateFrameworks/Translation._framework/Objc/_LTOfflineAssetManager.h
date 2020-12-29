@@ -22,6 +22,7 @@ __attribute__((visibility("hidden")))
 - (void)_queryLanguagePairStatus:(CDUnknownBlockType)arg1;
 - (void)_refreshAllAssets:(CDUnknownBlockType)arg1;
 - (void)_refreshCatalogIfNeededWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_removeOldAssetDirectory;
 - (id)_speechTranslationAssetInfoForLocalePair:(id)arg1 error:(id *)arg2;
 - (id)_speechTranslationAssetInfoForLocalePair:(id)arg1 installedAssets:(id)arg2 catalogAssets:(id)arg3 config:(id)arg4 error:(id *)arg5;
 - (id)_voiceAssetForLocaleIdentifier:(id)arg1;

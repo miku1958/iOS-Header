@@ -17,6 +17,7 @@
     NSDictionary *_perUnitDecimalPrecision;
     BOOL _shouldHideAverageLine;
     BOOL _shouldDisplayUnitForAxisLabels;
+    BOOL _shouldShowInitialLollipop;
     BOOL _shouldConnectSamplesWithLines;
     BOOL _shouldRoundYAxisDuringExpansion;
     long long _defaultChartStyle;
@@ -31,6 +32,7 @@
 @property (nonatomic) BOOL shouldDisplayUnitForAxisLabels; // @synthesize shouldDisplayUnitForAxisLabels=_shouldDisplayUnitForAxisLabels;
 @property (nonatomic) BOOL shouldHideAverageLine; // @synthesize shouldHideAverageLine=_shouldHideAverageLine;
 @property (nonatomic) BOOL shouldRoundYAxisDuringExpansion; // @synthesize shouldRoundYAxisDuringExpansion=_shouldRoundYAxisDuringExpansion;
+@property (nonatomic) BOOL shouldShowInitialLollipop; // @synthesize shouldShowInitialLollipop=_shouldShowInitialLollipop;
 
 + (BOOL)chartStyleContainsHorizontalGridlines:(long long)arg1;
 - (void).cxx_destruct;

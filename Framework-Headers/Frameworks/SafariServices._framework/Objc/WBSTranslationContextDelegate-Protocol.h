@@ -11,11 +11,14 @@
 @protocol WBSTranslationContextDelegate <NSObject>
 
 @optional
+- (NSString *)safariApplicationVersionForTranslationContext:(WBSTranslationContext *)arg1;
 - (void)translationContext:(WBSTranslationContext *)arg1 shouldReportProgressInUnifiedField:(BOOL)arg2;
+- (void)translationContext:(WBSTranslationContext *)arg1 showFeedbackConsentAlertWithCompletionHandler:(void (^)(BOOL))arg2;
 - (void)translationContext:(WBSTranslationContext *)arg1 showFirstTimeConsentAlertWithCompletionHandler:(void (^)(BOOL))arg2;
 - (void)translationContext:(WBSTranslationContext *)arg1 showTranslationErrorAlertWithTitle:(NSString *)arg2 message:(NSString *)arg3;
 - (void)translationContext:(WBSTranslationContext *)arg1 urlForCurrentPageWithCompletionHandler:(void (^)(NSURL *))arg2;
 - (BOOL)translationContextIsUsingPrivateBrowsing:(WBSTranslationContext *)arg1;
+- (void)translationContextNeedsScrollHeightVisibilityUpdate:(WBSTranslationContext *)arg1;
 - (void)translationContextReloadPageInOriginalLanguage:(WBSTranslationContext *)arg1;
 @end
 

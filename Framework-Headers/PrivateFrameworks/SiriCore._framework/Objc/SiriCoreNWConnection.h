@@ -8,7 +8,7 @@
 
 #import <SiriCore/SiriCoreConnectionProvider-Protocol.h>
 
-@class NSArray, NSString, NSURL, SAConnectionPolicy, SAConnectionPolicyRoute, SiriCoreConnectionMetrics, SiriCoreConnectionType;
+@class NSArray, NSError, NSString, NSURL, SAConnectionPolicy, SAConnectionPolicyRoute, SiriCoreConnectionMetrics, SiriCoreConnectionType;
 @protocol OS_dispatch_queue, OS_dispatch_source, OS_nw_connection, OS_nw_content_context, OS_nw_endpoint, SiriCoreConnectionProviderDelegate;
 
 @interface SiriCoreNWConnection : NSObject <SiriCoreConnectionProvider>
@@ -48,6 +48,7 @@
     double _retransmissionBasedConnectionDropTime;
     unsigned long long _keepaliveUnackedCount;
     double _staleConnectionInterval;
+    NSError *_mostRecentErrorFromNWConnection;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -57,6 +58,7 @@
 
 + (void)getMetricsContext:(CDUnknownBlockType)arg1;
 - (void).cxx_destruct;
+- (void)_addCorrespondingMetricsFromConnection:(id)arg1 inState:(int)arg2;
 - (void)_cancelConnectionUnviableTimer;
 - (void)_cancelOpenTimer;
 - (void)_cancelStaleConnectionTimer;

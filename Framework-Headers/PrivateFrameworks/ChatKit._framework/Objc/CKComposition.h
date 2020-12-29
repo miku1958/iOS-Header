@@ -41,6 +41,7 @@
 + (BOOL)_shouldCreateMediaObjectForUTIType:(id)arg1;
 + (id)_temporaryURLFromURL:(id)arg1;
 + (id)_transcoderUserInfoFor:(id)arg1 filename:(id)arg2 type:(id)arg3;
++ (id)_trimUnwantedAttributesFromAttributedString:(id)arg1;
 + (id)audioCompositionWithMediaObject:(id)arg1;
 + (id)composition;
 + (id)compositionForMessageParts:(id)arg1 preserveSubject:(BOOL)arg2 contextIdentifier:(id)arg3;

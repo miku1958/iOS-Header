@@ -6,31 +6,32 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, NSString, VUIButton, VUICardViewLayoutFactory, _TVImageView;
+@class NSArray, NSString, VUICardViewLayoutFactory;
 
 __attribute__((visibility("hidden")))
 @interface VUICardView : UIView
 {
     VUICardViewLayoutFactory *_layoutFactory;
     CDUnknownBlockType _imageSize;
-    _TVImageView *_imageView;
-    _TVImageView *_appImageView;
+    UIView *_imageView;
+    UIView *_appImageView;
     NSArray *_labelViews;
     UIView *_overlayView;
-    VUIButton *_button;
+    UIView *_button;
     NSString *_debugString;
 }
 
-@property (strong, nonatomic) _TVImageView *appImageView; // @synthesize appImageView=_appImageView;
-@property (strong, nonatomic) VUIButton *button; // @synthesize button=_button;
+@property (strong, nonatomic) UIView *appImageView; // @synthesize appImageView=_appImageView;
+@property (strong, nonatomic) UIView *button; // @synthesize button=_button;
 @property (copy, nonatomic) NSString *debugString; // @synthesize debugString=_debugString;
 @property (copy, nonatomic) CDUnknownBlockType imageSize; // @synthesize imageSize=_imageSize;
-@property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) UIView *imageView; // @synthesize imageView=_imageView;
 @property (copy, nonatomic) NSArray *labelViews; // @synthesize labelViews=_labelViews;
 @property (readonly, nonatomic) VUICardViewLayoutFactory *layoutFactory; // @synthesize layoutFactory=_layoutFactory;
 @property (strong, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
 
 - (void).cxx_destruct;
+- (id)_mainImage;
 - (void)_mainImageLoaded;
 - (double)_maxTextWidthForImagePosition:(long long)arg1 width:(double)arg2 appImageLayout:(id)arg3 textLayout:(id)arg4;
 - (void)dealloc;

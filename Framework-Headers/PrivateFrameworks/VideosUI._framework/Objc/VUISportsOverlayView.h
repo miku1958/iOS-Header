@@ -10,7 +10,7 @@
 #import <VideosUI/VUIScorecardViewDelegate-Protocol.h>
 #import <VideosUI/VUISportsScoreboardManagerDelegate-Protocol.h>
 
-@class IKImageElement, IKViewElement, NSOperation, NSString, UICollectionReusableView, UIImage, VUIScorecardView, VUISportsOverlayLayout, VUISportsScoreboardViewModel, VUITextBadgeView, _TVImageView;
+@class IKImageElement, IKViewElement, NSOperation, NSString, UICollectionReusableView, UIImage, VUIScorecardView, VUISportsOverlayLayout, VUISportsScoreboardViewModel, VUITextBadgeView;
 
 __attribute__((visibility("hidden")))
 @interface VUISportsOverlayView : UIView <VUIScorecardViewDelegate, VUIOverlayWithMaterialRendering, VUISportsScoreboardManagerDelegate>
@@ -23,7 +23,7 @@ __attribute__((visibility("hidden")))
     VUISportsScoreboardViewModel *_scoreboardViewModel;
     VUIScorecardView *_scorecardView;
     VUITextBadgeView *_textBadge;
-    _TVImageView *_logoView;
+    UIView *_logoView;
     IKViewElement *_viewElement;
     IKImageElement *_logoElement;
     NSOperation *_pendingOperation;
@@ -41,7 +41,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isHostSetup; // @synthesize isHostSetup=_isHostSetup;
 @property (strong, nonatomic) IKImageElement *logoElement; // @synthesize logoElement=_logoElement;
 @property (nonatomic) struct CGSize logoSize; // @synthesize logoSize=_logoSize;
-@property (strong, nonatomic) _TVImageView *logoView; // @synthesize logoView=_logoView;
+@property (strong, nonatomic) UIView *logoView; // @synthesize logoView=_logoView;
 @property (strong, nonatomic) VUISportsOverlayLayout *overlayLayout; // @synthesize overlayLayout=_overlayLayout;
 @property (strong, nonatomic) NSOperation *pendingOperation; // @synthesize pendingOperation=_pendingOperation;
 @property (strong, nonatomic) VUISportsScoreboardViewModel *scoreboardViewModel; // @synthesize scoreboardViewModel=_scoreboardViewModel;
@@ -54,19 +54,19 @@ __attribute__((visibility("hidden")))
 
 + (id)_sharedDrawQueue;
 + (BOOL)_viewBackgroundImageNeedsUpdatingWithFrame:(struct CGRect)arg1 currentBackgroundImage:(id)arg2;
++ (id)sharedDrawQueue;
 + (id)sportsOverlayViewFromElement:(id)arg1 overlayLayout:(id)arg2 existingView:(id)arg3;
 - (void).cxx_destruct;
 - (void)_cancelPendingOperation;
 - (void)_redrawScorecardViewWithDuration:(double)arg1;
 - (void)_redrawTextBadgeWithDuration:(double)arg1;
 - (void)_redrawView:(id)arg1 withDuration:(double)arg2;
-- (void)_registerOverlayView;
 - (BOOL)_scorecardViewBackgroundImageNeedsUpdating;
 - (BOOL)_scorecardViewRequiresBackgroundImage;
+- (void)_setupHosting;
 - (void)_teardownHosting;
 - (BOOL)_textBadgeBackgroundImageNeedsUpdating;
 - (BOOL)_textBadgeRequiresBackgroundImage;
-- (void)_unregisterOverlayView;
 - (void)_updateBackgroundImagesWithCompletedOperation:(id)arg1;
 - (void)_updateBadgePosition;
 - (BOOL)_updateTextBadge:(id)arg1;
@@ -81,10 +81,11 @@ __attribute__((visibility("hidden")))
 - (long long)numberOfRowsInScorecardView:(id)arg1;
 - (long long)numberOfScoreValuesForScorecardView:(id)arg1 inRow:(long long)arg2;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
+- (void)registerOverlayView;
 - (void)reset;
 - (id)scoreValue:(id)arg1 inRow:(long long)arg2 atIndex:(long long)arg3;
-- (void)setupHosting;
 - (long long)styleForScorecardView:(id)arg1;
+- (void)unregisterOverlayView;
 - (void)updateBackgroundMaterialImagesWithBackgroundImageSize:(struct CGSize)arg1 performSynchronously:(BOOL)arg2;
 - (BOOL)updateScoreView:(id)arg1;
 - (void)updateScoreboard:(id)arg1;

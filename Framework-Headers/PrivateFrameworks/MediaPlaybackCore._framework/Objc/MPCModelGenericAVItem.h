@@ -51,7 +51,6 @@
     ICStoreRequestContext *_storeRequestContext;
     NSURL *_streamingKeyCertificateURL;
     NSURL *_streamingKeyServerURL;
-    id _rtcReportingParentHierarchyToken;
     NSString *_rtcReportingServiceIdentifier;
     MPCModelGenericAVItemUserIdentityPropertySet *_identityPropertySet;
     BOOL supportsRadioTrackActions;
@@ -110,6 +109,8 @@
 - (id)_bookmarkTime;
 - (void)_contentTasteControllerDidChangeNotification:(id)arg1;
 - (void)_currentPlaybackRateDidChange:(float)arg1;
+- (void)_didBecomeActivePlayerItem;
+- (void)_didResignActivePlayerItem;
 - (void)_getSubscriptionLeasePropertiesWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_getUnverifiedSubscriptionLeaseSessionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_handlePlaybackFinishedTime:(double)arg1 didFinishByHittingEnd:(BOOL)arg2;

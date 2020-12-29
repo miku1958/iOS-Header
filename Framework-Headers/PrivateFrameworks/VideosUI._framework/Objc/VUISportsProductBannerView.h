@@ -6,7 +6,7 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, VUILabel, VUISeparatorView, VUISportsProductBannerLayout, _TVImageView;
+@class NSArray, VUILabel, VUISeparatorView, VUISportsProductBannerLayout;
 
 __attribute__((visibility("hidden")))
 @interface VUISportsProductBannerView : UIView
@@ -19,11 +19,13 @@ __attribute__((visibility("hidden")))
     VUILabel *_footerLabel;
     NSArray *_buttonViews;
     VUILabel *_availabilityTextView;
-    _TVImageView *_availabilityImageView;
+    UIView *_availabilityImageView;
+    double _availabilityImageViewLeftMargin;
     VUISeparatorView *_separatorView;
 }
 
-@property (strong, nonatomic) _TVImageView *availabilityImageView; // @synthesize availabilityImageView=_availabilityImageView;
+@property (strong, nonatomic) UIView *availabilityImageView; // @synthesize availabilityImageView=_availabilityImageView;
+@property (nonatomic) double availabilityImageViewLeftMargin; // @synthesize availabilityImageViewLeftMargin=_availabilityImageViewLeftMargin;
 @property (strong, nonatomic) VUILabel *availabilityTextView; // @synthesize availabilityTextView=_availabilityTextView;
 @property (strong, nonatomic) NSArray *buttonViews; // @synthesize buttonViews=_buttonViews;
 @property (strong, nonatomic) NSArray *descriptionLabels; // @synthesize descriptionLabels=_descriptionLabels;
@@ -35,6 +37,8 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
+- (struct CGSize)_availabilityImageSizeWithSize:(struct CGSize)arg1;
+- (double)_availabilityImageViewLeftMargin;
 - (struct CGSize)_iOS_layoutSubviewsWithSize:(struct CGSize)arg1 computationOnly:(BOOL)arg2;
 - (void)_layoutButtonsWithOrigin:(struct CGPoint)arg1 buttonHeight:(double)arg2 buttonWidth:(double)arg3 spacing:(double)arg4;
 - (void)_layoutLabels:(id)arg1 scoreLabels:(id)arg2 withOrigin:(struct CGPoint)arg3 maxWidth:(double)arg4;

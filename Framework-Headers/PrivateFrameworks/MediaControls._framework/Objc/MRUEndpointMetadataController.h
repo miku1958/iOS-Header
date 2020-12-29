@@ -8,7 +8,7 @@
 
 #import <MediaControls/MediaControlsEndpointControllerDelegate-Protocol.h>
 
-@class MPArtworkCatalog, MPCPlayerCommandRequest, MRUTVRemoteController, MediaControlsEndpointController, NSHashTable, NSString, UIImage;
+@class MPArtworkCatalog, MPCPlayerCommandRequest, MRUMediaSuggestion, MRUTVRemoteController, MediaControlsEndpointController, NSHashTable, NSString, UIImage;
 
 __attribute__((visibility("hidden")))
 @interface MRUEndpointMetadataController : NSObject <MediaControlsEndpointControllerDelegate>
@@ -40,6 +40,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSString *iconURL; // @synthesize iconURL=_iconURL;
 @property (readonly, nonatomic) BOOL isPlaying;
 @property (readonly, nonatomic) BOOL isSystemMusicApplication;
+@property (readonly, nonatomic) MRUMediaSuggestion *nowPlayingMediaSuggestion;
 @property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (copy, nonatomic) NSString *placeholderDeviceIdentifier; // @synthesize placeholderDeviceIdentifier=_placeholderDeviceIdentifier;
 @property (readonly, nonatomic) UIImage *placeholderImage;
@@ -74,6 +75,7 @@ __attribute__((visibility("hidden")))
 - (void)performQuickAction;
 - (void)removeObserver:(id)arg1;
 - (id)representedBundleIDFromClient:(id)arg1;
+- (void)resumePlabackWithCompletion:(CDUnknownBlockType)arg1;
 - (void)setApplicationIcon:(id)arg1;
 - (void)setShowMediaSuggestions:(BOOL)arg1;
 - (id)subtitleComponents;

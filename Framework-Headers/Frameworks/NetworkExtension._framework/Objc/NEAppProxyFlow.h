@@ -11,6 +11,7 @@
 
 @interface NEAppProxyFlow : NSObject
 {
+    BOOL _isBound;
     NEFlowMetaData *_metaData;
     NSString *_remoteHostname;
     struct _NEFlow *_flow;
@@ -21,6 +22,7 @@
 @property (strong) NSObject<OS_nw_interface> *_networkInterface; // @synthesize _networkInterface=__networkInterface;
 @property (strong) NSData *applicationData;
 @property struct _NEFlow *flow; // @synthesize flow=_flow;
+@property BOOL isBound; // @synthesize isBound=_isBound;
 @property (readonly) NEFlowMetaData *metaData; // @synthesize metaData=_metaData;
 @property (copy) NSObject<OS_nw_interface> *networkInterface;
 @property (strong) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;

@@ -6,31 +6,20 @@
 
 #import <PassKitUI/PKExplanationViewController.h>
 
-#import <PassKitUI/PKLinkedApplicationObserver-Protocol.h>
+@class NSString;
 
-@class NSString, PKLinkedApplication;
-
-@interface PKBarcodePaymentPrivacyViewController : PKExplanationViewController <PKLinkedApplicationObserver>
+@interface PKBarcodePaymentPrivacyViewController : PKExplanationViewController
 {
     unsigned long long _displayContext;
     NSString *_issuerName;
-    PKLinkedApplication *_linkedApplication;
 }
-
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
-@property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (BOOL)_canShowWhileLocked;
 - (void)_closeButtonPressed:(id)arg1;
 - (void)_dismiss;
-- (void)_openAppButtonPressed:(id)arg1;
-- (void)_updateOpenApplicationButtonVisibility;
 - (void)explanationViewDidSelectContinue:(id)arg1;
-- (id)initWithIssuerName:(id)arg1 linkedApplication:(id)arg2 displayContext:(unsigned long long)arg3 paymentSetupContext:(long long)arg4;
-- (void)linkedApplicationDidChangeState:(id)arg1;
+- (id)initWithIssuerName:(id)arg1 displayContext:(unsigned long long)arg2 paymentSetupContext:(long long)arg3;
 - (void)viewDidLoad;
 
 @end

@@ -6,15 +6,19 @@
 
 #import <SPOwner/SPOwnerSessionProtocol-Protocol.h>
 
-@class NSDateInterval, NSUUID, SPBeacon;
+@class NSData, NSDate, NSDateInterval, NSUUID, SPBeacon;
 
 @protocol SPOwnerSessionPrivateProtocol <SPOwnerSessionProtocol>
 - (oneway void)beaconForUUID:(NSUUID *)arg1 completion:(void (^)(SPBeacon *))arg2;
 - (void)beaconStoreStatusWithCompletion:(void (^)(BOOL))arg1;
+- (oneway void)fakeClassicPairingWithMACAddress:(NSData *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)forceDistributeKeysWithCompletion:(void (^)(NSError *))arg1;
+- (oneway void)forceKeySyncForBeaconUUID:(NSUUID *)arg1 lastObservationDate:(NSDate *)arg2 lastObservationIndex:(unsigned long long)arg3 completion:(void (^)(NSError *))arg4;
 - (oneway void)forceUpdateKeyAlignmentRecordForUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (oneway void)forceUpdateKeyMapsForUUID:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)rawSearchResultsForBeacon:(SPBeacon *)arg1 dateInterval:(NSDateInterval *)arg2 completion:(void (^)(NSArray *))arg3;
+- (void)sendRegisterIntentWithCompletion:(void (^)(double, NSError *))arg1;
+- (void)sendUnregisterIntentWithCompletion:(void (^)(NSError *))arg1;
 - (void)waitForBeaconStoreAvailableWithCompletion:(void (^)(void))arg1;
 @end
 

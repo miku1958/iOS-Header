@@ -29,6 +29,7 @@
 
 + (id)shared;
 - (void).cxx_destruct;
+- (BOOL)_array:(id)arg1 hasSameElementAsArray:(id)arg2;
 - (void)_setDeselectedCalendarIdentifiers:(id)arg1;
 - (void)_setDeselectedCalendarSyncHashes:(id)arg1;
 - (void)_setDeselectedCalendarSyncIdentifiers:(id)arg1;

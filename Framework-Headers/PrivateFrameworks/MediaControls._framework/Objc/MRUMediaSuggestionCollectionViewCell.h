@@ -7,11 +7,12 @@
 #import <UIKit/UICollectionViewCell.h>
 
 #import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
+#import <MediaControls/UIPointerInteractionDelegate-Protocol.h>
 
 @class MRUArtworkView, MRUVisualStylingProvider, NSString, UIActivityIndicatorView, UILabel;
 
 __attribute__((visibility("hidden")))
-@interface MRUMediaSuggestionCollectionViewCell : UICollectionViewCell <MRUVisualStylingProviderObserver>
+@interface MRUMediaSuggestionCollectionViewCell : UICollectionViewCell <MRUVisualStylingProviderObserver, UIPointerInteractionDelegate>
 {
     BOOL _showActivityIndicator;
     MRUArtworkView *_artworkView;
@@ -41,6 +42,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)prepareForReuse;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)updateContentSizeCategory;

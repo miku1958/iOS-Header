@@ -6,45 +6,60 @@
 
 #import <UIKit/UIView.h>
 
-@class IKViewElement, NSAttributedString, NSTimer, UIImage, VUIRentalExpirationLabel, VUITextBadgeLayout, _TVImageView;
+@class IKViewElement, NSAttributedString, NSOperation, NSTimer, UIImage, VUIRentalExpirationLabel, VUITextBadgeLayout;
 @protocol VUITextBadgeViewDelegate;
 
 __attribute__((visibility("hidden")))
 @interface VUITextBadgeView : UIView
 {
+    BOOL _backgroundImageForMaterialRenderingHasChanged;
     NSAttributedString *_attributedTitle;
     double _strokeSize;
     UIImage *_backgroundImage;
-    _TVImageView *_imageView;
+    UIView *_imageView;
     VUITextBadgeLayout *_badgeLayout;
     VUIRentalExpirationLabel *_rentalExpirationLabel;
     id<VUITextBadgeViewDelegate> _delegate;
+    UIImage *_backgroundImageForMaterialRendering;
     IKViewElement *_viewElement;
     NSTimer *_expiryUpdateTimer;
+    NSOperation *_pendingOperation;
     struct CGSize _glyphSize;
 }
 
 @property (copy, nonatomic) NSAttributedString *attributedTitle; // @synthesize attributedTitle=_attributedTitle;
 @property (strong, nonatomic) UIImage *backgroundImage; // @synthesize backgroundImage=_backgroundImage;
+@property (strong, nonatomic) UIImage *backgroundImageForMaterialRendering; // @synthesize backgroundImageForMaterialRendering=_backgroundImageForMaterialRendering;
+@property (nonatomic) BOOL backgroundImageForMaterialRenderingHasChanged; // @synthesize backgroundImageForMaterialRenderingHasChanged=_backgroundImageForMaterialRenderingHasChanged;
 @property (strong, nonatomic) VUITextBadgeLayout *badgeLayout; // @synthesize badgeLayout=_badgeLayout;
 @property (weak, nonatomic) id<VUITextBadgeViewDelegate> delegate; // @synthesize delegate=_delegate;
 @property (strong, nonatomic) NSTimer *expiryUpdateTimer; // @synthesize expiryUpdateTimer=_expiryUpdateTimer;
 @property (nonatomic) struct CGSize glyphSize; // @synthesize glyphSize=_glyphSize;
-@property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) UIView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) NSOperation *pendingOperation; // @synthesize pendingOperation=_pendingOperation;
 @property (strong, nonatomic) VUIRentalExpirationLabel *rentalExpirationLabel; // @synthesize rentalExpirationLabel=_rentalExpirationLabel;
 @property (nonatomic) double strokeSize; // @synthesize strokeSize=_strokeSize;
 @property (strong, nonatomic) IKViewElement *viewElement; // @synthesize viewElement=_viewElement;
 
++ (BOOL)_viewBackgroundImageNeedsUpdatingWithFrame:(struct CGRect)arg1 currentBackgroundImage:(id)arg2;
 + (BOOL)badgeElementHasContent:(id)arg1;
 - (void).cxx_destruct;
+- (void)_cancelPendingOperation;
 - (void)_imageLoaded;
 - (void)_invalidateTimer;
+- (void)_redrawTextBadgeWithDuration:(double)arg1;
+- (void)_redrawView:(id)arg1 withDuration:(double)arg2;
+- (BOOL)_textBadgeBackgroundImageNeedsUpdating;
 - (struct CGSize)_textSize;
+- (void)_updateBackgroundImagesWithCompletedOperation:(id)arg1;
+- (void)_updateBackgroundMaterialImagesWithBackgroundImageSize:(struct CGSize)arg1 performSynchronously:(BOOL)arg2 overlayViewFrame:(struct CGRect)arg3;
 - (void)dealloc;
 - (void)drawRect:(struct CGRect)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)rentalExpirationLabelNeedsRelayout:(id)arg1;
 - (void)reset;
+- (void)setBackgroundImageForMaterialRendering:(id)arg1 imageSize:(struct CGSize)arg2 overlayViewFrame:(struct CGRect)arg3;
 - (void)setElement:(id)arg1 withBadgeLayout:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

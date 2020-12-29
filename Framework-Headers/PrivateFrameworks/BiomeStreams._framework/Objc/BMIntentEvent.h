@@ -23,6 +23,7 @@
     long long _intentType;
     long long _intentHandlingStatus;
     NSData *_interaction;
+    NSString *_itemID;
 }
 
 @property (nonatomic) double absoluteTimestamp; // @synthesize absoluteTimestamp=_absoluteTimestamp;
@@ -36,6 +37,7 @@
 @property (nonatomic) long long intentType; // @synthesize intentType=_intentType;
 @property (copy, nonatomic) NSString *intentVerb; // @synthesize intentVerb=_intentVerb;
 @property (copy, nonatomic) NSData *interaction; // @synthesize interaction=_interaction;
+@property (copy, nonatomic) NSString *itemID; // @synthesize itemID=_itemID;
 @property (copy, nonatomic) NSString *sourceId; // @synthesize sourceId=_sourceId;
 @property (readonly) Class superclass;
 
@@ -49,6 +51,7 @@
 - (id)encodeAsProto;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithAbsoluteTime:(double)arg1 bundleId:(id)arg2 sourceId:(id)arg3 intentClass:(id)arg4 intentVerb:(id)arg5 intentType:(long long)arg6 intentHandlingStatus:(long long)arg7 interaction:(id)arg8;
+- (id)initWithAbsoluteTime:(double)arg1 bundleId:(id)arg2 sourceId:(id)arg3 intentClass:(id)arg4 intentVerb:(id)arg5 intentType:(long long)arg6 intentHandlingStatus:(long long)arg7 interaction:(id)arg8 itemID:(id)arg9;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithProto:(id)arg1;
 - (id)initWithProtoData:(id)arg1;

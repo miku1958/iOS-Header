@@ -20,7 +20,7 @@
 }
 
 @property (readonly, nonatomic) BOOL contentAllowsScrolling;
-@property (strong, nonatomic) WFContentItem *contentItem; // @synthesize contentItem=_contentItem;
+@property (readonly, nonatomic) WFContentItem *contentItem; // @synthesize contentItem=_contentItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFCompactContentPreviewViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -38,6 +38,7 @@
 - (void)getThumbnailViewControllerForContentItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)invalidateContentSize;
 - (void)loadView;
+- (void)setContentItem:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)thumbnailViewControllerDidInvalidateSize:(id)arg1;
 - (void)viewDidLayoutSubviews;
 

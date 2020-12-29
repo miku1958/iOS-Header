@@ -13,6 +13,7 @@
 @property (nonatomic) struct UIEdgeInsets bannerContentOutsets;
 @property (nonatomic, getter=isDraggingDismissalEnabled) BOOL draggingDismissalEnabled;
 @property (nonatomic, getter=isDraggingInteractionEnabled) BOOL draggingInteractionEnabled;
+@property (nonatomic, getter=isPanGestureProxySupported) BOOL panGestureProxySupported;
 @property (nonatomic) struct CGSize preferredContentSize;
 @property (nonatomic, getter=isTouchOutsideDismissalEnabled) BOOL touchOutsideDismissalEnabled;
 

@@ -19,9 +19,9 @@
 @property (strong, nonatomic) NSMutableDictionary *dict; // @synthesize dict=_dict;
 
 - (void).cxx_destruct;
+- (void)finishPromisesOfRecord:(id)arg1;
 - (id)initWithCallbackQueue:(id)arg1;
-- (void)recordDidSync:(id)arg1;
-- (id)waitForRecordDidSync:(id)arg1 timeout:(double)arg2;
+- (id)waitForRecordToSync:(id)arg1 timeout:(double)arg2;
 
 @end
 

@@ -64,10 +64,11 @@ __attribute__((visibility("hidden")))
     VCMoments *_moments;
     VCAudioPowerSpectrumSource *_powerSpectrumSource;
     int _currentVideoCaptureFrameRate;
-    int _maxSupportedMultiwayFrameRate;
+    int _maxSupportedMultiwayCameraFrameRate;
     long long _maxSupportedMultiwayVideoResolution;
     BOOL _oneToOneModeEnabled;
     struct _VCSessionParticipantLocalOneToOneSettings _oneToOneSettings;
+    BOOL _isRemoteOnPeace;
 }
 
 @property (readonly, nonatomic) struct __CFString *activeStreamKeys;
@@ -81,6 +82,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL enableVADFiltering; // @synthesize enableVADFiltering=_enableVADFiltering;
 @property (nonatomic) BOOL encryptionInfoReceived; // @synthesize encryptionInfoReceived=_encryptionInfoReceived;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) BOOL isRemoteOnPeace; // @synthesize isRemoteOnPeace=_isRemoteOnPeace;
 @property (readonly, nonatomic) VCMoments *moments; // @synthesize moments=_moments;
 @property (nonatomic, getter=isOneToOneModeEnabled) BOOL oneToOneModeEnabled;
 @property (copy, nonatomic) NSArray *peerSubscribedStreams; // @synthesize peerSubscribedStreams=_peerSubscribedStreams;
@@ -97,6 +99,7 @@ __attribute__((visibility("hidden")))
 - (void)avConferencePreviewError:(id)arg1;
 - (unsigned int)calculateUplinkTotalBitrateForMediaStreams:(id)arg1;
 - (void)cameraAvailabilityDidChange:(BOOL)arg1;
+- (id)checkStreamsForAudioOptIn:(id)arg1;
 - (BOOL)checkSubscribedStreamsConsistency:(id)arg1;
 - (id)clientCaptureRule;
 - (void)collectAudioChannelMetrics:(CDStruct_1dd2c43e *)arg1;
@@ -157,7 +160,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)setupAudioStreamsWithConfigProvider:(id)arg1;
 - (BOOL)setupAudioStreamsWithConfigProvider:(id)arg1 mediaNegotiatorConfig:(id)arg2;
 - (void)setupEncodingModeWithVideoStreamConfig:(id)arg1;
-- (int)setupMaxCaptureFrameRate;
+- (int)setupMaxCaptureCameraFrameRate;
 - (long long)setupMaxCaptureResolution;
 - (void)setupOneToOneAudioRedundancyController;
 - (BOOL)setupOneToOneRedundancyControllers;

@@ -61,6 +61,7 @@
     BOOL _requestDefermentToPlaybackQueuePosition;
     BOOL _shouldBeginRadioPlayback;
     BOOL _shouldOverrideManuallyCuratedQueue;
+    BOOL _trueCompletion;
     BOOL _verifySupportedCommands;
     struct {
         unsigned int playbackPosition:1;
@@ -88,6 +89,7 @@
         unsigned int requestDefermentToPlaybackQueuePosition:1;
         unsigned int shouldBeginRadioPlayback:1;
         unsigned int shouldOverrideManuallyCuratedQueue:1;
+        unsigned int trueCompletion:1;
         unsigned int verifySupportedCommands:1;
     } _has;
 }
@@ -147,6 +149,7 @@
 @property (readonly, nonatomic) BOOL hasStationURL;
 @property (readonly, nonatomic) BOOL hasSystemAppPlaybackQueueData;
 @property (nonatomic) BOOL hasTrackID;
+@property (nonatomic) BOOL hasTrueCompletion;
 @property (readonly, nonatomic) BOOL hasUserIdentityData;
 @property (nonatomic) BOOL hasVerifySupportedCommands;
 @property (strong, nonatomic) NSString *homeKitUserIdentifier; // @synthesize homeKitUserIdentifier=_homeKitUserIdentifier;
@@ -190,6 +193,7 @@
 @property (strong, nonatomic) NSString *stationURL; // @synthesize stationURL=_stationURL;
 @property (strong, nonatomic) NSData *systemAppPlaybackQueueData; // @synthesize systemAppPlaybackQueueData=_systemAppPlaybackQueueData;
 @property (nonatomic) unsigned long long trackID; // @synthesize trackID=_trackID;
+@property (nonatomic) BOOL trueCompletion; // @synthesize trueCompletion=_trueCompletion;
 @property (strong, nonatomic) NSData *userIdentityData; // @synthesize userIdentityData=_userIdentityData;
 @property (nonatomic) BOOL verifySupportedCommands; // @synthesize verifySupportedCommands=_verifySupportedCommands;
 

@@ -24,6 +24,7 @@ __attribute__((visibility("hidden")))
 + (id)propertiesForMarketingItemTask:(id)arg1;
 + (id)propertiesForMediaTask:(id)arg1;
 + (id)propertiesForRatingsTask:(id)arg1;
++ (id)propertiesForStorefrontsTask:(id)arg1;
 + (id)sharedPropertiesMapTable;
 - (void).cxx_destruct;
 - (id)_initWithClientIdentifier:(id)arg1 bag:(id)arg2 URLKnownToBeTrusted:(BOOL)arg3;

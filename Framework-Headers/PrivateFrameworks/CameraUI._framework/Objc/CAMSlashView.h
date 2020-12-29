@@ -17,11 +17,13 @@
 @property (nonatomic, getter=isVisible) BOOL visible; // @synthesize visible=_visible;
 
 + (Class)layerClass;
+- (void)_updateShapeLayerLineWidth;
 - (void)_updateShapeLayerPath;
 - (void)_updateShapeLayerProgressAnimated:(BOOL)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setVisible:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

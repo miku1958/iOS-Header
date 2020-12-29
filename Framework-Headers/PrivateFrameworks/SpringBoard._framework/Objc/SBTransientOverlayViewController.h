@@ -163,6 +163,7 @@
 - (BOOL)handleHomeButtonPress;
 - (BOOL)handleLockButtonPress;
 - (void)handlePictureInPictureDidBegin;
+- (BOOL)handleVoiceCommandButtonPress;
 - (BOOL)handleVolumeDownButtonPress;
 - (BOOL)handleVolumeUpButtonPress;
 - (void)handleWillShowKeyboard:(BOOL)arg1;

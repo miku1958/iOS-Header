@@ -32,17 +32,17 @@
 }
 
 @property (nonatomic) CDStruct_83abfce7 address; // @synthesize address=_address;
-@property (copy, nonatomic) NSString *addressString; // @synthesize addressString=_addressString;
+@property (copy) NSString *addressString; // @synthesize addressString=_addressString;
 @property (nonatomic) int colorCode; // @synthesize colorCode=_colorCode;
 @property (nonatomic) unsigned int connectedServices; // @synthesize connectedServices=_connectedServices;
 @property (nonatomic) unsigned int deviceFlags; // @synthesize deviceFlags=_deviceFlags;
 @property (nonatomic) unsigned int deviceType; // @synthesize deviceType=_deviceType;
 @property (nonatomic) int disconnectReason; // @synthesize disconnectReason=_disconnectReason;
-@property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (copy) NSUUID *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL magicPaired; // @synthesize magicPaired=_magicPaired;
-@property (copy, nonatomic) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
-@property (copy, nonatomic) NSString *modelNumber; // @synthesize modelNumber=_modelNumber;
-@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (copy) NSString *manufacturer; // @synthesize manufacturer=_manufacturer;
+@property (copy) NSString *modelNumber; // @synthesize modelNumber=_modelNumber;
+@property (copy) NSString *name; // @synthesize name=_name;
 @property (nonatomic) BOOL present; // @synthesize present=_present;
 @property (nonatomic) int primaryPlacement; // @synthesize primaryPlacement=_primaryPlacement;
 @property (nonatomic) unsigned int productIdentifier; // @synthesize productIdentifier=_productIdentifier;

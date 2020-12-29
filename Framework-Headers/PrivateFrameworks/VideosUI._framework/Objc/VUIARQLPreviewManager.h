@@ -15,17 +15,20 @@
 {
     VUIARAssetRequest *_activeAssetRequest;
     NSURLSession *_session;
+    double _resourceTimeout;
 }
 
 @property (strong, nonatomic) VUIARAssetRequest *activeAssetRequest; // @synthesize activeAssetRequest=_activeAssetRequest;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) double resourceTimeout; // @synthesize resourceTimeout=_resourceTimeout;
 @property (strong, nonatomic) NSURLSession *session; // @synthesize session=_session;
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 didBecomeInvalidWithError:(id)arg2;
 - (void)URLSession:(id)arg1 downloadTask:(id)arg2 didFinishDownloadingToURL:(id)arg3;
 - (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(id)arg1;
@@ -33,6 +36,8 @@
 - (id)_previewControllerWithAssetRequest:(id)arg1;
 - (id)_quickLookPreviewItemWithFileURL:(id)arg1 shareURL:(id)arg2;
 - (void)cancelExistingDownloadsIfAny;
+- (void)configureDownloadSession;
+- (void)configureUsingDictionary:(id)arg1;
 - (id)init;
 - (void)previewControllerDidDismiss:(id)arg1;
 - (void)previewWithURL:(id)arg1 shareURL:(id)arg2;

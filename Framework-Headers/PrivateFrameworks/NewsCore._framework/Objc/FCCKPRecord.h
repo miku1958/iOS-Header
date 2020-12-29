@@ -40,13 +40,14 @@
 @property (strong, nonatomic) FCCKPDateStatistics *timeStatistics; // @synthesize timeStatistics=_timeStatistics;
 @property (strong, nonatomic) FCCKPRecordType *type; // @synthesize type=_type;
 
++ (Class)conflictLoserEtagsType;
++ (Class)fieldsType;
 - (void)addConflictLoserEtags:(id)arg1;
 - (void)addFields:(id)arg1;
 - (void)clearConflictLoserEtags;
 - (void)clearFields;
 - (id)conflictLoserEtagsAtIndex:(unsigned long long)arg1;
 - (unsigned long long)conflictLoserEtagsCount;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

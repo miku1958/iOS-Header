@@ -43,9 +43,9 @@
 @property (strong, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 @property (nonatomic) int type; // @synthesize type=_type;
 
++ (Class)listValueType;
 - (void)addListValue:(id)arg1;
 - (void)clearListValues;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

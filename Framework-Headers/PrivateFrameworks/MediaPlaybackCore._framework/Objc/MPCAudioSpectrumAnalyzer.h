@@ -15,6 +15,7 @@
     unsigned long long _windowSize;
     struct DSPSplitComplex _fftBuffer;
     struct opaqueMTAudioProcessingTap *_audioProcessingTap;
+    BOOL _processing;
     float _sampleRate;
     float _powerLevel;
     MPCPlaybackEngine *_playbackEngine;
@@ -42,6 +43,7 @@
 - (void)_freeBuffers;
 - (void)_itemAssetLoadedNotification:(id)arg1;
 - (void)_itemInsertedNotification:(id)arg1;
+- (void)_prepareTap:(struct opaqueMTAudioProcessingTap *)arg1 maxFrames:(long long)arg2 processingFormat:(const struct AudioStreamBasicDescription *)arg3;
 - (void)_resizeBuffers:(unsigned long long)arg1;
 - (BOOL)_shouldAttachToPlayerItem:(id)arg1;
 - (void)addObserver:(id)arg1;

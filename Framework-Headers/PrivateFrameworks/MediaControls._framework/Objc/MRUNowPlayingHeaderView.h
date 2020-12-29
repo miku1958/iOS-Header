@@ -7,11 +7,12 @@
 #import <UIKit/UIControl.h>
 
 #import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
+#import <MediaControls/UIPointerInteractionDelegate-Protocol.h>
 
 @class MPAVRoute, MRUArtworkView, MRUNowPlayingLabelView, MRUNowPlayingRoutingButton, MRUTransportButton, MRUVisualStylingProvider, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MRUNowPlayingHeaderView : UIControl <MRUVisualStylingProviderObserver>
+@interface MRUNowPlayingHeaderView : UIControl <MRUVisualStylingProviderObserver, UIPointerInteractionDelegate>
 {
     BOOL _showArtworkView;
     BOOL _showTransportButton;
@@ -53,9 +54,12 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL useArtworkOverrideFrame; // @synthesize useArtworkOverrideFrame=_useArtworkOverrideFrame;
 
 - (void).cxx_destruct;
+- (BOOL)beginTrackingWithTouch:(id)arg1 withEvent:(id)arg2;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (BOOL)pointInside:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (double)textInsetForSize:(struct CGSize)arg1;

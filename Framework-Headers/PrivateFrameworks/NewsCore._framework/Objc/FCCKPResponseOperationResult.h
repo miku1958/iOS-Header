@@ -10,6 +10,7 @@
 
 @class FCCKPResponseOperationResultError;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPResponseOperationResult : PBCodable <NSCopying>
 {
     int _code;
@@ -24,7 +25,6 @@
 @property (nonatomic) BOOL hasCode;
 @property (readonly, nonatomic) BOOL hasError;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

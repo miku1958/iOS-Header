@@ -10,30 +10,26 @@
 
 @interface CAMDirectionalIndicator : UIControl
 {
-    long long _style;
     long long _direction;
     CAShapeLayer *__arrowLayer;
-    CAShapeLayer *__compactBackgroundLayer;
 }
 
 @property (readonly, nonatomic) CAShapeLayer *_arrowLayer; // @synthesize _arrowLayer=__arrowLayer;
-@property (readonly, nonatomic) CAShapeLayer *_backingShapeLayer;
-@property (readonly, nonatomic) CAShapeLayer *_compactBackgroundLayer; // @synthesize _compactBackgroundLayer=__compactBackgroundLayer;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;
-@property (readonly, nonatomic) long long style; // @synthesize style=_style;
 
-+ (struct CGSize)_compactBackgroundSize;
-+ (Class)layerClass;
++ (struct CGSize)_circleSize;
++ (id)_createCircleImage;
 - (void).cxx_destruct;
 - (void)_updateArrowColorAnimated:(BOOL)arg1;
+- (void)_updateArrowLineWidth;
 - (void)_updateArrowShapeAnimated:(BOOL)arg1;
-- (void)_updateCompactCirclePath;
-- (id)initWithStyle:(long long)arg1;
+- (id)initWithFrame:(struct CGRect)arg1;
 - (struct CGSize)intrinsicContentSize;
 - (void)layoutSubviews;
 - (void)setDirection:(long long)arg1 animated:(BOOL)arg2;
 - (void)setSelected:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

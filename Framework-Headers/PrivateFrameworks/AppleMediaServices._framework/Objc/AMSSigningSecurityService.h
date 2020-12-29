@@ -25,6 +25,7 @@ __attribute__((visibility("hidden")))
 - (id)headersForRequest:(id)arg1 buyParams:(id)arg2 bag:(id)arg3;
 - (id)init;
 - (id)initWithServiceBroker:(id)arg1;
+- (id)signatureForRequest:(id)arg1;
 
 @end
 

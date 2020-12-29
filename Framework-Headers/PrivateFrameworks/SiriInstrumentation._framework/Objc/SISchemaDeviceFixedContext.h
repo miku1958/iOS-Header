@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData, NSString, SISchemaSiriUISettings;
+@class NSData, NSString, SISchemaSiriUISettings, SISchemaVoiceSettings;
 
 @interface SISchemaDeviceFixedContext : PBCodable
 {
@@ -19,6 +19,7 @@
     NSString *_speechID;
     SISchemaSiriUISettings *_siriUISettings;
     BOOL _isSatellitePaired;
+    SISchemaVoiceSettings *_voiceSettings;
     struct {
         unsigned int isSatellitePaired:1;
     } _has;
@@ -30,6 +31,7 @@
     BOOL _hasSiriDeviceID;
     BOOL _hasSpeechID;
     BOOL _hasSiriUISettings;
+    BOOL _hasVoiceSettings;
 }
 
 @property (copy, nonatomic) NSString *deviceType; // @synthesize deviceType=_deviceType;
@@ -42,6 +44,7 @@
 @property (nonatomic) BOOL hasSpeechID; // @synthesize hasSpeechID=_hasSpeechID;
 @property (nonatomic) BOOL hasSystemBuild; // @synthesize hasSystemBuild=_hasSystemBuild;
 @property (nonatomic) BOOL hasSystemLocale; // @synthesize hasSystemLocale=_hasSystemLocale;
+@property (nonatomic) BOOL hasVoiceSettings; // @synthesize hasVoiceSettings=_hasVoiceSettings;
 @property (nonatomic) BOOL isSatellitePaired; // @synthesize isSatellitePaired=_isSatellitePaired;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (copy, nonatomic) NSString *siriDeviceID; // @synthesize siriDeviceID=_siriDeviceID;
@@ -51,6 +54,7 @@
 @property (copy, nonatomic) NSString *speechID; // @synthesize speechID=_speechID;
 @property (copy, nonatomic) NSString *systemBuild; // @synthesize systemBuild=_systemBuild;
 @property (copy, nonatomic) NSString *systemLocale; // @synthesize systemLocale=_systemLocale;
+@property (strong, nonatomic) SISchemaVoiceSettings *voiceSettings; // @synthesize voiceSettings=_voiceSettings;
 
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;

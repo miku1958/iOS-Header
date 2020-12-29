@@ -158,6 +158,7 @@
 - (id)hf_setShowAsIndividualServices:(BOOL)arg1;
 - (BOOL)hf_shouldDisplayManualFixOptionForSymptom:(long long)arg1;
 - (BOOL)hf_shouldHideNearbyAccessoryService:(id)arg1;
+- (BOOL)hf_shouldNotifyUserOfSoftwareUpdate;
 - (BOOL)hf_shouldShowSoftwareUpdateInfo;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (BOOL)hf_supportsMultiUserLanguage:(id)arg1;

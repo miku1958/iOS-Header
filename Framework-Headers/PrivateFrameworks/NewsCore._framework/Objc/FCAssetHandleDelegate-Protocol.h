@@ -6,9 +6,10 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class FCAssetHandle, FCOperation;
+@class FCAssetHandle, FCContentArchive, FCOperation;
 
 @protocol FCAssetHandleDelegate <NSObject>
+- (FCContentArchive *)contentArchiveForAssetHandle:(FCAssetHandle *)arg1;
 - (FCOperation *)operationToFetchDataProviderForAssetHandle:(FCAssetHandle *)arg1 completion:(void (^)(id<FCAssetDataProvider>, NSError *))arg2;
 @end
 

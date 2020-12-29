@@ -228,6 +228,7 @@
 - (void)accessory:(id)arg1 didUpdateServiceSubtypeForService:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateSoftwareVersion:(id)arg2;
 - (void)accessory:(id)arg1 didUpdateStoreID:(id)arg2;
+- (void)accessory:(id)arg1 didUpdateUserNotifiedOfSoftwareUpdate:(BOOL)arg2;
 - (void)accessory:(id)arg1 service:(id)arg2 didUpdateValueForCharacteristic:(id)arg3;
 - (void)accessoryDidRemoveSymptomsHandler:(id)arg1;
 - (void)accessoryDidUpdateAdditionalSetupRequired:(id)arg1;
@@ -236,6 +237,7 @@
 - (void)accessoryDidUpdateAudioDestinationController:(id)arg1;
 - (void)accessoryDidUpdateControllable:(id)arg1;
 - (void)accessoryDidUpdateName:(id)arg1;
+- (void)accessoryDidUpdatePreferredMediaUser:(id)arg1;
 - (void)accessoryDidUpdateReachability:(id)arg1;
 - (void)accessoryDidUpdateReachableTransports:(id)arg1;
 - (void)accessoryDidUpdateServices:(id)arg1;
@@ -383,6 +385,7 @@
 - (void)settingsInvalidatedForNotificationCenter:(id)arg1;
 - (void)softwareUpdate:(id)arg1 didUpdateDocumentation:(id)arg2;
 - (void)softwareUpdate:(id)arg1 didUpdateDocumentationAvailable:(BOOL)arg2;
+- (void)softwareUpdate:(id)arg1 didUpdateNeedsAttentionReasons:(unsigned long long)arg2;
 - (void)softwareUpdate:(id)arg1 didUpdateState:(long long)arg2;
 - (void)softwareUpdateController:(id)arg1 didUpdateAvailableUpdate:(id)arg2;
 - (void)sortDisplayedItemsInSection:(long long)arg1;

@@ -7,19 +7,20 @@
 #import <objc/NSObject.h>
 
 @class MPCPlaybackAccount, MPCPlaybackEngine, NSArray, NSMutableDictionary;
+@protocol OS_dispatch_group;
 
 @interface _MPCPlaybackAccountManager : NSObject
 {
     struct os_unfair_lock_s _lock;
     NSMutableDictionary *_accounts;
     BOOL _needsRefreshDueToTimeout;
-    BOOL _hasLoadedInitialAccounts;
+    NSObject<OS_dispatch_group> *_initialAccountGroup;
     MPCPlaybackEngine *_playbackEngine;
 }
 
 @property (readonly, copy, nonatomic) NSArray *accounts;
 @property (readonly, nonatomic) MPCPlaybackAccount *activeAccount;
-@property (readonly, nonatomic) BOOL hasLoadedInitialAccounts; // @synthesize hasLoadedInitialAccounts=_hasLoadedInitialAccounts;
+@property (readonly, nonatomic) BOOL hasLoadedInitialAccounts;
 @property (readonly, weak, nonatomic) MPCPlaybackEngine *playbackEngine; // @synthesize playbackEngine=_playbackEngine;
 
 - (void).cxx_destruct;
@@ -33,6 +34,7 @@
 - (id)accountForHashedDSID:(id)arg1;
 - (id)accountForUserIdentity:(id)arg1;
 - (id)initWithPlaybackEngine:(id)arg1;
+- (void)performAfterLoadingAccounts:(CDUnknownBlockType)arg1;
 
 @end
 

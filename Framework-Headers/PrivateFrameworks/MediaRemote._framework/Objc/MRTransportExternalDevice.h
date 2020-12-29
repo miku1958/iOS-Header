@@ -169,6 +169,7 @@
 - (id)_onWorkerQueue_reRegisterCustomOrigin;
 - (id)_onWorkerQueue_registerCustomOrigin;
 - (id)_onWorkerQueue_syncClientState;
+- (void)_sendClientMessage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_transportDeviceInfoDidChangeNotification:(id)arg1;
 - (void)_updateNowPlayingInfo;
 - (void)clientConnection:(id)arg1 didReceiveMessage:(id)arg2;

@@ -14,6 +14,7 @@
     MISSING_TYPE *activityTypeProvider;
     MISSING_TYPE *issueActivityTypeProvider;
     MISSING_TYPE *paidAccessChecker;
+    MISSING_TYPE *subscriptionController;
 }
 
 @end

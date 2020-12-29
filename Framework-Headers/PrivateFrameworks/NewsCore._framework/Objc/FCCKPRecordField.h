@@ -21,7 +21,6 @@
 @property (strong, nonatomic) FCCKPRecordFieldIdentifier *identifier; // @synthesize identifier=_identifier;
 @property (strong, nonatomic) FCCKPRecordFieldValue *value; // @synthesize value=_value;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

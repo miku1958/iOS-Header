@@ -60,8 +60,9 @@
 	// method
 	// method
  }
- protocol SiriInference.ContactStore // 2 requirements
+ protocol SiriInference.ContactStore // 3 requirements
  {
+	// method
 	// method
 	// method
  }
@@ -226,45 +227,11 @@
 	// getter
  }
 
- enum __C.INIntentHandlingStatus { }
-
- enum __C.INInteractionDirection { }
-
- enum __C.CNContactType { }
-
- struct __C.Options {
-
-	// Properties
-	let rawValue : UInt
- }
-
- struct __C.INPersonHandleLabel {
-
-	// Properties
-	var _rawValue : NSString
- }
-
- struct __C.MLModelMetadataKey {
-
-	// Properties
-	var _rawValue : NSString
- }
-
- enum __C.ComparisonResult { }
-
- enum __C.MAAssetState { }
-
- enum __C.MADownloadResult { }
-
- enum __C.MAQueryResult { }
-
- enum __C.ComparisonResult { }
-
  class SQLite.Statement : _SwiftObject /usr/lib/swift/libswiftCore.dylib, FailableIterator {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var handle : ˜ú
+	var handle : £ü
 	let connection : Connection
 	var $__lazy_storage_$_columnCount : Int?
 	var $__lazy_storage_$_columnNames : [String]?
@@ -277,7 +244,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let handle : oû // +0x0
+	let handle : ° // +0x0
 	let columnCount : Int // +0x8
  }
 
@@ -299,15 +266,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _handle : ˜ú
+	var _handle : £ü
 	var busyTimeout : Double
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var busyHandler : ˜ù
+	var busyHandler : £†
 	var trace : @convention(block) (_:)?
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var updateHook :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var commitHook : ≈ù
+	var commitHook : q†
 	var rollbackHook : @convention(block) ()?
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var functions :  empty-list 
@@ -317,7 +284,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_queueContext : Int?
 
 	// Swift methods
-	0x19df20  class func Connection.__allocating_init(_:readonly:) // init 
+	0x1a08f0  class func Connection.__allocating_init(_:readonly:) // init 
  }
 
  enum SQLite.Location {
@@ -481,13 +448,53 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case SQLITE_IOERR_CONVPATH  
  }
 
+ enum __C.INIntentHandlingStatus { }
+
+ enum __C.INInteractionDirection { }
+
+ enum __C.CNContactType { }
+
+ struct __C.Options {
+
+	// Properties
+	let rawValue : UInt
+ }
+
+ struct __C.INPersonHandleLabel {
+
+	// Properties
+	var _rawValue : NSString
+ }
+
+ struct __C.MLModelMetadataKey {
+
+	// Properties
+	var _rawValue : NSString
+ }
+
+ enum __C.ComparisonResult { }
+
+ struct __C.CompareOptions {
+
+	// Properties
+	let rawValue : UInt
+ }
+
+ enum __C.MAAssetState { }
+
+ enum __C.MADownloadResult { }
+
+ enum __C.MAQueryResult { }
+
+ enum __C.ComparisonResult { }
+
  class SiriInference.SuggestedContactsFilter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let preferredHandleType : HandleType
 
 	// Swift methods
-	0x1a20  func <stripped> // method 
+	0x2630  func <stripped> // method 
  }
 
  struct SiriInference.RecurrenceConstraintSolver { }
@@ -498,7 +505,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let category : AggregationCategory
 	let categoryValue : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var recency : }÷
+	var recency : ∑ÿ
 	var f2min : Int
 	var f10min : Int
 	var f1hr : Int
@@ -561,7 +568,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case next : ﬂ÷
+	case next : !Ÿ
 	case relative  
 	case start  
  }
@@ -578,23 +585,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var setByUser : Bool // +0x48 (0x1)
 
 	// Swift methods
-	0xb340  class func DateTime.Time.__allocating_init(withHour:) // init 
-	0xb3e0  class func DateTime.Time.__allocating_init(withHour:minute:) // init 
-	0xb480  class func DateTime.Time.__allocating_init(withHour:minute:second:) // init 
-	0xb520  class func DateTime.Time.__allocating_init(withHour:meridiem:) // init 
-	0xb5d0  class func DateTime.Time.__allocating_init(withHour:minute:meridiem:) // init 
-	0xb680  class func DateTime.Time.__allocating_init(withHour:minute:second:meridiem:) // init 
-	0xb730  class func DateTime.Time.__allocating_init(withDefinedValue:) // init 
-	0xb7e0  class func DateTime.Time.__allocating_init(withHour:minute:second:meridiem:definedValue:setByUser:) // init 
-	0xb8e0  class func DateTime.Time.__allocating_init(withHour:minute:second:meridiem:definedValue:occurringIn:setByUser:) // init 
-	0xb9e0  func <stripped> // method 
-	0xbba0  func <stripped> // getter 
-	0xc2d0  func <stripped> // method 
-	0xc330  func <stripped> // method 
-	0xc470  func <stripped> // method 
-	0xcd90  func <stripped> // getter 
-	0xc820  class func DateTime.Time.__allocating_init(from:) // init 
-	0xcb10  func <stripped> // method 
+	0xc300  class func DateTime.Time.__allocating_init(withHour:) // init 
+	0xc3a0  class func DateTime.Time.__allocating_init(withHour:minute:) // init 
+	0xc440  class func DateTime.Time.__allocating_init(withHour:minute:second:) // init 
+	0xc4e0  class func DateTime.Time.__allocating_init(withHour:meridiem:) // init 
+	0xc590  class func DateTime.Time.__allocating_init(withHour:minute:meridiem:) // init 
+	0xc640  class func DateTime.Time.__allocating_init(withHour:minute:second:meridiem:) // init 
+	0xc6f0  class func DateTime.Time.__allocating_init(withDefinedValue:) // init 
+	0xc7a0  class func DateTime.Time.__allocating_init(withHour:minute:second:meridiem:definedValue:setByUser:) // init 
+	0xc8a0  class func DateTime.Time.__allocating_init(withHour:minute:second:meridiem:definedValue:occurringIn:setByUser:) // init 
+	0xc9a0  func <stripped> // method 
+	0xcb60  func <stripped> // getter 
+	0xd290  func <stripped> // method 
+	0xd2f0  func <stripped> // method 
+	0xd430  func <stripped> // method 
+	0xdd50  func <stripped> // getter 
+	0xd7e0  class func DateTime.Time.__allocating_init(from:) // init 
+	0xdad0  func <stripped> // method 
  }
 
  enum SiriInference.CodingKeys {
@@ -633,8 +640,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let dbLoader : DBLoader // +0x0
 
 	// Swift methods
-	0x12000  func <stripped> // method 
-	0x12670  func <stripped> // method 
+	0x12fc0  func <stripped> // method 
+	0x13630  func <stripped> // method 
  }
 
  struct SiriInference.RelationshipDB {
@@ -665,13 +672,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let calendarSystem : CalendarSystem
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : }÷
+	let date : ∑ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let language : —
+	let language : =”
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timeZone : ]“
+	let timeZone : ü‘
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let calendar : 7“
+	let calendar : y‘
 	let requestedYear : Int?
 	let qualifier : Qualifier
  }
@@ -732,14 +739,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let qualifier : Qualifier // +0x1a (0x1)
 
 	// Swift methods
-	0x19310  class func DateTime.Interval.__allocating_init(withQuantity:timeUnit:) // init 
-	0x193a0  class func DateTime.Interval.__allocating_init(withTimeUnit:qualifier:) // init 
-	0x192c0  class func DateTime.Interval.__allocating_init(withQuantity:timeUnit:qualifier:) // init 
-	0x19430  func <stripped> // method 
-	0x194e0  func <stripped> // getter 
-	0x19eb0  func <stripped> // getter 
-	0x19b20  class func DateTime.Interval.__allocating_init(from:) // init 
-	0x19d50  func <stripped> // method 
+	0x1a2d0  class func DateTime.Interval.__allocating_init(withQuantity:timeUnit:) // init 
+	0x1a360  class func DateTime.Interval.__allocating_init(withTimeUnit:qualifier:) // init 
+	0x1a280  class func DateTime.Interval.__allocating_init(withQuantity:timeUnit:qualifier:) // init 
+	0x1a3f0  func <stripped> // method 
+	0x1a4a0  func <stripped> // getter 
+	0x1ae70  func <stripped> // getter 
+	0x1aae0  class func DateTime.Interval.__allocating_init(from:) // init 
+	0x1ad10  func <stripped> // method 
  }
 
  enum SiriInference.CodingKeys {
@@ -791,11 +798,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let calendar : 7“ // +0x0 (0x0)
+	let calendar : y‘ // +0x0 (0x0)
 
 	// Swift methods
-	0x1ec60  func <stripped> // method 
-	0x1efb0  func <stripped> // method 
+	0x20910  func <stripped> // method 
+	0x20c60  func <stripped> // method 
  }
 
  enum SiriInference.FirstAdventError {
@@ -813,18 +820,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var backfilledCount : Int // +0x8 (0x8)
 	var skippedCount : Int // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var databaseUrl : 'Œ // +0x1f2000 (0x0)
+	var databaseUrl : 1– // +0x1f5000 (0x0)
 	var stitchingSucceeded : Int // +0x5 (0x8)
 	var stitchingSkipped : Int // +0x12 (0x8)
 	var stitchingFailed : Int // +0x65745f5f (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d50c0005a1e0 (0x50c0005a1e0) in binary!
-	0x1d508  @objc BackfillInteractions.(null) <stripped>
-WARNING: couldn't find address 0x1d4f40005a1c0 (0x4f40005a1c0) in binary!
+WARNING: couldn't find address 0x1d85c0005b9d0 (0x5c0005b9d0) in binary!
+	0x1d858  @objc BackfillInteractions.(null) <stripped>
+WARNING: couldn't find address 0x1d8440005b9b0 (0x440005b9b0) in binary!
 	0x48000000c  @objc BackfillInteractions.(null) <stripped>
-WARNING: couldn't find address 0x1d4d40005a1a0 (0x4d40005a1a0) in binary!
-	0x1d4d0  @objc BackfillInteractions.(null) <stripped>
+WARNING: couldn't find address 0x1d8240005b990 (0x240005b990) in binary!
+	0x1d820  @objc BackfillInteractions.(null) <stripped>
  }
 
  class SiriInference.IsFavoriteSignalGenerator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -833,7 +840,7 @@ WARNING: couldn't find address 0x1d4d40005a1a0 (0x4d40005a1a0) in binary!
 	let favorites : [CNFavoritesEntry]
 
 	// Swift methods
-	0x21620  func <stripped> // method 
+	0x232d0  func <stripped> // method 
  }
 
  struct SiriInference.IsFavorite {
@@ -987,7 +994,7 @@ WARNING: couldn't find address 0x1d4d40005a1a0 (0x4d40005a1a0) in binary!
 	var contactResolutionsInfo : ContactResolutionInfo
 	var callDuration : Int?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var intentResultType : É”
+	var intentResultType : µ’
 	var numCardinals : Int
  }
 
@@ -1052,7 +1059,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var state : UpdaterState
 	var localDBVersion : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastCheck : }÷
+	var lastCheck : ∑ÿ
 	var requeueFunction : (_:)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var delayedRequeueFunction :  empty-list 
@@ -1072,29 +1079,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_updater : HolidaysDBUpdater
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d49c0005a168 (0x49c0005a168) in binary!
-	0x1d498  @objc HolidaysDBUpdaterOperation.(null) <stripped>
-WARNING: couldn't find address 0x1d4940005a1e0 (0x4940005a1e0) in binary!
-	0x1d480  @objc HolidaysDBUpdaterOperation.(null) <stripped>
+WARNING: couldn't find address 0x1d7ec0005b958 (0x7ec0005b958) in binary!
+	0x1d7e8  @objc HolidaysDBUpdaterOperation.(null) <stripped>
+WARNING: couldn't find address 0x1d7e40005b9d8 (0x7e40005b9d8) in binary!
+	0x1d7d0  @objc HolidaysDBUpdaterOperation.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x134ffe98180  @objc HolidaysDBUpdaterOperation.(null) <stripped>
-	0xffe98be8  @objc HolidaysDBUpdaterOperation.Ë·∏ <stripped>
+	0x124ffe975f0  @objc HolidaysDBUpdaterOperation.(null) <stripped>
+	0xffe98058  @objc HolidaysDBUpdaterOperation.âeÄIâ˛Hç=, <stripped>
  }
 
  class SiriInference.HolidaysDBPollingOperation : XPCActivityOperation {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var runDate : }÷
+	var runDate : ∑ÿ
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d4d40005a1a0 (0x4d40005a1a0) in binary!
-	0x1d4d0  @objc HolidaysDBPollingOperation.(null) <stripped>
-WARNING: couldn't find address 0x1d4cc0005a218 (0x4cc0005a218) in binary!
-	0x1d4b8  @objc HolidaysDBPollingOperation.(null) <stripped>
+WARNING: couldn't find address 0x1d8240005b990 (0x240005b990) in binary!
+	0x1d820  @objc HolidaysDBPollingOperation.(null) <stripped>
+WARNING: couldn't find address 0x1d81c0005ba10 (0x1c0005ba10) in binary!
+	0x1d808  @objc HolidaysDBPollingOperation.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x16cffe938e8  @objc HolidaysDBPollingOperation.(null) <stripped>
-	0x14cffe93c10  @objc HolidaysDBPollingOperation.˛ˇHç≈¶ <stripped>
+	0x15cffe92d88  @objc HolidaysDBPollingOperation.(null) <stripped>
+	0x13cffe930b0  @objc HolidaysDBPollingOperation.àAäEàE•IãEHâÖpˇˇˇAäEàE¶AäEàEßMã~IãF HâEêLâ˜IâŒLâ˛ËM±˛ˇIâ≈ËE˛ˇˇHâ¬Hç=#∏ <stripped>
 
 	// Swift methods
  }
@@ -1103,7 +1110,7 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case backoff : }÷
+	case backoff : ∑ÿ
 	case downloading : HolidaysDBMobileAsset
 	case installing : HolidaysDBMobileAsset
 	case cleaningUp : HolidaysDBMobileAsset
@@ -1138,34 +1145,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cutoffDate : }÷ // +0x0 (0x0)
+	let cutoffDate : ∑ÿ // +0x0 (0x0)
 	var scrubbedCount : Int // +0x45545f5f (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d4740005a1c0 (0x4740005a1c0) in binary!
-	0x1d460  @objc ScrubOldRecords.(null) <stripped>
-WARNING: couldn't find address 0x1d4540005a120 (0x4540005a120) in binary!
+WARNING: couldn't find address 0x1d7c40005b9b8 (0x7c40005b9b8) in binary!
+	0x1d7b0  @objc ScrubOldRecords.(null) <stripped>
+WARNING: couldn't find address 0x1d7a40005b910 (0x7a40005b910) in binary!
 	0x28000000c  @objc ScrubOldRecords.(null) <stripped>
-WARNING: couldn't find address 0x1d4340005a0d0 (0x4340005a0d0) in binary!
-	0x1f5a0  @objc ScrubOldRecords.(null) <stripped>
+WARNING: couldn't find address 0x1d7840005b8c0 (0x7840005b8c0) in binary!
+	0x1f900  @objc ScrubOldRecords.(null) <stripped>
 
 	// Swift methods
-	0x434d0  func <stripped> // method 
+	0x45150  func <stripped> // method 
  }
 
  class SiriInference.SolsticeAndEquinox : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let calendar : 7“ // +0x0 (0x0)
-	let type : AstronomicalType // +0x1a856c (0x1)
+	let calendar : y‘ // +0x0 (0x0)
+	let type : AstronomicalType // +0x1aacac (0x1)
 
 	// Swift methods
-	0x43da0  func <stripped> // method 
-	0x43f90  func <stripped> // method 
-	0x440e0  func <stripped> // method 
-	0x44320  func <stripped> // method 
-	0x44790  func <stripped> // method 
+	0x45a20  func <stripped> // method 
+	0x45c10  func <stripped> // method 
+	0x45d60  func <stripped> // method 
+	0x45fa0  func <stripped> // method 
+	0x46410  func <stripped> // method 
  }
 
  enum SiriInference.AstronomicalType {
@@ -1233,19 +1240,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _cache : ContactResolverCache
 
 	// Swift methods
-	0x49650  func <stripped> // getter 
-	0x491a0  class func ContactResolver.__allocating_init() // init 
-	0x49bf0  func <stripped> // method 
-	0x49c50  func <stripped> // method 
-	0x49ec0  func <stripped> // method 
-	0x4d990  func <stripped> // method 
-	0x4dbe0  func <stripped> // method 
-	0x4f030  func <stripped> // method 
-	0x4f570  func <stripped> // method 
-	0x50280  func <stripped> // method 
-	0x50a20  func <stripped> // method 
-	0x51700  func <stripped> // method 
-	0x51b80  func <stripped> // method 
+	0x4b2f0  func <stripped> // getter 
+	0x4ae40  class func ContactResolver.__allocating_init() // init 
+	0x4b8f0  func <stripped> // method 
+	0x4b950  func <stripped> // method 
+	0x4bbd0  func <stripped> // method 
+	0x4f6f0  func <stripped> // method 
+	0x4f950  func <stripped> // method 
+	0x50da0  func <stripped> // method 
+	0x512e0  func <stripped> // method 
+	0x51ff0  func <stripped> // method 
+	0x52790  func <stripped> // method 
+	0x53490  func <stripped> // method 
+	0x53910  func <stripped> // method 
  }
 
  enum SiriInference.ContactResolutionType {
@@ -1273,23 +1280,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var locale : —
+	var locale : =”
 	var appCandidates : AppCandidate
 	var domain : Domain
 	var intent : String
 	var intentId : String
 
 	// Swift methods
-	0x523c0  func <stripped> // getter 
-	0x527c0  class func ContactResolver.RequestContext.__allocating_init() // init 
-	0x52980  func <stripped> // method 
-	0x52b90  func <stripped> // method 
-	0x52c20  func <stripped> // method 
-	0x52c60  func <stripped> // method 
-	0x52c80  func <stripped> // method 
-	0x52ca0  func <stripped> // method 
-	0x52ee0  class func ContactResolver.RequestContext.__allocating_init(from:) // init 
-	0x53270  func <stripped> // method 
+	0x54150  func <stripped> // getter 
+	0x54550  class func ContactResolver.RequestContext.__allocating_init() // init 
+	0x54710  func <stripped> // method 
+	0x54920  func <stripped> // method 
+	0x549b0  func <stripped> // method 
+	0x549f0  func <stripped> // method 
+	0x54a10  func <stripped> // method 
+	0x54a30  func <stripped> // method 
+	0x54c70  class func ContactResolver.RequestContext.__allocating_init(from:) // init 
+	0x55000  func <stripped> // method 
  }
 
  struct SiriInference.AppCandidate {
@@ -1322,14 +1329,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var allowSuggestedContacts : AllowSuggestedContacts // +0x11 (0x1)
 
 	// Swift methods
-	0x53b80  func <stripped> // getter 
-	0x53cc0  class func ContactResolver.Spec.__allocating_init() // init 
-	0x53cf0  func <stripped> // method 
-	0x53d10  func <stripped> // method 
-	0x53d20  func <stripped> // method 
-	0x53d30  func <stripped> // method 
-	0x53e30  class func ContactResolver.Spec.__allocating_init(from:) // init 
-	0x53fe0  func <stripped> // method 
+	0x55910  func <stripped> // getter 
+	0x55a50  class func ContactResolver.Spec.__allocating_init() // init 
+	0x55a80  func <stripped> // method 
+	0x55aa0  func <stripped> // method 
+	0x55ab0  func <stripped> // method 
+	0x55ac0  func <stripped> // method 
+	0x55bc0  class func ContactResolver.Spec.__allocating_init(from:) // init 
+	0x55d70  func <stripped> // method 
  }
 
  struct SiriInference.SignalSet {
@@ -1504,15 +1511,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let id : A»
+	let id : i 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let name : +Õ
+	let name : ìœ
 	let log : OS_os_log
  }
 
  class SiriInference.GregorianEasterHoliday : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x67e70  func <stripped> // method 
+	0x69ec0  func <stripped> // method 
  }
 
  class SiriInference.Holiday : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1528,11 +1535,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let emotion : Emotion // +0x35 (0x1)
 
 	// Swift methods
-	0x68380  func <stripped> // method 
-	0x684e0  func <stripped> // getter 
-	0x696e0  func <stripped> // getter 
-	0x69020  class func DateTime.Date.Holiday.__allocating_init(from:) // init 
-	0x69400  func <stripped> // method 
+	0x6a3d0  func <stripped> // method 
+	0x6a530  func <stripped> // getter 
+	0x6b730  func <stripped> // getter 
+	0x6b070  class func DateTime.Date.Holiday.__allocating_init(from:) // init 
+	0x6b450  func <stripped> // method 
  }
 
  enum SiriInference.CodingKeys {
@@ -1715,14 +1722,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var storedDatabase : Connection
 
 	// Swift methods
-	0x73350  func <stripped> // method 
+	0x753a0  func <stripped> // method 
  }
 
  class SiriInference.HolidaysDBHolidayResolver : HolidaysDatabase {
 	// Swift methods
-	0x74050  func <stripped> // method 
-	0x75b30  func <stripped> // method 
-	0x769c0  func <stripped> // method 
+	0x760a0  func <stripped> // method 
+	0x77b80  func <stripped> // method 
+	0x78a10  func <stripped> // method 
  }
 
  enum SiriInference.HolidaysDBHolidayResolverError {
@@ -1730,7 +1737,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case databaseError : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case badLocale : —
+	case badLocale : =”
  }
 
  class SiriInference.MeCardContactGenerator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1763,15 +1770,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let asset : Asset // +0x10 (0x28)
 	let version : Int // +0x38 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_assetURL : /∏ // +0x0 (0x0)
+	var $__lazy_storage_$_assetURL : /∫ // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_versiondate : 5Ã // +0x0 (0x0)
+	var $__lazy_storage_$_versiondate : ?Œ // +0x0 (0x0)
 	var $__lazy_storage_$_holiday : String?? // +0x0 (0x10)
 	var $__lazy_storage_$_country : String?? // +0x0 (0x10)
 
 	// Swift methods
-	0x7a470  func <stripped> // getter 
-	0x7a5c0  func <stripped> // getter 
+	0x7c4c0  func <stripped> // getter 
+	0x7c610  func <stripped> // getter 
  }
 
  enum SiriInference.HolidaysDBMobileAssetError {
@@ -1830,7 +1837,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var donationTime : }÷ // +0x0 (0x0)
+	var donationTime : ∑ÿ // +0x0 (0x0)
 	var intentIdentifier : String // +0x6f635f5f (0x10)
 	var callDuration : Int // +0x0 (0x8)
 
@@ -1898,26 +1905,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let signals : AppSignals
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1bc780005a0d8 (0x4780005a0d8) in binary!
-	0x1d418  @objc AppMatches.(null) <stripped>
-WARNING: couldn't find address 0x1d40c0005a4b0 (0x40c0005a4b0) in binary!
-	0x1f57a  @objc AppMatches.(null) <stripped>
-WARNING: couldn't find address 0x1c0a40005a090 (0xa40005a090) in binary!
-	0x1bd78  @objc AppMatches.(null) <stripped>
-WARNING: couldn't find address 0x1d3dc0005a128 (0x3dc0005a128) in binary!
-	0x1d3c8  @objc AppMatches.(null) <stripped>
+WARNING: couldn't find address 0x1bfc80005b8c8 (0x7c80005b8c8) in binary!
+	0x1d768  @objc AppMatches.(null) <stripped>
+WARNING: couldn't find address 0x1d75c0005bca8 (0x75c0005bca8) in binary!
+	0x1f8da  @objc AppMatches.(null) <stripped>
+WARNING: couldn't find address 0x1c3f40005b880 (0x3f40005b880) in binary!
+	0x1c0c8  @objc AppMatches.(null) <stripped>
+WARNING: couldn't find address 0x1d72c0005b920 (0x72c0005b920) in binary!
+	0x1d718  @objc AppMatches.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0xfcffee1428  @objc AppMatches.(null) <stripped>
-	0xffee1480  @objc AppMatches.îh <stripped>
+	0xf4ffee0c78  @objc AppMatches.(null) <stripped>
+	0xffee0cd0  @objc AppMatches.AVSHÉÏHã™, <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0xccfff0f9a8  @objc AppMatches.(null) <stripped>
-	0xfff10420  @objc AppMatches.ﬂËå¿ <stripped>
+	0xc4fff0e7b8  @objc AppMatches.(null) <stripped>
+	0xfff0f230  @objc AppMatches.PHã–, <stripped>
 
 	// Swift methods
-	0x84820  class func AppMatches.__allocating_init(recommendation:bundleIds:signals:) // init 
-	0x84bc0  func <stripped> // method 
-	0x84df0  func <stripped> // method 
-	0x85030  class func AppMatches.__allocating_init(coder:) // init 
+	0x86870  class func AppMatches.__allocating_init(recommendation:bundleIds:signals:) // init 
+	0x86c10  func <stripped> // method 
+	0x86e40  func <stripped> // method 
+	0x87080  class func AppMatches.__allocating_init(coder:) // init 
  }
 
  enum SiriInference.AppMatchRecommendation { }
@@ -1931,12 +1938,12 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var orderedConstraints : DateTimeConstraint
 
 	// Swift methods
-	0x86140  func <stripped> // method 
-	0x868c0  func <stripped> // method 
-	0x86a50  func <stripped> // method 
-	0x86d30  func <stripped> // method 
-	0x87620  func <stripped> // method 
-	0x87630  func <stripped> // method 
+	0x88190  func <stripped> // method 
+	0x88910  func <stripped> // method 
+	0x88ab0  func <stripped> // method 
+	0x88d90  func <stripped> // method 
+	0x89680  func <stripped> // method 
+	0x89690  func <stripped> // method 
  }
 
  class SiriInference.RestartableBlockOperation : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation, RestartableOperation {
@@ -1945,15 +1952,15 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let block : ()
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d3b40005a088 (0x3b40005a088) in binary!
-	0x1d3b0  @objc RestartableBlockOperation.(null) <stripped>
-WARNING: couldn't find address 0x1d39c0005a068 (0x39c0005a068) in binary!
+WARNING: couldn't find address 0x1d7040005b878 (0x7040005b878) in binary!
+	0x1d700  @objc RestartableBlockOperation.(null) <stripped>
+WARNING: couldn't find address 0x1d6ec0005b858 (0x6ec0005b858) in binary!
 	0x38000000c  @objc RestartableBlockOperation.(null) <stripped>
-WARNING: couldn't find address 0x1d3840005a058 (0x3840005a058) in binary!
-	0x1d380  @objc RestartableBlockOperation.(null) <stripped>
+WARNING: couldn't find address 0x1d6d40005b848 (0x6d40005b848) in binary!
+	0x1d6d0  @objc RestartableBlockOperation.(null) <stripped>
 
 	// Swift methods
-	0x8c320  class func RestartableBlockOperation.__allocating_init(block:) // init 
+	0x8e380  class func RestartableBlockOperation.__allocating_init(block:) // init 
  }
 
  enum SiriInference.Religion {
@@ -1987,7 +1994,7 @@ WARNING: couldn't find address 0x1d3840005a058 (0x3840005a058) in binary!
 	case bool : Bool
 	case string : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case data : ›µ
+	case data : ›∑
  }
 
  enum SiriInference.DecoderError {
@@ -2069,7 +2076,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let rules : DateTimeSuggestionResolverRule
 
 	// Swift methods
-	0x95260  func <stripped> // method 
+	0x972c0  func <stripped> // method 
  }
 
  struct SiriInference.MeridiemConstraintSolver { }
@@ -2146,28 +2153,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let occurringIn : DateTimeRange // +0x70 (0x8)
 
 	// Swift methods
-	0x982a0  class func DateTime.Date.__allocating_init(withDay:) // init 
-	0x97e90  class func DateTime.Date.__allocating_init(withDay:month:) // init 
-	0x983f0  class func DateTime.Date.__allocating_init(withDay:monthOfYear:) // init 
-	0x984e0  class func DateTime.Date.__allocating_init(withDay:monthOfYear:year:) // init 
-	0x985c0  class func DateTime.Date.__allocating_init(withYear:) // init 
-	0x97f90  class func DateTime.Date.__allocating_init(withDay:month:year:) // init 
-	0x98710  class func DateTime.Date.__allocating_init(withMonth:year:) // init 
-	0x987f0  class func DateTime.Date.__allocating_init(withDefinedValue:) // init 
-	0x97f10  class func DateTime.Date.__allocating_init(withHoliday:) // init 
-	0x98170  class func DateTime.Date.__allocating_init(withDayOfWeek:) // init 
-	0x989c0  class func DateTime.Date.__allocating_init(withDayOfWeek:dayOfWeekOrdinal:) // init 
-	0x98ab0  class func DateTime.Date.__allocating_init(withMonthOfYear:) // init 
-	0x98ba0  class func DateTime.Date.__allocating_init(withMonthOfYear:year:) // init 
-	0x98c90  class func DateTime.Date.__allocating_init(withDay:month:year:definedValue:holiday:monthOfYear:weekOfYear:dayOfWeek:dayOfWeekOrdinal:calendarEra:) // init 
-	0x98010  class func DateTime.Date.__allocating_init(withDay:month:year:definedValue:holiday:monthOfYear:weekOfYear:dayOfWeek:dayOfWeekOrdinal:calendarEra:occurringIn:) // init 
-	0x98e90  func <stripped> // method 
-	0x99190  func <stripped> // getter 
-	0x99af0  func <stripped> // method 
-	0x99c60  func <stripped> // method 
-	0x9a890  func <stripped> // getter 
-	0x9a060  class func DateTime.Date.__allocating_init(from:) // init 
-	0x9a4f0  func <stripped> // method 
+	0x9a120  class func DateTime.Date.__allocating_init(withDay:) // init 
+	0x99d10  class func DateTime.Date.__allocating_init(withDay:month:) // init 
+	0x9a270  class func DateTime.Date.__allocating_init(withDay:monthOfYear:) // init 
+	0x9a360  class func DateTime.Date.__allocating_init(withDay:monthOfYear:year:) // init 
+	0x9a440  class func DateTime.Date.__allocating_init(withYear:) // init 
+	0x99e10  class func DateTime.Date.__allocating_init(withDay:month:year:) // init 
+	0x9a590  class func DateTime.Date.__allocating_init(withMonth:year:) // init 
+	0x9a670  class func DateTime.Date.__allocating_init(withDefinedValue:) // init 
+	0x99d90  class func DateTime.Date.__allocating_init(withHoliday:) // init 
+	0x99ff0  class func DateTime.Date.__allocating_init(withDayOfWeek:) // init 
+	0x9a840  class func DateTime.Date.__allocating_init(withDayOfWeek:dayOfWeekOrdinal:) // init 
+	0x9a930  class func DateTime.Date.__allocating_init(withMonthOfYear:) // init 
+	0x9aa20  class func DateTime.Date.__allocating_init(withMonthOfYear:year:) // init 
+	0x9ab10  class func DateTime.Date.__allocating_init(withDay:month:year:definedValue:holiday:monthOfYear:weekOfYear:dayOfWeek:dayOfWeekOrdinal:calendarEra:) // init 
+	0x99e90  class func DateTime.Date.__allocating_init(withDay:month:year:definedValue:holiday:monthOfYear:weekOfYear:dayOfWeek:dayOfWeekOrdinal:calendarEra:occurringIn:) // init 
+	0x9ad10  func <stripped> // method 
+	0x9b010  func <stripped> // getter 
+	0x9b970  func <stripped> // method 
+	0x9bae0  func <stripped> // method 
+	0x9c710  func <stripped> // getter 
+	0x9bee0  class func DateTime.Date.__allocating_init(from:) // init 
+	0x9c370  func <stripped> // method 
  }
 
  enum SiriInference.CodingKeys {
@@ -2201,8 +2208,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dbLoader : DBLoader // +0x0
 
 	// Swift methods
-	0xad0b0  func <stripped> // method 
-	0xad990  func <stripped> // method 
+	0xaef30  func <stripped> // method 
+	0xaf810  func <stripped> // method 
  }
 
  struct SiriInference.HypocorismDB {
@@ -2325,12 +2332,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var db : Connection
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d3840005a058 (0x3840005a058) in binary!
-	0x1d380  @objc RefreshRollups.(null) <stripped>
-WARNING: couldn't find address 0x1d36c0005a038 (0x36c0005a038) in binary!
+WARNING: couldn't find address 0x1d6d40005b848 (0x6d40005b848) in binary!
+	0x1d6d0  @objc RefreshRollups.(null) <stripped>
+WARNING: couldn't find address 0x1d6bc0005b828 (0x6bc0005b828) in binary!
 	0x28000000c  @objc RefreshRollups.(null) <stripped>
-WARNING: couldn't find address 0x1d3540005a028 (0x3540005a028) in binary!
-	0x1d350  @objc RefreshRollups.(null) <stripped>
+WARNING: couldn't find address 0x1d6a40005b818 (0x6a40005b818) in binary!
+	0x1d6a0  @objc RefreshRollups.(null) <stripped>
  }
 
  enum SiriInference.RollupKind {
@@ -2369,7 +2376,7 @@ WARNING: couldn't find address 0x1d3540005a028 (0x3540005a028) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var mostRecent : }÷
+	var mostRecent : ∑ÿ
 	var f2min : Int
 	var f10min : Int
 	var f1hr : Int
@@ -2384,7 +2391,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var date : }÷
+	var date : ∑ÿ
 	var all : TimeBuckets
 	var byDomain : TimeBuckets
 	var byVerb : TimeBuckets
@@ -2418,11 +2425,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class SiriInference.ContactsFrameworkMatcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let contactStore : ContactStore
-	var queryToCNContact : [String : [CNContact]]
+	let contactStore : ContactStore // +0x10 (0x28)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tokenizer : 3Ø // +0x38 (0x8)
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let locale : =” // +0x1c5200 (0x0)
 
 	// Swift methods
-	0xc3840  func <stripped> // method 
+	0xc4e60  func <stripped> // method 
  }
 
  struct SiriInference.IsSuggestedHandle {
@@ -2507,7 +2517,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SiriInference.JulianEasterHoliday : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xc7b80  func <stripped> // method 
+	0xc8c80  func <stripped> // method 
  }
 
  enum SiriInference.JulianEasterError {
@@ -2533,14 +2543,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let metricId : String // +0x0
 	let payload : [String : NSObject] // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let inner : áπ // +0x18
+	let inner : -º // +0x18
  }
 
  struct SiriInference.Feature {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let name : +Õ // +0x0
+	let name : ìœ // +0x0
 	let getter : PrivatizedSignalSet // +0x18
  }
 
@@ -2617,7 +2627,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uuid : —¶
+	let uuid : ©
 	let intentClassName : String
 	let intentHandlingStatus : INIntentHandlingStatus
 	let interaction : INInteraction
@@ -2630,13 +2640,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var tombStonedRecords : Int
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d3540005a028 (0x3540005a028) in binary!
-	0x1d350  @objc ScrubRuntimeDataRecords.(null) <stripped>
+WARNING: couldn't find address 0x1d6a40005b818 (0x6a40005b818) in binary!
+	0x1d6a0  @objc ScrubRuntimeDataRecords.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x7cfff49b28  @objc ScrubRuntimeDataRecords.(null) <stripped>
+	0x74fff47d98  @objc ScrubRuntimeDataRecords.(null) <stripped>
 
 	// Swift methods
-	0xe33e0  func <stripped> // method 
+	0xe4560  func <stripped> // method 
  }
 
  class SiriInference.DBLoader {
@@ -2648,21 +2658,21 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let store : _DKKnowledgeQuerying // +0x28 (0x8)
 	let stitchedDataRecordStore : StitchedDataRecordStore // +0x30 (0x28)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let runTimeDataURL : ›• // +0x0 (0x0)
-	let anonymizer : AnonymizeIdsProtocol // +0x2 (0x28)
+	let runTimeDataURL : %® // +0x2 (0x0)
+	let anonymizer : AnonymizeIdsProtocol // +0x0 (0x28)
 
 	// Swift methods
-	0xe4510  func <stripped> // method 
-	0xe64e0  func <stripped> // method 
+	0xe5690  func <stripped> // method 
+	0xe7660  func <stripped> // method 
  }
 
  class SiriInference.Intent : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : À◊ // +0x10 (0x8)
+	var id : =⁄ // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var groupId : À◊ // +0x18 (0x8)
+	var groupId : =⁄ // +0x18 (0x8)
 	let uuid : String // +0x20 (0x10)
 	let dkEventUuid : String? // +0x30 (0x10)
 	let domain : String // +0x40 (0x10)
@@ -2672,18 +2682,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let direction : INInteractionDirection // +0x78 (0x8)
 	let handlingStatus : INIntentHandlingStatus // +0x80 (0x9)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : }÷ // +0x0 (0x0)
+	let startDate : ∑ÿ // +0x77735f5f (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let durationSeconds : À◊ // +0x77735f5f (0x8)
+	let durationSeconds : =⁄ // +0x7079745f (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let createdAt : }÷ // +0x7079745f (0x0)
+	let createdAt : ∑ÿ // +0x45545f5f (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let updatedAt : }÷ // +0x45545f5f (0x0)
+	let updatedAt : ∑ÿ // +0x0 (0x0)
 
 	// Swift methods
-	0xe9770  func <stripped> // method 
-	0xe9a50  func <stripped> // method 
-	0xea070  func <stripped> // method 
+	0xea8f0  func <stripped> // method 
+	0xeabd0  func <stripped> // method 
+	0xeb1f0  func <stripped> // method 
  }
 
  class SiriInference.EKEventStoreMatcher : _SwiftObject /usr/lib/swift/libswiftCore.dylib, EventStoreMatcher {
@@ -2758,7 +2768,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : À◊
+	var id : =⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let entityIds :  empty-list 
 	var rollup : Rollup
@@ -2770,13 +2780,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var tombStonedRecords : Int
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d3340005a008 (0x3340005a008) in binary!
-	0x1d330  @objc ScrubDodMLRecords.(null) <stripped>
+WARNING: couldn't find address 0x1d6840005b7f8 (0x6840005b7f8) in binary!
+	0x1d680  @objc ScrubDodMLRecords.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x7d4fff679f8  @objc ScrubDodMLRecords.(null) <stripped>
+	0x7c4fff65db8  @objc ScrubDodMLRecords.(null) <stripped>
 
 	// Swift methods
-	0xf4ba0  func <stripped> // method 
+	0xf5620  func <stripped> // method 
  }
 
  struct SiriInference.Interaction {
@@ -2785,9 +2795,9 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var intentUuid : String?
 	var dkEventUuid : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupId : À◊
+	let groupId : =⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let entityId : À◊
+	let entityId : =⁄
 	let domain : String
 	let verb : String
 	let bundleId : String
@@ -2795,7 +2805,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let direction : InteractionDirection
 	let status : InteractionStatus
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let date : }÷
+	let date : ∑ÿ
  }
 
  enum SiriInference.CodingKeys {
@@ -2841,7 +2851,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var phoneticOrganizationName : String
 	var contactRelations : LabeledValue
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var birthday : ø»
+	var birthday : … 
 	var handles : ContactHandle
 	var isSuggested : Bool
 	var siriPhonemeData : String
@@ -2959,8 +2969,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var interval : ãü // +0x0 (0x0)
-	var recurrencePattern : RecurrencePattern // +0x1d4936 (0x8)
+	var interval : ¢ // +0x1d76d6 (0x0)
+	var recurrencePattern : RecurrencePattern // +0x4df0 (0x8)
 
 	// Swift methods
  }
@@ -2980,6 +2990,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case month  
 	case holiday  
 	case year  
+	case now  
 	case notset  
  }
 
@@ -2987,7 +2998,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let id : À◊ // +0x0
+	let id : =⁄ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let entityIds :  empty-list  // +0x8
 	var aggregations : Aggregation // +0x10
@@ -3018,13 +3029,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let store : DESRecordStore
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let encoder : uû
+	let encoder : °
 
 	// Swift methods
-	0x109360  func <stripped> // method 
-	0x1098a0  func <stripped> // method 
-	0x10a150  func <stripped> // method 
-	0x10a460  func <stripped> // method 
+	0x10a050  func <stripped> // method 
+	0x10a590  func <stripped> // method 
+	0x10ae40  func <stripped> // method 
+	0x10b150  func <stripped> // method 
  }
 
  class SiriInference.DefinedTimeStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib, DefinedTimeStorageProviding {
@@ -3099,22 +3110,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var lock : OS_dispatch_semaphore // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pauseRequests : %∂ // +0x10 (0x4)
+	var pauseRequests : π // +0x10 (0x4)
 	let queue : OS_dispatch_queue // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let queueKey : ë© // +0x20 (0x8)
+	let queueKey : I¨ // +0x20 (0x8)
 	let queueKeyValue : Int // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d31c0005a068 (0x31c0005a068) in binary!
-	0x1d308  @objc BackgroundQueue.(null) <stripped>
-WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x3cfffb7018  @objc BackgroundQueue.(null) <stripped>
+WARNING: couldn't find address 0x1d66c0005b860 (0x66c0005b860) in binary!
+	0x1d658  @objc BackgroundQueue.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x34fff911d8  @objc BackgroundQueue.(null) <stripped>
 
 	// Swift methods
-	0x112a80  func <stripped> // method 
-	0x113700  func <stripped> // method 
-	0x1139c0  func <stripped> // method 
+	0x113650  func <stripped> // method 
+	0x1142d0  func <stripped> // method 
+	0x114590  func <stripped> // method 
  }
 
  class SiriInference.DateTimeConstraint : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3132,12 +3143,12 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var valuesThatAreSet : [Int]
 
 	// Swift methods
-	0x1149a0  func <stripped> // getter 
-	0x114b60  func <stripped> // method 
-	0x114f70  func <stripped> // method 
-	0x115060  func <stripped> // method 
-	0x1154d0  func <stripped> // method 
-	0x116390  func <stripped> // method 
+	0x115570  func <stripped> // getter 
+	0x115730  func <stripped> // method 
+	0x115b40  func <stripped> // method 
+	0x115c30  func <stripped> // method 
+	0x1160a0  func <stripped> // method 
+	0x116f60  func <stripped> // method 
  }
 
  struct SiriInference.AppMatcher {
@@ -3220,7 +3231,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let backgroundSignalProviders : BackgroundSignalProviders
 
 	// Swift methods
-	0x124e40  func <stripped> // method 
+	0x125890  func <stripped> // method 
  }
 
  struct SiriInference.BackgroundSignalProviders {
@@ -3235,13 +3246,13 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var id : À◊
+	var id : =⁄
 	var type : String
 	var uuid : String
 	var rollup : Rollup
 	var tokens : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var date : }÷
+	var date : ∑ÿ
  }
 
  struct SiriInference.SpeechAlternativeNameExpander { }
@@ -3383,21 +3394,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let qualifier : Qualifier
 
 	// Swift methods
-	0x136290  class func DateTime.DateTimeRange.__allocating_init(withDateTime:) // init 
-	0x136320  class func DateTime.DateTimeRange.__allocating_init(withStartDateTime:) // init 
-	0x136100  class func DateTime.DateTimeRange.__allocating_init(withStartDateTime:endDateTime:) // init 
-	0x1361c0  class func DateTime.DateTimeRange.__allocating_init(withStartDateTime:endDateTime:interval:) // init 
-	0x136410  class func DateTime.DateTimeRange.__allocating_init(withStartDateTime:duration:) // init 
-	0x136490  class func DateTime.DateTimeRange.__allocating_init(withDefinedValue:) // init 
-	0x136530  class func DateTime.DateTimeRange.__allocating_init(withDefinedValue:qualifier:) // init 
-	0x1365d0  class func DateTime.DateTimeRange.__allocating_init(withInterval:) // init 
-	0x136150  class func DateTime.DateTimeRange.__allocating_init(at:start:end:duration:interval:definedValue:qualifier:) // init 
-	0x136690  func <stripped> // method 
-	0x136870  func <stripped> // getter 
-	0x136a10  func <stripped> // method 
-	0x1387c0  func <stripped> // getter 
-	0x138000  class func DateTime.DateTimeRange.__allocating_init(from:) // init 
-	0x1384a0  func <stripped> // method 
+	0x136d20  class func DateTime.DateTimeRange.__allocating_init(withDateTime:) // init 
+	0x136db0  class func DateTime.DateTimeRange.__allocating_init(withStartDateTime:) // init 
+	0x136b90  class func DateTime.DateTimeRange.__allocating_init(withStartDateTime:endDateTime:) // init 
+	0x136c50  class func DateTime.DateTimeRange.__allocating_init(withStartDateTime:endDateTime:interval:) // init 
+	0x136ea0  class func DateTime.DateTimeRange.__allocating_init(withStartDateTime:duration:) // init 
+	0x136f20  class func DateTime.DateTimeRange.__allocating_init(withDefinedValue:) // init 
+	0x136fc0  class func DateTime.DateTimeRange.__allocating_init(withDefinedValue:qualifier:) // init 
+	0x137060  class func DateTime.DateTimeRange.__allocating_init(withInterval:) // init 
+	0x136be0  class func DateTime.DateTimeRange.__allocating_init(at:start:end:duration:interval:definedValue:qualifier:) // init 
+	0x137120  func <stripped> // method 
+	0x137300  func <stripped> // getter 
+	0x1374a0  func <stripped> // method 
+	0x139250  func <stripped> // getter 
+	0x138a90  class func DateTime.DateTimeRange.__allocating_init(from:) // init 
+	0x138f30  func <stripped> // method 
  }
 
  enum SiriInference.CodingKeys {
@@ -3470,6 +3481,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case pm  
  }
 
+ class SiriInference.FetchMorphunAssets : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x1d6440005b7b8 (0x6440005b7b8) in binary!
+	0x1d640  @objc FetchMorphunAssets.(null) <stripped>
+WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
+	0x14fffb6878  @objc FetchMorphunAssets.(null) <stripped>
+ }
+
  class SiriInference.InferenceError : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
@@ -3483,10 +3502,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isLogged : Bool
 
 	// Swift methods
-	0x13e4f0  func <stripped> // getter 
-	0x13e750  func <stripped> // method 
-	0x13e7b0  func <stripped> // method 
-	0x13ea90  func <stripped> // method 
+	0x13ff70  func <stripped> // getter 
+	0x1401d0  func <stripped> // method 
+	0x140230  func <stripped> // method 
+	0x140510  func <stripped> // method 
  }
 
  enum SiriInference.MeasurementKind {
@@ -3552,6 +3571,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case duetInvalidQueryResults  
 	case duetQueryFailure  
 	case duetQueryReturnsEmptyArray  
+	case morphunDownloadAssetsError  
+	case morphunGetAssetPathsError  
 	case otherError  
 	case siriRemembersGroupNoEntities  
 	case siriremembersIntentInvalidINIntent  
@@ -3581,11 +3602,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var lock : OS_dispatch_semaphore
 
 	// Swift methods
-	0x140cd0  class func BackgroundManager.__allocating_init() // init 
-	0x140dc0  func <stripped> // method 
-	0x140e20  func <stripped> // method 
-	0x1410c0  func <stripped> // method 
-	0x141550  func <stripped> // method 
+	0x142750  class func BackgroundManager.__allocating_init() // init 
+	0x142840  func <stripped> // method 
+	0x1428a0  func <stripped> // method 
+	0x142b40  func <stripped> // method 
+	0x142fd0  func <stripped> // method 
  }
 
  class SiriInference.Inner : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3611,11 +3632,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let partialNameMatchExpander : PartialNameMatchExpander
 
 	// Swift methods
-	0x144f40  func <stripped> // method 
-	0x14a500  func <stripped> // method 
-	0x14adc0  func <stripped> // method 
-	0x14b330  func <stripped> // method 
-	0x14b6b0  func <stripped> // method 
+	0x147090  func <stripped> // method 
+	0x14c1f0  func <stripped> // method 
+	0x14cab0  func <stripped> // method 
+	0x14d020  func <stripped> // method 
+	0x14d3a0  func <stripped> // method 
  }
 
  struct SiriInference.ContactSignalProviders {
@@ -3636,7 +3657,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SiriInference.Thanksgiving : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x150620  func <stripped> // method 
+	0x1525a0  func <stripped> // method 
  }
 
  enum SiriInference.RepeatInterval {
@@ -3665,13 +3686,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let vector : Vector
 	let ranges : [ClosedRange<Double>]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let calendar : 7“
+	let calendar : y‘
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let referenceDate : }÷
+	let referenceDate : ∑ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startDate : }÷
+	let startDate : ∑ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let endDate : }÷
+	let endDate : ∑ÿ
  }
 
  enum SiriInference.Vector {
@@ -3692,7 +3713,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let callDuration : Int?
 	let succesfulCallThreshold : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let intentResultType : É”
+	let intentResultType : µ’
 	let numCardinals : Int?
 	let resolutionInfosReduced : Bool
  }
@@ -3755,21 +3776,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let occurringIn : DateTimeRange // +0x38 (0x8)
 
 	// Swift methods
-	0x15df30  class func DateTime.__allocating_init(withDate:) // init 
-	0x15e100  class func DateTime.__allocating_init(withDate:time:) // init 
-	0x15e360  class func DateTime.__allocating_init(withDate:time:occurringIn:) // init 
-	0x15e3e0  class func DateTime.__allocating_init(withDefinedValue:) // init 
-	0x15e1d0  class func DateTime.__allocating_init(withTime:) // init 
-	0x15e150  class func DateTime.__allocating_init(withDate:time:definedValue:recurrencePattern:temporalIntent:occurringIn:) // init 
-	0x15e090  class func DateTime.__allocating_init(withStartHour:startMinute:startSecond:startMeridiem:endHour:endMinute:endSecond:endMeridiem:) // init 
-	0x15dfd0  class func DateTime.__allocating_init(withStartHour:startMinute:startSecond:startMeridiem:) // init 
-	0x15e720  class func DateTime.__allocating_init(withDate:occurringIn:) // init 
-	0x15df80  class func DateTime.__allocating_init(occurringIn:) // init 
-	0x15e7d0  func <stripped> // method 
-	0x15e910  func <stripped> // getter 
-	0x15f800  func <stripped> // getter 
-	0x15f0c0  class func DateTime.__allocating_init(from:) // init 
-	0x15f4e0  func <stripped> // method 
+	0x15ffc0  class func DateTime.__allocating_init(withDate:) // init 
+	0x160190  class func DateTime.__allocating_init(withDate:time:) // init 
+	0x1603f0  class func DateTime.__allocating_init(withDate:time:occurringIn:) // init 
+	0x160470  class func DateTime.__allocating_init(withDefinedValue:) // init 
+	0x160260  class func DateTime.__allocating_init(withTime:) // init 
+	0x1601e0  class func DateTime.__allocating_init(withDate:time:definedValue:recurrencePattern:temporalIntent:occurringIn:) // init 
+	0x160120  class func DateTime.__allocating_init(withStartHour:startMinute:startSecond:startMeridiem:endHour:endMinute:endSecond:endMeridiem:) // init 
+	0x160060  class func DateTime.__allocating_init(withStartHour:startMinute:startSecond:startMeridiem:) // init 
+	0x1607b0  class func DateTime.__allocating_init(withDate:occurringIn:) // init 
+	0x160010  class func DateTime.__allocating_init(occurringIn:) // init 
+	0x160860  func <stripped> // method 
+	0x1609a0  func <stripped> // getter 
+	0x161890  func <stripped> // getter 
+	0x161150  class func DateTime.__allocating_init(from:) // init 
+	0x161570  func <stripped> // method 
  }
 
  enum SiriInference.CodingKeys {
@@ -3792,18 +3813,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let interaction : INInteraction // +0x8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dkEventUUID : —¶ // +0x0 (0x0)
+	let dkEventUUID : © // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d2f400059fc8 (0x2f400059fc8) in binary!
-	0x1d2f0  @objc SaveInteraction.(null) <stripped>
-WARNING: couldn't find address 0x1d2dc00059fa8 (0x2dc00059fa8) in binary!
+WARNING: couldn't find address 0x1d6240005b798 (0x6240005b798) in binary!
+	0x1d620  @objc SaveInteraction.(null) <stripped>
+WARNING: couldn't find address 0x1d60c0005b778 (0x60c0005b778) in binary!
 	0x38000000c  @objc SaveInteraction.(null) <stripped>
-WARNING: couldn't find address 0x1d2cc0005a018 (0x2cc0005a018) in binary!
-	0x1d2b8  @objc SaveInteraction.(null) <stripped>
+WARNING: couldn't find address 0x1d5fc0005b7f0 (0x5fc0005b7f0) in binary!
+	0x1d5e8  @objc SaveInteraction.(null) <stripped>
 
 	// Swift methods
-	0x1615f0  class func SaveInteraction.__allocating_init(interaction:dkEventUUID:) // init 
+	0x163680  class func SaveInteraction.__allocating_init(interaction:dkEventUUID:) // init 
  }
 
  class SiriInference.PeopleSuggesterHandleScorer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, HandleScorer {
@@ -3835,19 +3856,19 @@ WARNING: couldn't find address 0x1d2cc0005a018 (0x2cc0005a018) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let oldestDate : }÷ // +0x0 (0x0)
-	var scrubbedCount : Int // +0x77735f5f (0x8)
+	let oldestDate : ∑ÿ // +0x77735f5f (0x0)
+	var scrubbedCount : Int // +0x6569665f (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d2cc0005a018 (0x2cc0005a018) in binary!
-	0x1d2b8  @objc ScrubDeletedRecords.(null) <stripped>
-WARNING: couldn't find address 0x1d2ac00059f78 (0x2ac00059f78) in binary!
+WARNING: couldn't find address 0x1d5fc0005b7f0 (0x5fc0005b7f0) in binary!
+	0x1d5e8  @objc ScrubDeletedRecords.(null) <stripped>
+WARNING: couldn't find address 0x1d5dc0005b748 (0x5dc0005b748) in binary!
 	0x28000000c  @objc ScrubDeletedRecords.(null) <stripped>
-WARNING: couldn't find address 0x1d29400059f68 (0x29400059f68) in binary!
-	0x1d290  @objc ScrubDeletedRecords.(null) <stripped>
+WARNING: couldn't find address 0x1d5c40005b738 (0x5c40005b738) in binary!
+	0x1d5c0  @objc ScrubDeletedRecords.(null) <stripped>
 
 	// Swift methods
-	0x167f30  func <stripped> // method 
+	0x169fc0  func <stripped> // method 
  }
 
  class SiriInference.ProcessUnstitchedIntents : XPCActivityOperation {
@@ -3858,10 +3879,10 @@ WARNING: couldn't find address 0x1d29400059f68 (0x29400059f68) in binary!
 	var stitchingFailed : Int
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d29400059f68 (0x29400059f68) in binary!
-	0x1d290  @objc ProcessUnstitchedIntents.(null) <stripped>
+WARNING: couldn't find address 0x1d5c40005b738 (0x5c40005b738) in binary!
+	0x1d5c0  @objc ProcessUnstitchedIntents.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x734fffdb608  @objc ProcessUnstitchedIntents.(null) <stripped>
+	0x704fffdb7a8  @objc ProcessUnstitchedIntents.(null) <stripped>
  }
 
  struct SiriInference.ContactResolverCache {
@@ -3875,6 +3896,8 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var meCard : CNContact? // +0x28
 	var favorites : [CNFavoritesEntry] // +0x30
 	var mlRecommender : CoreMLContactRecommender // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var tokenizer : 3Ø // +0x58
  }
 
  class SiriInference.DateTimeSuggestionGenerator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3888,8 +3911,8 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let solver : DateTimeConstraintSolver // +0xa8 (0x8)
 
 	// Swift methods
-	0x171880  func <stripped> // method 
-	0x172450  func <stripped> // method 
+	0x173f90  func <stripped> // method 
+	0x174b60  func <stripped> // method 
  }
 
  enum SiriInference.INPersonExpansion {
@@ -3920,23 +3943,23 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var language : — // +0x0 (0x0)
+	var language : =” // +0x1e1660 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var regionFormat : — // +0x1de860 (0x0)
+	var regionFormat : =” // +0x67cc (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var regionAwareLanguage : — // +0x6764 (0x0)
+	var regionAwareLanguage : =” // +0x1e1660 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var timeZone : ]“ // +0x1de860 (0x0)
+	var timeZone : ü‘ // +0x0 (0x0)
 	var hemisphere : Hemisphere // +0x0 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var calendar : 7“ // +0x0 (0x0)
+	var calendar : y‘ // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var date : }÷ // +0x0 (0x0)
+	var date : ∑ÿ // +0x77735f5f (0x0)
 
 	// Swift methods
-	0x176320  class func DateTimeResolutionContext.__allocating_init(with:regionFormat:regionAwareLanguage:timeZone:hemisphere:calendar:date:) // init 
-	0x176850  class func DateTimeResolutionContext.__allocating_init(from:) // init 
-	0x176f40  func <stripped> // method 
+	0x178a30  class func DateTimeResolutionContext.__allocating_init(with:regionFormat:regionAwareLanguage:timeZone:hemisphere:calendar:date:) // init 
+	0x178f60  class func DateTimeResolutionContext.__allocating_init(from:) // init 
+	0x179650  func <stripped> // method 
  }
 
  enum SiriInference.Hemisphere {
@@ -3962,7 +3985,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let id : À◊ // +0x0
+	let id : =⁄ // +0x0
 	let type : String // +0x8
 	let uuid : String // +0x18
 	let tokens : String // +0x28
@@ -4046,7 +4069,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var version : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var versiondate : }÷
+	var versiondate : ∑ÿ
 	var holiday : String
 	var country : String?
 	var newInfo : HolidaysDBRow
@@ -4078,13 +4101,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var activity : OS_xpc_object?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var completionKVObservation : -ê
+	var completionKVObservation : qí
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d27c00059fc8 (0x27c00059fc8) in binary!
-	0x1d268  @objc XPCActivityOperation.(null) <stripped>
+WARNING: couldn't find address 0x1d5ac0005b7a0 (0x5ac0005b7a0) in binary!
+	0x1d598  @objc XPCActivityOperation.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x57cfffeb7a8  @objc XPCActivityOperation.(null) <stripped>
+	0x564fffeb948  @objc XPCActivityOperation.(null) <stripped>
 
 	// Swift methods
  }
@@ -4100,13 +4123,13 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let toDateTime : DateTime
 
 	// Swift methods
-	0x186d60  class func DateTime.RecurrencePattern.__allocating_init(withRecurrencePeriod:) // init 
-	0x186ec0  class func DateTime.RecurrencePattern.__allocating_init(withRecurrenceDateTimeRange:recurrencePeriod:totalNumberOfOccurrences:recurrenceDateTimes:fromDateTime:toDateTime:) // init 
-	0x186f60  func <stripped> // method 
-	0x1870d0  func <stripped> // getter 
-	0x187cd0  func <stripped> // getter 
-	0x187540  class func DateTime.RecurrencePattern.__allocating_init(from:) // init 
-	0x1879a0  func <stripped> // method 
+	0x189730  class func DateTime.RecurrencePattern.__allocating_init(withRecurrencePeriod:) // init 
+	0x189890  class func DateTime.RecurrencePattern.__allocating_init(withRecurrenceDateTimeRange:recurrencePeriod:totalNumberOfOccurrences:recurrenceDateTimes:fromDateTime:toDateTime:) // init 
+	0x189930  func <stripped> // method 
+	0x189aa0  func <stripped> // getter 
+	0x18a6a0  func <stripped> // getter 
+	0x189f10  class func DateTime.RecurrencePattern.__allocating_init(from:) // init 
+	0x18a370  func <stripped> // method 
  }
 
  enum SiriInference.CodingKeys {
@@ -4122,8 +4145,8 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class SiriInference.AnonymizeIdsInStitchedData : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AnonymizeIdsProtocol {
 	// Swift methods
-	0x18b3a0  func <stripped> // method 
-	0x18c2c0  func <stripped> // method 
+	0x18dd70  func <stripped> // method 
+	0x18ec90  func <stripped> // method 
  }
 
  class SiriInference.ContactRankerInput : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4132,10 +4155,10 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var inputs : MLMultiArray
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d25c0005a598 (0x25c0005a598) in binary!
-	0x1bbe0  @objc ContactRankerInput.(null) <stripped>
+WARNING: couldn't find address 0x1d58c0005bd80 (0x58c0005bd80) in binary!
+	0x1bf10  @objc ContactRankerInput.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x55cfffeba18  @objc ContactRankerInput.(null) <stripped>
+	0x544fffebbb8  @objc ContactRankerInput.(null) <stripped>
 
 	// Swift methods
  }
@@ -4147,13 +4170,13 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var $__lazy_storage_$_outputScore : MLMultiArray?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1d23c0005a578 (0x23c0005a578) in binary!
-	0x1bbc0  @objc ContactRankerOutput.(null) <stripped>
+WARNING: couldn't find address 0x1d56c0005bd60 (0x56c0005bd60) in binary!
+	0x1bef0  @objc ContactRankerOutput.(null) <stripped>
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	0x1533a4d4152  @objc ContactRankerOutput.(null) <stripped>
 
 	// Swift methods
-	0x196a50  func <stripped> // getter 
+	0x199420  func <stripped> // getter 
  }
 
  class SiriInference.ContactRanker : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4162,5 +4185,5 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let model : MLModel
 
 	// Swift methods
-	0x196cf0  func <stripped> // method 
+	0x1996c0  func <stripped> // method 
  }

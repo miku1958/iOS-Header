@@ -10,5 +10,6 @@
 
 @property (nonatomic) BOOL tu_deriveVisibleBoundsFromContainingScrollView;
 
+- (void)tu_reloadSectionIndexTitles;
 @end
 

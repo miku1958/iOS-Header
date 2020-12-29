@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI234MagazineFeedGroupTitleViewRenderer : _TtCs12_SwiftObject
 {
     MISSING_TYPE *styler;
+    MISSING_TYPE *moreActionsButtonRenderer;
     MISSING_TYPE *shineImageFactory;
 }
 

@@ -4,10 +4,16 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class HDHFDataStore, NSError;
+@class HDDatabaseTransaction, HDHFDataStore, NSDictionary, NSError, NSMutableDictionary, NSString;
 
 @protocol HDHFDataStoreDelegate
-- (void)HFDataStore:(HDHFDataStore *)arg1 detectedCorruptionOfType:(long long)arg2 code:(int)arg3 error:(NSError *)arg4 shouldPromptUser:(BOOL)arg5;
-- (BOOL)rebuildIfNeeded:(id *)arg1;
+- (void)HFDataStore:(HDHFDataStore *)arg1 detectedCorruptionOfType:(long long)arg2 code:(int)arg3 error:(NSError *)arg4 shouldPromptUser:(BOOL)arg5 initialRebuildState:(long long)arg6 updatedRebuildState:(long long)arg7;
+- (long long)HFDataStore:(HDHFDataStore *)arg1 integerForKey:(NSString *)arg2;
+- (void)HFDataStore:(HDHFDataStore *)arg1 setInteger:(long long)arg2 forKey:(NSString *)arg3;
+- (void)HFDataStoreDidPerformRebuild:(HDHFDataStore *)arg1 didDecompressArchivedHFD:(BOOL)arg2 didOpenArchivedHFD:(BOOL)arg3 didOpenMovedAsideHFD:(BOOL)arg4 recoveryAnalytics:(NSDictionary *)arg5 duration:(double)arg6;
+- (HDDatabaseTransaction *)activeTransactionForCurrentThreadForHFDataStore:(HDHFDataStore *)arg1;
+- (void)didMigrateHFDataStore:(HDHFDataStore *)arg1 fromState:(long long)arg2 toState:(long long)arg3 success:(BOOL)arg4 error:(NSError *)arg5;
+- (BOOL)migrateDataForHFDataStore:(HDHFDataStore *)arg1 from:(const struct DataStore *)arg2 to:(struct DataStore *)arg3 recoveryAnalytics:(NSMutableDictionary *)arg4 error:(id *)arg5;
+- (void)requestRebuildTransactionForHFDataStore:(HDHFDataStore *)arg1;
 @end
 

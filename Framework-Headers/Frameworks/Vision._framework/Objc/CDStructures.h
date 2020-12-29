@@ -222,6 +222,8 @@ struct ImageDescriptorProcessorAbstract {
     CDUnknownFunctionPointerType *_field1;
 };
 
+struct ImageDescriptorProcessorHyperplaneLSH<float>;
+
 struct InternalObservedParabola {
     id _field1;
     struct vector<CGPointWithPts, std::__1::allocator<CGPointWithPts>> _field2;
@@ -885,6 +887,12 @@ struct unique_ptr<vision::mod::ImageAnalyzer, std::__1::default_delete<vision::m
 struct unique_ptr<vision::mod::ImageAnalyzer_PCA, std::__1::default_delete<vision::mod::ImageAnalyzer_PCA>> {
     struct __compressed_pair<vision::mod::ImageAnalyzer_PCA *, std::__1::default_delete<vision::mod::ImageAnalyzer_PCA>> {
         struct ImageAnalyzer_PCA *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<vision::mod::ImageDescriptorProcessorHyperplaneLSH<float>, std::__1::default_delete<vision::mod::ImageDescriptorProcessorHyperplaneLSH<float>>> {
+    struct __compressed_pair<vision::mod::ImageDescriptorProcessorHyperplaneLSH<float>*, std::__1::default_delete<vision::mod::ImageDescriptorProcessorHyperplaneLSH<float>>> {
+        struct ImageDescriptorProcessorHyperplaneLSH<float> *__value_;
     } __ptr_;
 };
 

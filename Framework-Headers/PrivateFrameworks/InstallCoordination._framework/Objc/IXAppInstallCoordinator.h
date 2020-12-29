@@ -91,6 +91,7 @@
 + (void)setRemovability:(unsigned long long)arg1 forAppWithBundleID:(id)arg2 completion:(CDUnknownBlockType)arg3;
 + (void)setSkipIntentValidation:(BOOL)arg1;
 + (BOOL)setTestModeForIdentifierPrefix:(id)arg1 testMode:(unsigned long long)arg2;
++ (BOOL)setTestModeForIdentifierPrefix:(id)arg1 testMode:(unsigned long long)arg2 testSpecificValidationData:(id)arg3;
 + (BOOL)setTestingEnabled:(BOOL)arg1;
 + (BOOL)skipIntentValidation;
 + (BOOL)uninstallAppWithBundleID:(id)arg1 error:(id *)arg2;

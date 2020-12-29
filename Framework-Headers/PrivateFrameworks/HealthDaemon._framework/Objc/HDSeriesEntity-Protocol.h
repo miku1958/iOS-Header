@@ -6,10 +6,11 @@
 
 #import <HealthDaemon/HDSQLiteEntity-Protocol.h>
 
-@class HDDatabaseTransaction, HDSQLiteDatabase, NSNumber;
+@class HDDatabaseTransaction, HDSQLiteDatabase, NSMutableDictionary, NSNumber;
 
 @protocol HDSeriesEntity <HDSQLiteEntity>
 + (NSNumber *)hasSeriesDataForHFDKey:(NSNumber *)arg1 transaction:(HDDatabaseTransaction *)arg2 error:(id *)arg3;
++ (BOOL)migrateDataFromDataStore:(const struct DataStore *)arg1 to:(struct DataStore *)arg2 transaction:(HDDatabaseTransaction *)arg3 recoveryAnalytics:(NSMutableDictionary *)arg4 error:(id *)arg5;
 - (NSNumber *)HFDKeyWithDatabase:(HDSQLiteDatabase *)arg1 error:(id *)arg2;
 @end
 

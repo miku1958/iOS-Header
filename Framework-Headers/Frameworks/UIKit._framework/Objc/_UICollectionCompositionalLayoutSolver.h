@@ -15,7 +15,7 @@ __attribute__((visibility("hidden")))
 @interface _UICollectionCompositionalLayoutSolver : NSObject <_UICollectionLayoutAuxillaryHosting, _UIDynamicReferenceSystem>
 {
     BOOL _estimatesSizes;
-    BOOL _hasOrthogonalSrollingSections;
+    BOOL _hasOrthogonalScrollingSections;
     BOOL _shouldPerformPhysicalRTLTransforms;
     BOOL _roundsToScreenScale;
     BOOL _layoutRTL;
@@ -69,7 +69,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSArray *globalSupplementaryItems; // @synthesize globalSupplementaryItems=_globalSupplementaryItems;
 @property (strong, nonatomic) _UICollectionPreferredSizes *globalSupplementaryPreferredSizes; // @synthesize globalSupplementaryPreferredSizes=_globalSupplementaryPreferredSizes;
 @property (strong, nonatomic) _UICollectionLayoutAuxillaryItemSolver *globalSupplementarySolver; // @synthesize globalSupplementarySolver=_globalSupplementarySolver;
-@property (nonatomic) BOOL hasOrthogonalSrollingSections; // @synthesize hasOrthogonalSrollingSections=_hasOrthogonalSrollingSections;
+@property (nonatomic) BOOL hasOrthogonalScrollingSections; // @synthesize hasOrthogonalScrollingSections=_hasOrthogonalScrollingSections;
 @property (readonly, nonatomic) BOOL hasPinnedSupplementaryItems;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) double interSectionSpacing; // @synthesize interSectionSpacing=_interSectionSpacing;
@@ -101,8 +101,8 @@ __attribute__((visibility("hidden")))
 - (struct CGSize)_adjustedContentSizeIncludingContainerInsetsForSize:(struct CGSize)arg1;
 - (void)_applyPreferredSizingCustomizationsToLayoutAttributes:(id)arg1 atIndexPath:(id)arg2;
 - (struct CGPoint)_attributesOffsetFromContainer;
+- (id)_attributesQueryInfosForQueryRect:(struct CGRect)arg1;
 - (struct CGRect)_attributesQueryRectForRect:(struct CGRect)arg1;
-- (id)_attributesQueryRectsForQueryRect:(struct CGRect)arg1;
 - (id)_cachedDecorationAttributesForElementKind:(id)arg1 indexPath:(id)arg2;
 - (id)_cachedSupplementaryAttributesForElementKind:(id)arg1 indexPath:(id)arg2;
 - (BOOL)_canResolveWithoutQueryingSectionDefintionsForContainerChange;
@@ -154,6 +154,7 @@ __attribute__((visibility("hidden")))
 - (id)auxillaryHostPreferredSizes;
 - (BOOL)auxillaryHostShouldLayoutRTL;
 - (id)auxillaryHostSupplementaryEnroller;
+- (struct CGRect)contentFrameForSection:(long long)arg1;
 - (struct NSDirectionalEdgeInsets)contentInsetsForSection:(long long)arg1;
 - (struct CGSize)effectiveContentSizeForSection:(long long)arg1;
 - (BOOL)elementShouldAppearAbove:(id)arg1;

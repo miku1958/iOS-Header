@@ -26,7 +26,6 @@
 - (id)initWithController:(id)arg1;
 - (id)initWithIdentifier:(id)arg1;
 - (void)initializeExtraControllerElements;
-- (BOOL)isBluetoothAndUSBMirrored;
 
 @end
 

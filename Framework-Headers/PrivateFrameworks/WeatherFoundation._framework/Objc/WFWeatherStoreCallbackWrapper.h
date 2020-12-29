@@ -9,12 +9,14 @@
 __attribute__((visibility("hidden")))
 @interface WFWeatherStoreCallbackWrapper : NSObject
 {
+    BOOL _executedCompletionBlock;
     unsigned long long _requestType;
     CDUnknownBlockType _forecastRetrievalCompletionBlock;
     CDUnknownBlockType _aqiScaleRetrievalCompletionBlock;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType aqiScaleRetrievalCompletionBlock; // @synthesize aqiScaleRetrievalCompletionBlock=_aqiScaleRetrievalCompletionBlock;
+@property (readonly, nonatomic) BOOL executedCompletionBlock; // @synthesize executedCompletionBlock=_executedCompletionBlock;
 @property (copy, nonatomic) CDUnknownBlockType forecastRetrievalCompletionBlock; // @synthesize forecastRetrievalCompletionBlock=_forecastRetrievalCompletionBlock;
 @property (nonatomic) unsigned long long requestType; // @synthesize requestType=_requestType;
 

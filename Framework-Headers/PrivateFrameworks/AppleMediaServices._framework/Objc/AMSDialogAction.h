@@ -30,6 +30,7 @@
 @property (strong, nonatomic, setter=ams_setButtonDictionary:) NSDictionary *ams_buttonDictionary;
 @property (strong, nonatomic, setter=ams_setBuyParams:) NSString *ams_buyParams;
 @property (nonatomic, setter=ams_setCommerceUIURL:) BOOL ams_commerceUIURL;
+@property (strong, nonatomic, setter=ams_setMetricsDictionary:) NSDictionary *ams_metricsDictionary;
 @property (strong, nonatomic, setter=ams_setRawURL:) NSURL *ams_rawURL;
 @property (nonatomic, setter=ams_setResolvedInterruption:) BOOL ams_resolvedInterruption;
 @property (strong, nonatomic, setter=ams_setSubtarget:) NSString *ams_subtarget;

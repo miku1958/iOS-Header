@@ -9,6 +9,7 @@
 @protocol NUNowPlayingViewControllerDelegate
 - (UIContextMenuConfiguration *)nowPlayingViewController:(NUNowPlayingViewController *)arg1 didReceiveContextMenuInteraction:(UIContextMenuInteraction *)arg2 configurationForMenuAtLocation:(struct CGPoint)arg3;
 - (void)nowPlayingViewController:(NUNowPlayingViewController *)arg1 seekToPosition:(double)arg2;
+- (void)nowPlayingViewControllerDidRequestNavigateToArticle:(NUNowPlayingViewController *)arg1;
 - (void)nowPlayingViewControllerDidTapDismissButton:(NUNowPlayingViewController *)arg1;
 - (void)nowPlayingViewControllerDidTapEllipsis:(NUNowPlayingViewController *)arg1;
 - (void)nowPlayingViewControllerDidTapNextTrack:(NUNowPlayingViewController *)arg1;

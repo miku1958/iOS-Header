@@ -14,6 +14,7 @@
     NSString *_kind;
     NSString *_label;
     NSString *_name;
+    NSString *_ratingDescription;
     NSNumber *_value;
 }
 
@@ -21,6 +22,7 @@
 @property (readonly, nonatomic) NSString *kind; // @synthesize kind=_kind;
 @property (readonly, nonatomic) NSString *label; // @synthesize label=_label;
 @property (readonly, nonatomic) NSString *name; // @synthesize name=_name;
+@property (readonly, nonatomic) NSString *ratingDescription; // @synthesize ratingDescription=_ratingDescription;
 @property (readonly, nonatomic) NSNumber *value; // @synthesize value=_value;
 
 + (id)contentRatingWithDictionary:(id)arg1;

@@ -20,6 +20,7 @@
 - (void)_callRepairServiceWithOptions:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 - (void)_remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (id)initWithServiceBroker:(id)arg1;
+- (BOOL)isCoastGuardUnrepairableAppWithItemID:(unsigned long long)arg1 externalVersionID:(unsigned long long)arg2;
 - (void)refreshKeybagWithReplyHandler:(CDUnknownBlockType)arg1;
 - (void)repairAppWithOptions:(id)arg1 replyHandler:(CDUnknownBlockType)arg2;
 

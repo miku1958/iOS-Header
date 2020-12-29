@@ -12,6 +12,7 @@
 + (id)_bcs_searchURLWithQuery:(id)arg1;
 - (id)_bcs_displayString;
 - (id)_bcs_fullURLDisplayString;
+- (id)_bcs_hostWithoutWwwDot;
 - (BOOL)_bcs_isDataDetectorURL;
 - (BOOL)_bcs_isHTTPFamilyURL;
 - (BOOL)_bcs_isMapsURL;

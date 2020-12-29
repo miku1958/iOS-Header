@@ -9,7 +9,7 @@
 #import <Home/HFMediaAccountArbitratingBuilderProtocol-Protocol.h>
 #import <Home/HFServiceLikeBuilder-Protocol.h>
 
-@class HFAppleMusicAccountArbitrator, HFNamingComponents, HFRoomBuilder, HMAccessory, HMMediaSystem, HMMediaSystemBuilder, NSArray, NSSet, NSString;
+@class HFAppleMusicAccountArbitrator, HFNamingComponents, HFRoomBuilder, HMAccessory, HMMediaSystem, HMMediaSystemBuilder, HMUser, NSArray, NSSet, NSString;
 @protocol HFIconDescriptor;
 
 @interface HFMediaSystemBuilder : HFItemBuilder <HFServiceLikeBuilder, HFMediaAccountArbitratingBuilderProtocol>
@@ -19,6 +19,7 @@
     BOOL _isCreatingMediaSystem;
     id<HFIconDescriptor> _iconDescriptor;
     HFAppleMusicAccountArbitrator *_accountArbitrator;
+    HMUser *_preferredMediaUser;
     HMAccessory *_firstSetupSourceAccessory;
     HMMediaSystemBuilder *_homeKitMediaSystemBuilder;
     HFNamingComponents *_namingComponent;
@@ -41,6 +42,7 @@
 @property (copy, nonatomic) NSString *name; // @dynamic name;
 @property (strong, nonatomic) HFNamingComponents *namingComponent; // @synthesize namingComponent=_namingComponent;
 @property (readonly, nonatomic) NSString *originalName;
+@property (strong, nonatomic) HMUser *preferredMediaUser; // @synthesize preferredMediaUser=_preferredMediaUser;
 @property (strong, nonatomic) HFRoomBuilder *room;
 @property (strong, nonatomic) HFRoomBuilder *roomBuilder; // @synthesize roomBuilder=_roomBuilder;
 @property (readonly) Class superclass;
@@ -57,6 +59,7 @@
 - (id)_setHomeTheaterSource:(id)arg1 toDestination:(id)arg2;
 - (id)_updateAssistantAccessControl;
 - (id)_updateFavorite;
+- (id)_updatePreferredMediaUser;
 - (id)_updateRoom;
 - (id)accessoryForRole:(id)arg1;
 - (void)addAccessory:(id)arg1;

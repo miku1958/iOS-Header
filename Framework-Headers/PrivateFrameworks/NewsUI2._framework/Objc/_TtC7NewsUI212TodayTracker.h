@@ -21,6 +21,7 @@
     MISSING_TYPE *trackerConfiguration;
     MISSING_TYPE *todayActivityRegistrationType;
     MISSING_TYPE *hasRegisteredUserActivity;
+    MISSING_TYPE *headlineSeenQueue;
 }
 
 @end

@@ -46,6 +46,7 @@
 - (void)_sendInvocation:(id)arg1 withProxy:(id)arg2;
 - (void)addRecoveryHandler:(CDUnknownBlockType)arg1;
 - (void)addResetHandler:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (id)initWithProtocol:(id)arg1 proxyGenerator:(CDUnknownBlockType)arg2;
 - (id)proxy;
 - (id)proxyCreator:(id *)arg1;

@@ -25,7 +25,7 @@
 - (void).cxx_destruct;
 - (void)_playbackUserDefaultsEQPresetDidChangeNotification:(id)arg1;
 - (void)_setupNotifications;
-- (void)configurePlayerItem:(id)arg1;
+- (void)configureQueuePlayerItem:(id)arg1;
 - (void)dealloc;
 - (id)initWithPlaybackEngine:(id)arg1 stackController:(id)arg2 translator:(id)arg3;
 

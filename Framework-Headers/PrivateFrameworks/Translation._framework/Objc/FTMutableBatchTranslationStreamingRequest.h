@@ -6,13 +6,14 @@
 
 #import <Translation/FTBatchTranslationStreamingRequest.h>
 
-@class FTBatchTranslationRequest;
+@class FTBatchTranslationFeedbackRequest, FTBatchTranslationRequest;
 
 __attribute__((visibility("hidden")))
 @interface FTMutableBatchTranslationStreamingRequest : FTBatchTranslationStreamingRequest
 {
 }
 
+@property (copy, nonatomic) FTBatchTranslationFeedbackRequest *contentAsFTBatchTranslationFeedbackRequest;
 @property (copy, nonatomic) FTBatchTranslationRequest *contentAsFTBatchTranslationRequest;
 @property (nonatomic) long long content_type;
 

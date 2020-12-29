@@ -39,6 +39,7 @@
 - (BOOL)isAdaptedModelUsed;
 - (void)loadDefaultRuleMinerMLModel;
 - (id)rankRules:(id)arg1 contextItems:(id)arg2;
+- (id)scoresOnRules:(id)arg1 contextItems:(id)arg2;
 
 @end
 

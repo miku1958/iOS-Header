@@ -31,6 +31,7 @@
 - (void)vcMediaStream:(id<VCMediaStreamProtocol>)arg1 updateFrequencyLevel:(NSData *)arg2 isInputMeter:(BOOL)arg3;
 - (void)vcMediaStream:(id<VCMediaStreamProtocol>)arg1 uplinkQualityDidChange:(NSDictionary *)arg2;
 - (void)vcMediaStreamDidDecryptionTimeOut:(id<VCMediaStreamProtocol>)arg1;
+- (void)vcMediaStreamDidDecryptionTimeOutForMKMRecovery:(id<VCMediaStreamProtocol>)arg1;
 - (void)vcMediaStreamDidInterruptionBegin:(id<VCMediaStreamProtocol>)arg1;
 - (void)vcMediaStreamDidInterruptionEnd:(id<VCMediaStreamProtocol>)arg1;
 - (void)vcMediaStreamDidRTCPTimeOut:(id<VCMediaStreamProtocol>)arg1;

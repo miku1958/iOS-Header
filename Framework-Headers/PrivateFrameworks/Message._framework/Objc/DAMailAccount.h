@@ -57,6 +57,7 @@
     NSSet *_watchedFolderIds;
     NSCountedSet *_userFocusMailboxIds;
     NSString *_folderTag;
+    struct os_unfair_lock_s _supportsUniqueServerIdLock;
     MFMailboxUid *_virtualAllSearchMailbox;
 }
 

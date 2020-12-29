@@ -173,6 +173,7 @@
 - (void)coverSheetViewControllerIrisPlayingDidFinish:(id)arg1;
 - (void)coverSheetViewControllerShouldDismissContextMenu:(id)arg1;
 - (void)coverSheetWindowedAccessoryViewControllerDidDismiss:(id)arg1;
+- (void)coverSheetWindowedAccessoryViewControllerDidPresent:(id)arg1;
 - (id)descriptionBuilderWithMultilinePrefix:(id)arg1;
 - (id)descriptionWithMultilinePrefix:(id)arg1;
 - (void)enableLostModePlugin;

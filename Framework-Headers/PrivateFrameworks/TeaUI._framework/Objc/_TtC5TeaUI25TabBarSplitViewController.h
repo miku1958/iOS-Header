@@ -22,6 +22,7 @@
     MISSING_TYPE *options;
     MISSING_TYPE *hasPerformedInitialLayout;
     MISSING_TYPE *splitViewFocus;
+    MISSING_TYPE *secondaryNavigationControllerIdentifierBeforeCollapse;
 }
 
 - (void).cxx_destruct;

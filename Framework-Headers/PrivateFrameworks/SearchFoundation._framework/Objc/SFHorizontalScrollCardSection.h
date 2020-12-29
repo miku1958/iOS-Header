@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFHorizontalScrollCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFUserReportRequest;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFCommand, SFUserReportRequest;
 
 @interface SFHorizontalScrollCardSection : SFCardSection <SFHorizontalScrollCardSection, NSSecureCoding, NSCopying>
 {
@@ -38,6 +38,7 @@
 @property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (copy, nonatomic) NSString *cardSectionId;
 @property (copy, nonatomic) NSArray *cardSections; // @synthesize cardSections=_cardSections;
+@property (strong, nonatomic) SFCommand *command;
 @property (copy, nonatomic) NSArray *commands;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -50,6 +51,7 @@
 @property (strong, nonatomic) SFCard *nextCard;
 @property (nonatomic) unsigned long long numberOfRows; // @synthesize numberOfRows=_numberOfRows;
 @property (copy, nonatomic) NSArray *parameterKeyPaths;
+@property (strong, nonatomic) SFCommand *previewCommand;
 @property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;

@@ -63,6 +63,7 @@
 - (void)recordSearchResultPageImpressionWithDefaultSearchProviderIdentifier:(id)arg1 searchProviderIdentifier:(id)arg2 provenance:(long long)arg3;
 - (void)registerQueriableMetric:(unsigned int)arg1 callback:(CDUnknownBlockType)arg2;
 - (void)registerSafariVersion:(id)arg1 persona:(long long)arg2;
+- (void)reportFirstInteractionAfterTranslation:(long long)arg1 maxVisibleHeightPercentage:(float)arg2;
 - (void)reportNumberOfExtensionsWithFrequencyDictionaryProvider:(CDUnknownBlockType)arg1;
 - (void)reportStatusForExtensions:(id)arg1 extensionType:(id)arg2;
 - (void)reportWeakPasswordWarningEvent:(long long)arg1;

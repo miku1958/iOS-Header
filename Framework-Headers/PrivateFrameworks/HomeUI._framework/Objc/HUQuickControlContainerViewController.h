@@ -15,7 +15,7 @@
 #import <HomeUI/HUQuickControlViewControllerCoordinatorDelegate-Protocol.h>
 #import <HomeUI/HUViewControllerCustomDismissing-Protocol.h>
 
-@class HFItem, HMHome, HUAnimationApplier, HUQuickControlContainerView, HUQuickControlViewController, HUQuickControlViewControllerCoordinator, NSString, UILayoutGuide, UIPanGestureRecognizer, UITapGestureRecognizer;
+@class HFItem, HMHome, HUAnimationApplier, HUQuickControlContainerView, HUQuickControlPresentationContext, HUQuickControlViewController, HUQuickControlViewControllerCoordinator, NSString, UILayoutGuide, UIPanGestureRecognizer, UITapGestureRecognizer;
 @protocol HUOpenURLHandling, HUPresentationDelegate, HUQuickControlContainerViewControllerDelegate, NSCopying;
 
 @interface HUQuickControlContainerViewController : UIViewController <HUPresentationDelegate, HUQuickControlContainerViewDelegate, HUQuickControlViewControllerCoordinatorDelegate, HUQuickControlContentHosting, HUItemPresentationContainer, HUDetailsPresentationDelegateHost, HUViewControllerCustomDismissing, HUQuickControlTouchContinuing>
@@ -35,6 +35,7 @@
     unsigned long long _presentationState;
     HUQuickControlViewControllerCoordinator *_viewControllerCoordinator;
     HUQuickControlViewController *_activeControlViewController;
+    HUQuickControlPresentationContext *_presentationContext;
     struct CGRect _sourceRect;
 }
 
@@ -52,6 +53,7 @@
 @property (readonly, nonatomic) HFItem<NSCopying> *item; // @synthesize item=_item;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
 @property (strong, nonatomic) HUAnimationApplier *presentationApplier; // @synthesize presentationApplier=_presentationApplier;
+@property (strong, nonatomic) HUQuickControlPresentationContext *presentationContext; // @synthesize presentationContext=_presentationContext;
 @property (weak, nonatomic) id<HUPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate;
 @property (nonatomic) unsigned long long presentationState; // @synthesize presentationState=_presentationState;
 @property (nonatomic) BOOL presentedDetailView; // @synthesize presentedDetailView=_presentedDetailView;

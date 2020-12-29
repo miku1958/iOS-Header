@@ -9,7 +9,7 @@
 #import <SensorKit/SRAuthorizationStoreDelegate-Protocol.h>
 #import <SensorKit/SRDaemonNotificationDelegate-Protocol.h>
 
-@class NSDictionary, NSString, NSXPCConnection, SRDaemonNotification, SRDefaults, SRSensorDatastore;
+@class NSArray, NSDictionary, NSString, NSXPCConnection, SRDaemonNotification, SRDatastore, SRDefaults;
 @protocol SRSensorWriterDelegate;
 
 @interface SRSensorWriter : NSObject <SRAuthorizationStoreDelegate, SRDaemonNotificationDelegate>
@@ -18,7 +18,7 @@
     id<SRSensorWriterDelegate> _delegate;
     SRDaemonNotification *_daemonNotification;
     SRDefaults *_defaults;
-    SRSensorDatastore *_datastore;
+    SRDatastore *_datastore;
     BOOL _requestNewSegmentInFlight;
     BOOL _authorized;
     BOOL _connectionDidInterrupt;
@@ -27,13 +27,15 @@
     NSString *_sensorIdentifier;
     NSDictionary *_nextDatastoreFiles;
     NSXPCConnection *_connection;
+    NSArray *__requestedConfigurations;
 }
 
+@property (copy, nonatomic) NSArray *_requestedConfigurations; // @synthesize _requestedConfigurations=__requestedConfigurations;
 @property BOOL authorized; // @synthesize authorized=_authorized;
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property BOOL connectionDidInterrupt; // @synthesize connectionDidInterrupt=_connectionDidInterrupt;
 @property BOOL connectionDidInvalidate; // @synthesize connectionDidInvalidate=_connectionDidInvalidate;
-@property (readonly, strong) SRSensorDatastore *datastore;
+@property (readonly, strong) SRDatastore *datastore;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<SRSensorWriterDelegate> delegate;
 @property (readonly, copy) NSString *description;
@@ -49,6 +51,8 @@
 + (id)connectionToDaemon;
 + (void)initialize;
 + (id)remoteInterface;
+- (BOOL)_setSensorConfiguration:(id)arg1 continuousTimestamp:(unsigned long long)arg2 error:(id *)arg3;
+- (BOOL)_setSensorConfiguration:(id)arg1 error:(id *)arg2;
 - (void)authorizationStore:(id)arg1 didDetermineInitialAuthorizationValues:(id)arg2;
 - (void)authorizationStore:(id)arg1 grantedAuthorizations:(id)arg2 forBundleId:(id)arg3;
 - (void)authorizationStore:(id)arg1 resetAuthorizations:(id)arg2 forBundleId:(id)arg3;

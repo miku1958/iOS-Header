@@ -8,6 +8,7 @@
 
 #import <NewsCore/NSCopying-Protocol.h>
 
+__attribute__((visibility("hidden")))
 @interface FCCKPDate : PBCodable <NSCopying>
 {
     double _time;
@@ -19,7 +20,6 @@
 @property (nonatomic) BOOL hasTime;
 @property (nonatomic) double time; // @synthesize time=_time;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;

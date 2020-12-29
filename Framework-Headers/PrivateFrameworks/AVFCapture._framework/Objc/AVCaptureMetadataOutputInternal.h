@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     long long faceTrackingMaxFaces;
     BOOL faceTrackingUsesFaceRecognition;
     BOOL videoPreviewHistogramMetadataObjectTypesAvailable;
+    BOOL appClipCodeObjectTypeAvailable;
     BOOL offlineVideoStabilizationMotionMetadataObjectTypesAvailable;
 }
 

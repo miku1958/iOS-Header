@@ -10,7 +10,7 @@
 @protocol FCTodayReadHistoryItem;
 
 @protocol NTWritablePrivateDataStorage <NSObject>
-- (void)writeReadHistoryItem:(id<FCTodayReadHistoryItem>)arg1;
-- (void)writeSeenHistoryItems:(NSArray *)arg1;
+- (void)writeReadHistoryItem:(id<FCTodayReadHistoryItem>)arg1 withCompletion:(void (^)(void))arg2;
+- (void)writeSeenHistoryItems:(NSArray *)arg1 withCompletion:(void (^)(void))arg2;
 @end
 

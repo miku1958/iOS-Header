@@ -33,6 +33,7 @@
 - (void)_sendRequestWithNames:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_translateSentHandlerResponseAnnouncement:(id)arg1 error:(id)arg2 toRequestSentHandler:(CDUnknownBlockType)arg3;
 - (void)announcementForID:(id)arg1 reply:(CDUnknownBlockType)arg2;
+- (void)cleanForExit;
 - (void)contextFromAnnouncement:(id)arg1 reply:(CDUnknownBlockType)arg2;
 - (void)failedToDeliverAnnouncement:(id)arg1 error:(id)arg2;
 - (void)getReceivedAnnouncementsWithCompletionHandler:(CDUnknownBlockType)arg1;

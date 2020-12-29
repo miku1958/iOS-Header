@@ -86,7 +86,7 @@
 - (void)authorizeAccessResourcesIfNeeded;
 - (Class)classForKeyedArchiver;
 - (void)configureAsSingleStepShortcutIfNecessary:(CDUnknownBlockType)arg1;
-- (void)configureWithShortcut:(id)arg1 homeSummaryText:(id)arg2;
+- (void)configureWithStandaloneShortcutRepresentation:(id)arg1 homeSummaryText:(id)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createUserActivityForViewing;
 - (id)database;
@@ -95,6 +95,7 @@
 - (id)effectiveInputClasses;
 - (void)encodeWithCoder:(id)arg1;
 - (void)generateShortcutRepresentation:(CDUnknownBlockType)arg1;
+- (void)generateStandaloneShortcutRepresentation:(CDUnknownBlockType)arg1;
 - (void)getHomeSummaryTextWithCompletion:(CDUnknownBlockType)arg1;
 - (BOOL)hasActions;
 - (id)init;

@@ -21,6 +21,7 @@
 @property (nonatomic, readonly) NSArray *areasOfInterest;
 @property (nonatomic, readonly) GEOAssociatedApp *associatedApp;
 @property (nonatomic, readonly) GEOMapItemPlaceAttribution *attribution;
+@property (nonatomic, readonly) NSString *bestAvailableCountryCode;
 @property (nonatomic, readonly) unsigned long long brandMUID;
 @property (nonatomic, readonly) NSArray *browseCategories;
 @property (nonatomic, readonly) GEOPDBusinessClaim *businessClaim;
@@ -306,6 +307,7 @@
 - (NSString *)weatherDisplayName;
 
 @optional
+- (NSString *)_bestAvailableCountryCode;
 - (NSString *)_iso3166CountryCode;
 - (NSString *)_iso3166SubdivisionCode;
 - (id<GEOMapItem>)_mapItemBySettingIsTransitDisplayFeature:(BOOL)arg1;

@@ -11,15 +11,23 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI25LandingPageViewController : UIViewController
 {
+    MISSING_TYPE *collectionImpressioner;
     MISSING_TYPE *delegate;
+    MISSING_TYPE *pageMetrics;
     MISSING_TYPE *document;
     MISSING_TYPE *activeServiceRequest;
     MISSING_TYPE *stackViewController;
+    MISSING_TYPE *lastRefreshTime;
+    MISSING_TYPE *refreshTTL;
+    MISSING_TYPE *notificationCenter;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)viewDidLayoutSubviews;
+- (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)willMoveToParentViewController:(id)arg1;
 
 @end

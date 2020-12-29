@@ -6,9 +6,15 @@
 
 #import <Foundation/NSArray.h>
 
+#import <NewsCore/FCContentArchivable-Protocol.h>
 #import <NewsCore/FCOrderedCollectionAdditions-Protocol.h>
 
-@interface NSArray (FCAdditions) <FCOrderedCollectionAdditions>
+@class FCContentArchive;
+
+@interface NSArray (FCAdditions) <FCOrderedCollectionAdditions, FCContentArchivable>
+
+@property (readonly, nonatomic) FCContentArchive *contentArchive;
+
 + (id)fc_array:(CDUnknownBlockType)arg1;
 + (id)fc_arrayByAddingObjectsFromArray:(id)arg1 toArray:(id)arg2;
 + (id)fc_arrayByAddingObjectsFromArray:(id)arg1 toArray:(id)arg2 inRelativeOrder:(unsigned long long)arg3;

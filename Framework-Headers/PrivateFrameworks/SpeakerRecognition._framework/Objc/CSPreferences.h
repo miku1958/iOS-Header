@@ -46,6 +46,7 @@
 - (BOOL)isPHSSupported;
 - (BOOL)isSelfTriggerFileLoggingEnabled;
 - (BOOL)isSpeakerRecognitionAvailable;
+- (BOOL)isStaggeredCATDownloadEnabled;
 - (BOOL)jarvisAudioLoggingEnabled;
 - (unsigned long long)maxNumGradingFiles;
 - (unsigned long long)maxNumLoggingFiles;

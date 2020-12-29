@@ -49,6 +49,7 @@ __attribute__((visibility("hidden")))
 - (void)pause;
 - (BOOL)playAtTime:(double)arg1;
 - (void)prepareToPlay;
+- (void)resetCurrentTime;
 - (void)stop;
 
 @end

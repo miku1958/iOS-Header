@@ -11,7 +11,6 @@
 @class VUIImageDecorator, _VUIDecoratorRequest;
 @protocol IKNetworkRequestLoader;
 
-__attribute__((visibility("hidden")))
 @interface VUIImageProxy : NSObject <NSCopying>
 {
     BOOL _cacheOnLoad;
@@ -19,6 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _isLoading;
     BOOL _loadSynchronouslyIfCached;
     BOOL _writeToAssetLibrary;
+    BOOL _optimizedImageRendering;
     id _object;
     id _imageLoader;
     VUIImageDecorator *_decorator;
@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isLoading; // @synthesize isLoading=_isLoading;
 @property (nonatomic) BOOL loadSynchronouslyIfCached; // @synthesize loadSynchronouslyIfCached=_loadSynchronouslyIfCached;
 @property (readonly, nonatomic) id object; // @synthesize object=_object;
+@property (nonatomic) BOOL optimizedImageRendering; // @synthesize optimizedImageRendering=_optimizedImageRendering;
 @property (weak, nonatomic) id<IKNetworkRequestLoader> requestLoader; // @synthesize requestLoader=_requestLoader;
 @property (strong, nonatomic) id requestToken; // @synthesize requestToken=_requestToken;
 @property (copy) CDUnknownBlockType writeCompletionHandler; // @synthesize writeCompletionHandler=_writeCompletionHandler;

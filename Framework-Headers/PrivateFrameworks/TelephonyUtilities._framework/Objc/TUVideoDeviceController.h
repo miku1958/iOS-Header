@@ -38,6 +38,7 @@
 - (void).cxx_destruct;
 - (void)captureDevicesChangedForProvider:(id)arg1;
 - (id)debugDescription;
+- (void)didPausePreviewForProvider:(id)arg1;
 - (void)didStartPreviewForProvider:(id)arg1;
 - (void)didStopPreviewForProvider:(id)arg1;
 - (void)flipCamera;

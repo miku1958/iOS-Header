@@ -7,7 +7,7 @@
 #import <AssetsLibraryServices/PLPhotoLibraryPathManager.h>
 
 @interface PLPhotoLibraryPathManager (SQLError)
-+ (id)defaultRenderFileFormatTypeIdentifier;
++ (id)defaultDeferredRenderFileFormatTypeIdentifier;
 - (id)URLForMetadataWithExtension:(id)arg1 forMediaInMainDirectory:(id)arg2 withFilename:(id)arg3;
 - (void)_abortWithRebuildReasonPLRebuildReasonCorruption;
 - (void)_abortWithRebuildReasonPLRebuildReasonDatabaseCorruption;

@@ -31,6 +31,7 @@
 - (id)assetDownloadOperationForResource:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)asyncLoadAssetURLsOnceWithCompletion:(CDUnknownBlockType)arg1;
 - (id)asyncLoadAssetsOnceWithCompletion:(CDUnknownBlockType)arg1;
+- (id)fallbackResourceForID:(id)arg1;
 - (id)initWithContext:(id)arg1 flintResourceManager:(id)arg2;
 - (id)loadAssetURLsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)loadAssetWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;

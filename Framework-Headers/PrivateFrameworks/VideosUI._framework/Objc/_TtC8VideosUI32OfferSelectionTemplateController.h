@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
+- (void)viewDidLayoutSubviews;
 
 @end
 

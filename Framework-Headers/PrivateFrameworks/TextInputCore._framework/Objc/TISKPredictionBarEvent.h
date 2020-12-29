@@ -8,11 +8,15 @@
 
 @interface TISKPredictionBarEvent : TISKTimestampEvent
 {
+    BOOL _emojiPrediction;
 }
 
+@property (nonatomic) BOOL emojiPrediction; // @synthesize emojiPrediction=_emojiPrediction;
+
 - (id)description;
-- (id)init:(double)arg1 order:(long long)arg2;
+- (id)init:(double)arg1 emojiPrediction:(BOOL)arg2 emojiSearchMode:(BOOL)arg3 order:(long long)arg4;
 - (void)reportInterKeyTiming:(id)arg1 previousEvent:(id)arg2;
+- (void)reportToSession:(id)arg1;
 
 @end
 

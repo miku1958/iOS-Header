@@ -17,7 +17,8 @@
 
 - (void).cxx_destruct;
 - (id)description;
-- (id)init:(double)arg1 layout:(id)arg2 order:(long long)arg3;
+- (id)init:(double)arg1 layout:(id)arg2 emojiSearchMode:(BOOL)arg3 order:(long long)arg4;
+- (void)reportToSession:(id)arg1;
 - (double)touchDownTimestamp;
 - (double)touchUpTimestamp;
 

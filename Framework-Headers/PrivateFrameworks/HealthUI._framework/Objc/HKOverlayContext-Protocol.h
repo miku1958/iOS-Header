@@ -16,6 +16,7 @@
 
 @optional
 - (HKDisplayType *)baseDisplayTypeForOverlay:(long long)arg1;
+- (BOOL)canSelectOverlayContextItem:(HKDisplayTypeContextItem *)arg1 chartController:(HKInteractiveChartViewController *)arg2;
 - (void)invalidateContextItem;
 - (void)overlayStateDidChange:(BOOL)arg1 contextItem:(HKDisplayTypeContextItem *)arg2 chartController:(HKInteractiveChartViewController *)arg3;
 - (void)overlayStateWillChange:(BOOL)arg1 contextItem:(HKDisplayTypeContextItem *)arg2 chartController:(HKInteractiveChartViewController *)arg3;

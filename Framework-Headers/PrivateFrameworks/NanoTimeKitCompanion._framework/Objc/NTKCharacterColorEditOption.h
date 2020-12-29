@@ -25,6 +25,7 @@
 + (id)optionWithFaceColor:(unsigned long long)arg1 forDevice:(id)arg2;
 + (id)optionWithOption:(id)arg1 forCharacter:(unsigned long long)arg2 forDevice:(id)arg3;
 - (id)_valueToFaceBundleStringDict;
+- (BOOL)isValidOption;
 - (long long)swatchStyle;
 
 @end

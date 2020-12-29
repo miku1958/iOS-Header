@@ -29,6 +29,8 @@
 - (BOOL)splitViewController:(id)arg1 showDetailViewController:(id)arg2 sender:(id)arg3;
 - (BOOL)splitViewController:(id)arg1 showViewController:(id)arg2 sender:(id)arg3;
 - (void)splitViewController:(id)arg1 willChangeToDisplayMode:(long long)arg2;
+- (void)splitViewControllerDidCollapse:(id)arg1;
+- (void)splitViewControllerDidExpand:(id)arg1;
 - (void)tabBarNavigationControllerDidPopWithNotification:(id)arg1;
 - (long long)targetDisplayModeForActionInSplitViewController:(id)arg1;
 - (void)toggleResponderPane;

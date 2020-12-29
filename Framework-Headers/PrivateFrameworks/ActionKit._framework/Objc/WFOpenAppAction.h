@@ -6,12 +6,23 @@
 
 #import <WorkflowKit/WFAction.h>
 
-@interface WFOpenAppAction : WFAction
+#import <ActionKit/WFStandaloneShortcutAction-Protocol.h>
+
+@class NSString;
+
+@interface WFOpenAppAction : WFAction <WFStandaloneShortcutAction>
 {
 }
 
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly) Class superclass;
+
+- (void)generateStandaloneShortcutRepresentation:(CDUnknownBlockType)arg1;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 - (id)selectedApp;
+- (id)selectedAppFromBundleIdentifier:(id)arg1;
 
 @end
 

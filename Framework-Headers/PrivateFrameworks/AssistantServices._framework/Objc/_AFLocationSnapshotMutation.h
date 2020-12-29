@@ -21,6 +21,7 @@
     NSNumber *_verticalAccuracy;
     NSNumber *_horizontalAccuracy;
     BOOL _preciseLocationEnabled;
+    long long _accessState;
     struct _mutationFlags {
         unsigned int isDirty:1;
         unsigned int hasLatitude:1;
@@ -31,6 +32,7 @@
         unsigned int hasVerticalAccuracy:1;
         unsigned int hasHorizontalAccuracy:1;
         unsigned int hasPreciseLocationEnabled:1;
+        unsigned int hasAccessState:1;
     } _mutationFlags;
 }
 
@@ -43,6 +45,7 @@
 - (id)generate;
 - (id)init;
 - (id)initWithBaseModel:(id)arg1;
+- (void)setAccessState:(long long)arg1;
 - (void)setAltitude:(id)arg1;
 - (void)setDirection:(id)arg1;
 - (void)setHorizontalAccuracy:(id)arg1;

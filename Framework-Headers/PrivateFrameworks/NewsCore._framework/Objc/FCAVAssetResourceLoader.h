@@ -28,7 +28,7 @@
 - (BOOL)_isHLSURL:(id)arg1;
 - (id)init;
 - (id)initWithCacheDirectory:(id)arg1;
-- (void)prefetchMasterPlaylistForAsset:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)prefetchMasterPlaylistForAssetURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)registerAVURLAssetForAutomaticResourceManagement:(id)arg1;
 - (BOOL)resourceLoader:(id)arg1 shouldWaitForLoadingOfRequestedResource:(id)arg2;
 

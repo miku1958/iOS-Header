@@ -11,6 +11,7 @@
 - (void)activityStateWithCompletion:(void (^)(unsigned long long, NSError *))arg1;
 - (void)appleIDInfoWithCompletion:(void (^)(NSString *, NSData *, NSError *))arg1;
 - (void)broadwayPresentCardWithCode:(NSString *)arg1 options:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)clearXPCHelperImageCacheWithCompletion:(void (^)(NSError *))arg1;
 - (void)contactIDForEmailHash:(NSString *)arg1 phoneHash:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)displayNameForEmailHash:(NSString *)arg1 phoneHash:(NSString *)arg2 completion:(void (^)(NSString *, NSError *))arg3;
 - (void)displayStringForContactIdentifier:(NSString *)arg1 deviceIdentifier:(NSUUID *)arg2 completion:(void (^)(NSString *, BOOL, NSError *))arg3;

@@ -90,7 +90,7 @@
 	let impressions : Double
 	let eventCount : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let updatedAt : !h
+	let updatedAt : Qi
  }
 
  struct XavierNews.Aggregate: AggregateType,  ReadonlyAggregateType {
@@ -101,7 +101,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var impressions : Double
 	var eventCount : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var updatedAt : !h
+	var updatedAt : Qi
  }
 
  enum XavierNews.CodingKeys {
@@ -112,6 +112,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case impressions  
 	case eventCount  
 	case updatedAt  
+ }
+
+ enum XavierNews.ClassicLogType {
+
+	// Properties
+	case training  
+	case evaluation  
+	case clustering  
  }
 
  enum XavierNews.GroupType {
@@ -140,12 +148,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var updatedAt : !h // +0xfeedfacf (0x0)
+	var updatedAt : Qi // +0xfeedfacf (0x0)
 	var aggregates : ReadonlyAggregate // +0x3 (0x8)
 
 	// Swift methods
-	0x5000  class func AggregateContext.__allocating_init(aggregates:updatedAt:) // init 
-	0x57e0  class func AggregateContext.__allocating_init(from:) // init 
+	0x5880  class func AggregateContext.__allocating_init(aggregates:updatedAt:) // init 
+	0x6060  class func AggregateContext.__allocating_init(from:) // init 
  }
 
  enum XavierNews.CodingKeys {
@@ -161,7 +169,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let adCategories : [String]? // +0x0
 	let articleID : String // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleLength : Kh // +0x18
+	let articleLength : Yi // +0x18
 	let hasVideo : Bool // +0x21
 	let isANF : Bool? // +0x22
 	let isPaid : Bool // +0x23
@@ -205,7 +213,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let seen : Set<String>
 
 	// Swift methods
-	0x12930  class func UserContext.__allocating_init(subscribed:autofavorited:muted:groupable:subscriptionState:bundled:purchased:read:seen:) // init 
+	0x13170  class func UserContext.__allocating_init(subscribed:autofavorited:muted:groupable:subscriptionState:bundled:purchased:read:seen:) // init 
  }
 
  enum XavierNews.Action {
@@ -230,13 +238,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let adCategories : [String]?
 	let articleID : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleLength : Kh
+	let articleLength : Yi
 	let halfLife : Double
 	let hasVideo : Bool
 	let isANF : Bool?
 	let isPaid : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publishDate : ýd
+	let publishDate : f
 	let publisherID : String
 	let sourceFeedID : String?
 	let topicIDs : [String]
@@ -735,7 +743,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case accessibility : (maxInaccessibleHeadlines: Int)
 	case evergreenLimit : (maxEvergreenHeadlines: Int)
 	case publisherDiversity : (maxPublisherOccurrences: Int)
-	case topicDiversity : (threshold: Double, windowSize: Int, whitelistedTopicIDs: Set<String>)
+	case topicDiversity : (threshold: Double, windowSize: Int, allowedTopicIDs: Set<String>)
  }
 
  struct XavierNews.HeadlineClusterer { }
@@ -813,18 +821,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case video  
  }
 
- struct XavierNews.WhitelistTag {
+ struct XavierNews.AllowListTag {
 
 	// Properties
 	let identifier : String // +0x0
 	let score : Double // +0x10
  }
 
- struct XavierNews.Whitelist {
+ struct XavierNews.AllowList {
 
 	// Properties
-	let defaultTags : WhitelistTag // +0x0
-	let optionalTags : WhitelistTag // +0x8
+	let defaultTags : AllowListTag // +0x0
+	let optionalTags : AllowListTag // +0x8
  }
 
  struct XavierNews.ArticleTrainer { }

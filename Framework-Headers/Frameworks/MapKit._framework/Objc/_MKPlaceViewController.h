@@ -295,6 +295,7 @@
 - (void)placeCardActionControllerDidSelectionOpenInPinpoint:(id)arg1;
 - (void)placeCardEncyclopedicControllerDidExpandTextBlock:(id)arg1;
 - (void)placeCardEncyclopedicControllerDidSelectShowArticle:(id)arg1;
+- (BOOL)placeCardHeaderViewControllerShouldOverrideCallToAction:(id)arg1;
 - (double)placeCardHeaderViewControllerTrailingConstantForTitle:(id)arg1;
 - (void)placeCardPhotosController:(id)arg1 didSelectPhotoToReport:(id)arg2 withPhotoGalleryViewController:(id)arg3;
 - (void)placeCardPhotosController:(id)arg1 didSelectViewPhotoWithID:(id)arg2 presentingViewController:(id)arg3;

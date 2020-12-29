@@ -6,16 +6,19 @@
 
 #import <SleepDaemon/HKSPStateMachineInfoProvider-Protocol.h>
 
-@class HKSPSleepScheduleModel, HKSPSleepScheduleOccurrence, NSDate, NSDateInterval;
+@class HKSPSleepScheduleModel, HKSPSleepScheduleOccurrence, NSDate;
 
 @protocol HDSPWakeDetectionStateMachineInfoProvider <HKSPStateMachineInfoProvider>
 
 @property (readonly, nonatomic) NSDate *currentDate;
+@property (readonly, nonatomic) BOOL inDetectionWindow;
+@property (readonly, nonatomic) BOOL isWatch;
 @property (readonly, nonatomic) HKSPSleepScheduleOccurrence *relevantOccurrence;
 @property (readonly, nonatomic) BOOL sleepModeIsOff;
 @property (readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;
 @property (readonly, nonatomic) unsigned long long sleepScheduleState;
 
-- (NSDateInterval *)detectionWindowAfterDate:(NSDate *)arg1;
+- (NSDate *)nextWakeUpAfterDate:(NSDate *)arg1;
+- (NSDate *)upcomingStartDetectionDateAfterDate:(NSDate *)arg1;
 @end
 

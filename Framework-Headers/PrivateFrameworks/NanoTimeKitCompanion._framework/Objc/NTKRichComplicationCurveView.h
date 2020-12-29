@@ -22,12 +22,15 @@
 @property (nonatomic) double endAngle; // @synthesize endAngle=_endAngle;
 
 - (double)_angleAtProgress:(float)arg1;
+- (struct CGPoint)_centerPoint;
 - (const struct CGPath *)_generatePath;
 - (id)_normalizeGradientLocations:(id)arg1;
+- (double)_outerRadius;
 - (struct CGPoint)_pointAtProgress:(float)arg1;
 - (void)_setupGradientLayer:(id)arg1;
 - (double)_shapeLineWidth;
 - (BOOL)_shouldReverseGradient;
+- (double)_totalDrawableAngle;
 - (void)_updatePath;
 - (id)initWithCurveWidth:(double)arg1 padding:(double)arg2 beginAngle:(double)arg3 endAngle:(double)arg4 forDevice:(id)arg5 withFilterStyle:(long long)arg6;
 - (void)layoutSubviews;

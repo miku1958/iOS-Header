@@ -9,9 +9,11 @@
 @interface FigPointCloudDataCaptureConnectionConfiguration : FigVideoCaptureConnectionConfiguration
 {
     int _projectorMode;
+    BOOL _supplementalPointCloudData;
 }
 
 @property (nonatomic) int projectorMode; // @synthesize projectorMode=_projectorMode;
+@property (nonatomic) BOOL supplementalPointCloudData; // @synthesize supplementalPointCloudData=_supplementalPointCloudData;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)copyXPCEncoding;

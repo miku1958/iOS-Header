@@ -45,6 +45,7 @@
 - (void)_purgeFilesForOSUpdate;
 - (void)_purgeOutdatedFiles;
 - (void)_refreshDailyMetadata;
+- (id)_s3Credentials;
 - (void)_scheduleUploadTimer;
 - (BOOL)_shouldAllowDataCollectionUpload;
 - (id)_stringByRemovingPathExtension:(id)arg1;

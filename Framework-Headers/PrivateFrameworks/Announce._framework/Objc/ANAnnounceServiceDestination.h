@@ -22,7 +22,7 @@
 @property (strong, nonatomic) NSArray *users; // @synthesize users=_users;
 
 + (id)_destinationForHomePods:(id)arg1 rapportConnection:(id)arg2;
-+ (id)destinationForHome:(id)arg1 excludingRooms:(id)arg2 rapportConnection:(id)arg3;
++ (id)destinationForHome:(id)arg1 excludingRooms:(id)arg2 excludingUsers:(id)arg3 rapportConnection:(id)arg4;
 + (id)destinationForHome:(id)arg1 rapportConnection:(id)arg2;
 + (id)destinationForRooms:(id)arg1 inHome:(id)arg2 rapportConnection:(id)arg3;
 + (id)relayDestinationForHome:(id)arg1 rooms:(id)arg2 rapportConnection:(id)arg3 error:(id *)arg4;
@@ -30,11 +30,13 @@
 - (BOOL)addAccessory:(id)arg1;
 - (BOOL)addDeviceWithID:(id)arg1 rapportConnection:(id)arg2;
 - (BOOL)addUser:(id)arg1 inHome:(id)arg2;
+- (void)addUser:(id)arg1 inHome:(id)arg2 rapportConnection:(id)arg3;
 - (id)idsIdentifiersForService:(id)arg1;
 - (id)init;
 - (id)participantsWithService:(id)arg1;
 - (void)removeDeviceWithID:(id)arg1;
 - (void)removeUser:(id)arg1;
+- (void)removeUser:(id)arg1 rapportConnection:(id)arg2;
 
 @end
 

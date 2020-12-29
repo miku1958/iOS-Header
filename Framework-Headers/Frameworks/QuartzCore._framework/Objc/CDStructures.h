@@ -834,6 +834,7 @@ struct _CAMetalLayerPrivate {
     unsigned int :1;
     unsigned int :1;
     unsigned int :1;
+    unsigned int :1;
 };
 
 struct _CAPackageData {

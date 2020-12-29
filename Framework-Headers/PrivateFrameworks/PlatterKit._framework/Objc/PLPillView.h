@@ -8,54 +8,35 @@
 
 #import <PlatterKit/MTMaterialGrouping-Protocol.h>
 #import <PlatterKit/PLContentSizeCategoryAdjusting-Protocol.h>
+#import <PlatterKit/PLPill-Protocol.h>
 
-@class MTMaterialView, MTShadowView, NSArray, NSMapTable, NSString, PLPillContentItem, UIStackView;
+@class MTMaterialView, MTShadowView, NSArray, NSString, PLPillContentItem, PLPillContentView;
 
-@interface PLPillView : UIView <MTMaterialGrouping, PLContentSizeCategoryAdjusting>
+@interface PLPillView : UIView <PLPill, PLContentSizeCategoryAdjusting, MTMaterialGrouping>
 {
     MTMaterialView *_materialView;
     MTShadowView *_shadowView;
-    UIStackView *_centerStackView;
-    NSArray *_centerStackViewLeadingTrailingConstraints;
-    UIView *_referenceContentItemView;
-    NSMapTable *_wrapperViewsToLeadingConstraints;
-    NSMapTable *_wrapperViewsToTrailingConstraints;
+    PLPillContentView *_contentView;
     BOOL _adjustsFontForContentSizeCategory;
     NSString *_preferredContentSizeCategory;
-    UIView *_leadingAccessoryView;
-    UIView *_trailingAccessoryView;
-    NSArray *_centerContentItems;
-    PLPillContentItem *_referenceContentItemForIntrinsicContentSize;
 }
 
 @property (nonatomic) BOOL adjustsFontForContentSizeCategory; // @synthesize adjustsFontForContentSizeCategory=_adjustsFontForContentSizeCategory;
-@property (copy, nonatomic) NSArray *centerContentItems; // @synthesize centerContentItems=_centerContentItems;
+@property (copy, nonatomic) NSArray *centerContentItems;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
-@property (readonly, nonatomic) UIView *leadingAccessoryView; // @synthesize leadingAccessoryView=_leadingAccessoryView;
+@property (readonly, nonatomic) UIView *leadingAccessoryView;
 @property (copy, nonatomic) NSString *materialGroupNameBase;
 @property (copy, nonatomic) NSString *preferredContentSizeCategory; // @synthesize preferredContentSizeCategory=_preferredContentSizeCategory;
-@property (copy, nonatomic) PLPillContentItem *referenceContentItemForIntrinsicContentSize; // @synthesize referenceContentItemForIntrinsicContentSize=_referenceContentItemForIntrinsicContentSize;
+@property (copy, nonatomic) PLPillContentItem *referenceContentItemForIntrinsicContentSize;
 @property (readonly, nonatomic) struct UIEdgeInsets shadowOutsets;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) UIView *trailingAccessoryView; // @synthesize trailingAccessoryView=_trailingAccessoryView;
+@property (readonly, nonatomic) UIView *trailingAccessoryView;
 
 - (void).cxx_destruct;
-- (id)_arrangedSubviewForContentItem:(id)arg1;
-- (void)_cleanupStackView;
-- (void)_configureCenterStackViewIfNecessary;
 - (void)_configureShadowViewIfNecessary;
 - (double)_effectiveCornerRadius;
-- (double)_effectiveMinWidth;
-- (double)_effectivemaxWidth;
-- (void)_incomingTopWrapperView:(id *)arg1 incomingBottomWrapperView:(id *)arg2 outgoingWrapperViews:(id)arg3 forOutgoingContentItems:(id)arg4 incomingContentItems:(id)arg5 existingWrapperViews:(id)arg6;
-- (struct CGSize)_intrinsicContentSizeWithReferenceView:(id)arg1;
-- (BOOL)_isAccessoryPinnedToTopLine;
-- (BOOL)_isWrappingRequiredForView:(id)arg1 inBounds:(struct CGRect)arg2;
-- (id)_referenceContentItemView;
-- (void)_updateConstraintForWrapperView:(id)arg1 leading:(BOOL)arg2 collection:(id)arg3;
-- (void)_updateConstraintsForWrapperView:(id)arg1;
 - (BOOL)adjustForContentSizeCategoryChange;
 - (id)init;
 - (id)initWithLeadingAccessoryView:(id)arg1;
@@ -66,7 +47,7 @@
 - (void)setCenterContentItems:(id)arg1 animated:(BOOL)arg2;
 - (struct CGSize)sizeThatFitsContentItem:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
-- (void)updateConstraints;
+- (void)updateCenterContentItem:(id)arg1 withContentItem:(id)arg2;
 
 @end
 

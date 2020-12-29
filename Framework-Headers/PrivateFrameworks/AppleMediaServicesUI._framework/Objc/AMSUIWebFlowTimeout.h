@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSDate, NSLock;
+@class NSDate;
 @protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -14,7 +14,6 @@ __attribute__((visibility("hidden")))
 {
     CDUnknownBlockType _enqueuedBlock;
     CDUnknownBlockType _block;
-    NSLock *_lock;
     NSObject<OS_dispatch_queue> *_queue;
     NSDate *_startTime;
     double _timeout;
@@ -23,7 +22,6 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
 @property (copy, nonatomic) CDUnknownBlockType enqueuedBlock; // @synthesize enqueuedBlock=_enqueuedBlock;
-@property (strong, nonatomic) NSLock *lock; // @synthesize lock=_lock;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
 @property (strong, nonatomic) NSDate *startTime; // @synthesize startTime=_startTime;
 @property (nonatomic) double timeRemaining; // @synthesize timeRemaining=_timeRemaining;
@@ -31,9 +29,8 @@ __attribute__((visibility("hidden")))
 
 + (id)timeoutWithTimeout:(double)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
-- (void)_lock:(CDUnknownBlockType)arg1;
 - (id)initWithTimeout:(double)arg1 queue:(id)arg2 block:(CDUnknownBlockType)arg3;
-- (double)pause;
+- (void)pause;
 - (void)reset;
 - (void)start;
 

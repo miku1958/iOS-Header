@@ -11,13 +11,15 @@
 @interface _TtC15MediaFoundation9EventTime : _TtCs12_SwiftObject
 {
     MISSING_TYPE *time;
+    MISSING_TYPE *avTime;
     MISSING_TYPE *userSecondsSinceReferenceDate;
     MISSING_TYPE *hostTime;
     MISSING_TYPE *type;
 }
 
+@property (nonatomic, readonly) double avTime; // @synthesize avTime;
 @property (nonatomic, readonly) CDStruct_198678f7 hostTime; // @synthesize hostTime;
-@property (nonatomic, readonly) double time; // @synthesize time;
+@property (nonatomic) double time; // @synthesize time;
 @property (nonatomic, readonly) double userSecondsSinceReferenceDate; // @synthesize userSecondsSinceReferenceDate;
 
 

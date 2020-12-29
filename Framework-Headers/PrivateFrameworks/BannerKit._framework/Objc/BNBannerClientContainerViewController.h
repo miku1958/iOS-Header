@@ -6,24 +6,24 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <BannerKit/_UISceneBSActionHandler-Protocol.h>
-#import <BannerKit/_UISceneSettingsDiffAction-Protocol.h>
+#import <BannerKit/BNBannerClientContainer-Protocol.h>
 
-@class NSMutableArray, NSString, UIScene;
-@protocol BNBannerClientContainerViewControllerDelegate, BNPresentable, BSInvalidatable;
+@class NSMutableArray, NSString, UIScene, _BNPanGestureServiceProxy;
+@protocol BNBannerClientContainerDelegate, BNPresentable, BSInvalidatable;
 
-@interface BNBannerClientContainerViewController : UIViewController <_UISceneSettingsDiffAction, _UISceneBSActionHandler>
+@interface BNBannerClientContainerViewController : UIViewController <BNBannerClientContainer>
 {
     id<BSInvalidatable> _deferringRule;
     NSMutableArray *_transitionContextStack;
+    _BNPanGestureServiceProxy *_panGestureProxy;
     UIScene *_scene;
     id<BNPresentable> _presentable;
-    id<BNBannerClientContainerViewControllerDelegate> _delegate;
+    id<BNBannerClientContainerDelegate> _delegate;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, nonatomic, getter=isDeferringFocus) BOOL deferringFocus;
-@property (weak, nonatomic) id<BNBannerClientContainerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak, nonatomic) id<BNBannerClientContainerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) id<BNPresentable> presentable; // @synthesize presentable=_presentable;
@@ -33,6 +33,7 @@
 - (void).cxx_destruct;
 - (void)_acquireDeferringRuleIfNecessary;
 - (BOOL)_canShowWhileLocked;
+- (void)_handlePanGestureProxyAction:(id)arg1;
 - (void)_handleSizeTransitionCompleteAction:(id)arg1;
 - (void)_handleViewWillTransitionToSizeAction:(id)arg1 shouldFence:(BOOL)arg2;
 - (void)_invalidateDeferringRule;

@@ -7,7 +7,7 @@
 #import <Foundation/NSSet.h>
 
 @interface NSSet (AFCollectionUtilities)
-- (id)af_mappedDictionary:(CDUnknownBlockType)arg1;
+- (id)af_lenientMappedDictionary:(CDUnknownBlockType)arg1;
 - (id)af_mappedSet:(CDUnknownBlockType)arg1;
 @end
 

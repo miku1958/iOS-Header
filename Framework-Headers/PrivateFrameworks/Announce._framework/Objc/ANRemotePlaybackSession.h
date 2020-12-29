@@ -13,10 +13,10 @@
 
 @interface ANRemotePlaybackSession : NSObject <ANRemotePlaybackSessionServiceClientInterface>
 {
+    NSObject<OS_dispatch_queue> *_handlerQueue;
     id<ANRemotePlaybackSessionDelegate> _delegate;
     NSXPCConnection *_connection;
     CDUnknownBlockType _handler;
-    NSObject<OS_dispatch_queue> *_handlerQueue;
 }
 
 @property (readonly, nonatomic) NSXPCConnection *connection; // @synthesize connection=_connection;

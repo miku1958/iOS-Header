@@ -8,7 +8,10 @@
 
 @interface SBRecordingIndicatorView : UIView
 {
+    unsigned long long _indicatorShape;
 }
+
+@property (nonatomic) unsigned long long indicatorShape; // @synthesize indicatorShape=_indicatorShape;
 
 - (id)init;
 - (void)layoutSubviews;

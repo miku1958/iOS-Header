@@ -18,6 +18,7 @@
 
 @property (readonly, nonatomic) BOOL canShowHeroImage;
 @property (readonly, nonatomic, getter=isEligible) BOOL eligible; // @synthesize eligible=_eligible;
+@property (readonly, nonatomic, getter=isIneligibleDueToContentRestriction) BOOL ineligibleDueToContentRestriction;
 @property (readonly, nonatomic) NSString *localizedTitle;
 @property (readonly, nonatomic) long long reason; // @synthesize reason=_reason;
 @property (readonly, nonatomic, getter=isRecoverable) BOOL recoverable;

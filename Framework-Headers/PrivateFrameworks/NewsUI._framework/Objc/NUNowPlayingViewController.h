@@ -44,6 +44,7 @@
 - (void).cxx_destruct;
 - (void)applicationWillEnterForeground;
 - (struct CGSize)artworkSizeForViewWidth:(double)arg1;
+- (void)artworkTapped:(id)arg1;
 - (id)contextMenuInteraction:(id)arg1 configurationForMenuAtLocation:(struct CGPoint)arg2;
 - (void)dismissButtonTapped:(id)arg1;
 - (id)init;
@@ -67,6 +68,7 @@
 - (void)setRate:(double)arg1;
 - (void)setTitle:(id)arg1;
 - (double)titleLabelFontSize;
+- (void)titleViewTapped:(id)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillDisappear:(BOOL)arg1;

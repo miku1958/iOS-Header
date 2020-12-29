@@ -6,19 +6,21 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary;
+@class NSDictionary, NSString;
 
 @interface FCPurchaseLookupFetchOperationResult : NSObject
 {
     NSDictionary *_channelIDsByPurchaseID;
     NSDictionary *_bundleChannelIDsByPurchaseID;
+    NSString *_bundleChannelIDsVersion;
 }
 
 @property (copy, nonatomic) NSDictionary *bundleChannelIDsByPurchaseID; // @synthesize bundleChannelIDsByPurchaseID=_bundleChannelIDsByPurchaseID;
+@property (copy, nonatomic) NSString *bundleChannelIDsVersion; // @synthesize bundleChannelIDsVersion=_bundleChannelIDsVersion;
 @property (copy, nonatomic) NSDictionary *channelIDsByPurchaseID; // @synthesize channelIDsByPurchaseID=_channelIDsByPurchaseID;
 
 - (void).cxx_destruct;
-- (id)initWithChannelIDsByPurchaseID:(id)arg1 bundleChannelIDsByPurchaseID:(id)arg2;
+- (id)initWithChannelIDsByPurchaseID:(id)arg1 bundleChannelIDsByPurchaseID:(id)arg2 bundleChannelIDsVersion:(id)arg3;
 
 @end
 

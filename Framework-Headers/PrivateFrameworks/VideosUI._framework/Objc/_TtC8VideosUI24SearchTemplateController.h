@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI24SearchTemplateController : UIViewController
 {
+    MISSING_TYPE *collectionImpressioner;
     MISSING_TYPE *maxSearchFieldWidth;
     MISSING_TYPE *searchController;
     MISSING_TYPE *recentlySearchedDataManager;
@@ -22,13 +23,17 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *landingPageViewController;
     MISSING_TYPE *resultsViewController;
     MISSING_TYPE *activeSearchState;
+    MISSING_TYPE *pageMetrics;
 }
 
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
+- (void)viewWillDisappear:(BOOL)arg1;
 - (void)viewWillTransitionToSize:(struct CGSize)arg1 withTransitionCoordinator:(id)arg2;
 
 @end

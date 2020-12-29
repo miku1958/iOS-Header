@@ -48,7 +48,6 @@
 - (BOOL)_clientIsMail;
 - (BOOL)_clientIsMessages;
 - (void)_confirmReminderByRecordId:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (id)_dissectMessage:(id)arg1 store:(id)arg2 context:(id)arg3;
 - (BOOL)_isContactInteresting:(id)arg1 emailEntity:(id)arg2 enrichments:(id)arg3 hasContactCard:(BOOL)arg4;
 - (id)_mapToPseudoEvents:(id)arg1;
 - (id)_maybeFormatString;
@@ -62,7 +61,7 @@
 - (id)_showInFormatStringWithLocalization:(id)arg1;
 - (void)_storeAndGeocodeEntity:(id)arg1 spotlightBundleIdentifier:(id)arg2 spotlightUniqueIdentifier:(id)arg3 spotlightDomainIdentifier:(id)arg4 store:(id)arg5 afterCallbackQueue:(id)arg6 finalize:(CDUnknownBlockType)arg7;
 - (void)_suggestionsFromMessage:(id)arg1 options:(unsigned long long)arg2 dissectIfNecessary:(BOOL)arg3 completionDelivery:(unsigned long long)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)_suggestionsFromMessageWithIdentifier:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3 completionDelivery:(unsigned long long)arg4 providedBy:(CDUnknownBlockType)arg5 dissectIfNecessary:(BOOL)arg6;
+- (void)_suggestionsFromMessageWithIdentifier:(id)arg1 options:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3 completionDelivery:(unsigned long long)arg4 providedBy:(CDUnknownBlockType)arg5 searchableItem:(id)arg6 dissectIfNecessary:(BOOL)arg7;
 - (void)_suggestionsFromSearchableItem:(id)arg1 options:(unsigned long long)arg2 dissectIfNecessary:(BOOL)arg3 withCompletion:(CDUnknownBlockType)arg4;
 - (void)addInteractions:(id)arg1 bundleId:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)addSearchableItemMetadata:(id)arg1 htmlData:(id)arg2 completion:(CDUnknownBlockType)arg3;

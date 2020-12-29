@@ -152,6 +152,7 @@
 - (void)brailleDisplay:(id)arg1 memorizedKey:(id)arg2;
 - (void)brailleDisplay:(id)arg1 pressedKeys:(id)arg2;
 - (void)brailleDisplay:(id)arg1 willMemorizeKey:(id)arg2;
+- (void)brailleDisplayHadUserInteraction:(id)arg1;
 - (void)brailleDriverDisconnected:(id)arg1;
 - (id)brailleInputManager;
 - (void)configurationChangedForBrailleDisplay:(id)arg1;

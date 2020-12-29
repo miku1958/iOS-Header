@@ -14,5 +14,6 @@
 - (void)coverSheetViewControllerIrisPlayingDidFinish:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetViewControllerShouldDismissContextMenu:(CSCoverSheetViewController *)arg1;
 - (void)coverSheetWindowedAccessoryViewControllerDidDismiss:(CSCoverSheetViewController *)arg1;
+- (void)coverSheetWindowedAccessoryViewControllerDidPresent:(CSCoverSheetViewController *)arg1;
 @end
 

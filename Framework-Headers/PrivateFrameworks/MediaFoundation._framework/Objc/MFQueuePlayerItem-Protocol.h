@@ -7,5 +7,8 @@
 #import <MediaFoundation/MFPlayerItem-Protocol.h>
 
 @protocol MFQueuePlayerItem <MFPlayerItem>
+
+@property (nonatomic) double playbackStartTimeOverride;
+
 @end
 

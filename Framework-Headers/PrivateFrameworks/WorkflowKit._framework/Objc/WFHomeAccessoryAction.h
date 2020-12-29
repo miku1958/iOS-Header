@@ -22,7 +22,6 @@
 
 + (id)homeAccessoryActionWithHome:(id)arg1;
 + (id)homeAccessoryActionWithTriggerActionSetsBuilder:(id)arg1;
-- (void)_performHomeAccessoryAction;
 - (void)dealloc;
 - (void)homeManagerDidUpdateHomes:(id)arg1;
 - (id)homeName;
@@ -33,6 +32,7 @@
 - (void)localizedParameterSummaryWithCompletion:(CDUnknownBlockType)arg1;
 - (id)localizedSummaryText;
 - (id)parameterSummaryString;
+- (void)performHomeAccessoryAction;
 - (void)runAsynchronouslyWithInput:(id)arg1;
 
 @end

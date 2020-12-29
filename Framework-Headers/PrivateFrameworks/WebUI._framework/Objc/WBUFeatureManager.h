@@ -6,17 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class ACAccount, ACAccountStore, NSNumber, OTClique, STManagementState;
+#import <WebUI/ACMonitoredAccountStoreDelegateProtocol-Protocol.h>
+
+@class ACAccount, ACMonitoredAccountStore, NSNumber, NSString, OTClique, STManagementState;
 @protocol OS_dispatch_queue;
 
-@interface WBUFeatureManager : NSObject
+@interface WBUFeatureManager : NSObject <ACMonitoredAccountStoreDelegateProtocol>
 {
     NSObject<OS_dispatch_queue> *_internalQueue;
-    ACAccountStore *_accountStore;
+    ACMonitoredAccountStore *_accountStore;
     ACAccount *_account;
     NSNumber *_cachedShouldRequestMoreTime;
     STManagementState *_managementState;
     OTClique *_keychainClique;
+    NSString *_primaryAccountAltDSID;
     BOOL _autoFillAvailable;
     BOOL _bookmarksAvailable;
     BOOL _readingListAvailable;
@@ -33,23 +36,30 @@
 @property (readonly, nonatomic, getter=isCloudSyncAvailable) BOOL cloudSyncAvailable; // @synthesize cloudSyncAvailable=_cloudSyncAvailable;
 @property (readonly, nonatomic, getter=isCloudTabsAvailable) BOOL cloudTabsAvailable;
 @property (readonly, nonatomic, getter=isCreditCardStorageAvailable) BOOL creditCardStorageAvailable;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic, getter=isInMemoryBookmarkChangeTrackingAvailable) BOOL inMemoryBookmarkChangeTrackingAvailable; // @synthesize inMemoryBookmarkChangeTrackingAvailable=_inMemoryBookmarkChangeTrackingAvailable;
 @property (readonly, nonatomic, getter=isKeychainSyncEnabled) BOOL keychainSyncEnabled;
 @property (readonly, nonatomic, getter=isOfflineReadingListAvailable) BOOL offlineReadingListAvailable; // @synthesize offlineReadingListAvailable=_offlineReadingListAvailable;
 @property (readonly, nonatomic, getter=isPrivateBrowsingAvailable) BOOL privateBrowsingAvailable;
 @property (readonly, nonatomic, getter=isReadingListAvailable) BOOL readingListAvailable; // @synthesize readingListAvailable=_readingListAvailable;
+@property (readonly) Class superclass;
 @property (readonly, nonatomic, getter=isUserRemotelyManagedAndLocallyRestricted) BOOL userRemotelyManagedAndLocallyRestricted;
 
 + (long long)accessLevel;
 + (BOOL)shouldOfferVirtualCards;
 + (id)webui_sharedFeatureManager;
 - (void).cxx_destruct;
-- (void)_accountStoreDidChange:(id)arg1;
+- (BOOL)_isCloudTabsAvailableUsingManagedAppleID:(BOOL)arg1;
 - (BOOL)_isUsingManagedAppleID;
-- (void)_setupAccountStore;
-- (void)_updateAppleAccount;
+- (void)_setAccount:(id)arg1;
+- (void)_setAccountOnInternalQueue:(id)arg1;
 - (void)_updateFeatureAvailabilityByAccessLevel;
 - (void)_updateKeychainSyncingStatus;
+- (void)accountWasAdded:(id)arg1;
+- (void)accountWasModified:(id)arg1;
+- (void)accountWasRemoved:(id)arg1;
 - (void)dealloc;
 - (void)determineIfPrivateBrowsingIsAvailableWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)determineIfUserIsRestrictedByScreenTimeWithCompletionHandler:(CDUnknownBlockType)arg1;

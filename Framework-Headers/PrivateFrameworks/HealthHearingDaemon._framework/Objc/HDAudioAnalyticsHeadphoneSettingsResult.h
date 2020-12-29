@@ -6,26 +6,20 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class HDAudioAnalyticsHeadphoneSettingsDeviceResult;
 
 __attribute__((visibility("hidden")))
 @interface HDAudioAnalyticsHeadphoneSettingsResult : NSObject
 {
-    BOOL _hasHAENRequired;
-    BOOL _hasHAENEnabled;
-    BOOL _hasMeasureLevelsEnabled;
-    BOOL _hasIncludeOtherHeadphonesEnabled;
-    NSString *_haenRetention;
+    HDAudioAnalyticsHeadphoneSettingsDeviceResult *_localDevice;
+    HDAudioAnalyticsHeadphoneSettingsDeviceResult *_activePairedWatch;
 }
 
-@property (strong, nonatomic) NSString *haenRetention; // @synthesize haenRetention=_haenRetention;
-@property (nonatomic) BOOL hasHAENEnabled; // @synthesize hasHAENEnabled=_hasHAENEnabled;
-@property (nonatomic) BOOL hasHAENRequired; // @synthesize hasHAENRequired=_hasHAENRequired;
-@property (nonatomic) BOOL hasIncludeOtherHeadphonesEnabled; // @synthesize hasIncludeOtherHeadphonesEnabled=_hasIncludeOtherHeadphonesEnabled;
-@property (nonatomic) BOOL hasMeasureLevelsEnabled; // @synthesize hasMeasureLevelsEnabled=_hasMeasureLevelsEnabled;
+@property (strong, nonatomic) HDAudioAnalyticsHeadphoneSettingsDeviceResult *activePairedWatch; // @synthesize activePairedWatch=_activePairedWatch;
+@property (strong, nonatomic) HDAudioAnalyticsHeadphoneSettingsDeviceResult *localDevice; // @synthesize localDevice=_localDevice;
 
 - (void).cxx_destruct;
-- (id)initWithHAENRequired:(BOOL)arg1 hasHAENEnabled:(BOOL)arg2 hasMeasureLevelsEnabled:(BOOL)arg3 hasIncludeOtherHeadphonesEnabled:(BOOL)arg4 haenRetention:(id)arg5;
+- (id)initWithLocalDevice:(id)arg1 activePairedWatch:(id)arg2;
 
 @end
 

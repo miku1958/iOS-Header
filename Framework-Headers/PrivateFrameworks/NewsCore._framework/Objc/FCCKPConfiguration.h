@@ -10,6 +10,7 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPConfiguration : PBCodable <NSCopying>
 {
     unsigned long long _created;
@@ -27,9 +28,9 @@
 @property (nonatomic) BOOL hasCreated;
 @property (nonatomic) BOOL hasExpires;
 
++ (Class)fieldsType;
 - (void)addFields:(id)arg1;
 - (void)clearFields;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *channelPromotedArticlesService;
     MISSING_TYPE *personalizer;
+    MISSING_TYPE *paidAccessChecker;
 }
 
 @end

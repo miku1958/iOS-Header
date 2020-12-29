@@ -65,7 +65,6 @@
 @property (strong, nonatomic) NSDictionary *assistiveTouchMainScreenCustomization;
 @property (readonly, nonatomic) NSDictionary *assistiveTouchMainScreenDefaultCustomization;
 @property (readonly, nonatomic) BOOL assistiveTouchMotionTrackerConfigurable;
-@property (readonly, nonatomic) BOOL assistiveTouchMotionTrackerEnableHIDTracking;
 @property (nonatomic) BOOL assistiveTouchMotionTrackerShouldOffsetBufferPoints; // @synthesize assistiveTouchMotionTrackerShouldOffsetBufferPoints=_assistiveTouchMotionTrackerShouldOffsetBufferPoints;
 @property (nonatomic) unsigned long long assistiveTouchMotionTrackerSmoothingBufferSize;
 @property (nonatomic) double assistiveTouchMotionTrackerSmoothingMaxDelta;
@@ -475,6 +474,7 @@
 @property (nonatomic) BOOL zoomShouldAllowFullscreenAutopanning;
 @property (nonatomic) BOOL zoomShouldFollowFocus;
 @property (nonatomic) BOOL zoomShouldShowSlug;
+@property (nonatomic) BOOL zoomShowedBanner;
 @property (nonatomic) long long zoomSlugDoubleTapAction;
 @property (nonatomic) struct CGPoint zoomSlugNormalizedPosition;
 @property (nonatomic) long long zoomSlugSingleTapAction;

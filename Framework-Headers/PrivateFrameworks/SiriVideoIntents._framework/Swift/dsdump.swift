@@ -9,8 +9,25 @@
  {
 	// getter
  }
+ protocol SiriVideoIntents.AppSelectionConfigurationLevelProviding // 6 requirements
+ {
+	// getter
+	// getter
+	// getter
+	// getter
+	// getter
+	// getter
+ }
  protocol SiriVideoIntents.WatchListService // 2 requirements
  {
+	// method
+	// method
+ }
+ protocol SiriVideoIntents.ThirdPartyDialogProviding // 5 requirements
+ {
+	// class associated type access function
+	// class associated type access function
+	// method
 	// method
 	// method
  }
@@ -25,8 +42,11 @@
 	// class base protocol
 	// class method
  }
- protocol SiriVideoIntents.AnalyticsService // 10 requirements
+ protocol SiriVideoIntents.AnalyticsService // 13 requirements
  {
+	// method
+	// method
+	// method
 	// method
 	// method
 	// method
@@ -83,6 +103,19 @@
 	// class associated type access function
 	// class getter
  }
+ protocol SiriVideoIntents.ResponseTemplatesProviding // 1 requirements
+ {
+	// method
+ }
+ protocol SiriVideoIntents.AppSelecting // 2 requirements
+ {
+	// method
+	// method
+ }
+ protocol SiriVideoIntents.ThirdPartyMediaIntentVerifier // 1 requirements
+ {
+	// method
+ }
  protocol SiriVideoIntents.AppSelectionCandidateDependentSignal // 2 requirements
  {
 	// class base protocol
@@ -102,6 +135,9 @@
  {
 	// class method
  }
+ protocol SiriVideoIntents.BaseDisambiguationProvider // 0 requirements
+ {
+ }
  protocol SiriVideoIntents.ContentResolving // 5 requirements
  {
 	// method
@@ -120,14 +156,49 @@
 	// method
 	// method
  }
+ protocol SiriVideoIntents.AppInfoProviding // 1 requirements
+ {
+	// method
+ }
+ protocol SiriVideoIntents.UserDefaultsProvider // 1 requirements
+ {
+	// getter
+ }
  protocol SiriVideoIntents.SpotlightSearchProviding // 2 requirements
  {
 	// method
 	// method
  }
 
+ struct SiriVideoIntents.AppSelectionConfigurationLevelProvider: AppSelectionConfigurationLevelProviding {
+
+	// Properties
+	let client : TRIClient // +0x0
+	let namespace : String // +0x8
+ }
+
+ struct SiriVideoIntents.AppSelectionConfiguration {
+
+	// Properties
+	let appSelectionEnabled : Bool // +0x0
+	let minimumNormalizedConfidence : Double // +0x8
+	let minimumAbsoluteConfidence : Double // +0x10
+	let videoAppBundleIdentifiers : Set<String> // +0x18
+	let musicAppBundleIdentifiers : Set<String> // +0x20
+	let trialTrackingId : TRITrackingId? // +0x28
+	let trialExperimentId : String? // +0x30
+	let trialTreatmentId : String? // +0x40
+	let trialRolloutId : String? // +0x50
+	let modelValue : AtomicValue // +0x60
+ }
+
  class SiriVideoIntents.FirstPartyVideoAppResolutionService {
  class SiriVideoIntents.LocUtil : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let deviceState : è*
+
 	// Swift methods
  }
 
@@ -157,11 +228,12 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceState : Û
+	let deviceState : è*
 	let dialogProvider : VideoWatchListDialogProvider
+	let locUtil : LocUtil
 
 	// Swift methods
-	0x6220  func AddToWatchList.UnsupportedValueStrategy.makeUnsupportedValueOutput(app:intent:parameterName:multicardinalValueIndex:intentResolutionResult:_:) // method 
+	0xdc20  func AddToWatchList.UnsupportedValueStrategy.makeUnsupportedValueOutput(app:intent:parameterName:multicardinalValueIndex:intentResolutionResult:_:) // method 
  }
 
  class SiriVideoIntents.RemoveFromWatchListIntentHandler : NSObject /usr/lib/libobjc.A.dylib {
@@ -172,32 +244,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let analyticsService : AnalyticsService
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa8fc0002ced0 (0xfc0002ced0) in binary!
-	0xf29c  @objc RemoveFromWatchListIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xf2900002cdd0 (0x2900002cdd0) in binary!
-	0xf284  @objc RemoveFromWatchListIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0x92bc0002cda8 (0x2bc0002cda8) in binary!
+WARNING: couldn't find address 0xe844000384d8 (0x44000384d8) in binary!
+	0x13ad4  @objc RemoveFromWatchListIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0x13ac8000383e0 (0x2c8000383e0) in binary!
+	0x13abc  @objc RemoveFromWatchListIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xc264000383b8 (0x264000383b8) in binary!
 	0x58000000c  @objc RemoveFromWatchListIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xa8b40002ce88 (0xb40002ce88) in binary!
-	0xf254  @objc RemoveFromWatchListIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xf2480002cd68 (0x2480002cd68) in binary!
-	0xf23c  @objc RemoveFromWatchListIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe7fc00038490 (0x7fc00038490) in binary!
+	0x13a8c  @objc RemoveFromWatchListIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0x13a8000038378 (0x28000038378) in binary!
+	0x13a74  @objc RemoveFromWatchListIntentHandler.(null) <stripped>
 
 	// Swift methods
-	0x70a0  func RemoveFromWatchListIntentHandler.resolveContent(for:with:) // method 
-	0x83a0  func RemoveFromWatchListIntentHandler.confirm(intent:completion:) // method 
-	0x86f0  func RemoveFromWatchListIntentHandler.handle(intent:completion:) // method 
+	0xead0  func RemoveFromWatchListIntentHandler.resolveContent(for:with:) // method 
+	0xfdd0  func RemoveFromWatchListIntentHandler.confirm(intent:completion:) // method 
+	0x10120  func RemoveFromWatchListIntentHandler.handle(intent:completion:) // method 
  }
 
  class SiriVideoIntents.UnsupportedValueStrategy : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceState : Û
+	let deviceState : è*
 	let watchListDialogs : VideoWatchListDialogProvider
+	let locUtil : LocUtil
 
 	// Swift methods
-	0xa7d0  func RemoveFromWatchList.UnsupportedValueStrategy.makeUnsupportedValueOutput(app:intent:parameterName:multicardinalValueIndex:intentResolutionResult:_:) // method 
+	0x12330  func RemoveFromWatchList.UnsupportedValueStrategy.makeUnsupportedValueOutput(app:intent:parameterName:multicardinalValueIndex:intentResolutionResult:_:) // method 
  }
 
  class SiriVideoIntents.FindVideoIntentHandler : NSObject /usr/lib/libobjc.A.dylib {
@@ -206,21 +279,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let contentResolver : ContentResolving
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa8b40002ce88 (0xb40002ce88) in binary!
-	0xf254  @objc FindVideoIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xf2480002cd68 (0x2480002cd68) in binary!
-	0xf23c  @objc FindVideoIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0x92740002cd60 (0x2740002cd60) in binary!
+WARNING: couldn't find address 0xe7fc00038490 (0x7fc00038490) in binary!
+	0x13a8c  @objc FindVideoIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0x13a8000038378 (0x28000038378) in binary!
+	0x13a74  @objc FindVideoIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xc21c00038370 (0x21c00038370) in binary!
 	0x58000000c  @objc FindVideoIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xa86c0002ce40 (0x6c0002ce40) in binary!
-	0xf20c  @objc FindVideoIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xf2000002cd08 (0x2000002cd08) in binary!
-	0xf1f4  @objc FindVideoIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe7b400038448 (0x7b400038448) in binary!
+	0x13a44  @objc FindVideoIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0x13a3800038318 (0x23800038318) in binary!
+	0x13a2c  @objc FindVideoIntentHandler.(null) <stripped>
 
 	// Swift methods
-	0xb600  func FindVideoIntentHandler.resolveContent(for:with:) // method 
-	0xc850  func FindVideoIntentHandler.confirm(intent:completion:) // method 
-	0xc090  func FindVideoIntentHandler.handle(intent:completion:) // method 
+	0x130d0  func FindVideoIntentHandler.resolveContent(for:with:) // method 
+	0x14320  func FindVideoIntentHandler.confirm(intent:completion:) // method 
+	0x13b60  func FindVideoIntentHandler.handle(intent:completion:) // method 
  }
 
  struct SiriVideoIntents.WatchListServiceImpl: WatchListService {
@@ -235,6 +308,9 @@ WARNING: couldn't find address 0xf2000002cd08 (0x2000002cd08) in binary!
 	case unknownError  
 	case viewConversionError  
 	case appResolutionError  
+	case noAppSelected  
+	case appDisambiguationCancelled  
+	case appSelectionDisabledOnTrial  
 	case missingResponse  
 	case failedToOpenUrl  
  }
@@ -261,22 +337,34 @@ WARNING: couldn't find address 0xf2000002cd08 (0x2000002cd08) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceState : Û
+	let deviceState : è*
 
 	// Swift methods
-	0x10f50  func AddToWatchList.FlowStrategy.actionForInput(input:) // method 
-	0x110e0  func AddToWatchList.FlowStrategy.makeIntentFromParse(parse:currentIntent:completion:) // method 
+	0x19490  func AddToWatchList.FlowStrategy.actionForInput(input:) // method 
+	0x19620  func AddToWatchList.FlowStrategy.makeIntentFromParse(parse:currentIntent:completion:) // method 
  }
 
  class SiriVideoIntents.CommonIntentThirdPartyAppResolution : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let intent : MediaNLIntent // +0x0 (0x0)
+	let intent : MediaNLIntent // +0x5 (0x0)
 
 	// Swift methods
-	0x11a90  func CommonIntentThirdPartyAppResolution.getRequestedApp() // method 
-	0x11ce0  func CommonIntentThirdPartyAppResolution.getSuggestedApp() // method 
-	0x11cf0  func CommonIntentThirdPartyAppResolution.getConfirmationResponse() // method 
+	0x19fd0  func CommonIntentThirdPartyAppResolution.getRequestedApp() // method 
+	0x1a220  func CommonIntentThirdPartyAppResolution.getSuggestedApp() // method 
+	0x1a230  func CommonIntentThirdPartyAppResolution.getConfirmationResponse() // method 
+ }
+
+ struct SiriVideoIntents.SearchMediaDialogProvider: ThirdPartyDialogProviding {
+
+	// Properties
+	let dialogProvider : DialogProviding // +0x0
+ }
+
+ struct SiriVideoIntents.PlayMediaDialogProvider: ThirdPartyDialogProviding {
+
+	// Properties
+	let dialogProvider : DialogProviding // +0x0
  }
 
  class SiriVideoIntents.AppUsageProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -291,6 +379,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let timeElapsed : Double // +0x10
  }
 
+ class SiriVideoIntents.CommonUnsupportedValueStrategy {
  class SiriVideoIntents.PlayVideoIntentHandler : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
@@ -299,34 +388,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let backgroundFetch : BackgroundPlayableFetch
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa86c0002ce40 (0x6c0002ce40) in binary!
-	0xf20c  @objc PlayVideoIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xf2000002cd08 (0x2000002cd08) in binary!
-	0xf1f4  @objc PlayVideoIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0x922c0002cd18 (0x22c0002cd18) in binary!
+WARNING: couldn't find address 0xe7b400038448 (0x7b400038448) in binary!
+	0x13a44  @objc PlayVideoIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0x13a3800038318 (0x23800038318) in binary!
+	0x13a2c  @objc PlayVideoIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xc1d400038328 (0x1d400038328) in binary!
 	0x28000000c  @objc PlayVideoIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0x8a6c0002ccb8 (0x26c0002ccb8) in binary!
-	0xa7e9  @objc PlayVideoIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x494fff83710  @objc PlayVideoIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe76c000387c8 (0x76c000387c8) in binary!
+	0xad4a  @objc PlayVideoIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x78cfff5f678  @objc PlayVideoIntentHandler.(null) <stripped>
 
 	// Swift methods
-	0x139f0  func PlayVideoIntentHandler.resolveContent(for:with:) // method 
-	0x15520  func PlayVideoIntentHandler.confirm(intent:completion:) // method 
-	0x15b00  func PlayVideoIntentHandler.handle(intent:completion:) // method 
+	0x1dee0  func PlayVideoIntentHandler.resolveContent(for:with:) // method 
+	0x1fa10  func PlayVideoIntentHandler.confirm(intent:completion:) // method 
+	0x1fff0  func PlayVideoIntentHandler.handle(intent:completion:) // method 
  }
 
  class SiriVideoIntents.HandleIntentStrategy : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceState : Û
+	let deviceState : è*
 	let viewFactory : VideoViewFactory
 	let watchListDialogs : VideoWatchListDialogProvider
 
 	// Swift methods
-	0x18700  func AddToWatchList.HandleIntentStrategy.makeIntentHandledResponse(app:intent:intentResponse:_:) // method 
-	0x18720  func AddToWatchList.HandleIntentStrategy.makeFailureHandlingIntentResponse(app:intent:intentResponse:_:) // method 
+	0x22bf0  func AddToWatchList.HandleIntentStrategy.makeIntentHandledResponse(app:intent:intentResponse:_:) // method 
+	0x22c10  func AddToWatchList.HandleIntentStrategy.makeFailureHandlingIntentResponse(app:intent:intentResponse:_:) // method 
+ }
+
+ enum SiriVideoIntents.LiveServiceResolutionError {
+
+	// Properties
+	case missingChannel  
+	case missingURL  
+	case unsupportedPlatform  
  }
 
  struct SiriVideoIntents.Genre {
@@ -341,24 +438,105 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case name  
  }
 
+ class SiriVideoIntents.PlayMediaAppSelectionInput : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var result_appUsageScore1Day : Double
+	var result_appUsageScore7Days : Double
+	var supports_general : Double
+	var supports_audiobooks : Double
+	var supports_podcasts : Double
+	var result_nowPlayingUsage7Days : Double
+	var result_foregroundAppIsLastUsed : Double
+	var result_foregroundAppDuetElapsedSeconds : Double
+	var result_clientCarConnected : String
+	var result_clientCarplay : String
+	var result_clientDaylight : String
+	var result_clientDevice : String
+	var result_clientHourOfDay : Double
+	var result_clientIsActiveForegroundApp : Double
+	var result_clientLocaleIdentifier : String
+	var result_clientLocaleLanguage : String
+	var result_clientLocked : String
+	var result_clientMotion : String
+	var result_clientNavigating : String
+	var result_clientWorkout : String
+	var result_entitySearchAllTimeInteractionShare : Double
+	var result_entitySearchNormalizedSecondsSinceLastInteraction : Double
+	var result_entitySearchTrailing10MinuteInteractionShare : Double
+	var result_entitySearchTrailing1DayInteractionShare : Double
+	var result_entitySearchTrailing1HourInteractionShare : Double
+	var result_entitySearchTrailing28DayInteractionShare : Double
+	var result_entitySearchTrailing2MinuteInteractionShare : Double
+	var result_entitySearchTrailing6HourInteractionShare : Double
+	var result_entitySearchTrailing7DayInteractionShare : Double
+	var result_mediaNamePresent : Double
+	var result_mediaType : String
+	var result_isNowPlayingDuetApp : Double
+	var result_nowPlayingDuetElapsedSeconds : Double
+	var result_nowPlayingState : String
+	var result_spotlightMatches : Double
+	var result_libraryItems : Double
+	var result_subscriptionStatus : String
+	var result_isNowPlayingApp : Double
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0xe76c000387c8 (0x76c000387c8) in binary!
+	0xad4a  @objc PlayMediaAppSelectionInput.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x78cfff5f678  @objc PlayMediaAppSelectionInput.(null) <stripped>
+
+	// Swift methods
+	0x24500  func <stripped> // method 
+ }
+
+ class SiriVideoIntents.PlayMediaAppSelectionOutput : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let provider : MLFeatureProvider
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_result_isRequestedApp : ë*
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_result_isRequestedAppProbability :  empty-list 
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0xe74c000387a8 (0x74c000387a8) in binary!
+	0xad2a  @objc PlayMediaAppSelectionOutput.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x274fff67ee8  @objc PlayMediaAppSelectionOutput.(null) <stripped>
+
+	// Swift methods
+	0x253a0  func <stripped> // getter 
+ }
+
+ class SiriVideoIntents.PlayMediaAppSelection : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let model : MLModel
+
+	// Swift methods
+	0x255a0  func <stripped> // method 
+ }
+
  class SiriVideoIntents.UTSProvider {
  struct SiriVideoIntents.TimedResult {
 
 	// Properties
 	let result : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resolutionTimeMs : =Û
+	let resolutionTimeMs : W)
  }
 
+ class SiriVideoIntents.CommonDisambigateLiveServicesStrategy {
  class SiriVideoIntents.UnsupportedValueStrategy : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceState : Û
+	let deviceState : è*
 	let videoDialogs : VideoDialogProvider
 
 	// Swift methods
-	0x1def0  func PlayVideo.UnsupportedValueStrategy.makeUnsupportedValueOutput(app:intent:parameterName:multicardinalValueIndex:intentResolutionResult:_:) // method 
+	0x2cb40  func PlayVideo.UnsupportedValueStrategy.makeUnsupportedValueOutput(app:intent:parameterName:multicardinalValueIndex:intentResolutionResult:_:) // method 
  }
 
  class SiriVideoIntents.RecordableResult : NSObject /usr/lib/libobjc.A.dylib {
@@ -372,19 +550,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let test : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa7ee0002cca8 (0x7ee0002cca8) in binary!
-	0x8caf  @objc RecordableResult.(null) <stripped>
-WARNING: couldn't find address 0xa7ec0002cdc0 (0x7ec0002cdc0) in binary!
-	0x91d0  @objc RecordableResult.(null) <stripped>
-WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x43cfffb4328  @objc RecordableResult.(null) <stripped>
-	0xfffb4560  @objc RecordableResult.Hâ«ˇ”IâƒMâıËËµ <stripped>
+WARNING: couldn't find address 0xe6f600038278 (0x6f600038278) in binary!
+	0xacea  @objc RecordableResult.(null) <stripped>
+WARNING: couldn't find address 0xe6f400038388 (0x6f400038388) in binary!
+	0xc138  @objc RecordableResult.(null) <stripped>
+WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
+	0x214fffa4ea0  @objc RecordableResult.(null) <stripped>
+	0x1ecfffa59f8  @objc RecordableResult.Hãm§ <stripped>
 
 	// Swift methods
-	0x1f280  class func RecordableResult.__allocating_init(name:timeElapsed:rows:info:signalTiming:test:) // init 
-	0x1f3d0  func RecordableResult.json() // method 
-	0x1f850  func RecordableResult.encode(with:) // method 
-	0x1fb00  class func RecordableResult.__allocating_init(coder:) // init 
+	0x2ddb0  class func RecordableResult.__allocating_init(name:timeElapsed:rows:info:signalTiming:test:) // init 
+	0x2df00  func RecordableResult.json() // method 
+	0x2e380  func RecordableResult.encode(with:) // method 
+	0x2e630  class func RecordableResult.__allocating_init(coder:) // init 
  }
 
  class SiriVideoIntents.AtomicOnce : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -394,7 +572,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var queue : OS_dispatch_queue
 
 	// Swift methods
-	0x258b0  func <stripped> // method 
+	0x34c10  func <stripped> // method 
  }
 
  class SiriVideoIntents.Once : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -443,58 +621,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var complete : Bool
 
 	// Swift methods
-	0x2d710  func <stripped> // method 
- }
-
- class SiriVideoIntents.PlayMediaAppSelectionInput : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	var result_appUsageScore1Day : Double
-	var result_appUsageScore7Days : Double
-	var supports_general : Double
-	var supports_audiobooks : Double
-	var supports_podcasts : Double
-	var result_nowPlayingUsage7Days : Double
-	var result_foregroundAppIsLastUsed : Double
-	var result_foregroundAppDuetElapsedSeconds : Double
-	var result_clientCarConnected : String
-	var result_clientCarplay : String
-	var result_clientDaylight : String
-	var result_clientDevice : String
-	var result_clientHourOfDay : Double
-	var result_clientIsActiveForegroundApp : Double
-	var result_clientLocaleIdentifier : String
-	var result_clientLocaleLanguage : String
-	var result_clientLocked : String
-	var result_clientMotion : String
-	var result_clientNavigating : String
-	var result_clientWorkout : String
-	var result_entitySearchAllTimeInteractionShare : Double
-	var result_entitySearchNormalizedSecondsSinceLastInteraction : Double
-	var result_entitySearchTrailing10MinuteInteractionShare : Double
-	var result_entitySearchTrailing1DayInteractionShare : Double
-	var result_entitySearchTrailing1HourInteractionShare : Double
-	var result_entitySearchTrailing28DayInteractionShare : Double
-	var result_entitySearchTrailing2MinuteInteractionShare : Double
-	var result_entitySearchTrailing6HourInteractionShare : Double
-	var result_entitySearchTrailing7DayInteractionShare : Double
-	var result_mediaAlbumPresent : Double
-	var result_mediaArtistPresent : Double
-	var result_mediaGenrePresent : Double
-	var result_mediaMoodPresent : Double
-	var result_mediaNamePresent : Double
-	var result_mediaParsecCategory : String
-	var result_mediaReleaseDatePresent : Double
-	var result_mediaType : String
-	var result_isNowPlayingDuetApp : Double
-	var result_nowPlayingDuetElapsedSeconds : Double
-	var result_nowPlayingState : String
-	var result_spotlightMatches : Double
-	var result_libraryItems : Double
-	var result_subscriptionStatus : String
-	var result_isNowPlayingApp : Double
-
-	// Swift methods
+	0x3da00  func <stripped> // method 
  }
 
  class SiriVideoIntents.BaseDialogProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, DialogProviding {
@@ -520,8 +647,8 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
  class SiriVideoIntents.FlowStrategy : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x34e30  func PlayLiveService.FlowStrategy.actionForInput(input:) // method 
-	0x34f50  func PlayLiveService.FlowStrategy.makeIntentFromParse(parse:currentIntent:completion:) // method 
+	0x460c0  func PlayLiveService.FlowStrategy.actionForInput(input:) // method 
+	0x461e0  func PlayLiveService.FlowStrategy.makeIntentFromParse(parse:currentIntent:completion:) // method 
  }
 
  class SiriVideoIntents.MediaPersonOntologyNode {
@@ -529,9 +656,9 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let intentNode : —ﬂ
+	let intentNode : ›
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let ontologyNode : Åﬂ
+	let ontologyNode : e
  }
 
  enum SiriVideoIntents.PersonRole {
@@ -553,28 +680,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var input : ìﬁ // +0x0 (0x0)
+	var input : w // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewFactory : ª› // +0x0 (0x8)
+	let viewFactory : ó // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceState : Û // +0x0 (0x28)
+	let deviceState : è* // +0x0 (0x28)
 	let videoDialogs : VideoDialogProvider // +0x0 (0x28)
 
 	// Swift methods
-	0x36e20  func <stripped> // method 
+	0x484d0  func <stripped> // method 
  }
 
  class SiriVideoIntents.HandleIntentStrategy : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceState : Û
+	let deviceState : è*
 	let viewFactory : VideoViewFactory
 	let watchListDialogs : VideoWatchListDialogProvider
 
 	// Swift methods
-	0x37f80  func RemoveFromWatchList.HandleIntentStrategy.makeIntentHandledResponse(app:intent:intentResponse:_:) // method 
-	0x37fa0  func RemoveFromWatchList.HandleIntentStrategy.makeFailureHandlingIntentResponse(app:intent:intentResponse:_:) // method 
+	0x497a0  func RemoveFromWatchList.HandleIntentStrategy.makeIntentHandledResponse(app:intent:intentResponse:_:) // method 
+	0x497c0  func RemoveFromWatchList.HandleIntentStrategy.makeFailureHandlingIntentResponse(app:intent:intentResponse:_:) // method 
  }
 
  struct SiriVideoIntents.UTSData {
@@ -589,6 +716,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case items  
 	case nextToken  
+ }
+
+ struct SiriVideoIntents.Channel {
+
+	// Properties
+	let id : String // +0x0
+	let name : String // +0x10
+	let appAdamIds : [String] // +0x20
+	let appName : String? // +0x28
+	let isFirstParty : Bool // +0x38
+	let isSubscribed : Bool // +0x39
+	let isInstalled : Bool // +0x3a
+	let appStoreUrl : String? // +0x40
+	let images : ChannelImageOptions // +0x50
  }
 
  struct SiriVideoIntents.UTSItem {
@@ -621,6 +762,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case content  
 	case hasUserActivity  
+ }
+
+ enum SiriVideoIntents.CodingKeys {
+
+	// Properties
+	case id  
+	case name  
+	case appAdamIds  
+	case appName  
+	case isFirstParty  
+	case isSubscribed  
+	case isInstalled  
+	case appStoreUrl  
+	case images  
+ }
+
+ struct SiriVideoIntents.ChannelImageOptions {
+
+	// Properties
+	let appIcon : UTSImage // +0x0
  }
 
  struct SiriVideoIntents.UTSContent {
@@ -657,6 +818,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case seasonNumber  
  }
 
+ enum SiriVideoIntents.CodingKeys {
+
+	// Properties
+	case appIcon  
+ }
+
  struct SiriVideoIntents.UTSImageDict {
 
 	// Properties
@@ -675,19 +842,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case coverArt16X9  
  }
 
+ class SiriVideoIntents.UnsupportedValueStrategy : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let deviceState : è*
+	let videoDialogs : VideoDialogProvider
+
+	// Swift methods
+	0x54a30  func PlayLiveService.UnsupportedValueStrategy.makeUnsupportedValueOutput(app:intent:parameterName:multicardinalValueIndex:intentResolutionResult:_:) // method 
+ }
+
  class SiriVideoIntents.CommonIntentThirdPartyAppResolutionStrategy {
+ struct SiriVideoIntents.SKEResponseProvider: ResponseTemplatesProviding { }
+
  class SiriVideoIntents.HandleIntentStrategy : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceState : Û
+	let deviceState : è*
 	let viewFactory : VideoViewFactory
 	let videoDialogs : VideoDialogProvider
 
 	// Swift methods
-	0x422d0  func PlayVideo.HandleIntentStrategy.makePreHandleIntentOutput(app:intent:intentResponse:_:) // method 
-	0x42410  func PlayVideo.HandleIntentStrategy.makeIntentHandledResponse(app:intent:intentResponse:_:) // method 
-	0x42430  func PlayVideo.HandleIntentStrategy.makeFailureHandlingIntentResponse(app:intent:intentResponse:_:) // method 
+	0x58640  func PlayVideo.HandleIntentStrategy.makePreHandleIntentOutput(app:intent:intentResponse:_:) // method 
+	0x58780  func PlayVideo.HandleIntentStrategy.makeIntentHandledResponse(app:intent:intentResponse:_:) // method 
+	0x587a0  func PlayVideo.HandleIntentStrategy.makeFailureHandlingIntentResponse(app:intent:intentResponse:_:) // method 
  }
 
  class SiriVideoIntents.MediaAppOntologyNode {
@@ -695,14 +875,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var intentNode : —ﬂ
+	var intentNode : ›
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ontologyNode : Åﬂ
+	var ontologyNode : e
  }
 
- class SiriVideoIntents.AppSelector : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+ class SiriVideoIntents.AppSelector : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AppSelecting {
+
+	// Properties
+	let analyticsService : AnalyticsService
+
 	// Swift methods
-	0x443a0  func AppSelector.recordSignals(for:bundleIdentifier:completion:) // method 
+	0x5a8b0  func AppSelector.recordSignals(for:bundleIdentifier:completion:) // method 
+	0x5b2e0  func <stripped> // method 
  }
 
  class SiriVideoIntents.ContextProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -783,9 +968,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var roles : Person
 	var genre : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var startDate : ªÏ
+	var startDate : )
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var endDate : ªÏ
+	var endDate : )
 	var studio : String?
 	var recommendedAge : Int?
 	var isUhd : Bool?
@@ -818,26 +1003,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class SiriVideoIntents.RecordStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x4a3b0  func RecordStore.shouldMakeRecord(force:frequencyDenominator:) // method 
-	0x4a3c0  func RecordStore.makeRecord(result:completion:) // method 
+	0x645a0  func RecordStore.shouldMakeRecord(force:frequencyDenominator:) // method 
+	0x645b0  func RecordStore.makeRecord(result:completion:) // method 
  }
 
  class SiriVideoIntents.FlowStrategy : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceState : Û
+	let deviceState : è*
 
 	// Swift methods
-	0x4be00  func PlayVideo.FlowStrategy.actionForInput(input:) // method 
-	0x4bf90  func PlayVideo.FlowStrategy.makeIntentFromParse(parse:currentIntent:completion:) // method 
+	0x65ff0  func PlayVideo.FlowStrategy.actionForInput(input:) // method 
+	0x66180  func PlayVideo.FlowStrategy.makeIntentFromParse(parse:currentIntent:completion:) // method 
  }
 
  struct SiriVideoIntents.VideoFlowProvider {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceState : Û // +0x0
+	let deviceState : è* // +0x0
 	let flowFactory : VideoFlowFactory // +0x28
 	let testMode : Bool // +0x50
  }
@@ -845,25 +1030,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum SiriVideoIntents.ContentDisambiguationProvider { }
 
  class SiriVideoIntents.PlayLiveServiceIntentHandler : NSObject /usr/lib/libobjc.A.dylib {
+
+	// Properties
+	let liveServiceResolver : LiveServiceResolving
+	let analyticsService : AnalyticsService
+
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xf1780002cc50 (0x1780002cc50) in binary!
-	0xf16c  @objc PlayLiveServiceIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xa7b40002cd88 (0x7b40002cd88) in binary!
+WARNING: couldn't find address 0xe6d400038368 (0x6d400038368) in binary!
+	0x13964  @objc PlayLiveServiceIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0x1395800038200 (0x15800038200) in binary!
+	0x1394c  @objc PlayLiveServiceIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xc0f400038248 (0xf400038248) in binary!
 	0x58000000c  @objc PlayLiveServiceIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xa79c0002cd70 (0x79c0002cd70) in binary!
-	0xf13c  @objc PlayLiveServiceIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xe68c00038320 (0x68c00038320) in binary!
+	0x1391c  @objc PlayLiveServiceIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0x13910000381a0 (0x110000381a0) in binary!
+	0x13904  @objc PlayLiveServiceIntentHandler.(null) <stripped>
 
 	// Swift methods
-	0x50670  func PlayLiveServiceIntentHandler.resolveLiveService(for:with:) // method 
-	0x507b0  func PlayLiveServiceIntentHandler.handle(intent:completion:) // method 
+	0x6acd0  func PlayLiveServiceIntentHandler.resolveLiveService(for:with:) // method 
+	0x6b6c0  func PlayLiveServiceIntentHandler.confirm(intent:completion:) // method 
+	0x6b8a0  func PlayLiveServiceIntentHandler.handle(intent:completion:) // method 
  }
 
  class SiriVideoIntents.CommonIntentRequestTCCStrategy {
  struct SiriVideoIntents.SupportedMediaSignal {
 
 	// Properties
-	let candidateMediaCategories : [String : [String]] // +0x0
-	let timeElapsed : Double // +0x8
+	let playCandidatesWithMediaCategories : [String : [String]] // +0x0
+	let searchCandidatesWithMediaCategories : [String : [String]] // +0x8
+	let timeElapsed : Double // +0x10
  }
 
  struct SiriVideoIntents.SelectedAppSignal {
@@ -873,22 +1069,48 @@ WARNING: couldn't find address 0xa79c0002cd70 (0x79c0002cd70) in binary!
 	let timeElapsed : Double // +0x10
  }
 
+ class SiriVideoIntents.VideoLiveTuneInDialogProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let dialogProvider : DialogProviding
+
+	// Swift methods
+ }
+
  enum SiriVideoIntents.AddToWatchList { }
 
  struct SiriVideoIntents.VideoViewFactory {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceState : Û // +0x0
+	let deviceState : è* // +0x0
+	let locUtil : LocUtil // +0x28
  }
 
+ struct SiriVideoIntents.ThirdPartyMediaIntentVerifierImpl: ThirdPartyMediaIntentVerifier { }
+
  class SiriVideoIntents.CommonIntentFlowStrategy {
+ class SiriVideoIntents.HandleIntentStrategy : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let aceService : c
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let deviceState : è*
+	let videoDialogs : VideoLiveTuneInDialogProvider
+	let locUtil : LocUtil
+
+	// Swift methods
+	0x73c00  func PlayLiveService.HandleIntentStrategy.makeIntentHandledResponse(app:intent:intentResponse:_:) // method 
+	0x73d80  func <stripped> // method 
+ }
+
  class SiriVideoIntents.CommonHandleIntentStrategy {
  class SiriVideoIntents.BaseDisambiguateContentStrategy {
  class SiriVideoIntents.FlowStrategy : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x59140  func FindVideo.FlowStrategy.actionForInput(input:) // method 
-	0x59260  func FindVideo.FlowStrategy.makeIntentFromParse(parse:currentIntent:completion:) // method 
+	0x78690  func FindVideo.FlowStrategy.actionForInput(input:) // method 
+	0x787b0  func FindVideo.FlowStrategy.makeIntentFromParse(parse:currentIntent:completion:) // method 
  }
 
  struct SiriVideoIntents.ContentLiteResponse {
@@ -902,15 +1124,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let id : String // +0x0
 	let type : String // +0x0
-	let title : String // +0xa0f20
+	let title : String // +0xcba60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : ≈– // +0x0
+	let url : ≈ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let releaseDate : Å // +0x61de0
+	let releaseDate : S' // +0x81330
 	let genres : Genre // +0x0
-	let showId : String // +0x61df0
+	let showId : String // +0x81340
 	let showTitle : String // +0x0
-	let seasonTitle : String // +0x61e00
+	let seasonTitle : String // +0x81350
 	let images : ImagesLite // +0x0
  }
 
@@ -921,9 +1143,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let type : String
 	let title : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : ≈–
+	let url : ≈
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let releaseDate : Å
+	let releaseDate : S'
 	let genres : Genre
 	let images : ImagesLite
  }
@@ -935,9 +1157,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let type : String
 	let title : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : ≈–
+	let url : ≈
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let releaseDate : Å
+	let releaseDate : S'
 	let genres : Genre
 	let showId : String
 	let showTitle : String
@@ -952,9 +1174,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let type : String
 	let title : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : ≈–
+	let url : ≈
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let releaseDate : Å
+	let releaseDate : S'
 	let genres : Genre
 	let images : ImagesLite
  }
@@ -1079,10 +1301,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let resultsUrl : String
 	let contentResolver : ContentResolving
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let aceService : ´ÿ
+	let aceService : c
 
 	// Swift methods
-	0x647e0  func <stripped> // method 
+	0x84830  func <stripped> // method 
  }
 
  class SiriVideoIntents.BackgroundPlayableFetch : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1095,27 +1317,101 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let responseQueue : OS_dispatch_queue
 
 	// Swift methods
-	0x66730  func <stripped> // method 
-	0x66bc0  func <stripped> // method 
-	0x67b80  func <stripped> // method 
+	0x86780  func <stripped> // method 
+	0x86c10  func <stripped> // method 
+	0x87bd0  func <stripped> // method 
  }
 
  class SiriVideoIntents.ThirdPartyVideoAppResolutionService {
+ enum SiriVideoIntents.LiveServiceDisambiguationProvider { }
+
  struct SiriVideoIntents.Playable {
 
 	// Properties
 	let umcId : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playPunchout : +Ï
+	let playPunchout : S(
  }
 
  enum SiriVideoIntents.FindVideo { }
+
+ struct SiriVideoIntents.LiveService {
+
+	// Properties
+	let id : String // +0x0
+	let name : String // +0x10
+	let channelId : String // +0x20
+	let images : ImageOptions // +0x30
+	let punchoutUrls : PunchOutUrls // +0x60
+	let url : String? // +0x70
+ }
+
+ struct SiriVideoIntents.PunchOutUrls {
+
+	// Properties
+	let play : String // +0x0
+ }
+
+ struct SiriVideoIntents.LiveServicesResponse {
+
+	// Properties
+	let items : LiveService // +0x0
+	let channels : Channel // +0x8
+	let nextToken : String? // +0x10
+ }
+
+ enum SiriVideoIntents.CodingKeys {
+
+	// Properties
+	case play  
+ }
+
+ enum SiriVideoIntents.CodingKeys {
+
+	// Properties
+	case id  
+	case name  
+	case channelId  
+	case images  
+	case punchoutUrls  
+	case url  
+ }
+
+ enum SiriVideoIntents.CodingKeys {
+
+	// Properties
+	case items  
+	case channels  
+	case nextToken  
+ }
+
+ struct SiriVideoIntents.ImageOptions {
+
+	// Properties
+	let logo : UTSImage // +0x0
+ }
+
+ enum SiriVideoIntents.CodingKeys {
+
+	// Properties
+	case logo  
+ }
 
  struct SiriVideoIntents.MediaNLIntent {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var intent : —
+	var intent : 
+ }
+
+ enum SiriVideoIntents.MediaConfirmationValue {
+
+	// Properties
+	case yes  
+	case no  
+	case cancel  
+	case confirmContact  
+	case rejectContact  
  }
 
  enum SiriVideoIntents.SeasonNumberReference {
@@ -1273,10 +1569,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let utsProvider : UTSProviding
 
 	// Swift methods
-	0x75bf0  func <stripped> // method 
-	0x768d0  func <stripped> // method 
-	0x77100  func <stripped> // method 
-	0x77960  func <stripped> // method 
+	0x997d0  func <stripped> // method 
+	0x9a4b0  func <stripped> // method 
+	0x9ace0  func <stripped> // method 
+	0x9b540  func <stripped> // method 
  }
 
  enum SiriVideoIntents.UTSIdentifier {
@@ -1286,9 +1582,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case external : (externalId: String, brandId: String)
  }
 
+ class SiriVideoIntents.CommonMediaItemDisambiguationFlowStrategy {
  class SiriVideoIntents.KnowledgeProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x79560  func <stripped> // method 
+	0x9f110  func <stripped> // method 
  }
 
  class SiriVideoIntents.FakeStore : NowPlayingUsageSignal.KnowledgeProvider { }
@@ -1304,25 +1601,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceState : Û
+	let deviceState : è*
 	let videoDialogs : VideoDialogProvider
 
 	// Swift methods
-	0x7f1f0  func FindVideo.HandleIntentStrategy.makeIntentHandledResponse(app:intent:intentResponse:_:) // method 
+	0xa3f10  func FindVideo.HandleIntentStrategy.makeIntentHandledResponse(app:intent:intentResponse:_:) // method 
  }
 
  class SiriVideoIntents.FlowStrategy : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deviceState : Û
+	let deviceState : è*
 
 	// Swift methods
-	0x80750  func RemoveFromWatchList.FlowStrategy.actionForInput(input:) // method 
-	0x808e0  func RemoveFromWatchList.FlowStrategy.makeIntentFromParse(parse:currentIntent:completion:) // method 
+	0xa5470  func RemoveFromWatchList.FlowStrategy.actionForInput(input:) // method 
+	0xa5600  func RemoveFromWatchList.FlowStrategy.makeIntentFromParse(parse:currentIntent:completion:) // method 
  }
 
  struct SiriVideoIntents.InstalledAppProvider { }
+
+ struct SiriVideoIntents.AppInfoProvider: AppInfoProviding { }
+
+ class SiriVideoIntents.UserDefaultsProviderImpl : _SwiftObject /usr/lib/swift/libswiftCore.dylib, UserDefaultsProvider {
+
+	// Properties
+	let userDefaults : NSUserDefaults?
+
+	// Swift methods
+	0xa84b0  func <stripped> // getter 
+ }
 
  enum SiriVideoIntents.PlayVideo { }
 
@@ -1384,7 +1692,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class SiriVideoIntents.LiveServiceResolver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let utsProvider : UTSProviding // +0x86100
+	let utsProvider : UTSProviding
 
 	// Swift methods
  }
@@ -1402,7 +1710,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let spotlight : SpotlightSearchProviding
 
 	// Swift methods
-	0x8b710  func <stripped> // method 
+	0xb5490  func <stripped> // method 
  }
 
  struct SiriVideoIntents.SpotlightSignal {
@@ -1420,11 +1728,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let analyticsService : AnalyticsService
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa79c0002cd70 (0x79c0002cd70) in binary!
-	0xf13c  @objc AddToWatchListIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0xf1300002cbf0 (0x1300002cbf0) in binary!
-	0xf124  @objc AddToWatchListIntentHandler.(null) <stripped>
-WARNING: couldn't find address 0x915c0002cc48 (0x15c0002cc48) in binary!
+WARNING: couldn't find address 0xe68c00038320 (0x68c00038320) in binary!
+	0x1391c  @objc AddToWatchListIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0x13910000381a0 (0x110000381a0) in binary!
+	0x13904  @objc AddToWatchListIntentHandler.(null) <stripped>
+WARNING: couldn't find address 0xc0ac00038200 (0xac00038200) in binary!
 	0x25029232840  @objc AddToWatchListIntentHandler.(null) <stripped>
 WARNING: couldn't find address 0x697269533a4d4152 (0x1533a4d4152) in binary!
 	0x2073746e65  @objc AddToWatchListIntentHandler.(null) <stripped>
@@ -1432,9 +1740,9 @@ WARNING: couldn't find address 0x69533a5443454a4f (0x25443454a4f) in binary!
 	0xa31  @objc AddToWatchListIntentHandler.(null) <stripped>
 
 	// Swift methods
-	0x8c5c0  func AddToWatchListIntentHandler.resolveContent(for:with:) // method 
-	0x8d7d0  func AddToWatchListIntentHandler.confirm(intent:completion:) // method 
-	0x8dad0  func AddToWatchListIntentHandler.handle(intent:completion:) // method 
+	0xb6340  func AddToWatchListIntentHandler.resolveContent(for:with:) // method 
+	0xb7550  func AddToWatchListIntentHandler.confirm(intent:completion:) // method 
+	0xb7850  func AddToWatchListIntentHandler.handle(intent:completion:) // method 
  }
 
  struct SiriVideoIntents.AppSelectionSignals { }
@@ -1453,15 +1761,15 @@ WARNING: couldn't find address 0x69533a5443454a4f (0x25443454a4f) in binary!
 	let analyticsService : AnalyticsService
 
 	// Swift methods
-	0x97710  class func <stripped> // init 
-	0x977c0  func <stripped> // method 
+	0xc0a20  class func <stripped> // init 
+	0xc0ad0  func <stripped> // method 
  }
 
  enum SiriVideoIntents.UTSOperationError {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case watchListKitError : áÀ
+	case watchListKitError : u˙
 	case timeoutError  
 	case unsupportedPlatformError  
  }
@@ -1495,6 +1803,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum __C.ContentSort { }
 
  enum __C.INMediaSortOrder { }
+
+ enum __C.INPlayMediaIntentResponseCode { }
 
  enum __C.INMediaItemType { }
 

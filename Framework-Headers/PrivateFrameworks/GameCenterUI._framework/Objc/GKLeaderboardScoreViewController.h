@@ -46,6 +46,7 @@
     GKLeaderboardEntry *_playerAboveEntry;
     GKLeaderboardEntry *_playerBelowEntry;
     long long _totalEntries;
+    double _startTime;
 }
 
 @property (strong, nonatomic) UIView *collectionContainer; // @synthesize collectionContainer=_collectionContainer;
@@ -81,6 +82,7 @@
 @property (strong, nonatomic) UIButton *scrollToTopButton; // @synthesize scrollToTopButton=_scrollToTopButton;
 @property (nonatomic) BOOL shouldAutoRefreshHighlights; // @synthesize shouldAutoRefreshHighlights=_shouldAutoRefreshHighlights;
 @property (strong, nonatomic) GKLeaderboardMetadataView *socialView; // @synthesize socialView=_socialView;
+@property (nonatomic) double startTime; // @synthesize startTime=_startTime;
 @property (readonly) Class superclass;
 @property (nonatomic) long long timeScope; // @synthesize timeScope=_timeScope;
 @property (strong, nonatomic) GKTimeScopeButton *timeScopeButton; // @synthesize timeScopeButton=_timeScopeButton;

@@ -19,7 +19,7 @@
 
 - (void).cxx_destruct;
 - (id)_bundleSubscriptionLookupEntryForPurchaseID:(id)arg1;
-- (void)addBundleChannelIDs:(id)arg1 purchaseID:(id)arg2 inTrialPeriod:(BOOL)arg3 isPurchaser:(BOOL)arg4 servicesBundlePurchaseID:(id)arg5 isAmplifyUser:(BOOL)arg6;
+- (void)addBundleChannelIDs:(id)arg1 bundleChannelIDsVersion:(id)arg2 purchaseID:(id)arg3 inTrialPeriod:(BOOL)arg4 isPurchaser:(BOOL)arg5 servicesBundlePurchaseID:(id)arg6 isAmplifyUser:(BOOL)arg7;
 - (void)cleanupStaleExpiredEntry;
 - (id)initWithLocalStore:(id)arg1;
 - (void)loadLocalCachesFromStore;

@@ -10,8 +10,8 @@
 #import <MediaPlayer/MPArtworkDataSource-Protocol.h>
 #import <MediaPlayer/NSURLSessionDataDelegate-Protocol.h>
 
-@class NSCache, NSMapTable, NSMutableDictionary, NSString, NSURL, NSURLSession, NSURLSessionConfiguration;
-@protocol OS_dispatch_queue;
+@class NSCache, NSMapTable, NSMutableDictionary, NSString, NSURL, NSURLCache, NSURLSession, NSURLSessionConfiguration;
+@protocol NSURLSessionDataDelegate, OS_dispatch_queue;
 
 @interface MPAbstractNetworkArtworkDataSource : NSObject <NSURLSessionDataDelegate, AVAssetResourceLoaderDelegate, MPArtworkDataSource>
 {
@@ -24,12 +24,18 @@
     NSCache *_fallbackImageArtworkRepresentationCache;
     NSMutableDictionary *_pendingRequestURLToCompletionHandlers;
     NSMapTable *_catalogImageTaskMap;
-    NSMapTable *_resourceLoadingRequestVideoTaskMap;
+    NSMapTable *_resourceLoaderStoragePolicyMap;
+    NSMutableDictionary *_videoTaskToCacheStoragePolicy;
+    NSMutableDictionary *_videoTaskToResourceLoadingRequest;
+    NSMutableDictionary *_videoTaskToData;
     NSURLSession *_imageURLSession;
     NSURLSession *_videoURLSession;
+    NSURLCache *_videoURLCache;
+    id<NSURLSessionDataDelegate> _URLSessionDataDelegateProxy;
 }
 
 @property (readonly, nonatomic) NSURLSessionConfiguration *URLSessionConfiguration; // @synthesize URLSessionConfiguration=_URLSessionConfiguration;
+@property (weak, nonatomic) id<NSURLSessionDataDelegate> URLSessionDataDelegateProxy; // @synthesize URLSessionDataDelegateProxy=_URLSessionDataDelegateProxy;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *callbackQueue; // @synthesize callbackQueue=_callbackQueue;
 @property (strong, nonatomic) NSMapTable *catalogImageTaskMap; // @synthesize catalogImageTaskMap=_catalogImageTaskMap;
 @property (readonly, copy) NSString *debugDescription;
@@ -39,20 +45,29 @@
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *imageAccessQueue; // @synthesize imageAccessQueue=_imageAccessQueue;
 @property (strong, nonatomic) NSURLSession *imageURLSession; // @synthesize imageURLSession=_imageURLSession;
 @property (strong, nonatomic) NSMutableDictionary *pendingRequestURLToCompletionHandlers; // @synthesize pendingRequestURLToCompletionHandlers=_pendingRequestURLToCompletionHandlers;
-@property (strong, nonatomic) NSMapTable *resourceLoadingRequestVideoTaskMap; // @synthesize resourceLoadingRequestVideoTaskMap=_resourceLoadingRequestVideoTaskMap;
+@property (strong, nonatomic) NSMapTable *resourceLoaderStoragePolicyMap; // @synthesize resourceLoaderStoragePolicyMap=_resourceLoaderStoragePolicyMap;
 @property (readonly) Class superclass;
 @property (nonatomic) BOOL usesFallbackCache; // @synthesize usesFallbackCache=_usesFallbackCache;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *videoAccessQueue; // @synthesize videoAccessQueue=_videoAccessQueue;
 @property (strong, nonatomic) NSURL *videoArtworkCacheURL; // @synthesize videoArtworkCacheURL=_videoArtworkCacheURL;
+@property (strong, nonatomic) NSMutableDictionary *videoTaskToCacheStoragePolicy; // @synthesize videoTaskToCacheStoragePolicy=_videoTaskToCacheStoragePolicy;
+@property (strong, nonatomic) NSMutableDictionary *videoTaskToData; // @synthesize videoTaskToData=_videoTaskToData;
+@property (strong, nonatomic) NSMutableDictionary *videoTaskToResourceLoadingRequest; // @synthesize videoTaskToResourceLoadingRequest=_videoTaskToResourceLoadingRequest;
+@property (weak, nonatomic) NSURLCache *videoURLCache; // @synthesize videoURLCache=_videoURLCache;
 @property (strong, nonatomic) NSURLSession *videoURLSession; // @synthesize videoURLSession=_videoURLSession;
 
 + (void)_applyImageURLCachePolicy:(unsigned long long)arg1 cacheDiskPath:(id)arg2 toConfiguration:(id)arg3;
 + (void)_applyVideoCacheURL:(id)arg1 toConfiguration:(id)arg2;
 - (void).cxx_destruct;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveData:(id)arg3;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 didReceiveResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 dataTask:(id)arg2 willCacheResponse:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)URLSession:(id)arg1 task:(id)arg2 didCompleteWithError:(id)arg3;
 - (id)_artworkRepresentationWithImageFromData:(id)arg1 forURLResponse:(id)arg2 size:(struct CGSize)arg3 immediateImageDecompressionAllowed:(BOOL)arg4;
 - (struct CGSize)_bestAvailableSizeForCatalog:(id)arg1 kind:(long long)arg2;
 - (id)_bestVideoArtworkRepresentationForCatalog:(id)arg1;
 - (id)_cacheKeyForCatalog:(id)arg1 kind:(long long)arg2 size:(struct CGSize)arg3;
+- (void)_didReceiveMemoryWarningNotification:(id)arg1;
 - (id)_existingRepresentationFromURLCacheForArtworkCatalog:(id)arg1 immediateImageDecompressionAllowed:(BOOL)arg2;
 - (id)_existingRepresentativeObjectForArtworkCatalog:(id)arg1 kind:(long long)arg2 handler:(CDUnknownBlockType)arg3;
 - (BOOL)_isRepresentationSize:(struct CGSize)arg1 validForCatalog:(id)arg2;
@@ -66,6 +81,7 @@
 - (id)cacheKeyForCatalog:(id)arg1 kind:(long long)arg2 size:(struct CGSize)arg3;
 - (id)cacheKeyForCatalog:(id)arg1 size:(struct CGSize)arg2;
 - (void)cancelLoadingRepresentationForArtworkCatalog:(id)arg1;
+- (void)dealloc;
 - (id)existingArtworkEffectResultForEffectType:(long long)arg1 catalog:(id)arg2 options:(id)arg3;
 - (id)existingRepresentationForArtworkCatalog:(id)arg1;
 - (id)existingRepresentationOfKind:(long long)arg1 forArtworkCatalog:(id)arg2;

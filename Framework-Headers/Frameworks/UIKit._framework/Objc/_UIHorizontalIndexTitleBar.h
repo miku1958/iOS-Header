@@ -10,7 +10,7 @@
 #import <UIKitCore/UICollectionViewDelegate-Protocol.h>
 #import <UIKitCore/UICollectionViewDelegateFlowLayout-Protocol.h>
 
-@class NSArray, NSString, UICollectionView, UICollectionViewFlowLayout, UIFocusGuide, _UIFocusFastScrollingIndexBarEntry, _UIHorizontalIndexTitleBarCell;
+@class NSArray, NSIndexPath, NSString, UICollectionView, UICollectionViewFlowLayout, UIFocusGuide, _UIFocusFastScrollingIndexBarEntry, _UIHorizontalIndexTitleBarCell;
 @protocol _UIHorizontalIndexTitleBarDelegate;
 
 __attribute__((visibility("hidden")))
@@ -21,8 +21,8 @@ __attribute__((visibility("hidden")))
     UICollectionViewFlowLayout *_flowLayout;
     UIFocusGuide *_horizontalIndexTitleBarFocusGuide;
     _UIFocusFastScrollingIndexBarEntry *_selectedEntry;
+    NSIndexPath *_selectedEntryIndexPath;
     _UIHorizontalIndexTitleBarCell *_focusedCell;
-    _UIHorizontalIndexTitleBarCell *_selectedCell;
     id<_UIHorizontalIndexTitleBarDelegate> _delegate;
     struct UIEdgeInsets _sectionInset;
     struct UIEdgeInsets _parentContentInset;
@@ -39,14 +39,14 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIFocusGuide *horizontalIndexTitleBarFocusGuide; // @synthesize horizontalIndexTitleBarFocusGuide=_horizontalIndexTitleBarFocusGuide;
 @property (nonatomic, getter=_parentContentInset, setter=_setParentContentInset:) struct UIEdgeInsets parentContentInset; // @synthesize parentContentInset=_parentContentInset;
 @property (nonatomic) struct UIEdgeInsets sectionInset; // @synthesize sectionInset=_sectionInset;
-@property (weak, nonatomic) _UIHorizontalIndexTitleBarCell *selectedCell; // @synthesize selectedCell=_selectedCell;
 @property (strong, nonatomic) _UIFocusFastScrollingIndexBarEntry *selectedEntry; // @synthesize selectedEntry=_selectedEntry;
+@property (strong, nonatomic) NSIndexPath *selectedEntryIndexPath; // @synthesize selectedEntryIndexPath=_selectedEntryIndexPath;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)_cancelDelayedFocusAction;
-- (void)_clearSelectedCell;
 - (id)_currentlyFocusedCell;
+- (id)_existingCellForSelectedIndexPath;
 - (void)_flipIfRightToLeft;
 - (BOOL)_isViewEntryCell:(id)arg1;
 - (void)_selectEntryForTitleIndex:(long long)arg1;
@@ -55,16 +55,15 @@ __attribute__((visibility("hidden")))
 - (void)_updateSectionInset;
 - (void)_updateWithEntries:(id)arg1;
 - (id)collectionView:(id)arg1 cellForItemAtIndexPath:(id)arg2;
-- (void)collectionView:(id)arg1 didEndDisplayingCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
 - (struct CGSize)collectionView:(id)arg1 layout:(id)arg2 sizeForItemAtIndexPath:(id)arg3;
 - (long long)collectionView:(id)arg1 numberOfItemsInSection:(long long)arg2;
 - (void)commonInit;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
+- (id)indexPathForPreferredFocusedViewInCollectionView:(id)arg1;
 - (id)init;
 - (long long)numberOfSectionsInCollectionView:(id)arg1;
 - (id)preferredFocusEnvironments;
-- (void)scrollViewDidEndScrollingAnimation:(id)arg1;
 - (BOOL)shouldUpdateFocusInContext:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 

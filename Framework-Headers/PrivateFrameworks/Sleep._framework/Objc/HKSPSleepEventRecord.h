@@ -66,6 +66,7 @@
 + (BOOL)supportsSecureCoding;
 + (id)testSleepEventRecord;
 + (id)testSleepEventRecordWithAllPropertiesSet;
++ (id)testSleepEventRecordWithOnboardingCompleted;
 - (void).cxx_destruct;
 - (void)_buildForEquivalenceTo:(id)arg1 builder:(id)arg2;
 - (BOOL)_equateTo:(id)arg1 builderBuilderBlock:(CDUnknownBlockType)arg2;

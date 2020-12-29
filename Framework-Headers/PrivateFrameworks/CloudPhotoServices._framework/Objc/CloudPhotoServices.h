@@ -36,7 +36,7 @@
 + (BOOL)isMovieUTI:(id)arg1;
 + (BOOL)isUnsupportedOriginalFormatError:(id)arg1;
 + (long long)paMediaConversionColorSpaceForCloudPhotoDerivativeColorOutput:(long long)arg1;
-+ (void)resizeImageAtURL:(id)arg1 destinationURL:(id)arg2 maximumPixelCount:(long long)arg3 bakeInOrientation:(BOOL)arg4 colorOutput:(long long)arg5 completionHandler:(CDUnknownBlockType)arg6;
++ (void)resizeImageAtURL:(id)arg1 destinationURL:(id)arg2 maximumPixelCount:(long long)arg3 bakeInOrientation:(BOOL)arg4 colorOutput:(long long)arg5 reason:(id)arg6 completionHandler:(CDUnknownBlockType)arg7;
 + (void)resizeImageAtURL:(id)arg1 destinationURL:(id)arg2 options:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 + (BOOL)shouldGenerateVideoDerivativeForAVAsset:(id)arg1 forResourceType:(unsigned long long)arg2 adjusted:(BOOL)arg3;
 + (id)transcodeVideoAtURL:(id)arg1 withAdjustments:(id)arg2 destinationURL:(id)arg3 options:(id)arg4 reason:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;

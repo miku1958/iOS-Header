@@ -11,7 +11,7 @@
 #import <HomeKit/HMObjectMerge-Protocol.h>
 #import <HomeKit/NSSecureCoding-Protocol.h>
 
-@class HMAccessory, HMFSoftwareVersion, HMFUnfairLock, HMSoftwareUpdateDocumentation, HMSoftwareUpdateDocumentationMetadata, NSString, NSUUID, _HMContext;
+@class HMAccessory, HMFSoftwareVersion, HMFUnfairLock, HMSoftwareUpdateDocumentation, HMSoftwareUpdateDocumentationMetadata, NSDate, NSString, NSUUID, _HMContext;
 @protocol HMSoftwareUpdateDelegate, OS_dispatch_queue;
 
 @interface HMSoftwareUpdate : NSObject <HMFMessageReceiver, HMFLogging, HMObjectMerge, NSSecureCoding>
@@ -22,10 +22,12 @@
     long long _state;
     HMSoftwareUpdateDocumentationMetadata *_documentationMetadata;
     HMSoftwareUpdateDocumentation *_documentation;
+    unsigned long long _needsAttentionReasons;
     id<HMSoftwareUpdateDelegate> _delegate;
     HMFSoftwareVersion *_version;
     unsigned long long _downloadSize;
     double _installDuration;
+    NSDate *_releaseDate;
     _HMContext *_context;
     HMAccessory *_accessory;
 }
@@ -44,6 +46,8 @@
 @property (readonly) double installDuration; // @synthesize installDuration=_installDuration;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
+@property (nonatomic) unsigned long long needsAttentionReasons; // @synthesize needsAttentionReasons=_needsAttentionReasons;
+@property (readonly) NSDate *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property (readonly) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier; // @synthesize uniqueIdentifier=_uniqueIdentifier;
@@ -54,12 +58,15 @@
 - (void).cxx_destruct;
 - (void)_handleUpdatedDocumentation:(id)arg1;
 - (void)_handleUpdatedDocumentationMetadata:(id)arg1;
+- (void)_handleUpdatedNeedsAttentionReasonsMessage:(id)arg1;
 - (void)_handleUpdatedState:(id)arg1;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
 - (void)_registerNotificationHandlers;
+- (void)_requestNeedsAttentionReasonsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)configureWithContext:(id)arg1;
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
+- (void)fetchNeedsAttentionReasonsWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithVersion:(id)arg1 downloadSize:(unsigned long long)arg2;

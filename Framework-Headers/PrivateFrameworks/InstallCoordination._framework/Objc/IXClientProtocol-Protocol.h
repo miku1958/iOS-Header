@@ -107,7 +107,7 @@
 - (void)_remote_removeObserverForDataPromiseWithUUID:(NSUUID *)arg1;
 - (void)_remote_setIsPaused:(BOOL)arg1 forCoordinatorForAppWithBundleID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)_remote_setRemovability:(unsigned long long)arg1 forAppWithBundleID:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
-- (void)_remote_setTestModeForIdentifierPrefix:(NSString *)arg1 testMode:(unsigned long long)arg2 completion:(void (^)(NSError *))arg3;
+- (void)_remote_setTestModeForIdentifierPrefix:(NSString *)arg1 testMode:(unsigned long long)arg2 testSpecificValidationData:(NSDictionary *)arg3 completion:(void (^)(NSError *))arg4;
 - (void)_remote_setTestingEnabled:(BOOL)arg1 completion:(void (^)(NSError *))arg2;
 - (void)_remote_uninstallAppWithBundleID:(NSString *)arg1 options:(IXUninstallOptions *)arg2 completion:(void (^)(unsigned long long, NSError *))arg3;
 @end

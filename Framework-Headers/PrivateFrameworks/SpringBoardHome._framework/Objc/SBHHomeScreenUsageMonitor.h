@@ -63,13 +63,14 @@
 - (void)noteIconManagerCoverSheetTodayViewDidDisappear;
 - (void)noteIconManagerOverlayTodayViewDidAppear;
 - (void)noteIconManagerOverlayTodayViewDidDisappear;
+- (void)noteIconManagerOverlayTodayViewDidScrollToRevealIcons:(id)arg1;
 - (void)noteIconManagerRootFolderContentOccludedChanged;
 - (void)noteIconManagerRootFolderControllerViewDidDisappear;
 - (void)noteIconManagerRootFolderControllerViewWillAppear;
 - (void)noteLayoutChanged;
 - (void)noteUserConfiguredIcon:(id)arg1;
 - (void)noteUserDislikedWidgetIconStackSuggestion:(id)arg1;
-- (void)noteUserTappedWidgetIcon:(id)arg1;
+- (void)noteUserTappedWidgetIcon:(id)arg1 withURL:(id)arg2;
 - (void)noteWidgetIconAdded:(id)arg1;
 - (void)noteWidgetIconRemoved:(id)arg1;
 - (void)noteWidgetIconStack:(id)arg1 changedActiveWidget:(id)arg2;

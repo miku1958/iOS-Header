@@ -188,6 +188,7 @@
 - (id)hf_unitaryCameraProfile;
 - (id)hf_updateAccessControlDescriptor:(id)arg1;
 - (id)hf_updateAutomaticSoftwareUpdateEnabled:(BOOL)arg1;
+- (id)hf_updateAutomaticThirdPartyAccessorySoftwareUpdateEnabled:(BOOL)arg1;
 - (id)hf_updateColorPalette:(id)arg1 type:(unsigned long long)arg2;
 - (id)hf_updateDateAdded:(id)arg1;
 - (id)hf_updateNetworkProtection:(long long)arg1;

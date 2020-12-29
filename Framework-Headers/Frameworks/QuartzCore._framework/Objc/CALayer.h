@@ -45,6 +45,7 @@
 @property BOOL contentsDither;
 @property (copy) NSString *contentsFormat;
 @property (copy) NSString *contentsGravity;
+@property (readonly) long long contentsGravityEnum;
 @property struct CGColor *contentsMultiplyColor;
 @property BOOL contentsOpaque;
 @property struct CGRect contentsRect;
@@ -71,6 +72,7 @@
 @property BOOL flipsHorizontalAxis;
 @property struct CGRect frame;
 @property (getter=isFrozen) BOOL frozen;
+@property float gain;
 @property (getter=isGeometryFlipped) BOOL geometryFlipped;
 @property (getter=isHidden) BOOL hidden;
 @property BOOL hitTestsAsOpaque;

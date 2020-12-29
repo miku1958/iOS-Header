@@ -28,6 +28,7 @@
 - (void)cleanup;
 - (id)description;
 - (void)handleCancellation;
+- (void)handleError:(id)arg1 forResponseIdentifier:(id)arg2;
 - (void)handleResponse:(id)arg1;
 - (id)initWithCoordinate:(struct CLLocationCoordinate2D)arg1 resultHandler:(CDUnknownBlockType)arg2;
 - (id)initWithSearchCompletion:(id)arg1 resultHandler:(CDUnknownBlockType)arg2;

@@ -32,6 +32,7 @@
 @property (readonly, nonatomic) FCAsyncSerialQueue *serialQueue; // @synthesize serialQueue=_serialQueue;
 @property (readonly) Class superclass;
 
++ (id)placeholderResultsWithFetchDescriptor:(id)arg1 contentContext:(id)arg2 operationInfo:(id)arg3;
 - (void).cxx_destruct;
 - (void)_fetchLatestResultsWithOperationInfo:(id)arg1 prefetchedContent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_fetchTodayModuleDescriptorsWithContentRequests:(id)arg1 requireRefreshedAppConfig:(BOOL)arg2 qualityOfService:(long long)arg3 completion:(CDUnknownBlockType)arg4;

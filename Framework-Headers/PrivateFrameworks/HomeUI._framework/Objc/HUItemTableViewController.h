@@ -13,7 +13,7 @@
 #import <HomeUI/HUPreloadableViewController-Protocol.h>
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@class HFItem, HFItemManager, HUGridLayoutOptions, HUItemTableViewScrollDestination, NSMapTable, NSMutableArray, NSMutableSet, NSString;
+@class HFItem, HFItemManager, HUGridLayoutOptions, HUItemTableViewScrollDestination, NSMapTable, NSMutableArray, NSMutableSet, NSString, UIVisualEffectView;
 @protocol NACancelable;
 
 @interface HUItemTableViewController : HUTableViewController <HFExecutionEnvironmentObserver, UITextViewDelegate, HFItemManagerDelegate, HUItemManagerContainer, HUItemPresentationContainer, HUPreloadableViewController>
@@ -34,10 +34,12 @@
     id<NACancelable> _deferredVisibilityUpdate;
     NSMapTable *_textFieldToCellMap;
     HUGridLayoutOptions *_gridLayoutOptions;
+    UIVisualEffectView *_backgroundVisualEffectView;
 }
 
 @property (nonatomic) unsigned long long appearState; // @synthesize appearState=_appearState;
 @property (nonatomic) BOOL automaticallyUpdatesViewControllerTitle; // @synthesize automaticallyUpdatesViewControllerTitle=_automaticallyUpdatesViewControllerTitle;
+@property (strong, nonatomic) UIVisualEffectView *backgroundVisualEffectView; // @synthesize backgroundVisualEffectView=_backgroundVisualEffectView;
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) id<NACancelable> deferredVisibilityUpdate; // @synthesize deferredVisibilityUpdate=_deferredVisibilityUpdate;
 @property (readonly, copy) NSString *description;
@@ -71,6 +73,7 @@
 - (void)_transformViewControllerForRequest:(id)arg1;
 - (void)_updateHeadersAndFootersIfNeededAfterPerformingRequest:(id)arg1;
 - (void)_updateLayoutMarginsForCells:(id)arg1;
+- (void)_updateMaterials;
 - (void)_updatePreferredContentSizeIfNecessary;
 - (void)_updateTableHeaderAndFooter;
 - (void)_updateTitle;

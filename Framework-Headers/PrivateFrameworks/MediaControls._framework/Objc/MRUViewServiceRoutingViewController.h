@@ -10,12 +10,13 @@
 #import <MediaControls/MRURoutingViewControllerDelegate-Protocol.h>
 #import <MediaControls/MediaControlsEndpointsManagerDelegate-Protocol.h>
 #import <MediaControls/UITableViewDelegate-Protocol.h>
+#import <MediaControls/UITableViewDelegatePrivate-Protocol.h>
 
 @class MPAVOutputDeviceRoutingDataSource, MPMediaControlsConfiguration, MRUEndpointMetadataController, MRURoutingViewController, MRUViewServiceRoutingView, MRUVisualStylingProvider, MediaControlsEndpointsManager, NSMutableDictionary, NSString, UITableViewDiffableDataSource;
 @protocol MRUViewServiceRoutingViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MRUViewServiceRoutingViewController : UIViewController <MediaControlsEndpointsManagerDelegate, MRUEndpointMetadataControllerObserver, MRURoutingViewControllerDelegate, UITableViewDelegate>
+@interface MRUViewServiceRoutingViewController : UIViewController <MediaControlsEndpointsManagerDelegate, MRUEndpointMetadataControllerObserver, MRURoutingViewControllerDelegate, UITableViewDelegate, UITableViewDelegatePrivate>
 {
     BOOL _onScreen;
     BOOL _canShowRemoteDevices;
@@ -72,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (id)selectedIdentifier;
 - (void)setState:(long long)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (BOOL)tableView:(id)arg1 shouldHaveFullLengthBottomSeparatorForSection:(long long)arg2;
 - (void)updateCell:(id)arg1 forIdentifier:(id)arg2;
 - (void)updateCellForIdentifier:(id)arg1;
 - (void)updateControllers;

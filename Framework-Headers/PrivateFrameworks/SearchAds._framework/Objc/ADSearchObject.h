@@ -6,25 +6,38 @@
 
 #import <objc/NSObject.h>
 
-@class NSError, NSString;
+@class APOdmlReranker, NSArray, NSError, NSString;
 
 @interface ADSearchObject : NSObject
 {
     NSString *_sponsoredSearchRequestData;
     NSString *_routingInfoData;
     NSString *_deviceRequestID;
-    NSString *_userTargetingIdentifier;
+    NSString *_userTargetingID;
     NSError *_error;
+    NSString *_searchRequestID;
+    APOdmlReranker *_reranker;
+    double _SLA;
+    NSArray *_advertisements;
+    NSArray *_organics;
 }
 
+@property (nonatomic) double SLA; // @synthesize SLA=_SLA;
+@property (strong, nonatomic) NSArray *advertisements; // @synthesize advertisements=_advertisements;
 @property (strong, nonatomic) NSString *deviceRequestID; // @synthesize deviceRequestID=_deviceRequestID;
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
+@property (strong, nonatomic) NSArray *organics; // @synthesize organics=_organics;
+@property (strong, nonatomic) APOdmlReranker *reranker; // @synthesize reranker=_reranker;
 @property (strong, nonatomic) NSString *routingInfoData; // @synthesize routingInfoData=_routingInfoData;
+@property (strong, nonatomic) NSString *searchRequestID; // @synthesize searchRequestID=_searchRequestID;
 @property (strong, nonatomic) NSString *sponsoredSearchRequestData; // @synthesize sponsoredSearchRequestData=_sponsoredSearchRequestData;
-@property (strong, nonatomic) NSString *userTargetingIdentifier; // @synthesize userTargetingIdentifier=_userTargetingIdentifier;
+@property (strong, nonatomic) NSString *userTargetingID; // @synthesize userTargetingID=_userTargetingID;
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)initWithSponsoredSearchRequestData:(id)arg1 routingInfoData:(id)arg2 deviceRequestID:(id)arg3 userTargetingID:(id)arg4 error:(id)arg5;
+- (void)orderedAds:(CDUnknownBlockType)arg1;
+- (void)selectAdResponse;
 
 @end
 

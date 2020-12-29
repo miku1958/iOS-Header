@@ -38,7 +38,7 @@
 - (void)_visitEventGroupsFromDate:(id)arg1 toDate:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)addObserver:(id)arg1;
 - (id)init;
-- (id)initTransient;
+- (id)initForLoggingOnly;
 - (id)initWithCacheDirectory:(id)arg1;
 - (void)logNetworkEvent:(id)arg1;
 - (void)operationThrottlerPerformOperation:(id)arg1;

@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     const struct TTSRequestFeatureFlags *_root;
 }
 
+@property (readonly, nonatomic) BOOL cache_only;
 @property (readonly, nonatomic) BOOL disable_prompts;
 @property (readonly, nonatomic) BOOL fe_feature;
 @property (readonly, nonatomic) BOOL fe_feature_only;

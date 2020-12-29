@@ -9,16 +9,18 @@
 #import <NewsCore/FCUserVectorManager-Protocol.h>
 
 @class FCAsyncSerialQueue, FCUserVector, NSDate;
-@protocol FCContentContext;
+@protocol FCBundleSubscriptionProviderType, FCContentContext;
 
 @interface FCUserVectorManager : NSObject <FCUserVectorManager>
 {
     FCAsyncSerialQueue *_queue;
     FCUserVector *_userVector;
     id<FCContentContext> _contentContext;
+    id<FCBundleSubscriptionProviderType> _bundleSubscriptionProvider;
     NSDate *_lastUpdated;
 }
 
+@property (strong, nonatomic) id<FCBundleSubscriptionProviderType> bundleSubscriptionProvider; // @synthesize bundleSubscriptionProvider=_bundleSubscriptionProvider;
 @property (strong, nonatomic) id<FCContentContext> contentContext; // @synthesize contentContext=_contentContext;
 @property (strong, nonatomic) NSDate *lastUpdated; // @synthesize lastUpdated=_lastUpdated;
 @property (strong, nonatomic) FCAsyncSerialQueue *queue; // @synthesize queue=_queue;
@@ -26,7 +28,7 @@
 
 - (void).cxx_destruct;
 - (void)fetchUserVectorProvider:(CDUnknownBlockType)arg1;
-- (id)initWithContentContext:(id)arg1;
+- (id)initWithContentContext:(id)arg1 bundleSubscriptionProvider:(id)arg2;
 
 @end
 

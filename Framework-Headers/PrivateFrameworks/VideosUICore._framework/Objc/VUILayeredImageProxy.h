@@ -8,7 +8,6 @@
 
 @class NSString, NSURL, _TVURLSessionDownloadTaskWrapper;
 
-__attribute__((visibility("hidden")))
 @interface VUILayeredImageProxy : NSObject
 {
     _TVURLSessionDownloadTaskWrapper *_downloadTaskWrapper;

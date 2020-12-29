@@ -50,6 +50,7 @@
 - (void)_ckAccountChanged:(id)arg1;
 - (void)_clearSharingLists;
 - (void)_deleteAvatarForNickname:(id)arg1;
+- (void)_deleteDataUnderScrutiny;
 - (void)_deleteHandleIDFromHandledMap:(id)arg1;
 - (void)_deleteHandleIDFromPendingMap:(id)arg1;
 - (void)_deleteNicknameFromPendingMap:(id)arg1;

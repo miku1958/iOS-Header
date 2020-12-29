@@ -9,6 +9,7 @@
 @class MKPlaceCardHeaderViewController;
 
 @protocol MKPlaceCardHeaderViewControllerDelegate <NSObject>
+- (BOOL)placeCardHeaderViewControllerShouldOverrideCallToAction:(MKPlaceCardHeaderViewController *)arg1;
 - (double)placeCardHeaderViewControllerTrailingConstantForTitle:(MKPlaceCardHeaderViewController *)arg1;
 @end
 

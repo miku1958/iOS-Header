@@ -9,7 +9,7 @@
 @class WFDialogAttribution, WFDialogRequest, WFWorkflowRunningContext;
 
 @protocol WFDialogXPCProtocol <NSObject>
-- (void)dismissPersistentChromeWithSuccess:(BOOL)arg1 completionHandler:(void (^)(void))arg2;
+- (void)dismissPersistentChromeWithSuccess:(BOOL)arg1 customAttribution:(WFDialogAttribution *)arg2 completionHandler:(void (^)(void))arg3;
 - (void)dismissPresentedContentWithCompletionHandler:(void (^)(void))arg1;
 - (void)preparePersistentChromeWithContext:(WFWorkflowRunningContext *)arg1 attribution:(WFDialogAttribution *)arg2;
 - (void)showDialogRequest:(WFDialogRequest *)arg1 completionHandler:(void (^)(WFDialogResponse *))arg2;

@@ -14,6 +14,8 @@
 
 @interface HRFeatureRegulatoryPanelViewController : HKTableViewController <HKHeartRhythmAvailabilityObserver, HRFeatureRegulatoryReenableFeatureActionDelegate>
 {
+    BOOL _isElectrocardiogramRecordingOnboarded;
+    BOOL _isAtrialFibrillationDetectionOnboarded;
     NSArray *_displayableItems;
     HKHeartRhythmAvailability *_heartRhythmAvailability;
     UIViewController<HRFeatureRegulatoryReenableFeatureActionDelegate> *_delegate;
@@ -26,6 +28,8 @@
 @property (readonly, nonatomic) NSArray *displayableItems; // @synthesize displayableItems=_displayableItems;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HKHeartRhythmAvailability *heartRhythmAvailability; // @synthesize heartRhythmAvailability=_heartRhythmAvailability;
+@property (nonatomic) BOOL isAtrialFibrillationDetectionOnboarded; // @synthesize isAtrialFibrillationDetectionOnboarded=_isAtrialFibrillationDetectionOnboarded;
+@property (nonatomic) BOOL isElectrocardiogramRecordingOnboarded; // @synthesize isElectrocardiogramRecordingOnboarded=_isElectrocardiogramRecordingOnboarded;
 @property (strong, nonatomic) UINavigationController *onboardingNavigationController; // @synthesize onboardingNavigationController=_onboardingNavigationController;
 @property (readonly) Class superclass;
 

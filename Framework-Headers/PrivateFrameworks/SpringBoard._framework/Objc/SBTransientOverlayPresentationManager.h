@@ -110,6 +110,7 @@
 - (BOOL)handleHomeButtonLongPress;
 - (BOOL)handleHomeButtonPress;
 - (BOOL)handleLockButtonPress;
+- (BOOL)handleVoiceCommandButtonPress;
 - (BOOL)handleVolumeDownButtonPress;
 - (BOOL)handleVolumeUpButtonPress;
 - (BOOL)hasPresentationAboveWindowLevel:(double)arg1;

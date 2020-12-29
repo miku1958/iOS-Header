@@ -188,7 +188,8 @@ typedef struct {
     struct sockaddr_storage _field13;
     struct sockaddr_storage _field14;
     unsigned short _field15;
-    int _field16;
+    unsigned char _field16;
+    int _field17;
     struct {
         char *_field1;
         unsigned short _field2;
@@ -210,12 +211,12 @@ typedef struct {
         } _field12;
         BOOL _field13;
         unsigned int _field14;
-    } _field17[8];
-    char _field18;
+    } _field18[8];
     char _field19;
-    int _field20;
-    double _field21;
-    unsigned long long _field22;
-    unsigned char _field23[0];
-} CDStruct_12676517;
+    char _field20;
+    int _field21;
+    double _field22;
+    unsigned long long _field23;
+    unsigned char _field24[0];
+} CDStruct_78c9ccae;
 

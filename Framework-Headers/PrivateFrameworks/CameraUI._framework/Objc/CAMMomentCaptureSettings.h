@@ -19,6 +19,7 @@
     long long _photoQualityPrioritization;
     BOOL _shouldDisableCameraSwitchingDuringVideoRecording;
     BOOL _autoSpatialOverCaptureEnabled;
+    long long _photoEncodingBehavior;
 }
 
 @property (readonly, nonatomic) BOOL autoOriginalPhotoDeliveryEnabled; // @synthesize autoOriginalPhotoDeliveryEnabled=_autoOriginalPhotoDeliveryEnabled;
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) long long hdrMode; // @synthesize hdrMode=_hdrMode;
 @property (readonly, nonatomic) long long lowLightMode; // @synthesize lowLightMode=_lowLightMode;
 @property (readonly, copy, nonatomic) NSString *persistenceUUID; // @synthesize persistenceUUID=_persistenceUUID;
+@property (readonly, nonatomic) long long photoEncodingBehavior; // @synthesize photoEncodingBehavior=_photoEncodingBehavior;
 @property (readonly, nonatomic) long long photoQualityPrioritization; // @synthesize photoQualityPrioritization=_photoQualityPrioritization;
 @property (readonly, nonatomic) BOOL shouldDisableCameraSwitchingDuringVideoRecording; // @synthesize shouldDisableCameraSwitchingDuringVideoRecording=_shouldDisableCameraSwitchingDuringVideoRecording;
 @property (readonly, nonatomic) unsigned long long userInitiationTime; // @synthesize userInitiationTime=_userInitiationTime;

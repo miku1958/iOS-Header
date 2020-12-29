@@ -9,19 +9,21 @@
 #import <NewsCore/NSCopying-Protocol.h>
 #import <NewsCore/NSSecureCoding-Protocol.h>
 
-@class NSSet, NSString;
+@class NSOrderedSet, NSString;
 
 @interface FCBundleSubscription : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _isPurchaser;
     BOOL _isAmplifyUser;
     NSString *_bundlePurchaseID;
-    NSSet *_bundleChannelIDs;
+    NSOrderedSet *_bundleChannelIDs;
+    NSString *_bundleChannelIDsVersion;
     NSString *_servicesBundlePurchaseID;
     unsigned long long _unprotectedSubscriptionState;
 }
 
-@property (copy, nonatomic) NSSet *bundleChannelIDs; // @synthesize bundleChannelIDs=_bundleChannelIDs;
+@property (copy, nonatomic) NSOrderedSet *bundleChannelIDs; // @synthesize bundleChannelIDs=_bundleChannelIDs;
+@property (copy, nonatomic) NSString *bundleChannelIDsVersion; // @synthesize bundleChannelIDsVersion=_bundleChannelIDsVersion;
 @property (copy, nonatomic) NSString *bundlePurchaseID; // @synthesize bundlePurchaseID=_bundlePurchaseID;
 @property (nonatomic) BOOL isAmplifyUser; // @synthesize isAmplifyUser=_isAmplifyUser;
 @property (nonatomic) BOOL isPurchaser; // @synthesize isPurchaser=_isPurchaser;
@@ -40,7 +42,7 @@
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
-- (id)initWithBundlePurchaseID:(id)arg1 bundleChannelIDs:(id)arg2 inTrialPeriod:(BOOL)arg3 isPurchaser:(BOOL)arg4 servicesBundlePurchaseID:(id)arg5 isAmplifyUser:(BOOL)arg6;
+- (id)initWithBundlePurchaseID:(id)arg1 bundleChannelIDs:(id)arg2 bundleChannelIDsVersion:(id)arg3 inTrialPeriod:(BOOL)arg4 isPurchaser:(BOOL)arg5 servicesBundlePurchaseID:(id)arg6 isAmplifyUser:(BOOL)arg7;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 

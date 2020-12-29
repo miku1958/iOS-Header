@@ -39,6 +39,7 @@
 - (id)initWithTaskID:(int)arg1 homeUUID:(id)arg2 dataSource:(id)arg3 sourceUUID:(id)arg4 personsModelManager:(id)arg5 error:(id *)arg6;
 - (void)main;
 - (id)personCreatedDateFromFaceCrops:(id)arg1;
+- (void)removePerson:(id)arg1;
 
 @end
 

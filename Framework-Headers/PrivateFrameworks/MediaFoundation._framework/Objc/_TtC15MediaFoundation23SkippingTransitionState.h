@@ -6,8 +6,11 @@
 
 #import <MediaFoundation/_TtC15MediaFoundation15TransitionState.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC15MediaFoundation23SkippingTransitionState : _TtC15MediaFoundation15TransitionState
 {
+    MISSING_TYPE *deferredUserEvent;
 }
 
 @end

@@ -22,6 +22,7 @@
 - (id)_accessibilityCapturedImages;
 - (id)_accessibilityCustomActionGroupIdentifier;
 - (double)_accessibilityDelayBeforeUpdatingOnActivation;
+- (BOOL)_accessibilityElementServesAsHeadingLandmark;
 - (id)_accessibilityEquivalenceTag;
 - (BOOL)_accessibilityImplementsDefaultRowRange;
 - (struct _NSRange)_accessibilityIndexPathAsRange;

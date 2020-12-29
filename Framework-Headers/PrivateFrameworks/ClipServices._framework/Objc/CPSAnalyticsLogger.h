@@ -33,6 +33,7 @@
 - (void)recordDidShowLocationConsentWithBundleID:(id)arg1 response:(unsigned long long)arg2;
 - (void)recordDidTapAppStoreBannerWithBundleID:(id)arg1;
 - (void)recordDidTapOpenButtonInCardWithBundleID:(id)arg1 metadata:(id)arg2 launchReason:(id)arg3 launchOptions:(id)arg4;
+- (void)recordReportProblemStepCompletedWithBundleID:(id)arg1 problemLabel:(id)arg2 event:(long long)arg3;
 
 @end
 

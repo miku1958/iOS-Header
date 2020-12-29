@@ -28,6 +28,7 @@
     BOOL _deferredProcessingEnabled;
     BOOL _digitalFlashCaptureEnabled;
     BOOL _intelligentDistortionCorrectionEnabled;
+    BOOL _demosaicedRawEnabled;
     BOOL _previewQualityAdjustedPhotoFilterRenderingEnabled;
     BOOL _fastCapturePrioritizationEnabled;
     BOOL _irisFrameHarvestingEnabled;
@@ -35,6 +36,7 @@
 
 @property (nonatomic) BOOL bravoConstituentPhotoDeliveryEnabled; // @synthesize bravoConstituentPhotoDeliveryEnabled=_bravoConstituentPhotoDeliveryEnabled;
 @property (nonatomic) BOOL deferredProcessingEnabled; // @synthesize deferredProcessingEnabled=_deferredProcessingEnabled;
+@property (nonatomic) BOOL demosaicedRawEnabled; // @synthesize demosaicedRawEnabled=_demosaicedRawEnabled;
 @property (nonatomic) BOOL depthDataDeliveryEnabled; // @synthesize depthDataDeliveryEnabled=_depthDataDeliveryEnabled;
 @property (nonatomic) BOOL digitalFlashCaptureEnabled; // @synthesize digitalFlashCaptureEnabled=_digitalFlashCaptureEnabled;
 @property (strong, nonatomic) NSArray *enabledSemanticSegmentationMatteURNs; // @synthesize enabledSemanticSegmentationMatteURNs=_enabledSemanticSegmentationMatteURNs;

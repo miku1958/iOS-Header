@@ -21,6 +21,7 @@
 }
 
 @property (strong, nonatomic) AVMediaSelectionOption *avMediaSelectionOption; // @synthesize avMediaSelectionOption=_avMediaSelectionOption;
+@property (readonly, nonatomic) BOOL hasAudioDescriptions;
 @property (copy, nonatomic) NSString *languageCodeBCP47; // @synthesize languageCodeBCP47=_languageCodeBCP47;
 @property (copy, nonatomic) NSString *languageCodeFromLocale; // @synthesize languageCodeFromLocale=_languageCodeFromLocale;
 @property (copy, nonatomic) NSString *localizedDisplayString; // @synthesize localizedDisplayString=_localizedDisplayString;

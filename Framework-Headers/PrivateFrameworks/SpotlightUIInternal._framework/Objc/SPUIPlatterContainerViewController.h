@@ -32,6 +32,7 @@
 
 + (BOOL)isHardwareKeyboardAttached;
 - (void).cxx_destruct;
+- (BOOL)_canShowWhileLocked;
 - (struct CGSize)containerView:(id)arg1 systemLayoutSizeFittingSize:(struct CGSize)arg2 forArrangedSubview:(id)arg3;
 - (void)containerViewDidLayoutArrangedSubviews:(id)arg1;
 - (void)dealloc;

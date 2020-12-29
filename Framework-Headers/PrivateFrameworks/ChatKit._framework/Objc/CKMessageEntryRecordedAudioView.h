@@ -58,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)play;
 - (void)setFrame:(struct CGRect)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)stop;
 - (void)updatePlayPauseDeleteButton;
 - (void)updateProgress;
 - (void)updateTimeString;

@@ -10,13 +10,14 @@
 #import <NewsUI/NUArticlePrefetcherType-Protocol.h>
 
 @class FCKeyedOperationQueue, NSCountedSet, NSMutableDictionary, NSString, NSTimer;
-@protocol NUArticleDataProviderFactory, NUArticleFactory;
+@protocol NUArticleDataProviderFactory, NUArticleFactory, OS_dispatch_queue;
 
 @interface NUArticlePrefetcher : NSObject <FCKeyedOperationQueueDelegate, NUArticlePrefetcherType>
 {
     id<NUArticleFactory> _articleFactory;
     id<NUArticleDataProviderFactory> _articleDataProviderFactory;
     FCKeyedOperationQueue *_prefetchQueue;
+    NSObject<OS_dispatch_queue> *_workQueue;
     NSMutableDictionary *_articleDataProviderCache;
     NSCountedSet *_interestedArticleIDs;
     NSMutableDictionary *_headlinesForArticles;
@@ -38,6 +39,7 @@
 @property (strong, nonatomic) FCKeyedOperationQueue *prefetchQueue; // @synthesize prefetchQueue=_prefetchQueue;
 @property (strong, nonatomic) NSTimer *reprocessTimer; // @synthesize reprocessTimer=_reprocessTimer;
 @property (readonly) Class superclass;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *workQueue; // @synthesize workQueue=_workQueue;
 
 - (void).cxx_destruct;
 - (void)_didChangeInterestedArticleIDs;

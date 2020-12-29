@@ -58,6 +58,7 @@
 - (void)graphViewDidBeginSelection:(id)arg1;
 - (void)graphViewDidEndSelection:(id)arg1;
 - (void)graphViewDidTapYAxis:(id)arg1;
+- (void)graphViewExternalSelectionEnd:(id)arg1;
 - (void)graphViewSizeChanged:(id)arg1;
 - (id)initWithHealthStore:(id)arg1 dataSource:(id)arg2 dataFormatter:(id)arg3 minimumGraphViewHeight:(double)arg4;
 - (id)seriesSelectionLineColorForGraphView:(id)arg1;

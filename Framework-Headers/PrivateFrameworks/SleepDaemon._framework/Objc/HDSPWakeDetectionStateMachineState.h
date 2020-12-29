@@ -18,11 +18,12 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL schedulesWakeDetection;
 @property (readonly, weak, nonatomic) HDSPWakeDetectionStateMachine *stateMachine; // @dynamic stateMachine;
 @property (readonly) Class superclass;
 
-- (BOOL)_inDetectionWindow;
 - (id)determineNextState;
+- (void)earlyWakeUpWasNotifiedRemotely;
 - (BOOL)isWakeDetectionDisabled;
 - (void)updateState;
 - (void)wakeDetectionEventDue;

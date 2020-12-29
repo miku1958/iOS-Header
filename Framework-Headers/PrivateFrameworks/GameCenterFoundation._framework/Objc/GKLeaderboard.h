@@ -26,7 +26,7 @@
 @property (readonly, nonatomic) NSString *baseLeaderboardID; // @dynamic baseLeaderboardID;
 @property (copy, nonatomic) NSString *category; // @dynamic category;
 @property (weak, nonatomic) id<GKLeaderboardDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, nonatomic) double duration; // @dynamic duration;
+@property (readonly, nonatomic) double duration;
 @property (readonly, nonatomic) long long friendRank; // @dynamic friendRank;
 @property (readonly, nonatomic) long long friendRankCount; // @dynamic friendRankCount;
 @property (readonly, nonatomic) NSString *groupIdentifier; // @dynamic groupIdentifier;

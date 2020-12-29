@@ -19,9 +19,6 @@ __attribute__((visibility("hidden")))
     BOOL videoIsPaused;
     BOOL isPreLionOS;
     BOOL isVideoQualityDegraded;
-    double lastGoodVideoQualityTime;
-    double lastBadVideoQualityTime;
-    double lastVideoQualityDegradedSwitchTime;
     NSString *sdpString;
     SDPMini *sdp;
     BOOL is4x;
@@ -34,9 +31,6 @@ __attribute__((visibility("hidden")))
     BOOL useNewPLCalc;
     double firstDegradedMeasure;
     double videoDegradedThreshold;
-    double videoImprovedThreshold;
-    double videoMinFrameRate;
-    BOOL shouldUseExitHysteresis;
     unsigned char u8Version;
     NSString *_frameworkVersion;
     NSString *_osVersion;
@@ -75,10 +69,9 @@ __attribute__((visibility("hidden")))
 - (struct VoiceIOFarEndVersionInfo)audioVersionInfo:(BOOL)arg1;
 - (void)dealloc;
 - (id)init;
-- (void)resetLastGoodVideoQualityTime:(double)arg1;
 - (void)setUserAgent:(id)arg1;
 - (BOOL)supportSDPCompression;
-- (BOOL)updateWithCurrentFramerate:(double)arg1 bitrate:(double)arg2 packetLossRate:(float)arg3 time:(double)arg4;
+- (BOOL)updateWithLastDecodedFrameTime:(double)arg1 time:(double)arg2;
 
 @end
 

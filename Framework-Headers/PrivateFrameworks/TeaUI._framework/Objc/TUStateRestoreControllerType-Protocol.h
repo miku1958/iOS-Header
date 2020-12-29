@@ -11,6 +11,7 @@
 @property (nonatomic, readonly) BOOL isStateRestorationFeatureEnabled;
 
 - (void)markStateDiscarded;
+- (void)navigationDidHappen;
 - (void)sceneDidEnterBackground;
 @end
 

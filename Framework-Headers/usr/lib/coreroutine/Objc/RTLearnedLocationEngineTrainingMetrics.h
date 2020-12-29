@@ -14,36 +14,46 @@
     NSDate *_trainVisitsStart;
     NSDate *_trainVisitsStop;
     double _intervalSinceLastAttempt;
-    unsigned long long _locationsProcessed;
-    double _maxIntervalBetweenLocations;
-    NSMutableArray *_visits;
-    NSMutableArray *_places;
     unsigned long long _visitCountDevice;
     unsigned long long _visitCountTotal;
     unsigned long long _placeCountDevice;
     unsigned long long _placeCountTotal;
+    unsigned long long _locationsProcessed;
+    double _maxIntervalBetweenLocations;
+    NSMutableArray *_awdVisits;
+    NSMutableArray *_awdPlaces;
+    NSMutableArray *_visits;
+    NSMutableArray *_places;
+    unsigned long long _visitCountUnlabeled;
+    unsigned long long _wasDeferred;
 }
 
+@property (readonly, nonatomic) NSMutableArray *awdPlaces; // @synthesize awdPlaces=_awdPlaces;
+@property (readonly, nonatomic) NSMutableArray *awdVisits; // @synthesize awdVisits=_awdVisits;
 @property (nonatomic) double intervalSinceLastAttempt; // @synthesize intervalSinceLastAttempt=_intervalSinceLastAttempt;
 @property (nonatomic) unsigned long long locationsProcessed; // @synthesize locationsProcessed=_locationsProcessed;
 @property (nonatomic) double maxIntervalBetweenLocations; // @synthesize maxIntervalBetweenLocations=_maxIntervalBetweenLocations;
 @property (nonatomic) unsigned long long placeCountDevice; // @synthesize placeCountDevice=_placeCountDevice;
 @property (nonatomic) unsigned long long placeCountTotal; // @synthesize placeCountTotal=_placeCountTotal;
-@property (readonly, nonatomic) NSMutableArray *places; // @synthesize places=_places;
+@property (strong) NSMutableArray *places; // @synthesize places=_places;
 @property (readonly, nonatomic) NSDate *trainVisitsStart; // @synthesize trainVisitsStart=_trainVisitsStart;
 @property (readonly, nonatomic) NSDate *trainVisitsStop; // @synthesize trainVisitsStop=_trainVisitsStop;
 @property (nonatomic) BOOL trainedVisits; // @synthesize trainedVisits=_trainedVisits;
 @property (nonatomic) unsigned long long visitCountDevice; // @synthesize visitCountDevice=_visitCountDevice;
 @property (nonatomic) unsigned long long visitCountTotal; // @synthesize visitCountTotal=_visitCountTotal;
-@property (readonly, nonatomic) NSMutableArray *visits; // @synthesize visits=_visits;
+@property (nonatomic) unsigned long long visitCountUnlabeled; // @synthesize visitCountUnlabeled=_visitCountUnlabeled;
+@property (strong) NSMutableArray *visits; // @synthesize visits=_visits;
+@property (nonatomic) unsigned long long wasDeferred; // @synthesize wasDeferred=_wasDeferred;
 
 - (void).cxx_destruct;
+- (id)collectCoreAnalyticsMetrics;
 - (id)description;
 - (id)init;
 - (double)latency;
 - (void)startTrainingVisits;
 - (void)stopTrainingVisits;
 - (void)submitPlace:(id)arg1 nearbyPlaces:(id)arg2;
+- (void)submitToCoreAnalytics;
 - (void)submitVisit:(id)arg1 possibleMapItems:(id)arg2 selectedMapItem:(id)arg3;
 
 @end

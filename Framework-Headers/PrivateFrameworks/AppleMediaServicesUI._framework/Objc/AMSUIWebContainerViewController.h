@@ -39,7 +39,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) AMSUIWebAppearance *appearance; // @synthesize appearance=_appearance;
 @property (strong, nonatomic) UIViewController<AMSUIWebPagePresenter> *containedViewController; // @synthesize containedViewController=_containedViewController;
 @property (nonatomic) long long containerIndex; // @synthesize containerIndex=_containerIndex;
-@property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
+@property (weak, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long disableReappearPlaceholder; // @synthesize disableReappearPlaceholder=_disableReappearPlaceholder;

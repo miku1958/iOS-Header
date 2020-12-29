@@ -8,7 +8,6 @@
 
 @class UIColor;
 
-__attribute__((visibility("hidden")))
 @interface VUIImageScaleDecorator : VUIImageDecorator
 {
     BOOL _centerGrowth;
@@ -19,13 +18,13 @@ __attribute__((visibility("hidden")))
     UIColor *_bgColor;
     struct CGSize _scaleToSize;
     struct UIEdgeInsets _padding;
-    struct VUICornerRadii _cornerRadii;
+    struct _VUICornerRadii _cornerRadii;
 }
 
 @property (copy, nonatomic) UIColor *bgColor; // @synthesize bgColor=_bgColor;
 @property (nonatomic) BOOL centerGrowth; // @synthesize centerGrowth=_centerGrowth;
 @property (nonatomic) BOOL cornerContinuous; // @synthesize cornerContinuous=_cornerContinuous;
-@property (nonatomic) struct VUICornerRadii cornerRadii; // @synthesize cornerRadii=_cornerRadii;
+@property (nonatomic) struct _VUICornerRadii cornerRadii; // @synthesize cornerRadii=_cornerRadii;
 @property (nonatomic) BOOL cropToFit;
 @property (nonatomic) double focusedSizeIncrease; // @synthesize focusedSizeIncrease=_focusedSizeIncrease;
 @property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;

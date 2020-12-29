@@ -24,6 +24,7 @@
     NSString *_bravoCameraSelectionBehaviorForRecording;
     BOOL _autoSpatialOverCaptureEnabled;
     BOOL _autoDeferredProcessingEnabled;
+    unsigned int _rawOutputFormat;
 }
 
 @property (nonatomic) long long HDRMode;
@@ -35,6 +36,7 @@
 @property (nonatomic) long long digitalFlashMode;
 @property (nonatomic) long long flashMode;
 @property (nonatomic) long long photoQualityPrioritization;
+@property (nonatomic) unsigned int rawOutputFormat; // @synthesize rawOutputFormat=_rawOutputFormat;
 @property (nonatomic) long long torchMode;
 @property (readonly, nonatomic) long long uniqueID; // @synthesize uniqueID=_uniqueID;
 @property (readonly, nonatomic) unsigned long long userInitiatedCaptureTime; // @synthesize userInitiatedCaptureTime=_userInitiatedCaptureTime;

@@ -10,7 +10,7 @@
 #import <MediaFoundation/MFQueueManagement-Protocol.h>
 
 @class AVPlayerViewController, MISSING_TYPE, NSArray, NSDictionary, NSNumber;
-@protocol MFPlaybackStackControllerDelegate, MFPlayerItem, MFQueuePlayerItem;
+@protocol MFPlaybackStackControllerDelegate, MFQueuePlayerItem;
 
 @interface MFPlaybackStackControllerImplementation : NSObject <MFPlaybackStackController, MFQueueManagement>
 {
@@ -18,12 +18,13 @@
     MISSING_TYPE *internalStack;
 }
 
-@property (nonatomic, readonly) id<MFPlayerItem> currentItem;
+@property (nonatomic, readonly) id<MFQueuePlayerItem> currentItem;
 @property (nonatomic, readonly) long long currentItemTransition;
 @property (nonatomic, readonly) id<MFQueuePlayerItem> currentQueueItem;
 @property (nonatomic, readonly) long long currentState;
 @property (nonatomic, readonly) double currentTime;
 @property (nonatomic, weak) id<MFPlaybackStackControllerDelegate> delegate; // @synthesize delegate;
+@property (nonatomic, readonly) float effectiveRate;
 @property (nonatomic, readonly) long long interruptedState;
 @property (nonatomic) long long maximumPlayerQueueLength;
 @property (nonatomic, readonly) NSArray *nextItems;
@@ -33,6 +34,7 @@
 @property (nonatomic, readonly) NSNumber *targetTime;
 @property (nonatomic, readonly) AVPlayerViewController *videoViewController;
 
++ (id)errorDomain;
 - (void).cxx_destruct;
 - (void)beginScanningWithDirection:(long long)arg1 identifier:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)beginSeekingWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;

@@ -8,11 +8,11 @@
 
 #import <AssistantServices/AFRelinquishableAssertion-Protocol.h>
 
-@class AFAssertionContext, AFAssertionCoordinator, NSString, NSUUID, _AFAssertionRecord;
+@class AFAssertionContext, AFAssertionCoordinator, NSString, NSUUID, _AFAssertionImpl;
 
 @interface _AFAssertionProxy : NSObject <AFRelinquishableAssertion>
 {
-    _AFAssertionRecord *_record;
+    _AFAssertionImpl *_impl;
     AFAssertionCoordinator *_coordinator;
 }
 
@@ -25,8 +25,9 @@
 
 - (void).cxx_destruct;
 - (void)dealloc;
-- (id)initWithRecord:(id)arg1 coordinator:(id)arg2;
-- (void)relinquishWithContext:(id)arg1;
+- (id)initWithImpl:(id)arg1 coordinator:(id)arg2;
+- (void)relinquishWithContext:(id)arg1 options:(unsigned long long)arg2;
+- (void)relinquishWithError:(id)arg1 options:(unsigned long long)arg2;
 
 @end
 

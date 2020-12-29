@@ -13,6 +13,7 @@
 
 @property (readonly, nonatomic) long long analyticsEndpointMaxPayloadSize;
 @property (readonly, nonatomic) NSString *anfRenderingConfiguration;
+@property (readonly, nonatomic) long long articleAdPrefetchLimit;
 @property (readonly, nonatomic) double articleBannerAdRequestThrottle;
 @property (readonly, nonatomic) double articleDiversificationSimilarityExpectationEnd;
 @property (readonly, nonatomic) double articleDiversificationSimilarityExpectationStart;
@@ -31,6 +32,7 @@
 @property (readonly, nonatomic) long long corryBarMaxArticleCountForSingleArticle;
 @property (readonly, nonatomic) long long criticalStorageThreshold;
 @property (readonly, nonatomic) BOOL disableThumbnailsForArticleRecirculation;
+@property (readonly, nonatomic) NSArray *discoverNewsPlusChannelIDs;
 @property (readonly, nonatomic) long long emailSignupRequiredAppLaunchCount;
 @property (readonly, nonatomic) NSString *embedConfigurationAssetID;
 @property (readonly, nonatomic) BOOL enableBadgeInSpotlightTabBar;
@@ -92,6 +94,7 @@
 @property (readonly, nonatomic) NSString *userVectorWhitelistResourceId;
 @property (readonly, nonatomic) NSString *webEmbedContentBlockerOverrides;
 @property (readonly, nonatomic) NSString *webEmbedContentBlockers;
+@property (readonly, nonatomic) BOOL widgetAnalyticsEnabled;
 @property (readonly, nonatomic) NSString *widgetConfigID;
 @property (readonly, nonatomic) BOOL widgetContentPrefetchEnabled;
 @property (readonly, nonatomic) long long widgetMinimumArticleExposureDurationToBePreseenInMilliseconds;

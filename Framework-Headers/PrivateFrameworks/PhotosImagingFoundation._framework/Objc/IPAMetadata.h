@@ -8,10 +8,11 @@
 
 #import <PhotosImagingFoundation/NSCopying-Protocol.h>
 
-@class CLLocation, NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSString, NSTimeZone, PFTimeZoneLookup;
+@class CLLocation, IPAMetadataStateHandler, NSArray, NSData, NSDate, NSDictionary, NSMutableDictionary, NSNumber, NSString, NSTimeZone, PFTimeZoneLookup;
 
 @interface IPAMetadata : NSObject <NSCopying>
 {
+    IPAMetadataStateHandler *_stateHandler;
     BOOL _xmpLoaded;
     BOOL _hasLoadedContent;
     struct CGImageSource *_imageSource;

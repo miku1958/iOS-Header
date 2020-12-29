@@ -9,11 +9,15 @@
 #import <SPOwner/NSCopying-Protocol.h>
 #import <SPOwner/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSDictionary, NSSet, NSString, NSUUID, SPBeaconRole, SPHandle, SPLostModeInfo;
+@class NSDate, NSDictionary, NSSet, NSString, NSUUID, SPBeaconRole, SPDiscoveredAccessoryProductInformation, SPHandle, SPLostModeInfo;
 
 @interface SPBeacon : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _accepted;
+    BOOL _connected;
+    BOOL _shouldLeash;
+    BOOL _shouldMaintainPersistentConnection;
+    BOOL _connectionAllowed;
     NSUUID *_identifier;
     SPHandle *_owner;
     NSString *_name;
@@ -26,14 +30,36 @@
     long long _vendorId;
     long long _productId;
     unsigned long long _type;
+    long long _batteryLevel;
+    long long _connectableDeviceCount;
+    NSString *_separationState;
+    NSSet *_locationProviders;
+    SPDiscoveredAccessoryProductInformation *_accessoryProductInfo;
     NSString *_stableIdentifier;
     NSDate *_pairingDate;
     NSString *_correlationIdentifier;
+    NSDate *_connectedStateExpiryDate;
+    NSString *_serialNumber;
+    unsigned long long _keySyncLastObservedIndex;
+    NSDate *_keySyncLastIndexObservationDate;
+    unsigned long long _keyAlignmentLastObservedIndex;
+    NSDate *_keyAlignmentLastIndexObservationDate;
 }
 
 @property (nonatomic) BOOL accepted; // @synthesize accepted=_accepted;
+@property (copy, nonatomic) SPDiscoveredAccessoryProductInformation *accessoryProductInfo; // @synthesize accessoryProductInfo=_accessoryProductInfo;
+@property (nonatomic) long long batteryLevel; // @synthesize batteryLevel=_batteryLevel;
+@property (nonatomic) long long connectableDeviceCount; // @synthesize connectableDeviceCount=_connectableDeviceCount;
+@property (nonatomic) BOOL connected; // @synthesize connected=_connected;
+@property (copy, nonatomic) NSDate *connectedStateExpiryDate; // @synthesize connectedStateExpiryDate=_connectedStateExpiryDate;
+@property (nonatomic) BOOL connectionAllowed; // @synthesize connectionAllowed=_connectionAllowed;
 @property (copy, nonatomic) NSString *correlationIdentifier; // @synthesize correlationIdentifier=_correlationIdentifier;
 @property (copy, nonatomic) NSUUID *identifier; // @synthesize identifier=_identifier;
+@property (copy, nonatomic) NSDate *keyAlignmentLastIndexObservationDate; // @synthesize keyAlignmentLastIndexObservationDate=_keyAlignmentLastIndexObservationDate;
+@property (nonatomic) unsigned long long keyAlignmentLastObservedIndex; // @synthesize keyAlignmentLastObservedIndex=_keyAlignmentLastObservedIndex;
+@property (copy, nonatomic) NSDate *keySyncLastIndexObservationDate; // @synthesize keySyncLastIndexObservationDate=_keySyncLastIndexObservationDate;
+@property (nonatomic) unsigned long long keySyncLastObservedIndex; // @synthesize keySyncLastObservedIndex=_keySyncLastObservedIndex;
+@property (copy, nonatomic) NSSet *locationProviders; // @synthesize locationProviders=_locationProviders;
 @property (copy, nonatomic) SPLostModeInfo *lostModeInfo; // @synthesize lostModeInfo=_lostModeInfo;
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
@@ -41,7 +67,11 @@
 @property (copy, nonatomic) NSDate *pairingDate; // @synthesize pairingDate=_pairingDate;
 @property (nonatomic) long long productId; // @synthesize productId=_productId;
 @property (copy, nonatomic) SPBeaconRole *role; // @synthesize role=_role;
+@property (copy, nonatomic) NSString *separationState; // @synthesize separationState=_separationState;
+@property (copy, nonatomic) NSString *serialNumber; // @synthesize serialNumber=_serialNumber;
 @property (copy, nonatomic) NSSet *shares; // @synthesize shares=_shares;
+@property (nonatomic) BOOL shouldLeash; // @synthesize shouldLeash=_shouldLeash;
+@property (nonatomic) BOOL shouldMaintainPersistentConnection; // @synthesize shouldMaintainPersistentConnection=_shouldMaintainPersistentConnection;
 @property (copy, nonatomic) NSString *stableIdentifier; // @synthesize stableIdentifier=_stableIdentifier;
 @property (copy, nonatomic) NSString *systemVersion; // @synthesize systemVersion=_systemVersion;
 @property (copy, nonatomic) NSDictionary *taskInformation; // @synthesize taskInformation=_taskInformation;

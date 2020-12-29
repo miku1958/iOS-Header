@@ -41,6 +41,7 @@
     BOOL _supportsCompanionInitiatedRestart;
     BOOL _suspendCapable;
     BOOL _hasOnboardedForNaturalLighting;
+    BOOL _supportsPreferredMediaUser;
     BOOL _supportsMusicAlarm;
     BOOL _supportsAnnounce;
     BOOL _supportsDoorbellChime;
@@ -77,6 +78,8 @@
     NSArray *_controlTargetUUIDs;
     HMSymptomsHandler *_symptomsHandler;
     NSUUID *_networkProtectionGroupUUID;
+    unsigned long long _preferredUserSelectionType;
+    NSUUID *_preferredMediaUserUUID;
     unsigned long long _supportedStereoPairVersions;
     unsigned long long _homePodVariant;
     long long _reachableTransports;
@@ -155,6 +158,8 @@
 @property (readonly) NSUUID *networkProtectionGroupUUID; // @synthesize networkProtectionGroupUUID=_networkProtectionGroupUUID;
 @property (nonatomic) BOOL paired; // @synthesize paired=_paired;
 @property (readonly, copy) HMFPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
+@property (copy) NSUUID *preferredMediaUserUUID; // @synthesize preferredMediaUserUUID=_preferredMediaUserUUID;
+@property unsigned long long preferredUserSelectionType; // @synthesize preferredUserSelectionType=_preferredUserSelectionType;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSArray *profiles;
 @property (readonly, copy) NSString *propertyDescription;
@@ -190,6 +195,8 @@
 @property (nonatomic) BOOL supportsMultiUser; // @synthesize supportsMultiUser=_supportsMultiUser;
 @property (readonly, nonatomic) BOOL supportsMusicAlarm;
 @property (nonatomic) BOOL supportsMusicAlarm; // @synthesize supportsMusicAlarm=_supportsMusicAlarm;
+@property (readonly) BOOL supportsPreferredMediaUser;
+@property BOOL supportsPreferredMediaUser; // @synthesize supportsPreferredMediaUser=_supportsPreferredMediaUser;
 @property (nonatomic) BOOL supportsTargetControl; // @synthesize supportsTargetControl=_supportsTargetControl;
 @property (nonatomic) BOOL supportsTargetController; // @synthesize supportsTargetController=_supportsTargetController;
 @property (readonly) BOOL supportsThirdPartyMusic;
@@ -289,6 +296,7 @@
 - (void)addControlTargetUUIDs:(id)arg1;
 - (void)callCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)callCompletionHandler:(CDUnknownBlockType)arg1 error:(id)arg2;
+- (void)clearUserNotifiedOfSoftwareUpdateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)controlTargets;
 - (void)dealloc;
 - (void)deleteSiriHistoryWithCompletion:(CDUnknownBlockType)arg1;
@@ -300,14 +308,20 @@
 - (id)initWithCoder:(id)arg1;
 - (void)initiateDiagnosticsTransferWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (BOOL)isSuspendCapable;
+- (BOOL)isUserNotifiedOfSoftwareUpdate;
 - (id)logIdentifier;
+- (void)markAsUserNotifiedOfSoftwareUpdateWithCompletion:(CDUnknownBlockType)arg1;
+- (void)markAsUserNotifiedOfSoftwareUpdateWithVersion:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)mediaDestinationController:(id)arg1 destinationWithIdentifier:(id)arg2;
 - (id)mediaProfile;
 - (id)networkRouterProfile;
 - (void)notifyDelegateOfAppDataUpdateForService:(id)arg1;
 - (void)notifyDelegateOfAudioDestinationControllerUpdate;
 - (void)notifyDelegateOfAudioDestinationUpdate;
+- (void)notifyDelegateUpdatedPreferredMediaUser;
+- (void)notifyDelegateUpdatedSupportsPreferredMediaUser;
 - (void)pairingIdentityWithPrivateKey:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (id)preferredMediaUser;
 - (void)queryAdvertisementInformationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)removeControlTarget:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)removeControlTargetUUIDs:(id)arg1;
@@ -329,6 +343,8 @@
 - (void)updateApplicationData:(id)arg1 forService:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateAudioDestinationSupportedOptions:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateName:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updatePreferredMediaUser:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updatePreferredMediaUserSelectionType:(unsigned long long)arg1 user:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 
 @end
 

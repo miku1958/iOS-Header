@@ -11,7 +11,6 @@
 }
 
 - (double)fingerInnerRadius;
-- (double)fingerOuterRadius;
 - (double)strokeOutlineWidth;
 - (double)strokeWidth;
 

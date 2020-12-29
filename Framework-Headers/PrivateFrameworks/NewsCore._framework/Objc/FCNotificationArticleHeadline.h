@@ -106,9 +106,9 @@
 - (long long)bodyTextLength;
 - (id)callToActionText;
 - (id)clusterID;
-- (id)contentManifestWithContext:(id)arg1;
 - (unsigned long long)contentType;
 - (id)contentURL;
+- (id)contentWithContext:(id)arg1;
 - (id)coverArt;
 - (id)generateFlintDocumentAssetHandleForUrlString:(id)arg1 prefetchedData:(id)arg2 withAssetManager:(id)arg3;
 - (id)generateThumbnailAssetHandleForUrlString:(id)arg1 withAssetManager:(id)arg2;

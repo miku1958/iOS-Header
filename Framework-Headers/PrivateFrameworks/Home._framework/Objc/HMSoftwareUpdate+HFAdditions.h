@@ -23,8 +23,24 @@
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSUUID *uniqueIdentifier;
 
++ (id)hf_errorWithNeedsAttentionReasons:(unsigned long long)arg1;
++ (id)hf_hashWithAccessory:(id)arg1;
++ (id)hf_mostUpToDateSoftwareUpdateFromAccessories:(id)arg1;
++ (id)hf_mostUpToDateSoftwareUpdateReleaseNotesFromAccessories:(id)arg1;
++ (BOOL)hf_pretendAllBridgesNeedUpdates;
++ (BOOL)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:(id)arg1;
++ (BOOL)hf_shouldShowLearnMoreForAccessories:(id)arg1;
++ (CDUnknownBlockType)hf_sortComparator;
 + (id)hf_stringFromUpdateState:(long long)arg1;
+- (id)hf_fetchNeedsAttentionReasons;
+- (BOOL)hf_isDownloading;
+- (BOOL)hf_isInProgress;
+- (BOOL)hf_isInstalling;
+- (BOOL)hf_isReadyToInstall;
+- (BOOL)hf_isThirdPartyUpdate;
+- (BOOL)hf_possessesNecessaryDocumentation;
 - (BOOL)hf_shouldShowSoftwareUpdateInfo;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
+- (id)hf_stringFromState;
 @end
 

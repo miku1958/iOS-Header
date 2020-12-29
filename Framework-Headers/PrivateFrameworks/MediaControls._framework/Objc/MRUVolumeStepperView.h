@@ -8,7 +8,7 @@
 
 #import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
 
-@class MPButton, MPVolumeController, MRUVisualStylingProvider, NSString;
+@class MPVolumeController, MRUButton, MRUVisualStylingProvider, NSString;
 
 __attribute__((visibility("hidden")))
 @interface MRUVolumeStepperView : UIView <MRUVisualStylingProviderObserver>
@@ -17,17 +17,17 @@ __attribute__((visibility("hidden")))
     MRUVisualStylingProvider *_stylingProvider;
     UIView *_decreaseBackground;
     UIView *_increaseBackground;
-    MPButton *_decreaseButton;
-    MPButton *_increaseButton;
+    MRUButton *_decreaseButton;
+    MRUButton *_increaseButton;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (strong, nonatomic) UIView *decreaseBackground; // @synthesize decreaseBackground=_decreaseBackground;
-@property (strong, nonatomic) MPButton *decreaseButton; // @synthesize decreaseButton=_decreaseButton;
+@property (strong, nonatomic) MRUButton *decreaseButton; // @synthesize decreaseButton=_decreaseButton;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) UIView *increaseBackground; // @synthesize increaseBackground=_increaseBackground;
-@property (strong, nonatomic) MPButton *increaseButton; // @synthesize increaseButton=_increaseButton;
+@property (strong, nonatomic) MRUButton *increaseButton; // @synthesize increaseButton=_increaseButton;
 @property (strong, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) MPVolumeController *volumeController; // @synthesize volumeController=_volumeController;

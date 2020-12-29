@@ -15,6 +15,7 @@
     MISSING_TYPE *contentPrefetchManager;
     MISSING_TYPE *channelDataFactory;
     MISSING_TYPE *scienceDataFactory;
+    MISSING_TYPE *suggestionsTracker;
 }
 
 @end

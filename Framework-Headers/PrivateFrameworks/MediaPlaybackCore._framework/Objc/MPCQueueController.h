@@ -42,6 +42,7 @@
     MPSectionedIdentifierListPosition *_autoPlayEndPosition;
     NSString *_restoreLastStartTimePositionToContentItemID;
     double _lastSavedTime;
+    id _rtcSessionHierarchyToken;
     MPShuffleableSectionedIdentifierList *_identifierList;
     MPSectionedIdentifierList *_autoPlayIdentifierList;
     NSMutableDictionary *_dataSources;
@@ -76,6 +77,8 @@
 @property (nonatomic) long long repeatType; // @synthesize repeatType=_repeatType;
 @property (copy, nonatomic) NSError *restorationError; // @synthesize restorationError=_restorationError;
 @property (copy, nonatomic) NSString *restoreLastStartTimePositionToContentItemID; // @synthesize restoreLastStartTimePositionToContentItemID=_restoreLastStartTimePositionToContentItemID;
+@property (readonly, copy, nonatomic) NSString *revisionString;
+@property (strong, nonatomic) id rtcSessionHierarchyToken; // @synthesize rtcSessionHierarchyToken=_rtcSessionHierarchyToken;
 @property (nonatomic) long long shuffleType; // @synthesize shuffleType=_shuffleType;
 @property (nonatomic) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
@@ -131,7 +134,7 @@
 - (void)engine:(id)arg1 didChangeToState:(unsigned long long)arg2;
 - (void)engine:(id)arg1 didReachEndOfQueueWithReason:(id)arg2;
 - (id)existingRepresentationForArtworkCatalog:(id)arg1;
-- (void)finalizeStateRestorationWithAccountManager:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)finalizeStateRestorationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)firstContentItemIDForItemIntersectingIdentifierSet:(id)arg1;
 - (void)incrementVersionForSegment:(id)arg1;
 - (id)init;

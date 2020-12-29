@@ -10,6 +10,7 @@
 @protocol MFPlayerItem;
 
 @protocol MFErrorController <MFResettable>
-- (void)resolve:(NSError *)arg1 forItem:(id<MFPlayerItem>)arg2 completion:(void (^)(long long))arg3;
+- (void)reportCriticalError:(NSError *)arg1 forItem:(id<MFPlayerItem>)arg2;
+- (void)resolveError:(NSError *)arg1 forItem:(id<MFPlayerItem>)arg2 completion:(void (^)(long long))arg3;
 @end
 

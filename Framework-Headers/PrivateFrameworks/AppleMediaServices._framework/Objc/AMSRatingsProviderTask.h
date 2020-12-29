@@ -33,14 +33,10 @@
 + (id)bagSubProfile;
 + (id)bagSubProfileVersion;
 + (id)createBagForSubProfile;
++ (id)ratingWithValue:(id)arg1 mediaType:(unsigned long long)arg2 storeFront:(id)arg3 clientIdentifier:(id)arg4 bag:(id)arg5;
 - (void).cxx_destruct;
-- (id)_cacheDirectory;
-- (id)_cachePath;
-- (id)_cachedRatingsData;
-- (void)_clearCacheIfNeeded;
-- (BOOL)_hasCachedData;
+- (id)_queryItems;
 - (id)_urlForMediaType:(unsigned long long)arg1;
-- (id)cacheTitle;
 - (id)initWithMediaType:(unsigned long long)arg1 storeFront:(id)arg2 clientIdentifier:(id)arg3 bag:(id)arg4;
 - (id)performTask;
 

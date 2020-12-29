@@ -14,10 +14,16 @@
     MISSING_TYPE *baseURL;
     MISSING_TYPE *configurationProfiles;
     MISSING_TYPE *connection;
-    MISSING_TYPE *parsecParamsFactory;
     MISSING_TYPE *configManager;
     MISSING_TYPE *purchaseProvider;
     MISSING_TYPE *bundleSubscriptionProvider;
+    MISSING_TYPE *userInterfaceIdiom;
+    MISSING_TYPE *storefrontID;
+    MISSING_TYPE *queryContextManager;
+    MISSING_TYPE *locationRegionManager;
+    MISSING_TYPE *queryContext;
+    MISSING_TYPE *localArea;
+    MISSING_TYPE *logger;
 }
 
 - (void).cxx_destruct;

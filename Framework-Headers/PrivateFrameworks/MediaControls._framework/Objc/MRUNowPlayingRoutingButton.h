@@ -6,10 +6,12 @@
 
 #import <MediaPlayer/MPButton.h>
 
-@class CCUICAPackageView;
+#import <MediaControls/UIPointerInteractionDelegate-Protocol.h>
+
+@class CCUICAPackageView, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MRUNowPlayingRoutingButton : MPButton
+@interface MRUNowPlayingRoutingButton : MPButton <UIPointerInteractionDelegate>
 {
     BOOL _active;
     long long _deviceType;
@@ -19,14 +21,18 @@ __attribute__((visibility("hidden")))
 
 @property (nonatomic, getter=isActive) BOOL active; // @synthesize active=_active;
 @property (nonatomic) long long context; // @synthesize context=_context;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
 @property (nonatomic) long long deviceType; // @synthesize deviceType=_deviceType;
+@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) CCUICAPackageView *packageView; // @synthesize packageView=_packageView;
+@property (readonly) Class superclass;
 
-+ (BOOL)_cursorInteractionEnabled;
 - (void).cxx_destruct;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)setSelected:(BOOL)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

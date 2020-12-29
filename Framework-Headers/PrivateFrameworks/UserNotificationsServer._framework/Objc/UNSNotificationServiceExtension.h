@@ -14,15 +14,15 @@
     NSExtension *_extension;
     double _serviceTime;
     double _graceTime;
-    NSObject<OS_dispatch_queue> *_queue;
 }
 
 @property (readonly, nonatomic) LSPlugInKitProxy *proxy; // @dynamic proxy;
-@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;
+@property (readonly, nonatomic) NSObject<OS_dispatch_queue> *queue; // @dynamic queue;
 
 + (void)_allowAccessToNotificationCenterForServiceExtensionWithIdentifier:(id)arg1;
 + (void)_disallowAccessToNotificationCenterForServiceExtensionWithIdentifier:(id)arg1;
 + (id)_extensionIdentifiersCurrentlyAllowedAccessToNotificationCenter;
++ (id)_extensionIdentifiersToPerExtensionQueues;
 + (BOOL)isAccessToNotificationCenterAllowedForServiceExtensionWithIdentifier:(id)arg1;
 - (void).cxx_destruct;
 - (id)_initWithExtension:(id)arg1 serviceTime:(double)arg2 graceTime:(double)arg3;

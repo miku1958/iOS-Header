@@ -13,6 +13,7 @@
     NSDate *_lastCatalogLoadTime;
     unsigned int _catalogLoadRetryMultiplier;
     NSCache *_fileDataCache;
+    unsigned long long _stateCaptureHandle;
 }
 
 + (id)sharedManager;
@@ -27,9 +28,11 @@
 - (BOOL)_lookupString:(id)arg1 inTrieMemory:(void *)arg2 value:(unsigned int *)arg3;
 - (id)_readAndCacheDataFrom:(id)arg1 forAssetName:(id)arg2 zeroCacheCost:(BOOL)arg3;
 - (void)_setLastCatalogLoadTime:(id)arg1;
+- (struct os_state_data_s *)_stateCaptureWithHints:(struct os_state_hints_s *)arg1;
 - (void)_updateCatalog;
 - (void)_updateCatalogAfterDelay:(double)arg1;
 - (void)catalogLoadThen:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (id)init;
 - (id)lookupCCForPhoneNumber:(id)arg1;
 - (id)lookupISOCountryCodeFromNANPNumber:(id)arg1;

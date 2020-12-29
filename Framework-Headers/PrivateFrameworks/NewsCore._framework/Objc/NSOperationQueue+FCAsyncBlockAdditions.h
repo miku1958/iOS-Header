@@ -11,5 +11,6 @@
 + (id)fc_sharedConcurrentQueue;
 + (id)fc_sharedSerialQueue;
 - (void)fc_addAsyncOperationWithBlock:(CDUnknownBlockType)arg1;
+- (void)fc_addMainThreadOperationWithBlock:(CDUnknownBlockType)arg1;
 @end
 

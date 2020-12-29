@@ -17,7 +17,7 @@
     MISSING_TYPE *batchSize;
     MISSING_TYPE *lockupGroup;
     MISSING_TYPE *fetchedAdamIds;
-    MISSING_TYPE *pendingCacbeRequests;
+    MISSING_TYPE *pendingCacheRequests;
     MISSING_TYPE *onBatchStateChange;
 }
 

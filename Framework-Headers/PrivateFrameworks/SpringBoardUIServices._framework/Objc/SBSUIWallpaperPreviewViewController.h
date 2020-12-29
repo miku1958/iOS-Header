@@ -68,6 +68,7 @@
 - (id)_dateView;
 - (void)_displaySettingWallpaperHUD;
 - (void)_enableIrisOrParallaxIfEligible;
+- (void)_logWallpaperChangeForLocations:(long long)arg1;
 - (double)_parallaxFactor;
 - (id)_previewView;
 - (id)_previewViewIfLoaded;

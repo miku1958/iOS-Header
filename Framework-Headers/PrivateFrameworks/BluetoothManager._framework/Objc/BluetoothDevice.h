@@ -36,6 +36,7 @@
 - (unsigned long long)connectedServices;
 - (unsigned long long)connectedServicesCount;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (int)crownRotationDirection;
 - (void)dealloc;
 - (id)description;
 - (struct BTDeviceImpl *)device;
@@ -76,6 +77,7 @@
 - (BOOL)setAutoAnswerMode:(int)arg1;
 - (BOOL)setClickHoldMode:(int)arg1 rightMode:(int)arg2;
 - (void)setConnectingServicemask:(unsigned int)arg1;
+- (BOOL)setCrownRotationDirection:(int)arg1;
 - (void)setDevice:(struct BTDeviceImpl *)arg1;
 - (BOOL)setDoubleClickMode:(int)arg1;
 - (BOOL)setDoubleTapAction:(unsigned int)arg1;

@@ -17,7 +17,7 @@
 #import <WorkflowEditor/WFRunWorkflowToolbarDelegate-Protocol.h>
 #import <WorkflowEditor/WFWorkflowControllerDelegate-Protocol.h>
 
-@class NSIndexPath, NSString, WFAction, WFContentCollection, WFDatabase, WFDialogTransformer, WFModulesQuickLookView, WFRunWorkflowFooterView, WFRunWorkflowToolbar, WFWorkflow, WFWorkflowController, WFWorkflowRunEvent, WFWorkflowViewController;
+@class NSIndexPath, NSString, WFAction, WFContentCollection, WFDatabase, WFDialogTransformer, WFRunWorkflowFooterView, WFRunWorkflowToolbar, WFWorkflow, WFWorkflowController, WFWorkflowRunEvent, WFWorkflowViewController;
 @protocol WFRunWorkflowViewControllerDelegate;
 
 @interface WFRunWorkflowViewController : UIViewController <WFModuleModelProvider, WFModuleDelegate, WFWorkflowControllerDelegate, WFModulesSupplementaryViewDataSource, WFModulesQuickLookViewDelegate, QLPreviewControllerPrivateDelegate, UIScrollViewDelegate, UIDropInteractionDelegate, WFRunWorkflowFooterViewDelegate, WFRunWorkflowToolbarDelegate>
@@ -36,7 +36,6 @@
     CDUnknownBlockType _completionHandler;
     WFAction *_lastRunningAction;
     WFDialogTransformer *_dialogTransformer;
-    WFModulesQuickLookView *_quickLookView;
     WFRunWorkflowFooterView *_footerView;
     CDUnknownBlockType _prepareToRunCompletion;
     NSIndexPath *_prepareToRunIndexPath;
@@ -60,7 +59,6 @@
 @property (strong, nonatomic) WFAction *lastRunningAction; // @synthesize lastRunningAction=_lastRunningAction;
 @property (copy, nonatomic) CDUnknownBlockType prepareToRunCompletion; // @synthesize prepareToRunCompletion=_prepareToRunCompletion;
 @property (strong, nonatomic) NSIndexPath *prepareToRunIndexPath; // @synthesize prepareToRunIndexPath=_prepareToRunIndexPath;
-@property (weak, nonatomic) WFModulesQuickLookView *quickLookView; // @synthesize quickLookView=_quickLookView;
 @property (strong, nonatomic) WFWorkflowRunEvent *runEvent; // @synthesize runEvent=_runEvent;
 @property (nonatomic) BOOL runningFromOtherWorkflow; // @synthesize runningFromOtherWorkflow=_runningFromOtherWorkflow;
 @property (readonly) Class superclass;
@@ -90,7 +88,6 @@
 - (id)indexPathForAction:(id)arg1;
 - (id)initWithWorkflow:(id)arg1 database:(id)arg2;
 - (id)initWithWorkflow:(id)arg1 database:(id)arg2 cellConfigurationFunction:(CDUnknownFunctionPointerType)arg3;
-- (void)invalidateLayoutForFooterView;
 - (id)keyCommands;
 - (void)loadView;
 - (id)module:(id)arg1 displayableErrorForResourceError:(id)arg2;
@@ -98,6 +95,7 @@
 - (void)presentSettingsViewController;
 - (BOOL)previewController:(id)arg1 canShareItem:(id)arg2;
 - (struct CGRect)previewController:(id)arg1 frameForPreviewItem:(id)arg2 inSourceView:(id *)arg3;
+- (id)previewController:(id)arg1 transitionViewForPreviewItem:(id)arg2;
 - (void)previewControllerWillDismiss:(id)arg1;
 - (void)quickLookView:(id)arg1 clickedShare:(id)arg2 forContentItem:(id)arg3;
 - (void)quickLookViewWantsFullscreen:(id)arg1;
@@ -113,6 +111,7 @@
 - (void)setEditingState:(unsigned long long)arg1 animated:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (BOOL)shouldShowAddButton;
 - (BOOL)shouldShowQuickLookView;
+- (id)sourceViewForQuickLook;
 - (void)stopWorkflow;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateContentInset;

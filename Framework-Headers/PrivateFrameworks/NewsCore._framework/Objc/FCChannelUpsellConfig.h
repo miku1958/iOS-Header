@@ -13,16 +13,18 @@
     NSString *_channelID;
     NSDictionary *_triggersByMethod;
     long long _quiescenceInterval;
+    long long _engagedUserQuiescenceInterval;
     FCEmailSignupConfig *_emailSignupConfiguration;
 }
 
 @property (copy, nonatomic) NSString *channelID; // @synthesize channelID=_channelID;
 @property (strong, nonatomic) FCEmailSignupConfig *emailSignupConfiguration; // @synthesize emailSignupConfiguration=_emailSignupConfiguration;
+@property (nonatomic) long long engagedUserQuiescenceInterval; // @synthesize engagedUserQuiescenceInterval=_engagedUserQuiescenceInterval;
 @property (nonatomic) long long quiescenceInterval; // @synthesize quiescenceInterval=_quiescenceInterval;
 @property (strong, nonatomic) NSDictionary *triggersByMethod; // @synthesize triggersByMethod=_triggersByMethod;
 
 - (void).cxx_destruct;
-- (id)initWithConfigDictionary:(id)arg1;
+- (id)initWithChannelID:(id)arg1 configDictionary:(id)arg2;
 
 @end
 

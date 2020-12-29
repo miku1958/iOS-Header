@@ -15,6 +15,8 @@
     MISSING_TYPE *cursor;
     MISSING_TYPE *myMagazinesModule;
     MISSING_TYPE *pluginManager;
+    MISSING_TYPE *childParentPluginIdentifierMap;
+    MISSING_TYPE *parentPluggableViewController;
     MISSING_TYPE *subscriptionService;
     MISSING_TYPE *readingHistory;
     MISSING_TYPE *readingList;

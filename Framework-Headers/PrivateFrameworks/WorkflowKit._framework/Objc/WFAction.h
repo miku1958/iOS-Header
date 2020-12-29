@@ -166,6 +166,7 @@
 @property (readonly, nonatomic) NSArray *remoteExecuteOnPlatforms;
 @property (readonly, nonatomic) NSArray *requiredResources;
 @property (readonly, nonatomic) BOOL requiresRemoteExecution;
+@property (readonly, nonatomic) BOOL requiresUnlock;
 @property (readonly, nonatomic, getter=isResidentCompatible) BOOL residentCompatible;
 @property (readonly, nonatomic) WFResourceManager *resourceManager; // @synthesize resourceManager=_resourceManager;
 @property (nonatomic, getter=isRunning) BOOL running; // @synthesize running=_running;
@@ -284,6 +285,8 @@
 - (void)removeEventObserver:(id)arg1;
 - (void)removeVariableObserver:(id)arg1;
 - (void)requestInterfacePresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)requestUnlock:(CDUnknownBlockType)arg1;
+- (void)requestUnlockIfNeeded:(CDUnknownBlockType)arg1;
 - (BOOL)requiresHandoffWhenRunWithUserInterfaceType:(id)arg1;
 - (BOOL)requiresUserInteractionWhenRunWithInput:(id)arg1;
 - (void)resetOutput;

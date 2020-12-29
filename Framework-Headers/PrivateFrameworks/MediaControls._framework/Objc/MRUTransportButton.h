@@ -4,44 +4,28 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <MediaPlayer/MPButton.h>
+#import <MediaControls/MRUButton.h>
 
-#import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
-
-@class MPCPlayerCommandRequest, MRUVisualStylingProvider, NSString;
+@class MPCPlayerCommandRequest, NSString;
 
 __attribute__((visibility("hidden")))
-@interface MRUTransportButton : MPButton <MRUVisualStylingProviderObserver>
+@interface MRUTransportButton : MRUButton
 {
     BOOL _shouldPresentActionSheet;
     NSString *_identifier;
     MPCPlayerCommandRequest *_touchUpInsideCommandRequest;
     MPCPlayerCommandRequest *_holdBeginCommandRequest;
     MPCPlayerCommandRequest *_holdEndCommandRequest;
-    MRUVisualStylingProvider *_stylingProvider;
-    double _cursorScale;
 }
 
-@property (nonatomic) double cursorScale; // @synthesize cursorScale=_cursorScale;
-@property (readonly, copy) NSString *debugDescription;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MPCPlayerCommandRequest *holdBeginCommandRequest; // @synthesize holdBeginCommandRequest=_holdBeginCommandRequest;
 @property (strong, nonatomic) MPCPlayerCommandRequest *holdEndCommandRequest; // @synthesize holdEndCommandRequest=_holdEndCommandRequest;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) BOOL shouldPresentActionSheet; // @synthesize shouldPresentActionSheet=_shouldPresentActionSheet;
-@property (strong, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
-@property (readonly) Class superclass;
 @property (strong, nonatomic) MPCPlayerCommandRequest *touchUpInsideCommandRequest; // @synthesize touchUpInsideCommandRequest=_touchUpInsideCommandRequest;
 
-+ (BOOL)_cursorInteractionEnabled;
 - (void).cxx_destruct;
-- (id)cursorInteraction:(id)arg1 styleForRegion:(id)arg2 modifiers:(long long)arg3;
 - (void)prepareForReuse;
-- (void)setEnabled:(BOOL)arg1;
-- (void)setHighlighted:(BOOL)arg1;
-- (void)updateVisualStyling;
-- (void)visualStylingProviderDidChange:(id)arg1;
 
 @end
 

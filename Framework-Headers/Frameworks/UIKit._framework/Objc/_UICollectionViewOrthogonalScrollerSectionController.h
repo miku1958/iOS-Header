@@ -44,9 +44,11 @@ __attribute__((visibility("hidden")))
 - (void)_scrollToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (id)_sectionScrollViewForIndexPath:(id)arg1;
 - (id)_sectionScrollViewForSection:(long long)arg1;
+- (void)_updateEmbeddedScrollViewContentSizeForSection:(long long)arg1;
 - (void)addElementIfNeeded:(id)arg1;
 - (void)adjustElementHierarchyOrderingForOrthogonalElementIfNeeded:(id)arg1 layoutAttributes:(id)arg2;
 - (void)cleanupEmbeddedOrthogonalScrollViews;
+- (BOOL)hasOrthogonalSections;
 - (id)initWithCollectionView:(id)arg1;
 - (BOOL)isElementInOrthogonalScrollingSection:(id)arg1;
 - (BOOL)isIndexPathInExtantOrthogonalScroller:(id)arg1;
@@ -56,6 +58,7 @@ __attribute__((visibility("hidden")))
 - (void)scrollToItemAtIndexPath:(id)arg1 atScrollPosition:(unsigned long long)arg2 animated:(BOOL)arg3;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)scrollViewWillEndDragging:(id)arg1 withVelocity:(struct CGPoint)arg2 targetContentOffset:(inout struct CGPoint *)arg3;
+- (void)updateContentSizesForOrthogonalSections:(id)arg1;
 
 @end
 

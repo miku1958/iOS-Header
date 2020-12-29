@@ -11,12 +11,13 @@
 #import <SpringBoard/BNPostingPrivate-Protocol.h>
 #import <SpringBoard/BNPresentingDelegate-Protocol.h>
 #import <SpringBoard/SBAssistantObserver-Protocol.h>
+#import <SpringBoard/SBBannerManagerHomeGestureContextDelegate-Protocol.h>
 #import <SpringBoard/SBButtonEventsHandler-Protocol.h>
 
 @class BNBannerController, BNBannerSourceListener, BNContentViewController, NSHashTable, NSMapTable, NSMutableArray, NSMutableSet, NSString, SBBannerAuthority, UIPanGestureRecognizer, UIWindow;
 @protocol BNLayoutManaging, BSInvalidatable;
 
-@interface SBBannerManager : NSObject <BNPostingPrivate, BNPresentingDelegate, BNBannerSourceListenerDelegate, SBAssistantObserver, BNPosting, SBButtonEventsHandler>
+@interface SBBannerManager : NSObject <BNPostingPrivate, BNPresentingDelegate, BNBannerSourceListenerDelegate, SBAssistantObserver, SBBannerManagerHomeGestureContextDelegate, BNPosting, SBButtonEventsHandler>
 {
     SBBannerAuthority *_bannerAuthority;
     BNBannerController *_bannerController;
@@ -33,6 +34,7 @@
     id<BSInvalidatable> _systemStatusBarAssertion;
     id<BSInvalidatable> _appsStatusBarAssertion;
     NSMutableSet *_statusBarAssertionReasons;
+    NSMapTable *_presentablesToHomeGestureContexts;
     UIWindow *_bannerWindow;
 }
 
@@ -51,10 +53,14 @@
 - (id)_bannerSuspensionReasonForSuppressionAssertionReason:(id)arg1;
 - (BOOL)_handleButtonEventWithTest:(CDUnknownBlockType)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_hideStatusIfNecessaryForPresentable:(id)arg1;
+- (id)_homeGestureContextForPresentable:(id)arg1 creatingIfNecessary:(BOOL)arg2;
 - (void)_invalidatePresenterVisibilityGestureRecognizerPriorityAssertion;
+- (BOOL)_isPresentableBannerHomeGestureParticipant:(id)arg1;
 - (BOOL)_isPresentableHUD:(id)arg1;
 - (id)_layoutDescriptionWithBounds:(struct CGRect)arg1;
 - (id)_newBannerWindow;
+- (id)_presentableForHomeGestureContext:(id)arg1;
+- (void)_removeHomeGestureContextForPresentable:(id)arg1;
 - (void)_revealStatusIfNecessaryForPresentable:(id)arg1;
 - (BOOL)_shouldHideStatusBarForPresentable:(id)arg1;
 - (id)_statusBarAssertionReasonForPresentable:(id)arg1;
@@ -64,20 +70,25 @@
 - (id)acquireGestureRecognizerPriorityAssertionForPresentable:(id)arg1 priority:(long long)arg2 reason:(id)arg3;
 - (id)acquireWindowLevelAssertionWithPriority:(long long)arg1 windowLevel:(double)arg2 reason:(id)arg3;
 - (void)assistantWillAppear:(id)arg1;
+- (void)bannerSourceListener:(id)arg1 didUpdateInitialSceneSettingsWithParameters:(id)arg2;
 - (id)bannerSourceListener:(id)arg1 layoutDescriptionWithError:(id *)arg2;
+- (id)bannerSourceListener:(id)arg1 newBannerSourceListenerPresentableForBannerSpecification:(id)arg2 scene:(id)arg3 readyCompletion:(CDUnknownBlockType)arg4;
 - (void)bannerSourceListener:(id)arg1 presentationSize:(out struct CGSize *)arg2 containerSize:(out struct CGSize *)arg3 error:(id *)arg4;
 - (BOOL)bannerSourceListener:(id)arg1 recommendsSuspending:(BOOL)arg2 forReason:(id)arg3 revokingCurrent:(BOOL)arg4 error:(id *)arg5;
 - (BOOL)bannerSourceListener:(id)arg1 requestsPostingPresentable:(id)arg2 options:(unsigned long long)arg3 userInfo:(id)arg4 error:(id *)arg5;
 - (id)bannerSourceListener:(id)arg1 requestsRevokingPresentablesWithIdentification:(id)arg2 reason:(id)arg3 animated:(BOOL)arg4 userInfo:(id)arg5 error:(id *)arg6;
 - (void)dismissAllBannersAnimated:(BOOL)arg1 reason:(id)arg2;
+- (id)gestureRecognizerPriorityAssertionForBannerManagerHomeGestureContext:(id)arg1 priority:(long long)arg2 reason:(id)arg3;
 - (BOOL)handleHeadsetButtonPress:(BOOL)arg1;
 - (BOOL)handleHomeButtonDoublePress;
 - (BOOL)handleHomeButtonLongPress;
 - (BOOL)handleHomeButtonPress;
 - (BOOL)handleLockButtonPress;
+- (BOOL)handleVoiceCommandButtonPress;
 - (BOOL)handleVolumeDownButtonPress;
 - (BOOL)handleVolumeUpButtonPress;
 - (id)init;
+- (id)keyboardHomeAffordanceAssertionForBannerManagerHomeGestureContext:(id)arg1;
 - (id)panGestureRecognizerForPresenter:(id)arg1;
 - (BOOL)postPresentable:(id)arg1 withOptions:(unsigned long long)arg2 userInfo:(id)arg3 error:(out id *)arg4;
 - (struct CGPoint)presenter:(id)arg1 gestureRecognizer:(id)arg2 locationForEvent:(id)arg3 inView:(id)arg4;
@@ -94,6 +105,7 @@
 - (id)revokePresentablesWithIdentification:(id)arg1 reason:(id)arg2 options:(unsigned long long)arg3 userInfo:(id)arg4 error:(out id *)arg5;
 - (void)setSuspended:(BOOL)arg1 forReason:(id)arg2;
 - (id)userInterfaceStyleTransitionAnimationSettingsForPresentable:(id)arg1 forTransitionToStyle:(long long)arg2;
+- (void)wantsHomeGestureDidChangeForBannerManagerHomeGestureContext:(id)arg1;
 
 @end
 

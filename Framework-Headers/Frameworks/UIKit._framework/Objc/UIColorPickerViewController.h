@@ -6,14 +6,15 @@
 
 #import <UIKitCore/UIViewController.h>
 
+#import <UIKitCore/_UIColorPickerColorQueueDelegate-Protocol.h>
 #import <UIKitCore/_UIColorPickerRemoteViewControllerHost-Protocol.h>
 #import <UIKitCore/_UIGeometryChangeObserver-Protocol.h>
 #import <UIKitCore/_UIRemoteViewControllerContaining-Protocol.h>
 
-@class NSExtension, NSLayoutConstraint, NSString, UIColor, UIPresentationController, _UIColorPickerRemoteViewController, _UIColorPickerViewControllerConfiguration, _UIRemoteViewController;
+@class NSExtension, NSLayoutConstraint, NSString, UIColor, UIPresentationController, _UIColorPickerColorQueue, _UIColorPickerRemoteViewController, _UIColorPickerViewControllerConfiguration, _UIRemoteViewController;
 @protocol NSCopying, UIColorPickerViewControllerDelegate;
 
-@interface UIColorPickerViewController : UIViewController <_UIColorPickerRemoteViewControllerHost, _UIRemoteViewControllerContaining, _UIGeometryChangeObserver>
+@interface UIColorPickerViewController : UIViewController <_UIColorPickerRemoteViewControllerHost, _UIRemoteViewControllerContaining, _UIGeometryChangeObserver, _UIColorPickerColorQueueDelegate>
 {
     UIPresentationController *_presentationController;
     struct CGRect _keyboardFrame;
@@ -30,6 +31,7 @@
     NSExtension *_extension;
     id<NSCopying> _extensionRequestIdentifier;
     NSLayoutConstraint *_bottomConstraint;
+    _UIColorPickerColorQueue *_colorQueue;
     _UIColorPickerViewControllerConfiguration *__remoteConfiguration;
     _UIColorPickerViewControllerConfiguration *_configuration;
 }
@@ -40,6 +42,7 @@
 @property (nonatomic, setter=_setShouldUseDarkGridInDarkMode:) BOOL _shouldUseDarkGridInDarkMode;
 @property (nonatomic, setter=_setUserInterfaceStyleForGrid:) long long _userInterfaceStyleForGrid;
 @property (strong, nonatomic) NSLayoutConstraint *bottomConstraint; // @synthesize bottomConstraint=_bottomConstraint;
+@property (strong, nonatomic) _UIColorPickerColorQueue *colorQueue; // @synthesize colorQueue=_colorQueue;
 @property (readonly, copy, nonatomic) _UIColorPickerViewControllerConfiguration *configuration; // @synthesize configuration=_configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<UIColorPickerViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
@@ -56,6 +59,7 @@
 - (BOOL)_canShowWhileLocked;
 - (void)_colorPickerDidFinish;
 - (void)_commonUIColorPickerViewControllerInit;
+- (void)_dequeue_pickerDidSelectColor:(id)arg1 colorspace:(id)arg2 isVolatile:(BOOL)arg3;
 - (void)_geometryChanged:(const CDStruct_ac6e8047 *)arg1 forAncestor:(id)arg2;
 - (BOOL)_geometryObserverNeedsAncestorOnly;
 - (void)_pickerDidDismissEyedropper;

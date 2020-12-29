@@ -8,5 +8,6 @@
 
 @interface NSURL (BusinessChatService)
 + (id)bcs_templatedImageURLWithString:(id)arg1 imageSpecifier:(CDStruct_e44caa5b)arg2;
+- (id)URLByDeletingFragment;
 @end
 

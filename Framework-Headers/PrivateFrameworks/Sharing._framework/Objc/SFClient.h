@@ -33,6 +33,7 @@
 - (void)activityStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)appleIDInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)broadwayPresentCardWithCode:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)clearXPCHelperImageCacheWithCompletion:(CDUnknownBlockType)arg1;
 - (void)contactIDForEmailHash:(id)arg1 phoneHash:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)dealloc;
 - (void)displayNameForEmailHash:(id)arg1 phoneHash:(id)arg2 completion:(CDUnknownBlockType)arg3;

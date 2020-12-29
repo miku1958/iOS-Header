@@ -30,6 +30,7 @@
         unsigned int delegateDidPlayItemAtIndex:1;
         unsigned int delegateWillDisplayItemAtIndex:1;
         unsigned int delegateDidEndDisplayingItemAtIndex:1;
+        unsigned int delegateIndexForPreferredCenteredView:1;
         unsigned int delegateDidCenterItemAtIndex:1;
     } _carouselViewFlags;
     NSObject<OS_dispatch_source> *_autoScrollTimer;

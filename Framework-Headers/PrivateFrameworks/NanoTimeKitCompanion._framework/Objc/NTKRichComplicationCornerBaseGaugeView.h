@@ -25,6 +25,7 @@
 - (double)_layoutLabel:(id)arg1 withLabelCenter:(struct CGPoint)arg2 labelWidthInRadius:(double)arg3 leftInRadius:(double)arg4;
 - (double)_layoutProgressViewWithBeginAngle:(double)arg1 widthInRadius:(double)arg2 bottomPadding:(double)arg3;
 - (void)_layoutSubviewsWithoutAnimation;
+- (double)_progressViewHorizontalPaddingInRadius;
 - (void)_updateLabelMaxWidths;
 - (void)handleGaugeProvider:(id)arg1 leftTextProvider:(id)arg2 rightTextProvider:(id)arg3;
 - (id)init;

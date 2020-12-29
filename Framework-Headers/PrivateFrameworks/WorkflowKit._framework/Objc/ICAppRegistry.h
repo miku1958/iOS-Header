@@ -31,6 +31,8 @@
 @property (strong, nonatomic) NSLock *registryLock; // @synthesize registryLock=_registryLock;
 @property (nonatomic) int urlTypesToken; // @synthesize urlTypesToken=_urlTypesToken;
 
++ (id)bundleIdentifierForLegacyAppIdentifier:(id)arg1;
++ (id)legacyAppIdentifierForBundleIdentifier:(id)arg1;
 + (id)sharedRegistry;
 - (void).cxx_destruct;
 - (id)_appsWithIdentifiers:(id)arg1;
@@ -48,7 +50,6 @@
 - (void)deleteCache;
 - (id)description;
 - (void)fillRegistry;
-- (id)identifierForAppWithBundleIdentifier:(id)arg1;
 - (id)init;
 - (void)refreshInstalledApps;
 - (void)removeInstallStatusObserver:(id)arg1 forAppIdentifiers:(id)arg2;

@@ -16,10 +16,10 @@ struct SWCFields {
     unsigned int updating:1;
     unsigned int systemApplication:1;
     unsigned int enabledConfiguration:2;
-    unsigned int provenance:2;
+    unsigned int lowBitsOfProvenance_getRidOfMeOnNextDBVersionChange:2;
     unsigned int enterpriseManaged:1;
     unsigned int systemPlaceholder:1;
-    unsigned int unused:3;
+    unsigned int provenance:3;
     char relativeOrder;
 };
 

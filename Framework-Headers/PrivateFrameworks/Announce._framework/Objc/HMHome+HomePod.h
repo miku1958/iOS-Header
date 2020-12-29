@@ -25,8 +25,8 @@
 @property (readonly, nonatomic) BOOL isCurrentUserAdministrator;
 @property (readonly, nonatomic) BOOL isCurrentUserOwner;
 @property (readonly, nonatomic) BOOL isRemoteAccessAllowedForCurrentUser;
+@property (readonly, nonatomic) NSArray *usersIncludingCurrentUserWithAnnounceAndRemoteAccessEnabled;
 @property (readonly, nonatomic) NSArray *usersIncludingCurrentUserWithAnnounceEnabled;
-@property (readonly, nonatomic) NSArray *usersWithAnnounceAndRemoteAccessEnabled;
 @property (readonly, nonatomic) NSArray *usersWithAnnounceEnabled;
 
 - (id)_homePodsSupportingAnnounceIncludingCurrentAccessory:(BOOL)arg1;

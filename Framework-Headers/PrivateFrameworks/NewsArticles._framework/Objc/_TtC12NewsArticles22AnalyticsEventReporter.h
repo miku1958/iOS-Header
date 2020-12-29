@@ -13,6 +13,7 @@ __attribute__((visibility("hidden")))
 {
     MISSING_TYPE *transformerManager;
     MISSING_TYPE *articleCoordinator;
+    MISSING_TYPE *eventManager;
 }
 
 - (void).cxx_destruct;

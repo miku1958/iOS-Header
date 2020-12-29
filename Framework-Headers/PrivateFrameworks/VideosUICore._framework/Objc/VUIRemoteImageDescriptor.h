@@ -8,12 +8,12 @@
 
 @class NSShadow, NSString, UIColor;
 
-__attribute__((visibility("hidden")))
 @interface VUIRemoteImageDescriptor : NSObject
 {
     BOOL _loadsImmediately;
     BOOL _templated;
     BOOL _continuousBorder;
+    BOOL _optimizedImageRendering;
     NSString *_src;
     double _aspectRatio;
     NSString *_extension;
@@ -24,42 +24,39 @@ __attribute__((visibility("hidden")))
     UIColor *_placeholderColor;
     NSString *_placeholderSrc;
     unsigned long long _decoratorType;
-    double _cornerRadius;
     long long _scaleMode;
     UIColor *_borderColor;
+    double _borderWidth;
     NSShadow *_shadow;
     NSString *_accessibilityText;
-    struct CGSize _imageSize;
-    struct VUICornerRadii _borderRadii;
-    struct UIEdgeInsets _borderWidth;
+    struct CGSize _size;
+    struct _VUICornerRadii _borderRadii;
 }
 
 @property (copy, nonatomic) NSString *accessibilityText; // @synthesize accessibilityText=_accessibilityText;
 @property (readonly, nonatomic) double aspectRatio; // @synthesize aspectRatio=_aspectRatio;
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (strong, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;
-@property (nonatomic) struct VUICornerRadii borderRadii; // @synthesize borderRadii=_borderRadii;
-@property (nonatomic) struct UIEdgeInsets borderWidth; // @synthesize borderWidth=_borderWidth;
+@property (nonatomic) struct _VUICornerRadii borderRadii; // @synthesize borderRadii=_borderRadii;
+@property (nonatomic) double borderWidth; // @synthesize borderWidth=_borderWidth;
 @property (nonatomic) BOOL continuousBorder; // @synthesize continuousBorder=_continuousBorder;
-@property (nonatomic) double cornerRadius; // @synthesize cornerRadius=_cornerRadius;
 @property (copy, nonatomic) NSString *cropCode; // @synthesize cropCode=_cropCode;
 @property (nonatomic) unsigned long long decoratorType; // @synthesize decoratorType=_decoratorType;
 @property (copy, nonatomic) NSString *extension; // @synthesize extension=_extension;
 @property (strong, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
-@property (readonly, nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
 @property (nonatomic) BOOL loadsImmediately; // @synthesize loadsImmediately=_loadsImmediately;
+@property (nonatomic) BOOL optimizedImageRendering; // @synthesize optimizedImageRendering=_optimizedImageRendering;
 @property (strong, nonatomic) UIColor *placeholderColor; // @synthesize placeholderColor=_placeholderColor;
 @property (copy, nonatomic) NSString *placeholderSrc; // @synthesize placeholderSrc=_placeholderSrc;
 @property (nonatomic) long long scaleMode; // @synthesize scaleMode=_scaleMode;
 @property (strong, nonatomic) NSShadow *shadow; // @synthesize shadow=_shadow;
+@property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
 @property (readonly, nonatomic) NSString *src; // @synthesize src=_src;
 @property (nonatomic, getter=isTemplated) BOOL templated; // @synthesize templated=_templated;
 @property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
 
 - (void).cxx_destruct;
-- (id)initWithSrc:(id)arg1;
-- (void)setAspectRatio:(double)arg1 width:(double)arg2;
-- (void)setImageSize:(struct CGSize)arg1;
+- (id)initWithSrc:(id)arg1 size:(struct CGSize)arg2;
 
 @end
 

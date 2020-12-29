@@ -30,6 +30,7 @@
 - (BOOL)__accessibilitySupportsSecondaryActivateAction;
 - (void)__accessibilityUnregister:(void *)arg1 shouldRelease:(BOOL)arg2;
 - (struct CGPoint)__accessibilityVisibleScrollArea:(BOOL)arg1;
+- (BOOL)_acceessibilityUIKitIsUserInteractionDisabled;
 - (id)_accessibililtyLabelForTabBarButton:(id)arg1;
 - (id)_accessibilityAXAttributedHint;
 - (id)_accessibilityAXAttributedLabel;
@@ -211,6 +212,7 @@
 - (id)_accessibilityElementForTextInsertionAndDeletion;
 - (id)_accessibilityElementHelp;
 - (BOOL)_accessibilityElementIsBeingHitTested;
+- (BOOL)_accessibilityElementServesAsHeadingLandmark;
 - (BOOL)_accessibilityElementShouldBeInvalid;
 - (id)_accessibilityElementStoredUserLabel;
 - (id)_accessibilityElementToFocusForAppearanceScreenChange;
@@ -795,6 +797,7 @@
 - (id)_accessibilitySupplementaryFooterViews;
 - (id)_accessibilitySupplementaryHeaderViewAtIndexPath:(id)arg1;
 - (id)_accessibilitySupplementaryHeaderViews;
+- (id)_accessibilitySupplementaryViewSectionHeaderIdentifiers;
 - (id)_accessibilitySupportGesturesAttributes;
 - (id)_accessibilitySupportedLanguages;
 - (BOOL)_accessibilitySupportsActivateAction;
@@ -1007,6 +1010,7 @@
 - (void)_setAccessibilityPerformEscapeBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityPhotoDescription:(id)arg1;
 - (void)_setAccessibilityServesAsFirstElement:(BOOL)arg1;
+- (void)_setAccessibilitySupplementaryViewSectionHeaderIdentifiersBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityTableCellUsesDetailTextAsValue:(BOOL)arg1;
 - (void)_setAccessibilityTraitsBlock:(CDUnknownBlockType)arg1;
 - (void)_setAccessibilityUpdatesOnActivationAfterDelay:(BOOL)arg1;

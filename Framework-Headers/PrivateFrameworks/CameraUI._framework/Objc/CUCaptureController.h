@@ -39,6 +39,7 @@
     id<CAMConfigurationDelegate> _configurationDelegate;
     id<CAMSuggestionDelegate> _suggestionDelegate;
     id<CAMAvailabilityDelegate> _availabilityDelegate;
+    unsigned long long _flashCompromise;
     id<CAMFocusDelegate> _focusDelegate;
     id<CAMExposureDelegate> _exposureDelegate;
     id<CAMShallowDepthOfFieldStatusDelegate> _shallowDepthOfFieldStatusDelegate;
@@ -128,6 +129,7 @@
 @property (nonatomic, getter=_isFailedConfigurationPreventingCapture, setter=_setFailedConfigurationPreventingCapture:) BOOL failedConfigurationPreventingCapture; // @synthesize failedConfigurationPreventingCapture=_failedConfigurationPreventingCapture;
 @property (nonatomic, getter=isFlashActive, setter=_setFlashActive:) BOOL flashActive; // @synthesize flashActive=_flashActive;
 @property (nonatomic, getter=isFlashAvailable, setter=_setFlashAvailable:) BOOL flashAvailable; // @synthesize flashAvailable=_flashAvailable;
+@property (nonatomic, setter=_setFlashCompromise:) unsigned long long flashCompromise; // @synthesize flashCompromise=_flashCompromise;
 @property (weak, nonatomic) id<CAMFocusDelegate> focusDelegate; // @synthesize focusDelegate=_focusDelegate;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) id<CAMHistogramDelegate> histogramDelegate; // @synthesize histogramDelegate=_histogramDelegate;

@@ -15,15 +15,18 @@
     NSString *_appAdamID;
     NTPBRecordBase *_base;
     NSMutableArray *_bundleChannelTagIDs;
+    NSString *_bundleChannelTagIDsVersion;
     NSMutableArray *_channelTagIDs;
 }
 
 @property (strong, nonatomic) NSString *appAdamID; // @synthesize appAdamID=_appAdamID;
 @property (strong, nonatomic) NTPBRecordBase *base; // @synthesize base=_base;
 @property (strong, nonatomic) NSMutableArray *bundleChannelTagIDs; // @synthesize bundleChannelTagIDs=_bundleChannelTagIDs;
+@property (strong, nonatomic) NSString *bundleChannelTagIDsVersion; // @synthesize bundleChannelTagIDsVersion=_bundleChannelTagIDsVersion;
 @property (strong, nonatomic) NSMutableArray *channelTagIDs; // @synthesize channelTagIDs=_channelTagIDs;
 @property (readonly, nonatomic) BOOL hasAppAdamID;
 @property (readonly, nonatomic) BOOL hasBase;
+@property (readonly, nonatomic) BOOL hasBundleChannelTagIDsVersion;
 
 + (Class)bundleChannelTagIDsType;
 + (Class)channelTagIDsType;

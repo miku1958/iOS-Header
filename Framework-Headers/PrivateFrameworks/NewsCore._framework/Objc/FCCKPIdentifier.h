@@ -10,6 +10,7 @@
 
 @class NSString;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPIdentifier : PBCodable <NSCopying>
 {
     NSString *_name;
@@ -22,7 +23,6 @@
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (nonatomic) int type; // @synthesize type=_type;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

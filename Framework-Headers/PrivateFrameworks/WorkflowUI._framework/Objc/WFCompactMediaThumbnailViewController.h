@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (double)contentHeightForWidth:(double)arg1;
+- (BOOL)contentHeightLikelyToChange;
 - (void)dealloc;
 - (id)initWithAVPlayerItem:(id)arg1;
 - (void)loadView;

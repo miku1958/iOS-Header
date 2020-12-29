@@ -32,6 +32,7 @@
     UIView *_overrideAccessoryView;
     UIActivityIndicatorView *_activityIndicator;
     HUVisualEffectContainerView *_exclamationView;
+    HUVisualEffectContainerView *_firmwareUpdateView;
 }
 
 @property (strong, nonatomic) UIView *accessoryView; // @synthesize accessoryView=_accessoryView;
@@ -44,6 +45,7 @@
 @property (strong, nonatomic) UIVisualEffectView *descriptionLabelEffectView; // @synthesize descriptionLabelEffectView=_descriptionLabelEffectView;
 @property (nonatomic) BOOL disableContinuousIconAnimation;
 @property (strong, nonatomic) HUVisualEffectContainerView *exclamationView; // @synthesize exclamationView=_exclamationView;
+@property (strong, nonatomic) HUVisualEffectContainerView *firmwareUpdateView; // @synthesize firmwareUpdateView=_firmwareUpdateView;
 @property (nonatomic) BOOL hasUpdatedUISinceLastReuse; // @synthesize hasUpdatedUISinceLastReuse=_hasUpdatedUISinceLastReuse;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
@@ -66,6 +68,7 @@
 + (Class)layoutOptionsClass;
 - (void).cxx_destruct;
 - (void)_createExclamationViewIfNecessary;
+- (void)_createFirmwareUpdateViewIfNecessary;
 - (id)_descriptionTextAttributesWithColor:(id)arg1;
 - (void)_setupCommonServiceCell;
 - (void)_setupServiceCell;

@@ -33,12 +33,13 @@
 @property (nonatomic) BOOL isDefault; // @synthesize isDefault=_isDefault;
 @property (nonatomic) long long lifespan; // @synthesize lifespan=_lifespan;
 @property (nonatomic) unsigned long long localHash; // @synthesize localHash=_localHash;
+@property (readonly, nonatomic) double maxFutureTimeInterval;
+@property (readonly, nonatomic) double maxPastTimeInterval;
 @property (nonatomic) long long rotationSchedule; // @synthesize rotationSchedule=_rotationSchedule;
+@property (readonly, nonatomic) unsigned long long storagePoolSize;
 @property (copy, nonatomic) NSArray *topics; // @synthesize topics=_topics;
 @property (copy, nonatomic) NSString *version; // @synthesize version=_version;
 
-+ (id)localCalendar;
-+ (id)referenceDateComponents;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (unsigned long long)calculateHash;
@@ -51,11 +52,6 @@
 - (id)initWithNamespace:(id)arg1 type:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (void)overrideLifespanMaybe;
-- (id)rollingEndDateForDate:(id)arg1;
-- (id)rollingStartDateForDate:(id)arg1;
-- (id)rotatedSecretNameForDate:(id)arg1 maxCount:(long long)arg2;
-- (id)secretKeyForDate:(id)arg1;
-- (long long)timeBucketForDate:(id)arg1;
 
 @end
 

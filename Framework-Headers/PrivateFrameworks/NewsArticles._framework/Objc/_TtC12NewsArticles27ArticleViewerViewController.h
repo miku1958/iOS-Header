@@ -30,6 +30,7 @@
     MISSING_TYPE *hasPresentedFirstPage;
     MISSING_TYPE *pageSheetPresentationObserver;
     MISSING_TYPE *commands;
+    MISSING_TYPE *onPagePresented;
 }
 
 - (void).cxx_destruct;

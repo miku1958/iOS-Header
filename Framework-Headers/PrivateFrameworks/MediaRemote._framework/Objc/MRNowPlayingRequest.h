@@ -20,6 +20,8 @@
 - (id)initWithPlayerPath:(id)arg1;
 - (id)lastPlayingDateWithError:(id *)arg1;
 - (void)requestLastPlayingDateOnQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)triggerAudioFadeInWithReplyQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)triggerAudioFadeOutForNowPlayingApplicationWithReplyQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 
 @end
 

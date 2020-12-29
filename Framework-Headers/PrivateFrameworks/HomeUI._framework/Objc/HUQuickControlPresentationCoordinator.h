@@ -104,6 +104,7 @@
 - (id)_beginControlPresentationAnimated:(BOOL)arg1;
 - (id)_buildCardNavigationController;
 - (id)_buildQuickControlViewController;
+- (id)_buildSoftwareUpdateNavigationController;
 - (id)_buildStatusDetailsNavigationController;
 - (void)_cleanupForQuickControlDismissal;
 - (void)_configureInitialStateForPressedItemContext:(id)arg1 userInitiated:(BOOL)arg2;
@@ -149,6 +150,7 @@
 - (void)clickPresentationInteractionEnded:(id)arg1 wasCancelled:(BOOL)arg2;
 - (BOOL)clickPresentationInteractionShouldBegin:(id)arg1;
 - (BOOL)clickPresentationInteractionShouldPresent:(id)arg1;
+- (id)createNavigationControllerForPresentationContext:(id)arg1;
 - (id)detailsViewControllerForQuickControlViewController:(id)arg1 item:(id)arg2;
 - (id)dismissQuickControlAnimated:(BOOL)arg1;
 - (id)dismissQuickControlAnimated:(BOOL)arg1 wasDismissed:(BOOL *)arg2;

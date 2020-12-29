@@ -10,6 +10,7 @@
 
 @class FCCKPOplockFailure, FCCKPUniqueFieldFailure;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPResponseOperationResultErrorClient : PBCodable <NSCopying>
 {
     FCCKPOplockFailure *_oplockFailure;
@@ -25,7 +26,6 @@
 @property (nonatomic) int type; // @synthesize type=_type;
 @property (strong, nonatomic) FCCKPUniqueFieldFailure *uniqueFieldFailure;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

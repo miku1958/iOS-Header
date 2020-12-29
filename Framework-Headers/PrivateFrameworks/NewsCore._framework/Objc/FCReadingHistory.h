@@ -46,8 +46,8 @@
 - (void)_addHistoryItems:(id)arg1 addToStore:(BOOL)arg2;
 - (id)_loadReadingHistoryItemForArticleID:(id)arg1;
 - (BOOL)_markArticle:(id)arg1 withLikingStatus:(unsigned long long)arg2;
-- (BOOL)_markArticleAsSeenWithArticleID:(id)arg1 articleVersion:(long long)arg2 historyItem:(id)arg3 modifiedHistoryFeaturesOut:(unsigned long long *)arg4;
-- (BOOL)_markArticleAsSeenWithHeadline:(id)arg1 historyItem:(id)arg2 modifiedHistoryFeaturesOut:(unsigned long long *)arg3;
+- (BOOL)_markArticleAsSeenWithArticleID:(id)arg1 rememberForever:(BOOL)arg2 articleVersion:(long long)arg3 historyItem:(id)arg4 modifiedHistoryFeaturesOut:(unsigned long long *)arg5;
+- (BOOL)_markArticleAsSeenWithHeadline:(id)arg1 rememberForever:(BOOL)arg2 historyItem:(id)arg3 modifiedHistoryFeaturesOut:(unsigned long long *)arg4;
 - (void)_modifyHistoryForArticleID:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)_readingHistoryItemForArticleID:(id)arg1;
 - (void)_removeHistoryItemWithItemID:(id)arg1 articleID:(id)arg2;
@@ -89,7 +89,9 @@
 - (void)markArticleAsReadWithHeadline:(id)arg1;
 - (void)markArticleAsReadWithHeadline:(id)arg1 fromGroupType:(long long)arg2 swipedToArticle:(BOOL)arg3 onScreenChecker:(CDUnknownBlockType)arg4;
 - (BOOL)markArticleAsSeenWithHeadline:(id)arg1;
+- (BOOL)markArticleAsSeenWithHeadline:(id)arg1 rememberForever:(BOOL)arg2;
 - (id)markArticlesAsSeenWithHeadlines:(id)arg1;
+- (id)markArticlesAsSeenWithHeadlines:(id)arg1 rememberForever:(BOOL)arg2;
 - (id)mostRecentlyCompletedListeningArticlesWithMaxCount:(unsigned long long)arg1;
 - (id)mostRecentlyReadArticlesWithMaxCount:(unsigned long long)arg1;
 - (id)pruneRecords:(id)arg1 forZoneName:(id)arg2;

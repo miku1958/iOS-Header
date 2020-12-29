@@ -55,9 +55,11 @@
 - (BOOL)_accessibilitySystemAppServerIsReady;
 - (BOOL)_accessibilitySystemWideGestureInProgress;
 - (void)_accessibilityUpdateSpeakScreenGestureRecognizer;
+- (BOOL)_axIsKeyUIEventCommandTab:(id)arg1;
 - (id)_axKeyboardFocusController;
 - (void)_axPerformDidFocusOnApplicationActionWithPid:(int)arg1;
 - (id)_firstStatusBarElement;
+- (void)_handleKeyUIEvent:(id)arg1;
 - (id)_iosAccessibilityAttributeValue:(long long)arg1;
 - (BOOL)_iosAccessibilityPerformAction:(int)arg1 withValue:(id)arg2 fencePort:(unsigned int)arg3;
 - (BOOL)_isDim;

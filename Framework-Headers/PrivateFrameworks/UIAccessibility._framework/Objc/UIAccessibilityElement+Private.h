@@ -13,6 +13,7 @@
 @property (nonatomic) struct CGRect bounds; // @dynamic bounds;
 
 - (id)_accessibilityProxyView;
+- (BOOL)_accessibilityViewIsVisible;
 - (id)dataForKey:(id)arg1;
 - (void)delegateSpecificsForAttribute:(long long)arg1 delegate:(id *)arg2 selector:(SEL *)arg3;
 - (void)setData:(id)arg1 forKey:(id)arg2;

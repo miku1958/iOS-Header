@@ -19,6 +19,7 @@
     NSString *_displayName;
     NSString *_legalConsentText;
     NSString *_onboardingNotificationBody;
+    NSString *_phaTelemetryOptInMessage;
     NSString *_regionName;
     NSString *_revokedNotificationBody;
     NSString *_revokedNotificationSubject;
@@ -34,6 +35,7 @@
 @property (copy, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (copy, nonatomic) NSArray *notificationConfigurations; // @synthesize notificationConfigurations=_notificationConfigurations;
 @property (copy, nonatomic) NSString *onboardingNotificationBody; // @synthesize onboardingNotificationBody=_onboardingNotificationBody;
+@property (copy, nonatomic) NSString *phaTelemetryOptInMessage; // @synthesize phaTelemetryOptInMessage=_phaTelemetryOptInMessage;
 @property (readonly, copy, nonatomic) ENRegion *region; // @synthesize region=_region;
 @property (copy, nonatomic) NSString *regionName; // @synthesize regionName=_regionName;
 @property (copy, nonatomic) NSString *revokedNotificationBody; // @synthesize revokedNotificationBody=_revokedNotificationBody;

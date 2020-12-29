@@ -6,12 +6,12 @@
 
 #import <objc/NSObject.h>
 
-#import <VideosUICore/VUICoreImageLoader-Protocol.h>
+#import <VideosUICore/VUIImageLoader-Protocol.h>
 
 @class NSOperationQueue, NSString;
 
 __attribute__((visibility("hidden")))
-@interface VUIAppIconImageLoader : NSObject <VUICoreImageLoader>
+@interface VUIAppIconImageLoader : NSObject <VUIImageLoader>
 {
     NSOperationQueue *_imageLoaderQueue;
 }

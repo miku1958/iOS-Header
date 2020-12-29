@@ -12,9 +12,11 @@
 {
     NSString *_identifier;
     NSString *_revision;
+    long long _priority;
 }
 
 @property (readonly, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
+@property (readonly, nonatomic) long long priority; // @synthesize priority=_priority;
 @property (readonly, nonatomic) NSString *revision; // @synthesize revision=_revision;
 
 - (void).cxx_destruct;

@@ -23,6 +23,7 @@
     BOOL _customEncoderConfig;
     unsigned int _lastEncodingStatus;
     unsigned int _lastEncodingInfoFlags;
+    long long _pendigFrames;
 }
 
 @property BOOL customEncoderConfig; // @synthesize customEncoderConfig=_customEncoderConfig;
@@ -32,6 +33,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly) unsigned int lastEncodingInfoFlags; // @synthesize lastEncodingInfoFlags=_lastEncodingInfoFlags;
 @property (readonly) unsigned int lastEncodingStatus; // @synthesize lastEncodingStatus=_lastEncodingStatus;
+@property long long pendigFrames; // @synthesize pendigFrames=_pendigFrames;
 @property (readonly) Class superclass;
 
 + (struct __CVBuffer *)createHEVCCompatiblePixelBuffer:(struct __CVBuffer *)arg1;

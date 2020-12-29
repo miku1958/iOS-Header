@@ -8,12 +8,12 @@
 
 #import <VideosUICore/NSURLSessionDataDelegate-Protocol.h>
 #import <VideosUICore/NSURLSessionTaskDelegate-Protocol.h>
-#import <VideosUICore/VUICoreImageLoader-Protocol.h>
+#import <VideosUICore/VUIImageLoader-Protocol.h>
 
 @class NSMutableDictionary, NSString, NSURLSession;
 @protocol OS_dispatch_queue;
 
-@interface VUIURLImageLoader : NSObject <NSURLSessionTaskDelegate, NSURLSessionDataDelegate, VUICoreImageLoader>
+@interface VUIURLImageLoader : NSObject <NSURLSessionTaskDelegate, NSURLSessionDataDelegate, VUIImageLoader>
 {
     BOOL _imageRotationEnabled;
     NSURLSession *_session;

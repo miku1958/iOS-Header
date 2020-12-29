@@ -17,6 +17,7 @@
     MISSING_TYPE *subtitleLabel;
     MISSING_TYPE *badgeView;
     MISSING_TYPE *accessoryView;
+    MISSING_TYPE *contentAccessibilityElement;
     MISSING_TYPE *_notificationSwitch;
     MISSING_TYPE *_likeButton;
     MISSING_TYPE *_dislikeButton;

@@ -10,6 +10,7 @@
 
 @class FCCKPOperation, FCCKPQueryRetrieveRequest, FCCKPRecordRetrieveRequest, FCCKPRequestOperationHeader;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPRequestOperation : PBCodable <NSCopying>
 {
     FCCKPRequestOperationHeader *_header;
@@ -27,7 +28,6 @@
 @property (strong, nonatomic) FCCKPRecordRetrieveRequest *recordRetrieveRequest;
 @property (strong, nonatomic) FCCKPOperation *request; // @synthesize request=_request;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

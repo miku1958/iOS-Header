@@ -7,10 +7,11 @@
 #import <HeartRhythmUI/HROnboardingBaseViewController.h>
 
 #import <HeartRhythmUI/HRStackedButtonViewDelegate-Protocol.h>
+#import <HeartRhythmUI/UIScrollViewDelegate-Protocol.h>
 
-@class HRSpeedBumpItem, HRStackedButtonView, NSArray, NSLayoutConstraint, UILabel, UIView;
+@class HRSpeedBumpItem, HRStackedButtonView, NSArray, NSLayoutConstraint, NSString, UILabel, UIView;
 
-@interface HRSpeedBumpViewController : HROnboardingBaseViewController <HRStackedButtonViewDelegate>
+@interface HRSpeedBumpViewController : HROnboardingBaseViewController <HRStackedButtonViewDelegate, UIScrollViewDelegate>
 {
     BOOL _stateAnimating;
     HRSpeedBumpItem *_item;
@@ -26,11 +27,15 @@
 @property (strong, nonatomic) UILabel *bodyLabel; // @synthesize bodyLabel=_bodyLabel;
 @property (strong, nonatomic) NSArray *bubbleViews; // @synthesize bubbleViews=_bubbleViews;
 @property (strong, nonatomic) NSLayoutConstraint *contentViewBottomConstraint; // @synthesize contentViewBottomConstraint=_contentViewBottomConstraint;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (nonatomic) double initialContentOffset; // @synthesize initialContentOffset=_initialContentOffset;
 @property (strong, nonatomic) HRSpeedBumpItem *item; // @synthesize item=_item;
 @property (nonatomic) UIView *latestVisibleBubbleView; // @synthesize latestVisibleBubbleView=_latestVisibleBubbleView;
 @property (strong, nonatomic) HRStackedButtonView *stackedButtonView; // @synthesize stackedButtonView=_stackedButtonView;
 @property (nonatomic) BOOL stateAnimating; // @synthesize stateAnimating=_stateAnimating;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 
 - (void).cxx_destruct;
@@ -48,6 +53,7 @@
 - (void)_updateContentViewBottomConstraintWithAnchor:(id)arg1 constant:(double)arg2;
 - (void)_updateUIWithLatestVisibleBubbleView:(id)arg1 animated:(BOOL)arg2;
 - (id)initWithSpeedBumpItem:(id)arg1 onboarding:(BOOL)arg2 upgradingFromAlgorithmVersion:(long long)arg3;
+- (void)scrollViewWillBeginDragging:(id)arg1;
 - (void)setUpConstraints;
 - (void)setUpUI;
 - (void)stackedButtonView:(id)arg1 didTapButtonAtIndex:(long long)arg2;

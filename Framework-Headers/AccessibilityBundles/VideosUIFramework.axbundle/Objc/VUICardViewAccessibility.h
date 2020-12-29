@@ -17,7 +17,7 @@
 - (id)_accessibilityEnclosingVUICardCollectionViewCell;
 - (id)_accessibilityUserTestingChildren;
 - (long long)_axCompareStyle:(long long)arg1 toStyle:(long long)arg2;
-- (BOOL)_downloadButtonPressed:(id)arg1;
+- (BOOL)_axDownloadButtonPressed:(id)arg1;
 - (id)accessibilityAttributedValue;
 - (id)accessibilityCustomActions;
 - (id)accessibilityLabel;

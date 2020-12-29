@@ -22,6 +22,7 @@
 - (void)_enumerateIntegerKeysWithBlock:(CDUnknownBlockType)arg1;
 - (void)_enumerateTextProviderKeysWithBlock:(CDUnknownBlockType)arg1;
 - (long long)compatibleFamily;
+- (id)init;
 - (id)initWithTextProvider:(id)arg1;
 
 @end

@@ -7,5 +7,6 @@
 #import <HealthKit/HKSampleQueryDescription.h>
 
 @interface HKSampleQueryDescription (HKMenstrualCycles)
++ (id)hkmc_cycleFactorsDescriptionsWithPredicate:(id)arg1;
 @end
 

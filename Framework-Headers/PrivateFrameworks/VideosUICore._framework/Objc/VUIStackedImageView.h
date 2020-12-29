@@ -10,7 +10,6 @@
 
 @class NSShadow, NSString, UIImage, UIMotionEffectGroup, VUIImageProxy, VUIStackedImageNamedLayerStack, _UIStackedImageConfiguration, _UIStackedImageContainerLayer;
 
-__attribute__((visibility("hidden")))
 @interface VUIStackedImageView : UIView <VUIAuxiliaryViewSelecting>
 {
     UIImage *_staticImage;

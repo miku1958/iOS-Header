@@ -18,6 +18,7 @@
 - (id)_viewControllerForIKElement:(id)arg1 existingViewController:(id)arg2;
 - (id)_viewForIKElement:(id)arg1 existingView:(id)arg2;
 - (id)imageForResource:(id)arg1;
+- (BOOL)isDocumentViewController:(id)arg1 equalToViewController:(id)arg2;
 - (id)viewControllerWithDocumentDataSource:(id)arg1 appContext:(id)arg2 viewElement:(id)arg3 documentOptions:(id)arg4;
 @end
 

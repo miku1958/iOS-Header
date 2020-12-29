@@ -10,9 +10,11 @@
 
 @interface CSAccessoryTrayViewController : CSAccessoryViewController
 {
+    BOOL _isAnimatingPresentation;
     CSAccessoryTrayView *_trayView;
 }
 
+@property (nonatomic) BOOL isAnimatingPresentation; // @synthesize isAnimatingPresentation=_isAnimatingPresentation;
 @property (strong, nonatomic) CSAccessoryTrayView *trayView; // @synthesize trayView=_trayView;
 
 - (void).cxx_destruct;

@@ -6,12 +6,10 @@
 
 #import <objc/NSObject.h>
 
-#import <MetricsKit/CKSyncEngineDataSource-Protocol.h>
-
 @class CKRecordZoneID, NSString, NSURL;
 @protocol MTIDCloudKitLocalDBDelegate;
 
-@interface MTIDCloudKitLocalDB : NSObject <CKSyncEngineDataSource>
+@interface MTIDCloudKitLocalDB : NSObject
 {
     BOOL _zoneCreated;
     id<MTIDCloudKitLocalDBDelegate> _delegate;
@@ -20,37 +18,29 @@
     NSURL *_pathURL;
 }
 
-@property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<MTIDCloudKitLocalDBDelegate> delegate; // @synthesize delegate=_delegate;
-@property (readonly, copy) NSString *description;
-@property (readonly) unsigned long long hash;
 @property (strong, nonatomic) NSURL *pathURL; // @synthesize pathURL=_pathURL;
 @property (strong, nonatomic) NSString *recordType; // @synthesize recordType=_recordType;
 @property (strong, nonatomic) CKRecordZoneID *recordZoneID; // @synthesize recordZoneID=_recordZoneID;
-@property (readonly) Class superclass;
 @property (nonatomic) BOOL zoneCreated; // @synthesize zoneCreated=_zoneCreated;
 
 - (void).cxx_destruct;
 - (id)allRecords;
 - (void)clearData;
 - (id)dataForName:(id)arg1 error:(id *)arg2;
+- (id)decodeRecordFromData:(id)arg1 recordID:(id)arg2 isSynchronized:(BOOL)arg3;
 - (BOOL)deleteIfExists:(id)arg1 error:(id *)arg2;
 - (BOOL)deleteRecordWithID:(id)arg1 error:(id *)arg2;
+- (id)encodeRecord:(id)arg1;
 - (BOOL)fileExists:(id)arg1;
-- (id)initWithFolder:(id)arg1 recordType:(id)arg2 recordZoneID:(id)arg3;
-- (id)metadata;
+- (id)initWithContainerIdentifier:(id)arg1 recordType:(id)arg2 recordZoneID:(id)arg3;
+- (BOOL)needsFetchRecords;
 - (id)pendingRecordIDs;
 - (id)recordWithID:(id)arg1 error:(id *)arg2;
-- (BOOL)setUserRecordIDName:(id)arg1 clearDataIfChanged:(BOOL)arg2;
-- (void)syncEngine:(id)arg1 didDeleteRecordWithID:(id)arg2;
-- (void)syncEngine:(id)arg1 didFetchRecord:(id)arg2;
-- (void)syncEngine:(id)arg1 didSaveRecord:(id)arg2;
-- (void)syncEngine:(id)arg1 didUpdateMetadata:(id)arg2;
-- (void)syncEngine:(id)arg1 failedToDeleteRecordWithID:(id)arg2 error:(id)arg3;
-- (void)syncEngine:(id)arg1 failedToSaveRecord:(id)arg2 error:(id)arg3;
-- (void)syncEngine:(id)arg1 failedToSaveRecordZone:(id)arg2 error:(id)arg3;
-- (id)syncEngine:(id)arg1 recordToSaveForRecordID:(id)arg2;
-- (void)syncEngine:(id)arg1 recordWithIDWasDeleted:(id)arg2 recordType:(id)arg3;
+- (void)setNeedsFetchRecords:(BOOL)arg1;
+- (void)setSyncStatusCode:(id)arg1;
+- (BOOL)setUserRecordIDName:(id)arg1;
+- (id)syncStatusCode;
 - (id)userRecordIDName;
 - (BOOL)writeData:(id)arg1 forName:(id)arg2 error:(id *)arg3;
 - (BOOL)writeRecord:(id)arg1 error:(id *)arg2;

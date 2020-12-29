@@ -16,12 +16,13 @@
     NSTextRange *_viewportRange;
     NSArray *_viewportElements;
     NSMutableArray *_viewportLayoutObservers;
-    BOOL _layoutIsValid;
     id<NSTextViewportLayoutDelegate> _delegate;
+    BOOL _layoutIsValid;
+    BOOL _delegateSupportsLocationPositionMapping;
     id<NSTextViewportElementProvider> _elementProvider;
 }
 
-@property (weak) id<NSTextViewportLayoutDelegate> delegate; // @synthesize delegate=_delegate;
+@property (weak) id<NSTextViewportLayoutDelegate> delegate;
 @property (readonly, weak) id<NSTextViewportElementProvider> elementProvider; // @synthesize elementProvider=_elementProvider;
 @property (readonly) struct CGRect viewportBounds; // @synthesize viewportBounds=_viewportBounds;
 @property (readonly) NSTextRange *viewportRange;
@@ -29,6 +30,7 @@
 - (void).cxx_destruct;
 - (void)addViewportLayoutObserver:(id)arg1;
 - (void)adjustViewport:(double)arg1;
+- (void)adjustViewport:(double)arg1 atLocation:(id)arg2 verticalOffsetFromLocation:(double)arg3;
 - (void)dealloc;
 - (void)enumerateTextViewportElementsInRect:(struct CGRect)arg1 options:(long long)arg2 usingBlock:(CDUnknownBlockType)arg3;
 - (id)initWithElementProvider:(id)arg1;

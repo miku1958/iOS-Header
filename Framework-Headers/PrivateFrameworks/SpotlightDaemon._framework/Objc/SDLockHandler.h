@@ -14,6 +14,7 @@
 + (BOOL)deviceFirstUnlockedInMKB;
 + (BOOL)deviceFirstUnlockedInSB;
 + (BOOL)deviceUnlocked;
++ (BOOL)migrationComplete;
 + (void)setupHandlerWithIndexQueue:(id)arg1 pipelineOnly:(BOOL)arg2 indexEnabled:(BOOL)arg3 delegate:(id)arg4;
 + (BOOL)unlockedSinceBoot;
 

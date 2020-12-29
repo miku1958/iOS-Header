@@ -35,6 +35,7 @@
 - (void)_commonInit;
 - (BOOL)_formatStorageKeyArrayBytes:(void *)arg1 length:(unsigned long long)arg2 fromKey:(const struct _renditionkeytoken *)arg3;
 - (id)_newRenditionKeyDataFromKey:(const struct _renditionkeytoken *)arg1;
+- (BOOL)_subImageTexturingShouldBeSupported;
 - (void)_updateKeyWithCompatibilityMapping:(struct _renditionkeytoken *)arg1;
 - (id)aliasForName:(id)arg1;
 - (id)allImageNames;

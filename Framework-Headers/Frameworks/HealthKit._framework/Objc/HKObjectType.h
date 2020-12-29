@@ -56,6 +56,7 @@
 + (id)clinicalTypeForIdentifier:(id)arg1;
 + (id)coachingEventType;
 + (id)conditionRecordTypeForIdentifier:(id)arg1;
++ (id)contraceptiveType;
 + (id)correlationTypeForIdentifier:(id)arg1;
 + (id)coverageRecordTypeForIdentifier:(id)arg1;
 + (id)dataTypeWithCode:(long long)arg1;
@@ -75,6 +76,8 @@
 + (id)heartRateType;
 + (id)heartStudyEventType;
 + (id)irregularlyIrregularPulseType;
++ (id)lactationType;
++ (id)lowCardioFitnessEventType;
 + (id)medicalTypeForIdentifier:(id)arg1;
 + (id)medicationDispenseRecordTypeForIdentifier:(id)arg1;
 + (id)medicationOrderTypeForIdentifier:(id)arg1;
@@ -82,6 +85,7 @@
 + (id)menstrualFlowType;
 + (id)moveMinuteGoal;
 + (id)objectTypeForWorkoutMetric:(unsigned long long)arg1;
++ (id)pregnancyType;
 + (id)procedureRecordTypeForIdentifier:(id)arg1;
 + (id)quantityTypeForIdentifier:(id)arg1;
 + (id)seriesTypeForIdentifier:(id)arg1;

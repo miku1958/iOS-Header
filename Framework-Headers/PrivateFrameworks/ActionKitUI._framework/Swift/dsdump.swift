@@ -5,21 +5,21 @@
 	let label : UILabel
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x431700030d50 (0x31700030d50) in binary!
-	0x4313  @objc WFShazamMediaActionView.(null) <stripped>
-WARNING: couldn't find address 0x431400030d58 (0x31400030d58) in binary!
-	0x4332  @objc WFShazamMediaActionView.(null) <stripped>
+WARNING: couldn't find address 0x442f00031990 (0x42f00031990) in binary!
+	0x442b  @objc WFShazamMediaActionView.(null) <stripped>
+WARNING: couldn't find address 0x442c00031998 (0x42c00031998) in binary!
+	0x444a  @objc WFShazamMediaActionView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x52cfffb4260  @objc WFShazamMediaActionView.(null) <stripped>
-	0xfffb4308  @objc WFShazamMediaActionView.ÿ*€ <stripped>
+	0x16cfffb2a38  @objc WFShazamMediaActionView.(null) <stripped>
+	0xfffb2ae0  @objc WFShazamMediaActionView.L‹(ò´÷ <stripped>
  }
 
  class ActionKitUI.ListeningView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x42df00030d20 (0x2df00030d20) in binary!
-	0x42e8  @objc ListeningView.(null) <stripped>
-WARNING: couldn't find address 0x42cf00030d90 (0x2cf00030d90) in binary!
+WARNING: couldn't find address 0x43f700031960 (0x3f700031960) in binary!
+	0x4400  @objc ListeningView.(null) <stripped>
+WARNING: couldn't find address 0x43e7000319d0 (0x3e7000319d0) in binary!
 	0x58000000c  @objc ListeningView.(null) <stripped>
-WARNING: couldn't find address 0x1a13f00032c90 (0x13f00032c90) in binary!
-	0x1a133  @objc ListeningView.(null) <stripped>
+WARNING: couldn't find address 0x1ac7300033950 (0x47300033950) in binary!
+	0x1ac67  @objc ListeningView.(null) <stripped>
  }

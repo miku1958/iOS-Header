@@ -10,10 +10,14 @@
 {
 }
 
+- (id)firmwareUpdateSession;
 - (id)fmipRegisterInfo;
 - (id)ownerSession;
+- (id)persistentConnectionSession;
+- (id)privateFirmwareUpdateSession;
 - (id)privateOwnerSession;
 - (id)settingsConfiguration;
+- (id)tagSeparationSession;
 - (id)trackingAvoidanceService;
 
 @end

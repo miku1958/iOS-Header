@@ -17,6 +17,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (id)__accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
+- (BOOL)_acceessibilityUIKitIsUserInteractionDisabled;
 - (id)_accessibilityAllDragSourceDescriptors;
 - (id)_accessibilityAllDropPointDescriptors;
 - (id)_accessibilityAuditIssuesWithOptions:(id)arg1;

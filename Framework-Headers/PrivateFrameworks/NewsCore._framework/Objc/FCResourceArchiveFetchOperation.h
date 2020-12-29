@@ -11,7 +11,10 @@
 
 @interface FCResourceArchiveFetchOperation : FCOperation
 {
+    unsigned long long _maxConcurrentFetchCount;
     CDUnknownBlockType _progressHandler;
+    CDUnknownBlockType _interestTokenHandler;
+    CDUnknownBlockType _archiveHandler;
     CDUnknownBlockType _fetchCompletionHandler;
     NSURL *_archiveURL;
     id<FCContentContext> _context;
@@ -19,10 +22,13 @@
     NSArray *_resultResources;
 }
 
+@property (copy, nonatomic) CDUnknownBlockType archiveHandler; // @synthesize archiveHandler=_archiveHandler;
 @property (copy, nonatomic) NSURL *archiveURL; // @synthesize archiveURL=_archiveURL;
 @property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
 @property (strong, nonatomic) NSURLSessionDownloadTask *downloadTask; // @synthesize downloadTask=_downloadTask;
 @property (copy, nonatomic) CDUnknownBlockType fetchCompletionHandler; // @synthesize fetchCompletionHandler=_fetchCompletionHandler;
+@property (copy, nonatomic) CDUnknownBlockType interestTokenHandler; // @synthesize interestTokenHandler=_interestTokenHandler;
+@property (nonatomic) unsigned long long maxConcurrentFetchCount; // @synthesize maxConcurrentFetchCount=_maxConcurrentFetchCount;
 @property (copy, nonatomic) CDUnknownBlockType progressHandler; // @synthesize progressHandler=_progressHandler;
 @property (strong, nonatomic) NSArray *resultResources; // @synthesize resultResources=_resultResources;
 

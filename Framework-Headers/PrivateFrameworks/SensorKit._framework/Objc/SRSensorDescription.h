@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSString;
+@class NSArray, NSSet, NSString;
 
 __attribute__((visibility("hidden")))
 @interface SRSensorDescription : NSObject
@@ -20,6 +20,7 @@ __attribute__((visibility("hidden")))
     NSString *_infoPlistAuthorizationCategory;
     NSString *_sampleClass;
     NSString *_exportingSampleClass;
+    NSSet *_additions;
 }
 
 + (void)initialize;

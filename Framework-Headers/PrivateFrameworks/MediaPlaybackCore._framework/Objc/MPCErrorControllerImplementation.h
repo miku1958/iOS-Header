@@ -31,11 +31,19 @@
 @property (readonly, nonatomic) MPCMediaFoundationTranslator *translator; // @synthesize translator=_translator;
 
 - (void).cxx_destruct;
+- (void)_notifyObserversForError:(id)arg1 item:(id)arg2;
 - (void)_playbackFailedWithError:(id)arg1 item:(id)arg2 canResolve:(BOOL)arg3 proposedResolution:(long long)arg4 completion:(CDUnknownBlockType)arg5;
 - (long long)_resolutionForPlaybackError:(id)arg1 item:(id)arg2;
+- (BOOL)canHandleFirstItemFailure;
 - (id)initWithPlaybackEngine:(id)arg1 translator:(id)arg2 externalPlaybackRouter:(id)arg3;
+- (BOOL)isAssetUnavailableFailure:(id)arg1;
+- (BOOL)isFirstItemFailure:(id)arg1 item:(id)arg2;
+- (BOOL)isQueueLoadingFailure:(id)arg1;
+- (BOOL)isUnrecoverableAssetLoadingError:(id)arg1;
+- (void)reportCriticalError:(id)arg1 forItem:(id)arg2;
 - (void)reset;
-- (void)resolve:(id)arg1 forItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)resolveError:(id)arg1 forItem:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (BOOL)shouldHandleFirstItemFailure:(id)arg1 item:(id)arg2;
 
 @end
 

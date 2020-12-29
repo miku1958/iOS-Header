@@ -22,6 +22,10 @@ struct os_unfair_recursive_lock_s {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    unsigned int _field1[8];
+} CDStruct_6ad76789;
+
+typedef struct {
     double width;
     double height;
 } CDStruct_8caa76fc;

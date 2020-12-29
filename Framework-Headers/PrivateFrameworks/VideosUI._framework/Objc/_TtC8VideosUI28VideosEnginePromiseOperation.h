@@ -11,9 +11,11 @@
 @interface _TtC8VideosUI28VideosEnginePromiseOperation : _TtCs12_SwiftObject
 {
     MISSING_TYPE *jsPromiseOperation;
+    MISSING_TYPE *jsMultiPartPromiseOperation;
     MISSING_TYPE *owner;
     MISSING_TYPE *appContext;
-    MISSING_TYPE *promise;
+    MISSING_TYPE *currentPromise;
+    MISSING_TYPE *isWaitingForFragments;
 }
 
 @end

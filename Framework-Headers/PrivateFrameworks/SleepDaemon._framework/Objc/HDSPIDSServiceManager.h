@@ -15,7 +15,7 @@
 @protocol HDSPIDSService, HDSPSource, HKSPQueueBackedScheduler;
 
 __attribute__((visibility("hidden")))
-@interface HDSPIDSServiceManager : NSObject <IDSServiceDelegate, HDSPSleepActionObserver, HDSPSource, HDSPEnvironmentAware>
+@interface HDSPIDSServiceManager : NSObject <IDSServiceDelegate, HDSPSource, HDSPEnvironmentAware, HDSPSleepActionObserver>
 {
     HDSPEnvironment *_environment;
     id<HDSPIDSService> _service;
@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
 - (void)_handleConfirmWakeUpMessage:(id)arg1;
 - (void)_handleDelayBedtimeMessage:(id)arg1;
 - (void)_handleDismissGoodMorningMessage:(id)arg1;
+- (void)_handleNotifiedForEarlyWakeUpMessage:(id)arg1;
 - (void)_handleReceivedMessage:(id)arg1;
 - (void)_handleSetSleepModeMessage:(id)arg1;
 - (void)_handleSkipBedtimeMessage:(id)arg1;
@@ -51,6 +52,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithEnvironment:(id)arg1;
 - (id)initWithEnvironment:(id)arg1 idsService:(id)arg2 scheduler:(id)arg3;
 - (void)sendMessage:(id)arg1;
+- (void)sendNotifiedForEarlyWakeUpMessage;
 - (void)service:(id)arg1 account:(id)arg2 identifier:(id)arg3 didSendWithSuccess:(BOOL)arg4 error:(id)arg5 context:(id)arg6;
 - (void)service:(id)arg1 account:(id)arg2 incomingMessage:(id)arg3 fromID:(id)arg4 context:(id)arg5;
 - (void)sleepModeSet:(long long)arg1 source:(id)arg2;

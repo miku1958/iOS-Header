@@ -22,6 +22,7 @@
     UIButton *_publicButton;
     UIButton *_friendsOnlyButton;
     UIButton *_meOnlyButton;
+    UILabel *_subTitle;
     NSLayoutConstraint *_topMargin;
     UIView *_buttonContainer;
     NSLayoutConstraint *_mainStackViewTrailingConstraint;
@@ -56,6 +57,7 @@
 @property (strong, nonatomic) UIView *publicDivider; // @synthesize publicDivider=_publicDivider;
 @property (strong, nonatomic) UILabel *publicSubTitle; // @synthesize publicSubTitle=_publicSubTitle;
 @property (strong, nonatomic) UILabel *publicTitle; // @synthesize publicTitle=_publicTitle;
+@property (strong, nonatomic) UILabel *subTitle; // @synthesize subTitle=_subTitle;
 @property (strong, nonatomic) NSLayoutConstraint *topMargin; // @synthesize topMargin=_topMargin;
 @property (strong, nonatomic) UILabel *underageHintLabel; // @synthesize underageHintLabel=_underageHintLabel;
 

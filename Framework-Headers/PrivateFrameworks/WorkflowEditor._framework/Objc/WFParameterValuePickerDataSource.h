@@ -26,6 +26,7 @@
 @property (readonly, nonatomic) unsigned long long itemsCount;
 @property (readonly, nonatomic) UILocalizedIndexedCollation *localizedCollation; // @synthesize localizedCollation=_localizedCollation;
 @property (readonly, nonatomic) WFParameter *parameter; // @synthesize parameter=_parameter;
+@property (readonly, nonatomic) unsigned long long sectionsCount;
 @property (strong, nonatomic) id<WFVariableProvider> variableProvider; // @synthesize variableProvider=_variableProvider;
 @property (strong, nonatomic) id<WFVariableUIDelegate> variableUIDelegate; // @synthesize variableUIDelegate=_variableUIDelegate;
 

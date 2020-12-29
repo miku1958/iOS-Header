@@ -7,8 +7,11 @@
 #import <UIKit/UIView.h>
 
 @interface UIView (VideosUICore)
++ (void)vui_performByPreventingAdditiveAnimations:(CDUnknownBlockType)arg1;
 - (id)vui_AccessibilityText;
+- (struct UIEdgeInsets)vui_alignmentInsetsForExpectedWidth:(double)arg1;
 - (void)vui_setAccessibilityText:(id)arg1;
+- (void)vui_setSelected:(BOOL)arg1 animated:(BOOL)arg2 withAnimationCoordinator:(id)arg3;
 - (void)vui_setSiriData:(id)arg1;
 - (id)vui_siriData;
 @end

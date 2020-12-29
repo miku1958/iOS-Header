@@ -10,7 +10,7 @@
 
 @interface _TtC15MediaFoundation20ErrorResolutionState : _TtC15MediaFoundation5State
 {
-    MISSING_TYPE *playerEvent;
+    MISSING_TYPE *triggerEvent;
     MISSING_TYPE *playerItem;
     MISSING_TYPE *initialLoadFailure;
     MISSING_TYPE *initialLoadShouldPlay;

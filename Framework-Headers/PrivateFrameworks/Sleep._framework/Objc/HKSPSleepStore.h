@@ -52,6 +52,7 @@
 - (id)_confirmAwakeOnServer;
 - (id)_delayBedtimeForTimeIntervalOnServer:(double)arg1;
 - (id)_dismissGoodMorningOnServer;
+- (id)_dismissSleepLockOnServer;
 - (id)_getSleepEventRecordDoSync:(BOOL)arg1 notify:(BOOL)arg2;
 - (id)_getSleepEventRecordFromServerDoSync:(BOOL)arg1 notify:(BOOL)arg2;
 - (id)_getSleepModeDoSync:(BOOL)arg1 notify:(BOOL)arg2;
@@ -101,6 +102,7 @@
 - (void)dealloc;
 - (void)delayBedtimeForTimeInterval:(double)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissGoodMorningWithCompletion:(CDUnknownBlockType)arg1;
+- (void)dismissSleepLockWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithConnectionProviderProvider:(CDUnknownBlockType)arg1 identifier:(id)arg2 healthStore:(id)arg3;
 - (id)initWithConnectionProviderProvider:(CDUnknownBlockType)arg1 identifier:(id)arg2 healthStore:(id)arg3 analyticsManager:(id)arg4 executorProvider:(CDUnknownBlockType)arg5 callbackScheduler:(id)arg6 currentDateProvider:(CDUnknownBlockType)arg7;

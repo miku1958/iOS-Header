@@ -15,7 +15,7 @@
     MISSING_TYPE *gridType;
     MISSING_TYPE *relationalLayout;
     MISSING_TYPE *$__lazy_storage_$_propertyStore;
-    MISSING_TYPE *$__lazy_storage_$_childernLayouts;
+    MISSING_TYPE *$__lazy_storage_$_childrenLayouts;
     MISSING_TYPE *currentTraitCollection;
     MISSING_TYPE *deviceType;
     MISSING_TYPE *currentSizeClass;

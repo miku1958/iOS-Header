@@ -334,6 +334,7 @@
 - (id)_navControllerToCreateManagedSearchPaletteForNavController:(id)arg1;
 - (BOOL)_navbarIsAppearingInteractively;
 - (BOOL)_navigationBar:(id)arg1 getContentOffsetOfObservedScrollViewIfApplicable:(struct CGPoint *)arg2;
+- (void)_navigationBar:(id)arg1 itemBackButtonUpdated:(id)arg2;
 - (void)_navigationBar:(id)arg1 itemEnabledAutoScrollTransition:(id)arg2;
 - (double)_navigationBar:(id)arg1 preferredHeightForTransitionToHeightRange:(CDStruct_39925896)arg2;
 - (void)_navigationBar:(id)arg1 requestPopToItem:(id)arg2;

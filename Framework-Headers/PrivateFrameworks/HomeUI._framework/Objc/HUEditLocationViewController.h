@@ -57,6 +57,7 @@
 @property (readonly, nonatomic) HUWallpaperPickerInlineViewController *wallpaperPickerViewController; // @synthesize wallpaperPickerViewController=_wallpaperPickerViewController;
 
 - (void).cxx_destruct;
+- (void)_updateSoftwareUpdateDynamicFooterView;
 - (void)addButtonPressed:(id)arg1;
 - (void)addPeopleViewControllerDidCancel:(id)arg1;
 - (unsigned long long)automaticDisablingReasonsForItem:(id)arg1;
@@ -69,6 +70,7 @@
 - (void)imagePickerController:(id)arg1 didFinishPickingMediaWithInfo:(id)arg2;
 - (id)initWithHomeBuilder:(id)arg1 presentationDelegate:(id)arg2 addLocationDelegate:(id)arg3;
 - (id)initWithHomeBuilder:(id)arg1 presentationDelegate:(id)arg2 addLocationDelegate:(id)arg3 context:(unsigned long long)arg4;
+- (void)itemManager:(id)arg1 didUpdateResultsForItem:(id)arg2 atIndexPath:(id)arg3;
 - (id)presentBridgeSettings:(BOOL)arg1;
 - (id)presentNetworkSettings:(BOOL)arg1;
 - (id)presentNotificationSettingsForTopic:(id)arg1 animated:(BOOL)arg2;

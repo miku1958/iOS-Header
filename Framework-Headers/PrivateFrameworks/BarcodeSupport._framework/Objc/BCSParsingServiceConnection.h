@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 
 - (void).cxx_destruct;
 - (void)dealloc;
+- (void)decodeAppClipCodeURLWithEncodedData:(id)arg1 codingVersion:(unsigned long long)arg2 requiresAuthorization:(BOOL)arg3 withReply:(CDUnknownBlockType)arg4;
 - (void)parseQRCodeFeature:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)parseQRCodeMetadata:(id)arg1 withReply:(CDUnknownBlockType)arg2;
 - (void)parseQRCodeString:(id)arg1 withReply:(CDUnknownBlockType)arg2;

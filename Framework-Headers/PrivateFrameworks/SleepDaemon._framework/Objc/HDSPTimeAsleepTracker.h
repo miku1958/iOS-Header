@@ -25,6 +25,7 @@
 
 @interface HDSPTimeAsleepTracker : NSObject <HDSPSleepEventHandler, HDSPSleepEventProvider, HDSPTimeAsleepTrackerStateMachineInfoProvider, HDSPTimeAsleepTrackerStateMachineDelegate, HDSPTimeChangeObserver, HDSPDiagnosticsProvider, HDSPSleepScheduleStateObserver, HDSPSleepModeObserver, HDSPSleepScheduleModelObserver, HDSPWakeDetector, HDSPNotificationObserver, HDSPDevicePowerObserver, HDSPSleepTracker>
 {
+    BOOL _isDetecting;
     struct os_unfair_lock_s _timeAsleepTrackerLock;
     HDSPEnvironment *_environment;
     id<HDSPSleepTrackerDelegate> _delegate;
@@ -42,11 +43,13 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HDSPSleepTrackerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long detectionWindowMinutes;
 @property (readonly, weak, nonatomic) HDSPEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) BOOL inUserRequestedSleepMode;
 @property (readonly, nonatomic) BOOL inWakeDetectionWindow;
 @property (readonly, nonatomic) BOOL isCharging;
+@property (readonly, nonatomic) BOOL isDetecting; // @synthesize isDetecting=_isDetecting;
 @property (readonly, copy, nonatomic) NSString *providerIdentifier;
 @property (weak, nonatomic) id<HDSPSleepEventDelegate> sleepEventDelegate; // @synthesize sleepEventDelegate=_sleepEventDelegate;
 @property (readonly, nonatomic) HKSPSleepScheduleModel *sleepScheduleModel;

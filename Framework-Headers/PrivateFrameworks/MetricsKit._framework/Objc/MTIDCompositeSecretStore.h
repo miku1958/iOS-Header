@@ -25,8 +25,12 @@
 - (void)clearLocalData;
 - (id)debugInfo;
 - (id)init;
+- (id)maintainSchemes:(id)arg1 options:(id)arg2;
+- (id)resetSchemes:(id)arg1 options:(id)arg2;
+- (id)schemesGroupedByStore:(id)arg1;
 - (id)secretForScheme:(id)arg1 options:(id)arg2;
 - (id)secretStoreForScheme:(id)arg1;
+- (id)storeKeyForScheme:(id)arg1;
 
 @end
 

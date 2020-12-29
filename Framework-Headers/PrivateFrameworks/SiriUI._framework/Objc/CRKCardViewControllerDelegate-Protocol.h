@@ -7,7 +7,7 @@
 #import <SiriUI/CRCommandHandling-Protocol.h>
 #import <SiriUI/CRFeedbackListener-Protocol.h>
 
-@class CRBeganEditingCommand, CRKCardSectionViewController, CRNextCardCommand, CRPunchoutCommand, CRRequestUserConfirmationCommand, INIntent, UIViewController;
+@class CRBeganEditingCommand, CRFinishedEditingCommand, CRInvocationPayloadCommand, CRKCardSectionViewController, CRNextCardCommand, CRPunchoutCommand, CRRequestUserConfirmationCommand, INIntent, UIViewController;
 @protocol CRCard, CRKCardSectionViewProviderManaging, CRKCardViewControlling, CRReferentialCommand;
 
 @protocol CRKCardViewControllerDelegate <CRFeedbackListener, CRCommandHandling>
@@ -25,6 +25,8 @@
 - (void)cardViewControllerDidLoad:(UIViewController<CRKCardViewControlling> *)arg1;
 - (unsigned long long)navigationIndexOfCardViewController:(UIViewController<CRKCardViewControlling> *)arg1;
 - (BOOL)performBeganEditingCommand:(CRBeganEditingCommand *)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;
+- (BOOL)performFinishedEditingCommand:(CRFinishedEditingCommand *)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;
+- (BOOL)performInvocationPayloadCommand:(CRInvocationPayloadCommand *)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;
 - (BOOL)performNextCardCommand:(CRNextCardCommand *)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;
 - (BOOL)performPunchoutCommand:(CRPunchoutCommand *)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;
 - (BOOL)performReferentialCommand:(id<CRReferentialCommand>)arg1 forCardViewController:(UIViewController<CRKCardViewControlling> *)arg2;

@@ -8,11 +8,12 @@
 
 #import <LinkPresentation/UIScrollViewDelegate-Protocol.h>
 #import <LinkPresentation/WKNavigationDelegate-Protocol.h>
+#import <LinkPresentation/WKUIDelegate-Protocol.h>
 
 @class LPYouTubePlayerScriptMessageHandler, NSMutableArray, NSString, WKWebView;
 @protocol LPYouTubePlayerDelegate;
 
-@interface LPYouTubePlayerView : UIView <UIScrollViewDelegate, WKNavigationDelegate>
+@interface LPYouTubePlayerView : UIView <UIScrollViewDelegate, WKNavigationDelegate, WKUIDelegate>
 {
     WKWebView *_webView;
     NSString *_videoID;
@@ -58,6 +59,8 @@
 - (void)play;
 - (void)scrollViewDidScroll:(id)arg1;
 - (void)seekTo:(double)arg1;
+- (id)webView:(id)arg1 createWebViewWithConfiguration:(id)arg2 forNavigationAction:(id)arg3 windowFeatures:(id)arg4;
+- (void)webView:(id)arg1 decidePolicyForNavigationAction:(id)arg2 preferences:(id)arg3 decisionHandler:(CDUnknownBlockType)arg4;
 - (void)webView:(id)arg1 didFailNavigation:(id)arg2 withError:(id)arg3;
 - (void)webView:(id)arg1 didFailProvisionalNavigation:(id)arg2 withError:(id)arg3;
 

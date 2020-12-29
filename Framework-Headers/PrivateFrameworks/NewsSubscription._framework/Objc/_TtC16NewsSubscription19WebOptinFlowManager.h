@@ -4,19 +4,30 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <swiftCore/_TtCs12_SwiftObject.h>
+#import <objc/NSObject.h>
 
 @class MISSING_TYPE;
 
-@interface _TtC16NewsSubscription19WebOptinFlowManager : _TtCs12_SwiftObject
+@interface _TtC16NewsSubscription19WebOptinFlowManager : NSObject
 {
     MISSING_TYPE *appConfigurationManager;
+    MISSING_TYPE *networkReachability;
     MISSING_TYPE *tagController;
     MISSING_TYPE *purchaseController;
+    MISSING_TYPE *receiptRefresher;
     MISSING_TYPE *subscriptionController;
+    MISSING_TYPE *purchasingSpinnerViewControllerFactory;
     MISSING_TYPE *tracker;
     MISSING_TYPE *router;
+    MISSING_TYPE *webAccessOptInProvider;
+    MISSING_TYPE *postActionHandlerManager;
+    MISSING_TYPE *sceneProvider;
+    MISSING_TYPE *postUpsellAction;
+    MISSING_TYPE *$__lazy_storage_$_verifyingSpinnerViewController;
 }
+
+- (void).cxx_destruct;
+- (id)init;
 
 @end
 

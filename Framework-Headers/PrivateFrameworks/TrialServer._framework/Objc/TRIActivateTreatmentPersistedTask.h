@@ -18,10 +18,12 @@
 @property (nonatomic) BOOL hasDeploymentId; // @dynamic hasDeploymentId;
 @property (nonatomic) BOOL hasEndTimestamp; // @dynamic hasEndTimestamp;
 @property (nonatomic) BOOL hasExperimentId; // @dynamic hasExperimentId;
+@property (nonatomic) BOOL hasRequiresTreatmentInstallation; // @dynamic hasRequiresTreatmentInstallation;
 @property (nonatomic) BOOL hasRetryCount; // @dynamic hasRetryCount;
 @property (nonatomic) BOOL hasStartTimestamp; // @dynamic hasStartTimestamp;
 @property (nonatomic) BOOL hasTaskAttribution; // @dynamic hasTaskAttribution;
 @property (nonatomic) BOOL hasTreatmentId; // @dynamic hasTreatmentId;
+@property (nonatomic) BOOL requiresTreatmentInstallation; // @dynamic requiresTreatmentInstallation;
 @property (nonatomic) int retryCount; // @dynamic retryCount;
 @property (strong, nonatomic) TRIPBTimestamp *startTimestamp; // @dynamic startTimestamp;
 @property (strong, nonatomic) TRIPersistedTaskAttribution *taskAttribution; // @dynamic taskAttribution;

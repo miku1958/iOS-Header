@@ -19,6 +19,7 @@
 @property (readonly, nonatomic) NSString *identifier;
 
 - (void).cxx_destruct;
+- (void)deleteIntentsWithIdentifiers:(id)arg1 bundleID:(id)arg2;
 - (id)init;
 - (id)publisherFromStartTime:(double)arg1;
 - (id)source;

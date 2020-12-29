@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ADInstallAttributionData, ADOdmlResponse, NSDictionary, NSString;
+@class ADInstallAttributionData, NSDictionary, NSString;
 
 @interface ADResponseData : NSObject
 {
@@ -19,7 +19,6 @@
     NSString *_clientRequestID;
     NSDictionary *_format;
     ADInstallAttributionData *_installAttribution;
-    ADOdmlResponse *_odmlResponse;
 }
 
 @property (readonly, copy, nonatomic) NSString *algoID; // @synthesize algoID=_algoID;
@@ -29,7 +28,6 @@
 @property (readonly, copy, nonatomic) ADInstallAttributionData *installAttribution; // @synthesize installAttribution=_installAttribution;
 @property (readonly, copy, nonatomic) NSString *lineItem; // @synthesize lineItem=_lineItem;
 @property (readonly, copy, nonatomic) NSString *metadata; // @synthesize metadata=_metadata;
-@property (readonly, copy, nonatomic) ADOdmlResponse *odmlResponse; // @synthesize odmlResponse=_odmlResponse;
 @property (readonly, copy, nonatomic) NSString *privacy; // @synthesize privacy=_privacy;
 @property (readonly, copy, nonatomic) NSString *templateType; // @synthesize templateType=_templateType;
 

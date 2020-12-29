@@ -18,6 +18,7 @@
 }
 
 @property (copy, nonatomic) NSOrderedSet *availabilityEntriesInPreferredOrder; // @synthesize availabilityEntriesInPreferredOrder=_availabilityEntriesInPreferredOrder;
+@property (readonly, nonatomic) Class likelyPreferredSourceFetchDescriptorClass;
 @property (copy, nonatomic) CDUnknownBlockType preferredSourceChangedNotificationBlock; // @synthesize preferredSourceChangedNotificationBlock=_preferredSourceChangedNotificationBlock;
 @property (nonatomic) Class preferredSourceFetchDescriptorClass; // @synthesize preferredSourceFetchDescriptorClass=_preferredSourceFetchDescriptorClass;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *queue; // @synthesize queue=_queue;

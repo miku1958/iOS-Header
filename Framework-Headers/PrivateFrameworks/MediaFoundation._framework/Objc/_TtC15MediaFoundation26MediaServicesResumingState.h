@@ -11,8 +11,6 @@
 @interface _TtC15MediaFoundation26MediaServicesResumingState : _TtC15MediaFoundation11PausedState
 {
     MISSING_TYPE *event;
-    MISSING_TYPE *jumpToTimeTarget;
-    MISSING_TYPE *jumpToTimeMetadata;
 }
 
 @end

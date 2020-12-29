@@ -86,6 +86,7 @@
     long long _lastChangeDirection;
     MPModelGenericObject *_modelGenericObject;
     NSNumber *_initialPlaybackStartTimeOverride;
+    NSNumber *_lastMetadataChangeTime;
     NSString *_aggregateDictionaryItemIdentifier;
     NSString *_storeFrontIdentifier;
     NSNumber *_storeAccountID;
@@ -171,6 +172,7 @@
 @property BOOL isAssetLoaded; // @synthesize isAssetLoaded=_isAssetLoaded;
 @property (strong, nonatomic) NSError *itemError; // @synthesize itemError=_itemError;
 @property (nonatomic) long long lastChangeDirection; // @synthesize lastChangeDirection=_lastChangeDirection;
+@property (copy, nonatomic) NSNumber *lastMetadataChangeTime; // @synthesize lastMetadataChangeTime=_lastMetadataChangeTime;
 @property (readonly, nonatomic) long long leasePlaybackPreventionState; // @synthesize leasePlaybackPreventionState=_leasePlaybackPreventionState;
 @property (readonly, copy, nonatomic) ICMusicSubscriptionLeaseStatus *leaseStatus; // @synthesize leaseStatus=_leaseStatus;
 @property (readonly, nonatomic) NSString *libraryLyrics;
@@ -203,7 +205,7 @@
 @property (readonly, nonatomic, getter=isRadioItem) BOOL radioItem;
 @property (nonatomic) long long repeatIndex; // @synthesize repeatIndex=_repeatIndex;
 @property (readonly, nonatomic) BOOL requiresLoadedAssetForAirPlayProperties; // @synthesize requiresLoadedAssetForAirPlayProperties=_requiresLoadedAssetForAirPlayProperties;
-@property (readonly, nonatomic) id rtcReportingParentHierarchyToken; // @synthesize rtcReportingParentHierarchyToken=_rtcReportingParentHierarchyToken;
+@property (strong, nonatomic) id rtcReportingParentHierarchyToken; // @synthesize rtcReportingParentHierarchyToken=_rtcReportingParentHierarchyToken;
 @property (readonly, nonatomic) BOOL shouldPreventPlayback; // @synthesize shouldPreventPlayback=_shouldPreventPlayback;
 @property (readonly, nonatomic) BOOL shouldShowComposer;
 @property (nonatomic) float soundCheckVolumeNormalization; // @synthesize soundCheckVolumeNormalization=_soundCheckVolumeNormalization;
@@ -253,6 +255,8 @@
 - (void)_clearAsset;
 - (id)_currentContentItemDeviceSpecificUserInfo;
 - (void)_currentPlaybackRateDidChange:(float)arg1;
+- (void)_didBecomeActivePlayerItem;
+- (void)_didResignActivePlayerItem;
 - (double)_durationFromExternalMetadataIfAvailable;
 - (double)_expectedStartTimeWithPlaybackInfo:(id)arg1;
 - (double)_expectedStopTimeWithPlaybackInfo:(id)arg1;

@@ -7,11 +7,14 @@
 #import <UIKit/UIColor.h>
 
 @interface UIColor (AMSUICommonColor)
+
+@property (readonly, nonatomic, getter=ams_isDark) BOOL ams_dark;
+@property (readonly, nonatomic, getter=ams_isLight) BOOL ams_light;
+@property (readonly, nonatomic) double ams_luminance;
+
 + (id)ams_appTint;
 + (id)ams_clear;
 + (id)ams_componentBackground;
-+ (id)ams_defaultButtonBackground;
-+ (id)ams_defaultButtonTitle;
 + (id)ams_defaultLine;
 + (id)ams_dim;
 + (id)ams_dynamicColorWithLightColor:(id)arg1 darkColor:(id)arg2;

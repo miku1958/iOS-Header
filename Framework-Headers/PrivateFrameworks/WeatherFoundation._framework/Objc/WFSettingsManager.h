@@ -42,6 +42,8 @@
 - (void)completeOnQueue:(id)arg1 error:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)containerIDForContainerIdentifier:(id)arg1;
 - (id)containerIdentifier;
+- (unsigned long long)debugEnvironmentFromOverride:(id)arg1;
+- (id)debugOverrides;
 - (void)fetchAppConfigurationIfExpired;
 - (void)fetchAppConfigurationWithCompletionQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)forceFetchAppConfiguration;

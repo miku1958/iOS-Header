@@ -7,13 +7,18 @@
 #import <UserNotificationsUIKit/NCNotificationPresentableViewController.h>
 
 #import <SpringBoard/SBBannerManagerPresentable-Protocol.h>
+#import <SpringBoard/SBBarSwipeAffordanceObserver-Protocol.h>
+#import <SpringBoard/SBUIBannerHomeGestureParticipant-Protocol.h>
 
 @class NSString, UIViewController;
+@protocol SBUIBannerHomeGestureContext;
 
-@interface SBNotificationPresentableViewController : NCNotificationPresentableViewController <SBBannerManagerPresentable>
+@interface SBNotificationPresentableViewController : NCNotificationPresentableViewController <SBBannerManagerPresentable, SBBarSwipeAffordanceObserver, SBUIBannerHomeGestureParticipant>
 {
+    id<SBUIBannerHomeGestureContext> _bannerHomeGestureContext;
 }
 
+@property (weak, nonatomic) id<SBUIBannerHomeGestureContext> bannerHomeGestureContext; // @synthesize bannerHomeGestureContext=_bannerHomeGestureContext;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic, getter=isDraggingDismissalEnabled) BOOL draggingDismissalEnabled;
@@ -26,13 +31,18 @@
 @property (readonly, nonatomic, getter=isTouchOutsideDismissalEnabled) BOOL touchOutsideDismissalEnabled;
 @property (readonly, nonatomic) UIViewController *viewController;
 
+- (void).cxx_destruct;
 - (BOOL)handleHeadsetButtonPress:(BOOL)arg1;
 - (BOOL)handleHomeButtonDoublePress;
 - (BOOL)handleHomeButtonLongPress;
 - (BOOL)handleHomeButtonPress;
 - (BOOL)handleLockButtonPress;
+- (BOOL)handleVoiceCommandButtonPress;
 - (BOOL)handleVolumeDownButtonPress;
 - (BOOL)handleVolumeUpButtonPress;
+- (void)homeGesturePerformedForBarSwipeAffordanceView:(id)arg1;
+- (void)longLookDidPresentForNotificationViewController:(id)arg1;
+- (void)longLookWillDismissForNotificationViewController:(id)arg1;
 - (BOOL)shouldAcquireWindowLevelAssertion;
 - (BOOL)shouldDismissForReason:(id)arg1;
 

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSCache, NSMutableSet;
+@class NSCache, NSMutableDictionary, NSMutableSet;
 
 @interface CKSearchThumbnailPreviewGenerator : NSObject
 {
@@ -14,7 +14,7 @@
     NSCache *_livePhotoStatusCache;
     NSCache *_videoDurationCache;
     NSCache *_lpLinkMetadataCache;
-    NSCache *_mapHashesCache;
+    NSMutableDictionary *_mapHashesCache;
     NSMutableSet *_keysWithInFlightGeneration;
     NSMutableSet *_keysWithInFlightLivePhotoStatus;
     NSMutableSet *_keysWithInFlightVideoDurationCalculation;
@@ -27,7 +27,7 @@
 @property (strong, nonatomic) NSMutableSet *keysWithInFlightVideoDurationCalculation; // @synthesize keysWithInFlightVideoDurationCalculation=_keysWithInFlightVideoDurationCalculation;
 @property (strong, nonatomic) NSCache *livePhotoStatusCache; // @synthesize livePhotoStatusCache=_livePhotoStatusCache;
 @property (strong, nonatomic) NSCache *lpLinkMetadataCache; // @synthesize lpLinkMetadataCache=_lpLinkMetadataCache;
-@property (strong, nonatomic) NSCache *mapHashesCache; // @synthesize mapHashesCache=_mapHashesCache;
+@property (strong, nonatomic) NSMutableDictionary *mapHashesCache; // @synthesize mapHashesCache=_mapHashesCache;
 @property (strong, nonatomic) NSCache *thumbnailCache; // @synthesize thumbnailCache=_thumbnailCache;
 @property (strong, nonatomic) NSCache *videoDurationCache; // @synthesize videoDurationCache=_videoDurationCache;
 

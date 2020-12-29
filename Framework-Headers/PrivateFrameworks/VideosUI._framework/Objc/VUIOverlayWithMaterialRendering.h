@@ -13,14 +13,16 @@ __attribute__((visibility("hidden")))
 {
     NSString *_identifier;
     struct CGRect _rect;
+    struct CGRect _croppedRect;
 }
 
+@property (nonatomic) struct CGRect croppedRect; // @synthesize croppedRect=_croppedRect;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) struct CGRect rect; // @synthesize rect=_rect;
 
 - (void).cxx_destruct;
 - (id)init;
-- (id)initWithIdentifier:(id)arg1 rect:(struct CGRect)arg2;
+- (id)initWithIdentifier:(id)arg1 rect:(struct CGRect)arg2 croppedRect:(struct CGRect)arg3;
 
 @end
 

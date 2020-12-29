@@ -8,11 +8,10 @@
 
 #import <NewsUI2/TUDeselectable-Protocol.h>
 #import <NewsUI2/TUKeyCommandTraversable-Protocol.h>
-#import <NewsUI2/TUPluggable-Protocol.h>
 
 @class NSArray;
 
-@interface _TtC7NewsUI226MagazineFeedViewController (NewsUI2) <TUPluggable, TUKeyCommandTraversable, TUDeselectable>
+@interface _TtC7NewsUI226MagazineFeedViewController (NewsUI2) <TUKeyCommandTraversable, TUDeselectable>
 
 @property (nonatomic, readonly) long long pluginItemCount;
 @property (nonatomic, readonly) NSArray *pluginItemIdentifiers;

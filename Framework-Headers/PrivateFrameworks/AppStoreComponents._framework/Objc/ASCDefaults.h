@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL disableShutdownTimer;
 @property (nonatomic) BOOL enableWebInspector;
 @property (nonatomic) BOOL forceRightToLeftLayout;
+@property (nonatomic) BOOL forceStandaloneWatch;
 @property (copy, nonatomic) NSNumber *overlaysLoadTimeout;
 @property (copy, nonatomic) NSNumber *overlaysRateLimitRequestsPerSecond;
 @property (copy, nonatomic) NSNumber *overlaysRateLimitTimeWindow;

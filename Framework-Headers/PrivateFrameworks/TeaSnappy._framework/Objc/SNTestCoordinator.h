@@ -27,6 +27,7 @@
 - (void)finishedTestWithTestName:(id)arg1 waitForCommit:(BOOL)arg2;
 - (id)initWithApplication:(id)arg1;
 - (long long)lengthForNumberOfScreens:(long long)arg1 direction:(unsigned long long)arg2 size:(struct CGSize)arg3;
+- (void)recapScrollTestWithTestName:(id)arg1 scrollView:(id)arg2 numberOfScreens:(id)arg3 direction:(unsigned long long)arg4;
 - (BOOL)requiresRotationForOrientation:(long long)arg1;
 - (void)rotateToOrientation:(long long)arg1 beforeRotation:(CDUnknownBlockType)arg2 afterRotation:(CDUnknownBlockType)arg3;
 - (void)scrollTestWithTestName:(id)arg1 scrollView:(id)arg2 iterations:(long long)arg3 offset:(long long)arg4 direction:(unsigned long long)arg5;

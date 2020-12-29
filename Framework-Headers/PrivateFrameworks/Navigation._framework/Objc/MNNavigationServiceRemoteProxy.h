@@ -8,7 +8,7 @@
 
 #import <Navigation/MNNavigationServiceProxy-Protocol.h>
 
-@class MNSettings, MNStartNavigationDetails, NSHashTable, NSMutableArray, NSString, NSXPCConnection, geo_isolater;
+@class MNSettings, MNStartNavigationDetails, NSArray, NSHashTable, NSMutableArray, NSString, NSXPCConnection, geo_isolater;
 @protocol MNNavigationServiceClientInterface, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) unsigned long long interruptionCount;
+@property (readonly, nonatomic) NSArray *interruptionDates;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

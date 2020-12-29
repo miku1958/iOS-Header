@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSCopying-Protocol.h>
 
-@class GEOCoarseLocationPolygon, PBDataReader;
+@class GEOCoarseLocationPolygon, NSString, PBDataReader;
 
 __attribute__((visibility("hidden")))
 @interface GEOCoarseLocationTerritoryInfo : PBCodable <NSCopying>
@@ -18,9 +18,11 @@ __attribute__((visibility("hidden")))
     struct GEOCoarseLocationLatLng _representativePoint;
     double _areaDegrees;
     double _areaRatio;
+    NSString *_countryNameStr;
     unsigned long long _featureId;
     double _maxDistanceMeters;
     GEOCoarseLocationPolygon *_polygon;
+    NSString *_regionNameStr;
     unsigned int _readerMarkPos;
     unsigned int _readerMarkLength;
     struct os_unfair_lock_s _readerLock;
@@ -45,7 +47,9 @@ __attribute__((visibility("hidden")))
         unsigned int has_precise:1;
         unsigned int has_shouldRandomize:1;
         unsigned int read_coordinates:1;
+        unsigned int read_countryNameStr:1;
         unsigned int read_polygon:1;
+        unsigned int read_regionNameStr:1;
         unsigned int wrote_anyField:1;
     } _flags;
 }
@@ -55,15 +59,18 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) unsigned int *coordinates;
 @property (readonly, nonatomic) unsigned long long coordinatesCount;
 @property (nonatomic) unsigned int countryName;
+@property (strong, nonatomic) NSString *countryNameStr;
 @property (nonatomic) unsigned long long featureId;
 @property (nonatomic) BOOL hasAreaDegrees;
 @property (nonatomic) BOOL hasAreaRatio;
 @property (nonatomic) BOOL hasCountryName;
+@property (readonly, nonatomic) BOOL hasCountryNameStr;
 @property (nonatomic) BOOL hasFeatureId;
 @property (nonatomic) BOOL hasMaxDistanceMeters;
 @property (readonly, nonatomic) BOOL hasPolygon;
 @property (nonatomic) BOOL hasPrecise;
 @property (nonatomic) BOOL hasRegionName;
+@property (readonly, nonatomic) BOOL hasRegionNameStr;
 @property (nonatomic) BOOL hasRepresentativePoint;
 @property (nonatomic) BOOL hasRepresentativePointQuality;
 @property (nonatomic) BOOL hasRevgeoRank;
@@ -73,6 +80,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) GEOCoarseLocationPolygon *polygon;
 @property (nonatomic) BOOL precise;
 @property (nonatomic) unsigned int regionName;
+@property (strong, nonatomic) NSString *regionNameStr;
 @property (nonatomic) struct GEOCoarseLocationLatLng representativePoint;
 @property (nonatomic) int representativePointQuality;
 @property (nonatomic) unsigned int revgeoRank;

@@ -140,23 +140,17 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var a : ›
-
+	var a : ]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var b : ›
-
+	var b : ]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var c : ›
-
+	var c : ]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var d : ›
-
+	var d : ]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tx : ›
-
+	var tx : ]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ty : ›
-
+	var ty : ]
  }
 
  enum __C.QualityOfService { }
@@ -179,11 +173,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : ›
-
+	var x : ]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : ›
-
+	var y : ]
  }
 
  class __C.CGContext {
@@ -191,35 +183,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : ›
-
+	var width : ]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : ›
-
+	var height : ]
  }
 
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : ›
-
+	var top : ]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : ›
-
+	var left : ]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : ›
-
+	var bottom : ]
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : ›
-
+	var right : ]
  }
 
  struct __C.SymbolicTraits {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : q
+	let rawValue : ˘
  }
 
  struct __C.Key {
@@ -272,7 +258,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthVisualization.HistogramUtilities : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x7740  class func <stripped> // method 
+	0x6df0  class func <stripped> // method 
  }
 
  class HealthVisualization.DiagramDistribution : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -286,10 +272,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let axisHandler : DiagramAxis
 
 	// Swift methods
-	0x7b70  func <stripped> // getter 
-	0x7d20  func <stripped> // getter 
-	0xb410  func <stripped> // method 
-	0xb620  func <stripped> // method 
+	0x7220  func <stripped> // getter 
+	0x73d0  func <stripped> // getter 
+	0xaac0  func <stripped> // method 
+	0xacd0  func <stripped> // method 
  }
 
  struct HealthVisualization.DiagramDistributionMinMax {
@@ -319,14 +305,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let defaultLocalizationFile : String
 
 	// Swift methods
-	0xe360  class func <stripped> // method 
-	0xe3d0  class func <stripped> // method 
-	0xe440  class func <stripped> // method 
-	0xe4c0  class func <stripped> // method 
-	0xe5b0  func <stripped> // method 
-	0xe7f0  func <stripped> // method 
-	0xe970  func <stripped> // method 
-	0xeb10  func <stripped> // method 
+	0xda10  class func <stripped> // method 
+	0xda80  class func <stripped> // method 
+	0xdaf0  class func <stripped> // method 
+	0xdb70  class func <stripped> // method 
+	0xdc60  func <stripped> // method 
+	0xdea0  func <stripped> // method 
+	0xe020  func <stripped> // method 
+	0xe1c0  func <stripped> // method 
  }
 
  struct HealthVisualization.ObjectTypeConfiguration {
@@ -366,7 +352,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let secondsListened : Double
 	let daysAggregated : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lastUpdated : 
+	let lastUpdated : É	
  }
 
  class HealthVisualization.AudioExposureStatisticsQueryOperation {
@@ -408,41 +394,41 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var lastUsedModelSpace : CGRect
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xd8240002b9c0 (0x240002b9c0) in binary!
-	0xd838  @objc DiagramImageView.(null) <stripped>
-WARNING: couldn't find address 0xd85c0002bb38 (0x5c0002bb38) in binary!
-	0xd820  @objc DiagramImageView.(null) <stripped>
-WARNING: couldn't find address 0xd8440002bb30 (0x440002bb30) in binary!
-	0xd868  @objc DiagramImageView.(null) <stripped>
-WARNING: couldn't find address 0xf8b00002bb38 (0xb00002bb38) in binary!
-	0xe07c  @objc DiagramImageView.(null) <stripped>
-WARNING: couldn't find address 0xf8980002bb68 (0x980002bb68) in binary!
-	0xd868  @objc DiagramImageView.(null) <stripped>
-WARNING: couldn't find address 0xfc740002b940 (0x4740002b940) in binary!
+WARNING: couldn't find address 0xd9340002d100 (0x1340002d100) in binary!
+	0xd948  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xd96c0002d278 (0x16c0002d278) in binary!
+	0xd930  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xd9540002d270 (0x1540002d270) in binary!
+	0xd978  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xfc700002d278 (0x4700002d278) in binary!
+	0xe18c  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xfc580002d2a8 (0x4580002d2a8) in binary!
+	0xd978  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xe9ac0002d080 (0x1ac0002d080) in binary!
 	0x58000000c  @objc DiagramImageView.(null) <stripped>
-WARNING: couldn't find address 0xf8680002baf0 (0x680002baf0) in binary!
-	0xe034  @objc DiagramImageView.(null) <stripped>
-WARNING: couldn't find address 0xd7fc0002bac0 (0x7fc0002bac0) in binary!
-	0xf844  @objc DiagramImageView.(null) <stripped>
-WARNING: couldn't find address 0xfc2c0002b8f8 (0x42c0002b8f8) in binary!
+WARNING: couldn't find address 0xfc280002d230 (0x4280002d230) in binary!
+	0xe144  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xd90c0002d200 (0x10c0002d200) in binary!
+	0xfc04  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xe9640002d038 (0x1640002d038) in binary!
 	0x28000000c  @objc DiagramImageView.(null) <stripped>
-WARNING: couldn't find address 0xfc1c0002b8a8 (0x41c0002b8a8) in binary!
-	0xfc10  @objc DiagramImageView.(null) <stripped>
+WARNING: couldn't find address 0xffdc0002cfe8 (0x7dc0002cfe8) in binary!
+	0xffd0  @objc DiagramImageView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x114fff90b68  @objc DiagramImageView.(null) <stripped>
+	0x54fff8ea68  @objc DiagramImageView.(null) <stripped>
 
 	// Swift methods
-	0x1d450  func <stripped> // getter 
-	0x1d490  func <stripped> // setter 
-	0x1d4f0  func <stripped> // modifyCoroutine 
-	0x1d760  func <stripped> // getter 
-	0x1d800  func <stripped> // setter 
-	0x1d8c0  func <stripped> // modifyCoroutine 
-	0x1d9d0  func <stripped> // getter 
-	0x1da20  func <stripped> // setter 
-	0x1da60  func <stripped> // modifyCoroutine 
-	0x1e130  func <stripped> // method 
-	0x1e510  func <stripped> // method 
+	0x1cb20  func <stripped> // getter 
+	0x1cb60  func <stripped> // setter 
+	0x1cbc0  func <stripped> // modifyCoroutine 
+	0x1ce30  func <stripped> // getter 
+	0x1ced0  func <stripped> // setter 
+	0x1cf90  func <stripped> // modifyCoroutine 
+	0x1d0a0  func <stripped> // getter 
+	0x1d0f0  func <stripped> // setter 
+	0x1d130  func <stripped> // modifyCoroutine 
+	0x1d800  func <stripped> // method 
+	0x1dbe0  func <stripped> // method 
  }
 
  struct HealthVisualization.DiagramDrawBlockContext {
@@ -490,10 +476,10 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dateInterval : ˜
+	var dateInterval : w
 	var predicate : NSPredicate?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var histogramWidth : /
+	var histogramWidth : Ø
  }
 
  struct HealthVisualization.EmptyQueryConfiguration { }
@@ -517,8 +503,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let calculator : DiagramAxisLabel
 
 	// Swift methods
-	0x23e70  class func DiagramAxisMetricsCalculator.__allocating_init(axisLabelDimension:maximumLabelCount:calculator:) // init 
-	0x23ef0  func <stripped> // method 
+	0x23540  class func DiagramAxisMetricsCalculator.__allocating_init(axisLabelDimension:maximumLabelCount:calculator:) // init 
+	0x235c0  func <stripped> // method 
  }
 
  enum HealthVisualization.Constants { }
@@ -548,10 +534,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthVisualization.DiagramFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x274e0  class func DiagramFactory.__allocating_init() // init 
-	0x27510  func <stripped> // method 
-	0x27690  func <stripped> // method 
-	0x27dd0  func <stripped> // method 
+	0x26bb0  class func DiagramFactory.__allocating_init() // init 
+	0x26be0  func <stripped> // method 
+	0x26d60  func <stripped> // method 
+	0x274a0  func <stripped> // method 
  }
 
  enum HealthVisualization.CodingKeys {
@@ -637,7 +623,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let axDate : 
+	let axDate : É	
 	let axProbability : AXProbability
 	let axProjectionKind : String?
  }
@@ -671,24 +657,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var monthLabels : [UILabel]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xf8680002baf0 (0x680002baf0) in binary!
-	0xe034  @objc HighlightCalendarView.(null) <stripped>
-WARNING: couldn't find address 0xd7fc0002bac0 (0x7fc0002bac0) in binary!
-	0xf844  @objc HighlightCalendarView.(null) <stripped>
-WARNING: couldn't find address 0xfc2c0002b8f8 (0x42c0002b8f8) in binary!
+WARNING: couldn't find address 0xfc280002d230 (0x4280002d230) in binary!
+	0xe144  @objc HighlightCalendarView.(null) <stripped>
+WARNING: couldn't find address 0xd90c0002d200 (0x10c0002d200) in binary!
+	0xfc04  @objc HighlightCalendarView.(null) <stripped>
+WARNING: couldn't find address 0xe9640002d038 (0x1640002d038) in binary!
 	0x28000000c  @objc HighlightCalendarView.(null) <stripped>
-WARNING: couldn't find address 0xfc1c0002b8a8 (0x41c0002b8a8) in binary!
-	0xfc10  @objc HighlightCalendarView.(null) <stripped>
+WARNING: couldn't find address 0xffdc0002cfe8 (0x7dc0002cfe8) in binary!
+	0xffd0  @objc HighlightCalendarView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x114fff90b68  @objc HighlightCalendarView.(null) <stripped>
+	0x54fff8ea68  @objc HighlightCalendarView.(null) <stripped>
 
 	// Swift methods
-	0x31fd0  func <stripped> // getter 
-	0x32120  class func HighlightCalendarView.__allocating_init(model:) // init 
-	0x32ed0  func <stripped> // method 
-	0x33000  func <stripped> // method 
-	0x338c0  func <stripped> // method 
-	0x34350  func <stripped> // method 
+	0x316c0  func <stripped> // getter 
+	0x31810  class func HighlightCalendarView.__allocating_init(model:) // init 
+	0x325c0  func <stripped> // method 
+	0x326f0  func <stripped> // method 
+	0x32fb0  func <stripped> // method 
+	0x33a40  func <stripped> // method 
  }
 
  class HealthVisualization.StatisticsQueryOperation {
@@ -702,24 +688,24 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let context : String
 	let queue : OS_dispatch_queue
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var observer : u˛
+	var observer : ˝
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var changeDetectionSubject : E
+	var changeDetectionSubject : Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var underlyingCacheData : E˛
+	var underlyingCacheData : Õ
 
 	// Swift methods
-	0x37840  func <stripped> // getter 
-	0x37f70  func <stripped> // getter 
-	0x37fa0  class func CharacteristicChangePublisher.__allocating_init(characteristicToAffectedSampleTypes:cacheData:healthStore:context:) // init 
-	0x381c0  func <stripped> // method 
+	0x36f30  func <stripped> // getter 
+	0x37660  func <stripped> // getter 
+	0x37690  class func CharacteristicChangePublisher.__allocating_init(characteristicToAffectedSampleTypes:cacheData:healthStore:context:) // init 
+	0x378b0  func <stripped> // method 
  }
 
  struct HealthVisualization.CacheData {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lastUpdatedDate : 
+	let lastUpdatedDate : É	
  }
 
  enum HealthVisualization.CodingKeys {
@@ -765,8 +751,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthVisualization.DiagramAxisMetricsCalculatorFactory : _SwiftObject /usr/lib/swift/libswiftCore.dylib, DiagramAxisMetricsCalculatorProducing {
 	// Swift methods
-	0x3ec30  class func DiagramAxisMetricsCalculatorFactory.__allocating_init() // init 
-	0x3ec60  func <stripped> // method 
+	0x3e3f0  class func DiagramAxisMetricsCalculatorFactory.__allocating_init() // init 
+	0x3e420  func <stripped> // method 
  }
 
  class HealthVisualization.HiLoScalarAxisDimension : HKAxisLabelDimensionScalar /System/Library/PrivateFrameworks/HealthUI.framework/HealthUI {
@@ -777,11 +763,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let unitPreferenceController : HKUnitPreferenceController?
 
 	// ObjC -> Swift bridged methods
-	0xfbf0  @objc HiLoScalarAxisDimension.î¿]√ <stripped>
-WARNING: couldn't find address 0xfbdc0002b8a8 (0x3dc0002b8a8) in binary!
+WARNING: couldn't find address 0xfbc00002cff8 (0x3c00002cff8) in binary!
+	0xffb0  @objc HiLoScalarAxisDimension.(null) <stripped>
+WARNING: couldn't find address 0xe9140002cfe8 (0x1140002cfe8) in binary!
 	0xb8000000c  @objc HiLoScalarAxisDimension.(null) <stripped>
-WARNING: couldn't find address 0xfbcc0002b880 (0x3cc0002b880) in binary!
-	0xf7bc  @objc HiLoScalarAxisDimension.(null) <stripped>
+WARNING: couldn't find address 0xff8c0002cfc0 (0x78c0002cfc0) in binary!
+	0xfb7c  @objc HiLoScalarAxisDimension.(null) <stripped>
 
 	// Swift methods
  }
@@ -791,8 +778,7 @@ WARNING: couldn't find address 0xfbcc0002b880 (0x3cc0002b880) in binary!
 	// Properties
 	let pointAnnotations : CGPoint // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let linePadding : ›
- // +0x8
+	let linePadding : ] // +0x8
 	let valueAttributes : Key // +0x10
  }
 
@@ -815,6 +801,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  enum HealthVisualization.SevenDayDose { }
 
  class HealthVisualization.CountComparisonQueryOperation {
+ class HealthVisualization.OngoingCycleFactorsSampleQueryOperation {
  class HealthVisualization.DiagramBanner : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
@@ -855,7 +842,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case audiogram : AudiogramQueryConfiguration
 	case sampleCount : SampleCountQueryConfiguration
 	case standHours : MostRecentTimePeriodQueryConfiguration
+	case contraceptive : EmptyQueryConfiguration
 	case countComparison : CountComparisonQueryConfiguration
+	case cardioFitness : EmptyQueryConfiguration
  }
 
  enum HealthVisualization.CodingKeys {
@@ -871,7 +860,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case audiogram  
 	case sampleCount  
 	case standHours  
+	case contraceptive  
 	case countComparison  
+	case cardioFitness  
  }
 
  class HealthVisualization.DiagramAxis : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -885,11 +876,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let innerAxisInsets : CGSize
 
 	// Swift methods
-	0x4b2c0  func <stripped> // method 
-	0x4b330  func <stripped> // method 
-	0x4b750  func <stripped> // method 
-	0x4b9c0  func <stripped> // method 
-	0x4c8c0  func <stripped> // method 
+	0x4ca70  func <stripped> // method 
+	0x4cae0  func <stripped> // method 
+	0x4cf00  func <stripped> // method 
+	0x4d170  func <stripped> // method 
+	0x4e070  func <stripped> // method 
  }
 
  class HealthVisualization.StatisticsCollectionQueryOperation {
@@ -903,9 +894,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let diagramMaxPointAnnotations : DiagramPointAnnotations
 
 	// Swift methods
-	0x51760  func <stripped> // getter 
-	0x524e0  func <stripped> // method 
-	0x537d0  func <stripped> // method 
+	0x52f10  func <stripped> // getter 
+	0x53c90  func <stripped> // method 
+	0x54f80  func <stripped> // method 
  }
 
  enum HealthVisualization.StatisticsOption {
@@ -928,8 +919,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let axisHandler : DiagramAxis
 
 	// Swift methods
-	0x59290  func <stripped> // getter 
-	0x5a690  func <stripped> // method 
+	0x5ab10  func <stripped> // getter 
+	0x5bf10  func <stripped> // method 
  }
 
  struct HealthVisualization.DelayedImmutable {
@@ -955,7 +946,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dateInterval : ˜
+	let dateInterval : w
 	let additionalPredicate : NSPredicate?
  }
 
@@ -979,29 +970,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var activityRingsView : HKActivityRingView? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xfbcc0002b880 (0x3cc0002b880) in binary!
-	0xf7bc  @objc HighlightCalendarDayView.(null) <stripped>
-WARNING: couldn't find address 0xfbb40002b858 (0x3b40002b858) in binary!
-	0xf7a4  @objc HighlightCalendarDayView.(null) <stripped>
-WARNING: couldn't find address 0xf7a00002ba28 (0x7a00002ba28) in binary!
-	0xf7a0  @objc HighlightCalendarDayView.(null) <stripped>
-WARNING: couldn't find address 0xfb7c0002bdf8 (0x37c0002bdf8) in binary!
-	0xdf54  @objc HighlightCalendarDayView.(null) <stripped>
-WARNING: couldn't find address 0xdf480002bb38 (0x7480002bb38) in binary!
-	0xd710  @objc HighlightCalendarDayView.(null) <stripped>
-WARNING: couldn't find address 0xfb4c0002b818 (0x34c0002b818) in binary!
+WARNING: couldn't find address 0xff8c0002cfc0 (0x78c0002cfc0) in binary!
+	0xfb7c  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0xff740002cf98 (0x7740002cf98) in binary!
+	0xfb64  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0xfb600002d168 (0x3600002d168) in binary!
+	0xfb60  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0xe8b40002d568 (0xb40002d568) in binary!
+	0xe064  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0xe0580002d278 (0x580002d278) in binary!
+	0xd820  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0xe8840002cf58 (0x840002cf58) in binary!
 	0x48000000c  @objc HighlightCalendarDayView.(null) <stripped>
-WARNING: couldn't find address 0xf7400002b9c8 (0x7400002b9c8) in binary!
-	0xfb28  @objc HighlightCalendarDayView.(null) <stripped>
-WARNING: couldn't find address 0xd7040002be78 (0x7040002be78) in binary!
-	0xfb10  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0xfb000002d108 (0x3000002d108) in binary!
+	0xe860  @objc HighlightCalendarDayView.(null) <stripped>
+WARNING: couldn't find address 0xd8140002d5e8 (0x140002d5e8) in binary!
+	0xe848  @objc HighlightCalendarDayView.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x7acfffc96a0  @objc HighlightCalendarDayView.(null) <stripped>
-	0x644fffc9ad8  @objc HighlightCalendarDayView.Ñç <stripped>
-	0xfffc9320  @objc HighlightCalendarDayView. <stripped>
+	0x71cfffc9660  @objc HighlightCalendarDayView.(null) <stripped>
+	0x5b4fffc9a98  @objc HighlightCalendarDayView.HÖ…u#HçrH;u®çÔ <stripped>
+	0xfffc92e0  @objc HighlightCalendarDayView.Â	 <stripped>
 
 	// Swift methods
-	0x63250  func <stripped> // getter 
+	0x64ad0  func <stripped> // getter 
  }
 
  class HealthVisualization.DiagramAxisOnly : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1011,7 +1002,7 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	let axisHandler : DiagramAxis
 
 	// Swift methods
-	0x664c0  func <stripped> // getter 
+	0x67d40  func <stripped> // getter 
  }
 
  enum HealthVisualization.LocalizationReplacement {
@@ -1097,12 +1088,12 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	var $__lazy_storage_$_perMinuteReadings : MinuteLine
 
 	// Swift methods
-	0x6f830  func <stripped> // getter 
-	0x6f880  func <stripped> // getter 
-	0x6fd10  func <stripped> // getter 
-	0x6fd90  func <stripped> // getter 
-	0x70330  func <stripped> // getter 
-	0x71290  func <stripped> // method 
+	0x710b0  func <stripped> // getter 
+	0x71100  func <stripped> // getter 
+	0x71590  func <stripped> // getter 
+	0x71610  func <stripped> // getter 
+	0x71bb0  func <stripped> // getter 
+	0x72b10  func <stripped> // method 
  }
 
  enum HealthVisualization.MinuteLine {
@@ -1158,34 +1149,34 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	let associatedObjectTypes : [HKObjectType]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xf7400002b9c8 (0x7400002b9c8) in binary!
-	0xfb28  @objc ItemDetailViewController.(null) <stripped>
-WARNING: couldn't find address 0xd7040002be78 (0x7040002be78) in binary!
-	0xfb10  @objc ItemDetailViewController.(null) <stripped>
+WARNING: couldn't find address 0xfb000002d108 (0x3000002d108) in binary!
+	0xe860  @objc ItemDetailViewController.(null) <stripped>
+WARNING: couldn't find address 0xd8140002d5e8 (0x140002d5e8) in binary!
+	0xe848  @objc ItemDetailViewController.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x7acfffc96a0  @objc ItemDetailViewController.(null) <stripped>
-	0x644fffc9ad8  @objc ItemDetailViewController.Ñç <stripped>
+	0x71cfffc9660  @objc ItemDetailViewController.(null) <stripped>
+	0x5b4fffc9a98  @objc ItemDetailViewController.HÖ…u#HçrH;u®çÔ <stripped>
 
 	// Swift methods
-	0x75ce0  func <stripped> // getter 
-	0x75d00  func <stripped> // setter 
-	0x75d20  func <stripped> // modifyCoroutine 
-	0x75da0  func <stripped> // getter 
-	0x75dc0  func <stripped> // setter 
-	0x75de0  func <stripped> // modifyCoroutine 
-	0x75e60  func <stripped> // getter 
-	0x75e80  func <stripped> // setter 
-	0x75ea0  func <stripped> // modifyCoroutine 
-	0x75f20  func <stripped> // getter 
-	0x75f40  func <stripped> // setter 
-	0x75f60  func <stripped> // modifyCoroutine 
-	0x76080  func <stripped> // getter 
-	0x760e0  func <stripped> // setter 
-	0x76140  func <stripped> // modifyCoroutine 
-	0x76200  func <stripped> // getter 
-	0x76520  func <stripped> // setter 
-	0x76540  func <stripped> // modifyCoroutine 
-	0x765b0  class func ItemDetailViewController.__allocating_init(embedding:associatedObjectTypes:dataProvider:) // init 
+	0x77560  func <stripped> // getter 
+	0x77580  func <stripped> // setter 
+	0x775a0  func <stripped> // modifyCoroutine 
+	0x77620  func <stripped> // getter 
+	0x77640  func <stripped> // setter 
+	0x77660  func <stripped> // modifyCoroutine 
+	0x776e0  func <stripped> // getter 
+	0x77700  func <stripped> // setter 
+	0x77720  func <stripped> // modifyCoroutine 
+	0x777a0  func <stripped> // getter 
+	0x777c0  func <stripped> // setter 
+	0x777e0  func <stripped> // modifyCoroutine 
+	0x77900  func <stripped> // getter 
+	0x77960  func <stripped> // setter 
+	0x779c0  func <stripped> // modifyCoroutine 
+	0x77a80  func <stripped> // getter 
+	0x77da0  func <stripped> // setter 
+	0x77dc0  func <stripped> // modifyCoroutine 
+	0x77e30  class func ItemDetailViewController.__allocating_init(embedding:associatedObjectTypes:dataProvider:) // init 
  }
 
  struct HealthVisualization.HealthTypeProxy {
@@ -1744,7 +1735,7 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 
  class HealthVisualization.DiagramDateRangeAxisMetricsCalculator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xa2cb0  func <stripped> // method 
+	0xa4530  func <stripped> // method 
  }
 
  class HealthVisualization.DiagramDateAxisMetricsCalculator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1754,9 +1745,9 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	let customLabelDateFormatter : NSDateFormatter?
 
 	// Swift methods
-	0xa3170  func <stripped> // method 
-	0xa2640  func <stripped> // method 
-	0xa2b90  func <stripped> // method 
+	0xa49f0  func <stripped> // method 
+	0xa3ec0  func <stripped> // method 
+	0xa4410  func <stripped> // method 
  }
 
  struct HealthVisualization.DateTickIntervalStrategy {
@@ -1764,7 +1755,7 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	// Properties
 	let enumerationAlgorithm : IntervalEnumerationAlgorithm
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let intervalMatchDateComponents : 9Ò
+	let intervalMatchDateComponents : ÒÛ
 	let intervalDownsampleFactor : Int
 	let useMajorTicksOnly : Bool
 	let labelDateFormatter : NSDateFormatter
@@ -1805,37 +1796,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let name : String?
 	let deliveryQueue : OS_dispatch_queue
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var changesHandler : /Ï
+	var changesHandler : ÔÓ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var queries : Ï
+	var queries : œÓ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let otherChangePublishers : ˜Î
+	let otherChangePublishers : ∑Ó
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var otherChanges : ŸÎ
+	var otherChanges : ôÓ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lock : gÎ
+	var lock : Ó
 	var lock_pendingChangeSet : AnchoredChangeSet
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lock_pendingError : yÒ
+	var lock_pendingError : 9Ù
 	var lock_dispatchPending : Bool
 	var lock_state : State
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xfabc0002b7e0 (0x2bc0002b7e0) in binary!
-	0xfaa8  @objc AggregateChangeDetector.(null) <stripped>
+WARNING: couldn't find address 0xfe7c0002cf20 (0x67c0002cf20) in binary!
+	0xe7e0  @objc AggregateChangeDetector.(null) <stripped>
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	0x5483a4d4152  @objc AggregateChangeDetector.(null) <stripped>
 
 	// Swift methods
-	0xa5d70  func <stripped> // getter 
-	0xa5df0  class func AggregateChangeDetector.__allocating_init(types:highFrequencyTypes:anchor:includeChangeDetails:name:healthStore:deliveryQueue:changesHandler:otherChangePublishers:) // init 
-	0xa6570  func <stripped> // method 
-	0xa6bb0  func <stripped> // method 
-	0xa6d10  func <stripped> // method 
-	0xa8670  func <stripped> // method 
-	0xa8b80  func <stripped> // method 
-	0xa8de0  func <stripped> // method 
-	0xa9030  func <stripped> // method 
+	0xa75f0  func <stripped> // getter 
+	0xa7670  class func AggregateChangeDetector.__allocating_init(types:highFrequencyTypes:anchor:includeChangeDetails:name:healthStore:deliveryQueue:changesHandler:otherChangePublishers:) // init 
+	0xa7df0  func <stripped> // method 
+	0xa8430  func <stripped> // method 
+	0xa8590  func <stripped> // method 
+	0xa9ef0  func <stripped> // method 
+	0xaa400  func <stripped> // method 
+	0xaa660  func <stripped> // method 
+	0xaa8b0  func <stripped> // method 
  }
 
  enum HealthVisualization.State {

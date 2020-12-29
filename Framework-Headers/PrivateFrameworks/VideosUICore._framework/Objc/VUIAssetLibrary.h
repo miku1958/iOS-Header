@@ -9,7 +9,6 @@
 @class NSMutableArray, NSString;
 @protocol OS_dispatch_queue;
 
-__attribute__((visibility("hidden")))
 @interface VUIAssetLibrary : NSObject
 {
     NSObject<OS_dispatch_queue> *assetWriteQueue;
@@ -22,7 +21,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSMutableArray *registeredGroups; // @synthesize registeredGroups=_registeredGroups;
 
 + (void)_initializeAssetLibraryWithCachePath:(id)arg1 purgeCacheOnLoad:(BOOL)arg2;
-+ (void)initializeAssetLibraryWithCachePath:(id)arg1;
++ (void)initializeAssetLibraryWithCachePath:(id)arg1 purgeCacheOnLoad:(BOOL)arg2;
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_setImageAsset:(id)arg1 forKey:(id)arg2 inGroupOfType:(long long)arg3 expiryDate:(id)arg4 overWrite:(BOOL)arg5 tags:(id)arg6;

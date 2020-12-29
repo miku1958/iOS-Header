@@ -28,7 +28,6 @@
 - (void).cxx_destruct;
 - (BOOL)_accessibilityScrollingEnabled;
 - (id)accessibilityCustomRotors;
-- (BOOL)canBecomeFocused;
 - (BOOL)gestureRecognizerShouldBegin:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)shouldOccludeAccessibilityElement:(id)arg1;

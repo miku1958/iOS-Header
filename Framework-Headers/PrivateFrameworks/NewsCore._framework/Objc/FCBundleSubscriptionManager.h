@@ -47,7 +47,7 @@
 - (void).cxx_destruct;
 - (void)activityObservingApplicationDidEnterBackground;
 - (void)addObserver:(id)arg1;
-- (void)bundleChannelProvider:(id)arg1 bundleChannelIDsDidChangeWithChannelIDs:(id)arg2;
+- (void)bundleChannelProvider:(id)arg1 bundleChannelIDsDidChangeWithChannelIDs:(id)arg2 version:(id)arg3;
 - (id)bundleSubscriptionLookupEntry;
 - (void)clearBundleSubscription;
 - (void)expireBundleSubscription;

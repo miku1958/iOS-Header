@@ -4,9 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
+@class NSDate;
+
 @protocol APPCLifecycleMetricsHelping
 - (void)contentLoadFailure;
 - (void)discarded;
 - (void)missedOpportunity;
+- (void)trackImpressionWithStartDate:(NSDate *)arg1 endDate:(NSDate *)arg2;
 @end
 

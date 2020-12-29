@@ -28,11 +28,13 @@
     int _widgetContentType;
     int _widgetDisplayMode;
     int _widgetEngagementType;
+    int _widgetExposureStackLocation;
     int _widgetSectionDisplayRank;
     NSString *_widgetSectionId;
+    int _widgetType;
     NSString *_widgetUserId;
     int _widgetVideoPresentationReason;
-    CDStruct_7b5281db _has;
+    CDStruct_38942d66 _has;
 }
 
 @property (strong, nonatomic) NSString *articleId; // @synthesize articleId=_articleId;
@@ -55,8 +57,10 @@
 @property (nonatomic) BOOL hasWidgetContentType;
 @property (nonatomic) BOOL hasWidgetDisplayMode;
 @property (nonatomic) BOOL hasWidgetEngagementType;
+@property (nonatomic) BOOL hasWidgetExposureStackLocation;
 @property (nonatomic) BOOL hasWidgetSectionDisplayRank;
 @property (readonly, nonatomic) BOOL hasWidgetSectionId;
+@property (nonatomic) BOOL hasWidgetType;
 @property (readonly, nonatomic) BOOL hasWidgetUserId;
 @property (nonatomic) BOOL hasWidgetVideoPresentationReason;
 @property (strong, nonatomic) NSMutableArray *otherVisibleSections; // @synthesize otherVisibleSections=_otherVisibleSections;
@@ -70,8 +74,10 @@
 @property (nonatomic) int widgetContentType; // @synthesize widgetContentType=_widgetContentType;
 @property (nonatomic) int widgetDisplayMode; // @synthesize widgetDisplayMode=_widgetDisplayMode;
 @property (nonatomic) int widgetEngagementType; // @synthesize widgetEngagementType=_widgetEngagementType;
+@property (nonatomic) int widgetExposureStackLocation; // @synthesize widgetExposureStackLocation=_widgetExposureStackLocation;
 @property (nonatomic) int widgetSectionDisplayRank; // @synthesize widgetSectionDisplayRank=_widgetSectionDisplayRank;
 @property (strong, nonatomic) NSString *widgetSectionId; // @synthesize widgetSectionId=_widgetSectionId;
+@property (nonatomic) int widgetType; // @synthesize widgetType=_widgetType;
 @property (strong, nonatomic) NSString *widgetUserId; // @synthesize widgetUserId=_widgetUserId;
 @property (nonatomic) int widgetVideoPresentationReason; // @synthesize widgetVideoPresentationReason=_widgetVideoPresentationReason;
 
@@ -79,6 +85,8 @@
 - (void).cxx_destruct;
 - (int)StringAsWidgetContentType:(id)arg1;
 - (int)StringAsWidgetDisplayMode:(id)arg1;
+- (int)StringAsWidgetExposureStackLocation:(id)arg1;
+- (int)StringAsWidgetType:(id)arg1;
 - (int)StringAsWidgetVideoPresentationReason:(id)arg1;
 - (void)addOtherVisibleSections:(id)arg1;
 - (void)clearOtherVisibleSections;
@@ -93,6 +101,8 @@
 - (BOOL)readFrom:(id)arg1;
 - (id)widgetContentTypeAsString:(int)arg1;
 - (id)widgetDisplayModeAsString:(int)arg1;
+- (id)widgetExposureStackLocationAsString:(int)arg1;
+- (id)widgetTypeAsString:(int)arg1;
 - (id)widgetVideoPresentationReasonAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

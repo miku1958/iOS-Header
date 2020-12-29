@@ -23,6 +23,7 @@ __attribute__((visibility("hidden")))
 }
 
 @property (strong, nonatomic) AVCBasebandCongestionDetector *basebandCongestionDetector; // @synthesize basebandCongestionDetector=_basebandCongestionDetector;
+@property (nonatomic) double decryptionMKMRecoveryInterval;
 @property (nonatomic, getter=isDecryptionTimeoutEnabled) BOOL decryptionTimeoutEnabled;
 @property (nonatomic) double decryptionTimeoutInterval;
 @property (readonly, nonatomic) id<VCMediaStreamTransportDelegate> delegate;

@@ -16,7 +16,7 @@
 #import <Home/HFSymptomsVendor-Protocol.h>
 #import <Home/HMMediaObject-Protocol.h>
 
-@class ACAccount, HMAccessory, HMMediaSession, NAFuture, NSSet, NSString;
+@class ACAccount, HMAccessory, HMMediaSession, HMUser, NAFuture, NSSet, NSString;
 @protocol HFMediaValueSource, HMMediaDestination;
 
 @protocol HFMediaProfileContainer <HMMediaObject, HFHomeKitSettingsVendor, HFAccessoryVendor, HFStateDumpBuildable, HFReorderableHomeKitObject, HFFavoritable, HFRoomContextProviding, HFSymptomsVendor, HFSymptomsHandlerVendor, HFSymptomFixableObject, HFServiceNameComponentsProviding>
@@ -37,6 +37,7 @@
 @property (readonly, nonatomic) BOOL hf_showsAudioSettings;
 @property (readonly, nonatomic) BOOL hf_supportsHomeTheater;
 @property (readonly, nonatomic) BOOL hf_supportsMusicAlarm;
+@property (readonly, nonatomic) BOOL hf_supportsPreferredMediaUser;
 @property (readonly, nonatomic) BOOL hf_supportsSoftwareUpdate;
 @property (readonly, nonatomic) BOOL hf_supportsStereoPairing;
 @property (readonly, nonatomic) NSSet *mediaProfiles;
@@ -50,5 +51,8 @@
 - (NAFuture *)hf_homePodMediaAccountIsMismatchedWithHomeMediaAccount;
 - (NAFuture *)hf_homePodSupportsMultiUserLanguage;
 - (NSString *)hf_idsDeviceIdentifierWithError:(id *)arg1;
+- (NAFuture *)hf_isEitherHomePodMediaAccountOrHomeMediaAccountPresent;
+- (HMUser *)hf_preferredMediaUser;
+- (unsigned long long)hf_preferredUserSelectionType;
 @end
 

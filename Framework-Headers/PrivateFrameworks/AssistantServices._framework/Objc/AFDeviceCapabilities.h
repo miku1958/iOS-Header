@@ -15,8 +15,10 @@
 {
     NSDictionary *_serializedBackingStore;
     long long _voiceTriggerEnabled;
+    long long _seymourEnabled;
 }
 
+@property (readonly, nonatomic) long long seymourEnabled; // @synthesize seymourEnabled=_seymourEnabled;
 @property (readonly, nonatomic) long long voiceTriggerEnabled; // @synthesize voiceTriggerEnabled=_voiceTriggerEnabled;
 
 + (BOOL)supportsSecureCoding;
@@ -27,7 +29,7 @@
 - (unsigned long long)hash;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithSerializedBackingStore:(id)arg1;
-- (id)initWithVoiceTriggerEnabled:(long long)arg1;
+- (id)initWithVoiceTriggerEnabled:(long long)arg1 seymourEnabled:(long long)arg2;
 - (BOOL)isEqual:(id)arg1;
 - (id)serializedBackingStore;
 

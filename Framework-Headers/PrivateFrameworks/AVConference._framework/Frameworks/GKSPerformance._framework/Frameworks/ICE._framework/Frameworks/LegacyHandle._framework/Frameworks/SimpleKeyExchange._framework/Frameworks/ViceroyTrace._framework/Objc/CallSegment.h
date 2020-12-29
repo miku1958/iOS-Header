@@ -173,6 +173,7 @@
     NSNumber *_wrmLinkTypeCellSignalBar;
     NSNumber *_wrmLinkTypeCellServingCellType;
     NSNumber *_wrmLinkTypeWifiRemoteRSSIThreshold;
+    BOOL _is5GHz;
     id<VCAdaptiveLearningDelegate> _delegate;
     unsigned int _videoFrameNonFECTotalCounter;
     unsigned int _videoFrameNonFECCompleteCounter;
@@ -243,6 +244,7 @@
 @property unsigned int fecProcessingTime; // @synthesize fecProcessingTime=_fecProcessingTime;
 @property (readonly) NSMutableDictionary *fecStatsDict; // @synthesize fecStatsDict=_fecStatsDict;
 @property (readonly) VCHistogram *framerate; // @synthesize framerate=_framerate;
+@property BOOL is5GHz; // @synthesize is5GHz=_is5GHz;
 @property (copy) NSNumber *isLocalExpensive; // @synthesize isLocalExpensive=_isLocalExpensive;
 @property (copy) NSNumber *isRemoteExpensive; // @synthesize isRemoteExpensive=_isRemoteExpensive;
 @property unsigned long long lastReportedTotalCellDupRxDataBytes; // @synthesize lastReportedTotalCellDupRxDataBytes=_lastReportedTotalCellDupRxDataBytes;

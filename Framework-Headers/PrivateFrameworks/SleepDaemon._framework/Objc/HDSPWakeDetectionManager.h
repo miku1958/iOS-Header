@@ -35,7 +35,9 @@
 @property (readonly, copy) NSString *description;
 @property (readonly, weak, nonatomic) HDSPEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL inDetectionWindow;
 @property (readonly, nonatomic) BOOL isDetecting;
+@property (readonly, nonatomic) BOOL isWatch;
 @property (readonly, copy, nonatomic) NSString *providerIdentifier;
 @property (readonly, nonatomic) HKSPSleepScheduleOccurrence *relevantOccurrence;
 @property (weak, nonatomic) id<HDSPSleepEventDelegate> sleepEventDelegate; // @synthesize sleepEventDelegate=_sleepEventDelegate;
@@ -47,18 +49,23 @@
 @property (readonly, nonatomic) struct os_unfair_lock_s wakeDetectionLock; // @synthesize wakeDetectionLock=_wakeDetectionLock;
 @property (readonly, nonatomic) NSArray *wakeDetectors; // @synthesize wakeDetectors=_wakeDetectors;
 
++ (id)platformSpecificProviders:(id)arg1;
 - (void).cxx_destruct;
 - (id)_currentState;
+- (id)_detectionWindowForDetector:(id)arg1 afterDate:(id)arg2 nextWakeUp:(id)arg3;
+- (id)_detectionWindowsAfterDate:(id)arg1 nextWakeUp:(id)arg2;
 - (void)_withLock:(CDUnknownBlockType)arg1;
-- (id)detectionWindowAfterDate:(id)arg1;
+- (id)detectionWindowForDetector:(id)arg1 afterDate:(id)arg2;
+- (id)detectionWindowsAfterDate:(id)arg1;
 - (id)diagnosticDescription;
 - (id)diagnosticInfo;
+- (void)earlyWakeUpWasNotifiedRemotely;
 - (void)environmentDidBecomeReady:(id)arg1;
 - (void)environmentWillBecomeReady:(id)arg1;
 - (id)eventIdentifiers;
 - (id)initWithEnvironment:(id)arg1;
 - (id)initWithEnvironment:(id)arg1 wakeDetectorProviders:(id)arg2;
-- (BOOL)isWaiting;
+- (id)nextWakeUpAfterDate:(id)arg1;
 - (void)postWakeDetectionNotification;
 - (void)scheduleWakeDetection;
 - (void)significantTimeChangeDetected:(id)arg1;
@@ -66,11 +73,12 @@
 - (BOOL)sleepFeaturesEnabled;
 - (void)sleepScheduleModelManager:(id)arg1 source:(id)arg2 didUpdateSleepScheduleModel:(id)arg3;
 - (void)sleepScheduleStateDidChange:(unsigned long long)arg1 previousState:(unsigned long long)arg2 reason:(unsigned long long)arg3;
-- (id)standardProviders;
 - (void)startWakeDetection;
 - (void)stopWakeDetection;
 - (void)unscheduleWakeDetection;
 - (id)upcomingEventsDueAfterDate:(id)arg1;
+- (id)upcomingStartDetectionDateAfterDate:(id)arg1;
+- (id)upcomingStartDetectionDatesAfterDate:(id)arg1;
 - (void)updateState;
 - (void)wakeDetector:(id)arg1 didDetectWakeUpEventOnDate:(id)arg2;
 

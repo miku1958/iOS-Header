@@ -126,8 +126,10 @@
 - (void)logSpecialPageDidDisappear:(unsigned long long)arg1;
 - (void)logStackDidAppear:(id)arg1 topWidget:(id)arg2 prediction:(id)arg3;
 - (void)logStackDidDisappear:(id)arg1 topWidget:(id)arg2 prediction:(id)arg3;
+- (void)logStackDidTap:(id)arg1 engagedUrl:(id)arg2 widgetOnTop:(id)arg3 prediction:(id)arg4;
 - (void)logStackDidTap:(id)arg1 widgetOnTop:(id)arg2 prediction:(id)arg3;
 - (void)logStackStatusDidChange:(id)arg1 widgetOnTop:(id)arg2 reason:(unsigned long long)arg3 prediction:(id)arg4;
+- (void)logStackVisibilityChanged:(id)arg1 visibleRect:(struct CGRect)arg2 topWidget:(id)arg3 prediction:(id)arg4;
 - (void)logSuggestionsDidAppear:(id)arg1 widget:(id)arg2 blendingCacheId:(id)arg3;
 - (void)logSuggestionsDidDisappear:(id)arg1 widget:(id)arg2 blendingCacheId:(id)arg3;
 - (void)logSupplementaryActionInContextMenu:(unsigned long long)arg1 stackId:(id)arg2 widgetOnTop:(id)arg3 prediction:(id)arg4;

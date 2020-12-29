@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
 - (void)_takeSnapshotFromContainer:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)dismissViewController;
 - (id)initWithRootContainer:(id)arg1 context:(id)arg2;
+- (void)performSafeTransitionFrom:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (void)popViewController;
 - (void)presentWithOptions:(id)arg1 windowSize:(struct CGSize)arg2;
 - (void)pushWithOptions:(id)arg1;

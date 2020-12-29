@@ -8,7 +8,7 @@
 
 #import <GeoServices/NSSecureCoding-Protocol.h>
 
-@class GEOAlert, NSString;
+@class GEOAlert, NSArray, NSString;
 @protocol GEOTransitRoutingIncidentMessage;
 
 @interface GEODirectionsError : NSObject <NSSecureCoding>
@@ -17,10 +17,12 @@
     struct GEOProblemDetail *_problemDetails;
     unsigned long long _problemDetailsCount;
     id<GEOTransitRoutingIncidentMessage> _routingIncidentMessage;
+    NSArray *_internalServerErrors;
 }
 
 @property (readonly, nonatomic) long long firstDirectionsErrorCode;
 @property (readonly, nonatomic) id<GEOTransitRoutingIncidentMessage> incidentMessage;
+@property (readonly, nonatomic) NSArray *internalServerErrors; // @synthesize internalServerErrors=_internalServerErrors;
 @property (readonly, nonatomic) NSString *localizedDescription;
 @property (readonly, nonatomic) NSString *localizedTitle;
 

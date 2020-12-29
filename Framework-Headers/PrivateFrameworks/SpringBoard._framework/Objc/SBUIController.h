@@ -110,9 +110,11 @@
 - (void)_debounceWirelessChargingTimerFired;
 - (void)_deviceUILocked;
 - (void)_disableWirelessChargingChimeAndScreenWakeForDuration:(double)arg1;
+- (void)_dismissAccessory:(id)arg1 playChime:(BOOL)arg2;
 - (void)_enumeratePowerSourcesWithBlock:(CDUnknownBlockType)arg1;
 - (id)_fakeSpringBoardStatusBar;
 - (void)_hideKeyboard;
+- (BOOL)_isAccessoryAttached:(long long)arg1;
 - (BOOL)_isConnectedToWirelessCharging;
 - (id)_legibilitySettings;
 - (void)_playAccessoryAttachChimeIfAppropriateWithDelay:(double)arg1;
@@ -120,9 +122,12 @@
 - (void)_reduceMotionStatusDidChange:(id)arg1;
 - (void)_removeReachabilityEffectViewIfNecessary;
 - (void)_resetWirelessChargingState;
+- (void)_setConnectedToWindowedAccessory:(BOOL)arg1;
 - (void)_setDebounceWirelessChargingTimerWithDuration:(double)arg1;
 - (void)_setupHomeScreenContentBackdropView;
 - (void)_setupHomeScreenDimmingWindow;
+- (BOOL)_shouldInitiateAnimationForAccessory:(id)arg1;
+- (BOOL)_shouldShowAnimationForAccessory:(id)arg1;
 - (void)_switchToHomeScreenWallpaperAnimated:(BOOL)arg1;
 - (void)_updateLegibility;
 - (void)_willRevealOrHideContentView;
@@ -214,6 +219,9 @@
 - (void)wallpaperDidChangeForVariant:(long long)arg1;
 - (void)wallpaperLegibilitySettingsDidChange:(id)arg1 forVariant:(long long)arg2;
 - (id)window;
+- (void)windowedAccessoryDismissed;
+- (void)windowedAccessoryPresented;
+- (id)workflowClientFromWebClip:(id)arg1 appToLaunch:(id)arg2;
 
 @end
 

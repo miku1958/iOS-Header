@@ -12,6 +12,8 @@
 + (id)hkspTestDateWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2;
 + (id)hkspTestUTCDateWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2;
 + (id)hkspTestWeekendDateWithHour:(unsigned long long)arg1 minute:(unsigned long long)arg2;
++ (id)hksp_earliestFromDates:(id)arg1;
++ (id)hksp_latestFromDates:(id)arg1;
 - (id)hkspAddDays:(long long)arg1;
 - (id)hkspDescription;
 - (id)hkspGreetingStringWithOptions:(unsigned long long)arg1;

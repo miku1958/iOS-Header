@@ -6,12 +6,14 @@
 
 #import <GeoServices/GEOAnalyticsPipelineStateData.h>
 
-@class geo_isolater;
+@class NSObject, geo_isolater;
+@protocol OS_dispatch_queue;
 
 @interface GEOAnalyticsPipelineSharedStateData : GEOAnalyticsPipelineStateData
 {
     geo_isolater *_placeIso;
     geo_isolater *_mapViewIso;
+    NSObject<OS_dispatch_queue> *_configQueue;
 }
 
 + (id)sharedData;
@@ -39,6 +41,9 @@
 - (void)populateWithChildPlace:(id)arg1 timestamp:(double)arg2 resultIndex:(int)arg3;
 - (void)populateWithPlace:(id)arg1 timestamp:(double)arg2 resultIndex:(int)arg3;
 - (void)populateWithPlaceActionDetails:(id)arg1;
+- (void)setMetroRegion:(id)arg1;
+- (void)setUserHomecountry:(id)arg1;
+- (void)setUserHomemetro:(id)arg1;
 - (int)transportModeAsGEOTransportMode;
 
 @end

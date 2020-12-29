@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
 
-+ (void)determineCapabilitiesWithServiceInfo:(id)arg1 initInfo:(CDStruct_8de101df *)arg2;
++ (void)determineCapabilitiesWithServiceInfo:(id)arg1 initInfo:(CDStruct_4d38efe0 *)arg2;
 + (id)deviceManager;
 + (void)deviceManager:(id)arg1 prepareLogicalDevice:(id)arg2;
 + (void)deviceManager:(id)arg1 willPublishPhysicalDevice:(id)arg2;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 + (void)physicalDevice:(id)arg1 setIndicatedPlayerIndex:(long long)arg2;
 + (long long)physicalDeviceGetIndicatedPlayerIndex:(id)arg1;
 + (BOOL)physicalDeviceUsesACHomeForMenu:(id)arg1;
-+ (void)populateInitInfo:(CDStruct_8de101df *)arg1 forLogicalDevice:(id)arg2;
++ (void)populateInitInfo:(CDStruct_4d38efe0 *)arg1 forLogicalDevice:(id)arg2;
 
 @end
 

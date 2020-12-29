@@ -6,11 +6,12 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsCore/FCContentArchivable-Protocol.h>
 #import <NewsCore/NSCopying-Protocol.h>
 
-@class FCAVAsset;
+@class FCAVAsset, FCContentArchive;
 
-@interface FCArticleAudioTrack : NSObject <NSCopying>
+@interface FCArticleAudioTrack : NSObject <NSCopying, FCContentArchivable>
 {
     long long _type;
     FCAVAsset *_asset;
@@ -18,6 +19,7 @@
 }
 
 @property (readonly, nonatomic) FCAVAsset *asset; // @synthesize asset=_asset;
+@property (readonly, nonatomic) FCContentArchive *contentArchive;
 @property (readonly, nonatomic) double duration; // @synthesize duration=_duration;
 @property (readonly, nonatomic) long long type; // @synthesize type=_type;
 

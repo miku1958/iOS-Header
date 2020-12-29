@@ -17,7 +17,7 @@
 
 + (BOOL)idInfo:(id)arg1 isValidForDate:(id)arg2;
 - (void).cxx_destruct;
-- (id)IDInfoForScheme:(id)arg1 date:(id)arg2;
+- (id)IDInfoForScheme:(id)arg1 dsId:(id)arg2 date:(id)arg3;
 - (void)addIDInfo:(id)arg1;
 - (id)init;
 - (void)removeAllNamespaces;

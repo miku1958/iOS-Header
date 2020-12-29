@@ -31,6 +31,7 @@
 - (void)clearSessionWithURL:(id)arg1;
 - (void)getSessionWithURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getSessionWithURL:(id)arg1 configuration:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)handleManagedConfigurationChanged;
 - (id)init;
 - (id)sessionWithURL:(id)arg1 createIfNoExist:(BOOL)arg2;
 

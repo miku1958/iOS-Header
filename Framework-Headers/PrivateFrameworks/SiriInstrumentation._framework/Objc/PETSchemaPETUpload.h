@@ -49,6 +49,7 @@
 - (void)clearUnaggregated_messages;
 - (id)dictionaryRepresentation;
 - (int)getAnyEventType;
+- (id)getTypeId;
 - (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;

@@ -18,6 +18,7 @@
     struct {
         BOOL didDisplay;
         BOOL keypress;
+        BOOL userEventOccured;
         BOOL replaceTextRange;
         BOOL keyWillMem;
         BOOL keymem;
@@ -70,6 +71,7 @@
 - (int)handleRegisterCallbackForKey:(int)arg1 trusted:(BOOL)arg2;
 - (int)handleSetValue:(id)arg1 forKey:(int)arg2 trusted:(BOOL)arg3;
 - (void)handleStartEditing;
+- (void)handleUserEventOccured;
 - (id)initWithBrailleDisplayManager:(id)arg1;
 - (void)invalidate;
 

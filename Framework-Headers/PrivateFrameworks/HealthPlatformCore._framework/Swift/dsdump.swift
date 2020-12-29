@@ -95,11 +95,11 @@
 
  class HealthPlatformCore.DateRangeRelevanceProviderManager : RERelevanceProviderManager /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5e8400024230 (0x68400024230) in binary!
+WARNING: couldn't find address 0x5e8400024290 (0x68400024290) in binary!
 	0x7dd8  @objc DateRangeRelevanceProviderManager.(null) <stripped>
-WARNING: couldn't find address 0x9bdc00024210 (0x3dc00024210) in binary!
+WARNING: couldn't find address 0x9bdc00024270 (0x3dc00024270) in binary!
 	0x38000000c  @objc DateRangeRelevanceProviderManager.(null) <stripped>
-WARNING: couldn't find address 0x6214000241d8 (0x214000241d8) in binary!
+WARNING: couldn't find address 0x621400024238 (0x21400024238) in binary!
 	0x6210  @objc DateRangeRelevanceProviderManager.(null) <stripped>
  }
 
@@ -109,15 +109,15 @@ WARNING: couldn't find address 0x6214000241d8 (0x214000241d8) in binary!
 	let pluginsToCache : BasicPluginInfo
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6214000241d8 (0x214000241d8) in binary!
+WARNING: couldn't find address 0x621400024238 (0x21400024238) in binary!
 	0x6210  @objc PluginBundleProviderPrecacheOperation.(null) <stripped>
-WARNING: couldn't find address 0x61fc000241b8 (0x1fc000241b8) in binary!
+WARNING: couldn't find address 0x61fc00024218 (0x1fc00024218) in binary!
 	0x38000000c  @objc PluginBundleProviderPrecacheOperation.(null) <stripped>
-WARNING: couldn't find address 0x61ec000245f8 (0x1ec000245f8) in binary!
+WARNING: couldn't find address 0x61ec00024658 (0x1ec00024658) in binary!
 	0x61e0  @objc PluginBundleProviderPrecacheOperation.(null) <stripped>
 
 	// Swift methods
-	0x31b0  class func PluginBundleProviderPrecacheOperation.__allocating_init(pluginsToCache:) // init 
+	0x40e0  class func PluginBundleProviderPrecacheOperation.__allocating_init(pluginsToCache:) // init 
  }
 
  class HealthPlatformCore.FeedItemREElementDataSource : REElementDataSource /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine {
@@ -126,36 +126,36 @@ WARNING: couldn't find address 0x61ec000245f8 (0x1ec000245f8) in binary!
 	let store : HealthExperienceStore // +0x8 (0x28)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x61bc00024168 (0x1bc00024168) in binary!
+WARNING: couldn't find address 0x61bc000241c8 (0x1bc000241c8) in binary!
 	0x6704  @objc FeedItemREElementDataSource.(null) <stripped>
-WARNING: couldn't find address 0x61a4000241a0 (0x1a4000241a0) in binary!
+WARNING: couldn't find address 0x61a400024200 (0x1a400024200) in binary!
 	0x6190  @objc FeedItemREElementDataSource.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x12cfff70c68  @objc FeedItemREElementDataSource.(null) <stripped>
-	0x164000241b8  @objc FeedItemREElementDataSource.â_ Hç[HâùhˇˇˇLã5ÉØ <stripped>
+	0x18cfff70bf8  @objc FeedItemREElementDataSource.(null) <stripped>
+	0x16400024218  @objc FeedItemREElementDataSource.Lçâûˇˇ∫f <stripped>
 
 	// Swift methods
-	0xb5d0  class func FeedItemREElementDataSource.__allocating_init(store:) // init 
+	0xc500  class func FeedItemREElementDataSource.__allocating_init(store:) // init 
  }
 
  class HealthPlatformCore.GenerationOperationToGeneratorAdaptor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var domain : s¥ // +0xfeedfacf (0x0)
+	var domain : {¥ // +0xfeedfacf (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var context : ç¥ // +0x3 (0x0)
+	var context : ï¥ // +0x3 (0x0)
 	let pluginInfo : FeedItemGenerationPluginInfo // +0x7e (0x28)
 	let queue : NSOperationQueue // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var finishObservation : y∞ // +0x0 (0x8)
 
 	// Swift methods
-	0x10840  func <stripped> // getter 
-	0x10890  func <stripped> // setter 
-	0x108f0  func <stripped> // modifyCoroutine 
-	0x10940  func <stripped> // getter 
-	0x10b00  class func GenerationOperationToGeneratorAdaptor.__allocating_init(queue:pluginInfo:domain:context:) // init 
+	0x11770  func <stripped> // getter 
+	0x117c0  func <stripped> // setter 
+	0x11820  func <stripped> // modifyCoroutine 
+	0x11870  func <stripped> // getter 
+	0x11a30  class func GenerationOperationToGeneratorAdaptor.__allocating_init(queue:pluginInfo:domain:context:) // init 
  }
 
  class HealthPlatformCore.Inner {
@@ -163,7 +163,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedItemContext : Q≥ // +0x0
+	let feedItemContext : Y≥ // +0x0
 	let pluginInfo : FeedItemGenerationPluginInfo // +0x28
 	let queue : NSOperationQueue // +0x50
  }
@@ -199,17 +199,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let contentKind : ª∞
 	let completeness : Double?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dataVisualizationKind : Ø¥
+	let dataVisualizationKind : ∑¥
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let relevantDateInterval : o¥
+	let relevantDateInterval : w¥
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let dateSubmitted : Ø
 	let keywords : [String]?
 	let magnitude : Double?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let prominence : ≥
+	let prominence : ≥
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timeScope : ü≤
+	let timeScope : ß≤
 	let uniqueIdentifier : String
  }
 
@@ -259,11 +259,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var list : [NSProgress]
 
 	// Swift methods
-	0x2abe0  class func CancellableProgressList.__allocating_init() // init 
-	0x2acc0  func <stripped> // method 
-	0x2b640  func <stripped> // method 
-	0x2c350  func <stripped> // method 
-	0x2ca80  func <stripped> // getter 
+	0x2bb10  class func CancellableProgressList.__allocating_init() // init 
+	0x2bbf0  func <stripped> // method 
+	0x2c570  func <stripped> // method 
+	0x2d280  func <stripped> // method 
+	0x2d9b0  func <stripped> // getter 
  }
 
  class HealthPlatformCore.HealthExperienceStoreOracle : NSObject /usr/lib/libobjc.A.dylib {
@@ -271,28 +271,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let notificationCenter : NSNotificationCenter
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var notifydObserver : ¡¥
+	var notifydObserver : …¥
 	var readyHealthExperienceStore : HealthExperienceStore
 	var $__lazy_storage_$_healthExperienceStore : HealthExperienceStore
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var lock : ô±
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x618400024180 (0x18400024180) in binary!
+WARNING: couldn't find address 0x6184000241e0 (0x184000241e0) in binary!
 	0x6170  @objc HealthExperienceStoreOracle.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff71958  @objc HealthExperienceStoreOracle.(null) <stripped>
+	0xfff718e8  @objc HealthExperienceStoreOracle.(null) <stripped>
 
 	// Swift methods
-	0x2d410  func <stripped> // getter 
-	0x2d4a0  func <stripped> // setter 
-	0x2d540  func <stripped> // modifyCoroutine 
-	0x2d590  func <stripped> // getter 
-	0x2d640  func <stripped> // method 
-	0x2dbc0  func <stripped> // method 
-	0x2e4a0  func <stripped> // method 
-	0x2e680  func <stripped> // method 
-	0x2e7d0  func <stripped> // method 
+	0x2e340  func <stripped> // getter 
+	0x2e3d0  func <stripped> // setter 
+	0x2e470  func <stripped> // modifyCoroutine 
+	0x2e4c0  func <stripped> // getter 
+	0x2e570  func <stripped> // method 
+	0x2eaf0  func <stripped> // method 
+	0x2f3d0  func <stripped> // method 
+	0x2f5b0  func <stripped> // method 
+	0x2f700  func <stripped> // method 
  }
 
  class HealthPlatformCore.FeedItemSuggestedActionDataSource {
@@ -300,36 +300,36 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _generationState : É∑ // +0x0 (0x0)
+	var _generationState : ã∑ // +0x0 (0x0)
 	let store : HealthExperienceStore // +0x65745f5f (0x28)
 	var healthStore : HKHealthStore // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var atomicHealthStores : £≥ // +0x45545f5f (0x8)
+	var atomicHealthStores : ´≥ // +0x45545f5f (0x8)
 	let favoritesProvider : FavoritesProviding // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let profileIdentifiersPublisher : Ì∏ // +0x12 (0x8)
+	let profileIdentifiersPublisher : ı∏ // +0x12 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let environment : ø≤ // +0x5 (0x0)
+	let environment : «≤ // +0x5 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var stateLogging : 9∂ // +0x0 (0x8)
+	var stateLogging : A∂ // +0x0 (0x8)
 	let orchestrationQueue : OS_dispatch_queue // +0x0 (0x8)
 	let orchestrationScheduler : OrchestrationScheduler // +0x0 (0x28)
 
 	// Swift methods
-	0x2f5d0  func <stripped> // getter 
-	0x2f630  func <stripped> // setter 
-	0x2f710  func <stripped> // modifyCoroutine 
-	0x2fa30  func <stripped> // getter 
-	0x2fa90  func <stripped> // setter 
-	0x2faf0  func <stripped> // modifyCoroutine 
-	0x2fce0  class func GeneratorPipelineManager.__allocating_init(store:healthStore:environment:favoritesProvider:scheduler:) // init 
-	0x31cb0  func <stripped> // method 
-	0x32b60  func <stripped> // method 
-	0x33400  func <stripped> // method 
-	0x33970  func <stripped> // method 
-	0x34a60  func <stripped> // method 
-	0x35090  func <stripped> // method 
-	0x36720  func <stripped> // method 
+	0x30500  func <stripped> // getter 
+	0x30560  func <stripped> // setter 
+	0x30640  func <stripped> // modifyCoroutine 
+	0x30960  func <stripped> // getter 
+	0x309c0  func <stripped> // setter 
+	0x30a20  func <stripped> // modifyCoroutine 
+	0x30c10  class func GeneratorPipelineManager.__allocating_init(store:healthStore:environment:favoritesProvider:scheduler:) // init 
+	0x32be0  func <stripped> // method 
+	0x33a90  func <stripped> // method 
+	0x34330  func <stripped> // method 
+	0x348a0  func <stripped> // method 
+	0x35990  func <stripped> // method 
+	0x35fc0  func <stripped> // method 
+	0x37650  func <stripped> // method 
  }
 
  struct HealthPlatformCore.GenerationState {
@@ -348,31 +348,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let store : HealthExperienceStore
 
 	// Swift methods
-	0x3f1b0  class func ModelTrainingScenarioExecutor.__allocating_init(coordinator:store:) // init 
-	0x3f230  func <stripped> // method 
-	0x3f250  func <stripped> // method 
+	0x400e0  class func ModelTrainingScenarioExecutor.__allocating_init(coordinator:store:) // init 
+	0x40160  func <stripped> // method 
+	0x40180  func <stripped> // method 
  }
 
  class HealthPlatformCore.HealthExperienceStoreCoreSpotlightDelegate : NSCoreDataCoreSpotlightDelegate /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9b50000240d8 (0x350000240d8) in binary!
+WARNING: couldn't find address 0x9b5000024138 (0x35000024138) in binary!
 	0x6140  @objc HealthExperienceStoreCoreSpotlightDelegate.(null) <stripped>
-WARNING: couldn't find address 0x6134000240b8 (0x134000240b8) in binary!
+WARNING: couldn't find address 0x613400024118 (0x13400024118) in binary!
 	0x6128  @objc HealthExperienceStoreCoreSpotlightDelegate.(null) <stripped>
-WARNING: couldn't find address 0x611c00024090 (0x11c00024090) in binary!
+WARNING: couldn't find address 0x611c000240f0 (0x11c000240f0) in binary!
 	0x9ab8  @objc HealthExperienceStoreCoreSpotlightDelegate.(null) <stripped>
-WARNING: couldn't find address 0x7c9c000243a8 (0x49c000243a8) in binary!
+WARNING: couldn't find address 0x7c9c00024408 (0x49c00024408) in binary!
 	0x60f0  @objc HealthExperienceStoreCoreSpotlightDelegate.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff948c8  @objc HealthExperienceStoreCoreSpotlightDelegate.(null) <stripped>
+	0xfff94858  @objc HealthExperienceStoreCoreSpotlightDelegate.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x2cfff949e0  @objc HealthExperienceStoreCoreSpotlightDelegate.(null) <stripped>
-	0xac000240a8  @objc HealthExperienceStoreCoreSpotlightDelegate.H!¡HâMàLâÔæ <stripped>
-WARNING: couldn't find address 0x24054fff99f80 (0x54fff99f80) in binary!
+	0x8cfff94970  @objc HealthExperienceStoreCoreSpotlightDelegate.(null) <stripped>
+	0xac00024108  @objc HealthExperienceStoreCoreSpotlightDelegate.HâS(Hã5M¿ <stripped>
+WARNING: couldn't find address 0x240b4fff99f00 (0xb4fff99f00) in binary!
 	0x48000000c  @objc HealthExperienceStoreCoreSpotlightDelegate.(null) <stripped>
 
 	// Swift methods
-	0x40910  func <stripped> // method 
+	0x41840  func <stripped> // method 
  }
 
  class HealthPlatformCore.HealthExperienceStoreFeedItemContext : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -381,26 +381,26 @@ WARNING: couldn't find address 0x24054fff99f80 (0x54fff99f80) in binary!
 	var healthStore : HKHealthStore // +0x10 (0x8)
 	var favoritesProvider : FavoritesProviding // +0x18 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var environment : ø≤ // +0x0 (0x0)
+	var environment : «≤ // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var boundingRange : W© // +0x45545f5f (0x0)
 	let storageContext : NSManagedObjectContext // +0xfc6 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pluginInfo : ô™ // +0xba41c (0x28)
+	let pluginInfo : ô™ // +0xbb3bc (0x28)
 	var hasOperationCompleted : Bool? // +0x0 (0x1)
 
 	// Swift methods
-	0x41f60  func <stripped> // getter 
-	0x42020  func <stripped> // getter 
-	0x42090  func <stripped> // getter 
-	0x421d0  func <stripped> // getter 
-	0x41e10  class func HealthExperienceStoreFeedItemContext.__allocating_init(storageContext:pluginInfo:healthStore:environment:favoritesProvider:dateRange:) // init 
-	0x42310  func <stripped> // method 
-	0x433c0  func <stripped> // method 
-	0x45ae0  func <stripped> // method 
-	0x45f00  func <stripped> // method 
-	0x46730  func <stripped> // method 
-	0x46880  func <stripped> // method 
+	0x42e90  func <stripped> // getter 
+	0x42f50  func <stripped> // getter 
+	0x42fc0  func <stripped> // getter 
+	0x43100  func <stripped> // getter 
+	0x42d40  class func HealthExperienceStoreFeedItemContext.__allocating_init(storageContext:pluginInfo:healthStore:environment:favoritesProvider:dateRange:) // init 
+	0x43240  func <stripped> // method 
+	0x442f0  func <stripped> // method 
+	0x46a10  func <stripped> // method 
+	0x46e30  func <stripped> // method 
+	0x47660  func <stripped> // method 
+	0x477b0  func <stripped> // method 
  }
 
  class HealthPlatformCore.MemoryHealthExperienceStore : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -412,30 +412,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_persistentContainer : NSPersistentContainer?
 
 	// Swift methods
-	0x485f0  func <stripped> // getter 
-	0x48670  func <stripped> // setter 
-	0x48690  func <stripped> // modifyCoroutine 
-	0x48730  func <stripped> // getter 
-	0x48800  func <stripped> // setter 
-	0x48820  func <stripped> // modifyCoroutine 
-	0x48570  class func MemoryHealthExperienceStore.__allocating_init() // init 
-	0x48b70  func <stripped> // getter 
-	0x48ba0  func <stripped> // setter 
-	0x48be0  func <stripped> // modifyCoroutine 
-	0x48c20  func <stripped> // getter 
-	0x48c60  func <stripped> // method 
-	0x48ce0  func <stripped> // getter 
-	0x48d60  func <stripped> // setter 
-	0x48d80  func <stripped> // modifyCoroutine 
-	0x48dd0  func <stripped> // method 
-	0x491a0  func <stripped> // method 
+	0x49520  func <stripped> // getter 
+	0x495a0  func <stripped> // setter 
+	0x495c0  func <stripped> // modifyCoroutine 
+	0x49660  func <stripped> // getter 
+	0x49730  func <stripped> // setter 
+	0x49750  func <stripped> // modifyCoroutine 
+	0x494a0  class func MemoryHealthExperienceStore.__allocating_init() // init 
+	0x49aa0  func <stripped> // getter 
+	0x49ad0  func <stripped> // setter 
+	0x49b10  func <stripped> // modifyCoroutine 
+	0x49b50  func <stripped> // getter 
+	0x49b90  func <stripped> // method 
+	0x49c10  func <stripped> // getter 
+	0x49c90  func <stripped> // setter 
+	0x49cb0  func <stripped> // modifyCoroutine 
+	0x49d00  func <stripped> // method 
+	0x4a0d0  func <stripped> // method 
  }
 
  enum HealthPlatformCore.RelevanceFeatureTagCoreDataError {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case metadataDecodingFailure : Ì∑
+	case metadataDecodingFailure : ı∑
 	case metadataNotFound  
  }
 
@@ -446,10 +446,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var bundleIdentifier : String
 
 	// Swift methods
-	0x4c4b0  func <stripped> // getter 
-	0x4c4f0  func <stripped> // setter 
-	0x4c530  func <stripped> // modifyCoroutine 
-	0x4c570  class func BasicPluginInfo.__allocating_init(bundle:) // init 
+	0x4d3e0  func <stripped> // getter 
+	0x4d420  func <stripped> // setter 
+	0x4d460  func <stripped> // modifyCoroutine 
+	0x4d4a0  class func BasicPluginInfo.__allocating_init(bundle:) // init 
  }
 
  class HealthPlatformCore.FoundationPluginBundleProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -465,22 +465,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case noBundleIdentifier : (bundle: NSBundle)
 	case notAllowed : (bundleIdentifier: String)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case loadFailed : m∑
+	case loadFailed : u∑
  }
 
  class HealthPlatformCore.PluginBundleProvider {
  class HealthPlatformCore.Keyword : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7c7c00024228 (0x47c00024228) in binary!
+WARNING: couldn't find address 0x7c7c00024288 (0x47c00024288) in binary!
 	0x28000000c  @objc Keyword.(null) <stripped>
  }
 
  class HealthPlatformCore.FeedItem : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7c6400024210 (0x46400024210) in binary!
+WARNING: couldn't find address 0x7c6400024270 (0x46400024270) in binary!
 	0x60b8  @objc FeedItem.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x54fff99f80  @objc FeedItem.(null) <stripped>
+	0xb4fff99f00  @objc FeedItem.(null) <stripped>
  }
 
  class HealthPlatformCore.RelevanceEngineCoordinator : NSObject /usr/lib/libobjc.A.dylib {
@@ -503,35 +503,35 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_relevanceEngine : RERelevanceEngine? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x60ac000240a8 (0xac000240a8) in binary!
+WARNING: couldn't find address 0x60ac00024108 (0xac00024108) in binary!
 	0x6098  @objc RelevanceEngineCoordinator.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x7dcfff9ed90  @objc RelevanceEngineCoordinator.(null) <stripped>
+	0x3cfff9ed10  @objc RelevanceEngineCoordinator.(null) <stripped>
 
 	// Swift methods
-	0x54200  class func RelevanceEngineCoordinator.__allocating_init(dataSources:engineName:modelURL:pretrainedModelURL:) // init 
-	0x542b0  func <stripped> // method 
-	0x543f0  func <stripped> // method 
-	0x54460  func <stripped> // getter 
-	0x54480  func <stripped> // getter 
-	0x544e0  func <stripped> // getter 
-	0x545f0  func <stripped> // getter 
-	0x546a0  func <stripped> // setter 
-	0x546c0  func <stripped> // modifyCoroutine 
-	0x54720  func <stripped> // getter 
-	0x547a0  func <stripped> // getter 
-	0x548a0  func <stripped> // getter 
-	0x548e0  func <stripped> // setter 
-	0x54920  func <stripped> // modifyCoroutine 
-	0x549a0  func <stripped> // method 
-	0x55050  func <stripped> // method 
-	0x552c0  func <stripped> // method 
-	0x55770  func <stripped> // method 
-	0x56460  func <stripped> // method 
-	0x56660  func <stripped> // method 
-	0x56760  func <stripped> // method 
-	0x56b10  func <stripped> // method 
-	0x56df0  func <stripped> // method 
+	0x55120  class func RelevanceEngineCoordinator.__allocating_init(dataSources:engineName:modelURL:pretrainedModelURL:) // init 
+	0x551d0  func <stripped> // method 
+	0x55310  func <stripped> // method 
+	0x55380  func <stripped> // getter 
+	0x553a0  func <stripped> // getter 
+	0x55400  func <stripped> // getter 
+	0x55510  func <stripped> // getter 
+	0x555c0  func <stripped> // setter 
+	0x555e0  func <stripped> // modifyCoroutine 
+	0x55640  func <stripped> // getter 
+	0x556c0  func <stripped> // getter 
+	0x557c0  func <stripped> // getter 
+	0x55800  func <stripped> // setter 
+	0x55840  func <stripped> // modifyCoroutine 
+	0x558c0  func <stripped> // method 
+	0x55f70  func <stripped> // method 
+	0x561e0  func <stripped> // method 
+	0x56690  func <stripped> // method 
+	0x57380  func <stripped> // method 
+	0x57580  func <stripped> // method 
+	0x57680  func <stripped> // method 
+	0x57a30  func <stripped> // method 
+	0x57d10  func <stripped> // method 
  }
 
  class HealthPlatformCore.RelevanceEngineMetricsBlockRecorder : NSObject /usr/lib/libobjc.A.dylib {
@@ -540,17 +540,17 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var callback : (_:_:)? // +0x8 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9a8200023ff0 (0x28200023ff0) in binary!
+WARNING: couldn't find address 0x9a8200024050 (0x28200024050) in binary!
 	0x9a84  @objc RelevanceEngineMetricsBlockRecorder.(null) <stripped>
-WARNING: couldn't find address 0x607400024070 (0x7400024070) in binary!
+WARNING: couldn't find address 0x6074000240d0 (0x74000240d0) in binary!
 	0x6060  @objc RelevanceEngineMetricsBlockRecorder.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffa8e98  @objc RelevanceEngineMetricsBlockRecorder.(null) <stripped>
+	0xfffa8e18  @objc RelevanceEngineMetricsBlockRecorder.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x2cfffa8ed0  @objc RelevanceEngineMetricsBlockRecorder.(null) <stripped>
+	0x8cfffa8e50  @objc RelevanceEngineMetricsBlockRecorder.(null) <stripped>
 
 	// Swift methods
-	0x5bca0  func <stripped> // method 
+	0x5cbc0  func <stripped> // method 
  }
 
  class HealthPlatformCore.GenerationOperationToPluginDelegateAdaptor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -588,21 +588,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthPlatformCore.FeedSection : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7bec00024198 (0x3ec00024198) in binary!
+WARNING: couldn't find address 0x7bec000241f8 (0x3ec000241f8) in binary!
 	0x28000000c  @objc FeedSection.(null) <stripped>
  }
 
  class HealthPlatformCore.GroupConfigurationLoader : REBundleConfiguration /System/Library/PrivateFrameworks/RelevanceEngine.framework/RelevanceEngine {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x99e400023f90 (0x1e400023f90) in binary!
+WARNING: couldn't find address 0x99e400023ff0 (0x1e400023ff0) in binary!
 	0x6030  @objc GroupConfigurationLoader.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffa9130  @objc GroupConfigurationLoader.(null) <stripped>
+	0xfffa90b0  @objc GroupConfigurationLoader.(null) <stripped>
  }
 
  class HealthPlatformCore.Profile : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7bb400024160 (0x3b400024160) in binary!
+WARNING: couldn't find address 0x7bb4000241c0 (0x3b4000241c0) in binary!
 	0x18000000c  @objc Profile.(null) <stripped>
  }
 
@@ -618,37 +618,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var cancellables :  empty-list 
 
 	// Swift methods
-	0x66330  func <stripped> // getter 
-	0x66380  func <stripped> // setter 
-	0x663e0  func <stripped> // modifyCoroutine 
-	0x66420  class func AppSessionAnalyticsManager.__allocating_init() // init 
-	0x66670  func <stripped> // method 
-	0x66b10  func <stripped> // method 
-	0x66d90  func <stripped> // method 
-	0x67700  func <stripped> // method 
-	0x67770  func <stripped> // method 
-	0x679d0  func <stripped> // method 
-	0x67a00  func <stripped> // method 
-	0x67bf0  func <stripped> // method 
-	0x695b0  func <stripped> // method 
+	0x67250  func <stripped> // getter 
+	0x672a0  func <stripped> // setter 
+	0x67300  func <stripped> // modifyCoroutine 
+	0x67340  class func AppSessionAnalyticsManager.__allocating_init() // init 
+	0x67590  func <stripped> // method 
+	0x67a30  func <stripped> // method 
+	0x67cb0  func <stripped> // method 
+	0x68620  func <stripped> // method 
+	0x68690  func <stripped> // method 
+	0x688f0  func <stripped> // method 
+	0x68920  func <stripped> // method 
+	0x68b10  func <stripped> // method 
+	0x6a4d0  func <stripped> // method 
  }
 
  class HealthPlatformCore.DefaultsPredictiveGenerationAnalyticsDateProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PredictiveGenerationAnalyticsDateProvider {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _dateLastPredictiveGenerationRanForAnalytics : ó´ // +0x0 (0x0)
+	var _dateLastPredictiveGenerationRanForAnalytics : ü´ // +0x0 (0x0)
 
 	// Swift methods
-	0x69bd0  func <stripped> // getter 
-	0x69c10  func <stripped> // setter 
-	0x69c80  func <stripped> // modifyCoroutine 
-	0x69d30  class func AppSessionAnalyticsManager.DefaultsPredictiveGenerationAnalyticsDateProvider.__allocating_init() // init 
+	0x6aaf0  func <stripped> // getter 
+	0x6ab30  func <stripped> // setter 
+	0x6aba0  func <stripped> // modifyCoroutine 
+	0x6ac50  class func AppSessionAnalyticsManager.DefaultsPredictiveGenerationAnalyticsDateProvider.__allocating_init() // init 
  }
 
  class HealthPlatformCore.EncodedFeatureTag : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7b9c00024148 (0x39c00024148) in binary!
+WARNING: couldn't find address 0x7b9c000241a8 (0x39c000241a8) in binary!
 	0x18000000c  @objc EncodedFeatureTag.(null) <stripped>
  }
 
@@ -656,7 +656,7 @@ WARNING: couldn't find address 0x7b9c00024148 (0x39c00024148) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let wrappedContext : Q≥
+	let wrappedContext : Y≥
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let commitHandler :  empty-list 
 
@@ -675,18 +675,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_principalClass : Swift.AnyObject.Type??
 
 	// Swift methods
-	0x6e7e0  func <stripped> // getter 
-	0x6e810  func <stripped> // setter 
-	0x6e850  func <stripped> // modifyCoroutine 
-	0x6e920  func <stripped> // getter 
-	0x6e960  func <stripped> // setter 
-	0x6e9a0  func <stripped> // modifyCoroutine 
-	0x6ea00  func <stripped> // getter 
-	0x6ea80  func <stripped> // setter 
-	0x6ea90  func <stripped> // modifyCoroutine 
-	0x6eae0  func <stripped> // method 
-	0x6ef30  func <stripped> // method 
-	0x6f500  class func BundleFeedItemGenerationPluginInfo.__allocating_init(bundle:) // init 
+	0x6f700  func <stripped> // getter 
+	0x6f730  func <stripped> // setter 
+	0x6f770  func <stripped> // modifyCoroutine 
+	0x6f840  func <stripped> // getter 
+	0x6f880  func <stripped> // setter 
+	0x6f8c0  func <stripped> // modifyCoroutine 
+	0x6f920  func <stripped> // getter 
+	0x6f9a0  func <stripped> // setter 
+	0x6f9b0  func <stripped> // modifyCoroutine 
+	0x6fa00  func <stripped> // method 
+	0x6fe50  func <stripped> // method 
+	0x70420  class func BundleFeedItemGenerationPluginInfo.__allocating_init(bundle:) // init 
  }
 
  class HealthPlatformCore.FeedItemGeneratorManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -696,16 +696,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let store : HealthExperienceStore
 	let healthStore : HKHealthStore
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let favoritesProvider : ”™
+	let favoritesProvider : €™
 
 	// Swift methods
-	0x70380  class func FeedItemGeneratorManager.__allocating_init(availablePlugins:store:healthStore:) // init 
-	0x704a0  func <stripped> // method 
+	0x712a0  class func FeedItemGeneratorManager.__allocating_init(availablePlugins:store:healthStore:) // init 
+	0x713c0  func <stripped> // method 
  }
 
  class HealthPlatformCore.Feed : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7b8400024130 (0x38400024130) in binary!
+WARNING: couldn't find address 0x7b8400024190 (0x38400024190) in binary!
 	0x58000000c  @objc Feed.(null) <stripped>
  }
 
@@ -728,7 +728,7 @@ WARNING: couldn't find address 0x7b8400024130 (0x38400024130) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let pluginInfo : ô™
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let context : ç¥
+	let context : ï¥
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let uuid : π•
  }
@@ -746,18 +746,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let relevantDateInterval : _® // +0x0 (0x0)
+	let relevantDateInterval : g® // +0x0 (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5fd400023fd0 (0x7d400023fd0) in binary!
+WARNING: couldn't find address 0x5fd400024030 (0x7d400024030) in binary!
 	0x5d42  @objc DateRangeRelevanceProvider.(null) <stripped>
-WARNING: couldn't find address 0xc2dc00024818 (0x2dc00024818) in binary!
+WARNING: couldn't find address 0xc33c00024878 (0x33c00024878) in binary!
 	0x5fb0  @objc DateRangeRelevanceProvider.(null) <stripped>
-WARNING: couldn't find address 0x5f9c00023f58 (0x79c00023f58) in binary!
+WARNING: couldn't find address 0x5f9c00023fb8 (0x79c00023fb8) in binary!
 	0x18000000c  @objc DateRangeRelevanceProvider.(null) <stripped>
-WARNING: couldn't find address 0x7b24000240d0 (0x324000240d0) in binary!
+WARNING: couldn't find address 0x7b2400024130 (0x32400024130) in binary!
 	0x18000000c  @objc DateRangeRelevanceProvider.(null) <stripped>
-WARNING: couldn't find address 0x7b0c000240b8 (0x30c000240b8) in binary!
+WARNING: couldn't find address 0x7b0c00024118 (0x30c00024118) in binary!
 	0x48000000c  @objc DateRangeRelevanceProvider.(null) <stripped>
 
 	// Swift methods
@@ -767,29 +767,29 @@ WARNING: couldn't find address 0x7b0c000240b8 (0x30c000240b8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let environment : ø≤ // +0x45545f5f (0x0)
+	let environment : «≤ // +0x45545f5f (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxConcurrentPipelines : -∫ // +0x0 (0x8)
+	let maxConcurrentPipelines : 5∫ // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let maxConcurrentGenerators : -∫ // +0xbd1c0 (0x8)
+	let maxConcurrentGenerators : 5∫ // +0xbe160 (0x8)
 	let workloop : OS_dispatch_queue // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queuesForQoS :  empty-list  // +0x0 (0x8)
 
 	// Swift methods
-	0x841e0  class func GeneratorPipelineManager.DispatchQueueOrchestrationScheduler.__allocating_init(environment:) // init 
-	0x842f0  class func GeneratorPipelineManager.DispatchQueueOrchestrationScheduler.__allocating_init(environment:maxConcurrentPipelines:maxConcurrentGenerators:) // init 
-	0x84f70  func <stripped> // method 
-	0x86a50  func <stripped> // method 
-	0x851e0  func <stripped> // method 
-	0x85450  func <stripped> // method 
-	0x855c0  func <stripped> // method 
+	0x85180  class func GeneratorPipelineManager.DispatchQueueOrchestrationScheduler.__allocating_init(environment:) // init 
+	0x85290  class func GeneratorPipelineManager.DispatchQueueOrchestrationScheduler.__allocating_init(environment:maxConcurrentPipelines:maxConcurrentGenerators:) // init 
+	0x85f10  func <stripped> // method 
+	0x879f0  func <stripped> // method 
+	0x86180  func <stripped> // method 
+	0x863f0  func <stripped> // method 
+	0x86560  func <stripped> // method 
  }
 
  class HealthPlatformCore.HealthExperienceStoreCoreSpotlightOperation {
  class HealthPlatformCore.Plugin : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7b24000240d0 (0x324000240d0) in binary!
+WARNING: couldn't find address 0x7b2400024130 (0x32400024130) in binary!
 	0x18000000c  @objc Plugin.(null) <stripped>
  }
 
@@ -834,7 +834,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthPlatformCore.PluginData : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7b0c000240b8 (0x30c000240b8) in binary!
+WARNING: couldn't find address 0x7b0c00024118 (0x30c00024118) in binary!
 	0x48000000c  @objc PluginData.(null) <stripped>
  }
 
@@ -844,9 +844,9 @@ WARNING: couldn't find address 0x7b0c000240b8 (0x30c000240b8) in binary!
 	let context : NSManagedObjectContext
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5f5400023ea8 (0x75400023ea8) in binary!
+WARNING: couldn't find address 0x5f5400023f08 (0x75400023f08) in binary!
 	0x5f50  @objc HealthExperienceStoreCleanupOperation.(null) <stripped>
-WARNING: couldn't find address 0x5f4400023f40 (0x74400023f40) in binary!
+WARNING: couldn't find address 0x5f4400023fa0 (0x74400023fa0) in binary!
 	0x5f30  @objc HealthExperienceStoreCleanupOperation.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfffea928  @objc HealthExperienceStoreCleanupOperation.(null) <stripped>
@@ -854,7 +854,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfffefaf0  @objc HealthExperienceStoreCleanupOperation.(null) <stripped>
 
 	// Swift methods
-	0x96d50  class func HealthExperienceStoreCleanupOperation.__allocating_init(context:) // init 
+	0x97cf0  class func HealthExperienceStoreCleanupOperation.__allocating_init(context:) // init 
  }
 
  struct HealthPlatformCore.HostingCellReusePolicy {
@@ -908,38 +908,38 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var persistentHistoryToken : NSPersistentHistoryToken? // +0x50 (0x8)
 	var mergeNotificationQueue : OS_dispatch_queue // +0x58 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_mergeNotificationDebouncer : A¶ // +0x60 (0x8)
+	var $__lazy_storage_$_mergeNotificationDebouncer : I¶ // +0x60 (0x8)
 	var $__lazy_storage_$_persistentContainer : NSPersistentContainer? // +0x68 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5f1c00024888 (0x71c00024888) in binary!
+WARNING: couldn't find address 0x5f1c000248e8 (0x71c000248e8) in binary!
 	0x18000000c  @objc DiskHealthExperienceStore.(null) <stripped>
 
 	// Swift methods
-	0xa2320  func <stripped> // getter 
-	0xa24a0  func <stripped> // getter 
-	0xa2660  func <stripped> // getter 
-	0xa2730  func <stripped> // setter 
-	0xa2750  func <stripped> // modifyCoroutine 
-	0xa27f0  func <stripped> // getter 
-	0xa28c0  func <stripped> // setter 
-	0xa28e0  func <stripped> // modifyCoroutine 
-	0xa2960  func <stripped> // getter 
-	0xa2160  class func DiskHealthExperienceStore.__allocating_init() // init 
-	0xa2eb0  func <stripped> // method 
-	0xa3130  func <stripped> // getter 
-	0xa3360  func <stripped> // getter 
-	0xa33a0  func <stripped> // method 
-	0xa34d0  func <stripped> // getter 
-	0xa36a0  func <stripped> // setter 
-	0xa36e0  func <stripped> // modifyCoroutine 
-	0xa3730  func <stripped> // method 
-	0xa3950  func <stripped> // method 
-	0xa3990  func <stripped> // method 
-	0xa4290  func <stripped> // method 
-	0xa47f0  func <stripped> // method 
-	0xa51e0  func <stripped> // method 
-	0xa6aa0  func <stripped> // method 
+	0xa32c0  func <stripped> // getter 
+	0xa3440  func <stripped> // getter 
+	0xa3600  func <stripped> // getter 
+	0xa36d0  func <stripped> // setter 
+	0xa36f0  func <stripped> // modifyCoroutine 
+	0xa3790  func <stripped> // getter 
+	0xa3860  func <stripped> // setter 
+	0xa3880  func <stripped> // modifyCoroutine 
+	0xa3900  func <stripped> // getter 
+	0xa3100  class func DiskHealthExperienceStore.__allocating_init() // init 
+	0xa3e50  func <stripped> // method 
+	0xa40d0  func <stripped> // getter 
+	0xa4300  func <stripped> // getter 
+	0xa4340  func <stripped> // method 
+	0xa4470  func <stripped> // getter 
+	0xa4640  func <stripped> // setter 
+	0xa4680  func <stripped> // modifyCoroutine 
+	0xa46d0  func <stripped> // method 
+	0xa48f0  func <stripped> // method 
+	0xa4930  func <stripped> // method 
+	0xa5230  func <stripped> // method 
+	0xa5790  func <stripped> // method 
+	0xa6180  func <stripped> // method 
+	0xa7a40  func <stripped> // method 
  }
 
  enum HealthPlatformCore.State {
@@ -980,7 +980,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class HealthPlatformCore.DataType : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7aa400024050 (0x2a400024050) in binary!
+WARNING: couldn't find address 0x7aa4000240b0 (0x2a4000240b0) in binary!
 	0x0  @objc DataType.(null) <stripped>
  }
 
@@ -1014,14 +1014,14 @@ WARNING: couldn't find address 0x7aa400024050 (0x2a400024050) in binary!
 	// Properties
 	let dataTypes : _HKDataTypeCode // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dataVisualizationKind : Ø¥ // +0x77735f5f (0x0)
+	let dataVisualizationKind : ∑¥ // +0x77735f5f (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timeScope : ü≤ // +0x7079745f (0x0)
+	let timeScope : ß≤ // +0x7079745f (0x0)
 
 	// Swift methods
-	0xae490  class func AppSessionAnalyticsEvent.HighlightsFeedPresentationAnalytics.GeneratedFeedItem.__allocating_init(dataTypes:dataVisualizationKind:timeScope:) // init 
-	0xad190  class func AppSessionAnalyticsEvent.HighlightsFeedPresentationAnalytics.GeneratedFeedItem.__allocating_init(feedItem:) // init 
-	0xae5a0  func <stripped> // getter 
+	0xaf430  class func AppSessionAnalyticsEvent.HighlightsFeedPresentationAnalytics.GeneratedFeedItem.__allocating_init(dataTypes:dataVisualizationKind:timeScope:) // init 
+	0xae130  class func AppSessionAnalyticsEvent.HighlightsFeedPresentationAnalytics.GeneratedFeedItem.__allocating_init(feedItem:) // init 
+	0xaf540  func <stripped> // getter 
  }
 
  class HealthPlatformCore.ShownFeedItem : AppSessionAnalyticsEvent.HighlightsFeedPresentationAnalytics.GeneratedFeedItem {
@@ -1029,12 +1029,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let rank : Int // +0x45545f5f (0x8)
 	let magnitude : Double? // +0x0 (0x9)
-	let completeness : Double? // +0xcbd9e (0x9)
+	let completeness : Double? // +0xccd9e (0x9)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let prominence : ≥ // +0x15e9 (0x0)
+	let prominence : ≥ // +0x15e9 (0x0)
 
 	// Swift methods
-	0xaeb20  class func AppSessionAnalyticsEvent.HighlightsFeedPresentationAnalytics.ShownFeedItem.__allocating_init(dataTypes:dataVisualizationKind:timeScope:rank:magnitude:completeness:prominence:) // init 
+	0xafac0  class func AppSessionAnalyticsEvent.HighlightsFeedPresentationAnalytics.ShownFeedItem.__allocating_init(dataTypes:dataVisualizationKind:timeScope:rank:magnitude:completeness:prominence:) // init 
  }
 
  struct HealthPlatformCore.HighlightsFeedInteractionAnalytics {
@@ -1051,7 +1051,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let rank : Int
 
 	// Swift methods
-	0xadc20  class func AppSessionAnalyticsEvent.HighlightsFeedInteractionAnalytics.InteractedFeedItem.__allocating_init(feedItem:modelTrainingEvent:) // init 
+	0xaebc0  class func AppSessionAnalyticsEvent.HighlightsFeedInteractionAnalytics.InteractedFeedItem.__allocating_init(feedItem:modelTrainingEvent:) // init 
  }
 
  struct HealthPlatformCore.DemographicAnalytics {
@@ -1064,7 +1064,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case underlyingError : Ì¨
+	case underlyingError : ı¨
 	case missing  
 	case timedOut  
  }
@@ -1079,19 +1079,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queue : NSOperationQueue
 	var relevanceEngineCoordinator : RelevanceEngineCoordinator
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var trainingAnalyticsCache : S§
+	var trainingAnalyticsCache : [§
 
 	// Swift methods
-	0xb1480  func <stripped> // method 
-	0xb17e0  func <stripped> // getter 
-	0xb1810  func <stripped> // setter 
-	0xb1850  func <stripped> // modifyCoroutine 
-	0xb1890  class func FeedPopulationManager.__allocating_init(healthExperienceStore:healthStore:) // init 
-	0xb1af0  func <stripped> // method 
-	0xb2bb0  func <stripped> // method 
-	0xb3860  func <stripped> // method 
-	0xb3ee0  func <stripped> // method 
-	0xb4600  func <stripped> // method 
+	0xb2420  func <stripped> // method 
+	0xb2780  func <stripped> // getter 
+	0xb27b0  func <stripped> // setter 
+	0xb27f0  func <stripped> // modifyCoroutine 
+	0xb2830  class func FeedPopulationManager.__allocating_init(healthExperienceStore:healthStore:) // init 
+	0xb2a90  func <stripped> // method 
+	0xb3b50  func <stripped> // method 
+	0xb4800  func <stripped> // method 
+	0xb4e80  func <stripped> // method 
+	0xb55a0  func <stripped> // method 
  }
 
  class HealthPlatformCore.PopulationOperation {
@@ -1099,19 +1099,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let domain : s¥ // +0xcbd9e (0x0)
+	let domain : {¥ // +0xccd9e (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let context : ç¥ // +0x0 (0x0)
+	let context : ï¥ // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var publisher : ˜¶ // +0x0 (0x8)
+	var publisher : ˇ¶ // +0x0 (0x8)
 	let queue : NSOperationQueue // +0x0 (0x8)
 	let adaptor : GenerationOperationToGeneratorAdaptor // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var finishObservation : y∞ // +0x0 (0x8)
 
 	// Swift methods
-	0xb91e0  func <stripped> // getter 
-	0xb9220  func <stripped> // setter 
-	0xb9270  func <stripped> // modifyCoroutine 
-	0xb9090  class func InteractiveGeneratorToPipelineAdaptor.__allocating_init(queue:pluginInfo:domain:context:commitImmediately:) // init 
+	0xba180  func <stripped> // getter 
+	0xba1c0  func <stripped> // setter 
+	0xba210  func <stripped> // modifyCoroutine 
+	0xba030  class func InteractiveGeneratorToPipelineAdaptor.__allocating_init(queue:pluginInfo:domain:context:commitImmediately:) // init 
  }

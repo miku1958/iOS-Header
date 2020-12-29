@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *layoutAttributes;
     MISSING_TYPE *onScreenItems;
+    MISSING_TYPE *sectionsWithFooters;
 }
 
 @end

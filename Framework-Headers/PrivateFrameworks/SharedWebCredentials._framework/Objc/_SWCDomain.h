@@ -8,11 +8,12 @@
 
 #import <SharedWebCredentials/NSCopying-Protocol.h>
 #import <SharedWebCredentials/NSSecureCoding-Protocol.h>
+#import <SharedWebCredentials/SWCBloomFilterable-Protocol.h>
 #import <SharedWebCredentials/SWCRedactedDescription-Protocol.h>
 
 @class NSNumber, NSString;
 
-@interface _SWCDomain : NSObject <SWCRedactedDescription, NSCopying, NSSecureCoding>
+@interface _SWCDomain : NSObject <SWCRedactedDescription, SWCBloomFilterable, NSCopying, NSSecureCoding>
 {
     BOOL _wildcard;
     BOOL _modeOfOperation;
@@ -42,6 +43,7 @@
 - (id)domainRequiringModeOfOperation:(BOOL)arg1;
 - (void)encodeWithCoder:(id)arg1;
 - (BOOL)encompassesDomain:(id)arg1;
+- (void)getBloomFilterMask:(unsigned char [256])arg1;
 - (unsigned long long)hash;
 - (id)init;
 - (id)initWithCoder:(id)arg1;

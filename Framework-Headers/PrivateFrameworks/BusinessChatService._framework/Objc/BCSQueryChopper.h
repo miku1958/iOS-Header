@@ -26,13 +26,14 @@
 
 - (void).cxx_destruct;
 - (BOOL)_allHigherPriorityRemoteFetchesHaveCompletedWithLinkItemIdentifier:(id)arg1 itemsFound:(id)arg2 itemIdentifiersToFetch:(id)arg3;
-- (id)_chopItemIdentifiersToFetchFromURL:(id)arg1;
+- (id)_chopItemIdentifiersToFetchFromURL:(id)arg1 isBloomFilterCached:(BOOL)arg2;
 - (long long)_indexOfItemIdentifierInfo:(id)arg1 inItemIdentifierInfos:(id)arg2;
 - (id)_removeLinkItemDuplicatesInOrderFromArray:(id)arg1;
 - (void)_returnHighestPriorityLinkItemWithItemIdentifiersToFetch:(id)arg1 fetchedItems:(id)arg2 fetchedErrors:(id)arg3 metric:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (id)initWithMetricFactory:(id)arg1;
-- (void)queryChopperDelegate:(id)arg1 fetchLinkItemModelWithURL:(id)arg2 forClientBundleID:(id)arg3 metric:(id)arg4 completion:(CDUnknownBlockType)arg5;
-- (void)queryChopperDelegate:(id)arg1 isBusinessRegisteredForURL:(id)arg2 forClientBundleID:(id)arg3 metric:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)queryChopperDelegate:(id)arg1 fetchLinkItemModelWithURL:(id)arg2 isBloomFilterCached:(BOOL)arg3 forClientBundleID:(id)arg4 metric:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (void)queryChopperDelegate:(id)arg1 isBusinessRegisteredForURL:(id)arg2 isBloomFilterCached:(BOOL)arg3 forClientBundleID:(id)arg4 metric:(id)arg5 completion:(CDUnknownBlockType)arg6;
+- (BOOL)shouldChopURL:(id)arg1;
 
 @end
 

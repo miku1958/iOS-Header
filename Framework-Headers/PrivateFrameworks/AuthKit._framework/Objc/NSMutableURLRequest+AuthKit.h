@@ -38,6 +38,7 @@
 - (void)ak_addCountryHeader;
 - (void)ak_addDataCenterHeaderWithIdentifier:(id)arg1;
 - (void)ak_addDeviceConfigurationModeHeader;
+- (void)ak_addDeviceConfigurationModeHeaderForAuthContext:(id)arg1;
 - (void)ak_addDeviceMLBHeader;
 - (void)ak_addDeviceModel;
 - (void)ak_addDeviceROMHeader;

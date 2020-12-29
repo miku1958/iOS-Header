@@ -85,7 +85,7 @@
 - (void)_processIncomingPacketOnSocket:(int)arg1;
 - (unsigned long long)_sendBytes:(const void *)arg1 length:(unsigned long long)arg2;
 - (unsigned long long)_sendBytes:(const void *)arg1 length:(unsigned long long)arg2 destinationAddress:(const struct sockaddr *)arg3;
-- (unsigned long long)_sendBytesArray:(const void **)arg1 lengthArray:(unsigned long long *)arg2 arraySize:(int)arg3 localInterfaceIndex:(int)arg4 localAddress:(const struct sockaddr *)arg5 destinationAddress:(const struct sockaddr *)arg6 trafficClass:(unsigned short)arg7;
+- (unsigned long long)_sendBytesArray:(const void **)arg1 lengthArray:(unsigned long long *)arg2 arraySize:(int)arg3 localInterfaceIndex:(int)arg4 localAddress:(const struct sockaddr *)arg5 destinationAddress:(const struct sockaddr *)arg6 trafficClass:(unsigned short)arg7 DSCP:(unsigned char)arg8;
 - (BOOL)_setTrafficClassOnSocket:(int)arg1 trafficClassValue:(int)arg2;
 - (id)copyCurrentNetworkInterfaces;
 - (id)copyLinkStatsDict;
@@ -97,9 +97,9 @@
 - (id)newSocketWithIPVersion:(unsigned long long)arg1 wantsAWDL:(BOOL)arg2 wantsWiFi:(BOOL)arg3 wantsCellular:(BOOL)arg4 clientUUID:(unsigned char [16])arg5;
 - (void)reconnectWithLocalAddress:(id)arg1;
 - (void)removeSocket;
-- (unsigned long long)sendPacketBuffer:(CDStruct_12676517 *)arg1 destination:(id)arg2 toDeviceID:(id)arg3;
-- (unsigned long long)sendPacketBuffer:(CDStruct_12676517 *)arg1 sourceInterface:(id)arg2 destination:(id)arg3 toDeviceID:(id)arg4;
-- (unsigned long long)sendPacketBuffer:(CDStruct_12676517 *)arg1 toDeviceUniqueID:(id)arg2 cbuuid:(id)arg3;
+- (unsigned long long)sendPacketBuffer:(CDStruct_78c9ccae *)arg1 destination:(id)arg2 toDeviceID:(id)arg3;
+- (unsigned long long)sendPacketBuffer:(CDStruct_78c9ccae *)arg1 sourceInterface:(id)arg2 destination:(id)arg3 toDeviceID:(id)arg4;
+- (unsigned long long)sendPacketBuffer:(CDStruct_78c9ccae *)arg1 toDeviceUniqueID:(id)arg2 cbuuid:(id)arg3;
 - (unsigned long long)sendPacketBufferArray:(CDStruct_183601bc **)arg1 arraySize:(int)arg2 toDeviceUniqueID:(id)arg3 cbuuid:(id)arg4;
 - (BOOL)setDestinationAddress:(id)arg1 isFixedDestination:(BOOL)arg2 fromAddress:(id)arg3;
 - (BOOL)setDestinationAddress:(id)arg1 localIfIndex:(unsigned int)arg2 isFixedDestination:(BOOL)arg3 fromAddress:(id)arg4;

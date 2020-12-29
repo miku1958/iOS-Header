@@ -9,6 +9,7 @@
 @interface SBIcon (SBApplicationIcon)
 - (id)application;
 - (id)iTunesCategoriesOrderedByRelevancy;
+- (BOOL)isAppClipIcon;
 - (BOOL)isApplicationIcon;
 - (BOOL)isBookmarkIcon;
 @end

@@ -133,7 +133,7 @@ struct ProcessingTree {
     struct RootNode mRootNode;
     int mMaxFramesPerSlice;
     struct function<void (std::__1::shared_ptr<DSPGraph::Graph>, unsigned long)> mWillInitializeCallback;
-    int mCurrentInputSampleTime;
+    long long mCurrentInputSampleTime;
 };
 
 struct PropertyTap;

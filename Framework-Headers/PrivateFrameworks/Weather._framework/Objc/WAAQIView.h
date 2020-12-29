@@ -57,6 +57,8 @@
 - (id)accessibilityValue;
 - (struct CGRect)adjustedFrame:(struct CGRect)arg1 basedOnFont:(id)arg2 desiredBaseline:(double)arg3;
 - (double)contentMarginFromTop;
+- (id)currentScaleCategoryLabelForCity:(id)arg1;
+- (id)drawableScaleForCity:(id)arg1;
 - (void)handleTapGesture:(id)arg1;
 - (void)hideEverything;
 - (void)initialize;
@@ -67,14 +69,16 @@
 - (void)layoutForModeWithoutScale;
 - (void)layoutForTwoLinesLayoutWithScaleInPlatterView:(BOOL)arg1;
 - (void)layoutSubviews;
+- (id)metadataLabelForCity:(id)arg1;
 - (void)prepareForReuse;
 - (struct CGRect)rtlAdjustFrame:(struct CGRect)arg1 inBounds:(struct CGRect)arg2;
-- (id)scaleFromScaleIdentifier:(id)arg1 countryCode:(id)arg2;
+- (id)scaleDisplayNameForCity:(id)arg1;
 - (void)setupForLayoutCompactScaleViewOneLinePlatterView:(BOOL)arg1;
 - (void)setupForLayoutCompactScaleViewTwoLinesPlatterView:(BOOL)arg1;
 - (void)setupForLayoutExtendedNoScaleView;
 - (void)setupForLayoutExtendedScaleView;
 - (void)setupForLayoutTemporarilyUnavailable;
+- (BOOL)shouldInsertGlyphImage:(id)arg1;
 - (struct CGSize)sizeForAQIAvailableThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeForAQITemporarilyUnavailableThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeForCompactOneLineLayoutWithScaleViewThatFits:(struct CGSize)arg1 platterView:(BOOL)arg2;
@@ -82,7 +86,6 @@
 - (struct CGSize)sizeForLayoutWithoutScaleViewThatFits:(struct CGSize)arg1;
 - (struct CGSize)sizeForTwoLineLayoutWithScaleViewTheFits:(struct CGSize)arg1 platterView:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
-- (id)sourceForScale:(id)arg1 countryCode:(id)arg2;
 - (void)updateWithCity:(id)arg1 layoutMode:(unsigned long long)arg2;
 
 @end

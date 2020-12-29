@@ -147,6 +147,7 @@
 - (void)_displayPlaybackUIWithUpdate:(BOOL)arg1;
 - (void)_handleApplicationDidBecomeActive;
 - (void)_handleApplicationWillResignActive;
+- (void)_handleShouldDifferentiateWithoutColorDidChange;
 - (BOOL)_homeHasMultipleCameraProfiles;
 - (double)_portraitMicrophoneOverlapOffset;
 - (id)_ppt_clipCollectionView;

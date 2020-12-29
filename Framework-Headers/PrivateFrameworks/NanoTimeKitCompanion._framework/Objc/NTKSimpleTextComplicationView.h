@@ -23,6 +23,7 @@
 }
 
 @property (nonatomic) BOOL canUseCurvedText; // @synthesize canUseCurvedText;
+@property (readonly, nonatomic) unsigned long long complicationType;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) CLKDevice *device; // @synthesize device=_device;
@@ -35,7 +36,6 @@
 @property (readonly) Class superclass;
 @property (strong, nonatomic) CLKComplicationTemplateSimpleText *template; // @synthesize template=_template;
 @property (strong, nonatomic) NSDate *timeTravelDate; // @synthesize timeTravelDate=_timeTravelDate;
-@property (readonly, nonatomic) BOOL useAlternateFont;
 
 + (BOOL)handlesComplicationTemplate:(id)arg1;
 + (BOOL)supportsComplicationFamily:(long long)arg1;

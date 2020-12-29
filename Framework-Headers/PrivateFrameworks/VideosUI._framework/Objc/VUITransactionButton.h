@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
 - (void)_updateProgressIndicatorTintColor:(id)arg1;
 - (void)dealloc;
 - (void)didUpdateFocusInContext:(id)arg1 withAnimationCoordinator:(id)arg2;
-- (id)initWithLayout:(id)arg1 interfaceStyle:(long long)arg2;
+- (id)initWithType:(unsigned long long)arg1 interfaceStyle:(long long)arg2;
 - (void)layoutSubviews;
 - (void)traitCollectionDidChange:(id)arg1;
 

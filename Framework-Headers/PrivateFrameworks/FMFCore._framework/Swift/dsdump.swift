@@ -162,9 +162,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let locations : FMFLocation // +0x0 (0x8)
 	let locatesInProgress : FMFLocateInProgress // +0x45545f5f (0x8)
 	let following : FMFIntermediateFriend // +0x0 (0x8)
-	let followers : FMFIntermediateFriend // +0x2920 (0x8)
-	let futureFollowing : FMFIntermediateFriend // +0xc5044 (0x8)
-	let futureFollowers : FMFIntermediateFriend // +0x2920 (0x8)
+	let followers : FMFIntermediateFriend // +0x26a0 (0x8)
+	let futureFollowing : FMFIntermediateFriend // +0xc5214 (0x8)
+	let futureFollowers : FMFIntermediateFriend // +0x26a0 (0x8)
 	let pendingOffers : FMFIntermediateFriend // +0x0 (0x8)
 	let locationAlertsOnMeByMe : FMFLocationAlert // +0x80000400 (0x8)
 	let locationAlertsOnMeByFriends : FMFLocationAlert // +0x0 (0x8)
@@ -216,18 +216,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var refreshTimer : NSTimer? // +0x0 (0x8)
 	var initializedOnce : Bool // +0x0 (0x1)
 	var firstRefreshCompleted : Bool // +0x0 (0x1)
-	var isRefreshing : Bool // +0xc7964 (0x1)
+	var isRefreshing : Bool // +0xc78b4 (0x1)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3224000283e0 (0x224000283e0) in binary!
+WARNING: couldn't find address 0x324400028490 (0x24400028490) in binary!
 	0x18000000c  @objc FMFRefreshController.(null) <stripped>
 
 	// Swift methods
-	0xbd00  func <stripped> // method 
-	0xbfe0  func <stripped> // method 
-	0xc370  func <stripped> // method 
-	0xccc0  func <stripped> // method 
-	0xd8b0  func <stripped> // method 
+	0xba80  func <stripped> // method 
+	0xbd60  func <stripped> // method 
+	0xc0f0  func <stripped> // method 
+	0xca40  func <stripped> // method 
+	0xd630  func <stripped> // method 
  }
 
  class FMFCore.FMLocationShiftingRequest : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -237,7 +237,7 @@ WARNING: couldn't find address 0x3224000283e0 (0x224000283e0) in binary!
 	let identifier : String
 
 	// Swift methods
-	0xedf0  class func FMLocationShiftingRequest.__allocating_init(identifier:location:) // init 
+	0xeb70  class func FMLocationShiftingRequest.__allocating_init(identifier:location:) // init 
  }
 
  class FMFCore.FMLocationShifter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -248,8 +248,8 @@ WARNING: couldn't find address 0x3224000283e0 (0x224000283e0) in binary!
 	let processingQueue : OS_dispatch_queue
 
 	// Swift methods
-	0xeea0  class func FMLocationShifter.__allocating_init() // init 
-	0xf120  func FMLocationShifter.shift(requests:completion:) // method 
+	0xec20  class func FMLocationShifter.__allocating_init() // init 
+	0xeea0  func FMLocationShifter.shift(requests:completion:) // method 
  }
 
  struct FMFCore.FMFSimpleLocation {
@@ -314,7 +314,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let labels : [String]
 
 	// Swift methods
-	0x185b0  class func FMFRemoveLabelsAction.__allocating_init(labels:) // init 
+	0x18330  class func FMFRemoveLabelsAction.__allocating_init(labels:) // init 
  }
 
  class FMFCore.FMFShowHideLocationAction : FMFBaseAction {
@@ -323,7 +323,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let hideLocation : Bool
 
 	// Swift methods
-	0x1ba80  class func FMFShowHideLocationAction.__allocating_init(hideLocation:) // init 
+	0x1b800  class func FMFShowHideLocationAction.__allocating_init(hideLocation:) // init 
  }
 
  class FMFCore.FMFUpdateMeDeviceAction : FMFBaseAction {
@@ -332,7 +332,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let meDevice : FMFDevice
 
 	// Swift methods
-	0x1bcf0  class func FMFUpdateMeDeviceAction.__allocating_init(meDevice:) // init 
+	0x1ba70  class func FMFUpdateMeDeviceAction.__allocating_init(meDevice:) // init 
  }
 
  class FMFCore.FMFUpdateLocationAlertAction : FMFBaseAction {
@@ -341,16 +341,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let locationAlert : FMFLocationAlert // +0x780 (0x0)
 
 	// Swift methods
-	0x1c020  class func FMFUpdateLocationAlertAction.__allocating_init(locationAlert:location:radius:address:label:triggerType:isOn:repeating:phoneNumbers:emails:schedule:ckRecordName:ckRecordZoneOwnerName:acceptanceStatus:) // init 
+	0x1bda0  class func FMFUpdateLocationAlertAction.__allocating_init(locationAlert:location:radius:address:label:triggerType:isOn:repeating:phoneNumbers:emails:schedule:ckRecordName:ckRecordZoneOwnerName:acceptanceStatus:) // init 
  }
 
  class FMFCore.FMFAddLocationAlertAction : FMFBaseAction {
 
 	// Properties
-	let locationAlert : FMFLocationAlert // +0xc7964 (0x0)
+	let locationAlert : FMFLocationAlert // +0xc78b4 (0x0)
 
 	// Swift methods
-	0x1c820  class func FMFAddLocationAlertAction.__allocating_init(friendId:followerIds:emails:phoneNumbers:location:address:label:addressType:radius:locationAlertTarget:triggerType:repeating:schedule:ckRecordName:ckRecordZoneOwnerName:acceptanceStatus:) // init 
+	0x1c5a0  class func FMFAddLocationAlertAction.__allocating_init(friendId:followerIds:emails:phoneNumbers:location:address:label:addressType:radius:locationAlertTarget:triggerType:repeating:schedule:ckRecordName:ckRecordZoneOwnerName:acceptanceStatus:) // init 
  }
 
  class FMFCore.FMFSystemStateController : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -361,11 +361,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isFMFRestricted : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x320c00028510 (0x20c00028510) in binary!
+WARNING: couldn't find address 0x322c000285c0 (0x22c000285c0) in binary!
 	0x28000000c  @objc FMFSystemStateController.(null) <stripped>
 
 	// Swift methods
-	0x1e200  func <stripped> // method 
+	0x1df80  func <stripped> // method 
  }
 
  enum FMFCore.FMFShareLocationDuration {
@@ -385,7 +385,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let expiry : Åœ // +0x0 (0x0)
 
 	// Swift methods
-	0x1ea20  class func FMFShareLocationAction.__allocating_init(handles:friendId:expiry:duration:) // init 
+	0x1e7a0  class func FMFShareLocationAction.__allocating_init(handles:friendId:expiry:duration:) // init 
  }
 
  enum FMFCore.ArgumentsError {
@@ -403,8 +403,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var state : FMFDemoDataState
 
 	// Swift methods
-	0x1f6a0  func <stripped> // method 
-	0x21160  func <stripped> // method 
+	0x1f420  func <stripped> // method 
+	0x20ee0  func <stripped> // method 
  }
 
  struct FMFCore.FMFDemoDataState {
@@ -440,16 +440,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let alertType : FMFAlertType // +0x80000408 (0x1)
 
 	// Swift methods
-	0x219f0  func FMFAlert.title.getter // getter 
-	0x21b20  func FMFAlert.message.getter // getter 
-	0x21b90  func FMFAlert.okButtonLabel.getter // getter 
-	0x21c90  func FMFAlert.cancelButtonLabel.getter // getter 
-	0x21d90  func FMFAlert.displayAlert.getter // getter 
-	0x22260  class func FMFAlert.__allocating_init(from:) // init 
-	0x22850  class func FMFAlert.__allocating_init(alertId:title:message:okButtonLabel:okButtonURL:cancelButtonLabel:cancelButtonURL:alertType:) // init 
-	0x229f0  func FMFAlert.handleOkAction(urlHandler:) // method 
-	0x22b10  func FMFAlert.handleCancelAction(urlHandler:) // method 
-	0x22c00  func FMFAlert.debugDescription.getter // getter 
+	0x21770  func FMFAlert.title.getter // getter 
+	0x218a0  func FMFAlert.message.getter // getter 
+	0x21910  func FMFAlert.okButtonLabel.getter // getter 
+	0x21a10  func FMFAlert.cancelButtonLabel.getter // getter 
+	0x21b10  func FMFAlert.displayAlert.getter // getter 
+	0x21fe0  class func FMFAlert.__allocating_init(from:) // init 
+	0x225d0  class func FMFAlert.__allocating_init(alertId:title:message:okButtonLabel:okButtonURL:cancelButtonLabel:cancelButtonURL:alertType:) // init 
+	0x22770  func FMFAlert.handleOkAction(urlHandler:) // method 
+	0x22890  func FMFAlert.handleCancelAction(urlHandler:) // method 
+	0x22980  func FMFAlert.debugDescription.getter // getter 
  }
 
  enum FMFCore.CodingKeys {
@@ -642,7 +642,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let prefs : FMFPreferences
 
 	// Swift methods
-	0x397a0  class func FMFUpdatePrefsAction.__allocating_init(prefs:) // init 
+	0x39520  class func FMFUpdatePrefsAction.__allocating_init(prefs:) // init 
  }
 
  struct FMFCore.FMFContact {
@@ -720,9 +720,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let dataSource : FMFDemoDataSource
 
 	// Swift methods
-	0x46d50  func <stripped> // method 
-	0x47630  func <stripped> // method 
-	0x47b20  func <stripped> // method 
+	0x46b30  func <stripped> // method 
+	0x47410  func <stripped> // method 
+	0x47900  func <stripped> // method 
  }
 
  class FMFCore.FMFBaseRequest {
@@ -733,7 +733,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let label : FMFLabel
 
 	// Swift methods
-	0x49b20  class func FMFAddUpdateLabelAction.__allocating_init(locationToLabel:label:) // init 
+	0x49900  class func FMFAddUpdateLabelAction.__allocating_init(locationToLabel:label:) // init 
  }
 
  class FMFCore.FMFDemoDataGenerator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -794,10 +794,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let friendId : String? // +0x18 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let muteEndDate : Åœ // +0xc80e4 (0x0)
+	let muteEndDate : Åœ // +0xc8034 (0x0)
 
 	// Swift methods
-	0x4e4a0  class func FMFMuteFencesAction.__allocating_init(friendId:endDate:) // init 
+	0x4e280  class func FMFMuteFencesAction.__allocating_init(friendId:endDate:) // init 
  }
 
  enum FMFCore.FMFLabelSourceType {
@@ -912,7 +912,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let locationAlert : FMFLocationAlert // +0x0 (0x0)
 
 	// Swift methods
-	0x5c0c0  class func FMFRemoveLocationAlertAction.__allocating_init(locationAlert:) // init 
+	0x5bea0  class func FMFRemoveLocationAlertAction.__allocating_init(locationAlert:) // init 
  }
 
  struct FMFCore.FMFConfig {
@@ -995,7 +995,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let order : Int? // +0x45545f5f (0x9)
 
 	// Swift methods
-	0x5f620  class func FMFSetFavoriteAction.__allocating_init(friend:order:) // init 
+	0x5f400  class func FMFSetFavoriteAction.__allocating_init(friend:order:) // init 
  }
 
  struct FMFCore.FMDemoLocation {
@@ -1106,14 +1106,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dataManager : FMFDataManager
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x31ec00028368 (0x1ec00028368) in binary!
-	0x31e8  @objc FMFGenericResponseHandler.(null) <stripped>
+WARNING: couldn't find address 0x320c00028418 (0x20c00028418) in binary!
+	0x3208  @objc FMFGenericResponseHandler.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffa11b0  @objc FMFGenericResponseHandler.(null) <stripped>
+	0xfffa1170  @objc FMFGenericResponseHandler.(null) <stripped>
 
 	// Swift methods
-	0x67580  func <stripped> // method 
-	0x69a40  func <stripped> // method 
+	0x67360  func <stripped> // method 
+	0x69950  func <stripped> // method 
  }
 
  class FMFCore.FMFContactsDataController : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1131,18 +1131,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let keysToFetch : [CNKeyDescriptor] // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x3604000285f0 (0x604000285f0) in binary!
+WARNING: couldn't find address 0x36b4000286a0 (0x6b4000286a0) in binary!
 	0x18000000c  @objc FMFContactsDataController.(null) <stripped>
 
 	// Swift methods
-	0x6b050  class func FMFContactsDataController.__allocating_init() // init 
-	0x6b430  func FMFContactsDataController.matchContacts(for:currentMatching:) // method 
-	0x6bae0  func FMFContactsDataController.contact(for:) // method 
-	0x6baf0  func FMFContactsDataController.searchInStore(name:) // method 
-	0x6bf60  func FMFContactsDataController.searchInStore(handle:) // method 
-	0x6c480  func FMFContactsDataController.fetchMeContact(handles:) // method 
-	0x6ca40  func <stripped> // method 
-	0x6d1c0  func <stripped> // method 
+	0x6af60  class func FMFContactsDataController.__allocating_init() // init 
+	0x6b340  func FMFContactsDataController.matchContacts(for:currentMatching:) // method 
+	0x6b9f0  func FMFContactsDataController.contact(for:) // method 
+	0x6ba00  func FMFContactsDataController.searchInStore(name:) // method 
+	0x6be70  func FMFContactsDataController.searchInStore(handle:) // method 
+	0x6c390  func FMFContactsDataController.fetchMeContact(handles:) // method 
+	0x6c950  func <stripped> // method 
+	0x6d0d0  func <stripped> // method 
  }
 
  class FMFCore.FMFBaseAction : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1151,10 +1151,10 @@ WARNING: couldn't find address 0x3604000285f0 (0x604000285f0) in binary!
 	var requiresRefresh : Bool
 
 	// Swift methods
-	0x6eac0  func FMFBaseAction.requiresRefresh.getter // getter 
-	0x6eaf0  func FMFBaseAction.requiresRefresh.setter // setter 
-	0x6eb20  func FMFBaseAction.requiresRefresh.modify // modifyCoroutine 
-	0x6eb60  func FMFBaseAction.debugDescription.getter // getter 
+	0x6e9d0  func FMFBaseAction.requiresRefresh.getter // getter 
+	0x6ea00  func FMFBaseAction.requiresRefresh.setter // setter 
+	0x6ea30  func FMFBaseAction.requiresRefresh.modify // modifyCoroutine 
+	0x6ea70  func FMFBaseAction.debugDescription.getter // getter 
  }
 
  class FMFCore.FMFManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1174,38 +1174,38 @@ WARNING: couldn't find address 0x3604000285f0 (0x604000285f0) in binary!
 	var isInitialized : Bool // +0x0 (0x1)
 
 	// Swift methods
-	0x6efc0  func FMFManager.delegate.getter // getter 
-	0x6eff0  func FMFManager.delegate.setter // setter 
-	0x6f050  func FMFManager.delegate.modify // modifyCoroutine 
-	0x6f120  func FMFManager.friends.getter // getter 
-	0x6f220  func FMFManager.selectedFriend.getter // getter 
-	0x6f260  func FMFManager.selectedFriend.setter // setter 
-	0x6f2d0  func FMFManager.selectedFriend.modify // modifyCoroutine 
-	0x6f630  func FMFManager.isInitialized.getter // getter 
-	0x6f660  func FMFManager.locations.getter // getter 
-	0x6f6b0  func FMFManager.myLocation.getter // getter 
-	0x6f6d0  func FMFManager.myUnshiftedLocation.getter // getter 
-	0x6f980  func FMFManager.features.getter // getter 
-	0x6f9a0  func FMFManager.preferences.getter // getter 
-	0x6fa40  func FMFManager.myInfo.getter // getter 
-	0x6fbd0  func FMFManager.config.getter // getter 
-	0x6fcb0  func FMFManager.devices.getter // getter 
-	0x6fcd0  func FMFManager.labels.getter // getter 
-	0x6fcf0  func FMFManager.locationAlerts.getter // getter 
-	0x6fd20  func FMFManager.labelledLocations.getter // getter 
-	0x6fd40  func FMFManager.contactsController.getter // getter 
-	0x6fd60  func FMFManager.friendsOperationsRestricted.getter // getter 
-	0x6fd70  func FMFManager.pendingDeleteFriends.getter // getter 
-	0x6fe40  func FMFManager.pendingUpdateFriends.getter // getter 
-	0x6fec0  class func FMFManager.__allocating_init() // init 
-	0x70a90  func FMFManager.initialize() // method 
-	0x70df0  func FMFManager.startRefreshing() // method 
-	0x70e10  func FMFManager.updateLastActiveTimestamp() // method 
-	0x70e60  func FMFManager.stopRefreshing() // method 
-	0x71140  func FMFManager.refresh() // method 
-	0x71160  func FMFManager.perform(action:completion:) // method 
-	0x71a20  func FMFManager.getInfoForURL(url:completion:) // method 
-	0x72140  func FMFManager.unshiftedLocation(for:) // method 
+	0x6eed0  func FMFManager.delegate.getter // getter 
+	0x6ef00  func FMFManager.delegate.setter // setter 
+	0x6ef60  func FMFManager.delegate.modify // modifyCoroutine 
+	0x6f030  func FMFManager.friends.getter // getter 
+	0x6f130  func FMFManager.selectedFriend.getter // getter 
+	0x6f170  func FMFManager.selectedFriend.setter // setter 
+	0x6f1e0  func FMFManager.selectedFriend.modify // modifyCoroutine 
+	0x6f540  func FMFManager.isInitialized.getter // getter 
+	0x6f570  func FMFManager.locations.getter // getter 
+	0x6f5c0  func FMFManager.myLocation.getter // getter 
+	0x6f5e0  func FMFManager.myUnshiftedLocation.getter // getter 
+	0x6f890  func FMFManager.features.getter // getter 
+	0x6f8b0  func FMFManager.preferences.getter // getter 
+	0x6f950  func FMFManager.myInfo.getter // getter 
+	0x6fae0  func FMFManager.config.getter // getter 
+	0x6fbc0  func FMFManager.devices.getter // getter 
+	0x6fbe0  func FMFManager.labels.getter // getter 
+	0x6fc00  func FMFManager.locationAlerts.getter // getter 
+	0x6fc30  func FMFManager.labelledLocations.getter // getter 
+	0x6fc50  func FMFManager.contactsController.getter // getter 
+	0x6fc70  func FMFManager.friendsOperationsRestricted.getter // getter 
+	0x6fc80  func FMFManager.pendingDeleteFriends.getter // getter 
+	0x6fd50  func FMFManager.pendingUpdateFriends.getter // getter 
+	0x6fdd0  class func FMFManager.__allocating_init() // init 
+	0x709a0  func FMFManager.initialize() // method 
+	0x70d00  func FMFManager.startRefreshing() // method 
+	0x70d20  func FMFManager.updateLastActiveTimestamp() // method 
+	0x70d70  func FMFManager.stopRefreshing() // method 
+	0x71050  func FMFManager.refresh() // method 
+	0x71070  func FMFManager.perform(action:completion:) // method 
+	0x71930  func FMFManager.getInfoForURL(url:completion:) // method 
+	0x72050  func FMFManager.unshiftedLocation(for:) // method 
  }
 
  class FMFCore.FMFAddUpdateLabelRequest {
@@ -1249,27 +1249,27 @@ WARNING: couldn't find address 0x3604000285f0 (0x604000285f0) in binary!
 	var labels : FMFLabel
 
 	// Swift methods
-	0x75f60  func <stripped> // modifyCoroutine 
-	0x76970  func <stripped> // method 
-	0x76ae0  func <stripped> // method 
-	0x76c50  func <stripped> // method 
-	0x76dc0  func <stripped> // method 
-	0x76f30  func <stripped> // method 
-	0x770a0  func <stripped> // method 
-	0x77210  func <stripped> // method 
-	0x77380  func <stripped> // method 
-	0x774f0  func <stripped> // method 
-	0x77660  func <stripped> // method 
-	0x79080  func <stripped> // method 
-	0x7ab00  func <stripped> // method 
-	0x7d120  func <stripped> // method 
-	0x7d830  func <stripped> // method 
-	0x7edf0  func <stripped> // method 
-	0x7f560  func <stripped> // getter 
-	0x86120  func <stripped> // getter 
-	0x868c0  func <stripped> // getter 
-	0x87a00  func <stripped> // method 
-	0x88b30  func <stripped> // method 
+	0x75eb0  func <stripped> // modifyCoroutine 
+	0x768c0  func <stripped> // method 
+	0x76a30  func <stripped> // method 
+	0x76ba0  func <stripped> // method 
+	0x76d10  func <stripped> // method 
+	0x76e80  func <stripped> // method 
+	0x76ff0  func <stripped> // method 
+	0x77160  func <stripped> // method 
+	0x772d0  func <stripped> // method 
+	0x77440  func <stripped> // method 
+	0x775b0  func <stripped> // method 
+	0x78fd0  func <stripped> // method 
+	0x7aa50  func <stripped> // method 
+	0x7d070  func <stripped> // method 
+	0x7d780  func <stripped> // method 
+	0x7ed40  func <stripped> // method 
+	0x7f4b0  func <stripped> // getter 
+	0x86070  func <stripped> // getter 
+	0x86810  func <stripped> // getter 
+	0x87950  func <stripped> // method 
+	0x88a80  func <stripped> // method 
  }
 
  enum FMFCore.FMFPendingUpdateReason {
@@ -1293,7 +1293,7 @@ WARNING: couldn't find address 0x3604000285f0 (0x604000285f0) in binary!
 	var myInfo : FMFMyInfo
 
 	// Swift methods
-	0x8bfb0  func <stripped> // modifyCoroutine 
+	0x8bf00  func <stripped> // modifyCoroutine 
  }
 
  class FMFCore.FMFStopSharingAction : FMFBaseAction {
@@ -1302,15 +1302,15 @@ WARNING: couldn't find address 0x3604000285f0 (0x604000285f0) in binary!
 	let friend : FMFFriend // +0x0 (0x0)
 
 	// Swift methods
-	0x92f00  class func FMFStopSharingAction.__allocating_init(friend:) // init 
+	0x92e50  class func FMFStopSharingAction.__allocating_init(friend:) // init 
  }
 
  class FMFCore.FMFCoreHelper : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x318400028300 (0x18400028300) in binary!
-	0x3180  @objc FMFCoreHelper.(null) <stripped>
+WARNING: couldn't find address 0x31a4000283b0 (0x1a4000283b0) in binary!
+	0x31a0  @objc FMFCoreHelper.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x2d4fffcd028  @objc FMFCoreHelper.(null) <stripped>
+	0x384fffcd028  @objc FMFCoreHelper.(null) <stripped>
  }
 
  class FMFCore.FMFStopFollowingAction : FMFBaseAction {
@@ -1319,7 +1319,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let friend : FMFFriend // +0xcfe12 (0x0)
 
 	// Swift methods
-	0x93490  class func FMFStopFollowingAction.__allocating_init(friend:) // init 
+	0x933e0  class func FMFStopFollowingAction.__allocating_init(friend:) // init 
  }
 
  enum FMFCore.FMWindowStatePrefKeys {
@@ -1366,16 +1366,16 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var publicAPSToken : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x316c00028580 (0x16c00028580) in binary!
-	0x3158  @objc FMAPSConnectionHandler.(null) <stripped>
-WARNING: couldn't find address 0x315400028148 (0x15400028148) in binary!
+WARNING: couldn't find address 0x318c00028630 (0x18c00028630) in binary!
+	0x3178  @objc FMAPSConnectionHandler.(null) <stripped>
+WARNING: couldn't find address 0x3174000281f8 (0x174000281f8) in binary!
 	0x38000000c  @objc FMAPSConnectionHandler.(null) <stripped>
-WARNING: couldn't find address 0x51b200028118 (0x1b200028118) in binary!
-	0x4530  @objc FMAPSConnectionHandler.(null) <stripped>
+WARNING: couldn't find address 0x5262000281c8 (0x262000281c8) in binary!
+	0x45e0  @objc FMAPSConnectionHandler.(null) <stripped>
 
 	// Swift methods
-	0x95fc0  func <stripped> // method 
-	0x960b0  func <stripped> // method 
+	0x95f10  func <stripped> // method 
+	0x96000  func <stripped> // method 
  }
 
  class FMFCore.FMLocalize : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1422,15 +1422,15 @@ WARNING: couldn't find address 0x51b200028118 (0x1b200028118) in binary!
 	let interactionController : FMFInteractionController
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x310400028280 (0x10400028280) in binary!
-	0x3100  @objc FMFMyLocationController.(null) <stripped>
+WARNING: couldn't find address 0x312400028330 (0x12400028330) in binary!
+	0x3120  @objc FMFMyLocationController.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x9cfffd6608  @objc FMFMyLocationController.(null) <stripped>
+	0x14cfffd6608  @objc FMFMyLocationController.(null) <stripped>
 
 	// Swift methods
-	0x9d1d0  func <stripped> // method 
-	0x9d420  func <stripped> // method 
-	0x9ea70  func <stripped> // method 
+	0x9d120  func <stripped> // method 
+	0x9d370  func <stripped> // method 
+	0x9e9c0  func <stripped> // method 
  }
 
  class FMFCore.FMFNotNowAction : FMFBaseAction {
@@ -1439,7 +1439,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let friend : FMFFriend // +0x0 (0x0)
 
 	// Swift methods
-	0xa0d70  class func FMFNotNowAction.__allocating_init(friend:) // init 
+	0xa0cc0  class func FMFNotNowAction.__allocating_init(friend:) // init 
  }
 
  class FMFCore.FMDemoManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1466,7 +1466,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let friend : FMFFriend // +0x7079745f (0x0)
 
 	// Swift methods
-	0xa4570  class func FMFAskToFollowAction.__allocating_init(friend:) // init 
+	0xa44c0  class func FMFAskToFollowAction.__allocating_init(friend:) // init 
  }
 
  class FMFCore.FMFGetURLInfoAction : FMFBaseAction {
@@ -1476,7 +1476,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let url : Q≈ // +0x45545f5f (0x0)
 
 	// Swift methods
-	0xa4880  class func FMFGetURLInfoAction.__allocating_init(url:) // init 
+	0xa47d0  class func FMFGetURLInfoAction.__allocating_init(url:) // init 
  }
 
  class FMFCore.FMFRespondToInviteAction : FMFBaseAction {
@@ -1486,7 +1486,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let accepted : Bool
 
 	// Swift methods
-	0xa4cc0  class func FMFRespondToInviteAction.__allocating_init(friendId:accepted:) // init 
+	0xa4c10  class func FMFRespondToInviteAction.__allocating_init(friendId:accepted:) // init 
  }
 
  enum FMFCore.FMFActionStatus {
@@ -1518,12 +1518,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let systemStateController : FMFSystemStateController
 
 	// Swift methods
-	0xa5e60  func <stripped> // method 
-	0xa97e0  func <stripped> // method 
-	0xaa460  func <stripped> // method 
-	0xaa730  func <stripped> // method 
-	0xab2a0  func <stripped> // method 
-	0xaba20  func <stripped> // method 
+	0xa5db0  func <stripped> // method 
+	0xa9730  func <stripped> // method 
+	0xaa3b0  func <stripped> // method 
+	0xaa680  func <stripped> // method 
+	0xab1f0  func <stripped> // method 
+	0xab970  func <stripped> // method 
  }
 
  class FMFCore.FMFGarbageCollector : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1536,13 +1536,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let paths : [String]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x30bc000286c8 (0xbc000286c8) in binary!
+WARNING: couldn't find address 0x30dc00028778 (0xdc00028778) in binary!
 	0x5003000302b  @objc FMFGarbageCollector.(null) <stripped>
 
 	// Swift methods
-	0xb7a30  func <stripped> // method 
-	0xb8290  func <stripped> // method 
-	0xb8880  func <stripped> // method 
+	0xb7980  func <stripped> // method 
+	0xb81e0  func <stripped> // method 
+	0xb87d0  func <stripped> // method 
  }
 
  class FMFCore.FMFInitRefreshClientRequest {
@@ -1601,7 +1601,7 @@ WARNING: couldn't find address 0x30bc000286c8 (0xbc000286c8) in binary!
 	let fetchStatus : Int // +0x236d (0x8)
 
 	// Swift methods
-	0xc1650  class func <stripped> // init 
+	0xc15a0  class func <stripped> // init 
  }
 
  enum FMFCore.FMFBaseResponseError {
@@ -1628,7 +1628,7 @@ WARNING: couldn't find address 0x30bc000286c8 (0xbc000286c8) in binary!
 	let friend : FMFFriend // +0x0 (0x0)
 
 	// Swift methods
-	0xc5ee0  class func FMFRemoveFriendAction.__allocating_init(friend:) // init 
+	0xc5e30  class func FMFRemoveFriendAction.__allocating_init(friend:) // init 
  }
 
  struct FMFCore.FMFMyInfo {

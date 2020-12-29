@@ -13,6 +13,7 @@
     MISSING_TYPE *tracker;
     MISSING_TYPE *viewerObserver;
     MISSING_TYPE *channelDataFactory;
+    MISSING_TYPE *sectionPositionProvider;
 }
 
 @end

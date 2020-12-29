@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFRichTitleCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFActionItem, SFCard, SFColor, SFImage, SFRichText, SFUserReportRequest;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFActionItem, SFCard, SFColor, SFCommand, SFImage, SFRichText, SFUserReportRequest;
 
 @interface SFRichTitleCardSection : SFTitleCardSection <SFRichTitleCardSection, NSSecureCoding, NSCopying>
 {
@@ -77,6 +77,7 @@
 @property (strong, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (copy, nonatomic) NSString *cardSectionId;
+@property (strong, nonatomic) SFCommand *command;
 @property (copy, nonatomic) NSArray *commands;
 @property (copy, nonatomic) NSString *contentAdvisory; // @synthesize contentAdvisory=_contentAdvisory;
 @property (readonly, copy) NSString *debugDescription;
@@ -98,6 +99,7 @@
 @property (copy, nonatomic) NSArray *parameterKeyPaths;
 @property (strong, nonatomic) SFActionItem *playAction; // @synthesize playAction=_playAction;
 @property (nonatomic) int playActionAlign; // @synthesize playActionAlign=_playActionAlign;
+@property (strong, nonatomic) SFCommand *previewCommand;
 @property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;

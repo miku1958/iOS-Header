@@ -25,14 +25,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (void)_selectButtonAction:(id)arg1 eventType:(id)arg2;
-- (id)initWithLayout:(id)arg1 interfaceStyle:(long long)arg2;
+- (id)initWithType:(unsigned long long)arg1 interfaceStyle:(long long)arg2;
 - (struct CGSize)intrinsicContentSize;
 - (id)largeContentTitle;
+- (void)selectButtonAction:(id)arg1;
 - (void)setTintColor:(id)arg1;
 - (void)upNextStateChangedToAdded;
 - (void)upNextStateChangedToRemoved;
-- (void)updateWithElement:(id)arg1;
 
 @end
 

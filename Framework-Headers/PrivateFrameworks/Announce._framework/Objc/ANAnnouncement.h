@@ -6,13 +6,13 @@
 
 #import <objc/NSObject.h>
 
+#import <Announce/ANCompanionMessage-Protocol.h>
 #import <Announce/ANDataMessage-Protocol.h>
-#import <Announce/ANMessage-Protocol.h>
 #import <Announce/NSSecureCoding-Protocol.h>
 
 @class ANLocation, ANParticipant, ANSender, NSArray, NSData, NSDate, NSDictionary, NSString, NSURL;
 
-@interface ANAnnouncement : NSObject <ANMessage, ANDataMessage, NSSecureCoding>
+@interface ANAnnouncement : NSObject <ANCompanionMessage, ANDataMessage, NSSecureCoding>
 {
     int _productType;
     int _deviceClass;
@@ -71,7 +71,7 @@
 + (id)messageWithoutDataFromMessage:(id)arg1;
 + (unsigned long long)sourceFromString:(id)arg1;
 + (BOOL)supportsSecureCoding;
-+ (id)uniqueAnnouncersInAnnouncements:(id)arg1 inHome:(id)arg2;
++ (void)uniqueAnnouncersInAnnouncements:(id)arg1 inHome:(id)arg2 withBlock:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (id)_generateGroupID;
 - (id)_stringForAction:(unsigned long long)arg1;
@@ -86,6 +86,7 @@
 - (BOOL)isAnnouncerInSameRoomAsAccessory:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (id)message;
+- (id)messageForCompanion;
 - (void)processAudioTranscription:(CDUnknownBlockType)arg1;
 - (BOOL)processAudioWithEffects:(unsigned long long)arg1 error:(id *)arg2;
 - (void)removeAudioFileDataItems;

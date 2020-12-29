@@ -30,6 +30,7 @@
 - (id)_adjustLocationForNearestCaretPosition:(id)arg1 direction:(long long)arg2;
 - (double)_anchorPositionOffsetForLocation:(id)arg1 textSelection:(id)arg2;
 - (unsigned char)_bidiLevelAtLocation:(id)arg1 affinity:(long long)arg2;
+- (double)_caretOffsetForTextLocation:(id)arg1 affinity:(long long)arg2;
 - (id)_copyRangeForTextLineFragmentAtLocation:(id)arg1 affinity:(long long)arg2;
 - (id)_findAnchorInfoForTextSelection:(id)arg1 anchorPositionOffset:(inout double *)arg2 anchorLocation:(out id *)arg3;
 - (long long)_horizontalDirectionForDirection:(long long)arg1 location:(id)arg2;

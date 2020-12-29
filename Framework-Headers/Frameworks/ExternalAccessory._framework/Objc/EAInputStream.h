@@ -29,7 +29,10 @@
     unsigned long long _streamStatus;
     struct __CFRunLoop *_runLoop;
     struct __CFRunLoopSource *_runLoopSource;
+    int _zeroBytesReadCount;
 }
+
+@property int zeroBytesReadCount; // @synthesize zeroBytesReadCount=_zeroBytesReadCount;
 
 - (void)_accessoryDidDisconnect:(id)arg1;
 - (void)_performAtEndOfStreamValidation;

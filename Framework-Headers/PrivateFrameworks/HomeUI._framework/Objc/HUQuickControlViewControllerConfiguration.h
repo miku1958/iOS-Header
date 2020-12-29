@@ -24,6 +24,7 @@
 
 - (void).cxx_destruct;
 - (id)initWithHome:(id)arg1;
+- (id)initWithMediaRoutingIdentifier:(id)arg1;
 
 @end
 

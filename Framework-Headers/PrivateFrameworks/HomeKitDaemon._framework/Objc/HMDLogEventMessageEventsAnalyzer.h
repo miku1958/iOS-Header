@@ -10,25 +10,30 @@
 
 @interface HMDLogEventMessageEventsAnalyzer : HMDLogEventAnalyzer
 {
+    unsigned long long _periodicLoggingInterval;
     HMDEventFlagsManager *_eventFlagsManager;
     HMDEventCountersManager *_eventCountersManager;
 }
 
 @property (strong, nonatomic) HMDEventCountersManager *eventCountersManager; // @synthesize eventCountersManager=_eventCountersManager;
 @property (strong, nonatomic) HMDEventFlagsManager *eventFlagsManager; // @synthesize eventFlagsManager=_eventFlagsManager;
+@property (readonly) unsigned long long periodicLoggingInterval; // @synthesize periodicLoggingInterval=_periodicLoggingInterval;
 
 - (void).cxx_destruct;
 - (void)_handleRemoteMessageLogEvent:(id)arg1;
 - (void)_handleXPCMessageCounterLogEvent:(id)arg1;
-- (id)eventNameForRemoteMessageLogEvent:(id)arg1;
+- (void)_updateDailySubmissionGroupRemoteMessageEventCountersForTransportType:(int)arg1 messageDirectionSending:(BOOL)arg2;
+- (void)_updatePeriodicSubmissionGroupRemoteMessageEventCountersForMessageName:(id)arg1 peerInformation:(id)arg2 transportType:(int)arg3 messageDirectionSending:(BOOL)arg4 identifier:(id)arg5;
 - (id)initWithSupportedEventTypes:(id)arg1 context:(id)arg2;
 - (id)initWithSupportedEventTypes:(id)arg1 context:(id)arg2 eventCountersManager:(id)arg3 eventFlagsManager:(id)arg4;
-- (id)messageDirectionForRemoteMessageCounterRequestGroup:(id)arg1;
+- (id)messageDirectionStringForRemoteMessageCounterRequestGroup:(id)arg1;
+- (id)periodicRemoteMessageCounterEventNameWithMessageName:(id)arg1 peerInformation:(id)arg2;
 - (void)processLogEvent:(id)arg1;
-- (void)submitAggregateCountersForRemoteMessageCounterRequestGroup:(id)arg1;
-- (void)submitAggregateCountersForXPCMessageCounterRequestGroup:(id)arg1;
-- (void)submitAggregateCountersLogEventIfNeeded;
-- (id)transportTypeForRemoteMessageCounterRequestGroup:(id)arg1;
+- (void)submitPeriodicAggregateCountersForRemoteMessageCounterRequestGroup:(id)arg1;
+- (void)submitPeriodicAggregateCountersForXPCMessageCounterRequestGroup:(id)arg1;
+- (void)submitPeriodicRemoteMessageCountersLogEventIfNeeded;
+- (void)submitPeriodicXPCMessageCountersLogEventIfNeeded;
+- (id)transportTypeStringForRemoteMessageCounterRequestGroup:(id)arg1;
 
 @end
 

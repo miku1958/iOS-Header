@@ -28,7 +28,6 @@ __attribute__((visibility("hidden")))
 + (id)_generateUniqueIdentifierForNotificationIdentifierPrefix:(id)arg1 eventDate:(id)arg2;
 + (id)_stringForEventDate:(id)arg1;
 - (void).cxx_destruct;
-- (id)_baseWakeUpResultsContentWithCategoryID:(id)arg1 body:(id)arg2 userInfo:(id)arg3;
 - (id)_bedtimeReminderContent;
 - (id)_chargingReminderBodyForAlarmEnabled:(BOOL)arg1 sleepTrackingEnabled:(BOOL)arg2;
 - (id)_chargingReminderContentWithUserInfo:(id)arg1;
@@ -38,13 +37,11 @@ __attribute__((visibility("hidden")))
 - (id)_notificationIdentifierPrefixForEventIdentifier:(id)arg1;
 - (id)_notificationRequestForEvent:(id)arg1 userInfo:(id)arg2;
 - (id)_notificationRequestIdentifierForEvent:(id)arg1;
-- (id)_oneDayCoachingContentWithCategory:(id)arg1 userInfo:(id)arg2;
 - (void)_publishNotificationRequest:(id)arg1;
 - (id)_wakeDetectionAlertBodyForAlarmEnabled:(BOOL)arg1 sleepModeOn:(BOOL)arg2;
 - (id)_wakeDetectionAlertTitleForAlarmEnabled:(BOOL)arg1 sleepModeOn:(BOOL)arg2;
 - (id)_wakeDetectionContentWithUserInfo:(id)arg1;
 - (id)_wakeUpResultsContentWithUserInfo:(id)arg1;
-- (id)_weeklyCoachingContentWithCategory:(id)arg1 userInfo:(id)arg2;
 - (id)_windDownReminderBodyContent;
 - (id)_windDownReminderContent;
 - (void)environmentDidBecomeReady:(id)arg1;

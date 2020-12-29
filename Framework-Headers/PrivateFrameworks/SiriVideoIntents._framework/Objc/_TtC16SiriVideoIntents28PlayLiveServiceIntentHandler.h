@@ -8,10 +8,16 @@
 
 #import <SiriVideoIntents/PlayLiveServiceIntentHandling-Protocol.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC16SiriVideoIntents28PlayLiveServiceIntentHandler : NSObject <PlayLiveServiceIntentHandling>
 {
+    MISSING_TYPE *liveServiceResolver;
+    MISSING_TYPE *analyticsService;
 }
 
+- (void).cxx_destruct;
+- (void)confirmPlayLiveService:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)handlePlayLiveService:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)resolveLiveServiceForPlayLiveService:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;

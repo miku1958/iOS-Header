@@ -11,11 +11,12 @@
 }
 
 + (id)_URLFromSource:(id)arg1 extension:(id)arg2 cropdCode:(id)arg3 imageSize:(struct CGSize)arg4 centerGrowth:(BOOL)arg5 focusSizeIncrease:(double)arg6;
++ (id)_getResourceImageFromDescriptor:(id)arg1;
 + (id)_imageProxyWithURL:(id)arg1;
 + (id)_makeImageViewWithDescriptor:(id)arg1 proxy:(id)arg2 existingView:(id)arg3;
 + (id)makeImageProxyWithDescriptor:(id)arg1;
 + (id)makeImageViewWithDescriptor:(id)arg1 existingView:(id)arg2;
-+ (id)makeResourceImageViewWithDescriptor:(id)arg1 existingView:(id)arg2;
++ (id)makeImageViewWithResourceDescriptor:(id)arg1 existingView:(id)arg2;
 
 @end
 

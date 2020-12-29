@@ -50,6 +50,7 @@
         unsigned int marqueeEnabled:1;
         unsigned int marqueeRunable:1;
         unsigned int marqueeRequired:1;
+        unsigned int marqueeUpdatable:1;
         unsigned int usesExplicitPreferredMaxLayoutWidth:1;
         unsigned int drawsDebugBaselines:1;
         unsigned int explicitBaselineOffset:1;
@@ -162,6 +163,7 @@
 - (void)_invalidateBaselineConstraints;
 - (void)_invalidateLabelSize;
 - (void)_invalidateTextSize;
+- (BOOL)_isMarqueeUpdatable;
 - (BOOL)_isTextFieldCenteredLabel;
 - (double)_minimumFontSize;
 - (double)_multilineContextWidth;
@@ -180,6 +182,7 @@
 - (void)_setFont:(id)arg1;
 - (void)_setHyphenationFactor:(float)arg1;
 - (void)_setLineBreakMode:(long long)arg1;
+- (void)_setMarqueeUpdatable:(BOOL)arg1;
 - (void)_setMinimumFontSize:(double)arg1;
 - (void)_setMultilineContextWidth:(double)arg1;
 - (void)_setMultilineLabelRequiresCarefulMeasurement:(BOOL)arg1;

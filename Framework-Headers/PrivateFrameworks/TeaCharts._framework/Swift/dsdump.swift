@@ -261,31 +261,31 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : œ~
+	var top : è
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : œ~
+	var left : è
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : œ~
+	var bottom : è
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : œ~
+	var right : è
  }
 
  struct __C.CGSize {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : œ~
+	var width : è
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : œ~
+	var height : è
  }
 
  struct __C.CGPoint {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : œ~
+	var x : è
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : œ~
+	var y : è
  }
 
  struct __C.Key {
@@ -377,9 +377,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let attributedString : NSAttributedString // +0x0
 	let size : CGSize // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let baseline : œ~ // +0x18
+	let baseline : è // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let location : œ~ // +0x20
+	let location : è // +0x20
 	let orientation : Orientation // +0x28
 	let padding : UIEdgeInsets // +0x30
  }
@@ -394,7 +394,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class TeaCharts.InteractionManager {
  class TeaCharts.SparklineAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x53b000016648 (0x3b000016648) in binary!
+WARNING: couldn't find address 0x53e0000166e8 (0x3e0000166e8) in binary!
 	0x18000000c  @objc SparklineAssembly.(null) <stripped>
  }
 
@@ -402,7 +402,7 @@ WARNING: couldn't find address 0x53b000016648 (0x3b000016648) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let location : œ~ // +0x0
+	let location : è // +0x0
 	let label : NSAttributedString? // +0x8
  }
 
@@ -421,13 +421,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var zoneLineViews : LineView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x577c00016638 (0x77c00016638) in binary!
-	0x6038  @objc LineSeriesView.(null) <stripped>
-WARNING: couldn't find address 0x543400016638 (0x43400016638) in binary!
-	0x6020  @objc LineSeriesView.(null) <stripped>
+WARNING: couldn't find address 0x57ac000166d8 (0x7ac000166d8) in binary!
+	0x6068  @objc LineSeriesView.(null) <stripped>
+WARNING: couldn't find address 0x5464000166d8 (0x464000166d8) in binary!
+	0x6050  @objc LineSeriesView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x5d4fffcdcf0  @objc LineSeriesView.(null) <stripped>
-	0xfffcdd78  @objc LineSeriesView.~å <stripped>
+	0x674fffcd780  @objc LineSeriesView.(null) <stripped>
+	0xfffcd808  @objc LineSeriesView.âm–t"IãD$H—ËH9ÿ}H¿Äﬁ <stripped>
 
 	// Swift methods
  }
@@ -447,7 +447,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let valueCoordinateCalculator : ValueCoordinateCalculatorType
 
 	// Swift methods
-	0xbf60  class func LineChartInteractor.__allocating_init(categoryCoordinateCalculator:valueCoordinateCalculator:) // init 
+	0xb950  class func LineChartInteractor.__allocating_init(categoryCoordinateCalculator:valueCoordinateCalculator:) // init 
  }
 
  class TeaCharts.Assembly : NSObject /usr/lib/libobjc.A.dylib {
@@ -456,12 +456,12 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let assemblies : [NFAssembly]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5348000164f0 (0x348000164f0) in binary!
-	0x533c  @objc Assembly.(null) <stripped>
-WARNING: couldn't find address 0x5ff4000164e0 (0x7f4000164e0) in binary!
+WARNING: couldn't find address 0x537800016590 (0x37800016590) in binary!
+	0x536c  @objc Assembly.(null) <stripped>
+WARNING: couldn't find address 0x602400016580 (0x2400016580) in binary!
 	0x58000000c  @objc Assembly.(null) <stripped>
-WARNING: couldn't find address 0x5714000165d0 (0x714000165d0) in binary!
-	0x530c  @objc Assembly.(null) <stripped>
+WARNING: couldn't find address 0x574400016670 (0x74400016670) in binary!
+	0x533c  @objc Assembly.(null) <stripped>
  }
 
  struct TeaCharts.LayoutOptions {
@@ -469,7 +469,7 @@ WARNING: couldn't find address 0x5714000165d0 (0x714000165d0) in binary!
 	// Properties
 	let size : CGSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let screenScale : œ~ // +0x10
+	let screenScale : è // +0x10
  }
 
  struct TeaCharts.ChartLayoutOptions {
@@ -495,15 +495,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let maskLayer : CAShapeLayer // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5714000165d0 (0x714000165d0) in binary!
-	0x530c  @objc LineView.(null) <stripped>
-WARNING: couldn't find address 0x5fc4000165c0 (0x7c4000165c0) in binary!
-	0x53c0  @objc LineView.(null) <stripped>
-WARNING: couldn't find address 0x5fac00016498 (0x7ac00016498) in binary!
+WARNING: couldn't find address 0x574400016670 (0x74400016670) in binary!
+	0x533c  @objc LineView.(null) <stripped>
+WARNING: couldn't find address 0x5ff400016660 (0x7f400016660) in binary!
+	0x53f0  @objc LineView.(null) <stripped>
+WARNING: couldn't find address 0x5fdc00016538 (0x7dc00016538) in binary!
 	0x18000000c  @objc LineView.(null) <stripped>
-WARNING: couldn't find address 0x52d000016568 (0x2d000016568) in binary!
+WARNING: couldn't find address 0x530000016608 (0x30000016608) in binary!
 	0x18000000c  @objc LineView.(null) <stripped>
-WARNING: couldn't find address 0x584400016410 (0x4400016410) in binary!
+WARNING: couldn't find address 0x5874000164b0 (0x74000164b0) in binary!
 	0x18000000c  @objc LineView.(null) <stripped>
  }
 
@@ -522,9 +522,9 @@ WARNING: couldn't find address 0x584400016410 (0x4400016410) in binary!
 	let styler : LineChartStylerType
 	let zoneMaskProvider : LineZoneMaskProviderType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let animationSynchronizer : 1w
+	let animationSynchronizer : Òw
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let reuseProtector : Iw
+	let reuseProtector : 	x
 	let accessibilityElementProvider : LineSeriesAccessibilityElementProvider
 
 	// Swift methods
@@ -609,7 +609,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaCharts.GridAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x52d000016568 (0x2d000016568) in binary!
+WARNING: couldn't find address 0x530000016608 (0x30000016608) in binary!
 	0x18000000c  @objc GridAssembly.(null) <stripped>
  }
 
@@ -631,12 +631,12 @@ WARNING: couldn't find address 0x52d000016568 (0x2d000016568) in binary!
 	// Properties
 	let imageLoader : SparklineLoaderType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let reuseProtector : ùy
+	let reuseProtector : ]z
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cache : èy
+	var cache : Oz
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5f6400016548 (0x76400016548) in binary!
+WARNING: couldn't find address 0x5f94000165e8 (0x794000165e8) in binary!
 	0x18000000c  @objc SparklineViewRenderer.(null) <stripped>
 
 	// Swift methods
@@ -652,7 +652,7 @@ WARNING: couldn't find address 0x5f6400016548 (0x76400016548) in binary!
 
  class TeaCharts.ColumnChartAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x528800016520 (0x28800016520) in binary!
+WARNING: couldn't find address 0x52b8000165c0 (0x2b8000165c0) in binary!
 	0x18000000c  @objc ColumnChartAssembly.(null) <stripped>
  }
 
@@ -662,16 +662,16 @@ WARNING: couldn't find address 0x528800016520 (0x28800016520) in binary!
 	var seriesViews : LineSeriesView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x565400016510 (0x65400016510) in binary!
-	0x5f10  @objc LineChartView.(null) <stripped>
-WARNING: couldn't find address 0x530c00016510 (0x30c00016510) in binary!
-	0x5ef8  @objc LineChartView.(null) <stripped>
+WARNING: couldn't find address 0x5684000165b0 (0x684000165b0) in binary!
+	0x5f40  @objc LineChartView.(null) <stripped>
+WARNING: couldn't find address 0x533c000165b0 (0x33c000165b0) in binary!
+	0x5f28  @objc LineChartView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x3c4fffe6cd8  @objc LineChartView.(null) <stripped>
-	0x78c00016358  @objc LineChartView. <stripped>
+	0x464fffe44d8  @objc LineChartView.(null) <stripped>
+	0x7bc000163f8  @objc LineChartView.HﬂIãG¯LâˆLâ˙ˇP HÉƒ[A^A_]√f.Ñ <stripped>
 
 	// Swift methods
-	0x1bda0  class func LineChartView.__allocating_init(seriesViews:) // init 
+	0x1b940  class func LineChartView.__allocating_init(seriesViews:) // init 
  }
 
  class TeaCharts.ColumnChartImageGenerator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ColumnChartImageGeneratorType {
@@ -686,7 +686,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let categories : ó}
+	let categories : W~
 	let mappedCategories : [String : Int]
 	let grids : Grid
  }
@@ -695,7 +695,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let animationSynchronizer : 1w
+	let animationSynchronizer : Òw
 
 	// Swift methods
  }
@@ -757,14 +757,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let coordinateSpace : CoordinateSpace
 	let series : Series
+	var tcAccessibleXAxisTitle : String?
+	var tcAccessibleYAxisTitle : String?
  }
 
  class TeaCharts.LineChartAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5220000164b8 (0x220000164b8) in binary!
-	0x5ed8  @objc LineChartAssembly.(null) <stripped>
+WARNING: couldn't find address 0x525000016558 (0x25000016558) in binary!
+	0x5f08  @objc LineChartAssembly.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffe6d78  @objc LineChartAssembly.(null) <stripped>
+	0xfffe4578  @objc LineChartAssembly.(null) <stripped>
  }
 
  class TeaCharts.ColumnChartView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -773,16 +775,16 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let imageView : UIImageView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x55e4000164a0 (0x5e4000164a0) in binary!
-	0x51dc  @objc ColumnChartView.(null) <stripped>
-WARNING: couldn't find address 0x5e9400016490 (0x69400016490) in binary!
-	0x5290  @objc ColumnChartView.(null) <stripped>
-WARNING: couldn't find address 0x5e7c00016368 (0x67c00016368) in binary!
+WARNING: couldn't find address 0x561400016540 (0x61400016540) in binary!
+	0x520c  @objc ColumnChartView.(null) <stripped>
+WARNING: couldn't find address 0x5ec400016530 (0x6c400016530) in binary!
+	0x52c0  @objc ColumnChartView.(null) <stripped>
+WARNING: couldn't find address 0x5eac00016408 (0x6ac00016408) in binary!
 	0x48000000c  @objc ColumnChartView.(null) <stripped>
-WARNING: couldn't find address 0x559c00016458 (0x59c00016458) in binary!
-	0x5260  @objc ColumnChartView.(null) <stripped>
-WARNING: couldn't find address 0x5e4c00016448 (0x64c00016448) in binary!
-	0x5e40  @objc ColumnChartView.(null) <stripped>
+WARNING: couldn't find address 0x55cc000164f8 (0x5cc000164f8) in binary!
+	0x5290  @objc ColumnChartView.(null) <stripped>
+WARNING: couldn't find address 0x5e7c000164e8 (0x67c000164e8) in binary!
+	0x5e70  @objc ColumnChartView.(null) <stripped>
  }
 
  class TeaCharts.LineChartStyler : _SwiftObject /usr/lib/swift/libswiftCore.dylib, LineChartStylerType {
@@ -830,13 +832,13 @@ WARNING: couldn't find address 0x5e4c00016448 (0x64c00016448) in binary!
 	let imageView : UIImageView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x559c00016458 (0x59c00016458) in binary!
-	0x5260  @objc SparklineView.(null) <stripped>
-WARNING: couldn't find address 0x5e4c00016448 (0x64c00016448) in binary!
-	0x5e40  @objc SparklineView.(null) <stripped>
+WARNING: couldn't find address 0x55cc000164f8 (0x5cc000164f8) in binary!
+	0x5290  @objc SparklineView.(null) <stripped>
+WARNING: couldn't find address 0x5e7c000164e8 (0x67c000164e8) in binary!
+	0x5e70  @objc SparklineView.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x2fcfffeaab0  @objc SparklineView.(null) <stripped>
-	0x2d4fffeb768  @objc SparklineView.t$L9ÛILﬁHÖ€t~HâœË}·ˇˇHç4›  <stripped>
+	0x39cfffe8430  @objc SparklineView.(null) <stripped>
+	0x374fffe90e8  @objc SparklineView.ﬂˇu{ <stripped>
  }
 
  class TeaCharts.LineSeriesAccessibilityElementProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -873,19 +875,19 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 	var timer : NSTimer?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x556400016420 (0x56400016420) in binary!
-	0x5c1c  @objc TapDragGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x5c10000162e8 (0x410000162e8) in binary!
-	0x5c04  @objc TapDragGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x5bf8000162c0 (0x3f8000162c0) in binary!
-	0x5df0  @objc TapDragGestureRecognizer.(null) <stripped>
-WARNING: couldn't find address 0x5bf6000164a8 (0x3f6000164a8) in binary!
-	0x5dd8  @objc TapDragGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x5594000164c0 (0x594000164c0) in binary!
+	0x5c4c  @objc TapDragGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x5c4000016388 (0x44000016388) in binary!
+	0x5c34  @objc TapDragGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x5c2800016360 (0x42800016360) in binary!
+	0x5e20  @objc TapDragGestureRecognizer.(null) <stripped>
+WARNING: couldn't find address 0x5c2600016548 (0x42600016548) in binary!
+	0x5e08  @objc TapDragGestureRecognizer.(null) <stripped>
 WARNING: couldn't find address 0x118000000c (0x118000000c) in binary!
-	0x26cffff0ff8  @objc TapDragGestureRecognizer.(null) <stripped>
-	0x29cffff10d0  @objc TapDragGestureRecognizer. <stripped>
-	0x294ffff13e8  @objc TapDragGestureRecognizer. <stripped>
-	0x294ffff1420  @objc TapDragGestureRecognizer. <stripped>
+	0x30cfffee978  @objc TapDragGestureRecognizer.(null) <stripped>
+	0x33cfffeea50  @objc TapDragGestureRecognizer.Lâ{ãsDàsË <stripped>
+	0x334fffeed68  @objc TapDragGestureRecognizer.VSPIâœIâ÷Hâ√Hâ8Hâp1ˇHâŒË, <stripped>
+	0x334fffeede0  @objc TapDragGestureRecognizer. <stripped>
 
 	// Swift methods
  }
@@ -902,7 +904,7 @@ WARNING: couldn't find address 0x118000000c (0x118000000c) in binary!
 	// Properties
 	let style : StrokeStyle // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let width : œ~ // +0x8
+	let width : è // +0x8
 	let color : UIColor // +0x10
 	let lineCap : LineCap // +0x18
  }
@@ -934,24 +936,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var cachedValue : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5c8400016448 (0x48400016448) in binary!
-	0x5ca8  @objc LineSeriesDataElement.(null) <stripped>
-WARNING: couldn't find address 0x501000016180 (0x1000016180) in binary!
-	0x5590  @objc LineSeriesDataElement.(null) <stripped>
-WARNING: couldn't find address 0x4ff800016160 (0x7f800016160) in binary!
-	0x5578  @objc LineSeriesDataElement.(null) <stripped>
-WARNING: couldn't find address 0x53dc00016458 (0x3dc00016458) in binary!
-	0x4fd4  @objc LineSeriesDataElement.(null) <stripped>
-WARNING: couldn't find address 0x5c8c00016178 (0x48c00016178) in binary!
+WARNING: couldn't find address 0x5cb4000164e8 (0x4b4000164e8) in binary!
+	0x5cd8  @objc LineSeriesDataElement.(null) <stripped>
+WARNING: couldn't find address 0x504000016220 (0x4000016220) in binary!
+	0x55c0  @objc LineSeriesDataElement.(null) <stripped>
+WARNING: couldn't find address 0x502800016200 (0x2800016200) in binary!
+	0x55a8  @objc LineSeriesDataElement.(null) <stripped>
+WARNING: couldn't find address 0x540c000164f8 (0x40c000164f8) in binary!
+	0x5004  @objc LineSeriesDataElement.(null) <stripped>
+WARNING: couldn't find address 0x5cbc00016218 (0x4bc00016218) in binary!
 	0x48000000c  @objc LineSeriesDataElement.(null) <stripped>
-WARNING: couldn't find address 0x53ac00016268 (0x3ac00016268) in binary!
-	0x5c68  @objc LineSeriesDataElement.(null) <stripped>
-WARNING: couldn't find address 0x506400016268 (0x6400016268) in binary!
-	0x5c50  @objc LineSeriesDataElement.(null) <stripped>
+WARNING: couldn't find address 0x53dc00016308 (0x3dc00016308) in binary!
+	0x5c98  @objc LineSeriesDataElement.(null) <stripped>
+	0x5c80  SeriesStyle.init(strokeColor:fill:)
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffff91d0  @objc LineSeriesDataElement.(null) <stripped>
+	0xffff6a60  @objc LineSeriesDataElement.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffff9268  @objc LineSeriesDataElement.(null) <stripped>
+	0xffff6af8  @objc LineSeriesDataElement.(null) <stripped>
 
 	// Swift methods
  }
@@ -965,46 +966,45 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var dataElements : LineSeriesDataElement // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5d5c00016520 (0x55c00016520) in binary!
-	0x5d80  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x50e8000162a0 (0xe8000162a0) in binary!
+WARNING: couldn't find address 0x5d8c000165c0 (0x58c000165c0) in binary!
+	0x5db0  @objc LineSeriesAccessibilityElement.(null) <stripped>
+WARNING: couldn't find address 0x511800016340 (0x11800016340) in binary!
+	0x5ee7  @objc LineSeriesAccessibilityElement.(null) <stripped>
+WARNING: couldn't find address 0x5ee600016338 (0x6e600016338) in binary!
+	0x5ecf  @objc LineSeriesAccessibilityElement.(null) <stripped>
+WARNING: couldn't find address 0x5ec300016338 (0x6c300016338) in binary!
 	0x5eb7  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x5eb600016298 (0x6b600016298) in binary!
-	0x5e9f  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x5e9300016298 (0x69300016298) in binary!
-	0x5e87  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x5e8e000162a0 (0x68e000162a0) in binary!
-	0x5e82  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x5e7600016290 (0x67600016290) in binary!
-	0x5e72  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x5e6e00016290 (0x66e00016290) in binary!
-	0x5e3f  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x5454000164d0 (0x454000164d0) in binary!
-	0x504c  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x5d04000161f0 (0x504000161f0) in binary!
+WARNING: couldn't find address 0x5ebe00016340 (0x6be00016340) in binary!
+	0x5eb2  @objc LineSeriesAccessibilityElement.(null) <stripped>
+WARNING: couldn't find address 0x5ea600016330 (0x6a600016330) in binary!
+	0x5ea2  @objc LineSeriesAccessibilityElement.(null) <stripped>
+WARNING: couldn't find address 0x5e9e00016330 (0x69e00016330) in binary!
+	0x5e6f  @objc LineSeriesAccessibilityElement.(null) <stripped>
+WARNING: couldn't find address 0x548400016570 (0x48400016570) in binary!
+	0x507c  @objc LineSeriesAccessibilityElement.(null) <stripped>
+WARNING: couldn't find address 0x5d3400016290 (0x53400016290) in binary!
 	0x98000000c  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x5c8400016448 (0x48400016448) in binary!
-	0x5ca8  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x501000016180 (0x1000016180) in binary!
-	0x5590  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x4ff800016160 (0x7f800016160) in binary!
-	0x5578  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x53dc00016458 (0x3dc00016458) in binary!
-	0x4fd4  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x5c8c00016178 (0x48c00016178) in binary!
+WARNING: couldn't find address 0x5cb4000164e8 (0x4b4000164e8) in binary!
+	0x5cd8  @objc LineSeriesAccessibilityElement.(null) <stripped>
+WARNING: couldn't find address 0x504000016220 (0x4000016220) in binary!
+	0x55c0  @objc LineSeriesAccessibilityElement.(null) <stripped>
+WARNING: couldn't find address 0x502800016200 (0x2800016200) in binary!
+	0x55a8  @objc LineSeriesAccessibilityElement.(null) <stripped>
+WARNING: couldn't find address 0x540c000164f8 (0x40c000164f8) in binary!
+	0x5004  @objc LineSeriesAccessibilityElement.(null) <stripped>
+WARNING: couldn't find address 0x5cbc00016218 (0x4bc00016218) in binary!
 	0x48000000c  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x53ac00016268 (0x3ac00016268) in binary!
-	0x5c68  @objc LineSeriesAccessibilityElement.(null) <stripped>
-WARNING: couldn't find address 0x506400016268 (0x6400016268) in binary!
-	0x5c50  @objc LineSeriesAccessibilityElement.(null) <stripped>
+WARNING: couldn't find address 0x53dc00016308 (0x3dc00016308) in binary!
+	0x5c98  @objc LineSeriesAccessibilityElement.(null) <stripped>
+	0x5c80  SeriesStyle.init(strokeColor:fill:)
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffff91d0  @objc LineSeriesAccessibilityElement.(null) <stripped>
+	0xffff6a60  @objc LineSeriesAccessibilityElement.(null) <stripped>
 
 	// Swift methods
-	0x31080  func <stripped> // method 
-	0x31250  func <stripped> // method 
-	0x31600  func <stripped> // method 
-	0x31a60  func <stripped> // method 
+	0x2e9a0  func <stripped> // method 
+	0x2eb70  func <stripped> // method 
+	0x2ef20  func <stripped> // method 
+	0x2f380  func <stripped> // method 
  }
 
  struct TeaCharts.ValueAxis {
@@ -1028,17 +1028,16 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var labels : [UILabel]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x53ac00016268 (0x3ac00016268) in binary!
-	0x5c68  @objc GridView.(null) <stripped>
-WARNING: couldn't find address 0x506400016268 (0x6400016268) in binary!
-	0x5c50  @objc GridView.(null) <stripped>
+WARNING: couldn't find address 0x53dc00016308 (0x3dc00016308) in binary!
+	0x5c98  @objc GridView.(null) <stripped>
+	0x5c80  SeriesStyle.init(strokeColor:fill:)
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffff91d0  @objc GridView.(null) <stripped>
+	0xffff6a60  @objc GridView.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffff9268  @objc GridView.(null) <stripped>
+	0xffff6af8  @objc GridView.(null) <stripped>
 
 	// Swift methods
-	0x34180  class func GridView.__allocating_init(numberOfGrids:numberOfLabels:) // init 
+	0x31970  class func GridView.__allocating_init(numberOfGrids:numberOfLabels:) // init 
  }
 
  struct TeaCharts.LineChartImages {
@@ -1054,7 +1053,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let coordinateProvider : LineChartCoordinateProvider
 
 	// Swift methods
-	0x34fd0  class func LinePathGenerator.__allocating_init(coordinateProvider:) // init 
+	0x327c0  class func LinePathGenerator.__allocating_init(coordinateProvider:) // init 
  }
 
  class TeaCharts.LineStyle : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1065,14 +1064,14 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let zoneStyles : ZoneStyle
 
 	// Swift methods
-	0x35b20  class func LineStyle.__allocating_init(stroke:fill:zoneStyles:) // init 
+	0x33310  class func LineStyle.__allocating_init(stroke:fill:zoneStyles:) // init 
  }
 
  struct TeaCharts.AxisGridViewModelGeneratorOptions {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let size : œ~ // +0x0
+	let size : è // +0x0
 	let traitCollection : UITraitCollection // +0x8
  }
 
@@ -1083,7 +1082,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let categoryCoordinateCalculator : CategoryCoordinateCalculatorType
 
 	// Swift methods
-	0x35e50  func <stripped> // method 
+	0x33640  func <stripped> // method 
  }
 
  class TeaCharts.StyleManager {
@@ -1105,7 +1104,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaCharts.ChartsAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x4f7800016210 (0x77800016210) in binary!
+WARNING: couldn't find address 0x4fa8000162b0 (0x7a8000162b0) in binary!
 	0x18000000c  @objc ChartsAssembly.(null) <stripped>
  }
 
@@ -1121,13 +1120,13 @@ WARNING: couldn't find address 0x4f7800016210 (0x77800016210) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let widthPerBar : œ~ // +0x0
+	let widthPerBar : è // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacingBetweenSeries : œ~ // +0x8
+	let spacingBetweenSeries : è // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacingBetweenCategories : œ~ // +0x10
+	let spacingBetweenCategories : è // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let widthPerCategory : œ~ // +0x18
+	let widthPerCategory : è // +0x18
  }
 
  class TeaCharts.ColumnChartCoordinateProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1144,7 +1143,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class TeaCharts.LinearAxisCalculationModel : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x394c0  class func LinearAxisCalculationModel.__allocating_init() // init 
+	0x39440  class func LinearAxisCalculationModel.__allocating_init() // init 
  }
 
  struct TeaCharts.CategoryDataPoint {
@@ -1180,11 +1179,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let preferredWidthPerBar : œ~ // +0x0
+	let preferredWidthPerBar : è // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let spacingBetweenSeries : œ~ // +0x8
+	let spacingBetweenSeries : è // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let minimumSpacingBetweenCategories : œ~ // +0x10
+	let minimumSpacingBetweenCategories : è // +0x10
 	let cornerRadius : CornerRadius // +0x18
 	let renderSynchronous : Bool // +0x28
  }
@@ -1208,7 +1207,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let corners : UIRectCorner // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let radius : œ~ // +0x8
+	let radius : è // +0x8
  }
 
  class TeaCharts.ColumnChartRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ColumnChartRendererType {
@@ -1216,9 +1215,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let imageLoader : ColumnChartImageLoaderType
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let animationSynchronizer : 1w
+	let animationSynchronizer : Òw
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let reuseProtector : ùy
+	let reuseProtector : ]z
 
 	// Swift methods
  }

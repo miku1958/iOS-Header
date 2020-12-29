@@ -11,7 +11,7 @@
 #import <HealthMenstrualCycles/NSCopying-Protocol.h>
 #import <HealthMenstrualCycles/NSSecureCoding-Protocol.h>
 
-@class HKQuantity, NSDictionary, NSNumber, NSSet, NSString;
+@class HKQuantity, NSArray, NSDictionary, NSNumber, NSSet, NSString;
 
 @interface HKMCDaySummary : NSObject <HKMCAdjacentFlowDay, HKRedactedDescription, NSSecureCoding, NSCopying>
 {
@@ -25,6 +25,8 @@
     HKQuantity *_basalBodyTemperature;
     long long _menstrualFlowModificationDayIndex;
     NSNumber *_startOfCycleFromCycleTracking;
+    NSArray *_startedCycleFactors;
+    NSArray *_endedCycleFactors;
     NSDictionary *_sampleCountByType;
 }
 
@@ -32,6 +34,7 @@
 @property (nonatomic) long long cervicalMucusQuality; // @synthesize cervicalMucusQuality=_cervicalMucusQuality;
 @property (readonly, nonatomic) long long cervicalMucusQualitySampleCount;
 @property (readonly, nonatomic) long long dayIndex; // @synthesize dayIndex=_dayIndex;
+@property (strong, nonatomic) NSArray *endedCycleFactors; // @synthesize endedCycleFactors=_endedCycleFactors;
 @property (readonly, copy) NSString *hk_redactedDescription;
 @property (nonatomic) BOOL intermenstrualBleeding; // @synthesize intermenstrualBleeding=_intermenstrualBleeding;
 @property (readonly, nonatomic) BOOL isDataLogged;
@@ -46,10 +49,12 @@
 @property (nonatomic) long long sexualActivity; // @synthesize sexualActivity=_sexualActivity;
 @property (readonly, nonatomic) long long sexualActivitySampleCount;
 @property (copy, nonatomic) NSNumber *startOfCycleFromCycleTracking; // @synthesize startOfCycleFromCycleTracking=_startOfCycleFromCycleTracking;
+@property (strong, nonatomic) NSArray *startedCycleFactors; // @synthesize startedCycleFactors=_startedCycleFactors;
 @property (nonatomic) unsigned long long symptoms; // @synthesize symptoms=_symptoms;
 
 + (id)daySummaryWithDayIndex:(long long)arg1 menstrualFlow:(long long)arg2 intermenstrualBleeding:(BOOL)arg3 symptoms:(unsigned long long)arg4 sexualActivity:(long long)arg5 ovulationTestResult:(long long)arg6 cervicalMucusQuality:(long long)arg7 basalBodyTemperature:(id)arg8;
 + (id)daySummaryWithDayIndex:(long long)arg1 menstrualFlow:(long long)arg2 intermenstrualBleeding:(BOOL)arg3 symptoms:(unsigned long long)arg4 sexualActivity:(long long)arg5 ovulationTestResult:(long long)arg6 cervicalMucusQuality:(long long)arg7 basalBodyTemperature:(id)arg8 sampleCountByType:(id)arg9;
++ (id)daySummaryWithDayIndex:(long long)arg1 menstrualFlow:(long long)arg2 intermenstrualBleeding:(BOOL)arg3 symptoms:(unsigned long long)arg4 sexualActivity:(long long)arg5 ovulationTestResult:(long long)arg6 cervicalMucusQuality:(long long)arg7 basalBodyTemperature:(id)arg8 startedCycleFactors:(id)arg9 endedCycleFactors:(id)arg10 sampleCountByType:(id)arg11;
 + (id)emptyDaySummaryWithDayIndex:(long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;

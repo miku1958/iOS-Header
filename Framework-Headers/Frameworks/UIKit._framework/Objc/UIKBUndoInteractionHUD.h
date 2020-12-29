@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIView.h>
 
-@class UIKBUndoControl, UIKBUndoStyling, UILabel, UIVisualEffectView;
+@class NSDate, UIKBUndoControl, UIKBUndoStyling, UILabel, UIVisualEffectView;
 @protocol UIInteractiveUndoHUDActionDelegate;
 
 __attribute__((visibility("hidden")))
@@ -24,12 +24,14 @@ __attribute__((visibility("hidden")))
     UIView *_containerView;
     UIKBUndoStyling *_style;
     UILabel *_instructionalLabel;
+    NSDate *_appearanceDate;
 }
 
 @property (strong, nonatomic) UIKBUndoControl *aCopyButtonView; // @synthesize aCopyButtonView=_aCopyButtonView;
 @property (strong, nonatomic) UIKBUndoControl *aCutButtonView; // @synthesize aCutButtonView=_aCutButtonView;
 @property (strong, nonatomic) UIKBUndoControl *aPasteButtonView; // @synthesize aPasteButtonView=_aPasteButtonView;
 @property (weak, nonatomic) id<UIInteractiveUndoHUDActionDelegate> actionDelegate; // @synthesize actionDelegate=_actionDelegate;
+@property (strong, nonatomic) NSDate *appearanceDate; // @synthesize appearanceDate=_appearanceDate;
 @property (strong, nonatomic) UIVisualEffectView *backgroundEffectView; // @synthesize backgroundEffectView=_backgroundEffectView;
 @property (strong, nonatomic) UIView *containerView; // @synthesize containerView=_containerView;
 @property (strong, nonatomic) UILabel *instructionalLabel; // @synthesize instructionalLabel=_instructionalLabel;
@@ -52,6 +54,7 @@ __attribute__((visibility("hidden")))
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateControlWithDirection:(long long)arg1 travelProgress:(double)arg2 isRTL:(BOOL)arg3;
 - (void)updateHUDControlState;
+- (void)willMoveToWindow:(id)arg1;
 
 @end
 

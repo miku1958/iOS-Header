@@ -105,7 +105,10 @@
 + (BOOL)unitTest_prepareUnprotectedDatabase:(id)arg1 protectedDatabase:(id)arg2 error:(id *)arg3;
 - (void).cxx_destruct;
 - (id)HFDSizeInBytes;
-- (void)HFDataStore:(id)arg1 detectedCorruptionOfType:(long long)arg2 code:(int)arg3 error:(id)arg4 shouldPromptUser:(BOOL)arg5;
+- (void)HFDataStore:(id)arg1 detectedCorruptionOfType:(long long)arg2 code:(int)arg3 error:(id)arg4 shouldPromptUser:(BOOL)arg5 initialRebuildState:(long long)arg6 updatedRebuildState:(long long)arg7;
+- (long long)HFDataStore:(id)arg1 integerForKey:(id)arg2;
+- (void)HFDataStore:(id)arg1 setInteger:(long long)arg2 forKey:(id)arg3;
+- (void)HFDataStoreDidPerformRebuild:(id)arg1 didDecompressArchivedHFD:(BOOL)arg2 didOpenArchivedHFD:(BOOL)arg3 didOpenMovedAsideHFD:(BOOL)arg4 recoveryAnalytics:(id)arg5 duration:(double)arg6;
 - (id)_URLForWALForDatabaseAtURL:(id)arg1;
 - (BOOL)_allowProtectedDataAccessWhileLockedWithTransaction:(id)arg1;
 - (BOOL)_applyOffsetTimeInterval:(double)arg1 database:(id)arg2 error:(id *)arg3;
@@ -125,6 +128,7 @@
 - (void)_mergeSecondaryJournals;
 - (BOOL)_migrateOrCreateProtectedSchemaInDatabase:(id)arg1 transaction:(id)arg2 error:(id *)arg3;
 - (long long)_migrateOrCreateProtectedSchemaInDatabaseIfWritable:(id)arg1 error:(id *)arg2;
+- (id)_newDataStoreForPath:(id)arg1;
 - (id)_newDatabaseConnectionWithType:(long long)arg1 error:(id *)arg2;
 - (long long)_performMigrationWithUnprotectedDatabase:(id)arg1 protectedDatabase:(id)arg2 error:(id *)arg3;
 - (void)_performWhenDataProtectedByFirstUnlockIsAvailableOnQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
@@ -138,8 +142,10 @@
 - (BOOL)_runPostMigrationUpdatesWithDatabase:(id)arg1 error:(id *)arg2;
 - (id)_threadLocalTransaction;
 - (id)_threadLocalTransactionContext;
+- (void)_triggerHFDRebuildMaintenanceTask;
 - (BOOL)_waitForMergesWithCurrentJournal:(id)arg1 error:(id *)arg2;
 - (BOOL)accessHighFrequencyDataStoreWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
+- (id)activeTransactionForCurrentThreadForHFDataStore:(id)arg1;
 - (void)addDatabaseJournalMergeObserver:(id)arg1 journalType:(long long)arg2 queue:(id)arg3;
 - (BOOL)addJournalEntries:(id)arg1 error:(id *)arg2;
 - (BOOL)addJournalEntry:(id)arg1 error:(id *)arg2;
@@ -154,7 +160,6 @@
 - (id)checkOutUnprotectedDatabase:(id)arg1 error:(id *)arg2;
 - (id)cloneAccessibilityAssertion:(id)arg1 ownerIdentifier:(id)arg2 error:(id *)arg3;
 - (void)contentProtectionStateChanged:(long long)arg1 previousState:(long long)arg2;
-- (long long)currentHFDRebuildStage;
 - (void)databaseJournalMergeDidComplete:(id)arg1;
 - (void)databasePool:(id)arg1 didFlushDatabases:(id)arg2;
 - (id)databasePoolForDatabaseType:(long long)arg1;
@@ -164,6 +169,7 @@
 - (id)databaseURLForType:(long long)arg1;
 - (void)dealloc;
 - (id)diagnosticDescription;
+- (void)didMigrateHFDataStore:(id)arg1 fromState:(long long)arg2 toState:(long long)arg3 success:(BOOL)arg4 error:(id)arg5;
 - (BOOL)discardHighFrequencyDataStoreWithError:(id *)arg1;
 - (id)extendedDatabaseTransactionForIdentifier:(id)arg1;
 - (void)finalizeExtendedTransactionForIdentifier:(id)arg1;
@@ -172,6 +178,7 @@
 - (void)invalidateAndWait;
 - (unsigned long long)journalChapterCountForType:(long long)arg1;
 - (id)mainDatabaseURL;
+- (BOOL)migrateDataForHFDataStore:(id)arg1 from:(const struct DataStore *)arg2 to:(struct DataStore *)arg3 recoveryAnalytics:(id)arg4 error:(id *)arg5;
 - (void)migrationTransaction:(id)arg1 didCreateDatabasesWithIdentifier:(id)arg2;
 - (void)migrationTransaction:(id)arg1 didEncounterDatabaseMismatchWithUnprotectedIdentifier:(id)arg2 protectedIdentifier:(id)arg3;
 - (id)newDatabaseForDatabasePool:(id)arg1 error:(id *)arg2;
@@ -186,17 +193,12 @@
 - (BOOL)performWithTransactionContext:(id)arg1 error:(id *)arg2 block:(CDUnknownBlockType)arg3;
 - (id)progressForJournalMergeWithType:(long long)arg1;
 - (id)protectedDatabaseURL;
-- (BOOL)rebuildIfNeeded:(id *)arg1;
 - (void)removeDatabaseJournalMergeObserver:(id)arg1 journalType:(long long)arg2;
 - (void)removeProtectedDataObserver:(id)arg1;
-- (void)reportHFDRebuildStatus:(long long)arg1 error:(id)arg2;
-- (void)requestHFDRebuild;
-- (void)setCurrentHFDRebuildStage:(long long)arg1;
-- (BOOL)shouldRequestRebuildForFailure:(long long)arg1 code:(int)arg2;
+- (void)requestRebuildTransactionForHFDataStore:(id)arg1;
 - (id)takeAccessibilityAssertionWithOwnerIdentifier:(id)arg1 shouldPerformTransaction:(BOOL)arg2 timeout:(double)arg3 error:(id *)arg4;
 - (id)takeAccessibilityAssertionWithOwnerIdentifier:(id)arg1 timeout:(double)arg2 error:(id *)arg3;
 - (id)unitTest_currentTransaction;
-- (void)unitTest_requestHFDRebuild;
 - (void)unitTest_setContentProtectionStateAndWait:(long long)arg1;
 
 @end

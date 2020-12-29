@@ -6,18 +6,17 @@
 
 #import <objc/NSObject.h>
 
-@class HKHealthStore, HKKeyValueDomain, HKMenstrualCyclesStore, HKQuantity, NSDate, NSNumber;
+@class HKFeatureAvailabilityStore, HKHealthStore, HKKeyValueDomain, HKMenstrualCyclesStore, HKQuantity, NSDate, NSNumber;
 
 @interface HKMCOnboardingManager : NSObject
 {
     HKHealthStore *_healthStore;
     HKMenstrualCyclesStore *_menstrualCyclesStore;
     HKKeyValueDomain *_keyValueDomain;
-    NSNumber *_mostRecentOnboardingVersionCompleted;
+    HKFeatureAvailabilityStore *_featureAvailabilityStore;
 }
 
-@property (readonly, copy, nonatomic) NSNumber *mostRecentOnboardingVersionCompleted; // @synthesize mostRecentOnboardingVersionCompleted=_mostRecentOnboardingVersionCompleted;
-@property (readonly, nonatomic, getter=isOnboardingCompleted) BOOL onboardingCompleted;
+@property (readonly, copy, nonatomic) NSNumber *mostRecentOnboardingVersionCompleted;
 @property (readonly, copy, nonatomic) NSDate *onboardingFirstCompletedDate;
 @property (readonly, nonatomic) HKQuantity *userEnteredCycleLength;
 @property (readonly, nonatomic) HKQuantity *userEnteredPeriodLength;
@@ -25,12 +24,17 @@
 - (void).cxx_destruct;
 - (BOOL)_resetOnboardingCharacteristicsWithError:(id *)arg1;
 - (BOOL)_resetOnboardingKeyValueDomainWithError:(id *)arg1;
-- (void)_saveUserEnteredCycleLength:(id)arg1 userEnteredPeriodLength:(id)arg2 userEnteredLastPeriodStartDay:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_saveUserEnteredCycleLength:(id)arg1 userEnteredPeriodLength:(id)arg2 userEnteredLastPeriodStartDay:(id)arg3 addedCycleFactors:(id)arg4 deletedCycleFactors:(id)arg5 completion:(CDUnknownBlockType)arg6;
 - (BOOL)_setKeyValueDomainOnboardingCompletedVersion:(long long)arg1 error:(id *)arg2;
 - (void)_triggerHealthKitSync;
 - (id)initWithHealthStore:(id)arg1;
+- (BOOL)isAnyOnboardingVersionCompleted;
+- (BOOL)isCurrentOnboardingVersionCompleted;
+- (BOOL)isOnboardingVersionCompleted:(long long)arg1;
+- (void)resetCycleFactorsOnboarding:(CDUnknownBlockType)arg1;
 - (void)resetOnboarding:(CDUnknownBlockType)arg1;
-- (void)setOnboardingCompletedWithUserEnteredCycleLength:(id)arg1 userEnteredPeriodLength:(id)arg2 userEnteredLastPeriodStartDay:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)setCycleFactorsOnboardingCompletedWithAddedCycleFactors:(id)arg1 deletedCycleFactors:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setOnboardingCompletedWithUserEnteredCycleLength:(id)arg1 userEnteredPeriodLength:(id)arg2 userEnteredLastPeriodStartDay:(id)arg3 addedCycleFactors:(id)arg4 deletedCycleFactors:(id)arg5 completion:(CDUnknownBlockType)arg6;
 
 @end
 

@@ -40,6 +40,7 @@
     int _mainTransportType;
     NSString *_tracePath;
     NSDictionary *_miscInfo;
+    NSArray *_navigationEvents;
 }
 
 @property (strong, nonatomic) NSArray *annotatedUserBehavior; // @synthesize annotatedUserBehavior=_annotatedUserBehavior;
@@ -61,6 +62,7 @@
 @property (readonly, nonatomic) int mainTransportType; // @synthesize mainTransportType=_mainTransportType;
 @property (strong, nonatomic) NSDictionary *miscInfo; // @synthesize miscInfo=_miscInfo;
 @property (strong, nonatomic) NSArray *motionData; // @synthesize motionData=_motionData;
+@property (strong, nonatomic) NSArray *navigationEvents; // @synthesize navigationEvents=_navigationEvents;
 @property (nonatomic) unsigned long long originalVersion; // @synthesize originalVersion=_originalVersion;
 @property (strong, nonatomic) NSArray *routeSelections; // @synthesize routeSelections=_routeSelections;
 @property (strong, nonatomic) NSData *startWaypointData; // @synthesize startWaypointData=_startWaypointData;

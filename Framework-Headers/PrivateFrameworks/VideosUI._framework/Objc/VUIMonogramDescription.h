@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 @interface VUIMonogramDescription : NSObject <NSCopying>
 {
     BOOL _shouldFallBackToSilhouette;
+    BOOL _optimizedImageRendering;
     NSString *_firstName;
     NSString *_lastName;
     NSString *_text;
@@ -43,6 +44,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy, nonatomic) UIFont *font; // @synthesize font=_font;
 @property (readonly, copy, nonatomic) NSURL *imageURL; // @synthesize imageURL=_imageURL;
 @property (readonly, copy, nonatomic) NSString *lastName; // @synthesize lastName=_lastName;
+@property (nonatomic) BOOL optimizedImageRendering; // @synthesize optimizedImageRendering=_optimizedImageRendering;
 @property (nonatomic) struct UIEdgeInsets padding; // @synthesize padding=_padding;
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property (weak, nonatomic) id<IKNetworkRequestLoader> requestLoader; // @synthesize requestLoader=_requestLoader;

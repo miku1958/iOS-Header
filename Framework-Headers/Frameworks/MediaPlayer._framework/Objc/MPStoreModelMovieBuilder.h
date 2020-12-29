@@ -19,6 +19,7 @@
         unsigned int title:1;
         unsigned int description:1;
         unsigned int duration:1;
+        unsigned int releaseDate:1;
         unsigned int explicitRating:1;
         unsigned int tagline:1;
         unsigned int artwork:1;

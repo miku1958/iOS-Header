@@ -159,6 +159,7 @@
 - (double)adjustedDoubleForDaemonDouble:(double)arg1;
 - (id)adjustedValueForClientValue:(id)arg1;
 - (id)adjustedValueForDaemonValue:(id)arg1;
+- (id)cardioFitnessDataSourceWithUnitController:(id)arg1 healthStore:(id)arg2;
 - (id)chartingPredicateForTimeScope:(long long)arg1;
 - (id)colorWithDisplayCategoryController:(id)arg1;
 - (BOOL)contextItemShouldDisplayEventCountForDistributionStyle:(long long)arg1;

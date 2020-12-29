@@ -8,6 +8,7 @@
 
 @interface NSArray (PrependStringToItems)
 + (id)arrayWithArray:(id)arg1 prependPath:(id)arg2;
+- (unsigned long long)blt_sizeof;
 - (id)objectSentinelNull;
 - (id)objectWithNSNulls:(id)arg1;
 - (id)objectWithNoNSNulls:(id *)arg1;

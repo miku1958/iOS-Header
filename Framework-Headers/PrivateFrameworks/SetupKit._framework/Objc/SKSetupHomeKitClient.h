@@ -11,7 +11,7 @@
 #import <SetupKit/CULabelable-Protocol.h>
 #import <SetupKit/CUMessaging-Protocol.h>
 
-@class NSString, SKFlow, SKStepWiFiSetupClient;
+@class NSString, SKDevice, SKFlow, SKStepWiFiSetupClient;
 @protocol OS_dispatch_queue;
 
 @interface SKSetupHomeKitClient : NSObject <CUActivatable, CUAuthenticatableClient, CULabelable, CUMessaging>
@@ -28,6 +28,7 @@
     CDUnknownBlockType _invalidationHandler;
     NSString *_label;
     NSString *_password;
+    SKDevice *_peerDevice;
 }
 
 @property (copy, nonatomic) CDUnknownBlockType authCompletionHandler; // @synthesize authCompletionHandler=_authCompletionHandler;
@@ -39,6 +40,7 @@
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
 @property (copy, nonatomic) NSString *password; // @synthesize password=_password;
+@property (strong, nonatomic) SKDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

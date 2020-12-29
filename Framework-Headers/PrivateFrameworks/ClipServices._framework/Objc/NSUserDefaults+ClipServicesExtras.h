@@ -9,6 +9,9 @@
 @interface NSUserDefaults (ClipServicesExtras)
 
 @property (nonatomic) BOOL cps_didShowFirstTimeLocationConsent;
+@property (readonly, nonatomic) BOOL cps_forceReportProblemErrorFetchProblemTypes;
+@property (readonly, nonatomic) BOOL cps_forceReportProblemErrorNoDeveloperSupportURL;
+@property (readonly, nonatomic) BOOL cps_forceReportProblemErrorUnableToSubmitResponse;
 
 + (id)cps_clipServicesDefaults;
 @end

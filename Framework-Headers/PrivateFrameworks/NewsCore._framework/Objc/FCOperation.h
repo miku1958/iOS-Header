@@ -22,6 +22,7 @@
     long long _relativePriority;
     unsigned long long _retryCount;
     double _timeoutDuration;
+    NSString *_purpose;
     NSString *_operationID;
     double _operationStartTime;
     double _operationEndTime;
@@ -46,6 +47,7 @@
 @property (readonly, copy, nonatomic) NSString *operationID; // @synthesize operationID=_operationID;
 @property (nonatomic) double operationStartTime; // @synthesize operationStartTime=_operationStartTime;
 @property (readonly, nonatomic) FCOperation *proxyOperation;
+@property (copy, nonatomic) NSString *purpose; // @synthesize purpose=_purpose;
 @property (nonatomic) long long relativePriority; // @synthesize relativePriority=_relativePriority;
 @property (nonatomic) unsigned long long retryCount; // @synthesize retryCount=_retryCount;
 @property (strong, nonatomic) FCOnce *startOnce; // @synthesize startOnce=_startOnce;

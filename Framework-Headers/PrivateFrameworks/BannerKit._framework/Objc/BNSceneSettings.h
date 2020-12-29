@@ -13,6 +13,7 @@
 }
 
 @property (readonly, nonatomic) int bannerAppearState;
+@property (readonly, copy, nonatomic) Class clientContainerViewControllerClass;
 @property (readonly, nonatomic) struct CGSize containerSize;
 @property (readonly, nonatomic) struct CGSize presentationSize;
 @property (readonly, copy, nonatomic) NSString *revocationReason;

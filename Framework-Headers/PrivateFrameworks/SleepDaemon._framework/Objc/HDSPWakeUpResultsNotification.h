@@ -6,23 +6,37 @@
 
 #import <objc/NSObject.h>
 
-@class NSDictionary, NSString;
+@class HKQuantity, NSDictionary, NSString;
 
 __attribute__((visibility("hidden")))
 @interface HDSPWakeUpResultsNotification : NSObject
 {
-    NSDictionary *_userInfo;
+    unsigned long long _category;
+    HKQuantity *_goalAchieved;
     long long _endMorningIndex;
-    NSString *_category;
+    long long _notificationVariant;
+    NSString *_userFirstName;
 }
 
-@property (readonly, copy, nonatomic) NSString *category; // @synthesize category=_category;
+@property (readonly, nonatomic) unsigned long long category; // @synthesize category=_category;
+@property (readonly, copy, nonatomic) NSString *categoryIdentifier;
 @property (readonly, nonatomic) long long endMorningIndex; // @synthesize endMorningIndex=_endMorningIndex;
+@property (readonly, copy, nonatomic) HKQuantity *goalAchieved; // @synthesize goalAchieved=_goalAchieved;
 @property (readonly, copy, nonatomic) NSString *identifier;
-@property (readonly, copy, nonatomic) NSDictionary *userInfo; // @synthesize userInfo=_userInfo;
+@property (readonly, nonatomic) long long notificationVariant; // @synthesize notificationVariant=_notificationVariant;
+@property (readonly, copy, nonatomic) NSString *userFirstName; // @synthesize userFirstName=_userFirstName;
+@property (readonly, copy, nonatomic) NSDictionary *userInfo;
 
++ (id)goalAchievedQuantityForCategory:(unsigned long long)arg1 userInfo:(id)arg2;
++ (id)goalAchievedUserInfoKeyForCategory:(unsigned long long)arg1;
++ (id)wakeUpResultsNotificationFromUserInfo:(id)arg1;
 - (void).cxx_destruct;
-- (id)initWithCategory:(id)arg1 endMorningIndex:(long long)arg2 userInfo:(id)arg3;
+- (long long)goalAchievedUserInfoValue;
+- (unsigned long long)hash;
+- (id)initWithCategory:(unsigned long long)arg1 endMorningIndex:(long long)arg2 goalAchieved:(id)arg3 notificationVariant:(long long)arg4 userFirstName:(id)arg5;
+- (BOOL)isEqual:(id)arg1;
+- (BOOL)isEqualToNotification:(id)arg1;
+- (BOOL)isOneNight;
 
 @end
 

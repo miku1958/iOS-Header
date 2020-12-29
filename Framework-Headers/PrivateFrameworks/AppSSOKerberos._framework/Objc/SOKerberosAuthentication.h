@@ -13,13 +13,13 @@
     BOOL _siteDiscoveryInProgress;
     NSString *_realm;
     SORealmSettingManager *_settingsManager;
-    LAContext *_myLAContext;
+    LAContext *_smartcardLAContext;
 }
 
-@property (strong, nonatomic) LAContext *myLAContext; // @synthesize myLAContext=_myLAContext;
 @property (strong, nonatomic) NSString *realm; // @synthesize realm=_realm;
 @property (strong, nonatomic) SORealmSettingManager *settingsManager; // @synthesize settingsManager=_settingsManager;
 @property BOOL siteDiscoveryInProgress; // @synthesize siteDiscoveryInProgress=_siteDiscoveryInProgress;
+@property (strong, nonatomic) LAContext *smartcardLAContext; // @synthesize smartcardLAContext=_smartcardLAContext;
 
 + (void)saveValuesForPlugins:(id)arg1;
 - (void).cxx_destruct;

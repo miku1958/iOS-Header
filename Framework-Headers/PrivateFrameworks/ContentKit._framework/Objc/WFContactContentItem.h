@@ -29,6 +29,7 @@
 + (BOOL)supportedTypeMustBeDeterminedByInstance:(id)arg1;
 + (id)typeDescription;
 - (BOOL)canGenerateRepresentationForType:(id)arg1;
+- (id)changeTransaction;
 - (id)generateFileRepresentationForType:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (id)generateObjectRepresentationsForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
 - (BOOL)getListSubtitle:(CDUnknownBlockType)arg1;

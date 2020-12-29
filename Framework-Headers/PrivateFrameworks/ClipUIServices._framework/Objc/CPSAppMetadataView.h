@@ -6,7 +6,7 @@
 
 #import <UIKit/UIButton.h>
 
-@class CPSAppStoreButton, CPSScaledImageView, CPSVibrantLabel, NSArray, UIImage, UIImageView;
+@class CPSAppStoreButton, CPSContentRatingContainerView, CPSVibrantLabel, NSArray, UIImage, UIImageView;
 
 __attribute__((visibility("hidden")))
 @interface CPSAppMetadataView : UIButton
@@ -14,7 +14,7 @@ __attribute__((visibility("hidden")))
     UIImageView *_appIconView;
     CPSVibrantLabel *_poweredByVibrantLabel;
     CPSVibrantLabel *_appNameVibrantLabel;
-    CPSScaledImageView *_contentRatingImageView;
+    CPSContentRatingContainerView *_contentRatingContainerView;
     CPSAppStoreButton *_appStoreButton;
     NSArray *_leadingAppStoreButtonConstraints;
     NSArray *_trailingAppStoreButtonConstraints;
@@ -23,7 +23,6 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIImage *appIcon;
 
 - (void).cxx_destruct;
-- (id)_contentRatingLabelContainer;
 - (void)_setUpSubviews;
 - (void)_updateAppStoreButtonConstraints;
 - (id)initWithCoder:(id)arg1;

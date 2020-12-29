@@ -4,24 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class MISSING_TYPE, NSMutableArray, NSString;
+@class MISSING_TYPE;
 
 #pragma mark Blocks
 
 typedef void (^CDUnknownBlockType)(void); // return type and parameters are unknown
 
 #pragma mark Named Structures
-
-struct AssetData {
-    NSString *name;
-    struct vector<std::__1::array<float, 3>, std::__1::allocator<std::__1::array<float, 3>>> positions;
-    struct vector<std::__1::array<float, 2>, std::__1::allocator<std::__1::array<float, 2>>> texcoords;
-    struct vector<std::__1::array<float, 2>, std::__1::allocator<std::__1::array<float, 2>>> texcoords2;
-    struct vector<std::__1::array<float, 3>, std::__1::allocator<std::__1::array<float, 3>>> normals;
-    struct vector<std::__1::array<float, 4>, std::__1::allocator<std::__1::array<float, 4>>> colors;
-    NSMutableArray *materials;
-    struct vector<GroupData, std::__1::allocator<GroupData>> groups;
-};
 
 struct BSDFMaterialValues {
     struct CGColor *_field1;
@@ -50,8 +39,6 @@ struct BidirectionalScatteringDistributionFunction {
 struct CGColor;
 
 struct Detail;
-
-struct GroupData;
 
 struct Handle {
     unsigned int _field1;
@@ -280,12 +267,6 @@ struct __sbuf {
     int _field2;
 };
 
-struct array<float, 2>;
-
-struct array<float, 3>;
-
-struct array<float, 4>;
-
 struct float4x4 {
     MISSING_TYPE *columns[4];
 };
@@ -359,14 +340,6 @@ struct vector<(anonymous namespace)::TimeSampledVtValue, std::__1::allocator<(an
     } __end_cap_;
 };
 
-struct vector<GroupData, std::__1::allocator<GroupData>> {
-    struct GroupData *__begin_;
-    struct GroupData *__end_;
-    struct __compressed_pair<GroupData *, std::__1::allocator<GroupData>> {
-        struct GroupData *__value_;
-    } __end_cap_;
-};
-
 struct vector<MDLLight *, std::__1::allocator<MDLLight *>> {
     id *__begin_;
     id *__end_;
@@ -397,30 +370,6 @@ struct vector<int, std::__1::allocator<int>> {
     struct __compressed_pair<int *, std::__1::allocator<int>> {
         int *_field1;
     } _field3;
-};
-
-struct vector<std::__1::array<float, 2>, std::__1::allocator<std::__1::array<float, 2>>> {
-    struct array<float, 2> *__begin_;
-    struct array<float, 2> *__end_;
-    struct __compressed_pair<std::__1::array<float, 2>*, std::__1::allocator<std::__1::array<float, 2>>> {
-        struct array<float, 2> *__value_;
-    } __end_cap_;
-};
-
-struct vector<std::__1::array<float, 3>, std::__1::allocator<std::__1::array<float, 3>>> {
-    struct array<float, 3> *__begin_;
-    struct array<float, 3> *__end_;
-    struct __compressed_pair<std::__1::array<float, 3>*, std::__1::allocator<std::__1::array<float, 3>>> {
-        struct array<float, 3> *__value_;
-    } __end_cap_;
-};
-
-struct vector<std::__1::array<float, 4>, std::__1::allocator<std::__1::array<float, 4>>> {
-    struct array<float, 4> *__begin_;
-    struct array<float, 4> *__end_;
-    struct __compressed_pair<std::__1::array<float, 4>*, std::__1::allocator<std::__1::array<float, 4>>> {
-        struct array<float, 4> *__value_;
-    } __end_cap_;
 };
 
 struct vector<std::__1::pair<double, float __attribute__((ext_vector_type(3)))>, std::__1::allocator<std::__1::pair<double, float __attribute__((ext_vector_type(3)))>>> {

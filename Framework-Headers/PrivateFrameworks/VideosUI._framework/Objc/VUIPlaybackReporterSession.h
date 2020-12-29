@@ -26,8 +26,8 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL reportingEnabled; // @synthesize reportingEnabled=_reportingEnabled;
 
 + (id)transitionReasonForMediaControllerStartReason:(id)arg1 autoStart:(id)arg2;
-+ (id)transitionReasonForMediaControllerStopReason:(id)arg1 autoStart:(id)arg2;
-+ (id)transitionTypeForMediaControllerAutoStart:(id)arg1;
++ (id)transitionReasonForMediaControllerStopReason:(id)arg1 autoStop:(id)arg2;
++ (id)transitionTypeForMediaControllerAutoTransition:(id)arg1;
 - (void).cxx_destruct;
 - (id)consumeMetadataForKey:(id)arg1;
 - (id)consumeStartReason;

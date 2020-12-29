@@ -56,6 +56,7 @@
 - (BOOL)handleHomeButtonLongPress;
 - (BOOL)handleHomeButtonPress;
 - (BOOL)handleLockButtonPress;
+- (BOOL)handleVoiceCommandButtonPress;
 - (BOOL)handleVolumeDownButtonPress;
 - (BOOL)handleVolumeUpButtonPress;
 - (id)initWithSceneHandle:(id)arg1;

@@ -33,7 +33,7 @@
 + (id)taskWithExperiment:(id)arg1 treatmentId:(id)arg2 taskAttributing:(id)arg3;
 - (id)_asPersistedTask;
 - (id)_nextTasksForRunStatus:(int)arg1;
-- (int)_processTreatment:(id)arg1 database:(id)arg2 paths:(id)arg3;
+- (int)_processTreatment:(id)arg1 context:(id)arg2 paths:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (unsigned long long)requiredCapabilities;

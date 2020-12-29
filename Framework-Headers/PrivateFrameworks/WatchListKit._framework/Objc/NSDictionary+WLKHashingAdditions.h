@@ -20,5 +20,6 @@
 - (id)wlk_dictionaryForKey:(id)arg1;
 - (id)wlk_numberForKey:(id)arg1;
 - (id)wlk_stringForKey:(id)arg1;
+- (id)wlk_urlForKey:(id)arg1;
 @end
 

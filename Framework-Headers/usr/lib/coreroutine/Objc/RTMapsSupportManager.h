@@ -26,6 +26,8 @@
 - (void)_fetchHistoryEntryPlaceDisplaysWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchHistoryEntryRoutesWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)_fetchPinnedPlacesWithHandler:(CDUnknownBlockType)arg1;
+- (void)_fetchReviewedPlacesWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
+- (void)_fetchReviewedPlacesWrapperWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (long long)_queryTypeForQuery:(id)arg1;
 - (void)_setup;
 - (void)_showParkedCarBulletinForEvent:(id)arg1;
@@ -35,6 +37,7 @@
 - (void)fetchHistoryEntryPlaceDisplaysWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchHistoryEntryRoutesWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (void)fetchPinnedPlacesWithHandler:(CDUnknownBlockType)arg1;
+- (void)fetchReviewedPlacesWithOptions:(id)arg1 handler:(CDUnknownBlockType)arg2;
 - (id)init;
 - (id)initWithMapServiceManager:(id)arg1;
 - (void)queryContentsDidChangeWithQuery:(id)arg1;

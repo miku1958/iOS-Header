@@ -8,12 +8,12 @@
 
 #import <SensorKit/SRDaemonNotificationDelegate-Protocol.h>
 
-@class NSDictionary, NSString, NSXPCConnection, SRDaemonNotification, SRDevice, SRSensorDatastore;
+@class NSDictionary, NSString, NSXPCConnection, SRDaemonNotification, SRDatastore, SRDevice;
 @protocol SRSensorPrunerDelegate;
 
 @interface SRSensorPruner : NSObject <SRDaemonNotificationDelegate>
 {
-    SRSensorDatastore *_datastore;
+    SRDatastore *_datastore;
     SRDaemonNotification *_daemonNotification;
     BOOL _connectionDidInterrupt;
     BOOL _connectionDidInvalidate;
@@ -27,7 +27,7 @@
 @property (strong) NSXPCConnection *connection; // @synthesize connection=_connection;
 @property BOOL connectionDidInterrupt; // @synthesize connectionDidInterrupt=_connectionDidInterrupt;
 @property BOOL connectionDidInvalidate; // @synthesize connectionDidInvalidate=_connectionDidInvalidate;
-@property (readonly, strong) SRSensorDatastore *datastore;
+@property (readonly, strong) SRDatastore *datastore;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak) id<SRSensorPrunerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

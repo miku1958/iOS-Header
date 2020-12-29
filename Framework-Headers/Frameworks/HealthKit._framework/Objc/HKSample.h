@@ -19,6 +19,7 @@
 
 @property (readonly) NSDate *endDate;
 @property (nonatomic, getter=_endTimestamp, setter=_setEndTimestamp:) double endTimestamp; // @synthesize endTimestamp=_endTimestamp;
+@property (readonly) BOOL hasUndeterminedDuration;
 @property (readonly, copy) HKSampleType *sampleType;
 @property (readonly) NSDate *startDate;
 @property (nonatomic, getter=_startTimestamp, setter=_setStartTimestamp:) double startTimestamp; // @synthesize startTimestamp=_startTimestamp;

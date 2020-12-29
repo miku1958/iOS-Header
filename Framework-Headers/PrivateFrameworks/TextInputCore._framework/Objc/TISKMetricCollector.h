@@ -62,6 +62,7 @@
 - (void)_consumeWordEntry:(id)arg1;
 - (id)_findSessionWithLayoutOfSameDimentions:(id)arg1 layout:(id)arg2;
 - (void)_haltSessionTypingTimer:(id)arg1 event:(id)arg2;
+- (id)_insertEmojiSwitchEvents:(id)arg1;
 - (void)_loadStatsFromDataStore;
 - (id)_mapIDToLayout:(unsigned long long)arg1;
 - (void)_mapTapsToEvents;

@@ -8,12 +8,14 @@
 
 #import <AppPredictionClient/NSCopying-Protocol.h>
 
-@class NSMutableArray;
+@class ATXPBCGRectWrapper, NSMutableArray, NSString;
 
 @interface ATXPBHomeScreenEventMetadata : PBCodable <NSCopying>
 {
     unsigned long long _pageIndex;
+    NSString *_engagedUrl;
     NSMutableArray *_stackIds;
+    ATXPBCGRectWrapper *_visibleRect;
     NSMutableArray *_widgetIdentifiables;
     NSMutableArray *_widgetInStackIdentifiables;
     BOOL _isSuggestionInAddWidgetSheet;
@@ -25,13 +27,17 @@
     } _has;
 }
 
+@property (strong, nonatomic) NSString *engagedUrl; // @synthesize engagedUrl=_engagedUrl;
+@property (readonly, nonatomic) BOOL hasEngagedUrl;
 @property (nonatomic) BOOL hasIsSuggestionInAddWidgetSheet;
 @property (nonatomic) BOOL hasIsWidgetInTodayView;
 @property (nonatomic) BOOL hasPageIndex;
+@property (readonly, nonatomic) BOOL hasVisibleRect;
 @property (nonatomic) BOOL isSuggestionInAddWidgetSheet; // @synthesize isSuggestionInAddWidgetSheet=_isSuggestionInAddWidgetSheet;
 @property (nonatomic) BOOL isWidgetInTodayView; // @synthesize isWidgetInTodayView=_isWidgetInTodayView;
 @property (nonatomic) unsigned long long pageIndex; // @synthesize pageIndex=_pageIndex;
 @property (strong, nonatomic) NSMutableArray *stackIds; // @synthesize stackIds=_stackIds;
+@property (strong, nonatomic) ATXPBCGRectWrapper *visibleRect; // @synthesize visibleRect=_visibleRect;
 @property (strong, nonatomic) NSMutableArray *widgetIdentifiables; // @synthesize widgetIdentifiables=_widgetIdentifiables;
 @property (strong, nonatomic) NSMutableArray *widgetInStackIdentifiables; // @synthesize widgetInStackIdentifiables=_widgetInStackIdentifiables;
 

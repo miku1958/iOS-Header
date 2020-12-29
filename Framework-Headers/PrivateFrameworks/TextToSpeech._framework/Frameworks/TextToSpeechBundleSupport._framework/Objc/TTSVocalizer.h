@@ -14,15 +14,17 @@
     struct __CFArray *_ttsVocalizerResourceDataPtrs;
     struct __CFData *_ttsVocalizerRulesetData;
     NSString *_ttsVocalizerCurrentLanguageCode;
+    long long _speechGender;
 }
 
+@property (nonatomic) long long speechGender; // @synthesize speechGender=_speechGender;
 @property (strong, nonatomic) NSString *ttsVocalizerCurrentLanguageCode; // @synthesize ttsVocalizerCurrentLanguageCode=_ttsVocalizerCurrentLanguageCode;
 @property (nonatomic) void *ttsVocalizerDataClass; // @synthesize ttsVocalizerDataClass=_ttsVocalizerDataClass;
 @property (strong, nonatomic) struct __CFArray *ttsVocalizerResourceDataPtrs; // @synthesize ttsVocalizerResourceDataPtrs=_ttsVocalizerResourceDataPtrs;
 @property (strong, nonatomic) struct __CFData *ttsVocalizerRulesetData; // @synthesize ttsVocalizerRulesetData=_ttsVocalizerRulesetData;
 
 - (unsigned int)_ttsVocalizerAppendPhonemeToString:(struct _VE_HSAFE *)arg1 phoneme:(unsigned short)arg2 phonemeString:(struct __CFString *)arg3;
-- (unsigned int)_ttsVocalizerCopyAvailableVoiceNames:(const struct __CFArray **)arg1;
+- (unsigned int)_ttsVocalizerCopyAvailableVoiceInfo:(const struct __CFArray **)arg1;
 - (unsigned int)_ttsVocalizerCreateInstance:(struct _VE_HSAFE *)arg1 desiredVoiceName:(char **)arg2 desiredFootprint:(long long)arg3 languageCode:(struct __CFString *)arg4 voiceType:(long long)arg5;
 - (unsigned char)_ttsVocalizerDefaultVoiceIsFallback;
 - (unsigned int)_ttsVocalizerDestroy;
@@ -34,6 +36,7 @@
 - (unsigned int)_ttsVocalizerProcessText:(struct __CFString *)arg1 instance:(struct _VE_HSAFE *)arg2 callback:(CDUnknownFunctionPointerType)arg3 context:(void *)arg4;
 - (unsigned int)_ttsVocalizerReallyLoadResource:(struct _VE_HSAFE)arg1 mimeType:(const char *)arg2 rules:(struct __CFData *)arg3 resource:(struct _VE_HSAFE *)arg4 supportsAccurateWordCallbacks:(unsigned char)arg5 resourceIdentifier:(id)arg6;
 - (unsigned int)_ttsVocalizerSetParameters:(struct _VE_HSAFE *)arg1 rate:(float)arg2 pitch:(float)arg3 volume:(float)arg4 footprintID:(long long)arg5;
+- (long long)_ttsVocalizerSpeechGender;
 - (unsigned int)_ttsVocalizerVoiceInfoForActiveLanguage:(CDStruct_3f1f4513 *)arg1;
 - (void)dealloc;
 - (id)initWithLanguage:(struct __CFString *)arg1 defaultLanguage:(struct __CFString *)arg2 reinitIfNecessary:(unsigned char)arg3 instanceToDestroy:(struct _VE_HSAFE *)arg4 forceReinit:(unsigned char)arg5 voiceType:(long long)arg6 gender:(long long)arg7 footprint:(long long)arg8 voiceName:(struct __CFString *)arg9 error:(unsigned int *)arg10;

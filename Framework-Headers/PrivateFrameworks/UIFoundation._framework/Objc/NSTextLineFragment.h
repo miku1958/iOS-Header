@@ -24,7 +24,7 @@
     struct CGRect _imageBounds;
     struct {
         unsigned int rendersTextCorrectionMarkers:1;
-        unsigned int hasRTLRun:1;
+        unsigned int isRTLLine:1;
     } _flags;
     NSTextLayoutFragment *_textLayoutFragment;
     CDUnknownBlockType __renderingAttributesProvider;

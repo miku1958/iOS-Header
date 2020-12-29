@@ -6,29 +6,33 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsCore/FCContentArchivable-Protocol.h>
 #import <NewsCore/NSCopying-Protocol.h>
 
-@class AVURLAsset, NFUnfairLock, NSDictionary, NSString, NSURL;
-@protocol FCAVAssetCacheType, FCAVAssetKeyManagerType, FCAVAssetResourceLoaderType;
+@class AVURLAsset, FCContentArchive, NFUnfairLock, NSDictionary, NSString, NSURL;
+@protocol FCAVAssetCacheType, FCAVAssetKeyCacheType, FCAVAssetKeyManagerType, FCAVAssetResourceLoaderType;
 
-@interface FCAVAsset : NSObject <NSCopying>
+@interface FCAVAsset : NSObject <NSCopying, FCContentArchivable>
 {
     AVURLAsset *_asset;
     NSString *_identifier;
     NSDictionary *_assetOptions;
-    NSURL *_remoteURL;
     NFUnfairLock *_assetLock;
     id<FCAVAssetCacheType> _assetCache;
+    id<FCAVAssetKeyCacheType> _assetKeyCache;
     id<FCAVAssetResourceLoaderType> _assetResourceLoader;
     id<FCAVAssetKeyManagerType> _assetKeyManager;
+    NSURL *_remoteURL;
 }
 
 @property (readonly, nonatomic) AVURLAsset *asset; // @synthesize asset=_asset;
 @property (readonly, weak, nonatomic) id<FCAVAssetCacheType> assetCache; // @synthesize assetCache=_assetCache;
+@property (readonly, weak, nonatomic) id<FCAVAssetKeyCacheType> assetKeyCache; // @synthesize assetKeyCache=_assetKeyCache;
 @property (readonly, weak, nonatomic) id<FCAVAssetKeyManagerType> assetKeyManager; // @synthesize assetKeyManager=_assetKeyManager;
 @property (readonly, nonatomic) NFUnfairLock *assetLock; // @synthesize assetLock=_assetLock;
 @property (readonly, copy, nonatomic) NSDictionary *assetOptions; // @synthesize assetOptions=_assetOptions;
 @property (readonly, weak, nonatomic) id<FCAVAssetResourceLoaderType> assetResourceLoader; // @synthesize assetResourceLoader=_assetResourceLoader;
+@property (readonly, nonatomic) FCContentArchive *contentArchive;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isHLS;
 @property (readonly, copy, nonatomic) NSURL *remoteURL; // @synthesize remoteURL=_remoteURL;
@@ -38,7 +42,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithIdentifier:(id)arg1 remoteURL:(id)arg2 assetCache:(id)arg3 assetKeyManager:(id)arg4 assetResourceLoader:(id)arg5 overrideMIMEType:(id)arg6;
+- (id)initWithIdentifier:(id)arg1 remoteURL:(id)arg2 assetCache:(id)arg3 assetKeyCache:(id)arg4 assetKeyManager:(id)arg5 assetResourceLoader:(id)arg6 overrideMIMEType:(id)arg7;
 - (BOOL)isEqual:(id)arg1;
 
 @end

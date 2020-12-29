@@ -38,11 +38,13 @@
 + (id)ringGroupControllerConfiguredForWatchWithRingType:(long long)arg1 withIcon:(BOOL)arg2;
 - (void).cxx_destruct;
 - (void)addAnimation:(id)arg1 forRingGroupPropertyType:(unsigned long long)arg2;
+- (void)addCelebration:(id)arg1 toRingAtIndex:(long long)arg2;
 - (void)addOpacityAnimation:(id)arg1 forRingAtIndex:(long long)arg2;
 - (float)diameterForRingAtIndex:(unsigned long long)arg1;
 - (id)init;
 - (id)initWithNumberOfRings:(long long)arg1;
 - (id)initWithRingGroup:(id)arg1;
+- (void)removeCelebration:(id)arg1 fromRingAtIndex:(long long)arg2;
 - (void)setActiveEnergyPercentage:(double)arg1 animated:(BOOL)arg2;
 - (void)setActiveEnergyPercentage:(double)arg1 briskPercentage:(double)arg2 movingHoursPercentage:(double)arg3 animated:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)setBriskPercentage:(double)arg1 animated:(BOOL)arg2;

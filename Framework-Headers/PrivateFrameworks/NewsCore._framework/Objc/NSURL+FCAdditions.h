@@ -28,12 +28,12 @@
 - (BOOL)fc_isHardPaywallNewsArticleURL:(out id *)arg1;
 - (BOOL)fc_isNewsArticleURL;
 - (BOOL)fc_isNewsIssueURL;
-- (BOOL)fc_isNewsSubscriptionURL;
 - (BOOL)fc_isNewsTagURL;
 - (BOOL)fc_isNewsURL;
 - (BOOL)fc_isResourceURL;
 - (BOOL)fc_isStoreURL;
 - (BOOL)fc_isWebArchiveURL;
+- (BOOL)fc_isWebOptInURL;
 - (id)fc_resourceID;
 @end
 

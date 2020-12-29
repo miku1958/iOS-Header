@@ -18,6 +18,7 @@
 - (id)safari_nonContaineredSettingsDirectoryURL;
 - (id)safari_pathWithUniqueFilenameForPath:(id)arg1;
 - (id)safari_productionSafariSettingsDirectory;
+- (void)safari_removeContentsOfDirectory:(id)arg1;
 - (BOOL)safari_removeDirectoryIfEmpty:(id)arg1;
 - (BOOL)safari_removeFileAtURL:(id)arg1 error:(id *)arg2;
 - (BOOL)safari_removeFileOnlyAtURL:(id)arg1 error:(id *)arg2;

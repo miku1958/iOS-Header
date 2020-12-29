@@ -15,7 +15,7 @@
 
 - (long long)controlType;
 - (id)imageNameForCurrentState;
-- (void)updateImage;
+- (BOOL)shouldUseActiveTintForCurrentState;
 
 @end
 

@@ -24,6 +24,7 @@
 - (void)datastoreListingWithReply:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)dumpClientsWithReply:(CDUnknownBlockType)arg1;
+- (void)dumpConfigurationsWithReply:(CDUnknownBlockType)arg1;
 - (void)dumpStateCacheWithReply:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithConnection:(id)arg1;

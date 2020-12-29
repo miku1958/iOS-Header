@@ -11,6 +11,7 @@
 @interface _TtC26SiriPlaybackControlIntents11ContextUtil : _TtCs12_SwiftObject
 {
     MISSING_TYPE *analyticsService;
+    MISSING_TYPE *deviceState;
     MISSING_TYPE *resumeLongWindowDuration;
     MISSING_TYPE *resumeShortWindowDuration;
     MISSING_TYPE *autoResumableProximitiesInLongWindow;

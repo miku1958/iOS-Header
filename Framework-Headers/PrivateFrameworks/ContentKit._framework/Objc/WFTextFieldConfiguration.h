@@ -20,6 +20,7 @@
     BOOL _smartDashesDisabled;
     BOOL _focusImmediatelyWhenPresented;
     BOOL _showsDateFormattingHint;
+    BOOL _dateHintPrefersDateOnly;
     BOOL _doesRelativeDateFormatting;
     NSString *_prefix;
     NSString *_text;
@@ -42,6 +43,7 @@
 @property (copy, nonatomic) NSString *autocorrectionType; // @synthesize autocorrectionType=_autocorrectionType;
 @property (copy, nonatomic) NSString *clearButtonMode; // @synthesize clearButtonMode=_clearButtonMode;
 @property (nonatomic) unsigned long long dateFormatStyle; // @synthesize dateFormatStyle=_dateFormatStyle;
+@property (nonatomic) BOOL dateHintPrefersDateOnly; // @synthesize dateHintPrefersDateOnly=_dateHintPrefersDateOnly;
 @property (nonatomic) BOOL doesRelativeDateFormatting; // @synthesize doesRelativeDateFormatting=_doesRelativeDateFormatting;
 @property (nonatomic) BOOL focusImmediatelyWhenPresented; // @synthesize focusImmediatelyWhenPresented=_focusImmediatelyWhenPresented;
 @property (nonatomic) long long initialInsertionIndex; // @synthesize initialInsertionIndex=_initialInsertionIndex;

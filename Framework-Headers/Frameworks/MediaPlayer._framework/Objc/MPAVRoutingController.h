@@ -9,7 +9,7 @@
 #import <MediaPlayer/_MPStateDumpPropertyListTransformable-Protocol.h>
 
 @class MPAVRoute, MPAVRoutingControllerSelectionQueue, MPAVRoutingDataSource, NSArray, NSSet, NSString;
-@protocol MPAVOutputDevicePlaybackDataSource, MPAVRoutingControllerDelegate;
+@protocol MPAVOutputDevicePlaybackDataSource, MPAVRoutingControllerDelegate, OS_dispatch_queue;
 
 @interface MPAVRoutingController : NSObject <_MPStateDumpPropertyListTransformable>
 {
@@ -22,6 +22,7 @@
     MPAVRoutingControllerSelectionQueue *_routingControllerSelectionQueue;
     int _deviceAvailabilityNotifyToken;
     BOOL _deviceAvailabilityOverrideState;
+    NSObject<OS_dispatch_queue> *_serialQueue;
     BOOL _fetchAvailableRoutesSynchronously;
     BOOL _representsLongFormVideoContent;
     id<MPAVRoutingControllerDelegate> _delegate;
@@ -71,7 +72,7 @@
 + (id)_iconImageNameForClusterRoute:(id)arg1;
 + (id)_iconImageNameForDeviceSubtypes:(id)arg1 route:(id)arg2;
 + (id)_iconNameForRoute:(id)arg1;
-+ (id)_sharedSerialQueue;
++ (id)_sharedWorkerQueue;
 + (BOOL)bundleIdRepresentsLongFormVideoContent:(id)arg1;
 + (void)getActiveRouteWithCompletion:(CDUnknownBlockType)arg1;
 + (void)getActiveRouteWithTimeout:(double)arg1 completion:(CDUnknownBlockType)arg2;

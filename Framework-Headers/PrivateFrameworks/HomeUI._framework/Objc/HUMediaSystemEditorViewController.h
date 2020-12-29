@@ -44,6 +44,7 @@
 - (id)_checkIfAccessoriesNeedSoftwareUpdateToSupportPairing;
 - (void)_configureMediaSystemBuilderToMoveHomePodsToRoom:(id)arg1;
 - (id)_executeAppleMusicAccountReconcilationForMediaSystemBuilder:(id)arg1;
+- (id)_executePreferredMediaUserReconcilationForMediaSystemBuilder:(id)arg1;
 - (id)_promptForRoomChange;
 - (Class)cellClassForItem:(id)arg1 indexPath:(id)arg2;
 - (id)childViewControllersToPreload;

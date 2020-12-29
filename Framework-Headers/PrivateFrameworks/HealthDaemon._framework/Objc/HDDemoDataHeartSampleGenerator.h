@@ -10,6 +10,7 @@
 
 @interface HDDemoDataHeartSampleGenerator : HDDemoDataBaseSampleGenerator
 {
+    BOOL _lastVO2MaxWorkoutWasActive;
     HDProfile *_profile;
     double _nextElectrocardiogramSampleTime;
     unsigned long long _nextElectrocardiogramClassification;
@@ -17,22 +18,33 @@
     double _nextWalkingHeartRateAverageSampleTime;
     double _lastRestingHeartRate;
     double _lastWalkingHeartRateAverage;
+    double _nextVO2MaxSampleTime;
+    double _lastVO2MaxValue;
+    double _meanVO2MaxValue;
 }
 
 @property (nonatomic) double lastRestingHeartRate; // @synthesize lastRestingHeartRate=_lastRestingHeartRate;
+@property (nonatomic) double lastVO2MaxValue; // @synthesize lastVO2MaxValue=_lastVO2MaxValue;
+@property (nonatomic) BOOL lastVO2MaxWorkoutWasActive; // @synthesize lastVO2MaxWorkoutWasActive=_lastVO2MaxWorkoutWasActive;
 @property (nonatomic) double lastWalkingHeartRateAverage; // @synthesize lastWalkingHeartRateAverage=_lastWalkingHeartRateAverage;
+@property (nonatomic) double meanVO2MaxValue; // @synthesize meanVO2MaxValue=_meanVO2MaxValue;
 @property (nonatomic) unsigned long long nextElectrocardiogramClassification; // @synthesize nextElectrocardiogramClassification=_nextElectrocardiogramClassification;
 @property (nonatomic) double nextElectrocardiogramSampleTime; // @synthesize nextElectrocardiogramSampleTime=_nextElectrocardiogramSampleTime;
 @property (nonatomic) double nextRestingHeartRateSampleTime; // @synthesize nextRestingHeartRateSampleTime=_nextRestingHeartRateSampleTime;
+@property (nonatomic) double nextVO2MaxSampleTime; // @synthesize nextVO2MaxSampleTime=_nextVO2MaxSampleTime;
 @property (nonatomic) double nextWalkingHeartRateAverageSampleTime; // @synthesize nextWalkingHeartRateAverageSampleTime=_nextWalkingHeartRateAverageSampleTime;
 @property (weak, nonatomic) HDProfile *profile; // @synthesize profile=_profile;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)_completeCardioFitnessOnboardingIfNecessaryForDemoPerson:(id)arg1 date:(id)arg2;
 - (double)_computeRestingHeartRateForDemoPerson:(id)arg1 atTime:(double)arg2;
+- (double)_computeVO2MaxValueForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (double)_computeWalkingHeartRateAverageForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (id)_generateElectrocardiogramForDemoPerson:(id)arg1 atTime:(double)arg2 classification:(unsigned long long)arg3 sampleDate:(id)arg4;
 - (id)_generateSymptomSamplesForElectrocardiogram:(id)arg1;
+- (BOOL)_isVO2MaxWorkoutActive;
+- (double)_meanVO2MaxValueForDemoPerson:(id)arg1 date:(id)arg2;
 - (id)electrocardiogramForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3;
 - (void)encodeWithCoder:(id)arg1;
 - (void)generateFirstRunSampleForDemoPerson:(id)arg1 firstDate:(id)arg2 objectCollection:(id)arg3;
@@ -42,6 +54,7 @@
 - (id)restingHeartRateForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (void)setProfile:(id)arg1 provenance:(id)arg2;
 - (void)setupWithDemoDataGenerator:(id)arg1;
+- (id)vo2MaxValueForDemoPerson:(id)arg1 atTime:(double)arg2 sampleDate:(id)arg3;
 - (id)walkingHeartRateAverageForDemoPerson:(id)arg1 atTime:(double)arg2;
 
 @end

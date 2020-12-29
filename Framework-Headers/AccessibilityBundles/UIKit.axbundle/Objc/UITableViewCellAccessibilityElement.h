@@ -37,6 +37,7 @@
 - (id)_accessibilityCustomActionGroupIdentifier;
 - (void)_accessibilityCut;
 - (id)_accessibilityDataDetectorScheme:(struct CGPoint)arg1;
+- (BOOL)_accessibilityElementServesAsHeadingLandmark;
 - (id)_accessibilityEquivalenceTag;
 - (BOOL)_accessibilityHasNativeFocus;
 - (BOOL)_accessibilityHasTextOperations;

@@ -61,6 +61,7 @@ __attribute__((visibility("hidden")))
     NSNumber *inputHueMagBM;
     CIFilter *inputLinearSpaceFilter;
     NSNumber *inputEnableEDRMode;
+    NSNumber *inputLocalToneMapAmount;
     NSNumber *inputReturnDemosaiced;
 }
 
@@ -102,6 +103,7 @@ __attribute__((visibility("hidden")))
 - (id)defaultInputHueMagMRAmount;
 - (id)defaultInputHueMagRYAmount;
 - (id)defaultInputHueMagYGAmount;
+- (id)defaultInputLocalToneMapAmount;
 - (id)defaultInputLuminanceNoiseReductionAmount;
 - (id)defaultInputMoireAmount;
 - (id)defaultInputNoiseReductionContrastAmount;
@@ -165,6 +167,7 @@ __attribute__((visibility("hidden")))
 - (void)setInputImage:(id)arg1;
 - (void)setInputImageOrientation:(id)arg1;
 - (void)setInputLinearSpaceFilter:(id)arg1;
+- (void)setInputLocalToneMapAmount:(id)arg1;
 - (void)setInputLuminanceNoiseReductionAmount:(id)arg1;
 - (void)setInputMoireAmount:(id)arg1;
 - (void)setInputNeutralChromaticityX:(id)arg1;

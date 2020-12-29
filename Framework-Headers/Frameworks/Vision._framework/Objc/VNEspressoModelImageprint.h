@@ -27,14 +27,14 @@
     long long _distanceMode;
 }
 
-@property (readonly, nonatomic) unsigned long long confidenceScoreType; // @synthesize confidenceScoreType=_confidenceScoreType;
+@property (nonatomic) unsigned long long confidenceScoreType; // @synthesize confidenceScoreType=_confidenceScoreType;
 @property (strong) NSData *descriptorData; // @synthesize descriptorData=_descriptorData;
 @property long long distanceMode; // @synthesize distanceMode=_distanceMode;
 @property unsigned long long elementCount; // @synthesize elementCount=_elementCount;
-@property (readonly) unsigned long long elementType;
+@property unsigned long long elementType; // @synthesize elementType=_elementType;
 @property (copy) NSDictionary *labelsAndConfidence; // @synthesize labelsAndConfidence=_labelsAndConfidence;
 @property unsigned long long lengthInBytes; // @synthesize lengthInBytes=_lengthInBytes;
-@property (readonly, nonatomic) unsigned long long requestRevision;
+@property (nonatomic) unsigned long long requestRevision; // @synthesize requestRevision=_requestRevision;
 @property (readonly, nonatomic) unsigned long long serializedLength;
 @property (copy) NSString *version; // @synthesize version=_version;
 

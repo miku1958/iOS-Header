@@ -18,10 +18,10 @@
     long long _provenance;
     NSString *_productType;
     HKHeartRhythmAvailability *_availability;
+    long long _onboardingType;
     NSMutableDictionary *_userInfo;
     id<HROnboardingManagerDataSource> _dataSource;
     id<HROnboardingManagerDelegate> _delegate;
-    long long _onboardingType;
     HKHealthStore *_healthStore;
     HKDateCache *_dateCache;
     UINavigationController *_navigationController;
@@ -65,6 +65,7 @@
 - (void)stepForward;
 - (void)stepToNextPage;
 - (void)stepToNextState;
+- (long long)upgradingFromAlgorithmVersionForOnboardingType:(long long)arg1;
 - (id)viewControllerForPage:(id)arg1;
 
 @end

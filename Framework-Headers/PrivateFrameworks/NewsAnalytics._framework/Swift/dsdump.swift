@@ -64,18 +64,18 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : Ã
+	var width : Ωﬁ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : Ã
+	var height : Ωﬁ
  }
 
  struct __C.CGPoint {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var x : Ã
+	var x : Ωﬁ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var y : Ã
+	var y : Ωﬁ
  }
 
  struct NewsAnalytics.StartMethodData {
@@ -120,12 +120,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let userID : String // +0x0
 	let userType : UserType // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userStartDate : —” // +0x18
+	let userStartDate : ôÊ // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let ageBracket : ´” // +0x20
+	let ageBracket : sÊ // +0x20
 	let ageBracketConfidenceLevel : Float // +0x24
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let gender : ´” // +0x28
+	let gender : sÊ // +0x28
 	let genderConfidenceLevel : Float // +0x2c
 	let userStorefrontID : String // +0x30
  }
@@ -155,42 +155,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleScienceData : Ø…
+	let articleScienceData : W‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let orientationData : ì…
+	let orientationData : ;‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueExposureContextData : i…
+	let issueExposureContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewContextData : ?…
+	let issueViewContextData : Á€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let articleData : ArticleData
 	let viewData : ViewData
 	let articleScienceData : ScienceData
@@ -224,12 +224,49 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case feedData  
  }
 
+ struct NewsAnalytics.ArticleLoadEvent {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let eventData : è‹
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let timedData : Å‹
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedData : Ÿ€
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let articleData : s‹
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resultActionData : E€
+ }
+
+ struct NewsAnalytics.Model {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let eventData : Õ‹
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let timedData : ›
+	let feedData : FeedData
+	let articleData : ArticleData
+	let resultActionData : ResultActionData
+ }
+
+ enum NewsAnalytics.CodingKeys {
+
+	// Properties
+	case eventData  
+	case timedData  
+	case feedData  
+	case articleData  
+	case resultActionData  
+ }
+
  struct NewsAnalytics.ReferringArticleData {
 
 	// Properties
 	let articleID : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherArticleVersion : —” // +0x10
+	let publisherArticleVersion : ôÊ // +0x10
 	let role : Role // +0x18
  }
 
@@ -239,6 +276,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case articleID  
 	case publisherArticleVersion  
 	case role  
+ }
+
+ enum NewsAnalytics.ResultAction {
+
+	// Properties
+	case unknown  
+	case abandoned  
+	case loaded  
+	case appBackgrounded  
  }
 
  enum NewsAnalytics.FeedbackType {
@@ -254,44 +300,44 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaData : G»
+	let mediaData : £⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaEngagementData : 9»
+	let mediaEngagementData : ï⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let anfComponentData : +»
+	let anfComponentData : á⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let orientationData : ì…
+	let orientationData : ;‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleExposureContextData : »
+	let articleExposureContextData : y⁄
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let articleData : ArticleData
 	let channelData : ChannelData
 	let groupData : GroupData
@@ -331,22 +377,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webEmbedData : ±«
+	let webEmbedData : ⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let webEmbedData : WebEmbedData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
  }
@@ -389,12 +435,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timePlayed : —” // +0x0
+	let timePlayed : ôÊ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let deltaTimePlayed : —” // +0x8
+	let deltaTimePlayed : ôÊ // +0x8
 	let userAction : MediaUserAction // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let position : ´” // +0x14
+	let position : sÊ // +0x14
 	let engagementID : String // +0x18
 	let playMethod : MediaPlayMethod // +0x28
 	let listeningSource : ListeningSource // +0x29
@@ -432,34 +478,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionData : ´∆
+	let actionData : Ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleExposureContextData : »
+	let articleExposureContextData : y⁄
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let articleData : ArticleData
 	let actionData : ActionData
 	let channelData : ChannelData
@@ -519,30 +565,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : ›≈
+	let tagData : 9ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sectionData : œ≈
+	let sectionData : +ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let groupData : GroupData
 	let feedData : FeedData
 	let viewData : ViewData
@@ -609,40 +655,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaData : G»
+	let mediaData : £⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let anfComponentData : +»
+	let anfComponentData : á⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let galleryData : ≈
+	let galleryData : w◊
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let articleData : ArticleData
 	let channelData : ChannelData
 	let groupData : GroupData
@@ -695,7 +741,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let topResultTagID : String? // +0x18
 	let topResultArticleID : String? // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let totalResults : ´” // +0x38
+	let totalResults : sÊ // +0x38
 	let completedString : String? // +0x40
  }
 
@@ -715,30 +761,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let exposureData : kƒ
+	let exposureData : «÷
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupDataList : ]ƒ
+	let groupDataList : π÷
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let personalizationFeatureCTRDataList : Oƒ
+	let personalizationFeatureCTRDataList : ´÷
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let exposureData : WidgetExposureData
 	let groupDataList : GroupDataList
 	let personalizationFeatureCTRDataList : PersonalizationFeatureCTRDataList
 	let viewData : ViewData
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -770,6 +816,43 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ struct NewsAnalytics.GroupLoadEvent {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let eventData : è‹
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedData : Ÿ€
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let timedData : Å‹
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let groupData : ±⁄
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let resultActionData : E€
+ }
+
+ struct NewsAnalytics.Model {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let eventData : Õ‹
+	let feedData : FeedData
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let timedData : ›
+	let groupData : GroupData
+	let resultActionData : ResultActionData
+ }
+
+ enum NewsAnalytics.CodingKeys {
+
+	// Properties
+	case eventData  
+	case feedData  
+	case timedData  
+	case groupData  
+	case resultActionData  
+ }
+
  class NewsAnalytics.NotificationIgnoreSubscribeEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
  }
@@ -778,30 +861,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : ›≈
+	let tagData : 9ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedPositionData : ≈√
+	let feedPositionData : ˜’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sectionData : ∑√
+	let sectionData : È’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let tagData : TagData
 	let feedPositionData : FeedPositionData
 	let viewData : ViewData
@@ -864,42 +947,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallData : √
+	let paywallData : A’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseData : √
+	let purchaseData : 3’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseSessionData : Û¬
+	let purchaseSessionData : %’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sectionData : ∑√
+	let sectionData : È’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButtonContextData : Â¬
+	let subscribeButtonContextData : ’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let articleData : ArticleData
 	let channelData : ChannelData
 	let feedData : FeedData
@@ -945,24 +1028,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resultData : u¬
+	let resultData : ß‘
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallData : √
+	let paywallData : A’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseData : √
+	let purchaseData : 3’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseSessionData : Û¬
+	let purchaseSessionData : %’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let resultData : ResultData
 	let paywallData : PaywallData
 	let purchaseData : PurchaseData
@@ -985,34 +1068,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let listenSheetActionData : '¬
+	let listenSheetActionData : Y‘
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let articleData : ArticleData
 	let channelData : ChannelData
 	let groupData : GroupData
@@ -1108,24 +1191,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : ›≈
+	let tagData : 9ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let campaignData : ¡
+	let campaignData : 7”
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let notificationSubscribedData : ˜¿
+	let notificationSubscribedData : )”
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let tagData : TagData
 	let campaignData : CampaignData
 	let notificationSubscribedData : NotificationSubscribedData
@@ -1156,17 +1239,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adUserData : õ¿
+	let adUserData : Õ“
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adPlacementData : ç¿
+	let adPlacementData : ø“
  }
 
  struct NewsAnalytics.Model {
@@ -1174,9 +1257,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let adUserData : AdUserData
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
 	let feedData : FeedData
 	let adPlacementData : AdPlacementData
@@ -1249,7 +1332,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let galleryType : GalleryType // +0x0
 	let galleryID : String // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let galleryImageCount : ´” // +0x18
+	let galleryImageCount : sÊ // +0x18
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -1264,32 +1347,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionData : ´∆
+	let actionData : Ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let articleData : ArticleData
 	let actionData : ActionData
 	let feedData : FeedData
@@ -1324,24 +1407,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : ›≈
+	let tagData : 9ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let campaignData : ¡
+	let campaignData : 7”
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let notificationSubscribedData : ˜¿
+	let notificationSubscribedData : )”
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let tagData : TagData
 	let campaignData : CampaignData
 	let notificationSubscribedData : NotificationSubscribedData
@@ -1366,11 +1449,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let assemblies : [NFAssembly]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x28fcc00076d48 (0x7cc00076d48) in binary!
-	0x28fc0  @objc Assembly.(null) <stripped>
-WARNING: couldn't find address 0x2d12c00076d28 (0x12c00076d28) in binary!
+WARNING: couldn't find address 0x2a11c000793e8 (0x11c000793e8) in binary!
+	0x2a110  @objc Assembly.(null) <stripped>
+WARNING: couldn't find address 0x2e41c000793c8 (0x41c000793c8) in binary!
 	0x18000000c  @objc Assembly.(null) <stripped>
-WARNING: couldn't find address 0x28f9c00076d38 (0x79c00076d38) in binary!
+WARNING: couldn't find address 0x2a0ec000793d8 (0xec000793d8) in binary!
 	0x18000000c  @objc Assembly.(null) <stripped>
  }
 
@@ -1409,13 +1492,13 @@ WARNING: couldn't find address 0x28f9c00076d38 (0x79c00076d38) in binary!
 	var articleIDs : Set<String> // +0x28 (0x8)
 	let desRecordStore : DESRecordStore? // +0x30 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var startDate : ¡º // +0x0 (0x0)
+	var startDate : ÎŒ // +0x0 (0x0)
 	let dateFormatter : NSISO8601DateFormatter // +0x0 (0x8)
 	let cloudContext : FCCloudContext // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let jsonEncoder : Cº // +0x0 (0x8)
+	let jsonEncoder : mŒ // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let jsonDecoder : ù√ // +0x0 (0x8)
+	let jsonDecoder : Ô’ // +0x0 (0x8)
 
 	// Swift methods
  }
@@ -1432,30 +1515,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let customItemData : Ω
+	let customItemData : Qœ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedPositionData : ≈√
+	let feedPositionData : ˜’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let inGroupPositionData : Ω
+	let inGroupPositionData : Cœ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let viewData : ViewData
 	let customItemData : CustomItemData
 	let feedPositionData : FeedPositionData
@@ -1533,7 +1616,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let position : ´” // +0x0
+	let position : sÊ // +0x0
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -1579,22 +1662,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let urlData : _ª
+	let urlData : ëÕ
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let articleData : ArticleData
 	let viewData : ViewData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
@@ -1625,7 +1708,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let utcOffset : ´” // +0x0
+	let utcOffset : sÊ // +0x0
 	let languageCode : String? // +0x8
 	let countryCode : String? // +0x18
 	let iCloudAccountState : ICloudAccountState // +0x28
@@ -1716,34 +1799,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionData : ´∆
+	let actionData : Ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleExposureContextData : »
+	let articleExposureContextData : y⁄
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let articleData : ArticleData
 	let actionData : ActionData
 	let channelData : ChannelData
@@ -1774,7 +1857,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsAnalytics.TrackerAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x28f9c00076d38 (0x79c00076d38) in binary!
+WARNING: couldn't find address 0x2a0ec000793d8 (0xec000793d8) in binary!
 	0x18000000c  @objc TrackerAssembly.(null) <stripped>
  }
 
@@ -1796,7 +1879,7 @@ WARNING: couldn't find address 0x28f9c00076d38 (0x79c00076d38) in binary!
 	let accessorQueue : OS_dispatch_queue // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x28f6c000771a8 (0x76c000771a8) in binary!
+WARNING: couldn't find address 0x2a0bc00079850 (0xbc00079850) in binary!
 	0x18000000c  @objc SessionAccess.(null) <stripped>
 
 	// Swift methods
@@ -1885,7 +1968,7 @@ WARNING: couldn't find address 0x28f6c000771a8 (0x76c000771a8) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let code : ´” // +0x0
+	let code : sÊ // +0x0
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -1896,7 +1979,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsAnalytics.FactoryAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x28f5400076cf0 (0x75400076cf0) in binary!
+WARNING: couldn't find address 0x2a0a400079390 (0xa400079390) in binary!
 	0x18000000c  @objc FactoryAssembly.(null) <stripped>
  }
 
@@ -1940,28 +2023,28 @@ WARNING: couldn't find address 0x28f5400076cf0 (0x75400076cf0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adUserData : õ¿
+	let adUserData : Õ“
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adCreativeData : ë∑
+	let adCreativeData : √…
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adPlacementData : ç¿
+	let adPlacementData : ø“
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adJournalEntryData : É∑
+	let adJournalEntryData : µ…
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let adUserData : AdUserData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
 	let feedData : FeedData
@@ -1988,24 +2071,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userActionData : ?∑
+	let userActionData : q…
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let newsletterSubscriptionData : 1∑
+	let newsletterSubscriptionData : c…
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let userActionData : EmailSignupUserActionData
 	let newsletterSubscriptionData : NewsletterSubscriptionData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
@@ -2033,30 +2116,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscriptionData : Â∂
+	let subscriptionData : …
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let notificationData : ◊∂
+	let notificationData : 	…
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let notificationSettingsData : …∂
+	let notificationSettingsData : ˚»
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let autoSubscribedData : ª∂
+	let autoSubscribedData : Ì»
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewEndData : ≠∂
+	let viewEndData : ﬂ»
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
 	let subscriptionData : SubscriptionData
 	let notificationData : NotificationData
@@ -2104,34 +2187,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let orientationData : ì…
+	let orientationData : ;‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let hostArticleViewData : ∂
+	let hostArticleViewData : K»
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let hostArticleNewsArticleData : À…
+	let hostArticleNewsArticleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let hostArticleChannelData : M…
+	let hostArticleChannelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewEndData : ≠∂
+	let viewEndData : ﬂ»
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let viewData : ViewData
 	let feedData : FeedData
 	let orientationData : OrientationData
@@ -2176,7 +2259,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let eventStreamObserver : NYNewsAudioPBEventStreamObserver? // +0x18 (0x8)
 	let eventTranslators : FeldsparEventTranslatorType // +0x20 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let jsonDecoder : ù√ // +0x28 (0x8)
+	let jsonDecoder : Ô’ // +0x28 (0x8)
 	var session : Session // +0x30 (0x140)
 	var eventQueue : [NTPBEvent] // +0x170 (0x8)
 
@@ -2199,24 +2282,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : ›≈
+	let tagData : 9ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionData : ´∆
+	let actionData : Ÿ
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let tagData : TagData
 	let feedData : FeedData
 	let viewData : ViewData
@@ -2241,7 +2324,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let pageIndices :  empty-list  // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pageCount : ´” // +0x8
+	let pageCount : sÊ // +0x8
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -2302,7 +2385,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let networkEventData : á≥
+	let networkEventData : π≈
  }
 
  struct NewsAnalytics.Model {
@@ -2321,26 +2404,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : ›≈
+	let tagData : 9ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionData : ´∆
+	let actionData : Ÿ
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let viewData : ViewData
 	let tagData : TagData
 	let feedData : FeedData
@@ -2371,7 +2454,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let groupData : GroupData // +0x98
 	let tagData : TagData // +0x110
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contentFetchDate : —” // +0x120
+	let contentFetchDate : ôÊ // +0x120
 	let displayMode : DisplayModeData // +0x128
 	let topicTag : String? // +0x130
 	let userID : String // +0x140
@@ -2404,6 +2487,39 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case background  
  }
 
+ struct NewsAnalytics.FeedLoadEvent {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let eventData : è‹
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let feedData : Ÿ€
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let timedData : Å‹
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let viewData : e‹
+ }
+
+ struct NewsAnalytics.Model {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let eventData : Õ‹
+	let feedData : FeedData
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let timedData : ›
+	let viewData : ViewData
+ }
+
+ enum NewsAnalytics.CodingKeys {
+
+	// Properties
+	case eventData  
+	case feedData  
+	case timedData  
+	case viewData  
+ }
+
  enum NewsAnalytics.NotificationSubscribedType {
 
 	// Properties
@@ -2418,43 +2534,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var flushManager : a≤
+	var flushManager : iƒ
 
 	// Swift methods
-	0xc0780  func <stripped> // method 
- }
-
- struct NewsAnalytics.FeedLoadEvent {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
- }
-
- struct NewsAnalytics.Model {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
-	let feedData : FeedData
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
-	let viewData : ViewData
- }
-
- enum NewsAnalytics.CodingKeys {
-
-	// Properties
-	case eventData  
-	case feedData  
-	case timedData  
-	case viewData  
+	0xc9420  func <stripped> // method 
  }
 
  class NewsAnalytics.DownloadIssueEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2465,33 +2548,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let channelData : ChannelData
 	let issueData : IssueData
 	let issueViewData : IssueViewData
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let feedData : FeedData
 	let userChannelContextData : UserChannelContextData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
@@ -2518,10 +2601,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let jsonDecoder : ù√
+	let jsonDecoder : Ô’
 
 	// Swift methods
-	0xc7620  class func ValidationEventProcessor.__allocating_init() // init 
+	0xce020  class func ValidationEventProcessor.__allocating_init() // init 
  }
 
  struct NewsAnalytics.DownloadStateData {
@@ -2541,7 +2624,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let personalizationFeatureID : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let ctr : —” // +0x10
+	let ctr : ôÊ // +0x10
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -2555,13 +2638,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let followingData : ﬂ±
+	let followingData : ƒ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
@@ -2570,7 +2653,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let viewData : ViewData
 	let followingData : FollowingData
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
  }
 
@@ -2615,22 +2698,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let magazineCategoryData : ?±
+	let magazineCategoryData : q√
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let magazineCategoryData : MagazineCategoryData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
  }
@@ -2681,38 +2764,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionData : ´∆
+	let actionData : Ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shareContextData : Å∞
+	let shareContextData : ≥¬
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adData : s∞
+	let adData : •¬
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleExposureContextData : »
+	let articleExposureContextData : y⁄
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let articleData : ArticleData
 	let actionData : ActionData
 	let feedData : FeedData
@@ -2749,16 +2832,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let appSessionManager : µØ
+	let appSessionManager : ﬂ¡
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x28f2400076cc0 (0x72400076cc0) in binary!
-	0x2d090  @objc AppSessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x2a07400079360 (0x7400079360) in binary!
+	0x2e380  @objc AppSessionObserver.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x3fcffeb0818  @objc AppSessionObserver.(null) <stripped>
+	0x29cffeacd58  @objc AppSessionObserver.(null) <stripped>
 
 	// Swift methods
-	0xd9460  class func AppSessionObserver.__allocating_init(appSessionManager:) // init 
+	0xe0300  class func AppSessionObserver.__allocating_init(appSessionManager:) // init 
  }
 
  class NewsAnalytics.BlockTagEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, BlockLocationEventTranslator {
@@ -2778,40 +2861,40 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaData : G»
+	let mediaData : £⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let anfComponentData : +»
+	let anfComponentData : á⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let galleryData : ≈
+	let galleryData : w◊
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let articleData : ArticleData
 	let channelData : ChannelData
 	let groupData : GroupData
@@ -2859,32 +2942,44 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case qToken  
  }
 
+ struct NewsAnalytics.ResultActionData {
+
+	// Properties
+	let action : ResultAction // +0x0
+ }
+
+ enum NewsAnalytics.CodingKeys {
+
+	// Properties
+	case action  
+ }
+
  struct NewsAnalytics.ReplicaAdvertisementEngagementEvent {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let viewData : ViewData
 	let articleData : ArticleData
 	let channelData : ChannelData
@@ -2915,13 +3010,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let articleID : String // +0x10
 	let articleType : ArticleType // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let backendArticleVersion : —” // +0x28
+	let backendArticleVersion : ôÊ // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bodyTextLength : ﬂ∏ // +0x30
+	let bodyTextLength : À // +0x30
 	let hasVideo : Bool // +0x39
 	let iAdCategories : [String]? // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let publisherArticleVersion : —” // +0x48
+	let publisherArticleVersion : ôÊ // +0x48
 	let referencedArticleID : String? // +0x50
 	let role : Role // +0x60
 	let topicIDs : [String] // +0x68
@@ -2964,9 +3059,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let identifier : ´” // +0x0
+	let identifier : sÊ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let position : ´” // +0x4
+	let position : sÊ // +0x4
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -2980,22 +3075,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let searchData : ©Æ
+	let searchData : ≠¿
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let searchResultsData : õÆ
+	let searchResultsData : ü¿
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let searchData : SearchData
 	let searchResultsData : SearchResultsData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
@@ -3024,30 +3119,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : ›≈
+	let tagData : 9ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedbackData : UÆ
+	let feedbackData : Y¿
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let articleData : ArticleData
 	let channelData : ChannelData
 	let tagData : TagData
@@ -3073,42 +3168,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let resultData : u¬
+	let resultData : ß‘
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let campaignData : ¡
+	let campaignData : 7”
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let errorData : Æ
+	let errorData : !¿
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sectionData : ∑√
+	let sectionData : È’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseData : √
+	let purchaseData : 3’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseSessionData : Û¬
+	let purchaseSessionData : %’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallData : √
+	let paywallData : A’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleExposureContextData : »
+	let articleExposureContextData : y⁄
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let articleData : ArticleData
 	let channelData : ChannelData
 	let feedData : FeedData
@@ -3147,7 +3242,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class NewsAnalytics.DebugAssembly : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x28ee400076c80 (0x6e400076c80) in binary!
+WARNING: couldn't find address 0x2a03400079320 (0x3400079320) in binary!
 	0x18000000c  @objc DebugAssembly.(null) <stripped>
  }
 
@@ -3167,18 +3262,18 @@ WARNING: couldn't find address 0x28ee400076c80 (0x6e400076c80) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let orientationData : ì…
+	let orientationData : ;‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
 	let orientationData : OrientationData
  }
@@ -3202,12 +3297,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let identifier : String // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleCount : —” // +0x10
+	let articleCount : ôÊ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleExposureCount : —” // +0x18
+	let articleExposureCount : ôÊ // +0x18
 	let appearanceType : WidgetAppearanceType // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let contentFetchDate : —” // +0x28
+	let contentFetchDate : ôÊ // +0x28
+	let stackKind : WidgetAppearanceStackKind // +0x30
+	let stackLocation : WidgetAppearanceStackLocation // +0x31
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -3218,6 +3315,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case articleExposureCount  
 	case appearanceType  
 	case contentFetchDate  
+	case stackKind  
+	case stackLocation  
+ }
+
+ enum NewsAnalytics.WidgetAppearanceStackKind {
+
+	// Properties
+	case unknown  
+	case pinnedWidget  
+	case smartStack  
+	case nonSmartStack  
  }
 
  class NewsAnalytics.ANFComponentExposureEventTranslator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3228,48 +3336,48 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let pdfPageContext : %≠
+	let pdfPageContext : ø
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let campaignData : ¡
+	let campaignData : 7”
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let notificationData : ◊∂
+	let notificationData : 	…
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let referralData : ≠
+	let referralData : ˝æ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallData : √
+	let paywallData : A’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let issueData : IssueData
 	let issueViewData : IssueViewData
 	let channelData : ChannelData
 	let userChannelContextData : UserChannelContextData
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let feedData : FeedData
 	let groupData : GroupData
 	let pdfPageContext : PDFPageContext
@@ -3305,26 +3413,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let viewData : ViewData
 	let articleData : ArticleData
 	let channelData : ChannelData
@@ -3349,7 +3457,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let trackDuration : ´” // +0x0
+	let trackDuration : sÊ // +0x0
 	let trackVariant : TrackVariant // +0x4
  }
 
@@ -3364,7 +3472,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let jsonDecoder : ù√
+	let jsonDecoder : Ô’
 	let topicStore : PPTopicStore?
 	let kPortraitTopicStoreClientIdentifier : String
 	let kPortraitFeedbackMappingID : String
@@ -3391,32 +3499,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionData : ´∆
+	let actionData : Ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let articleData : ArticleData
 	let actionData : ActionData
 	let channelData : ChannelData
@@ -3455,54 +3563,67 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case type  
  }
 
+ enum NewsAnalytics.SessionObserverKind {
+
+	// Properties
+	case app  
+	case audio  
+	case telemetry  
+ }
+
  class NewsAnalytics.SessionObserver : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sessionManager : ·´
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tracker : õ¨
+	let sessionManager : πΩ
 	let cloudContext : FCCloudContext
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let client : m¨
+	let client : Kæ
+	let kind : SessionObserverKind
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tracker : mæ
 	var window : UIWindow?
 	var sceneSessionIdentifier : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x2eb0c00076bf0 (0x30c00076bf0) in binary!
-	0x2e1ef  @objc SessionObserver.(null) <stripped>
-WARNING: couldn't find address 0x2e29800076bc8 (0x29800076bc8) in binary!
-	0x2cfd8  @objc SessionObserver.(null) <stripped>
-WARNING: couldn't find address 0x2cfcc000774d0 (0x7cc000774d0) in binary!
-	0x2d140  @objc SessionObserver.(null) <stripped>
-WARNING: couldn't find address 0x2cfb4000774d0 (0x7b4000774d0) in binary!
-	0x2cfa8  @objc SessionObserver.(null) <stripped>
-WARNING: couldn't find address 0x2e25000076b70 (0x25000076b70) in binary!
-	0x2e244  @objc SessionObserver.(null) <stripped>
-WARNING: couldn't find address 0x2d7b400076b48 (0x7b400076b48) in binary!
-	0x2cf78  @objc SessionObserver.(null) <stripped>
-WARNING: couldn't find address 0x28df400076b28 (0x5f400076b28) in binary!
-	0x2e214  @objc SessionObserver.(null) <stripped>
-WARNING: couldn't find address 0x28ddc00076b78 (0x5dc00076b78) in binary!
-	0x2cf48  @objc SessionObserver.(null) <stripped>
-WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x77cfffda0c0  @objc SessionObserver.(null) <stripped>
-	0xfffda318  @objc SessionObserver.HÖ¿ÑÅ <stripped>
-WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
-	0x4796c616e41  @objc SessionObserver.(null) <stripped>
-WARNING: couldn't find address 0x454a4f5250202073 (0x75250202073) in binary!
-	0xa31  @objc SessionObserver.(null) <stripped>
-WARNING: couldn't find address 0x3ff0000000000000 (0x0) in binary!
-	0x1000000  @objc SessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x2feec00079290 (0x6ec00079290) in binary!
+	0x2f594  @objc SessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x2f4d300079270 (0x4d300079270) in binary!
+	0x2f57c  @objc SessionObserver.(null) <stripped>
+	0x2e2b0  MediaViewEvent.feedData.getter
+WARNING: couldn't find address 0x2e42400079990 (0x42400079990) in binary!
+	0x2e298  @objc SessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x2e28c00079218 (0x28c00079218) in binary!
+	0x2f534  @objc SessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x2f528000791f0 (0x528000791f0) in binary!
+	0x2ea98  @objc SessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x2e25c000794e0 (0x25c000794e0) in binary!
+	0x29f38  @objc SessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x2f4f8000791a8 (0x4f8000791a8) in binary!
+	0x29f20  @objc SessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x2e22c000791d8 (0x22c000791d8) in binary!
+	0x38000000c  @objc SessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x29efc00079170 (0x6fc00079170) in binary!
+	0x29ef0  @objc SessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x29ee400079150 (0x6e400079150) in binary!
+	0x25029232840  @objc SessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x7377654e3a4d4152 (0x54e3a4d4152) in binary!
+	0x75250202073  @objc SessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x2d7377654e3a5443 (0x7654e3a5443) in binary!
+	0x0  @objc SessionObserver.(null) <stripped>
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	0x46144646f68  @objc SessionObserver.(null) <stripped>
-WARNING: couldn't find address 0xe5c00000051 (0x65c00000051) in binary!
-	0x100038998  @objc SessionObserver.(null) <stripped>
-WARNING: couldn't find address 0x435f5f00000002 (0x75f00000002) in binary!
-	0xfffffff4  @objc SessionObserver.(null) <stripped>
+	0x0  @objc SessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x74654d7472617453 (0x57472617453) in binary!
+	0x65c00000051  @objc SessionObserver.(null) <stripped>
+WARNING: couldn't find offset 0xffffffe8 in binary!
+WARNING: couldn't find offset 0xffffffe8 in binary!
+WARNING: couldn't find address 0xffdce824ffffffe8 (0x0) in binary!
+	0x75f00000002  @objc SessionObserver.(null) <stripped>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	0x646e454346  @objc SessionObserver.(null) <stripped>
 
 	// Swift methods
-	0x114e60  class func SessionObserver.__allocating_init(sessionManager:cloudContext:client:) // init 
+	0x11cf50  class func SessionObserver.__allocating_init(sessionManager:cloudContext:client:kind:) // init 
  }
 
  struct NewsAnalytics.NotificationData {
@@ -3531,30 +3652,30 @@ WARNING: couldn't find address 0x435f5f00000002 (0x75f00000002) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let hostArticleViewData : ∂
+	let hostArticleViewData : K»
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let hostArticleNewsArticleData : À…
+	let hostArticleNewsArticleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let hostArticleChannelData : M…
+	let hostArticleChannelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let groupData : GroupData
 	let feedData : FeedData
 	let hostArticleViewData : ArticleViewData
@@ -3608,24 +3729,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let orientationData : ì…
+	let orientationData : ;‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let viewData : ViewData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
 	let orientationData : OrientationData
@@ -3665,22 +3786,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
 	let viewData : ViewData
  }
@@ -3698,40 +3819,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaData : G»
+	let mediaData : £⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let anfComponentData : +»
+	let anfComponentData : á⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaEngagementCompletedData : ™
+	let mediaEngagementCompletedData : œª
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let orientationData : ì…
+	let orientationData : ;‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleExposureContextData : »
+	let articleExposureContextData : y⁄
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let articleData : ArticleData
 	let channelData : ChannelData
 	let groupData : GroupData
@@ -3770,45 +3891,45 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adData : s∞
+	let adData : •¬
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedPositionData : ≈√
+	let feedPositionData : ˜’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let inGroupPositionData : Ω
+	let inGroupPositionData : Cœ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleScienceData : Ø…
+	let articleScienceData : W‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleExposureContextData : »
+	let articleExposureContextData : y⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleViewData : ∂
+	let articleViewData : K»
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let adData : AdData
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let articleData : ArticleData
 	let feedPositionData : FeedPositionData
 	let inGroupPositionData : InGroupPositionData
@@ -3885,30 +4006,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscriptionData : Â∂
+	let subscriptionData : …
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let referralData : ≠
+	let referralData : ˝æ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let campaignData : ¡
+	let campaignData : 7”
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let notificationData : ◊∂
+	let notificationData : 	…
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let notificationSettingsData : …∂
+	let notificationSettingsData : ˚»
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let widgetEngagementData : ˇ®
+	let widgetEngagementData : …∫
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let autoSubscribedData : ª∂
+	let autoSubscribedData : Ì»
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
 	let subscriptionData : SubscriptionData
 	let referralData : ReferralData
@@ -3955,32 +4076,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let widgetData : Ö®
+	let widgetData : O∫
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let alternateHeadlineData : w®
+	let alternateHeadlineData : A∫
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedPositionData : ≈√
+	let feedPositionData : ˜’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let inGroupPositionData : Ω
+	let inGroupPositionData : Cœ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : ›≈
+	let tagData : 9ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let widgetData : WidgetData
 	let alternateHeadlineData : AlternateHeadlineData
 	let articleData : ArticleData
@@ -3990,7 +4111,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let tagData : TagData
 	let viewData : ViewData
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -4046,7 +4167,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let mediaType : MediaType // +0x0
 	let mediaID : String // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaDuration : ì± // +0x18
+	let mediaDuration : }√ // +0x18
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -4055,6 +4176,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case mediaType  
 	case mediaID  
 	case mediaDuration  
+ }
+
+ struct NewsAnalytics.DebugData {
+
+	// Properties
+	let name : String // +0x0
+ }
+
+ enum NewsAnalytics.CodingKeys {
+
+	// Properties
+	case name  
  }
 
  enum NewsAnalytics.EventPath {
@@ -4146,19 +4279,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adUserData : õ¿
+	let adUserData : Õ“
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let videoAdData : Wß
+	let videoAdData : Ì∏
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adPlacementData : ç¿
+	let adPlacementData : ø“
  }
 
  struct NewsAnalytics.Model {
@@ -4166,7 +4299,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let adUserData : AdUserData
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
 	let channelData : ChannelData
 	let feedData : FeedData
@@ -4190,24 +4323,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let orientationData : ì…
+	let orientationData : ;‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let viewData : ViewData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
 	let orientationData : OrientationData
@@ -4274,73 +4407,73 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adData : s∞
+	let adData : •¬
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedPositionData : ≈√
+	let feedPositionData : ˜’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let inGroupPositionData : Ω
+	let inGroupPositionData : Cœ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleScienceData : Ø…
+	let articleScienceData : W‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let orientationData : ì…
+	let orientationData : ;‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueExposureContextData : i…
+	let issueExposureContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let referralData : ≠
+	let referralData : ˝æ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallData : √
+	let paywallData : A’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let campaignData : ¡
+	let campaignData : 7”
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let notificationData : ◊∂
+	let notificationData : 	…
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewContextData : ?…
+	let issueViewContextData : Á€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let engagementData : C¶
+	let engagementData : Ÿ∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleExposureContextData : »
+	let articleExposureContextData : y⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let widgetEngagementData : ˇ®
+	let widgetEngagementData : …∫
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let referringArticleData : 5¶
+	let referringArticleData : À∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let searchData : ©Æ
+	let searchData : ≠¿
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseOffersData : '¶
+	let purchaseOffersData : Ω∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let stateRestoreData : ¶
+	let stateRestoreData : Ø∑
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let adData : AdData
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let articleData : ArticleData
 	let feedPositionData : FeedPositionData
 	let inGroupPositionData : InGroupPositionData
@@ -4464,7 +4597,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaTimePlayed : —” // +0x0
+	let mediaTimePlayed : ôÊ // +0x0
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -4524,24 +4657,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adUserData : õ¿
+	let adUserData : Õ“
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adPlacementData : ç¿
+	let adPlacementData : ø“
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let adUserData : AdUserData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
 	let adPlacementData : AdPlacementData
@@ -4574,37 +4707,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueScienceData : Ø…
+	let issueScienceData : W‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueExposureContextData : i…
+	let issueExposureContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedPositionData : ≈√
+	let feedPositionData : ˜’
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let issueData : IssueData
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let feedData : FeedData
 	let groupData : GroupData
 	let issueScienceData : ScienceData
@@ -4725,34 +4858,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionData : ´∆
+	let actionData : Ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let shareContextData : Å∞
+	let shareContextData : ≥¬
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adData : s∞
+	let adData : •¬
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let actionData : ActionData
 	let feedData : FeedData
 	let groupData : GroupData
@@ -4805,18 +4938,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseRestoreListData : q¢
+	let purchaseRestoreListData : ¥
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let purchaseRestoreListData : PurchaseRestoreListData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
  }
@@ -4849,30 +4982,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adUserData : õ¿
+	let adUserData : Õ“
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adStateData : ˘°
+	let adStateData : è≥
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adPlacementData : ç¿
+	let adPlacementData : ø“
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let adUserData : AdUserData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
 	let channelData : ChannelData
@@ -4918,20 +5051,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let searchData : ©Æ
+	let searchData : ≠¿
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let searchData : SearchData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
 	let viewData : ViewData
@@ -4950,38 +5083,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sectionData : ∑√
+	let sectionData : È’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseData : √
+	let purchaseData : 3’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseSessionData : Û¬
+	let purchaseSessionData : %’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallData : √
+	let paywallData : A’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButtonContextData : Â¬
+	let subscribeButtonContextData : ’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let articleData : ArticleData
 	let channelData : ChannelData
 	let feedData : FeedData
@@ -5030,44 +5163,44 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sectionData : ∑√
+	let sectionData : È’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let campaignData : ¡
+	let campaignData : 7”
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseData : √
+	let purchaseData : 3’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseSessionData : Û¬
+	let purchaseSessionData : %’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscriptionResultData : I°
+	let subscriptionResultData : ﬂ≤
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let storeKitErrorData : ;°
+	let storeKitErrorData : —≤
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adReferralData : -°
+	let adReferralData : √≤
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let amsErrorData : °
+	let amsErrorData : µ≤
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleExposureContextData : »
+	let articleExposureContextData : y⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : ›≈
+	let tagData : 9ÿ
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let articleData : ArticleData
 	let feedData : FeedData
 	let groupData : GroupData
@@ -5139,6 +5272,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case cvws  
 	case ckPublicDB  
 	case ckPrivateDB  
+	case newsEdgeSearch  
  }
 
  enum NewsAnalytics.GroupType {
@@ -5248,7 +5382,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let articleHeadlineTreatmentState : AlternateHeadlineTreatmentStateData // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleHeadlineTreatmentId : ´” // +0x4
+	let articleHeadlineTreatmentId : sÊ // +0x4
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -5262,34 +5396,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionData : ´∆
+	let actionData : Ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleExposureContextData : »
+	let articleExposureContextData : y⁄
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let articleData : ArticleData
 	let actionData : ActionData
 	let feedData : FeedData
@@ -5322,24 +5456,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : ›≈
+	let tagData : 9ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionData : ´∆
+	let actionData : Ÿ
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let tagData : TagData
 	let feedData : FeedData
 	let viewData : ViewData
@@ -5362,38 +5496,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let trackData : =ü
+	let trackData : ”∞
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let audioEngagementData : /ü
+	let audioEngagementData : ≈∞
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playbackData : !ü
+	let playbackData : ∑∞
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let articleData : ArticleData
 	let channelData : ChannelData
 	let groupData : GroupData
@@ -5430,26 +5564,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : ›≈
+	let tagData : 9ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionData : ´∆
+	let actionData : Ÿ
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let viewData : ViewData
 	let tagData : TagData
 	let feedData : FeedData
@@ -5564,46 +5698,46 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let trackData : =ü
+	let trackData : ”∞
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let audioEngagementData : /ü
+	let audioEngagementData : ≈∞
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleScienceData : Ø…
+	let articleScienceData : W‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let playbackData : !ü
+	let playbackData : ∑∞
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let audioEngagementOriginationData : õù
+	let audioEngagementOriginationData : 1Ø
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let articleData : ArticleData
 	let channelData : ChannelData
 	let groupData : GroupData
@@ -5653,6 +5787,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case referralCampaignData  
  }
 
+ struct NewsAnalytics.WebAccessTagListData {
+
+	// Properties
+	let tagIDs : [String] // +0x0
+ }
+
+ enum NewsAnalytics.CodingKeys {
+
+	// Properties
+	case tagIDs  
+ }
+
  enum NewsAnalytics.PaywallConfigOfferType {
 
 	// Properties
@@ -5668,12 +5814,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let appConfigurationManager : FCNewsAppConfigurationManager
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let uploader : üú
+	let uploader : ˘≠
 	let urlProvider : ExternalAnalyticsURLProviderType
 	let featureAvailability : ExternalAnalyticsFeatureAvailabilityType
 
 	// Swift methods
-	0x1c0210  class func ExternalAnalyticsEventProcessor.__allocating_init(appConfigurationManager:uploader:urlProvider:featureAvailability:) // init 
+	0x1c9c60  class func ExternalAnalyticsEventProcessor.__allocating_init(appConfigurationManager:uploader:urlProvider:featureAvailability:) // init 
  }
 
  struct NewsAnalytics.PaidSubscribedTagListData {
@@ -5692,22 +5838,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let urlData : _ª
+	let urlData : ëÕ
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let articleData : ArticleData
 	let viewData : ViewData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
@@ -5741,7 +5887,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let type : VideoAdEngagementType // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let position : ´” // +0x4
+	let position : sÊ // +0x4
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -5821,18 +5967,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let orientationData : ì…
+	let orientationData : ;‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
 	let orientationData : OrientationData
  }
@@ -5851,7 +5997,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queryItemsGenerators : ExternalAnalyticsQueryItemsGeneratorType
 
 	// Swift methods
-	0x1ccec0  class func ExternalAnalyticsURLProvider.__allocating_init(queryItemsGenerators:) // init 
+	0x1d6910  class func ExternalAnalyticsURLProvider.__allocating_init(queryItemsGenerators:) // init 
  }
 
  enum NewsAnalytics.URLProviderError {
@@ -5910,7 +6056,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let personalizationService : )¢
+	let personalizationService : ´≥
 
 	// Swift methods
  }
@@ -5922,9 +6068,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let groupType : GroupType // +0x1
 	let groupID : String // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupCount : ´” // +0x18
+	let groupCount : sÊ // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupPosition : ´” // +0x1c
+	let groupPosition : sÊ // +0x1c
 	let groupedArticleIDs : [String]? // +0x20
 	let groupedIssueIDs : [String]? // +0x28
 	let curatedSubtype : String? // +0x30
@@ -6031,24 +6177,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let searchData : ©Æ
+	let searchData : ≠¿
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let searchSelectionData : ˚ô
+	let searchSelectionData : ]´
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let searchResultsData : õÆ
+	let searchResultsData : ü¿
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let searchData : SearchData
 	let searchSelectionData : SearchSelectionData
 	let searchResultsData : SearchResultsData
@@ -6101,7 +6247,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let position : ´” // +0x0
+	let position : sÊ // +0x0
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -6131,30 +6277,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userActionData : Cô
+	let userActionData : •™
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let emailShareResultData : 5ô
+	let emailShareResultData : ó™
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : ›≈
+	let tagData : 9ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sectionData : ∑√
+	let sectionData : È’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseSessionData : Û¬
+	let purchaseSessionData : %’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let userActionData : EmailShareUserActionData
 	let emailShareResultData : EmailShareResultData
 	let tagData : TagData
@@ -6215,34 +6361,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let anfComponentData : +»
+	let anfComponentData : á⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleScienceData : Ø…
+	let articleScienceData : W‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let articleData : ArticleData
 	let channelData : ChannelData
 	let anfComponentData : ANFComponentData
@@ -6286,12 +6432,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelCount : ´” // +0x0
+	let channelCount : sÊ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let topicCount : ´” // +0x4
+	let topicCount : sÊ // +0x4
 	let subscribedTagList : SubscribedTagListData // +0x8
 	let autoSubscribedTagList : AutoSubscribedTagListData // +0x10
 	let paidSubscribedTagList : PaidSubscribedTagListData // +0x18
+	let webAccessTagList : WebAccessTagListData // +0x20
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -6302,6 +6449,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case subscribedTagList  
 	case autoSubscribedTagList  
 	case paidSubscribedTagList  
+	case webAccessTagList  
  }
 
  enum NewsAnalytics.MediaType {
@@ -6322,7 +6470,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let eventTranslators : FeldsparEventTranslatorType
 	let configurationManager : FCConfigurationManager
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let jsonDecoder : ù√
+	let jsonDecoder : Ô’
 	var session : Session
 
 	// Swift methods
@@ -6332,7 +6480,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
  }
 
  struct NewsAnalytics.Model {
@@ -6359,40 +6507,40 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let paywallData : √
+	let paywallData : A’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseData : √
+	let purchaseData : 3’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseSessionData : Û¬
+	let purchaseSessionData : %’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let sectionData : ∑√
+	let sectionData : È’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let articleData : ArticleData
 	let channelData : ChannelData
 	let feedData : FeedData
@@ -6484,22 +6632,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : ›≈
+	let tagData : 9ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let notificationSubscribedData : ˜¿
+	let notificationSubscribedData : )”
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let tagData : TagData
 	let notificationSubscribedData : NotificationSubscribedData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
@@ -6520,32 +6668,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let actionData : ´∆
+	let actionData : Ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let articleData : ArticleData
 	let actionData : ActionData
 	let channelData : ChannelData
@@ -6576,22 +6724,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let startTime : —” // +0x0
+	let startTime : ôÊ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let dnsDuration : —” // +0x8
+	let dnsDuration : ôÊ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let connectDuration : —” // +0x10
+	let connectDuration : ôÊ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let requestDuration : —” // +0x18
+	let requestDuration : ôÊ // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let responseDuration : —” // +0x20
+	let responseDuration : ôÊ // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let responseSize : —” // +0x28
+	let responseSize : ôÊ // +0x28
 	let cacheState : CacheState // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let statusCode : —” // +0x38
+	let statusCode : ôÊ // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let errorCode : —” // +0x40
+	let errorCode : ôÊ // +0x40
 	let eventType : NetworkEventType // +0x48
 	let wifiReachabilityStatus : Bool // +0x49
 	let cellularRadioAccessTechnology : CellularRadioAccessTechnology // +0x4a
@@ -6630,18 +6778,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let tagData : ›≈
+	let tagData : 9ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userActionData : Cô
+	let userActionData : •™
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let tagData : TagData
 	let userActionData : EmailShareUserActionData
  }
@@ -6652,6 +6800,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case eventData  
 	case tagData  
 	case userActionData  
+ }
+
+ enum NewsAnalytics.WidgetAppearanceStackLocation {
+
+	// Properties
+	case unknown  
+	case todayPage  
+	case homeScreenPageOne  
+	case homeScreenPageTwo  
+	case homeScreenPageThree  
+	case homeScreenOtherPages  
  }
 
  enum NewsAnalytics.Role {
@@ -6679,25 +6838,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let environment : FCEndpointEnvironment
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x28dbc00076ae0 (0x5bc00076ae0) in binary!
-	0x28db0  @objc DynamicEndpoint.(null) <stripped>
-WARNING: couldn't find address 0x28da400076ac0 (0x5a400076ac0) in binary!
+WARNING: couldn't find address 0x29efc00079170 (0x6fc00079170) in binary!
+	0x29ef0  @objc DynamicEndpoint.(null) <stripped>
+WARNING: couldn't find address 0x29ee400079150 (0x6e400079150) in binary!
 	0x25029232840  @objc DynamicEndpoint.(null) <stripped>
 WARNING: couldn't find address 0x7377654e3a4d4152 (0x54e3a4d4152) in binary!
 	0x75250202073  @objc DynamicEndpoint.(null) <stripped>
 
 	// Swift methods
-	0x203570  class func DynamicEndpoint.__allocating_init(appConfigurationManager:) // init 
+	0x20dcb0  class func DynamicEndpoint.__allocating_init(appConfigurationManager:) // init 
  }
 
  struct NewsAnalytics.MediaEngagementData {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let mediaTimePlayed : —” // +0x0
+	let mediaTimePlayed : ôÊ // +0x0
 	let mediaUserAction : MediaUserAction // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let position : ´” // +0xc
+	let position : sÊ // +0xc
 	let mediaPlayMethod : MediaPlayMethod // +0x10
  }
 
@@ -6735,42 +6894,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleData : À…
+	let articleData : s‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scrollStartData : ñ
+	let scrollStartData : gß
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scrollEndData : ñ
+	let scrollEndData : Yß
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let articleScienceData : Ø…
+	let articleScienceData : W‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userChannelContextData : °…
+	let userChannelContextData : I‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueViewData : w…
+	let issueViewData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let articleData : ArticleData
 	let channelData : ChannelData
 	let feedData : FeedData
@@ -6820,26 +6979,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let issueData : Ö…
+	let issueData : -‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let downloadLocationData : ∑ï
+	let downloadLocationData : ß
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let downloadStateData : ©ï
+	let downloadStateData : ˝¶
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let downloadData : õï
+	let downloadData : Ô¶
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let issueData : IssueData
 	let downloadLocationData : DownloadLocationData
 	let downloadStateData : DownloadStateData
@@ -6876,25 +7035,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adReferralData : -°
+	let adReferralData : √≤
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let campaignData : ¡
+	let campaignData : 7”
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseOffersData : '¶
+	let purchaseOffersData : Ω∑
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let purchaseSessionData : Û¬
+	let purchaseSessionData : %’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscribeButtonContextData : Â¬
+	let subscribeButtonContextData : ’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subscriptionAdLocationData : 5ï
+	let subscriptionAdLocationData : â¶
  }
 
  struct NewsAnalytics.Model {
@@ -6902,9 +7061,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let adReferralData : AdReferralData
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let channelData : ChannelData
 	let campaignData : CampaignData
 	let purchaseOffersData : PurchaseOffersData
@@ -6937,34 +7096,34 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewData : Ω…
+	let viewData : e‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let orientationData : ì…
+	let orientationData : ;‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let campaignData : ¡
+	let campaignData : 7”
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let referralData : ≠
+	let referralData : ˝æ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let searchData : ©Æ
+	let searchData : ≠¿
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let viewEndData : ≠∂
+	let viewEndData : ﬂ»
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let feedData : FeedData
 	let viewData : ViewData
 	let orientationData : OrientationData
@@ -6994,13 +7153,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let potraitCount : ´” // +0x0
+	let potraitCount : sÊ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let safariCount : ´” // +0x4
+	let safariCount : sÊ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let appsAutoSubscribedCount : ´” // +0x8
+	let appsAutoSubscribedCount : sÊ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let internalAutoSubscribedCount : ´” // +0xc
+	let internalAutoSubscribedCount : sÊ // +0xc
  }
 
  enum NewsAnalytics.CodingKeys {
@@ -7028,28 +7187,28 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adUserData : õ¿
+	let adUserData : Õ“
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let channelData : M…
+	let channelData : ı€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let videoAdData : Wß
+	let videoAdData : Ì∏
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let videoAdEngagementData : aî
+	let videoAdEngagementData : µ•
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let adPlacementData : ç¿
+	let adPlacementData : ø“
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 	let adUserData : AdUserData
 	let userBundleSubscriptionContextData : UserBundleSubscriptionContextData
 	let channelData : ChannelData
@@ -7076,30 +7235,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : Á…
+	let eventData : è‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : Ÿ…
+	let timedData : Å‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let groupData : U»
+	let groupData : ±⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedData : 1…
+	let feedData : Ÿ€
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let feedPositionData : ≈√
+	let feedPositionData : ˜’
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let inGroupPositionData : Ω
+	let inGroupPositionData : Cœ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let webEmbedData : ±«
+	let webEmbedData : ⁄
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let userBundleSubscriptionContextData : […
+	let userBundleSubscriptionContextData : ‹
  }
 
  struct NewsAnalytics.Model {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let eventData : % 
+	let eventData : Õ‹
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timedData : _ 
+	let timedData : ›
 	let groupData : GroupData
 	let feedData : FeedData
 	let feedPositionData : FeedPositionData
@@ -7146,7 +7305,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let duration : ´” // +0x0
+	let duration : sÊ // +0x0
  }
 
  enum NewsAnalytics.CodingKeys {

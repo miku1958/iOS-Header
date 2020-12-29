@@ -12,6 +12,7 @@
 {
     BOOL _wantsHDREnvironmentTextures;
     BOOL _automaticImageScaleEstimationEnabled;
+    BOOL _appClipCodeTrackingEnabled;
     long long _environmentTexturing;
     unsigned long long _planeDetection;
     NSSet *_detectionImages;
@@ -19,6 +20,7 @@
     NSSet *_detectionObjects;
 }
 
+@property (nonatomic) BOOL appClipCodeTrackingEnabled; // @synthesize appClipCodeTrackingEnabled=_appClipCodeTrackingEnabled;
 @property (nonatomic) BOOL automaticImageScaleEstimationEnabled; // @synthesize automaticImageScaleEstimationEnabled=_automaticImageScaleEstimationEnabled;
 @property (copy, nonatomic) NSSet *detectionImages; // @synthesize detectionImages=_detectionImages;
 @property (copy, nonatomic) NSSet *detectionObjects; // @synthesize detectionObjects=_detectionObjects;

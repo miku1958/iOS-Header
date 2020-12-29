@@ -23,6 +23,7 @@
 + (id)getAllSettings;
 + (struct tagIPPORT *)getCachedIPPort;
 + (id)getClientOption:(id)arg1;
++ (int)getDecryptionMKMRecoveryInterval;
 + (int)getDecryptionTimeoutInterval;
 + (struct tagIPPORT *)getIPPortForService:(id)arg1;
 + (int)getKeepAliveTimeoutFromCarrierBundle;

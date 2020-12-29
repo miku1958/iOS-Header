@@ -15,12 +15,14 @@
 @property (nonatomic) BOOL autoPlayWhenLikelyToKeepUp;
 @property (nonatomic) BOOL automaticallyHidesVideoLayersForMusicVideosWhenApplicationBackgrounds;
 @property (readonly, nonatomic) MPAVItem *currentItem;
+@property (readonly, nonatomic) float currentRate;
 @property (nonatomic) double currentTime;
 @property (nonatomic) BOOL hasPlayedSuccessfully;
 @property (readonly, nonatomic) AVPictureInPictureController *pictureInPictureController;
 @property (readonly, weak, nonatomic) MPCPlaybackEngine *playbackEngine;
 @property (strong, nonatomic) id<MPAVQueueController> queueController;
 @property (readonly, nonatomic) MPQueuePlayer *queuePlayer;
+@property (readonly, nonatomic, getter=isReloadingPlaybackContext) BOOL reloadingPlaybackContext;
 @property (readonly, nonatomic) long long state;
 @property (readonly, nonatomic) long long stateBeforeInterruption;
 @property (readonly, nonatomic) MPVideoView *videoView;
@@ -30,6 +32,7 @@
 - (id)initWithPlaybackEngine:(MPCPlaybackEngine *)arg1;
 - (void)loadSessionWithQueueController:(id<MPAVQueueController>)arg1 completionHandler:(void (^)(NSError *))arg2;
 - (void)reloadWithPlaybackContext:(MPPlaybackContext *)arg1 identifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
+- (void)replaceCurrentItemWithPlaybackContext:(MPPlaybackContext *)arg1 identifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (void)updateAudioSession;
 
 @optional
@@ -50,6 +53,7 @@
 - (void)play;
 - (void)playWithOptions:(unsigned long long)arg1;
 - (void)playWithRate:(float)arg1 identifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
+- (void)setQueueWithPlaybackContext:(MPPlaybackContext *)arg1 identifier:(NSString *)arg2 completionHandler:(void (^)(NSError *))arg3;
 - (BOOL)setRate:(float)arg1 completion:(void (^)(void))arg2;
 - (void)setRate:(float)arg1 identifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;
 - (void)skipWithDirection:(long long)arg1 identifier:(NSString *)arg2 completion:(void (^)(NSError *))arg3;

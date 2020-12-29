@@ -1,5 +1,10 @@
- protocol FMIPCore.FMIPManagerDelegate // 12 requirements
+ protocol FMIPCore.FMIPManagerDelegate // 17 requirements
  {
+	// method
+	// method
+	// method
+	// method
+	// method
 	// method
 	// method
 	// method
@@ -17,8 +22,9 @@
  {
 	// method
  }
- protocol FMIPCore.FMIPInteractionControllerDelegate // 2 requirements
+ protocol FMIPCore.FMIPInteractionControllerDelegate // 3 requirements
  {
+	// method
 	// method
 	// method
  }
@@ -34,8 +40,9 @@
  {
 	// method
  }
- protocol FMIPCore.FMIPDataManagerDelegate // 1 requirements
+ protocol FMIPCore.FMIPDataManagerDelegate // 2 requirements
  {
+	// method
 	// method
  }
  protocol FMIPCore.FMIPGarbageCollectorDelegate // 1 requirements
@@ -55,8 +62,26 @@
 	// method
 	// method
  }
- protocol FMIPCore.FMIPManagerSiriDelegate // 2 requirements
+ protocol FMIPCore.FMIPAnyProductInformation // 7 requirements
  {
+	// class init
+	// getter
+	// getter
+	// getter
+	// getter
+	// getter
+	// getter
+ }
+ protocol FMIPCore.FMIPProductInformation // 4 requirements
+ {
+	// class base protocol
+	// class base protocol
+	// class base protocol
+	// class base protocol
+ }
+ protocol FMIPCore.FMIPManagerSiriDelegate // 3 requirements
+ {
+	// method
 	// method
 	// method
  }
@@ -77,10 +102,96 @@
  {
 	// method
  }
- protocol FMIPCore.FMIPBeaconRefreshingControllerDelegate // 2 requirements
+ protocol FMIPCore.FMIPBeaconRefreshingControllerDelegate // 4 requirements
  {
 	// method
 	// method
+	// method
+	// method
+ }
+
+ struct __C_Synthesized.CommandError {
+
+	// Properties
+	let _nsError : NSError
+ }
+
+ enum __C.UNAuthorizationStatus { }
+
+ enum __C.PlaySoundContext { }
+
+ enum __C.IgnoreTrackingUntil { }
+
+ enum __C.BeaconTaskState { }
+
+ struct __C.SPBeaconTaskName {
+
+	// Properties
+	var _rawValue : NSString
+ }
+
+ enum __C.CLAuthorizationStatus { }
+
+ struct __C.FileProtectionType {
+
+	// Properties
+	var _rawValue : NSString
+ }
+
+ struct __C.FileAttributeKey {
+
+	// Properties
+	var _rawValue : NSString
+ }
+
+ enum __C.Code { }
+
+ class FMIPCore.FMIPConnectAction : FMIPItemAction { }
+
+ class FMIPCore.FMIPDisconnectAction : FMIPItemAction { }
+
+ class FMIPCore.FMIPItemAction : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let item : FMIPItem // +0xfeedfacf (0x0)
+
+	// Swift methods
+	0x4ed0  class func FMIPItemAction.__allocating_init(item:) // init 
+ }
+
+ struct FMIPCore.FMIPItemRole {
+
+	// Properties
+	let identifier : Int // +0x0
+	let emoji : String // +0x8
+	let name : String // +0x18
+ }
+
+ enum FMIPCore.CodingKeys {
+
+	// Properties
+	case identifier  
+	case emoji  
+	case name  
+ }
+
+ enum FMIPCore.FMIPProductType {
+
+	// Properties
+	case hawkeye : FMIPHawkeyeProductInformation
+ }
+
+ enum FMIPCore.RawType {
+
+	// Properties
+	case hawkeye  
+ }
+
+ enum FMIPCore.CodingKeys {
+
+	// Properties
+	case type  
+	case productInformation  
  }
 
  class FMIPCore.FMIPEphemeralAuthenticationController : NSObject /usr/lib/libobjc.A.dylib {
@@ -93,10 +204,10 @@
 	var authenticationResults : [String : Any]?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x60b40002a858 (0xb40002a858) in binary!
-	0x60a0  @objc FMIPEphemeralAuthenticationController.(null) <stripped>
+WARNING: couldn't find address 0x7dc400036f68 (0x5c400036f68) in binary!
+	0x7db0  @objc FMIPEphemeralAuthenticationController.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffb34d8  @objc FMIPEphemeralAuthenticationController.(null) <stripped>
+	0xfff99098  @objc FMIPEphemeralAuthenticationController.(null) <stripped>
 
 	// Swift methods
  }
@@ -126,6 +237,20 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	case authToken  
  }
 
+ class FMIPCore.FMIPConnectionManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var ownerSession : SPOwnerSession
+	let pendingCommandFuturesUpdateQueue : OS_dispatch_queue
+	var pendingCommandFutures : [FMFuture<SPBeacon>]
+	var keepAliveTimer : weak OS_dispatch_source_timer?
+
+	// Swift methods
+	0xb180  func <stripped> // method 
+	0xc0f0  func <stripped> // method 
+	0xcc00  func <stripped> // method 
+ }
+
  class FMIPCore.FMIPRemoveResponse : FMIPDeviceContainingResponse { }
 
  struct FMIPCore.FMIPEraseMetadata {
@@ -133,7 +258,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	// Properties
 	let status : FMIPActionStatus
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timestamp : ÁK
+	let timestamp : ≥ª
 	let phoneNumber : String
 	let message : String
 	let isTextCustomized : Bool
@@ -158,6 +283,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case inEarSafetyWarning  
 	case pending  
 	case notify  
+	case onNeckSafetyWarning  
+	case onHeadSafetyWarning  
+	case onTableTopSafetyWarning  
+	case carryingCaseClosedWarning  
 	case eraseCancelled  
 	case successPasscodeSet  
 	case successPasscodeAlreadySet  
@@ -177,14 +306,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var pendingCommandFutures : [FMFuture<SPBeacon>]
 
 	// Swift methods
-	0xac00  func <stripped> // method 
-	0xada0  func <stripped> // method 
-	0xaf40  func <stripped> // method 
-	0xb0e0  func <stripped> // method 
-	0xb280  func <stripped> // method 
-	0xb7a0  func <stripped> // method 
-	0xce80  func <stripped> // method 
-	0xdd30  func <stripped> // method 
+	0x104e0  func <stripped> // method 
+	0x11080  func <stripped> // method 
+	0x11220  func <stripped> // method 
+	0x113c0  func <stripped> // method 
+	0x11560  func <stripped> // method 
+	0x11700  func <stripped> // method 
+	0x11c20  func <stripped> // method 
+	0x13020  func <stripped> // method 
+	0x13e00  func <stripped> // method 
  }
 
  enum FMIPCore.FMIPDeviceActionsControllerError {
@@ -250,10 +380,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class FMIPCore.FMIPNotifyAction : FMIPDeviceAction {
 
 	// Properties
-	let whenLocationFound : Bool // +0x0 (0x1)
+	let whenLocationFound : Bool
 
 	// Swift methods
-	0x13660  class func FMIPNotifyAction.__allocating_init(device:whenLocationFound:) // init 
+	0x19560  class func FMIPNotifyAction.__allocating_init(device:whenLocationFound:) // init 
+ }
+
+ enum FMIPCore.FMIPNotifyItemActionType {
+
+	// Properties
+	case whenFound  
+ }
+
+ class FMIPCore.FMIPNotifyItemAction : FMIPItemAction {
+
+	// Properties
+	let state : Bool
+	let type : FMIPNotifyItemActionType
+
+	// Swift methods
+	0x197c0  class func FMIPNotifyItemAction.__allocating_init(item:type:state:) // init 
+	0x19850  func FMIPNotifyItemAction.debugState() // method 
  }
 
  class FMIPCore.FMIPDeviceContainingResponse : FMIPBaseResponse {
@@ -264,40 +411,100 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ struct FMIPCore.FMIPUnknownItemUTMetadata {
+
+	// Properties
+	let modelName : String?
+	let manufacturerName : String?
+	let learnMoreInfo : FMIPUnknownItemProductMetadata
+	let disableInfo : FMIPUnknownItemProductMetadata
+ }
+
+ enum FMIPCore.CodingKeys {
+
+	// Properties
+	case modelName  
+	case manufacturerName  
+	case learnMoreInfo  
+	case disableInfo  
+ }
+
  class FMIPCore.FMIPBaseRequest {
  class FMIPCore.FMIPPlaySoundDeviceAction : FMIPDeviceAction {
 
 	// Properties
-	let channels : FMIPPlaySoundChannels // +0x65745f5f (0x8)
+	let channels : FMIPPlaySoundChannels // +0x45545f5f (0x8)
 	let safetyWarningConfirmed : Bool // +0x0 (0x1)
 
 	// Swift methods
-	0x15b70  class func FMIPPlaySoundDeviceAction.__allocating_init(device:channels:safetyWarningConfirmed:) // init 
+	0x1f4e0  class func FMIPPlaySoundDeviceAction.__allocating_init(device:channels:safetyWarningConfirmed:) // init 
+ }
+
+ class FMIPCore.FMIPFetchEncryptedPayloadAction : FMIPUTItemAction { }
+
+ class FMIPCore.FMIPIgnoreItemAction : FMIPUTItemAction {
+
+	// Properties
+	let until : IgnoreTrackingUntil // +0xd590a (0x8)
+
+	// Swift methods
+	0x1f680  class func FMIPIgnoreItemAction.__allocating_init(unknownItem:until:) // init 
+ }
+
+ class FMIPCore.FMIPStopUTSoundAction : FMIPUTItemAction { }
+
+ class FMIPCore.FMIPPlayUTSoundAction : FMIPUTItemAction {
+
+	// Properties
+	let context : PlaySoundContext
+
+	// Swift methods
+	0x1f780  class func FMIPPlayUTSoundAction.__allocating_init(unknownItem:context:) // init 
+ }
+
+ class FMIPCore.FMIPUTItemAction : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let unknownItem : FMIPUnknownItem
+
+	// Swift methods
+	0x1f880  class func FMIPUTItemAction.__allocating_init(unknownItem:) // init 
+ }
+
+ class FMIPCore.FMIPPlaySoundItemAction : FMIPItemAction {
+
+	// Properties
+	let context : PlaySoundContext
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var uuid : øº
+
+	// Swift methods
+	0x1fb10  class func FMIPPlaySoundItemAction.__allocating_init(item:context:) // init 
  }
 
  class FMIPCore.FMIPDeviceAction : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let device : FMIPDevice // +0x0 (0x0)
-	var authenticationContext : AKAppleIDAuthenticationContext? // +0x45545f5f (0x8)
-	var trustedDeviceConfirmation : (_:_:_:)? // +0x0 (0x10)
-	var dsid : String? // +0x29a0 (0x10)
-	var username : String? // +0x8db4a (0x10)
-	var oneTimeToken : String? // +0x29a0 (0x10)
-	var escrowUUID : String? // +0x0 (0x10)
+	let device : FMIPDevice // +0xd7bda (0x0)
+	var authenticationContext : AKAppleIDAuthenticationContext? // +0x0 (0x8)
+	var trustedDeviceConfirmation : (_:_:_:)? // +0x74735f5f (0x10)
+	var dsid : String? // +0x0 (0x10)
+	var username : String? // +0x45545f5f (0x10)
+	var oneTimeToken : String? // +0x0 (0x10)
+	var escrowUUID : String? // +0xd7bda (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var recoverySession : QH // +0x80000400 (0x10)
+	var recoverySession : ∏ // +0x81c (0x10)
 
 	// Swift methods
-	0x15f40  func FMIPDeviceAction.isPasswordRequired.getter // getter 
-	0x15f50  func FMIPDeviceAction.authenticationContext.getter // getter 
-	0x15f90  func FMIPDeviceAction.authenticationContext.setter // setter 
-	0x15fe0  func FMIPDeviceAction.authenticationContext.modify // modifyCoroutine 
-	0x16030  func FMIPDeviceAction.trustedDeviceConfirmation.getter // getter 
-	0x16080  func FMIPDeviceAction.trustedDeviceConfirmation.setter // setter 
-	0x16100  func FMIPDeviceAction.trustedDeviceConfirmation.modify // modifyCoroutine 
-	0x16140  func FMIPDeviceAction.isTrustedDeviceVerificationRequired.getter // getter 
-	0x16170  class func FMIPDeviceAction.__allocating_init(device:) // init 
+	0x203f0  func FMIPDeviceAction.isPasswordRequired.getter // getter 
+	0x20400  func FMIPDeviceAction.authenticationContext.getter // getter 
+	0x20440  func FMIPDeviceAction.authenticationContext.setter // setter 
+	0x20490  func FMIPDeviceAction.authenticationContext.modify // modifyCoroutine 
+	0x204e0  func FMIPDeviceAction.trustedDeviceConfirmation.getter // getter 
+	0x20530  func FMIPDeviceAction.trustedDeviceConfirmation.setter // setter 
+	0x205b0  func FMIPDeviceAction.trustedDeviceConfirmation.modify // modifyCoroutine 
+	0x205f0  func FMIPDeviceAction.isTrustedDeviceVerificationRequired.getter // getter 
+	0x20620  class func FMIPDeviceAction.__allocating_init(device:) // init 
  }
 
  class FMIPCore.FMIPCancelEraseAction : FMIPDeviceAction { }
@@ -307,7 +514,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let url : /H // +0x0 (0x0)
+	let url : √∏ // +0x74735f5f (0x0)
 
 	// Swift methods
  }
@@ -316,6 +523,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 	case url  
+ }
+
+ class FMIPCore.FMIPDisableTagSafetyAlertAction : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let disabled : Bool
+
+	// Swift methods
+	0x22290  class func FMIPDisableTagSafetyAlertAction.__allocating_init(disabled:) // init 
  }
 
  struct FMIPCore.FMIPAddress {
@@ -348,12 +564,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case mapItemFullAddress  
  }
 
+ class FMIPCore.FMIPFirmwareUpdateAction : FMIPItemAction {
+
+	// Properties
+	let updateInitiated : Bool // +0x65706c65 (0x1)
+
+	// Swift methods
+	0x25540  class func FMIPFirmwareUpdateAction.__allocating_init(item:updateInitiated:) // init 
+ }
+
  struct FMIPCore.FMIPLockMetadata {
 
 	// Properties
 	let status : FMIPActionStatus
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timestamp : ÁK
+	let timestamp : ≥ª
  }
 
  enum FMIPCore.CodingKeys {
@@ -382,7 +607,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let identifier : String
 
 	// Swift methods
-	0x1cf20  class func FMLocationShiftingRequest.__allocating_init(identifier:location:) // init 
+	0x27480  class func FMLocationShiftingRequest.__allocating_init(identifier:location:) // init 
  }
 
  class FMIPCore.FMLocationShifter : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -393,20 +618,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let processingQueue : OS_dispatch_queue
 
 	// Swift methods
-	0x1cfd0  class func FMLocationShifter.__allocating_init() // init 
-	0x1d250  func FMLocationShifter.shift(requests:completion:) // method 
+	0x27530  class func FMLocationShifter.__allocating_init() // init 
+	0x277b0  func FMLocationShifter.shift(requests:completion:) // method 
  }
 
  class FMIPCore.FMIPEraseAction : FMIPDeviceAction {
 
 	// Properties
-	let isUserTextEnabled : Bool // +0x904ea (0x1)
-	let message : String? // +0x75c (0x10)
-	let passcode : String? // +0x904ea (0x10)
-	let phoneNumber : String? // +0x0 (0x10)
+	let isUserTextEnabled : Bool // +0x45545f5f (0x1)
+	let message : String? // +0x0 (0x10)
+	let passcode : String? // +0xd83f8 (0x10)
+	let phoneNumber : String? // +0xd94 (0x10)
 
 	// Swift methods
-	0x1ff90  class func FMIPEraseAction.__allocating_init(device:message:phoneNumber:passcode:) // init 
+	0x2a290  class func FMIPEraseAction.__allocating_init(device:message:phoneNumber:passcode:) // init 
  }
 
  class FMIPCore.FMIPDemoDataGenerator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -419,6 +644,54 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Swift methods
  }
 
+ enum FMIPCore.FMIPItemActionStatus {
+
+	// Properties
+	case error  
+	case unknown  
+	case success  
+	case pending  
+	case failed  
+ }
+
+ enum FMIPCore.FMIPItemActionControllerError {
+
+	// Properties
+	case invalidIdentifier  
+	case invalidShareIdentifier  
+	case removeFailed  
+	case inRangeRemoveFailed  
+	case enableLostModeFailed  
+	case playSoundFailed  
+	case unknownAction  
+	case beaconNotFound  
+	case stopSharingFailed  
+	case tagInUseRemoveFailed  
+	case fetchPayloadFailed  
+ }
+
+ class FMIPCore.FMIPItemActionsController : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	let beaconManager : SPBeaconManager
+	let ownerSession : SPOwnerSession
+	let connectionManager : FMIPConnectionManager
+	var $__lazy_storage_$_pairingManager : SPPairingManager?
+	let pendingCommandFuturesUpdateQueue : OS_dispatch_queue
+	var pendingCommandFutures : [FMFuture<SPBeacon>]
+
+	// Swift methods
+	0x2cec0  func <stripped> // getter 
+	0x2ddd0  func <stripped> // method 
+	0x2e2a0  func <stripped> // method 
+	0x2ef80  func <stripped> // method 
+	0x2f630  func <stripped> // method 
+	0x308a0  func <stripped> // method 
+	0x31a00  func <stripped> // method 
+	0x31b40  func <stripped> // method 
+	0x323a0  func <stripped> // method 
+ }
+
  enum FMIPCore.FMIPURLAction {
 
 	// Properties
@@ -428,6 +701,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case selectDevice  
 	case showActions  
 	case showAllDevices  
+	case selectItem  
+	case lowBattery  
+	case localnotifywhenfound  
+	case notify  
+	case showAllItems  
  }
 
  class FMIPCore.FMIPURLHandler : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -436,7 +714,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let interactionController : FMIPInteractionController
 
 	// Swift methods
-	0x22eb0  func <stripped> // method 
+	0x34fb0  func <stripped> // method 
  }
 
  enum FMIPCore.FMIPURLHandlerError {
@@ -470,41 +748,57 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let unknownItemQueue : OS_dispatch_queue // +0xe0 (0x8)
 	let delegateQueue : OS_dispatch_queue // +0xe8 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var stopRefreshTimestamp : µH // +0x0 (0x0)
+	var stopRefreshTimestamp : ±∏ // +0x0 (0x0)
 	var isRefreshing : Bool // +0x0 (0x1)
-	var selectedDevice : FMIPDevice // +0x6 (0x0)
-	var isInitialized : Bool // +0x74735f5f (0x1)
+	var itemActionsController : FMIPItemActionsController // +0x0 (0x8)
+	var isUTAppAlertDisabled : Bool // +0x0 (0x1)
+	var selectedDevice : FMIPDevice // +0x80000400 (0x0)
+	var isInitialized : Bool // +0x0 (0x1)
 
 	// Swift methods
-	0x25540  func FMIPManager.delegate.getter // getter 
-	0x25570  func FMIPManager.delegate.setter // setter 
-	0x255d0  func FMIPManager.delegate.modify // modifyCoroutine 
-	0x256a0  func FMIPManager.siriDelegate.getter // getter 
-	0x256d0  func FMIPManager.siriDelegate.setter // setter 
-	0x25720  func FMIPManager.siriDelegate.modify // modifyCoroutine 
-	0x257f0  func FMIPManager.devices.getter // getter 
-	0x25810  func FMIPManager.owner.getter // getter 
-	0x258b0  func FMIPManager.familyMembers.getter // getter 
-	0x25930  func FMIPManager.selectedDevice.getter // getter 
-	0x25970  func FMIPManager.selectedDevice.setter // setter 
-	0x25a60  func FMIPManager.selectedDevice.modify // modifyCoroutine 
-	0x25c00  func FMIPManager.isInitialized.getter // getter 
-	0x25c30  func <stripped> // setter 
-	0x25e10  class func FMIPManager.__allocating_init(authenticationUIProvider:) // init 
-	0x26c70  func FMIPManager.initialize() // method 
-	0x27260  func FMIPManager.startRefreshing() // method 
-	0x27730  func FMIPManager.forceStartRefreshing() // method 
-	0x27940  func FMIPManager.stopRefreshing() // method 
-	0x27b40  func FMIPManager.updateLastActiveTimestamp() // method 
-	0x27b80  func FMIPManager.refresh() // method 
-	0x27d00  func FMIPManager.refreshBeacons(completion:) // method 
-	0x27d40  func FMIPManager.perform(action:completion:) // method 
-	0x28810  func FMIPManager.updateLastLocationStatus(enabled:) // method 
-	0x28f10  func <stripped> // method 
-	0x29120  func FMIPManager.handle(url:completion:) // method 
-	0x292b0  func <stripped> // method 
-	0x29c00  func <stripped> // method 
-	0x2a860  func FMIPManager.debugDescription.getter // getter 
+	0x37c50  func FMIPManager.delegate.getter // getter 
+	0x37c80  func FMIPManager.delegate.setter // setter 
+	0x37ce0  func FMIPManager.delegate.modify // modifyCoroutine 
+	0x37db0  func FMIPManager.siriDelegate.getter // getter 
+	0x37de0  func FMIPManager.siriDelegate.setter // setter 
+	0x37e30  func FMIPManager.siriDelegate.modify // modifyCoroutine 
+	0x37f00  func FMIPManager.devices.getter // getter 
+	0x37f20  func FMIPManager.owner.getter // getter 
+	0x37fc0  func FMIPManager.familyMembers.getter // getter 
+	0x37fe0  func FMIPManager.items.getter // getter 
+	0x38000  func FMIPManager.unknownItems.getter // getter 
+	0x38080  func FMIPManager.isUTAppAlertDisabled.getter // getter 
+	0x380b0  func FMIPManager.isUTAppAlertDisabled.setter // setter 
+	0x380f0  func FMIPManager.isUTAppAlertDisabled.modify // modifyCoroutine 
+	0x38140  func FMIPManager.selectedDevice.getter // getter 
+	0x38180  func FMIPManager.selectedDevice.setter // setter 
+	0x38270  func FMIPManager.selectedDevice.modify // modifyCoroutine 
+	0x38410  func FMIPManager.isInitialized.getter // getter 
+	0x38440  func <stripped> // setter 
+	0x38620  class func FMIPManager.__allocating_init(authenticationUIProvider:) // init 
+	0x395c0  func FMIPManager.initialize() // method 
+	0x39d40  func FMIPManager.startRefreshing() // method 
+	0x3a250  func FMIPManager.forceStartRefreshing() // method 
+	0x3a460  func FMIPManager.stopRefreshing() // method 
+	0x3a660  func FMIPManager.updateLastActiveTimestamp() // method 
+	0x3a6a0  func FMIPManager.refresh() // method 
+	0x3a820  func FMIPManager.refreshBeacons(completion:) // method 
+	0x3a860  func FMIPManager.refreshUnknownBeacons(completion:) // method 
+	0x3aa00  func FMIPManager.perform(action:completion:) // method 
+	0x3b470  func FMIPManager.perform(action:completion:) // method 
+	0x3b6b0  func FMIPManager.perform(action:completion:) // method 
+	0x3baf0  func FMIPManager.perform(action:completion:) // method 
+	0x3bcc0  func FMIPManager.unknownBeacons(for:completion:) // method 
+	0x3be10  func FMIPManager.perform(action:completion:) // method 
+	0x3c360  func FMIPManager.perform(action:completion:) // method 
+	0x3c540  func FMIPManager.updateLastLocationStatus(enabled:) // method 
+	0x3cc40  func <stripped> // method 
+	0x3ce50  func FMIPManager.handle(url:completion:) // method 
+	0x3cfe0  func <stripped> // method 
+	0x3d990  func <stripped> // method 
+	0x3e650  func <stripped> // method 
+	0x3f010  func <stripped> // method 
+	0x3fe00  func FMIPManager.debugDescription.getter // getter 
  }
 
  class FMIPCore.FMDemoManager : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -536,6 +830,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var crowdSourcedLocations : FMIPLocation
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var crowdSourcedLocating :  empty-list 
+	var items : FMIPItem
+	var unknownItems : FMIPUnknownItem
+	var itemsCache : FMDiskIO
 	var devicesCache : FMDiskIO
 	var familyCache : FMDiskIO
 	var ownerCache : FMDiskIO
@@ -543,23 +840,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let updateQueue : OS_dispatch_queue
 
 	// Swift methods
-	0x32c90  func <stripped> // method 
-	0x32e30  func <stripped> // method 
-	0x33020  func <stripped> // method 
-	0x33820  func <stripped> // method 
+	0x51270  func <stripped> // method 
+	0x51430  func <stripped> // method 
+	0x51700  func <stripped> // method 
+	0x518a0  func <stripped> // method 
+	0x52580  func <stripped> // method 
+	0x527e0  func <stripped> // method 
+	0x52f80  func <stripped> // method 
+	0x54480  func <stripped> // method 
  }
 
  class FMIPCore.FMIPDemoDataInjector : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 	let dataSource : FMIPDemoDataSource // +0x10 (0x8)
-	var hostDevice : FMIPDevice // +0xc54 (0x0)
+	var hostDevice : FMIPDevice // +0x0 (0x0)
 
 	// Swift methods
-	0x3e390  func <stripped> // method 
-	0x3e400  func <stripped> // method 
-	0x3e420  func <stripped> // method 
-	0x3e7b0  func <stripped> // method 
+	0x63ca0  func <stripped> // method 
+	0x63d10  func <stripped> // method 
+	0x63d30  func <stripped> // method 
+	0x640c0  func <stripped> // method 
  }
 
  struct FMIPCore.FMIPDemoDeviceTemplate {
@@ -576,11 +877,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  struct FMIPCore.FMIPDemoDeviceTemplateOverrides {
 
 	// Properties
-	let deviceColor : String? // +0x0
-	let rawDeviceModel : String? // +0x10
-	let modelDisplayName : String? // +0x20
-	let deviceClass : String? // +0x30
-	let deviceModel : String? // +0x40
+	let deviceColor : Override // +0x0
+	let rawDeviceModel : Override // +0x10
+	let modelDisplayName : Override // +0x20
+	let deviceClass : Override // +0x30
+	let deviceModel : Override // +0x40
  }
 
  enum FMIPCore.CodingKeys {
@@ -604,20 +905,58 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case isOnline  
  }
 
+ enum FMIPCore.Override {
+
+	// Properties
+	case some : (value: A)
+	case missing  
+ }
+
  class FMIPCore.FMIPVerifyTrustedStateRequest {
  class FMIPCore.FMIPLockAction : FMIPDeviceAction {
 
 	// Properties
-	let isSoundEnabled : Bool // +0x45545f5f (0x1)
+	let isSoundEnabled : Bool // +0x73635f5f (0x1)
 	let isUserTextEnabled : Bool // +0x0 (0x1)
-	let message : String? // +0x626f5f5f (0x10)
-	let passcode : String? // +0x6c687465 (0x10)
+	let message : String? // +0x0 (0x10)
+	let passcode : String? // +0x0 (0x10)
 
 	// Swift methods
-	0x42d50  class func FMIPLockAction.__allocating_init(device:message:passcode:) // init 
+	0x68a60  class func FMIPLockAction.__allocating_init(device:message:passcode:) // init 
  }
 
  class FMIPCore.FMIPEraseResponse : FMIPDeviceContainingResponse { }
+
+ struct FMIPCore.FMIPItemType {
+
+	// Properties
+	let rawValue : Int // +0x0
+ }
+
+ struct FMIPCore.FMIPUnknownItem {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let identifier : eº
+	let handle : String?
+	let isIgnored : Bool
+	let locations : FMIPLocation
+	let productType : FMIPProductType
+	let utMetadata : FMIPUnknownItemUTMetadata
+	let unknownBeacon : SPUnknownBeacon?
+ }
+
+ enum FMIPCore.CodingKeys {
+
+	// Properties
+	case identifier  
+	case locations  
+	case handle  
+	case isIgnored  
+	case productType  
+	case utMetadata  
+	case unknownBeacon  
+ }
 
  class FMIPCore.FMIPInitClientRequest {
  enum FMIPCore.FMIPLocationType {
@@ -681,13 +1020,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let paths : [String]
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x60740002ab40 (0x740002ab40) in binary!
+WARNING: couldn't find address 0x7d8400037330 (0x58400037330) in binary!
 	0x38000000c  @objc FMIPGarbageCollector.(null) <stripped>
 
 	// Swift methods
-	0x46cf0  func <stripped> // method 
-	0x47640  func <stripped> // method 
-	0x47c40  func <stripped> // method 
+	0x741e0  func <stripped> // method 
+	0x74b30  func <stripped> // method 
+	0x75130  func <stripped> // method 
  }
 
  class FMIPCore.FMIPPlaySoundResponse : FMIPDeviceContainingResponse { }
@@ -704,59 +1043,89 @@ WARNING: couldn't find address 0x60740002ab40 (0x740002ab40) in binary!
 	var publicAPSToken : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x605c0002a7f8 (0x5c0002a7f8) in binary!
-	0x6058  @objc FMAPSConnectionHandler.(null) <stripped>
-WARNING: couldn't find address 0x60440002a698 (0x440002a698) in binary!
+WARNING: couldn't find address 0x7d6c00036f08 (0x56c00036f08) in binary!
+	0x7d68  @objc FMAPSConnectionHandler.(null) <stripped>
+WARNING: couldn't find address 0x7d5400036da8 (0x55400036da8) in binary!
 	0x38000000c  @objc FMAPSConnectionHandler.(null) <stripped>
-WARNING: couldn't find address 0x69aa0002a648 (0x1aa0002a648) in binary!
-	0x5a40  @objc FMAPSConnectionHandler.(null) <stripped>
+WARNING: couldn't find address 0x8a8a00036d58 (0x28a00036d58) in binary!
+	0x76f0  @objc FMAPSConnectionHandler.(null) <stripped>
 
 	// Swift methods
-	0x48f00  func <stripped> // method 
-	0x48ff0  func <stripped> // method 
+	0x763f0  func <stripped> // method 
+	0x764e0  func <stripped> // method 
  }
 
  class FMIPCore.FMIPLostModeAction : FMIPDeviceAction {
 
 	// Properties
-	let isLostModeEnabled : Bool // +0x67 (0x1)
-	let isSoundEnabled : Bool // +0x45545f5f (0x1)
-	let isTrackingEnabled : Bool // +0x25c (0x1)
-	let isUserTextEnabled : Bool // +0x918a0 (0x1)
-	let isEmailUpdatesEnabled : Bool // +0x0 (0x1)
-	let message : String? // +0x0 (0x10)
-	let phoneNumber : String? // +0x0 (0x10)
-	let passcode : String? // +0x73635f5f (0x10)
+	let isLostModeEnabled : Bool
+	let isSoundEnabled : Bool
+	let isTrackingEnabled : Bool
+	let isUserTextEnabled : Bool
+	let isEmailUpdatesEnabled : Bool
+	let message : String?
+	let phoneNumber : String?
+	let passcode : String?
 
 	// Swift methods
-	0x4adc0  class func FMIPLostModeAction.__allocating_init(device:message:phoneNumber:passcode:trackingEnabled:emailUpdatesEnabled:) // init 
+	0x78280  class func FMIPLostModeAction.__allocating_init(device:message:phoneNumber:passcode:trackingEnabled:emailUpdatesEnabled:) // init 
+ }
+
+ class FMIPCore.FMIPLostModeItemAction : FMIPItemAction {
+
+	// Properties
+	let isTrackingEnabled : Bool
+	let isUserTextEnabled : Bool
+	let isEmailUpdatesEnabled : Bool
+	let message : String?
+	let phoneNumber : String?
+
+	// Swift methods
+	0x785e0  class func FMIPLostModeItemAction.__allocating_init(item:message:phoneNumber:trackingEnabled:emailUpdatesEnabled:) // init 
  }
 
  class FMIPCore.FMIPReverseGeocodingOperation : NSOperation /System/Library/Frameworks/Foundation.framework/Foundation {
 
 	// Properties
-	let request : FMIPReverseGeocodingRequest
+	let request : FMIPReverseGeocodingRequest // +0x8 (0x18)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let completion :  first-element-marker 
-	var _isFinished : Bool
+	let completion :  first-element-marker  // +0x20 (0x10)
+	var _isFinished : Bool // +0x30 (0x1)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa2c0002a648 (0x22c0002a648) in binary!
-	0x5fe5  @objc FMIPReverseGeocodingOperation.(null) <stripped>
-WARNING: couldn't find address 0xa140002a628 (0x2140002a628) in binary!
-	0x5fd8  @objc FMIPReverseGeocodingOperation.(null) <stripped>
-WARNING: couldn't find address 0x5fcc0002aad0 (0x7cc0002aad0) in binary!
-	0x5fc8  @objc FMIPReverseGeocodingOperation.(null) <stripped>
-WARNING: couldn't find address 0x5fb40002a608 (0x7b40002a608) in binary!
+WARNING: couldn't find address 0x720400036d58 (0x20400036d58) in binary!
+	0x7cf5  @objc FMIPReverseGeocodingOperation.(null) <stripped>
+WARNING: couldn't find address 0x71ec00036d38 (0x1ec00036d38) in binary!
+	0x7ce8  @objc FMIPReverseGeocodingOperation.(null) <stripped>
+WARNING: couldn't find address 0x7cdc000372c0 (0x4dc000372c0) in binary!
+	0x7cd8  @objc FMIPReverseGeocodingOperation.(null) <stripped>
+WARNING: couldn't find address 0x7cc400036d18 (0x4c400036d18) in binary!
 	0x58000000c  @objc FMIPReverseGeocodingOperation.(null) <stripped>
-WARNING: couldn't find address 0x5fa40002a748 (0x7a40002a748) in binary!
-	0x690e  @objc FMIPReverseGeocodingOperation.(null) <stripped>
-WARNING: couldn't find address 0x69100002a5b0 (0x1100002a5b0) in binary!
-	0x68f6  @objc FMIPReverseGeocodingOperation.(null) <stripped>
-WARNING: couldn't find address 0x5f6c0002a5c0 (0x76c0002a5c0) in binary!
+WARNING: couldn't find address 0x7cb400036e58 (0x4b400036e58) in binary!
+	0x89ee  @objc FMIPReverseGeocodingOperation.(null) <stripped>
+WARNING: couldn't find address 0x89f000036cc0 (0x1f000036cc0) in binary!
+	0x89d6  @objc FMIPReverseGeocodingOperation.(null) <stripped>
+WARNING: couldn't find address 0x7c7c00036cd0 (0x47c00036cd0) in binary!
 	0x18000000c  @objc FMIPReverseGeocodingOperation.(null) <stripped>
 
 	// Swift methods
+ }
+
+ struct FMIPCore.FMIPItemLostModeMetadata {
+
+	// Properties
+	let ownerNumber : String
+	let message : String
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let timestamp : ≥ª
+ }
+
+ enum FMIPCore.CodingKeys {
+
+	// Properties
+	case ownerNumber  
+	case message  
+	case timestamp  
  }
 
  class FMIPCore.FMIPLockRequest {
@@ -782,6 +1151,126 @@ WARNING: couldn't find address 0x5f6c0002a5c0 (0x76c0002a5c0) in binary!
 	case timestamp  
  }
 
+ struct FMIPCore.FMItemCapabilities {
+
+	// Properties
+	let rawValue : Int // +0x0
+ }
+
+ struct FMIPCore.FMIPItemState {
+
+	// Properties
+	let rawValue : Int // +0x0
+ }
+
+ enum FMIPCore.FMIPItemBatteryStatus {
+
+	// Properties
+	case unknown  
+	case highPower  
+	case fresh  
+	case earlyLife  
+	case lateLife  
+	case replace  
+	case dead  
+ }
+
+ struct FMIPCore.FMIPItem {
+
+	// Properties
+	let address : FMIPAddress
+	let batteryStatus : FMIPItemBatteryStatus
+	let capabilities : FMItemCapabilities
+	let crowdSourcedLocation : FMIPLocation
+	let identifier : String
+	let location : FMIPLocation
+	let lostMetadata : FMIPItemLostModeMetadata
+	let name : String
+	let owner : String
+	let role : FMIPItemRole
+	let serialNumber : String
+	let state : FMIPItemState
+	let systemVersion : String
+	let productType : FMIPProductType
+	let isFirmwareUpdateMandatory : Bool
+ }
+
+ enum FMIPCore.CodingKeys {
+
+	// Properties
+	case address  
+	case batteryStatus  
+	case capabilities  
+	case crowdSourcedLocation  
+	case identifier  
+	case location  
+	case lostModeMetadata  
+	case name  
+	case nearbyPeople  
+	case owner  
+	case role  
+	case serialNumber  
+	case shares  
+	case systemVersion  
+	case productType  
+	case isFirmwareUpdateMandatory  
+ }
+
+ struct FMIPCore.FMIPHawkeyeProductInformation {
+
+	// Properties
+	let vendorIdentifier : Int
+	let productIdentifier : Int
+	let modelName : String
+	let manufacturerName : String
+	let appBundleIdentifier : String?
+	let antennaPower : Double
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let defaultHeroIcon : π
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let defaultHeroIcon2x : π
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let defaultHeroIcon3x : π
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let defaultListIcon : π
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let defaultListIcon2x : π
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let defaultListIcon3x : π
+ }
+
+ enum FMIPCore.AssetScale {
+
+	// Properties
+	case x1  
+	case x2  
+	case x3  
+ }
+
+ enum FMIPCore.AssetType {
+
+	// Properties
+	case list  
+	case hero  
+ }
+
+ enum FMIPCore.CodingKeys {
+
+	// Properties
+	case vendorIdentifier  
+	case productIdentifier  
+	case modelName  
+	case manufacturerName  
+	case appBundleIdentifier  
+	case antennaPower  
+	case defaultHeroIcon  
+	case defaultHeroIcon2x  
+	case defaultHeroIcon3x  
+	case defaultListIcon  
+	case defaultListIcon2x  
+	case defaultListIcon3x  
+ }
+
  class FMIPCore.FMIPDemoContent : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
@@ -789,8 +1278,7 @@ WARNING: couldn't find address 0x5f6c0002a5c0 (0x76c0002a5c0) in binary!
 	let devices : FMIPDemoDeviceTemplate // +0x18 (0x8)
 
 	// Swift methods
-	0x4dd70  class func FMIPDemoContent.__allocating_init(from:) // init 
-	0x4dfa0  func FMIPDemoContent.encode(to:) // method 
+	0x8b5f0  class func FMIPDemoContent.__allocating_init(from:) // init 
  }
 
  enum FMIPCore.CodingKeys {
@@ -824,6 +1312,27 @@ WARNING: couldn't find address 0x5f6c0002a5c0 (0x76c0002a5c0) in binary!
 	case label  
  }
 
+ struct FMIPCore.FMIPUnknownItemProductMetadata {
+
+	// Properties
+	let title : String?
+	let moreDescriptionBulletPoints : [String]
+	let heatzonePercentX : Double?
+	let heatzonePercentY : Double?
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let image : √∏
+ }
+
+ enum FMIPCore.CodingKeys {
+
+	// Properties
+	case title  
+	case moreDescriptionBulletPoints  
+	case heatzonePercentX  
+	case heatzonePercentY  
+	case image  
+ }
+
  struct FMIPCore.FMIPFeatures {
 
 	// Properties
@@ -850,6 +1359,7 @@ WARNING: couldn't find address 0x5f6c0002a5c0 (0x76c0002a5c0) in binary!
 	case isMultiChannelSoundEnabled  
 	case isBluetoothRequired  
 	case isStopSoundSupported  
+	case isEraseAfterLockSupported  
  }
 
  class FMIPCore.FMIPValidatePasswordRequest {
@@ -869,6 +1379,13 @@ WARNING: couldn't find address 0x5f6c0002a5c0 (0x76c0002a5c0) in binary!
  }
 
  class FMIPCore.FMIPLostModeRequest {
+ enum FMIPCore.FMIPConfigValue {
+
+	// Properties
+	case itemsTabEnabled  
+	case itemLearnMoreURL  
+ }
+
  class FMIPCore.FMIPServerInteractionController {
  struct FMIPCore.FMIPDeviceLostModeMetadata {
 
@@ -881,7 +1398,7 @@ WARNING: couldn't find address 0x5f6c0002a5c0 (0x76c0002a5c0) in binary!
 	let message : String
 	let status : FMIPActionStatus
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timestamp : ÁK
+	let timestamp : ≥ª
  }
 
  enum FMIPCore.CodingKeys {
@@ -907,18 +1424,27 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var currentLocation : FMIPLocation
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5fa40002a748 (0x7a40002a748) in binary!
-	0x690e  @objc FMIPLocationController.(null) <stripped>
-WARNING: couldn't find address 0x69100002a5b0 (0x1100002a5b0) in binary!
-	0x68f6  @objc FMIPLocationController.(null) <stripped>
-WARNING: couldn't find address 0x5f6c0002a5c0 (0x76c0002a5c0) in binary!
+WARNING: couldn't find address 0x7cb400036e58 (0x4b400036e58) in binary!
+	0x89ee  @objc FMIPLocationController.(null) <stripped>
+WARNING: couldn't find address 0x89f000036cc0 (0x1f000036cc0) in binary!
+	0x89d6  @objc FMIPLocationController.(null) <stripped>
+WARNING: couldn't find address 0x7c7c00036cd0 (0x47c00036cd0) in binary!
 	0x18000000c  @objc FMIPLocationController.(null) <stripped>
-WARNING: couldn't find address 0x5f540002aaf0 (0x7540002aaf0) in binary!
+WARNING: couldn't find address 0x7c64000373c8 (0x464000373c8) in binary!
 	0x38000000c  @objc FMIPLocationController.(null) <stripped>
-WARNING: couldn't find address 0x797c0002ab50 (0x17c0002ab50) in binary!
-	0x79cd  @objc FMIPLocationController.(null) <stripped>
+WARNING: couldn't find address 0x9b4c000374a0 (0x34c000374a0) in binary!
+	0x9b9d  @objc FMIPLocationController.(null) <stripped>
 
 	// Swift methods
+ }
+
+ class FMIPCore.FMIPPerRecipientAction : FMIPItemAction {
+
+	// Properties
+	let recipients : [String] // +0x0 (0x8)
+
+	// Swift methods
+	0x9d7f0  class func FMIPPerRecipientAction.__allocating_init(item:recipients:) // init 
  }
 
  enum FMIPCore.FMIPPlaySoundChannels {
@@ -943,28 +1469,28 @@ WARNING: couldn't find address 0x797c0002ab50 (0x17c0002ab50) in binary!
 	// Properties
 	var delegate : FMIPRefreshingControllerDelegate // +0x10 (0x10)
 	var selectedDevice : FMIPDevice // +0x0 (0x0)
-	let interactionController : FMIPInteractionController // +0x9a1dc (0x28)
-	let apsConnectionHandler : FMAPSConnectionHandler // +0x1668 (0x8)
-	let refreshQueue : OS_dispatch_queue // +0x9a1dc (0x8)
+	let interactionController : FMIPInteractionController // +0x77735f5f (0x28)
+	let apsConnectionHandler : FMAPSConnectionHandler // +0x6569665f (0x8)
+	let refreshQueue : OS_dispatch_queue // +0x45545f5f (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var tapContexts :  empty-list  // +0x0 (0x8)
-	var callbackInterval : Double // +0x0 (0x8)
-	var minCallbackInterval : Double // +0x0 (0x8)
-	var maxCallbackInterval : Double // +0x6f635f5f (0x8)
+	var callbackInterval : Double // +0xf1c48 (0x8)
+	var minCallbackInterval : Double // +0x2f64 (0x8)
+	var maxCallbackInterval : Double // +0xf1c48 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastRefreshTime : µH // +0x0 (0x0)
-	var refreshTimer : NSTimer? // +0x45545f5f (0x8)
+	var lastRefreshTime : ±∏ // +0x0 (0x0)
+	var refreshTimer : NSTimer? // +0x0 (0x8)
 	var isRefreshing : Bool // +0x0 (0x1)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5f540002aaf0 (0x7540002aaf0) in binary!
+WARNING: couldn't find address 0x7c64000373c8 (0x464000373c8) in binary!
 	0x38000000c  @objc FMIPRefreshingController.(null) <stripped>
 
 	// Swift methods
-	0x5d770  func <stripped> // method 
-	0x5d910  func <stripped> // method 
-	0x5e170  func <stripped> // method 
-	0x5ee20  func <stripped> // method 
+	0x9fa00  func <stripped> // method 
+	0x9fba0  func <stripped> // method 
+	0xa0400  func <stripped> // method 
+	0xa10b0  func <stripped> // method 
  }
 
  class FMIPCore.FMIPLostModeResponse : FMIPDeviceContainingResponse { }
@@ -979,7 +1505,7 @@ WARNING: couldn't find address 0x5f540002aaf0 (0x7540002aaf0) in binary!
 	let demoStateGenerator : FMIPDemoDataGenerator
 
 	// Swift methods
-	0x610e0  func <stripped> // method 
+	0xa3370  func <stripped> // method 
  }
 
  struct FMIPCore.FMIPDemoDataState {
@@ -1045,11 +1571,11 @@ WARNING: couldn't find address 0x5f540002aaf0 (0x7540002aaf0) in binary!
 	let lockMetadata : FMIPLockMetadata
 	let eraseMetadata : FMIPEraseMetadata
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lostTimestamp : µH
+	let lostTimestamp : ±∏
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let lockedTimestamp : µH
+	let lockedTimestamp : ±∏
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let wipedTimestamp : µH
+	let wipedTimestamp : ±∏
 	let canWipeAfterLock : Bool
 	let canEnableLostMode : Bool
 	let canSupportDarkWake : Bool
@@ -1126,14 +1652,26 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class FMIPCore.FMIPRefreshClientRequest {
  class FMIPCore.FMIPRemoveDeviceAction : FMIPDeviceAction { }
 
+ class FMIPCore.FMIPRemoveItemAction : FMIPItemAction {
+
+	// Properties
+	var forced : Bool
+
+	// Swift methods
+	0xb8640  func FMIPRemoveItemAction.forced.getter // getter 
+	0xb8670  func FMIPRemoveItemAction.forced.setter // setter 
+	0xb86b0  func FMIPRemoveItemAction.forced.modify // modifyCoroutine 
+	0xb8700  class func FMIPRemoveItemAction.__allocating_init(item:forced:) // init 
+ }
+
  class FMIPCore.IconTextAttachment : NSTextAttachment /System/Library/Frameworks/UIKit.framework/UIKit {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x797c0002ab50 (0x17c0002ab50) in binary!
-	0x79cd  @objc IconTextAttachment.(null) <stripped>
-WARNING: couldn't find address 0x9490002ab28 (0x1490002ab28) in binary!
-	0x18000000c  @objc IconTextAttachment.(null) <stripped>
-WARNING: couldn't find address 0x5f0c0002ab58 (0x70c0002ab58) in binary!
-	0x5003000302b  @objc IconTextAttachment.(null) <stripped>
+WARNING: couldn't find address 0x9b4c000374a0 (0x34c000374a0) in binary!
+	0x9b9d  @objc IconTextAttachment.(null) <stripped>
+WARNING: couldn't find address 0xc0000037478 (0x40000037478) in binary!
+	0x28000000c  @objc IconTextAttachment.(null) <stripped>
+WARNING: couldn't find address 0x7c1c000374a8 (0x41c000374a8) in binary!
+	0x7c10  @objc IconTextAttachment.(null) <stripped>
  }
 
  enum FMIPCore.FMIPPersonDeviceFetchStatus {
@@ -1186,8 +1724,8 @@ WARNING: couldn't find address 0x5f0c0002ab58 (0x70c0002ab58) in binary!
 	let geocodingQueue : NSOperationQueue
 
 	// Swift methods
-	0x7a400  func <stripped> // method 
-	0x7a5e0  func <stripped> // method 
+	0xbccc0  func <stripped> // method 
+	0xbcea0  func <stripped> // method 
  }
 
  class FMIPCore.FMSystemDirectoryUtilities : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1210,22 +1748,26 @@ WARNING: couldn't find address 0x5f0c0002ab58 (0x70c0002ab58) in binary!
 	var defaultCallbackInterval : Double // +0x48 (0x8)
 	var initialCallbackInterval : Double // +0x50 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastRefreshTime : µH // +0x64 (0x0)
-	var refreshTimer : NSTimer? // +0xa3e50 (0x8)
-	var isRefreshing : Bool // +0x0 (0x1)
+	var lastRefreshTime : ±∏ // +0x45545f5f (0x0)
+	var refreshTimer : NSTimer? // +0x0 (0x8)
+	var isRefreshing : Bool // +0xf4c60 (0x1)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x5f0c0002ab58 (0x70c0002ab58) in binary!
-	0x5003000302b  @objc FMIPBeaconRefreshingController.(null) <stripped>
+WARNING: couldn't find address 0x7c1c000374a8 (0x41c000374a8) in binary!
+	0x7c10  @objc FMIPBeaconRefreshingController.(null) <stripped>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	0x546002b0020  @objc FMIPBeaconRefreshingController.(null) <stripped>
 
 	// Swift methods
-	0x7bf50  func <stripped> // method 
-	0x7c280  func <stripped> // method 
-	0x7c5d0  func <stripped> // method 
-	0x7d3a0  func <stripped> // method 
-	0x7df30  func <stripped> // method 
-	0x7e120  func <stripped> // method 
-	0x7e1b0  func <stripped> // method 
+	0xbe6b0  func <stripped> // method 
+	0xbe9e0  func <stripped> // method 
+	0xbecc0  func <stripped> // method 
+	0xbff70  func <stripped> // method 
+	0xc0ae0  func <stripped> // method 
+	0xc1670  func <stripped> // method 
+	0xc1970  func <stripped> // method 
+	0xc1a10  func <stripped> // method 
+	0xc1a60  func <stripped> // method 
  }
 
  class FMIPCore.FMIPBaseResponse : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1238,7 +1780,7 @@ WARNING: couldn't find address 0x5f0c0002ab58 (0x70c0002ab58) in binary!
 	let statusCode : Int
 
 	// Swift methods
-	0x7fa60  class func <stripped> // init 
+	0xc33e0  class func <stripped> // init 
  }
 
  enum FMIPCore.FMIPBaseResponseError {
@@ -1258,6 +1800,33 @@ WARNING: couldn't find address 0x5f0c0002ab58 (0x70c0002ab58) in binary!
 	case content  
  }
 
+ enum FMIPCore.FMIPUTAlertCompletionType {
+
+	// Properties
+	case ignoreUntilEOD  
+	case ignoreForever  
+	case closedSheet  
+ }
+
+ enum FMIPCore.FMIPUTAlertSheetType {
+
+	// Properties
+	case user  
+	case family  
+ }
+
+ struct FMIPCore.FMIPUTAlertEvent {
+
+	// Properties
+	var sheetType : FMIPUTAlertSheetType // +0x0
+	var completionAction : FMIPUTAlertCompletionType // +0x1
+	var disableItemTapped : Bool // +0x2
+	var didCloseSheet : Bool // +0x3
+	var playSoundCount : Int // +0x8
+	var tracksCount : Int // +0x10
+	var tracksElapsedTime : Double // +0x18
+ }
+
  struct FMIPCore.FMIPAnalytics {
 
 	// Properties
@@ -1274,9 +1843,9 @@ WARNING: couldn't find address 0x5f0c0002ab58 (0x70c0002ab58) in binary!
 	let demoDataInjector : FMIPDemoDataInjector
 
 	// Swift methods
-	0x82c60  func <stripped> // method 
-	0x843a0  func <stripped> // method 
-	0x843f0  func <stripped> // method 
+	0xc9c80  func <stripped> // method 
+	0xcb3c0  func <stripped> // method 
+	0xcb410  func <stripped> // method 
  }
 
  enum FMIPCore.Error {
@@ -1310,7 +1879,7 @@ WARNING: couldn't find address 0x5f0c0002ab58 (0x70c0002ab58) in binary!
 	// Properties
 	let status : FMIPActionStatus
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let timestamp : ÁK
+	let timestamp : ≥ª
  }
 
  enum FMIPCore.CodingKeys {
@@ -1352,16 +1921,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let message : String? // +0x20 (0x10)
 	let okButtonLabel : String? // +0x30 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let okButtonURL : /H // +0xa3ec0 (0x0)
-	let cancelButtonLabel : String? // +0x0 (0x10)
+	let okButtonURL : √∏ // +0x45545f5f (0x0)
+	let cancelButtonLabel : String? // +0x7373615f (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let cancelButtonURL : /H // +0x1f30 (0x0)
-	let type : FMIPAlertType // +0xa3ec0 (0x1)
+	let cancelButtonURL : √∏ // +0x0 (0x0)
+	let type : FMIPAlertType // +0xf7530 (0x1)
 
 	// Swift methods
-	0x8f200  class func FMIPAlert.__allocating_init(from:) // init 
-	0x8e9b0  class func FMIPAlert.__allocating_init(title:message:okButtonLabel:okButtonURL:cancelButtonLabel:cancelButtonURL:type:) // init 
-	0x8f860  func FMIPAlert.debugDescription.getter // getter 
+	0xd68f0  class func FMIPAlert.__allocating_init(from:) // init 
+	0xd60a0  class func FMIPAlert.__allocating_init(title:message:okButtonLabel:okButtonURL:cancelButtonLabel:cancelButtonURL:type:) // init 
+	0xd6f50  func FMIPAlert.debugDescription.getter // getter 
  }
 
  enum FMIPCore.CodingKeys {
@@ -1373,26 +1942,4 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case okButtonURL  
 	case cancelButtonLabel  
 	case cancelButtonURL  
- }
-
- enum __C.UNAuthorizationStatus { }
-
- struct __C.SPBeaconTaskName {
-
-	// Properties
-	var _rawValue : NSString
- }
-
- enum __C.CLAuthorizationStatus { }
-
- struct __C.FileProtectionType {
-
-	// Properties
-	var _rawValue : NSString
- }
-
- struct __C.FileAttributeKey {
-
-	// Properties
-	var _rawValue : NSString
  }

@@ -98,7 +98,6 @@
 - (void)setName:(id)arg1;
 - (void)setVersion:(id)arg1;
 - (void)startObservingIsPublishingForService:(id)arg1;
-- (BOOL)swapToNetServiceKVOCancellation:(id)arg1 swapToObservedNetService:(id)arg2;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;
 - (void)updateVersion:(id)arg1;

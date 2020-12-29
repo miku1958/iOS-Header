@@ -10,7 +10,9 @@
 {
 }
 
++ (id)activityTypeForLocalizedActivityName:(id)arg1;
 + (id)allActivityTypes;
++ (id)allActivityTypesIncludingWheelchairWorkouts:(BOOL)arg1 includingSwimmingWorkouts:(BOOL)arg2;
 + (BOOL)isWheelchairUser;
 + (void)preferredUnitsForActivityType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 + (id)quantityTypesForActivityType:(unsigned long long)arg1;

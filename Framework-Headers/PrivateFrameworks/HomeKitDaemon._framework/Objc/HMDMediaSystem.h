@@ -36,6 +36,7 @@
     HMDAccessorySettingsController *_settingsController;
     HMDMediaDestinationsManager *_audioDestinationsManager;
     NSNotificationCenter *_notificationCenter;
+    CDUnknownBlockType _audioDestinationsManagerFactory;
 }
 
 @property (readonly, nonatomic) NSArray *accessories;
@@ -44,6 +45,7 @@
 @property (readonly) HMMediaDestination *audioDestination; // @synthesize audioDestination=_audioDestination;
 @property (readonly) id<HMDMediaDestinationManager> audioDestinationManager;
 @property (strong) HMDMediaDestinationsManager *audioDestinationsManager; // @synthesize audioDestinationsManager=_audioDestinationsManager;
+@property (copy) CDUnknownBlockType audioDestinationsManagerFactory; // @synthesize audioDestinationsManagerFactory=_audioDestinationsManagerFactory;
 @property (readonly) HMDBackingStore *backingStore;
 @property (copy, nonatomic) NSArray *components; // @synthesize components=_components;
 @property (strong, nonatomic) NSString *configuredName; // @synthesize configuredName=_configuredName;
@@ -96,7 +98,9 @@
 - (void)configureAudioDestinationsManager;
 - (void)configureMediaSystemComponents:(id)arg1;
 - (void)configureWithMessageDispatcher:(id)arg1;
+- (id)createNewAudioDestination;
 - (void)dealloc;
+- (id)destinationControllerGroupedWithAssociatedDestination;
 - (id)dumpState;
 - (void)encodeWithCoder:(id)arg1;
 - (void)handleAccessorySoftwareUpdated:(id)arg1;
@@ -106,6 +110,7 @@
 - (id)initWithMediaSystemModel:(id)arg1 home:(id)arg2;
 - (id)initWithUUID:(id)arg1 configuredName:(id)arg2 home:(id)arg3 components:(id)arg4;
 - (id)initWithUUID:(id)arg1 configuredName:(id)arg2 home:(id)arg3 components:(id)arg4 settingsControllerCreator:(CDUnknownBlockType)arg5;
+- (BOOL)isCurrentComponent;
 - (BOOL)isMultiUserEnabledForAccessorySettingsController:(id)arg1;
 - (BOOL)isValid;
 - (id)logIdentifier;
@@ -119,6 +124,7 @@
 - (id)privateDescription;
 - (void)relayMessage:(id)arg1;
 - (id)remoteMessageDestinationForAccessorySettingsController:(id)arg1 target:(id)arg2;
+- (void)repairAnyPreExistingAudioGroups;
 - (id)serialize;
 - (id)supportedMultiUserLanguageCodesForAccessorySettingsController:(id)arg1;
 - (id)targetAccessoryBySerial;

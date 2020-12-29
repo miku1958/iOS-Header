@@ -16,10 +16,13 @@
 + (id)applicationBundleIdentifierWithAuditToken:(CDStruct_6ad76789)arg1;
 + (id)codeSignIdentifierWithAuditToken:(CDStruct_6ad76789)arg1;
 + (BOOL)isEntitledToApplicationGroup:(id)arg1 withAuditToken:(CDStruct_6ad76789)arg2;
++ (id)objectForCurrentProcessEntitlement:(id)arg1;
++ (id)objectForEntitlement:(id)arg1 withAuditToken:(CDStruct_6ad76789)arg2;
 + (id)stringForCurrentProcessEntitlement:(id)arg1;
 + (id)stringForEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2;
 + (id)stringForEntitlement:(id)arg1 withAuditToken:(CDStruct_6ad76789)arg2;
 + (id)teamIdWithAuditToken:(CDStruct_6ad76789)arg1;
++ (id)valueForEntitlement:(id)arg1 fromSecTask:(struct __SecTask *)arg2 ofType:(unsigned long long *)arg3;
 
 @end
 

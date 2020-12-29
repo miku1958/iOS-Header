@@ -30,6 +30,8 @@
     MISSING_TYPE *delegateQueue;
     MISSING_TYPE *stopRefreshTimestamp;
     MISSING_TYPE *isRefreshing;
+    MISSING_TYPE *itemActionsController;
+    MISSING_TYPE *isUTAppAlertDisabled;
     MISSING_TYPE *selectedDevice;
     MISSING_TYPE *isInitialized;
 }

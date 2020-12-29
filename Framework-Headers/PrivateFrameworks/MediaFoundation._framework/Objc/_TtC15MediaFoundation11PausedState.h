@@ -14,6 +14,7 @@
     MISSING_TYPE *playbackDidStopWasProcessed;
     MISSING_TYPE *signalOnEnter;
     MISSING_TYPE *fadeOut;
+    MISSING_TYPE *suppressed;
 }
 
 @end

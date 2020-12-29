@@ -16,12 +16,12 @@
     MISSING_TYPE *headerTitleIndexes;
     MISSING_TYPE *highlightIndex;
     MISSING_TYPE *episodes;
+    MISSING_TYPE *needsUpdateKey;
     MISSING_TYPE *delegate;
     MISSING_TYPE *fragmentServiceRequests;
     MISSING_TYPE *eventMonitorDescriptors;
     MISSING_TYPE *contextDataRef;
     MISSING_TYPE *pageLength;
-    MISSING_TYPE *needsUpdateKey;
 }
 
 @end

@@ -14,7 +14,6 @@
     MISSING_TYPE *metrics;
     MISSING_TYPE *style;
     MISSING_TYPE *status;
-    MISSING_TYPE *backgroundGradient;
     MISSING_TYPE *image;
     MISSING_TYPE *innerShadow;
     MISSING_TYPE *foilLayer;

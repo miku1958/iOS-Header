@@ -43,6 +43,8 @@
 - (void)detachSafelyFromFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (long long)faceTrackingMaxFaces;
 - (id)init;
+- (BOOL)isAppClipCodeMetadataObjectTypeAvailable;
+- (BOOL)isAppClipCodeMetadataSupported;
 - (BOOL)isFaceTrackingMetadataObjectTypesAvailable;
 - (BOOL)isFaceTrackingSupported;
 - (BOOL)isFaceTrackingUsesFaceRecognition;
@@ -50,6 +52,7 @@
 - (BOOL)isOfflineVideoStabilizationMotionMetadataSupported;
 - (BOOL)isVideoPreviewHistogramMetadataObjectTypesAvailable;
 - (BOOL)isVideoPreviewHistogramMetadataSupported;
+- (void)setAppClipCodeMetadataObjectTypeAvailable:(BOOL)arg1;
 - (void)setDelegateOverride:(id)arg1 delegateOverrideCallbackQueue:(id)arg2;
 - (void)setFaceTrackingMaxFaces:(long long)arg1;
 - (void)setFaceTrackingMetadataObjectTypesAvailable:(BOOL)arg1;

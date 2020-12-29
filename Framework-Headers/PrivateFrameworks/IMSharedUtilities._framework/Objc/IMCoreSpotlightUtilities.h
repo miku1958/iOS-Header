@@ -11,8 +11,10 @@
 }
 
 + (BOOL)bypassIndexVersionCheck;
++ (id)currentIndexProductVersion;
 + (unsigned long long)currentIndexVersion;
 + (id)descriptionForReindexReason:(unsigned long long)arg1;
++ (id)expectedIndexProductVersion;
 + (unsigned long long)expectedIndexVersion;
 + (unsigned long long)lastIndexedRowID;
 + (unsigned long long)messageIndexBatchSize:(BOOL)arg1;

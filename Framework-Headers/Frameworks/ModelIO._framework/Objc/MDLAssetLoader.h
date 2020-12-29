@@ -6,23 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <ModelIO/NSSecureCoding-Protocol.h>
-
 @class NSString;
 
-@interface MDLAssetLoader : NSObject <NSSecureCoding>
+@interface MDLAssetLoader : NSObject
 {
     NSString *_extension;
-    struct AssetData _buffer;
 }
 
-+ (BOOL)supportsSecureCoding;
-- (id).cxx_construct;
 - (void).cxx_destruct;
-- (void)encodeWithCoder:(id)arg1;
-- (id)initWithCoder:(id)arg1;
 - (id)initWithExtension:(id)arg1;
-- (void)loadMDLAsset:(id)arg1 preserveTopology:(BOOL)arg2;
 - (id)loadURL:(id)arg1;
 
 @end

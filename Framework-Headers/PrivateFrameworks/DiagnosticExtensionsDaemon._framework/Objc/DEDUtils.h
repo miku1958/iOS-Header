@@ -17,6 +17,7 @@
 + (id)deviceModel;
 + (id)deviceName;
 + (id)deviceProductType;
++ (BOOL)isDebugRequestsEnabled;
 + (BOOL)isInternalInstall;
 + (id)modelForProductType:(id)arg1;
 + (id)osBuild;

@@ -13,6 +13,7 @@
 - (void)contentLoadFailure;
 - (void)discarded;
 - (void)missedOpportunity;
+- (void)trackImpressionWithStartDate:(id)arg1 endDate:(id)arg2;
 
 @end
 

@@ -16,6 +16,7 @@
     NSArray *_bbox;
 }
 
+@property (readonly, nonatomic) NSString *areaID;
 @property (strong, nonatomic) NSArray *bbox; // @synthesize bbox=_bbox;
 @property (strong, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isBboxValid; // @synthesize isBboxValid=_isBboxValid;

@@ -9,6 +9,7 @@
 @interface RTArchiver : NSObject
 {
     struct archive *_archive;
+    int _archive_fd;
     BOOL _valid;
 }
 

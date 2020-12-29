@@ -17,7 +17,7 @@
     MISSING_TYPE *playlistStore;
     MISSING_TYPE *recentlyPlayedStore;
     MISSING_TYPE *suggestionsStore;
-    MISSING_TYPE *reloadQueue;
+    MISSING_TYPE *updateQueue;
     MISSING_TYPE *audioTabVisibilitySignal;
     MISSING_TYPE *audioStateFactory;
     MISSING_TYPE *completedListeningProcessor;

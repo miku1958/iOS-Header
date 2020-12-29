@@ -48,8 +48,8 @@
     BOOL _isYukonLinked;
     BOOL _isYukonELinked;
     BOOL _isAzulLinked;
-    BOOL _isAzulBLinked;
     BOOL _isAzulHWLinked;
+    BOOL _isAzulBLinked;
     BOOL _prefersSavedSnapshots;
     BOOL _wantsLaunchWithoutPNG;
     BOOL _wantsFullScreen;

@@ -20,6 +20,7 @@
     MISSING_TYPE *presentingView;
     MISSING_TYPE *previewController;
     MISSING_TYPE *actions;
+    MISSING_TYPE *currentContextMenuConfiguration;
 }
 
 @end

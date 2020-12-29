@@ -14,12 +14,13 @@
     int _propertyID;
     NSString *_accountIdentifier;
     long long _multivalueIndex;
+    NSString *_contactIdentifier;
     CNContact *_contact;
 }
 
 @property (readonly, copy, nonatomic) NSString *accountIdentifier; // @synthesize accountIdentifier=_accountIdentifier;
 @property (readonly, copy, nonatomic) CNContact *contact; // @synthesize contact=_contact;
-@property (readonly, copy, nonatomic) NSString *contactIdentifier;
+@property (readonly, copy, nonatomic) NSString *contactIdentifier; // @synthesize contactIdentifier=_contactIdentifier;
 @property (readonly, nonatomic) BOOL fromVCard; // @synthesize fromVCard=_fromVCard;
 
 + (id)addContactsChangeObserver:(CDUnknownBlockType)arg1;
@@ -35,6 +36,7 @@
 + (id)contactsWithVCardData:(id)arg1;
 + (void)removeContactsChangeObserver:(id)arg1;
 + (id)requiredKeysToFetch;
++ (BOOL)supportsSecureCoding;
 + (void)updateContactStoreObservation;
 - (void).cxx_destruct;
 - (id)URLs;
@@ -43,6 +45,7 @@
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dates;
 - (id)emailAddresses;
+- (void)encodeWithCoder:(id)arg1;
 - (id)firstName;
 - (id)formattedName;
 - (BOOL)hasImageData;
@@ -50,6 +53,7 @@
 - (unsigned long long)hash;
 - (id)imageData;
 - (id)initWithCNContact:(id)arg1 propertyID:(int)arg2 multivalueIndex:(long long)arg3 fromVCard:(BOOL)arg4;
+- (id)initWithCoder:(id)arg1;
 - (id)instantMessageAddresses;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isPropertyIDRepresented:(int)arg1;

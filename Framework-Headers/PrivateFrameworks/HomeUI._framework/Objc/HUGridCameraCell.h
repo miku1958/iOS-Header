@@ -6,14 +6,14 @@
 
 #import <HomeUI/HUGridCell.h>
 
-@class HFItem, HUCameraView, HUGridCameraCellLayoutOptions, HULegibilityLabel, HUVisualEffectContainerView, NADecayingTimer, NSArray, UILabel, UIView, _UILegibilitySettings;
+@class HFItem, HUCameraView, HUGridCameraCellLayoutOptions, HULegibilityLabel, HUVisualEffectContainerView, NADecayingTimer, NSArray, UIImageView, UILabel, UIView, _UILegibilitySettings;
 
 @interface HUGridCameraCell : HUGridCell
 {
     HFItem *_item;
     HUGridCameraCellLayoutOptions *_layoutOptions;
     UIView *_topBarView;
-    UIView *_recordingIndicator;
+    UIImageView *_recordingIndicatorImageView;
     UILabel *_titleLabel;
     HULegibilityLabel *_descriptionLabel;
     HUCameraView *_cameraView;
@@ -34,7 +34,7 @@
 @property (strong, nonatomic) NSArray *labelsConstraints; // @synthesize labelsConstraints=_labelsConstraints;
 @property (strong, nonatomic) HUGridCameraCellLayoutOptions *layoutOptions; // @synthesize layoutOptions=_layoutOptions;
 @property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
-@property (strong, nonatomic) UIView *recordingIndicator; // @synthesize recordingIndicator=_recordingIndicator;
+@property (strong, nonatomic) UIImageView *recordingIndicatorImageView; // @synthesize recordingIndicatorImageView=_recordingIndicatorImageView;
 @property (strong, nonatomic) UILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
 @property (strong, nonatomic) UIView *topBarView; // @synthesize topBarView=_topBarView;
 
@@ -43,6 +43,7 @@
 - (void).cxx_destruct;
 - (void)_animateTransitionWithView:(id)arg1 animations:(CDUnknownBlockType)arg2;
 - (id)_descriptionLabelText:(id)arg1;
+- (void)_handleShouldDifferentiateWithoutColorDidChange;
 - (void)_updateCameraViewAppearance;
 - (void)_updateRecordIndicatorColor;
 - (struct CGRect)cameraViewFrame;

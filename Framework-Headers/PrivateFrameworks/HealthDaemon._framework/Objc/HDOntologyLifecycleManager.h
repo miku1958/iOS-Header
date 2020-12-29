@@ -11,7 +11,7 @@
 #import <HealthDaemon/HDHealthOntologyManagerObserver-Protocol.h>
 #import <HealthDaemon/HDHealthRecordsAccountEventObserver-Protocol.h>
 
-@class HDConceptIndexManager, HDHealthOntologyConfiguration, HDHealthOntologyManager, HDHealthRecordsNotificationManager, HDOntologyAssetManager, HDProfile, NSSet, NSString;
+@class HDConceptIndexManager, HDHealthOntologyConfiguration, HDHealthOntologyManager, HDOntologyAssetManager, HDProfile, NSSet, NSString;
 @protocol HDOntologyTester;
 
 @interface HDOntologyLifecycleManager : NSObject <HDDatabaseProtectedDataObserver, HDHealthDaemonReadyObserver, HDHealthOntologyManagerObserver, HDHealthRecordsAccountEventObserver>
@@ -22,7 +22,6 @@
     HDOntologyAssetManager *_assetManager;
     HDHealthOntologyManager *_ontologyManager;
     HDConceptIndexManager *_indexManager;
-    HDHealthRecordsNotificationManager *_notificationManager;
     HDHealthOntologyConfiguration *_ontologyConfiguration;
     id<HDOntologyTester> _ontologyTester;
     HDHealthOntologyConfiguration *_unitTesting_ontologyConfigurationOverride;
@@ -35,7 +34,6 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSSet *improveHealthRecordsGatedAnalyticsEnabledCountryCodes;
 @property (readonly, nonatomic) HDConceptIndexManager *indexManager; // @synthesize indexManager=_indexManager;
-@property (readonly, nonatomic) HDHealthRecordsNotificationManager *notificationManager; // @synthesize notificationManager=_notificationManager;
 @property (copy, nonatomic) HDHealthOntologyConfiguration *ontologyConfiguration; // @synthesize ontologyConfiguration=_ontologyConfiguration;
 @property (strong, nonatomic) HDHealthOntologyManager *ontologyManager; // @synthesize ontologyManager=_ontologyManager;
 @property (weak, nonatomic) id<HDOntologyTester> ontologyTester; // @synthesize ontologyTester=_ontologyTester;

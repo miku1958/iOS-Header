@@ -4,14 +4,15 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TextInputCore/TISKEvent.h>
+#import <TextInputCore/TISKTimestampEvent.h>
 
-@interface TISKWordDeleteEvent : TISKEvent
+@interface TISKWordDeleteEvent : TISKTimestampEvent
 {
 }
 
 - (id)description;
-- (id)init:(long long)arg1;
+- (id)init:(double)arg1 emojiSearchMode:(BOOL)arg2 order:(long long)arg3;
+- (void)reportInterKeyTiming:(id)arg1 previousEvent:(id)arg2;
 - (void)reportToSession:(id)arg1;
 
 @end

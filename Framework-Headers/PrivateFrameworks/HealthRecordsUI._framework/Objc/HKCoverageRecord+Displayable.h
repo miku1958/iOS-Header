@@ -8,6 +8,7 @@
 
 @interface HKCoverageRecord (Displayable)
 - (id)codings;
+- (id)meaningfulDateString;
 - (long long)recordCategoryType;
 - (id)title;
 - (id)titleDisplayStringForDetailViewController;

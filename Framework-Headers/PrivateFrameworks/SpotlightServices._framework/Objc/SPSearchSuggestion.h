@@ -61,6 +61,7 @@
 - (Class)classForKeyedArchiver;
 - (long long)compare:(id)arg1;
 - (id)description;
+- (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)initWithSuggestion:(id)arg1 query:(id)arg2 scores:(id)arg3 bundleIDs:(id)arg4;
 - (BOOL)isEqual:(id)arg1;

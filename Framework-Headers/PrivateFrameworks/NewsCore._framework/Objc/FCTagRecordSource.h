@@ -29,7 +29,7 @@
 - (id)nonLocalizableKeys;
 - (int)pbRecordType;
 - (id)recordFromCKRecord:(id)arg1 base:(id)arg2;
-- (id)recordIDPrefix;
+- (id)recordIDPrefixes;
 - (id)recordType;
 - (id)saveTagRecords:(id)arg1;
 - (id)storeFilename;

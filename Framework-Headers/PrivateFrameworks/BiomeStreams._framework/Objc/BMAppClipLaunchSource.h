@@ -4,11 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <BiomeStreams/BMSource.h>
+#import <BiomeStreams/BMStoreSource.h>
 
 @class _CDClientContext, _DKKnowledgeStore;
 
-@interface BMAppClipLaunchSource : BMSource
+@interface BMAppClipLaunchSource : BMStoreSource
 {
     _CDClientContext *_contextStore;
     _DKKnowledgeStore *_knowledgeStore;

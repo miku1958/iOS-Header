@@ -6,10 +6,12 @@
 
 #import <objc/NSObject.h>
 
-@class FCInterestToken, FCOperation, NFUnfairLock, NSDate, NSError, NSHashTable, NSString, NSURL, NTPBAsset;
+#import <NewsCore/FCContentArchivable-Protocol.h>
+
+@class FCContentArchive, FCInterestToken, FCOperation, NFUnfairLock, NSDate, NSError, NSHashTable, NSString, NSURL, NTPBAsset;
 @protocol FCAssetDataProvider, FCAssetHandleDelegate, OS_dispatch_group;
 
-@interface FCAssetHandle : NSObject
+@interface FCAssetHandle : NSObject <FCContentArchivable>
 {
     id<FCAssetDataProvider> _dataProvider;
     NSError *_downloadError;
@@ -30,6 +32,7 @@
 
 @property (copy, nonatomic) NSString *assetKey; // @synthesize assetKey=_assetKey;
 @property (strong) NTPBAsset *assetMetadata; // @synthesize assetMetadata=_assetMetadata;
+@property (readonly, nonatomic) FCContentArchive *contentArchive;
 @property unsigned long long countOfPenalizedDownloadAttempts; // @synthesize countOfPenalizedDownloadAttempts=_countOfPenalizedDownloadAttempts;
 @property (strong) id<FCAssetDataProvider> dataProvider; // @synthesize dataProvider=_dataProvider;
 @property (strong) NSDate *dateOfLastDownloadAttempt; // @synthesize dateOfLastDownloadAttempt=_dateOfLastDownloadAttempt;

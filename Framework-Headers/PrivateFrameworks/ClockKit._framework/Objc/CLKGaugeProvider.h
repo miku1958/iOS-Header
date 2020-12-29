@@ -28,7 +28,7 @@
 @property (nonatomic) BOOL paused; // @synthesize paused=_paused;
 @property (nonatomic) long long style; // @synthesize style=_style;
 
-+ (id)gaugeProviderWithJSONObjectRepresentation:(id)arg1 bundle:(id)arg2;
++ (id)providerWithJSONObjectRepresentation:(id)arg1 bundle:(id)arg2;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)JSONObjectRepresentation;

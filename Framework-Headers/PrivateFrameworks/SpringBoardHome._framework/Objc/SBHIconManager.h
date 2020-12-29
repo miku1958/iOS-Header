@@ -12,6 +12,7 @@
 #import <SpringBoardHome/SBHIconModelDelegate-Protocol.h>
 #import <SpringBoardHome/SBHLibraryViewControllerObserver-Protocol.h>
 #import <SpringBoardHome/SBHMultiplexingManagerDelegate-Protocol.h>
+#import <SpringBoardHome/SBHTodayViewControllerObserver-Protocol.h>
 #import <SpringBoardHome/SBHWidgetMetricsProviderDelegate-Protocol.h>
 #import <SpringBoardHome/SBHWidgetStackViewControllerDataSource-Protocol.h>
 #import <SpringBoardHome/SBHWidgetStackViewControllerDelegate-Protocol.h>
@@ -29,10 +30,10 @@
 #import <SpringBoardHome/SBRootFolderPageStateObserver-Protocol.h>
 #import <SpringBoardHome/UIPopoverPresentationControllerDelegate-Protocol.h>
 
-@class BSEventQueue, CHSAvocadoDescriptorProvider, NSArray, NSCountedSet, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSTimer, SBFParallaxSettings, SBFloatingDockViewController, SBFolder, SBFolderController, SBFolderIconImageCache, SBHHomeScreenSettings, SBHHomeScreenUsageMonitor, SBHIconImageCache, SBHIconModel, SBHLibraryViewController, SBHMultiplexingManager, SBHRootFolderSettings, SBHWidgetMetricsProvider, SBHomeScreenDefaults, SBHomeScreenIconTransitionAnimator, SBIcon, SBIconDragManager, SBIconLabelImageCache, SBIconListView, SBIconPageIndicatorImageSetCache, SBIconPreviousLocationTracker, SBIconView, SBReusableViewMap, SBRootFolder, SBRootFolderController, SBSearchGesture, SBTodayViewController, SBWorkspaceInteractionContext, UIImpactFeedbackGenerator, UIViewController, _UILegibilitySettings;
-@protocol BSInvalidatable, OS_os_activity, SBHIconManagerDelegate, SBHIconRootViewProviding, SBHLegibility, SBHLibraryProvider, SBHSidebarProvider, SBIconListLayoutProvider;
+@class BSEventQueue, CHSAvocadoDescriptorProvider, NSArray, NSCountedSet, NSHashTable, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, NSTimer, SBFParallaxSettings, SBFloatingDockViewController, SBFolder, SBFolderController, SBFolderIcon, SBFolderIconImageCache, SBHHomeScreenSettings, SBHHomeScreenUsageMonitor, SBHIconImageCache, SBHIconModel, SBHLibraryViewController, SBHMultiplexingManager, SBHRootFolderSettings, SBHWidgetMetricsProvider, SBHomeScreenDefaults, SBHomeScreenIconTransitionAnimator, SBIcon, SBIconDragManager, SBIconLabelImageCache, SBIconListView, SBIconPageIndicatorImageSetCache, SBIconPreviousLocationTracker, SBIconView, SBReusableViewMap, SBRootFolder, SBRootFolderController, SBSearchGesture, SBWorkspaceInteractionContext, UIImpactFeedbackGenerator, UIViewController, _UILegibilitySettings;
+@protocol BSInvalidatable, OS_os_activity, SBHIconManagerDelegate, SBHIconRootViewProviding, SBHLegibility, SBHLibraryProvider, SBHSidebarProvider, SBHTodayViewController, SBIconListLayoutProvider;
 
-@interface SBHIconManager : NSObject <UIPopoverPresentationControllerDelegate, SBReusableViewMapDelegate, SBRootFolderPageStateObserver, SBNestingViewControllerDelegate, SBHIconModelDelegate, PTSettingsKeyObserver, SBRootFolderDelegate, SBIconViewObserver, SBHWidgetStackViewControllerDataSource, SBHWidgetStackViewControllerDelegate, SBLeafIconObserver, CHUISAvocadoHostViewControllerDelegate, SBHWidgetMetricsProviderDelegate, CHSAvocadoDescriptorProviderObserver, SBHMultiplexingManagerDelegate, SBIconViewDelegate, SBIconViewQuerying, SBHomeScreenIconTransitionAnimatorDelegate, SBIconViewProviding, SBRootFolderControllerDelegate, SBIconLocationPresenting, SBHLibraryViewControllerObserver>
+@interface SBHIconManager : NSObject <UIPopoverPresentationControllerDelegate, SBReusableViewMapDelegate, SBRootFolderPageStateObserver, SBNestingViewControllerDelegate, SBHIconModelDelegate, PTSettingsKeyObserver, SBRootFolderDelegate, SBIconViewObserver, SBHWidgetStackViewControllerDataSource, SBHWidgetStackViewControllerDelegate, SBLeafIconObserver, CHUISAvocadoHostViewControllerDelegate, SBHWidgetMetricsProviderDelegate, CHSAvocadoDescriptorProviderObserver, SBHMultiplexingManagerDelegate, SBHTodayViewControllerObserver, SBIconViewDelegate, SBIconViewQuerying, SBHomeScreenIconTransitionAnimatorDelegate, SBIconViewProviding, SBRootFolderControllerDelegate, SBIconLocationPresenting, SBHLibraryViewControllerObserver>
 {
     SBReusableViewMap *_iconViewMap;
     SBReusableViewMap *_homescreenIconAccessoryViewMap;
@@ -68,6 +69,7 @@
     NSObject<OS_os_activity> *_editingActivity;
     struct os_activity_scope_state_s _editingActivityScope;
     id<BSInvalidatable> _stateCaptureHandle;
+    SBFolderIcon *_pendingFolderIconToOpen;
     BOOL _editing;
     BOOL _overlayTodayViewVisible;
     BOOL _overlayCoverSheetTodayViewVisible;
@@ -89,7 +91,7 @@
     SBRootFolderController *_rootFolderController;
     UIViewController<SBHIconRootViewProviding> *_rootViewController;
     SBFloatingDockViewController *_floatingDockViewController;
-    SBTodayViewController *_overlayTodayViewController;
+    UIViewController<SBHTodayViewController> *_overlayTodayViewController;
     SBHLibraryViewController *_overlayLibraryViewController;
     _UILegibilitySettings *_legibilitySettings;
     id<SBIconListLayoutProvider> _listLayoutProvider;
@@ -176,7 +178,7 @@
 @property (nonatomic, getter=isOverlayCoverSheetTodayViewVisible) BOOL overlayCoverSheetTodayViewVisible; // @synthesize overlayCoverSheetTodayViewVisible=_overlayCoverSheetTodayViewVisible;
 @property (strong, nonatomic) SBHLibraryViewController *overlayLibraryViewController; // @synthesize overlayLibraryViewController=_overlayLibraryViewController;
 @property (nonatomic, getter=isOverlayLibraryViewVisible) BOOL overlayLibraryViewVisible; // @synthesize overlayLibraryViewVisible=_overlayLibraryViewVisible;
-@property (strong, nonatomic) SBTodayViewController *overlayTodayViewController; // @synthesize overlayTodayViewController=_overlayTodayViewController;
+@property (strong, nonatomic) UIViewController<SBHTodayViewController> *overlayTodayViewController; // @synthesize overlayTodayViewController=_overlayTodayViewController;
 @property (nonatomic, getter=isOverlayTodayViewVisible) BOOL overlayTodayViewVisible; // @synthesize overlayTodayViewVisible=_overlayTodayViewVisible;
 @property (readonly, nonatomic, getter=isPerformingCancelledCollapseTransition) BOOL performingCancelledCollapseTransition;
 @property (readonly, nonatomic, getter=isPerformingExpandTransition) BOOL performingExpandTransition;
@@ -484,6 +486,7 @@
 - (id)iconViewWillCancelDrag:(id)arg1;
 - (BOOL)iconsShouldAllowCloseBoxes;
 - (id)imageViewForIconView:(id)arg1;
+- (void)informUsageMonitorOfVisibleIconRectsForOverlayTodayViewController;
 - (id)init;
 - (void)insertIcons:(id)arg1 intoWidgetStack:(id)arg2;
 - (id)intentForWidget:(id)arg1 ofIcon:(id)arg2;
@@ -624,6 +627,7 @@
 - (unsigned long long)supportedGridSizeClassesForIconView:(id)arg1;
 - (BOOL)supportsDockForIconModel:(id)arg1;
 - (void)tearDownAndResetRootIconLists;
+- (void)todayViewControllerDidEndScrolling:(id)arg1;
 - (void)toggleSuggestedWidgetInStackForTestRecipe;
 - (void)tryScrollToIconToRevealAnimated:(BOOL)arg1;
 - (void)uninstallIcon:(id)arg1;

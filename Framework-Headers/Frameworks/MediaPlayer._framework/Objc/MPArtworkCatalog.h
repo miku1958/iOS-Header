@@ -26,6 +26,7 @@
     id _token;
     id<MPArtworkDataSource> _dataSource;
     unsigned long long _renderHint;
+    unsigned long long _videoCacheStoragePolicy;
 }
 
 @property (readonly, nonatomic) long long MP_artworkType;
@@ -47,6 +48,7 @@
 @property (readonly, nonatomic) struct CGSize scaledFittingSize;
 @property (readonly, nonatomic) id token; // @synthesize token=_token;
 @property (readonly, nonatomic) NSCache *videoCache;
+@property (nonatomic) unsigned long long videoCacheStoragePolicy; // @synthesize videoCacheStoragePolicy=_videoCacheStoragePolicy;
 @property (readonly, nonatomic) id<MPArtworkDataSourceVisualIdenticality> visualIdenticalityIdentifier;
 
 + (id)_artworkCacheForIdentifier:(id)arg1 requestingContext:(id)arg2 representationKind:(long long)arg3;

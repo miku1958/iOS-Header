@@ -17,7 +17,6 @@
     id<HFUserNotificationPresentationHandling> _presentationHandler;
     NAFuture *_notificationSettingsFuture;
     NSHashTable *_observers;
-    NAFuture *_userNotificationCenterReadyFuture;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -28,7 +27,6 @@
 @property (weak, nonatomic) id<HFUserNotificationPresentationHandling> presentationHandler; // @synthesize presentationHandler=_presentationHandler;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) UNUserNotificationCenter *userNotificationCenter; // @synthesize userNotificationCenter=_userNotificationCenter;
-@property (strong, nonatomic) NAFuture *userNotificationCenterReadyFuture; // @synthesize userNotificationCenterReadyFuture=_userNotificationCenterReadyFuture;
 
 + (id)sharedInstance;
 - (void).cxx_destruct;

@@ -6,13 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthMenstrualCyclesDaemon/HDFeatureAvailabilityExtensionProvider-Protocol.h>
 #import <HealthMenstrualCyclesDaemon/HDProfileExtension-Protocol.h>
 
-@class HDMCAnalysisManager, HDMCAnalyticsManager, HDMCNotificationManager, HDProfile, HKMCSettingsManager, NSString;
+@class HDFeatureAvailabilityManager, HDMCAnalysisManager, HDMCAnalyticsManager, HDMCNotificationManager, HDProfile, HKMCSettingsManager, NSString;
 
-@interface HDMCProfileExtension : NSObject <HDProfileExtension>
+@interface HDMCProfileExtension : NSObject <HDProfileExtension, HDFeatureAvailabilityExtensionProvider>
 {
     HDMCAnalyticsManager *_analyticsManager;
+    HDFeatureAvailabilityManager *_featureAvailabilityManager;
     HDProfile *_profile;
     HDMCAnalysisManager *_analysisManager;
     HDMCNotificationManager *_notificationManager;
@@ -29,6 +31,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (id)featureAvailabilityExtensionForFeatureIdentifier:(id)arg1 client:(id)arg2;
 - (id)initWithProfile:(id)arg1;
 
 @end

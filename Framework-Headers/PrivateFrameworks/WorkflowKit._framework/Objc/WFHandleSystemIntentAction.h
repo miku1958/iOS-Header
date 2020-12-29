@@ -15,16 +15,16 @@
     int _token;
     INIntentDescription *_intentDescription;
     NSArray *_supportedAppIdentifiers;
-    NSArray *_supportedIdentifiers;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
-@property (readonly, nonatomic) NSArray *supportedIdentifiers; // @synthesize supportedIdentifiers=_supportedIdentifiers;
+@property (readonly, nonatomic) NSArray *supportedIdentifiers;
 @property (readonly, nonatomic) int token; // @synthesize token=_token;
 
++ (id)sharedEnumerator;
 - (void).cxx_destruct;
 - (id)actionForAppIdentifier:(id)arg1;
 - (id)appIdentifier;

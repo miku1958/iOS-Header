@@ -9,14 +9,18 @@
 #import <BiomeStreams/BMSourceStream-Protocol.h>
 #import <BiomeStreams/BMStream-Protocol.h>
 
-@class NSString;
+@class BMStoreStream, NSString;
 
 @interface BMAppClipLaunchStream : NSObject <BMStream, BMSourceStream>
 {
+    BMStoreStream *_storeStream;
 }
 
 @property (readonly, nonatomic) NSString *identifier;
 
+- (void).cxx_destruct;
+- (id)init;
+- (id)publisherFromStartTime:(double)arg1;
 - (id)source;
 
 @end

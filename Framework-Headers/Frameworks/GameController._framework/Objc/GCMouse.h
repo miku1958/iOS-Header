@@ -67,10 +67,10 @@
 - (BOOL)hasServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithServiceRef:(struct __IOHIDServiceClient *)arg1;
+- (BOOL)isATVRemote;
 - (void)removeServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (unsigned int)sampleRate;
 - (void)setVendorName:(id)arg1;
-- (BOOL)supportsMotionLite;
 
 @end
 

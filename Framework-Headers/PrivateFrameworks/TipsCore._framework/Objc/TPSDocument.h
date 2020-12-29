@@ -17,6 +17,7 @@
     NSString *_identifier;
     NSString *_variantID;
     NSString *_language;
+    NSString *_userLanguageCode;
     TPSNotification *_notification;
 }
 
@@ -27,6 +28,7 @@
 @property (copy, nonatomic) NSString *language; // @synthesize language=_language;
 @property (copy, nonatomic) TPSNotification *notification; // @synthesize notification=_notification;
 @property (readonly) Class superclass;
+@property (copy, nonatomic) NSString *userLanguageCode; // @synthesize userLanguageCode=_userLanguageCode;
 @property (copy, nonatomic) NSString *variantID; // @synthesize variantID=_variantID;
 
 + (id)classSet;

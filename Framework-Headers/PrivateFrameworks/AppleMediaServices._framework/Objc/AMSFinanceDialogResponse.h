@@ -37,7 +37,6 @@ __attribute__((visibility("hidden")))
 + (id)_presentEngagementForResult:(id)arg1 taskInfo:(id)arg2;
 + (id)_presentIDSDialog:(id)arg1 taskInfo:(id)arg2;
 + (BOOL)_shouldSendOverIDS:(id)arg1 taskInfo:(id)arg2;
-+ (void)_stashTIDContinueHeadersForResult:(id)arg1 info:(id)arg2;
 + (id)_updatedDialogResultFromResult:(id)arg1 engagementResult:(id)arg2 error:(id)arg3;
 + (long long)dialogKindForTaskInfo:(id)arg1 withResponseDictionary:(id)arg2;
 + (id)handleDialogResult:(id)arg1 taskInfo:(id)arg2;

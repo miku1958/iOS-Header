@@ -6,31 +6,36 @@
 
 #import <SharingUI/SFShareAudioBaseViewController.h>
 
-@class SFMediaPlayerView, UIButton, UIImageView, UILabel;
+@class NSLayoutConstraint, SFMediaPlayerView, UIButton, UIImageView, UILabel;
 
 __attribute__((visibility("hidden")))
 @interface SFShareAudioHoldButtonViewController : SFShareAudioBaseViewController
 {
     unsigned int _colorCode;
     unsigned int _productID;
-    UIImageView *_productImageView;
     SFMediaPlayerView *_productMovieView;
     UIImageView *_shareImageView;
     UILabel *_infoLabel;
     UIButton *_cancelButton;
+    NSLayoutConstraint *_movieViewLeadingConstraint;
+    NSLayoutConstraint *_movieViewTrailingConstraint;
+    NSLayoutConstraint *_movieViewHeightConstraint;
 }
 
 @property (strong, nonatomic) UIButton *cancelButton; // @synthesize cancelButton=_cancelButton;
 @property (nonatomic) unsigned int colorCode; // @synthesize colorCode=_colorCode;
 @property (strong, nonatomic) UILabel *infoLabel; // @synthesize infoLabel=_infoLabel;
+@property (strong, nonatomic) NSLayoutConstraint *movieViewHeightConstraint; // @synthesize movieViewHeightConstraint=_movieViewHeightConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *movieViewLeadingConstraint; // @synthesize movieViewLeadingConstraint=_movieViewLeadingConstraint;
+@property (strong, nonatomic) NSLayoutConstraint *movieViewTrailingConstraint; // @synthesize movieViewTrailingConstraint=_movieViewTrailingConstraint;
 @property (nonatomic) unsigned int productID; // @synthesize productID=_productID;
-@property (strong, nonatomic) UIImageView *productImageView; // @synthesize productImageView=_productImageView;
 @property (strong, nonatomic) SFMediaPlayerView *productMovieView; // @synthesize productMovieView=_productMovieView;
 @property (strong, nonatomic) UIImageView *shareImageView; // @synthesize shareImageView=_shareImageView;
 
 - (void).cxx_destruct;
 - (void)_updateDeviceVisual:(id)arg1;
 - (void)eventCancel:(id)arg1;
+- (void)viewDidLoad;
 - (void)viewWillAppear:(BOOL)arg1;
 - (void)viewWillDisappear:(BOOL)arg1;
 

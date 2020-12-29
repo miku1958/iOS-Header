@@ -219,6 +219,7 @@ __attribute__((visibility("hidden")))
 - (void)vcSessionParticipantDidChangeReceivingStreams:(id)arg1;
 - (void)vcSessionParticipantDidChangeSendingStreams:(id)arg1;
 - (void)vcSessionParticipantDidMediaDecryptionTimeOut:(id)arg1;
+- (void)vcSessionParticipantDidMediaDecryptionTimeOutForMKMRecovery:(id)arg1;
 
 @end
 

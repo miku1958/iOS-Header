@@ -35,7 +35,6 @@
 
 - (void).cxx_destruct;
 - (void)_disableCloudSyncWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_queue_generateRestoreEventSyncCompleteWithPullCompleteDate:(id)arg1;
 - (id)containerForContainerIdentifier:(id)arg1;
 - (void)dealloc;
 - (id)description;

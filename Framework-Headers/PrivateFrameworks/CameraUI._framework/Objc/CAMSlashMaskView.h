@@ -21,6 +21,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)setSlashBounds:(struct CGRect)arg1 animated:(BOOL)arg2;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)updateMaskAnimated;
 
 @end

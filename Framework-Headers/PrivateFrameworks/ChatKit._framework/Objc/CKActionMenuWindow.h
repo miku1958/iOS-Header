@@ -12,6 +12,7 @@
 
 @interface CKActionMenuWindow : UIAutoRotatingWindow <CKDismissViewDelegate>
 {
+    BOOL _shouldDismissOnTap;
     CKActionMenuView *_actionMenuView;
     CKDismissView *_dismissView;
 }
@@ -22,6 +23,7 @@
 @property (strong, nonatomic) CKDismissView *dismissView; // @synthesize dismissView=_dismissView;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSArray *passthroughViews;
+@property (nonatomic) BOOL shouldDismissOnTap; // @synthesize shouldDismissOnTap=_shouldDismissOnTap;
 @property (readonly) Class superclass;
 
 + (id)sharedInstance;

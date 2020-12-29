@@ -8,7 +8,7 @@
 
 #import <NewsCore/NSCopying-Protocol.h>
 
-@class NSArray, NSDictionary, NSString;
+@class NSArray, NSDictionary, NSMutableDictionary, NSString;
 
 @interface FCPaidBundleConfiguration : NSObject <NSCopying>
 {
@@ -16,8 +16,8 @@
     NSString *_storefrontID;
     NSString *_localizedStorefrontID;
     NSArray *_defaultSupportedStoreFronts;
-    NSDictionary *_keyedPaywallConfigurationsByType;
-    NSDictionary *_keyedSubscriptionButtonConfigurationsByType;
+    NSMutableDictionary *_keyedPaywallConfigurationsByType;
+    NSMutableDictionary *_keyedSubscriptionButtonConfigurationsByType;
     NSDictionary *_magazineGenresByGenre;
 }
 
@@ -28,6 +28,7 @@
 @property (readonly, nonatomic) long long appLaunchUpsellQuiescenceInterval;
 @property (readonly, nonatomic) long long appLaunchUpsellRequiredAppLaunchCount;
 @property (readonly, nonatomic) unsigned long long articleHardPaywallType;
+@property (readonly, nonatomic) NSString *audioArticlesChannelId;
 @property (readonly, nonatomic) NSArray *audioChannelPaywallOverrideAllowedTagIDs;
 @property (readonly, nonatomic) long long audioCloseIdlePlayerAfterTime;
 @property (readonly, nonatomic) NSString *audioDailyBriefingFeatureName;
@@ -46,6 +47,7 @@
 @property (readonly, nonatomic) NSDictionary *audioServicesBundlePaywallConfigurationsByType;
 @property (readonly, nonatomic) long long audioSuggestionsMaxAge;
 @property (readonly, nonatomic) long long audioSuggestionsMaxCount;
+@property (readonly, nonatomic) long long audioSuggestionsMaxIgnoreCount;
 @property (readonly, nonatomic) long long audioSuggestionsRecycleAfterTime;
 @property (readonly, nonatomic) NSString *audioUpsellArticleID;
 @property (readonly, nonatomic) NSString *audioUpsellInstanceID;
@@ -61,6 +63,8 @@
 @property (readonly, nonatomic) long long deferredHardPaywallMinimumBodyTextLength;
 @property (readonly, nonatomic) NSString *endOfPurchaseFamilySharingSetupArticleID;
 @property (readonly, nonatomic) NSString *endOfPurchaseNoFamilySharingSetupArticleID;
+@property (readonly, nonatomic) NSString *endOfPurchaseServicesBundleFamilySharingSetupArticleID;
+@property (readonly, nonatomic) NSString *endOfPurchaseServicesBundleNoFamilySharingSetupArticleID;
 @property (readonly, nonatomic) long long entitlementsCacheExpiredGracePeriodInSeconds;
 @property (readonly, nonatomic) long long entitlementsGracePeriodInSeconds;
 @property (readonly, nonatomic) NSString *expirationAlertDescription;
@@ -78,8 +82,8 @@
 @property (readonly, nonatomic, getter=isFreeBadgeEnabledForSubscribers) BOOL freeBadgeEnabledForSubscribers;
 @property (readonly, nonatomic) NSString *freeBadgeTitle;
 @property (readonly, nonatomic) NSArray *groupWhitelistedTagIds;
-@property (strong, nonatomic) NSDictionary *keyedPaywallConfigurationsByType; // @synthesize keyedPaywallConfigurationsByType=_keyedPaywallConfigurationsByType;
-@property (strong, nonatomic) NSDictionary *keyedSubscriptionButtonConfigurationsByType; // @synthesize keyedSubscriptionButtonConfigurationsByType=_keyedSubscriptionButtonConfigurationsByType;
+@property (strong, nonatomic) NSMutableDictionary *keyedPaywallConfigurationsByType; // @synthesize keyedPaywallConfigurationsByType=_keyedPaywallConfigurationsByType;
+@property (strong, nonatomic) NSMutableDictionary *keyedSubscriptionButtonConfigurationsByType; // @synthesize keyedSubscriptionButtonConfigurationsByType=_keyedSubscriptionButtonConfigurationsByType;
 @property (readonly, copy, nonatomic) NSString *localizedStorefrontID; // @synthesize localizedStorefrontID=_localizedStorefrontID;
 @property (readonly, nonatomic) long long lowStorageAutomaticIssueDownloadTTL;
 @property (readonly, nonatomic) long long lowStorageManualIssueDownloadTTL;

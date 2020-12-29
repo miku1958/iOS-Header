@@ -40,8 +40,6 @@
 - (void)setDSID:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)setDSID:(id)arg1 withoutRestrictions:(BOOL)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)setReconcileOperations:(id)arg1;
-- (id)storableUsageVectors;
 - (void)updateAccountData:(CDUnknownBlockType)arg1;
-- (void)updateUsageVectors:(id)arg1;
 @end
 

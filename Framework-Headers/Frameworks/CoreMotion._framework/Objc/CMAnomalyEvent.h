@@ -19,6 +19,7 @@
     long long _resolution;
     double _absoluteTimestamp;
     unsigned long long _identifier;
+    long long _sosState;
 }
 
 @property (nonatomic) double absoluteTimestamp; // @synthesize absoluteTimestamp=_absoluteTimestamp;
@@ -27,6 +28,7 @@
 @property (readonly, nonatomic) unsigned long long identifier; // @synthesize identifier=_identifier;
 @property (nonatomic) long long resolution; // @synthesize resolution=_resolution;
 @property (nonatomic) long long response; // @synthesize response=_response;
+@property (nonatomic) long long sosState; // @synthesize sosState=_sosState;
 @property (readonly, nonatomic) long long state; // @synthesize state=_state;
 @property (readonly, nonatomic) NSDate *timestamp;
 
@@ -36,8 +38,8 @@
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithIdentifier:(unsigned long long)arg1 absoluteTimestamp:(double)arg2 state:(long long)arg3 response:(long long)arg4 resolution:(long long)arg5;
-- (id)initWithIdentifier:(unsigned long long)arg1 absoluteTimestamp:(double)arg2 state:(long long)arg3 response:(long long)arg4 resolution:(long long)arg5 acknowledgement:(BOOL)arg6;
+- (id)initWithIdentifier:(unsigned long long)arg1 absoluteTimestamp:(double)arg2 state:(long long)arg3 response:(long long)arg4 resolution:(long long)arg5 sosState:(long long)arg6;
+- (id)initWithIdentifier:(unsigned long long)arg1 absoluteTimestamp:(double)arg2 state:(long long)arg3 response:(long long)arg4 resolution:(long long)arg5 sosState:(long long)arg6 acknowledgement:(BOOL)arg7;
 
 @end
 

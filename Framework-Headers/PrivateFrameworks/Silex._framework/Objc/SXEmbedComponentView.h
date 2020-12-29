@@ -21,6 +21,7 @@
 {
     BOOL _failedLoading;
     BOOL _hasRegisteredScriptMessageHandlers;
+    BOOL _usingElementFullscreen;
     id<SWReachabilityProvider> _reachabilityProvider;
     id<SXEmbedDataProvider> _embedDataProvider;
     id<SXComponentActionHandler> _actionHandler;
@@ -72,6 +73,7 @@
 @property (readonly, nonatomic) NFMultiDelegate *scriptMessageHandler; // @synthesize scriptMessageHandler=_scriptMessageHandler;
 @property (readonly) Class superclass;
 @property (strong, nonatomic) NSString *userScript; // @synthesize userScript=_userScript;
+@property (nonatomic) BOOL usingElementFullscreen; // @synthesize usingElementFullscreen=_usingElementFullscreen;
 @property (strong, nonatomic) SWCrashRetryThrottler *webCrashRetryThrottler; // @synthesize webCrashRetryThrottler=_webCrashRetryThrottler;
 @property (strong, nonatomic) WKWebView *webView; // @synthesize webView=_webView;
 @property (strong, nonatomic) WKWebView *webViewPresentingInFullscreen; // @synthesize webViewPresentingInFullscreen=_webViewPresentingInFullscreen;

@@ -27,7 +27,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSURL *URL; // @synthesize URL=_URL;
 @property (readonly, nonatomic) AMSUIWebAppearance *appearance; // @synthesize appearance=_appearance;
 @property (nonatomic) struct CGSize contentSize; // @synthesize contentSize=_contentSize;
-@property (readonly, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
+@property (readonly, weak, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<AMSUIWebPageViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;

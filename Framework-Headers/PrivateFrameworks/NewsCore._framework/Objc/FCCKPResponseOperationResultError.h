@@ -10,6 +10,7 @@
 
 @class FCCKPResponseOperationResultErrorClient, FCCKPResponseOperationResultErrorExtension, FCCKPResponseOperationResultErrorServer, NSString;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPResponseOperationResultError : PBCodable <NSCopying>
 {
     FCCKPResponseOperationResultErrorClient *_clientError;
@@ -36,7 +37,6 @@
 @property (nonatomic) int retryAfterSeconds; // @synthesize retryAfterSeconds=_retryAfterSeconds;
 @property (strong, nonatomic) FCCKPResponseOperationResultErrorServer *serverError; // @synthesize serverError=_serverError;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

@@ -8,7 +8,7 @@
 
 #import <VideosUI/VUIFamilyMemberDelegate-Protocol.h>
 
-@class NSString, TVImageLayout, VUIFamilyMember, VUIImageView, VUILabel, VUISeparatorView, _TVImageView, _TVMonogramView;
+@class NSString, TVImageLayout, VUIFamilyMember, VUILabel, VUISeparatorView, VUIVideosImageView, _TVImageView, _TVMonogramView;
 
 __attribute__((visibility("hidden")))
 @interface VUIFamilyMemberCell : VUIListCollectionViewCell <VUIFamilyMemberDelegate>
@@ -18,11 +18,11 @@ __attribute__((visibility("hidden")))
     TVImageLayout *_monogramImageLayout;
     _TVMonogramView *_monogramView;
     _TVImageView *_familyMemberImageView;
-    VUIImageView *_chevronImageView;
+    VUIVideosImageView *_chevronImageView;
     VUISeparatorView *_topSeparatorView;
 }
 
-@property (strong, nonatomic) VUIImageView *chevronImageView; // @synthesize chevronImageView=_chevronImageView;
+@property (strong, nonatomic) VUIVideosImageView *chevronImageView; // @synthesize chevronImageView=_chevronImageView;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) VUIFamilyMember *familyMember; // @synthesize familyMember=_familyMember;

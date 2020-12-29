@@ -10,6 +10,7 @@
 
 @class NSMutableArray;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPRequestedFields : PBCodable <NSCopying>
 {
     NSMutableArray *_fields;
@@ -17,9 +18,9 @@
 
 @property (strong, nonatomic) NSMutableArray *fields; // @synthesize fields=_fields;
 
++ (Class)fieldsType;
 - (void)addFields:(id)arg1;
 - (void)clearFields;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

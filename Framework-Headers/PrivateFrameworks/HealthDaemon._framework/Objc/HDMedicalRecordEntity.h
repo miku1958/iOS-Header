@@ -18,9 +18,7 @@
 + (id)latestCreationDateWithProfile:(id)arg1 error:(id *)arg2;
 + (id)latestDateForProperty:(id)arg1 sampleTypes:(id)arg2 profile:(id)arg3 error:(id *)arg4;
 + (id)latestModifiedDateWithProfile:(id)arg1 error:(id *)arg2;
-+ (id)mostRecentlyNotifiedLatestModifiedDateWithProfile:(id)arg1 error:(id *)arg2;
 + (id)orderingTermForSortDescriptor:(id)arg1;
-+ (BOOL)storeMostRecentlyNotifiedLatestModifiedDate:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 
 @end
 

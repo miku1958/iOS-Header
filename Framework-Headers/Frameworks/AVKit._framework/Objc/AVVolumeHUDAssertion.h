@@ -6,20 +6,31 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+#import <AVKit/MPVolumeDisplaying-Protocol.h>
+
+@class NSString, UIWindowScene;
 
 __attribute__((visibility("hidden")))
-@interface AVVolumeHUDAssertion : NSObject
+@interface AVVolumeHUDAssertion : NSObject <MPVolumeDisplaying>
 {
+    BOOL _prefersSystemVolumeHUDHidden;
     NSString *_clientIdentifier;
     NSString *_sceneIdentifier;
 }
 
 @property (readonly, nonatomic) NSString *clientIdentifier; // @synthesize clientIdentifier=_clientIdentifier;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isOnScreen) BOOL onScreen;
+@property (readonly, nonatomic, getter=isOnScreenForVolumeDisplay) BOOL onScreenForVolumeDisplay;
+@property (nonatomic) BOOL prefersSystemVolumeHUDHidden; // @synthesize prefersSystemVolumeHUDHidden=_prefersSystemVolumeHUDHidden;
 @property (readonly, nonatomic) NSString *sceneIdentifier; // @synthesize sceneIdentifier=_sceneIdentifier;
+@property (readonly) Class superclass;
+@property (readonly, nonatomic) NSString *volumeAudioCategory;
+@property (readonly, nonatomic) UIWindowScene *windowSceneForVolumeDisplay;
 
 - (void).cxx_destruct;
-- (unsigned long long)hash;
 - (id)initWithSceneIdentifier:(id)arg1 clientIdentifier:(id)arg2;
 - (BOOL)isEqual:(id)arg1;
 

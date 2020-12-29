@@ -12,11 +12,13 @@
 {
     PDFView *_pdfView;
     BOOL _didDetermineLastNodeStatus;
+    BOOL _isGatheringLeafDescendents;
     BOOL _isLastNodeInPage;
     PDFPage *_page;
 }
 
 @property (nonatomic) BOOL didDetermineLastNodeStatus; // @synthesize didDetermineLastNodeStatus=_didDetermineLastNodeStatus;
+@property (nonatomic) BOOL isGatheringLeafDescendents; // @synthesize isGatheringLeafDescendents=_isGatheringLeafDescendents;
 @property (nonatomic) BOOL isLastNodeInPage; // @synthesize isLastNodeInPage=_isLastNodeInPage;
 @property (weak, nonatomic) PDFPage *page; // @synthesize page=_page;
 

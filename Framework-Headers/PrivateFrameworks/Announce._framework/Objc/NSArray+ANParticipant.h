@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) NSDictionary *activeAccessoryDevicesSupportingAnnounce;
 @property (readonly, nonatomic) NSArray *activeDevicesSupportingAnnounce;
+@property (readonly, nonatomic) NSArray *activePersonalDevicesSupportingAnnounce;
 @property (readonly, nonatomic) NSDictionary *homePodsInRooms;
 @property (readonly, nonatomic) NSDictionary *homePodsInZones;
 @property (readonly, nonatomic) NSArray *homePodsSupportingAnnounce;
@@ -30,14 +31,16 @@
 @property (readonly, nonatomic) NSArray *roomsInZones;
 @property (readonly, nonatomic) NSArray *roomsWithHomePods;
 @property (readonly, nonatomic) NSArray *unplayedAnnouncements;
+@property (readonly, nonatomic) NSArray *userIdentifiers;
 @property (readonly, nonatomic) NSArray *zoneIdentifiers;
 @property (readonly, nonatomic) NSArray *zonesWithHomePods;
 
-- (id)devicesByRemovingNonAccessoryDevicesNotInHome:(id)arg1;
+- (id)devicesByRemovingNonAccessoryDevicesNotBelongingToUsers:(id)arg1;
 - (id)devicesInHome:(id)arg1;
 - (id)homePodsExcludingStereoCompanionForAccessory:(id)arg1;
 - (id)homesWithHomeLocationStatus:(long long)arg1;
 - (id)homesWithRoomNames:(id)arg1;
 - (id)homesWithZoneNames:(id)arg1;
+- (id)personalDevicesForUser:(id)arg1;
 @end
 

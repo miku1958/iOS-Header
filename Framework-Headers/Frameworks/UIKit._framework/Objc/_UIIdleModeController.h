@@ -8,7 +8,6 @@
 
 @class NSMapTable, UIImageView, UIScreen, UIWindow;
 
-__attribute__((visibility("hidden")))
 @interface _UIIdleModeController : NSObject
 {
     BOOL _didApplyVisualEffects;
@@ -22,10 +21,12 @@ __attribute__((visibility("hidden")))
     NSMapTable *_viewsToOriginalAttributes;
     BOOL _idleModeEnabled;
     UIScreen *_screen;
+    unsigned long long _style;
 }
 
 @property (nonatomic, getter=isIdleModeEnabled) BOOL idleModeEnabled; // @synthesize idleModeEnabled=_idleModeEnabled;
 @property (readonly, nonatomic) UIScreen *screen; // @synthesize screen=_screen;
+@property (nonatomic) unsigned long long style; // @synthesize style=_style;
 
 - (void).cxx_destruct;
 - (void)_animateDismissal;
@@ -37,9 +38,13 @@ __attribute__((visibility("hidden")))
 - (double)_dimmingOverlayWhiteValueForUserInterfaceStyle:(long long)arg1;
 - (double)_dismissalAnimationDuration;
 - (void)_enterIdleMode;
+- (void)_enterIdleModeWithOptions:(unsigned long long)arg1;
 - (void)_exitIdleMode;
+- (void)_exitIdleModeWithOptions:(unsigned long long)arg1;
 - (id)_imageForTraitCollection:(id)arg1;
 - (id)_originalAttributesForView:(id)arg1 comparedToIdleModeAttributes:(id)arg2;
+- (void)_postWillEnterNotification;
+- (void)_postWillExitNotification;
 - (void)_prepareForPresentationWithKeyWindow:(id)arg1 focusedView:(id)arg2;
 - (double)_presentationAnimationDuration;
 - (BOOL)_recordLayoutAttributesStartingAtView:(id)arg1;

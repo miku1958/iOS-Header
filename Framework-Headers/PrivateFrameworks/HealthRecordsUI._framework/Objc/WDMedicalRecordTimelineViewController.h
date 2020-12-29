@@ -10,6 +10,7 @@
 #import <HealthRecordsUI/HKConceptStoreObserver-Protocol.h>
 #import <HealthRecordsUI/HKHealthRecordsStoreAccountStateChangeListener-Protocol.h>
 #import <HealthRecordsUI/HKHealthRecordsStoreIngestionStateListener-Protocol.h>
+#import <HealthRecordsUI/HKInteractiveChartViewObserver-Protocol.h>
 #import <HealthRecordsUI/HRConceptTitleTableHeaderViewDelegate-Protocol.h>
 #import <HealthRecordsUI/HRTimelineHeaderViewDelegate-Protocol.h>
 #import <HealthRecordsUI/UISearchControllerDelegate-Protocol.h>
@@ -20,7 +21,7 @@
 @protocol HRRecordViewControllerFactory;
 
 __attribute__((visibility("hidden")))
-@interface WDMedicalRecordTimelineViewController : HKTableViewController <UISearchControllerDelegate, UISearchResultsUpdating, _TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_, HKHealthRecordsStoreIngestionStateListener, HKHealthRecordsStoreAccountStateChangeListener, HKConceptStoreObserver, HKCloudSyncObserverDelegate, HRTimelineHeaderViewDelegate, HRConceptTitleTableHeaderViewDelegate>
+@interface WDMedicalRecordTimelineViewController : HKTableViewController <UISearchControllerDelegate, UISearchResultsUpdating, _TtP15HealthRecordsUI36FilterSettingsViewControllerDelegate_, HKHealthRecordsStoreIngestionStateListener, HKHealthRecordsStoreAccountStateChangeListener, HKConceptStoreObserver, HKCloudSyncObserverDelegate, HRTimelineHeaderViewDelegate, HRConceptTitleTableHeaderViewDelegate, HKInteractiveChartViewObserver>
 {
     BOOL _loadingNextPage;
     BOOL _showSearchBar;
@@ -29,6 +30,7 @@ __attribute__((visibility("hidden")))
     BOOL _queryReturned;
     BOOL _chartabilityDetermined;
     BOOL _cloudSyncActive;
+    BOOL _chartLoaded;
     WDMedicalRecordDisplayItemProvider *_displayItemProvider;
     HRProfile *_profile;
     id<HRRecordViewControllerFactory> _factory;
@@ -66,6 +68,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSSet *categories; // @synthesize categories=_categories;
 @property (strong, nonatomic) WDMedicalRecordCategory *category; // @synthesize category=_category;
 @property (strong, nonatomic) HKViewTableViewCell *chartCell; // @synthesize chartCell=_chartCell;
+@property (nonatomic) BOOL chartLoaded; // @synthesize chartLoaded=_chartLoaded;
 @property (strong, nonatomic) HROverlayRoomViewController *chartViewController; // @synthesize chartViewController=_chartViewController;
 @property (nonatomic) BOOL chartabilityDetermined; // @synthesize chartabilityDetermined=_chartabilityDetermined;
 @property (nonatomic) BOOL cloudSyncActive; // @synthesize cloudSyncActive=_cloudSyncActive;
@@ -148,7 +151,10 @@ __attribute__((visibility("hidden")))
 - (void)cloudSyncObserverStatusUpdated:(id)arg1 status:(id)arg2;
 - (void)cloudSyncObserverSyncCompleted:(id)arg1;
 - (void)conceptStore:(id)arg1 indexManagerDidChangeState:(unsigned long long)arg2;
+- (void)configureDisplayTypes:(id)arg1 timeScope:(long long)arg2 stackOffset:(long long)arg3;
 - (void)dealloc;
+- (void)didUpdateSeriesWithNewValueRange:(id)arg1;
+- (void)didUpdateVisibleValueRange:(id)arg1 changeContext:(long long)arg2;
 - (void)filterSettingsViewControllerWithDidSelectCategories:(id)arg1 accounts:(id)arg2;
 - (void)headerViewDidBeginFloating:(id)arg1;
 - (void)headerViewDidEndFloating:(id)arg1;
@@ -175,11 +181,9 @@ __attribute__((visibility("hidden")))
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)titleTableHeaderViewDidTapActionButton:(id)arg1;
-- (void)trackImpression;
-- (void)trackInteractionOfType:(long long)arg1;
+- (void)trackInteractionOfType:(long long)arg1 context:(long long)arg2;
 - (void)updateSearchResultsForSearchController:(id)arg1;
-- (long long)userInteractionContext;
-- (long long)userInteractionType;
+- (long long)userInteractionContextForType:(long long)arg1 timelineSection:(long long)arg2;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

@@ -6,11 +6,12 @@
 
 #import <TeaSnappy/NSObject-Protocol.h>
 
-@class NSString, UIScrollView;
+@class NSNumber, NSString, UIScrollView;
 
 @protocol SNTestCoordinating <NSObject>
 - (void)failedTestWithTestName:(NSString *)arg1 failureMessage:(NSString *)arg2;
 - (void)finishedTestWithTestName:(NSString *)arg1 waitForCommit:(BOOL)arg2;
+- (void)recapScrollTestWithTestName:(NSString *)arg1 scrollView:(UIScrollView *)arg2 numberOfScreens:(NSNumber *)arg3 direction:(unsigned long long)arg4;
 - (BOOL)requiresRotationForOrientation:(long long)arg1;
 - (void)rotateToOrientation:(long long)arg1 beforeRotation:(void (^)(BOOL))arg2 afterRotation:(void (^)(BOOL))arg3;
 - (void)scrollTestWithTestName:(NSString *)arg1 scrollView:(UIScrollView *)arg2 iterations:(long long)arg3 offset:(long long)arg4 direction:(unsigned long long)arg5;

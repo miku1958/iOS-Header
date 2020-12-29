@@ -10,7 +10,13 @@
 {
 }
 
+- (id)_atrialFibrillationHelpTopicIdForAlgorithmVersion:(id)arg1 countryCode:(id)arg2;
+- (id)_electrocardiogramHelpTopicIdForAlgorithmVersion:(id)arg1 countryCode:(id)arg2;
+- (id)_helpControllerForFeatureIdentifier:(id)arg1 algorithmVersion:(id)arg2 countryCode:(id)arg3 helpTopicId:(id)arg4 regionIdentifierMap:(id)arg5;
+- (id)_helpTopicIdForForAlgorithmVersion:(id)arg1 algorithmVersionToHelpTopicIdMap:(id)arg2;
+- (id)atrialFibrillationHelpControllerForAlgorithmVersion:(id)arg1 countryCode:(id)arg2;
 - (id)atrialFibrillationInstructionsForUseHTMLURLForCountryCode:(id)arg1;
+- (id)electrocardiogramHelpControllerForAlgorithmVersion:(id)arg1 countryCode:(id)arg2;
 - (id)electrocardiogramInstructionsForUseHTMLURLForCountryCode:(id)arg1;
 - (id)instructionsForUseHTMLURLForCountryCode:(id)arg1 globalFileName:(id)arg2 fileMap:(id)arg3;
 

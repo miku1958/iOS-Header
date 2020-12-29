@@ -11,6 +11,7 @@
 
 @protocol TUVideoDeviceControllerProviderDelegate <AVConferencePreviewClientDelegate>
 - (void)captureDevicesChangedForProvider:(id<TUVideoDeviceControllerProvider>)arg1;
+- (void)didPausePreviewForProvider:(id<TUVideoDeviceControllerProvider>)arg1;
 - (void)didStartPreviewForProvider:(id<TUVideoDeviceControllerProvider>)arg1;
 - (void)didStopPreviewForProvider:(id<TUVideoDeviceControllerProvider>)arg1;
 - (void)provider:(id<TUVideoDeviceControllerProvider>)arg1 cameraDidBecomeAvailableForUniqueID:(NSString *)arg2;

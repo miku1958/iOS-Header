@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)handleCancellation;
+- (void)handleError:(id)arg1 forResponseIdentifier:(id)arg2;
 - (void)handleResponse:(id)arg1;
 - (id)initWithResultHandler:(CDUnknownBlockType)arg1;
 - (void)startWithService:(id)arg1;

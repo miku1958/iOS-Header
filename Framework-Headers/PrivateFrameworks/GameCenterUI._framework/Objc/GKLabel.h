@@ -18,7 +18,7 @@
     BOOL _usingAttributedText;
     BOOL _shouldInhibitReplay;
     double _actualFontShrinkageFactor;
-    struct NSEdgeInsets _titleEdgeInsets;
+    struct UIEdgeInsets _titleEdgeInsets;
 }
 
 @property (nonatomic) double actualFontShrinkageFactor; // @synthesize actualFontShrinkageFactor=_actualFontShrinkageFactor;
@@ -30,7 +30,7 @@
 @property (nonatomic) BOOL shouldEnforcePreferredWidth; // @synthesize shouldEnforcePreferredWidth=_shouldEnforcePreferredWidth;
 @property (nonatomic) BOOL shouldInhibitReplay; // @synthesize shouldInhibitReplay=_shouldInhibitReplay;
 @property (readonly) Class superclass;
-@property (nonatomic) struct NSEdgeInsets titleEdgeInsets; // @synthesize titleEdgeInsets=_titleEdgeInsets;
+@property (nonatomic) struct UIEdgeInsets titleEdgeInsets; // @synthesize titleEdgeInsets=_titleEdgeInsets;
 @property (readonly, nonatomic) BOOL usingAttributedText; // @synthesize usingAttributedText=_usingAttributedText;
 
 + (void)initialize;

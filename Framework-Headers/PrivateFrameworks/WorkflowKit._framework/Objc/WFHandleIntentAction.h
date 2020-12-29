@@ -52,6 +52,7 @@
 - (void)generatePopulatedIntentFromInput:(id)arg1 processedParameters:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)generatePopulatedIntentWithIdentifier:(id)arg1 fromInput:(id)arg2 processedParameters:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)generateShortcutRepresentation:(CDUnknownBlockType)arg1;
+- (void)generateStandaloneShortcutRepresentation:(CDUnknownBlockType)arg1;
 - (id)generatedAccessResource;
 - (id)generatedIntentWithIdentifier:(id)arg1 input:(id)arg2 processedParameters:(id)arg3 error:(id *)arg4;
 - (id)generatedIntentWithInput:(id)arg1 processedParameters:(id)arg2 error:(id *)arg3;
@@ -69,6 +70,7 @@
 - (void)intentExecutorRequestsContinueInApp:(id)arg1;
 - (BOOL)intentIsHandledBySiri:(id)arg1;
 - (BOOL)isWorkflowInDatabase;
+- (void)launchAppInBackground:(BOOL)arg1;
 - (void)localizedConfirmationPromptForAttribute:(id)arg1 intent:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)localizedDisambiguationPromptForAttribute:(id)arg1 intent:(id)arg2 disambiguationItems:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (BOOL)opensInApp;

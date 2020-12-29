@@ -5,9 +5,8 @@
 //
 
 @class NSArray, NSString;
-@protocol FCForYouBridgedFeedGroup;
 
 @protocol FCForYouBridgedFeedGroupStore
-- (id<FCForYouBridgedFeedGroup>)knownGroupForIdentifier:(NSString *)arg1 headlines:(NSArray *)arg2 tags:(NSArray *)arg3 assetHandles:(NSArray *)arg4;
+- (void)fetchKnownGroupForIdentifier:(NSString *)arg1 headlines:(NSArray *)arg2 tags:(NSArray *)arg3 assetHandles:(NSArray *)arg4 completion:(void (^)(id<FCForYouBridgedFeedGroup>))arg5;
 @end
 

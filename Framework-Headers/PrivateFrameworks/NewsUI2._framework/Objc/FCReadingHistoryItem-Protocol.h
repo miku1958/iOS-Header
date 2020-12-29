@@ -31,10 +31,12 @@
 @property (nonatomic, readonly) NSDate *listeningProgressSavedAt;
 @property (nonatomic, readonly) long long maxVersionRead;
 @property (nonatomic, readonly) long long maxVersionSeen;
+@property (nonatomic, readonly) BOOL pruningDisabled;
 @property (nonatomic, readonly) long long readCount;
 @property (nonatomic, readonly) NSString *readingPosition;
 @property (nonatomic, readonly) NSDate *readingPositionSavedAt;
 @property (nonatomic, readonly) NSString *sourceChannelTagID;
 
+- (BOOL)isPruningDisabled;
 @end
 

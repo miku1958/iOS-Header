@@ -21,6 +21,7 @@
 @property (readonly) int processIdentifier;
 
 - (void).cxx_destruct;
+- (CDStruct_6ad76789)auditToken;
 - (BOOL)hasEntitlement:(id)arg1;
 - (id)initWithConnection:(id)arg1;
 - (void)invalidate;

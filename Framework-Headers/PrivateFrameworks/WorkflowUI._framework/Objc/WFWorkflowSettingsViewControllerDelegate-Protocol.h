@@ -9,6 +9,7 @@
 @class WFWorkflowSettingsViewController;
 
 @protocol WFWorkflowSettingsViewControllerDelegate <NSObject>
+- (BOOL)settingsViewControllerWantsToKnowIfNewShortcutFlow:(WFWorkflowSettingsViewController *)arg1;
 - (void)settingsViewControllerWantsWorkflowReload:(WFWorkflowSettingsViewController *)arg1;
 @end
 

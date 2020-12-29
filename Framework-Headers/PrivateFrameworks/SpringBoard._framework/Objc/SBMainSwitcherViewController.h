@@ -190,6 +190,7 @@
 - (BOOL)handleHomeButtonPress;
 - (BOOL)handleHomeButtonSinglePressUp;
 - (BOOL)handleLockButtonPress;
+- (BOOL)handleVoiceCommandButtonPress;
 - (BOOL)handleVolumeDownButtonPress;
 - (BOOL)handleVolumeUpButtonPress;
 - (BOOL)hasAppLayoutForDisplayItem:(id)arg1;

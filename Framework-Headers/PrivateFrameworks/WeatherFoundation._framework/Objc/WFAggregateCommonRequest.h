@@ -6,13 +6,14 @@
 
 #import <WeatherFoundation/WFTask.h>
 
-@class NSLocale, NSString, WFLocation;
+@class NSLocale, NSString, WFLocation, WFRequestOptions;
 
 @interface WFAggregateCommonRequest : WFTask
 {
     int _units;
     WFLocation *_location;
     unsigned long long _types;
+    WFRequestOptions *_requestOptions;
     NSString *_trackingParameter;
     CDUnknownBlockType _completionHandler;
     NSLocale *_locale;
@@ -21,6 +22,7 @@
 @property (readonly, copy, nonatomic) CDUnknownBlockType completionHandler; // @synthesize completionHandler=_completionHandler;
 @property (strong, nonatomic) NSLocale *locale; // @synthesize locale=_locale;
 @property (readonly, nonatomic) WFLocation *location; // @synthesize location=_location;
+@property (readonly, nonatomic) WFRequestOptions *requestOptions; // @synthesize requestOptions=_requestOptions;
 @property (readonly, nonatomic) NSString *trackingParameter; // @synthesize trackingParameter=_trackingParameter;
 @property (readonly, nonatomic) unsigned long long types; // @synthesize types=_types;
 @property (readonly, nonatomic) int units; // @synthesize units=_units;
@@ -30,8 +32,10 @@
 - (void)cleanup;
 - (id)description;
 - (void)handleCancellation;
+- (void)handleError:(id)arg1 forResponseIdentifier:(id)arg2;
 - (void)handleResponse:(id)arg1;
 - (id)initWithLocation:(id)arg1 types:(unsigned long long)arg2 trackingParameter:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (id)initWithLocation:(id)arg1 types:(unsigned long long)arg2 units:(int)arg3 requestOptions:(id)arg4 trackingParameter:(id)arg5 completionHandler:(CDUnknownBlockType)arg6;
 - (id)initWithLocation:(id)arg1 types:(unsigned long long)arg2 units:(int)arg3 trackingParameter:(id)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)startWithService:(id)arg1;
 

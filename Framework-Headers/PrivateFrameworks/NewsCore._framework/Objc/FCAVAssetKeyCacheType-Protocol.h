@@ -4,12 +4,14 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSData, NSDate, NSURL;
+@class FCInterestToken, NSArray, NSData, NSDate, NSURL, NTPBAVAssetKey;
 @protocol FCAVAssetKeyType;
 
 @protocol FCAVAssetKeyCacheType
 - (id<FCAVAssetKeyType>)assetKeyForURI:(NSURL *)arg1;
 - (void)clearKeyServerCertificate;
+- (void)importAVAssetKey:(NTPBAVAssetKey *)arg1;
+- (FCInterestToken *)interestTokenForKeyURIs:(NSArray *)arg1;
 - (NSData *)keyServerCertificate;
 - (void)removeAllAssetKeys;
 - (void)saveAssetKeyData:(NSData *)arg1 creationDate:(NSDate *)arg2 expirationDate:(NSDate *)arg3 forURI:(NSURL *)arg4;

@@ -11,7 +11,7 @@
 }
 
 - (id)description;
-- (id)init:(long long)arg1;
+- (id)init:(BOOL)arg1 order:(long long)arg2;
 
 @end
 

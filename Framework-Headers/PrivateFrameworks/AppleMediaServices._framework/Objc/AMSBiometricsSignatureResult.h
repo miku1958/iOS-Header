@@ -6,10 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <AppleMediaServices/NSSecureCoding-Protocol.h>
+
 @class AMSBiometricsSignatureRequest, NSString;
 
-__attribute__((visibility("hidden")))
-@interface AMSBiometricsSignatureResult : NSObject
+@interface AMSBiometricsSignatureResult : NSObject <NSSecureCoding>
 {
     AMSBiometricsSignatureRequest *_originalRequest;
     NSString *_signature;
@@ -18,7 +19,10 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) AMSBiometricsSignatureRequest *originalRequest; // @synthesize originalRequest=_originalRequest;
 @property (strong, nonatomic) NSString *signature; // @synthesize signature=_signature;
 
++ (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (void)encodeWithCoder:(id)arg1;
+- (id)initWithCoder:(id)arg1;
 
 @end
 

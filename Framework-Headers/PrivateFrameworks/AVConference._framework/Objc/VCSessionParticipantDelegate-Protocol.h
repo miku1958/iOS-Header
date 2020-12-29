@@ -28,5 +28,6 @@
 - (void)vcSessionParticipantDidChangeReceivingStreams:(VCSessionParticipant *)arg1;
 - (void)vcSessionParticipantDidChangeSendingStreams:(VCSessionParticipant *)arg1;
 - (void)vcSessionParticipantDidMediaDecryptionTimeOut:(VCSessionParticipant *)arg1;
+- (void)vcSessionParticipantDidMediaDecryptionTimeOutForMKMRecovery:(VCSessionParticipant *)arg1;
 @end
 

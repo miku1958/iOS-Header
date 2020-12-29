@@ -293,6 +293,17 @@ struct CLSwimEntry {
     int _field18;
 };
 
+struct CLVO2MaxClassificationData {
+    int _field1;
+    int _field2;
+    int _field3;
+    int _field4;
+    double _field5;
+    double _field6;
+};
+
+struct CLVO2MaxClassifier;
+
 struct CLWorkoutMets {
     double _field1;
     double _field2;
@@ -695,9 +706,11 @@ struct Item {
     struct unique_ptr<CMMsl::WorkoutRecorderAccel, std::__1::default_delete<CMMsl::WorkoutRecorderAccel>> _workoutRecorderAccel;
     struct unique_ptr<CMMsl::WorkoutRecorderAccel800, std::__1::default_delete<CMMsl::WorkoutRecorderAccel800>> _workoutRecorderAccel800;
     struct unique_ptr<CMMsl::WorkoutRecorderBodyMetrics, std::__1::default_delete<CMMsl::WorkoutRecorderBodyMetrics>> _workoutRecorderBodyMetrics;
+    struct unique_ptr<CMMsl::WorkoutRecorderCompassCalibration, std::__1::default_delete<CMMsl::WorkoutRecorderCompassCalibration>> _workoutRecorderCompassCalibration;
     struct unique_ptr<CMMsl::WorkoutRecorderElevation, std::__1::default_delete<CMMsl::WorkoutRecorderElevation>> _workoutRecorderElevation;
     struct unique_ptr<CMMsl::WorkoutRecorderHealthKitInfo, std::__1::default_delete<CMMsl::WorkoutRecorderHealthKitInfo>> _workoutRecorderHealthKitInfo;
     struct unique_ptr<CMMsl::WorkoutRecorderHeartRate, std::__1::default_delete<CMMsl::WorkoutRecorderHeartRate>> _workoutRecorderHeartRate;
+    struct unique_ptr<CMMsl::WorkoutRecorderMagnetometer, std::__1::default_delete<CMMsl::WorkoutRecorderMagnetometer>> _workoutRecorderMagnetometer;
     struct unique_ptr<CMMsl::WorkoutRecorderOdometer, std::__1::default_delete<CMMsl::WorkoutRecorderOdometer>> _workoutRecorderOdometer;
     struct unique_ptr<CMMsl::WorkoutRecorderPressure, std::__1::default_delete<CMMsl::WorkoutRecorderPressure>> _workoutRecorderPressure;
     struct unique_ptr<CMMsl::WorkoutRecorderRotationRate, std::__1::default_delete<CMMsl::WorkoutRecorderRotationRate>> _workoutRecorderRotationRate;
@@ -944,11 +957,15 @@ struct WorkoutRecorderAccel800;
 
 struct WorkoutRecorderBodyMetrics;
 
+struct WorkoutRecorderCompassCalibration;
+
 struct WorkoutRecorderElevation;
 
 struct WorkoutRecorderHealthKitInfo;
 
 struct WorkoutRecorderHeartRate;
+
+struct WorkoutRecorderMagnetometer;
 
 struct WorkoutRecorderOdometer;
 
@@ -1145,6 +1162,12 @@ struct unique_ptr<CLDeviceMotionLiteService, std::__1::default_delete<CLDeviceMo
 struct unique_ptr<CLSettings, std::__1::default_delete<CLSettings>> {
     struct __compressed_pair<CLSettings *, std::__1::default_delete<CLSettings>> {
         struct CLSettings *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CLVO2MaxClassifier, std::__1::default_delete<CLVO2MaxClassifier>> {
+    struct __compressed_pair<CLVO2MaxClassifier *, std::__1::default_delete<CLVO2MaxClassifier>> {
+        struct CLVO2MaxClassifier *__value_;
     } __ptr_;
 };
 
@@ -2228,6 +2251,12 @@ struct unique_ptr<CMMsl::WorkoutRecorderBodyMetrics, std::__1::default_delete<CM
     } __ptr_;
 };
 
+struct unique_ptr<CMMsl::WorkoutRecorderCompassCalibration, std::__1::default_delete<CMMsl::WorkoutRecorderCompassCalibration>> {
+    struct __compressed_pair<CMMsl::WorkoutRecorderCompassCalibration *, std::__1::default_delete<CMMsl::WorkoutRecorderCompassCalibration>> {
+        struct WorkoutRecorderCompassCalibration *__value_;
+    } __ptr_;
+};
+
 struct unique_ptr<CMMsl::WorkoutRecorderElevation, std::__1::default_delete<CMMsl::WorkoutRecorderElevation>> {
     struct __compressed_pair<CMMsl::WorkoutRecorderElevation *, std::__1::default_delete<CMMsl::WorkoutRecorderElevation>> {
         struct WorkoutRecorderElevation *__value_;
@@ -2243,6 +2272,12 @@ struct unique_ptr<CMMsl::WorkoutRecorderHealthKitInfo, std::__1::default_delete<
 struct unique_ptr<CMMsl::WorkoutRecorderHeartRate, std::__1::default_delete<CMMsl::WorkoutRecorderHeartRate>> {
     struct __compressed_pair<CMMsl::WorkoutRecorderHeartRate *, std::__1::default_delete<CMMsl::WorkoutRecorderHeartRate>> {
         struct WorkoutRecorderHeartRate *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<CMMsl::WorkoutRecorderMagnetometer, std::__1::default_delete<CMMsl::WorkoutRecorderMagnetometer>> {
+    struct __compressed_pair<CMMsl::WorkoutRecorderMagnetometer *, std::__1::default_delete<CMMsl::WorkoutRecorderMagnetometer>> {
+        struct WorkoutRecorderMagnetometer *__value_;
     } __ptr_;
 };
 

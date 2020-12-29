@@ -20,6 +20,7 @@
 + (NSString *)internalSkipKey;
 + (BOOL)isTrailing;
 + (void)skippedByCloudConfig;
+- (unsigned long long)allowedTerminationSources;
 - (void)cancelHostedPresentation;
 - (BOOL)controllerAllowsNavigatingBack;
 - (BOOL)controllerNeedsToRun;

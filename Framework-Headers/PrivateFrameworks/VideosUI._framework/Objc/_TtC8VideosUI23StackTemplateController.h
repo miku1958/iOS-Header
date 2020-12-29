@@ -12,14 +12,16 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI23StackTemplateController : _TtC8VideosUI19StackViewController
 {
     MISSING_TYPE *supportsTabBarChildControllerBehaviours;
-    MISSING_TYPE *enqueuedBannerViewModel;
+    MISSING_TYPE *supportsTabBarChildContentInsets;
     MISSING_TYPE *hasInAppBanner;
     MISSING_TYPE *anchorIdToHighlight;
     MISSING_TYPE *showcasePercentageObserver;
     MISSING_TYPE *lastShowcasePercentage;
+    MISSING_TYPE *notificationCenter;
     MISSING_TYPE *statusBarStyle;
     MISSING_TYPE *navBarGradientView;
-    MISSING_TYPE *pagePaerformanceProvider;
+    MISSING_TYPE *statusBarGradientView;
+    MISSING_TYPE *pagePerformanceProvider;
 }
 
 @property (nonatomic, readonly) long long preferredStatusBarStyle;
@@ -28,6 +30,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (void)didMoveToParentViewController:(id)arg1;
 - (id)initWithCoder:(id)arg1;
+- (void)scrollViewDidScroll:(id)arg1;
+- (void)traitCollectionDidChange:(id)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidDisappear:(BOOL)arg1;
 - (void)viewDidLayoutSubviews;

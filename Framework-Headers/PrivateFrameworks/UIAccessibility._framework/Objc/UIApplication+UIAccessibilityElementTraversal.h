@@ -10,6 +10,7 @@
 
 @interface UIApplication (UIAccessibilityElementTraversal)
 
+@property (copy, nonatomic) CDUnknownBlockType accessibilityKeyboardKeyDispatchOverride;
 @property (strong, nonatomic) NSDate *accessibilityLastGesturedTextInputStatusChange;
 
 - (void)_accessibilityAddKeyboardWindowToArray:(id)arg1 forModalWindow:(id)arg2;

@@ -26,6 +26,7 @@
 - (void)_auditLoggedInAccountFor:(id)arg1;
 - (void)_authenticate:(id)arg1 message:(id)arg2;
 - (void)_callCompletion:(id)arg1;
+- (void)_handleACAccountDidChangeNotification:(id)arg1;
 - (void)_handleCompanionAuthenticationRequest:(id)arg1;
 - (void)_handleProxyAuthenticationRequest:(id)arg1;
 - (void)_handleProxyDeviceRequest:(id)arg1;

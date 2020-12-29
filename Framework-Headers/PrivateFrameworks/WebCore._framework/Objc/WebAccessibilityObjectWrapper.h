@@ -202,6 +202,7 @@ __attribute__((visibility("hidden")))
 - (BOOL)isSVGGroupElement;
 - (long long)lengthForTextMarkers:(id)arg1;
 - (id)lineEndMarkerForMarker:(id)arg1;
+- (id)lineMarkersForMarker:(id)arg1;
 - (id)lineStartMarkerForMarker:(id)arg1;
 - (id)misspellingTextMarkerRange:(id)arg1 forward:(BOOL)arg2;
 - (id)nextMarkerForCharacterOffset:(struct CharacterOffset *)arg1;

@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)graphViewDidBeginSelection:(id)arg1;
 - (void)graphViewDidEndSelection:(id)arg1;
 - (void)graphViewDidTapYAxis:(id)arg1;
+- (void)graphViewExternalSelectionEnd:(id)arg1;
 - (void)graphViewSizeChanged:(id)arg1;
 - (id)initWithGraphSeries:(id)arg1;
 - (id)seriesSelectionLineColorForGraphView:(id)arg1;

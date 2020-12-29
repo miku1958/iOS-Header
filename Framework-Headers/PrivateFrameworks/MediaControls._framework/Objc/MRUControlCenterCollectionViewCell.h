@@ -6,10 +6,12 @@
 
 #import <UIKit/UICollectionViewCell.h>
 
-@class MRUNowPlayingHeaderView, MediaControlsMaterialView, UIView;
+#import <MediaControls/UIPointerInteractionDelegate-Protocol.h>
+
+@class MRUNowPlayingHeaderView, MediaControlsMaterialView, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface MRUControlCenterCollectionViewCell : UICollectionViewCell
+@interface MRUControlCenterCollectionViewCell : UICollectionViewCell <UIPointerInteractionDelegate>
 {
     MRUNowPlayingHeaderView *_headerView;
     MediaControlsMaterialView *_materialView;
@@ -18,13 +20,19 @@ __attribute__((visibility("hidden")))
 }
 
 @property (nonatomic) struct UIEdgeInsets contentEdgeInsets; // @synthesize contentEdgeInsets=_contentEdgeInsets;
+@property (readonly, copy) NSString *debugDescription;
+@property (readonly, copy) NSString *description;
+@property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) MRUNowPlayingHeaderView *headerView; // @synthesize headerView=_headerView;
 @property (strong, nonatomic) MediaControlsMaterialView *materialView; // @synthesize materialView=_materialView;
+@property (readonly) Class superclass;
 @property (strong, nonatomic) UIView *transformView; // @synthesize transformView=_transformView;
 
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)prepareForReuse;
 - (void)setTransitionTransform:(struct CGAffineTransform)arg1 isVisible:(BOOL)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;

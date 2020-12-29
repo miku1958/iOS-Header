@@ -13,8 +13,10 @@
 - (void)nowPlayingDockedViewDidTapPause:(id)arg1;
 - (void)nowPlayingDockedViewDidTapPlay:(id)arg1;
 - (void)nowPlayingDockedViewDidTapRewind:(id)arg1;
+- (void)nowPlayingDockedViewTogglePlayPause:(id)arg1;
 - (id)nowPlayingViewController:(id)arg1 didReceiveContextMenuInteraction:(id)arg2 configurationForMenuAtLocation:(struct CGPoint)arg3;
 - (void)nowPlayingViewController:(id)arg1 seekToPosition:(double)arg2;
+- (void)nowPlayingViewControllerDidRequestNavigateToArticle:(id)arg1;
 - (void)nowPlayingViewControllerDidTapDismissButton:(id)arg1;
 - (void)nowPlayingViewControllerDidTapEllipsis:(id)arg1;
 - (void)nowPlayingViewControllerDidTapNextTrack:(id)arg1;

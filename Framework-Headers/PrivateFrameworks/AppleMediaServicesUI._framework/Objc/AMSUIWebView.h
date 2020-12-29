@@ -10,8 +10,8 @@
 #import <AppleMediaServicesUI/WKNavigationDelegatePrivate-Protocol.h>
 #import <AppleMediaServicesUI/WKUIDelegate-Protocol.h>
 
-@class AMSBinaryPromise, AMSUIWebClientContext, DelegateProxy, NSArray, NSObject, NSString, WKWebView, _WKRemoteObjectInterface;
-@protocol AMSUIWebViewPluginInterface, OS_dispatch_queue;
+@class AMSBinaryPromise, AMSUIWebClientContext, DelegateProxy, NSArray, NSString, WKWebView, _WKRemoteObjectInterface;
+@protocol AMSUIWebViewPluginInterface;
 
 __attribute__((visibility("hidden")))
 @interface AMSUIWebView : AMSUICommonView <AMSUIWebViewClientInterface, WKUIDelegate, WKNavigationDelegatePrivate>
@@ -19,7 +19,6 @@ __attribute__((visibility("hidden")))
     BOOL _contentLoaded;
     double _topInset;
     WKWebView *_underlyingWebView;
-    NSObject<OS_dispatch_queue> *_actionQueue;
     NSArray *_baseScripts;
     AMSBinaryPromise *_contentRulesPromise;
     AMSUIWebClientContext *_context;
@@ -29,11 +28,10 @@ __attribute__((visibility("hidden")))
     id<AMSUIWebViewPluginInterface> _remoteProxy;
 }
 
-@property (strong, nonatomic) NSObject<OS_dispatch_queue> *actionQueue; // @synthesize actionQueue=_actionQueue;
 @property (strong, nonatomic) NSArray *baseScripts; // @synthesize baseScripts=_baseScripts;
 @property (readonly, nonatomic) BOOL contentLoaded; // @synthesize contentLoaded=_contentLoaded;
 @property (strong, nonatomic) AMSBinaryPromise *contentRulesPromise; // @synthesize contentRulesPromise=_contentRulesPromise;
-@property (strong, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
+@property (weak, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) AMSBinaryPromise *currentLoadPromise; // @synthesize currentLoadPromise=_currentLoadPromise;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

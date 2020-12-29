@@ -83,6 +83,8 @@
 - (id)initWithNumberOfRings:(long long)arg1;
 - (id)initWithNumberOfRings:(long long)arg1 animationSequencer:(id)arg2;
 - (id)initWithRings:(id)arg1 animationSequencer:(id)arg2;
+- (void)playCelebration:(id)arg1 onRingAtIndex:(unsigned long long)arg2;
+- (void)playCelebration:(id)arg1 onRingAtIndex:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)playSpriteAnimation;
 - (void)playSpriteAnimationWithCompletion:(CDUnknownBlockType)arg1;
 - (id)playingSpriteAnimation;

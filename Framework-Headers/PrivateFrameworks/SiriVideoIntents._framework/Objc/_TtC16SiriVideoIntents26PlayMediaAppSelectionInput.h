@@ -6,7 +6,7 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-@class MISSING_TYPE;
+@class MISSING_TYPE, NSSet;
 
 @interface _TtC16SiriVideoIntents26PlayMediaAppSelectionInput : _TtCs12_SwiftObject
 {
@@ -39,13 +39,7 @@
     MISSING_TYPE *result_entitySearchTrailing2MinuteInteractionShare;
     MISSING_TYPE *result_entitySearchTrailing6HourInteractionShare;
     MISSING_TYPE *result_entitySearchTrailing7DayInteractionShare;
-    MISSING_TYPE *result_mediaAlbumPresent;
-    MISSING_TYPE *result_mediaArtistPresent;
-    MISSING_TYPE *result_mediaGenrePresent;
-    MISSING_TYPE *result_mediaMoodPresent;
     MISSING_TYPE *result_mediaNamePresent;
-    MISSING_TYPE *result_mediaParsecCategory;
-    MISSING_TYPE *result_mediaReleaseDatePresent;
     MISSING_TYPE *result_mediaType;
     MISSING_TYPE *result_isNowPlayingDuetApp;
     MISSING_TYPE *result_nowPlayingDuetElapsedSeconds;
@@ -55,6 +49,10 @@
     MISSING_TYPE *result_subscriptionStatus;
     MISSING_TYPE *result_isNowPlayingApp;
 }
+
+@property (nonatomic, readonly) NSSet *featureNames;
+
+- (id)featureValueForName:(id)arg1;
 
 @end
 

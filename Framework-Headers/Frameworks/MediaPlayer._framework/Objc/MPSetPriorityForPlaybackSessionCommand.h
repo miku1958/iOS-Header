@@ -6,14 +6,14 @@
 
 #import <MediaPlayer/MPRemoteCommand.h>
 
-@class NSDictionary;
+@class NSArray;
 
 @interface MPSetPriorityForPlaybackSessionCommand : MPRemoteCommand
 {
-    NSDictionary *_preloadedSessions;
+    NSArray *_preloadedSessions;
 }
 
-@property (copy, nonatomic) NSDictionary *preloadedSessions; // @synthesize preloadedSessions=_preloadedSessions;
+@property (copy, nonatomic) NSArray *preloadedSessions; // @synthesize preloadedSessions=_preloadedSessions;
 
 - (void).cxx_destruct;
 - (id)_mediaRemoteCommandInfoOptions;

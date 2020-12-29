@@ -153,9 +153,9 @@ __attribute__((visibility("hidden")))
 - (id)className;
 - (void)configure:(struct VCRateControlAlgorithmConfig)arg1 restartRequired:(BOOL)arg2;
 - (void)dealloc;
-- (BOOL)doRateControlWithBasebandStatistics:(CDStruct_1a067c5f)arg1;
-- (BOOL)doRateControlWithStatistics:(CDStruct_1a067c5f)arg1;
-- (BOOL)doRateControlWithVCRCStatistics:(CDStruct_1a067c5f)arg1;
+- (BOOL)doRateControlWithBasebandStatistics:(CDStruct_bae76c55)arg1;
+- (BOOL)doRateControlWithStatistics:(CDStruct_bae76c55)arg1;
+- (BOOL)doRateControlWithVCRCStatistics:(CDStruct_bae76c55)arg1;
 - (void)enableBasebandDump:(void *)arg1;
 - (void)enableLogDump:(void *)arg1 enablePeriodicLogging:(BOOL)arg2;
 - (double)getDoubleTimeFromTimestamp:(unsigned int)arg1 timestampTick:(unsigned int)arg2 wrapAroundCounter:(unsigned int)arg3;
@@ -192,7 +192,7 @@ __attribute__((visibility("hidden")))
 - (void)stateExit;
 - (void)updateCongestionStatusWhenRampDown:(double)arg1;
 - (void)updateCongestionStatusWhenRampUp;
-- (BOOL)updateInternalStatistics:(CDStruct_1a067c5f)arg1;
+- (BOOL)updateInternalStatistics:(CDStruct_bae76c55)arg1;
 - (void)updateInternalStatus;
 - (void)updateVCRateControlHistory;
 

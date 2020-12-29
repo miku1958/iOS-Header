@@ -85,7 +85,7 @@
 - (void)_removeFromPendingConnections:(id)arg1;
 - (void)_removeIdentifiersForReachabilityScan;
 - (void)_reportReachabilityForAccessoryWithIdentifier:(id)arg1;
-- (BOOL)_shouldCreateHAPAccessoryServerWithIdentifier:(id)arg1 statusFlags:(id)arg2 stateNumber:(id)arg3 category:(id)arg4 configNumber:(id)arg5 forPeripheral:(id)arg6 advertisementFormat:(unsigned long long)arg7 setupHash:(id)arg8 stateChanged:(BOOL *)arg9 connectReason:(unsigned char *)arg10;
+- (BOOL)_shouldCreateHAPAccessoryServerWithIdentifier:(id)arg1 statusFlags:(id)arg2 stateNumber:(id)arg3 category:(id)arg4 configNumber:(id)arg5 name:(id)arg6 forPeripheral:(id)arg7 advertisementFormat:(unsigned long long)arg8 setupHash:(id)arg9 stateChanged:(BOOL *)arg10 connectReason:(unsigned char *)arg11;
 - (void)_startDiscoveringAccessoryServers;
 - (void)_startScanningForPairingPeers;
 - (void)_startScanningForReachability:(id)arg1;

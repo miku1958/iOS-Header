@@ -10,7 +10,7 @@
 
 @interface _TtC15MediaFoundation24ChangingCurrentItemState : _TtC15MediaFoundation18ChangingQueueState
 {
-    MISSING_TYPE *item;
+    MISSING_TYPE *items;
 }
 
 @end

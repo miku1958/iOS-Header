@@ -27,6 +27,7 @@
 + (BOOL)deviceDisableMetal;
 + (BOOL)deviceDisableOpenGL;
 + (BOOL)devicePrintRenderer;
++ (BOOL)disableMeteorGainMapGeneration;
 + (BOOL)disablePacked10BitPixelFormats;
 + (BOOL)displayDisableColorMatching;
 + (BOOL)displayDisableDeepColor;
@@ -62,6 +63,7 @@
 + (void)setCacheNodeImageCompression:(double)arg1;
 + (void)setDeviceDefaultSampleMode:(long long)arg1;
 + (void)setDevicePrintRenderer:(BOOL)arg1;
++ (void)setDisableMeteorGainMapGeneration:(BOOL)arg1;
 + (void)setDisablePacked10BitPixelFormats:(BOOL)arg1;
 + (void)setDisplayDisableColorMatching:(BOOL)arg1;
 + (void)setDisplayDisableDeepColor:(BOOL)arg1;

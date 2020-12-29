@@ -6,7 +6,7 @@
 
 #import <Preferences/PSListController.h>
 
-@class NSArray, PSSpecifier, PrefsUILinkLabel;
+@class NSArray, PSFitnessPlusAnalyticsConsentCoordinator, PSSpecifier, PrefsUILinkLabel;
 
 @interface ProblemReportingController : PSListController
 {
@@ -16,17 +16,21 @@
     NSArray *_iCloudSpecifiers;
     PSSpecifier *_spinnerSpecifier;
     BOOL _shouldShareHealthRecordsData;
+    NSArray *_fitnessPlusDataSpecifiers;
     NSArray *_healthDataSpecifiers;
     NSArray *_healthRecordsDataSpecifiers;
     NSArray *_wheelchairDataSpecifiers;
     NSArray *_handwashingDataSpecifiers;
     NSArray *_automatedFeedbackSpecifiers;
+    PSFitnessPlusAnalyticsConsentCoordinator *_fitnessPlusAnalyticsConsentCoordinator;
     NSArray *_improveSiriSpecifiers;
 }
 
 @property (readonly) NSArray *appActivitySpecifiers;
 @property (strong, nonatomic) NSArray *automatedFeedbackSpecifiers; // @synthesize automatedFeedbackSpecifiers=_automatedFeedbackSpecifiers;
 @property (readonly) PSSpecifier *filesystemMetadataSnapshotSpecifier;
+@property (strong, nonatomic) PSFitnessPlusAnalyticsConsentCoordinator *fitnessPlusAnalyticsConsentCoordinator; // @synthesize fitnessPlusAnalyticsConsentCoordinator=_fitnessPlusAnalyticsConsentCoordinator;
+@property (readonly) NSArray *fitnessPlusDataSpecifiers; // @synthesize fitnessPlusDataSpecifiers=_fitnessPlusDataSpecifiers;
 @property (readonly) NSArray *handwashingDataSpecifiers; // @synthesize handwashingDataSpecifiers=_handwashingDataSpecifiers;
 @property (readonly) NSArray *healthDataSpecifiers; // @synthesize healthDataSpecifiers=_healthDataSpecifiers;
 @property (readonly) NSArray *healthRecordsDataSpecifiers; // @synthesize healthRecordsDataSpecifiers=_healthRecordsDataSpecifiers;
@@ -50,20 +54,24 @@
 - (void)setProblemReportingEnabled:(BOOL)arg1;
 - (void)setProblemReportingEnabled:(id)arg1 forSpecifier:(id)arg2;
 - (void)setShouldShareAppActivityWithAppDevelopers:(id)arg1 specifier:(id)arg2;
+- (void)setShouldShareFitnessPlusData:(id)arg1 specifier:(id)arg2;
 - (void)setShouldShareHandwashingData:(id)arg1 specifier:(id)arg2;
 - (void)setShouldShareHealthData:(id)arg1 specifier:(id)arg2;
 - (void)setShouldShareHealthRecordsData:(id)arg1 specifier:(id)arg2;
 - (void)setShouldShareWheelchairData:(id)arg1 specifier:(id)arg2;
 - (void)setShouldShareiCloudAnalytics:(id)arg1 specifier:(id)arg2;
 - (id)shouldShareAppActivityWithAppDevelopers;
+- (id)shouldShareFitnessPlusDataForSpecifier:(id)arg1;
 - (id)shouldShareHandwashingDataForSpecifier:(id)arg1;
 - (id)shouldShareHealthDataForSpecifier:(id)arg1;
 - (id)shouldShareHealthRecordsDataForSpecifier:(id)arg1;
 - (id)shouldShareWheelchairDataForSpecifier:(id)arg1;
 - (id)shouldShareiCloudAnalytics:(id)arg1;
+- (BOOL)shouldShowFitnessPlusSpecifiers;
 - (BOOL)shouldShowiCloudSpecifiersForAccount:(id)arg1;
 - (void)showAboutAnalyticsSheet;
 - (void)showAboutAppAnalyticsSheet;
+- (void)showAboutFitnessPlusDataSheet;
 - (void)showAboutHandwashingDataSheet;
 - (void)showAboutHealthDataSheet;
 - (void)showAboutHealthRecordsDataSheet;

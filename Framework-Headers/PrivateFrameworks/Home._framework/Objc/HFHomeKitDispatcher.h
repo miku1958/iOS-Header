@@ -130,6 +130,7 @@
 - (void)_setupMediaSessionObserver;
 - (void)_setupResidentDeviceObserver;
 - (void)_setupSoftwareUpdateObserver;
+- (void)_setupSofwareUpdateControllerObserver;
 - (void)_setupStateDumpHandlers;
 - (void)_setupSymptomFixSessionObserver;
 - (BOOL)_shouldPersistSelectedHomeToDefaults;

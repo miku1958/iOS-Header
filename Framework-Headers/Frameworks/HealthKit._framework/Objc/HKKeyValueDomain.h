@@ -30,7 +30,7 @@
 + (id)clientInterface;
 + (id)healthAppDefaultsDomainWithHealthStore:(id)arg1;
 + (id)healthArticlesDefaultsDomainWithHealthStore:(id)arg1;
-+ (id)heartRhythmDefaultsDomainWithhealthStore:(id)arg1;
++ (id)heartRhythmDefaultsDomainWithHealthStore:(id)arg1;
 + (id)safetyDefaultsDomainWithHealthStore:(id)arg1;
 + (id)serverInterface;
 - (void).cxx_destruct;

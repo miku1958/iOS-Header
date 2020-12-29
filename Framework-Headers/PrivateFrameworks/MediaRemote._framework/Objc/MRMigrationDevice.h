@@ -14,6 +14,7 @@
 __attribute__((visibility("hidden")))
 @interface MRMigrationDevice : NSObject <MRNowPlayingControllerDelegate>
 {
+    BOOL _preparedForAirPlay;
     unsigned long long _deviceState;
     NSError *_prepareError;
     id<MRMigrationDeviceDelegate> _delegate;
@@ -29,13 +30,16 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) unsigned long long deviceState; // @synthesize deviceState=_deviceState;
 @property (readonly, nonatomic) MRAVEndpoint *endpoint;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL isPrepared;
 @property (readonly, nonatomic) MRNowPlayingPlayerResponse *playerState;
 @property (strong, nonatomic) NSError *prepareError; // @synthesize prepareError=_prepareError;
+@property (nonatomic) BOOL preparedForAirPlay; // @synthesize preparedForAirPlay=_preparedForAirPlay;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *uid;
 
 + (id)proactiveDevice;
 - (void).cxx_destruct;
+- (void)_checkIfAirPlayPossible;
 - (void)_notifyDelegateOfPlayerStateChange;
 - (void)_notifyDelegateOfStateChange;
 - (void)controller:(id)arg1 didFailWithError:(id)arg2;

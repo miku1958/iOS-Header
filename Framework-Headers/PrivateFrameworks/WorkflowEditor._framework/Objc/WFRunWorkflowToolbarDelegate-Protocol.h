@@ -11,7 +11,6 @@
 @protocol WFRunWorkflowToolbarDelegate <NSObject>
 
 @optional
-- (void)runToolbarAddTapped:(WFRunWorkflowToolbar *)arg1;
 - (void)runToolbarPlayTapped:(WFRunWorkflowToolbar *)arg1;
 - (void)runToolbarRedoTapped:(WFRunWorkflowToolbar *)arg1;
 - (void)runToolbarShareTapped:(WFRunWorkflowToolbar *)arg1 sender:(UIBarButtonItem *)arg2;

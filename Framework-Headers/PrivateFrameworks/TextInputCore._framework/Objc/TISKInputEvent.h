@@ -20,11 +20,11 @@
 @property (nonatomic) BOOL ignoreTapData; // @synthesize ignoreTapData=_ignoreTapData;
 @property (strong, nonatomic) TIKeyboardInput *input; // @synthesize input=_input;
 
-+ (id)makeInputEvent:(id)arg1 order:(long long)arg2 wordSeparator:(id)arg3 accentedLanguage:(BOOL)arg4;
++ (id)makeInputEvent:(id)arg1 emojiSearchMode:(BOOL)arg2 order:(long long)arg3 wordSeparator:(id)arg4 accentedLanguage:(BOOL)arg5;
 - (void).cxx_destruct;
 - (void)_computeErrorDistance;
 - (double)downUpTimeDelta;
-- (id)init:(id)arg1 type:(int)arg2 order:(long long)arg3;
+- (id)init:(id)arg1 type:(int)arg2 emojiSearchMode:(BOOL)arg3 order:(long long)arg4;
 - (BOOL)isMissingATouch;
 - (void)reportInterKeyTiming:(id)arg1 previousEvent:(id)arg2;
 - (void)reportToSession:(id)arg1;

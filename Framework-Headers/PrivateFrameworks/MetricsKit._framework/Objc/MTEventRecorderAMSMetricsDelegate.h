@@ -49,7 +49,6 @@
 @property (nonatomic, getter=isTransactionEnabled) BOOL transactionEnabled; // @synthesize transactionEnabled=_transactionEnabled;
 
 + (id)amsMetricsObjectCache;
-+ (id)bundleIdentifier;
 - (void).cxx_destruct;
 - (void)_beginTransaction;
 - (void)_endTransaction;

@@ -12,8 +12,8 @@
 @interface ADBackgroundTaskRequest : NSObject
 {
     BOOL _performDeferralCheck;
-    NSString *_requestIdentifier;
     NSObject<OS_xpc_object> *_activity;
+    NSString *_requestIdentifier;
     NSObject<OS_xpc_object> *_criteria;
     NSDate *_startDate;
 }

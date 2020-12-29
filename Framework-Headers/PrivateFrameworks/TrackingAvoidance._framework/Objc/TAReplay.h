@@ -21,6 +21,7 @@
     NSObject<OS_dispatch_semaphore> *_persistenceWait;
     NSObject<OS_dispatch_semaphore> *_streamWait;
     NSURL *_outputPath;
+    NSURL *_inputPersistencePath;
     TAAnalyticsManager *_analyticsManager;
 }
 
@@ -32,7 +33,7 @@
 - (void).cxx_destruct;
 - (BOOL)activityStream:(id)arg1 deviceUDID:(id)arg2 deviceID:(id)arg3 status:(long long)arg4 error:(id)arg5;
 - (BOOL)activityStream:(id)arg1 results:(id)arg2;
-- (id)initWithLogArchive:(id)arg1 outputPath:(id)arg2;
+- (id)initWithLogArchive:(id)arg1 outputPath:(id)arg2 inputPersistencePath:(id)arg3;
 - (BOOL)persistence:(id)arg1 results:(id)arg2 error:(id)arg3;
 - (void)persistenceDidFinishReadingForStartDate:(id)arg1 endDate:(id)arg2;
 - (void)replaySingleEventLogString:(id)arg1;

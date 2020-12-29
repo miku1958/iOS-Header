@@ -16,9 +16,11 @@ __attribute__((visibility("hidden")))
     long long lastSettingsUniqueID;
     NSArray *availablePhotoPixelFormatTypes;
     NSArray *availablePhotoCodecTypes;
-    NSArray *availableRawPhotoPixelFormatTypes;
+    NSDictionary *availableRawPhotoPixelFormatTypes;
     NSArray *availablePhotoFileTypes;
     NSArray *availableRawPhotoFileTypes;
+    BOOL appleProRAWSupported;
+    BOOL appleProRAWEnabled;
     long long maxPhotoQualityPrioritization;
     BOOL maxPhotoQualityPrioritizationHasBeenSetByClient;
     BOOL stillImageStabilizationSupported;

@@ -33,6 +33,8 @@
 @property (readonly, nonatomic) RTPlatform *platform; // @synthesize platform=_platform;
 @property (readonly) Class superclass;
 
++ (int)harvestTypeToPoiTriggerType:(unsigned long long)arg1;
++ (id)harvestTypeToString:(unsigned long long)arg1;
 - (void).cxx_destruct;
 - (id)_mapItemsWithFidelityPolicy:(unsigned long long)arg1 locations:(id)arg2 accessPoints:(id)arg3 referenceLocation:(id)arg4 options:(id)arg5 error:(id *)arg6;
 - (id)_mapItemsWithinDistance:(double)arg1 location:(id)arg2 startDate:(id)arg3 endDate:(id)arg4 error:(id *)arg5;
@@ -45,7 +47,7 @@
 - (id)dedupeQueryResults:(id)arg1 error:(id *)arg2;
 - (id)filterByDistance:(id)arg1 location:(id)arg2 thresholdForUnknownLabel:(double)arg3 error:(id *)arg4;
 - (id)fingerprintsBetweenStartDate:(id)arg1 endDate:(id)arg2 error:(id *)arg3;
-- (BOOL)harvestVisits:(id)arg1 mapItem:(id)arg2 error:(id *)arg3;
+- (BOOL)harvestVisits:(id)arg1 mapItem:(id)arg2 harvestType:(unsigned long long)arg3 error:(id *)arg4;
 - (id)inferredMapItemsFromPlist:(id)arg1 error:(id *)arg2;
 - (id)init;
 - (id)initWithDefaultsManager:(id)arg1 distanceCalculator:(id)arg2 fingerprintManager:(id)arg3 locationManager:(id)arg4 mapServiceManager:(id)arg5 motionActivityManager:(id)arg6 parameters:(id)arg7 platform:(id)arg8;

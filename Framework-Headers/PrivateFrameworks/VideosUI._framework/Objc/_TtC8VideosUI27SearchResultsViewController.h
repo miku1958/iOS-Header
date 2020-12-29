@@ -11,6 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI27SearchResultsViewController : UIViewController
 {
+    MISSING_TYPE *collectionImpressioner;
     MISSING_TYPE *delegate;
     MISSING_TYPE *document;
     MISSING_TYPE *stackViewController;

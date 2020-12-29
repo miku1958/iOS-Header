@@ -70,6 +70,8 @@
 - (id)allKeys;
 - (BOOL)boolValueForKey:(id)arg1;
 - (BOOL)containsObjectForKey:(id)arg1;
+- (void)enumerateKeysAndObjectsForKeys:(id)arg1 usingBlock:(CDUnknownBlockType)arg2;
+- (void)enumerateKeysAndObjectsUsingBlock:(CDUnknownBlockType)arg1;
 - (id)fc_jsonEncodableDictionary;
 - (id)fc_jsonEncodableDictionaryWithDictionary:(id)arg1;
 - (id)fc_jsonString;

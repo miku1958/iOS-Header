@@ -6,15 +6,15 @@
 
 #import <objc/NSObject.h>
 
-#import <BannerKit/BNBannerHostSceneViewControllerObserving-Protocol.h>
 #import <BannerKit/BNBannerSourceClientToHostInterface-Protocol.h>
+#import <BannerKit/BNBannerSourceListenerPresentableObserving-Protocol.h>
 #import <BannerKit/BSInvalidatable-Protocol.h>
 #import <BannerKit/BSServiceConnectionListenerDelegate-Protocol.h>
 
 @class BSServiceConnectionListener, FBSDisplayConfiguration, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString;
 @protocol BNBannerSourceListenerDelegate, OS_dispatch_queue;
 
-@interface BNBannerSourceListener : NSObject <BSServiceConnectionListenerDelegate, BNBannerSourceClientToHostInterface, BNBannerHostSceneViewControllerObserving, BSInvalidatable>
+@interface BNBannerSourceListener : NSObject <BSServiceConnectionListenerDelegate, BNBannerSourceClientToHostInterface, BNBannerSourceListenerPresentableObserving, BSInvalidatable>
 {
     FBSDisplayConfiguration *_displayConfiguration;
     NSSet *_authorizedBundleIDs;
@@ -57,7 +57,7 @@
 - (void)invalidate;
 - (void)layoutDescriptionDidChange:(id)arg1;
 - (void)listener:(id)arg1 didReceiveConnection:(id)arg2 withContext:(id)arg3;
-- (void)sceneDidInvalidateForBannerHostSceneViewController:(id)arg1;
+- (void)sceneDidInvalidateForBannerSourceListenerPresentable:(id)arg1;
 
 @end
 

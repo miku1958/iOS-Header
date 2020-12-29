@@ -10,16 +10,18 @@
 #import <FindMyDevice/FMDAudioAccessory-Protocol.h>
 #import <FindMyDevice/NSSecureCoding-Protocol.h>
 
-@class FMDAccessoryIdentifier, NSString, NSURL;
+@class FMDAccessoryIdentifier, FMDAudioAccessoryInfo, NSString, NSURL;
 
 @interface FMDGenericAudioAccessory : NSObject <NSSecureCoding, FMDAudioAccessory, FMDAccessory>
 {
     FMDAccessoryIdentifier *_accessoryIdentifier;
     NSString *_audioRoutingIdentifier;
     NSURL *_audioURL;
+    FMDAudioAccessoryInfo *_audioAccessoryInfo;
 }
 
 @property (strong, nonatomic) FMDAccessoryIdentifier *accessoryIdentifier; // @synthesize accessoryIdentifier=_accessoryIdentifier;
+@property (strong, nonatomic) FMDAudioAccessoryInfo *audioAccessoryInfo; // @synthesize audioAccessoryInfo=_audioAccessoryInfo;
 @property (strong, nonatomic) NSString *audioRoutingIdentifier; // @synthesize audioRoutingIdentifier=_audioRoutingIdentifier;
 @property (readonly, nonatomic) unsigned long long audioSafetyStatus;
 @property (strong, nonatomic) NSURL *audioURL; // @synthesize audioURL=_audioURL;

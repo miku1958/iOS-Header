@@ -10,6 +10,7 @@
 
 @class FCCKPRecord;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPOplockFailure : PBCodable <NSCopying>
 {
     FCCKPRecord *_recordForOplockFailure;
@@ -18,7 +19,6 @@
 @property (readonly, nonatomic) BOOL hasRecordForOplockFailure;
 @property (strong, nonatomic) FCCKPRecord *recordForOplockFailure; // @synthesize recordForOplockFailure=_recordForOplockFailure;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

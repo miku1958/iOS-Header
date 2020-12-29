@@ -24,12 +24,15 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) HMFUnfairLock *lock; // @synthesize lock=_lock;
+@property (readonly) double maxAnalysisFPS;
 @property (readonly) long long maxVideoEncoderFrameRate;
+@property (readonly) unsigned long long maxVideoEncoders;
 @property (readonly, nonatomic) NSMutableDictionary *preferenceCache; // @synthesize preferenceCache=_preferenceCache;
 @property (readonly) HMFTimer *preferenceCacheFlushTimer; // @synthesize preferenceCacheFlushTimer=_preferenceCacheFlushTimer;
 @property (readonly, nonatomic) NSMutableDictionary *preferenceLoggedValues; // @synthesize preferenceLoggedValues=_preferenceLoggedValues;
 @property (readonly) NSDictionary *preferenceOverrides;
 @property (readonly, nonatomic) NSMutableDictionary *preferenceOverridesInternal; // @synthesize preferenceOverridesInternal=_preferenceOverridesInternal;
+@property (readonly) BOOL shouldUseCPUOnlyForVisionFaceDetection;
 @property (readonly) Class superclass;
 @property (readonly) BOOL usesCPUOnly;
 
@@ -48,6 +51,7 @@
 - (BOOL)hasPreferenceForKey:(id)arg1;
 - (id)init;
 - (void)logPreferenceForKey:(id)arg1 value:(id)arg2;
+- (unsigned long long)maxConcurrentAnalyzersForSystemResourceUsageLevel:(long long)arg1;
 - (id)numberPreferenceForKey:(id)arg1 defaultValue:(id)arg2;
 - (id)numberPreferenceForKey:(id)arg1 defaultValue:(id)arg2 withMap:(id)arg3;
 - (id)numberPreferenceForKey:(id)arg1 defaultValue:(id)arg2 withParser:(CDUnknownBlockType)arg3;

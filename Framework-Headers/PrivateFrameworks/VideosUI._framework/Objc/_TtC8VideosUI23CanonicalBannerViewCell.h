@@ -37,7 +37,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *descComputationLabel;
     MISSING_TYPE *tagsComputationLabel;
     MISSING_TYPE *contentOffset;
-    MISSING_TYPE *separatorView;
+    MISSING_TYPE *$__lazy_storage_$_separatorView;
 }
 
 - (void).cxx_destruct;

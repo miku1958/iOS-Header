@@ -12,6 +12,7 @@
 
 @interface ANAnnouncementDestination : NSObject <NSSecureCoding>
 {
+    BOOL _replyToSender;
     unsigned long long _type;
     id _home;
     NSArray *_zones;
@@ -26,9 +27,12 @@
 @property (strong, nonatomic) NSArray *zones; // @synthesize zones=_zones;
 
 + (id)destinationWithHome:(id)arg1 zones:(id)arg2 rooms:(id)arg3;
++ (id)destinationWithHomeIdentifier:(id)arg1;
 + (id)destinationWithHomeIdentifier:(id)arg1 zoneIdentifiers:(id)arg2 roomIdentifiers:(id)arg3;
++ (id)destinationWithHomeName:(id)arg1;
 + (id)destinationWithHomeName:(id)arg1 zoneNames:(id)arg2 roomNames:(id)arg3;
 + (id)destinationWithReplyToAnnouncementIdentifier:(id)arg1;
++ (id)stringFromAnnouncementDestinationType:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)description;

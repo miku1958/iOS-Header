@@ -53,20 +53,18 @@
 	var attributes : HealthArticleTextAttributes
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1a1c000076a0 (0x21c000076a0) in binary!
-	0x2738  @objc DynamicHeightLabelView.(null) <stripped>
-WARNING: couldn't find offset 0x1a28 in binary!
-WARNING: couldn't find offset 0x1a28 in binary!
-WARNING: couldn't find address 0x1bb2000076b0 (0x3b2000076b0) in binary!
-	0x0  @objc DynamicHeightLabelView.(null) <stripped>
+WARNING: couldn't find address 0x1a3c000076e0 (0x23c000076e0) in binary!
+	0x2758  @objc DynamicHeightLabelView.(null) <stripped>
+WARNING: couldn't find address 0x1bd2000076f0 (0x3d2000076f0) in binary!
+	0x1a48  @objc DynamicHeightLabelView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x6fcfffec610  @objc DynamicHeightLabelView.(null) <stripped>
-	0xfffeccd8  @objc DynamicHeightLabelView.x< <stripped>
+	0x73cfffec510  @objc DynamicHeightLabelView.(null) <stripped>
+	0xfffecbd8  @objc DynamicHeightLabelView.√Hç=êœ <stripped>
 
 	// Swift methods
-	0x1b00  func <stripped> // getter 
-	0x2050  func <stripped> // method 
-	0x21d0  func <stripped> // method 
+	0x19c0  func <stripped> // getter 
+	0x1f10  func <stripped> // method 
+	0x2090  func <stripped> // method 
  }
 
  class HealthArticlesUI.LinkedTextView : ParagraphView {
@@ -77,24 +75,24 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var linkContent : LinkContent // +0xfeedfacf (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x19e400007668 (0x1e400007668) in binary!
-	0x2700  @objc LinkedTextView.(null) <stripped>
-WARNING: couldn't find address 0x19fc00007628 (0x1fc00007628) in binary!
+WARNING: couldn't find address 0x1a04000076a8 (0x204000076a8) in binary!
+	0x2720  @objc LinkedTextView.(null) <stripped>
+WARNING: couldn't find address 0x1a1c00007668 (0x21c00007668) in binary!
 	0x18000000c  @objc LinkedTextView.(null) <stripped>
-WARNING: couldn't find address 0x1af400007608 (0x2f400007608) in binary!
+WARNING: couldn't find address 0x1b1400007648 (0x31400007648) in binary!
 	0x28000000c  @objc LinkedTextView.(null) <stripped>
 
 	// Swift methods
-	0x3030  func <stripped> // method 
-	0x3540  func <stripped> // getter 
+	0x2ef0  func <stripped> // method 
+	0x3400  func <stripped> // getter 
  }
 
  class HealthArticlesUI.TitleView : DynamicHeightLabelView {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x199c00007620 (0x19c00007620) in binary!
-	0x26b8  @objc TitleView.(null) <stripped>
+WARNING: couldn't find address 0x19bc00007660 (0x1bc00007660) in binary!
+	0x26d8  @objc TitleView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x694fffeda68  @objc TitleView.(null) <stripped>
+	0x6d4fffed968  @objc TitleView.(null) <stripped>
  }
 
  struct HealthArticlesUI.TileViewModel {
@@ -104,7 +102,7 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let description : String
 	let backgroundImage : UIImage
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let presentation : °)
+	let presentation : ¡)
  }
 
  class HealthArticlesUI.HealthArticleTileView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -112,29 +110,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let highlightedDuration : Double
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let highlightedOverlayAlpha : œ(
+	let highlightedOverlayAlpha : Ô(
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let highlightedUnderlayAlpha : œ(
+	let highlightedUnderlayAlpha : Ô(
 	var $__lazy_storage_$_backgroundImageView : UIImageView?
 	var $__lazy_storage_$_selectedImageOverlay : UIView?
 	var $__lazy_storage_$_selectedSashUnderlay : UIView?
 	var $__lazy_storage_$_sashView : TileSashView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x197c00007600 (0x17c00007600) in binary!
-	0x2698  @objc HealthArticleTileView.(null) <stripped>
-WARNING: couldn't find address 0x1994000075c0 (0x194000075c0) in binary!
+WARNING: couldn't find address 0x199c00007640 (0x19c00007640) in binary!
+	0x26b8  @objc HealthArticleTileView.(null) <stripped>
+WARNING: couldn't find address 0x19b400007600 (0x1b400007600) in binary!
 	0x28000000c  @objc HealthArticleTileView.(null) <stripped>
-WARNING: couldn't find address 0x194c000075d0 (0x14c000075d0) in binary!
-	0x2668  @objc HealthArticleTileView.(null) <stripped>
+WARNING: couldn't find address 0x196c00007610 (0x16c00007610) in binary!
+	0x2688  @objc HealthArticleTileView.(null) <stripped>
 
 	// Swift methods
-	0x3ff0  func <stripped> // getter 
-	0x4010  func <stripped> // getter 
-	0x4090  func <stripped> // getter 
-	0x4160  func <stripped> // getter 
-	0x4580  func <stripped> // method 
-	0x47c0  func <stripped> // method 
+	0x3eb0  func <stripped> // getter 
+	0x3ed0  func <stripped> // getter 
+	0x3f50  func <stripped> // getter 
+	0x4020  func <stripped> // getter 
+	0x4440  func <stripped> // method 
+	0x4680  func <stripped> // method 
  }
 
  enum HealthArticlesUI.HealthArticleComponent {
@@ -160,16 +158,16 @@ WARNING: couldn't find address 0x194c000075d0 (0x14c000075d0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case linkedURL : Ÿ'
+	case linkedURL : ˘'
 	case customLinkHandler : (_:)
  }
 
  class HealthArticlesUI.ParagraphView : DynamicHeightTextView {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x194c000075d0 (0x14c000075d0) in binary!
-	0x2668  @objc ParagraphView.(null) <stripped>
+WARNING: couldn't find address 0x196c00007610 (0x16c00007610) in binary!
+	0x2688  @objc ParagraphView.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x78cffff3fc8  @objc ParagraphView.(null) <stripped>
+	0x7ccffff3ec8  @objc ParagraphView.(null) <stripped>
  }
 
  class HealthArticlesUI.HealthArticleViewController : UIViewController /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -180,35 +178,35 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	var $__lazy_storage_$_contentView : UIStackView? // +0x18 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find offset 0x1950 in binary!
-WARNING: couldn't find offset 0x1950 in binary!
-WARNING: couldn't find address 0x265400007650 (0x65400007650) in binary!
+WARNING: couldn't find offset 0x1970 in binary!
+WARNING: couldn't find offset 0x1970 in binary!
+WARNING: couldn't find address 0x267400007690 (0x67400007690) in binary!
 	0x0  @objc HealthArticleViewController.(null) <stripped>
-WARNING: couldn't find address 0x1944000077c8 (0x144000077c8) in binary!
-	0x2622  @objc HealthArticleViewController.(null) <stripped>
-WARNING: couldn't find address 0x192c00007558 (0x12c00007558) in binary!
+WARNING: couldn't find address 0x196400007808 (0x16400007808) in binary!
+	0x2642  @objc HealthArticleViewController.(null) <stripped>
+WARNING: couldn't find address 0x194c00007598 (0x14c00007598) in binary!
 	0x28000000c  @objc HealthArticleViewController.(null) <stripped>
-WARNING: couldn't find address 0x18e400007568 (0xe400007568) in binary!
-	0x2600  @objc HealthArticleViewController.(null) <stripped>
+WARNING: couldn't find address 0x1904000075a8 (0x104000075a8) in binary!
+	0x2620  @objc HealthArticleViewController.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x72cffff87a0  @objc HealthArticleViewController.(null) <stripped>
+	0x76cffff86a0  @objc HealthArticleViewController.(null) <stripped>
 
 	// Swift methods
-	0xa6e0  func <stripped> // getter 
-	0xa8d0  func <stripped> // getter 
-	0xa930  class func HealthArticleViewController.__allocating_init(title:components:) // init 
-	0xab00  func <stripped> // method 
-	0xb270  func <stripped> // method 
+	0xa5a0  func <stripped> // getter 
+	0xa790  func <stripped> // getter 
+	0xa7f0  class func HealthArticleViewController.__allocating_init(title:components:) // init 
+	0xa9c0  func <stripped> // method 
+	0xb130  func <stripped> // method 
  }
 
  enum HealthArticlesUI.UserInfoKey { }
 
  class HealthArticlesUI.SectionHeaderView : DynamicHeightLabelView {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x18e400007568 (0xe400007568) in binary!
-	0x2600  @objc SectionHeaderView.(null) <stripped>
+WARNING: couldn't find address 0x1904000075a8 (0x104000075a8) in binary!
+	0x2620  @objc SectionHeaderView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x72cffff87a0  @objc SectionHeaderView.(null) <stripped>
+	0x76cffff86a0  @objc SectionHeaderView.(null) <stripped>
  }
 
  struct HealthArticlesUI.HealthArticleTileViewModel {
@@ -221,31 +219,31 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var context : !'
+	var context : A'
 	var $__lazy_storage_$_articleTileView : HealthArticleTileView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x18f400007730 (0xf400007730) in binary!
-	0x25d2  @objc ArticleTileViewController.(null) <stripped>
-WARNING: couldn't find offset 0x18d0 in binary!
-WARNING: couldn't find offset 0x18d0 in binary!
-WARNING: couldn't find address 0x25d4000075d0 (0x5d4000075d0) in binary!
+WARNING: couldn't find address 0x191400007770 (0x11400007770) in binary!
+	0x25f2  @objc ArticleTileViewController.(null) <stripped>
+WARNING: couldn't find offset 0x18f0 in binary!
+WARNING: couldn't find offset 0x18f0 in binary!
+WARNING: couldn't find address 0x25f400007610 (0x5f400007610) in binary!
 	0x0  @objc ArticleTileViewController.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x5a4ffffb7d8  @objc ArticleTileViewController.(null) <stripped>
-	0xffffb950  @objc ArticleTileViewController. <stripped>
+	0x5e4ffffb6d8  @objc ArticleTileViewController.(null) <stripped>
+	0xffffb850  @objc ArticleTileViewController.Éƒ[A^√êUHâÂHç=-– <stripped>
 
 	// Swift methods
-	0xeda0  func <stripped> // getter 
-	0xede0  func <stripped> // setter 
-	0xeea0  func <stripped> // modifyCoroutine 
-	0xef60  func <stripped> // getter 
+	0xec60  func <stripped> // getter 
+	0xeca0  func <stripped> // setter 
+	0xed60  func <stripped> // modifyCoroutine 
+	0xee20  func <stripped> // getter 
+	0xf180  func <stripped> // method 
 	0xf2c0  func <stripped> // method 
-	0xf400  func <stripped> // method 
-	0xf5d0  func <stripped> // method 
-	0xfb70  func <stripped> // method 
-	0xfe20  func <stripped> // method 
-	0x10500  func <stripped> // method 
+	0xf490  func <stripped> // method 
+	0xfa30  func <stripped> // method 
+	0xfce0  func <stripped> // method 
+	0x103c0  func <stripped> // method 
  }
 
  struct HealthArticlesUI.TapAnalyticsEvent {
@@ -269,15 +267,15 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	let imageView : UIImageView
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x188c00007510 (0x8c00007510) in binary!
-	0x25a8  @objc ImageView.(null) <stripped>
-WARNING: couldn't find address 0x18a4000074d0 (0xa4000074d0) in binary!
+WARNING: couldn't find address 0x18ac00007550 (0xac00007550) in binary!
+	0x25c8  @objc ImageView.(null) <stripped>
+WARNING: couldn't find address 0x18c400007510 (0xc400007510) in binary!
 	0x48000000c  @objc ImageView.(null) <stripped>
-WARNING: couldn't find address 0x185c000074e0 (0x5c000074e0) in binary!
-	0x2578  @objc ImageView.(null) <stripped>
+WARNING: couldn't find address 0x187c00007520 (0x7c00007520) in binary!
+	0x2598  @objc ImageView.(null) <stripped>
 
 	// Swift methods
-	0x12350  func <stripped> // method 
+	0x12210  func <stripped> // method 
  }
 
  class HealthArticlesUI.DynamicHeightTextView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -288,20 +286,20 @@ WARNING: couldn't find address 0x185c000074e0 (0x5c000074e0) in binary!
 	var attributes : HealthArticleTextAttributes // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x185c000074e0 (0x5c000074e0) in binary!
-	0x2578  @objc DynamicHeightTextView.(null) <stripped>
-WARNING: couldn't find offset 0x1868 in binary!
-WARNING: couldn't find offset 0x1868 in binary!
-WARNING: couldn't find address 0x19f2000074f0 (0x1f2000074f0) in binary!
+WARNING: couldn't find address 0x187c00007520 (0x7c00007520) in binary!
+	0x2598  @objc DynamicHeightTextView.(null) <stripped>
+WARNING: couldn't find offset 0x1888 in binary!
+WARNING: couldn't find offset 0x1888 in binary!
+WARNING: couldn't find address 0x1a1200007530 (0x21200007530) in binary!
 	0x0  @objc DynamicHeightTextView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x53cffffdf20  @objc DynamicHeightTextView.(null) <stripped>
-	0x45cffffdfd8  @objc DynamicHeightTextView.HÉƒ[]√Ä <stripped>
+	0x57cffffdf20  @objc DynamicHeightTextView.(null) <stripped>
+	0x49cffffdfd8  @objc DynamicHeightTextView.UHâÂHç=ç– <stripped>
 
 	// Swift methods
-	0x125e0  func <stripped> // getter 
-	0x127a0  func <stripped> // method 
-	0x12900  func <stripped> // method 
+	0x124a0  func <stripped> // getter 
+	0x12660  func <stripped> // method 
+	0x127c0  func <stripped> // method 
  }
 
  enum HealthArticlesUI.HealthArticleTextAttributes {
@@ -331,15 +329,15 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	var buttonAction : ()?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x1824000074a8 (0x24000074a8) in binary!
-	0x2540  @objc ButtonView.(null) <stripped>
-WARNING: couldn't find offset 0x1830 in binary!
-WARNING: couldn't find offset 0x1830 in binary!
-WARNING: couldn't find address 0x19ba000077f0 (0x1ba000077f0) in binary!
+WARNING: couldn't find address 0x1844000074e8 (0x44000074e8) in binary!
+	0x2560  @objc ButtonView.(null) <stripped>
+WARNING: couldn't find offset 0x1850 in binary!
+WARNING: couldn't find offset 0x1850 in binary!
+WARNING: couldn't find address 0x19da00007838 (0x1da00007838) in binary!
 	0x0  @objc ButtonView.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x504ffffe0f8  @objc ButtonView.(null) <stripped>
-	0xffffe1d0  @objc ButtonView.ËÉ< <stripped>
+	0x544ffffe0f8  @objc ButtonView.(null) <stripped>
+	0xffffe1d0  @objc ButtonView.Hç˘I <stripped>
 
 	// Swift methods
  }
@@ -350,11 +348,12 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var customView : UIView?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17ec00007470 (0x7ec00007470) in binary!
-	0x2508  @objc CustomContentView.(null) <stripped>
-	0x38000000c  @objc CustomContentView.UHâÂâHâ÷â¬]ÈâÔ <stripped>
-WARNING: couldn't find address 0x17bc00007440 (0x7bc00007440) in binary!
-	0x24d8  @objc CustomContentView.(null) <stripped>
+WARNING: couldn't find address 0x180c000074b0 (0xc000074b0) in binary!
+	0x2528  @objc CustomContentView.(null) <stripped>
+WARNING: couldn't find address 0x182400007470 (0x2400007470) in binary!
+	0x38000000c  @objc CustomContentView.(null) <stripped>
+WARNING: couldn't find address 0x17dc00007480 (0x7dc00007480) in binary!
+	0x24f8  @objc CustomContentView.(null) <stripped>
 
 	// Swift methods
  }
@@ -366,15 +365,15 @@ WARNING: couldn't find address 0x17bc00007440 (0x7bc00007440) in binary!
 	var customView : UIView?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x17bc00007440 (0x7bc00007440) in binary!
-	0x24d8  @objc CustomContentViewControllerView.(null) <stripped>
-WARNING: couldn't find address 0x17d400007400 (0x7d400007400) in binary!
+WARNING: couldn't find address 0x17dc00007480 (0x7dc00007480) in binary!
+	0x24f8  @objc CustomContentViewControllerView.(null) <stripped>
+WARNING: couldn't find address 0x17f400007440 (0x7f400007440) in binary!
 	0x58000000c  @objc CustomContentViewControllerView.(null) <stripped>
-WARNING: couldn't find address 0x178c00007410 (0x78c00007410) in binary!
-	0x24a8  @objc CustomContentViewControllerView.(null) <stripped>
+WARNING: couldn't find address 0x17ac00007450 (0x7ac00007450) in binary!
+	0x24c8  @objc CustomContentViewControllerView.(null) <stripped>
 
 	// Swift methods
-	0x14ed0  func <stripped> // method 
+	0x14e90  func <stripped> // method 
  }
 
  class HealthArticlesUI.TileSashView : UIView /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -384,13 +383,13 @@ WARNING: couldn't find address 0x178c00007410 (0x78c00007410) in binary!
 	var $__lazy_storage_$_descriptionLabel : UILabel?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x178c00007410 (0x78c00007410) in binary!
-	0x24a8  @objc TileSashView.(null) <stripped>
-WARNING: couldn't find offset 0x1916 in binary!
-WARNING: couldn't find offset 0x1916 in binary!
-WARNING: couldn't find address 0x17a400007778 (0x7a400007778) in binary!
+WARNING: couldn't find address 0x17ac00007450 (0x7ac00007450) in binary!
+	0x24c8  @objc TileSashView.(null) <stripped>
+WARNING: couldn't find offset 0x1936 in binary!
+WARNING: couldn't find offset 0x1936 in binary!
+WARNING: couldn't find address 0x17c4000077c0 (0x7c4000077c0) in binary!
 	0x0  @objc TileSashView.(null) <stripped>
-WARNING: couldn't find address 0x178c000073b8 (0x78c000073b8) in binary!
+WARNING: couldn't find address 0x17ac000073f8 (0x7ac000073f8) in binary!
 	0x25029232840  @objc TileSashView.(null) <stripped>
 WARNING: couldn't find address 0x6c6165483a4d4152 (0x5483a4d4152) in binary!
 	0x2049557365  @objc TileSashView.(null) <stripped>
@@ -398,6 +397,6 @@ WARNING: couldn't find address 0x65483a5443454a4f (0x25443454a4f) in binary!
 	0x12d73656c63  @objc TileSashView.(null) <stripped>
 
 	// Swift methods
-	0x15090  func <stripped> // getter 
-	0x150b0  func <stripped> // getter 
+	0x15050  func <stripped> // getter 
+	0x15070  func <stripped> // getter 
  }

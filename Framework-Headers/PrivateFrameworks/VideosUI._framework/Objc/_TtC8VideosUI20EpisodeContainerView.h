@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *collectionView;
     MISSING_TYPE *headerView;
     MISSING_TYPE *headerViewLayout;
+    MISSING_TYPE *gradientBackgroundView;
 }
 
 - (void).cxx_destruct;

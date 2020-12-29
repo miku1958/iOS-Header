@@ -25,12 +25,15 @@
 + (BOOL)acknowledgementNeededForPrivacyIdentifier:(id)arg1 account:(id)arg2;
 + (BOOL)hasPreviouslyAcknowledgedPrivacyIdentifier:(id)arg1;
 + (BOOL)hasPreviouslyAcknowledgedPrivacyIdentifier:(id)arg1 account:(id)arg2;
++ (BOOL)hasRejectedPrivacyIdentifier:(id)arg1;
 - (void).cxx_destruct;
+- (id)_updatePrivacyWithAcknowledgementVersions:(id)arg1;
 - (id)acknowledgePrivacy;
 - (id)initWithPrivacyIdentifier:(id)arg1;
 - (id)initWithPrivacyIdentifier:(id)arg1 account:(id)arg2;
 - (id)initWithPrivacyIdentifiers:(id)arg1;
 - (id)initWithPrivacyIdentifiers:(id)arg1 account:(id)arg2;
+- (id)rejectPrivacy;
 
 @end
 

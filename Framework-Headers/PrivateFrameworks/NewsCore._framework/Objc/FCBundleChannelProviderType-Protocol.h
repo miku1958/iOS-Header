@@ -4,12 +4,13 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class NSArray;
+@class NSArray, NSString;
 @protocol FCBundleChannelProviderDelegate;
 
 @protocol FCBundleChannelProviderType
 
 @property (readonly, nonatomic) NSArray *bundleChannelIDs;
+@property (readonly, nonatomic) NSString *bundleChannelIDsVersion;
 @property (weak, nonatomic) id<FCBundleChannelProviderDelegate> delegate;
 
 - (void)loadInitialBundleChannelIDsWithCompletion:(void (^)(void))arg1;

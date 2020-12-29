@@ -19,6 +19,7 @@
 @property (strong, nonatomic) REMStore *reminderStore; // @synthesize reminderStore=_reminderStore;
 
 + (id)allLists;
++ (id)contactRepresentationWithContact:(id)arg1;
 + (id)contentCategories;
 + (id)countDescription;
 + (id)defaultList;
@@ -35,6 +36,7 @@
 - (void).cxx_destruct;
 - (id)URL;
 - (BOOL)canGenerateRepresentationForType:(id)arg1;
+- (id)changeTransaction;
 - (id)copyWithName:(id)arg1 zone:(struct _NSZone *)arg2;
 - (BOOL)flagged;
 - (id)generateFileRepresentationForType:(id)arg1 options:(id)arg2 error:(id *)arg3;
@@ -42,7 +44,7 @@
 - (BOOL)getListAltText:(CDUnknownBlockType)arg1;
 - (BOOL)hasAlarms;
 - (BOOL)hasSubtasks;
-- (id)imageAttachment;
+- (id)imageAttachments;
 - (id)parentReminder;
 - (id)subtasks;
 

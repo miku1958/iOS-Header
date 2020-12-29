@@ -26,7 +26,7 @@
 @property (nonatomic) double totalInviteReceivedTimestamp; // @synthesize totalInviteReceivedTimestamp=_totalInviteReceivedTimestamp;
 
 + (id)reporter;
-- (BOOL)isTimeSpanValid:(double)arg1;
+- (BOOL)isTimeSpanValid:(double)arg1 maxDuration:(double)arg2;
 - (void)recordAppLaunchAndTotalTimestamp;
 - (void)recordAuthenticateResponseTimestamp;
 - (void)recordConnectingDevicesTimestamp;
@@ -47,7 +47,9 @@
 - (void)reportEvent:(id)arg1 type:(id)arg2 startTime:(id)arg3;
 - (void)reportInviteeUILaunchDuration;
 - (void)reportMessageInviteProcessingDuration;
+- (void)reportOnboardingEventForType:(id)arg1 withStartTimestamp:(double)arg2;
 - (void)reportProgramaticInviteDuration;
+- (void)reportScreenTimeEventForType:(id)arg1 withStartTimestamp:(double)arg2;
 - (void)reportTotalInviteReceivedDuration;
 - (void)reportTournamentAnalyticsWithDomain:(id)arg1 type:(id)arg2 tournamentType:(id)arg3 replayCount:(id)arg4 friendCount:(id)arg5 tournamentID:(id)arg6 bundleID:(id)arg7 inviteeCount:(id)arg8;
 

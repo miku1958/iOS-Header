@@ -30,6 +30,7 @@
 - (id)performCanEnrollPaymentPass:(id)arg1;
 - (id)performEnrollPaymentPass:(id)arg1 isDefault:(BOOL)arg2;
 - (void)registerObserver:(id)arg1;
+- (BOOL)shouldOfferAMPEnrollmentForPaymentPass:(id)arg1;
 - (void)unregisterObserver:(id)arg1;
 
 @end

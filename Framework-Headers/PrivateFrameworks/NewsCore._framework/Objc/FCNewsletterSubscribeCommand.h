@@ -6,13 +6,15 @@
 
 #import <NewsCore/FCCommand.h>
 
-@class NSString;
+@class NSArray, NSString;
 
 @interface FCNewsletterSubscribeCommand : FCCommand
 {
     NSString *_newsletter;
+    NSArray *_includeArray;
 }
 
+@property (copy, nonatomic) NSArray *includeArray; // @synthesize includeArray=_includeArray;
 @property (copy, nonatomic) NSString *newsletter; // @synthesize newsletter=_newsletter;
 
 + (BOOL)supportsSecureCoding;
@@ -20,7 +22,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)executeWithContext:(id)arg1 delegate:(id)arg2 qualityOfService:(long long)arg3;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithNewsletter:(id)arg1;
+- (id)initWithNewsletter:(id)arg1 includeArray:(id)arg2;
 
 @end
 

@@ -6,7 +6,7 @@
 
 #import <VideosUI/VUIButton.h>
 
-@class UIAlertController, UIImage, UIViewController, VUICircularProgress, VUIDownloadButtonViewModel;
+@class UIAlertController, UIImage, UIViewController, VUICircularProgress, VUIDownloadButtonViewModel, VUITextLayout;
 
 __attribute__((visibility("hidden")))
 @interface VUIDownloadButton : VUIButton
@@ -26,6 +26,7 @@ __attribute__((visibility("hidden")))
     VUIDownloadButtonViewModel *_viewModel;
     VUICircularProgress *_progressIndicator;
     UIAlertController *_deleteConfirmationAlertController;
+    VUITextLayout *_textLayout;
 }
 
 @property (strong, nonatomic) UIImage *connectingImage; // @synthesize connectingImage=_connectingImage;
@@ -40,6 +41,7 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) UIViewController *presentingViewController; // @synthesize presentingViewController=_presentingViewController;
 @property (strong, nonatomic) VUICircularProgress *progressIndicator; // @synthesize progressIndicator=_progressIndicator;
 @property (nonatomic) BOOL showsTextInDownloadedState; // @synthesize showsTextInDownloadedState=_showsTextInDownloadedState;
+@property (strong, nonatomic) VUITextLayout *textLayout; // @synthesize textLayout=_textLayout;
 @property (strong, nonatomic) VUIDownloadButtonViewModel *viewModel; // @synthesize viewModel=_viewModel;
 @property (nonatomic) BOOL wasCanceled; // @synthesize wasCanceled=_wasCanceled;
 @property (nonatomic) BOOL wasDeleted; // @synthesize wasDeleted=_wasDeleted;
@@ -79,16 +81,18 @@ __attribute__((visibility("hidden")))
 - (void)_updateButtonToState:(unsigned long long)arg1 downloadExpirationDate:(id)arg2;
 - (void)_updateButtonToState:(unsigned long long)arg1 oldState:(unsigned long long)arg2;
 - (void)_updateDownloadProgress:(double)arg1 animated:(BOOL)arg2;
+- (void)_updateImageViewTintColorWithDownloadState:(unsigned long long)arg1;
+- (void)configureWithLayoutProperties;
 - (void)dealloc;
 - (void)didMoveToWindow;
-- (id)initWithAssetController:(id)arg1 layout:(id)arg2;
-- (id)initWithMediaEntity:(id)arg1 layout:(id)arg2;
-- (id)initWithPlayable:(id)arg1 layout:(id)arg2;
+- (id)initWithAssetController:(id)arg1 type:(unsigned long long)arg2;
+- (id)initWithMediaEntity:(id)arg1 type:(unsigned long long)arg2;
+- (id)initWithPlayable:(id)arg1 type:(unsigned long long)arg2 textLayout:(id)arg3;
 - (void)layoutSubviews;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
+- (void)tintColorDidChange;
 - (void)updateWithAssetController:(id)arg1;
-- (void)updateWithElement:(id)arg1;
 
 @end
 

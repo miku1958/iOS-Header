@@ -71,6 +71,7 @@
 - (BOOL)_cellsShouldConferWithAutolayoutEngineForSizingInfo;
 - (void)_computeAndUpdateAdjustedContentFrame;
 - (id)_containerFromCollectionView;
+- (struct CGRect)_contentFrameForSection:(long long)arg1;
 - (id)_contentInsetsEnvironmentFromCollectionViewForInsetsReference:(long long)arg1;
 - (void)_createSwipeActionsModuleIfNeeded;
 - (id)_dataSourceSnapshotter;

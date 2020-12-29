@@ -27,9 +27,11 @@
     BOOL _isBundleDemotedForBullseyeCommittedSearch;
     BOOL _hasShortCut;
     BOOL _displayNameInitialsPrefixMatchOnly;
+    BOOL _displayNameInitialsFirstWordAndMoreMatchOnly;
     BOOL _vendorNameIsDisplayNamePrefix;
     BOOL _isNotExecutable;
     BOOL _isKeywordMatch;
+    BOOL _wordMatchedKeyword;
     BOOL _isPrepared;
     float _rawScore;
     float _feedbackScore;
@@ -67,6 +69,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) NSString *displayNameInitials; // @synthesize displayNameInitials=_displayNameInitials;
+@property (nonatomic) BOOL displayNameInitialsFirstWordAndMoreMatchOnly; // @synthesize displayNameInitialsFirstWordAndMoreMatchOnly=_displayNameInitialsFirstWordAndMoreMatchOnly;
 @property (nonatomic) BOOL displayNameInitialsPrefixMatchOnly; // @synthesize displayNameInitialsPrefixMatchOnly=_displayNameInitialsPrefixMatchOnly;
 @property (nonatomic) BOOL eligibleForDemotion; // @synthesize eligibleForDemotion=_eligibleForDemotion;
 @property (strong, nonatomic) NSString *exactMatchedKeyword; // @synthesize exactMatchedKeyword=_exactMatchedKeyword;
@@ -100,6 +103,7 @@
 @property (nonatomic) int topHitReason; // @synthesize topHitReason=_topHitReason;
 @property (nonatomic) BOOL vendorNameIsDisplayNamePrefix; // @synthesize vendorNameIsDisplayNamePrefix=_vendorNameIsDisplayNamePrefix;
 @property (nonatomic) float withinBundleScore; // @synthesize withinBundleScore=_withinBundleScore;
+@property (nonatomic) BOOL wordMatchedKeyword; // @synthesize wordMatchedKeyword=_wordMatchedKeyword;
 
 + (unsigned short)featureFromVirtualIdx:(unsigned long long)arg1;
 + (void)initialize;
@@ -140,6 +144,7 @@
 - (void)populateTextFeatureValuesForProperty:(id)arg1 updatingBundleFeatureValues:(float (*)[0])arg2 propertyIndex:(unsigned long long)arg3 withEvaluator:(id)arg4 withContext:(struct prs_feature_population_ctx_t *)arg5 featureScoreInfo:(struct PRSL2FeatureScoreInfo *)arg6 propertyCanFuzzyMatch:(BOOL)arg7 keyboardLanguage:(id)arg8 isCJK:(BOOL)arg9 featureList:(const unsigned short *)arg10 propertyName:(id)arg11;
 - (void)populateTextFeatureValuesForProperty:(id)arg1 updatingBundleFeatureValues:(float (*)[0])arg2 propertyIndex:(unsigned long long)arg3 withEvaluator:(id)arg4 withContext:(struct prs_feature_population_ctx_t *)arg5 featureScoreInfo:(struct PRSL2FeatureScoreInfo *)arg6 propertyCanFuzzyMatch:(BOOL)arg7 keyboardLanguage:(id)arg8 isCJK:(BOOL)arg9 propertyName:(id)arg10;
 - (BOOL)serializeToJSON:(void *)arg1 valuesOnly:(BOOL)arg2;
+- (void)setSuggestionBundleIDType;
 - (void)updateAccumulatedBundleFeatures:(float *)arg1 values:(float *)arg2 feature:(unsigned long long)arg3;
 - (void)updateBundleFeatures:(float *)arg1 withArrValues:(float (*)[0])arg2 featureScoreInfo:(struct PRSL2FeatureScoreInfo *)arg3;
 - (void)updateNumScoreDescriptorBundleFeatures:(float *)arg1 feature:(unsigned long long)arg2 featureScoreInfo:(struct PRSL2FeatureScoreInfo *)arg3;

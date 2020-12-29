@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TVMLKit/TVImageScaleDecorator.h>
+#import <VideosUICore/VUIImageScaleDecorator.h>
 
 @class UIColor;
 
 __attribute__((visibility("hidden")))
-@interface _VUIMonogramDecorator : TVImageScaleDecorator
+@interface _VUIMonogramDecorator : VUIImageScaleDecorator
 {
     UIColor *_borderColor;
     double _borderWidth;

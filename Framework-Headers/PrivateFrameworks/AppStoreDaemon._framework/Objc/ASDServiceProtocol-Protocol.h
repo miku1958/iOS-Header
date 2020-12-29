@@ -8,6 +8,7 @@
 
 @protocol ASDServiceProtocol <NSObject>
 - (void)getAppStoreServiceWithReplyHandler:(void (^)(id<ASDAppStoreServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
+- (void)getArcadeServiceWithReplyHandler:(void (^)(id<ASDArcadeServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
 - (void)getClipServiceWithReplyHandler:(void (^)(id<ASDClipServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
 - (void)getCrossfireServiceWithReplyHandler:(void (^)(id<ASDCrossfireServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;
 - (void)getDiagnosticServiceWithReplyHandler:(void (^)(id<ASDDiagnosticServiceProtocol><NSXPCProxyCreating>, NSError *))arg1;

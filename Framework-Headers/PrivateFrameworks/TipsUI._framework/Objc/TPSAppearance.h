@@ -50,6 +50,7 @@
 - (BOOL)isCompactLayout;
 - (double)nativeSizeForValue:(double)arg1;
 - (BOOL)sideAppMode;
+- (struct CGSize)sizeWithSizes:(id)arg1 mediaSizeType:(unsigned long long)arg2;
 - (void)updateAppearanceWithSize:(struct CGSize)arg1;
 - (void)updateMediaSizeType;
 

@@ -26,6 +26,7 @@
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) NSDictionary *messageGroupsByGroupIdentifier; // @synthesize messageGroupsByGroupIdentifier=_messageGroupsByGroupIdentifier;
 @property (strong, nonatomic) IAMPresentingModalMessageContext *presentingMessageContext; // @synthesize presentingMessageContext=_presentingMessageContext;
+@property (readonly, nonatomic) BOOL shouldBeNotifiedOfNilPriorityMessageAfterRegistration;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) NSString *targetIdentifier; // @synthesize targetIdentifier=_targetIdentifier;
 

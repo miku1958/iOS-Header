@@ -11,7 +11,7 @@
 #import <CameraUI/CAMControlDrawerMenuButtonDelegate-Protocol.h>
 #import <CameraUI/UIScrollViewDelegate-Protocol.h>
 
-@class CAMControlDrawerButton, CAMDrawerApertureButton, CAMDrawerAspectRatioButton, CAMDrawerExposureButton, CAMDrawerFilterButton, CAMDrawerFlashButton, CAMDrawerHDRButton, CAMDrawerIntensityButton, CAMDrawerLivePhotoButton, CAMDrawerLowLightButton, CAMDrawerTimerButton, CAMExposureSlider, CAMLowLightSlider, CEKApertureSlider, CEKSlider, CEKWheelScrubberView, NSArray, NSMutableDictionary, NSString, UIScrollView;
+@class CAMControlDrawerButton, CAMDrawerApertureButton, CAMDrawerAspectRatioButton, CAMDrawerExposureButton, CAMDrawerFilterButton, CAMDrawerFlashButton, CAMDrawerHDRButton, CAMDrawerIntensityButton, CAMDrawerLivePhotoButton, CAMDrawerLowLightButton, CAMDrawerRAWButton, CAMDrawerTimerButton, CAMExposureSlider, CAMLowLightSlider, CEKApertureSlider, CEKSlider, CEKWheelScrubberView, NSArray, NSMutableDictionary, NSString, UIScrollView;
 @protocol CAMControlDrawerDelegate, CAMControlDrawerExpandableButton, CAMControlDrawerPresentationDelegate;
 
 @interface CAMControlDrawer : UIView <CAMControlDrawerMenuButtonDelegate, UIScrollViewDelegate, CAMAccessibilityHUDItemProvider, CAMBarsAccessibilityHUDManagerGestureProvider>
@@ -62,6 +62,7 @@
 @property (nonatomic, getter=isLowLightSliderVisible) BOOL lowLightSliderVisible;
 @property (nonatomic) long long orientation; // @synthesize orientation=_orientation;
 @property (weak, nonatomic) id<CAMControlDrawerPresentationDelegate> presentationDelegate; // @synthesize presentationDelegate=_presentationDelegate;
+@property (readonly, nonatomic) CAMDrawerRAWButton *rawButton;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) CAMDrawerTimerButton *timerButton;
 @property (strong, nonatomic) NSArray *visibleControlTypes; // @synthesize visibleControlTypes=_visibleControlTypes;

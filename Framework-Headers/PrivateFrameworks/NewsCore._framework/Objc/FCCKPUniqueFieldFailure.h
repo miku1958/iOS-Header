@@ -10,6 +10,7 @@
 
 @class FCCKPIdentifier;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPUniqueFieldFailure : PBCodable <NSCopying>
 {
     FCCKPIdentifier *_identifierForConstraintFailure;
@@ -18,7 +19,6 @@
 @property (readonly, nonatomic) BOOL hasIdentifierForConstraintFailure;
 @property (strong, nonatomic) FCCKPIdentifier *identifierForConstraintFailure; // @synthesize identifierForConstraintFailure=_identifierForConstraintFailure;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

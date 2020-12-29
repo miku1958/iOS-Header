@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaCarPlayHeadUnitContext, SISchemaCasinoRelationship, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDialogOutput, SISchemaDictationAlternativeSelected, SISchemaDictationAlternativesViewed, SISchemaDictationContext, SISchemaDictationEndPointCancel, SISchemaDictationEndPointStop, SISchemaDictationTranscriptionMetadata, SISchemaIntercomMessageRecorded, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRCompletion, SISchemaUUFRFatalError, SISchemaUUFRPresented, SISchemaUUFRSaid, SISchemaUUFRShown, SISchemaUserViewRegionInteraction;
+@class NSData, SISchemaAudioFirstBufferRecorded, SISchemaAudioStopRecording, SISchemaCarPlayHeadUnitContext, SISchemaCasinoRelationship, SISchemaClientEventMetadata, SISchemaClientFlow, SISchemaClientTransportEventMetadata, SISchemaConversationTrace, SISchemaDeviceDynamicContext, SISchemaDeviceFixedContext, SISchemaDeviceLockStateChanged, SISchemaDialogOutput, SISchemaDictationAlternativeSelected, SISchemaDictationAlternativesViewed, SISchemaDictationContext, SISchemaDictationEndPointCancel, SISchemaDictationEndPointStop, SISchemaDictationTranscriptionMetadata, SISchemaIntercomMessageRecorded, SISchemaInvocation, SISchemaLocation, SISchemaPunchOut, SISchemaSiriCue, SISchemaSpeechTranscription, SISchemaTextToSpeechBegin, SISchemaTextToSpeechEnd, SISchemaUIStateTransition, SISchemaUUFRCompletion, SISchemaUUFRFatalError, SISchemaUUFRPresented, SISchemaUUFRSaid, SISchemaUUFRShown, SISchemaUserViewRegionInteraction;
 
 @interface SISchemaClientEvent : PBCodable
 {
@@ -42,6 +42,7 @@
     SISchemaIntercomMessageRecorded *_intercomMessageRecorded;
     SISchemaCasinoRelationship *_casinoRelationship;
     SISchemaUserViewRegionInteraction *_userViewRegionInteraction;
+    SISchemaDeviceLockStateChanged *_deviceLockStateChanged;
     BOOL _hasEventMetadata;
     BOOL _hasTransportMetadata;
     BOOL _hasAudioFirstBufferRecorded;
@@ -74,6 +75,7 @@
     BOOL _hasIntercomMessageRecorded;
     BOOL _hasCasinoRelationship;
     BOOL _hasUserViewRegionInteraction;
+    BOOL _hasDeviceLockStateChanged;
     unsigned long long _whichEvent_Type;
 }
 
@@ -85,6 +87,7 @@
 @property (strong, nonatomic) SISchemaClientFlow *clientFlow; // @synthesize clientFlow=_clientFlow;
 @property (strong, nonatomic) SISchemaDeviceDynamicContext *deviceDynamicContext; // @synthesize deviceDynamicContext=_deviceDynamicContext;
 @property (strong, nonatomic) SISchemaDeviceFixedContext *deviceFixedContext; // @synthesize deviceFixedContext=_deviceFixedContext;
+@property (strong, nonatomic) SISchemaDeviceLockStateChanged *deviceLockStateChanged; // @synthesize deviceLockStateChanged=_deviceLockStateChanged;
 @property (strong, nonatomic) SISchemaDialogOutput *dialogOutput; // @synthesize dialogOutput=_dialogOutput;
 @property (strong, nonatomic) SISchemaDictationAlternativeSelected *dictationAlternativeSelected; // @synthesize dictationAlternativeSelected=_dictationAlternativeSelected;
 @property (strong, nonatomic) SISchemaDictationAlternativesViewed *dictationAlternativesViewed; // @synthesize dictationAlternativesViewed=_dictationAlternativesViewed;
@@ -101,6 +104,7 @@
 @property (nonatomic) BOOL hasClientFlow; // @synthesize hasClientFlow=_hasClientFlow;
 @property (nonatomic) BOOL hasDeviceDynamicContext; // @synthesize hasDeviceDynamicContext=_hasDeviceDynamicContext;
 @property (nonatomic) BOOL hasDeviceFixedContext; // @synthesize hasDeviceFixedContext=_hasDeviceFixedContext;
+@property (nonatomic) BOOL hasDeviceLockStateChanged; // @synthesize hasDeviceLockStateChanged=_hasDeviceLockStateChanged;
 @property (nonatomic) BOOL hasDialogOutput; // @synthesize hasDialogOutput=_hasDialogOutput;
 @property (nonatomic) BOOL hasDictationAlternativeSelected; // @synthesize hasDictationAlternativeSelected=_hasDictationAlternativeSelected;
 @property (nonatomic) BOOL hasDictationAlternativesViewed; // @synthesize hasDictationAlternativesViewed=_hasDictationAlternativesViewed;
@@ -149,6 +153,7 @@
 - (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 - (int)getAnyEventType;
+- (id)getTypeId;
 - (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;
 - (id)initWithJSON:(id)arg1;

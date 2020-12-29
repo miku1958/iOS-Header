@@ -12,7 +12,7 @@
 {
     MISSING_TYPE *appConfiguration;
     MISSING_TYPE *privateDataContext;
-    MISSING_TYPE *isRunningPPT;
+    MISSING_TYPE *pptShouldDisableTodayModule;
 }
 
 @property (nonatomic, readonly) BOOL allowSharingAlways;

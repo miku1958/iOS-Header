@@ -56,6 +56,7 @@
 - (id)initWithBundleIdentifier:(id)arg1 associatedAppBundleIdentifier:(id)arg2 entitlements:(long long)arg3;
 - (BOOL)isRemovalService;
 - (BOOL)isSettingsApp;
+- (BOOL)isSpringBoard;
 
 @end
 

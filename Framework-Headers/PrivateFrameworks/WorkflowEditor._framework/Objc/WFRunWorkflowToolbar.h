@@ -25,14 +25,12 @@
     UIToolbar *_toolbar;
     UIBarButtonItem *_undoItem;
     UIBarButtonItem *_redoItem;
-    UIBarButtonItem *_addItem;
     UIBarButtonItem *_runItem;
     UIBarButtonItem *_stopItem;
     UIBarButtonItem *_shareItem;
     UIBarButtonItem *_flexibleSpaceItem;
 }
 
-@property (strong, nonatomic) UIBarButtonItem *addItem; // @synthesize addItem=_addItem;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<WFRunWorkflowToolbarDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -58,7 +56,6 @@
 @property (weak, nonatomic) NSUndoManager *workflowUndoManager; // @synthesize workflowUndoManager=_workflowUndoManager;
 
 - (void).cxx_destruct;
-- (void)addTapped;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (BOOL)isNotRunningAndIsEditing;
 - (void)layoutSubviews;

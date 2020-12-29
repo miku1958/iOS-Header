@@ -6,7 +6,7 @@
  {
 	// method
  }
- protocol MediaFoundation.QueueAssetLoading // 9 requirements
+ protocol MediaFoundation.QueueAssetLoading // 10 requirements
  {
 	// getter
 	// setter
@@ -14,6 +14,32 @@
 	// getter
 	// setter
 	// modify coroutine
+	// getter
+	// method
+	// method
+	// method
+ }
+ protocol MediaFoundation.QueueAssetLoaderControllerDelegate // 0 requirements
+ {
+ }
+ protocol MediaFoundation.QueueAssetLoaderController // 19 requirements
+ {
+	// getter
+	// setter
+	// modify coroutine
+	// getter
+	// setter
+	// modify coroutine
+	// getter
+	// setter
+	// modify coroutine
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
+	// method
 	// method
 	// method
 	// method
@@ -31,12 +57,8 @@
 	// modify coroutine
 	// method
  }
- protocol MediaFoundation.PlayerControllerDelegate // 9 requirements
+ protocol MediaFoundation.PlayerControllerDelegate // 5 requirements
  {
-	// method
-	// method
-	// method
-	// method
 	// method
 	// method
 	// method
@@ -77,26 +99,23 @@
  {
 	// method
  }
- protocol MediaFoundation.CoordinatorActions // 6 requirements
+ protocol MediaFoundation.CoordinatorActions // 4 requirements
  {
-	// method
-	// method
 	// method
 	// method
 	// method
 	// method
  }
- protocol MediaFoundation.InternalCoordinatorActions // 6 requirements
+ protocol MediaFoundation.InternalCoordinatorActions // 4 requirements
  {
-	// method
-	// method
 	// method
 	// method
 	// method
 	// method
  }
- protocol MediaFoundation.UserActions // 11 requirements
+ protocol MediaFoundation.UserActions // 12 requirements
  {
+	// method
 	// method
 	// method
 	// method
@@ -109,8 +128,9 @@
 	// method
 	// method
  }
- protocol MediaFoundation.InternalUserActions // 13 requirements
+ protocol MediaFoundation.InternalUserActions // 14 requirements
  {
+	// method
 	// method
 	// method
 	// method
@@ -158,8 +178,12 @@
  {
 	// method
  }
- protocol MediaFoundation.PlaybackInformationProviding // 6 requirements
+ protocol MediaFoundation.PlaybackInformationProviding // 10 requirements
  {
+	// getter
+	// getter
+	// getter
+	// getter
 	// getter
 	// getter
 	// getter
@@ -172,19 +196,18 @@
 	// method
 	// method
  }
- protocol MediaFoundation.InternalPlayerControllerDelegate // 6 requirements
+ protocol MediaFoundation.InternalPlayerControllerDelegate // 2 requirements
  {
-	// method
-	// method
-	// method
-	// method
 	// method
 	// method
  }
- protocol MediaFoundation.InternalPlayerActions // 5 requirements
+ protocol MediaFoundation.Seeker // 2 requirements
  {
+	// getter
 	// method
-	// method
+ }
+ protocol MediaFoundation.InternalPlayerActions // 3 requirements
+ {
 	// method
 	// method
 	// method
@@ -205,8 +228,11 @@
  {
 	// method
  }
- protocol MediaFoundation.PlaybackStackControllerDelegate // 4 requirements
+ protocol MediaFoundation.PlaybackStackControllerDelegate // 7 requirements
  {
+	// method
+	// method
+	// method
 	// method
 	// method
 	// method
@@ -263,10 +289,77 @@
 	// method
  }
 
- class MediaFoundation.QueueAssetLoader : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ItemLoaderDelegate,  QueueAssetLoading {
+ class MediaFoundation.QueueAssetLoader : _SwiftObject /usr/lib/swift/libswiftCore.dylib, QueueAssetLoading,  ItemLoaderDelegate {
+
+	// Properties
+	let stateMachine : QueueAssetLoaderStateMachine
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0xa0840002a320 (0x840002a320) in binary!
+	0x18000000c  @objc QueueAssetLoader.(null) <stripped>
+
+	// Swift methods
+	0x3940  class func QueueAssetLoader.__allocating_init(queueController:assetLoader:errorController:reporter:) // init 
+ }
+
+ enum MediaFoundation.Failure {
+
+	// Properties
+	case assetLoadingBusy : ErrorResolution
+	case assetLoadingCancelled : ErrorResolution
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case assetLoadingFailed :  first-element-marker 
+	case assetLoadingReachedNonPlayableItem : ErrorResolution
+	case noMoreAssetsToLoad : ErrorResolution
+ }
+
+ enum MediaFoundation.LoadingAction {
+
+	// Properties
+	case start  
+	case resume  
+ }
+
+ class MediaFoundation.QueueAssetLoaderStateMachine : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var state : State
+	var controller : QueueAssetLoaderController
+	var reporter : EventReporting
+
+	// Swift methods
+	0x50f0  class func QueueAssetLoaderStateMachine.__allocating_init() // init 
+ }
+
+ enum MediaFoundation.State {
+
+	// Properties
+	case idle  
+	case loading  
+	case resolvingError  
+	case stuckOnNonLoadableItem  
+	case stuckOnEmptyQueue  
+	case stuckOnError  
+ }
+
+ enum MediaFoundation.Event {
+
+	// Properties
+	case startLoading : Direction
+	case resumeLoading : Direction
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case loadingCompleted : √“
+	case loadingFailedSilently : Failure
+	case loadingFailedAndMustStop : Failure
+	case loadingFailedAndMustRetry : Failure
+	case reset  
+ }
+
+ class MediaFoundation.QueueAssetLoaderControllerImplementation : _SwiftObject /usr/lib/swift/libswiftCore.dylib, QueueAssetLoaderController {
 
 	// Properties
 	var delegate : QueueAssetLoadingDelegate
+	var silentFailureDirection : Direction
 	var token : Int
 	var wrapAround : Bool
 	let queueController : MFQueueControlling
@@ -278,12 +371,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let errorController : MFErrorController
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x77f8000228b8 (0x7f8000228b8) in binary!
-	0x18000000c  @objc QueueAssetLoader.(null) <stripped>
+WARNING: couldn't find address 0xa0540002a2f0 (0x540002a2f0) in binary!
+	0x94e0  @objc QueueAssetLoaderControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x86140002a2e0 (0x6140002a2e0) in binary!
+	0xf01c  @objc QueueAssetLoaderControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
+	0x22cfff7aa50  @objc QueueAssetLoaderControllerImplementation.(null) <stripped>
+	0x204fff7c268  @objc QueueAssetLoaderControllerImplementation.LâpHâ√LâhLâÔËè	 <stripped>
 
 	// Swift methods
-	0x2f30  func <stripped> // method 
-	0x3450  func <stripped> // method 
+	0x39b0  class func QueueAssetLoaderControllerImplementation.__allocating_init(queueController:assetLoader:errorController:reporter:) // init 
  }
 
  class MediaFoundation.ItemLoader : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ItemBufferConsumer {
@@ -299,16 +396,37 @@ WARNING: couldn't find address 0x77f8000228b8 (0x7f8000228b8) in binary!
 	var delegate : ItemLoaderDelegate
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7810000228d0 (0x10000228d0) in binary!
+WARNING: couldn't find address 0xa09c0002a338 (0x9c0002a338) in binary!
 	0x18000000c  @objc ItemLoader.(null) <stripped>
 
 	// Swift methods
-	0x50e0  func <stripped> // method 
-	0x5380  func <stripped> // method 
-	0x5730  func <stripped> // method 
-	0x5c70  func <stripped> // method 
-	0x7b30  func <stripped> // method 
-	0x7bd0  func <stripped> // method 
+	0xa530  func ItemLoader.loadingItem.getter // getter 
+	0xa5c0  func ItemLoader.token.getter // getter 
+	0xa650  func ItemLoader.producer.getter // getter 
+	0xa680  func ItemLoader.producer.setter // setter 
+	0xa6c0  func ItemLoader.producer.modify // modifyCoroutine 
+	0xa770  func ItemLoader.delegate.getter // getter 
+	0xa7a0  func ItemLoader.delegate.setter // setter 
+	0xa7f0  func ItemLoader.delegate.modify // modifyCoroutine 
+	0x7140  class func ItemLoader.__allocating_init(assetLoader:itemProducer:reporter:) // init 
+	0xa960  func ItemLoader.reset() // method 
+	0xa9e0  func ItemLoader.pauseLoading() // method 
+	0xabf0  func ItemLoader.resumeLoading(direction:) // method 
+	0xaf10  func ItemLoader.reloadItems(from:includeStartItem:direction:token:) // method 
+	0xb340  func ItemLoader.load(_:) // method 
+	0xced0  func ItemLoader.updateMaximumBufferLength(_:) // method 
+	0xcfa0  func ItemLoader.canConsumeItems() // method 
+	0xd050  func ItemLoader.processBufferingResult(_:) // method 
+ }
+
+ enum MediaFoundation.Failure {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case assetLoading :  first-element-marker 
+	case assetLoadingCancelled : (item: MFQueuePlayerItem, token: Int)
+	case loadingStuckOnNonPlayable : (item: MFQueuePlayerItem)
+	case noMoreAssetsToLoad  
  }
 
  class MediaFoundation.ItemBufferProducer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -323,43 +441,38 @@ WARNING: couldn't find address 0x7810000228d0 (0x10000228d0) in binary!
 	var cursor : MFQueuePlayerItem?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x77e0000228a0 (0x7e0000228a0) in binary!
-	0x68000000c  @objc ItemBufferProducer.(null) <stripped>
+WARNING: couldn't find address 0xa06c0002a308 (0x6c0002a308) in binary!
+	0x48000000c  @objc ItemBufferProducer.(null) <stripped>
 
 	// Swift methods
-	0x8fc0  func <stripped> // method 
-	0x9210  func <stripped> // method 
+	0xe370  func ItemBufferProducer.maximumBufferLength.getter // getter 
+	0xe3a0  func ItemBufferProducer.maximumBufferLength.setter // setter 
+	0xe3d0  func ItemBufferProducer.maximumBufferLength.modify // modifyCoroutine 
+	0xe460  func ItemBufferProducer.hasReachedQueueEnd.getter // getter 
+	0xe500  func ItemBufferProducer.consumer.getter // getter 
+	0xe530  func ItemBufferProducer.consumer.setter // setter 
+	0xe5d0  func ItemBufferProducer.consumer.modify // modifyCoroutine 
+	0xe760  func ItemBufferProducer.buffer.getter // getter 
+	0x70a0  class func ItemBufferProducer.__allocating_init(dataSource:reporter:) // init 
+	0xe820  func ItemBufferProducer.reset() // method 
+	0xe8e0  func ItemBufferProducer.reloadItems(from:includeStartItem:direction:completion:) // method 
+	0xe9c0  func ItemBufferProducer.resumeProduction(direction:completion:) // method 
+	0xebc0  func ItemBufferProducer.dequeueNextItem() // method 
+	0xee00  func ItemBufferProducer.fillBuffer(startItem:includeStartItem:direction:completion:) // method 
+	0x10170  func ItemBufferProducer.fillBuffer(direction:_:) // method 
  }
 
  enum MediaFoundation.Failure {
 
 	// Properties
-	case assetLoadingBusy : ErrorResolution
-	case assetLoadingCancelled : ErrorResolution
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case assetLoadingFailed :  first-element-marker 
-	case assetLoadingReachedNonPlayableItem : ErrorResolution
-	case noMoreAssetsToLoad : ErrorResolution
+	case nonPlayableItemReached : MFQueuePlayerItem
+	case bufferLimitReached : Int
+	case dataSourceEndReached  
  }
 
- enum MediaFoundation.Failure {
+ struct MediaFoundation.UserEventFactory { }
 
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case assetLoading :  first-element-marker 
-	case assetLoadingCancelled : (item: MFQueuePlayerItem, token: Int)
-	case loadingStuckOnNonPlayable : (item: MFQueuePlayerItem)
-	case noMoreAssetsToLoad  
- }
-
- enum MediaFoundation.LoadingAction {
-
-	// Properties
-	case start  
-	case resume  
- }
-
- class MediaFoundation.PlayerController : _SwiftObject /usr/lib/swift/libswiftCore.dylib, AVStackResettable,  PlayerViewControllerBehaviorDelegate {
+ class MediaFoundation.PlayerController : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PlayerViewControllerBehaviorDelegate,  AVStackResettable {
 
 	// Properties
 	var delegate : PlayerControllerDelegate
@@ -373,30 +486,57 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var fsm : EventHandling
 	var playerObserver : PlayerObserver
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var playerSubscription : k¢
+	var playerSubscription : ì 
 	var systemObserver : SystemObserver
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var systemSubscription : k¢
+	var systemSubscription : ì 
 	var videoPlayerBehavior : PlayerViewControllerBehavior
 	var userEventsMonitor : UserEventsMonitor
 	let reporter : EventReporting
 	let leaseController : MFLeaseControlling?
 	var lastUserEvent : UserEvent
 	var previousItemID : ItemID
-	var seekToTimeCompletedEvent : PlayerEvent
-	var itemAtDeath : MFPlayerItem?
-	var timeAtDeath : Double?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xbcd200022a48 (0x4d200022a48) in binary!
-	0x83d8  @objc PlayerController.(null) <stripped>
-WARNING: couldn't find address 0xaaf400022828 (0x2f400022828) in binary!
-	0x76bc  @objc PlayerController.(null) <stripped>
+WARNING: couldn't find address 0x82400002a4e0 (0x2400002a4e0) in binary!
+	0x9f80  @objc PlayerController.(null) <stripped>
+WARNING: couldn't find address 0x93b40002a1b0 (0x3b40002a1b0) in binary!
+	0x9f10  @objc PlayerController.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x75cfffab2b8  @objc PlayerController.(null) <stripped>
-	0x6e2000226a0  @objc PlayerController.ËÔu <stripped>
+	0x18cfff855a0  @objc PlayerController.(null) <stripped>
+	0x54400029f58  @objc PlayerController. <stripped>
 
 	// Swift methods
+	0x16230  class func PlayerController.__allocating_init(queue:reporter:leaseController:) // init 
+	0x17e20  class func PlayerController.__allocating_init(queue:fsm:player:) // init 
+ }
+
+ enum MediaFoundation.Error {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case userActionFailed : )Œ
+	case mediaServicesUnavailable  
+ }
+
+ enum MediaFoundation.PlayerState {
+
+	// Properties
+	case loading : (playing: Bool)
+	case stalled : WaitingReason
+	case idle  
+	case playing  
+	case paused  
+	case scanning  
+	case seeking  
+	case interrupted  
+ }
+
+ enum MediaFoundation.SetQueueBehavior {
+
+	// Properties
+	case play  
+	case pause  
  }
 
  class MediaFoundation.VideoUserAction : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -410,80 +550,68 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var sourceID : String
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x777800022818 (0x77800022818) in binary!
-	0xbd5e  @objc VideoUserAction.(null) <stripped>
-WARNING: couldn't find address 0x6c04000227f0 (0x404000227f0) in binary!
-	0x6c00  @objc VideoUserAction.(null) <stripped>
-WARNING: couldn't find address 0x7748000227c8 (0x748000227c8) in binary!
-	0xbd2e  @objc VideoUserAction.(null) <stripped>
-WARNING: couldn't find address 0x7730000227a0 (0x730000227a0) in binary!
-	0xbd16  @objc VideoUserAction.(null) <stripped>
-WARNING: couldn't find address 0x6bbc00022778 (0x3bc00022778) in binary!
-	0x6bb8  @objc VideoUserAction.(null) <stripped>
-WARNING: couldn't find address 0x770000022750 (0x70000022750) in binary!
-	0xbce6  @objc VideoUserAction.(null) <stripped>
+WARNING: couldn't find address 0x9fcc0002a250 (0x7cc0002a250) in binary!
+	0x82cc  @objc VideoUserAction.(null) <stripped>
+WARNING: couldn't find address 0xfafc0002a228 (0x2fc0002a228) in binary!
+	0xfaf8  @objc VideoUserAction.(null) <stripped>
+WARNING: couldn't find address 0x9f9c0002a200 (0x79c0002a200) in binary!
+	0x829c  @objc VideoUserAction.(null) <stripped>
+WARNING: couldn't find address 0x9f840002a1d8 (0x7840002a1d8) in binary!
+	0x8284  @objc VideoUserAction.(null) <stripped>
+WARNING: couldn't find address 0xfab40002a1b0 (0x2b40002a1b0) in binary!
+	0xfab0  @objc VideoUserAction.(null) <stripped>
+WARNING: couldn't find address 0x9f540002a188 (0x7540002a188) in binary!
+	0x8254  @objc VideoUserAction.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x244fffa23c0  @objc VideoUserAction.(null) <stripped>
-	0x77cfffa1cc8  @objc VideoUserAction.ã(HçΩ ˇˇˇË A <stripped>
-	0x2d400022808  @objc VideoUserAction. <stripped>
-WARNING: couldn't find address 0x2275cfffab2b8 (0x75cfffab2b8) in binary!
-	0x28000000c  @objc VideoUserAction.(null) <stripped>
-WARNING: couldn't find address 0xbee2000226a0 (0x6e2000226a0) in binary!
-	0x767c  @objc VideoUserAction.(null) <stripped>
-WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffc7c58  @objc VideoUserAction.(null) <stripped>
+	0x4dcfff79728  @objc VideoUserAction.(null) <stripped>
+	0x1acfff790b0  @objc VideoUserAction.ˇPLâˇËßÇ	 <stripped>
+	0x3940002a190  @objc VideoUserAction.âÔËπÑ	 <stripped>
+WARNING: couldn't find address 0x2a18cfff855a0 (0x18cfff855a0) in binary!
+	0x18000000c  @objc VideoUserAction.(null) <stripped>
+WARNING: couldn't find address 0xa54400029f58 (0x54400029f58) in binary!
+	0x128000000c  @objc VideoUserAction.(null) <stripped>
+WARNING: couldn't find address 0xa50c0002a318 (0x50c0002a318) in binary!
+	0x9eb8  @objc VideoUserAction.(null) <stripped>
 
 	// Swift methods
+	0x1caa0  func VideoUserAction.identifier.getter // getter 
+	0x1cc20  func VideoUserAction.type.getter // getter 
+	0x1cd30  func VideoUserAction.timeStamp.getter // getter 
+	0x1cea0  func VideoUserAction.options.getter // getter 
+	0x1d000  func VideoUserAction.source.getter // getter 
+	0x1d130  func VideoUserAction.sourceID.getter // getter 
+	0x1d280  class func VideoUserAction.__allocating_init(identifier:type:options:) // init 
  }
 
  class MediaFoundation.PlayerViewControllerBehavior : AVMusicAppBehavior /System/Library/Frameworks/AVKit.framework/AVKit {
 
 	// Properties
 	var delegate : PlayerViewControllerBehaviorDelegate
-	var onGoingJumpToTimeIdentifier : String?
+	var onGoingJumpToTimeInfo : JumpToTimeInfo
+	let reporter : EventReporting
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xabf400022808 (0x3f400022808) in binary!
-	0xabe8  @objc PlayerViewControllerBehavior.(null) <stripped>
-WARNING: couldn't find address 0x6c5c000227e0 (0x45c000227e0) in binary!
-	0xbd96  @objc PlayerViewControllerBehavior.(null) <stripped>
-WARNING: couldn't find address 0x779800022940 (0x79800022940) in binary!
-	0xabb8  @objc PlayerViewControllerBehavior.(null) <stripped>
+WARNING: couldn't find address 0x94b40002a240 (0x4b40002a240) in binary!
+	0x94a8  @objc PlayerViewControllerBehavior.(null) <stripped>
+WARNING: couldn't find address 0xfb540002a218 (0x3540002a218) in binary!
+	0x8304  @objc PlayerViewControllerBehavior.(null) <stripped>
+WARNING: couldn't find address 0x9fec0002a278 (0x7ec0002a278) in binary!
+	0x9478  @objc PlayerViewControllerBehavior.(null) <stripped>
 WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
-	0x4fffa2718  @objc PlayerViewControllerBehavior.(null) <stripped>
-	0x7dcfffa27a0  @objc PlayerViewControllerBehavior.ˇˇˇ <stripped>
-	0x7b4fffa27a8  @objc PlayerViewControllerBehavior.ﬁËöA <stripped>
+	0x23cfff79a80  @objc PlayerViewControllerBehavior.(null) <stripped>
+	0x214fff79c18  @objc PlayerViewControllerBehavior.ΩË˛ˇˇ∫ò <stripped>
+	0x1ecfff79d00  @objc PlayerViewControllerBehavior. <stripped>
 
 	// Swift methods
-	0x13240  func <stripped> // method 
+	0x1f300  func <stripped> // method 
+	0x1f3b0  func <stripped> // method 
  }
 
- enum MediaFoundation.SetQueueBehavior {
+ struct MediaFoundation.JumpToTimeInfo {
 
 	// Properties
-	case play  
-	case pause  
- }
-
- enum MediaFoundation.PlayerState {
-
-	// Properties
-	case stalled : WaitingReason
-	case idle  
-	case loading  
-	case playing  
-	case paused  
-	case scanning  
-	case seeking  
-	case interrupted  
- }
-
- enum MediaFoundation.Error {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	case userActionFailed : /§
-	case mediaServicesUnavailable  
+	let identifier : String // +0x0
+	let startTime : Double? // +0x10
  }
 
  class MediaFoundation.PlayerFSM : _SwiftObject /usr/lib/swift/libswiftCore.dylib, StateProviding {
@@ -494,21 +622,37 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let controller : FSMController
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xaad400022808 (0x2d400022808) in binary!
-	0x769c  @objc PlayerFSM.(null) <stripped>
-WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x68cfffb5f88  @objc PlayerFSM.(null) <stripped>
+WARNING: couldn't find address 0x93940002a190 (0x3940002a190) in binary!
+	0x9ef0  @objc PlayerFSM.(null) <stripped>
+WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
+	0xfff86b50  @objc PlayerFSM.(null) <stripped>
 
 	// Swift methods
+	0x23080  class func PlayerFSM.__allocating_init(controller:) // init 
  }
 
  class MediaFoundation.JumpToTimeState : State {
 
 	// Properties
-	var time : Double
+	var targetTime : Double
 	var metadata : UserActionMetadata
+	var initialLoadingShouldPlay : Bool?
+	var playbackDidStall : Bool
+	var jumpToTimeInfo : JumpToTimeInfo
+	var suppressed : Bool
 
 	// Swift methods
+	0x2bea0  func JumpToTimeState.targetTime.getter // getter 
+	0x2c010  func JumpToTimeState.metadata.getter // getter 
+	0x2c100  func JumpToTimeState.initialLoadingShouldPlay.getter // getter 
+	0x2c130  class func JumpToTimeState.__allocating_init(time:currentTime:suppressed:initialLoadingShouldPlay:metadata:) // init 
+ }
+
+ struct MediaFoundation.JumpToTimeInfo {
+
+	// Properties
+	let start : Double // +0x0
+	let end : Double // +0x8
  }
 
  struct MediaFoundation.UserActionMetadata {
@@ -518,7 +662,8 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let completion :  first-element-marker  // +0x10
 	let mode : Mode // +0x20
-	let shouldTimeout : Bool // +0x21
+	let whileIdle : Bool // +0x21
+	let shouldTimeout : Bool // +0x22
  }
 
  enum MediaFoundation.Mode {
@@ -526,6 +671,43 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case active  
 	case passive  
+ }
+
+ enum MediaFoundation.KVOChange {
+
+	// Properties
+	case previous : A?
+	case current : A?
+ }
+
+ enum MediaFoundation.PlayerObserverError {
+
+	// Properties
+	case itemFailedToLoadWithMissingAVError  
+	case itemFailedToPlayToEndWithMissingAVError  
+ }
+
+ struct MediaFoundation.AVPlayerSeekToTimeCompletedUserInfoKey { }
+
+ class MediaFoundation.PlayerObserver : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var $__lazy_storage_$_eventStream : 5∆ // +0x0
+	let player : AVQueuePlayer // +0x0
+	let queue : OS_dispatch_queue // +0x0
+	let reporter : EventReporting // +0x0
+	let configuration : PlayerPeriodicObservationConfiguration // +0x0
+	var observations : Observations // +0x0
+
+	// Swift methods
+	0x2e4b0  class func PlayerObserver.__allocating_init(player:timeInterval:queue:reporter:) // init 
+ }
+
+ struct MediaFoundation.Observations {
+
+	// Properties
+	let rawValue : Int // +0x0
  }
 
  class MediaFoundation.PlayerPeriodicTimeSubscription {
@@ -536,28 +718,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queue : OS_dispatch_queue // +0x8
  }
 
- struct MediaFoundation.PlayerObserver {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_eventStream : Mû // +0x0
-	let player : AVQueuePlayer // +0x8
-	let queue : OS_dispatch_queue // +0x10
-	let configuration : PlayerPeriodicObservationConfiguration // +0x18
- }
-
  struct MediaFoundation.PlayerPeriodicTimePublisher {
 
 	// Properties
 	let player : AVPlayer // +0x0
 	let configuration : PlayerPeriodicObservationConfiguration // +0x8
- }
-
- enum MediaFoundation.PlayerObserverError {
-
-	// Properties
-	case itemFailedToLoadWithMissingAVError  
-	case itemFailedToPlayToEndWithMissingAVError  
  }
 
  class MediaFoundation.PausedState : TransportableState {
@@ -567,8 +732,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var playbackDidStopWasProcessed : Bool
 	var signalOnEnter : Bool
 	let fadeOut : Double
+	let suppressed : Bool
 
 	// Swift methods
+	0x37fd0  class func PausedState.__allocating_init(fadeOut:suppressed:metadata:) // init 
  }
 
  class MediaFoundation.SeekingState : State {
@@ -578,9 +745,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var metadata : UserActionMetadata
 
 	// Swift methods
+	0x39150  func SeekingState.startTime.getter // getter 
+	0x392c0  func SeekingState.metadata.getter // getter 
+	0x39350  class func SeekingState.__allocating_init(startTime:metadata:) // init 
  }
 
- class MediaFoundation.ChangingQueueState : State { }
+ class MediaFoundation.ChangingQueueState : State {
+
+	// Properties
+	var delayedActionWhenReady : UserEvent
+	var initialLoadFailure : Bool
+	var initialLoadShouldPlay : Bool
+
+	// Swift methods
+	0x3a2a0  class func ChangingQueueState.__allocating_init(delayedActionWhenReady:initialLoadFailure:initialLoadShouldPlay:) // init 
+ }
 
  class MediaFoundation.ResettingQueueState : ChangingQueueState {
 
@@ -588,14 +767,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let keepCurrentItem : Bool
 
 	// Swift methods
+	0x3b6d0  class func ResettingQueueState.__allocating_init(keepCurrentItem:delayedActionWhenReady:initialLoadFailure:initialLoadShouldPlay:) // init 
  }
 
  class MediaFoundation.ChangingCurrentItemState : ChangingQueueState {
 
 	// Properties
-	let item : MFQueuePlayerItem?
+	let items : [MFQueuePlayerItem]
 
 	// Swift methods
+	0x3bb90  class func ChangingCurrentItemState.__allocating_init(items:delayedActionWhenReady:initialLoadFailure:initialLoadShouldPlay:) // init 
  }
 
  class MediaFoundation.RouteMetadata : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -605,12 +786,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let routeDescription : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xbee2000226a0 (0x6e2000226a0) in binary!
-	0x767c  @objc RouteMetadata.(null) <stripped>
+WARNING: couldn't find address 0x80fe00029fe0 (0xfe00029fe0) in binary!
+	0x9dd8  @objc RouteMetadata.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffc7c58  @objc RouteMetadata.(null) <stripped>
+	0xfffb8cd8  @objc RouteMetadata.(null) <stripped>
 
 	// Swift methods
+	0x3bf70  class func RouteMetadata.__allocating_init(route:) // init 
+	0x3c060  class func RouteMetadata.__allocating_init() // init 
+ }
+
+ struct MediaFoundation.MediaServicesInterruptionPayload {
+
+	// Properties
+	let item : MFQueuePlayerItem // +0x0
+	let time : Double // +0x8
  }
 
  enum MediaFoundation.SystemEvent {
@@ -621,7 +811,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	case endNonResumableInterruption : EventTime
 	case routeChanged : RouteMetadata
 	case screenRecordingChanged : EventTime
-	case beginMediaServicesInterruption : EventTime
+	case beginMediaServicesInterruption : MediaServicesInterruptionPayload
 	case endMediaServicesInterruption : EventTime
  }
 
@@ -657,6 +847,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let reason : String
 
 	// Swift methods
+	0x41190  class func EndOfQueueState.__allocating_init(reason:) // init 
  }
 
  class MediaFoundation.TransitionState : State {
@@ -667,6 +858,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let metadata : UserActionMetadata
 
 	// Swift methods
+	0x41860  class func TransitionState.__allocating_init(startItem:steps:metadata:) // init 
  }
 
  class MediaFoundation.NaturalTransitionState : TransitionState { }
@@ -679,9 +871,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let play : Bool
 
 	// Swift methods
+	0x434d0  class func FailedInitialLoadingTransitionState.__allocating_init(startItem:play:steps:metadata:) // init 
  }
 
- class MediaFoundation.SkippingTransitionState : TransitionState { }
+ class MediaFoundation.SkippingTransitionState : TransitionState {
+
+	// Properties
+	var deferredUserEvent : UserEvent
+
+	// Swift methods
+	0x43fe0  func SkippingTransitionState.deferredUserEvent.getter // getter 
+	0x44090  func SkippingTransitionState.deferredUserEvent.setter // setter 
+	0x44150  func SkippingTransitionState.deferredUserEvent.modify // modifyCoroutine 
+ }
 
  class MediaFoundation.WaitingForItemTransitionState : TransitionState { }
 
@@ -716,12 +918,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case didSetState : State
 	case didStartQueueAssetLoading : LoadingAction
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case didEndQueueAssetLoading : ˚ñ
+	case didEndQueueAssetLoading : ßª
 	case queueAssetLoadingInfo : (description: String)
 	case itemLoading : (description: String)
 	case itemBuffering : (description: String)
 	case didStartCompletionMonitoring : UserEvent
 	case didEndCompletionMonitoring : UserEvent
+	case didUpdateMonitoredEvent : UserEvent
 	case playbackStack : (description: String)
 	case playerController : (description: String)
 	case internalPlayerControllerState : (description: String)
@@ -730,6 +933,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case didStartBackgroundTask : (description: String)
 	case backgroundTask : (description: String)
 	case didEndBackgroundTask : (description: String)
+	case avkit : (description: String)
  }
 
  class MediaFoundation.InternalPlaybackStackController : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -737,6 +941,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var delegate : PlaybackStackControllerDelegate
 	var currentQueueControllerItem : MFQueuePlayerItem?
+	var loadedQueueControllerItems : [MFQueuePlayerItem]
 	var maximumPlayerQueueLength : Int
 	let playerController : PlayerController
 	let queueAssetLoader : QueueAssetLoading
@@ -745,29 +950,88 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let errorController : MFErrorController
 	let externalPlaybackController : MFExternalPlaybackController
 	let backgroundTaskController : BackgroundTaskController
+	var synchronizingToPlayer : Bool
+	var currentQueueRestorationItem : MFQueuePlayerItem?
+	var mediaServicesInterruptionData : MediaServicesInterruptionPayload
+	var deferredPlaybackRateForNextSetQueue : Float?
+	var $__lazy_storage_$_skipAggregator : Aggregator
+	var skippingState : SkippingState
+	var inFlightSkippingState : SkippingState
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x766800022728 (0x66800022728) in binary!
+WARNING: couldn't find address 0x9dc40002a060 (0x5c40002a060) in binary!
 	0x28000000c  @objc InternalPlaybackStackController.(null) <stripped>
 
 	// Swift methods
-	0x2f5b0  func <stripped> // method 
-	0x2f620  func <stripped> // method 
-	0x303c0  func <stripped> // method 
-	0x30780  func <stripped> // method 
-	0x322e0  func <stripped> // method 
-	0x32a40  func <stripped> // method 
-	0x356a0  func <stripped> // method 
+	0x4ae60  func InternalPlaybackStackController.delegate.getter // getter 
+	0x4ae90  func InternalPlaybackStackController.delegate.setter // setter 
+	0x4aee0  func InternalPlaybackStackController.delegate.modify // modifyCoroutine 
+	0x4b010  func InternalPlaybackStackController.currentQueueControllerItem.getter // getter 
+	0x4b040  func InternalPlaybackStackController.currentQueueControllerItem.setter // setter 
+	0x4b080  func InternalPlaybackStackController.currentQueueControllerItem.modify // modifyCoroutine 
+	0x4b0b0  func InternalPlaybackStackController.nextQueueItems.getter // getter 
+	0x4b350  func InternalPlaybackStackController.loadedQueueControllerItems.getter // getter 
+	0x4b380  func InternalPlaybackStackController.loadedQueueControllerItems.setter // setter 
+	0x4b3c0  func InternalPlaybackStackController.loadedQueueControllerItems.modify // modifyCoroutine 
+	0x4b440  func InternalPlaybackStackController.maximumPlayerQueueLength.getter // getter 
+	0x4b470  func InternalPlaybackStackController.maximumPlayerQueueLength.setter // setter 
+	0x4b4d0  func InternalPlaybackStackController.maximumPlayerQueueLength.modify // modifyCoroutine 
+	0x4b5d0  func InternalPlaybackStackController.deferredPlaybackRateForNextSetQueue.getter // getter 
+	0x4b610  func InternalPlaybackStackController.deferredPlaybackRateForNextSetQueue.setter // setter 
+	0x4b660  func InternalPlaybackStackController.deferredPlaybackRateForNextSetQueue.modify // modifyCoroutine 
+	0x4b6a0  class func InternalPlaybackStackController.__allocating_init(playerController:assetLoader:queueController:errorController:externalPlaybackController:reporter:backgroundTaskController:) // init 
+	0x4b800  func InternalPlaybackStackController.reset() // method 
+	0x4d040  func InternalPlaybackStackController.isInRestorationState.getter // getter 
+	0x4d060  func InternalPlaybackStackController.canSetQueueFromRestorationState.getter // getter 
+	0x4d0a0  func InternalPlaybackStackController.cancelRestoration() // method 
+	0x4d0c0  func InternalPlaybackStackController.restoreQueue() // method 
+	0x4d430  func InternalPlaybackStackController.setQueueWithInitialItem(_:andPlay:identifier:completion:) // method 
+	0x4ec60  func InternalPlaybackStackController.reloadItems(keepingCurrentItem:) // method 
+	0x4ec90  func InternalPlaybackStackController.resetQueue(keepingCurrentItem:) // method 
+	0x4ef80  func InternalPlaybackStackController.reloadQueue(includingCurrentItem:) // method 
+	0x50f80  func InternalPlaybackStackController.skip(direction:identifier:completion:) // method 
+	0x51fb0  func InternalPlaybackStackController.skipAggregator.getter // getter 
+	0x52340  func InternalPlaybackStackController.performSkip(with:) // method 
+	0x53260  func InternalPlaybackStackController.skip(from:distance:identifier:completion:) // method 
+	0x544d0  func InternalPlaybackStackController.stateDidChange(from:to:) // method 
+	0x54530  func InternalPlaybackStackController.processEvent(_:) // method 
+	0x56ce0  func InternalPlaybackStackController.userActionDidBegin(_:) // method 
+	0x56d40  func InternalPlaybackStackController.userActionDidEnd(_:error:) // method 
+	0x56da0  func InternalPlaybackStackController.resolveItemPlaybackFailureEvent(_:steps:) // method 
+ }
+
+ enum MediaFoundation.AssetLoadingContext {
+
+	// Properties
+	case skip : (identifier: String)
+	case reload  
+	case reloadCurrentItem  
+	case queueEnd  
+	case errorResolution  
+ }
+
+ struct MediaFoundation.SkippingState {
+
+	// Properties
+	var skipEvents : UserEvent // +0x0
  }
 
  class MediaFoundation.BackgroundTask : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var identifier : UIBackgroundTaskIdentifier // +0x10 (0x8)
-	let category : Category // +0x18 (0x1)
-	var references : Int // +0x20 (0x8)
+	var identifier : UIBackgroundTaskIdentifier
+	let category : Category
+	var references : Int
 
 	// Swift methods
+	0x5e440  class func BackgroundTask.__allocating_init(category:identifier:) // init 
+ }
+
+ enum MediaFoundation.Category {
+
+	// Properties
+	case assetLoading  
+	case mediaServicesSetup  
  }
 
  class MediaFoundation.BackgroundTaskController : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -778,21 +1042,15 @@ WARNING: couldn't find address 0x766800022728 (0x66800022728) in binary!
 	var tasks : BackgroundTask
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x765000022710 (0x65000022710) in binary!
-	0xaa70  @objc BackgroundTaskController.(null) <stripped>
+WARNING: couldn't find address 0x9dac0002a048 (0x5ac0002a048) in binary!
+	0x9238  @objc BackgroundTaskController.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x6e4fffdc710  @objc BackgroundTaskController.(null) <stripped>
+	0x1cfffd2a50  @objc BackgroundTaskController.(null) <stripped>
 
 	// Swift methods
-	0x39500  func <stripped> // method 
-	0x3a700  func <stripped> // method 
- }
-
- enum MediaFoundation.Category {
-
-	// Properties
-	case assetLoading  
-	case mediaServicesSetup  
+	0x5ea40  class func BackgroundTaskController.__allocating_init(provider:reporter:) // init 
+	0x5eb10  func BackgroundTaskController.beginBackgroundTask(category:) // method 
+	0x5ff10  func BackgroundTaskController.endBackgroundTask(category:) // method 
  }
 
  enum MediaFoundation.Error {
@@ -807,8 +1065,25 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var metadata : UserActionMetadata
 	var item : MFQueuePlayerItem?
 	var play : Bool
+	var supressed : Bool
 
 	// Swift methods
+	0x616c0  func InitialLoadingState.play.getter // getter 
+	0x616f0  func InitialLoadingState.shouldPlay.getter // getter 
+	0x61700  class func InitialLoadingState.__allocating_init(with:play:supressed:metadata:) // init 
+ }
+
+ class MediaFoundation.InitialPreLoadingState : State {
+
+	// Properties
+	var metadata : UserActionMetadata
+	var rate : Float
+	var item : MFQueuePlayerItem?
+
+	// Swift methods
+	0x62ca0  func InitialPreLoadingState.rate.getter // getter 
+	0x62d40  func InitialPreLoadingState.item.getter // getter 
+	0x62d70  class func InitialPreLoadingState.__allocating_init(with:rate:metadata:) // init 
  }
 
  class MediaFoundation.InitiatingPlaybackState : State {
@@ -818,6 +1093,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let fromInterruption : Bool
 
 	// Swift methods
+	0x63c00  class func InitiatingPlaybackState.__allocating_init(fromInterruption:metadata:) // init 
  }
 
  enum MediaFoundation.WaitingReason {
@@ -830,7 +1106,13 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	case nonLoadableItemInQueue  
  }
 
- class MediaFoundation.RateScanningSubscription {
+ enum MediaFoundation.RateScannerType {
+
+	// Properties
+	case audio : Direction
+	case video : Direction
+ }
+
  struct MediaFoundation.RateScannerConfiguration {
 
 	// Properties
@@ -845,13 +1127,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let configuration : RateScannerConfiguration // +0x0
  }
 
- enum MediaFoundation.RateScannerType {
-
-	// Properties
-	case audio : Direction
-	case video : Direction
- }
-
+ class MediaFoundation.RateScanningSubscription {
  class MediaFoundation.PlayingState : TransportableState {
 
 	// Properties
@@ -867,40 +1143,58 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let interruptedState : State
 
 	// Swift methods
+	0x68fd0  class func MediaServicesInterruptedState.__allocating_init(event:interruptedState:) // init 
  }
 
  class MediaFoundation.MediaServicesResumingState : PausedState {
 
 	// Properties
 	let event : SystemEvent
-	var jumpToTimeTarget : Double?
-	var jumpToTimeMetadata : UserActionMetadata
 
 	// Swift methods
+	0x693b0  class func MediaServicesResumingState.__allocating_init(event:) // init 
  }
 
- class MediaFoundation.InternalPlayerController : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PlayerSettable,  PlaybackInformationProviding {
+ class MediaFoundation.StallingState : State { }
+
+ class MediaFoundation.InternalPlayerController : _SwiftObject /usr/lib/swift/libswiftCore.dylib, PlaybackInformationProviding,  PlayerSettable {
 
 	// Properties
 	var delegate : InternalPlayerControllerDelegate
-	var currentRate : Float
 	var targetRate : Float
 	var targetStartTime : Double?
-	var currentItem : MFPlayerItem?
 	var player : Player
 	var reporter : EventReporting
 	let queue : OS_dispatch_queue
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var scanningSubscription :  empty-list 
 	var lastFullyDownloadedPlayerItem : MFPlayerItem?
+	var reportedResumePlaybackTime : Double?
+	var preSetQueueItem : MFQueuePlayerItem?
+	var pendingSeek : PendingSeekData
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xaa5c00022790 (0x25c00022790) in binary!
-	0x7624  @objc InternalPlayerController.(null) <stripped>
-WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x604fffe1630  @objc InternalPlayerController.(null) <stripped>
+WARNING: couldn't find address 0x92240002a020 (0x2240002a020) in binary!
+	0x9d80  @objc InternalPlayerController.(null) <stripped>
+WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
+	0x744fffd9670  @objc InternalPlayerController.(null) <stripped>
 
 	// Swift methods
+	0x6b1e0  class func InternalPlayerController.__allocating_init(player:reporter:queue:) // init 
+ }
+
+ struct MediaFoundation.PendingSeekData {
+
+	// Properties
+	let time : Double // +0x0
+	let identifier : String // +0x8
+ }
+
+ enum MediaFoundation.PlayerQueueProgress {
+
+	// Properties
+	case unlocked  
+	case locked  
  }
 
  enum MediaFoundation.Direction { }
@@ -913,6 +1207,8 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 	var metadata : UserActionMetadata
 
 	// Swift methods
+	0x78d40  func ScanningState.metadata.getter // getter 
+	0x78b60  class func ScanningState.__allocating_init(direction:resumeRate:metadata:) // init 
  }
 
  class MediaFoundation.TransportableState : State { }
@@ -924,6 +1220,7 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 	let interruptionEvent : SystemEvent
 
 	// Swift methods
+	0x7abc0  class func InterruptedState.__allocating_init(interruptionEvent:interruptedState:) // init 
  }
 
  enum MediaFoundation.PlayerState { }
@@ -942,20 +1239,23 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 
  enum MediaFoundation.PlaybackTimeChangeReason { }
 
+ enum MediaFoundation.ItemChangeSource { }
+
  class MediaFoundation.Description : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x757800022720 (0x57800022720) in binary!
-	0x268000000c  @objc Description.(null) <stripped>
+WARNING: couldn't find address 0x9cac00029f38 (0x4ac00029f38) in binary!
+	0x278000000c  @objc Description.(null) <stripped>
 
 	// Swift methods
-	0x51160  class func <stripped> // method 
-	0x51190  class func <stripped> // method 
-	0x51270  class func <stripped> // method 
-	0x51380  class func <stripped> // method 
-	0x514c0  class func <stripped> // method 
-	0x516a0  class func <stripped> // method 
-	0x51710  class func <stripped> // method 
-	0x517e0  class func <stripped> // method 
+	0x7c880  class func <stripped> // method 
+	0x7c8b0  class func <stripped> // method 
+	0x7c990  class func <stripped> // method 
+	0x7caa0  class func <stripped> // method 
+	0x7cbe0  class func <stripped> // method 
+	0x7cdc0  class func <stripped> // method 
+	0x7ce30  class func <stripped> // method 
+	0x7cf00  class func <stripped> // method 
+	0x7d020  class func <stripped> // method 
  }
 
  class MediaFoundation.AudioSessionConfiguration : NSObject /usr/lib/libobjc.A.dylib {
@@ -967,16 +1267,30 @@ WARNING: couldn't find address 0x757800022720 (0x57800022720) in binary!
 	var options : CategoryOptions
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xbb4c00022570 (0x34c00022570) in binary!
-	0x759c  @objc AudioSessionConfiguration.(null) <stripped>
-WARNING: couldn't find address 0xa9bc000225b0 (0x1bc000225b0) in binary!
+WARNING: couldn't find address 0xea2400029e80 (0x22400029e80) in binary!
+	0x9cd0  @objc AudioSessionConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x915c00029ec8 (0x15c00029ec8) in binary!
 	0x18000000c  @objc AudioSessionConfiguration.(null) <stripped>
-WARNING: couldn't find address 0x757800022720 (0x57800022720) in binary!
-	0x268000000c  @objc AudioSessionConfiguration.(null) <stripped>
+WARNING: couldn't find address 0x9cac00029f38 (0x4ac00029f38) in binary!
+	0x278000000c  @objc AudioSessionConfiguration.(null) <stripped>
 
 	// Swift methods
-	0x51920  class func AudioSessionConfiguration.__allocating_init(category:mode:routeSharingPolicy:options:) // init 
+	0x7d190  func <stripped> // getter 
+	0x7d1b0  func <stripped> // setter 
+	0x7d1d0  func <stripped> // modifyCoroutine 
+	0x7d280  func <stripped> // getter 
+	0x7d2d0  func <stripped> // setter 
+	0x7d330  func <stripped> // modifyCoroutine 
+	0x7d3d0  func <stripped> // getter 
+	0x7d3f0  func <stripped> // setter 
+	0x7d410  func <stripped> // modifyCoroutine 
+	0x7d4c0  func <stripped> // getter 
+	0x7d510  func <stripped> // setter 
+	0x7d570  func <stripped> // modifyCoroutine 
+	0x7d5b0  class func AudioSessionConfiguration.__allocating_init(category:mode:routeSharingPolicy:options:) // init 
  }
+
+ enum MediaFoundation.PlaybackStackErrorCode { }
 
  enum MediaFoundation.ExternalPlaybackType { }
 
@@ -987,142 +1301,159 @@ WARNING: couldn't find address 0x757800022720 (0x57800022720) in binary!
 	let internalStack : PlaybackStackController // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6a0400022520 (0x20400022520) in binary!
-	0x6a00  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x7548000224f8 (0x548000224f8) in binary!
-	0xbb2e  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbb34000224d0 (0x334000224d0) in binary!
-	0x69c8  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x69bc000224b0 (0x1bc000224b0) in binary!
-	0x69b0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x6dd400022798 (0x5d400022798) in binary!
-	0xbb1a  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbb0e00022470 (0x30e00022470) in binary!
-	0x74dc  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x74d000022708 (0x4d000022708) in binary!
-	0x74c4  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x74b800022428 (0x4b800022428) in binary!
-	0xbada  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbada00022400 (0x2da00022400) in binary!
-	0xa8c0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xa8b4000225e8 (0xb4000225e8) in binary!
-	0xbad0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbae4000223b8 (0x2e4000223b8) in binary!
-	0xbaea  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbafc00022390 (0x2fc00022390) in binary!
-	0xbac0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbb0400022368 (0x30400022368) in binary!
-	0xbaba  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbaae00022340 (0x2ae00022340) in binary!
-	0xbac0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xba9600022318 (0x29600022318) in binary!
-	0xbaa8  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbabc000222f0 (0x2bc000222f0) in binary!
-	0xbac2  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x73e0000222c8 (0x3e0000222c8) in binary!
-	0x73d4  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xb9ba00022730 (0x1ba00022730) in binary!
-	0x80c0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x73b000022558 (0x3b000022558) in binary!
-	0xa7d0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x25cfffe8d60  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-	0xfffe8d68  @objc MFPlaybackStackControllerImplementation. <stripped>
-WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x6c4fffef710  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-	0x3fcfffee138  @objc MFPlaybackStackControllerImplementation.ˇHâù(ˇˇˇH«Ö0ˇˇˇ <stripped>
-	0x7cc000221e0  @objc MFPlaybackStackControllerImplementation.≠‡˛ˇˇHãµ∞˛ˇˇË—x <stripped>
-WARNING: couldn't find address 0x223dcffffb648 (0x3dcffffb648) in binary!
-	0x118000000c  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xcbac000227d0 (0x3ac000227d0) in binary!
-	0x72fc  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x72f0000221b8 (0x2f0000221b8) in binary!
-	0x72e4  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xb8ca00022600 (0xca00022600) in binary!
-	0x6770  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x676c000225f0 (0x76c000225f0) in binary!
-	0x72b4  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xb89a00022798 (0x9a00022798) in binary!
-	0xbaf6  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xb8ca000225c8 (0xca000225c8) in binary!
-	0xbade  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbad200022138 (0x2d200022138) in binary!
-	0xbac6  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0xbaba000223c8 (0x2ba000223c8) in binary!
-	0xb88e  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x724800022300 (0x24800022300) in binary!
-	0x25029232840  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x6964654d3a4d4152 (0x54d3a4d4152) in binary!
-	0x20206e6f69  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x64654d3a5443454a (0x53a5443454a) in binary!
-	0x12d6e6f6974  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
-WARNING: couldn't find address 0x3ff0000000000000 (0x0) in binary!
+WARNING: couldn't find address 0xf7dc00029e30 (0x7dc00029e30) in binary!
+	0xf7d8  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x9c7c00029e08 (0x47c00029e08) in binary!
+	0x7f7c  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0xea0c00029de0 (0x20c00029de0) in binary!
+	0xf7a0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0xf79400029dc0 (0x79400029dc0) in binary!
+	0xf788  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0xa29c00029fc8 (0x29c00029fc8) in binary!
+	0xe9f2  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0xe9e600029d80 (0x1e600029d80) in binary!
+	0xe9da  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x9c0400029d58 (0x40400029d58) in binary!
+	0x9bf8  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x9bec00029d38 (0x3ec00029d38) in binary!
+	0x9be0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0xe9a600029d10 (0x1a600029d10) in binary!
+	0x7eea  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x905400029ce8 (0x5400029ce8) in binary!
+	0x9048  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0xe98c00029cc8 (0x18c00029cc8) in binary!
+	0xe9a0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0xe9a600029ca0 (0x1a600029ca0) in binary!
+	0xe9b8  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+	0xe9c0  ItemBufferProducer.resumeProduction(direction:completion:)
+WARNING: couldn't find address 0xe97600029c50 (0x17600029c50) in binary!
+	0xe96a  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0xe97c00029c28 (0x17c00029c28) in binary!
+	0xe952  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0xe96400029c00 (0x16400029c00) in binary!
+	0xe978  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0xe97e00029bd8 (0x17e00029bd8) in binary!
+	0x9b08  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x9afc00029d98 (0x2fc00029d98) in binary!
+	0x7dfc  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x9b3c0002a098 (0x33c0002a098) in binary!
+	0x9ad8  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x8f6400029cd0 (0x76400029cd0) in binary!
+	0x58000000c  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0xa11c00029ff0 (0x11c00029ff0) in binary!
+	0xeeb8  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0xa10400029b40 (0x10400029b40) in binary!
+	0xa0f8  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x81ec00029b18 (0x1ec00029b18) in binary!
+	0x48000000c  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x7d780002a018 (0x5780002a018) in binary!
+	0x9ab8  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x8eec00029ce8 (0x6ec00029ce8) in binary!
+	0x9a48  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x4bcffff3558  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+	0x55c00029aa0  @objc MFPlaybackStackControllerImplementation. <stripped>
+WARNING: couldn't find address 0x29ca4ffffc708 (0x4a4ffffc708) in binary!
+	0x0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
+	0x46e756f4661  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x4f525020206e6f69 (0x20206e6f69) in binary!
+	0x6756f466169  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0xa312d6e6f6974 (0x12d6e6f6974) in binary!
+	0x0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x3f800000 (0x3f800000) in binary!
 	0x7697461646e  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	0x17463416d65  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x1004300000073 (0x4300000073) in binary!
+	0x100000000  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x1100000000 (0x1100000000) in binary!
+	0x0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0xfffffff4 (0xfffffff4) in binary!
+	0x66f6974704f  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x6f6964754156414e (0x4754156414e) in binary!
+	0x26f67657461  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find offset 0xffffffc8 in binary!
+WARNING: couldn't find offset 0xffffffc8 in binary!
+WARNING: couldn't find address 0x736e6f697470 (0x36e6f697470) in binary!
+	0x0  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
+WARNING: couldn't find address 0x1000126a0 (0x1000126a0) in binary!
+	0x36574756f52  @objc MFPlaybackStackControllerImplementation.(null) <stripped>
 
 	// Swift methods
-	0x51c50  func <stripped> // getter 
-	0x51cb0  func <stripped> // setter 
-	0x51d20  func <stripped> // modifyCoroutine 
-	0x51de0  func <stripped> // getter 
-	0x51e60  func <stripped> // setter 
-	0x51f30  func <stripped> // modifyCoroutine 
-	0x52000  class func MFPlaybackStackControllerImplementation.__allocating_init(queueController:assetLoader:errorController:externalPlaybackController:leaseController:queue:) // init 
-	0x52a00  func <stripped> // getter 
-	0x52a40  func <stripped> // method 
-	0x52c40  func <stripped> // method 
-	0x52ca0  func <stripped> // method 
-	0x52cf0  func <stripped> // method 
-	0x52d30  func <stripped> // method 
-	0x52ef0  func <stripped> // method 
-	0x53090  func <stripped> // method 
-	0x532f0  func <stripped> // method 
-	0x53570  func <stripped> // method 
-	0x537f0  func <stripped> // method 
-	0x53a60  func <stripped> // method 
-	0x53cc0  func <stripped> // method 
-	0x53f20  func <stripped> // method 
-	0x541a0  func <stripped> // method 
-	0x54400  func <stripped> // method 
-	0x54680  func <stripped> // method 
-	0x548f0  func <stripped> // method 
-	0x54a00  func <stripped> // getter 
-	0x54aa0  func <stripped> // getter 
-	0x54f60  func <stripped> // method 
-	0x54fa0  func <stripped> // method 
-	0x55100  func <stripped> // method 
+	0x7dba0  func <stripped> // getter 
+	0x7dc20  func <stripped> // setter 
+	0x7dcb0  func <stripped> // modifyCoroutine 
+	0x7dd60  func <stripped> // getter 
+	0x7dde0  func <stripped> // setter 
+	0x7dea0  func <stripped> // modifyCoroutine 
+	0x7df70  class func MFPlaybackStackControllerImplementation.__allocating_init(queueController:assetLoader:errorController:externalPlaybackController:leaseController:queue:) // init 
+	0x7e770  func <stripped> // getter 
+	0x7e7a0  func <stripped> // method 
+	0x7e860  func <stripped> // method 
+	0x7e8c0  func <stripped> // method 
+	0x7ea20  func <stripped> // method 
+	0x7ea60  func <stripped> // method 
+	0x7ec20  func <stripped> // method 
+	0x7ed50  func <stripped> // method 
+	0x7ee20  func <stripped> // method 
+	0x7f0a0  func <stripped> // method 
+	0x7f270  func <stripped> // method 
+	0x7f4f0  func <stripped> // method 
+	0x7f760  func <stripped> // method 
+	0x7f9d0  func <stripped> // method 
+	0x7fc50  func <stripped> // method 
+	0x7fec0  func <stripped> // method 
+	0x80070  func <stripped> // method 
+	0x80240  func <stripped> // method 
+	0x80310  func <stripped> // getter 
+	0x803b0  func <stripped> // getter 
+	0x80840  func <stripped> // method 
+	0x80880  func <stripped> // method 
+	0x809e0  func <stripped> // getter 
+	0x80a10  func <stripped> // method 
+	0x80a40  func <stripped> // method 
  }
 
  class MediaFoundation.State : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x58780  func <stripped> // method 
-	0x584e0  func <stripped> // method 
-	0x587b0  func <stripped> // method 
-	0x588f0  func <stripped> // method 
-	0x58a00  func <stripped> // method 
-	0x58500  func <stripped> // method 
-	0x585b0  func <stripped> // method 
-	0x58a80  func <stripped> // getter 
+	0x844f0  func State.willCallCompletion(for:) // method 
+	0x84530  func State.callCompletionIfNeeded(for:) // method 
+	0x83f30  func State.enter(stateMachine:) // method 
+	0x84560  func State.exit(stateMachine:) // method 
+	0x83fc0  func State.handle(_:stateMachine:) // method 
+	0x845f0  func State.handle(_:stateMachine:) // method 
+	0x84230  func State.handle(_:stateMachine:) // method 
+	0x842e0  func State.handle(_:stateMachine:) // method 
+	0x84670  func State.description.getter // getter 
+	0x84690  class func State.__allocating_init() // init 
  }
 
  class MediaFoundation.EventTime : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	let time : Double
+	var time : Double
+	let avTime : Double
 	let userSecondsSinceReferenceDate : Double
 	let hostTime : CMTime
 	let type : TimeType
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6c6400022270 (0x46400022270) in binary!
-	0x6c58  @objc EventTime.(null) <stripped>
-WARNING: couldn't find address 0x6c5400022248 (0x45400022248) in binary!
+WARNING: couldn't find address 0xa11c00029ff0 (0x11c00029ff0) in binary!
+	0xeeb8  @objc EventTime.(null) <stripped>
+WARNING: couldn't find address 0xa10400029b40 (0x10400029b40) in binary!
+	0xa0f8  @objc EventTime.(null) <stripped>
+WARNING: couldn't find address 0x81ec00029b18 (0x1ec00029b18) in binary!
 	0x48000000c  @objc EventTime.(null) <stripped>
-WARNING: couldn't find address 0xb952000226c8 (0x152000226c8) in binary!
-	0x8058  @objc EventTime.(null) <stripped>
+WARNING: couldn't find address 0x7d780002a018 (0x5780002a018) in binary!
+	0x9ab8  @objc EventTime.(null) <stripped>
+WARNING: couldn't find address 0x8eec00029ce8 (0x6ec00029ce8) in binary!
+	0x9a48  @objc EventTime.(null) <stripped>
 
 	// Swift methods
+	0x84870  func EventTime.time.getter // getter 
+	0x847d0  class func EventTime.__allocating_init(timebase:time:avTime:) // init 
+	0x849f0  func EventTime.setTime(_:) // method 
  }
 
  enum MediaFoundation.TimeType {
@@ -1136,6 +1467,7 @@ WARNING: couldn't find address 0xb952000226c8 (0x152000226c8) in binary!
  enum MediaFoundation.UserEvent {
 
 	// Properties
+	case prepareForSetQueue : UserActionMetadata
 	case setQueueWithItem : UserActionMetadata
 	case play : UserActionMetadata
 	case pause : UserActionMetadata
@@ -1146,7 +1478,8 @@ WARNING: couldn't find address 0xb952000226c8 (0x152000226c8) in binary!
 	case seekTo : UserActionMetadata
 	case endSeeking : UserActionMetadata
 	case jumpTo : UserActionMetadata
-	case skip : Direction
+	case skip : UserActionMetadata
+	case avKitSkip : Direction
  }
 
  class MediaFoundation.IdleState : State { }
@@ -1158,7 +1491,12 @@ WARNING: couldn't find address 0xb952000226c8 (0x152000226c8) in binary!
 	var queue : OS_dispatch_queue
 
 	// Swift methods
-	0x5c5b0  func <stripped> // method 
+	0x89700  func EventReporter.setupReporting(subsystems:) // method 
+	0x89790  func EventReporter.activeSubsystems.getter // getter 
+	0x897d0  func EventReporter.activeSubsystems.setter // setter 
+	0x89810  func EventReporter.activeSubsystems.modify // modifyCoroutine 
+	0x88220  class func EventReporter.__allocating_init(queue:) // init 
+	0x898f0  func EventReporter.report(event:) // method 
  }
 
  struct MediaFoundation.Subsystem {
@@ -1174,23 +1512,44 @@ WARNING: couldn't find address 0xb952000226c8 (0x152000226c8) in binary!
 	var queueController : MFQueueControlling
 	let queueAssetLoader : QueueAssetLoading
 	let playerController : PlayerController
-	let reporter : EventReporting
+	let reporter : EventReporter
 	let internalController : InternalPlaybackStackController
 	let errorController : MFErrorController
 	let backgroundTaskController : BackgroundTaskController
-	var currentQueueRestorationItem : MFQueuePlayerItem?
 	var currentSetQueueIdentifier : String?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb952000226c8 (0x152000226c8) in binary!
-	0x8058  @objc PlaybackStackController.(null) <stripped>
-WARNING: couldn't find address 0xa774000224a8 (0x774000224a8) in binary!
-	0x733c  @objc PlaybackStackController.(null) <stripped>
+WARNING: couldn't find address 0x7d780002a018 (0x5780002a018) in binary!
+	0x9ab8  @objc PlaybackStackController.(null) <stripped>
+WARNING: couldn't find address 0x8eec00029ce8 (0x6ec00029ce8) in binary!
+	0x9a48  @objc PlaybackStackController.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x3dcffffb648  @objc PlaybackStackController.(null) <stripped>
-	0x3ac000227d0  @objc PlaybackStackController.˜Lâ˘Mâ‡Ë∏w <stripped>
+	0x4bcffff3558  @objc PlaybackStackController.(null) <stripped>
+	0x55c00029aa0  @objc PlaybackStackController. <stripped>
 
 	// Swift methods
+	0x8a090  class func PlaybackStackController.__allocating_init(queueController:assetLoader:errorController:externalPlaybackController:leaseController:queue:) // init 
+	0x8b880  func PlaybackStackController.delegate.getter // getter 
+	0x8b840  func PlaybackStackController.delegate.setter // setter 
+	0x8b8a0  func PlaybackStackController.delegate.modify // modifyCoroutine 
+	0x8b970  func PlaybackStackController.maximumPlayerQueueLength.getter // getter 
+	0x8b990  func PlaybackStackController.maximumPlayerQueueLength.setter // setter 
+	0x8b9b0  func PlaybackStackController.maximumPlayerQueueLength.modify // modifyCoroutine 
+	0x8ba10  func PlaybackStackController.currentTime.getter // getter 
+	0x8ba90  func PlaybackStackController.currentRate.getter // getter 
+	0x8bb10  func PlaybackStackController.effectiveRate.getter // getter 
+	0x8bb90  func PlaybackStackController.targetRate.getter // getter 
+	0x8bc10  func PlaybackStackController.targetStartTime.getter // getter 
+	0x8bc90  func PlaybackStackController.currentItem.getter // getter 
+	0x8bcb0  func PlaybackStackController.nextItems.getter // getter 
+	0x8bcd0  func PlaybackStackController.state.getter // getter 
+	0x8bcf0  func PlaybackStackController.interruptedState.getter // getter 
+	0x8bd10  func PlaybackStackController.currentItemTransition.getter // getter 
+	0x8bd40  func PlaybackStackController.videoPlayerViewController.getter // getter 
+	0x8bd80  func PlaybackStackController.shouldSkipJumpToItemStart(_:) // method 
+	0x8be10  func PlaybackStackController.audioSession.getter // getter 
+	0x8be50  func PlaybackStackController.setupReporting(subsystems:) // method 
+	0x8be70  func PlaybackStackController.queueItem(for:) // method 
  }
 
  enum MediaFoundation.Failure {
@@ -1206,20 +1565,21 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
  class MediaFoundation.ErrorResolutionState : State {
 
 	// Properties
-	let playerEvent : PlayerEvent
+	let triggerEvent : PlayerEvent
 	let playerItem : MFPlayerItem
 	let initialLoadFailure : Bool
 	let initialLoadShouldPlay : Bool
 	let steps : Int
 
 	// Swift methods
+	0x8e8a0  class func ErrorResolutionState.__allocating_init(event:initialLoadFailure:initialLoadShouldPlay:steps:) // init 
  }
 
  struct MediaFoundation.SystemObserver {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var $__lazy_storage_$_eventStream : ôá // +0x0
+	var $__lazy_storage_$_eventStream : ˇ™ // +0x0
 	let audioSession : AVAudioSession // +0x8
 	let queue : OS_dispatch_queue // +0x10
  }
@@ -1238,18 +1598,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var monitors : UserEventCompletionMonitor
 	let reporter : EventReporting
 
-	// Swift methods
- }
-
- class MediaFoundation.UserEventCompletionMonitor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
-
-	// Properties
-	let monitoredUserEvent : UserEvent
-	var timer : OS_dispatch_source_timer?
-	let timeout : Double
-	var reporter : EventReporting
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0x9a3400029cd0 (0x23400029cd0) in binary!
+	0x8ec0  @objc UserEventsMonitor.(null) <stripped>
+WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
+	0x4a4ffffc708  @objc UserEventsMonitor.(null) <stripped>
 
 	// Swift methods
+	0x920c0  class func UserEventsMonitor.__allocating_init(timeout:reporter:) // init 
  }
 
  enum MediaFoundation.Error {
@@ -1263,13 +1619,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case canceled : (identifier: String)
  }
 
+ class MediaFoundation.UserEventCompletionMonitor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+
+	// Properties
+	var monitoredUserEvent : UserEvent
+	var monitoredUserEventOverride : UserEvent
+	var timer : OS_dispatch_source_timer?
+	let timeout : Double
+	var reporter : EventReporting
+
+	// Swift methods
+ }
+
+ class MediaFoundation.Aggregator {
  enum MediaFoundation.CoordinatorEvent {
 
 	// Properties
-	case setCurrentItem : (item: MFQueuePlayerItem?)
-	case enqueueItem : (item: MFQueuePlayerItem)
+	case synchronizeQueueItemsToPlayer : (items: [MFQueuePlayerItem])
 	case resetQueue : (keepCurrentItem: Bool)
-	case reloadQueue : (includeCurrentItem: Bool)
 	case queueEndReached : (reason: String)
 	case queueWaitingForPlayableItem  
  }
@@ -1300,12 +1667,6 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _rawValue : NSString
  }
 
- struct __C.UIBackgroundTaskIdentifier {
-
-	// Properties
-	let rawValue : Int
- }
-
  class __C.CMTimebase {
  enum __C.TimeControlStatus { }
 
@@ -1317,12 +1678,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : G≠
+	var value : €ÿ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var timescale : 9≠
+	var timescale : Õÿ
 	var flags : CMTimeFlags
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var epoch : G≠
+	var epoch : €ÿ
  }
 
  enum __C.AVPlayerExternalPlaybackType { }
@@ -1333,9 +1694,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let rawValue : UInt
  }
 
+ class __C.CMClock {
+ struct __C.UIBackgroundTaskIdentifier {
+
+	// Properties
+	let rawValue : Int
+ }
+
  enum __C.Status { }
 
- class __C.CMClock {
  struct __C.CMTimeRange {
 
 	// Properties
@@ -1343,11 +1710,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var duration : CMTime
  }
 
+ enum __C.AVMusicAppBehaviorContextUserAction { }
+
  struct __C.CMTimeFlags {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : ï¨
+	let rawValue : ÿ
  }
 
  enum __C.Code { }

@@ -6,17 +6,19 @@
 
 #import <NearbyInteraction/NIConfiguration.h>
 
-@class NSData;
+@class NSArray, NSData;
 
 @interface NIHomeDeviceConfiguration : NIConfiguration
 {
     BOOL _anchor;
     unsigned long long _allowedDevices;
     NSData *_sessionKey;
+    NSArray *_monitoredRegions;
 }
 
 @property unsigned long long allowedDevices; // @synthesize allowedDevices=_allowedDevices;
 @property (getter=isAnchor) BOOL anchor; // @synthesize anchor=_anchor;
+@property (copy) NSArray *monitoredRegions; // @synthesize monitoredRegions=_monitoredRegions;
 @property (copy) NSData *sessionKey; // @synthesize sessionKey=_sessionKey;
 
 + (id)new;
@@ -28,8 +30,9 @@
 - (void)encodeWithCoder:(id)arg1;
 - (unsigned long long)hash;
 - (id)init;
-- (id)initWithAllowedDevices:(unsigned long long)arg1 sessionKey:(id)arg2 asAnchor:(BOOL)arg3;
+- (id)initWithAllowedDevices:(unsigned long long)arg1 sessionKey:(id)arg2 asAnchor:(BOOL)arg3 regions:(id)arg4;
 - (id)initWithCoder:(id)arg1;
+- (id)initWithRegions:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 
 @end

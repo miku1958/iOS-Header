@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *navigator;
     MISSING_TYPE *urlHandler;
+    MISSING_TYPE *contextBuilder;
     MISSING_TYPE *featureAvailability;
 }
 

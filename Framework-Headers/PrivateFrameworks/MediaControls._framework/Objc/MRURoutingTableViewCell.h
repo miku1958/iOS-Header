@@ -9,12 +9,13 @@
 #import <MediaControls/MRURoutingSubtitleControllerDelegate-Protocol.h>
 #import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
 #import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
+#import <MediaControls/UIPointerInteractionDelegate-Protocol.h>
 
 @class MRURoutingAccessoryView, MRURoutingSubtitleController, MRURoutingSubtitleView, MRUVisualStylingProvider, MRUVolumeSlider, NSString, UIImage, UIImageView, UILabel, UITapGestureRecognizer, UIView;
 @protocol MRURoutingTableViewCellDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MRURoutingTableViewCell : UITableViewCell <MRURoutingSubtitleControllerDelegate, MRUVisualStylingProviderObserver, UIGestureRecognizerDelegate>
+@interface MRURoutingTableViewCell : UITableViewCell <MRURoutingSubtitleControllerDelegate, MRUVisualStylingProviderObserver, UIGestureRecognizerDelegate, UIPointerInteractionDelegate>
 {
     BOOL _showOutline;
     BOOL _showVolumeSlider;
@@ -56,10 +57,14 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) MRUVolumeSlider *volumeSlider; // @synthesize volumeSlider=_volumeSlider;
 
 - (void).cxx_destruct;
+- (void)_setShouldHaveFullLengthBottomSeparator:(BOOL)arg1;
 - (void)didTapToExpand;
+- (struct CGRect)expandRect;
 - (BOOL)gestureRecognizer:(id)arg1 shouldReceiveTouch:(id)arg2;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)prepareForReuse;
 - (void)routingSubtitleStateController:(id)arg1 didUpdateText:(id)arg2 accessory:(long long)arg3;
 - (void)setSubtitle:(id)arg1;

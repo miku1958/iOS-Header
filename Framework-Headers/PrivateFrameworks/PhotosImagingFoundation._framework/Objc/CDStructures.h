@@ -73,6 +73,29 @@ struct __hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*> {
     struct __hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*> *_field1;
 };
 
+struct os_state_data_decoder_s {
+    char _field1[64];
+    char _field2[64];
+};
+
+struct os_state_data_s {
+    unsigned int _field1;
+    union {
+        unsigned int :32;
+        unsigned int _field1;
+    } _field2;
+    struct os_state_data_decoder_s _field3;
+    char _field4[64];
+    unsigned char _field5[0];
+};
+
+struct os_state_hints_s {
+    unsigned int _field1;
+    char *_field2;
+    unsigned int _field3;
+    unsigned int _field4;
+};
+
 struct unique_ptr<std::__1::__hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*>*[], std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*>*>>> {
     struct __compressed_pair<std::__1::__hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*>**, std::__1::__bucket_list_deallocator<std::__1::allocator<std::__1::__hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*>*>>> {
         struct __hash_node_base<std::__1::__hash_node<PA::RegionRect, void *>*> **_field1;

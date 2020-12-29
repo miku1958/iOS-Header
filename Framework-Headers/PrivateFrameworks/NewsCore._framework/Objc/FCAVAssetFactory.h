@@ -9,11 +9,12 @@
 #import <NewsCore/FCAVAssetFactoryType-Protocol.h>
 
 @class NFUnfairLock, NSMapTable, NSString;
-@protocol FCAVAssetCacheType, FCAVAssetKeyManagerType, FCAVAssetResourceLoaderType;
+@protocol FCAVAssetCacheType, FCAVAssetKeyCacheType, FCAVAssetKeyManagerType, FCAVAssetResourceLoaderType;
 
 @interface FCAVAssetFactory : NSObject <FCAVAssetFactoryType>
 {
     id<FCAVAssetCacheType> _assetCache;
+    id<FCAVAssetKeyCacheType> _assetKeyCache;
     id<FCAVAssetKeyManagerType> _assetKeyManager;
     id<FCAVAssetResourceLoaderType> _assetResourceLoader;
     NSMapTable *_assets;
@@ -21,6 +22,7 @@
 }
 
 @property (readonly, nonatomic) id<FCAVAssetCacheType> assetCache; // @synthesize assetCache=_assetCache;
+@property (readonly, nonatomic) id<FCAVAssetKeyCacheType> assetKeyCache; // @synthesize assetKeyCache=_assetKeyCache;
 @property (readonly, nonatomic) id<FCAVAssetKeyManagerType> assetKeyManager; // @synthesize assetKeyManager=_assetKeyManager;
 @property (readonly, nonatomic) id<FCAVAssetResourceLoaderType> assetResourceLoader; // @synthesize assetResourceLoader=_assetResourceLoader;
 @property (readonly, nonatomic) NSMapTable *assets; // @synthesize assets=_assets;
@@ -33,7 +35,7 @@
 - (void).cxx_destruct;
 - (id)assetWithIdentifier:(id)arg1 remoteURL:(id)arg2 overrideMIMEType:(id)arg3;
 - (id)init;
-- (id)initWithAssetCache:(id)arg1 assetKeyManager:(id)arg2 assetResourceLoader:(id)arg3;
+- (id)initWithAssetCache:(id)arg1 assetKeyCache:(id)arg2 assetKeyManager:(id)arg3 assetResourceLoader:(id)arg4;
 
 @end
 

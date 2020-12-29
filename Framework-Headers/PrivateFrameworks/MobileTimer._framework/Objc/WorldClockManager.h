@@ -29,6 +29,7 @@
 - (BOOL)canAddCity;
 - (BOOL)checkIfCitiesModified;
 - (id)citiesMatchingIdentifiers:(id)arg1;
+- (id)citiesMatchingName:(id)arg1;
 - (id)cityWithIdUrl:(id)arg1;
 - (id)fixUpCityProperties:(id)arg1;
 - (id)initWithPreferences:(id)arg1;

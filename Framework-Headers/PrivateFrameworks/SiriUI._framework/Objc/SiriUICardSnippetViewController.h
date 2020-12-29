@@ -55,7 +55,7 @@
 - (void)_forwardProgressEvent:(unsigned long long)arg1 toCardViewController:(id)arg2 animated:(BOOL)arg3;
 - (void)_forwardProgressEventToCardViewController:(unsigned long long)arg1;
 - (void)_insertCardViewController:(id)arg1;
-- (void)_instrumentCardSectionInteractionForId:(id)arg1 previousTurn:(id)arg2;
+- (void)_instrumentCardSectionInteractionForCardSection:(id)arg1 previousTurn:(id)arg2;
 - (id)_instrumentationManager;
 - (void)_logCardRelationshipIdentifiedForCompactCard:(id)arg1 fullCard:(id)arg2 snippet:(id)arg3;
 - (id)_metricsContextOfEventsForCard:(id)arg1;
@@ -101,6 +101,8 @@
 - (void)modalContainerViewControllerViewWillDisappear:(id)arg1;
 - (unsigned long long)navigationIndexOfCardViewController:(id)arg1;
 - (BOOL)performBeganEditingCommand:(id)arg1 forCardViewController:(id)arg2;
+- (BOOL)performFinishedEditingCommand:(id)arg1 forCardViewController:(id)arg2;
+- (BOOL)performInvocationPayloadCommand:(id)arg1 forCardViewController:(id)arg2;
 - (BOOL)performNextCardCommand:(id)arg1 forCardViewController:(id)arg2;
 - (BOOL)performPunchoutCommand:(id)arg1 forCardViewController:(id)arg2;
 - (BOOL)performReferentialCommand:(id)arg1 forCardViewController:(id)arg2;

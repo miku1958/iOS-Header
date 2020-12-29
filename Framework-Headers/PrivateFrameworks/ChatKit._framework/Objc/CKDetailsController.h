@@ -23,7 +23,7 @@
 #import <ChatKit/UITextViewDelegate-Protocol.h>
 #import <ChatKit/UIViewControllerPreviewingDelegate-Protocol.h>
 
-@class CKBusinessInfoView, CKConversation, CKDetailsAddGroupNameView, CKDetailsCell, CKDetailsContactsManager, CKDetailsDownloadAttachmentsHeaderFooterView, CKDetailsGroupNameCell, CKDetailsLocationShareCell, CKDetailsMapViewCell, CKDetailsSearchViewController, CKDetailsTableView, CKEntity, CKGroupPhotoCell, CKGroupRecipientSelectionController, CKNavigationController, CKTranscriptDetailsResizableCell, CNContactStore, CNGroupIdentityHeaderViewController, FMFMapViewController, NSData, NSString, NSTimer, UIButton, UITextView, UIVisualEffectView;
+@class CKBusinessInfoView, CKConversation, CKDetailsAddGroupNameView, CKDetailsCell, CKDetailsContactsManager, CKDetailsDownloadAttachmentsHeaderFooterView, CKDetailsGroupNameCell, CKDetailsLocationShareCell, CKDetailsMapViewCell, CKDetailsSearchViewController, CKDetailsTableView, CKEntity, CKGroupPhotoCell, CKGroupRecipientSelectionController, CKNavigationController, CKTranscriptDetailsResizableCell, CNContactStore, CNGroupIdentityHeaderViewController, FMFMapViewController, NSArray, NSData, NSString, NSTimer, UIButton, UITextView, UIVisualEffectView;
 @protocol CKDetailsControllerDelegate;
 
 @interface CKDetailsController : CKScrollViewController <FMFMapViewControllerDelegate, UIViewControllerPreviewingDelegate, CKDetailsAddGroupNameViewDelegate, UITextViewDelegate, CKDetailsContactsManagerDelegate, CNAvatarViewDelegate, CKDetailsContactsTableViewCellDelegate, CKBusinessInfoViewDelegate, CKDetailsDownloadAttachmentsHeaderFooterViewDelegate, CKDetailsSearchControllerDelegate, UIImagePickerControllerDelegate, CNGroupIdentityHeaderViewControllerDelegate, CNVisualIdentityPickerViewControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource>
@@ -33,6 +33,7 @@
     BOOL _isContactsSectionCollapsed;
     BOOL _didPerformPurgedAttachmentsCheck;
     BOOL _isDisplayingPhotos;
+    BOOL _needsContactsReload;
     id<CKDetailsControllerDelegate> _detailsControllerDelegate;
     CKConversation *_conversation;
     CKDetailsTableView *_tableView;
@@ -69,8 +70,10 @@
     id _selfWeakWrapper;
     unsigned long long _undownloadedPhotoAttachmentCount;
     unsigned long long _downloadButtonState;
+    NSArray *_actions;
 }
 
+@property (strong, nonatomic) NSArray *actions; // @synthesize actions=_actions;
 @property (nonatomic) double addContactCellHeight; // @synthesize addContactCellHeight=_addContactCellHeight;
 @property (strong, nonatomic) CKGroupRecipientSelectionController *addRecipientsController; // @synthesize addRecipientsController=_addRecipientsController;
 @property (strong, nonatomic) CKBusinessInfoView *businessInfoView; // @synthesize businessInfoView=_businessInfoView;
@@ -102,6 +105,7 @@
 @property (strong, nonatomic) CKTranscriptDetailsResizableCell *locationStartShareCell; // @synthesize locationStartShareCell=_locationStartShareCell;
 @property (strong, nonatomic) CKDetailsMapViewCell *mapViewCell; // @synthesize mapViewCell=_mapViewCell;
 @property (strong, nonatomic) FMFMapViewController *mapViewController; // @synthesize mapViewController=_mapViewController;
+@property (nonatomic) BOOL needsContactsReload; // @synthesize needsContactsReload=_needsContactsReload;
 @property (strong, nonatomic) CKTranscriptDetailsResizableCell *openInContactsCell; // @synthesize openInContactsCell=_openInContactsCell;
 @property (nonatomic) double optionCellHeight; // @synthesize optionCellHeight=_optionCellHeight;
 @property (strong, nonatomic) CKEntity *presentedEntity; // @synthesize presentedEntity=_presentedEntity;

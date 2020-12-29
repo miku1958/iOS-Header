@@ -76,9 +76,11 @@
 - (id)incrementAddSceneButtonPresentedCount;
 - (id)init;
 - (id)initWithHome:(id)arg1 user:(id)arg2 nameStyle:(unsigned long long)arg3;
+- (BOOL)isAllowiTunesAccountEnabled;
 - (BOOL)isAnnounceEnabled;
 - (BOOL)isIdentifyVoiceEnabled;
 - (BOOL)isPlaybackInfluencesForYouEnabled;
+- (id)setAllowiTunesAccount:(BOOL)arg1;
 - (id)setCompletedNonOwnerUserHomeSwitchingUI:(BOOL)arg1;
 - (id)setDismissAnnounceOnboarding:(BOOL)arg1;
 - (id)setDismissCameraRecordingOnboarding:(BOOL)arg1;

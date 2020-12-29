@@ -69,6 +69,7 @@
 - (id)asDictionary;
 - (id)author;
 - (id)body;
+- (long long)contentLength;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)createNewSearchableItem;
 - (id)createNewSearchableItemWithSource:(id)arg1 uniqueIdentifier:(id)arg2 domainIdentifier:(id)arg3;

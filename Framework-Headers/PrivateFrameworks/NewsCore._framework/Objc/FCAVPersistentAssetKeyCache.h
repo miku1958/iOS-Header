@@ -28,7 +28,9 @@
 - (void)_prepareForUse;
 - (id)assetKeyForURI:(id)arg1;
 - (void)clearKeyServerCertificate;
+- (void)importAVAssetKey:(id)arg1;
 - (id)initWithCacheDirectory:(id)arg1;
+- (id)interestTokenForKeyURIs:(id)arg1;
 - (id)keyServerCertificate;
 - (void)removeAllAssetKeys;
 - (void)saveAssetKeyData:(id)arg1 creationDate:(id)arg2 expirationDate:(id)arg3 forURI:(id)arg4;

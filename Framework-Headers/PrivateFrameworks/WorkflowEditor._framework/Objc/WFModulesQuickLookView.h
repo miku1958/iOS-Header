@@ -28,6 +28,7 @@
 @property (weak, nonatomic) WFNumericPageControl *pageControl; // @synthesize pageControl=_pageControl;
 @property (readonly, nonatomic) QLPreviewController *previewController; // @synthesize previewController=_previewController;
 
++ (double)preferredHeightForWidth:(double)arg1;
 - (void).cxx_destruct;
 - (void)dealloc;
 - (void)fullscreenPressed;

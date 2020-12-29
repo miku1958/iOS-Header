@@ -26,6 +26,7 @@
     FCCKPrivateDatabaseSchema *_schema;
     NSObject<OS_dispatch_queue> *_queue;
     NSOperationQueue *_serialOperationQueue;
+    NSOperationQueue *_highPriorityOperationQueue;
     NSOperationQueue *_noPreflightOperationQueue;
     NSArray *_middleware;
     NSArray *_remainingStartUpMiddleware;
@@ -49,6 +50,7 @@
 @property (strong) NSData *encryptionKey; // @synthesize encryptionKey=_encryptionKey;
 @property (getter=isEncryptionRequired) BOOL encryptionRequired; // @synthesize encryptionRequired=_encryptionRequired;
 @property (nonatomic) BOOL finishedInitialStartUp; // @synthesize finishedInitialStartUp=_finishedInitialStartUp;
+@property (strong, nonatomic) NSOperationQueue *highPriorityOperationQueue; // @synthesize highPriorityOperationQueue=_highPriorityOperationQueue;
 @property (strong, nonatomic) NSObject<OS_dispatch_group> *initialStartUpGroup; // @synthesize initialStartUpGroup=_initialStartUpGroup;
 @property (strong, nonatomic) NSArray *middleware; // @synthesize middleware=_middleware;
 @property (readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;

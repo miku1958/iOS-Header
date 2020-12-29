@@ -22,6 +22,7 @@
     MISSING_TYPE *progressView;
     MISSING_TYPE *remainingTimeLabel;
     MISSING_TYPE *headphoneImageView;
+    MISSING_TYPE *readButton;
     MISSING_TYPE *contentView;
     MISSING_TYPE *accessory;
     MISSING_TYPE *token;

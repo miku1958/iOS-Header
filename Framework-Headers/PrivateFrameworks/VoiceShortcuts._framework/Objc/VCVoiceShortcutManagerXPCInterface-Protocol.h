@@ -6,7 +6,7 @@
 
 #import <VoiceShortcuts/NSObject-Protocol.h>
 
-@class INShortcut, NSArray, NSData, NSDictionary, NSString, VCSleepWorkflow, WFDatabaseObjectDescriptor, WFDialogRequest, WFRemoteImageDrawingContext, WFWorkflowQuery, WFWorkflowRunRequest, WFWorkflowRunningContext;
+@class INShortcut, NSArray, NSData, NSDictionary, NSString, VCSleepWorkflow, WFDatabaseObjectDescriptor, WFDialogRequest, WFRemoteImageDrawingContext, WFSpringBoardWebClipMetadata, WFWorkflowQuery, WFWorkflowRunRequest, WFWorkflowRunningContext;
 
 @protocol VCVoiceShortcutManagerXPCInterface <NSObject>
 - (void)addDefaultShortcutsIfNecessaryWithCompletion:(void (^)(BOOL, NSError *))arg1;
@@ -52,6 +52,7 @@
 - (void)sendAceCommandDictionary:(NSDictionary *)arg1 completion:(void (^)(NSDictionary *, NSError *))arg2;
 - (void)setInteger:(long long)arg1 forKey:(NSString *)arg2 inDomain:(NSString *)arg3 completionHandler:(void (^)(BOOL, NSError *))arg4;
 - (void)setShortcutSuggestions:(NSArray *)arg1 forAppWithBundleIdentifier:(NSString *)arg2;
+- (void)showSingleStepCompletionForWebClip:(WFSpringBoardWebClipMetadata *)arg1 completion:(void (^)(NSError *))arg2;
 - (void)stopRunningWorkflowWithRunningContext:(WFWorkflowRunningContext *)arg1;
 - (void)unregisterTriggerWithIdentifier:(NSString *)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)updateVoiceShortcutWithIdentifier:(NSString *)arg1 phrase:(NSString *)arg2 shortcut:(INShortcut *)arg3 completion:(void (^)(VCVoiceShortcut *, NSError *))arg4;

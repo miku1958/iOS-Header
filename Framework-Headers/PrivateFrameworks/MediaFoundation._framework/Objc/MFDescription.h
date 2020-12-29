@@ -12,6 +12,7 @@
 
 + (id)forBufferState:(long long)arg1;
 + (id)forErrorResolution:(long long)arg1;
++ (id)forItemChangeSource:(long long)arg1;
 + (id)forItemRequestReason:(long long)arg1;
 + (id)forItemTransition:(long long)arg1;
 + (id)forPlaybackTimeChangeReason:(long long)arg1;

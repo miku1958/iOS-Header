@@ -10,6 +10,7 @@
 
 @class FCCKPRecordIdentifier, FCCKPRequestedFields, NSString;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPRecordRetrieveRequest : PBRequest <NSCopying>
 {
     NSString *_clientVersionETag;
@@ -28,7 +29,6 @@
 @property (strong, nonatomic) NSString *versionETag; // @synthesize versionETag=_versionETag;
 
 + (id)options;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

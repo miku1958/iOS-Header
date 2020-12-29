@@ -17,6 +17,7 @@
 @property (nonatomic) BOOL isVideoContent;
 @property (nonatomic, readonly) BOOL prefersSeekOverSkip;
 @property (nonatomic) long long repeatIndex;
+@property (nonatomic, readonly) double time;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, readonly) NSURL *url;
 

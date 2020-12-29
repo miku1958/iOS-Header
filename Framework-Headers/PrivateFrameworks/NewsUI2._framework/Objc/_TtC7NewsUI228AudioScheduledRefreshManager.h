@@ -13,7 +13,7 @@
     MISSING_TYPE *dataManager;
     MISSING_TYPE *paidBundleConfigManager;
     MISSING_TYPE *bundleSubscriptionManager;
-    MISSING_TYPE *offlineArticleManager;
+    MISSING_TYPE *offlineContentManager;
     MISSING_TYPE *activityScheduler;
     MISSING_TYPE *refreshDeduper;
 }

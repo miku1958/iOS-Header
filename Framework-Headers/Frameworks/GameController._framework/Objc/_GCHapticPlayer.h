@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSArray, NSMutableArray, NSNumber, NSString, _GCHapticClientProxy, _GCHapticDynamicParameter, _GCHapticLogicalDevice;
+@class NSArray, NSMutableArray, NSNumber, _GCHapticClientProxy, _GCHapticDynamicParameter, _GCHapticLogicalDevice;
 
 __attribute__((visibility("hidden")))
 @interface _GCHapticPlayer : NSObject
@@ -40,28 +40,23 @@ __attribute__((visibility("hidden")))
     double _totalLifetimeInSeconds;
 }
 
-@property (readonly, nonatomic) double activeLifetimeInSeconds;
 @property (readonly, copy, nonatomic) NSArray *actuators; // @synthesize actuators=_actuators;
-@property (readonly, nonatomic) NSString *bundleIdentifier;
-@property (readonly, nonatomic) int continuousEventsProcessed;
 @property (nonatomic) int continuousEventsProcessed; // @synthesize continuousEventsProcessed=_continuousEventsProcessed;
 @property (readonly, nonatomic) float continuousIntensity; // @synthesize continuousIntensity=_continuousIntensity;
 @property (readonly, nonatomic) float continuousSharpness; // @synthesize continuousSharpness=_continuousSharpness;
-@property (readonly, nonatomic) NSString *controllerProductCategory;
 @property (weak, nonatomic) _GCHapticLogicalDevice *hapticLogicalDevice; // @synthesize hapticLogicalDevice=_hapticLogicalDevice;
 @property (readonly, copy, nonatomic) NSNumber *identifier; // @synthesize identifier=_identifier;
-@property (readonly, nonatomic) int parameterCurvesProcessed;
 @property (nonatomic) int parameterCurvesProcessed; // @synthesize parameterCurvesProcessed=_parameterCurvesProcessed;
 @property (nonatomic, getter=isRetainedByClient) BOOL retainedByClient; // @synthesize retainedByClient=_retainedByClient;
-@property (readonly, nonatomic) int totalEventsProcessed;
 @property (nonatomic) int totalEventsProcessed; // @synthesize totalEventsProcessed=_totalEventsProcessed;
-@property (readonly, nonatomic) double totalLifetimeInSeconds;
 @property (nonatomic) double totalLifetimeInSeconds; // @synthesize totalLifetimeInSeconds=_totalLifetimeInSeconds;
-@property (readonly, nonatomic) int transientEventsProcessed;
 @property (nonatomic) int transientEventsProcessed; // @synthesize transientEventsProcessed=_transientEventsProcessed;
 
 - (void).cxx_destruct;
+- (double)activeLifetimeInSeconds;
+- (id)bundleIdentifier;
 - (void)clearParameters;
+- (id)controllerProductCategory;
 - (void)dealloc;
 - (id)description;
 - (void)handleCommand:(id)arg1;

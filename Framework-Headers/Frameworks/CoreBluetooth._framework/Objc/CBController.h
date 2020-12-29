@@ -86,10 +86,12 @@
 - (void)diagnosticLog:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)diagnosticShow:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)encodeWithXPCObject:(id)arg1;
+- (void)getControllerInfoWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getPowerStateWithCompletion:(CDUnknownBlockType)arg1;
 - (id)init;
 - (id)initWithXPCObject:(id)arg1 error:(id *)arg2;
 - (void)invalidate;
+- (void)modifyDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)setPowerState:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateIdentities:(id)arg1 completion:(CDUnknownBlockType)arg2;
 

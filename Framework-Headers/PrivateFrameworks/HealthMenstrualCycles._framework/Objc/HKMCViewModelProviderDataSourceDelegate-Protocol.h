@@ -9,7 +9,9 @@
 @class HKMCViewModelProviderDataSource, NSArray, NSNumber;
 
 @protocol HKMCViewModelProviderDataSourceDelegate <NSObject>
+- (void)viewModelProviderDataSource:(HKMCViewModelProviderDataSource *)arg1 didFetchCycleFactors:(NSArray *)arg2 forDayIndexRange:(CDStruct_ef5fcbe6)arg3;
 - (void)viewModelProviderDataSource:(HKMCViewModelProviderDataSource *)arg1 didFetchDaySummaries:(NSArray *)arg2 forDayIndexRange:(CDStruct_ef5fcbe6)arg3 analysisAnchor:(NSNumber *)arg4;
+- (void)viewModelProviderDataSourceDidUpdateCycleFactors:(HKMCViewModelProviderDataSource *)arg1;
 - (void)viewModelProviderDataSourceDidUpdateDaySummaries:(HKMCViewModelProviderDataSource *)arg1;
 @end
 

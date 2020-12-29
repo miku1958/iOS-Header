@@ -6,12 +6,14 @@
 
 #import <Foundation/NSOperation.h>
 
-@class City, NSArray, NSCalendar, NSData, NSDate, NSDictionary, NSError, NSLocale, NSString, WACurrentForecast, WAForecastModel, WFAggregateCommonRequest, WFAirQualityConditions, WFLocation, WFNextHourPrecipitation, WFServiceConnection, WFWeatherConditions;
+@class City, NSArray, NSCalendar, NSData, NSDate, NSDictionary, NSError, NSLocale, NSString, WACurrentForecast, WAForecastModel, WFAggregateCommonRequest, WFAirQualityConditions, WFLocation, WFNextHourPrecipitation, WFRequestOptions, WFServiceConnection, WFWeatherConditions;
 
 @interface WAForecastOperation : NSOperation
 {
     BOOL _isDay;
     BOOL _shouldAttachRawAPIData;
+    BOOL _canGeocode;
+    BOOL _isLocationInGeocodeSample;
     int _units;
     City *_city;
     WFLocation *_location;
@@ -34,12 +36,14 @@
     NSLocale *_locale;
     NSString *_trackingParameter;
     NSData *_rawAPIData;
+    WFRequestOptions *_requestOptions;
     WFServiceConnection *_connection;
 }
 
 @property (strong, nonatomic) WFAggregateCommonRequest *aggregateRequest; // @synthesize aggregateRequest=_aggregateRequest;
 @property (strong, nonatomic) WFAirQualityConditions *airQualityConditions; // @synthesize airQualityConditions=_airQualityConditions;
 @property (strong, nonatomic) NSCalendar *calendar; // @synthesize calendar=_calendar;
+@property (nonatomic) BOOL canGeocode; // @synthesize canGeocode=_canGeocode;
 @property (strong, nonatomic) NSArray *changeForecasts; // @synthesize changeForecasts=_changeForecasts;
 @property (strong, nonatomic) City *city; // @synthesize city=_city;
 @property (strong, nonatomic) WFServiceConnection *connection; // @synthesize connection=_connection;
@@ -52,11 +56,13 @@
 @property (strong, nonatomic) NSArray *hourlyForecastConditions; // @synthesize hourlyForecastConditions=_hourlyForecastConditions;
 @property (strong, nonatomic) NSArray *hourlyForecasts; // @synthesize hourlyForecasts=_hourlyForecasts;
 @property (nonatomic) BOOL isDay; // @synthesize isDay=_isDay;
+@property (nonatomic) BOOL isLocationInGeocodeSample; // @synthesize isLocationInGeocodeSample=_isLocationInGeocodeSample;
 @property (strong, nonatomic) NSDictionary *links; // @synthesize links=_links;
 @property (strong) NSLocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) WFLocation *location; // @synthesize location=_location;
 @property (strong, nonatomic) WFNextHourPrecipitation *nextHourPrecipitation; // @synthesize nextHourPrecipitation=_nextHourPrecipitation;
 @property (strong, nonatomic) NSData *rawAPIData; // @synthesize rawAPIData=_rawAPIData;
+@property (strong, nonatomic) WFRequestOptions *requestOptions; // @synthesize requestOptions=_requestOptions;
 @property (strong, nonatomic) NSArray *severeWeatherEvents; // @synthesize severeWeatherEvents=_severeWeatherEvents;
 @property (nonatomic) BOOL shouldAttachRawAPIData; // @synthesize shouldAttachRawAPIData=_shouldAttachRawAPIData;
 @property (strong, nonatomic) NSDate *sunrise; // @synthesize sunrise=_sunrise;
@@ -71,7 +77,9 @@
 - (BOOL)_needsGeolocation;
 - (void)cancel;
 - (id)initWithCity:(id)arg1 onConnection:(id)arg2;
+- (id)initWithCity:(id)arg1 withUnits:(int)arg2 canGeocode:(BOOL)arg3 onConnection:(id)arg4;
 - (id)initWithCity:(id)arg1 withUnits:(int)arg2 onConnection:(id)arg3;
+- (id)initWithCity:(id)arg1 withUnits:(int)arg2 requestOptions:(id)arg3 canGeocode:(BOOL)arg4 onConnection:(id)arg5;
 - (id)initWithLocation:(id)arg1 onConnection:(id)arg2;
 - (void)main;
 - (BOOL)shouldRequestChangeInConditions;

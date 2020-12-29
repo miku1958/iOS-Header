@@ -12,11 +12,10 @@
 
 + (id)shadowColor;
 + (id)textColorWithLightLabel:(BOOL)arg1;
-- (BOOL)attributionSupportsGlyphImage:(id)arg1;
 - (id)stringWithLogoImageFromText:(id)arg1 attribution:(id)arg2 attr:(id)arg3;
 - (id)styledAQICategoryText:(id)arg1 mode:(CDStruct_4bcfbbae)arg2;
 - (id)styledAQILocalizedIndexText:(id)arg1 mode:(CDStruct_4bcfbbae)arg2;
-- (id)styledAQIMetadataCitationText:(id)arg1 attribution:(id)arg2;
+- (id)styledAQIMetadataCitationText:(id)arg1 attribution:(id)arg2 shouldInsertGlyph:(BOOL)arg3;
 - (id)styledAQIMetadataGradeText:(id)arg1;
 - (id)styledAQIMetadataRecommendationText:(id)arg1;
 - (id)styledAQIMetadataSourceText:(id)arg1;

@@ -7,14 +7,14 @@
 #import <objc/NSObject.h>
 
 #import <SleepDaemon/HDSPEnvironmentAware-Protocol.h>
-#import <SleepDaemon/HDSPSleepModeObserver-Protocol.h>
+#import <SleepDaemon/HDSPSleepActionObserver-Protocol.h>
 #import <SleepDaemon/HDSPWakeDetector-Protocol.h>
 
 @class HDSPEnvironment, NSString;
 @protocol HDSPWakeDetectorDelegate;
 
 __attribute__((visibility("hidden")))
-@interface HDSPSleepModeExitDetector : NSObject <HDSPSleepModeObserver, HDSPWakeDetector, HDSPEnvironmentAware>
+@interface HDSPSleepModeExitDetector : NSObject <HDSPSleepActionObserver, HDSPWakeDetector, HDSPEnvironmentAware>
 {
     BOOL _isDetecting;
     id<HDSPWakeDetectorDelegate> _wakeDetectorDelegate;
@@ -23,16 +23,17 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long detectionWindowMinutes;
 @property (readonly, weak, nonatomic) HDSPEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
-@property BOOL isDetecting; // @synthesize isDetecting=_isDetecting;
+@property (readonly, nonatomic) BOOL isDetecting; // @synthesize isDetecting=_isDetecting;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<HDSPWakeDetectorDelegate> wakeDetectorDelegate; // @synthesize wakeDetectorDelegate=_wakeDetectorDelegate;
 
 - (void).cxx_destruct;
 - (void)environmentDidBecomeReady:(id)arg1;
 - (id)initWithEnvironment:(id)arg1;
-- (void)sleepModeDidChange:(long long)arg1 previousMode:(long long)arg2 reason:(unsigned long long)arg3;
+- (void)sleepModeSet:(long long)arg1 source:(id)arg2;
 - (void)startDetecting;
 - (void)stopDetecting;
 

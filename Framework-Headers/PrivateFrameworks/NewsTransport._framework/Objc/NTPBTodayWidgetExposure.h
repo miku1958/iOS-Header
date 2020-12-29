@@ -16,15 +16,19 @@
     NSString *_contentId;
     int _widgetAppearanceType;
     int _widgetArticleCount;
+    int _widgetExposureStackLocation;
     int _widgetHeadlineExposureCount;
     NSString *_widgetIdentifier;
     NSMutableArray *_widgetPersonalizationFeatureCTRPairs;
     NSMutableArray *_widgetSectionsArticleCountPairs;
+    int _widgetType;
     struct {
         unsigned int contentFetchDate:1;
         unsigned int widgetAppearanceType:1;
         unsigned int widgetArticleCount:1;
+        unsigned int widgetExposureStackLocation:1;
         unsigned int widgetHeadlineExposureCount:1;
+        unsigned int widgetType:1;
     } _has;
 }
 
@@ -34,18 +38,24 @@
 @property (readonly, nonatomic) BOOL hasContentId;
 @property (nonatomic) BOOL hasWidgetAppearanceType;
 @property (nonatomic) BOOL hasWidgetArticleCount;
+@property (nonatomic) BOOL hasWidgetExposureStackLocation;
 @property (nonatomic) BOOL hasWidgetHeadlineExposureCount;
 @property (readonly, nonatomic) BOOL hasWidgetIdentifier;
+@property (nonatomic) BOOL hasWidgetType;
 @property (nonatomic) int widgetAppearanceType; // @synthesize widgetAppearanceType=_widgetAppearanceType;
 @property (nonatomic) int widgetArticleCount; // @synthesize widgetArticleCount=_widgetArticleCount;
+@property (nonatomic) int widgetExposureStackLocation; // @synthesize widgetExposureStackLocation=_widgetExposureStackLocation;
 @property (nonatomic) int widgetHeadlineExposureCount; // @synthesize widgetHeadlineExposureCount=_widgetHeadlineExposureCount;
 @property (strong, nonatomic) NSString *widgetIdentifier; // @synthesize widgetIdentifier=_widgetIdentifier;
 @property (strong, nonatomic) NSMutableArray *widgetPersonalizationFeatureCTRPairs; // @synthesize widgetPersonalizationFeatureCTRPairs=_widgetPersonalizationFeatureCTRPairs;
 @property (strong, nonatomic) NSMutableArray *widgetSectionsArticleCountPairs; // @synthesize widgetSectionsArticleCountPairs=_widgetSectionsArticleCountPairs;
+@property (nonatomic) int widgetType; // @synthesize widgetType=_widgetType;
 
 + (Class)widgetPersonalizationFeatureCTRPairType;
 + (Class)widgetSectionsArticleCountPairType;
 - (void).cxx_destruct;
+- (int)StringAsWidgetExposureStackLocation:(id)arg1;
+- (int)StringAsWidgetType:(id)arg1;
 - (void)addWidgetPersonalizationFeatureCTRPair:(id)arg1;
 - (void)addWidgetSectionsArticleCountPair:(id)arg1;
 - (void)clearWidgetPersonalizationFeatureCTRPairs;
@@ -57,10 +67,12 @@
 - (BOOL)isEqual:(id)arg1;
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)widgetExposureStackLocationAsString:(int)arg1;
 - (id)widgetPersonalizationFeatureCTRPairAtIndex:(unsigned long long)arg1;
 - (unsigned long long)widgetPersonalizationFeatureCTRPairsCount;
 - (id)widgetSectionsArticleCountPairAtIndex:(unsigned long long)arg1;
 - (unsigned long long)widgetSectionsArticleCountPairsCount;
+- (id)widgetTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

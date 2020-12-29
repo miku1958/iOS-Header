@@ -33,8 +33,10 @@
 @property (readonly, nonatomic) BOOL mpcReporting_shouldUseRelativeTimePositions;
 @property (readonly, copy, nonatomic) NSNumber *mpcReporting_siriInitiated;
 @property (readonly, copy, nonatomic) NSData *mpcReporting_trackInfo;
+@property (nonatomic) double playbackStartTimeOverride;
 @property (readonly, nonatomic) BOOL prefersSeekOverSkip;
 @property (nonatomic) long long repeatIndex;
+@property (readonly, nonatomic) double time;
 @property (copy, nonatomic) NSString *title;
 @property (readonly, copy, nonatomic) NSURL *url;
 

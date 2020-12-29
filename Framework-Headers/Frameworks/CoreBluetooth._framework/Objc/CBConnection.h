@@ -19,9 +19,8 @@
 @interface CBConnection : NSObject <CBCentralManagerDelegate, CBPeripheralDelegate, CBActivatable, CBLabelable, CBReadWriteRequestable, CBStateReporting>
 {
     CDUnknownBlockType _activateCompletion;
+    NSUUID *_blePeerUUID;
     CBCentralManager *_centralManager;
-    unsigned short _destinationPSM;
-    NSUUID *_destinationUUID;
     BOOL _guardConnected;
     BOOL _invalidateCalled;
     BOOL _invalidateDone;
@@ -37,6 +36,7 @@
     CBWriteRequest *_writeRequestCurrent;
     NSMutableArray *_writeRequests;
     struct LogCategory *_ucat;
+    unsigned short _blePSM;
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _invalidationHandler;
     NSString *_label;
@@ -45,13 +45,13 @@
     NSString *_clientBundleID;
     long long _clientUseCase;
     long long _connectionLatency;
-    CBDevice *_destinationDevice;
     CDUnknownBlockType _errorHandler;
-    NSString *_serviceType;
+    CBDevice *_peerDevice;
     CBL2CAPChannel *_l2capChannel;
     CDUnknownBlockType _serverInvalidationHandler;
 }
 
+@property (nonatomic) unsigned short blePSM; // @synthesize blePSM=_blePSM;
 @property (readonly, nonatomic) long long bluetoothState; // @synthesize bluetoothState=_bluetoothState;
 @property (copy, nonatomic) CDUnknownBlockType bluetoothStateChangedHandler; // @synthesize bluetoothStateChangedHandler=_bluetoothStateChangedHandler;
 @property (copy, nonatomic) NSString *clientBundleID; // @synthesize clientBundleID=_clientBundleID;
@@ -59,15 +59,14 @@
 @property (nonatomic) long long connectionLatency; // @synthesize connectionLatency=_connectionLatency;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (strong, nonatomic) CBDevice *destinationDevice; // @synthesize destinationDevice=_destinationDevice;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (copy, nonatomic) CDUnknownBlockType errorHandler; // @synthesize errorHandler=_errorHandler;
 @property (readonly) unsigned long long hash;
 @property (copy, nonatomic) CDUnknownBlockType invalidationHandler; // @synthesize invalidationHandler=_invalidationHandler;
 @property (strong, nonatomic) CBL2CAPChannel *l2capChannel; // @synthesize l2capChannel=_l2capChannel;
 @property (copy, nonatomic) NSString *label; // @synthesize label=_label;
+@property (strong, nonatomic) CBDevice *peerDevice; // @synthesize peerDevice=_peerDevice;
 @property (copy, nonatomic) CDUnknownBlockType serverInvalidationHandler; // @synthesize serverInvalidationHandler=_serverInvalidationHandler;
-@property (copy, nonatomic) NSString *serviceType; // @synthesize serviceType=_serviceType;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;

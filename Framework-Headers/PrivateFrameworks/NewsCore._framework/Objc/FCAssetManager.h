@@ -54,7 +54,7 @@
 - (id)_assetKeyForRemoteURL:(id)arg1;
 - (BOOL)_dataIsGzipped:(id)arg1;
 - (void)_fetchDataProviderForAssetHandle:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)_importFileAtPath:(id)arg1 method:(long long)arg2 key:(id)arg3 mimeType:(id)arg4 lifetimeHint:(long long)arg5;
+- (id)_importFileAtPath:(id)arg1 method:(long long)arg2 key:(id)arg3 mimeType:(id)arg4 importedMetadata:(id)arg5 lifetimeHint:(long long)arg6;
 - (void)_initStores;
 - (id)_populateRawFilePathForAssetHandle:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_prepareForUseIfNeeded;
@@ -69,10 +69,13 @@
 - (id)assetHandleForURL:(id)arg1 prefetchedFileURL:(id)arg2 importMethod:(long long)arg3 lifetimeHint:(long long)arg4;
 - (void)cacheCoordinator:(id)arg1 flushKeysWithWriteLock:(id)arg2;
 - (unsigned long long)cacheCoordinatorCurrentSizeWithReadLock:(id)arg1;
+- (id)contentArchiveForAssetHandle:(id)arg1;
 - (void)d_resetAssetHandle:(id)arg1;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1;
+- (id)importAsset:(id)arg1 remoteURL:(id)arg2 fileURL:(id)arg3;
 - (id)init;
 - (id)initWithName:(id)arg1 directory:(id)arg2 keyManager:(id)arg3 avAssetFactory:(id)arg4 networkBehaviorMonitor:(id)arg5;
+- (id)interesetTokenForAssetURLs:(id)arg1;
 - (id)operationToFetchDataProviderForAssetHandle:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)saveWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)t_save;

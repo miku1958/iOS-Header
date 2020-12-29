@@ -22,7 +22,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithWriter:(id)arg1;
 - (void)resetDatastoreFiles:(id)arg1;
-- (void)setMonitoring:(BOOL)arg1;
+- (void)setMonitoring:(BOOL)arg1 withRequestedConfigurations:(id)arg2;
 
 @end
 

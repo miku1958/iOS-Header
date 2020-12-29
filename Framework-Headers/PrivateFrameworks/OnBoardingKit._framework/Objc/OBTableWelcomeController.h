@@ -47,6 +47,7 @@
 - (void)_setupScrollView;
 - (void)_updateButtonTrayTableFooterContainerSizeIfNeeded;
 - (void)_updateDirectionalLayoutMarginsForTableView;
+- (void)_updateHeaderFooterViewSizeIfNeeded;
 - (void)_updateHeaderTopOffsetConstraint;
 - (void)_updateTableHeaderViewSizeIfNeeded;
 - (BOOL)contentViewUnderButtonTray;

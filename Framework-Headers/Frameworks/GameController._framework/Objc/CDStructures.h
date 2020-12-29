@@ -170,7 +170,9 @@ typedef struct {
 
 typedef struct {
     CDStruct_e11ff636 _field1[16];
-} CDStruct_8de101df;
+    BOOL _field2;
+    BOOL _field3;
+} CDStruct_4d38efe0;
 
 // Ambiguous groups
 typedef struct {

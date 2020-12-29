@@ -24,15 +24,19 @@
 - (BOOL)_loadDirectionsTable;
 - (BOOL)_loadETAUpdatesTable;
 - (BOOL)_loadInfoTable;
-- (BOOL)_loadLocationsTable;
+- (BOOL)_loadLocationsTable:(BOOL)arg1;
 - (BOOL)_loadMiscInfo;
 - (BOOL)_loadMotionDataTable;
+- (BOOL)_loadNavigationEventsTable;
 - (BOOL)_loadRouteSelectionsTable;
 - (BOOL)_loadTraceVersion;
 - (BOOL)_loadVehicleDataTable;
 - (BOOL)_tableExists:(id)arg1;
 - (BOOL)_updateTraceFromVersion:(unsigned long long)arg1 outError:(id *)arg2;
-- (id)loadTraceWithPath:(id)arg1 outError:(id *)arg2;
+- (BOOL)loadExtraData;
+- (id)loadTraceWithPath:(id)arg1 options:(unsigned long long)arg2 outError:(out id *)arg3;
+- (id)loadTraceWithPath:(id)arg1 outError:(out id *)arg2;
+- (id)trace;
 
 @end
 

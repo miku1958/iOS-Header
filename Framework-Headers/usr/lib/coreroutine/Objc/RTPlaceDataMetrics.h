@@ -55,6 +55,7 @@
 - (id)removeTimeFromDateTime:(id)arg1 withCalendar:(id)arg2;
 - (void)setCurrentInferenceReplayableMetricsFromDict:(id)arg1;
 - (void)setDerivedMetrics;
+- (void)setWiFiStabilityRatioForHome:(id)arg1 work:(id)arg2 others:(id)arg3;
 - (id)standardDeviationOf:(id)arg1;
 - (BOOL)submitMetricsWithError:(id *)arg1;
 

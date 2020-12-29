@@ -127,6 +127,8 @@
     UITraitCollection *_overrideTraitCollection;
     UIAccessibilityHUDView *_accessibilityHUD;
     struct CGSize _lastForwardedTransitionSize;
+    BOOL _nextResponderIgnoresChildModalVC;
+    BOOL _nextResponderIgnoresOverride;
     BOOL overrideUseCustomPresentation;
     BOOL _modalPresentationCapturesStatusBarAppearance;
     BOOL _ignoresParentMargins;
@@ -204,6 +206,8 @@
 @property (nonatomic, setter=_setNavigationControllerContentInsetAdjustment:) struct UIEdgeInsets _navigationControllerContentInsetAdjustment; // @dynamic _navigationControllerContentInsetAdjustment;
 @property (nonatomic, setter=_setNavigationControllerContentOffsetAdjustment:) double _navigationControllerContentOffsetAdjustment; // @synthesize _navigationControllerContentOffsetAdjustment;
 @property (readonly, nonatomic) UINavigationItem *_navigationItemCreatingDefaultIfNotSet;
+@property (nonatomic) BOOL _nextResponderIgnoresChildModalVC; // @synthesize _nextResponderIgnoresChildModalVC;
+@property (nonatomic) BOOL _nextResponderIgnoresOverride; // @synthesize _nextResponderIgnoresOverride;
 @property (readonly, nonatomic) UIViewController *_parentModalViewController;
 @property (readonly, nonatomic) UIViewController *_parentViewController;
 @property (readonly, nonatomic) NSArray *_preferredContentSizes;
@@ -549,7 +553,6 @@
 - (id)_multitaskingDragExclusionRects;
 - (id)_navControllerToCreateManagedSearchPaletteForNavController:(id)arg1;
 - (id)_navigationBarForDragAffordance;
-- (id)_nextResponderIgnoringChildModalViewController:(BOOL)arg1;
 - (id)_nextResponderUsingTargetActionStrategyFromChildViewController:(id)arg1 didTraverseToParentViewController:(BOOL *)arg2;
 - (id)_nextResponderUsingTraversalStrategy:(unsigned long long)arg1;
 - (id)_nextViewController;

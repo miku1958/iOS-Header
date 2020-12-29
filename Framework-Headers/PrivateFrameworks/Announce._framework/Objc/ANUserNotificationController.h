@@ -26,12 +26,13 @@
 - (void).cxx_destruct;
 - (id)_contentBodyForAnnouncements:(id)arg1 inHome:(id)arg2;
 - (void)_contentForAnnouncements:(id)arg1 inHome:(id)arg2 withGroupID:(id)arg3 replacement:(BOOL)arg4 completion:(CDUnknownBlockType)arg5;
-- (id)_contentForSendFailureForAnnouncement:(id)arg1;
+- (id)_contentForSendFailureForAnnouncement:(id)arg1 homeName:(id)arg2;
 - (void)_postNotificationWithContent:(id)arg1 withGroupID:(id)arg2;
 - (void)_replaceContentForRequestWithGroupID:(id)arg1 replacementContent:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)_setContentExpirationDate:(id)arg1 forNotificationsWithGroupIDs:(id)arg2;
 - (id)_userInfoForAnnouncements:(id)arg1;
 - (id)_userInfoForFailedDeliveryForAnnouncement:(id)arg1;
+- (void)cleanForExit;
 - (BOOL)hasDeliveredNotificationsWithGroupID:(id)arg1;
 - (id)init;
 - (void)pauseExpirationForNotificationsWithGroupIDs:(id)arg1;

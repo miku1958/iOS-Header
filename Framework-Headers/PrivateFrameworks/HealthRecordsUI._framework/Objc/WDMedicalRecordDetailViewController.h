@@ -42,6 +42,8 @@ __attribute__((visibility("hidden")))
 - (BOOL)tableView:(id)arg1 shouldHighlightRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 titleForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
+- (void)trackUserImpression;
+- (void)trackUserInteraction;
 - (void)viewDidAppear:(BOOL)arg1;
 - (void)viewDidLoad;
 

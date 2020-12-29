@@ -22,12 +22,14 @@
     id<WFAlertPresenter> _presenter;
     NSMutableArray *_mutableButtons;
     NSMutableArray *_mutableTextFieldConfigurationHandlers;
+    unsigned long long _dialogAttributionMode;
 }
 
 @property (readonly, nonatomic) NSError *associatedError;
 @property (copy, nonatomic) NSArray *buttons;
 @property (strong, nonatomic) WFDatePickerConfiguration *datePickerConfiguration; // @synthesize datePickerConfiguration=_datePickerConfiguration;
 @property (copy, nonatomic) NSDate *datePickerResult; // @synthesize datePickerResult=_datePickerResult;
+@property (nonatomic) unsigned long long dialogAttributionMode; // @synthesize dialogAttributionMode=_dialogAttributionMode;
 @property (readonly, nonatomic) WFAlertButton *escapeButton;
 @property (copy, nonatomic) NSString *message; // @synthesize message=_message;
 @property (strong, nonatomic) NSMutableArray *mutableButtons; // @synthesize mutableButtons=_mutableButtons;

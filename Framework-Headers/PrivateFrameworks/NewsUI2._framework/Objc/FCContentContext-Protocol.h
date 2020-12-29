@@ -7,8 +7,8 @@
 #import <NewsUI2/FCCacheFlushing-Protocol.h>
 #import <NewsUI2/NSObject-Protocol.h>
 
-@class FCArticleController, FCAssetManager, FCFlintResourceManager, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
-@protocol FCAVAssetPrewarming, FCBackgroundTaskable, FCCacheFlushing, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
+@class FCArticleController, FCAssetManager, FCContentManifest, FCFlintResourceManager, FCInterestToken, FCJSONRecordSourceSchema, FCNetworkBehaviorMonitor, FCTagController, NSArray, NSString, NSURL;
+@protocol FCAVAssetPrewarming, FCBackgroundTaskable, FCCacheFlushing, FCCoreConfigurationManager, FCCoreConfigurationManager><FCNewsAppConfigurationManager, FCJSONRecordSourceType, FCJSONRecordTreeSourceType, FCMagazinesConfigurationManager, FCNewsAppConfigurationManager, FCPPTContext;
 
 @protocol FCContentContext <NSObject, FCCacheFlushing>
 
@@ -25,13 +25,11 @@
 @property (nonatomic, readonly) FCFlintResourceManager *flintResourceManager;
 @property (nonatomic, readonly) FCNetworkBehaviorMonitor *networkBehaviorMonitor;
 @property (nonatomic, readonly) id<FCPPTContext> pptContext;
-@property (nonatomic, readonly) long long preferredMediaQuality;
 @property (nonatomic, readonly) NSString *supportedContentStoreFrontID;
 @property (nonatomic, readonly) FCTagController *tagController;
-@property (nonatomic, readonly) NSURL *webArchiveCacheDirectoryURL;
-@property (nonatomic, strong) id<FCWebArchiveSource> webArchiveSource;
 
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1 exceptForFlusher:(id<FCCacheFlushing>)arg2;
+- (FCInterestToken *)interestTokenForContentManifest:(FCContentManifest *)arg1;
 - (id<FCMagazinesConfigurationManager>)magazinesConfigurationManager;
 - (id<FCCoreConfigurationManager><FCNewsAppConfigurationManager>)news_core_ConfigurationManager;
 - (void)ppt_overrideFeedEndpoint:(long long)arg1;

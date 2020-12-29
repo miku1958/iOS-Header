@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     BOOL _rtpTimeOutEnabled;
     double _rtpTimeOutInterval;
     BOOL _decryptionTimeOutEnabled;
+    double _decryptionMKMRecoveryInterval;
     double _decryptionTimeOutInterval;
     unsigned int _cellularUniqueTag;
     BOOL _rtcpEnabled;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) long long SRTPCipherSuite; // @synthesize SRTPCipherSuite=_SRTPCipherSuite;
 @property (copy, nonatomic) NSString *cName; // @synthesize cName=_cName;
 @property (nonatomic) unsigned int cellularUniqueTag; // @synthesize cellularUniqueTag=_cellularUniqueTag;
+@property (nonatomic) double decryptionMKMRecoveryInterval; // @synthesize decryptionMKMRecoveryInterval=_decryptionMKMRecoveryInterval;
 @property (nonatomic, getter=isDecryptionTimeOutEnabled) BOOL decryptionTimeOutEnabled; // @synthesize decryptionTimeOutEnabled=_decryptionTimeOutEnabled;
 @property (nonatomic) double decryptionTimeOutInterval; // @synthesize decryptionTimeOutInterval=_decryptionTimeOutInterval;
 @property (nonatomic) long long direction; // @synthesize direction=_direction;

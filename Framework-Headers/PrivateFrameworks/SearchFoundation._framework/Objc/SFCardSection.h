@@ -10,7 +10,7 @@
 #import <SearchFoundation/SFCardSection-Protocol.h>
 #import <SearchFoundation/SFJSONSerializable-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFUserReportRequest;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFCommand, SFUserReportRequest;
 
 @interface SFCardSection : NSObject <SFJSONSerializable, SFCardSection, NSCopying>
 {
@@ -30,11 +30,14 @@
     SFColor *_backgroundColor;
     NSString *_resultIdentifier;
     SFUserReportRequest *_userReportRequest;
+    SFCommand *_command;
+    SFCommand *_previewCommand;
 }
 
 @property (strong, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (copy, nonatomic) NSString *cardSectionId; // @synthesize cardSectionId=_cardSectionId;
+@property (strong, nonatomic) SFCommand *command; // @synthesize command=_command;
 @property (copy, nonatomic) NSArray *commands; // @synthesize commands=_commands;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *debugDescription;
@@ -49,6 +52,7 @@
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SFCard *nextCard; // @synthesize nextCard=_nextCard;
 @property (copy, nonatomic) NSArray *parameterKeyPaths; // @synthesize parameterKeyPaths=_parameterKeyPaths;
+@property (strong, nonatomic) SFCommand *previewCommand; // @synthesize previewCommand=_previewCommand;
 @property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;

@@ -6,18 +6,16 @@
 
 #import <TipsCore/TPSTip.h>
 
-@class NSAttributedString, NSDictionary, NSString;
+@class NSAttributedString, NSDictionary;
 
 @interface TPSDiscoverabilityTip : TPSTip
 {
     NSAttributedString *_attributedString;
-    NSString *_userLanguageCode;
     NSDictionary *_preconditions;
 }
 
 @property (strong, nonatomic) NSAttributedString *attributedString; // @synthesize attributedString=_attributedString;
 @property (copy, nonatomic) NSDictionary *preconditions; // @synthesize preconditions=_preconditions;
-@property (copy, nonatomic) NSString *userLanguageCode; // @synthesize userLanguageCode=_userLanguageCode;
 
 + (id)classSet;
 + (BOOL)supportsSecureCoding;
@@ -26,7 +24,6 @@
 - (id)debugDescription;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithDictionary:(id)arg1 metadata:(id)arg2;
 
 @end
 

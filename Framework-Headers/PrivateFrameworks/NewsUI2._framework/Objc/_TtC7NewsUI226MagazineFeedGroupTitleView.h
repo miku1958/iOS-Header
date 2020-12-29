@@ -13,6 +13,7 @@
     MISSING_TYPE *titleLabel;
     MISSING_TYPE *titleContainerView;
     MISSING_TYPE *subtitleLabel;
+    MISSING_TYPE *moreActionsButton;
     MISSING_TYPE *debugFeedAction;
 }
 

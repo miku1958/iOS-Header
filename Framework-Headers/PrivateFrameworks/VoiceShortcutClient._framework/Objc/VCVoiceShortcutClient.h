@@ -83,6 +83,8 @@
 - (id)initWithMachServiceName:(id)arg1 options:(unsigned long long)arg2 interfaceSetupBlock:(CDUnknownBlockType)arg3;
 - (id)initWithXPCConnection:(id)arg1 XPCConnectionCreationBlock:(CDUnknownBlockType)arg2 XPCInterfaceSetupBlock:(CDUnknownBlockType)arg3;
 - (id)initWithXPCConnectionCreationBlock:(CDUnknownBlockType)arg1 XPCInterfaceSetupBlock:(CDUnknownBlockType)arg2;
+- (void)logRunOfContextualAction:(id)arg1;
+- (void)logUndoOfContextualAction:(id)arg1;
 - (void)obliterateShortcuts:(CDUnknownBlockType)arg1;
 - (void)refreshTriggerWithIdentifier:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)requestDataMigration:(id *)arg1;
@@ -93,6 +95,7 @@
 - (void)setInteger:(long long)arg1 forKey:(id)arg2 inDomain:(id)arg3 completionHandler:(CDUnknownBlockType)arg4;
 - (void)setShortcutSuggestions:(id)arg1 forAppWithBundleIdentifier:(id)arg2;
 - (id)shareSheetWorkflowsForExtensionMatchingDictionaries:(id)arg1 resolvedActivityItems:(id)arg2 hostBundleIdentifier:(id)arg3 iconSize:(struct CGSize)arg4 iconScale:(double)arg5 error:(id *)arg6;
+- (void)showSingleStepCompletionForWebClip:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stopRunningWorkflowWithRunningContext:(id)arg1;
 - (void)subscribeToVoiceShortcutDataUpdateNotifications;
 - (id)synchronousRemoteDataStoreWithErrorHandler:(CDUnknownBlockType)arg1;

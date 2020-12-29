@@ -80,9 +80,11 @@
 - (void)_updateDetailsButtonVisibility;
 - (void)_updateLayoutMargins;
 - (BOOL)_useCompactHeightLayout;
+- (void)dealloc;
 - (void)hideAuxiliaryView;
 - (id)initWithFrame:(struct CGRect)arg1 delegate:(id)arg2 sourceRect:(struct CGRect)arg3;
 - (void)layoutMarginsDidChange;
+- (void)layoutSubviews;
 - (void)showAuxiliaryView:(id)arg1;
 - (struct CGAffineTransform)sourceViewTransformForPresentationProgress:(double)arg1;
 - (void)traitCollectionDidChange:(id)arg1;

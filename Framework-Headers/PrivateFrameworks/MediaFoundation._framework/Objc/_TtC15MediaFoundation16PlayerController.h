@@ -31,9 +31,6 @@
     MISSING_TYPE *leaseController;
     MISSING_TYPE *lastUserEvent;
     MISSING_TYPE *previousItemID;
-    MISSING_TYPE *seekToTimeCompletedEvent;
-    MISSING_TYPE *itemAtDeath;
-    MISSING_TYPE *timeAtDeath;
 }
 
 @property (nonatomic, readonly) NSDictionary *stateDictionary;

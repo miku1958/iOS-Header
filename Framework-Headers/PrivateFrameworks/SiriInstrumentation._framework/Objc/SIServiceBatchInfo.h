@@ -13,6 +13,8 @@
     BOOL _hasBatch_id;
     BOOL _hasDevice_upload_info;
     BOOL _hasServer_upload_info;
+    BOOL _hasBatch_type;
+    int _batch_type;
     unsigned long long _whichUpload_Info;
     SIServiceDeviceUploadInfo *_device_upload_info;
     SIServiceServerUploadInfo *_server_upload_info;
@@ -20,8 +22,10 @@
 }
 
 @property (copy, nonatomic) NSData *batch_id; // @synthesize batch_id=_batch_id;
+@property (nonatomic) int batch_type; // @synthesize batch_type=_batch_type;
 @property (strong, nonatomic) SIServiceDeviceUploadInfo *device_upload_info; // @synthesize device_upload_info=_device_upload_info;
 @property (nonatomic) BOOL hasBatch_id; // @synthesize hasBatch_id=_hasBatch_id;
+@property (nonatomic) BOOL hasBatch_type; // @synthesize hasBatch_type=_hasBatch_type;
 @property (nonatomic) BOOL hasDevice_upload_info; // @synthesize hasDevice_upload_info=_hasDevice_upload_info;
 @property (nonatomic) BOOL hasServer_upload_info; // @synthesize hasServer_upload_info=_hasServer_upload_info;
 @property (readonly, nonatomic) NSData *jsonData;

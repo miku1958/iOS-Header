@@ -40,6 +40,7 @@ struct WDElectrocardiogramOverviewSectionInfo {
     long long _field5;
     long long _field6;
     long long _field7;
+    long long _field8;
 };
 
 struct WDElectrocardiogramOverviewUserConfigurationRowInfo {

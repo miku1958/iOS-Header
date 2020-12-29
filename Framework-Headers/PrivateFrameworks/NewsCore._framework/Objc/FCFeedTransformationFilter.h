@@ -41,8 +41,10 @@
 + (id)transformationWithFilterOptions:(long long)arg1 otherArticleIDs:(id)arg2 otherClusterIDs:(id)arg3 subscribedTagIDs:(id)arg4 mutedTagIDs:(id)arg5 briefingsTagID:(id)arg6 paidAccessChecker:(id)arg7 bundleSubscription:(id)arg8;
 - (void).cxx_destruct;
 - (id)transformFeedItems:(id)arg1;
+- (id)transformFeedItemsWithResults:(id)arg1;
 - (id)transformHeadline:(id)arg1;
 - (id)transformHeadlines:(id)arg1;
+- (id)transformHeadlinesWithResult:(id)arg1;
 
 @end
 

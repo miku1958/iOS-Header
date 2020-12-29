@@ -7,11 +7,12 @@
 #import <UIKit/UIView.h>
 
 #import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
+#import <MediaControls/UIPointerInteractionDelegate-Protocol.h>
 
 @class MRUVisualStylingProvider, NSString, UIButton;
 
 __attribute__((visibility("hidden")))
-@interface MRUViewServiceRoutingFooterView : UIView <MRUVisualStylingProviderObserver>
+@interface MRUViewServiceRoutingFooterView : UIView <MRUVisualStylingProviderObserver, UIPointerInteractionDelegate>
 {
     UIButton *_button;
     MRUVisualStylingProvider *_stylingProvider;
@@ -29,6 +30,8 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateContentSizeCategory;
 - (void)updateVisualStyling;

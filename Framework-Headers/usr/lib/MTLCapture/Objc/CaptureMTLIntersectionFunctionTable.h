@@ -72,6 +72,8 @@
 - (void)setFunctions:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (void)setGlobalBuffer:(id)arg1;
 - (void)setGlobalBufferOffset:(unsigned long long)arg1;
+- (void)setOpaqueTriangleIntersectionFunctionWithSignature:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
+- (void)setOpaqueTriangleIntersectionFunctionWithSignature:(unsigned long long)arg1 withRange:(struct _NSRange)arg2;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
 - (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;

@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSDate, NSString;
 
 @interface BatchMetadata : NSObject
 {
@@ -15,17 +15,17 @@
     NSString *_timestampReferenceIdentifier;
     unsigned long long _batchSize;
     unsigned long long _processedAttempts;
-    NSString *_dateCreated;
-    NSString *_dateLastProcessed;
-    NSString *_dateUploaded;
+    NSDate *_dateCreated;
+    NSDate *_dateLastProcessed;
+    NSDate *_dateUploaded;
 }
 
 @property (copy, nonatomic) NSString *batchIdentifier; // @synthesize batchIdentifier=_batchIdentifier;
 @property (nonatomic) unsigned long long batchSize; // @synthesize batchSize=_batchSize;
 @property (nonatomic) int batchStatus; // @synthesize batchStatus=_batchStatus;
-@property (copy, nonatomic) NSString *dateCreated; // @synthesize dateCreated=_dateCreated;
-@property (copy, nonatomic) NSString *dateLastProcessed; // @synthesize dateLastProcessed=_dateLastProcessed;
-@property (copy, nonatomic) NSString *dateUploaded; // @synthesize dateUploaded=_dateUploaded;
+@property (copy, nonatomic) NSDate *dateCreated; // @synthesize dateCreated=_dateCreated;
+@property (copy, nonatomic) NSDate *dateLastProcessed; // @synthesize dateLastProcessed=_dateLastProcessed;
+@property (copy, nonatomic) NSDate *dateUploaded; // @synthesize dateUploaded=_dateUploaded;
 @property (nonatomic) unsigned long long processedAttempts; // @synthesize processedAttempts=_processedAttempts;
 @property (copy, nonatomic) NSString *timestampReferenceIdentifier; // @synthesize timestampReferenceIdentifier=_timestampReferenceIdentifier;
 

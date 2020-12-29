@@ -26,6 +26,7 @@
     BOOL _insertsSpaceAfterPredictiveInput;
     BOOL _usesContinuousPathRetrocorrection;
     BOOL _shouldIgnoreCPRequirements;
+    BOOL _includeLightWeightLanguageModelMobileAssets;
     BOOL _usesCJContinuousPath;
     BOOL _testing;
     BOOL _skipLanguageLayoutCheckCPML;
@@ -61,6 +62,7 @@
 @property (nonatomic) long long cpCandidatesCount; // @synthesize cpCandidatesCount=_cpCandidatesCount;
 @property (nonatomic) int cpConfidenceModelType; // @synthesize cpConfidenceModelType=_cpConfidenceModelType;
 @property (copy, nonatomic) NSString *dynamicResourcePath; // @synthesize dynamicResourcePath=_dynamicResourcePath;
+@property (nonatomic) BOOL includeLightWeightLanguageModelMobileAssets; // @synthesize includeLightWeightLanguageModelMobileAssets=_includeLightWeightLanguageModelMobileAssets;
 @property (strong, nonatomic) TIInputMode *inputMode; // @synthesize inputMode=_inputMode;
 @property (nonatomic) BOOL insertsSpaceAfterPredictiveInput; // @synthesize insertsSpaceAfterPredictiveInput=_insertsSpaceAfterPredictiveInput;
 @property (nonatomic) BOOL languageAllowsCP; // @synthesize languageAllowsCP=_languageAllowsCP;

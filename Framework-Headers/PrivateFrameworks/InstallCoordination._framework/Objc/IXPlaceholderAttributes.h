@@ -19,6 +19,7 @@
     BOOL _arcadeApp;
     NSString *_bundleVersion;
     NSDictionary *_extensionDictionary;
+    NSDictionary *_exAppExtensionAttributes;
     NSString *_minimumOSVersion;
     NSDictionary *_requiredDeviceCapabilities;
     NSArray *_sbAppTags;
@@ -30,6 +31,7 @@
 @property (nonatomic) BOOL arcadeApp; // @synthesize arcadeApp=_arcadeApp;
 @property (copy, nonatomic) NSString *bundleVersion; // @synthesize bundleVersion=_bundleVersion;
 @property (copy, nonatomic) NSString *companionBundleIdentifierForWatchApp; // @synthesize companionBundleIdentifierForWatchApp=_companionBundleIdentifierForWatchApp;
+@property (copy, nonatomic) NSDictionary *exAppExtensionAttributes; // @synthesize exAppExtensionAttributes=_exAppExtensionAttributes;
 @property (copy, nonatomic) NSDictionary *extensionDictionary; // @synthesize extensionDictionary=_extensionDictionary;
 @property (nonatomic) BOOL launchProhibited; // @synthesize launchProhibited=_launchProhibited;
 @property (copy, nonatomic) NSArray *lsCounterpartIdentifiers; // @synthesize lsCounterpartIdentifiers=_lsCounterpartIdentifiers;

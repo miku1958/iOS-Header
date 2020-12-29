@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (void)cameraZoomAvailabilityDidChange:(BOOL)arg1;
 - (void)captureDevicesChanged:(id)arg1;
 - (void)didChangeLocalVideoAttributes:(id)arg1;
+- (void)didPausePreview;
 - (void)didReceiveErrorFromCameraUniqueID:(id)arg1 error:(id)arg2;
 - (void)didReceiveFirstPreviewFrameFromCameraUniqueID:(id)arg1;
 - (void)didStartPreview;

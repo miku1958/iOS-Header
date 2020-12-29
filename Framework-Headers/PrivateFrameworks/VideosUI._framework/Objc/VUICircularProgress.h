@@ -14,6 +14,7 @@ __attribute__((visibility("hidden")))
     BOOL _indeterminate;
     double _indeterminateWidth;
     UIColor *_progressFillColor;
+    UIColor *_progressBgColor;
     double _progress;
     double _centerSquareWidth;
     CAShapeLayer *_indeterminateLayer;
@@ -30,6 +31,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) double indeterminateWidth; // @synthesize indeterminateWidth=_indeterminateWidth;
 @property (nonatomic) double progress; // @synthesize progress=_progress;
 @property (strong, nonatomic) CAShapeLayer *progressBackgroundLayer; // @synthesize progressBackgroundLayer=_progressBackgroundLayer;
+@property (strong, nonatomic) UIColor *progressBgColor; // @synthesize progressBgColor=_progressBgColor;
 @property (strong, nonatomic) UIColor *progressFillColor; // @synthesize progressFillColor=_progressFillColor;
 @property (strong, nonatomic) CAShapeLayer *progressLayer; // @synthesize progressLayer=_progressLayer;
 @property (nonatomic) double progressWidth; // @synthesize progressWidth=_progressWidth;
@@ -51,6 +53,7 @@ __attribute__((visibility("hidden")))
 - (void)layoutSubviews;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)tintColorDidChange;
+- (void)traitCollectionDidChange:(id)arg1;
 
 @end
 

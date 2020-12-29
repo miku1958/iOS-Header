@@ -12,6 +12,9 @@
 
 + (BOOL)_boolForPreferenceKey:(id)arg1 defaultValue:(BOOL)arg2 fromValues:(id)arg3;
 + (BOOL)_isHeadphoneExposureDataTransient;
++ (BOOL)_isHeadphoneExposureDataTransientOnActiveWatchWithError:(id *)arg1;
++ (BOOL)_isMeasureOtherHeadphonesEnabled;
++ (BOOL)_isMeasureOtherHeadphonesEnabledOnActiveWatchWithError:(id *)arg1;
 + (id)_numbersForPhonePreferenceKeys:(id)arg1;
 + (id)_numbersForPreferenceKeys:(id)arg1 error:(id *)arg2;
 + (id)_numbersForPreferenceKeys:(id)arg1 fromActiveWatch:(BOOL)arg2;
@@ -33,27 +36,21 @@
 + (BOOL)isHeadphoneExposureNotificationsEnabled;
 + (BOOL)isHeadphoneExposureNotificationsEnabledOnActiveWatchWithError:(id *)arg1;
 + (BOOL)isHeadphoneExposureNotificationsSupportedOnActiveWatch;
++ (BOOL)setBoolForPreferenceKey:(id)arg1 newValue:(BOOL)arg2 forPairedWatch:(BOOL)arg3 error:(id *)arg4;
 + (id)sharedInstance;
++ (void)startObserveringForChanges;
 + (BOOL)unitTesting_forceDefaultHeadphoneDataCollectionInterval;
 + (void)unitTesting_overrideForceDefaultHeadphoneDataCollectionInterval:(id)arg1;
 + (void)unitTesting_overrideIsHeadphoneExposureNotificationsEnabled:(id)arg1;
 + (void)unitTesting_overrideSimulateLocalHeadphonePlayback:(id)arg1;
 + (BOOL)unitTesting_simulateLocalHeadphonePlayback;
 - (void)_adasPreferenceDidChange:(id)arg1;
-- (BOOL)_isHeadphoneExposureDataTransient;
 - (void)_startObservingForChanges;
 - (void)_startObservingForChangesOnActiveWatch;
 - (void)_stopObservingForChanges;
-- (BOOL)areHeadphoneExposureNotificationsMandatory;
-- (BOOL)areHeadphoneExposureNotificationsMandatoryOnActiveWatchWithError:(id *)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)init;
-- (BOOL)isHeadphoneExposureMeasureLevelsEnabled;
-- (BOOL)isHeadphoneExposureMeasureLevelsEnabledOnActiveWatchWithError:(id *)arg1;
-- (BOOL)isHeadphoneExposureNotificationsEnabled;
-- (BOOL)isHeadphoneExposureNotificationsEnabledOnActiveWatchWithError:(id *)arg1;
-- (BOOL)setBoolForPreferenceKey:(id)arg1 newValue:(BOOL)arg2 forPairedWatch:(BOOL)arg3 error:(id *)arg4;
 
 @end
 

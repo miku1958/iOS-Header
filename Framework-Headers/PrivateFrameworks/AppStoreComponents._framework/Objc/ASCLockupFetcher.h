@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ASCPendingPromises, ASCTaskCoordinator;
+@class ASCLazy, ASCPendingPromises, ASCTaskCoordinator;
 @protocol ASCServices;
 
 __attribute__((visibility("hidden")))
@@ -14,20 +14,24 @@ __attribute__((visibility("hidden")))
 {
     id<ASCServices> _connection;
     ASCPendingPromises *_pendingRequests;
-    ASCTaskCoordinator *_fetchCoordinator;
+    ASCTaskCoordinator *_requestCoordinator;
+    ASCLazy *_bundleCoordinator;
 }
 
+@property (readonly, nonatomic) ASCLazy *bundleCoordinator; // @synthesize bundleCoordinator=_bundleCoordinator;
 @property (readonly, nonatomic) id<ASCServices> connection; // @synthesize connection=_connection;
-@property (readonly, nonatomic) ASCTaskCoordinator *fetchCoordinator; // @synthesize fetchCoordinator=_fetchCoordinator;
 @property (readonly, nonatomic) ASCPendingPromises *pendingRequests; // @synthesize pendingRequests=_pendingRequests;
+@property (readonly, nonatomic) ASCTaskCoordinator *requestCoordinator; // @synthesize requestCoordinator=_requestCoordinator;
 
 + (id)sharedFetcher;
 - (void).cxx_destruct;
+- (id)collectionWithRequest:(id)arg1;
 - (void)daemonConnectionWasLost:(id)arg1;
 - (void)daemonDidRebootstrap:(id)arg1;
 - (void)dealloc;
 - (id)initWithConnection:(id)arg1;
 - (id)loadedLockupWithRequest:(id)arg1;
+- (id)lockupForBundleID:(id)arg1 withContext:(id)arg2;
 - (id)lockupWithRequest:(id)arg1;
 - (void)submitBatchRequest:(id)arg1;
 

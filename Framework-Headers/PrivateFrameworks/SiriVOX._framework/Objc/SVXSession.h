@@ -13,7 +13,7 @@
 #import <SiriVOX/SVXTaskTrackingCenterDelegate-Protocol.h>
 
 @class AFAnalyticsTurnBasedInstrumentationContext, AFClockAlarmSnapshot, AFClockTimerSnapshot, AFConnection, AFExperiment, AFSpeechRequestOptions, AFXPCWrapper, NSMutableArray, NSMutableDictionary, NSMutableSet, NSString, NSUUID, NSUserActivity, SASetApplicationContext, SVXActivationContext, SVXDeactivationContext, SVXDeviceProblemsState, SVXDeviceSetupContext, SVXServiceCommandHandler, SVXSpeechSynthesizer, SVXTaskTrackingCenter;
-@protocol AFExperimentForSiriVOXSounds, AFExperimentForSiriVOXTapToSiriBehavior, SVXPerforming, SVXSessionDelegate;
+@protocol AFExperimentForSiriVOXSounds, AFExperimentForSiriVOXTapToSiriBehavior, AFRelinquishableAssertion, SVXPerforming, SVXSessionDelegate;
 
 __attribute__((visibility("hidden")))
 @interface SVXSession : NSObject <AFAssistantUIService, AFSpeechDelegate, SVXSpeechSynthesisListening, SVXTaskTrackingCenterDelegate, SVXAudioSessionProviding>
@@ -62,6 +62,7 @@ __attribute__((visibility("hidden")))
     NSMutableArray *_pendingMyriadDecisionHandlers;
     NSMutableDictionary *_playbackRequestInfo;
     NSUserActivity *_userActivity;
+    id<AFRelinquishableAssertion> _audioDuckingCoordinationAssertion;
     NSUUID *_sessionUUID;
 }
 
@@ -143,7 +144,7 @@ __attribute__((visibility("hidden")))
 - (void)_setCurrentState:(long long)arg1;
 - (void)_setInputAudioPowerWrapper:(id)arg1;
 - (void)_setOutputAudioPowerWrapper:(id)arg1;
-- (void)_startActiveAudioSessionRequestWithOptions:(unsigned long long)arg1 taskTracker:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)_startActiveAudioSessionRequestForType:(long long)arg1 taskTracker:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_startRequestWithInfo:(id)arg1 clearsContext:(BOOL)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 taskTracker:(id)arg6 completion:(CDUnknownBlockType)arg7;
 - (void)_startSessionIdleTimerWithTimeInterval:(double)arg1;
 - (void)_startSpeechRequestWithOptions:(id)arg1 clearsContext:(BOOL)arg2 clockAlarmSnapshot:(id)arg3 clockTimerSnapshot:(id)arg4 deviceSetupContext:(id)arg5 deviceProblemsState:(id)arg6 homeAnnouncementState:(unsigned long long)arg7 nowPlayingAppPlaybackState:(long long)arg8 taskTracker:(id)arg9 completion:(CDUnknownBlockType)arg10;

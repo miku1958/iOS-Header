@@ -24,9 +24,13 @@
 
 + (id)sharedManager;
 - (void).cxx_destruct;
+- (id)_checkNeedsAttentionReasonsForSoftwareUpdate:(id)arg1 accessory:(id)arg2;
+- (id)_fetchLatestSoftwareUpdateForAccessory:(id)arg1 targetVersion:(id)arg2;
 - (id)_markTermsAndConditionsAsReadForLicenseAgreementVersion:(id)arg1 inHome:(id)arg2;
 - (BOOL)_shouldPresentTermsAndConditionsForSoftwareLicenseAgreementVersion:(id)arg1 home:(id)arg2;
+- (id)_softwareUpdateWithMostRecentVersionForAccessories:(id)arg1;
 - (void)executionEnvironmentDidEnterBackground:(id)arg1;
+- (id)fakeReleaseNoteSummary;
 - (id)fetchAvailableUpdatesForAccessories:(id)arg1;
 - (id)fetchAvailableUpdatesForAccessory:(id)arg1;
 - (id)fetchAvailableUpdatesForHome:(id)arg1;

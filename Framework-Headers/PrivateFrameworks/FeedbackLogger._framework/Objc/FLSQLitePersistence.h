@@ -12,7 +12,6 @@
 @interface FLSQLitePersistence : NSObject
 {
     _Atomic BOOL _configured;
-    unsigned int _isEntitled;
     NSString *_databasePath;
     struct sqlite3 *_db;
     struct sqlite3_stmt *_insertRecordsStatement;
@@ -34,7 +33,6 @@
 @property (readonly, copy, nonatomic) NSString *databasePath; // @synthesize databasePath=_databasePath;
 @property (nonatomic) struct sqlite3 *db; // @synthesize db=_db;
 @property (nonatomic) struct sqlite3_stmt *insertRecordsStatement; // @synthesize insertRecordsStatement=_insertRecordsStatement;
-@property (nonatomic) unsigned int isEntitled; // @synthesize isEntitled=_isEntitled;
 @property (nonatomic) struct sqlite3_stmt *iteratePayloadStatement; // @synthesize iteratePayloadStatement=_iteratePayloadStatement;
 @property (strong, nonatomic) NSObject<OS_os_log> *log; // @synthesize log=_log;
 @property (nonatomic) unsigned long long maxAllowedDatabaseSizeInBytes; // @synthesize maxAllowedDatabaseSizeInBytes=_maxAllowedDatabaseSizeInBytes;
@@ -47,8 +45,10 @@
 - (BOOL)_updateMetadataHelperForBatch:(id)arg1 query:(const char *)arg2;
 - (BOOL)_updateStatusHelperForBatch:(id)arg1 toStatus:(int)arg2;
 - (BOOL)closeOpenBatches;
+- (BOOL)createDatabase;
 - (void)dealloc;
-- (BOOL)doBatchesHousekeeping;
+- (BOOL)deleteDatabase;
+- (long long)doBatchesHousekeeping;
 - (BOOL)executeInTransactionMultipleSQLStatements:(id)arg1;
 - (BOOL)executeSQLStatement:(const char *)arg1;
 - (BOOL)executeSQLStatement:(const char *)arg1 usingTransaction:(BOOL)arg2;
@@ -58,11 +58,14 @@
 - (unsigned long long)getCurrentDatabaseSize;
 - (int)getDataVersion;
 - (BOOL)getIntValueForPragma:(id)arg1 into:(inout int *)arg2;
+- (id)getPurgableBatchIds;
+- (id)getRecordsRangeStart:(long long)arg1 end:(long long)arg2;
 - (int)getSchemaVersion;
 - (id)initWithPath:(id)arg1 application:(id)arg2 loggingContext:(id)arg3;
 - (BOOL)initializeConnectionForUseBy:(int)arg1;
 - (BOOL)initializeNewBatch;
 - (BOOL)iteratePayloadForBatch:(id)arg1 codeblock:(CDUnknownBlockType)arg2;
+- (BOOL)markBatchesforPurge;
 - (BOOL)open;
 - (BOOL)persist:(id)arg1;
 - (BOOL)prepareSchema;

@@ -12,7 +12,7 @@
 #import <HomeUI/UIGestureRecognizerDelegate-Protocol.h>
 #import <HomeUI/UIScrollViewDelegate-Protocol.h>
 
-@class HFItem, HUAnimationApplier, HUQuickControlContainerViewController, HUQuickControlSummaryNavigationBarTitleView, HUQuickControlViewControllerCoordinator, HUVisualEffectContainerView, NAFuture, NAPromise, NSMutableArray, NSString, UIActivityIndicatorView, UIButton, UIColor, UIImpactFeedbackGenerator, UILayoutGuide, UIPanGestureRecognizer, UIScrollView, UIView;
+@class HFItem, HUAnimationApplier, HUQuickControlContainerViewController, HUQuickControlProxHandOffSummaryViewUpdater, HUQuickControlSummaryNavigationBarTitleView, HUQuickControlViewControllerCoordinator, HUVisualEffectContainerView, NAFuture, NAPromise, NSMutableArray, NSSet, NSString, UIActivityIndicatorView, UIButton, UIColor, UIImpactFeedbackGenerator, UILayoutGuide, UIPanGestureRecognizer, UIScrollView, UIView, UIVisualEffectView;
 @protocol HUCardViewControllerDelegate;
 
 @interface HUCardViewController : UIViewController <HFItemManagerDelegate, UIGestureRecognizerDelegate, HUQuickControlViewControllerCoordinatorDelegate, HUViewControllerCustomDismissing, UIScrollViewDelegate>
@@ -33,20 +33,25 @@
     UIButton *_closeButton;
     NAPromise *_viewControllerReadyPromise;
     NSMutableArray *_constraints;
+    HUQuickControlProxHandOffSummaryViewUpdater *_proxHandOffSummaryViewUpdater;
     UIPanGestureRecognizer *_panGestureRecognizer;
     UILayoutGuide *_quickControlLayoutGuide;
     HUVisualEffectContainerView *_closeButtonEffectView;
     UIView *_transitionBlurView;
     HUAnimationApplier *_animationApplier;
+    NSSet *_controlItems;
     UIImpactFeedbackGenerator *_impactFeedbackGenerator;
+    UIVisualEffectView *_backgroundVisualEffectView;
     UIActivityIndicatorView *_spinnerView;
 }
 
 @property (strong, nonatomic) HUAnimationApplier *animationApplier; // @synthesize animationApplier=_animationApplier;
 @property (strong, nonatomic) UIColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
+@property (strong, nonatomic) UIVisualEffectView *backgroundVisualEffectView; // @synthesize backgroundVisualEffectView=_backgroundVisualEffectView;
 @property (strong, nonatomic) UIButton *closeButton; // @synthesize closeButton=_closeButton;
 @property (strong, nonatomic) HUVisualEffectContainerView *closeButtonEffectView; // @synthesize closeButtonEffectView=_closeButtonEffectView;
 @property (strong, nonatomic) NSMutableArray *constraints; // @synthesize constraints=_constraints;
+@property (strong, nonatomic) NSSet *controlItems; // @synthesize controlItems=_controlItems;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<HUCardViewControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
@@ -57,6 +62,7 @@
 @property (strong, nonatomic) UIImpactFeedbackGenerator *impactFeedbackGenerator; // @synthesize impactFeedbackGenerator=_impactFeedbackGenerator;
 @property (strong, nonatomic) HUQuickControlSummaryNavigationBarTitleView *navigationBarTitleView; // @synthesize navigationBarTitleView=_navigationBarTitleView;
 @property (strong, nonatomic) UIPanGestureRecognizer *panGestureRecognizer; // @synthesize panGestureRecognizer=_panGestureRecognizer;
+@property (strong, nonatomic) HUQuickControlProxHandOffSummaryViewUpdater *proxHandOffSummaryViewUpdater; // @synthesize proxHandOffSummaryViewUpdater=_proxHandOffSummaryViewUpdater;
 @property (strong, nonatomic) UILayoutGuide *quickControlLayoutGuide; // @synthesize quickControlLayoutGuide=_quickControlLayoutGuide;
 @property (strong, nonatomic) HUQuickControlContainerViewController *quickControlViewController; // @synthesize quickControlViewController=_quickControlViewController;
 @property (nonatomic) BOOL reachable; // @synthesize reachable=_reachable;
@@ -86,6 +92,7 @@
 - (void)_scrollToSettings;
 - (id)_springAnimationSettings;
 - (void)_unlockSettings;
+- (void)_updateCloseButtonVibrancyEffect;
 - (void)_updateControlStatusTextWithPrimaryText:(id)arg1 secondaryText:(id)arg2;
 - (void)_updateIconDescriptorAnimated:(BOOL)arg1;
 - (void)_updateMaterials;
@@ -96,9 +103,11 @@
 - (void)controllerCoordinator:(id)arg1 didUpdateStatusWithPrimaryText:(id)arg2 secondaryText:(id)arg3;
 - (void)dealloc;
 - (void)dismissCardAnimated:(BOOL)arg1;
+- (void)forceUnlockSettings;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 - (id)hu_prepareForDismissalAnimated:(BOOL)arg1;
 - (id)init;
+- (id)initWithControlItems:(id)arg1;
 - (void)itemManager:(id)arg1 didUpdateResultsForSourceItem:(id)arg2;
 - (id)keyCommands;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;

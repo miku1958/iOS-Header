@@ -21,6 +21,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic, getter=isLikelyAvailable) BOOL likelyAvailable;
 @property (readonly, nonatomic) FCNetworkReachability *networkReachability; // @synthesize networkReachability=_networkReachability;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) Class todayResultsFetchDescriptorClass;

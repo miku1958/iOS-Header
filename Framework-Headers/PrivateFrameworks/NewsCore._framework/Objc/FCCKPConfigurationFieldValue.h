@@ -10,6 +10,7 @@
 
 @class NSData, NSMutableArray, NSString;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPConfigurationFieldValue : PBCodable <NSCopying>
 {
     double _doubleValue;
@@ -43,11 +44,12 @@
 @property (strong, nonatomic) NSString *stringValue; // @synthesize stringValue=_stringValue;
 @property (nonatomic) int type; // @synthesize type=_type;
 
++ (Class)fieldValuesType;
++ (Class)listValuesType;
 - (void)addFieldValues:(id)arg1;
 - (void)addListValues:(id)arg1;
 - (void)clearFieldValues;
 - (void)clearListValues;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

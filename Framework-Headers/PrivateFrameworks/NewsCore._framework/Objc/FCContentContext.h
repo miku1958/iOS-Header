@@ -11,7 +11,7 @@
 #import <NewsCore/FCNetworkReachabilityRequirementObserving-Protocol.h>
 
 @class FCAVAssetDownloadManager, FCArticleController, FCAssetManager, FCContentContextInternal, FCContextConfiguration, FCFlintResourceManager, FCNetworkBehaviorMonitor, FCTagController, NSString, NSURL;
-@protocol FCAVAssetCacheType, FCAVAssetFactoryType, FCAVAssetKeyCacheType, FCAVAssetKeyManagerType, FCAVAssetKeyServiceType, FCAVAssetPrewarming, FCAVAssetResourceLoaderType, FCAssetKeyCacheType, FCAssetKeyManagerType, FCAssetKeyServiceType, FCBackgroundTaskable, FCCoreConfigurationManager, FCNetworkReachabilityRequirement, FCNewsAppConfigurationManager, FCPPTContext, FCWebArchiveSource;
+@protocol FCAVAssetCacheType, FCAVAssetFactoryType, FCAVAssetKeyCacheType, FCAVAssetKeyManagerType, FCAVAssetKeyServiceType, FCAVAssetPrewarming, FCAVAssetResourceLoaderType, FCAssetKeyCacheType, FCAssetKeyManagerType, FCAssetKeyServiceType, FCBackgroundTaskable, FCCoreConfigurationManager, FCNetworkReachabilityRequirement, FCNewsAppConfigurationManager, FCPPTContext;
 
 @interface FCContentContext : NSObject <FCNetworkReachabilityRequirementObserving, FCCoreConfigurationObserving, FCContentContext>
 {
@@ -26,12 +26,9 @@
     FCNetworkBehaviorMonitor *_networkBehaviorMonitor;
     id<FCPPTContext> _pptContext;
     id<FCBackgroundTaskable> _backgroundTaskable;
-    id<FCWebArchiveSource> _webArchiveSource;
-    long long _preferredMediaQuality;
     FCContextConfiguration *_contextConfiguration;
     NSString *_contentDirectory;
     NSURL *_assetCacheDirectoryURL;
-    NSURL *_webArchiveCacheDirectoryURL;
     FCContentContextInternal *_internalContentContext;
     id<FCAssetKeyServiceType> _assetKeyService;
     id<FCAssetKeyCacheType> _assetKeyCache;
@@ -72,13 +69,10 @@
 @property (strong, nonatomic) FCContentContextInternal *internalContentContext; // @synthesize internalContentContext=_internalContentContext;
 @property (readonly, nonatomic) FCNetworkBehaviorMonitor *networkBehaviorMonitor; // @synthesize networkBehaviorMonitor=_networkBehaviorMonitor;
 @property (readonly, nonatomic) id<FCPPTContext> pptContext; // @synthesize pptContext=_pptContext;
-@property (readonly, nonatomic) long long preferredMediaQuality; // @synthesize preferredMediaQuality=_preferredMediaQuality;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *supportedContentStoreFrontID;
 @property (strong, nonatomic) id<FCNetworkReachabilityRequirement> supportedCountryNetworkReachabilityRequirement; // @synthesize supportedCountryNetworkReachabilityRequirement=_supportedCountryNetworkReachabilityRequirement;
 @property (readonly, nonatomic) FCTagController *tagController; // @synthesize tagController=_tagController;
-@property (strong, nonatomic) NSURL *webArchiveCacheDirectoryURL; // @synthesize webArchiveCacheDirectoryURL=_webArchiveCacheDirectoryURL;
-@property (strong, nonatomic) id<FCWebArchiveSource> webArchiveSource; // @synthesize webArchiveSource=_webArchiveSource;
 
 + (void)initialize;
 - (void).cxx_destruct;
@@ -87,9 +81,10 @@
 - (void)dealloc;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1 exceptForFlusher:(id)arg2;
-- (id)initWithConfiguration:(id)arg1 configurationManager:(id)arg2 contentDatabase:(id)arg3 contentHostDirectory:(id)arg4 networkBehaviorMonitor:(id)arg5 setupCustomURLProtocols:(BOOL)arg6 desiredHeadlineFieldOptions:(unsigned long long)arg7 feedUsage:(long long)arg8 assetKeyManagerDelegate:(id)arg9 appActivityMonitor:(id)arg10 backgroundTaskable:(id)arg11 preferredMediaQuality:(long long)arg12 pptContext:(id)arg13;
-- (id)initWithConfiguration:(id)arg1 configurationManager:(id)arg2 contentHostDirectory:(id)arg3 networkBehaviorMonitor:(id)arg4 desiredHeadlineFieldOptions:(unsigned long long)arg5 feedUsage:(long long)arg6 appActivityMonitor:(id)arg7 backgroundTaskable:(id)arg8 preferredMediaQuality:(long long)arg9 pptContext:(id)arg10;
-- (id)initWithConfiguration:(id)arg1 configurationManager:(id)arg2 contentHostDirectory:(id)arg3 networkBehaviorMonitor:(id)arg4 desiredHeadlineFieldOptions:(unsigned long long)arg5 feedUsage:(long long)arg6 assetKeyManagerDelegate:(id)arg7 appActivityMonitor:(id)arg8 backgroundTaskable:(id)arg9 preferredMediaQuality:(long long)arg10 pptContext:(id)arg11;
+- (id)initWithConfiguration:(id)arg1 configurationManager:(id)arg2 contentDatabase:(id)arg3 contentHostDirectory:(id)arg4 networkBehaviorMonitor:(id)arg5 setupCustomURLProtocols:(BOOL)arg6 desiredHeadlineFieldOptions:(unsigned long long)arg7 feedUsage:(long long)arg8 assetKeyManagerDelegate:(id)arg9 appActivityMonitor:(id)arg10 backgroundTaskable:(id)arg11 pptContext:(id)arg12;
+- (id)initWithConfiguration:(id)arg1 configurationManager:(id)arg2 contentHostDirectory:(id)arg3 networkBehaviorMonitor:(id)arg4 desiredHeadlineFieldOptions:(unsigned long long)arg5 feedUsage:(long long)arg6 appActivityMonitor:(id)arg7 backgroundTaskable:(id)arg8 pptContext:(id)arg9;
+- (id)initWithConfiguration:(id)arg1 configurationManager:(id)arg2 contentHostDirectory:(id)arg3 networkBehaviorMonitor:(id)arg4 desiredHeadlineFieldOptions:(unsigned long long)arg5 feedUsage:(long long)arg6 assetKeyManagerDelegate:(id)arg7 appActivityMonitor:(id)arg8 backgroundTaskable:(id)arg9 pptContext:(id)arg10;
+- (id)interestTokenForContentManifest:(id)arg1;
 - (id)magazinesConfigurationManager;
 - (void)networkReachabilityRequirementDidBecomeDirty:(id)arg1;
 - (id)news_core_ConfigurationManager;
@@ -97,7 +92,6 @@
 - (void)ppt_prewarmFeedDatabase;
 - (id)recordSourceWithSchema:(id)arg1;
 - (id)recordTreeSourceWithRecordSources:(id)arg1;
-- (id)webArchiveSourceAllowingNil;
 
 @end
 

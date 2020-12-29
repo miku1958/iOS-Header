@@ -13,19 +13,19 @@
 @interface NTPBAsset : PBCodable <NSCopying>
 {
     int _error;
-    int _type;
+    unsigned int _size;
     NSData *_wrappingKeyID;
     struct {
         unsigned int error:1;
-        unsigned int type:1;
+        unsigned int size:1;
     } _has;
 }
 
 @property (nonatomic) int error; // @synthesize error=_error;
 @property (nonatomic) BOOL hasError;
-@property (nonatomic) BOOL hasType;
+@property (nonatomic) BOOL hasSize;
 @property (readonly, nonatomic) BOOL hasWrappingKeyID;
-@property (nonatomic) int type; // @synthesize type=_type;
+@property (nonatomic) unsigned int size; // @synthesize size=_size;
 @property (strong, nonatomic) NSData *wrappingKeyID; // @synthesize wrappingKeyID=_wrappingKeyID;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;

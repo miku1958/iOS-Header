@@ -10,6 +10,8 @@
 
 @protocol HDSPWakeDetector <NSObject>
 
+@property (readonly, nonatomic) unsigned long long detectionWindowMinutes;
+@property (readonly, nonatomic) BOOL isDetecting;
 @property (weak, nonatomic) id<HDSPWakeDetectorDelegate> wakeDetectorDelegate;
 
 - (void)startDetecting;

@@ -11,7 +11,7 @@
 #import <ProactiveContextClient/ATXLocationOfInterestManagerProtocol-Protocol.h>
 #import <ProactiveContextClient/ATXPredictedLocationsManagerProtocol-Protocol.h>
 
-@class NSDate, NSString, _PASLock;
+@class GEOLocationShifter, NSDate, NSString, _PASLock;
 @protocol ATXLocationManagerGPS, ATXLocationManagerRoutine, ATXLocationManagerStateStore, OS_dispatch_queue;
 
 @interface ATXLocationManager : NSObject <ATXLocationManagerGPSDelegate, ATXLocationManagerProtocol, ATXPredictedLocationsManagerProtocol, ATXLocationOfInterestManagerProtocol>
@@ -20,6 +20,7 @@
     id<ATXLocationManagerRoutine> _routine;
     id<ATXLocationManagerStateStore> _stateStore;
     _PASLock *_lock;
+    GEOLocationShifter *_shifter;
     NSObject<OS_dispatch_queue> *_loiUpdateQueue;
     NSDate *_now;
     double _predictedNextLOITimeout;
@@ -60,8 +61,10 @@
 - (void)fetchLOILocationOfType:(long long)arg1 reply:(CDUnknownBlockType)arg2;
 - (id)getCurrentLocation;
 - (void)getCurrentLocationWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (id)getCurrentLocationWithShiftInChina;
 - (id)getCurrentLocation_RequestPreciseLocation:(BOOL)arg1;
 - (id)getCurrentPreciseLocation;
+- (id)getCurrentPreciseLocationWithShiftInChina;
 - (unsigned long long)getCurrentRoutineModeWithCurrentDate:(id)arg1;
 - (id)getPredictedExitTimesFromLOIName:(id)arg1 startDate:(id)arg2;
 - (id)getPredictedLocationsOfInterestFromLOIName:(id)arg1 startDate:(id)arg2;
@@ -86,6 +89,7 @@
 - (id)predictedExitTimes;
 - (id)predictedLocationsOfInterest;
 - (id)previousLOIAndCurrentLOI;
+- (id)shiftedLocationForChinaFromLocation:(id)arg1;
 - (long long)stateForRegion:(id)arg1 withTimeout:(double)arg2;
 - (void)stopMonitoringRegionWithIdentifier:(id)arg1;
 - (void)updateCurrentLocationOfInterest;

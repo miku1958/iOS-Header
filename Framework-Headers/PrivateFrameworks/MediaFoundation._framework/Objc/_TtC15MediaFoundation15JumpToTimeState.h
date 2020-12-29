@@ -10,8 +10,12 @@
 
 @interface _TtC15MediaFoundation15JumpToTimeState : _TtC15MediaFoundation5State
 {
-    MISSING_TYPE *time;
+    MISSING_TYPE *targetTime;
     MISSING_TYPE *metadata;
+    MISSING_TYPE *initialLoadingShouldPlay;
+    MISSING_TYPE *playbackDidStall;
+    MISSING_TYPE *jumpToTimeInfo;
+    MISSING_TYPE *suppressed;
 }
 
 @end

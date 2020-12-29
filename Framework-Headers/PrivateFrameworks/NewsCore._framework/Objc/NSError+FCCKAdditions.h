@@ -19,6 +19,7 @@
 + (id)fc_encryptionRequiredError;
 + (id)fc_errorWithCode:(long long)arg1 description:(id)arg2;
 + (id)fc_errorWithCode:(long long)arg1 description:(id)arg2 additionalUserInfo:(id)arg3;
++ (id)fc_exceededQueryBudgetErrorWithAdditionalUserInfo:(id)arg1;
 + (id)fc_expiredAVAssetCertificateError;
 + (id)fc_feedDroppedError;
 + (id)fc_invalidAVAssetKeyURIError;
@@ -49,6 +50,7 @@
 - (BOOL)fc_hasIdentityLostError;
 - (BOOL)fc_hasIdentityStillSyncingError;
 - (BOOL)fc_isAVUnauthorizedError;
+- (BOOL)fc_isAuthenticationUserCancelled;
 - (BOOL)fc_isBlockedInStoreFrontError;
 - (BOOL)fc_isCKErrorWithCode:(long long)arg1;
 - (BOOL)fc_isCKErrorWithCodePassingTest:(CDUnknownBlockType)arg1;
@@ -60,6 +62,7 @@
 - (BOOL)fc_isOfflineError;
 - (BOOL)fc_isOfflineErrorOfflineReason:(long long *)arg1;
 - (BOOL)fc_isOperationThrottledError;
+- (BOOL)fc_isRecoverableNetworkError;
 - (BOOL)fc_isServiceUnavailableError;
 - (BOOL)fc_isTemporaryNetworkOrServerError;
 - (BOOL)fc_isUnknownItemError;

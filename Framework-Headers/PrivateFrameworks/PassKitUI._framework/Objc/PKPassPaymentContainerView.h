@@ -171,6 +171,7 @@
 - (BOOL)_isBackgroundedForReasons:(unsigned long long)arg1;
 - (BOOL)_isDeactivated;
 - (BOOL)_isDeactivatedForReasons:(unsigned long long)arg1;
+- (BOOL)_isExpressAndInSessionExpress;
 - (BOOL)_isForegroundActive;
 - (BOOL)_isPrimaryViewVisible;
 - (BOOL)_isSecondaryViewVisible;

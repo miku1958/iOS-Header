@@ -9,7 +9,7 @@
 #import <MOVStreamIO/MOVStreamReaderDeprecated-Protocol.h>
 #import <MOVStreamIO/MOVStreamReaderDeprecationNominates-Protocol.h>
 
-@class AVAssetReader, AVURLAsset, NSString;
+@class AVAssetReader, AVURLAsset, NSString, Version;
 @protocol MOVStreamReaderDelegate;
 
 @interface MOVStreamReader : NSObject <MOVStreamReaderDeprecationNominates, MOVStreamReaderDeprecated>
@@ -23,6 +23,7 @@
     struct vector<std::__1::basic_string<char>, std::__1::allocator<std::__1::basic_string<char>>> m_orderedMetadataStreamNames;
     BOOL _l010OutputFormatRAW14L016;
     BOOL _rawBayerMSBReplication;
+    Version *_movVersion;
     id<MOVStreamReaderDelegate> _delegate;
 }
 

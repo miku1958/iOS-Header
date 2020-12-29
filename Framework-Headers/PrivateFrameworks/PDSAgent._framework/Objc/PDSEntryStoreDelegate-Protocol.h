@@ -9,6 +9,6 @@
 @class NSArray, PDSEntryStore;
 
 @protocol PDSEntryStoreDelegate <NSObject>
-- (void)entryStore:(PDSEntryStore *)arg1 didUpdatePendingTopics:(NSArray *)arg2;
+- (void)entryStore:(PDSEntryStore *)arg1 didUpdatePendingTopics:(NSArray *)arg2 forceImmediateUpdate:(BOOL)arg3;
 @end
 

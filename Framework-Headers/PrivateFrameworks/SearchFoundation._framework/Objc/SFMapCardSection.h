@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFMapCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFLatLng, SFMapRegion, SFUserReportRequest;
+@class NSArray, NSData, NSDictionary, NSString, SFCard, SFColor, SFCommand, SFLatLng, SFMapRegion, SFUserReportRequest;
 
 @interface SFMapCardSection : SFCardSection <SFMapCardSection, NSSecureCoding, NSCopying>
 {
@@ -47,6 +47,7 @@
 @property (strong, nonatomic) SFMapRegion *boundingMapRegion; // @synthesize boundingMapRegion=_boundingMapRegion;
 @property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (copy, nonatomic) NSString *cardSectionId;
+@property (strong, nonatomic) SFCommand *command;
 @property (copy, nonatomic) NSArray *commands;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -65,6 +66,7 @@
 @property (nonatomic) int pinBehavior; // @synthesize pinBehavior=_pinBehavior;
 @property (strong, nonatomic) SFColor *pinColor; // @synthesize pinColor=_pinColor;
 @property (copy, nonatomic) NSArray *pins; // @synthesize pins=_pins;
+@property (strong, nonatomic) SFCommand *previewCommand;
 @property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle; // @synthesize punchoutPickerTitle=_punchoutPickerTitle;

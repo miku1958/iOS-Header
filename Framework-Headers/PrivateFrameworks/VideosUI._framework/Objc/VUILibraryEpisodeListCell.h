@@ -6,7 +6,7 @@
 
 #import <VideosUI/VUIListCollectionViewCell.h>
 
-@class NSObject, NSString, UIStackView, VUIDownloadButton, VUILabel, VUILibraryEpisodeFrameView, VUIMediaItem, VUISeparatorView;
+@class NSObject, NSString, UIStackView, VUILabel, VUILegacyDownloadButton, VUILibraryEpisodeFrameView, VUIMediaItem, VUISeparatorView;
 @protocol VUIMediaEntityAssetController;
 
 __attribute__((visibility("hidden")))
@@ -21,7 +21,7 @@ __attribute__((visibility("hidden")))
     VUILabel *_titleLabel;
     VUILabel *_releaseDateLabel;
     VUILabel *_durationLabel;
-    VUIDownloadButton *_downloadButton;
+    VUILegacyDownloadButton *_downloadButton;
     VUILabel *_dotSeparatorLabel;
     NSObject<VUIMediaEntityAssetController> *_assetController;
     VUIMediaItem *_mediaItem;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 
 @property (strong, nonatomic) NSObject<VUIMediaEntityAssetController> *assetController; // @synthesize assetController=_assetController;
 @property (strong, nonatomic) VUILabel *dotSeparatorLabel; // @synthesize dotSeparatorLabel=_dotSeparatorLabel;
-@property (strong, nonatomic) VUIDownloadButton *downloadButton; // @synthesize downloadButton=_downloadButton;
+@property (strong, nonatomic) VUILegacyDownloadButton *downloadButton; // @synthesize downloadButton=_downloadButton;
 @property (copy, nonatomic) NSString *duration; // @synthesize duration=_duration;
 @property (strong, nonatomic) VUILabel *durationLabel; // @synthesize durationLabel=_durationLabel;
 @property (strong, nonatomic) UIStackView *episodeInfoStackView; // @synthesize episodeInfoStackView=_episodeInfoStackView;

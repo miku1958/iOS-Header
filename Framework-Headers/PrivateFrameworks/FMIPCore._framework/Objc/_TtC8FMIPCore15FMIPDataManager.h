@@ -18,6 +18,9 @@
     MISSING_TYPE *crowdSourcedOriginalLocations;
     MISSING_TYPE *crowdSourcedLocations;
     MISSING_TYPE *crowdSourcedLocating;
+    MISSING_TYPE *items;
+    MISSING_TYPE *unknownItems;
+    MISSING_TYPE *itemsCache;
     MISSING_TYPE *devicesCache;
     MISSING_TYPE *familyCache;
     MISSING_TYPE *ownerCache;

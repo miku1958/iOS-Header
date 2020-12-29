@@ -5,14 +5,21 @@
 //
 
 #import <BannerKit/BNPresentable-Protocol.h>
+#import <BannerKit/BNPresentableObservable-Protocol.h>
+#import <BannerKit/BNPresentableUniquelyIdentifying-Protocol.h>
+#import <BannerKit/BSInvalidatable-Protocol.h>
+#import <BannerKit/FBSceneDelegate-Protocol.h>
 
-@class FBProcess, FBScene;
+@class FBScene;
+@protocol BNPresentableSpecifying;
 
-@protocol BNBannerSourceListenerPresentable <BNPresentable>
+@protocol BNBannerSourceListenerPresentable <BSInvalidatable, BNPresentable, BNPresentableUniquelyIdentifying, BNPresentableObservable, FBSceneDelegate>
 
-@property (readonly, nonatomic) FBProcess *clientProcess;
+@property (readonly, nonatomic) int bannerAppearState;
 @property (readonly, nonatomic, getter=isContentHosted) BOOL contentHosted;
+@property (readonly, nonatomic, getter=isReady) BOOL ready;
 @property (readonly, nonatomic) FBScene *scene;
 
+- (id)initWithWithSpecification:(id<BNPresentableSpecifying>)arg1 scene:(FBScene *)arg2 readyCompletion:(void (^)(id<BNBannerSourceListenerPresentable>, NSError *))arg3;
 @end
 

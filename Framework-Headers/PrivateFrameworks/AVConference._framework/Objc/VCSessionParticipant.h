@@ -58,6 +58,8 @@ __attribute__((visibility("hidden")))
     AVCStatisticsCollector *_statisticsCollector;
     AVCBasebandCongestionDetector *_basebandCongestionDetector;
     unsigned int _cellularUniqueTag;
+    double _lastParticipantMKMRecoveryTime;
+    double _participantMKMRecoveryTimeout;
     float _volume;
     float _audioPosition;
     BOOL _isMuted;

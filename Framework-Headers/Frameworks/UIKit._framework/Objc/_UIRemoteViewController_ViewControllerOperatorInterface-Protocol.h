@@ -10,7 +10,6 @@
 @protocol _UIRemoteViewController_ViewControllerOperatorInterface
 - (void)__dismissTextServiceSessionAnimated:(BOOL)arg1;
 - (void)__handleFocusMovementAction:(UIFocusMovementAction *)arg1;
-- (void)__setServiceMaxFrameSize:(struct CGSize)arg1;
 - (void)__setSupportedInterfaceOrientations:(NSArray *)arg1;
 - (void)__setViewServiceIsDisplayingPopover:(BOOL)arg1;
 - (void)__showEditAlertViewWithToken:(long long)arg1 canUndo:(BOOL)arg2 canRedo:(BOOL)arg3;

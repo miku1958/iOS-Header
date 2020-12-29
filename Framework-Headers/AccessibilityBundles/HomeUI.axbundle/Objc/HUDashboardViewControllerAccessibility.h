@@ -14,6 +14,8 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_launchAnnounceRecordingServiceForCurrentHome:(id)arg1;
+- (void)_launchAnnounceRecordingServiceForCurrentRoom:(id)arg1;
 - (void)_updateRightBarButtons;
 
 @end

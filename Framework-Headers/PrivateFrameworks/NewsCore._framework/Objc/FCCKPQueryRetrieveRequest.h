@@ -10,6 +10,7 @@
 
 @class FCCKPQuery, FCCKPRecordZoneIdentifier, FCCKPRequestedFields, NSData;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPQueryRetrieveRequest : PBRequest <NSCopying>
 {
     NSData *_continuationMarker;
@@ -34,7 +35,6 @@
 @property (strong, nonatomic) FCCKPRecordZoneIdentifier *zoneIdentifier; // @synthesize zoneIdentifier=_zoneIdentifier;
 
 + (id)options;
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

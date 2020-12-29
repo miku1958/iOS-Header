@@ -7,19 +7,21 @@
 #import <SearchFoundation/NSObject-Protocol.h>
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 
-@class NSArray, NSString, SFCard, SFColor, SFUserReportRequest;
+@class NSArray, NSString, SFCard, SFColor, SFCommand, SFUserReportRequest;
 
 @protocol SFCardSection <NSSecureCoding, NSObject>
 
 @property (strong, nonatomic) SFColor *backgroundColor;
 @property (nonatomic) BOOL canBeHidden;
 @property (copy, nonatomic) NSString *cardSectionId;
+@property (strong, nonatomic) SFCommand *command;
 @property (copy, nonatomic) NSArray *commands;
 @property (nonatomic) BOOL hasBottomPadding;
 @property (nonatomic) BOOL hasTopPadding;
 @property (nonatomic) BOOL hideDivider;
 @property (strong, nonatomic) SFCard *nextCard;
 @property (copy, nonatomic) NSArray *parameterKeyPaths;
+@property (strong, nonatomic) SFCommand *previewCommand;
 @property (copy, nonatomic) NSArray *punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText;
 @property (copy, nonatomic) NSString *punchoutPickerTitle;

@@ -42,7 +42,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithRedundancyControllerMode:(unsigned int)arg1 maxAllowedRedundancyPercentage:(unsigned int)arg2 mediaControlInfoFECFeedbackVersion:(unsigned char)arg3;
 - (CDStruct_9650830d)setupFeedbackAnalyzerConfig;
 - (void)updateBurstyLoss:(unsigned int)arg1;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_1a067c5f)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_bae76c55)arg1;
 
 @end
 

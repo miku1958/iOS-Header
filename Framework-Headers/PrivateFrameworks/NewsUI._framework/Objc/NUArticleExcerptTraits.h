@@ -50,6 +50,7 @@
 @property (readonly, copy, nonatomic) UITraitCollection *traitCollection; // @synthesize traitCollection=_traitCollection;
 
 - (void).cxx_destruct;
+- (double)contentMarginForDeviceTrait:(id)arg1 delta:(double)arg2;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)initWithTraitCollection:(id)arg1 size:(struct CGSize)arg2;
 

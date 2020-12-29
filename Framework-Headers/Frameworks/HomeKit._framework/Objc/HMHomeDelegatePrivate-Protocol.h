@@ -25,6 +25,7 @@
 - (void)home:(HMHome *)arg1 didUpdateApplicationDataForRoom:(HMRoom *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateApplicationDataForServiceGroup:(HMServiceGroup *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateAutomaticSoftwareUpdateEnabled:(BOOL)arg2;
+- (void)home:(HMHome *)arg1 didUpdateAutomaticThirdPartyAccessorySoftwareUpdateEnabled:(BOOL)arg2;
 - (void)home:(HMHome *)arg1 didUpdateLastExecutionDateForActionSet:(HMActionSet *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateLocation:(CLLocation *)arg2;
 - (void)home:(HMHome *)arg1 didUpdateMediaPassword:(NSString *)arg2;

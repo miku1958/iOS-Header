@@ -29,8 +29,11 @@
 
 - (void).cxx_destruct;
 - (void)configureExternalPlaybackForPlayer:(id)arg1 queueItem:(id)arg2;
+- (long long)exernalPlaybackRouteRestrictionForItem:(id)arg1 route:(id)arg2 isScreenMirroringActive:(BOOL)arg3;
 - (id)initWithPlaybackEngine:(id)arg1 translator:(id)arg2;
+- (BOOL)isExternalPlaybackAllowedForItem:(id)arg1;
 - (void)pickBestDeviceRoute;
+- (BOOL)playerShouldUseAudiOnlyMode:(id)arg1 item:(id)arg2 externalScreenType:(long long)arg3;
 - (void)routingControllerExternalScreenTypeDidChange:(id)arg1;
 
 @end

@@ -12,6 +12,7 @@
 - (void)confirmAwakeWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)delayBedtimeForTimeInterval:(double)arg1 completion:(void (^)(BOOL, NSError *))arg2;
 - (void)dismissGoodMorningWithCompletion:(void (^)(BOOL, NSError *))arg1;
+- (void)dismissSleepLockWithCompletion:(void (^)(BOOL, NSError *))arg1;
 - (void)getSleepEventRecordWithCompletion:(void (^)(HKSPSleepEventRecord *, NSError *))arg1;
 - (void)getSleepModeWithCompletion:(void (^)(long long, NSError *))arg1;
 - (void)getSleepScheduleStateWithCompletion:(void (^)(unsigned long long, NSError *))arg1;

@@ -12,6 +12,7 @@
 - (void)captureController:(CUCaptureController *)arg1 didOutputCaptureAvailability:(BOOL)arg2;
 - (void)captureController:(CUCaptureController *)arg1 didOutputConfigurationAvailability:(BOOL)arg2;
 - (void)captureController:(CUCaptureController *)arg1 didOutputFlashAvailability:(BOOL)arg2;
+- (void)captureController:(CUCaptureController *)arg1 didOutputFlashCompromise:(unsigned long long)arg2;
 - (void)captureController:(CUCaptureController *)arg1 didOutputTorchAvailability:(BOOL)arg2;
 @end
 

@@ -21,6 +21,7 @@
 - (id)init;
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
+- (id)tintColor;
 
 @end
 

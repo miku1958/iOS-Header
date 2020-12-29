@@ -78,6 +78,7 @@
     CDStruct_95bda58d _payloadWellnessQuestionTypes;
     CDStruct_95bda58d _payloadWorkoutGoalUnitTypes;
     CDStruct_95bda58d _payloadWorkoutLocationTypes;
+    CDStruct_95bda58d _payloadWorkoutSequenceLabels;
     CDStruct_f953fb60 _has;
     int _type;
     NSArray *_payloadActivities;
@@ -178,6 +179,7 @@
     NSArray *_payloadWellnessObjectResultValues;
     NSArray *_payloadWellnessUnitTypes;
     NSArray *_payloadWellnessValues;
+    NSArray *_payloadWorkoutAssociatedItems;
 }
 
 @property (readonly, copy) NSString *debugDescription;
@@ -504,10 +506,14 @@
 @property (readonly, nonatomic) unsigned long long payloadWellnessUnitTypesCount;
 @property (copy, nonatomic) NSArray *payloadWellnessValues; // @synthesize payloadWellnessValues=_payloadWellnessValues;
 @property (readonly, nonatomic) unsigned long long payloadWellnessValuesCount;
+@property (copy, nonatomic) NSArray *payloadWorkoutAssociatedItems; // @synthesize payloadWorkoutAssociatedItems=_payloadWorkoutAssociatedItems;
+@property (readonly, nonatomic) unsigned long long payloadWorkoutAssociatedItemsCount;
 @property (readonly, nonatomic) int *payloadWorkoutGoalUnitTypes;
 @property (readonly, nonatomic) unsigned long long payloadWorkoutGoalUnitTypesCount;
 @property (readonly, nonatomic) int *payloadWorkoutLocationTypes;
 @property (readonly, nonatomic) unsigned long long payloadWorkoutLocationTypesCount;
+@property (readonly, nonatomic) int *payloadWorkoutSequenceLabels;
+@property (readonly, nonatomic) unsigned long long payloadWorkoutSequenceLabelsCount;
 @property (readonly) Class superclass;
 @property (nonatomic) int type; // @synthesize type=_type;
 
@@ -602,6 +608,7 @@
 + (Class)payloadWellnessObjectResultValueType;
 + (Class)payloadWellnessUnitTypeType;
 + (Class)payloadWellnessValueType;
++ (Class)payloadWorkoutAssociatedItemType;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (int)StringAsPayloadAccountTypes:(id)arg1;
@@ -668,6 +675,7 @@
 - (int)StringAsPayloadWellnessQuestionTypes:(id)arg1;
 - (int)StringAsPayloadWorkoutGoalUnitTypes:(id)arg1;
 - (int)StringAsPayloadWorkoutLocationTypes:(id)arg1;
+- (int)StringAsPayloadWorkoutSequenceLabels:(id)arg1;
 - (int)StringAsType:(id)arg1;
 - (void)addPayloadAccountType:(int)arg1;
 - (void)addPayloadActivity:(id)arg1;
@@ -829,8 +837,10 @@
 - (void)addPayloadWellnessQuestionType:(int)arg1;
 - (void)addPayloadWellnessUnitType:(id)arg1;
 - (void)addPayloadWellnessValue:(id)arg1;
+- (void)addPayloadWorkoutAssociatedItem:(id)arg1;
 - (void)addPayloadWorkoutGoalUnitType:(int)arg1;
 - (void)addPayloadWorkoutLocationType:(int)arg1;
+- (void)addPayloadWorkoutSequenceLabel:(int)arg1;
 - (void)clearPayloadAccountTypes;
 - (void)clearPayloadActivities;
 - (void)clearPayloadActivityLists;
@@ -991,8 +1001,10 @@
 - (void)clearPayloadWellnessQuestionTypes;
 - (void)clearPayloadWellnessUnitTypes;
 - (void)clearPayloadWellnessValues;
+- (void)clearPayloadWorkoutAssociatedItems;
 - (void)clearPayloadWorkoutGoalUnitTypes;
 - (void)clearPayloadWorkoutLocationTypes;
+- (void)clearPayloadWorkoutSequenceLabels;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)dictionaryRepresentation;
@@ -1221,10 +1233,13 @@
 - (id)payloadWellnessQuestionTypesAsString:(int)arg1;
 - (id)payloadWellnessUnitTypeAtIndex:(unsigned long long)arg1;
 - (id)payloadWellnessValueAtIndex:(unsigned long long)arg1;
+- (id)payloadWorkoutAssociatedItemAtIndex:(unsigned long long)arg1;
 - (int)payloadWorkoutGoalUnitTypeAtIndex:(unsigned long long)arg1;
 - (id)payloadWorkoutGoalUnitTypesAsString:(int)arg1;
 - (int)payloadWorkoutLocationTypeAtIndex:(unsigned long long)arg1;
 - (id)payloadWorkoutLocationTypesAsString:(int)arg1;
+- (int)payloadWorkoutSequenceLabelAtIndex:(unsigned long long)arg1;
+- (id)payloadWorkoutSequenceLabelsAsString:(int)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (void)setPayloadAccountTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadAlarmPeriods:(int *)arg1 count:(unsigned long long)arg2;
@@ -1290,6 +1305,7 @@
 - (void)setPayloadWellnessQuestionTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadWorkoutGoalUnitTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadWorkoutLocationTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setPayloadWorkoutSequenceLabels:(int *)arg1 count:(unsigned long long)arg2;
 - (id)typeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 

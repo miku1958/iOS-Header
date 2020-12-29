@@ -90,6 +90,7 @@ __attribute__((visibility("hidden")))
     double _mediaStallTotalTime;
     double _maxMediaStallTime;
     double _lastMediaStallStartTime;
+    double _lastDecodedFrameTime;
     BOOL _isRemoteMediaStalledShort;
     int packetsSinceStall;
     int packetsSinceShortMediaStall;
@@ -263,6 +264,7 @@ __attribute__((visibility("hidden")))
 @property (nonatomic) BOOL isStarted; // @synthesize isStarted;
 @property (readonly) BOOL isVideoRunning;
 @property BOOL isWaitingForICEResult; // @synthesize isWaitingForICEResult;
+@property double lastDecodedFrameTime; // @synthesize lastDecodedFrameTime=_lastDecodedFrameTime;
 @property unsigned int lastReceived; // @synthesize lastReceived;
 @property (readonly) unsigned int lastSentAudioSampleTime;
 @property (readonly) VCCallInfo *localCallInfo; // @synthesize localCallInfo;
@@ -601,10 +603,10 @@ __attribute__((visibility("hidden")))
 - (void)updateNetworkCheckHint:(double)arg1;
 - (void)updateRemoteMediaStallState:(double)arg1;
 - (void)updateRemoteMediaStallStateReporting:(double)arg1;
-- (void)updateStatistics:(CDStruct_1a067c5f)arg1;
+- (void)updateStatistics:(CDStruct_bae76c55)arg1;
 - (void)updateVCRateControlWRMMetrics:(struct tagWRMMetricsInfo *)arg1;
 - (void)updateVideoQualityNotification:(double)arg1;
-- (void)updateVideoQualityStatus:(double)arg1 bitrate:(double)arg2 time:(double)arg3 isRemote:(BOOL)arg4;
+- (void)updateVideoQualityStatusWithTime:(double)arg1 isRemote:(BOOL)arg2;
 - (void)vcSecureDataChannel:(id)arg1 messageType:(unsigned int)arg2 receivedData:(id)arg3;
 - (id)vcrcServerBag;
 - (unsigned int)vcrcServerBagProfileNumber;

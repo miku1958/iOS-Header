@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI224MagazineCategoriesRouter : _TtCs12_SwiftObject
 {
     MISSING_TYPE *controller;
+    MISSING_TYPE *delegate;
     MISSING_TYPE *resolver;
     MISSING_TYPE *tracker;
     MISSING_TYPE *navigator;

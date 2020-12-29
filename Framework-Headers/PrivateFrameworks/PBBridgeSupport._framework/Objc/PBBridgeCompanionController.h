@@ -97,6 +97,7 @@
 - (void)_cleanup;
 - (id)_connectionWithRequest:(id)arg1;
 - (BOOL)_dumpActivationResquests;
+- (void)_processActivationData;
 - (BOOL)_sendRemoteCommandWithMessageID:(unsigned short)arg1 withArguments:(id)arg2;
 - (BOOL)_sendResponseToMessage:(id)arg1 withResponseMessageID:(unsigned short)arg2 withArguments:(id)arg3;
 - (unsigned short)_testActivationResponseType;

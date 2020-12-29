@@ -10,20 +10,22 @@
 #import <AssistantServices/NSCopying-Protocol.h>
 #import <AssistantServices/NSSecureCoding-Protocol.h>
 
-@class NSDictionary, NSString;
+@class NSDate, NSDictionary, NSString;
 
 @interface AFAssertionContext : NSObject <NSCopying, NSSecureCoding, AFDictionaryConvertible>
 {
     unsigned long long _timestamp;
     NSString *_reason;
+    NSDate *_effectiveDate;
+    double _expirationDuration;
     NSDictionary *_userInfo;
-    AFAssertionContext *_parentContext;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, copy, nonatomic) NSDate *effectiveDate; // @synthesize effectiveDate=_effectiveDate;
+@property (readonly, nonatomic) double expirationDuration; // @synthesize expirationDuration=_expirationDuration;
 @property (readonly) unsigned long long hash;
-@property (readonly, copy, nonatomic) AFAssertionContext *parentContext; // @synthesize parentContext=_parentContext;
 @property (readonly, copy, nonatomic) NSString *reason; // @synthesize reason=_reason;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) unsigned long long timestamp; // @synthesize timestamp=_timestamp;
@@ -38,7 +40,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithDictionaryRepresentation:(id)arg1;
-- (id)initWithTimestamp:(unsigned long long)arg1 reason:(id)arg2 userInfo:(id)arg3 parentContext:(id)arg4;
+- (id)initWithTimestamp:(unsigned long long)arg1 reason:(id)arg2 effectiveDate:(id)arg3 expirationDuration:(double)arg4 userInfo:(id)arg5;
 - (BOOL)isEqual:(id)arg1;
 - (id)mutatedCopyWithMutator:(CDUnknownBlockType)arg1;
 

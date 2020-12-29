@@ -6,9 +6,11 @@
 
 #import <objc/NSObject.h>
 
+#import <MOVStreamIO/NSCopying-Protocol.h>
+
 @class NSString;
 
-@interface Version : NSObject
+@interface Version : NSObject <NSCopying>
 {
     unsigned int _major;
     unsigned int _minor;
@@ -21,14 +23,21 @@
 @property (readonly) unsigned int minor; // @synthesize minor=_minor;
 @property (readonly) NSString *modifier; // @synthesize modifier=_modifier;
 
++ (id)allVersionedKeysForKey:(id)arg1 modifier:(id)arg2;
++ (id)pre3_15_0_Mapping;
++ (id)versionZero;
 - (void).cxx_destruct;
 - (long long)compareToVersion:(id)arg1;
+- (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)getVersionAsString;
+- (unsigned long long)hash;
 - (id)init;
 - (id)initWithVersionString:(id)arg1 error:(id *)arg2;
 - (BOOL)isAllDigitsInString:(id)arg1;
+- (BOOL)isEqual:(id)arg1;
 - (BOOL)isEqualToVersion:(id)arg1;
+- (id)versionedKey:(id)arg1 modifier:(id)arg2;
 
 @end
 

@@ -122,7 +122,8 @@
 - (void)fetchCloudKitAccountStatusAndUpdateEligibilityAndNeedsRepairStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchCloudKitAccountStatusWithCompletion:(CDUnknownBlockType)arg1;
 - (void)fetchiCloudAccountPersonID:(CDUnknownBlockType)arg1;
-- (id)findRootCause:(id)arg1;
+- (id)finalSyncStateFor:(long long)arg1;
+- (id)findRootCauses:(id)arg1;
 - (BOOL)iCloudAccountMatchesiMessageAccount;
 - (id)init;
 - (id)initWithServerBag:(id)arg1 lockDownmanager:(id)arg2 deviceSupport:(id)arg3 imDefaults:(id)arg4;
@@ -179,6 +180,7 @@
 - (BOOL)shouldUseDevContainer;
 - (BOOL)shouldUseDevNickNameContainer;
 - (BOOL)signedIntoiCloudAndiMessageAndiCloudAccountMatchesiMessageAccount;
+- (id)simplifiedError:(id)arg1;
 - (void)submitPCSReportManateeStatuMetricWithPrefix:(id)arg1 andReason:(id)arg2;
 - (id)syncFailureMetricString:(id)arg1 isRecoverable:(BOOL)arg2 error:(id)arg3;
 - (void)syncStateWillUpdate:(id)arg1;

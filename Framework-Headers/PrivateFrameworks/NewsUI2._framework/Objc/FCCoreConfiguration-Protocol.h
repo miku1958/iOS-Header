@@ -12,6 +12,7 @@
 @protocol FCCoreConfiguration <NSObject, NFCopying>
 
 @property (nonatomic, readonly) NSArray *aLaCartePaidSubscriptionGroupWhitelistedChannelIDs;
+@property (nonatomic, readonly) BOOL adImpressionTrackingEnabled;
 @property (nonatomic, readonly) BOOL adInstrumentationEnabled;
 @property (nonatomic, readonly) long long alternateUniversalLinksBannerPresentationCount;
 @property (nonatomic, readonly) BOOL alternateUniversalLinksEnabledDefaultForFamilyMember;
@@ -27,6 +28,7 @@
 @property (nonatomic, readonly) BOOL checkForPaywallConfigChangesEnabled;
 @property (nonatomic, readonly) NSString *conversionCohortsExpField;
 @property (nonatomic, readonly) NSNumber *currentTreatment;
+@property (nonatomic, readonly) long long dailyChannelUpsellsCountLimit;
 @property (nonatomic, readonly) double delayBeforeRetryingDroppedFeeds;
 @property (nonatomic, readonly) BOOL diversifyOptionalTopStories;
 @property (nonatomic, readonly) NSString *editorialChannelID;
@@ -45,6 +47,7 @@
 @property (nonatomic, readonly) FCForYouGroupsConfiguration *forYouGroupsConfiguration;
 @property (nonatomic, readonly) long long forYouMaxDailyEvergreenArticlesForFreeUsers;
 @property (nonatomic, readonly) long long forYouMaxDailyEvergreenArticlesForPaidUsers;
+@property (nonatomic, readonly) NSString *forYouPremiumRecordConfigID;
 @property (nonatomic, readonly) NSString *forYouRecordConfigID;
 @property (nonatomic, readonly) FCVideoGroupsConfig *forYouVideoGroupsConfig;
 @property (nonatomic, readonly) NSString *freeEvergreenArticleListID;
@@ -62,6 +65,7 @@
 @property (nonatomic, readonly) long long minimumDurationBetweenTrendingGroupsWeekday;
 @property (nonatomic, readonly) long long minimumDurationBetweenTrendingGroupsWeekend;
 @property (nonatomic, readonly) double minimumTrendingUnseenRatio;
+@property (nonatomic, readonly) NSString *myMagazinesTagID;
 @property (nonatomic, readonly) BOOL newAdsEnabled;
 @property (nonatomic, readonly) BOOL newNotificationHandlingEnabled;
 @property (nonatomic, readonly) BOOL newPersonalizationEnabled;
@@ -71,6 +75,8 @@
 @property (nonatomic, readonly) BOOL orderFeedEndpointEnabled;
 @property (nonatomic, readonly) FCPaidBundleConfiguration *paidBundleConfig;
 @property (nonatomic, readonly) NSString *paidEvergreenArticleListID;
+@property (nonatomic, readonly) NSArray *permanentChannelIDs;
+@property (nonatomic, readonly) BOOL premiumTodayFeedEnabled;
 @property (nonatomic, readonly) NSArray *presubscribedFeedIDs;
 @property (nonatomic, readonly) BOOL privateDataEncryptionAllowed;
 @property (nonatomic, readonly) BOOL privateDataEncryptionMigrationDesired;

@@ -9,6 +9,7 @@
 @class NSArray, NSSet, NSString, PDSEntry, PDSUser;
 
 @protocol PDSCDCache <NSObject>
+- (BOOL)deleteEntriesForUser:(PDSUser *)arg1 withState:(unsigned char)arg2 withError:(id *)arg3;
 - (BOOL)deleteEntry:(PDSEntry *)arg1 withError:(id *)arg2;
 - (BOOL)hasActiveEntries;
 - (BOOL)hasPendingEntries;

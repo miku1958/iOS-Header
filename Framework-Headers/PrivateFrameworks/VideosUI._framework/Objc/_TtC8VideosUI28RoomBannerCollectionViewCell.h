@@ -16,7 +16,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *bannerImage;
     MISSING_TYPE *descriptionView;
     MISSING_TYPE *separatorView;
-    MISSING_TYPE *previousSize;
+    MISSING_TYPE *previousWidth;
 }
 
 - (void).cxx_destruct;

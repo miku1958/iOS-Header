@@ -33,6 +33,7 @@
 - (void)respondToAnomalyEvent:(id)arg1 withResponse:(long long)arg2;
 - (void)startAnomalyDetection;
 - (void)stopAnomalyDetection;
+- (void)updateAnomalyEventSOSCallState:(id)arg1 withSOSSCallState:(long long)arg2;
 
 @end
 

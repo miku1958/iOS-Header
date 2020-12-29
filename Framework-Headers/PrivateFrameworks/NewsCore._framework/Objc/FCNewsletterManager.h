@@ -16,6 +16,7 @@
 @interface FCNewsletterManager : NSObject <FCNewsletterManager, FCAppActivityObserving, FCAppleAccountObserver>
 {
     long long _subscription;
+    long long _includeOptions;
     FCNewsletterEndpointConnection *_endpointConnection;
     FCCommandQueue *_endpointCommandQueue;
     id<FCAppleAccount> _appleAccount;
@@ -39,6 +40,7 @@
 @property (readonly, nonatomic) FCCommandQueue *endpointCommandQueue; // @synthesize endpointCommandQueue=_endpointCommandQueue;
 @property (readonly, nonatomic) FCNewsletterEndpointConnection *endpointConnection; // @synthesize endpointConnection=_endpointConnection;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) long long includeOptions; // @synthesize includeOptions=_includeOptions;
 @property (readonly, nonatomic) BOOL isSubscribed;
 @property (readonly, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (nonatomic) long long subscription; // @synthesize subscription=_subscription;
@@ -61,9 +63,10 @@
 - (void)submitPersonalizationVector:(id)arg1;
 - (void)subscribe;
 - (void)subscribeTo:(long long)arg1;
+- (void)subscribeTo:(long long)arg1 includeOptions:(long long)arg2;
 - (long long)subscriptionStatusForNewsletter:(long long)arg1;
 - (void)unsubscribe;
-- (void)updateCacheWithNewsletterString:(id)arg1;
+- (void)updateCacheWithNewsletterString:(id)arg1 includeArray:(id)arg2;
 - (id)updateSubscription;
 
 @end

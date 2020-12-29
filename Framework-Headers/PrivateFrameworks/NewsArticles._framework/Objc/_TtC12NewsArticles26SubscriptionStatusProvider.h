@@ -12,7 +12,7 @@ __attribute__((visibility("hidden")))
 @interface _TtC12NewsArticles26SubscriptionStatusProvider : NSObject
 {
     MISSING_TYPE *headline;
-    MISSING_TYPE *purchaseProvider;
+    MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *bundleSubscriptionManager;
     MISSING_TYPE *bundlePurchasePrewarmer;
     MISSING_TYPE *observers;

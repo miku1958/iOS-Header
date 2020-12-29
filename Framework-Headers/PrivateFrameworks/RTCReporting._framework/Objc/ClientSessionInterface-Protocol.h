@@ -23,5 +23,6 @@
 - (void)updateSharedDataWithDictionary:(NSDictionary *)arg1;
 - (void)uploadFileAtPath:(NSURL *)arg1 extensionToken:(char *)arg2 completionHandler:(void (^)(BOOL))arg3;
 - (void)uploadLogData:(NSArray *)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
+- (void)validateEphemeralSession:(NSString *)arg1 withHandler:(void (^)(BOOL))arg2;
 @end
 

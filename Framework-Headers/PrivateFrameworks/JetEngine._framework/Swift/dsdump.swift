@@ -427,7 +427,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let bundleIdentifier : CFString
 
 	// Swift methods
-	0x4d250  class func LocalPreferences.__allocating_init(bundleIdentifier:) // init 
+	0x4d1b0  class func LocalPreferences.__allocating_init(bundleIdentifier:) // init 
  }
 
  class JetEngine.PackageDataBlobFormatWriter {
@@ -490,14 +490,14 @@ WARNING: couldn't find address 0x815ec000b42f0 (0x5ec000b42f0) in binary!
 WARNING: couldn't find address 0x8204c000b3f68 (0x4c000b3f68) in binary!
 	0x81c48  @objc MockedAMSBag.(null) <stripped>
 WARNING: couldn't find address 0x98000000c (0x98000000c) in binary!
-	0x714fff26bf0  @objc MockedAMSBag.(null) <stripped>
-	0x6ecfff26e98  @objc MockedAMSBag.W <stripped>
-	0x6c4fff27600  @objc MockedAMSBag.L‰öH‰ÚèW <stripped>
-	0x6f4fff276d8  @objc MockedAMSBag.„ <stripped>
-	0xfff26bb0  @objc MockedAMSBag.H‹5q <stripped>
+	0x714fff26b50  @objc MockedAMSBag.(null) <stripped>
+	0x6ecfff26df8  @objc MockedAMSBag.‰ùH‹?H‹qH‹H‹HH9×u	H9Îu°]ÃE1À]éùY <stripped>
+	0x6c4fff27560  @objc MockedAMSBag.UH‰åH‰ğH‰ùH‹?H‹qH‹H‹HH9×u	H9Îu°]ÃE1À]éùY <stripped>
+	0x6f4fff27638  @objc MockedAMSBag.‹u <stripped>
+	0xfff26b10  @objc MockedAMSBag.‹5² <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x664fff46fc8  @objc MockedAMSBag.(null) <stripped>
-	0xfff47540  @objc MockedAMSBag. <stripped>
+	0x664fff46f28  @objc MockedAMSBag.(null) <stripped>
+	0xfff474a0  @objc MockedAMSBag.[]éV* <stripped>
 
 	// Swift methods
  }
@@ -851,7 +851,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queueName : String
 
 	// Swift methods
-	0x87120  class func BasicImpressionsTracker.__allocating_init(threshold:queueName:) // init 
+	0x87080  class func BasicImpressionsTracker.__allocating_init(threshold:queueName:) // init 
  }
 
  class JetEngine.ActionImplementationBox {
@@ -1017,7 +1017,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var exceptionObserver : JSStack
 
 	// Swift methods
-	0x93ef0  class func JSStack.__allocating_init(prerequisites:virtualMachine:) // init 
+	0x93e50  class func JSStack.__allocating_init(prerequisites:virtualMachine:) // init 
  }
 
  enum JetEngine.Prerequisite {
@@ -1051,7 +1051,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var times : Time
 
 	// Swift methods
-	0x9d4f0  class func ImpressionsTracking.AppearanceJournal.__allocating_init(elementID:metricsFields:) // init 
+	0x9d450  class func ImpressionsTracking.AppearanceJournal.__allocating_init(elementID:metricsFields:) // init 
  }
 
  struct JetEngine.Time {
@@ -1098,7 +1098,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let weakValue : UnsafeRawPointer
 
 	// Swift methods
-	0x9fae0  class func JSWeakReference.__allocating_init(_:) // init 
+	0x9fa40  class func JSWeakReference.__allocating_init(_:) // init 
  }
 
  struct JetEngine.LocalizedStringTable {
@@ -1363,7 +1363,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let base : ExponentialPipelineBackoff
 
 	// Swift methods
-	0xbae20  class func JitterPipelineBackoff.__allocating_init(baseWaitInterval:maxWaitInterval:) // init 
+	0xbad80  class func JitterPipelineBackoff.__allocating_init(baseWaitInterval:maxWaitInterval:) // init 
  }
 
  class JetEngine.MescalBagContract : NSObject /usr/lib/libobjc.A.dylib {
@@ -1384,11 +1384,11 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	0xfff82ae0  @objc MescalBagContract.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
 	0x574fff93708  @objc MescalBagContract.(null) <stripped>
-	0x54cfff953b0  @objc MescalBagContract.HÇÀÿÿÿÿHÓàH‰ÁH÷ÙIÇÇÿÿÿÿIÓçHÇÂÿÿÿÿHƒù@I÷×LMúL#8¹? <stripped>
-	0x524fff956f8  @objc MescalBagContract.ˆ, <stripped>
+	0x54cfff953b0  @objc MescalBagContract.0H‹u¸H‹U°ÿU˜IÿD$H‹EÀH‹}ˆM…ÿt"I¼ÏIWÿI!×H‰ÆHÁæH	ÎH‰EÀé¾ <stripped>
+	0x524fff956f8  @objc MescalBagContract. <stripped>
 
 	// Swift methods
-	0xbd990  class func MescalBagContract.__allocating_init(_:) // init 
+	0xbd8f0  class func MescalBagContract.__allocating_init(_:) // init 
  }
 
  class JetEngine.NestedPreferences : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1672,8 +1672,8 @@ WARNING: couldn't find address 0x81ea4000b3dc0 (0x6a4000b3dc0) in binary!
 	0x81aa0  @objc JSBagObject.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	0x4b4fffa3a78  @objc JSBagObject.(null) <stripped>
-	0x57cfffa3aa0  @objc JSBagObject. <stripped>
-	0x254000b3d78  @objc JSBagObject. <stripped>
+	0x57cfffa3aa0  @objc JSBagObject.ÿÿÿBÁë¸ÿÿÿÿë€8 <stripped>
+	0x254000b3d78  @objc JSBagObject.UH‰å…ötxH‹O¸ÿÿÿÿH9Á¸ÿÿÿÿBÁë¸ÿÿÿÿë€8 <stripped>
 WARNING: couldn't find address 0xb440cfffb9380 (0x40cfffb9380) in binary!
 	0x240000b4088  @objc JSBagObject.(null) <stripped>
 WARNING: couldn't find address 0xb43ecfffb95a8 (0x3ecfffb95a8) in binary!
@@ -1810,7 +1810,7 @@ WARNING: couldn't find address 0x81e6c000b3ca0 (0x66c000b3ca0) in binary!
 	0x81e60  @objc JSRandomObject.(null) <stripped>
 WARNING: couldn't find address 0x108000000c (0x108000000c) in binary!
 	0x40cfffb9380  @objc JSRandomObject.(null) <stripped>
-	0x3ecfffb95a8  @objc JSRandomObject. <stripped>
+	0x3ecfffb95a8  @objc JSRandomObject. <stripped>
  }
 
  struct JetEngine.PackagingLog { }
@@ -2027,13 +2027,13 @@ WARNING: couldn't find address 0x81da4000b3cc0 (0x5a4000b3cc0) in binary!
 	0x819a0  @objc OverriddenAMSBag.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	0x494fffbc708  @objc OverriddenAMSBag.(null) <stripped>
-	0xfffbc860  @objc OverriddenAMSBag.‹~H‰{ŠFˆCL‹vL‰sL‹~ L‰{ L‹f(L‰c(L‹n0L‰k0èt) <stripped>
+	0xfffbc860  @objc OverriddenAMSBag.~L‹{H‰{è—) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	0x464fffc5de8  @objc OverriddenAMSBag.(null) <stripped>
-	0xfffc5f40  @objc OverriddenAMSBag.èÅ) <stripped>
+	0xfffc5f40  @objc OverriddenAMSBag.SPI‰öH‰ûH‹H‰H‹~L‹{H‰{è·) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	0x424fffd1fb8  @objc OverriddenAMSBag.(null) <stripped>
-	0x504000b3c20  @objc OverriddenAMSBag. <stripped>
+	0x504000b3c20  @objc OverriddenAMSBag.H‰;L‹vL‰sL‹~L‰{èæ- <stripped>
 WARNING: couldn't find address 0xb3b0cfffd7b98 (0x30cfffd7b98) in binary!
 	0x4d5000b3af8  @objc OverriddenAMSBag.(null) <stripped>
 WARNING: couldn't find address 0xb3ae4fffd8450 (0x2e4fffd8450) in binary!
@@ -2590,7 +2590,7 @@ WARNING: couldn't find address 0x81da4000b39b0 (0x5a4000b39b0) in binary!
 	0x81bf0  @objc JSHostObject.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	0x2dcfffebec0  @objc JSHostObject.(null) <stripped>
-	0x3bc000b3960  @objc JSHostObject.èã <stripped>
+	0x3bc000b3960  @objc JSHostObject.è£ <stripped>
 WARNING: couldn't find address 0xb394cffffa9d0 (0x14cffffa9d0) in binary!
 	0x3a4000b3938  @objc JSHostObject.(null) <stripped>
 WARNING: couldn't find address 0xb3924ffffaa18 (0x124ffffaa18) in binary!
@@ -2783,7 +2783,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	0x54a3a4d4152  @objc URLBagContract.(null) <stripped>
 WARNING: couldn't find address 0x502020656e69676e (0x656e69676e) in binary!
 	0x1676e457465  @objc URLBagContract.(null) <stripped>
-	0x0  @objc URLBagContract.ÿá¶G…Àuë"¸ÿÿÿÿë,·G…ÀtÁà¶Dşë‹G…Àuí¶Hşƒø¸ÿÿÿÿCÁÿÀ]Ãfçÿÿÿ»ÿÿÿÌÿÿÿüÿÿÿàÿÿÿ„ <stripped>
+	0x0  @objc URLBagContract. <stripped>
 WARNING: couldn't find address 0x4530000043300000 (0x43300000) in binary!
 	0x0  @objc URLBagContract.(null) <stripped>
 WARNING: couldn't find address 0x4530000000000000 (0x0) in binary!

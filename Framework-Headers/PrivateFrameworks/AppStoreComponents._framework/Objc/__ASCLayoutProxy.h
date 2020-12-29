@@ -15,13 +15,21 @@
 
 @property (nonatomic, readonly) NSString *description;
 
++ (id)adLockupLayoutWithTraitCollection:(id)arg1 artworkView:(id)arg2 headingText:(id)arg3 titleText:(id)arg4 subtitleText:(id)arg5 offerText:(id)arg6 offerButton:(id)arg7 starRatingView:(id)arg8 ratingCountLabel:(id)arg9 adTransparencyButton:(id)arg10 editorsChoiceView:(id)arg11 descriptionLabel:(id)arg12;
++ (id)artworkFrom:(id)arg1 and:(id)arg2;
 + (double)axOfferButtonHeight;
 + (id)lockupLayoutOfSize:(id)arg1 traitCollection:(id)arg2 artworkView:(id)arg3 headingText:(id)arg4 titleText:(id)arg5 subtitleText:(id)arg6 offerText:(id)arg7 offerButton:(id)arg8;
++ (id)lockupMediaLayoutWithScreenshots:(id)arg1 trailers:(id)arg2 mediaViews:(id)arg3;
++ (struct CGSize)lockupMediaPreferredMediaSizeWithFitting:(struct CGSize)arg1 for:(id)arg2 and:(id)arg3 in:(id)arg4;
++ (id)lockupMediaSizingLayoutWithScreenshots:(id)arg1 trailers:(id)arg2 mediaViews:(id)arg3;
++ (struct CGSize)mediumLockupEstimatedSizeFittingSize:(struct CGSize)arg1 compatibleWithTraitCollection:(id)arg2;
++ (long long)numberOfViewsInLockupMediaLayoutFor:(id)arg1 and:(id)arg2;
 + (double)offerButtonHeight;
 + (id)offerEmptyLayoutWithImageView:(id)arg1 titleView:(id)arg2 subtitleView:(id)arg3;
 + (id)offerIconLayoutWithImageView:(id)arg1 titleView:(id)arg2 subtitleView:(id)arg3 hasTrailingSubtitle:(BOOL)arg4;
 + (double)offerProgressDiameter;
 + (id)offerTextLayoutWithTitleBackgroundView:(id)arg1 titleView:(id)arg2 subtitleView:(id)arg3 hasTrailingSubtitle:(BOOL)arg4;
++ (struct CGSize)smallLockupEstimatedSizeFittingSize:(struct CGSize)arg1 compatibleWithTraitCollection:(id)arg2;
 + (id)traitEnvironmentWithTraitCollection:(id)arg1;
 + (id)tvTextPillOverlayWithBackgroundView:(id)arg1 textView:(id)arg2;
 - (void).cxx_destruct;

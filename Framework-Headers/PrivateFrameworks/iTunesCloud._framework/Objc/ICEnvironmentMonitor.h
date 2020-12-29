@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSHashTable, NSString, NWPathEvaluator;
+@class CoreTelephonyClient, NSDictionary, NSHashTable, NSString, NWPathEvaluator;
 @protocol OS_dispatch_queue;
 
 @interface ICEnvironmentMonitor : NSObject
@@ -14,9 +14,12 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     NSObject<OS_dispatch_queue> *_calloutQueue;
     NSHashTable *_observers;
+    struct os_unfair_recursive_lock_s _observersLock;
     struct __CTServerConnection *_telephonyServerConnectionRef;
     NWPathEvaluator *_networkPathEvaluator;
     int _thermalNotificationToken;
+    CoreTelephonyClient *_telephonyClient;
+    NSDictionary *_cellSignalInfo;
     unsigned int _powerNotificationRef;
     void *_symptomPresentationFeedDyLibHandle;
     BOOL _isCharging;
@@ -48,6 +51,8 @@
 @property (readonly, nonatomic) long long networkType; // @synthesize networkType=_networkType;
 @property (readonly, nonatomic, getter=isRemoteServerLikelyReachable) BOOL remoteServerLikelyReachable; // @synthesize remoteServerLikelyReachable=_isRemoteServerLikelyReachable;
 @property (readonly, nonatomic, getter=isRemoteServerReachable) BOOL remoteServerReachable; // @synthesize remoteServerReachable=_remoteServerReachable;
+@property (readonly, nonatomic) NSDictionary *signalInfo;
+@property (readonly, nonatomic) NSDictionary *signalStrength;
 @property (readonly, copy, nonatomic) NSString *telephonyOperatorName; // @synthesize telephonyOperatorName=_telephonyOperatorName;
 @property (readonly, copy, nonatomic) NSString *telephonyRegistrationStatus; // @synthesize telephonyRegistrationStatus=_telephonyRegistrationStatus;
 @property (readonly, copy, nonatomic) NSString *telephonyStatusIndicator; // @synthesize telephonyStatusIndicator=_telephonyStatusIndicator;

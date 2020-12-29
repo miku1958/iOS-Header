@@ -8,10 +8,11 @@
 
 #import <TextInputCore/NSSecureCoding-Protocol.h>
 
-@class NSDate, NSMutableDictionary, NSString, TIKeyboardLayout;
+@class NSDate, NSMutableDictionary, NSString, TIKeyboardLayout, TISKEvent;
 
 @interface TISKSessionSamples : NSObject <NSSecureCoding>
 {
+    TISKEvent *_startTimerEvent;
     double _currentTypingStart;
     BOOL _isEmpty;
     NSMutableDictionary *_keyedSamples;
@@ -41,7 +42,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)generateDataForSR;
 - (void)haltTypingTimer;
-- (void)haltTypingTimerAt:(double)arg1;
+- (void)haltTypingTimerWithEvent:(id)arg1;
 - (id)init:(id)arg1 endDate:(id)arg2;
 - (id)init:(id)arg1 endDate:(id)arg2 identifier:(id)arg3 version:(id)arg4 layout:(id)arg5;
 - (id)initWithCoder:(id)arg1;
@@ -53,7 +54,7 @@
 - (id)samples:(id)arg1 withPosition:(unsigned long long)arg2;
 - (void)setup;
 - (id)singleMetric:(id)arg1;
-- (void)startTypingTimerAt:(double)arg1;
+- (void)startTypingTimerWithEvent:(id)arg1;
 
 @end
 

@@ -6,19 +6,19 @@
 
 #import <UIKit/UIView.h>
 
-@class TVImageLayout, VUIButton, VUIFocusableTextView, VUILabel, VUISeparatorView, _TVImageView, _TVMonogramView;
+@class TVImageLayout, VUIFocusableTextView, VUILabel, VUISeparatorView, _TVMonogramView;
 
 __attribute__((visibility("hidden")))
 @interface VUIListLockupCollectionViewCellView : UIView
 {
-    _TVImageView *_imageView;
+    UIView *_imageView;
     _TVMonogramView *_monogramView;
     TVImageLayout *_imageLayout;
     VUILabel *_titleLabel;
     VUILabel *_subTitleLabel;
     VUIFocusableTextView *_descriptionTextView;
-    VUIButton *_primaryButton;
-    VUIButton *_secondaryButton;
+    UIView *_primaryButton;
+    UIView *_secondaryButton;
     long long _imagePosition;
     TVImageLayout *_monogramImageLayout;
     VUISeparatorView *_separatorView;
@@ -27,11 +27,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUIFocusableTextView *descriptionTextView; // @synthesize descriptionTextView=_descriptionTextView;
 @property (strong, nonatomic) TVImageLayout *imageLayout; // @synthesize imageLayout=_imageLayout;
 @property (nonatomic) long long imagePosition; // @synthesize imagePosition=_imagePosition;
-@property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) UIView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) TVImageLayout *monogramImageLayout; // @synthesize monogramImageLayout=_monogramImageLayout;
 @property (strong, nonatomic) _TVMonogramView *monogramView; // @synthesize monogramView=_monogramView;
-@property (strong, nonatomic) VUIButton *primaryButton; // @synthesize primaryButton=_primaryButton;
-@property (strong, nonatomic) VUIButton *secondaryButton; // @synthesize secondaryButton=_secondaryButton;
+@property (strong, nonatomic) UIView *primaryButton; // @synthesize primaryButton=_primaryButton;
+@property (strong, nonatomic) UIView *secondaryButton; // @synthesize secondaryButton=_secondaryButton;
 @property (strong, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
 @property (strong, nonatomic) VUILabel *subTitleLabel; // @synthesize subTitleLabel=_subTitleLabel;
 @property (strong, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
@@ -41,6 +41,7 @@ __attribute__((visibility("hidden")))
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)layoutSubviews;
 - (void)prepareForCellReuse;
+- (void)setHighlighted:(BOOL)arg1;
 - (void)setSemanticContentAttribute:(long long)arg1;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 

@@ -20,9 +20,14 @@ __attribute__((visibility("hidden")))
 - (void)_accountStoreDidChange:(id)arg1;
 - (void)_setup;
 - (void)_setupAccountImageView;
+- (void)_updateAccessibilityFrame;
 - (void)_updateAccountButtonVisibility:(BOOL)arg1;
 - (void)_updateAccountImage;
-- (id)initWithButtonLayout:(id)arg1 interfaceStyle:(long long)arg2;
+- (void)configureWithLayoutProperties;
+- (id)initWithType:(unsigned long long)arg1 interfaceStyle:(long long)arg2;
+- (void)layoutSubviews;
+- (void)setFrame:(struct CGRect)arg1;
+- (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 
 @end
 

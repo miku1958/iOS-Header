@@ -46,10 +46,10 @@
 + (id)localizableTextProviderWithStringsFileTextKey:(id)arg1;
 + (id)localizableTextProviderWithStringsFileTextKey:(id)arg1 shortTextKey:(id)arg2;
 + (id)new;
++ (id)providerWithJSONObjectRepresentation:(id)arg1;
 + (BOOL)supportsSecureCoding;
 + (id)textProviderWithFormat:(id)arg1;
 + (id)textProviderWithFormat:(id)arg1 arguments:(struct __va_list_tag [1])arg2;
-+ (id)textProviderWithJSONObjectRepresentation:(id)arg1;
 - (void).cxx_destruct;
 - (id)JSONObjectRepresentation;
 - (id)_cacheForKey:(id)arg1;

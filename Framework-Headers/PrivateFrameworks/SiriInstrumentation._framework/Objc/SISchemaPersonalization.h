@@ -6,24 +6,29 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData;
+@class NSData, SISchemaVoiceSettings;
 
 @interface SISchemaPersonalization : PBCodable
 {
     BOOL _personalDomainsSetup;
     BOOL _appleMusicSubscriber;
+    SISchemaVoiceSettings *_voiceSettings;
     struct {
         unsigned int personalDomainsSetup:1;
         unsigned int appleMusicSubscriber:1;
     } _has;
+    BOOL _hasVoiceSettings;
 }
 
 @property (nonatomic) BOOL appleMusicSubscriber; // @synthesize appleMusicSubscriber=_appleMusicSubscriber;
 @property (nonatomic) BOOL hasAppleMusicSubscriber;
 @property (nonatomic) BOOL hasPersonalDomainsSetup;
+@property (nonatomic) BOOL hasVoiceSettings; // @synthesize hasVoiceSettings=_hasVoiceSettings;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (nonatomic) BOOL personalDomainsSetup; // @synthesize personalDomainsSetup=_personalDomainsSetup;
+@property (strong, nonatomic) SISchemaVoiceSettings *voiceSettings; // @synthesize voiceSettings=_voiceSettings;
 
+- (void).cxx_destruct;
 - (id)dictionaryRepresentation;
 - (unsigned long long)hash;
 - (id)initWithDictionary:(id)arg1;

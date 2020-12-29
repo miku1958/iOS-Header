@@ -17,7 +17,7 @@
 #import <HomeKitDaemon/HMDMediaDestinationManagerDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 
-@class HMDAccessorySettingsController, HMDAccessorySymptomHandler, HMDAppleMediaAccessoryMetricsDispatcher, HMDBackingStore, HMDDevice, HMDDeviceController, HMDMediaDestinationController, HMDMediaDestinationManager, HMDRemoteLoginHandler, HMDTargetControlManager, HMFActivity, HMFPairingIdentity, HMFSoftwareVersion, HMFWiFiManager, HMFWiFiNetworkInfo, HMMediaDestination, HMMediaDestinationControllerData, NSArray, NSNotificationCenter, NSString;
+@class HMDAccessorySettingsController, HMDAccessorySymptomHandler, HMDAppleMediaAccessoryMetricsDispatcher, HMDBackingStore, HMDDevice, HMDDeviceController, HMDMediaDestinationController, HMDMediaDestinationManager, HMDRemoteLoginHandler, HMDTargetControlManager, HMFActivity, HMFPairingIdentity, HMFSoftwareVersion, HMFWiFiManager, HMFWiFiNetworkInfo, HMMediaDestination, HMMediaDestinationControllerData, NSArray, NSNotificationCenter, NSNumber, NSString, NSUUID;
 @protocol HMDAppleMediaAccessoryModelDataSource;
 
 @interface HMDAppleMediaAccessory : HMDMediaAccessory <HMDAccessorySettingsControllerDataSource, HMDAccessorySettingsControllerDelegate, HMDMediaDestinationControllerDataSource, HMDMediaDestinationControllerDelegate, HMDMediaDestinationManagerDataSource, HMDMediaDestinationManagerDelegate, HMDDeviceControllerDelegate, HMDAppleMediaAccessoryMetricsDispatcherDataSource, HMDAccessoryUserManagement, HMFLogging>
@@ -36,10 +36,13 @@
     HMFWiFiNetworkInfo *_lastStagedWifiNetworkInfo;
     HMDTargetControlManager *_targetControlManager;
     unsigned long long _supportedStereoPairVersions;
+    NSUUID *_preferredMediaUserUUID;
+    NSNumber *_preferredMediaUserSelectionTypeNumber;
     HMDAccessorySettingsController *_settingsController;
     NSArray *_supportedMultiUserLanguageCodes;
     HMDMediaDestinationManager *_audioDestinationManager;
     HMDMediaDestinationController *_audioDestinationController;
+    long long _fallbackMediaUserType;
     HMFPairingIdentity *_lastCreatedPairingIdentity;
     id<HMDAppleMediaAccessoryModelDataSource> _modelDataSource;
     CDUnknownBlockType _deviceMediaRouteIdentifierFactory;
@@ -59,6 +62,7 @@
 @property (readonly) HMDDevice *device;
 @property (readonly, copy) CDUnknownBlockType deviceMediaRouteIdentifierFactory; // @synthesize deviceMediaRouteIdentifierFactory=_deviceMediaRouteIdentifierFactory;
 @property (nonatomic, getter=isDeviceReachable) BOOL deviceReachable; // @synthesize deviceReachable=_deviceReachable;
+@property (readonly, nonatomic) long long fallbackMediaUserType; // @synthesize fallbackMediaUserType=_fallbackMediaUserType;
 @property (nonatomic) BOOL fixedPairingIdentityInCloud; // @synthesize fixedPairingIdentityInCloud=_fixedPairingIdentityInCloud;
 @property (readonly) unsigned long long hash;
 @property double homepodSettingsCreationTimestamp;
@@ -69,6 +73,8 @@
 @property (readonly) id<HMDAppleMediaAccessoryModelDataSource> modelDataSource; // @synthesize modelDataSource=_modelDataSource;
 @property (strong) NSNotificationCenter *notificationCenter; // @synthesize notificationCenter=_notificationCenter;
 @property (readonly, copy) HMFPairingIdentity *pairingIdentity; // @synthesize pairingIdentity=_pairingIdentity;
+@property (copy) NSNumber *preferredMediaUserSelectionTypeNumber; // @synthesize preferredMediaUserSelectionTypeNumber=_preferredMediaUserSelectionTypeNumber;
+@property (copy) NSUUID *preferredMediaUserUUID; // @synthesize preferredMediaUserUUID=_preferredMediaUserUUID;
 @property (readonly) HMDRemoteLoginHandler *remoteLoginHandler; // @synthesize remoteLoginHandler=_remoteLoginHandler;
 @property (copy) CDUnknownBlockType settingsConnectionFactory; // @synthesize settingsConnectionFactory=_settingsConnectionFactory;
 @property (strong) HMDAccessorySettingsController *settingsController; // @synthesize settingsController=_settingsController;
@@ -135,10 +141,12 @@
 - (void)handleDeviceIsNotReachable:(id)arg1;
 - (void)handleDeviceIsPublishingChangedNotification:(id)arg1;
 - (void)handleDeviceIsReachable:(id)arg1;
+- (void)handleHomeUserRemovedNotification:(id)arg1;
 - (void)handleRemovedMediaDestinationControllerModel:(id)arg1 message:(id)arg2;
 - (void)handleRemovedMediaDestinationModel:(id)arg1 message:(id)arg2;
 - (void)handleRoomChanged:(id)arg1;
 - (void)handleRoomNameChanged:(id)arg1;
+- (void)handleUpdatePreferredMediaUser:(id)arg1;
 - (void)handleUpdatedMediaDestinationControllerModel:(id)arg1 message:(id)arg2;
 - (void)handleUpdatedMediaDestinationModel:(id)arg1 message:(id)arg2;
 - (id)init;
@@ -193,6 +201,7 @@
 - (BOOL)supportsMultiUser;
 - (BOOL)supportsMusicAlarm;
 - (BOOL)supportsPersonalRequests;
+- (BOOL)supportsPreferredMediaUser;
 - (BOOL)supportsSettings;
 - (BOOL)supportsSoftwareUpdate;
 - (BOOL)supportsTargetControl;

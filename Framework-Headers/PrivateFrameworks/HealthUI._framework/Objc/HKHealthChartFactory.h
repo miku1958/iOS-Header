@@ -6,16 +6,18 @@
 
 #import <objc/NSObject.h>
 
+#import <HealthUI/HKCardioFitnessDataSourceProvider-Protocol.h>
 #import <HealthUI/HKSleepDataSourceProvider-Protocol.h>
 
 @class HKChartDataCacheController, HKDateCache, HKDisplayCategoryController, HKDisplayTypeController, HKHealthStore, HKInteractiveChartDataFormatter, HKSampleTypeDateRangeController, HKSampleTypeUpdateController, HKSelectedTimeScopeController, HKUnitPreferenceController, NSDictionary, _HKWheelchairUseCharacteristicCache;
-@protocol HKSleepDataSourceProvider;
+@protocol HKCardioFitnessDataSourceProvider, HKSleepDataSourceProvider;
 
-@interface HKHealthChartFactory : NSObject <HKSleepDataSourceProvider>
+@interface HKHealthChartFactory : NSObject <HKSleepDataSourceProvider, HKCardioFitnessDataSourceProvider>
 {
     HKHealthStore *_healthStore;
     id<HKSleepDataSourceProvider> _sleepDataSourceProvider;
     HKInteractiveChartDataFormatter *_sleepChartFormatter;
+    id<HKCardioFitnessDataSourceProvider> _cardioFitnessDataSourceProvider;
     HKDisplayTypeController *_displayTypeController;
     HKUnitPreferenceController *_unitPreferenceController;
     HKDisplayCategoryController *_displayCategoryController;
@@ -28,6 +30,7 @@
     NSDictionary *_identifierToDisplayTypeMapping;
 }
 
+@property (strong, nonatomic) id<HKCardioFitnessDataSourceProvider> cardioFitnessDataSourceProvider; // @synthesize cardioFitnessDataSourceProvider=_cardioFitnessDataSourceProvider;
 @property (readonly, nonatomic) HKChartDataCacheController *chartDataCacheController; // @synthesize chartDataCacheController=_chartDataCacheController;
 @property (readonly, nonatomic) HKDateCache *dateCache; // @synthesize dateCache=_dateCache;
 @property (readonly, nonatomic) HKDisplayCategoryController *displayCategoryController; // @synthesize displayCategoryController=_displayCategoryController;
@@ -56,6 +59,7 @@
 - (id)init;
 - (id)initWithHealthStore:(id)arg1;
 - (id)interactiveChartForTypeIdentifier:(id)arg1 preferredOverlay:(long long)arg2 displayDateInterval:(id)arg3;
+- (id)makeCardioFitnessInteractiveChartViewControllerWithDisplayDate:(id)arg1 applicationItems:(id)arg2 preferredOverlay:(long long)arg3;
 - (id)makeSleepDataSourceFromHealthStore:(id)arg1 representativeDisplayType:(id)arg2;
 - (id)standardSleepChartFormatter;
 - (id)supportedTypeIdentifiers;

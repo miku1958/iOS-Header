@@ -39,6 +39,7 @@
 + (id)namespace;
 - (void).cxx_destruct;
 - (BOOL)_mergeWithNewObject:(id)arg1 operations:(id)arg2;
+- (void)changeUpdateSource:(long long)arg1 path:(id)arg2 documentationPath:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)configureWithContext:(id)arg1;
 - (void)fetchAvailableUpdateWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)init;

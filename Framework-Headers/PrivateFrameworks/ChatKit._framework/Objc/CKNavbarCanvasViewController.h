@@ -20,6 +20,7 @@
     BOOL _isInEditingMode;
     BOOL _editing;
     UIBarButtonItem *_detailsBarButton;
+    CKDetailsContactsManager *_contactsManager;
     id<CKNavbarCanvasViewControllerDelegate> _delegate;
     UIButton *_callButton;
     CKNavigationBarCanvasView *_canvasView;
@@ -35,7 +36,6 @@
     UINavigationController *_proxyNavigationController;
     long long _indicatorType;
     CNContactStore *_suggestionsEnabledContactStore;
-    CKDetailsContactsManager *_contactsManager;
 }
 
 @property (strong, nonatomic) CKAvatarPickerViewController *avatarPickerViewController; // @synthesize avatarPickerViewController=_avatarPickerViewController;

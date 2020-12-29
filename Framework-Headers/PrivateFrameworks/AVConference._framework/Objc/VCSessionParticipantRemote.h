@@ -38,6 +38,7 @@ __attribute__((visibility("hidden")))
     TimingCollection *_perfTimers;
     BOOL _haveReportedPerfTimers;
     struct _VCSessionParticipantSourceIO _sourceIO;
+    BOOL _isParticipantVersionPeace;
 }
 
 @property (readonly) unsigned short activeDownlinkAudioStreamID; // @synthesize activeDownlinkAudioStreamID=_activeDownlinkAudioStreamID;
@@ -45,6 +46,7 @@ __attribute__((visibility("hidden")))
 @property (readonly) unsigned int actualNetworkBitrateAudio;
 @property (readonly) unsigned int actualNetworkBitrateVideo;
 @property (readonly, nonatomic) VCSessionParticipantMediaStreamInfo *audioStreamInfo;
+@property (readonly, nonatomic) BOOL isParticipantVersionPeace; // @synthesize isParticipantVersionPeace=_isParticipantVersionPeace;
 @property (readonly, nonatomic) BOOL isVideoExpected;
 @property (readonly) BOOL isVisible;
 @property (readonly, nonatomic) unsigned int lastDisplayedFrameRTPTimestamp;
@@ -76,6 +78,7 @@ __attribute__((visibility("hidden")))
 - (id)getAudioDumpName;
 - (id)initWithIDSDestination:(id)arg1 idsParticipantID:(unsigned long long)arg2 mediaNegotiator:(id)arg3 opaqueData:(id)arg4 delegate:(id)arg5 processId:(int)arg6 transportSessionID:(unsigned int)arg7 sessionUUID:(id)arg8 config:(id)arg9 isGKVoiceChat:(BOOL)arg10;
 - (BOOL)isAudioActive;
+- (BOOL)isParticipantPeace:(id)arg1;
 - (BOOL)isVideoActive;
 - (void)negotiateAudioRules:(id)arg1;
 - (id)newAudioStreamConfigurationWithMultiwayAudioNegotiationResult:(id)arg1 maxIDSStreamIDCount:(unsigned int)arg2;
@@ -118,6 +121,7 @@ __attribute__((visibility("hidden")))
 - (void)vcMediaStream:(id)arg1 priorityDidChange:(unsigned char)arg2;
 - (void)vcMediaStream:(id)arg1 remoteMediaStalled:(BOOL)arg2;
 - (void)vcMediaStreamDidDecryptionTimeOut:(id)arg1;
+- (void)vcMediaStreamDidDecryptionTimeOutForMKMRecovery:(id)arg1;
 - (void)vcMediaStreamDidRTCPTimeOut:(id)arg1;
 - (void)vcMediaStreamDidRTPTimeOut:(id)arg1;
 

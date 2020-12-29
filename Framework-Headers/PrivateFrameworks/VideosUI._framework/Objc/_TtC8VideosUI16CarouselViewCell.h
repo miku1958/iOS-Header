@@ -4,12 +4,12 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <TVMLKit/TVContainerCollectionViewCell.h>
+#import <VideosUI/VUIContainerCollectionViewCell.h>
 
 @class MISSING_TYPE;
 
 __attribute__((visibility("hidden")))
-@interface _TtC8VideosUI16CarouselViewCell : TVContainerCollectionViewCell
+@interface _TtC8VideosUI16CarouselViewCell : VUIContainerCollectionViewCell
 {
     MISSING_TYPE *overlayView;
     MISSING_TYPE *isOverlayViewMasked;

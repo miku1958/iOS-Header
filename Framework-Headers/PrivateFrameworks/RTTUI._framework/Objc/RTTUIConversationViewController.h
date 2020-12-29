@@ -97,12 +97,12 @@
 - (void)textViewDidChangeSelection:(id)arg1;
 - (id)textViewUtterance;
 - (void)toggleMute:(id)arg1;
+- (void)updateBarButtons;
 - (void)updateCallActiveStatus:(BOOL)arg1;
 - (void)updateCallDowngradeStatus;
 - (void)updateCallHold:(id)arg1;
 - (void)updateGAButton;
 - (void)updateInputEnabled;
-- (void)updateMuteButton;
 - (void)updateTableViewSizeAnimated:(BOOL)arg1;
 - (void)updateUtterance:(id)arg1 forIndexPath:(id)arg2;
 - (void)updateViewForKeyboard:(id)arg1;

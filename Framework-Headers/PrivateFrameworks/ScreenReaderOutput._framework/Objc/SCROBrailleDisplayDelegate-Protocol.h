@@ -24,6 +24,7 @@
 - (void)brailleDisplay:(SCROBrailleDisplay *)arg1 memorizedKey:(SCROBrailleKey *)arg2;
 - (void)brailleDisplay:(SCROBrailleDisplay *)arg1 pressedKeys:(NSArray *)arg2;
 - (void)brailleDisplay:(SCROBrailleDisplay *)arg1 willMemorizeKey:(SCROBrailleKey *)arg2;
+- (void)brailleDisplayHadUserInteraction:(SCROBrailleDisplay *)arg1;
 - (void)brailleDriverDisconnected:(SCROBrailleDisplay *)arg1;
 - (id<SCROBrailleDisplayInputManagerProtocol>)brailleInputManager;
 - (void)configurationChangedForBrailleDisplay:(SCROBrailleDisplay *)arg1;

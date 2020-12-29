@@ -34,6 +34,7 @@
     GEOAlert *_failureAlert;
     NSMutableArray *_incidentsOffRoutes;
     NSMutableArray *_incidentsOnRoutes;
+    NSMutableArray *_internalErrors;
     NSData *_nonRecommendedRoutesCache;
     NSMutableArray *_placeSearchResponses;
     NSMutableArray *_routes;
@@ -87,6 +88,7 @@
         unsigned int read_failureAlert:1;
         unsigned int read_incidentsOffRoutes:1;
         unsigned int read_incidentsOnRoutes:1;
+        unsigned int read_internalErrors:1;
         unsigned int read_nonRecommendedRoutesCache:1;
         unsigned int read_placeSearchResponses:1;
         unsigned int read_routes:1;
@@ -154,6 +156,7 @@
 @property (strong, nonatomic) NSMutableArray *incidentsOffRoutes;
 @property (strong, nonatomic) NSMutableArray *incidentsOnRoutes;
 @property (nonatomic) int instructionSignFillColor;
+@property (strong, nonatomic) NSMutableArray *internalErrors;
 @property (nonatomic) BOOL isNavigable;
 @property (nonatomic) BOOL isOfflineResponse;
 @property (nonatomic) int liveRouteSavingsSeconds;
@@ -188,6 +191,7 @@
 + (Class)arrivalParametersType;
 + (Class)incidentsOffRoutesType;
 + (Class)incidentsOnRoutesType;
++ (Class)internalErrorType;
 + (BOOL)isValid:(id)arg1;
 + (Class)placeSearchResponseType;
 + (Class)routeType;
@@ -206,6 +210,7 @@
 - (void)addArrivalParameters:(id)arg1;
 - (void)addIncidentsOffRoutes:(id)arg1;
 - (void)addIncidentsOnRoutes:(id)arg1;
+- (void)addInternalError:(id)arg1;
 - (void)addPlaceSearchResponse:(id)arg1;
 - (void)addProblemDetail:(struct GEOProblemDetail)arg1;
 - (void)addRoute:(id)arg1;
@@ -220,6 +225,7 @@
 - (void)clearArrivalParameters;
 - (void)clearIncidentsOffRoutes;
 - (void)clearIncidentsOnRoutes;
+- (void)clearInternalErrors;
 - (void)clearLocations;
 - (void)clearPlaceSearchResponses;
 - (void)clearProblemDetails;
@@ -246,6 +252,8 @@
 - (id)initWithJSON:(id)arg1;
 - (id)instanceCompatibleWithProtocolVersion:(unsigned long long)arg1;
 - (id)instructionSignFillColorAsString:(int)arg1;
+- (id)internalErrorAtIndex:(unsigned long long)arg1;
+- (unsigned long long)internalErrorsCount;
 - (BOOL)isEqual:(id)arg1;
 - (id)jsonRepresentation;
 - (id)localDistanceUnitsAsString:(int)arg1;

@@ -13,6 +13,7 @@
 + (Class)processingValueClass;
 + (id)serializedRepresentationFromValue:(id)arg1;
 + (id)valueFromSerializedRepresentation:(id)arg1 variableProvider:(id)arg2 parameter:(id)arg3;
+- (void)processWithContext:(id)arg1 userInputRequiredHandler:(CDUnknownBlockType)arg2 valueHandler:(CDUnknownBlockType)arg3;
 
 @end
 

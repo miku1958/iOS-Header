@@ -6,12 +6,13 @@
 
 #import <Home/HFItemModule.h>
 
+#import <HomeUI/HFAccessoryObserver-Protocol.h>
 #import <HomeUI/HFAppleMusicAccountObserver-Protocol.h>
 
 @class HFStaticItemProvider, HUAppleMusicAccountItemProvider, HUAppleMusicItem, NSString;
 @protocol HFMediaProfileContainer;
 
-@interface HUAppleMusicAccountModule : HFItemModule <HFAppleMusicAccountObserver>
+@interface HUAppleMusicAccountModule : HFItemModule <HFAppleMusicAccountObserver, HFAccessoryObserver>
 {
     id<HFMediaProfileContainer> _mediaProfileContainer;
     HUAppleMusicAccountItemProvider *_appleMusicAccountItemProvider;
@@ -39,6 +40,7 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)accessoryDidUpdatePreferredMediaUser:(id)arg1;
 - (id)buildSectionsWithDisplayedItems:(id)arg1;
 - (void)dispatcher:(id)arg1 appleMusicAccountsDidUpdate:(id)arg2;
 - (id)initWithMediaProfileContainer:(id)arg1 itemUpdater:(id)arg2;

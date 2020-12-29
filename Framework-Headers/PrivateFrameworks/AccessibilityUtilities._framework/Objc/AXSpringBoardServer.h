@@ -37,7 +37,6 @@
 - (id)_axSpringBoardServerInstanceIfExists;
 - (void)_didConnectToClient;
 - (void)_didConnectToServer;
-- (void)_getPasscodeStatusImmediate:(CDUnknownBlockType)arg1 passcodeStatusRequired:(BOOL)arg2;
 - (id)_handleActionResult:(id)arg1;
 - (id)_handleReachabilityResult:(id)arg1;
 - (id)_handleReplyResult:(id)arg1;
@@ -51,7 +50,7 @@
 - (BOOL)_shouldValidateEntitlements;
 - (void)_wasDisconnectedFromClient;
 - (void)_willClearServer;
-- (void)acquireAssertionWithType:(id)arg1 identifier:(id)arg2 synchronously:(BOOL)arg3;
+- (void)acquireAssertionWithType:(id)arg1 identifier:(id)arg2;
 - (void)activateSOSMode;
 - (long long)activeApplicationOrientation;
 - (long long)activeInterfaceOrientation;
@@ -152,7 +151,7 @@
 - (void)rebootDevice;
 - (void)registerReachabilityHandler:(CDUnknownBlockType)arg1 withIdentifierCallback:(CDUnknownBlockType)arg2;
 - (void)registerSpringBoardActionHandler:(CDUnknownBlockType)arg1 withIdentifierCallback:(CDUnknownBlockType)arg2;
-- (void)relinquishAssertionWithType:(id)arg1 identifier:(id)arg2 synchronously:(BOOL)arg3;
+- (void)relinquishAssertionWithType:(id)arg1 identifier:(id)arg2;
 - (void)removeActionHandler:(id)arg1;
 - (void)removeReachabilityHandler:(id)arg1;
 - (void)resetDimTimer;

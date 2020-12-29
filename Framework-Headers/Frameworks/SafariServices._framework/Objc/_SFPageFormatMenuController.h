@@ -46,6 +46,7 @@
 - (id)_sitePreferencesAlertItem;
 - (id)_translateAlertItemForLocaleIdentifier:(id)arg1;
 - (void)_translationAvailabilityDidChange:(id)arg1;
+- (id)_userFeedbackTranslationAlertItem;
 - (id)initWithBrowserContentController:(id)arg1;
 - (void)presentMenuFromViewController:(id)arg1 withSourceInfo:(id)arg2;
 - (id)viewControllerForPresentationForItemController:(id)arg1;

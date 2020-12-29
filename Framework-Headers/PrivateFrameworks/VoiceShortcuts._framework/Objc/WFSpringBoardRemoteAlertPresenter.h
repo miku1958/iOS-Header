@@ -9,12 +9,13 @@
 #import <VoiceShortcuts/SBSRemoteAlertHandleObserver-Protocol.h>
 #import <VoiceShortcuts/WFDialogAlertPresenter-Protocol.h>
 
-@class NSString, SBSRemoteAlertHandle;
+@class BKSApplicationStateMonitor, NSString, SBSRemoteAlertHandle;
 @protocol OS_dispatch_source, WFDialogAlertPresenterDelegate;
 
 @interface WFSpringBoardRemoteAlertPresenter : NSObject <SBSRemoteAlertHandleObserver, WFDialogAlertPresenter>
 {
     id<WFDialogAlertPresenterDelegate> _delegate;
+    BKSApplicationStateMonitor *_monitor;
     SBSRemoteAlertHandle *_activeHandle;
     NSObject<OS_dispatch_source> *_deactivateTimer;
 }
@@ -26,10 +27,13 @@
 @property (weak, nonatomic) id<WFDialogAlertPresenterDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) BKSApplicationStateMonitor *monitor; // @synthesize monitor=_monitor;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
 - (void)activateAlert;
+- (void)activateAlertInMainSceneOfApplicationWithBundleIdentifier:(id)arg1;
+- (void)activateAlertWithPresentationTarget:(id)arg1;
 - (void)deactivateAlert;
 - (void)remoteAlertHandle:(id)arg1 didInvalidateWithError:(id)arg2;
 - (void)remoteAlertHandleDidActivate:(id)arg1;

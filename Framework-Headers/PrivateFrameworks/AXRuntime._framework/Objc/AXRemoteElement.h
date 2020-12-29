@@ -44,6 +44,7 @@
 - (void).cxx_destruct;
 - (id)_accessibilityActiveKeyboard;
 - (unsigned long long)_accessibilityAutomationType;
+- (unsigned int)_accessibilityContextId;
 - (id)_accessibilityFirstElement;
 - (id)_accessibilityHandwritingElement;
 - (void)_accessibilityIncreaseSelection:(id)arg1;

@@ -22,6 +22,7 @@
     NSObject<OS_dispatch_queue> *_pendingQueueLock;
     id<MTLCommandQueue> _downloadQueue;
     BOOL _insertDebugBoundaryUsed;
+    BOOL _perfSampleHandlerUsed;
 }
 
 @property (nonatomic, getter=isStatEnabled) BOOL StatEnabled;
@@ -51,6 +52,7 @@
 @property (readonly) struct GTTraceStream *traceStream;
 
 - (void).cxx_destruct;
+- (void)addPerfSampleHandler:(CDUnknownBlockType)arg1;
 - (id)availableCounters;
 - (id)availableCountersAndDict;
 - (id)commandBuffer;

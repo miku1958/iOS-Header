@@ -29,8 +29,10 @@
 + (id)AVFileTypeFromFigCaptureStillImageSettingsFileType:(int)arg1 codec:(unsigned int)arg2 unresolvedSettings:(id)arg3;
 + (void)initialize;
 - (struct CGImage *)CGImageRepresentation;
+- (id)_defaultRawCompressionSettings;
 - (struct __CVBuffer *)_embeddedThumbnailSourcePixelBuffer;
-- (id)_fileDataRepresentationWithReplacementMetadata:(id)arg1 replacementEmbeddedThumbnailPhotoFormat:(id)arg2 replacementEmbeddedThumbnailPixelBuffer:(struct __CVBuffer *)arg3 replacementDepthData:(id)arg4 replacementPortraitEffectsMatte:(id)arg5 replacementHairSegmentationMatte:(id)arg6 replacementSkinSegmentationMatte:(id)arg7 replacementTeethSegmentationMatte:(id)arg8 replacementGlassesSegmentationMatte:(id)arg9 exceptionReason:(id *)arg10;
+- (id)_fileDataRepresentationWithReplacementMetadata:(id)arg1 replacementEmbeddedThumbnailPhotoFormat:(id)arg2 replacementEmbeddedThumbnailPixelBuffer:(struct __CVBuffer *)arg3 replacementDepthData:(id)arg4 replacementPortraitEffectsMatte:(id)arg5 replacementHairSegmentationMatte:(id)arg6 replacementSkinSegmentationMatte:(id)arg7 replacementTeethSegmentationMatte:(id)arg8 replacementGlassesSegmentationMatte:(id)arg9 replacementRawCompressionSettings:(id)arg10 exceptionReason:(id *)arg11;
+- (int)_maximumAppleProRAWBitDepth;
 - (unsigned int)_orientation;
 - (unsigned int)actualPhotoProcessingFlags;
 - (id)bracketSettings;

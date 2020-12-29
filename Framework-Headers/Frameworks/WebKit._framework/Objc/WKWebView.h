@@ -159,6 +159,7 @@
 @property (readonly, nonatomic) NSURL *_mainFrameURL;
 @property (readonly, nonatomic) struct CGSize _maximumUnobscuredSizeOverride;
 @property (nonatomic, setter=_setMediaCaptureEnabled:) BOOL _mediaCaptureEnabled;
+@property (nonatomic, setter=_setMediaCaptureReportingDelayForTesting:) double _mediaCaptureReportingDelayForTesting;
 @property (readonly, nonatomic) unsigned long long _mediaCaptureState;
 @property (readonly, nonatomic) unsigned long long _mediaMutedState;
 @property (nonatomic, setter=_setMinimumEffectiveDeviceWidth:) double _minimumEffectiveDeviceWidth;
@@ -399,6 +400,7 @@
 - (void)_loadAlternateHTMLString:(id)arg1 baseURL:(id)arg2 forUnreachableURL:(id)arg3;
 - (id)_loadData:(id)arg1 MIMEType:(id)arg2 characterEncodingName:(id)arg3 baseURL:(id)arg4 userData:(id)arg5;
 - (id)_loadRequest:(id)arg1 shouldOpenExternalURLs:(BOOL)arg2;
+- (id)_loadRequest:(id)arg1 shouldOpenExternalURLsPolicy:(long long)arg2;
 - (void)_lookup:(id)arg1;
 - (BOOL)_mayAutomaticallyShowVideoPictureInPicture;
 - (BOOL)_mayContainEditableElementsInRect:(struct CGRect)arg1;

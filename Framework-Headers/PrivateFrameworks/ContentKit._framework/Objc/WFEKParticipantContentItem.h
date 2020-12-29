@@ -29,6 +29,7 @@
 - (BOOL)canGenerateRepresentationForType:(id)arg1;
 - (void)generateObjectRepresentation:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;
 - (id)generateObjectRepresentationForClass:(Class)arg1 options:(id)arg2 error:(id *)arg3;
+- (BOOL)getListSubtitle:(CDUnknownBlockType)arg1;
 - (BOOL)isCurrentUser;
 - (id)participant;
 - (id)role;

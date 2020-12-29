@@ -23,6 +23,7 @@
 @property (readonly, getter=isEnterpriseManaged) BOOL enterpriseManaged;
 @property (readonly) unsigned char frameworkApprovalState;
 @property (readonly) BOOL modeOfOperation;
+@property (readonly, getter=wasProvidedByAdditionalServiceDetailsProvider) BOOL providedByAdditionalServiceDetailsProvider;
 @property (readonly, getter=wasReadFromAlternateLocationOnDisk) BOOL readFromAlternateLocationOnDisk;
 @property (readonly, getter=wasReadFromDisk) BOOL readFromDisk;
 @property (readonly) _SWCServiceSpecifier *serviceSpecifier; // @synthesize serviceSpecifier=_serviceSpecifier;
@@ -45,6 +46,7 @@
 + (id)serviceDetailsWithServiceSpecifier:(id)arg1 error:(id *)arg2;
 + (id)serviceDetailsWithServiceSpecifier:(id)arg1 limit:(unsigned long long)arg2 auditToken:(CDStruct_6ad76789)arg3 error:(id *)arg4;
 + (id)serviceDetailsWithServiceSpecifier:(id)arg1 limit:(unsigned long long)arg2 error:(id *)arg3;
++ (void)setAdditionalServiceDetailsForApplicationIdentifiers:(id)arg1 usingContentsOfDictionary:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (void)setDeveloperModeEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 + (BOOL)supportsSecureCoding;
 + (void)synchronizeWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -19,11 +19,17 @@
     MISSING_TYPE *lastError;
     MISSING_TYPE *requester;
     MISSING_TYPE *blacklistEvaluator;
-    MISSING_TYPE *pendingPrefetchedTypesLock;
-    MISSING_TYPE *pendingPrefetchedTypes;
     MISSING_TYPE *newsContext;
     MISSING_TYPE *contextQueue;
+    MISSING_TYPE *limit;
+    MISSING_TYPE *fetchingLock;
+    MISSING_TYPE *fetching;
+    MISSING_TYPE *waitingLock;
+    MISSING_TYPE *waiting;
+    MISSING_TYPE *prefetchLock;
 }
+
+@property (nonatomic, readonly) long long hash;
 
 - (void).cxx_destruct;
 - (void)dealloc;

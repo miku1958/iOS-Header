@@ -17,11 +17,9 @@
     MISSING_TYPE *statusView;
     MISSING_TYPE *regionTableView;
     MISSING_TYPE *regionsProvider;
-    MISSING_TYPE *canceller;
 }
 
 - (void).cxx_destruct;
-- (void)dealloc;
 - (void)didTapCancel;
 - (void)didTapDone;
 - (id)initWithCoder:(id)arg1;

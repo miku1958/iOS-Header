@@ -6,22 +6,22 @@
 
 #import <objc/NSObject.h>
 
-#import <BannerKit/BNBannerClientContainerViewControllerDelegate-Protocol.h>
+#import <BannerKit/BNBannerClientContainerDelegate-Protocol.h>
 #import <BannerKit/BNBannerSceneComponentProviderDelegate-Protocol.h>
 #import <BannerKit/BNBannerSourceHostToClientInterface-Protocol.h>
 #import <BannerKit/BNBannerSourceProviding-Protocol.h>
 #import <BannerKit/BNBannerSourceProvidingPrivate-Protocol.h>
 
-@class BNBannerClientContainerViewController, BSServiceConnection, NSMutableArray, NSString;
-@protocol BNBannerSourceDelegate, OS_dispatch_queue;
+@class BSServiceConnection, NSMutableArray, NSString;
+@protocol BNBannerClientContainer, BNBannerSourceDelegate, OS_dispatch_queue;
 
-@interface BNBannerSource : NSObject <BNBannerSourceHostToClientInterface, BNBannerSceneComponentProviderDelegate, BNBannerClientContainerViewControllerDelegate, BNBannerSourceProvidingPrivate, BNBannerSourceProviding>
+@interface BNBannerSource : NSObject <BNBannerSourceHostToClientInterface, BNBannerSceneComponentProviderDelegate, BNBannerClientContainerDelegate, BNBannerSourceProvidingPrivate, BNBannerSourceProviding>
 {
     NSString *_machName;
     NSObject<OS_dispatch_queue> *_connectionQueue;
     BSServiceConnection *_connection;
     NSMutableArray *_presentables;
-    BNBannerClientContainerViewController *_bannerClientContainerVCDeferringFocus;
+    id<BNBannerClientContainer> _bannerClientContainerDeferringFocus;
     BOOL _valid;
     long long _destination;
     NSString *_requesterIdentifier;
@@ -45,8 +45,8 @@
 - (void)_invalidateConnection;
 - (id)_presentableForUniqueIdentifier:(id)arg1;
 - (id)_revokePresentableWithIdentification:(id)arg1 reason:(id)arg2 animated:(id)arg3 userInfo:(id)arg4 error:(out id *)arg5;
-- (BOOL)bannerClientContainerViewControllerShouldDeferFocus:(id)arg1;
-- (void)bannerClientContainerViewControllerStoppedDeferringFocus:(id)arg1;
+- (BOOL)bannerClientContainerShouldDeferFocus:(id)arg1;
+- (void)bannerClientContainerStoppedDeferringFocus:(id)arg1;
 - (id)containerViewControllerForBannerSceneComponentProvider:(id)arg1;
 - (void)dealloc;
 - (id)initWithDestination:(long long)arg1 andRequesterIdentifier:(id)arg2;

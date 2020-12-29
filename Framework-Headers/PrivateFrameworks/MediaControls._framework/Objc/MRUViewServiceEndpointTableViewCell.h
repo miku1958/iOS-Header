@@ -7,11 +7,12 @@
 #import <UIKit/UITableViewCell.h>
 
 #import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
+#import <MediaControls/UIPointerInteractionDelegate-Protocol.h>
 
 @class MRUNowPlayingHeaderView, MRUVisualStylingProvider, NSString, UIView;
 
 __attribute__((visibility("hidden")))
-@interface MRUViewServiceEndpointTableViewCell : UITableViewCell <MRUVisualStylingProviderObserver>
+@interface MRUViewServiceEndpointTableViewCell : UITableViewCell <MRUVisualStylingProviderObserver, UIPointerInteractionDelegate>
 {
     MRUNowPlayingHeaderView *_headerView;
     UIView *_separatorView;
@@ -29,8 +30,11 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_setShouldHaveFullLengthBottomSeparator:(BOOL)arg1;
 - (id)initWithStyle:(long long)arg1 reuseIdentifier:(id)arg2;
 - (void)layoutSubviews;
+- (id)pointerInteraction:(id)arg1 regionForRequest:(id)arg2 defaultRegion:(id)arg3;
+- (id)pointerInteraction:(id)arg1 styleForRegion:(id)arg2;
 - (void)prepareForReuse;
 - (struct CGSize)sizeThatFits:(struct CGSize)arg1;
 - (void)updateVisualStyling;

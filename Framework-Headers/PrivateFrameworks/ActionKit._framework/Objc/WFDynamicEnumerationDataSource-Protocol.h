@@ -15,6 +15,7 @@
 - (id)defaultSerializedRepresentationForEnumeration:(WFEnumerationParameter *)arg1;
 - (WFColor *)enumeration:(WFEnumerationParameter *)arg1 accessoryColorForPossibleState:(WFVariableSubstitutableParameterState *)arg2;
 - (BOOL)enumerationAllowsMultipleValues:(WFEnumerationParameter *)arg1;
+- (BOOL)enumerationShouldProvideValuesForParameterSummaryLocalization:(WFEnumerationParameter *)arg1;
 - (void)loadDefaultSerializedRepresentationForEnumeration:(WFEnumerationParameter *)arg1 completionHandler:(void (^)(id, NSError *))arg2;
 - (void)loadPossibleStatesForEnumeration:(WFEnumerationParameter *)arg1 searchTerm:(NSString *)arg2 completionHandler:(void (^)(INObjectCollection *, NSError *))arg3;
 - (NSArray *)possibleStatesForEnumeration:(WFEnumerationParameter *)arg1;

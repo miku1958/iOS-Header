@@ -26,8 +26,12 @@
 + (id)concatenateBaseName:(id)arg1 andExtension:(id)arg2;
 + (id)displayNameConstructorWithContext:(struct LSContext *)arg1 bundle:(unsigned int)arg2 bundleClass:(const unsigned int *)arg3 node:(id)arg4 preferredLocalizations:(id)arg5 error:(id *)arg6;
 + (id)displayNameConstructorWithContext:(struct LSContext *)arg1 node:(id)arg2 error:(id *)arg3;
++ (id)displayNameConstructorWithContextIfNeeded:(struct Context *)arg1 bundle:(unsigned int)arg2 bundleClass:(const unsigned int *)arg3 node:(id)arg4 preferredLocalizations:(id)arg5 error:(id *)arg6;
++ (id)displayNameConstructorWithContextIfNeeded:(struct Context *)arg1 node:(id)arg2 error:(id *)arg3;
 + (id)displayNameConstructorsWithContext:(struct LSContext *)arg1 bundle:(unsigned int)arg2 bundleClass:(const unsigned int *)arg3 node:(id)arg4 error:(id *)arg5;
 + (id)displayNameConstructorsWithContext:(struct LSContext *)arg1 node:(id)arg2 error:(id *)arg3;
++ (id)displayNameConstructorsWithContextIfNeeded:(struct Context *)arg1 bundle:(unsigned int)arg2 bundleClass:(const unsigned int *)arg3 node:(id)arg4 error:(id *)arg5;
++ (id)displayNameConstructorsWithContextIfNeeded:(struct Context *)arg1 node:(id)arg2 error:(id *)arg3;
 + (void)getExtensionRange:(struct _NSRange *)arg1 secondaryExtensionRange:(struct _NSRange *)arg2 fromFileName:(id)arg3 considerConfusables:(BOOL)arg4;
 + (void)setShowAllExtensions:(BOOL)arg1;
 + (void)setSuffixForRemoteXCTests:(id)arg1;
@@ -42,16 +46,18 @@
 - (id)init;
 - (void)initContentBitsWithDisplayName:(id)arg1 treatAsFSName:(BOOL)arg2;
 - (void)initNamePartsWithDisplayName:(id)arg1;
-- (void)initNodeBitsWithContext:(struct LSContext *)arg1 node:(id)arg2 bundleClass:(const unsigned int *)arg3;
-- (id)initWithContext:(struct LSContext *)arg1 node:(id)arg2 bundleClass:(const unsigned int *)arg3 desiredDisplayName:(id)arg4 treatAsFSName:(BOOL)arg5;
+- (void)initNodeBitsWithContextIfNeeded:(struct Context *)arg1 node:(id)arg2 isDirectory:(BOOL)arg3 bundleClass:(const unsigned int *)arg4;
+- (id)initWithContextIfNeeded:(struct Context *)arg1 node:(id)arg2 isDirectory:(BOOL)arg3 bundleClass:(const unsigned int *)arg4 desiredDisplayName:(id)arg5 treatAsFSName:(BOOL)arg6;
 - (id)insertCompleteNameBiDiControlCharacters:(id)arg1;
 - (id)insertNameComponentBiDiControlCharacters:(id)arg1;
 - (BOOL)isStringNaturallyRTL:(id)arg1;
-- (BOOL)mayHideExtensionWithContext:(struct LSContext *)arg1;
-- (BOOL)showExtensionWithContext:(struct LSContext *)arg1 asIfShowingAllExtensions:(id)arg2;
+- (BOOL)mayHideExtensionWithContextIfNeeded:(struct Context *)arg1;
+- (BOOL)showExtensionWithContextIfNeeded:(struct Context *)arg1 asIfShowingAllExtensions:(id)arg2;
 - (id)transformBeforeCombining:(id)arg1 needsBiDiControlCharacters:(BOOL *)arg2;
 - (id)unlocalizedNameWithContext:(struct LSContext *)arg1;
 - (id)unlocalizedNameWithContext:(struct LSContext *)arg1 asIfShowingAllExtensions:(id)arg2;
+- (id)unlocalizedNameWithContextIfNeeded:(struct Context *)arg1;
+- (id)unlocalizedNameWithContextIfNeeded:(struct Context *)arg1 asIfShowingAllExtensions:(id)arg2;
 - (BOOL)wantsHiddenExtension;
 
 @end

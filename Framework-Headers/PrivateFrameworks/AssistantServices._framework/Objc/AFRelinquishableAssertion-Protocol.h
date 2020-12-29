@@ -6,9 +6,10 @@
 
 #import <AssistantServices/AFAssertion-Protocol.h>
 
-@class AFAssertionContext;
+@class AFAssertionContext, NSError;
 
 @protocol AFRelinquishableAssertion <AFAssertion>
-- (void)relinquishWithContext:(AFAssertionContext *)arg1;
+- (void)relinquishWithContext:(AFAssertionContext *)arg1 options:(unsigned long long)arg2;
+- (void)relinquishWithError:(NSError *)arg1 options:(unsigned long long)arg2;
 @end
 

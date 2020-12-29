@@ -64,6 +64,7 @@
 @property (readonly, nonatomic) BOOL hf_showsAudioSettings;
 @property (readonly, nonatomic) BOOL hf_supportsHomeTheater;
 @property (readonly, nonatomic) BOOL hf_supportsMusicAlarm;
+@property (readonly, nonatomic) BOOL hf_supportsPreferredMediaUser;
 @property (readonly, nonatomic) BOOL hf_supportsSoftwareUpdate;
 @property (readonly, nonatomic) BOOL hf_supportsStereoPairing;
 @property (readonly, nonatomic) id<HFUIRepresentableHomeObject> hf_topLevelUIRepresentableHomeObject;
@@ -93,7 +94,10 @@
 - (id)hf_homePodMediaAccountIsMismatchedWithHomeMediaAccount;
 - (id)hf_homePodSupportsMultiUserLanguage;
 - (id)hf_idsDeviceIdentifierWithError:(id *)arg1;
+- (id)hf_isEitherHomePodMediaAccountOrHomeMediaAccountPresent;
 - (BOOL)hf_isValidObject;
+- (id)hf_preferredMediaUser;
+- (unsigned long long)hf_preferredUserSelectionType;
 - (id)hf_roleForAccessory:(id)arg1;
 - (id)hf_stateDumpBuilderWithContext:(id)arg1;
 - (id)hf_updateDateAdded:(id)arg1;

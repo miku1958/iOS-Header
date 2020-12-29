@@ -29,6 +29,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *requestQueue; // @synthesize requestQueue=_requestQueue;
 @property (strong, nonatomic) NSDictionary *suggestions; // @synthesize suggestions=_suggestions;
 
++ (unsigned long long)minDisplayItemCount;
 + (id)sharedController;
 - (void).cxx_destruct;
 - (void)addObserver:(id)arg1;

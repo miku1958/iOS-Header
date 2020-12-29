@@ -5,6 +5,7 @@
 //
 
 @protocol FCLocalRegionManager
+- (void)fetchLocalAreas:(void (^)(NSArray *))arg1;
 - (void)fetchRegions:(void (^)(NSArray *))arg1;
 @end
 

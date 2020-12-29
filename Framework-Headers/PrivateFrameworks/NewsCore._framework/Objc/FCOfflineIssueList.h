@@ -27,6 +27,7 @@
 - (BOOL)everContainedIssueID:(id)arg1;
 - (id)init;
 - (id)initWithStoreDirectoryFileURL:(id)arg1;
+- (id)initWithStoreDirectoryFileURL:(id)arg1 appActivityMonitor:(id)arg2 backgroundTaskable:(id)arg3;
 - (void)removeAllIssues;
 - (void)removeIssueIDs:(id)arg1;
 - (void)removeObserver:(id)arg1;

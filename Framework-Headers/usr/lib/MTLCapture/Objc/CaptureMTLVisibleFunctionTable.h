@@ -69,6 +69,8 @@
 - (void)setFunction:(id)arg1 atIndex:(unsigned long long)arg2;
 - (void)setFunctions:(const id *)arg1 withRange:(struct _NSRange)arg2;
 - (unsigned long long)setPurgeableState:(unsigned long long)arg1;
+- (void)setValue:(unsigned long long)arg1 atIndex:(unsigned long long)arg2;
+- (void)setValue:(unsigned long long)arg1 withRange:(struct _NSRange)arg2;
 - (void)setVisibleFunctionTable:(id)arg1 atBufferIndex:(unsigned long long)arg2;
 - (void)setVisibleFunctionTables:(const id *)arg1 withBufferRange:(struct _NSRange)arg2;
 - (void)touch;

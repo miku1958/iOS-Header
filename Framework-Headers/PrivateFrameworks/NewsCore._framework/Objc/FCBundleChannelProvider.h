@@ -20,10 +20,12 @@
     id<FCCoreConfigurationManager> _configurationManager;
     FCPurchaseLookupRecordSource *_purchaseLookupRecordSource;
     NSArray *_bundleChannelIDs;
+    NSString *_bundleChannelIDsVersion;
 }
 
 @property (strong, nonatomic) NFUnfairLock *accessLock; // @synthesize accessLock=_accessLock;
 @property (copy, nonatomic) NSArray *bundleChannelIDs; // @synthesize bundleChannelIDs=_bundleChannelIDs;
+@property (copy, nonatomic) NSString *bundleChannelIDsVersion; // @synthesize bundleChannelIDsVersion=_bundleChannelIDsVersion;
 @property (readonly, nonatomic) id<FCCoreConfigurationManager> configurationManager; // @synthesize configurationManager=_configurationManager;
 @property (readonly, copy) NSString *debugDescription;
 @property (weak, nonatomic) id<FCBundleChannelProviderDelegate> delegate; // @synthesize delegate;
@@ -40,7 +42,7 @@
 - (void)loadInitialBundleChannelIDsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)loadLocalCachesFromStore;
 - (void)refreshBundleChannelIDsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)updateBundleChannelIDs:(id)arg1;
+- (void)updateBundleChannelIDs:(id)arg1 bundleChannelIDsVersion:(id)arg2;
 
 @end
 

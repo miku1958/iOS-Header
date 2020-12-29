@@ -23,6 +23,7 @@
 @property (strong, nonatomic) FMXPCSession *session; // @synthesize session=_session;
 
 - (void).cxx_destruct;
+- (void)allPairingErrorsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)alwaysBeaconStateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)currentBeaconingKeyWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -30,6 +31,7 @@
 - (id)init;
 - (id)remoteInterface;
 - (void)setAlwaysBeaconState:(BOOL)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)unpairUUID:(id)arg1 force:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)userAgentProxy;
 
 @end

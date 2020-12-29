@@ -32,8 +32,8 @@
 - (void)_buildOptionTypeMapping;
 - (void)_buildSlotToItemIdAndBundleIdMapping;
 - (void)_buildSlotToSampleTemplateMapping;
-- (BOOL)_canShareTemplate:(id)arg1 slot:(id)arg2;
 - (BOOL)_shouldIncludeMetadataForSlot:(id)arg1;
+- (BOOL)canShareTemplate:(id)arg1 slot:(id)arg2;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFace:(id)arg1;

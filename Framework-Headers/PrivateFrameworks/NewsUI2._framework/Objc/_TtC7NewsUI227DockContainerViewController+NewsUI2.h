@@ -10,6 +10,7 @@
 #import <NewsUI2/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @interface _TtC7NewsUI227DockContainerViewController (NewsUI2) <UIViewControllerTransitioningDelegate, UIGestureRecognizerDelegate>
+- (BOOL)accessibilityPerformMagicTap;
 - (id)animationControllerForDismissedController:(id)arg1;
 - (BOOL)gestureRecognizer:(id)arg1 shouldRecognizeSimultaneouslyWithGestureRecognizer:(id)arg2;
 @end

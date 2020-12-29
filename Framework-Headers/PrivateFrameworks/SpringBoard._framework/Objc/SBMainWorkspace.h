@@ -110,6 +110,7 @@
 - (id)_handlerForExtensionPoint:(id)arg1;
 - (void)_initializeAndObserveDefaults;
 - (BOOL)_isApplicationRunningAsViewService:(id)arg1;
+- (BOOL)_isLaunchingApplicationAfterSetupForRequestWithBundleIdentifier:(id)arg1 options:(id)arg2 origin:(id)arg3;
 - (void)_noteDidWakeFromSleep;
 - (BOOL)_preflightTransitionRequest:(id)arg1 forExecution:(BOOL)arg2;
 - (void)_proposeIdleTimerBehaviorForReason:(id)arg1;

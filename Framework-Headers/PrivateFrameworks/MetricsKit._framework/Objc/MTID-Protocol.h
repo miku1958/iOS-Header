@@ -6,10 +6,11 @@
 
 #import <MetricsKit/NSObject-Protocol.h>
 
-@class NSDate, NSDictionary, NSString;
+@class NSDate, NSDictionary, NSNumber, NSString;
 
 @protocol MTID <NSObject>
 
+@property (readonly, nonatomic) NSNumber *dsId;
 @property (readonly, copy, nonatomic) NSDate *effectiveDate;
 @property (readonly, copy, nonatomic) NSDate *expirationDate;
 @property (readonly, copy, nonatomic) NSString *idNamespace;

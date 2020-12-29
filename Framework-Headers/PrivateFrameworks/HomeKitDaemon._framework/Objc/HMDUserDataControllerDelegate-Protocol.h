@@ -7,9 +7,6 @@
 @class HMDUserDataController, HMDUserSettingsBackingStoreController, NSUUID;
 
 @protocol HMDUserDataControllerDelegate
-
-@property (readonly) BOOL isUserSettingsPrefEnabled;
-
 - (HMDUserSettingsBackingStoreController *)privateZoneControllerForUserDataController:(HMDUserDataController *)arg1;
 - (HMDUserSettingsBackingStoreController *)sharedZoneControllerForUserDataController:(HMDUserDataController *)arg1;
 - (BOOL)userDataController:(HMDUserDataController *)arg1 isMediaContentProfileCapableAccessoryID:(NSUUID *)arg2;

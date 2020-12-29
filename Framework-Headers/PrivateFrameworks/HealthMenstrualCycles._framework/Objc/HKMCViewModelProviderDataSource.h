@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class HKCalendarCache, HKHealthStore, HKMCDaySummaryObserverQuery, NSMutableIndexSet, NSMutableSet;
+@class HKCalendarCache, HKHealthStore, HKMCDaySummaryObserverQuery, HKMultiTypeSampleQuery, NSMutableIndexSet, NSMutableSet, _HKDatabaseChangesQuery;
 @protocol HKMCViewModelProviderDataSourceDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -17,6 +17,8 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_queue;
     NSMutableSet *_summaryQueries;
     HKMCDaySummaryObserverQuery *_summaryObserverQuery;
+    HKMultiTypeSampleQuery *_factorQuery;
+    _HKDatabaseChangesQuery *_factorObserverQuery;
     NSMutableIndexSet *_canceledDayIndexes;
     HKCalendarCache *_calendarCache;
 }
@@ -24,9 +26,11 @@ __attribute__((visibility("hidden")))
 @property (weak, nonatomic) id<HKMCViewModelProviderDataSourceDelegate> delegate; // @synthesize delegate=_delegate;
 
 - (void).cxx_destruct;
+- (void)_startObservingCycleFactorsUpdates;
 - (void)_startObservingDaySummaryUpdates;
 - (void)cancelFetchForDaySummariesInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
 - (void)dealloc;
+- (void)fetchCycleFactorsInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
 - (void)fetchDaySummariesInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
 - (id)initWithHealthStore:(id)arg1 delegate:(id)arg2 calendarCache:(id)arg3 queue:(id)arg4;
 

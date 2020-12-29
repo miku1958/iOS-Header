@@ -7,16 +7,17 @@
 #import <objc/NSObject.h>
 
 #import <NewsCore/FCChannelProviding-Protocol.h>
+#import <NewsCore/FCContentArchivable-Protocol.h>
 #import <NewsCore/FCFeedTheming-Protocol.h>
 #import <NewsCore/FCSectionProviding-Protocol.h>
 #import <NewsCore/FCTagProviding-Protocol.h>
 #import <NewsCore/FCTagStocksFields-Protocol.h>
 #import <NewsCore/FCTopicProviding-Protocol.h>
 
-@class FCAssetHandle, FCColor, FCContentColorMap, FCHeadlineTemplate, FCInterestToken, FCPaywallConfiguration, FCSectionSupergroupKnobs, FCTagBanner, FCTextInfo, NSArray, NSData, NSDate, NSString, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBTagRecord;
+@class FCAssetHandle, FCColor, FCContentArchive, FCContentColorMap, FCHeadlineTemplate, FCInterestToken, FCPaywallConfiguration, FCSectionSupergroupKnobs, FCTagBanner, FCTextInfo, NSArray, NSData, NSDate, NSString, NTPBFeedConfiguration, NTPBPublisherPaidDescriptionStrings, NTPBTagRecord;
 @protocol FCChannelProviding, FCFeedTheming, FCSectionProviding, FCTagStocksFields, FCTopicProviding;
 
-@interface FCTag : NSObject <FCTagStocksFields, FCTagProviding, FCChannelProviding, FCSectionProviding, FCTopicProviding, FCFeedTheming>
+@interface FCTag : NSObject <FCTagStocksFields, FCTagProviding, FCChannelProviding, FCSectionProviding, FCTopicProviding, FCFeedTheming, FCContentArchivable>
 {
     BOOL _isPublic;
     BOOL _isDeprecated;
@@ -127,6 +128,7 @@
 @property (nonatomic) double bannerImageScale; // @synthesize bannerImageScale=_bannerImageScale;
 @property (readonly, nonatomic) NSArray *blockedStorefrontIDs; // @synthesize blockedStorefrontIDs=_blockedStorefrontIDs;
 @property (readonly, nonatomic) FCTagBanner *compactBannerImage; // @synthesize compactBannerImage=_compactBannerImage;
+@property (readonly, nonatomic) FCContentArchive *contentArchive;
 @property (readonly, nonatomic) FCContentColorMap *contentColorMap; // @synthesize contentColorMap=_contentColorMap;
 @property (readonly, nonatomic) long long contentProvider; // @synthesize contentProvider=_contentProvider;
 @property (readonly, nonatomic) FCAssetHandle *coverImageAssetHandle; // @synthesize coverImageAssetHandle=_coverImageAssetHandle;

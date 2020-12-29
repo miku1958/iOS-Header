@@ -10,11 +10,12 @@
 #import <HomeUI/HUAppleMusicAccountModuleControllerDelegate-Protocol.h>
 #import <HomeUI/UITextViewDelegate-Protocol.h>
 
-@class HUAppleMusicAccountModuleController, NADeallocationSentinel, NAFuture, NSString, UIAlertController;
+@class HUAppleMusicAccountModuleController, HUPrimaryUserSettingsItemModuleController, NADeallocationSentinel, NAFuture, NSString, UIAlertController;
 
 @interface HUAppleMusicAccountViewController : HUItemTableViewController <HUAppleMusicAccountModuleControllerDelegate, UITextViewDelegate, HUAccessorySettingsDetailsViewControllerProtocol>
 {
     HUAppleMusicAccountModuleController *_appleMusicAccountModuleController;
+    HUPrimaryUserSettingsItemModuleController *_primaryUserModuleController;
     NAFuture *_accountArbitrationFuture;
     NADeallocationSentinel *_appleMusicLoadingViewControllerDeallocationSentinel;
     UIAlertController *_appleMusicLoadingViewController;
@@ -27,6 +28,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) HUPrimaryUserSettingsItemModuleController *primaryUserModuleController; // @synthesize primaryUserModuleController=_primaryUserModuleController;
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
@@ -40,7 +42,7 @@
 - (id)initWithAccessoryGroupItem:(id)arg1;
 - (id)itemModuleControllers;
 - (void)presentViewController:(id)arg1 animated:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
-- (double)tableView:(id)arg1 heightForFooterInSection:(long long)arg2;
+- (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForFooterInSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (BOOL)textView:(id)arg1 shouldInteractWithURL:(id)arg2 inRange:(struct _NSRange)arg3 interaction:(long long)arg4;

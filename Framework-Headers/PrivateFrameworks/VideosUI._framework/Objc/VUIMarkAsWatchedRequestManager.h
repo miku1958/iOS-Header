@@ -20,7 +20,7 @@ __attribute__((visibility("hidden")))
 - (void).cxx_destruct;
 - (id)_init;
 - (id)init;
-- (void)sendRequestForItemID:(id)arg1 itemType:(id)arg2 channelID:(id)arg3;
+- (void)sendRequestForItemID:(id)arg1 itemType:(id)arg2 channelID:(id)arg3 adamID:(id)arg4;
 
 @end
 

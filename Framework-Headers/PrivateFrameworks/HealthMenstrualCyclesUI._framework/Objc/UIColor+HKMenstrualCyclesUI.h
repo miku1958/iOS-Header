@@ -9,6 +9,8 @@
 @interface UIColor (HKMenstrualCyclesUI)
 + (id)_hkmcui_colorWithAssetName:(id)arg1;
 + (id)hkmc_calendarTodayLabelColor;
++ (id)hkmc_cycleFactorsBackgroundColor;
++ (id)hkmc_cycleFactorsTimeIntervalBackgroundColor;
 + (id)hkmc_cycleHistoryFilterBackgroundColor;
 + (id)hkmc_cycleHistoryFilterLabelColor;
 + (id)hkmc_cycleHistoryGradientFadeColor;
@@ -18,6 +20,7 @@
 + (id)hkmc_fertilityBackgroundColor;
 + (id)hkmc_fertilityBackgroundFadedColor;
 + (id)hkmc_fertilityProjectionColor;
++ (id)hkmc_highContrastCycleFactorsTimeIntervalBackgroundColor;
 + (id)hkmc_highContrastMenstruationBackgroundColor;
 + (id)hkmc_highContrastMenstruationColor;
 + (id)hkmc_highContrastMenstruationLoggingCardGradientAColor;

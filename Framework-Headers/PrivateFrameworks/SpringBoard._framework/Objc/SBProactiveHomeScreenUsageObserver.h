@@ -32,7 +32,8 @@
 - (void)homeScreenUsageAggregator:(id)arg1 didNoteDataSourceDidAppear:(id)arg2 forWidgetIcon:(id)arg3;
 - (void)homeScreenUsageAggregator:(id)arg1 didNoteDataSourceDidDisappear:(id)arg2 forWidgetIcon:(id)arg3;
 - (void)homeScreenUsageAggregator:(id)arg1 didNoteRootControllerWillAppearWithPageIndex:(unsigned long long)arg2;
-- (void)homeScreenUsageAggregator:(id)arg1 didNoteUserTappedWidgetIcon:(id)arg2;
+- (void)homeScreenUsageAggregator:(id)arg1 didNoteTodayViewScrolledWithIconVisibility:(id)arg2;
+- (void)homeScreenUsageAggregator:(id)arg1 didNoteUserTappedWidgetIcon:(id)arg2 withURL:(id)arg3;
 - (void)homeScreenUsageAggregator:(id)arg1 didNoteWidgetIconStackChangedActiveWidget:(id)arg2;
 - (void)homeScreenUsageAggregatorDidNoteHomeScreenLayoutChanged:(id)arg1;
 - (id)iconModel;

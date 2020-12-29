@@ -30,6 +30,7 @@
 - (void)addTextStorage:(id)arg1 withLayout:(id)arg2 forNamedFlow:(id)arg3 directLayerHostView:(id)arg4 selectable:(BOOL)arg5 componentIdentifier:(id)arg6;
 - (void)buildFlowsAndUpdateInfosWithICC:(id)arg1;
 - (void)buildFlowsAndUpdateInfosWithICC:(id)arg1 updateBlock:(CDUnknownBlockType)arg2;
+- (id)componentIdentifierForFlowLayout:(id)arg1;
 - (id)flowLayoutForComponentIdentifier:(id)arg1;
 - (id)infoForStorage:(id)arg1 selection:(id)arg2;
 - (id)init;

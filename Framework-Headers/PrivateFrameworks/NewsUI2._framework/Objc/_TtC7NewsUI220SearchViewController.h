@@ -18,6 +18,7 @@
     MISSING_TYPE *searchBar;
     MISSING_TYPE *searchAction;
     MISSING_TYPE *sharingActivityProviderFactory;
+    MISSING_TYPE *refreshQueryParam;
 }
 
 - (void).cxx_destruct;

@@ -14,13 +14,15 @@
 {
     BOOL _isSynchronized;
     NSString *_value;
+    NSDate *_effectiveDate;
     NSDate *_expirationDate;
-    NSString *_key;
+    NSString *_syncStatusCode;
 }
 
+@property (copy, nonatomic) NSDate *effectiveDate; // @synthesize effectiveDate=_effectiveDate;
 @property (copy, nonatomic) NSDate *expirationDate; // @synthesize expirationDate=_expirationDate;
 @property (nonatomic) BOOL isSynchronized; // @synthesize isSynchronized=_isSynchronized;
-@property (copy, nonatomic) NSString *key; // @synthesize key=_key;
+@property (strong, nonatomic) NSString *syncStatusCode; // @synthesize syncStatusCode=_syncStatusCode;
 @property (copy, nonatomic) NSString *value; // @synthesize value=_value;
 
 + (BOOL)supportsSecureCoding;
@@ -30,11 +32,8 @@
 - (void)encodeWithCoder:(id)arg1;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithKey:(id)arg1 value:(id)arg2 expirationDate:(id)arg3;
-- (id)initWithRawValue:(id)arg1;
-- (id)initWithScheme:(id)arg1 date:(id)arg2;
+- (id)initWithValue:(id)arg1 effectiveDate:(id)arg2 expirationDate:(id)arg3 isSynchronize:(BOOL)arg4;
 - (BOOL)isEqual:(id)arg1;
-- (id)rawValue;
 
 @end
 

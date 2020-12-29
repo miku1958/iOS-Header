@@ -69,12 +69,14 @@
 @property (readonly) NSString *userFullName;
 
 + (id)_buildNumber;
++ (long long)_currentDeviceAuthenticationMode;
 + (id)_hardwareModel;
 + (id)_osName;
 + (id)_osVersion;
 + (id)activeIDSPeerDevice;
 + (id)currentDevice;
 + (long long)currentDeviceAuthenticationMode;
++ (long long)currentDeviceAuthenticationModeForAuthContext:(id)arg1;
 + (id)deviceSpecificLocalizedStringWithKey:(id)arg1;
 + (id)deviceWithSerializedData:(id)arg1;
 + (BOOL)supportsSecureCoding;

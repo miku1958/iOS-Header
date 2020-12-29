@@ -19,6 +19,7 @@
 - (void)removeSettingsForKeys:(NSSet *)arg1 serviceSpecifier:(_SWCServiceSpecifier *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)removeSettingsForKeys:(NSSet *)arg1 serviceType:(NSString *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)resetWithCompletionHandler:(void (^)(BOOL, NSError *))arg1;
+- (void)setAdditionalServiceDetailsForApplicationIdentifiers:(NSSet *)arg1 usingContentsOfDictionary:(NSDictionary *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)setDetails:(NSDictionary *)arg1 forServiceWithServiceSpecifier:(_SWCServiceSpecifier *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;
 - (void)setDeveloperModeEnabled:(BOOL)arg1 completionHandler:(void (^)(BOOL, NSError *))arg2;
 - (void)setUserApprovalState:(unsigned char)arg1 forServiceWithServiceSpecifier:(_SWCServiceSpecifier *)arg2 completionHandler:(void (^)(BOOL, NSError *))arg3;

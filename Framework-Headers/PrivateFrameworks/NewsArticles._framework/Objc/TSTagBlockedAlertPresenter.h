@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *enabled;
     MISSING_TYPE *alertPresenter;
+    MISSING_TYPE *appConfigurationManager;
 }
 
 @property (nonatomic) BOOL enabled; // @synthesize enabled;

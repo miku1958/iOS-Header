@@ -17,6 +17,7 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *journal;
     MISSING_TYPE *appConfigurationManager;
     MISSING_TYPE *tracker;
+    MISSING_TYPE *prerollAdRequester;
 }
 
 - (void).cxx_destruct;

@@ -10,6 +10,7 @@
 
 @property (copy, nonatomic) CDUnknownBlockType availabilityChangedNotificationBlock;
 @property (readonly, nonatomic, getter=isAvailable) BOOL available;
+@property (readonly, nonatomic, getter=isLikelyAvailable) BOOL likelyAvailable;
 @property (readonly, nonatomic) Class todayResultsFetchDescriptorClass;
 
 @end

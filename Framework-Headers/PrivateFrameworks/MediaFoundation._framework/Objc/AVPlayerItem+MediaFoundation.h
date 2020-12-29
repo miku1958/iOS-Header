@@ -19,9 +19,11 @@
 @property (nonatomic) BOOL isVideoContent;
 @property (nonatomic) BOOL prefersSeekOverSkip;
 @property (nonatomic) long long repeatIndex;
+@property (nonatomic, readonly) double time;
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, readonly) NSURL *url;
 
++ (double)DownloadedDurationThreshold;
 - (id)initWithUrl:(id)arg1 contentItemID:(id)arg2 repeatIndex:(long long)arg3 isVideoContent:(BOOL)arg4 prefersSeekOverSkip:(BOOL)arg5;
 @end
 

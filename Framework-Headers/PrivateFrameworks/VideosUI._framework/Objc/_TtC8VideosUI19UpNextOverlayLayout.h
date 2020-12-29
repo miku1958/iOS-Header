@@ -10,6 +10,7 @@
 
 @interface _TtC8VideosUI19UpNextOverlayLayout : _TtC8VideosUI10ViewLayout
 {
+    MISSING_TYPE *size;
     MISSING_TYPE *$__lazy_storage_$_appImageLayout;
     MISSING_TYPE *$__lazy_storage_$_logoImageLayout;
     MISSING_TYPE *$__lazy_storage_$_titleLayout;

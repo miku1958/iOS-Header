@@ -6,41 +6,41 @@
 
 #import <UIKit/UIView.h>
 
-@class VUIButton, VUILabel, VUIMediaTagsView, VUIOfferLayout, VUISeparatorView, _TVImageView;
+@class VUILabel, VUIMediaTagsView, VUIOfferLayout, VUISeparatorView;
 
 __attribute__((visibility("hidden")))
 @interface VUIOfferView : UIView
 {
     BOOL _isEntitled;
     VUIOfferLayout *_layout;
-    _TVImageView *_imageView;
-    _TVImageView *_logoView;
-    _TVImageView *_appIconView;
+    UIView *_imageView;
+    UIView *_logoView;
+    UIView *_appIconView;
     VUILabel *_channelNameLabel;
     VUILabel *_titleLabel;
     VUILabel *_subtitleLabel;
     VUILabel *_textLabel;
     UIView *_badgeView;
     VUIMediaTagsView *_tagsView;
-    VUIButton *_versionsButton;
+    UIView *_versionsButton;
     UIView *_channelImageBackgroundView;
     VUISeparatorView *_separatorView;
 }
 
-@property (strong, nonatomic) _TVImageView *appIconView; // @synthesize appIconView=_appIconView;
+@property (strong, nonatomic) UIView *appIconView; // @synthesize appIconView=_appIconView;
 @property (strong, nonatomic) UIView *badgeView; // @synthesize badgeView=_badgeView;
 @property (strong, nonatomic) UIView *channelImageBackgroundView; // @synthesize channelImageBackgroundView=_channelImageBackgroundView;
 @property (strong, nonatomic) VUILabel *channelNameLabel; // @synthesize channelNameLabel=_channelNameLabel;
-@property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) UIView *imageView; // @synthesize imageView=_imageView;
 @property (nonatomic) BOOL isEntitled; // @synthesize isEntitled=_isEntitled;
 @property (strong, nonatomic) VUIOfferLayout *layout; // @synthesize layout=_layout;
-@property (strong, nonatomic) _TVImageView *logoView; // @synthesize logoView=_logoView;
+@property (strong, nonatomic) UIView *logoView; // @synthesize logoView=_logoView;
 @property (strong, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
 @property (strong, nonatomic) VUILabel *subtitleLabel; // @synthesize subtitleLabel=_subtitleLabel;
 @property (strong, nonatomic) VUIMediaTagsView *tagsView; // @synthesize tagsView=_tagsView;
 @property (strong, nonatomic) VUILabel *textLabel; // @synthesize textLabel=_textLabel;
 @property (strong, nonatomic) VUILabel *titleLabel; // @synthesize titleLabel=_titleLabel;
-@property (strong, nonatomic) VUIButton *versionsButton; // @synthesize versionsButton=_versionsButton;
+@property (strong, nonatomic) UIView *versionsButton; // @synthesize versionsButton=_versionsButton;
 
 - (void).cxx_destruct;
 - (double)_chinHeightForSize:(struct CGSize)arg1;

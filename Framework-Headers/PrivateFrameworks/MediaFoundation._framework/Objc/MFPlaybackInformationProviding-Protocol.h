@@ -5,14 +5,15 @@
 //
 
 @class AVPlayerViewController, NSArray, NSNumber;
-@protocol MFPlayerItem;
+@protocol MFQueuePlayerItem;
 
 @protocol MFPlaybackInformationProviding
 
-@property (nonatomic, readonly) id<MFPlayerItem> currentItem;
+@property (nonatomic, readonly) id<MFQueuePlayerItem> currentItem;
 @property (nonatomic, readonly) long long currentItemTransition;
 @property (nonatomic, readonly) long long currentState;
 @property (nonatomic, readonly) double currentTime;
+@property (nonatomic, readonly) float effectiveRate;
 @property (nonatomic, readonly) long long interruptedState;
 @property (nonatomic, readonly) NSArray *nextItems;
 @property (nonatomic, readonly) float rate;

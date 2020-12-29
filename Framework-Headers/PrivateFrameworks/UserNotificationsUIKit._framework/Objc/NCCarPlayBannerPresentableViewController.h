@@ -52,6 +52,7 @@
 - (void)addPresentableObserver:(id)arg1;
 - (struct UIEdgeInsets)bannerContentOutsets;
 - (BOOL)bannerContentViewShouldShowOKButton:(id)arg1;
+- (BOOL)bn_shouldAnimateViewTransitionToSize:(struct CGSize)arg1;
 - (id)initWithNotificationRequest:(id)arg1;
 - (void)invalidateDisplayProperties;
 - (void)loadView;

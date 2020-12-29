@@ -29,6 +29,7 @@
 - (void).cxx_destruct;
 - (id)initWithMachineReadableCodeObject:(id)arg1;
 - (BOOL)isOfSignificantSize;
+- (long long)mrcType;
 
 @end
 

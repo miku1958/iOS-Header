@@ -6,25 +6,39 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSString, _INPBDataString, _INPBDouble, _INPBIntentMetadata;
+@class NSArray, NSString, _INPBDataString, _INPBDouble, _INPBIntentMetadata, _INPBWorkoutAssociatedItem;
 
 @protocol _INPBStartWorkoutIntent <NSObject>
 
+@property (copy, nonatomic) NSArray *associatedItems;
+@property (readonly, nonatomic) unsigned long long associatedItemsCount;
 @property (strong, nonatomic) _INPBDouble *goalValue;
 @property (readonly, nonatomic) BOOL hasGoalValue;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
+@property (nonatomic) BOOL hasIsBuiltInWorkoutType;
 @property (nonatomic) BOOL hasIsOpenEnded;
+@property (nonatomic) BOOL hasIsVoiceOnly;
+@property (nonatomic) BOOL hasSequenceLabel;
 @property (nonatomic) BOOL hasWorkoutGoalUnitType;
 @property (nonatomic) BOOL hasWorkoutLocationType;
 @property (readonly, nonatomic) BOOL hasWorkoutName;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata;
+@property (nonatomic) BOOL isBuiltInWorkoutType;
 @property (nonatomic) BOOL isOpenEnded;
+@property (nonatomic) BOOL isVoiceOnly;
+@property (nonatomic) int sequenceLabel;
 @property (nonatomic) int workoutGoalUnitType;
 @property (nonatomic) int workoutLocationType;
 @property (strong, nonatomic) _INPBDataString *workoutName;
 
++ (Class)associatedItemsType;
+- (int)StringAsSequenceLabel:(NSString *)arg1;
 - (int)StringAsWorkoutGoalUnitType:(NSString *)arg1;
 - (int)StringAsWorkoutLocationType:(NSString *)arg1;
+- (void)addAssociatedItems:(_INPBWorkoutAssociatedItem *)arg1;
+- (_INPBWorkoutAssociatedItem *)associatedItemsAtIndex:(unsigned long long)arg1;
+- (void)clearAssociatedItems;
+- (NSString *)sequenceLabelAsString:(int)arg1;
 - (NSString *)workoutGoalUnitTypeAsString:(int)arg1;
 - (NSString *)workoutLocationTypeAsString:(int)arg1;
 @end

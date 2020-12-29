@@ -6,14 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-@class NSArray, VUIButton, VUIChannelBannerLayout, VUIFocusableTextView, VUILabel, VUIProductUberBackgroundView, VUISeparatorView;
+@class NSArray, VUIChannelBannerLayout, VUIFocusableTextView, VUILabel, VUIProductUberBackgroundView, VUISeparatorView;
 
 __attribute__((visibility("hidden")))
 @interface VUIChannelBannerView : UIView
 {
     VUIChannelBannerLayout *_layout;
     UIView *_appleTVChannelLogoView;
-    VUIButton *_subscribeButton;
+    UIView *_subscribeButton;
     VUILabel *_disclaimerTextLabel;
     VUIFocusableTextView *_descriptionTextView;
     NSArray *_textLabels;
@@ -29,7 +29,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) VUILabel *disclaimerTextLabel; // @synthesize disclaimerTextLabel=_disclaimerTextLabel;
 @property (strong, nonatomic) VUIChannelBannerLayout *layout; // @synthesize layout=_layout;
 @property (strong, nonatomic) VUISeparatorView *separatorView; // @synthesize separatorView=_separatorView;
-@property (strong, nonatomic) VUIButton *subscribeButton; // @synthesize subscribeButton=_subscribeButton;
+@property (strong, nonatomic) UIView *subscribeButton; // @synthesize subscribeButton=_subscribeButton;
 @property (strong, nonatomic) NSArray *textLabels; // @synthesize textLabels=_textLabels;
 @property (readonly, nonatomic) double topThreshold;
 

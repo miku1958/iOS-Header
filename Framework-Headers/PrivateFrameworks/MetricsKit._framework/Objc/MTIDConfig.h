@@ -10,6 +10,7 @@
 
 @interface MTIDConfig : NSObject
 {
+    NSString *_performanceTopic;
     NSMutableDictionary *_cache;
     NSMutableDictionary *_userIdNamespacesByTopic;
     NSMutableDictionary *_clientIdNamespacesByTopic;
@@ -21,6 +22,7 @@
 @property (strong, nonatomic) NSMutableDictionary *clientIdNamespacesByTopic; // @synthesize clientIdNamespacesByTopic=_clientIdNamespacesByTopic;
 @property (strong, nonatomic) NSString *defaultClientIdNamespace; // @synthesize defaultClientIdNamespace=_defaultClientIdNamespace;
 @property (strong, nonatomic) NSString *defaultUserIdNamespace; // @synthesize defaultUserIdNamespace=_defaultUserIdNamespace;
+@property (strong, nonatomic) NSString *performanceTopic; // @synthesize performanceTopic=_performanceTopic;
 @property (strong, nonatomic) NSMutableDictionary *userIdNamespacesByTopic; // @synthesize userIdNamespacesByTopic=_userIdNamespacesByTopic;
 
 - (void).cxx_destruct;

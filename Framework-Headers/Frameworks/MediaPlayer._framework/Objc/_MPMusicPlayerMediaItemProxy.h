@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSString *itemIdentifier; // @synthesize itemIdentifier=_itemIdentifier;
 
 - (void).cxx_destruct;
+- (id)description;
 - (void)forwardInvocation:(id)arg1;
 - (id)initWithItemIdentifier:(id)arg1 item:(id)arg2;
 - (BOOL)isEqual:(id)arg1;

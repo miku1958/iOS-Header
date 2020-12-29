@@ -4,31 +4,18 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <NeutrinoCore/NUSourceNode.h>
+#import <NeutrinoCore/NUCGAuxiliaryImageSourceNode.h>
 
-@class NUCGAuxiliaryImageProperties, NUCGImageSourceNode;
-
-@interface NUCGImageDepthSourceNode : NUSourceNode
+@interface NUCGImageDepthSourceNode : NUCGAuxiliaryImageSourceNode
 {
-    NUCGAuxiliaryImageProperties *_auxiliaryImageProperties;
-    NUCGImageSourceNode *_sourceNode;
     BOOL _needsAspectRatioCorrection;
     struct CGAffineTransform _aspectTransform;
     CDStruct_d58201db _aspectMatchedPixelSize;
 }
 
-@property (strong) NUCGImageSourceNode *sourceNode; // @synthesize sourceNode=_sourceNode;
-
-- (void).cxx_destruct;
-- (id)_evaluateAuxiliaryImageForType:(long long)arg1 error:(out id *)arg2;
-- (id)_evaluateImagePropertiesWithSourceOptions:(id)arg1 error:(out id *)arg2;
 - (id)_evaluateImageWithSourceOptions:(id)arg1 subsampleFactor:(long long *)arg2 error:(out id *)arg3;
-- (BOOL)canPropagateOriginalAuxiliaryData;
-- (id)initWithSettings:(id)arg1;
 - (id)initWithSourceNode:(id)arg1 auxiliaryImageProperties:(id)arg2;
-- (id)pipelineOptionsForPipelineState:(id)arg1 error:(out id *)arg2;
-- (CDStruct_912cb5d2)pixelSizeWithSourceOptions:(id)arg1;
-- (long long)sourceOrientation;
+- (id)resolvedNodeWithCachedInputs:(id)arg1 settings:(id)arg2 pipelineState:(id)arg3 error:(out id *)arg4;
 
 @end
 

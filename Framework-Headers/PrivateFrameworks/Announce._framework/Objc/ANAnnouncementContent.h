@@ -8,10 +8,12 @@
 
 #import <Announce/NSSecureCoding-Protocol.h>
 
-@class NSString, NSURL;
+@class NSString, NSURL, NSUUID;
 
 @interface ANAnnouncementContent : NSObject <NSSecureCoding>
 {
+    NSString *_endpointIdentifier;
+    NSUUID *_homeKitUserIdentifier;
     NSURL *_audioFileURL;
     NSString *_transcription;
 }
@@ -24,8 +26,12 @@
 - (void).cxx_destruct;
 - (id)description;
 - (void)encodeWithCoder:(id)arg1;
+- (id)endpointIdentifier;
+- (id)homeKitUserIdentifier;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
+- (void)setEndpointIdentifier:(id)arg1;
+- (void)setHomeKitUserIdentifier:(id)arg1;
 
 @end
 

@@ -8,18 +8,23 @@
 
 #import <SpringBoard/SBLeafIconDataSource-Protocol.h>
 
-@class NSString, NSURL, UIWebClip;
+@class CPSWebClip, NSString, NSURL, UIWebClip;
 
 @interface SBBookmark : NSObject <SBLeafIconDataSource>
 {
     UIWebClip *_webClip;
+    CPSWebClip *_appClip;
 }
 
+@property (readonly, nonatomic) CPSWebClip *appClip; // @synthesize appClip=_appClip;
 @property (readonly, copy, nonatomic) NSString *configurationStorageIdentifier;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) NSString *identifier;
+@property (readonly, nonatomic) BOOL isAppClip;
+@property (readonly, nonatomic) BOOL isShortcutsWebClip;
+@property (readonly, nonatomic) BOOL isSingleStepShortcutWebClip;
 @property (readonly, nonatomic) NSURL *launchURL;
 @property (readonly) Class superclass;
 @property (readonly, copy, nonatomic) NSString *uniqueIdentifier;
@@ -27,6 +32,7 @@
 
 + (id)bookmarkWithWebClip:(id)arg1;
 - (void).cxx_destruct;
+- (void)_cleanupAppClipIfNecessary;
 - (void)_deviceUnlockedForFirstTime:(id)arg1;
 - (void)dealloc;
 - (id)icon:(id)arg1 displayNameForLocation:(id)arg2;

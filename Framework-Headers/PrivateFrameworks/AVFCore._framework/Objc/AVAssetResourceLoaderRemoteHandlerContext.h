@@ -12,6 +12,7 @@
 
 @interface AVAssetResourceLoaderRemoteHandlerContext : NSObject <NSSecureCoding>
 {
+    int _clientPid;
     NSObject<OS_xpc_object> *_endpoint;
     unsigned long long _customURLHandlerObjectID;
     unsigned long long _authHandlerObjectID;
@@ -19,6 +20,7 @@
 }
 
 @property (readonly, nonatomic) unsigned long long authHandlerObjectID; // @synthesize authHandlerObjectID=_authHandlerObjectID;
+@property (readonly, nonatomic) int clientPid; // @synthesize clientPid=_clientPid;
 @property (readonly, nonatomic) unsigned long long contentKeySessionHandlerObjectID; // @synthesize contentKeySessionHandlerObjectID=_contentKeySessionHandlerObjectID;
 @property (readonly, nonatomic) unsigned long long customURLHandlerObjectID; // @synthesize customURLHandlerObjectID=_customURLHandlerObjectID;
 @property (readonly, nonatomic) NSObject<OS_xpc_object> *endpoint; // @synthesize endpoint=_endpoint;
@@ -27,7 +29,7 @@
 - (void)dealloc;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
-- (id)initWithEndpoint:(id)arg1 customURLHandlerObjectID:(unsigned long long)arg2 authHandlerObjectID:(unsigned long long)arg3 contentKeySessionHandlerObjectID:(unsigned long long)arg4;
+- (id)initWithEndpoint:(id)arg1 clientPid:(int)arg2 customURLHandlerObjectID:(unsigned long long)arg3 authHandlerObjectID:(unsigned long long)arg4 contentKeySessionHandlerObjectID:(unsigned long long)arg5;
 
 @end
 

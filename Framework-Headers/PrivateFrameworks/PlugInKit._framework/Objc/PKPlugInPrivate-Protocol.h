@@ -16,5 +16,11 @@
 @property (readonly) NSDate *timestamp;
 @property (readonly) NSUUID *uuid;
 
+- (void)beginUsingRequest:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (BOOL)beginUsingRequest:(NSUUID *)arg1 error:(id *)arg2;
+- (void)beginUsingRequest:(NSUUID *)arg1 withSubsystemOptions:(NSDictionary *)arg2 completion:(void (^)(NSError *))arg3;
+- (BOOL)beginUsingRequest:(NSUUID *)arg1 withSubsystemOptions:(NSDictionary *)arg2 error:(id *)arg3;
+- (void)endUsingRequest:(NSUUID *)arg1 completion:(void (^)(NSError *))arg2;
+- (BOOL)endUsingRequest:(NSUUID *)arg1 error:(id *)arg2;
 @end
 

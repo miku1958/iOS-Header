@@ -8,7 +8,7 @@
 
 #import <MediaControls/MRUVisualStylingProviderObserver-Protocol.h>
 
-@class MPArtworkCatalog, MRUShadowView, MRUVisualStylingProvider, MSVTimer, NSString, UIImage, UIImageView;
+@class MPArtworkCatalog, MRUShadowView, MRUVisualStylingProvider, MSVTimer, NSString, UIImage, UIImageView, UIPointerStyle;
 
 __attribute__((visibility("hidden")))
 @interface MRUArtworkView : UIView <MRUVisualStylingProviderObserver>
@@ -45,6 +45,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIView *placeholderBackground; // @synthesize placeholderBackground=_placeholderBackground;
 @property (strong, nonatomic) UIImage *placeholderImage; // @synthesize placeholderImage=_placeholderImage;
 @property (strong, nonatomic) UIImageView *placeholderImageView; // @synthesize placeholderImageView=_placeholderImageView;
+@property (readonly, nonatomic) UIPointerStyle *pointerStyle;
 @property (nonatomic) BOOL showPlaceholder; // @synthesize showPlaceholder=_showPlaceholder;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (strong, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
@@ -54,6 +55,7 @@ __attribute__((visibility("hidden")))
 - (struct CGRect)artworkFrame;
 - (void)dealloc;
 - (id)initWithFrame:(struct CGRect)arg1;
+- (BOOL)isDeviceIcon;
 - (BOOL)isSquare:(struct CGSize)arg1;
 - (BOOL)isSquareArtwork;
 - (void)layoutSubviews;

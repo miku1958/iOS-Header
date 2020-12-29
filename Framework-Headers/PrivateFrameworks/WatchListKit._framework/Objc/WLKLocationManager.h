@@ -46,10 +46,12 @@
 - (id)_dictionaryOnDisk:(BOOL)arg1;
 - (id)_dictionaryRepresentation;
 - (double)_getDistanceOfLastKnownLocationDictionary:(id)arg1 fromLocation:(id)arg2;
+- (BOOL)_isIgnorableLocationError:(id)arg1;
 - (BOOL)_isLastKnownLocation:(id)arg1 freshForMaxAge:(double)arg2 fromNewTimestamp:(double)arg3;
 - (BOOL)_isLastKnownLocation:(id)arg1 significantlyOlderThanNewLocation:(id)arg2;
 - (BOOL)_isLastKnownLocationFresh:(id)arg1;
 - (void)_locationAuthorizationStatus:(CDUnknownBlockType)arg1;
+- (id)_locationQueryParameters;
 - (BOOL)_locationServicesEnabled;
 - (void)_readFromDisk;
 - (void)_requestActiveLocationChangeUpdates;

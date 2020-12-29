@@ -15,12 +15,16 @@
     id<WFPropertyListObject> _userInfo;
     NSString *_keyPath;
     CDUnknownBlockType _block;
+    CDUnknownBlockType _setterBlock;
     NSString *_name;
     Class _propertyClass;
     NSNumber *_multipleValues;
     NSNumber *_filterable;
     NSNumber *_sortable;
     NSNumber *_gettable;
+    NSNumber *_settable;
+    NSNumber *_appendable;
+    NSNumber *_removable;
     NSNumber *_primary;
     NSArray *_allowedOperators;
     NSArray *_possibleValues;
@@ -33,10 +37,13 @@
     NSNumber *_comparableUnits;
     NSString *_measurementUnitType;
     NSString *_displayName;
+    NSNumber *_canLowercaseName;
 }
 
 @property (copy, nonatomic) NSArray *allowedOperators; // @synthesize allowedOperators=_allowedOperators;
+@property (copy, nonatomic) NSNumber *appendable; // @synthesize appendable=_appendable;
 @property (copy, nonatomic) CDUnknownBlockType block; // @synthesize block=_block;
+@property (copy, nonatomic) NSNumber *canLowercaseName; // @synthesize canLowercaseName=_canLowercaseName;
 @property (copy, nonatomic) NSNumber *caseInsensitive; // @synthesize caseInsensitive=_caseInsensitive;
 @property (copy, nonatomic) NSNumber *comparableUnits; // @synthesize comparableUnits=_comparableUnits;
 @property (copy, nonatomic) NSString *displayName; // @synthesize displayName=_displayName;
@@ -52,6 +59,9 @@
 @property (copy, nonatomic) CDUnknownBlockType possibleValuesGetter; // @synthesize possibleValuesGetter=_possibleValuesGetter;
 @property (copy, nonatomic) NSNumber *primary; // @synthesize primary=_primary;
 @property (strong, nonatomic) Class propertyClass; // @synthesize propertyClass=_propertyClass;
+@property (copy, nonatomic) NSNumber *removable; // @synthesize removable=_removable;
+@property (copy, nonatomic) NSNumber *settable; // @synthesize settable=_settable;
+@property (copy, nonatomic) CDUnknownBlockType setterBlock; // @synthesize setterBlock=_setterBlock;
 @property (copy, nonatomic) NSString *singularItemName; // @synthesize singularItemName=_singularItemName;
 @property (copy, nonatomic) NSNumber *sortable; // @synthesize sortable=_sortable;
 @property (copy, nonatomic) NSNumber *tense; // @synthesize tense=_tense;
@@ -59,10 +69,14 @@
 @property (copy, nonatomic) id<WFPropertyListObject> userInfo; // @synthesize userInfo=_userInfo;
 
 + (id)block:(CDUnknownBlockType)arg1 name:(id)arg2 class:(Class)arg3;
++ (id)block:(CDUnknownBlockType)arg1 setterBlock:(CDUnknownBlockType)arg2 name:(id)arg3 class:(Class)arg4;
 + (id)keyPath:(id)arg1 name:(id)arg2 class:(Class)arg3;
++ (id)keyPath:(id)arg1 setterBlock:(CDUnknownBlockType)arg2 name:(id)arg3 class:(Class)arg4;
 - (void).cxx_destruct;
 - (id)allowedOperators:(id)arg1;
+- (id)appendable:(BOOL)arg1;
 - (id)build;
+- (id)canLowercaseName:(BOOL)arg1;
 - (id)caseInsensitive:(BOOL)arg1;
 - (id)comparableUnits:(unsigned long long)arg1;
 - (id)displayName:(id)arg1;
@@ -75,6 +89,8 @@
 - (id)possibleValues:(id)arg1;
 - (id)possibleValuesGetter:(CDUnknownBlockType)arg1;
 - (id)primary:(BOOL)arg1;
+- (id)removable:(BOOL)arg1;
+- (id)setterBlock:(CDUnknownBlockType)arg1;
 - (id)singularItemName:(id)arg1;
 - (id)sortable:(BOOL)arg1;
 - (id)tense:(unsigned long long)arg1;

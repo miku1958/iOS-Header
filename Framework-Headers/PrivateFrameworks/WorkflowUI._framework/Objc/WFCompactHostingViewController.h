@@ -9,13 +9,14 @@
 #import <WorkflowUI/WFActionUserInterfaceListenerDelegate-Protocol.h>
 #import <WorkflowUI/WFCompactDialogViewControllerDelegate-Protocol.h>
 
-@class MTMaterialView, NSProgress, NSString, NSTimer, UIView, WFActionUserInterfaceListener, WFCompactStatusViewController, WFCompactUnlockService, WFDialogAttribution, WFDialogRequest, WFWorkflowRunningContext;
+@class MTMaterialView, NSProgress, NSString, NSTimer, UIView, WFActionUserInterfaceListener, WFCompactStatusViewController, WFCompactUnlockService, WFDebouncer, WFDialogAttribution, WFDialogRequest, WFWorkflowRunningContext;
 
 @interface WFCompactHostingViewController : UIViewController <WFActionUserInterfaceListenerDelegate, WFCompactDialogViewControllerDelegate>
 {
     BOOL _screenIsLocked;
     BOOL _hasViewAppeared;
     BOOL _handlingRequest;
+    BOOL _preparingToPresentDialog;
     WFActionUserInterfaceListener *_actionInterfaceListener;
     WFWorkflowRunningContext *_runningContext;
     WFDialogAttribution *_runningAttribution;
@@ -28,6 +29,7 @@
     WFDialogRequest *_pendingRequest;
     CDUnknownBlockType _requestCompletionHandler;
     WFCompactUnlockService *_unlockService;
+    WFDebouncer *_singleStepShortcutCompletionDialogDebouncer;
 }
 
 @property (strong, nonatomic) WFActionUserInterfaceListener *actionInterfaceListener; // @synthesize actionInterfaceListener=_actionInterfaceListener;
@@ -39,12 +41,14 @@
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) MTMaterialView *materialView; // @synthesize materialView=_materialView;
 @property (strong, nonatomic) WFDialogRequest *pendingRequest; // @synthesize pendingRequest=_pendingRequest;
+@property (nonatomic) BOOL preparingToPresentDialog; // @synthesize preparingToPresentDialog=_preparingToPresentDialog;
 @property (strong, nonatomic) NSProgress *progress; // @synthesize progress=_progress;
 @property (strong, nonatomic) id progressSubscriber; // @synthesize progressSubscriber=_progressSubscriber;
 @property (copy, nonatomic) CDUnknownBlockType requestCompletionHandler; // @synthesize requestCompletionHandler=_requestCompletionHandler;
 @property (strong, nonatomic) WFDialogAttribution *runningAttribution; // @synthesize runningAttribution=_runningAttribution;
 @property (strong, nonatomic) WFWorkflowRunningContext *runningContext; // @synthesize runningContext=_runningContext;
 @property (readonly, nonatomic) BOOL screenIsLocked; // @synthesize screenIsLocked=_screenIsLocked;
+@property (strong, nonatomic) WFDebouncer *singleStepShortcutCompletionDialogDebouncer; // @synthesize singleStepShortcutCompletionDialogDebouncer=_singleStepShortcutCompletionDialogDebouncer;
 @property (strong, nonatomic) WFCompactStatusViewController *statusViewController; // @synthesize statusViewController=_statusViewController;
 @property (strong, nonatomic) NSTimer *statusViewTimer; // @synthesize statusViewTimer=_statusViewTimer;
 @property (readonly) Class superclass;
@@ -57,7 +61,7 @@
 - (void)clearStatusViewTimer;
 - (void)dealloc;
 - (void)dialogViewController:(id)arg1 didFinishWithResponse:(id)arg2 waitForFollowUpRequest:(BOOL)arg3;
-- (void)dismissPersistentChromeWithSuccess:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)dismissPersistentChromeWithSuccess:(BOOL)arg1 customAttribution:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)dismissPlatterViewControllerAndUpdateChromeAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dismissPlatterViewControllerIfNecessaryAnimated:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)dismissPresentedContentWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -71,8 +75,10 @@
 - (void)presentChromeIfPossible;
 - (void)presentStatusViewController;
 - (void)scheduleStatusViewToAppear;
+- (void)setTouchPassthrough:(BOOL)arg1;
 - (void)updateChromeVisibilityWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)viewDidAppear:(BOOL)arg1;
+- (void)viewWillLayoutSubviews;
 
 @end
 

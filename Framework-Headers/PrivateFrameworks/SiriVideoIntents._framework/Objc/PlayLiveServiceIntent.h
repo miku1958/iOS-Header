@@ -6,13 +6,14 @@
 
 #import <Intents/INIntent.h>
 
-@class LiveService;
+@class LiveService, NSString;
 
 @interface PlayLiveServiceIntent : INIntent
 {
 }
 
 @property (copy, nonatomic) LiveService *liveService; // @dynamic liveService;
+@property (copy, nonatomic) NSString *serviceNameSearch; // @dynamic serviceNameSearch;
 
 @end
 

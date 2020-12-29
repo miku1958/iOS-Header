@@ -16,6 +16,7 @@
     WFCompactHighlightedView *_highlightView;
     WFCompactContentPreviewViewController *_previewViewController;
     WFContentCollection *_dataSource;
+    CDUnknownBlockType _installThumbnailHandler;
 }
 
 @property (strong, nonatomic) WFContentCollection *dataSource; // @synthesize dataSource=_dataSource;
@@ -23,6 +24,7 @@
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (weak, nonatomic) WFCompactHighlightedView *highlightView; // @synthesize highlightView=_highlightView;
+@property (copy, nonatomic) CDUnknownBlockType installThumbnailHandler; // @synthesize installThumbnailHandler=_installThumbnailHandler;
 @property (strong, nonatomic) WFCompactContentPreviewViewController *previewViewController; // @synthesize previewViewController=_previewViewController;
 @property (readonly) Class superclass;
 
@@ -31,6 +33,7 @@
 - (double)contentHeightWithPreferredHeight:(double)arg1 maxVisibleHeight:(double)arg2;
 - (void)handleTapGesture:(id)arg1;
 - (void)loadView;
+- (void)prepareForPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)presentFullScreenPreview;
 - (struct CGRect)previewController:(id)arg1 frameForPreviewItem:(id)arg2 inSourceView:(id *)arg3;
 - (id)previewController:(id)arg1 transitionViewForPreviewItem:(id)arg2;

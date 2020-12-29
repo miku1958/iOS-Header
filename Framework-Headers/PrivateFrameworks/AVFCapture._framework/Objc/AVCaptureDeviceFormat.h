@@ -53,6 +53,7 @@
 - (float)hardwareCost;
 - (CDStruct_1b6d18a9)highestSupportedVideoFrameDuration;
 - (id)initWithFigCaptureSourceFormat:(id)arg1;
+- (unsigned int)internalDemosaicedRawPixelFormat;
 - (BOOL)isCameraCalibrationDataDeliverySupported;
 - (BOOL)isContentAwareDistortionCorrectionSupported;
 - (BOOL)isDeepFusionSupported;
@@ -99,6 +100,7 @@
 - (CDStruct_79c71658)sensorDimensions;
 - (float)spatialOverCapturePercentage;
 - (long long)stabilizationTypeForTimelapse;
+- (unsigned int)supportedDemosaicedRawPixelFormat;
 - (int)supportedFormatsArrayIndex;
 - (unsigned int)supportedRawPixelFormat;
 - (id)supportedSemanticSegmentationMatteTypes;

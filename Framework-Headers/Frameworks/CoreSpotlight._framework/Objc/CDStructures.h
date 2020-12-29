@@ -13,16 +13,17 @@ typedef void (^CDUnknownBlockType)(void); // return type and parameters are unkn
 struct CSAttributeEvaluatorContext {
     id _field1;
     CDUnknownBlockType _field2;
-    unsigned long long _field3;
-    BOOL _field4;
-    char *_field5;
-    long long _field6;
+    char *_field3;
+    CDStruct_183601bc *_field4;
+    CDStruct_183601bc *_field5;
+    int *_field6;
     long long _field7;
-    CDStruct_183601bc *_field8;
-    CDStruct_183601bc *_field9;
-    long long *_field10;
+    long long _field8;
+    long long _field9;
+    long long _field10;
     long long _field11;
-    long long _field12;
+    unsigned long long _field12;
+    BOOL _field13;
 };
 
 struct CSUnpackInfo {

@@ -410,6 +410,7 @@
 - (void)_hideNetworkActivityIndicator;
 - (id)_hoverEventForWindow:(id)arg1;
 - (id)_hoverEventForWindowSpringBoardOnly:(id)arg1;
+- (id)_idleModeController;
 - (id)_implicitStatusBarAnimationParametersWithClass:(Class)arg1;
 - (id)_implicitStatusBarHiddenAnimationParametersWithViewController:(id)arg1 animation:(long long)arg2;
 - (id)_implicitStatusBarStyleAnimationParametersWithViewController:(id)arg1;

@@ -27,7 +27,8 @@
     int _internalState;
     BOOL _stepDone;
     NSError *_stepError;
-    CDStruct_798ebea5 _frameHeader;
+    unsigned long long _highPriorityAuthTagLength;
+    CUPairingStream *_highPriorityStream;
     NSString *_homeKitIdentityIdentifier;
     NSData *_homeKitIdentitySignature;
     unsigned long long _mainAuthTagLength;
@@ -40,9 +41,9 @@
     int _pairVerifyIdentityType;
     CUPairingSession *_pairVerifySession;
     BOOL _pairVerifyUsedIdentity;
+    CDStruct_f8a3a8cf _readFrame;
+    CDStruct_f8a3a8cf _readFrameBTPipeHighPriority;
     id<CUReadWriteRequestable> _requestable;
-    BOOL _receivingHeader;
-    BOOL _readRequested;
     NSMutableDictionary *_requests;
     int _retryCount;
     NSMutableArray *_sendArray;
@@ -107,6 +108,7 @@
     CDUnknownBlockType _stateChangedHandler;
     unsigned long long _statusFlags;
     CUTCPConnection *_tcpConnection;
+    CUBluetoothScalablePipe *_btPipeHighPriority;
 }
 
 @property (copy, nonatomic) NSString *appID; // @synthesize appID=_appID;
@@ -118,6 +120,7 @@
 @property (copy, nonatomic) NSUUID *blePeerIdentifier; // @synthesize blePeerIdentifier=_blePeerIdentifier;
 @property (strong, nonatomic) CUBonjourDevice *bonjourPeerDevice; // @synthesize bonjourPeerDevice=_bonjourPeerDevice;
 @property (strong, nonatomic) CUBluetoothScalablePipe *btPipe; // @synthesize btPipe=_btPipe;
+@property (strong, nonatomic) CUBluetoothScalablePipe *btPipeHighPriority; // @synthesize btPipeHighPriority=_btPipeHighPriority;
 @property (strong, nonatomic) id client; // @synthesize client=_client;
 @property (nonatomic) BOOL clientMode; // @synthesize clientMode=_clientMode;
 @property (nonatomic) unsigned long long controlFlags; // @synthesize controlFlags=_controlFlags;
@@ -207,8 +210,8 @@
 - (BOOL)_pairVerifyVerifySignature:(id)arg1 data:(id)arg2 flags:(unsigned int)arg3 error:(id *)arg4;
 - (void)_processSends;
 - (void)_pskPrepare:(BOOL)arg1;
-- (void)_receiveCompletion:(id)arg1;
-- (void)_receiveStart:(id)arg1;
+- (void)_receiveCompletion:(id)arg1 readFrame:(CDStruct_f8a3a8cf *)arg2 requestable:(id)arg3;
+- (void)_receiveStart:(id)arg1 readFrame:(CDStruct_f8a3a8cf *)arg2 requestable:(id)arg3;
 - (void)_receivedEvent:(id)arg1 ctx:(CDStruct_5577c19c *)arg2;
 - (void)_receivedHeader:(const CDStruct_798ebea5 *)arg1 body:(id)arg2 ctx:(CDStruct_5577c19c *)arg3;
 - (void)_receivedHeader:(const CDStruct_798ebea5 *)arg1 encryptedObjectData:(id)arg2 ctx:(CDStruct_5577c19c *)arg3;
@@ -219,7 +222,7 @@
 - (void)_run;
 - (void)_sendEncryptedEventID:(id)arg1 data:(id)arg2 xid:(unsigned int)arg3 options:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)_sendEncryptedRequestID:(id)arg1 request:(id)arg2 xpcID:(unsigned int)arg3 options:(id)arg4 sendEntry:(id)arg5 responseHandler:(CDUnknownBlockType)arg6;
-- (void)_sendEncryptedResponse:(id)arg1 error:(id)arg2 xid:(id)arg3 requestID:(id)arg4;
+- (void)_sendEncryptedResponse:(id)arg1 error:(id)arg2 xid:(id)arg3 requestID:(id)arg4 highPriority:(BOOL)arg5;
 - (void)_sendFrameType:(unsigned char)arg1 body:(id)arg2;
 - (void)_sendFrameType:(unsigned char)arg1 unencryptedObject:(id)arg2;
 - (void)_serverAccept;

@@ -30,10 +30,13 @@ __attribute__((visibility("hidden")))
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
+- (void)_checkInPromise:(id)arg1;
+- (void)_checkOutPromise:(id)arg1;
 - (id)_connectionProxyForAsync:(BOOL)arg1 accessBlock:(CDUnknownBlockType)arg2;
 - (void)_handleInterruption;
 - (void)_handleInvalidation;
 - (void)addInterruptionHandler:(CDUnknownBlockType)arg1;
+- (id)callService:(id)arg1 then:(CDUnknownBlockType)arg2;
 - (void)dealloc;
 - (id)deviceMessengerProxyWithDelegate:(id)arg1;
 - (id)init;

@@ -6,15 +6,25 @@
 
 #import <UIKit/UIViewController.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC12GameCenterUI18BaseViewController : UIViewController
 {
+    MISSING_TYPE *wantsHiddenNavigationBar;
+    MISSING_TYPE *wantsHiddenTitle;
+    MISSING_TYPE *manualScrollEdgeAppearanceProgress;
+    MISSING_TYPE *scrollObserver;
+    MISSING_TYPE *navbarScrollObserver;
 }
 
+- (void).cxx_destruct;
 - (id)init;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithNibName:(id)arg1 bundle:(id)arg2;
 - (void)loadView;
+- (void)scrollViewDidScroll:(id)arg1;
 - (void)viewDidLoad;
+- (void)viewWillAppear:(BOOL)arg1;
 
 @end
 

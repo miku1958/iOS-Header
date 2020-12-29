@@ -13,7 +13,7 @@
 
 @property (nonatomic) double timestamp; // @synthesize timestamp=_timestamp;
 
-- (id)init:(int)arg1 timestamp:(double)arg2 order:(long long)arg3;
+- (id)init:(int)arg1 timestamp:(double)arg2 emojiSearchMode:(BOOL)arg3 order:(long long)arg4;
 - (BOOL)isMissingATouch;
 - (double)touchDownTimestamp;
 - (double)touchUpTimestamp;

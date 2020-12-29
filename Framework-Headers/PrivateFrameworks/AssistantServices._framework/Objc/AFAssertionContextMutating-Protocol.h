@@ -6,10 +6,11 @@
 
 #import <AssistantServices/NSObject-Protocol.h>
 
-@class AFAssertionContext, NSDictionary, NSString;
+@class NSDate, NSDictionary, NSString;
 
 @protocol AFAssertionContextMutating <NSObject>
-- (void)setParentContext:(AFAssertionContext *)arg1;
+- (void)setEffectiveDate:(NSDate *)arg1;
+- (void)setExpirationDuration:(double)arg1;
 - (void)setReason:(NSString *)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;
 - (void)setUserInfo:(NSDictionary *)arg1;

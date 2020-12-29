@@ -18,6 +18,7 @@
     NSString *_localizedAppName;
     NSString *_name;
     NSMutableDictionary *_entitlementChecks;
+    struct os_unfair_lock_s _clientPropertyLock;
     ACDAccountStoreFilter *_filter;
     NSSet *_monitoredAccountTypes;
 }

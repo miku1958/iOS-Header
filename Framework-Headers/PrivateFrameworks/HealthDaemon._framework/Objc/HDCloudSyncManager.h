@@ -57,6 +57,7 @@
 - (void)_queue_updateAccessibilityAssertion;
 - (id)_removeParticipants:(id)arg1 fromSharesWithCompletion:(CDUnknownBlockType)arg2;
 - (void)_scheduleOwnershipRollForLocalDataLoss;
+- (void)_scheduleResetReceivedCloudSyncAnchorsAndRebaseForHFDRecovery;
 - (void)_subscribeToSubscriptions:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)_syncCircleIdentifierForProfile:(id)arg1 error:(id *)arg2;
 - (void)_tinkerContainerIdentifiersWithCompletion:(CDUnknownBlockType)arg1;

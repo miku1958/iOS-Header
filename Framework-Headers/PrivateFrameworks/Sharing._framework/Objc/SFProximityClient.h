@@ -60,6 +60,8 @@
 - (void)_invalidated;
 - (void)_invokeBlockActivateSafe:(CDUnknownBlockType)arg1;
 - (void)_provideContent:(id)arg1 forDevice:(id)arg2 force:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)_stopSuppressingDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_suppressDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_updateContent:(id)arg1 forDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)activateWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
@@ -79,6 +81,8 @@
 - (void)proximityClientDeviceWasSelectedHandler:(id)arg1;
 - (void)proximityClientDeviceWillTriggerHandler:(id)arg1;
 - (void)requestScannerTimerReset;
+- (void)stopSuppressingDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)suppressDevice:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)updateContent:(id)arg1 forDevice:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end

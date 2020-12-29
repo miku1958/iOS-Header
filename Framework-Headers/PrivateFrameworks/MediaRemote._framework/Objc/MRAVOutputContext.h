@@ -52,6 +52,7 @@
 - (void)_handleOutputDeviceVolumeDidChangeNotification:(id)arg1;
 - (void)_handleOutputDevicesDidChangeNotification:(id)arg1;
 - (void)_outputContextChangeInitiatedNotification:(id)arg1;
+- (void)addOutputDevices:(id)arg1 initiator:(id)arg2 fadeAudio:(BOOL)arg3 withCallbackQueue:(id)arg4 block:(CDUnknownBlockType)arg5;
 - (void)addOutputDevices:(id)arg1 initiator:(id)arg2 withCallbackQueue:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (void)addOutputDevices:(id)arg1 withCallbackQueue:(id)arg2 block:(CDUnknownBlockType)arg3;
 - (void)attemptLogicalDeviceRecovery;
@@ -59,8 +60,10 @@
 - (id)description;
 - (id)initWithAVOutputContext:(id)arg1 type:(unsigned int)arg2;
 - (void)removeAllOutputDevicesWithCallbackQueue:(id)arg1 block:(CDUnknownBlockType)arg2;
+- (void)removeOutputDevices:(id)arg1 initiator:(id)arg2 fadeAudio:(BOOL)arg3 withCallbackQueue:(id)arg4 block:(CDUnknownBlockType)arg5;
 - (void)removeOutputDevices:(id)arg1 initiator:(id)arg2 withCallbackQueue:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (void)removeOutputDevices:(id)arg1 withCallbackQueue:(id)arg2 block:(CDUnknownBlockType)arg3;
+- (void)setOutputDevices:(id)arg1 initiator:(id)arg2 fadeAudio:(BOOL)arg3 withCallbackQueue:(id)arg4 block:(CDUnknownBlockType)arg5;
 - (void)setOutputDevices:(id)arg1 initiator:(id)arg2 withCallbackQueue:(id)arg3 block:(CDUnknownBlockType)arg4;
 - (void)setOutputDevices:(id)arg1 withCallbackQueue:(id)arg2 block:(CDUnknownBlockType)arg3;
 

@@ -9,28 +9,30 @@
 #import <MetricsKit/MTIDSecretStore-Protocol.h>
 
 @class NSString, NSXPCConnection;
+@protocol OS_dispatch_queue;
 
 @interface MTIDXPCSecretStore : NSObject <MTIDSecretStore>
 {
+    double _idleCountDown;
+    NSObject<OS_dispatch_queue> *_queue;
     NSXPCConnection *_xpcConnection;
-    double _scheduledReleaseTime;
 }
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly) Class superclass;
+@property (strong) NSXPCConnection *xpcConnection; // @synthesize xpcConnection=_xpcConnection;
 
 - (void).cxx_destruct;
-- (void)_extendXPCConnectionLife;
-- (void)_releaseXPCConnection;
-- (void)_setupXPCConnection;
 - (void)clearLocalData;
 - (id)debugInfo;
-- (id)remoteObjectProxy;
-- (id)remoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
+- (id)init;
+- (id)maintainSchemes:(id)arg1 options:(id)arg2;
+- (id)newXPCConnection;
+- (id)resetSchemes:(id)arg1 options:(id)arg2;
 - (id)secretForScheme:(id)arg1 options:(id)arg2;
-- (id)xpcConnection;
+- (id)setupXPCConnection;
 
 @end
 

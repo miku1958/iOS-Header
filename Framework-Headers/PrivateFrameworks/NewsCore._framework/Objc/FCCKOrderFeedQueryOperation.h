@@ -47,7 +47,7 @@
 - (id)_constructFeedQuery;
 - (id)_feedRelativeDictionaryFromResultsArray:(id)arg1;
 - (id)_predicateForPerFeedFieldName:(id)arg1 key:(id)arg2 defaultValue:(id)arg3;
-- (void)_processResultsRecord:(id)arg1 feedItemAndArticleRecords:(id)arg2 tagRecords:(id)arg3 issueRecords:(id)arg4;
+- (void)_processResultsRecord:(id)arg1 feedItemAndArticleRecords:(id)arg2 tagRecords:(id)arg3 issueRecords:(id)arg4 requestUUID:(id)arg5;
 - (id)_requiredKeys;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;

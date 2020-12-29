@@ -10,6 +10,7 @@
 
 @class FCCKPIdentifier, FCCKPLocale, NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPRequestOperationHeader : PBCodable <NSCopying>
 {
     unsigned long long _applicationConfigVersion;
@@ -17,6 +18,7 @@
     unsigned long long _deviceFlowControlBudgetCap;
     unsigned long long _deviceProtocolVersion;
     unsigned long long _globalConfigVersion;
+    unsigned long long _operationGroupQuantity;
     NSString *_applicationBundle;
     NSString *_applicationContainer;
     int _applicationContainerEnvironment;
@@ -34,18 +36,22 @@
     int _isolationLevel;
     FCCKPLocale *_locale;
     NSString *_mmcsProtocolVersion;
+    NSString *_operationGroupName;
     int _targetDatabase;
     NSString *_userIDContainerID;
+    BOOL _deviceSoftwareIsAppleInternal;
     struct {
         unsigned int applicationConfigVersion:1;
         unsigned int deviceFlowControlBudget:1;
         unsigned int deviceFlowControlBudgetCap:1;
         unsigned int deviceProtocolVersion:1;
         unsigned int globalConfigVersion:1;
+        unsigned int operationGroupQuantity:1;
         unsigned int applicationContainerEnvironment:1;
         unsigned int deviceFlowControlRegeneration:1;
         unsigned int isolationLevel:1;
         unsigned int targetDatabase:1;
+        unsigned int deviceSoftwareIsAppleInternal:1;
     } _has;
 }
 
@@ -66,6 +72,7 @@
 @property (strong, nonatomic) NSString *deviceLibraryName; // @synthesize deviceLibraryName=_deviceLibraryName;
 @property (strong, nonatomic) NSString *deviceLibraryVersion; // @synthesize deviceLibraryVersion=_deviceLibraryVersion;
 @property (nonatomic) unsigned long long deviceProtocolVersion; // @synthesize deviceProtocolVersion=_deviceProtocolVersion;
+@property (nonatomic) BOOL deviceSoftwareIsAppleInternal; // @synthesize deviceSoftwareIsAppleInternal=_deviceSoftwareIsAppleInternal;
 @property (strong, nonatomic) NSString *deviceSoftwareVersion; // @synthesize deviceSoftwareVersion=_deviceSoftwareVersion;
 @property (nonatomic) unsigned long long globalConfigVersion; // @synthesize globalConfigVersion=_globalConfigVersion;
 @property (readonly, nonatomic) BOOL hasApplicationBundle;
@@ -85,20 +92,24 @@
 @property (readonly, nonatomic) BOOL hasDeviceLibraryName;
 @property (readonly, nonatomic) BOOL hasDeviceLibraryVersion;
 @property (nonatomic) BOOL hasDeviceProtocolVersion;
+@property (nonatomic) BOOL hasDeviceSoftwareIsAppleInternal;
 @property (readonly, nonatomic) BOOL hasDeviceSoftwareVersion;
 @property (nonatomic) BOOL hasGlobalConfigVersion;
 @property (nonatomic) BOOL hasIsolationLevel;
 @property (readonly, nonatomic) BOOL hasLocale;
 @property (readonly, nonatomic) BOOL hasMmcsProtocolVersion;
+@property (readonly, nonatomic) BOOL hasOperationGroupName;
+@property (nonatomic) BOOL hasOperationGroupQuantity;
 @property (nonatomic) BOOL hasTargetDatabase;
 @property (readonly, nonatomic) BOOL hasUserIDContainerID;
 @property (nonatomic) int isolationLevel; // @synthesize isolationLevel=_isolationLevel;
 @property (strong, nonatomic) FCCKPLocale *locale; // @synthesize locale=_locale;
 @property (strong, nonatomic) NSString *mmcsProtocolVersion; // @synthesize mmcsProtocolVersion=_mmcsProtocolVersion;
+@property (strong, nonatomic) NSString *operationGroupName; // @synthesize operationGroupName=_operationGroupName;
+@property (nonatomic) unsigned long long operationGroupQuantity; // @synthesize operationGroupQuantity=_operationGroupQuantity;
 @property (nonatomic) int targetDatabase; // @synthesize targetDatabase=_targetDatabase;
 @property (strong, nonatomic) NSString *userIDContainerID; // @synthesize userIDContainerID=_userIDContainerID;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

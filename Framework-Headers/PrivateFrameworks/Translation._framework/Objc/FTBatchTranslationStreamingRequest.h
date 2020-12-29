@@ -9,7 +9,7 @@
 #import <Translation/FLTBFBufferAccessor-Protocol.h>
 #import <Translation/NSCopying-Protocol.h>
 
-@class FTBatchTranslationRequest, NSData, NSMutableDictionary;
+@class FTBatchTranslationFeedbackRequest, FTBatchTranslationRequest, NSData, NSMutableDictionary;
 
 __attribute__((visibility("hidden")))
 @interface FTBatchTranslationStreamingRequest : NSObject <FLTBFBufferAccessor, NSCopying>
@@ -19,6 +19,7 @@ __attribute__((visibility("hidden")))
     const struct BatchTranslationStreamingRequest *_root;
 }
 
+@property (readonly, nonatomic) FTBatchTranslationFeedbackRequest *contentAsFTBatchTranslationFeedbackRequest;
 @property (readonly, nonatomic) FTBatchTranslationRequest *contentAsFTBatchTranslationRequest;
 @property (readonly, nonatomic) long long content_type;
 

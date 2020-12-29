@@ -27,7 +27,6 @@
 @property (readonly, nonatomic) GCControllerButtonInput *buttonMenu; // @synthesize buttonMenu=_buttonMenu;
 @property (readonly, nonatomic) GCControllerButtonInput *buttonX; // @synthesize buttonX=_button1;
 @property (readonly, weak, nonatomic) GCController *controller; // @dynamic controller;
-@property (nonatomic) long long deviceType;
 @property (readonly, nonatomic) GCControllerDirectionPad *dpad; // @synthesize dpad=_dpad;
 @property (nonatomic) BOOL reportsAbsoluteDpadValues; // @synthesize reportsAbsoluteDpadValues=_reportsAbsoluteDpadValues;
 @property (copy, nonatomic) CDUnknownBlockType valueChangedHandler; // @synthesize valueChangedHandler=_valueChangedHandler;

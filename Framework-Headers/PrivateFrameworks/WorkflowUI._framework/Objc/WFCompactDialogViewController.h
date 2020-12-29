@@ -33,6 +33,7 @@
 - (id)initWithRequest:(id)arg1;
 - (id)keyCommands;
 - (void)loadView;
+- (void)prepareForPresentationWithCompletionHandler:(CDUnknownBlockType)arg1;
 
 @end
 

@@ -22,7 +22,7 @@
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMDAWDLogEventObserver, HMDAccessoryBrowser, HMDAccountRegistry, HMDApplicationData, HMDAssistantGather, HMDBackingStore, HMDCameraRecordingResidentElector, HMDClientConnection, HMDCloudAccount, HMDCloudDataSyncStateFilter, HMDCloudManager, HMDCloudManagerDataSource, HMDCompanionManager, HMDCoreDuetLogEventObserver, HMDDevice, HMDDuetPredictionSubscriber, HMDFMFHandler, HMDHomeManagerObjectChangeHandler, HMDHomeManagerObjectLookup, HMDIdentityRegistry, HMDKeyTransferAgent, HMDLocation, HMDMemoryUtilizationTracker, HMDMessageDispatcher, HMDMessageFilterChain, HMDMobileAssetManager, HMDMultiUserStatusController, HMDNameValidator, HMDPairedSync, HMDPendingCloudSyncTransactions, HMDPowerManager, HMDProximityCardLauncher, HMDResidentMesh, HMDSoftwareUpdateManager, HMDSyncOperationManager, HMDTimeInformationMonitor, HMDUserCloudShareManager, HMDWatchManager, HMFActivity, HMFDumpCategory, HMFTimer, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSUUID;
+@class HMDAWDLogEventObserver, HMDAccessoryBrowser, HMDAccessoryFirmwareUpdateManager, HMDAccountRegistry, HMDApplicationData, HMDAssistantGather, HMDBackingStore, HMDCameraRecordingResidentElector, HMDClientConnection, HMDCloudAccount, HMDCloudDataSyncStateFilter, HMDCloudManager, HMDCloudManagerDataSource, HMDCompanionManager, HMDCoreDuetLogEventObserver, HMDDevice, HMDDuetPredictionSubscriber, HMDFMFHandler, HMDHomeManagerObjectChangeHandler, HMDHomeManagerObjectLookup, HMDIdentityRegistry, HMDKeyTransferAgent, HMDLocation, HMDMemoryUtilizationTracker, HMDMessageDispatcher, HMDMessageFilterChain, HMDMobileAssetManager, HMDMultiUserStatusController, HMDNameValidator, HMDPairedSync, HMDPendingCloudSyncTransactions, HMDPowerManager, HMDProximityCardLauncher, HMDResidentMesh, HMDSoftwareUpdateManager, HMDSyncOperationManager, HMDTimeInformationMonitor, HMDUserCloudShareManager, HMDWatchManager, HMFActivity, HMFDumpCategory, HMFTimer, NSArray, NSDate, NSMutableArray, NSMutableDictionary, NSMutableSet, NSObject, NSString, NSUUID;
 @protocol HMDAccessoryBrowserProtocol, OS_dispatch_queue, OS_dispatch_source;
 
 @interface HMDHomeManager : HMFObject <HMDCloudManagerDelegate, HMDDeviceSetupSessionDelegate, HMDDuetPredictionSubscriberDataSource, HMDLogEventDailyProvider, HMDMobileAssetManagerDelegate, HMDMultiUserStatusControllerDelegate, HMDSyncOperationManagerDataSource, HMFMessageReceiver, HMFLogging, HMDAccessoryBrowserManagerDelegate, HMFTimerDelegate, HAPFragmentationStreamDelegate, HMDPairedSyncDelegate, HMDUserManagementOperationDelegate, HMDBackingStoreObjectProtocol>
@@ -141,6 +141,7 @@
     HMDCloudAccount *_cloudAccount;
     unsigned long long _siriSyncNotificationTime;
     NSMutableArray *_siriSyncNotificationReasons;
+    HMDAccessoryFirmwareUpdateManager *_accessoryFirmwareUpdateManager;
     HMFTimer *_debounceRegenerateAssistantSyncDataTimer;
 }
 
@@ -148,6 +149,7 @@
 @property (readonly, nonatomic) id<HMDAccessoryBrowserProtocol> accessoryBrowser;
 @property (strong, nonatomic) HMDAccessoryBrowser *accessoryBrowserInternal; // @synthesize accessoryBrowserInternal=_accessoryBrowserInternal;
 @property (strong, nonatomic) NSObject<OS_dispatch_source> *accessoryFinderTimer; // @synthesize accessoryFinderTimer=_accessoryFinderTimer;
+@property (readonly, nonatomic) HMDAccessoryFirmwareUpdateManager *accessoryFirmwareUpdateManager; // @synthesize accessoryFirmwareUpdateManager=_accessoryFirmwareUpdateManager;
 @property (nonatomic) BOOL accountActive; // @synthesize accountActive=_accountActive;
 @property (readonly, nonatomic) HMDAccountRegistry *accountRegistry; // @synthesize accountRegistry=_accountRegistry;
 @property (nonatomic) BOOL accountStatusFailedDueToNetworkFailure; // @synthesize accountStatusFailedDueToNetworkFailure=_accountStatusFailedDueToNetworkFailure;

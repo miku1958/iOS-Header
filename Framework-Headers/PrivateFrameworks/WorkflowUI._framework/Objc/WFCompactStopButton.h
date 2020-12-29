@@ -23,6 +23,7 @@
 - (id)initWithFrame:(struct CGRect)arg1;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (void)popCompletedCheckmark;
+- (void)popCompletedCheckmarkWithHaptic:(BOOL)arg1;
 - (void)setHighlighted:(BOOL)arg1;
 - (void)transitionToCompleted:(BOOL)arg1 animated:(BOOL)arg2;
 

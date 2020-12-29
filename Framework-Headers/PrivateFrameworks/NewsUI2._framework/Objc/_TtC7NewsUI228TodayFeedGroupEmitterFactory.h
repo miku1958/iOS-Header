@@ -26,6 +26,9 @@
     MISSING_TYPE *paidAccessChecker;
     MISSING_TYPE *tagService;
     MISSING_TYPE *suggestionClusteringService;
+    MISSING_TYPE *localAreasManager;
+    MISSING_TYPE *locationManager;
+    MISSING_TYPE *newspaperTodayFeedGroupContext;
 }
 
 @end

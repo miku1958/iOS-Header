@@ -6,7 +6,7 @@
 
 #import <ProtocolBuffer/PBCodable.h>
 
-@class NSData, SISchemaCarPlayInvocationContext, SISchemaViewContainer;
+@class NSData, SISchemaCarPlayInvocationContext, SISchemaVerticalLayoutCardSectionInvocationContext, SISchemaViewContainer;
 
 @interface SISchemaInvocation : PBCodable
 {
@@ -14,22 +14,30 @@
     int _invocationSource;
     SISchemaViewContainer *_viewContainer;
     SISchemaCarPlayInvocationContext *_carPlayInvocationContext;
+    SISchemaVerticalLayoutCardSectionInvocationContext *_cardInvocationContext;
+    BOOL _isDeviceLocked;
     struct {
         unsigned int invocationAction:1;
         unsigned int invocationSource:1;
+        unsigned int isDeviceLocked:1;
     } _has;
     BOOL _hasViewContainer;
     BOOL _hasCarPlayInvocationContext;
+    BOOL _hasCardInvocationContext;
     unsigned long long _whichInvocationcontext;
 }
 
 @property (strong, nonatomic) SISchemaCarPlayInvocationContext *carPlayInvocationContext; // @synthesize carPlayInvocationContext=_carPlayInvocationContext;
+@property (strong, nonatomic) SISchemaVerticalLayoutCardSectionInvocationContext *cardInvocationContext; // @synthesize cardInvocationContext=_cardInvocationContext;
 @property (nonatomic) BOOL hasCarPlayInvocationContext; // @synthesize hasCarPlayInvocationContext=_hasCarPlayInvocationContext;
+@property (nonatomic) BOOL hasCardInvocationContext; // @synthesize hasCardInvocationContext=_hasCardInvocationContext;
 @property (nonatomic) BOOL hasInvocationAction;
 @property (nonatomic) BOOL hasInvocationSource;
+@property (nonatomic) BOOL hasIsDeviceLocked;
 @property (nonatomic) BOOL hasViewContainer; // @synthesize hasViewContainer=_hasViewContainer;
 @property (nonatomic) int invocationAction; // @synthesize invocationAction=_invocationAction;
 @property (nonatomic) int invocationSource; // @synthesize invocationSource=_invocationSource;
+@property (nonatomic) BOOL isDeviceLocked; // @synthesize isDeviceLocked=_isDeviceLocked;
 @property (readonly, nonatomic) NSData *jsonData;
 @property (strong, nonatomic) SISchemaViewContainer *viewContainer; // @synthesize viewContainer=_viewContainer;
 @property (readonly, nonatomic) unsigned long long whichInvocationcontext; // @synthesize whichInvocationcontext=_whichInvocationcontext;

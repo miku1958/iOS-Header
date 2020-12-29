@@ -11,6 +11,7 @@
 @interface _TtC7NewsUI234MagazineGridBlueprintLayoutBuilder : _TtCs12_SwiftObject
 {
     MISSING_TYPE *feedLayoutSolver;
+    MISSING_TYPE *sectionHeaderLayoutAttributesFactory;
 }
 
 @end

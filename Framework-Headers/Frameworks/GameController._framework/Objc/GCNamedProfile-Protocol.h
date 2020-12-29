@@ -23,7 +23,6 @@
 @optional
 - (void)appDidBecomeActive;
 - (void)appWillResignActive;
-- (BOOL)isBluetoothAndUSBMirrored;
 - (unsigned int)sampleRate;
 - (void)setButton:(GCControllerButtonInput *)arg1 pressed:(BOOL)arg2;
 - (void)setButton:(GCControllerButtonInput *)arg1 value:(double)arg2;

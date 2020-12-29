@@ -33,7 +33,7 @@
 - (id)_badgeForDomain:(long long)arg1 error:(out id *)arg2;
 - (CDUnknownBlockType)_objectCompletionOnClientQueue:(CDUnknownBlockType)arg1;
 - (void)_postBadgesDidUpdateNotification;
-- (void)_postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 url:(id)arg6 accessoryImageName:(id)arg7 completion:(CDUnknownBlockType)arg8;
+- (void)_postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 url:(id)arg6 accessoryImageName:(id)arg7 header:(id)arg8 completion:(CDUnknownBlockType)arg9;
 - (id)_resourceQueue_badgeForDomain:(long long)arg1;
 - (id)_resourceQueue_badgeForDomain:(long long)arg1 error:(out id *)arg2;
 - (id)_resourceQueue_coaleseDomainBadges;
@@ -51,7 +51,7 @@
 - (void)postCompanionUserNotificationOfType:(long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)postNotificationWithIdentifier:(id)arg1 content:(id)arg2 trigger:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)postNotificationWithRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
-- (void)postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 accessoryImageName:(id)arg6 completion:(CDUnknownBlockType)arg7;
+- (void)postNotificationWithTitle:(id)arg1 body:(id)arg2 categoryIdentifier:(id)arg3 subtitle:(id)arg4 domain:(long long)arg5 accessoryImageName:(id)arg6 header:(id)arg7 completion:(CDUnknownBlockType)arg8;
 - (void)receivedCompanionUserNotificationRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)registerWithUserNotificationCenter;
 - (void)removeDeliveredNotificationsWithIdentifiers:(id)arg1;

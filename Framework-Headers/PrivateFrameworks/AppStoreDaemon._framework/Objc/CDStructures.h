@@ -17,6 +17,11 @@ struct os_unfair_lock_s {
 #pragma mark Typedef'd Structures
 
 typedef struct {
+    id _field1;
+    id _field2;
+} CDStruct_a70f6672;
+
+typedef struct {
     unsigned long long _field1;
     id *_field2;
     unsigned long long *_field3;

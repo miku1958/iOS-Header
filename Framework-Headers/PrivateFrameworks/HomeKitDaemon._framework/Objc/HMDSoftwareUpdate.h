@@ -12,7 +12,7 @@
 #import <HomeKitDaemon/HMFObject-Protocol.h>
 #import <HomeKitDaemon/NSSecureCoding-Protocol.h>
 
-@class HMDAccessory, HMDSoftwareUpdateModel, HMFMessageDispatcher, HMFSoftwareVersion, HMSoftwareUpdateDocumentationMetadata, NSArray, NSObject, NSSet, NSString, NSUUID;
+@class HMDAccessory, HMDSoftwareUpdateModel, HMFMessageDispatcher, HMFSoftwareVersion, HMSoftwareUpdateDocumentationMetadata, NSArray, NSDate, NSObject, NSSet, NSString, NSUUID;
 @protocol HMFLocking, OS_dispatch_queue;
 
 @interface HMDSoftwareUpdate : HMFObject <HMFLogging, HMFObject, HMDBackingStoreObjectProtocol, HMDHomeMessageReceiver, NSSecureCoding>
@@ -21,6 +21,8 @@
     NSObject<OS_dispatch_queue> *_queue;
     long long _state;
     HMSoftwareUpdateDocumentationMetadata *_documentationMetadata;
+    NSDate *_releaseDate;
+    unsigned long long _needsAttentionReasons;
     NSUUID *_identifier;
     HMFSoftwareVersion *_version;
     unsigned long long _downloadSize;
@@ -43,8 +45,10 @@
 @property (readonly, copy) NSSet *messageReceiverChildren;
 @property (readonly, nonatomic) NSUUID *messageTargetUUID;
 @property (readonly, copy) HMDSoftwareUpdateModel *model;
+@property unsigned long long needsAttentionReasons; // @synthesize needsAttentionReasons=_needsAttentionReasons;
 @property (readonly, copy) NSString *privateDescription;
 @property (readonly, copy) NSString *propertyDescription;
+@property (readonly) NSDate *releaseDate; // @synthesize releaseDate=_releaseDate;
 @property (readonly, copy) NSString *shortDescription;
 @property (readonly) long long state; // @synthesize state=_state;
 @property (readonly) Class superclass;
@@ -57,6 +61,7 @@
 - (void).cxx_destruct;
 - (void)_handleDocumentationRequest:(id)arg1;
 - (void)_handleDocumentationStateNotification:(id)arg1;
+- (void)_handleNeedsAttentionReasonsRequest:(id)arg1;
 - (void)_handleUpdateDocumentationMetadata:(id)arg1;
 - (void)_handleUpdateState:(id)arg1;
 - (void)_updateState:(long long)arg1 message:(id)arg2 options:(id)arg3;
@@ -72,6 +77,7 @@
 - (id)messageDestination;
 - (void)registerForMessages;
 - (void)setDocumentationMetadata:(id)arg1;
+- (void)setReleaseDate:(id)arg1;
 - (void)setState:(long long)arg1;
 - (void)transactionObjectRemoved:(id)arg1 message:(id)arg2;
 - (void)transactionObjectUpdated:(id)arg1 newValues:(id)arg2 message:(id)arg3;

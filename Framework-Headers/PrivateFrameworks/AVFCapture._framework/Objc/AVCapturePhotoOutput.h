@@ -13,6 +13,8 @@
     AVCapturePhotoOutputInternal *_internal;
 }
 
+@property (nonatomic, getter=isAppleProRAWEnabled) BOOL appleProRAWEnabled;
+@property (readonly, nonatomic, getter=isAppleProRAWSupported) BOOL appleProRAWSupported;
 @property (readonly, nonatomic, getter=isAutoRedEyeReductionSupported) BOOL autoRedEyeReductionSupported;
 @property (readonly, nonatomic) NSArray *availableLivePhotoVideoCodecTypes;
 @property (readonly, nonatomic) NSArray *availablePhotoCodecTypes;
@@ -48,6 +50,10 @@
 + (id)JPEGPhotoDataRepresentationForJPEGSampleBuffer:(struct opaqueCMSampleBuffer *)arg1 previewPhotoSampleBuffer:(struct opaqueCMSampleBuffer *)arg2;
 + (struct __CFDictionary *)_copyAttachmentsAndPropagateFaceRegionsToExifAuxDictionaryForSampleBuffer:(struct opaqueCMSampleBuffer *)arg1;
 + (void)initialize;
++ (BOOL)isAppleProRAWPixelFormat:(unsigned int)arg1;
++ (BOOL)isBayerRAWPixelFormat:(unsigned int)arg1;
++ (BOOL)isBayerRawPixelFormat:(unsigned int)arg1;
++ (BOOL)isDemosaicedRawPixelFormat:(unsigned int)arg1;
 + (unsigned long long)maxLivePhotoDataSize;
 + (CDStruct_79c71658)maxLivePhotoMovieDimensions;
 + (id)new;
@@ -80,6 +86,7 @@
 - (void)_handleWillBeginCaptureNotificationWithPayload:(id)arg1 forRequest:(id)arg2;
 - (void)_handleWillCaptureStillImageNotificationWithPayload:(id)arg1 forRequest:(id)arg2;
 - (void)_incrementObserverCountForKeyPath:(id)arg1;
+- (unsigned int)_internalRawFormatFromRawFormat:(unsigned int)arg1;
 - (id)_movieRequestForUniqueID:(long long)arg1;
 - (id)_photoRequestForUniqueID:(long long)arg1;
 - (void)_resetLivePhotoCaptureSuspended;
@@ -90,6 +97,7 @@
 - (void)_setIsFlashScene:(BOOL)arg1 firingKVO:(BOOL)arg2;
 - (void)_setIsHDRScene:(BOOL)arg1 firingKVO:(BOOL)arg2;
 - (void)_setIsStillImageStabilizationScene:(BOOL)arg1 firingKVO:(BOOL)arg2;
+- (void)_updateAppleProRAWSupportedForDevice:(id)arg1;
 - (void)_updateAutoRedReductionSupportedForSourceDevice:(id)arg1;
 - (void)_updateAvailableLivePhotoVideoCodecTypesForSourceDevice:(id)arg1;
 - (void)_updateAvailablePhotoCodecTypesForSourceDevice:(id)arg1;
@@ -146,6 +154,8 @@
 - (void)initiateCaptureWithSettings:(id)arg1;
 - (BOOL)isDeferredProcessingEnabled;
 - (BOOL)isDeferredProcessingSupported;
+- (BOOL)isDemosaicedRawEnabled;
+- (BOOL)isDemosaicedRawSupported;
 - (BOOL)isDepthDataDeliveryEnabled;
 - (BOOL)isDepthDataDeliverySupported;
 - (BOOL)isDigitalFlashCaptureEnabled;
@@ -176,6 +186,7 @@
 - (void)removeObserver:(id)arg1 forKeyPath:(id)arg2;
 - (void)safelyHandleServerConnectionDeathForFigCaptureSession:(struct OpaqueFigCaptureSession *)arg1;
 - (void)setDeferredProcessingEnabled:(BOOL)arg1;
+- (void)setDemosaicedRawEnabled:(BOOL)arg1;
 - (void)setDepthDataDeliveryEnabled:(BOOL)arg1;
 - (void)setDigitalFlashCaptureEnabled:(BOOL)arg1;
 - (void)setEnabledSemanticSegmentationMatteTypes:(id)arg1;

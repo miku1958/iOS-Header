@@ -140,6 +140,7 @@
 - (id)_windowScene;
 - (void)addVisibilityObserver:(id)arg1;
 - (BOOL)animationsEnabled;
+- (void)cleanDeactivation;
 - (void)clearAnimationStyleForUserDrivenPresentation;
 - (void)createAutomaticKeyboardIfNeeded;
 - (void)dealloc;

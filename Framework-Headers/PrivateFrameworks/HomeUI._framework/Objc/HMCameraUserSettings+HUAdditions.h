@@ -10,5 +10,7 @@
 - (id)hu_currentAccessModeDescription;
 - (id)hu_indicatorColorForCurrentAccessMode;
 - (id)hu_indicatorColorForLiveStreaming;
+- (id)hu_indicatorImageNameForCurrentAccessMode;
+- (id)hu_indicatorImageNameForLiveStreaming;
 @end
 

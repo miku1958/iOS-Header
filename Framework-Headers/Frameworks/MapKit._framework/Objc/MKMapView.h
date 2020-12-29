@@ -396,6 +396,7 @@
 - (id)_commonInitFromIB:(BOOL)arg1 gestureRecognizerHostView:(id)arg2 locationManager:(id)arg3 showsAttribution:(BOOL)arg4 showsAppleLogo:(BOOL)arg5;
 - (id)_commonVisibilityAnimation:(BOOL)arg1;
 - (void)_configureGestureRecognizers:(id)arg1;
+- (long long)_controlsUserInterfaceStyleOverride;
 - (struct CGPoint)_convertCoordinate:(struct CLLocationCoordinate2D)arg1 toPointToView:(id)arg2;
 - (struct CGPoint)_convertMapPoint:(CDStruct_c3b9c2ee)arg1 toPointToView:(id)arg2;
 - (struct CGRect)_convertMapRect:(CDStruct_02837cd9)arg1 toRectToView:(id)arg2;

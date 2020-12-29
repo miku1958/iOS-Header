@@ -61,12 +61,12 @@ __attribute__((visibility("hidden")))
 - (void)_postNotificationForNameIfFullyInitialized:(id)arg1 userInfo:(id)arg2;
 - (void)_removeVolumeHUDAssertionsForClientID:(id)arg1;
 - (void)_unobserveSystemController;
-- (id)_windowSceneIdentifiersWithVolumeHUDAssertions;
 - (void)beginChangingVolumeForWindowSceneSessionID:(id)arg1;
 - (void)dealloc;
 - (void)endChangingVolume;
 - (id)init;
 - (void)setClientWithIdentifier:(id)arg1 prefersSystemVolumeHUDHidden:(BOOL)arg2 forWindowSceneSessionWithIdentifier:(id)arg3;
+- (void)setSystemVolumeHUDEnabled:(BOOL)arg1 forSceneVolumeHudAssertion:(id)arg2;
 - (void)setSystemVolumeHUDEnabled:(BOOL)arg1 forWindowSceneSessionIdentifier:(id)arg2;
 - (void)setTargetVolume:(float)arg1;
 

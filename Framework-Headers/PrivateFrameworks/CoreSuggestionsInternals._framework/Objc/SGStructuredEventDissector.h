@@ -27,6 +27,7 @@
 + (id)jsMessageLogsDictionaryForMailMessage:(id)arg1;
 + (id)labelsWithMatchingStringsForMailMessage:(id)arg1;
 + (void)logFailedExtractionWithClassification:(id)arg1 missingEntities:(id)arg2 mlSummary:(id)arg3 shadowExtraction:(BOOL)arg4 timingProcessingInMs:(unsigned long long)arg5 forMessage:(id)arg6 parentEntity:(id)arg7;
++ (void)logFallbackLoggingForSchema:(id)arg1 parentEntity:(id)arg2 timingProcessingInMs:(unsigned long long)arg3 eventClassification:(id)arg4 mailMessage:(id)arg5;
 + (void)logShadowLoggingForSchema:(id)arg1 parentEntity:(id)arg2 timingProcessingInMs:(unsigned long long)arg3 eventClassification:(id)arg4 mailMessage:(id)arg5;
 + (id)nilEntities:(id)arg1;
 + (id)outputLogsForClassification:(id)arg1;

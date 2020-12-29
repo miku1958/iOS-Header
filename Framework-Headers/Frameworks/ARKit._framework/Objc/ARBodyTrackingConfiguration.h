@@ -13,6 +13,7 @@
     BOOL _wantsHDREnvironmentTextures;
     BOOL _automaticImageScaleEstimationEnabled;
     BOOL _automaticSkeletonScaleEstimationEnabled;
+    BOOL _appClipCodeTrackingEnabled;
     ARWorldMap *_initialWorldMap;
     long long _environmentTexturing;
     unsigned long long _planeDetection;
@@ -20,6 +21,7 @@
     long long _maximumNumberOfTrackedImages;
 }
 
+@property (nonatomic) BOOL appClipCodeTrackingEnabled; // @synthesize appClipCodeTrackingEnabled=_appClipCodeTrackingEnabled;
 @property (nonatomic, getter=isAutoFocusEnabled) BOOL autoFocusEnabled; // @dynamic autoFocusEnabled;
 @property (nonatomic) BOOL automaticImageScaleEstimationEnabled; // @synthesize automaticImageScaleEstimationEnabled=_automaticImageScaleEstimationEnabled;
 @property (nonatomic) BOOL automaticSkeletonScaleEstimationEnabled; // @synthesize automaticSkeletonScaleEstimationEnabled=_automaticSkeletonScaleEstimationEnabled;

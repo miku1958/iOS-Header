@@ -27,6 +27,7 @@
 - (BOOL)isCombinedFootprint;
 - (BOOL)isDefault;
 - (BOOL)isFallbackDefault;
+- (BOOL)isSystemVoice;
 
 @end
 

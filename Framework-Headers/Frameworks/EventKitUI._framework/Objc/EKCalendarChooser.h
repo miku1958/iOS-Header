@@ -147,6 +147,7 @@
 - (long long)_tableSectionRow:(long long)arg1 toCalendarIndexInGroup:(id)arg2;
 - (long long)_tableSectionRowToDelegateSourceIndex:(long long)arg1;
 - (BOOL)_tableShouldDisplayAccountErrorActionCellForGroup:(id)arg1;
+- (id)_toggleButtonTitleForGroup:(id)arg1;
 - (void)_updateCurrentKnownCalendarIds;
 - (void)_updateDelegateSources;
 - (void)_updateShowDelegateCalendarsCell;

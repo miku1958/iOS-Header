@@ -20,6 +20,7 @@
 @property (readonly) Class superclass;
 
 - (void)settingsViewControllerDidFinish:(id)arg1;
+- (BOOL)settingsViewControllerWantsToKnowIfNewShortcutFlow:(id)arg1;
 - (void)settingsViewControllerWantsWorkflowReload:(id)arg1;
 
 @end

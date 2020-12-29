@@ -60,7 +60,7 @@
 - (id)_speechVocalizerPlaybackDataProviderWithVocalizer:(id)arg1 playback:(struct __TTSPlayback *)arg2 inContext:(void *)arg3;
 - (void)_startSpeechThread;
 - (void)_terminateThread;
-- (id)_ttSSpeechServerCopyVoiceNamesForLanguage:(id)arg1 voiceType:(long long)arg2 queryingMobileAssets:(BOOL)arg3;
+- (id)_ttSSpeechServerCopyVoiceInfoForLanguage:(id)arg1 voiceType:(long long)arg2 queryingMobileAssets:(BOOL)arg3;
 - (void)_ttsLogSpeechForServerRequest:(id)arg1;
 - (void)_uninitializeSpeech:(CDStruct_24e90a37 *)arg1;
 - (unsigned int)_vocalizerMessageBufferDone:(struct _VE_HSAFE)arg1 context:(CDStruct_b823fdf7 *)arg2 outData:(CDStruct_ef07e5a0 *)arg3;

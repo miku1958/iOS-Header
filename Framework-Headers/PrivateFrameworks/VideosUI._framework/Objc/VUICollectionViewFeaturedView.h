@@ -6,16 +6,14 @@
 
 #import <UIKit/UIView.h>
 
-@class _TVImageView;
-
 __attribute__((visibility("hidden")))
 @interface VUICollectionViewFeaturedView : UIView
 {
-    _TVImageView *_imageView;
+    UIView *_imageView;
     UIView *_overlayView;
 }
 
-@property (strong, nonatomic) _TVImageView *imageView; // @synthesize imageView=_imageView;
+@property (strong, nonatomic) UIView *imageView; // @synthesize imageView=_imageView;
 @property (strong, nonatomic) UIView *overlayView; // @synthesize overlayView=_overlayView;
 
 - (void).cxx_destruct;

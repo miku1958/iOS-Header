@@ -43,6 +43,7 @@
     unsigned long long _autoPlayedVideosCount;
     NSDate *_initialPlaybackStartDate;
     NSNumber *_postPlayImpressionTime;
+    NSDictionary *_skipButtonImpressionMetrics;
     VUIVideoAdvisoryLogoImageDownloader *_logoImageDownloader;
     UIImage *_ratingImage;
     VUIVideoAdvisoryView *_ratingView;
@@ -90,6 +91,7 @@
 @property (nonatomic) BOOL shouldDisplayProductPlacementWhenVideoBoundsIsAvailable; // @synthesize shouldDisplayProductPlacementWhenVideoBoundsIsAvailable=_shouldDisplayProductPlacementWhenVideoBoundsIsAvailable;
 @property (nonatomic) BOOL shouldDisplayTVRatingWhenVideoBoundsIsAvailable; // @synthesize shouldDisplayTVRatingWhenVideoBoundsIsAvailable=_shouldDisplayTVRatingWhenVideoBoundsIsAvailable;
 @property (strong, nonatomic) UIButton *skipButton; // @synthesize skipButton=_skipButton;
+@property (strong, nonatomic) NSDictionary *skipButtonImpressionMetrics; // @synthesize skipButtonImpressionMetrics=_skipButtonImpressionMetrics;
 @property (strong, nonatomic) TVPStateMachine *stateMachine; // @synthesize stateMachine=_stateMachine;
 @property (readonly) Class superclass;
 

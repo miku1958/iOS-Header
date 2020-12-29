@@ -8,14 +8,14 @@
 
 #import <NewsUI/NUFontRegistrator-Protocol.h>
 
-@class FCAsyncOnceOperation, FCFlintManifest, FCFlintResourceManager, NSMutableArray, NSString;
+@class FCANFContent, FCAsyncOnceOperation, FCFlintResourceManager, NSMutableArray, NSString;
 @protocol NUFontRegistration;
 
 @interface NUANFFontLoader : NSObject <NUFontRegistrator>
 {
     BOOL _hasLoaded;
     long long _relativePriority;
-    FCFlintManifest *_flintManifest;
+    FCANFContent *_anfContent;
     FCFlintResourceManager *_flintResourceManager;
     NSMutableArray *_fontResourcesToRegister;
     NSMutableArray *_fontResourcesRegistered;
@@ -23,10 +23,10 @@
     id<NUFontRegistration> _fontRegistration;
 }
 
+@property (readonly, nonatomic) FCANFContent *anfContent; // @synthesize anfContent=_anfContent;
 @property (readonly, nonatomic) FCAsyncOnceOperation *asyncOnceOperation; // @synthesize asyncOnceOperation=_asyncOnceOperation;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) FCFlintManifest *flintManifest; // @synthesize flintManifest=_flintManifest;
 @property (readonly, nonatomic) FCFlintResourceManager *flintResourceManager; // @synthesize flintResourceManager=_flintResourceManager;
 @property (readonly, nonatomic) id<NUFontRegistration> fontRegistration; // @synthesize fontRegistration=_fontRegistration;
 @property (readonly, nonatomic) NSMutableArray *fontResourcesRegistered; // @synthesize fontResourcesRegistered=_fontResourcesRegistered;
@@ -38,7 +38,7 @@
 
 - (void).cxx_destruct;
 - (id)asyncLoadFontsOnceWithCompletion:(CDUnknownBlockType)arg1;
-- (id)initWithFlintManifest:(id)arg1 flintResourceManager:(id)arg2 fontRegistration:(id)arg3;
+- (id)initWithANFContent:(id)arg1 flintResourceManager:(id)arg2 fontRegistration:(id)arg3;
 - (id)loadFontsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)registerFontsWithCompletion:(CDUnknownBlockType)arg1;
 - (void)unregisterFontsWithCompletion:(CDUnknownBlockType)arg1;

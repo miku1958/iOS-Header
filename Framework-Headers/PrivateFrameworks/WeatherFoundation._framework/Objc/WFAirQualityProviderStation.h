@@ -18,6 +18,7 @@
 @property (readonly, nonatomic) CLLocation *location; // @synthesize location=_location;
 
 - (void).cxx_destruct;
+- (id)description;
 - (id)initWithLocation:(id)arg1 lastReadDate:(id)arg2;
 
 @end

@@ -32,6 +32,8 @@
 @property (readonly, nonatomic) unsigned char status; // @synthesize status=_status;
 @property (readonly) Class superclass;
 
++ (id)TASPAdvertisementDeviceTypeToString:(unsigned long long)arg1;
++ (id)TASPAdvertisementTypeToString:(unsigned long long)arg1;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
@@ -39,6 +41,7 @@
 - (void)encodeWithCoder:(id)arg1;
 - (void)encodeWithOSLogCoder:(id)arg1 options:(unsigned long long)arg2 maxLength:(unsigned long long)arg3;
 - (id)getDate;
+- (unsigned long long)getDeviceType;
 - (unsigned long long)getType;
 - (id)initWithAddress:(id)arg1 advertisementData:(id)arg2 status:(unsigned char)arg3 reserved:(id)arg4 rssi:(long long)arg5 scanDate:(id)arg6;
 - (id)initWithCoder:(id)arg1;

@@ -43,6 +43,7 @@
 - (void)_setNeedsIndexing:(BOOL)arg1;
 - (BOOL)_shouldBypassForTesting;
 - (BOOL)_shouldIndexNextBatchForBatchSize:(unsigned long long)arg1;
+- (id)_spotlightIndexingQueue;
 - (void)_updateItem:(id)arg1 withGeoMapItem:(id)arg2;
 - (void)clearMessageGUIDFromScrutiny:(id)arg1;
 - (void)dealloc;

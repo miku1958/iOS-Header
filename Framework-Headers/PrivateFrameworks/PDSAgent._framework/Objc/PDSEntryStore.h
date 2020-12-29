@@ -21,6 +21,7 @@
 - (BOOL)_permitTransitionFromState:(unsigned char)arg1 toState:(unsigned char)arg2;
 - (id)activeUsers;
 - (id)activeUsersWithClientID:(id)arg1;
+- (BOOL)deleteEntriesForUser:(id)arg1 withState:(unsigned char)arg2 withError:(id *)arg3;
 - (BOOL)deleteEntry:(id)arg1 withError:(id *)arg2;
 - (id)entries;
 - (id)entriesForUser:(id)arg1;

@@ -8,26 +8,32 @@
 
 #import <MetricsKit/MTIDService-Protocol.h>
 
-@class MTIDCache, MTInterprocessChangeNotifier, MTPromise, NSString;
+@class MTIDCache, MTInterprocessChangeNotifier, MTPromise, NSMutableDictionary, NSNumber, NSString;
+@protocol MTIDSecretStore;
 
 @interface MTStandardIDService : NSObject <MTIDService>
 {
+    NSNumber *_dsId;
     MTPromise *_configPromise;
     MTIDCache *_cache;
     MTInterprocessChangeNotifier *_accountChanged;
-    MTInterprocessChangeNotifier *_recordSynced;
+    id<MTIDSecretStore> _secretStore;
+    NSNumber *_defaultDSID;
+    NSMutableDictionary *_associatedObjects;
 }
 
 @property (strong, nonatomic) MTInterprocessChangeNotifier *accountChanged; // @synthesize accountChanged=_accountChanged;
+@property (strong, nonatomic) NSMutableDictionary *associatedObjects; // @synthesize associatedObjects=_associatedObjects;
 @property (strong, nonatomic) MTIDCache *cache; // @synthesize cache=_cache;
 @property (strong, nonatomic) MTPromise *configPromise; // @synthesize configPromise=_configPromise;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) NSNumber *defaultDSID; // @synthesize defaultDSID=_defaultDSID;
 @property (readonly, copy) NSString *description;
+@property (strong, nonatomic) NSNumber *dsId; // @synthesize dsId=_dsId;
 @property (readonly) unsigned long long hash;
-@property (strong, nonatomic) MTInterprocessChangeNotifier *recordSynced; // @synthesize recordSynced=_recordSynced;
+@property (strong, nonatomic) id<MTIDSecretStore> secretStore; // @synthesize secretStore=_secretStore;
 @property (readonly) Class superclass;
 
-+ (id)dateFilledOptions:(id)arg1;
 + (id)localCachePath;
 + (void)registerInterprocessChangeNotifier:(id)arg1;
 + (void)setLocalCachePath:(id)arg1;
@@ -37,7 +43,6 @@
 - (id)IDFieldsForTopic:(id)arg1 options:(id)arg2;
 - (void)IDFieldsForTopic:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (id)IDForTopic:(id)arg1 type:(long long)arg2 options:(id)arg3;
-- (id)IDInfoForNamespace:(id)arg1 options:(id)arg2;
 - (id)IDInfoForNamespace:(id)arg1 options:(id)arg2 fromConfig:(id)arg3;
 - (id)IDsForNamespaces:(id)arg1 options:(id)arg2 fromConfig:(id)arg3;
 - (void)_clearLocalData;
@@ -46,7 +51,8 @@
 - (void)_getSecrets;
 - (void)_resetIDs;
 - (void)dealloc;
-- (id)generateAndCacheIDInfo:(id)arg1 secret:(id)arg2 correlationIDs:(id)arg3 date:(id)arg4;
+- (id)filledOptions:(id)arg1;
+- (id)generateIDInfo:(id)arg1 secret:(id)arg2 dsId:(id)arg3 correlationIDs:(id)arg4;
 - (void)handleAccountNotification;
 - (void)handleApplicationStateChange:(id)arg1;
 - (void)handleRecordNotification;
@@ -58,10 +64,8 @@
 - (void)maybeSubscribeToDarwinNotifications;
 - (void)performMaintenanceWithCompletion:(CDUnknownBlockType)arg1;
 - (void)queryIDForTopic:(id)arg1 type:(long long)arg2 options:(id)arg3 completion:(CDUnknownBlockType)arg4;
-- (id)resetIDForNamespace:(id)arg1 options:(id)arg2;
 - (id)resetIDForTopics:(id)arg1 options:(id)arg2;
 - (void)resetIDForTopics:(id)arg1 options:(id)arg2 completion:(CDUnknownBlockType)arg3;
-- (id)secretStore;
 - (void)setConfig:(id)arg1;
 
 @end

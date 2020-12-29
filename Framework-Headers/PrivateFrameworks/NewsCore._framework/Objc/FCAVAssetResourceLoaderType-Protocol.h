@@ -4,10 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class AVURLAsset;
+@class AVURLAsset, NSURL;
 
 @protocol FCAVAssetResourceLoaderType
-- (void)prefetchMasterPlaylistForAsset:(AVURLAsset *)arg1 completionHandler:(void (^)(FCHLSPlaylist *, id, NSError *))arg2;
+- (void)prefetchMasterPlaylistForAssetURL:(NSURL *)arg1 completionHandler:(void (^)(FCHLSPlaylist *, id, NSError *))arg2;
 - (void)registerAVURLAssetForAutomaticResourceManagement:(AVURLAsset *)arg1;
 @end
 

@@ -7,6 +7,7 @@
 #import <objc/NSObject.h>
 
 @interface NSObject (BLTNSNullRemoval)
+- (unsigned long long)blt_sizeof;
 - (id)objectSentinelNull;
 - (id)objectWithNSNulls:(id)arg1;
 - (id)objectWithNoNSNulls:(id *)arg1;

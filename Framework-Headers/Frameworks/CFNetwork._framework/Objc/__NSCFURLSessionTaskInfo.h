@@ -43,6 +43,7 @@
     long long _countOfBytesClientExpectsToSend;
     long long _countOfBytesClientExpectsToReceive;
     NSError *_error;
+    NSError *_retryError;
     NSURL *_fileURL;
     NSURL *_downloadFileURL;
     NSString *_bundleID;
@@ -133,6 +134,7 @@
 @property (copy) NSURLResponse *response; // @synthesize response=_response;
 @property BOOL resumedAndWaitingForEarliestBeginDate; // @synthesize resumedAndWaitingForEarliestBeginDate=_resumedAndWaitingForEarliestBeginDate;
 @property unsigned long long retryCount; // @synthesize retryCount=_retryCount;
+@property (copy) NSError *retryError; // @synthesize retryError=_retryError;
 @property (copy) NSString *sessionID; // @synthesize sessionID=_sessionID;
 @property BOOL shouldCancelOnDisconnect; // @synthesize shouldCancelOnDisconnect=_shouldCancelOnDisconnect;
 @property BOOL startedUserInitiated; // @synthesize startedUserInitiated=_startedUserInitiated;

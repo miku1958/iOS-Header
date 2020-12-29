@@ -17,6 +17,8 @@
 + (id)atttributedHeadlineForEvents:(id)arg1;
 + (id)descriptionForEvents:(id)arg1 includeLearnMore:(BOOL)arg2;
 + (id)headlineForEvents:(id)arg1;
++ (id)headlineForEvents:(id)arg1 shouldUppercase:(BOOL)arg2;
++ (id)importantHeadlineForEvents:(id)arg1;
 
 @end
 

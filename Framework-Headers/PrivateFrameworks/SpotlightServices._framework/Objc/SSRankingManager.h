@@ -59,6 +59,7 @@
 - (double)roundedValueForScore:(double)arg1;
 - (BOOL)sectionContainsOnlyStaleApps:(id)arg1;
 - (BOOL)sectionsContainsOnlyOneAppSection:(id)arg1;
+- (BOOL)sectionsContainsShortcutResult:(id)arg1 shortcutResult:(id)arg2;
 - (void)sendTTRLogsWithSections:(id)arg1 searchString:(id)arg2 queryKind:(unsigned long long)arg3 isCommittedSearch:(BOOL)arg4 parsecCameLaterThanSRT:(BOOL)arg5;
 - (void)updateServerScoresUsingBlockOrder:(id)arg1 bundleFeatures:(id)arg2;
 - (void)updateWithNewRankingInfo:(id)arg1;

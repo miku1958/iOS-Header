@@ -69,6 +69,8 @@ struct StreamRecordingData {
     id _field15;
     id _field16;
     CDStruct_1b6d18a9 _field17;
+    unsigned long long _field18;
+    id _field19;
 };
 
 struct __tree_end_node<std::__1::__tree_node_base<void *>*> {

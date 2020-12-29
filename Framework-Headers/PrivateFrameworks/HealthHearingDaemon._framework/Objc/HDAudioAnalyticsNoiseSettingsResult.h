@@ -9,16 +9,16 @@
 __attribute__((visibility("hidden")))
 @interface HDAudioAnalyticsNoiseSettingsResult : NSObject
 {
-    BOOL _hasEligibleWatchPaired;
+    BOOL _hasWatchPairedWithNoiseApp;
     BOOL _hasNoiseEnabled;
     BOOL _hasNoiseNotificationsEnabled;
 }
 
-@property (nonatomic) BOOL hasEligibleWatchPaired; // @synthesize hasEligibleWatchPaired=_hasEligibleWatchPaired;
 @property (nonatomic) BOOL hasNoiseEnabled; // @synthesize hasNoiseEnabled=_hasNoiseEnabled;
 @property (nonatomic) BOOL hasNoiseNotificationsEnabled; // @synthesize hasNoiseNotificationsEnabled=_hasNoiseNotificationsEnabled;
+@property (nonatomic) BOOL hasWatchPairedWithNoiseApp; // @synthesize hasWatchPairedWithNoiseApp=_hasWatchPairedWithNoiseApp;
 
-- (id)initWithEligibleWatchPaired:(BOOL)arg1 hasNoiseEnabled:(BOOL)arg2 hasNoiseNotificationsEnabled:(BOOL)arg3;
+- (id)initWithWatchPairedWithNoiseApp:(BOOL)arg1 hasNoiseEnabled:(BOOL)arg2 hasNoiseNotificationsEnabled:(BOOL)arg3;
 
 @end
 

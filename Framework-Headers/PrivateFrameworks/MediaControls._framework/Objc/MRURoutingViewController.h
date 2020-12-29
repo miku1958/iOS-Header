@@ -13,13 +13,14 @@
 #import <MediaControls/UIGestureRecognizerDelegate-Protocol.h>
 #import <MediaControls/UITableViewDataSource-Protocol.h>
 #import <MediaControls/UITableViewDelegate-Protocol.h>
+#import <MediaControls/UITableViewDelegatePrivate-Protocol.h>
 #import <MediaControls/_MPStateDumpPropertyListTransformable-Protocol.h>
 
 @class CARSessionStatus, MPAVEndpointRoute, MPAVRoute, MPAVRoutingController, MPSectionedCollection, MPVolumeGroupSliderCoordinator, MPWeakTimer, MRURoutingView, MRURoutingViewControllerUpdate, MRUVisualStylingProvider, NSArray, NSDictionary, NSMapTable, NSMutableSet, NSNumberFormatter, NSString, NSTimer;
 @protocol MRURoutingViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
-@interface MRURoutingViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, MPAVRoutingControllerDelegate, MRURoutingTableViewCellDelegate, MRUEndpointMetadataControllerObserver, CARSessionObserving, UIGestureRecognizerDelegate, _MPStateDumpPropertyListTransformable>
+@interface MRURoutingViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITableViewDelegatePrivate, MPAVRoutingControllerDelegate, MRURoutingTableViewCellDelegate, MRUEndpointMetadataControllerObserver, CARSessionObserving, UIGestureRecognizerDelegate, _MPStateDumpPropertyListTransformable>
 {
     MRURoutingViewControllerUpdate *_pendingUpdate;
     MRURoutingViewControllerUpdate *_optimisticUpdate;
@@ -147,6 +148,7 @@ __attribute__((visibility("hidden")))
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
 - (double)tableView:(id)arg1 heightForHeaderInSection:(long long)arg2;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldHaveFullLengthBottomSeparatorForSection:(long long)arg2;
 - (id)tableView:(id)arg1 viewForHeaderInSection:(long long)arg2;
 - (void)updateCell:(id)arg1 forIndexPath:(id)arg2;
 - (void)updateExpandedGroups;

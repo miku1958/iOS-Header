@@ -13,6 +13,9 @@
 
 @interface HKRPOnboardingSettingsViewController : UIViewController <BPSMiniFlowStepController>
 {
+    BOOL _didLayoutSubviews;
+    BOOL _isInitialInsetsSet;
+    BOOL _isVisible;
     id<BPSSetupMiniFlowControllerDelegate> miniFlowDelegate;
     long long _style;
     HKRPOxygenSaturationSettings *_settings;
@@ -28,12 +31,17 @@
     UIVisualEffectView *_blurView;
     UIScrollView *_scrollView;
     UIView *_contentView;
+    struct UIEdgeInsets _initialInsets;
 }
 
 @property (strong, nonatomic) UIVisualEffectView *blurView; // @synthesize blurView=_blurView;
 @property (strong, nonatomic) UIView *contentView; // @synthesize contentView=_contentView;
 @property (strong, nonatomic) UILabel *descriptionLabel; // @synthesize descriptionLabel=_descriptionLabel;
+@property (nonatomic) BOOL didLayoutSubviews; // @synthesize didLayoutSubviews=_didLayoutSubviews;
 @property (strong, nonatomic) UIView *footerView; // @synthesize footerView=_footerView;
+@property (nonatomic) struct UIEdgeInsets initialInsets; // @synthesize initialInsets=_initialInsets;
+@property (nonatomic) BOOL isInitialInsetsSet; // @synthesize isInitialInsetsSet=_isInitialInsetsSet;
+@property (nonatomic) BOOL isVisible; // @synthesize isVisible=_isVisible;
 @property (strong, nonatomic) UILabel *locationLabel; // @synthesize locationLabel=_locationLabel;
 @property (weak, nonatomic) id<BPSSetupMiniFlowControllerDelegate> miniFlowDelegate; // @synthesize miniFlowDelegate;
 @property (weak, nonatomic) id<HKRPOnboardingDelegate> onboardingDelegate; // @synthesize onboardingDelegate=_onboardingDelegate;
@@ -55,16 +63,21 @@
 - (void)_onboardWithCompletion:(CDUnknownBlockType)arg1;
 - (void)_presentOnboardingError:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)backgroundColor;
+- (void)createUI;
 - (id)initWithStyle:(long long)arg1 settings:(id)arg2 onboardingManager:(id)arg3 onboardingDelegate:(id)arg4;
 - (id)labelColor;
+- (void)layoutUI;
 - (id)pillBackgroundColor;
 - (id)pillBackgroundSelectedColor;
 - (id)pillTitleColor;
 - (id)pillTitleSelectedColor;
+- (void)setInsetsIfNeeded;
 - (void)setupLaterButtonPressed:(id)arg1;
 - (void)suggestedChoiceButtonPressed:(id)arg1;
-- (void)viewDidLayoutSubviews;
-- (void)viewDidLoad;
+- (void)traitCollectionDidChange:(id)arg1;
+- (void)viewDidAppear:(BOOL)arg1;
+- (void)viewDidDisappear:(BOOL)arg1;
+- (void)viewSafeAreaInsetsDidChange;
 
 @end
 

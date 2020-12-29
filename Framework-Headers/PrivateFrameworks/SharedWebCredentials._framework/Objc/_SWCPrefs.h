@@ -24,6 +24,7 @@
 - (id)_stringForKey:(id)arg1 defaultValue:(id)arg2;
 - (unsigned long long)_unsignedIntegerForKey:(id)arg1 defaultValue:(unsigned long long)arg2;
 - (unsigned long long)_unsignedIntegerForKey:(id)arg1 defaultValue:(unsigned long long)arg2 minimumValue:(unsigned long long)arg3 maximumValue:(unsigned long long)arg4;
+- (id)containerURLReturningError:(id *)arg1;
 - (id)descriptionOfAllPrefs;
 - (double)retryIntervalAfterSuccess:(BOOL)arg1;
 

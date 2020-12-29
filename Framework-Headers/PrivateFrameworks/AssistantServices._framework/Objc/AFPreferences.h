@@ -91,12 +91,14 @@
 - (double)handsOffIdleTimeInterval;
 - (double)handsOnIdleTimeInterval;
 - (id)horsemanSupplementalLanguageDictionary;
+- (BOOL)ignoreMyriadPlatformBias;
 - (BOOL)ignoreServerManualEndpointingThreshold;
 - (id)inProgressOutputVoice;
 - (BOOL)includeProbePacketCaptureForABC;
 - (id)init;
 - (unsigned long long)internalUserClassification;
 - (BOOL)isCurrentLocaleNativelySupported;
+- (BOOL)isDictationHIPAACompliant;
 - (BOOL)isDictationOnDeviceSamplingDisabled;
 - (BOOL)isLanguageDetectorEnabled;
 - (BOOL)isLanguageDetectorEnabledByServer;
@@ -182,6 +184,7 @@
 - (void)setHandsOffIdleTimeInterval:(double)arg1;
 - (void)setHandsOnIdleTimeInterval:(double)arg1;
 - (void)setIgnoreMyriadAdjustedBoost:(BOOL)arg1;
+- (void)setIgnoreMyriadPlatformBias:(BOOL)arg1;
 - (void)setIgnoreServerManualEndpointingThreshold:(BOOL)arg1;
 - (void)setInProgressOutputVoice:(id)arg1;
 - (void)setInternalUserClassification:(unsigned long long)arg1;

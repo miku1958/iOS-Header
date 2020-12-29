@@ -15,6 +15,7 @@
 {
     BOOL _deleteAll;
     BOOL _emcsMode;
+    BOOL _excludeiCDPRecords;
     BOOL _fmipRecovery;
     BOOL _icdp;
     BOOL _idmsRecovery;
@@ -81,6 +82,7 @@
 @property (strong, nonatomic) NSError *error; // @synthesize error=_error;
 @property (copy, nonatomic) NSString *escrowProxyURL; // @synthesize escrowProxyURL=_escrowProxyURL;
 @property (strong, nonatomic) NSDictionary *escrowRecord; // @synthesize escrowRecord=_escrowRecord;
+@property (nonatomic) BOOL excludeiCDPRecords; // @synthesize excludeiCDPRecords=_excludeiCDPRecords;
 @property (nonatomic) BOOL fmipRecovery; // @synthesize fmipRecovery=_fmipRecovery;
 @property (copy, nonatomic) NSString *fmipUUID; // @synthesize fmipUUID=_fmipUUID;
 @property (copy, nonatomic) NSString *hsa2CachedPrerecordUUID; // @synthesize hsa2CachedPrerecordUUID=_hsa2CachedPrerecordUUID;
@@ -113,10 +115,12 @@
 @property (copy, nonatomic) NSString *verificationToken; // @synthesize verificationToken=_verificationToken;
 
 + (id)_ClassCreateSecureBackupConcurrentConnection;
++ (id)_getAcceptedTermsForAltDSID:(id)arg1 withError:(id *)arg2;
 + (void)asyncRequestEscrowRecordUpdate;
 + (unsigned int)daemonPasscodeRequestOpinion:(id *)arg1;
 + (void)getAcceptedTermsForAltDSID:(id)arg1 reply:(CDUnknownBlockType)arg2;
-+ (id)getAcceptedTermsWithError:(id *)arg1;
++ (id)getAcceptedTermsForAltDSID:(id)arg1 withError:(id *)arg2;
++ (id)getAllAcceptedTermsWithError:(id *)arg1;
 + (unsigned int)needPasscodeForHSA2EscrowRecordUpdate:(id *)arg1;
 + (void)saveTermsAcceptance:(id)arg1 reply:(CDUnknownBlockType)arg2;
 + (BOOL)supportsSecureCoding;

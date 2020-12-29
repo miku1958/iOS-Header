@@ -12,6 +12,7 @@
 
 @property (readonly, nonatomic) NSDictionary *activeAccessoryDevicesSupportingAnnounce;
 @property (readonly, nonatomic) NSArray *activeDevicesSupportingAnnounce;
+@property (readonly, nonatomic) NSArray *activePersonalDevicesSupportingAnnounce;
 @property (readonly, nonatomic) RPCompanionLinkDevice *pairedCompanion;
 
 @end

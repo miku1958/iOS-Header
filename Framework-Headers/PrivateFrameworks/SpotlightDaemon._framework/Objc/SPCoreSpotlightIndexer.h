@@ -172,6 +172,7 @@
 - (void)setServiceName:(id)arg1;
 - (void)shrink:(unsigned long long)arg1;
 - (void)shutdown;
+- (void)shutdownForced;
 - (void)start;
 - (id)startQuery:(id)arg1 withContext:(id)arg2 eventHandler:(CDUnknownBlockType)arg3 handler:(CDUnknownBlockType)arg4;
 - (id)startQuery:(id)arg1 withContext:(id)arg2 handler:(CDUnknownBlockType)arg3;

@@ -7,14 +7,14 @@
 #import <UIKit/UIView.h>
 
 #import <WorkflowEditor/UITableViewDataSource-Protocol.h>
-#import <WorkflowEditor/UITableViewDelegate-Protocol.h>
+#import <WorkflowEditor/UITableViewDelegatePrivate-Protocol.h>
 #import <WorkflowEditor/WFModuleSummaryEditorDelegate-Protocol.h>
 #import <WorkflowEditor/WFMultipleValueEditorViewCellDelegate-Protocol.h>
 
 @class MTVisualStylingProvider, NSArray, NSIndexPath, NSSet, NSString, UIColor, UITableView, WFModuleSummaryEditor, WFMultipleValueParameterState, WFParameter;
 @protocol WFComponentNavigationContext, WFMultipleValueEditorViewDelegate, WFVariableProvider, WFVariableUIDelegate;
 
-@interface WFMultipleValueEditorView : UIView <UITableViewDataSource, UITableViewDelegate, WFMultipleValueEditorViewCellDelegate, WFModuleSummaryEditorDelegate>
+@interface WFMultipleValueEditorView : UIView <UITableViewDataSource, UITableViewDelegatePrivate, WFMultipleValueEditorViewCellDelegate, WFModuleSummaryEditorDelegate>
 {
     BOOL _variablesDisabled;
     BOOL _standaloneVariablesAsContentItems;
@@ -93,6 +93,7 @@
 - (long long)tableView:(id)arg1 editingStyleForRowAtIndexPath:(id)arg2;
 - (void)tableView:(id)arg1 moveRowAtIndexPath:(id)arg2 toIndexPath:(id)arg3;
 - (long long)tableView:(id)arg1 numberOfRowsInSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
 - (BOOL)tableView:(id)arg1 shouldIndentWhileEditingRowAtIndexPath:(id)arg2;
 - (id)tableView:(id)arg1 targetIndexPathForMoveFromRowAtIndexPath:(id)arg2 toProposedIndexPath:(id)arg3;
 - (void)updateCells;

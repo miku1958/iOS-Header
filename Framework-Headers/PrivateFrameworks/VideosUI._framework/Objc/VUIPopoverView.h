@@ -8,14 +8,14 @@
 
 #import <VideosUI/UIGestureRecognizerDelegate-Protocol.h>
 
-@class NSString, TVImageProxy, VUIButton, VUIPopoverDescriptor;
+@class NSString, TVImageProxy, VUILegacyButton, VUIPopoverDescriptor;
 
 __attribute__((visibility("hidden")))
 @interface VUIPopoverView : UIView <UIGestureRecognizerDelegate>
 {
     BOOL _imageLoaded;
     VUIPopoverDescriptor *_popoverDescriptor;
-    VUIButton *_tvPopoverButton;
+    VUILegacyButton *_tvPopoverButton;
     TVImageProxy *_imageProxy;
 }
 
@@ -26,7 +26,7 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) TVImageProxy *imageProxy; // @synthesize imageProxy=_imageProxy;
 @property (strong, nonatomic) VUIPopoverDescriptor *popoverDescriptor; // @synthesize popoverDescriptor=_popoverDescriptor;
 @property (readonly) Class superclass;
-@property (strong, nonatomic) VUIButton *tvPopoverButton; // @synthesize tvPopoverButton=_tvPopoverButton;
+@property (strong, nonatomic) VUILegacyButton *tvPopoverButton; // @synthesize tvPopoverButton=_tvPopoverButton;
 
 - (void).cxx_destruct;
 - (void)_popoverButtonPressed:(id)arg1;

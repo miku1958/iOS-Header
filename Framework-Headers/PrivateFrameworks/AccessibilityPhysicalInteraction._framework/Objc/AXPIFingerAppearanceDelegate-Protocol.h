@@ -12,12 +12,13 @@
 - (UIColor *)circularProgressFillColor;
 - (UIColor *)deselectedFillColor;
 - (UIColor *)deselectedStrokeColor;
-- (double)fingerDiameter;
 - (double)fingerInnerCircleInnerRadius;
 - (double)fingerInnerRadius;
-- (double)fingerOuterRadius;
-- (double)innerCircleStrokeOutlineWidth;
+- (double)fingerWidth;
+- (double)innerCircleStrokeWidth;
+- (double)pressedAlpha;
 - (UIColor *)pressedCircularProgressFillColor;
+- (double)pressedScale;
 - (UIColor *)selectedFillColor;
 - (UIColor *)selectedStrokeColor;
 - (BOOL)showFingerOutlines;
@@ -25,6 +26,8 @@
 - (UIColor *)strokeOutlineColor;
 - (double)strokeOutlineWidth;
 - (double)strokeWidth;
+- (double)unpressedAlpha;
+- (double)unpressedScale;
 - (BOOL)useSystemFilters;
 @end
 

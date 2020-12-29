@@ -69,8 +69,10 @@
 + (id)scheduleDateInterval:(id)arg1;
 - (void).cxx_destruct;
 - (void)_invalidate;
+- (void)allBeaconingKeysForUUID:(id)arg1 dateInterval:(id)arg2 forceGenerate:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)allBeaconsOfType:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)allBeaconsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)allDuriansWithCompletion:(CDUnknownBlockType)arg1;
 - (void)beaconForUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)beaconingKeysForUUID:(id)arg1 dateInterval:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)beaconingStateChanged:(long long)arg1;
@@ -78,7 +80,15 @@
 - (void)beaconsChanged:(id)arg1;
 - (void)bleMonitor:(id)arg1 didChangeState:(unsigned long long)arg2;
 - (void)checkInPeriodicActionXpcTimer;
+- (void)connectedToBeacon:(id)arg1 withIndex:(unsigned long long)arg2;
+- (void)connectedToBeacon:(id)arg1 withIndex:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)connectionTokensForBeaconUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)connectionTokensForBeaconUUID:(id)arg1 criteria:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)connectionTokensForBeaconUUID:(id)arg1 dateInterval:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)createKeyReconcilerWithCompletion:(CDUnknownBlockType)arg1;
 - (void)dealloc;
+- (void)fetchFirmwareVersionForBeacon:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)fetchKeyMapFileDescriptorForBeacon:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)init;
 - (void)invalidate;
 - (BOOL)isBeaconing;
@@ -88,14 +98,22 @@
 - (void)notifyStateChange:(BOOL)arg1;
 - (void)notifyStatusChange:(unsigned char)arg1;
 - (void)periodicActionWithCompletion:(CDUnknownBlockType)arg1;
+- (void)postedLocalNotifyWhenFoundNotificationForUUID:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)remoteInterface;
 - (void)repairDataStore:(CDUnknownBlockType)arg1;
+- (void)roleCategoriesWithCompletion:(CDUnknownBlockType)arg1;
+- (void)setAlignmentUncertainty:(double)arg1 atIndex:(unsigned long long)arg2 date:(id)arg3 forBeacon:(id)arg4 completion:(CDUnknownBlockType)arg5;
+- (void)setCurrentWildKeyIndex:(long long)arg1 forBeacon:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setKeyRollInterval:(unsigned long long)arg1 forBeacon:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)setPeriodicActionDispatchTimerWithInterval:(double)arg1;
 - (void)setPeriodicActionXpcTimerWithDateInterval:(id)arg1;
+- (void)setRole:(long long)arg1 forBeacon:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)setWildKeyBase:(unsigned long long)arg1 interval:(unsigned long long)arg2 fallback:(unsigned long long)arg3 forBeacon:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)start;
 - (void)stateDidChange:(BOOL)arg1 powerState:(unsigned long long)arg2;
 - (void)timerFired;
 - (void)unacceptedBeaconsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)updateBeacon:(id)arg1 updates:(id)arg2 completion:(CDUnknownBlockType)arg3;
 
 @end
 

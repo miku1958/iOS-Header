@@ -764,12 +764,12 @@
 
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find address 0x17ec00066a10 (0x7ec00066a10) in binary!
-	0x264eb8  @objc TTRCloudKitNetworkActivityMonitor.(null) <stripped>
+	0x2618e8  @objc TTRCloudKitNetworkActivityMonitor.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffe21fd8  @objc TTRCloudKitNetworkActivityMonitor.(null) <stripped>
+	0xffe24798  @objc TTRCloudKitNetworkActivityMonitor.(null) <stripped>
 
 	// Swift methods
-	0xe900  class func TTRCloudKitNetworkActivityMonitor.__allocating_init(queue:) // init 
+	0xe0c0  class func TTRCloudKitNetworkActivityMonitor.__allocating_init(queue:) // init 
  }
 
  enum RemindersUICore.Activity {
@@ -805,12 +805,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find address 0x17b4000669d8 (0x7b4000669d8) in binary!
-	0x264e80  @objc TTRLocationChangeMonitor.(null) <stripped>
+	0x2618b0  @objc TTRLocationChangeMonitor.(null) <stripped>
 WARNING: couldn't find address 0x17a400066c90 (0x7a400066c90) in binary!
-	0x264e68  @objc TTRLocationChangeMonitor.(null) <stripped>
+	0x261898  @objc TTRLocationChangeMonitor.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x7cffe2a688  @objc TTRLocationChangeMonitor.(null) <stripped>
-	0xffe2a780  @objc TTRLocationChangeMonitor.@ <stripped>
+	0x7cffe2ce48  @objc TTRLocationChangeMonitor.(null) <stripped>
+	0xffe2cf40  @objc TTRLocationChangeMonitor.@ <stripped>
  }
 
  enum RemindersUICore.FailureReason {
@@ -846,7 +846,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var unitTest_oneShotSyncSaveForUndo : Bool
 
 	// Swift methods
-	0x18cc0  class func TTRListEditor.__allocating_init(changeItem:undoManager:unitTest_oneShotSyncSaveForUndo:) // init 
+	0x18480  class func TTRListEditor.__allocating_init(changeItem:undoManager:unitTest_oneShotSyncSaveForUndo:) // init 
  }
 
  struct RemindersUICore.MoveReminderArguments {
@@ -908,12 +908,12 @@ WARNING: couldn't find address 0x174c00066970 (0x74c00066970) in binary!
 
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find address 0x173400066958 (0x73400066958) in binary!
-	0x264e00  @objc TTRRemindersListInteractor.(null) <stripped>
+	0x261830  @objc TTRRemindersListInteractor.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x774ffe50d40  @objc TTRRemindersListInteractor.(null) <stripped>
+	0x774ffe53500  @objc TTRRemindersListInteractor.(null) <stripped>
 
 	// Swift methods
-	0x273b0  class func TTRRemindersListInteractor.__allocating_init(store:) // init 
+	0x26b70  class func TTRRemindersListInteractor.__allocating_init(store:) // init 
  }
 
  class RemindersUICore.ReminderContainerListEditor : _SwiftObject /usr/lib/swift/libswiftCore.dylib, ReminderContainerEditing {
@@ -948,20 +948,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let url : R // +0x0 (0x0)
 	let userActivity : REMUserActivity? // +0x45545f5f (0x8)
 	let image : UIImage? // +0x0 (0x8)
-	let copyPasteItem : TTRReminderCopyPasteItem // +0x2a30 (0x8)
+	let copyPasteItem : TTRReminderCopyPasteItem // +0x21f0 (0x8)
 
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find address 0x1714000669c0 (0x714000669c0) in binary!
-	0x264dd8  @objc TTRRemindersListImportedContent.(null) <stripped>
+	0x261808  @objc TTRRemindersListImportedContent.(null) <stripped>
 WARNING: couldn't find address 0x16fc00066920 (0x6fc00066920) in binary!
-	0x264dc8  @objc TTRRemindersListImportedContent.(null) <stripped>
+	0x2617f8  @objc TTRRemindersListImportedContent.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x8cffe55ff8  @objc TTRRemindersListImportedContent.(null) <stripped>
-	0x6e4ffe56450  @objc TTRRemindersListImportedContent.UHâÂHã=’8# <stripped>
+	0x8cffe587b8  @objc TTRRemindersListImportedContent.(null) <stripped>
+	0x6e4ffe58c10  @objc TTRRemindersListImportedContent.UHâÂHç=ı“ <stripped>
 
 	// Swift methods
-	0x3dc30  class func TTRRemindersListImportedContent.__allocating_init(title:notes:url:userActivity:image:) // init 
-	0x3ddb0  class func TTRRemindersListImportedContent.__allocating_init(copyPasteItem:) // init 
+	0x3d3f0  class func TTRRemindersListImportedContent.__allocating_init(title:notes:url:userActivity:image:) // init 
+	0x3d570  class func TTRRemindersListImportedContent.__allocating_init(copyPasteItem:) // init 
  }
 
  enum RemindersUICore.AccountsList { }
@@ -984,12 +984,12 @@ WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
 	let unitTest_oneShotSyncSaveForUndo : Bool
 
 	// Swift methods
-	0x40e20  class func TTRAccountEditor.__allocating_init(changeItem:undoManager:unitTest_oneShotSyncSaveForUndo:) // init 
+	0x405e0  class func TTRAccountEditor.__allocating_init(changeItem:undoManager:unitTest_oneShotSyncSaveForUndo:) // init 
  }
 
  class RemindersUICore.TTRICompletedButton : TTRIExpandedHitTestButton {
 	// ObjC -> Swift bridged methods
-	0x3c50  variable initialization expression of TTRGeneralReminderListEditingPresenter.editingSessionByKey
+	0x3c50  variable initialization expression of TTRRecurrenceRuleModel.recurrenceEnd
 WARNING: couldn't find address 0x67a400066ee0 (0x7a400066ee0) in binary!
 	0x3c58  @objc TTRICompletedButton.(null) <stripped>
 WARNING: couldn't find address 0x1217c00066ee0 (0x17c00066ee0) in binary!
@@ -1031,7 +1031,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var state : EditingState
 
 	// Swift methods
-	0x45190  class func TTRGeneralReminderListEditingPresenter.__allocating_init(titleAttributesInteractor:isSingleReminderEditingMode:animatesReminderCreationForReturnKey:) // init 
+	0x44950  class func TTRGeneralReminderListEditingPresenter.__allocating_init(titleAttributesInteractor:isSingleReminderEditingMode:animatesReminderCreationForReturnKey:) // init 
  }
 
  struct RemindersUICore.EditingSessionKey {
@@ -1070,7 +1070,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var savingManager : q<
 
 	// Swift methods
-	0x558c0  class func TTRURLMetadataInteractor.__allocating_init() // init 
+	0x55080  class func TTRURLMetadataInteractor.__allocating_init() // init 
  }
 
  struct RemindersUICore.SavingOperationParams {
@@ -1105,7 +1105,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class RemindersUICore.TTRIDateIconGenerator : TTRDateIconGenerator {
 	// Swift methods
-	0x69690  class func TTRIDateIconGenerator.__allocating_init() // init 
+	0x68e50  class func TTRIDateIconGenerator.__allocating_init() // init 
  }
 
  class RemindersUICore.TTRMutableTreeStorage {
@@ -1149,7 +1149,7 @@ WARNING: couldn't find address 0x155c00066780 (0x55c00066780) in binary!
 WARNING: couldn't find address 0x1201400066d78 (0x1400066d78) in binary!
 	0x28000000c  @objc TTRNoDefaultImplicitActionGradientLayer.(null) <stripped>
 WARNING: couldn't find address 0x152c00066750 (0x52c00066750) in binary!
-	0x264bf8  @objc TTRNoDefaultImplicitActionGradientLayer.(null) <stripped>
+	0x261628  @objc TTRNoDefaultImplicitActionGradientLayer.(null) <stripped>
  }
 
  class RemindersUICore.TTRNoDefaultImplicitTransformLayer : CATransformLayer /System/Library/Frameworks/QuartzCore.framework/QuartzCore {
@@ -1207,9 +1207,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find address 0x152c00066750 (0x52c00066750) in binary!
-	0x264bf8  @objc TTRReminderLocationPickerLocalSearchResultItemProvider.(null) <stripped>
+	0x261628  @objc TTRReminderLocationPickerLocalSearchResultItemProvider.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x5f4ffe90f38  @objc TTRReminderLocationPickerLocalSearchResultItemProvider.(null) <stripped>
+	0x5f4ffe936f8  @objc TTRReminderLocationPickerLocalSearchResultItemProvider.(null) <stripped>
  }
 
  class RemindersUICore.TTRIInsetTextField : UITextField /System/Library/Frameworks/UIKit.framework/UIKit {
@@ -1232,12 +1232,12 @@ WARNING: couldn't find address 0x629400067130 (0x29400067130) in binary!
 WARNING: couldn't find address 0x3a2c00066cb8 (0x22c00066cb8) in binary!
 	0x11f50  @objc TTRIInsetTextField.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x684ffe99338  @objc TTRIInsetTextField.(null) <stripped>
-	0xffe993a0  @objc TTRIInsetTextField.geIO <stripped>
+	0x684ffe9baf8  @objc TTRIInsetTextField.(null) <stripped>
+	0xffe9bb60  @objc TTRIInsetTextField.geIO <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x604ffe9dd98  @objc TTRIInsetTextField.(null) <stripped>
+	0x604ffea0558  @objc TTRIInsetTextField.(null) <stripped>
 	0x41c00066640  @objc TTRIInsetTextField.Library/Frameworks/ImageIO.framework/ImageIO <stripped>
-WARNING: couldn't find address 0x665e4ffea8b58 (0x5e4ffea8b58) in binary!
+WARNING: couldn't find address 0x665e4ffeab318 (0x5e4ffeab318) in binary!
 	0x28000000c  @objc TTRIInsetTextField.(null) <stripped>
  }
 
@@ -1323,7 +1323,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var deferredAction : TTRDeferredAction
 
 	// Swift methods
-	0x86980  class func TTRIChromelessToolbarUpdater.__allocating_init(scrollView:) // init 
+	0x86140  class func TTRIChromelessToolbarUpdater.__allocating_init(scrollView:) // init 
  }
 
  class RemindersUICore.ScrollOffsetObserver : NSObject /usr/lib/libobjc.A.dylib {
@@ -1333,11 +1333,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find address 0x654c000665f8 (0x54c000665f8) in binary!
-	0x264b30  @objc ScrollOffsetObserver.(null) <stripped>
+	0x261560  @objc ScrollOffsetObserver.(null) <stripped>
 WARNING: couldn't find address 0x145c00066628 (0x45c00066628) in binary!
 	0x28000000c  @objc ScrollOffsetObserver.(null) <stripped>
 WARNING: couldn't find address 0x143c00066660 (0x43c00066660) in binary!
-	0x264b08  @objc ScrollOffsetObserver.(null) <stripped>
+	0x261538  @objc ScrollOffsetObserver.(null) <stripped>
  }
 
  struct RemindersUICore.TTRNotifyPublisher {
@@ -1363,12 +1363,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find address 0x143c00066660 (0x43c00066660) in binary!
-	0x264b08  @objc TTRSearchQueryPerformer.(null) <stripped>
+	0x261538  @objc TTRSearchQueryPerformer.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x5e4ffea8b58  @objc TTRSearchQueryPerformer.(null) <stripped>
+	0x5e4ffeab318  @objc TTRSearchQueryPerformer.(null) <stripped>
 
 	// Swift methods
-	0x886b0  class func TTRSearchQueryPerformer.__allocating_init(attributesToFetch:itemTypes:queue:) // init 
+	0x87e70  class func TTRSearchQueryPerformer.__allocating_init(attributesToFetch:itemTypes:queue:) // init 
  }
 
  class RemindersUICore.TTRAnyTreeViewCollapsedStatesPersisting {
@@ -1394,7 +1394,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let queue : OS_dispatch_queue
 
 	// Swift methods
-	0x90af0  class func TTRRemindersInteraction.__allocating_init(queue:) // init 
+	0x902b0  class func TTRRemindersInteraction.__allocating_init(queue:) // init 
  }
 
  enum RemindersUICore.TTRGeoLocationServiceResolvedLocation {
@@ -1435,12 +1435,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find address 0x141c00066640 (0x41c00066640) in binary!
-	0x264ae8  @objc TTRGeoLocationService.(null) <stripped>
+	0x261518  @objc TTRGeoLocationService.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x4fcffeaa108  @objc TTRGeoLocationService.(null) <stripped>
+	0x4fcffeac8c8  @objc TTRGeoLocationService.(null) <stripped>
 
 	// Swift methods
-	0x92a80  class func TTRGeoLocationService.__allocating_init(locationManager:) // init 
+	0x92240  class func TTRGeoLocationService.__allocating_init(locationManager:) // init 
  }
 
  struct RemindersUICore.FilterResult {
@@ -1461,7 +1461,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let initialListStorage : REMListStorage?
 
 	// Swift methods
-	0x9ba10  class func TTRListDetailAndAppearanceInteractor.__allocating_init(listChangeItem:undoManager:) // init 
+	0x9b1d0  class func TTRListDetailAndAppearanceInteractor.__allocating_init(listChangeItem:undoManager:) // init 
  }
 
  class RemindersUICore.TTRRecurrenceFrequencyStrings : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1474,8 +1474,7 @@ WARNING: couldn't find address 0x13e4000673e8 (0x3e4000673e8) in binary!
 	0x3970  @objc TTRIExpandedHitTestButton.(null) <stripped>
 WARNING: couldn't find address 0x11e9400066bf8 (0x69400066bf8) in binary!
 	0x48000000c  @objc TTRIExpandedHitTestButton.(null) <stripped>
-WARNING: couldn't find address 0x82ac00066530 (0x2ac00066530) in binary!
-	0x3940  @objc TTRIExpandedHitTestButton.(null) <stripped>
+	0x3940  variable initialization expression of TTRSingleColorGradientView.lighteningGradient
  }
 
  class RemindersUICore.TTRReminderLocationPickerCurrentLocationItemProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1484,7 +1483,7 @@ WARNING: couldn't find address 0x82ac00066530 (0x2ac00066530) in binary!
 	let ignoresSeachText : Bool
 
 	// Swift methods
-	0x9d880  class func TTRReminderLocationPickerCurrentLocationItemProvider.__allocating_init(ignoresSeachText:) // init 
+	0x9d040  class func TTRReminderLocationPickerCurrentLocationItemProvider.__allocating_init(ignoresSeachText:) // init 
  }
 
  class RemindersUICore.TTRAttachmentThumbnailSizeProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1494,7 +1493,7 @@ WARNING: couldn't find address 0x82ac00066530 (0x2ac00066530) in binary!
 	let contentMode : ContentMode
 
 	// Swift methods
-	0x9da90  class func TTRAttachmentThumbnailSizeProvider.__allocating_init(boundingSize:contentMode:) // init 
+	0x9d250  class func TTRAttachmentThumbnailSizeProvider.__allocating_init(boundingSize:contentMode:) // init 
  }
 
  enum RemindersUICore.ContentMode {
@@ -1518,7 +1517,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let operationQueue : NSOperationQueue
 
 	// Swift methods
-	0x9e110  class func TTRThumbnailGenerator.__allocating_init(queue:backgroundQueue:) // init 
+	0x9d8d0  class func TTRThumbnailGenerator.__allocating_init(queue:backgroundQueue:) // init 
  }
 
  class RemindersUICore.TTRExtensionContextExtractor : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1528,10 +1527,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_metadataProvider : LPMetadataProvider?
 
 	// Swift methods
-	0x9fcb0  class func TTRExtensionContextExtractor.__allocating_init() // init 
-	0x9fcf0  func TTRExtensionContextExtractor.extract(from:) // method 
-	0xa2b40  func TTRExtensionContextExtractor.extract(from:) // method 
-	0xa3440  func <stripped> // getter 
+	0x9f470  class func TTRExtensionContextExtractor.__allocating_init() // init 
+	0x9f4b0  func TTRExtensionContextExtractor.extract(from:) // method 
+	0xa2300  func TTRExtensionContextExtractor.extract(from:) // method 
+	0xa2c00  func <stripped> // getter 
  }
 
  enum RemindersUICore.AttachmentError {
@@ -1561,15 +1560,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var simulatedMigrationStartDate : ≥= // +0x0 (0x0)
 
 	// Swift methods
-	0xa8880  func TTRCloudKitMigrationManager.delegate.getter // getter 
-	0xa88b0  func TTRCloudKitMigrationManager.delegate.setter // setter 
-	0xa8900  func TTRCloudKitMigrationManager.delegate.modify // modifyCoroutine 
-	0xa8b10  class func TTRCloudKitMigrationManager.__allocating_init(store:queue:) // init 
-	0xa8d50  func TTRCloudKitMigrationManager.accountsEligibleForMigration.getter // getter 
-	0xa9310  func TTRCloudKitMigrationManager.updateAccountsEligibleForMigration(completion:) // method 
-	0xa9c10  func TTRCloudKitMigrationManager.migrateAccountToCloudKit(accountID:) // method 
-	0xaa3e0  func <stripped> // method 
-	0xaa9f0  func <stripped> // method 
+	0xa8040  func TTRCloudKitMigrationManager.delegate.getter // getter 
+	0xa8070  func TTRCloudKitMigrationManager.delegate.setter // setter 
+	0xa80c0  func TTRCloudKitMigrationManager.delegate.modify // modifyCoroutine 
+	0xa82d0  class func TTRCloudKitMigrationManager.__allocating_init(store:queue:) // init 
+	0xa8510  func TTRCloudKitMigrationManager.accountsEligibleForMigration.getter // getter 
+	0xa8ad0  func TTRCloudKitMigrationManager.updateAccountsEligibleForMigration(completion:) // method 
+	0xa93d0  func TTRCloudKitMigrationManager.migrateAccountToCloudKit(accountID:) // method 
+	0xa9ba0  func <stripped> // method 
+	0xaa1b0  func <stripped> // method 
  }
 
  enum RemindersUICore.MigrationState {
@@ -1593,34 +1592,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var darkenBlendMode : CGBlendMode
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x82ac00066530 (0x2ac00066530) in binary!
-	0x3940  @objc TTRSingleColorGradientView.(null) <stripped>
+	0x3940  variable initialization expression of TTRSingleColorGradientView.lighteningGradient
 WARNING: couldn't find address 0x11e6400066bc8 (0x66400066bc8) in binary!
-	0x264a60  @objc TTRSingleColorGradientView.(null) <stripped>
+	0x261490  @objc TTRSingleColorGradientView.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x53cffef3f80  @objc TTRSingleColorGradientView.(null) <stripped>
-	0x45400066438  @objc TTRSingleColorGradientView.\ <stripped>
+	0x53cffef6740  @objc TTRSingleColorGradientView.(null) <stripped>
+	0x45400066438  @objc TTRSingleColorGradientView.\ <stripped>
 
 	// Swift methods
-	0xacc90  func TTRSingleColorGradientView.color.getter // getter 
-	0xaccd0  func TTRSingleColorGradientView.color.setter // setter 
-	0xacd90  func TTRSingleColorGradientView.color.modify // modifyCoroutine 
-	0xacea0  func TTRSingleColorGradientView.hasGradient.getter // getter 
-	0xaced0  func TTRSingleColorGradientView.hasGradient.setter // setter 
-	0xacf30  func TTRSingleColorGradientView.hasGradient.modify // modifyCoroutine 
-	0xad170  func TTRSingleColorGradientView.lighteningGradient.getter // getter 
-	0xad190  func TTRSingleColorGradientView.lighteningGradient.setter // setter 
-	0xad1e0  func TTRSingleColorGradientView.lighteningGradient.modify // modifyCoroutine 
-	0xad330  func TTRSingleColorGradientView.lightenBlendMode.getter // getter 
-	0xad350  func TTRSingleColorGradientView.lightenBlendMode.setter // setter 
-	0xad370  func TTRSingleColorGradientView.lightenBlendMode.modify // modifyCoroutine 
-	0xad3c0  func TTRSingleColorGradientView.darkeningGradient.getter // getter 
-	0xad430  func TTRSingleColorGradientView.darkeningGradient.setter // setter 
-	0xad540  func TTRSingleColorGradientView.darkeningGradient.modify // modifyCoroutine 
-	0xad5a0  func TTRSingleColorGradientView.darkenBlendMode.getter // getter 
-	0xad5f0  func TTRSingleColorGradientView.darkenBlendMode.setter // setter 
-	0xad660  func TTRSingleColorGradientView.darkenBlendMode.modify // modifyCoroutine 
-	0xad6e0  func TTRSingleColorGradientView.update(_:) // method 
+	0xac450  func TTRSingleColorGradientView.color.getter // getter 
+	0xac490  func TTRSingleColorGradientView.color.setter // setter 
+	0xac550  func TTRSingleColorGradientView.color.modify // modifyCoroutine 
+	0xac660  func TTRSingleColorGradientView.hasGradient.getter // getter 
+	0xac690  func TTRSingleColorGradientView.hasGradient.setter // setter 
+	0xac6f0  func TTRSingleColorGradientView.hasGradient.modify // modifyCoroutine 
+	0xac930  func TTRSingleColorGradientView.lighteningGradient.getter // getter 
+	0xac950  func TTRSingleColorGradientView.lighteningGradient.setter // setter 
+	0xac9a0  func TTRSingleColorGradientView.lighteningGradient.modify // modifyCoroutine 
+	0xacaf0  func TTRSingleColorGradientView.lightenBlendMode.getter // getter 
+	0xacb10  func TTRSingleColorGradientView.lightenBlendMode.setter // setter 
+	0xacb30  func TTRSingleColorGradientView.lightenBlendMode.modify // modifyCoroutine 
+	0xacb80  func TTRSingleColorGradientView.darkeningGradient.getter // getter 
+	0xacbf0  func TTRSingleColorGradientView.darkeningGradient.setter // setter 
+	0xacd00  func TTRSingleColorGradientView.darkeningGradient.modify // modifyCoroutine 
+	0xacd60  func TTRSingleColorGradientView.darkenBlendMode.getter // getter 
+	0xacdb0  func TTRSingleColorGradientView.darkenBlendMode.setter // setter 
+	0xace20  func TTRSingleColorGradientView.darkenBlendMode.modify // modifyCoroutine 
+	0xacea0  func TTRSingleColorGradientView.update(_:) // method 
  }
 
  struct RemindersUICore.GradientSettings {
@@ -1659,9 +1657,9 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
  class RemindersUICore.TTRListBadgeEmblem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0xafdc0  class func static TTRListBadgeEmblem.allBadges.getter // getter 
-	0xafe50  class func static TTRListBadgeEmblem.badge(for:) // method 
-	0xb5c50  class func static TTRListBadgeEmblem.badge(for:) // method 
+	0xaf580  class func static TTRListBadgeEmblem.allBadges.getter // getter 
+	0xaf610  class func static TTRListBadgeEmblem.badge(for:) // method 
+	0xb5410  class func static TTRListBadgeEmblem.badge(for:) // method 
  }
 
  class RemindersUICore.TTRShowSearchResultDataModelSource : TTRRemindersListDataModelSourceBase, TTRShowSearchResultDataModelSourceType {
@@ -1677,16 +1675,16 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var queryPerformer : TTRSearchQueryPerformer
 
 	// Swift methods
-	0xb5cf0  func TTRShowSearchResultDataModelSource.delegate.getter // getter 
-	0xb5d20  func TTRShowSearchResultDataModelSource.delegate.setter // setter 
-	0xb5df0  func TTRShowSearchResultDataModelSource.delegate.modify // modifyCoroutine 
-	0xb6080  func TTRShowSearchResultDataModelSource.searchTerm.getter // getter 
-	0xb60c0  func TTRShowSearchResultDataModelSource.searchTerm.setter // setter 
-	0xb6130  func TTRShowSearchResultDataModelSource.searchTerm.modify // modifyCoroutine 
-	0xb61f0  class func TTRShowSearchResultDataModelSource.__allocating_init(store:searchTerm:countCompleted:) // init 
-	0xb62e0  func <stripped> // method 
-	0xb6800  func <stripped> // method 
-	0xb6ab0  func <stripped> // method 
+	0xb54b0  func TTRShowSearchResultDataModelSource.delegate.getter // getter 
+	0xb54e0  func TTRShowSearchResultDataModelSource.delegate.setter // setter 
+	0xb55b0  func TTRShowSearchResultDataModelSource.delegate.modify // modifyCoroutine 
+	0xb5840  func TTRShowSearchResultDataModelSource.searchTerm.getter // getter 
+	0xb5880  func TTRShowSearchResultDataModelSource.searchTerm.setter // setter 
+	0xb58f0  func TTRShowSearchResultDataModelSource.searchTerm.modify // modifyCoroutine 
+	0xb59b0  class func TTRShowSearchResultDataModelSource.__allocating_init(store:searchTerm:countCompleted:) // init 
+	0xb5aa0  func <stripped> // method 
+	0xb5fc0  func <stripped> // method 
+	0xb6270  func <stripped> // method 
  }
 
  class RemindersUICore.TTRShowSearchResultMonitorableDataView : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1699,7 +1697,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let countCompleted : Bool // +0x0 (0x1)
 
 	// Swift methods
-	0xb6790  class func TTRShowSearchResultMonitorableDataView.__allocating_init(store:objectIDs:showCompleted:countCompleted:) // init 
+	0xb5f50  class func TTRShowSearchResultMonitorableDataView.__allocating_init(store:objectIDs:showCompleted:countCompleted:) // init 
  }
 
  class RemindersUICore.TTRShowSearchResultDataModelSourceShowCompletedContext : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1791,12 +1789,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var subjectUpdateCancellable : ÔA
 
 	// Swift methods
-	0xc1010  class func TTRReminderLocationOptionsProvider.__allocating_init(store:meCardProvider:geoService:) // init 
+	0xc07d0  class func TTRReminderLocationOptionsProvider.__allocating_init(store:meCardProvider:geoService:) // init 
  }
 
  class RemindersUICore.TTRCurrentTimeProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TTRTimeProvider {
 	// Swift methods
-	0xc33a0  class func TTRCurrentTimeProvider.__allocating_init() // init 
+	0xc2b60  class func TTRCurrentTimeProvider.__allocating_init() // init 
  }
 
  struct RemindersUICore.TTRBaseTreeLocation {
@@ -1835,13 +1833,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dataViewMonitor : TTRDataViewMonitor // +0x40 (0x8)
 
 	// Swift methods
-	0xcbe60  func TTRShowFlaggedDataModelSource.delegate.getter // getter 
-	0xcbe90  func TTRShowFlaggedDataModelSource.delegate.setter // setter 
-	0xcbee0  func TTRShowFlaggedDataModelSource.delegate.modify // modifyCoroutine 
-	0xcbfb0  class func TTRShowFlaggedDataModelSource.__allocating_init(store:countCompleted:) // init 
-	0xcc040  func TTRShowFlaggedDataModelSource.description.getter // getter 
-	0xcc0c0  func <stripped> // method 
-	0xcc490  func <stripped> // method 
+	0xcb620  func TTRShowFlaggedDataModelSource.delegate.getter // getter 
+	0xcb650  func TTRShowFlaggedDataModelSource.delegate.setter // setter 
+	0xcb6a0  func TTRShowFlaggedDataModelSource.delegate.modify // modifyCoroutine 
+	0xcb770  class func TTRShowFlaggedDataModelSource.__allocating_init(store:countCompleted:) // init 
+	0xcb800  func TTRShowFlaggedDataModelSource.description.getter // getter 
+	0xcb880  func <stripped> // method 
+	0xcbc50  func <stripped> // method 
  }
 
  class RemindersUICore.TTRShowFlaggedMonitorableDataView : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1856,7 +1854,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let remindersToPrefetchCount : Int // +0x0 (0x8)
 
 	// Swift methods
-	0xcc400  class func TTRShowFlaggedMonitorableDataView.__allocating_init(store:showCompleted:countCompleted:sortingStyle:remindersToPrefetchCount:) // init 
+	0xcbbc0  class func TTRShowFlaggedMonitorableDataView.__allocating_init(store:showCompleted:countCompleted:sortingStyle:remindersToPrefetchCount:) // init 
  }
 
  enum RemindersUICore.TTRDebugExampleInserts { }
@@ -1922,16 +1920,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var reminderFetchManager : TTRBatchFetchManager
 
 	// Swift methods
-	0xd2450  func TTRRemindersListDataModelSourceBase.showCompletedContext.getter // getter 
-	0xd1bf0  func TTRRemindersListDataModelSourceBase.reminder(with:) // method 
-	0xd1ce0  func TTRRemindersListDataModelSourceBase.cachedReminder(with:) // method 
-	0xd1e50  func TTRRemindersListDataModelSourceBase.reminders(with:) // method 
-	0xd1f30  func TTRRemindersListDataModelSourceBase.prefetchReminders(with:) // method 
-	0xd2000  func TTRRemindersListDataModelSourceBase.remindersSmartList() // method 
-	0xd2010  func TTRRemindersListDataModelSourceBase.updateDataViewMonitor<A, B>(_:initialData:newDataView:delegate:forHandling:) // method 
-	0xd2210  func TTRRemindersListDataModelSourceBase.reminderFetchManager.getter // getter 
-	0xd2240  func TTRRemindersListDataModelSourceBase.reminderFetchManager.setter // setter 
-	0xd2280  func TTRRemindersListDataModelSourceBase.reminderFetchManager.modify // modifyCoroutine 
+	0xd1c10  func TTRRemindersListDataModelSourceBase.showCompletedContext.getter // getter 
+	0xd13b0  func TTRRemindersListDataModelSourceBase.reminder(with:) // method 
+	0xd14a0  func TTRRemindersListDataModelSourceBase.cachedReminder(with:) // method 
+	0xd1610  func TTRRemindersListDataModelSourceBase.reminders(with:) // method 
+	0xd16f0  func TTRRemindersListDataModelSourceBase.prefetchReminders(with:) // method 
+	0xd17c0  func TTRRemindersListDataModelSourceBase.remindersSmartList() // method 
+	0xd17d0  func TTRRemindersListDataModelSourceBase.updateDataViewMonitor<A, B>(_:initialData:newDataView:delegate:forHandling:) // method 
+	0xd19d0  func TTRRemindersListDataModelSourceBase.reminderFetchManager.getter // getter 
+	0xd1a00  func TTRRemindersListDataModelSourceBase.reminderFetchManager.setter // setter 
+	0xd1a40  func TTRRemindersListDataModelSourceBase.reminderFetchManager.modify // modifyCoroutine 
  }
 
  class RemindersUICore.TTRRemindersListDataModelSourceShowCompletedContext : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TTRRemindersListDataModelSourceShowCompletedContextType {
@@ -1946,19 +1944,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isSettingShowsCompletedUserDefaults : Bool
 
 	// Swift methods
-	0xd24e0  func TTRRemindersListDataModelSourceShowCompletedContext.showCompleted.getter // getter 
-	0xd24f0  func TTRRemindersListDataModelSourceShowCompletedContext.showCompleted.setter // setter 
-	0xd2500  func TTRRemindersListDataModelSourceShowCompletedContext.showCompleted.modify // modifyCoroutine 
-	0xd2540  func TTRRemindersListDataModelSourceShowCompletedContext.insertWhitelistCompletedReminderIDs(_:) // method 
-	0xd26f0  func TTRRemindersListDataModelSourceShowCompletedContext.clearWhitelistCompletedReminderIDs() // method 
-	0xd27c0  func TTRRemindersListDataModelSourceShowCompletedContext.matchesPredicate(_:) // method 
-	0xd28a0  func TTRRemindersListDataModelSourceShowCompletedContext.showCompletedParameter.getter // getter 
-	0xd2910  func TTRRemindersListDataModelSourceShowCompletedContext.delegate.getter // getter 
-	0xd2940  func TTRRemindersListDataModelSourceShowCompletedContext.delegate.setter // setter 
-	0xd2990  func TTRRemindersListDataModelSourceShowCompletedContext.delegate.modify // modifyCoroutine 
-	0xd22c0  class func TTRRemindersListDataModelSourceShowCompletedContext.__allocating_init(key:) // init 
-	0xd2e60  func <stripped> // method 
-	0xd3490  func <stripped> // method 
+	0xd1ca0  func TTRRemindersListDataModelSourceShowCompletedContext.showCompleted.getter // getter 
+	0xd1cb0  func TTRRemindersListDataModelSourceShowCompletedContext.showCompleted.setter // setter 
+	0xd1cc0  func TTRRemindersListDataModelSourceShowCompletedContext.showCompleted.modify // modifyCoroutine 
+	0xd1d00  func TTRRemindersListDataModelSourceShowCompletedContext.insertWhitelistCompletedReminderIDs(_:) // method 
+	0xd1eb0  func TTRRemindersListDataModelSourceShowCompletedContext.clearWhitelistCompletedReminderIDs() // method 
+	0xd1f80  func TTRRemindersListDataModelSourceShowCompletedContext.matchesPredicate(_:) // method 
+	0xd2060  func TTRRemindersListDataModelSourceShowCompletedContext.showCompletedParameter.getter // getter 
+	0xd20d0  func TTRRemindersListDataModelSourceShowCompletedContext.delegate.getter // getter 
+	0xd2100  func TTRRemindersListDataModelSourceShowCompletedContext.delegate.setter // setter 
+	0xd2150  func TTRRemindersListDataModelSourceShowCompletedContext.delegate.modify // modifyCoroutine 
+	0xd1a80  class func TTRRemindersListDataModelSourceShowCompletedContext.__allocating_init(key:) // init 
+	0xd2620  func <stripped> // method 
+	0xd2c50  func <stripped> // method 
  }
 
  struct RemindersUICore.TTRRemindersListEditingSessionFinishingOption {
@@ -1998,12 +1996,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find address 0x137400066598 (0x37400066598) in binary!
-	0x264a40  @objc TTRAccountsListsInteractor.(null) <stripped>
+	0x261470  @objc TTRAccountsListsInteractor.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff23370  @objc TTRAccountsListsInteractor.(null) <stripped>
+	0xfff23330  @objc TTRAccountsListsInteractor.(null) <stripped>
 
 	// Swift methods
-	0xdbdf0  class func TTRAccountsListsInteractor.__allocating_init(store:cloudKitMigrationManager:cloudKitNetworkActivityMonitor:) // init 
+	0xdb5b0  class func TTRAccountsListsInteractor.__allocating_init(store:cloudKitMigrationManager:cloudKitNetworkActivityMonitor:) // init 
  }
 
  class RemindersUICore.TTRAccountListsMonitorableDataView : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2012,7 +2010,7 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	let store : REMStore
 
 	// Swift methods
-	0xdbea0  class func TTRAccountListsMonitorableDataView.__allocating_init(store:) // init 
+	0xdb660  class func TTRAccountListsMonitorableDataView.__allocating_init(store:) // init 
  }
 
  enum RemindersUICore.TTRRemindersListCellViewModelState {
@@ -2309,14 +2307,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var $__lazy_storage_$_locationMonitor : TTRLocationChangeMonitor // +0x58 (0x8)
 
 	// Swift methods
-	0x10d490  func TTRShowTodayDataModelSource.delegate.getter // getter 
-	0x10d4c0  func TTRShowTodayDataModelSource.delegate.setter // setter 
-	0x10d510  func TTRShowTodayDataModelSource.delegate.modify // modifyCoroutine 
-	0x10d5e0  class func TTRShowTodayDataModelSource.__allocating_init(store:countCompleted:) // init 
-	0x10d970  func <stripped> // getter 
-	0x10da60  func <stripped> // method 
-	0x10db90  func <stripped> // method 
-	0x10dfa0  func TTRShowTodayDataModelSource.description.getter // getter 
+	0x10a450  func TTRShowTodayDataModelSource.delegate.getter // getter 
+	0x10a480  func TTRShowTodayDataModelSource.delegate.setter // setter 
+	0x10a4d0  func TTRShowTodayDataModelSource.delegate.modify // modifyCoroutine 
+	0x10a5a0  class func TTRShowTodayDataModelSource.__allocating_init(store:countCompleted:) // init 
+	0x10a930  func <stripped> // getter 
+	0x10aa20  func <stripped> // method 
+	0x10ab50  func <stripped> // method 
+	0x10af60  func TTRShowTodayDataModelSource.description.getter // getter 
  }
 
  class RemindersUICore.TTRShowTodayMonitorableDataView : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2332,7 +2330,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let remindersToPrefetchCount : Int // +0x0 (0x8)
 
 	// Swift methods
-	0x10d9e0  class func TTRShowTodayMonitorableDataView.__allocating_init(store:currentLocation:showCompleted:countCompleted:sortingStyle:remindersToPrefetchCount:) // init 
+	0x10a9a0  class func TTRShowTodayMonitorableDataView.__allocating_init(store:currentLocation:showCompleted:countCompleted:sortingStyle:remindersToPrefetchCount:) // init 
  }
 
  class RemindersUICore.TTRReminderCopyPasteItem : NSObject /usr/lib/libobjc.A.dylib {
@@ -2345,12 +2343,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find address 0x133c00066560 (0x33c00066560) in binary!
-	0x264a08  @objc TTRReminderCopyPasteItem.(null) <stripped>
+	0x261438  @objc TTRReminderCopyPasteItem.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x344fff23418  @objc TTRReminderCopyPasteItem.(null) <stripped>
+	0x344fff233d8  @objc TTRReminderCopyPasteItem.(null) <stripped>
 
 	// Swift methods
-	0x110e20  class func TTRReminderCopyPasteItem.__allocating_init(_:) // init 
+	0x10dde0  class func TTRReminderCopyPasteItem.__allocating_init(_:) // init 
  }
 
  struct RemindersUICore.Reminder {
@@ -2379,7 +2377,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var l_scheduled : Bool
 
 	// Swift methods
-	0x113db0  class func TTRDeferredAction.__allocating_init(queue:) // init 
+	0x110d70  class func TTRDeferredAction.__allocating_init(queue:) // init 
  }
 
  class RemindersUICore.TTRReminderLocationPickerVehicleItemProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2391,7 +2389,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let ignoresSeachText : Bool
 
 	// Swift methods
-	0x114830  class func TTRReminderLocationPickerVehicleItemProvider.__allocating_init(store:backgroundQueue:ignoresSeachText:) // init 
+	0x1117f0  class func TTRReminderLocationPickerVehicleItemProvider.__allocating_init(store:backgroundQueue:ignoresSeachText:) // init 
  }
 
  class RemindersUICore.TTRShowScheduledDataModelSource : TTRRemindersListDataModelSourceBase, TTRShowScheduledDataModelSourceType {
@@ -2404,13 +2402,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dataViewMonitor : TTRDataViewMonitor // +0x40 (0x8)
 
 	// Swift methods
-	0x115500  func TTRShowScheduledDataModelSource.delegate.getter // getter 
-	0x115530  func TTRShowScheduledDataModelSource.delegate.setter // setter 
-	0x115580  func TTRShowScheduledDataModelSource.delegate.modify // modifyCoroutine 
-	0x115650  class func TTRShowScheduledDataModelSource.__allocating_init(store:countCompleted:) // init 
-	0x115710  func TTRShowScheduledDataModelSource.description.getter // getter 
-	0x115760  func <stripped> // method 
-	0x115b10  func <stripped> // method 
+	0x1124c0  func TTRShowScheduledDataModelSource.delegate.getter // getter 
+	0x1124f0  func TTRShowScheduledDataModelSource.delegate.setter // setter 
+	0x112540  func TTRShowScheduledDataModelSource.delegate.modify // modifyCoroutine 
+	0x112610  class func TTRShowScheduledDataModelSource.__allocating_init(store:countCompleted:) // init 
+	0x1126d0  func TTRShowScheduledDataModelSource.description.getter // getter 
+	0x112720  func <stripped> // method 
+	0x112ad0  func <stripped> // method 
  }
 
  class RemindersUICore.TTRShowScheduledMonitorableDataView : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2425,7 +2423,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let remindersToPrefetchCount : Int // +0x0 (0x8)
 
 	// Swift methods
-	0x115a80  class func TTRShowScheduledMonitorableDataView.__allocating_init(store:showCompleted:countCompleted:sortingStyle:remindersToPrefetchCount:) // init 
+	0x112a40  class func TTRShowScheduledMonitorableDataView.__allocating_init(store:showCompleted:countCompleted:sortingStyle:remindersToPrefetchCount:) // init 
  }
 
  struct RemindersUICore.FromTo {
@@ -2497,13 +2495,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dataViewMonitor : TTRDataViewMonitor
 
 	// Swift methods
-	0x122370  func TTRShowSiriFoundInAppsDataModelSource.delegate.getter // getter 
-	0x1223a0  func TTRShowSiriFoundInAppsDataModelSource.delegate.setter // setter 
-	0x1223f0  func TTRShowSiriFoundInAppsDataModelSource.delegate.modify // modifyCoroutine 
-	0x1224c0  class func TTRShowSiriFoundInAppsDataModelSource.__allocating_init(store:) // init 
-	0x122620  func TTRShowSiriFoundInAppsDataModelSource.description.getter // getter 
-	0x122670  func <stripped> // method 
-	0x1229d0  func <stripped> // method 
+	0x11f330  func TTRShowSiriFoundInAppsDataModelSource.delegate.getter // getter 
+	0x11f360  func TTRShowSiriFoundInAppsDataModelSource.delegate.setter // setter 
+	0x11f3b0  func TTRShowSiriFoundInAppsDataModelSource.delegate.modify // modifyCoroutine 
+	0x11f480  class func TTRShowSiriFoundInAppsDataModelSource.__allocating_init(store:) // init 
+	0x11f5e0  func TTRShowSiriFoundInAppsDataModelSource.description.getter // getter 
+	0x11f630  func <stripped> // method 
+	0x11f990  func <stripped> // method 
  }
 
  class RemindersUICore.TTRShowSiriFoundInAppsMonitorableDataView : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2513,7 +2511,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let remindersToPrefetchCount : Int
 
 	// Swift methods
-	0x1229a0  class func TTRShowSiriFoundInAppsMonitorableDataView.__allocating_init(store:remindersToPrefetchCount:) // init 
+	0x11f960  class func TTRShowSiriFoundInAppsMonitorableDataView.__allocating_init(store:remindersToPrefetchCount:) // init 
  }
 
  struct RemindersUICore.TTRReminderLocationPickerModel {
@@ -2584,7 +2582,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x63dc00067c00 (0x3dc00067c00) in binary!
 	0x63d0  @objc TTRIFontCache.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff502e8  @objc TTRIFontCache.(null) <stripped>
+	0xfff502a8  @objc TTRIFontCache.(null) <stripped>
 
 	// Swift methods
  }
@@ -2610,7 +2608,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var completionHandler :  first-element-marker 
 
 	// Swift methods
-	0x12ae40  class func TTRSearchResultCollector.__allocating_init(performer:) // init 
+	0x127e00  class func TTRSearchResultCollector.__allocating_init(performer:) // init 
  }
 
  enum RemindersUICore.TTRSearchResultCollectorError {
@@ -2645,7 +2643,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let ignoresSeachText : Bool
 
 	// Swift methods
-	0x130920  class func TTRReminderLocationPickerMeCardItemProvider.__allocating_init(contactStore:backgroundQueue:ignoresSeachText:) // init 
+	0x12d8e0  class func TTRReminderLocationPickerMeCardItemProvider.__allocating_init(contactStore:backgroundQueue:ignoresSeachText:) // init 
  }
 
  class RemindersUICore.TTRReminderLocationPickerAutocompleteContactItemProvider : NSObject /usr/lib/libobjc.A.dylib {
@@ -2660,12 +2658,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find address 0x12c4000664e8 (0x2c4000664e8) in binary!
-	0x264990  @objc TTRReminderLocationPickerAutocompleteContactItemProvider.(null) <stripped>
+	0x2613c0  @objc TTRReminderLocationPickerAutocompleteContactItemProvider.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x35cfff96620  @objc TTRReminderLocationPickerAutocompleteContactItemProvider.(null) <stripped>
+	0x31cfff965e0  @objc TTRReminderLocationPickerAutocompleteContactItemProvider.(null) <stripped>
 
 	// Swift methods
-	0x13e090  class func TTRReminderLocationPickerAutocompleteContactItemProvider.__allocating_init(autocompleteStore:backgroundQueue:) // init 
+	0x13b050  class func TTRReminderLocationPickerAutocompleteContactItemProvider.__allocating_init(autocompleteStore:backgroundQueue:) // init 
  }
 
  class RemindersUICore.FetchOperation {
@@ -2689,7 +2687,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let editorProvider : TTRRemindersListAttributeEditorProviding
 
 	// Swift methods
-	0x1425e0  class func TTRRemindersListAttributeEditor.__allocating_init(editorProvider:) // init 
+	0x13f5a0  class func TTRRemindersListAttributeEditor.__allocating_init(editorProvider:) // init 
  }
 
  class RemindersUICore.TTRRemindersListChangeItemAttributeEditorProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TTRRemindersListAttributeEditorProviding {
@@ -2700,7 +2698,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	let undoManager : NSUndoManager?
 
 	// Swift methods
-	0x142600  class func TTRRemindersListChangeItemAttributeEditorProvider.__allocating_init(reminderChangeItems:undoManager:) // init 
+	0x13f5c0  class func TTRRemindersListChangeItemAttributeEditorProvider.__allocating_init(reminderChangeItems:undoManager:) // init 
  }
 
  class RemindersUICore.TTRRemindersListOneShotAttributeEditorProvider : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TTRRemindersListAttributeEditorProviding {
@@ -2731,7 +2729,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var reminderChangeItemSubscription : ÔA
 
 	// Swift methods
-	0x146480  class func TTRReminderDetailInteractor.__allocating_init(reminderChangeItem:undoManager:listID:) // init 
+	0x143440  class func TTRReminderDetailInteractor.__allocating_init(reminderChangeItem:undoManager:listID:) // init 
  }
 
  enum RemindersUICore.LoadState {
@@ -2761,7 +2759,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let unitTest_oneShotSyncSaveForUndo : Bool
 
 	// Swift methods
-	0x154c90  class func TTRReminderEditor.__allocating_init(changeItem:undoManager:unitTest_oneShotSyncSaveForUndo:) // init 
+	0x151c50  class func TTRReminderEditor.__allocating_init(changeItem:undoManager:unitTest_oneShotSyncSaveForUndo:) // init 
  }
 
  class RemindersUICore.EditedObjectIDs : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2798,7 +2796,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var failedAttachmentIDs : Set<REMObjectID>
 
 	// Swift methods
-	0x160c30  class func TTRAttachmentThumbnailsManager.__allocating_init(thumbnailSizeProvider:) // init 
+	0x15dbf0  class func TTRAttachmentThumbnailsManager.__allocating_init(thumbnailSizeProvider:) // init 
  }
 
  enum RemindersUICore.Result {
@@ -2830,8 +2828,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let smartListDisplayability : SmartListType
 
 	// Swift methods
-	0x16dfe0  class func TTRAccountsListsViewModel.__allocating_init() // init 
-	0x16e1a0  class func TTRAccountsListsViewModel.__allocating_init(model:shouldSelectListByDefault:options:accountMigrationState:cloudKitNetworkActivity:smartListsDisplayOrder:smartListsVisibility:isEditing:) // init 
+	0x16afa0  class func TTRAccountsListsViewModel.__allocating_init() // init 
+	0x16b160  class func TTRAccountsListsViewModel.__allocating_init(model:shouldSelectListByDefault:options:accountMigrationState:cloudKitNetworkActivity:smartListsDisplayOrder:smartListsVisibility:isEditing:) // init 
  }
 
  struct RemindersUICore.SmartListsSection {
@@ -2981,19 +2979,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var fetchingSortingStyle : ? // +0x48 (0x1)
 
 	// Swift methods
-	0x17de20  func TTRShowRemindersInListDataModelSource.delegate.getter // getter 
-	0x17de50  func TTRShowRemindersInListDataModelSource.delegate.setter // setter 
-	0x17df20  func TTRShowRemindersInListDataModelSource.delegate.modify // modifyCoroutine 
-	0x17e100  func TTRShowRemindersInListDataModelSource.list.getter // getter 
-	0x17e150  class func TTRShowRemindersInListDataModelSource.__allocating_init(list:countCompleted:) // init 
-	0x17e1e0  func TTRShowRemindersInListDataModelSource.start(fetchesInitialDataSynchronously:) // method 
-	0x17e350  func TTRShowRemindersInListDataModelSource.setList(_:advancesAfterDate:) // method 
-	0x17e5b0  func TTRShowRemindersInListDataModelSource.sortingStyle.getter // getter 
-	0x17e630  func TTRShowRemindersInListDataModelSource.setFetchingSortingStyle(_:) // method 
-	0x17e680  func <stripped> // method 
-	0x17f600  func <stripped> // method 
-	0x17fbf0  func <stripped> // method 
-	0x17fd80  func <stripped> // getter 
+	0x17ade0  func TTRShowRemindersInListDataModelSource.delegate.getter // getter 
+	0x17ae10  func TTRShowRemindersInListDataModelSource.delegate.setter // setter 
+	0x17aee0  func TTRShowRemindersInListDataModelSource.delegate.modify // modifyCoroutine 
+	0x17b0c0  func TTRShowRemindersInListDataModelSource.list.getter // getter 
+	0x17b110  class func TTRShowRemindersInListDataModelSource.__allocating_init(list:countCompleted:) // init 
+	0x17b1a0  func TTRShowRemindersInListDataModelSource.start(fetchesInitialDataSynchronously:) // method 
+	0x17b310  func TTRShowRemindersInListDataModelSource.setList(_:advancesAfterDate:) // method 
+	0x17b570  func TTRShowRemindersInListDataModelSource.sortingStyle.getter // getter 
+	0x17b5f0  func TTRShowRemindersInListDataModelSource.setFetchingSortingStyle(_:) // method 
+	0x17b640  func <stripped> // method 
+	0x17c5c0  func <stripped> // method 
+	0x17cbb0  func <stripped> // method 
+	0x17cd40  func <stripped> // getter 
  }
 
  class RemindersUICore.TTRShowRemindersInListMonitorableDataView : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3008,7 +3006,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let remindersToPrefetchCount : Int // +0x0 (0x8)
 
 	// Swift methods
-	0x17f250  class func TTRShowRemindersInListMonitorableDataView.__allocating_init(list:showCompleted:countCompleted:sortingStyle:remindersToPrefetchCount:) // init 
+	0x17c210  class func TTRShowRemindersInListMonitorableDataView.__allocating_init(list:showCompleted:countCompleted:sortingStyle:remindersToPrefetchCount:) // init 
  }
 
  enum RemindersUICore.Either {
@@ -3025,9 +3023,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find address 0x120400066428 (0x20400066428) in binary!
-	0x2648d0  @objc TTRRouter.(null) <stripped>
+	0x261300  @objc TTRRouter.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x34cfffa1890  @objc TTRRouter.(null) <stripped>
+	0x34cfffa1850  @objc TTRRouter.(null) <stripped>
 
 	// Swift methods
  }
@@ -3055,7 +3053,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var pendingPlacemarkRequest : Address
 
 	// Swift methods
-	0x1879d0  class func TTRReminderLocationPickerInteractor.__allocating_init(editor:itemProviders:geoService:) // init 
+	0x184990  class func TTRReminderLocationPickerInteractor.__allocating_init(editor:itemProviders:geoService:) // init 
  }
 
  class RemindersUICore.DefaultEditor : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TTRReminderLocationPickerInteractorEditing {
@@ -3065,7 +3063,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let undoManager : TTRUndoManager?
 
 	// Swift methods
-	0x187420  class func TTRReminderLocationPickerInteractor.DefaultEditor.__allocating_init(reminderChangeItem:undoManager:) // init 
+	0x1843e0  class func TTRReminderLocationPickerInteractor.DefaultEditor.__allocating_init(reminderChangeItem:undoManager:) // init 
  }
 
  enum RemindersUICore.PlacemarkFetchError {
@@ -3087,12 +3085,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find address 0x117c000663a0 (0x17c000663a0) in binary!
-	0x264848  @objc TTRUserDefaultsObservingBlock.(null) <stripped>
+	0x261278  @objc TTRUserDefaultsObservingBlock.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x184fffa50a8  @objc TTRUserDefaultsObservingBlock.(null) <stripped>
+	0x184fffa5068  @objc TTRUserDefaultsObservingBlock.(null) <stripped>
 
 	// Swift methods
-	0x18c260  class func TTRUserDefaultsObservingBlock.__allocating_init(block:) // init 
+	0x189220  class func TTRUserDefaultsObservingBlock.__allocating_init(block:) // init 
  }
 
  class RemindersUICore.TTRUserDefaultsObserver : NSObject /usr/lib/libobjc.A.dylib {
@@ -3105,15 +3103,15 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 
 	// ObjC -> Swift bridged methods
 WARNING: couldn't find address 0x11bc00066330 (0x1bc00066330) in binary!
-	0x264880  @objc TTRUserDefaultsObserver.(null) <stripped>
+	0x2612b0  @objc TTRUserDefaultsObserver.(null) <stripped>
 WARNING: couldn't find address 0x119c000663c0 (0x19c000663c0) in binary!
-	0x264868  @objc TTRUserDefaultsObserver.(null) <stripped>
+	0x261298  @objc TTRUserDefaultsObserver.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x344fff9e578  @objc TTRUserDefaultsObserver.(null) <stripped>
+	0x344fff9e538  @objc TTRUserDefaultsObserver.(null) <stripped>
 	0x6fc00066988  @objc TTRUserDefaultsObserver.Library/Frameworks/Combine.framework/Combine <stripped>
 
 	// Swift methods
-	0x18c400  class func TTRUserDefaultsObserver.__allocating_init(userDefaults:userDefaultsKey:block:) // init 
+	0x1893c0  class func TTRUserDefaultsObserver.__allocating_init(userDefaults:userDefaultsKey:block:) // init 
  }
 
  class RemindersUICore.TTRUserDefaults : NSObject /usr/lib/libobjc.A.dylib {
@@ -3128,7 +3126,7 @@ WARNING: couldn't find address 0x11e400066408 (0x1e400066408) in binary!
 WARNING: couldn't find address 0x11d4000663a0 (0x1d4000663a0) in binary!
 	0x48000000c  @objc TTRUserDefaults.(null) <stripped>
 WARNING: couldn't find address 0x11bc00066330 (0x1bc00066330) in binary!
-	0x264880  @objc TTRUserDefaults.(null) <stripped>
+	0x2612b0  @objc TTRUserDefaults.(null) <stripped>
  }
 
  enum RemindersUICore.WelcomeScreenVersion {
@@ -3175,7 +3173,7 @@ WARNING: couldn't find address 0x11bc00066330 (0x1bc00066330) in binary!
 WARNING: couldn't find address 0x36fc00066988 (0x6fc00066988) in binary!
 	0x11c20  @objc TTRITableViewCellSelectedBackground.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x2ccfffa94a8  @objc TTRITableViewCellSelectedBackground.(null) <stripped>
+	0x2ccfffa9468  @objc TTRITableViewCellSelectedBackground.(null) <stripped>
  }
 
  struct RemindersUICore.TTRParticipantAvatarResult {
@@ -3214,7 +3212,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let queue : OS_dispatch_queue
 
 	// Swift methods
-	0x193710  class func TTRParticipantAvatarProvider.__allocating_init(contactsProvider:contactStore:queue:) // init 
+	0x1906d0  class func TTRParticipantAvatarProvider.__allocating_init(contactsProvider:contactStore:queue:) // init 
  }
 
  class RemindersUICore.TTRAvatarImageRenderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib, TTRAvatarImageRendererType {
@@ -3241,8 +3239,8 @@ WARNING: couldn't find address 0x366c00066de0 (0x66c00066de0) in binary!
 	0x3680  @objc TTRIExpandingTextView.(null) <stripped>
 
 	// Swift methods
-	0x197090  class func TTRIExpandingTextView.__allocating_init(isForUseInNUIContainerView:lineIndexWhereClippingBegins:) // init 
-	0x197330  func TTRIExpandingTextView.commonInit() // method 
+	0x194050  class func TTRIExpandingTextView.__allocating_init(isForUseInNUIContainerView:lineIndexWhereClippingBegins:) // init 
+	0x1942f0  func TTRIExpandingTextView.commonInit() // method 
  }
 
  struct RemindersUICore.TTRAssignment {
@@ -3283,7 +3281,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var deferredInitialLoadPromise : 7Î
 
 	// Swift methods
-	0x19b960  class func TTRModuleState.__allocating_init(name:) // init 
+	0x198920  class func TTRModuleState.__allocating_init(name:) // init 
  }
 
  struct RemindersUICore.TTRReminderSuggestedAttribute {
@@ -3657,7 +3655,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x3634000668c0 (0x634000668c0) in binary!
 	0x11b58  @objc TTRListBadgeView.(null) <stripped>
 WARNING: couldn't find address 0x108400067b00 (0x8400067b00) in binary!
-	0x264748  @objc TTRListBadgeView.(null) <stripped>
+	0x261178  @objc TTRListBadgeView.(null) <stripped>
 WARNING: couldn't find address 0x106c00067af0 (0x6c00067af0) in binary!
 	0xe158  @objc TTRListBadgeView.(null) <stripped>
 WARNING: couldn't find address 0xe154000661b0 (0x154000661b0) in binary!
@@ -3665,28 +3663,28 @@ WARNING: couldn't find address 0xe154000661b0 (0x154000661b0) in binary!
 WARNING: couldn't find address 0xe13c00066188 (0x13c00066188) in binary!
 	0xe128  @objc TTRListBadgeView.(null) <stripped>
 WARNING: couldn't find address 0xe12400067ab0 (0x12400067ab0) in binary!
-	0x2646e0  @objc TTRListBadgeView.(null) <stripped>
+	0x261110  @objc TTRListBadgeView.(null) <stripped>
 WARNING: couldn't find address 0x60e400067aa8 (0xe400067aa8) in binary!
-	0x2646c8  @objc TTRListBadgeView.(null) <stripped>
+	0x2610f8  @objc TTRListBadgeView.(null) <stripped>
 WARNING: couldn't find address 0x60cc00066128 (0xcc00066128) in binary!
-	0x2646b0  @objc TTRListBadgeView.(null) <stripped>
+	0x2610e0  @objc TTRListBadgeView.(null) <stripped>
 WARNING: couldn't find address 0x60b400066100 (0xb400066100) in binary!
-	0x263cb8  @objc TTRListBadgeView.(null) <stripped>
+	0x2606e8  @objc TTRListBadgeView.(null) <stripped>
 WARNING: couldn't find address 0xed4b000660e0 (0x54b000660e0) in binary!
-	0x264688  @objc TTRListBadgeView.(null) <stripped>
+	0x2610b8  @objc TTRListBadgeView.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x38cfffd5988  @objc TTRListBadgeView.(null) <stripped>
-	0x24cfffd5a80  @objc TTRListBadgeView.„HÉ√ ∫ <stripped>
+	0x38cfffd5948  @objc TTRListBadgeView.(null) <stripped>
+	0x24cfffd5a40  @objc TTRListBadgeView. <stripped>
 	0x76400066188  @objc TTRListBadgeView.amework/ReminderKit <stripped>
-WARNING: couldn't find address 0x66b54fffd5b90 (0x354fffd5b90) in binary!
+WARNING: couldn't find address 0x66b54fffd5b50 (0x354fffd5b50) in binary!
 	0x21c00066780  @objc TTRListBadgeView.(null) <stripped>
-WARNING: couldn't find address 0xfffd5d18 (0xfffd5d18) in binary!
+WARNING: couldn't find address 0xfffd5cd8 (0xfffd5cd8) in binary!
 	0x4d400066760  @objc TTRListBadgeView.(null) <stripped>
-WARNING: couldn't find address 0x6675cfffd5d70 (0x75cfffd5d70) in binary!
+WARNING: couldn't find address 0x6675cfffd5d30 (0x75cfffd5d30) in binary!
 	0x61c000679d0  @objc TTRListBadgeView.(null) <stripped>
-WARNING: couldn't find address 0xfffd5e38 (0xfffd5e38) in binary!
+WARNING: couldn't find address 0xfffd5df8 (0xfffd5df8) in binary!
 	0x1d400067af0  @objc TTRListBadgeView.(null) <stripped>
-WARNING: couldn't find address 0xffff8e50 (0xffff8e50) in binary!
+WARNING: couldn't find address 0xffff8e40 (0xffff8e40) in binary!
 	0x4263486879  @objc TTRListBadgeView.(null) <stripped>
 WARNING: couldn't find address 0x2f4f507a58316430 (0x7a58316430) in binary!
 	0x36563697665  @objc TTRListBadgeView.(null) <stripped>
@@ -3694,53 +3692,53 @@ WARNING: couldn't find address 0x6e65507374726f70 (0x7374726f70) in binary!
 	0x56f63004e2c  @objc TTRListBadgeView.(null) <stripped>
 
 	// Swift methods
-	0x1bf960  func TTRListBadgeView.listColor.getter // getter 
-	0x1bfa10  func TTRListBadgeView.listColor.setter // setter 
-	0x1bfb80  func TTRListBadgeView.listColor.modify // modifyCoroutine 
-	0x1bfc60  func TTRListBadgeView.image.getter // getter 
-	0x1bfc90  func TTRListBadgeView.image.setter // setter 
-	0x1bfcb0  func TTRListBadgeView.image.modify // modifyCoroutine 
-	0x1c0020  func TTRListBadgeView.emoji.getter // getter 
-	0x1c0040  func TTRListBadgeView.emoji.setter // setter 
-	0x1c00c0  func TTRListBadgeView.emoji.modify // modifyCoroutine 
-	0x1c0190  func TTRListBadgeView.emojiFontSize.getter // getter 
-	0x1c01b0  func TTRListBadgeView.emojiFontSize.setter // setter 
-	0x1c02b0  func TTRListBadgeView.emojiFontSize.modify // modifyCoroutine 
-	0x1c03f0  func TTRListBadgeView.imageColor.getter // getter 
-	0x1c0430  func TTRListBadgeView.imageColor.setter // setter 
-	0x1c0530  func TTRListBadgeView.imageColor.modify // modifyCoroutine 
-	0x1c0650  func TTRListBadgeView.selected.getter // getter 
-	0x1c0670  func TTRListBadgeView.selected.setter // setter 
-	0x1c0690  func TTRListBadgeView.selected.modify // modifyCoroutine 
-	0x1c06d0  func TTRListBadgeView.hasGradient.getter // getter 
-	0x1c0710  func TTRListBadgeView.hasGradient.setter // setter 
-	0x1c0780  func TTRListBadgeView.hasGradient.modify // modifyCoroutine 
-	0x1c0880  func TTRListBadgeView.useEmojiColors.getter // getter 
-	0x1c08a0  func TTRListBadgeView.useEmojiColors.setter // setter 
-	0x1c0900  func TTRListBadgeView.useEmojiColors.modify // modifyCoroutine 
-	0x1c0b50  func TTRListBadgeView.shadowParams.getter // getter 
-	0x1c0b90  func TTRListBadgeView.shadowParams.setter // setter 
-	0x1c0c00  func TTRListBadgeView.shadowParams.modify // modifyCoroutine 
-	0x1c0c70  func TTRListBadgeView.selectionBorderSpacing.getter // getter 
-	0x1c0cc0  func TTRListBadgeView.selectionBorderSpacing.setter // setter 
-	0x1c0d10  func TTRListBadgeView.selectionBorderSpacing.modify // modifyCoroutine 
-	0x1c1560  func <stripped> // method 
-	0x1c1940  func <stripped> // method 
-	0x1c1ad0  func <stripped> // method 
-	0x1c1c20  func <stripped> // method 
-	0x1c2210  func <stripped> // method 
-	0x1c2340  func <stripped> // method 
-	0x1c2770  func TTRListBadgeView.ttrAccessibilityName.getter // getter 
-	0x1c27e0  func TTRListBadgeView.ttrAccessibilityName.setter // setter 
-	0x1c2830  func TTRListBadgeView.ttrAccessibilityName.modify // modifyCoroutine 
-	0x1c2890  func TTRListBadgeView.ttrAccessibilityShouldIgnoreAccessibilityName.getter // getter 
-	0x1c28d0  func TTRListBadgeView.ttrAccessibilityShouldIgnoreAccessibilityName.setter // setter 
-	0x1c28f0  func TTRListBadgeView.ttrAccessibilityShouldIgnoreAccessibilityName.modify // modifyCoroutine 
-	0x1c2990  func TTRListBadgeView.ttrAccessibilityShouldIgnoreTintColorValue.getter // getter 
-	0x1c2a40  func TTRListBadgeView.ttrAccessibilityShouldIgnoreTintColorValue.setter // setter 
-	0x1c2aa0  func TTRListBadgeView.ttrAccessibilityShouldIgnoreTintColorValue.modify // modifyCoroutine 
-	0x1c2ae0  func TTRListBadgeView.ttrAccessibilityLabel.getter // getter 
-	0x1c2d10  func TTRListBadgeView.ttrAccessibilityValue.getter // getter 
+	0x1bc920  func TTRListBadgeView.listColor.getter // getter 
+	0x1bc9d0  func TTRListBadgeView.listColor.setter // setter 
+	0x1bcb40  func TTRListBadgeView.listColor.modify // modifyCoroutine 
+	0x1bcc20  func TTRListBadgeView.image.getter // getter 
+	0x1bcc50  func TTRListBadgeView.image.setter // setter 
+	0x1bcc70  func TTRListBadgeView.image.modify // modifyCoroutine 
+	0x1bcfe0  func TTRListBadgeView.emoji.getter // getter 
+	0x1bd000  func TTRListBadgeView.emoji.setter // setter 
+	0x1bd080  func TTRListBadgeView.emoji.modify // modifyCoroutine 
+	0x1bd150  func TTRListBadgeView.emojiFontSize.getter // getter 
+	0x1bd170  func TTRListBadgeView.emojiFontSize.setter // setter 
+	0x1bd270  func TTRListBadgeView.emojiFontSize.modify // modifyCoroutine 
+	0x1bd3b0  func TTRListBadgeView.imageColor.getter // getter 
+	0x1bd3f0  func TTRListBadgeView.imageColor.setter // setter 
+	0x1bd4f0  func TTRListBadgeView.imageColor.modify // modifyCoroutine 
+	0x1bd610  func TTRListBadgeView.selected.getter // getter 
+	0x1bd630  func TTRListBadgeView.selected.setter // setter 
+	0x1bd650  func TTRListBadgeView.selected.modify // modifyCoroutine 
+	0x1bd690  func TTRListBadgeView.hasGradient.getter // getter 
+	0x1bd6d0  func TTRListBadgeView.hasGradient.setter // setter 
+	0x1bd740  func TTRListBadgeView.hasGradient.modify // modifyCoroutine 
+	0x1bd840  func TTRListBadgeView.useEmojiColors.getter // getter 
+	0x1bd860  func TTRListBadgeView.useEmojiColors.setter // setter 
+	0x1bd8c0  func TTRListBadgeView.useEmojiColors.modify // modifyCoroutine 
+	0x1bdb10  func TTRListBadgeView.shadowParams.getter // getter 
+	0x1bdb50  func TTRListBadgeView.shadowParams.setter // setter 
+	0x1bdbc0  func TTRListBadgeView.shadowParams.modify // modifyCoroutine 
+	0x1bdc30  func TTRListBadgeView.selectionBorderSpacing.getter // getter 
+	0x1bdc80  func TTRListBadgeView.selectionBorderSpacing.setter // setter 
+	0x1bdcd0  func TTRListBadgeView.selectionBorderSpacing.modify // modifyCoroutine 
+	0x1be520  func <stripped> // method 
+	0x1be900  func <stripped> // method 
+	0x1bea90  func <stripped> // method 
+	0x1bebe0  func <stripped> // method 
+	0x1bf1d0  func <stripped> // method 
+	0x1bf300  func <stripped> // method 
+	0x1bf730  func TTRListBadgeView.ttrAccessibilityName.getter // getter 
+	0x1bf7a0  func TTRListBadgeView.ttrAccessibilityName.setter // setter 
+	0x1bf7f0  func TTRListBadgeView.ttrAccessibilityName.modify // modifyCoroutine 
+	0x1bf850  func TTRListBadgeView.ttrAccessibilityShouldIgnoreAccessibilityName.getter // getter 
+	0x1bf890  func TTRListBadgeView.ttrAccessibilityShouldIgnoreAccessibilityName.setter // setter 
+	0x1bf8b0  func TTRListBadgeView.ttrAccessibilityShouldIgnoreAccessibilityName.modify // modifyCoroutine 
+	0x1bf950  func TTRListBadgeView.ttrAccessibilityShouldIgnoreTintColorValue.getter // getter 
+	0x1bfa00  func TTRListBadgeView.ttrAccessibilityShouldIgnoreTintColorValue.setter // setter 
+	0x1bfa60  func TTRListBadgeView.ttrAccessibilityShouldIgnoreTintColorValue.modify // modifyCoroutine 
+	0x1bfaa0  func TTRListBadgeView.ttrAccessibilityLabel.getter // getter 
+	0x1bfcd0  func TTRListBadgeView.ttrAccessibilityValue.getter // getter 
  }
 
  struct RemindersUICore.ShadowParams {
@@ -3756,10 +3754,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0xf9c000661c0 (0x79c000661c0) in binary!
 	0x11a60  @objc ShadowLayer.(null) <stripped>
 WARNING: couldn't find address 0x11a54000667b8 (0x254000667b8) in binary!
-	0x264650  @objc ShadowLayer.(null) <stripped>
+	0x261080  @objc ShadowLayer.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x354fffd5b90  @objc ShadowLayer.(null) <stripped>
-	0xfffd5d18  @objc ShadowLayer.H¿Ä˛ <stripped>
+	0x354fffd5b50  @objc ShadowLayer.(null) <stripped>
+	0xfffd5cd8  @objc ShadowLayer.ÑÂ <stripped>
 
 	// Swift methods
  }
@@ -3874,7 +3872,7 @@ WARNING: couldn't find address 0x119d400067af0 (0x1d400067af0) in binary!
 	let undoManager : NSUndoManager
 
 	// Swift methods
-	0x1ca6e0  class func TTRReminderDetailPendingMoveInteractorCapability.__allocating_init(reminderChangeItem:undoManager:pendingMoveTargetListID:) // init 
+	0x1c76a0  class func TTRReminderDetailPendingMoveInteractorCapability.__allocating_init(reminderChangeItem:undoManager:pendingMoveTargetListID:) // init 
  }
 
  class RemindersUICore.TTRDateIconGenerator : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3899,12 +3897,12 @@ WARNING: couldn't find address 0x119d400067af0 (0x1d400067af0) in binary!
 	var listFetchManager : TTRBatchFetchManager
 
 	// Swift methods
-	0x1cc290  func TTRShowAssignedDataModelSource.delegate.getter // getter 
-	0x1cc2c0  func TTRShowAssignedDataModelSource.delegate.setter // setter 
-	0x1cc310  func TTRShowAssignedDataModelSource.delegate.modify // modifyCoroutine 
-	0x1cc3e0  class func TTRShowAssignedDataModelSource.__allocating_init(store:countCompleted:) // init 
-	0x1cc470  func TTRShowAssignedDataModelSource.list(with:) // method 
-	0x1cc560  func <stripped> // method 
+	0x1c9250  func TTRShowAssignedDataModelSource.delegate.getter // getter 
+	0x1c9280  func TTRShowAssignedDataModelSource.delegate.setter // setter 
+	0x1c92d0  func TTRShowAssignedDataModelSource.delegate.modify // modifyCoroutine 
+	0x1c93a0  class func TTRShowAssignedDataModelSource.__allocating_init(store:countCompleted:) // init 
+	0x1c9430  func TTRShowAssignedDataModelSource.list(with:) // method 
+	0x1c9520  func <stripped> // method 
  }
 
  class RemindersUICore.TTRShowAssignedMonitorableDataView : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3919,7 +3917,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let remindersToPrefetchCount : Int // +0x0 (0x8)
 
 	// Swift methods
-	0x1cc880  class func TTRShowAssignedMonitorableDataView.__allocating_init(store:showCompleted:countCompleted:sortingStyle:remindersToPrefetchCount:) // init 
+	0x1c9840  class func TTRShowAssignedMonitorableDataView.__allocating_init(store:showCompleted:countCompleted:sortingStyle:remindersToPrefetchCount:) // init 
  }
 
  class RemindersUICore.TTRDataViewMonitor {
@@ -3946,7 +3944,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var cancellable : ÔA
 
 	// Swift methods
-	0x1d4dc0  class func TTRDebouncedAction.__allocating_init(interval:queue:) // init 
+	0x1d1db0  class func TTRDebouncedAction.__allocating_init(interval:queue:) // init 
  }
 
  class RemindersUICore.TTRShowAllRemindersDataModelSource : TTRRemindersListDataModelSourceBase, TTRShowAllRemindersDataModelSourceType {
@@ -3960,12 +3958,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var listFetchManager : TTRBatchFetchManager
 
 	// Swift methods
-	0x1dc5e0  func TTRShowAllRemindersDataModelSource.delegate.getter // getter 
-	0x1dc610  func TTRShowAllRemindersDataModelSource.delegate.setter // setter 
-	0x1dc660  func TTRShowAllRemindersDataModelSource.delegate.modify // modifyCoroutine 
-	0x1dc730  class func TTRShowAllRemindersDataModelSource.__allocating_init(store:countCompleted:) // init 
-	0x1dc7c0  func TTRShowAllRemindersDataModelSource.list(with:) // method 
-	0x1dc8b0  func <stripped> // method 
+	0x1d95d0  func TTRShowAllRemindersDataModelSource.delegate.getter // getter 
+	0x1d9600  func TTRShowAllRemindersDataModelSource.delegate.setter // setter 
+	0x1d9650  func TTRShowAllRemindersDataModelSource.delegate.modify // modifyCoroutine 
+	0x1d9720  class func TTRShowAllRemindersDataModelSource.__allocating_init(store:countCompleted:) // init 
+	0x1d97b0  func TTRShowAllRemindersDataModelSource.list(with:) // method 
+	0x1d98a0  func <stripped> // method 
  }
 
  class RemindersUICore.TTRShowAllRemindersMonitorableDataView : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3980,7 +3978,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let remindersToPrefetchCount : Int // +0x0 (0x8)
 
 	// Swift methods
-	0x1dcbd0  class func TTRShowAllRemindersMonitorableDataView.__allocating_init(store:showCompleted:countCompleted:sortingStyle:remindersToPrefetchCount:) // init 
+	0x1d9bc0  class func TTRShowAllRemindersMonitorableDataView.__allocating_init(store:showCompleted:countCompleted:sortingStyle:remindersToPrefetchCount:) // init 
  }
 
  enum RemindersUICore.TTRTreeViewUpdates {

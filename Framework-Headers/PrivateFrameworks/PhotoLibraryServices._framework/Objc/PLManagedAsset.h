@@ -777,7 +777,7 @@
 - (void)generateAndUpdateThumbnailsWithPreviewImage:(id)arg1 thumbnailImage:(id)arg2 fromImageSource:(struct CGImageSource *)arg3 imageData:(id)arg4 metadata:(id)arg5 forceSRGBConversion:(BOOL)arg6 saveCameraPreviewWellImage:(BOOL)arg7;
 - (id)generateDeferredAdjustmentWithImageConversionClient:(id)arg1 videoConversionClient:(id)arg2 reason:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)generateLargeThumbnailFileIfNecessary;
-- (void)generateThumbnailsWithImageSource:(struct CGImageSource *)arg1 imageData:(id)arg2 metadata:(id)arg3 allowMediumPreview:(BOOL)arg4 forceSRGBConversion:(BOOL)arg5 outSmallThumbnail:(id *)arg6 outLargeThumbnail:(id *)arg7;
+- (void)generateThumbnailsWithImageSource:(struct CGImageSource *)arg1 imageData:(id)arg2 metadata:(id)arg3 allowMediumPreview:(BOOL)arg4 forceSRGBConversion:(BOOL)arg5 outSmallThumbnail:(id *)arg6 outLargeThumbnail:(id *)arg7 isPreviewSource:(BOOL)arg8;
 - (void)getFileURL:(id *)arg1 originalFilename:(id *)arg2 uti:(id *)arg3 fileSize:(unsigned long long *)arg4 forSidecarMatchingUTI:(id)arg5 requireExactMatch:(BOOL)arg6;
 - (void)getSearchIndexContents:(id)arg1 graphData:(id)arg2 dateFormatter:(id)arg3 keywords:(id)arg4 synonymsDictionaries:(id)arg5 sceneTaxonomyProxy:(id)arg6 filename:(id)arg7;
 - (id)globalUUID;
@@ -791,7 +791,7 @@
 - (BOOL)hasScreenshotMetadata;
 - (BOOL)hasUnrenderedAsyncAdjustments;
 - (void)hideNonPrimaryAssetsInAssetGroup;
-- (id)imageDataForThumbGenerationAndIfNeededRAWUTI:(id *)arg1;
+- (id)imageDataForThumbGenerationAndIfNeededRAWUTI:(id *)arg1 isPreviewSource:(BOOL *)arg2;
 - (id)imageProperties;
 - (BOOL)imagePropertiesIndicatePresenceOfGainMap:(id)arg1;
 - (id)imageWithFormat:(unsigned short)arg1;

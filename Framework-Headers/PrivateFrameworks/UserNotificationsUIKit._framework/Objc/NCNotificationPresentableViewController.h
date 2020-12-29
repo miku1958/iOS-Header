@@ -12,7 +12,7 @@
 @class NCNotificationViewController, NSString;
 @protocol BNPanGestureProxy, NCNotificationPresentableViewControllerDelegate;
 
-@interface NCNotificationPresentableViewController : UIViewController <NCNotificationViewControllerObserving, BNPresentable>
+@interface NCNotificationPresentableViewController : UIViewController <BNPresentable, NCNotificationViewControllerObserving>
 {
     BOOL _readyForPanGestureProxy;
     BOOL _canPan;
@@ -53,12 +53,15 @@
 - (BOOL)_canShowWhileLocked;
 - (BOOL)_isAppearingOrAppeared;
 - (BOOL)becomeFirstResponder;
+- (BOOL)bn_shouldAnimateViewTransitionToSize:(struct CGSize)arg1;
 - (BOOL)canBecomeFirstResponder;
 - (BOOL)canResignFirstResponder;
 - (id)customBackgroundContainerViewForExpandedPlatterPresentationController:(id)arg1;
 - (void)draggingDidBeginWithGestureProxy:(id)arg1;
 - (id)initWithNotificationViewController:(id)arg1;
+- (void)longLookDidDismissForNotificationViewController:(id)arg1;
 - (void)longLookDidPresentForNotificationViewController:(id)arg1;
+- (void)longLookWillDismissForNotificationViewController:(id)arg1;
 - (void)longLookWillPresentForNotificationViewController:(id)arg1;
 - (void)preferredContentSizeDidChangeForChildContentContainer:(id)arg1;
 - (struct CGSize)preferredContentSizeWithPresentationSize:(struct CGSize)arg1 containerSize:(struct CGSize)arg2;

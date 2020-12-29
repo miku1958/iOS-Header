@@ -34,6 +34,7 @@ __attribute__((visibility("hidden")))
 + (unsigned long long)orthographyIndexForForOtherLanguage:(id)arg1;
 + (unsigned long long)orthographyIndexForLanguageCode:(unsigned char)arg1;
 + (id)supportedAssetLanguages;
++ (id)supportedAssetLexiconLanguages;
 + (id)supportedCyrillicLanguages;
 + (id)supportedEnglishLocalizationAdditions;
 + (id)supportedLanguages;

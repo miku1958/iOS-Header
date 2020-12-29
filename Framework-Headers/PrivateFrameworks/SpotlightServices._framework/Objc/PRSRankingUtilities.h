@@ -20,6 +20,7 @@
 + (float)floatValue:(float)arg1 withSigFigs:(long long)arg2;
 + (BOOL)multiWordString:(id)arg1 hasPrefix:(id)arg2;
 + (BOOL)userQueryHasOnlySingleCharacterTerms:(id)arg1;
++ (BOOL)userQueryTermsHasOnlySingleCharacterTerms:(id)arg1;
 
 @end
 

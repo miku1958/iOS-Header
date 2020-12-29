@@ -263,13 +263,6 @@ struct deque<std::__1::tuple<double, double, float>, std::__1::allocator<std::__
     } __size_;
 };
 
-struct function<bool (health::DataStore *, health::DataStore *, unsigned long long)> {
-    struct __value_func<bool (health::DataStore *, health::DataStore *, unsigned long long)> {
-        struct type _field1;
-        struct __base<bool (health::DataStore *, health::DataStore *, unsigned long long)> *_field2;
-    } _field1;
-};
-
 struct function<bool (unsigned long long, const unsigned long long &, const health::FilePage &)> {
     struct __value_func<bool (unsigned long long, const unsigned long long &, const health::FilePage &)> {
         struct type _field1;
@@ -354,14 +347,6 @@ struct normal_distribution<double> {
     BOOL _V_hot_;
 };
 
-struct optional<std::__1::set<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>>> {
-    union {
-        char _field1;
-        set_b4d22a2d _field2;
-    } _field1;
-    BOOL _field2;
-};
-
 struct os_unfair_lock_s {
     unsigned int _os_unfair_lock_opaque;
 };
@@ -373,18 +358,6 @@ struct param_type {
 
 struct queue<std::__1::__thread_id, std::__1::deque<std::__1::__thread_id, std::__1::allocator<std::__1::__thread_id>>> {
     struct deque<std::__1::__thread_id, std::__1::allocator<std::__1::__thread_id>> _field1;
-};
-
-struct set<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>> {
-    struct __tree<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<unsigned long long, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::less<unsigned long long>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
 };
 
 struct shared_ptr<health::DataStore> {
@@ -652,6 +625,14 @@ struct vector<std::__1::tuple<long long, HKSample *>, std::__1::allocator<std::_
     } __end_cap_;
 };
 
+struct vector<unsigned char, std::__1::allocator<unsigned char>> {
+    char *__begin_;
+    char *__end_;
+    struct __compressed_pair<unsigned char *, std::__1::allocator<unsigned char>> {
+        char *__value_;
+    } __end_cap_;
+};
+
 #pragma mark Typedef'd Structures
 
 typedef struct {
@@ -716,13 +697,6 @@ typedef struct {
     long long patchVersion;
 } CDStruct_f6aba300;
 
-typedef struct function<bool (health::DataStore *, health::DataStore *, unsigned long long)> {
-    struct __value_func<bool (health::DataStore *, health::DataStore *, unsigned long long)> {
-        struct type _field1;
-        struct __base<bool (health::DataStore *, health::DataStore *, unsigned long long)> *_field2;
-    } _field1;
-} function_196a1805;
-
 typedef struct map<long long, _HDActivityCacheSourceTotal, std::__1::less<long long>, std::__1::allocator<std::__1::pair<const long long, _HDActivityCacheSourceTotal>>> {
     struct __tree<std::__1::__value_type<long long, _HDActivityCacheSourceTotal>, std::__1::__map_value_compare<long long, std::__1::__value_type<long long, _HDActivityCacheSourceTotal>, std::__1::less<long long>, true>, std::__1::allocator<std::__1::__value_type<long long, _HDActivityCacheSourceTotal>>> {
         struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
@@ -734,26 +708,6 @@ typedef struct map<long long, _HDActivityCacheSourceTotal, std::__1::less<long l
         } _field3;
     } _field1;
 } map_c63dce6d;
-
-typedef struct optional<std::__1::set<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>>> {
-    union {
-        char _field1;
-        set_b4d22a2d _field2;
-    } _field1;
-    BOOL _field2;
-} optional_329458b2;
-
-typedef struct set<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>> {
-    struct __tree<unsigned long long, std::__1::less<unsigned long long>, std::__1::allocator<unsigned long long>> {
-        struct __tree_end_node<std::__1::__tree_node_base<void *>*> *_field1;
-        struct __compressed_pair<std::__1::__tree_end_node<std::__1::__tree_node_base<void *>*>, std::__1::allocator<std::__1::__tree_node<unsigned long long, void *>>> {
-            struct __tree_end_node<std::__1::__tree_node_base<void *>*> _field1;
-        } _field2;
-        struct __compressed_pair<unsigned long, std::__1::less<unsigned long long>> {
-            unsigned long long _field1;
-        } _field3;
-    } _field1;
-} set_b4d22a2d;
 
 typedef struct shared_ptr<health::DataStore> {
     struct DataStore *__ptr_;

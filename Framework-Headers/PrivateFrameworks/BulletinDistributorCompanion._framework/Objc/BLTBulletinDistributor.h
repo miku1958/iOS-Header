@@ -80,7 +80,7 @@
 - (void)_handleSyncStateChanged:(id)arg1;
 - (void)_mapBulletin:(id)arg1;
 - (unsigned long long)_nanoPresentableFeedFromPhoneFeed:(unsigned long long)arg1;
-- (void)_notifyGizmoOfBulletin:(id)arg1 forFeed:(unsigned long long)arg2 updateType:(unsigned long long)arg3 playLightsAndSirens:(BOOL)arg4 shouldSendReplyIfNeeded:(BOOL)arg5 attachment:(id)arg6 attachmentType:(long long)arg7 replyToken:(id)arg8;
+- (BOOL)_notifyGizmoOfBulletin:(id)arg1 forFeed:(unsigned long long)arg2 updateType:(unsigned long long)arg3 playLightsAndSirens:(BOOL)arg4 shouldSendReplyIfNeeded:(BOOL)arg5 attachment:(id)arg6 attachmentType:(long long)arg7 replyToken:(id)arg8;
 - (void)_notifyGizmoOfCancelBulletin:(id)arg1 sectionID:(id)arg2 universalSectionID:(id)arg3 feed:(unsigned long long)arg4 withBulletinDate:(id)arg5;
 - (id)_obsoletionDateRelativeToNow;
 - (void)_performModifyBulletin:(id)arg1 forFeed:(unsigned long long)arg2;
@@ -91,7 +91,7 @@
 - (void)_postWillSendBulletinToGizmoNotificationForBulletin:(id)arg1;
 - (void)_registerForPairedDeviceBuildChanges;
 - (void)_reloadBulletinsWithCompletion:(CDUnknownBlockType)arg1;
-- (void)_rememberBulletin:(id)arg1 forFeed:(unsigned long long)arg2;
+- (BOOL)_rememberBulletin:(id)arg1 forFeed:(unsigned long long)arg2 syncChangesToWatch:(BOOL)arg3;
 - (void)_removeTranscodedAttachmentIfNeededForBulletin:(id)arg1;
 - (id)_replyTokenForSectionID:(id)arg1 publisherMatchID:(id)arg2;
 - (void)_sendCurrentBulletinIdentifiers;
@@ -102,6 +102,7 @@
 - (void)_subscriberWillAllowBulletin:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (BOOL)_willNanoPresent:(unsigned long long)arg1;
 - (BOOL)_willNanoPresent:(unsigned long long)arg1 forBulletin:(id)arg2 feed:(unsigned long long)arg3;
+- (void)clearReplyBlockForReplyToken:(id)arg1;
 - (void)clearSectionInfoSentCache;
 - (void)dealloc;
 - (void)disableStandaloneTestMode;

@@ -26,6 +26,7 @@
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)_basalBodyTempMultiplier;
+- (id)_computeFirstRunCycleFactorSamplesForDemoPerson:(id)arg1 targetDate:(id)arg2;
 - (long long)_computeNextLuteinizingHormoneSurgeForDemoPerson:(id)arg1 atTime:(double)arg2;
 - (BOOL)_isDemoPersonOvulating:(id)arg1 atTime:(double)arg2;
 - (void)addMenstruationSampleForDemoPersonFromWatch:(id)arg1 date:(id)arg2 flow:(struct HDDemoDataMenstrualFlow)arg3 objectCollection:(id)arg4;

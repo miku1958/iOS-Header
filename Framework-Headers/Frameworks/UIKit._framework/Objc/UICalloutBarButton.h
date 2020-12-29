@@ -6,7 +6,7 @@
 
 #import <UIKitCore/UIButton.h>
 
-@class UITextReplacement;
+@class NSDate, UITextReplacement;
 
 __attribute__((visibility("hidden")))
 @interface UICalloutBarButton : UIButton
@@ -27,6 +27,7 @@ __attribute__((visibility("hidden")))
     BOOL m_padLeft;
     BOOL m_padRight;
     BOOL m_dontDismiss;
+    NSDate *m_appearanceDate;
     BOOL forceFlash;
 }
 
@@ -72,6 +73,7 @@ __attribute__((visibility("hidden")))
 - (void)setupWithTitle:(id)arg1 action:(SEL)arg2 type:(int)arg3;
 - (void)setupWithTitle:(id)arg1 subtitle:(id)arg2 maxWidth:(double)arg3 action:(SEL)arg4 type:(int)arg5;
 - (struct CGRect)titleRectForContentRect:(struct CGRect)arg1;
+- (void)touchDown;
 
 @end
 

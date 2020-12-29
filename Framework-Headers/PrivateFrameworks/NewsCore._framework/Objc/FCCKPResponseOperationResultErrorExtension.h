@@ -10,6 +10,7 @@
 
 @class NSData, NSString;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPResponseOperationResultErrorExtension : PBCodable <NSCopying>
 {
     NSString *_extensionName;
@@ -27,7 +28,6 @@
 @property (nonatomic) BOOL hasTypeCode;
 @property (nonatomic) unsigned int typeCode; // @synthesize typeCode=_typeCode;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

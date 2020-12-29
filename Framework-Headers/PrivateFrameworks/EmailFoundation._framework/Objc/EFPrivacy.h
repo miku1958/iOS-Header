@@ -11,6 +11,7 @@
 }
 
 + (unsigned int)bucketMessageCount:(unsigned long long)arg1;
++ (long long)bucketedMessageAgeSinceDate:(id)arg1 leadingDigits:(long long)arg2;
 + (id)dateByRemovingTimeComponentsFromDate:(id)arg1;
 + (id)fullyRedactedStringForString:(id)arg1;
 + (id)partiallyRedactedStringForString:(id)arg1;

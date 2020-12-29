@@ -62,6 +62,7 @@
 - (struct CGRect)_pdfMediaBox;
 - (id)_rhythmClassificationDescriptionText;
 - (id)_rhythmClassificationTitleText;
+- (id)_sampleAlgorithmVersionText;
 - (id)_sampleDateAttributedText;
 - (id)_sampleDateText;
 - (struct CGPoint)_sampleDateTrailingOrigin;

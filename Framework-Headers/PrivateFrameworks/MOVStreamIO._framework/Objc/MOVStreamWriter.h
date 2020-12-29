@@ -107,6 +107,7 @@
 - (int)encoderTypeForStream:(id)arg1;
 - (void)executePrepareToRecordWithMovieMetadata:(id)arg1;
 - (unsigned long long)fifoBufferSizeForStream:(id)arg1;
+- (BOOL)fifoDropsEnabled:(struct StreamRecordingData *)arg1;
 - (void)finishAVWriter;
 - (void)finishAndDrainFifoFirst;
 - (void)finishRecording;
@@ -117,7 +118,6 @@
 - (id)getMetadataGroupForBuffer:(struct __CVBuffer *)arg1 stream:(id)arg2 presentationTime:(CDStruct_1b6d18a9)arg3 serializationMode:(int)arg4;
 - (unsigned int)getPixelFormatForStream:(id)arg1 fromMap:(map_d85c7ab5 *)arg2;
 - (id)getTrackEncodedPixelFormatMetadataForStream:(id)arg1 fromMap:(map_d85c7ab5 *)arg2;
-- (id)getTrackEncodingMetadataForStream:(id)arg1 fromMap:(map_d85c7ab5 *)arg2;
 - (id)getTrackInputPixelFormatMetadataForStream:(id)arg1 fromMap:(map_d85c7ab5 *)arg2;
 - (id)getTrackMetadataForAttachmentsSerializationMode:(id)arg1 fromMap:(map_d85c7ab5 *)arg2;
 - (id)getTrackMetadataForExactBytesPerRow:(id)arg1 fromMap:(map_d85c7ab5 *)arg2;
@@ -129,6 +129,7 @@
 - (void)informDelegateAboutError:(id)arg1;
 - (void)informDelegateAboutFinishingTimeout;
 - (void)informDelegateAboutIsReady:(BOOL)arg1 forStream:(id)arg2;
+- (void)informDelegateAboutMediaWrittenForStream:(id)arg1 mediaType:(long long)arg2;
 - (id)initWithURL:(id)arg1 andExpectedFrameRate:(double)arg2;
 - (BOOL)isAudioStream:(struct StreamRecordingData *)arg1;
 - (BOOL)isReadyForMoreDataForStreamId:(id)arg1 fromMap:(map_d85c7ab5 *)arg2;

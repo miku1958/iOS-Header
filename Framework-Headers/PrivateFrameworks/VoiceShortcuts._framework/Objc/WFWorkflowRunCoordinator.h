@@ -11,11 +11,12 @@
 #import <VoiceShortcuts/WFOutOfProcessWorkflowControllerDelegate-Protocol.h>
 
 @class NSHashTable, NSMutableArray, NSMutableDictionary, NSString, WFDialogPresentationManager, WFUserNotificationManager;
-@protocol OS_dispatch_queue;
+@protocol OS_dispatch_queue, VCDatabaseProvider;
 
 @interface WFWorkflowRunCoordinator : NSObject <WFDialogPresentationManagerDelegate, WFOutOfProcessWorkflowControllerDelegate, UNUserNotificationCenterDelegate>
 {
     WFUserNotificationManager *_userNotificationManager;
+    id<VCDatabaseProvider> _databaseProvider;
     NSMutableDictionary *_runningWorkflowCompletionHandlers;
     NSMutableDictionary *_runningWorkflowControllers;
     NSMutableArray *_queuedPersistentRunRequests;
@@ -24,6 +25,7 @@
     NSObject<OS_dispatch_queue> *_queue;
 }
 
+@property (readonly, nonatomic) id<VCDatabaseProvider> databaseProvider; // @synthesize databaseProvider=_databaseProvider;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly, nonatomic) WFDialogPresentationManager *dialogPresentationManager; // @synthesize dialogPresentationManager=_dialogPresentationManager;
@@ -45,7 +47,7 @@
 - (id)bestErrorFromError:(id)arg1;
 - (void)dismissPresentedContentWithCompletion:(CDUnknownBlockType)arg1;
 - (void)enqueueDialog:(id)arg1 runningContext:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
-- (id)initWithUserNotificationManager:(id)arg1;
+- (id)initWithUserNotificationManager:(id)arg1 databaseProvider:(id)arg2;
 - (void)outOfProcessWorkflowController:(id)arg1 didFinishWithError:(id)arg2 cancelled:(BOOL)arg3 reference:(id)arg4 dialogAttribution:(id)arg5;
 - (void)outOfProcessWorkflowController:(id)arg1 didStartFromWorkflowReference:(id)arg2 dialogAttribution:(id)arg3;
 - (void)postNotificationAboutFailure:(id)arg1 inWorkflow:(id)arg2 dialogAttribution:(id)arg3;
@@ -64,6 +66,7 @@
 - (void)runWorkflowWithRequest:(id)arg1 context:(id)arg2;
 - (void)runWorkflowWithRequest:(id)arg1 context:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (BOOL)shortcutWithIdentifierIsRunning:(id)arg1;
+- (void)showSingleStepCompletionWithWebClipMetadata:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)stopRunningWorkflowWithRunningContext:(id)arg1;
 - (id)unsupportedDialogResponseWithRequest:(id)arg1;
 - (void)userNotificationCenter:(id)arg1 didReceiveNotificationResponse:(id)arg2 withCompletionHandler:(CDUnknownBlockType)arg3;

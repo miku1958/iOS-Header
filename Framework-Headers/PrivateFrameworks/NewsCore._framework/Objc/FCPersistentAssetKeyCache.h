@@ -10,7 +10,7 @@
 #import <NewsCore/FCAssetKeyCacheType-Protocol.h>
 #import <NewsCore/FCCacheFlushing-Protocol.h>
 
-@class NFUnfairLock, NSMutableDictionary, NSString;
+@class NFUnfairLock, NSCountedSet, NSMutableDictionary, NSString;
 
 @interface FCPersistentAssetKeyCache : NSObject <FCAssetKeyCacheType, FCCacheFlushing, FCAppActivityObserving>
 {
@@ -19,6 +19,8 @@
     NSString *_cachePath;
     NSMutableDictionary *_cacheEntries;
     NFUnfairLock *_cacheEntriesLock;
+    NSCountedSet *_interestedKeys;
+    NFUnfairLock *_interestLock;
 }
 
 @property (readonly, nonatomic) NSMutableDictionary *cacheEntries; // @synthesize cacheEntries=_cacheEntries;
@@ -28,6 +30,8 @@
 @property (readonly, copy) NSString *description;
 @property BOOL flushingEnabled; // @synthesize flushingEnabled=_flushingEnabled;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) NFUnfairLock *interestLock; // @synthesize interestLock=_interestLock;
+@property (strong, nonatomic) NSCountedSet *interestedKeys; // @synthesize interestedKeys=_interestedKeys;
 @property BOOL needsSave; // @synthesize needsSave=_needsSave;
 @property (readonly) Class superclass;
 
@@ -39,6 +43,7 @@
 - (void)activityObservingApplicationDidEnterBackground;
 - (void)enableFlushingWithFlushingThreshold:(unsigned long long)arg1;
 - (id)initWithCacheDirectory:(id)arg1 cacheName:(id)arg2;
+- (id)interestTokenForWrappingKeyIDs:(id)arg1;
 - (void)removeAllWrappingKeys;
 - (void)saveIfNeeded;
 - (void)setWrappingKey:(id)arg1 forWrappingKeyID:(id)arg2;

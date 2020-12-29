@@ -34,6 +34,7 @@
 + (BOOL)isBackedByTable;
 + (BOOL)isConcreteEntity;
 + (id)mergeDataObject:(id)arg1 provenance:(id)arg2 profile:(id)arg3 transaction:(id)arg4 error:(id *)arg5 insertHandler:(CDUnknownBlockType)arg6;
++ (BOOL)migrateDataFromDataStore:(const struct DataStore *)arg1 to:(struct DataStore *)arg2 transaction:(id)arg3 recoveryAnalytics:(id)arg4 error:(id *)arg5;
 + (BOOL)participatesInInsertion;
 + (BOOL)performPostJournalMergeCleanupWithTransaction:(id)arg1 profile:(id)arg2 error:(id *)arg3;
 + (BOOL)supportsObjectMerging;

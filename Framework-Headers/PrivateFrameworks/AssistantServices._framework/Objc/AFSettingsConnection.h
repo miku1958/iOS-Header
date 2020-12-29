@@ -66,6 +66,7 @@
 - (void)fetchSupportedLanguageCodes:(CDUnknownBlockType)arg1;
 - (void)fetchSupportedMultiUserLanguageCodes:(CDUnknownBlockType)arg1;
 - (void)forceMultiUserSync:(BOOL)arg1 download:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)getAudioSessionCoordinationSnapshotWithCompletion:(CDUnknownBlockType)arg1;
 - (void)getAvailableVoicesForLanguage:(id)arg1 includeAssetInfo:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)getAvailableVoicesForRecognitionLanguage:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)getAvailableVoicesForRecognitionLanguage:(id)arg1 includeAssetInfo:(BOOL)arg2 completion:(CDUnknownBlockType)arg3;

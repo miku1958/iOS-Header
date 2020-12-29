@@ -13,9 +13,9 @@
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let backgroundView : œ¢ // +0x48
+	let backgroundView : UÃ // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let textView : œ¢ // +0x70
+	let textView : UÃ // +0x70
  }
 
  struct AppStoreComponents.Metrics {
@@ -23,30 +23,125 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var backgroundPadding : UIEdgeInsets // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var backgroundMinimumHeight : ı¢ // +0x20
+	var backgroundMinimumHeight : ÉÃ // +0x20
  }
 
  class AppStoreComponents.ASCLayoutProxy : NSObject /usr/lib/libobjc.A.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let base : ≠£
+	let base : Õ
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x597400025378 (0x17400025378) in binary!
-	0x5998  @objc ASCLayoutProxy.(null) <stripped>
-WARNING: couldn't find address 0x59ac00025370 (0x1ac00025370) in binary!
-	0x59cd  @objc ASCLayoutProxy.(null) <stripped>
-WARNING: couldn't find address 0x59c1000241b0 (0x1c1000241b0) in binary!
-	0x59bd  @objc ASCLayoutProxy.(null) <stripped>
-WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
-	0x74365726f74  @objc ASCLayoutProxy.(null) <stripped>
-WARNING: couldn't find address 0x202073746e656e6f (0x3746e656e6f) in binary!
-	0x77453707041  @objc ASCLayoutProxy.(null) <stripped>
-WARNING: couldn't find address 0x6e656e6f706d6f43 (0x66f706d6f43) in binary!
-	0x0  @objc ASCLayoutProxy.(null) <stripped>
+WARNING: couldn't find address 0x696c0002d670 (0x16c0002d670) in binary!
+	0x6b60  @objc ASCLayoutProxy.(null) <stripped>
+WARNING: couldn't find address 0x6b740002d668 (0x3740002d668) in binary!
+	0x6b95  @objc ASCLayoutProxy.(null) <stripped>
+WARNING: couldn't find address 0x6b890002c1c8 (0x3890002c1c8) in binary!
+	0x6b85  @objc ASCLayoutProxy.(null) <stripped>
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	0x413a4d4152  @objc ASCLayoutProxy.(null) <stripped>
+WARNING: couldn't find address 0x706d6f4365726f74 (0x74365726f74) in binary!
+	0x3454a4f5250  @objc ASCLayoutProxy.(null) <stripped>
+WARNING: couldn't find address 0x65726f7453707041 (0x77453707041) in binary!
+	0xa312d7374  @objc ASCLayoutProxy.(null) <stripped>
 
 	// Swift methods
+ }
+
+ struct AppStoreComponents.AdLockupLayout {
+
+	// Properties
+	let metrics : Metrics // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let artworkView : UÃ // +0x2c8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let headingText : -Ã // +0x2f0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let titleText : 5Ã // +0x318
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let subtitleText : 5Ã // +0x340
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let tertiaryTitleText : -Ã // +0x368
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let offerText : -Ã // +0x390
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let offerButton : UÃ // +0x3b8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let userRatingView : Ã // +0x3e0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let ratingCountLabel : -Ã // +0x408
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let editorsChoiceView : Ã // +0x430
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let adButton : Ã // +0x458
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let description : 5Ã // +0x480
+ }
+
+ struct AppStoreComponents.Metrics {
+
+	// Properties
+	var artworkSize : CGSize // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var artworkMargin : ÉÃ // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var headingSpace : ÉÃ // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var titleRegularSpace : ÉÃ // +0x60
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var titleMediumSpace : ÉÃ // +0x88
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var titleShortSpace : ÉÃ // +0xb0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var titleWithHeadingSpace : ÉÃ // +0xd8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var subtitleSpace : ÉÃ // +0x100
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var tertiaryTitleSpace : ÉÃ // +0x128
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var offerTextSpace : ÉÃ // +0x150
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var metadataTextSpace : ÉÃ // +0x178
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bottomSpace : ÉÃ // +0x1a0
+	var offerButtonSize : CGSize // +0x1c8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var offerButtonMargin : ÉÃ // +0x1d8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var userRatingRightMargin : ÉÃ // +0x200
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var adButtonRightMargin : ÉÃ // +0x228
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var descriptionSpace : ÉÃ // +0x250
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var regularWidthColumnSpacing : ÉÃ // +0x278
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var descriptionTopMargin : ÉÃ // +0x2a0
+ }
+
+ struct AppStoreComponents.AdLockupInnerContentLayout {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var headingText : -Ã // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var titleText : 5Ã // +0x28
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var subtitleText : 5Ã // +0x50
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var tertiaryTitleText : -Ã // +0x78
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var offerText : -Ã // +0xa0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var userStarRating : Ã // +0xc8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var ratingCountText : Ã // +0xf0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var editorsChoiceView : Ã // +0x118
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var adButton : Ã // +0x140
+	var metrics : Metrics // +0x168
  }
 
  class AppStoreComponents.Storage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -54,12 +149,12 @@ WARNING: couldn't find address 0x6e656e6f706d6f43 (0x66f706d6f43) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleBackgroundView : œ¢ // +0x0
+	let titleBackgroundView : UÃ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleView : ≈¢ // +0x412a0
+	let titleView : 5Ã // +0x5faf0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleView : Ω¢ // +0x0
-	let hasTrailingSubtitle : Bool // +0x412d0
+	let subtitleView : -Ã // +0x0
+	let hasTrailingSubtitle : Bool // +0x5fb20
 
 	// Swift methods
  }
@@ -77,18 +172,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var titleBackgroundMinPadding : UIEdgeInsets // +0x20
 	var titleBackgroundMinSize : CGSize // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleTopSpace : ı¢ // +0x50
+	var subtitleTopSpace : ÉÃ // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleBottomSpace : ı¢ // +0x78
+	var subtitleBottomSpace : ÉÃ // +0x78
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleTrailingMaxWidth : ı¢ // +0xa0
+	var subtitleTrailingMaxWidth : ÉÃ // +0xa0
  }
 
  struct AppStoreComponents.CenteringLayout {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let view : œ¢ // +0x0
+	let view : UÃ // +0x0
 	let axes : Axis // +0x28
  }
 
@@ -98,15 +193,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let rawValue : Int // +0x0
  }
 
+ class AppStoreComponents.MediaPlatform : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
+	// Swift methods
+ }
+
  class AppStoreComponents.Storage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let imageView : œ¢
+	let imageView : UÃ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleView : ß¢
+	let titleView : Ã // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleView : ß¢
+	let subtitleView : Ã // +0x65090
 
 	// Swift methods
  }
@@ -122,17 +221,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let artworkView : œ¢ // +0x128
+	let artworkView : UÃ // +0x128
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headingText : ß¢ // +0x150
+	let headingText : Ã // +0x150
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleText : ≈¢ // +0x178
+	let titleText : 5Ã // +0x178
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleText : ≈¢ // +0x1a0
+	let subtitleText : 5Ã // +0x1a0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offerText : Ω¢ // +0x1c8
+	let offerText : -Ã // +0x1c8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offerButton : œ¢ // +0x1f0
+	let offerButton : UÃ // +0x1f0
  }
 
  struct AppStoreComponents.Metrics {
@@ -140,19 +239,79 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var artworkSize : CGSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var headingSpace : ı¢ // +0x10
+	var headingSpace : ÉÃ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleSpace : ı¢ // +0x38
+	var titleSpace : ÉÃ // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleWithHeadingSpace : ı¢ // +0x60
+	var titleWithHeadingSpace : ÉÃ // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleSpace : ı¢ // +0x88
+	var subtitleSpace : ÉÃ // +0x88
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleBottomSpace : ı¢ // +0xb0
+	var subtitleBottomSpace : ÉÃ // +0xb0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var offerLabelSpace : ı¢ // +0xd8
+	var offerLabelSpace : ÉÃ // +0xd8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var offerLabelBottomSpace : ı¢ // +0x100
+	var offerLabelBottomSpace : ÉÃ // +0x100
+ }
+
+ struct AppStoreComponents.Metrics {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var interItemSpacing : ÉÃ
+	var displayType : DisplayType
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var mediaAspectRatio : g 
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var boundingAspectRatio : èÀ
+ }
+
+ struct AppStoreComponents.LockupMediaLayout {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	let mediaViews :  empty-list 
+	let metrics : Metrics
+ }
+
+ enum AppStoreComponents.DisplayType {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	case singleItemFill : g 
+	case oneUp  
+	case twoUp  
+	case threeUp  
+	case landscape  
+	case none  
+ }
+
+ struct AppStoreComponents.Metrics {
+
+	// Properties
+	var artworkSize : CGSize // +0x0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var artworkMargin : ÉÃ // +0x10
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var headingSpace : ÉÃ // +0x38
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var titleRegularSpace : ÉÃ // +0x60
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var titleCompressedSpace : ÉÃ // +0x88
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var titleWithOfferSpace : ÉÃ // +0xb0
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var titleWithHeadingSpace : ÉÃ // +0xd8
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var subtitleSpace : ÉÃ // +0x100
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var offerTextSpace : ÉÃ // +0x128
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var bottomSpace : ÉÃ // +0x150
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var offerButtonMargin : ÉÃ // +0x178
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var axOfferButtonHeight : ÉÃ // +0x1a0
  }
 
  struct AppStoreComponents.SmallLockupLayout {
@@ -160,45 +319,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let artworkView : œ¢ // +0x1c8
+	let artworkView : UÃ // +0x1c8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headingText : Ω¢ // +0x1f0
+	let headingText : -Ã // +0x1f0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleText : ≈¢ // +0x218
+	let titleText : 5Ã // +0x218
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleText : ≈¢ // +0x240
+	let subtitleText : 5Ã // +0x240
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offerText : Ω¢ // +0x268
+	let offerText : -Ã // +0x268
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offerButton : œ¢ // +0x290
- }
-
- struct AppStoreComponents.Metrics {
-
-	// Properties
-	var artworkSize : CGSize // +0x0
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var artworkMargin : ı¢ // +0x10
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var headingSpace : ı¢ // +0x38
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleRegularSpace : ı¢ // +0x60
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleCompressedSpace : ı¢ // +0x88
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleWithOfferSpace : ı¢ // +0xb0
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleWithHeadingSpace : ı¢ // +0xd8
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleSpace : ı¢ // +0x100
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var offerTextSpace : ı¢ // +0x128
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottomSpace : ı¢ // +0x150
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var offerButtonMargin : ı¢ // +0x178
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var axOfferButtonHeight : ı¢ // +0x1a0
+	let offerButton : UÃ // +0x290
  }
 
  struct AppStoreComponents.MediumLockupLayout {
@@ -206,17 +337,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let artworkView : œ¢ // +0x158
+	let artworkView : UÃ // +0x158
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let headingText : Ω¢ // +0x180
+	let headingText : -Ã // +0x180
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleText : ≈¢ // +0x1a8
+	let titleText : 5Ã // +0x1a8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleText : ≈¢ // +0x1d0
+	let subtitleText : 5Ã // +0x1d0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offerText : Ω¢ // +0x1f8
+	let offerText : -Ã // +0x1f8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let offerButton : œ¢ // +0x220
+	let offerButton : UÃ // +0x220
  }
 
  struct AppStoreComponents.Metrics {
@@ -224,23 +355,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var artworkSize : CGSize // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var artworkMargin : ˘¢ // +0x10
+	var artworkMargin : }Ã // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var headingSpace : ı¢ // +0x18
+	var headingSpace : ÉÃ // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleSpace : ı¢ // +0x40
+	var titleSpace : ÉÃ // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var titleWithHeadingSpace : ı¢ // +0x68
+	var titleWithHeadingSpace : ÉÃ // +0x68
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleRegularSpace : ı¢ // +0x90
+	var subtitleRegularSpace : ÉÃ // +0x90
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var subtitleShortSpace : ı¢ // +0xb8
+	var subtitleShortSpace : ÉÃ // +0xb8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var offerTextSpace : ı¢ // +0xe0
+	var offerTextSpace : ÉÃ // +0xe0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var offerButtonTopMargin : ı¢ // +0x108
+	var offerButtonTopMargin : ÉÃ // +0x108
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var offerButtonHeight : ı¢ // +0x130
+	var offerButtonHeight : ÉÃ // +0x130
  }
 
  class AppStoreComponents.Storage : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -248,11 +379,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let metrics : Metrics // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let imageView : œ¢ // +0x0
+	let imageView : UÃ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let titleView : ß¢ // +0x3c0d0
+	let titleView : Ã // +0x4d580
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let subtitleView : ß¢ // +0x0
+	let subtitleView : Ã // +0x0
 
 	// Swift methods
  }
@@ -275,24 +406,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _rawValue : NSString
  }
 
- struct __C.CGSize {
-
-	// Properties
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : ˘¢
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : ˘¢
- }
-
  struct __C.UIEdgeInsets {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var top : ˘¢
+	var top : }Ã
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var left : ˘¢
+	var left : }Ã
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bottom : ˘¢
+	var bottom : }Ã
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var right : ˘¢
+	var right : }Ã
+ }
+
+ struct __C.CGSize {
+
+	// Properties
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var width : }Ã
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var height : }Ã
  }

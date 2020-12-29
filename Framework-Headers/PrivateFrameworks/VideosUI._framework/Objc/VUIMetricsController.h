@@ -20,8 +20,8 @@
     NSDictionary *_baseFields;
     NSDictionary *_cachedOpenUrlData;
     NSString *_currentTabIdentifier;
-    NSString *_exitEventDestinationUrl;
     VUIMetricsPageEventData *_lastRecordedPageEventData;
+    NSString *_exitEventDestinationUrl;
     MTMetricsKit *_activeMetricsKit;
     MTMetricsKit *_metricsKitMain;
     MTMetricsKit *_loggerKit;
@@ -93,6 +93,7 @@
 - (void)recordPage:(id)arg1;
 - (void)recordPerfEvent:(id)arg1;
 - (void)recordRawEvent:(id)arg1;
+- (void)recordSearch:(id)arg1;
 - (void)registerForBaseFieldChanges;
 - (void)setupMetricsController;
 - (void)updateGDPRConsentStatus;

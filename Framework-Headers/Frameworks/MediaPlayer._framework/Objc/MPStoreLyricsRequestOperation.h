@@ -6,12 +6,14 @@
 
 #import <MediaPlayer/MPAsyncOperation.h>
 
-@class MPStoreLyricsRequest, NSOperationQueue;
+@class MPStoreLyricsRequest, NSObject, NSOperationQueue;
+@protocol OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
 @interface MPStoreLyricsRequestOperation : MPAsyncOperation
 {
     NSOperationQueue *_operationQueue;
+    NSObject<OS_dispatch_queue> *_accessQueue;
     MPStoreLyricsRequest *_request;
     CDUnknownBlockType _responseHandler;
 }
@@ -23,7 +25,9 @@ __attribute__((visibility("hidden")))
 + (BOOL)supportsLyricsForURLBagDictionary:(id)arg1;
 - (void).cxx_destruct;
 - (void)_enqueueOperationWithURL:(id)arg1 bagDictionary:(id)arg2 allowingAuthentication:(BOOL)arg3;
+- (void)cancel;
 - (void)execute;
+- (id)init;
 
 @end
 

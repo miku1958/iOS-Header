@@ -27,12 +27,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _totalBytesReceived;
     NSString *_segmentName;
     NSString *_previousSegmentName;
+    BOOL _is5GHz;
     id<SegmentStatsDelegate> _delegate;
 }
 
 @property int adjustedDuration; // @synthesize adjustedDuration=_adjustedDuration;
 @property (readonly) double averageTargetBitrate;
 @property int duration; // @synthesize duration=_duration;
+@property BOOL is5GHz; // @synthesize is5GHz=_is5GHz;
 @property (readonly) NSString *previousSegmentName; // @synthesize previousSegmentName=_previousSegmentName;
 @property (readonly) NSString *segmentName; // @synthesize segmentName=_segmentName;
 @property unsigned long long totalBytesReceived; // @synthesize totalBytesReceived=_totalBytesReceived;

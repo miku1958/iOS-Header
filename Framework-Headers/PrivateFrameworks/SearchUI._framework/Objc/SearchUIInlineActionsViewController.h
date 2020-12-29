@@ -39,6 +39,7 @@
 - (id)hostingViewControllerForController:(id)arg1;
 - (id)setupView;
 - (unsigned long long)type;
+- (void)updateWithContact:(id)arg1;
 - (void)updateWithContacts:(id)arg1;
 - (void)updateWithRowModel:(id)arg1;
 

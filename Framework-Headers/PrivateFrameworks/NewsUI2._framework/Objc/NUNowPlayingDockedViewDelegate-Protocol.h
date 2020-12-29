@@ -10,5 +10,6 @@
 - (void)nowPlayingDockedViewDidTapPause:(NUNowPlayingDockedView *)arg1;
 - (void)nowPlayingDockedViewDidTapPlay:(NUNowPlayingDockedView *)arg1;
 - (void)nowPlayingDockedViewDidTapRewind:(NUNowPlayingDockedView *)arg1;
+- (void)nowPlayingDockedViewTogglePlayPause:(NUNowPlayingDockedView *)arg1;
 @end
 

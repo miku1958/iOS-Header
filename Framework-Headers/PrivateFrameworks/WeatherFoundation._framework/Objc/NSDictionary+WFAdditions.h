@@ -13,6 +13,7 @@
 + (id)stringValueFromDictionary:(id)arg1 forKey:(id)arg2 defaultValue:(id)arg3;
 + (double)timeIntervalValueFromDictionary:(id)arg1 forKey:(id)arg2 defaultValue:(double)arg3;
 - (id)arrayForKey:(id)arg1;
+- (BOOL)boolForKey:(id)arg1 defaultValue:(BOOL)arg2;
 - (id)dictionaryForKey:(id)arg1;
 - (id)numberForKey:(id)arg1;
 - (id)stringForKey:(id)arg1;
@@ -20,6 +21,7 @@
 - (id)wf_arrayForKeyPath:(id)arg1;
 - (id)wf_dictionaryForKeyPath:(id)arg1;
 - (double)wf_doubleForKeyPath:(id)arg1;
+- (id)wf_filter:(CDUnknownBlockType)arg1;
 - (float)wf_floatForKeyPath:(id)arg1;
 - (long long)wf_integerForKeyPath:(id)arg1;
 - (id)wf_numberForKeyPath:(id)arg1;

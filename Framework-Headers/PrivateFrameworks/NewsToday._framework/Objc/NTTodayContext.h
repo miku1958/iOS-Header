@@ -46,8 +46,8 @@
 - (id)initWithContentHostDirectory:(id)arg1 processVariant:(unsigned long long)arg2 accessQueue:(id)arg3 fetchQueue:(id)arg4;
 - (void)networkReachabilityDidChange:(id)arg1;
 - (id)placeholderResultsWithOperationInfo:(id)arg1;
-- (void)userDidReadHeadlineWithAnalyticsElement:(id)arg1 atDate:(id)arg2;
-- (void)userDidSeeHeadlinesWithAnalyticsElements:(id)arg1 atDate:(id)arg2;
+- (void)writeUserDidReadHeadlineWithAnalyticsElement:(id)arg1 atDate:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
+- (void)writeUserDidSeeHeadlinesWithAnalyticsElements:(id)arg1 atDate:(id)arg2 withCompletion:(CDUnknownBlockType)arg3;
 
 @end
 

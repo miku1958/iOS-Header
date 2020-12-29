@@ -55,6 +55,7 @@
 - (void)_displayLinkUpdated:(id)arg1;
 - (void)_pauseWithReason:(id)arg1;
 - (void)_registerAudioSessionObservers;
+- (void)_stopWithoutAudioSessionDeactivation;
 - (void)audioPlayerDecodeErrorDidOccur:(id)arg1 error:(id)arg2;
 - (void)audioPlayerDidFinishPlaying:(id)arg1 successfully:(BOOL)arg2;
 - (void)audioSessionDidInterrupt:(id)arg1;

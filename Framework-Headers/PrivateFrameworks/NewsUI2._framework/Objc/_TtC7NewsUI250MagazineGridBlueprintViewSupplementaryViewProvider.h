@@ -6,8 +6,12 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC7NewsUI250MagazineGridBlueprintViewSupplementaryViewProvider : _TtCs12_SwiftObject
 {
+    MISSING_TYPE *sectionHeaderRenderer;
+    MISSING_TYPE *delegate;
 }
 
 @end

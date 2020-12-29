@@ -6,35 +6,31 @@
 
 #import <UIKit/UIViewController.h>
 
-#import <SpringBoard/SBHomeGestureParticipantDelegate-Protocol.h>
+#import <SpringBoard/SBBarSwipeAffordanceControlling-Protocol.h>
 
-@class NSString, SBBarSwipeAffordanceView, SBHomeGestureParticipant;
-@protocol SBHomeGrabberPointerClickDelegate;
+@class NSString, SBBarSwipeAffordanceController, SBBarSwipeAffordanceView, SBHomeGestureParticipant;
+@protocol SBBarSwipeAffordanceControllingDelegate, SBHomeGrabberPointerClickDelegate;
 
-@interface SBBarSwipeAffordanceViewController : UIViewController <SBHomeGestureParticipantDelegate>
+@interface SBBarSwipeAffordanceViewController : UIViewController <SBBarSwipeAffordanceControlling>
 {
-    long long _homeGestureParticipantIdentifier;
-    BOOL _wantsToBeActiveAffordance;
-    BOOL _suppressAffordance;
-    SBHomeGestureParticipant *_homeGestureParticipant;
-    id<SBHomeGrabberPointerClickDelegate> _pointerClickDelegate;
+    SBBarSwipeAffordanceController *_barSwipeAffordanceController;
+    id<SBBarSwipeAffordanceControllingDelegate> _delegate;
 }
 
+@property (readonly, nonatomic) SBBarSwipeAffordanceView *barSwipeAffordanceView;
 @property (readonly, copy) NSString *debugDescription;
+@property (weak, nonatomic) id<SBBarSwipeAffordanceControllingDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (readonly, nonatomic) SBHomeGestureParticipant *homeGestureParticipant;
-@property (weak, nonatomic) id<SBHomeGrabberPointerClickDelegate> pointerClickDelegate; // @synthesize pointerClickDelegate=_pointerClickDelegate;
+@property (weak, nonatomic) id<SBHomeGrabberPointerClickDelegate> pointerClickDelegate;
 @property (readonly) Class superclass;
-@property (nonatomic) BOOL suppressAffordance; // @synthesize suppressAffordance=_suppressAffordance;
+@property (nonatomic) BOOL suppressAffordance;
 @property (strong, nonatomic) SBBarSwipeAffordanceView *view; // @dynamic view;
-@property (nonatomic) BOOL wantsToBeActiveAffordance; // @synthesize wantsToBeActiveAffordance=_wantsToBeActiveAffordance;
+@property (nonatomic) BOOL wantsToBeActiveAffordance;
 
 - (void).cxx_destruct;
-- (void)_beginTryingToBecomeActiveAffordance;
 - (BOOL)_canShowWhileLocked;
-- (void)_stopTryingToBecomeActiveAffordance;
-- (void)_updateActiveState;
 - (void)homeGestureParticipantOwningHomeGestureDidChange:(id)arg1;
 - (id)initWithHomeGestureParticipantIdentifier:(long long)arg1;
 - (void)loadView;

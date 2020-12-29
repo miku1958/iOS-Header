@@ -7,12 +7,13 @@
 #import <NewsCore/FCHeadline.h>
 
 #import <NewsCore/FCArticleAccessCheckable-Protocol.h>
+#import <NewsCore/FCContentArchivable-Protocol.h>
 #import <NewsCore/FCHeadlineStocksFields-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCCoverArt, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCInterestToken, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSDate, NSString, NSURL, NTPBArticleRecord;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCArticleAudioTrack, FCContentArchive, FCCoverArt, FCHeadlineExperimentalTitleMetadata, FCHeadlineThumbnail, FCInterestToken, FCIssue, FCTopStoriesStyleConfiguration, NSArray, NSDate, NSString, NSURL, NTPBArticleRecord;
 @protocol FCChannelProviding;
 
-@interface FCArticleHeadline : FCHeadline <FCHeadlineStocksFields, FCArticleAccessCheckable>
+@interface FCArticleHeadline : FCHeadline <FCHeadlineStocksFields, FCArticleAccessCheckable, FCContentArchivable>
 {
     BOOL _hasThumbnail;
     BOOL _sponsored;
@@ -108,6 +109,7 @@
 @property (nonatomic) long long behaviorFlags; // @synthesize behaviorFlags=_behaviorFlags;
 @property (readonly, copy, nonatomic) NSArray *blockedStorefrontIDs; // @synthesize blockedStorefrontIDs=_blockedStorefrontIDs;
 @property (readonly, nonatomic, getter=isBundlePaid) BOOL bundlePaid; // @synthesize bundlePaid=_bundlePaid;
+@property (readonly, nonatomic) FCContentArchive *contentArchive;
 @property (readonly, copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (readonly, nonatomic) BOOL isBlockedExplicitContent;
 @property (readonly, nonatomic) BOOL isDraft; // @synthesize isDraft=_isDraft;
@@ -135,9 +137,9 @@
 - (long long)bodyTextLength;
 - (BOOL)canBePurchased;
 - (id)clusterID;
-- (id)contentManifestWithContext:(id)arg1;
 - (unsigned long long)contentType;
 - (id)contentURL;
+- (id)contentWithContext:(id)arg1;
 - (id)coverArt;
 - (id)experimentalTitleMetadata;
 - (id)globalCohorts;

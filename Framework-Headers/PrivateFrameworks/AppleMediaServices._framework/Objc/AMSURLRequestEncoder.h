@@ -83,11 +83,13 @@
 - (id)requestByEncodingRequest:(id)arg1 parameters:(id)arg2;
 - (id)requestByEncodingRequest:(id)arg1 parameters:(id)arg2 error:(id *)arg3;
 - (id)requestWithMethod:(long long)arg1 URL:(id)arg2 error:(id *)arg3;
+- (id)requestWithMethod:(long long)arg1 URL:(id)arg2 headers:(id)arg3 parameters:(id)arg4;
 - (id)requestWithMethod:(long long)arg1 URL:(id)arg2 parameters:(id)arg3;
 - (id)requestWithMethod:(long long)arg1 URL:(id)arg2 parameters:(id)arg3 error:(id *)arg4;
 - (id)requestWithMethod:(long long)arg1 URLString:(id)arg2 error:(id *)arg3;
 - (id)requestWithMethod:(long long)arg1 URLString:(id)arg2 parameters:(id)arg3 error:(id *)arg4;
 - (id)requestWithMethod:(long long)arg1 bagURL:(id)arg2 error:(id *)arg3;
+- (id)requestWithMethod:(long long)arg1 bagURL:(id)arg2 headers:(id)arg3 parameters:(id)arg4;
 - (id)requestWithMethod:(long long)arg1 bagURL:(id)arg2 parameters:(id)arg3;
 - (id)requestWithMethod:(long long)arg1 bagURL:(id)arg2 parameters:(id)arg3 error:(id *)arg4;
 

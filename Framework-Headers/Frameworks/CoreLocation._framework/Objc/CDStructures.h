@@ -24,6 +24,8 @@ struct CLAssertionInternal {
 
 struct CLConnectionClient;
 
+struct CLConnectionMessage;
+
 struct CLLocationCoordinate2D {
     double latitude;
     double longitude;
@@ -60,11 +62,46 @@ struct _CLLocationManagerStateTrackerState {
     BOOL isAuthorizedForWidgetUpdates;
 };
 
+struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
+    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+        struct __rep {
+            union {
+                struct __long {
+                    unsigned long long _field1;
+                    unsigned long long _field2;
+                    char *_field3;
+                } _field1;
+                struct __short {
+                    union {
+                        unsigned char _field1;
+                        char _field2;
+                    } _field1;
+                    char _field2[23];
+                } _field2;
+                struct __raw {
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
+};
+
 struct os_state_hints_s {
     unsigned int _field1;
     char *_field2;
     unsigned int _field3;
     unsigned int _field4;
+};
+
+struct shared_ptr<CLConnectionMessage> {
+    struct CLConnectionMessage *_field1;
+    struct __shared_weak_count *_field2;
+};
+
+struct unique_ptr<CLConnectionClient, std::__1::default_delete<CLConnectionClient>> {
+    struct __compressed_pair<CLConnectionClient *, std::__1::default_delete<CLConnectionClient>> {
+        struct CLConnectionClient *__value_;
+    } __ptr_;
 };
 
 #pragma mark Typedef'd Structures
@@ -261,4 +298,33 @@ typedef struct {
     double latitude;
     double longitude;
 } CDStruct_2c43369c;
+
+typedef struct basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>> {
+    struct __compressed_pair<std::__1::basic_string<char, std::__1::char_traits<char>, std::__1::allocator<char>>::__rep, std::__1::allocator<char>> {
+        struct __rep {
+            union {
+                struct __long {
+                    unsigned long long _field1;
+                    unsigned long long _field2;
+                    char *_field3;
+                } _field1;
+                struct __short {
+                    union {
+                        unsigned char _field1;
+                        char _field2;
+                    } _field1;
+                    char _field2[23];
+                } _field2;
+                struct __raw {
+                    unsigned long long _field1[3];
+                } _field3;
+            } _field1;
+        } _field1;
+    } _field1;
+} basic_string_a1f69cfb;
+
+typedef struct shared_ptr<CLConnectionMessage> {
+    struct CLConnectionMessage *_field1;
+    struct __shared_weak_count *_field2;
+} shared_ptr_bdcc6d0f;
 

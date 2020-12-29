@@ -7,7 +7,7 @@
 #import <NewsCore/FCOperation.h>
 
 @class FCCachePolicy, FCForYouConfig, NSArray, NSDictionary, NSError;
-@protocol FCContentContext, FCCoreConfiguration, FCFeedPersonalizing, FCForYouBridgedConfigurationParser;
+@protocol FCBundleSubscriptionManagerType, FCContentContext, FCCoreConfiguration, FCFeedPersonalizing, FCForYouBridgedConfigurationParser;
 
 @interface FCForYouConfigHeadlinesOperation : FCOperation
 {
@@ -16,6 +16,7 @@
     id<FCContentContext> _context;
     id<FCFeedPersonalizing> _personalizer;
     id<FCForYouBridgedConfigurationParser> _bridgedConfigurationParser;
+    id<FCBundleSubscriptionManagerType> _bundleSubscriptionManager;
     long long _fields;
     NSArray *_additionalArticleListIDs;
     NSArray *_additionalTagIDs;
@@ -37,6 +38,7 @@
 @property (copy, nonatomic) NSArray *additionalTagIDs; // @synthesize additionalTagIDs=_additionalTagIDs;
 @property (strong, nonatomic) FCCachePolicy *articleListCachePolicy; // @synthesize articleListCachePolicy=_articleListCachePolicy;
 @property (strong, nonatomic) id<FCForYouBridgedConfigurationParser> bridgedConfigurationParser; // @synthesize bridgedConfigurationParser=_bridgedConfigurationParser;
+@property (strong, nonatomic) id<FCBundleSubscriptionManagerType> bundleSubscriptionManager; // @synthesize bundleSubscriptionManager=_bundleSubscriptionManager;
 @property (copy, nonatomic) id<FCCoreConfiguration> configuration; // @synthesize configuration=_configuration;
 @property (strong, nonatomic) id<FCContentContext> context; // @synthesize context=_context;
 @property (strong, nonatomic) FCCachePolicy *editorialSectionTagCachePolicy; // @synthesize editorialSectionTagCachePolicy=_editorialSectionTagCachePolicy;
@@ -56,6 +58,7 @@
 
 - (void).cxx_destruct;
 - (id)_edgeCacheHint;
+- (id)forYouConfigRecordID;
 - (id)localTodayFeedConfiguration;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;

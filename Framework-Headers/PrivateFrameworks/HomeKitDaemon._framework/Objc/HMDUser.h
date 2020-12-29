@@ -40,6 +40,7 @@
     NSString *_displayName;
     HMDAssistantAccessControl *_assistantAccessControl;
     unsigned long long _announceAccessLevel;
+    long long _userCloudShareWithOwnerMessagingState;
     HMBShareUserID *_cloudShareID;
     NAFuture *_cloudShareIDFuture;
     HMDUserPhotosPersonDataManager *_photosPersonDataManager;
@@ -79,7 +80,6 @@
 @property (weak) HMDHome *home; // @synthesize home=_home;
 @property (readonly) BOOL isCurrentUser;
 @property (readonly) BOOL isRunningOnHomeOwnersDevice;
-@property (readonly) BOOL isUserSettingsPrefEnabled;
 @property (strong) HMFMessageDispatcher *messageDispatcher; // @synthesize messageDispatcher=_messageDispatcher;
 @property (readonly, nonatomic) NSObject<OS_dispatch_queue> *messageReceiveQueue;
 @property (readonly, copy) NSSet *messageReceiverChildren;
@@ -102,6 +102,7 @@
 @property (strong) HMDUserSettingsBackingStoreController *sharedBackingStoreController; // @synthesize sharedBackingStoreController=_sharedBackingStoreController;
 @property (strong) HMDSettingsControllerDependency *sharedSettingsControllerDependency; // @synthesize sharedSettingsControllerDependency=_sharedSettingsControllerDependency;
 @property (readonly) Class superclass;
+@property long long userCloudShareWithOwnerMessagingState; // @synthesize userCloudShareWithOwnerMessagingState=_userCloudShareWithOwnerMessagingState;
 @property (strong) HMDUserDataController *userDataController; // @synthesize userDataController=_userDataController;
 @property (copy) NSString *userID; // @synthesize userID=_userID;
 @property (readonly) NSUUID *userUUID;
@@ -124,6 +125,7 @@
 - (void)_fixupRelayAccessTokens;
 - (void)_handleAnnounceSettingsUpdate:(id)arg1;
 - (void)_handleAssistantAccessControlUpdate:(id)arg1;
+- (void)_handleCloudShareWithOwnerMessageError;
 - (void)_handleMediaContentProfileAccessControlUpdate:(id)arg1;
 - (void)_handleMultiUserSharePayloadRequest:(id)arg1;
 - (void)_handleNeedsiTunesMultiUserRepair:(id)arg1;

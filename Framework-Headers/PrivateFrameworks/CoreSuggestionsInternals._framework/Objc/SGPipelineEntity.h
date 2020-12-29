@@ -6,7 +6,7 @@
 
 #import <CoreSuggestionsInternals/SGEntity.h>
 
-@class INInteraction, NSArray, NSMutableArray, NSMutableDictionary, NSSet, NSString, SGLazyResult, SGMessage, SGSimpleMailMessage, SGTextMessage;
+@class INInteraction, NSArray, NSMutableArray, NSMutableDictionary, NSSet, NSString, SGHarvestQueueMetrics, SGLazyResult, SGMessage, SGSimpleMailMessage, SGTextMessage;
 
 @interface SGPipelineEntity : SGEntity
 {
@@ -34,6 +34,7 @@
     SGSimpleMailMessage *_mailMessage;
     SGTextMessage *_textMessage;
     INInteraction *_interaction;
+    SGHarvestQueueMetrics *_harvestMetrics;
     struct _NSRange _plainTextSigRange;
 }
 
@@ -47,6 +48,7 @@
 @property (strong, nonatomic) NSArray *enrichments; // @synthesize enrichments=_enrichments;
 @property (strong, nonatomic) NSArray *externalEnrichments; // @synthesize externalEnrichments=_externalEnrichments;
 @property (readonly, getter=hasFullDownloadBeenRequested) BOOL fullDownloadRequested;
+@property (strong, nonatomic) SGHarvestQueueMetrics *harvestMetrics; // @synthesize harvestMetrics=_harvestMetrics;
 @property (readonly, nonatomic) CDStruct_f96224e3 *inhumanFeatures;
 @property (readonly, nonatomic) NSArray *instantMessageAddresses; // @synthesize instantMessageAddresses=_instantMessageAddresses;
 @property (readonly, nonatomic) INInteraction *interaction; // @synthesize interaction=_interaction;

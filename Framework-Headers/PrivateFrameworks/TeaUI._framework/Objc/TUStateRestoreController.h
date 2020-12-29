@@ -14,6 +14,7 @@
 {
     MISSING_TYPE *timeWindow;
     MISSING_TYPE *store;
+    MISSING_TYPE *anyNavigationHappenAfterBackground;
     MISSING_TYPE *isStateRestorationFeatureEnabled;
     MISSING_TYPE *hasStateDiscarded;
 }
@@ -27,6 +28,7 @@
 - (id)initWithTimeWindow:(double)arg1 isRunningPPT:(BOOL)arg2;
 - (id)initWithTimeWindow:(double)arg1 isStateRestorationEnabled:(BOOL)arg2;
 - (void)markStateDiscarded;
+- (void)navigationDidHappen;
 - (void)sceneDidEnterBackground;
 
 @end

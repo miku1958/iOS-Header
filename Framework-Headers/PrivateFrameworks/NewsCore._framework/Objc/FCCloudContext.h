@@ -15,7 +15,7 @@
 #import <NewsCore/FCTestingContext-Protocol.h>
 
 @class FCAccessChecker, FCArticleController, FCAssetManager, FCAudioPlaylist, FCClientEndpointConnection, FCCommandQueue, FCFeedManager, FCFlintResourceManager, FCIssueReadingHistory, FCLocalAreasManager, FCNetworkBehaviorMonitor, FCNewsletterEndpointConnection, FCNotificationController, FCNotificationsEndpointConnection, FCPersonalizationData, FCPrivateChannelMembershipController, FCPurchaseController, FCReadingHistory, FCReadingList, FCSubscriptionController, FCSubscriptionList, FCTagController, FCTagSettings, FCTranslationManager, FCUserInfo, FCUserVectorManager, NSString, NSURL;
-@protocol FCAVAssetPrewarming, FCAppActivityMonitor, FCBackgroundTaskable, FCBundleSubscriptionManagerType, FCContentContext, FCContentContextInternal, FCCoreConfigurationManager, FCCurrentIssuesChecker, FCFeedPersonalizing, FCForYouBridgedConfigurationParser, FCForYouMagazineFeedManaging, FCForYouPluginGroupManaging, FCLocalRegionManager, FCNewsAppConfigurationManager, FCNewsletterManager, FCOfflineArticleManagerType, FCPPTContext, FCPaidAccessCheckerType, FCPrivateDataContext, FCPrivateDataContextInternal, FCPurchaseManagerType, FCPurchaseProviderType, FCPushNotificationHandling, FCWebArchiveSource;
+@protocol FCAVAssetPrewarming, FCAppActivityMonitor, FCBackgroundTaskable, FCBundleSubscriptionManagerType, FCContentContext, FCContentContextInternal, FCCoreConfigurationManager, FCCurrentIssuesChecker, FCFeedPersonalizing, FCForYouBridgedConfigurationParser, FCForYouMagazineFeedManaging, FCForYouPluginGroupManaging, FCLocalRegionManager, FCNewsAppConfigurationManager, FCNewsletterManager, FCOfflineArticleManagerType, FCPPTContext, FCPaidAccessCheckerType, FCPrivateDataContext, FCPrivateDataContextInternal, FCPurchaseManagerType, FCPurchaseProviderType, FCPushNotificationHandling;
 
 @interface FCCloudContext : NSObject <FCTestingContext, FCCKDatabaseEncryptionDelegate, FCAssetKeyManagerDelegate, FCBundleSubscriptionChangeObserver, FCContentContext, FCPrivateDataContext, FCCacheFlushing>
 {
@@ -109,7 +109,6 @@
 @property (strong, nonatomic) id<FCPaidAccessCheckerType> paidAccessChecker; // @synthesize paidAccessChecker=_paidAccessChecker;
 @property (readonly, nonatomic) FCPersonalizationData *personalizationData;
 @property (readonly, nonatomic) id<FCPPTContext> pptContext; // @synthesize pptContext=_pptContext;
-@property (readonly, nonatomic) long long preferredMediaQuality;
 @property (readonly, nonatomic) FCPrivateChannelMembershipController *privateChannelMembershipController;
 @property (strong, nonatomic) id<FCPrivateDataContext> privateDataContext; // @synthesize privateDataContext=_privateDataContext;
 @property (readonly, copy, nonatomic) NSString *privateDataDirectory;
@@ -129,8 +128,6 @@
 @property (strong, nonatomic) FCTranslationManager *translationManager; // @synthesize translationManager=_translationManager;
 @property (readonly, nonatomic) FCUserInfo *userInfo;
 @property (strong, nonatomic) FCUserVectorManager *userVectorManager; // @synthesize userVectorManager=_userVectorManager;
-@property (readonly, nonatomic) NSURL *webArchiveCacheDirectoryURL;
-@property (strong, nonatomic) id<FCWebArchiveSource> webArchiveSource;
 
 + (void)initialize;
 + (id)testingContext;
@@ -153,6 +150,7 @@
 - (id)initWithContentContext:(id)arg1 privateDataContext:(id)arg2 networkBehaviorMonitor:(id)arg3 options:(long long)arg4;
 - (id)insertTestArticle;
 - (id)insertTestArticlesWithCount:(unsigned long long)arg1;
+- (id)interestTokenForContentManifest:(id)arg1;
 - (id)magazinesConfigurationManager;
 - (id)news_core_ConfigurationManager;
 - (id)notificationsController;

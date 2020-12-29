@@ -21,15 +21,19 @@
     int _widgetArticleRank;
     int _widgetArticleRankInSection;
     int _widgetContentType;
+    int _widgetExposureStackLocation;
     int _widgetSectionDisplayRank;
     NSString *_widgetSectionId;
+    int _widgetType;
     struct {
         unsigned int widgetArticleCount:1;
         unsigned int widgetArticleCountInSection:1;
         unsigned int widgetArticleRank:1;
         unsigned int widgetArticleRankInSection:1;
         unsigned int widgetContentType:1;
+        unsigned int widgetExposureStackLocation:1;
         unsigned int widgetSectionDisplayRank:1;
+        unsigned int widgetType:1;
     } _has;
 }
 
@@ -44,8 +48,10 @@
 @property (nonatomic) BOOL hasWidgetArticleRank;
 @property (nonatomic) BOOL hasWidgetArticleRankInSection;
 @property (nonatomic) BOOL hasWidgetContentType;
+@property (nonatomic) BOOL hasWidgetExposureStackLocation;
 @property (nonatomic) BOOL hasWidgetSectionDisplayRank;
 @property (readonly, nonatomic) BOOL hasWidgetSectionId;
+@property (nonatomic) BOOL hasWidgetType;
 @property (strong, nonatomic) NSString *sourceChannelId; // @synthesize sourceChannelId=_sourceChannelId;
 @property (strong, nonatomic) NSString *webEmbedId; // @synthesize webEmbedId=_webEmbedId;
 @property (nonatomic) int widgetArticleCount; // @synthesize widgetArticleCount=_widgetArticleCount;
@@ -53,11 +59,15 @@
 @property (nonatomic) int widgetArticleRank; // @synthesize widgetArticleRank=_widgetArticleRank;
 @property (nonatomic) int widgetArticleRankInSection; // @synthesize widgetArticleRankInSection=_widgetArticleRankInSection;
 @property (nonatomic) int widgetContentType; // @synthesize widgetContentType=_widgetContentType;
+@property (nonatomic) int widgetExposureStackLocation; // @synthesize widgetExposureStackLocation=_widgetExposureStackLocation;
 @property (nonatomic) int widgetSectionDisplayRank; // @synthesize widgetSectionDisplayRank=_widgetSectionDisplayRank;
 @property (strong, nonatomic) NSString *widgetSectionId; // @synthesize widgetSectionId=_widgetSectionId;
+@property (nonatomic) int widgetType; // @synthesize widgetType=_widgetType;
 
 - (void).cxx_destruct;
 - (int)StringAsWidgetContentType:(id)arg1;
+- (int)StringAsWidgetExposureStackLocation:(id)arg1;
+- (int)StringAsWidgetType:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)description;
 - (id)dictionaryRepresentation;
@@ -66,6 +76,8 @@
 - (void)mergeFrom:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
 - (id)widgetContentTypeAsString:(int)arg1;
+- (id)widgetExposureStackLocationAsString:(int)arg1;
+- (id)widgetTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;
 
 @end

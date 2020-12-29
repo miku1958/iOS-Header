@@ -19,6 +19,7 @@
     NSString *_bundleID;
     RCDeviceInfo *_deviceInfo;
     RCDebugOverrides *_debugOverrides;
+    unsigned long long _requestMode;
 }
 
 @property (readonly, copy, nonatomic) NSString *bundleID; // @synthesize bundleID=_bundleID;
@@ -30,6 +31,7 @@
 @property (readonly) unsigned long long hash;
 @property (readonly, copy, nonatomic) NSString *loggingKey;
 @property (readonly, nonatomic) NSArray *requestInfos; // @synthesize requestInfos=_requestInfos;
+@property (readonly, nonatomic) unsigned long long requestMode; // @synthesize requestMode=_requestMode;
 @property (readonly, copy, nonatomic) NSString *storefrontID; // @synthesize storefrontID=_storefrontID;
 @property (readonly) Class superclass;
 @property (readonly, nonatomic) BOOL useBackgroundRefreshRate; // @synthesize useBackgroundRefreshRate=_useBackgroundRefreshRate;
@@ -41,7 +43,9 @@
 - (id)dictionaryRepresentation;
 - (id)initWithRequestInfos:(id)arg1 userID:(id)arg2 storefrontID:(id)arg3 bundleID:(id)arg4 deviceInfo:(id)arg5 debugOverrides:(id)arg6;
 - (id)initWithRequestInfos:(id)arg1 userID:(id)arg2 storefrontID:(id)arg3 bundleID:(id)arg4 deviceInfo:(id)arg5 debugOverrides:(id)arg6 useBackgroundRefreshRate:(BOOL)arg7;
+- (id)initWithRequestInfos:(id)arg1 userID:(id)arg2 storefrontID:(id)arg3 bundleID:(id)arg4 deviceInfo:(id)arg5 debugOverrides:(id)arg6 useBackgroundRefreshRate:(BOOL)arg7 requestMode:(unsigned long long)arg8;
 - (id)initWithRequestKey:(id)arg1 responseKey:(id)arg2 fallbackURL:(id)arg3 userID:(id)arg4 storefrontID:(id)arg5 bundleID:(id)arg6 deviceInfo:(id)arg7 debugOverrides:(id)arg8;
+- (id)initWithRequestKey:(id)arg1 responseKey:(id)arg2 fallbackURL:(id)arg3 userID:(id)arg4 storefrontID:(id)arg5 bundleID:(id)arg6 deviceInfo:(id)arg7 debugOverrides:(id)arg8 requestMode:(unsigned long long)arg9;
 - (id)initWithRequestKey:(id)arg1 responseKey:(id)arg2 fallbackURL:(id)arg3 userID:(id)arg4 storefrontID:(id)arg5 bundleID:(id)arg6 deviceInfo:(id)arg7 debugOverrides:(id)arg8 useBackgroundRefreshRate:(BOOL)arg9;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)isValid;

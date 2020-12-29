@@ -30,7 +30,9 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) HDSPWakeDetectionDetectingState *detectingState; // @synthesize detectingState=_detectingState;
 @property (readonly, nonatomic) HDSPWakeDetectionDisabledState *disabledState; // @synthesize disabledState=_disabledState;
 @property (readonly) unsigned long long hash;
+@property (readonly, nonatomic) BOOL inDetectionWindow;
 @property (readonly, weak, nonatomic) id<HDSPWakeDetectionStateMachineInfoProvider> infoProvider; // @dynamic infoProvider;
+@property (readonly, nonatomic) BOOL isWatch;
 @property (readonly, nonatomic) HDSPWakeDetectionNotifiedState *notifiedState; // @synthesize notifiedState=_notifiedState;
 @property (readonly, nonatomic) HKSPSleepScheduleOccurrence *relevantOccurrence;
 @property (readonly, nonatomic) BOOL sleepModeIsOff;
@@ -40,14 +42,16 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) HDSPWakeDetectionWaitingState *waitingState; // @synthesize waitingState=_waitingState;
 
 - (void).cxx_destruct;
-- (id)detectionWindowAfterDate:(id)arg1;
+- (void)earlyWakeUpWasNotifiedRemotely;
 - (id)initWithIdentifier:(id)arg1 persistence:(id)arg2 delegate:(id)arg3 infoProvider:(id)arg4 currentDateProvider:(CDUnknownBlockType)arg5;
+- (id)nextWakeUpAfterDate:(id)arg1;
 - (void)postWakeDetectionNotification;
 - (void)scheduleWakeDetection;
 - (void)startWakeDetection;
 - (id)stateMachineLog;
 - (void)stopWakeDetection;
 - (void)unscheduleWakeDetection;
+- (id)upcomingStartDetectionDateAfterDate:(id)arg1;
 - (void)wakeDetectionEventDue;
 - (void)wakeupEventDetected:(id)arg1;
 

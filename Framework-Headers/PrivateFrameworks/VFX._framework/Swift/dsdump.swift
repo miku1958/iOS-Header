@@ -554,10 +554,10 @@
 	var _owned : Bool
 
 	// Swift methods
-	0x6c5ce0  class func SMKFluidSolver2D.__allocating_init() // init 
-	0x6c5d40  class func SMKFluidSolver2D.__allocating_init(width:height:cellSize:) // init 
-	0x6c5e10  func SMKFluidSolver2D.handle() // method 
-	0x6c5e20  func SMKFluidSolver2D.description.getter // getter 
+	0x6c5ba0  class func SMKFluidSolver2D.__allocating_init() // init 
+	0x6c5c00  class func SMKFluidSolver2D.__allocating_init(width:height:cellSize:) // init 
+	0x6c5cd0  func SMKFluidSolver2D.handle() // method 
+	0x6c5ce0  func SMKFluidSolver2D.description.getter // getter 
  }
 
  enum Smoky.BorderType {
@@ -583,16 +583,16 @@
 	var _owned : Bool
 
 	// Swift methods
-	0x6c7e80  class func SMKMarchingSquares.__allocating_init() // init 
-	0x6c7f30  func SMKMarchingSquares.isValid() // method 
-	0x6c7f40  func SMKMarchingSquares.setFieldFromDensity(fluidSolver:useAbsoluteValues:excludeBorder:) // method 
-	0x6c7f60  func SMKMarchingSquares.setFieldFromDensity(fluidSolverHandle:useAbsoluteValues:excludeBorder:) // method 
-	0x6c7f80  func SMKMarchingSquares.setFieldFromVelocityX(fluidSolver:useAbsoluteValues:excludeBorder:) // method 
-	0x6c7fa0  func SMKMarchingSquares.setFieldFromVelocityX(fluidSolverHandle:useAbsoluteValues:excludeBorder:) // method 
-	0x6c7fc0  func SMKMarchingSquares.setFieldFromVelocityY(fluidSolver:useAbsoluteValues:excludeBorder:) // method 
-	0x6c8010  func SMKMarchingSquares.setFieldFromVelocityY(fluidSolverHandle:useAbsoluteValues:excludeBorder:) // method 
-	0x6c8060  func SMKMarchingSquares.setFieldBorder(_:) // method 
-	0x6c8070  func SMKMarchingSquares.getIsolines(isovalue:detail:smooth:translate:rotate:scale:) // method 
+	0x6c7d40  class func SMKMarchingSquares.__allocating_init() // init 
+	0x6c7df0  func SMKMarchingSquares.isValid() // method 
+	0x6c7e00  func SMKMarchingSquares.setFieldFromDensity(fluidSolver:useAbsoluteValues:excludeBorder:) // method 
+	0x6c7e20  func SMKMarchingSquares.setFieldFromDensity(fluidSolverHandle:useAbsoluteValues:excludeBorder:) // method 
+	0x6c7e40  func SMKMarchingSquares.setFieldFromVelocityX(fluidSolver:useAbsoluteValues:excludeBorder:) // method 
+	0x6c7e60  func SMKMarchingSquares.setFieldFromVelocityX(fluidSolverHandle:useAbsoluteValues:excludeBorder:) // method 
+	0x6c7e80  func SMKMarchingSquares.setFieldFromVelocityY(fluidSolver:useAbsoluteValues:excludeBorder:) // method 
+	0x6c7ed0  func SMKMarchingSquares.setFieldFromVelocityY(fluidSolverHandle:useAbsoluteValues:excludeBorder:) // method 
+	0x6c7f20  func SMKMarchingSquares.setFieldBorder(_:) // method 
+	0x6c7f30  func SMKMarchingSquares.getIsolines(isovalue:detail:smooth:translate:rotate:scale:) // method 
  }
 
  struct ECS.OptionSetIterator {
@@ -611,59 +611,59 @@
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var storage : Wx // +0x0
+	var storage : áy // +0x0
  }
 
  struct ECS.Rect {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var c0 : uÃ // +0x0
+	var c0 : •Õ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var c1 : uÃ // +0x8
+	var c1 : •Õ // +0x8
  }
 
  struct ECS.Box {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var c0 : YÃ // +0x0
+	var c0 : âÕ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var c1 : YÃ // +0x10
+	var c1 : âÕ // +0x10
  }
 
  struct ECS.Sphere {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var vector : Ã // +0x0
+	var vector : 7Õ // +0x0
  }
 
  struct ECS.Ray {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var origin_w1 : Ã // +0x0
+	var origin_w1 : 7Õ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var direction_w0 : Ã // +0x10
+	var direction_w0 : 7Õ // +0x10
  }
 
  struct ECS.Cylinder {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pointA : Ã // +0x0
+	var pointA : 7Õ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pointB : Ã // +0x10
+	var pointB : 7Õ // +0x10
  }
 
  struct ECS.Torus {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var origin : YÃ // +0x0
+	var origin : âÕ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var axis : YÃ // +0x10
+	var axis : âÕ // +0x10
 	var innerRadius : Float // +0x20
 	var outerRadius : Float // +0x24
  }
@@ -672,16 +672,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var center : Ã // +0x0
+	var center : 7Õ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var halfSize : Ã // +0x10
+	var halfSize : 7Õ // +0x10
  }
 
  struct ECS.Plane {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var vector : Ã // +0x0
+	var vector : 7Õ // +0x0
  }
 
  struct ECS.Frustum {
@@ -768,7 +768,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var state : À˝ // +0x0
+	var state : ˚˛ // +0x0
  }
 
  struct ECS.SampleDistribution1D {
@@ -782,9 +782,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : uÃ // +0x0
+	let scale : •Õ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let invScale : uÃ // +0x8
+	let invScale : •Õ // +0x8
  }
 
  struct ECS.SampleDistribution3D {
@@ -795,9 +795,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let invSideCount : Float // +0x8
 	let invSideCountSquared : Float // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scale : YÃ // +0x10
+	let scale : âÕ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let bias : YÃ // +0x20
+	let bias : âÕ // +0x20
  }
 
  enum ECS.CodingKeys {
@@ -831,60 +831,60 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var phase : Phase
 	var momentumPhase : Phase
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var locationInWindow : uÃ
+	var locationInWindow : •Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var locationInView : uÃ
+	var locationInView : •Õ
 	var buttonNumber : Int
 	var characters : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var delta : uÃ
+	var delta : •Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var keyCode : ≈ò
+	var keyCode : ıô
 	var keyModifiers : Modifiers
 	var timestamp : Double
 	var touchCount : Int
 
 	// Swift methods
-	0x4ec730  class func InputEvent.__allocating_init(_:_:) // init 
-	0x4ecc90  func InputEvent.type.getter // getter 
-	0x4ecca0  func InputEvent.type.setter // setter 
-	0x4eccb0  func InputEvent.type.modify // modifyCoroutine 
-	0x4ecce0  func InputEvent.state.getter // getter 
-	0x4eccf0  func InputEvent.state.setter // setter 
-	0x4ecd00  func InputEvent.state.modify // modifyCoroutine 
-	0x4ecd30  func InputEvent.phase.getter // getter 
-	0x4ecd40  func InputEvent.phase.setter // setter 
-	0x4ecd50  func InputEvent.phase.modify // modifyCoroutine 
-	0x4ecd80  func InputEvent.momentumPhase.getter // getter 
-	0x4ecd90  func InputEvent.momentumPhase.setter // setter 
-	0x4ecda0  func InputEvent.momentumPhase.modify // modifyCoroutine 
-	0x4ecdd0  func InputEvent.locationInWindow.getter // getter 
-	0x4ecde0  func InputEvent.locationInWindow.setter // setter 
-	0x4ecdf0  func InputEvent.locationInWindow.modify // modifyCoroutine 
-	0x4ece20  func InputEvent.locationInView.getter // getter 
-	0x4ece30  func InputEvent.locationInView.setter // setter 
-	0x4ece40  func InputEvent.locationInView.modify // modifyCoroutine 
-	0x4ece70  func InputEvent.buttonNumber.getter // getter 
-	0x4ece80  func InputEvent.buttonNumber.setter // setter 
-	0x4ece90  func InputEvent.buttonNumber.modify // modifyCoroutine 
-	0x4ecec0  func InputEvent.characters.getter // getter 
-	0x4ecef0  func InputEvent.characters.setter // setter 
-	0x4ecf10  func InputEvent.characters.modify // modifyCoroutine 
-	0x4ecf40  func InputEvent.delta.getter // getter 
-	0x4ecf50  func InputEvent.delta.setter // setter 
-	0x4ecf60  func InputEvent.delta.modify // modifyCoroutine 
-	0x4ecf90  func InputEvent.keyCode.getter // getter 
-	0x4ecfa0  func InputEvent.keyCode.setter // setter 
-	0x4ecfb0  func InputEvent.keyCode.modify // modifyCoroutine 
-	0x4ecfe0  func InputEvent.keyModifiers.getter // getter 
-	0x4ecff0  func InputEvent.keyModifiers.setter // setter 
-	0x4ed000  func InputEvent.keyModifiers.modify // modifyCoroutine 
-	0x4ed030  func InputEvent.timestamp.getter // getter 
-	0x4ed040  func InputEvent.timestamp.setter // setter 
-	0x4ed050  func InputEvent.timestamp.modify // modifyCoroutine 
-	0x4ed080  func InputEvent.touchCount.getter // getter 
-	0x4ed090  func InputEvent.touchCount.setter // setter 
-	0x4ed0a0  func InputEvent.touchCount.modify // modifyCoroutine 
+	0x4ec5f0  class func InputEvent.__allocating_init(_:_:) // init 
+	0x4ecb50  func InputEvent.type.getter // getter 
+	0x4ecb60  func InputEvent.type.setter // setter 
+	0x4ecb70  func InputEvent.type.modify // modifyCoroutine 
+	0x4ecba0  func InputEvent.state.getter // getter 
+	0x4ecbb0  func InputEvent.state.setter // setter 
+	0x4ecbc0  func InputEvent.state.modify // modifyCoroutine 
+	0x4ecbf0  func InputEvent.phase.getter // getter 
+	0x4ecc00  func InputEvent.phase.setter // setter 
+	0x4ecc10  func InputEvent.phase.modify // modifyCoroutine 
+	0x4ecc40  func InputEvent.momentumPhase.getter // getter 
+	0x4ecc50  func InputEvent.momentumPhase.setter // setter 
+	0x4ecc60  func InputEvent.momentumPhase.modify // modifyCoroutine 
+	0x4ecc90  func InputEvent.locationInWindow.getter // getter 
+	0x4ecca0  func InputEvent.locationInWindow.setter // setter 
+	0x4eccb0  func InputEvent.locationInWindow.modify // modifyCoroutine 
+	0x4ecce0  func InputEvent.locationInView.getter // getter 
+	0x4eccf0  func InputEvent.locationInView.setter // setter 
+	0x4ecd00  func InputEvent.locationInView.modify // modifyCoroutine 
+	0x4ecd30  func InputEvent.buttonNumber.getter // getter 
+	0x4ecd40  func InputEvent.buttonNumber.setter // setter 
+	0x4ecd50  func InputEvent.buttonNumber.modify // modifyCoroutine 
+	0x4ecd80  func InputEvent.characters.getter // getter 
+	0x4ecdb0  func InputEvent.characters.setter // setter 
+	0x4ecdd0  func InputEvent.characters.modify // modifyCoroutine 
+	0x4ece00  func InputEvent.delta.getter // getter 
+	0x4ece10  func InputEvent.delta.setter // setter 
+	0x4ece20  func InputEvent.delta.modify // modifyCoroutine 
+	0x4ece50  func InputEvent.keyCode.getter // getter 
+	0x4ece60  func InputEvent.keyCode.setter // setter 
+	0x4ece70  func InputEvent.keyCode.modify // modifyCoroutine 
+	0x4ecea0  func InputEvent.keyModifiers.getter // getter 
+	0x4eceb0  func InputEvent.keyModifiers.setter // setter 
+	0x4ecec0  func InputEvent.keyModifiers.modify // modifyCoroutine 
+	0x4ecef0  func InputEvent.timestamp.getter // getter 
+	0x4ecf00  func InputEvent.timestamp.setter // setter 
+	0x4ecf10  func InputEvent.timestamp.modify // modifyCoroutine 
+	0x4ecf40  func InputEvent.touchCount.getter // getter 
+	0x4ecf50  func InputEvent.touchCount.setter // setter 
+	0x4ecf60  func InputEvent.touchCount.modify // modifyCoroutine 
  }
 
  enum ECS.EventType {
@@ -938,7 +938,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _entityClass : ¸ // +0x0
+	var _entityClass : ;˝ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var chunks :  empty-list  // +0x8
 	var links : Link // +0x18
@@ -946,7 +946,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var activeAllocatingChunkIndex : Int // +0x30
 	var inactiveAllocatingChunkIndex : Int // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var groups : •ˆ // +0x40
+	var groups : ’˜ // +0x40
  }
 
  struct ECS.FilteredChunk {
@@ -977,7 +977,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	let entityIndices :  empty-list 
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let nullIndex : ΩÈ
+	let nullIndex : ÌÍ
 	let indicesInChunk : A
 	let startIndex : Int
 	let endIndex : Int
@@ -1012,7 +1012,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case saveError : String
 	case versionMismatch : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case keepGoing : â˜
+	case keepGoing : π¯
  }
 
  class ECS.XcodeInfo : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1025,13 +1025,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var toolchainPath : String?
 
 	// Swift methods
-	0x4f9170  func XcodeInfo.arch.getter // getter 
-	0x4f92f0  func XcodeInfo.sdkVersion.getter // getter 
-	0x4f94b0  func XcodeInfo.osVersion.getter // getter 
-	0x4f97a0  func XcodeInfo.targetTriple.getter // getter 
-	0x4f99c0  func XcodeInfo.cacheSDKAndToolchainPathsIfNecessary(commandBuilder:) // method 
-	0x4fa250  func XcodeInfo.frameworkPaths.getter // getter 
-	0x4fa650  func XcodeInfo.frameworkPathsOptions.getter // getter 
+	0x4f9030  func XcodeInfo.arch.getter // getter 
+	0x4f91b0  func XcodeInfo.sdkVersion.getter // getter 
+	0x4f9370  func XcodeInfo.osVersion.getter // getter 
+	0x4f9660  func XcodeInfo.targetTriple.getter // getter 
+	0x4f9880  func XcodeInfo.cacheSDKAndToolchainPathsIfNecessary(commandBuilder:) // method 
+	0x4fa110  func XcodeInfo.frameworkPaths.getter // getter 
+	0x4fa510  func XcodeInfo.frameworkPathsOptions.getter // getter 
  }
 
  class ECS.XcodeCommandBuilder : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1046,22 +1046,22 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var swiftFlags : [String]
 
 	// Swift methods
-	0x4fab70  func XcodeCommandBuilder.platform.getter // getter 
-	0x4fab80  func XcodeCommandBuilder.platform.setter // setter 
-	0x4fab90  func XcodeCommandBuilder.platform.modify // modifyCoroutine 
-	0x4fabc0  class func XcodeCommandBuilder.__allocating_init(platform:) // init 
-	0x4faf30  func XcodeCommandBuilder.frameworksToLink.getter // getter 
-	0x4faf40  func XcodeCommandBuilder.frameworksToLink.setter // setter 
-	0x4faf60  func XcodeCommandBuilder.frameworksToLink.modify // modifyCoroutine 
-	0x4faf90  func XcodeCommandBuilder.frameworkLinkOptions.getter // getter 
-	0x4fb130  func XcodeCommandBuilder.librariesToLink.getter // getter 
-	0x4fb140  func XcodeCommandBuilder.librariesToLink.setter // setter 
-	0x4fb160  func XcodeCommandBuilder.librariesToLink.modify // modifyCoroutine 
-	0x4fb190  func XcodeCommandBuilder.swiftFlags.getter // getter 
-	0x4fb1a0  func XcodeCommandBuilder.swiftFlags.setter // setter 
-	0x4fb1c0  func XcodeCommandBuilder.swiftFlags.modify // modifyCoroutine 
-	0x4fb1f0  func XcodeCommandBuilder.makeCCompileAndLinkCommand(sourcePath:outputObjectName:) // method 
-	0x4fb8f0  func XcodeCommandBuilder.makeSwiftCompilerCommand(sourcePath:moduleName:outputPath:) // method 
+	0x4faa30  func XcodeCommandBuilder.platform.getter // getter 
+	0x4faa40  func XcodeCommandBuilder.platform.setter // setter 
+	0x4faa50  func XcodeCommandBuilder.platform.modify // modifyCoroutine 
+	0x4faa80  class func XcodeCommandBuilder.__allocating_init(platform:) // init 
+	0x4fadf0  func XcodeCommandBuilder.frameworksToLink.getter // getter 
+	0x4fae00  func XcodeCommandBuilder.frameworksToLink.setter // setter 
+	0x4fae20  func XcodeCommandBuilder.frameworksToLink.modify // modifyCoroutine 
+	0x4fae50  func XcodeCommandBuilder.frameworkLinkOptions.getter // getter 
+	0x4faff0  func XcodeCommandBuilder.librariesToLink.getter // getter 
+	0x4fb000  func XcodeCommandBuilder.librariesToLink.setter // setter 
+	0x4fb020  func XcodeCommandBuilder.librariesToLink.modify // modifyCoroutine 
+	0x4fb050  func XcodeCommandBuilder.swiftFlags.getter // getter 
+	0x4fb060  func XcodeCommandBuilder.swiftFlags.setter // setter 
+	0x4fb080  func XcodeCommandBuilder.swiftFlags.modify // modifyCoroutine 
+	0x4fb0b0  func XcodeCommandBuilder.makeCCompileAndLinkCommand(sourcePath:outputObjectName:) // method 
+	0x4fb7b0  func XcodeCommandBuilder.makeSwiftCompilerCommand(sourcePath:moduleName:outputPath:) // method 
  }
 
  enum ECS.OptimizationLevel {
@@ -1099,17 +1099,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let handler :  empty-list  // +0x8 (0x10)
 	let path : String // +0x18 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var presentedItemURL : èY // +0x0 (0x0)
+	var presentedItemURL : øZ // +0x0 (0x0)
 	let presentedItemOperationQueue : NSOperationQueue // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x72b2c001328d0 (0x32c001328d0) in binary!
-	0x72b98  @objc SourceWatcher.(null) <stripped>
-WARNING: couldn't find address 0x72b14001328b0 (0x314001328b0) in binary!
-	0x72b80  @objc SourceWatcher.(null) <stripped>
-WARNING: couldn't find address 0x72b7400132848 (0x37400132848) in binary!
-	0x72af0  @objc SourceWatcher.(null) <stripped>
-WARNING: couldn't find address 0x711fc00132a20 (0x1fc00132a20) in binary!
+WARNING: couldn't find address 0x72c1c00132a00 (0x41c00132a00) in binary!
+	0x72c88  @objc SourceWatcher.(null) <stripped>
+WARNING: couldn't find address 0x72c04001329e0 (0x404001329e0) in binary!
+	0x72c70  @objc SourceWatcher.(null) <stripped>
+WARNING: couldn't find address 0x72c6400132978 (0x46400132978) in binary!
+	0x72be0  @objc SourceWatcher.(null) <stripped>
+WARNING: couldn't find address 0x7122c00132b50 (0x22c00132b50) in binary!
 	0x0  @objc SourceWatcher.(null) <stripped>
 WARNING: couldn't find address 0x474f525029232840 (0x25029232840) in binary!
 	0x54a4f525020  @objc SourceWatcher.(null) <stripped>
@@ -1119,7 +1119,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	0x3f800000  @objc SourceWatcher.(null) <stripped>
 
 	// Swift methods
-	0x541bb0  func SourceWatcher.didchange(at:) // method 
+	0x541a70  func SourceWatcher.didchange(at:) // method 
  }
 
  class ECS.CodeReloader : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -1139,21 +1139,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var safeDispatchFn : (_:)
 
 	// Swift methods
-	0x542100  func CodeReloader.didReloadSymbol.getter // getter 
-	0x542130  func CodeReloader.didReloadSymbol.setter // setter 
-	0x542150  func CodeReloader.didReloadSymbol.modify // modifyCoroutine 
-	0x5421b0  func CodeReloader.safeDispatchFn.getter // getter 
-	0x5421e0  func CodeReloader.safeDispatchFn.setter // setter 
-	0x542200  func CodeReloader.safeDispatchFn.modify // modifyCoroutine 
-	0x542230  class func CodeReloader.__allocating_init() // init 
-	0x5426d0  func CodeReloader.startIfNeeded() // method 
-	0x542840  func CodeReloader.watchAndReloadSourceCode(inEnclosingGitRoot:) // method 
-	0x543640  func CodeReloader._addModule(cls:) // method 
-	0x543c90  func CodeReloader.addReloadableModule(fromClass:) // method 
-	0x543cb0  func CodeReloader.addTypeDisambiguation(_:) // method 
-	0x543f60  func CodeReloader.addLibraryToLink(_:) // method 
-	0x544060  func CodeReloader.addFrameworkToLink(_:) // method 
-	0x544350  func CodeReloader.addIncludePath(_:) // method 
+	0x541fc0  func CodeReloader.didReloadSymbol.getter // getter 
+	0x541ff0  func CodeReloader.didReloadSymbol.setter // setter 
+	0x542010  func CodeReloader.didReloadSymbol.modify // modifyCoroutine 
+	0x542070  func CodeReloader.safeDispatchFn.getter // getter 
+	0x5420a0  func CodeReloader.safeDispatchFn.setter // setter 
+	0x5420c0  func CodeReloader.safeDispatchFn.modify // modifyCoroutine 
+	0x5420f0  class func CodeReloader.__allocating_init() // init 
+	0x542590  func CodeReloader.startIfNeeded() // method 
+	0x542700  func CodeReloader.watchAndReloadSourceCode(inEnclosingGitRoot:) // method 
+	0x543500  func CodeReloader._addModule(cls:) // method 
+	0x543b50  func CodeReloader.addReloadableModule(fromClass:) // method 
+	0x543b70  func CodeReloader.addTypeDisambiguation(_:) // method 
+	0x543e20  func CodeReloader.addLibraryToLink(_:) // method 
+	0x543f20  func CodeReloader.addFrameworkToLink(_:) // method 
+	0x544210  func CodeReloader.addIncludePath(_:) // method 
  }
 
  struct ECS.CodeReloaderInstance {
@@ -1180,7 +1180,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case index : ÔÛ
+	case index : ı
 	case name : String
 	case none  
  }
@@ -1512,30 +1512,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var commandBuilder : XcodeCommandBuilder
 
 	// Swift methods
-	0x59a690  func CodeLoader.libraryPath.getter // getter 
-	0x59a6c0  func CodeLoader.libraryPath.setter // setter 
-	0x59a6e0  func CodeLoader.libraryPath.modify // modifyCoroutine 
-	0x59a710  func CodeLoader.gpuDevice.getter // getter 
-	0x59a720  func CodeLoader.gpuDevice.setter // setter 
-	0x59a740  func CodeLoader.gpuDevice.modify // modifyCoroutine 
-	0x59a770  func CodeLoader.metalLibrary.getter // getter 
-	0x59a780  func CodeLoader.metalLibrary.setter // setter 
-	0x59a7a0  func CodeLoader.metalLibrary.modify // modifyCoroutine 
-	0x59a7d0  func CodeLoader.userLogger.getter // getter 
-	0x59a7f0  func CodeLoader.userLogger.setter // setter 
-	0x59a820  func CodeLoader.userLogger.modify // modifyCoroutine 
-	0x59a850  func CodeLoader.needsXcodeCommandBuilder.getter // getter 
-	0x59a860  func CodeLoader.commandBuilder.getter // getter 
-	0x59a880  func CodeLoader.commandBuilder.setter // setter 
-	0x59a8a0  func CodeLoader.commandBuilder.modify // modifyCoroutine 
-	0x59ae50  func CodeLoader.loadSymbol<A>(_:as:) // method 
-	0x59af10  func CodeLoader.loadMetalFunction(_:) // method 
-	0x59af60  func CodeLoader.tearDown() // method 
-	0x59b000  func CodeLoader.language.getter // getter 
-	0x59b050  func CodeLoader.compile(atPath:) // method 
-	0x59b0a0  func CodeLoader.load() // method 
-	0x59b0f0  func CodeLoader.compile(string:filenameTemplate:) // method 
-	0x59b680  func CodeLoader.backWithDylib(from:) // method 
+	0x59a550  func CodeLoader.libraryPath.getter // getter 
+	0x59a580  func CodeLoader.libraryPath.setter // setter 
+	0x59a5a0  func CodeLoader.libraryPath.modify // modifyCoroutine 
+	0x59a5d0  func CodeLoader.gpuDevice.getter // getter 
+	0x59a5e0  func CodeLoader.gpuDevice.setter // setter 
+	0x59a600  func CodeLoader.gpuDevice.modify // modifyCoroutine 
+	0x59a630  func CodeLoader.metalLibrary.getter // getter 
+	0x59a640  func CodeLoader.metalLibrary.setter // setter 
+	0x59a660  func CodeLoader.metalLibrary.modify // modifyCoroutine 
+	0x59a690  func CodeLoader.userLogger.getter // getter 
+	0x59a6b0  func CodeLoader.userLogger.setter // setter 
+	0x59a6e0  func CodeLoader.userLogger.modify // modifyCoroutine 
+	0x59a710  func CodeLoader.needsXcodeCommandBuilder.getter // getter 
+	0x59a720  func CodeLoader.commandBuilder.getter // getter 
+	0x59a740  func CodeLoader.commandBuilder.setter // setter 
+	0x59a760  func CodeLoader.commandBuilder.modify // modifyCoroutine 
+	0x59ad10  func CodeLoader.loadSymbol<A>(_:as:) // method 
+	0x59add0  func CodeLoader.loadMetalFunction(_:) // method 
+	0x59ae20  func CodeLoader.tearDown() // method 
+	0x59aec0  func CodeLoader.language.getter // getter 
+	0x59af10  func CodeLoader.compile(atPath:) // method 
+	0x59af60  func CodeLoader.load() // method 
+	0x59afb0  func CodeLoader.compile(string:filenameTemplate:) // method 
+	0x59b540  func CodeLoader.backWithDylib(from:) // method 
  }
 
  enum ECS.Error {
@@ -1560,14 +1560,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var libname : String?
 
 	// Swift methods
-	0x59aac0  class func MetalToolchainCodeLoader.__allocating_init() // init 
+	0x59a980  class func MetalToolchainCodeLoader.__allocating_init() // init 
  }
 
  class ECS.MetalAPICodeLoader : CodeLoader {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sourceURL : èY // +0x0 (0x0)
+	var sourceURL : øZ // +0x0 (0x0)
 
 	// Swift methods
  }
@@ -1587,10 +1587,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var didReloadSymbol : SwiftSymbol
 
 	// Swift methods
-	0x59ea60  func SymbolReloader.trimUnwantedDefinitions(_:) // method 
-	0x59f3e0  func SymbolReloader.rewriteSourceFileInjectingImports() // method 
-	0x59f9d0  func SymbolReloader.overwriteExistingSymbols() // method 
-	0x5a0330  func SymbolReloader.overwriteEligibleSymbols(from:with:) // method 
+	0x59e920  func SymbolReloader.trimUnwantedDefinitions(_:) // method 
+	0x59f2a0  func SymbolReloader.rewriteSourceFileInjectingImports() // method 
+	0x59f890  func SymbolReloader.overwriteExistingSymbols() // method 
+	0x5a01f0  func SymbolReloader.overwriteEligibleSymbols(from:with:) // method 
  }
 
  struct ECS.SymbolReplacement {
@@ -1617,7 +1617,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var data : UnsafeMutablePointer<A> // +0x0
 	var capacity : Int // +0x0
-	var allocator : Allocator // +0x5a7890
+	var allocator : Allocator // +0x5a7750
  }
 
  struct ECS.UnsafeDynamicArray {
@@ -1625,7 +1625,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var data : UnsafeMutablePointer<A> // +0x0
 	var _capacity : Int // +0x0
-	var _count : Int // +0x5a7890
+	var _count : Int // +0x5a7750
 	var allocator : Allocator // +0x0
  }
 
@@ -1633,7 +1633,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var hash : ÔÛ // +0x0
+	var hash : ı // +0x0
  }
 
  struct ECS.UnsafeHashTable {
@@ -1860,16 +1860,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var manadatoryComponents : EntityComponent
 
 	// Swift methods
-	0x5cbe30  func ComponentRegistry.componentNames.getter // getter 
-	0x5cbeb0  func ComponentRegistry.componentTypes.getter // getter 
-	0x5cbef0  func ComponentRegistry.entityComponentTypes.getter // getter 
-	0x5cc050  func ComponentRegistry.registerComponent(_:history:mandatoryComponents:) // method 
-	0x5cc5b0  func ComponentRegistry.tryLookupComponent(byName:version:) // method 
-	0x5cc8f0  func ComponentRegistry.tryLookupEntityComponent(byName:) // method 
-	0x5cc950  func ComponentRegistry.lookupComponent(byName:) // method 
-	0x5cca60  func ComponentRegistry.lookupEntityComponent(byName:) // method 
-	0x5ccb90  func ComponentRegistry.attach<A>(_:to:) // method 
-	0x5ccdd0  func ComponentRegistry.metaData<A>(_:) // method 
+	0x5cbcf0  func ComponentRegistry.componentNames.getter // getter 
+	0x5cbd70  func ComponentRegistry.componentTypes.getter // getter 
+	0x5cbdb0  func ComponentRegistry.entityComponentTypes.getter // getter 
+	0x5cbf10  func ComponentRegistry.registerComponent(_:history:mandatoryComponents:) // method 
+	0x5cc470  func ComponentRegistry.tryLookupComponent(byName:version:) // method 
+	0x5cc7b0  func ComponentRegistry.tryLookupEntityComponent(byName:) // method 
+	0x5cc810  func ComponentRegistry.lookupComponent(byName:) // method 
+	0x5cc920  func ComponentRegistry.lookupEntityComponent(byName:) // method 
+	0x5cca50  func ComponentRegistry.attach<A>(_:to:) // method 
+	0x5ccc90  func ComponentRegistry.metaData<A>(_:) // method 
  }
 
  struct ECS.ComponentInfo {
@@ -1906,14 +1906,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var newlyCreatedLowerBound : Int
 	var newlyDestroyedLowerBound : Int
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var mutationID : Wx
+	var mutationID : áy
 	var _isActive : Bool
 	var worldBox : AABB
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var worldBoxLastMutation : Wx
+	var worldBoxLastMutation : áy
 	var lodMaxSquareDistance : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lodMaxSquareDistanceLastMutation : Wx
+	var lodMaxSquareDistanceLastMutation : áy
 	var _shortLivedLock : UnfairLock
 	var _ownershipLock : UnfairLock
 	var _entityClass : EntityClass
@@ -1941,11 +1941,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var componentLayouts : ◊È // +0x0
+	var componentLayouts : Î // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nonPODComponentLayouts : ◊È // +0x8
+	var nonPODComponentLayouts : Î // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var PODComponentLayouts : ◊È // +0x10
+	var PODComponentLayouts : Î // +0x10
 	var storageStride : Int // +0x18
 	let maxEntityPerStorage : Int // +0x20
 	let storageSize : Int // +0x28
@@ -1968,8 +1968,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var event : Bool
 
 	// Swift methods
-	0x5d8e20  func WakeUpEvent.signal() // method 
-	0x5d8e70  func WakeUpEvent.wait(autoreset:) // method 
+	0x5d8ce0  func WakeUpEvent.signal() // method 
+	0x5d8d30  func WakeUpEvent.wait(autoreset:) // method 
  }
 
  struct ECS.SystemStage {
@@ -1982,19 +1982,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var name : ¡÷
+	var name : Ò◊
 	var updateBlock : EntityManager
 
 	// Swift methods
-	0x5dabf0  class func GenericComponentSystem.__allocating_init() // init 
-	0x5dac90  func GenericComponentSystem.name.getter // getter 
-	0x5dacb0  func GenericComponentSystem.name.setter // setter 
-	0x5dacd0  func GenericComponentSystem.name.modify // modifyCoroutine 
-	0x5dad00  func GenericComponentSystem.defaultStage.getter // getter 
-	0x5dad20  class func GenericComponentSystem.__allocating_init(name:_:) // init 
-	0x5dada0  class func GenericComponentSystem.__allocating_init(_:) // init 
-	0x5dae20  func GenericComponentSystem.setup(entityManager:) // method 
-	0x5dae30  func GenericComponentSystem.update(entityManager:) // method 
+	0x5daab0  class func GenericComponentSystem.__allocating_init() // init 
+	0x5dab50  func GenericComponentSystem.name.getter // getter 
+	0x5dab70  func GenericComponentSystem.name.setter // setter 
+	0x5dab90  func GenericComponentSystem.name.modify // modifyCoroutine 
+	0x5dabc0  func GenericComponentSystem.defaultStage.getter // getter 
+	0x5dabe0  class func GenericComponentSystem.__allocating_init(name:_:) // init 
+	0x5dac60  class func GenericComponentSystem.__allocating_init(_:) // init 
+	0x5dace0  func GenericComponentSystem.setup(entityManager:) // method 
+	0x5dacf0  func GenericComponentSystem.update(entityManager:) // method 
  }
 
  enum ECS.Constants { }
@@ -2003,24 +2003,24 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let showWindowShortcutKeycode : QÌ
+	let showWindowShortcutKeycode : ÅÓ
 	var isMenuItemEnabled : Bool
 	let hSpacing : Float
 	let vSpacing : Float
 	var titleBarHeight : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var windowRegion : uÃ
+	var windowRegion : •Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var frameOrigin : uÃ
+	var frameOrigin : •Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var drawOrigin : uÃ
+	var drawOrigin : •Õ
 	var componentHeight : Float
 	let chunkWidth : Float
 	let chunkHeight : Float
 	var selectedWorker : Int?
 
 	// Swift methods
-	0x5dcba0  class func ECSDebugSystem.__allocating_init() // init 
+	0x5dca60  class func ECSDebugSystem.__allocating_init() // init 
  }
 
  struct ECS.ECSDebugSystemState {
@@ -2043,9 +2043,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var index : ΩÈ // +0x0
+	var index : ÌÍ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var generation : ΩÈ // +0x4
+	var generation : ÌÍ // +0x4
  }
 
  struct ECS.EntityInstance {
@@ -2059,7 +2059,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let _family : ˇÌ
+	let _family : /Ô
 	var chunksStorage : ChunksStorage
 	var chunkStorageLock : UnfairLock
 	let storageLayout : ComponentStorageLayout
@@ -2123,7 +2123,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var entityCount : Int
 	var lock : UnfairLock
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var firstFreeIndex : ΩÈ
+	var firstFreeIndex : ÌÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var measureIndexes :  empty-list 
 	var scheduler : Scheduler
@@ -2142,7 +2142,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var currentState : State
 
 	// Swift methods
-	0x5eb2d0  class func EntityManager.__allocating_init(name:maxWorkerCount:) // init 
+	0x5eb190  class func EntityManager.__allocating_init(name:maxWorkerCount:) // init 
  }
 
  enum ECS.State {
@@ -2158,7 +2158,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var mask : ÔÛ // +0x0
+	var mask : ı // +0x0
  }
 
  struct ECS.Iterator { }
@@ -2168,11 +2168,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var chunk : ComponentsDataChunk // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var indexInChunk : 3È // +0x8
+	var indexInChunk : cÍ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var classIndex : 3È // +0xa
+	var classIndex : cÍ // +0xa
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var generation : ΩÈ // +0xc
+	var generation : ÌÍ // +0xc
  }
 
  enum ECS.CodingKeys {
@@ -2198,21 +2198,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var reversedEntityTable : Entity
 
 	// Swift methods
-	0x5f3d30  func SerializationContext.entityManager.getter // getter 
-	0x5f3d40  func SerializationContext.entityManager.setter // setter 
-	0x5f3d70  func SerializationContext.entityManager.modify // modifyCoroutine 
-	0x5f3de0  func SerializationContext.codingEntity.getter // getter 
-	0x5f3df0  func SerializationContext.codingEntity.setter // setter 
-	0x5f3e10  func SerializationContext.codingEntity.modify // modifyCoroutine 
-	0x5f3e40  func SerializationContext.codingComponent.getter // getter 
-	0x5f3e50  func SerializationContext.codingComponent.setter // setter 
-	0x5f3e60  func SerializationContext.codingComponent.modify // modifyCoroutine 
-	0x5f3e90  func SerializationContext.isLoadingForAuthoring.getter // getter 
-	0x5f3ea0  func SerializationContext.isLoadingForAuthoring.setter // setter 
-	0x5f3eb0  func SerializationContext.isLoadingForAuthoring.modify // modifyCoroutine 
-	0x5f3f30  func SerializationContext.entityTableByIndex.getter // getter 
-	0x5f3f90  func SerializationContext.entityTable.getter // getter 
-	0x5f3ff0  func SerializationContext.reversedEntityTable.getter // getter 
+	0x5f3bf0  func SerializationContext.entityManager.getter // getter 
+	0x5f3c00  func SerializationContext.entityManager.setter // setter 
+	0x5f3c30  func SerializationContext.entityManager.modify // modifyCoroutine 
+	0x5f3ca0  func SerializationContext.codingEntity.getter // getter 
+	0x5f3cb0  func SerializationContext.codingEntity.setter // setter 
+	0x5f3cd0  func SerializationContext.codingEntity.modify // modifyCoroutine 
+	0x5f3d00  func SerializationContext.codingComponent.getter // getter 
+	0x5f3d10  func SerializationContext.codingComponent.setter // setter 
+	0x5f3d20  func SerializationContext.codingComponent.modify // modifyCoroutine 
+	0x5f3d50  func SerializationContext.isLoadingForAuthoring.getter // getter 
+	0x5f3d60  func SerializationContext.isLoadingForAuthoring.setter // setter 
+	0x5f3d70  func SerializationContext.isLoadingForAuthoring.modify // modifyCoroutine 
+	0x5f3df0  func SerializationContext.entityTableByIndex.getter // getter 
+	0x5f3e50  func SerializationContext.entityTable.getter // getter 
+	0x5f3eb0  func SerializationContext.reversedEntityTable.getter // getter 
  }
 
  struct ECS.EntityManagerCoder {
@@ -2288,60 +2288,60 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var entityManager : EntityManager // +0x0
 	var lock : UnfairLock // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentJobID : µ‰ // +0x5b14a0
+	var currentJobID : ÂÂ // +0x5b1360
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var recurrentJobs : ≈‰ // +0x0
+	var recurrentJobs : ıÂ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var orderedRecurrentJobs : ≈‰ // +0x76f0
+	var orderedRecurrentJobs : ıÂ // +0x7260
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var remainingJobsForThisFrame : ≈‰ // +0x0
+	var remainingJobsForThisFrame : ıÂ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pendingJobsToEnqueueForThisFrame : ≈‰ // +0x5b14a0
+	var pendingJobsToEnqueueForThisFrame : ıÂ // +0x5b1360
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pendingJobsToEnqueueForThisFrameOnly : ≈‰ // +0x0
-	var groupsToUnregister : Entity // +0x5b14a0
+	var pendingJobsToEnqueueForThisFrameOnly : ıÂ // +0x0
+	var groupsToUnregister : Entity // +0x5b1360
 	var needsRescheduling : Bool // +0x0
-	var needsReschedulingForThisFrame : Bool // +0x5b14a0
+	var needsReschedulingForThisFrame : Bool // +0x5b1360
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dependenciesByJob :  empty-list  // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var schedulerEventsRecordedDuringLastFrame : ï‰ // +0x5b14a0
+	var schedulerEventsRecordedDuringLastFrame : ≈Â // +0x5b1360
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var queriesRecordedDuringLastFrame :  empty-list  // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var schedulerEventsRecordedDuringThisFrame : ï‰ // +0x604da0
+	var schedulerEventsRecordedDuringThisFrame : ≈Â // +0x604c60
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var queriesRecordedDuringThisFrame :  empty-list  // +0x0
-	var simulationTimeScale : Float // +0x604e40
+	var simulationTimeScale : Float // +0x604d00
 
 	// Swift methods
-	0x5fcd60  class func Scheduler.__allocating_init() // init 
-	0x5fce80  func Scheduler.firstIndex(componentSystem:) // method 
-	0x5fcf90  func Scheduler.unregisterSystems(groupEntity:) // method 
-	0x5fd420  func Scheduler.registerSystem(_:enabled:simulation:) // method 
-	0x5fd630  func Scheduler.registerLocalSystem(_:simulation:groupEntity:updateBlock:) // method 
-	0x5fd950  func Scheduler.registerSystemForThisFrameOnly(_:simulation:updateBlock:) // method 
-	0x5fdb50  func Scheduler.registerSystemForThisFrameOnly(instanceName:updateBlock:) // method 
-	0x5fdcf0  func Scheduler.registerImGuiSystem(name:_:) // method 
-	0x5fdd20  func Scheduler.registerGenericSystem(name:simulation:stage:_:) // method 
-	0x5fded0  func Scheduler.registerTask(label:_:) // method 
-	0x5fe050  func Scheduler.runSystemNow(_:) // method 
-	0x5fe1d0  func Scheduler.setSystemEnabled(_:enabled:) // method 
-	0x5fe270  func Scheduler.setSystemEnabled(groupEntity:enabled:) // method 
-	0x5fe340  func Scheduler.isSystemEnabled(_:) // method 
-	0x5fe390  func Scheduler.resetSystemStage(_:for:) // method 
-	0x5fe420  func Scheduler.fetchSystem<A>(byType:) // method 
-	0x5fe4e0  func Scheduler.simulationTimeScale.getter // getter 
-	0x5fe4f0  func Scheduler.simulationTimeScale.setter // setter 
-	0x5fe500  func Scheduler.simulationTimeScale.modify // modifyCoroutine 
-	0x5fe530  func Scheduler.registerECSSystems(_:) // method 
-	0x5fe600  func Scheduler.registerDependency(_:dependsOn:) // method 
-	0x5fe780  func Scheduler.topologicalSortVisit(_:tags:sortedSystems:) // method 
-	0x5fe920  func Scheduler.recomputeScheduling(of:) // method 
-	0x5ff020  func Scheduler.garbageCollectRecurrentJobs() // method 
-	0x5ff6a0  func Scheduler.preUpdate() // method 
-	0x5ff890  func Scheduler.update(_:) // method 
-	0x5ff9b0  func Scheduler.updateStep(_:) // method 
+	0x5fcc20  class func Scheduler.__allocating_init() // init 
+	0x5fcd40  func Scheduler.firstIndex(componentSystem:) // method 
+	0x5fce50  func Scheduler.unregisterSystems(groupEntity:) // method 
+	0x5fd2e0  func Scheduler.registerSystem(_:enabled:simulation:) // method 
+	0x5fd4f0  func Scheduler.registerLocalSystem(_:simulation:groupEntity:updateBlock:) // method 
+	0x5fd810  func Scheduler.registerSystemForThisFrameOnly(_:simulation:updateBlock:) // method 
+	0x5fda10  func Scheduler.registerSystemForThisFrameOnly(instanceName:updateBlock:) // method 
+	0x5fdbb0  func Scheduler.registerImGuiSystem(name:_:) // method 
+	0x5fdbe0  func Scheduler.registerGenericSystem(name:simulation:stage:_:) // method 
+	0x5fdd90  func Scheduler.registerTask(label:_:) // method 
+	0x5fdf10  func Scheduler.runSystemNow(_:) // method 
+	0x5fe090  func Scheduler.setSystemEnabled(_:enabled:) // method 
+	0x5fe130  func Scheduler.setSystemEnabled(groupEntity:enabled:) // method 
+	0x5fe200  func Scheduler.isSystemEnabled(_:) // method 
+	0x5fe250  func Scheduler.resetSystemStage(_:for:) // method 
+	0x5fe2e0  func Scheduler.fetchSystem<A>(byType:) // method 
+	0x5fe3a0  func Scheduler.simulationTimeScale.getter // getter 
+	0x5fe3b0  func Scheduler.simulationTimeScale.setter // setter 
+	0x5fe3c0  func Scheduler.simulationTimeScale.modify // modifyCoroutine 
+	0x5fe3f0  func Scheduler.registerECSSystems(_:) // method 
+	0x5fe4c0  func Scheduler.registerDependency(_:dependsOn:) // method 
+	0x5fe640  func Scheduler.topologicalSortVisit(_:tags:sortedSystems:) // method 
+	0x5fe7e0  func Scheduler.recomputeScheduling(of:) // method 
+	0x5feee0  func Scheduler.garbageCollectRecurrentJobs() // method 
+	0x5ff560  func Scheduler.preUpdate() // method 
+	0x5ff750  func Scheduler.update(_:) // method 
+	0x5ff870  func Scheduler.updateStep(_:) // method 
  }
 
  struct ECS.SystemRegistrationOptions {
@@ -2378,10 +2378,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let id : ‰ // +0x0
+	let id : AÂ // +0x0
 	let groupEntity : Entity // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let debugName : ¡÷ // +0x10
+	let debugName : Ò◊ // +0x10
 	let systemInstance : System // +0x28
 	var stage : SystemStage // +0x38
 	let isLocal : Bool // +0x40
@@ -2429,29 +2429,29 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let defaultOSLogger : OS_os_log // +0x10 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var publisher : W» // +0x18 (0x8)
+	var publisher : á… // +0x18 (0x8)
 
 	// Swift methods
-	0x608ae0  func Logger.publisher.getter // getter 
-	0x608af0  func Logger.publisher.setter // setter 
-	0x608b10  func Logger.publisher.modify // modifyCoroutine 
-	0x608b40  func Logger.vLog(type:_:) // method 
+	0x6089a0  func Logger.publisher.getter // getter 
+	0x6089b0  func Logger.publisher.setter // setter 
+	0x6089d0  func Logger.publisher.modify // modifyCoroutine 
+	0x608a00  func Logger.vLog(type:_:) // method 
  }
 
  struct ECS.UnfairLock {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let name : ¡÷ // +0x0
+	let name : Ò◊ // +0x0
 	var _lock : os_unfair_lock_s // +0x14
 	var _ptr : os_unfair_lock_s // +0x18
  }
 
  class ECS.HeapAllocator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, Allocator {
 	// Swift methods
-	0x6093f0  func HeapAllocator.allocate(bytes:alignment:) // method 
-	0x609420  func HeapAllocator.reallocate(ptr:bytes:alignment:) // method 
-	0x609450  func HeapAllocator.deallocate(ptr:) // method 
+	0x6092b0  func HeapAllocator.allocate(bytes:alignment:) // method 
+	0x6092e0  func HeapAllocator.reallocate(ptr:bytes:alignment:) // method 
+	0x609310  func HeapAllocator.deallocate(ptr:) // method 
  }
 
  struct ECS.MultiFrameAllocator {
@@ -2468,8 +2468,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dataAllocated : Int
 
 	// Swift methods
-	0x609570  func FrameAllocator.allocate(bytes:alignment:) // method 
-	0x6095a0  func FrameAllocator.deallocate(ptr:) // method 
+	0x609430  func FrameAllocator.allocate(bytes:alignment:) // method 
+	0x609460  func FrameAllocator.deallocate(ptr:) // method 
  }
 
  class ECS.StackAllocator : _SwiftObject /usr/lib/swift/libswiftCore.dylib, Allocator {
@@ -2481,10 +2481,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let snapshotStack : UnsafeMutableBufferPointer<Int>
 
 	// Swift methods
-	0x609700  func StackAllocator.allocate(bytes:alignment:) // method 
-	0x609e10  func StackAllocator.deallocate(ptr:) // method 
-	0x609980  func StackAllocator.pushSnapshot() // method 
-	0x6099a0  func StackAllocator.popSnapshot() // method 
+	0x6095c0  func StackAllocator.allocate(bytes:alignment:) // method 
+	0x609cd0  func StackAllocator.deallocate(ptr:) // method 
+	0x609840  func StackAllocator.pushSnapshot() // method 
+	0x609860  func StackAllocator.popSnapshot() // method 
  }
 
  enum ECS.SetOperation {
@@ -2714,7 +2714,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var base : A
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var keyPath : ]ﬁ
+	var keyPath : çﬂ
  }
 
  struct ECS.GetterSetterBinding: Binding {
@@ -2730,10 +2730,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var context : _ImGUIRenderContext
 
 	// Swift methods
-	0x667ce0  class func ImguiInstance.__allocating_init() // init 
-	0x667d20  func ImguiInstance.context.getter // getter 
-	0x667d30  func ImguiInstance.context.setter // setter 
-	0x667d40  func ImguiInstance.context.modify // modifyCoroutine 
+	0x667ba0  class func ImguiInstance.__allocating_init() // init 
+	0x667be0  func ImguiInstance.context.getter // getter 
+	0x667bf0  func ImguiInstance.context.setter // setter 
+	0x667c00  func ImguiInstance.context.modify // modifyCoroutine 
  }
 
  enum ECS.ImGui { }
@@ -2748,7 +2748,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var handle : µ‰ // +0x0
+	var handle : ÂÂ // +0x0
  }
 
  class ECS.TestObject : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -2776,53 +2776,53 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var imguiToken : Int
 
 	// Swift methods
-	0x66cae0  func RuntimeThread.wakeup.getter // getter 
-	0x66c100  class func RuntimeThread.__allocating_init(_:) // init 
-	0x66cb50  func RuntimeThread.requestStop.getter // getter 
-	0x66cb60  func RuntimeThread.entityManager.getter // getter 
-	0x66cb70  func RuntimeThread.entityManager.setter // setter 
-	0x66cba0  func RuntimeThread.entityManager.modify // modifyCoroutine 
-	0x66cc00  func RuntimeThread.isRuntimeThread.getter // getter 
-	0x66cce0  func RuntimeThread.isLockedByCurrentThread.getter // getter 
-	0x66cd00  func RuntimeThread.sync(_:) // method 
-	0x66cd50  func RuntimeThread.async(_:) // method 
-	0x66cec0  func RuntimeThread.render(_:) // method 
-	0x66cf80  func RuntimeThread.stop() // method 
-	0x66d070  func RuntimeThread.requestImgui() // method 
+	0x66c9a0  func RuntimeThread.wakeup.getter // getter 
+	0x66bfc0  class func RuntimeThread.__allocating_init(_:) // init 
+	0x66ca10  func RuntimeThread.requestStop.getter // getter 
+	0x66ca20  func RuntimeThread.entityManager.getter // getter 
+	0x66ca30  func RuntimeThread.entityManager.setter // setter 
+	0x66ca60  func RuntimeThread.entityManager.modify // modifyCoroutine 
+	0x66cac0  func RuntimeThread.isRuntimeThread.getter // getter 
+	0x66cba0  func RuntimeThread.isLockedByCurrentThread.getter // getter 
+	0x66cbc0  func RuntimeThread.sync(_:) // method 
+	0x66cc10  func RuntimeThread.async(_:) // method 
+	0x66cd80  func RuntimeThread.render(_:) // method 
+	0x66ce40  func RuntimeThread.stop() // method 
+	0x66cf30  func RuntimeThread.requestImgui() // method 
  }
 
  struct ECS.ProbeEntry {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var label : ¡÷ // +0x0
+	var label : Ò◊ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var location : ¡÷ // +0x18
+	var location : Ò◊ // +0x18
 	var line : Int // +0x30
 	var start : Double // +0x38
 	var end : Double // +0x40
 	var parent : Int // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var depth : ΩÈ // +0x50
+	var depth : ÌÍ // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var info : Wx // +0x54
+	var info : áy // +0x54
  }
 
  struct ECS.EventEntry {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var label : ¡÷ // +0x0
+	var label : Ò◊ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var location : ¡÷ // +0x18
+	var location : Ò◊ // +0x18
 	var line : Int // +0x30
 	var time : Double // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var parent : ΩÈ // +0x40
+	var parent : ÌÍ // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var frameIndex : Wx // +0x44
+	var frameIndex : áy // +0x44
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var data : 7ﬂ // +0x48
+	var data : g‡ // +0x48
  }
 
  struct ECS.ProbeData {
@@ -2846,36 +2846,36 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var thread_termination_handler : UInt
 
 	// Swift methods
-	0x66ea10  func FrameProfiler.allProbes(start:end:) // method 
-	0x66f250  func FrameProfiler.commit() // method 
-	0x66f3a0  class func FrameProfiler.__allocating_init(name:) // init 
-	0x66f850  func FrameProfiler.name.getter // getter 
-	0x66f880  func FrameProfiler.name.setter // setter 
-	0x66f8a0  func FrameProfiler.name.modify // modifyCoroutine 
-	0x66f8d0  func FrameProfiler.disableAutoCommit.getter // getter 
-	0x66f8e0  func FrameProfiler.disableAutoCommit.setter // setter 
-	0x66f8f0  func FrameProfiler.disableAutoCommit.modify // modifyCoroutine 
-	0x66fad0  func FrameProfiler.frameRing.getter // getter 
-	0x66faf0  func FrameProfiler.frameRing.setter // setter 
-	0x66fb20  func FrameProfiler.frameRing.modify // modifyCoroutine 
-	0x66fb70  func FrameProfiler.currentFrameIndex.getter // getter 
-	0x66fba0  func FrameProfiler.minFrameTime.getter // getter 
-	0x66fbd0  func FrameProfiler.maxFrameTime.getter // getter 
-	0x66fbe0  func FrameProfiler.lastFrameIndex.getter // getter 
-	0x66fc00  func FrameProfiler.maxDepth.getter // getter 
-	0x670a10  func FrameProfiler.thread_termination_handler.getter // getter 
-	0x670a20  func FrameProfiler.thread_termination_handler.setter // setter 
-	0x670a30  func FrameProfiler.thread_termination_handler.modify // modifyCoroutine 
-	0x670b10  func FrameProfiler.appendProbe(start:end:_:file:line:info:) // method 
-	0x670b50  func FrameProfiler.tryCommitOnOverflow() // method 
-	0x670d00  func FrameProfiler.debugDescription.getter // getter 
+	0x66e8d0  func FrameProfiler.allProbes(start:end:) // method 
+	0x66f110  func FrameProfiler.commit() // method 
+	0x66f260  class func FrameProfiler.__allocating_init(name:) // init 
+	0x66f710  func FrameProfiler.name.getter // getter 
+	0x66f740  func FrameProfiler.name.setter // setter 
+	0x66f760  func FrameProfiler.name.modify // modifyCoroutine 
+	0x66f790  func FrameProfiler.disableAutoCommit.getter // getter 
+	0x66f7a0  func FrameProfiler.disableAutoCommit.setter // setter 
+	0x66f7b0  func FrameProfiler.disableAutoCommit.modify // modifyCoroutine 
+	0x66f990  func FrameProfiler.frameRing.getter // getter 
+	0x66f9b0  func FrameProfiler.frameRing.setter // setter 
+	0x66f9e0  func FrameProfiler.frameRing.modify // modifyCoroutine 
+	0x66fa30  func FrameProfiler.currentFrameIndex.getter // getter 
+	0x66fa60  func FrameProfiler.minFrameTime.getter // getter 
+	0x66fa90  func FrameProfiler.maxFrameTime.getter // getter 
+	0x66faa0  func FrameProfiler.lastFrameIndex.getter // getter 
+	0x66fac0  func FrameProfiler.maxDepth.getter // getter 
+	0x6708d0  func FrameProfiler.thread_termination_handler.getter // getter 
+	0x6708e0  func FrameProfiler.thread_termination_handler.setter // setter 
+	0x6708f0  func FrameProfiler.thread_termination_handler.modify // modifyCoroutine 
+	0x6709d0  func FrameProfiler.appendProbe(start:end:_:file:line:info:) // method 
+	0x670a10  func FrameProfiler.tryCommitOnOverflow() // method 
+	0x670bc0  func FrameProfiler.debugDescription.getter // getter 
  }
 
  struct ECS.ProbeSequence {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var profiler : π· // +0x0
+	var profiler : È‚ // +0x0
 	var frameIndex : Int // +0x8
 	var endFrameIndex : Int // +0x10
 	var probeIndex : Int // +0x18
@@ -2890,9 +2890,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var storage : UnsafeDynamicArray // +0x0
 	var current : Int // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var currentDepth : ΩÈ // +0x30
+	var currentDepth : ÌÍ // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxDepth : ΩÈ // +0x34
+	var maxDepth : ÌÍ // +0x34
 	var eventStorage : UnsafeDynamicArray // +0x38
 	var startTime : Double // +0x60
 	var endTime : Double // +0x68
@@ -2917,9 +2917,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let label : ¡÷ // +0x0
+	let label : Ò◊ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let category : ‹ // +0x18
+	let category : ?› // +0x18
 	let storage : StorageKind // +0x2a
 	let type : Any.Type // +0x30
 	let stride : Int // +0x38
@@ -2930,7 +2930,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let label : ¡÷
+	let label : Ò◊
  }
 
  struct ECS.CounterStats {
@@ -3115,11 +3115,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let _entityManager : o› // +0x0
+	let _entityManager : üﬁ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let _chunk : a› // +0x8
+	let _chunk : ëﬁ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let _commandQueue : S› // +0x10
+	let _commandQueue : Éﬁ // +0x10
 	let workerIndex : Int // +0x18
 	let indexInQueryResult : Int // +0x20
 	let indexInChunk : Int // +0x28
@@ -3129,11 +3129,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let _entityManager : o› // +0x0
+	let _entityManager : üﬁ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let _chunk : a› // +0x8
+	let _chunk : ëﬁ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let _commandQueue : S› // +0x10
+	let _commandQueue : Éﬁ // +0x10
 	let workerIndex : Int // +0x18
 	let rangeInQueryResult : Range<Int> // +0x20
 	let totalCount : Int // +0x30
@@ -3181,7 +3181,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let entityManager : EntityManager // +0x50
 	let commandQueue : CommandQueue // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let label : ¡÷ // +0x60
+	let label : Ò◊ // +0x60
 	let count : Int // +0x78
  }
 
@@ -3200,7 +3200,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let rangeInQuery : Range<Int> // +0x10
 	let filter : QueryFilter // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let _chunk : a› // +0x58
+	let _chunk : ëﬁ // +0x58
  }
 
  struct ECS.ComponentInfoInChunk {
@@ -3216,9 +3216,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var flags : ΩÈ // +0x0
+	var flags : ÌÍ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var version : ΩÈ // +0x4
+	var version : ÌÍ // +0x4
 	var ro : UInt // +0x8
  }
 
@@ -3226,11 +3226,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var flags : ΩÈ // +0x0
+	var flags : ÌÍ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var instanceStart : ΩÈ // +0x4
+	var instanceStart : ÌÍ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var instanceSize : ΩÈ // +0x8
+	var instanceSize : ÌÍ // +0x8
  }
 
  struct ECS.Metadata: MetadataType {
@@ -3276,19 +3276,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var reserveword2 : Int // +0x18
 	var rodataPointer : UInt // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var classFlags : Wx // +0x28
+	var classFlags : áy // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var instanceAddressPoint : Wx // +0x2c
+	var instanceAddressPoint : áy // +0x2c
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var instanceSize : Wx // +0x30
+	var instanceSize : áy // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var instanceAlignmentMask : ≈ò // +0x34
+	var instanceAlignmentMask : ıô // +0x34
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var runtimeReservedField : ≈ò // +0x36
+	var runtimeReservedField : ıô // +0x36
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var classObjectSize : Wx // +0x38
+	var classObjectSize : áy // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var classObjectAddressPoint : Wx // +0x3c
+	var classObjectAddressPoint : áy // +0x3c
 	var nominalTypeDescriptor : Int // +0x40
 	var ivarDestroyer : Int // +0x48
  }
@@ -3363,46 +3363,46 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var flags : ΩÈ // +0x0
+	var flags : ÌÍ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var parent : ΩÈ // +0x4
+	var parent : ÌÍ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var mangledNameOffset : ΩÈ // +0x8
+	var mangledNameOffset : ÌÍ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fieldTypesAccessor : ΩÈ // +0xc
+	var fieldTypesAccessor : ÌÍ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var reflectionFieldDescriptor : ΩÈ // +0x10
+	var reflectionFieldDescriptor : ÌÍ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var numberOfFields : ΩÈ // +0x14
+	var numberOfFields : ÌÍ // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fieldOffsetVector : ΩÈ // +0x18
+	var fieldOffsetVector : ÌÍ // +0x18
  }
 
  struct ECS._ClassContextDescriptor: _ContextDescriptorProtocol {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var flags : ΩÈ // +0x0
+	var flags : ÌÍ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var parent : ΩÈ // +0x4
+	var parent : ÌÍ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var mangledNameOffset : ΩÈ // +0x8
+	var mangledNameOffset : ÌÍ // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fieldTypesAccessor : ΩÈ // +0xc
+	var fieldTypesAccessor : ÌÍ // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var reflectionFieldDescriptor : ΩÈ // +0x10
+	var reflectionFieldDescriptor : ÌÍ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var superClsRef : ΩÈ // +0x14
+	var superClsRef : ÌÍ // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var metadataNegativeSizeInWords : ΩÈ // +0x18
+	var metadataNegativeSizeInWords : ÌÍ // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var metadataPositiveSizeInWords : ΩÈ // +0x1c
+	var metadataPositiveSizeInWords : ÌÍ // +0x1c
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var numImmediateMembers : ΩÈ // +0x20
+	var numImmediateMembers : ÌÍ // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var numberOfFields : ΩÈ // +0x24
+	var numberOfFields : ÌÍ // +0x24
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fieldOffsetVector : ΩÈ // +0x28
+	var fieldOffsetVector : ÌÍ // +0x28
  }
 
  enum ECS.FieldDescriptorKind {
@@ -3428,14 +3428,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var mangledTypeNameOffset : ΩÈ // +0x0
+	var mangledTypeNameOffset : ÌÍ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var superClassOffset : ΩÈ // +0x4
+	var superClassOffset : ÌÍ // +0x4
 	var fieldDescriptorKind : FieldDescriptorKind // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fieldRecordSize : 3È // +0xa
+	var fieldRecordSize : cÍ // +0xa
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var numFields : ΩÈ // +0xc
+	var numFields : ÌÍ // +0xc
  }
 
  struct ECS.FieldRecord {
@@ -3448,11 +3448,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fieldRecordFlags : ΩÈ // +0x0
+	var fieldRecordFlags : ÌÍ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var mangledTypeNameOffset : ΩÈ // +0x4
+	var mangledTypeNameOffset : ÌÍ // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fieldNameOffset : ΩÈ // +0x8
+	var fieldNameOffset : ÌÍ // +0x8
  }
 
  struct ECS.Extensions: AnyExtensions { }
@@ -3465,7 +3465,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var data : UnsafeMutableRawBufferPointer
 	var layout : ComponentStorageLayout
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var isInitializedBitset : ÔÛ
+	var isInitializedBitset : ı
 
 	// Swift methods
  }
@@ -3495,7 +3495,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let showWindowShortcutKeycode : QÌ
+	let showWindowShortcutKeycode : ÅÓ
 	var isMenuItemEnabled : Bool
 	var entityManager : EntityManager
 	var searchString : String
@@ -3505,7 +3505,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var showDetailedView : Bool
 
 	// Swift methods
-	0x6b47f0  class func SchedulerDebugSystem.__allocating_init() // init 
+	0x6b46b0  class func SchedulerDebugSystem.__allocating_init() // init 
  }
 
  class ECS.EngineTuningSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3513,10 +3513,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var isMenuItemEnabled : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let showWindowShortcutKeycode : QÌ
+	let showWindowShortcutKeycode : ÅÓ
 
 	// Swift methods
-	0x6b8510  class func EngineTuningSystem.__allocating_init() // init 
+	0x6b83d0  class func EngineTuningSystem.__allocating_init() // init 
  }
 
  class ECS.EntityInspectorSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3524,7 +3524,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var isMenuItemEnabled : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let showWindowShortcutKeycode : QÌ
+	let showWindowShortcutKeycode : ÅÓ
 	var queryString : String
 	var selectedClass : EntityClass
 	var showAllComponents : Bool
@@ -3538,7 +3538,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var results : ComponentsDataChunk
 
 	// Swift methods
-	0x6ba490  class func EntityInspectorSystem.__allocating_init() // init 
+	0x6ba350  class func EntityInspectorSystem.__allocating_init() // init 
  }
 
  class ECS.ImGuiDebugSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -3549,33 +3549,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var showMetricsWindow : Bool
 
 	// Swift methods
-	0x6be210  class func ImGuiDebugSystem.__allocating_init() // init 
+	0x6be0d0  class func ImGuiDebugSystem.__allocating_init() // init 
  }
 
  class VFXCore.SubContext : CodeGeneration.Context {
 	// Swift methods
-	0x27ce0  func CodeGeneration.SubContext.contextExit.getter // getter 
-	0x27e10  func CodeGeneration.SubContext.contextEntry.getter // getter 
-	0x27f60  func CodeGeneration.SubContext.useTemplate.getter // getter 
-	0x27f40  func CodeGeneration.SubContext.useTemplate.setter // setter 
-	0x27f80  func CodeGeneration.SubContext.useTemplate.modify // modifyCoroutine 
-	0x280a0  func CodeGeneration.SubContext.useBuiltinTemplate.getter // getter 
-	0x28040  func CodeGeneration.SubContext.useBuiltinTemplate.setter // setter 
-	0x28120  func CodeGeneration.SubContext.useBuiltinTemplate.modify // modifyCoroutine 
-	0x282e0  func CodeGeneration.SubContext.useUserTemplate.getter // getter 
-	0x28280  func CodeGeneration.SubContext.useUserTemplate.setter // setter 
-	0x28360  func CodeGeneration.SubContext.useUserTemplate.modify // modifyCoroutine 
-	0x284c0  func CodeGeneration.SubContext.templateName.getter // getter 
-	0x284a0  func CodeGeneration.SubContext.templateName.setter // setter 
-	0x284e0  func CodeGeneration.SubContext.templateName.modify // modifyCoroutine 
-	0x28640  func CodeGeneration.SubContext.templateUid.getter // getter 
-	0x285b0  func CodeGeneration.SubContext.templateUid.setter // setter 
-	0x286d0  func CodeGeneration.SubContext.templateUid.modify // modifyCoroutine 
-	0x29950  func CodeGeneration.SubContext.addContextEntry() // method 
-	0x29a40  func CodeGeneration.SubContext.addContextExit() // method 
-	0x29af0  func CodeGeneration.SubContext.updateParameters() // method 
-	0x2a120  func CodeGeneration.SubContext.createUniqueParameterName(_:) // method 
-	0x2a7b0  func CodeGeneration.SubContext._generateCode(_:with:using:) // method 
+	0x27870  func CodeGeneration.SubContext.contextExit.getter // getter 
+	0x279a0  func CodeGeneration.SubContext.contextEntry.getter // getter 
+	0x27af0  func CodeGeneration.SubContext.useTemplate.getter // getter 
+	0x27ad0  func CodeGeneration.SubContext.useTemplate.setter // setter 
+	0x27b10  func CodeGeneration.SubContext.useTemplate.modify // modifyCoroutine 
+	0x27c30  func CodeGeneration.SubContext.useBuiltinTemplate.getter // getter 
+	0x27bd0  func CodeGeneration.SubContext.useBuiltinTemplate.setter // setter 
+	0x27cb0  func CodeGeneration.SubContext.useBuiltinTemplate.modify // modifyCoroutine 
+	0x27e70  func CodeGeneration.SubContext.useUserTemplate.getter // getter 
+	0x27e10  func CodeGeneration.SubContext.useUserTemplate.setter // setter 
+	0x27ef0  func CodeGeneration.SubContext.useUserTemplate.modify // modifyCoroutine 
+	0x28050  func CodeGeneration.SubContext.templateName.getter // getter 
+	0x28030  func CodeGeneration.SubContext.templateName.setter // setter 
+	0x28070  func CodeGeneration.SubContext.templateName.modify // modifyCoroutine 
+	0x281d0  func CodeGeneration.SubContext.templateUid.getter // getter 
+	0x28140  func CodeGeneration.SubContext.templateUid.setter // setter 
+	0x28260  func CodeGeneration.SubContext.templateUid.modify // modifyCoroutine 
+	0x294e0  func CodeGeneration.SubContext.addContextEntry() // method 
+	0x295d0  func CodeGeneration.SubContext.addContextExit() // method 
+	0x29680  func CodeGeneration.SubContext.updateParameters() // method 
+	0x29cb0  func CodeGeneration.SubContext.createUniqueParameterName(_:) // method 
+	0x2a340  func CodeGeneration.SubContext._generateCode(_:with:using:) // method 
  }
 
  enum VFXCore.Dimension {
@@ -3593,33 +3593,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var identifier : øƒ // +0x0
+	var identifier : Ô≈ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var endianness : Wx // +0xc
+	var endianness : áy // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var glType : Wx // +0x10
+	var glType : áy // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var glTypeSize : Wx // +0x14
+	var glTypeSize : áy // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var glFormat : Wx // +0x18
+	var glFormat : áy // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var glInternalFormat : Wx // +0x1c
+	var glInternalFormat : áy // +0x1c
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var glBaseInternalFormat : Wx // +0x20
+	var glBaseInternalFormat : áy // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pixelWidth : Wx // +0x24
+	var pixelWidth : áy // +0x24
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pixelHeight : Wx // +0x28
+	var pixelHeight : áy // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pixelDepth : Wx // +0x2c
+	var pixelDepth : áy // +0x2c
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var numberOfArrayElements : Wx // +0x30
+	var numberOfArrayElements : áy // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var numberOfFaces : Wx // +0x34
+	var numberOfFaces : áy // +0x34
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var numberOfMipmapLevels : Wx // +0x38
+	var numberOfMipmapLevels : áy // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bytesOfKeyValueData : Wx // +0x3c
+	var bytesOfKeyValueData : áy // +0x3c
  }
 
  enum VFXCore.KTXLoadingError {
@@ -3670,7 +3670,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var lighting : Bool // +0xd
 	var sortMode : ParticleSortMode // +0xe
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxOverdraw : Wx // +0x10
+	var maxOverdraw : áy // +0x10
 	var animationMode : ParticleAnimationMode // +0x14
 	var softDistance : Float // +0x18
  }
@@ -3681,7 +3681,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var blendMode : BlendMode // +0x0
 	var sortMode : ParticleSortMode // +0x5
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxOverdraw : Wx // +0x8
+	var maxOverdraw : áy // +0x8
 	var animationMode : ParticleAnimationMode // +0xc
 	var softDistance : Float // +0x10
 	var thickness : Float // +0x14
@@ -3696,12 +3696,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var blendMode : BlendMode // +0x8
 	var sortMode : ParticleSortMode // +0xd
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxOverdraw : Wx // +0x10
+	var maxOverdraw : áy // +0x10
 	var animationMode : ParticleAnimationMode // +0x14
 	var softDistance : Float // +0x18
 	var orientation : ParticleOrientationMode // +0x1c
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var upAxis : YÃ // +0x20
+	var upAxis : âÕ // +0x20
 	var lighting : Bool // +0x30
 	var shape : Shape // +0x31
 	var stretchFactor : Float // +0x34
@@ -3722,7 +3722,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var blendMode : BlendMode // +0x8
 	var sortMode : ParticleSortMode // +0xd
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxOverdraw : Wx // +0x10
+	var maxOverdraw : áy // +0x10
 	var animationMode : ParticleAnimationMode // +0x14
 	var lighting : Bool // +0x15
 	var softDistance : Float // +0x18
@@ -3735,7 +3735,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var blendMode : BlendMode // +0x8
 	var sortMode : ParticleSortMode // +0xd
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxOverdraw : Wx // +0x10
+	var maxOverdraw : áy // +0x10
 	var animationMode : ParticleAnimationMode // +0x14
 	var lighting : Bool // +0x15
 	var softDistance : Float // +0x18
@@ -3774,7 +3774,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var texture : Entity // +0x0
 	var blendMode : BlendMode // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var maxOverdraw : Wx // +0x10
+	var maxOverdraw : áy // +0x10
 	var animationMode : ParticleAnimationMode // +0x14
 	var softDistance : Float // +0x18
 	var orientation : ParticleOrientationMode // +0x1c
@@ -3954,15 +3954,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var renderTargets : [String : MTLTexture]
 
 	// Swift methods
-	0x6ae70  func TexturePool.extraAssetBundles.getter // getter 
-	0x6ae80  func TexturePool.extraAssetBundles.setter // setter 
-	0x6aea0  func TexturePool.extraAssetBundles.modify // modifyCoroutine 
-	0x6aed0  func TexturePool.get(renderTarget:descriptor:checkInCache:) // method 
-	0x6b5d0  func TexturePool.get(assetName:) // method 
-	0x6c750  func TexturePool.get(colorRamp:) // method 
-	0x6cbd0  func TexturePool.get(curve:) // method 
-	0x6d030  func TexturePool.discard(renderTarget:) // method 
-	0x6d1a0  func TexturePool.clearRenderTargets() // method 
+	0x6aa40  func TexturePool.extraAssetBundles.getter // getter 
+	0x6aa50  func TexturePool.extraAssetBundles.setter // setter 
+	0x6aa70  func TexturePool.extraAssetBundles.modify // modifyCoroutine 
+	0x6aaa0  func TexturePool.get(renderTarget:descriptor:checkInCache:) // method 
+	0x6b1a0  func TexturePool.get(assetName:) // method 
+	0x6c320  func TexturePool.get(colorRamp:) // method 
+	0x6c7a0  func TexturePool.get(curve:) // method 
+	0x6cc00  func TexturePool.discard(renderTarget:) // method 
+	0x6cd70  func TexturePool.clearRenderTargets() // method 
  }
 
  class VFXCore.GPUHelper : NSObject /usr/lib/libobjc.A.dylib {
@@ -3973,13 +3973,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let commandQueue : MTLCommandQueue
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x72ff400132fa0 (0x7f400132fa0) in binary!
-	0x71700  @objc GPUHelper.(null) <stripped>
+WARNING: couldn't find address 0x730e4001330d0 (0xe4001330d0) in binary!
+	0x71730  @objc GPUHelper.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x17cff9c5900  @objc GPUHelper.(null) <stripped>
+	0x2b4ff9c5600  @objc GPUHelper.(null) <stripped>
 
 	// Swift methods
-	0x6d880  func GPUHelper.copyBufferToTexture(from:bufferOffset:to:blitEncoder:) // method 
+	0x6d450  func GPUHelper.copyBufferToTexture(from:bufferOffset:to:blitEncoder:) // method 
  }
 
  struct VFXCore.Template {
@@ -4009,7 +4009,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var contexts : Context // +0x28 (0x8)
 
 	// Swift methods
-	0x6e960  class func CodeGeneration.TemplateSet.__allocating_init(from:) // init 
+	0x6e530  class func CodeGeneration.TemplateSet.__allocating_init(from:) // init 
  }
 
  enum VFXCore.CodingKeys {
@@ -4028,16 +4028,16 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var type : MetadataType
 
 	// Swift methods
-	0x703a0  func CodeGeneration.ParameterBase.owner.getter // getter 
-	0x70400  func CodeGeneration.ParameterBase.name.getter // getter 
-	0x70480  func CodeGeneration.ParameterBase.uid.getter // getter 
-	0x704d0  func CodeGeneration.ParameterBase.type.getter // getter 
-	0x706c0  func CodeGeneration.ParameterBase.unflattenedUid() // method 
-	0x707e0  func CodeGeneration.ParameterBase.hash(into:) // method 
-	0x70820  func CodeGeneration.ParameterBase.description.getter // getter 
-	0x70a40  func CodeGeneration.ParameterBase.getDefaultValue() // method 
-	0x70c40  func CodeGeneration.ParameterBase.setDefaultValue(_:) // method 
-	0x70dc0  func CodeGeneration.ParameterBase.hashValue.getter // getter 
+	0x6ff70  func CodeGeneration.ParameterBase.owner.getter // getter 
+	0x6ffd0  func CodeGeneration.ParameterBase.name.getter // getter 
+	0x70050  func CodeGeneration.ParameterBase.uid.getter // getter 
+	0x700a0  func CodeGeneration.ParameterBase.type.getter // getter 
+	0x70290  func CodeGeneration.ParameterBase.unflattenedUid() // method 
+	0x703b0  func CodeGeneration.ParameterBase.hash(into:) // method 
+	0x703f0  func CodeGeneration.ParameterBase.description.getter // getter 
+	0x70610  func CodeGeneration.ParameterBase.getDefaultValue() // method 
+	0x70810  func CodeGeneration.ParameterBase.setDefaultValue(_:) // method 
+	0x70990  func CodeGeneration.ParameterBase.hashValue.getter // getter 
  }
 
  class VFXCore.ParameterIn : CodeGeneration.ParameterBase { }
@@ -4071,68 +4071,68 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var domains : [String]
 
 	// Swift methods
-	0x72ff0  func CodeGeneration.BaseObject.uid.getter // getter 
-	0x73020  func CodeGeneration.BaseObject.inParameterNames.getter // getter 
-	0x73030  func CodeGeneration.BaseObject.inParameterTypes.getter // getter 
-	0x73040  func CodeGeneration.BaseObject.outParameterNames.getter // getter 
-	0x73050  func CodeGeneration.BaseObject.outParameterTypes.getter // getter 
-	0x73060  func CodeGeneration.BaseObject.domains.getter // getter 
-	0x73070  func CodeGeneration.BaseObject.baseType.getter // getter 
-	0x73100  func CodeGeneration.BaseObject.isContextEntryOrExit.getter // getter 
-	0x73140  func CodeGeneration.BaseObject.defaultInParameterIndex.getter // getter 
-	0x73240  func CodeGeneration.BaseObject.inParameterDefaultValues() // method 
-	0x83a70  func CodeGeneration.BaseObject.signature.getter // getter 
-	0x737a0  func CodeGeneration.BaseObject.displaySignature.getter // getter 
-	0x73870  func CodeGeneration.BaseObject.canBeDisabled.getter // getter 
-	0x73890  func CodeGeneration.BaseObject.disabled.getter // getter 
-	0x73950  func CodeGeneration.BaseObject.disabled.setter // setter 
-	0x739b0  func CodeGeneration.BaseObject.disabled.modify // modifyCoroutine 
-	0x83e20  class func CodeGeneration.BaseObject.__allocating_init(metadataDict:) // init 
-	0x83ec0  class func CodeGeneration.BaseObject.__allocating_init(_:metadataDict:) // init 
-	0x73ab0  func CodeGeneration.BaseObject.copyBaseObjectProperties(to:) // method 
-	0x73b80  func CodeGeneration.BaseObject.hash(into:) // method 
-	0x73bc0  func CodeGeneration.BaseObject.color.getter // getter 
-	0x73cc0  func CodeGeneration.BaseObject.color.setter // setter 
-	0x73d10  func CodeGeneration.BaseObject.color.modify // modifyCoroutine 
-	0x73dd0  func CodeGeneration.BaseObject.name.getter // getter 
-	0x73ee0  func CodeGeneration.BaseObject.name.setter // setter 
-	0x73f00  func CodeGeneration.BaseObject.name.modify // modifyCoroutine 
-	0x73f60  func CodeGeneration.BaseObject.label.getter // getter 
-	0x740b0  func CodeGeneration.BaseObject.label.setter // setter 
-	0x74140  func CodeGeneration.BaseObject.label.modify // modifyCoroutine 
-	0x74250  func CodeGeneration.BaseObject.allUserData.getter // getter 
-	0x742e0  func CodeGeneration.BaseObject.setUserData(_:_:) // method 
-	0x74360  func CodeGeneration.BaseObject.tag(as:) // method 
-	0x74490  func CodeGeneration.BaseObject.untag(as:) // method 
-	0x745a0  func CodeGeneration.BaseObject.has(tag:) // method 
-	0x746e0  func CodeGeneration.BaseObject.copyTags(from:) // method 
-	0x74b40  func CodeGeneration.BaseObject.makeUID(_:) // method 
-	0x74bd0  func CodeGeneration.BaseObject.updateInParameters() // method 
-	0x74fb0  func CodeGeneration.BaseObject.updateOutParameters() // method 
-	0x75390  func CodeGeneration.BaseObject.setParametersFromOrgParams(resources:) // method 
-	0x75b00  func CodeGeneration.BaseObject.copyFlattenStates(from:using:) // method 
-	0x765f0  func CodeGeneration.BaseObject.inParameterUIDs.getter // getter 
-	0x76760  func CodeGeneration.BaseObject.inParameter(_:) // method 
-	0x768b0  func CodeGeneration.BaseObject.outParameter(_:) // method 
-	0x76a00  func CodeGeneration.BaseObject.outParameter.getter // getter 
-	0x76a60  func CodeGeneration.BaseObject.supportInParameterType(_:) // method 
-	0x76b20  func CodeGeneration.BaseObject.supportOutParameterType(_:) // method 
-	0x76be0  func CodeGeneration.BaseObject.unflattenParameter(forInput:type:) // method 
-	0x76e10  func CodeGeneration.BaseObject.flattenParameter(forInput:using:) // method 
-	0x77000  func CodeGeneration.BaseObject.extractValuesFromIntBasedTypes(_:_:) // method 
-	0x77950  func CodeGeneration.BaseObject.copyValuesFromIntBasedTypes(_:_:_:) // method 
-	0x78050  func CodeGeneration.BaseObject.extractValuesFromFloatBasedTypes(_:_:) // method 
-	0x791c0  func CodeGeneration.BaseObject.copyValuesFromFloatBasedTypes(_:_:_:) // method 
-	0x79a30  func CodeGeneration.BaseObject.extractValuesFromFloat3BasedTypes(_:_:) // method 
-	0x7a4b0  func CodeGeneration.BaseObject.copyValuesFromFloat3BasedTypes(_:_:_:) // method 
-	0x7ac60  func CodeGeneration.BaseObject.extractValuesFromFloat4BasedTypes(_:_:) // method 
-	0x7b800  func CodeGeneration.BaseObject.copyValuesFromFloat4BasedTypes(_:_:_:) // method 
-	0x7bfd0  func CodeGeneration.BaseObject.copyDefaultValuesToDecomposedTypes(_:newInParameterNames:) // method 
-	0x7c430  func CodeGeneration.BaseObject.toggleFlatten(forInput:using:) // method 
-	0x7c7e0  func CodeGeneration.BaseObject.unflattenParameter(forOutput:type:) // method 
-	0x7ca10  func CodeGeneration.BaseObject.flattenParameter(forOutput:using:) // method 
-	0x7cc00  func CodeGeneration.BaseObject.toggleFlatten(forOutput:using:) // method 
-	0x7ce90  func CodeGeneration.BaseObject.hashValue.getter // getter 
+	0x72bc0  func CodeGeneration.BaseObject.uid.getter // getter 
+	0x72bf0  func CodeGeneration.BaseObject.inParameterNames.getter // getter 
+	0x72c00  func CodeGeneration.BaseObject.inParameterTypes.getter // getter 
+	0x72c10  func CodeGeneration.BaseObject.outParameterNames.getter // getter 
+	0x72c20  func CodeGeneration.BaseObject.outParameterTypes.getter // getter 
+	0x72c30  func CodeGeneration.BaseObject.domains.getter // getter 
+	0x72c40  func CodeGeneration.BaseObject.baseType.getter // getter 
+	0x72cd0  func CodeGeneration.BaseObject.isContextEntryOrExit.getter // getter 
+	0x72d10  func CodeGeneration.BaseObject.defaultInParameterIndex.getter // getter 
+	0x72e10  func CodeGeneration.BaseObject.inParameterDefaultValues() // method 
+	0x83640  func CodeGeneration.BaseObject.signature.getter // getter 
+	0x73370  func CodeGeneration.BaseObject.displaySignature.getter // getter 
+	0x73440  func CodeGeneration.BaseObject.canBeDisabled.getter // getter 
+	0x73460  func CodeGeneration.BaseObject.disabled.getter // getter 
+	0x73520  func CodeGeneration.BaseObject.disabled.setter // setter 
+	0x73580  func CodeGeneration.BaseObject.disabled.modify // modifyCoroutine 
+	0x839f0  class func CodeGeneration.BaseObject.__allocating_init(metadataDict:) // init 
+	0x83a90  class func CodeGeneration.BaseObject.__allocating_init(_:metadataDict:) // init 
+	0x73680  func CodeGeneration.BaseObject.copyBaseObjectProperties(to:) // method 
+	0x73750  func CodeGeneration.BaseObject.hash(into:) // method 
+	0x73790  func CodeGeneration.BaseObject.color.getter // getter 
+	0x73890  func CodeGeneration.BaseObject.color.setter // setter 
+	0x738e0  func CodeGeneration.BaseObject.color.modify // modifyCoroutine 
+	0x739a0  func CodeGeneration.BaseObject.name.getter // getter 
+	0x73ab0  func CodeGeneration.BaseObject.name.setter // setter 
+	0x73ad0  func CodeGeneration.BaseObject.name.modify // modifyCoroutine 
+	0x73b30  func CodeGeneration.BaseObject.label.getter // getter 
+	0x73c80  func CodeGeneration.BaseObject.label.setter // setter 
+	0x73d10  func CodeGeneration.BaseObject.label.modify // modifyCoroutine 
+	0x73e20  func CodeGeneration.BaseObject.allUserData.getter // getter 
+	0x73eb0  func CodeGeneration.BaseObject.setUserData(_:_:) // method 
+	0x73f30  func CodeGeneration.BaseObject.tag(as:) // method 
+	0x74060  func CodeGeneration.BaseObject.untag(as:) // method 
+	0x74170  func CodeGeneration.BaseObject.has(tag:) // method 
+	0x742b0  func CodeGeneration.BaseObject.copyTags(from:) // method 
+	0x74710  func CodeGeneration.BaseObject.makeUID(_:) // method 
+	0x747a0  func CodeGeneration.BaseObject.updateInParameters() // method 
+	0x74b80  func CodeGeneration.BaseObject.updateOutParameters() // method 
+	0x74f60  func CodeGeneration.BaseObject.setParametersFromOrgParams(resources:) // method 
+	0x756d0  func CodeGeneration.BaseObject.copyFlattenStates(from:using:) // method 
+	0x761c0  func CodeGeneration.BaseObject.inParameterUIDs.getter // getter 
+	0x76330  func CodeGeneration.BaseObject.inParameter(_:) // method 
+	0x76480  func CodeGeneration.BaseObject.outParameter(_:) // method 
+	0x765d0  func CodeGeneration.BaseObject.outParameter.getter // getter 
+	0x76630  func CodeGeneration.BaseObject.supportInParameterType(_:) // method 
+	0x766f0  func CodeGeneration.BaseObject.supportOutParameterType(_:) // method 
+	0x767b0  func CodeGeneration.BaseObject.unflattenParameter(forInput:type:) // method 
+	0x769e0  func CodeGeneration.BaseObject.flattenParameter(forInput:using:) // method 
+	0x76bd0  func CodeGeneration.BaseObject.extractValuesFromIntBasedTypes(_:_:) // method 
+	0x77520  func CodeGeneration.BaseObject.copyValuesFromIntBasedTypes(_:_:_:) // method 
+	0x77c20  func CodeGeneration.BaseObject.extractValuesFromFloatBasedTypes(_:_:) // method 
+	0x78d90  func CodeGeneration.BaseObject.copyValuesFromFloatBasedTypes(_:_:_:) // method 
+	0x79600  func CodeGeneration.BaseObject.extractValuesFromFloat3BasedTypes(_:_:) // method 
+	0x7a080  func CodeGeneration.BaseObject.copyValuesFromFloat3BasedTypes(_:_:_:) // method 
+	0x7a830  func CodeGeneration.BaseObject.extractValuesFromFloat4BasedTypes(_:_:) // method 
+	0x7b3d0  func CodeGeneration.BaseObject.copyValuesFromFloat4BasedTypes(_:_:_:) // method 
+	0x7bba0  func CodeGeneration.BaseObject.copyDefaultValuesToDecomposedTypes(_:newInParameterNames:) // method 
+	0x7c000  func CodeGeneration.BaseObject.toggleFlatten(forInput:using:) // method 
+	0x7c3b0  func CodeGeneration.BaseObject.unflattenParameter(forOutput:type:) // method 
+	0x7c5e0  func CodeGeneration.BaseObject.flattenParameter(forOutput:using:) // method 
+	0x7c7d0  func CodeGeneration.BaseObject.toggleFlatten(forOutput:using:) // method 
+	0x7ca60  func CodeGeneration.BaseObject.hashValue.getter // getter 
  }
 
  enum VFXCore.Type {
@@ -4202,7 +4202,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var isMenuItemEnabled : Bool
 
 	// Swift methods
-	0x924a0  class func DebugVoxelSystem.__allocating_init() // init 
+	0x92070  class func DebugVoxelSystem.__allocating_init() // init 
  }
 
  struct VFXCore.DebugVoxelSystemState {
@@ -4222,7 +4222,7 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var clock : DisplayClock
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x677a400133128 (0x7a400133128) in binary!
+WARNING: couldn't find address 0x677a400133260 (0x7a400133260) in binary!
 	0x18000000c  @objc DisplayLinkTarget.(null) <stripped>
 
 	// Swift methods
@@ -4239,14 +4239,15 @@ WARNING: couldn't find address 0x677a400133128 (0x7a400133128) in binary!
 	var _pausedOnBackgrounding : Bool
 
 	// ObjC -> Swift bridged methods
-	0x73040  CodeGeneration.BaseObject.outParameterNames.getter
+WARNING: couldn't find address 0x7313c001332b0 (0x13c001332b0) in binary!
+	0x73130  @objc DisplayClock.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xff9c5220  @objc DisplayClock.(null) <stripped>
+	0xff9c4f20  @objc DisplayClock.(null) <stripped>
 
 	// Swift methods
-	0x97b10  func DisplayClock.addHandler(_:) // method 
-	0x97c00  func DisplayClock.removeHandler(_:) // method 
-	0x97f60  func DisplayClock.start() // method 
+	0x976e0  func DisplayClock.addHandler(_:) // method 
+	0x977d0  func DisplayClock.removeHandler(_:) // method 
+	0x97b30  func DisplayClock.start() // method 
  }
 
  class VFXCore.CameraSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4308,33 +4309,33 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var isGeneratingForTesting : Bool
 
 	// Swift methods
-	0xa7ba0  func ScriptCodeGen.language.getter // getter 
-	0xa7bf0  class func ScriptCodeGen.__allocating_init(entityManager:projectName:) // init 
-	0xa7c90  class func static ScriptCodeGen.generateTrampoline(actualFunctionName:actualFunctionDefinition:doesIterate:parameters:isGeneratingToSharedFile:) // method 
-	0xa9c80  func ScriptCodeGen.generateCodeForAllScripts() // method 
+	0xa7770  func ScriptCodeGen.language.getter // getter 
+	0xa77c0  class func ScriptCodeGen.__allocating_init(entityManager:projectName:) // init 
+	0xa7860  class func static ScriptCodeGen.generateTrampoline(actualFunctionName:actualFunctionDefinition:doesIterate:parameters:isGeneratingToSharedFile:) // method 
+	0xa9850  func ScriptCodeGen.generateCodeForAllScripts() // method 
  }
 
  class VFXCore.MetalScriptCodeGen : ScriptCodeGen {
 	// Swift methods
-	0xab890  func MetalScriptCodeGen.generateMetalLibrary() // method 
+	0xab460  func MetalScriptCodeGen.generateMetalLibrary() // method 
  }
 
  class VFXCore.CScriptCodeGen : ScriptCodeGen { }
 
  class VFXCore.SwiftScriptCodeGen : ScriptCodeGen {
 	// Swift methods
-	0xac880  func SwiftScriptCodeGen.classDeclBegin.getter // getter 
-	0xac9b0  func SwiftScriptCodeGen.emitCommonLoadCode(scripts:) // method 
-	0xad1c0  func SwiftScriptCodeGen.fileHeader.getter // getter 
-	0xad2f0  func SwiftScriptCodeGen.generateSwiftFile() // method 
-	0xad3e0  func SwiftScriptCodeGen.generateBadSwiftFile(after:) // method 
+	0xac450  func SwiftScriptCodeGen.classDeclBegin.getter // getter 
+	0xac580  func SwiftScriptCodeGen.emitCommonLoadCode(scripts:) // method 
+	0xacd90  func SwiftScriptCodeGen.fileHeader.getter // getter 
+	0xacec0  func SwiftScriptCodeGen.generateSwiftFile() // method 
+	0xacfb0  func SwiftScriptCodeGen.generateBadSwiftFile(after:) // method 
  }
 
  struct VFXCore.ParticleLegacyRenderer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rect : Ã // +0x0
+	var rect : 7Õ // +0x0
 	var material : Material // +0x10
  }
 
@@ -4357,9 +4358,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var position_angle : Ã // +0x0
+	var position_angle : 7Õ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rect : Ã // +0x10
+	var rect : 7Õ // +0x10
 	var size : Float // +0x20
  }
 
@@ -4394,7 +4395,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : ≈ò // +0x0
+	let rawValue : ıô // +0x0
  }
 
  struct VFXCore.PointCacheGenerator {
@@ -4405,7 +4406,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var distribution : Distribution // +0x10
 	var options : BakingOptions // +0x12
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : ÔÛ // +0x18
+	var seed : ı // +0x18
  }
 
  class VFXCore.PointCacheGeneratorSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4553,9 +4554,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var material : π∑ // +0x0
+	var material : È∏ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var mesh : ´∑ // +0x8
+	var mesh : €∏ // +0x8
 	var transforms : UnsafeDynamicArray // +0x10
 	var colors : UnsafeDynamicArray // +0x38
 	var lastFrameUsed : Bool // +0x60
@@ -4569,7 +4570,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var maxRotVelDir : Float // +0x4
 	var upVector : FlockingLocalAxis // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pointAt : YÃ // +0x10
+	var pointAt : âÕ // +0x10
 	var reduceFlipping : Bool // +0x20
 	var maxRotVelUpVec : Float // +0x24
  }
@@ -4583,7 +4584,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var influence : Float // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var planeNormal : YÃ // +0x10
+	var planeNormal : âÕ // +0x10
  }
 
  class VFXCore.ParticleFlockingAlignVelocityOnPlaneSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -4595,9 +4596,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var borderThickness : Float // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var corner1 : YÃ // +0x10
+	var corner1 : âÕ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var corner2 : YÃ // +0x20
+	var corner2 : âÕ // +0x20
 	var showArea : Bool // +0x30
  }
 
@@ -4610,9 +4611,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var influence : Float // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var planeCenter : YÃ // +0x10
+	var planeCenter : âÕ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var planeNormal : YÃ // +0x20
+	var planeNormal : âÕ // +0x20
 	var showPlane : Bool // +0x30
  }
 
@@ -4643,8 +4644,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var grid : Grid
 
 	// Swift methods
-	0xca100  func ParticleFlockingSolverData.set(_:_:) // method 
-	0xcb590  func ParticleFlockingSolverData.debug(entityManager:drawGrid:drawCells:logInfo:) // method 
+	0xc9c60  func ParticleFlockingSolverData.set(_:_:) // method 
+	0xcb0f0  func ParticleFlockingSolverData.debug(entityManager:drawGrid:drawCells:logInfo:) // method 
  }
 
  struct VFXCore.ParticleFlockingSolver {
@@ -4658,7 +4659,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var maxNeighborCount : Int // +0x18
 	var sizeMode : FlockingSizeMode // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sizeVirtualScale : ßo // +0x30
+	var sizeVirtualScale : ◊p // +0x30
 	var mindVolumeRatio : Float // +0x44
 	var desiredDistance : Float // +0x48
 	var separationStrength : Float // +0x4c
@@ -4681,7 +4682,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var cruisingStrength : Float // +0x0
 	var cruisingSpeed : Float // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var clampSpeed : uÃ // +0x8
+	var clampSpeed : •Õ // +0x8
 	var simpleDragForce : Float // +0x10
 	var kickStartThreshold : Float // +0x14
 	var kickStartDirection : FlockingLocalAxis // +0x18
@@ -4705,9 +4706,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var cellCountInZM1 : Int // +0x40
 	var cellSize : Float // +0x48
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var boxCornerMin : YÃ // +0x50
+	var boxCornerMin : âÕ // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var boxCornerMax : YÃ // +0x60
+	var boxCornerMax : âÕ // +0x60
  }
 
  struct VFXCore.FlockingParticle {
@@ -4715,12 +4716,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var positionPointer : Position // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var position : YÃ // +0x10
+	var position : âÕ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var velocity : YÃ // +0x20
+	var velocity : âÕ // +0x20
 	var orientation : simd_quatf // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : YÃ // +0x40
+	var scale : âÕ // +0x40
 	var radius : Float // +0x50
 	var volume : Float // +0x54
 	var _distanceToNeighbor0 : Float // +0x58
@@ -4850,7 +4851,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var neighbor_search_map : ‰ // +0x0
+	var neighbor_search_map : AÂ // +0x0
 	var searchRadius : Float // +0x8
  }
 
@@ -4966,7 +4967,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : ÔÛ // +0x0
+	var seed : ı // +0x0
 	var generator : RandomNumberGeneratorXoshiro // +0x8
  }
 
@@ -4976,15 +4977,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var metadataDict : Metadata
 
 	// Swift methods
-	0xe90c0  func CodeGeneration.MetadataSet.isEqual(to:) // method 
-	0xe94d0  func CodeGeneration.MetadataSet.metadataDict.modify // modifyCoroutine 
-	0xe9500  func CodeGeneration.MetadataSet.removeMetadata(_:) // method 
-	0xe95c0  func CodeGeneration.MetadataSet.setMetadata(_:_:) // method 
-	0xe96f0  func CodeGeneration.MetadataSet.setMetadata(_:_:) // method 
-	0xe97b0  func CodeGeneration.MetadataSet.getMetadataValue(_:) // method 
-	0xe9900  func CodeGeneration.MetadataSet.hasMetadata(_:) // method 
-	0xee630  class func CodeGeneration.MetadataSet.__allocating_init(from:) // init 
-	0xe9ec0  func CodeGeneration.MetadataSet.encode(to:) // method 
+	0xe8ad0  func CodeGeneration.MetadataSet.isEqual(to:) // method 
+	0xe8ee0  func CodeGeneration.MetadataSet.metadataDict.modify // modifyCoroutine 
+	0xe8f10  func CodeGeneration.MetadataSet.removeMetadata(_:) // method 
+	0xe8fd0  func CodeGeneration.MetadataSet.setMetadata(_:_:) // method 
+	0xe9100  func CodeGeneration.MetadataSet.setMetadata(_:_:) // method 
+	0xe91c0  func CodeGeneration.MetadataSet.getMetadataValue(_:) // method 
+	0xe9310  func CodeGeneration.MetadataSet.hasMetadata(_:) // method 
+	0xee040  class func CodeGeneration.MetadataSet.__allocating_init(from:) // init 
+	0xe98d0  func CodeGeneration.MetadataSet.encode(to:) // method 
  }
 
  struct VFXCore.CodingKeys {
@@ -5012,7 +5013,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isMenuItemEnabled : Bool
 
 	// Swift methods
-	0xf32e0  class func NavigationSystem.__allocating_init() // init 
+	0xf2cf0  class func NavigationSystem.__allocating_init() // init 
  }
 
  class VFXCore.LensBlurPassSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5067,7 +5068,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var includeFunctionsDependencies : [String]?
 
 	// Swift methods
-	0xfb1d0  class func CodeGeneration.CodeSourceSnippet.__allocating_init(from:) // init 
+	0xfa840  class func CodeGeneration.CodeSourceSnippet.__allocating_init(from:) // init 
  }
 
  struct VFXCore.Parameter {
@@ -5117,7 +5118,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dimensions : YÃ // +0x0
+	var dimensions : âÕ // +0x0
  }
 
  class VFXCore.ClampBoxSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -5128,7 +5129,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let worldDimension : YÃ
+	let worldDimension : âÕ
 
 	// Swift methods
  }
@@ -5346,21 +5347,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var source : CodeSourceSnippet
 
 	// Swift methods
-	0x1107a0  func CodeGeneration.CustomCodeSnippet.source.getter // getter 
-	0x1107c0  class func CodeGeneration.CustomCodeSnippet.__allocating_init(_:_:) // init 
-	0x1109b0  func CodeGeneration.CustomCodeSnippet.withInParameter(_:_:) // method 
-	0x1109d0  func CodeGeneration.CustomCodeSnippet.withOutParameter(_:_:) // method 
-	0x1109f0  func CodeGeneration.CustomCodeSnippet.withCode(_:_:) // method 
-	0x110aa0  func CodeGeneration.CustomCodeSnippet.setCode(_:_:) // method 
-	0x110b40  func CodeGeneration.CustomCodeSnippet.addInParameter(_:) // method 
-	0x110e10  func CodeGeneration.CustomCodeSnippet.addOutParameter(_:) // method 
-	0x1110e0  func CodeGeneration.CustomCodeSnippet.removeInParameter(_:) // method 
-	0x111140  func CodeGeneration.CustomCodeSnippet.removeOutParameter(_:) // method 
-	0x1111a0  func CodeGeneration.CustomCodeSnippet.createUniqueParameterName(_:) // method 
-	0x111820  func CodeGeneration.CustomCodeSnippet.renameParameterInsideCodeStatements(from:to:) // method 
-	0x1118d0  func CodeGeneration.CustomCodeSnippet.description.getter // getter 
-	0x111a20  func CodeGeneration.CustomCodeSnippet.getCode(language:) // method 
-	0x111b10  func CodeGeneration.CustomCodeSnippet._generateCode(_:) // method 
+	0x10fe10  func CodeGeneration.CustomCodeSnippet.source.getter // getter 
+	0x10fe30  class func CodeGeneration.CustomCodeSnippet.__allocating_init(_:_:) // init 
+	0x110020  func CodeGeneration.CustomCodeSnippet.withInParameter(_:_:) // method 
+	0x110040  func CodeGeneration.CustomCodeSnippet.withOutParameter(_:_:) // method 
+	0x110060  func CodeGeneration.CustomCodeSnippet.withCode(_:_:) // method 
+	0x110110  func CodeGeneration.CustomCodeSnippet.setCode(_:_:) // method 
+	0x1101b0  func CodeGeneration.CustomCodeSnippet.addInParameter(_:) // method 
+	0x110480  func CodeGeneration.CustomCodeSnippet.addOutParameter(_:) // method 
+	0x110750  func CodeGeneration.CustomCodeSnippet.removeInParameter(_:) // method 
+	0x1107b0  func CodeGeneration.CustomCodeSnippet.removeOutParameter(_:) // method 
+	0x110810  func CodeGeneration.CustomCodeSnippet.createUniqueParameterName(_:) // method 
+	0x110e90  func CodeGeneration.CustomCodeSnippet.renameParameterInsideCodeStatements(from:to:) // method 
+	0x110f40  func CodeGeneration.CustomCodeSnippet.description.getter // getter 
+	0x111090  func CodeGeneration.CustomCodeSnippet.getCode(language:) // method 
+	0x111180  func CodeGeneration.CustomCodeSnippet._generateCode(_:) // method 
  }
 
  enum VFXCore.CodingKeys {
@@ -5399,7 +5400,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var handles : FixedArray8
 
 	// Swift methods
-	0x116a20  func ParticleFluidSolver2DSolverData.reconstruct(setup:extent:cellSize:border:transform:) // method 
+	0x116090  func ParticleFluidSolver2DSolverData.reconstruct(setup:extent:cellSize:border:transform:) // method 
  }
 
  struct VFXCore.ParticleFluidSolver2DSolver {
@@ -5413,7 +5414,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var influence : Float // +0xc
 	var falloff : Float // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var extent : YÃ // +0x20
+	var extent : âÕ // +0x20
 	var cellSize : Float // +0x30
 	var viscosity : Float // +0x34
 	var vorticity : Float // +0x38
@@ -5572,7 +5573,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class VFXCore.GraphCodeGen : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x128c90  class func GraphCodeGen.__allocating_init() // init 
+	0x128300  class func GraphCodeGen.__allocating_init() // init 
  }
 
  struct VFXCore.GraphScriptingConfig {
@@ -5702,7 +5703,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uid : 7ﬂ // +0x0
+	var uid : g‡ // +0x0
  }
 
  struct VFXCore.EmitterParameter {
@@ -5721,7 +5722,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var render : EntityComponentReference // +0x20
 	var maxParticleCount : Int? // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var seed : K_ // +0x38
+	var seed : {` // +0x38
 	var updateBoundingBox : Bool // +0x41
 	var disableEmitterWhenCulled : Bool // +0x42
 	var showBoundingBox : Bool // +0x43
@@ -5734,7 +5735,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let rawValue : ≈ò // +0x0
+	let rawValue : ıô // +0x0
  }
 
  enum VFXCore.PhysicsSimulation {
@@ -5771,18 +5772,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class VFXCore.EmitterPrepareRuntime : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x1a6510  class func EmitterPrepareRuntime.__allocating_init() // init 
-	0x1a6540  func EmitterPrepareRuntime.name.getter // getter 
-	0x1a6560  func EmitterPrepareRuntime.defaultStage.getter // getter 
-	0x1a7350  func EmitterPrepareRuntime.update(entityManager:) // method 
+	0x1a5b80  class func EmitterPrepareRuntime.__allocating_init() // init 
+	0x1a5bb0  func EmitterPrepareRuntime.name.getter // getter 
+	0x1a5bd0  func EmitterPrepareRuntime.defaultStage.getter // getter 
+	0x1a69c0  func EmitterPrepareRuntime.update(entityManager:) // method 
  }
 
  class VFXCore.ParticleEmitterTransport : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x1bc750  class func ParticleEmitterTransport.__allocating_init() // init 
-	0x1a7f00  func ParticleEmitterTransport.name.getter // getter 
-	0x1a7f20  func ParticleEmitterTransport.defaultStage.getter // getter 
-	0x1a7f30  func ParticleEmitterTransport.update(entityManager:) // method 
+	0x1bbdc0  class func ParticleEmitterTransport.__allocating_init() // init 
+	0x1a7570  func ParticleEmitterTransport.name.getter // getter 
+	0x1a7590  func ParticleEmitterTransport.defaultStage.getter // getter 
+	0x1a75a0  func ParticleEmitterTransport.update(entityManager:) // method 
  }
 
  enum VFXCore.CodingKeys {
@@ -5933,9 +5934,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var texture : Entity // +0x8
 	var addressMode : AddressMode // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : uÃ // +0x18
+	var scale : •Õ // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bias : uÃ // +0x20
+	var bias : •Õ // +0x20
 	var angle : Float // +0x28
  }
 
@@ -5955,9 +5956,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var yRange : Range<Float> // +0x20
 	var zRange : Range<Float> // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : uÃ // +0x30
+	var scale : •Õ // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bias : uÃ // +0x38
+	var bias : •Õ // +0x38
 	var angle : Float // +0x40
  }
 
@@ -5973,9 +5974,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var addressMode : AddressMode // +0x9
 	var range : Range<Float> // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scale : uÃ // +0x18
+	var scale : •Õ // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var bias : uÃ // +0x20
+	var bias : •Õ // +0x20
 	var angle : Float // +0x28
  }
 
@@ -6072,7 +6073,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var force : YÃ // +0x0
+	var force : âÕ // +0x0
  }
 
  class VFXCore.GPUSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -6371,7 +6372,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var heap : MTLHeap
 
 	// Swift methods
-	0x1e4520  func PrivateHeap.resize(size:) // method 
+	0x1e3b90  func PrivateHeap.resize(size:) // method 
  }
 
  class VFXCore.NewBufferPool : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -6396,12 +6397,12 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var currentSmallBuffer : ConstantBuffer
 
 	// Swift methods
-	0x1e4780  func NewBufferPool.reuseOrAllocateHeap(size:) // method 
-	0x1e4a10  func NewBufferPool.reuseOrAllocateBuffer(size:) // method 
-	0x1e4cc0  func NewBufferPool.reuseBuffersNotConsumed() // method 
-	0x1e4e30  func NewBufferPool.recycleBuffersGetCompletionBlock() // method 
-	0x1e54a0  func NewBufferPool.reuseOrAllocateConstantBuffer(length:label:) // method 
-	0x1e55d0  func NewBufferPool.allocateConstantBuffer(size:) // method 
+	0x1e3df0  func NewBufferPool.reuseOrAllocateHeap(size:) // method 
+	0x1e4080  func NewBufferPool.reuseOrAllocateBuffer(size:) // method 
+	0x1e4330  func NewBufferPool.reuseBuffersNotConsumed() // method 
+	0x1e44a0  func NewBufferPool.recycleBuffersGetCompletionBlock() // method 
+	0x1e4b10  func NewBufferPool.reuseOrAllocateConstantBuffer(length:label:) // method 
+	0x1e4c40  func NewBufferPool.allocateConstantBuffer(size:) // method 
  }
 
  class VFXCore.BufferPool : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -6417,10 +6418,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var constantBuffers : PaddedConstantBuffer
 
 	// Swift methods
-	0x1e5780  func BufferPool.recycleBuffersGetCompletionBlock() // method 
-	0x1e5a20  func BufferPool.reuseOrAllocateMTLBuffer(_:) // method 
-	0x1e5f30  func BufferPool.allocate(bytes:alignment:) // method 
-	0x1e5fb0  func BufferPool.allocatePermanentBuffer(length:label:) // method 
+	0x1e4df0  func BufferPool.recycleBuffersGetCompletionBlock() // method 
+	0x1e5090  func BufferPool.reuseOrAllocateMTLBuffer(_:) // method 
+	0x1e55a0  func BufferPool.allocate(bytes:alignment:) // method 
+	0x1e5620  func BufferPool.allocatePermanentBuffer(length:label:) // method 
  }
 
  struct VFXCore.PaddedConstantBuffer {
@@ -6481,127 +6482,127 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var bakedTemplates : Context // +0xe8 (0x8)
 	var decodingErrors : SerializationInfo // +0xf0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var onUserTemplatesChangedUUID : YÏ // +0x0 (0x0)
+	var onUserTemplatesChangedUUID : âÌ // +0x0 (0x0)
 
 	// Swift methods
-	0x1edf30  func CodeGeneration.Context.resources.getter // getter 
-	0x1edf50  func CodeGeneration.Context.contextEntryMap.getter // getter 
-	0x1edf70  func CodeGeneration.Context.contextExitMap.getter // getter 
-	0x1edf90  func CodeGeneration.Context.subContextMap.getter // getter 
-	0x1edfb0  func CodeGeneration.Context.snippets.getter // getter 
-	0x1edfd0  func CodeGeneration.Context.customCodeSnippetMap.getter // getter 
-	0x1edff0  func CodeGeneration.Context.userObjects.getter // getter 
-	0x1ee010  func CodeGeneration.Context.assignments.getter // getter 
-	0x1ee030  func CodeGeneration.Context.parameters.getter // getter 
-	0x1ee050  func CodeGeneration.Context.templates.getter // getter 
-	0x1ee070  func CodeGeneration.Context.bakedTemplates.getter // getter 
-	0x1ee090  func CodeGeneration.Context.decodingErrors.getter // getter 
-	0x1ee0b0  func CodeGeneration.Context.clearDecodingErrors() // method 
-	0x1ee0e0  func CodeGeneration.Context.category.getter // getter 
-	0x1ee1e0  func CodeGeneration.Context.category.setter // setter 
-	0x1ee230  func CodeGeneration.Context.category.modify // modifyCoroutine 
-	0x1ee2f0  func CodeGeneration.Context.hasCategory.getter // getter 
-	0x1ee340  func CodeGeneration.Context.initResources(_:) // method 
-	0x1ee540  func CodeGeneration.Context.onResourcesUserTemplatesChanged() // method 
-	0x20ee40  class func CodeGeneration.Context.__allocating_init(resources:) // init 
-	0x20f6d0  class func CodeGeneration.Context.__allocating_init(uid:resources:) // init 
-	0x20f810  func CodeGeneration.Context.description.getter // getter 
-	0x1ecd90  func CodeGeneration.Context.clone() // method 
-	0x1ee900  func CodeGeneration.Context.assignUid() // method 
-	0x1ee980  func CodeGeneration.Context.clear() // method 
-	0x1eeab0  func CodeGeneration.Context.findBaseObject(_:) // method 
-	0x1eec40  func CodeGeneration.Context.makeBaseObjectUID(_:) // method 
-	0x1eed60  func CodeGeneration.Context.overrideAssignments(from:to:) // method 
-	0x1ef0e0  func CodeGeneration.Context.overrideUID(_:with:renameParameters:) // method 
-	0x1f1410  func CodeGeneration.Context.addContextExit(_:) // method 
-	0x1f14b0  func CodeGeneration.Context.isContextExitValid(_:) // method 
-	0x1f1530  func CodeGeneration.Context.removeContextExitInputParameter(uid:) // method 
-	0x1f19a0  func CodeGeneration.Context.removeParameterOnContextExit(contextExit:parameter:) // method 
-	0x1f19e0  func CodeGeneration.Context.addContextEntry(_:) // method 
-	0x1f1b20  func CodeGeneration.Context.addCustomCodeSnippet(_:) // method 
-	0x1f1c70  func CodeGeneration.Context.addUserObject(_:) // method 
-	0x1f1d10  func CodeGeneration.Context.addConstantCodeSnippet(type:name:) // method 
-	0x1f31a0  func CodeGeneration.Context.addCodeSnippet(libName:snippetName:snippetSignature:) // method 
-	0x1f3380  func CodeGeneration.Context.addCodeSnippet(using:snippetUID:snippetMetadataDict:) // method 
-	0x1f34e0  func CodeGeneration.Context.cleanAssignmentsAndParameters(ownedBy:for:) // method 
-	0x1f3600  func CodeGeneration.Context.replaceCodeSnippet(_:with:) // method 
-	0x1f3710  func CodeGeneration.Context.replaceCodeSnippet(_:with:) // method 
-	0x1f37b0  func CodeGeneration.Context.replaceCodeSnippet(_:with:) // method 
-	0x1f3a00  func CodeGeneration.Context.replaceCodeSnippet(_:withTemplateDescription:) // method 
-	0x1f3ae0  func CodeGeneration.Context.replaceCodeSnippet(_:withSubContext:) // method 
-	0x1f3bb0  func CodeGeneration.Context.remapAllAssignments(source:target:) // method 
-	0x1f40c0  func CodeGeneration.Context.removeCodeSnippet(_:) // method 
-	0x1f4280  func CodeGeneration.Context.removeCustomCodeSnippet(_:) // method 
-	0x1f4440  func CodeGeneration.Context.removeContextEntry(_:) // method 
-	0x1f4600  func CodeGeneration.Context.removeContextEntry(owning:) // method 
-	0x1f4e10  func CodeGeneration.Context.removeContextExit(_:) // method 
-	0x1f4fd0  func CodeGeneration.Context.removeTemplate(named:) // method 
-	0x1f5920  func CodeGeneration.Context.removeSubContext(_:keepContent:) // method 
-	0x1f5b30  func CodeGeneration.Context.cleanupContextExit(_:) // method 
-	0x1f5cf0  func CodeGeneration.Context.initParameters(_:inParameterNames:inParameterTypes:outParameterNames:outParameterTypes:) // method 
-	0x1f65e0  func CodeGeneration.Context.addParameterTo(subContextEntry:type:name:) // method 
-	0x1f68e0  func CodeGeneration.Context.addParameterTo(subContextExit:type:name:) // method 
-	0x1f6be0  func CodeGeneration.Context.addSubContext(named:) // method 
-	0x1f6d20  func CodeGeneration.Context.findTemplate(usedBy:checkBakedTemplates:) // method 
-	0x1f7240  func CodeGeneration.Context.findTemplate(subContextName:) // method 
-	0x1f77d0  func CodeGeneration.Context.findTemplate(withUid:) // method 
-	0x1f7c10  func CodeGeneration.Context.addSubContext(named:using:) // method 
-	0x1f7f60  func CodeGeneration.Context.addSubContext(template:) // method 
-	0x1f89d0  func CodeGeneration.Context.rename(with:) // method 
-	0x1f9250  func CodeGeneration.Context.reorderSubContextInParameters(_:to:) // method 
-	0x1fa9d0  func CodeGeneration.Context.reorderSubContextOutParameters(_:to:) // method 
-	0x1fc150  func CodeGeneration.Context.removeSubContextInParameter(_:) // method 
-	0x1fcfd0  func CodeGeneration.Context.removeSubContextOutParameter(_:) // method 
-	0x1fdc50  func CodeGeneration.Context.renameSubContextInParameter(_:with:) // method 
-	0x1fefd0  func CodeGeneration.Context.renameSubContextOutParameter(_:with:) // method 
-	0x200350  func CodeGeneration.Context.renameSubContext(_:with:renameTemplateAndCheckOtherSubContexts:) // method 
-	0x200dd0  func CodeGeneration.Context._renameSubContext(_:_:) // method 
-	0x201e30  func CodeGeneration.Context.renameCustomCodeSnippetInParameter(_:with:) // method 
-	0x202320  func CodeGeneration.Context.renameCustomCodeSnippetOutParameter(_:with:) // method 
-	0x202810  func CodeGeneration.Context.makeSubGraphName() // method 
-	0x202910  func CodeGeneration.Context.addSubContext(with:createTemplate:) // method 
-	0x202960  func CodeGeneration.Context.addSubContext(named:with:createTemplate:) // method 
-	0x2040e0  func CodeGeneration.Context.extractContent(from:) // method 
-	0x204ab0  func CodeGeneration.Context.makeTemplate(from:) // method 
-	0x204b40  func CodeGeneration.Context.makeTemplate(from:named:) // method 
-	0x205290  func CodeGeneration.Context.breakTemplate(in:) // method 
-	0x205fd0  func CodeGeneration.Context.createContextAsJson(with:) // method 
-	0x206270  func CodeGeneration.Context.createContext(with:) // method 
-	0x206dc0  func CodeGeneration.Context.find(baseObjectUID:) // method 
-	0x206f00  func CodeGeneration.Context.findSubContext(owning:) // method 
-	0x206f40  func CodeGeneration.Context.findSubContext(owning:) // method 
-	0x2071a0  func CodeGeneration.Context.findSubContextMap(referencing:) // method 
-	0x2071c0  func CodeGeneration.Context.findSubContextMap(referencing:) // method 
-	0x207250  func CodeGeneration.Context.merge(with:) // method 
-	0x208180  func CodeGeneration.Context.registerParameters(from:) // method 
-	0x208360  func CodeGeneration.Context.assign(_:_:) // method 
-	0x208470  func CodeGeneration.Context.unassign(_:_:) // method 
-	0x208530  func CodeGeneration.Context.allAssignments(to:) // method 
-	0x208550  func CodeGeneration.Context.allAssignments(from:) // method 
-	0x2085e0  func CodeGeneration.Context.isInParameterAssigned(_:) // method 
-	0x208630  func CodeGeneration.Context.isOutParameterAssigned(_:) // method 
-	0x2087f0  func CodeGeneration.Context.removeAllAssignments(from:) // method 
-	0x208860  func CodeGeneration.Context.removeAssignment(to:) // method 
-	0x208950  func CodeGeneration.Context.hasConversionSnippet(to:from:for:) // method 
-	0x2089d0  func CodeGeneration.Context._generateCode(_:for:) // method 
-	0x2092c0  func CodeGeneration.Context._generateAssignmentCode(_:_:_:_:) // method 
-	0x20a060  func CodeGeneration.Context._generateAutoComposeCode(_:_:declareConstant:) // method 
-	0x20a250  func CodeGeneration.Context._generateAutoDecomposeCode(_:_:forInput:useConstant:) // method 
-	0x20a460  func CodeGeneration.Context._generateCode(_:usingCustomCodeSnippet:) // method 
-	0x20a660  func CodeGeneration.Context._generateCode(_:usingSubContext:) // method 
-	0x20ab10  func CodeGeneration.Context._generateCode(_:usingContextEntry:) // method 
-	0x20b1e0  func CodeGeneration.Context.clearSnippetDomains() // method 
-	0x20b570  func CodeGeneration.Context.generate(_:for:withModules:withIncludes:withArgsPrefix:) // method 
-	0x20b5b0  func CodeGeneration.Context.checkSupport(_:language:unsupportedBaseObjectUIDs:) // method 
-	0x20b650  func CodeGeneration.Context.generate(_:for:sortInArgsAlphabetically:isSubContext:isTemplate:withModules:withIncludes:withArgsPrefix:) // method 
-	0x20b870  func CodeGeneration.Context.insertCode(_:_:) // method 
-	0x20bbd0  func CodeGeneration.Context.findAllDependencies(from:_:) // method 
-	0x20c0c0  func CodeGeneration.Context.includeCodegenLibFunctions(_:) // method 
-	0x20c4a0  func CodeGeneration.Context.initSubContextParameters(_:) // method 
-	0x20d3c0  func CodeGeneration.Context.getParameterIn(baseType:baseUID:parameterName:) // method 
-	0x20d7a0  func CodeGeneration.Context.getParameterOut(baseType:baseUID:parameterName:) // method 
-	0x20dab0  func CodeGeneration.Context.asJsonString(outputFormatting:) // method 
-	0x20dbf0  func CodeGeneration.Context.patchContextExitParameter(_:from:to:) // method 
+	0x1ed5a0  func CodeGeneration.Context.resources.getter // getter 
+	0x1ed5c0  func CodeGeneration.Context.contextEntryMap.getter // getter 
+	0x1ed5e0  func CodeGeneration.Context.contextExitMap.getter // getter 
+	0x1ed600  func CodeGeneration.Context.subContextMap.getter // getter 
+	0x1ed620  func CodeGeneration.Context.snippets.getter // getter 
+	0x1ed640  func CodeGeneration.Context.customCodeSnippetMap.getter // getter 
+	0x1ed660  func CodeGeneration.Context.userObjects.getter // getter 
+	0x1ed680  func CodeGeneration.Context.assignments.getter // getter 
+	0x1ed6a0  func CodeGeneration.Context.parameters.getter // getter 
+	0x1ed6c0  func CodeGeneration.Context.templates.getter // getter 
+	0x1ed6e0  func CodeGeneration.Context.bakedTemplates.getter // getter 
+	0x1ed700  func CodeGeneration.Context.decodingErrors.getter // getter 
+	0x1ed720  func CodeGeneration.Context.clearDecodingErrors() // method 
+	0x1ed750  func CodeGeneration.Context.category.getter // getter 
+	0x1ed850  func CodeGeneration.Context.category.setter // setter 
+	0x1ed8a0  func CodeGeneration.Context.category.modify // modifyCoroutine 
+	0x1ed960  func CodeGeneration.Context.hasCategory.getter // getter 
+	0x1ed9b0  func CodeGeneration.Context.initResources(_:) // method 
+	0x1edbb0  func CodeGeneration.Context.onResourcesUserTemplatesChanged() // method 
+	0x20e4b0  class func CodeGeneration.Context.__allocating_init(resources:) // init 
+	0x20ed40  class func CodeGeneration.Context.__allocating_init(uid:resources:) // init 
+	0x20ee80  func CodeGeneration.Context.description.getter // getter 
+	0x1ec400  func CodeGeneration.Context.clone() // method 
+	0x1edf70  func CodeGeneration.Context.assignUid() // method 
+	0x1edff0  func CodeGeneration.Context.clear() // method 
+	0x1ee120  func CodeGeneration.Context.findBaseObject(_:) // method 
+	0x1ee2b0  func CodeGeneration.Context.makeBaseObjectUID(_:) // method 
+	0x1ee3d0  func CodeGeneration.Context.overrideAssignments(from:to:) // method 
+	0x1ee750  func CodeGeneration.Context.overrideUID(_:with:renameParameters:) // method 
+	0x1f0a80  func CodeGeneration.Context.addContextExit(_:) // method 
+	0x1f0b20  func CodeGeneration.Context.isContextExitValid(_:) // method 
+	0x1f0ba0  func CodeGeneration.Context.removeContextExitInputParameter(uid:) // method 
+	0x1f1010  func CodeGeneration.Context.removeParameterOnContextExit(contextExit:parameter:) // method 
+	0x1f1050  func CodeGeneration.Context.addContextEntry(_:) // method 
+	0x1f1190  func CodeGeneration.Context.addCustomCodeSnippet(_:) // method 
+	0x1f12e0  func CodeGeneration.Context.addUserObject(_:) // method 
+	0x1f1380  func CodeGeneration.Context.addConstantCodeSnippet(type:name:) // method 
+	0x1f2810  func CodeGeneration.Context.addCodeSnippet(libName:snippetName:snippetSignature:) // method 
+	0x1f29f0  func CodeGeneration.Context.addCodeSnippet(using:snippetUID:snippetMetadataDict:) // method 
+	0x1f2b50  func CodeGeneration.Context.cleanAssignmentsAndParameters(ownedBy:for:) // method 
+	0x1f2c70  func CodeGeneration.Context.replaceCodeSnippet(_:with:) // method 
+	0x1f2d80  func CodeGeneration.Context.replaceCodeSnippet(_:with:) // method 
+	0x1f2e20  func CodeGeneration.Context.replaceCodeSnippet(_:with:) // method 
+	0x1f3070  func CodeGeneration.Context.replaceCodeSnippet(_:withTemplateDescription:) // method 
+	0x1f3150  func CodeGeneration.Context.replaceCodeSnippet(_:withSubContext:) // method 
+	0x1f3220  func CodeGeneration.Context.remapAllAssignments(source:target:) // method 
+	0x1f3730  func CodeGeneration.Context.removeCodeSnippet(_:) // method 
+	0x1f38f0  func CodeGeneration.Context.removeCustomCodeSnippet(_:) // method 
+	0x1f3ab0  func CodeGeneration.Context.removeContextEntry(_:) // method 
+	0x1f3c70  func CodeGeneration.Context.removeContextEntry(owning:) // method 
+	0x1f4480  func CodeGeneration.Context.removeContextExit(_:) // method 
+	0x1f4640  func CodeGeneration.Context.removeTemplate(named:) // method 
+	0x1f4f90  func CodeGeneration.Context.removeSubContext(_:keepContent:) // method 
+	0x1f51a0  func CodeGeneration.Context.cleanupContextExit(_:) // method 
+	0x1f5360  func CodeGeneration.Context.initParameters(_:inParameterNames:inParameterTypes:outParameterNames:outParameterTypes:) // method 
+	0x1f5c50  func CodeGeneration.Context.addParameterTo(subContextEntry:type:name:) // method 
+	0x1f5f50  func CodeGeneration.Context.addParameterTo(subContextExit:type:name:) // method 
+	0x1f6250  func CodeGeneration.Context.addSubContext(named:) // method 
+	0x1f6390  func CodeGeneration.Context.findTemplate(usedBy:checkBakedTemplates:) // method 
+	0x1f68b0  func CodeGeneration.Context.findTemplate(subContextName:) // method 
+	0x1f6e40  func CodeGeneration.Context.findTemplate(withUid:) // method 
+	0x1f7280  func CodeGeneration.Context.addSubContext(named:using:) // method 
+	0x1f75d0  func CodeGeneration.Context.addSubContext(template:) // method 
+	0x1f8040  func CodeGeneration.Context.rename(with:) // method 
+	0x1f88c0  func CodeGeneration.Context.reorderSubContextInParameters(_:to:) // method 
+	0x1fa040  func CodeGeneration.Context.reorderSubContextOutParameters(_:to:) // method 
+	0x1fb7c0  func CodeGeneration.Context.removeSubContextInParameter(_:) // method 
+	0x1fc640  func CodeGeneration.Context.removeSubContextOutParameter(_:) // method 
+	0x1fd2c0  func CodeGeneration.Context.renameSubContextInParameter(_:with:) // method 
+	0x1fe640  func CodeGeneration.Context.renameSubContextOutParameter(_:with:) // method 
+	0x1ff9c0  func CodeGeneration.Context.renameSubContext(_:with:renameTemplateAndCheckOtherSubContexts:) // method 
+	0x200440  func CodeGeneration.Context._renameSubContext(_:_:) // method 
+	0x2014a0  func CodeGeneration.Context.renameCustomCodeSnippetInParameter(_:with:) // method 
+	0x201990  func CodeGeneration.Context.renameCustomCodeSnippetOutParameter(_:with:) // method 
+	0x201e80  func CodeGeneration.Context.makeSubGraphName() // method 
+	0x201f80  func CodeGeneration.Context.addSubContext(with:createTemplate:) // method 
+	0x201fd0  func CodeGeneration.Context.addSubContext(named:with:createTemplate:) // method 
+	0x203750  func CodeGeneration.Context.extractContent(from:) // method 
+	0x204120  func CodeGeneration.Context.makeTemplate(from:) // method 
+	0x2041b0  func CodeGeneration.Context.makeTemplate(from:named:) // method 
+	0x204900  func CodeGeneration.Context.breakTemplate(in:) // method 
+	0x205640  func CodeGeneration.Context.createContextAsJson(with:) // method 
+	0x2058e0  func CodeGeneration.Context.createContext(with:) // method 
+	0x206430  func CodeGeneration.Context.find(baseObjectUID:) // method 
+	0x206570  func CodeGeneration.Context.findSubContext(owning:) // method 
+	0x2065b0  func CodeGeneration.Context.findSubContext(owning:) // method 
+	0x206810  func CodeGeneration.Context.findSubContextMap(referencing:) // method 
+	0x206830  func CodeGeneration.Context.findSubContextMap(referencing:) // method 
+	0x2068c0  func CodeGeneration.Context.merge(with:) // method 
+	0x2077f0  func CodeGeneration.Context.registerParameters(from:) // method 
+	0x2079d0  func CodeGeneration.Context.assign(_:_:) // method 
+	0x207ae0  func CodeGeneration.Context.unassign(_:_:) // method 
+	0x207ba0  func CodeGeneration.Context.allAssignments(to:) // method 
+	0x207bc0  func CodeGeneration.Context.allAssignments(from:) // method 
+	0x207c50  func CodeGeneration.Context.isInParameterAssigned(_:) // method 
+	0x207ca0  func CodeGeneration.Context.isOutParameterAssigned(_:) // method 
+	0x207e60  func CodeGeneration.Context.removeAllAssignments(from:) // method 
+	0x207ed0  func CodeGeneration.Context.removeAssignment(to:) // method 
+	0x207fc0  func CodeGeneration.Context.hasConversionSnippet(to:from:for:) // method 
+	0x208040  func CodeGeneration.Context._generateCode(_:for:) // method 
+	0x208930  func CodeGeneration.Context._generateAssignmentCode(_:_:_:_:) // method 
+	0x2096d0  func CodeGeneration.Context._generateAutoComposeCode(_:_:declareConstant:) // method 
+	0x2098c0  func CodeGeneration.Context._generateAutoDecomposeCode(_:_:forInput:useConstant:) // method 
+	0x209ad0  func CodeGeneration.Context._generateCode(_:usingCustomCodeSnippet:) // method 
+	0x209cd0  func CodeGeneration.Context._generateCode(_:usingSubContext:) // method 
+	0x20a180  func CodeGeneration.Context._generateCode(_:usingContextEntry:) // method 
+	0x20a850  func CodeGeneration.Context.clearSnippetDomains() // method 
+	0x20abe0  func CodeGeneration.Context.generate(_:for:withModules:withIncludes:withArgsPrefix:) // method 
+	0x20ac20  func CodeGeneration.Context.checkSupport(_:language:unsupportedBaseObjectUIDs:) // method 
+	0x20acc0  func CodeGeneration.Context.generate(_:for:sortInArgsAlphabetically:isSubContext:isTemplate:withModules:withIncludes:withArgsPrefix:) // method 
+	0x20aee0  func CodeGeneration.Context.insertCode(_:_:) // method 
+	0x20b240  func CodeGeneration.Context.findAllDependencies(from:_:) // method 
+	0x20b730  func CodeGeneration.Context.includeCodegenLibFunctions(_:) // method 
+	0x20bb10  func CodeGeneration.Context.initSubContextParameters(_:) // method 
+	0x20ca30  func CodeGeneration.Context.getParameterIn(baseType:baseUID:parameterName:) // method 
+	0x20ce10  func CodeGeneration.Context.getParameterOut(baseType:baseUID:parameterName:) // method 
+	0x20d120  func CodeGeneration.Context.asJsonString(outputFormatting:) // method 
+	0x20d260  func CodeGeneration.Context.patchContextExitParameter(_:from:to:) // method 
  }
 
  class VFXCore.GenerationData : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -6623,15 +6624,15 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var subContextAlreadyDeclaredDuringCodeGeneration : SubContext
 
 	// Swift methods
-	0x213980  func CodeGeneration.Context.GenerationData.language.getter // getter 
-	0x2139e0  func CodeGeneration.Context.GenerationData.domain.getter // getter 
-	0x213a60  func CodeGeneration.Context.GenerationData.libFunctionsToInclude.getter // getter 
-	0x213ac0  func CodeGeneration.Context.GenerationData.inArgs.getter // getter 
-	0x213b20  func CodeGeneration.Context.GenerationData.inOutArgs.getter // getter 
-	0x213b80  func CodeGeneration.Context.GenerationData.code.getter // getter 
-	0x213be0  func CodeGeneration.Context.GenerationData.templatesAlreadyDefined.getter // getter 
-	0x213c40  func CodeGeneration.Context.GenerationData.unsupportedBaseObjectUIDs.getter // getter 
-	0x213cb0  func CodeGeneration.Context.GenerationData.codeAsString.getter // getter 
+	0x212ff0  func CodeGeneration.Context.GenerationData.language.getter // getter 
+	0x213050  func CodeGeneration.Context.GenerationData.domain.getter // getter 
+	0x2130d0  func CodeGeneration.Context.GenerationData.libFunctionsToInclude.getter // getter 
+	0x213130  func CodeGeneration.Context.GenerationData.inArgs.getter // getter 
+	0x213190  func CodeGeneration.Context.GenerationData.inOutArgs.getter // getter 
+	0x2131f0  func CodeGeneration.Context.GenerationData.code.getter // getter 
+	0x213250  func CodeGeneration.Context.GenerationData.templatesAlreadyDefined.getter // getter 
+	0x2132b0  func CodeGeneration.Context.GenerationData.unsupportedBaseObjectUIDs.getter // getter 
+	0x213320  func CodeGeneration.Context.GenerationData.codeAsString.getter // getter 
  }
 
  struct VFXCore.AssignmentInfo {
@@ -6683,51 +6684,52 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _currentDrawable : CAMetalDrawable?
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6c95800132fb0 (0x15800132fb0) in binary!
-	0x71690  @objc VFXCoreView.(null) <stripped>
-WARNING: couldn't find address 0x7168400133190 (0x68400133190) in binary!
-	0x71678  @objc VFXCoreView.(null) <stripped>
-WARNING: couldn't find address 0x6c93400133188 (0x13400133188) in binary!
-	0x6c958  @objc VFXCoreView.(null) <stripped>
-WARNING: couldn't find address 0x72f3c00133130 (0x73c00133130) in binary!
-	0x72fa8  @objc VFXCoreView.(null) <stripped>
-WARNING: couldn't find address 0x73b9400133170 (0x39400133170) in binary!
-	0x73b88  @objc VFXCoreView.(null) <stripped>
-WARNING: couldn't find address 0x73b7c00133168 (0x37c00133168) in binary!
-	0x73b70  @objc VFXCoreView.(null) <stripped>
-WARNING: couldn't find address 0x627b400132f00 (0x7b400132f00) in binary!
-	0x71600  @objc VFXCoreView.(null) <stripped>
+WARNING: couldn't find address 0x6c988001330e0 (0x188001330e0) in binary!
+	0x716c0  @objc VFXCoreView.(null) <stripped>
+WARNING: couldn't find address 0x716b4001332c8 (0x6b4001332c8) in binary!
+	0x716a8  @objc VFXCoreView.(null) <stripped>
+WARNING: couldn't find address 0x6c964001332c0 (0x164001332c0) in binary!
+	0x6c988  @objc VFXCoreView.(null) <stripped>
+WARNING: couldn't find address 0x7302c00133268 (0x2c00133268) in binary!
+	0x73098  @objc VFXCoreView.(null) <stripped>
+WARNING: couldn't find address 0x73c84001332a8 (0x484001332a8) in binary!
+	0x73c78  @objc VFXCoreView.(null) <stripped>
+WARNING: couldn't find address 0x73c6c001332a0 (0x46c001332a0) in binary!
+	0x73c60  @objc VFXCoreView.(null) <stripped>
+WARNING: couldn't find address 0x627b400133030 (0x7b400133030) in binary!
+	0x71630  @objc VFXCoreView.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x4c4ffc07c40  @objc VFXCoreView.(null) <stripped>
-	0x4a4ffc08478  @objc VFXCoreView.Iâ≈HâﬂLâÊAˇT$0$AàGGIãG0Hâ¡H¡ÈÄ·¿Ë$ÛÖxˇˇˇ.˛}g <stripped>
-	0x484ffc084e0  @objc VFXCoreView.IæcontextsLEHª <stripped>
-	0x45cffc08cc8  @objc VFXCoreView.T$XÑ¿AïGAW…ÛÖ|ˇˇˇ.¡AóGEHã]òLãe†Lâ˜HâﬁË‡>X <stripped>
-	0x5a4ffc08f20  @objc VFXCoreView.SHÉÏHHçåÅl <stripped>
-	0x10600132de0  @objc VFXCoreView.5ÛEy <stripped>
-WARNING: couldn't find address 0x132c1cffc09920 (0x41cffc09920) in binary!
-	0x6ac00132c08  @objc VFXCoreView.(null) <stripped>
+	0x5f4ffc073e0  @objc VFXCoreView.(null) <stripped>
+	0x5d4ffc07c18  @objc VFXCoreView.‹@˙ˇLâ˜LâÊAˇT$(IãIâIâWË∑’f <stripped>
+	0x5b4ffc07c80  @objc VFXCoreView.âÎMãv Lãm¿HâC Lâ˜Ëf <stripped>
+	0x58cffc08468  @objc VFXCoreView.ˇË
+A˙ˇHãEêHâÖˇˇˇHçΩˇˇˇËÛ@˙ˇHãEòHâÖ ˇˇˇHçΩ ˇˇˇË‹@˙ˇLâ˜LâÊAˇT$(IãIâIâWË∑’f <stripped>
+	0x6d4ffc086c0  @objc VFXCoreView.ã}–Hãu»HãE∏ˇPHãE∞LâÛHÉ¯uMãv Lâ˜ËCf <stripped>
+	0x10600132f10  @objc VFXCoreView.ˇLãp¯IãF@Hâ·HÉ¿HÉ‡H)¡Hâç@ˇˇˇHâÃIâÁI)«Lâ¸LâÁHâﬁËÎ <stripped>
+WARNING: couldn't find address 0x132d4cffc090c0 (0x54cffc090c0) in binary!
+	0x6dc00132d38  @objc VFXCoreView.(null) <stripped>
 
 	// Swift methods
-	0x24e550  func VFXCoreView.entityManager.getter // getter 
-	0x24e570  func VFXCoreView.entityManager.setter // setter 
-	0x24e5a0  func VFXCoreView.entityManager.modify // modifyCoroutine 
-	0x24e630  func VFXCoreView.resetRenderOutput() // method 
-	0x24e900  func VFXCoreView.paused.getter // getter 
-	0x24e920  func VFXCoreView.paused.setter // setter 
-	0x24e940  func VFXCoreView.paused.modify // modifyCoroutine 
-	0x24e970  func VFXCoreView.configureMetalLayer() // method 
-	0x24eb10  class func VFXCoreView.__allocating_init(frame:entityManager:) // init 
-	0x24ebb0  func VFXCoreView.registerDisplayClockHandlerIfNeeded() // method 
-	0x24edd0  func VFXCoreView.removeFromRenderer(_:) // method 
-	0x24f030  func VFXCoreView._viewDidMove(_:) // method 
-	0x24f330  func VFXCoreView.drawableSize.getter // getter 
-	0x24f350  func VFXCoreView.drawableSize.setter // setter 
-	0x24f380  func VFXCoreView.drawableSize.modify // modifyCoroutine 
-	0x24f3c0  func VFXCoreView.resizeDrawable() // method 
-	0x24f860  func VFXCoreView.isTicking.getter // getter 
-	0x24f880  func VFXCoreView.isTicking.setter // setter 
-	0x24f8a0  func VFXCoreView.isTicking.modify // modifyCoroutine 
-	0x24f9c0  func VFXCoreView.didUpdateBackgroundColor() // method 
+	0x24dbc0  func VFXCoreView.entityManager.getter // getter 
+	0x24dbe0  func VFXCoreView.entityManager.setter // setter 
+	0x24dc10  func VFXCoreView.entityManager.modify // modifyCoroutine 
+	0x24dca0  func VFXCoreView.resetRenderOutput() // method 
+	0x24df70  func VFXCoreView.paused.getter // getter 
+	0x24df90  func VFXCoreView.paused.setter // setter 
+	0x24dfb0  func VFXCoreView.paused.modify // modifyCoroutine 
+	0x24dfe0  func VFXCoreView.configureMetalLayer() // method 
+	0x24e180  class func VFXCoreView.__allocating_init(frame:entityManager:) // init 
+	0x24e220  func VFXCoreView.registerDisplayClockHandlerIfNeeded() // method 
+	0x24e440  func VFXCoreView.removeFromRenderer(_:) // method 
+	0x24e6a0  func VFXCoreView._viewDidMove(_:) // method 
+	0x24e9a0  func VFXCoreView.drawableSize.getter // getter 
+	0x24e9c0  func VFXCoreView.drawableSize.setter // setter 
+	0x24e9f0  func VFXCoreView.drawableSize.modify // modifyCoroutine 
+	0x24ea30  func VFXCoreView.resizeDrawable() // method 
+	0x24eed0  func VFXCoreView.isTicking.getter // getter 
+	0x24eef0  func VFXCoreView.isTicking.setter // setter 
+	0x24ef10  func VFXCoreView.isTicking.modify // modifyCoroutine 
+	0x24f030  func VFXCoreView.didUpdateBackgroundColor() // method 
  }
 
  struct VFXCore.ComponentProperty {
@@ -6828,11 +6830,11 @@ WARNING: couldn't find address 0x132c1cffc09920 (0x41cffc09920) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var name : ¡÷
+	var name : Ò◊
 	var dispatchCopyFn : (_:)?
 
 	// Swift methods
-	0x2b6d50  class func ParticleGPUDownload.__allocating_init() // init 
+	0x2b63c0  class func ParticleGPUDownload.__allocating_init() // init 
  }
 
  struct VFXCore.GPUMirroredParticle { }
@@ -6881,9 +6883,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var worldUp : YÃ // +0x0
+	var worldUp : âÕ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var worldOrbitTarget : YÃ // +0x10
+	var worldOrbitTarget : âÕ // +0x10
 	var rotationSensitivity : Float // +0x20
 	var dollySensitivity : Float // +0x24
 	var panSensitivity : Float // +0x28
@@ -6913,20 +6915,20 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class VFXCore.ConvexMeshGeometry : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x2bc4a0  class func ConvexMeshGeometry.__allocating_init(from:) // init 
-	0x2bc500  func ConvexMeshGeometry.encode(to:) // method 
+	0x2bbb10  class func ConvexMeshGeometry.__allocating_init(from:) // init 
+	0x2bbb70  func ConvexMeshGeometry.encode(to:) // method 
  }
 
  class VFXCore.TriangleMeshGeometry : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x2c0660  class func TriangleMeshGeometry.__allocating_init(from:) // init 
-	0x2bc620  func TriangleMeshGeometry.encode(to:) // method 
+	0x2bfcd0  class func TriangleMeshGeometry.__allocating_init(from:) // init 
+	0x2bbc90  func TriangleMeshGeometry.encode(to:) // method 
  }
 
  class VFXCore.HeightFieldGeometry : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x2c0670  class func HeightFieldGeometry.__allocating_init(from:) // init 
-	0x2bc740  func HeightFieldGeometry.encode(to:) // method 
+	0x2bfce0  class func HeightFieldGeometry.__allocating_init(from:) // init 
+	0x2bbdb0  func HeightFieldGeometry.encode(to:) // method 
  }
 
  struct VFXCore.PhysicsMaterial {
@@ -6956,7 +6958,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	case sphere : (radius: Float)
 	case capsule : (radius: Float, halfHeight: Float)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case box : ØZ
+	case box : ﬂ[
 	case convexMesh : ConvexMeshGeometry
 	case triangleMesh : TriangleMeshGeometry
 	case heightField : HeightFieldGeometry
@@ -6970,7 +6972,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var geometry : PhysicGeometry // +0x0
 	var material : PhysicsMaterial // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var localPosition : YÃ // +0x20
+	var localPosition : âÕ // +0x20
 	var localOrientation : simd_quatf // +0x30
  }
 
@@ -6992,7 +6994,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var halfExtent : YÃ // +0x0
+	var halfExtent : âÕ // +0x0
 	var density : Float // +0x10
 	var material : PhysicsMaterial // +0x14
  }
@@ -7018,7 +7020,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var halfExtent : YÃ // +0x0
+	var halfExtent : âÕ // +0x0
 	var density : Float // +0x10
 	var material : PhysicsMaterial // +0x14
  }
@@ -7084,18 +7086,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var sampler : MTLSamplerState? // +0x8
 	var intensity : Float // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scaleBias : Ã // +0x20
+	var scaleBias : 7Õ // +0x20
  }
 
  struct VFXCore.PBRColorProperty {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var intensity : Ã // +0x0
+	var intensity : 7Õ // +0x0
 	var texture : Entity // +0x10
 	var sampler : MTLSamplerState? // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scaleBias : Ã // +0x20
+	var scaleBias : 7Õ // +0x20
  }
 
  enum VFXCore.FillMode {
@@ -7112,9 +7114,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case back : (amplitude: Float)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case bounce : X
+	case bounce : ØY
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case elastic : aX
+	case elastic : ëY
 	case exponential : (exponent: Float)
 	case logarithmic : (base: Float)
 	case power : (power: Float)
@@ -7236,9 +7238,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isHidden : Bool
 	var getset : EntityGetSetAny
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var keyPath : ˚R
+	var keyPath : +T
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var visibility : ˚R
+	var visibility : +T
 	var offset : Int?
 	var size : Int
 	var stride : Int
@@ -7251,80 +7253,80 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var userManual : String?
 
 	// Swift methods
-	0x2caea0  func PropertyDescription.name.getter // getter 
-	0x2caed0  func PropertyDescription.name.setter // setter 
-	0x2caef0  func PropertyDescription.name.modify // modifyCoroutine 
-	0x2caf20  func PropertyDescription.componentType.getter // getter 
-	0x2caf90  func PropertyDescription.unavailableStartingFromVersion.getter // getter 
-	0x2cafa0  func PropertyDescription.unavailableStartingFromVersion.setter // setter 
-	0x2cafc0  func PropertyDescription.unavailableStartingFromVersion.modify // modifyCoroutine 
-	0x2caff0  func PropertyDescription.remappedTo.getter // getter 
-	0x2cb000  func PropertyDescription.remappedTo.setter // setter 
-	0x2cb020  func PropertyDescription.remappedTo.modify // modifyCoroutine 
-	0x2cb050  func PropertyDescription.min.getter // getter 
-	0x2cb060  func PropertyDescription.min.setter // setter 
-	0x2cb080  func PropertyDescription.min.modify // modifyCoroutine 
-	0x2cb0b0  func PropertyDescription.max.getter // getter 
-	0x2cb0c0  func PropertyDescription.max.setter // setter 
-	0x2cb0e0  func PropertyDescription.max.modify // modifyCoroutine 
-	0x2cb110  func PropertyDescription.step.getter // getter 
-	0x2cb120  func PropertyDescription.step.setter // setter 
-	0x2cb140  func PropertyDescription.step.modify // modifyCoroutine 
-	0x2cb170  func PropertyDescription.minFractionDigit.getter // getter 
-	0x2cb180  func PropertyDescription.minFractionDigit.setter // setter 
-	0x2cb1a0  func PropertyDescription.minFractionDigit.modify // modifyCoroutine 
-	0x2cb1d0  func PropertyDescription.maxFractionDigit.getter // getter 
-	0x2cb1f0  func PropertyDescription.maxFractionDigit.setter // setter 
-	0x2cb210  func PropertyDescription.maxFractionDigit.modify // modifyCoroutine 
-	0x2cb240  func PropertyDescription.accessorCreator.getter // getter 
-	0x2cb270  func PropertyDescription.accessorCreator.setter // setter 
-	0x2cb2a0  func PropertyDescription.accessorCreator.modify // modifyCoroutine 
-	0x2cb2d0  func PropertyDescription.isHidden.getter // getter 
-	0x2cb2e0  func PropertyDescription.isHidden.setter // setter 
-	0x2cb300  func PropertyDescription.isHidden.modify // modifyCoroutine 
-	0x2cb330  func PropertyDescription.getset.getter // getter 
-	0x2cb350  func PropertyDescription.getset.setter // setter 
-	0x2cb370  func PropertyDescription.getset.modify // modifyCoroutine 
-	0x2cb3a0  func PropertyDescription.keyPath.getter // getter 
-	0x2cb3c0  func PropertyDescription.keyPath.setter // setter 
-	0x2cb3e0  func PropertyDescription.keyPath.modify // modifyCoroutine 
-	0x2cb410  func PropertyDescription.visibility.getter // getter 
-	0x2cb430  func PropertyDescription.visibility.setter // setter 
-	0x2cb450  func PropertyDescription.visibility.modify // modifyCoroutine 
-	0x2cb480  func PropertyDescription.offset.getter // getter 
-	0x2cb4a0  func PropertyDescription.offset.setter // setter 
-	0x2cb4c0  func PropertyDescription.offset.modify // modifyCoroutine 
-	0x2cb4f0  func PropertyDescription.size.getter // getter 
-	0x2cb500  func PropertyDescription.size.setter // setter 
-	0x2cb510  func PropertyDescription.size.modify // modifyCoroutine 
-	0x2cb540  func PropertyDescription.stride.getter // getter 
-	0x2cb550  func PropertyDescription.stride.setter // setter 
-	0x2cb560  func PropertyDescription.stride.modify // modifyCoroutine 
-	0x2cb590  func PropertyDescription.alignment.getter // getter 
-	0x2cb5a0  func PropertyDescription.alignment.setter // setter 
-	0x2cb5b0  func PropertyDescription.alignment.modify // modifyCoroutine 
-	0x2cb5e0  func PropertyDescription.allowDirectAliasing.getter // getter 
-	0x2cb5f0  func PropertyDescription.allowDirectAliasing.setter // setter 
-	0x2cb610  func PropertyDescription.allowDirectAliasing.modify // modifyCoroutine 
-	0x2cb640  func PropertyDescription.flags.getter // getter 
-	0x2cb650  func PropertyDescription.flags.setter // setter 
-	0x2cb660  func PropertyDescription.flags.modify // modifyCoroutine 
-	0x2cb690  func PropertyDescription.isComputed.getter // getter 
-	0x2cb6a0  func PropertyDescription.semantic.getter // getter 
-	0x2cb6c0  func PropertyDescription.semantic.setter // setter 
-	0x2cb6e0  func PropertyDescription.semantic.modify // modifyCoroutine 
-	0x2cb710  func PropertyDescription.type.getter // getter 
-	0x2cb720  func PropertyDescription.type.setter // setter 
-	0x2cb730  func PropertyDescription.type.modify // modifyCoroutine 
-	0x2cb760  func PropertyDescription.defaultValues.getter // getter 
-	0x2cb780  func PropertyDescription.defaultValues.setter // setter 
-	0x2cb7a0  func PropertyDescription.defaultValues.modify // modifyCoroutine 
-	0x2cb7d0  func PropertyDescription.userManual.getter // getter 
-	0x2cb800  func PropertyDescription.userManual.setter // setter 
-	0x2cb830  func PropertyDescription.userManual.modify // modifyCoroutine 
-	0x2cb8a0  class func PropertyDescription.__allocating_init(name:min:max:step:minFractionDigit:maxFractionDigit:isHidden:visibility:semantic:type:userManual:flags:defaultValues:) // init 
-	0x2cbb70  func PropertyDescription.resolve(version:) // method 
-	0x2cbd20  func PropertyDescription.description.getter // getter 
+	0x2ca510  func PropertyDescription.name.getter // getter 
+	0x2ca540  func PropertyDescription.name.setter // setter 
+	0x2ca560  func PropertyDescription.name.modify // modifyCoroutine 
+	0x2ca590  func PropertyDescription.componentType.getter // getter 
+	0x2ca600  func PropertyDescription.unavailableStartingFromVersion.getter // getter 
+	0x2ca610  func PropertyDescription.unavailableStartingFromVersion.setter // setter 
+	0x2ca630  func PropertyDescription.unavailableStartingFromVersion.modify // modifyCoroutine 
+	0x2ca660  func PropertyDescription.remappedTo.getter // getter 
+	0x2ca670  func PropertyDescription.remappedTo.setter // setter 
+	0x2ca690  func PropertyDescription.remappedTo.modify // modifyCoroutine 
+	0x2ca6c0  func PropertyDescription.min.getter // getter 
+	0x2ca6d0  func PropertyDescription.min.setter // setter 
+	0x2ca6f0  func PropertyDescription.min.modify // modifyCoroutine 
+	0x2ca720  func PropertyDescription.max.getter // getter 
+	0x2ca730  func PropertyDescription.max.setter // setter 
+	0x2ca750  func PropertyDescription.max.modify // modifyCoroutine 
+	0x2ca780  func PropertyDescription.step.getter // getter 
+	0x2ca790  func PropertyDescription.step.setter // setter 
+	0x2ca7b0  func PropertyDescription.step.modify // modifyCoroutine 
+	0x2ca7e0  func PropertyDescription.minFractionDigit.getter // getter 
+	0x2ca7f0  func PropertyDescription.minFractionDigit.setter // setter 
+	0x2ca810  func PropertyDescription.minFractionDigit.modify // modifyCoroutine 
+	0x2ca840  func PropertyDescription.maxFractionDigit.getter // getter 
+	0x2ca860  func PropertyDescription.maxFractionDigit.setter // setter 
+	0x2ca880  func PropertyDescription.maxFractionDigit.modify // modifyCoroutine 
+	0x2ca8b0  func PropertyDescription.accessorCreator.getter // getter 
+	0x2ca8e0  func PropertyDescription.accessorCreator.setter // setter 
+	0x2ca910  func PropertyDescription.accessorCreator.modify // modifyCoroutine 
+	0x2ca940  func PropertyDescription.isHidden.getter // getter 
+	0x2ca950  func PropertyDescription.isHidden.setter // setter 
+	0x2ca970  func PropertyDescription.isHidden.modify // modifyCoroutine 
+	0x2ca9a0  func PropertyDescription.getset.getter // getter 
+	0x2ca9c0  func PropertyDescription.getset.setter // setter 
+	0x2ca9e0  func PropertyDescription.getset.modify // modifyCoroutine 
+	0x2caa10  func PropertyDescription.keyPath.getter // getter 
+	0x2caa30  func PropertyDescription.keyPath.setter // setter 
+	0x2caa50  func PropertyDescription.keyPath.modify // modifyCoroutine 
+	0x2caa80  func PropertyDescription.visibility.getter // getter 
+	0x2caaa0  func PropertyDescription.visibility.setter // setter 
+	0x2caac0  func PropertyDescription.visibility.modify // modifyCoroutine 
+	0x2caaf0  func PropertyDescription.offset.getter // getter 
+	0x2cab10  func PropertyDescription.offset.setter // setter 
+	0x2cab30  func PropertyDescription.offset.modify // modifyCoroutine 
+	0x2cab60  func PropertyDescription.size.getter // getter 
+	0x2cab70  func PropertyDescription.size.setter // setter 
+	0x2cab80  func PropertyDescription.size.modify // modifyCoroutine 
+	0x2cabb0  func PropertyDescription.stride.getter // getter 
+	0x2cabc0  func PropertyDescription.stride.setter // setter 
+	0x2cabd0  func PropertyDescription.stride.modify // modifyCoroutine 
+	0x2cac00  func PropertyDescription.alignment.getter // getter 
+	0x2cac10  func PropertyDescription.alignment.setter // setter 
+	0x2cac20  func PropertyDescription.alignment.modify // modifyCoroutine 
+	0x2cac50  func PropertyDescription.allowDirectAliasing.getter // getter 
+	0x2cac60  func PropertyDescription.allowDirectAliasing.setter // setter 
+	0x2cac80  func PropertyDescription.allowDirectAliasing.modify // modifyCoroutine 
+	0x2cacb0  func PropertyDescription.flags.getter // getter 
+	0x2cacc0  func PropertyDescription.flags.setter // setter 
+	0x2cacd0  func PropertyDescription.flags.modify // modifyCoroutine 
+	0x2cad00  func PropertyDescription.isComputed.getter // getter 
+	0x2cad10  func PropertyDescription.semantic.getter // getter 
+	0x2cad30  func PropertyDescription.semantic.setter // setter 
+	0x2cad50  func PropertyDescription.semantic.modify // modifyCoroutine 
+	0x2cad80  func PropertyDescription.type.getter // getter 
+	0x2cad90  func PropertyDescription.type.setter // setter 
+	0x2cada0  func PropertyDescription.type.modify // modifyCoroutine 
+	0x2cadd0  func PropertyDescription.defaultValues.getter // getter 
+	0x2cadf0  func PropertyDescription.defaultValues.setter // setter 
+	0x2cae10  func PropertyDescription.defaultValues.modify // modifyCoroutine 
+	0x2cae40  func PropertyDescription.userManual.getter // getter 
+	0x2cae70  func PropertyDescription.userManual.setter // setter 
+	0x2caea0  func PropertyDescription.userManual.modify // modifyCoroutine 
+	0x2caf10  class func PropertyDescription.__allocating_init(name:min:max:step:minFractionDigit:maxFractionDigit:isHidden:visibility:semantic:type:userManual:flags:defaultValues:) // init 
+	0x2cb1e0  func PropertyDescription.resolve(version:) // method 
+	0x2cb390  func PropertyDescription.description.getter // getter 
  }
 
  struct VFXCore.Flags {
@@ -7392,21 +7394,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var inverseBindTransforms : simd_float4x4 // +0x200
 
 	// Swift methods
-	0x2d0d80  func SkeletonData.prepare() // method 
+	0x2d03f0  func SkeletonData.prepare() // method 
  }
 
  struct VFXCore.JointIndices {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : ›∏ // +0x0
+	var value : ∫ // +0x0
  }
 
  struct VFXCore.JointWeights {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Ã // +0x0
+	var value : 7Õ // +0x0
  }
 
  class VFXCore.SkeletonAnimation : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -7510,7 +7512,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var lastRange : Range<Float> // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastLodIndex : ΩÈ // +0x8
+	var lastLodIndex : ÌÍ // +0x8
  }
 
  struct VFXCore.LODRenderer {
@@ -7560,7 +7562,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var asset : ﬂ
+	var asset : E‡
 	var nodePath : [Int]?
  }
 
@@ -7595,32 +7597,32 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var aabb : AABB
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x64f1400132cd8 (0x71400132cd8) in binary!
+WARNING: couldn't find address 0x64f1400132e08 (0x71400132e08) in binary!
 	0x62380  @objc VFXREDrawCall.(null) <stripped>
-WARNING: couldn't find address 0x6e6fc00133368 (0x6fc00133368) in binary!
-	0x6e6f0  @objc VFXREDrawCall.(null) <stripped>
-WARNING: couldn't find address 0x64ee400132fc8 (0x6e400132fc8) in binary!
+WARNING: couldn't find address 0x6e72c001334a0 (0x72c001334a0) in binary!
+	0x6e720  @objc VFXREDrawCall.(null) <stripped>
+WARNING: couldn't find address 0x64ee400133100 (0x6e400133100) in binary!
 	0x62350  @objc VFXREDrawCall.(null) <stripped>
-WARNING: couldn't find address 0x6e6d400132c70 (0x6d400132c70) in binary!
-	0x6e6c8  @objc VFXREDrawCall.(null) <stripped>
-WARNING: couldn't find address 0x72e7400132e20 (0x67400132e20) in binary!
-	0x71580  @objc VFXREDrawCall.(null) <stripped>
+WARNING: couldn't find address 0x6e70400132da0 (0x70400132da0) in binary!
+	0x6e6f8  @objc VFXREDrawCall.(null) <stripped>
+WARNING: couldn't find address 0x72f6400132f50 (0x76400132f50) in binary!
+	0x715b0  @objc VFXREDrawCall.(null) <stripped>
 WARNING: couldn't find address 0xf8000000c (0xf8000000c) in binary!
-	0x41cffc09920  @objc VFXREDrawCall.(null) <stripped>
-	0x5a4ffc0a618  @objc VFXREDrawCall.]òLãm†LçuÄLâ˜HâﬁËo?X <stripped>
-	0x3dcffc0ab20  @objc VFXREDrawCall.ã0HâﬂËÊX <stripped>
-	0x3b4ffc0b178  @objc VFXREDrawCall.Ë¡f <stripped>
-	0x454ffc0b5e0  @objc VFXREDrawCall.Éƒ[]È’f <stripped>
+	0x54cffc090c0  @objc VFXREDrawCall.(null) <stripped>
+	0x6d4ffc09db8  @objc VFXREDrawCall.ˇˇHçMÄˇ5à”t <stripped>
+	0x50cffc0a2c0  @objc VFXREDrawCall.UHâÂLãOMÖ…thMçAˇ1ˆ1…f.Ñ <stripped>
+	0x4e4ffc0a918  @objc VFXREDrawCall.˜Ëòf <stripped>
+	0x584ffc0ad80  @objc VFXREDrawCall.¿Ëy(˙ˇMâ¸Hçe‡[A]A^A_]√Hã}–Hãu»HãE∏ˇPHãE∞LâÛHÉ¯uMãv Lâ˜ËCf <stripped>
 
 	// Swift methods
-	0x2da170  func VFXREDrawCall.materialIdentifier() // method 
-	0x2da1b0  func VFXREDrawCall.enumerateBuffers(_:) // method 
-	0x2da9c0  func VFXREDrawCall.vertexCount() // method 
-	0x2daa00  func VFXREDrawCall.instanceCount() // method 
-	0x2daa40  func VFXREDrawCall.primitiveType() // method 
-	0x2daa80  func VFXREDrawCall.enumerateTextures(_:) // method 
-	0x2db240  func VFXREDrawCall.boundingBoxMin() // method 
-	0x2db280  func VFXREDrawCall.boundingBoxMax() // method 
+	0x2d97e0  func VFXREDrawCall.materialIdentifier() // method 
+	0x2d9820  func VFXREDrawCall.enumerateBuffers(_:) // method 
+	0x2da030  func VFXREDrawCall.vertexCount() // method 
+	0x2da070  func VFXREDrawCall.instanceCount() // method 
+	0x2da0b0  func VFXREDrawCall.primitiveType() // method 
+	0x2da0f0  func VFXREDrawCall.enumerateTextures(_:) // method 
+	0x2da8b0  func VFXREDrawCall.boundingBoxMin() // method 
+	0x2da8f0  func VFXREDrawCall.boundingBoxMax() // method 
  }
 
  class VFXCore.VFXREManager : NSObject /usr/lib/libobjc.A.dylib {
@@ -7636,53 +7638,50 @@ WARNING: couldn't find address 0xf8000000c (0xf8000000c) in binary!
 	var transientDrawCall : VFXREDrawCall
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x6090600132de0 (0x10600132de0) in binary!
+WARNING: couldn't find address 0x6090600132f10 (0x10600132f10) in binary!
 	0x622dc  @objc VFXREManager.(null) <stripped>
-WARNING: couldn't find address 0x6e6ac00132c08 (0x6ac00132c08) in binary!
-	0x624f0  @objc VFXREManager.(null) <stripped>
-WARNING: couldn't find address 0x7153c00132d90 (0x53c00132d90) in binary!
-	0x6e6a8  @objc VFXREManager.(null) <stripped>
-WARNING: couldn't find address 0x72e8400132bc8 (0x68400132bc8) in binary!
-	0x6e6b1  @objc VFXREManager.(null) <stripped>
-WARNING: couldn't find address 0x608e900132d48 (0xe900132d48) in binary!
+	0x624f0  specialized ParticleStoredDataSet.init(datas:)
+WARNING: couldn't find address 0x7156c00132ec0 (0x56c00132ec0) in binary!
+	0x6e6d8  @objc VFXREManager.(null) <stripped>
+WARNING: couldn't find address 0x72f7400132cf8 (0x77400132cf8) in binary!
+	0x6e6e1  @objc VFXREManager.(null) <stripped>
+WARNING: couldn't find address 0x608e900132e78 (0xe900132e78) in binary!
 	0x622d8  @objc VFXREManager.(null) <stripped>
-WARNING: couldn't find address 0x6229400132b88 (0x29400132b88) in binary!
+WARNING: couldn't find address 0x6229400132cb8 (0x29400132cb8) in binary!
 	0x608ce  @objc VFXREManager.(null) <stripped>
-WARNING: couldn't find address 0x608d400132d08 (0xd400132d08) in binary!
-	0x72db8  @objc VFXREManager.(null) <stripped>
-WARNING: couldn't find address 0x714c400132ce8 (0x4c400132ce8) in binary!
+WARNING: couldn't find address 0x608d400132e38 (0xd400132e38) in binary!
+	0x72ea8  @objc VFXREManager.(null) <stripped>
+WARNING: couldn't find address 0x714f400132e18 (0x4f400132e18) in binary!
 	0x58000000c  @objc VFXREManager.(null) <stripped>
-WARNING: couldn't find address 0x72d9400132b38 (0x59400132b38) in binary!
-	0x72d88  @objc VFXREManager.(null) <stripped>
-WARNING: couldn't find address 0x7149400132b10 (0x49400132b10) in binary!
-	0x72d70  @objc VFXREManager.(null) <stripped>
-WARNING: couldn't find address 0x7147c00132ca0 (0x47c00132ca0) in binary!
+WARNING: couldn't find address 0x72e8400132c68 (0x68400132c68) in binary!
+	0x72e78  @objc VFXREManager.(null) <stripped>
+WARNING: couldn't find address 0x714c400132c40 (0x4c400132c40) in binary!
+	0x72e60  @objc VFXREManager.(null) <stripped>
+WARNING: couldn't find address 0x714ac00132dd0 (0x4ac00132dd0) in binary!
 	0xc8000000c  @objc VFXREManager.(null) <stripped>
-WARNING: couldn't find address 0xdb74a001338a8 (0x74a001338a8) in binary!
-	0xdb788  @objc VFXREManager.(null) <stripped>
-WARNING: couldn't find address 0xdb79100132aa8 (0x79100132aa8) in binary!
-	0xdb78d  @objc VFXREManager.(null) <stripped>
-WARNING: couldn't find address 0xdb77900133670 (0x77900133670) in binary!
-	0xdb780  @objc VFXREManager.(null) <stripped>
-WARNING: couldn't find address 0xdb76100133890 (0x76100133890) in binary!
-	0xdb768  @objc VFXREManager.(null) <stripped>
+	0xdb8b0  protocol witness for System.defaultStage.getter in conformance ParticleLifeUpdateAndDieSystem
+WARNING: couldn't find address 0xdb8b900132bd8 (0xb900132bd8) in binary!
+	0xdb8b5  @objc VFXREManager.(null) <stripped>
+WARNING: couldn't find address 0xdb8a1001337a8 (0xa1001337a8) in binary!
+	0xdb8a8  @objc VFXREManager.(null) <stripped>
+	0xdb890  protocol witness for System.defaultStage.getter in conformance ParticleFlockingFlyTowardsAreaSystem
 
 	// Swift methods
-	0x2dbf10  func VFXREManager.deltaTime.getter // getter 
-	0x2dbf30  class func VFXREManager.__allocating_init(device:modelManager:) // init 
-	0x2dbff0  func VFXREManager.setupRuntime(entityManager:from:) // method 
-	0x2dc320  func VFXREManager.load(url:loadScriptSymbols:) // method 
-	0x2dcd00  func VFXREManager.generateMaterials() // method 
-	0x2dd0a0  func VFXREManager.clear() // method 
-	0x2dd370  func VFXREManager.registerBinding(path:type:block:) // method 
-	0x2dd730  func VFXREManager.unregisterBinding(path:) // method 
-	0x2dd840  func VFXREManager.tick(_:) // method 
-	0x2ddb00  func VFXREManager.recycleBuffersGetCompletion() // method 
-	0x2ddca0  func VFXREManager.withPointerToValue(atPath:block:) // method 
-	0x2ddeb0  func VFXREManager.forEachDrawCall(_:) // method 
-	0x2de820  func VFXREManager.setEntityTransform(_:_:_:_:) // method 
-	0x2de960  func VFXREManager.setRootEntityTransform(_:_:_:) // method 
-	0x2deb00  func VFXREManager.setCameraEntityTransformProjection(_:_:_:_:_:_:_:) // method 
+	0x2db580  func VFXREManager.deltaTime.getter // getter 
+	0x2db5a0  class func VFXREManager.__allocating_init(device:modelManager:) // init 
+	0x2db660  func VFXREManager.setupRuntime(entityManager:from:) // method 
+	0x2db990  func VFXREManager.load(url:loadScriptSymbols:) // method 
+	0x2dc370  func VFXREManager.generateMaterials() // method 
+	0x2dc710  func VFXREManager.clear() // method 
+	0x2dc9e0  func VFXREManager.registerBinding(path:type:block:) // method 
+	0x2dcda0  func VFXREManager.unregisterBinding(path:) // method 
+	0x2dceb0  func VFXREManager.tick(_:) // method 
+	0x2dd170  func VFXREManager.recycleBuffersGetCompletion() // method 
+	0x2dd310  func VFXREManager.withPointerToValue(atPath:block:) // method 
+	0x2dd520  func VFXREManager.forEachDrawCall(_:) // method 
+	0x2dde90  func VFXREManager.setEntityTransform(_:_:_:_:) // method 
+	0x2ddfd0  func VFXREManager.setRootEntityTransform(_:_:_:) // method 
+	0x2de170  func VFXREManager.setCameraEntityTransformProjection(_:_:_:_:_:_:_:) // method 
  }
 
  enum VFXCore.VFXBindingError {
@@ -7734,7 +7733,7 @@ WARNING: couldn't find address 0xdb76100133890 (0x76100133890) in binary!
 	var includeFunctionsMapByLanguage : Language
 
 	// Swift methods
-	0x2ed8e0  class func CodeGeneration.Library.__allocating_init(from:) // init 
+	0x2ecf50  class func CodeGeneration.Library.__allocating_init(from:) // init 
  }
 
  struct VFXCore.FunctionSet {
@@ -7755,7 +7754,7 @@ WARNING: couldn't find address 0xdb76100133890 (0x76100133890) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Ã // +0x0
+	var value : 7Õ // +0x0
  }
 
  struct VFXCore.ParticleAngle {
@@ -7780,7 +7779,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Wx // +0x0
+	var value : áy // +0x0
  }
 
  struct VFXCore.ParticleRibbonLength {
@@ -7805,42 +7804,42 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : YÃ // +0x0
+	var value : âÕ // +0x0
  }
 
  struct VFXCore.UserData1 {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Ã // +0x0
+	var value : 7Õ // +0x0
  }
 
  struct VFXCore.UserData2 {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Ã // +0x0
+	var value : 7Õ // +0x0
  }
 
  struct VFXCore.UserData3 {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Ã // +0x0
+	var value : 7Õ // +0x0
  }
 
  struct VFXCore.UserData4 {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Ã // +0x0
+	var value : 7Õ // +0x0
  }
 
  struct VFXCore.ParticlePivot {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Wx // +0x0
+	var value : áy // +0x0
  }
 
  struct VFXCore.ParticleCustomEmitter {
@@ -7856,9 +7855,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var center : YÃ // +0x0
+	var center : âÕ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var halfSize : YÃ // +0x10
+	var halfSize : âÕ // +0x10
 	var vfData : Entity // +0x20
 	var intensity : Float // +0x28
  }
@@ -7867,7 +7866,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sphere : Ã // +0x0
+	var sphere : 7Õ // +0x0
 	var intensity : Float // +0x10
  }
 
@@ -7876,23 +7875,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var sdfData : Entity // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var center : YÃ // +0x10
+	var center : âÕ // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var halfSize : YÃ // +0x20
+	var halfSize : âÕ // +0x20
  }
 
  struct VFXCore.TransientOriginColor {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Ã // +0x0
+	var value : 7Õ // +0x0
  }
 
  struct VFXCore.TransientOriginScale {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : YÃ // +0x0
+	var value : âÕ // +0x0
  }
 
  enum VFXCore.CodingKeys {
@@ -8007,14 +8006,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : YÃ // +0x0
+	var value : âÕ // +0x0
  }
 
  struct VFXCore.LinearFactor {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : YÃ // +0x0
+	var value : âÕ // +0x0
  }
 
  struct VFXCore.Particle { }
@@ -8071,9 +8070,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var resolution : Int // +0x8
 	var edgeAtt : Float // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var opacityScaleBias : uÃ // +0x18
+	var opacityScaleBias : •Õ // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var colorScaleBias : uÃ // +0x20
+	var colorScaleBias : •Õ // +0x20
 	var voxelizeDepthBuffer : Bool // +0x28
 	var densityInit : Float // +0x2c
 	var densityTexture : Entity // +0x30
@@ -8082,7 +8081,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var voxelDepthBuffer : [MTLBuffer?] // +0x48
 	var bufferCounter : MTLBuffer? // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var frameCount : ΩÈ // +0x58
+	var frameCount : ÌÍ // +0x58
  }
 
  enum VFXCore.CodingKeys {
@@ -8110,10 +8109,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var enableGI : Bool // +0x1
 	var premultiplyByAO : Bool // +0x2
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var diffuseStep : ΩÈ // +0x4
+	var diffuseStep : ÌÍ // +0x4
 	var diffuseQuality : Float // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var specularStep : ΩÈ // +0xc
+	var specularStep : ÌÍ // +0xc
 	var specularQuality : Float // +0x10
 	var falloffAO : Float // +0x14
  }
@@ -8123,11 +8122,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var sampleIBL : Bool // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var coneTracingStep : ΩÈ // +0x4
+	var coneTracingStep : ÌÍ // +0x4
 	var coneTracingQuality : Float // +0x8
 	var ambientFactor : Float // +0xc
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var extinction : YÃ // +0x10
+	var extinction : âÕ // +0x10
 	var g0 : Float // +0x20
 	var g1 : Float // +0x24
 	var gw : Float // +0x28
@@ -8142,7 +8141,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var parentEntity : Entity // +0x0
 	var texture : MTLTexture? // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scaleBias : uÃ // +0x10
+	var scaleBias : •Õ // +0x10
  }
 
  struct VFXCore.VoxelizeColorComponent { }
@@ -8223,18 +8222,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  class VFXCore.BoidsRenderSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 
 	// Properties
-	var transformBuffers : [MTLBuffer] // +0x6fafe4
+	var transformBuffers : [MTLBuffer] // +0x6fae84
 	var frameIndex : Int // +0x0
-	let usePRS : Bool // +0x2feb70
+	let usePRS : Bool // +0x2fe1e0
 	var instanceStride : Int // +0x0
-	var boidsIndicesBuffer : MTLBuffer? // +0x6faff4
+	var boidsIndicesBuffer : MTLBuffer? // +0x6fae94
 	var boidsIndicesCount : Int // +0x0
-	var entityCount : Int // +0x7d4f70
+	var entityCount : Int // +0x7d4f90
 	var boidsMaterial : Material // +0x0
 
 	// Swift methods
-	0x2feb80  func BoidsRenderSystem.setup(entityManager:) // method 
-	0x2fefc0  func BoidsRenderSystem.update(entityManager:) // method 
+	0x2fe1f0  func BoidsRenderSystem.setup(entityManager:) // method 
+	0x2fe630  func BoidsRenderSystem.update(entityManager:) // method 
  }
 
  struct VFXCore.BoidsRenderer { }
@@ -8263,25 +8262,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var selectionEndTime : Double // +0x30
 	var selectedEntry : (threadIndex: Int, frameIndex: Int, entryIndex: Int)? // +0x38
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var windowPos : uÃ // +0x58
+	var windowPos : •Õ // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var windowDragStartPos : uÃ // +0x60
+	var windowDragStartPos : •Õ // +0x60
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var mouseDragStartPos : uÃ // +0x68
+	var mouseDragStartPos : •Õ // +0x68
  }
 
  struct VFXCore.CollisionLayerSet {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rawValue : Wx // +0x0
+	var rawValue : áy // +0x0
  }
 
  struct VFXCore.ParticlePlaneCollider: ParticleCollidable {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var halfExtents : uÃ // +0x0
+	var halfExtents : •Õ // +0x0
 	var sendEventsProbability : Float // +0x8
 	var dieOnCollisionProbability : Float // +0xc
 	var elasticity : Float // +0x10
@@ -8405,9 +8404,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var position : YÃ // +0x0
+	var position : âÕ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var normal : YÃ // +0x10
+	var normal : âÕ // +0x10
  }
 
  struct VFXCore.ParticleCollide: ParticleCollidable {
@@ -8451,7 +8450,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let colliderVelocity : YÃ // +0x0
+	let colliderVelocity : âÕ // +0x0
 	let collider : ParticleCollidable // +0x10
 	let eventClass : EntityClass // +0x38
 	let Q : ChunkQueryCursor // +0x40
@@ -8513,10 +8512,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dir : YÃ // +0x0
+	var dir : âÕ // +0x0
 	var count : Int // +0x10
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var randomMainDir : YÃ // +0x20
+	var randomMainDir : âÕ // +0x20
  }
 
  struct VFXCore.ParticleGrowEmitter: ParticleComponentInitializer {
@@ -8524,7 +8523,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var noise : NoiseKind // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var mainDir : YÃ // +0x10
+	var mainDir : âÕ // +0x10
 	var mainDirSpread : Float // +0x20
 	var noiseIntensity : Float // +0x24
 	var noiseScale : Float // +0x28
@@ -8681,7 +8680,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var intensity : Float // +0x10
 	var affectsAlpha : Bool // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Ã // +0x20
+	var value : 7Õ // +0x20
 	var ramp : ColorRamp // +0x30
  }
 
@@ -8710,9 +8709,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case grid : µ{
+	case grid : Â|
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case uniform : Wx
+	case uniform : áy
 	case random  
  }
 
@@ -8729,14 +8728,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var velocityRange : Range<Float> // +0x68
 	var spreadingRange : Range<Float> // +0x70
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tangentAxis : YÃ // +0x80
+	var tangentAxis : âÕ // +0x80
 	var tangentForce : Range<Float> // +0x90
 	var texture : Entity // +0x98
 	var textureAddressMode : AddressMode // +0xa0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var textureScale : YÃ // +0xb0
+	var textureScale : âÕ // +0xb0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var textureBias : YÃ // +0xc0
+	var textureBias : âÕ // +0xc0
 	var inheritColorFromTexture : Bool // +0xd0
  }
 
@@ -8756,9 +8755,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case world : YÃ
+	case world : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case local : YÃ
+	case local : âÕ
 	case shape  
 	case motion  
 	case random  
@@ -9003,17 +9002,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : uÃ // +0x0
+	var value : •Õ // +0x0
  }
 
  struct VFXCore.Shadow {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var offset : uÃ // +0x0
+	var offset : •Õ // +0x0
 	var radius : Float // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var color : Ã // +0x10
+	var color : 7Õ // +0x10
  }
 
  struct VFXCore.StrokeWidth {
@@ -9026,7 +9025,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Ã // +0x0
+	var value : 7Õ // +0x0
  }
 
  struct VFXCore.RoundedRectShape {
@@ -9041,7 +9040,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : Ã // +0x0
+	var value : 7Õ // +0x0
  }
 
  enum VFXCore.CodingKeys {
@@ -9112,7 +9111,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let isMenuItemBoundToEnabled : Bool
 
 	// Swift methods
-	0x344cd0  class func DebugCullingSystem.__allocating_init() // init 
+	0x344340  class func DebugCullingSystem.__allocating_init() // init 
  }
 
  class VFXCore.DebugLODSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -9123,7 +9122,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let showWindowShortcutKeycode : QÌ
+	let showWindowShortcutKeycode : ÅÓ
 	var isMenuItemEnabled : Bool
 	let isMenuItemBoundToEnabled : Bool
 
@@ -9145,11 +9144,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let showWindowShortcutKeycode : QÌ
+	let showWindowShortcutKeycode : ÅÓ
 	var isMenuItemEnabled : Bool
 
 	// Swift methods
-	0x34def0  class func DebugShaderSystem.__allocating_init() // init 
+	0x34d560  class func DebugShaderSystem.__allocating_init() // init 
  }
 
  struct VFXCore.DebugAPI {
@@ -9165,7 +9164,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isMenuItemEnabled : Bool
 
 	// Swift methods
-	0x351640  class func DebugDrawingSystem.__allocating_init() // init 
+	0x350cb0  class func DebugDrawingSystem.__allocating_init() // init 
  }
 
  class VFXCore.DebugInfoSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -9186,9 +9185,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var start : uÃ // +0x0
+	var start : •Õ // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var end : uÃ // +0x8
+	var end : •Õ // +0x8
  }
 
  struct VFXCore.DebugInfoTorus {
@@ -9307,7 +9306,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var materialIdentifier : ÔÛ // +0x0
+	var materialIdentifier : ı // +0x0
 	var vertexShader : String // +0x8
 	var fragmentShader : String // +0x18
 	var vertexBuffers : [Int : String] // +0x28
@@ -9366,7 +9365,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value_w0 : Ã // +0x0
+	var value_w0 : 7Õ // +0x0
  }
 
  struct VFXCore.AngularVelocity {
@@ -9417,14 +9416,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value_w1 : Ã // +0x0
+	var value_w1 : 7Õ // +0x0
  }
 
  struct VFXCore.Normal {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value_w0 : Ã // +0x0
+	var value_w0 : 7Õ // +0x0
  }
 
  enum VFXCore.CodingKeys {
@@ -9490,7 +9489,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var threshold : Float // +0x10
 	var thresholdSmoothness : Float // +0x14
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var colorFilter : Ã // +0x20
+	var colorFilter : 7Õ // +0x20
 	var contrast : Float // +0x30
 	var saturation : Float // +0x34
  }
@@ -9527,13 +9526,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var temperature : Float // +0x4
 	var tint : Float // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var liftColor : Ã // +0x10
+	var liftColor : 7Õ // +0x10
 	var liftOffset : Float // +0x20
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var gammaColor : Ã // +0x30
+	var gammaColor : 7Õ // +0x30
 	var gammaOffset : Float // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var gainColor : Ã // +0x50
+	var gainColor : 7Õ // +0x50
 	var gainOffset : Float // +0x60
 	var contrast : Float // +0x64
 	var saturation : Float // +0x68
@@ -9651,14 +9650,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var meshes : Mesh // +0x30 (0x8)
 
 	// Swift methods
-	0x378710  func MDLImporter.convertUSDZPath(_:) // method 
-	0x378c60  func MDLImporter.convertToColorProperty(property:) // method 
-	0x379010  func MDLImporter.convertToScalarProperty(property:) // method 
-	0x379410  func MDLImporter.makeMaterial(mdlMaterial:) // method 
-	0x379970  func MDLImporter.makeMesh(from:) // method 
-	0x37b500  func MDLImporter.createObject(from:parent:) // method 
-	0x37cfe0  func MDLImporter.importAnimations(from:) // method 
-	0x37d630  func MDLImporter.importScene(url:) // method 
+	0x377d80  func MDLImporter.convertUSDZPath(_:) // method 
+	0x3782d0  func MDLImporter.convertToColorProperty(property:) // method 
+	0x378680  func MDLImporter.convertToScalarProperty(property:) // method 
+	0x378a80  func MDLImporter.makeMaterial(mdlMaterial:) // method 
+	0x378fe0  func MDLImporter.makeMesh(from:) // method 
+	0x37ab70  func MDLImporter.createObject(from:parent:) // method 
+	0x37c650  func MDLImporter.importAnimations(from:) // method 
+	0x37cca0  func MDLImporter.importScene(url:) // method 
  }
 
  enum VFXCore.Error {
@@ -9755,14 +9754,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var asset : ﬂ
+	var asset : E‡
  }
 
  struct VFXCore.TextureFileData {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var data : 5A // +0x0
+	var data : eB // +0x0
  }
 
  struct VFXCore.TextureShaderAsset {
@@ -9778,11 +9777,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	case float : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case float2 : uÃ
+	case float2 : •Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case float3 : YÃ
+	case float3 : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case float4 : Ã
+	case float4 : 7Õ
  }
 
  struct VFXCore.TextureGPURuntime {
@@ -9947,45 +9946,45 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var decompositionSnippets : MetadataType // +0x30 (0x8)
 	var initialized : Bool // +0x38 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var vfxGraphTemplatesDir : èY // +0x0 (0x0)
+	var vfxGraphTemplatesDir : øZ // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var onUserTemplatesChanged :  empty-list  // +0x50bf8 (0x8)
-	let codeSourceSnippetRemapping : [String : String] // +0x6d2950 (0x8)
+	let codeSourceSnippetRemapping : [String : String] // +0x6d2820 (0x8)
 	let codeSourceSnippetRemappingWithValueTransfer : [String : String] // +0x0 (0x8)
 
 	// Swift methods
-	0x3986b0  func CodeGeneration.Resources.libraries.getter // getter 
-	0x398710  func CodeGeneration.Resources.userLibraries.getter // getter 
-	0x398770  func CodeGeneration.Resources.conversionSnippets.getter // getter 
-	0x3987d0  func CodeGeneration.Resources.compositionSnippets.getter // getter 
-	0x398830  func CodeGeneration.Resources.decompositionSnippets.getter // getter 
-	0x398840  func CodeGeneration.Resources.addOnUserTemplatesChanged(_:) // method 
-	0x398900  func CodeGeneration.Resources.removeOnUserTemplatesChanged(uuid:) // method 
-	0x3989f0  func CodeGeneration.Resources.dispatchOnUserTemplatesChanged() // method 
-	0x398e60  class func CodeGeneration.Resources.__allocating_init() // init 
-	0x399030  func CodeGeneration.Resources.canTypeBeComposed(_:) // method 
-	0x399070  func CodeGeneration.Resources.canTypeBeDecomposed(_:) // method 
-	0x3990b0  func CodeGeneration.Resources.allComposableTypes.getter // getter 
-	0x3990f0  func CodeGeneration.Resources.allDecomposableTypes.getter // getter 
-	0x399130  func CodeGeneration.Resources.initIncludes() // method 
-	0x399ba0  func CodeGeneration.Resources.initConversionSnippets() // method 
-	0x39a2a0  func CodeGeneration.Resources.initCompositionSnippets() // method 
-	0x39a830  func CodeGeneration.Resources.initUserTemplates(from:) // method 
-	0x39afa0  func CodeGeneration.Resources.initUserTemplates(_:) // method 
-	0x39bf70  func CodeGeneration.Resources.initLibraries() // method 
-	0x39c660  func CodeGeneration.Resources.initialize(sanityCheck:graphTemplatesOverrideUrl:) // method 
-	0x39de40  func CodeGeneration.Resources.getOrCreateUserLibrary(named:) // method 
-	0x39df40  func CodeGeneration.Resources.createUserTemplate(_:_:) // method 
-	0x39e440  func CodeGeneration.Resources.deleteUserTemplate(templateDescription:) // method 
-	0x39e700  func CodeGeneration.Resources.saveUserTemplates() // method 
-	0x39f330  func CodeGeneration.Resources.saveUserTemplate(_:_:) // method 
-	0x39f890  func CodeGeneration.Resources.saveUserTemplate(_:_:) // method 
-	0x39fb80  func CodeGeneration.Resources.deleteUserTemplateFile(_:_:) // method 
-	0x39ffd0  func CodeGeneration.Resources.deleteUserLibraryDirectory(_:) // method 
-	0x3a02e0  func CodeGeneration.Resources.findTemplate(_:_:_:_:) // method 
-	0x3a0570  func CodeGeneration.Resources.findTemplate(with:) // method 
-	0x3a1640  func CodeGeneration.Resources.codeSourceSnippet(_:_:_:) // method 
-	0x3a1e60  func CodeGeneration.Resources.getConversionSourceSnippet(to:from:) // method 
+	0x397d20  func CodeGeneration.Resources.libraries.getter // getter 
+	0x397d80  func CodeGeneration.Resources.userLibraries.getter // getter 
+	0x397de0  func CodeGeneration.Resources.conversionSnippets.getter // getter 
+	0x397e40  func CodeGeneration.Resources.compositionSnippets.getter // getter 
+	0x397ea0  func CodeGeneration.Resources.decompositionSnippets.getter // getter 
+	0x397eb0  func CodeGeneration.Resources.addOnUserTemplatesChanged(_:) // method 
+	0x397f70  func CodeGeneration.Resources.removeOnUserTemplatesChanged(uuid:) // method 
+	0x398060  func CodeGeneration.Resources.dispatchOnUserTemplatesChanged() // method 
+	0x3984d0  class func CodeGeneration.Resources.__allocating_init() // init 
+	0x3986a0  func CodeGeneration.Resources.canTypeBeComposed(_:) // method 
+	0x3986e0  func CodeGeneration.Resources.canTypeBeDecomposed(_:) // method 
+	0x398720  func CodeGeneration.Resources.allComposableTypes.getter // getter 
+	0x398760  func CodeGeneration.Resources.allDecomposableTypes.getter // getter 
+	0x3987a0  func CodeGeneration.Resources.initIncludes() // method 
+	0x399210  func CodeGeneration.Resources.initConversionSnippets() // method 
+	0x399910  func CodeGeneration.Resources.initCompositionSnippets() // method 
+	0x399ea0  func CodeGeneration.Resources.initUserTemplates(from:) // method 
+	0x39a610  func CodeGeneration.Resources.initUserTemplates(_:) // method 
+	0x39b5e0  func CodeGeneration.Resources.initLibraries() // method 
+	0x39bcd0  func CodeGeneration.Resources.initialize(sanityCheck:graphTemplatesOverrideUrl:) // method 
+	0x39d4b0  func CodeGeneration.Resources.getOrCreateUserLibrary(named:) // method 
+	0x39d5b0  func CodeGeneration.Resources.createUserTemplate(_:_:) // method 
+	0x39dab0  func CodeGeneration.Resources.deleteUserTemplate(templateDescription:) // method 
+	0x39dd70  func CodeGeneration.Resources.saveUserTemplates() // method 
+	0x39e9a0  func CodeGeneration.Resources.saveUserTemplate(_:_:) // method 
+	0x39ef00  func CodeGeneration.Resources.saveUserTemplate(_:_:) // method 
+	0x39f1f0  func CodeGeneration.Resources.deleteUserTemplateFile(_:_:) // method 
+	0x39f640  func CodeGeneration.Resources.deleteUserLibraryDirectory(_:) // method 
+	0x39f950  func CodeGeneration.Resources.findTemplate(_:_:_:_:) // method 
+	0x39fbe0  func CodeGeneration.Resources.findTemplate(with:) // method 
+	0x3a0cb0  func CodeGeneration.Resources.codeSourceSnippet(_:_:_:) // method 
+	0x3a14d0  func CodeGeneration.Resources.getConversionSourceSnippet(to:from:) // method 
  }
 
  struct VFXCore.MigrationPhase {
@@ -10017,7 +10016,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
  class VFXCore.DebugSDFColliderSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x3a8340  class func DebugSDFColliderSystem.__allocating_init() // init 
+	0x3a79b0  class func DebugSDFColliderSystem.__allocating_init() // init 
  }
 
  enum VFXCore.CodingKeys {
@@ -10042,7 +10041,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var url : ﬂ
+	var url : E‡
  }
 
  enum VFXCore.CodingKeys {
@@ -10063,22 +10062,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let libraryURL : ﬂ // +0x0 (0x0)
+	let libraryURL : E‡ // +0x0 (0x0)
 	let watchingFolderQueue : NSOperationQueue // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var block :  empty-list  // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x72d9400132b38 (0x59400132b38) in binary!
-	0x72d88  @objc MTLLibraryWatcher.(null) <stripped>
-WARNING: couldn't find address 0x7149400132b10 (0x49400132b10) in binary!
-	0x72d70  @objc MTLLibraryWatcher.(null) <stripped>
-WARNING: couldn't find address 0x7147c00132ca0 (0x47c00132ca0) in binary!
+WARNING: couldn't find address 0x72e8400132c68 (0x68400132c68) in binary!
+	0x72e78  @objc MTLLibraryWatcher.(null) <stripped>
+WARNING: couldn't find address 0x714c400132c40 (0x4c400132c40) in binary!
+	0x72e60  @objc MTLLibraryWatcher.(null) <stripped>
+WARNING: couldn't find address 0x714ac00132dd0 (0x4ac00132dd0) in binary!
 	0xc8000000c  @objc MTLLibraryWatcher.(null) <stripped>
-WARNING: couldn't find address 0xdb74a001338a8 (0x74a001338a8) in binary!
-	0xdb788  @objc MTLLibraryWatcher.(null) <stripped>
-WARNING: couldn't find address 0xdb79100132aa8 (0x79100132aa8) in binary!
-	0xdb78d  @objc MTLLibraryWatcher.(null) <stripped>
+	0xdb8b0  protocol witness for System.defaultStage.getter in conformance ParticleLifeUpdateAndDieSystem
+WARNING: couldn't find address 0xdb8b900132bd8 (0xb900132bd8) in binary!
+	0xdb8b5  @objc MTLLibraryWatcher.(null) <stripped>
 
 	// Swift methods
  }
@@ -10088,7 +10086,7 @@ WARNING: couldn't find address 0xdb79100132aa8 (0x79100132aa8) in binary!
 	// Properties
 	var storage : Storage // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : # // +0x18
+	var value : Ø$ // +0x18
 	var type : MTLDataType // +0x40
  }
 
@@ -10113,9 +10111,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var reloadCallback : ()
 
 	// Swift methods
-	0x3acce0  func ShaderPool.make(descriptor:checkInCache:needReflection:) // method 
-	0x3ae8b0  func ShaderPool.make(descriptor:checkInCache:) // method 
-	0x3af320  func ShaderPool.reloadShaders() // method 
+	0x3ac350  func ShaderPool.make(descriptor:checkInCache:needReflection:) // method 
+	0x3adf20  func ShaderPool.make(descriptor:checkInCache:) // method 
+	0x3ae990  func ShaderPool.reloadShaders() // method 
  }
 
  struct VFXCore.Stats {
@@ -10197,7 +10195,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var srcAlpha : MTLBlendFactor // +0x20
 	var dstAlpha : MTLBlendFactor // +0x28
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _writeMask : ˝ˇ // +0x30
+	var _writeMask : - // +0x30
  }
 
  class VFXCore.BloomPassSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -10243,7 +10241,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var url : ﬂ
+	var url : E‡
  }
 
  enum VFXCore.CodingKeys {
@@ -10336,7 +10334,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var frequency : Float // +0x4
 	var phaseShift : Float // +0x8
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var delta : YÃ // +0x10
+	var delta : âÕ // +0x10
  }
 
  struct VFXCore.RotateAction {
@@ -10344,7 +10342,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var angle : Float // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var axis : YÃ // +0x10
+	var axis : âÕ // +0x10
  }
 
  enum VFXCore.CodingKeys {
@@ -10381,21 +10379,21 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : uÃ // +0x0
+	var value : •Õ // +0x0
  }
 
  struct VFXCore.Scale3 {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : YÃ // +0x0
+	var value : âÕ // +0x0
  }
 
  struct VFXCore.Scale {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var value : YÃ // +0x0
+	var value : âÕ // +0x0
  }
 
  enum VFXCore.CodingKeys {
@@ -10467,9 +10465,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let evaluateSplineFunc : (_:_:_:_:_:_:)
 
 	// Swift methods
-	0x3c9fc0  func KeyframeTimelineRuntime.encode(to:) // method 
-	0x3ca110  class func KeyframeTimelineRuntime.__allocating_init(from:) // init 
-	0x3ca220  func KeyframeTimelineRuntime.evaluateSpline(at:cachedIndex:ptr:) // method 
+	0x3c9f90  func KeyframeTimelineRuntime.encode(to:) // method 
+	0x3ca0e0  class func KeyframeTimelineRuntime.__allocating_init(from:) // init 
+	0x3ca1f0  func KeyframeTimelineRuntime.evaluateSpline(at:cachedIndex:ptr:) // method 
  }
 
  class VFXCore.KeyframeTimeline : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -10479,11 +10477,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let times : [Float]
 
 	// Swift methods
-	0x3c9450  class func KeyframeTimeline.__allocating_init(values:times:) // init 
-	0x3ca3b0  func KeyframeTimeline.enumerate(_:) // method 
-	0x3ca420  func KeyframeTimeline.eval(_:) // method 
-	0x3ca830  func KeyframeTimeline.encode(to:) // method 
-	0x3ca990  class func KeyframeTimeline.__allocating_init(from:) // init 
+	0x3c9420  class func KeyframeTimeline.__allocating_init(values:times:) // init 
+	0x3ca380  func KeyframeTimeline.enumerate(_:) // method 
+	0x3ca3f0  func KeyframeTimeline.eval(_:) // method 
+	0x3ca800  func KeyframeTimeline.encode(to:) // method 
+	0x3ca960  class func KeyframeTimeline.__allocating_init(from:) // init 
  }
 
  enum VFXCore.CodingKeys {
@@ -10507,23 +10505,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	let encoder : MTLRenderCommandEncoder // +0x0
 	let renderPassFormat : RenderPassFormat // +0x0
-	let counterRecorder : PerformanceCounterRecorder // +0x45c210
+	let counterRecorder : PerformanceCounterRecorder // +0x45c0d0
 	var winding : MTLWinding // +0x0
-	var cullMode : MTLCullMode // +0x76f0
+	var cullMode : MTLCullMode // +0x7260
 	var fillMode : MTLTriangleFillMode // +0x0
-	var clipMode : MTLDepthClipMode // +0x45c210
+	var clipMode : MTLDepthClipMode // +0x45c0d0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var stencilReferenceValueFront : Wx // +0x0
+	var stencilReferenceValueFront : áy // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var stencilReferenceValueBack : Wx // +0x45c210
+	var stencilReferenceValueBack : áy // +0x45c0d0
 	var inverseWinding : Bool // +0x0
-	var windingChanged : Bool // +0x45c210
+	var windingChanged : Bool // +0x45c0d0
 	var cullModeChanged : Bool // +0x0
-	var fillModeChanged : Bool // +0x45c210
+	var fillModeChanged : Bool // +0x45c0d0
 	var clipModeChanged : Bool // +0x0
-	var lockCullMode : Bool // +0x3d6d60
+	var lockCullMode : Bool // +0x3d6d30
 	var lockFillMode : Bool // +0x0
-	var vertexBuffers : FixedArray32 // +0x3d6da0
+	var vertexBuffers : FixedArray32 // +0x3d6d70
 	var vertexTextures : FixedArray32 // +0x0
 	var vertexSamplers : FixedArray16 // +0x8
 	var fragmentBuffers : FixedArray32 // +0x0
@@ -10533,17 +10531,17 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var renderPipelineState : MTLRenderPipelineState? // +0x7fffffff
 
 	// Swift methods
-	0x3d4180  func RenderCommandEncoder.setRenderPipelineState(_:) // method 
-	0x3d41d0  func RenderCommandEncoder.setVertexBuffer(_:offset:index:) // method 
-	0x3d4f40  func RenderCommandEncoder.setVertexBufferOffset(_:index:) // method 
-	0x3d5950  func RenderCommandEncoder.setVertexTexture(_:index:) // method 
-	0x3d5ac0  func RenderCommandEncoder.setVertexSamplerState(_:index:) // method 
-	0x3d5bb0  func RenderCommandEncoder.setFragmentBuffer(_:offset:index:) // method 
-	0x3d6920  func RenderCommandEncoder.setFragmentTexture(_:index:) // method 
-	0x3d6a90  func RenderCommandEncoder.setFragmentSamplerState(_:index:) // method 
-	0x3d6b80  func RenderCommandEncoder.setDepthStencilState(_:) // method 
-	0x3d6be0  func RenderCommandEncoder.setStencilReferenceValues(front:back:) // method 
-	0x3d6c20  func RenderCommandEncoder.applyChangedStates() // method 
+	0x3d4150  func RenderCommandEncoder.setRenderPipelineState(_:) // method 
+	0x3d41a0  func RenderCommandEncoder.setVertexBuffer(_:offset:index:) // method 
+	0x3d4f10  func RenderCommandEncoder.setVertexBufferOffset(_:index:) // method 
+	0x3d5920  func RenderCommandEncoder.setVertexTexture(_:index:) // method 
+	0x3d5a90  func RenderCommandEncoder.setVertexSamplerState(_:index:) // method 
+	0x3d5b80  func RenderCommandEncoder.setFragmentBuffer(_:offset:index:) // method 
+	0x3d68f0  func RenderCommandEncoder.setFragmentTexture(_:index:) // method 
+	0x3d6a60  func RenderCommandEncoder.setFragmentSamplerState(_:index:) // method 
+	0x3d6b50  func RenderCommandEncoder.setDepthStencilState(_:) // method 
+	0x3d6bb0  func RenderCommandEncoder.setStencilReferenceValues(front:back:) // method 
+	0x3d6bf0  func RenderCommandEncoder.applyChangedStates() // method 
  }
 
  struct VFXCore.SamplerStateRef {
@@ -10612,7 +10610,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let sizeInPixel : CGSize // +0x8
 	let pixelFormat : MTLPixelFormat // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let scaleFactor : 	˙ // +0x20
+	let scaleFactor : 9˚ // +0x20
 	let loadAction : MTLLoadAction // +0x28
 	let clearColor : MTLClearColor // +0x30
 	let shouldWaitForCommandBufferCompletion : Bool // +0x50
@@ -10629,7 +10627,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var maxSampleCount : Int
 
 	// Swift methods
-	0x3dfe50  func PerformanceCounterRecorder.beginFrame() // method 
+	0x3dfe40  func PerformanceCounterRecorder.beginFrame() // method 
  }
 
  class VFXCore.Renderer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -10685,43 +10683,43 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var deformedBuffers : BufferView
 
 	// Swift methods
-	0x3dff60  func Renderer.extraAssetBundles.getter // getter 
-	0x3dff80  func Renderer.extraAssetBundles.setter // setter 
-	0x3dffa0  func Renderer.extraAssetBundles.modify // modifyCoroutine 
-	0x3e0010  func Renderer.showDebugMenu.getter // getter 
-	0x3e0020  func Renderer.showDebugMenu.setter // setter 
-	0x3e0040  func Renderer.showDebugMenu.modify // modifyCoroutine 
-	0x3e0070  func Renderer.canUseImgui.getter // getter 
-	0x3e0080  func Renderer.canUseImgui.setter // setter 
-	0x3e00a0  func Renderer.canUseImgui.modify // modifyCoroutine 
-	0x3e00d0  func Renderer.isRERendering.getter // getter 
-	0x3e01a0  func Renderer.renderOutputDepthTexture.getter // getter 
-	0x3e02c0  func Renderer.renderOutputPassDescriptor.getter // getter 
-	0x3e0a10  func Renderer.loadKTXTextureFromBundle(_:) // method 
-	0x3e0f10  func Renderer.makeTexture(descriptor:label:) // method 
-	0x3e0fa0  func Renderer.makeTexture(width:height:format:usage:storage:allocateMipMaps:label:) // method 
-	0x3e1100  func Renderer.addRenderOutput(_:) // method 
-	0x3e1130  func Renderer.removeRenderOutput(_:) // method 
-	0x3e1180  func Renderer.setRenderOutput(_:) // method 
-	0x3e11e0  func Renderer.passEncoder(_:) // method 
-	0x3e16f0  func Renderer.canReuseEncoder(_:) // method 
-	0x3e1a40  func Renderer.makeAsyncCommandBuffer(label:) // method 
-	0x3e1d50  func Renderer.endEncoderIfNeeded() // method 
-	0x3e21b0  func Renderer.makeRenderEncoderIfNeeded(parallel:_:_:) // method 
-	0x3e2710  func Renderer.makeBlitEncoderIfNeeded(label:) // method 
-	0x3e2730  func Renderer.makeComputeEncoderIfNeeded(label:) // method 
-	0x3e28b0  func Renderer.doCompute(_:body:) // method 
-	0x3de170  class func Renderer.__allocating_init(device:commandQueue:) // init 
-	0x3e3160  func Renderer.refreshRenderOutputList() // method 
-	0x3e31c0  func Renderer.pushDebugGroup(_:) // method 
-	0x3e3270  func Renderer.popDebugGroup() // method 
-	0x3e3290  func Renderer.beginRenderOutput(with:commandBuffer:) // method 
-	0x3e36f0  func Renderer.endRenderOutput() // method 
-	0x3e3cc0  func Renderer.renderOutputSize.getter // getter 
-	0x3e3da0  func Renderer.renderOutputMaxMipmapLevel.getter // getter 
-	0x3e3df0  func Renderer.renderOutputTextureDescriptor() // method 
-	0x3e3e60  func Renderer.get(colorRamp:) // method 
-	0x3e42a0  func Renderer.getStripBuffer(count:stripCount:restart:) // method 
+	0x3dff50  func Renderer.extraAssetBundles.getter // getter 
+	0x3dff70  func Renderer.extraAssetBundles.setter // setter 
+	0x3dff90  func Renderer.extraAssetBundles.modify // modifyCoroutine 
+	0x3e0000  func Renderer.showDebugMenu.getter // getter 
+	0x3e0010  func Renderer.showDebugMenu.setter // setter 
+	0x3e0030  func Renderer.showDebugMenu.modify // modifyCoroutine 
+	0x3e0060  func Renderer.canUseImgui.getter // getter 
+	0x3e0070  func Renderer.canUseImgui.setter // setter 
+	0x3e0090  func Renderer.canUseImgui.modify // modifyCoroutine 
+	0x3e00c0  func Renderer.isRERendering.getter // getter 
+	0x3e0190  func Renderer.renderOutputDepthTexture.getter // getter 
+	0x3e02b0  func Renderer.renderOutputPassDescriptor.getter // getter 
+	0x3e0a00  func Renderer.loadKTXTextureFromBundle(_:) // method 
+	0x3e0f00  func Renderer.makeTexture(descriptor:label:) // method 
+	0x3e0f90  func Renderer.makeTexture(width:height:format:usage:storage:allocateMipMaps:label:) // method 
+	0x3e10f0  func Renderer.addRenderOutput(_:) // method 
+	0x3e1120  func Renderer.removeRenderOutput(_:) // method 
+	0x3e1170  func Renderer.setRenderOutput(_:) // method 
+	0x3e11d0  func Renderer.passEncoder(_:) // method 
+	0x3e16e0  func Renderer.canReuseEncoder(_:) // method 
+	0x3e1a30  func Renderer.makeAsyncCommandBuffer(label:) // method 
+	0x3e1d40  func Renderer.endEncoderIfNeeded() // method 
+	0x3e21a0  func Renderer.makeRenderEncoderIfNeeded(parallel:_:_:) // method 
+	0x3e2700  func Renderer.makeBlitEncoderIfNeeded(label:) // method 
+	0x3e2720  func Renderer.makeComputeEncoderIfNeeded(label:) // method 
+	0x3e28a0  func Renderer.doCompute(_:body:) // method 
+	0x3de160  class func Renderer.__allocating_init(device:commandQueue:) // init 
+	0x3e3150  func Renderer.refreshRenderOutputList() // method 
+	0x3e31b0  func Renderer.pushDebugGroup(_:) // method 
+	0x3e3260  func Renderer.popDebugGroup() // method 
+	0x3e3280  func Renderer.beginRenderOutput(with:commandBuffer:) // method 
+	0x3e36e0  func Renderer.endRenderOutput() // method 
+	0x3e3cb0  func Renderer.renderOutputSize.getter // getter 
+	0x3e3d90  func Renderer.renderOutputMaxMipmapLevel.getter // getter 
+	0x3e3de0  func Renderer.renderOutputTextureDescriptor() // method 
+	0x3e3e50  func Renderer.get(colorRamp:) // method 
+	0x3e4290  func Renderer.getStripBuffer(count:stripCount:restart:) // method 
  }
 
  struct VFXCore.RendererInstance {
@@ -10742,9 +10740,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var restart : Wx // +0x0
+	var restart : áy // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var stride : Wx // +0x4
+	var stride : áy // +0x4
  }
 
  struct VFXCore.RenderPassDescriptor {
@@ -10763,7 +10761,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var loadAction : MTLLoadAction // +0x10
 	var storeAction : MTLStoreAction // +0x18
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var clearValue : Ã // +0x20
+	var clearValue : 7Õ // +0x20
 	var mipLevel : Int // +0x30
  }
 
@@ -10801,7 +10799,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var asset : èY
+	var asset : øZ
  }
 
  struct VFXCore.SceneKitAssetInstance {
@@ -10853,13 +10851,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var entityManager : EntityManager // +0x0
 	var gpuDevice : unowned(unsafe) MTLDevice? // +0x0
-	let compileQueue : OS_dispatch_queue // +0x407a20
+	let compileQueue : OS_dispatch_queue // +0x407a00
 	var lock : UnfairLock // +0x0
-	var pendingCompilationStatuses : CompilationHandle // +0x405730
+	var pendingCompilationStatuses : CompilationHandle // +0x405710
 	var cachedBuildResults : CompilationHandle // +0x0
 
 	// Swift methods
-	0x3f0e30  class func ScriptBuilderSystem.__allocating_init() // init 
+	0x3f0e10  class func ScriptBuilderSystem.__allocating_init() // init 
  }
 
  struct VFXCore.CachedBuildResults {
@@ -10925,11 +10923,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var instanceCount : Int // +0x48
 	var instanceOffset : Int // +0x50
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var viewportCount : ˝ˇ // +0x58
+	var viewportCount : - // +0x58
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var stencilReferenceValueFront : Wx // +0x5c
+	var stencilReferenceValueFront : áy // +0x5c
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var stencilReferenceValueBack : Wx // +0x60
+	var stencilReferenceValueBack : áy // +0x60
 	var vertexLayout : VertexLayout // +0x68
 	var winding : MTLWinding // +0x70
 	var cullMode : MTLCullMode // +0x78
@@ -10951,19 +10949,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var entityManager : EntityManager
 	var isMenuItemEnabled : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var showWindowShortcutKeycode : QÌ
+	var showWindowShortcutKeycode : ÅÓ
 	var builderSystem : ScriptBuilderSystem
 	var hasBegunWindow : Bool
 	var showGeneratedCode : Bool
 	var substitutingPercents : Bool
 	var showAll : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var buildDylibsError : GP
+	var buildDylibsError : wQ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var loadDylibsError : GP
+	var loadDylibsError : wQ
 
 	// Swift methods
-	0x40ad40  class func ScriptManagerDebugSystem.__allocating_init() // init 
+	0x40ad20  class func ScriptManagerDebugSystem.__allocating_init() // init 
  }
 
  struct VFXCore.FrameStatisticsUIState {
@@ -10980,7 +10978,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var semanticColors :  empty-list  // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sortedLanes : ; // +0x38
+	var sortedLanes : k // +0x38
 	var activeLanesWithColor : Counter // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var enabledGraphs :  empty-list  // +0x48
@@ -10999,11 +10997,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var isMenuItemEnabled : Bool
 	let isMenuItemBoundToEnabled : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	let showWindowShortcutKeycode : QÌ
+	let showWindowShortcutKeycode : ÅÓ
 	let showWindowShortcutModifier : Modifiers
 
 	// Swift methods
-	0x40fe30  class func StatisticsUISystem.__allocating_init() // init 
+	0x40fe10  class func StatisticsUISystem.__allocating_init() // init 
  }
 
  class VFXCore.CompositeSystem : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -11043,7 +11041,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var recompileHashValue : Int?
 	var diagnostics : String
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var error : GP
+	var error : wQ
 	var didFinish : Bool
  }
 
@@ -11218,7 +11216,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uid : ÁÏ
+	var uid : Ó
  }
 
  struct VFXCore.DoNotSave { }
@@ -11285,7 +11283,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var projectName : String?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uuid : ÁÏ
+	var uuid : Ó
 	var version : Int
 	var versionHistory : Set<Int>
  }
@@ -11299,8 +11297,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var dumpREMaterials : Bool
 
 	// Swift methods
-	0x448710  class func VFXSaver.__allocating_init(entityManager:runtimeEntityManager:) // init 
-	0x4488a0  func VFXSaver.save(projectName:documentUUID:versionHistory:) // method 
+	0x4485d0  class func VFXSaver.__allocating_init(entityManager:runtimeEntityManager:) // init 
+	0x448760  func VFXSaver.save(projectName:documentUUID:versionHistory:) // method 
  }
 
  class VFXCore.VFXLoader : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -11308,38 +11306,38 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var fileWrapper : NSFileWrapper?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var url : ﬂ
+	var url : E‡
 	var loadScripts : Bool
 	var throwOnScriptLoadingFailure : Bool
 	var isLoadingForAuthoring : Bool
 	var allowLoadingEffectFromTheFuture : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var loadWarning : GP
+	var loadWarning : wQ
 
 	// Swift methods
-	0x44aae0  func VFXLoader.fileWrapper.getter // getter 
-	0x44ab00  func VFXLoader.fileWrapper.setter // setter 
-	0x44ab20  func VFXLoader.fileWrapper.modify // modifyCoroutine 
-	0x44ab50  func VFXLoader.url.getter // getter 
-	0x44ab80  func VFXLoader.url.setter // setter 
-	0x44abb0  func VFXLoader.url.modify // modifyCoroutine 
-	0x44abe0  func VFXLoader.loadScripts.getter // getter 
-	0x44ac00  func VFXLoader.loadScripts.setter // setter 
-	0x44ac20  func VFXLoader.loadScripts.modify // modifyCoroutine 
-	0x44ac50  func VFXLoader.throwOnScriptLoadingFailure.getter // getter 
-	0x44ac70  func VFXLoader.throwOnScriptLoadingFailure.setter // setter 
-	0x44ac90  func VFXLoader.throwOnScriptLoadingFailure.modify // modifyCoroutine 
-	0x44acc0  func VFXLoader.isLoadingForAuthoring.getter // getter 
-	0x44ace0  func VFXLoader.isLoadingForAuthoring.setter // setter 
-	0x44ad00  func VFXLoader.isLoadingForAuthoring.modify // modifyCoroutine 
-	0x44ad30  func VFXLoader.allowLoadingEffectFromTheFuture.getter // getter 
-	0x44ad50  func VFXLoader.allowLoadingEffectFromTheFuture.setter // setter 
-	0x44ad70  func VFXLoader.allowLoadingEffectFromTheFuture.modify // modifyCoroutine 
-	0x44ada0  func VFXLoader.loadWarning.getter // getter 
-	0x44add0  func VFXLoader.loadWarning.setter // setter 
-	0x44adf0  func VFXLoader.loadWarning.modify // modifyCoroutine 
-	0x42f670  class func VFXLoader.__allocating_init(fileWrapper:url:) // init 
-	0x44aef0  func VFXLoader.load(into:delegate:) // method 
+	0x44a9a0  func VFXLoader.fileWrapper.getter // getter 
+	0x44a9c0  func VFXLoader.fileWrapper.setter // setter 
+	0x44a9e0  func VFXLoader.fileWrapper.modify // modifyCoroutine 
+	0x44aa10  func VFXLoader.url.getter // getter 
+	0x44aa40  func VFXLoader.url.setter // setter 
+	0x44aa70  func VFXLoader.url.modify // modifyCoroutine 
+	0x44aaa0  func VFXLoader.loadScripts.getter // getter 
+	0x44aac0  func VFXLoader.loadScripts.setter // setter 
+	0x44aae0  func VFXLoader.loadScripts.modify // modifyCoroutine 
+	0x44ab10  func VFXLoader.throwOnScriptLoadingFailure.getter // getter 
+	0x44ab30  func VFXLoader.throwOnScriptLoadingFailure.setter // setter 
+	0x44ab50  func VFXLoader.throwOnScriptLoadingFailure.modify // modifyCoroutine 
+	0x44ab80  func VFXLoader.isLoadingForAuthoring.getter // getter 
+	0x44aba0  func VFXLoader.isLoadingForAuthoring.setter // setter 
+	0x44abc0  func VFXLoader.isLoadingForAuthoring.modify // modifyCoroutine 
+	0x44abf0  func VFXLoader.allowLoadingEffectFromTheFuture.getter // getter 
+	0x44ac10  func VFXLoader.allowLoadingEffectFromTheFuture.setter // setter 
+	0x44ac30  func VFXLoader.allowLoadingEffectFromTheFuture.modify // modifyCoroutine 
+	0x44ac60  func VFXLoader.loadWarning.getter // getter 
+	0x44ac90  func VFXLoader.loadWarning.setter // setter 
+	0x44acb0  func VFXLoader.loadWarning.modify // modifyCoroutine 
+	0x42f530  class func VFXLoader.__allocating_init(fileWrapper:url:) // init 
+	0x44adb0  func VFXLoader.load(into:delegate:) // method 
  }
 
  enum VFXCore.CodingKeys {
@@ -11366,7 +11364,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var url : ﬂ // +0x0 (0x0)
+	var url : E‡ // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	var assets : String // +0x0 (0x8)
 
@@ -11379,19 +11377,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var containers : AssetContainer
 
 	// Swift methods
-	0x45a970  class func AssetManager.__allocating_init() // init 
-	0x45ad40  func AssetManager.emptyContainer(_:) // method 
-	0x45aef0  func AssetManager.removeContainer(_:) // method 
-	0x45afe0  func AssetManager.removeAllContainers() // method 
-	0x45b010  func AssetManager.createContainer(name:url:) // method 
-	0x45b140  func AssetManager.containerURL(name:) // method 
-	0x45b230  func AssetManager.setContainerURL(name:url:) // method 
-	0x45b2e0  func AssetManager.assets(in:) // method 
-	0x45b430  func AssetManager.asset(in:path:) // method 
-	0x45b610  func AssetManager.newAsset(in:path:) // method 
-	0x45b870  func AssetManager.removeAsset(asset:) // method 
-	0x45b970  func AssetManager.addAsset(asset:) // method 
-	0x45bad0  func AssetManager.assetURL(asset:) // method 
+	0x45a830  class func AssetManager.__allocating_init() // init 
+	0x45ac00  func AssetManager.emptyContainer(_:) // method 
+	0x45adb0  func AssetManager.removeContainer(_:) // method 
+	0x45aea0  func AssetManager.removeAllContainers() // method 
+	0x45aed0  func AssetManager.createContainer(name:url:) // method 
+	0x45b000  func AssetManager.containerURL(name:) // method 
+	0x45b0f0  func AssetManager.setContainerURL(name:url:) // method 
+	0x45b1a0  func AssetManager.assets(in:) // method 
+	0x45b2f0  func AssetManager.asset(in:path:) // method 
+	0x45b4d0  func AssetManager.newAsset(in:path:) // method 
+	0x45b730  func AssetManager.removeAsset(asset:) // method 
+	0x45b830  func AssetManager.addAsset(asset:) // method 
+	0x45b990  func AssetManager.assetURL(asset:) // method 
  }
 
  struct VFXCore.AssetManagerInstance {
@@ -11431,9 +11429,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var count : Int // +0x28
 	var dataType : MTLDataType // +0x30
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var min : Ã // +0x40
+	var min : 7Õ // +0x40
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var max : Ã // +0x50
+	var max : 7Õ // +0x50
  }
 
  struct VFXCore.MeshPart {
@@ -11454,45 +11452,45 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var attributes : FixedArray8
 
 	// Swift methods
-	0x45c560  class func VertexLayout.__allocating_init() // init 
-	0x45db30  func VertexLayout.hasNormals.getter // getter 
-	0x45db40  func VertexLayout.hasTangents.getter // getter 
-	0x45db50  func VertexLayout.hasColors.getter // getter 
-	0x45db60  func VertexLayout.hasUV0.getter // getter 
-	0x45db70  func VertexLayout.hasUV1.getter // getter 
-	0x45db80  func VertexLayout.hasWeights.getter // getter 
-	0x45dba0  func VertexLayout.hasJoints.getter // getter 
-	0x45dbc0  func VertexLayout.fillDescriptor(descriptor:) // method 
-	0x45ea00  func VertexLayout.attributesCount.getter // getter 
-	0x45ee90  func VertexLayout.buffersCount.getter // getter 
-	0x45f3a0  func VertexLayout.buffers.getter // getter 
-	0x45f3f0  func VertexLayout.buffers.setter // setter 
-	0x45f440  func VertexLayout.buffers.modify // modifyCoroutine 
-	0x45f470  func VertexLayout.attributes.getter // getter 
-	0x45f4c0  func VertexLayout.attributes.setter // setter 
-	0x45f510  func VertexLayout.attributes.modify // modifyCoroutine 
+	0x45c420  class func VertexLayout.__allocating_init() // init 
+	0x45d9f0  func VertexLayout.hasNormals.getter // getter 
+	0x45da00  func VertexLayout.hasTangents.getter // getter 
+	0x45da10  func VertexLayout.hasColors.getter // getter 
+	0x45da20  func VertexLayout.hasUV0.getter // getter 
+	0x45da30  func VertexLayout.hasUV1.getter // getter 
+	0x45da40  func VertexLayout.hasWeights.getter // getter 
+	0x45da60  func VertexLayout.hasJoints.getter // getter 
+	0x45da80  func VertexLayout.fillDescriptor(descriptor:) // method 
+	0x45e8c0  func VertexLayout.attributesCount.getter // getter 
+	0x45ed50  func VertexLayout.buffersCount.getter // getter 
+	0x45f260  func VertexLayout.buffers.getter // getter 
+	0x45f2b0  func VertexLayout.buffers.setter // setter 
+	0x45f300  func VertexLayout.buffers.modify // modifyCoroutine 
+	0x45f330  func VertexLayout.attributes.getter // getter 
+	0x45f380  func VertexLayout.attributes.setter // setter 
+	0x45f3d0  func VertexLayout.attributes.modify // modifyCoroutine 
  }
 
  struct VFXCore.Buffer {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _stride : Wx // +0x0
+	var _stride : áy // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _stepRate : ≈ò // +0x4
+	var _stepRate : ıô // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _stepFunction : ≈ò // +0x6
+	var _stepFunction : ıô // +0x6
  }
 
  struct VFXCore.Attribute {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _offset : Wx // +0x0
+	var _offset : áy // +0x0
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _format : ≈ò // +0x4
+	var _format : ıô // +0x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _bufferIndex : ≈ò // +0x6
+	var _bufferIndex : ıô // +0x6
  }
 
  class VFXCore.AttributeTable : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -11509,16 +11507,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var vertexCount : Int // +0x128 (0x8)
 
 	// Swift methods
-	0x45c340  class func Mesh.__allocating_init() // init 
-	0x461450  func Mesh.layout.getter // getter 
-	0x461460  func Mesh.layout.setter // setter 
-	0x461480  func Mesh.layout.modify // modifyCoroutine 
-	0x4614b0  func Mesh.buffers.getter // getter 
-	0x461610  func Mesh.buffers.setter // setter 
-	0x4616c0  func Mesh.buffers.modify // modifyCoroutine 
-	0x4616f0  func Mesh.parts.getter // getter 
-	0x461710  func Mesh.parts.setter // setter 
-	0x461730  func Mesh.parts.modify // modifyCoroutine 
+	0x45c200  class func Mesh.__allocating_init() // init 
+	0x461310  func Mesh.layout.getter // getter 
+	0x461320  func Mesh.layout.setter // setter 
+	0x461340  func Mesh.layout.modify // modifyCoroutine 
+	0x461370  func Mesh.buffers.getter // getter 
+	0x4614d0  func Mesh.buffers.setter // setter 
+	0x461580  func Mesh.buffers.modify // modifyCoroutine 
+	0x4615b0  func Mesh.parts.getter // getter 
+	0x4615d0  func Mesh.parts.setter // setter 
+	0x4615f0  func Mesh.parts.modify // modifyCoroutine 
  }
 
  class VFXCore.CodeSnippet : CodeGeneration.BaseObject {
@@ -11558,7 +11556,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case failure : ˇ…
+	case failure : /À
 	case inProgress  
 	case success  
  }
@@ -11601,31 +11599,31 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var writeMask : MTLColorWriteMask
 
 	// Swift methods
-	0x467ab0  func Material.winding.getter // getter 
-	0x467ac0  func Material.winding.setter // setter 
-	0x467ad0  func Material.winding.modify // modifyCoroutine 
-	0x467b00  func Material.cullMode.getter // getter 
-	0x467b10  func Material.cullMode.setter // setter 
-	0x467b20  func Material.cullMode.modify // modifyCoroutine 
-	0x467b50  func Material.depthStencilState.getter // getter 
-	0x467b60  func Material.depthStencilState.setter // setter 
-	0x467b80  func Material.depthStencilState.modify // modifyCoroutine 
-	0x467bb0  func Material.blendMode.getter // getter 
-	0x467bd0  func Material.blendMode.setter // setter 
-	0x467bf0  func Material.blendMode.modify // modifyCoroutine 
-	0x467c20  func Material.topology.getter // getter 
-	0x467c30  func Material.topology.setter // setter 
-	0x467c40  func Material.topology.modify // modifyCoroutine 
-	0x467c70  func Material.writeMask.getter // getter 
-	0x467c80  func Material.writeMask.setter // setter 
-	0x467c90  func Material.writeMask.modify // modifyCoroutine 
-	0x4683f0  func Material.vertexShaderName.getter // getter 
-	0x468410  func Material.fragmentShaderName.getter // getter 
-	0x468420  func Material.functionConstants(_:renderContext:) // method 
-	0x467cc0  func Material.encodeStates(into:) // method 
-	0x468430  func Material.encode(into:vertexLayout:renderContext:) // method 
-	0x467d50  func Material.prepareDrawCallInternal(_:vertexLayout:renderPassFormat:renderContext:) // method 
-	0x4679b0  func Material.prepareDrawCall(_:mesh:renderContext:) // method 
+	0x467970  func Material.winding.getter // getter 
+	0x467980  func Material.winding.setter // setter 
+	0x467990  func Material.winding.modify // modifyCoroutine 
+	0x4679c0  func Material.cullMode.getter // getter 
+	0x4679d0  func Material.cullMode.setter // setter 
+	0x4679e0  func Material.cullMode.modify // modifyCoroutine 
+	0x467a10  func Material.depthStencilState.getter // getter 
+	0x467a20  func Material.depthStencilState.setter // setter 
+	0x467a40  func Material.depthStencilState.modify // modifyCoroutine 
+	0x467a70  func Material.blendMode.getter // getter 
+	0x467a90  func Material.blendMode.setter // setter 
+	0x467ab0  func Material.blendMode.modify // modifyCoroutine 
+	0x467ae0  func Material.topology.getter // getter 
+	0x467af0  func Material.topology.setter // setter 
+	0x467b00  func Material.topology.modify // modifyCoroutine 
+	0x467b30  func Material.writeMask.getter // getter 
+	0x467b40  func Material.writeMask.setter // setter 
+	0x467b50  func Material.writeMask.modify // modifyCoroutine 
+	0x4682b0  func Material.vertexShaderName.getter // getter 
+	0x4682d0  func Material.fragmentShaderName.getter // getter 
+	0x4682e0  func Material.functionConstants(_:renderContext:) // method 
+	0x467b80  func Material.encodeStates(into:) // method 
+	0x4682f0  func Material.encode(into:vertexLayout:renderContext:) // method 
+	0x467c10  func Material.prepareDrawCallInternal(_:vertexLayout:renderPassFormat:renderContext:) // method 
+	0x467870  func Material.prepareDrawCall(_:mesh:renderContext:) // method 
  }
 
  class VFXCore.CustomMaterial : Material {
@@ -11637,79 +11635,79 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	let functionConstants : FunctionConstant // +0x70 (0x8)
 
 	// Swift methods
-	0x4677d0  class func CustomMaterial.__allocating_init(vertexShader:fragmentShader:depthStencilState:fragmentTextureBindings:functionConstants:) // init 
+	0x467690  class func CustomMaterial.__allocating_init(vertexShader:fragmentShader:depthStencilState:fragmentTextureBindings:functionConstants:) // init 
  }
 
  class VFXCore.SpriteMaterial : Material {
 	// Swift methods
-	0x467870  class func SpriteMaterial.__allocating_init() // init 
+	0x467730  class func SpriteMaterial.__allocating_init() // init 
  }
 
  struct __C.os_unfair_lock_s {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _os_unfair_lock_opaque : Wx
+	var _os_unfair_lock_opaque : áy
  }
 
  struct __C._Sampler3D {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dimensions : YÃ
+	var dimensions : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var edges : OÃ
+	var edges : Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cellStrideBytes : OÃ
+	var cellStrideBytes : Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var outsideRepeatStrideBytes : OÃ
+	var outsideRepeatStrideBytes : Õ
 	var data : UnsafeMutableRawPointer?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sample_func : ´Ã
+	var sample_func : €Õ
  }
 
  struct __C._Sampler2D {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dimensions : uÃ
+	var dimensions : •Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var edges : kÃ
+	var edges : õÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cellStrideBytes : kÃ
+	var cellStrideBytes : õÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var outsideRepeatStrideBytes : kÃ
+	var outsideRepeatStrideBytes : õÕ
 	var data : UnsafeMutableRawPointer
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sample_func : ÒÃ
+	var sample_func : !Œ
  }
 
  struct __C.simd_double4x4 {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var columns : #Õ
+	var columns : SŒ
  }
 
  struct __C.simd_double3x3 {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var columns : …Ã
+	var columns : ˘Õ
  }
 
  struct __C.simd_float4x4 {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var columns : OÕ
+	var columns : Œ
  }
 
  struct __C.simd_float3x3 {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var columns : ıÃ
+	var columns : %Œ
  }
 
  struct __C.MTLColorWriteMask {
@@ -11734,16 +11732,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _os_unfair_lock_opaque : Wx
+	var _os_unfair_lock_opaque : áy
  }
 
  struct __C.CGSize {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var width : 	˙
+	var width : 9˚
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var height : 	˙
+	var height : 9˚
  }
 
  enum __C.MTLHazardTrackingMode { }
@@ -11804,45 +11802,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var columns : ıÃ
+	var columns : %Œ
  }
 
  struct __C.simd_float4x4 {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var columns : OÕ
+	var columns : Œ
  }
 
  struct __C.simd_quatf {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var vector : Ã
- }
-
- struct __C._Sampler1D {
-
-	// Properties
-	var dimensions : Float
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var edges : ΩÈ
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cellStrideBytes : ΩÈ
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var outsideRepeatStrideBytes : ΩÈ
-	var data : UnsafeMutableRawPointer
-WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sample_func : a≈
+	var vector : 7Õ
  }
 
  struct __C.VoxelDebug {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var boxMin : YÃ
+	var boxMin : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var boxMax : YÃ
+	var boxMax : âÕ
 	var cutSlice : Float
 	var fullOccluderOnly : Bool
 	var precomputedGI : Bool
@@ -11873,7 +11856,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var softDistance : Float
 	var stretchFactor : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var upAxis : YÃ
+	var upAxis : âÕ
 	var thickness : Float
 	var scale : Float
 	var intensity : Float
@@ -11902,18 +11885,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rect : Ã
+	var rect : 7Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fillColor : Ã
+	var fillColor : 7Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var strokeColor : Ã
+	var strokeColor : 7Õ
 	var strokeWidth : Float
 	var cornerRadius : Float
 	var shadowSigma : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var shadowColor : Ã
+	var shadowColor : 7Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var shadowOffset : uÃ
+	var shadowOffset : •Õ
  }
 
  struct __C.particle_plane_collider_uniforms {
@@ -11923,19 +11906,19 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var elasticity : Float
 	var friction : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var plane_ws : Ã
+	var plane_ws : 7Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var old_plane_ws : Ã
+	var old_plane_ws : 7Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var plane_center_ws : YÃ
+	var plane_center_ws : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var old_plane_center_ws : YÃ
+	var old_plane_center_ws : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var plane_u_ws : YÃ
+	var plane_u_ws : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var plane_v_ws : YÃ
+	var plane_v_ws : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var plane_half_extents : uÃ
+	var plane_half_extents : •Õ
  }
 
  struct __C.particle_sphere_collider_uniforms {
@@ -11945,9 +11928,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var elasticity : Float
 	var friction : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sphere_ws : Ã
+	var sphere_ws : 7Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var old_sphere_ws : Ã
+	var old_sphere_ws : 7Õ
  }
 
  struct __C.particle_aabb_collider_uniforms {
@@ -11957,11 +11940,11 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var elasticity : Float
 	var friction : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var box_center_ws : YÃ
+	var box_center_ws : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var old_box_center_ws : YÃ
+	var old_box_center_ws : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var box_half_extents : YÃ
+	var box_half_extents : âÕ
  }
 
  struct __C.particle_obb_collider_uniforms {
@@ -11971,7 +11954,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var elasticity : Float
 	var friction : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var world_box_velocity : YÃ
+	var world_box_velocity : âÕ
 	var local_from_world : simd_float4x4
 	var world_from_local : simd_float4x4
 	var inside : Bool
@@ -11983,18 +11966,18 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var count : Wx
+	var count : áy
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dword_stride : ΩÈ
+	var dword_stride : ÌÍ
  }
 
  struct __C.particle_update_active_count_uniforms {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var newly_added_count : ΩÈ
+	var newly_added_count : ÌÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var allocated_count : ΩÈ
+	var allocated_count : ÌÍ
  }
 
  struct __C.update_uniforms {
@@ -12028,7 +12011,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var world_force : YÃ
+	var world_force : âÕ
  }
 
  struct __C.particle_textureframe_evolution_uniforms {
@@ -12060,7 +12043,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var columns : +∆
+	var columns : 9«
  }
 
  struct __C.SDFGeneratorUniforms {
@@ -12068,23 +12051,23 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var threshold : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var jfaOffset : ΩÈ
+	var jfaOffset : ÌÍ
  }
 
  struct __C.IBLSpecularUniforms {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var mipLevel : Wx
+	var mipLevel : áy
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var samplesPerTexel : Wx
+	var samplesPerTexel : áy
  }
 
  struct __C.IBLDiffuseUniforms {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var samplesPerTexel : Wx
+	var samplesPerTexel : áy
  }
 
  struct __C.LoadingOption {
@@ -12094,47 +12077,62 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
  }
 
  class __C.CGColorSpace {
+ struct __C._Sampler1D {
+
+	// Properties
+	var dimensions : Float
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var edges : ÌÍ
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var cellStrideBytes : ÌÍ
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var outsideRepeatStrideBytes : ÌÍ
+	var data : UnsafeMutableRawPointer
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var sample_func : Å«
+ }
+
  struct __C._Sampler2D {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dimensions : uÃ
+	var dimensions : •Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var edges : kÃ
+	var edges : õÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cellStrideBytes : kÃ
+	var cellStrideBytes : õÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var outsideRepeatStrideBytes : kÃ
+	var outsideRepeatStrideBytes : õÕ
 	var data : UnsafeMutableRawPointer
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sample_func : ÒÃ
+	var sample_func : !Œ
  }
 
  struct __C._Sampler3D {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dimensions : YÃ
+	var dimensions : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var edges : OÃ
+	var edges : Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cellStrideBytes : OÃ
+	var cellStrideBytes : Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var outsideRepeatStrideBytes : OÃ
+	var outsideRepeatStrideBytes : Õ
 	var data : UnsafeMutableRawPointer?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sample_func : ´Ã
+	var sample_func : €Õ
  }
 
  struct __C.ScatteringDataUniforms {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nbIte : ΩÈ
+	var nbIte : ÌÍ
 	var quality : Float
 	var ambientFactor : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var extinction : YÃ
+	var extinction : âÕ
 	var g0 : Float
 	var g1 : Float
 	var gw : Float
@@ -12144,16 +12142,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var directionalsCount : Wx
+	var directionalsCount : áy
  }
 
  struct __C.directional_light_data {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var direction : YÃ
+	var direction : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var color : YÃ
+	var color : âÕ
 	var shadow : Bool
  }
 
@@ -12163,10 +12161,10 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var diffuseStep : ΩÈ
+	var diffuseStep : ÌÍ
 	var diffuseQuality : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var specularStep : ΩÈ
+	var specularStep : ÌÍ
 	var specularQuality : Float
 	var ao_falloff : Float
  }
@@ -12175,33 +12173,33 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var pos_radius : Ã
+	var pos_radius : 7Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var invRes : uÃ
+	var invRes : •Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var extinction : YÃ
+	var extinction : âÕ
  }
 
  struct __C.VoxelDataUniforms {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var resolution : ΩÈ
+	var resolution : ÌÍ
 	var edgeAtt : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var worldPosSize : Ã
+	var worldPosSize : 7Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scaleBiasNrm : Ã
+	var scaleBiasNrm : 7Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var scaleBiasTex : Ã
+	var scaleBiasTex : 7Õ
 	var worldCellSize : Float
 	var invWorldCellSize : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var opacityScaleBias : uÃ
+	var opacityScaleBias : •Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var colorScaleBias : uÃ
+	var colorScaleBias : •Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var frameCount : ΩÈ
+	var frameCount : ÌÍ
  }
 
  struct __C.CompositeUniforms {
@@ -12215,15 +12213,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var vignettingRadius : Float
 	var exposure : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var whiteBalance : YÃ
+	var whiteBalance : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lift : YÃ
+	var lift : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var gamma : YÃ
+	var gamma : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var gain : YÃ
+	var gain : âÕ
 	var contrast : Float
 	var saturation : Float
+	var lensBlurKernelRadius : Float
 	var screenRatio : Float
  }
 
@@ -12232,6 +12231,8 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var radius : Float
 	var coefs : simd_float3x2
+WARNING: couldn't find address 0x0 (0x0) in binary!
+	var kernelRadius : ÌÍ
  }
 
  struct __C.BloomColorGradingUniforms {
@@ -12239,7 +12240,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var intensity : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var colorFilter : YÃ
+	var colorFilter : âÕ
 	var contrast : Float
 	var saturation : Float
  }
@@ -12248,25 +12249,25 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var instructionCount : ΩÈ
+	var instructionCount : ÌÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fp16InstructionCount : ΩÈ
+	var fp16InstructionCount : ÌÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var fp32InstructionCount : ΩÈ
+	var fp32InstructionCount : ÌÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var int16InstructionCount : ΩÈ
+	var int16InstructionCount : ÌÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var int32InstructionCount : ΩÈ
+	var int32InstructionCount : ÌÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var waitInstructionCount : ΩÈ
+	var waitInstructionCount : ÌÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var registerCount : ΩÈ
+	var registerCount : ÌÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var tempRegisterCount : ΩÈ
+	var tempRegisterCount : ÌÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var deviceLoad : ΩÈ
+	var deviceLoad : ÌÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var deviceStore : ΩÈ
+	var deviceStore : ÌÍ
  }
 
  struct __C.MTLSize {
@@ -12289,16 +12290,16 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var crInverseViewProjectionMatrix : simd_float4x4
 	var cameraMatrix : simd_float4x4
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cameraPos : YÃ
+	var cameraPos : âÕ
 	var cameraSettings : CameraSettings
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ndcFromScreen : Ã
+	var ndcFromScreen : 7Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var drawableSize : Ã
+	var drawableSize : 7Õ
 	var dt : Float
 	var time : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var nearFar : uÃ
+	var nearFar : •Õ
  }
 
  enum __C.MTLIndexType { }
@@ -12307,7 +12308,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uvScaleBias : Ã
+	var uvScaleBias : 7Õ
 	var intensity : Float
  }
 
@@ -12315,9 +12316,9 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var intensity : Ã
+	var intensity : 7Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var uvScaleBias : Ã
+	var uvScaleBias : 7Õ
  }
 
  struct __C.composition_t {
@@ -12325,14 +12326,14 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var factor : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var operation : +¸
+	var operation : [˝
  }
 
  struct __C.simd_float3x2 {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var columns : 3ƒ
+	var columns : c≈
  }
 
  enum __C.MTLBlendFactor { }
@@ -12362,13 +12363,13 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var StartPosY : Float
 	var ItemsHeight : Float
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var ItemsCount : ΩÈ
+	var ItemsCount : ÌÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var StepNo : ΩÈ
+	var StepNo : ÌÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var DisplayStart : ΩÈ
+	var DisplayStart : ÌÍ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var DisplayEnd : ΩÈ
+	var DisplayEnd : ÌÍ
  }
 
  struct __C._ImGUIRenderContext {
@@ -12376,7 +12377,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var imgui : UnsafeMutableRawPointer
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var metal : ‰
+	var metal : AÂ
 	var font : UnsafeMutableRawPointer
  }
 
@@ -12384,67 +12385,67 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _os_unfair_lock_opaque : Wx
+	var _os_unfair_lock_opaque : áy
  }
 
  struct __C.simd_quatf {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var vector : Ã
+	var vector : 7Õ
  }
 
  struct __C.OSLogType {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var rawValue : ˝ˇ
+	var rawValue : -
  }
 
  struct __C._Sampler3D {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dimensions : YÃ
+	var dimensions : âÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var edges : OÃ
+	var edges : Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cellStrideBytes : OÃ
+	var cellStrideBytes : Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var outsideRepeatStrideBytes : OÃ
+	var outsideRepeatStrideBytes : Õ
 	var data : UnsafeMutableRawPointer?
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sample_func : ´Ã
+	var sample_func : €Õ
  }
 
  struct __C._Sampler2D {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var dimensions : uÃ
+	var dimensions : •Õ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var edges : kÃ
+	var edges : õÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var cellStrideBytes : kÃ
+	var cellStrideBytes : õÕ
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var outsideRepeatStrideBytes : kÃ
+	var outsideRepeatStrideBytes : õÕ
 	var data : UnsafeMutableRawPointer
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var sample_func : ÒÃ
+	var sample_func : !Œ
  }
 
  struct __C.simd_float4x4 {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var columns : OÕ
+	var columns : Œ
  }
 
  struct __C.simd_float3x3 {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var columns : ıÃ
+	var columns : %Œ
  }
 
  class __C.CGColorSpace {
@@ -12476,58 +12477,58 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var remappingTable : Entity
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7363c00133fa8 (0x63c00133fa8) in binary!
-	0x736a8  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x73624001335c8 (0x624001335c8) in binary!
-	0x73690  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x65608001335a0 (0x608001335a0) in binary!
+WARNING: couldn't find address 0x7372c001340e0 (0x72c001340e0) in binary!
+	0x73798  @objc VFXREScene.(null) <stripped>
+WARNING: couldn't find address 0x73714001336f8 (0x714001336f8) in binary!
+	0x73780  @objc VFXREScene.(null) <stripped>
+WARNING: couldn't find address 0x65608001336d0 (0x608001336d0) in binary!
 	0x610b2  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x62a8800133578 (0x28800133578) in binary!
+WARNING: couldn't find address 0x62a88001336a8 (0x288001336a8) in binary!
 	0x610a8  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x62c9c00133550 (0x49c00133550) in binary!
-	0x71ce8  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x610a400133528 (0xa400133528) in binary!
-	0x71cd0  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x610a100133500 (0xa100133500) in binary!
+WARNING: couldn't find address 0x62c9c00133680 (0x49c00133680) in binary!
+	0x71d18  @objc VFXREScene.(null) <stripped>
+WARNING: couldn't find address 0x610a400133658 (0xa400133658) in binary!
+	0x71d00  @objc VFXREScene.(null) <stripped>
+WARNING: couldn't find address 0x610a100133630 (0xa100133630) in binary!
 	0x6109e  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x610a4001334d8 (0xa4001334d8) in binary!
-	0x73588  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x71c94001334b8 (0x494001334b8) in binary!
+WARNING: couldn't find address 0x610a400133608 (0xa400133608) in binary!
+	0x73678  @objc VFXREScene.(null) <stripped>
+WARNING: couldn't find address 0x71cc4001335e8 (0x4c4001335e8) in binary!
 	0x158000000c  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x62bd800133538 (0x3d800133538) in binary!
-	0x73558  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x62bc000133538 (0x3c000133538) in binary!
-	0x71c58  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x655f800133418 (0x5f800133418) in binary!
+WARNING: couldn't find address 0x62bd800133668 (0x3d800133668) in binary!
+	0x73648  @objc VFXREScene.(null) <stripped>
+WARNING: couldn't find address 0x62bc000133668 (0x3c000133668) in binary!
+	0x71c88  @objc VFXREScene.(null) <stripped>
+WARNING: couldn't find address 0x655f800133548 (0x5f800133548) in binary!
 	0x629b1  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x655e0001333f0 (0x5e0001333f0) in binary!
+WARNING: couldn't find address 0x655e000133520 (0x5e000133520) in binary!
 	0x62999  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x62998001333c8 (0x198001333c8) in binary!
-	0x6cecc  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x734ec001333a0 (0x4ec001333a0) in binary!
+WARNING: couldn't find address 0x62998001334f8 (0x198001334f8) in binary!
+	0x6cefc  @objc VFXREScene.(null) <stripped>
+WARNING: couldn't find address 0x735dc001334d0 (0x5dc001334d0) in binary!
 	0x6298d  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x71bec00133378 (0x3ec00133378) in binary!
+WARNING: couldn't find address 0x71c1c001334a8 (0x41c001334a8) in binary!
 	0x62980  @objc VFXREScene.(null) <stripped>
-WARNING: couldn't find address 0x6295000133350 (0x15000133350) in binary!
+WARNING: couldn't find address 0x6295000133480 (0x15000133480) in binary!
 	0x62980  @objc VFXREScene.(null) <stripped>
 
 	// Swift methods
-	0x26c0  func VFXREScene.scene.getter // getter 
-	0x2790  func VFXREScene.transientDrawCall.getter // getter 
-	0x27e0  func VFXREScene.transientDrawCall.setter // setter 
-	0x2850  func VFXREScene.transientDrawCall.modify // modifyCoroutine 
-	0x28a0  func VFXREScene.opaqueECS.getter // getter 
-	0x28f0  func VFXREScene.deltaTime.getter // getter 
-	0x2920  class func VFXREScene.__allocating_init(device:model:) // init 
-	0x2a10  class func VFXREScene.__allocating_init(device:contentsOf:) // init 
-	0x3670  func VFXREScene.generateMaterials() // method 
-	0x3b20  func VFXREScene.clear() // method 
-	0x3b60  func VFXREScene.copyBindingValue(objectName:bindingName:action:storageGetterBlock:) // method 
-	0x4410  func VFXREScene.tick() // method 
-	0x44f0  func VFXREScene.recycleBuffersGetCompletion() // method 
-	0x4620  func VFXREScene.setEntityTransform(_:_:_:_:) // method 
-	0x4790  func VFXREScene.setRootEntityTransform(_:_:_:) // method 
-	0x48b0  func VFXREScene.setCameraEntityTransformProjection(_:_:_:_:_:_:_:) // method 
+	0x2230  func VFXREScene.scene.getter // getter 
+	0x2300  func VFXREScene.transientDrawCall.getter // getter 
+	0x2350  func VFXREScene.transientDrawCall.setter // setter 
+	0x23c0  func VFXREScene.transientDrawCall.modify // modifyCoroutine 
+	0x2410  func VFXREScene.opaqueECS.getter // getter 
+	0x2460  func VFXREScene.deltaTime.getter // getter 
+	0x2490  class func VFXREScene.__allocating_init(device:model:) // init 
+	0x2580  class func VFXREScene.__allocating_init(device:contentsOf:) // init 
+	0x31e0  func VFXREScene.generateMaterials() // method 
+	0x3690  func VFXREScene.clear() // method 
+	0x36d0  func VFXREScene.copyBindingValue(objectName:bindingName:action:storageGetterBlock:) // method 
+	0x3f80  func VFXREScene.tick() // method 
+	0x4060  func VFXREScene.recycleBuffersGetCompletion() // method 
+	0x4190  func VFXREScene.setEntityTransform(_:_:_:_:) // method 
+	0x4300  func VFXREScene.setRootEntityTransform(_:_:_:) // method 
+	0x4420  func VFXREScene.setCameraEntityTransformProjection(_:_:_:_:_:_:_:) // method 
  }
 
  class VFX.VFXScene : NSObject /usr/lib/libobjc.A.dylib {
@@ -12536,68 +12537,68 @@ WARNING: couldn't find address 0x6295000133350 (0x15000133350) in binary!
 	let entityManager : EntityManager
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x62bd800133538 (0x3d800133538) in binary!
-	0x73558  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x62bc000133538 (0x3c000133538) in binary!
-	0x71c58  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x655f800133418 (0x5f800133418) in binary!
+WARNING: couldn't find address 0x62bd800133668 (0x3d800133668) in binary!
+	0x73648  @objc VFXScene.(null) <stripped>
+WARNING: couldn't find address 0x62bc000133668 (0x3c000133668) in binary!
+	0x71c88  @objc VFXScene.(null) <stripped>
+WARNING: couldn't find address 0x655f800133548 (0x5f800133548) in binary!
 	0x629b1  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x655e0001333f0 (0x5e0001333f0) in binary!
+WARNING: couldn't find address 0x655e000133520 (0x5e000133520) in binary!
 	0x62999  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x62998001333c8 (0x198001333c8) in binary!
-	0x6cecc  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x734ec001333a0 (0x4ec001333a0) in binary!
+WARNING: couldn't find address 0x62998001334f8 (0x198001334f8) in binary!
+	0x6cefc  @objc VFXScene.(null) <stripped>
+WARNING: couldn't find address 0x735dc001334d0 (0x5dc001334d0) in binary!
 	0x6298d  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x71bec00133378 (0x3ec00133378) in binary!
+WARNING: couldn't find address 0x71c1c001334a8 (0x41c001334a8) in binary!
 	0x62980  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x6295000133350 (0x15000133350) in binary!
+WARNING: couldn't find address 0x6295000133480 (0x15000133480) in binary!
 	0x62980  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x612e400133328 (0x2e400133328) in binary!
-	0x74108  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x6ce6000133300 (0x66000133300) in binary!
+WARNING: couldn't find address 0x612e400133458 (0x2e400133458) in binary!
+	0x741f8  @objc VFXScene.(null) <stripped>
+WARNING: couldn't find address 0x6ce9000133430 (0x69000133430) in binary!
 	0x62970  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x71b8c001333b0 (0x38c001333b0) in binary!
+WARNING: couldn't find address 0x71bbc001334e0 (0x3bc001334e0) in binary!
 	0xd8000000c  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x7345c00133390 (0x45c00133390) in binary!
-	0x73450  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x734bc00133370 (0x4bc00133370) in binary!
-	0x73438  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x734a400133350 (0x4a400133350) in binary!
-	0x6ec60  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x6299b00133330 (0x19b00133330) in binary!
-	0x6ec48  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x6298300133308 (0x18300133308) in binary!
+WARNING: couldn't find address 0x7354c001334c0 (0x54c001334c0) in binary!
+	0x73540  @objc VFXScene.(null) <stripped>
+WARNING: couldn't find address 0x735ac001334a0 (0x5ac001334a0) in binary!
+	0x73528  @objc VFXScene.(null) <stripped>
+WARNING: couldn't find address 0x7359400133480 (0x59400133480) in binary!
+	0x6ec90  @objc VFXScene.(null) <stripped>
+WARNING: couldn't find address 0x6299b00133460 (0x19b00133460) in binary!
+	0x6ec78  @objc VFXScene.(null) <stripped>
+WARNING: couldn't find address 0x6298300133438 (0x18300133438) in binary!
 	0x610fe  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x62891001332e0 (0x91001332e0) in binary!
+WARNING: couldn't find address 0x6289100133410 (0x9100133410) in binary!
 	0x610e6  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x62879001332b8 (0x79001332b8) in binary!
+WARNING: couldn't find address 0x62879001333e8 (0x79001333e8) in binary!
 	0x28000000c  @objc VFXScene.(null) <stripped>
-WARNING: couldn't find address 0x733b400133218 (0x3b400133218) in binary!
-	0x73420  @objc VFXScene.(null) <stripped>
+WARNING: couldn't find address 0x734a400133348 (0x4a400133348) in binary!
+	0x73510  @objc VFXScene.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x1d4ff93d990  @objc VFXScene.(null) <stripped>
-	0xff93da18  @objc VFXScene. <stripped>
+	0x304ff93d630  @objc VFXScene.(null) <stripped>
+	0xff93d6b8  @objc VFXScene.MÖÌÑÉ <stripped>
 
 	// Swift methods
-	0x7f30  class func VFXScene.__allocating_init(contentsOf:) // init 
-	0x86a0  func VFXScene.isPlaying.getter // getter 
-	0x86e0  func VFXScene.isPlaying.setter // setter 
-	0x8740  func VFXScene.isPlaying.modify // modifyCoroutine 
-	0x8ac0  func VFXScene.findBindingsByEntity() // method 
-	0x9af0  func VFXScene.binding(of:named:) // method 
-	0xa070  func VFXScene.firstBinding(named:) // method 
-	0xa5b0  func VFXScene.bindings.getter // getter 
-	0xae90  func VFXScene.update(deltaTime:) // method 
-	0xafd0  func VFXScene.restart() // method 
-	0xb020  func VFXScene.performTransaction(_:) // method 
-	0xb170  func VFXScene.parameter(of:named:) // method 
-	0xb3b0  func VFXScene.setParameter(of:named:_:) // method 
-	0xb5c0  func VFXScene.withParameter<A>(of:named:type:_:) // method 
-	0xb9a0  func VFXScene.withPointerToParameter(of:named:block:) // method 
-	0xbdd0  func VFXScene.setValue(_:atPath:) // method 
-	0xbf10  func VFXScene.value(atPath:) // method 
-	0xc0a0  func VFXScene.withValue<A>(atPath:type:_:) // method 
-	0xc350  func VFXScene.withPointerToValue(atPath:block:) // method 
+	0x7aa0  class func VFXScene.__allocating_init(contentsOf:) // init 
+	0x8210  func VFXScene.isPlaying.getter // getter 
+	0x8250  func VFXScene.isPlaying.setter // setter 
+	0x82b0  func VFXScene.isPlaying.modify // modifyCoroutine 
+	0x8630  func VFXScene.findBindingsByEntity() // method 
+	0x9660  func VFXScene.binding(of:named:) // method 
+	0x9be0  func VFXScene.firstBinding(named:) // method 
+	0xa120  func VFXScene.bindings.getter // getter 
+	0xaa00  func VFXScene.update(deltaTime:) // method 
+	0xab40  func VFXScene.restart() // method 
+	0xab90  func VFXScene.performTransaction(_:) // method 
+	0xace0  func VFXScene.parameter(of:named:) // method 
+	0xaf20  func VFXScene.setParameter(of:named:_:) // method 
+	0xb130  func VFXScene.withParameter<A>(of:named:type:_:) // method 
+	0xb510  func VFXScene.withPointerToParameter(of:named:block:) // method 
+	0xb940  func VFXScene.setValue(_:atPath:) // method 
+	0xba80  func VFXScene.value(atPath:) // method 
+	0xbc10  func VFXScene.withValue<A>(atPath:type:_:) // method 
+	0xbec0  func VFXScene.withPointerToValue(atPath:block:) // method 
  }
 
  class VFX.BindingImpl : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
@@ -12611,30 +12612,30 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var max : Double
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7345c00133390 (0x45c00133390) in binary!
-	0x73450  @objc BindingImpl.(null) <stripped>
-WARNING: couldn't find address 0x734bc00133370 (0x4bc00133370) in binary!
-	0x73438  @objc BindingImpl.(null) <stripped>
-WARNING: couldn't find address 0x734a400133350 (0x4a400133350) in binary!
-	0x6ec60  @objc BindingImpl.(null) <stripped>
-WARNING: couldn't find address 0x6299b00133330 (0x19b00133330) in binary!
-	0x6ec48  @objc BindingImpl.(null) <stripped>
-WARNING: couldn't find address 0x6298300133308 (0x18300133308) in binary!
+WARNING: couldn't find address 0x7354c001334c0 (0x54c001334c0) in binary!
+	0x73540  @objc BindingImpl.(null) <stripped>
+WARNING: couldn't find address 0x735ac001334a0 (0x5ac001334a0) in binary!
+	0x73528  @objc BindingImpl.(null) <stripped>
+WARNING: couldn't find address 0x7359400133480 (0x59400133480) in binary!
+	0x6ec90  @objc BindingImpl.(null) <stripped>
+WARNING: couldn't find address 0x6299b00133460 (0x19b00133460) in binary!
+	0x6ec78  @objc BindingImpl.(null) <stripped>
+WARNING: couldn't find address 0x6298300133438 (0x18300133438) in binary!
 	0x610fe  @objc BindingImpl.(null) <stripped>
-WARNING: couldn't find address 0x62891001332e0 (0x91001332e0) in binary!
+WARNING: couldn't find address 0x6289100133410 (0x9100133410) in binary!
 	0x610e6  @objc BindingImpl.(null) <stripped>
-WARNING: couldn't find address 0x62879001332b8 (0x79001332b8) in binary!
+WARNING: couldn't find address 0x62879001333e8 (0x79001333e8) in binary!
 	0x28000000c  @objc BindingImpl.(null) <stripped>
-WARNING: couldn't find address 0x733b400133218 (0x3b400133218) in binary!
-	0x73420  @objc BindingImpl.(null) <stripped>
+WARNING: couldn't find address 0x734a400133348 (0x4a400133348) in binary!
+	0x73510  @objc BindingImpl.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x1d4ff93d990  @objc BindingImpl.(null) <stripped>
-	0xff93da18  @objc BindingImpl. <stripped>
+	0x304ff93d630  @objc BindingImpl.(null) <stripped>
+	0xff93d6b8  @objc BindingImpl.MÖÌÑÉ <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x344ff93dab0  @objc BindingImpl.(null) <stripped>
-	0xff93da88  @objc BindingImpl.Hπ <stripped>
+	0x474ff93d750  @objc BindingImpl.(null) <stripped>
+	0xff93d728  @objc BindingImpl.ˇHâE†Lâ·Lã•˛ˇˇLã≠¯˛ˇˇHãù <stripped>
 WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
-	0x554ff93e530  @objc BindingImpl.(null) <stripped>
+	0x68cff93e1d0  @objc BindingImpl.(null) <stripped>
 
 	// Swift methods
  }
@@ -12648,12 +12649,12 @@ WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
 
  class VFX.comAppleVfxConfetti : VFXScene {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7336400133310 (0x36400133310) in binary!
+WARNING: couldn't find address 0x7345400133440 (0x45400133440) in binary!
 	0x629cc  @objc comAppleVfxConfetti.(null) <stripped>
-WARNING: couldn't find address 0x71a6400133288 (0x26400133288) in binary!
+WARNING: couldn't find address 0x71a94001333b8 (0x294001333b8) in binary!
 	0xc8000000c  @objc comAppleVfxConfetti.(null) <stripped>
-WARNING: couldn't find address 0x7333400133ca0 (0x33400133ca0) in binary!
-	0x733a0  @objc comAppleVfxConfetti.(null) <stripped>
+WARNING: couldn't find address 0x7342400133dd8 (0x42400133dd8) in binary!
+	0x73490  @objc comAppleVfxConfetti.(null) <stripped>
  }
 
  class VFX.VFXRenderer : NSObject /usr/lib/libobjc.A.dylib {
@@ -12666,43 +12667,42 @@ WARNING: couldn't find address 0x7333400133ca0 (0x33400133ca0) in binary!
 	var backgroundColor : UIColor? // +0x28 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7333400133ca0 (0x33400133ca0) in binary!
-	0x733a0  @objc VFXRenderer.(null) <stripped>
-WARNING: couldn't find address 0x7331c00133ae8 (0x31c00133ae8) in binary!
-	0x73388  @objc VFXRenderer.(null) <stripped>
-WARNING: couldn't find address 0x7330400133140 (0x30400133140) in binary!
-	0x73370  @objc VFXRenderer.(null) <stripped>
-WARNING: couldn't find address 0x732ec001334e0 (0x2ec001334e0) in binary!
-	0x73358  @objc VFXRenderer.(null) <stripped>
-WARNING: couldn't find address 0x6cca800133100 (0x4a800133100) in binary!
-	0x732c8  @objc VFXRenderer.(null) <stripped>
-WARNING: couldn't find address 0x73334001330e0 (0x334001330e0) in binary!
-	0x719c8  @objc VFXRenderer.(null) <stripped>
+WARNING: couldn't find address 0x7342400133dd8 (0x42400133dd8) in binary!
+	0x73490  @objc VFXRenderer.(null) <stripped>
+WARNING: couldn't find address 0x7340c00133c20 (0x40c00133c20) in binary!
+	0x73478  @objc VFXRenderer.(null) <stripped>
+	0x73460  CodeGeneration.BaseObject.disabled.getter
+WARNING: couldn't find address 0x733dc00133618 (0x3dc00133618) in binary!
+	0x73448  @objc VFXRenderer.(null) <stripped>
+WARNING: couldn't find address 0x6ccd800133230 (0x4d800133230) in binary!
+	0x733b8  @objc VFXRenderer.(null) <stripped>
+WARNING: couldn't find address 0x7342400133210 (0x42400133210) in binary!
+	0x719f8  @objc VFXRenderer.(null) <stripped>
 WARNING: couldn't find address 0x58000000c (0x58000000c) in binary!
-	0x4bcff93f4c8  @objc VFXRenderer.(null) <stripped>
-	0x2a4ff93f900  @objc VFXRenderer.ùHˇˇˇHˇ√I9›Ñ <stripped>
-	0xff93fd68  @objc VFXRenderer.f <stripped>
+	0x5f4ff93f168  @objc VFXRenderer.(null) <stripped>
+	0x3d4ff93f5a0  @objc VFXRenderer.SSËgªe <stripped>
+	0xff93fa08  @objc VFXRenderer. <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x5cff9426f0  @objc VFXRenderer.(null) <stripped>
-	0x35700132f78  @objc VFXRenderer.L!Hˇ√ÈˇˇˇHã}»Ë(œf <stripped>
-WARNING: couldn't find address 0x132f64ff9428b0 (0x764ff9428b0) in binary!
-	0x35a00132f50  @objc VFXRenderer.(null) <stripped>
+	0x18cff942390  @objc VFXRenderer.(null) <stripped>
+	0x357001330a8  @objc VFXRenderer.µX˛ˇˇˇµP˛ˇˇˇµH˛ˇˇˇµ@˛ˇˇˇµ8˛ˇˇˇµ0˛ˇˇˇµ(˛ˇˇˇµ ˛ˇˇˇµ˛ˇˇˇµ˛ˇˇˇµ˛ˇˇˇµ <stripped>
+WARNING: couldn't find address 0x133094ff942550 (0x94ff942550) in binary!
+	0x35a00133080  @objc VFXRenderer.(null) <stripped>
 
 	// Swift methods
-	0x10650  func VFXRenderer.scene.getter // getter 
-	0x10740  func VFXRenderer.scene.setter // setter 
-	0x108b0  func VFXRenderer.scene.modify // modifyCoroutine 
-	0x10970  func VFXRenderer.texture.getter // getter 
-	0x109b0  func VFXRenderer.texture.setter // setter 
-	0x10a10  func VFXRenderer.texture.modify // modifyCoroutine 
-	0x10a90  func VFXRenderer.depthTexture.getter // getter 
-	0x10b00  func VFXRenderer.depthTexture.setter // setter 
-	0x10bd0  func VFXRenderer.depthTexture.modify // modifyCoroutine 
-	0x10c30  func VFXRenderer.backgroundColor.getter // getter 
-	0x10c90  func VFXRenderer.backgroundColor.setter // setter 
-	0x10d00  func VFXRenderer.backgroundColor.modify // modifyCoroutine 
-	0x10d30  class func VFXRenderer.__allocating_init(commandQueue:) // init 
-	0x10f40  func VFXRenderer.encode(commandBuffer:) // method 
+	0x101c0  func VFXRenderer.scene.getter // getter 
+	0x102b0  func VFXRenderer.scene.setter // setter 
+	0x10420  func VFXRenderer.scene.modify // modifyCoroutine 
+	0x104e0  func VFXRenderer.texture.getter // getter 
+	0x10520  func VFXRenderer.texture.setter // setter 
+	0x10580  func VFXRenderer.texture.modify // modifyCoroutine 
+	0x10600  func VFXRenderer.depthTexture.getter // getter 
+	0x10670  func VFXRenderer.depthTexture.setter // setter 
+	0x10740  func VFXRenderer.depthTexture.modify // modifyCoroutine 
+	0x107a0  func VFXRenderer.backgroundColor.getter // getter 
+	0x10800  func VFXRenderer.backgroundColor.setter // setter 
+	0x10870  func VFXRenderer.backgroundColor.modify // modifyCoroutine 
+	0x108a0  class func VFXRenderer.__allocating_init(commandQueue:) // init 
+	0x10ab0  func VFXRenderer.encode(commandBuffer:) // method 
  }
 
  enum VFX.VFXError {
@@ -12719,21 +12719,21 @@ WARNING: couldn't find address 0x132f64ff9428b0 (0x764ff9428b0) in binary!
 	var scene : VFXScene
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7329c00133c08 (0x29c00133c08) in binary!
-	0x73308  @objc VFXView.(null) <stripped>
-WARNING: couldn't find address 0x62b4400133290 (0x34400133290) in binary!
-	0x6cc4c  @objc VFXView.(null) <stripped>
-WARNING: couldn't find address 0x71984001331a8 (0x184001331a8) in binary!
+WARNING: couldn't find address 0x7338c00133d40 (0x38c00133d40) in binary!
+	0x733f8  @objc VFXView.(null) <stripped>
+WARNING: couldn't find address 0x62b44001333c0 (0x344001333c0) in binary!
+	0x6cc7c  @objc VFXView.(null) <stripped>
+WARNING: couldn't find address 0x719b4001332d8 (0x1b4001332d8) in binary!
 	0x28000000c  @objc VFXView.(null) <stripped>
-WARNING: couldn't find address 0x62b5400133070 (0x35400133070) in binary!
+WARNING: couldn't find address 0x62b54001331a0 (0x354001331a0) in binary!
 	0x62b54  @objc VFXView.(null) <stripped>
 WARNING: couldn't find address 0x2d8000000c (0x2d8000000c) in binary!
-	0x764ff9428b0  @objc VFXView.(null) <stripped>
+	0x94ff942550  @objc VFXView.(null) <stripped>
 
 	// Swift methods
-	0x11680  func VFXView.scene.getter // getter 
-	0x11700  func VFXView.scene.setter // setter 
-	0x11780  func VFXView.scene.modify // modifyCoroutine 
+	0x111f0  func VFXView.scene.getter // getter 
+	0x11270  func VFXView.scene.setter // setter 
+	0x112f0  func VFXView.scene.modify // modifyCoroutine 
  }
 
  enum VFX.ScriptingSupport { }
@@ -12742,7 +12742,7 @@ WARNING: couldn't find address 0x2d8000000c (0x2d8000000c) in binary!
 
  class VFX.VFXMemorySerialization : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7300c00132fb8 (0xc00132fb8) in binary!
+WARNING: couldn't find address 0x730fc001330e8 (0xfc001330e8) in binary!
 	0x28000000c  @objc VFXMemorySerialization.(null) <stripped>
  }
 

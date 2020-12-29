@@ -7,6 +7,7 @@
 #import <HealthDaemon/HDSQLitePredicate.h>
 
 @interface HDSQLitePredicate (HKMenstrualCycles)
++ (id)hdmc_predicateForPossibleOngoingSamplesOnDayIndex:(long long)arg1;
 + (id)hdmc_predicateForSamplesInDayIndexRange:(CDStruct_ef5fcbe6)arg1;
 @end
 

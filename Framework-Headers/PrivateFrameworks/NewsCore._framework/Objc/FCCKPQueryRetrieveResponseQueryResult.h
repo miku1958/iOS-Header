@@ -10,6 +10,7 @@
 
 @class FCCKPRecord, FCCKPRecordIdentifier, NSString;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPQueryRetrieveResponseQueryResult : PBCodable <NSCopying>
 {
     NSString *_etag;
@@ -28,7 +29,6 @@
 @property (strong, nonatomic) FCCKPRecord *record; // @synthesize record=_record;
 @property (nonatomic) int type; // @synthesize type=_type;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

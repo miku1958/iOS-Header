@@ -14,6 +14,8 @@ __attribute__((visibility("hidden")))
     MISSING_TYPE *contentView;
 }
 
+@property (nonatomic) struct UIEdgeInsets layoutMargins;
+
 - (void).cxx_destruct;
 - (id)initWithCoder:(id)arg1;
 - (id)initWithFrame:(struct CGRect)arg1;

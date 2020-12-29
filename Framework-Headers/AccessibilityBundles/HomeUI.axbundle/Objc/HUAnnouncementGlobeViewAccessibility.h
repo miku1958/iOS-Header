@@ -14,6 +14,7 @@
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
 - (void)_accessibilityLoadAccessibilityInformation;
+- (void)_playAnnouncementWithInfo:(id)arg1;
 - (void)_setupSubviewsForAnnouncementInfo:(id)arg1;
 
 @end

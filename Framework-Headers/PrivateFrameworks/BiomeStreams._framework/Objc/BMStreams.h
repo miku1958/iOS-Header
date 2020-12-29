@@ -14,6 +14,7 @@
 + (id)appClipLaunch;
 + (id)appLaunch;
 + (id)appLaunch;
++ (id)contextualActions;
 + (id)coreDuetStream;
 + (id)discoverabilitySignal;
 + (id)intent;

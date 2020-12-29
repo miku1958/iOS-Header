@@ -11,7 +11,10 @@
 
 @protocol FCEndpointConnectionType <NSObject>
 - (void)performAuthenticatedHTTPRequestWithURL:(NSURL *)arg1 valuesByHTTPHeaderField:(NSDictionary *)arg2 method:(NSString *)arg3 data:(NSData *)arg4 contentType:(NSString *)arg5 priority:(float)arg6 reauthenticateIfNeeded:(BOOL)arg7 callbackQueue:(NSObject<OS_dispatch_queue> *)arg8 completion:(void (^)(NSData *, NSHTTPURLResponse *, NSError *))arg9;
+- (void)performAuthenticatedHTTPRequestWithURL:(NSURL *)arg1 valuesByHTTPHeaderField:(NSDictionary *)arg2 method:(NSString *)arg3 data:(NSData *)arg4 contentType:(NSString *)arg5 priority:(float)arg6 reauthenticateIfNeeded:(BOOL)arg7 networkEventType:(int)arg8 callbackQueue:(NSObject<OS_dispatch_queue> *)arg9 completion:(void (^)(NSData *, NSHTTPURLResponse *, NSError *))arg10;
 - (void)performHTTPRequestWithURL:(NSURL *)arg1 method:(NSString *)arg2 data:(NSData *)arg3 contentType:(NSString *)arg4 priority:(float)arg5 requiresMescalSigning:(BOOL)arg6 callbackQueue:(NSObject<OS_dispatch_queue> *)arg7 completion:(void (^)(NSData *, NSHTTPURLResponse *, NSError *))arg8;
+- (void)performHTTPRequestWithURL:(NSURL *)arg1 method:(NSString *)arg2 data:(NSData *)arg3 contentType:(NSString *)arg4 priority:(float)arg5 requiresMescalSigning:(BOOL)arg6 networkEventType:(int)arg7 callbackQueue:(NSObject<OS_dispatch_queue> *)arg8 completion:(void (^)(NSData *, NSHTTPURLResponse *, NSError *))arg9;
 - (void)performHTTPRequestWithURL:(NSURL *)arg1 valuesByHTTPHeaderField:(NSDictionary *)arg2 method:(NSString *)arg3 data:(NSData *)arg4 contentType:(NSString *)arg5 priority:(float)arg6 requiresMescalSigning:(BOOL)arg7 callbackQueue:(NSObject<OS_dispatch_queue> *)arg8 completion:(void (^)(NSData *, NSHTTPURLResponse *, NSError *))arg9;
+- (void)performHTTPRequestWithURL:(NSURL *)arg1 valuesByHTTPHeaderField:(NSDictionary *)arg2 method:(NSString *)arg3 data:(NSData *)arg4 contentType:(NSString *)arg5 priority:(float)arg6 requiresMescalSigning:(BOOL)arg7 networkEventType:(int)arg8 callbackQueue:(NSObject<OS_dispatch_queue> *)arg9 completion:(void (^)(NSData *, NSHTTPURLResponse *, NSError *))arg10;
 @end
 

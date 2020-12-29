@@ -10,7 +10,17 @@
 {
 }
 
+- (struct CGPoint)_findCircleLineIntersectionWithOffset:(double)arg1 cornerRadiusOffset:(double)arg2 radius:(double)arg3 slope:(double)arg4;
+- (struct CGPoint)_findIntersectionOfCircle:(struct CGPoint)arg1 cornerRadius:(double)arg2 offset:(double)arg3;
+- (double)_findNewOffsetOfParalelLineWithSlope:(double)arg1 offset:(double)arg2 distanceFrom:(double)arg3;
+- (double)_findPointOfIntersectionBetweenCircleOfRadius:(double)arg1 slope:(double)arg2 offset:(double)arg3;
+- (struct CGPoint)_findPointThatIsDistance:(double)arg1 fromPoint:(struct CGPoint)arg2 onSlope:(double)arg3 offset:(double)arg4;
+- (struct CGPoint)_getMirroredPoint:(struct CGPoint)arg1;
+- (struct CGPoint)_midPointOfPoint1:(struct CGPoint)arg1 point2:(struct CGPoint)arg2;
+- (struct CGPoint)_pointAtAngle:(double)arg1 radius:(double)arg2;
 - (id)initWithAngularWidth:(double)arg1 innerRadius:(double)arg2 outerRadius:(double)arg3 cornerRadius:(double)arg4;
+- (id)initWithAngularWidth:(double)arg1 innerRadius:(double)arg2 outerRadius:(double)arg3 cornerRadius:(double)arg4 style:(long long)arg5;
+- (id)initWithAngularWidth:(double)arg1 innerRadius:(double)arg2 outerRadius:(double)arg3 cornerRadius:(double)arg4 style:(long long)arg5 gapAngle:(double)arg6;
 
 @end
 

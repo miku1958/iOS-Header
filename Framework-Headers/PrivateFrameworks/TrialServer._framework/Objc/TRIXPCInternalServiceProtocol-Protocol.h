@@ -11,7 +11,6 @@
 - (void)deregisterNamespaceWithNamespaceName:(NSString *)arg1 teamId:(NSString *)arg2 completion:(void (^)(BOOL, NSError *))arg3;
 - (void)dynamicNamespaceRecordsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)experimentNotificationsWithExperimentId:(NSString *)arg1 cloudKitContainer:(int)arg2 teamId:(NSString *)arg3 completion:(void (^)(NSArray *, NSError *))arg4;
-- (void)experimentRecordsWithCompletion:(void (^)(NSArray *, NSError *))arg1;
 - (void)lastFetchDateForContainer:(int)arg1 teamId:(NSString *)arg2 completion:(void (^)(NSDate *, NSError *))arg3;
 - (void)registerNamespaceWithNamespaceName:(NSString *)arg1 compatibilityVersion:(unsigned int)arg2 defaultsFileURL:(NSURL *)arg3 teamId:(NSString *)arg4 appContainerId:(NSString *)arg5 appContainerType:(long long)arg6 cloudKitContainerId:(int)arg7 completion:(void (^)(BOOL, NSError *))arg8;
 - (void)setLastFetchDate:(NSDate *)arg1 forContainer:(int)arg2 teamId:(NSString *)arg3 completion:(void (^)(BOOL, NSError *))arg4;

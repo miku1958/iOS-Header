@@ -142,6 +142,7 @@
 - (id)textContainerForLocation:(id)arg1;
 - (id)textLayoutFragmentForLocation:(id)arg1;
 - (id)textLayoutFragmentForPosition:(struct CGPoint)arg1 inTextContainerAtIndex:(long long)arg2;
+- (id)textLayoutFragmentForPosition:(struct CGPoint)arg1 inTextContainerAtIndex:(long long)arg2 avoidsAdditionalLayout:(BOOL)arg3;
 - (id)textRangeForSelectionGranularity:(long long)arg1 enclosingLocation:(id)arg2;
 - (void)updateLayoutWithTextLayoutFragment:(id)arg1;
 - (void)updateLayoutWithTextLayoutFragment:(id)arg1 addition:(BOOL)arg2;

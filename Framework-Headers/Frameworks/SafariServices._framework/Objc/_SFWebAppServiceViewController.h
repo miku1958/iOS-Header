@@ -50,6 +50,7 @@ __attribute__((visibility("hidden")))
 - (void)_loadNextFallbackURL;
 - (void)_loadWebClipPageURL:(id)arg1;
 - (unsigned long long)_persona;
+- (void)_setCurrentWebViewController:(id)arg1;
 - (void)_updateDisplayMode;
 - (BOOL)_usesScrollToTopView;
 - (BOOL)canPrint;
@@ -61,7 +62,6 @@ __attribute__((visibility("hidden")))
 - (id)processPool;
 - (void)setMediaStateIcon:(unsigned long long)arg1;
 - (void)setNeedsStatusBarAppearanceUpdate;
-- (void)setWebViewController:(id)arg1;
 - (void)statusBarIndicatorTappedWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)viewDidLoad;
 - (void)webAppDidBecomeActive;

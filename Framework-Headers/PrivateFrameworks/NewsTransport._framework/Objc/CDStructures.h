@@ -137,9 +137,11 @@ typedef struct {
     unsigned int widgetContentType:1;
     unsigned int widgetDisplayMode:1;
     unsigned int widgetEngagementType:1;
+    unsigned int widgetExposureStackLocation:1;
     unsigned int widgetSectionDisplayRank:1;
+    unsigned int widgetType:1;
     unsigned int widgetVideoPresentationReason:1;
-} CDStruct_7b5281db;
+} CDStruct_38942d66;
 
 typedef struct {
     unsigned int isEligibleForGrouping:1;

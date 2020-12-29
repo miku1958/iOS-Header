@@ -8,7 +8,7 @@
 
 #import <HomeUI/HUCellProtocol-Protocol.h>
 
-@class HFItem, NSString, UIActivityIndicatorView, UILabel, UIStackView, UIView;
+@class HFItem, HUIconView, NSString, UIActivityIndicatorView, UILabel, UIStackView, UIView;
 @protocol HUResizableCellDelegate;
 
 @interface HUSoftwareUpdateFetchCell : UITableViewCell <HUCellProtocol>
@@ -17,6 +17,8 @@
     UIStackView *_mainStackView;
     UIView *_titleSpinnerView;
     UIActivityIndicatorView *_checkingForUpdateSpinner;
+    HUIconView *_iconView;
+    unsigned long long _iconSize;
     UILabel *_titleLabel;
     UILabel *_subtitleLabel;
 }
@@ -25,6 +27,8 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (nonatomic) unsigned long long iconSize; // @synthesize iconSize=_iconSize;
+@property (strong, nonatomic) HUIconView *iconView; // @synthesize iconView=_iconView;
 @property (strong, nonatomic) HFItem *item; // @synthesize item=_item;
 @property (strong, nonatomic) UIStackView *mainStackView; // @synthesize mainStackView=_mainStackView;
 @property (weak, nonatomic) id<HUResizableCellDelegate> resizingDelegate;

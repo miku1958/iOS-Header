@@ -719,6 +719,7 @@
 - (long long)preferredStatusBarStyle;
 - (BOOL)prefersBottomDividerHidden;
 - (BOOL)prefersStatusBarHidden;
+- (void)prepareForResume;
 - (void)prepareForSuspend;
 - (void)prepareInputForPreviewPresentation;
 - (void)prepareToDismissForSecondInstance;

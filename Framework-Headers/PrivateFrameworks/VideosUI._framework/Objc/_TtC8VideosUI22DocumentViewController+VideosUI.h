@@ -6,7 +6,9 @@
 
 #import <VideosUI/_TtC8VideosUI22DocumentViewController.h>
 
-@interface _TtC8VideosUI22DocumentViewController (VideosUI)
-- (BOOL)gestureRecognizerShouldBegin:(id)arg1;
+#import <VideosUI/UINavigationControllerDelegate-Protocol.h>
+
+@interface _TtC8VideosUI22DocumentViewController (VideosUI) <UINavigationControllerDelegate>
+- (void)navigationController:(id)arg1 didShowViewController:(id)arg2 animated:(BOOL)arg3;
 @end
 

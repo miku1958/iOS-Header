@@ -782,7 +782,7 @@ WARNING: couldn't find address 0x5443454a4f525020 (0x54a4f525020) in binary!
 	0x0  @objc ColumnDebugView.(null) <stripped>
 
 	// Swift methods
-	0x47430  class func ColumnDebugView.__allocating_init(columnSystem:) // init 
+	0x47420  class func ColumnDebugView.__allocating_init(columnSystem:) // init 
  }
 
  class TeaTemplate.Layout {
@@ -879,7 +879,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 WARNING: couldn't find address 0x0 (0x0) in binary!
 	case flexibleMaxWidth : Õ¥
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	case flexibleMaxSize : Ç–
+	case flexibleMaxSize : Á–
 	case flexibleText : (String?, font: UIFont)
 	case flexibleAttributedText : NSAttributedString?
 	case altFlexibleAttributedText : AltText

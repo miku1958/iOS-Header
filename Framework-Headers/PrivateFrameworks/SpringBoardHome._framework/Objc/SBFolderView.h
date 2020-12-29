@@ -123,6 +123,7 @@
 @property (readonly, nonatomic) long long userInterfaceLayoutDirection;
 @property (readonly, nonatomic) unsigned long long userInterfaceLayoutDirectionHandling; // @synthesize userInterfaceLayoutDirectionHandling=_userInterfaceLayoutDirectionHandling;
 
++ (long long)_pageIndexForOffset:(double)arg1 minimumPage:(long long)arg2 maximumPage:(long long)arg3 pageCount:(unsigned long long)arg4 pageWidth:(double)arg5 pageSpacing:(double)arg6 userInterfaceLayoutDirection:(long long)arg7 behavior:(long long)arg8 fractionOfDistanceThroughPage:(double *)arg9;
 + (unsigned long long)_pageOffsetForOffset:(double)arg1 behavior:(long long)arg2 pageWidth:(double)arg3 pageSpacing:(double)arg4 pageCount:(unsigned long long)arg5 userInterfaceLayoutDirection:(long long)arg6 fractionOfDistanceThroughPage:(double *)arg7;
 + (Class)_scrollViewClass;
 + (unsigned long long)countOfAdditionalPagesToKeepVisibleInOneDirection;

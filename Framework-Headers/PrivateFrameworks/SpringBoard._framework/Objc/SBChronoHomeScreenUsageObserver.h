@@ -31,7 +31,7 @@
 - (void)_rebuildAndTransmitConfiguredWidgetData:(id)arg1;
 - (void)homeScreenUsageAggregator:(id)arg1 didNoteCurrentPageIndexChanged:(unsigned long long)arg2;
 - (void)homeScreenUsageAggregator:(id)arg1 didNoteUserDislikedWidgetIconStackSuggestion:(id)arg2;
-- (void)homeScreenUsageAggregator:(id)arg1 didNoteUserTappedWidgetIcon:(id)arg2;
+- (void)homeScreenUsageAggregator:(id)arg1 didNoteUserTappedWidgetIcon:(id)arg2 withURL:(id)arg3;
 - (void)homeScreenUsageAggregator:(id)arg1 didNoteWidgetIconAdded:(id)arg2;
 - (void)homeScreenUsageAggregator:(id)arg1 didNoteWidgetIconRemoved:(id)arg2;
 - (void)homeScreenUsageAggregator:(id)arg1 didNoteWidgetIconStackChangedActiveWidget:(id)arg2;

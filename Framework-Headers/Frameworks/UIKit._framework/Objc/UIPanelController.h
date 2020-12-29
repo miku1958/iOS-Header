@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
         unsigned int updateLayoutRequested:1;
         unsigned int leadingTrailingWrapsNavigationController:1;
         unsigned int shouldDelegateNavigationBarForViewController:1;
+        unsigned int isRunExpandScheduled:1;
     } _panelControllerFlags;
     NSMutableArray *_wrapperBlocksForNextUpdate;
     BOOL _animationRequestShouldCoordinate;
@@ -102,6 +103,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, nonatomic) NSArray *possibleStates;
 @property (nonatomic, getter=isPresentationGestureActive) BOOL presentationGestureActive;
 @property (strong, nonatomic) UIViewController *preservedDetailController;
+@property (nonatomic, getter=isRunExpandScheduled, setter=setRunExpandScheduled:) BOOL runExpandScheduled;
 @property (copy, nonatomic) UISlidingBarStateRequest *stateRequest;
 @property (nonatomic) long long style; // @synthesize style=_style;
 @property (readonly) Class superclass;

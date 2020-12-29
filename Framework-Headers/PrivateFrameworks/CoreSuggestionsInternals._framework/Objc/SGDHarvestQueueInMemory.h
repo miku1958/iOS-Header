@@ -6,7 +6,7 @@
 
 #import <CoreSuggestionsInternals/SGDHarvestQueue.h>
 
-@class NSMutableArray, NSObject;
+@class NSMutableArray, NSObject, SGDHarvestQueueOnDisk;
 @protocol OS_dispatch_queue;
 
 @interface SGDHarvestQueueInMemory : SGDHarvestQueue
@@ -16,10 +16,10 @@
     long long _itemIdCounter;
     NSMutableArray *_items;
     NSObject<OS_dispatch_queue> *_queue;
-    SGDHarvestQueue *_other;
+    SGDHarvestQueueOnDisk *_other;
 }
 
-@property (readonly, nonatomic) SGDHarvestQueue *other; // @synthesize other=_other;
+@property (readonly, nonatomic) SGDHarvestQueueOnDisk *other; // @synthesize other=_other;
 
 - (void).cxx_destruct;
 - (void)_deleteWithItemId:(long long)arg1 completion:(CDUnknownBlockType)arg2;

@@ -8,7 +8,7 @@
 
 #import <NewsUI/SXResourceDataSource-Protocol.h>
 
-@class FCAsyncOnceOperation, FCFlintManifest, FCFlintResourceManager, NSOperationQueue, NSString, NUANFAssetLoader, SXContext;
+@class FCANFContent, FCAsyncOnceOperation, FCFlintResourceManager, NSOperationQueue, NSString, NUANFAssetLoader, SXContext;
 @protocol FCHeadlineProviding, NUArticleResourceURLTranslator, SXHost;
 
 @interface NUANFContextLoader : NSObject <SXResourceDataSource>
@@ -16,7 +16,7 @@
     BOOL _hasLoaded;
     SXContext *_context;
     NUANFAssetLoader *_assetLoader;
-    FCFlintManifest *_flintManifest;
+    FCANFContent *_anfContent;
     FCFlintResourceManager *_flintResourceManager;
     id<SXHost> _host;
     id<NUArticleResourceURLTranslator> _resourceURLTranslator;
@@ -25,12 +25,12 @@
     id<FCHeadlineProviding> _headline;
 }
 
+@property (readonly, nonatomic) FCANFContent *anfContent; // @synthesize anfContent=_anfContent;
 @property (strong, nonatomic) NUANFAssetLoader *assetLoader; // @synthesize assetLoader=_assetLoader;
 @property (strong, nonatomic) FCAsyncOnceOperation *asyncOnceOperation; // @synthesize asyncOnceOperation=_asyncOnceOperation;
 @property (strong, nonatomic) SXContext *context; // @synthesize context=_context;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
-@property (readonly, nonatomic) FCFlintManifest *flintManifest; // @synthesize flintManifest=_flintManifest;
 @property (readonly, nonatomic) FCFlintResourceManager *flintResourceManager; // @synthesize flintResourceManager=_flintResourceManager;
 @property (readonly, nonatomic) BOOL hasLoaded; // @synthesize hasLoaded=_hasLoaded;
 @property (readonly) unsigned long long hash;
@@ -42,8 +42,9 @@
 
 - (void).cxx_destruct;
 - (id)asyncLoadContextOnceWithCompletion:(CDUnknownBlockType)arg1;
+- (id)fallbackResourceForImageRequest:(id)arg1 originalResource:(id)arg2;
 - (void)fileURLForURL:(id)arg1 onCompletion:(CDUnknownBlockType)arg2 onError:(CDUnknownBlockType)arg3;
-- (id)initWithFlintManifest:(id)arg1 flintResourceManager:(id)arg2 host:(id)arg3 resourceURLTranslator:(id)arg4 headline:(id)arg5;
+- (id)initWithANFContent:(id)arg1 flintResourceManager:(id)arg2 host:(id)arg3 resourceURLTranslator:(id)arg4 headline:(id)arg5;
 - (id)loadContextWithCompletion:(CDUnknownBlockType)arg1;
 - (CDUnknownBlockType)loadImagesForImageRequest:(id)arg1 completionBlock:(CDUnknownBlockType)arg2;
 - (id)translateURL:(id)arg1;

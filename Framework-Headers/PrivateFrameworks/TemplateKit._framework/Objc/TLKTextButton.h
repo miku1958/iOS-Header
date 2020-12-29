@@ -21,9 +21,12 @@
 }
 
 @property (nonatomic) long long alignment; // @synthesize alignment=_alignment;
+@property (nonatomic) BOOL alwaysShowPlaceholderView;
 @property BOOL attributedTitleExplicitlySet; // @synthesize attributedTitleExplicitlySet=_attributedTitleExplicitlySet;
 @property (strong, nonatomic) UIFont *font;
 @property BOOL matchesHeightForAlignmentRectWithIntrinsicContentSize; // @synthesize matchesHeightForAlignmentRectWithIntrinsicContentSize=_matchesHeightForAlignmentRectWithIntrinsicContentSize;
+@property (nonatomic) struct CGSize maximumSize;
+@property (nonatomic) struct CGSize minimumSize;
 @property (nonatomic) unsigned long long prominence; // @synthesize prominence=_prominence;
 @property (copy, nonatomic) TLKRichText *richTitle; // @synthesize richTitle=_richTitle;
 @property (copy, nonatomic) NSString *title; // @synthesize title=_title;

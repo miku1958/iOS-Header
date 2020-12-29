@@ -15,6 +15,7 @@
 - (void)prepareForDisplay;
 - (void)prepareForReuse;
 - (void)setAnnotation:(id)arg1;
+- (void)setSelected:(BOOL)arg1 animated:(BOOL)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)update;
 

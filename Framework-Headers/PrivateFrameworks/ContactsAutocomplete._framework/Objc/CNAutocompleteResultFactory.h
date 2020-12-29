@@ -16,6 +16,8 @@
 
 + (id)factoryWithPriorityDomain:(id)arg1 sendingAddress:(id)arg2;
 - (void).cxx_destruct;
+- (id)MAIDGroupResultWithDisplayName:(id)arg1 groupIdentifier:(id)arg2 membersProvider:(CDUnknownBlockType)arg3;
+- (id)MAIDResultWithDisplayName:(id)arg1 value:(id)arg2 nameComponents:(id)arg3;
 - (void)applyLastSendingAddressBitToResult:(id)arg1;
 - (void)applyPreferredDomainBitToResult:(id)arg1;
 - (void)applySearchContextToResult:(id)arg1;

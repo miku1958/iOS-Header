@@ -26,6 +26,8 @@
 @property (readonly, copy, nonatomic) NSAttributedString *valueString;
 
 - (void)handleUserInteractionWithItemWithHostViewController:(id)arg1;
+- (void)presentHostedInstructionsForUseHostViewController:(id)arg1 helpViewController:(id)arg2;
+- (void)useLegacyInstructionsForUseHostViewController:(id)arg1;
 
 @end
 

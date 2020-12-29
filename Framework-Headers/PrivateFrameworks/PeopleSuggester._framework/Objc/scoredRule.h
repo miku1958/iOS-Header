@@ -6,16 +6,21 @@
 
 #import <objc/NSObject.h>
 
+@class NSNumber;
+
 @interface scoredRule : NSObject
 {
     float _ruleScore;
     long long _ruleLabel;
+    NSNumber *_recipientUniqueID;
 }
 
+@property (strong, nonatomic) NSNumber *recipientUniqueID; // @synthesize recipientUniqueID=_recipientUniqueID;
 @property (nonatomic) long long ruleLabel; // @synthesize ruleLabel=_ruleLabel;
 @property (nonatomic) float ruleScore; // @synthesize ruleScore=_ruleScore;
 
-- (id)initWithLabel:(long long)arg1 score:(float)arg2;
+- (void).cxx_destruct;
+- (id)initWithLabel:(long long)arg1 score:(float)arg2 recipientUniqueID:(id)arg3;
 
 @end
 

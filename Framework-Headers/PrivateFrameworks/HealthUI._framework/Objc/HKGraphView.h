@@ -52,6 +52,8 @@
     BOOL _tilesTransientDisabled;
     BOOL _tilesWaitingForInitialRender;
     BOOL _measuringStartupTime;
+    BOOL _measurementStartupAutoscale;
+    BOOL _externalSelectionScheduled;
     id<HKGraphViewDelegate> _delegate;
     HKAxis *_xAxis;
     double _xAxisSpace;
@@ -96,6 +98,8 @@
     double _lastEndTime;
     NSTimer *_startupTimer;
     double _firstNonemptyDrawTime;
+    id _externalSelectionModelCoordinate;
+    double _externalSelectionLastLocation;
     struct CGPoint _contentOffset;
     struct CGPoint _tileContentOffsetOverride;
     struct UIEdgeInsets _axisInset;
@@ -123,6 +127,9 @@
 @property (nonatomic) BOOL enableInteractiveSelectionLine; // @synthesize enableInteractiveSelectionLine=_enableInteractiveSelectionLine;
 @property (nonatomic) BOOL enableStickySelection; // @synthesize enableStickySelection=_enableStickySelection;
 @property (nonatomic) BOOL enableZoomInGesture; // @synthesize enableZoomInGesture=_enableZoomInGesture;
+@property (nonatomic) double externalSelectionLastLocation; // @synthesize externalSelectionLastLocation=_externalSelectionLastLocation;
+@property (strong, nonatomic) id externalSelectionModelCoordinate; // @synthesize externalSelectionModelCoordinate=_externalSelectionModelCoordinate;
+@property (nonatomic) BOOL externalSelectionScheduled; // @synthesize externalSelectionScheduled=_externalSelectionScheduled;
 @property (nonatomic) unsigned long long featheringOptions; // @synthesize featheringOptions=_featheringOptions;
 @property (nonatomic) double firstNonemptyDrawTime; // @synthesize firstNonemptyDrawTime=_firstNonemptyDrawTime;
 @property (nonatomic) double hardLeftMarginWidth; // @synthesize hardLeftMarginWidth=_hardLeftMarginWidth;
@@ -132,6 +139,7 @@
 @property (nonatomic) double lastSingleSelectionXValue; // @synthesize lastSingleSelectionXValue=_lastSingleSelectionXValue;
 @property (readonly, nonatomic) struct CGRect leftMarginViewRect;
 @property (nonatomic) long long maximumDateZoom; // @synthesize maximumDateZoom=_maximumDateZoom;
+@property (nonatomic) BOOL measurementStartupAutoscale; // @synthesize measurementStartupAutoscale=_measurementStartupAutoscale;
 @property (nonatomic) BOOL measuringStartupTime; // @synthesize measuringStartupTime=_measuringStartupTime;
 @property (nonatomic) long long minimumDateZoom; // @synthesize minimumDateZoom=_minimumDateZoom;
 @property (nonatomic) BOOL moveSelectedSeriesToFront; // @synthesize moveSelectedSeriesToFront=_moveSelectedSeriesToFront;
@@ -191,6 +199,7 @@
 - (BOOL)_axisRangeIsDateRange;
 - (double)_bottomBaselineYValueForChartRect:(struct CGRect)arg1;
 - (void)_cancelAllInFlightAutoscales;
+- (void)_cancelExternalSelection;
 - (void)_clearRenderViewIfNecessary;
 - (CDStruct_767cbfa4)_closestDataPointPathToPoint:(struct CGPoint)arg1 seriesGroupRow:(long long)arg2 minimumXDistance:(double)arg3 xDistanceOut:(double *)arg4;
 - (CDStruct_767cbfa4)_closestDataPointPathToPoint:(struct CGPoint)arg1 seriesGroupRow:(long long)arg2 seriesInGroup:(id)arg3 minimumXDistance:(double)arg4 xDistanceOut:(double *)arg5;
@@ -214,6 +223,7 @@
 - (double)_detailViewWidth;
 - (void)_drawOverlaysIfNeeded:(id)arg1;
 - (id)_effectiveVisibleRangeFromActualVisibleRange:(id)arg1;
+- (void)_endExternalSelectionViaTimer;
 - (void)_enumerateSeriesSelectionRegionsForSeriesGroup:(id)arg1 withBlock:(CDUnknownBlockType)arg2;
 - (id)_findActualAxisRangeFromVisibleRanges;
 - (void)_finishSelection;
@@ -229,6 +239,7 @@
 - (void)_hideTilesWithForce;
 - (double)_inactiveRightAreaForRect:(struct CGRect)arg1;
 - (void)_installAccessoryViews;
+- (void)_installExternalSelectionEndTimer;
 - (void)_layoutDetailView;
 - (void)_layoutLegendsForChartRect:(struct CGRect)arg1;
 - (void)_layoutOverlayView;
@@ -254,6 +265,7 @@
 - (void)_notifyDelegateOfYAxisWidth:(double)arg1 toWidth:(double)arg2;
 - (void)_notifyDelegateSeriesUpdate:(id)arg1 newDataArrived:(BOOL)arg2;
 - (void)_notifyDidBeginSelection;
+- (void)_notifyDidEndExternalSelection;
 - (void)_notifyDidEndSelection;
 - (void)_notifyDidUpdateSelectionWithPointContext:(id)arg1;
 - (id)_oneSeriesSelectionContextsWithTouchPoints:(id)arg1 updateViewStates:(BOOL)arg2;
@@ -266,6 +278,7 @@
 - (void)_pauseChartInteraction;
 - (id)_pointSelectionContextWithPathRange:(CDStruct_f3788345)arg1 touchPoints:(id)arg2 seriesGroupRow:(long long)arg3 seriesInGroup:(id)arg4;
 - (void)_preserveDestinationActiveRange:(id)arg1;
+- (void)_processExternalSelection;
 - (id)_rangeFromRange:(id)arg1 withStartOfRange:(id)arg2;
 - (void)_reconfigureScrollingTiles;
 - (void)_recordLastRenderTime;
@@ -286,6 +299,9 @@
 - (void)_resetSingleSelectionXValue;
 - (void)_restoreDestinationActiveRange;
 - (void)_resumeChartInteraction;
+- (void)_scheduleExternalSelectionIfNeeded;
+- (void)_scheduleExternalSelectionIfNeededClearingLastLocation;
+- (void)_scheduleRequiredExternalSelection;
 - (void)_scrollToCurrentVisibleRangeAnimated:(BOOL)arg1;
 - (struct CGRect)_scrollingAreaRect;
 - (BOOL)_selectionContextsNotPreviouslySelected:(id)arg1;
@@ -314,6 +330,7 @@
 - (BOOL)_tilesReconfigurableAfterInitialRender;
 - (void)_toggleStickySelectionAction:(id)arg1;
 - (double)_topBaselineYValueForChartRect:(struct CGRect)arg1;
+- (void)_touchAtPoint:(struct CGPoint)arg1;
 - (struct CGPoint)_touchPointForSeriesGroupIndex:(long long)arg1 originalTouchPoint:(struct CGPoint)arg2;
 - (void)_touchTilesForContentOffset:(struct CGPoint)arg1 applyHysteresis:(BOOL)arg2;
 - (BOOL)_touchesActuallyMoved:(id)arg1;
@@ -382,6 +399,7 @@
 - (BOOL)stillAnimating:(id)arg1;
 - (void)testScrollPerformanceWithTestName:(id)arg1 iterations:(int)arg2 delta:(int)arg3 length:(int)arg4;
 - (void)testScrollPerformanceWithTestName:(id)arg1 iterations:(int)arg2 delta:(int)arg3 options:(id)arg4;
+- (void)touchSelectionAtModelX:(id)arg1;
 - (void)traitCollectionDidChange:(id)arg1;
 - (struct UIEdgeInsets)virtualMarginInsets;
 - (void)willMoveToWindow:(id)arg1;

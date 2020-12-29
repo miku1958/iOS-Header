@@ -22,10 +22,12 @@
     id<GKNicknameControllerDelegate> _delegate;
     GKReachability *_reachability;
     NSArray *_suggestedNicknames;
+    NSString *_defaultNickname;
 }
 
 @property (strong, nonatomic) UIActivityIndicatorView *activityIndicator; // @synthesize activityIndicator=_activityIndicator;
 @property (readonly, copy) NSString *debugDescription;
+@property (strong, nonatomic) NSString *defaultNickname; // @synthesize defaultNickname=_defaultNickname;
 @property (weak) id<GKNicknameControllerDelegate> delegate; // @synthesize delegate=_delegate;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;

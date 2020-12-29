@@ -10,7 +10,7 @@
 #import <LinkPresentation/LPMediaPlayer-Protocol.h>
 #import <LinkPresentation/UIGestureRecognizerDelegate-Protocol.h>
 
-@class CATextLayer, LPFullScreenVideoController, LPImage, LPImageViewStyle, LPVideo, LPVideoViewConfiguration, LPVideoViewStyle, NSString, UIImageView, UIView;
+@class CATextLayer, LPFullScreenVideoController, LPImage, LPImageViewStyle, LPVideo, LPVideoViewConfiguration, LPVideoViewStyle, NSString, UIGestureRecognizer, UIImageView, UIView;
 
 __attribute__((visibility("hidden")))
 @interface LPVideoView : LPComponentView <CALayerDelegate, UIGestureRecognizerDelegate, LPMediaPlayer>
@@ -31,6 +31,7 @@ __attribute__((visibility("hidden")))
     UIView *_containerView;
     UIView *_playbackView;
     CATextLayer *_debugIndicator;
+    UIGestureRecognizer *_tapRecognizer;
     LPFullScreenVideoController *_fullScreenController;
     BOOL _playing;
     BOOL _hasBuilt;
@@ -43,12 +44,14 @@ __attribute__((visibility("hidden")))
     unsigned long long _playbackWatchdogTimerID;
     unsigned int _loggingID;
     BOOL _usesSharedAudioSession;
+    BOOL _allowsUserInteractionWithVideoPlayer;
     BOOL _waitingForPlayback;
     BOOL _fullScreen;
     double _volume;
 }
 
 @property (nonatomic, getter=isActive) BOOL active;
+@property (nonatomic) BOOL allowsUserInteractionWithVideoPlayer; // @synthesize allowsUserInteractionWithVideoPlayer=_allowsUserInteractionWithVideoPlayer;
 @property (readonly, copy, nonatomic) LPVideoViewConfiguration *configuration;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;

@@ -27,6 +27,7 @@
 - (id)_synchronousRemoteObjectProxyWithErrorHandler:(CDUnknownBlockType)arg1;
 - (void)dealloc;
 - (void)getAppStoreServiceWithCompletionHandler:(CDUnknownBlockType)arg1;
+- (void)getArcadeServiceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)getClipServiceWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (id)getClipServiceWithError:(id *)arg1;
 - (void)getCrossfireServiceWithCompletionHandler:(CDUnknownBlockType)arg1;

@@ -18,6 +18,7 @@
     NSObject<OS_dispatch_queue> *_accessQueue;
     id<IAMApplicationContextProvider> _applicationContext;
     NSMutableDictionary *_messageTargetsByTargetIdentifier;
+    NSMutableDictionary *_messageTargetsRequiringNilPriorityMessageNotificationAfterRegistrationByTargetIdentifier;
     NSMutableDictionary *_priorityMessageEntryByTargetIdentifier;
     IAMImpressionManager *_impressionManager;
     NSMutableArray *_pendingTriggerContexts;

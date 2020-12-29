@@ -88,6 +88,10 @@ struct BatchTranslationCacheContainer {
     unsigned char _field1[1];
 };
 
+struct BatchTranslationFeedbackRequest {
+    unsigned char _field1[1];
+};
+
 struct BatchTranslationRequest {
     unsigned char _field1[1];
 };
@@ -453,6 +457,10 @@ struct Offset<siri::speech::schema_fb::BatchRecoverFinalResponse> {
 };
 
 struct Offset<siri::speech::schema_fb::BatchTranslationCacheContainer> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::BatchTranslationFeedbackRequest> {
     unsigned int _field1;
 };
 
@@ -853,6 +861,10 @@ struct Offset<siri::speech::schema_fb::StartTextToSpeechStreamingRequest> {
 };
 
 struct Offset<siri::speech::schema_fb::StartTextToSpeechStreamingRequest_::ContextInfoEntry> {
+    unsigned int _field1;
+};
+
+struct Offset<siri::speech::schema_fb::TTSNeuralPhonemeSequence> {
     unsigned int _field1;
 };
 
@@ -1268,6 +1280,10 @@ struct StringTokenPair {
     unsigned char _field1[1];
 };
 
+struct TTSNeuralPhonemeSequence {
+    unsigned char _field1[1];
+};
+
 struct TTSNormalizedText {
     unsigned char _field1[1];
 };
@@ -1600,6 +1616,10 @@ typedef struct Offset<siri::speech::schema_fb::BatchRecoverFinalResponse> {
 typedef struct Offset<siri::speech::schema_fb::BatchTranslationCacheContainer> {
     unsigned int _field1;
 } Offset_17d7eaae;
+
+typedef struct Offset<siri::speech::schema_fb::BatchTranslationFeedbackRequest> {
+    unsigned int _field1;
+} Offset_94ef6cc9;
 
 typedef struct Offset<siri::speech::schema_fb::BatchTranslationRequest> {
     unsigned int _field1;
@@ -2000,6 +2020,10 @@ typedef struct Offset<siri::speech::schema_fb::StartTextToSpeechStreamingRequest
 typedef struct Offset<siri::speech::schema_fb::StartTextToSpeechStreamingRequest_::ContextInfoEntry> {
     unsigned int _field1;
 } Offset_0dc7c184;
+
+typedef struct Offset<siri::speech::schema_fb::TTSNeuralPhonemeSequence> {
+    unsigned int _field1;
+} Offset_350cea8b;
 
 typedef struct Offset<siri::speech::schema_fb::TTSNormalizedText> {
     unsigned int _field1;

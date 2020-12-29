@@ -34,6 +34,7 @@
     unsigned int _internalAuthFlags;
     NSString *_password;
     CDUnknownBlockType _authCompletionHandler;
+    CDUnknownBlockType _disconnectHandler;
     CDUnknownBlockType _showPasswordHandler;
     CDUnknownBlockType _hidePasswordHandler;
     CDUnknownBlockType _promptForPasswordHandler;
@@ -45,6 +46,7 @@
     NSObject<OS_dispatch_queue> *_dispatchQueue;
     CDUnknownBlockType _interruptionHandler;
     CDUnknownBlockType _invalidationHandler;
+    double _awdlGuestDiscoveryTimeout;
     NSString *_serviceType;
     CDUnknownBlockType _deviceFoundHandler;
     CDUnknownBlockType _deviceLostHandler;
@@ -58,6 +60,7 @@
 @property (readonly) RPCompanionLinkDevice *activePersonalCompanion;
 @property (copy, nonatomic) NSString *appID; // @synthesize appID=_appID;
 @property (copy, nonatomic) CDUnknownBlockType authCompletionHandler; // @synthesize authCompletionHandler=_authCompletionHandler;
+@property (nonatomic) double awdlGuestDiscoveryTimeout; // @synthesize awdlGuestDiscoveryTimeout=_awdlGuestDiscoveryTimeout;
 @property (nonatomic) long long bleClientUseCase; // @synthesize bleClientUseCase=_bleClientUseCase;
 @property (nonatomic) unsigned int clientID; // @synthesize clientID=_clientID;
 @property (copy, nonatomic) NSString *cloudServiceID; // @synthesize cloudServiceID=_cloudServiceID;
@@ -66,6 +69,7 @@
 @property (copy, nonatomic) CDUnknownBlockType deviceChangedHandler; // @synthesize deviceChangedHandler=_deviceChangedHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceFoundHandler; // @synthesize deviceFoundHandler=_deviceFoundHandler;
 @property (copy, nonatomic) CDUnknownBlockType deviceLostHandler; // @synthesize deviceLostHandler=_deviceLostHandler;
+@property (copy, nonatomic) CDUnknownBlockType disconnectHandler; // @synthesize disconnectHandler=_disconnectHandler;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *dispatchQueue; // @synthesize dispatchQueue=_dispatchQueue;
 @property (nonatomic) unsigned int flags; // @synthesize flags=_flags;
 @property (copy, nonatomic) CDUnknownBlockType hidePasswordHandler; // @synthesize hidePasswordHandler=_hidePasswordHandler;
@@ -105,6 +109,7 @@
 - (void)companionLinkAuthCompleted:(id)arg1;
 - (void)companionLinkChangedDevice:(id)arg1 changes:(unsigned int)arg2;
 - (void)companionLinkFoundDevice:(id)arg1;
+- (void)companionLinkHandleDisconnect;
 - (void)companionLinkLocalDeviceUpdated:(id)arg1;
 - (void)companionLinkLostDevice:(id)arg1;
 - (void)companionLinkPromptForPasswordType:(int)arg1 flags:(unsigned int)arg2 throttleSeconds:(int)arg3;

@@ -36,6 +36,7 @@
 @property (nonatomic, readonly) NSArray *representations;
 @property (nonatomic, readonly) long long serverUnfilledReason;
 @property (nonatomic, readonly) NSDictionary *transparencyDetailsDictionary;
+@property (nonatomic) BOOL vended;
 
 - (void)replaceMetricsHelperWithNewMetricsHelper:(id<APPCJourneyMetricsHelping>)arg1;
 @end

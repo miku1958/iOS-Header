@@ -9,7 +9,7 @@
 #import <HomeKitDaemon/HMFLogging-Protocol.h>
 #import <HomeKitDaemon/HMFMessageReceiver-Protocol.h>
 
-@class HMBLocalZone, HMDCameraClipFeedbackUploader, HMDHome, HMFMessageDispatcher, NSNotificationCenter, NSObject, NSString, NSUUID;
+@class HMBCloudZone, HMBLocalZone, HMDCameraClipFeedbackUploader, HMDHome, HMFMessageDispatcher, NSNotificationCenter, NSObject, NSString, NSUUID;
 @protocol OS_dispatch_queue;
 
 @interface HMDCameraClipFeedbackManager : HMFObject <HMFLogging, HMFMessageReceiver>
@@ -17,6 +17,7 @@
     NSUUID *_messageTargetUUID;
     NSObject<OS_dispatch_queue> *_workQueue;
     HMBLocalZone *_localZone;
+    HMBCloudZone *_cloudZone;
     HMFMessageDispatcher *_messageDispatcher;
     HMDCameraClipFeedbackUploader *_feedbackUploader;
     NSUUID *_cameraProfileUUID;
@@ -25,6 +26,7 @@
 }
 
 @property (readonly, copy) NSUUID *cameraProfileUUID; // @synthesize cameraProfileUUID=_cameraProfileUUID;
+@property (readonly) HMBCloudZone *cloudZone; // @synthesize cloudZone=_cloudZone;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) HMDCameraClipFeedbackUploader *feedbackUploader; // @synthesize feedbackUploader=_feedbackUploader;
@@ -43,11 +45,12 @@
 - (void)_handleFindAndUploadSubmittedClipsMessage:(id)arg1;
 - (void)_handleSubmitClipsMessage:(id)arg1;
 - (void)_notifyPrimaryResidentThatClipsWereSubmitted;
+- (id)_performCloudPull;
 - (void)_uploadNextClipFromQueryResult:(id)arg1;
 - (void)configureWithHome:(id)arg1 deviceIsResidentCapable:(BOOL)arg2;
 - (void)findAndUploadSubmittedClips;
 - (void)handlePrimaryResidentUpdateNotification:(id)arg1;
-- (id)initWithLocalZone:(id)arg1 home:(id)arg2 messageDispatcher:(id)arg3 cameraProfileUUID:(id)arg4 messageTargetUUID:(id)arg5 feedbackUploader:(id)arg6 workQueue:(id)arg7;
+- (id)initWithLocalZone:(id)arg1 cloudZone:(id)arg2 home:(id)arg3 messageDispatcher:(id)arg4 cameraProfileUUID:(id)arg5 messageTargetUUID:(id)arg6 feedbackUploader:(id)arg7 workQueue:(id)arg8;
 - (BOOL)isCurrentDeviceConfirmedPrimaryResident;
 - (id)logIdentifier;
 

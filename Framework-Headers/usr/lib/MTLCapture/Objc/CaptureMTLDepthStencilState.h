@@ -35,6 +35,7 @@
 @property (readonly) BOOL writesDepth;
 @property (readonly) BOOL writesStencil;
 
++ (BOOL)newCaptureDepthStencilState:(out id *)arg1 associatedWithBaseDepthStencilState:(id)arg2 captureDevice:(id)arg3;
 - (void).cxx_destruct;
 - (BOOL)conformsToProtocol:(id)arg1;
 - (void)dealloc;

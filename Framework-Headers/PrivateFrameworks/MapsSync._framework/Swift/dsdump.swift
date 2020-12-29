@@ -31,7 +31,7 @@
 
  class MapsSync.MapsSyncManagedCollectionItem : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x97e40002a640 (0x7e40002a640) in binary!
+WARNING: couldn't find address 0x99240002ab88 (0x1240002ab88) in binary!
 	0x18000000c  @objc MapsSyncManagedCollectionItem.(null) <stripped>
  }
 
@@ -40,65 +40,65 @@ WARNING: couldn't find address 0x97e40002a640 (0x7e40002a640) in binary!
 	// Properties
 	var _customName : String? // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _droppedPinCoordinate : ¡π // +0x0 (0x10)
+	var _droppedPinCoordinate : aΩ // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _droppedPinFloorOrdinal : ˘Ω // +0x0 (0x4)
+	var _droppedPinFloorOrdinal : ô¡ // +0x0 (0x4)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _mapItemStorage : ¡π // +0x0 (0x10)
+	var _mapItemStorage : aΩ // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _origin : €Ω // +0x0 (0x2)
+	var _origin : {¡ // +0x0 (0x2)
 	var _latitude : NSNumber? // +0x0 (0x8)
 	var _longitude : NSNumber? // +0x0 (0x8)
 	var _muid : NSNumber? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xc31e0002a520 (0x31e0002a520) in binary!
-	0xa5d0  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xa5c40002a630 (0x5c40002a630) in binary!
-	0xa5b8  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xa59c0002a640 (0x59c0002a640) in binary!
-	0xa5a0  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xceb40002a6a0 (0x6b40002a6a0) in binary!
-	0xa588  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xa57c0002a6a0 (0x57c0002a6a0) in binary!
-	0xa570  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xd1e40002a4a0 (0x1e40002a4a0) in binary!
-	0xd1d8  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0x99dc0002a480 (0x1dc0002a480) in binary!
-	0x8fe0  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0x8fd40002a458 (0x7d40002a458) in binary!
-	0xb340  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xc0bc0002a430 (0xbc0002a430) in binary!
-	0xc0b0  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xa5d40002a410 (0x5d40002a410) in binary!
+WARNING: couldn't find address 0xc4be0002aa60 (0x4be0002aa60) in binary!
+	0xa710  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xa7040002ab78 (0x7040002ab78) in binary!
+	0xa6f8  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xa6dc0002ab88 (0x6dc0002ab88) in binary!
+	0xa6e0  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xd0540002abe8 (0x540002abe8) in binary!
+	0xa6c8  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xa6bc0002abe8 (0x6bc0002abe8) in binary!
+	0xa6b0  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xd3840002a9e0 (0x3840002a9e0) in binary!
+	0xd378  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x9b1c0002a9c0 (0x31c0002a9c0) in binary!
+	0x9120  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x91140002a998 (0x1140002a998) in binary!
+	0xb480  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xc25c0002a970 (0x25c0002a970) in binary!
+	0xc250  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xa7140002a950 (0x7140002a950) in binary!
 	0xc8000000c  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xc08c0002a3e8 (0x8c0002a3e8) in binary!
-	0xa4e0  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0x99640002a548 (0x1640002a548) in binary!
-	0xa4c8  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0x994c0002a540 (0x14c0002a540) in binary!
-	0xa4a0  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xa7800002a540 (0x7800002a540) in binary!
-	0xa498  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0x991c0002a540 (0x11c0002a540) in binary!
-	0xcda0  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xce9a0002a588 (0x69a0002a588) in binary!
-	0xa538  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xc22c0002a928 (0x22c0002a928) in binary!
+	0xa620  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x9aa40002aa90 (0x2a40002aa90) in binary!
+	0xa608  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x9a8c0002aa88 (0x28c0002aa88) in binary!
+	0xa5e0  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xa8c00002aa88 (0xc00002aa88) in binary!
+	0xa5d8  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x9a5c0002aa88 (0x25c0002aa88) in binary!
+	0xcf40  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xd03a0002aad0 (0x3a0002aad0) in binary!
+	0xa678  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff6fd60  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+	0xfff6d760  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x84fff706c8  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
-	0xfff71000  @objc MapsSyncCollectionPlaceItem.1 <stripped>
+	0x5c4fff6e0c8  @objc MapsSyncCollectionPlaceItem.(null) <stripped>
+	0xfff6ea00  @objc MapsSyncCollectionPlaceItem.	 <stripped>
 
 	// Swift methods
-	0x2200  func <stripped> // getter 
-	0x22e0  func <stripped> // getter 
-	0x2380  func <stripped> // getter 
-	0x23e0  func <stripped> // getter 
-	0x2490  func <stripped> // getter 
-	0x24e0  func <stripped> // getter 
-	0x2540  func <stripped> // getter 
-	0x25a0  func <stripped> // getter 
+	0x26c0  func <stripped> // getter 
+	0x27a0  func <stripped> // getter 
+	0x2840  func <stripped> // getter 
+	0x28a0  func <stripped> // getter 
+	0x2950  func <stripped> // getter 
+	0x29a0  func <stripped> // getter 
+	0x2a00  func <stripped> // getter 
+	0x2a60  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableCollectionPlaceItem : MapsSyncMutableCollectionItem {
@@ -107,50 +107,50 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var _proxyCollectionPlaceItem : MapsSyncManagedCollectionPlaceItem
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xc08c0002a3e8 (0x8c0002a3e8) in binary!
-	0xa4e0  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0x99640002a548 (0x1640002a548) in binary!
-	0xa4c8  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0x994c0002a540 (0x14c0002a540) in binary!
-	0xa4a0  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xa7800002a540 (0x7800002a540) in binary!
-	0xa498  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0x991c0002a540 (0x11c0002a540) in binary!
-	0xcda0  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xce9a0002a588 (0x69a0002a588) in binary!
-	0xa538  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xc22c0002a928 (0x22c0002a928) in binary!
+	0xa620  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x9aa40002aa90 (0x2a40002aa90) in binary!
+	0xa608  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x9a8c0002aa88 (0x28c0002aa88) in binary!
+	0xa5e0  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xa8c00002aa88 (0xc00002aa88) in binary!
+	0xa5d8  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x9a5c0002aa88 (0x25c0002aa88) in binary!
+	0xcf40  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xd03a0002aad0 (0x3a0002aad0) in binary!
+	0xa678  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff6fd60  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
+	0xfff6d760  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x84fff706c8  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
-	0xfff71000  @objc MapsSyncMutableCollectionPlaceItem.1 <stripped>
+	0x5c4fff6e0c8  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
+	0xfff6ea00  @objc MapsSyncMutableCollectionPlaceItem.	 <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff738f8  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
+	0xfff712f8  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x2d4fff726e0  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
-	0x2acfff72a28  @objc MapsSyncMutableCollectionPlaceItem.(Hâ}–1ˇËdg <stripped>
+	0x14fff700e0  @objc MapsSyncMutableCollectionPlaceItem.(null) <stripped>
+	0x7ecfff70428  @objc MapsSyncMutableCollectionPlaceItem.e∏H∏ˇˇˇˇˇˇˇ?I9≈á© <stripped>
 
 	// Swift methods
-	0x3cf0  func <stripped> // getter 
-	0x3e50  func <stripped> // setter 
-	0x4010  func <stripped> // modifyCoroutine 
-	0x4190  func <stripped> // getter 
-	0x42a0  func <stripped> // setter 
-	0x43e0  func <stripped> // modifyCoroutine 
-	0x4500  func <stripped> // getter 
-	0x4540  func <stripped> // setter 
-	0x45c0  func <stripped> // modifyCoroutine 
-	0x4660  func <stripped> // getter 
-	0x4830  func <stripped> // setter 
-	0x4cb0  func <stripped> // modifyCoroutine 
-	0x4d20  func <stripped> // getter 
-	0x4d60  func <stripped> // setter 
-	0x4df0  func <stripped> // modifyCoroutine 
+	0x41b0  func <stripped> // getter 
+	0x4310  func <stripped> // setter 
+	0x44d0  func <stripped> // modifyCoroutine 
+	0x4650  func <stripped> // getter 
+	0x4760  func <stripped> // setter 
+	0x48a0  func <stripped> // modifyCoroutine 
+	0x49c0  func <stripped> // getter 
+	0x4a00  func <stripped> // setter 
+	0x4a80  func <stripped> // modifyCoroutine 
+	0x4b20  func <stripped> // getter 
+	0x4cf0  func <stripped> // setter 
+	0x5170  func <stripped> // modifyCoroutine 
+	0x51e0  func <stripped> // getter 
+	0x5220  func <stripped> // setter 
+	0x52b0  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncManagedCollectionPlaceItem : MapsSyncManagedCollectionItem {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x962c0002a488 (0x62c0002a488) in binary!
+WARNING: couldn't find address 0x976c0002a9d0 (0x76c0002a9d0) in binary!
 	0x38000000c  @objc MapsSyncManagedCollectionPlaceItem.(null) <stripped>
  }
 
@@ -160,51 +160,50 @@ WARNING: couldn't find address 0x962c0002a488 (0x62c0002a488) in binary!
 	var _specifiedQuery : MapsSyncGenericQuery
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xbf940002a2e8 (0x7940002a2e8) in binary!
-	0xb200  @objc MapsSyncHistoryItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x96e20002a2c0 (0x6e20002a2c0) in binary!
-	0xb1e8  @objc MapsSyncHistoryItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x96ca0002a298 (0x6ca0002a298) in binary!
-	0xb1d0  @objc MapsSyncHistoryItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x95840002a270 (0x5840002a270) in binary!
-	0xa470  @objc MapsSyncHistoryItemQuery.(null) <stripped>
+WARNING: couldn't find address 0xc1340002a828 (0x1340002a828) in binary!
+	0xb340  @objc MapsSyncHistoryItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x98220002a800 (0x220002a800) in binary!
+	0xb328  @objc MapsSyncHistoryItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x980a0002a7d8 (0xa0002a7d8) in binary!
+	0xb310  @objc MapsSyncHistoryItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x96c40002a7b0 (0x6c40002a7b0) in binary!
+	0xa5b0  @objc MapsSyncHistoryItemQuery.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x684fff74cf8  @objc MapsSyncHistoryItemQuery.(null) <stripped>
-	0xfff74e70  @objc MapsSyncHistoryItemQuery.Lã}–Îµø <stripped>
+	0x3c4fff726f8  @objc MapsSyncHistoryItemQuery.(null) <stripped>
+	0xfff72870  @objc MapsSyncHistoryItemQuery.Lâ`LâÁË~Ó <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x1fcfff75f18  @objc MapsSyncHistoryItemQuery.(null) <stripped>
-	0x1d4fff75fa0  @objc MapsSyncHistoryItemQuery.âE»Hãã
- <stripped>
+	0x73cfff73918  @objc MapsSyncHistoryItemQuery.(null) <stripped>
+	0x714fff739a0  @objc MapsSyncHistoryItemQuery.(öE	 <stripped>
 
 	// Swift methods
-	0xb7b0  class func MapsSyncHistoryItemQuery.__allocating_init(delegate:) // init 
-	0xb860  func <stripped> // method 
-	0xb8c0  func <stripped> // method 
-	0xbbb0  func <stripped> // method 
-	0xbd30  func <stripped> // method 
+	0xbc70  class func MapsSyncHistoryItemQuery.__allocating_init(delegate:) // init 
+	0xbd20  func <stripped> // method 
+	0xbd80  func <stripped> // method 
+	0xc070  func <stripped> // method 
+	0xc1f0  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncDataValidator : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa3240002a388 (0x3240002a388) in binary!
+WARNING: couldn't find address 0xa4640002a8d0 (0x4640002a8d0) in binary!
 	0x18000000c  @objc MapsSyncDataValidator.(null) <stripped>
 
 	// Swift methods
-	0xf0d0  class func <stripped> // method 
-	0xf160  class func <stripped> // method 
-	0xf180  class func <stripped> // method 
-	0xf1a0  class func <stripped> // method 
+	0xf590  class func <stripped> // method 
+	0xf620  class func <stripped> // method 
+	0xf640  class func <stripped> // method 
+	0xf660  class func <stripped> // method 
  }
 
  class MapsSync.MapsSyncManagedCachedCuratedCollection : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x94e40002a340 (0x4e40002a340) in binary!
+WARNING: couldn't find address 0x96240002a888 (0x6240002a888) in binary!
 	0x18000000c  @objc MapsSyncManagedCachedCuratedCollection.(null) <stripped>
  }
 
  class MapsSync.MapsSyncManagedAnonymousCredential : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x94cc0002a328 (0x4cc0002a328) in binary!
+WARNING: couldn't find address 0x960c0002a870 (0x60c0002a870) in binary!
 	0xd8000000c  @objc MapsSyncManagedAnonymousCredential.(null) <stripped>
  }
 
@@ -212,41 +211,41 @@ WARNING: couldn't find address 0x94cc0002a328 (0x4cc0002a328) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transitLineStorage : ¡π // +0x0 (0x10)
+	var _transitLineStorage : aΩ // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _muid : ’∏ // +0x0 (0x8)
+	var _muid : uº // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb0ec0002a170 (0xec0002a170) in binary!
-	0xa2d0  @objc MapsSyncCollectionTransitItem.(null) <stripped>
-WARNING: couldn't find address 0xa2c40002a150 (0x2c40002a150) in binary!
-	0x8db8  @objc MapsSyncCollectionTransitItem.(null) <stripped>
-WARNING: couldn't find address 0xcf2c0002a1e8 (0x72c0002a1e8) in binary!
-	0xcf20  @objc MapsSyncCollectionTransitItem.(null) <stripped>
-WARNING: couldn't find address 0x97240002a1c8 (0x7240002a1c8) in binary!
-	0x8d28  @objc MapsSyncCollectionTransitItem.(null) <stripped>
-WARNING: couldn't find address 0x8d1c0002a1a0 (0x51c0002a1a0) in binary!
-	0xb088  @objc MapsSyncCollectionTransitItem.(null) <stripped>
-WARNING: couldn't find address 0xbe040002a178 (0x6040002a178) in binary!
-	0xbdf8  @objc MapsSyncCollectionTransitItem.(null) <stripped>
-WARNING: couldn't find address 0xa31c0002a158 (0x31c0002a158) in binary!
+WARNING: couldn't find address 0xb22c0002a6b0 (0x22c0002a6b0) in binary!
+	0xa410  @objc MapsSyncCollectionTransitItem.(null) <stripped>
+WARNING: couldn't find address 0xa4040002a690 (0x4040002a690) in binary!
+	0x8ef8  @objc MapsSyncCollectionTransitItem.(null) <stripped>
+WARNING: couldn't find address 0xd0cc0002a728 (0xcc0002a728) in binary!
+	0xd0c0  @objc MapsSyncCollectionTransitItem.(null) <stripped>
+WARNING: couldn't find address 0x98640002a708 (0x640002a708) in binary!
+	0x8e68  @objc MapsSyncCollectionTransitItem.(null) <stripped>
+WARNING: couldn't find address 0x8e5c0002a6e0 (0x65c0002a6e0) in binary!
+	0xb1c8  @objc MapsSyncCollectionTransitItem.(null) <stripped>
+WARNING: couldn't find address 0xbfa40002a6b8 (0x7a40002a6b8) in binary!
+	0xbf98  @objc MapsSyncCollectionTransitItem.(null) <stripped>
+WARNING: couldn't find address 0xa45c0002a698 (0x45c0002a698) in binary!
 	0x68000000c  @objc MapsSyncCollectionTransitItem.(null) <stripped>
-WARNING: couldn't find address 0xbdd40002a130 (0x5d40002a130) in binary!
-	0xa228  @objc MapsSyncCollectionTransitItem.(null) <stripped>
-WARNING: couldn't find address 0x96ac0002a098 (0x6ac0002a098) in binary!
-	0x8d10  @objc MapsSyncCollectionTransitItem.(null) <stripped>
-WARNING: couldn't find address 0xb5a40002a2d0 (0x5a40002a2d0) in binary!
-	0xa2c8  @objc MapsSyncCollectionTransitItem.(null) <stripped>
+WARNING: couldn't find address 0xbf740002a670 (0x7740002a670) in binary!
+	0xa368  @objc MapsSyncCollectionTransitItem.(null) <stripped>
+WARNING: couldn't find address 0x97ec0002a5d8 (0x7ec0002a5d8) in binary!
+	0x8e50  @objc MapsSyncCollectionTransitItem.(null) <stripped>
+WARNING: couldn't find address 0xb6e40002a818 (0x6e40002a818) in binary!
+	0xa408  @objc MapsSyncCollectionTransitItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff7aa60  @objc MapsSyncCollectionTransitItem.(null) <stripped>
+	0xfff78460  @objc MapsSyncCollectionTransitItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff7aaf8  @objc MapsSyncCollectionTransitItem.(null) <stripped>
+	0xfff784f8  @objc MapsSyncCollectionTransitItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff7a4a0  @objc MapsSyncCollectionTransitItem.(null) <stripped>
+	0xfff77ea0  @objc MapsSyncCollectionTransitItem.(null) <stripped>
 
 	// Swift methods
-	0x10490  func <stripped> // getter 
-	0x104e0  func <stripped> // getter 
+	0x10950  func <stripped> // getter 
+	0x109a0  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableCollectionTransitItem : MapsSyncMutableCollectionItem {
@@ -255,32 +254,32 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var _proxyCollectionTransitItem : MapsSyncManagedCollectionTransitItem
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xbdd40002a130 (0x5d40002a130) in binary!
-	0xa228  @objc MapsSyncMutableCollectionTransitItem.(null) <stripped>
-WARNING: couldn't find address 0x96ac0002a098 (0x6ac0002a098) in binary!
-	0x8d10  @objc MapsSyncMutableCollectionTransitItem.(null) <stripped>
-WARNING: couldn't find address 0xb5a40002a2d0 (0x5a40002a2d0) in binary!
-	0xa2c8  @objc MapsSyncMutableCollectionTransitItem.(null) <stripped>
+WARNING: couldn't find address 0xbf740002a670 (0x7740002a670) in binary!
+	0xa368  @objc MapsSyncMutableCollectionTransitItem.(null) <stripped>
+WARNING: couldn't find address 0x97ec0002a5d8 (0x7ec0002a5d8) in binary!
+	0x8e50  @objc MapsSyncMutableCollectionTransitItem.(null) <stripped>
+WARNING: couldn't find address 0xb6e40002a818 (0x6e40002a818) in binary!
+	0xa408  @objc MapsSyncMutableCollectionTransitItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff7aa60  @objc MapsSyncMutableCollectionTransitItem.(null) <stripped>
+	0xfff78460  @objc MapsSyncMutableCollectionTransitItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff7aaf8  @objc MapsSyncMutableCollectionTransitItem.(null) <stripped>
+	0xfff784f8  @objc MapsSyncMutableCollectionTransitItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfff7a4a0  @objc MapsSyncMutableCollectionTransitItem.(null) <stripped>
+	0xfff77ea0  @objc MapsSyncMutableCollectionTransitItem.(null) <stripped>
 
 	// Swift methods
-	0x11330  func <stripped> // getter 
-	0x11460  func <stripped> // setter 
-	0x115e0  func <stripped> // modifyCoroutine 
-	0x11750  func <stripped> // getter 
-	0x11790  func <stripped> // setter 
-	0x11810  func <stripped> // modifyCoroutine 
+	0x117f0  func <stripped> // getter 
+	0x11920  func <stripped> // setter 
+	0x11aa0  func <stripped> // modifyCoroutine 
+	0x11c10  func <stripped> // getter 
+	0x11c50  func <stripped> // setter 
+	0x11cd0  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncDataContainer : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x11e40  func <stripped> // method 
-	0x12210  func <stripped> // method 
+	0x12300  func <stripped> // method 
+	0x126d0  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncMemoryOnlyDataContainer : MapsSyncDataContainer { }
@@ -304,13 +303,13 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var _starting : Bool
 
 	// Swift methods
-	0x12bd0  func <stripped> // method 
-	0x12f30  func <stripped> // method 
+	0x13090  func <stripped> // method 
+	0x133f0  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncDataContainerXPCDelegate : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x98c40002a028 (0xc40002a028) in binary!
+WARNING: couldn't find address 0x9a040002a568 (0x2040002a568) in binary!
 	0x28000000c  @objc MapsSyncDataContainerXPCDelegate.(null) <stripped>
 
 	// Swift methods
@@ -318,7 +317,7 @@ WARNING: couldn't find address 0x98c40002a028 (0xc40002a028) in binary!
 
  class MapsSync.MapsSyncPersistentContainer : NSPersistentContainer /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x93a40002a3c8 (0x3a40002a3c8) in binary!
+WARNING: couldn't find address 0x94e40002a910 (0x4e40002a910) in binary!
 	0x18000000c  @objc MapsSyncPersistentContainer.(null) <stripped>
  }
 
@@ -338,7 +337,7 @@ WARNING: couldn't find address 0x93a40002a3c8 (0x3a40002a3c8) in binary!
  class MapsSync.MapsSyncFetch {
  class MapsSync.MapsSyncManagedReviewedPlace : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x93540002a1b0 (0x3540002a1b0) in binary!
+WARNING: couldn't find address 0x94940002a6f8 (0x4940002a6f8) in binary!
 	0xa8000000c  @objc MapsSyncManagedReviewedPlace.(null) <stripped>
  }
 
@@ -348,35 +347,33 @@ WARNING: couldn't find address 0x93540002a1b0 (0x3540002a1b0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _muid : ’∏ // +0x0 (0x8)
+	var _muid : uº // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _numberPhotosUploaded : ˘Ω // +0x0 (0x4)
+	var _numberPhotosUploaded : ô¡ // +0x0 (0x4)
 	var _rating : MapsSyncReviewRating // +0x0 (0x2)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8c640002a148 (0x4640002a148) in binary!
-	0xa148  @objc MapsSyncCachedUserReview.(null) <stripped>
-WARNING: couldn't find address 0xca6c0002a4b8 (0x26c0002a4b8) in binary!
-	0xa140  @objc MapsSyncCachedUserReview.(null) <stripped>
-WARNING: couldn't find address 0xcdb40002a188 (0x5b40002a188) in binary!
-	0x95b8  @objc MapsSyncCachedUserReview.(null) <stripped>
-WARNING: couldn't find address 0x8bbc0002a048 (0x3bc0002a048) in binary!
-	0x8bb0  @objc MapsSyncCachedUserReview.(null) <stripped>
-WARNING: couldn't find address 0xaf1c0002a020 (0x71c0002a020) in binary!
-	0xbc98  @objc MapsSyncCachedUserReview.(null) <stripped>
+WARNING: couldn't find address 0x8da40002a688 (0x5a40002a688) in binary!
+	0xa288  @objc MapsSyncCachedUserReview.(null) <stripped>
+WARNING: couldn't find address 0xcc0c0002aa00 (0x40c0002aa00) in binary!
+	0xa280  @objc MapsSyncCachedUserReview.(null) <stripped>
+WARNING: couldn't find address 0xcf540002a6d0 (0x7540002a6d0) in binary!
+	0x96f8  @objc MapsSyncCachedUserReview.(null) <stripped>
+WARNING: couldn't find address 0x8cfc0002a588 (0x4fc0002a588) in binary!
+	0x8cf0  @objc MapsSyncCachedUserReview.(null) <stripped>
+WARNING: couldn't find address 0xb05c0002a560 (0x5c0002a560) in binary!
+	0xbe38  @objc MapsSyncCachedUserReview.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0xbcfff87cf0  @objc MapsSyncCachedUserReview.(null) <stripped>
-	0x41cfff87da8  @objc MapsSyncCachedUserReview.ˇˇfD <stripped>
-	0x414fff87ed0  @objc MapsSyncCachedUserReview.Aˇ‘Iâ∆LâˇAˇ‘IâƒLâˇLâˆHãU»HâŸˇULã= Ñ
- <stripped>
-	0x79cfff88058  @objc MapsSyncCachedUserReview.Hç=Òm
- <stripped>
-	0x19b0002a3f8  @objc MapsSyncCachedUserReview. <stripped>
+	0x5fcfff85860  @objc MapsSyncCachedUserReview.(null) <stripped>
+	0x164fff85918  @objc MapsSyncCachedUserReview.Ë!"	 <stripped>
+	0x15cfff85a40  @objc MapsSyncCachedUserReview.A∂˛Hç5^ˇˇHç^Æ	 <stripped>
+	0x4dcfff85bc8  @objc MapsSyncCachedUserReview.Ë—„ <stripped>
+	0x2db0002a940  @objc MapsSyncCachedUserReview.ÈÒ <stripped>
 
 	// Swift methods
-	0x207c0  func <stripped> // getter 
-	0x207f0  func <stripped> // getter 
-	0x20830  func <stripped> // getter 
+	0x20df0  func <stripped> // getter 
+	0x20e20  func <stripped> // getter 
+	0x20e60  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableCachedUserReview : MapsSyncMutableBaseItem {
@@ -385,30 +382,30 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 	var _proxy : MapsSyncManagedCachedUserReview // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xbc8400029fe0 (0x48400029fe0) in binary!
-	0x8bd8  @objc MapsSyncMutableCachedUserReview.(null) <stripped>
-WARNING: couldn't find address 0xb46c0002a198 (0x46c0002a198) in binary!
-	0xa0b0  @objc MapsSyncMutableCachedUserReview.(null) <stripped>
-WARNING: couldn't find address 0xa3900002a418 (0x3900002a418) in binary!
-	0xc9c8  @objc MapsSyncMutableCachedUserReview.(null) <stripped>
-WARNING: couldn't find address 0xcac20002a410 (0x2c20002a410) in binary!
-	0xa160  @objc MapsSyncMutableCachedUserReview.(null) <stripped>
+WARNING: couldn't find address 0xbe240002a520 (0x6240002a520) in binary!
+	0x8d18  @objc MapsSyncMutableCachedUserReview.(null) <stripped>
+WARNING: couldn't find address 0xb5ac0002a6e0 (0x5ac0002a6e0) in binary!
+	0xa1f0  @objc MapsSyncMutableCachedUserReview.(null) <stripped>
+WARNING: couldn't find address 0xa4d00002a960 (0x4d00002a960) in binary!
+	0xcb68  @objc MapsSyncMutableCachedUserReview.(null) <stripped>
+WARNING: couldn't find address 0xcc620002a958 (0x4620002a958) in binary!
+	0xa2a0  @objc MapsSyncMutableCachedUserReview.(null) <stripped>
 WARNING: couldn't find address 0x178000000c (0x178000000c) in binary!
-	0x6d4fff88958  @objc MapsSyncMutableCachedUserReview.(null) <stripped>
-	0x6b4fff88bb0  @objc MapsSyncMutableCachedUserReview.HÉÏhIâÙIâˇHç=6 <stripped>
-	0x3d4fff88c38  @objc MapsSyncMutableCachedUserReview.UHâÂSPHâ˚Hâ˜Ë?≈ˇˇHãH¯HâﬂHâ∆ˇQHâÿHÉƒ[]√Ñ <stripped>
-	0x3dcfff88d00  @objc MapsSyncMutableCachedUserReview. <stripped>
+	0x414fff864c8  @objc MapsSyncMutableCachedUserReview.(null) <stripped>
+	0x3f4fff86720  @objc MapsSyncMutableCachedUserReview.Ëû		 <stripped>
+	0x11cfff867a8  @objc MapsSyncMutableCachedUserReview.âp8Lâ`@Ú@ Lâp`Lâ`hÚHHHFÒHø. <stripped>
+	0x124fff86870  @objc MapsSyncMutableCachedUserReview.‚		 <stripped>
 
 	// Swift methods
-	0x211f0  func <stripped> // getter 
-	0x21230  func <stripped> // setter 
-	0x212b0  func <stripped> // modifyCoroutine 
-	0x21330  func <stripped> // getter 
-	0x21370  func <stripped> // setter 
-	0x213f0  func <stripped> // modifyCoroutine 
-	0x214b0  func <stripped> // getter 
-	0x21510  func <stripped> // setter 
-	0x215c0  func <stripped> // modifyCoroutine 
+	0x21820  func <stripped> // getter 
+	0x21860  func <stripped> // setter 
+	0x218e0  func <stripped> // modifyCoroutine 
+	0x21960  func <stripped> // getter 
+	0x219a0  func <stripped> // setter 
+	0x21a20  func <stripped> // modifyCoroutine 
+	0x21ae0  func <stripped> // getter 
+	0x21b40  func <stripped> // setter 
+	0x21bf0  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncCachedCuratedCollection : MapsSyncBaseItem {
@@ -416,84 +413,85 @@ WARNING: couldn't find address 0x178000000c (0x178000000c) in binary!
 	// Properties
 	var _collectionDescription : String? // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _image : ¡π // +0x0 (0x10)
+	var _image : aΩ // +0x0 (0x10)
 	var _imageUrl : String? // +0x0 (0x10)
 	var _title : String? // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _curatedCollectionIdentifier : ’∏ // +0x0 (0x8)
+	var _curatedCollectionIdentifier : uº // +0x0 (0x8)
 	var _isTombstone : Bool // +0x0 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _lastFetchedDate : °∑ // +0x0 (0x0)
+	var _lastFetchedDate : Aª // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _lastSignificantChangeDate : °∑ // +0x0 (0x0)
+	var _lastSignificantChangeDate : Aª // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _placesCount : ˘Ω // +0x0 (0x4)
+	var _placesCount : ô¡ // +0x0 (0x4)
 	var _publisherAttribution : String? // +0x0 (0x10)
 	var _titleLocale : String? // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resultProviderIdentifier : ˘Ω // +0x0 (0x4)
+	var _resultProviderIdentifier : ô¡ // +0x0 (0x4)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa19b0002a3f8 (0x19b0002a3f8) in binary!
-	0xa19d  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xbc040002a6d8 (0x4040002a6d8) in binary!
-	0x8af0  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xa04c0002a3d0 (0x4c0002a3d0) in binary!
-	0xa040  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xa0340002a3d8 (0x340002a3d8) in binary!
-	0xa028  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x8b1c0002a3e0 (0x31c0002a3e0) in binary!
-	0xae20  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-	0x9ff8  @objc MapsSyncCachedCuratedCollection.â«HçµˇˇˇLâÔ1“1…Ëøﬂ <stripped>
-WARNING: couldn't find address 0x9fdc0002a3f0 (0x7dc0002a3f0) in binary!
-	0x9fe0  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x9fd40002a3f8 (0x7d40002a3f8) in binary!
-	0x9fb8  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x9fbc00029e28 (0x7bc00029e28) in binary!
-	0xcc30  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x943400029ed8 (0x43400029ed8) in binary!
-	0x8a38  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x8a2c00029eb0 (0x22c00029eb0) in binary!
-	0xad98  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xa04400029e80 (0x4400029e80) in binary!
+WARNING: couldn't find address 0xa2db0002a940 (0x2db0002a940) in binary!
+	0xa2dd  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xbda40002ac20 (0x5a40002ac20) in binary!
+	0x8c30  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xa18c0002a918 (0x18c0002a918) in binary!
+	0xa180  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xa1740002a920 (0x1740002a920) in binary!
+	0xa168  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x8c5c0002a928 (0x45c0002a928) in binary!
+	0xaf60  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xa1440002a930 (0x1440002a930) in binary!
+	0xa138  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xa11c0002a938 (0x11c0002a938) in binary!
+	0xa120  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xa1140002a940 (0x1140002a940) in binary!
+	0xa0f8  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xa0fc0002a368 (0xfc0002a368) in binary!
+	0xcdd0  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x95740002a418 (0x5740002a418) in binary!
+	0x8b78  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x8b6c0002a3f0 (0x36c0002a3f0) in binary!
+	0xaed8  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xa1840002a3c0 (0x1840002a3c0) in binary!
 	0x1a8000000c  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xbafc00029e58 (0x2fc00029e58) in binary!
-	0x9f50  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x93d40002a2d0 (0x3d40002a2d0) in binary!
-	0x9f38  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x93bc0002a2c8 (0x3bc0002a2c8) in binary!
-	0x9f20  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x93a40002a2c0 (0x3a40002a2c0) in binary!
-	0x9f08  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x938c0002a2b8 (0x38c0002a2b8) in binary!
-	0x89f0  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xb2840002a2b0 (0x2840002a2b0) in binary!
-	0xace8  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xc2300002a2a8 (0x2300002a2a8) in binary!
-	0x9ec0  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x93440002a2a0 (0x3440002a2a0) in binary!
-	0x9ea8  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x932c0002a298 (0x32c0002a298) in binary!
-	0x9e80  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xa1600002a290 (0x1600002a290) in binary!
-	0x9e78  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x92fc0002a288 (0x2fc0002a288) in binary!
-	0x9e60  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xbc9c0002a398 (0x49c0002a398) in binary!
+	0xa090  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x95140002a818 (0x5140002a818) in binary!
+	0xa078  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x94fc0002a810 (0x4fc0002a810) in binary!
+	0xa060  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x94e40002a808 (0x4e40002a808) in binary!
+	0xa048  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x94cc0002a800 (0x4cc0002a800) in binary!
+	0x8b30  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xb3c40002a7f8 (0x3c40002a7f8) in binary!
+	0xae28  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xc3d00002a7f0 (0x3d00002a7f0) in binary!
+	0xa000  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x94840002a7e8 (0x4840002a7e8) in binary!
+	0x9fe8  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x946c0002a7e0 (0x46c0002a7e0) in binary!
+	0x9fc0  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xa2a00002a7d8 (0x2a00002a7d8) in binary!
+	0x9fb8  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x943c0002a7d0 (0x43c0002a7d0) in binary!
+	0x9fa0  @objc MapsSyncCachedCuratedCollection.(null) <stripped>
 
 	// Swift methods
-	0x21aa0  class func MapsSyncCachedCuratedCollection.__allocating_init(curatedCollectionIdentifier:resultProviderIdentifier:) // init 
-	0x22140  func <stripped> // getter 
-	0x221d0  func <stripped> // getter 
-	0x22220  func <stripped> // getter 
-	0x22260  func <stripped> // getter 
-	0x222a0  func <stripped> // getter 
-	0x222d0  func <stripped> // getter 
-	0x22310  func <stripped> // getter 
-	0x22400  func <stripped> // getter 
-	0x22470  func <stripped> // getter 
-	0x224b0  func <stripped> // getter 
-	0x22540  func <stripped> // getter 
-	0x225a0  func <stripped> // getter 
+	0x220d0  class func MapsSyncCachedCuratedCollection.__allocating_init(curatedCollectionIdentifier:resultProviderIdentifier:) // init 
+	0x22770  func <stripped> // getter 
+	0x22800  func <stripped> // getter 
+	0x22850  func <stripped> // getter 
+	0x22890  func <stripped> // getter 
+	0x228d0  func <stripped> // getter 
+	0x22900  func <stripped> // getter 
+	0x22940  func <stripped> // getter 
+	0x22a30  func <stripped> // getter 
+	0x22aa0  func <stripped> // getter 
+	0x22ae0  func <stripped> // getter 
+	0x22b70  func <stripped> // getter 
+	0x22bd0  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableCachedCuratedCollection : MapsSyncMutableBaseItem {
@@ -502,91 +500,92 @@ WARNING: couldn't find address 0x92fc0002a288 (0x2fc0002a288) in binary!
 	var _proxy : MapsSyncManagedCachedCuratedCollection
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xbafc00029e58 (0x2fc00029e58) in binary!
-	0x9f50  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x93d40002a2d0 (0x3d40002a2d0) in binary!
-	0x9f38  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x93bc0002a2c8 (0x3bc0002a2c8) in binary!
-	0x9f20  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x93a40002a2c0 (0x3a40002a2c0) in binary!
-	0x9f08  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x938c0002a2b8 (0x38c0002a2b8) in binary!
-	0x89f0  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xb2840002a2b0 (0x2840002a2b0) in binary!
-	0xace8  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xc2300002a2a8 (0x2300002a2a8) in binary!
-	0x9ec0  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x93440002a2a0 (0x3440002a2a0) in binary!
-	0x9ea8  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x932c0002a298 (0x32c0002a298) in binary!
-	0x9e80  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xa1600002a290 (0x1600002a290) in binary!
-	0x9e78  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x92fc0002a288 (0x2fc0002a288) in binary!
-	0x9e60  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x92e40002a280 (0x2e40002a280) in binary!
-	0x9e38  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xa1180002a278 (0x1180002a278) in binary!
-	0x9f00  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xbc9c0002a398 (0x49c0002a398) in binary!
+	0xa090  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x95140002a818 (0x5140002a818) in binary!
+	0xa078  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x94fc0002a810 (0x4fc0002a810) in binary!
+	0xa060  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x94e40002a808 (0x4e40002a808) in binary!
+	0xa048  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x94cc0002a800 (0x4cc0002a800) in binary!
+	0x8b30  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xb3c40002a7f8 (0x3c40002a7f8) in binary!
+	0xae28  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xc3d00002a7f0 (0x3d00002a7f0) in binary!
+	0xa000  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x94840002a7e8 (0x4840002a7e8) in binary!
+	0x9fe8  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x946c0002a7e0 (0x46c0002a7e0) in binary!
+	0x9fc0  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xa2a00002a7d8 (0x2a00002a7d8) in binary!
+	0x9fb8  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x943c0002a7d0 (0x43c0002a7d0) in binary!
+	0x9fa0  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x94240002a7c8 (0x4240002a7c8) in binary!
+	0x9f78  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xa2580002a7c0 (0x2580002a7c0) in binary!
+	0xa040  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x254fff8cb28  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-	0x64cfff8cdb0  @objc MapsSyncMutableCachedCuratedCollection.VAUATSHÉÏhIâÙIâˇHç=6 <stripped>
-	0x50cfff8d258  @objc MapsSyncMutableCachedCuratedCollection.«HÉƒA]]È›∏ <stripped>
-	0x4e4fff8d2c0  @objc MapsSyncMutableCachedCuratedCollection.UHâÂAUPLâËMãmHãx ˇPHÉƒA]]√ <stripped>
-	0x4bcfff8d648  @objc MapsSyncMutableCachedCuratedCollection. <stripped>
-	0x13c00029c98  @objc MapsSyncMutableCachedCuratedCollection. <stripped>
-WARNING: couldn't find address 0x2a1d4fff8d818 (0x1d4fff8d818) in binary!
-	0x1aa0002a1d0  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x2a1ccfff8d870 (0x1ccfff8d870) in binary!
-	0x1fc0002a1c8  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x29c6cfff8dab8 (0x46cfff8dab8) in binary!
+	0x79cfff8a698  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+	0x394fff8a920  @objc MapsSyncMutableCachedCuratedCollection.¿ø, <stripped>
+	0x24cfff8adc8  @objc MapsSyncMutableCachedCuratedCollection.É«Ò1ˇËûà <stripped>
+	0x224fff8ae30  @objc MapsSyncMutableCachedCuratedCollection.UHâÂHç%◊
+ <stripped>
+	0x1fcfff8b1b8  @objc MapsSyncMutableCachedCuratedCollection.\ˇ <stripped>
+	0x2dc0002a1d8  @objc MapsSyncMutableCachedCuratedCollection._]√Hç=∆i <stripped>
+WARNING: couldn't find address 0x2a71cfff8b388 (0x71cfff8b388) in binary!
+	0x2ea0002a718  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x2a714fff8b3e0 (0x714fff8b3e0) in binary!
+	0x33c0002a710  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x2a1acfff8b628 (0x1acfff8b628) in binary!
 	0xe8000000c  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x9e1c00029b10 (0x61c00029b10) in binary!
-	0x9e10  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xab4400029ae8 (0x34400029ae8) in binary!
-	0xc08c  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x9dec00029ac0 (0x5ec00029ac0) in binary!
-	0x9de0  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x9d0400029a98 (0x50400029a98) in binary!
-	0x9cf8  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x9f5c0002a050 (0x75c0002a050) in binary!
+	0x9f50  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xac840002a028 (0x4840002a028) in binary!
+	0xc22c  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x9f2c0002a000 (0x72c0002a000) in binary!
+	0x9f20  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x9e4400029fd8 (0x64400029fd8) in binary!
+	0x9e38  @objc MapsSyncMutableCachedCuratedCollection.(null) <stripped>
 
 	// Swift methods
-	0x23780  func <stripped> // getter 
-	0x237c0  func <stripped> // setter 
-	0x23820  func <stripped> // modifyCoroutine 
-	0x239b0  func <stripped> // getter 
-	0x23b60  func <stripped> // setter 
-	0x23d40  func <stripped> // modifyCoroutine 
-	0x23ea0  func <stripped> // getter 
-	0x23ee0  func <stripped> // setter 
-	0x23f40  func <stripped> // modifyCoroutine 
-	0x24030  func <stripped> // getter 
-	0x24070  func <stripped> // setter 
-	0x240d0  func <stripped> // modifyCoroutine 
-	0x241c0  func <stripped> // getter 
-	0x24200  func <stripped> // setter 
-	0x24280  func <stripped> // modifyCoroutine 
-	0x24300  func <stripped> // getter 
-	0x24340  func <stripped> // setter 
-	0x243d0  func <stripped> // modifyCoroutine 
-	0x24450  func <stripped> // getter 
-	0x24490  func <stripped> // setter 
-	0x244f0  func <stripped> // modifyCoroutine 
-	0x246f0  func <stripped> // getter 
-	0x24940  func <stripped> // setter 
-	0x24b30  func <stripped> // modifyCoroutine 
-	0x24e00  func <stripped> // getter 
-	0x24e40  func <stripped> // setter 
-	0x24ea0  func <stripped> // modifyCoroutine 
-	0x24f20  func <stripped> // getter 
-	0x24f60  func <stripped> // setter 
-	0x24fc0  func <stripped> // modifyCoroutine 
-	0x25170  func <stripped> // getter 
-	0x25310  func <stripped> // setter 
-	0x25530  func <stripped> // modifyCoroutine 
-	0x256b0  func <stripped> // getter 
-	0x25710  func <stripped> // setter 
-	0x257e0  func <stripped> // modifyCoroutine 
+	0x23db0  func <stripped> // getter 
+	0x23df0  func <stripped> // setter 
+	0x23e50  func <stripped> // modifyCoroutine 
+	0x23fe0  func <stripped> // getter 
+	0x24190  func <stripped> // setter 
+	0x24370  func <stripped> // modifyCoroutine 
+	0x244d0  func <stripped> // getter 
+	0x24510  func <stripped> // setter 
+	0x24570  func <stripped> // modifyCoroutine 
+	0x24660  func <stripped> // getter 
+	0x246a0  func <stripped> // setter 
+	0x24700  func <stripped> // modifyCoroutine 
+	0x247f0  func <stripped> // getter 
+	0x24830  func <stripped> // setter 
+	0x248b0  func <stripped> // modifyCoroutine 
+	0x24930  func <stripped> // getter 
+	0x24970  func <stripped> // setter 
+	0x24a00  func <stripped> // modifyCoroutine 
+	0x24a80  func <stripped> // getter 
+	0x24ac0  func <stripped> // setter 
+	0x24b20  func <stripped> // modifyCoroutine 
+	0x24d20  func <stripped> // getter 
+	0x24f70  func <stripped> // setter 
+	0x25160  func <stripped> // modifyCoroutine 
+	0x25430  func <stripped> // getter 
+	0x25470  func <stripped> // setter 
+	0x254d0  func <stripped> // modifyCoroutine 
+	0x25550  func <stripped> // getter 
+	0x25590  func <stripped> // setter 
+	0x255f0  func <stripped> // modifyCoroutine 
+	0x257a0  func <stripped> // getter 
+	0x25940  func <stripped> // setter 
+	0x25b60  func <stripped> // modifyCoroutine 
+	0x25ce0  func <stripped> // getter 
+	0x25d40  func <stripped> // setter 
+	0x25e10  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncHistoryEvDirectionsItem : MapsSyncHistoryDirectionsItem {
@@ -596,27 +595,27 @@ WARNING: couldn't find address 0x9d0400029a98 (0x50400029a98) in binary!
 	var _vehicleIdentifier : String? // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9e1c00029e60 (0x61c00029e60) in binary!
-	0xa197  @objc MapsSyncHistoryEvDirectionsItem.(null) <stripped>
-WARNING: couldn't find address 0x9e040002a258 (0x6040002a258) in binary!
-	0xca78  @objc MapsSyncHistoryEvDirectionsItem.(null) <stripped>
-WARNING: couldn't find address 0x927c00029d20 (0x27c00029d20) in binary!
-	0x8880  @objc MapsSyncHistoryEvDirectionsItem.(null) <stripped>
-WARNING: couldn't find address 0x887400029cf8 (0x7400029cf8) in binary!
-	0xabe0  @objc MapsSyncHistoryEvDirectionsItem.(null) <stripped>
-WARNING: couldn't find address 0xb95c0002a430 (0x15c0002a430) in binary!
-	0x9e80  @objc MapsSyncHistoryEvDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0x9f5c0002a3a8 (0x75c0002a3a8) in binary!
+	0xa2d7  @objc MapsSyncHistoryEvDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0x9f440002a7a0 (0x7440002a7a0) in binary!
+	0xcc18  @objc MapsSyncHistoryEvDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0x93bc0002a260 (0x3bc0002a260) in binary!
+	0x89c0  @objc MapsSyncHistoryEvDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0x89b40002a238 (0x1b40002a238) in binary!
+	0xad20  @objc MapsSyncHistoryEvDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0xbafc0002a978 (0x2fc0002a978) in binary!
+	0x9fc0  @objc MapsSyncHistoryEvDirectionsItem.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x1d4fff8d818  @objc MapsSyncHistoryEvDirectionsItem.(null) <stripped>
-	0x1ccfff8d870  @objc MapsSyncHistoryEvDirectionsItem.VAUATSPIâ◊1ˇËtﬁ <stripped>
-	0x46cfff8dab8  @objc MapsSyncHistoryEvDirectionsItem.å <stripped>
-	0x61c00029b10  @objc MapsSyncHistoryEvDirectionsItem. <stripped>
-WARNING: couldn't find address 0x29afcfff8e748 (0x2fcfff8e748) in binary!
-	0x34400029ae8  @objc MapsSyncHistoryEvDirectionsItem.(null) <stripped>
+	0x71cfff8b388  @objc MapsSyncHistoryEvDirectionsItem.(null) <stripped>
+	0x714fff8b3e0  @objc MapsSyncHistoryEvDirectionsItem.æError <stripped>
+	0x1acfff8b628  @objc MapsSyncHistoryEvDirectionsItem.Hâ«Ëj	 <stripped>
+	0x75c0002a050  @objc MapsSyncHistoryEvDirectionsItem.LâˇË“	 <stripped>
+WARNING: couldn't find address 0x2a03cfff8c2b8 (0x3cfff8c2b8) in binary!
+	0x4840002a028  @objc MapsSyncHistoryEvDirectionsItem.(null) <stripped>
 
 	// Swift methods
-	0x264c0  func <stripped> // getter 
-	0x26530  func <stripped> // getter 
+	0x26af0  func <stripped> // getter 
+	0x26b60  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableHistoryEvDirectionsItem : MapsSyncMutableHistoryDirectionsItem {
@@ -625,24 +624,24 @@ WARNING: couldn't find address 0x29afcfff8e748 (0x2fcfff8e748) in binary!
 	var _proxyHistory : MapsSyncManagedHistoryEvDirectionsItem // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb93c00029c98 (0x13c00029c98) in binary!
-	0xa117  @objc MapsSyncMutableHistoryEvDirectionsItem.(null) <stripped>
-WARNING: couldn't find address 0xa1aa0002a1d0 (0x1aa0002a1d0) in binary!
-	0x9d78  @objc MapsSyncMutableHistoryEvDirectionsItem.(null) <stripped>
-WARNING: couldn't find address 0x91fc0002a1c8 (0x1fc0002a1c8) in binary!
-	0x9e30  @objc MapsSyncMutableHistoryEvDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0xbadc0002a1d8 (0x2dc0002a1d8) in binary!
+	0xa257  @objc MapsSyncMutableHistoryEvDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0xa2ea0002a718 (0x2ea0002a718) in binary!
+	0x9eb8  @objc MapsSyncMutableHistoryEvDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0x933c0002a710 (0x33c0002a710) in binary!
+	0x9f70  @objc MapsSyncMutableHistoryEvDirectionsItem.(null) <stripped>
 WARNING: couldn't find address 0xe8000000c (0xe8000000c) in binary!
-	0x2fcfff8e748  @objc MapsSyncMutableHistoryEvDirectionsItem.(null) <stripped>
-	0x2d4fff8e7d0  @objc MapsSyncMutableHistoryEvDirectionsItem.Lâ}»Lçm¿ø, <stripped>
-	0x2acfff8e858  @objc MapsSyncMutableHistoryEvDirectionsItem.@ <stripped>
+	0x3cfff8c2b8  @objc MapsSyncMutableHistoryEvDirectionsItem.(null) <stripped>
+	0x14fff8c340  @objc MapsSyncMutableHistoryEvDirectionsItem.Ë'	 <stripped>
+	0x7ecfff8c3c8  @objc MapsSyncMutableHistoryEvDirectionsItem.æ  <stripped>
 
 	// Swift methods
-	0x27000  func <stripped> // getter 
-	0x27040  func <stripped> // setter 
-	0x270c0  func <stripped> // modifyCoroutine 
-	0x271f0  func <stripped> // getter 
-	0x27350  func <stripped> // setter 
-	0x27510  func <stripped> // modifyCoroutine 
+	0x27630  func <stripped> // getter 
+	0x27670  func <stripped> // setter 
+	0x276f0  func <stripped> // modifyCoroutine 
+	0x27820  func <stripped> // getter 
+	0x27980  func <stripped> // setter 
+	0x27b40  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncPositionOrdering {
@@ -664,53 +663,54 @@ WARNING: couldn't find address 0xe8000000c (0xe8000000c) in binary!
 	var _contextFetchLock : NSLock
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa2b400029ad8 (0x2b400029ad8) in binary!
-	0xaaa8  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0xa2aa00029ab0 (0x2aa00029ab0) in binary!
-	0xaa90  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0xa29200029a88 (0x29200029a88) in binary!
-	0xaa78  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0xa27a00029a60 (0x27a00029a60) in binary!
-	0x9d18  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0xaa5400029a38 (0x25400029a38) in binary!
-	0xaa48  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0xaa3c00029a10 (0x23c00029a10) in binary!
-	0x9ce8  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0xaa1c000299e8 (0x21c000299e8) in binary!
-	0x9c00  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0xaa0c000299c0 (0x20c000299c0) in binary!
-	0x9078  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0x906c0002a080 (0x6c0002a080) in binary!
-	0x9bd0  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0x9c9400029ad0 (0x49400029ad0) in binary!
+WARNING: couldn't find address 0xa3f40002a018 (0x3f40002a018) in binary!
+	0xabe8  @objc MapsSyncDataSession.(null) <stripped>
+WARNING: couldn't find address 0xa3ea00029ff0 (0x3ea00029ff0) in binary!
+	0xabd0  @objc MapsSyncDataSession.(null) <stripped>
+WARNING: couldn't find address 0xa3d200029fc8 (0x3d200029fc8) in binary!
+	0xabb8  @objc MapsSyncDataSession.(null) <stripped>
+WARNING: couldn't find address 0xa3ba00029fa0 (0x3ba00029fa0) in binary!
+	0x9e58  @objc MapsSyncDataSession.(null) <stripped>
+WARNING: couldn't find address 0xab9400029f78 (0x39400029f78) in binary!
+	0xab88  @objc MapsSyncDataSession.(null) <stripped>
+WARNING: couldn't find address 0xab7c00029f50 (0x37c00029f50) in binary!
+	0x9e28  @objc MapsSyncDataSession.(null) <stripped>
+WARNING: couldn't find address 0xab5c00029f28 (0x35c00029f28) in binary!
+	0x9d40  @objc MapsSyncDataSession.(null) <stripped>
+WARNING: couldn't find address 0xab4c00029f00 (0x34c00029f00) in binary!
+	0x91b8  @objc MapsSyncDataSession.(null) <stripped>
+WARNING: couldn't find address 0x91ac0002a5c8 (0x1ac0002a5c8) in binary!
+	0x9d10  @objc MapsSyncDataSession.(null) <stripped>
+WARNING: couldn't find address 0x9dd40002a010 (0x5d40002a010) in binary!
 	0x18000000c  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0x9bac00029a68 (0x3ac00029a68) in binary!
+WARNING: couldn't find address 0x9cec00029fa8 (0x4ec00029fa8) in binary!
 	0x78000000c  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0xb73400029a88 (0x73400029a88) in binary!
-	0xa9a0  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0x8e8200029a60 (0x68200029a60) in binary!
-	0xa988  @objc MapsSyncDataSession.(null) <stripped>
-	0x8d30  _block_destroy_helper.45
-WARNING: couldn't find address 0x9c1c00029a58 (0x41c00029a58) in binary!
+WARNING: couldn't find address 0xb8d400029fc8 (0xd400029fc8) in binary!
+	0xaae0  @objc MapsSyncDataSession.(null) <stripped>
+WARNING: couldn't find address 0x8fc200029fa0 (0x7c200029fa0) in binary!
+	0xaac8  @objc MapsSyncDataSession.(null) <stripped>
+WARNING: couldn't find address 0x8faa00029f78 (0x7aa00029f78) in binary!
+	0x8e70  @objc MapsSyncDataSession.(null) <stripped>
+WARNING: couldn't find address 0x9d5c00029f98 (0x55c00029f98) in binary!
 	0x58000000c  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0xb87600029a78 (0x7600029a78) in binary!
-	0xc7a8  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0x85b400029b08 (0x5b400029b08) in binary!
-	0x9b10  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0x9bd400029a10 (0x3d400029a10) in binary!
+WARNING: couldn't find address 0xba1600029fb8 (0x21600029fb8) in binary!
+	0xc948  @objc MapsSyncDataSession.(null) <stripped>
+WARNING: couldn't find address 0x86f40002a048 (0x6f40002a048) in binary!
+	0x9c50  @objc MapsSyncDataSession.(null) <stripped>
+WARNING: couldn't find address 0x9d1400029f50 (0x51400029f50) in binary!
 	0x18000000c  @objc MapsSyncDataSession.(null) <stripped>
-WARNING: couldn't find address 0x9aec000299a8 (0x2ec000299a8) in binary!
+WARNING: couldn't find address 0x9c2c00029ee8 (0x42c00029ee8) in binary!
 	0x248000000c  @objc MapsSyncDataSession.(null) <stripped>
 
 	// Swift methods
-	0x28b80  func <stripped> // method 
-	0x28e80  func <stripped> // method 
-	0x290d0  func <stripped> // method 
-	0x293a0  func <stripped> // method 
-	0x295d0  func <stripped> // getter 
-	0x29680  func <stripped> // getter 
+	0x291b0  func <stripped> // method 
+	0x294b0  func <stripped> // method 
 	0x29700  func <stripped> // method 
-	0x2a7e0  func <stripped> // method 
+	0x299d0  func <stripped> // method 
+	0x29c00  func <stripped> // getter 
+	0x29cb0  func <stripped> // getter 
+	0x29d30  func <stripped> // method 
+	0x2ae10  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncCollectionQuery : MapsSyncBaseQuery {
@@ -719,26 +719,27 @@ WARNING: couldn't find address 0x9aec000299a8 (0x2ec000299a8) in binary!
 	var _specifiedQuery : MapsSyncGenericQuery
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb73400029a88 (0x73400029a88) in binary!
-	0xa9a0  @objc MapsSyncCollectionQuery.(null) <stripped>
-WARNING: couldn't find address 0x8e8200029a60 (0x68200029a60) in binary!
-	0xa988  @objc MapsSyncCollectionQuery.(null) <stripped>
-	0x8d30  _block_destroy_helper.45
-WARNING: couldn't find address 0x9c1c00029a58 (0x41c00029a58) in binary!
+WARNING: couldn't find address 0xb8d400029fc8 (0xd400029fc8) in binary!
+	0xaae0  @objc MapsSyncCollectionQuery.(null) <stripped>
+WARNING: couldn't find address 0x8fc200029fa0 (0x7c200029fa0) in binary!
+	0xaac8  @objc MapsSyncCollectionQuery.(null) <stripped>
+WARNING: couldn't find address 0x8faa00029f78 (0x7aa00029f78) in binary!
+	0x8e70  @objc MapsSyncCollectionQuery.(null) <stripped>
+WARNING: couldn't find address 0x9d5c00029f98 (0x55c00029f98) in binary!
 	0x58000000c  @objc MapsSyncCollectionQuery.(null) <stripped>
-WARNING: couldn't find address 0xb87600029a78 (0x7600029a78) in binary!
-	0xc7a8  @objc MapsSyncCollectionQuery.(null) <stripped>
-WARNING: couldn't find address 0x85b400029b08 (0x5b400029b08) in binary!
-	0x9b10  @objc MapsSyncCollectionQuery.(null) <stripped>
-WARNING: couldn't find address 0x9bd400029a10 (0x3d400029a10) in binary!
+WARNING: couldn't find address 0xba1600029fb8 (0x21600029fb8) in binary!
+	0xc948  @objc MapsSyncCollectionQuery.(null) <stripped>
+WARNING: couldn't find address 0x86f40002a048 (0x6f40002a048) in binary!
+	0x9c50  @objc MapsSyncCollectionQuery.(null) <stripped>
+WARNING: couldn't find address 0x9d1400029f50 (0x51400029f50) in binary!
 	0x18000000c  @objc MapsSyncCollectionQuery.(null) <stripped>
 
 	// Swift methods
-	0x2f1b0  class func MapsSyncCollectionQuery.__allocating_init(delegate:) // init 
-	0x2f260  func <stripped> // method 
-	0x2f2c0  func <stripped> // method 
-	0x2f5b0  func <stripped> // method 
-	0x2f730  func <stripped> // method 
+	0x2f7e0  class func MapsSyncCollectionQuery.__allocating_init(delegate:) // init 
+	0x2f890  func <stripped> // method 
+	0x2f8f0  func <stripped> // method 
+	0x2fbe0  func <stripped> // method 
+	0x2fd60  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncObjectWrapper : NSObject /usr/lib/libobjc.A.dylib {
@@ -750,25 +751,25 @@ WARNING: couldn't find address 0x9bd400029a10 (0x3d400029a10) in binary!
 	var _callbackQueue : OS_dispatch_queue
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb87600029a78 (0x7600029a78) in binary!
-	0xc7a8  @objc MapsSyncObjectWrapper.(null) <stripped>
-WARNING: couldn't find address 0x85b400029b08 (0x5b400029b08) in binary!
-	0x9b10  @objc MapsSyncObjectWrapper.(null) <stripped>
-WARNING: couldn't find address 0x9bd400029a10 (0x3d400029a10) in binary!
+WARNING: couldn't find address 0xba1600029fb8 (0x21600029fb8) in binary!
+	0xc948  @objc MapsSyncObjectWrapper.(null) <stripped>
+WARNING: couldn't find address 0x86f40002a048 (0x6f40002a048) in binary!
+	0x9c50  @objc MapsSyncObjectWrapper.(null) <stripped>
+WARNING: couldn't find address 0x9d1400029f50 (0x51400029f50) in binary!
 	0x18000000c  @objc MapsSyncObjectWrapper.(null) <stripped>
-WARNING: couldn't find address 0x9aec000299a8 (0x2ec000299a8) in binary!
+WARNING: couldn't find address 0x9c2c00029ee8 (0x42c00029ee8) in binary!
 	0x248000000c  @objc MapsSyncObjectWrapper.(null) <stripped>
-WARNING: couldn't find address 0x9ad400029810 (0x2d400029810) in binary!
-	0x8f58  @objc MapsSyncObjectWrapper.(null) <stripped>
+WARNING: couldn't find address 0x9c1400029d50 (0x41400029d50) in binary!
+	0x9098  @objc MapsSyncObjectWrapper.(null) <stripped>
 
 	// Swift methods
-	0x310a0  class func <stripped> // init 
-	0x31380  func <stripped> // method 
-	0x30b60  func <stripped> // getter 
-	0x30b90  func <stripped> // getter 
-	0x30bc0  func <stripped> // getter 
-	0x30c30  func <stripped> // method 
-	0x30da0  func <stripped> // method 
+	0x316d0  class func <stripped> // init 
+	0x319b0  func <stripped> // method 
+	0x31190  func <stripped> // getter 
+	0x311c0  func <stripped> // getter 
+	0x311f0  func <stripped> // getter 
+	0x31260  func <stripped> // method 
+	0x313d0  func <stripped> // method 
  }
 
  enum MapsSync.MapsSyncObjectChangeType { }
@@ -782,23 +783,24 @@ WARNING: couldn't find address 0x9ad400029810 (0x2d400029810) in binary!
 	var _otherWatchedContentPredicate : NSPredicate? // +0x20 (0x8)
 
 	// ObjC -> Swift bridged methods
-	0x8d70  _block_destroy_helper.84
-WARNING: couldn't find address 0x8d6400029628 (0x56400029628) in binary!
-	0x8d58  @objc MapsSyncFetchedResultsControllerDelegate.(null) <stripped>
-WARNING: couldn't find address 0x7cbc00029600 (0x4bc00029600) in binary!
-	0x98b0  @objc MapsSyncFetchedResultsControllerDelegate.(null) <stripped>
-WARNING: couldn't find address 0x9974000297b0 (0x174000297b0) in binary!
+WARNING: couldn't find address 0x8ebc0002a388 (0x6bc0002a388) in binary!
+	0x8eb0  @objc MapsSyncFetchedResultsControllerDelegate.(null) <stripped>
+WARNING: couldn't find address 0x8ea400029b68 (0x6a400029b68) in binary!
+	0x8e98  @objc MapsSyncFetchedResultsControllerDelegate.(null) <stripped>
+WARNING: couldn't find address 0x7dfc00029b40 (0x5fc00029b40) in binary!
+	0x99f0  @objc MapsSyncFetchedResultsControllerDelegate.(null) <stripped>
+WARNING: couldn't find address 0x9ab400029cf0 (0x2b400029cf0) in binary!
 	0xc8000000c  @objc MapsSyncFetchedResultsControllerDelegate.(null) <stripped>
-WARNING: couldn't find address 0x99ab00029c08 (0x1ab00029c08) in binary!
-	0x99ad  @objc MapsSyncFetchedResultsControllerDelegate.(null) <stripped>
-WARNING: couldn't find address 0xb41400029ee8 (0x41400029ee8) in binary!
-	0x8300  @objc MapsSyncFetchedResultsControllerDelegate.(null) <stripped>
-WARNING: couldn't find address 0x835c00029c20 (0x35c00029c20) in binary!
-	0x9840  @objc MapsSyncFetchedResultsControllerDelegate.(null) <stripped>
+WARNING: couldn't find address 0x9aeb0002a150 (0x2eb0002a150) in binary!
+	0x9aed  @objc MapsSyncFetchedResultsControllerDelegate.(null) <stripped>
+WARNING: couldn't find address 0xb5b40002a430 (0x5b40002a430) in binary!
+	0x8440  @objc MapsSyncFetchedResultsControllerDelegate.(null) <stripped>
+WARNING: couldn't find address 0x849c0002a168 (0x49c0002a168) in binary!
+	0x9980  @objc MapsSyncFetchedResultsControllerDelegate.(null) <stripped>
 
 	// Swift methods
-	0x33840  func <stripped> // setter 
-	0x33e50  func <stripped> // method 
+	0x33e70  func <stripped> // setter 
+	0x34480  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncBaseQuery : NSObject /usr/lib/libobjc.A.dylib {
@@ -816,88 +818,86 @@ WARNING: couldn't find address 0x835c00029c20 (0x35c00029c20) in binary!
 	var _isInitComplete : Bool
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9ad400029810 (0x2d400029810) in binary!
-	0x8f58  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x9abc000297e8 (0x2bc000297e8) in binary!
-	0x8f40  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x9aa4000297c0 (0x2a4000297c0) in binary!
-	0x8f28  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x9a8c00029bf8 (0x28c00029bf8) in binary!
-	0x8f10  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x9a7400029788 (0x27400029788) in binary!
-	0x8ef8  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x8c3400029920 (0x43400029920) in binary!
-	0x9b20  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0xa85400029740 (0x5400029740) in binary!
-	0xa850  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0xa83c00029f48 (0x3c00029f48) in binary!
-	0xb5c0  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0xa82c00029708 (0x2c00029708) in binary!
-	0x8d0e  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0xa814000296e0 (0x14000296e0) in binary!
-	0x8cf6  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x82da00029f88 (0x2da00029f88) in binary!
-	0xa7f0  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x8e5c000296a0 (0x65c000296a0) in binary!
-	0x9a90  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x8e4400029d08 (0x64400029d08) in binary!
-	0x8e38  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x8e2c00029660 (0x62c00029660) in binary!
-	0x8e20  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x7d8400029638 (0x58400029638) in binary!
-	0x8e08  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x8dfc00029ee0 (0x5fc00029ee0) in binary!
-	0x8df0  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x7d5400029ed8 (0x55400029ed8) in binary!
-	0xb4e8  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x993c000299a0 (0x13c000299a0) in binary!
-	0x9a00  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x9c1400029d50 (0x41400029d50) in binary!
+	0x9098  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x9bfc00029d28 (0x3fc00029d28) in binary!
+	0x9080  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x9be400029d00 (0x3e400029d00) in binary!
+	0x9068  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x9bcc0002a140 (0x3cc0002a140) in binary!
+	0x9050  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x9bb400029cc8 (0x3b400029cc8) in binary!
+	0x9038  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x8d7400029e60 (0x57400029e60) in binary!
+	0x9c60  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0xa99400029c80 (0x19400029c80) in binary!
+	0xa990  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0xa97c0002a490 (0x17c0002a490) in binary!
+	0xb760  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0xa96c00029c48 (0x16c00029c48) in binary!
+	0x8e4e  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0xa95400029c20 (0x15400029c20) in binary!
+	0x8e36  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x841a0002a4d0 (0x41a0002a4d0) in binary!
+	0xa930  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x8f9c00029be0 (0x79c00029be0) in binary!
+	0x9bd0  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x8f840002a250 (0x7840002a250) in binary!
+	0x8f78  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x8f6c00029ba0 (0x76c00029ba0) in binary!
+	0x8f60  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x7ec400029b78 (0x6c400029b78) in binary!
+	0x8f48  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x8f3c0002a428 (0x73c0002a428) in binary!
+	0x8f30  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x7e940002a420 (0x6940002a420) in binary!
+	0xb688  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x9a7c00029ee8 (0x27c00029ee8) in binary!
+	0x9b40  @objc MapsSyncBaseQuery.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x7d4fff9d278  @objc MapsSyncBaseQuery.(null) <stripped>
-	0xfff9d310  @objc MapsSyncBaseQuery.Ñ <stripped>
+	0x514fff9ade8  @objc MapsSyncBaseQuery.(null) <stripped>
+	0xfff9ae80  @objc MapsSyncBaseQuery.U	 <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x57cfff9ab98  @objc MapsSyncBaseQuery.(null) <stripped>
-	0x614fff9ac20  @objc MapsSyncBaseQuery.UHâÂ]ÈF¯ˇˇfD <stripped>
-	0x114fff9ace8  @objc MapsSyncBaseQuery.ˇˇfD <stripped>
-	0xfff9aeb0  @objc MapsSyncBaseQuery.Lâ·MâËËkÁ <stripped>
+	0x2c4fff98708  @objc MapsSyncBaseQuery.(null) <stripped>
+	0x354fff98790  @objc MapsSyncBaseQuery.IãMÚAE ÚAM(MãE0PARË£…ˇˇHÉƒ]√f.Ñ <stripped>
+	0x65cfff98858  @objc MapsSyncBaseQuery. <stripped>
+	0xfff98a20  @objc MapsSyncBaseQuery.	 <stripped>
 WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
-	0x6e4fff9f428  @objc MapsSyncBaseQuery.(null) <stripped>
-	0x6c4fff9f4e0  @objc MapsSyncBaseQuery.∂˛Hç5IfˇˇHç¢ä	 <stripped>
-	0x484fff9f578  @objc MapsSyncBaseQuery.LâˇIˇ«HâﬁLâÍË≈˛ <stripped>
-	0x76cfff9f760  @objc MapsSyncBaseQuery.ã-å
- <stripped>
-	0x744fff9f918  @objc MapsSyncBaseQuery.ˇˇfD <stripped>
-	0x4acfff9fb20  @objc MapsSyncBaseQuery.LâE»HâÀHâU–IâÙIâ˛H∏ <stripped>
-	0x394000296f0  @objc MapsSyncBaseQuery.Hã=Y
- <stripped>
-WARNING: couldn't find address 0x29bacfffa01c0 (0x3acfffa01c0) in binary!
-	0x37c00029ba8  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x29c04fffa0278 (0x404fffa0278) in binary!
-	0x2a000029c00  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x296c4fffa03a0 (0x6c4fffa03a0) in binary!
+	0x424fff9cf98  @objc MapsSyncBaseQuery.(null) <stripped>
+	0x404fff9d050  @objc MapsSyncBaseQuery.m∞LâÔ1ˆHâ⁄Lâ·Mâ¯Ë‘	 <stripped>
+	0x1ccfff9d0e8  @objc MapsSyncBaseQuery.ƒH√f.Ñ <stripped>
+	0x4acfff9d2d0  @objc MapsSyncBaseQuery.Ë{ªˇˇæH <stripped>
+	0x484fff9d488  @objc MapsSyncBaseQuery.çÍ‡ <stripped>
+	0x1ecfff9d690  @objc MapsSyncBaseQuery.(Hç®_	 <stripped>
+	0x53400029c30  @objc MapsSyncBaseQuery. <stripped>
+WARNING: couldn't find address 0x2a0f4fff9dd30 (0xf4fff9dd30) in binary!
+	0x4bc0002a0f0  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x2a14cfff9dde8 (0x14cfff9dde8) in binary!
+	0x3e00002a148  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x29c04fff9df10 (0x404fff9df10) in binary!
 	0x18000000c  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x8aaa00029440 (0x2aa00029440) in binary!
+WARNING: couldn't find address 0x8bea00029980 (0x3ea00029980) in binary!
 	0x28000000c  @objc MapsSyncBaseQuery.(null) <stripped>
-WARNING: couldn't find address 0x978c000297f0 (0x78c000297f0) in binary!
-	0x9850  @objc MapsSyncBaseQuery.(null) <stripped>
+WARNING: couldn't find address 0x98cc00029d38 (0xcc00029d38) in binary!
+	0x9990  @objc MapsSyncBaseQuery.(null) <stripped>
 
 	// Swift methods
-	0x32540  func <stripped> // getter 
-	0x32580  func <stripped> // setter 
-	0x325d0  func <stripped> // modifyCoroutine 
-	0x33730  func <stripped> // method 
-	0x35330  class func <stripped> // getter 
-	0x326a0  func <stripped> // method 
-	0x32710  func <stripped> // method 
-	0x327b0  func <stripped> // method 
-	0x327d0  func <stripped> // method 
-	0x327f0  func <stripped> // method 
-	0x32870  func <stripped> // method 
-	0x32900  func <stripped> // method 
-	0x32e40  func <stripped> // method 
-	0x33020  func <stripped> // method 
-	0x33080  func <stripped> // method 
-	0x334c0  func <stripped> // method 
+	0x32b70  func <stripped> // getter 
+	0x32bb0  func <stripped> // setter 
+	0x32c00  func <stripped> // modifyCoroutine 
+	0x33d60  func <stripped> // method 
+	0x35960  class func <stripped> // getter 
+	0x32cd0  func <stripped> // method 
+	0x32d40  func <stripped> // method 
+	0x32de0  func <stripped> // method 
+	0x32e00  func <stripped> // method 
+	0x32e20  func <stripped> // method 
+	0x32ea0  func <stripped> // method 
+	0x32f30  func <stripped> // method 
+	0x33470  func <stripped> // method 
+	0x33650  func <stripped> // method 
+	0x336b0  func <stripped> // method 
+	0x33af0  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncDataQuery : MapsSyncBaseQuery {
@@ -906,51 +906,52 @@ WARNING: couldn't find address 0x978c000297f0 (0x78c000297f0) in binary!
 	var _specifiedQuery : MapsSyncGenericQuery // +0x58 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb4bc00029810 (0x4bc00029810) in binary!
-	0x8ae8  @objc MapsSyncDataQuery.(null) <stripped>
-WARNING: couldn't find address 0x99d400029810 (0x1d400029810) in binary!
+WARNING: couldn't find address 0xb65c00029d50 (0x65c00029d50) in binary!
+	0x8c28  @objc MapsSyncDataQuery.(null) <stripped>
+WARNING: couldn't find address 0x9b1400029d50 (0x31400029d50) in binary!
 	0x78000000c  @objc MapsSyncDataQuery.(null) <stripped>
-	0x8d70  _block_destroy_helper.84
+WARNING: couldn't find address 0x8ebc0002a388 (0x6bc0002a388) in binary!
+	0x8eb0  @objc MapsSyncDataQuery.(null) <stripped>
 
 	// Swift methods
-	0x36e20  class func MapsSyncDataQuery.__allocating_init(delegate:) // init 
+	0x37450  class func MapsSyncDataQuery.__allocating_init(delegate:) // init 
  }
 
  class MapsSync.MapsSyncCuratedCollection : MapsSyncBaseItem {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _curatedCollectionIdentifier : ’∏ // +0x0 (0x8)
+	var _curatedCollectionIdentifier : uº // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _resultProviderIdentifier : ˘Ω // +0x0 (0x4)
+	var _resultProviderIdentifier : ô¡ // +0x0 (0x4)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x99ab00029c08 (0x1ab00029c08) in binary!
-	0x99ad  @objc MapsSyncCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xb41400029ee8 (0x41400029ee8) in binary!
-	0x8300  @objc MapsSyncCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x835c00029c20 (0x35c00029c20) in binary!
-	0x9840  @objc MapsSyncCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xc4c400029898 (0x4c400029898) in binary!
-	0x8cc8  @objc MapsSyncCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x82cc00029758 (0x2cc00029758) in binary!
-	0x82c0  @objc MapsSyncCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xa62c00029730 (0x62c00029730) in binary!
-	0xa620  @objc MapsSyncCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x9aeb0002a150 (0x2eb0002a150) in binary!
+	0x9aed  @objc MapsSyncCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xb5b40002a430 (0x5b40002a430) in binary!
+	0x8440  @objc MapsSyncCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x849c0002a168 (0x49c0002a168) in binary!
+	0x9980  @objc MapsSyncCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xc66400029de0 (0x66400029de0) in binary!
+	0x8e08  @objc MapsSyncCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x840c00029c98 (0x40c00029c98) in binary!
+	0x8400  @objc MapsSyncCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xa76c00029c70 (0x76c00029c70) in binary!
+	0xa760  @objc MapsSyncCuratedCollection.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x3acfffa01c0  @objc MapsSyncCuratedCollection.(null) <stripped>
-	0x404fffa0278  @objc MapsSyncCuratedCollection. <stripped>
-	0x6c4fffa03a0  @objc MapsSyncCuratedCollection.UHâÂHçÂˆˇˇLç <stripped>
-	0x2aa00029440  @objc MapsSyncCuratedCollection.âﬂË3Î <stripped>
-WARNING: couldn't find address 0xfffa2590 (0xfffa2590) in binary!
-	0x78c000297f0  @objc MapsSyncCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x2968cfffa26b8 (0x68cfffa26b8) in binary!
+	0xf4fff9dd30  @objc MapsSyncCuratedCollection.(null) <stripped>
+	0x14cfff9dde8  @objc MapsSyncCuratedCollection.∫ <stripped>
+	0x404fff9df10  @objc MapsSyncCuratedCollection.ﬂË~	 <stripped>
+	0x3ea00029980  @objc MapsSyncCuratedCollection. <stripped>
+WARNING: couldn't find address 0xfffa0100 (0xfffa0100) in binary!
+	0xcc00029d38  @objc MapsSyncCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x29bccfffa0228 (0x3ccfffa0228) in binary!
 	0x18000000c  @objc MapsSyncCuratedCollection.(null) <stripped>
 
 	// Swift methods
-	0x38ed0  class func MapsSyncCuratedCollection.__allocating_init(curatedCollectionIdentifier:resultProviderIdentifier:) // init 
-	0x39270  func <stripped> // getter 
-	0x392a0  func <stripped> // getter 
+	0x39500  class func MapsSyncCuratedCollection.__allocating_init(curatedCollectionIdentifier:resultProviderIdentifier:) // init 
+	0x398a0  func <stripped> // getter 
+	0x398d0  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableCuratedCollection : MapsSyncMutableBaseItem {
@@ -959,44 +960,72 @@ WARNING: couldn't find address 0x2968cfffa26b8 (0x68cfffa26b8) in binary!
 	var _proxy : MapsSyncManagedCuratedCollection // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb394000296f0 (0x394000296f0) in binary!
-	0x82e8  @objc MapsSyncMutableCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0xab7c00029ba8 (0x37c00029ba8) in binary!
-	0x97c0  @objc MapsSyncMutableCuratedCollection.(null) <stripped>
-WARNING: couldn't find address 0x9aa000029c00 (0x2a000029c00) in binary!
-	0x9888  @objc MapsSyncMutableCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xb53400029c30 (0x53400029c30) in binary!
+	0x8428  @objc MapsSyncMutableCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0xacbc0002a0f0 (0x4bc0002a0f0) in binary!
+	0x9900  @objc MapsSyncMutableCuratedCollection.(null) <stripped>
+WARNING: couldn't find address 0x9be00002a148 (0x3e00002a148) in binary!
+	0x99c8  @objc MapsSyncMutableCuratedCollection.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffa2590  @objc MapsSyncMutableCuratedCollection.(null) <stripped>
+	0xfffa0100  @objc MapsSyncMutableCuratedCollection.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x68cfffa26b8  @objc MapsSyncMutableCuratedCollection.(null) <stripped>
-	0x144000297a0  @objc MapsSyncMutableCuratedCollection.â⁄Lâ·MâËË…Á <stripped>
+	0x3ccfffa0228  @objc MapsSyncMutableCuratedCollection.(null) <stripped>
+	0xac00029b68  @objc MapsSyncMutableCuratedCollection.â«Ë√	 <stripped>
 
 	// Swift methods
-	0x39fb0  func <stripped> // getter 
-	0x39ff0  func <stripped> // setter 
-	0x3a070  func <stripped> // modifyCoroutine 
-	0x3a0f0  func <stripped> // getter 
-	0x3a130  func <stripped> // setter 
-	0x3a1b0  func <stripped> // modifyCoroutine 
+	0x3a5e0  func <stripped> // getter 
+	0x3a620  func <stripped> // setter 
+	0x3a6a0  func <stripped> // modifyCoroutine 
+	0x3a720  func <stripped> // getter 
+	0x3a760  func <stripped> // setter 
+	0x3a7e0  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncBatch : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x978c000297f0 (0x78c000297f0) in binary!
-	0x9850  @objc MapsSyncBatch.(null) <stripped>
+WARNING: couldn't find address 0x98cc00029d38 (0xcc00029d38) in binary!
+	0x9990  @objc MapsSyncBatch.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffa5a68  @objc MapsSyncBatch.(null) <stripped>
+	0xfffa3fb8  @objc MapsSyncBatch.(null) <stripped>
+ }
+
+ class MapsSync.MapsSyncReviewedPlaceQuery : MapsSyncBaseQuery {
+
+	// Properties
+	var _specifiedQuery : MapsSyncGenericQuery
+
+	// ObjC -> Swift bridged methods
+WARNING: couldn't find address 0xb49400029b88 (0x49400029b88) in binary!
+	0xa6a0  @objc MapsSyncReviewedPlaceQuery.(null) <stripped>
+WARNING: couldn't find address 0x8b8200029b60 (0x38200029b60) in binary!
+	0xa688  @objc MapsSyncReviewedPlaceQuery.(null) <stripped>
+WARNING: couldn't find address 0x8b6a00029b38 (0x36a00029b38) in binary!
+	0x8a30  @objc MapsSyncReviewedPlaceQuery.(null) <stripped>
+WARNING: couldn't find address 0x991c00029b58 (0x11c00029b58) in binary!
+	0x18000000c  @objc MapsSyncReviewedPlaceQuery.(null) <stripped>
+WARNING: couldn't find address 0x8a0c00029c70 (0x20c00029c70) in binary!
+	0x18000000c  @objc MapsSyncReviewedPlaceQuery.(null) <stripped>
+WARNING: couldn't find address 0x89f400029c58 (0x1f400029c58) in binary!
+	0xa8000000c  @objc MapsSyncReviewedPlaceQuery.(null) <stripped>
+	0x97f8  @objc MapsSyncReviewedPlaceQuery.â∆ËK <stripped>
+
+	// Swift methods
+	0x3fe50  class func MapsSyncReviewedPlaceQuery.__allocating_init(delegate:) // init 
+	0x3ff00  func <stripped> // method 
+	0x3ff60  func <stripped> // method 
+	0x40250  func <stripped> // method 
+	0x403d0  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncManagedCachedUserReview : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8944000297a0 (0x144000297a0) in binary!
+WARNING: couldn't find address 0x8a0c00029c70 (0x20c00029c70) in binary!
 	0x18000000c  @objc MapsSyncManagedCachedUserReview.(null) <stripped>
  }
 
  class MapsSync.MapsSyncManagedMixinMapItem : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x892c00029788 (0x12c00029788) in binary!
+WARNING: couldn't find address 0x89f400029c58 (0x1f400029c58) in binary!
 	0xa8000000c  @objc MapsSyncManagedMixinMapItem.(null) <stripped>
  }
 
@@ -1008,33 +1037,32 @@ WARNING: couldn't find address 0x892c00029788 (0x12c00029788) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _transitLineStorage : ¡π // +0x0 (0x10)
+	var _transitLineStorage : aΩ // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _muid : ’∏ // +0x0 (0x8)
+	var _muid : uº // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x973c00029780 (0x73c00029780) in binary!
-	0x9730  @objc MapsSyncHistoryTransitItem.(null) <stripped>
-WARNING: couldn't find address 0x822400029708 (0x22400029708) in binary!
-	0xc398  @objc MapsSyncHistoryTransitItem.(null) <stripped>
-WARNING: couldn't find address 0x8b9c00029640 (0x39c00029640) in binary!
-	0x81a0  @objc MapsSyncHistoryTransitItem.(null) <stripped>
-WARNING: couldn't find address 0x819400029618 (0x19400029618) in binary!
-	0xa500  @objc MapsSyncHistoryTransitItem.(null) <stripped>
-WARNING: couldn't find address 0xb27c00029d50 (0x27c00029d50) in binary!
-	0x97a0  @objc MapsSyncHistoryTransitItem.(null) <stripped>
+	0x97f8  @objc MapsSyncHistoryTransitItem.â∆ËK <stripped>
+WARNING: couldn't find address 0x82ec00029bd0 (0x2ec00029bd0) in binary!
+	0xc4c0  @objc MapsSyncHistoryTransitItem.(null) <stripped>
+WARNING: couldn't find address 0x8c6400029b08 (0x46400029b08) in binary!
+	0x8268  @objc MapsSyncHistoryTransitItem.(null) <stripped>
+WARNING: couldn't find address 0x825c00029ae0 (0x25c00029ae0) in binary!
+	0xa5c8  @objc MapsSyncHistoryTransitItem.(null) <stripped>
+WARNING: couldn't find address 0xb3a40002a220 (0x3a40002a220) in binary!
+	0x9868  @objc MapsSyncHistoryTransitItem.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x344fffa68e8  @objc MapsSyncHistoryTransitItem.(null) <stripped>
-	0x67cfffa6ae0  @objc MapsSyncHistoryTransitItem.ˇÖÂ <stripped>
-	0x58cfffa6e68  @objc MapsSyncHistoryTransitItem.§
+	0xcfffa58c0  @objc MapsSyncHistoryTransitItem.(null) <stripped>
+	0x344fffa5ab8  @objc MapsSyncHistoryTransitItem.–Hâ«ˇ&æ
  <stripped>
-	0x44000296a0  @objc MapsSyncHistoryTransitItem.âﬂË=Ì <stripped>
-WARNING: couldn't find address 0xfffa7568 (0xfffa7568) in binary!
-	0x2c00029688  @objc MapsSyncHistoryTransitItem.(null) <stripped>
+	0x254fffa5e40  @objc MapsSyncHistoryTransitItem.≥á <stripped>
+	0x10c00029b70  @objc MapsSyncHistoryTransitItem.\	 <stripped>
+WARNING: couldn't find address 0xfffa6540 (0xfffa6540) in binary!
+	0xf400029b58  @objc MapsSyncHistoryTransitItem.(null) <stripped>
 
 	// Swift methods
-	0x3fd10  func <stripped> // getter 
-	0x3fd60  func <stripped> // getter 
+	0x41820  func <stripped> // getter 
+	0x41870  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableHistoryTransitItem : MapsSyncMutableHistoryItem {
@@ -1043,31 +1071,31 @@ WARNING: couldn't find address 0xfffa7568 (0xfffa7568) in binary!
 	var _proxyHistory : MapsSyncManagedHistoryTransitItem
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb25c000295b8 (0x25c000295b8) in binary!
-	0x96b0  @objc MapsSyncMutableHistoryTransitItem.(null) <stripped>
-WARNING: couldn't find address 0x8b3400029330 (0x33400029330) in binary!
-	0x8198  @objc MapsSyncMutableHistoryTransitItem.(null) <stripped>
-WARNING: couldn't find address 0xaa2c00029758 (0x22c00029758) in binary!
-	0x9750  @objc MapsSyncMutableHistoryTransitItem.(null) <stripped>
+WARNING: couldn't find address 0xb38400029a80 (0x38400029a80) in binary!
+	0x9778  @objc MapsSyncMutableHistoryTransitItem.(null) <stripped>
+WARNING: couldn't find address 0x8bfc000297f8 (0x3fc000297f8) in binary!
+	0x8260  @objc MapsSyncMutableHistoryTransitItem.(null) <stripped>
+WARNING: couldn't find address 0xaaf400029c28 (0x2f400029c28) in binary!
+	0x9818  @objc MapsSyncMutableHistoryTransitItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffa7568  @objc MapsSyncMutableHistoryTransitItem.(null) <stripped>
+	0xfffa6540  @objc MapsSyncMutableHistoryTransitItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffa7760  @objc MapsSyncMutableHistoryTransitItem.(null) <stripped>
+	0xfffa6738  @objc MapsSyncMutableHistoryTransitItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffa77c8  @objc MapsSyncMutableHistoryTransitItem.(null) <stripped>
+	0xfffa67a0  @objc MapsSyncMutableHistoryTransitItem.(null) <stripped>
 
 	// Swift methods
-	0x408d0  func <stripped> // getter 
-	0x40a00  func <stripped> // setter 
-	0x40b80  func <stripped> // modifyCoroutine 
-	0x40cf0  func <stripped> // getter 
-	0x40d30  func <stripped> // setter 
-	0x40db0  func <stripped> // modifyCoroutine 
+	0x423e0  func <stripped> // getter 
+	0x42510  func <stripped> // setter 
+	0x42690  func <stripped> // modifyCoroutine 
+	0x42800  func <stripped> // getter 
+	0x42840  func <stripped> // setter 
+	0x428c0  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncManagedHistoryPlaceItem : MapsSyncManagedHistoryItem {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8844000296a0 (0x44000296a0) in binary!
+WARNING: couldn't find address 0x890c00029b70 (0x10c00029b70) in binary!
 	0x18000000c  @objc MapsSyncManagedHistoryPlaceItem.(null) <stripped>
  }
 
@@ -1078,15 +1106,15 @@ WARNING: couldn't find address 0x8844000296a0 (0x44000296a0) in binary!
  class MapsSync.MapsSyncGeoUtil {
  class MapsSync.MapsSyncManagedFavoriteItem : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x882c00029688 (0x2c00029688) in binary!
+WARNING: couldn't find address 0x88f400029b58 (0xf400029b58) in binary!
 	0x18000000c  @objc MapsSyncManagedFavoriteItem.(null) <stripped>
  }
 
  class MapsSync.MapsSyncDataBase_initial : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x41a30  func <stripped> // getter 
-	0x41f30  func <stripped> // getter 
-	0x42060  func <stripped> // getter 
+	0x43540  func <stripped> // getter 
+	0x43a40  func <stripped> // getter 
+	0x43b70  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncCollectionTransitItemQuery : MapsSyncBaseQuery {
@@ -1095,51 +1123,50 @@ WARNING: couldn't find address 0x882c00029688 (0x2c00029688) in binary!
 	var _specifiedQuery : MapsSyncGenericQuery
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb1ac00029500 (0x1ac00029500) in binary!
-	0xa418  @objc MapsSyncCollectionTransitItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x88fa000294d8 (0xfa000294d8) in binary!
-	0xa400  @objc MapsSyncCollectionTransitItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x88e2000294b0 (0xe2000294b0) in binary!
-	0x87a8  @objc MapsSyncCollectionTransitItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x9694000294d0 (0x694000294d0) in binary!
+WARNING: couldn't find address 0xb2d4000299c8 (0x2d4000299c8) in binary!
+	0xa4e0  @objc MapsSyncCollectionTransitItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x89c2000299a0 (0x1c2000299a0) in binary!
+	0xa4c8  @objc MapsSyncCollectionTransitItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x89aa00029978 (0x1aa00029978) in binary!
+	0x8870  @objc MapsSyncCollectionTransitItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x975c00029998 (0x75c00029998) in binary!
 	0x18000000c  @objc MapsSyncCollectionTransitItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x8784000295e0 (0x784000295e0) in binary!
+WARNING: couldn't find address 0x884c00029ab0 (0x4c00029ab0) in binary!
 	0x18000000c  @objc MapsSyncCollectionTransitItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x876c000295c8 (0x76c000295c8) in binary!
+WARNING: couldn't find address 0x883400029a98 (0x3400029a98) in binary!
 	0x18000000c  @objc MapsSyncCollectionTransitItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x8754000295b0 (0x754000295b0) in binary!
+WARNING: couldn't find address 0x881c00029a80 (0x1c00029a80) in binary!
 	0x18000000c  @objc MapsSyncCollectionTransitItemQuery.(null) <stripped>
 
 	// Swift methods
-	0x42330  class func MapsSyncCollectionTransitItemQuery.__allocating_init(delegate:) // init 
-	0x423e0  func <stripped> // method 
-	0x42440  func <stripped> // method 
-	0x42730  func <stripped> // method 
-	0x428b0  func <stripped> // method 
+	0x43e40  class func MapsSyncCollectionTransitItemQuery.__allocating_init(delegate:) // init 
+	0x43ef0  func <stripped> // method 
+	0x43f50  func <stripped> // method 
+	0x44240  func <stripped> // method 
+	0x443c0  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncManagedHistoryRideShareItem : MapsSyncManagedHistoryItem {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8784000295e0 (0x784000295e0) in binary!
+WARNING: couldn't find address 0x884c00029ab0 (0x4c00029ab0) in binary!
 	0x18000000c  @objc MapsSyncManagedHistoryRideShareItem.(null) <stripped>
  }
 
  class MapsSync.MapsSyncManagedHistoryDirectionsItem : MapsSyncManagedHistoryItem {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x876c000295c8 (0x76c000295c8) in binary!
+WARNING: couldn't find address 0x883400029a98 (0x3400029a98) in binary!
 	0x18000000c  @objc MapsSyncManagedHistoryDirectionsItem.(null) <stripped>
  }
 
  class MapsSync.MapsSyncManagedHistoryItem : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8754000295b0 (0x754000295b0) in binary!
+WARNING: couldn't find address 0x881c00029a80 (0x1c00029a80) in binary!
 	0x18000000c  @objc MapsSyncManagedHistoryItem.(null) <stripped>
  }
 
  class MapsSync.MapsSyncManagedCuratedCollection : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x873c00029598 (0x73c00029598) in binary!
-	0xc8000000c  @objc MapsSyncManagedCuratedCollection.(null) <stripped>
+	0xc8000000c  @objc MapsSyncManagedCuratedCollection.ÈˇˇË¬ <stripped>
  }
 
  class MapsSync.MapsSyncCollectionItem : MapsSyncBaseItem {
@@ -1148,33 +1175,33 @@ WARNING: couldn't find address 0x873c00029598 (0x73c00029598) in binary!
 	var _collections : MapsSyncCollection // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb0ec00029460 (0xec00029460) in binary!
-	0xb282  @objc MapsSyncCollectionItem.(null) <stripped>
-WARNING: couldn't find address 0x89c4000291b8 (0x1c4000291b8) in binary!
-	0xb0c8  @objc MapsSyncCollectionItem.(null) <stripped>
-WARNING: couldn't find address 0xa32c000293b0 (0x32c000293b0) in binary!
-	0x9510  @objc MapsSyncCollectionItem.(null) <stripped>
-WARNING: couldn't find address 0xc18400029558 (0x18400029558) in binary!
-	0x8988  @objc MapsSyncCollectionItem.(null) <stripped>
-WARNING: couldn't find address 0x7f8c00029418 (0x78c00029418) in binary!
-	0x7f80  @objc MapsSyncCollectionItem.(null) <stripped>
-WARNING: couldn't find address 0xa2ec000293f0 (0x2ec000293f0) in binary!
-	0x9598  @objc MapsSyncCollectionItem.(null) <stripped>
+WARNING: couldn't find address 0xb21400029928 (0x21400029928) in binary!
+	0xb3aa  @objc MapsSyncCollectionItem.(null) <stripped>
+WARNING: couldn't find address 0x8a8c00029680 (0x28c00029680) in binary!
+	0xb1f0  @objc MapsSyncCollectionItem.(null) <stripped>
+WARNING: couldn't find address 0xa3f400029878 (0x3f400029878) in binary!
+	0x95d8  @objc MapsSyncCollectionItem.(null) <stripped>
+WARNING: couldn't find address 0xc2ac00029a28 (0x2ac00029a28) in binary!
+	0x8a50  @objc MapsSyncCollectionItem.(null) <stripped>
+WARNING: couldn't find address 0x8054000298e0 (0x54000298e0) in binary!
+	0x8048  @objc MapsSyncCollectionItem.(null) <stripped>
+WARNING: couldn't find address 0xa3b4000298b8 (0x3b4000298b8) in binary!
+	0x9660  @objc MapsSyncCollectionItem.(null) <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x5d4fffab820  @objc MapsSyncCollectionItem.(null) <stripped>
-	0x39cfffab918  @objc MapsSyncCollectionItem.B <stripped>
-	0x654000294b0  @objc MapsSyncCollectionItem.5˚/ <stripped>
-WARNING: couldn't find address 0xfffaf4c8 (0xfffaf4c8) in binary!
-	0x6400029368  @objc MapsSyncCollectionItem.(null) <stripped>
-WARNING: couldn't find address 0xfffafa80 (0xfffafa80) in binary!
-	0x44c00029490  @objc MapsSyncCollectionItem.(null) <stripped>
-WARNING: couldn't find address 0x294ecfffaf508 (0x4ecfffaf508) in binary!
-	0x43400029a18  @objc MapsSyncCollectionItem.(null) <stripped>
+	0x2a4fffaa818  @objc MapsSyncCollectionItem.(null) <stripped>
+	0x64fffaa910  @objc MapsSyncCollectionItem.d	 <stripped>
+	0x71c00029980  @objc MapsSyncCollectionItem.4 <stripped>
+WARNING: couldn't find address 0xfffae520 (0xfffae520) in binary!
+	0x12c00029830  @objc MapsSyncCollectionItem.(null) <stripped>
+WARNING: couldn't find address 0xfffaead8 (0xfffaead8) in binary!
+	0x51400029960  @objc MapsSyncCollectionItem.(null) <stripped>
+WARNING: couldn't find address 0x299bcfffae560 (0x1bcfffae560) in binary!
+	0x4fc00029ee8  @objc MapsSyncCollectionItem.(null) <stripped>
 
 	// Swift methods
-	0x44570  class func MapsSyncCollectionItem.__allocating_init(collection:) // init 
-	0x440d0  func <stripped> // getter 
-	0x440e0  func <stripped> // getter 
+	0x46080  class func MapsSyncCollectionItem.__allocating_init(collection:) // init 
+	0x45be0  func <stripped> // getter 
+	0x45bf0  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableCollectionItem : MapsSyncMutableBaseItem {
@@ -1183,24 +1210,24 @@ WARNING: couldn't find address 0x294ecfffaf508 (0x4ecfffaf508) in binary!
 	var _proxyCollectionItem : MapsSyncManagedCollectionItem
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xb054000293b0 (0x54000293b0) in binary!
-	0x94a8  @objc MapsSyncMutableCollectionItem.(null) <stripped>
-WARNING: couldn't find address 0x892c00029a68 (0x12c00029a68) in binary!
-	0x9560  @objc MapsSyncMutableCollectionItem.(null) <stripped>
+WARNING: couldn't find address 0xb17c00029878 (0x17c00029878) in binary!
+	0x9570  @objc MapsSyncMutableCollectionItem.(null) <stripped>
+WARNING: couldn't find address 0x89f400029f38 (0x1f400029f38) in binary!
+	0x9628  @objc MapsSyncMutableCollectionItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffaf4c8  @objc MapsSyncMutableCollectionItem.(null) <stripped>
+	0xfffae520  @objc MapsSyncMutableCollectionItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffafa80  @objc MapsSyncMutableCollectionItem.(null) <stripped>
+	0xfffaead8  @objc MapsSyncMutableCollectionItem.(null) <stripped>
 
 	// Swift methods
-	0x441b0  func <stripped> // getter 
-	0x442b0  func <stripped> // setter 
-	0x443d0  func <stripped> // modifyCoroutine 
+	0x45cc0  func <stripped> // getter 
+	0x45dc0  func <stripped> // setter 
+	0x45ee0  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncManagedContactHandle : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8654000294b0 (0x654000294b0) in binary!
+WARNING: couldn't find address 0x871c00029980 (0x71c00029980) in binary!
 	0x18000000c  @objc MapsSyncManagedContactHandle.(null) <stripped>
  }
 
@@ -1208,45 +1235,45 @@ WARNING: couldn't find address 0x8654000294b0 (0x654000294b0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _mapItemStorage : ¡π // +0x0 (0x10)
+	var _mapItemStorage : aΩ // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _supersededSearchId : e∫ // +0x0 (0x0)
+	var _supersededSearchId : æ // +0x0 (0x0)
 	var _latitude : NSNumber? // +0x0 (0x8)
 	var _longitude : NSNumber? // +0x0 (0x8)
 	var _muid : NSNumber? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x944c00029490 (0x44c00029490) in binary!
-	0x9440  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0x943400029a18 (0x43400029a18) in binary!
-	0x9428  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0x941c00029540 (0x41c00029540) in binary!
-	0x9410  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xc08400029458 (0x8400029458) in binary!
-	0x8888  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0x7e8c00029318 (0x68c00029318) in binary!
-	0x7e80  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xa1ec000292f0 (0x1ec000292f0) in binary!
-	0xaf68  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0x948c000292c8 (0x48c000292c8) in binary!
+WARNING: couldn't find address 0x951400029960 (0x51400029960) in binary!
+	0x9508  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x94fc00029ee8 (0x4fc00029ee8) in binary!
+	0x94f0  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x94e400029a10 (0x4e400029a10) in binary!
+	0x94d8  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xc1ac00029928 (0x1ac00029928) in binary!
+	0x8950  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x7f54000297e0 (0x754000297e0) in binary!
+	0x7f48  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0xa2b4000297b8 (0x2b4000297b8) in binary!
+	0xb090  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x955400029790 (0x55400029790) in binary!
 	0x68000000c  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0xaf44000292a0 (0x744000292a0) in binary!
-	0x9398  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0x881c00029440 (0x1c00029440) in binary!
-	0x9380  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
-	0x9438  @objc MapsSyncHistoryPlaceItem.Hâ·HÉ¿HÉ‡H)¡Hâç8ˇˇˇHâÃ1ˇËeÊ <stripped>
+WARNING: couldn't find address 0xb06c00029768 (0x6c00029768) in binary!
+	0x9460  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x88e400029910 (0xe400029910) in binary!
+	0x9448  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x88cc00029e30 (0xcc00029e30) in binary!
+	0x9500  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
 WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
-	0x13cfffb1b50  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
-	0x144fffb1f78  @objc MapsSyncHistoryPlaceItem.Tí
- <stripped>
-	0x36cfffb1fe0  @objc MapsSyncHistoryPlaceItem. <stripped>
+	0x60cfffb0ba8  @objc MapsSyncHistoryPlaceItem.(null) <stripped>
+	0x614fffb0fd0  @objc MapsSyncHistoryPlaceItem.Ëc	 <stripped>
+	0x3cfffb1038  @objc MapsSyncHistoryPlaceItem. <stripped>
 
 	// Swift methods
-	0x49880  func <stripped> // getter 
-	0x499e0  func <stripped> // getter 
-	0x49a50  func <stripped> // getter 
-	0x49ab0  func <stripped> // getter 
-	0x49b10  func <stripped> // getter 
+	0x4b410  func <stripped> // getter 
+	0x4b570  func <stripped> // getter 
+	0x4b5e0  func <stripped> // getter 
+	0x4b640  func <stripped> // getter 
+	0x4b6a0  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableHistoryPlaceItem : MapsSyncMutableHistoryItem {
@@ -1255,60 +1282,61 @@ WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
 	var _proxyHistory : MapsSyncManagedHistoryPlaceItem
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xaf44000292a0 (0x744000292a0) in binary!
-	0x9398  @objc MapsSyncMutableHistoryPlaceItem.(null) <stripped>
-WARNING: couldn't find address 0x881c00029440 (0x1c00029440) in binary!
-	0x9380  @objc MapsSyncMutableHistoryPlaceItem.(null) <stripped>
-	0x9438  @objc MapsSyncMutableHistoryPlaceItem.Hâ·HÉ¿HÉ‡H)¡Hâç8ˇˇˇHâÃ1ˇËeÊ <stripped>
+WARNING: couldn't find address 0xb06c00029768 (0x6c00029768) in binary!
+	0x9460  @objc MapsSyncMutableHistoryPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x88e400029910 (0xe400029910) in binary!
+	0x9448  @objc MapsSyncMutableHistoryPlaceItem.(null) <stripped>
+WARNING: couldn't find address 0x88cc00029e30 (0xcc00029e30) in binary!
+	0x9500  @objc MapsSyncMutableHistoryPlaceItem.(null) <stripped>
 WARNING: couldn't find address 0xc8000000c (0xc8000000c) in binary!
-	0x13cfffb1b50  @objc MapsSyncMutableHistoryPlaceItem.(null) <stripped>
-	0x144fffb1f78  @objc MapsSyncMutableHistoryPlaceItem.Tí
- <stripped>
-	0x36cfffb1fe0  @objc MapsSyncMutableHistoryPlaceItem. <stripped>
+	0x60cfffb0ba8  @objc MapsSyncMutableHistoryPlaceItem.(null) <stripped>
+	0x614fffb0fd0  @objc MapsSyncMutableHistoryPlaceItem.Ëc	 <stripped>
+	0x3cfffb1038  @objc MapsSyncMutableHistoryPlaceItem. <stripped>
 
 	// Swift methods
-	0x4aab0  func <stripped> // getter 
-	0x4ac80  func <stripped> // setter 
-	0x4b100  func <stripped> // modifyCoroutine 
-	0x4b1e0  func <stripped> // getter 
-	0x4b370  func <stripped> // setter 
-	0x4b540  func <stripped> // modifyCoroutine 
+	0x4c640  func <stripped> // getter 
+	0x4c810  func <stripped> // setter 
+	0x4cc90  func <stripped> // modifyCoroutine 
+	0x4cd70  func <stripped> // getter 
+	0x4cf00  func <stripped> // setter 
+	0x4d0d0  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncHistorySearchItem : MapsSyncHistoryItem {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _geoMapRegion : ¡π // +0x0 (0x10)
+	var _geoMapRegion : aΩ // +0x0 (0x10)
 	var _language : String? // +0x0 (0x10)
 	var _locationDisplay : String? // +0x0 (0x10)
 	var _query : String? // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x935400029398 (0x35400029398) in binary!
-	0x9348  @objc MapsSyncHistorySearchItem.(null) <stripped>
-WARNING: couldn't find address 0x933c00029940 (0x33c00029940) in binary!
-	0x9330  @objc MapsSyncHistorySearchItem.(null) <stripped>
-WARNING: couldn't find address 0x932400029948 (0x32400029948) in binary!
-	0xbf98  @objc MapsSyncHistorySearchItem.(null) <stripped>
-WARNING: couldn't find address 0x879c00029240 (0x79c00029240) in binary!
-	0x7da0  @objc MapsSyncHistorySearchItem.(null) <stripped>
-	0xa100  static MapsSyncCollection.fetchCollectionForIdentifier(_:)
-WARNING: couldn't find address 0xae7c00029950 (0x67c00029950) in binary!
-	0x93a0  @objc MapsSyncHistorySearchItem.(null) <stripped>
+WARNING: couldn't find address 0x941c00029868 (0x41c00029868) in binary!
+	0x9410  @objc MapsSyncHistorySearchItem.(null) <stripped>
+WARNING: couldn't find address 0x940400029e10 (0x40400029e10) in binary!
+	0x93f8  @objc MapsSyncHistorySearchItem.(null) <stripped>
+WARNING: couldn't find address 0x93ec00029e18 (0x3ec00029e18) in binary!
+	0xc0c0  @objc MapsSyncHistorySearchItem.(null) <stripped>
+WARNING: couldn't find address 0x886400029708 (0x6400029708) in binary!
+	0x7e68  @objc MapsSyncHistorySearchItem.(null) <stripped>
+WARNING: couldn't find address 0x7e5c000296e0 (0x65c000296e0) in binary!
+	0xa1c8  @objc MapsSyncHistorySearchItem.(null) <stripped>
+WARNING: couldn't find address 0xafa400029e20 (0x7a400029e20) in binary!
+	0x9468  @objc MapsSyncHistorySearchItem.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0xa4fffb2d88  @objc MapsSyncHistorySearchItem.(null) <stripped>
-	0x9cfffb2fa0  @objc MapsSyncHistorySearchItem.æ) <stripped>
-	0x94fffb3198  @objc MapsSyncHistorySearchItem.Ñ <stripped>
-	0x8cfffb3310  @objc MapsSyncHistorySearchItem.§ <stripped>
-	0x15cfffb35d8  @objc MapsSyncHistorySearchItem. <stripped>
-	0x23c000290f8  @objc MapsSyncHistorySearchItem.âÁËŸﬁ <stripped>
+	0x574fffb1de0  @objc MapsSyncHistorySearchItem.(null) <stripped>
+	0x56cfffb1ff8  @objc MapsSyncHistorySearchItem.AUATSHÉÏxLâm–HâçpˇˇˇHâUÄHâµxˇˇˇIâˇH«Eê <stripped>
+	0x564fffb21f0  @objc MapsSyncHistorySearchItem.√êêêêêêêêêêêêêêêUHâÂAWAVAUATSHÉÏxLâm–HâçpˇˇˇHâUÄHâµxˇˇˇIâˇH«Eê <stripped>
+	0x55cfffb2368  @objc MapsSyncHistorySearchItem.Ñ <stripped>
+	0x624fffb2630  @objc MapsSyncHistorySearchItem.˙LâÒË˜	 <stripped>
+	0x304000295c0  @objc MapsSyncHistorySearchItem. <stripped>
 
 	// Swift methods
-	0x4c0c0  func <stripped> // getter 
-	0x4c190  func <stripped> // getter 
-	0x4c1d0  func <stripped> // getter 
-	0x4c260  func <stripped> // getter 
+	0x4dc50  func <stripped> // getter 
+	0x4dd20  func <stripped> // getter 
+	0x4dd60  func <stripped> // getter 
+	0x4ddf0  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableHistorySearchItem : MapsSyncMutableHistoryItem {
@@ -1317,37 +1345,38 @@ WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
 	var _proxyHistory : MapsSyncManagedHistorySearchItem
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xae5c000291b8 (0x65c000291b8) in binary!
-	0x92b0  @objc MapsSyncMutableHistorySearchItem.(null) <stripped>
-WARNING: couldn't find address 0x8734000298a0 (0x734000298a0) in binary!
-	0x9298  @objc MapsSyncMutableHistorySearchItem.(null) <stripped>
-WARNING: couldn't find address 0x871c00029898 (0x71c00029898) in binary!
-	0x9280  @objc MapsSyncMutableHistorySearchItem.(null) <stripped>
-WARNING: couldn't find address 0x870400029890 (0x70400029890) in binary!
-	0x9268  @objc MapsSyncMutableHistorySearchItem.(null) <stripped>
-WARNING: couldn't find address 0x86ec00029888 (0x6ec00029888) in binary!
-	0x9320  @objc MapsSyncMutableHistorySearchItem.(null) <stripped>
+WARNING: couldn't find address 0xaf8400029680 (0x78400029680) in binary!
+	0x9378  @objc MapsSyncMutableHistorySearchItem.(null) <stripped>
+WARNING: couldn't find address 0x87fc00029d70 (0x7fc00029d70) in binary!
+	0x9360  @objc MapsSyncMutableHistorySearchItem.(null) <stripped>
+WARNING: couldn't find address 0x87e400029d68 (0x7e400029d68) in binary!
+	0x9348  @objc MapsSyncMutableHistorySearchItem.(null) <stripped>
+WARNING: couldn't find address 0x87cc00029d60 (0x7cc00029d60) in binary!
+	0x9330  @objc MapsSyncMutableHistorySearchItem.(null) <stripped>
+WARNING: couldn't find address 0x87b400029d58 (0x7b400029d58) in binary!
+	0x93e8  @objc MapsSyncMutableHistorySearchItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffb48d8  @objc MapsSyncMutableHistorySearchItem.(null) <stripped>
+	0xfffb3930  @objc MapsSyncMutableHistorySearchItem.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x104fffb3f40  @objc MapsSyncMutableHistorySearchItem.(null) <stripped>
-	0xdcfffb4288  @objc MapsSyncMutableHistorySearchItem. <stripped>
-	0xacfffb4780  @objc MapsSyncMutableHistorySearchItem. <stripped>
-	0xfffb4998  @objc MapsSyncMutableHistorySearchItem.LâM¿LâE»HâÀHâU–IâÙIâ˛H∏ <stripped>
+	0x5ccfffb2f98  @objc MapsSyncMutableHistorySearchItem.(null) <stripped>
+	0x5a4fffb32e0  @objc MapsSyncMutableHistorySearchItem.ã-B≥
+ <stripped>
+	0x574fffb37d8  @objc MapsSyncMutableHistorySearchItem.»Lçm¿ø. <stripped>
+	0xfffb39f0  @objc MapsSyncMutableHistorySearchItem. <stripped>
 
 	// Swift methods
-	0x4d0f0  func <stripped> // getter 
-	0x4d270  func <stripped> // setter 
-	0x4d3b0  func <stripped> // modifyCoroutine 
-	0x4d420  func <stripped> // getter 
-	0x4d460  func <stripped> // setter 
-	0x4d4c0  func <stripped> // modifyCoroutine 
-	0x4d5b0  func <stripped> // getter 
-	0x4d5f0  func <stripped> // setter 
-	0x4d650  func <stripped> // modifyCoroutine 
-	0x4d800  func <stripped> // getter 
-	0x4d9a0  func <stripped> // setter 
-	0x4dbc0  func <stripped> // modifyCoroutine 
+	0x4ec80  func <stripped> // getter 
+	0x4ee00  func <stripped> // setter 
+	0x4ef40  func <stripped> // modifyCoroutine 
+	0x4efb0  func <stripped> // getter 
+	0x4eff0  func <stripped> // setter 
+	0x4f050  func <stripped> // modifyCoroutine 
+	0x4f140  func <stripped> // getter 
+	0x4f180  func <stripped> // setter 
+	0x4f1e0  func <stripped> // modifyCoroutine 
+	0x4f390  func <stripped> // getter 
+	0x4f530  func <stripped> // setter 
+	0x4f750  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncCollectionPlaceItemQuery : MapsSyncBaseQuery {
@@ -1356,27 +1385,27 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 	var _specifiedQuery : MapsSyncGenericQuery
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xadc400029118 (0x5c400029118) in binary!
-	0xa030  @objc MapsSyncCollectionPlaceItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x8512000290f0 (0x512000290f0) in binary!
-	0xa018  @objc MapsSyncCollectionPlaceItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x84fa000290c8 (0x4fa000290c8) in binary!
-	0x83c0  @objc MapsSyncCollectionPlaceItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x92ac000290e8 (0x2ac000290e8) in binary!
+WARNING: couldn't find address 0xaeec000295e0 (0x6ec000295e0) in binary!
+	0xa0f8  @objc MapsSyncCollectionPlaceItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x85da000295b8 (0x5da000295b8) in binary!
+	0xa0e0  @objc MapsSyncCollectionPlaceItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x85c200029590 (0x5c200029590) in binary!
+	0x8488  @objc MapsSyncCollectionPlaceItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x9374000295b0 (0x374000295b0) in binary!
 	0x18000000c  @objc MapsSyncCollectionPlaceItemQuery.(null) <stripped>
-WARNING: couldn't find address 0xad6400029048 (0x56400029048) in binary!
+WARNING: couldn't find address 0xae8c00029510 (0x68c00029510) in binary!
 	0x18000000c  @objc MapsSyncCollectionPlaceItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x91ac00029068 (0x1ac00029068) in binary!
+WARNING: couldn't find address 0x927400029530 (0x27400029530) in binary!
 	0x88000000c  @objc MapsSyncCollectionPlaceItemQuery.(null) <stripped>
-WARNING: couldn't find address 0xad3400029088 (0x53400029088) in binary!
-	0x9fa0  @objc MapsSyncCollectionPlaceItemQuery.(null) <stripped>
+WARNING: couldn't find address 0xae5c00029550 (0x65c00029550) in binary!
+	0xa068  @objc MapsSyncCollectionPlaceItemQuery.(null) <stripped>
 
 	// Swift methods
-	0x4e1e0  class func MapsSyncCollectionPlaceItemQuery.__allocating_init(delegate:) // init 
-	0x4e290  func <stripped> // method 
-	0x4e2f0  func <stripped> // method 
-	0x4e5e0  func <stripped> // method 
-	0x4e760  func <stripped> // method 
+	0x4fd70  class func MapsSyncCollectionPlaceItemQuery.__allocating_init(delegate:) // init 
+	0x4fe20  func <stripped> // method 
+	0x4fe80  func <stripped> // method 
+	0x50170  func <stripped> // method 
+	0x502f0  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncFavoriteItemQuery : MapsSyncBaseQuery {
@@ -1385,33 +1414,33 @@ WARNING: couldn't find address 0xad3400029088 (0x53400029088) in binary!
 	var _specifiedQuery : MapsSyncGenericQuery
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xad3400029088 (0x53400029088) in binary!
-	0x9fa0  @objc MapsSyncFavoriteItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x848200029060 (0x48200029060) in binary!
-	0x9f88  @objc MapsSyncFavoriteItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x846a00029038 (0x46a00029038) in binary!
-	0xacf8  @objc MapsSyncFavoriteItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x832400029010 (0x32400029010) in binary!
-	0x9210  @objc MapsSyncFavoriteItemQuery.(null) <stripped>
+WARNING: couldn't find address 0xae5c00029550 (0x65c00029550) in binary!
+	0xa068  @objc MapsSyncFavoriteItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x854a00029528 (0x54a00029528) in binary!
+	0xa050  @objc MapsSyncFavoriteItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x853200029500 (0x53200029500) in binary!
+	0xae20  @objc MapsSyncFavoriteItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x83ec000294d8 (0x3ec000294d8) in binary!
+	0x92d8  @objc MapsSyncFavoriteItemQuery.(null) <stripped>
 WARNING: couldn't find address 0x138000000c (0x138000000c) in binary!
-	0x58cfffb8768  @objc MapsSyncFavoriteItemQuery.(null) <stripped>
-	0x14cfffb8e20  @objc MapsSyncFavoriteItemQuery.HâG(Hâ«]È◊˛ <stripped>
-	0x484fffb91c8  @objc MapsSyncFavoriteItemQuery.òÚ <stripped>
-	0x48cfffb9290  @objc MapsSyncFavoriteItemQuery.
+	0x254fffb77c0  @objc MapsSyncFavoriteItemQuery.(null) <stripped>
+	0x61cfffb7e78  @objc MapsSyncFavoriteItemQuery.œ
  <stripped>
+	0x154fffb8220  @objc MapsSyncFavoriteItemQuery.UHâÂ]Èf˚ˇˇfD <stripped>
+	0x15cfffb82e8  @objc MapsSyncFavoriteItemQuery.ˇˇfD <stripped>
 
 	// Swift methods
-	0x4fa70  class func MapsSyncFavoriteItemQuery.__allocating_init(delegate:) // init 
-	0x4fb20  func <stripped> // method 
-	0x4fbd0  func <stripped> // method 
-	0x4fec0  func <stripped> // method 
-	0x50040  func <stripped> // method 
+	0x51600  class func MapsSyncFavoriteItemQuery.__allocating_init(delegate:) // init 
+	0x516b0  func <stripped> // method 
+	0x51760  func <stripped> // method 
+	0x51a50  func <stripped> // method 
+	0x51bd0  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncDataBase_0_0_1 : _SwiftObject /usr/lib/swift/libswiftCore.dylib {
 	// Swift methods
-	0x52200  func <stripped> // method 
-	0x52890  func <stripped> // getter 
+	0x53d90  func <stripped> // method 
+	0x54420  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncCollection : MapsSyncBaseItem {
@@ -1419,59 +1448,56 @@ WARNING: couldn't find address 0x138000000c (0x138000000c) in binary!
 	// Properties
 	var _collectionDescription : String? // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _image : ¡π // +0x0 (0x10)
+	var _image : aΩ // +0x0 (0x10)
 	var _imageUrl : String? // +0x0 (0x10)
 	var _title : String? // +0x0 (0x10)
 	var _places : MapsSyncCollectionItem // +0x0 (0x8)
 	var _placesUnstored : MapsSyncCollectionItem // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x912c00028da0 (0x12c00028da0) in binary!
-	0x85b0  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0xae5600029058 (0x65600029058) in binary!
-	0x9108  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0x90fc00029480 (0xfc00029480) in binary!
-	0x90f0  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0x90e400029488 (0xe400029488) in binary!
-	0x90d8  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0x90cc00029708 (0xcc00029708) in binary!
-	0xbd40  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0xbd3400028d18 (0x53400028d18) in binary!
-	0x8538  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0x852c00028fd0 (0x52c00028fd0) in binary!
-	0x7b30  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0x7b2400028fa8 (0x32400028fa8) in binary!
-	0x9e90  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0x9e8400028d10 (0x68400028d10) in binary!
-	0xac00  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0x912400028f60 (0x12400028f60) in binary!
+WARNING: couldn't find address 0x91f400029268 (0x1f400029268) in binary!
+	0x8678  @objc MapsSyncCollection.(null) <stripped>
+WARNING: couldn't find address 0xaf7e00029520 (0x77e00029520) in binary!
+	0x91d0  @objc MapsSyncCollection.(null) <stripped>
+WARNING: couldn't find address 0x91c400029950 (0x1c400029950) in binary!
+	0x91b8  @objc MapsSyncCollection.(null) <stripped>
+WARNING: couldn't find address 0x91ac00029958 (0x1ac00029958) in binary!
+	0x91a0  @objc MapsSyncCollection.(null) <stripped>
+WARNING: couldn't find address 0x919400029bd8 (0x19400029bd8) in binary!
+	0xbe68  @objc MapsSyncCollection.(null) <stripped>
+WARNING: couldn't find address 0xbe5c000291e0 (0x65c000291e0) in binary!
+	0x8600  @objc MapsSyncCollection.(null) <stripped>
+WARNING: couldn't find address 0x85f400029498 (0x5f400029498) in binary!
+	0x7bf8  @objc MapsSyncCollection.(null) <stripped>
+WARNING: couldn't find address 0x7bec00029470 (0x3ec00029470) in binary!
+	0x9f58  @objc MapsSyncCollection.(null) <stripped>
+WARNING: couldn't find address 0x9f4c000291d8 (0x74c000291d8) in binary!
+	0xad28  @objc MapsSyncCollection.(null) <stripped>
+WARNING: couldn't find address 0x91ec00029428 (0x1ec00029428) in binary!
 	0xe8000000c  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0xabdc00028f38 (0x3dc00028f38) in binary!
-	0x9030  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0x84b4000293b0 (0x4b4000293b0) in binary!
-	0x9018  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0x849c000293a8 (0x49c000293a8) in binary!
-	0x9000  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0x8484000293a0 (0x484000293a0) in binary!
-	0x8fe8  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0x846c00029398 (0x46c00029398) in binary!
-	0x8fd0  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0x845400029608 (0x45400029608) in binary!
-	0x8448  @objc MapsSyncCollection.(null) <stripped>
-WARNING: couldn't find address 0x843c00028be8 (0x43c00028be8) in binary!
-	0x9070  @objc MapsSyncCollection.(null) <stripped>
+WARNING: couldn't find address 0xad0400029400 (0x50400029400) in binary!
+	0x90f8  @objc MapsSyncCollection.(null) <stripped>
+	0x90e0  _block_copy_helper.70
+WARNING: couldn't find address 0x856400029878 (0x56400029878) in binary!
+	0x90c8  @objc MapsSyncCollection.(null) <stripped>
+	0x90b0  _block_copy_helper.44
+WARNING: couldn't find address 0x853400029868 (0x53400029868) in binary!
+	0x9098  @objc MapsSyncCollection.(null) <stripped>
+	0x8510  dispatch thunk of MapsSyncCollectionPlaceItem.latitude.getter
+WARNING: couldn't find address 0x8504000290b0 (0x504000290b0) in binary!
+	0x9138  @objc MapsSyncCollection.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffbe2a8  @objc MapsSyncCollection.(null) <stripped>
+	0xfffbd530  @objc MapsSyncCollection.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x30cfffc1660  @objc MapsSyncCollection.(null) <stripped>
+	0x7d4fffc08e8  @objc MapsSyncCollection.(null) <stripped>
 
 	// Swift methods
-	0x53620  func <stripped> // getter 
-	0x536b0  func <stripped> // getter 
-	0x53700  func <stripped> // getter 
-	0x53790  func <stripped> // getter 
-	0x53800  func <stripped> // getter 
-	0x53ed0  func <stripped> // method 
+	0x551b0  func <stripped> // getter 
+	0x55240  func <stripped> // getter 
+	0x55290  func <stripped> // getter 
+	0x55320  func <stripped> // getter 
+	0x55390  func <stripped> // getter 
+	0x55be0  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncMutableCollection : MapsSyncMutableBaseItem {
@@ -1480,57 +1506,54 @@ WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
 	var _proxyCollection : MapsSyncManagedCollection
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xabdc00028f38 (0x3dc00028f38) in binary!
-	0x9030  @objc MapsSyncMutableCollection.(null) <stripped>
-WARNING: couldn't find address 0x84b4000293b0 (0x4b4000293b0) in binary!
-	0x9018  @objc MapsSyncMutableCollection.(null) <stripped>
-WARNING: couldn't find address 0x849c000293a8 (0x49c000293a8) in binary!
-	0x9000  @objc MapsSyncMutableCollection.(null) <stripped>
-WARNING: couldn't find address 0x8484000293a0 (0x484000293a0) in binary!
-	0x8fe8  @objc MapsSyncMutableCollection.(null) <stripped>
-WARNING: couldn't find address 0x846c00029398 (0x46c00029398) in binary!
-	0x8fd0  @objc MapsSyncMutableCollection.(null) <stripped>
-WARNING: couldn't find address 0x845400029608 (0x45400029608) in binary!
-	0x8448  @objc MapsSyncMutableCollection.(null) <stripped>
-WARNING: couldn't find address 0x843c00028be8 (0x43c00028be8) in binary!
-	0x9070  @objc MapsSyncMutableCollection.(null) <stripped>
+WARNING: couldn't find address 0xad0400029400 (0x50400029400) in binary!
+	0x90f8  @objc MapsSyncMutableCollection.(null) <stripped>
+	0x90e0  _block_copy_helper.70
+WARNING: couldn't find address 0x856400029878 (0x56400029878) in binary!
+	0x90c8  @objc MapsSyncMutableCollection.(null) <stripped>
+	0x90b0  _block_copy_helper.44
+WARNING: couldn't find address 0x853400029868 (0x53400029868) in binary!
+	0x9098  @objc MapsSyncMutableCollection.(null) <stripped>
+	0x8510  dispatch thunk of MapsSyncCollectionPlaceItem.latitude.getter
+WARNING: couldn't find address 0x8504000290b0 (0x504000290b0) in binary!
+	0x9138  @objc MapsSyncMutableCollection.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffbe2a8  @objc MapsSyncMutableCollection.(null) <stripped>
+	0xfffbd530  @objc MapsSyncMutableCollection.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x30cfffc1660  @objc MapsSyncMutableCollection.(null) <stripped>
-	0x75400028b88  @objc MapsSyncMutableCollection.¬Hæ/ <stripped>
-WARNING: couldn't find address 0x28b74fffc1850 (0x374fffc1850) in binary!
-	0x73c00028b60  @objc MapsSyncMutableCollection.(null) <stripped>
-WARNING: couldn't find address 0x28b4cfffc19c8 (0x34cfffc19c8) in binary!
-	0x72400028b38  @objc MapsSyncMutableCollection.(null) <stripped>
-WARNING: couldn't find address 0x28b24fffc19f0 (0x324fffc19f0) in binary!
-	0x1a400028b10  @objc MapsSyncMutableCollection.(null) <stripped>
-WARNING: couldn't find address 0x28afcfffc1b68 (0x2fcfffc1b68) in binary!
-	0x6f400028ae8  @objc MapsSyncMutableCollection.(null) <stripped>
+	0x7d4fffc08e8  @objc MapsSyncMutableCollection.(null) <stripped>
+	0x1c00029050  @objc MapsSyncMutableCollection.UHâÂ]È∆ÁˇˇfD <stripped>
+WARNING: couldn't find address 0x2903cfffc0ad8 (0x3cfffc0ad8) in binary!
+	0x29028  @objc MapsSyncMutableCollection.(null) <stripped>
+WARNING: couldn't find address 0x29014fffc0c50 (0x14fffc0c50) in binary!
+	0x7ec00029000  @objc MapsSyncMutableCollection.(null) <stripped>
+WARNING: couldn't find address 0x28fecfffc0c78 (0x7ecfffc0c78) in binary!
+	0x26c00028fd8  @objc MapsSyncMutableCollection.(null) <stripped>
+WARNING: couldn't find address 0x28fc4fffc0df0 (0x7c4fffc0df0) in binary!
+	0x7bc00028fb0  @objc MapsSyncMutableCollection.(null) <stripped>
 
 	// Swift methods
-	0x55c50  func <stripped> // getter 
-	0x55c90  func <stripped> // setter 
-	0x55cf0  func <stripped> // modifyCoroutine 
-	0x55e80  func <stripped> // getter 
-	0x56030  func <stripped> // setter 
-	0x56210  func <stripped> // modifyCoroutine 
-	0x56370  func <stripped> // getter 
-	0x563b0  func <stripped> // setter 
-	0x56410  func <stripped> // modifyCoroutine 
-	0x565c0  func <stripped> // getter 
-	0x56760  func <stripped> // setter 
-	0x56980  func <stripped> // modifyCoroutine 
-	0x56b80  func <stripped> // getter 
-	0x56d30  func <stripped> // setter 
-	0x56e90  func <stripped> // modifyCoroutine 
-	0x57000  func <stripped> // method 
-	0x57170  func <stripped> // method 
+	0x57960  func <stripped> // getter 
+	0x579a0  func <stripped> // setter 
+	0x57a00  func <stripped> // modifyCoroutine 
+	0x57b90  func <stripped> // getter 
+	0x57d40  func <stripped> // setter 
+	0x57f20  func <stripped> // modifyCoroutine 
+	0x58080  func <stripped> // getter 
+	0x580c0  func <stripped> // setter 
+	0x58120  func <stripped> // modifyCoroutine 
+	0x582d0  func <stripped> // getter 
+	0x58470  func <stripped> // setter 
+	0x58690  func <stripped> // modifyCoroutine 
+	0x58890  func <stripped> // getter 
+	0x58a40  func <stripped> // setter 
+	0x58ba0  func <stripped> // modifyCoroutine 
+	0x58d10  func <stripped> // method 
+	0x58e80  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncManagedHistorySearchItem : MapsSyncManagedHistoryItem {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x816400028fc0 (0x16400028fc0) in binary!
+WARNING: couldn't find address 0x822c00029490 (0x22c00029490) in binary!
 	0x28000000c  @objc MapsSyncManagedHistorySearchItem.(null) <stripped>
  }
 
@@ -1538,95 +1561,95 @@ WARNING: couldn't find address 0x816400028fc0 (0x16400028fc0) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _identifier : e∫ // +0x0 (0x0)
+	var _identifier : æ // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _createTime : ß± // +0xb2000 (0x0)
+	var _createTime : Gµ // +0xb5000 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _modificationTime : ß± // +0x5 (0x0)
+	var _modificationTime : Gµ // +0x5 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _positionIndex : ù´ // +0x13 (0x8)
+	var _positionIndex : ≥Æ // +0x13 (0x8)
 	var _editBlocks : MapsSyncMutableBaseItem // +0x65745f5f (0x8)
 	var _readContext : NSManagedObjectContext? // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _saveObjectSignpost : ¨ // +0x45545f5f (0x0)
+	var _saveObjectSignpost : üØ // +0x45545f5f (0x0)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8f5400028b88 (0x75400028b88) in binary!
-	0x83d8  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x8f3c00028b60 (0x73c00028b60) in binary!
-	0x83c0  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x8f2400028b38 (0x72400028b38) in binary!
-	0x83a8  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x79a400028b10 (0x1a400028b10) in binary!
-	0xac2c  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x8ef400028ae8 (0x6f400028ae8) in binary!
-	0x8378  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0xaa7c00029550 (0x27c00029550) in binary!
-	0xac12  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x8ec400028f28 (0x6c400028f28) in binary!
-	0x8eb8  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0xbb2c00028de8 (0x32c00028de8) in binary!
-	0x8ea0  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x8e9400028eb0 (0x69400028eb0) in binary!
-	0x8e88  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x791400028e78 (0x11400028e78) in binary!
-	0x8300  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x82f400028a48 (0x2f400028a48) in binary!
-	0xaba8  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x9c6400028d68 (0x46400028d68) in binary!
-	0x9c58  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0xaba200028a00 (0x3a200028a00) in binary!
-	0xbaa8  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x9c3400028ac0 (0x43400028ac0) in binary!
-	0x78b0  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x78a400028d28 (0xa400028d28) in binary!
-	0xa998  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x827c00028d20 (0x27c00028d20) in binary!
-	0xa980  @objc MapsSyncBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x8dd400028988 (0x5d400028988) in binary!
-	0x8e98  @objc MapsSyncBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x901c00029050 (0x1c00029050) in binary!
+	0x84a0  @objc MapsSyncBaseItem.(null) <stripped>
+	0x8488  @objc MapsSyncBaseItem. <stripped>
+	0x8470  dispatch thunk of MapsSyncCollectionPlaceItem.customName.getter
+WARNING: couldn't find address 0x7a6c00028fd8 (0x26c00028fd8) in binary!
+	0xad54  @objc MapsSyncBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x8fbc00028fb0 (0x7bc00028fb0) in binary!
+	0x8440  @objc MapsSyncBaseItem.(null) <stripped>
+WARNING: couldn't find address 0xaba400029a20 (0x3a400029a20) in binary!
+	0xad3a  @objc MapsSyncBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x8f8c000293f8 (0x78c000293f8) in binary!
+	0x8f80  @objc MapsSyncBaseItem.(null) <stripped>
+WARNING: couldn't find address 0xbc54000292b0 (0x454000292b0) in binary!
+	0x8f68  @objc MapsSyncBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x8f5c00029380 (0x75c00029380) in binary!
+	0x8f50  @objc MapsSyncBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x79dc00029348 (0x1dc00029348) in binary!
+	0x83c8  @objc MapsSyncBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x83bc00028f10 (0x3bc00028f10) in binary!
+	0xacd0  @objc MapsSyncBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x9d2c00029230 (0x52c00029230) in binary!
+	0x9d20  @objc MapsSyncBaseItem.(null) <stripped>
+WARNING: couldn't find address 0xacca00028ec8 (0x4ca00028ec8) in binary!
+	0xbbd0  @objc MapsSyncBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x9cfc00028f88 (0x4fc00028f88) in binary!
+	0x7978  @objc MapsSyncBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x796c000291f0 (0x16c000291f0) in binary!
+	0xaac0  @objc MapsSyncBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x8344000291e8 (0x344000291e8) in binary!
+	0xaaa8  @objc MapsSyncBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x8e9c00028e50 (0x69c00028e50) in binary!
+	0x8f60  @objc MapsSyncBaseItem.(null) <stripped>
 WARNING: couldn't find address 0xb8000000c (0xb8000000c) in binary!
-	0x144fffc47b0  @objc MapsSyncBaseItem.(null) <stripped>
-	0x5bcfffc4848  @objc MapsSyncBaseItem.ˇˇfD <stripped>
-	0x594fffc48c0  @objc MapsSyncBaseItem.UHâÂ]È&¯ˇˇfD <stripped>
-	0x55cfffc4ae8  @objc MapsSyncBaseItem.ˇˇfD <stripped>
-	0x5acfffc4e70  @objc MapsSyncBaseItem.∫ <stripped>
-	0xfffc5168  @objc MapsSyncBaseItem.ˇˇfD <stripped>
+	0x60cfffc3a38  @objc MapsSyncBaseItem.(null) <stripped>
+	0x28cfffc3ad0  @objc MapsSyncBaseItem.	 <stripped>
+	0x264fffc3b48  @objc MapsSyncBaseItem.HÖ¿tY√Hã=⁄ƒ
+ <stripped>
+	0x22cfffc3d70  @objc MapsSyncBaseItem.“[√f.Ñ <stripped>
+	0x27cfffc40f8  @objc MapsSyncBaseItem.€
+ <stripped>
+	0xfffc43f0  @objc MapsSyncBaseItem. <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffc6dd0  @objc MapsSyncBaseItem.(null) <stripped>
+	0xfffc6058  @objc MapsSyncBaseItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffc70f8  @objc MapsSyncBaseItem.(null) <stripped>
+	0xfffc6380  @objc MapsSyncBaseItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffc7180  @objc MapsSyncBaseItem.(null) <stripped>
+	0xfffc6408  @objc MapsSyncBaseItem.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0x31cfffc8b18  @objc MapsSyncBaseItem.(null) <stripped>
-	0xfffc9f00  @objc MapsSyncBaseItem.@Hâ„HÉ¡HÉ·H)ÀHâ‹Lcx0IﬂLâÁHâﬁLâÍË˘ <stripped>
+	0x7e4fffc7da0  @objc MapsSyncBaseItem.(null) <stripped>
+	0xfffc9188  @objc MapsSyncBaseItem.â_0Hãûö <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x104fffccbe8  @objc MapsSyncBaseItem.(null) <stripped>
-	0x4dcfffccea0  @objc MapsSyncBaseItem.LâˇË‹È <stripped>
-	0x39cfffcd1b8  @objc MapsSyncBaseItem.H∏¯ˇˇˇˇˇˇ <stripped>
-	0x374fffcd220  @objc MapsSyncBaseItem.A^A_]√Hç=£_ <stripped>
-	0x34cfffcd4e8  @objc MapsSyncBaseItem.E® <stripped>
-	0x7cc00028b28  @objc MapsSyncBaseItem.UHâÂ]Èf˚ˇˇfD <stripped>
+	0x5d4fffcbe70  @objc MapsSyncBaseItem.(null) <stripped>
+	0x1acfffcc128  @objc MapsSyncBaseItem.ã%bî <stripped>
+	0x64fffcc440  @objc MapsSyncBaseItem.UHâÂHÉÏIã}IãuIãU IãM(MãE0MãM8IãE@Hâ$Ëì‹ˇˇHÉƒ]√f.Ñ <stripped>
+	0x3cfffcc4a8  @objc MapsSyncBaseItem. <stripped>
+	0x14fffcc770  @objc MapsSyncBaseItem.µ	 <stripped>
+	0xf400028ff0  @objc MapsSyncBaseItem.HcH˛øˇ <stripped>
 
 	// Swift methods
-	0x588c0  func <stripped> // method 
-	0x58a20  func <stripped> // getter 
-	0x58a60  func <stripped> // getter 
-	0x58a80  func <stripped> // getter 
-	0x58b00  func <stripped> // getter 
-	0x5b540  func <stripped> // method 
-	0x58b20  func <stripped> // method 
-	0x5b1f0  func <stripped> // method 
-	0x58e20  func <stripped> // method 
-	0x59010  func <stripped> // method 
-	0x59220  func <stripped> // method 
-	0x598a0  func <stripped> // method 
-	0x5eb40  func <stripped> // method 
-	0x5eb60  func <stripped> // method 
-	0x59d40  func <stripped> // method 
-	0x5ad10  func <stripped> // method 
-	0x59ef0  func <stripped> // method 
+	0x5a680  func <stripped> // method 
+	0x5a7e0  func <stripped> // getter 
+	0x5a820  func <stripped> // getter 
+	0x5a840  func <stripped> // getter 
+	0x5a8c0  func <stripped> // getter 
+	0x5d300  func <stripped> // method 
+	0x5a8e0  func <stripped> // method 
+	0x5cfb0  func <stripped> // method 
+	0x5abe0  func <stripped> // method 
+	0x5add0  func <stripped> // method 
+	0x5afe0  func <stripped> // method 
+	0x5b660  func <stripped> // method 
+	0x60900  func <stripped> // method 
+	0x60920  func <stripped> // method 
+	0x5bb00  func <stripped> // method 
+	0x5cad0  func <stripped> // method 
+	0x5bcb0  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncMutableBaseItem : NSObject /usr/lib/libobjc.A.dylib {
@@ -1635,57 +1658,58 @@ WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
 	var _proxyObject : NSManagedObject
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa95400028cb0 (0x15400028cb0) in binary!
-	0x8da8  @objc MapsSyncMutableBaseItem.(null) <stripped>
-	0x8d90  _block_destroy_helper.97
-WARNING: couldn't find address 0x821400028da8 (0x21400028da8) in binary!
-	0x8d78  @objc MapsSyncMutableBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x81fc00028d80 (0x1fc00028d80) in binary!
-	0x77f8  @objc MapsSyncMutableBaseItem.(null) <stripped>
-WARNING: couldn't find address 0xaa8000028d48 (0x28000028d48) in binary!
-	0x8d48  @objc MapsSyncMutableBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x8e0c00028c48 (0x60c00028c48) in binary!
+WARNING: couldn't find address 0xaa7c00029178 (0x27c00029178) in binary!
+	0x8e70  @objc MapsSyncMutableBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x8e6400028df8 (0x66400028df8) in binary!
+	0x8e58  @objc MapsSyncMutableBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x82dc00029278 (0x2dc00029278) in binary!
+	0x8e40  @objc MapsSyncMutableBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x82c400029250 (0x2c400029250) in binary!
+	0x78c0  @objc MapsSyncMutableBaseItem.(null) <stripped>
+WARNING: couldn't find address 0xaba800029218 (0x3a800029218) in binary!
+	0x8e10  @objc MapsSyncMutableBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x8ed400029110 (0x6d400029110) in binary!
 	0x18000000c  @objc MapsSyncMutableBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x7efc00028d58 (0x6fc00028d58) in binary!
+WARNING: couldn't find address 0x7fc400029228 (0x7c400029228) in binary!
 	0x18000000c  @objc MapsSyncMutableBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x7ee400028d40 (0x6e400028d40) in binary!
+WARNING: couldn't find address 0x7fac00029210 (0x7ac00029210) in binary!
 	0x18000000c  @objc MapsSyncMutableBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x7ecc00028d28 (0x6cc00028d28) in binary!
+WARNING: couldn't find address 0x7f94000291f8 (0x794000291f8) in binary!
 	0x38000000c  @objc MapsSyncMutableBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x7fbc00028b30 (0x7bc00028b30) in binary!
-	0x7c20  @objc MapsSyncMutableBaseItem.(null) <stripped>
-WARNING: couldn't find address 0x7fca00028b08 (0x7ca00028b08) in binary!
+WARNING: couldn't find address 0x808400028ff8 (0x8400028ff8) in binary!
+	0x7ce8  @objc MapsSyncMutableBaseItem.(null) <stripped>
+WARNING: couldn't find address 0x809200028fd0 (0x9200028fd0) in binary!
 	0xa8000000c  @objc MapsSyncMutableBaseItem.(null) <stripped>
 
 	// Swift methods
-	0x5eef0  class func MapsSyncMutableBaseItem.__allocating_init(proxyObject:) // init 
-	0x5a000  func <stripped> // getter 
-	0x5a030  func <stripped> // getter 
-	0x5a160  func <stripped> // setter 
-	0x5a260  func <stripped> // modifyCoroutine 
-	0x5a5f0  func <stripped> // getter 
-	0x5a6a0  func <stripped> // setter 
-	0x5a750  func <stripped> // modifyCoroutine 
-	0x5a9a0  func <stripped> // getter 
-	0x5aa50  func <stripped> // setter 
-	0x5ab00  func <stripped> // modifyCoroutine 
+	0x60cb0  class func MapsSyncMutableBaseItem.__allocating_init(proxyObject:) // init 
+	0x5bdc0  func <stripped> // getter 
+	0x5bdf0  func <stripped> // getter 
+	0x5bf20  func <stripped> // setter 
+	0x5c020  func <stripped> // modifyCoroutine 
+	0x5c3b0  func <stripped> // getter 
+	0x5c460  func <stripped> // setter 
+	0x5c510  func <stripped> // modifyCoroutine 
+	0x5c760  func <stripped> // getter 
+	0x5c810  func <stripped> // setter 
+	0x5c8c0  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncManagedHistoryEvDirectionsItem : MapsSyncManagedHistoryDirectionsItem {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7efc00028d58 (0x6fc00028d58) in binary!
+WARNING: couldn't find address 0x7fc400029228 (0x7c400029228) in binary!
 	0x18000000c  @objc MapsSyncManagedHistoryEvDirectionsItem.(null) <stripped>
  }
 
  class MapsSync.MapsSyncManagedCollection : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7ee400028d40 (0x6e400028d40) in binary!
+WARNING: couldn't find address 0x7fac00029210 (0x7ac00029210) in binary!
 	0x18000000c  @objc MapsSyncManagedCollection.(null) <stripped>
  }
 
  class MapsSync.MapsSyncManagedCollectionTransitItem : MapsSyncManagedCollectionItem {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7ecc00028d28 (0x6cc00028d28) in binary!
+WARNING: couldn't find address 0x7f94000291f8 (0x794000291f8) in binary!
 	0x38000000c  @objc MapsSyncManagedCollectionTransitItem.(null) <stripped>
  }
 
@@ -1706,17 +1730,17 @@ WARNING: couldn't find address 0x7ecc00028d28 (0x6cc00028d28) in binary!
 	var listeners : [()]
 	var waiting : Bool
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var lastNotified : ’∏
+	var lastNotified : uº
 	var lock : NSLock
 
 	// Swift methods
-	0x65a40  func <stripped> // getter 
-	0x65a70  func <stripped> // setter 
-	0x65ab0  func <stripped> // modifyCoroutine 
-	0x65ae0  func <stripped> // method 
-	0x65c30  func <stripped> // method 
-	0x66480  func <stripped> // method 
-	0x66760  func <stripped> // method 
+	0x67800  func <stripped> // getter 
+	0x67830  func <stripped> // setter 
+	0x67870  func <stripped> // modifyCoroutine 
+	0x678a0  func <stripped> // method 
+	0x679f0  func <stripped> // method 
+	0x68240  func <stripped> // method 
+	0x68520  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncHistoryDirectionsItem : MapsSyncHistoryItem {
@@ -1724,30 +1748,30 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	// Properties
 	var _navigationInterrupted : Bool // +0x0 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _routeRequestStorage : ¡π // +0x0 (0x10)
+	var _routeRequestStorage : aΩ // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8cac00028cf0 (0x4ac00028cf0) in binary!
-	0x9ab0  @objc MapsSyncHistoryDirectionsItem.(null) <stripped>
-WARNING: couldn't find address 0x8c9400029100 (0x49400029100) in binary!
-	0xb908  @objc MapsSyncHistoryDirectionsItem.(null) <stripped>
-WARNING: couldn't find address 0x810c00028bb0 (0x10c00028bb0) in binary!
-	0x7710  @objc MapsSyncHistoryDirectionsItem.(null) <stripped>
-WARNING: couldn't find address 0x770400028b88 (0x70400028b88) in binary!
-	0x9a70  @objc MapsSyncHistoryDirectionsItem.(null) <stripped>
-WARNING: couldn't find address 0xa7ec000292c0 (0x7ec000292c0) in binary!
-	0x8d10  @objc MapsSyncHistoryDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0x8d74000291c0 (0x574000291c0) in binary!
+	0x9b78  @objc MapsSyncHistoryDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0x8d5c000295d0 (0x55c000295d0) in binary!
+	0xba30  @objc MapsSyncHistoryDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0x81d400029078 (0x1d400029078) in binary!
+	0x77d8  @objc MapsSyncHistoryDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0x77cc00029050 (0x7cc00029050) in binary!
+	0x9b38  @objc MapsSyncHistoryDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0xa91400029790 (0x11400029790) in binary!
+	0x8dd8  @objc MapsSyncHistoryDirectionsItem.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x84fffcd628  @objc MapsSyncHistoryDirectionsItem.(null) <stripped>
-	0x74fffcd6e0  @objc MapsSyncHistoryDirectionsItem.LâpHã]àHâX HãMêHâH(Lã}ÄLâx0HãM–HâH8Hç’ <stripped>
-	0x2fcfffcd788  @objc MapsSyncHistoryDirectionsItem.ˇˇfD <stripped>
-	0x3dc00029288  @objc MapsSyncHistoryDirectionsItem.UHâÂ]È¯ˇˇfD <stripped>
-WARNING: couldn't find address 0x2928cfffcdb68 (0x28cfffcdb68) in binary!
-	0x3c400029290  @objc MapsSyncHistoryDirectionsItem.(null) <stripped>
+	0x554fffcc8b0  @objc MapsSyncHistoryDirectionsItem.(null) <stripped>
+	0x544fffcc968  @objc MapsSyncHistoryDirectionsItem.â·Mâ¯Ë‘	 <stripped>
+	0x7c4fffcca10  @objc MapsSyncHistoryDirectionsItem.ƒHâﬂËe"	 <stripped>
+	0x4a400029758  @objc MapsSyncHistoryDirectionsItem.HÖ¿tY√Hç=™} <stripped>
+WARNING: couldn't find address 0x2975cfffccdf0 (0x75cfffccdf0) in binary!
+	0x48c00029760  @objc MapsSyncHistoryDirectionsItem.(null) <stripped>
 
 	// Swift methods
-	0x66fe0  func <stripped> // getter 
-	0x67000  func <stripped> // getter 
+	0x68da0  func <stripped> // getter 
+	0x68dc0  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableHistoryDirectionsItem : MapsSyncMutableHistoryItem {
@@ -1756,24 +1780,24 @@ WARNING: couldn't find address 0x2928cfffcdb68 (0x28cfffcdb68) in binary!
 	var _proxyHistory : MapsSyncManagedHistoryDirectionsItem
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa7cc00028b28 (0x7cc00028b28) in binary!
-	0x9a30  @objc MapsSyncMutableHistoryDirectionsItem.(null) <stripped>
-WARNING: couldn't find address 0xaf78000292b0 (0x778000292b0) in binary!
-	0x8c08  @objc MapsSyncMutableHistoryDirectionsItem.(null) <stripped>
-WARNING: couldn't find address 0x808c000292a0 (0x8c000292a0) in binary!
-	0x8cc0  @objc MapsSyncMutableHistoryDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0xa8f400028ff0 (0xf400028ff0) in binary!
+	0x9af8  @objc MapsSyncMutableHistoryDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0xb0a000029780 (0xa000029780) in binary!
+	0x8cd0  @objc MapsSyncMutableHistoryDirectionsItem.(null) <stripped>
+WARNING: couldn't find address 0x815400029770 (0x15400029770) in binary!
+	0x8d88  @objc MapsSyncMutableHistoryDirectionsItem.(null) <stripped>
 WARNING: couldn't find address 0x1b8000000c (0x1b8000000c) in binary!
-	0x28cfffcdb68  @objc MapsSyncMutableHistoryDirectionsItem.(null) <stripped>
-	0x294fffcdbd0  @objc MapsSyncMutableHistoryDirectionsItem.UHâÂ]È÷ÔˇˇfD <stripped>
-	0x29cfffcdc38  @objc MapsSyncMutableHistoryDirectionsItem.ˇˇfD <stripped>
+	0x75cfffccdf0  @objc MapsSyncMutableHistoryDirectionsItem.(null) <stripped>
+	0x764fffcce58  @objc MapsSyncMutableHistoryDirectionsItem.s(HâﬂLâÓË=	 <stripped>
+	0x76cfffccec0  @objc MapsSyncMutableHistoryDirectionsItem.Hâ√(ÊT	 <stripped>
 
 	// Swift methods
-	0x67140  func <stripped> // getter 
-	0x67160  func <stripped> // setter 
-	0x67190  func <stripped> // modifyCoroutine 
-	0x671f0  func <stripped> // getter 
-	0x67330  func <stripped> // setter 
-	0x67420  func <stripped> // modifyCoroutine 
+	0x68f00  func <stripped> // getter 
+	0x68f20  func <stripped> // setter 
+	0x68f50  func <stripped> // modifyCoroutine 
+	0x68fb0  func <stripped> // getter 
+	0x690f0  func <stripped> // setter 
+	0x691e0  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncVehicle : MapsSyncBaseItem {
@@ -1781,15 +1805,15 @@ WARNING: couldn't find address 0x1b8000000c (0x1b8000000c) in binary!
 	// Properties
 	var _colorHex : String? // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _currentVehicleState : ¡π // +0x0 (0x10)
+	var _currentVehicleState : aΩ // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _dateOfVehicleIngestion : °∑ // +0x0 (0x0)
+	var _dateOfVehicleIngestion : Aª // +0x0 (0x0)
 	var _displayName : String? // +0x0 (0x10)
 	var _headUnitBluetoothIdentifier : String? // +0x0 (0x10)
 	var _headUnitMacAddress : String? // +0x0 (0x10)
 	var _iapIdentifier : String? // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _lastStateUpdateDate : °∑ // +0x0 (0x0)
+	var _lastStateUpdateDate : Aª // +0x0 (0x0)
 	var _licensePlate : String? // +0x0 (0x10)
 	var _lprPowerType : String? // +0x0 (0x10)
 	var _lprVehicleType : String? // +0x0 (0x10)
@@ -1797,7 +1821,7 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _model : String? // +0x0 (0x10)
 	var _pairedAppIdentifier : String? // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _powerByConnector : ¡π // +0x0 (0x10)
+	var _powerByConnector : aΩ // +0x0 (0x10)
 	var _siriIntentsIdentifier : String? // +0x0 (0x10)
 	var _supportedConnectors : NSNumber? // +0x0 (0x8)
 	var _vehicleIdentifier : String? // +0x0 (0x10)
@@ -1805,82 +1829,82 @@ WARNING: couldn't find address 0x0 (0x0) in binary!
 	var _year : NSNumber? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x8bdc00029288 (0x3dc00029288) in binary!
-	0x8bd0  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x8bc400029290 (0x3c400029290) in binary!
-	0x8bb8  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x8bac00029298 (0x3ac00029298) in binary!
-	0x8ba0  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x8b94000292a0 (0x394000292a0) in binary!
-	0x8b88  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x8b7c000292a8 (0x37c000292a8) in binary!
-	0x8b70  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x8b64000292b0 (0x364000292b0) in binary!
-	0x8b58  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x8b4c000292b8 (0x34c000292b8) in binary!
-	0x8b40  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x8b34000292c0 (0x334000292c0) in binary!
-	0x8b28  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x8b1c000292c8 (0x31c000292c8) in binary!
-	0x8b10  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x8b04000292c0 (0x304000292c0) in binary!
-	0x8af8  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0xb76c00028b40 (0x76c00028b40) in binary!
-	0x7f70  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x757400028a00 (0x57400028a00) in binary!
-	0x7568  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x98d4000289d8 (0xd4000289d8) in binary!
-	0xa650  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x8b74000289b0 (0x374000289b0) in binary!
+WARNING: couldn't find address 0x8ca400029758 (0x4a400029758) in binary!
+	0x8c98  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x8c8c00029760 (0x48c00029760) in binary!
+	0x8c80  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x8c7400029768 (0x47400029768) in binary!
+	0x8c68  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x8c5c00029770 (0x45c00029770) in binary!
+	0x8c50  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x8c4400029778 (0x44400029778) in binary!
+	0x8c38  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x8c2c00029780 (0x42c00029780) in binary!
+	0x8c20  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x8c1400029788 (0x41400029788) in binary!
+	0x8c08  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x8bfc00029790 (0x3fc00029790) in binary!
+	0x8bf0  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x8be400029798 (0x3e400029798) in binary!
+	0x8bd8  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x8bcc00029790 (0x3cc00029790) in binary!
+	0x8bc0  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0xb89400029010 (0x9400029010) in binary!
+	0x8038  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x763c00028ec8 (0x63c00028ec8) in binary!
+	0x7630  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x999c00028ea0 (0x19c00028ea0) in binary!
+	0xa778  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x8c3c00028e78 (0x43c00028e78) in binary!
 	0x2a8000000c  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0xa62c00028988 (0x62c00028988) in binary!
-	0x8a80  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7f0400029128 (0x70400029128) in binary!
-	0x8a68  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7eec00029120 (0x6ec00029120) in binary!
-	0x8a50  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7ed400029118 (0x6d400029118) in binary!
-	0x8a38  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7ebc00029110 (0x6bc00029110) in binary!
-	0x8a20  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7ea400029108 (0x6a400029108) in binary!
-	0x8a08  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7e8c00029100 (0x68c00029100) in binary!
-	0x89f0  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7e74000290f8 (0x674000290f8) in binary!
-	0x89d8  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7e5c000290f0 (0x65c000290f0) in binary!
-	0x89c0  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7e44000290e8 (0x644000290e8) in binary!
-	0x89a8  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7e2c000290e0 (0x62c000290e0) in binary!
-	0x8990  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7e14000290d8 (0x614000290d8) in binary!
-	0x8978  @objc MapsSyncVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7dfc000290d0 (0x5fc000290d0) in binary!
-	0x8960  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0xa75400028e50 (0x75400028e50) in binary!
+	0x8b48  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7fcc000295f8 (0x7cc000295f8) in binary!
+	0x8b30  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7fb4000295f0 (0x7b4000295f0) in binary!
+	0x8b18  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7f9c000295e8 (0x79c000295e8) in binary!
+	0x8b00  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7f84000295e0 (0x784000295e0) in binary!
+	0x8ae8  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7f6c000295d8 (0x76c000295d8) in binary!
+	0x8ad0  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7f54000295d0 (0x754000295d0) in binary!
+	0x8ab8  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7f3c000295c8 (0x73c000295c8) in binary!
+	0x8aa0  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7f24000295c0 (0x724000295c0) in binary!
+	0x8a88  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7f0c000295b8 (0x70c000295b8) in binary!
+	0x8a70  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7ef4000295b0 (0x6f4000295b0) in binary!
+	0x8a58  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7edc000295a8 (0x6dc000295a8) in binary!
+	0x8a40  @objc MapsSyncVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7ec4000295a0 (0x6c4000295a0) in binary!
+	0x8a28  @objc MapsSyncVehicle.(null) <stripped>
 
 	// Swift methods
-	0x684e0  func <stripped> // getter 
-	0x68520  func <stripped> // getter 
-	0x68560  func <stripped> // getter 
-	0x685a0  func <stripped> // getter 
-	0x685e0  func <stripped> // getter 
-	0x68620  func <stripped> // getter 
-	0x68660  func <stripped> // getter 
-	0x68750  func <stripped> // getter 
-	0x687d0  func <stripped> // getter 
-	0x68810  func <stripped> // getter 
-	0x68850  func <stripped> // getter 
-	0x68890  func <stripped> // getter 
-	0x688d0  func <stripped> // getter 
-	0x68910  func <stripped> // getter 
-	0x689b0  func <stripped> // getter 
-	0x68a20  func <stripped> // getter 
-	0x68a70  func <stripped> // getter 
-	0x68b10  func <stripped> // getter 
-	0x68b90  func <stripped> // getter 
-	0x68bf0  func <stripped> // getter 
+	0x6a2a0  func <stripped> // getter 
+	0x6a2e0  func <stripped> // getter 
+	0x6a320  func <stripped> // getter 
+	0x6a360  func <stripped> // getter 
+	0x6a3a0  func <stripped> // getter 
+	0x6a3e0  func <stripped> // getter 
+	0x6a420  func <stripped> // getter 
+	0x6a510  func <stripped> // getter 
+	0x6a590  func <stripped> // getter 
+	0x6a5d0  func <stripped> // getter 
+	0x6a610  func <stripped> // getter 
+	0x6a650  func <stripped> // getter 
+	0x6a690  func <stripped> // getter 
+	0x6a6d0  func <stripped> // getter 
+	0x6a770  func <stripped> // getter 
+	0x6a7e0  func <stripped> // getter 
+	0x6a830  func <stripped> // getter 
+	0x6a8d0  func <stripped> // getter 
+	0x6a950  func <stripped> // getter 
+	0x6a9b0  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableVehicle : MapsSyncMutableBaseItem {
@@ -1889,202 +1913,203 @@ WARNING: couldn't find address 0x7dfc000290d0 (0x5fc000290d0) in binary!
 	var _proxy : MapsSyncManagedVehicle
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa62c00028988 (0x62c00028988) in binary!
-	0x8a80  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7f0400029128 (0x70400029128) in binary!
-	0x8a68  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7eec00029120 (0x6ec00029120) in binary!
-	0x8a50  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7ed400029118 (0x6d400029118) in binary!
+WARNING: couldn't find address 0xa75400028e50 (0x75400028e50) in binary!
+	0x8b48  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7fcc000295f8 (0x7cc000295f8) in binary!
+	0x8b30  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7fb4000295f0 (0x7b4000295f0) in binary!
+	0x8b18  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7f9c000295e8 (0x79c000295e8) in binary!
+	0x8b00  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7f84000295e0 (0x784000295e0) in binary!
+	0x8ae8  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7f6c000295d8 (0x76c000295d8) in binary!
+	0x8ad0  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7f54000295d0 (0x754000295d0) in binary!
+	0x8ab8  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7f3c000295c8 (0x73c000295c8) in binary!
+	0x8aa0  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7f24000295c0 (0x724000295c0) in binary!
+	0x8a88  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7f0c000295b8 (0x70c000295b8) in binary!
+	0x8a70  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7ef4000295b0 (0x6f4000295b0) in binary!
+	0x8a58  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7edc000295a8 (0x6dc000295a8) in binary!
+	0x8a40  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7ec4000295a0 (0x6c4000295a0) in binary!
+	0x8a28  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7eac00029598 (0x6ac00029598) in binary!
+	0x8a10  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7e9400029590 (0x69400029590) in binary!
+	0x89f8  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7e7c00029588 (0x67c00029588) in binary!
+	0x89e0  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7e6400029580 (0x66400029580) in binary!
+	0x89c8  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7e4c00029578 (0x64c00029578) in binary!
+	0x89b0  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7e3400029208 (0x63400029208) in binary!
+	0x8998  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7e1c00029558 (0x61c00029558) in binary!
+	0x8980  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7e0400029550 (0x60400029550) in binary!
 	0x8a38  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7ebc00029110 (0x6bc00029110) in binary!
-	0x8a20  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7ea400029108 (0x6a400029108) in binary!
-	0x8a08  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7e8c00029100 (0x68c00029100) in binary!
-	0x89f0  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7e74000290f8 (0x674000290f8) in binary!
-	0x89d8  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7e5c000290f0 (0x65c000290f0) in binary!
-	0x89c0  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7e44000290e8 (0x644000290e8) in binary!
-	0x89a8  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7e2c000290e0 (0x62c000290e0) in binary!
-	0x8990  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7e14000290d8 (0x614000290d8) in binary!
-	0x8978  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7dfc000290d0 (0x5fc000290d0) in binary!
-	0x8960  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7de4000290c8 (0x5e4000290c8) in binary!
-	0x8948  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7dcc000290c0 (0x5cc000290c0) in binary!
-	0x8930  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7db4000290b8 (0x5b4000290b8) in binary!
-	0x8918  @objc MapsSyncMutableVehicle.(null) <stripped>
-	0x8900  ___swift_instantiateConcreteTypeFromMangledNameAbstract
-WARNING: couldn't find address 0x7d84000290a8 (0x584000290a8) in binary!
-	0x88e8  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7d6c00028d38 (0x56c00028d38) in binary!
-	0x88d0  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7d5400029088 (0x55400029088) in binary!
-	0x88b8  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x7d3c00029080 (0x53c00029080) in binary!
-	0x8970  @objc MapsSyncMutableVehicle.(null) <stripped>
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x3ecfffd3c08  @objc MapsSyncMutableVehicle.(null) <stripped>
-	0x6c000283f0  @objc MapsSyncMutableVehicle.ë <stripped>
-WARNING: couldn't find address 0x283dcfffd3ad8 (0x3dcfffd3ad8) in binary!
-	0x5400029030  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x29034fffd3c50 (0x34fffd3c50) in binary!
-	0x3c00029038  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x2903cfffd3d48 (0x3cfffd3d48) in binary!
-	0x2400029048  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x2886cfffd3e60 (0x6cfffd3e60) in binary!
-	0x49c00028490  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x28734fffd4c58 (0x734fffd4c58) in binary!
-	0x29400028720  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x2870cfffd4f00 (0x70cfffd4f00) in binary!
-	0x5f4000286f8  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x28e44fffd5058 (0x644fffd5058) in binary!
-	0x94000286d0  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0xfffd5260 (0xfffd5260) in binary!
-	0x34c000286a8  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x28f7cfffd5528 (0x77cfffd5528) in binary!
-	0x42400028f78  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x28f74fffd55e0 (0x774fffd55e0) in binary!
-	0x40c00028f70  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x28f6cfffd58b8 (0x76cfffd58b8) in binary!
-	0x3f400028f68  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x28f64fffd5f00 (0x764fffd5f00) in binary!
-	0x2ec00028f60  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x2864cfffd6478 (0x64cfffd6478) in binary!
+	0xb4fffd2e90  @objc MapsSyncMutableVehicle.(null) <stripped>
+	0x134000288b8  @objc MapsSyncMutableVehicle. <stripped>
+WARNING: couldn't find address 0x288a4fffd2d60 (0xa4fffd2d60) in binary!
+	0x11c00029500  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x29504fffd2ed8 (0x504fffd2ed8) in binary!
+	0x10400029508  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x2950cfffd2fd0 (0x50cfffd2fd0) in binary!
+	0xec00029518  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x28d3cfffd30e8 (0x53cfffd30e8) in binary!
+	0x56400028958  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x28bfcfffd3ee0 (0x3fcfffd3ee0) in binary!
+	0x35c00028be8  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x28bd4fffd4188 (0x3d4fffd4188) in binary!
+	0x6bc00028bc0  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x29314fffd42e0 (0x314fffd42e0) in binary!
+	0x15c00028b98  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0xfffd44e8 (0xfffd44e8) in binary!
+	0x47400028b70  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x2944cfffd47b0 (0x44cfffd47b0) in binary!
+	0x4ec00029448  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x29444fffd4868 (0x444fffd4868) in binary!
+	0x4d400029440  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x2943cfffd4b40 (0x43cfffd4b40) in binary!
+	0x4bc00029438  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x29434fffd5188 (0x434fffd5188) in binary!
+	0x3b400029430  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x28b14fffd5700 (0x314fffd5700) in binary!
 	0x38000000c  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0xa2cc00028f58 (0x2cc00028f58) in binary!
-	0xafb0  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x87e400028620 (0x7e400028620) in binary!
+WARNING: couldn't find address 0xa3f400029428 (0x3f400029428) in binary!
+	0xb0d8  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x88ac00028ae8 (0xac00028ae8) in binary!
 	0x48000000c  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0x79dc00028550 (0x1dc00028550) in binary!
-	0xa290  @objc MapsSyncMutableVehicle.(null) <stripped>
-WARNING: couldn't find address 0xa28400028240 (0x28400028240) in binary!
-	0x72d8  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7aa400028a18 (0x2a400028a18) in binary!
+	0xa3b8  @objc MapsSyncMutableVehicle.(null) <stripped>
+WARNING: couldn't find address 0xa3ac00028708 (0x3ac00028708) in binary!
+	0x73a0  @objc MapsSyncMutableVehicle.(null) <stripped>
 WARNING: couldn't find address 0x148000000c (0x148000000c) in binary!
-	0x6fcfffd8590  @objc MapsSyncMutableVehicle.(null) <stripped>
-	0x70cfffd8c18  @objc MapsSyncMutableVehicle.	 <stripped>
+	0x3ccfffd7bc8  @objc MapsSyncMutableVehicle.(null) <stripped>
+	0x3dcfffd8250  @objc MapsSyncMutableVehicle.LâE»HâÀHâU–IâÙIâ˛H∏ <stripped>
 
 	// Swift methods
-	0x6ab30  func <stripped> // getter 
-	0x6ab70  func <stripped> // setter 
-	0x6abd0  func <stripped> // modifyCoroutine 
-	0x6acc0  func <stripped> // getter 
-	0x6ad00  func <stripped> // setter 
-	0x6ad60  func <stripped> // modifyCoroutine 
-	0x6ae50  func <stripped> // getter 
-	0x6ae90  func <stripped> // setter 
-	0x6aef0  func <stripped> // modifyCoroutine 
-	0x6b050  func <stripped> // getter 
-	0x6b090  func <stripped> // setter 
-	0x6b0f0  func <stripped> // modifyCoroutine 
-	0x6b1e0  func <stripped> // getter 
-	0x6b220  func <stripped> // setter 
-	0x6b280  func <stripped> // modifyCoroutine 
-	0x6b370  func <stripped> // getter 
-	0x6b3b0  func <stripped> // setter 
-	0x6b410  func <stripped> // modifyCoroutine 
-	0x6b500  func <stripped> // getter 
-	0x6b540  func <stripped> // setter 
-	0x6b5a0  func <stripped> // modifyCoroutine 
-	0x6b730  func <stripped> // getter 
-	0x6b980  func <stripped> // setter 
-	0x6bb70  func <stripped> // modifyCoroutine 
-	0x6be40  func <stripped> // getter 
-	0x6be80  func <stripped> // setter 
-	0x6bee0  func <stripped> // modifyCoroutine 
-	0x6bfd0  func <stripped> // getter 
-	0x6c010  func <stripped> // setter 
-	0x6c070  func <stripped> // modifyCoroutine 
-	0x6c160  func <stripped> // getter 
-	0x6c1a0  func <stripped> // setter 
-	0x6c200  func <stripped> // modifyCoroutine 
-	0x6c2f0  func <stripped> // getter 
-	0x6c330  func <stripped> // setter 
-	0x6c390  func <stripped> // modifyCoroutine 
-	0x6c480  func <stripped> // getter 
-	0x6c4c0  func <stripped> // setter 
-	0x6c520  func <stripped> // modifyCoroutine 
-	0x6c610  func <stripped> // getter 
-	0x6c650  func <stripped> // setter 
-	0x6c6b0  func <stripped> // modifyCoroutine 
-	0x6c860  func <stripped> // getter 
-	0x6ca60  func <stripped> // setter 
-	0x6cca0  func <stripped> // modifyCoroutine 
-	0x6ce20  func <stripped> // getter 
-	0x6ce60  func <stripped> // setter 
-	0x6cec0  func <stripped> // modifyCoroutine 
-	0x6cfb0  func <stripped> // getter 
-	0x6cff0  func <stripped> // setter 
-	0x6d050  func <stripped> // modifyCoroutine 
-	0x6d1a0  func <stripped> // getter 
-	0x6d340  func <stripped> // setter 
-	0x6d560  func <stripped> // modifyCoroutine 
-	0x6d6e0  func <stripped> // getter 
-	0x6d720  func <stripped> // setter 
-	0x6d780  func <stripped> // modifyCoroutine 
-	0x6d840  func <stripped> // getter 
-	0x6d8d0  func <stripped> // setter 
-	0x6d9d0  func <stripped> // modifyCoroutine 
+	0x6c8f0  func <stripped> // getter 
+	0x6c930  func <stripped> // setter 
+	0x6c990  func <stripped> // modifyCoroutine 
+	0x6ca80  func <stripped> // getter 
+	0x6cac0  func <stripped> // setter 
+	0x6cb20  func <stripped> // modifyCoroutine 
+	0x6cc10  func <stripped> // getter 
+	0x6cc50  func <stripped> // setter 
+	0x6ccb0  func <stripped> // modifyCoroutine 
+	0x6ce10  func <stripped> // getter 
+	0x6ce50  func <stripped> // setter 
+	0x6ceb0  func <stripped> // modifyCoroutine 
+	0x6cfa0  func <stripped> // getter 
+	0x6cfe0  func <stripped> // setter 
+	0x6d040  func <stripped> // modifyCoroutine 
+	0x6d130  func <stripped> // getter 
+	0x6d170  func <stripped> // setter 
+	0x6d1d0  func <stripped> // modifyCoroutine 
+	0x6d2c0  func <stripped> // getter 
+	0x6d300  func <stripped> // setter 
+	0x6d360  func <stripped> // modifyCoroutine 
+	0x6d4f0  func <stripped> // getter 
+	0x6d740  func <stripped> // setter 
+	0x6d930  func <stripped> // modifyCoroutine 
+	0x6dc00  func <stripped> // getter 
+	0x6dc40  func <stripped> // setter 
+	0x6dca0  func <stripped> // modifyCoroutine 
+	0x6dd90  func <stripped> // getter 
+	0x6ddd0  func <stripped> // setter 
+	0x6de30  func <stripped> // modifyCoroutine 
+	0x6df20  func <stripped> // getter 
+	0x6df60  func <stripped> // setter 
+	0x6dfc0  func <stripped> // modifyCoroutine 
+	0x6e0b0  func <stripped> // getter 
+	0x6e0f0  func <stripped> // setter 
+	0x6e150  func <stripped> // modifyCoroutine 
+	0x6e240  func <stripped> // getter 
+	0x6e280  func <stripped> // setter 
+	0x6e2e0  func <stripped> // modifyCoroutine 
+	0x6e3d0  func <stripped> // getter 
+	0x6e410  func <stripped> // setter 
+	0x6e470  func <stripped> // modifyCoroutine 
+	0x6e620  func <stripped> // getter 
+	0x6e820  func <stripped> // setter 
+	0x6ea60  func <stripped> // modifyCoroutine 
+	0x6ebe0  func <stripped> // getter 
+	0x6ec20  func <stripped> // setter 
+	0x6ec80  func <stripped> // modifyCoroutine 
+	0x6ed70  func <stripped> // getter 
+	0x6edb0  func <stripped> // setter 
+	0x6ee10  func <stripped> // modifyCoroutine 
+	0x6ef60  func <stripped> // getter 
+	0x6f100  func <stripped> // setter 
+	0x6f320  func <stripped> // modifyCoroutine 
+	0x6f4a0  func <stripped> // getter 
+	0x6f4e0  func <stripped> // setter 
+	0x6f540  func <stripped> // modifyCoroutine 
+	0x6f600  func <stripped> // getter 
+	0x6f690  func <stripped> // setter 
+	0x6f790  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncAnonymousCredential : MapsSyncBaseItem {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _anonymousId : ¡π // +0x0 (0x10)
+	var _anonymousId : aΩ // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _mapsToken : ¡π // +0x0 (0x10)
+	var _mapsToken : aΩ // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _mapsTokenCreatedAt : °∑ // +0x0 (0x0)
+	var _mapsTokenCreatedAt : Aª // +0x0 (0x0)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _mapsTokenTTL : ’∏ // +0x0 (0x8)
+	var _mapsTokenTTL : uº // +0x0 (0x8)
 	var _reviewedPlaces : MapsSyncReviewedPlace // +0x0 (0x8)
 	var _reviewedPlacesUnstored : MapsSyncReviewedPlace // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x886c000283f0 (0x6c000283f0) in binary!
-	0x7cf0  @objc MapsSyncAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x885400029030 (0x5400029030) in binary!
-	0x8848  @objc MapsSyncAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x883c00029038 (0x3c00029038) in binary!
-	0x7330  @objc MapsSyncAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x882400029048 (0x2400029048) in binary!
-	0xb498  @objc MapsSyncAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x7c9c00028490 (0x49c00028490) in binary!
-	0x7c90  @objc MapsSyncAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x729400028720 (0x29400028720) in binary!
-	0x7288  @objc MapsSyncAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x95f4000286f8 (0x5f4000286f8) in binary!
-	0xa370  @objc MapsSyncAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x8894000286d0 (0x94000286d0) in binary!
+WARNING: couldn't find address 0x8934000288b8 (0x134000288b8) in binary!
+	0x7db8  @objc MapsSyncAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x891c00029500 (0x11c00029500) in binary!
+	0x8910  @objc MapsSyncAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x890400029508 (0x10400029508) in binary!
+	0x73f8  @objc MapsSyncAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x88ec00029518 (0xec00029518) in binary!
+	0xb5c0  @objc MapsSyncAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x7d6400028958 (0x56400028958) in binary!
+	0x7d58  @objc MapsSyncAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x735c00028be8 (0x35c00028be8) in binary!
+	0x7350  @objc MapsSyncAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x96bc00028bc0 (0x6bc00028bc0) in binary!
+	0xa498  @objc MapsSyncAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x895c00028b98 (0x15c00028b98) in binary!
 	0xa8000000c  @objc MapsSyncAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0xa34c000286a8 (0x34c000286a8) in binary!
-	0x87a0  @objc MapsSyncAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x7c2400028f78 (0x42400028f78) in binary!
-	0x8788  @objc MapsSyncAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x7c0c00028f70 (0x40c00028f70) in binary!
-	0x8770  @objc MapsSyncAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x7bf400028f68 (0x3f400028f68) in binary!
-	0x7258  @objc MapsSyncAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x9aec00028f60 (0x2ec00028f60) in binary!
-	0x8810  @objc MapsSyncAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0xa47400028b70 (0x47400028b70) in binary!
+	0x8868  @objc MapsSyncAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x7cec00029448 (0x4ec00029448) in binary!
+	0x8850  @objc MapsSyncAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x7cd400029440 (0x4d400029440) in binary!
+	0x8838  @objc MapsSyncAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x7cbc00029438 (0x4bc00029438) in binary!
+	0x7320  @objc MapsSyncAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x9bb400029430 (0x3b400029430) in binary!
+	0x88d8  @objc MapsSyncAnonymousCredential.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0xacfffd7a28  @objc MapsSyncAnonymousCredential.(null) <stripped>
-	0xfffd7e10  @objc MapsSyncAnonymousCredential.ç=) <stripped>
+	0x57cfffd6f60  @objc MapsSyncAnonymousCredential.(null) <stripped>
+	0xfffd7348  @objc MapsSyncAnonymousCredential.ˇLçx[ <stripped>
 
 	// Swift methods
-	0x6e950  func <stripped> // getter 
-	0x6e9f0  func <stripped> // getter 
-	0x6eaf0  func <stripped> // getter 
-	0x6eb50  func <stripped> // getter 
-	0x6ec30  func <stripped> // getter 
+	0x70710  func <stripped> // getter 
+	0x707b0  func <stripped> // getter 
+	0x708b0  func <stripped> // getter 
+	0x70910  func <stripped> // getter 
+	0x709f0  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableAnonymousCredential : MapsSyncMutableBaseItem {
@@ -2093,37 +2118,38 @@ WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
 	var _proxyObject : MapsSyncManagedAnonymousCredential
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa34c000286a8 (0x34c000286a8) in binary!
-	0x87a0  @objc MapsSyncMutableAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x7c2400028f78 (0x42400028f78) in binary!
-	0x8788  @objc MapsSyncMutableAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x7c0c00028f70 (0x40c00028f70) in binary!
-	0x8770  @objc MapsSyncMutableAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x7bf400028f68 (0x3f400028f68) in binary!
-	0x7258  @objc MapsSyncMutableAnonymousCredential.(null) <stripped>
-WARNING: couldn't find address 0x9aec00028f60 (0x2ec00028f60) in binary!
-	0x8810  @objc MapsSyncMutableAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0xa47400028b70 (0x47400028b70) in binary!
+	0x8868  @objc MapsSyncMutableAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x7cec00029448 (0x4ec00029448) in binary!
+	0x8850  @objc MapsSyncMutableAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x7cd400029440 (0x4d400029440) in binary!
+	0x8838  @objc MapsSyncMutableAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x7cbc00029438 (0x4bc00029438) in binary!
+	0x7320  @objc MapsSyncMutableAnonymousCredential.(null) <stripped>
+WARNING: couldn't find address 0x9bb400029430 (0x3b400029430) in binary!
+	0x88d8  @objc MapsSyncMutableAnonymousCredential.(null) <stripped>
 WARNING: couldn't find address 0x38000000c (0x38000000c) in binary!
-	0xacfffd7a28  @objc MapsSyncMutableAnonymousCredential.(null) <stripped>
-	0xfffd7e10  @objc MapsSyncMutableAnonymousCredential.ç=) <stripped>
+	0x57cfffd6f60  @objc MapsSyncMutableAnonymousCredential.(null) <stripped>
+	0xfffd7348  @objc MapsSyncMutableAnonymousCredential.ˇLçx[ <stripped>
 WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
-	0x254fffe0a48  @objc MapsSyncMutableAnonymousCredential.(null) <stripped>
-	0x5dcfffe0b80  @objc MapsSyncMutableAnonymousCredential. <stripped>
-	0x26400028d38  @objc MapsSyncMutableAnonymousCredential.=„c <stripped>
+	0x71cfffe0080  @objc MapsSyncMutableAnonymousCredential.(null) <stripped>
+	0x2a4fffe01b8  @objc MapsSyncMutableAnonymousCredential.ãrØ
+ <stripped>
+	0x38c00029208  @objc MapsSyncMutableAnonymousCredential.Hã@¯HâE–Lã`0Hâﬂæ <stripped>
 
 	// Swift methods
-	0x70360  func <stripped> // getter 
-	0x703a0  func <stripped> // setter 
-	0x70400  func <stripped> // modifyCoroutine 
-	0x705b0  func <stripped> // getter 
-	0x707b0  func <stripped> // setter 
-	0x709f0  func <stripped> // modifyCoroutine 
-	0x70be0  func <stripped> // getter 
-	0x70df0  func <stripped> // setter 
-	0x70f90  func <stripped> // modifyCoroutine 
-	0x71240  func <stripped> // getter 
-	0x71280  func <stripped> // setter 
-	0x71300  func <stripped> // modifyCoroutine 
+	0x72120  func <stripped> // getter 
+	0x72160  func <stripped> // setter 
+	0x721c0  func <stripped> // modifyCoroutine 
+	0x72370  func <stripped> // getter 
+	0x72570  func <stripped> // setter 
+	0x727b0  func <stripped> // modifyCoroutine 
+	0x729a0  func <stripped> // getter 
+	0x72bb0  func <stripped> // setter 
+	0x72d50  func <stripped> // modifyCoroutine 
+	0x73000  func <stripped> // getter 
+	0x73040  func <stripped> // setter 
+	0x730c0  func <stripped> // modifyCoroutine 
  }
 
  enum MapsSync.MapsSyncErrorCode {
@@ -2139,19 +2165,20 @@ WARNING: couldn't find address 0x48000000c (0x48000000c) in binary!
 	case ObjectNotSaved  
 	case FetchInvalidValueTypeForAttribute  
 	case StoreNotLoaded  
+	case ObjCException  
  }
 
  class MapsSync.MapsSyncError : NSError /System/Library/Frameworks/Foundation.framework/Foundation {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa2cc00028f58 (0x2cc00028f58) in binary!
-	0xafb0  @objc MapsSyncError.(null) <stripped>
-WARNING: couldn't find address 0x87e400028620 (0x7e400028620) in binary!
+WARNING: couldn't find address 0xa3f400029428 (0x3f400029428) in binary!
+	0xb0d8  @objc MapsSyncError.(null) <stripped>
+WARNING: couldn't find address 0x88ac00028ae8 (0xac00028ae8) in binary!
 	0x48000000c  @objc MapsSyncError.(null) <stripped>
-WARNING: couldn't find address 0x79dc00028550 (0x1dc00028550) in binary!
-	0xa290  @objc MapsSyncError.(null) <stripped>
+WARNING: couldn't find address 0x7aa400028a18 (0x2a400028a18) in binary!
+	0xa3b8  @objc MapsSyncError.(null) <stripped>
 
 	// Swift methods
-	0x72890  func <stripped> // getter 
+	0x74900  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncFavoriteItem : MapsSyncBaseItem {
@@ -2161,69 +2188,65 @@ WARNING: couldn't find address 0x79dc00028550 (0x1dc00028550) in binary!
 	var _customName : String? // +0x0 (0x10)
 	var _hidden : Bool // +0x0 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _mapItemStorage : ¡π // +0x0 (0x10)
+	var _mapItemStorage : aΩ // +0x0 (0x10)
 	var _originatingAddressString : String? // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _type : €Ω // +0x0 (0x2)
+	var _type : {¡ // +0x0 (0x2)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _source : €Ω // +0x0 (0x2)
+	var _source : {¡ // +0x0 (0x2)
 	var _shortcutIdentifier : String? // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _version : €Ω // +0x0 (0x2)
+	var _version : {¡ // +0x0 (0x2)
 	var _latitude : NSNumber? // +0x0 (0x8)
 	var _longitude : NSNumber? // +0x0 (0x8)
 	var _muid : NSNumber? // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0xa26400028d38 (0x26400028d38) in binary!
-	0x86b8  @objc MapsSyncFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0x86ac00028ee0 (0x6ac00028ee0) in binary!
-	0x86a0  @objc MapsSyncFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0x94a400028ef0 (0x4a400028ef0) in binary!
-	0x8688  @objc MapsSyncFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0x867c00028ee8 (0x67c00028ee8) in binary!
-	0xaf90  @objc MapsSyncFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0xaf8400028ee8 (0x78400028ee8) in binary!
-	0x8658  @objc MapsSyncFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0xaf6c00028ef0 (0x76c00028ef0) in binary!
-	0x8640  @objc MapsSyncFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0x863400028758 (0x63400028758) in binary!
-	0x8628  @objc MapsSyncFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0xb29c00028670 (0x29c00028670) in binary!
-	0x7aa0  @objc MapsSyncFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0x70a400028530 (0xa400028530) in binary!
-	0x7098  @objc MapsSyncFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0x940400028508 (0x40400028508) in binary!
-	0x86b0  @objc MapsSyncFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0xa38c00029208 (0x38c00029208) in binary!
+	0x8780  @objc MapsSyncFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0x8774000293b0 (0x774000293b0) in binary!
+	0x8768  @objc MapsSyncFavoriteItem.(null) <stripped>
+	0x8750  dispatch thunk of MapsSyncMutableCollectionPlaceItem.origin.modify
+WARNING: couldn't find address 0x8744000293b8 (0x744000293b8) in binary!
+	0xb0b8  @objc MapsSyncFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0xb0ac000293b8 (0xac000293b8) in binary!
+	0x8720  @objc MapsSyncFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0xb094000293c0 (0x94000293c0) in binary!
+	0x8708  @objc MapsSyncFavoriteItem.(null) <stripped>
+	0x86f0  dispatch thunk of MapsSyncMutableCollectionPlaceItem.mapItemStorage.modify
+WARNING: couldn't find address 0xb3c400028b40 (0x3c400028b40) in binary!
+	0x7b68  @objc MapsSyncFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0x716c000289f8 (0x16c000289f8) in binary!
+	0x7160  @objc MapsSyncFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0x94cc000289d0 (0x4cc000289d0) in binary!
+	0x8778  @objc MapsSyncFavoriteItem.(null) <stripped>
 WARNING: couldn't find address 0x1c8000000c (0x1c8000000c) in binary!
-	0x10cfff93108  @objc MapsSyncFavoriteItem.(null) <stripped>
-	0xe4fff933f0  @objc MapsSyncFavoriteItem.â≈Hç=/R <stripped>
-	0xbcfffd9ff8  @objc MapsSyncFavoriteItem.âˇËAﬁ <stripped>
-	0x5acfffda130  @objc MapsSyncFavoriteItem.¡„Hçˆ
+	0x5d4fff90c00  @objc MapsSyncFavoriteItem.(null) <stripped>
+	0x5acfff90ee8  @objc MapsSyncFavoriteItem.Œ
  <stripped>
-	0x84fffda2d8  @objc MapsSyncFavoriteItem. <stripped>
-	0x5b4fffdaca0  @objc MapsSyncFavoriteItem.UHâÂ]ÈÊ <stripped>
-	0x58cfffdad48  @objc MapsSyncFavoriteItem.} HãO†
+	0x584fffd9630  @objc MapsSyncFavoriteItem.â]àHã5Fƒ <stripped>
+	0x27cfffd9768  @objc MapsSyncFavoriteItem.ã5ÇÎ <stripped>
+	0x54cfffd9910  @objc MapsSyncFavoriteItem.E <stripped>
+	0x284fffda2d8  @objc MapsSyncFavoriteItem.Lãm∞ˇU®È^ <stripped>
+	0x25cfffda380  @objc MapsSyncFavoriteItem.UHâÂHãùœ
  <stripped>
-	0x5c4fffdaec0  @objc MapsSyncFavoriteItem.Mâ>HâﬂˇTí
- <stripped>
-	0x56cfffdb188  @objc MapsSyncFavoriteItem. <stripped>
-	0x564fffdb6c0  @objc MapsSyncFavoriteItem.UHâÂHç’´
- <stripped>
+	0x294fffda4f8  @objc MapsSyncFavoriteItem.Ë…	 <stripped>
+	0x23cfffda7c0  @objc MapsSyncFavoriteItem.E <stripped>
+	0x234fffdacf8  @objc MapsSyncFavoriteItem. <stripped>
 
 	// Swift methods
-	0x73b00  func <stripped> // getter 
-	0x73b40  func <stripped> // getter 
-	0x73b70  func <stripped> // getter 
-	0x73bd0  func <stripped> // getter 
-	0x73ca0  func <stripped> // getter 
-	0x73ce0  func <stripped> // getter 
-	0x73d50  func <stripped> // getter 
-	0x73de0  func <stripped> // getter 
-	0x73e50  func <stripped> // getter 
-	0x73ed0  func <stripped> // getter 
-	0x73f30  func <stripped> // getter 
-	0x73f90  func <stripped> // getter 
+	0x75c70  func <stripped> // getter 
+	0x75cb0  func <stripped> // getter 
+	0x75ce0  func <stripped> // getter 
+	0x75d40  func <stripped> // getter 
+	0x75e10  func <stripped> // getter 
+	0x75e50  func <stripped> // getter 
+	0x75ec0  func <stripped> // getter 
+	0x75f50  func <stripped> // getter 
+	0x75fc0  func <stripped> // getter 
+	0x76040  func <stripped> // getter 
+	0x760a0  func <stripped> // getter 
+	0x76100  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableFavoriteItem : MapsSyncMutableBaseItem {
@@ -2232,84 +2255,85 @@ WARNING: couldn't find address 0x1c8000000c (0x1c8000000c) in binary!
 	var _proxyFavorite : MapsSyncManagedFavoriteItem
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x869c00028120 (0x69c00028120) in binary!
-	0x8690  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0xa154000280f8 (0x154000280f8) in binary!
-	0xa148  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0x859c000280d0 (0x59c000280d0) in binary!
-	0x7a20  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0xa12400028480 (0x12400028480) in binary!
-	0x8578  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-	0xa100  static MapsSyncCollection.fetchCollectionForIdentifier(_:)
-WARNING: couldn't find address 0xa0f400028070 (0xf400028070) in binary!
-	0x8548  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0x79cc000285b0 (0x1cc000285b0) in binary!
-	0x9340  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0xa88800028d88 (0x8800028d88) in binary!
-	0x8518  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0x799c000285c0 (0x19c000285c0) in binary!
-	0x8500  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0x798400028d68 (0x18400028d68) in binary!
-	0xae08  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0xaf0200028718 (0x70200028718) in binary!
-	0xadf0  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0xaeea00028d50 (0x6ea00028d50) in binary!
-	0x84b8  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0x793c00028d48 (0x13c00028d48) in binary!
-	0xadc0  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0xaeba00028d40 (0x6ba00028d40) in binary!
-	0x8558  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0x8764000285e8 (0x764000285e8) in binary!
+	0x8758  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0xa27c000285c0 (0x27c000285c0) in binary!
+	0xa270  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0x866400028598 (0x66400028598) in binary!
+	0x7ae8  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0xa24c00028948 (0x24c00028948) in binary!
+	0x8640  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0x7ac4000292f0 (0x2c4000292f0) in binary!
+	0xa228  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+	0x8610  dispatch thunk of MapsSyncMutableCollectionPlaceItem.droppedPinCoordinate.setter
+WARNING: couldn't find address 0x7a9400028a80 (0x29400028a80) in binary!
+	0x9408  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0xa9b000029258 (0x1b000029258) in binary!
+	0x85e0  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0x7a6400028a90 (0x26400028a90) in binary!
+	0x85c8  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0x7a4c00029238 (0x24c00029238) in binary!
+	0xaf30  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0xb02a00028be8 (0x2a00028be8) in binary!
+	0xaf18  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0xb01200029220 (0x1200029220) in binary!
+	0x8580  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0x7a0400029218 (0x20400029218) in binary!
+	0xaee8  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0xafe200029210 (0x7e200029210) in binary!
+	0x8620  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffdee10  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+	0xfffde448  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x33cfffde478  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-	0x314fffde7c0  @objc MapsSyncMutableFavoriteItem. <stripped>
-	0x2e4fffdecb8  @objc MapsSyncMutableFavoriteItem.◊Iâ¸Hâ˜Hâ÷Ë1 <stripped>
-	0xfffdeed0  @objc MapsSyncMutableFavoriteItem.Hão <stripped>
+	0x4fffddab0  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+	0x7dcfffdddf8  @objc MapsSyncMutableFavoriteItem.˙LâÒË˜	 <stripped>
+	0x7acfffde2f0  @objc MapsSyncMutableFavoriteItem. <stripped>
+	0xfffde508  @objc MapsSyncMutableFavoriteItem. <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x4acfffe3e08  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-	0x42cfffe4150  @objc MapsSyncMutableFavoriteItem.Êt3ç» <stripped>
-	0x2ecfffe47d8  @objc MapsSyncMutableFavoriteItem.— <stripped>
-	0x2c4fffe4840  @objc MapsSyncMutableFavoriteItem.u–Iâ¸Lç-Ti <stripped>
-	0x29cfffe4c78  @objc MapsSyncMutableFavoriteItem.â∆Hã}»ˇ”Hã}–Ë∑Ú <stripped>
-	0x71c00028278  @objc MapsSyncMutableFavoriteItem.LâˆLâ‚Hâ¡ËHˇ <stripped>
-WARNING: couldn't find address 0x28c2cfffe4e08 (0x42cfffe4e08) in binary!
-	0x7f400028c28  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0x28c24fffe4f00 (0x424fffe4f00) in binary!
-	0x7dc00028c20  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
-WARNING: couldn't find address 0x2824cfffe51c8 (0x24cfffe51c8) in binary!
+	0x17cfffe3440  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+	0xfcfffe3788  @objc MapsSyncMutableFavoriteItem.–
+ <stripped>
+	0x7b4fffe3e10  @objc MapsSyncMutableFavoriteItem. <stripped>
+	0x78cfffe3e78  @objc MapsSyncMutableFavoriteItem. <stripped>
+	0x764fffe42b0  @objc MapsSyncMutableFavoriteItem.ˇˇfD <stripped>
+	0x4400028740  @objc MapsSyncMutableFavoriteItem. <stripped>
+WARNING: couldn't find address 0x290fcfffe4440 (0xfcfffe4440) in binary!
+	0xbc000290f8  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0x290f4fffe4538 (0xf4fffe4538) in binary!
+	0xa4000290f0  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
+WARNING: couldn't find address 0x28714fffe4800 (0x714fffe4800) in binary!
 	0x18000000c  @objc MapsSyncMutableFavoriteItem.(null) <stripped>
 
 	// Swift methods
-	0x751e0  func <stripped> // getter 
-	0x75310  func <stripped> // setter 
-	0x75380  func <stripped> // modifyCoroutine 
-	0x75490  func <stripped> // method 
-	0x75730  func <stripped> // method 
-	0x75d20  func <stripped> // getter 
-	0x75d60  func <stripped> // setter 
-	0x75dc0  func <stripped> // modifyCoroutine 
-	0x75eb0  func <stripped> // getter 
-	0x75ef0  func <stripped> // setter 
-	0x75f80  func <stripped> // modifyCoroutine 
-	0x76020  func <stripped> // getter 
-	0x761f0  func <stripped> // setter 
-	0x76670  func <stripped> // modifyCoroutine 
-	0x766e0  func <stripped> // getter 
-	0x76720  func <stripped> // setter 
-	0x76780  func <stripped> // modifyCoroutine 
-	0x76870  func <stripped> // getter 
-	0x768b0  func <stripped> // setter 
-	0x76910  func <stripped> // modifyCoroutine 
-	0x76990  func <stripped> // getter 
-	0x769d0  func <stripped> // setter 
-	0x76a30  func <stripped> // modifyCoroutine 
-	0x76b70  func <stripped> // getter 
-	0x76d10  func <stripped> // setter 
-	0x76f30  func <stripped> // modifyCoroutine 
-	0x770b0  func <stripped> // getter 
-	0x77110  func <stripped> // setter 
-	0x771e0  func <stripped> // modifyCoroutine 
+	0x77350  func <stripped> // getter 
+	0x77480  func <stripped> // setter 
+	0x774f0  func <stripped> // modifyCoroutine 
+	0x77600  func <stripped> // method 
+	0x778a0  func <stripped> // method 
+	0x77e90  func <stripped> // getter 
+	0x77ed0  func <stripped> // setter 
+	0x77f30  func <stripped> // modifyCoroutine 
+	0x78020  func <stripped> // getter 
+	0x78060  func <stripped> // setter 
+	0x780f0  func <stripped> // modifyCoroutine 
+	0x78190  func <stripped> // getter 
+	0x78360  func <stripped> // setter 
+	0x787e0  func <stripped> // modifyCoroutine 
+	0x78850  func <stripped> // getter 
+	0x78890  func <stripped> // setter 
+	0x788f0  func <stripped> // modifyCoroutine 
+	0x789e0  func <stripped> // getter 
+	0x78a20  func <stripped> // setter 
+	0x78a80  func <stripped> // modifyCoroutine 
+	0x78b00  func <stripped> // getter 
+	0x78b40  func <stripped> // setter 
+	0x78ba0  func <stripped> // modifyCoroutine 
+	0x78ce0  func <stripped> // getter 
+	0x78e80  func <stripped> // setter 
+	0x790a0  func <stripped> // modifyCoroutine 
+	0x79220  func <stripped> // getter 
+	0x79280  func <stripped> // setter 
+	0x79350  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncCollectionItemQuery : MapsSyncBaseQuery {
@@ -2318,59 +2342,60 @@ WARNING: couldn't find address 0x2824cfffe51c8 (0x24cfffe51c8) in binary!
 	var _specifiedQuery : MapsSyncGenericQuery
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9ffc00028350 (0x7fc00028350) in binary!
-	0x9268  @objc MapsSyncCollectionItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x774a00028328 (0x74a00028328) in binary!
-	0x9250  @objc MapsSyncCollectionItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x773200028300 (0x73200028300) in binary!
-	0x75f8  @objc MapsSyncCollectionItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x84e400028320 (0x4e400028320) in binary!
+WARNING: couldn't find address 0xa12400028818 (0x12400028818) in binary!
+	0x9330  @objc MapsSyncCollectionItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x7812000287f0 (0x12000287f0) in binary!
+	0x9318  @objc MapsSyncCollectionItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x77fa000287c8 (0x7fa000287c8) in binary!
+	0x76c0  @objc MapsSyncCollectionItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x85ac000287e8 (0x5ac000287e8) in binary!
 	0xa8000000c  @objc MapsSyncCollectionItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x83fc00028440 (0x3fc00028440) in binary!
-	0x83f0  @objc MapsSyncCollectionItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x83e400028cb0 (0x3e400028cb0) in binary!
-	0xb058  @objc MapsSyncCollectionItemQuery.(null) <stripped>
-WARNING: couldn't find address 0x785c00028300 (0x5c00028300) in binary!
-	0x6e60  @objc MapsSyncCollectionItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x84c400028910 (0x4c400028910) in binary!
+	0x84b8  @objc MapsSyncCollectionItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x84ac00029180 (0x4ac00029180) in binary!
+	0xb180  @objc MapsSyncCollectionItemQuery.(null) <stripped>
+WARNING: couldn't find address 0x7924000287c8 (0x124000287c8) in binary!
+	0x6f28  @objc MapsSyncCollectionItemQuery.(null) <stripped>
 
 	// Swift methods
-	0x794e0  class func MapsSyncCollectionItemQuery.__allocating_init(delegate:) // init 
-	0x79590  func <stripped> // method 
-	0x795f0  func <stripped> // method 
-	0x798e0  func <stripped> // method 
-	0x79a60  func <stripped> // method 
+	0x7b650  class func MapsSyncCollectionItemQuery.__allocating_init(delegate:) // init 
+	0x7b700  func <stripped> // method 
+	0x7b760  func <stripped> // method 
+	0x7ba50  func <stripped> // method 
+	0x7bbd0  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncHistoryRideShareItem : MapsSyncHistoryItem {
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _startWaypoint : ¡π // +0x0 (0x10)
+	var _startWaypoint : aΩ // +0x0 (0x10)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _endWaypoint : ¡π // +0x0 (0x10)
+	var _endWaypoint : aΩ // +0x0 (0x10)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x83fc00028440 (0x3fc00028440) in binary!
-	0x83f0  @objc MapsSyncHistoryRideShareItem.(null) <stripped>
-WARNING: couldn't find address 0x83e400028cb0 (0x3e400028cb0) in binary!
-	0xb058  @objc MapsSyncHistoryRideShareItem.(null) <stripped>
-WARNING: couldn't find address 0x785c00028300 (0x5c00028300) in binary!
-	0x6e60  @objc MapsSyncHistoryRideShareItem.(null) <stripped>
-WARNING: couldn't find address 0x6e54000282d8 (0x654000282d8) in binary!
-	0x91c0  @objc MapsSyncHistoryRideShareItem.(null) <stripped>
-WARNING: couldn't find address 0x9f3c00028a10 (0x73c00028a10) in binary!
-	0x8460  @objc MapsSyncHistoryRideShareItem.(null) <stripped>
+WARNING: couldn't find address 0x84c400028910 (0x4c400028910) in binary!
+	0x84b8  @objc MapsSyncHistoryRideShareItem.(null) <stripped>
+WARNING: couldn't find address 0x84ac00029180 (0x4ac00029180) in binary!
+	0xb180  @objc MapsSyncHistoryRideShareItem.(null) <stripped>
+WARNING: couldn't find address 0x7924000287c8 (0x124000287c8) in binary!
+	0x6f28  @objc MapsSyncHistoryRideShareItem.(null) <stripped>
+WARNING: couldn't find address 0x6f1c000287a0 (0x71c000287a0) in binary!
+	0x9288  @objc MapsSyncHistoryRideShareItem.(null) <stripped>
+WARNING: couldn't find address 0xa06400028ee0 (0x6400028ee0) in binary!
+	0x8528  @objc MapsSyncHistoryRideShareItem.(null) <stripped>
 WARNING: couldn't find address 0x68000000c (0x68000000c) in binary!
-	0x42cfffe4e08  @objc MapsSyncHistoryRideShareItem.(null) <stripped>
-	0x424fffe4f00  @objc MapsSyncHistoryRideShareItem.HÖ€LH˚HâﬂËO <stripped>
-	0x24cfffe51c8  @objc MapsSyncHistoryRideShareItem.[A\A]A^A_]√Iø¯ˇˇˇˇˇˇ <stripped>
-	0x50400028360  @objc MapsSyncHistoryRideShareItem.LâˇIˇ«HâﬁLâÍËµ˝ <stripped>
-WARNING: couldn't find address 0xfffe5838 (0xfffe5838) in binary!
-	0x6b400027e28  @objc MapsSyncHistoryRideShareItem.(null) <stripped>
+	0xfcfffe4440  @objc MapsSyncHistoryRideShareItem.(null) <stripped>
+	0xf4fffe4538  @objc MapsSyncHistoryRideShareItem.ÉƒH√1“HÉƒH√f.Ñ <stripped>
+	0x714fffe4800  @objc MapsSyncHistoryRideShareItem. <stripped>
+	0x5cc00028830  @objc MapsSyncHistoryRideShareItem.–
+ <stripped>
+WARNING: couldn't find address 0xfffe4e70 (0xfffe4e70) in binary!
+	0x7dc000282f0  @objc MapsSyncHistoryRideShareItem.(null) <stripped>
 
 	// Swift methods
-	0x7f280  func <stripped> // getter 
-	0x7f370  func <stripped> // getter 
+	0x813f0  func <stripped> // getter 
+	0x814e0  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableHistoryRideShareItem : MapsSyncMutableHistoryItem {
@@ -2379,30 +2404,30 @@ WARNING: couldn't find address 0xfffe5838 (0xfffe5838) in binary!
 	var _proxyHistory : MapsSyncManagedHistoryRideShareItem
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9f1c00028278 (0x71c00028278) in binary!
-	0x8370  @objc MapsSyncMutableHistoryRideShareItem.(null) <stripped>
-WARNING: couldn't find address 0x77f400028c28 (0x7f400028c28) in binary!
-	0x8358  @objc MapsSyncMutableHistoryRideShareItem.(null) <stripped>
-WARNING: couldn't find address 0x77dc00028c20 (0x7dc00028c20) in binary!
-	0x8410  @objc MapsSyncMutableHistoryRideShareItem.(null) <stripped>
+WARNING: couldn't find address 0xa04400028740 (0x4400028740) in binary!
+	0x8438  @objc MapsSyncMutableHistoryRideShareItem.(null) <stripped>
+WARNING: couldn't find address 0x78bc000290f8 (0xbc000290f8) in binary!
+	0x8420  @objc MapsSyncMutableHistoryRideShareItem.(null) <stripped>
+WARNING: couldn't find address 0x78a4000290f0 (0xa4000290f0) in binary!
+	0x84d8  @objc MapsSyncMutableHistoryRideShareItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffe5838  @objc MapsSyncMutableHistoryRideShareItem.(null) <stripped>
+	0xfffe4e70  @objc MapsSyncMutableHistoryRideShareItem.(null) <stripped>
 WARNING: couldn't find address 0xe8000000c (0xe8000000c) in binary!
-	0x17cfffe5c60  @objc MapsSyncMutableHistoryRideShareItem.(null) <stripped>
-	0x3ccfffe5e78  @objc MapsSyncMutableHistoryRideShareItem.m¿Lãe»Ë	‚ <stripped>
+	0x64cfffe5298  @objc MapsSyncMutableHistoryRideShareItem.(null) <stripped>
+	0x9cfffe54b0  @objc MapsSyncMutableHistoryRideShareItem. <stripped>
 
 	// Swift methods
-	0x800b0  func <stripped> // getter 
-	0x80110  func <stripped> // setter 
-	0x80180  func <stripped> // modifyCoroutine 
-	0x802c0  func <stripped> // getter 
-	0x803f0  func <stripped> // setter 
-	0x80560  func <stripped> // modifyCoroutine 
+	0x82220  func <stripped> // getter 
+	0x82280  func <stripped> // setter 
+	0x822f0  func <stripped> // modifyCoroutine 
+	0x82430  func <stripped> // getter 
+	0x82560  func <stripped> // setter 
+	0x826d0  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncManagedHistoryTransitItem : MapsSyncManagedHistoryItem {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x750400028360 (0x50400028360) in binary!
+WARNING: couldn't find address 0x75cc00028830 (0x5cc00028830) in binary!
 	0xe8000000c  @objc MapsSyncManagedHistoryTransitItem.(null) <stripped>
  }
 
@@ -2410,48 +2435,46 @@ WARNING: couldn't find address 0x750400028360 (0x50400028360) in binary!
 
 	// Properties
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _muid : ’∏ // +0x0 (0x8)
+	var _muid : uº // +0x0 (0x8)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _lastSuggestedReviewDate : °∑ // +0x0 (0x0)
+	var _lastSuggestedReviewDate : Aª // +0x0 (0x0)
 	var _hasUserReviewed : Bool // +0x0 (0x1)
 WARNING: couldn't find address 0x0 (0x0) in binary!
-	var _uploadedPhotosCount : ˘Ω // +0x0 (0x4)
+	var _uploadedPhotosCount : ô¡ // +0x0 (0x4)
 	var _anonymousCredential : MapsSyncAnonymousCredential // +0x0 (0x8)
 	var _anonymousCredentialUnstored : MapsSyncAnonymousCredential // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9eb400027e28 (0x6b400027e28) in binary!
-	0x9ea8  @objc MapsSyncReviewedPlace.(null) <stripped>
-WARNING: couldn't find address 0x6dfc000282e0 (0x5fc000282e0) in binary!
-	0x82f0  @objc MapsSyncReviewedPlace.(null) <stripped>
-WARNING: couldn't find address 0x90f400028bd0 (0xf400028bd0) in binary!
-	0x82c8  @objc MapsSyncReviewedPlace.(null) <stripped>
-WARNING: couldn't find address 0x82cc00028bc8 (0x2cc00028bc8) in binary!
-	0xaf40  @objc MapsSyncReviewedPlace.(null) <stripped>
-WARNING: couldn't find address 0x774400027f38 (0x74400027f38) in binary!
-	0x7738  @objc MapsSyncReviewedPlace.(null) <stripped>
-WARNING: couldn't find address 0x6d3c000281c8 (0x53c000281c8) in binary!
-	0x6d30  @objc MapsSyncReviewedPlace.(null) <stripped>
-WARNING: couldn't find address 0x909c000281a0 (0x9c000281a0) in binary!
-	0x8348  @objc MapsSyncReviewedPlace.(null) <stripped>
+WARNING: couldn't find address 0x9fdc000282f0 (0x7dc000282f0) in binary!
+	0x9fd0  @objc MapsSyncReviewedPlace.(null) <stripped>
+WARNING: couldn't find address 0x6ec4000287a8 (0x6c4000287a8) in binary!
+	0x83b8  @objc MapsSyncReviewedPlace.(null) <stripped>
+	0x8390  type metadata accessor for MapsSyncMutableCollectionPlaceItem
+WARNING: couldn't find address 0x839400029098 (0x39400029098) in binary!
+	0xb068  @objc MapsSyncReviewedPlace.(null) <stripped>
+WARNING: couldn't find address 0x780c00028400 (0xc00028400) in binary!
+	0x7800  @objc MapsSyncReviewedPlace.(null) <stripped>
+WARNING: couldn't find address 0x6e0400028690 (0x60400028690) in binary!
+	0x6df8  @objc MapsSyncReviewedPlace.(null) <stripped>
+WARNING: couldn't find address 0x916400028668 (0x16400028668) in binary!
+	0x8410  @objc MapsSyncReviewedPlace.(null) <stripped>
 WARNING: couldn't find address 0xa8000000c (0xa8000000c) in binary!
-	0x23cfffe6b60  @objc MapsSyncReviewedPlace.(null) <stripped>
-	0x31cfffe6c18  @objc MapsSyncReviewedPlace.âÊËA‚ˇˇLâ˜LâÊË6‚ˇˇLâ˜LâÊË+‚ˇˇLâ˜LâÊË ‚ˇˇHÖ€tzIﬂLâ˜LâÊËã·ˇˇHâﬂLâ˛ÎMÖˇtdL˚Lâ˜LâÊËp·ˇˇLâˇHâﬁLâÚLâ·Ëﬂ˘ˇˇâ√Lâ˜LâÊË“·ˇˇLâ˜LâÊË«·ˇˇLâ˜LâÊËº·ˇˇLâ˜LâÊË±·ˇˇLâ˜LâÊË¶·ˇˇâÿÈH˛ˇˇE1ˇÎÑ1€Îõfê¸ˇˇ'¸ˇˇ;¸ˇˇI¸ˇˇP¸ˇˇ=˝ˇˇd¸ˇˇ2˝ˇˇá¸ˇˇ˛ˇˇW˝ˇˇÕ˝ˇˇUHâÂAWAVAUATSPHâu–Iâ¸Lç-Ti <stripped>
-	0x314fffe6e80  @objc MapsSyncReviewedPlace.E <stripped>
-	0x30cfffe73e8  @objc MapsSyncReviewedPlace. <stripped>
-	0x104fffe75a0  @objc MapsSyncReviewedPlace.UHâÂHãï£
- <stripped>
-	0x58400027cd8  @objc MapsSyncReviewedPlace.HâU–IâÙIâ˛H∏ <stripped>
-WARNING: couldn't find address 0x2802cfff954a0 (0x2cfff954a0) in binary!
+	0x704fffe6198  @objc MapsSyncReviewedPlace.(null) <stripped>
+	0x7ecfffe6250  @objc MapsSyncReviewedPlace.m¿Ëï;	 <stripped>
+	0x7e4fffe64b8  @objc MapsSyncReviewedPlace.âp LâˇAˇ‘Iâ«Lâ˜Aˇ‘Iâ∆HâﬂË€¯ <stripped>
+	0x7dcfffe6a20  @objc MapsSyncReviewedPlace.UHâÂ]ÈV˘ˇˇfD <stripped>
+	0x5ccfffe6bd8  @objc MapsSyncReviewedPlace.ˇË‚S <stripped>
+	0x6ac000281a0  @objc MapsSyncReviewedPlace.PHç=ˆ <stripped>
+WARNING: couldn't find address 0x284f4fff92f98 (0x4f4fff92f98) in binary!
 	0x78000000c  @objc MapsSyncReviewedPlace.(null) <stripped>
 
 	// Swift methods
-	0x80d50  class func MapsSyncReviewedPlace.__allocating_init(anonymousCredential:) // init 
-	0x810d0  func <stripped> // getter 
-	0x811a0  func <stripped> // getter 
-	0x811f0  func <stripped> // getter 
-	0x81220  func <stripped> // getter 
-	0x812b0  func <stripped> // getter 
+	0x82ec0  class func MapsSyncReviewedPlace.__allocating_init(anonymousCredential:) // init 
+	0x83240  func <stripped> // getter 
+	0x83310  func <stripped> // getter 
+	0x83360  func <stripped> // getter 
+	0x83390  func <stripped> // getter 
+	0x83420  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableReviewedPlace : MapsSyncMutableBaseItem {
@@ -2460,38 +2483,37 @@ WARNING: couldn't find address 0x2802cfff954a0 (0x2cfff954a0) in binary!
 	var _proxyObject : MapsSyncManagedReviewedPlace // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9e0400028160 (0x60400028160) in binary!
-	0x6d58  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
-WARNING: couldn't find address 0x95ec00028318 (0x5ec00028318) in binary!
-	0x8240  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
-WARNING: couldn't find address 0x76c400028b18 (0x6c400028b18) in binary!
-	0x9038  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
-	0x8210  dispatch thunk of MapsSyncMutableCollectionPlaceItem.mapItemStorage.setter
-WARNING: couldn't find address 0x769400028b08 (0x69400028b08) in binary!
-	0x82c8  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
+WARNING: couldn't find address 0x9f2c00028628 (0x72c00028628) in binary!
+	0x6e20  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
+WARNING: couldn't find address 0x96b4000287e8 (0x6b4000287e8) in binary!
+	0x8308  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
+	0x9100  _block_copy_helper.89
+WARNING: couldn't find address 0xa6a800028fe0 (0x6a800028fe0) in binary!
+	0x82d8  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
+	0x8390  type metadata accessor for MapsSyncMutableCollectionPlaceItem
 WARNING: couldn't find address 0x28000000c (0x28000000c) in binary!
-	0x2cfff954a0  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
-	0x54b00028638  @objc MapsSyncMutableReviewedPlace.O ÚE»ÚAG(Iâ_0Hãp <stripped>
-WARNING: couldn't find address 0x2820cfffe9a00 (0x20cfffe9a00) in binary!
-	0x63c000280e0  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
-WARNING: couldn't find address 0x280ccfffea318 (0xccfffea318) in binary!
-	0x434000280b8  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
-WARNING: couldn't find address 0x280a4fffea3d0 (0xa4fffea3d0) in binary!
-	0x51c000287f0  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
+	0x4f4fff92f98  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
+	0x61300028b08  @objc MapsSyncMutableReviewedPlace.E–Ú@ÚE»Ú@Lâh HâX(Lâ`0HãM¿HâH8Hç≤ <stripped>
+WARNING: couldn't find address 0x286dcfffe9038 (0x6dcfffe9038) in binary!
+	0x704000285a8  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
+WARNING: couldn't find address 0x28594fffe9950 (0x594fffe9950) in binary!
+	0x4fc00028580  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
+WARNING: couldn't find address 0x2856cfffe9a08 (0x56cfffe9a08) in binary!
+	0x64400028cc0  @objc MapsSyncMutableReviewedPlace.(null) <stripped>
 
 	// Swift methods
-	0x81ee0  func <stripped> // getter 
-	0x81f20  func <stripped> // setter 
-	0x81fa0  func <stripped> // modifyCoroutine 
-	0x82090  func <stripped> // getter 
-	0x822a0  func <stripped> // setter 
-	0x82440  func <stripped> // modifyCoroutine 
-	0x826e0  func <stripped> // getter 
-	0x82720  func <stripped> // setter 
-	0x827b0  func <stripped> // modifyCoroutine 
-	0x82850  func <stripped> // getter 
-	0x82910  func <stripped> // setter 
-	0x82a50  func <stripped> // modifyCoroutine 
+	0x84050  func <stripped> // getter 
+	0x84090  func <stripped> // setter 
+	0x84110  func <stripped> // modifyCoroutine 
+	0x84200  func <stripped> // getter 
+	0x84410  func <stripped> // setter 
+	0x845b0  func <stripped> // modifyCoroutine 
+	0x84850  func <stripped> // getter 
+	0x84890  func <stripped> // setter 
+	0x84920  func <stripped> // modifyCoroutine 
+	0x849c0  func <stripped> // getter 
+	0x84a80  func <stripped> // setter 
+	0x84bc0  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncHistoryItem : MapsSyncBaseItem {
@@ -2500,22 +2522,23 @@ WARNING: couldn't find address 0x280a4fffea3d0 (0xa4fffea3d0) in binary!
 	var _position : Double // +0x0 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x854b00028638 (0x54b00028638) in binary!
-	0xae38  @objc MapsSyncHistoryItem.(null) <stripped>
-WARNING: couldn't find address 0x763c000280e0 (0x63c000280e0) in binary!
-	0x6c40  @objc MapsSyncHistoryItem.(null) <stripped>
-WARNING: couldn't find address 0x6c34000280b8 (0x434000280b8) in binary!
-	0x8fa0  @objc MapsSyncHistoryItem.(null) <stripped>
-WARNING: couldn't find address 0x9d1c000287f0 (0x51c000287f0) in binary!
+WARNING: couldn't find address 0x861300028b08 (0x61300028b08) in binary!
+	0xaf60  @objc MapsSyncHistoryItem.(null) <stripped>
+WARNING: couldn't find address 0x7704000285a8 (0x704000285a8) in binary!
+	0x6d08  @objc MapsSyncHistoryItem.(null) <stripped>
+WARNING: couldn't find address 0x6cfc00028580 (0x4fc00028580) in binary!
+	0x9068  @objc MapsSyncHistoryItem.(null) <stripped>
+WARNING: couldn't find address 0x9e4400028cc0 (0x64400028cc0) in binary!
 	0x48000000c  @objc MapsSyncHistoryItem.(null) <stripped>
-WARNING: couldn't find address 0x9d0400028060 (0x50400028060) in binary!
-	0x84df  @objc MapsSyncHistoryItem.(null) <stripped>
-	0x8210  dispatch thunk of MapsSyncMutableCollectionPlaceItem.mapItemStorage.setter
+WARNING: couldn't find address 0x9e2c00028528 (0x62c00028528) in binary!
+	0x85a7  @objc MapsSyncHistoryItem.(null) <stripped>
+WARNING: couldn't find address 0x863a00028f28 (0x63a00028f28) in binary!
+	0x82d8  @objc MapsSyncHistoryItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffee848  @objc MapsSyncHistoryItem.(null) <stripped>
+	0xfffede80  @objc MapsSyncHistoryItem.(null) <stripped>
 
 	// Swift methods
-	0x84a90  func <stripped> // getter 
+	0x86c00  func <stripped> // getter 
  }
 
  class MapsSync.MapsSyncMutableHistoryItem : MapsSyncMutableBaseItem {
@@ -2524,18 +2547,19 @@ WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
 	var _proxyHistory : MapsSyncManagedHistoryItem // +0x10 (0x8)
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9d0400028060 (0x50400028060) in binary!
-	0x84df  @objc MapsSyncMutableHistoryItem.(null) <stripped>
-	0x8210  dispatch thunk of MapsSyncMutableCollectionPlaceItem.mapItemStorage.setter
+WARNING: couldn't find address 0x9e2c00028528 (0x62c00028528) in binary!
+	0x85a7  @objc MapsSyncMutableHistoryItem.(null) <stripped>
+WARNING: couldn't find address 0x863a00028f28 (0x63a00028f28) in binary!
+	0x82d8  @objc MapsSyncMutableHistoryItem.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xfffee848  @objc MapsSyncMutableHistoryItem.(null) <stripped>
+	0xfffede80  @objc MapsSyncMutableHistoryItem.(null) <stripped>
 WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
-	0x7f4fffec350  @objc MapsSyncMutableHistoryItem.(null) <stripped>
+	0x4bcfffeb988  @objc MapsSyncMutableHistoryItem.(null) <stripped>
 
 	// Swift methods
-	0x84ab0  func <stripped> // getter 
-	0x84ad0  func <stripped> // setter 
-	0x84af0  func <stripped> // modifyCoroutine 
+	0x86c20  func <stripped> // getter 
+	0x86c40  func <stripped> // setter 
+	0x86c60  func <stripped> // modifyCoroutine 
  }
 
  class MapsSync.MapsSyncCuratedCollectionQuery : MapsSyncBaseQuery {
@@ -2544,26 +2568,27 @@ WARNING: couldn't find address 0x88000000c (0x88000000c) in binary!
 	var _specifiedQuery : MapsSyncGenericQuery
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9cb400028008 (0x4b400028008) in binary!
-	0x8f20  @objc MapsSyncCuratedCollectionQuery.(null) <stripped>
-WARNING: couldn't find address 0x740200027fe0 (0x40200027fe0) in binary!
-	0x8f08  @objc MapsSyncCuratedCollectionQuery.(null) <stripped>
-WARNING: couldn't find address 0x73ea00027fb8 (0x3ea00027fb8) in binary!
-	0x8ef0  @objc MapsSyncCuratedCollectionQuery.(null) <stripped>
-	0x8190  dispatch thunk of MapsSyncMutableCollectionPlaceItem.droppedPinFloorOrdinal.getter
+WARNING: couldn't find address 0x9ddc000284d0 (0x5dc000284d0) in binary!
+	0x8fe8  @objc MapsSyncCuratedCollectionQuery.(null) <stripped>
+WARNING: couldn't find address 0x74ca000284a8 (0x4ca000284a8) in binary!
+	0x8fd0  @objc MapsSyncCuratedCollectionQuery.(null) <stripped>
+WARNING: couldn't find address 0x74b200028480 (0x4b200028480) in binary!
+	0x8fb8  @objc MapsSyncCuratedCollectionQuery.(null) <stripped>
+WARNING: couldn't find address 0x736c00028458 (0x36c00028458) in binary!
+	0x8258  @objc MapsSyncCuratedCollectionQuery.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffff9648  @objc MapsSyncCuratedCollectionQuery.(null) <stripped>
+	0xffff93c0  @objc MapsSyncCuratedCollectionQuery.(null) <stripped>
 WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
-	0x774ffff8cb0  @objc MapsSyncCuratedCollectionQuery.(null) <stripped>
-	0x74cffff8ff8  @objc MapsSyncCuratedCollectionQuery.√êêêêêêêêêêêêêêêUHâÂAWAVAUATSHÉÏxLâm–HâçpˇˇˇHâUÄHâµxˇˇˇIâˇH«Eê <stripped>
-	0x71cffff94f0  @objc MapsSyncCuratedCollectionQuery.Ñ <stripped>
+	0x43cffff8a28  @objc MapsSyncCuratedCollectionQuery.(null) <stripped>
+	0x414ffff8d70  @objc MapsSyncCuratedCollectionQuery.Àˇˇ]È <stripped>
+	0x3e4ffff9268  @objc MapsSyncCuratedCollectionQuery.ˇˇf.Ñ <stripped>
 
 	// Swift methods
-	0x87700  class func MapsSyncCuratedCollectionQuery.__allocating_init(delegate:) // init 
-	0x877b0  func <stripped> // method 
-	0x87810  func <stripped> // method 
-	0x87b30  func <stripped> // method 
-	0x87cb0  func <stripped> // method 
+	0x89870  class func MapsSyncCuratedCollectionQuery.__allocating_init(delegate:) // init 
+	0x89920  func <stripped> // method 
+	0x89980  func <stripped> // method 
+	0x89ca0  func <stripped> // method 
+	0x89e20  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncVehicleQuery : MapsSyncBaseQuery {
@@ -2572,36 +2597,37 @@ WARNING: couldn't find address 0x78000000c (0x78000000c) in binary!
 	var _specifiedQuery : MapsSyncGenericQuery
 
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x9c3400027f88 (0x43400027f88) in binary!
-	0x8ea0  @objc MapsSyncVehicleQuery.(null) <stripped>
-WARNING: couldn't find address 0x738200027f60 (0x38200027f60) in binary!
-	0x8e88  @objc MapsSyncVehicleQuery.(null) <stripped>
-WARNING: couldn't find address 0x736a00027f38 (0x36a00027f38) in binary!
-	0x7230  @objc MapsSyncVehicleQuery.(null) <stripped>
-WARNING: couldn't find address 0x811c00027f58 (0x11c00027f58) in binary!
+WARNING: couldn't find address 0x9d5c00028450 (0x55c00028450) in binary!
+	0x8f68  @objc MapsSyncVehicleQuery.(null) <stripped>
+WARNING: couldn't find address 0x744a00028428 (0x44a00028428) in binary!
+	0x8f50  @objc MapsSyncVehicleQuery.(null) <stripped>
+WARNING: couldn't find address 0x743200028400 (0x43200028400) in binary!
+	0x72f8  @objc MapsSyncVehicleQuery.(null) <stripped>
+WARNING: couldn't find address 0x81e400028420 (0x1e400028420) in binary!
 	0x48000000c  @objc MapsSyncVehicleQuery.(null) <stripped>
-WARNING: couldn't find address 0x803400027b20 (0x3400027b20) in binary!
-	0x8028  @objc MapsSyncVehicleQuery.(null) <stripped>
-	0x8010  dispatch thunk of MapsSyncCollectionPlaceItem.mapItemStorage.getter
+WARNING: couldn't find address 0x80fc00027fe8 (0xfc00027fe8) in binary!
+	0x80f0  @objc MapsSyncVehicleQuery.(null) <stripped>
+WARNING: couldn't find address 0x80e400027fc0 (0xe400027fc0) in binary!
+	0x80d8  @objc MapsSyncVehicleQuery.(null) <stripped>
 WARNING: couldn't find address 0x18000000c (0x18000000c) in binary!
-	0xffffc6c8  @objc MapsSyncVehicleQuery.(null) <stripped>
+	0xffffc640  @objc MapsSyncVehicleQuery.(null) <stripped>
 
 	// Swift methods
-	0x940e0  class func MapsSyncVehicleQuery.__allocating_init(delegate:) // init 
-	0x94190  func <stripped> // method 
-	0x941f0  func <stripped> // method 
-	0x944e0  func <stripped> // method 
-	0x94660  func <stripped> // method 
+	0x96990  class func MapsSyncVehicleQuery.__allocating_init(delegate:) // init 
+	0x96a40  func <stripped> // method 
+	0x96aa0  func <stripped> // method 
+	0x96d90  func <stripped> // method 
+	0x96f10  func <stripped> // method 
  }
 
  class MapsSync.MapsSyncUtil : NSObject /usr/lib/libobjc.A.dylib {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x7ffc00028060 (0x7fc00028060) in binary!
+WARNING: couldn't find address 0x80c400028530 (0xc400028530) in binary!
 	0x18000000c  @objc MapsSyncUtil.(null) <stripped>
  }
 
  class MapsSync.MapsSyncManagedVehicle : NSManagedObject /System/Library/Frameworks/CoreData.framework/CoreData {
 	// ObjC -> Swift bridged methods
-WARNING: couldn't find address 0x71bc00028018 (0x1bc00028018) in binary!
-	0x0  @objc MapsSyncManagedVehicle.(null) <stripped>
+WARNING: couldn't find address 0x7284000284e8 (0x284000284e8) in binary!
+	0x25029232840  @objc MapsSyncManagedVehicle.(null) <stripped>
  }

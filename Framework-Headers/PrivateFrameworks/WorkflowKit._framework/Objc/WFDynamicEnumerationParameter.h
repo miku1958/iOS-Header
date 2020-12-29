@@ -40,6 +40,7 @@
 - (id)localizedLabelForPossibleState:(id)arg1;
 - (BOOL)parameterStateIsValid:(id)arg1;
 - (void)possibleStatesDidChange;
+- (id)possibleStatesForLocalization;
 - (void)reloadPossibleStates;
 - (void)setPossibleStates:(id)arg1;
 - (void)setPossibleStatesFromRemoteSource:(id)arg1;

@@ -174,6 +174,7 @@
 - (BOOL)wantsToShowKeyboardForViewServiceHostWindow:(id)arg1;
 - (BOOL)wantsToShowKeyboardForWindow:(id)arg1;
 - (void)willAddDeactivationReason:(id)arg1;
+- (void)willLock:(id)arg1;
 - (void)willResignActive:(id)arg1;
 - (void)willResume:(id)arg1;
 

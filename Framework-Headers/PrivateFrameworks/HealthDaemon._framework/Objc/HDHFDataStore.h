@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class NSString;
+@class NSString, NSURL;
 @protocol HDHFDataStoreDelegate, OS_dispatch_queue;
 
 @interface HDHFDataStore : NSObject
@@ -17,28 +17,58 @@
     _Atomic BOOL _invalidated;
     _Atomic BOOL _hasOpenStore;
     NSObject<OS_dispatch_queue> *_openQueue;
+    long long _openAttempt;
     id<HDHFDataStoreDelegate> _delegate;
     NSString *_fileSystemPath;
 }
 
+@property (readonly, copy, nonatomic) NSURL *dataStoreURL;
 @property (weak, nonatomic) id<HDHFDataStoreDelegate> delegate; // @synthesize delegate=_delegate;
+@property (readonly, copy, nonatomic) NSURL *directoryURL;
 @property (readonly, copy, nonatomic) NSString *fileSystemPath; // @synthesize fileSystemPath=_fileSystemPath;
+@property (readonly, nonatomic) long long rebuildState;
 
++ (BOOL)_errorIndicatesCorruption:(id)arg1;
++ (BOOL)_shouldRequestRebuildForError:(id)arg1;
++ (BOOL)_shouldRequestRebuildForFailure:(long long)arg1 code:(int)arg2;
 - (id).cxx_construct;
 - (void).cxx_destruct;
 - (BOOL)_convertExceptionsToError:(id *)arg1 inBlock:(CDUnknownBlockType)arg2;
 - (shared_ptr_88ae0538)_highFrequencyDataStoreWithError:(id *)arg1;
+- (BOOL)_lock_archiveHFD:(id *)arg1;
+- (void)_lock_checkForLargeSparseHFD;
+- (BOOL)_lock_deleteCompressedArchive:(id *)arg1;
 - (shared_ptr_88ae0538)_lock_highFrequencyDataStoreWithError:(id *)arg1;
 - (BOOL)_lock_openHighFrequencyDataStoreWithError:(id *)arg1;
+- (BOOL)_lock_performNextRebuildStepForState:(long long)arg1 error:(id *)arg2;
+- (BOOL)_lock_performPostRestoreCleanup:(id *)arg1;
+- (BOOL)_lock_prepareForRecovery:(id *)arg1;
 - (shared_ptr_88ae0538)_lock_primitiveOpenHighFrequencyDataStoreWithError:(id *)arg1;
+- (BOOL)_lock_rebuildIfNeeded:(id *)arg1;
+- (BOOL)_lock_restoreHFDFromArchive:(id *)arg1;
+- (BOOL)_lock_rollCloudSyncOwnerIdentifier:(id *)arg1;
+- (BOOL)_requiresRebuildForState:(long long)arg1;
+- (id)_walPathForHFDAtPath:(id)arg1;
 - (BOOL)accessStoreWithError:(id *)arg1 block:(CDUnknownBlockType)arg2;
-- (BOOL)archiveHFDTo:(id)arg1 error:(id *)arg2;
+- (unique_ptr_8ada683d)dataStoreAtURL:(id)arg1 filesystem:(const shared_ptr_c7cae3aa *)arg2 allowCheckpoint:(BOOL)arg3 error:(id *)arg4;
 - (void)dealloc;
+- (BOOL)deleteFileAt:(id)arg1 error:(id *)arg2;
+- (BOOL)deleteHFDAt:(id)arg1 error:(id *)arg2;
 - (id)description;
+- (id)diagnosticDescription;
 - (BOOL)discardStoreWithError:(id *)arg1;
+- (id)fileManager;
 - (CDUnknownBlockType)flushHandlerForInvalidation:(BOOL)arg1;
 - (id)initWithPath:(id)arg1;
 - (id)initWithPath:(id)arg1 fileSystem:(shared_ptr_c7cae3aa)arg2;
+- (BOOL)moveFileOnlyIfDestinationEmptyFrom:(id)arg1 to:(id)arg2 error:(id *)arg3;
+- (BOOL)moveHFDAsideWithoutOverwritingFrom:(id)arg1 to:(id)arg2 error:(id *)arg3;
+- (void)requestHFDRebuild;
+- (BOOL)retryDecompressionAfterError:(id)arg1;
+- (void)setRebuildState:(long long)arg1;
+- (void)unitTest_requestRebuild;
+- (void)unitTest_resetRebuildState;
+- (id)writeaheadLogURLForHFDAt:(id)arg1;
 
 @end
 

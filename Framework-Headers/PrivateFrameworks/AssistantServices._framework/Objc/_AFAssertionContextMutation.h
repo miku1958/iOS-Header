@@ -8,21 +8,23 @@
 
 #import <AssistantServices/AFAssertionContextMutating-Protocol.h>
 
-@class AFAssertionContext, NSDictionary, NSString;
+@class AFAssertionContext, NSDate, NSDictionary, NSString;
 
 @interface _AFAssertionContextMutation : NSObject <AFAssertionContextMutating>
 {
     AFAssertionContext *_baseModel;
     unsigned long long _timestamp;
     NSString *_reason;
+    NSDate *_effectiveDate;
+    double _expirationDuration;
     NSDictionary *_userInfo;
-    AFAssertionContext *_parentContext;
     struct _mutationFlags {
         unsigned int isDirty:1;
         unsigned int hasTimestamp:1;
         unsigned int hasReason:1;
+        unsigned int hasEffectiveDate:1;
+        unsigned int hasExpirationDuration:1;
         unsigned int hasUserInfo:1;
-        unsigned int hasParentContext:1;
     } _mutationFlags;
 }
 
@@ -35,7 +37,8 @@
 - (id)generate;
 - (id)init;
 - (id)initWithBaseModel:(id)arg1;
-- (void)setParentContext:(id)arg1;
+- (void)setEffectiveDate:(id)arg1;
+- (void)setExpirationDuration:(double)arg1;
 - (void)setReason:(id)arg1;
 - (void)setTimestamp:(unsigned long long)arg1;
 - (void)setUserInfo:(id)arg1;

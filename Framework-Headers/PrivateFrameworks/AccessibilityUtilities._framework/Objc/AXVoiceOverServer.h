@@ -10,9 +10,12 @@
 {
 }
 
+@property (readonly, nonatomic, getter=isScreenCurtainEnabled) BOOL isScreenCurtainEnabled;
+
 + (id)server;
 - (BOOL)_connectIfNecessary;
 - (id)_serviceName;
+- (void)clearLastSpokenPhrases:(CDUnknownBlockType)arg1;
 - (id)currentFocusedElement;
 - (id)currentRotorName;
 - (BOOL)isBluetoothBrailleDisplayConnected;

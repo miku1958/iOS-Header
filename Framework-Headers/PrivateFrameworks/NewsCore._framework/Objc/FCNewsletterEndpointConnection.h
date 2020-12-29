@@ -34,7 +34,7 @@
 - (void)getNewsletterSubscriptionWithCallbackQueue:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (id)initWithConfigurationManager:(id)arg1;
 - (id)initWithEndpointConnection:(id)arg1 configurationManager:(id)arg2;
-- (void)newsletterSubscribeTo:(id)arg1 callbackQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)newsletterSubscribeTo:(id)arg1 includeArray:(id)arg2 callbackQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)submitPersonalizationVector:(id)arg1 withCallbackQueue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)updateBaseURL:(id)arg1;
 

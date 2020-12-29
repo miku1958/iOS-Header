@@ -23,6 +23,7 @@
 + (BOOL)initialized;
 + (id)sharedInstance;
 - (void)beginUsing:(id)arg1 withBundle:(id)arg2;
+- (id)init;
 
 @end
 

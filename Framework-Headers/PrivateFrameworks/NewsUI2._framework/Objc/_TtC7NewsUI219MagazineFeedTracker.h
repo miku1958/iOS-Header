@@ -14,6 +14,7 @@
     MISSING_TYPE *scienceDataFactory;
     MISSING_TYPE *channelDataFactory;
     MISSING_TYPE *supplementaryDataProvider;
+    MISSING_TYPE *headlineSeenQueue;
 }
 
 @end

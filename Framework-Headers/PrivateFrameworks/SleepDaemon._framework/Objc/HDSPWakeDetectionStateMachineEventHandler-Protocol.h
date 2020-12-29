@@ -9,6 +9,7 @@
 @class NSDate;
 
 @protocol HDSPWakeDetectionStateMachineEventHandler <HKSPStateMachineEventHandler>
+- (void)earlyWakeUpWasNotifiedRemotely;
 - (void)wakeDetectionEventDue;
 - (void)wakeupEventDetected:(NSDate *)arg1;
 @end

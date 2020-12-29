@@ -27,6 +27,7 @@
 @property (copy, nonatomic) NSDate *listeningProgressSavedAt;
 @property (nonatomic) long long maxVersionRead;
 @property (nonatomic) long long maxVersionSeen;
+@property (nonatomic, getter=isPruningDisabled) BOOL pruningDisabled;
 @property (nonatomic) long long readCount;
 @property (copy, nonatomic) NSString *readingPosition;
 @property (copy, nonatomic) NSDate *readingPositionSavedAt;

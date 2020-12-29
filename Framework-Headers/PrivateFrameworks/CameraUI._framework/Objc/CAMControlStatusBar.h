@@ -9,7 +9,7 @@
 #import <CameraUI/CAMAccessibilityHUDItemProvider-Protocol.h>
 #import <CameraUI/CAMControlStatusIndicatorDelegate-Protocol.h>
 
-@class CAMApertureStatusIndicator, CAMDirectionalIndicator, CAMExposureBiasStatusIndicator, CAMFilterStatusIndicator, CAMFlashStatusIndicator, CAMHDRStatusIndicator, CAMIntensityStatusIndicator, CAMLivePhotoStatusIndicator, CAMLowLightStatusIndicator, CAMTimerStatusIndicator, CAMVideoConfigurationStatusIndicator, NSArray, NSMutableDictionary, NSSet, NSString;
+@class CAMApertureStatusIndicator, CAMDirectionalIndicator, CAMExposureBiasStatusIndicator, CAMFilterStatusIndicator, CAMFlashStatusIndicator, CAMHDRStatusIndicator, CAMIntensityStatusIndicator, CAMLivePhotoStatusIndicator, CAMLowLightStatusIndicator, CAMRAWStatusIndicator, CAMTimerStatusIndicator, CAMVideoConfigurationStatusIndicator, NSArray, NSMutableDictionary, NSSet, NSString;
 @protocol CAMControlStatusBarDelegate;
 
 @interface CAMControlStatusBar : UIView <CAMControlStatusIndicatorDelegate, CAMAccessibilityHUDItemProvider>
@@ -50,6 +50,7 @@
 @property (strong, nonatomic) UIView *primaryAccessoryControl; // @synthesize primaryAccessoryControl=_primaryAccessoryControl;
 @property (copy, nonatomic) NSArray *primaryDesiredIndicatorTypes; // @synthesize primaryDesiredIndicatorTypes=_primaryDesiredIndicatorTypes;
 @property (copy, nonatomic) NSArray *primaryVisibleIndicatorTypes;
+@property (readonly, nonatomic) CAMRAWStatusIndicator *rawIndicator;
 @property (strong, nonatomic) UIView *secondaryAccessoryControl; // @synthesize secondaryAccessoryControl=_secondaryAccessoryControl;
 @property (copy, nonatomic) NSArray *secondaryDesiredIndicatorTypes; // @synthesize secondaryDesiredIndicatorTypes=_secondaryDesiredIndicatorTypes;
 @property (readonly) Class superclass;
@@ -67,6 +68,7 @@
 - (void)_handleIntensityStatusIndicatorTapped:(id)arg1;
 - (void)_handleLivePhotoStatusIndicatorTapped:(id)arg1;
 - (void)_handleLowLightStatusIndicatorTapped:(id)arg1;
+- (void)_handleRAWStatusIndicatorTapped:(id)arg1;
 - (void)_handleTimerStatusIndicatorTapped:(id)arg1;
 - (void)_installIndicatorIfNeededForType:(unsigned long long)arg1;
 - (void)_iterateViewsForHUDManager:(id)arg1 withItemFoundBlock:(CDUnknownBlockType)arg2;

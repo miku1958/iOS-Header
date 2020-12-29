@@ -200,6 +200,7 @@ __attribute__((visibility("hidden")))
 - (int)shortTermAverageTBRForSegment:(id)arg1;
 - (void)startNewSegment;
 - (void)updateAdaptiveLearningStats:(unsigned int)arg1 payload:(id)arg2;
+- (void)updateAlgoMetrics:(unsigned int)arg1;
 - (void)updateBitrateCap:(id)arg1;
 - (void)updateCellTech:(id)arg1;
 - (void)updateConnectionTelemetry:(id)arg1;
@@ -218,6 +219,7 @@ __attribute__((visibility("hidden")))
 - (void)updateVPCStats:(id)arg1;
 - (void)updateVPCStatus:(id)arg1;
 - (void)updateVideoFECStats:(id)arg1;
+- (void)updateVideoQualityWithPayload:(id)arg1;
 - (void)updateVideoResolution:(id)arg1;
 - (void)updateVideoSwitchTimes;
 - (void)updateWRMMetrics:(unsigned int)arg1 payload:(id)arg2;

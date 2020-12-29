@@ -25,6 +25,7 @@
 - (BOOL)_checkLostModeInSharedContainer;
 - (void)_disableFMIPUsingToken:(id)arg1 inContext:(unsigned long long)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_forceFMWUpgradeAlertWithCompletion:(CDUnknownBlockType)arg1;
+- (void)_getAccessoriesWithFilter:(CDUnknownBlockType)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_initiateLostModeExitAuthForIDSDeviceID:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 - (BOOL)_isRunningAsMobileUser;
 - (unsigned long long)_managedLostModeType;
@@ -36,6 +37,7 @@
 - (void)_updateNeedsLocateAckLostModeWithInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)activationLockVersionWithCompletion:(CDUnknownBlockType)arg1;
 - (void)addNotificationRequest:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)audioAccessorySerialNumbersWithCompletion:(CDUnknownBlockType)arg1;
 - (void)clearData:(unsigned long long)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)deviceActivationDidSucceed;
 - (void)didChangeFMIPAccountInfo:(id)arg1;

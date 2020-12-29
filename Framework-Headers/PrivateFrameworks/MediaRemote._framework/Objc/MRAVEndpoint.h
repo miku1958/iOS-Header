@@ -51,6 +51,7 @@
 - (void)_prepareToMigrateToEndpoint:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)_requestSharedAudioPresentationOutputContextModificationWithAddingDevices:(id)arg1 removingDevices:(id)arg2 settingDevices:(id)arg3 replyQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)addObserver:(id)arg1;
+- (void)addOutputDevices:(id)arg1 initiator:(id)arg2 fadeAudio:(BOOL)arg3 withReplyQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)addOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)canMigrateToEndpoint:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
 - (void)connectToExternalDeviceWithUserInfo:(id)arg1 completion:(CDUnknownBlockType)arg2;
@@ -71,9 +72,11 @@
 - (id)outputDevicesMatchingPredicate:(CDUnknownBlockType)arg1;
 - (void)removeObserver:(id)arg1;
 - (void)removeOutputDeviceFromParentGroup:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;
+- (void)removeOutputDevices:(id)arg1 initiator:(id)arg2 fadeAudio:(BOOL)arg3 withReplyQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)removeOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)scheduleEndpointOutputDevicesDidChangeNotification;
 - (void)setOutputDeviceVolume:(float)arg1 outputDevice:(id)arg2 queue:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)setOutputDevices:(id)arg1 initiator:(id)arg2 fadeAudio:(BOOL)arg3 withReplyQueue:(id)arg4 completion:(CDUnknownBlockType)arg5;
 - (void)setOutputDevices:(id)arg1 initiator:(id)arg2 withReplyQueue:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)translateClusterUIDIfNeeded:(id)arg1;
 - (void)volumeControlCapabilitiesForOutputDevice:(id)arg1 queue:(id)arg2 completion:(CDUnknownBlockType)arg3;

@@ -10,9 +10,11 @@
 
 @interface CSAccessoryWalletViewController : CSAccessoryViewController
 {
+    BOOL _isAnimatingPresentation;
     CSAccessoryWalletView *_walletView;
 }
 
+@property (nonatomic) BOOL isAnimatingPresentation; // @synthesize isAnimatingPresentation=_isAnimatingPresentation;
 @property (strong, nonatomic) CSAccessoryWalletView *walletView; // @synthesize walletView=_walletView;
 
 - (void).cxx_destruct;

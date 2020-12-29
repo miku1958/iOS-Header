@@ -11,10 +11,7 @@
 __attribute__((visibility("hidden")))
 @interface _TtCC8VideosUI23DescriptionTemplateView30DescriptionTemplateContentView : UIView
 {
-    MISSING_TYPE *titleTextView;
     MISSING_TYPE *descriptionTextView;
-    MISSING_TYPE *buttonView;
-    MISSING_TYPE *$__lazy_storage_$_titleView;
 }
 
 - (void).cxx_destruct;

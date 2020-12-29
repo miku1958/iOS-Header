@@ -24,6 +24,11 @@ __attribute__((visibility("hidden")))
 @property (strong, nonatomic) UIColor *highlightedBackgroundColor; // @synthesize highlightedBackgroundColor=_highlightedBackgroundColor;
 @property (readonly, nonatomic) UIView *sourceView;
 
++ (double)_horizontalPaddingForCurrentIdiom;
++ (double)_maxFontSizeForCurrentIdiom;
++ (double)_minFontSizeForCurrentIdiom;
++ (double)_minScaleFactorForFont:(id)arg1;
++ (double)_titleFontWeightForCurrentIdiom;
 + (double)defaultButtonWidth;
 + (id)titleFont;
 + (id)titleFontOfSize:(double)arg1;

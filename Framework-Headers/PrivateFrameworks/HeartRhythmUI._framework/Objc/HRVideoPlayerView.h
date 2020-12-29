@@ -36,6 +36,7 @@
 + (Class)layerClass;
 + (id)playerViewWithURL:(id)arg1 looping:(BOOL)arg2;
 - (void).cxx_destruct;
+- (void)_didReceivePlayerNotification:(id)arg1;
 - (void)_setUpNotifications;
 - (void)_setUpUI;
 - (void)dealloc;

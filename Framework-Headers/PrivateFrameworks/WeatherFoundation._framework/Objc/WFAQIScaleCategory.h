@@ -15,6 +15,8 @@
 {
     NSString *_categoryName;
     NSString *_color;
+    NSString *_glyph;
+    NSString *_recommendation;
     unsigned long long _categoryNumber;
     unsigned long long _categoryIndex;
     NSString *_localizedCategoryDescription;
@@ -25,12 +27,16 @@
 @property (copy, nonatomic) NSString *categoryName; // @synthesize categoryName=_categoryName;
 @property (nonatomic) unsigned long long categoryNumber; // @synthesize categoryNumber=_categoryNumber;
 @property (copy, nonatomic) NSString *color; // @synthesize color=_color;
+@property (copy, nonatomic) NSString *glyph; // @synthesize glyph=_glyph;
 @property (copy, nonatomic) NSString *localizedCategoryDescription; // @synthesize localizedCategoryDescription=_localizedCategoryDescription;
 @property (nonatomic) struct _NSRange range; // @synthesize range=_range;
+@property (copy, nonatomic) NSString *recommendation; // @synthesize recommendation=_recommendation;
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
 - (id)copyWithZone:(struct _NSZone *)arg1;
+- (id)debugDescription;
+- (id)description;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCategoryIndex:(unsigned long long)arg1 localizedCategoryDescription:(id)arg2;
 - (id)initWithCoder:(id)arg1;

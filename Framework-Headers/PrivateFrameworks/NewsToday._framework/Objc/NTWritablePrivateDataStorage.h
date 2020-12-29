@@ -26,8 +26,8 @@
 - (void).cxx_destruct;
 - (id)init;
 - (id)initWithDropbox:(id)arg1 transactionQueue:(id)arg2;
-- (void)writeReadHistoryItem:(id)arg1;
-- (void)writeSeenHistoryItems:(id)arg1;
+- (void)writeReadHistoryItem:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
+- (void)writeSeenHistoryItems:(id)arg1 withCompletion:(CDUnknownBlockType)arg2;
 
 @end
 

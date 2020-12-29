@@ -16,7 +16,7 @@
 - (void).cxx_destruct;
 - (BOOL)_enumerateExperimentRecordsMatchingWhereClause:(id)arg1 bind:(CDUnknownBlockType)arg2 block:(CDUnknownBlockType)arg3;
 - (id)activeExperimentRecordWithTreatmentId:(id)arg1;
-- (unsigned long long)addExperimentWithExperimentDeployment:(id)arg1 type:(int)arg2 status:(long long)arg3 startDate:(id)arg4 endDate:(id)arg5 namespaces:(id)arg6;
+- (unsigned long long)addExperimentWithExperimentDeployment:(id)arg1 environment:(int)arg2 type:(int)arg3 status:(long long)arg4 startDate:(id)arg5 endDate:(id)arg6 namespaces:(id)arg7;
 - (BOOL)enumerateExperimentRecordsMatchingExperimentId:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)enumerateExperimentRecordsMatchingStatuses:(id)arg1 block:(CDUnknownBlockType)arg2;
 - (BOOL)enumerateExperimentRecordsWithBlock:(CDUnknownBlockType)arg1;
@@ -24,7 +24,7 @@
 - (id)experimentRecordWithExperimentDeployment:(id)arg1;
 - (id)init;
 - (id)initWithDatabase:(id)arg1;
-- (BOOL)namespacesAreAvailableForExperimentId:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 namespaces:(id)arg4;
+- (BOOL)namespacesAreAvailableForExperiment:(id)arg1 startDate:(id)arg2 endDate:(id)arg3 namespaces:(id)arg4;
 - (struct _PASDBTransactionCompletion_)readTransactionWithFailableBlock:(CDUnknownBlockType)arg1;
 - (unsigned long long)removeExperimentRecordWithExperimentDeployment:(id)arg1;
 - (BOOL)setStatus:(long long)arg1 forExperimentDeployment:(id)arg2 usingTransaction:(id)arg3;

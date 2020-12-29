@@ -19,6 +19,7 @@
 @interface HMHome : NSObject <HMFLogging, HMUserActionPredictionControllerDataSource, HMMutableApplicationData, HMObjectMerge, HMFMessageReceiver, NSSecureCoding>
 {
     BOOL _automaticSoftwareUpdateEnabled;
+    BOOL _automaticThirdPartyAccessorySoftwareUpdateEnabled;
     long long _minimumMediaUserPrivilege;
     BOOL _mediaPeerToPeerEnabled;
     NSString *_mediaPassword;
@@ -79,6 +80,8 @@
 @property (readonly, copy) NSUUID *applicationDataIdentifier;
 @property (readonly, getter=isAutomaticSoftwareUpdateEnabled) BOOL automaticSoftwareUpdateEnabled;
 @property (getter=isAutomaticSoftwareUpdateEnabled) BOOL automaticSoftwareUpdateEnabled; // @dynamic automaticSoftwareUpdateEnabled;
+@property (readonly, getter=isAutomaticThirdPartyAccessorySoftwareUpdateEnabled) BOOL automaticThirdPartyAccessorySoftwareUpdateEnabled;
+@property (getter=isAutomaticThirdPartyAccessorySoftwareUpdateEnabled) BOOL automaticThirdPartyAccessorySoftwareUpdateEnabled; // @dynamic automaticThirdPartyAccessorySoftwareUpdateEnabled;
 @property (strong, nonatomic) _HMContext *context; // @synthesize context=_context;
 @property (strong, nonatomic) HMMutableArray *currentAccessories; // @synthesize currentAccessories=_currentAccessories;
 @property (strong, nonatomic) HMMutableArray *currentAccessoryProtectionGroups; // @synthesize currentAccessoryProtectionGroups=_currentAccessoryProtectionGroups;
@@ -432,6 +435,7 @@
 - (void)updateApplicationData:(id)arg1 forRoom:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateApplicationData:(id)arg1 forServiceGroup:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateAutomaticSoftwareUpdateEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
+- (void)updateAutomaticThirdPartyAccessorySoftwareUpdateEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateForUser:(id)arg1 presenceAuthorizationStatus:(unsigned long long)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void)updateMediaPassword:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (void)updateMediaPeerToPeerEnabled:(BOOL)arg1 completionHandler:(CDUnknownBlockType)arg2;

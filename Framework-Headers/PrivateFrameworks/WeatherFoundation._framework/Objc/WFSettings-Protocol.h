@@ -15,8 +15,16 @@
 @property (readonly, nonatomic) NSString *apiVersionFallback;
 @property (readonly, nonatomic) NSURL *appAnalyticsEndpointUrl;
 @property (readonly, nonatomic) NSSet *aqiEnabledCountryCodes;
+@property (readonly, nonatomic) double cachedGeocodeLocationExpirationTimeInterval;
 @property (readonly, nonatomic) float dataSamplingRate;
+@property (readonly, nonatomic) BOOL disableForecastRequestCancelation;
+@property (readonly, nonatomic) BOOL disableLimitReverseGeocoding;
+@property (readonly, nonatomic) BOOL disablePriorityForecastRequestQueue;
+@property (readonly, nonatomic) BOOL loadSavedCitiesFromKVSOnly;
+@property (readonly, nonatomic) float locationGeocodingSamplingRate;
 @property (readonly, nonatomic) unsigned long long locationNumDecimalsOfPrecision;
+@property (readonly, nonatomic) double locationUpdateMinDistance;
+@property (readonly, nonatomic) double locationUpdateMinTimeInterval;
 @property (readonly, nonatomic) unsigned long long networkFailedAttemptsLimit;
 @property (readonly, nonatomic) unsigned long long networkSwitchExpirationTimeInSeconds;
 @property (readonly, nonatomic) double privateUserIdentifierResetTimeInterval;

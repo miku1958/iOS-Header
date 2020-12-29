@@ -8,15 +8,17 @@
 
 #import <HomeUI/HFHomeKitItemProtocol-Protocol.h>
 
-@class HMSoftwareUpdate, NSString;
+@class HMSoftwareUpdate, NSSet, NSString;
 @protocol HFHomeKitObject;
 
 @interface HUSoftwareUpdateInfoItem : HFItem <HFHomeKitItemProtocol>
 {
+    NSSet *_accessories;
     HMSoftwareUpdate *_softwareUpdate;
     NSString *_publisher;
 }
 
+@property (readonly, nonatomic) NSSet *accessories; // @synthesize accessories=_accessories;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
@@ -29,6 +31,7 @@
 - (void).cxx_destruct;
 - (id)_subclass_updateWithOptions:(id)arg1;
 - (id)init;
+- (id)initWithAccessories:(id)arg1;
 - (id)initWithSoftwareUpdate:(id)arg1 publisher:(id)arg2;
 
 @end

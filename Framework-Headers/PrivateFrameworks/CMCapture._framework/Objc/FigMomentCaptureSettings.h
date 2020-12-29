@@ -22,6 +22,7 @@
     BOOL _autoOriginalPhotoDeliveryEnabled;
     BOOL _autoSpatialOverCaptureEnabled;
     BOOL _autoDeferredProcessingEnabled;
+    unsigned int _rawOutputFormat;
 }
 
 @property (nonatomic) int HDRMode; // @synthesize HDRMode=_HDRMode;
@@ -32,6 +33,7 @@
 @property (nonatomic) int digitalFlashMode; // @synthesize digitalFlashMode=_digitalFlashMode;
 @property (nonatomic) int flashMode; // @synthesize flashMode=_flashMode;
 @property (nonatomic) int qualityPrioritization; // @synthesize qualityPrioritization=_qualityPrioritization;
+@property (nonatomic) unsigned int rawOutputFormat; // @synthesize rawOutputFormat=_rawOutputFormat;
 @property (readonly, nonatomic) long long settingsID; // @synthesize settingsID=_settingsID;
 @property (nonatomic) int torchMode; // @synthesize torchMode=_torchMode;
 @property (readonly, nonatomic) unsigned long long userInitiatedCaptureTime; // @synthesize userInitiatedCaptureTime=_userInitiatedCaptureTime;

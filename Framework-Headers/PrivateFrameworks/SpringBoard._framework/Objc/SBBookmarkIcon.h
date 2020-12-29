@@ -13,7 +13,9 @@
     SBBookmark *_bookmark;
 }
 
+@property (readonly, nonatomic) NSURL *appStoreURL;
 @property (strong, nonatomic) SBBookmark *bookmark; // @synthesize bookmark=_bookmark;
+@property (readonly, nonatomic) BOOL displaysAppStoreURLShortcutItem;
 @property (readonly, nonatomic) BOOL displaysShareBookmarkShortcutItem;
 @property (readonly, nonatomic) NSURL *launchURL;
 @property (readonly, nonatomic) BOOL representsWebApp;
@@ -30,6 +32,7 @@
 - (id)folderTitleOptions;
 - (id)iTunesCategoriesOrderedByRelevancy;
 - (id)initWithBookmark:(id)arg1;
+- (BOOL)isAppClipIcon;
 - (BOOL)isBookmarkIcon;
 - (id)representedSceneIdentifier;
 - (id)uninstallAlertBody;

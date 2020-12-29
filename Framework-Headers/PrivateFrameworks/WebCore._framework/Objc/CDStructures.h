@@ -288,6 +288,15 @@ struct CATransform3D {
     double _field16;
 };
 
+struct CGAffineTransform {
+    double _field1;
+    double _field2;
+    double _field3;
+    double _field4;
+    double _field5;
+    double _field6;
+};
+
 struct CGPoint {
     double x;
     double y;
@@ -1241,8 +1250,6 @@ struct GenericTaskQueue<WebCore::Timer> {
     BOOL m_isClosed;
 };
 
-struct GraphicsContextGLOpenGL;
-
 struct HTMLVideoElement;
 
 struct HTTPHeaderMap {
@@ -1479,8 +1486,8 @@ struct IntRect {
 };
 
 struct IntSize {
-    int m_width;
-    int m_height;
+    int _field1;
+    int _field2;
 };
 
 struct InvalidationCallback;
@@ -1648,6 +1655,10 @@ struct MediaRecorderPrivateWriter {
     struct Deque<WTF::RetainPtr<opaqueCMSampleBuffer *>, 0> _field22;
     BOOL _field23;
     BOOL _field24;
+    BOOL _field25;
+    struct Optional<CGAffineTransform> _field26;
+    CDStruct_198678f7 _field27;
+    CDStruct_198678f7 _field28;
 };
 
 struct MediaSample;
@@ -1682,10 +1693,6 @@ struct MutedStateObserver;
 
 struct NakedPtr<WebCore::Frame> {
     struct Frame *_field1;
-};
-
-struct NakedPtr<WebCore::GraphicsContextGLOpenGL> {
-    struct GraphicsContextGLOpenGL *m_ptr;
 };
 
 struct NakedPtr<WebCore::HTMLVideoElement> {
@@ -1738,6 +1745,11 @@ struct ObjectIdentifier<WebCore::ElementIdentifierType> {
 
 struct ObjectIdentifier<WebCore::PageIdentifierType> {
     unsigned long long _field1;
+};
+
+struct Optional<CGAffineTransform> {
+    BOOL _field1;
+    union constexpr_storage_t<CGAffineTransform> _field2;
 };
 
 struct Optional<WTF::HashSet<WTF::RefPtr<WTF::SchedulePair, WTF::DumbPtrTraits<WTF::SchedulePair>>, WTF::SchedulePairHash, WTF::HashTraits<WTF::RefPtr<WTF::SchedulePair, WTF::DumbPtrTraits<WTF::SchedulePair>>>>> {
@@ -3011,6 +3023,11 @@ struct WeakPtrImpl<WTF::EmptyCounter>;
 
 struct WebCoreDecompressionSession;
 
+struct WebGLLayerBuffer {
+    struct unique_ptr<WebCore::IOSurface, std::__1::default_delete<WebCore::IOSurface>> surface;
+    void *handle;
+};
+
 struct WorkQueue;
 
 struct _NSRange {
@@ -3275,10 +3292,6 @@ typedef struct NakedPtr<WebCore::Frame> {
     struct Frame *_field1;
 } NakedPtr_adf45b6b;
 
-typedef struct NakedPtr<WebCore::GraphicsContextGLOpenGL> {
-    struct GraphicsContextGLOpenGL *m_ptr;
-} NakedPtr_06b7f1a7;
-
 typedef struct NakedPtr<WebCore::HTMLVideoElement> {
     struct HTMLVideoElement *_field1;
 } NakedPtr_311734dd;
@@ -3322,6 +3335,11 @@ union EncodedValueDescriptor {
 union ValueUnion {
     int _field1;
     double _field2;
+};
+
+union constexpr_storage_t<CGAffineTransform> {
+    unsigned char _field1;
+    struct CGAffineTransform _field2;
 };
 
 union constexpr_storage_t<WTF::ObjectIdentifier<WebCore::PageIdentifierType>> {

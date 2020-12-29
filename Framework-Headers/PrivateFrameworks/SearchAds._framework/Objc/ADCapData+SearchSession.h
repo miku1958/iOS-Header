@@ -8,7 +8,7 @@
 
 @interface ADCapData (SearchSession)
 - (void)cleanDownloadArray;
-- (id)frequencyCapDataParameter;
-- (id)toroClickCountDataParameter;
+- (id)clickCountByLine;
+- (id)impressionCountByLine;
 @end
 

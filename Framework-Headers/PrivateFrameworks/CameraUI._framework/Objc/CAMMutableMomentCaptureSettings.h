@@ -18,6 +18,7 @@
 @property (nonatomic) long long hdrMode; // @dynamic hdrMode;
 @property (nonatomic) long long lowLightMode; // @dynamic lowLightMode;
 @property (copy, nonatomic) NSString *persistenceUUID; // @dynamic persistenceUUID;
+@property (nonatomic) long long photoEncodingBehavior; // @dynamic photoEncodingBehavior;
 @property (nonatomic) long long photoQualityPrioritization; // @dynamic photoQualityPrioritization;
 @property (nonatomic) BOOL shouldDisableCameraSwitchingDuringVideoRecording; // @dynamic shouldDisableCameraSwitchingDuringVideoRecording;
 @property (nonatomic) unsigned long long userInitiationTime; // @dynamic userInitiationTime;

@@ -10,7 +10,6 @@
 
 @class NSString, UIImage, UIView, VUILayeredImageProxy, _UIStackedImageContainerLayer;
 
-__attribute__((visibility("hidden")))
 @interface VUILayeredImageContainerView : _UIStackedImageContainerView <VUIAuxiliaryViewSelecting>
 {
     VUILayeredImageProxy *_layeredImageProxy;

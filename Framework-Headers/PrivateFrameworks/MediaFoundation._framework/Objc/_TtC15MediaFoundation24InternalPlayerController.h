@@ -11,15 +11,16 @@
 @interface _TtC15MediaFoundation24InternalPlayerController : _TtCs12_SwiftObject
 {
     MISSING_TYPE *delegate;
-    MISSING_TYPE *currentRate;
     MISSING_TYPE *targetRate;
     MISSING_TYPE *targetStartTime;
-    MISSING_TYPE *currentItem;
     MISSING_TYPE *player;
     MISSING_TYPE *reporter;
     MISSING_TYPE *queue;
     MISSING_TYPE *scanningSubscription;
     MISSING_TYPE *lastFullyDownloadedPlayerItem;
+    MISSING_TYPE *reportedResumePlaybackTime;
+    MISSING_TYPE *preSetQueueItem;
+    MISSING_TYPE *pendingSeek;
 }
 
 @property (nonatomic, readonly) NSDictionary *stateDictionary;

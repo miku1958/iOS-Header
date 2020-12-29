@@ -40,6 +40,7 @@
 - (id)appIdentifier;
 - (id)disabledPlatformsForUserActivityWithType:(id)arg1;
 - (void)generateShortcutRepresentation:(CDUnknownBlockType)arg1;
+- (void)generateStandaloneShortcutRepresentation:(CDUnknownBlockType)arg1;
 - (id)initWithIdentifier:(id)arg1 definition:(id)arg2 serializedParameters:(id)arg3;
 - (id)localizedName;
 - (id)localizedSubtitle;

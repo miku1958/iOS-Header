@@ -30,6 +30,7 @@
 
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (id)areasForLocation:(id)arg1;
 - (id)autoFavoriteTagIDsForLocation:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)encodeWithCoder:(id)arg1;

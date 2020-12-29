@@ -23,9 +23,10 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
+@property (readonly, nonatomic) unsigned long long detectionWindowMinutes;
 @property (readonly, weak, nonatomic) HDSPEnvironment *environment; // @synthesize environment=_environment;
 @property (readonly) unsigned long long hash;
-@property BOOL isDetecting; // @synthesize isDetecting=_isDetecting;
+@property (readonly, nonatomic) BOOL isDetecting; // @synthesize isDetecting=_isDetecting;
 @property (readonly) Class superclass;
 @property (weak, nonatomic) id<HDSPWakeDetectorDelegate> wakeDetectorDelegate; // @synthesize wakeDetectorDelegate=_wakeDetectorDelegate;
 

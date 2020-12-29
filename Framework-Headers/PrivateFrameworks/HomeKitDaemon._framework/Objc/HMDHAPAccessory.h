@@ -15,7 +15,7 @@
 #import <HomeKitDaemon/HMDTimeInformationMonitorDelegate-Protocol.h>
 #import <HomeKitDaemon/HMFTimerDelegate-Protocol.h>
 
-@class HMCameraUserNotificationSettings, HMDAccessoryAdvertisement, HMDAccessoryDiagnosticsManager, HMDAccessorySymptomHandler, HMDAnalyticsHAPServiceData, HMDCameraProfileSettingsManager, HMDCharacteristic, HMDDataStreamController, HMDDoorbellChimeController, HMDMediaProfile, HMDNetworkRouterController, HMDNetworkRouterProfile, HMDNetworkRouterSatelliteProfile, HMDPendingCharacteristic, HMDService, HMDTargetControllerManager, HMDWiFiManagementController, HMFConnectivityInfo, HMFPairingIdentity, HMFTimer, NSArray, NSData, NSDate, NSMutableArray, NSNumber, NSSet, NSString;
+@class HMCameraUserNotificationSettings, HMDAccessoryAdvertisement, HMDAccessoryDiagnosticsManager, HMDAccessoryFirmwareUpdateProfile, HMDAccessorySymptomHandler, HMDAnalyticsHAPServiceData, HMDCameraProfileSettingsManager, HMDCharacteristic, HMDDataStreamController, HMDDoorbellChimeController, HMDMediaProfile, HMDNetworkRouterController, HMDNetworkRouterProfile, HMDNetworkRouterSatelliteProfile, HMDPendingCharacteristic, HMDService, HMDTargetControllerManager, HMDWiFiManagementController, HMFConnectivityInfo, HMFPairingIdentity, HMFTimer, NSArray, NSData, NSDate, NSMutableArray, NSNumber, NSSet, NSString;
 @protocol HMDDataStreamSocketController;
 
 @interface HMDHAPAccessory : HMDAccessory <HMDAccessoryMinimumUserPrivilegeCapable, HMDServiceOwner, HAPRelayAccessoryDelegate, HMDTimeInformationMonitorDelegate, HMFTimerDelegate, HAPAccessoryServerNotification, HMDAccessoryIdentify, HMDAccessoryUserManagement>
@@ -58,6 +58,7 @@
     NSNumber *_hasOnboardedForNaturalLighting;
     HMCameraUserNotificationSettings *_cameraProfileNotificationSettings;
     NSSet *_initialServiceTypeUUIDs;
+    HMDAccessoryFirmwareUpdateProfile *_firmwareUpdateProfile;
     HMDAccessoryAdvertisement *_accessoryAdvertisement;
     HMDDoorbellChimeController *_doorbellChimeController;
     NSNumber *_internalThreadCapabilities;
@@ -107,6 +108,7 @@
 @property (strong, nonatomic) HMDAccessoryDiagnosticsManager *diagnosticsManager; // @synthesize diagnosticsManager=_diagnosticsManager;
 @property (strong, nonatomic) NSMutableArray *discoveredServices; // @synthesize discoveredServices=_discoveredServices;
 @property (strong, nonatomic) HMDDoorbellChimeController *doorbellChimeController; // @synthesize doorbellChimeController=_doorbellChimeController;
+@property (strong, nonatomic) HMDAccessoryFirmwareUpdateProfile *firmwareUpdateProfile; // @synthesize firmwareUpdateProfile=_firmwareUpdateProfile;
 @property (readonly, copy, nonatomic) NSNumber *hapInstanceId;
 @property (readonly, copy, nonatomic) NSArray *hapServicesListForAnalytics;
 @property (nonatomic) BOOL hardwareSupport; // @synthesize hardwareSupport=_hardwareSupport;
@@ -489,6 +491,7 @@
 - (BOOL)supportsDiagnosticsTransfer;
 - (BOOL)supportsMinimumUserPrivilege;
 - (BOOL)supportsNetworkProtection;
+- (BOOL)supportsSoftwareUpdate;
 - (BOOL)supportsTargetController;
 - (BOOL)supportsWiFiReconfiguration;
 - (id)targetControllerButtonConfiguration;

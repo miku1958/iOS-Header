@@ -36,6 +36,7 @@
 @property (readonly, nonatomic) double externalDeviceSleepAssertionOnClientConnectDuration;
 @property (readonly, nonatomic) long long externalDeviceSocketQOSLevel;
 @property (readonly, nonatomic) double externalDeviceTimeoutDuration;
+@property (readonly, nonatomic) BOOL forceFadeForEveryHandoff;
 @property (readonly, nonatomic) BOOL hasExternalDeviceSocketQOSLevelSet;
 @property (readonly, nonatomic) NSArray *jsonClientUIDs;
 @property (strong, nonatomic) NSString *lastBootUUID;
@@ -68,6 +69,7 @@
 @property (readonly, nonatomic) BOOL supportNewMigrationBehaviorForProximity;
 @property (readonly, nonatomic) BOOL supportProactiveSuggestion;
 @property (readonly, nonatomic) BOOL supportProximityMigration;
+@property (readonly, nonatomic) BOOL supportProximityMigrationV2;
 @property (readonly, nonatomic) BOOL takelockScreenAssertion;
 @property (readonly, nonatomic) double transactionWaitDurationOnNetworkSend;
 @property (readonly, nonatomic) double transactionWaitDurationOnOutOfMemory;

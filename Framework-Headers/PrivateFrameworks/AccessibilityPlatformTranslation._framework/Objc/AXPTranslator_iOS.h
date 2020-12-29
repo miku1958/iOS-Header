@@ -40,6 +40,7 @@
 - (id)_processAuditIssuesAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processAuditIssuesResult:(id)arg1;
 - (id)_processBoundsForRangeAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
+- (id)_processCellWithIndexPathAttributeRequest:(id)arg1 parameter:(id)arg2 error:(unsigned long long *)arg3;
 - (id)_processChildrenAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processClassNameAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
 - (id)_processCustomActionsAttributeRequest:(id)arg1 error:(unsigned long long *)arg2;
@@ -100,6 +101,7 @@
 - (void)processPlatformNotification:(unsigned long long)arg1 data:(id)arg2 associatedObject:(id)arg3;
 - (id)processSetAttribute:(id)arg1;
 - (id)processSupportedActions:(id)arg1;
+- (id)processSupportsAttributes:(id)arg1;
 - (id)remoteTranslationDataWithTranslation:(id)arg1 pid:(int)arg2;
 - (void)setAccessibilityEnabled:(BOOL)arg1;
 - (id)translationCache;

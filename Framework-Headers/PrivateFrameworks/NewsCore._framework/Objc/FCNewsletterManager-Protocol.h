@@ -6,7 +6,7 @@
 
 #import <NewsCore/NSObject-Protocol.h>
 
-@class NFPromise, NSString, NTPBVersionedPersonalizationVector;
+@class NFPromise, NSArray, NSString, NTPBVersionedPersonalizationVector;
 @protocol FCNewsletterSubscriptionObserver;
 
 @protocol FCNewsletterManager <NSObject>
@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) BOOL canSubscribe;
 @property (readonly, nonatomic) BOOL canUnsubscribe;
 @property (readonly, nonatomic) BOOL enabled;
+@property (readonly, nonatomic) long long includeOptions;
 @property (readonly, nonatomic) BOOL isSubscribed;
 @property (readonly, nonatomic) long long subscription;
 
@@ -28,9 +29,10 @@
 - (void)submitPersonalizationVector:(NTPBVersionedPersonalizationVector *)arg1;
 - (void)subscribe;
 - (void)subscribeTo:(long long)arg1;
+- (void)subscribeTo:(long long)arg1 includeOptions:(long long)arg2;
 - (long long)subscriptionStatusForNewsletter:(long long)arg1;
 - (void)unsubscribe;
-- (void)updateCacheWithNewsletterString:(NSString *)arg1;
+- (void)updateCacheWithNewsletterString:(NSString *)arg1 includeArray:(NSArray *)arg2;
 - (NFPromise *)updateSubscription;
 @end
 

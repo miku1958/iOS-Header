@@ -6,12 +6,15 @@
 
 #import <Intents/INIntentResponse.h>
 
+@class NSString;
+
 @interface PlayLiveServiceIntentResponse : INIntentResponse
 {
     long long _code;
 }
 
 @property (nonatomic) long long code; // @synthesize code=_code;
+@property (copy, nonatomic) NSString *punchoutUrl; // @dynamic punchoutUrl;
 
 - (id)initWithCode:(long long)arg1 userActivity:(id)arg2;
 

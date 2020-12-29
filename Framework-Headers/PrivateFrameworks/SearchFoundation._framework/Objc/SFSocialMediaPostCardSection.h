@@ -10,7 +10,7 @@
 #import <SearchFoundation/NSSecureCoding-Protocol.h>
 #import <SearchFoundation/SFSocialMediaPostCardSection-Protocol.h>
 
-@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFCard, SFColor, SFImage, SFRichText, SFUserReportRequest;
+@class NSArray, NSData, NSDictionary, NSNumber, NSString, SFCard, SFColor, SFCommand, SFImage, SFRichText, SFUserReportRequest;
 
 @interface SFSocialMediaPostCardSection : SFCardSection <SFSocialMediaPostCardSection, NSSecureCoding, NSCopying>
 {
@@ -45,6 +45,7 @@
 @property (strong, nonatomic) SFColor *backgroundColor; // @synthesize backgroundColor=_backgroundColor;
 @property (nonatomic) BOOL canBeHidden; // @synthesize canBeHidden=_canBeHidden;
 @property (copy, nonatomic) NSString *cardSectionId;
+@property (strong, nonatomic) SFCommand *command;
 @property (copy, nonatomic) NSArray *commands;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
@@ -63,6 +64,7 @@
 @property (copy, nonatomic) NSArray *parameterKeyPaths;
 @property (strong, nonatomic) SFImage *picture; // @synthesize picture=_picture;
 @property (strong, nonatomic) SFRichText *post; // @synthesize post=_post;
+@property (strong, nonatomic) SFCommand *previewCommand;
 @property (strong, nonatomic) SFImage *profilePicture; // @synthesize profilePicture=_profilePicture;
 @property (copy, nonatomic) NSArray *punchoutOptions; // @synthesize punchoutOptions=_punchoutOptions;
 @property (copy, nonatomic) NSString *punchoutPickerDismissText; // @synthesize punchoutPickerDismissText=_punchoutPickerDismissText;

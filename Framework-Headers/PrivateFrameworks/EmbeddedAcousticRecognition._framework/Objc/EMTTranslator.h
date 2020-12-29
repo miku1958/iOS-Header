@@ -11,7 +11,7 @@
 @interface EMTTranslator : NSObject
 {
     struct shared_ptr<quasar::TranslatorFactory> _translatorFactory;
-    struct SystemConfig _config;
+    struct vector<quasar::SystemConfig, std::__1::allocator<quasar::SystemConfig>> _configs;
     NSObject<OS_dispatch_queue> *_translationQueue;
     NSObject<OS_dispatch_queue> *_callbackQueue;
 }
@@ -25,6 +25,7 @@
 - (void)_translate:(vector_9492931a)arg1 from:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;
 - (id)initWithModelURL:(id)arg1;
 - (id)initWithModelURL:(id)arg1 task:(id)arg2;
+- (id)initWithModelURLs:(id)arg1 task:(id)arg2;
 - (void)loadTranslatorFrom:(id)arg1 to:(id)arg2;
 - (void)translateSpeech:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)translateSpeech:(id)arg1 from:(id)arg2 to:(id)arg3 completion:(CDUnknownBlockType)arg4;

@@ -6,7 +6,7 @@
 
 #import <SpringBoard/NSObject-Protocol.h>
 
-@class SBHHomeScreenUsageMonitor, SBWidgetIcon;
+@class NSMapTable, NSURL, SBHHomeScreenUsageMonitor, SBWidgetIcon;
 @protocol SBLeafIconDataSource;
 
 @protocol SBHHomeScreenUsageMonitorObserver <NSObject>
@@ -16,8 +16,9 @@
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteDataSourceDidAppear:(id<SBLeafIconDataSource>)arg2 forWidgetIcon:(SBWidgetIcon *)arg3;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteDataSourceDidDisappear:(id<SBLeafIconDataSource>)arg2 forWidgetIcon:(SBWidgetIcon *)arg3;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteRootControllerWillAppearWithPageIndex:(unsigned long long)arg2;
+- (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteTodayViewScrolledWithIconVisibility:(NSMapTable *)arg2;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteUserDislikedWidgetIconStackSuggestion:(SBWidgetIcon *)arg2;
-- (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteUserTappedWidgetIcon:(SBWidgetIcon *)arg2;
+- (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteUserTappedWidgetIcon:(SBWidgetIcon *)arg2 withURL:(NSURL *)arg3;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteWidgetIconAdded:(SBWidgetIcon *)arg2;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteWidgetIconRemoved:(SBWidgetIcon *)arg2;
 - (void)homeScreenUsageAggregator:(SBHHomeScreenUsageMonitor *)arg1 didNoteWidgetIconStackChangedActiveWidget:(SBWidgetIcon *)arg2;

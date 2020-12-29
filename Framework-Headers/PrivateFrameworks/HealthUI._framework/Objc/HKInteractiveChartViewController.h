@@ -45,6 +45,7 @@
     unsigned long long _options;
     HKValueRange *_fixedRange;
     double _lastDateValueRangeUpdate;
+    BOOL _disableCurrentValueViewForInitialLollipop;
     HKHealthStore *_healthStore;
     HKUnitPreferenceController *_unitPreferenceController;
     HKDateCache *_dateCache;
@@ -83,6 +84,7 @@
 @property (nonatomic) long long delayedAutoscaleActualCount; // @synthesize delayedAutoscaleActualCount=_delayedAutoscaleActualCount;
 @property (nonatomic) long long delayedAutoscaleRequestCount; // @synthesize delayedAutoscaleRequestCount=_delayedAutoscaleRequestCount;
 @property (readonly, copy) NSString *description;
+@property (nonatomic) BOOL disableCurrentValueViewForInitialLollipop; // @synthesize disableCurrentValueViewForInitialLollipop=_disableCurrentValueViewForInitialLollipop;
 @property (readonly, nonatomic) HKDisplayCategoryController *displayCategoryController; // @synthesize displayCategoryController=_displayCategoryController;
 @property (readonly, nonatomic) HKDisplayTypeController *displayTypeController; // @synthesize displayTypeController=_displayTypeController;
 @property (strong, nonatomic) NSArray *displayTypeStack; // @synthesize displayTypeStack=_displayTypeStack;
@@ -142,6 +144,7 @@
 - (double)_effectiveHorizontalMargin;
 - (id)_formatterForSeries:(id)arg1;
 - (id)_graphViewAxisAndVisibleDateRangeForTimeScope:(long long)arg1 fixedRange:(id)arg2;
+- (void)_handleInitialLollipopSelection;
 - (void)_handleVisibleRangeChange;
 - (BOOL)_headerLineEnabled;
 - (void)_hideTimeDateControls;
@@ -216,6 +219,7 @@
 - (void)graphViewDidBeginSelection:(id)arg1;
 - (void)graphViewDidEndSelection:(id)arg1;
 - (void)graphViewDidTapYAxis:(id)arg1;
+- (void)graphViewExternalSelectionEnd:(id)arg1;
 - (void)graphViewSizeChanged:(id)arg1;
 - (BOOL)infographicSupportedForDisplayType:(id)arg1 healthStore:(id)arg2;
 - (id)infographicViewControllerForDisplayType:(id)arg1 healthStore:(id)arg2;

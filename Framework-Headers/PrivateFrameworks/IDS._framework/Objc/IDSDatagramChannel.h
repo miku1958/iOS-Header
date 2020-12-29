@@ -18,24 +18,24 @@
 
 + (id)realTimeContext;
 - (void).cxx_destruct;
-- (void)_buildPacketBufferMetaData:(CDStruct_3310d7af *)arg1;
+- (void)_buildPacketBufferMetaData:(CDStruct_5fa36015 *)arg1;
 - (void)_logReceivingStats:(unsigned long long)arg1;
 - (void)_logSendingStats:(unsigned long long)arg1;
 - (void)_reportFirstPacketTimeForMKI:(id)arg1;
-- (CDStruct_3310d7af *)_setWiFiAssist:(BOOL)arg1;
-- (void)_writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_6bf83f29 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (CDStruct_5fa36015 *)_setWiFiAssist:(BOOL)arg1;
+- (void)_writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_4aae7d13)arg3 options:(CDStruct_6bf83f29 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
 - (void)addNewIDSDataChannelLinkWithAttributes:(char *)arg1 linkAttributesLength:(unsigned short)arg2;
 - (id)cachedMetadata;
 - (void)close;
 - (void)dealloc;
 - (id)description;
 - (void)flushLinkProbingStatusWithOptions:(id)arg1;
-- (void)generateMetadataWithDatagramInfo:(CDStruct_54fea20c)arg1 options:(CDStruct_6bf83f29 *)arg2 currentDatagramCount:(unsigned char)arg3 totalDatagramCount:(unsigned char)arg4 byteBuffer:(CDStruct_457e09f6 *)arg5;
+- (void)generateMetadataWithDatagramInfo:(CDStruct_4aae7d13)arg1 options:(CDStruct_6bf83f29 *)arg2 currentDatagramCount:(unsigned char)arg3 totalDatagramCount:(unsigned char)arg4 byteBuffer:(CDStruct_457e09f6 *)arg5;
 - (id)initWithDestination:(id)arg1;
 - (id)initWithSocketDescriptor:(int)arg1;
 - (void)invalidate;
 - (void)osChannelInfoLog;
-- (void)processMetadataForDatagram:(char *)arg1 size:(unsigned long long)arg2 datagramInfo:(CDStruct_54fea20c *)arg3 options:(CDStruct_6bf83f29 *)arg4;
+- (void)processMetadataForDatagram:(char *)arg1 size:(unsigned long long)arg2 datagramInfo:(CDStruct_4aae7d13 *)arg3 options:(CDStruct_6bf83f29 *)arg4;
 - (void)queryStatusWithOptions:(id)arg1;
 - (void)readDatagramWithCompletionHandler:(CDUnknownBlockType)arg1;
 - (void)readDatagramsWithCompletionHandler:(CDUnknownBlockType)arg1;
@@ -55,12 +55,13 @@
 - (void)setWiFiAssist:(BOOL)arg1;
 - (void)start;
 - (void)startActiveProbingWithOptions:(id)arg1;
+- (void)startMKMRecoveryForParticipantIDs:(id)arg1;
 - (void)stopActiveProbingWithOptions:(id)arg1;
 - (int)underlyingFileDescriptor;
-- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_54fea20c)arg3 options:(CDStruct_6bf83f29 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
-- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 flags:(CDStruct_54fea20c)arg3 completionHandler:(CDUnknownBlockType)arg4;
-- (void)writeDatagrams:(const void **)arg1 datagramSizes:(unsigned int *)arg2 datagramInfo:(CDStruct_54fea20c)arg3 datagramCount:(int)arg4 options:(CDStruct_6bf83f29 *)arg5 completionHandler:(CDUnknownBlockType)arg6;
-- (void)writeDatagrams:(const void **)arg1 datagramsSize:(unsigned int *)arg2 datagramsInfo:(CDStruct_54fea20c *)arg3 datagramsCount:(int)arg4 options:(struct **)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 datagramInfo:(CDStruct_4aae7d13)arg3 options:(CDStruct_6bf83f29 *)arg4 completionHandler:(CDUnknownBlockType)arg5;
+- (void)writeDatagram:(const void *)arg1 datagramSize:(unsigned int)arg2 flags:(CDStruct_4aae7d13)arg3 completionHandler:(CDUnknownBlockType)arg4;
+- (void)writeDatagrams:(const void **)arg1 datagramSizes:(unsigned int *)arg2 datagramInfo:(CDStruct_4aae7d13)arg3 datagramCount:(int)arg4 options:(CDStruct_6bf83f29 *)arg5 completionHandler:(CDUnknownBlockType)arg6;
+- (void)writeDatagrams:(const void **)arg1 datagramsSize:(unsigned int *)arg2 datagramsInfo:(CDStruct_4aae7d13 *)arg3 datagramsCount:(int)arg4 options:(struct **)arg5 completionHandler:(CDUnknownBlockType)arg6;
 
 @end
 

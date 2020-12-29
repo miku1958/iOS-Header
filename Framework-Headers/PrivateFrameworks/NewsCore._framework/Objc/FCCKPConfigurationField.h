@@ -10,6 +10,7 @@
 
 @class FCCKPConfigurationFieldValue, NSString;
 
+__attribute__((visibility("hidden")))
 @interface FCCKPConfigurationField : PBCodable <NSCopying>
 {
     NSString *_name;
@@ -21,7 +22,6 @@
 @property (strong, nonatomic) NSString *name; // @synthesize name=_name;
 @property (strong, nonatomic) FCCKPConfigurationFieldValue *value; // @synthesize value=_value;
 
-- (void)copyTo:(id)arg1;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (void)dealloc;
 - (id)description;

@@ -28,6 +28,7 @@ __attribute__((visibility("hidden")))
 - (id)_actionDescriptionForURL:(id)arg1 application:(id)arg2 shouldShowHostNameForSafariURL:(BOOL)arg3;
 - (id)_actionDescriptionWithoutTargetApplicationForURL:(id)arg1;
 - (BOOL)_isCodeFromQRScanner;
+- (BOOL)_isVisualCode;
 - (void)_resolveAppClipForURL:(id)arg1 completion:(CDUnknownBlockType)arg2;
 - (void)_resolveTargetApplicationForURL:(id)arg1 completionHandler:(CDUnknownBlockType)arg2;
 - (BOOL)_shouldBlockHandlingURL:(id)arg1;

@@ -11,6 +11,7 @@
 #import <SpringBoard/SBFIdleTimerBehaviorProviding-Protocol.h>
 #import <SpringBoard/SBHLegibility-Protocol.h>
 #import <SpringBoard/SBHOccludable-Protocol.h>
+#import <SpringBoard/SBHTodayViewController-Protocol.h>
 #import <SpringBoard/SBIconListLayoutObserver-Protocol.h>
 #import <SpringBoard/SBIconListModelObserver-Protocol.h>
 #import <SpringBoard/SBIconListViewDragDelegate-Protocol.h>
@@ -28,7 +29,7 @@
 @class MTMaterialView, NSArray, NSHashTable, NSLayoutConstraint, NSMapTable, NSMutableArray, NSMutableDictionary, NSMutableSet, NSSet, NSString, SBFTouchPassThroughView, SBHDateHeaderViewController, SBHIconManager, SBHWidgetSettings, SBIconListView, SBIconView, SBRootFolder, SBTodayIconListLayoutDelegate, SBTodayKeepOnHomeScreenPlatterView, SBTodayViewSpotlightPresenter, SBViewControllerTransitionContext, UILabel, UIScrollView, UIStackView, UITapGestureRecognizer, UIView, WGMajorListViewController, WGWidgetListHeaderView, _UILegibilitySettings;
 @protocol SBFOverlayDismissalDelegate, SBIconListLayoutProvider, SBIconViewProviding, SBTodayViewControllerDelegate;
 
-@interface SBTodayViewController : UIViewController <SBUICoronaAnimationControllerParticipant, SBIconListLayoutObserver, SBIconViewObserver, UIScrollViewDelegate, SBIconListModelObserver, SBIconListViewDragDelegate, WGMajorListViewControllerDelegate, WGWidgetIconAnimationExtraViewsProviding, PTSettingsKeyObserver, SBTodayViewSpotlightPresenterDelegate, CSExternalBehaviorProviding, UIGestureRecognizerDelegate, SBUISpotlightInitiating, SBHLegibility, SBIconViewQuerying, SBIconLocationPresenting, SBFIdleTimerBehaviorProviding, SBHOccludable>
+@interface SBTodayViewController : UIViewController <SBUICoronaAnimationControllerParticipant, SBIconListLayoutObserver, SBIconViewObserver, UIScrollViewDelegate, SBIconListModelObserver, SBIconListViewDragDelegate, WGMajorListViewControllerDelegate, WGWidgetIconAnimationExtraViewsProviding, PTSettingsKeyObserver, SBTodayViewSpotlightPresenterDelegate, CSExternalBehaviorProviding, UIGestureRecognizerDelegate, SBUISpotlightInitiating, SBHLegibility, SBIconViewQuerying, SBIconLocationPresenting, SBFIdleTimerBehaviorProviding, SBHOccludable, SBHTodayViewController>
 {
     SBIconView *_cachedHiddenIconView;
     BOOL _occluded;
@@ -81,6 +82,7 @@
     NSHashTable *_viewControllerAppearStateOverrideAssertions;
     UITapGestureRecognizer *_dismissTapGestureRecognizer;
     NSMapTable *_onScreenIconIndexRangeByIconListView;
+    NSHashTable *_observers;
 }
 
 @property (strong, nonatomic) NSMutableDictionary *cancelTouchesAssertionsByLegacyWidgetID; // @synthesize cancelTouchesAssertionsByLegacyWidgetID=_cancelTouchesAssertionsByLegacyWidgetID;
@@ -126,6 +128,7 @@
 @property (strong, nonatomic) SBIconListView *listView; // @synthesize listView=_listView;
 @property (nonatomic) long long location; // @synthesize location=_location;
 @property (readonly, nonatomic) long long notificationBehavior;
+@property (strong, nonatomic) NSHashTable *observers; // @synthesize observers=_observers;
 @property (nonatomic, getter=isOccluded) BOOL occluded; // @synthesize occluded=_occluded;
 @property (strong, nonatomic) NSMapTable *onScreenIconIndexRangeByIconListView; // @synthesize onScreenIconIndexRangeByIconListView=_onScreenIconIndexRangeByIconListView;
 @property (readonly, nonatomic) long long participantState;
@@ -222,6 +225,7 @@
 - (void)_updateVisiblySettledForIconViews;
 - (void)_updateVisiblySettledForIconViewsInListView:(id)arg1;
 - (id)_widgetIconViewAtLocation:(struct CGPoint)arg1;
+- (void)addObserver:(id)arg1;
 - (id)beginOverridingViewControllerAppearanceStateToRemainDisappearedForReason:(id)arg1;
 - (void)cleanupAfterSpotlightDismissal;
 - (void)conformsToCSBehaviorProviding;
@@ -275,6 +279,7 @@
 - (void)noteIconViewWillZoomDown:(id)arg1;
 - (id)parentViewControllerForSpotlightPresenter:(id)arg1;
 - (void)removeFromParentViewController;
+- (void)removeObserver:(id)arg1;
 - (void)resetForSpotlightDismissalAnimated:(BOOL)arg1;
 - (void)scrollIconToVisible:(id)arg1 atPosition:(long long)arg2 animated:(BOOL)arg3 completion:(CDUnknownBlockType)arg4;
 - (void)scrollViewDidEndDecelerating:(id)arg1;

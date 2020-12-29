@@ -8,12 +8,13 @@
 
 #import <WorkflowEditor/UISearchBarDelegate-Protocol.h>
 #import <WorkflowEditor/UISearchResultsUpdating-Protocol.h>
+#import <WorkflowEditor/UITableViewDelegatePrivate-Protocol.h>
 #import <WorkflowEditor/WFParameterEventObserver-Protocol.h>
 
 @class INObjectCollection, NSMutableDictionary, NSSet, NSString, UIBarButtonItem, UILabel, UISearchBar, UISearchController, UIView, WFDebouncer, WFParameter, WFParameterValuePickerDataSource, WFVariableSubstitutableParameterState;
 @protocol WFParameterValuePickable, WFParameterValuePickerViewControllerDelegate, WFVariableProvider, WFVariableUIDelegate;
 
-@interface WFParameterValuePickerViewController : UITableViewController <UISearchResultsUpdating, UISearchBarDelegate, WFParameterEventObserver>
+@interface WFParameterValuePickerViewController : UITableViewController <UISearchResultsUpdating, UISearchBarDelegate, UITableViewDelegatePrivate, WFParameterEventObserver>
 {
     BOOL _allowsMultipleSelection;
     UIBarButtonItem *_doneBarButtonItem;
@@ -77,6 +78,7 @@
 - (void)cancelPickingValue;
 - (void)configureCell:(id)arg1 forState:(id)arg2;
 - (void)configureCell:(id)arg1 forVariable:(id)arg2;
+- (BOOL)currentSelectedValueIsVariable:(id)arg1;
 - (BOOL)currentSelectedValuesContainsState:(id)arg1;
 - (void)displayError:(id)arg1;
 - (void)displayNoOptionsAvailableMessageIfNeeded;
@@ -89,8 +91,12 @@
 - (void)reloadDisplayingValuesWithCollection:(id)arg1 searchTerm:(id)arg2 validateCurrentState:(BOOL)arg3 animatingDifferences:(BOOL)arg4;
 - (void)reloadNavigationBarButtonItems;
 - (void)requestRemovingItem;
+- (void)resetVisibleCellsSelection;
 - (void)searchBar:(id)arg1 textDidChange:(id)arg2;
+- (void)searchBarSearchButtonClicked:(id)arg1;
 - (void)tableView:(id)arg1 didSelectRowAtIndexPath:(id)arg2;
+- (BOOL)tableView:(id)arg1 shouldDrawBottomSeparatorForSection:(long long)arg2;
+- (BOOL)tableView:(id)arg1 shouldHaveFullLengthBottomSeparatorForSection:(long long)arg2;
 - (id)tableView:(id)arg1 willSelectRowAtIndexPath:(id)arg2;
 - (void)traitCollectionDidChange:(id)arg1;
 - (void)updateSearchResultsForSearchController:(id)arg1;

@@ -9,7 +9,7 @@
 #import <MediaControls/MRUMediaSuggestionsControllerObserver-Protocol.h>
 #import <MediaControls/UICollectionViewDelegate-Protocol.h>
 
-@class MRUMediaSuggestionsController, MRUMediaSuggestionsView, MRUVisualStylingProvider, NSDictionary, NSString, UICollectionViewDiffableDataSource;
+@class MRUMediaSuggestion, MRUMediaSuggestionsController, MRUMediaSuggestionsView, MRUVisualStylingProvider, NSDictionary, NSString, UICollectionViewDiffableDataSource;
 @protocol MRUMediaSuggestionsViewControllerDelegate;
 
 __attribute__((visibility("hidden")))
@@ -18,6 +18,7 @@ __attribute__((visibility("hidden")))
     BOOL _supportsHorizontalLayout;
     MRUMediaSuggestionsController *_suggestionsController;
     id<MRUMediaSuggestionsViewControllerDelegate> _delegate;
+    MRUMediaSuggestion *_nowPlayingMediaSuggestion;
     MRUVisualStylingProvider *_stylingProvider;
     long long _layout;
     NSString *_suggestionContext;
@@ -34,6 +35,7 @@ __attribute__((visibility("hidden")))
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
 @property (nonatomic) long long layout; // @synthesize layout=_layout;
+@property (strong, nonatomic) MRUMediaSuggestion *nowPlayingMediaSuggestion; // @synthesize nowPlayingMediaSuggestion=_nowPlayingMediaSuggestion;
 @property (strong, nonatomic) NSString *selectedIndentifier; // @synthesize selectedIndentifier=_selectedIndentifier;
 @property (strong, nonatomic) MRUVisualStylingProvider *stylingProvider; // @synthesize stylingProvider=_stylingProvider;
 @property (strong, nonatomic) NSString *suggestionContext; // @synthesize suggestionContext=_suggestionContext;

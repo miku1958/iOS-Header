@@ -42,6 +42,7 @@
 - (id)filterImageResources;
 - (id)imageResourceForIdentifier:(id)arg1;
 - (id)initWithDocument:(id)arg1 shareURL:(id)arg2;
+- (id)largestImageResourceForImageIdentifier:(id)arg1;
 - (id)mergedObjectsWithIdentifiers:(id)arg1 fromDictionary:(id)arg2 merger:(id)arg3;
 - (id)resourceForIdentifier:(id)arg1;
 

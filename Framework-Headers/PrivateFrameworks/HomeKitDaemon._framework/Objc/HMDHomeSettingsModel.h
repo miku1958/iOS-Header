@@ -13,6 +13,7 @@
 }
 
 @property (copy, nonatomic) NSNumber *automaticSoftwareUpdateEnabled; // @dynamic automaticSoftwareUpdateEnabled;
+@property (copy, nonatomic) NSNumber *automaticThirdPartyAccessorySoftwareUpdateEnabled; // @dynamic automaticThirdPartyAccessorySoftwareUpdateEnabled;
 
 + (id)defaultModelForHome:(id)arg1;
 + (id)modelIDForHome:(id)arg1;

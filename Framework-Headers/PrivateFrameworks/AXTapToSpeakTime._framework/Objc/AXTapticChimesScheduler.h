@@ -57,6 +57,7 @@
 - (BOOL)canScheduleTapticChimes;
 - (void)dealloc;
 - (id)nextChimeAssetForStartDate:(id)arg1 frequency:(long long)arg2 soundType:(long long)arg3 timeIntervalUntilChime:(double *)arg4;
+- (BOOL)processIsAllowedToInterfaceWithNanoMediaRemote;
 - (BOOL)processIsAllowedToScheduleChimes;
 
 @end

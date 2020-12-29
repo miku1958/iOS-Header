@@ -17,6 +17,7 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (id)_audioFormatForPlayer:(id)arg1;
+- (id)_audioInfoForPlayer:(id)arg1;
 - (id)_colorRangeForPlayer:(id)arg1;
 - (id)_connectionInfo;
 - (id)_createSessionForPlayer:(id)arg1;

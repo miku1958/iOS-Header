@@ -51,7 +51,6 @@
 @property (nonatomic, getter=areAllHIDDevicesConnected) BOOL allHIDDevicesConnected;
 @property (readonly, nonatomic, getter=isAttachedToDevice) BOOL attachedToDevice;
 @property (readonly, copy, nonatomic) GCDeviceBattery *battery;
-@property (readonly, nonatomic, getter=isBluetoothAndUSBMirrored) BOOL bluetoothAndUSBMirrored;
 @property (readonly, nonatomic, getter=isComponentBased) BOOL componentBased;
 @property (readonly, nonatomic) NSArray *components;
 @property (copy, nonatomic) NSArray *components; // @synthesize components=_components;
@@ -153,6 +152,7 @@
 - (id)initWithProfileClass:(Class)arg1 services:(id)arg2;
 - (id)initWithServiceRef:(struct __IOHIDServiceClient *)arg1;
 - (void)initializeHapticEngines;
+- (BOOL)isATVRemote;
 - (BOOL)isEqualToController:(id)arg1;
 - (BOOL)isProxyController;
 - (id)physicalInputProfileName;
@@ -165,7 +165,6 @@
 - (void)setIsProxyController:(BOOL)arg1;
 - (void)setService:(unsigned int)arg1;
 - (void)setVendorName:(id)arg1;
-- (BOOL)supportsMotionLite;
 
 @end
 

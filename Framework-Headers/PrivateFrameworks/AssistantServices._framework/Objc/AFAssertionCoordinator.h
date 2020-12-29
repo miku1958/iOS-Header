@@ -8,15 +8,17 @@
 
 #import <AssistantServices/AFInvalidating-Protocol.h>
 
-@class NSMutableDictionary, NSString;
+@class NSMutableDictionary, NSMutableSet, NSString;
 @protocol AFAssertionCoordinatorDelegate, OS_dispatch_queue;
 
 @interface AFAssertionCoordinator : NSObject <AFInvalidating>
 {
     NSObject<OS_dispatch_queue> *_queue;
-    _Atomic long long _numberOfPendingAndActiveRecords;
-    NSMutableDictionary *_recordsByUUID;
     id<AFAssertionCoordinatorDelegate> _delegate;
+    _Atomic long long _numberOfAssertions;
+    NSMutableDictionary *_assertionsByUUID;
+    _Atomic long long _numberOfActiveAssertions;
+    NSMutableSet *_activeAssertionUUIDs;
     NSString *_identifier;
 }
 
@@ -27,19 +29,23 @@
 @property (readonly) Class superclass;
 
 - (void).cxx_destruct;
-- (BOOL)_addRecord:(id)arg1 isFirstRecord:(BOOL *)arg2;
-- (void)_didAcquireAssertion:(id)arg1 isFirstAssertion:(BOOL)arg2;
-- (void)_didRelinquishAssertion:(id)arg1 isLastAssertion:(BOOL)arg2;
-- (id)_records;
-- (void)_removeAllRecords;
-- (id)_removeRecordWithUUID:(id)arg1 isLastRecord:(BOOL *)arg2;
+- (void)_activateAssertionWithUUID:(id)arg1;
+- (void)_addAssertion:(id)arg1;
+- (void)_deactivateAndRemoveAssertionWithUUID:(id)arg1 context:(id)arg2 error:(id)arg3 options:(unsigned long long)arg4;
+- (void)_invalidate;
 - (id)acquireRelinquishableAssertionWithContext:(id)arg1 relinquishmentHandler:(CDUnknownBlockType)arg2;
 - (void)barrier:(CDUnknownBlockType)arg1;
+- (void)dealloc;
 - (void)getActiveAssertionsWithCompletion:(CDUnknownBlockType)arg1;
+- (void)getPendingAndActiveAssertionsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)initWithIdentifier:(id)arg1 queue:(id)arg2 delegate:(id)arg3;
 - (void)invalidate;
+- (unsigned long long)numberOfActiveAssertions;
 - (unsigned long long)numberOfPendingAndActiveAssertions;
-- (void)relinquishAssertionWithUUID:(id)arg1 context:(id)arg2;
+- (void)relinquishAsertionsPassingTest:(CDUnknownBlockType)arg1 context:(id)arg2;
+- (void)relinquishAsertionsPassingTest:(CDUnknownBlockType)arg1 error:(id)arg2;
+- (void)relinquishAssertionWithUUID:(id)arg1 context:(id)arg2 options:(unsigned long long)arg3;
+- (void)relinquishAssertionWithUUID:(id)arg1 error:(id)arg2 options:(unsigned long long)arg3;
 
 @end
 

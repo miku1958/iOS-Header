@@ -7,40 +7,45 @@
 #import <CoverSheet/CSAccessoryViewController.h>
 
 #import <CoverSheet/BCBatteryDeviceObserving-Protocol.h>
-#import <CoverSheet/CSAccessorySleeveViewDelegate-Protocol.h>
 
-@class BCBatteryDeviceController, CSAccessorySleeveView, NSString, SBFLockScreenDateViewController;
+@class BCBatteryDeviceController, BrightnessSystemClient, CSAccessorySleeveView, NSString, SBFLockScreenDateViewController, _UILegibilitySettings;
 @protocol SBFDateProviding;
 
-@interface CSAccessorySleeveViewController : CSAccessoryViewController <BCBatteryDeviceObserving, CSAccessorySleeveViewDelegate>
+@interface CSAccessorySleeveViewController : CSAccessoryViewController <BCBatteryDeviceObserving>
 {
     BOOL _chargingAnimationVisible;
+    _UILegibilitySettings *_legibilitySettings;
     id<SBFDateProviding> _dateProvider;
     SBFLockScreenDateViewController *_dateViewController;
     SBFLockScreenDateViewController *_secodaryDateViewController;
     BCBatteryDeviceController *_batteryDeviceController;
     CSAccessorySleeveView *_sleeveView;
+    BrightnessSystemClient *_brightnessClient;
     struct CGRect _visibleBounds;
 }
 
 @property (strong, nonatomic) BCBatteryDeviceController *batteryDeviceController; // @synthesize batteryDeviceController=_batteryDeviceController;
+@property (strong, nonatomic) BrightnessSystemClient *brightnessClient; // @synthesize brightnessClient=_brightnessClient;
 @property (nonatomic) BOOL chargingAnimationVisible; // @synthesize chargingAnimationVisible=_chargingAnimationVisible;
 @property (strong, nonatomic) id<SBFDateProviding> dateProvider; // @synthesize dateProvider=_dateProvider;
 @property (strong, nonatomic) SBFLockScreenDateViewController *dateViewController; // @synthesize dateViewController=_dateViewController;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (readonly) unsigned long long hash;
+@property (strong, nonatomic) _UILegibilitySettings *legibilitySettings; // @synthesize legibilitySettings=_legibilitySettings;
 @property (strong, nonatomic) SBFLockScreenDateViewController *secodaryDateViewController; // @synthesize secodaryDateViewController=_secodaryDateViewController;
 @property (strong, nonatomic) CSAccessorySleeveView *sleeveView; // @synthesize sleeveView=_sleeveView;
 @property (readonly) Class superclass;
 @property (nonatomic) struct CGRect visibleBounds; // @synthesize visibleBounds=_visibleBounds;
 
 - (void).cxx_destruct;
+- (void)_removeOverrideFloor;
+- (void)_updateOverrideFloor;
 - (id)accessoryView;
 - (double)animationDurationBeforeDismissal;
 - (double)chargingAnimationDuration;
 - (void)connectedDevicesDidChange:(id)arg1;
-- (void)dismissButtonTapped:(id)arg1;
+- (BOOL)handleEvent:(id)arg1;
 - (BOOL)hasChargingAnimation;
 - (id)initWithAccessory:(id)arg1;
 - (BOOL)isStatic;

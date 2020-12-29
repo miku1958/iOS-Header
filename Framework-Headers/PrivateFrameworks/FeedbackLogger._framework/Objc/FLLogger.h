@@ -41,6 +41,9 @@
 - (void)report:(id)arg1 application:(id)arg2;
 - (void)report:(id)arg1 application:(id)arg2 onComplete:(CDUnknownBlockType)arg3;
 - (void)resetStoreCacheTimer;
+- (void)scheduleImmediateUpload;
+- (void)setValue:(id)arg1 forUploadHeaderNamed:(id)arg2;
+- (id)uploadHeaders;
 
 @end
 

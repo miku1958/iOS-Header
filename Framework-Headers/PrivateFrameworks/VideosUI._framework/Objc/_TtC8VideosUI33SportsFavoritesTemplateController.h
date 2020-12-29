@@ -12,10 +12,12 @@ __attribute__((visibility("hidden")))
 @interface _TtC8VideosUI33SportsFavoritesTemplateController : _TtC8VideosUI23StackTemplateController
 {
     MISSING_TYPE *syncTeamFavorites;
+    MISSING_TYPE *templateUpdateObserver;
+    MISSING_TYPE *teamsServiceRequest;
 }
 
+- (void).cxx_destruct;
 - (void)collectionView:(id)arg1 didSelectItemAtIndexPath:(id)arg2;
-- (void)collectionView:(id)arg1 willDisplayCell:(id)arg2 forItemAtIndexPath:(id)arg3;
 - (void)dealloc;
 - (id)initWithCoder:(id)arg1;
 - (void)viewDidLoad;

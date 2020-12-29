@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
 
 @property (copy, nonatomic) NSString *app_id;
 @property (nonatomic) long long channel_type;
+@property (nonatomic) BOOL is_synthesis;
 
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)init;

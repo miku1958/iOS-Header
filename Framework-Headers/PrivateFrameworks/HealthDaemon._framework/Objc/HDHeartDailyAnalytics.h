@@ -14,6 +14,7 @@
 }
 
 - (void).cxx_destruct;
+- (id)_ecgClassificationWithin24HoursKeyFromClassification:(unsigned long long)arg1;
 - (id)_ecgClassificationWithin24HoursPostIRNKeyFromClassification:(unsigned long long)arg1;
 - (id)_weeksBetweenStartDate:(id)arg1 endDate:(id)arg2;
 - (id)init;
@@ -37,7 +38,7 @@
 - (void)updateMobileAssetNamesDownloadedPast24Hours:(id)arg1;
 - (void)updateWasWatchWornPast24Hours:(BOOL)arg1;
 - (void)updateWeeksSinceElectrocardiogramOnboardedWithFirstOnboardingCompletedDate:(id)arg1;
-- (void)updateWithElectrocardiogramClassifications:(id)arg1;
+- (void)updateWithElectrocardiogramClassifications:(id)arg1 isWithin24HoursPostIRN:(BOOL)arg2;
 
 @end
 

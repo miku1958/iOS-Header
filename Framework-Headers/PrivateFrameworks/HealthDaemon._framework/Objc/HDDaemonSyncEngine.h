@@ -42,6 +42,7 @@
 - (long long)nextSyncAnchorForEntity:(Class)arg1 session:(id)arg2 startSyncAnchor:(long long)arg3 error:(id *)arg4;
 - (BOOL)performSyncSession:(id)arg1 accessibilityAssertion:(id)arg2 error:(id *)arg3;
 - (void)resetAnchorsWithFailedChanges:(id)arg1 store:(id)arg2;
+- (BOOL)resetNextAnchorsForStore:(id)arg1 profile:(id)arg2 minimumElapsedTime:(double)arg3 error:(id *)arg4;
 - (void)resetStore:(id)arg1;
 - (long long)session:(id)arg1 requiresSyncWithAnchors:(id)arg2 error:(id *)arg3;
 

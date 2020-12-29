@@ -10,50 +10,71 @@
 #import <Intents/NSSecureCoding-Protocol.h>
 #import <Intents/_INPBStartWorkoutIntent-Protocol.h>
 
-@class NSString, _INPBDataString, _INPBDouble, _INPBIntentMetadata;
+@class NSArray, NSString, _INPBDataString, _INPBDouble, _INPBIntentMetadata;
 
 @interface _INPBStartWorkoutIntent : PBCodable <_INPBStartWorkoutIntent, NSSecureCoding, NSCopying>
 {
     struct {
+        unsigned int isBuiltInWorkoutType:1;
         unsigned int isOpenEnded:1;
+        unsigned int isVoiceOnly:1;
+        unsigned int sequenceLabel:1;
         unsigned int workoutGoalUnitType:1;
         unsigned int workoutLocationType:1;
     } _has;
+    BOOL _isBuiltInWorkoutType;
     BOOL _isOpenEnded;
+    BOOL _isVoiceOnly;
+    int _sequenceLabel;
     int _workoutGoalUnitType;
     int _workoutLocationType;
+    NSArray *_associatedItems;
     _INPBDouble *_goalValue;
     _INPBIntentMetadata *_intentMetadata;
     _INPBDataString *_workoutName;
 }
 
+@property (copy, nonatomic) NSArray *associatedItems; // @synthesize associatedItems=_associatedItems;
+@property (readonly, nonatomic) unsigned long long associatedItemsCount;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (strong, nonatomic) _INPBDouble *goalValue; // @synthesize goalValue=_goalValue;
 @property (readonly, nonatomic) BOOL hasGoalValue;
 @property (readonly, nonatomic) BOOL hasIntentMetadata;
+@property (nonatomic) BOOL hasIsBuiltInWorkoutType;
 @property (nonatomic) BOOL hasIsOpenEnded;
+@property (nonatomic) BOOL hasIsVoiceOnly;
+@property (nonatomic) BOOL hasSequenceLabel;
 @property (nonatomic) BOOL hasWorkoutGoalUnitType;
 @property (nonatomic) BOOL hasWorkoutLocationType;
 @property (readonly, nonatomic) BOOL hasWorkoutName;
 @property (readonly) unsigned long long hash;
 @property (strong, nonatomic) _INPBIntentMetadata *intentMetadata; // @synthesize intentMetadata=_intentMetadata;
+@property (nonatomic) BOOL isBuiltInWorkoutType; // @synthesize isBuiltInWorkoutType=_isBuiltInWorkoutType;
 @property (nonatomic) BOOL isOpenEnded; // @synthesize isOpenEnded=_isOpenEnded;
+@property (nonatomic) BOOL isVoiceOnly; // @synthesize isVoiceOnly=_isVoiceOnly;
+@property (nonatomic) int sequenceLabel; // @synthesize sequenceLabel=_sequenceLabel;
 @property (readonly) Class superclass;
 @property (nonatomic) int workoutGoalUnitType; // @synthesize workoutGoalUnitType=_workoutGoalUnitType;
 @property (nonatomic) int workoutLocationType; // @synthesize workoutLocationType=_workoutLocationType;
 @property (strong, nonatomic) _INPBDataString *workoutName; // @synthesize workoutName=_workoutName;
 
++ (Class)associatedItemsType;
 + (BOOL)supportsSecureCoding;
 - (void).cxx_destruct;
+- (int)StringAsSequenceLabel:(id)arg1;
 - (int)StringAsWorkoutGoalUnitType:(id)arg1;
 - (int)StringAsWorkoutLocationType:(id)arg1;
+- (void)addAssociatedItems:(id)arg1;
+- (id)associatedItemsAtIndex:(unsigned long long)arg1;
+- (void)clearAssociatedItems;
 - (id)copyWithZone:(struct _NSZone *)arg1;
 - (id)dictionaryRepresentation;
 - (void)encodeWithCoder:(id)arg1;
 - (id)initWithCoder:(id)arg1;
 - (BOOL)isEqual:(id)arg1;
 - (BOOL)readFrom:(id)arg1;
+- (id)sequenceLabelAsString:(int)arg1;
 - (id)workoutGoalUnitTypeAsString:(int)arg1;
 - (id)workoutLocationTypeAsString:(int)arg1;
 - (void)writeTo:(id)arg1;

@@ -100,6 +100,7 @@
     NSArray *_hapServicesLists;
     NSArray *_primaryHAPServicesListCertifieds;
     NSArray *_primaryHAPServicesLists;
+    long long _currentMediaAccessoryFallbackMediaUserType;
     unsigned long long _numHomePods;
 }
 

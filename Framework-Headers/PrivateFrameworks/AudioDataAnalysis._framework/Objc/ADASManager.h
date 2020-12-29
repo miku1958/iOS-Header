@@ -15,6 +15,7 @@
 
 - (void).cxx_destruct;
 - (void)_clearCurrentVolumeLimit;
+- (void)_donateSignalToTipsKit:(BOOL)arg1;
 - (id)_error:(long long)arg1;
 - (BOOL)_featureFlagEnabled;
 - (id)_getCurrentVolumeLimit;

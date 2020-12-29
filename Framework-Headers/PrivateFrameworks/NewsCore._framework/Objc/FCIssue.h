@@ -6,14 +6,15 @@
 
 #import <objc/NSObject.h>
 
+#import <NewsCore/FCContentArchivable-Protocol.h>
 #import <NewsCore/FCFeedPersonalizingItem-Protocol.h>
 #import <NewsCore/FCIssueAccessCheckable-Protocol.h>
 #import <NewsCore/NSCopying-Protocol.h>
 
-@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCAssetHandle, FCColor, FCInterestToken, NSArray, NSDate, NSString, NTPBIssueRecord;
+@class COMAPPLEFELDSPARPROTOCOLLIVERPOOLCohortList, COMAPPLEFELDSPARPROTOCOLLIVERPOOLConversionStats, COMAPPLEFELDSPARPROTOCOLVersionedPersonalizationVector, FCAssetHandle, FCColor, FCContentArchive, FCInterestToken, NSArray, NSDate, NSString, NTPBIssueRecord;
 @protocol FCChannelProviding;
 
-@interface FCIssue : NSObject <FCFeedPersonalizingItem, FCIssueAccessCheckable, NSCopying>
+@interface FCIssue : NSObject <FCFeedPersonalizingItem, FCIssueAccessCheckable, NSCopying, FCContentArchivable>
 {
     BOOL _isCurrent;
     BOOL _isDraft;
@@ -50,6 +51,7 @@
 @property (readonly, nonatomic) long long bodyTextLength;
 @property (readonly, nonatomic, getter=isBundlePaid) BOOL bundlePaid;
 @property (readonly, nonatomic, getter=isBundlePaid) BOOL bundlePaid;
+@property (readonly, nonatomic) FCContentArchive *contentArchive;
 @property (readonly, copy, nonatomic) NSString *coverArticleID; // @synthesize coverArticleID=_coverArticleID;
 @property (readonly, copy, nonatomic) NSString *coverDate; // @synthesize coverDate=_coverDate;
 @property (readonly, nonatomic) double coverImageAspectRatio; // @synthesize coverImageAspectRatio=_coverImageAspectRatio;

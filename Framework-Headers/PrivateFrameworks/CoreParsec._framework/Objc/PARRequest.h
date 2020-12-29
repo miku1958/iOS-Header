@@ -23,6 +23,7 @@
     NSString *_experimentNamespaceId;
     NSString *_experimentId;
     NSString *_treatmentId;
+    NSString *_clientShortName;
     unsigned long long _triggerEvent;
     NSArray *_queryItems;
     NSDictionary *_headerItems;
@@ -31,6 +32,7 @@
 }
 
 @property (readonly, nonatomic) unsigned long long clientQueryId;
+@property (copy, nonatomic) NSString *clientShortName; // @synthesize clientShortName=_clientShortName;
 @property (copy, nonatomic) NSString *experimentId; // @synthesize experimentId=_experimentId;
 @property (copy, nonatomic) NSString *experimentNamespaceId; // @synthesize experimentNamespaceId=_experimentNamespaceId;
 @property (copy, nonatomic) NSDictionary *headerItems; // @synthesize headerItems=_headerItems;

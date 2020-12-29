@@ -22,6 +22,8 @@
 + (id)sharedInstance;
 - (void).cxx_destruct;
 - (void)_contryConfigurationDidChange:(id)arg1;
+- (void)_donateSignalToTipsKit:(BOOL)arg1;
+- (void)_donateSignalToTipsKitOnInitialization;
 - (int)_getMGProductType;
 - (BOOL)_isHAENFeatureMandatory:(id)arg1 dataDisposition:(id)arg2;
 - (BOOL)_isIPod;
@@ -34,6 +36,7 @@
 - (void)_updateImpl;
 - (void)_updateLocationGatingFlags;
 - (void)_updateSampleTransient:(id)arg1;
+- (void)_updateStatsWithGeoLocation:(id)arg1 disposition:(id)arg2 andMandatoryFlag:(BOOL)arg3;
 - (BOOL)_validCountryCodeSource:(unsigned int)arg1;
 - (BOOL)_validDataDisposition:(id)arg1;
 - (void)dealloc;

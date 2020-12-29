@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class ARUIRingsRenderPipelineFactory, ARUIRingsRenderer, ARUISpritesRenderer;
+@class ARUICelebrationsRenderer, ARUIRingsRenderPipelineFactory, ARUIRingsRenderer, ARUISpritesRenderer;
 @protocol MTLCommandQueue, MTLDeviceSPI;
 
 @interface ARUIRenderer : NSObject
@@ -16,6 +16,7 @@
     ARUIRingsRenderPipelineFactory *_ringsRenderPipelineFactory;
     ARUIRingsRenderer *_ringsRenderer;
     ARUISpritesRenderer *_spritesRenderer;
+    ARUICelebrationsRenderer *_celebrationsRenderer;
     unsigned long long _renderStyle;
 }
 

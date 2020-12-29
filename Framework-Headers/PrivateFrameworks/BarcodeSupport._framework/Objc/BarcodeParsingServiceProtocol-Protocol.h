@@ -4,9 +4,10 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-@class CIQRCodeFeature, NSDictionary, NSString;
+@class CIQRCodeFeature, NSData, NSDictionary, NSString;
 
 @protocol BarcodeParsingServiceProtocol
+- (void)decodeAppClipCodeURLWithEncodedData:(NSData *)arg1 codingVersion:(unsigned long long)arg2 requiresAuthorization:(BOOL)arg3 withReply:(void (^)(NSURL *, NSError *))arg4;
 - (void)parseQRCodeFeature:(CIQRCodeFeature *)arg1 withReply:(void (^)(id<BCSParsedData>, NSError *))arg2;
 - (void)parseQRCodeMetadata:(NSDictionary *)arg1 withReply:(void (^)(id<BCSParsedData>, NSError *))arg2;
 - (void)parseQRCodeString:(NSString *)arg1 withReply:(void (^)(id<BCSParsedData>, NSError *))arg2;

@@ -6,8 +6,11 @@
 
 #import <Foundation/NSExtension.h>
 
+@class NSString;
+
 @interface NSExtension (ExtensionKitAdditions)
 
+@property (readonly, nonatomic) NSString *containingBundleIdentifier;
 @property (readonly) BOOL requiresMacCatalystBehavior;
 
 + (id)extensionInfoForCurrentProcess;

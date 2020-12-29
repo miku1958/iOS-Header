@@ -6,11 +6,9 @@
 
 #import <swiftCore/_TtCs12_SwiftObject.h>
 
-#import <NewsFeed/FCAssetDataProvider-Protocol.h>
-
 @class MISSING_TYPE, NSData, NSString;
 
-@interface _TtCC8NewsFeed15StubAssetHandleP33_B538D857468CA7BCDFD0FAB29FD8E9A021StubAssetDataProvider : _TtCs12_SwiftObject <FCAssetDataProvider>
+@interface _TtCC8NewsFeed15StubAssetHandleP33_B538D857468CA7BCDFD0FAB29FD8E9A021StubAssetDataProvider : _TtCs12_SwiftObject
 {
     MISSING_TYPE *data;
     MISSING_TYPE *filePath;

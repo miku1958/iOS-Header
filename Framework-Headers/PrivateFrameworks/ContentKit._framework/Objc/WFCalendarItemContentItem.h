@@ -27,7 +27,9 @@
 + (BOOL)supportedTypeMustBeDeterminedByInstance:(id)arg1;
 + (id)typeDescription;
 - (void).cxx_destruct;
+- (id)attachments;
 - (BOOL)canGenerateRepresentationForType:(id)arg1;
+- (id)changeTransaction;
 - (id)copyWithName:(id)arg1 zone:(struct _NSZone *)arg2;
 - (id)generateFileRepresentationForType:(id)arg1 options:(id)arg2 error:(id *)arg3;
 - (void)generateObjectRepresentations:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;

@@ -90,7 +90,7 @@
 - (id)_userDefaults;
 - (BOOL)_valuesDefinedAsNumbersInBagForKeys:(id)arg1;
 - (void)dealloc;
-- (void)entryStore:(id)arg1 didUpdatePendingTopics:(id)arg2;
+- (void)entryStore:(id)arg1 didUpdatePendingTopics:(id)arg2 forceImmediateUpdate:(BOOL)arg3;
 - (void)handler:(id)arg1 pushTokenChanged:(id)arg2;
 - (id)initWithQueue:(id)arg1 serverBag:(id)arg2 requestQueue:(id)arg3 kvStoreBlock:(CDUnknownBlockType)arg4 entryStoreBlock:(CDUnknownBlockType)arg5 pushTokenBlock:(CDUnknownBlockType)arg6 systemMonitor:(id)arg7;
 - (void)registerIfNeeded;

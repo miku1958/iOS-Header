@@ -19,6 +19,7 @@
     int _intentType;
     NSString *_intentVerb;
     NSData *_interaction;
+    NSString *_itemID;
     NSString *_sourceId;
     struct {
         unsigned int absoluteTimestamp:1;
@@ -36,12 +37,14 @@
 @property (nonatomic) BOOL hasIntentType;
 @property (readonly, nonatomic) BOOL hasIntentVerb;
 @property (readonly, nonatomic) BOOL hasInteraction;
+@property (readonly, nonatomic) BOOL hasItemID;
 @property (readonly, nonatomic) BOOL hasSourceId;
 @property (strong, nonatomic) NSString *intentClass; // @synthesize intentClass=_intentClass;
 @property (nonatomic) int intentHandlingStatus; // @synthesize intentHandlingStatus=_intentHandlingStatus;
 @property (nonatomic) int intentType; // @synthesize intentType=_intentType;
 @property (strong, nonatomic) NSString *intentVerb; // @synthesize intentVerb=_intentVerb;
 @property (strong, nonatomic) NSData *interaction; // @synthesize interaction=_interaction;
+@property (strong, nonatomic) NSString *itemID; // @synthesize itemID=_itemID;
 @property (strong, nonatomic) NSString *sourceId; // @synthesize sourceId=_sourceId;
 
 - (void).cxx_destruct;

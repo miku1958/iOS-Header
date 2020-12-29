@@ -37,6 +37,7 @@
 - (id)imageRequest;
 - (id)initWithImageRequest:(id)arg1;
 - (id)initWithRequest:(id)arg1;
+- (id)newRenderPipelineStateForEvaluationMode:(long long)arg1;
 - (BOOL)prepare:(out id *)arg1;
 - (BOOL)render:(out id *)arg1;
 - (id)scalePolicy;

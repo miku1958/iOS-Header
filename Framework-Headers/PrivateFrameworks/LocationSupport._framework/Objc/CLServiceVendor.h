@@ -24,6 +24,7 @@
 + (void)rereadConfiguration:(id)arg1;
 + (id)sharedInstance;
 - (void).cxx_destruct;
+- (void)amendServiceReplacementMap:(id)arg1 missBehavior:(int)arg2;
 - (void)dealloc;
 - (void)enableTimeCoercion;
 - (BOOL)ensureServiceIsRunning:(id)arg1;
@@ -32,6 +33,7 @@
 - (BOOL)isServiceEnabled:(id)arg1;
 - (BOOL)isServiceRunning:(id)arg1;
 - (BOOL)isTimeCoercionEnabled;
+- (int)missBehavior;
 - (id)proxyForService:(id)arg1;
 - (id)proxyForService:(id)arg1 forClient:(id)arg2;
 - (void)retireServiceWithName:(id)arg1;

@@ -79,10 +79,12 @@
 - (id)ignoredTagIDs;
 - (id)init;
 - (id)initWithSubscriptionList:(id)arg1 tagController:(id)arg2 notificationController:(id)arg3 purchaseProvider:(id)arg4 configurationManager:(id)arg5 appActivityMonitor:(id)arg6;
+- (BOOL)isChannelPermanentForTagID:(id)arg1;
 - (BOOL)moveSubscriptionForTagID:(id)arg1 toIndex:(unsigned long long)arg2;
 - (id)mutedTagIDs;
 - (id)newlySubscribedTagIDsInDateRange:(id)arg1;
 - (id)orderedCachedSubscribedTags;
+- (id)permanentChannelIDs;
 - (void)refreshSubscriptionTags;
 - (void)removeAllAutoFavoriteSubscriptions:(CDUnknownBlockType)arg1;
 - (void)removeAutoFavoriteSubscriptionToTag:(id)arg1 eventInitiationLevel:(long long)arg2;
@@ -101,6 +103,7 @@
 - (void)subscriptionListDidResetToEmpty:(id)arg1;
 - (id)subscriptionSurfacingHeadline:(id)arg1;
 - (id)subscriptions;
+- (void)subscriptionsWithCompletion:(CDUnknownBlockType)arg1;
 - (id)subscriptionsWithType:(unsigned long long)arg1;
 - (id)tagIDsWithType:(unsigned long long)arg1;
 

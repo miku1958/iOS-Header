@@ -23,6 +23,7 @@
 
 - (void).cxx_destruct;
 - (id)init;
+- (id)interestTokenForWrappingKeyIDs:(id)arg1;
 - (void)removeAllWrappingKeys;
 - (void)setWrappingKey:(id)arg1 forWrappingKeyID:(id)arg2;
 - (id)wrappingKeyForWrappingKeyID:(id)arg1;

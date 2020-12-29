@@ -14,6 +14,7 @@
     BOOL _automaticImageScaleEstimationEnabled;
     BOOL _collaborationEnabled;
     BOOL _userFaceTrackingEnabled;
+    BOOL _appClipCodeTrackingEnabled;
     long long _environmentTexturing;
     unsigned long long _planeDetection;
     ARWorldMap *_initialWorldMap;
@@ -23,6 +24,7 @@
     unsigned long long _sceneReconstruction;
 }
 
+@property (nonatomic) BOOL appClipCodeTrackingEnabled; // @synthesize appClipCodeTrackingEnabled=_appClipCodeTrackingEnabled;
 @property (nonatomic, getter=isAutoFocusEnabled) BOOL autoFocusEnabled; // @dynamic autoFocusEnabled;
 @property (nonatomic) BOOL automaticImageScaleEstimationEnabled; // @synthesize automaticImageScaleEstimationEnabled=_automaticImageScaleEstimationEnabled;
 @property (nonatomic, getter=isCollaborationEnabled) BOOL collaborationEnabled; // @synthesize collaborationEnabled=_collaborationEnabled;
@@ -37,6 +39,7 @@
 @property (nonatomic) BOOL wantsHDREnvironmentTextures; // @synthesize wantsHDREnvironmentTextures=_wantsHDREnvironmentTextures;
 
 + (id)new;
++ (BOOL)supportsAppClipCodeTracking;
 + (BOOL)supportsSceneReconstruction:(unsigned long long)arg1;
 + (BOOL)supportsUserFaceTracking;
 - (void).cxx_destruct;

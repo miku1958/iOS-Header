@@ -19,7 +19,7 @@
 - (id)description;
 - (void)finish;
 - (BOOL)highPriority;
-- (id)initWithHarvestQueue:(id)arg1 itemId:(long long)arg2 fileId:(int)arg3 item:(id)arg4 fails:(int)arg5 customPriorityCriteria:(unsigned char)arg6;
+- (id)initWithHarvestQueue:(id)arg1 itemId:(long long)arg2 fileId:(int)arg3 item:(id)arg4 fails:(int)arg5 customPriorityCriteria:(unsigned char)arg6 receivedOnPower:(BOOL)arg7 receivedTime:(double)arg8 storageReason:(int)arg9;
 - (void)markAsFailed;
 
 @end

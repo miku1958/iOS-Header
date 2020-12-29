@@ -34,7 +34,7 @@ __attribute__((visibility("hidden")))
 - (void)computeRedundancyInfo;
 - (id)init;
 - (unsigned int)updateRedundancyPercentageWithPLRThresholds:(double *)arg1;
-- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_1a067c5f)arg1;
+- (void)updateRedundancyStrategyWithNetworkStatistics:(CDStruct_bae76c55)arg1;
 
 @end
 

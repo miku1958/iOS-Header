@@ -8,6 +8,8 @@
 
 struct CnAlgs;
 
+struct PhaseCondenser;
+
 struct _NSRange {
     unsigned long long location;
     unsigned long long length;
@@ -28,6 +30,12 @@ struct optional<unsigned int> {
 struct unique_ptr<CinnAlgs::CnAlgs, std::__1::default_delete<CinnAlgs::CnAlgs>> {
     struct __compressed_pair<CinnAlgs::CnAlgs *, std::__1::default_delete<CinnAlgs::CnAlgs>> {
         struct CnAlgs *__value_;
+    } __ptr_;
+};
+
+struct unique_ptr<HealthAlgorithms::PhaseCondenser, std::__1::default_delete<HealthAlgorithms::PhaseCondenser>> {
+    struct __compressed_pair<HealthAlgorithms::PhaseCondenser *, std::__1::default_delete<HealthAlgorithms::PhaseCondenser>> {
+        struct PhaseCondenser *__value_;
     } __ptr_;
 };
 

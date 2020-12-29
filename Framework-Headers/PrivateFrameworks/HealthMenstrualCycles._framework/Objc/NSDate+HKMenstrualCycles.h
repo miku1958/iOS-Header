@@ -7,5 +7,6 @@
 #import <Foundation/NSDate.h>
 
 @interface NSDate (HKMenstrualCycles)
+- (id)hkmc_durationStringToEndDate:(id)arg1 calendar:(id)arg2;
 @end
 

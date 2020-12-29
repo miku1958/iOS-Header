@@ -39,6 +39,7 @@
 - (unsigned long long)_indexOfVehicleInUnpairedVehicles:(id)arg1;
 - (void)_invalidateRefreshTimer;
 - (void)_loadAllOEMVehiclesForApps:(id)arg1 completion:(CDUnknownBlockType)arg2;
+- (void)_loadIapVehicles;
 - (id)_oemAppForChargeStreamForVehicle:(id)arg1;
 - (void)_refreshStateForTrackedVehicles;
 - (void)_removeUnpairedIapVehicleIfNeeded;

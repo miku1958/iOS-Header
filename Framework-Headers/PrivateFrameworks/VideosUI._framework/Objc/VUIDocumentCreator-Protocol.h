@@ -11,6 +11,7 @@
 @protocol VUIDocumentCreator <NSObject>
 
 @optional
+- (BOOL)isDocumentViewController:(UIViewController *)arg1 equalToViewController:(UIViewController *)arg2;
 - (UIViewController *)viewControllerWithDocumentDataSource:(VUIDocumentDataSource *)arg1 appContext:(IKAppContext *)arg2 viewElement:(IKViewElement *)arg3 documentOptions:(NSDictionary *)arg4;
 @end
 

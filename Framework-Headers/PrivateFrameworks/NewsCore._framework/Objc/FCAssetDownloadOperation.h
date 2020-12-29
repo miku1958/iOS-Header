@@ -53,6 +53,7 @@
 - (unsigned long long)maxRetries;
 - (void)operationWillFinishWithError:(id)arg1;
 - (void)performOperation;
+- (void)prepareOperation;
 - (id)throttleGroup;
 - (BOOL)validateOperation;
 

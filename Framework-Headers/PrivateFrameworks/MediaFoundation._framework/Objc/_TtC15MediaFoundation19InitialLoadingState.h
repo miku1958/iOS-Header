@@ -13,6 +13,7 @@
     MISSING_TYPE *metadata;
     MISSING_TYPE *item;
     MISSING_TYPE *play;
+    MISSING_TYPE *supressed;
 }
 
 @end

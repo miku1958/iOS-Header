@@ -24,6 +24,7 @@
 + (id)airQualityRequestForLocation:(id)arg1 locale:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (void).cxx_destruct;
 - (void)cleanup;
+- (void)handleError:(id)arg1 forResponseIdentifier:(id)arg2;
 - (void)handleResponse:(id)arg1;
 - (id)initWithLocation:(id)arg1 locale:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 - (id)options;

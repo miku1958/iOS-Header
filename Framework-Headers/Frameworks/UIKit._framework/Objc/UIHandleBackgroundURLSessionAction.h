@@ -4,21 +4,11 @@
 //  Copyright (C) 1997-2019 Steve Nygard.
 //
 
-#import <BaseBoard/BSAction.h>
+#import <UIKitServices/UISHandleBackgroundURLSessionAction.h>
 
-@class NSString;
-
-@interface UIHandleBackgroundURLSessionAction : BSAction
+@interface UIHandleBackgroundURLSessionAction : UISHandleBackgroundURLSessionAction
 {
 }
-
-@property (readonly, copy, nonatomic) NSString *sessionIdentifier;
-
-- (long long)UIActionType;
-- (id)initWithInfo:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
-- (id)initWithSessionIdentifier:(id)arg1;
-- (id)initWithSessionIdentifier:(id)arg1 timeout:(double)arg2 forResponseOnQueue:(id)arg3 withHandler:(CDUnknownBlockType)arg4;
-- (id)keyDescriptionForSetting:(unsigned long long)arg1;
 
 @end
 

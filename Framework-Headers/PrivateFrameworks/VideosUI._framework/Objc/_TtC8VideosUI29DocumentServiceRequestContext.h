@@ -11,6 +11,7 @@
 @interface _TtC8VideosUI29DocumentServiceRequestContext : _TtCs12_SwiftObject
 {
     MISSING_TYPE *requestID;
+    MISSING_TYPE *animateUpdates;
     MISSING_TYPE *appContext;
     MISSING_TYPE *parent;
     MISSING_TYPE *documentType;

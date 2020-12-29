@@ -28,6 +28,8 @@
 @property (readonly) Class superclass;
 
 + (BOOL)_isAnnouncerAdminInAnnouncement:(id)arg1 home:(id)arg2;
++ (id)_performPreflightChecksForSendingContent:(id)arg1 toHome:(id)arg2;
++ (id)_performPreflightChecksForSendingToRooms:(id)arg1 zones:(id)arg2;
 + (void)_setIdentifiersForIDSService:(id)arg1 inLocation:(id)arg2 home:(id)arg3;
 + (id)announcementForAccessory:(id)arg1 inHome:(id)arg2 fromAnnouncement:(id)arg3;
 + (id)announcementForDevice:(id)arg1 inHome:(id)arg2 fromAnnouncement:(id)arg3;
@@ -37,9 +39,7 @@
 + (id)locationForReplyToAnnouncement:(id)arg1 home:(id)arg2 idsService:(id)arg3;
 + (id)performBasicValidationForAnnouncement:(id)arg1;
 + (id)performIDSValidationForAnnouncement:(id)arg1 withSenderContext:(id)arg2;
-+ (id)performPreflightChecksForSendingToHome:(id)arg1;
-+ (id)performPreflightChecksForSendingToHome:(id)arg1 rooms:(id)arg2 zones:(id)arg3;
-+ (id)performPreflightChecksForSendingToRooms:(id)arg1 zones:(id)arg2;
++ (id)performPreflightChecksForSendingContent:(id)arg1 toHome:(id)arg2 rooms:(id)arg3 zones:(id)arg4;
 + (id)performRapportValidationForAnnouncement:(id)arg1 withSenderContext:(id)arg2;
 + (void)purgeTemporaryFiles;
 - (void).cxx_destruct;
@@ -49,6 +49,7 @@
 - (void)_relayAnnouncementThroughHomePod:(id)arg1 inHome:(id)arg2 rooms:(id)arg3 zones:(id)arg4 sentHandler:(CDUnknownBlockType)arg5;
 - (void)_sendAnnouncement:(id)arg1 toDestination:(id)arg2 sentHandler:(CDUnknownBlockType)arg3;
 - (void)broadcastReply:(id)arg1 fromSource:(id)arg2 forAnnouncement:(id)arg3 completion:(CDUnknownBlockType)arg4;
+- (void)cleanForExit;
 - (void)connection:(id)arg1 didReceiveMessage:(id)arg2 fromSender:(id)arg3 senderContext:(id)arg4 handler:(CDUnknownBlockType)arg5;
 - (void)connection:(id)arg1 failedDeliveryForMessage:(id)arg2 withError:(id)arg3;
 - (id)connectionDidReceiveRequestForHomeLocationStatus:(id)arg1;

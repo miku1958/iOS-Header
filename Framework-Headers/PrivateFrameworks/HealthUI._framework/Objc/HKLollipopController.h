@@ -12,6 +12,7 @@
 @interface HKLollipopController : NSObject
 {
     BOOL _centerLollipopVertically;
+    BOOL _noAnimationVisibility;
     HKInteractiveChartAnnotationView *_annotationView;
     id<HKLollipopDelegate> _delegate;
     UIView *_parentView;
@@ -28,6 +29,7 @@
 @property (strong, nonatomic) UIView *fieldView; // @synthesize fieldView=_fieldView;
 @property (strong, nonatomic) NSDate *lastFirstLollipopDate; // @synthesize lastFirstLollipopDate=_lastFirstLollipopDate;
 @property (copy, nonatomic) NSArray *lastSelectionLocation; // @synthesize lastSelectionLocation=_lastSelectionLocation;
+@property (nonatomic) BOOL noAnimationVisibility; // @synthesize noAnimationVisibility=_noAnimationVisibility;
 @property (strong, nonatomic) UIView *parentView; // @synthesize parentView=_parentView;
 
 + (BOOL)pointSelectionContextsHaveUserInfo:(id)arg1;

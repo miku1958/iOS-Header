@@ -6,8 +6,13 @@
 
 #import <MediaFoundation/_TtC15MediaFoundation5State.h>
 
+@class MISSING_TYPE;
+
 @interface _TtC15MediaFoundation18ChangingQueueState : _TtC15MediaFoundation5State
 {
+    MISSING_TYPE *delayedActionWhenReady;
+    MISSING_TYPE *initialLoadFailure;
+    MISSING_TYPE *initialLoadShouldPlay;
 }
 
 @end

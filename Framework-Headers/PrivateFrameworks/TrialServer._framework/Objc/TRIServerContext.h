@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class TRIClient, TRIContentTracker, TRIDatabase, TRIExperimentDatabase, TRIKVStore, TRINamespaceDatabase, TRITaskDatabase;
+@class TRIClient, TRIContentTracker, TRIDatabase, TRIExperimentDatabase, TRIExperimentHistoryDatabase, TRIKVStore, TRINamespaceDatabase, TRITaskDatabase;
 @protocol TRIPaths, TRIXPCActivityManagementProtocol;
 
 @interface TRIServerContext : NSObject
@@ -14,6 +14,7 @@
     BOOL _useCKNative;
     id<TRIPaths> _paths;
     TRIExperimentDatabase *_experimentDatabase;
+    TRIExperimentHistoryDatabase *_experimentHistoryDatabase;
     TRINamespaceDatabase *_namespaceDatabase;
     TRITaskDatabase *_taskDatabase;
     TRIClient *_client;
@@ -26,6 +27,7 @@
 @property (readonly, nonatomic) TRIClient *client; // @synthesize client=_client;
 @property (readonly, nonatomic) TRIContentTracker *contentTracker; // @synthesize contentTracker=_contentTracker;
 @property (readonly, nonatomic) TRIExperimentDatabase *experimentDatabase; // @synthesize experimentDatabase=_experimentDatabase;
+@property (readonly, nonatomic) TRIExperimentHistoryDatabase *experimentHistoryDatabase; // @synthesize experimentHistoryDatabase=_experimentHistoryDatabase;
 @property (readonly, nonatomic) TRIKVStore *keyValueStore; // @synthesize keyValueStore=_keyValueStore;
 @property (readonly, nonatomic) TRINamespaceDatabase *namespaceDatabase; // @synthesize namespaceDatabase=_namespaceDatabase;
 @property (readonly, nonatomic) id<TRIPaths> paths; // @synthesize paths=_paths;

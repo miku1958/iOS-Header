@@ -8,7 +8,7 @@
 
 #import <ViceroyTrace/VCAdaptiveLearningDelegate-Protocol.h>
 
-@class NSNumber, NSString;
+@class NSNumber, NSString, VCAlgosStreamingScorer;
 @protocol OS_dispatch_queue, VCAggregatorDelegate;
 
 __attribute__((visibility("hidden")))
@@ -26,8 +26,10 @@ __attribute__((visibility("hidden")))
     NSObject<OS_dispatch_queue> *_notificationQueue;
     id<VCAggregatorDelegate> _delegate;
     CDUnknownBlockType _periodicAggregationOccuredHandler;
+    VCAlgosStreamingScorer *_algosScorer;
 }
 
+@property (readonly) VCAlgosStreamingScorer *algosScorer; // @synthesize algosScorer=_algosScorer;
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly) id<VCAggregatorDelegate> delegate;
 @property (readonly, copy) NSString *description;

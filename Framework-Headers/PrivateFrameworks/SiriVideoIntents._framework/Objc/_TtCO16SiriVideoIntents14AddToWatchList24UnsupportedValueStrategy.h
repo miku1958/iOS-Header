@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *deviceState;
     MISSING_TYPE *dialogProvider;
+    MISSING_TYPE *locUtil;
 }
 
 @end

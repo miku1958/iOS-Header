@@ -8,12 +8,11 @@
 
 #import <TrialServer/TRIMetricsProviding-Protocol.h>
 
-@class NSMutableArray, TRIExperimentDeployment;
+@class TRIExperimentDeployment, _PASLock;
 
 @interface TRIExperimentBaseTask : TRIBaseTask <TRIMetricsProviding>
 {
-    NSMutableArray *_metrics;
-    NSMutableArray *_dimensions;
+    _PASLock *_lock;
     TRIExperimentDeployment *_experiment;
 }
 

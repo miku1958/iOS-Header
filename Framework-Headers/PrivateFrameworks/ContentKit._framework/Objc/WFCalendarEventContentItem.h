@@ -15,6 +15,7 @@
 @property (readonly, nonatomic) EKEvent *event;
 
 + (id)countDescription;
++ (id)datebyApplyingComponents:(id)arg1 toDateComponents:(id)arg2;
 + (id)defaultSourceForRepresentation:(id)arg1;
 + (id)filterDescription;
 + (BOOL)hasLibrary;
@@ -26,6 +27,7 @@
 + (void)runQuery:(id)arg1 withItems:(id)arg2 completionHandler:(CDUnknownBlockType)arg3;
 + (id)typeDescription;
 - (BOOL)canGenerateRepresentationForType:(id)arg1;
+- (id)changeTransaction;
 - (void)generateObjectRepresentations:(CDUnknownBlockType)arg1 options:(id)arg2 forClass:(Class)arg3;
 - (BOOL)getListAltText:(CDUnknownBlockType)arg1;
 - (BOOL)getListSubtitle:(CDUnknownBlockType)arg1;

@@ -121,6 +121,12 @@ typedef struct {
     BOOL _field2;
 } CDStruct_5577c19c;
 
+typedef struct {
+    CDStruct_798ebea5 header;
+    BOOL receivingHeader;
+    BOOL readRequested;
+} CDStruct_f8a3a8cf;
+
 #pragma mark Typedef'd Unions
 
 typedef union {

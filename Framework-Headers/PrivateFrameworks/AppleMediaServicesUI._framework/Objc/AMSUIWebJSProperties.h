@@ -6,7 +6,7 @@
 
 #import <objc/NSObject.h>
 
-@class AMSUIWebClientContext, CTXPCServiceSubscriptionContext, CoreTelephonyClient;
+@class AMSUIWebClientContext, CTXPCServiceSubscriptionContext, CoreTelephonyClient, NSDictionary;
 @protocol AMSUIWebJSPropertiesDelegate, OS_dispatch_queue;
 
 __attribute__((visibility("hidden")))
@@ -15,6 +15,7 @@ __attribute__((visibility("hidden")))
     BOOL _telephonySetupFailed;
     id<AMSUIWebJSPropertiesDelegate> _delegate;
     AMSUIWebClientContext *_context;
+    NSDictionary *_lastAccountsExport;
     CoreTelephonyClient *_telephonyClient;
     CTXPCServiceSubscriptionContext *_telephonyContext;
     NSObject<OS_dispatch_queue> *_telephonyQueue;
@@ -22,6 +23,7 @@ __attribute__((visibility("hidden")))
 
 @property (weak, nonatomic) AMSUIWebClientContext *context; // @synthesize context=_context;
 @property (weak, nonatomic) id<AMSUIWebJSPropertiesDelegate> delegate; // @synthesize delegate=_delegate;
+@property (strong, nonatomic) NSDictionary *lastAccountsExport; // @synthesize lastAccountsExport=_lastAccountsExport;
 @property (strong, nonatomic) CoreTelephonyClient *telephonyClient; // @synthesize telephonyClient=_telephonyClient;
 @property (strong, nonatomic) CTXPCServiceSubscriptionContext *telephonyContext; // @synthesize telephonyContext=_telephonyContext;
 @property (strong, nonatomic) NSObject<OS_dispatch_queue> *telephonyQueue; // @synthesize telephonyQueue=_telephonyQueue;

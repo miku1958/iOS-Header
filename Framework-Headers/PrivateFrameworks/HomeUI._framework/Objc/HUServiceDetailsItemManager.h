@@ -54,6 +54,7 @@
     NSArray *_supportedVoiceRecognitionLanguages;
     ACAccount *_homeMediaAccount;
     HFItem *_removeItem;
+    HFItem *_primaryUserItem;
     HFItem *_resetItem;
     HFItem *_accessoryItem;
     HFItem *_audioSettingsItem;
@@ -144,6 +145,7 @@
 @property (strong, nonatomic) HUNameItemModule *nameModule; // @synthesize nameModule=_nameModule;
 @property (readonly, nonatomic) NSArray *orderedRoomSectionItems;
 @property (readonly, nonatomic) HMHome *overrideHome; // @synthesize overrideHome=_overrideHome;
+@property (readonly, nonatomic) HFItem *primaryUserItem; // @synthesize primaryUserItem=_primaryUserItem;
 @property (strong, nonatomic) HUServiceDetailsProgrammableSwitchItemModule *programmableSwitchItemModule; // @synthesize programmableSwitchItemModule=_programmableSwitchItemModule;
 @property (strong, nonatomic) NSArray *programmableSwitchSections; // @synthesize programmableSwitchSections=_programmableSwitchSections;
 @property (strong, nonatomic) HUAvailableRelatedTriggerItemModule *relatedTriggerItemModule; // @synthesize relatedTriggerItemModule=_relatedTriggerItemModule;
@@ -210,6 +212,7 @@
 - (BOOL)_shouldShowFirmwareUpdateSection;
 - (BOOL)_shouldShowLinkedApplicationSection;
 - (BOOL)_shouldShowSplitAccountUI;
+- (id)_transformedUpdateOutcomeForItem:(id)arg1 proposedOutcome:(id)arg2;
 - (void)_unregisterForExternalUpdates;
 - (void)accessoryReachableOverRapport:(BOOL)arg1;
 - (BOOL)canToggleAccessoryInfoItem:(id)arg1;

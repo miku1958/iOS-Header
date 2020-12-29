@@ -19,10 +19,12 @@
 - (void)_axSetSelectionManager:(id)arg1;
 - (void)_setAXIndexPathHolder:(id)arg1;
 - (void)_setAXSelectionManager:(id)arg1;
+- (id)accessibilityCustomContent;
 - (id)accessibilityHint;
 - (id)accessibilityIdentifier;
 - (id)accessibilityLabel;
 - (unsigned long long)accessibilityTraits;
+- (id)accessibilityURL;
 - (id)accessibilityValue;
 - (BOOL)isAccessibilityElement;
 

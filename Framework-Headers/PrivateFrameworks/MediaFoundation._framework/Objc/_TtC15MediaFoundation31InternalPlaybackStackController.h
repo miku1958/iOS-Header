@@ -12,6 +12,7 @@
 {
     MISSING_TYPE *delegate;
     MISSING_TYPE *currentQueueControllerItem;
+    MISSING_TYPE *loadedQueueControllerItems;
     MISSING_TYPE *maximumPlayerQueueLength;
     MISSING_TYPE *playerController;
     MISSING_TYPE *queueAssetLoader;
@@ -20,6 +21,13 @@
     MISSING_TYPE *errorController;
     MISSING_TYPE *externalPlaybackController;
     MISSING_TYPE *backgroundTaskController;
+    MISSING_TYPE *synchronizingToPlayer;
+    MISSING_TYPE *currentQueueRestorationItem;
+    MISSING_TYPE *mediaServicesInterruptionData;
+    MISSING_TYPE *deferredPlaybackRateForNextSetQueue;
+    MISSING_TYPE *$__lazy_storage_$_skipAggregator;
+    MISSING_TYPE *skippingState;
+    MISSING_TYPE *inFlightSkippingState;
 }
 
 @property (nonatomic, readonly) NSDictionary *stateDictionary;

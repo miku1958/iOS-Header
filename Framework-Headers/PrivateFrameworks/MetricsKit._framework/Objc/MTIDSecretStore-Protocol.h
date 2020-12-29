@@ -6,13 +6,15 @@
 
 #import <MetricsKit/NSObject-Protocol.h>
 
-@class MTIDScheme, MTPromise, NSDictionary;
+@class MTIDScheme, MTPromise, NSArray, NSDictionary;
 
 @protocol MTIDSecretStore <NSObject>
 - (void)clearLocalData;
+- (MTPromise *)resetSchemes:(NSArray *)arg1 options:(NSDictionary *)arg2;
 - (MTPromise *)secretForScheme:(MTIDScheme *)arg1 options:(NSDictionary *)arg2;
 
 @optional
 - (NSDictionary *)debugInfo;
+- (MTPromise *)maintainSchemes:(NSArray *)arg1 options:(NSDictionary *)arg2;
 @end
 

@@ -18,7 +18,9 @@
 - (double)distanceFromWorkOfCurrentLocationInMeters;
 - (void)fetchAllLocationsOfInterest:(void (^)(NSArray *, NSError *))arg1;
 - (CLLocation *)getCurrentLocation;
+- (CLLocation *)getCurrentLocationWithShiftInChina;
 - (CLLocation *)getCurrentPreciseLocation;
+- (CLLocation *)getCurrentPreciseLocationWithShiftInChina;
 - (void)invalidateLocationOfInterestCache;
 - (BOOL)isNearFrequentLocationOfInterest;
 - (BOOL)isNearKnownTypeLocationOfInterest;

@@ -24,6 +24,7 @@
     long long _playbackSessionSize;
 }
 
+@property (nonatomic) BOOL allowFadeTransition;
 @property (strong, nonatomic) NSString *appBundleIdentifier; // @synthesize appBundleIdentifier=_appBundleIdentifier;
 @property (strong, nonatomic) MRContentItem *contentItem;
 @property (nonatomic) unsigned int destinationTypes; // @synthesize destinationTypes=_destinationTypes;

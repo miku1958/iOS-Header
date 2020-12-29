@@ -6,7 +6,7 @@
 
 #import <Intents/NSObject-Protocol.h>
 
-@class NSArray, NSString, _INPBActivity, _INPBActivityList, _INPBAlarm, _INPBAlarmSearch, _INPBAnnouncement, _INPBAppIdentifier, _INPBArchivedObject, _INPBBillDetailsValue, _INPBBillPayeeValue, _INPBCallRecordFilter, _INPBCallRecordValue, _INPBContactEventTrigger, _INPBContactList, _INPBContactValue, _INPBCurrencyAmount, _INPBCustomObject, _INPBDataString, _INPBDataStringList, _INPBDateTime, _INPBDateTimeRangeList, _INPBDateTimeRangeValue, _INPBDevice, _INPBDeviceDetail, _INPBDialingContact, _INPBDistanceList, _INPBDistanceValue, _INPBDoubleList, _INPBDoubleValue, _INPBEnergyValue, _INPBEvent, _INPBEventList, _INPBFile, _INPBFileProperty, _INPBFilePropertyValue, _INPBFinancialAccountValue, _INPBGeographicalFeature, _INPBGeographicalFeatureList, _INPBGetSettingResponseData, _INPBHomeAttribute, _INPBHomeAttributeValue, _INPBHomeEntity, _INPBHomeFilter, _INPBHomeUserTask, _INPBIntegerList, _INPBIntegerValue, _INPBIntent, _INPBIntentExecutionResult, _INPBLocationList, _INPBLocationValue, _INPBLongList, _INPBLongValue, _INPBMassValue, _INPBMediaDestination, _INPBMediaItemGroup, _INPBMediaItemValue, _INPBMediaSearch, _INPBModifyNickname, _INPBModifyRelationship, _INPBNote, _INPBNoteContent, _INPBNumericSettingValue, _INPBPaymentAmountValue, _INPBPaymentMethodList, _INPBPaymentMethodValue, _INPBPlace, _INPBPlaceList, _INPBPrivateAddMediaIntentData, _INPBPrivatePlayMediaIntentData, _INPBPrivateSearchForMediaIntentData, _INPBPrivateUpdateMediaAffinityIntentData, _INPBSendMessageAttachment, _INPBSettingMetadata, _INPBShareDestination, _INPBSleepAlarmAttribute, _INPBSpatialEventTrigger, _INPBSpeedValue, _INPBStringList, _INPBStringValue, _INPBTask, _INPBTaskList, _INPBTemperatureList, _INPBTemperatureValue, _INPBTemporalEventTrigger, _INPBTimer, _INPBURLValue, _INPBVoiceCommandDeviceInformation, _INPBVolumeValue, _INPBWellnessMetadataPair, _INPBWellnessObjectResultValue, _INPBWellnessUnitType, _INPBWellnessValue;
+@class NSArray, NSString, _INPBActivity, _INPBActivityList, _INPBAlarm, _INPBAlarmSearch, _INPBAnnouncement, _INPBAppIdentifier, _INPBArchivedObject, _INPBBillDetailsValue, _INPBBillPayeeValue, _INPBCallRecordFilter, _INPBCallRecordValue, _INPBContactEventTrigger, _INPBContactList, _INPBContactValue, _INPBCurrencyAmount, _INPBCustomObject, _INPBDataString, _INPBDataStringList, _INPBDateTime, _INPBDateTimeRangeList, _INPBDateTimeRangeValue, _INPBDevice, _INPBDeviceDetail, _INPBDialingContact, _INPBDistanceList, _INPBDistanceValue, _INPBDoubleList, _INPBDoubleValue, _INPBEnergyValue, _INPBEvent, _INPBEventList, _INPBFile, _INPBFileProperty, _INPBFilePropertyValue, _INPBFinancialAccountValue, _INPBGeographicalFeature, _INPBGeographicalFeatureList, _INPBGetSettingResponseData, _INPBHomeAttribute, _INPBHomeAttributeValue, _INPBHomeEntity, _INPBHomeFilter, _INPBHomeUserTask, _INPBIntegerList, _INPBIntegerValue, _INPBIntent, _INPBIntentExecutionResult, _INPBLocationList, _INPBLocationValue, _INPBLongList, _INPBLongValue, _INPBMassValue, _INPBMediaDestination, _INPBMediaItemGroup, _INPBMediaItemValue, _INPBMediaSearch, _INPBModifyNickname, _INPBModifyRelationship, _INPBNote, _INPBNoteContent, _INPBNumericSettingValue, _INPBPaymentAmountValue, _INPBPaymentMethodList, _INPBPaymentMethodValue, _INPBPlace, _INPBPlaceList, _INPBPrivateAddMediaIntentData, _INPBPrivatePlayMediaIntentData, _INPBPrivateSearchForMediaIntentData, _INPBPrivateUpdateMediaAffinityIntentData, _INPBSendMessageAttachment, _INPBSettingMetadata, _INPBShareDestination, _INPBSleepAlarmAttribute, _INPBSpatialEventTrigger, _INPBSpeedValue, _INPBStringList, _INPBStringValue, _INPBTask, _INPBTaskList, _INPBTemperatureList, _INPBTemperatureValue, _INPBTemporalEventTrigger, _INPBTimer, _INPBURLValue, _INPBVoiceCommandDeviceInformation, _INPBVolumeValue, _INPBWellnessMetadataPair, _INPBWellnessObjectResultValue, _INPBWellnessUnitType, _INPBWellnessValue, _INPBWorkoutAssociatedItem;
 
 @protocol _INPBIntentSlotValue <NSObject>
 
@@ -331,10 +331,14 @@
 @property (readonly, nonatomic) unsigned long long payloadWellnessUnitTypesCount;
 @property (copy, nonatomic) NSArray *payloadWellnessValues;
 @property (readonly, nonatomic) unsigned long long payloadWellnessValuesCount;
+@property (copy, nonatomic) NSArray *payloadWorkoutAssociatedItems;
+@property (readonly, nonatomic) unsigned long long payloadWorkoutAssociatedItemsCount;
 @property (readonly, nonatomic) int *payloadWorkoutGoalUnitTypes;
 @property (readonly, nonatomic) unsigned long long payloadWorkoutGoalUnitTypesCount;
 @property (readonly, nonatomic) int *payloadWorkoutLocationTypes;
 @property (readonly, nonatomic) unsigned long long payloadWorkoutLocationTypesCount;
+@property (readonly, nonatomic) int *payloadWorkoutSequenceLabels;
+@property (readonly, nonatomic) unsigned long long payloadWorkoutSequenceLabelsCount;
 @property (nonatomic) int type;
 
 + (Class)payloadActivityListType;
@@ -428,6 +432,7 @@
 + (Class)payloadWellnessObjectResultValueType;
 + (Class)payloadWellnessUnitTypeType;
 + (Class)payloadWellnessValueType;
++ (Class)payloadWorkoutAssociatedItemType;
 - (int)StringAsPayloadAccountTypes:(NSString *)arg1;
 - (int)StringAsPayloadAlarmPeriods:(NSString *)arg1;
 - (int)StringAsPayloadAlarmRepeatSchedules:(NSString *)arg1;
@@ -492,6 +497,7 @@
 - (int)StringAsPayloadWellnessQuestionTypes:(NSString *)arg1;
 - (int)StringAsPayloadWorkoutGoalUnitTypes:(NSString *)arg1;
 - (int)StringAsPayloadWorkoutLocationTypes:(NSString *)arg1;
+- (int)StringAsPayloadWorkoutSequenceLabels:(NSString *)arg1;
 - (int)StringAsType:(NSString *)arg1;
 - (void)addPayloadAccountType:(int)arg1;
 - (void)addPayloadActivity:(_INPBActivity *)arg1;
@@ -653,8 +659,10 @@
 - (void)addPayloadWellnessQuestionType:(int)arg1;
 - (void)addPayloadWellnessUnitType:(_INPBWellnessUnitType *)arg1;
 - (void)addPayloadWellnessValue:(_INPBWellnessValue *)arg1;
+- (void)addPayloadWorkoutAssociatedItem:(_INPBWorkoutAssociatedItem *)arg1;
 - (void)addPayloadWorkoutGoalUnitType:(int)arg1;
 - (void)addPayloadWorkoutLocationType:(int)arg1;
+- (void)addPayloadWorkoutSequenceLabel:(int)arg1;
 - (void)clearPayloadAccountTypes;
 - (void)clearPayloadActivities;
 - (void)clearPayloadActivityLists;
@@ -815,8 +823,10 @@
 - (void)clearPayloadWellnessQuestionTypes;
 - (void)clearPayloadWellnessUnitTypes;
 - (void)clearPayloadWellnessValues;
+- (void)clearPayloadWorkoutAssociatedItems;
 - (void)clearPayloadWorkoutGoalUnitTypes;
 - (void)clearPayloadWorkoutLocationTypes;
+- (void)clearPayloadWorkoutSequenceLabels;
 - (int)payloadAccountTypeAtIndex:(unsigned long long)arg1;
 - (NSString *)payloadAccountTypesAsString:(int)arg1;
 - (_INPBActivity *)payloadActivityAtIndex:(unsigned long long)arg1;
@@ -1039,10 +1049,13 @@
 - (NSString *)payloadWellnessQuestionTypesAsString:(int)arg1;
 - (_INPBWellnessUnitType *)payloadWellnessUnitTypeAtIndex:(unsigned long long)arg1;
 - (_INPBWellnessValue *)payloadWellnessValueAtIndex:(unsigned long long)arg1;
+- (_INPBWorkoutAssociatedItem *)payloadWorkoutAssociatedItemAtIndex:(unsigned long long)arg1;
 - (int)payloadWorkoutGoalUnitTypeAtIndex:(unsigned long long)arg1;
 - (NSString *)payloadWorkoutGoalUnitTypesAsString:(int)arg1;
 - (int)payloadWorkoutLocationTypeAtIndex:(unsigned long long)arg1;
 - (NSString *)payloadWorkoutLocationTypesAsString:(int)arg1;
+- (int)payloadWorkoutSequenceLabelAtIndex:(unsigned long long)arg1;
+- (NSString *)payloadWorkoutSequenceLabelsAsString:(int)arg1;
 - (void)setPayloadAccountTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadAlarmPeriods:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadAlarmRepeatSchedules:(int *)arg1 count:(unsigned long long)arg2;
@@ -1107,6 +1120,7 @@
 - (void)setPayloadWellnessQuestionTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadWorkoutGoalUnitTypes:(int *)arg1 count:(unsigned long long)arg2;
 - (void)setPayloadWorkoutLocationTypes:(int *)arg1 count:(unsigned long long)arg2;
+- (void)setPayloadWorkoutSequenceLabels:(int *)arg1 count:(unsigned long long)arg2;
 - (NSString *)typeAsString:(int)arg1;
 @end
 

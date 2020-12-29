@@ -7,6 +7,9 @@
 #import <WorkflowKit/NSObject-Protocol.h>
 
 @protocol WFStandaloneShortcutAction <NSObject>
+- (void)generateStandaloneShortcutRepresentation:(void (^)(WFStandaloneShortcutRepresentation *))arg1;
+
+@optional
 - (void)generateShortcutRepresentation:(void (^)(INShortcut *, NSError *))arg1;
 @end
 

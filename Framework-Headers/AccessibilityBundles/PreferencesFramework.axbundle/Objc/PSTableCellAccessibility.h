@@ -14,6 +14,7 @@
 + (void)_setAccessibilityData:(id)arg1 onCell:(id)arg2;
 + (Class)safeCategoryBaseClass;
 + (id)safeCategoryTargetClassName;
+- (BOOL)_accessibilityElementServesAsHeadingLandmark;
 - (id)_accessibilityHitTest:(struct CGPoint)arg1 withEvent:(id)arg2;
 - (BOOL)_accessibilityIsSpeakThisElement;
 - (BOOL)_accessibilityLanguageOverriddesUser;

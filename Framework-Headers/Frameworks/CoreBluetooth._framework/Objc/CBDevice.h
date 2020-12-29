@@ -12,6 +12,15 @@
 
 @interface CBDevice : NSObject <CUXPCCodable>
 {
+    BOOL _doubleTapActionLeft;
+    BOOL _doubleTapActionRight;
+    BOOL _doubleTapCapability;
+    BOOL _microphoneMode;
+    BOOL _placementMode;
+    BOOL _smartRoutingMode;
+    unsigned char _homeKitV1CompatibleVersion;
+    unsigned char _homeKitV1ConfigurationNumber;
+    unsigned char _homeKitV1Flags;
     unsigned char _nearbyActionType;
     unsigned char _nearbyActivityLevel;
     unsigned char _objectDiscoveryBatteryState;
@@ -21,6 +30,10 @@
     unsigned char _objectSetupColorCode;
     unsigned char _proximityPairingSubType;
     unsigned char _spatialInteractionFlags;
+    unsigned short _homeKitV1Category;
+    unsigned short _homeKitV1StateNumber;
+    unsigned short _homeKitV2InstanceID;
+    unsigned short _homeKitV2StateNumber;
     int _audioStreamState;
     int _bleChannel;
     int _bleRSSI;
@@ -28,6 +41,7 @@
     int _primaryPlacement;
     int _secondaryPlacement;
     unsigned int _productID;
+    unsigned int _homeKitV1SetupHash;
     unsigned int _lgFlags;
     unsigned int _nearbyActionFlags;
     unsigned int _nearbyInfoFlags;
@@ -50,6 +64,10 @@
     NSString *_idsDeviceID;
     NSString *_model;
     NSString *_name;
+    NSData *_homeKitV1DeviceIDData;
+    NSData *_homeKitV2AccessoryIDData;
+    NSData *_homeKitV2AuthTagData;
+    unsigned long long _homeKitV2Value;
     NSData *_nearbyAuthTag;
     NSData *_objectDiscoveryNearOwnerID;
     NSData *_objectDiscoveryPublicKeyData;
@@ -78,11 +96,27 @@
 @property (copy, nonatomic) NSString *contactID; // @synthesize contactID=_contactID;
 @property (nonatomic) unsigned long long deviceFlags; // @synthesize deviceFlags=_deviceFlags;
 @property (nonatomic) unsigned long long discoveryFlags; // @synthesize discoveryFlags=_discoveryFlags;
+@property (nonatomic) BOOL doubleTapActionLeft; // @synthesize doubleTapActionLeft=_doubleTapActionLeft;
+@property (nonatomic) BOOL doubleTapActionRight; // @synthesize doubleTapActionRight=_doubleTapActionRight;
+@property (nonatomic) BOOL doubleTapCapability; // @synthesize doubleTapCapability=_doubleTapCapability;
+@property (nonatomic) unsigned short homeKitV1Category; // @synthesize homeKitV1Category=_homeKitV1Category;
+@property (nonatomic) unsigned char homeKitV1CompatibleVersion; // @synthesize homeKitV1CompatibleVersion=_homeKitV1CompatibleVersion;
+@property (nonatomic) unsigned char homeKitV1ConfigurationNumber; // @synthesize homeKitV1ConfigurationNumber=_homeKitV1ConfigurationNumber;
+@property (copy, nonatomic) NSData *homeKitV1DeviceIDData; // @synthesize homeKitV1DeviceIDData=_homeKitV1DeviceIDData;
+@property (nonatomic) unsigned char homeKitV1Flags; // @synthesize homeKitV1Flags=_homeKitV1Flags;
+@property (nonatomic) unsigned int homeKitV1SetupHash; // @synthesize homeKitV1SetupHash=_homeKitV1SetupHash;
+@property (nonatomic) unsigned short homeKitV1StateNumber; // @synthesize homeKitV1StateNumber=_homeKitV1StateNumber;
+@property (copy, nonatomic) NSData *homeKitV2AccessoryIDData; // @synthesize homeKitV2AccessoryIDData=_homeKitV2AccessoryIDData;
+@property (copy, nonatomic) NSData *homeKitV2AuthTagData; // @synthesize homeKitV2AuthTagData=_homeKitV2AuthTagData;
+@property (nonatomic) unsigned short homeKitV2InstanceID; // @synthesize homeKitV2InstanceID=_homeKitV2InstanceID;
+@property (nonatomic) unsigned short homeKitV2StateNumber; // @synthesize homeKitV2StateNumber=_homeKitV2StateNumber;
+@property (nonatomic) unsigned long long homeKitV2Value; // @synthesize homeKitV2Value=_homeKitV2Value;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;
 @property (copy, nonatomic) NSString *idsDeviceID; // @synthesize idsDeviceID=_idsDeviceID;
 @property (nonatomic) unsigned int internalFlags; // @synthesize internalFlags=_internalFlags;
 @property (nonatomic) unsigned long long lastSeenTicks; // @synthesize lastSeenTicks=_lastSeenTicks;
 @property (readonly, nonatomic) unsigned int lgFlags; // @synthesize lgFlags=_lgFlags;
+@property (nonatomic) BOOL microphoneMode; // @synthesize microphoneMode=_microphoneMode;
 @property (copy, nonatomic) NSString *model; // @synthesize model=_model;
 @property (copy, nonatomic) NSString *name; // @synthesize name=_name;
 @property (copy, nonatomic) NSData *nearbyActionAuthTag; // @synthesize nearbyActionAuthTag=_nearbyActionAuthTag;
@@ -104,11 +138,13 @@
 @property (readonly, copy, nonatomic) NSString *objectSetupFontCode; // @synthesize objectSetupFontCode=_objectSetupFontCode;
 @property (readonly, copy, nonatomic) NSString *objectSetupMessage; // @synthesize objectSetupMessage=_objectSetupMessage;
 @property (nonatomic) unsigned long long oldDiscoveryFlags; // @synthesize oldDiscoveryFlags=_oldDiscoveryFlags;
+@property (nonatomic) BOOL placementMode; // @synthesize placementMode=_placementMode;
 @property (nonatomic) int primaryPlacement; // @synthesize primaryPlacement=_primaryPlacement;
 @property (nonatomic) unsigned int productID; // @synthesize productID=_productID;
 @property (nonatomic) unsigned int proximityPairingProductID; // @synthesize proximityPairingProductID=_proximityPairingProductID;
 @property (nonatomic) unsigned char proximityPairingSubType; // @synthesize proximityPairingSubType=_proximityPairingSubType;
 @property (nonatomic) int secondaryPlacement; // @synthesize secondaryPlacement=_secondaryPlacement;
+@property (nonatomic) BOOL smartRoutingMode; // @synthesize smartRoutingMode=_smartRoutingMode;
 @property (nonatomic) unsigned char spatialInteractionFlags; // @synthesize spatialInteractionFlags=_spatialInteractionFlags;
 @property (copy, nonatomic) NSArray *spatialInteractionIdentifiers; // @synthesize spatialInteractionIdentifiers=_spatialInteractionIdentifiers;
 @property (nonatomic) unsigned int spatialInteractionPeerID; // @synthesize spatialInteractionPeerID=_spatialInteractionPeerID;
@@ -120,6 +156,8 @@
 - (void).cxx_destruct;
 - (void)_clearUnparsedProperties;
 - (void)_parseAppleManufacturerPtr:(const char *)arg1 end:(const char *)arg2;
+- (void)_parseHomeKitV1Ptr:(const char *)arg1 end:(const char *)arg2;
+- (void)_parseHomeKitV2Ptr:(const char *)arg1 end:(const char *)arg2;
 - (void)_parseLGManufacturerPtr:(const char *)arg1 end:(const char *)arg2;
 - (void)_parseManufacturerPtr:(const char *)arg1 end:(const char *)arg2;
 - (void)_parseNearbyActionPtr:(const char *)arg1 end:(const char *)arg2;

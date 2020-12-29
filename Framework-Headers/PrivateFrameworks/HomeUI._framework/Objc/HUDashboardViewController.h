@@ -19,13 +19,14 @@
 #import <HomeUI/HUHomeKitObjectPresenting-Protocol.h>
 #import <HomeUI/HUPresentationDelegate-Protocol.h>
 #import <HomeUI/HUPrototypeLayoutOptionsEditorViewControllerDelegate-Protocol.h>
+#import <HomeUI/HUSoftwareUpdateUIPresentationDelegate-Protocol.h>
 #import <HomeUI/UIDropInteractionDelegate-Protocol.h>
 #import <HomeUI/UIViewControllerTransitioningDelegate-Protocol.h>
 
 @class AMSUIUpdateMultiUserTokenTask, HUDashboardContext, HUDashboardItemManager, HUDashboardLargeTitleButton, HUDashboardNavigationButton, HUDashboardScrollingAnimationController, HUDynamicScrollingOptions, HUGridActionSetListViewController, HUGridCameraListViewController, HUGridEmptyHomeView, HUGridLayoutOptions, HUGridStatusListViewController, HUHomeStatusViewController, HUWallpaperView, NAFuture, NSMutableArray, NSMutableDictionary, NSString, NSUserDefaults, UIDropInteraction;
 @protocol HUDashboardNavigator, HUDashboardViewControllerDelegate;
 
-@interface HUDashboardViewController : HUControllableItemCollectionViewController <HFAccessoryObserver, HUDashboardItemManagerDelegate, HUDashboardScrollingAnimationControllerDelegate, HUGridEmptyHomeViewDelegate, HUPrototypeLayoutOptionsEditorViewControllerDelegate, UIDropInteractionDelegate, UIViewControllerTransitioningDelegate, HFHomeObserver, HUBannerCellDelegate, HFHomeManagerObserver, HFUserObserver, HUPresentationDelegate, HUHomeKitObjectPresenting, HUDashboardMenuNavigationActionDelegate, HUDashboardMenuAddActionDelegate>
+@interface HUDashboardViewController : HUControllableItemCollectionViewController <HFAccessoryObserver, HUDashboardItemManagerDelegate, HUDashboardScrollingAnimationControllerDelegate, HUGridEmptyHomeViewDelegate, HUPrototypeLayoutOptionsEditorViewControllerDelegate, UIDropInteractionDelegate, UIViewControllerTransitioningDelegate, HFHomeObserver, HUBannerCellDelegate, HFHomeManagerObserver, HFUserObserver, HUSoftwareUpdateUIPresentationDelegate, HUPresentationDelegate, HUHomeKitObjectPresenting, HUDashboardMenuNavigationActionDelegate, HUDashboardMenuAddActionDelegate>
 {
     BOOL _useCustomDragAndDrop;
     BOOL _isHomeViewShown;
@@ -146,6 +147,8 @@
 - (void)addAccessoryToHome:(id)arg1;
 - (void)addSceneTileAction:(id)arg1;
 - (void)addSceneToHome:(id)arg1;
+- (void)bannerCell:(id)arg1 footerViewTapped:(id)arg2;
+- (BOOL)bannerCell:(id)arg1 shouldReceiveFooterViewTaps:(id)arg2;
 - (void)bounceItem:(id)arg1;
 - (BOOL)canEditScreen;
 - (BOOL)canReorderItemAtIndexPath:(id)arg1;

@@ -26,7 +26,10 @@
 
 + (id)log;
 - (void).cxx_destruct;
+- (void)_cacheLockupsWithCollectionRequest:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (void)_cacheLockupsWithRequests:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
+- (void)_lockupDictionaryForRequest:(id)arg1 includingKeys:(id)arg2 withCompletionBlock:(CDUnknownBlockType)arg3;
+- (void)_lockupRequestForBundleID:(id)arg1 withContext:(id)arg2 completionBlock:(CDUnknownBlockType)arg3;
 - (void)_prefetchLockupsWithRequests:(id)arg1 withCompletionBlock:(CDUnknownBlockType)arg2;
 - (id)description;
 - (id)init;

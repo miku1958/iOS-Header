@@ -14,6 +14,7 @@
 @interface WFWorkflowRunningContext : NSObject <NSCopying, NSSecureCoding>
 {
     BOOL _isShortcutsApp;
+    BOOL _allowDialogNotifications;
     NSString *_identifier;
     NSString *_workflowIdentifier;
     NSDate *_creationDate;
@@ -22,6 +23,7 @@
     NSData *_serializedWorkflowControllerState;
 }
 
+@property (nonatomic) BOOL allowDialogNotifications; // @synthesize allowDialogNotifications=_allowDialogNotifications;
 @property (strong, nonatomic) NSString *automationType; // @synthesize automationType=_automationType;
 @property (strong, nonatomic) NSDate *creationDate; // @synthesize creationDate=_creationDate;
 @property (copy, nonatomic) NSString *identifier; // @synthesize identifier=_identifier;

@@ -8,41 +8,40 @@
 
 @class NSString, UIColor, UIImageSymbolConfiguration;
 
-__attribute__((visibility("hidden")))
 @interface VUIResourceImageDescriptor : NSObject
 {
+    BOOL _renderAsTemplate;
     BOOL _scaleToSize;
-    NSString *_resourceName;
-    unsigned long long _imageType;
-    UIImageSymbolConfiguration *_imageSymbolConfiguration;
+    unsigned long long _type;
+    NSString *_name;
+    UIImageSymbolConfiguration *_symbolConfiguration;
     double _aspectRatio;
     UIColor *_borderColor;
+    double _borderWidth;
     UIColor *_tintColor;
     UIColor *_highlightColor;
     NSString *_accessibilityText;
-    struct CGSize _imageSize;
-    struct VUICornerRadii _borderRadii;
-    struct UIEdgeInsets _borderWidth;
+    struct CGSize _size;
+    struct _VUICornerRadii _borderRadii;
 }
 
 @property (copy, nonatomic) NSString *accessibilityText; // @synthesize accessibilityText=_accessibilityText;
 @property (readonly, nonatomic) double aspectRatio; // @synthesize aspectRatio=_aspectRatio;
 @property (strong, nonatomic) UIColor *borderColor; // @synthesize borderColor=_borderColor;
-@property (nonatomic) struct VUICornerRadii borderRadii; // @synthesize borderRadii=_borderRadii;
-@property (nonatomic) struct UIEdgeInsets borderWidth; // @synthesize borderWidth=_borderWidth;
+@property (nonatomic) struct _VUICornerRadii borderRadii; // @synthesize borderRadii=_borderRadii;
+@property (nonatomic) double borderWidth; // @synthesize borderWidth=_borderWidth;
 @property (strong, nonatomic) UIColor *highlightColor; // @synthesize highlightColor=_highlightColor;
-@property (readonly, nonatomic) struct CGSize imageSize; // @synthesize imageSize=_imageSize;
-@property (readonly, nonatomic) UIImageSymbolConfiguration *imageSymbolConfiguration; // @synthesize imageSymbolConfiguration=_imageSymbolConfiguration;
-@property (readonly, nonatomic) unsigned long long imageType; // @synthesize imageType=_imageType;
-@property (copy, nonatomic) NSString *resourceName; // @synthesize resourceName=_resourceName;
+@property (copy, nonatomic) NSString *name; // @synthesize name=_name;
+@property (nonatomic, getter=shouldRenderAsTemplate) BOOL renderAsTemplate; // @synthesize renderAsTemplate=_renderAsTemplate;
 @property (nonatomic) BOOL scaleToSize; // @synthesize scaleToSize=_scaleToSize;
+@property (readonly, nonatomic) struct CGSize size; // @synthesize size=_size;
+@property (readonly, nonatomic) UIImageSymbolConfiguration *symbolConfiguration; // @synthesize symbolConfiguration=_symbolConfiguration;
 @property (strong, nonatomic) UIColor *tintColor; // @synthesize tintColor=_tintColor;
+@property (readonly, nonatomic) unsigned long long type; // @synthesize type=_type;
 
 - (void).cxx_destruct;
-- (id)initWithResource:(id)arg1 scaleToSize:(BOOL)arg2;
-- (id)initWithSymbol:(id)arg1 symbolConfiguration:(id)arg2 scaleToSize:(BOOL)arg3;
-- (void)setAspectRatio:(double)arg1 width:(double)arg2;
-- (void)setImageSize:(struct CGSize)arg1;
+- (id)initWithResource:(id)arg1 size:(struct CGSize)arg2;
+- (id)initWithSymbol:(id)arg1 size:(struct CGSize)arg2 symbolConfiguration:(id)arg3;
 
 @end
 

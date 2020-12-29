@@ -17,6 +17,7 @@
 
 - (void).cxx_destruct;
 - (BOOL)accessibilityScroll:(long long)arg1;
+- (BOOL)canBecomeFocused;
 
 @end
 

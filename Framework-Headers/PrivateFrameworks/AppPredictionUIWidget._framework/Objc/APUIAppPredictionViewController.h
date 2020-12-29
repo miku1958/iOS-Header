@@ -61,6 +61,7 @@
 + (id)imageForIconSize:(struct CGSize)arg1 scale:(double)arg2;
 + (id)previewIdentifierWithIdentifier:(id)arg1 layoutSize:(unsigned long long)arg2;
 - (void).cxx_destruct;
+- (BOOL)_canDismissSelectedSuggestion;
 - (BOOL)_canShowWhileLocked;
 - (id)_fallbackBundleIds;
 - (void)_loadAppsInGridView:(id)arg1;

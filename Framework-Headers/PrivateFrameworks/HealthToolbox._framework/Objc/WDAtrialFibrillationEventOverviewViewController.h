@@ -19,6 +19,7 @@
 {
     BOOL _firstViewDidLayoutSubviews;
     BOOL _previousAtrialFibrillationDetectionDisabledCacheValue;
+    BOOL _displayAboutRowBeforeOnboarding;
     HKDisplayType *_displayType;
     WDProfile *_profile;
     HRAtrialFibrillationOnboardingManager *_onboardingManager;
@@ -39,6 +40,7 @@
 @property (readonly, copy) NSString *debugDescription;
 @property (readonly, copy) NSString *description;
 @property (nonatomic) long long detectionState; // @synthesize detectionState=_detectionState;
+@property (nonatomic) BOOL displayAboutRowBeforeOnboarding; // @synthesize displayAboutRowBeforeOnboarding=_displayAboutRowBeforeOnboarding;
 @property (strong, nonatomic) HKDisplayType *displayType; // @synthesize displayType=_displayType;
 @property (nonatomic) BOOL firstViewDidLayoutSubviews; // @synthesize firstViewDidLayoutSubviews=_firstViewDidLayoutSubviews;
 @property (readonly) unsigned long long hash;
@@ -76,6 +78,7 @@
 - (void)_reloadAtrialFibrillationSetupTableHeaderView;
 - (void)_reloadTableViewAndScrollToTop;
 - (id)_sectionHeaderViewWithTitle:(id)arg1;
+- (BOOL)_shouldDisplayAboutRowBeforeOnboarding;
 - (BOOL)_shouldShowAtrialFibrillationSetupTableHeaderView;
 - (void)_showInternalSettingsViewController;
 - (void)_startOnboardingForFirstTime:(BOOL)arg1;

@@ -76,7 +76,6 @@
 - (BOOL)isVideoMinFrameDurationSet;
 - (BOOL)isVideoRetainedBufferCountHintSupported;
 - (BOOL)livePhotoMetadataWritingEnabled;
-- (long long)mappedVideoOrientation;
 - (id)mediaType;
 - (void)observeValueForKeyPath:(id)arg1 ofObject:(id)arg2 change:(id)arg3 context:(void *)arg4;
 - (id)session;

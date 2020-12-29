@@ -21,6 +21,7 @@ __attribute__((visibility("hidden")))
 
 @property (readonly, nonatomic) NSString *app_id;
 @property (readonly, nonatomic) long long channel_type;
+@property (readonly, nonatomic) BOOL is_synthesis;
 
 - (void).cxx_destruct;
 - (Offset_ad483e0b)addObjectToBuffer:(struct FlatBufferBuilder *)arg1;
